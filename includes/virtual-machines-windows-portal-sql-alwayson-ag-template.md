@@ -1,0 +1,2 @@
+Den här självstudiekursen vägleder dig genom att skapa lösningar från Azure-portalen. Om du vill skapa den här lösningen från en mall, Välj lämplig mall från [GitHub för Microsoft Azure-mallar](http://github.com/Azure/azure-quickstart-templates). Den [skapa en tillgänglighetsgrupp med SQL Server 2014 virtuella replikdatorer](http://github.com/Azure/azure-quickstart-templates/tree/master/sqlvm-alwayson-cluster) skapas i samma lösning som den här kursen. 
+
