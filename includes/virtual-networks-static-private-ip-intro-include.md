@@ -1,0 +1,4 @@
+Dina IaaS-datorer (VM) och PaaS-rollinstanser i ett virtuellt nätverk får automatiskt en privat IP-adress från det intervall som du anger, baserat på de är anslutna till undernätet. Adressen sparas av virtuella datorer och rollinstanser, tills de tas ur drift. Du kan inaktivera en virtuell dator eller roll-instans genom att stoppa från PowerShell, Azure CLI eller Azure-portalen. I dessa fall när VM eller roll-instansen startas igen, får den en tillgänglig IP-adress från Azure-infrastrukturen, vilket inte kanske är samma som tidigare. Om du stänger av den virtuella dator eller rollen instansen från gästoperativsystemet behåller den IP-adress som den hade.  
+
+I vissa fall vill du en virtuell dator eller roll-instans har en statisk IP-adress, till exempel om den virtuella datorn ska köra DNS eller om en domänkontrollant. Du kan göra det genom att ange en statisk privat IP-adress.
+
