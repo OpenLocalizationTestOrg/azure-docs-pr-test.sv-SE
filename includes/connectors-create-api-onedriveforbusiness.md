@@ -1,16 +1,16 @@
-### <a name="prerequisites"></a>Krav
-* En [OneDrive](http://OneDrive.com) konto 
+### <a name="prerequisites"></a><span data-ttu-id="ae4d7-101">Krav</span><span class="sxs-lookup"><span data-stu-id="ae4d7-101">Prerequisites</span></span>
+* <span data-ttu-id="ae4d7-102">En [OneDrive](http://OneDrive.com) konto</span><span class="sxs-lookup"><span data-stu-id="ae4d7-102">A [OneDrive](http://OneDrive.com) account</span></span> 
 
-Innan du kan använda OneDrive för företag-konto i en logikapp, måste du godkänna logik för att ansluta till OneDrive för företag-konto. Lyckligtvis kan du göra detta direkt i din logikapp på Azure Portal. 
+<span data-ttu-id="ae4d7-103">Innan du kan använda OneDrive för företag-konto i en logikapp, måste du godkänna logik för att ansluta till OneDrive för företag-konto.</span><span class="sxs-lookup"><span data-stu-id="ae4d7-103">Before you can use your OneDrive for Business account in a Logic app, you must authorize the Logic app to connect to your OneDrive for Business account.</span></span> <span data-ttu-id="ae4d7-104">Lyckligtvis kan du göra detta direkt i din logikapp på Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="ae4d7-104">Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span> 
 
-Här följer stegen för att verifiera din logikapp för att ansluta till ditt konto för OneDrive för företag:
+<span data-ttu-id="ae4d7-105">Här följer stegen för att verifiera din logikapp för att ansluta till ditt konto för OneDrive för företag:</span><span class="sxs-lookup"><span data-stu-id="ae4d7-105">Here are the steps to authorize your Logic app to connect to your OneDrive for Business account:</span></span>
 
-1. Om du vill skapa en anslutning till OneDrive för företag, i logik app designer **visa Microsoft hanterade API: er** i nedrullningsbara listan anger *OneDrive för företag* i sökrutan. Välj utlösaren eller åtgärd du vill använda:  
+1. <span data-ttu-id="ae4d7-106">Om du vill skapa en anslutning till OneDrive för företag, i logik app designer **visa Microsoft hanterade API: er** i nedrullningsbara listan anger *OneDrive för företag* i sökrutan.</span><span class="sxs-lookup"><span data-stu-id="ae4d7-106">To create a connection to OneDrive for Business, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *OneDrive for Business* in the search box.</span></span> <span data-ttu-id="ae4d7-107">Välj utlösaren eller åtgärd du vill använda:</span><span class="sxs-lookup"><span data-stu-id="ae4d7-107">Select the trigger or action you'll like to use:</span></span>  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. Om du inte har skapat alla anslutningar till OneDrive för företag innan du kan hämta uppmanas du att ange ditt OneDrive för företag autentiseringsuppgifter. Dessa autentiseringsuppgifter används för att auktorisera din logikapp för att ansluta till och åtkomst till OneDrive för företag-konto data:  
+2. <span data-ttu-id="ae4d7-108">Om du inte har skapat alla anslutningar till OneDrive för företag innan du kan hämta uppmanas du att ange ditt OneDrive för företag autentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="ae4d7-108">If you haven't created any connections to OneDrive for Business before, you'll get prompted to provide your OneDrive for Business credentials.</span></span> <span data-ttu-id="ae4d7-109">Dessa autentiseringsuppgifter används för att auktorisera din logikapp för att ansluta till och åtkomst till OneDrive för företag-konto data:</span><span class="sxs-lookup"><span data-stu-id="ae4d7-109">These credentials will be used to authorize your Logic app to connect to, and access your OneDrive for Business account's data:</span></span>  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
-3. Ange ditt OneDrive för företag-användarnamn och lösenord för att godkänna logikappen:  
+3. <span data-ttu-id="ae4d7-110">Ange ditt OneDrive för företag-användarnamn och lösenord för att godkänna logikappen:</span><span class="sxs-lookup"><span data-stu-id="ae4d7-110">Provide your OneDrive for Business user name and password to authorize your Logic app:</span></span>  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Observera att anslutningen har skapats och du kan nu välja att fortsätta med andra steg i din logikapp:  
+4. <span data-ttu-id="ae4d7-111">Observera att anslutningen har skapats och du kan nu välja att fortsätta med andra steg i din logikapp:</span><span class="sxs-lookup"><span data-stu-id="ae4d7-111">Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:</span></span>  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
 

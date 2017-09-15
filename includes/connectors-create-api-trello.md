@@ -1,18 +1,18 @@
-### <a name="prerequisites"></a>Krav
-* En [Trello](http://trello.com) konto 
+### <a name="prerequisites"></a><span data-ttu-id="fb0d7-101">Krav</span><span class="sxs-lookup"><span data-stu-id="fb0d7-101">Prerequisites</span></span>
+* <span data-ttu-id="fb0d7-102">En [Trello](http://trello.com) konto</span><span class="sxs-lookup"><span data-stu-id="fb0d7-102">A [Trello](http://trello.com) account</span></span> 
 
-Innan du kan använda ditt konto Trello i en logikapp, måste du godkänna logik för att ansluta till ditt konto för Trello. Lyckligtvis kan du göra detta direkt i din logikapp på Azure Portal. 
+<span data-ttu-id="fb0d7-103">Innan du kan använda ditt konto Trello i en logikapp, måste du godkänna logik för att ansluta till ditt konto för Trello.</span><span class="sxs-lookup"><span data-stu-id="fb0d7-103">Before you can use your Trello account in a Logic app, you must authorize the Logic app to connect to your Trello account.</span></span> <span data-ttu-id="fb0d7-104">Lyckligtvis kan du göra detta direkt i din logikapp på Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="fb0d7-104">Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span> 
 
-Här följer stegen för att verifiera din logikapp för att ansluta till ditt konto Trello:
+<span data-ttu-id="fb0d7-105">Här följer stegen för att verifiera din logikapp för att ansluta till ditt konto Trello:</span><span class="sxs-lookup"><span data-stu-id="fb0d7-105">Here are the steps to authorize your Logic app to connect to your Trello account:</span></span>
 
-1. Om du vill skapa en anslutning till Trello, i logik app designer **visa Microsoft hanterade API: er** i nedrullningsbara listan anger *Trello* i sökrutan. Välj utlösaren eller åtgärd du vill använda:  
+1. <span data-ttu-id="fb0d7-106">Om du vill skapa en anslutning till Trello, i logik app designer **visa Microsoft hanterade API: er** i nedrullningsbara listan anger *Trello* i sökrutan.</span><span class="sxs-lookup"><span data-stu-id="fb0d7-106">To create a connection to Trello, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Trello* in the search box.</span></span> <span data-ttu-id="fb0d7-107">Välj utlösaren eller åtgärd du vill använda:</span><span class="sxs-lookup"><span data-stu-id="fb0d7-107">Select the trigger or action you'll like to use:</span></span>  
    ![](./media/connectors-create-api-trello/trello-1.png)
-2. Om du inte har skapat alla anslutningar till Trello innan du kan hämta uppmanas du att ange autentiseringsuppgifter för Trello. Dessa autentiseringsuppgifter används för att auktorisera din logikapp för att ansluta till och komma åt ditt konto Trello data:  
+2. <span data-ttu-id="fb0d7-108">Om du inte har skapat alla anslutningar till Trello innan du kan hämta uppmanas du att ange autentiseringsuppgifter för Trello.</span><span class="sxs-lookup"><span data-stu-id="fb0d7-108">If you haven't created any connections to Trello before, you'll get prompted to provide your Trello credentials.</span></span> <span data-ttu-id="fb0d7-109">Dessa autentiseringsuppgifter används för att auktorisera din logikapp för att ansluta till och komma åt ditt konto Trello data:</span><span class="sxs-lookup"><span data-stu-id="fb0d7-109">These credentials will be used to authorize your Logic app to connect to, and access your Trello account's data:</span></span>  
    ![](./media/connectors-create-api-trello/trello-2.png) 
-3. Ger oss möjlighet att ansluta till Trello:  
+3. <span data-ttu-id="fb0d7-110">Ger oss möjlighet att ansluta till Trello:</span><span class="sxs-lookup"><span data-stu-id="fb0d7-110">Allow us to connect to Trello:</span></span>  
    ![](./media/connectors-create-api-trello/trello-3.png)   
-4. Ange din Trello användarnamn och lösenord för att auktorisera logikappen:  
+4. <span data-ttu-id="fb0d7-111">Ange din Trello användarnamn och lösenord för att auktorisera logikappen:</span><span class="sxs-lookup"><span data-stu-id="fb0d7-111">Provide your Trello user name and password to authorize your Logic app:</span></span>  
    ![](./media/connectors-create-api-trello/trello-4.png)  
-5. Observera att anslutningen har skapats och du kan nu välja att fortsätta med andra steg i din logikapp:  
+5. <span data-ttu-id="fb0d7-112">Observera att anslutningen har skapats och du kan nu välja att fortsätta med andra steg i din logikapp:</span><span class="sxs-lookup"><span data-stu-id="fb0d7-112">Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:</span></span>  
    ![](./media/connectors-create-api-trello/trello-5.png)
 

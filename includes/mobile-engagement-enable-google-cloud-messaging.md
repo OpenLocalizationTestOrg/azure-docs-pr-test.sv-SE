@@ -1,14 +1,14 @@
 
-### <a name="create-a-google-firebase-project-with-api-key"></a>Skapa ett Google Firebase-projekt med API-nyckel
+### <a name="create-a-google-firebase-project-with-api-key"></a><span data-ttu-id="80759-101">Skapa ett Google Firebase-projekt med API-nyckel</span><span class="sxs-lookup"><span data-stu-id="80759-101">Create a Google Firebase project with API key</span></span>
 > [!NOTE]
-> För att kunna slutföra den här proceduren behöver du ett Google-konto med en verifierad e-postadress. Gå till <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> om du vill skapa ett nytt Google-konto.
+> <span data-ttu-id="80759-102">För att kunna slutföra den här proceduren behöver du ett Google-konto med en verifierad e-postadress.</span><span class="sxs-lookup"><span data-stu-id="80759-102">To complete this procedure, you must have a Google account that has a verified email address.</span></span> <span data-ttu-id="80759-103">Gå till <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a> om du vill skapa ett nytt Google-konto.</span><span class="sxs-lookup"><span data-stu-id="80759-103">To create a new Google account, go to <a href="http://go.microsoft.com/fwlink/p/?LinkId=268302" target="_blank">accounts.google.com</a>.</span></span>
 > 
 > 
 
-1. Navigera till [Firebase-konsolen](https://console.firebase.google.com/) och logga in med dina Google-autentiseringsuppgifter.
-2. Klicka på knappen **Skapa nytt projekt** för att skapa ett nytt projekt. Du kan också klicka på **Importera Google-projekt** för att importera ett befintligt projekt. 
-3. Om du väljer att skapa ett nytt projekt, anger du ett **Projektnamn** och väljer **Land/Region**.
-4. På din projektsida, klickar du på kugghjulet **Inställningar** överst till vänster. I menyn, klickar du på **Projektinställningar**.  
-5. Klicka på fliken **Cloud Messaging** högst uppe. 
-6. Anteckna den **Servernyckel** och **Avsändar-ID** som du kommer att använda senare i *Android-manifestfilen*.  
+1. <span data-ttu-id="80759-104">Navigera till [Firebase-konsolen](https://console.firebase.google.com/) och logga in med dina Google-autentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="80759-104">Navigate to the [Firebase Console](https://console.firebase.google.com/) and sign-in with your Google account credentials.</span></span>
+2. <span data-ttu-id="80759-105">Klicka på knappen **Skapa nytt projekt** för att skapa ett nytt projekt.</span><span class="sxs-lookup"><span data-stu-id="80759-105">Click on **Create new Project** button to create a new project.</span></span> <span data-ttu-id="80759-106">Du kan också klicka på **Importera Google-projekt** för att importera ett befintligt projekt.</span><span class="sxs-lookup"><span data-stu-id="80759-106">Alternatively, you can also click on **Import Google Project** to import and existing project.</span></span> 
+3. <span data-ttu-id="80759-107">Om du väljer att skapa ett nytt projekt, anger du ett **Projektnamn** och väljer **Land/Region**.</span><span class="sxs-lookup"><span data-stu-id="80759-107">If you opted for creating a new project then provide a **Project name** and choose a **Country/Region**.</span></span>
+4. <span data-ttu-id="80759-108">På din projektsida, klickar du på kugghjulet **Inställningar** överst till vänster.</span><span class="sxs-lookup"><span data-stu-id="80759-108">On your project page, click the **Settings** cog wheel at the top left.</span></span> <span data-ttu-id="80759-109">I menyn, klickar du på **Projektinställningar**.</span><span class="sxs-lookup"><span data-stu-id="80759-109">In the menu, click on **Project settings**.</span></span>  
+5. <span data-ttu-id="80759-110">Klicka på fliken **Cloud Messaging** högst uppe.</span><span class="sxs-lookup"><span data-stu-id="80759-110">Click on the **Cloud Messaging** tab at the top.</span></span> 
+6. <span data-ttu-id="80759-111">Anteckna den **Servernyckel** och **Avsändar-ID** som du kommer att använda senare i *Android-manifestfilen*.</span><span class="sxs-lookup"><span data-stu-id="80759-111">Make a note of the **Server Key** and the **Sender ID** that you will use later in the *Android Manifest file*.</span></span>  
 

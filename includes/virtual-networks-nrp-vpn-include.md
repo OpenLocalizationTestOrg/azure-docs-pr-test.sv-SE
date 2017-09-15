@@ -1,12 +1,12 @@
-## <a name="vpn-gateway"></a>VPN-gateway
-En VPN-gateway-resurs kan du skapa en säker anslutning mellan sina lokala datacenter och Azure. En resurs för VPN-gateway kan konfigureras på tre olika sätt:
+## <a name="vpn-gateway"></a><span data-ttu-id="43cfd-101">VPN-gateway</span><span class="sxs-lookup"><span data-stu-id="43cfd-101">VPN Gateway</span></span>
+<span data-ttu-id="43cfd-102">En VPN-gateway-resurs kan du skapa en säker anslutning mellan sina lokala datacenter och Azure.</span><span class="sxs-lookup"><span data-stu-id="43cfd-102">A VPN gateway resource enables you to create a secure connection between their on-premises data center and Azure.</span></span> <span data-ttu-id="43cfd-103">En resurs för VPN-gateway kan konfigureras på tre olika sätt:</span><span class="sxs-lookup"><span data-stu-id="43cfd-103">A VPN gateway resource can be configured in three different ways:</span></span>
 
-* **Peka på platsen** – du kan på ett säkert sätt komma åt Azure-resurser finns i ett VNET med hjälp av en VPN-klient från valfri dator. 
-* **Flera plats-anslutning** – du kan ansluta från din lokala Datacenter på ett säkert sätt till resurser som körs i ett virtuellt nätverk. 
-* **VNET till VNET** – du kan ansluta över Azure VNET i samma region eller över regioner att skapa arbetsbelastningar med geo-redundans på ett säkert sätt.
+* <span data-ttu-id="43cfd-104">**Peka på platsen** – du kan på ett säkert sätt komma åt Azure-resurser finns i ett VNET med hjälp av en VPN-klient från valfri dator.</span><span class="sxs-lookup"><span data-stu-id="43cfd-104">**Point to Site** – you can securely access your Azure resources hosted in a VNET by using a VPN client from any computer.</span></span> 
+* <span data-ttu-id="43cfd-105">**Flera plats-anslutning** – du kan ansluta från din lokala Datacenter på ett säkert sätt till resurser som körs i ett virtuellt nätverk.</span><span class="sxs-lookup"><span data-stu-id="43cfd-105">**Multi-site connection** – you can securely connect from your on-premises data centers to resources running in a VNET.</span></span> 
+* <span data-ttu-id="43cfd-106">**VNET till VNET** – du kan ansluta över Azure VNET i samma region eller över regioner att skapa arbetsbelastningar med geo-redundans på ett säkert sätt.</span><span class="sxs-lookup"><span data-stu-id="43cfd-106">**VNET to VNET** – you can securely connect across Azure VNETS within the same region, or across regions to build workloads with geo-redundancy.</span></span>
 
-Nyckelegenskaperna för en VPN-gateway inkluderar:
+<span data-ttu-id="43cfd-107">Nyckelegenskaperna för en VPN-gateway inkluderar:</span><span class="sxs-lookup"><span data-stu-id="43cfd-107">Key properties of a VPN gateway include:</span></span>
 
-* **Gateway-typ** – dynamiskt dirigeras eller en statisk dirigeras gateway. 
-* **VPN-klienten-poolen adressprefixet** – IP-adresser tilldelas till klienter som ansluter i en punkt till platskonfiguration.
+* <span data-ttu-id="43cfd-108">**Gateway-typ** – dynamiskt dirigeras eller en statisk dirigeras gateway.</span><span class="sxs-lookup"><span data-stu-id="43cfd-108">**Gateway type** - dynamically routed or a static routed gateway.</span></span> 
+* <span data-ttu-id="43cfd-109">**VPN-klienten-poolen adressprefixet** – IP-adresser tilldelas till klienter som ansluter i en punkt till platskonfiguration.</span><span class="sxs-lookup"><span data-stu-id="43cfd-109">**VPN Client Address Pool Prefix** – IP addresses to be assigned to clients connecting in a point to site configuration.</span></span>
 

@@ -1,16 +1,16 @@
 
-**Objective-C**:
+<span data-ttu-id="eeeac-101">**Objective-C**:</span><span class="sxs-lookup"><span data-stu-id="eeeac-101">**Objective-C**:</span></span>
 
-1. I **QSAppDelegate.m**, importera iOS SDK och **QSTodoService.h**:
+1. <span data-ttu-id="eeeac-102">I **QSAppDelegate.m**, importera iOS SDK och **QSTodoService.h**:</span><span class="sxs-lookup"><span data-stu-id="eeeac-102">In **QSAppDelegate.m**, import the iOS SDK and **QSTodoService.h**:</span></span>
    
         #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
         #import "QSTodoService.h"
-2. I `didFinishLaunchingWithOptions` i **QSAppDelegate.m**, infoga följande rader innan `return YES;`:
+2. <span data-ttu-id="eeeac-103">I `didFinishLaunchingWithOptions` i **QSAppDelegate.m**, infoga följande rader innan `return YES;`:</span><span class="sxs-lookup"><span data-stu-id="eeeac-103">In `didFinishLaunchingWithOptions` in **QSAppDelegate.m**, insert the following lines right before `return YES;`:</span></span>
    
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-3. I **QSAppDelegate.m**, Lägg till följande metoder för hanteraren. Appen har uppdaterats för att stödja push-meddelanden. 
+3. <span data-ttu-id="eeeac-104">I **QSAppDelegate.m**, Lägg till följande metoder för hanteraren.</span><span class="sxs-lookup"><span data-stu-id="eeeac-104">In **QSAppDelegate.m**, add the following handler methods.</span></span> <span data-ttu-id="eeeac-105">Appen har uppdaterats för att stödja push-meddelanden.</span><span class="sxs-lookup"><span data-stu-id="eeeac-105">Your app is now updated to support push notifications.</span></span> 
    
         // Registration with APNs is successful
         - (void)application:(UIApplication *)application
@@ -77,17 +77,17 @@
    
         }
 
-**SWIFT**:
+<span data-ttu-id="eeeac-106">**SWIFT**:</span><span class="sxs-lookup"><span data-stu-id="eeeac-106">**Swift**:</span></span>
 
-1. Lägg till fil **ClientManager.swift** med följande innehåll. Ersätt *AppUrl %* med URL-Adressen till mobilappsserverdel i Azure.
+1. <span data-ttu-id="eeeac-107">Lägg till fil **ClientManager.swift** med följande innehåll.</span><span class="sxs-lookup"><span data-stu-id="eeeac-107">Add file **ClientManager.swift** with the following contents.</span></span> <span data-ttu-id="eeeac-108">Ersätt *AppUrl %* med URL-Adressen till mobilappsserverdel i Azure.</span><span class="sxs-lookup"><span data-stu-id="eeeac-108">Replace *%AppUrl%* with the URL of the Azure Mobile App backend.</span></span>
    
         class ClientManager {
             static let sharedClient = MSClient(applicationURLString: "%AppUrl%")
         }
-2. I **ToDoTableViewController.swift**, ersätter den `let client` raden som initierar en `MSClient` med den här raden:
+2. <span data-ttu-id="eeeac-109">I **ToDoTableViewController.swift**, ersätter den `let client` raden som initierar en `MSClient` med den här raden:</span><span class="sxs-lookup"><span data-stu-id="eeeac-109">In **ToDoTableViewController.swift**, replace the `let client` line that initializes an `MSClient` with this line:</span></span>
    
         let client = ClientManager.sharedClient
-3. I **AppDelegate.swift**, att ersätta brödtexten i `func application` på följande sätt:
+3. <span data-ttu-id="eeeac-110">I **AppDelegate.swift**, att ersätta brödtexten i `func application` på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="eeeac-110">In **AppDelegate.swift**, replace the body of `func application` as follows:</span></span>
    
         func application(application: UIApplication,
           didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -97,7 +97,7 @@
            application.registerForRemoteNotifications()
            return true
         }
-4. I **AppDelegate.swift**, Lägg till följande metoder för hanteraren. Appen har uppdaterats för att stödja push-meddelanden.
+4. <span data-ttu-id="eeeac-111">I **AppDelegate.swift**, Lägg till följande metoder för hanteraren.</span><span class="sxs-lookup"><span data-stu-id="eeeac-111">In **AppDelegate.swift**, add the following handler methods.</span></span> <span data-ttu-id="eeeac-112">Appen har uppdaterats för att stödja push-meddelanden.</span><span class="sxs-lookup"><span data-stu-id="eeeac-112">Your app is now updated to support push notifications.</span></span>
    
         func application(application: UIApplication,
            didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {

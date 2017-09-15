@@ -1,6 +1,6 @@
-1. Visual Studio-menyn väljer du **Arkiv > Nytt > projekt**.
-2. Under den **mallar** avsnitt i den **nytt projekt** dialogrutan **Visual C# > webb**.
-3. Välj **webbprogram för ASP.NET Core (.NET Core)**.
-4. Namnge ditt nya program (eller ta standard) och välj **OK**.
-5. Under **ASP.NET Core 1.1 mallar**väljer **webbprogram** och välj **OK**.
+1. <span data-ttu-id="c2a35-101">Visual Studio-menyn väljer du **Arkiv > Nytt > projekt**.</span><span class="sxs-lookup"><span data-stu-id="c2a35-101">From the Visual Studio menu, select **File > New > Project**.</span></span>
+2. <span data-ttu-id="c2a35-102">Under den **mallar** avsnitt i den **nytt projekt** dialogrutan **Visual C# > webb**.</span><span class="sxs-lookup"><span data-stu-id="c2a35-102">Under the **Templates** section of the **New Project** dialog box, select **Visual C# > Web**.</span></span>
+3. <span data-ttu-id="c2a35-103">Välj **webbprogram för ASP.NET Core (.NET Core)**.</span><span class="sxs-lookup"><span data-stu-id="c2a35-103">Select **ASP.NET Core Web Application (.NET Core)**.</span></span>
+4. <span data-ttu-id="c2a35-104">Namnge ditt nya program (eller ta standard) och välj **OK**.</span><span class="sxs-lookup"><span data-stu-id="c2a35-104">Give your new application a name (or take the default) and select **OK**.</span></span>
+5. <span data-ttu-id="c2a35-105">Under **ASP.NET Core 1.1 mallar**väljer **webbprogram** och välj **OK**.</span><span class="sxs-lookup"><span data-stu-id="c2a35-105">Under **ASP.NET Core 1.1 Templates**, select **Web Application** and select **OK**.</span></span>
 

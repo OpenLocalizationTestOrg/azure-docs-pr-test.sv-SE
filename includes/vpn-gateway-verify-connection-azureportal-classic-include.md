@@ -1,13 +1,13 @@
-Du kan visa anslutningsstatus i Azure Portal för en klassisk VNet VPN-gateway genom att navigera till anslutningen. Följande steg visar ett sätt att navigera till din anslutning och verifiera.
+<span data-ttu-id="ec3cd-101">Du kan visa anslutningsstatus i Azure Portal för en klassisk VNet VPN-gateway genom att navigera till anslutningen.</span><span class="sxs-lookup"><span data-stu-id="ec3cd-101">In the Azure portal, you can view the connection status for a classic VNet VPN Gateway by navigating to the connection.</span></span> <span data-ttu-id="ec3cd-102">Följande steg visar ett sätt att navigera till din anslutning och verifiera.</span><span class="sxs-lookup"><span data-stu-id="ec3cd-102">The following steps show one way to navigate to your connection and verify.</span></span>
 
-1. I [Azure Portal](http://portal.azure.com) klickar du på **Alla resurser** och går till ditt klassiska virtuella nätverk.
-2. På bladet virtuellt nätverk klickar du på **Översikt** för att få åtkomst till avsnittet **VPN-anslutningar** på bladet.
-3. På bilden VPN-anslutningar klickar du på platsen.
+1. <span data-ttu-id="ec3cd-103">I [Azure Portal](http://portal.azure.com) klickar du på **Alla resurser** och går till ditt klassiska virtuella nätverk.</span><span class="sxs-lookup"><span data-stu-id="ec3cd-103">In the [Azure portal](http://portal.azure.com), click **All resources** and navigate to your classic virtual network.</span></span>
+2. <span data-ttu-id="ec3cd-104">På bladet virtuellt nätverk klickar du på **Översikt** för att få åtkomst till avsnittet **VPN-anslutningar** på bladet.</span><span class="sxs-lookup"><span data-stu-id="ec3cd-104">On the virtual network blade, click **Overview** to access the **VPN connections** section of the blade.</span></span>
+3. <span data-ttu-id="ec3cd-105">På bilden VPN-anslutningar klickar du på platsen.</span><span class="sxs-lookup"><span data-stu-id="ec3cd-105">On the VPN connections graphic, click the site.</span></span>
 
-    ![Lokal plats](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "lokal plats")
-4. På bladet **VPN-anslutningar för plats till plats** visar du informationen om din webbplats.
+    <span data-ttu-id="ec3cd-106">![Lokal plats](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "lokal plats")</span><span class="sxs-lookup"><span data-stu-id="ec3cd-106">![Local site](./media/vpn-gateway-verify-connection-azureportal-classic/localsitename.png "local site")</span></span>
+4. <span data-ttu-id="ec3cd-107">På bladet **VPN-anslutningar för plats till plats** visar du informationen om din webbplats.</span><span class="sxs-lookup"><span data-stu-id="ec3cd-107">On the **Site-to-site VPN connections** blade, view the information about your site.</span></span>
 
-    ![Anslutningsstatus](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "anslutningsstatus")
-5. Om du vill visa mer information om anslutningen klickar du på namnet på anslutningen för att öppna bladet **VPN-anslutningar för plats-till-plats**.
+    <span data-ttu-id="ec3cd-108">![Anslutningsstatus](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "anslutningsstatus")</span><span class="sxs-lookup"><span data-stu-id="ec3cd-108">![Connection status](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "Connection status")</span></span>
+5. <span data-ttu-id="ec3cd-109">Om du vill visa mer information om anslutningen klickar du på namnet på anslutningen för att öppna bladet **VPN-anslutningar för plats-till-plats**.</span><span class="sxs-lookup"><span data-stu-id="ec3cd-109">To view more information about the connection, click the name of the connection to open the **Site-to-site VPN Connection** blade.</span></span>
 
-    ![Anslutningsstatus mer](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Anslutningsstatus mer info")
+    <span data-ttu-id="ec3cd-110">![Anslutningsstatus mer](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Anslutningsstatus mer info")</span><span class="sxs-lookup"><span data-stu-id="ec3cd-110">![Connection status more](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Connection status more info")</span></span>

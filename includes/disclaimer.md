@@ -1,2 +1,2 @@
-Om du vill använda den här funktionen och andra nya funktioner i Azure måste du registrera dig för den [kostnadsfri förhandsversion](https://account.windowsazure.com/PreviewFeatures).
+<span data-ttu-id="adc92-101">Om du vill använda den här funktionen och andra nya funktioner i Azure måste du registrera dig för den [kostnadsfri förhandsversion](https://account.windowsazure.com/PreviewFeatures).</span><span class="sxs-lookup"><span data-stu-id="adc92-101">To use this feature and other new Azure capabilities, sign up for the [free preview](https://account.windowsazure.com/PreviewFeatures).</span></span>
 

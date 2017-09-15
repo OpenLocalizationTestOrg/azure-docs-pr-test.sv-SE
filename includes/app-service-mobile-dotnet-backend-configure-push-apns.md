@@ -1,13 +1,13 @@
 
-* **.NET-serverdel (C#)**:      
+* <span data-ttu-id="5adb0-101">**.NET-serverdel (C#)**:</span><span class="sxs-lookup"><span data-stu-id="5adb0-101">**.NET backend (C#)**:</span></span>      
   
-  1. Högerklicka på serverprojekt i Visual Studio och klicka på **hantera NuGet-paket**, söka efter `Microsoft.Azure.NotificationHubs`, klicka på **installera**. Detta installerar Notification Hubs-biblioteket för att skicka meddelanden från serverdelen.
-  2. Öppna i Visual Studio-projekt för serverdelens **domänkontrollanter** > **TodoItemController.cs**. Lägg till följande längst upp i filen `using` instruktionen:
+  1. <span data-ttu-id="5adb0-102">Högerklicka på serverprojekt i Visual Studio och klicka på **hantera NuGet-paket**, söka efter `Microsoft.Azure.NotificationHubs`, klicka på **installera**.</span><span class="sxs-lookup"><span data-stu-id="5adb0-102">In Visual Studio, right-click the server project and click **Manage NuGet Packages**, search for `Microsoft.Azure.NotificationHubs`, then click **Install**.</span></span> <span data-ttu-id="5adb0-103">Detta installerar Notification Hubs-biblioteket för att skicka meddelanden från serverdelen.</span><span class="sxs-lookup"><span data-stu-id="5adb0-103">This installs the Notification Hubs library for sending notifications from your backend.</span></span>
+  2. <span data-ttu-id="5adb0-104">Öppna i Visual Studio-projekt för serverdelens **domänkontrollanter** > **TodoItemController.cs**.</span><span class="sxs-lookup"><span data-stu-id="5adb0-104">In the backend's Visual Studio project, open **Controllers** > **TodoItemController.cs**.</span></span> <span data-ttu-id="5adb0-105">Lägg till följande längst upp i filen `using` instruktionen:</span><span class="sxs-lookup"><span data-stu-id="5adb0-105">At the top of the file, add the following `using` statement:</span></span>
      
           using Microsoft.Azure.Mobile.Server.Config;
           using Microsoft.Azure.NotificationHubs;
 
-    3. Ersätt den `PostTodoItem` metoden med följande kod:  
+    3. <span data-ttu-id="5adb0-106">Ersätt den `PostTodoItem` metoden med följande kod:</span><span class="sxs-lookup"><span data-stu-id="5adb0-106">Replace the `PostTodoItem` method with the following code:</span></span>  
 
             public async Task<IHttpActionResult> PostTodoItem(TodoItem item)
             {
@@ -47,12 +47,12 @@
                 return CreatedAtRoute("Tables", new { id = current.Id }, current);
             }
 
-    4. Publicera om serverprojektet.
+    4. <span data-ttu-id="5adb0-107">Publicera om serverprojektet.</span><span class="sxs-lookup"><span data-stu-id="5adb0-107">Republish the server project.</span></span>
 
-* **Node.js-serverdel** : 
+* <span data-ttu-id="5adb0-108">**Node.js-serverdel** :</span><span class="sxs-lookup"><span data-stu-id="5adb0-108">**Node.js backend** :</span></span> 
   
-  1. Om du inte redan gjort det, [hämta snabbstartsprojektet](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) eller annan användning av [online redigeraren i Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).    
-  2. Ersätt todoitem.js tabell skriptet med följande kod:
+  1. <span data-ttu-id="5adb0-109">Om du inte redan gjort det, [hämta snabbstartsprojektet](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) eller annan användning av [online redigeraren i Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).</span><span class="sxs-lookup"><span data-stu-id="5adb0-109">If you haven't already done so, [download the quickstart project](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#download-quickstart) or else use the [online editor in the Azure portal](../articles/app-service-mobile/app-service-mobile-node-backend-how-to-use-server-sdk.md#online-editor).</span></span>    
+  2. <span data-ttu-id="5adb0-110">Ersätt todoitem.js tabell skriptet med följande kod:</span><span class="sxs-lookup"><span data-stu-id="5adb0-110">Replace the todoitem.js table script with the following code:</span></span>
 
             var azureMobileApps = require('azure-mobile-apps'),
                 promises = require('azure-mobile-apps/src/utilities/promises'),
@@ -91,4 +91,4 @@
 
             module.exports = table;
 
-    2. Publicera om serverprojektet när du redigerar filen på den lokala datorn.
+    2. <span data-ttu-id="5adb0-111">Publicera om serverprojektet när du redigerar filen på den lokala datorn.</span><span class="sxs-lookup"><span data-stu-id="5adb0-111">When editing the file on your local computer, republish the server project.</span></span>

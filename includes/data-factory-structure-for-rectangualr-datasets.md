@@ -1,16 +1,16 @@
-## <a name="specifying-structure-definition-for-rectangular-datasets"></a>Ange struktur definition för rektangulär datauppsättningar
-Avsnittet strukturen i datauppsättningar JSON är en **valfria** avsnittet för rektangulär tabeller (med rader och kolumner) och innehåller en uppsättning kolumner för tabellen. Du använder avsnittet struktur för antingen tillhandahåller typinformation för typkonverteringar eller göra kolumnmappningarna. I följande avsnitt beskrivs de här funktionerna i detalj. 
+## <a name="specifying-structure-definition-for-rectangular-datasets"></a><span data-ttu-id="6bbaa-101">Ange struktur definition för rektangulär datauppsättningar</span><span class="sxs-lookup"><span data-stu-id="6bbaa-101">Specifying structure definition for rectangular datasets</span></span>
+<span data-ttu-id="6bbaa-102">Avsnittet strukturen i datauppsättningar JSON är en **valfria** avsnittet för rektangulär tabeller (med rader och kolumner) och innehåller en uppsättning kolumner för tabellen.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-102">The structure section in the datasets JSON is an **optional** section for rectangular tables (with rows & columns) and contains a collection of columns for the table.</span></span> <span data-ttu-id="6bbaa-103">Du använder avsnittet struktur för antingen tillhandahåller typinformation för typkonverteringar eller göra kolumnmappningarna.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-103">You will use the structure section for either providing type information for type conversions or doing column mappings.</span></span> <span data-ttu-id="6bbaa-104">I följande avsnitt beskrivs de här funktionerna i detalj.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-104">The following sections describe these features in detail.</span></span> 
 
-Varje kolumn innehåller följande egenskaper:
+<span data-ttu-id="6bbaa-105">Varje kolumn innehåller följande egenskaper:</span><span class="sxs-lookup"><span data-stu-id="6bbaa-105">Each column contains the following properties:</span></span>
 
-| Egenskap | Beskrivning | Krävs |
+| <span data-ttu-id="6bbaa-106">Egenskap</span><span class="sxs-lookup"><span data-stu-id="6bbaa-106">Property</span></span> | <span data-ttu-id="6bbaa-107">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="6bbaa-107">Description</span></span> | <span data-ttu-id="6bbaa-108">Krävs</span><span class="sxs-lookup"><span data-stu-id="6bbaa-108">Required</span></span> |
 | --- | --- | --- |
-| namn |Namnet på kolumnen. |Ja |
-| typ |Datatypen för kolumnen. Se typen konverteringar avsnittet nedan för mer information om när ska du ange typinformation |Nej |
-| Kultur |.NET baserat kulturen som ska användas när typ har angetts och är .NET typen Datetime eller Datetimeoffset. Standardvärdet är ”en-us”. |Nej |
-| Format |Formatsträng som ska användas när typ har angetts och är .NET typen Datetime eller Datetimeoffset. |Nej |
+| <span data-ttu-id="6bbaa-109">namn</span><span class="sxs-lookup"><span data-stu-id="6bbaa-109">name</span></span> |<span data-ttu-id="6bbaa-110">Namnet på kolumnen.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-110">Name of the column.</span></span> |<span data-ttu-id="6bbaa-111">Ja</span><span class="sxs-lookup"><span data-stu-id="6bbaa-111">Yes</span></span> |
+| <span data-ttu-id="6bbaa-112">typ</span><span class="sxs-lookup"><span data-stu-id="6bbaa-112">type</span></span> |<span data-ttu-id="6bbaa-113">Datatypen för kolumnen.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-113">Data type of the column.</span></span> <span data-ttu-id="6bbaa-114">Se typen konverteringar avsnittet nedan för mer information om när ska du ange typinformation</span><span class="sxs-lookup"><span data-stu-id="6bbaa-114">See type conversions section below for more details regarding when should you specify type information</span></span> |<span data-ttu-id="6bbaa-115">Nej</span><span class="sxs-lookup"><span data-stu-id="6bbaa-115">No</span></span> |
+| <span data-ttu-id="6bbaa-116">Kultur</span><span class="sxs-lookup"><span data-stu-id="6bbaa-116">culture</span></span> |<span data-ttu-id="6bbaa-117">.NET baserat kulturen som ska användas när typ har angetts och är .NET typen Datetime eller Datetimeoffset.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-117">.NET based culture to be used when type is specified and is .NET type Datetime or Datetimeoffset.</span></span> <span data-ttu-id="6bbaa-118">Standardvärdet är ”en-us”.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-118">Default is “en-us”.</span></span> |<span data-ttu-id="6bbaa-119">Nej</span><span class="sxs-lookup"><span data-stu-id="6bbaa-119">No</span></span> |
+| <span data-ttu-id="6bbaa-120">Format</span><span class="sxs-lookup"><span data-stu-id="6bbaa-120">format</span></span> |<span data-ttu-id="6bbaa-121">Formatsträng som ska användas när typ har angetts och är .NET typen Datetime eller Datetimeoffset.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-121">Format string to be used when type is specified and is .NET type Datetime or Datetimeoffset.</span></span> |<span data-ttu-id="6bbaa-122">Nej</span><span class="sxs-lookup"><span data-stu-id="6bbaa-122">No</span></span> |
 
-I följande exempel visas avsnittet struktur JSON för en tabell som har tre kolumner användar-ID, namn och lastlogindate.
+<span data-ttu-id="6bbaa-123">I följande exempel visas avsnittet struktur JSON för en tabell som har tre kolumner användar-ID, namn och lastlogindate.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-123">The following sample shows the structure section JSON for a table that has three columns userid, name, and lastlogindate.</span></span>
 
 ```json
 "structure": 
@@ -21,31 +21,31 @@ I följande exempel visas avsnittet struktur JSON för en tabell som har tre kol
 ],
 ```
 
-Använd följande riktlinjer för när du ska inkludera ”struktur” information och vad som ska ingå i den **struktur** avsnitt.
+<span data-ttu-id="6bbaa-124">Använd följande riktlinjer för när du ska inkludera ”struktur” information och vad som ska ingå i den **struktur** avsnitt.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-124">Please use the following guidelines for when to include “structure” information and what to include in the **structure** section.</span></span>
 
-* **För strukturerade datakällor** att lagra data schema och ange information tillsammans med själva (källor som Azure tabell för SQL Server, Oracle, etc.), bör du ange avsnittet ”struktur” om du vill att informationen göra kolumnmappningen för specifika källa kolumner till specifika kolumner i mottagare och deras namn är inte samma (Mer information finns i kolumnen mappning nedan). 
+* <span data-ttu-id="6bbaa-125">**För strukturerade datakällor** att lagra data schema och ange information tillsammans med själva (källor som Azure tabell för SQL Server, Oracle, etc.), bör du ange avsnittet ”struktur” om du vill att informationen göra kolumnmappningen för specifika källa kolumner till specifika kolumner i mottagare och deras namn är inte samma (Mer information finns i kolumnen mappning nedan).</span><span class="sxs-lookup"><span data-stu-id="6bbaa-125">**For structured data sources** that store data schema and type information along with the data itself (sources like SQL Server, Oracle, Azure table etc.), you should specify the “structure” section only if you want do column mapping of specific source columns to specific columns in sink and their names are not the same (see details in column mapping section below).</span></span> 
   
-    Som nämnts ovan är är typinformationen valfri i avsnittet ”struktur”. För strukturerade källor typinformation finns redan som en del av definitionen för datamängden i datalagret, så du bör inte inkludera typinformation när du inkluderar avsnittet ”struktur”.
-* **För schemat för skrivskyddade datakällor (specifikt Azure blob)** kan du lagra data utan att spara schemat eller typ information med data. Du bör ta ”struktur” för dessa typer av datakällor i följande fall 2:
-  * Du vill göra kolumnmappningen.
-  * När dataset är en datakälla i en Kopieringsaktivitet kan du kan ange av typinformation i ”struktur” och data factory använder den här typinformation för konvertering till inbyggda typer för sink. Se [flytta data till och från Azure Blob](../articles/data-factory/data-factory-azure-blob-connector.md) artikel för mer information.
+    <span data-ttu-id="6bbaa-126">Som nämnts ovan är är typinformationen valfri i avsnittet ”struktur”.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-126">As mentioned above, the type information is optional in “structure” section.</span></span> <span data-ttu-id="6bbaa-127">För strukturerade källor typinformation finns redan som en del av definitionen för datamängden i datalagret, så du bör inte inkludera typinformation när du inkluderar avsnittet ”struktur”.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-127">For structured sources, type information is already available as part of dataset definition in the data store, so you should not include type information when you do include the “structure” section.</span></span>
+* <span data-ttu-id="6bbaa-128">**För schemat för skrivskyddade datakällor (specifikt Azure blob)** kan du lagra data utan att spara schemat eller typ information med data.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-128">**For schema on read data sources (specifically Azure blob)**  you can choose to store data without storing any schema or type information with the data.</span></span> <span data-ttu-id="6bbaa-129">Du bör ta ”struktur” för dessa typer av datakällor i följande fall 2:</span><span class="sxs-lookup"><span data-stu-id="6bbaa-129">For these types of data sources you should include “structure” in the following 2 cases:</span></span>
+  * <span data-ttu-id="6bbaa-130">Du vill göra kolumnmappningen.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-130">You want to do column mapping.</span></span>
+  * <span data-ttu-id="6bbaa-131">När dataset är en datakälla i en Kopieringsaktivitet kan du kan ange av typinformation i ”struktur” och data factory använder den här typinformation för konvertering till inbyggda typer för sink.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-131">When the dataset is a source in a Copy activity, you can provide type information in “structure” and data factory will use this type information for conversion to native types for the sink.</span></span> <span data-ttu-id="6bbaa-132">Se [flytta data till och från Azure Blob](../articles/data-factory/data-factory-azure-blob-connector.md) artikel för mer information.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-132">See [Move data to and from Azure Blob](../articles/data-factory/data-factory-azure-blob-connector.md) article for more information.</span></span>
 
-### <a name="supported-net-based-types"></a>Stöd för. NET-baserade typer
-Data factory stöder följande CLS kompatibla .NET baserat typen värden för att ange information i ”struktur” för schemat för skrivskyddade datakällor som Azure blob.
+### <a name="supported-net-based-types"></a><span data-ttu-id="6bbaa-133">Stöd för. NET-baserade typer</span><span class="sxs-lookup"><span data-stu-id="6bbaa-133">Supported .NET-based types</span></span>
+<span data-ttu-id="6bbaa-134">Data factory stöder följande CLS kompatibla .NET baserat typen värden för att ange information i ”struktur” för schemat för skrivskyddade datakällor som Azure blob.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-134">Data factory supports the following CLS compliant .NET based type values for providing type information in “structure” for schema on read data sources like Azure blob.</span></span>
 
-* Int16
-* Int32 
-* Int64
-* Enskild
-* dubbla
-* Decimal
-* byte]
-* bool
-* Sträng 
-* GUID
-* Datum och tid
-* DateTimeOffset
-* TimeSpan 
+* <span data-ttu-id="6bbaa-135">Int16</span><span class="sxs-lookup"><span data-stu-id="6bbaa-135">Int16</span></span>
+* <span data-ttu-id="6bbaa-136">Int32</span><span class="sxs-lookup"><span data-stu-id="6bbaa-136">Int32</span></span> 
+* <span data-ttu-id="6bbaa-137">Int64</span><span class="sxs-lookup"><span data-stu-id="6bbaa-137">Int64</span></span>
+* <span data-ttu-id="6bbaa-138">Enskild</span><span class="sxs-lookup"><span data-stu-id="6bbaa-138">Single</span></span>
+* <span data-ttu-id="6bbaa-139">dubbla</span><span class="sxs-lookup"><span data-stu-id="6bbaa-139">Double</span></span>
+* <span data-ttu-id="6bbaa-140">Decimal</span><span class="sxs-lookup"><span data-stu-id="6bbaa-140">Decimal</span></span>
+* <span data-ttu-id="6bbaa-141">byte]</span><span class="sxs-lookup"><span data-stu-id="6bbaa-141">Byte[]</span></span>
+* <span data-ttu-id="6bbaa-142">bool</span><span class="sxs-lookup"><span data-stu-id="6bbaa-142">Bool</span></span>
+* <span data-ttu-id="6bbaa-143">Sträng</span><span class="sxs-lookup"><span data-stu-id="6bbaa-143">String</span></span> 
+* <span data-ttu-id="6bbaa-144">GUID</span><span class="sxs-lookup"><span data-stu-id="6bbaa-144">Guid</span></span>
+* <span data-ttu-id="6bbaa-145">Datum och tid</span><span class="sxs-lookup"><span data-stu-id="6bbaa-145">Datetime</span></span>
+* <span data-ttu-id="6bbaa-146">DateTimeOffset</span><span class="sxs-lookup"><span data-stu-id="6bbaa-146">Datetimeoffset</span></span>
+* <span data-ttu-id="6bbaa-147">TimeSpan</span><span class="sxs-lookup"><span data-stu-id="6bbaa-147">Timespan</span></span> 
 
-Du kan också ange ”kultur” & ”format” sträng för att underlätta tolkning av din egen Datetime-sträng för Datetime & Datetimeoffset. Se exemplet för typkonvertering nedan.
+<span data-ttu-id="6bbaa-148">Du kan också ange ”kultur” & ”format” sträng för att underlätta tolkning av din egen Datetime-sträng för Datetime & Datetimeoffset.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-148">For Datetime & Datetimeoffset you can also optionally specify “culture” & “format” string to facilitate parsing of your custom Datetime string.</span></span> <span data-ttu-id="6bbaa-149">Se exemplet för typkonvertering nedan.</span><span class="sxs-lookup"><span data-stu-id="6bbaa-149">See sample for type conversion below.</span></span>
 

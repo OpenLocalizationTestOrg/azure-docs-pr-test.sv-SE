@@ -1,16 +1,16 @@
-### <a name="prerequisites"></a>Krav
-* En [Facebook](https://www.facebook.com/) konto 
+### <a name="prerequisites"></a><span data-ttu-id="3bcba-101">Krav</span><span class="sxs-lookup"><span data-stu-id="3bcba-101">Prerequisites</span></span>
+* <span data-ttu-id="3bcba-102">En [Facebook](https://www.facebook.com/) konto</span><span class="sxs-lookup"><span data-stu-id="3bcba-102">A [Facebook](https://www.facebook.com/) account</span></span> 
 
-Innan du kan använda ditt Facebook-konto i en logikapp, måste du godkänna logik för att ansluta till Facebook-konto. Lyckligtvis kan du göra detta direkt i din logikapp på Azure Portal. 
+<span data-ttu-id="3bcba-103">Innan du kan använda ditt Facebook-konto i en logikapp, måste du godkänna logik för att ansluta till Facebook-konto.</span><span class="sxs-lookup"><span data-stu-id="3bcba-103">Before you can use your Facebook account in a Logic app, you must authorize the Logic app to connect to your Facebook account.</span></span> <span data-ttu-id="3bcba-104">Lyckligtvis kan du göra detta direkt i din logikapp på Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="3bcba-104">Fortunately, you can do this easily from within your Logic app on the Azure Portal.</span></span> 
 
-Här följer stegen för att verifiera din logikapp för att ansluta till Facebook-konto:
+<span data-ttu-id="3bcba-105">Här följer stegen för att verifiera din logikapp för att ansluta till Facebook-konto:</span><span class="sxs-lookup"><span data-stu-id="3bcba-105">Here are the steps to authorize your Logic app to connect to your Facebook account:</span></span>
 
-1. Om du vill skapa en anslutning till Facebook, i logik app designer **visa Microsoft hanterade API: er** i nedrullningsbara listan anger *Facebook* i sökrutan. Välj utlösaren eller åtgärd du vill använda:  
-   ![Facebook steg 1](./media/connectors-create-api-facebook/facebook-1.png)
-2. Om du inte har skapat alla anslutningar till Facebook innan du kan hämta uppmanas du att ange autentiseringsuppgifter för Facebook. Dessa autentiseringsuppgifter används för att auktorisera din logikapp för att ansluta till och komma åt data i dina Facebook-konto:  
+1. <span data-ttu-id="3bcba-106">Om du vill skapa en anslutning till Facebook, i logik app designer **visa Microsoft hanterade API: er** i nedrullningsbara listan anger *Facebook* i sökrutan.</span><span class="sxs-lookup"><span data-stu-id="3bcba-106">To create a connection to Facebook, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Facebook* in the search box.</span></span> <span data-ttu-id="3bcba-107">Välj utlösaren eller åtgärd du vill använda:</span><span class="sxs-lookup"><span data-stu-id="3bcba-107">Select the trigger or action you'll like to use:</span></span>  
+   <span data-ttu-id="3bcba-108">![Facebook steg 1](./media/connectors-create-api-facebook/facebook-1.png)</span><span class="sxs-lookup"><span data-stu-id="3bcba-108">![facebook step 1](./media/connectors-create-api-facebook/facebook-1.png)</span></span>
+2. <span data-ttu-id="3bcba-109">Om du inte har skapat alla anslutningar till Facebook innan du kan hämta uppmanas du att ange autentiseringsuppgifter för Facebook.</span><span class="sxs-lookup"><span data-stu-id="3bcba-109">If you haven't created any connections to Facebook before, you'll get prompted to provide your Facebook credentials.</span></span> <span data-ttu-id="3bcba-110">Dessa autentiseringsuppgifter används för att auktorisera din logikapp för att ansluta till och komma åt data i dina Facebook-konto:</span><span class="sxs-lookup"><span data-stu-id="3bcba-110">These credentials will be used to authorize your Logic app to connect to, and access your Facebook account's data:</span></span>  
    ![Facebook steg 2](./media/connectors-create-api-facebook/facebook-2.png)
-3. Ange ditt Facebook-användarnamn och lösenord för att auktorisera logikappen:  
+3. <span data-ttu-id="3bcba-112">Ange ditt Facebook-användarnamn och lösenord för att auktorisera logikappen:</span><span class="sxs-lookup"><span data-stu-id="3bcba-112">Provide your Facebook user name and password to authorize your Logic app:</span></span>  
    ![Facebook steg 3](./media/connectors-create-api-facebook/facebook-3.png)   
-4. Observera att anslutningen har skapats och du kan nu välja att fortsätta med andra steg i din logikapp:  
+4. <span data-ttu-id="3bcba-114">Observera att anslutningen har skapats och du kan nu välja att fortsätta med andra steg i din logikapp:</span><span class="sxs-lookup"><span data-stu-id="3bcba-114">Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:</span></span>  
    ![Facebook steg 4](./media/connectors-create-api-facebook/facebook-4.png)   
 

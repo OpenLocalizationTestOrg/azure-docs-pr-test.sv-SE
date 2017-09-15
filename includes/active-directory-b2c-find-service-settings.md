@@ -2,6 +2,6 @@
 
 [!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
 
-Om Azure AD B2C inte står med i tjänstlistan expanderar du **Fler tjänster** under navigeringsfältet längst ned till vänster i portalen. Sök efter **Azure AD B2C** och välj **Azure AD B2C** i resultatlistan. Du kan också markera stjärnsymbolen och lägga till Azure AD B2C som favorittjänst i listan.
+<span data-ttu-id="4d171-101">Om Azure AD B2C inte står med i tjänstlistan expanderar du **Fler tjänster** under navigeringsfältet längst ned till vänster i portalen.</span><span class="sxs-lookup"><span data-stu-id="4d171-101">If Azure AD B2C isn't in the services list, expand **More services** below the navigation bar in the bottom-left side of the portal.</span></span> <span data-ttu-id="4d171-102">Sök efter **Azure AD B2C** och välj **Azure AD B2C** i resultatlistan.</span><span class="sxs-lookup"><span data-stu-id="4d171-102">Search for **Azure AD B2C** and select **Azure AD B2C** in the result list.</span></span> <span data-ttu-id="4d171-103">Du kan också markera stjärnsymbolen och lägga till Azure AD B2C som favorittjänst i listan.</span><span class="sxs-lookup"><span data-stu-id="4d171-103">You can also select the star icon to add Azure AD B2C it your favorite services list.</span></span>
 
 ![Söka efter Azure AD B2C-tjänsten](media/active-directory-b2c-find-service-settings/navigate-to-azure-ad-b2c.png)

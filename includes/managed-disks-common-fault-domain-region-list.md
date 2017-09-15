@@ -1,34 +1,34 @@
-### <a name="number-of-fault-domains-per-region"></a>Antalet feldomäner per region
+### <a name="number-of-fault-domains-per-region"></a><span data-ttu-id="f07b8-101">Antalet feldomäner per region</span><span class="sxs-lookup"><span data-stu-id="f07b8-101">Number of Fault Domains per region</span></span>
 
-| Region              | Max antal feldomäner  |
+| <span data-ttu-id="f07b8-102">Region</span><span class="sxs-lookup"><span data-stu-id="f07b8-102">Region</span></span>              | <span data-ttu-id="f07b8-103">Max antal feldomäner</span><span class="sxs-lookup"><span data-stu-id="f07b8-103">Max # of Fault Domains</span></span>  |
 |---------------------|-------------------------|
-| Östra USA             | 3                       |
-| Östra USA 2           | 3                       |
-| Västra USA             | 3                       |
-| Västra USA 2           | 2                       |
-| Centrala USA          | 3                       |
-| Norra centrala USA    | 3                       |
-| Södra centrala USA    | 3                       |
-| Västra centrala USA     | 2                       |
-| Centrala Kanada      | 2                       |
-| Östra Kanada         | 2                       |
+| <span data-ttu-id="f07b8-104">Östra USA</span><span class="sxs-lookup"><span data-stu-id="f07b8-104">East US</span></span>             | <span data-ttu-id="f07b8-105">3</span><span class="sxs-lookup"><span data-stu-id="f07b8-105">3</span></span>                       |
+| <span data-ttu-id="f07b8-106">Östra USA 2</span><span class="sxs-lookup"><span data-stu-id="f07b8-106">East US 2</span></span>           | <span data-ttu-id="f07b8-107">3</span><span class="sxs-lookup"><span data-stu-id="f07b8-107">3</span></span>                       |
+| <span data-ttu-id="f07b8-108">Västra USA</span><span class="sxs-lookup"><span data-stu-id="f07b8-108">West US</span></span>             | <span data-ttu-id="f07b8-109">3</span><span class="sxs-lookup"><span data-stu-id="f07b8-109">3</span></span>                       |
+| <span data-ttu-id="f07b8-110">Västra USA 2</span><span class="sxs-lookup"><span data-stu-id="f07b8-110">West US 2</span></span>           | <span data-ttu-id="f07b8-111">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-111">2</span></span>                       |
+| <span data-ttu-id="f07b8-112">Centrala USA</span><span class="sxs-lookup"><span data-stu-id="f07b8-112">Central US</span></span>          | <span data-ttu-id="f07b8-113">3</span><span class="sxs-lookup"><span data-stu-id="f07b8-113">3</span></span>                       |
+| <span data-ttu-id="f07b8-114">Norra centrala USA</span><span class="sxs-lookup"><span data-stu-id="f07b8-114">North Central US</span></span>    | <span data-ttu-id="f07b8-115">3</span><span class="sxs-lookup"><span data-stu-id="f07b8-115">3</span></span>                       |
+| <span data-ttu-id="f07b8-116">Södra centrala USA</span><span class="sxs-lookup"><span data-stu-id="f07b8-116">South Central US</span></span>    | <span data-ttu-id="f07b8-117">3</span><span class="sxs-lookup"><span data-stu-id="f07b8-117">3</span></span>                       |
+| <span data-ttu-id="f07b8-118">Västra centrala USA</span><span class="sxs-lookup"><span data-stu-id="f07b8-118">West Central US</span></span>     | <span data-ttu-id="f07b8-119">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-119">2</span></span>                       |
+| <span data-ttu-id="f07b8-120">Centrala Kanada</span><span class="sxs-lookup"><span data-stu-id="f07b8-120">Canada Central</span></span>      | <span data-ttu-id="f07b8-121">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-121">2</span></span>                       |
+| <span data-ttu-id="f07b8-122">Östra Kanada</span><span class="sxs-lookup"><span data-stu-id="f07b8-122">Canada East</span></span>         | <span data-ttu-id="f07b8-123">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-123">2</span></span>                       |
 |                     |                         |
-| Norra Europa        | 3                       |
-| Västra Europa         | 3                       |
-| Storbritannien, södra            | 2                       |
-| Storbritannien, västra             | 2                       |
+| <span data-ttu-id="f07b8-124">Norra Europa</span><span class="sxs-lookup"><span data-stu-id="f07b8-124">North Europe</span></span>        | <span data-ttu-id="f07b8-125">3</span><span class="sxs-lookup"><span data-stu-id="f07b8-125">3</span></span>                       |
+| <span data-ttu-id="f07b8-126">Västra Europa</span><span class="sxs-lookup"><span data-stu-id="f07b8-126">West Europe</span></span>         | <span data-ttu-id="f07b8-127">3</span><span class="sxs-lookup"><span data-stu-id="f07b8-127">3</span></span>                       |
+| <span data-ttu-id="f07b8-128">Storbritannien, södra</span><span class="sxs-lookup"><span data-stu-id="f07b8-128">UK South</span></span>            | <span data-ttu-id="f07b8-129">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-129">2</span></span>                       |
+| <span data-ttu-id="f07b8-130">Storbritannien, västra</span><span class="sxs-lookup"><span data-stu-id="f07b8-130">UK West</span></span>             | <span data-ttu-id="f07b8-131">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-131">2</span></span>                       |
 |                     |                         |
-| Östasien           | 2                       |
-| Sydostasien     | 2                       |
-| Östra Japan          | 2                       |
-| Västra Japan          | 2                       |
-| Södra Indien         | 2                       |
-| Indien, centrala       | 2                       |
-| Indien, västra          | 2                       |
-| Centrala Korea       | 2                       |
-| Sydkorea         | 2                       |
+| <span data-ttu-id="f07b8-132">Östasien</span><span class="sxs-lookup"><span data-stu-id="f07b8-132">East Asia</span></span>           | <span data-ttu-id="f07b8-133">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-133">2</span></span>                       |
+| <span data-ttu-id="f07b8-134">Sydostasien</span><span class="sxs-lookup"><span data-stu-id="f07b8-134">South East Asia</span></span>     | <span data-ttu-id="f07b8-135">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-135">2</span></span>                       |
+| <span data-ttu-id="f07b8-136">Östra Japan</span><span class="sxs-lookup"><span data-stu-id="f07b8-136">Japan East</span></span>          | <span data-ttu-id="f07b8-137">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-137">2</span></span>                       |
+| <span data-ttu-id="f07b8-138">Västra Japan</span><span class="sxs-lookup"><span data-stu-id="f07b8-138">Japan West</span></span>          | <span data-ttu-id="f07b8-139">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-139">2</span></span>                       |
+| <span data-ttu-id="f07b8-140">Södra Indien</span><span class="sxs-lookup"><span data-stu-id="f07b8-140">South India</span></span>         | <span data-ttu-id="f07b8-141">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-141">2</span></span>                       |
+| <span data-ttu-id="f07b8-142">Indien, centrala</span><span class="sxs-lookup"><span data-stu-id="f07b8-142">Central India</span></span>       | <span data-ttu-id="f07b8-143">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-143">2</span></span>                       |
+| <span data-ttu-id="f07b8-144">Indien, västra</span><span class="sxs-lookup"><span data-stu-id="f07b8-144">West India</span></span>          | <span data-ttu-id="f07b8-145">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-145">2</span></span>                       |
+| <span data-ttu-id="f07b8-146">Centrala Korea</span><span class="sxs-lookup"><span data-stu-id="f07b8-146">Korea Central</span></span>       | <span data-ttu-id="f07b8-147">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-147">2</span></span>                       |
+| <span data-ttu-id="f07b8-148">Sydkorea</span><span class="sxs-lookup"><span data-stu-id="f07b8-148">Korea South</span></span>         | <span data-ttu-id="f07b8-149">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-149">2</span></span>                       |
 |                     |                         |
-| Östra Australien      | 2                       |
-| Sydöstra Australien | 2                       |
+| <span data-ttu-id="f07b8-150">Östra Australien</span><span class="sxs-lookup"><span data-stu-id="f07b8-150">Australia East</span></span>      | <span data-ttu-id="f07b8-151">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-151">2</span></span>                       |
+| <span data-ttu-id="f07b8-152">Sydöstra Australien</span><span class="sxs-lookup"><span data-stu-id="f07b8-152">Australia Southeast</span></span> | <span data-ttu-id="f07b8-153">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-153">2</span></span>                       |
 |                     |                         |
-| Södra Brasilien        | 2                       |
+| <span data-ttu-id="f07b8-154">Södra Brasilien</span><span class="sxs-lookup"><span data-stu-id="f07b8-154">Brazil South</span></span>        | <span data-ttu-id="f07b8-155">2</span><span class="sxs-lookup"><span data-stu-id="f07b8-155">2</span></span>                       |

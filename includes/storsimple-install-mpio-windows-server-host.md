@@ -1,25 +1,25 @@
-#### <a name="to-install-mpio-on-the-host"></a>Installera MPIO på värden
-1. Öppna Serverhanteraren på Windows Server-värd. Serverhanteraren startar som standard när en medlem i gruppen Administratörer loggar in på en dator som kör Windows Server 2012 R2 eller Windows Server 2012. Om Serverhanteraren inte redan är öppen klickar du på **Start > Serverhanteraren**.
+#### <a name="to-install-mpio-on-the-host"></a><span data-ttu-id="c3b8f-101">Installera MPIO på värden</span><span class="sxs-lookup"><span data-stu-id="c3b8f-101">To install MPIO on the host</span></span>
+1. <span data-ttu-id="c3b8f-102">Öppna Serverhanteraren på Windows Server-värd.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-102">Open Server Manager on your Windows Server host.</span></span> <span data-ttu-id="c3b8f-103">Serverhanteraren startar som standard när en medlem i gruppen Administratörer loggar in på en dator som kör Windows Server 2012 R2 eller Windows Server 2012.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-103">By default, Server Manager starts when a member of the Administrators group logs on to a computer that is running Windows Server 2012 R2 or Windows Server 2012.</span></span> <span data-ttu-id="c3b8f-104">Om Serverhanteraren inte redan är öppen klickar du på **Start > Serverhanteraren**.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-104">If the Server Manager is not already open, click **Start > Server Manager**.</span></span>
    
     ![Serverhanteraren](./media/storsimple-install-mpio-windows-server/IC740997.png)
-2. Klicka på **Serverhanteraren > instrumentpanelen > Lägg till roller och funktioner**. Detta startar den **Lägg till roller och funktioner** guiden.
+2. <span data-ttu-id="c3b8f-106">Klicka på **Serverhanteraren > instrumentpanelen > Lägg till roller och funktioner**.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-106">Click **Server Manager > Dashboard > Add roles and features**.</span></span> <span data-ttu-id="c3b8f-107">Detta startar den **Lägg till roller och funktioner** guiden.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-107">This starts the **Add Roles and Features** wizard.</span></span>
    
     ![Guiden Lägg till roller och funktioner 1](./media/storsimple-install-mpio-windows-server/IC740998.png)
-3. I den **Lägg till roller och funktioner** guiden gör du följande:
+3. <span data-ttu-id="c3b8f-109">I den **Lägg till roller och funktioner** guiden gör du följande:</span><span class="sxs-lookup"><span data-stu-id="c3b8f-109">In the **Add Roles and Features** wizard, do the following:</span></span>
    
-   * På den **innan du börjar** klickar du på **nästa**.
-   * På den **Välj installationstyp** godkänner du standardinställningen **rollbaserad eller funktionsbaserad** installation. Klicka på **Nästa**.
+   * <span data-ttu-id="c3b8f-110">På den **innan du börjar** klickar du på **nästa**.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-110">On the **Before you begin** page, click **Next**.</span></span>
+   * <span data-ttu-id="c3b8f-111">På den **Välj installationstyp** godkänner du standardinställningen **rollbaserad eller funktionsbaserad** installation.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-111">On the **Select installation type** page, accept the default setting of **Role-based or feature-based** installation.</span></span> <span data-ttu-id="c3b8f-112">Klicka på **Nästa**.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-112">Click **Next**.</span></span>
      
        ![Guiden Lägg till roller och funktioner 2](./media/storsimple-install-mpio-windows-server/IC740999.png)
-   * På den **väljer målservern** väljer **Välj en server från serverpoolen**. Värdservern bör identifieras automatiskt. Klicka på **Nästa**.
-   * På den **Välj serverroller** klickar du på **nästa**.
-   * På den **Välj funktioner** väljer **Multipath i/o**, och klicka på **nästa**.
+   * <span data-ttu-id="c3b8f-114">På den **väljer målservern** väljer **Välj en server från serverpoolen**.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-114">On the **Select destination server** page, choose **Select a server from the server pool**.</span></span> <span data-ttu-id="c3b8f-115">Värdservern bör identifieras automatiskt.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-115">Your host server should be discovered automatically.</span></span> <span data-ttu-id="c3b8f-116">Klicka på **Nästa**.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-116">Click **Next**.</span></span>
+   * <span data-ttu-id="c3b8f-117">På den **Välj serverroller** klickar du på **nästa**.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-117">On the **Select server roles** page, click **Next**.</span></span>
+   * <span data-ttu-id="c3b8f-118">På den **Välj funktioner** väljer **Multipath i/o**, och klicka på **nästa**.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-118">On the **Select features** page, select **Multipath I/O**, and click **Next**.</span></span>
      
        ![Guiden Lägg till roller och funktioner 5](./media/storsimple-install-mpio-windows-server/IC741000.png)
-   * På den **Bekräfta installationsinställningarna** bekräftar valet och välj sedan **starta om målservern automatiskt om det behövs**, enligt nedan. Klicka på **Installera**.
+   * <span data-ttu-id="c3b8f-120">På den **Bekräfta installationsinställningarna** bekräftar valet och välj sedan **starta om målservern automatiskt om det behövs**, enligt nedan.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-120">On the **Confirm installation selections** page, confirm the selection and then select **Restart the destination server automatically if required**, as shown below.</span></span> <span data-ttu-id="c3b8f-121">Klicka på **Installera**.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-121">Click **Install**.</span></span>
      
        ![Guiden Lägg till roller och funktioner 8](./media/storsimple-install-mpio-windows-server/IC741001.png)
-   * Du meddelas när installationen är klar. Stäng guiden genom att klicka på **Stäng**.
+   * <span data-ttu-id="c3b8f-123">Du meddelas när installationen är klar.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-123">You will be notified when the installation is complete.</span></span> <span data-ttu-id="c3b8f-124">Stäng guiden genom att klicka på **Stäng**.</span><span class="sxs-lookup"><span data-stu-id="c3b8f-124">Click **Close** to close the wizard.</span></span>
      
        ![Guiden Lägg till roller och funktioner 9](./media/storsimple-install-mpio-windows-server/IC741002.png)
 

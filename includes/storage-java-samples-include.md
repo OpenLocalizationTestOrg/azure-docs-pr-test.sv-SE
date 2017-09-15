@@ -1,10 +1,10 @@
-## <a name="java-sample-code-repositories"></a>Java-exempel kod databaser
+## <a name="java-sample-code-repositories"></a><span data-ttu-id="4acb5-101">Java-exempel kod databaser</span><span class="sxs-lookup"><span data-stu-id="4acb5-101">Java sample code repositories</span></span>
 
-Här är en lista över alla våra exempel databaser för klientbiblioteket för Azure Storage Java.
+<span data-ttu-id="4acb5-102">Här är en lista över alla våra exempel databaser för klientbiblioteket för Azure Storage Java.</span><span class="sxs-lookup"><span data-stu-id="4acb5-102">Here is a list of all our sample repositories for the Azure Storage Java client library.</span></span>
 
-* [Komma igång med Storage - hantera Storage-konto i Java](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
-* [Komma igång med Azure Blob-tjänsten i Java](https://azure.microsoft.com/resources/samples/storage-blob-java-getting-started/)
-* [Komma igång med Azure File Service i Java](https://azure.microsoft.com/resources/samples/storage-file-java-getting-started/)
-* [Komma igång med Azure-kötjänsten i Java](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
-* [Komma igång med Azure-tabellen Service i Java](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
-* [Lagring Java klienten biblioteket prover](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage)
+* [<span data-ttu-id="4acb5-103">Komma igång med Storage - hantera Storage-konto i Java</span><span class="sxs-lookup"><span data-stu-id="4acb5-103">Getting Started with Storage - Manage Storage Account in Java</span></span>](https://azure.microsoft.com/resources/samples/storage-java-manage-storage-accounts/)
+* [<span data-ttu-id="4acb5-104">Komma igång med Azure Blob-tjänsten i Java</span><span class="sxs-lookup"><span data-stu-id="4acb5-104">Getting Started with Azure Blob Service in Java</span></span>](https://azure.microsoft.com/resources/samples/storage-blob-java-getting-started/)
+* [<span data-ttu-id="4acb5-105">Komma igång med Azure File Service i Java</span><span class="sxs-lookup"><span data-stu-id="4acb5-105">Getting Started with Azure File Service in Java</span></span>](https://azure.microsoft.com/resources/samples/storage-file-java-getting-started/)
+* [<span data-ttu-id="4acb5-106">Komma igång med Azure-kötjänsten i Java</span><span class="sxs-lookup"><span data-stu-id="4acb5-106">Getting Started with Azure Queue Service in Java</span></span>](https://azure.microsoft.com/resources/samples/storage-queue-java-getting-started/)
+* [<span data-ttu-id="4acb5-107">Komma igång med Azure-tabellen Service i Java</span><span class="sxs-lookup"><span data-stu-id="4acb5-107">Getting Started with Azure Table Service in Java</span></span>](https://azure.microsoft.com/resources/samples/storage-table-java-getting-started/)
+* [<span data-ttu-id="4acb5-108">Lagring Java klienten biblioteket prover</span><span class="sxs-lookup"><span data-stu-id="4acb5-108">Storage Java Client Library Samples</span></span>](https://github.com/Azure/azure-storage-java/tree/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage)

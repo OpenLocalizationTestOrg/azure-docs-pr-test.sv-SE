@@ -1,12 +1,12 @@
-1. Välj **+ nytt steg** att lägga till åtgärden.  
-2. Välj den **lägga till en åtgärd** länk. Den här öppnas sökrutan där du kan söka efter något du vill göra. I det här exemplet är SharePoint åtgärder av intresse.    
-   ![SFTP villkoret bild 1](./media/connectors-create-api-sftp/condition-1.png)    
-3. Välj **väljer ett värde** till vänster. 
-   ![Bild 2 till SFTP villkor](./media/connectors-create-api-sftp/condition-2.png)    
-4. Välj **filen innehåll** att indikera att du vill utvärdera filinnehållet i villkoret.      
-   ![Bild 3 till SFTP villkor](./media/connectors-create-api-sftp/condition-3.png)   
-5. Välj *innehåller* från listan över operatörer.       
-   ![Bild 4 till SFTP villkor](./media/connectors-create-api-sftp/condition-4.png)   
-6. Välj **väljer ett värde** till höger och ange *ExtractMeFirst*. I det här exemplet är ExtractMeFirst ett värde som förväntas finnas i en fil av personer som har åtkomst till mappen SFTP för att ange att den är en fil som ska extraheras.  
-   ![Bild 5 till SFTP villkor](./media/connectors-create-api-sftp/condition-5.png)   
+1. <span data-ttu-id="f510e-101">Välj **+ nytt steg** att lägga till åtgärden.</span><span class="sxs-lookup"><span data-stu-id="f510e-101">Select **+ New step** to add the action.</span></span>  
+2. <span data-ttu-id="f510e-102">Välj den **lägga till en åtgärd** länk.</span><span class="sxs-lookup"><span data-stu-id="f510e-102">Select the **Add an action** link.</span></span> <span data-ttu-id="f510e-103">Den här öppnas sökrutan där du kan söka efter något du vill göra.</span><span class="sxs-lookup"><span data-stu-id="f510e-103">This opens the search box where you can search for any action you would like to take.</span></span> <span data-ttu-id="f510e-104">I det här exemplet är SharePoint åtgärder av intresse.</span><span class="sxs-lookup"><span data-stu-id="f510e-104">For this example, SharePoint actions are of interest.</span></span>    
+   <span data-ttu-id="f510e-105">![SFTP villkoret bild 1](./media/connectors-create-api-sftp/condition-1.png)</span><span class="sxs-lookup"><span data-stu-id="f510e-105">![SFTP condition image 1](./media/connectors-create-api-sftp/condition-1.png)</span></span>    
+3. <span data-ttu-id="f510e-106">Välj **väljer ett värde** till vänster.</span><span class="sxs-lookup"><span data-stu-id="f510e-106">Select **Choose a value** on the left.</span></span> 
+   <span data-ttu-id="f510e-107">![Bild 2 till SFTP villkor](./media/connectors-create-api-sftp/condition-2.png)</span><span class="sxs-lookup"><span data-stu-id="f510e-107">![SFTP condition image 2](./media/connectors-create-api-sftp/condition-2.png)</span></span>    
+4. <span data-ttu-id="f510e-108">Välj **filen innehåll** att indikera att du vill utvärdera filinnehållet i villkoret.</span><span class="sxs-lookup"><span data-stu-id="f510e-108">Select **File content** to indicate that you want to evaluate the file contents in the condition.</span></span>      
+   <span data-ttu-id="f510e-109">![Bild 3 till SFTP villkor](./media/connectors-create-api-sftp/condition-3.png)</span><span class="sxs-lookup"><span data-stu-id="f510e-109">![SFTP condition image 3](./media/connectors-create-api-sftp/condition-3.png)</span></span>   
+5. <span data-ttu-id="f510e-110">Välj *innehåller* från listan över operatörer.</span><span class="sxs-lookup"><span data-stu-id="f510e-110">Select *contains* from the list of operators.</span></span>       
+   <span data-ttu-id="f510e-111">![Bild 4 till SFTP villkor](./media/connectors-create-api-sftp/condition-4.png)</span><span class="sxs-lookup"><span data-stu-id="f510e-111">![SFTP condition image 4](./media/connectors-create-api-sftp/condition-4.png)</span></span>   
+6. <span data-ttu-id="f510e-112">Välj **väljer ett värde** till höger och ange *ExtractMeFirst*.</span><span class="sxs-lookup"><span data-stu-id="f510e-112">Select **Choose a value** on the right and enter *ExtractMeFirst*.</span></span> <span data-ttu-id="f510e-113">I det här exemplet är ExtractMeFirst ett värde som förväntas finnas i en fil av personer som har åtkomst till mappen SFTP för att ange att den är en fil som ska extraheras.</span><span class="sxs-lookup"><span data-stu-id="f510e-113">In this example, ExtractMeFirst is a value that is expected to be in a file by persons who have access to the SFTP folder to indicate that it is an archive file that should be extracted.</span></span>  
+   <span data-ttu-id="f510e-114">![Bild 5 till SFTP villkor](./media/connectors-create-api-sftp/condition-5.png)</span><span class="sxs-lookup"><span data-stu-id="f510e-114">![SFTP condition image 5](./media/connectors-create-api-sftp/condition-5.png)</span></span>   
 

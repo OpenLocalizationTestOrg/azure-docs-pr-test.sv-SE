@@ -1,12 +1,12 @@
-Följande begränsningar gäller för Azure Backup.
+<span data-ttu-id="db495-101">Följande begränsningar gäller för Azure Backup.</span><span class="sxs-lookup"><span data-stu-id="db495-101">The following limits apply to Azure Backup.</span></span>
 
-| Gränsen identifierare | Standardgräns |
+| <span data-ttu-id="db495-102">Gränsen identifierare</span><span class="sxs-lookup"><span data-stu-id="db495-102">Limit Identifier</span></span> | <span data-ttu-id="db495-103">Standardgräns</span><span class="sxs-lookup"><span data-stu-id="db495-103">Default Limit</span></span> |
 | --- | --- |
-| Många servrar/datorer som kan registreras mot varje valvet |50 för Windows Server/Client/SCDPM <br/> 200 för IaaS-VM |
-| Storleken på en datakälla för data som lagras i Azure valvet lagring |54400 GB max<sup>1</sup> |
-| Antal säkerhetskopieringsvalv som kan skapas i varje Azure-prenumeration |25 (säkerhetskopieringsvalv) <br/> 25 recovery Services-valvet per region |
-| Antal gånger som säkerhetskopiering kan schemaläggas per dag |3 per dag för Windows Server eller-klienten <br/> 2 per dag för SCDPM <br/> En gång om dagen för IaaS-VM |
-| Datadiskar som är anslutna till en virtuell Azure-dator för säkerhetskopiering |16 |
+| <span data-ttu-id="db495-104">Många servrar/datorer som kan registreras mot varje valvet</span><span class="sxs-lookup"><span data-stu-id="db495-104">Number of servers/machines that can be registered against each vault</span></span> |<span data-ttu-id="db495-105">50 för Windows Server/Client/SCDPM</span><span class="sxs-lookup"><span data-stu-id="db495-105">50 for Windows Server/Client/SCDPM</span></span> <br/> <span data-ttu-id="db495-106">200 för IaaS-VM</span><span class="sxs-lookup"><span data-stu-id="db495-106">200 for IaaS VMs</span></span> |
+| <span data-ttu-id="db495-107">Storleken på en datakälla för data som lagras i Azure valvet lagring</span><span class="sxs-lookup"><span data-stu-id="db495-107">Size of a data source for data stored in Azure vault storage</span></span> |<span data-ttu-id="db495-108">54400 GB max<sup>1</sup></span><span class="sxs-lookup"><span data-stu-id="db495-108">54400 GB max<sup>1</sup></span></span> |
+| <span data-ttu-id="db495-109">Antal säkerhetskopieringsvalv som kan skapas i varje Azure-prenumeration</span><span class="sxs-lookup"><span data-stu-id="db495-109">Number of backup vaults that can be created in each Azure subscription</span></span> |<span data-ttu-id="db495-110">25 (säkerhetskopieringsvalv)</span><span class="sxs-lookup"><span data-stu-id="db495-110">25(Backup vaults)</span></span> <br/> <span data-ttu-id="db495-111">25 recovery Services-valvet per region</span><span class="sxs-lookup"><span data-stu-id="db495-111">25 Recovery Services vault per region</span></span> |
+| <span data-ttu-id="db495-112">Antal gånger som säkerhetskopiering kan schemaläggas per dag</span><span class="sxs-lookup"><span data-stu-id="db495-112">Number of times backup can be scheduled per day</span></span> |<span data-ttu-id="db495-113">3 per dag för Windows Server eller-klienten</span><span class="sxs-lookup"><span data-stu-id="db495-113">3 per day for Windows Server/Client</span></span> <br/> <span data-ttu-id="db495-114">2 per dag för SCDPM</span><span class="sxs-lookup"><span data-stu-id="db495-114">2 per day for SCDPM</span></span> <br/> <span data-ttu-id="db495-115">En gång om dagen för IaaS-VM</span><span class="sxs-lookup"><span data-stu-id="db495-115">Once a day for IaaS VMs</span></span> |
+| <span data-ttu-id="db495-116">Datadiskar som är anslutna till en virtuell Azure-dator för säkerhetskopiering</span><span class="sxs-lookup"><span data-stu-id="db495-116">Data disks attached to an Azure virtual machine for backup</span></span> |<span data-ttu-id="db495-117">16</span><span class="sxs-lookup"><span data-stu-id="db495-117">16</span></span> |
 
-* <sup>1</sup>54400 GB gränsen gäller inte för IaaS VM-säkerhetskopiering.
+* <span data-ttu-id="db495-118"><sup>1</sup>54400 GB gränsen gäller inte för IaaS VM-säkerhetskopiering.</span><span class="sxs-lookup"><span data-stu-id="db495-118"><sup>1</sup>The 54400 GB limit does not apply to IaaS VM backup.</span></span>
 

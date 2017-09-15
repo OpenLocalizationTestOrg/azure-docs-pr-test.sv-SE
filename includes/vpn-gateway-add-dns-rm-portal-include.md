@@ -1,8 +1,8 @@
-1. På **Inställningar**-sidan för det virtuella nätverket, går du till **DNS-servrar** och klickar för att öppna **DNS-serverbladet**.
+1. <span data-ttu-id="a726d-101">På **Inställningar**-sidan för det virtuella nätverket, går du till **DNS-servrar** och klickar för att öppna **DNS-serverbladet**.</span><span class="sxs-lookup"><span data-stu-id="a726d-101">On the **Settings** page for your virtual network, navigate to **DNS Servers** and click to open the **DNS servers** blade.</span></span>
 
-    ![Lägg till DNS-server](./media/vpn-gateway-add-dns-rm-portal/add_dns_server.png "Lägg till DNS-Server")
+    <span data-ttu-id="a726d-102">![Lägg till DNS-server](./media/vpn-gateway-add-dns-rm-portal/add_dns_server.png "Lägg till DNS-Server")</span><span class="sxs-lookup"><span data-stu-id="a726d-102">![Add DNS server](./media/vpn-gateway-add-dns-rm-portal/add_dns_server.png "Add DNS Server")</span></span>
 
-  - **DNS-servrar:** Välj välj **anpassad**.
-  - **Lägg till DNS-server:** Ange IP-adressen för den DNS-server som du vill använda för namnmatchning.
+  - <span data-ttu-id="a726d-103">**DNS-servrar:** Välj välj **anpassad**.</span><span class="sxs-lookup"><span data-stu-id="a726d-103">**DNS Servers:** Select select **Custom**.</span></span>
+  - <span data-ttu-id="a726d-104">**Lägg till DNS-server:** Ange IP-adressen för den DNS-server som du vill använda för namnmatchning.</span><span class="sxs-lookup"><span data-stu-id="a726d-104">**Add DNS server:** Enter the IP address of the DNS server that you want to use for name resolution.</span></span>
 
-2. När du har lagt till DNS-servern klickar du på **Spara** överst på bladet för att spara din konfiguration.
+2. <span data-ttu-id="a726d-105">När du har lagt till DNS-servern klickar du på **Spara** överst på bladet för att spara din konfiguration.</span><span class="sxs-lookup"><span data-stu-id="a726d-105">When you are done adding DNS servers, click **Save** at the top of the blade.</span></span>

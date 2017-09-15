@@ -1,17 +1,17 @@
 > [!div class="op_single_selector"]
-> * [Device: Node.js Service: Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
-> * [Device: Node.js Service: C#](../articles/iot-hub/iot-hub-csharp-node-device-management-get-started.md)
-> * [Enhet: Java-tjänsten: Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
+> * [<span data-ttu-id="75e2a-101">Device: Node.js Service: Node.js</span><span class="sxs-lookup"><span data-stu-id="75e2a-101">Device: Node.js Service: Node.js</span></span>](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
+> * [<span data-ttu-id="75e2a-102">Device: Node.js Service: C#</span><span class="sxs-lookup"><span data-stu-id="75e2a-102">Device: Node.js Service: C#</span></span>](../articles/iot-hub/iot-hub-csharp-node-device-management-get-started.md)
+> * [<span data-ttu-id="75e2a-103">Enhet: Java-tjänsten: Java</span><span class="sxs-lookup"><span data-stu-id="75e2a-103">Device: Java Service: Java</span></span>](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 
-Backend-appar kan använda Azure IoT Hub primitiver t.ex [enheten dubbla] [ lnk-devtwin] och [direkt metoder][lnk-c2dmethod], för att starta och övervaka enheten via fjärranslutning Management-åtgärder på enheterna. Den här kursen visar hur en backend-app och en enhetsapp kan fungera tillsammans för att initiera och övervaka fjärranslutna enheten startas om med IoT-hubb.
+<span data-ttu-id="75e2a-104">Backend-appar kan använda Azure IoT Hub primitiver t.ex [enheten dubbla] [ lnk-devtwin] och [direkt metoder][lnk-c2dmethod], för att starta och övervaka enheten via fjärranslutning Management-åtgärder på enheterna.</span><span class="sxs-lookup"><span data-stu-id="75e2a-104">Back-end apps can use Azure IoT Hub primitives, such as [device twin][lnk-devtwin] and [direct methods][lnk-c2dmethod], to remotely start and monitor device management actions on devices.</span></span> <span data-ttu-id="75e2a-105">Den här kursen visar hur en backend-app och en enhetsapp kan fungera tillsammans för att initiera och övervaka fjärranslutna enheten startas om med IoT-hubb.</span><span class="sxs-lookup"><span data-stu-id="75e2a-105">This tutorial shows you how a back-end app and a device app can work together to initiate and monitor a remote device reboot using IoT Hub.</span></span>
 
-Använd en direkt metod för att initiera hanteringsåtgärder för enheten (till exempel omstart fabriksåterställning och firmware-uppdatering) från en backend-app i molnet. Enheten är ansvarig för:
+<span data-ttu-id="75e2a-106">Använd en direkt metod för att initiera hanteringsåtgärder för enheten (till exempel omstart fabriksåterställning och firmware-uppdatering) från en backend-app i molnet.</span><span class="sxs-lookup"><span data-stu-id="75e2a-106">Use a direct method to initiate device management actions (such as reboot, factory reset, and firmware update) from a back-end app in the cloud.</span></span> <span data-ttu-id="75e2a-107">Enheten är ansvarig för:</span><span class="sxs-lookup"><span data-stu-id="75e2a-107">The device is responsible for:</span></span>
 
-* Hanterar metoden-begäran som skickats från IoT-hubb.
-* Initiera motsvarande enhetsspecifika-åtgärd på enheten.
-* Tillhandahåller statusuppdateringar via *rapporterade egenskaper* till IoT-hubben.
+* <span data-ttu-id="75e2a-108">Hanterar metoden-begäran som skickats från IoT-hubb.</span><span class="sxs-lookup"><span data-stu-id="75e2a-108">Handling the method request sent from IoT Hub.</span></span>
+* <span data-ttu-id="75e2a-109">Initiera motsvarande enhetsspecifika-åtgärd på enheten.</span><span class="sxs-lookup"><span data-stu-id="75e2a-109">Initiating the corresponding device-specific action on the device.</span></span>
+* <span data-ttu-id="75e2a-110">Tillhandahåller statusuppdateringar via *rapporterade egenskaper* till IoT-hubben.</span><span class="sxs-lookup"><span data-stu-id="75e2a-110">Providing status updates through *reported properties* to IoT Hub.</span></span>
 
-Du kan använda en backend-app i molnet för att köra enheten dubbla frågor att rapportera om förloppet för hanteringsåtgärder för enheten.
+<span data-ttu-id="75e2a-111">Du kan använda en backend-app i molnet för att köra enheten dubbla frågor att rapportera om förloppet för hanteringsåtgärder för enheten.</span><span class="sxs-lookup"><span data-stu-id="75e2a-111">You can use a back-end app in the cloud to run device twin queries to report on the progress of your device management actions.</span></span>
 
 [lnk-devtwin]: ../articles/iot-hub/iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md

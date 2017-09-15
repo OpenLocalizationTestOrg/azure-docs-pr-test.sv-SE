@@ -1,7 +1,7 @@
-* [Distribuera en app till Azure App Service](../articles/app-service-web/web-sites-deploy.md)
-* [Konfigurera källkontroll och kontinuerlig integration](../articles/app-service-web/app-service-continuous-deployment.md)
-* [Mellanlagring distributioner med distributionsplatser](../articles/app-service-web/web-sites-staged-publishing.md)
-* [Publicering och rollbaserad åtkomstkontroll (RBAC)](https://azure.microsoft.com/blog/rbac-and-azure-websites-publishing/)
+* [<span data-ttu-id="cd36a-101">Distribuera en app till Azure App Service</span><span class="sxs-lookup"><span data-stu-id="cd36a-101">Deploying an app to Azure App Service</span></span>](../articles/app-service-web/web-sites-deploy.md)
+* [<span data-ttu-id="cd36a-102">Konfigurera källkontroll och kontinuerlig integration</span><span class="sxs-lookup"><span data-stu-id="cd36a-102">Configuring source control and continuous integration</span></span>](../articles/app-service-web/app-service-continuous-deployment.md)
+* [<span data-ttu-id="cd36a-103">Mellanlagring distributioner med distributionsplatser</span><span class="sxs-lookup"><span data-stu-id="cd36a-103">Staging deployments with deployment slots</span></span>](../articles/app-service-web/web-sites-staged-publishing.md)
+* [<span data-ttu-id="cd36a-104">Publicering och rollbaserad åtkomstkontroll (RBAC)</span><span class="sxs-lookup"><span data-stu-id="cd36a-104">Publishing and Role Based Access Control (RBAC)</span></span>](https://azure.microsoft.com/blog/rbac-and-azure-websites-publishing/)
 
-## <a name="videos"></a>Videoklipp
-* [Automatisera distributionen arbetsflödet för versionshantering](https://azure.microsoft.com/resources/videos/azurecon-2015-manage-code-changes-to-web-apps-using-the-devops-features-of-azure-app-service-and-visual-studio-release-management/)
+## <a name="videos"></a><span data-ttu-id="cd36a-105">Videoklipp</span><span class="sxs-lookup"><span data-stu-id="cd36a-105">Videos</span></span>
+* [<span data-ttu-id="cd36a-106">Automatisera distributionen arbetsflödet för versionshantering</span><span class="sxs-lookup"><span data-stu-id="cd36a-106">Automating the deployment workflow for release management</span></span>](https://azure.microsoft.com/resources/videos/azurecon-2015-manage-code-changes-to-web-apps-using-the-devops-features-of-azure-app-service-and-visual-studio-release-management/)

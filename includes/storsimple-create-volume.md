@@ -1,32 +1,32 @@
 <!--author=SharS last changed: 02/04/2016-->
 
-#### <a name="to-create-a-volume"></a>Skapa en volym
-1. På enhetens **Snabbstart**-sida, klickar du på **Lägg till en volym**. Det startar guiden lägg till en volym.
-2. I guiden Lägg till en volym, i **Grundläggande inställningar**, gör du följande:
+#### <a name="to-create-a-volume"></a><span data-ttu-id="48ad9-101">Skapa en volym</span><span class="sxs-lookup"><span data-stu-id="48ad9-101">To create a volume</span></span>
+1. <span data-ttu-id="48ad9-102">På enhetens **Snabbstart**-sida, klickar du på **Lägg till en volym**.</span><span class="sxs-lookup"><span data-stu-id="48ad9-102">On the device **Quick Start** page, click **Add a volume**.</span></span> <span data-ttu-id="48ad9-103">Det startar guiden lägg till en volym.</span><span class="sxs-lookup"><span data-stu-id="48ad9-103">This starts the Add a volume wizard.</span></span>
+2. <span data-ttu-id="48ad9-104">I guiden Lägg till en volym, i **Grundläggande inställningar**, gör du följande:</span><span class="sxs-lookup"><span data-stu-id="48ad9-104">In the Add a volume wizard, under **Basic Settings**, do the following:</span></span>
    
-   1. Ange ett **namn** för volymen.
-   2. Ange **etablerad kapacitet** för volymen i GB eller TB. Volymens kapacitet måste vara mellan 1 GB och 64 TB för en fysisk enhet.
-   3. I listrutan väljer du **användningstyp** för volymen. 
-   4. Om du använder volymen för arkiveringsdata, markerar du **Använd volymen för arkiveringsdata med låg åtkomstfrekvens**. För alla andra användningsfall, väljer du helt enkelt **Nivåindelad volym**. (Nivåindelade volymer kallades förut för primära volymer).
+   1. <span data-ttu-id="48ad9-105">Ange ett **namn** för volymen.</span><span class="sxs-lookup"><span data-stu-id="48ad9-105">Supply a **Name** for your volume.</span></span>
+   2. <span data-ttu-id="48ad9-106">Ange **etablerad kapacitet** för volymen i GB eller TB.</span><span class="sxs-lookup"><span data-stu-id="48ad9-106">Specify the **Provisioned Capacity** for your volume in GB or TB.</span></span> <span data-ttu-id="48ad9-107">Volymens kapacitet måste vara mellan 1 GB och 64 TB för en fysisk enhet.</span><span class="sxs-lookup"><span data-stu-id="48ad9-107">The volume capacity must be between 1 GB and 64 TB for a physical device.</span></span>
+   3. <span data-ttu-id="48ad9-108">I listrutan väljer du **användningstyp** för volymen.</span><span class="sxs-lookup"><span data-stu-id="48ad9-108">On the drop-down list, select the **Usage Type** for your volume.</span></span> 
+   4. <span data-ttu-id="48ad9-109">Om du använder volymen för arkiveringsdata, markerar du **Använd volymen för arkiveringsdata med låg åtkomstfrekvens**.</span><span class="sxs-lookup"><span data-stu-id="48ad9-109">If you are using this volume for archival data, select the **Use this volume for less frequently accessed archival data** check box.</span></span> <span data-ttu-id="48ad9-110">För alla andra användningsfall, väljer du helt enkelt **Nivåindelad volym**.</span><span class="sxs-lookup"><span data-stu-id="48ad9-110">For all other use cases, simply select **Tiered Volume**.</span></span> <span data-ttu-id="48ad9-111">(Nivåindelade volymer kallades förut för primära volymer).</span><span class="sxs-lookup"><span data-stu-id="48ad9-111">(Tiered volumes were formerly called primary volumes).</span></span>
       
         ![Lägg till volym](./media/storsimple-create-volume/ScreenshotUpdate1VolumeFlow.png)
       
-      1. Klicka på pilikonen ![pilikon](./media/storsimple-create-volume/HCS_ArrowIcon-include.png) för att gå till nästa sida.
-3. I dialogrutan **Ytterligare inställningar**, lägger du till en ny åtkomstkontrollpost (ACR):
+      1. <span data-ttu-id="48ad9-113">Klicka på pilikonen</span><span class="sxs-lookup"><span data-stu-id="48ad9-113">Click the arrow icon</span></span> ![pilikon](./media/storsimple-create-volume/HCS_ArrowIcon-include.png) <span data-ttu-id="48ad9-115">för att gå till nästa sida.</span><span class="sxs-lookup"><span data-stu-id="48ad9-115">to go to the next page.</span></span>
+3. <span data-ttu-id="48ad9-116">I dialogrutan **Ytterligare inställningar**, lägger du till en ny åtkomstkontrollpost (ACR):</span><span class="sxs-lookup"><span data-stu-id="48ad9-116">In the **Additional Settings** dialog box, add a new access control record (ACR):</span></span>
    
-   1. Ange ett **namn** för din ACR.
-   2. Som **iSCSI-initierarnamn**, anger du det iSCSI-kvalificerade namnet (IQN) för din Windows-värd. Om du inte har en IQN, går du till [Hämta IQN för en Windows Server-värd](#get-the-iqn-of-a-windows-server-host).
-   3. Vi rekommenderar att du aktiverar en standard säkerhetskopiering genom att markera kryssrutan **Aktivera en standard säkerhetskopiering för den här volymen**. Standard säkerhetskopieringen skapar en princip som körs klockan 22.30 varje dag (enhetens tid) och skapar en ögonblicksbild i molnet av den här volymen.
+   1. <span data-ttu-id="48ad9-117">Ange ett **namn** för din ACR.</span><span class="sxs-lookup"><span data-stu-id="48ad9-117">Supply a **Name** for your ACR.</span></span>
+   2. <span data-ttu-id="48ad9-118">Som **iSCSI-initierarnamn**, anger du det iSCSI-kvalificerade namnet (IQN) för din Windows-värd.</span><span class="sxs-lookup"><span data-stu-id="48ad9-118">Under **iSCSI Initiator Name**, provide the iSCSI Qualified Name (IQN) of your Windows host.</span></span> <span data-ttu-id="48ad9-119">Om du inte har en IQN, går du till [Hämta IQN för en Windows Server-värd](#get-the-iqn-of-a-windows-server-host).</span><span class="sxs-lookup"><span data-stu-id="48ad9-119">If you don't have the IQN, go to [Get the IQN of a Windows Server host](#get-the-iqn-of-a-windows-server-host).</span></span>
+   3. <span data-ttu-id="48ad9-120">Vi rekommenderar att du aktiverar en standard säkerhetskopiering genom att markera kryssrutan **Aktivera en standard säkerhetskopiering för den här volymen**.</span><span class="sxs-lookup"><span data-stu-id="48ad9-120">We recommend that you enable a default backup by selecting the **Enable a default backup for this volume** check box.</span></span> <span data-ttu-id="48ad9-121">Standard säkerhetskopieringen skapar en princip som körs klockan 22.30 varje dag (enhetens tid) och skapar en ögonblicksbild i molnet av den här volymen.</span><span class="sxs-lookup"><span data-stu-id="48ad9-121">The default backup will create a policy that executes at 22:30 each day (device time) and creates a cloud snapshot of this volume.</span></span>
       
       > [!NOTE]
-      > När säkerhetskopieringen har aktiverats här, kan den inte återställas. För att ändra inställningen, behöver du redigera volymen.
+      > <span data-ttu-id="48ad9-122">När säkerhetskopieringen har aktiverats här, kan den inte återställas.</span><span class="sxs-lookup"><span data-stu-id="48ad9-122">After the backup is enabled here, it cannot be reverted.</span></span> <span data-ttu-id="48ad9-123">För att ändra inställningen, behöver du redigera volymen.</span><span class="sxs-lookup"><span data-stu-id="48ad9-123">You will need to edit the volume to modify this setting.</span></span>
       > 
       > 
       
         ![Lägg till volym](./media/storsimple-create-volume/AddVolume2-include.png)
-4. Klicka på kryssikonen ![kryssikon](./media/storsimple-create-volume/HCS_CheckIcon-include.png). En volym skapas med de angivna inställningarna.
+4. <span data-ttu-id="48ad9-125">Klicka på kryssikonen</span><span class="sxs-lookup"><span data-stu-id="48ad9-125">Click the check icon</span></span> ![kryssikon](./media/storsimple-create-volume/HCS_CheckIcon-include.png)<span data-ttu-id="48ad9-127">.</span><span class="sxs-lookup"><span data-stu-id="48ad9-127">.</span></span> <span data-ttu-id="48ad9-128">En volym skapas med de angivna inställningarna.</span><span class="sxs-lookup"><span data-stu-id="48ad9-128">A volume will be created with the specified settings.</span></span>
 
-![Video tillgänglig](./media/storsimple-create-volume/Video_icon.png) **Video tillgänglig**
+<span data-ttu-id="48ad9-129">![Video tillgänglig](./media/storsimple-create-volume/Video_icon.png) **Video tillgänglig**</span><span class="sxs-lookup"><span data-stu-id="48ad9-129">![Video available](./media/storsimple-create-volume/Video_icon.png) **Video available**</span></span>
 
-Om du vill se en video som visar hur du skapar en StorSimple-volym klickar du [här](https://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/).
+<span data-ttu-id="48ad9-130">Om du vill se en video som visar hur du skapar en StorSimple-volym klickar du [här](https://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/).</span><span class="sxs-lookup"><span data-stu-id="48ad9-130">To watch a video that demonstrates how to create a StorSimple volume, click [here](https://azure.microsoft.com/documentation/videos/create-a-storsimple-volume/).</span></span>
 

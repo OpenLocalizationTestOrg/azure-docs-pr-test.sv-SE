@@ -1,9 +1,9 @@
 
-#### <a name="to-configure-remote-management-on-the-device"></a>Konfigurera fjärrhantering på enheten
-1. På din virtuella enhet går du till **Enheter > Konfigurera**.
-2. Bläddra ned till avsnittet **Fjärrhantering**.
-3. Ställ in **Aktivera fjärrhantering** på **Ja**.
-4. Nu kan du välja att ansluta med HTTP. Standard är att ansluta via HTTPS. Det är bara acceptabelt att ansluta över HTTP på betrodda nätverk.
-5. Klicka på **Hämta certifikat för fjärrhantering** för att hämta ett certifikat för fjärrhantering. Du kommer att ange en plats där du kan spara den här filen. Certifikatet behöver sen installeras på klienten eller värddatorn som du kommer att använda för att ansluta till den virtuella enheten.
-6. Klicka på **Spara** längst ned på sidan.
+#### <a name="to-configure-remote-management-on-the-device"></a><span data-ttu-id="e3c5e-101">Konfigurera fjärrhantering på enheten</span><span class="sxs-lookup"><span data-stu-id="e3c5e-101">To configure remote management on the device</span></span>
+1. <span data-ttu-id="e3c5e-102">På din virtuella enhet går du till **Enheter > Konfigurera**.</span><span class="sxs-lookup"><span data-stu-id="e3c5e-102">On your virtual device, go to **Devices > Configure**.</span></span>
+2. <span data-ttu-id="e3c5e-103">Bläddra ned till avsnittet **Fjärrhantering**.</span><span class="sxs-lookup"><span data-stu-id="e3c5e-103">Scroll down to the **Remote Management** section.</span></span>
+3. <span data-ttu-id="e3c5e-104">Ställ in **Aktivera fjärrhantering** på **Ja**.</span><span class="sxs-lookup"><span data-stu-id="e3c5e-104">Set **Enable Remote Management** to **Yes**.</span></span>
+4. <span data-ttu-id="e3c5e-105">Nu kan du välja att ansluta med HTTP.</span><span class="sxs-lookup"><span data-stu-id="e3c5e-105">You can now choose to connect using HTTP.</span></span> <span data-ttu-id="e3c5e-106">Standard är att ansluta via HTTPS.</span><span class="sxs-lookup"><span data-stu-id="e3c5e-106">The default is to connect over HTTPS.</span></span> <span data-ttu-id="e3c5e-107">Det är bara acceptabelt att ansluta över HTTP på betrodda nätverk.</span><span class="sxs-lookup"><span data-stu-id="e3c5e-107">Connecting over HTTP is acceptable only on trusted networks.</span></span>
+5. <span data-ttu-id="e3c5e-108">Klicka på **Hämta certifikat för fjärrhantering** för att hämta ett certifikat för fjärrhantering.</span><span class="sxs-lookup"><span data-stu-id="e3c5e-108">Click **Download Remote Management Certificate** to download a remote management certificate.</span></span> <span data-ttu-id="e3c5e-109">Du kommer att ange en plats där du kan spara den här filen.</span><span class="sxs-lookup"><span data-stu-id="e3c5e-109">You will specify a location in which to save this file.</span></span> <span data-ttu-id="e3c5e-110">Certifikatet behöver sen installeras på klienten eller värddatorn som du kommer att använda för att ansluta till den virtuella enheten.</span><span class="sxs-lookup"><span data-stu-id="e3c5e-110">This certificate then needs to be installed on the client or host machine that you will use to connect to the virtual device.</span></span>
+6. <span data-ttu-id="e3c5e-111">Klicka på **Spara** längst ned på sidan.</span><span class="sxs-lookup"><span data-stu-id="e3c5e-111">Click **Save** at the bottom of the page.</span></span>
 

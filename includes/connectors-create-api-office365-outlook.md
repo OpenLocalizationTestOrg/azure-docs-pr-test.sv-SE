@@ -1,19 +1,19 @@
-#### <a name="prerequisites"></a>Krav
-* Ett Azure-konto; Du kan skapa en [kostnadsfritt konto](https://azure.microsoft.com/free)
-* En [Office 365](https://office365.com) konto  
+#### <a name="prerequisites"></a><span data-ttu-id="e04bf-101">Krav</span><span class="sxs-lookup"><span data-stu-id="e04bf-101">Prerequisites</span></span>
+* <span data-ttu-id="e04bf-102">Ett Azure-konto; Du kan skapa en [kostnadsfritt konto](https://azure.microsoft.com/free)</span><span class="sxs-lookup"><span data-stu-id="e04bf-102">An Azure account; you can create a [free account](https://azure.microsoft.com/free)</span></span>
+* <span data-ttu-id="e04bf-103">En [Office 365](https://office365.com) konto</span><span class="sxs-lookup"><span data-stu-id="e04bf-103">An [Office 365](https://office365.com) account</span></span>  
 
-Innan du använder Office 365-konto i en logikapp, auktorisera logik för att ansluta till Office 365-konto. Du kan göra detta enkelt i din logikapp på Azure-portalen.  
+<span data-ttu-id="e04bf-104">Innan du använder Office 365-konto i en logikapp, auktorisera logik för att ansluta till Office 365-konto.</span><span class="sxs-lookup"><span data-stu-id="e04bf-104">Before using your Office 365 account in a logic app, authorize the logic app to connect to your Office 365 account.</span></span> <span data-ttu-id="e04bf-105">Du kan göra detta enkelt i din logikapp på Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="e04bf-105">You can do this easily within your logic app on the Azure portal.</span></span>  
 
-Verifiera din logikapp för att ansluta till ditt Office 365-konto med följande steg:
+<span data-ttu-id="e04bf-106">Verifiera din logikapp för att ansluta till ditt Office 365-konto med följande steg:</span><span class="sxs-lookup"><span data-stu-id="e04bf-106">Authorize your logic app to connect to your Office 365 account using the following steps:</span></span>
 
-1. Skapa en logikapp. Välj i Logic Apps-designer **visa Microsoft hanterade API: er** i nedrullningsbara listrutan, och ange sedan ”office 365” i sökrutan. Välj något av utlösare eller åtgärder:  
-    ![Office 365 steg i att skapa anslutningen](./media/connectors-create-api-office365-outlook/office365-sendemail.png)  
-2. Om du inte tidigare har skapat alla anslutningar till Office 365, uppmanas du att logga in med dina inloggningsuppgifter för Office 365:  
+1. <span data-ttu-id="e04bf-107">Skapa en logikapp.</span><span class="sxs-lookup"><span data-stu-id="e04bf-107">Create a logic app.</span></span> <span data-ttu-id="e04bf-108">Välj i Logic Apps-designer **visa Microsoft hanterade API: er** i nedrullningsbara listrutan, och ange sedan ”office 365” i sökrutan.</span><span class="sxs-lookup"><span data-stu-id="e04bf-108">In the Logic Apps designer, select **Show Microsoft managed APIs** in the drop down list, and then enter "office 365" in the search box.</span></span> <span data-ttu-id="e04bf-109">Välj något av utlösare eller åtgärder:</span><span class="sxs-lookup"><span data-stu-id="e04bf-109">Select one of the triggers or actions:</span></span>  
+    <span data-ttu-id="e04bf-110">![Office 365 steg i att skapa anslutningen](./media/connectors-create-api-office365-outlook/office365-sendemail.png)</span><span class="sxs-lookup"><span data-stu-id="e04bf-110">![Office 365 connection creation step](./media/connectors-create-api-office365-outlook/office365-sendemail.png)</span></span>  
+2. <span data-ttu-id="e04bf-111">Om du inte tidigare har skapat alla anslutningar till Office 365, uppmanas du att logga in med dina inloggningsuppgifter för Office 365:</span><span class="sxs-lookup"><span data-stu-id="e04bf-111">If you haven't previously created any connections to Office 365, you are prompted to sign in using your Office 365 credentials:</span></span>  
     ![Office 365 steg i att skapa anslutningen](./media/connectors-create-api-office365-outlook/office365-signin.png)  
-3. Välj **logga in**, och ange ditt användarnamn och lösenord. Välj **logga in**:  
-    ![Office 365 steg i att skapa anslutningen](./media/connectors-create-api-office365-outlook/office365-usernamepassword.png)
+3. <span data-ttu-id="e04bf-113">Välj **logga in**, och ange ditt användarnamn och lösenord.</span><span class="sxs-lookup"><span data-stu-id="e04bf-113">Select **Sign in**, and enter your user name and password.</span></span> <span data-ttu-id="e04bf-114">Välj **logga in**:</span><span class="sxs-lookup"><span data-stu-id="e04bf-114">Select **Sign in**:</span></span>  
+    <span data-ttu-id="e04bf-115">![Office 365 steg i att skapa anslutningen](./media/connectors-create-api-office365-outlook/office365-usernamepassword.png)</span><span class="sxs-lookup"><span data-stu-id="e04bf-115">![Office 365 connection creation step](./media/connectors-create-api-office365-outlook/office365-usernamepassword.png)</span></span>
    
-    Dessa autentiseringsuppgifter används för att verifiera din logikapp för att ansluta till och komma åt ditt Office 365-konto. 
-4. Observera att anslutningen har skapats. Nu kan fortsätta med andra steg i din logikapp:   
+    <span data-ttu-id="e04bf-116">Dessa autentiseringsuppgifter används för att verifiera din logikapp för att ansluta till och komma åt ditt Office 365-konto.</span><span class="sxs-lookup"><span data-stu-id="e04bf-116">These credentials are used to authorize your logic app to connect to, and access your Office 365 account.</span></span> 
+4. <span data-ttu-id="e04bf-117">Observera att anslutningen har skapats.</span><span class="sxs-lookup"><span data-stu-id="e04bf-117">Notice the connection has been created.</span></span> <span data-ttu-id="e04bf-118">Nu kan fortsätta med andra steg i din logikapp:</span><span class="sxs-lookup"><span data-stu-id="e04bf-118">Now, proceed with the other steps in your logic app:</span></span>   
     ![Office 365 steg i att skapa anslutningen](./media/connectors-create-api-office365-outlook/office365-sendemailproperties.png)  
 

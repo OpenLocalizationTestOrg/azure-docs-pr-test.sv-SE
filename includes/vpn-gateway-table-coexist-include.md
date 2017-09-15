@@ -1,6 +1,6 @@
-|  | **Klassisk distribution** | **Resource Manager-distribution** |
+|  | <span data-ttu-id="b6999-101">**Klassisk distribution**</span><span class="sxs-lookup"><span data-stu-id="b6999-101">**Classic Deployment**</span></span> | <span data-ttu-id="b6999-102">**Resource Manager-distribution**</span><span class="sxs-lookup"><span data-stu-id="b6999-102">**Resource Manager Deployment**</span></span> |
 | --- | --- | --- |
-| **Klassisk portal** |Stöds inte |Stöds inte |
-| **Azure-portalen** |Stöds inte |Stöds inte |
-| **PowerShell** |[Artikel](../articles/expressroute/expressroute-howto-coexist-classic.md) |[Artikel](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
+| <span data-ttu-id="b6999-103">**Klassisk portal**</span><span class="sxs-lookup"><span data-stu-id="b6999-103">**Classic Portal**</span></span> |<span data-ttu-id="b6999-104">Stöds inte</span><span class="sxs-lookup"><span data-stu-id="b6999-104">Not Supported</span></span> |<span data-ttu-id="b6999-105">Stöds inte</span><span class="sxs-lookup"><span data-stu-id="b6999-105">Not Supported</span></span> |
+| <span data-ttu-id="b6999-106">**Azure-portalen**</span><span class="sxs-lookup"><span data-stu-id="b6999-106">**Azure Portal**</span></span> |<span data-ttu-id="b6999-107">Stöds inte</span><span class="sxs-lookup"><span data-stu-id="b6999-107">Not Supported</span></span> |<span data-ttu-id="b6999-108">Stöds inte</span><span class="sxs-lookup"><span data-stu-id="b6999-108">Not Supported</span></span> |
+| <span data-ttu-id="b6999-109">**PowerShell**</span><span class="sxs-lookup"><span data-stu-id="b6999-109">**PowerShell**</span></span> |[<span data-ttu-id="b6999-110">Artikel</span><span class="sxs-lookup"><span data-stu-id="b6999-110">Article</span></span>](../articles/expressroute/expressroute-howto-coexist-classic.md) |[<span data-ttu-id="b6999-111">Artikel</span><span class="sxs-lookup"><span data-stu-id="b6999-111">Article</span></span>](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
 

@@ -1,16 +1,16 @@
 > [!NOTE]
-> * Den offentliga IP-adressen för VPN-gatewayen ändras när du migrerar från en gammal SKU till en ny SKU.
-> * Du kan inte migrera klassiska VPN-gatewayer till de nya SKU:erna. Klassiska VPN-gatewayer kan endast använda de äldre (gamla) SKU:erna.
+> * <span data-ttu-id="47900-101">Den offentliga IP-adressen för VPN-gatewayen ändras när du migrerar från en gammal SKU till en ny SKU.</span><span class="sxs-lookup"><span data-stu-id="47900-101">The VPN gateway Public IP address will change when migrating from an old SKU to a new SKU.</span></span>
+> * <span data-ttu-id="47900-102">Du kan inte migrera klassiska VPN-gatewayer till de nya SKU:erna.</span><span class="sxs-lookup"><span data-stu-id="47900-102">You can't migrate classic VPN gateways to the new SKUs.</span></span> <span data-ttu-id="47900-103">Klassiska VPN-gatewayer kan endast använda de äldre (gamla) SKU:erna.</span><span class="sxs-lookup"><span data-stu-id="47900-103">Classic VPN gateways can only use the legacy (old) SKUs.</span></span>
 > 
 
-Du kan inte ändra storlek på Azure VPN-gatewayer mellan de gamla SKU:erna och de nya SKU-familjerna. Om du har VPN-gatewayer i Resource Manager-distributionsmodellen som använder den äldre versionen av de SKU: er kan migrera du till nya SKU: er. För att migrera måste du ta bort den befintliga VPN-gatewayen för det virtuella nätverket och sedan skapa en ny.
+<span data-ttu-id="47900-104">Du kan inte ändra storlek på Azure VPN-gatewayer mellan de gamla SKU:erna och de nya SKU-familjerna.</span><span class="sxs-lookup"><span data-stu-id="47900-104">You can't resize your Azure VPN gateways between the old SKUs and the new SKU families.</span></span> <span data-ttu-id="47900-105">Om du har VPN-gatewayer i Resource Manager-distributionsmodellen som använder den äldre versionen av de SKU: er kan migrera du till nya SKU: er.</span><span class="sxs-lookup"><span data-stu-id="47900-105">If you have VPN gateways in the Resource Manager deployment model that are using the older version of the SKUs, you can migrate to the new SKUs.</span></span> <span data-ttu-id="47900-106">För att migrera måste du ta bort den befintliga VPN-gatewayen för det virtuella nätverket och sedan skapa en ny.</span><span class="sxs-lookup"><span data-stu-id="47900-106">To migrate, you delete the existing VPN gateway for your virtual network, then create a new one.</span></span>
 
-Arbetsflöde för migrering:
+<span data-ttu-id="47900-107">Arbetsflöde för migrering:</span><span class="sxs-lookup"><span data-stu-id="47900-107">Migration workflow:</span></span>
 
-1. Ta bort flera anslutningar till en virtuell nätverksgateway.
-2. Ta bort VPN-gatewayen.
-3. Skapa den nya VPN-gatewayen.
-4. Uppdatera din lokala VPN-enhet med den nya IP-adressen för VPN-gatewayen (för plats-till-plats-anslutningar).
-5. Uppdatera gateway IP-adressvärdet för alla lokala nätverket VNet-till-VNet-gateways som ska ansluta till den här gatewayen.
-6. Hämta den nya klientpaket för VPN-konfiguration för P2S-klienter som ansluter till det virtuella nätverket via den här VPN-gatewayen.
-7. Skapa om flera anslutningar till en virtuell nätverksgateway.
+1. <span data-ttu-id="47900-108">Ta bort flera anslutningar till en virtuell nätverksgateway.</span><span class="sxs-lookup"><span data-stu-id="47900-108">Remove any connections to the virtual network gateway.</span></span>
+2. <span data-ttu-id="47900-109">Ta bort VPN-gatewayen.</span><span class="sxs-lookup"><span data-stu-id="47900-109">Delete the old VPN gateway.</span></span>
+3. <span data-ttu-id="47900-110">Skapa den nya VPN-gatewayen.</span><span class="sxs-lookup"><span data-stu-id="47900-110">Create the new VPN gateway.</span></span>
+4. <span data-ttu-id="47900-111">Uppdatera din lokala VPN-enhet med den nya IP-adressen för VPN-gatewayen (för plats-till-plats-anslutningar).</span><span class="sxs-lookup"><span data-stu-id="47900-111">Update your on-premises VPN devices with the new VPN gateway IP address (for Site-to-Site connections).</span></span>
+5. <span data-ttu-id="47900-112">Uppdatera gateway IP-adressvärdet för alla lokala nätverket VNet-till-VNet-gateways som ska ansluta till den här gatewayen.</span><span class="sxs-lookup"><span data-stu-id="47900-112">Update the gateway IP address value for any VNet-to-VNet local network gateways that will connect to this gateway.</span></span>
+6. <span data-ttu-id="47900-113">Hämta den nya klientpaket för VPN-konfiguration för P2S-klienter som ansluter till det virtuella nätverket via den här VPN-gatewayen.</span><span class="sxs-lookup"><span data-stu-id="47900-113">Download new client VPN configuration packages for P2S clients connecting to the virtual network through this VPN gateway.</span></span>
+7. <span data-ttu-id="47900-114">Skapa om flera anslutningar till en virtuell nätverksgateway.</span><span class="sxs-lookup"><span data-stu-id="47900-114">Recreate the connections to the virtual network gateway.</span></span>

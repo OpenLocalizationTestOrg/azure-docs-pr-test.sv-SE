@@ -1,22 +1,22 @@
 <!--author=alkohli last changed: 9/17/15-->
 
-#### <a name="to-get-the-storsimple-service-registration-key"></a>Hämta StorSimple-nyckel för tjänstregistrering
-1. På sidan **StorSimple Manager-tjänst**, klickar du på tjänsten som du skapade. Då kommer du till **Snabbstart**-sidan. (Du kan när som helst klicka på snabbstartsikonen ![StorSimple-snabbstartsikon ](./media/storsimple-get-service-registration-key/HCS_QuickStartIcon-include.png) för att få åtkomst till **Snabbstart**-sidan.)
+#### <a name="to-get-the-storsimple-service-registration-key"></a><span data-ttu-id="3ce9e-101">Hämta StorSimple-nyckel för tjänstregistrering</span><span class="sxs-lookup"><span data-stu-id="3ce9e-101">To get the StorSimple service registration key</span></span>
+1. <span data-ttu-id="3ce9e-102">På sidan **StorSimple Manager-tjänst**, klickar du på tjänsten som du skapade.</span><span class="sxs-lookup"><span data-stu-id="3ce9e-102">On the **StorSimple Manager service** page, click the service that you created.</span></span> <span data-ttu-id="3ce9e-103">Då kommer du till **Snabbstart**-sidan.</span><span class="sxs-lookup"><span data-stu-id="3ce9e-103">This will take you to the **Quick Start** page.</span></span> <span data-ttu-id="3ce9e-104">(Du kan när som helst klicka på snabbstartsikonen ![StorSimple-snabbstartsikon ](./media/storsimple-get-service-registration-key/HCS_QuickStartIcon-include.png) för att få åtkomst till **Snabbstart**-sidan.)</span><span class="sxs-lookup"><span data-stu-id="3ce9e-104">(You can click the quick start icon ![StorSimple Quick Start icon ](./media/storsimple-get-service-registration-key/HCS_QuickStartIcon-include.png) to access the **Quick Start** page at any time.)</span></span>
    
      ![StorSimple-snabbstartsida](./media/storsimple-get-service-registration-key/HCS_ServiceQuickStart-include.png)
-2. Klicka på **Hämta nyckel för tjänstregistrering**. Du kan också klicka på **Registreringsnyckel** längst ned på sidan. Du får vänta några minuter medan nyckeln hämtas. Dialogrutan **Nyckel för tjänstregistrering** visas.
+2. <span data-ttu-id="3ce9e-106">Klicka på **Hämta nyckel för tjänstregistrering**.</span><span class="sxs-lookup"><span data-stu-id="3ce9e-106">Click **Get service registration key**.</span></span> <span data-ttu-id="3ce9e-107">Du kan också klicka på **Registreringsnyckel** längst ned på sidan.</span><span class="sxs-lookup"><span data-stu-id="3ce9e-107">You can also click **Registration Key** at the bottom of the page.</span></span> <span data-ttu-id="3ce9e-108">Du får vänta några minuter medan nyckeln hämtas.</span><span class="sxs-lookup"><span data-stu-id="3ce9e-108">You will have to wait for a few minutes while the key is retrieved.</span></span> <span data-ttu-id="3ce9e-109">Dialogrutan **Nyckel för tjänstregistrering** visas.</span><span class="sxs-lookup"><span data-stu-id="3ce9e-109">The **Service Registration Key** dialog box appears.</span></span>
    
      ![Dialogrutan Nyckel för tjänstregistrering](./media/storsimple-get-service-registration-key/HCS_GetServiceRegistrationKey-include.png)
-3. Hitta nyckeln för tjänstregistrering.
-4. Klicka på Kopiera-ikonen ![Kopiera-ikonen i StorSimple](./media/storsimple-get-service-registration-key/HCS_CopyIcon-include.png) för att kopiera nyckeln och spara den för senare användning.
-5. Klicka på kryssikonen ![StorSimple-kryssikon](./media/storsimple-get-service-registration-key/HCS_CheckIcon-include.png) för att stänga dialogrutan och återgå till **Snabbstart**-sidan.
+3. <span data-ttu-id="3ce9e-111">Hitta nyckeln för tjänstregistrering.</span><span class="sxs-lookup"><span data-stu-id="3ce9e-111">Locate the service registration key.</span></span>
+4. <span data-ttu-id="3ce9e-112">Klicka på Kopiera-ikonen</span><span class="sxs-lookup"><span data-stu-id="3ce9e-112">Click the copy icon</span></span> ![Kopiera-ikonen i StorSimple](./media/storsimple-get-service-registration-key/HCS_CopyIcon-include.png) <span data-ttu-id="3ce9e-114">för att kopiera nyckeln och spara den för senare användning.</span><span class="sxs-lookup"><span data-stu-id="3ce9e-114">to copy the key and save it for later use.</span></span>
+5. <span data-ttu-id="3ce9e-115">Klicka på kryssikonen ![StorSimple-kryssikon](./media/storsimple-get-service-registration-key/HCS_CheckIcon-include.png) för att stänga dialogrutan och återgå till **Snabbstart**-sidan.</span><span class="sxs-lookup"><span data-stu-id="3ce9e-115">Click the check icon ![StorSimple Check icon](./media/storsimple-get-service-registration-key/HCS_CheckIcon-include.png) to close this dialog box and return to the **Quick Start** page.</span></span>
 
 > [!NOTE]
-> Nyckeln för tjänstregistrering används för att registrera alla enheter som behöver registreras med din StorSimple Manager-tjänst.
+> <span data-ttu-id="3ce9e-116">Nyckeln för tjänstregistrering används för att registrera alla enheter som behöver registreras med din StorSimple Manager-tjänst.</span><span class="sxs-lookup"><span data-stu-id="3ce9e-116">The service registration key is used to register all the devices that need to register with your StorSimple Manager service.</span></span>
 > 
 > 
 
-![Video tillgänglig](./media/storsimple-get-service-registration-key/Video_icon.png) **Video tillgänglig**
+<span data-ttu-id="3ce9e-117">![Video tillgänglig](./media/storsimple-get-service-registration-key/Video_icon.png) **Video tillgänglig**</span><span class="sxs-lookup"><span data-stu-id="3ce9e-117">![Video available](./media/storsimple-get-service-registration-key/Video_icon.png) **Video available**</span></span>
 
-Titta på en video som visar hur du hämtar nyckeln för tjänstregistrering, genom att klicka [här](https://azure.microsoft.com/documentation/videos/get-the-service-registration-key/).
+<span data-ttu-id="3ce9e-118">Titta på en video som visar hur du hämtar nyckeln för tjänstregistrering, genom att klicka [här](https://azure.microsoft.com/documentation/videos/get-the-service-registration-key/).</span><span class="sxs-lookup"><span data-stu-id="3ce9e-118">To watch a video that demonstrates how to get the service registration key, click [here](https://azure.microsoft.com/documentation/videos/get-the-service-registration-key/).</span></span>
 

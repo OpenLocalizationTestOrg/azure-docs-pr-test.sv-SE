@@ -1,5 +1,5 @@
 
-* Tryck på i Xcode **kör** och starta appen på en iOS-enhet (Observera att push inte fungerar på simulatorer). Klicka på **OK** att ta emot push-meddelanden; denna begäran sker första gången appen körs.
-* Lägg till ett nytt objekt i appen och klicka på  **+** .
-* Kontrollera att ett meddelande tas emot och klickar sedan **OK** att stänga meddelandet. Du har nu slutfört den här kursen.
+* <span data-ttu-id="166c0-101">Tryck på i Xcode **kör** och starta appen på en iOS-enhet (Observera att push inte fungerar på simulatorer).</span><span class="sxs-lookup"><span data-stu-id="166c0-101">In Xcode, press **Run** and start the app on an iOS device (note that push will not work on simulators).</span></span> <span data-ttu-id="166c0-102">Klicka på **OK** att ta emot push-meddelanden; denna begäran sker första gången appen körs.</span><span class="sxs-lookup"><span data-stu-id="166c0-102">Click **OK** to accept push notifications; this request occurs the first time the app runs.</span></span>
+* <span data-ttu-id="166c0-103">Lägg till ett nytt objekt i appen och klicka på  **+** .</span><span class="sxs-lookup"><span data-stu-id="166c0-103">In the app, add a new item and click **+**.</span></span>
+* <span data-ttu-id="166c0-104">Kontrollera att ett meddelande tas emot och klickar sedan **OK** att stänga meddelandet.</span><span class="sxs-lookup"><span data-stu-id="166c0-104">Verify that a notification is received, then click **OK** to dismiss the notification.</span></span> <span data-ttu-id="166c0-105">Du har nu slutfört den här kursen.</span><span class="sxs-lookup"><span data-stu-id="166c0-105">You have now successfully completed this tutorial.</span></span>
 

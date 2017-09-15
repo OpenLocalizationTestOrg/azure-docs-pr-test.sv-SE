@@ -1,14 +1,14 @@
-## <a name="scenario"></a>Scenario
-Det här dokumentet använder för att illustrera hur du skapar udr: er bättre scenariot nedan.
+## <a name="scenario"></a><span data-ttu-id="af2a5-101">Scenario</span><span class="sxs-lookup"><span data-stu-id="af2a5-101">Scenario</span></span>
+<span data-ttu-id="af2a5-102">Det här dokumentet använder för att illustrera hur du skapar udr: er bättre scenariot nedan.</span><span class="sxs-lookup"><span data-stu-id="af2a5-102">To better illustrate how to create UDRs, this document will use the scenario below.</span></span>
 
 ![BESKRIVNING AV AVBILDNING](./media/virtual-network-create-udr-scenario-include/figure1.png)
 
-I det här scenariot skapar du en UDR för den *Front end undernät* och en annan UDR för den *tillbaka slutet undernät* , enligt beskrivningen nedan: 
+<span data-ttu-id="af2a5-104">I det här scenariot skapar du en UDR för den *Front end undernät* och en annan UDR för den *tillbaka slutet undernät* , enligt beskrivningen nedan:</span><span class="sxs-lookup"><span data-stu-id="af2a5-104">In this scenario you will create one UDR for the *Front end subnet* and another UDR for the *Back end subnet* , as described below:</span></span> 
 
-* **UDR klientdel**. Klientdelen UDR ska kopplas till den *klientdel* undernät, och innehåller en väg:    
-  * **RouteToBackend**. Den här vägen skickar all trafik till backend-undernät som den **FW1** virtuella datorn.
-* **UDR BackEnd**. Serverdelen UDR ska kopplas till den *BackEnd* undernät, och innehåller en väg:    
-  * **RouteToFrontend**. Den här vägen skickar all trafik frontend-undernät som den **FW1** virtuella datorn.
+* <span data-ttu-id="af2a5-105">**UDR klientdel**.</span><span class="sxs-lookup"><span data-stu-id="af2a5-105">**UDR-FrontEnd**.</span></span> <span data-ttu-id="af2a5-106">Klientdelen UDR ska kopplas till den *klientdel* undernät, och innehåller en väg:</span><span class="sxs-lookup"><span data-stu-id="af2a5-106">The front end UDR will be applied to the *FrontEnd* subnet, and contain one route:</span></span>    
+  * <span data-ttu-id="af2a5-107">**RouteToBackend**.</span><span class="sxs-lookup"><span data-stu-id="af2a5-107">**RouteToBackend**.</span></span> <span data-ttu-id="af2a5-108">Den här vägen skickar all trafik till backend-undernät som den **FW1** virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="af2a5-108">This route will send all traffic to the back end subnet to the **FW1** virtual machine.</span></span>
+* <span data-ttu-id="af2a5-109">**UDR BackEnd**.</span><span class="sxs-lookup"><span data-stu-id="af2a5-109">**UDR-BackEnd**.</span></span> <span data-ttu-id="af2a5-110">Serverdelen UDR ska kopplas till den *BackEnd* undernät, och innehåller en väg:</span><span class="sxs-lookup"><span data-stu-id="af2a5-110">The back end UDR will be applied to the *BackEnd* subnet, and contain one route:</span></span>    
+  * <span data-ttu-id="af2a5-111">**RouteToFrontend**.</span><span class="sxs-lookup"><span data-stu-id="af2a5-111">**RouteToFrontend**.</span></span> <span data-ttu-id="af2a5-112">Den här vägen skickar all trafik frontend-undernät som den **FW1** virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="af2a5-112">This route will send all traffic to the front end subnet to the **FW1** virtual machine.</span></span>
 
-Kombinationen av dessa vägar säkerställer att all trafik från ett undernät till en annan kommer att dirigeras till den **FW1** virtuell dator som används som en virtuell installation. Du måste också aktivera IP-vidarebefordring för den virtuella datorn, så det kan ta emot trafik till andra virtuella datorer.
+<span data-ttu-id="af2a5-113">Kombinationen av dessa vägar säkerställer att all trafik från ett undernät till en annan kommer att dirigeras till den **FW1** virtuell dator som används som en virtuell installation.</span><span class="sxs-lookup"><span data-stu-id="af2a5-113">The combination of these routes will ensure that all traffic destined from one subnet to another will be routed to the **FW1** virtual machine, which is being used as a virtual appliance.</span></span> <span data-ttu-id="af2a5-114">Du måste också aktivera IP-vidarebefordring för den virtuella datorn, så det kan ta emot trafik till andra virtuella datorer.</span><span class="sxs-lookup"><span data-stu-id="af2a5-114">You also need to turn on IP forwarding for that VM, to ensure it can receive traffic destined to other VMs.</span></span>
 

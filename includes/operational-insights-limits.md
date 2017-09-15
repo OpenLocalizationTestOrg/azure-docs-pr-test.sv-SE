@@ -1,30 +1,30 @@
 
 >[!NOTE]
->Log Analytics kallades tidigare för Operational Insights.
+><span data-ttu-id="9e613-101">Log Analytics kallades tidigare för Operational Insights.</span><span class="sxs-lookup"><span data-stu-id="9e613-101">Log Analytics was formerly known as Operational Insights.</span></span>
 >
 >
 
-Följande begränsningar gäller för Log Analytics-resurser per prenumeration:
+<span data-ttu-id="9e613-102">Följande begränsningar gäller för Log Analytics-resurser per prenumeration:</span><span class="sxs-lookup"><span data-stu-id="9e613-102">The following limits apply to Log Analytics resources per subscription:</span></span>
 
-| Resurs | Standardgräns | Kommentarer
+| <span data-ttu-id="9e613-103">Resurs</span><span class="sxs-lookup"><span data-stu-id="9e613-103">Resource</span></span> | <span data-ttu-id="9e613-104">Standardgräns</span><span class="sxs-lookup"><span data-stu-id="9e613-104">Default Limit</span></span> | <span data-ttu-id="9e613-105">Kommentarer</span><span class="sxs-lookup"><span data-stu-id="9e613-105">Comments</span></span>
 | --- | --- | --- |
-| Antal lediga arbetsytor per prenumeration | 10 | Den här gränsen kan inte höjas. |
-| Antal betalda arbetsytor per prenumeration | Saknas | Du är begränsad till antalet resurser i en resursgrupp och antalet resursgrupper per prenumeration | 
+| <span data-ttu-id="9e613-106">Antal lediga arbetsytor per prenumeration</span><span class="sxs-lookup"><span data-stu-id="9e613-106">Number of free workspaces per subscription</span></span> | <span data-ttu-id="9e613-107">10</span><span class="sxs-lookup"><span data-stu-id="9e613-107">10</span></span> | <span data-ttu-id="9e613-108">Den här gränsen kan inte höjas.</span><span class="sxs-lookup"><span data-stu-id="9e613-108">This limit cannot be increased.</span></span> |
+| <span data-ttu-id="9e613-109">Antal betalda arbetsytor per prenumeration</span><span class="sxs-lookup"><span data-stu-id="9e613-109">Number of paid workspaces per subscription</span></span> | <span data-ttu-id="9e613-110">Saknas</span><span class="sxs-lookup"><span data-stu-id="9e613-110">N/A</span></span> | <span data-ttu-id="9e613-111">Du är begränsad till antalet resurser i en resursgrupp och antalet resursgrupper per prenumeration</span><span class="sxs-lookup"><span data-stu-id="9e613-111">You are limited by the number of resources within a resource group and number of resource groups per subscription</span></span> | 
 
 
-Följande begränsningar gäller för varje Log Analytics-arbetsyta:
+<span data-ttu-id="9e613-112">Följande begränsningar gäller för varje Log Analytics-arbetsyta:</span><span class="sxs-lookup"><span data-stu-id="9e613-112">The following limits apply to each Log Analytics workspace:</span></span>
 
-|  | Kostnadsfri | Standard | Premium | Fristående | OMS |
+|  | <span data-ttu-id="9e613-113">Kostnadsfri</span><span class="sxs-lookup"><span data-stu-id="9e613-113">Free</span></span> | <span data-ttu-id="9e613-114">Standard</span><span class="sxs-lookup"><span data-stu-id="9e613-114">Standard</span></span> | <span data-ttu-id="9e613-115">Premium</span><span class="sxs-lookup"><span data-stu-id="9e613-115">Premium</span></span> | <span data-ttu-id="9e613-116">Fristående</span><span class="sxs-lookup"><span data-stu-id="9e613-116">Standalone</span></span> | <span data-ttu-id="9e613-117">OMS</span><span class="sxs-lookup"><span data-stu-id="9e613-117">OMS</span></span> |
 | --- | --- | --- | --- | --- | --- |
-| Datavolym som samlas in per dag |500 MB<sup>1</sup> |Ingen |Ingen | Ingen | Ingen
-| Datakvarhållningstid |7 dagar |1 månad |12 månader | 1 månad <sup>2</sup> | 1 månad <sup>2</sup>|
+| <span data-ttu-id="9e613-118">Datavolym som samlas in per dag</span><span class="sxs-lookup"><span data-stu-id="9e613-118">Data volume collected per day</span></span> |<span data-ttu-id="9e613-119">500 MB<sup>1</sup></span><span class="sxs-lookup"><span data-stu-id="9e613-119">500 MB<sup>1</sup></span></span> |<span data-ttu-id="9e613-120">Ingen</span><span class="sxs-lookup"><span data-stu-id="9e613-120">None</span></span> |<span data-ttu-id="9e613-121">Ingen</span><span class="sxs-lookup"><span data-stu-id="9e613-121">None</span></span> | <span data-ttu-id="9e613-122">Ingen</span><span class="sxs-lookup"><span data-stu-id="9e613-122">None</span></span> | <span data-ttu-id="9e613-123">Ingen</span><span class="sxs-lookup"><span data-stu-id="9e613-123">None</span></span>
+| <span data-ttu-id="9e613-124">Datakvarhållningstid</span><span class="sxs-lookup"><span data-stu-id="9e613-124">Data retention period</span></span> |<span data-ttu-id="9e613-125">7 dagar</span><span class="sxs-lookup"><span data-stu-id="9e613-125">7 days</span></span> |<span data-ttu-id="9e613-126">1 månad</span><span class="sxs-lookup"><span data-stu-id="9e613-126">1 month</span></span> |<span data-ttu-id="9e613-127">12 månader</span><span class="sxs-lookup"><span data-stu-id="9e613-127">12 months</span></span> | <span data-ttu-id="9e613-128">1 månad <sup>2</sup></span><span class="sxs-lookup"><span data-stu-id="9e613-128">1 month<sup>2</sup></span></span> | <span data-ttu-id="9e613-129">1 månad <sup>2</sup></span><span class="sxs-lookup"><span data-stu-id="9e613-129">1 month <sup>2</sup></span></span>|
 
-<sup>1</sup> När kunderna når den dagliga dataöverföringsgränsen på 500 MB stoppas dataanalysen och återupptas i början av nästa dag. En dag baseras på UTC.
+<span data-ttu-id="9e613-130"><sup>1</sup> När kunderna når den dagliga dataöverföringsgränsen på 500 MB stoppas dataanalysen och återupptas i början av nästa dag.</span><span class="sxs-lookup"><span data-stu-id="9e613-130"><sup>1</sup> When customers reach their 500 MB daily data transfer limit, data analysis stops and resumes at the start of the next day.</span></span> <span data-ttu-id="9e613-131">En dag baseras på UTC.</span><span class="sxs-lookup"><span data-stu-id="9e613-131">A day is based on UTC.</span></span>
 
-<sup>2</sup> Datakvarhållningstiden för prisalternativen Fristående och OMS kan förlängas med 730 dagar.
+<span data-ttu-id="9e613-132"><sup>2</sup> Datakvarhållningstiden för prisalternativen Fristående och OMS kan förlängas med 730 dagar.</span><span class="sxs-lookup"><span data-stu-id="9e613-132"><sup>2</sup> The data retention period for the Standalone and OMS pricing plans can be increased to 730 days.</span></span>
 
-| Kategori | Begränsningar | Kommentarer
+| <span data-ttu-id="9e613-133">Kategori</span><span class="sxs-lookup"><span data-stu-id="9e613-133">Category</span></span> | <span data-ttu-id="9e613-134">Begränsningar</span><span class="sxs-lookup"><span data-stu-id="9e613-134">Limits</span></span> | <span data-ttu-id="9e613-135">Kommentarer</span><span class="sxs-lookup"><span data-stu-id="9e613-135">Comments</span></span>
 | --- | --- | --- |
-| API för datainsamling | Maximal storlek för ett enskilt inlägg är 30 MB<br>Maximal storlek för fältvärden är 32 kB | Dela större volymer i flera olika inlägg<br>Fält som är längre än 32 kB trunkeras. |
-| Sök-API | 5 000 poster returneras för ej sammanräknade data<br>500 000 poster för sammanräknade data | Sammanräknade data är en sökning som innefattar kommandot `measure`
+| <span data-ttu-id="9e613-136">API för datainsamling</span><span class="sxs-lookup"><span data-stu-id="9e613-136">Data Collector API</span></span> | <span data-ttu-id="9e613-137">Maximal storlek för ett enskilt inlägg är 30 MB</span><span class="sxs-lookup"><span data-stu-id="9e613-137">Maximum size for a single post is 30 MB</span></span><br><span data-ttu-id="9e613-138">Maximal storlek för fältvärden är 32 kB</span><span class="sxs-lookup"><span data-stu-id="9e613-138">Maximum size for field values is 32 KB</span></span> | <span data-ttu-id="9e613-139">Dela större volymer i flera olika inlägg</span><span class="sxs-lookup"><span data-stu-id="9e613-139">Split larger volumes into multiple posts</span></span><br><span data-ttu-id="9e613-140">Fält som är längre än 32 kB trunkeras.</span><span class="sxs-lookup"><span data-stu-id="9e613-140">Fields longer than 32 KB are truncated.</span></span> |
+| <span data-ttu-id="9e613-141">Sök-API</span><span class="sxs-lookup"><span data-stu-id="9e613-141">Search API</span></span> | <span data-ttu-id="9e613-142">5 000 poster returneras för ej sammanräknade data</span><span class="sxs-lookup"><span data-stu-id="9e613-142">5000 records returned for non-aggregated data</span></span><br><span data-ttu-id="9e613-143">500 000 poster för sammanräknade data</span><span class="sxs-lookup"><span data-stu-id="9e613-143">500000 records for aggregated data</span></span> | <span data-ttu-id="9e613-144">Sammanräknade data är en sökning som innefattar kommandot `measure`</span><span class="sxs-lookup"><span data-stu-id="9e613-144">Aggregated data is a search that includes the `measure` command</span></span>
  

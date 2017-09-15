@@ -1,7 +1,7 @@
-## <a name="additional-resources"></a>Ytterligare resurser
-* [Utvecklarhandboken för Azure AD](../articles/active-directory/develop/active-directory-developers-guide.md)
-* [Azure AD-exempel på GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=active-directory)
-* [CloudIdentity.com](http://cloudidentity.com)
+## <a name="additional-resources"></a><span data-ttu-id="8d9eb-101">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="8d9eb-101">Additional resources</span></span>
+* [<span data-ttu-id="8d9eb-102">Utvecklarhandboken för Azure AD</span><span class="sxs-lookup"><span data-stu-id="8d9eb-102">The Azure AD developer's guide</span></span>](../articles/active-directory/develop/active-directory-developers-guide.md)
+* [<span data-ttu-id="8d9eb-103">Azure AD-exempel på GitHub</span><span class="sxs-lookup"><span data-stu-id="8d9eb-103">Azure AD samples on GitHub</span></span>](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=active-directory)
+* [<span data-ttu-id="8d9eb-104">CloudIdentity.com</span><span class="sxs-lookup"><span data-stu-id="8d9eb-104">CloudIdentity.com</span></span>](http://cloudidentity.com)
 
-## <a name="get-security-updates-for-our-products"></a>Hämta säkerhetsuppdateringar för våra produkter
-Vi rekommenderar att du aktiverar aviseringar om säkerhetsincidenter genom att gå till [TechCenter-sidan för tekniska säkerhetsaviseringar från Microsoft](https://technet.microsoft.com/security/dd252948) och prenumererar på dessa aviseringar.
+## <a name="get-security-updates-for-our-products"></a><span data-ttu-id="8d9eb-105">Hämta säkerhetsuppdateringar för våra produkter</span><span class="sxs-lookup"><span data-stu-id="8d9eb-105">Get security updates for our products</span></span>
+<span data-ttu-id="8d9eb-106">Vi rekommenderar att du aktiverar aviseringar om säkerhetsincidenter genom att gå till [TechCenter-sidan för tekniska säkerhetsaviseringar från Microsoft](https://technet.microsoft.com/security/dd252948) och prenumererar på dessa aviseringar.</span><span class="sxs-lookup"><span data-stu-id="8d9eb-106">We encourage you to get notifications of when security incidents occur by visiting [the TechCenter page for Microsoft technical security notifications](https://technet.microsoft.com/security/dd252948) and subscribing to security advisory alerts.</span></span>
