@@ -1,0 +1,2 @@
+Om din Azure problemet inte åtgärdas i den här artikeln, besöker du Azure-forum på [MSDN och Stack Overflow](https://azure.microsoft.com/support/forums/). Du kan publicera ditt problem i dessa forum eller efter att [ @AzureSupport på Twitter](https://twitter.com/AzureSupport). Du kan också skicka en begäran med Azure-supporten. Att skicka en supportförfrågan på den [Azure-supporten](https://azure.microsoft.com/support/options/) väljer **få support**.
+

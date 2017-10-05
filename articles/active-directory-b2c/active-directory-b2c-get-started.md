@@ -14,13 +14,15 @@ ms.topic: article
 ms.devlang: na
 ms.date: 06/07/2017
 ms.author: swkrish
-ms.openlocfilehash: 8a1d4935397f59e5813afc6f04559e471187a779
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 1a7eb94e3c74aa0dc187a6d203ba0cf885b97c4d
+ms.sourcegitcommit: b0af2a2cf44101a1b1ff41bd2ad795eaef29612a
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 09/28/2017
 ---
 # <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>Skapa en Azure Active Directory B2C-klient i Azure-portalen
+
+Redigera Sipi.
 
 Den här snabbstarten hjälper dig att skapa en Microsoft Azure Active Directory (AD Azure) B2C-klient på bara några minuter. När du är klar har du en B2C-klient ska användas för att registrera B2C-program.
 

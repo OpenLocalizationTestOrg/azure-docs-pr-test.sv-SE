@@ -1,0 +1,1 @@
+Om det behövs installerar du Azure PowerShell-modulen med hjälp av anvisningarna i den [Azure PowerShell guiden](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/), och kör sedan `Login-AzureRmAccount` att skapa en anslutning med Azure. Du måste också ha en offentlig SSH-nyckel med namnet `id_rsa.pub` i .ssh-katalogen i din profil.
