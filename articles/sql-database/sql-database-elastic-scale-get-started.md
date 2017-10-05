@@ -1,0 +1,100 @@
+---
+title: "Kom igång med elastiska Databasverktyg | Microsoft Docs"
+description: "Grundläggande förklaring av funktionen för elastisk databas verktyg i Azure SQL Database, inklusive ett enkelt och kör sample-appen."
+services: sql-database
+documentationcenter: 
+manager: jhubbard
+author: ddove
+editor: CarlRabeler
+ms.assetid: b6911f8d-2bae-4d04-9fa8-f79a3db7129d
+ms.service: sql-database
+ms.custom: scale out apps
+ms.workload: sql-database
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/06/2017
+ms.author: ddove
+ms.openlocfilehash: 637463399593f4bc9ff5bfcbf67bf93b816efc7f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 07/11/2017
+---
+# <a name="get-started-with-elastic-database-tools"></a><span data-ttu-id="8b4a9-103">Kom igång med elastiska Databasverktyg</span><span class="sxs-lookup"><span data-stu-id="8b4a9-103">Get started with elastic database tools</span></span>
+<span data-ttu-id="8b4a9-104">Det här dokumentet presenteras developer-upplevelsen genom att hjälpa dig att köra sample-appen.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-104">This document introduces you to the developer experience by helping you to run the sample app.</span></span> <span data-ttu-id="8b4a9-105">Exemplet skapar ett enkelt delat program och utforskar viktiga funktioner för elastiska Databasverktyg.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-105">The sample creates a simple sharded application and explores key capabilities of elastic database tools.</span></span> <span data-ttu-id="8b4a9-106">Exemplet visar funktionerna i den [klientbibliotek för elastisk databas](sql-database-elastic-database-client-library.md).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-106">The sample demonstrates functions of the [elastic database client library](sql-database-elastic-database-client-library.md).</span></span>
+
+<span data-ttu-id="8b4a9-107">Om du vill installera biblioteket, gå till [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-107">To install the library, go to [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).</span></span> <span data-ttu-id="8b4a9-108">Biblioteket har installerats med exempelappen som beskrivs i följande avsnitt.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-108">The library is installed with the sample app that's described in the following section.</span></span>
+
+## <a name="prerequisites"></a><span data-ttu-id="8b4a9-109">Krav</span><span class="sxs-lookup"><span data-stu-id="8b4a9-109">Prerequisites</span></span>
+* <span data-ttu-id="8b4a9-110">Visual Studio 2012 eller senare med C#.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-110">Visual Studio 2012 or later with C#.</span></span> <span data-ttu-id="8b4a9-111">Hämta en kostnadsfri version på [Visual Studio-hämtningar](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-111">Download a free version at [Visual Studio Downloads](http://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).</span></span>
+* <span data-ttu-id="8b4a9-112">NuGet 2.7 eller senare.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-112">NuGet 2.7 or later.</span></span> <span data-ttu-id="8b4a9-113">Om du vill hämta den senaste versionen finns [installera NuGet](http://docs.nuget.org/docs/start-here/installing-nuget).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-113">To get the latest version, see [Installing NuGet](http://docs.nuget.org/docs/start-here/installing-nuget).</span></span>
+
+## <a name="download-and-run-the-sample-app"></a><span data-ttu-id="8b4a9-114">Hämta och kör exempelappen</span><span class="sxs-lookup"><span data-stu-id="8b4a9-114">Download and run the sample app</span></span>
+<span data-ttu-id="8b4a9-115">Den **elastisk DB-verktyg för Azure SQL - komma igång** exempelprogrammet visar de viktigaste aspekterna i utvecklingsarbetet för delat program som använder elastisk Databasverktyg.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-115">The **Elastic DB Tools for Azure SQL - Getting Started** sample application illustrates the most important aspects of the development experience for sharded applications that use elastic database tools.</span></span> <span data-ttu-id="8b4a9-116">Den fokuserar på viktiga användningsområden för [Fragmentera kartan management](sql-database-elastic-scale-shard-map-management.md), [data beroende routning](sql-database-elastic-scale-data-dependent-routing.md), och [flera Fragmentera frågar](sql-database-elastic-scale-multishard-querying.md).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-116">It focuses on key use cases for [shard map management](sql-database-elastic-scale-shard-map-management.md), [data-dependent routing](sql-database-elastic-scale-data-dependent-routing.md), and [multi-shard querying](sql-database-elastic-scale-multishard-querying.md).</span></span> <span data-ttu-id="8b4a9-117">Följ dessa steg om du vill hämta och köra exemplet:</span><span class="sxs-lookup"><span data-stu-id="8b4a9-117">To download and run the sample, follow these steps:</span></span> 
+
+1. <span data-ttu-id="8b4a9-118">Hämta den [elastisk DB-verktyg för Azure SQL - komma igång exempel](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6) på MSDN.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-118">Download the [Elastic DB Tools for Azure SQL - Getting Started sample](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-a80d8dc6) from MSDN.</span></span> <span data-ttu-id="8b4a9-119">Packa upp exemplet på en plats som du väljer.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-119">Unzip the sample to a location that you choose.</span></span>
+
+2. <span data-ttu-id="8b4a9-120">Om du vill skapa ett projekt, öppna den **ElasticScaleStarterKit.sln** lösningar från den **C#** directory.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-120">To create a project, open the **ElasticScaleStarterKit.sln** solution from the **C#** directory.</span></span>
+
+3. <span data-ttu-id="8b4a9-121">Öppna i lösningen för exempelprojektet den **app.config** fil.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-121">In the solution for the sample project, open the **app.config** file.</span></span> <span data-ttu-id="8b4a9-122">Följ sedan instruktionerna i filen för att lägga till din Azure SQL Database-servernamn och din inloggningsinformation (användarnamn och lösenord).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-122">Then follow the instructions in the file to add your Azure SQL Database server name and your sign-in information (user name and password).</span></span>
+
+4. <span data-ttu-id="8b4a9-123">Skapa och köra programmet.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-123">Build and run the application.</span></span> <span data-ttu-id="8b4a9-124">När du uppmanas, aktivera Visual Studio för att återställa NuGet-paket för lösningen.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-124">When prompted, enable Visual Studio to restore the NuGet packages of the solution.</span></span> <span data-ttu-id="8b4a9-125">Då hämtas den senaste versionen av klientbiblioteket för elastisk databas från NuGet.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-125">This downloads the latest version of the elastic database client library from NuGet.</span></span>
+
+5. <span data-ttu-id="8b4a9-126">Experimentera med olika alternativ för mer information om funktioner för klient-biblioteket.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-126">Experiment with the different options to learn more about the client library capabilities.</span></span> <span data-ttu-id="8b4a9-127">Observera hur programmet tar i konsolen utdata och gärna att utforska koden i bakgrunden.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-127">Note the steps the application takes in the console output and feel free to explore the code behind the scenes.</span></span>
+   
+    ![Pågår][4]
+
+<span data-ttu-id="8b4a9-129">Grattis--har du skapat och köra ditt första delat program med elastiska Databasverktyg på SQL-databas.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-129">Congratulations--you have successfully built and run your first sharded application by using elastic database tools on SQL Database.</span></span> <span data-ttu-id="8b4a9-130">Använd Visual Studio eller SQL Server Management Studio för att ansluta till SQL-databasen och ta en titt på shards som exemplet skapas.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-130">Use Visual Studio or SQL Server Management Studio to connect to your SQL database and take a quick look at the shards that the sample created.</span></span> <span data-ttu-id="8b4a9-131">Du ser nya exempeldatabaserna Fragmentera och en Fragmentera kartan manager-databas som har skapats av exemplet.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-131">You will notice new sample shard databases and a shard map manager database that the sample has created.</span></span>
+
+> [!IMPORTANT]
+> <span data-ttu-id="8b4a9-132">Vi rekommenderar att du alltid använder den senaste versionen av Management Studio så att du vara synkroniserat med uppdateringar till Azure och SQL-databas.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-132">We recommend that you always use the latest version of Management Studio so that you stay synchronized with updates to Azure and SQL Database.</span></span> <span data-ttu-id="8b4a9-133">[Uppdatera SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-133">[Update SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).</span></span>
+> 
+> 
+
+### <a name="key-pieces-of-the-code-sample"></a><span data-ttu-id="8b4a9-134">Nyckelinformation kodexemplet</span><span class="sxs-lookup"><span data-stu-id="8b4a9-134">Key pieces of the code sample</span></span>
+* <span data-ttu-id="8b4a9-135">**Hantera delar och Fragmentera**: koden illustrerar hur du arbetar med shards, intervall och avbildningar i filen **ShardManagementUtils.cs**.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-135">**Managing shards and shard maps**: The code illustrates how to work with shards, ranges, and mappings in the file **ShardManagementUtils.cs**.</span></span> <span data-ttu-id="8b4a9-136">Mer information finns i [skala ut databaser med Fragmentera kartan manager](http://go.microsoft.com/?linkid=9862595).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-136">For more information, see [Scale out databases with the shard map manager](http://go.microsoft.com/?linkid=9862595).</span></span>  
+
+* <span data-ttu-id="8b4a9-137">**Data dependent routning**: routning av transaktioner till rätt Fragmentera visas i **DataDependentRoutingSample.cs**.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-137">**Data-dependent routing**: Routing of transactions to the right shard is shown in **DataDependentRoutingSample.cs**.</span></span> <span data-ttu-id="8b4a9-138">Mer information finns i [Data beroende routning](http://go.microsoft.com/?linkid=9862596).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-138">For more information, see [Data-dependent routing](http://go.microsoft.com/?linkid=9862596).</span></span> 
+
+* <span data-ttu-id="8b4a9-139">**Fråga över flera delar**: frågar över shards illustreras i filen **MultiShardQuerySample.cs**.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-139">**Querying over multiple shards**: Querying across shards is illustrated in the file **MultiShardQuerySample.cs**.</span></span> <span data-ttu-id="8b4a9-140">Mer information finns i [flera Fragmentera frågar](http://go.microsoft.com/?linkid=9862597).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-140">For more information, see [Multi-shard querying](http://go.microsoft.com/?linkid=9862597).</span></span>
+
+* <span data-ttu-id="8b4a9-141">**Lägga till tomma shards**: iterativ tillägg av ny tom shards utförs av koden i filen **CreateShardSample.cs**.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-141">**Adding empty shards**: The iterative adding of new empty shards is performed by the code in the file **CreateShardSample.cs**.</span></span> <span data-ttu-id="8b4a9-142">Mer information finns i [skala ut databaser med Fragmentera kartan manager](http://go.microsoft.com/?linkid=9862595).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-142">For more information, see [Scale out databases with the shard map manager](http://go.microsoft.com/?linkid=9862595).</span></span>
+
+### <a name="other-elastic-scale-operations"></a><span data-ttu-id="8b4a9-143">Andra åtgärder elastisk skalbarhet</span><span class="sxs-lookup"><span data-stu-id="8b4a9-143">Other elastic scale operations</span></span>
+* <span data-ttu-id="8b4a9-144">**Dela en befintlig Fragmentera**: möjlighet att dela shards tillhandahålls av den **för delade sökvägssammanslagning**.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-144">**Splitting an existing shard**: The capability to split shards is provided by the **split-merge tool**.</span></span> <span data-ttu-id="8b4a9-145">Mer information finns i [flytta data mellan databaser som skalats ut molnet](sql-database-elastic-scale-overview-split-and-merge.md).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-145">For more information, see [Moving data between scaled-out cloud databases](sql-database-elastic-scale-overview-split-and-merge.md).</span></span>
+
+* <span data-ttu-id="8b4a9-146">**Sammanslagning av befintlig shards**: Fragmentera sammanslagningar görs också med hjälp av den **för delade sökvägssammanslagning**.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-146">**Merging existing shards**: Shard merges are also performed by using the **split-merge tool**.</span></span> <span data-ttu-id="8b4a9-147">Mer information finns i [flytta data mellan databaser som skalats ut molnet](sql-database-elastic-scale-overview-split-and-merge.md).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-147">For more information, see [Moving data between scaled-out cloud databases](sql-database-elastic-scale-overview-split-and-merge.md).</span></span>   
+
+## <a name="cost"></a><span data-ttu-id="8b4a9-148">Kostnad</span><span class="sxs-lookup"><span data-stu-id="8b4a9-148">Cost</span></span>
+<span data-ttu-id="8b4a9-149">Elastisk Databasverktyg är kostnadsfri.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-149">The elastic database tools are free.</span></span> <span data-ttu-id="8b4a9-150">När du använder elastisk Databasverktyg kan får du inte ytterligare avgifter ovanpå kostnaden för din användning av Azure.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-150">When you use elastic database tools, you don't receive any additional charges on top of the cost of your Azure usage.</span></span> 
+
+<span data-ttu-id="8b4a9-151">Till exempel skapas exempelprogrammet nya databaser.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-151">For example, the sample application creates new databases.</span></span> <span data-ttu-id="8b4a9-152">Kostnaden för den här beror på SQL-databas-utgåva som du väljer och Azure användningen av ditt program.</span><span class="sxs-lookup"><span data-stu-id="8b4a9-152">The cost for this depends on the SQL Database edition you choose and the Azure usage of your application.</span></span>
+
+<span data-ttu-id="8b4a9-153">Information om priser finns [SQL-databas prisinformation](https://azure.microsoft.com/pricing/details/sql-database/).</span><span class="sxs-lookup"><span data-stu-id="8b4a9-153">For pricing information, see [SQL Database pricing details](https://azure.microsoft.com/pricing/details/sql-database/).</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="8b4a9-154">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="8b4a9-154">Next steps</span></span>
+<span data-ttu-id="8b4a9-155">Mer information om elastisk Databasverktyg finns på följande sidor:</span><span class="sxs-lookup"><span data-stu-id="8b4a9-155">For more information about elastic database tools, see the following pages:</span></span>
+
+* <span data-ttu-id="8b4a9-156">Kodexempel:</span><span class="sxs-lookup"><span data-stu-id="8b4a9-156">Code samples:</span></span> 
+  * [<span data-ttu-id="8b4a9-157">Elastisk DB verktyg för Azure SQL - komma igång</span><span class="sxs-lookup"><span data-stu-id="8b4a9-157">Elastic DB Tools for Azure SQL - Getting Started</span></span>](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE)
+  * [<span data-ttu-id="8b4a9-158">Elastisk DB verktyg för Azure SQL - Entity Framework-integrering</span><span class="sxs-lookup"><span data-stu-id="8b4a9-158">Elastic DB Tools for Azure SQL - Entity Framework Integration</span></span>](http://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
+  * [<span data-ttu-id="8b4a9-159">Fragmentera elasticitet på Script Center</span><span class="sxs-lookup"><span data-stu-id="8b4a9-159">Shard Elasticity on Script Center</span></span>](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
+* <span data-ttu-id="8b4a9-160">Blogg: [elastisk skalbarhet meddelande](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)</span><span class="sxs-lookup"><span data-stu-id="8b4a9-160">Blog: [Elastic Scale announcement](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)</span></span>
+* <span data-ttu-id="8b4a9-161">Microsoft Virtual Academy: [implementera skalbar med hjälp av delning med elastisk databas klienten biblioteket Video](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554?l=lWyQhF1fC_6306218965)</span><span class="sxs-lookup"><span data-stu-id="8b4a9-161">Microsoft Virtual Academy: [Implementing Scale-Out Using Sharding with the Elastic Database Client Library Video](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554?l=lWyQhF1fC_6306218965)</span></span> 
+* <span data-ttu-id="8b4a9-162">Channel 9: [elastisk skalbarhet översikten](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)</span><span class="sxs-lookup"><span data-stu-id="8b4a9-162">Channel 9: [Elastic Scale overview video](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)</span></span>
+* <span data-ttu-id="8b4a9-163">Diskussionsforum: [Azure SQL Database-forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)</span><span class="sxs-lookup"><span data-stu-id="8b4a9-163">Discussion forum: [Azure SQL Database forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)</span></span>
+* <span data-ttu-id="8b4a9-164">Att mäta prestanda: [prestandaräknare för Fragmentera kartan manager](sql-database-elastic-database-client-library.md)</span><span class="sxs-lookup"><span data-stu-id="8b4a9-164">To measure performance: [Performance counters for shard map manager](sql-database-elastic-database-client-library.md)</span></span>
+
+<!--Anchors-->
+[The Elastic Scale Sample Application]: #The-Elastic-Scale-Sample-Application
+[Download and Run the Sample App]: #Download-and-Run-the-Sample-App
+[Cost]: #Cost
+[Next steps]: #next-steps
+
+<!--Image references-->
+[1]: ./media/sql-database-elastic-scale-get-started/newProject.png
+[2]: ./media/sql-database-elastic-scale-get-started/click-online.png
+[3]: ./media/sql-database-elastic-scale-get-started/click-CSharp.png
+[4]: ./media/sql-database-elastic-scale-get-started/output2.png
+

@@ -1,0 +1,68 @@
+---
+title: "Skriptexempel Azure CLI - belastningsutjämna trafiken till virtuella datorer för hög tillgänglighet | Microsoft Docs"
+description: "Skriptexempel Azure CLI - belastningsutjämna trafiken till virtuella datorer för hög tillgänglighet"
+services: load-balancer
+documentationcenter: load-balancer
+author: KumudD
+manager: timlt
+editor: tysonn
+tags: 
+ms.assetid: 
+ms.service: load-balancer
+ms.devlang: azurecli
+ms.topic: article
+ms.tgt_pltfrm: 
+ms.workload: infrastructure
+ms.date: 07/07/2017
+ms.author: kumud
+ms.openlocfilehash: 69a7753cc75b028e2bf093053d9a5fc0890562e8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 07/11/2017
+---
+# <a name="load-balance-traffic-to-vms-for-high-availability"></a><span data-ttu-id="c701b-103">Läs in Utjämna trafiken till virtuella datorer för hög tillgänglighet</span><span class="sxs-lookup"><span data-stu-id="c701b-103">Load balance traffic to VMs for high availability</span></span>
+
+<span data-ttu-id="c701b-104">Det här exemplet i skriptet skapar allt som behövs för att köra flera Ubuntu virtuella datorer som konfigurerats i en hög tillgänglighet och läsa in belastningsutjämnade konfigurationen.</span><span class="sxs-lookup"><span data-stu-id="c701b-104">This script sample creates everything needed to run several Ubuntu virtual machines configured in a highly available and load balanced configuration.</span></span> <span data-ttu-id="c701b-105">När du har kört skriptet har tre virtuella datorer, ansluten till en Azure Tillgänglighetsuppsättning, och kan öppnas via en Azure belastningsutjämnare.</span><span class="sxs-lookup"><span data-stu-id="c701b-105">After running the script, you will have three virtual machines, joined to an Azure Availability Set, and accessible through an Azure Load Balancer.</span></span> 
+
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="sample-script"></a><span data-ttu-id="c701b-106">Exempelskript</span><span class="sxs-lookup"><span data-stu-id="c701b-106">Sample script</span></span>
+
+<span data-ttu-id="c701b-107">[!code-azurecli-interactive[huvudsakliga](../../../cli_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.sh "snabbt skapa virtuell dator")]</span><span class="sxs-lookup"><span data-stu-id="c701b-107">[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-nlb/create-vm-nlb.sh "Quick Create VM")]</span></span>
+
+## <a name="clean-up-deployment"></a><span data-ttu-id="c701b-108">Rensa distribution</span><span class="sxs-lookup"><span data-stu-id="c701b-108">Clean up deployment</span></span> 
+
+<span data-ttu-id="c701b-109">Kör följande kommando för att ta bort resursgruppen, virtuell dator och alla relaterade resurser.</span><span class="sxs-lookup"><span data-stu-id="c701b-109">Run the following command to remove the resource group, VM, and all related resources.</span></span>
+
+```azurecli
+az group delete --name myResourceGroup
+```
+
+## <a name="script-explanation"></a><span data-ttu-id="c701b-110">Skriptet förklaring</span><span class="sxs-lookup"><span data-stu-id="c701b-110">Script explanation</span></span>
+
+<span data-ttu-id="c701b-111">Det här skriptet använder följande kommandon för att skapa en resursgrupp, virtuella, tillgänglighetsuppsättning, belastningsutjämnare och alla relaterade resurser.</span><span class="sxs-lookup"><span data-stu-id="c701b-111">This script uses the following commands to create a resource group, virtual machine, availability set, load balancer, and all related resources.</span></span> <span data-ttu-id="c701b-112">Varje kommando i tabellen länkar till kommandot viss dokumentation.</span><span class="sxs-lookup"><span data-stu-id="c701b-112">Each command in the table links to command specific documentation.</span></span>
+
+| <span data-ttu-id="c701b-113">Kommando</span><span class="sxs-lookup"><span data-stu-id="c701b-113">Command</span></span> | <span data-ttu-id="c701b-114">Anteckningar</span><span class="sxs-lookup"><span data-stu-id="c701b-114">Notes</span></span> |
+|---|---|
+| [<span data-ttu-id="c701b-115">Skapa AZ grupp</span><span class="sxs-lookup"><span data-stu-id="c701b-115">az group create</span></span>](https://docs.microsoft.com/cli/azure/group#create) | <span data-ttu-id="c701b-116">Skapar en resursgrupp som är lagrade i alla resurser.</span><span class="sxs-lookup"><span data-stu-id="c701b-116">Creates a resource group in which all resources are stored.</span></span> |
+| [<span data-ttu-id="c701b-117">Skapa AZ network vnet</span><span class="sxs-lookup"><span data-stu-id="c701b-117">az network vnet create</span></span>](https://docs.microsoft.com/cli/azure/network/vnet#create) | <span data-ttu-id="c701b-118">Skapar ett virtuellt Azure-nätverk och undernät.</span><span class="sxs-lookup"><span data-stu-id="c701b-118">Creates an Azure virtual network and subnet.</span></span> |
+| [<span data-ttu-id="c701b-119">Skapa AZ nätverket offentliga-ip</span><span class="sxs-lookup"><span data-stu-id="c701b-119">az network public-ip create</span></span>](https://docs.microsoft.com/cli/azure/network/public-ip#create) | <span data-ttu-id="c701b-120">Skapar en offentlig IP-adress med en statisk IP-adress och en tillhörande DNS-namn.</span><span class="sxs-lookup"><span data-stu-id="c701b-120">Creates a public IP address with a static IP address and an associated DNS name.</span></span> |
+| [<span data-ttu-id="c701b-121">Skapa AZ nätverket lb</span><span class="sxs-lookup"><span data-stu-id="c701b-121">az network lb create</span></span>](https://docs.microsoft.com/cli/azure/network/lb#create) | <span data-ttu-id="c701b-122">Skapar en Azure belastningsutjämnare.</span><span class="sxs-lookup"><span data-stu-id="c701b-122">Creates an Azure load balancer.</span></span> |
+| [<span data-ttu-id="c701b-123">Skapa AZ nätverket lb avsökning</span><span class="sxs-lookup"><span data-stu-id="c701b-123">az network lb probe create</span></span>](https://docs.microsoft.com/cli/azure/network/lb/probe#create) | <span data-ttu-id="c701b-124">Skapar en belastningsutjämningsavsökning.</span><span class="sxs-lookup"><span data-stu-id="c701b-124">Creates a load balancer probe.</span></span> <span data-ttu-id="c701b-125">En belastningsutjämningsavsökning används för att övervaka varje virtuell dator i uppsättningen av belastningen belastningsutjämnaren.</span><span class="sxs-lookup"><span data-stu-id="c701b-125">A load balancer probe is used to monitor each VM in the load balancer set.</span></span> <span data-ttu-id="c701b-126">Om någon virtuell dator blir otillgänglig, dirigeras trafik inte till den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="c701b-126">If any VM becomes inaccessible, traffic is not routed to the VM.</span></span> |
+| [<span data-ttu-id="c701b-127">Skapa AZ nätverket lb regel</span><span class="sxs-lookup"><span data-stu-id="c701b-127">az network lb rule create</span></span>](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | <span data-ttu-id="c701b-128">Skapar en regel för belastningsutjämnare.</span><span class="sxs-lookup"><span data-stu-id="c701b-128">Creates a load balancer rule.</span></span> <span data-ttu-id="c701b-129">I det här exemplet skapas en regel för port 80.</span><span class="sxs-lookup"><span data-stu-id="c701b-129">In this sample, a rule is created for port 80.</span></span> <span data-ttu-id="c701b-130">När HTTP-trafik anländer på belastningsutjämnaren, dirigeras till port 80 något av de virtuella datorerna i LB-uppsättningen.</span><span class="sxs-lookup"><span data-stu-id="c701b-130">As HTTP traffic arrives at the load balancer, it is routed to port 80 one of the VMs in the LB set.</span></span> |
+| [<span data-ttu-id="c701b-131">Skapa AZ nätverket lb inkommande nat-regel</span><span class="sxs-lookup"><span data-stu-id="c701b-131">az network lb inbound-nat-rule create</span></span>](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#create) | <span data-ttu-id="c701b-132">Skapar en regel för belastningsutjämnare NAT (Network Address Translation).</span><span class="sxs-lookup"><span data-stu-id="c701b-132">Creates load balancer Network Address Translation (NAT) rule.</span></span>  <span data-ttu-id="c701b-133">NAT-regler kan du mappa en port för belastningsutjämnaren till en port på en virtuell dator.</span><span class="sxs-lookup"><span data-stu-id="c701b-133">NAT rules map a port of the load balancer to a port on a VM.</span></span> <span data-ttu-id="c701b-134">I det här exemplet skapas en NAT-regel för SSH-trafik på varje virtuell dator i uppsättningen av belastningen belastningsutjämnaren.</span><span class="sxs-lookup"><span data-stu-id="c701b-134">In this sample, a NAT rule is created for SSH traffic to each VM in the load balancer set.</span></span>  |
+| [<span data-ttu-id="c701b-135">Skapa AZ nätverket nsg</span><span class="sxs-lookup"><span data-stu-id="c701b-135">az network nsg create</span></span>](https://docs.microsoft.com/cli/azure/network/nsg#create) | <span data-ttu-id="c701b-136">Skapar en nätverkssäkerhetsgrupp (NSG), vilket är en säkerhetsgräns mellan internet och den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="c701b-136">Creates a network security group (NSG), which is a security boundary between the internet and the virtual machine.</span></span> |
+| [<span data-ttu-id="c701b-137">Skapa AZ nätverket nsg regel</span><span class="sxs-lookup"><span data-stu-id="c701b-137">az network nsg rule create</span></span>](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) | <span data-ttu-id="c701b-138">Skapar en NSG-regel för att tillåta inkommande trafik.</span><span class="sxs-lookup"><span data-stu-id="c701b-138">Creates an NSG rule to allow inbound traffic.</span></span> <span data-ttu-id="c701b-139">I det här exemplet används port 22 för SSH-trafik.</span><span class="sxs-lookup"><span data-stu-id="c701b-139">In this sample, port 22 is opened for SSH traffic.</span></span> |
+| [<span data-ttu-id="c701b-140">Skapa AZ nätverket nic</span><span class="sxs-lookup"><span data-stu-id="c701b-140">az network nic create</span></span>](https://docs.microsoft.com/cli/azure/network/nic#create) | <span data-ttu-id="c701b-141">Skapar ett virtuellt nätverkskort som kopplas till den virtuella nätverk och undernät NSG.</span><span class="sxs-lookup"><span data-stu-id="c701b-141">Creates a virtual network card and attaches it to the virtual network, subnet, and NSG.</span></span> |
+| [<span data-ttu-id="c701b-142">Skapa AZ vm tillgänglighetsuppsättning</span><span class="sxs-lookup"><span data-stu-id="c701b-142">az vm availability-set create</span></span>](https://docs.microsoft.com/cli/azure/network/lb/rule#create) | <span data-ttu-id="c701b-143">Skapar en tillgänglighetsuppsättning.</span><span class="sxs-lookup"><span data-stu-id="c701b-143">Creates an availability set.</span></span> <span data-ttu-id="c701b-144">Tillgänglighetsuppsättningar garantera programmets drifttid genom att sprida virtuella datorer mellan fysiska resurser så att hela uppsättningen inte sker om fel inträffar.</span><span class="sxs-lookup"><span data-stu-id="c701b-144">Availability sets ensure application uptime by spreading the virtual machines across physical resources such that if failure occurs, the entire set is not effected.</span></span> |
+| [<span data-ttu-id="c701b-145">Skapa AZ vm</span><span class="sxs-lookup"><span data-stu-id="c701b-145">az vm create</span></span>](/cli/azure/vm#create) | <span data-ttu-id="c701b-146">Skapar den virtuella datorn och ansluter till nätverkskort, virtuella nätverk, undernät och NSG.</span><span class="sxs-lookup"><span data-stu-id="c701b-146">Creates the virtual machine and connects it to the network card, virtual network, subnet, and NSG.</span></span> <span data-ttu-id="c701b-147">Det här kommandot anger också avbildningen av virtuella datorn ska användas och administrativa autentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="c701b-147">This command also specifies the virtual machine image to be used and administrative credentials.</span></span>  |
+| [<span data-ttu-id="c701b-148">ta bort grupp AZ</span><span class="sxs-lookup"><span data-stu-id="c701b-148">az group delete</span></span>](https://docs.microsoft.com/cli/azure/vm/extension#set) | <span data-ttu-id="c701b-149">Tar bort en resursgrupp, inklusive alla kapslade resurser.</span><span class="sxs-lookup"><span data-stu-id="c701b-149">Deletes a resource group including all nested resources.</span></span> |
+
+## <a name="next-steps"></a><span data-ttu-id="c701b-150">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="c701b-150">Next steps</span></span>
+
+<span data-ttu-id="c701b-151">Mer information om Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="c701b-151">For more information on the Azure CLI, see [Azure CLI documentation](https://docs.microsoft.com/cli/azure/overview).</span></span>
+
+<span data-ttu-id="c701b-152">Ytterligare Azure-nätverk CLI skriptexempel finns i den [Azure nätverk dokumentationen](../cli-samples.md).</span><span class="sxs-lookup"><span data-stu-id="c701b-152">Additional Azure Networking CLI script samples can be found in the [Azure Networking documentation](../cli-samples.md).</span></span>

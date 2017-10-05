@@ -1,0 +1,2 @@
+>[!Note]
+> <span data-ttu-id="9b8ec-101">Vi rekommenderar att du använder ett Azure Storage-konto när du utvecklar lokalt.</span><span class="sxs-lookup"><span data-stu-id="9b8ec-101">We recommend that you use an Azure Storage account when developing locally.</span></span> <span data-ttu-id="9b8ec-102">Användning av Azure Storage-emulatorn stöds inte av Azure Functions verktyg.</span><span class="sxs-lookup"><span data-stu-id="9b8ec-102">Use of the Azure Storage Emulator is not supported by Azure Functions tools.</span></span>

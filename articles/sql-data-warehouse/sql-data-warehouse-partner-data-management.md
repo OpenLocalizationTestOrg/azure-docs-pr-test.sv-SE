@@ -1,0 +1,100 @@
+---
+title: SQL Data Warehouse data management partners | Microsoft Docs
+description: "Listor med tredje parts data management samarbetar med lösningar som stöder SQL Data Warehouse."
+services: sql-data-warehouse
+documentationcenter: NA
+author: kevinvngo
+manager: jhubbard
+editor: 
+ms.assetid: c3d96b41-f049-49e8-af32-408f4a893477
+ms.service: sql-data-warehouse
+ms.devlang: NA
+ms.topic: article
+ms.tgt_pltfrm: NA
+ms.workload: data-services
+ms.custom: partners
+ms.date: 12/27/2016
+ms.author: kevin;barbkess
+ms.openlocfilehash: 2fc8d1876e8a26252e83928857f5e7e9bf6ad47f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 07/11/2017
+---
+# <a name="sql-data-warehouse-data-management-partners"></a><span data-ttu-id="811f5-103">SQL Data Warehouse data management partners</span><span class="sxs-lookup"><span data-stu-id="811f5-103">SQL Data Warehouse data management partners</span></span>
+<span data-ttu-id="811f5-104">Välj en mängd olika branschledande verktyg för att skapa din lösning för slutpunkt till slutpunkt data warehouse.</span><span class="sxs-lookup"><span data-stu-id="811f5-104">To create your end-to-end data warehouse solution, choose from a wide variety of industry-leading tools.</span></span> <span data-ttu-id="811f5-105">Den här artikeln visar Microsoft partnerföretag med verktyg för hantering av data och lösningar som stöder Azure SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="811f5-105">This article highlights Microsoft partner companies with data management tools and solutions supporting Azure SQL Data Warehouse.</span></span>
+
+## <a name="our-data-management-partners"></a><span data-ttu-id="811f5-106">Våra data management partner</span><span class="sxs-lookup"><span data-stu-id="811f5-106">Our data management partners</span></span>
+| <span data-ttu-id="811f5-107">Partner</span><span class="sxs-lookup"><span data-stu-id="811f5-107">Partner</span></span> | <span data-ttu-id="811f5-108">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="811f5-108">Description</span></span> | <span data-ttu-id="811f5-109">Länkar</span><span class="sxs-lookup"><span data-stu-id="811f5-109">Links</span></span> | <span data-ttu-id="811f5-110">Videoklipp</span><span class="sxs-lookup"><span data-stu-id="811f5-110">Videos</span></span> |
+| --- | --- | --- | --- |
+| ![Coffing datalagring][1] |<span data-ttu-id="811f5-112">**Coffing datalagring**</span><span class="sxs-lookup"><span data-stu-id="811f5-112">**Coffing Data Warehousing**</span></span><br><span data-ttu-id="811f5-113">Coffing Data Warehousing ger Nexus Chameleon, ett verktyg med 10 år av design dedikerad till frågar system.</span><span class="sxs-lookup"><span data-stu-id="811f5-113">Coffing Data Warehousing provides Nexus Chameleon, a tool with 10 years of design dedicated to querying systems.</span></span> <span data-ttu-id="811f5-114">Nexus finns som ett Frågeverktyg för SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="811f5-114">Nexus is available as a query tool for SQL Data Warehouse.</span></span> <span data-ttu-id="811f5-115">Använd Nexus fråga internt och molntjänster datorer och Anslut till data på olika plattformar.</span><span class="sxs-lookup"><span data-stu-id="811f5-115">Use Nexus to query in-house and cloud computers and join data across different platforms.</span></span> <span data-ttu-id="811f5-116">Platsen klickar du på rapporten!</span><span class="sxs-lookup"><span data-stu-id="811f5-116">Point-Click-Report!</span></span> |<span data-ttu-id="811f5-117">[Marketplace][coffing_marketplace]</span><span class="sxs-lookup"><span data-stu-id="811f5-117">[Marketplace][coffing_marketplace]</span></span><br><span data-ttu-id="811f5-118">[Webbplats][coffing_website]</span><span class="sxs-lookup"><span data-stu-id="811f5-118">[Website][coffing_website]</span></span><br><span data-ttu-id="811f5-119">[Pressmeddelanden][coffing_press]</span><span class="sxs-lookup"><span data-stu-id="811f5-119">[Press Release][coffing_press]</span></span><br><span data-ttu-id="811f5-120">[Twitter][coffing_twitter]</span><span class="sxs-lookup"><span data-stu-id="811f5-120">[Twitter][coffing_twitter]</span></span><br><span data-ttu-id="811f5-121">[YouTube][coffing_youtube]</span><span class="sxs-lookup"><span data-stu-id="811f5-121">[YouTube][coffing_youtube]</span></span> |<span data-ttu-id="811f5-122">[![coffing video](./media/sql-data-warehouse-partner-data-management/coffing_video.jpg)](https://www.youtube.com/watch?v=N5GSxBEySFc)</span><span class="sxs-lookup"><span data-stu-id="811f5-122">[![coffing video](./media/sql-data-warehouse-partner-data-management/coffing_video.jpg)](https://www.youtube.com/watch?v=N5GSxBEySFc)</span></span> |
+| ![Inbrein][2] |<span data-ttu-id="811f5-124">**MicroERD**</span><span class="sxs-lookup"><span data-stu-id="811f5-124">**MicroERD**</span></span><br><span data-ttu-id="811f5-125">Inbrein MicroERD innehåller verktyg som du behöver skapa en exakt datamodell, minska dataredundans, förbättra produktiviteten och se standarder.</span><span class="sxs-lookup"><span data-stu-id="811f5-125">Inbrein MicroERD provides the tools that you need to create a precise data model, reduce data redundancy, improve productivity, and observe standards.</span></span> <span data-ttu-id="811f5-126">Med hjälp av sitt användargränssnitt, som har utvecklats baserat på omfattande användarupplevelser fungerar Modellerare på DB modeller snabbt och enkelt.</span><span class="sxs-lookup"><span data-stu-id="811f5-126">By using its UI, which was developed based on extensive user experiences, a modeler can work on DB models easily and conveniently.</span></span> <span data-ttu-id="811f5-127">Du kan alltid få nya och förbättrade funktioner för MicroERD via fråga funktionella förbättringarna och uppdateringar.</span><span class="sxs-lookup"><span data-stu-id="811f5-127">You can continuously enjoy new and improved functions of MicroERD through prompt functional improvements and updates.</span></span> |<span data-ttu-id="811f5-128">[Webbplats][inbrein_website]</span><span class="sxs-lookup"><span data-stu-id="811f5-128">[Website][inbrein_website]</span></span><br><span data-ttu-id="811f5-129">[Datablad][inbrein_datasheet]</span><span class="sxs-lookup"><span data-stu-id="811f5-129">[Datasheet][inbrein_datasheet]</span></span><br><span data-ttu-id="811f5-130">[Twitter][inbrein_twitter]</span><span class="sxs-lookup"><span data-stu-id="811f5-130">[Twitter][inbrein_twitter]</span></span><br><span data-ttu-id="811f5-131">[YouTube][inbrein_youtube]</span><span class="sxs-lookup"><span data-stu-id="811f5-131">[YouTube][inbrein_youtube]</span></span> |<span data-ttu-id="811f5-132">[![inbrein video](./media/sql-data-warehouse-partner-data-management/inbrein_video.jpg)](https://www.youtube.com/watch?v=IGHSAk4bxdE)</span><span class="sxs-lookup"><span data-stu-id="811f5-132">[![inbrein video](./media/sql-data-warehouse-partner-data-management/inbrein_video.jpg)](https://www.youtube.com/watch?v=IGHSAk4bxdE)</span></span> |
+| ![Infolibrarian][3] |<span data-ttu-id="811f5-134">**Infolibrarian**</span><span class="sxs-lookup"><span data-stu-id="811f5-134">**Infolibrarian**</span></span><br><span data-ttu-id="811f5-135">InfoLibrarian kataloger, lagrar och hanterar metadata för att hjälpa dig att lösa viktiga stötestenar för datahantering.</span><span class="sxs-lookup"><span data-stu-id="811f5-135">InfoLibrarian catalogs, stores, and manages metadata to help you solve key pain points of data management.</span></span> <span data-ttu-id="811f5-136">Dessutom ger vi metadata hantering, datastyrning och lösningar för programvara för att hantera och publicering av metadata från en mängd olika verktyg och tekniker.</span><span class="sxs-lookup"><span data-stu-id="811f5-136">In addition, we provide metadata management, data governance, and asset management software solutions for managing and publishing metadata from a diverse set of tools and technologies.</span></span> |<span data-ttu-id="811f5-137">[Marketplace][infolibrarian_marketplace]</span><span class="sxs-lookup"><span data-stu-id="811f5-137">[Marketplace][infolibrarian_marketplace]</span></span><br><span data-ttu-id="811f5-138">[Webbplats][infolibrarian_website]</span><span class="sxs-lookup"><span data-stu-id="811f5-138">[Website][infolibrarian_website]</span></span><br><span data-ttu-id="811f5-139">[Twitter][infolibrarian_twitter]</span><span class="sxs-lookup"><span data-stu-id="811f5-139">[Twitter][infolibrarian_twitter]</span></span> |<span data-ttu-id="811f5-140">[![infolibrarian video](./media/sql-data-warehouse-partner-data-management/infolibrarian_video.png)](http://www.infolibcorp.com/metadata-management-videos/vdbplayer.swf?volume=100&url=video/infolibrarian-azure-provisioning.mp4)</span><span class="sxs-lookup"><span data-stu-id="811f5-140">[![infolibrarian video](./media/sql-data-warehouse-partner-data-management/infolibrarian_video.png)](http://www.infolibcorp.com/metadata-management-videos/vdbplayer.swf?volume=100&url=video/infolibrarian-azure-provisioning.mp4)</span></span> |
+| ![Redpoint globala][4] |<span data-ttu-id="811f5-142">**RedPoint interaktion**</span><span class="sxs-lookup"><span data-stu-id="811f5-142">**RedPoint Interaction**</span></span><br><span data-ttu-id="811f5-143">RedPoint interaktion ger du kan interagera med kunder i en kontinuerlig dialogruta över varje kommunikationskanalen och touch punkt.</span><span class="sxs-lookup"><span data-stu-id="811f5-143">RedPoint Interaction empowers you to engage with customers in a continuous dialog across every communication channel and touch point.</span></span> <span data-ttu-id="811f5-144">Enkelt hantera fullständig livscykeln för omnichannel marknadsföring från en enda operativa kontroll</span><span class="sxs-lookup"><span data-stu-id="811f5-144">Easily manage the complete lifecycle of omnichannel marketing from a single point of operational control</span></span> |<span data-ttu-id="811f5-145">[Marketplace][redpoint_it_marketplace]</span><span class="sxs-lookup"><span data-stu-id="811f5-145">[Marketplace][redpoint_it_marketplace]</span></span><br><span data-ttu-id="811f5-146">[Webbplats][redpoint_it_website]</span><span class="sxs-lookup"><span data-stu-id="811f5-146">[Website][redpoint_it_website]</span></span><br><span data-ttu-id="811f5-147">[Pressmeddelanden][redpoint_press]</span><span class="sxs-lookup"><span data-stu-id="811f5-147">[Press Release][redpoint_press]</span></span><br><span data-ttu-id="811f5-148">[Datablad][redpoint_it_datasheet]</span><span class="sxs-lookup"><span data-stu-id="811f5-148">[Datasheet][redpoint_it_datasheet]</span></span><br><span data-ttu-id="811f5-149">[Twitter][redpoint_twitter]</span><span class="sxs-lookup"><span data-stu-id="811f5-149">[Twitter][redpoint_twitter]</span></span><br><span data-ttu-id="811f5-150">[YouTube][redpoint_youtube]</span><span class="sxs-lookup"><span data-stu-id="811f5-150">[YouTube][redpoint_youtube]</span></span> |<span data-ttu-id="811f5-151">[![redpoint dm video](./media/sql-data-warehouse-partner-data-management/redpoint_it_video.jpg)](https://vimeo.com/103715582)</span><span class="sxs-lookup"><span data-stu-id="811f5-151">[![redpoint dm video](./media/sql-data-warehouse-partner-data-management/redpoint_it_video.jpg)](https://vimeo.com/103715582)</span></span> |
+| ![Redpoint globala][4] |<span data-ttu-id="811f5-153">**RedPoint datahantering**</span><span class="sxs-lookup"><span data-stu-id="811f5-153">**RedPoint Data Management**</span></span><br><span data-ttu-id="811f5-154">RedPoint datahantering aktivera att tillämpa alla data för att driva mellan kanal kunden engagement när du utför strukturerade och Ostrukturerade data management.</span><span class="sxs-lookup"><span data-stu-id="811f5-154">RedPoint Data Management enable marketers to apply all their data to drive cross-channel customer engagement while performing structured and unstructured data management.</span></span> <span data-ttu-id="811f5-155">Du kan maximera värdet för att leverera hyper personliga, kontextuella interaktioner som krävs för att delta dagens omni-kanal kunden strukturerade och Ostrukturerade data genom att utnyttja Azure SQL Data Warehouse och RedPoint.</span><span class="sxs-lookup"><span data-stu-id="811f5-155">By taking advantage of Azure SQL Data Warehouse and RedPoint you can maximize the value of your structured and unstructured data to deliver the hyper-personalized, contextual interactions needed to engage today’s omni-channel customer.</span></span> <span data-ttu-id="811f5-156">Dra och släpp-gränssnittet gör design och köra data hanteringsprocesser enkelt.</span><span class="sxs-lookup"><span data-stu-id="811f5-156">Drag-and-drop interface makes designing and executing data management processes easy.</span></span> |<span data-ttu-id="811f5-157">[Marketplace][redpoint_dm_marketplace]</span><span class="sxs-lookup"><span data-stu-id="811f5-157">[Marketplace][redpoint_dm_marketplace]</span></span><br><span data-ttu-id="811f5-158">[Webbplats][redpoint_dm_website]</span><span class="sxs-lookup"><span data-stu-id="811f5-158">[Website][redpoint_dm_website]</span></span><br><span data-ttu-id="811f5-159">[Pressmeddelanden][redpoint_press]</span><span class="sxs-lookup"><span data-stu-id="811f5-159">[Press Release][redpoint_press]</span></span><br><span data-ttu-id="811f5-160">[Datablad][redpoint_dm_datasheet]</span><span class="sxs-lookup"><span data-stu-id="811f5-160">[Datasheet][redpoint_dm_datasheet]</span></span><br><span data-ttu-id="811f5-161">[Twitter][redpoint_twitter]</span><span class="sxs-lookup"><span data-stu-id="811f5-161">[Twitter][redpoint_twitter]</span></span><br><span data-ttu-id="811f5-162">[YouTube][redpoint_youtube]</span><span class="sxs-lookup"><span data-stu-id="811f5-162">[YouTube][redpoint_youtube]</span></span> |<span data-ttu-id="811f5-163">[![redpoint dm video](./media/sql-data-warehouse-partner-data-management/redpoint_dm_video.jpg)](https://www.youtube.com/watch?v=o3DtXRpiEg0)</span><span class="sxs-lookup"><span data-stu-id="811f5-163">[![redpoint dm video](./media/sql-data-warehouse-partner-data-management/redpoint_dm_video.jpg)](https://www.youtube.com/watch?v=o3DtXRpiEg0)</span></span> |
+| ![Sentry en][5] |<span data-ttu-id="811f5-165">**DW Sentry**</span><span class="sxs-lookup"><span data-stu-id="811f5-165">**DW Sentry**</span></span><br><span data-ttu-id="811f5-166">Intelligent data movement instrumentpanelen och händelse kalendern, ska du alltid vet exakt vad påverkar din arbetsbelastning.</span><span class="sxs-lookup"><span data-stu-id="811f5-166">With the intelligent data movement dashboard and event calendar, you will always know exactly what is impacting your workload.</span></span> <span data-ttu-id="811f5-167">Utformad för att ge dig inblick i dina frågor och jobb som körs för att läsa in säkerhetskopia eller återställa dina data och du kommer aldrig bekymra dig om huruvida du gör mest av dina Azure-resurser.</span><span class="sxs-lookup"><span data-stu-id="811f5-167">Designed to give you visibility into your queries and jobs running to load, backup or restore your data, you will never worry about whether or not you are making the most of your Azure resources.</span></span> |<span data-ttu-id="811f5-168">[Marketplace][sql_sentry_marketplace]</span><span class="sxs-lookup"><span data-stu-id="811f5-168">[Marketplace][sql_sentry_marketplace]</span></span><br><span data-ttu-id="811f5-169">[Webbplats][sql_sentry_website]</span><span class="sxs-lookup"><span data-stu-id="811f5-169">[Website][sql_sentry_website]</span></span><br><span data-ttu-id="811f5-170">[Pressmeddelanden][sql_sentry_press]</span><span class="sxs-lookup"><span data-stu-id="811f5-170">[Press Release][sql_sentry_press]</span></span><br><span data-ttu-id="811f5-171">[Twitter][sql_sentry_twitter]</span><span class="sxs-lookup"><span data-stu-id="811f5-171">[Twitter][sql_sentry_twitter]</span></span><br><span data-ttu-id="811f5-172">[YouTube][sql_sentry_youtube]</span><span class="sxs-lookup"><span data-stu-id="811f5-172">[YouTube][sql_sentry_youtube]</span></span> | |
+
+## <a name="next-steps"></a><span data-ttu-id="811f5-173">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="811f5-173">Next Steps</span></span>
+<span data-ttu-id="811f5-174">Läs mer om några av våra andra partners i [Business Intelligence-partners] [ bi_partners] och [dataintegrering partners][di_partners].</span><span class="sxs-lookup"><span data-stu-id="811f5-174">To learn more about some of our other partners, see [Business Intelligence partners][bi_partners] and [Data Integration partners][di_partners].</span></span>
+
+<!--Image references-->
+[1]: ./media/sql-data-warehouse-partner-data-management/coffing_data_warehousing_logo.png
+[2]: ./media/sql-data-warehouse-partner-data-management/inbrein_logo.png
+[3]: ./media/sql-data-warehouse-partner-data-management/infolibrarian_logo.png
+[4]: ./media/sql-data-warehouse-partner-data-management/redpoint_global_logo.png
+[5]: ./media/sql-data-warehouse-partner-data-management/sql_sentry_logo.png
+
+<!--Article links-->
+[bi_partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[dm_partners]: ./sql-data-warehouse-partner-data-management.md
+[di_partners]: ./sql-data-warehouse-partner-data-integration.md
+
+<!--Website links -->
+[coffing_website]:http://www.coffingdw.com/software/nexus/
+[inbrein_website]:http://microerd.com/
+[infolibrarian_website]:http://www.infolibcorp.com/metadata-management/software-tools
+[redpoint_it_website]:http://www.redpoint.net/products/customer-interaction-management/
+[redpoint_dm_website]:http://www.redpoint.net/products/data-management-solutions/
+[sql_sentry_website]:https://sentryone.com/platform/azure-sql-dw-performance-monitoring/
+
+<!--ebook Links-->
+
+<!--Datasheet Links-->
+<!--[coffing_datasheet]:-->
+[inbrein_datasheet]:http://microerd.com/images/MicroERD_Manual/MicroERD_Manual.pdf
+<!--[infolibrarian_datasheet]:-->
+[redpoint_it_datasheet]:http://www.redpoint.net/wp-content/uploads/2016/06/RedPoint-Interaction-FS-wordle-8.5x11-RPIUS0815-07-PRINT.pdf
+[redpoint_dm_datasheet]:http://www.redpoint.net/wp-content/uploads/2014/09/RedPoint-Data-Management-FS-V2-wordle-8.5x11-0216-WEB.pdf
+<!--[sql_sentry_datasheet]:-->
+
+<!--Marketplace Links -->
+[coffing_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/nexus/nexus-chameleon-9/ 
+<!--[inbrein_marketplace]:-->
+[infolibrarian_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/infolibrarian/infolibrarian-metadata-management-server/
+[redpoint_it_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/redpoint-global/redpoint-interaction/
+[redpoint_dm_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/redpoint-global/redpoint-rpdm/ 
+[sql_sentry_marketplace]:https://azure.microsoft.com/en-us/marketplace/partners/sqlsentry/sqlsentryplatform/
+
+<!--Press links-->
+[coffing_press]:http://www.coffingdw.com/press-release-nexus-tuned-for-azure-sql-data-warehouse/
+<!--[inbrein_press]:-->
+<!--[infolibrarian_press]:-->
+[redpoint_press]:http://www.redpoint.net/press/redpoint-global-announces-support-for-microsoft-azure-sql-data-warehouse-microsoft-azure-data-lake-service/
+[sql_sentry_press]:https://www.sentryone.com/Company/News-Article/20160713-sql-sentry-performance-advisor-for-azure-sql-dw/
+
+
+<!--YouTube links-->
+[coffing_youtube]:https://www.youtube.com/channel/UC8o1zhc9tNp9ve6vDn34tkw
+[inbrein_youtube]:https://www.youtube.com/channel/UCHTYjFFaTpo6bPAtuxgdZig
+<!--[infolibrarian_youtube]:-->
+[redpoint_youtube]:https://www.youtube.com/user/RedPointGlobal
+[sql_sentry_youtube]:https://www.youtube.com/user/SQLSentry
+
+<!--Twitter links-->
+[coffing_twitter]:https://twitter.com/CoffingDW
+[inbrein_twitter]:https://twitter.com/microerd
+[infolibrarian_twitter]:https://twitter.com/InfoLibCorp
+[redpoint_twitter]:https://twitter.com/RedPointGlobal
+[sql_sentry_twitter]:https://twitter.com/SQLSentry
+
+<!--Video links-->

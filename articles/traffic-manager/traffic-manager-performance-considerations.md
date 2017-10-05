@@ -1,0 +1,88 @@
+---
+title: "Prestandaöverväganden för Azure Traffic Manager | Microsoft Docs"
+description: "Förstå prestanda på Traffic Manager och hur du testar prestanda för din webbplats när du använder Traffic Manager"
+services: traffic-manager
+documentationcenter: 
+author: kumudd
+manager: timlt
+editor: 
+ms.assetid: 3ba5dfa1-2922-43f1-9a23-d06969c4a516
+ms.service: traffic-manager
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 03/16/2017
+ms.author: kumud
+ms.openlocfilehash: f686685138625a53971f1fc5fc754fd22c9d67b2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 07/11/2017
+---
+# <a name="performance-considerations-for-traffic-manager"></a><span data-ttu-id="2af00-103">Prestandaöverväganden för Traffic Manager</span><span class="sxs-lookup"><span data-stu-id="2af00-103">Performance considerations for Traffic Manager</span></span>
+
+<span data-ttu-id="2af00-104">Den här sidan förklarar prestandaöverväganden med Traffic Manager.</span><span class="sxs-lookup"><span data-stu-id="2af00-104">This page explains performance considerations using Traffic Manager.</span></span> <span data-ttu-id="2af00-105">Studera följande scenario:</span><span class="sxs-lookup"><span data-stu-id="2af00-105">Consider the following scenario:</span></span>
+
+<span data-ttu-id="2af00-106">Du har instanser av din webbplats i WestUS och EastAsia regioner.</span><span class="sxs-lookup"><span data-stu-id="2af00-106">You have instances of your website in the WestUS and EastAsia regions.</span></span> <span data-ttu-id="2af00-107">Någon av instanserna misslyckas hälsokontrollen för traffic manager avsökningen.</span><span class="sxs-lookup"><span data-stu-id="2af00-107">One of the instances is failing the health check for the traffic manager probe.</span></span> <span data-ttu-id="2af00-108">Programmet trafik dirigeras till Felfri region.</span><span class="sxs-lookup"><span data-stu-id="2af00-108">Application traffic is directed to the healthy region.</span></span> <span data-ttu-id="2af00-109">Den här redundansen förväntas men prestanda kan vara ett problem utifrån svarstiden för trafik nu till en avlägsna region.</span><span class="sxs-lookup"><span data-stu-id="2af00-109">This failover is expected but performance can be a problem based on the latency of the traffic now traveling to a distant region.</span></span>
+
+## <a name="performance-considerations-for-traffic-manager"></a><span data-ttu-id="2af00-110">Prestandaöverväganden för Traffic Manager</span><span class="sxs-lookup"><span data-stu-id="2af00-110">Performance considerations for Traffic Manager</span></span>
+
+<span data-ttu-id="2af00-111">Endast prestandapåverkan Traffic Manager kan ha på din webbplats är den första DNS-sökningen.</span><span class="sxs-lookup"><span data-stu-id="2af00-111">The only performance impact that Traffic Manager can have on your website is the initial DNS lookup.</span></span> <span data-ttu-id="2af00-112">En DNS-begäran för namnet på Traffic Manager-profilen hanteras av Microsoft DNS-rotservern som är värd för zonen trafficmanager.net.</span><span class="sxs-lookup"><span data-stu-id="2af00-112">A DNS request for the name of your Traffic Manager profile is handled by the Microsoft DNS root server that hosts the trafficmanager.net zone.</span></span> <span data-ttu-id="2af00-113">Traffic Manager fylls och uppdaterar regelbundet, Microsofts DNS rotservrar baserat på Traffic Manager-principen och avsökning resultat.</span><span class="sxs-lookup"><span data-stu-id="2af00-113">Traffic Manager populates, and regularly updates, the Microsoft's DNS root servers based on the Traffic Manager policy and the probe results.</span></span> <span data-ttu-id="2af00-114">Så även under den första DNS-sökningen skickas ingen DNS-frågor i Traffic Manager.</span><span class="sxs-lookup"><span data-stu-id="2af00-114">So even during the initial DNS lookup, no DNS queries are sent to Traffic Manager.</span></span>
+
+<span data-ttu-id="2af00-115">Traffic Manager består av flera komponenter: DNS-namn-servrar, en API-tjänsten, lagringsskiktet och en slutpunkt övervakningstjänsten.</span><span class="sxs-lookup"><span data-stu-id="2af00-115">Traffic Manager is made up of several components: DNS name servers, an API service, the storage layer, and an endpoint monitoring service.</span></span> <span data-ttu-id="2af00-116">Om en Traffic Manager-tjänstkomponent misslyckas, finns det ingen effekt på DNS-namnet som associeras med Traffic Manager-profilen.</span><span class="sxs-lookup"><span data-stu-id="2af00-116">If a Traffic Manager service component fails, there is no effect on the DNS name associated with your Traffic Manager profile.</span></span> <span data-ttu-id="2af00-117">Posterna i Microsoft DNS-servrar ändras inte.</span><span class="sxs-lookup"><span data-stu-id="2af00-117">The records in the Microsoft DNS servers remain unchanged.</span></span> <span data-ttu-id="2af00-118">Dock slutpunktsövervakning och DNS-uppdatering inte sker.</span><span class="sxs-lookup"><span data-stu-id="2af00-118">However, endpoint monitoring and DNS updating do not happen.</span></span> <span data-ttu-id="2af00-119">Traffic Manager är därför inte kan uppdatera DNS så att den pekar på webbplatsen växling vid fel när din primära plats kraschar.</span><span class="sxs-lookup"><span data-stu-id="2af00-119">Therefore, Traffic Manager is not able to update DNS to point to your failover site when your primary site goes down.</span></span>
+
+<span data-ttu-id="2af00-120">DNS-namnmatchningen är snabb och resultat cachelagras.</span><span class="sxs-lookup"><span data-stu-id="2af00-120">DNS name resolution is fast and results are cached.</span></span> <span data-ttu-id="2af00-121">Hastigheten på den första DNS-sökningen beror på DNS-servrar som klienten använder för namnmatchning.</span><span class="sxs-lookup"><span data-stu-id="2af00-121">The speed of the initial DNS lookup depends on the DNS servers the client uses for name resolution.</span></span> <span data-ttu-id="2af00-122">En klient kan normalt slutföras en DNS-sökning i ~ 50 ms.</span><span class="sxs-lookup"><span data-stu-id="2af00-122">Typically, a client can complete a DNS lookup within ~50 ms.</span></span> <span data-ttu-id="2af00-123">Resultat av sökningen cachelagras under hela DNS-Time-to-live (TTL).</span><span class="sxs-lookup"><span data-stu-id="2af00-123">The results of the lookup are cached for the duration of the DNS Time-to-live (TTL).</span></span> <span data-ttu-id="2af00-124">Standard-TTL för Traffic Manager är 300 sekunder.</span><span class="sxs-lookup"><span data-stu-id="2af00-124">The default TTL for Traffic Manager is 300 seconds.</span></span>
+
+<span data-ttu-id="2af00-125">Trafiken flödar inte via Traffic Manager.</span><span class="sxs-lookup"><span data-stu-id="2af00-125">Traffic does NOT flow through Traffic Manager.</span></span> <span data-ttu-id="2af00-126">När DNS-sökning har slutförts, har klienten en IP-adress för en instans av webbplatsen.</span><span class="sxs-lookup"><span data-stu-id="2af00-126">Once the DNS lookup completes, the client has an IP address for an instance of your web site.</span></span> <span data-ttu-id="2af00-127">Klienten ansluter direkt till den adressen och klarar inte via Traffic Manager.</span><span class="sxs-lookup"><span data-stu-id="2af00-127">The client connects directly to that address and does not pass through Traffic Manager.</span></span> <span data-ttu-id="2af00-128">Traffic Manager-princip som du väljer påverkas inte DNS-prestanda.</span><span class="sxs-lookup"><span data-stu-id="2af00-128">The Traffic Manager policy you choose has no influence on the DNS performance.</span></span> <span data-ttu-id="2af00-129">Dock kan en prestanda routning-metod påverka upplevelsen program.</span><span class="sxs-lookup"><span data-stu-id="2af00-129">However, a Performance routing-method can negatively impact the application experience.</span></span> <span data-ttu-id="2af00-130">Om din princip dirigerar trafik från Nordamerika till en instans som finns i Asien, kan Nätverksfördröjningen för dessa sessioner vara ett prestandaproblem.</span><span class="sxs-lookup"><span data-stu-id="2af00-130">For example, if your policy redirects traffic from North America to an instance hosted in Asia, the network latency for those sessions may be a performance issue.</span></span>
+
+## <a name="measuring-traffic-manager-performance"></a><span data-ttu-id="2af00-131">Mäter Traffic Manager-prestanda</span><span class="sxs-lookup"><span data-stu-id="2af00-131">Measuring Traffic Manager Performance</span></span>
+
+<span data-ttu-id="2af00-132">Det finns flera webbplatser som du kan använda för att förstå prestanda och beteendet för en Traffic Manager-profilen.</span><span class="sxs-lookup"><span data-stu-id="2af00-132">There are several websites you can use to understand the performance and behavior of a Traffic Manager profile.</span></span> <span data-ttu-id="2af00-133">Många av dessa platser är gratis men kan ha begränsningar.</span><span class="sxs-lookup"><span data-stu-id="2af00-133">Many of these sites are free but may have limitations.</span></span> <span data-ttu-id="2af00-134">Vissa webbplatser erbjuder förbättrad övervakning och rapportering för en avgift.</span><span class="sxs-lookup"><span data-stu-id="2af00-134">Some sites offer enhanced monitoring and reporting for a fee.</span></span>
+
+<span data-ttu-id="2af00-135">Verktygen på dessa platser mått DNS svarstiderna och visa matcha IP-adresser för klientplatser över hela världen.</span><span class="sxs-lookup"><span data-stu-id="2af00-135">The tools on these sites measure DNS latencies and display the resolved IP addresses for client locations around the world.</span></span> <span data-ttu-id="2af00-136">De flesta av dessa verktyg cachelagrar inte DNS-resultat.</span><span class="sxs-lookup"><span data-stu-id="2af00-136">Most of these tools do not cache the DNS results.</span></span> <span data-ttu-id="2af00-137">Därför visa verktygen fullständig DNS-sökning varje gång ett test körs.</span><span class="sxs-lookup"><span data-stu-id="2af00-137">Therefore, the tools show the full DNS lookup each time a test is run.</span></span> <span data-ttu-id="2af00-138">När du testar din egen klient uppstår endast fullständig DNS-sökning prestanda för en gång under TTL-värde.</span><span class="sxs-lookup"><span data-stu-id="2af00-138">When you test from your own client, you only experience the full DNS lookup performance once during the TTL duration.</span></span>
+
+## <a name="sample-tools-to-measure-dns-performance"></a><span data-ttu-id="2af00-139">Exempel verktyg för att mäta DNS-prestanda</span><span class="sxs-lookup"><span data-stu-id="2af00-139">Sample tools to measure DNS performance</span></span>
+
+* [<span data-ttu-id="2af00-140">SolveDNS</span><span class="sxs-lookup"><span data-stu-id="2af00-140">SolveDNS</span></span>](http://www.solvedns.com/dns-comparison/)
+
+    <span data-ttu-id="2af00-141">SolveDNS erbjuder många prestandaverktyg.</span><span class="sxs-lookup"><span data-stu-id="2af00-141">SolveDNS offers many performance tools.</span></span> <span data-ttu-id="2af00-142">Jämförelse av DNS-verktyget kan du se hur lång tid det tar för att matcha DNS-namn och hur som jämför till andra DNS-leverantörer.</span><span class="sxs-lookup"><span data-stu-id="2af00-142">The DNS Comparison tool can show you how long it takes to resolve your DNS name and how that compares to other DNS service providers.</span></span>
+
+* [<span data-ttu-id="2af00-143">WebSitePulse</span><span class="sxs-lookup"><span data-stu-id="2af00-143">WebSitePulse</span></span>](http://www.websitepulse.com/help/tools.php)
+
+    <span data-ttu-id="2af00-144">En av de enklaste verktyg är WebSitePulse.</span><span class="sxs-lookup"><span data-stu-id="2af00-144">One of the simplest tools is WebSitePulse.</span></span> <span data-ttu-id="2af00-145">Ange URL: en för att se DNS-matchningstid, första byten, sista byten och andra prestandastatistik.</span><span class="sxs-lookup"><span data-stu-id="2af00-145">Enter the URL to see DNS resolution time, First Byte, Last Byte, and other performance statistics.</span></span> <span data-ttu-id="2af00-146">Du kan välja mellan tre olika test-platser.</span><span class="sxs-lookup"><span data-stu-id="2af00-146">You can choose from three different test locations.</span></span> <span data-ttu-id="2af00-147">I det här exemplet ser du att den första körningen visar att DNS-sökning tar 0.204 sek.</span><span class="sxs-lookup"><span data-stu-id="2af00-147">In this example, you see that the first execution shows that DNS lookup takes 0.204 sec.</span></span>
+
+    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
+
+    <span data-ttu-id="2af00-149">Eftersom resultatet cachelagras andra test för samma Traffic Manager-slutpunkten DNS-sökning tar 0.002 sek.</span><span class="sxs-lookup"><span data-stu-id="2af00-149">Because the results are cached, the second test for the same Traffic Manager endpoint the DNS lookup takes 0.002 sec.</span></span>
+
+    ![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
+
+* [<span data-ttu-id="2af00-151">Kanada App syntetiska Övervakare</span><span class="sxs-lookup"><span data-stu-id="2af00-151">CA App Synthetic Monitor</span></span>](https://asm.ca.com/en/checkit.php)
+
+    <span data-ttu-id="2af00-152">Kallades tidigare för verktyget Watchmouse Kontrollera webbplats, platsen visar DNS-matchningstiden från flera geografiska områden samtidigt.</span><span class="sxs-lookup"><span data-stu-id="2af00-152">Formerly known as the Watchmouse Check Website tool, this site show you the DNS resolution time from multiple geographic regions simultaneously.</span></span> <span data-ttu-id="2af00-153">Ange URL: en för att se DNS-matchningstid, tid och hastighet från flera geografiska platser.</span><span class="sxs-lookup"><span data-stu-id="2af00-153">Enter the URL to see DNS resolution time, connection time, and speed from several geographic locations.</span></span> <span data-ttu-id="2af00-154">Använd det här testet om du vill se vilka värdtjänsten returneras för olika platser i världen.</span><span class="sxs-lookup"><span data-stu-id="2af00-154">Use this test to see which hosted service is returned for different locations around the world.</span></span>
+
+    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
+
+* [<span data-ttu-id="2af00-156">Pingdom</span><span class="sxs-lookup"><span data-stu-id="2af00-156">Pingdom</span></span>](http://tools.pingdom.com/)
+
+    <span data-ttu-id="2af00-157">Det här verktyget innehåller prestandastatistik för varje element i en webbsida.</span><span class="sxs-lookup"><span data-stu-id="2af00-157">This tool provides performance statistics for each element of a web page.</span></span> <span data-ttu-id="2af00-158">Fliken sidan analys visar procentandelen tid som krävs för DNS-sökning.</span><span class="sxs-lookup"><span data-stu-id="2af00-158">The Page Analysis tab shows the percentage of time spent on DNS lookup.</span></span>
+
+* [<span data-ttu-id="2af00-159">Vad är min DNS?</span><span class="sxs-lookup"><span data-stu-id="2af00-159">What's My DNS?</span></span>](http://www.whatsmydns.net/)
+
+    <span data-ttu-id="2af00-160">Den här platsen har en DNS-sökning från 20 olika platser och visar resultaten på en karta.</span><span class="sxs-lookup"><span data-stu-id="2af00-160">This site does a DNS lookup from 20 different locations and displays the results on a map.</span></span>
+
+* [<span data-ttu-id="2af00-161">Gräva webbgränssnitt</span><span class="sxs-lookup"><span data-stu-id="2af00-161">Dig Web Interface</span></span>](http://www.digwebinterface.com)
+
+    <span data-ttu-id="2af00-162">Den här platsen visar mer detaljerad DNS-information, inklusive skapa CNAME-poster och A-poster.</span><span class="sxs-lookup"><span data-stu-id="2af00-162">This site shows more detailed DNS information including CNAMEs and A records.</span></span> <span data-ttu-id="2af00-163">Kontrollera att du kontrollera 'Färga utdata' och 'statistik, under Alternativ och välj 'All' under Nameservers.</span><span class="sxs-lookup"><span data-stu-id="2af00-163">Make sure you check the 'Colorize output' and 'Stats' under options, and select 'All' under Nameservers.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="2af00-164">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="2af00-164">Next Steps</span></span>
+
+[<span data-ttu-id="2af00-165">Om Traffic Manager-trafikroutningsmetoder</span><span class="sxs-lookup"><span data-stu-id="2af00-165">About Traffic Manager traffic routing methods</span></span>](traffic-manager-routing-methods.md)
+
+[<span data-ttu-id="2af00-166">Testa inställningarna för Traffic Manager</span><span class="sxs-lookup"><span data-stu-id="2af00-166">Test your Traffic Manager settings</span></span>](traffic-manager-testing-settings.md)
+
+[<span data-ttu-id="2af00-167">Åtgärder för Traffic Manager (REST API-referens)</span><span class="sxs-lookup"><span data-stu-id="2af00-167">Operations on Traffic Manager (REST API Reference)</span></span>](http://go.microsoft.com/fwlink/?LinkId=313584)
+
+[<span data-ttu-id="2af00-168">Azure Traffic Manager-Cmdlets</span><span class="sxs-lookup"><span data-stu-id="2af00-168">Azure Traffic Manager Cmdlets</span></span>](http://go.microsoft.com/fwlink/p/?LinkId=400769)
+
