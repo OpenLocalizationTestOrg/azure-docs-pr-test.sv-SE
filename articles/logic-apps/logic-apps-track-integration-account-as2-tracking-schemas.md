@@ -1,0 +1,139 @@
+---
+title: "AS2 spårning scheman för övervakning av B2B - Azure Logic Apps | Microsoft Docs"
+description: "AS2 spårning scheman används för att övervaka B2B-meddelanden från transaktioner i ditt Azure-konto för integrering."
+author: padmavc
+manager: anneta
+editor: 
+services: logic-apps
+documentationcenter: 
+ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
+ms.service: logic-apps
+ms.workload: integration
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/27/2017
+ms.author: LADocs; padmavc
+ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 31bd296dc5ed5ac6998a6c05ee80fd38b12d662c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 07/11/2017
+---
+# <a name="start-or-enable-tracking-of-as2-messages-and-mdns-to-monitor-success-errors-and-message-properties"></a><span data-ttu-id="fdcf8-103">Starta eller aktivera spårning av AS2-meddelanden och MDNs till övervakaren lyckade, fel och meddelandeegenskaper</span><span class="sxs-lookup"><span data-stu-id="fdcf8-103">Start or enable tracking of AS2 messages and MDNs to monitor success, errors, and message properties</span></span>
+<span data-ttu-id="fdcf8-104">Du kan använda dessa scheman för AS2-spårning i ditt konto i Azure-integrering för att övervaka business-to-business (B2B) transaktioner:</span><span class="sxs-lookup"><span data-stu-id="fdcf8-104">You can use these AS2 tracking schemas in your Azure integration account to help you monitor business-to-business (B2B) transactions:</span></span>
+
+* <span data-ttu-id="fdcf8-105">AS2 meddelandet spårning av schemat</span><span class="sxs-lookup"><span data-stu-id="fdcf8-105">AS2 message tracking schema</span></span>
+* <span data-ttu-id="fdcf8-106">AS2 MDN spårning av schemat</span><span class="sxs-lookup"><span data-stu-id="fdcf8-106">AS2 MDN tracking schema</span></span>
+
+## <a name="as2-message-tracking-schema"></a><span data-ttu-id="fdcf8-107">AS2 meddelandet spårning av schemat</span><span class="sxs-lookup"><span data-stu-id="fdcf8-107">AS2 message tracking schema</span></span>
+````java
+
+    {
+       "agreementProperties": {  
+            "senderPartnerName": "",  
+            "receiverPartnerName": "",  
+            "as2To": "",  
+            "as2From": "",  
+            "agreementName": ""  
+        },  
+        "messageProperties": {
+            "direction": "",
+            "messageId": "",
+            "dispositionType": "",
+            "fileName": "",
+            "isMessageFailed": "",
+            "isMessageSigned": "",
+            "isMessageEncrypted": "",
+            "isMessageCompressed": "",
+            "correlationMessageId": "",
+            "incomingHeaders": {
+            },
+            "outgoingHeaders": {
+            },
+        "isNrrEnabled": "",
+        "isMdnExpected": "",
+        "mdnType": ""
+        }
+    }
+````
+
+| <span data-ttu-id="fdcf8-108">Egenskap</span><span class="sxs-lookup"><span data-stu-id="fdcf8-108">Property</span></span> | <span data-ttu-id="fdcf8-109">Typ</span><span class="sxs-lookup"><span data-stu-id="fdcf8-109">Type</span></span> | <span data-ttu-id="fdcf8-110">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="fdcf8-110">Description</span></span> |
+| --- | --- | --- |
+| <span data-ttu-id="fdcf8-111">senderPartnerName</span><span class="sxs-lookup"><span data-stu-id="fdcf8-111">senderPartnerName</span></span> | <span data-ttu-id="fdcf8-112">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-112">String</span></span> | <span data-ttu-id="fdcf8-113">AS2 meddelandet partner avsändare.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-113">AS2 message sender's partner name.</span></span> <span data-ttu-id="fdcf8-114">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-114">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-115">receiverPartnerName</span><span class="sxs-lookup"><span data-stu-id="fdcf8-115">receiverPartnerName</span></span> | <span data-ttu-id="fdcf8-116">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-116">String</span></span> | <span data-ttu-id="fdcf8-117">Mottagaren AS2-meddelande Partnernamn.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-117">AS2 message receiver's partner name.</span></span> <span data-ttu-id="fdcf8-118">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-118">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-119">as2To</span><span class="sxs-lookup"><span data-stu-id="fdcf8-119">as2To</span></span> | <span data-ttu-id="fdcf8-120">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-120">String</span></span> | <span data-ttu-id="fdcf8-121">AS2 meddelandet mottagarens namn från meddelandet AS2-huvuden.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-121">AS2 message receiver’s name, from the headers of the AS2 message.</span></span> <span data-ttu-id="fdcf8-122">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-122">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-123">as2From</span><span class="sxs-lookup"><span data-stu-id="fdcf8-123">as2From</span></span> | <span data-ttu-id="fdcf8-124">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-124">String</span></span> | <span data-ttu-id="fdcf8-125">AS2 meddelandet avsändare, från meddelandet AS2-huvuden.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-125">AS2 message sender’s name, from the headers of the AS2 message.</span></span> <span data-ttu-id="fdcf8-126">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-126">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-127">agreementName</span><span class="sxs-lookup"><span data-stu-id="fdcf8-127">agreementName</span></span> | <span data-ttu-id="fdcf8-128">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-128">String</span></span> | <span data-ttu-id="fdcf8-129">Namnet på AS2-avtal som meddelanden har åtgärdats.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-129">Name of the AS2 agreement to which the messages are resolved.</span></span> <span data-ttu-id="fdcf8-130">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-130">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-131">Riktning</span><span class="sxs-lookup"><span data-stu-id="fdcf8-131">direction</span></span> | <span data-ttu-id="fdcf8-132">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-132">String</span></span> | <span data-ttu-id="fdcf8-133">Flödesriktning i meddelandet, ta emot och skicka.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-133">Direction of the message flow, receive or send.</span></span> <span data-ttu-id="fdcf8-134">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-134">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-135">messageId</span><span class="sxs-lookup"><span data-stu-id="fdcf8-135">messageId</span></span> | <span data-ttu-id="fdcf8-136">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-136">String</span></span> | <span data-ttu-id="fdcf8-137">AS2 meddelande-ID från huvuden i AS2-meddelande (valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-137">AS2 message ID, from the headers of the AS2 message (Optional)</span></span> |
+| <span data-ttu-id="fdcf8-138">dispositionType</span><span class="sxs-lookup"><span data-stu-id="fdcf8-138">dispositionType</span></span> |<span data-ttu-id="fdcf8-139">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-139">String</span></span> | <span data-ttu-id="fdcf8-140">Meddelandet Disposition meddelande (MDN) disposition TYPVÄRDE.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-140">Message Disposition Notification (MDN) disposition type value.</span></span> <span data-ttu-id="fdcf8-141">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-141">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-142">fileName</span><span class="sxs-lookup"><span data-stu-id="fdcf8-142">fileName</span></span> | <span data-ttu-id="fdcf8-143">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-143">String</span></span> | <span data-ttu-id="fdcf8-144">Namnet på filen från meddelandet AS2-rubriken.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-144">File name, from the header of the AS2 message.</span></span> <span data-ttu-id="fdcf8-145">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-145">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-146">isMessageFailed</span><span class="sxs-lookup"><span data-stu-id="fdcf8-146">isMessageFailed</span></span> |<span data-ttu-id="fdcf8-147">Booleskt värde</span><span class="sxs-lookup"><span data-stu-id="fdcf8-147">Boolean</span></span> | <span data-ttu-id="fdcf8-148">Om AS2-meddelandet misslyckades.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-148">Whether the AS2 message failed.</span></span> <span data-ttu-id="fdcf8-149">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-149">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-150">isMessageSigned</span><span class="sxs-lookup"><span data-stu-id="fdcf8-150">isMessageSigned</span></span> | <span data-ttu-id="fdcf8-151">Booleskt värde</span><span class="sxs-lookup"><span data-stu-id="fdcf8-151">Boolean</span></span> | <span data-ttu-id="fdcf8-152">Om AS2-meddelandet signerades.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-152">Whether the AS2 message was signed.</span></span> <span data-ttu-id="fdcf8-153">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-153">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-154">isMessageEncrypted</span><span class="sxs-lookup"><span data-stu-id="fdcf8-154">isMessageEncrypted</span></span> | <span data-ttu-id="fdcf8-155">Booleskt värde</span><span class="sxs-lookup"><span data-stu-id="fdcf8-155">Boolean</span></span> | <span data-ttu-id="fdcf8-156">Anger om meddelandet AS2 krypterades.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-156">Whether the AS2 message was encrypted.</span></span> <span data-ttu-id="fdcf8-157">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-157">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-158">isMessageCompressed</span><span class="sxs-lookup"><span data-stu-id="fdcf8-158">isMessageCompressed</span></span> |<span data-ttu-id="fdcf8-159">Booleskt värde</span><span class="sxs-lookup"><span data-stu-id="fdcf8-159">Boolean</span></span> | <span data-ttu-id="fdcf8-160">Om AS2-meddelandet har komprimerats.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-160">Whether the AS2 message was compressed.</span></span> <span data-ttu-id="fdcf8-161">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-161">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-162">correlationMessageId</span><span class="sxs-lookup"><span data-stu-id="fdcf8-162">correlationMessageId</span></span> | <span data-ttu-id="fdcf8-163">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-163">String</span></span> | <span data-ttu-id="fdcf8-164">AS2 meddelande-ID, att korrelera meddelanden med MDNs.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-164">AS2 message ID, to correlate messages with MDNs.</span></span> <span data-ttu-id="fdcf8-165">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-165">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-166">incomingHeaders</span><span class="sxs-lookup"><span data-stu-id="fdcf8-166">incomingHeaders</span></span> |<span data-ttu-id="fdcf8-167">Ordlista för JToken</span><span class="sxs-lookup"><span data-stu-id="fdcf8-167">Dictionary of JToken</span></span> | <span data-ttu-id="fdcf8-168">AS2-huvud detaljer för inkommande meddelanden.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-168">Incoming AS2 message header details.</span></span> <span data-ttu-id="fdcf8-169">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-169">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-170">outgoingHeaders</span><span class="sxs-lookup"><span data-stu-id="fdcf8-170">outgoingHeaders</span></span> |<span data-ttu-id="fdcf8-171">Ordlista för JToken</span><span class="sxs-lookup"><span data-stu-id="fdcf8-171">Dictionary of JToken</span></span> | <span data-ttu-id="fdcf8-172">Utgående detaljer om AS2-huvud.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-172">Outgoing AS2 message header details.</span></span> <span data-ttu-id="fdcf8-173">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-173">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-174">isNrrEnabled</span><span class="sxs-lookup"><span data-stu-id="fdcf8-174">isNrrEnabled</span></span> | <span data-ttu-id="fdcf8-175">Booleskt värde</span><span class="sxs-lookup"><span data-stu-id="fdcf8-175">Boolean</span></span> | <span data-ttu-id="fdcf8-176">Använd standardvärdet om värdet inte är känd.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-176">Use default value if the value is not known.</span></span> <span data-ttu-id="fdcf8-177">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-177">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-178">isMdnExpected</span><span class="sxs-lookup"><span data-stu-id="fdcf8-178">isMdnExpected</span></span> | <span data-ttu-id="fdcf8-179">Booleskt värde</span><span class="sxs-lookup"><span data-stu-id="fdcf8-179">Boolean</span></span> | <span data-ttu-id="fdcf8-180">Använd standardvärdet om värdet inte är känd.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-180">Use default value if the value is not known.</span></span> <span data-ttu-id="fdcf8-181">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-181">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-182">mdnType</span><span class="sxs-lookup"><span data-stu-id="fdcf8-182">mdnType</span></span> | <span data-ttu-id="fdcf8-183">Enum</span><span class="sxs-lookup"><span data-stu-id="fdcf8-183">Enum</span></span> | <span data-ttu-id="fdcf8-184">Tillåtna värden är **NotConfigured**, **Sync**, och **asynkrona**.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-184">Allowed values are **NotConfigured**, **Sync**, and **Async**.</span></span> <span data-ttu-id="fdcf8-185">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-185">(Mandatory)</span></span> |
+
+## <a name="as2-mdn-tracking-schema"></a><span data-ttu-id="fdcf8-186">AS2 MDN spårning av schemat</span><span class="sxs-lookup"><span data-stu-id="fdcf8-186">AS2 MDN tracking schema</span></span>
+````java
+
+    {
+        "agreementProperties": {
+                "senderPartnerName": "",
+                "receiverPartnerName": "",
+                "as2To": "",
+                "as2From": "",
+                "agreementName": "g"
+            },
+            "messageProperties": {
+                "direction": "",
+                "messageId": "",
+                "originalMessageId": "",
+                "dispositionType": "",
+                "isMessageFailed": "",
+                "isMessageSigned": "",
+                "isNrrEnabled": "",
+                "statusCode": "",
+                "micVerificationStatus": "",
+                "correlationMessageId": "",
+                "incomingHeaders": {
+                },
+                "outgoingHeaders": {
+                }
+            }
+    }
+````
+
+| <span data-ttu-id="fdcf8-187">Egenskap</span><span class="sxs-lookup"><span data-stu-id="fdcf8-187">Property</span></span> | <span data-ttu-id="fdcf8-188">Typ</span><span class="sxs-lookup"><span data-stu-id="fdcf8-188">Type</span></span> | <span data-ttu-id="fdcf8-189">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="fdcf8-189">Description</span></span> |
+| --- | --- | --- |
+| <span data-ttu-id="fdcf8-190">senderPartnerName</span><span class="sxs-lookup"><span data-stu-id="fdcf8-190">senderPartnerName</span></span> | <span data-ttu-id="fdcf8-191">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-191">String</span></span> | <span data-ttu-id="fdcf8-192">AS2 meddelandet partner avsändare.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-192">AS2 message sender's partner name.</span></span> <span data-ttu-id="fdcf8-193">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-193">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-194">receiverPartnerName</span><span class="sxs-lookup"><span data-stu-id="fdcf8-194">receiverPartnerName</span></span> | <span data-ttu-id="fdcf8-195">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-195">String</span></span> | <span data-ttu-id="fdcf8-196">Mottagaren AS2-meddelande Partnernamn.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-196">AS2 message receiver's partner name.</span></span> <span data-ttu-id="fdcf8-197">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-197">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-198">as2To</span><span class="sxs-lookup"><span data-stu-id="fdcf8-198">as2To</span></span> | <span data-ttu-id="fdcf8-199">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-199">String</span></span> | <span data-ttu-id="fdcf8-200">Partnernamn som tar emot AS2-meddelandet.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-200">Partner name who receives the AS2 message.</span></span> <span data-ttu-id="fdcf8-201">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-201">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-202">as2From</span><span class="sxs-lookup"><span data-stu-id="fdcf8-202">as2From</span></span> | <span data-ttu-id="fdcf8-203">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-203">String</span></span> | <span data-ttu-id="fdcf8-204">Partnernamn som skickar AS2-meddelandet.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-204">Partner name who sends the AS2 message.</span></span> <span data-ttu-id="fdcf8-205">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-205">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-206">agreementName</span><span class="sxs-lookup"><span data-stu-id="fdcf8-206">agreementName</span></span> | <span data-ttu-id="fdcf8-207">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-207">String</span></span> | <span data-ttu-id="fdcf8-208">Namnet på AS2-avtal som meddelanden har åtgärdats.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-208">Name of the AS2 agreement to which the messages are resolved.</span></span> <span data-ttu-id="fdcf8-209">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-209">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-210">Riktning</span><span class="sxs-lookup"><span data-stu-id="fdcf8-210">direction</span></span> |<span data-ttu-id="fdcf8-211">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-211">String</span></span> | <span data-ttu-id="fdcf8-212">Flödesriktning i meddelandet, ta emot och skicka.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-212">Direction of the message flow, receive or send.</span></span> <span data-ttu-id="fdcf8-213">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-213">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-214">messageId</span><span class="sxs-lookup"><span data-stu-id="fdcf8-214">messageId</span></span> | <span data-ttu-id="fdcf8-215">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-215">String</span></span> | <span data-ttu-id="fdcf8-216">AS2-meddelande-ID.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-216">AS2 message ID.</span></span> <span data-ttu-id="fdcf8-217">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-217">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-218">originalMessageId</span><span class="sxs-lookup"><span data-stu-id="fdcf8-218">originalMessageId</span></span> |<span data-ttu-id="fdcf8-219">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-219">String</span></span> | <span data-ttu-id="fdcf8-220">AS2 ursprungliga meddelande-ID.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-220">AS2 original message ID.</span></span> <span data-ttu-id="fdcf8-221">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-221">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-222">dispositionType</span><span class="sxs-lookup"><span data-stu-id="fdcf8-222">dispositionType</span></span> | <span data-ttu-id="fdcf8-223">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-223">String</span></span> | <span data-ttu-id="fdcf8-224">MDN disposition TYPVÄRDE.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-224">MDN disposition type value.</span></span> <span data-ttu-id="fdcf8-225">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-225">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-226">isMessageFailed</span><span class="sxs-lookup"><span data-stu-id="fdcf8-226">isMessageFailed</span></span> |<span data-ttu-id="fdcf8-227">Booleskt värde</span><span class="sxs-lookup"><span data-stu-id="fdcf8-227">Boolean</span></span> | <span data-ttu-id="fdcf8-228">Om AS2-meddelandet misslyckades.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-228">Whether the AS2 message failed.</span></span> <span data-ttu-id="fdcf8-229">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-229">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-230">isMessageSigned</span><span class="sxs-lookup"><span data-stu-id="fdcf8-230">isMessageSigned</span></span> |<span data-ttu-id="fdcf8-231">Booleskt värde</span><span class="sxs-lookup"><span data-stu-id="fdcf8-231">Boolean</span></span> | <span data-ttu-id="fdcf8-232">Om AS2-meddelandet signerades.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-232">Whether the AS2 message was signed.</span></span> <span data-ttu-id="fdcf8-233">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-233">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-234">isNrrEnabled</span><span class="sxs-lookup"><span data-stu-id="fdcf8-234">isNrrEnabled</span></span> | <span data-ttu-id="fdcf8-235">Booleskt värde</span><span class="sxs-lookup"><span data-stu-id="fdcf8-235">Boolean</span></span> | <span data-ttu-id="fdcf8-236">Använd standardvärdet om värdet inte är känd.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-236">Use default value if the value is not known.</span></span> <span data-ttu-id="fdcf8-237">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-237">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-238">statusCode</span><span class="sxs-lookup"><span data-stu-id="fdcf8-238">statusCode</span></span> | <span data-ttu-id="fdcf8-239">Enum</span><span class="sxs-lookup"><span data-stu-id="fdcf8-239">Enum</span></span> | <span data-ttu-id="fdcf8-240">Tillåtna värden är **godkända**, **Avvisad**, och **AcceptedWithErrors**.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-240">Allowed values are **Accepted**, **Rejected**, and **AcceptedWithErrors**.</span></span> <span data-ttu-id="fdcf8-241">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-241">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-242">micVerificationStatus</span><span class="sxs-lookup"><span data-stu-id="fdcf8-242">micVerificationStatus</span></span> | <span data-ttu-id="fdcf8-243">Enum</span><span class="sxs-lookup"><span data-stu-id="fdcf8-243">Enum</span></span> | <span data-ttu-id="fdcf8-244">Tillåtna värden är **NotApplicable**, **lyckades**, och **misslyckades**.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-244">Allowed values are **NotApplicable**, **Succeeded**, and **Failed**.</span></span> <span data-ttu-id="fdcf8-245">(Obligatoriskt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-245">(Mandatory)</span></span> |
+| <span data-ttu-id="fdcf8-246">correlationMessageId</span><span class="sxs-lookup"><span data-stu-id="fdcf8-246">correlationMessageId</span></span> | <span data-ttu-id="fdcf8-247">Sträng</span><span class="sxs-lookup"><span data-stu-id="fdcf8-247">String</span></span> | <span data-ttu-id="fdcf8-248">Korrelations-ID.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-248">Correlation ID.</span></span> <span data-ttu-id="fdcf8-249">Ursprungligt postmeddelandet ID (meddelande-ID för meddelandet som MDN är konfigurerat).</span><span class="sxs-lookup"><span data-stu-id="fdcf8-249">The original messaged ID (the message ID of the message for which MDN is configured).</span></span> <span data-ttu-id="fdcf8-250">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-250">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-251">incomingHeaders</span><span class="sxs-lookup"><span data-stu-id="fdcf8-251">incomingHeaders</span></span> | <span data-ttu-id="fdcf8-252">Ordlista för JToken</span><span class="sxs-lookup"><span data-stu-id="fdcf8-252">Dictionary of JToken</span></span> | <span data-ttu-id="fdcf8-253">Anger sidhuvudet detaljer för inkommande meddelanden.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-253">Indicates incoming message header details.</span></span> <span data-ttu-id="fdcf8-254">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-254">(Optional)</span></span> |
+| <span data-ttu-id="fdcf8-255">outgoingHeaders</span><span class="sxs-lookup"><span data-stu-id="fdcf8-255">outgoingHeaders</span></span> |<span data-ttu-id="fdcf8-256">Ordlista för JToken</span><span class="sxs-lookup"><span data-stu-id="fdcf8-256">Dictionary of JToken</span></span> | <span data-ttu-id="fdcf8-257">Anger utgående meddelande sidhuvud information.</span><span class="sxs-lookup"><span data-stu-id="fdcf8-257">Indicates outgoing message header details.</span></span> <span data-ttu-id="fdcf8-258">(Valfritt)</span><span class="sxs-lookup"><span data-stu-id="fdcf8-258">(Optional)</span></span> |
+
+## <a name="next-steps"></a><span data-ttu-id="fdcf8-259">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="fdcf8-259">Next steps</span></span>
+* <span data-ttu-id="fdcf8-260">Lär dig mer om den [Enterprise-Integrationspaket](../logic-apps/logic-apps-enterprise-integration-overview.md).</span><span class="sxs-lookup"><span data-stu-id="fdcf8-260">Learn more about the [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md).</span></span>    
+* <span data-ttu-id="fdcf8-261">Lär dig mer om [övervakning B2B-meddelanden](logic-apps-monitor-b2b-message.md).</span><span class="sxs-lookup"><span data-stu-id="fdcf8-261">Learn more about [monitoring B2B messages](logic-apps-monitor-b2b-message.md).</span></span>   
+* <span data-ttu-id="fdcf8-262">Lär dig mer om [B2B anpassade spårning scheman](logic-apps-track-integration-account-custom-tracking-schema.md).</span><span class="sxs-lookup"><span data-stu-id="fdcf8-262">Learn more about [B2B custom tracking schemas](logic-apps-track-integration-account-custom-tracking-schema.md).</span></span>   
+* <span data-ttu-id="fdcf8-263">Lär dig mer om [X12 spårning scheman](logic-apps-track-integration-account-x12-tracking-schema.md).</span><span class="sxs-lookup"><span data-stu-id="fdcf8-263">Learn more about [X12 tracking schemas](logic-apps-track-integration-account-x12-tracking-schema.md).</span></span>   
+* <span data-ttu-id="fdcf8-264">Lär dig mer om [spåra B2B-meddelanden i Operations Management Suite-portalen](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).</span><span class="sxs-lookup"><span data-stu-id="fdcf8-264">Learn about [tracking B2B messages in the Operations Management Suite portal](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).</span></span>
