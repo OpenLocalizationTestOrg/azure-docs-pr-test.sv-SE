@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure Import/Export service metadata och egenskaper filformat
 Du kan ange egenskaper för en eller flera blobbar och metadata som en del av ett importjobb eller ett exportjobb. Om du vill ange egenskaper för blob som skapas som en del av ett importjobb eller metadata, kan du ange en egenskaper eller metadata fil på hårddisken som innehåller data som ska importeras. För ett exportjobb skrivs metadata och egenskaper till en fil för metadata eller egenskaper som ingår på hårddisken till dig.  
