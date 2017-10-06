@@ -1,6 +1,6 @@
 ---
-title: "Kända nätverk i den klassiska Azure-portalen | Microsoft Docs"
-description: "Genom att konfigurera kända nätverk kan undvika du IP-adresser som ägs av din organisation som ingår i inloggning-moduler från flera områden och logga moduler från IP-adresser med misstänkt aktivitetsrapporter."
+title: "aaaKnown nätverk i hello klassiska Azure-portalen | Microsoft Docs"
+description: "Genom att konfigurera kända nätverk kan undvika du IP-adresser som ägs av din organisation som ingår i hello logga moduler från flera områden och logga moduler från IP-adresser med misstänkt aktivitetsrapporter."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
-ms.openlocfilehash: e4d51d1d2f09fca34d749879e21d49f785eac35c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ec636cdda172cd3baeb1e606dd8d6e1949fbc63b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="known-networks"></a>Kända nätverk
 
@@ -29,38 +29,38 @@ ms.lasthandoff: 07/11/2017
 > 
 
 
-Du kan använda Azure Active Directory-åtkomst och användningsrapporter insyn i integritet och säkerheten för din organisations katalog. Med den här informationen kan fastställa en katalogadministratör bättre där möjliga säkerhetsrisker kan ligga så att de kan på lämpligt sätt att minska riskerna.
+Du kan använda Azure Active Directory-åtkomst och användning rapporter toogain insyn i hello integritet och säkerhet för din organisations katalog. Med den här informationen kan fastställa en katalogadministratör bättre där möjliga säkerhetsrisker kan ligga så att de kan rätt toomitigate riskerna.
 
-Det är möjligt som den ”*inloggningar från flera områden*” och ”*inloggningar från IP-adresser med misstänkt aktivitet*” rapporter flaggan felaktigt IP-adresser som faktiskt ägs av organisationen. 
+Det är möjligt att hello ”*inloggningar från flera områden*” och ”*inloggningar från IP-adresser med misstänkt aktivitet*” rapporter flaggan felaktigt IP-adresser som faktiskt ägs av ditt organisation. 
 
 Detta kan till exempel hända när: 
 
-* En användare i din Boston office har loggat in via fjärranslutning på ditt datacenter i San Francisco utlöser ”inloggningar från flera områden”-rapport 
-* En användare i din organisation försöker logga in flera gånger med ett felaktigt lösenord utlösare rapporten ”inloggningar från IP-adresser med misstänkt aktivitet” 
+* En användare på kontoret Boston har loggat in via fjärranslutning tooyour datacenter i San Francisco utlösare hello ”logga moduler från flera områden” rapport 
+* En användare i din organisation försöker toosign på flera gånger med ett felaktigt lösenord utlösare hello ”logga moduler från IP-adresser med misstänkt aktivitet” rapport 
 
-För att förhindra att dessa fall genererar vilseledande säkerhetsrapporter bör du lägga till kända IP-adressintervall i listan över organisationens offentlig IP-adress.    
+rapporter om tooprevent dessa fall genererar vilseledande säkerheten, bör du lägga till kända IP-adressintervall toohello lista över organisationens offentlig IP-adress.    
 
-### <a name="to-add-your-organizations-public-ip-address-ranges-perform-the-following-steps"></a>Utför följande steg för att lägga till din organisations offentliga IP-adressintervall:
+### <a name="tooadd-your-organizations-public-ip-address-ranges-perform-hello-following-steps"></a>tooadd din organisations offentliga IP-adressintervall, utföra hello följande steg:
 
-1. Inloggning till den [Azure-hanteringsportalen](https://manage.windowsazure.com).
+1. Inloggning toohello [Azure-hanteringsportalen](https://manage.windowsazure.com).
 
-2. I den vänstra rutan klickar du på **Active Directory**. 
+2. Hello vänster klickar du på **Active Directory**. 
 
     ![Kända nätverk](./media/active-directory-known-networks/known-netwoks-01.png)
 
-3. I den **Directory** , Välj din katalog.
+3. I hello **Directory** , Välj din katalog.
 
-4. Klicka på menyn högst upp **konfigurera**. 
+4. Hello-menyn överst hello **konfigurera**. 
 
     ![Kända nätverk](./media/active-directory-known-networks/known-netwoks-02.png)
 
-5. Gå till på fliken Konfigurera **din organisationer offentliga IP-adressintervall** 
+5. På fliken Konfigurera hello gå för**din organisationer offentliga IP-adressintervall** 
 
     ![Kända nätverk](./media/active-directory-known-networks/known-netwoks-03.png)
 
 6. Klicka på **lägga till kända IP-adressintervall**.
 
-7. Lägg till-adressintervall i dialogrutan som visas och klicka sedan på knappen Kontrollera när du är klar. 
+7. Lägg till din adressintervall hello i dialogrutan som visas och klicka sedan på knappen för hello när du är klar. 
 
     ![Kända nätverk](./media/active-directory-known-networks/known-netwoks-04.png)
 

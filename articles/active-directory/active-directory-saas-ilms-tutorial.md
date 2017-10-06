@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med iLMS | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och iLMS."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och iLMS."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,126 +13,126 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 22c72020200138e78835ed7dd2661f18b824c785
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: da0936de23afcd5a4213aa6f699165f9bfa82c35
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ilms"></a>Självstudier: Azure Active Directory-integrering med iLMS
 
-I kursen får lära du att integrera iLMS med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate iLMS med Azure Active Directory (AD Azure).
 
-Integrera iLMS med Azure AD ger dig följande fördelar:
+Integrera iLMS med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till iLMS
-- Du kan aktivera användarna att automatiskt hämta loggat in på iLMS (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till tooiLMS
+- Du kan aktivera din användare tooautomatically get inloggade tooiLMS (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med iLMS, behöver du följande:
+tooconfigure Azure AD-integrering med iLMS, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En iLMS enkel inloggning på aktiverade prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Du bör inte använda produktionsmiljön, om det inte är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till iLMS från galleriet
+1. Att lägga till iLMS från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-ilms-from-the-gallery"></a>Att lägga till iLMS från galleriet
-Du måste lägga till iLMS från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av iLMS i Azure AD.
+## <a name="adding-ilms-from-hello-gallery"></a>Att lägga till iLMS från hello-galleriet
+tooconfigure hello integrering av iLMS i Azure AD, behöver du tooadd iLMS hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till iLMS från galleriet:**
+**tooadd iLMS från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i hello dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **iLMS**.
+4. Skriv i sökrutan hello **iLMS**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_search.png)
 
-5. Välj i resultatpanelen **iLMS**, klicka på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **iLMS**, klicka på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med iLMS baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i iLMS motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i iLMS upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i iLMS är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i iLMS toobe upprättas.
 
-Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i iLMS.
+Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i iLMS.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med iLMS, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med iLMS, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare iLMS](#creating-an-ilms-test-user)**  – du har en motsvarighet för Britta Simon i iLMS som är kopplad till Azure AD-representation av henne.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare iLMS](#creating-an-ilms-test-user)**  -toohave en motsvarighet för Britta Simon i iLMS som är länkade toohello Azure AD-representation av henne.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt iLMS program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt iLMS program.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med iLMS:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med iLMS:**
 
-1. I Azure-portalen på den **iLMS** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **iLMS** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_samlbase.png)
 
-3. På den **iLMS domän och URL: er** avsnittet, utför följande steg om du vill konfigurera programmet i **IDP** initierade läge:
+3. På hello **iLMS domän och URL: er** avsnittet, utför följande steg om du inte vill tooconfigure hello programmet hello **IDP** initierade läge:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_url.png)
 
-    a. I den **identifierare** textruta klistra in den **identifierare** värdet du kopiera från **tjänstleverantör** SAML-inställningarna i iLMS administrationsportal.
+    a. I hello **identifierare** textruta klistra in hello **identifierare** värdet du kopiera från **tjänstleverantör** SAML-inställningarna i iLMS administrationsportal.
 
-    b. I den **Reply URL** textruta klistra in den **slutpunkt (URL)** värdet du kopiera från **tjänstleverantör** SAML-inställningarna i iLMS administrationsportal med följande mönster`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
+    b. I hello **Reply URL** textruta klistra in hello **slutpunkt (URL)** värdet du kopiera från **tjänstleverantör** SAML-inställningarna i iLMS administrationsportal med hello följande mönstret`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`
 
     >[!Note]
     >Den här 123456 är en exempel-värdet för identifieraren.
 
-4. Kontrollera **visa avancerade inställningar för URL: en**, om du vill konfigurera programmet i **SP** initierade läge:
+4. Kontrollera **visa avancerade inställningar för URL: en**, om du inte vill tooconfigure hello programmet i **SP** initierade läge:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_url1.png)
 
-    I den **inloggnings-URL** textruta klistra in den **slutpunkt (URL)** värdet du kopiera från **tjänstleverantör** SAML inställningarna iLMS administrationsportalen som`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`     
+    I hello **inloggnings-URL** textruta klistra in hello **slutpunkt (URL)** värdet du kopiera från **tjänstleverantör** SAML inställningarna iLMS administrationsportalen som`https://www.inspiredlms.com/Login/<instanceName>/consumer.aspx`     
 
-5. För att aktivera JIT-etablering, förväntar iLMS programmet SAML-intyg i ett specifikt format. Konfigurera följande anspråk för det här programmet. Du kan hantera värden för attributen från den **användarattribut** avsnitt på sidan för integrering av programmet. Följande skärmbild visar ett exempel för det här.
+5. tooenable JIT-etablering, iLMS program förväntar hello SAML intyg i ett specifikt format. Konfigurera hello följande anspråk för det här programmet. Du kan hantera hello värden för attributen från hello **användarattribut** avsnitt på sidan för integrering av programmet. hello följande skärmbild visar ett exempel för det här.
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/4.png)
     
-    Skapa **avdelning, Region** och **Division** attribut och Lägg till namnet på attributen i iLMS. Dessa attribut som visas ovan krävs.  
+    Skapa **avdelning, Region** och **Division** attribut och lägga till hello namn av dessa attribut i iLMS. Dessa attribut som visas ovan krävs.    
 
     > [!NOTE] 
-    > Du måste aktivera **skapa Un-recognized användarkonto** i iLMS att mappa dessa attribut. Följ instruktionerna [här](http://support.inspiredelearning.com/customer/portal/articles/2204526) att få en uppfattning på attribut-konfigurationen.
+    > Du har tooenable **skapa Un-recognized användarkonto** i iLMS toomap attributen. Följ instruktionerna för hello [här](http://support.inspiredelearning.com/customer/portal/articles/2204526) tooget en idé på hello attribut konfiguration.
 
-6. I den **användarattribut** avsnitt på den **enkel inloggning** dialogrutan Konfigurera attribut för SAML-token som visas i bilden ovan och utför följande steg:
+6. I hello **användarattribut** avsnittet hello **enkel inloggning** dialogrutan Konfigurera SAML-token attribut som visas i hello bilden ovan och utföra hello följande steg:
     
     | Attributets namn | Attributvärdet |
     | ---------------| --------------- |    
@@ -140,19 +140,19 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
     | Region | User.state |
     | Avdelning | User.jobtitle |
 
-    a. Klicka på **Lägg till attributet** att öppna den **lägga till attributet** dialogrutan.
+    a. Klicka på **Lägg till attributet** tooopen hello **lägga till attributet** dialogrutan.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_04.png)
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_05.png)
     
-    b. I den **namn** textruta ange attributets namn visas för den raden.
+    b. I hello **namn** textruta hello attributnamn visas för den raden.
     
-    c. Från den **värdet** listan, ange det attributvärde som visas för den raden.
+    c. Från hello **värdet** listan attributvärde för typ hello visas för den raden.
     
     d. Klicka på **Ok**
 
-7. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara XML-filen på datorn.
+7. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara hello XML-filen på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_certificate.png) 
 
@@ -160,130 +160,130 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-iLMS-tutorial/tutorial_general_400.png)
 
-9. I en annan webbläsarfönstret, logga in på ditt **iLMS administrationsportalen** som administratör.
+9. Logga in tooyour i ett annat webbläsarfönster **iLMS administrationsportalen** som administratör.
 
-10. Klicka på **SSO:SAML** under **inställningar** att öppna inställningarna för SAML och utför följande steg:
+10. Klicka på **SSO:SAML** under **inställningar** tooopen SAML-inställningar på fliken och utföra hello följande steg:
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/1.png) 
 
-    a. Expandera den **tjänstleverantör** avsnitt och kopiera den **identifierare** och **slutpunkt (URL)** värde.
+    a. Expandera hello **tjänstleverantör** avsnitt och kopiera hello **identifierare** och **slutpunkt (URL)** värde.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/2.png) 
 
     b. Under **identitetsleverantör** klickar du på **importera Metadata**.
     
-    c. Välj den **Metadata** hämta filen från Azure-portalen från **SAML-signeringscertifikat** avsnitt.
+    c. Välj hello **Metadata** hämta filen från Azure-portalen från **SAML-signeringscertifikat** avsnitt.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_ssoconfig1.png) 
 
-    d. Om du vill aktivera JIT etablering för att skapa iLMS datorkonton för un-känna igen användare, följa nedanstående steg:
+    d. Om du vill tooenable JIT etablering toocreate iLMS konton för un-känna igen användare, följa nedanstående steg:
         
        - Kontrollera **skapa icke godkänd användarkonto**.
        
        ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
-       -  Mappa attribut i Azure AD med attribut i iLMS. Ange namnet på attribut eller standardvärdet i attributkolumnen.
+       -  Mappa hello attribut i Azure AD med hello attribut i iLMS. Ange hello attribut namn eller hello standardvärdet i hello attributkolumnen.
 
-    e. Gå till **affärsregler** fliken och utför följande steg: 
+    e. Gå för**affärsregler** fliken och utföra hello följande steg: 
         
        ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/5.png)
 
-       - Kontrollera **skapa Un-recognized regioner, avdelningar och avdelningar** att skapa regioner, avdelningar och avdelningar som inte redan finns vid tidpunkten för enkel inloggning.
+       - Kontrollera **skapa Un-recognized regioner, avdelningar och avdelningar** toocreate regioner, avdelningar och avdelningar som inte redan finns för närvarande hello av enkel inloggning.
         
-       - Kontrollera **uppdatering användarens profil under inloggning** att ange om användarens profil uppdateras med varje enkel inloggning. 
+       - Kontrollera **uppdatering användarens profil under inloggning** toospecify om hello användarens profil uppdateras med varje enkel inloggning. 
         
-       - Om den **”uppdatering tomma värden för ej obligatoriska fält i användarprofil”** alternativet är markerat, valfri profil fält som är tom vid inloggning kommer även att användarprofilen iLMS som innehåller tomma värden för fälten.
+       - Om hello **”uppdatering tomma värden för ej obligatoriska fält i användarprofil”** alternativet är markerat, valfri profil fält som är tom vid inloggning kommer även att hello iLMS användarprofil toocontain tomma värden för fälten.
         
-       - Kontrollera **skicka fel e-postmeddelande** och ange e-postadress för användaren där du vill ta emot e-postaviseringen fel.
+       - Kontrollera **skicka fel e-postmeddelande** och ange hello e-postadress för hello användare där du vill att tooreceive hello fel e-postmeddelandet.
 
-11. Klicka på **spara** för att spara inställningarna.
+11. Klicka på **spara** knappen toosave hello inställningar.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/save.png)
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
     
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-ilms-tutorial/create_aaduser_01.png) 
 
-2. Gå till **användare och grupper** och på **alla användare** att visa en lista över användare.
+2. Gå för**användare och grupper** och på **alla användare** toodisplay hello lista över användare.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-ilms-tutorial/create_aaduser_02.png) 
 
-3. Klicka på överst i dialogrutan **Lägg till** att öppna den **användaren** dialogrutan.
+3. Hello överst i dialogrutan hello klickar du på **Lägg till** tooopen hello **användaren** dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-ilms-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-ilms-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-an-ilms-test-user"></a>Skapa en testanvändare iLMS
 
-Programmet stöder bara i tid användaretablering och authentication-användare skapas automatiskt i programmet. JIT fungerar om du har klickat på den **skapa Un-recognized användarkonto** kryssrutan under SAML Konfigurationsinställningen på administrationsportalen för iLMS.
+Programmet stöder bara i tid användaretablering och authentication-användare skapas i hello program automatiskt. JIT fungerar om du har klickat på hello **skapa Un-recognized användarkonto** kryssrutan under SAML Konfigurationsinställningen på administrationsportalen för iLMS.
 
-Följ nedanstående steg om du behöver skapa en användare manuellt:
+Följ nedanstående steg om du behöver toocreate en användare manuellt:
 
-1. Logga in på webbplatsen iLMS företag som administratör.
+1. Logga in tooyour iLMS företagets webbplats som administratör.
 
-2. Klicka på **”registrera användare”** under **användare** att öppna **registrera användaren** sidan. 
+2. Klicka på **”registrera användare”** under **användare** fliken tooopen **registrera användaren** sidan. 
    
    ![Lägga till medarbetare](./media/active-directory-saas-ilms-tutorial/3.png)
 
-3. På den **”registrera användare”** utför följande steg.
+3. På hello **”registrera användare”** utför hello följande steg.
 
     ![Lägga till medarbetare](./media/active-directory-saas-ilms-tutorial/create_testuser_add.png)
 
-    a. I den **Förnamn** textruta första typnamn Britta.
+    a. I hello **Förnamn** textruta typnamn hello första Britta.
    
-    b. I den **efternamn** textruta anger efternamn Simon.
+    b. I hello **efternamn** textruta typen hello efternamn Simon.
 
-    c. I den **e-post-ID** textruta skriver Britta Simon konto e-postadress.
+    c. I hello **e-post-ID** textruta typen hello e-postadress för Britta Simon konto.
 
-    d. I den **Region** listrutan, Välj värdet för region.
+    d. I hello **Region** listrutan, Välj hello värde för region.
 
-    e. I den **Division** listrutan, Välj värdet för delning.
+    e. I hello **Division** listrutan, Välj hello värde för delning.
 
-    f. I den **avdelning** listrutan, Välj värdet för avdelning.
+    f. I hello **avdelning** listrutan, Välj hello värde för avdelning.
 
     g. Klicka på **Spara**.
 
     > [!NOTE] 
-    > Du kan skicka e-post för registrering till användare genom att välja **skicka e-post från registrering** kryssrutan.
+    > Du kan skicka e-post toouser för registrering genom att välja **skicka e-post från registrering** kryssrutan.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning med sin åtkomst beviljas till iLMS.
+I det här avsnittet Aktivera Britta Simon toouse Azure enkel inloggning genom att tilldela tooiLMS sin åtkomst.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela iLMS Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooiLMS utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **iLMS**.
+2. Välj i listan med program hello **iLMS**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-ilms-tutorial/tutorial_ilms_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -291,7 +291,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -299,13 +299,13 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen iLMS på åtkomstpanelen du bör få automatiskt loggat in på ditt iLMS program.
+Du bör få automatiskt inloggade tooyour iLMS programmet när du klickar på hello iLMS panelen i hello åtkomstpanelen.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

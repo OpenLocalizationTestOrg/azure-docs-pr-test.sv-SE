@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Benefitsolver | Microsoft Docs"
-description: "Lär dig hur du använder Benefitsolver med Azure Active Directory för att aktivera enkel inloggning, Automatisk etablering och mycket mer!"
+description: "Lär dig hur toouse Benefitsolver med Azure Active Directory tooenable enkel inloggning, Automatisk etablering och mycket mer!"
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,132 +13,132 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 8a13dd5ebd872f86247158379b28bc291a9c9d83
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5bb8511ef9be1e386956188a93e899d6ebe56ed5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>Självstudier: Azure Active Directory-integrering med Benefitsolver
-Syftet med den här kursen är att visa integreringen av Azure och Benefitsolver.  
+hello syftet med den här kursen är tooshow hello integreringen av Azure och Benefitsolver.  
 
-Det scenario som beskrivs i den här kursen förutsätter att du redan har följande objekt:
+hello-scenario som beskrivs i den här kursen förutsätter att du redan har hello följande objekt:
 
 * En giltig Azure-prenumeration
 * En Benefitsolver enkel inloggning (SSO) aktiverat prenumeration
 
-Den här kursen Azure AD-användare som du har tilldelat Benefitsolver kommer att kunna enkel inloggning till programmet med hjälp av den [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Den här kursen hello Azure AD-användare som du har tilldelat tooBenefitsolver blir toosingle kan logga in på hello program med hjälp av hello [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
-Det scenario som beskrivs i den här kursen består av följande byggblock:
+hello-scenario som beskrivs i den här kursen består av följande byggblock hello:
 
-1. Aktivera programintegrationstyp för Benefitsolver
+1. Aktivera programmet hello-integrering för Benefitsolver
 2. Konfigurera enkel inloggning (SSO)
 3. Konfigurera användaretablering
 4. Tilldela användare
 
 ![Scenariot](./media/active-directory-saas-benefitsolver-tutorial/IC804820.png "Scenario")
 
-## <a name="enabling-the-application-integration-for-benefitsolver"></a>Aktivera programintegrationstyp för Benefitsolver
-Syftet med det här avsnittet är att beskriva hur du aktiverar programintegrationstyp för Benefitsolver.
+## <a name="enabling-hello-application-integration-for-benefitsolver"></a>Aktivera programmet hello-integrering för Benefitsolver
+hello syftet med det här avsnittet är toooutline hur tooenable hello programintegrationstyp för Benefitsolver.
 
-### <a name="to-enable-the-application-integration-for-benefitsolver-perform-the-following-steps"></a>Utför följande steg om du vill aktivera programmet-integrering för Benefitsolver:
-1. I den klassiska Azure-portalen i det vänstra navigeringsfönstret klickar du på **Active Directory**.
+### <a name="tooenable-hello-application-integration-for-benefitsolver-perform-hello-following-steps"></a>tooenable hello programintegrationstyp för Benefitsolver, utför hello följande steg:
+1. I hello klassiska Azure-portalen på hello vänstra navigationsfönstret klickar du på **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-benefitsolver-tutorial/IC700993.png "Active Directory")
-2. Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.
-3. Klicka för att öppna vyn program i vyn directory **program** på huvudmenyn.
+2. Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.
+3. tooopen hello program i vyn hello directory vyn klickar du på **program** i hello huvudmenyn.
    
    ![Program](./media/active-directory-saas-benefitsolver-tutorial/IC700994.png "program")
-4. Klicka på **Lägg till** längst ned på sidan.
+4. Klicka på **Lägg till** på hello hello sidans nederkant.
    
    ![Lägg till program](./media/active-directory-saas-benefitsolver-tutorial/IC749321.png "lägga till program")
-5. På den **vad vill du göra** dialogrutan klickar du på **lägga till ett program från galleriet**.
+5. På hello **vad vill du vill toodo** dialogrutan klickar du på **lägga till ett program från galleriet hello**.
    
    ![Lägga till ett program från gallerry](./media/active-directory-saas-benefitsolver-tutorial/IC749322.png "lägga till ett program från gallerry")
-6. I den **sökrutan**, typen **Benefitsolver**.
+6. I hello **sökrutan**, typen **Benefitsolver**.
    
    ![Programgalleriet](./media/active-directory-saas-benefitsolver-tutorial/IC804821.png "Programgalleriet")
-7. I resultatfönstret, Välj **Benefitsolver**, och klicka sedan på **Slutför** lägga till programmet.
+7. I resultatfönstret hello väljer **Benefitsolver**, och klicka sedan på **Slutför** tooadd hello program.
    
    ![Benefitssolver](./media/active-directory-saas-benefitsolver-tutorial/IC804822.png "Benefitssolver")
    
 ## <a name="configure-single-sign-on"></a>Konfigurera enkel inloggning
 
-Syftet med det här avsnittet är att beskriva hur användarna att autentisera till Benefitsolver med sitt konto i Azure AD med hjälp av federation baserat på SAML-protokoll.  
+hello syftet med det här avsnittet är toooutline hur tooenable användare tooauthenticate tooBenefitsolver med sitt konto i Azure AD med hjälp av federation baserat på hello SAML-protokoll.  
 
-Tillämpningsprogrammet Benefitsolver förväntar SAML-intyg i ett specifikt format, vilket kräver att du kan lägga till attributmappningar till din **saml-token attribut** konfiguration. 
+Tillämpningsprogrammet Benefitsolver förväntar hello SAML intyg i ett specifikt format, vilket kräver tooadd attributet mappningar tooyour **saml-token attribut** konfiguration. 
 
-Följande skärmbild visar ett exempel för det här.
+hello följande skärmbild visar ett exempel för det här.
 
 ![Attribut](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "attribut")
 
-**Utför följande steg för att konfigurera enkel inloggning:**
+**tooconfigure enkel inloggning, utföra hello följande steg:**
 
-1. I den klassiska Azure-portalen på den **Benefitsolver** integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** att öppna den **Konfigurera enkel inloggning** dialogrutan.
+1. I hello klassiska Azure-portalen på hello **Benefitsolver** integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** tooopen hello **Konfigurera enkel inloggning** dialogrutan.
    
    ![Konfigurera enkel inloggning](./media/active-directory-saas-benefitsolver-tutorial/IC804824.png "Konfigurera enkel inloggning")
-2. På den **hur vill du att användarna kan logga in på Benefitsolver** väljer **Microsoft Azure AD enkel inloggning**, och klicka sedan på **nästa**.
+2. På hello **hur skulle du som användare toosign på tooBenefitsolver** väljer **Microsoft Azure AD enkel inloggning**, och klicka sedan på **nästa**.
    
    ![Konfigurera enkel inloggning](./media/active-directory-saas-benefitsolver-tutorial/IC804825.png "Konfigurera enkel inloggning")
-3. På den **konfigurera Appinställningar** utför följande steg:
+3. På hello **konfigurera Appinställningar** utför hello följande steg:
    
    ![Konfigurera Appinställningar för](./media/active-directory-saas-benefitsolver-tutorial/IC804826.png "konfigurera App-inställningar")
    
-   1. I den **logga URL** textruta typen **http://azure.benefitsolver.com**.
-   2. I den **Reply URL** textruta typen **https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**.  
+   1. I hello **logga URL** textruta typen **http://azure.benefitsolver.com**.
+   2. I hello **Reply URL** textruta typen **https://www.benefitsolver.com/benefits/BenefitSolverView?page_name=single_signon_saml**.  
    3. Klicka på **Nästa**.
-4. På den **Konfigurera enkel inloggning på Benefitsolver** att hämta metadata, klickar du på **hämtar metadata**, och sedan spara metadatafilen lokalt på datorn.
+4. På hello **Konfigurera enkel inloggning på Benefitsolver** sida, toodownload metadata, klickar du på **hämtar metadata**, och sedan spara hello metadatafil lokalt på datorn.
    
    ![Konfigurera enkel inloggning](./media/active-directory-saas-benefitsolver-tutorial/IC804827.png "Konfigurera enkel inloggning")
-5. Skicka hämtade metadatafilen till supportteamet Benefitsolver.
+5. Skicka hello hämtas metadata filen tooyour Benefitsolver supportteamet.
    
    >[!NOTE]
-   >Supportteamet Benefitsolver har att göra den faktiska SSO-konfigurationen. Du får ett meddelande när enkel inloggning har aktiverats för din prenumeration.
+   >Supportteamet Benefitsolver har toodo hello faktiska SSO konfiguration. Du får ett meddelande när enkel inloggning har aktiverats för din prenumeration.
    >
 
-6. Välj bekräftelsen konfiguration för enkel inloggning på den klassiska Azure-portalen och klicka sedan på **Slutför** att stänga den **Konfigurera enkel inloggning** dialogrutan.
+6. Välj hello konfiguration för enkel inloggning bekräftelse på hello klassiska Azure-portalen, och klicka sedan på **Slutför** tooclose hello **Konfigurera enkel inloggning** dialogrutan.
    
    ![Konfigurera enkel inloggning](./media/active-directory-saas-benefitsolver-tutorial/IC804828.png "Konfigurera enkel inloggning")
-7. Klicka på menyn högst upp **attribut** att öppna den **SAML-Token attribut** dialogrutan.
+7. Hello-menyn överst hello **attribut** tooopen hello **SAML-Token attribut** dialogrutan.
    
    ![Attribut](./media/active-directory-saas-benefitsolver-tutorial/IC795920.png "attribut")
-8. Utför följande steg för att lägga till nödvändiga attributmappning:
+8. mappningar av tooadd hello krävs, utför hello följande steg:
    
    ![Attribut](./media/active-directory-saas-benefitsolver-tutorial/IC804823.png "attribut")
    
    | Attributets namn | Attributvärdet |
    | --- | --- |
-   | ClientID |Du måste hämta det här värdet från supportteamet Benefitsolver. |
-   | ClientKey |Du måste hämta det här värdet från supportteamet Benefitsolver. |
-   | LogoutURL |Du måste hämta det här värdet från supportteamet Benefitsolver. |
-   | EmployeeID |Du måste hämta det här värdet från supportteamet Benefitsolver. |
+   | ClientID |Du måste tooget det här värdet från supportteamet Benefitsolver. |
+   | ClientKey |Du måste tooget det här värdet från supportteamet Benefitsolver. |
+   | LogoutURL |Du måste tooget det här värdet från supportteamet Benefitsolver. |
+   | EmployeeID |Du måste tooget det här värdet från supportteamet Benefitsolver. |
    
-   1. För varje datarad i tabellen ovan, klickar du på **lägga till användarattribut**.
-   2. I den **attributnamn** textruta ange attributets namn visas för den raden.
-   3. I den **attributvärdet** textruta Välj attributvärde som visas för den raden.
+   1. För varje datarad i hello tabellen ovan klickar du på **lägga till användarattribut**.
+   2. I hello **attributnamn** textruta hello attributnamn visas för den raden.
+   3. I hello **attributvärdet** textruta väljer hello-attributvärde som visas för den raden.
    4. Klicka på **Complete** (Slutför).
 9. Klicka på **tillämpa ändringarna**.
 
 ## <a name="configure-user-provisioning"></a>Konfigurera användaretablering
-För att aktivera Azure AD-användare att logga in på Benefitsolver etableras de i Benefitsolver.  
+I ordning tooenable Azure AD-användare toolog i Benefitsolver, måste de etableras i Benefitsolver.  
 
-När det gäller Benefitsolver är data om anställda i ditt program fyllts via en inventering från personalinformationssystemet (vanligtvis varje natt).  
+Hello gäller Benefitsolver är data om anställda i ditt program fyllts via en inventering från personalinformationssystemet (vanligtvis varje natt).  
 
 >[!NOTE]
->Du kan använda något annat Benefitsolver användarens konto skapas verktyg eller API: er som tillhandahålls av Benefitsolver att etablera AAD-användarkonton. 
+>Du kan använda något annat Benefitsolver användarens konto skapas verktyg eller API: er som tillhandahålls av Benefitsolver tooprovision AAD-användarkonton. 
 > 
 
 ## <a name="assigning-users"></a>Tilldela användare
-Om du vill testa konfigurationen måste du bevilja Azure AD-användare som du vill tillåta med hjälp av ditt programåtkomst till den genom att tilldela dem.
+tootest konfigurationen, måste toogrant hello Azure AD-användare som du vill med hjälp av ditt program åtkomst tooit genom att tilldela dem tooallow.
 
-### <a name="to-assign-users-to-benefitsolver-perform-the-following-steps"></a>Utför följande steg om du vill tilldela Benefitsolver användare:
-1. Skapa ett testkonto i den klassiska Azure-portalen.
-2. På den ** Benefitsolver ** integreringssidan för programmet, klickar du på **tilldela användare**.
+### <a name="tooassign-users-toobenefitsolver-perform-hello-following-steps"></a>tooassign användare tooBenefitsolver utföra hello följande steg:
+1. Skapa ett testkonto i hello klassiska Azure-portalen.
+2. På hello ** Benefitsolver ** integreringssidan för programmet, klickar du på **tilldela användare**.
    
    ![Tilldela användare](./media/active-directory-saas-benefitsolver-tutorial/IC804829.png "tilldela användare")
-3. Välj din testanvändare, klicka på **tilldela**, och klicka sedan på **Ja** att bekräfta din tilldelning.
+3. Välj din testanvändare, klicka på **tilldela**, och klicka sedan på **Ja** tooconfirm tilldelningen.
    
    ![Ja](./media/active-directory-saas-benefitsolver-tutorial/IC767830.png "Ja")
 
-Om du vill testa dina inställningar för enkel inloggning, öppna åtkomstpanelen. Mer information om åtkomstpanelen finns [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Om du vill tootest dina inställningar för enkel inloggning, öppna hello åtkomstpanelen. Mer information om hello åtkomstpanelen finns [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 

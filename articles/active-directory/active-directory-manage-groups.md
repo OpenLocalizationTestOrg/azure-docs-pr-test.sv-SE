@@ -1,6 +1,6 @@
 ---
-title: "Använda grupper för att hantera åtkomst till resurser i Azure Active Directory | Microsoft Docs"
-description: "Hur du använder grupper i Azure Active Directory för att hantera användarnas åtkomst till lokala och molnprogram och resurser."
+title: "aaaUse grupper toomanage åtkomst tooresources i Azure Active Directory | Microsoft Docs"
+description: "Hur toouse grupper i Azure Active Directory toomanage användaren åtkomst till lokala tooon och molnprogram och resurser."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,66 +15,66 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd8125eda7643f0b190d35cbb89edf8b7b4eca30
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 876a356c8095505432e9346721f35c7943819e9d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>Hantera åtkomst till resurser med Azure Active Directory-grupper
-Azure Active Directory (AD Azure) är en omfattande identitets- och hanteringslösning som tillhandahåller kraftfulla och stabila funktioner för att hantera åtkomst till lokala och molnprogram och resurser inklusive Microsofts onlinetjänster som Office 365 och en värld av icke - Microsoft SaaS-program. Den här artikeln innehåller en översikt, men om du vill börja använda Azure AD grupper just nu, följ instruktionerna i [hantera säkerhetsgrupper i Azure AD](active-directory-accessmanagement-manage-groups.md). Om du vill se hur du kan använda PowerShell för att hantera grupper i Azure Active directory kan du läsa mer i [Azure Active Directory-cmdlets för grupphantering](active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
+# <a name="manage-access-tooresources-with-azure-active-directory-groups"></a>Hantera åtkomst tooresources med Azure Active Directory-grupper
+Azure Active Directory (AD Azure) är en omfattande identitets- och hanteringslösning som tillhandahåller stabila funktioner toomanage åtkomst tooon lokala och molnprogram och resurser inklusive Microsofts onlinetjänster som Office 365 och en värld av icke - Microsoft SaaS-program. Den här artikeln innehåller en översikt, men om du vill använda Azure AD toostart grupper just nu, följer du anvisningarna hello i [hantera säkerhetsgrupper i Azure AD](active-directory-accessmanagement-manage-groups.md). Om du vill toosee hur du kan använda PowerShell toomanage grupper i Azure Active directory kan du läsa mer i [Azure Active Directory-cmdlets för grupphantering](active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
 
 > [!NOTE]
-> Du behöver ett Azure-konto om du vill använda Azure Active Directory. Om du inte har ett konto kan du [registrera dig för ett kostnadsfritt Azure-konto](https://azure.microsoft.com/pricing/free-trial/).
+> toouse Azure Active Directory, du behöver ett Azure-konto. Om du inte har ett konto kan du [registrera dig för ett kostnadsfritt Azure-konto](https://azure.microsoft.com/pricing/free-trial/).
 >
 >
 
-En av de viktigaste funktionerna är möjligheten att hantera åtkomst till resurser i Azure AD. Dessa resurser kan inte ingå i katalogen, som i fallet med behörigheter för att hantera objekt genom roller i katalogen eller resurser som är externa för katalogen som SaaS-program, Azure-tjänster, och SharePoint-webbplatser eller lokala resurser. Det finns en användare kan tilldelas behörigheter till en resurs på fyra olika sätt:
+En av hello huvudfunktioner är hello möjlighet toomanage åtkomst tooresources i Azure AD. Dessa resurser kan vara en del av hello directory som hello fallet med behörigheter toomanage objekt genom roller i hello katalog eller resurser som är externa toohello katalog, t.ex SaaS-program, Azure-tjänster, och SharePoint-webbplatser eller lokala resurser. Det finns fyra olika sätt en användare kan tilldelas åtkomst rättigheter tooa resurs:
 
 1. Direkttilldelning
 
-    Användare kan tilldelas direkt till en resurs som ägare av den här resursen.
+    Användare kan tilldelas direkt tooa resurs av hello ägare av den här resursen.
 2. Gruppmedlemskap
 
-    En grupp kan bara kopplas till en resurs med resursägare och genom att göra det, bevilja medlemmarna i den aktuella gruppåtkomst till resursen. Medlemskap i gruppen kan sedan hanteras av ägare av gruppen. Effektivt, resursägaren behörighet att tilldela användare till resursen till ägare av gruppen.
+    En grupp kan tilldelas tooa resurs genom hello resurs-ägare och genom att göra det, bevilja hello medlemmar i gruppen åtkomst toohello resursen. Medlemskap i gruppen hello kan sedan hanteras av hello ägare hello grupp. Hello resurs ägare delegater hello effektivt, behörighet tooassign användare tootheir resurs toohello ägare hello gruppen.
 3. Regelbaserad
 
-    Resursägaren kan använda en regel för att uttrycka vilka användare ska tilldelas åtkomst till en resurs. Resultatet av regeln beror på de attribut som används i regeln och deras värden för specifika användare, och därigenom resursägaren effektivt behörighet att hantera åtkomst till resursen till auktoritativ datakälla för attribut som används i regeln. Resursägare hanterar regeln själva fortfarande och avgör vilka attribut och värden som ger åtkomst till resursen.
+    Hej resursägare kan använda en regel tooexpress vilka användare som ska tilldelas åtkomst tooa resurs. hello resultatet av hello regel beror på hello-attribut som används i regeln och deras värden för specifika användare, och därigenom hello resursägaren effektivt hello rätt toomanage åtkomst tootheir resurs toohello auktoritativ datakälla för hello attribut som används i hello regeln. Hej resursägare fortfarande hanterar själva hello regeln och avgör vilka attribut och värden ange åtkomst tootheir resurs.
 4. Externa utfärdare
 
-    Åtkomst till en resurs som har härletts från en extern källa; till exempel en grupp som ska synkroniseras från en betrodd källa, till exempel en lokal katalog eller en SaaS-app, till exempel WorkDay. Resursägare tilldelas grupp för att ge åtkomst till resursen och den externa källan hanterar medlemmar i gruppen.
+    hello åtkomst tooa resursen har härletts från en extern källa; till exempel en grupp som ska synkroniseras från en betrodd källa, till exempel en lokal katalog eller en SaaS-app, till exempel WorkDay. Hej resursägare tilldelar hello grupp tooprovide åtkomst toohello resurs och hello extern källa hanterar hello medlemmar i gruppen för hello.
 
    ![Översikt över access management diagram](./media/active-directory-access-management-groups/access-management-overview.png)
 
 ## <a name="watch-a-video-that-explains-access-management"></a>Se en video som förklarar åtkomsthantering
 Du kan titta på en kort video som förklarar mer om detta:
 
-**Azure AD: Introduktion till dynamiskt medlemskap för grupper**
+**Azure AD: Introduktion toodynamic medlemskap för grupper**
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups/player]
 >
 >
 
 ## <a name="how-does-access-management-in-azure-active-directory-work"></a>Hur har tillgång till hantering i Azure Active Directory arbete?
-Lösning för hantering av åtkomst är säkerhetsgruppen i mitten av Azure AD. Använda en säkerhetsgrupp för att hantera åtkomst till resurser är en välkänd paradigmet så ger ett flexibelt och enkelt att förstå sätt att ge åtkomst till en resurs för den avsedda gruppen med användare. Resursägare (eller administratör för katalogen) kan tilldela en grupp som ger en viss åtkomst till resurser som de äger. Medlemmar i gruppen ges åtkomst och resursägaren kan delegera behörighet för att hantera listan över medlemmar i en grupp till någon annan, till exempel en avdelningschef eller administratör supportavdelningen.
+Vid hello är mittpunkt hello Azure AD åtkomst hanteringslösning hello säkerhetsgrupp. Med hjälp av en säkerhet grupp toomanage åtkomst tooresources är en välkänd paradigmet som möjliggör en flexibel och lätt att förstå hur tooprovide åtkomst tooa resurs för hello avsedd användargrupp. Hej resursägare (eller Hej administratör för hello katalog) tilldela en grupp tooprovide en vissa åtkomst rätt toohello resurser de äger. hello medlemmar i hello gruppen kommer att tillhandahållas hello åtkomst och hello resursägare kan delegera hello rätt toomanage hello medlemslista för en grupp toosomeone annan, till exempel en avdelningschef eller administratör supportavdelningen.
 
 ![Azure Active Directory access management diagram](./media/active-directory-access-management-groups/active-directory-access-management-works.png)
 
-Ägare för en grupp kan också göra gruppen tillgänglig för självbetjäning begäranden. På så sätt kan en slutanvändare söka efter och hitta gruppen och gör en begäran att ansluta till, sökning effektivt behörighet att komma åt resurser som hanteras via gruppen. Ägare av gruppen kan ställa in gruppen så att anslutningsbegäranden godkänns automatiskt eller begära godkännande av ägare av gruppen. När en användare gör en begäran om att delta i en grupp, vidarebefordras begäran till ägare av gruppen. Om en av ägarna godkänner begäran meddelas användaren och användaren är ansluten till gruppen. Om en av ägarna nekar begäran meddelas användaren men inte tillhör gruppen.
+hello ägare för en grupp kan också göra gruppen tillgänglig för självbetjäning begäranden. På så sätt kan en slutanvändare söka efter och hitta hello grupperna och gör en begäran toojoin effektivt sökning behörighet tooaccess hello resurser som hanteras genom hello grupp. hello ägare hello gruppen kan ställa in hello gruppen så att anslutningsbegäranden godkänns automatiskt eller kräver godkännande av hello ägaren av hello grupp. När en användare gör en begäran toojoin en grupp, vidarebefordras hello kopplingsbegäran toohello ägare för hello grupp. Om en hello ägare godkänner hello begäran hello användaren meddelas och hello användare är anslutna toohello. Om en hello ägare nekar hello begäran hello användaren meddelas men ansluten inte toohello grupp.
 
 ## <a name="getting-started-with-access-management"></a>Komma igång med åtkomsthantering
-Redo att sätta igång? Du bör testa några av de grundläggande åtgärderna som du kan göra med Azure AD-grupper. Använd dessa funktioner för att ge särskilda åtkomst till olika grupper av personer för olika resurser i din organisation. Nedan visas en lista över grundläggande första steg.
+Redo tooget igång? Du bör testa vissa av hello grundläggande uppgifter som du kan göra med Azure AD-grupper. Använd dessa funktioner tooprovide specialiserade access toodifferent grupper av personer för olika resurser i din organisation. Nedan visas en lista över grundläggande första steg.
 
-* [Skapa en enkel regel om du vill konfigurera dynamiskt medlemskap för en grupp](active-directory-accessmanagement-manage-groups.md#how-can-i-manage-the-membership-of-a-group-dynamically)
-* [Hantera åtkomst till SaaS-program med hjälp av en grupp](active-directory-accessmanagement-group-saasapps.md)
+* [Skapa en enkel regel tooconfigure dynamiskt medlemskap för en grupp](active-directory-accessmanagement-manage-groups.md#how-can-i-manage-the-membership-of-a-group-dynamically)
+* [Med hjälp av en grupp toomanage åtkomst tooSaaS program](active-directory-accessmanagement-group-saasapps.md)
 * [Göra en grupp tillgänglig för slutanvändaren självbetjäning](active-directory-accessmanagement-self-service-group-management.md)
-* [Synkroniserar en lokal grupp till Azure med Azure AD Connect](active-directory-aadconnect.md)
+* [Synkroniserar en lokal grupp tooAzure med Azure AD Connect](active-directory-aadconnect.md)
 * [Hantera ägare för en grupp](active-directory-accessmanagement-managing-group-owners.md)
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har förstått grunderna i åtkomsthantering finns här några ytterligare avancerade funktioner i Azure Active Directory för att hantera åtkomst till dina program och resurser.
+Nu när du har förstått hello grunderna i åtkomsthantering finns här några ytterligare avancerade funktioner i Azure Active Directory för att hantera åtkomst tooyour program och resurser.
 
-* [Använda attribut för att skapa avancerade regler](active-directory-accessmanagement-groups-with-advanced-rules.md)
+* [Med hjälp av attributen toocreate avancerade regler](active-directory-accessmanagement-groups-with-advanced-rules.md)
 * [Hantera säkerhetsgrupper i Azure AD](active-directory-accessmanagement-manage-groups.md)
 * [Ställa in dedikerade grupper i Azure AD](active-directory-accessmanagement-dedicated-groups.md)
 * [Referens för Graph API för grupper](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)

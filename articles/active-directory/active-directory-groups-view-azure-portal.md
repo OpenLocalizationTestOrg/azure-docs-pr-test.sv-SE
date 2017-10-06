@@ -1,6 +1,6 @@
 ---
-title: Visa alla befintliga grupper i Azure Active Directory | Microsoft Docs
-description: "Hur du visa eller söka efter grupper i Azure Active Directory"
+title: aaaView alla befintliga grupper i Azure Active Directory | Microsoft Docs
+description: "Hur tooview eller söka efter grupper i Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cc8b9194433840df9ce16baf1a0ec2c3dd08ad9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ae668d1cdb8032a332053dc40164d4dc829bdd19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>Visa eller söka efter användargrupper i Azure Active Directory
-Den här artikeln beskrivs hur du visar alla grupper i Azure Active Directory (AD Azure). En av funktionerna i Azure AD-användarhantering är att du kan använda grupper för att utföra administrativa uppgifter, till exempel tilldela licenser eller behörigheter till ett antal användare på samma gång.
+Den här artikeln förklarar hur tooview alla grupper i Azure Active Directory (AD Azure). En av hello funktioner för hantering av Azure AD-användare är att du kan använda grupper tooperform hanteringsuppgifter, till exempel tilldela licenser eller behörigheter tooa många användare samtidigt.
 
-## <a name="how-do-i-see-all-the-groups"></a>Hur ser alla grupper?
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för katalogen.
-2. Välj **fler tjänster**, ange **användare och grupper** i textrutan och välj sedan **RETUR**.
+## <a name="how-do-i-see-all-hello-groups"></a>Hur ser alla hello grupper?
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för hello-katalogen.
+2. Välj **fler tjänster**, ange **användare och grupper** i hello textruta och välj sedan **RETUR**.
 
    ![Öppna användare och grupper](./media/active-directory-groups-view-azure-portal/search-user-management.png)
-3. På den **användare och grupper** bladet väljer **alla grupper**.
+3. På hello **användare och grupper** bladet väljer **alla grupper**.
 
-   ![Öppna bladet grupper](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
-4. På den **användare och grupper – alla grupper** bladet Lägg till eller ta bort Visa kolumner, filtrera listan om du vill söka efter en grupp eller göra ändringar i grupper som du har behörighet att ändra.
+   ![Öppna hello grupper bladet](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
+4. På hello **användare och grupper – alla grupper** bladet kan du lägga till eller ta bort Visa kolumner, filter hello listan toosearch för en grupp eller göra ändringar toogroups att du har tillräckliga behörigheter toochange.
 
 ## <a name="next-steps"></a>Nästa steg
 Dessa artiklar innehåller ytterligare information om Azure Active Directory.

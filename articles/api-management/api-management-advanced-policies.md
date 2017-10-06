@@ -1,6 +1,6 @@
 ---
-title: Azure API Management avancerade principer | Microsoft Docs
-description: "Läs mer om de avancerade principerna som är tillgängligt för användning i Azure API Management."
+title: aaaAzure API Management avancerade principer | Microsoft Docs
+description: "Läs mer om hello avancerade principer som är tillgängliga för användning i Azure API Management."
 services: api-management
 documentationcenter: 
 author: vladvino
@@ -14,78 +14,78 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 0c65ac74316421a0258f01143baa25ffecb5be3b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8245e7a4c9d432b7b4d362192e357829fcabad55
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-advanced-policies"></a>API Management avancerade principer
-Det här avsnittet innehåller en referens för följande API Management-principer. Mer information om att lägga till och konfigurera principer finns [principer i API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
+Det här avsnittet innehåller en referens för hello följande API Management-principer. Mer information om att lägga till och konfigurera principer finns [principer i API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="AdvancedPolicies"></a>Avancerade principer  
   
--   [Åtkomstkontrollflödet](api-management-advanced-policies.md#choose) - villkorligt gäller principrapporter baserat på resultatet av utvärderingen av boolesk [uttryck](api-management-policy-expressions.md).  
+-   [Åtkomstkontrollflödet](api-management-advanced-policies.md#choose) - villkorligt gäller principrapporter utifrån hello resultat av hello utvärdering av boolesk [uttryck](api-management-policy-expressions.md).  
   
--   [Vidarebefordra begäran](#ForwardRequest) -vidarebefordrar begäran till backend-tjänsten.
+-   [Vidarebefordra begäran](#ForwardRequest) -vidarebefordrar hello begäran toohello serverdelstjänst.
 
--   [Begränsa samtidighet](#LimitConcurrency) -förhindrar omslutna principer från att köras med mer än det angivna antalet begäranden i taget.
+-   [Begränsa samtidighet](#LimitConcurrency) -förhindrar omslutna principer från att köras med mer än hello angivet antal begäranden i taget.
   
--   [Loggen till Event Hub](#log-to-eventhub) -skickar meddelanden i det angivna formatet till en Händelsehubb som definieras av en loggaren entitet. 
+-   [Logga tooEvent hubb](#log-to-eventhub) -skickar meddelanden i hello angetts format tooan Event Hub definieras av en loggaren entitet. 
 
--   [Mock svar](#mock-response) -avbryts körningen i pipeline och returnerar svaret mocked direkt till anroparen.
+-   [Mock svar](#mock-response) -avbryts körningen i pipeline och returnerar svaret mocked direkt toohello anroparen.
   
--   [Försök](#Retry) -återförsök körningen av de slutna principrapporter om och tills villkoret är uppfyllt. Körningen upprepas med de angivna intervall och upp till angivet antal nya försök.  
+-   [Försök](#Retry) -återförsök körningen av hello omslutna hanteringsprinciper, om och tills hello villkor är uppfyllt. Körningen upprepas på hello angivna intervall och in toohello angetts antal nya försök.  
   
--   [Returnera svar](#ReturnResponse) -avbryts körningen i pipeline och returnerar det angivna svaret direkt till anroparen. 
+-   [Returnera svar](#ReturnResponse) -avbryts pipeline körning och returnerar hello angetts svar direkt toohello anroparen. 
   
--   [Skicka förfrågan om enkelriktade](#SendOneWayRequest) -skickar en begäran till den angivna URL: en utan att vänta på ett svar.  
+-   [Skicka förfrågan om enkelriktade](#SendOneWayRequest) -skickar en begäran toohello specificerat URL: en utan att vänta på ett svar.  
   
--   [Skicka förfrågan](#SendRequest) -skickar en begäran till angiven URL.  
+-   [Skicka förfrågan](#SendRequest) -skickar en begäran toohello specificerat URL: en.  
 
--   [Ange HTTP-proxy](#SetHttpProxy) -låter dig vägen vidarebefordrade begäranden via en HTTP-proxy.  
+-   [Ange HTTP-proxy](#SetHttpProxy) -tillåter tooroute vidarebefordrade begäranden via en HTTP-proxy.  
 
--   [Ange metoden](#SetRequestMethod) -kan du ändra HTTP-metoden för en begäran.  
+-   [Ange metoden](#SetRequestMethod) -tillåter toochange hello HTTP-metoden för en begäran.  
   
--   [Ange statuskoden](#SetStatus) -ändrar HTTP-statuskoden till det angivna värdet.  
+-   [Ange statuskoden](#SetStatus) -ändringar hello HTTP-status kod toohello angivet värde.  
   
 -   [Ange variabel](api-management-advanced-policies.md#set-variable) -kvarstår ett värde i en namngiven [kontexten](api-management-policy-expressions.md#ContextVariables) variabel för senare användning.  
 
--   [Spåra](#Trace) -lägger till en sträng i den [API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) utdata.  
+-   [Spåra](#Trace) -lägger till en sträng i hello [API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) utdata.  
   
--   [Vänta](#Wait) -väntar för omslutna [begäran om att skicka](api-management-advanced-policies.md#SendRequest), [hämta värdet från cache](api-management-caching-policies.md#GetFromCacheByKey), eller [Åtkomstkontrollflödet](api-management-advanced-policies.md#choose) principer för att slutföra innan du fortsätter.  
+-   [Vänta](#Wait) -väntar för omslutna [begäran om att skicka](api-management-advanced-policies.md#SendRequest), [hämta värdet från cache](api-management-caching-policies.md#GetFromCacheByKey), eller [Åtkomstkontrollflödet](api-management-advanced-policies.md#choose) principer toocomplete innan du fortsätter.  
   
 ##  <a name="choose"></a>Kontrollflöde  
- Den `choose` principen gäller omslutna princip uttryck baserat på resultatet av utvärderingen av booleska uttryck som liknar en if-then-else eller växel konstruera i ett programmeringsspråk.  
+ Hej `choose` principen gäller omslutna princip uttryck baserat på hello resultatet av bedömning av booleska uttryck, liknande tooan if-then-else eller växel konstruera i ett programmeringsspråk.  
   
 ###  <a name="ChoosePolicyStatement"></a>Principframställning  
   
 ```xml  
 <choose>   
     <when condition="Boolean expression | Boolean constant">   
-        <!— one or more policy statements to be applied if the above condition is true  -->  
+        <!— one or more policy statements toobe applied if hello above condition is true  -->  
     </when>   
     <when condition="Boolean expression | Boolean constant">   
-        <!— one or more policy statements to be applied if the above condition is true  -->  
+        <!— one or more policy statements toobe applied if hello above condition is true  -->  
     </when>   
     <otherwise>   
-        <!— one or more policy statements to be applied if none of the above conditions are true  -->  
+        <!— one or more policy statements toobe applied if none of hello above conditions are true  -->  
 </otherwise>   
 </choose>  
 ```  
   
- Princip för åtkomstkontroll flödet måste innehålla minst ett `<when/>` element. Den `<otherwise/>` element är valfria. Villkoren i `<when/>` element utvärderas i ordning efter deras utseende i principen. Principen instruktion(er) omgiven första `<when/>` element med villkoret attribut är lika med `true` tillämpas. Principer omgiven av `<otherwise/>` element, i förekommande fall, kommer att tillämpas om alla av den `<when/>` elementattribut för villkoret är `false`.  
+ hello princip för åtkomstkontroll flödet måste innehålla minst ett `<when/>` element. Hej `<otherwise/>` element är valfria. Villkoren i `<when/>` element utvärderas i ordning efter deras utseende i hello princip. Principen instruktion(er) omgiven hello först `<when/>` element med villkoret attribut är lika med `true` tillämpas. Principer för omgiven hello `<otherwise/>` element, i förekommande fall, kommer att tillämpas om alla av hello `<when/>` elementattribut för villkoret är `false`.  
   
 ### <a name="examples"></a>Exempel  
   
 ####  <a name="ChooseExample"></a>Exempel  
- I följande exempel visas en [ange variabel](api-management-advanced-policies.md#set-variable) principen och två principer för åtkomstkontroll flödet.  
+ hello exemplet nedan visar en [ange variabel](api-management-advanced-policies.md#set-variable) principen och två principer för åtkomstkontroll flödet.  
   
- Ange variabeln princip finns i avsnittet inkommande och skapar en `isMobile` booleskt [kontexten](api-management-policy-expressions.md#ContextVariables) variabel som har angetts till true om den `User-Agent` begäran huvudet innehåller texten `iPad` eller `iPhone`.  
+ hello Ange variabeln princip är i hello inkommande avsnittet och skapar en `isMobile` booleskt [kontexten](api-management-policy-expressions.md#ContextVariables) variabel som anges tootrue om hello `User-Agent` begäran huvudet innehåller hello text `iPad` eller `iPhone`.  
   
- Den första kontroll flödet principen finns i avsnittet inkommande och villkorligt gäller en av två [ange frågesträngparametern](api-management-transformation-policies.md#SetQueryStringParameter) principer beroende på värdet för den `isMobile` kontexten variabeln.  
+ hello första kontrollen flödet principen är i hello inkommande avsnittet och villkorligt gäller en av två [ange frågesträngparametern](api-management-transformation-policies.md#SetQueryStringParameter) principer beroende på hello värdet för hello `isMobile` kontexten variabeln.  
   
- Den andra kontrollen flödet i avsnittet utgående och villkorligt gäller den [konvertera XML till JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) principen när `isMobile` är inställd på `true`.  
+ hello andra kontrollen flödet princip är utgående under hello och villkorligt gäller hello [konvertera XML-tooJSON](api-management-transformation-policies.md#ConvertXMLtoJSON) principen när `isMobile` har angetts för`true`.  
   
 ```xml  
 <policies>  
@@ -117,10 +117,10 @@ Det här avsnittet innehåller en referens för följande API Management-princip
 ```  
   
 #### <a name="example"></a>Exempel  
- Det här exemplet illustrerar hur du utför innehållsfiltrering genom att ta bort dataelement från svar togs emot från serverdelstjänsten när du använder den `Starter` produkten. En demonstration av hur du konfigurerar och använder den här principen finns [moln omfattar avsnitt 177: mer API Management-funktioner med Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) och spola framåt till 34:30. Börja med 31:50 att se en översikt över [mörkt Sky prognos API: N](https://developer.forecast.io/) används för den här demon.  
+ Det här exemplet illustrerar hur tooperform innehållsfiltrering genom att ta bort dataelement från hello svar togs emot från hello backend-tjänsten när du använder hello `Starter` produkten. En demonstration av hur du konfigurerar och använder den här principen finns [moln omfattar avsnitt 177: mer API Management-funktioner med Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) och framåt too34:30. Starta en översikt över vid 31:50 toosee [hello mörkt Sky prognos API](https://developer.forecast.io/) används för den här demon.  
   
 ```xml  
-<!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->  
+<!-- Copy this snippet into hello outbound section tooremove a number of data elements from hello response received from hello backend service based on hello name of hello api product -->  
 <choose>  
   <when condition="@(context.Response.StatusCode == 200 && context.Product.Name.Equals("Starter"))">  
     <set-body>@{  
@@ -140,27 +140,27 @@ Det här avsnittet innehåller en referens för följande API Management-princip
 |Element|Beskrivning|Krävs|  
 |-------------|-----------------|--------------|  
 |Välj|Rotelementet.|Ja|  
-|När|De villkor du vill använda för den `if` eller `ifelse` delar av den `choose` princip. Om den `choose` princip har flera `when` avsnitt, de utvärderas i turordning. En gång i `condition` av ett när element beräknas till `true`, ingen ytterligare `when` villkor utvärderas.|Ja|  
-|Annars|Innehåller princip fragment som ska användas om ingen av de `when` villkor utvärderas till `true`.|Nej|  
+|När|Hej villkoret toouse för hello `if` eller `ifelse` delar av hello `choose` princip. Om hello `choose` princip har flera `when` avsnitt, de utvärderas i turordning. En gång hello `condition` av ett när utvärderar element för`true`, ingen ytterligare `when` villkor utvärderas.|Ja|  
+|Annars|Innehåller hello princip fragment toobe används om inget av hello `when` villkor utvärdera för`true`.|Nej|  
   
 ### <a name="attributes"></a>Attribut  
   
 |Attribut|Beskrivning|Krävs|  
 |---------------|-----------------|--------------|  
-|villkor = ”booleskt uttryck &#124; Booleskt konstant ”|Booleska uttryck eller en konstant som utvärderas när den innehållande `when` Principframställning utvärderas.|Ja|  
+|villkor = ”booleskt uttryck &#124; Booleskt konstant ”|hello booleskt uttryck eller konstant tooevaluated när hello som innehåller `when` Principframställning utvärderas.|Ja|  
   
 ###  <a name="ChooseUsage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** alla scope  
   
 ##  <a name="ForwardRequest"></a>Vidarebefordra begäran  
- Den `forward-request` princip vidarebefordrar inkommande begäran till backend-tjänst som anges i begäran [kontexten](api-management-policy-expressions.md#ContextVariables). URL: en för backend-tjänsten har angetts i API [inställningar](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) och kan ändras med hjälp av den [ange serverdelstjänst](api-management-transformation-policies.md) princip.  
+ Hej `forward-request` princip vidarebefordrar hello inkommande begäran toohello serverdelstjänst anges i begäran hello [kontexten](api-management-policy-expressions.md#ContextVariables). hello backend-tjänstens URL anges i hello API [inställningar](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) och kan ändras med hjälp av hello [ange serverdelstjänst](api-management-transformation-policies.md) princip.  
   
 > [!NOTE]
->  Tar bort den här grupprincipresultat i begäran inte vidarebefordras till backend-tjänsten och principer i avsnittet utgående utvärderas omedelbart vid slutförande av principer i avsnittet inkommande.  
+>  Ta bort den här grupprincipresultat i hello begäran inte vidarebefordras toohello backend-tjänsten och hello principer utgående under hello utvärderas direkt vid hello slutförande av hello principer i hello inkommande avsnitt.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -171,7 +171,7 @@ Det här avsnittet innehåller en referens för följande API Management-princip
 ### <a name="examples"></a>Exempel  
   
 #### <a name="example"></a>Exempel  
- Följande princip för API-nivå vidarebefordras alla begäranden till backend-tjänsten med en timeout på 60 sekunder.  
+ hello vidarebefordras följande API säkerhetsnivå för alla toohello serverdelstjänst med en timeout på 60 sekunder.  
   
 ```xml  
 <!-- api level -->  
@@ -190,7 +190,7 @@ Det här avsnittet innehåller en referens för följande API Management-princip
 ```  
   
 #### <a name="example"></a>Exempel  
- Använder den här åtgärden säkerhetsnivå för den `base` element ska ärva backend-principen från överordnat nivån API-scope.  
+ Den här åtgärden säkerhetsnivå för använder hello `base` elementet tooinherit hello backend princip från hello överordnade API-nivå omfattningen.  
   
 ```xml  
 <!-- operation level -->  
@@ -209,7 +209,7 @@ Det här avsnittet innehåller en referens för följande API Management-princip
 ```  
   
 #### <a name="example"></a>Exempel  
- Den här åtgärden säkerhetsnivå för uttryckligen vidarebefordrar alla begäranden till backend-tjänsten med en tidsgräns på 120 och ärver inte överordnat nivån backend API-princip.  
+ Den här åtgärden säkerhetsnivå för uttryckligen vidarebefordrar alla begäranden toohello serverdelstjänst med en tidsgräns på 120 och ärver inte hello överordnade API-nivå backend-princip.  
   
 ```xml  
 <!-- operation level -->  
@@ -219,7 +219,7 @@ Det här avsnittet innehåller en referens för följande API Management-princip
     </inbound>  
     <backend>  
         <forward-request timeout="120"/>   
-        <!-- effective policy. note the absence of <base/> -->  
+        <!-- effective policy. note hello absence of <base/> -->  
     </backend>  
     <outbound>  
         <base/>          
@@ -229,7 +229,7 @@ Det här avsnittet innehåller en referens för följande API Management-princip
 ```  
   
 #### <a name="example"></a>Exempel  
- Den här åtgärden säkerhetsnivå för vidarebefordrar inte begäranden till backend-tjänsten.  
+ Den här åtgärden säkerhetsnivå för inte vidarebefordrar begäranden toohello serverdelstjänst.  
   
 ```xml  
 <!-- operation level -->  
@@ -238,7 +238,7 @@ Det här avsnittet innehåller en referens för följande API Management-princip
         <base/>  
     </inbound>  
     <backend>  
-        <!-- no forwarding to backend -->  
+        <!-- no forwarding toobackend -->  
     </backend>  
     <outbound>  
         <base/>          
@@ -257,18 +257,18 @@ Det här avsnittet innehåller en referens för följande API Management-princip
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|timeout = ”heltal”|Det går inte att timeoutintervall i sekunder innan anropet till serverdelstjänsten.|Nej|Ingen tidsgräns|  
-|Följ omdirigeringar = ”true &#124; FALSE ”|Anger huruvida omdirigeringar från serverdelstjänsten följt av gateway eller returneras till anroparen.|Nej|FALSKT|  
+|timeout = ”heltal”|Det går inte att hello timeout-intervall i sekunder innan hello anropet toohello serverdelstjänst.|Nej|Ingen tidsgräns|  
+|Följ omdirigeringar = ”true &#124; FALSE ”|Anger om omdirigeringar från hello serverdelstjänst är följt av hello gateway eller returnerade toohello anroparen.|Nej|FALSKT|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** backend  
   
 -   **Princip för scope:** alla scope  
   
 ##  <a name="LimitConcurrency"></a>Gränsen för samtidighet  
- Den `limit-concurrency` princip förhindrar att omslutna principer körning av fler än det angivna antalet förfrågningar vid en given tidpunkt. På överskrider tröskeln läggs nya begäranden till en kö tills maximala kölängden uppnås. När kön uttömning misslyckas nya begäranden omedelbart.
+ Hej `limit-concurrency` princip förhindrar att omslutna principer körning av fler än det angivna antalet förfrågningar hello vid en given tidpunkt. Vid överstiger tröskelvärdet hello läggs nya begäranden tooa kö tills hello maximal Kölängd uppnås. När kön uttömning misslyckas nya begäranden omedelbart.
   
 ###  <a name="LimitConcurrencyStatement"></a>Principframställning  
   
@@ -281,7 +281,7 @@ Det här avsnittet innehåller en referens för följande API Management-princip
 ### <a name="examples"></a>Exempel  
   
 ####  <a name="ChooseExample"></a>Exempel  
- Exemplet nedan visar hur du begränsar antalet begäranden som vidarebefordras till en serverdel baserat på värdet för en variabel i kontexten.
+ hello visar exemplet nedan hur toolimit antal begäranden vidarebefordras tooa backend baserat på hello värde för en variabel i kontexten.
  
 ```xml  
 <policies>
@@ -305,35 +305,35 @@ Det här avsnittet innehåller en referens för följande API Management-princip
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|--------------|  
-|key|En sträng. Uttryck tillåts. Anger samtidighet scope. Kan delas av flera principer.|Ja|Saknas|  
-|Max antal|Ett heltal. Anger maximalt antal begäranden som tillåts att ange principen.|Ja|Saknas|  
-|Timeout|Ett heltal. Uttryck tillåts. Anger antalet sekunder som en begäran ska vänta med att ange ett scope innan åtgärden misslyckas med ”403 för många begäranden”|Nej|Infinity|  
-|Max Kölängd|Ett heltal. Uttryck tillåts. Anger den maximala längden. Inkommande begäranden försök att ange den här principen kommer att avslutas med ”403 för många begäranden” omedelbart när kön är slut.|Nej|Infinity|  
+|key|En sträng. Uttryck tillåts. Anger hello samtidighet scope. Kan delas av flera principer.|Ja|Saknas|  
+|Max antal|Ett heltal. Anger maximalt antal begäranden som tillåts tooenter hello princip.|Ja|Saknas|  
+|timeout|Ett heltal. Uttryck tillåts. Anger hello antalet sekunder som en begäran ska vänta tooenter ett scope innan åtgärden misslyckas med ”403 för många begäranden”|Nej|Infinity|  
+|Max Kölängd|Ett heltal. Uttryck tillåts. Anger hello maximala längd. Inkommande begäranden försök tooenter denna policy kommer att avslutas med ”403 för många begäranden” omedelbart när hello kön är slut.|Nej|Infinity|  
   
 ###  <a name="ChooseUsage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** alla scope  
 
-##  <a name="log-to-eventhub"></a>Loggen till Händelsehubb  
- Den `log-to-eventhub` princip skickar meddelanden i det angivna formatet till en Händelsehubb som definieras av en loggaren entitet. Som namnet antyder används principen för att spara valda begäran eller svar omständighetsinformation för analys online eller offline.  
+##  <a name="log-to-eventhub"></a>Logga tooEvent Hub  
+ Hej `log-to-eventhub` princip skickar meddelanden i hello angetts format tooan Event Hub definieras av en loggaren entitet. Som namnet antyder används hello principen för att spara valda begäran eller svar omständighetsinformation för analys online eller offline.  
   
 > [!NOTE]
->  Stegvisa instruktioner om hur du konfigurerar en händelsehubb och loggning av händelser, se [så logghändelser API-hantering med Händelsehubbar](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/).  
+>  Stegvisa instruktioner om hur du konfigurerar en händelsehubb och loggning av händelser, se [hur toolog API Management händelser med Azure Event Hubs](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/).  
   
 ### <a name="policy-statement"></a>Principframställning  
   
 ```xml  
-<log-to-eventhub logger-id="id of the logger entity" partition-id="index of the partition where messages are sent" partition-key="value used for partition assignment">  
-  Expression returning a string to be logged  
+<log-to-eventhub logger-id="id of hello logger entity" partition-id="index of hello partition where messages are sent" partition-key="value used for partition assignment">  
+  Expression returning a string toobe logged  
 </log-to-eventhub>  
   
 ```  
   
 ### <a name="example"></a>Exempel  
- Valfri sträng kan användas som värde som ska loggas i Händelsehubbar. I det här exemplet datum och tid, tjänstnamn för distribution, förfrågnings-id, ip-adress och åtgärdsnamn för alla inkommande samtal loggas till händelsehubben loggaren registrerats med den `contoso-logger` id.  
+ Valfri sträng kan användas som hello värdet toobe loggas i Händelsehubbar. I det här exemplet hello datum och tid tjänstnamn för distribution, förfrågnings-id, ip-adress och åtgärdsnamn för alla inkommande samtal är loggade toohello händelsehubb loggaren registrerats med hello `contoso-logger` id.  
   
 ```xml  
 <policies>  
@@ -351,25 +351,25 @@ Det här avsnittet innehåller en referens för följande API Management-princip
   
 |Element|Beskrivning|Krävs|  
 |-------------|-----------------|--------------|  
-|loggen till eventhub|Rotelementet. Värdet för det här elementet är sträng att logga in till din event hub.|Ja|  
+|loggen till eventhub|Rotelementet. hello-värdet för det här elementet är hello sträng toolog tooyour händelsehubb.|Ja|  
   
 ### <a name="attributes"></a>Attribut  
   
 |Attribut|Beskrivning|Krävs|  
 |---------------|-----------------|--------------|  
-|loggaren-id|Id för loggaren registrerats API Management-tjänsten.|Ja|  
-|partitions-id|Anger index för partitionen som meddelanden skickas.|Valfri. Det här attributet kan inte användas om `partition-key` används.|  
-|Partitionsnyckeln|Anger det värde som används för tilldelning av partitionen när meddelanden skickas.|Valfri. Det här attributet kan inte användas om `partition-id` används.|  
+|loggaren-id|hello-id för hello loggaren registrerats API Management-tjänsten.|Ja|  
+|partitions-id|Anger hello index för hello partition där meddelanden skickas.|Valfri. Det här attributet kan inte användas om `partition-key` används.|  
+|Partitionsnyckeln|Anger hello-värde som används för tilldelning av partitionen när meddelanden skickas.|Valfri. Det här attributet kan inte användas om `partition-id` används.|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** alla scope  
 
 ##  <a name="mock-response"></a>Fingerad svar  
-Den `mock-response`, som namn innebär, används för att mock API: er och åtgärder. Den normala pipelinekörningen avbryts och returnerar ett mocked svar till anroparen. Principen försöker alltid returnera svar för högsta återgivning. Den föredrar svar innehåll exempel, när det finns tillgängligt. Den genererar exempel svar från scheman, när scheman har angetts och exempel finns inte. Om varken exempel eller scheman hittas returneras svar med inget innehåll.
+Hej `mock-response`, som hello namn innebär, är används toomock API: er och åtgärder. Den normala pipelinekörningen avbryter och returnerar en mocked svar toohello anropare. hello princip försöker alltid tooreturn svar för högsta återgivning. Den föredrar svar innehåll exempel, när det finns tillgängligt. Den genererar exempel svar från scheman, när scheman har angetts och exempel finns inte. Om varken exempel eller scheman hittas returneras svar med inget innehåll.
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -382,11 +382,11 @@ Den `mock-response`, som namn innebär, används för att mock API: er och åtg�
   
 ```xml  
 <!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
-status code. First found content type is used. If no example or schema is found, the content is empty. -->
+status code. First found content type is used. If no example or schema is found, hello content is empty. -->
 <mock-response/>
 
 <!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
-status code and media type. If no example or schema found, the content is empty. -->
+status code and media type. If no example or schema found, hello content is empty. -->
 <mock-response status-code='200' content-type='application/json'/>  
 ```  
   
@@ -400,18 +400,18 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|--------------|  
-|statuskod|Anger Svarets statuskod och används för att välja motsvarande exempel eller schema.|Nej|200|  
-|innehållstyp|Anger `Content-Type` svar huvudets värde och används för att välja motsvarande exempel eller schema.|Nej|Ingen|  
+|statuskod|Anger Svarets statuskod och använda tooselect motsvarande exempel eller schema.|Nej|200|  
+|innehållstyp|Anger `Content-Type` huvudvärde svar och använda tooselect motsvarande exempel eller schema.|Nej|Ingen|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående, vid fel  
   
 -   **Princip för scope:** alla scope
 
 ##  <a name="Retry"></a>Försök igen  
- Den `retry` princip kör dess underordnade principer en gång och sedan försöker körningen tills för och försök igen `condition` blir `false` eller försök `count` är slut.  
+ Hej `retry` princip körs en gång dess underordnade principer och sedan försöker körningen tills hello försök `condition` blir `false` eller försök `count` är slut.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -430,7 +430,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Exempel  
- I följande exempelbegäran försöks forewarding upp till tio gånger med exponentiell försök algoritm. Eftersom `first-fast-retry` har angetts till false, alla nya försök regleras av algoritmen exponsntial försök igen.  
+ I hello försöks följande exempel begäran forewarding in tooten tider med exponentiell försök algoritm. Eftersom `first-fast-retry` anges toofalse, alla nya försök är ämne toohello exponsntial försök algoritm.  
   
 ```xml  
   
@@ -450,33 +450,33 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Element|Beskrivning|Krävs|  
 |-------------|-----------------|--------------|  
-|Försök igen|Rotelementet. Kan innehålla andra principer som dess underordnade element.|Ja|  
+|retry|Rotelementet. Kan innehålla andra principer som dess underordnade element.|Ja|  
   
 ### <a name="attributes"></a>Attribut  
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|-------------|  
 |Villkor|En boolesk literal eller [uttryck](api-management-policy-expressions.md) anger om återförsök ska stoppas (`false`) eller fortsatte (`true`).|Ja|Saknas|  
-|Antal|Ett positivt tal som anger det maximala antalet försök att försöka.|Ja|Saknas|  
-|intervall|Ett positivt tal i sekunder som anger vänta intervall mellan det nya försöket försöker.|Ja|Saknas|  
-|Max-intervall|Ett positivt tal i sekunder som anger maximalt vänta mellan nya försök. Den används för att implementera en algoritm exponentiell försök igen.|Nej|Saknas|  
-|delta|Ett positivt tal i sekunder som anger att vänta intervall ökning. Används för att implementera linjär och exponentiella retry-algoritmer.|Nej|Saknas|  
-|första-fast-återförsök|Om värdet `true` , första nytt försök utförs omedelbart.|Nej|`false`|  
+|Antal|Ett positivt tal som anger hello maximalt antal återförsök tooattempt.|Ja|Saknas|  
+|interval|Ett positivt tal i sekunder att ange hello intervall mellan försök hello.|Ja|Saknas|  
+|Max-intervall|Ett positivt tal i sekunder att ange hello maximalt intervall mellan försök hello. Det är används tooimplement en algoritm exponentiell försök igen.|Nej|Saknas|  
+|delta|Ett positivt tal i sekunder att ange hello vänta intervall ökning. Det är används tooimplement hello linjär och exponentiella försök algoritmer.|Nej|Saknas|  
+|första-fast-återförsök|Om anges för `true` , hello första nytt försök utförs omedelbart.|Nej|`false`|  
   
 > [!NOTE]
->  När bara den `interval` anges **fast** intervall för nya försök utförs.  
->  När bara den `interval` och `delta` har angetts en **linjär** intervall försök algoritmen används, där väntetiden mellan försök beräknas enligt följande formel - `interval + (count - 1)*delta`.  
->  När den `interval`, `max-interval` och `delta` anges, **exponentiell** intervall försök algoritmen används där väntetiden mellan försöken ökar exponentiellt från värdet för `interval` till värdet `max-interval` enligt följande forumula - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.  
+>  När endast hello `interval` anges **fast** intervall för nya försök utförs.  
+>  När endast hello `interval` och `delta` har angetts en **linjär** intervall försök algoritmen används, där väntetiden mellan försöken är beräknade bl.a hello följande formel - `interval + (count - 1)*delta`.  
+>  När hello `interval`, `max-interval` och `delta` anges, **exponentiell** intervall försök algoritmen används där hello väntetiden mellan hello försök ökar exponentiellt från hello värdet för `interval`toohello värdet `max-interval` enligt följande toohello forumula - `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`.  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Observera att ärvs underordnade principbegränsningar för användning av den här principen.  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) . Observera att ärvs underordnade principbegränsningar för användning av den här principen.  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** alla scope  
   
 ##  <a name="ReturnResponse"></a>Returnera svar  
- Den `return-response` principen avbryter pipelinekörningen och returnerar ett standardvärde eller anpassade svar till anroparen. Standard-svaret är `200 OK` med ingen brödtext. Anpassade svar kan anges via en kontext variabel eller princip-instruktioner. När både tillhandahålls ändras svaret finns i kontexten variabeln av principen instruktionerna innan de returneras till anroparen.  
+ Hej `return-response` princip avbryter pipelinekörningen och returnerar ett standardvärde eller anpassade svar toohello anroparen. Standard-svaret är `200 OK` med ingen brödtext. Anpassade svar kan anges via en kontext variabel eller princip-instruktioner. När både tillhandahålls ändras hello svaret som ingår i hello kontexten variabeln vid hello principrapporter innan de returneras toohello anroparen.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -514,17 +514,17 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Attribut|Beskrivning|Krävs|  
 |---------------|-----------------|--------------|  
-|svaret variabelnamn|Namnet på variabeln kontexten refereras från, till exempel en uppströms [-begäran om att skicka](api-management-advanced-policies.md#SendRequest) principen och som innehåller en `Response` objekt|Valfri.|  
+|svaret variabelnamn|hello namnet på hello kontexten variabel refereras från, till exempel en uppströms [-begäran om att skicka](api-management-advanced-policies.md#SendRequest) principen och som innehåller en `Response` objekt|Valfri.|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** alla scope  
   
 ##  <a name="SendOneWayRequest"></a>Skicka förfrågan om ett sätt  
- Den `send-one-way-request` princip angivna begäran skickas till den angivna URL: en utan att vänta på ett svar.  
+ Hej `send-one-way-request` princip skickar hello tillhandahålls begäran toohello specificerat URL: en utan att vänta på ett svar.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -539,7 +539,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Exempel  
- Exempel principen visar ett exempel på hur du använder den `send-one-way-request` princip för att skicka ett meddelande till en Slack chatt-rummet om HTTP-svarskoden är större än eller lika med 500. Mer information om det här exemplet finns [med externa tjänster från Azure API Management-tjänsten](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
+ Exempel principen visar ett exempel på hur hello `send-one-way-request` princip toosend ett meddelande tooa Slack chatt rum om hello HTTP-svarskoden är större än eller lika med too500. Mer information om det här exemplet finns [med externa tjänster från hello Azure API Management-tjänsten](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
   
 ```xml  
 <choose>  
@@ -572,28 +572,28 @@ status code and media type. If no example or schema found, the content is empty.
 |Element|Beskrivning|Krävs|  
 |-------------|-----------------|--------------|  
 |en-sätt-begäran om att skicka|Rotelementet.|Ja|  
-|URL: en|URL för begäran.|Inga om läge = kopian. Annars Ja.|  
-|Metoden|HTTP-metod för begäran.|Inga om läge = kopian. Annars Ja.|  
+|URL: en|hello-URL för hello-begäran.|Inga om läge = kopian. Annars Ja.|  
+|Metoden|hello HTTP-metoden för hello-begäran.|Inga om läge = kopian. Annars Ja.|  
 |sidhuvud|Huvudet i begäran. Använda flera huvud-element för flera huvuden för begäran.|Nej|  
-|Brödtext|Begärandetexten.|Nej|  
+|Brödtext|Hej begärandetexten.|Nej|  
   
 ### <a name="attributes"></a>Attribut  
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|mode = ”sträng”|Anger om detta är en ny begäran eller en kopia av den aktuella begäranden. I utgående läge, läge = kopiera initieras inte begärandetexten.|Nej|Ny|  
-|namn|Anger namnet på rubriken anges.|Ja|Saknas|  
-|Det finns åtgärd|Anger vilken åtgärd som ska vidtas när huvudet har redan angetts. Det här attributet måste ha något av följande värden.<br /><br /> -åsidosätt - ersätter värdet för befintliga-huvud.<br />-skip - ersätter inte det befintliga huvudvärdet.<br />-Tillägg - lägger till värdet på det befintliga huvudvärdet.<br />-delete - tar bort huvudet i begäran.<br /><br /> Om värdet är `override` ta med flera poster med samma namn resulterar i sidhuvudet har angetts enligt alla poster (som visas flera gånger); endast listade värden anges i resultatet.|Nej|åsidosätt|  
+|mode = ”sträng”|Anger om detta är en ny begäran eller en kopia av hello aktuella begäran. I utgående läge, läge = kopiera initieras inte hello frågans brödtext.|Nej|Ny|  
+|namn|Anger hello hello huvud toobe mängden.|Ja|Saknas|  
+|Det finns åtgärd|Anger vilken åtgärd tootake när hello-sidhuvudet har redan angetts. Det här attributet måste ha något av följande värden hello.<br /><br /> -åsidosätt - ersätter hello värdet för befintliga hello-huvud.<br />-skip - ersätter inte hello befintliga huvudvärde.<br />-Tillägg - lägger till hello värdet toohello befintliga huvudvärde.<br />-delete - tar bort hello huvudet från hello-begäran.<br /><br /> När värdet för`override` ta med flera poster med hello samma namn resulterar i hello-huvud som set bl.a tooall poster (som visas flera gånger); endast listade värden anges i hello resultat.|Nej|åsidosätt|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** alla scope  
   
 ##  <a name="SendRequest"></a>Skicka förfrågan  
- Den `send-request` princip angivna begäran skickas till angiven URL, väntar på längre än ange timeout-värdet.  
+ Hej `send-request` princip skickar hello tillhandahålls begäran toohello angiven URL, väntar på längre än hello ange timeout-värde.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -609,14 +609,14 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Exempel  
- Det här exemplet illustrerar ett sätt att kontrollera en referens token med en server för auktorisering. Mer information om det här exemplet finns [med externa tjänster från Azure API Management-tjänsten](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
+ Det här exemplet visar enkelriktade tooverify en referens-token med en server för auktorisering. Mer information om det här exemplet finns [med externa tjänster från hello Azure API Management-tjänsten](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
   
 ```xml  
 <inbound>  
   <!-- Extract Token from Authorization header parameter -->  
   <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />  
   
-  <!-- Send request to Token Server to validate token (see RFC 7662) -->  
+  <!-- Send request tooToken Server toovalidate token (see RFC 7662) -->  
   <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">  
     <set-url>https://microsoft-apiappec990ad4c76641c6aea22f566efc5a4e.azurewebsites.net/introspection</set-url>  
     <set-method>POST</set-method>  
@@ -651,31 +651,31 @@ status code and media type. If no example or schema found, the content is empty.
 |Element|Beskrivning|Krävs|  
 |-------------|-----------------|--------------|  
 |Skicka begäran|Rotelementet.|Ja|  
-|URL: en|URL för begäran.|Inga om läge = kopian. Annars Ja.|  
-|Metoden|HTTP-metod för begäran.|Inga om läge = kopian. Annars Ja.|  
+|URL: en|hello-URL för hello-begäran.|Inga om läge = kopian. Annars Ja.|  
+|Metoden|hello HTTP-metoden för hello-begäran.|Inga om läge = kopian. Annars Ja.|  
 |sidhuvud|Huvudet i begäran. Använda flera huvud-element för flera huvuden för begäran.|Nej|  
-|Brödtext|Begärandetexten.|Nej|  
+|Brödtext|Hej begärandetexten.|Nej|  
   
 ### <a name="attributes"></a>Attribut  
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|mode = ”sträng”|Anger om detta är en ny begäran eller en kopia av den aktuella begäranden. I utgående läge, läge = kopiera initieras inte begärandetexten.|Nej|Ny|  
+|mode = ”sträng”|Anger om detta är en ny begäran eller en kopia av hello aktuella begäran. I utgående läge, läge = kopiera initieras inte hello frågans brödtext.|Nej|Ny|  
 |svaret variabelnamn = ”sträng”|Om den inte finns `context.Response` används.|Nej|Saknas|  
-|timeout = ”heltal”|Det går inte att timeout-intervall i sekunder innan anropet till URL: en.|Nej|60|  
-|Ignorera fel|Om true, och begäran resulterar i ett fel:<br /><br /> – Om svaret variabelnamn angavs innehåller ett null-värde.<br />– Om svaret variabelnamn inte har angetts, kontext. Begäran kommer inte att uppdateras.|Nej|FALSKT|  
-|namn|Anger namnet på rubriken anges.|Ja|Saknas|  
-|Det finns åtgärd|Anger vilken åtgärd som ska vidtas när huvudet har redan angetts. Det här attributet måste ha något av följande värden.<br /><br /> -åsidosätt - ersätter värdet för befintliga-huvud.<br />-skip - ersätter inte det befintliga huvudvärdet.<br />-Tillägg - lägger till värdet på det befintliga huvudvärdet.<br />-delete - tar bort huvudet i begäran.<br /><br /> Om värdet är `override` ta med flera poster med samma namn resulterar i sidhuvudet har angetts enligt alla poster (som visas flera gånger); endast listade värden anges i resultatet.|Nej|åsidosätt|  
+|timeout = ”heltal”|hello timeout-intervall i sekunder innan anropet hello toohello URL misslyckas.|Nej|60|  
+|Ignorera fel|Om true och hello-begäran resulterar i ett fel:<br /><br /> – Om svaret variabelnamn angavs innehåller ett null-värde.<br />– Om svaret variabelnamn inte har angetts, kontext. Begäran kommer inte att uppdateras.|Nej|FALSKT|  
+|namn|Anger hello hello huvud toobe mängden.|Ja|Saknas|  
+|Det finns åtgärd|Anger vilken åtgärd tootake när hello-sidhuvudet har redan angetts. Det här attributet måste ha något av följande värden hello.<br /><br /> -åsidosätt - ersätter hello värdet för befintliga hello-huvud.<br />-skip - ersätter inte hello befintliga huvudvärde.<br />-Tillägg - lägger till hello värdet toohello befintliga huvudvärde.<br />-delete - tar bort hello huvudet från hello-begäran.<br /><br /> När värdet för`override` ta med flera poster med hello samma namn resulterar i hello-huvud som set bl.a tooall poster (som visas flera gånger); endast listade värden anges i hello resultat.|Nej|åsidosätt|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** alla scope  
   
 ##  <a name="SetHttpProxy"></a>Ange HTTP-proxy  
- Den `proxy` principen kan du på väg begäranden vidarebefordras till serverdelar via en HTTP-proxy. Endast HTTP (HTTPS inte) stöds mellan gatewayen och proxyn. Grundläggande och NTLM-autentisering.
+ Hej `proxy` principen kan du tooroute begäranden vidarebefordras toobackends via en HTTP-proxy. Endast HTTP (HTTPS inte) stöds mellan hello gateway och hello proxy. Grundläggande och NTLM-autentisering.
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -685,7 +685,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Exempel  
-Observera användningen av [egenskaper](api-management-howto-properties.md) som värden för användarnamn och lösenord för att undvika att lagra känslig information i dokumentets princip.  
+Observera hello användning av [egenskaper](api-management-howto-properties.md) som värden för hello användarnamn och lösenord tooavoid lagra känslig information i hello dokument.  
   
 ```xml  
 <proxy url="http://192.168.1.1:8080" username={{username}} password={{password}} />
@@ -702,19 +702,19 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|URL = ”sträng”|Proxy-URL i form av http://host:port.|Ja|Saknas|  
-|UserName = ”sträng”|Användarnamnet som ska användas för autentisering med proxyservern.|Nej|Saknas|  
-|lösenord = ”sträng”|Lösenordet som ska användas för autentisering med proxyservern.|Nej|Saknas|  
+|URL = ”sträng”|Proxy-URL i hello form av http://host:port.|Ja|Saknas|  
+|UserName = ”sträng”|Användarnamnet toobe används för autentisering med hello proxy.|Nej|Saknas|  
+|lösenord = ”sträng”|Lösenordet toobe används för autentisering med hello proxy.|Nej|Saknas|  
 
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande  
   
 -   **Princip för scope:** alla scope  
 
 ##  <a name="SetRequestMethod"></a>Set-metod för begäran  
- Den `set-method` principen kan du ändra metoden HTTP-begäran för en begäran.  
+ Hej `set-method` principen kan du toochange hello HTTP-frågemetoden för en begäran.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -724,7 +724,7 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
 ```  
   
 ### <a name="example"></a>Exempel  
- Det här exemplet princip som använder den `set-method` principen visas ett exempel på ett meddelande skickades till en Slack chatt-rum om HTTP-svarskoden är större än eller lika med 500. Mer information om det här exemplet finns [med externa tjänster från Azure API Management-tjänsten](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
+ Det här exemplet princip som använder hello `set-method` princip visas ett exempel på skickas ett meddelande tooa Slack chatt-rum om hello HTTP-svarskoden är större än eller lika med too500. Mer information om det här exemplet finns [med externa tjänster från hello Azure API Management-tjänsten](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/).  
   
 ```xml  
 <choose>  
@@ -756,17 +756,17 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
   
 |Element|Beskrivning|Krävs|  
 |-------------|-----------------|--------------|  
-|set-metod|Rotelementet. Värdet för elementet anger HTTP-metoden.|Ja|  
+|set-metod|Rotelementet. hello anger hello elementet hello HTTP-metod.|Ja|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, vid fel  
   
 -   **Princip för scope:** alla scope  
   
 ##  <a name="SetStatus"></a>Ange statuskoden  
- Den `set-status` principen anger HTTP-statuskoden med det angivna värdet.  
+ Hej `set-status` principen anger hello HTTP-status kod toohello angivet värde.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -776,7 +776,7 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
 ```  
   
 ### <a name="example"></a>Exempel  
- Det här exemplet illustrerar hur du skickar tillbaka ett 401 svar om autentiseringstoken är ogiltig. Mer information finns i [med externa tjänster från Azure API Management-tjänsten](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)  
+ Det här exemplet illustrerar hur tooreturn 401 svar om hello autentiseringstoken är ogiltig. Mer information finns i [med externa tjänster från hello Azure API Management-tjänsten](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)  
   
 ```xml  
 <choose>  
@@ -802,18 +802,18 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|kod = ”heltal”|HTTP-statuskoden ska returneras.|Ja|Saknas|  
-|Orsak = ”sträng”|En beskrivning av orsaken för att returnera statuskoden.|Ja|Saknas|  
+|kod = ”heltal”|hello HTTP-status koden tooreturn.|Ja|Saknas|  
+|Orsak = ”sträng”|En beskrivning av hello orsak för att returnera hello-statuskod.|Ja|Saknas|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** utgående, backend fel  
   
 -   **Princip för scope:** alla scope  
 
 ##  <a name="set-variable"></a>Ange variabel  
- Den `set-variable` princip deklarerar en [kontexten](api-management-policy-expressions.md#ContextVariables) variabeln och tilldelar den ett värde som angetts via en [uttryck](api-management-policy-expressions.md) eller en teckensträng. Om uttrycket innehåller ett litteralvärde kommer att konverteras till en sträng och värdet ska vara `System.String`.  
+ Hej `set-variable` princip deklarerar en [kontexten](api-management-policy-expressions.md#ContextVariables) variabeln och tilldelar den ett värde som angetts via en [uttryck](api-management-policy-expressions.md) eller en teckensträng. Om hello uttryck innehåller ett litteralvärde som kommer att konverteras tooa sträng och hello Värdets typ hello blir `System.String`.  
   
 ###  <a name="set-variablePolicyStatement"></a>Principframställning  
   
@@ -822,7 +822,7 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
 ```  
   
 ###  <a name="set-variableExample"></a>Exempel  
- I följande exempel visas en uppsättning variabeln princip i avsnittet inkommande. Ange variabeln principen skapar en `isMobile` booleskt [kontexten](api-management-policy-expressions.md#ContextVariables) variabel som har angetts till true om den `User-Agent` begäran huvudet innehåller texten `iPad` eller `iPhone`.  
+ hello exemplet nedan visar en uppsättning variabeln princip i hello inkommande avsnitt. Ange variabeln principen skapar en `isMobile` booleskt [kontexten](api-management-policy-expressions.md#ContextVariables) variabel som anges tootrue om hello `User-Agent` begäran huvudet innehåller hello text `iPad` eller `iPhone`.  
   
 ```xml  
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />  
@@ -838,18 +838,18 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
   
 |Attribut|Beskrivning|Krävs|  
 |---------------|-----------------|--------------|  
-|namn|Namnet på variabeln.|Ja|  
-|värde|Värdet för variabeln. Detta kan vara ett uttryck eller ett litteralvärde.|Ja|  
+|namn|hello namnet på hello-variabeln.|Ja|  
+|värde|hello värdet för hello variabel. Detta kan vara ett uttryck eller ett litteralvärde.|Ja|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** alla scope  
   
 ###  <a name="set-variableAllowedTypes"></a>Tillåtna typer  
- Uttryck som används i den `set-variable` principen måste returnera ett av följande grundläggande typer.  
+ Uttryck som används i hello `set-variable` princip måste returnera hello följande grundläggande typer.  
   
 -   System.Boolean  
   
@@ -914,7 +914,7 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
 -   System.DateTime?  
 
 ##  <a name="Trace"></a>Spårning  
- Den `trace` princip lägger till en sträng i den [API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) utdata. Principen körs endast när spårning utlöses, d.v.s. `Ocp-Apim-Trace` huvud är närvarande och ange att `true` och `Ocp-Apim-Subscription-Key` begärandehuvudet finns och innehåller en giltig nyckel som är associerade med administratörskontot.  
+ Hej `trace` princip lägger till en sträng i hello [API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) utdata. hello princip körs endast när spårning utlöses, d.v.s. `Ocp-Apim-Trace` huvud är närvarande och ange för`true` och `Ocp-Apim-Subscription-Key` begärandehuvudet finns och innehåller en giltig nyckel som är associerad med hello-administratörskonto.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -936,17 +936,17 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|Källa|Stränglitteral meningsfulla för visningsprogram och ange källan för meddelandet.|Ja|Saknas|  
+|Källa|Sträng literal meningsfulla toohello trace viewer och att ange hello källan för hello-meddelande.|Ja|Saknas|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) .  
   
 -   **Avsnitt i princip:** inkommande, utgående backend fel  
   
 -   **Princip för scope:** alla scope  
   
 ##  <a name="Wait"></a>Vänta  
- Den `wait` principen Kör sina direkt underordnade principer parallellt och väntar på att alla eller en av dess omedelbara underordnade principer ska slutföras innan den slutförs. Vänta principen kan ha sina direkt underordnade principer [begäran om att skicka](api-management-advanced-policies.md#SendRequest), [hämta värdet från cache](api-management-caching-policies.md#GetFromCacheByKey), och [Åtkomstkontrollflödet](api-management-advanced-policies.md#choose) principer.  
+ Hej `wait` principen Kör sina direkt underordnade principer parallellt och väntar på alla eller en av dess omedelbara underordnade principer toocomplete innan den har slutförts. hello vänta princip kan ha sina direkt underordnade principer [begäran om att skicka](api-management-advanced-policies.md#SendRequest), [hämta värdet från cache](api-management-caching-policies.md#GetFromCacheByKey), och [Åtkomstkontrollflödet](api-management-advanced-policies.md#choose) principer.  
   
 ### <a name="policy-statement"></a>Principframställning  
   
@@ -959,7 +959,7 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
 ```  
   
 ### <a name="example"></a>Exempel  
- I följande exempel finns två `choose` principer som direkt underordnade principer för den `wait` princip. Var och en av dessa `choose` principer körs parallellt. Varje `choose` princip försöker hämta ett cachelagrade värde. Om det finns en cache-miss, kallas en backend-tjänst för att ange värdet. I det här exemplet i `wait` principen inte slutföras förrän alla dess omedelbara underordnade principer slutföras eftersom den `for` -attributet är inställt på `all`.   I det här exemplet variablerna kontext (`execute-branch-one`, `value-one`, `execute-branch-two`, och `value-two`) deklareras utanför omfånget för den här principen exempel.  
+ I följande exempel hello finns två `choose` principer som direkt underordnade principer för hello `wait` princip. Var och en av dessa `choose` principer körs parallellt. Varje `choose` princip försöker tooretrieve cachelagrade värde. Om det finns en cache-miss, kallas tooprovide hello värde med en serverdelstjänst. I det här exemplet hello `wait` principen inte slutföras förrän alla dess omedelbara underordnade principer slutföra eftersom hello `for` attribut har angetts för`all`.   I det här exemplet hello kontexten variabler (`execute-branch-one`, `value-one`, `execute-branch-two`, och `value-two`) deklareras utanför hello omfattning exempel principen.  
   
 ```xml  
 <wait for="all">  
@@ -1003,10 +1003,10 @@ Observera användningen av [egenskaper](api-management-howto-properties.md) som 
   
 |Attribut|Beskrivning|Krävs|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|för|Anger om den `wait` principen väntar på att alla direkt underordnade principer ska slutföras eller bara en. Tillåtna värden är:<br /><br /> -   `all`-Vänta tills alla direkt underordnade principer ska slutföras<br />-alla - vänta tills alla direkt underordnade principen att slutföra. När den första omedelbara underordnade principen är klar, den `wait` principen har slutförts och körningen av alla andra principer för omedelbart underordnade avslutas.|Nej|Alla|  
+|för|Avgör om hello `wait` princip väntar på att alla direkt underordnade principer toobe slutförts eller bara en. Tillåtna värden är:<br /><br /> -   `all`-Vänta tills alla direkt underordnade principer toocomplete<br />-alla - vänta tills alla direkt underordnade princip toocomplete. När hello första omedelbara underordnade principen är klar hello `wait` princip har slutförts och körningen av alla andra principer för omedelbart underordnade avslutas.|Nej|Alla|  
   
 ### <a name="usage"></a>Användning  
- Den här principen kan användas i följande princip [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Den här principen kan användas i hello följa principen [avsnitt](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) och [scope](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
   
 -   **Avsnitt i princip:** inkommande, utgående backend  
   

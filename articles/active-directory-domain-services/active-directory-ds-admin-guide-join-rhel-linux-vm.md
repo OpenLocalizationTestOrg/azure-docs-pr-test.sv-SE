@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory Domain Services: Anslut en RHEL VM till en hanterad domän | Microsoft Docs"
-description: Anslut en virtuell Red Hat Enterprise Linux-dator till Azure AD Domain Services
+title: "Azure Active Directory Domain Services: Anslut till en hanterad domän för RHEL VM-tooa | Microsoft Docs"
+description: "Ansluta till en virtuell dator för Red Hat Enterprise Linux tooAzure AD DS"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,131 +14,131 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 69f1850bfed90392e9a4695e2443ffaa6bfc746d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 41ca2aaf2eefbf9c403d2b834d61a1aa0943d950
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Ansluta en Red Hat Enterprise Linux 7-virtuell dator till en hanterad domän
-Den här artikeln visar hur du ansluter till en virtuell dator för Red Hat Enterprise Linux (RHEL) 7 till en hanterad Azure AD DS-domän.
+# <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-tooa-managed-domain"></a>Anslut till en hanterad domän för Red Hat Enterprise Linux 7 virtuella tooa
+Den här artikeln visar hur toojoin en Azure AD Domain Services med Red Hat Enterprise Linux (RHEL) 7 virtuella tooan hanterade domän.
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Etablera en virtuell dator med Red Hat Enterprise Linux
-Utför följande steg för att etablera en virtuell dator för RHEL 7 som använder Azure portal.
+Utföra hello följande steg tooprovision en RHEL 7 virtuell dator med hello Azure-portalen.
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).
 
     ![Azure portalens instrumentpanel](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-dashboard.png)
-2. Klicka på **ny** på den vänstra rutan och skriv **Red Hat** i sökfältet som visas i följande skärmbild. Poster för Red Hat Enterprise Linux visas i sökresultaten. Klicka på **Red Hat Enterprise Linux 7.2**.
+2. Klicka på **ny** på hello vänster fönsterruta och typen **Red Hat** i sökfältet hello som visas i följande skärmbild hello. Poster för Red Hat Enterprise Linux visas i sökresultaten hello. Klicka på **Red Hat Enterprise Linux 7.2**.
 
     ![Välj RHEL i resultaten](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-find-rhel-image.png)
-3. Sökresultat i den **allt** fönstret ska visa en lista med Red Hat Enterprise Linux 7.2 avbildningen. Klicka på **Red Hat Enterprise Linux 7.2** att visa mer information om den virtuella datoravbildningen.
+3. hello sökresultat i hello **allt** rutan bör innehålla hello Red Hat Enterprise Linux 7.2 avbildningen. Klicka på **Red Hat Enterprise Linux 7.2** tooview mer information om hello avbildning av virtuell dator.
 
     ![Välj RHEL i resultaten](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-select-rhel-image.png)
-4. I den **Red Hat Enterprise Linux 7.2** rutan du bör se mer information om den virtuella datoravbildningen. I den **Välj en distributionsmodell** listrutan, Välj **klassiska**. Klicka på den **skapa** knappen.
+4. I hello **Red Hat Enterprise Linux 7.2** rutan du bör se mer information om hello avbildning av virtuell dator. I hello **Välj en distributionsmodell** listrutan, Välj **klassiska**. Klicka på hello **skapa** knappen.
 
     ![Visa information om bild](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-clicked.png)
-5. I den **grunderna** sida av den **Skapa virtuell dator** guiden ange de **värdnamn** för den nya virtuella datorn. Också ange ett användarnamn för lokal administratör i den **användarnamn** fältet och en **lösenord**. Du kan också välja att använda en SSH-nyckel för att autentisera användaren för lokal administratör. Också välja en **prisnivån** för den virtuella datorn.
+5. I hello **grunderna** sidan hello **Skapa virtuell dator** guiden ange hello **värdnamn** för hello nya virtuella datorn. Ange ett användarnamn för lokal administratör också i hello **användarnamn** fältet och en **lösenord**. Du kan också välja toouse SSH key tooauthenticate hello lokala administratörsanvändare. Också välja en **prisnivån** för hello virtuella datorn.
 
     ![Skapa VM - grunderna sida](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-basic-details.png)
-6. I den **storlek** sida av den **Skapa virtuell dator** guiden, Välj storlek för den virtuella datorn.
+6. I hello **storlek** sidan hello **Skapa virtuell dator** guiden, Välj hello storlek för hello virtuella datorn.
 
     ![Skapa VM - väljer storlek](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-select-vm-size.png)
 
-7. I den **inställningar** sida av den **Skapa virtuell dator** guiden, Välj lagring kontot för den virtuella datorn. Klicka på **virtuellt nätverk** att välja det virtuella nätverket som Linux VM ska distribueras. I den **virtuellt nätverk** bladet väljer virtuella nätverk där Azure AD Domain Services är tillgängligt. I det här exemplet väljer vi det virtuella nätverket 'MyPreviewVNet'.
+7. I hello **inställningar** sidan hello **Skapa virtuell dator** guiden, Välj hello storage-konto för hello virtuella datorn. Klicka på **virtuellt nätverk** tooselect hello virtuellt nätverk toowhich hello Linux VM ska distribueras. I hello **virtuellt nätverk** bladet, Välj hello virtuellt nätverk där Azure AD Domain Services är tillgängligt. I det här exemplet väljer vi hello 'MyPreviewVNet' virtuellt nätverk.
 
     ![Skapa VM - väljer virtuellt nätverk](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-select-vnet.png)
-8. På den **sammanfattning** sida av den **Skapa virtuell dator** guiden, granska och klickar på den **OK** knappen.
+8. På hello **sammanfattning** sidan hello **Skapa virtuell dator** guiden, granska och klickar på hello **OK** knappen.
 
     ![Skapa VM - virtuella nätverk som har valts](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-vnet-selected.png)
-9. Distribution av den nya virtuella datorn baserat på den RHEL 7.2 avbildningen ska starta.
+9. Distribution av hello nya virtuella datorn baserat på hello RHEL 7.2 avbildningen ska starta.
 
     ![Skapa VM - distributionen har startat](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-deployment-started.png)
-10. Efter några minuter, ska den virtuella datorn distribueras har och redo för användning.
+10. Efter några minuter ska hello virtuella datorn har distribuerats och redo för användning.
 
     ![Skapa VM - distribueras](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-create-vm-deployed.png)
 
-## <a name="connect-remotely-to-the-newly-provisioned-linux-virtual-machine"></a>Fjärransluta till den nyetablerade virtuella Linux-datorn
-RHEL 7.2 virtuella datorn har etablerats i Azure. Nästa uppgift är att fjärransluta till den virtuella datorn.
+## <a name="connect-remotely-toohello-newly-provisioned-linux-virtual-machine"></a>Fjärransluta toohello nyligen etablerats virtuell Linux-dator
+hello RHEL 7.2 virtuella datorn har etablerats i Azure. hello nästa uppgift är tooconnect via fjärranslutning toohello virtuella datorn.
 
-**Ansluta till den virtuella datorn RHEL 7.2** följer du anvisningarna i artikeln [så att logga in på en virtuell dator som kör Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+**Ansluta toohello RHEL 7.2 virtuella** följer du anvisningarna hello i hello artikel [hur toolog på tooa virtuell dator som kör Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Resten av stegen förutsätter att du använder PuTTY SSH-klienten för att ansluta till den virtuella datorn RHEL. Mer information finns i [PuTTY-hämtningssida](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+hello resten av hello steg förutsätter att du använder hello PuTTY SSH tooconnect toohello RHEL virtuella klientdatorn. Mer information finns i hello [PuTTY-hämtningssida](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
-1. Öppna PuTTY-programmet.
-2. Ange den **värdnamn** för den nyligen skapade RHEL virtuella datorn. I det här exemplet har vår virtuella värdnamn ”contoso-rhel.cloudapp .net'. Om du inte är säker på namnet på den virtuella datorn finns på VM-instrumentpanelen på Azure-portalen.
+1. Öppna hello PuTTY program.
+2. Ange hello **värdnamn** för hello nyskapad RHEL virtuell dator. I det här exemplet har vår virtuella värdnamn för hello ”contoso-rhel.cloudapp .net'. Om du inte är säker på hello värdnamnet för den virtuella datorn läser du toohello VM instrumentpanelen på hello Azure-portalen.
 
     ![PuTTY ansluta](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-connect.png)
-3. Logga in på den virtuella datorn med lokal administratörsbehörighet som du angav när den virtuella datorn har skapats. I det här exemplet används vi det lokala administratörskontot ”mahesh”.
+3. Logga in toohello virtuell dator med hello lokal administratörsautentiseringsuppgifter du angav när hello virtuella datorn skapades. I det här exemplet användes hello lokalt administratörskonto ”mahesh”.
 
     ![PuTTY-inloggning](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-login.png)
 
-## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Installera nödvändiga paket på den virtuella Linux-datorn
-När du har anslutit till den virtuella datorn, är nästa uppgift att installera paket som krävs för domänanslutning på den virtuella datorn. Utför följande steg:
+## <a name="install-required-packages-on-hello-linux-virtual-machine"></a>Installera nödvändiga paket på hello virtuell Linux-dator
+Efter anslutning toohello virtuella är hello nästa uppgift tooinstall paket som krävs för domänanslutning på hello virtuella datorn. Utför följande steg hello:
 
-1. **Installera realmd:** realmd paketet används för domänanslutning. Skriv följande kommando i PuTTY terminalen:
+1. **Installera realmd:** hello realmd paketet används för domänanslutning. Skriv följande kommando hello i PuTTY terminalen:
 
     sudo yum installera realmd
 
     ![Installera realmd](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-realmd.png)
 
-    Efter några minuter ska realmd paketet installeras på den virtuella datorn.
+    Efter några minuter bör hello realmd paketet installeras på hello virtuella datorn.
 
     ![realmd installerad](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-installed.png)
-2. **Installera sssd:** realmd paketet är beroende av sssd att utföra kopplingsåtgärder för domänen. Skriv följande kommando i PuTTY terminalen:
+2. **Installera sssd:** hello realmd paket som beror på sssd tooperform domän join-operationer. Skriv följande kommando hello i PuTTY terminalen:
 
     sudo yum installera sssd
 
     ![Installera sssd](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-sssd.png)
 
-    Efter några minuter ska sssd paketet installeras på den virtuella datorn.
+    Efter några minuter bör hello sssd paketet installeras på hello virtuella datorn.
 
     ![realmd installerad](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-sssd-installed.png)
-3. **Installera kerberos:** i terminalen PuTTY skriver du följande kommando:
+3. **Installera kerberos:** i terminalen PuTTY skriver du följande kommando hello:
 
     sudo yum installera krb5 arbetsstation krb5-bibliotek
 
     ![Installera kerberos](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-install-kerberos.png)
 
-    Efter några minuter ska realmd paketet installeras på den virtuella datorn.
+    Efter några minuter bör hello realmd paketet installeras på hello virtuella datorn.
 
     ![Kerberos installerad](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-kerberos-installed.png)
 
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Anslut den virtuella Linux-datorn till den hanterade domänen
-De nödvändiga paketen är installerat på den virtuella Linux-datorn, är nästa uppgift att ansluta den virtuella datorn till den hanterade domänen.
+## <a name="join-hello-linux-virtual-machine-toohello-managed-domain"></a>Anslut till hello Linux virtuella toohello hanterad domän
+Nu när hello krävs paket som är installerade på hello virtuell Linux-dator, är hello nästa uppgift toojoin hello virtuella toohello hanterad domän.
 
-1. Identifiera den hanterade domänen AAD Domain Services. Skriv följande kommando i PuTTY terminalen:
+1. Identifiera hello AAD Domain Services-hanterad domän. Skriv följande kommando hello i PuTTY terminalen:
 
     sudo sfär identifiera CONTOSO100.COM
 
     ![Identifiera sfär](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-discover.png)
 
-    Om **sfär identifiera** gick inte att hitta din hanterade domän, se till att domänen kan nås från den virtuella datorn (försök ping). Se också till att den virtuella datorn faktiskt har distribuerats till samma virtuella nätverk som den hanterade domänen är tillgänglig.
-2. Initiera kerberos. Skriv följande kommando i terminalen PuTTY. Kontrollera att du anger en användare som tillhör gruppen AAD DC-administratörer. Endast dessa användare kan ansluta datorer till den hanterade domänen.
+    Om **sfär identifiera** är toofind din hanterade domän Kontrollera hello domänen kan nås från hello virtuell dator (försök ping). Kontrollera också att hello den virtuella datorn har faktiskt distribuerade toohello samma virtuella nätverk i vilka hello hanterade domänen är tillgänglig.
+2. Initiera kerberos. Skriv följande kommando hello i PuTTY terminalen. Kontrollera att du anger en användare som tillhör toohello ' AAD DC-administratörsgruppen. Endast dessa användare kan ansluta till datorer toohello hanterade domän.
 
     kinitbob@CONTOSO100.COM
 
     ![Kinit](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-kinit.png)
 
-    Se till att du anger domännamnet i versaler annan kinit misslyckas.
-3. Anslut datorn till domänen. Skriv följande kommando i terminalen PuTTY. Ange samma användare som du angav i föregående steg (kinit).
+    Se till att du anger hello domännamn i versaler annan kinit misslyckas.
+3. Ansluta till hello datorn toohello domän. Skriv följande kommando hello i PuTTY terminalen. Ange hello samma användare som du angav i föregående steg (kinit) hello.
 
     sudo sfär koppling--utförlig CONTOSO100.COM -U 'bob@CONTOSO100.COM'
 
     ![Anslut till domän](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-realmd-join.png)
 
-Du bör få ett meddelande (”har registrerad dator i sfär”) när datorn har anslutit till den hanterade domänen.
+Du bör få ett meddelande (”har registrerad dator i sfär”) när hello datorn är har anslutits toohello hanterad domän.
 
 ## <a name="verify-domain-join"></a>Kontrollera domänanslutning
-Du kan snabbt kontrollera om datorn har anslutit till den hanterade domänen. Ansluta till den nya domänanslutna RHEL VM som använder SSH och ett domänanvändarkonto och kontrollera sedan för att se om användarkontot är borta på rätt sätt.
+Du kan snabbt kontrollera om har hello datorn har anslutits toohello hanterad domän. Ansluta toohello nyligen domänanslutna RHEL VM som använder SSH och ett domänanvändarkonto och sedan kontrollera toosee om hello-användarkontot är borta på rätt sätt.
 
-1. I terminalen PuTTY skriver du följande kommando för att ansluta till den nya domänanslutna RHEL virtuell dator med SSH. Använda ett domänkonto som tillhör den hanterade domänen (till exempel 'bob@CONTOSO100.COM' i det här fallet.)
+1. Din PuTTY terminal och typen hello efter kommandot tooconnect toohello nyligen domänanslutna RHEL virtuell dator med SSH. Använda ett domänkonto som tillhör toohello hanterad domän (till exempel 'bob@CONTOSO100.COM' i det här fallet.)
 
     SSH -l bob@CONTOSO100.COM contoso rhel.cloudapp.net
-2. Skriv följande kommando för att se om arbetskatalogen har initierats korrekt i terminalen PuTTY.
+2. Ange hello efter kommandot toosee om hello arbetskatalog har initierats korrekt i terminalen PuTTY.
 
     pwd
-3. Skriv följande kommando för att se om gruppmedlemskap som matchas korrekt i terminalen PuTTY.
+3. Ange hello efter kommandot toosee om hello gruppmedlemskap som matchas korrekt i terminalen PuTTY.
 
     id
 
@@ -147,11 +147,11 @@ Ett exempel på utdata från de här kommandona visas nedan:
 ![Kontrollera domänanslutning](./media/active-directory-domain-services-admin-guide/rhel-join-azure-portal-putty-verify-domain-join.png)
 
 ## <a name="troubleshooting-domain-join"></a>Felsöka domänanslutning
-Referera till den [felsökning domänanslutning](active-directory-ds-admin-guide-join-windows-vm.md#troubleshooting-domain-join) artikel.
+Se toohello [felsökning domänanslutning](active-directory-ds-admin-guide-join-windows-vm.md#troubleshooting-domain-join) artikel.
 
 ## <a name="related-content"></a>Relaterat innehåll
 * [Azure AD Domain Services - komma igång-guide](active-directory-ds-getting-started.md)
-* [Anslut en virtuell dator med Windows Server till en Azure AD Domain Services-hanterad domän](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Logga in till en virtuell dator som kör Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* [Ansluta till en Windows Server virtuella tooan Azure AD Domain Services-hanterad domän](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Hur toolog på tooa virtuell dator som kör Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * [Installera Kerberos](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
 * [Red Hat Enterprise Linux 7 - Guide för Windows-integrering](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)

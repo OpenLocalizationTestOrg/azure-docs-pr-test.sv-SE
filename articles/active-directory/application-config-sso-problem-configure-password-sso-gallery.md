@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera lösenord enkel inloggning för ett program för Azure AD-galleriet problemet | Microsoft Docs"
-description: "Förstå de vanliga problem personer står inför när du konfigurerar lösenord enkel inloggning för program som redan ingår i Azure AD Application Gallery"
+title: "Konfigurera lösenord enkel inloggning för ett program för Azure AD-galleriet aaaProblem | Microsoft Docs"
+description: "Förstå hello vanliga problem personer yta när du konfigurerar lösenord enkel inloggning för program som redan finns i hello Azure AD Application Gallery"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,98 +13,98 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 58d29996a922fac6d295e753ba5d66d32e745a57
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 78c37c52453c375bf7ccbca6df5c9008be4ce642
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Konfigurera lösenord enkel inloggning för ett program för Azure AD-galleriet problem
 
-Den här artikeln hjälper dig att förstå de vanliga problem personer står inför när du konfigurerar **lösenord enkel inloggning** med ett program för Azure AD-galleriet.
+Den här artikeln hjälper dig toounderstand hello vanliga problem personer står inför när du konfigurerar **lösenord enkel inloggning** med ett program för Azure AD-galleriet.
 
-## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Autentiseringsuppgifterna är ifylld, men tillägget Skicka inte dem
+## <a name="credentials-are-filled-in-but-hello-extension-does-not-submit-them"></a>Autentiseringsuppgifterna är ifylld, men hello-tillägget Skicka inte dem
 
-Detta inträffar vanligtvis om leverantören av tillämpningsprogrammet har ändrats sina inloggningssidan nyligen du lägger till ett fält genom att ändra en underliggande identifierare vi används för att identifiera fälten användarnamn och lösenord eller ändra hur inloggningen uppleva fungerar för sina program. I många fall kan arbeta Microsoft Lyckligtvis med leverantörer att snabbt lösa dessa problem.
+Det händer vanligtvis om hello programvaruleverantören har ändrats loggar in sidan nyligen tooadd ett fält, ändra en underliggande identifierare som vi använde toodetect hello fälten användarnamn och lösenord eller ändra hur hello inloggning uppleva fungerar för sina program. Lyckligtvis i många fall kan kan Microsoft arbeta med program leverantörer toorapidly Lös problemen.
 
-När Microsoft har tekniker för att automatiskt upptäcka när dessa integreringar bryter, men ibland vi kan inte hitta de här problemen direkt eller de ta lite tid att åtgärda. I fall när något av dessa integreringar inte fungerar korrekt, gärna vi om du har öppnat ett supportärende så att vi kan åtgärda det så snabbt som möjligt.
+När Microsoft har tekniker tooautomatically identifiera när dessa integreringar Bryt, inte men ibland vi kan toofind problemen rätt passivt eller de ta lite tid toofix. Hello om när något av dessa integreringar inte fungerar korrekt, gärna vi om du har öppnat ett supportärende så att vi kan åtgärda det så snabbt som möjligt.
 
-Förutom detta **om du inte har kontakt med programvaruleverantören,** **skicka dem till vår sätt** så att vi kan arbeta med dem för att integrera internt sina program med Azure Active Directory. Du kan skicka leverantören för att den [visar en lista över ditt program i Azure Active Directory-programgalleriet](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) så att den startade.
+I tillägg toothis **om du inte har kontakt med programvaruleverantören,** **skicka dem till vår sätt** så att vi kan arbeta med dem. toonatively integrera sina program med Azure Active Directory. Du kan skicka hello leverantör toohello [visar en lista över dina program i hello Azure Active Directory-programgalleriet](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) tooget dem har startats.
 
-## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Autentiseringsuppgifterna är ifylld och har skickats, men sidan anger autentiseringsuppgifterna är felaktiga
+## <a name="credentials-are-filled-in-and-submitted-but-hello-page-indicates-hello-credentials-are-incorrect"></a>Autentiseringsuppgifterna är ifylld och har skickats, men hello-sidan anger hello autentiseringsuppgifterna är felaktiga
 
-Lös problemet, kontrollera följande:
+tooresolve problemet kan första Kontrollera hello följande:
 
--   Se till att användaren först och försök att **logga in på webbplatsen för programmet direkt** med de autentiseringsuppgifter som lagras i dem.
+-   Hello användare först försöka för**inloggning toohello programmet webbplats direkt** med hello sparade autentiseringsuppgifter för dem.
 
-  * Om det fungerar sedan för att användaren klickar på den **uppdatera autentiseringsuppgifterna** knappen på den **programmet panelen** i den **appar** avsnitt i den [programmet åtkomstpanelen](https://myapps.microsoft.com/) uppdatera dem till den senaste kända fungerande användarnamn och lösenord.
+  * Om det fungerar sedan har hello användare klickar du på hello **uppdatera autentiseringsuppgifterna** hello-knappen **programmet panelen** i hello **appar** avsnitt i hello [program Öppna Kontrollpanelen](https://myapps.microsoft.com/) tooupdate dem toohello senaste kända fungerar användarnamn och lösenord.
 
-   * Om du eller en annan administratör har tilldelats autentiseringsuppgifterna för denna användare, hitta användaren eller gruppen programmet tilldelningen genom att navigera till den **användare och grupper** för programmet, markera tilldelningen och klicka på den **referenser uppdatering** knappen.
+   * Om du eller en annan administratör tilldelad hello autentiseringsuppgifterna för denna användare att hitta hello användare eller grupp program tilldelningen genom att gå toohello **användare och grupper** fliken av programmet hello, välja hello tilldelning och Klicka på hello **referenser uppdatering** knappen.
 
--   Om användaren har tilldelats sina egna autentiseringsuppgifter, har användaren **Kontrollera att lösenordet inte har gått ut i programmet** och i så fall **uppdatera sina utgångna lösenord** genom att logga in direkt till programmet.
+-   Om användaren hello tilldelats sina egna autentiseringsuppgifter, har hello användare **Kontrollera toobe till att deras lösenord inte har gått ut i programmet hello** och i så fall **uppdatera sina utgångna lösenord** genom att logga in toohello programmet direkt.
 
-   * När lösenordet har uppdaterats i programmet kan begära att klicka på den **uppdatera autentiseringsuppgifterna** knappen på den **programmet panelen** i den **appar** avsnitt i den [programmet åtkomstpanelen](https://myapps.microsoft.com/) uppdatera dem till den senaste kända fungerande användarnamn och lösenord.
+   * När hello lösenord har uppdaterats i hello program kan begära hello användaren tooclick hello **uppdatera autentiseringsuppgifterna** hello-knappen **programmet panelen** i hello **appar** avsnitt i hello [programmet åtkomstpanelen](https://myapps.microsoft.com/) tooupdate dem toohello senaste kända fungerar användarnamn och lösenord.
 
-   * Om du eller en annan administratör har tilldelats autentiseringsuppgifterna för denna användare, hitta användaren eller gruppen programmet tilldelningen genom att navigera till den **användare och grupper** för programmet, markera tilldelningen och klicka på den **referenser uppdatering** knappen.
+   * Om du eller en annan administratör tilldelad hello autentiseringsuppgifterna för denna användare att hitta hello användare eller grupp program tilldelningen genom att gå toohello **användare och grupper** fliken av programmet hello, välja hello tilldelning och Klicka på hello **referenser uppdatering** knappen.
 
--   Behörighet att uppdatera webbläsartillägget för åtkomst-panelen genom att följa stegen nedan i den [installera åtkomst panelen webbläsartillägget](#how-to-install-the-access-panel-browser-extension) avsnitt.
+-   Har hello användaren update hello åtkomst panelen webbläsartillägget genom att följa hello stegen nedan i hello [hur tooinstall hello åtkomst panelen webbläsartillägget](#how-to-install-the-access-panel-browser-extension) avsnitt.
 
--   Se till att webbläsartillägget för åtkomst panelen körs och aktiverat i användarens webbläsare.
+-   Se till att hello åtkomst panelen webbläsartillägget körs och aktiverat i användarens webbläsare.
 
--   Se till att användarna inte försöker logga in till programmet från åtkomstpanelen när i **incognito InPrivate- eller privat läge**. Tillägget för åtkomst-panelen stöds inte i dessa lägen.
+-   Se till att användarna inte försöker toosign i toohello programmet hello åtkomst panelen när i **incognito InPrivate- eller privat läge**. tillägget för hello åtkomst panelen stöds inte i dessa lägen.
 
-Om det inte fungerar, kan det vara fallet som en ändring inträffat på den sida i programmet som tillfälligt bruten programmets integrering med Azure AD. T.ex, kan detta inträffa när programvaruleverantören introducerar ett skript på webbsidan som fungerar annorlunda för manuell eller automatisk indata, som orsakar automated integration som våra egna, att bryta. I många fall kan arbeta Microsoft Lyckligtvis med leverantörer att snabbt lösa dessa problem.
+Om detta inte fungerar kan bero det på hello fall som en ändring inträffat på hello program sida som tillfälligt bruten hello programmet integrering med Azure AD. T.ex, kan detta inträffa när hello programvaruleverantören introducerar ett skript på webbsidan som fungerar annorlunda för manuell eller automatisk indata, som orsakar automated integration som våra egna, toobreak. Lyckligtvis i många fall kan kan Microsoft arbeta med program leverantörer toorapidly Lös problemen.
 
-När Microsoft har tekniker för att automatiskt upptäcka när dessa integreringar bryter, men ibland vi kan inte hitta de här problemen direkt eller de ta lite tid att åtgärda. I fall när något av dessa integreringar inte fungerar korrekt, gärna vi om du har öppnat ett supportärende så att vi kan åtgärda det så snabbt som möjligt.
+När Microsoft har tekniker tooautomatically identifiera när dessa integreringar Bryt, inte men ibland vi kan toofind problemen rätt passivt eller de ta lite tid toofix. Hello om när något av dessa integreringar inte fungerar korrekt, gärna vi om du har öppnat ett supportärende så att vi kan åtgärda det så snabbt som möjligt.
 
-Förutom detta **om du inte har kontakt med programvaruleverantören,** **skicka dem till vår sätt** så att vi kan arbeta med dem för att integrera internt sina program med Azure Active Directory. Du kan skicka leverantören för att den [visar en lista över ditt program i Azure Active Directory-programgalleriet](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) så att den startade.
+I tillägg toothis **om du inte har kontakt med programvaruleverantören,** **skicka dem till vår sätt** så att vi kan arbeta med dem. toonatively integrera sina program med Azure Active Directory. Du kan skicka hello leverantör toohello [visar en lista över dina program i hello Azure Active Directory-programgalleriet](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) tooget dem har startats.
 
-## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>Tillägget fungerar i Chrome och Firefox, men inte i Internet Explorer
+## <a name="hello-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>hello tillägg fungerar i Chrome och Firefox, men inte i Internet Explorer
 
-Det finns två huvudsakliga orsaker till problemet:
+Det finns två huvudsakliga orsaker toothis problemet:
 
--   Beroende på säkerhetsinställningarna aktiverad i Internet Explorer, om webbplatsen inte är en del av en **zonen Betrodda**, ibland våra skript blockeras från att köras för programmet.
+-   Beroende på hello säkerhetsinställningar som är aktiverad i Internet Explorer om hello webbplatsen inte är en del av en **zonen Betrodda**, ibland våra skript blockeras från att köras för hello program.
 
-  *  Lös detta genom att be användaren att **Lägg till webbplatsen för programmets** till den **tillförlitliga platser** lista inom deras **säkerhetsinställningar för Internet Explorer**. Du kan skicka till användarna i [hur du lägger till en plats i listan med betrodda platser](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) artikel detaljerade anvisningar.
+  *  tooresolve kan instruera hello användaren för**Lägg till webbplatsen för hello program** toohello **tillförlitliga platser** listan inom sina **säkerhetsinställningar för Internet Explorer**. Du kan skicka dina användare toohello [hur tooadd en plats toomy betrodda platser listan](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) artikel detaljerade anvisningar.
 
--   I sällsynta fall kan orsaka Internet Explorer säkerhetsvalidering ibland sidan för att läsa in långsammare än våra skript körs.
+-   I sällsynta fall kan Säkerhetsvalidering för Internet Explorer ibland orsaka hello sidan tooload långsammare än hello våra skript körs.
 
-   * Tyvärr kan kan den här situationen variera beroende på webbläsarens version, DATORHASTIGHET eller webbplats som besöks. I det här fallet föreslår vi att du kontaktar supporten kan vi lösa integration för den här specifika program.
+   * Tyvärr kan kan den här situationen variera beroende på hello webbläsarens version, DATORHASTIGHET eller webbplats som besöks. I det här fallet föreslår vi att du kontaktar supporten kan vi lösa hello-integrering för den här specifika program.
 
-Förutom detta **om du inte har kontakt med programvaruleverantören,** **skicka dem till vår sätt** så att vi kan arbeta med dem för att integrera internt sina program med Azure Active Directory. Du kan skicka leverantören för att den [visar en lista över ditt program i Azure Active Directory-programgalleriet](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) så att den startade.
+I tillägg toothis **om du inte har kontakt med programvaruleverantören,** **skicka dem till vår sätt** så att vi kan arbeta med dem. toonatively integrera sina program med Azure Active Directory. Du kan skicka hello leverantör toohello [visar en lista över dina program i hello Azure Active Directory-programgalleriet](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) tooget dem har startats.
 
-## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Kontrollera om programmets inloggningssida har ändrats nyligen eller kräver ett ytterligare fält
+## <a name="check-if-hello-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Kontrollera om hello programmets inloggningssida har ändrats nyligen eller kräver ett ytterligare fält
 
-Om programmets inloggningssida har ändrats drastiskt leder ibland detta till vår integreringar sidbrytning. Ett exempel på detta är när en programvaruleverantören läggs tecknet i fältet, captcha eller multifaktorautentisering i deras upplevelser. I många fall kan arbeta Microsoft Lyckligtvis med leverantörer att snabbt lösa dessa problem.
+Om hello programmets inloggningssida har ändrats drastiskt leder ibland detta till vår integreringar toobreak. Ett exempel på detta är när en programvaruleverantören läggs tecknet i fältet, en captcha eller multifaktorautentisering tootheir inträffar. Lyckligtvis i många fall kan kan Microsoft arbeta med program leverantörer toorapidly Lös problemen.
 
-När Microsoft har tekniker för att automatiskt upptäcka när dessa integreringar Bryt, men ibland vi kan inte hitta de här problemen direkt. Annars kan de ta lite tid att åtgärda. När något av dessa integreringar inte fungerar korrekt i fall skulle vi uppskattar öppna ett supportärende så att vi kan åtgärda det så snabbt som möjligt.
+När Microsoft har tekniker tooautomatically identifiera när dessa integreringar Bryt, inte men ibland vi kan toofind utfärdar dessa direkt. Annars vidta de vissa tid toofix. När något av dessa integreringar inte fungerar korrekt i hello fall skulle vi uppskattar öppna ett supportärende så att vi kan åtgärda det så snabbt som möjligt.
 
-Förutom detta **om du inte har kontakt med programvaruleverantören,** **skicka dem till vår sätt** så att vi kan arbeta med dem för att integrera internt sina program med Azure Active Directory. Du kan skicka leverantören för att den [visar en lista över ditt program i Azure Active Directory-programgalleriet](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) så att den startade.
+I tillägg toothis **om du inte har kontakt med programvaruleverantören,** **skicka dem till vår sätt** så att vi kan arbeta med dem. toonatively integrera sina program med Azure Active Directory. Du kan skicka hello leverantör toohello [visar en lista över dina program i hello Azure Active Directory-programgalleriet](https://docs.microsoft.com/azure/active-directory/develop/active-directory-app-gallery-listing) tooget dem har startats.
 
-## <a name="how-to-install-the-access-panel-browser-extension"></a>Så här installerar du Access panelen webbläsartillägg
+## <a name="how-tooinstall-hello-access-panel-browser-extension"></a>Hur tooinstall hello åtkomst panelen webbläsartillägg
 
-Följ stegen nedan om du vill installera webbläsartillägget för åtkomst panelen:
+tooinstall hello webbläsartillägget för åtkomst till Kontrollpanelen, så hello nedan:
 
-1.  Öppna den [åtkomstpanelen](https://myapps.microsoft.com) i en webbläsare som stöds och logga in som en **användaren** i din Azure AD.
+1.  Öppna hello [åtkomstpanelen](https://myapps.microsoft.com) i någon av hello stöds webbläsare och logga in som en **användaren** i din Azure AD.
 
-2.  Klicka på en **lösenord SSO-program** på åtkomstpanelen.
+2.  Klicka på en **lösenord SSO-program** i hello åtkomstpanelen.
 
-3.  Fråga om att installera programvara, Välj **installera nu**.
+3.  I hello fråga frågar tooinstall hello programvara, väljer **installera nu**.
 
-4.  Baserat på din webbläsare du dirigeras till länken. **Lägg till** tillägg till webbläsaren.
+4.  Baserat på din webbläsare vara du riktad toohello länken. **Lägg till** hello tillägget tooyour webbläsare.
 
-5.  Om din webbläsare, Välj antingen **aktivera** eller **Tillåt** tillägget.
+5.  Om din webbläsare frågar väljer tooeither **aktivera** eller **Tillåt** hello tillägg.
 
 6.  När den har installerats, **starta om** webbläsarsessionen.
 
-7.  Logga in till åtkomstpanelen och se om kan du **starta** lösenord SSO-program
+7.  Logga in till hello åtkomstpanelen och se om kan du **starta** lösenord SSO-program
 
-Du kan också ladda ned tillägget för Chrome och Firefox från direkt med länkarna nedan:
+Du kan också hämta hello-tillägget för Chrome och Firefox från hello Direktlänkar nedan:
 
 -   [Tillägget för Chrome åtkomst panelen](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
 -   [Tillägget för Firefox åtkomst panelen](https://addons.mozilla.org/firefox/addon/access-panel-extension/)
 
 ## <a name="next-steps"></a>Nästa steg
-[Tillhandahålla enkel inloggning till dina appar med Application Proxy](active-directory-application-proxy-sso-using-kcd.md)
+[Tillhandahålla enkel inloggning tooyour appar med Application Proxy](active-directory-application-proxy-sso-using-kcd.md)
 

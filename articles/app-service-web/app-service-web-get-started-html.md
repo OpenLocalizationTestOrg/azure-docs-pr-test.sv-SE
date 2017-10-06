@@ -1,6 +1,6 @@
 ---
-title: Skapa en statisk HTML-webbapp i Azure | Microsoft Docs
-description: "Distribuera en statisk HTML-exempelapp och lär dig att köra webbappar i Azure App Service."
+title: aaaCreate statiska HTML-webbapp i Azure | Microsoft Docs
+description: "Lär dig hur toorun web apps i Azure App Service genom att distribuera en statisk HTML sample-appen."
 services: app-service\web
 documentationcenter: 
 author: rick-anderson
@@ -15,48 +15,48 @@ ms.topic: quickstart
 ms.date: 05/26/2017
 ms.author: riande
 ms.custom: mvc
-ms.openlocfilehash: 42af5b08b8d2ff0c75fd73dcfa61c861647fd2c9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: efd8c8189a3aa1ac35602b688eeb31bff6f5a373
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Skapa en statisk HTML-webbapp i Azure
 
-Med [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst.  Den här snabbstarten visar hur du distribuerar en enkel HTML+CSS-webbplats till Azure Web Apps. Du skapar webbappen med [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) och använder Git för att distribuera HTML-innehåll till webbappen.
+Med [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst.  Den här snabbstarten visar hur toodeploy grundläggande HTML + CSS plats tooAzure Web Apps. Du skapar hello webbapp med hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), och du kan använda Git toodeploy HTML-innehåll toohello exempelwebbapp.
 
 ![Startsida för exempelapp](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-Du kan följa stegen nedan på en Mac-, Windows- eller Linux-dator. Det tar cirka fem minuter att slutföra självstudiekursen när de nödvändiga komponenterna har installerats.
+Du kan följa hello stegen nedan använder en Mac, Windows eller Linux-dator. När hello nödvändiga komponenter har installerats, tar cirka fem minuter toocomplete hello steg.
 
 ## <a name="prerequisites"></a>Krav
 
-För att slutföra den här snabbstarten behöver du:
+toocomplete denna Snabbstart:
 
 - [Installera Git](https://git-scm.com/)
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
-## <a name="download-the-sample"></a>Hämta exemplet
+## <a name="download-hello-sample"></a>Hämta hello-exempel
 
-Kör följande kommando i ett terminalfönster för att klona databasen för exempelappen till den lokala datorn.
+Kör hello efter kommandot tooclone hello exempel app databasen tooyour lokala datorn i ett terminalfönster.
 
 ```bash
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```
 
-Du använder det här terminalfönstret för att köra alla kommandon i den här snabbstarten.
+Du använder den här terminalfönster toorun alla hello-kommandon i denna Snabbstart.
 
-## <a name="view-the-html"></a>Visa HTML
+## <a name="view-hello-html"></a>Visa hello HTML
 
-Navigera till den katalog som innehåller HTML-exemplet. Öppna filen *index.html* i webbläsaren.
+Navigera toohello katalog som innehåller exempel på hello HTML. Öppna hello *index.html* filen i din webbläsare.
 
 ![Exempelstartsida för app](media/app-service-web-get-started-html/hello-world-in-browser.png)
 
-[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
+[!INCLUDE [Log in tooAzure](../../includes/login-to-azure.md)] 
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
@@ -72,11 +72,11 @@ Nu har du skapat en ny tom webbapp på Azure.
 
 [!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push tooAzure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 13, done.
-Delta compression using up to 4 threads.
+Delta compression using up too4 threads.
 Compressing objects: 100% (11/11), done.
 Writing objects: 100% (13/13), 2.07 KiB | 0 bytes/s, done.
 Total 13 (delta 2), reused 0 (delta 0)
@@ -96,52 +96,52 @@ remote: Copying file: 'README.md'
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+toohttps://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## <a name="browse-to-the-app"></a>Bläddra till appen
+## <a name="browse-toohello-app"></a>Bläddra toohello app
 
-Gå till Azure-webbappens URL i en webbläsare:
+Gå toohello Azure web app-URL i en webbläsare:
 
 ```
 http://<app_name>.azurewebsites.net
 ```
 
-Sidan körs som en Azure App Service-webbapp.
+hello sidan körs som en webbapp i Azure App Service.
 
 ![Exempelstartsida för app](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-**Grattis!** Du har distribuerat din första HTML-app till App Service.
+**Grattis!** Du har distribuerat din första HTML-app tooApp Service.
 
-## <a name="update-and-redeploy-the-app"></a>Uppdatera och distribuera om appen
+## <a name="update-and-redeploy-hello-app"></a>Uppdatera och distribuera hello app
 
-Öppna filen *index.html* i en textredigerare och gör en ändring i koden. Ändra till exempel H1-rubriken från "Azure App Service - Sample Static HTML Site" till endast "Azure App Service".
+Öppna hello *index.html* filen i en textredigerare och gör en ändring toohello markeringar. Ändra exempelvis hello H1 rubriken ”Azure App Service – statiska HTML-Exempelplats” toojust ”Azure App Service”.
 
-Spara ändringarna på Git och skicka sedan kodändringarna till Azure.
+Genomför ändringarna i Git och skicka sedan hello kod ändringar tooAzure.
 
 ```bash
 git commit -am "updated HTML"
 git push azure master
 ```
 
-När distributionen är klar väljer du att uppdatera i webbläsaren så att ändringarna visas.
+Uppdatera din webbläsare toosee hello ändringar när distributionen är klar.
 
 ![Uppdaterad exempelstartsida för app](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
 ## <a name="manage-your-new-azure-web-app"></a>Hantera din nya Azure-webbapp
 
-Gå till <a href="https://portal.azure.com" target="_blank">Azure Portal</a> för att hantera den webbapp som du skapade.
+Gå toohello <a href="https://portal.azure.com" target="_blank">Azure-portalen</a> toomanage hello webbprogram som du skapade.
 
-Klicka på **Apptjänster** i menyn till vänster och sedan på namnet på din Azure-webbapp.
+Hello vänstra menyn klickar du på **Apptjänster**, och klicka sedan på hello namnet på din Azure webbapp.
 
-![Navigera till webbappen på Azure Portal](./media/app-service-web-get-started-html/portal1.png)
+![Portalen navigering tooAzure webbprogram](./media/app-service-web-get-started-html/portal1.png)
 
 Nu visas sidan Översikt för din webbapp. Här kan du utföra grundläggande hanteringsåtgärder som att bläddra, stoppa, starta, starta om och ta bort. 
 
 ![App Service-blad på Azure Portal](./media/app-service-web-get-started-html/portal2.png)
 
-Menyn till vänster innehåller olika sidor för att konfigurera appen. 
+hello vänstra menyn innehåller olika sidor för att konfigurera din app. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

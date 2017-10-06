@@ -16,37 +16,37 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: joflore
 ms.custom: end-user
-ms.openlocfilehash: b701172c2345313e236a037f5aa16939cfaac440
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: dfcd0106616218c84d23920b124bed5b202cdd6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="register-for-self-service-password-reset"></a>Registrera för återställning av lösenord med självbetjäning
 
 > [!IMPORTANT]
 > **Är du här eftersom du har problem med att logga in?** I så fall är det [här som du ser hur du kan ändra och återställa ditt eget lösenord](active-directory-passwords-update-your-own-password.md).
 
-Du kan återställa ditt lösenord eller låsa upp ditt konto utan att behöva tala med en person som använder lösenordsåterställning via självbetjäning (SSPR) som en slutanvändare. Innan du kan använda den här funktionen, måste du registrera autentiseringsmetoder eller bekräfta de fördefinierade autentiseringsmetoderna som administratören har fyllt i.
+Du kan återställa ditt lösenord eller låsa upp kontot utan toospeak tooa person som använder lösenordsåterställning via självbetjäning (SSPR) som en slutanvändare. Innan du kan använda den här funktionen har tooregister autentiseringsmetoder eller bekräfta hello fördefinierade autentiseringsmetoder som administratören har fyllts i.
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>Registrera eller bekräfta autentiseringsdata med SSPR
 
-1. Öppna webbläsaren på din enhet och gå till [registreringssidan för återställning av lösenord](http://aka.ms/ssprsetup)
+1. Öppna hello webbläsaren på din enhet och gå toohello [registreringssidan för återställning av lösenord](http://aka.ms/ssprsetup)
 2. Ange ditt användarnamn och lösenord som du har fått av administratören
-3. Beroende på hur din IT-personal konfigurerat saker, är en eller flera av följande alternativ tillgängliga för dig att konfigurera och verifiera. Administratören kan fylla i vissa av dessa du om de har ditt tillstånd att använda informationen.
-    * Arbetstelefon kan bara anges av administratören
-    * Telefon för autentisering ska anges till ett annat telefonnummer som skulle ha behörighet för att som en mobiltelefon som kan ta emot ett textmeddelande eller samtal.
-    * Autentisering e-post ska anges till en alternativ e-postadress som du kan komma åt utan att du behöver återställa lösenordet.
-    * Säkerhetsfrågor ger dig en lista med din administratör har godkänt för dig att besvara frågor. Du kan inte använda samma fråga eller besvara mer än en gång.
-4. Ange och kontrollera informationen som din administratör begär. Om mer än ett alternativ är tillgängliga, föreslår vi att du registrerar flera metoder för att ge flexibilitet vid en annan metod är inte tillgänglig (exempel: resa och det går inte att komma åt din Arbetstelefon)
+3. Beroende på hur IT-personalen har konfigurerat saker, en eller flera av hello följande alternativ är tillgängliga för du tooconfigure och verifiera. Administratören kan fylla i vissa av dessa du om de har behörighet toouse hello informationen.
+    * Arbetstelefon är bara kan toobe ställts in av administratören
+    * Telefon för autentisering ska anges tooanother telefonnummer som du skulle ha åtkomst toolike en mobiltelefon som kan ta emot ett textmeddelande eller samtal.
+    * Autentisering e-post ska anges tooan alternativa e-postadress som du kan komma åt utan hello lösenord behöver tooreset.
+    * Säkerhetsfrågor ger dig en lista med frågor som administratören har godkänts för du tooanswer. Du kan inte använda hello samma fråga eller besvara mer än en gång.
+4. Ange och kontrollera hello information som krävs av administratören. Om mer än ett alternativ är tillgängliga, föreslår vi att du registrerar flera metoder tooprovide flexibilitet när en annan metod är inte tillgänglig (exempel: resa och tooaccess din Arbetstelefon)
 
     ![Registrera autentiseringsmetoder och klicka på slutför][Register]
 
-5. När du är klar med steg 4 väljer du **Slutför**. Nu kan du använda självbetjäning för återställning av lösenord när du behöver framöver.
+5. När du är klar med steg 4 väljer **Slutför** och du kan nu kan toouse Självbetjäning för återställning av lösenord när du behöver tooin hello framtiden.
 
-Om du anger data i Telefon för autentisering eller E-post för autentisering visas detta inte i den globala katalogen. Det är endast du och dina administratörer som kan se dessa data. Endast du kan se svaren på dina säkerhetsfrågor.
+Om du skriver data i hello telefon för autentisering eller autentisering e-post kan visas det inte i hello global katalog. hello endast personer som kan se dessa data är du och dina administratörer. Du kan se hello svar tooyour säkerhetsfrågor.
 
-Administratörer kan kräva att du bekräftar dina autentiseringsmetoder efter en viss tid för att se till att du har registrerat lämpliga metoder.
+Administratörer kan kräva du tooconfirm din autentiseringsmetoder efter en viss tid toomake att du har fortfarande hello lämpliga metoder som är registrerad.
 
 ## <a name="common-problems-and-their-solutions"></a>Vanliga problem och lösningar
 
@@ -54,16 +54,16 @@ Administratörer kan kräva att du bekräftar dina autentiseringsmetoder efter e
 
 | Fel-fall| Vilka fel ser du?| Lösning |
 | --- | --- | --- |
-| En ”Kontakta din administratör” sida kommer när du har angett mitt användar-ID | Kontakta administratören <br> <br> Vi har upptäckt att lösenordet till ditt användarkonto inte hanteras av Microsoft. Vi kan därför inte att återställa lösenordet automatiskt. <br> <br> Du måste kontakta din IT-personal för ytterligare hjälp. | Du ser det här meddelandet eftersom din IT-personal hanterar lösenordet i din lokala miljö och tillåter inte att återställa ditt lösenord från den kan inte komma åt ditt kontolänk. <br> <br> Kontakta din IT-personal direkt för att få hjälp om du vill återställa ditt lösenord och meddela dem om du vill återställa ditt lösenord så att de kan du aktivera funktionen för dig.|
-| Jag felmeddelandet ”ditt konto har inte aktiverats för lösenordsåterställning” när du har angett mitt användar-ID | Kontot är inte aktiverat för återställning av lösenord <br> <br> Vi beklagar, men din IT-personal inte har lagt upp ditt konto för användning med den här tjänsten. <br> <br> Om du vill att kan vi kontakta en administratör i din organisation som återställer lösenordet åt dig. | Du ser det här meddelandet eftersom din IT-personal inte har aktiverats för återställning av lösenord för din organisation från den kan inte komma åt ditt kontolänk eller har inte licensierats du om du vill använda funktionen. <br> <br> Om du vill återställa ditt lösenord, klickar du på kontakten en administratör länk för att skicka ett e-postmeddelande till ditt företag har IT-personal och meddela dem om du vill återställa ditt lösenord så att de kan du aktivera funktionen för dig. |
-| Jag felmeddelandet ”Det gick inte att verifiera ditt konto” när du har angett mitt användar-ID | Vi kunde inte verifiera ditt konto <br> <br> Om du vill att kan vi kontakta en administratör i din organisation som återställer lösenordet åt dig. | Du ser det här meddelandet eftersom du är aktiverade för återställning av lösenord, men du har inte registrerats för att använda tjänsten. Registrera för återställning av lösenord genom att gå till http://aka.ms/ssprsetup när du har återupprättats åtkomst till ditt konto. <br> <br> Om du vill återställa ditt lösenord, klickar du på kontakten en administratör länk för att skicka ett e-postmeddelande till ditt företags IT-personal. |
+| En ”Kontakta din administratör” sida kommer när du har angett mitt användar-ID | Kontakta administratören <br> <br> Vi har upptäckt att lösenordet till ditt användarkonto inte hanteras av Microsoft. Vi kan därför inte tooautomatically återställa ditt lösenord. <br> <br> Du behöver toocontact din IT-personal för att få hjälp. | Du ser det här meddelandet eftersom din IT-personal hanterar lösenordet i din lokala miljö och tillåter inte tooreset ditt lösenord från den kan inte komma åt ditt kontolänk. <br> <br> tooreset lösenordet, kontakta din IT-personal direkt för hjälp och låter dem vet du vill tooreset ditt lösenord så att de kan du aktivera funktionen för dig.|
+| Jag felmeddelandet ”ditt konto har inte aktiverats för lösenordsåterställning” när du har angett mitt användar-ID | Kontot är inte aktiverat för återställning av lösenord <br> <br> Vi beklagar, men din IT-personal inte har lagt upp ditt konto för användning med den här tjänsten. <br> <br> Om du vill kontakta vi en administratör i din organisation tooreset lösenordet åt dig. | Du ser det här meddelandet eftersom din IT-personal inte har aktiverats för återställning av lösenord för din organisation från den kan inte komma åt ditt kontolänk eller har inte licensierats toouse hello-funktionen. <br> <br> tooreset ditt lösenord och klicka på kontakten en administratör länken toosend ett e-tooyour företag har IT-personal och meddela dem om du vill tooreset ditt lösenord så att de kan du aktivera funktionen för dig. |
+| Jag felmeddelandet ”Det gick inte att verifiera ditt konto” när du har angett mitt användar-ID | Vi kunde inte verifiera ditt konto <br> <br> Om du vill kontakta vi en administratör i din organisation tooreset lösenordet åt dig. | Du ser det här meddelandet eftersom du är aktiverade för återställning av lösenord, men du inte har registrerat toouse hello-tjänsten. tooregister för lösenord återställa, gå toohttp://aka.ms/ssprsetup när du har återupprättats tooyour konto. <br> <br> tooreset ditt lösenord och klicka på kontakten en administratör länken toosend ett e-tooyour företags IT-personal. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Ändra ditt lösenord med självbetjäning](active-directory-passwords-update-your-own-password.md)
+* [Hur toochange med självbetjäning lösenord för återställning av lösenord](active-directory-passwords-update-your-own-password.md)
 * [Registreringssida för lösenordsåterställning](http://aka.ms/ssprsetup)
 * [Portal för lösenordsåterställning](https://passwordreset.microsoftonline.com/)
-* [Det går inte att logga in på ditt Microsoft-konto](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
+* [Det går inte att logga in tooyour Microsoft-konto](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
 
 [Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "Registreringssidan för lösenordsåterställning visar registrerade metoder och knappen Slutför"
 

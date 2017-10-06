@@ -1,6 +1,6 @@
 ---
-title: "Introduktion till App Service miljö v1"
-description: "Mer information om funktionen Apptjänstmiljö v1 som tillhandahåller säker, ansluten till VNet, dedikerad skalningsenheter för att köra alla dina appar."
+title: "aaaIntroduction tooApp v1-miljö"
+description: "Läs mer om hello Apptjänstmiljö v1-funktion som tillhandahåller säker, ansluten till VNet, dedikerad skalningsenheter för att köra alla dina appar."
 services: app-service
 documentationcenter: 
 author: stefsch
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: 38cb79eb32bd61cdbfb6da91d50e6713d71a2b0d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6e3cd1909b241887b5ec19412b9f7884d870cc3d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-app-service-environment-v1"></a>Introduktion till App Service miljö v1
+# <a name="introduction-tooapp-service-environment-v1"></a>Introduktion tooApp v1-miljö
 
 > [!NOTE]
-> Den här artikeln handlar om Apptjänstmiljö v1.  Det finns en nyare version av Apptjänst-miljön som är enklare att använda och körs på mer kraftfulla infrastruktur. Mer information om den nya versionen start med den [introduktion till Apptjänst-miljön](../app-service/app-service-environment/intro.md).
+> Den här artikeln handlar om hello Apptjänstmiljö v1.  Det finns en nyare version av hello Apptjänst-miljö som är enklare toouse och körs på mer kraftfulla infrastruktur. Mer om hello nya versionen börjar med hello toolearn [introduktion toohello Apptjänstmiljö](../app-service/app-service-environment/intro.md).
 > 
 
 ## <a name="overview"></a>Översikt
@@ -36,56 +36,56 @@ Apptjänstmiljöer är perfekt för programarbetsbelastningar som kräver:
 
 Kunder kan skapa flera Apptjänstmiljöer inom en enda Azure region, samt över flera Azure-regioner.  Detta gör Apptjänstmiljöer idealiskt för vågrätt skalning statuslösa programnivåerna stöd för hög RPS arbetsbelastningar.
 
-Apptjänstmiljöer är isolerad för att endast en enskild kund program som körs och alltid har distribuerats till ett virtuellt nätverk.  Kunder har detaljerad kontroll över både inkommande och utgående nätverkstrafik och program kan upprätta säkra höghastighetsanslutning över virtuella nätverk till lokala företagsresurser.
+Apptjänstmiljöer finns isolerade toorunning endast en enskild kund program och alltid har distribuerats till ett virtuellt nätverk.  Kunder har detaljerad kontroll över både inkommande och utgående nätverkstrafik och program kan upprätta säkra höghastighetsanslutning över virtuella nätverk tooon lokala företagets resurser.
 
-Alla artiklar och hur-handlar om att Apptjänstmiljöer finns tillgängliga i den [viktigt för Programtjänstmiljöer](../app-service/app-service-app-service-environments-readme.md).
+Alla artiklar och hur-handlar om att Apptjänstmiljöer finns tillgängliga i hello [viktigt för Programtjänstmiljöer](../app-service/app-service-app-service-environments-readme.md).
 
-En översikt över hur Apptjänstmiljöer Aktivera hög skala och säker nätverksåtkomst, finns det [AzureCon ingående] [ AzureConDeepDive] på Apptjänstmiljöer!
+En översikt över hur Apptjänstmiljöer Aktivera hög skala och säker nätverksåtkomst, se hello [AzureCon ingående] [ AzureConDeepDive] på Apptjänstmiljöer!
 
-En djupdykning i vågrätt skalning med flera Apptjänstmiljöer finns i artikeln på hur du konfigurerar en [geodistribuerad app storleken][GeodistributedAppFootprint].
+En djupdykning i vågrätt skalning med flera Apptjänstmiljöer finns hello artikel om hur toosetup en [geodistribuerad app storleken][GeodistributedAppFootprint].
 
-Om du vill se hur säkerhetsarkitekturen som visas i AzureCon ingående har konfigurerats, finns i artikeln om hur du implementerar en [lager säkerhetsarkitekturen](app-service-app-service-environment-layered-security.md) med Apptjänstmiljöer.
+toosee hur hello-säkerhetsarkitekturen som visas i hello AzureCon ingående har konfigurerats, finns hello artikel om hur du implementerar en [lager säkerhetsarkitekturen](app-service-app-service-environment-layered-security.md) med Apptjänstmiljöer.
 
-Appar som körs på Apptjänstmiljöer kan behörighet gated av överordnad enheter, till exempel web application brandväggar (Brandvägg).  Artikel om [konfigurera en Brandvägg för Apptjänstmiljöer](app-service-app-service-environment-web-application-firewall.md) omfattar det här scenariot. 
+Appar som körs på Apptjänstmiljöer kan behörighet gated av överordnad enheter, till exempel web application brandväggar (Brandvägg).  hello artikel på [konfigurera en Brandvägg för Apptjänstmiljöer](app-service-app-service-environment-web-application-firewall.md) omfattar det här scenariot. 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="dedicated-compute-resources"></a>Dedikerad beräkningsresurser
-Alla beräkningsresurser i en Apptjänst-miljö är avsedda enbart för en enda prenumeration och en Apptjänst-miljö kan konfigureras med upp till 50 (50)-beräkningsresurser för exklusiv användning av ett program.
+Alla hello beräkning resurser i en Apptjänst-miljö är dedikerad enbart tooa enda prenumeration och en Apptjänst-miljö kan konfigureras med upp toofifty (50) beräkningsresurser för exklusiv användning av ett enda program.
 
-En Apptjänst-miljö består av en resurspool för frontend beräkning, samt en till tre worker beräkning resurspooler. 
+En Apptjänst-miljö består av en resurspool för frontend beräkning, samt en toothree worker beräkning resurspooler. 
 
-Frontend poolen innehåller beräkningsresurser som är ansvarig för SSL-avslutning som också automatisk belastningsbalansering av app-förfrågningar inom en Apptjänst-miljö. 
+hello frontend poolen innehåller beräkningsresurser som är ansvarig för SSL-avslutning som också automatisk belastningsbalansering av app-förfrågningar inom en Apptjänst-miljö. 
 
-Varje arbetspool innehåller beräkningsresurser som allokeras till [Apptjänstplaner][AppServicePlan], som i sin tur innehåller en eller flera appar i Azure App Service.  Eftersom det kan vara upp till tre olika arbetarpooler i en Apptjänst-miljö, har du möjlighet att välja olika beräkningsresurser för varje worker-pool.  
+Varje arbetspool innehåller beräkningsresurser som allokeras för[Apptjänstplaner][AppServicePlan], som i sin tur innehåller en eller flera appar i Azure App Service.  Eftersom det kan vara upp toothree olika arbetarpooler i en Apptjänst-miljö, ha hello flexibilitet toochoose olika beräkningsresurser för varje worker-pool.  
 
-T.ex, kan detta du skapa en arbetspool med mindre kraftfulla beräkningsresurser för Apptjänstplaner avsett för utveckling eller testning appar.  En andra (eller även tredje) arbetspool kan använda mer kraftfulla beräkningsresurser som är avsedd för Apptjänstplaner produktion program som körs.
+T.ex, kan detta du toocreate en arbetspool med mindre kraftfulla beräkningsresurser för Apptjänstplaner avsett för utveckling eller testning appar.  En andra (eller även tredje) arbetspool kan använda mer kraftfulla beräkningsresurser som är avsedd för Apptjänstplaner produktion program som körs.
 
-Mer information om mängden beräkningsresurser som är tillgängliga på frontend- och arbetsroller lagringspooler finns [så här konfigurerar du en Apptjänst-miljö][HowToConfigureanAppServiceEnvironment].  
+Mer information om hello mängden beräkning resurser tillgängliga toohello frontend och arbetarpooler finns [hur tooConfigure en Apptjänstmiljö][HowToConfigureanAppServiceEnvironment].  
 
-Mer information om tillgängliga beräknings resurs storlekar som stöds i en Apptjänst-miljö finns i [priser för Apptjänst] [ AppServicePricing] sidan och granska de tillgängliga alternativen för Apptjänstmiljöer i den Premium-prisnivån.
+För information om tillgängliga hello compute-resurs-storlekar som stöds i en Apptjänst-miljö, se hello [priser för Apptjänst] [ AppServicePricing] sidan och granska hello tillgängliga alternativ för Apptjänstmiljöer i hello Premium-prisnivån.
 
 ## <a name="virtual-network-support"></a>Stöd för virtuella nätverk
-En Apptjänst-miljö kan skapas i **antingen** ett virtuellt nätverk i Azure Resource Manager **eller** klassisk distribution modellen virtuella nätverk ([mer information om virtuella nätverk] [MoreInfoOnVirtualNetworks]).  Eftersom en Apptjänst-miljö finns alltid i ett virtuellt nätverk och mer exakt inom ett undernät i ett virtuellt nätverk, kan du utnyttja säkerhetsfunktionerna i virtuella nätverk för att styra både inkommande och utgående nätverkskommunikation.  
+En Apptjänst-miljö kan skapas i **antingen** ett virtuellt nätverk i Azure Resource Manager **eller** klassisk distribution modellen virtuella nätverk ([mer information om virtuella nätverk] [MoreInfoOnVirtualNetworks]).  Eftersom en Apptjänst-miljö finns alltid i ett virtuellt nätverk och mer exakt inom ett undernät i ett virtuellt nätverk, kan du utnyttja hello säkerhetsfunktionerna i virtuella nätverk toocontrol både inkommande och utgående nätverkskommunikation.  
 
 En Apptjänst-miljö kan vara antingen mot med en offentlig IP-adress eller intern med endast en Azure interna belastningen belastningsutjämnare (ILB)-adress mot Internet.
 
-Du kan använda [nätverkssäkerhetsgrupper] [ NetworkSecurityGroups] att begränsa inkommande nätverkskommunikationen till undernätet där det finns en Apptjänst-miljö.  På så sätt kan du köra bakom överordnade enheter och tjänster som web application brandväggar och nätverksprovider för SaaS-appar.
+Du kan använda [nätverkssäkerhetsgrupper] [ NetworkSecurityGroups] toorestrict inkommande kommunikation toohello undernät där det finns en Apptjänst-miljö.  Detta ger dig toorun appar bakom överordnade enheter och tjänster som web application brandväggar och SaaS-leverantörer för nätverk.
 
-Apparna måste också ofta att komma åt företagets resurser, till exempel interna databaser och webbtjänster.  En vanlig metod är att göra dessa slutpunkter som är tillgänglig endast för interna nätverkstrafik som går inom ett virtuellt Azure-nätverk.  När en Apptjänst-miljö är ansluten till samma virtuella nätverk som interna tjänster, appar som körs i miljön kan komma åt dem, inklusive slutpunkter kan nås via [plats-till-plats] [ SiteToSite] och [Azure ExpressRoute] [ ExpressRoute] anslutningar.
+Apparna måste också ofta tooaccess företagets resurser, till exempel interna databaser och webbtjänster.  En vanlig metod är toomake dessa slutpunkter finns endast toointernal-nätverkstrafik som går inom ett virtuellt Azure-nätverk.  När en Apptjänst-miljö är domänansluten toohello samma virtuella nätverk som hello interna tjänster, appar som körs i hello miljö kan komma åt dem, inklusive slutpunkter kan nås via [plats-till-plats] [ SiteToSite]och [Azure ExpressRoute] [ ExpressRoute] anslutningar.
 
-För mer information om hur Apptjänstmiljöer fungerar med virtuella nätverk och lokala nätverk finns i följande artiklar på [nätverksarkitektur][NetworkArchitectureOverview], [styra inkommande Trafik][ControllingInboundTraffic], och [säker anslutning till serverdelar][SecurelyConnectingToBackends]. 
+För mer information om hur Apptjänstmiljöer fungerar med virtuella nätverk och lokala nätverk finns i följande artiklar hello [nätverksarkitektur][NetworkArchitectureOverview], [styra inkommande Trafik][ControllingInboundTraffic], och [på ett säkert sätt ansluta tooBackends][SecurelyConnectingToBackends]. 
 
 ## <a name="getting-started"></a>Komma igång
-Kom igång med Apptjänstmiljöer finns [hur att skapa en Apptjänst-miljö][HowToCreateAnAppServiceEnvironment]
+tooget igång med Apptjänstmiljöer, se [hur tooCreate en Apptjänst-miljö][HowToCreateAnAppServiceEnvironment]
 
-Alla artiklar och hur-att datorns för Apptjänstmiljöer finns tillgängliga i den [viktigt för Programtjänstmiljöer](../app-service/app-service-app-service-environments-readme.md).
+Alla artiklar och hur-att datorns för Apptjänstmiljöer finns tillgängliga i hello [viktigt för Programtjänstmiljöer](../app-service/app-service-app-service-environments-readme.md).
 
-Mer information om plattformen Azure App Service finns [Azure App Service][AzureAppService].
+Mer information om hello Azure Apptjänst-plattformen finns [Azure App Service][AzureAppService].
 
-En översikt över nätverksarkitektur Apptjänst-miljö finns i [arkitektur, översikt] [ NetworkArchitectureOverview] artikel.
+En översikt över hello Apptjänstmiljö nätverksarkitektur finns hello [arkitektur, översikt] [ NetworkArchitectureOverview] artikel.
 
-Mer information om hur du använder en Apptjänst-miljö med ExpressRoute finns i följande artikel på [Express Route och Apptjänstmiljöer][NetworkConfigDetailsForExpressRoute].
+Mer information om hur du använder en Apptjänst-miljö med ExpressRoute finns hello följande artikel [Express Route och Apptjänstmiljöer][NetworkConfigDetailsForExpressRoute].
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

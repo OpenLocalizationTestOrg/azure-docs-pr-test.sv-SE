@@ -1,6 +1,6 @@
 ---
-title: "Hur du använder Maven-plugin-program för Azure Web Apps för att distribuera en start av vår app till Azure"
-description: "Lär dig hur du använder Maven-plugin-program för Azure Web Apps för att distribuera en start av vår app till Azure."
+title: "aaaHow toouse hello Maven-plugin-programmet för Azure Web Apps toodeploy en start av vår app tooAzure"
+description: "Lär dig hur toouse hello Maven-plugin-programmet för Azure Web Apps toodeploy en start av vår app tooAzure."
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
@@ -14,38 +14,38 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: robmcm;kevinzha
-ms.openlocfilehash: dceb7edf788bd87b1de04aa435a12cd5853755b9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 376fe90fe20621e15d7c9856214937c78b66026a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-maven-plugin-for-azure-web-apps-to-deploy-a-spring-boot-app-to-azure"></a>Hur du använder Maven-plugin-program för Azure Web Apps för att distribuera en start av vår app till Azure
+# <a name="how-toouse-hello-maven-plugin-for-azure-web-apps-toodeploy-a-spring-boot-app-tooazure"></a>Hur toouse hello Maven-plugin-programmet för Azure Web Apps toodeploy en start av vår app tooAzure
 
-Den [Maven plugin-program för Azure-Webbappar](https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin) för [Apache Maven](http://maven.apache.org/) ger sömlös integration av Azure App Service till Maven-projekt och förenklar processen för utvecklare att distribuera webbappar till Azure App Tjänsten.
+Hej [Maven plugin-program för Azure-Webbappar](https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin) för [Apache Maven](http://maven.apache.org/) ger sömlös integration av Azure App Service till Maven-projekt och förenklar hello process för utvecklare toodeploy web apps tooAzure Apptjänst.
 
-Den här artikeln visas hur du använder Maven-plugin-program för Azure Web Apps för att distribuera ett exempelprogram källan Start till Azure App Service.
+Den här artikeln visas hur du använder hello Maven-plugin-programmet för Azure Web Apps toodeploy en exempel källan Start programmet tooAzure Apptjänster.
 
 > [!NOTE]
 >
-> Maven-plugin-program för Azure Web Apps är tillgänglig som en förhandsgranskning. För närvarande stöds endast FTP-publicering, även om ytterligare funktioner som är tänkta för framtiden.
+> Hej Maven plugin-program för Azure Web Apps är tillgänglig som en förhandsgranskning. För närvarande stöds endast FTP-publicering, även om ytterligare funktioner som planeras att hello framtida.
 >
 
 ## <a name="prerequisites"></a>Krav
 
-För att kunna slutföra stegen i den här självstudiekursen, måste du ha följande krav:
+I ordning toocomplete hello steg i den här kursen behöver du toohave hello följande krav:
 
 * En Azure-prenumeration; Om du inte redan har en Azure-prenumeration, kan du aktivera din [MSDN-prenumerantförmåner] eller registrera dig för en [kostnadsfritt Azure-konto].
-* Den [Azure-kommandoradsgränssnittet (CLI)].
+* Hej [Azure-kommandoradsgränssnittet (CLI)].
 * En uppdaterad [Java Development Kit (JDK)], version 1.7 eller senare.
 * Apache's [Maven] skapa verktyget (Version 3).
 * En [Git] klienten.
 
-## <a name="clone-the-sample-spring-boot-web-app"></a>Klona exempelwebbapp för vår Start
+## <a name="clone-hello-sample-spring-boot-web-app"></a>Klona hello exempelwebbapp för vår Start
 
 I det här avsnittet klona en slutförd startprogrammet för källan och testa den lokalt.
 
-1. Öppna en kommandotolk eller ett terminalfönster och skapa en lokal katalog för att hålla tillämpningsprogrammet källan start och ändra till katalogen; Exempel:
+1. Öppna en kommandotolk eller ett terminalfönster och skapa en lokal katalog toohold källan Start programmet och ändra toothat katalog. Exempel:
    ```shell
    md C:\SpringBoot
    cd C:\SpringBoot
@@ -56,52 +56,52 @@ I det här avsnittet klona en slutförd startprogrammet för källan och testa d
    cd /users/robert/SpringBoot
    ```
 
-1. Klona den [Vårversionen Start komma igång] exempelprojektet till den katalog som du har skapat, till exempel:
+1. Klona hello [Vårversionen Start komma igång] exempelprojektet i hello-katalog som du har skapat, till exempel:
    ```shell
    git clone https://github.com/microsoft/gs-spring-boot
    ```
 
-1. Ändra katalogen till slutförda projektet. Exempel:
+1. Ändra katalogen toohello slutförts projektet. Exempel:
    ```shell
    cd gs-spring-boot/complete
    ```
 
-1. Skapa JAR-filen med Maven; Exempel:
+1. Skapa hello JAR-filen med Maven; Exempel:
    ```shell
    mvn clean package
    ```
 
-1. När webbappen har skapats, starta webbprogram med Maven; Exempel:
+1. När hello webbprogrammet har skapats, starta hello webbprogrammet med Maven; Exempel:
    ```shell
    mvn spring-boot:run
    ```
 
-1. Testa webbappen genom att bläddra till den lokalt med hjälp av en webbläsare. Du kan exempelvis använda följande kommando om du har curl som är tillgängliga:
+1. Testa hello webbprogram genom att bläddra tooit lokalt med hjälp av en webbläsare. Du kan till exempel använda följande kommando om du har curl tillgängliga hello:
    ```shell
    curl http://localhost:8080
    ```
 
-1. Du bör se följande meddelande visas: **helg från källan Start!**
+1. Du bör se hello följande meddelande visas: **helg från källan Start!**
 
 ## <a name="create-an-azure-service-principal"></a>Skapa en Azure huvudnamn för tjänsten
 
-I det här avsnittet skapar du en Azure tjänstens huvudnamn som Maven plugin-programmet använder när du distribuerar ditt webbprogram till Azure.
+I det här avsnittet skapar du en Azure tjänstens huvudnamn som hello Maven plugin-programmet använder när du distribuerar din web app tooAzure.
 
 1. Öppna en kommandotolk.
 
-1. Logga in på ditt Azure-konto med hjälp av Azure CLI:
+1. Logga in på ditt Azure-konto med hjälp av hello Azure CLI:
    ```shell
    az login
    ```
-   Följ instruktionerna för att slutföra inloggningen.
+   Följ hello instruktioner toocomplete hello inloggningsprocessen.
 
 1. Skapa en Azure-tjänstens huvudnamn:
    ```shell
    az ad sp create-for-rbac --name "uuuuuuuu" --password "pppppppp"
    ```
-   Där `uuuuuuuu` är användarnamnet och `pppppppp` är lösenordet för tjänstens huvudnamn.
+   Där `uuuuuuuu` är hello användarnamn och `pppppppp` är hello lösenord för hello tjänstens huvudnamn.
 
-1. Azure svarar med JSON som liknar följande exempel:
+1. Azure svarar med JSON som liknar följande exempel hello:
    ```json
    {
       "appId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
@@ -114,20 +114,20 @@ I det här avsnittet skapar du en Azure tjänstens huvudnamn som Maven plugin-pr
 
    > [!NOTE]
    >
-   > Du kommer använda värden från den här JSON-svar när du konfigurerar Maven-plugin-programmet för att distribuera webbappen till Azure. Den `aaaaaaaa`, `uuuuuuuu`, `pppppppp`, och `tttttttt` är för platshållarvärden som används i det här exemplet för att göra det enklare att mappa värdena till deras respektive element när du konfigurerar din Maven `settings.xml` filen i nästa avsnitt .
+   > Du använder hello värden från den här JSON-svar när du konfigurerar hello Maven plugin-programmet toodeploy tooAzure dina webb-app. hello `aaaaaaaa`, `uuuuuuuu`, `pppppppp`, och `tttttttt` platshållare för värden som används i det här exemplet toomake den enklare toomap värden tootheir respektive elementen när du konfigurerar din Maven `settings.xml` filen i hello nästa avsnittet.
    >
    >
 
-## <a name="configure-maven-to-use-your-azure-service-principal"></a>Konfigurera Maven för att använda din Azure-tjänstens huvudnamn
+## <a name="configure-maven-toouse-your-azure-service-principal"></a>Konfigurera Maven toouse din Azure-tjänstens huvudnamn
 
-I det här avsnittet använder du värdena från din Azure tjänstens huvudnamn så här konfigurerar du autentisering med Maven när distribuera webbappen till Azure.
+I det här avsnittet använder du hello värden från din Azure-tjänstens huvudnamn tooconfigure hello autentisering med Maven när du distribuerar din web app tooAzure.
 
-1. Öppna din Maven `settings.xml` filen i en textredigerare; den här filen kan vara en sökväg som i följande exempel:
+1. Öppna din Maven `settings.xml` filen i en textredigerare; den här filen kan vara en sökväg som hello följande exempel:
    * `/etc/maven/settings.xml`
    * `%ProgramFiles%\apache-maven\3.5.0\conf\settings.xml`
    * `$HOME/.m2/settings.xml`
 
-1. Lägg till Azure-tjänstens huvudnamn inställningarna från föregående avsnitt i den här kursen och den `<servers>` samling i den *settings.xml* filen, till exempel:
+1. Lägg till Azure-tjänstens huvudnamn inställningarna från hello föregående avsnitt i den här självstudiekursen toohello `<servers>` samling i hello *settings.xml* filen, till exempel:
 
    ```xml
    <servers>
@@ -145,17 +145,17 @@ I det här avsnittet använder du värdena från din Azure tjänstens huvudnamn 
    Där:
    Element | Beskrivning
    ---|---|---
-   `<id>` | Anger ett unikt namn som Maven använder för att leta upp dina säkerhetsinställningar när du distribuerar ditt webbprogram till Azure.
-   `<client>` | Innehåller den `appId` värde från tjänstens huvudnamn.
-   `<tenant>` | Innehåller den `tenant` värde från tjänstens huvudnamn.
-   `<key>` | Innehåller den `password` värde från tjänstens huvudnamn.
-   `<environment>` | Definierar målmiljön Azure-molnet, vilket är `AZURE` i det här exemplet. (En fullständig lista över miljöer finns i den [Maven plugin-program för Azure Web Apps] dokumentation)
+   `<id>` | Anger ett unikt namn som Maven använder toolook in dina säkerhetsinställningar när du distribuerar din web app tooAzure.
+   `<client>` | Innehåller hello `appId` värde från tjänstens huvudnamn.
+   `<tenant>` | Innehåller hello `tenant` värde från tjänstens huvudnamn.
+   `<key>` | Innehåller hello `password` värde från tjänstens huvudnamn.
+   `<environment>` | Definierar hello Azure-molnet målmiljön, vilket är `AZURE` i det här exemplet. (En fullständig lista över miljöer finns i hello [Maven plugin-program för Azure Web Apps] dokumentation)
 
-1. Spara och Stäng den *settings.xml* fil.
+1. Spara och Stäng hello *settings.xml* fil.
 
-## <a name="optional-customize-your-pomxml-before-deploying-your-web-app-to-azure"></a>Valfritt: Anpassa din pom.xml innan du distribuerar ditt webbprogram till Azure
+## <a name="optional-customize-your-pomxml-before-deploying-your-web-app-tooazure"></a>Valfritt: Anpassa din pom.xml innan du distribuerar din web app tooAzure
 
-Öppna den `pom.xml` filen för tillämpningsprogrammet källan Start i en textredigerare och leta upp den `<plugin>` element för `azure-webapp-maven-plugin`. Det här elementet bör likna följande exempel:
+Öppna hello `pom.xml` filen för tillämpningsprogrammet källan Start i en textredigerare och leta sedan upp hello `<plugin>` element för `azure-webapp-maven-plugin`. Det här elementet bör likna följande exempel hello:
 
    ```xml
    <plugin>
@@ -191,75 +191,75 @@ I det här avsnittet använder du värdena från din Azure tjänstens huvudnamn 
    </plugin>
    ```
 
-Det finns flera värden som du kan ändra för Maven plugin-programmet och en utförlig beskrivning för var och en av dessa element är tillgänglig i den [Maven plugin-program för Azure Web Apps] dokumentation. Som som säger att det finns flera värden som är värda markering i den här artikeln:
+Det finns flera värden som du kan ändra för hello Maven plugin-program och en utförlig beskrivning för var och en av dessa element är tillgänglig i hello [Maven plugin-program för Azure Web Apps] dokumentation. Som som säger att det finns flera värden som är värda markering i den här artikeln:
 
 Element | Beskrivning
 ---|---|---
-`<version>` | Anger versionen av den [Maven plugin-program för Azure Web Apps]. Du bör kontrollera versionen som anges i den [Maven centrala lagringsplatsen](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22) så att du använder den senaste versionen.
-`<authentication>` | Anger autentiseringsinformationen för Azure, som i det här exemplet innehåller en `<serverId>` element som innehåller `azure-auth`; Maven används värdet för att slå upp Azure tjänstens huvudnamn värden i din Maven *settings.xml* fil som du har definierat i en tidigare i den här artikeln.
-`<resourceGroup>` | Anger målresursgruppen som är `maven-plugin` i det här exemplet. Resursgruppens namn skapas under distributionen om det inte redan finns.
-`<appName>` | Anger målnamn för ditt webbprogram. I det här exemplet är målnamnet `maven-web-app-${maven.build.timestamp}`, där den `${maven.build.timestamp}` suffix läggs till i det här exemplet för att undvika konflikter. (Tidsstämpeln är valfria och du kan ange en unik sträng för namnet på appen.)
-`<region>` | Anger målregionen, som i det här exemplet är `westus`. (En fullständig lista finns i den [Maven plugin-program för Azure Web Apps] dokumentation.)
-`<javaVersion>` | Anger vilken Java runtime version för ditt webbprogram. (En fullständig lista finns i den [Maven plugin-program för Azure Web Apps] dokumentation.)
+`<version>` | Anger hello version av hello [Maven plugin-program för Azure Web Apps]. Du bör kontrollera hello-version som anges i hello [Maven centrala lagringsplatsen](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22) tooensure som du använder hello senaste versionen.
+`<authentication>` | Anger hello autentiseringsinformationen för Azure, som i det här exemplet innehåller en `<serverId>` element som innehåller `azure-auth`; Maven använder den värdet toolook hello Azure-tjänstens huvudnamn värden i din Maven *settings.xml* fil som du har definierat i en tidigare i den här artikeln.
+`<resourceGroup>` | Anger hello målresursgruppen, vilket är `maven-plugin` i det här exemplet. hello resursgruppen skapas under distributionen om det inte redan finns.
+`<appName>` | Anger hello målets namn för ditt webbprogram. I det här exemplet är hello målnamnet `maven-web-app-${maven.build.timestamp}`, där hello `${maven.build.timestamp}` suffix läggs till i det här exemplet tooavoid konflikt. (hello tidsstämpeln är valfria och du kan ange en unik sträng för hello programnamn.)
+`<region>` | Anger hello målregionen, som i det här exemplet är `westus`. (En fullständig lista finns i hello [Maven plugin-program för Azure Web Apps] dokumentation.)
+`<javaVersion>` | Anger hello Java runtime version för ditt webbprogram. (En fullständig lista finns i hello [Maven plugin-program för Azure Web Apps] dokumentation.)
 `<deploymentType>` | Anger typen av distribution för ditt webbprogram. För närvarande endast `ftp` stöds även om stöd för andra distributionstyper är under utveckling.
-`<resources>` | Anger resurser och mål-mål som Maven använder när du distribuerar ditt webbprogram till Azure. I det här exemplet två `<resource>` element anger att Maven distribuerar JAR-filen för ditt webbprogram och *web.config* filen från källan Start-projektet.
+`<resources>` | Anger resurser och mål-mål som Maven använder när du distribuerar din web app tooAzure. I det här exemplet två `<resource>` element anger att Maven distribuerar hello JAR-filen för ditt webbprogram och hello *web.config* filen från hello källan Start projektet.
 
-## <a name="build-and-deploy-your-web-app-to-azure"></a>Skapa och distribuera webbappen till Azure
+## <a name="build-and-deploy-your-web-app-tooazure"></a>Skapa och distribuera din web app tooAzure
 
-När du har konfigurerat alla inställningar i föregående avsnitt i den här artikeln, är du redo att distribuera webbappen till Azure. Så här loggar du in:
+När du har konfigurerat alla hello inställningar i föregående avsnitt i den här artikeln hello, är du redo toodeploy tooAzure dina webb-app. toodo så Använd hello följande steg:
 
-1. Från Kommandotolken eller terminalfönster som du använde tidigare, återskapa JAR-filen med Maven om du har gjort ändringar i *pom.xml* filen, till exempel:
+1. Från Kommandotolken hello eller terminalfönster som du använde tidigare återskapa hello JAR-filen med Maven om du har gjort några ändringar toohello *pom.xml* filen, till exempel:
    ```shell
    mvn clean package
    ```
 
-1. Distribuera webbappen till Azure med hjälp av Maven; Exempel:
+1. Distribuera din web app tooAzure med Maven; Exempel:
    ```shell
    mvn azure-webapp:deploy
    ```
 
-Maven ska distribuera webbappen till Azure; Om webbappen inte redan finns, skapas.
+Maven distribuerar din web app tooAzure; Om hello webbapp inte redan finns, skapas.
 
-När webbplatsen har distribuerats, kommer du att kunna hantera den med hjälp av den [Azure-portalen].
+När webbplatsen har distribuerats, kommer du att kunna toomanage den med hjälp av hello [Azure-portalen].
 
 * Ditt webbprogram visas i **Apptjänster**:
 
    ![Webbprogram som anges i Azure portal Apptjänster][AP01]
 
-* Och URL: en för ditt webbprogram kommer att visas i den **översikt** för ditt webbprogram:
+* Och hello URL för ditt webbprogram visas i hello **översikt** för ditt webbprogram:
 
-   ![Bestämma URL: en för webbappen][AP02]
+   ![När du fastställer hello URL: en för webbappen][AP02]
 
 <!--
-##  OPTIONAL: Configure the embedded Tomcat server to run on a different port
+##  OPTIONAL: Configure hello embedded Tomcat server toorun on a different port
 
-The embedded Tomcat server in the sample Spring Boot application is configured to run on port 8080 by default. However, if you want to run the embedded Tomcat server to run on a different port, such as port 80 for local testing, you can configure the port by using the following steps.
+hello embedded Tomcat server in hello sample Spring Boot application is configured toorun on port 8080 by default. However, if you want toorun hello embedded Tomcat server toorun on a different port, such as port 80 for local testing, you can configure hello port by using hello following steps.
 
-1. Go to the *resources* directory (or create the directory if it does not exist); for example:
+1. Go toohello *resources* directory (or create hello directory if it does not exist); for example:
    ```shell
    cd src/main/resources
    ```
 
-1. Open the *application.yml* file in a text editor if it exists, or create a new YAML file if it does not exist.
+1. Open hello *application.yml* file in a text editor if it exists, or create a new YAML file if it does not exist.
 
-1. Modify the **server** setting so that the server runs on port 80; for example:
+1. Modify hello **server** setting so that hello server runs on port 80; for example:
    ```yaml
    server:
       port: 80
    ```
 
-1. Save and close the *application.yml* file.
+1. Save and close hello *application.yml* file.
 -->
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om de olika tekniker som beskrivs i den här artikeln finns i följande artiklar:
+Mer information om hello finns olika tekniker som beskrivs i den här artikeln hello följande artiklar:
 
 * [Maven plugin-program för Azure Web Apps]
 
-* [Logga in till Azure från Azure CLI](/azure/xplat-cli-connect)
+* [Logga in tooAzure från hello Azure CLI](/azure/xplat-cli-connect)
 
-* [Hur du använder Maven-plugin-program för Azure Web Apps för att distribuera en behållare källan Start-app till Azure](app-service-web-deploy-containerized-spring-boot-app-with-maven-plugin.md)
+* [Hur toouse hello Maven-plugin-programmet för Azure Web Apps toodeploy en av vår Start app tooAzure](app-service-web-deploy-containerized-spring-boot-app-with-maven-plugin.md)
 
 * [Skapa en Azure tjänstens huvudnamn med Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli)
 

@@ -1,5 +1,5 @@
 ---
-title: "Konfigurera Azure AD Join för dina användare| Microsoft Docs"
+title: "aaaSetting in Azure AD Join för dina användare | Microsoft Docs"
 description: "Förklarar hur administratörer kan konfigurera Azure AD Join för din lokala katalog och enhetsregistrering."
 services: active-directory
 documentationcenter: 
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/16/2017
 ms.author: markvi
-ms.openlocfilehash: c37adc2654f7e931fdda22627e4a6ece2789fd86
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 60a5aeb11292cb6057ab1065c3ab77e5981d0cdb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="setting-up-azure-ad-join-in-your-organization"></a>Konfigurera Azure AD Join i din organisation
-Innan du konfigurerar Azure Active Directory Join (Azure AD Join) måste du antingen synkronisera din lokala katalog med användare till molnet eller manuellt skapa hanterade konton i Azure AD.
+Innan du konfigurerar Azure Active Directory Join (Azure AD Join) måste tooeither synkronisering upp din lokala katalog för användare toohello molnet eller manuellt skapa hanterade konton i Azure AD.
 
-Detaljerade instruktioner för hur du synkroniserar dina lokala användare till Azure AD finns i [Integrera dina lokala identiteter med Azure Active Directory](active-directory-aadconnect.md).
+Detaljerade instruktioner för att synkronisera dina lokala användare tooAzure AD beskrivs i [integrera dina lokala identiteter med Azure Active Directory](active-directory-aadconnect.md).
 
-Om du vill skapa och hantera användare manuellt i Azure AD läser du [Användarhantering i Azure AD](https://msdn.microsoft.com/library/azure/hh967609.aspx).
+toomanually skapa och hantera användare i Azure AD, referera för[användarhantering i Azure AD](https://msdn.microsoft.com/library/azure/hh967609.aspx).
 
 ## <a name="set-up-device-registration"></a>Konfigurera enhetsregistrering
-1. Logga in på Azure-portalen som en administratör.
-2. Välj **Active Directory** i det vänstra fönstret.
-3. Välj din katalog på fliken **Katalog**.
-4. Välj fliken **Konfigurera**.
-5. Gå till avsnittet **Enheter**.
-6. Ange följande på fliken **Enheter**:  
-   * **Högsta antal tillåtna enheter per användare**: Välj det högsta antalet enheter som en användare kan ha i Azure AD.  Om användarna når den här kvoten kan de inte lägga till fler enheter förrän en eller flera av deras befintliga enheter tagits bort.
-   * **Kräv Multi-Factor Authentication för att ansluta enheter**: Ange om användarna måste ange en andra autentiseringsfaktor för att ansluta deras enhet till Azure AD. Mer information om Azure Multi-Factor Authentication finns i [Komma igång med Azure Multi-Factor Authentication i molnet](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
-   * **Användare kan ansluta enheter till Azure AD**: Välj användare och grupper som ska kunna ansluta enheter till Azure AD.
-   * **Ytterligare administratörer för Azure AD-anslutna enheter**: Med Azure AD Premium eller Enterprise Mobility Suite (EMS) kan du välja vilka användare som beviljas lokal administratörsbehörighet på enheten. Globala administratörer och enhetsägare beviljas lokal administratörsbehörighet som standard.
+1. Logga in toohello Azure portal som administratör.
+2. Hello vänster, Välj **Active Directory**.
+3. På hello **Directory** , Välj din katalog.
+4. Välj hello **konfigurera** fliken.
+5. Gå toohello **enheter** avsnitt.
+6. På hello **enheter** ställer du in hello följande:  
+   * **HÖGSTA antal enheter PER användare**: Välj hello högsta antalet enheter som en användare kan ha i Azure AD.  Om användarna når den här kvoten, kommer de inte att kunna tooadd ytterligare enheter förrän en eller flera av deras befintliga enheter tagits bort.
+   * **KRÄV Multi-FACTOR Authentication tooJOIN enheter**: Ange om användare som är nödvändiga tooprovide en andra autentiseringsmetod factor toojoin deras enhet tooAzure AD. Mer information om Azure Multi-Factor Authentication finns [komma igång med Azure Multi-Factor Authentication i molnet hello](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+   * **ANVÄNDARE kan ansluta enheter för AZURE AD**: Välj hello användare och grupper som tillåts toojoin enheter tooAzure AD.
+   * **YTTERLIGARE ADMINISTRATÖRER för AZURE AD-anslutna enheter**: med Azure AD Premium eller hello Enterprise Mobility Suite (EMS) kan du välja vilka användare som beviljas lokal administratörsbehörighet toohello enhet. Globala administratörer och enhetsägare beviljas lokal administratörsbehörighet som standard.
 
 <center>![Konfigurera enhetsregistrering](./media/active-directory-azureadjoin/active-directory-aadjoin-configure-devices.png) </center>
 
-När du har konfigurerat Azure AD Join för dina användare kan de ansluta till Azure AD via deras företagsägda eller personliga enheter.
+När du konfigurerar Azure AD Join för dina användare, kan de ansluta tooAzure AD via deras företagets eller personliga enheter.
 
-Följande är de tre scenarier som du kan använda om du vill att dina användare ska kunna konfigurera Azure AD Join:
+Följande är hello tre scenarier som du kan använda tooenable användare-tooset upp Azure AD Join:
 
-* Användarna ansluter en företagsägd enhet direkt till Azure AD.
-* Användarna domänansluter en företagsägd enhet till lokala Active Directory och utökar sedan enheten till Azure AD.
-* Användarna lägger till arbets- eller skolkonton till Windows på en personlig enhet
+* En användare att ansluta en företagsägd enhet direkt tooAzure AD.
+* Användarna domänansluter en företagsägd enhet toohello lokala Active Directory och utökar hello enheten tooAzure AD.
+* Användarna lägger till arbetet eller skolan konton tooWindows på en personlig enhet
 
 ## <a name="additional-information"></a>Ytterligare information
-* [Windows 10 för företaget: Sätt att använda enheter för arbete](active-directory-azureadjoin-windows10-devices-overview.md)
-* [Utöka molnkapaciteten till Windows 10-enheter via Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
+* [Windows 10 för hello företaget: sätt toouse enheter för arbete](active-directory-azureadjoin-windows10-devices-overview.md)
+* [Utöka molnet funktioner tooWindows 10-enheter via Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
 * [Läs mer om användningsscenarier för Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Ansluta domänanslutna enheter till miljöer med Azure AD och Windows 10](active-directory-azureadjoin-devices-group-policy.md)
+* [Ansluta domänanslutna enheter tooAzure AD för Windows 10-upplevelser](active-directory-azureadjoin-devices-group-policy.md)
 * [Konfigurera Azure AD Join](active-directory-azureadjoin-setup.md)
 

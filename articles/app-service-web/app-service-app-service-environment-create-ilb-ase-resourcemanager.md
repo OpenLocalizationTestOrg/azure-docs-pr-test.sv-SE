@@ -1,6 +1,6 @@
 ---
-title: "Så här skapar du en ILB ASE med hjälp av Azure Resource Manager-mallar | Microsoft Docs"
-description: "Lär dig hur du skapar en intern belastningsutjämnare ASE med hjälp av Azure Resource Manager-mallar."
+title: "aaaHow tooCreate en ILB ASE med hjälp av Azure Resource Manager-mallar | Microsoft Docs"
+description: "Lär dig hur ladda toocreate en intern belastningsutjämnare ASE med hjälp av Azure Resource Manager-mallar."
 services: app-service
 documentationcenter: 
 author: stefsch
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
-ms.openlocfilehash: 147ab76d38c8bbbf34d35ed6c2a194d97fe711ab
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 16db20eccc232ccc73107fcc8291de180fb2a323
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Skapa en ILB ASE med hjälp av Azure Resource Manager-mallar
+# <a name="how-toocreate-an-ilb-ase-using-azure-resource-manager-templates"></a>Hur tooCreate en ILB ASE med hjälp av Azure Resource Manager-mallar
 
 > [!NOTE] 
-> Den här artikeln handlar om Apptjänstmiljö v1. Det finns en nyare version av Apptjänst-miljön som är enklare att använda och körs på mer kraftfulla infrastruktur. Mer information om den nya versionen start med den [introduktion till Apptjänst-miljön](../app-service/app-service-environment/intro.md).
+> Den här artikeln handlar om hello Apptjänstmiljö v1. Det finns en nyare version av hello Apptjänst-miljö som är enklare toouse och körs på mer kraftfulla infrastruktur. Mer om hello nya versionen börjar med hello toolearn [introduktion toohello Apptjänstmiljö](../app-service/app-service-environment/intro.md).
 >
 
 ## <a name="overview"></a>Översikt
-Apptjänstmiljöer kan skapas med ett internt virtuellt nätverk-adress i stället för en offentlig VIP.  Den här interna adressen tillhandahålls av en Azure komponent som kallas intern belastningsutjämnare (ILB).  En ILB ASE kan skapas med hjälp av Azure portal.  Det kan även skapas med hjälp av automation via Azure Resource Manager-mallar.  Den här artikeln innehåller stegvisa anvisningar och syntax som behövs för att skapa en ILB ASE med Azure Resource Manager-mallar.
+Apptjänstmiljöer kan skapas med ett internt virtuellt nätverk-adress i stället för en offentlig VIP.  Den här interna adressen tillhandahålls av en Azure komponent som kallas hello intern belastningsutjämnare (ILB).  En ILB ASE kan skapas med hello Azure-portalen.  Det kan även skapas med hjälp av automation via Azure Resource Manager-mallar.  Den här artikeln går igenom hello stegen och syntax behövs toocreate en ILB ASE med Azure Resource Manager-mallar.
 
 Det finns tre steg ingår i automatisera skapandet av en ILB ASE:
 
-1. Grundläggande ASE skapas först i ett virtuellt nätverk med ett internt belastningsutjämnaradress i stället för en offentlig VIP.  Som en del av det här steget måste tilldelas ett namn för skogsrotsdomänen ILB ASE.
-2. När ILB ASE skapas har ett SSL-certifikat överförts.  
-3. Överförda SSL-certifikatet tilldelas uttryckligen ILB ASE som dess ”default” SSL-certifikat.  SSL-certifikatet som ska användas för SSL-trafik för appar på ILB ASE när apparna adresseras med vanliga rotdomänen som tilldelats ASE (t.ex. https://someapp.mycustomrootcomain.com)
+1. Första hello grundläggande ASE skapas i ett virtuellt nätverk med ett internt belastningsutjämnaradress i stället för en offentlig VIP.  Som en del av det här steget måste tilldelas ett namn för skogsrotsdomänen toohello ILB ASE.
+2. När hello ILB ASE skapas ett SSL-certifikat har överförts.  
+3. hello är överförda SSL-certifikat uttryckligen tilldelad toohello ILB ASE som dess ”default” SSL-certifikat.  SSL-certifikatet som ska användas för SSL-trafik tooapps på hello ILB ASE när hello appar adresseras med hello vanliga rot domän tilldelats toohello ASE (t.ex. https://someapp.mycustomrootcomain.com)
 
-## <a name="creating-the-base-ilb-ase"></a>Skapa Base ILB ASE
+## <a name="creating-hello-base-ilb-ase"></a>Skapa hello Base ILB ASE
 Ett exempel Azure Resource Manager-mall och dess associerade parametrar-fil finns på GitHub [här][quickstartilbasecreate].
 
-De flesta av parametrarna i den *azuredeploy.parameters.json* fil som är gemensamma för att skapa både ILB ASEs, samt ASEs bunden till en offentlig VIP.  I listan nedan anrop out-parametrar för särskilda anteckning eller som är unika, när du skapar en ILB ASE:
+De flesta hello parametrar i hello *azuredeploy.parameters.json* filen är vanliga toocreating båda ILB ASEs samt ASEs bunden tooa offentliga VIP.  hello listan nedan anrop out-parametrar för särskilda anteckning eller som är unika, när du skapar en ILB ASE:
 
-* *interalLoadBalancingMode*: I de flesta fall ange detta till 3, vilket innebär att både HTTP/HTTPS-trafik på port 80/443 och kontrolldata channel-portar har lyssnat på FTP-tjänsten på ASE, kommer att bindas till en ILB allokerade virtuella nätverk som interna adress.  Om den här egenskapen anges i stället för 2, relaterade FTP-tjänsten för portar (både kontroll- och kanaler) kommer att bindas till en ILB-adress, medan HTTP/HTTPS-trafiken ska finnas kvar på den offentliga VIP.
-* *dnsSuffix*: den här parametern anger standard-rotdomän som ska tilldelas ASE.  I offentliga variationen i Azure App Service rotdomänen standard för alla webbappar är *azurewebsites.net*.  Eftersom en ILB ASE är interna för kundens virtuella nätverk, men inte det vara klokt att använda tjänsten offentliga standard rotdomänen.  I stället ska en ILB ASE ha en standard-rotdomän som passar för användning i ett företags interna virtuella nätverk.  En hypotetiska Contoso Corporation kan till exempel använda en standard rotdomän *intern contoso.com* för appar som är avsedda att endast matchas och tillgänglig Contosos virtuellt nätverk. 
-* *ipSslAddressCount*: den här parametern är som standard automatiskt till ett värde av 0 i den *azuredeploy.json* filen eftersom ILB ASEs bara ha en enda ILB-adress.  Inga explicit SSL-IP-adresser för en ILB ASE och därför SSL-IP-adresspool för ett ILB ASE måste anges till noll, annars uppstår ett etablering fel. 
+* *interalLoadBalancingMode*: Ange too3, vilket innebär att båda HTTP/HTTPS-trafik på portarna 80/443, i de flesta fall och hello kontrolldata/channel-portar har lyssnat tooby hello FTP-tjänsten på hello ASE, bundna tooan ILB allokeras virtuellt nätverk intern adress.  Om den här egenskapen anges i stället too2, och sedan endast hello FTP-tjänsten relaterade portar (både kontroll- och kanaler) kommer att bindas tooan ILB-adress, medan hello HTTP/HTTPS-trafiken ska finnas kvar på hello offentliga VIP.
+* *dnsSuffix*: den här parametern anger hello standard-rotdomän som ska tilldelas toohello ASE.  I hello offentliga variationen i Azure App Service, hello standard rotdomänen för alla webbappar är *azurewebsites.net*.  Men eftersom en ILB ASE interna tooa kundens virtuella nätverk, inte blir meningsfullt toouse hello offentliga tjänstens standard rotdomänen.  I stället ska en ILB ASE ha en standard-rotdomän som passar för användning i ett företags interna virtuella nätverk.  En hypotetiska Contoso Corporation kan till exempel använda en standard rotdomän *intern contoso.com* för appar som är avsedda tooonly vara matchas och tillgänglig Contosos virtuellt nätverk. 
+* *ipSslAddressCount*: den här parametern är automatiskt som standard tooa värdet 0 i hello *azuredeploy.json* filen eftersom ILB ASEs bara ha en enda ILB-adress.  Inga explicit SSL-IP-adresser för en ILB ASE och därför hello SSL-IP-adresspool för ett ILB ASE måste anges toozero, annars uppstår ett etablering fel. 
 
-En gång i *azuredeploy.parameters.json* filen har fyllts i för en ILB ASE, ILB ASE kan skapas med hjälp av följande kodavsnitt i Powershell.  Ändra filen sökvägar till matchar där mallfilerna Azure Resource Manager finns på din dator.  Kom ihåg att ange egna värden för Azure Resource Manager distributionsnamnet och resursgruppens namn.
+En gång hello *azuredeploy.parameters.json* filen har fyllts i för en ILB ASE, hello ILB ASE kan skapas med hjälp av hello följande kodavsnitt i Powershell.  Ändra hello filen sökvägar toomatch där hello Azure Resource Manager template-filerna finns på din dator.  Kom ihåg toosupply egna värden för hello Azure Resource Manager distributionsnamnet och resursgruppens namn.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
     New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
-När Azure Resource Manager mallen har skickats in tar några timmar för ILB ASE ska skapas.  När du är klar att skapa ILB ASE kommer att visas i portalen UX i listan över Apptjänstmiljöer för prenumerationen som utlöste distributionen.
+Om hello Azure Resource Manager skickas mallen tar några timmar för hello ILB ASE toobe skapas.  När hello skapa är klar visas hello ILB ASE i hello portal UX i hello lista över Apptjänstmiljöer för hello-prenumeration som utlöste hello distribution.
 
-## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>Överför och konfigurera SSL-certifikatet för ”Default”
-När ILB ASE skapas ska ett SSL-certifikat associeras med ASE som SSL-certifikatet för ”default” Använd för att upprätta en SSL-anslutningar till appar.  Fortsätter med det hypotetiska Contoso Corporation-exemplet, om ASE standard DNS-suffix är *intern contoso.com*, sedan en anslutning till *https://some-random-app.internal-contoso.com* kräver ett SSL-certifikat som gäller för **.internal contoso.com*. 
+## <a name="uploading-and-configuring-hello-default-ssl-certificate"></a>Överför och konfigurerar hello ”standard” SSL-certifikat
+En gång hello ILB ASE skapas, ett SSL-certifikat ska vara associerat med hello ASE som hello ”default” SSL-certifikat används för att fastställa tooapps för SSL-anslutningar.  Fortsätter med hello hypotetiska Contoso Corporation exempelvis om hello ASES standard DNS-suffix är *intern contoso.com*, sedan en anslutning för*https://some-random-app.internal-contoso.com*kräver ett SSL-certifikat som gäller för **.internal contoso.com*. 
 
-Det finns flera olika sätt att skaffa ett giltigt SSL-certifikat inklusive interna CA: er, köpa ett certifikat från en extern utfärdare och använda ett självsignerat certifikat.  Följande certifikat-attribut måste konfigureras korrekt oavsett källan för SSL-certifikat:
+Det finns en mängd olika sätt tooobtain ett giltigt SSL-certifikat inklusive interna CA: er, köpa ett certifikat från en extern utfärdare och använda ett självsignerat certifikat.  Oavsett hello källa för hello SSL-certifikat måste hello följande certifikat-attribut toobe konfigurerats korrekt:
 
-* *Ämne*: det här attributet måste anges till **.your-rot-domain-here.com*
-* *Alternativt ämnesnamn*: det här attributet måste innehålla både **.your-rot-domain-here.com*, och **.scm.your-rot-domain-here.com*.  Orsaken till den andra posten är att SSL-anslutningar till webbplatsen SCM/Kudu som är associerade med varje app kommer att göras med en adress i formatet *your-app-name.scm.your-root-domain-here.com*.
+* *Ämne*: det här attributet måste anges för **.your-rot-domain-here.com*
+* *Alternativt ämnesnamn*: det här attributet måste innehålla både **.your-rot-domain-here.com*, och **.scm.your-rot-domain-here.com*.  Hej för hello andra posten beror på att SSL-anslutningar toohello SCM/Kudu-plats som är associerade med varje app kommer att göras med en adress i formatet hello *your-app-name.scm.your-root-domain-here.com*.
 
-Med ett giltigt SSL-certifikat i hand krävs två ytterligare förberedande åtgärder.  SSL-certifikatet måste vara konverteras/sparas som en .pfx-fil.  Kom ihåg att .pfx-filen måste innehålla alla mellanliggande och root certifikat och måste också skyddas med ett lösenord.
+Med ett giltigt SSL-certifikat i hand krävs två ytterligare förberedande åtgärder.  hello SSL-certifikat måste toobe konverteras/sparas som en .pfx-fil.  Kom ihåg att hello .pfx-fil måste alla mellanliggande tooinclude och rotcertifikat och även måste toobe skyddas med ett lösenord.
 
-Den resulterande .pfx-fil måste konverteras till en base64-sträng eftersom SSL-certifikatet kommer att överföras med en Azure Resource Manager-mall.  Eftersom Azure Resource Manager-mallar är textfiler, måste den .pfx-fil som ska konverteras till en base64-sträng, så den kan inkluderas som en parameter för mallen.
+Hello gällande .pfx-fil måste toobe konverteras till en base64-sträng eftersom hello SSL-certifikatet kommer att överföras med en Azure Resource Manager-mall.  Eftersom Azure Resource Manager-mallar är textfiler, måste toobe konverteras till en base64-sträng, så den kan inkluderas som en parameter för hello mallen hello .pfx-fil.
 
-Powershell kodfragmentet nedan visar ett exempel på Generera ett självsignerat certifikat, exportera certifikatet som en .pfx-fil, konvertera .pfx-filen till en base64-kodad sträng och sedan spara base64-kodad sträng till en separat fil.  Powershell-koden för base64-kodning bygger på den [Powershell-skript blogg][examplebase64encoding].
+hello Powershell kodfragmentet nedan visar ett exempel på Generera ett självsignerat certifikat, exporterar hello certifikat som en .pfx-fil, konvertera hello .pfx-fil till en base64-kodad sträng och sedan spara hello base64-kodade sträng tooa separat fil.  Hej Powershell-koden för base64-kodning bygger på hello [Powershell-skript blogg][examplebase64encoding].
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
@@ -79,16 +79,16 @@ Powershell kodfragmentet nedan visar ett exempel på Generera ett självsignerat
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-När SSL-certifikatet har har genererats och konverteras till en base64-kodad sträng, exempel Azure Resource Manager-mallen på GitHub för [Konfigurera SSL-standardcertifikat] [ configuringDefaultSSLCertificate] kan användas.
+När hello SSL-certifikatet har genererats och konverterade tooa base64-kodad sträng hello Azure Resource Manager-mall för exempel på GitHub för [Konfigurera SSL-certifikat för hello standard] [ configuringDefaultSSLCertificate] kan användas.
 
-Parametrarna i den *azuredeploy.parameters.json* filen visas nedan:
+Hej parametrar i hello *azuredeploy.parameters.json* filen visas nedan:
 
-* *appServiceEnvironmentName*: namnet på den ILB ASE som konfigureras.
-* *existingAseLocation*: textsträng som innehåller Azure-regionen där ILB ASE har distribuerats.  Till exempel: ”södra centrala USA”.
-* *pfxBlobString*: based64 kodad sträng som innehåller PFX-filen.  Med kodfragmentet som visades tidigare kan du kopiera den sträng som finns i ”exportedcert.pfx.b64” och klistra in den i som värde för den *pfxBlobString* attribut.
-* *lösenordet*: lösenordet som används för att skydda den .pfx-fil.
-* *certificateThumbprint*: certifikatets tumavtryck.  Om du hämtar värdet från Powershell (t.ex. *$certificate. Tumavtryck för* från kodutdrag tidigare), kan du använda värdet som-är.  Men om du kopierar värdet i dialogrutan Windows-certifikat, Kom ihåg att ta bort extra blanksteg.  Den *certificateThumbprint* ska se ut ungefär: AF3143EB61D43F6727842115BB7F17BBCECAECAE
-* *certificateName*: ett eget strängidentifierare väljer själv används för att identitet certifikatet.  Namnet används som en del av den unika identifieraren för Azure Resource Manager för den *Microsoft.Web/certificates* entitet som representerar SSL-certifikatet.  Namnet **måste** avslutas med följande suffix: \_yourASENameHere_InternalLoadBalancingASE.  Det här suffixet används av portalen som en indikator att certifikatet används för att skydda en ASE ILB-aktiverade.
+* *appServiceEnvironmentName*: hello namnet på hello ILB ASE som konfigureras.
+* *existingAseLocation*: Text sträng som innehåller hello Azure-region där hello ILB ASE har distribuerats.  Till exempel: ”södra centrala USA”.
+* *pfxBlobString*: hello based64 kodad strängrepresentation av hello .pfx-fil.  Använder hello kodstycke som visades tidigare, skulle du kopiera hello sträng som finns i ”exportedcert.pfx.b64” och klistra in den i som hello värde för hello *pfxBlobString* attribut.
+* *lösenordet*: hello lösenord som används för toosecure hello .pfx-fil.
+* *certificateThumbprint*: hello certifikatets tumavtryck.  Om du hämtar värdet från Powershell (t.ex. *$certificate. Tumavtryck för* från hello tidigare kodstycke), kan du använda hello-värde som-är.  Men om du kopierar hello värdet från hello Windows certifikat dialogrutan Spara toostrip ut hello extra blanksteg.  Hej *certificateThumbprint* ska se ut ungefär: AF3143EB61D43F6727842115BB7F17BBCECAECAE
+* *certificateName*: ett eget strängidentifierare väljer själv används tooidentity hello certifikat.  hello namnet används som en del av hello Unik identifierare för Azure Resource Manager för hello *Microsoft.Web/certificates* entitet som representerar hello SSL-certifikat.  hello namnet **måste** avslutas med hello följande suffix: \_yourASENameHere_InternalLoadBalancingASE.  Det här suffixet används av hello portalen som en indikator på att hello certifikat används för att skydda en ASE ILB-aktiverade.
 
 Ett förkortat exempel på *azuredeploy.parameters.json* visas nedan:
 
@@ -117,23 +117,23 @@ Ett förkortat exempel på *azuredeploy.parameters.json* visas nedan:
          }
     }
 
-En gång i *azuredeploy.parameters.json* filen har fyllts i, standard-SSL-certifikat kan konfigureras med följande kodavsnitt i Powershell.  Ändra filen sökvägar till matchar där mallfilerna Azure Resource Manager finns på din dator.  Kom ihåg att ange egna värden för Azure Resource Manager distributionsnamnet och resursgruppens namn.
+En gång hello *azuredeploy.parameters.json* filen har fyllts i, hello standard SSL-certifikat kan konfigureras med hello följande kodavsnitt i Powershell.  Ändra hello filen sökvägar toomatch där hello Azure Resource Manager template-filerna finns på din dator.  Kom ihåg toosupply egna värden för hello Azure Resource Manager distributionsnamnet och resursgruppens namn.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
     New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
-När Azure Resource Manager-mall har skickats tar ungefär 40 minuter minuter per ASE frontend att tillämpa ändringen.  Till exempel med en standard storlek ASE som använder två framför ends tar mallen ungefär en timme och 20 minuter för att slutföra.  När mallen körs ASE inte skalas.  
+Om hello Azure Resource Manager skickas mallen tar ungefär 40 minuter minuter per ASE frontend tooapply hello ändring.  Till exempel med en standard tar storlek ASE med två framför-ends hello mallen runt en timme och 20 minuter toocomplete.  Medan hello mallen körs hello ASE inte kan tooscaled.  
 
-När mallen är klar appar på ILB ASE kan nås över HTTPS och anslutningar ska skyddas med SSL-certifikat som standard.  Standard-SSL-certifikat används när apparna på ILB ASE behandlas med en kombination av programnamnet plus värdnamnet som standard.  Till exempel *https://mycustomapp.internal-contoso.com* använder standard-SSL-certifikat för **.internal contoso.com*.
+När hello mallen har slutförts appar på hello ILB ASE kan nås över HTTPS och hello anslutningar säkras med hello standard SSL-certifikat.  hello standard SSL-certifikat används när apparna på hello ILB ASE behandlas med en kombination av hello programnamn plus hello standard värdnamn.  Till exempel *https://mycustomapp.internal-contoso.com* använder hello standard SSL-certifikat för **.internal contoso.com*.
 
-Dock precis som appar körs på tjänsten offentliga flera innehavare, kan utvecklare också konfigurera anpassade värdnamn för enskilda appar och sedan konfigurera unika SNI SSL-certifikatbindningar för enskilda appar.  
+Dock precis som appar körs på hello offentlig tjänst med flera klienter, kan utvecklare också konfigurera anpassade värdnamn för enskilda appar och sedan konfigurera unika SNI SSL-certifikatbindningar för enskilda appar.  
 
 ## <a name="getting-started"></a>Komma igång
-Kom igång med Apptjänstmiljöer finns [introduktion till Apptjänst-miljö](app-service-app-service-environment-intro.md)
+tooget igång med Apptjänstmiljöer, se [introduktion tooApp-miljö](app-service-app-service-environment-intro.md)
 
-Alla artiklar och hur-att datorns för Apptjänstmiljöer finns tillgängliga i den [viktigt för Programtjänstmiljöer](../app-service/app-service-app-service-environments-readme.md).
+Alla artiklar och hur-att datorns för Apptjänstmiljöer finns tillgängliga i hello [viktigt för Programtjänstmiljöer](../app-service/app-service-app-service-environments-readme.md).
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 

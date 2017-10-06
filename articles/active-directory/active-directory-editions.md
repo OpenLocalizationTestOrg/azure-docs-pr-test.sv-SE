@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory-versioner | Microsoft Docs
-description: "Den här artikeln beskriver alternativ gratis och betald utgåvor av Azure Active Directory. Azure Active Directory Basic, Azure Active Directory Premium P1 och Azure Active Directory Premium P2 är betald utgåvor."
+title: aaaAzure Active Directory-versioner | Microsoft Docs
+description: "Den här artikeln beskriver alternativ gratis och betald utgåvor av Azure Active Directory. Azure Active Directory Basic, Azure Active Directory Premium P1 och Azure Active Directory Premium P2 är hello betald utgåvor."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 9d10ebf9d7bd07bd126302a6ecf442d809e00196
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 59478692020e84c7bf3fc96cba81eba4e9eb1ae6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-editions"></a>Azure Active Directory-versioner
-Alla Microsoft Online-tjänster är beroende av Azure Active Directory (Azure AD) för inloggning och andra identitet. Om du prenumererar på någon av Microsoft Online-företagstjänster (till exempel Office 365 eller Microsoft Azure) kan hämta du Azure AD med åtkomst till alla ledigt funktioner som beskrivs nedan.  
+Alla Microsoft Online-tjänster är beroende av Azure Active Directory (Azure AD) för inloggning och andra identitet. Om du prenumererar tooany över Microsoft Online-tjänster (till exempel Office 365 eller Microsoft Azure) kan hämta Azure AD med åtkomst tooall av hello ledigt funktioner som beskrivs nedan.  
 
-Azure Active Directory är en omfattande molnlösning för identitets- och åtkomsthantering med hög tillgänglighet som kombinerar kärnkatalogstjänster, avancerad identitetsstyrning och programåtkomsthantering. Azure Active Directory erbjuder även en bred, standardbaserad plattform som ger utvecklare möjlighet att förse sina program med åtkomstkontroll, baserat på en centraliserad princip och regler. Med Azure Active Directory Free edition kan hantera användare och grupper, synkroniseras med lokala kataloger kan hämta enkel inloggning mellan Azure och Office 365 tusentals populära SaaS-program som Salesforce, Workday, Concur, DocuSign, Google Apps, rutan, ServiceNow, Dropbox och mycket mer. Mer information om Azure Active Directory [vad är Azure AD?](active-directory-whatis.md)
+Azure Active Directory är en omfattande molnlösning för identitets- och åtkomsthantering med hög tillgänglighet som kombinerar kärnkatalogstjänster, avancerad identitetsstyrning och programåtkomsthantering. Azure Active Directory erbjuder också en omfattande, standardbaserad plattform som gör att utvecklare toodeliver access control tootheir program, baserat på centraliserade princip och regler. Med hello Azure Active Directory ledigt edition kan du hantera användare och grupper, synkroniseras med lokala kataloger, hämta enkel inloggning mellan Azure och Office 365 tusentals populära SaaS-program som Salesforce, Workday, Concur, DocuSign, Google Apps rutan, ServiceNow, Dropbox och mer. toolearn mer om Azure Active Directory, läsa [vad är Azure AD?](active-directory-whatis.md)
 
-Du kan lägga till betalda funktioner med hjälp av Azure Active Directory Basic, Premium P1 och Premium P2-versioner för att förbättra din Azure Active Directory. Azure Active Directory betald versioner är byggda på en befintlig gratis directory tillhandahåller klassen funktioner utsträckning självbetjäning, förbättrad övervakning, rapportering om säkerhet, Multi-Factor Authentication (MFA) och säker åtkomst för den mobila arbetsstyrkan för företag.
+tooenhance Azure Active Directory, kan du lägga till betalda funktioner med hjälp av hello Azure Active Directory Basic, Premium P1 och Premium P2-versioner. Azure Active Directory betald versioner är byggda på en befintlig gratis directory tillhandahåller klassen funktioner utsträckning självbetjäning, förbättrad övervakning, rapportering om säkerhet, Multi-Factor Authentication (MFA) och säker åtkomst för den mobila arbetsstyrkan för företag.
 
-Office 365-prenumerationer ingår ytterligare Azure Active Directory-funktioner som beskrivs i jämförelsetabellen.
+Office 365-prenumerationer ingår ytterligare Azure Active Directory-funktioner som beskrivs i hello jämförelsetabellen nedan.
 
 > [!NOTE]
-> Alternativen prisnivå av dessa versioner finns [Azure Active Directory-priser](https://azure.microsoft.com/pricing/details/active-directory/). Azure Active Directory Premium P1 Premium P2 och Azure Active Directory Basic stöds inte för närvarande i Kina. Kontakta oss på i Azure Active Directory-forumet för mer information.
+> Hello priser alternativen för dessa versioner, se [Azure Active Directory-priser](https://azure.microsoft.com/pricing/details/active-directory/). Azure Active Directory Premium P1 Premium P2 och Azure Active Directory Basic stöds inte för närvarande i Kina. Kontakta oss på hello Azure Active Directory-forumet för mer information.
 >
 >
 
-* **Azure Active Directory Basic** -utformad för projektanställda med molnet första behov, den här versionen innehåller molnet program för central åtkomst och självbetjäningsportalen identitetshanteringslösningar. Med Basic-versionen av Azure Active Directory får du funktioner som ökar produktiviteten och minskar kostnaderna, som gruppbaserad åtkomsthantering, lösenordsåterställning med självbetjäning för molnprogram och Azure Active Directory Application Proxy (för att publicera lokala webbprogram med Azure Active Directory), som alla stöds av ett serviceavtal på företagsnivå med 99,9 procent drifttid.
-* **Azure Active Directory Premium P1** – utformade för att gör det lättare för organisationer med flera krävande identitets- och hanteringsbehov, Azure Active Directory Premium edition lägger till funktioner för hantering av funktioner på företagsnivå identitet och möjliggör hybrid användare sömlöst kan komma åt lokalt och molntjänster funktioner. Den här versionen innehåller allt du behöver för informationsarbetare och identitetsadministratörer i hybridmiljöer över programåtkomst, identitets- och åtkomsthantering (IAM) med självbetjäning, identitetsskydd och säkerhet i molnet. Det stöder avancerade administration och delegering resurser som dynamiska grupper och grupphantering via självbetjäning. Den innehåller Microsoft Identity Manager (ett lokalt identitets- och management suite) samt molnet återskrivning funktioner för att aktivera lösningar som Självbetjäning för återställning av lösenord för lokala användare.
-* **Azure Active Directory Premium P2** -utformad med avancerat skydd för alla användare och administratörer, erbjudandet nya innehåller alla funktioner i Azure AD Premium P1 samt vår nya identitetsskydd och Privileged Identity Management. Azure Active Directory-identitetsskydd utnyttjar miljarder signalerar att tillhandahålla risk-baserad villkorlig åtkomst till dina program och kritiska företagsdata. Vi kan också hjälpa dig att hantera och skydda Privilegierade konton med Azure Active Directory Privileged Identity Management så att du kan identifiera begränsa och övervaka administratörer och deras åtkomst till resurser och ger just-in-time-åtkomst vid behov.  
+* **Azure Active Directory Basic** -utformad för projektanställda med molnet första behov, den här versionen innehåller molnet program för central åtkomst och självbetjäningsportalen identitetshanteringslösningar. Med hello Basic-versionen av Azure Active Directory, hämta öka produktiviteten och kostnaden minskar funktioner som gruppbaserad åtkomsthantering, Självbetjäning för återställning av lösenord för molnprogram och Azure Active Directory Application Proxy (toopublish lokala webbprogram med hjälp av Azure Active Directory), alla backas upp av ett serviceavtal på företagsnivå med 99,9 procent upptid.
+* **Azure Active Directory Premium P1** -utformad tooempower organisationer med flera krävande identitets- och hanteringsbehov, Azure Active Directory Premium edition lägger till funktioner för hantering av funktioner på företagsnivå identitet och aktiverar hybrid användare tooseamlessly åtkomst till lokala och molnet funktioner. Den här versionen innehåller allt du behöver för informationsarbetare och identitet administratörer i hybridmiljöer över programåtkomst, självbetjäning identitets- och åtkomsthantering (IAM), identitetsskydd och säkerhet i hello molnet. Det stöder avancerade administration och delegering resurser som dynamiska grupper och grupphantering via självbetjäning. Den innehåller Microsoft Identity Manager (ett lokalt identitets- och management suite) samt molnet återskrivning funktioner för att aktivera lösningar som Självbetjäning för återställning av lösenord för lokala användare.
+* **Azure Active Directory Premium P2** -utformad med avancerat skydd för alla användare och administratörer, erbjudandet nya innehåller alla hello-funktioner i Azure AD Premium P1 samt våra nya identitetsskydd och Privileged Identity Hantering. Azure Active Directory-identitetsskydd utnyttjar miljarder signaler tooprovide risk-baserad villkorlig åtkomst tooyour program och kritiska företagsdata. Vi kan också hjälpa dig att hantera och skydda Privilegierade konton med Azure Active Directory Privileged Identity Management så att du kan identifiera begränsa och övervaka administratörer och deras åtkomst tooresources och ger just-in-time-åtkomst vid behov.  
 
-Om du vill registrera dig och börja använda Active Directory Premium idag, se [komma igång med Azure Active Directory Premium](active-directory-get-started-premium.md).
+toosign in och börja använda Active Directory Premium idag finns [komma igång med Azure Active Directory Premium](active-directory-get-started-premium.md).
 
 > [!NOTE]
 > Ett antal Azure Active Directory-funktioner är tillgängliga via ”betala per användning” versioner:
 >
-> * Active Directory B2C är identitets- och hanteringslösning för dina konsumentinriktade program. Mer information finns i [Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)
+> * Active Directory B2C är hello identitets- och hanteringslösning för dina konsumentinriktade program. Mer information finns i [Azure Active Directory B2C](https://azure.microsoft.com/documentation/services/active-directory-b2c/)
 > * Azure Multi-Factor Authentication kan användas via per användare eller per autentiseringsproviders. Mer information finns i [vad är Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
 >
 >
 
 ## <a name="comparing-generally-available-features"></a>Jämföra allmänt tillgängliga funktioner
 > [!NOTE]
-> En annan vy av dessa data finns i [Azure Active Directory-funktioner](https://www.microsoft.com/en/server-cloud/products/azure-active-directory/features.aspx).
+> En annan vy av dessa data finns hello [Azure Active Directory-funktioner](https://www.microsoft.com/en/server-cloud/products/azure-active-directory/features.aspx).
 >
 >
 
@@ -60,7 +60,7 @@ Om du vill registrera dig och börja använda Active Directory Premium idag, se 
 * [Hantering av användare/grupp (Lägg till/Uppdatera/ta bort) / användarbaserade etablering, registrering av enheten](#usergroup-management-addupdatedelete-user-based-provisioning-device-registration)
 * [Enkel inloggning (SSO)](#single-sign-on-sso)
 * [Självbetjäning ändring av lösenord för användarna](#self-service-password-change-for-cloud-users)
-* [Ansluta (Synkroniseringsmotorn som utökar lokala kataloger till Azure Active Directory)](#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory)
+* [Ansluta (Synkroniseringsmotorn som utökar lokala kataloger tooAzure Active Directory)](#connect-sync-engine-that-extends-on-premises-directories-to-azure-active-directory)
 * [Säkerhet / rapporter](#securityusage-reports)
 
 **Grundläggande funktioner**
@@ -88,20 +88,20 @@ Om du vill registrera dig och börja använda Active Directory Premium idag, se 
 
 **Azure Active Directory Join – endast relaterade funktioner för Windows 10**
 
-* [Ansluta en enhet till Azure AD, skrivbordet SSO Microsoft Passport för Azure AD, administratör Bitlocker-återställning](#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery)
-* [MDM automatisk registrering, Self-Service Bitlocker-återställning, ytterligare lokala administratörer att Windows 10-enheter via Azure AD Join](#mdm-auto-enrollment)
+* [Ansluta till en enhet tooAzure AD, skrivbordet SSO Microsoft Passport for Azure AD, administratör Bitlocker-återställning](#join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery)
+* [MDM automatisk registrering, Self-Service Bitlocker-återställning, ytterligare lokala administratörer tooWindows 10-enheter via Azure AD Join](#mdm-auto-enrollment)
 
 ## <a name="common-features"></a>Vanliga funktioner
 #### <a name="directory-objects"></a>Katalogobjekt
 **Typ:** vanliga funktioner
 
-Användning standardkvot är 150 000 objekt. Ett objekt är en post i katalogtjänsten som representeras av sitt unika namn. Ett exempel på ett objekt är en användarpost som används för autentiseringsändamål. Kontakta supporten om du behöver överskrider standardkvoten. Begränsningen på 500 000 objekt gäller inte för Office 365, Microsoft Intune eller någon annan betald onlinetjänst från Microsoft som förlitar sig på Azure Active Directory för katalogtjänster.
+hello standardkvot är 150 000 objekt. Ett objekt är en post i hello katalogtjänsten representeras av dess unikt namn. Ett exempel på ett objekt är en användarpost som används för autentiseringsändamål. Kontakta supporten om du behöver tooexceed standardkvoten. hello 500 kB objektet begränsningen gäller inte för Office 365, Microsoft Intune eller andra Microsoft betald onlinetjänst som förlitar sig på Azure Active Directory för directory services.
 
 **Tillgänglighet:**
 
 | Free Edition | Basic-versionen | Premium (P1 och P2)-versioner | Office 365-appar |
 |:---:|:---:|:---:|:---:|
-| Upp till 500 000 objekt |Det finns ingen gräns för objektet |Det finns ingen gräns för objektet |Inga objekt gränsen för Office 365-användarkonton |
+| Konfigurera too500 000 objekt |Det finns ingen gräns för objektet |Det finns ingen gräns för objektet |Inga objekt gränsen för Office 365-användarkonton |
 
 #### <a name="usergroup-management-addupdatedelete-user-based-provisioning-device-registration"></a>Hantering av användare/grupp (Lägg till/Uppdatera/ta bort), användarbaserade etablering, registrering av enheten
 **Typ:** vanliga funktioner
@@ -126,8 +126,8 @@ Användning standardkvot är 150 000 objekt. Ett objekt är en post i katalogtj�
 |:---:|:---:|:---:|:---:|
 | 10 appar per användare (1) |10 appar per användare (1) |Obegränsat (2) |10 appar per användare (1) |
 
-1. Med Azure AD Kostnadsfri och Azure AD Basic får slutanvändarna enkel inloggning till upp till tio program.
-2. Integrering med självbetjäning för program som har stöd för SAML, SCIM eller formulärbaserad autentisering med hjälp av mallar på menyn för programgalleriet. Mer information finns i [Konfigurera enkel inloggning för program som inte ingår i Azure Active Directory-programgalleriet](active-directory-saas-custom-apps.md).
+1. Med Azure AD-lediga och Azure AD Basic rätt slutanvändare tooget enkel inloggning åtkomst för in too10 program.
+2. Självbetjäning integration av alla program som stöder SAML, SCIM eller formulärbaserad autentisering med hjälp av mallar i hello programmenyn gallery. Mer information finns i [Konfigurera enkel inloggning tooapplications som inte ingår i hello Azure Active Directory-programgalleriet](active-directory-saas-custom-apps.md).
 
 **Mer information:**
 
@@ -144,9 +144,9 @@ Användning standardkvot är 150 000 objekt. Ett objekt är en post i katalogtj�
 
 **Mer information:**
 
-* [Uppdatera ditt eget lösenord](active-directory-passwords-update-your-own-password.md#reset-or-unlock-my-password-for-a-work-or-school-account)
+* [Hur tooupdate ditt eget lösenord](active-directory-passwords-update-your-own-password.md#reset-or-unlock-my-password-for-a-work-or-school-account)
 
-#### <a name="connect--sync-engine-that-extends-on-premises-directories-to-azure-active-directory"></a>Ansluta (Synkroniseringsmotorn som utökar lokala kataloger till Azure Active Directory)
+#### <a name="connect--sync-engine-that-extends-on-premises-directories-tooazure-active-directory"></a>Ansluta (Synkroniseringsmotorn som utökar lokala kataloger tooAzure Active Directory)
 **Typ:** vanliga funktioner
 
 **Tillgänglighet:**
@@ -184,7 +184,7 @@ Användning standardkvot är 150 000 objekt. Ett objekt är en post i katalogtj�
 
 **Mer information:**
 
-* [Hantera åtkomst till SaaS-program med hjälp av en grupp](active-directory-accessmanagement-group-saasapps.md)
+* [Med hjälp av en grupp toomanage åtkomst tooSaaS program](active-directory-accessmanagement-group-saasapps.md)
 
 #### <a name="self-service-password-reset-for-cloud-users"></a>Självbetjäning för återställning av lösenord för molnanvändare
 **Typ:** grundläggande funktioner
@@ -210,7 +210,7 @@ Användning standardkvot är 150 000 objekt. Ett objekt är en post i katalogtj�
 
 **Mer information:**
 
-* [Anpassa inloggnings- och åtkomstpanelsidorna till ditt företag](active-directory-add-company-branding.md)
+* [Lägga till företagsanpassning tooyour inloggnings- och åtkomstpanel-sidor](active-directory-add-company-branding.md)
 
 #### <a name="application-proxy"></a>Programproxy
 **Typ:** grundläggande funktioner
@@ -223,7 +223,7 @@ Användning standardkvot är 150 000 objekt. Ett objekt är en post i katalogtj�
 
 **Mer information:**
 
-* [Hur du ger säker fjärråtkomst till lokala program](active-directory-application-proxy-get-started.md)
+* [Hur säkra tooprovide fjärråtkomst tooon lokala program](active-directory-application-proxy-get-started.md)
 
 #### <a name="sla-999"></a>SLA 99,9%
 **Typ:** grundläggande funktioner
@@ -266,7 +266,7 @@ Användning standardkvot är 150 000 objekt. Ett objekt är en post i katalogtj�
 
 | Free Edition | Basic-versionen | Premium (P1 och P2)-versioner | Office 365-appar |
 |:---:|:---:|:---:|:---:|
-| &nbsp; | &nbsp; |![Markera][12] |Begränsad till molnet endast för Office 365-appar |
+| &nbsp; | &nbsp; |![Markera][12] |Begränsad toocloud endast för Office 365-appar |
 
 **Mer information:**
 
@@ -274,7 +274,7 @@ Användning standardkvot är 150 000 objekt. Ett objekt är en post i katalogtj�
 
 
 #### <a name="mim-cal-mim-server"></a>MIM-CAL + MIM-servern
-Programvarurättigheter för Microsoft Identity Manager Server beviljas med Windows Server-licenser (alla versioner). Eftersom Microsoft Identity Manager körs på operativsystemet Windows Server, förutsatt att servern körs på en giltig licensierad kopia av Windows Server, kan sedan Microsoft Identity Manager installeras och används på servern. Ingen annan separat licens krävs för Microsoft Identity Manager Server.
+Programvarurättigheter för Microsoft Identity Manager Server beviljas med Windows Server-licenser (alla versioner). Eftersom Microsoft Identity Manager körs på hello Windows Server-operativsystem, så länge hello-servern körs som en giltig, licensierad version av Windows Server och Microsoft Identity Manager installerat och används på servern. Ingen annan separat licens krävs för Microsoft Identity Manager Server.
 
 **Typ:** Premium-funktioner
 
@@ -308,7 +308,7 @@ Programvarurättigheter för Microsoft Identity Manager Server beviljas med Wind
 
 **Mer information:**
 
-* [Övervaka den lokala identitetsinfrastrukturen och synkroniseringstjänster i molnet](active-directory-aadconnect-health.md)
+* [Övervaka din lokala identitet infrastruktur och synkroniseringstjänster i molnet hello](active-directory-aadconnect-health.md)
 
 #### <a name="automatic-password-rollover-for-group-accounts"></a>Automatisk lösenordsförnyelse för gruppkonton
 **Typ:** Premium-funktioner
@@ -334,7 +334,7 @@ Programvarurättigheter för Microsoft Identity Manager Server beviljas med Wind
 | &nbsp; | &nbsp; | ![Markera][12] | &nbsp; |
 
 ## <a name="azure-active-directory-join--windows-10-only--related-features"></a>Azure Active Directory Join – endast relaterade funktioner för Windows 10
-#### <a name="join-a-device-to-azure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery"></a>Anslut en enhet till Azure AD, Desktop SSO, Microsoft Passport för Azure AD, Administrator Bitlocker-återställning
+#### <a name="join-a-device-tooazure-ad-desktop-sso-microsoft-passport-for-azure-ad-administrator-bitlocker-recovery"></a>Ansluta till en enhet tooAzure AD, skrivbordet SSO Microsoft Passport for Azure AD, administratör Bitlocker-återställning
 **Typ:** Azure Active Directory Join – endast relaterade funktioner för Windows 10
 
 **Tillgänglighet:**
@@ -344,7 +344,7 @@ Programvarurättigheter för Microsoft Identity Manager Server beviljas med Wind
 | ![Markera][12] |![Markera][12] |![Markera][12] |![Markera][12] |
 
 
-#### <a name="mdm-auto-enrollment"></a>MDM automatisk registrering, Self-Service Bitlocker-återställning, ytterligare lokala administratörer att Windows 10-enheter via Azure AD Join
+#### <a name="mdm-auto-enrollment"></a>MDM automatisk registrering, Self-Service Bitlocker-återställning, ytterligare lokala administratörer tooWindows 10-enheter via Azure AD Join
 **Typ:** Azure Active Directory Join – endast relaterade funktioner för Windows 10
 
 **Tillgänglighet:**
@@ -368,7 +368,7 @@ Programvarurättigheter för Microsoft Identity Manager Server beviljas med Wind
 
 ## <a name="next-steps"></a>Nästa steg
 * [Komma igång med Azure Active Directory Premium](active-directory-get-started-premium.md)
-* [Lägga till företagsanpassning till inloggnings-- och åtkomstpanel sidor](active-directory-add-company-branding.md)
+* [Lägga till företagsanpassning tooyour inloggnings- och åtkomstpanelsidan](active-directory-add-company-branding.md)
 * [Visa åtkomst- och användningsrapporterna](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->

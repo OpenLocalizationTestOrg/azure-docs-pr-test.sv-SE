@@ -14,107 +14,107 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 299e09ef1bb1b1db9d64447bf4537c7c3a3cfd5f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d56ebf27e3015a7f3385ac5a4ddd77ea2c88387f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Administrera Grupprincip i en Azure AD Domain Services-hanterad domän
-Azure Active Directory Domain Services innehåller inbyggda grupprincipobjekt (GPO) för behållare AADDC-användare och AADDC-datorer. Du kan anpassa dessa inbyggda grupprincipobjekt för att konfigurera en Grupprincip på den hanterade domänen. Medlemmar i gruppen AAD DC-administratörer kan dessutom skapa egna anpassade organisationsenheter i den hanterade domänen. De kan också skapa anpassade grupprincipobjekt och länka dem till dessa anpassade organisationsenheter. Användare som tillhör gruppen AAD DC-administratörer beviljas Grupprincip administratörsbehörighet för den hanterade domänen.
+Azure Active Directory Domain Services innehåller inbyggda grupprincipobjekt (GPO) för hello AADDC-användare och AADDC-datorer behållare. Du kan anpassa dessa inbyggda grupprincipobjekt tooconfigure Grupprincip i hello hanterade domän. Medlemmar i gruppen för hello AAD DC-administratörer kan dessutom skapa egna anpassade organisationsenheter i hello hanterade domän. De kan också skapa anpassade grupprincipobjekt och länka dem toothese anpassad organisationsenheter. Användare som tillhör toohello ' AAD DC-administratörsgruppen beviljas administratörsbehörighet för Grupprincip för hello-hanterad domän.
 
 ## <a name="before-you-begin"></a>Innan du börjar
-Om du vill utföra åtgärderna i den här artikeln behöver du:
+tooperform hello uppgifterna som listas i den här artikeln, behöver du:
 
 1. En giltig **Azure-prenumeration**.
 2. En **Azure AD-katalog** -antingen synkroniseras med en lokal katalog eller en molnbaserad katalog.
-3. **Azure AD Domain Services** måste vara aktiverat för Azure AD-katalog. Om du inte gjort det, följer du de uppgifter som beskrivs i den [Kom igång-guiden](active-directory-ds-getting-started.md).
-4. En **domänanslutna virtuella** där du administrera den hanterade domänen med Azure AD Domain Services. Om du inte har sådan en virtuell dator, följer du de uppgifter som beskrivs i artikel med titeln [Anslut en Windows-dator till en hanterad domän](active-directory-ds-admin-guide-join-windows-vm.md).
-5. Du måste autentiseringsuppgifterna för en **användarkontot som hör till gruppen ”AAD DC-administratörer”** i katalogen för att administrera en grupprincip för din hanterade domän.
+3. **Azure AD Domain Services** måste vara aktiverat för hello Azure AD-katalogen. Om du inte gjort det, följ alla hello uppgifter som beskrivs i hello [Kom igång-guiden](active-directory-ds-getting-started.md).
+4. En **domänanslutna virtuella** från vilken du administrerar hello Azure AD Domain Services-hanterad domän. Om du inte har sådan en virtuell dator, följ alla hello uppgifter som beskrivs i artikeln hello [ansluta till en hanterad domän för Windows virtuella tooa](active-directory-ds-admin-guide-join-windows-vm.md).
+5. Du behöver hello autentiseringsuppgifterna för en **kontot tillhör toohello AAD DC-administratörer användargrupp** i katalogen tooadminister Grupprincip för din hanterade domän.
 
 <br>
 
-## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-group-policy-for-the-managed-domain"></a>Uppgift 1 – etablera en virtuell dator domänanslutna för att fjärradministrera en grupprincip för den hanterade domänen
-Azure AD Domain Services-hanterade domäner kan hanteras från en fjärrdator med hjälp av välbekanta Active Directory administrativa verktyg, till exempel Active Directory administrativa Center (ADAC) eller AD PowerShell. På liknande sätt Grupprincip för den hanterade domänen kan du administrera med administrationsverktygen för Grupprincip.
+## <a name="task-1---provision-a-domain-joined-virtual-machine-tooremotely-administer-group-policy-for-hello-managed-domain"></a>Uppgift 1 - etablera en domänansluten virtuella tooremotely administrera Grupprincip för hello-hanterad domän
+Azure AD Domain Services-hanterade domäner kan hanteras med vanliga Active Directory administrativa verktyg som hello Active Directory administrativa Center (ADAC) eller AD PowerShell. På liknande sätt Grupprincip för hello-hanterad domän kan du administrera med hello administrationsverktygen för Grupprincip.
 
-Administratörer i din Azure AD-katalog har inte behörighet att ansluta till domänkontrollanter på den hanterade domänen via fjärrskrivbord. Medlemmar i gruppen AAD DC-administratörer kan fjärradministrera en grupprincip för hanterade domäner. De kan använda Grupprincip verktyg på en dator för Windows-servern eller-klienten som ingår i den Hantera domänen. Verktyg för gruppen kan installeras som en del av hantering av Grupprincip valfri funktion i Windows Server och klientdatorer som är anslutna till den hanterade domänen.
+Administratörer i din Azure AD-katalog har inte privilegier tooconnect toodomain domänkontrollanter på hello hanterade domänen via fjärrskrivbord. Medlemmar i gruppen för hello AAD DC-administratörer kan fjärradministrera en grupprincip för hanterade domäner. De kan använda Grupprincip verktyg på en hanterad domän för Windows-servern eller-klienten datorn kopplade toohello. Verktyg för gruppen kan installeras som en del av hello valfri funktion för hantering av Grupprincip på datorer med Windows Server och klient ansluten toohello hanterad domän.
 
-Den första uppgiften är att etablera en virtuell dator med Windows Server som är ansluten till den hanterade domänen. Instruktioner finns i artikeln [ansluta en virtuell dator med Windows Server till en Azure AD Domain Services-hanterad domän](active-directory-ds-admin-guide-join-windows-vm.md).
+hello första uppgiften är tooprovision en virtuell dator för Windows Server som är kopplade toohello hanterad domän. Instruktioner finns i artikeln toohello [ansluta till en Windows Server virtuella tooan Azure AD Domain Services-hanterad domän](active-directory-ds-admin-guide-join-windows-vm.md).
 
-## <a name="task-2---install-group-policy-tools-on-the-virtual-machine"></a>Uppgift 2 – installera Grupprincip verktyg på den virtuella datorn
-Utför följande steg för att installera Administrationsverktyg för principen på den virtuella datorn ansluten till en domän.
+## <a name="task-2---install-group-policy-tools-on-hello-virtual-machine"></a>Uppgift 2 – installera Grupprincip verktyg på hello virtuell dator
+Utföra hello följa steg tooinstall hello grupp princip Administrationsverktyg på hello domänanslutna virtuell dator.
 
-1. Gå till **virtuella datorer** nod i den klassiska Azure-portalen. Välj den virtuella dator som du skapade i uppgift 1 och klicka på **Anslut** i kommandofältet längst ned i fönstret.
+1. Navigera för**virtuella datorer** nod i hello klassiska Azure-portalen. Välj hello virtuella dator som du skapade i uppgift 1 och klicka på **Anslut** på hello kommandofältet längst hello hello-fönstret.
 
-    ![Ansluta till Windows-dator](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-2. Den klassiska portalen uppmanas du att öppna eller spara en fil med tillägget 'RDP-', som används för att ansluta till den virtuella datorn. Klicka på filen när den har hämtats.
-3. Inloggningsskärm, Använd autentiseringsuppgifter för en användare som tillhör gruppen AAD DC-administratörer. Exempelvis kan vi använda 'bob@domainservicespreview.onmicrosoft.com' i vårt fall.
-4. Från startskärmen öppnar **Serverhanteraren**. Klicka på **Lägg till roller och funktioner** i fönstret i mitten av Serverhanteraren.
+    ![Ansluta tooWindows virtuell dator](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
+2. efterfrågar tooopen hello klassiska portalen eller spara en fil med tillägget 'RDP-', vilket är används tooconnect toohello virtuell dator. Klicka på hello filen när den har hämtats.
+3. Använd hello autentiseringsuppgifterna för en användare som tillhör toohello ' AAD DC-administratörsgruppen på hello inloggningsskärm. Exempelvis kan vi använda 'bob@domainservicespreview.onmicrosoft.com' i vårt fall.
+4. Hello startskärmen öppna **Serverhanteraren**. Klicka på **Lägg till roller och funktioner** hello centrala ruta hello Serverhanteraren.
 
     ![Starta Serverhanteraren på den virtuella datorn](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-5. På den **innan du börjar** sida av den **guiden Lägg till roller och funktioner**, klickar du på **nästa**.
+5. På hello **innan du börjar** sidan hello **guiden Lägg till roller och funktioner**, klickar du på **nästa**.
 
     ![Innan du börjar sida](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
-6. På den **installationstyp** lämnar den **rollbaserad eller funktionsbaserad installation** alternativet som är markerat och klicka på **nästa**.
+6. På hello **installationstyp** lämnar hello **rollbaserad eller funktionsbaserad installation** alternativet som är markerat och klicka på **nästa**.
 
     ![Installationstyp](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-7. På den **Serverval** , Välj den aktuella virtuella datorn från serverpoolen och klicka på **nästa**.
+7. På hello **Serverval** , Välj hello aktuella virtuella datorn från hello-serverpoolen och klicka på **nästa**.
 
     ![Sidan för val av Server](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. På den **serverroller** klickar du på **nästa**. Vi hoppar över den här sidan eftersom vi inte installerar några roller på servern.
-9. På den **funktioner** väljer den **Grupprinciphantering** funktion.
+8. På hello **serverroller** klickar du på **nästa**. Vi hoppar över den här sidan eftersom vi inte installerar några roller på hello-servern.
+9. På hello **funktioner** sidan, Välj hello **Grupprinciphantering** funktion.
 
     ![Sidan funktioner](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
-10. På den **bekräftelse** klickar du på **installera** du installerar funktionen Grupprinciphantering på den virtuella datorn. När för funktionsinstallationen är klar klickar du på **Stäng** att avsluta den **Lägg till roller och funktioner** guiden.
+10. På hello **bekräftelse** klickar du på **installera** tooinstall hello Grupprinciphantering funktionen på hello virtuella datorn. När för funktionsinstallationen är klar klickar du på **Stäng** tooexit hello **Lägg till roller och funktioner** guiden.
 
     ![Bekräftelsesida](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management-confirmation.png)
 
-## <a name="task-3---launch-the-group-policy-management-console-to-administer-group-policy"></a>Uppgift 3 – Starta hanteringskonsolen Grupprincip för att administrera en Grupprincip
-Du kan använda konsolen för Grupprinciphantering på den virtuella datorn ingår i domänen för att administrera en Grupprincip på den hanterade domänen.
+## <a name="task-3---launch-hello-group-policy-management-console-tooadminister-group-policy"></a>Uppgift 3 – Starta hello Group Policy management console tooadminister Grupprincip
+Du kan använda hello konsolen Grupprinciphantering på hello domänanslutna virtuella tooadminister Grupprincip i hello hanterade domän.
 
 > [!NOTE]
-> Du måste vara medlem i gruppen AAD DC-administratörer för att administrera en Grupprincip på den hanterade domänen.
+> Du måste toobe medlem av hello ' AAD DC-administratörsgruppen tooadminister Grupprincip i hello hanterade domän.
 >
 >
 
-1. Klicka på startskärmen **Administrationsverktyg**. Du bör se den **Grupprinciphantering** konsolen har installerats på den virtuella datorn.
+1. Från startskärmen hello klickar du på **Administrationsverktyg**. Du bör se hello **Grupprinciphantering** konsolen har installerats på hello virtuell dator.
 
     ![Starta hantering av Grupprincip](./media/active-directory-domain-services-admin-guide/gp-management-installed.png)
-2. Klicka på **Grupprinciphantering** att starta konsolen Grupprinciphantering.
+2. Klicka på **Grupprinciphantering** toolaunch hello hanteringskonsolen för Grupprincip.
 
     ![Group Policy Console](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
 ## <a name="task-4---customize-built-in-group-policy-objects"></a>Uppgift 4 – anpassa inbyggda grupprincipobjekt
-Det finns två inbyggda grupprincipobjekt (GPO) – ett för behållarna AADDC-datorer och AADDC-användare i din hanterade domän. Du kan anpassa dessa grupprincipobjekt för att konfigurera en Grupprincip på den hanterade domänen.
+Det finns två inbyggda grupprincipobjekt (GPO) – ett för hello 'AADDC datorer' och 'AADDC användare-behållare i din hanterade domän. Du kan anpassa dessa grupprincipobjekt tooconfigure Grupprincip i hello hanterade domän.
 
-1. I den **Grupprinciphantering** konsolen, klicka på och expandera den **skog: contoso100.com** och **domäner** noder för att se grupprinciper för din hanterade domän.
+1. I hello **Grupprinciphantering** klickar du på tooexpand hello **skog: contoso100.com** och **domäner** noder toosee hello grupprinciper för din hanterade domän.
 
     ![Inbyggda grupprincipobjekt](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
-2. Du kan anpassa dessa inbyggda grupprincipobjekt om du vill konfigurera grupprinciper för din hanterade domän. Högerklicka på Grupprincipobjektet och klicka på **redigera...**  att anpassa inbyggda Grupprincipobjektet. Verktyget Configuration Redigeraren för Grupprincip kan du anpassa Grupprincipobjektet.
+2. Du kan anpassa dessa inbyggda grupprincipobjekt tooconfigure grupprinciper på din hanterade domän. Högerklicka på hello Grupprincipobjektet och klicka på **redigera...**  toocustomize hello inbyggda GPO. hello Redigeraren för konfiguration av verktyget kan du toocustomize hello grupprincipobjekt.
 
     ![Redigera inbyggda GPO](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
-3. Nu kan du använda den **Redigeraren för Grupprinciphantering** konsolen för att redigera inbyggda Grupprincipobjektet. Till exempel visar följande skärmbild hur du anpassar inbyggda AADDC-datorer Grupprincipobjektet.
+3. Du kan nu använda hello **Redigeraren för Grupprinciphantering** konsolen tooedit hello inbyggda GPO. Till exempel visar hello följande skärmbild som hur toocustomize hello inbyggda AADDC-datorer grupprincipobjekt.
 
     ![Anpassa GPO](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
 ## <a name="task-5---create-a-custom-group-policy-object-gpo"></a>Uppgift 5 – skapa en anpassad grupp grupprincipobjektet (GPO)
-Du kan skapa eller importera dina egna anpassade grupprincipobjekt. Du kan också länka anpassade grupprincipobjekt till en anpassad Organisationsenhet som du har skapat i din hanterade domän. Mer information om hur du skapar anpassade organisationsenheter finns [skapa en anpassad Organisationsenhet på en hanterad domän](active-directory-ds-admin-guide-create-ou.md).
+Du kan skapa eller importera dina egna anpassade grupprincipobjekt. Du kan också länka anpassade grupprincipobjekt tooa anpassad Organisationsenhet som du har skapat i din hanterade domän. Mer information om hur du skapar anpassade organisationsenheter finns [skapa en anpassad Organisationsenhet på en hanterad domän](active-directory-ds-admin-guide-create-ou.md).
 
 > [!NOTE]
-> Du måste vara medlem i gruppen AAD DC-administratörer för att administrera en Grupprincip på den hanterade domänen.
+> Du måste toobe medlem av hello ' AAD DC-administratörsgruppen tooadminister Grupprincip i hello hanterade domän.
 >
 >
 
-1. I den **Grupprinciphantering** konsolen, klickar du på din egen organisationsenhet (OU). Högerklicka på OU: N och klickar på **skapa ett grupprincipobjekt i den här domänen och länka det här...** .
+1. I hello **Grupprinciphantering** klickar du på tooselect din egen organisationsenhet (OU). Högerklicka på hello Organisationsenheten och på **skapa ett grupprincipobjekt i den här domänen och länka det här...** .
 
     ![Skapa en anpassad grupprincipobjekt](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
-2. Ange ett namn för det nya Grupprincipobjektet och klickar på **OK**.
+2. Ange ett namn för hello nya Grupprincipobjektet och klicka på **OK**.
 
     ![Ange ett namn för GPO](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
-3. Ett nytt grupprincipobjekt skapas och länkade till din egen Organisationsenhet. Högerklicka på Grupprincipobjektet och klicka på **redigera...**  på menyn.
+3. Ett nytt grupprincipobjekt har skapats och länkats tooyour anpassad Organisationsenhet. Högerklicka på hello Grupprincipobjektet och klicka på **redigera...**  hello-menyn.
 
     ![Nyligen skapade GPO](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
-4. Du kan anpassa den nyligen skapade GPO med hjälp av den **Redigeraren för Grupprinciphantering**.
+4. Du kan anpassa hello nyskapad grupprincipobjekt med hello **Redigeraren för Grupprinciphantering**.
 
     ![Anpassa nytt GPO](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
 
@@ -123,6 +123,6 @@ Mer information om hur du använder [konsolen Grupprinciphantering](https://tech
 
 ## <a name="related-content"></a>Relaterat innehåll
 * [Azure AD Domain Services - komma igång-guide](active-directory-ds-getting-started.md)
-* [Anslut en virtuell dator med Windows Server till en Azure AD Domain Services-hanterad domän](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Ansluta till en Windows Server virtuella tooan Azure AD Domain Services-hanterad domän](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Administrera en Azure AD Domain Services-hanterad domän](active-directory-ds-admin-guide-administer-domain.md)
 * [Konsolen Grupprinciphantering](https://technet.microsoft.com/library/cc753298.aspx)

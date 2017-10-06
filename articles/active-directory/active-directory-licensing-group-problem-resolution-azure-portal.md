@@ -1,6 +1,6 @@
 ---
-title: "Lösa problem med en licens för en grupp i Azure Active Directory | Microsoft Docs"
-description: "Hur du identifiera och lösa problem med licens tilldelning när du använder Azure Active Directory gruppbaserade licensiering"
+title: "aaaResolve licens problem för en grupp i Azure Active Directory | Microsoft Docs"
+description: "Hur tooidentify och Lös licens tilldelning problem när du använder Azure Active Directory gruppbaserade licensiering"
 services: active-directory
 keywords: Azure AD-licensiering
 documentationcenter: 
@@ -16,120 +16,120 @@ ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfa951a897c9b383072c0d29c9a4266c163fe753
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ec9c74214a9e246f21fcf767b0bbd586ae702445
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifiera och lösa problem med licensen tilldelning för en grupp i Azure Active Directory
 
-Gruppbaserade licensiering i Azure Active Directory (AD Azure) introducerar konceptet för användare i en licensiering feltillstånd. I den här artikeln förklarar vi skälen varför användare kan hamna i det här tillståndet.
+Gruppbaserade licensiering i Azure Active Directory (AD Azure) introducerar hello begreppet användare i en licensiering feltillstånd. I den här artikeln förklarar vi hello skäl varför användare kan hamna i det här tillståndet.
 
-När du tilldelar licenser direkt till enskilda användare, utan att använda gruppbaserade licensiering kan tilldelningens misslyckas. Till exempel när du kör PowerShell-cmdleten `Set-MsolUserLicense` för en användare cmdlet kan misslyckas av flera skäl som är relaterade till affärslogik. Det kan till exempel finnas ett otillräckligt antal licenser eller en konflikt mellan två serviceplaner som inte kan tilldelas på samma gång. Problemet rapporteras omedelbart tillbaka till dig.
+När du tilldelar licenser direkt tooindividual användare, utan att använda gruppbaserade licensiering misslyckas hello tilldelningen. Till exempel när du kör PowerShell-cmdlet för hello `Set-MsolUserLicense` för en användare hello cmdlet kan misslyckas av flera skäl som är relaterade toobusiness logik. Till exempel det kanske inte tillräckligt många licenser eller en konflikt mellan två serviceplaner som inte kan tilldelas på hello samma tid. hello problemet omedelbart rapporteras tillbaka tooyou.
 
-När du använder gruppbaserade licensiering, samma fel inträffar, men de sker i bakgrunden när Azure AD-tjänsten är tilldela licenser. Därför går inte att felen meddelas du omedelbart. I stället de registreras i användarobjektet och sedan rapporteras via administrativa portal. Observera att den ursprungliga avsikten att licensiera användaren aldrig går förlorade, men den registreras i ett feltillstånd för framtida undersökningar och upplösning.
+När du använder gruppbaserade licensiering, hello samma fel inträffar, men de inträffa i bakgrunden hello när hello Azure AD-tjänsten tilldela licenser. Därför hello fel får inte vara meddelas tooyou omedelbart. I stället de noterad hello användarobjektet och sedan rapporteras via hello administrativa portal. Observera att hello ursprungliga avsiktshantering toolicense hello användaren aldrig går förlorade, men den registreras i ett feltillstånd för framtida undersökningar och upplösning.
 
-## <a name="how-to-find-license-assignment-errors"></a>Så här hittar du licens Tilldelningsfel
+## <a name="how-toofind-license-assignment-errors"></a>Hur toofind licens Tilldelningsfel
 
-1. Öppna bladet för gruppen för att söka efter användare i ett feltillstånd i en specifik grupp. Under **licenser**, kommer det att ett meddelande visas om det finns några användare i ett feltillstånd.
+1. toofind användare i ett feltillstånd i en specifik grupp, öppna hello bladet för hello grupp. Under **licenser**, kommer det att ett meddelande visas om det finns några användare i ett feltillstånd.
 
 ![Gruppen felmeddelanden](media/active-directory-licensing-group-problem-resolution-azure-portal/group-error-notification.png)
 
-2. Klicka på meddelandet för att öppna en lista över alla användare som påverkas. Du kan klicka på varje användare individuellt för att se mer information.
+2. Klicka på hello meddelande tooopen en lista över alla användare som påverkas. Du kan klicka på varje användare individuellt toosee mer information.
 
 ![Gruppen, lista över användare i feltillstånd](media/active-directory-licensing-group-problem-resolution-azure-portal/list-of-users-with-errors.png)
 
-3. Söker efter alla grupper som innehåller minst ett fel på den **Azure Active Directory** bladet välj **licenser** och sedan **översikt**. En info visas när vissa grupper kräver din uppmärksamhet.
+3. toofind alla grupper som innehåller minst ett fel på hello **Azure Active Directory** bladet välj **licenser** och sedan **översikt**. En info visas när vissa grupper kräver din uppmärksamhet.
 
 ![Översikt, information om grupper i feltillstånd](media/active-directory-licensing-group-problem-resolution-azure-portal/group-errors-widget.png)
 
-4. Klicka på kryssrutan för att visa en lista över alla grupper med fel. Du kan klicka på varje grupp för mer information.
+4. Klicka på hello rutan toosee en lista över alla grupper med fel. Du kan klicka på varje grupp för mer information.
 
 ![Översikt över grupper med fel](media/active-directory-licensing-group-problem-resolution-azure-portal/list-of-groups-with-errors.png)
 
 
-Nedan följer en beskrivning av varje potentiella problem och hur man löser problemet.
+Nedan följer en beskrivning av varje potentiella problem och hello sätt tooresolve den.
 
 ## <a name="not-enough-licenses"></a>Det finns inte tillräckligt med licenser
 
-**Problem:** det inte finns tillräckligt många tillgängliga licenser för en av de produkter som anges i gruppen. Du måste köpa fler licenser för produkten eller frigör oanvända licenser från andra användare eller grupper.
+**Problem:** det inte finns tillräckligt många tillgängliga licenser för en av hello produkter som anges i hello grupp. Du behöver tooeither köpa flera licenser för hello produkt eller frigör oanvända licenser från andra användare eller grupper.
 
-Hur många licenser är tillgängliga, gå till **Azure Active Directory** > **licenser** > **alla produkter**.
+toosee hur många licenser är tillgängliga finns för**Azure Active Directory** > **licenser** > **alla produkter**.
 
-Om du vill se vilka användare och grupper som förbrukar licenser, klickar du på en produkt. Under **licensierade användare**, visas alla användare som har haft användarlicenser direkt eller via en eller flera grupper. Under **licensierad grupper**, visas alla grupper som har tilldelats produkten.
+toosee vilka användare och grupper som förbrukar licenser, klicka på en produkt. Under **licensierade användare**, visas alla användare som har haft användarlicenser direkt eller via en eller flera grupper. Under **licensierad grupper**, visas alla grupper som har tilldelats produkten.
 
 **PowerShell:** PowerShell-cmdlets rapportera felet som _CountViolation_.
 
 ## <a name="conflicting-service-plans"></a>Motstridiga service-planer
 
-**Problem:** en av de produkter som har angetts i gruppen innehåller en serviceplan som står i konflikt med en annan service-plan som är redan tilldelad till användare via en annan produkt. Vissa serviceplaner konfigureras så att de inte kan tilldelas till samma användare som en annan relaterade service-plan.
+**Problem:** en hello produkter som anges i hello-grupp som innehåller en serviceplan som står i konflikt med en annan service-plan som redan är tilldelade toohello användaren via en annan produkt. Vissa serviceplaner konfigureras så att de inte kan tilldelas toohello samma användare som en annan relaterade service-plan.
 
-Överväg följande exempel. En användare har en licens för Office 365 Enterprise **E1** tilldelats direkt, med alla planer aktiveras. Användaren har lagts till en grupp som har Office 365 Enterprise **E3** produkten som är kopplade till den. Den här produkten innehåller serviceplaner som inte får överlappa för energischeman som ingår i E1, så licenstilldelning gruppen misslyckas med fel ”i konflikt serviceplaner”. I det här exemplet är i konflikt service-planer
+Överväg att hello följande exempel. En användare har en licens för Office 365 Enterprise **E1** tilldelats direkt, med alla hello planer aktiveras. hello användaren har lagts tooa grupp som har hello Office 365 Enterprise **E3** produkten som tilldelats tooit. Den här produkten innehåller serviceplaner som inte överlappar med hello planer som ingår i E1, så hello grupp licenstilldelning misslyckas med hello ”i konflikt serviceplaner” fel. I det här exemplet är hello motstridiga service-planer
 
 -   SharePoint Online (planera 2) i konflikt med SharePoint Online (planera 1).
 -   Exchange Online (planera 2) i konflikt med Exchange Online (planera 1).
 
-Du kan lösa konflikten måste du inaktivera de två planer antingen på E1 licensen som är direkt kopplade till användaren. Eller så måste du ändra licenstilldelningen för hela gruppen och inaktivera planer i E3-licens. Alternativt kanske du vill ta bort E1-licens från användaren om det är redundant i samband med E3-licens.
+toosolve konflikten, behöver du toodisable dessa två planer antingen på hello E1 licens som direkt tilldelade toohello användare. Eller så du behöver toomodify hello hela gruppen licenstilldelning och inaktivera hello planer i hello E3-licens. Du kan också bestämma tooremove hello E1 licens från hello användaren om det är redundant hello gäller hello E3 licens.
 
-Beslut om hur du löser motstridiga produktlicenser alltid tillhör administratören. Azure AD lösa inte automatiskt konflikter licens.
+hello beslut om hur tooresolve motstridiga produktlicenser alltid tillhör toohello administratör. Azure AD lösa inte automatiskt konflikter licens.
 
 **PowerShell:** PowerShell-cmdlets rapportera felet som _MutuallyExclusiveViolation_.
 
 ## <a name="other-products-depend-on-this-license"></a>Andra produkter är beroende av den här licensen
 
-**Problem:** en av de produkter som anges i gruppen innehåller en serviceplan som måste aktiveras för en annan service-plan i en annan produkt ska fungera. Det här felet uppstår när Azure AD som försöker ta bort den underliggande service-planen. Detta kan inträffa på grund av användaren tas bort från gruppen.
+**Problem:** en hello produkter som anges i hello-grupp som innehåller en serviceplan som måste aktiveras för en annan service-plan i en annan produkt ska fungera. Det här felet uppstår när Azure AD försöker tooremove hello underliggande service-plan. Detta kan inträffa på grund av hello användaren tas bort från hello grupp.
 
-För att lösa problemet måste du se till att planen krävs fortfarande är tilldelad till användare via någon annan metod eller att de beroende tjänsterna är inaktiverat för dessa användare. När du har gjort som du ska ta bort gruppen licens från dessa användare.
+toosolve det här problemet behöver du toomake att planen hello krävs fortfarande är tilldelad toousers via någon annan metod, eller att hello beroende tjänster är inaktiverat för dessa användare. När du har gjort som du ska ta bort hello gruppen licens från dessa användare.
 
 **PowerShell:** PowerShell-cmdlets rapportera felet som _DependencyViolation_.
 
 ## <a name="usage-location-isnt-allowed"></a>Användningsplats är inte tillåten
 
-**Problem:** vissa Microsoft-tjänster är inte tillgängliga på alla platser på grund av lokala lagar och förordningar. Du måste ange egenskapen ”användningsplats” för användaren innan du kan tilldela en användare en licens. Du kan göra detta under den **användare** > **profil** > **inställningar** avsnitt i Azure-portalen.
+**Problem:** vissa Microsoft-tjänster är inte tillgängliga på alla platser på grund av lokala lagar och förordningar. Innan du kan tilldela en licens tooa användare ha toospecify hello ”användning” Platsegenskapen för hello användare. Du kan göra detta under hello **användare** > **profil** > **inställningar** avsnitt i hello Azure-portalen.
 
-När Azure AD försöker tilldela en licens för grupp till en användare vars användningsplats inte stöds, misslyckas och registrera det här felet på användaren.
+Azure AD försöker tooassign grupp licens tooa användare vars användningsplats inte stöds, misslyckas och registrera det här felet på hello användare.
 
-Om du vill lösa problemet genom att ta bort användare från platser som inte stöds från gruppen licensierade. Alternativt, om de aktuella värdena för användning plats inte representerar den faktiska platsen, du kan ändra dem så att licenserna som tilldelas korrekt nästa gång (om den nya platsen stöds).
+toosolve problemet, ta bort användare från platser som inte stöds från hello licensierad grupp. Du kan också om hello aktuella plats värden inte representerar hello faktiska Användarplats, kan du ändra dem så att hello licenser tilldelas korrekt nästa gång (om hello ny plats stöds).
 
 **PowerShell:** PowerShell-cmdlets rapportera felet som _ProhibitedInUsageLocationViolation_.
 
 > [!NOTE]
-> När Azure AD tilldelar grupp licenser, ärver alla användare utan en användningsplats anges platsen för katalogen. Vi rekommenderar att administratörer korrekt användning plats värden på användare innan du använder gruppbaserade licensiering för att följa lokala lagar och förordningar.
+> När Azure AD tilldelar grupp licenser, ärver alla användare utan en användningsplats anges hello platsen för hello katalog. Vi rekommenderar att administratörer hello korrekt användning plats värden på användare innan du använder gruppbaserade licensiering toocomply med lokala lagar och förordningar.
 
 ## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>Vad händer när det finns fler än en produktlicens på en grupp?
 
-Du kan tilldela fler än en produktlicensen till en grupp. Exempelvis kan du tilldela en grupp för att enkelt aktivera alla inkluderade tjänster för användare med Office 365 Enterprise E3 och Enterprise Mobility + Security.
+Du kan tilldela fler än en produkt tooa licensgrupp. Exempelvis kan du tilldela Office 365 Enterprise E3 och Enterprise Mobility + Security tooa grupp tooeasily aktivera alla inkluderade tjänster för användare.
 
-Azure AD försöker tilldela alla licenser som anges i gruppen för varje användare. Om Azure AD kan inte tilldelas en av produkterna på grund av logiken affärsproblem (till exempel om det inte finns tillräckligt många licenser för alla eller om det är i konflikt med andra tjänster som är aktiverade på användaren), den antingen inte tilldela licenser i gruppen.
+Azure AD försöker tooassign alla licenser som anges i hello grupp tooeach användare. Om Azure AD kan inte tilldela någon av hello produkter på grund av logiken affärsproblem (till exempel om det inte finns tillräckligt många licenser för alla eller om det finns konflikter med andra tjänster som är aktiverade på hello användare), den kommer inte att tilldela hello andra licenser i hello grupp antingen.
 
-Du kommer att kunna se vilka användare som inte kunnat tilldelas misslyckades och kontrollera vilka produkter som har påverkats av detta.
+Du kommer att kunna toosee hello användare misslyckades tooget tilldelade misslyckades och kontrollera vilka produkter som har påverkats av detta.
 
-## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>Licenstilldelning misslyckas utan meddelanden för en användare på grund av dubbla proxyadresser i Exchange Online
+## <a name="license-assignment-fails-silently-for-a-user-due-tooduplicate-proxy-addresses-in-exchange-online"></a>Licenstilldelning misslyckas tyst för en användare på grund av tooduplicate proxyadresser i Exchange Online
 
-Om du använder Exchange Online kanske vissa användare i din klientorganisation är felaktigt konfigurerade med samma värde för proxyadress. När gruppbaserade licensiering försöker tilldela en licens till användaren, den misslyckas och kommer inte att registrera ett fel (till skillnad från i andra fall i fel ovan) – detta är en begränsning i av förhandsversionen av den här funktionen och vi kommer att åtgärda detta innan *allmän tillgänglighet*.
+Om du använder Exchange Online, vissa användare i din klient kanske är felaktigt konfigurerad med hello samma värde för proxy-adress. När gruppbaserade licensiering försöker tooassign licens-toosuch en användare, den misslyckas och kommer inte att registrera ett fel (till skillnad från i hello andra fel fall som beskrivs ovan) – detta är en begränsning i hello förhandsversionen av den här funktionen och vi tooaddress det innan  *Allmän tillgänglighet*.
 
 > [!TIP]
 > Om du märker att vissa användare fick inte en licens och det finns inget fel registreras på de användarna du först kontrollera om de har dubbla proxyadress.
-> Detta kan göras genom att köra följande PowerShell-cmdlet mot Exchange Online:
+> Detta kan göras genom att köra följande PowerShell-cmdleten mot Exchange Online hello:
 ```
 Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 ```
-> [Den här artikeln](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online) innehåller mer information om det här problemet, inklusive information om [hur du ansluter till Exchange Online med fjärr-PowerShell](https://technet.microsoft.com/library/jj984289.aspx).
+> [Den här artikeln](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online) innehåller mer information om det här problemet, inklusive information om [hur tooconnect tooExchange Online med fjärr-PowerShell](https://technet.microsoft.com/library/jj984289.aspx).
 
-När proxy lösa eventuella problem har lösts för de berörda användarna, se till att tvinga licens bearbetning på gruppen för att kontrollera licenser kan nu användas igen.
+När proxy lösa eventuella problem har lösts för hello påverkade användare, kontrollerar du att tooforce licens bearbetning på hello grupp toomake att licenser kan nu användas igen.
 
-## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>Hur du för att tvinga licens bearbetning i en grupp för att åtgärda fel?
+## <a name="how-do-you-force-license-processing-in-a-group-tooresolve-errors"></a>Hur du för att tvinga licens som bearbetas i en grupp tooresolve fel?
 
-Beroende på vilka steg som du har gjort för att lösa problem kan det vara nödvändigt att utlösa bearbetning av en grupp för att uppdatera användartillstånd manuellt.
+Beroende på hur du har gjort tooresolve fel, kan det vara nödvändigt toomanually utlösaren bearbetning av en grupp tooupdate hello användarens tillstånd.
 
-Till exempel om du har frigjort vissa licenser genom att ta bort direkt licenstilldelning från användare måste starta bearbetning av grupper som tidigare inte har fullständigt licens alla användare medlemmar. För att göra det, hitta bladet, öppna **licenser**, och välj den **Ombearbeta** i verktygsfältet.
+Till exempel om du har frigjort vissa licenser genom att ta bort direkt licenstilldelning från användare behöver tootrigger bearbetningen av grupper som tidigare inte toofully licens alla användare medlemmar. toodo som hitta hello blad, öppna **licenser**, och välj hello **Ombearbeta** knapp i toolbar hello.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om andra scenarier för hantering av programvarulicenser genom grupper finns i följande avsnitt:
+toolearn mer information om andra scenarier för hantering av programvarulicenser genom grupper, finns följande hello:
 
-* [Tilldela licenser till en grupp i Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md)
+* [Tilldela licenser tooa grupp i Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md)
 * [Vad är gruppbaserade licensiering i Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)
-* [Hur du migrerar enskilda licensierade användare till gruppbaserade licensiering i Azure Active Directory](active-directory-licensing-group-migration-azure-portal.md)
+* [Hur toomigrate individuella licensierade användare toogroup-baserade licensiering i Azure Active Directory](active-directory-licensing-group-migration-azure-portal.md)
 * [Azure Active Directory gruppbaserade licensiering fler scenarier](active-directory-licensing-group-advanced.md)

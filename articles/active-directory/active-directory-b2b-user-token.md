@@ -1,5 +1,5 @@
 ---
-title: "Förstå användartoken i Azure AD B2B-samarbete | Microsoft Docs"
+title: "aaaUnderstand användartoken i Azure AD B2B-samarbete | Microsoft Docs"
 description: "Användaren tokenreferens för Azure Active Directory B2B-samarbete"
 services: active-directory
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/25/2017
 ms.author: sasubram
-ms.openlocfilehash: 57b170539513953bd6a01ab4dd362a65cf905496
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 968af1c8d1ab6f4b3f50a82f6c998da3955ac364
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Förstå användartoken i Azure AD B2B-samarbete
 
-Om du vill veta hur token som ser ut för en B2B-samarbete användare kan ägar-token information och token innehåll för ett Azure Active Directory (AD Azure) Gäst- och Microsoft-konto gäst i resurs-klient (för tenantid 04dcc6ab-388a-4559-b527-fbec656300ea). Om du vill visa innehållet i JSON-Webbtoken (JWT), Använd [https://jwt.io/](https://jwt.io/) eller [http://calebb.net](http://calebb.net/).
+Om du vill tooknow vilka hello-token som ser ut som en B2B-samarbete användare följer hello ägar-token information och token innehåll för ett Azure Active Directory (AD Azure) Gäst- och Microsoft-konto gäst i hello resurs klient (för klient-ID 04dcc6ab-388a-4559-b527-fbec656300ea). toosee hello JSON-Webbtoken (JWT) innehåll, Använd [https://jwt.io/](https://jwt.io/) eller [http://calebb.net](http://calebb.net/).
 
 ## <a name="azure-ad-guest-token"></a>Azure AD-gäst-token
 ```
@@ -42,7 +42,7 @@ Läs andra artiklar om Azure AD B2B-samarbete:
 
 * [Vad är Azure AD B2B-samarbete?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Egenskaper för användare av B2B-samarbete](active-directory-b2b-user-properties.md)
-* [Lägger till en B2B-samarbete användare till en roll](active-directory-b2b-add-guest-to-role.md)
+* [Lägga till en B2B-samarbete tooa användarroll](active-directory-b2b-add-guest-to-role.md)
 * [Delegera B2B-samarbete inbjudningar](active-directory-b2b-delegate-invitations.md)
 * [Dynamiska grupper och B2B-samarbete](active-directory-b2b-dynamic-groups.md)
 * [B2B-samarbete kod och PowerShell-exempel](active-directory-b2b-code-samples.md)

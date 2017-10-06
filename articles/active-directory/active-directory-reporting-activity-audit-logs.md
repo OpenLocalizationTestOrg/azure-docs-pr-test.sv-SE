@@ -1,6 +1,6 @@
 ---
-title: Granska aktivitetsrapporter i Azure Active Directory-portalen | Microsoft Docs
-description: Introduktion till granskning av aktivitetsrapporter i Azure Active Directory-portalen
+title: aaaAudit aktivitetsrapporter hello Azure Active Directory-portalen | Microsoft Docs
+description: Introduktion toohello granska aktivitetsrapporter hello Azure Active Directory-portalen
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,66 +15,66 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f2d0332d815c82d7d47625e020de2e9c5099deeb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1567673f5030fc707b017c069f2ba7587962e5cb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Granska aktivitetsrapporter i Azure Active Directory-portalen 
+# <a name="audit-activity-reports-in-hello-azure-active-directory-portal"></a>Granska aktivitetsrapporter hello Azure Active Directory-portalen 
 
-Med rapportering i Azure Active Directory (Azure AD) får du all information du behöver för att ta reda på hur din miljö klarar sig.
+Du kan hämta hello information du behöver toodetermine hur din miljö fungerar med rapportering i Azure Active Directory (AD Azure).
 
-Rapporteringsarkitekturen i Azure AD består av följande komponenter:
+Hej Rapporteringsarkitektur i Azure AD består av hello följande komponenter:
 
 - **Aktivitet** 
-    - **Inloggningsaktiviteter** – Information om användningen av hanterade program och användares inloggningsaktiviteter
+    - **Logga in aktiviteter** – Information om hello användning av hanterade program och användaren loggar in aktiviteter
     - **Granskningsloggar** – Granska information om systemaktivitet för användare och grupphantering, dina hanterade program och katalogaktiviteter.
 - **Säkerhet** 
-    - **Riskfyllda inloggningar** – En riskfylld inloggning indikerar ett potentiellt inloggningsförsök av någon annan än användarkontots ägare. Mer information finns i avsnittet om riskfyllda inloggningar.
+    - **Riskfyllda inloggningar** -riskfyllda loggar in är en indikator för en inloggning försök som kan ha utförts av någon som inte är hello legitima ägare för ett användarkonto. Mer information finns i avsnittet om riskfyllda inloggningar.
     - **Användare som har flaggats för risk** – En användare som har flaggats för risk indikerar att ett användarkonto kan ha komprometterats. Mer information finns i avsnittet om användare som har flaggats för risk.
 
-I det här ämnet får du en översikt över granskningsaktiviteterna.
+Det här avsnittet ger en översikt över hello audit aktiviteter.
  
-## <a name="who-can-access-the-data"></a>Vem kan komma åt dessa data?
-* Användare i rollen säkerhetsadministratör eller säkerhetsläsare
+## <a name="who-can-access-hello-data"></a>Vem som kan komma åt hello data?
+* Användare med hello säkerhet Admin eller säkerhet Reader rollen
 * Globala administratörer
 * Enskilda användare (icke-administratörer) kan se sina egna aktiviteter
 
 
 ## <a name="audit-logs"></a>Granskningsloggar
 
-Granskningsloggarna i Azure Active Directory ger dokumentation över systemaktiviteter för kontroll av överensstämmelse.  
-Din startpunkt för alla granskningsdata är **Granskningsloggar** i avsnittet **Aktivitet** i **Azure Active Directory**.
+hello granskningsloggar i Azure Active Directory innehåller poster för systemaktiviteter för kompatibilitet.  
+Din första posten punkt tooall granska data är **granskningsloggar** i hello **aktiviteten** avsnitt i **Azure Active Directory**.
 
 ![Granskningsloggar](./media/active-directory-reporting-activity-audit-logs/61.png "Granskningsloggar")
 
 En granskningslogg har en standardlistvy som visar:
 
-- datum och tid för förekomsten
-- initieraren/aktören (*vem*) för en aktivitet 
-- aktiviteten (*vad*) 
-- målet
+- hello datum och tid för hello förekomst
+- Hej initieraren / aktören (*som*) för en aktivitet 
+- Hej aktivitet (*vad*) 
+- hello mål
 
 ![Granskningsloggar](./media/active-directory-reporting-activity-audit-logs/18.png "Granskningsloggar")
 
-Du kan anpassa listvyn genom att klicka på **Kolumner** i verktygsfältet.
+Du kan anpassa hello listvyn genom att klicka på **kolumner** i hello-verktygsfältet.
 
 ![Granskningsloggar](./media/active-directory-reporting-activity-audit-logs/19.png "Granskningsloggar")
 
-På så sätt kan du visa ytterligare fält eller ta bort fält som redan visas.
+Detta gör att du toodisplay ytterligare fält eller ta bort fält som redan visas.
 
 ![Granskningsloggar](./media/active-directory-reporting-activity-audit-logs/21.png "Granskningsloggar")
 
 
-När du klickar på ett objekt i listvyn visas all tillgänglig information om det.
+Genom att klicka på ett objekt i listvyn hello, hämta alla information om den.
 
 ![Granskningsloggar](./media/active-directory-reporting-activity-audit-logs/22.png "Granskningsloggar")
 
 
 ## <a name="filtering-audit-logs"></a>Filtrera granskningsloggar
 
-Om du vill begränsa de data som rapporteras till en nivå som passar dig kan du filtrera granskningsdata med hjälp av följande fält:
+toonarrow ned hello rapporterade data tooa nivå som fungerar för dig, kan du filtrera hello granskningsdata med hello följande fält:
 
 - Datumintervall
 - Initierad av (aktör)
@@ -85,7 +85,7 @@ Om du vill begränsa de data som rapporteras till en nivå som passar dig kan du
 ![Granskningsloggar](./media/active-directory-reporting-activity-audit-logs/23.png "Granskningsloggar")
 
 
-Med filtret för **datumintervall** kan du definiera en tidsram för de data som returneras.  
+Hej **intervallet** filter aktiverar tooyou toodefine en tidsram för hello returnerade data.  
 Möjliga värden:
 
 - 1 månad
@@ -95,9 +95,9 @@ Möjliga värden:
 
 När du väljer en anpassad tidsram kan du konfigurera en starttid och en sluttid.
 
-Med filtret **initierad av** kan du definiera en aktörs namn eller dess UPN (Universal Principal Name).
+Hej **initieras av** filter kan du toodefine skådespelare, namn eller dess universal huvudnamn (UPN).
 
-Med filtret **kategori** kan du välja något av följande filter:
+Hej **kategori** filter kan du tooselect något av följande filter hello:
 
 - Alla
 - Grundläggande kategori
@@ -110,7 +110,7 @@ Med filtret **kategori** kan du välja något av följande filter:
 - Identity Protection
 - B2C
 
-Med filtret för **aktivitsresurstyp** kan du välja något av följande filter:
+Hej **aktivitet resurstypen** filter kan du tooselect en av följande hello filtrerar:
 
 - Alla 
 - Grupp
@@ -121,29 +121,29 @@ Med filtret för **aktivitsresurstyp** kan du välja något av följande filter:
 - Enhet
 - Annat
 
-När du väljer **Grupp** som **aktivitetsresurstyp** får du tillgång till ytterligare en filterkategori som du kan använda för att även ange en **källa**:
+När du väljer **grupp** som **aktivitet resurstypen**, får du en ytterligare filterkategori som du kan använda tooalso ger en **källa**:
 
 - Azure AD
 - O365
 
 
-Filtret **aktivitet** baseras på kategorin och den aktivitetsresurstyp som du väljer. Du kan välja en specifik aktivitet som du vill visa eller välja alla. 
+Hej **aktiviteten** filter baseras på hello kategori och aktivitet resurs typ du väljer. Du kan välja en specifik aktivitet som du vill toosee eller Välj alla. 
 
-Du kan hämta listan över alla granskningsaktiviteter med Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, där $tenantdomain = ditt domännamn eller refererar till artikeln [Granska rapporthändelser](active-directory-reporting-audit-events.md).
+Du får hello lista över alla gransknings-och aktiviteter med hjälp av hello Graph API https://graph.windows.net/$ tenantdomain/aktiviteter/auditActivityTypes? api-version = beta, där $tenantdomain = ditt domännamn eller referera toohello artikel [granska rapporten händelser](active-directory-reporting-audit-events.md).
 
 
 ## <a name="audit-logs-shortcuts"></a>Genvägar till granskningsloggar
 
-Förutom **Azure Active Directory** finns det ytterligare två ställen på Azure Portal där du kan granska data:
+Dessutom för**Azure Active Directory**, hello Azure-portalen ger dig två ytterligare startpunkter tooaudit data:
 
 - Användare och grupper
 - Företagsprogram
 
 ### <a name="users-and-groups-audit-logs"></a>Granskningsloggar för användare och grupper
 
-Med användar- och gruppbaserade granskningsrapporter kan du få svar på frågor som:
+Du kan få svar tooquestions som med användar- och gruppbaserade granskningsrapporter:
 
-- Vilka typer av uppdateringar har getts användare?
+- Vilka typer av uppdateringar har tillämpade hello användare?
 
 - Hur många användare ändrades?
 
@@ -151,38 +151,38 @@ Med användar- och gruppbaserade granskningsrapporter kan du få svar på frågo
 
 - Vad har en administratör gjort i en katalog?
 
-- Vilka grupper har lagts till?
+- Vad är hello-grupper som har lagts till?
 
 - Finns det grupper med ändringar i medlemskap?
 
-- Har ägare av en grupp ändrats?
+- Har ändrats hello ägare av gruppen?
 
-- Vilka licenser har tilldelats en grupp eller en användare?
+- Vilka licenser har tilldelats tooa grupp eller en användare?
 
-Om du bara vill kontrollera granskningsdata relaterade till användare och grupper finns det en filtrerad vy under **Granskningsloggar** i avsnittet **Aktivitet** i **Användare och grupper**. I det här området är **Användare och grupper** den förvalda **aktivitetsresurstypen**.
+Om du bara vill tooreview granska data som är relaterade toousers och grupper du kan hitta en filtrerad vy under **granskningsloggar** i hello **aktiviteten** avsnitt i hello **användare och grupper**. I det här området är **Användare och grupper** den förvalda **aktivitetsresurstypen**.
 
 ![Granskningsloggar](./media/active-directory-reporting-activity-audit-logs/93.png "Granskningsloggar")
 
 ### <a name="enterprise-applications-audit-logs"></a>Granskningsloggar för företagsprogram
 
-Med programbaserade granskningsrapporter kan du få svar på frågor som:
+Granska rapporter med programbaserade, du får svar tooquestions som:
 
-* Vilka program har lagts till eller uppdaterats?
-* Vilka program har tagits bort?
+* Vad är hello-program som har lagts till eller uppdaterats?
+* Vad är hello-program som har tagits bort?
 * Har tjänstprincipen för ett program ändrats?
-* Har namnen på program ändrats?
-* Vem gav tillstånd till ett program?
+* Har ändrats hello namnen på program?
+* Vem som gav medgivande tooan program?
 
-Om du bara vill kontrollera granskningsdata relaterade till dina program finns det en filtrerad vy under **Granskningsloggar** i avsnittet **Aktivitet** på bladet **Företagsprogram**. I det här området är **Företagsprogram** den förvalda **aktivitetsresurstypen**.
+Om du bara vill tooreview granska data som är relaterade tooyour program kan du hitta en filtrerad vy under **granskningsloggar** i hello **aktiviteten** avsnitt i hello **företagsprogram**  bladet. I det här området är **Företagsprogram** den förvalda **aktivitetsresurstypen**.
 
 ![Granskningsloggar](./media/active-directory-reporting-activity-audit-logs/134.png "Granskningsloggar")
 
-Du kan filtrera den här vyn ytterligare till bara **grupper** eller bara **användare**.
+Du kan filtrera den här vyn ytterligare ned toojust **grupper** eller bara **användare**.
 
 ![Granskningsloggar](./media/active-directory-reporting-activity-audit-logs/25.png "Granskningsloggar")
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-En översikt över rapportering finns i [Azure Active Directory-rapportering](active-directory-reporting-azure-portal.md).
+En översikt över rapportering finns i hello [Azure Active Directory reporting](active-directory-reporting-azure-portal.md).
 

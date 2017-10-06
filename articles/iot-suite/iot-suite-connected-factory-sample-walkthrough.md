@@ -1,6 +1,6 @@
 ---
-title: "Genomgång av ansluten fabrikslösning i Azure IoT Suite | Microsoft Docs"
-description: "En beskrivning av den förkonfigurerade lösningen Ansluten fabrik i Azure IoT och dess arkitektur."
+title: "aaaConnected factory Azure IoT Suite-lösningen genomgången | Microsoft Docs"
+description: "En beskrivning av hello Azure IoT förkonfigurerade lösningen ansluten fabriken och dess arkitektur."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,121 +15,121 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
-ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7fd55c51351659401349cfde91a20fce1045b4f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Genomgång av den förkonfigurerade lösningen Ansluten fabrik
 
-IoT Suites [förkonfigurerade lösning][lnk-preconfigured-solutions] är en implementering av en branschlösning från slutpunkt till slutpunkt som:
+Hej IoT Suite anslutna factory [förkonfigurerade lösningen] [ lnk-preconfigured-solutions] är en implementering av en slutpunkt till slutpunkt industriella lösning som:
 
-* Ansluter till både simulerade industriella enheter som kör OPC UA-servrar i simulerade fabriksproduktionsrader och äkta OPC UA-serverenheter. Mer information om OPC UA finns i [Vanliga frågor och svar om ansluten fabrik](iot-suite-faq-cf.md).
+* Ansluter tooboth simulerade industriella enheter som kör OPC UA servrar i simulerade factory produktionsrader och verkliga OPC UA server-enheter. Mer information om OPC UA finns hello [anslutna factory vanliga frågor och svar](iot-suite-faq-cf.md).
 * Visar KPI:er och OEE:er för drift för enheterna och produktionsraderna.
-* Visar hur ett molnbaserat program kan användas för att interagera med OPC UA-serversystem.
-* Gör att du kan ansluta dina egna OPC UA-serverenheter.
-* Gör att du kan bläddra och ändra OPC UA-serverdata.
-* Integreras med Azure-tjänsten Time Series Insights (TSI) för att tillhandahålla anpassade vyer av data från dina OPC UA-servrar.
+* Visar hur ett molnbaserade program kan använda toointeract med OPC UA serversystem.
+* Aktiverar du tooconnect egna OPC UA server-enheter.
+* Aktiverar toobrowse och ändra hello OPC UA serverdata.
+* Integreras med hello Azure tid serien insikter (TSD) tjänsten tooprovide anpassade datavyer hello från OPC UA-servrar.
 
-Du kan använda lösningen som startpunkt för en egen implementering och [anpassa][lnk-customize] den efter dina egna affärsbehov.
+Du kan använda hello lösning som en startpunkt för din egen implementering och [anpassa] [ lnk-customize] den toomeet egna specifika krav i företaget.
 
-Den här artikeln beskriver några av de viktigaste elementen i den anslutna fabrikslösningen så att du förstår hur den fungerar. Med den här kunskapen kan du sedan:
+Den här artikeln guidar dig igenom några av hello viktiga delar i hello anslutna factory lösning tooenable toounderstand hur det fungerar. Med den här kunskapen kan du sedan:
 
-* Felsöka problem i lösningen.
-* Planera hur lösningen kan anpassas för att uppfylla dina behov.
+* Felsöka problem i hello-lösning.
+* Planera hur toocustomize toohello lösning toomeet egna specifika krav.
 * Utforma en egen IoT-lösning som använder Azure-tjänster.
 
-Mer information finns i [Vanliga frågor och svar om ansluten fabrik](iot-suite-faq-cf.md).
+Mer information finns i hello [anslutna factory vanliga frågor och svar](iot-suite-faq-cf.md).
 
 ## <a name="logical-architecture"></a>Logisk arkitektur
 
-Följande diagram illustrerar de logiska komponenterna i den förkonfigurerade lösningen:
+följande diagram hello beskrivs hello logiska komponenter av hello förkonfigurerade lösningen:
 
 ![Logisk arkitektur för ansluten fabrik][connected-factory-logical]
 
 ## <a name="communication-patterns"></a>Kommunikationsmönster
 
-Lösningen använder [OPC UA Pub/Sub-specifikationen](https://opcfoundation.org/news/opc-foundation-news/opc-foundation-announces-support-of-publish-subscribe-for-opc-ua/) för att skicka OPC UA-telemetridata till IoT Hub i JSON-format. Lösningen använder [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) IoT Edge-modulen för detta ändamål.
+hello lösningen använder hello [OPC UA Pub/Sub-specifikationen](https://opcfoundation.org/news/opc-foundation-news/opc-foundation-announces-support-of-publish-subscribe-for-opc-ua/) toosend OPC UA telemetri data tooIoT hubb i JSON-format. hello lösningen använder hello [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) IoT kant-modul för detta ändamål.
 
-Lösningen har också en OPC UA-klient som är integrerad i ett webbprogram som kan upprätta anslutningar med lokala OPC UA-servrar. Klienten använder en [omvänd proxy](https://wikipedia.org/wiki/Reverse_proxy) och får hjälp från IoT Hub med att upprätta anslutningen utan att kräva öppna portar i den lokala brandväggen. Det här kommunikationsmönstret kallas [tjänstassisterad kommunikation](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/). Lösningen använder [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy/) IoT Edge-modulen för detta ändamål.
+hello-lösningen har också en OPC UA-klient som är integrerade i ett program som kan upprätta anslutningar med lokala OPC UA servrar. hello-klienten använder en [omvänd proxy](https://wikipedia.org/wiki/Reverse_proxy) och tar emot hjälp från IoT-hubb toomake hello anslutning utan att öppna portar i brandväggen för hello lokalt. Det här kommunikationsmönstret kallas [tjänstassisterad kommunikation](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/). hello lösningen använder hello [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy/) IoT kant-modul för detta ändamål.
 
 
 ## <a name="simulation"></a>Simulering
 
-De simulerade stationerna och de simulerade tillverkningsverkställningssystemen (MES) bildar en fabriksproduktionsrad. De simulerade enheterna och OPC Publisher-modulen baseras på [OPC UA .NET-standarden][lnk-OPC-UA-NET-Standard] som ges ut av OPC Foundation.
+Hej simulerade stationer och hello simulerade Tillverkningskörning system (MES) utgör en fabrik produktion rad. hello simulerade enheterna och hello OPC Publisher modulen baseras på hello [OPC UA .NET Standard] [ lnk-OPC-UA-NET-Standard] publicerats av hello OPC Foundation.
 
-OPC Proxy och OPC Publisher implementeras som moduler baserat på [Azure IoT Edge][lnk-Azure-IoT-Gateway]. Varje simulerad produktionsrad har en särskild gateway ansluten.
+hello OPC-Proxy och OPC utgivare implementeras som moduler baserat på [Azure IoT kant][lnk-Azure-IoT-Gateway]. Varje simulerad produktionsrad har en särskild gateway ansluten.
 
-Alla simuleringskomponenter körs i Docker-behållare som finns i en virtuell Azure Linux-dator. Simuleringen konfigureras för att köra åtta simulerade produktionsrader som standard.
+Alla simuleringskomponenter körs i Docker-behållare som finns i en virtuell Azure Linux-dator. hello simuleringen är konfigurerade toorun åtta simulerade produktionsrader som standard.
 
 ## <a name="simulated-production-line"></a>Simulerad produktionsrad
 
 En produktionsrad tillverkar delar. Den består av olika stationer: en sammansättningsstation, en teststation och en förpackningsstation.
 
-Simuleringen körs och uppdaterar data som exponeras via OPC UA-noderna. Alla simulerade produktionsradstationer samordnas av MES via OPC UA.
+hello simuleringen körs och uppdaterar hello data som exponeras via hello OPC UA noder. Alla simulerade produktion rad stationer styrd av hello MES via OPC UA.
 
 ## <a name="simulated-manufacturing-execution-system"></a>Simulerat körningssystem för tillverkning
 
-MES övervakar varje station i produktionsraden via OPC UA för att identifiera ändringar i stationens status. Den anropar OPC UA-metoder för att kontrollera stationerna och överför en produkt från en station till en annan tills det är klart.
+hello MES övervakar varje station i hello produktion linje genom OPC UA toodetect station status ändras. Den anropar OPC UA metoder toocontrol hello stationer och överför en produkt från en station toohello bredvid tills den är klar.
 
 ## <a name="gateway-opc-publisher-module"></a>Gateway OPC Publisher-modul
 
-OPC Publisher-modulen ansluter till stationens OPC UA-servrar och prenumererar på OPC-noder som ska publiceras. Modulen omvandlar noddata till JSON-format, krypterar dem och skickar dem till IoT Hub som OPC UA pub-/sub-meddelanden.
+OPC Publisher modulen ansluter toohello station OPC UA servrar och prenumererar toohello OPC noder toobe publiceras. hello modulen konverterar hello noden data till JSON-format, krypteras det och skickar den tooIoT hubb som OPC UA Pub/Sub-meddelanden.
 
-OPC Publisher-modulen kräver endast en utgående https-port (443) och kan arbeta med företagets befintliga infrastruktur.
+hello OPC Publisher modulen endast kräver en utgående https-port (443) och kan arbeta med den befintliga infrastrukturen för företaget.
 
 ## <a name="gateway-opc-proxy-module"></a>Gateway OPC Proxy-modul
 
-Gateway OPC UA Proxy-modulen fungerar som en tunnel för binära OPC UA-kommandon och kontrollerar meddelanden och kräver endast en utgående https-port (443). Den kan fungera med befintlig företagsinfrastruktur, inklusive webbproxyservrar.
+hello Gateway OPC UA Proxy modulen tunnlar binära OPC UA kommando- och meddelanden och kräver bara en utgående https-port (443). Den kan fungera med befintlig företagsinfrastruktur, inklusive webbproxyservrar.
 
-Den använder IoT Hub-enhetsmetoder för att överföra paketerade TCP/IP-data på programnivån och garanterar på så sätt slutpunktsförtroende, datakryptering och integritet med SSL/TLS.
+Den använder IoT Hub-enhet metoder tootransfer packetized TCP/IP-data på programnivå hello och därmed säkerställer endpoint förtroende, datakryptering och dataintegritet med hjälp av SSL/TLS.
 
-Det binära OPC UA-protokollet som är vidarebefordrande via själva proxyservern använder UA-autentisering och -kryptering.
+hello OPC UA binära protokollet vidarebefordrande via hello proxy själva använder UA autentisering och kryptering.
 
 ## <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
-Gateway OPC Publisher-modulen prenumererar på OPC UA-servernoder för att identifiera ändringar i datavärdena. Om en dataändring identifieras i någon av noderna kan modulen skicka meddelanden till Azure IoT Hub.
+hello Gateway OPC Publisher modulen prenumererar tooOPC UA server noder toodetect ändring i hello datavärden. Om en dataändring av har identifierats i en av noderna hello, skickar meddelanden tooAzure IoT-hubb sedan i den här modulen.
 
-IoT Hub tillhandahåller en händelsekälla till Azure TSI. TSI lagrar data i 30 dagar baserat på tidsstämplar som är kopplade till meddelanden. Dessa data omfattar:
+IoT-hubb innehåller en händelse källa tooAzure TSD. TSD lagrar data i 30 dagar, utifrån tidsstämplar anslutna toohello meddelanden. Dessa data omfattar:
 
 * OPC UA ApplicationUri
 * OPC UA NodeId
-* Nodens värde
+* Värdet för hello nod
 * Tidsstämpel för källa
 * OPC UA DisplayName
 
-För närvarande tillåter inte TSI att kunder anpassar hur länge de vill behålla data.
+TSD tillåter för närvarande inte kunder toocustomize hur länge de önskar tookeep hello data för.
 
 TSI-frågor mot noddata med ett SearchSpan (Time.From, Time.To) och aggregeras av OPC UA ApplicationUri eller OPC UA NodeId eller OPC UA DisplayName.
 
-Om du vill hämta data för OEE- och KPI-mätare och tidsseriediagram aggregeras data via antal händelser, Summa, Medel, Min och Max.
+tooretrieve hello data för hello OEE och KPI mätare och hello för serien tidsdiagram data har aggregerats med antal händelser, Sum, Avg, Min och Max.
 
-Tidsserier skapas med en annan process. OEE och KPI:er beräknas från stationsgrunddata och används för topologin (produktionsrader, fabriker, företag) i programmet.
+hello tidsserier skapas med hjälp av en annan process. OEE och KPI: er beräknas från station grunddata och bubblas ned för hello-topologi (produktion rader, fabriker, enterprise) i hello program.
 
-Dessutom beräknas tidsserier för OEE- och KPI-topologi i appen när en visad tidsangivelse är klar. Dagsvyn uppdateras exempelvis varje hel timme.
+Dessutom beräknas tidsserier för OEE och KPI-topologi i hello app när timespan visas är klar. Till exempel uppdateras hello dagsvyn varje fullständig timme.
 
-Tidsserievyn för noddata kommer direkt från TSI med en sammansättning för tidsangivelse.
+hello serien vy av noden data kommer direkt från TSD med en aggregering för timespan.
 
 ## <a name="iot-hub"></a>IoT Hub
-[IoT Hub][lnk-IoT Hub] tar emot data som skickas från OPC Publisher-modulen till molnet och gör dem tillgängliga för Azure TSI-tjänsten. 
+Hej [IoT-hubb] [ lnk-IoT Hub] tar emot data som skickas från hello OPC Publisher modul i hello moln och gör den tillgänglig toohello Azure TSD tjänsten. 
 
-IoT Hub ansvarar även för följande uppgifter i lösningen:
-- Underhåller ett identitetsregister som lagrar ID för alla OPC Publisher-moduler och OPC Proxy-moduler.
-- Det används som en transportkanal för dubbelriktad kommunikation för OPC Proxy-modulen.
+Hej IoT-hubb i hello-lösning också:
+- Upprätthåller en identitetsregistret som lagrar hello-ID: N för alla OPC Publisher modulen och alla OPC Proxy moduler.
+- Används som Transportkanalen för dubbelriktad kommunikation av hello OPC Proxy-modulen.
 
 ## <a name="azure-storage"></a>Azure Storage
-Lösningen använder Azure Blob Storage som disklagring för den virtuella datorn och för att lagra distribueringsdata.
+hello lösningen använder Azure blob storage som disklagring för hello VM- och toostore distribution.
 
 ## <a name="web-app"></a>Webbapp
-Webbappen distribueras som en del av den förkonfigurerade lösningen består av en integrerad OPC UA-klient, aviseringsbehandling och telemetrivisualisering.
+hello-webbprogram som distribueras som en del av hello förkonfigurerade lösningen består av en integrerad OPC UA-klient, aviseringar bearbetning och telemetri visualiseringen.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs följande artiklar om du vill fortsätta och lära dig mer om IoT Suite:
+Du kan fortsätta komma igång med IoT Suite genom att läsa hello följande artiklar:
 
-* [Behörigheter på webbplatsen azureiotsuite.com][lnk-permissions]
-* [Distribuera en gateway på Windows eller Linux för den förkonfigurerade lösningen Ansluten fabrik](iot-suite-connected-factory-gateway-deployment.md)
+* [Behörigheter för hello azureiotsuite.com plats][lnk-permissions]
+* [Distribuera en gateway på Windows- eller Linux för hello anslutna factory förkonfigurerade lösningen](iot-suite-connected-factory-gateway-deployment.md)
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 

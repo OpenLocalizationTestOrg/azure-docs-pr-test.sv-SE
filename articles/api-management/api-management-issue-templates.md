@@ -1,6 +1,6 @@
 ---
-title: "Utfärda mallar i Azure API Management | Microsoft Docs"
-description: "Lär dig hur du anpassar innehållet problemet sidor i developer-portalen i Azure API Management."
+title: aaaIssue mallar i Azure API Management | Microsoft Docs
+description: "Lär dig hur toocustomize hello innehåll hello problemet sidor i hello developer-portalen i Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: e13344df198bca4f73c75fa58221436b94e2f258
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e12902e52c164f73902a97f15ea550790dfecf1c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Utfärda mallar i Azure API Management
-Azure API Management ger dig möjlighet att anpassa innehållet i developer portalens sidor med hjälp av en uppsättning mallar som konfigurerar deras innehåll. Med hjälp av [DotLiquid](http://dotliquidmarkup.org/) syntax och redigeringsprogram, t.ex [DotLiquid för Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), och en angiven uppsättning lokaliserade [String resurser](api-management-template-resources.md#strings), [glyf resurser](api-management-template-resources.md#glyphs), och [sidan kontroller](api-management-page-controls.md), du har stor flexibilitet för att konfigurera innehåll för sidorna som du vill använda dessa mallar.  
+Azure API Management ger du hello möjlighet toocustomize hello innehållet i developer portalens sidor med hjälp av en uppsättning mallar som konfigurerar deras innehåll. Med hjälp av [DotLiquid](http://dotliquidmarkup.org/) syntax och hello redigeringsprogram, t.ex [DotLiquid för Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), och en angiven uppsättning lokaliserade [String resurser](api-management-template-resources.md#strings), [ Glyf resurser](api-management-template-resources.md#glyphs), och [sidan kontroller](api-management-page-controls.md), du har stor flexibilitet tooconfigure hello innehåll hello sidor som du vill använda dessa mallar.  
   
- Mallarna i det här avsnittet kan du anpassa innehållet problemet sidor i developer-portalen.  
+ hello mallar i det här avsnittet kan du toocustomize hello innehåll hello problemet sidor i hello developer-portalen.  
   
 -   [Problemet lista](#IssueList)  
   
 > [!NOTE]
->  Standard exempelmallarna ingår i följande dokumentation, men kan komma att ändras på grund av kontinuerliga förbättringar. Du kan visa live standardmallarna i developer-portalen genom att navigera till önskade enskilda mallar. Mer information om hur du arbetar med mallar finns [hur du anpassar API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).  
+>  Standard exempelmallarna ingår i hello följande dokumentation, men är ämne toochange på grund av toocontinuous förbättringar. Du kan visa hello live standardmallarna i hello developer-portalen genom att gå toohello önskad enskilda mallar. Mer information om hur du arbetar med mallar finns [hur toocustomize hello API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).  
   
 ##  <a name="IssueList"></a>Problemet lista  
- Den **problemet listan** mall kan du anpassa sidan problemet till utvecklarportalen brödtext.  
+ Hej **problemet listan** mall kan du toocustomize hello brödtext hello problemet sidan i hello developer-portalen.  
   
  ![Utfärda listan Developer-portalen](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM problemet listan Developer-portalen")  
   
@@ -88,7 +88,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ### <a name="controls"></a>Kontroller  
- Den `Issue list` mall kan du använda följande [sidan kontroller](api-management-page-controls.md).  
+ Hej `Issue list` mall kan använda följande hello [sidan kontroller](api-management-page-controls.md).  
   
 -   [växlingsfil-kontroll](api-management-page-controls.md#paging-control)  
   
@@ -96,10 +96,10 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
   
 |Egenskap|Typ|Beskrivning|  
 |--------------|----------|-----------------|  
-|Problem|Samling av [problemet](api-management-template-data-model-reference.md#Issue) entiteter.|Problem som är synliga för den aktuella användaren.|  
-|Sidindelning|[Växling](api-management-template-data-model-reference.md#Paging) entitet.|Växlingsfil-information för samlingen program.|  
-|IsAuthenticated|Booleskt värde|Om den aktuella användaren är inloggad på developer-portalen.|  
-|CanReportIssues|Booleskt värde|Om den aktuella användaren har behörigheter till filen ett problem.|  
+|Problem|Samling av [problemet](api-management-template-data-model-reference.md#Issue) entiteter.|hello problem synliga toohello aktuella användaren.|  
+|Sidindelning|[Växling](api-management-template-data-model-reference.md#Paging) entitet.|hello sidindelning information för hello program samling.|  
+|IsAuthenticated|Booleskt värde|Om hello aktuell användare är inloggad toohello developer-portalen.|  
+|CanReportIssues|Booleskt värde|Om hello aktuell användare har behörighet toofile ett problem.|  
 |Söka|Sträng|Den här egenskapen är inaktuell och bör inte användas.|  
   
 ### <a name="sample-template-data"></a>Mallen exempeldata  
@@ -110,8 +110,8 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
         {  
             "Id": "5702b68bb16653124c8f9ba7",  
             "ApiId": "570275f1b16653124c8f9ba3",  
-            "Title": "I couldn't figure out how to connect my application to the API",  
-            "Description": "I'm having trouble connecting my application to the backend API.",  
+            "Title": "I couldn't figure out how tooconnect my application toohello API",  
+            "Description": "I'm having trouble connecting my application toohello backend API.",  
             "SubscriptionDeveloperName": "Clayton",  
             "IssueState": "Proposed",  
             "ReportedOn": "2016-04-04T18:46:35.64",  
@@ -134,4 +134,4 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om hur du arbetar med mallar finns [hur du anpassar API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).
+Mer information om hur du arbetar med mallar finns [hur toocustomize hello API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).

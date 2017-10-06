@@ -1,6 +1,6 @@
 ---
-title: 'Connect Intel EDISON (C) till Azure IoT - lektionen 1: distribuera programmet | Microsoft Docs'
-description: "Klona exempelprogrammet C från GitHub och kör gulp om du vill distribuera programmet till Intel modern-kort. Det här exempelprogrammet blinkar Indikator anslutna till kortet varannan sekund."
+title: 'Connect Intel EDISON (C) tooAzure IoT - lektionen 1: distribuera programmet | Microsoft Docs'
+description: "Klona hello-exempelprogram C från GitHub och kör gulp toodeploy det här programmet tooyour Intel modern kort. Det här exempelprogrammet blinkar hello Indikator anslutna toohello board varannan sekund."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,34 +17,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: c45ff5f41bdbc78da8532ffdcaaeec15c695f531
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fa84fae812dd742a2ad4997a5e213c8e40e6fcf9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-deploy-the-blink-application"></a>Skapa och distribuera blinkningsprogrammet
+# <a name="create-and-deploy-hello-blink-application"></a>Skapa och distribuera hello blinka program
 ## <a name="what-you-will-do"></a>Vad du ska göra
-Klona exempelprogrammet C från GitHub och verktyget gulp för att distribuera exempelprogrammet till Intel modern. Exempelprogrammet blinkar Indikator anslutna till kortet varannan sekund. Om du har några problem kan hitta lösningar på den [felsökning sidan][troubleshooting].
+Klona hello-exempelprogram C från GitHub och använda hello gulp verktyget toodeploy hello exempel programmet tooIntel modern. hello exempelprogrammet blinkar hello Indikator anslutna toohello board varannan sekund. Om du har några problem med söka efter lösningar på hello [felsökning sidan][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
-* Hur du distribuerar och kör exempelprogrammet på modern.
+* Hur toodeploy och kör hello exempelprogram på modern.
 
 ## <a name="what-you-need"></a>Vad du behöver
-Du måste ha slutfört följande åtgärder:
+Du måste ha slutfört hello följande åtgärder:
 
 * [Konfigurera din enhet][configure-your-device]
-* [Skaffa dig verktyg][get-the-tools]
+* [Hämta hello-verktyg][get-the-tools]
 
-## <a name="open-the-sample-application"></a>Öppna exempelprogrammet
-Följ dessa steg om du vill öppna exempelprogrammet:
+## <a name="open-hello-sample-application"></a>Öppna hello exempelprogrammet
+tooopen hello exempelprogram, gör du följande:
 
-1. Klona lagringsplatsen exempel från GitHub genom att köra följande kommando:
+1. Klona hello exempel databasen från GitHub genom att köra följande kommando hello:
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-c-edison-getting-started.git
    ```
-2. Öppna exempelprogrammet i Visual Studio Code genom att köra följande kommandon:
+2. Öppna hello exempelprogrammet i Visual Studio Code genom att köra följande kommandon hello:
 
    ```bash
    cd iot-hub-c-edison-getting-started
@@ -54,27 +54,27 @@ Följ dessa steg om du vill öppna exempelprogrammet:
 
    ![Lagringsplatsen struktur][repo-structure]
 
-Filen i den `app` undermapp är viktiga källfilen som innehåller koden för att styra Indikatorn.
+hello-filen i hello `app` undermapp är hello källa fil som innehåller hello kod toocontrol hello Indikator.
 
 ### <a name="install-application-dependencies"></a>Installera beroenden
-Installera bibliotek och andra moduler som du behöver för exempelprogrammet genom att köra följande kommando:
+Installera hello bibliotek och andra moduler som du behöver för hello exempelprogrammet genom att köra följande kommando hello:
 
 ```bash
 npm install
 ```
 
-## <a name="configure-the-device-connection"></a>Konfigurera enhetsanslutning
-Följ dessa steg för att konfigurera enhetsanslutningen:
+## <a name="configure-hello-device-connection"></a>Konfigurera hello enhetsanslutning
+tooconfigure Hej enhetsanslutning, gör du följande:
 
-1. Generera konfigurationsfilen enheten genom att köra följande kommando:
+1. Generera hello konfigurationsfilen för enheten genom att köra följande kommando hello:
 
    ```bash
    gulp init
    ```
 
-   Konfigurationsfilen `config-edison.json` innehåller autentiseringsuppgifter för användare som du använder för att logga in på modern. För att undvika läckage av användarautentiseringsuppgifter konfigurationsfilen genereras i undermappen `.iot-hub-getting-started` för arbetsmapp på datorn.
+   hello konfigurationsfilen `config-edison.json` innehåller hello-autentiseringsuppgifter som du använder toolog i tooEdison. tooavoid hello läckage av användarautentiseringsuppgifter, hello konfigurationsfilen genereras i hello undermapp `.iot-hub-getting-started` av hello arbetsmapp på datorn.
 
-2. Öppna konfigurationsfilen enheten i Visual Studio Code genom att köra följande kommando:
+2. Öppna konfigurationsfilen för hello enheten i Visual Studio Code genom att köra följande kommando hello:
 
    ```bash
    # For Windows command prompt
@@ -84,39 +84,39 @@ Följ dessa steg för att konfigurera enhetsanslutningen:
    code ~/.iot-hub-getting-started/config-edison.json
    ```
 
-3. Ersätt platshållaren `[device hostname or IP address]` och `[device password]` med IP-adress och lösenord som du har markerat i föregående lektionen.
+3. Ersätt platshållaren hello `[device hostname or IP address]` och `[device password]` med hello IP-adress och lösenord som du har markerat i föregående lektionen.
 
    ![Config.JSON](media/iot-hub-intel-edison-lessons/lesson1/vscode-config-mac.png)
 
-Grattis! Du har skapat det första exempelprogrammet för modern.
+Grattis! Du har skapat hello första exempelprogram för modern.
 
-## <a name="deploy-and-run-the-sample-application"></a>Distribuera och köra exempelprogrammet
-### <a name="install-the-azure-iot-hub-sdk-on-edison"></a>Installera Azure IoT-hubb SDK på modern
-Installera Azure IoT-hubb SDK på modern genom att köra följande kommando:
+## <a name="deploy-and-run-hello-sample-application"></a>Distribuera och köra hello exempelprogrammet
+### <a name="install-hello-azure-iot-hub-sdk-on-edison"></a>Installera hello Azure IoT-hubb SDK på modern
+Installera hello Azure IoT-hubb SDK på modern genom att köra följande kommando hello:
 
 ```bash
 gulp install-tools
 ```
 
-Den här uppgiften kan ta lång tid att slutföra beroende på nätverksanslutningen. Den måste köras en gång för en modern.
+Den här uppgiften kan ta en lång tid toocomplete, beroende på nätverksanslutningen. Det krävs toobe köras en gång för en modern.
 
-### <a name="deploy-and-run-the-sample-app"></a>Distribuera och köra sample-appen
-Distribuera och köra exempelprogrammet genom att köra följande kommando:
+### <a name="deploy-and-run-hello-sample-app"></a>Distribuera och köra hello sample-appen
+Distribuera och köra hello exempelprogrammet genom att köra följande kommando hello:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-### <a name="verify-the-app-works"></a>Kontrollera appen fungerar
-Exempelprogrammet avbryter automatiskt när Indikatorn blinkar för 20 gånger. Om du inte ser Indikator blinkar, finns det [felsökningsguide för] [ troubleshooting] efter lösningar på vanliga problem.
+### <a name="verify-hello-app-works"></a>Verifiera hello appen fungerar
+hello exempelprogrammet avbryter automatiskt när hello Indikator blinkar för 20 gånger. Om du inte ser hello Indikator blinkar, se hello [felsökningsguide för] [ troubleshooting] för lösningar toocommon problem.
 
 ![Blinka Indikator][led-blinking]
 
 ## <a name="summary"></a>Sammanfattning
-Du har installerat de verktyg som krävs för att arbeta med modern och distribuerat ett exempelprogram för modern blinkar på Indikator. Du kan nu skapa, distribuera och köra en annan exempelprogrammet som ansluter modern till Azure IoT Hub skicka och ta emot meddelanden.
+Du har installerat hello krävs verktyg toowork med modern och distribuerat en exempel programmet tooEdison tooblink hello Indikator. Du kan nu skapa, distribuera, och kör en annan exempelprogram som ansluter modern tooAzure IoT-hubb toosend och ta emot meddelanden.
 
 ## <a name="next-steps"></a>Nästa steg
-[Hämta Azure-verktyg][get-the-azure-tools]
+[Hämta hello Azure-verktyg][get-the-azure-tools]
 
 <!-- Images and links -->
 

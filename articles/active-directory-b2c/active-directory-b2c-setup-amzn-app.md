@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory B2C: Amazon-konfiguration | Microsoft Docs'
-description: "Ange registrering och inloggning för konsumenter med Amazon-konton i dina program som skyddas av Azure Active Directory B2C."
+description: "Ange tooconsumers för registrering och inloggning med Amazon-konton i dina program som skyddas av Azure Active Directory B2C."
 services: active-directory-b2c
 documentationcenter: 
 author: swkrish
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.openlocfilehash: dcc97e1b7f6287bd7692c52bf068950065a26572
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 60d7c4b76d9d3e86ed535765329abed07f1e5996
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-amazon-accounts"></a>Azure Active Directory B2C: Ange registrering och inloggning för konsumenter med Amazon-konton
+# <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-tooconsumers-with-amazon-accounts"></a>Azure Active Directory B2C: Ange tooconsumers för registrering och inloggning med Amazon-konton
 ## <a name="create-an-amazon-application"></a>Skapa ett Amazon-program
-Om du vill använda Amazon som en identitetsleverantör i Azure Active Directory (AD Azure) B2C måste du skapa ett Amazon-program och ange rätt parametrar. Du behöver ett Amazon-konto för att göra detta. Om du inte har något du kan hämta den på [http://www.amazon.com/](http://www.amazon.com/).
+toouse Amazon som en identitetsleverantör i Azure Active Directory (AD Azure) B2C du behöver toocreate ett Amazon-program och lämna hello rätt parametrar. Du behöver en Amazon-konto toodo detta. Om du inte har något du kan hämta den på [http://www.amazon.com/](http://www.amazon.com/).
 
-1. Gå till den [Amazon Developer Center](https://login.amazon.com/) och logga in med autentiseringsuppgifterna för ditt Amazon-konto.
-2. Om du inte redan har gjort det, klickar du på **registrera dig**gör developer registrering och acceptera principen.
+1. Gå toohello [Amazon Developer Center](https://login.amazon.com/) och logga in med autentiseringsuppgifterna för ditt Amazon-konto.
+2. Om du inte redan har gjort det, klickar du på **registrera dig**gör hello developer registrering och acceptera hello princip.
 3. Klicka på **registrera nya program**.
    
-    ![Registrera en ny App på Amazon-webbplatsen](./media/active-directory-b2c-setup-amzn-app/amzn-new-app.png)
+    ![Registrera ett nytt program på hello Amazon-webbplatsen](./media/active-directory-b2c-setup-amzn-app/amzn-new-app.png)
 4. Ange programinformationen (**namn**, **beskrivning**, och **meddelande Sekretesswebbadress**) och klicka på **spara**.
    
     ![Tillhandahåller information om programmet för att registrera en ny App på Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-register-app.png)
-5. I den **webbinställningar** avsnittet, kopiera värdena för **klient-ID** och **Klienthemlighet**. (Du måste klicka på den **visa hemlighet** för att visa detta.) Du måste båda för att konfigurera Amazon som en identitetsleverantör i din klient. Klicka på **redigera** längst ned i avsnittet. **Klienthemlighet** är en viktig säkerhetsuppgift för autentisering.
+5. I hello **webbinställningar** avsnittet Kopiera hello värdena för **klient-ID** och **Klienthemlighet**. (Du behöver tooclick hello **visa hemlighet** knappen toosee detta.) Du måste båda tooconfigure Amazon som en identitetsleverantör i din klient. Klicka på **redigera** längst hello hello-avsnittet. **Klienthemlighet** är en viktig säkerhetsuppgift för autentisering.
    
     ![Med klient-ID och Klienthemlighet för det nya programmet på Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-client-secret.png)
-6. Ange `https://login.microsoftonline.com` i den **tillåtna JavaScript ursprung** fält och `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` i den **tillåtna returnerar URL: er** fältet. Ersätt **{klient}** med din klient namn (till exempel contoso.onmicrosoft.com). Klicka på **Spara**. Den **{klient}** värdet är skiftlägeskänsligt.
+6. Ange `https://login.microsoftonline.com` i hello **tillåtna JavaScript ursprung** fält och `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` i hello **tillåtna returnerar URL: er** fältet. Ersätt **{klient}** med din klient namn (till exempel contoso.onmicrosoft.com). Klicka på **Spara**. Hej **{klient}** värdet är skiftlägeskänsligt.
    
     ![Med JavaScript ursprung och returnera URL: er för det nya programmet på Amazon](./media/active-directory-b2c-setup-amzn-app/amzn-urls.png)
 
 ## <a name="configure-amazon-as-an-identity-provider-in-your-tenant"></a>Konfigurera Amazon som en identitetsleverantör i din klientorganisation
-1. Följ dessa steg för att [gå till B2C-funktionsbladet](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) på Azure-portalen.
-2. Klicka på B2C-funktionsbladet **identitetsleverantörer**.
-3. Klicka på **+Lägg till** överst på bladet.
-4. Ange ett eget **namn** för providerkonfigurationen identitet. Till exempel ange ”Amzn”.
+1. Följ dessa steg för[navigera toohello B2C-funktionsbladet](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) på hello Azure-portalen.
+2. Klicka på hello B2C-funktionsbladet **identitetsleverantörer**.
+3. Klicka på **+ Lägg till** hello överst i hello-bladet.
+4. Ange ett eget **namn** för hello identitet Providerkonfiguration. Till exempel ange ”Amzn”.
 5. Klicka på **identitet providertyp**väljer **Amazon**, och klicka på **OK**.
-6. Klicka på **ställa in den här identitetsleverantör** och ange klient-ID och klienthemlighet för Amazon-program som du skapade tidigare.
-7. Klicka på **OK** och klicka sedan på **skapa** spara Amazon-konfigurationen.
+6. Klicka på **ställa in den här identitetsleverantör** och ange hello klient-ID och klienten hemligheten för hello Amazon-program som du skapade tidigare.
+7. Klicka på **OK** och klicka sedan på **skapa** toosave Amazon-konfiguration.
 

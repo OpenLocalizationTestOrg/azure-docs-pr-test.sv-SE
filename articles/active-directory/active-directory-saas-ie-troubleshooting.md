@@ -1,6 +1,6 @@
 ---
-title: "Felsöka Azure Access panelen-tillägg för Internet Explorer | Microsoft Docs"
-description: "Hur du använder grupprinciper för att distribuera Internet Explorer-tillägget för Mina appar portalen."
+title: "aaaTroubleshooting hello Azure Access panelen-tillägg för Internet Explorer | Microsoft Docs"
+description: "Hur toouse gruppera princip toodeploy hello Internet Explorer-tillägget för hello Mina appar portal."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -16,82 +16,82 @@ ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 938d0b4046afa8c80eabe542f4541d0554948f5d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 23cbb6117f34759330206de3a26f1397486acedb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Felsökning av Access panelen-tillägg för Internet Explorer
-Den här artikeln hjälper dig att felsöka följande problem:
+# <a name="troubleshooting-hello-access-panel-extension-for-internet-explorer"></a>Felsöka hello Access panelen-tillägg för Internet Explorer
+Den här artikeln hjälper dig att felsöka hello följande problem:
 
-* Du kan inte komma åt dina appar via portalen Mina appar när du använder Internet Explorer.
-* Meddelandet ”installera programvara” även om du redan har installerat programvaran.
+* Du är tooaccess dina appar via hello Mina appar portal när du använder Internet Explorer.
+* Du kan se hello ”installera programvara” visas trots att du redan har installerat hello programvara.
 
-Om du är administratör kan se även: [hur du distribuerar Access panelen-tillägg för Internet Explorer med hjälp av Grupprincip](active-directory-saas-ie-group-policy.md)
+Om du är administratör kan se även: [hur tooDeploy hello Access panelen-tillägg för Internet Explorer med hjälp av Grupprincip](active-directory-saas-ie-group-policy.md)
 
-## <a name="run-the-diagnostic-tool"></a>Kör verktyget diagnostik
-Du kan diagnostisera problem med filnamnstillägget åtkomst panelen genom att hämta och kör diagnostikverktyg för åtkomstpanelen:
+## <a name="run-hello-diagnostic-tool"></a>Kör hello diagnostikverktyg
+Du kan diagnostisera problem med hello tillägget för åtkomst-panelen genom att hämta och kör diagnostikverktyg för hello åtkomstpanelen:
 
-1. [Klicka här om du vill hämta diagnostikverktyget.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
-2. Öppna filen, och tryck på **extrahera alla** knappen.
+1. [Klicka här toodownload hello diagnostikverktyg.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
+2. Öppna hello-filen och klicka på **extrahera alla** knappen.
    
     ![Klicka på Extrahera alla](./media/active-directory-saas-ie-troubleshooting/extract1.png)
-3. Tryck på den **extrahera** för att fortsätta.
+3. Tryck på hello **extrahera** knappen toocontinue.
    
     ![Klicka på Extrahera](./media/active-directory-saas-ie-troubleshooting/extract2.png)
-4. Kör verktyget genom att högerklicka på filen med namnet **AccessPanelExtensionDiagnosticTool**och välj **öppna med > Microsoft Windows-baserad skriptmodul**.
+4. toorun hello verktyg, högerklicka på hello-fil med namnet **AccessPanelExtensionDiagnosticTool**och välj **öppna med > Microsoft Windows-baserad skriptmodul**.
    
     ![Öppna med > Microsoft Windows-baserade skriptvärden](./media/active-directory-saas-ie-troubleshooting/open_tool.png)
-5. Sedan visas följande diagnostiska fönstret som beskriver vad kan vara fel med installationen.
+5. Sedan visas hello följande diagnostiska fönster som beskriver vad kan vara fel med installationen.
    
-    ![Ett exempel på fönstret diagnostik](./media/active-directory-saas-ie-troubleshooting/tool_preview.png)
-6. Klicka på ”**Ja**” så att programmet åtgärda de problem som har hittats.
-7. Stäng alla fönster i Internet Explorer om du vill spara ändringarna och öppna Internet Explorer igen.<br />Försök stegen nedan om du fortfarande inte kan komma åt dina appar.
+    ![Ett exempel på hello diagnostiska fönster](./media/active-directory-saas-ie-troubleshooting/tool_preview.png)
+6. Klicka på ”**Ja**” toolet hello programmet korrigering hello problem som har hittats.
+7. toosave dessa ändringar och Stäng alla fönster i Internet Explorer och öppna Internet Explorer igen.<br />Försök hello stegen nedan om du fortfarande inte kan komma åt dina appar.
 
-## <a name="check-that-the-access-panel-extension-is-enabled"></a>Kontrollera att panelen-tillägget åtkomst är aktiverat
-Kontrollera att tillägget för åtkomst-panelen är aktiverad i Internet Explorer:
+## <a name="check-that-hello-access-panel-extension-is-enabled"></a>Kontrollera att hello åtkomst panelen tillägget är aktiverat
+tooverify som hello panelen tillägget för åtkomst är aktiverad i Internet Explorer:
 
-1. I Internet Explorer klickar du på den **Kugghjulet ikonen** i det övre högra hörnet i fönstret. Välj sedan **Internetalternativ**.<br />(I tidigare versioner av Internet Explorer kan du hitta detta under **Verktyg > Internetalternativ**.
+1. I Internet Explorer klickar du på hello **Kugghjulet ikonen** i hello övre högra hörnet av hello-fönstret. Välj sedan **Internetalternativ**.<br />(I tidigare versioner av Internet Explorer kan du hitta detta under **Verktyg > Internetalternativ**.
    
-    ![Gå till Verktyg > Internet-alternativ](./media/active-directory-saas-ie-troubleshooting/internetoptions.png)
-2. Klicka på den **program** och klicka sedan på den **Hantera tillägg** knappen.
+    ![Gå tooTools > Internet-alternativ](./media/active-directory-saas-ie-troubleshooting/internetoptions.png)
+2. Klicka på hello **program** och klicka sedan på hello **Hantera tillägg** knappen.
    
     ![Klicka på Hantera tillägg](./media/active-directory-saas-ie-troubleshooting/internetoptions_programs.png)
-3. I den här dialogrutan Välj **åtkomst panelen tillägget** och klicka sedan på den **aktivera** knappen.
+3. I den här dialogrutan Välj **åtkomst panelen tillägget** och klicka sedan på hello **aktivera** knappen.
    
     ![Klicka på Aktivera](./media/active-directory-saas-ie-troubleshooting/enableaddon.png)
-4. Stäng alla fönster i Internet Explorer och öppna Internet Explorer igen om du vill spara ändringarna.
+4. toosave dessa ändringar och Stäng alla fönster i Internet Explorer och öppna Internet Explorer igen.
 
 ## <a name="enable-extensions-for-inprivate-browsing"></a>Aktivera tillägg för InPrivate-surfning
-Om du använder InPrivate-surfning-läge:
+Om du använder hello InPrivate-surfning läge:
 
-1. I Internet Explorer klickar du på den **Kugghjulet ikonen** i det övre högra hörnet i fönstret. Välj sedan **Internetalternativ**.<br />(I tidigare versioner av Internet Explorer kan du hitta detta under **Verktyg > Internetalternativ**.
+1. I Internet Explorer klickar du på hello **Kugghjulet ikonen** i hello övre högra hörnet av hello-fönstret. Välj sedan **Internetalternativ**.<br />(I tidigare versioner av Internet Explorer kan du hitta detta under **Verktyg > Internetalternativ**.
    
-    ![Ett exempel på fönstret diagnostik](./media/active-directory-saas-ie-troubleshooting/inprivateoptions.png)
-2. Gå till den **sekretess** sedan fliken **avmarkera** kryssrutan **inaktivera verktygsfält och tillägg när InPrivate-surfning startar**</p>
+    ![Ett exempel på hello diagnostiska fönster](./media/active-directory-saas-ie-troubleshooting/inprivateoptions.png)
+2. Gå toohello **sekretess** sedan fliken **avmarkera** hello kryssrutan **inaktivera verktygsfält och tillägg när InPrivate-surfning startar**</p>
    
     ![Avmarkera inaktivera verktygsfält och tillägg när InPrivate-surfning startar](./media/active-directory-saas-ie-troubleshooting/enabletoolbars.png)
-3. Stäng alla fönster i Internet Explorer och öppna Internet Explorer igen om du vill spara ändringarna.
+3. toosave dessa ändringar och Stäng alla fönster i Internet Explorer och öppna Internet Explorer igen.
 
-## <a name="uninstall-the-access-panel-extension"></a>Avinstallera panelen-tillägget åtkomst
-Så här avinstallerar åtkomstpanelen tillägget från datorn:
+## <a name="uninstall-hello-access-panel-extension"></a>Avinstallera hello Access panelen-tillägg
+toouninstall hello åtkomstpanelen tillägg från datorn:
 
-1. Tryck på på tangentbordet den **Windows-tangenten** att öppna Start-menyn. När menyn är öppen kan skriva du något om du vill göra en sökning. Skriv ”på Kontrollpanelen” och sedan öppna den **Kontrollpanelen** när den visas i sökresultaten.
+1. Tryck på tangentbordet hello **Windows-tangenten** tooopen hello Start-menyn. När hello-menyn är öppen kan du skriva vad toodo en sökning. Skriv ”på Kontrollpanelen” och sedan öppna hello **Kontrollpanelen** när den visas i sökresultaten hello.
    
     ![Sök efter Kontrollpanelen](./media/active-directory-saas-ie-troubleshooting/search_sm.png)
-2. I det övre högra hörnet av Kontrollpanelen ändrar den **visa med** att **stora ikoner**. Hitta och klicka sedan på **program och funktioner** knappen.
+2. Ändra hello i hello övre högra hörnet av hello Kontrollpanelen, **visa med** alternativet för**stora ikoner**. Sedan söka efter och klicka på hello **program och funktioner** knappen.
    
-    ![Ändra vyn för att visa stora ikoner](./media/active-directory-saas-ie-troubleshooting/control_panel.png)
-3. I listan, väljer du **åtkomst panelen tillägget**, och klicka på den **avinstallera** knappen.
+    ![Ändra hello visa tooshow stora ikoner](./media/active-directory-saas-ie-troubleshooting/control_panel.png)
+3. Välj hello listan **åtkomst panelen tillägget**, och klicka på hello hello **avinstallera** knappen.
    
     ![Klicka på Avinstallera](./media/active-directory-saas-ie-troubleshooting/uninstall.png)
-4. Du kan sedan försöker installera tillägget igen för att se om problemet är löst.
+4. Sedan kan du försöka tooinstall hello tillägget igen toosee om hello problemet har lösts.
 
-Om du får problem med tillägget avinstallerar du kan också ta bort den med hjälp av den [Microsoft åtgärda det](https://go.microsoft.com/?linkid=9779673) verktyget.
+Om du får problem med avinstallerar hello tillägg, du kan också ta bort den med hjälp av hello [Microsoft åtgärda det](https://go.microsoft.com/?linkid=9779673) verktyget.
 
 ## <a name="related-articles"></a>Relaterade artiklar
 * [Artikelindex för programhantering i Azure Active Directory](active-directory-apps-index.md)
 * [Programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md)
-* [Hur du distribuerar Access panelen-tillägg för Internet Explorer med hjälp av Grupprincip](active-directory-saas-ie-group-policy.md)
+* [Hur tooDeploy hello Access panelen-tillägg för Internet Explorer med hjälp av Grupprincip](active-directory-saas-ie-group-policy.md)
 

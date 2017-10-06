@@ -1,6 +1,6 @@
 ---
-title: "Problem med hur du konfigurerar villkorlig åtkomst till en av Mina program ”"
-description: "Problem med hur du konfigurerar villkorlig åtkomst till en av Mina program ”"
+title: "Konfigurera villkorlig åtkomst tooone för Mina program aaaProblems ”"
+description: "Problem med hur du konfigurerar villkorlig åtkomst tooone för Mina program ”"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 2de668f38ca836d3a8ab205a2689156349f8f8d0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1b783c096c1ece924133c0d200e4118ebc23e573
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="problems-configuring-conditional-access-to-one-of-my-applications"></a>Problem med att konfigurera villkorlig åtkomst till ett av mina program
+# <a name="problems-configuring-conditional-access-tooone-of-my-applications"></a>Konfigurationen av villkorlig åtkomst tooone för Mina program
 
 
 ## <a name="ive-set-up-conditional-access-but-something-isnt-working"></a>Jag har konfigurerat villkorlig åtkomst, men något fungerar inte
-  Den nedan dokument kan hjälpa dig att lösa några av de vanligaste problem i den här kategorin.
+  hello nedan dokument kan hjälpa dig att tooresolve hello de flesta vanliga problem i den här kategorin.
   * [Villkorlig åtkomst fungerar inte eftersom kunden inte uppfyllde förhandskraven för enhetsregistrering](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Klienten blockeras på grund av felaktiga inställningar av principer för villkorlig åtkomst](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Klienten blockeras på grund av tooincorrect inställningen av principer för villkorlig åtkomst](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-remediation/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
 
 ## <a name="im-having-problems-setting-up-conditional-access"></a>Jag har problem med att konfigurera villkorlig åtkomst
-  Den nedan dokument kan hjälpa dig att lösa några av de vanligaste problem i den här kategorin.
+  hello nedan dokument kan hjälpa dig att tooresolve hello de flesta vanliga problem i den här kategorin.
   * [Hur och när träder regler utanför företagsnätverk i kraft?](http://aka.ms/calocation/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Hur ökar jag antalet enheter som användaren har tillåtelse att registrera i Azure AD?](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-setup/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Hur konfigurerar jag villkorlig åtkomst för Exchange Online?](http://aka.ms/csforexchange/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Hur konfigurerar jag villkorlig åtkomst för Windows 7-enheter?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access#device-based-conditional-access/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Hur tooincrease hello antalet enheter som användaren tillåts tooregister i Azure AD?](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-setup/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Hur tooset konfigurerar villkorlig åtkomst för Exchange Online?](http://aka.ms/csforexchange/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Hur tooset in villkorlig åtkomst för Windows 7-enheter?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access#device-based-conditional-access/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Vilka program stöds med villkorlig åtkomst?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-supported-apps/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 

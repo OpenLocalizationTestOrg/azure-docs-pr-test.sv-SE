@@ -1,6 +1,6 @@
 ---
-title: Migrera ett aktivt DNS-namn till Azure App Service | Microsoft Docs
-description: "Lär dig hur du migrerar en anpassad DNS-namnet har redan tilldelats en levande plats till Azure Apptjänst utan någon avbrottstid."
+title: "aaaMigrate en aktiv DNS-namnet tooAzure Apptjänst | Microsoft Docs"
+description: "Lär dig hur toomigrate ett anpassade DNS-namn som redan har tilldelats tooa live plats tooAzure Apptjänst utan någon avbrottstid."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -15,42 +15,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: 89308c1c684a639950467b72d26703cc07c50c14
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fbc4cc30dcb87efb2e867cb65c5404b667661e62
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrera ett aktivt DNS-namn till Azure App Service
+# <a name="migrate-an-active-dns-name-tooazure-app-service"></a>Migrera en aktiv DNS-namnet tooAzure Apptjänst
 
-Den här artikeln visar hur du migrerar ett aktivt DNS-namn till [Azure App Service](../app-service/app-service-value-prop-what-is.md) utan driftavbrott.
+Den här artikeln visar hur toomigrate en aktiv DNS namn för[Azure App Service](../app-service/app-service-value-prop-what-is.md) utan driftavbrott.
 
-När du migrerar en levande plats och DNS-domännamn till App Service används det DNS-namnet redan av live trafik. Du kan undvika avbrott i DNS-matchning under migreringen genom att binda aktiva DNS-namnet till din Apptjänst-app förebyggande syfte.
+När du migrerar en levande plats och dess DNS-domänen namnet tooApp tjänsten fungerar det DNS-namnet redan live trafik. Du kan undvika avbrott i DNS-matchning under hello migreringen genom att binda hello aktiva DNS-namnet tooyour Apptjänst-app förebyggande syfte.
 
-Om du inte oroar avbrott i DNS-matchning, se [mappa ett befintligt anpassade DNS-namn till Azure Web Apps](app-service-web-tutorial-custom-domain.md).
+Om du inte oroar avbrott i DNS-matchning, se [mappa en befintlig anpassad DNS-namnet tooAzure Web Apps](app-service-web-tutorial-custom-domain.md).
 
 ## <a name="prerequisites"></a>Krav
 
-Att slutföra den här anvisningar:
+Det här anvisningar toocomplete:
 
 - [Kontrollera att din Apptjänst-app inte är kostnadsfria nivån](app-service-web-tutorial-custom-domain.md#checkpricing).
 
-## <a name="bind-the-domain-name-preemptively"></a>Binda domännamnet förebyggande syfte
+## <a name="bind-hello-domain-name-preemptively"></a>Binda hello domännamn förebyggande syfte
 
-När du binder en anpassad domän förebyggande syfte göra du följande innan du gör några ändringar i DNS-posterna:
+När du binder en anpassad domän förebyggande syfte uppnå både hello följande innan du gör några ändringar i DNS-posterna:
 
 - Verifiera ditt ägarskap för domänen
-- Aktivera domännamnet för din app
+- Aktivera hello domännamn för din app
 
-När du migrerar slutligen din anpassade DNS-namnet från den gamla platsen till App Service-appen måste finnas det utan avbrott i DNS-matchning.
+När du migrerar slutligen din anpassade DNS-namnet från hello gamla platsen toohello Apptjänst-app måste finnas det utan avbrott i DNS-matchning.
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-domain-verification-record"></a>Skapa post för verifiering av domän
 
-Lägg till en TXT-post för att verifiera domänen ägarskap. TXT-posten mappar från _awverify.&lt; underdomän >_ till  _&lt;appname >. azurewebsites.net_. 
+tooverify domän ägarskap, Lägg till en TXT registrera. hello TXT-posten mappar från _awverify.&lt; underdomän >_ too_&lt;appname >. azurewebsites.net_. 
 
-TXT-posten som du behöver beror på DNS-posten som du vill migrera. Exempel finns i följande tabell (`@` representerar vanligen rotdomänen):  
+hello TXT-posten som du behöver beror på hello DNS-posten som du vill toomigrate. Exempel finns i följande tabell hello (`@` vanligtvis representerar hello rotdomänen):  
 
 | DNS-post-exempel | TXT-värden | TXT-värde |
 | - | - | - |
@@ -58,73 +58,73 @@ TXT-posten som du behöver beror på DNS-posten som du vill migrera. Exempel fin
 | www (underordnade) | _awverify.www_ | _&lt;programnamn >. azurewebsites.net_ |
 | \*(jokertecken) | _awverify.\*_ | _&lt;programnamn >. azurewebsites.net_ |
 
-Observera posttyp för DNS-namn som du vill migrera på sidan DNS-poster. Apptjänst stöder mappningar från CNAME- och A-poster.
+Observera hello posttyp för hello DNS-namn som du vill använda toomigrate på sidan DNS-poster. Apptjänst stöder mappningar från CNAME- och A-poster.
 
-### <a name="enable-the-domain-for-your-app"></a>Aktivera domän för din app
+### <a name="enable-hello-domain-for-your-app"></a>Aktivera hello domän för din app
 
-I den [Azure-portalen](https://portal.azure.com), i det vänstra navigeringsfönstret på appsidan, Välj **anpassade domäner**. 
+I hello [Azure-portalen](https://portal.azure.com), i hello vänstra navigeringsfönstret hello app sidan, Välj **anpassade domäner**. 
 
 ![Anpassade domäner-menyn](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
-I den **anpassade domäner** väljer den  **+**  ikonen bredvid **lägga till värdnamnet**.
+I hello **anpassade domäner** sidan, Välj hello  **+**  ikonen nästa för**lägga till värdnamnet**.
 
 ![Lägg till namnet på värddatorn](./media/app-service-web-tutorial-custom-domain/add-host-name-cname.png)
 
-Ange det fullständiga domännamnet som du har lagt till TXT-posten för, t.ex `www.contoso.com`. För en jokerteckendomän med (t.ex. \*. contoso.com), du kan använda DNS-namn som matchar jokertecknet domänen. 
+Typen hello fullständigt kvalificerat domännamn som du har lagt till hello TXT-posten för, exempelvis `www.contoso.com`. För en jokerteckendomän med (t.ex. \*. contoso.com), du kan använda DNS-namn som matchar hello jokerteckendomän. 
 
 Välj **Validera**.
 
-Den **lägga till värdnamnet** knappen aktiveras. 
+Hej **lägga till värdnamnet** knappen aktiveras. 
 
-Se till att **Hostname posttyp** är inställd på DNS-posttyp du vill migrera.
+Se till att **Hostname posttyp** toohello DNS-posttyp du vill toomigrate anges.
 
 Välj **lägga till värdnamnet**.
 
-![Lägga till DNS-namn i appen](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
+![Lägg till DNS-namnet toohello app](./media/app-service-web-tutorial-custom-domain/validate-domain-name-cname.png)
 
-Det kan ta en stund innan det nya värdnamnet återspeglas i appens **anpassade domäner** sidan. Försök att uppdatera webbläsaren för att uppdatera data.
+Det kan ta lite tid innan hello nya hostname toobe återspeglas i hello app **anpassade domäner** sidan. Försök att uppdatera hello webbläsare tooupdate hello data.
 
 ![CNAME-post som lagts till](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 Din anpassade DNS-namn är nu aktiverad i din Azure-app. 
 
-## <a name="remap-the-active-dns-name"></a>Mappa om det aktiva DNS-namnet
+## <a name="remap-hello-active-dns-name"></a>Mappa om hello aktiva DNS-namn
 
-Det enda som återstår att göra ommappning din aktiva DNS-posten så att den pekar till App Service. Höger nu kan den fortfarande pekar på den gamla platsen.
+hello endast sak vänstra toodo ommappning din aktiva DNS-poster toopoint tooApp Service. Höger nu kan den fortfarande pekar tooyour gamla platsen.
 
 <a name="info"></a>
 
-### <a name="copy-the-apps-ip-address-a-record-only"></a>Kopiera appens IP-adress (endast en post)
+### <a name="copy-hello-apps-ip-address-a-record-only"></a>Kopiera hello app IP-adress (endast en post)
 
 Om du mappa en CNAME-post, hoppar du över det här avsnittet. 
 
-Om du vill mappa en A-post måste App Service-appen externa IP-adress som visas i den **anpassade domäner** sidan.
+tooremap en A-post och du behöver hello Apptjänst appens externa IP-adress som visas i hello **anpassade domäner** sidan.
 
-Stäng den **lägga till värdnamnet** sidan genom att välja **X** i det övre högra hörnet. 
+Stäng hello **lägga till värdnamnet** sidan genom att välja **X** i hello övre högra hörnet. 
 
-I den **anpassade domäner** sidan, kopiera appens IP-adress.
+I hello **anpassade domäner** sidan, kopiera hello app IP-adress.
 
-![Portalen navigering till Azure-app](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
+![Portalen navigering tooAzure app](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-### <a name="update-the-dns-record"></a>Uppdatera DNS-posten
+### <a name="update-hello-dns-record"></a>Uppdatera hello DNS-post
 
-Välj DNS-post för att mappa om tillbaka på sidan DNS-poster i din domänleverantör.
+Tillbaka på hello DNS-poster sidan i din domänleverantör, väljer du hello DNS-poster tooremap.
 
-För den `contoso.com` rot domän exempel, mappa om A- eller CNAME-post som i exemplen i följande tabell: 
+För hello `contoso.com` rot domän exempel, mappa om hello A- eller CNAME-post som hello exemplen i följande tabell hello: 
 
 | FQDN-exempel | Typ av post | Värd | Värde |
 | - | - | - | - |
-| Contoso.com (rot) | A | `@` | IP-adress från [kopiera appens IP-adress](#info) |
+| Contoso.com (rot) | A | `@` | IP-adress från [kopiera hello app IP-adress](#info) |
 | www.contoso.com (underordnade) | CNAME | `www` | _&lt;programnamn >. azurewebsites.net_ |
 | \*. contoso.com (jokertecken) | CNAME | _\*_ | _&lt;programnamn >. azurewebsites.net_ |
 
 Spara dina inställningar.
 
-DNS-frågor ska starta matchning för din Apptjänst-app omedelbart efter DNS-spridningen händer.
+DNS-frågor ska starta lösa tooyour Apptjänst-app omedelbart efter DNS-spridningen händer.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om att koppla en anpassad SSL-certifikatet till App Service.
+Lär dig hur toobind anpassat SSL-certifikatet tooApp Service.
 
 > [!div class="nextstepaction"]
-> [Bind ett befintligt anpassat SSL-certifikat till Azure Web Apps](app-service-web-tutorial-custom-ssl.md)
+> [Bind ett befintligt anpassat SSL-certifikat tooAzure Web Apps](app-service-web-tutorial-custom-ssl.md)

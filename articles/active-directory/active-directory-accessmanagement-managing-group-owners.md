@@ -1,6 +1,6 @@
 ---
-title: "Nästa steg för hantering med hjälp av grupper | Microsoft Docs"
-description: "Avancerade hur-för hantering av säkerhetsgrupper och hur du använder dessa grupper för att hantera åtkomst till en resurs."
+title: "aaaNext steg för hantering med hjälp av grupper | Microsoft Docs"
+description: "Avancerade hur-för hantering av säkerhetsgrupper och hur toouse dessa grupper toomanage åtkomst tooa resurs."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,37 +15,37 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 82fbeb379e90add09f7c569111053f6e9b1bc9c5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4fd55f893290fac3551a130f29bd12709cf551e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="managing-owners-for-a-group"></a>Hantera ägare för en grupp
-När en resursägare har tilldelats till en resurs till en Azure AD-grupp, hanteras medlemskap i gruppen av gruppägare. Effektivt resursägaren behörighet att tilldela användare till resursen till ägare av gruppen.
+När en resursägare har tilldelat åtkomst tooa resurs tooan Azure AD-grupp, hanteras hello medlemskap i gruppen hello av hello gruppägare. hello resursägaren effektivt hello behörighet tooassign användare toohello resurs toohello ägare hello gruppen.
 
 > [!IMPORTANT]
-> Microsoft rekommenderar att du hanterar Azure AD via [Azure AD administratörscenter](https://aad.portal.azure.com) på Azure Portal istället för via den klassiska Azure-portalen som nämns i den här artikeln. 
+> Microsoft rekommenderar att du hanterar Azure AD med hjälp av hello [administrationscentret för Azure AD](https://aad.portal.azure.com) i hello Azure-portalen istället för att använda hello klassiska Azure-portalen som hänvisas till i den här artikeln. 
 
 ## <a name="assigning-group-ownership"></a>Tilldela ägarskap för grupp
-**Att lägga till en ägare till en grupp**
+**tooadd en ägare tooa grupp**
 
-1. I den [klassiska Azure-portalen](https://manage.windowsazure.com)väljer **Active Directory**, och sedan öppna din organisations katalog.
-2. Välj den **grupper** och sedan öppna den grupp som du vill lägga till ägare till.
+1. I hello [klassiska Azure-portalen](https://manage.windowsazure.com)väljer **Active Directory**, och sedan öppna din organisations katalog.
+2. Välj hello **grupper** fliken och sedan öppna hello-grupp som du vill tooadd ägare till.
 3. Välj **lägga till ägare**.
-4. På den **lägga till ägare** markerar du den användare som du vill lägga till som ägare av den här gruppen och kontrollera att namnet läggs till i **valda** fönstret.
+4. På hello **lägga till ägare** sidan, Välj hello användare du vill tooadd hello ägare av den här gruppen och kontrollera att namnet läggs toohello **valda** fönstret.
 
-**Ta bort en ägare från en grupp**
+**tooremove ägare från en grupp**
 
-1. I den [klassiska Azure-portalen](https://manage.windowsazure.com)väljer **Active Directory**, och sedan öppna din organisations katalog.
-2. Välj den **grupper** och sedan öppna den grupp som du vill ta bort en ägare från.
-3. Välj den **ägare** fliken.
-4. Välj en ägare som du vill ta bort från den här gruppen och välj sedan **ta bort**.
+1. I hello [klassiska Azure-portalen](https://manage.windowsazure.com)väljer **Active Directory**, och sedan öppna din organisations katalog.
+2. Välj hello **grupper** fliken och sedan öppna hello grupp som du vill tooremove ägare från.
+3. Välj hello **ägare** fliken.
+4. Välj hello ägare att du vill tooremove från den här gruppen och välj sedan **ta bort**.
 
 ## <a name="additional-information"></a>Ytterligare information
 Dessa artiklar innehåller ytterligare information om Azure Active Directory.
 
-* [Hantera åtkomst till resurser med Azure Active Directory-grupper](active-directory-manage-groups.md)
+* [Hantera åtkomst tooresources med Azure Active Directory-grupper](active-directory-manage-groups.md)
 * [Azure Active Directory-cmdletar för att konfigurera gruppinställningar](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [Artikelindex för programhantering i Azure Active Directory](active-directory-apps-index.md)
 * [Vad är Azure Active Directory?](active-directory-whatis.md)

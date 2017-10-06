@@ -1,6 +1,6 @@
 ---
-title: "Aktivera Identitetsskydd för Azure Active Directory | Microsoft Docs"
-description: "Lär dig hur du aktiverar Azure Active Directory Identity Protection."
+title: aaaEnabling Azure Active Directory Identity Protection | Microsoft Docs
+description: "Lär dig hur tooenable Azure Active Directory Identity Protection."
 services: active-directory
 keywords: "Azure active directory identitetsskydd, cloud app discovery, hantera program, säkerhet, risk, risknivå, säkerhetsproblem och säkerhetsprincip"
 documentationcenter: 
@@ -15,31 +15,31 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: e0683e837086ca08f4b4b3f49695bdd2b4063ea4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d26f466f5c7d6a425528a277d98c2c4b341ff8de
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Aktivera Identitetsskydd för Azure Active Directory
 Azure Active Directory Identity Protection är en ny funktion som ger en samlad vy i inloggning aktiviteter och potentiella säkerhetsproblem och hjälper dig att skydda meddelanden, risk-baserade principer och rekommendationer för reparation ditt företag. 
 
-Tjänsten identifierar misstänkta aktiviteter för slutanvändare och identiteter privilegierad (admin) baserat på signaler som brute force-attacker, läcka ut autentiseringsuppgifter, inloggningar från okända platser, infekterade enheter att skydda mot dessa aktiviteter i realtid. Viktigare, baserat på dessa aktiviteter kan en användare risk allvarlighetsgrad beräknas och risker-baserade principer kan konfigureras och automatiskt skydda identiteter i din organisation. Mer information finns i [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+hello-tjänsten identifierar misstänkta aktiviteter för slutanvändare och Privilegierade (admin) identiteter baserat på signaler som brute force-attacker läcka ut autentiseringsuppgifter, inloggningar från okända platser infekterade enheter, tooprotect mot dessa aktiviteter i realtid. Viktigare, baserat på dessa aktiviteter kan en användare risk allvarlighetsgrad beräknas och risker-baserade principer kan konfigureras och automatiskt skydda hello identiteter i din organisation. Mer information finns i [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 
-Detta avsnitt visar hur du aktiverar Azure Active Directory Identity Protection.
+Detta avsnitt visar hur tooenable Azure Active Directory Identity Protection.
 
-## <a name="steps-to-enable-azure-active-directory-identity-protection"></a>Steg för att Aktivera Identitetsskydd för Azure Active Directory
-1. [Inloggning](https://ms.portal.azure.com/) till din Azure-portalen som global administratör. 
-2. I Azure-portalen klickar du på **Marketplace**.
+## <a name="steps-tooenable-azure-active-directory-identity-protection"></a>Steg tooenable Azure Active Directory Identity Protection
+1. [Inloggning](https://ms.portal.azure.com/) tooyour Azure-portalen som global administratör. 
+2. I hello Azure-portalen klickar du på **Marketplace**.
    
     ![Skapa](./media/active-directory-identityprotection-enable/01.png "skapa")
-3. I listan med program klickar du på **säkerhet + identitet**.
+3. Klicka i listan med program hello **säkerhet + identitet**.
    
     ![Skapa](./media/active-directory-identityprotection-enable/02.png "skapa")
 4. Klicka på **Azure AD Identity Protection**.
    
     ![Skapa](./media/active-directory-identityprotection-enable/03.png "skapa")
-5. På den **Azure AD Identity Protection** bladet, klickar du på **skapa**.
+5. På hello **Azure AD Identity Protection** bladet, klickar du på **skapa**.
    
     ![Skapa](./media/active-directory-identityprotection-enable/04.png "skapa")
 

@@ -1,6 +1,6 @@
 ---
 title: "Krav för Azure AD SSPR data | Microsoft Docs"
-description: "Uppgifter som krävs för Azure AD-lösenordet för självbetjäning återställning och hur du uppfylla dem."
+description: "Återställa datakrav för Azure AD-lösenordet för självbetjäning och hur toosatisfy dem."
 services: active-directory
 keywords: 
 documentationcenter: 
@@ -16,24 +16,24 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 2d1afd2d1265b371e0d311ed70fffbc55874b0a7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b68a1d7914dcd0bb4509d0e94914dc4309f4463a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Distribuera utan slutanvändarregistrering för återställning av lösenord
 
-Distribution av självbetjäningsportalen lösenord återställa (SSPR) kräver autentiseringsdata finnas. Vissa organisationer har användarna ange sina autentiseringsdata själva, men många organisationer föredrar att synkronisera med befintliga data i Active Directory. Om du har korrekt formaterade data i din lokala katalog och konfigurerar [Azure AD Connect med standardinställningar](./connect/active-directory-aadconnect-get-started-express.md), att data görs tillgänglig för Azure AD och SSPR utan användaråtgärder krävs.
+Distribution av självbetjäningsportalen lösenord återställa (SSPR) kräver autentisering data toobe finns. Vissa organisationer har användarna ange sina autentiseringsdata själva, men många organisationer föredrar toosynchronize med befintliga data i Active Directory. Om du har korrekt formaterade data i din lokala katalog och konfigurerar [Azure AD Connect med standardinställningar](./connect/active-directory-aadconnect-get-started-express.md), data blir tillgängliga tooAzure AD och SSPR utan användaråtgärder krävs.
 
-Alla telefonnummer måste vara i formatet + CountryCode PhoneNumber exempel: + 1 4255551234 ska fungera korrekt.
+Alla telefonnummer måste vara i formatet hello + CountryCode PhoneNumber exempel: + 1 4255551234 toowork korrekt.
 
 > [!NOTE]
-> Återställning av lösenord stöder inte telefonanknytningar. Även i formatet + 1 4255551234 X 12345 tas tillägg bort innan anropet görs.
+> Återställning av lösenord stöder inte telefonanknytningar. Tillägg tas bort innan hello görs även i hello + 1 4255551234 X 12345-format.
 
 ## <a name="fields-populated"></a>Fält
 
-Om du använder standardinställningarna i Azure AD Connect görs följande avbildningar.
+Om du använder standardinställningarna för hello i Azure AD Connect hello följande görs mappningar.
 
 | Lokala AD | Azure AD | Azure AD Authentication kontaktinformation |
 | --- | --- | --- |
@@ -43,21 +43,21 @@ Om du använder standardinställningarna i Azure AD Connect görs följande avbi
 
 ## <a name="security-questions-and-answers"></a>Säkerhetsfrågor och svar
 
-Säkerhetsfrågor och svar lagras på ett säkert sätt i Azure AD-klienten och är bara tillgänglig för användare via den [SSPR-registreringsportalen](https://aka.ms/ssprsetup). Administratörer kan inte se eller ändra innehållet i en annan användare frågor och svar.
+Säkerhetsfrågor och svar lagras på ett säkert sätt i Azure AD-klienten och är endast tillgänglig toousers via hello [SSPR-registreringsportalen](https://aka.ms/ssprsetup). Administratörer kan inte se eller ändra hello innehållet i en annan användare frågor och svar.
 
 ### <a name="what-happens-when-a-user-registers"></a>Vad händer när en användare som registrerar
 
-När en användare som registrerar anger registreringssidan följande fält:
+När en användare som registrerar anger hello registreringssidan hello följande fält:
 
 * Telefon för autentisering
 * E-post för autentisering
 * Säkerhetsfrågor och svar
 
-Om du har angett ett värde för **mobiltelefon** eller **alternativa e-postadress**, omedelbart fjärranvändning av dessa värden kan återställa sina lösenord, även om de inte har registrerats för tjänsten. Dessutom kan användare se dessa värden när du registrerar dig för första gången och ändra dem om de vill. När de har registrerat värdena kommer att sparas i den **telefon för autentisering** och **autentisering e-post** respektive fält.
+Om du har angett ett värde för **mobiltelefon** eller **alternativa e-postadress**, omedelbart fjärranvändning av dessa värden tooreset sina lösenord, även om de inte har registrerats för hello-tjänsten. Dessutom kan användare se dessa värden när du registrerar dig för hello första gången och ändra dem om de vill. När de har registrerat värdena kommer att sparas i hello **telefon för autentisering** och **autentisering e-post** respektive fält.
 
 ## <a name="set-and-read-authentication-data-using-powershell"></a>Ange och läsa autentiseringsdata med hjälp av PowerShell
 
-Följande fält kan anges med hjälp av PowerShell
+hello följande fält kan anges med hjälp av PowerShell
 
 * Alternativ e-postadress
 * Mobiltelefon
@@ -65,7 +65,7 @@ Följande fält kan anges med hjälp av PowerShell
 
 ### <a name="using-powershell-v1"></a>Med hjälp av PowerShell V1
 
-Om du vill komma igång behöver du [ladda ned och installera Azure AD PowerShell-modulen](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). När du har installerat kan följa du de steg som följer för att konfigurera varje fält.
+tooget igång, du behöver för[ladda ned och installera hello Azure AD PowerShell-modulen](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule). När du har installerat kan följa du hello steg som följer tooconfigure varje fält.
 
 #### <a name="set-authentication-data-with-powershell-v1"></a>Ange autentiseringsdata med PowerShell V1
 
@@ -91,7 +91,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select PhoneNumber
 Get-MsolUser | select DisplayName,UserPrincipalName,AlternateEmailAddresses,MobilePhone,PhoneNumber | Format-Table
 ```
 
-#### <a name="authentication-phone-and-authentication-email-can-only-be-read-using-powershell-v1-using-the-commands-that-follow"></a>Telefon för autentisering och autentisering e-post kan endast läsas med hjälp av Powershell V1 med de kommandon som följer
+#### <a name="authentication-phone-and-authentication-email-can-only-be-read-using-powershell-v1-using-hello-commands-that-follow"></a>Telefon för autentisering och autentisering e-post kan endast läsas med hjälp av Powershell V1 med hello kommandon som följer
 
 ```
 Connect-MsolService
@@ -101,9 +101,9 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="using-powershell-v2"></a>Med hjälp av PowerShell V2
 
-Om du vill komma igång behöver du [ladda ned och installera Azure AD-V2 PowerShell-modulen](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure%20AD%20Cmdlets/AzureAD/index.md). När du har installerat kan följa du de steg som följer för att konfigurera varje fält.
+tooget igång, du behöver för[ladda ned och installera hello V2 för Azure AD PowerShell-modulen](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure%20AD%20Cmdlets/AzureAD/index.md). När du har installerat kan följa du hello steg som följer tooconfigure varje fält.
 
-Om du vill installera snabbt från senare versioner av PowerShell som stöder installera modulen, kör du kommandona (den första raden bara kontrollerar om den är redan installerad):
+tooinstall snabbt från senare versioner av PowerShell som har stöd för installation-modulen kör kommandona (hello första raden bara kontrolleras toosee om det redan är installerat):
 
 ```
 Get-Module AzureADPreview
@@ -137,14 +137,14 @@ Get-AzureADUser | select DisplayName,UserPrincipalName,otherMails,Mobile,Telepho
 
 ## <a name="next-steps"></a>Nästa steg
 
-Följande länkar ger ytterligare information om lösenordsåterställning med Azure AD
+hello följande länkar ger ytterligare information om lösenordsåterställning med hjälp av Azure AD
 
 * [**Snabbstart** ](active-directory-passwords-getting-started.md) – Kom igång med självbetjäningsfunktionen för återställning av lösenord i Azure AD 
 * [**Licensiering**](active-directory-passwords-licensing.md) – Konfigurera Azure AD-licensiering
-* [**Distribution**](active-directory-passwords-best-practices.md) – Planera och distribuera SSPR till dina användare med hjälp av informationen finns här
-* [**Anpassa**](active-directory-passwords-customize.md) – Anpassa utseendet för företagets SSPR-funktion.
+* [**Distributionen** ](active-directory-passwords-best-practices.md) -planera och distribuera SSPR tooyour användare som använder hello vägledning finns här
+* [**Anpassa** ](active-directory-passwords-customize.md) -anpassa hello utseende och känslan av hello SSPR upplevelse för ditt företag.
 * [**Princip**](active-directory-passwords-policy.md) – Förstå och ange principer för Azure AD-lösenord
 * [**Rapportering**](active-directory-passwords-reporting.md) – Identifiera om, när och var dina användare kommer åt SSPR-funktioner
-* [**Teknisk djupdykning** ](active-directory-passwords-how-it-works.md) – Ta en titt bakom kulisserna för att förstå hur det hela fungerar
-* [**Vanliga frågor och svar**](active-directory-passwords-faq.md) – Hur gör man? Varför? Vad? Var? Vem? När? – Svar på allt du någonsin velat fråga
-* [**Felsökning** ](active-directory-passwords-troubleshoot.md) – Lär dig att lösa vanliga problem med SSPR
+* [**Tekniska ingående** ](active-directory-passwords-how-it-works.md) -gå bakom hello gardinen toounderstand hur det fungerar
+* [**Vanliga frågor och svar**](active-directory-passwords-faq.md) – Hur gör man? Varför? Vad? Var? Vem? När? -Svar tooquestions du alltid vill ha tooask
+* [**Felsöka** ](active-directory-passwords-troubleshoot.md) – Lär dig hur tooresolve vanliga problem att vi se med SSPR

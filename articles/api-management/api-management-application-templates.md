@@ -1,6 +1,6 @@
 ---
-title: Programmallar i Azure API Management | Microsoft Docs
-description: "Lär dig hur du anpassar innehållet i programsidor i developer-portalen i Azure API Management."
+title: aaaApplication mallar i Azure API Management | Microsoft Docs
+description: "Lär dig hur toocustomize hello innehållet i hello programsidor i hello developer-portalen i Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 6d2d44465800219f16866a621d4822614ac9e1dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4dc078be7163b047ca2e640a9065ba9e5ba709e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-templates-in-azure-api-management"></a>Programmallar i Azure API Management
-Azure API Management ger dig möjlighet att anpassa innehållet i developer portalens sidor med hjälp av en uppsättning mallar som konfigurerar deras innehåll. Med hjälp av [DotLiquid](http://dotliquidmarkup.org/) syntax och redigeringsprogram, t.ex [DotLiquid för Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), och en angiven uppsättning lokaliserade [String resurser](api-management-template-resources.md#strings), [glyf resurser](api-management-template-resources.md#glyphs), och [sidan kontroller](api-management-page-controls.md), du har stor flexibilitet för att konfigurera innehåll för sidorna som du vill använda dessa mallar.  
+Azure API Management ger du hello möjlighet toocustomize hello innehållet i developer portalens sidor med hjälp av en uppsättning mallar som konfigurerar deras innehåll. Med hjälp av [DotLiquid](http://dotliquidmarkup.org/) syntax och hello redigeringsprogram, t.ex [DotLiquid för Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), och en angiven uppsättning lokaliserade [String resurser](api-management-template-resources.md#strings), [ Glyf resurser](api-management-template-resources.md#glyphs), och [sidan kontroller](api-management-page-controls.md), du har stor flexibilitet tooconfigure hello innehåll hello sidor som du vill använda dessa mallar.  
   
- Mallarna i det här avsnittet kan du anpassa innehållet i programsidor i developer-portalen.  
+ hello mallar i det här avsnittet kan du toocustomize hello innehållet i hello programsidor i hello developer-portalen.  
   
 -   [Programlista](#ProductList)  
   
 -   [Programmet](#Application)  
   
 > [!NOTE]
->  Standard exempelmallarna ingår i följande dokumentation, men kan komma att ändras på grund av kontinuerliga förbättringar. Du kan visa live standardmallarna i developer-portalen genom att navigera till önskade enskilda mallar. Mer information om hur du arbetar med mallar finns [hur du anpassar API Management developer-portalen med hjälp av mallar](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Standard exempelmallarna ingår i hello följande dokumentation, men är ämne toochange på grund av toocontinuous förbättringar. Du kan visa hello live standardmallarna i hello developer-portalen genom att gå toohello önskad enskilda mallar. Mer information om hur du arbetar med mallar finns [hur toocustomize hello API Management developer-portalen med hjälp av mallar](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="ProductList"></a>Programlista  
- Den **programlista** mall kan du anpassa brödtexten i sidan program i developer-portalen.  
+ Hej **programlista** mall kan du toocustomize hello brödtext hello programmet sidan i hello developer-portalen.  
   
  ![Lista över sidan Developer Portal programmallar](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM lista sidan Developer Portal programmallar")  
   
@@ -70,7 +70,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ### <a name="controls"></a>Kontroller  
- Den `Product list` mall kan du använda följande [sidan kontroller](api-management-page-controls.md).  
+ Hej `Product list` mall kan använda följande hello [sidan kontroller](api-management-page-controls.md).  
   
 -   [växlingsfil-kontroll](api-management-page-controls.md#paging-control)  
   
@@ -78,9 +78,9 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
   
 |Egenskap|Typ|Beskrivning|  
 |--------------|----------|-----------------|  
-|Sidindelning|[Växling](api-management-template-data-model-reference.md#Paging) entitet.|Växlingsfil-information för samlingen program.|  
-|Program|Samling av [programmet](api-management-template-data-model-reference.md#Application) entiteter.|Program som är synliga för den aktuella användaren.|  
-|Kategorinamn|Sträng|Kategori för programmet.|  
+|Sidindelning|[Växling](api-management-template-data-model-reference.md#Paging) entitet.|hello sidindelning information för hello program samling.|  
+|Program|Samling av [programmet](api-management-template-data-model-reference.md#Application) entiteter.|hello program visas toohello aktuella användaren.|  
+|Kategorinamn|Sträng|hello kategori av programmet.|  
   
 ### <a name="sample-template-data"></a>Mallen exempeldata  
   
@@ -134,7 +134,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ##  <a name="Application"></a>Programmet  
- Den **programmet** mall kan du anpassa brödtexten i appen på sidan i developer-portalen.  
+ Hej **programmet** mall kan du toocustomize hello brödtext hello appen på sidan i hello developer-portalen.  
   
  ![Programmet sidan Developer Portal mallar](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM sidan Developer Portal programmallar")  
   
@@ -177,7 +177,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ### <a name="controls"></a>Kontroller  
- Den `Application` mallen kan inte användas för någon [sidan kontroller](api-management-page-controls.md).  
+ Hej `Application` mall tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datamodell  
  [Programmet](api-management-template-data-model-reference.md#Application) entitet.  
@@ -220,4 +220,4 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om hur du arbetar med mallar finns [hur du anpassar API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).
+Mer information om hur du arbetar med mallar finns [hur toocustomize hello API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).

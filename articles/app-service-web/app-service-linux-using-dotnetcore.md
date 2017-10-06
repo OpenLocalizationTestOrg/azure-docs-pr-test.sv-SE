@@ -1,5 +1,5 @@
 ---
-title: "Använda .NET Core i webbprogrammet på Linux | Microsoft Docs"
+title: "aaaUse .NET Core i webbprogrammet på Linux | Microsoft Docs"
 description: "Använd .NET Core i webbprogrammet på Linux."
 keywords: "Azure apptjänst, webbprogram, dotnet, core, linux, oss"
 services: app-service
@@ -15,40 +15,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: aelnably;wesmc;mikono;rachelap
-ms.openlocfilehash: 9226dfb90e52ac2cae2cfc4af7c0705a93f56b44
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 9b7fb7185dff2c99ed88e7937d455177504937b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-net-core-in-an-azure-web-app-on-linux"></a>Använda .NET Core i en Azure-webbapp på Linux #
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
-[Webbapp](https://docs.microsoft.com/azure/app-service-web/app-service-linux-intro) på Linux ger en mycket skalbar, automatisk uppdatering värdtjänst med Linux-operativsystem. Den här självstudiekursen innehåller stegvisa instruktioner för hur du skapar en [.NET Core](https://docs.microsoft.com/aspnet/core/) app på Azure-webbapp på Linux. 
+[Webbapp](https://docs.microsoft.com/azure/app-service-web/app-service-linux-intro) på Linux innehåller en mycket skalbar, automatisk uppdatering värd webbtjänsten använder hello Linux-operativsystem. Den här självstudiekursen innehåller stegvisa instruktioner som visar hur toocreate en [.NET Core](https://docs.microsoft.com/aspnet/core/) app på Azure-webbapp på Linux. 
 
 ![Webbapp i Linux][10]
 
-Du kan följa stegen nedan på en Mac-, Windows- eller Linux-dator.
+Du kan följa hello stegen nedan använder en Mac, Windows eller Linux-dator.
 
 ## <a name="prerequisites"></a>Krav ##
 
-För att slutföra den här kursen behöver du: 
+toocomplete den här kursen: 
 
-* Installera den [.NET Core SDK](https://www.microsoft.com/net/download/core).
+* Installera hello [.NET Core SDK](https://www.microsoft.com/net/download/core).
 * Installera [Git](https://git-scm.com/downloads).
 
 [!INCLUDE [Free trial note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-local-net-core-application"></a>Skapa ett lokalt program i .NET Core ##
 
-Starta en ny terminalsession. Skapa en katalog med namnet `hellodotnetcore`, och ändra katalogen till den. Skriv följande: 
+Starta en ny terminalsession. Skapa en katalog med namnet `hellodotnetcore`, och ändra hello aktuella directory tooit. Skriv hello följande: 
 
 ```
 dotnet new web
 ``` 
 
-  Det här kommandot skapar tre filer (*hellodotnetcore.csproj*, *Program.cs*, och *Startup.cs*) och en tom mapp (*wwwroot /*) under den aktuella katalogen. Innehållet i `.csproj` filen bör se ut ungefär så här: 
+  Det här kommandot skapar tre filer (*hellodotnetcore.csproj*, *Program.cs*, och *Startup.cs*) och en tom mapp (*wwwroot /*) under hello aktuell katalog. innehållet i hello `.csproj` filen bör se ut hello följande: 
 
 ```xml
   <!-- Empty lines are omitted. -->
@@ -66,11 +66,11 @@ dotnet new web
   </Project>
 ```
 
-Eftersom den här appen är ett webbprogram, en referens till ett ASP.NET Core-paket har lagts till automatiskt i *hellodotnetcore.csproj* fil. Versionsnummer för paketet anges enligt den valda framework. Det här exemplet refererar till ASP.NET Core version 1.1.2 eftersom .NET Core 1.1 används.
+Eftersom den här appen är ett webbprogram, läggs en referens tooan ASP.NET Core-paketet har automatiskt toohello *hellodotnetcore.csproj* fil. hello versionsnumret för hello paketet anges enligt toohello valt framework. Det här exemplet refererar till ASP.NET Core version 1.1.2 eftersom .NET Core 1.1 används.
 
-## <a name="build-and-test-the-application-locally"></a>Skapa och testa programmet lokalt ##
+## <a name="build-and-test-hello-application-locally"></a>Skapa och testa hello programmet lokalt ##
 
-Du kan skapa och köra appen med .NET Core den `dotnet restore` kommandot följt av den `dotnet run` kommandot som visas här:
+Du kan skapa och köra appen .NET Core med hello `dotnet restore` kommandot följt av hello `dotnet run` kommandot som visas här:
 
 ```
 dotnet restore
@@ -78,54 +78,54 @@ dotnet run
 ```
 
 
-När programmet startas, visar ett meddelande om appen lyssnar på inkommande begäranden på en port. 
+När programmet hello startar visar ett meddelande om hello app lyssnar tooincoming begäranden på en port. 
 
 ```bash
 Hosting environment: Production
 Content root path: C:\hellodotnetcore
 Now listening on: http://localhost:5000
-Application started. Press Ctrl+C to shut down.
+Application started. Press Ctrl+C tooshut down.
 ```
 
-Testa den genom att bläddra till `http://localhost:5000/` med din webbläsare. Om allt fungerar bra visas ”Hello World”! som resultattext.
+Testa den genom att bläddra för`http://localhost:5000/` med din webbläsare. Om allt fungerar bra visas ”Hello World”! som hello resultattext.
 
 ![Testa med webbläsare][7]
 
-## <a name="create-a-net-core-app-in-the-azure-portal"></a>Skapa ett .NET Core app i Azure-portalen ##
+## <a name="create-a-net-core-app-in-hello-azure-portal"></a>Skapa en .NET Core-app i hello Azure-portalen ##
 
-Du måste först skapa ett tomt webbprogram. Logga in på den [Azure-portalen](https://portal.azure.com/) och skapa en ny [webbprogrammet på Linux](https://portal.azure.com/#create/Microsoft.AppSvcLinux).
+Du måste först toocreate ett tomt webbprogram. Logga in toohello [Azure-portalen](https://portal.azure.com/) och skapa en ny [webbprogrammet på Linux](https://portal.azure.com/#create/Microsoft.AppSvcLinux).
 
 ![Skapa en webbapp][1]
 
-När den **skapa** öppnas, innehåller information om ditt webbprogram:
+När hello **skapa** öppnas, innehåller information om ditt webbprogram:
 
 ![Om du väljer en .NET Core runtime stack][2]
 
-Använd följande tabell som en vägledning för att fylla i den **skapa** sidan och välj sedan **OK** och **skapa** att skapa appen.
+Använd hello följande tabell som en guide toofill ut hello **skapa** sidan och välj sedan **OK** och **skapa** toocreate hello app.
 
 | Inställning      | Föreslaget värde  | Beskrivning                                        |
 | ------------ | ---------------- | -------------------------------------------------- |
-| Appnamn | hellodotnetcore  | Namnet på din app. Det här namnet måste vara unikt. |
-| Prenumeration | Välj en befintlig prenumeration | Azure-prenumeration. |
-| Resursgrupp | myResourceGroup |  Azure resursgruppen som innehåller webbappen. |
-| App Service-plan | Namn på befintliga App Service-Plan |  App Service-plan.  |
-| Konfigurera behållare | .NET core 1.1 | Typ av behållare för det här webbprogrammet: inbyggda, Docker eller privata registret. |
-| Bildens källa  | Inbyggd  |  Bildens källa. |
-| Runtime-stacken  | .NET core 1.1  | Runtime-stacken och version.  |
+| Appnamn | hellodotnetcore  | hello namnet på din app. Det här namnet måste vara unikt. |
+| Prenumeration | Välj en befintlig prenumeration | hello Azure-prenumeration. |
+| Resursgrupp | myResourceGroup |  hello Azure-resurs grupp toocontain hello webbapp. |
+| App Service-plan | Namn på befintliga App Service-Plan |  hello App Service-plan.  |
+| Konfigurera behållare | .NET core 1.1 | Hej typ av behållare för det här webbprogrammet: inbyggda, Docker eller privata registret. |
+| Bildens källa  | Inbyggd  |  hello källa hello avbildningen. |
+| Runtime-stacken  | .NET core 1.1  | hello runtime-stacken och version.  |
 
 ## <a name="deploy-your-application-via-git"></a>Distribuera programmet via Git ##
 
-Använda Git för att distribuera programmet till Azure App Service Web App på Linux .NET Core.
+Använda Git toodeploy hello .NET Core programmet tooAzure App Service Web App på Linux.
 
-Nya Azure-webbappen har redan konfigurerats för Git-distribution. Du hittar URL för Git-distribution genom att navigera till följande URL när du har infogat din webbprogrammets namn:
+hello nya Azure-webbapp har redan konfigurerats Git-distribution. Du hittar hello URL för Git-distribution genom att gå toohello följande URL när du har infogat din webbprogrammets namn:
 
 ```https://{your web app name}.scm.azurewebsites.net/api/scm/info```
 
-Git-URL har följande format baserat på din webbprogrammets namn:
+hello URL för Git har hello följande baserat på din webbprogrammets namn:
 
 ```https://{your web app name}.scm.azurewebsites.net/{your web app name}.git```
 
-Kör följande kommandon för att distribuera lokala programmet till Azure webbapp: 
+Kör följande kommandon toodeploy hello lokalt program tooyour Azure webbapp hello: 
  
 ```bash
 git init
@@ -135,9 +135,9 @@ git commit -m "Initial deployment commit"
 git push azure master
 ```
 
-Du behöver inte push alla filer under *bin /* eller *obj /* kataloger eftersom programmet är inbyggd i molnet när programmets källfiler pushas till Azure. När build-processen är klar, binära filer kopieras till programmets katalog vid */home/plats/wwwroot/*.
+Du behöver inte toopush alla filer under *bin /* eller *obj /* kataloger eftersom programmet är inbyggd i molnet hello när hello programmets tooAzure push-källfiler. När hello build-processen är klar, binära filer kopieras till hello tillämpningsprogrammets katalog på */home/plats/wwwroot/*.
 
-Bekräfta att fjärråtkomst distributionsåtgärder rapporterar lyckades. Push-åtgärder kan ta ett tag sedan paketet upplösning och skapa process som körs i molnet. Du ser flera statusmeddelanden, inklusive de som anger att filerna har kopierats. Resultatet bör likna följande:
+Bekräfta att hello remote distributionsåtgärder rapporterar lyckades. Push-åtgärder kan ta ett tag sedan paketet upplösning och skapa processen genom att köra i hello molnet. Du ser flera statusmeddelanden, inklusive de som anger att filerna har kopierats. hello utdata ska se ut ungefär toohello följande:
 
 ```bash
 /* some output has been removed for brevity */
@@ -151,14 +151,14 @@ remote: Omitting next output lines...
 remote: Finished successfully.
 remote: Running post deployment commands...
 remote: Deployment successful.
-To https://hellodotnetcore.scm.azurewebsites.net/
+toohttps://hellodotnetcore.scm.azurewebsites.net/
  * [new branch]           master -> master
 
 ```
 
-När distributionen är klar startar du om ditt webbprogram för att distributionen ska börja gälla. Gör du genom att gå till Azure-portalen och gå till den **översikt** sidan av ditt webbprogram. Välj den **starta om** knappen på sidan. När ett popup-fönster visas, väljer du **Ja** att bekräfta. Du kan sedan bläddra ditt webbprogram som visas här:
+Starta om ditt webbprogram för hello distribution tootake effekt när hello distributionen är klar. toodo kan gå toohello Azure-portalen och navigera toohello **översikt** sidan av ditt webbprogram. Välj hello **starta om** knappen hello på sidan. När ett popup-fönster visas, väljer du **Ja** tooconfirm. Du kan sedan bläddra ditt webbprogram som visas här:
 
-![.NET Core app distribueras till Azure App Service på Linux-surfning][10]
+![Bläddra .NET Core distribuerats appen tooAzure Apptjänst på Linux][10]
 
 [!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 

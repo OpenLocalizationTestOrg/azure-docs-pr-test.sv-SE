@@ -1,6 +1,6 @@
 ---
 title: "SensorTag enhet & Azure IoT-Gateway - lektion 2: Hämta verktyg (macOS) | Microsoft Docs"
-description: "Installera verktyg på Mac-dator, skapa en IoT-hubb och registrera enheten i IoT-hubben."
+description: "Installera verktyg på Mac-dator, skapar en IoT-hubb och registrera enheten i hello IoT-hubb."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,13 +17,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 07bc5f2cf6542273c334371b77520c674c5d2f00
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 44bce452690e18e6c803df564fdafcdda7f41c8c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-macos"></a>Skaffa dig verktyg (MacOS)
+# <a name="get-hello-tools-macos"></a>Hämta hello verktyg (MacOS)
 > [!div class="op_single_selector"]
 > * [Windows 7 eller senare](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
 > * [Ubuntu 16.04](iot-hub-gateway-kit-c-lesson2-get-the-tools-ubuntu.md)
@@ -32,46 +32,46 @@ ms.lasthandoff: 07/11/2017
 ## <a name="what-you-will-do"></a>Vad du ska göra
 
 - Installera Git, Node.js, Gulp, Python.
-- Installera Azure-kommandoradsgränssnittet (Azure CLI). 
+- Installera hello Azure-kommandoradsgränssnittet (Azure CLI). 
 
-Om du har några problem kan hitta lösningar på den [felsökning sidan](iot-hub-gateway-kit-c-troubleshooting.md).
+Om du har några problem med söka efter lösningar på hello [felsökning sidan](iot-hub-gateway-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
 
 I den här lektionen får du lära dig:
 
-- Så här installerar du [Git](https://git-scm.com/) och [Node.js](https://nodejs.org/en/).
-  - Git är ett system för öppen källkod distribuerade versionen. Exempelprogram för den här lektionen lagras på Git.
+- Hur tooinstall [Git](https://git-scm.com/) och [Node.js](https://nodejs.org/en/).
+  - Git är ett system för öppen källkod distribuerade versionen. hello-exempelprogram för den här lektionen lagras på Git.
   - Node.js är JavaScript-körning med ett omfattande paketet ekosystem.
-- Hur du använder [NPM](https://www.npmjs.com/) installera Node.js utvecklingsverktyg.
-  - Versionen som krävs för Node.js är 4.5 LTS.
-  - NPM är en av de paket cheferna för Node.js.
-- Så här installerar Visual Studio-koden.
+- Hur toouse [NPM](https://www.npmjs.com/) tooinstall Node.js utvecklingsverktyg.
+  - hello version som krävs av Node.js är 4.5 LTS.
+  - NPM är en av hello paketet chefer för Node.js.
+- Hur tooinstall Visual Studio Code.
   - Visual Studio-koden är plattformsoberoende redigerare för enkel men kraftfull källa för Windows, Linux och macOS. Det har bra stöd för felsökning, inbäddad Git-kontroll, syntaxmarkering, intelligent kod slutförande, kodavsnitt och koden eftersom samt.
-- Hur du installerar Python.
+- Hur tooinstall Python.
   - Python är en term som används på hög nivå, allmänna, tolkad och dynamiska programmeringsspråk.
-- Så här installerar du Azure CLI.
-  - Azure CLI tillhandahåller en flera plattformar kommandoraden för Azure. Du arbetar direkt från en kommandorad för att etablera och hantera resurser.
-- Hur du använder Azure CLI för att skapa en IoT-hubb.
+- Hur tooinstall hello Azure CLI.
+  - hello Azure CLI tillhandahåller en flera plattformar kommandoraden för Azure. Du arbetar direkt från en kommandorad tooprovision och hantera resurser.
+- Hur toouse hello Azure CLI toocreate en IoT-hubb.
 
 ## <a name="what-you-need"></a>Vad du behöver
 
-- En Internet-anslutning att hämta verktyg och program.
+- En Internet-anslutning toodownload hello verktyg och program.
 - En Mac-dator som kör OS X Yosemite (10.10) eller senare.
 
 ## <a name="install-git-and-nodejs"></a>Installera Git och Node.js
 
-Installera Git och Node.js med verktyget Homebrew paketet för hantering genom att följa dessa steg:
+tooinstall Git och Node.js, använder du hanteringsverktyg för hello Homebrew paketet genom att följa dessa steg:
 
-1. [Hämta](http://brew.sh/) och installera Homebrew. Om du redan har installerat Homebrew går du till steg 2.
-   1. Tryck på `Cmd + Space` och ange `Terminal` att öppna en terminal.
-   2. Kör följande kommando:
+1. [Hämta](http://brew.sh/) och installera Homebrew. Om du redan har installerat Homebrew går toostep 2.
+   1. Tryck på `Cmd + Space` och ange `Terminal` tooopen en terminal.
+   2. Kör följande kommando hello:
 
       ```bash
       /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
       ```
 
-2. Installera Git och Node.js genom att köra följande kommando:
+2. Installera Git och Node.js genom att köra följande kommando hello:
 
     ```bash
     brew install node git
@@ -79,57 +79,57 @@ Installera Git och Node.js med verktyget Homebrew paketet för hantering genom a
 
 ## <a name="install-nodejs-development-tools"></a>Installera Node.js utvecklingsverktyg
 
-Du använder [gulp.js](http://gulpjs.com/) att automatisera distribution och körning av skript.
+Du använder [gulp.js](http://gulpjs.com/) tooautomate distribution och körning av skript.
 
-Om du vill installera gulp, kör du följande kommando i en terminal:
+tooinstall gulp kör följande kommando i hello terminal hello:
 
 ```bash
 npm install -g gulp
 ```
 
-Om du får problem med installationen finns i [felsökningsguide för](iot-hub-gateway-kit-c-troubleshooting.md) efter lösningar på vanliga problem.
+Om du får problem med hello installation finns hello [felsökningsguide för](iot-hub-gateway-kit-c-troubleshooting.md) för lösningar toocommon problem.
 
 > [!Note]
-> Noden, NPM och Gulp krävs för att köra automatiserade skript som utvecklats i Node.js.
+> Noden, NPM och Gulp är obligatoriska toorun automatiseringsskript utvecklats i Node.js.
 
 ## <a name="install-python"></a>Installera Python
 
 Även om Mac OS X har Python 2.7, rekommenderar vi att du installerar Python via Homebrew. Se [installerar Python på Mac OS X](http://docs.python-guide.org/en/latest/starting/install/osx/).
 
-Installera Python och pip genom att köra följande kommando:
+Installera Python och pip genom att köra följande kommando hello:
 
 ```bash
 brew install python
 ```
 
-## <a name="install-the-azure-cli"></a>Installera Azure CLI
+## <a name="install-hello-azure-cli"></a>Installera hello Azure CLI
 
-Så här installerar du Azure CLI:
+tooinstall hello Azure CLI, Följ dessa steg:
 
-1. Kör följande kommandon i terminalen:
+1. Kör följande kommandon i hello terminal hello:
    ```bash
    pip install --upgrade azure-cli
    pip install --upgrade azure-cli-iot
    ```
-   Installationen kan ta 5 minuter.
+   hello-installationen kan ta 5 minuter.
 
-2. Verifiera installationen genom att köra följande kommando:
+2. Kontrollera hello installationen genom att köra följande kommando hello:
    ```bash
    az iot -h
    ```
-   Du bör se följande utdata om installationen har slutförts.
+   Du bör se hello följande utdata om hello-installationen har slutförts.
 
    ![Verifiera installation av Azure CLI](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_osx.png)
 
 ## <a name="install-visual-studio-code"></a>Installera Visual Studio Code
 
-Du kan använda Visual Studio Code senare under kursen för att redigera konfigurationsfiler.
+Du kan använda Visual Studio Code senare i hello självstudiekursen tooedit konfigurationsfiler.
 
 [Hämta](https://code.visualstudio.com/docs/setup/osx) och installera Visual Studio-koden.
 
 ## <a name="summary"></a>Sammanfattning
 
-Du har installerat alla verktyg som krävs och programvara på en Mac-dator. Nästa uppgift är att använda Azure CLI för att skapa en IoT-hubb och registrera enheten i din IoT-hubb.
+Du har installerat alla hello krävs verktyg och program på en Mac-dator. Nästa uppgift är toouse hello Azure CLI toocreate en IoT-hubb och registrera enheten i din IoT-hubb.
 
 ## <a name="next-steps"></a>Nästa steg
 [Skapa en IoT-hubb och registrera enheten](iot-hub-gateway-kit-c-lesson2-register-device.md)

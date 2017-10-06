@@ -1,6 +1,6 @@
 ---
-title: "Lägg till Push-meddelanden i Apache Cordova-App med Azure Mobilappar | Microsoft Docs"
-description: "Lär dig hur du använder Azure Mobile Apps för att skicka push-meddelanden till din Apache Cordova-app."
+title: aaaAdd Push-meddelanden tooApache Cordova-App med Azure Mobile Apps | Microsoft Docs
+description: "Lär dig hur toouse Azure Mobile Apps toosend push-meddelanden tooyour Apache Cordova-app."
 services: app-service\mobile
 documentationcenter: javascript
 manager: syntaxc4
@@ -14,24 +14,24 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
-ms.openlocfilehash: dc3cab0a6a8b4a56ab0fba1a02e5bba9d0ed1b1f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8e1b23d6145b446b6f01599337b677e2f2b31d7e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-push-notifications-to-your-apache-cordova-app"></a>Lägg till push-meddelanden i din Apache Cordova-app
+# <a name="add-push-notifications-tooyour-apache-cordova-app"></a>Lägg till push-meddelanden tooyour Apache Cordova-app
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Översikt
-I kursen får du lägga till push-meddelanden i [Apache Cordova Snabbstart]-projektet så att ett push-meddelande skickas till enheten varje gång en post infogas.
+I kursen får du lägga till push-meddelanden toohello [Apache Cordova Snabbstart]-projekt så att ett push-meddelande skickas toohello enheten varje gång en post infogas.
 
-Om du inte använder hämtade Snabbstart serverprojekt måste push notification extension-paketet. Mer information finns i [arbeta med serverdelen .NET SDK för Azure Mobile Apps][1].
+Om du inte använder hello laddat ned Snabbstart serverprojekt och du behöver hello tilläggspaket för push-meddelande. Mer information finns i [arbeta med serverdelen för hello .NET SDK för Azure Mobile Apps][1].
 
 ## <a name="prerequisites"></a>Förhandskrav
-Den här kursen ingår en Apache Cordova-program som utvecklats med Visual Studio 2015 som körs på Google Android-emulatorn, en Android-enhet, en Windows-enhet och en iOS-enhet.
+Den här kursen ingår en Apache Cordova-program som utvecklats med Visual Studio 2015 som körs på hello Google Android-emulatorn, en Android-enhet, en Windows-enhet och en iOS-enhet.
 
-För att slutföra den här kursen behöver du:
+toocomplete den här kursen behöver du:
 
 * En dator med [Visual Studio Community 2015] [ 2] eller senare versioner.
 * [Visual Studio Tools för Apache Cordova][4].
@@ -46,72 +46,72 @@ För att slutföra den här kursen behöver du:
 
 [Se en video som visar stegen i det här avsnittet][9]
 
-## <a name="update-the-server-project"></a>Uppdatera serverprojektet
+## <a name="update-hello-server-project"></a>Uppdatera hello serverprojekt
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
 ## <a name="add-push-to-app"></a>Ändra din Cordova-app
-Se till att projektet Apache Cordova-app är redo att hantera push-meddelanden genom att installera pluginprogrammet Cordova push plus alla plattformsspecifika push-tjänster.
+Kontrollera din Apache Cordova-app-projekt är klar toohandle push-meddelanden genom att installera hello Cordova push-pluginprogrammet plus alla plattformsspecifika push-tjänster.
 
-#### <a name="update-the-cordova-version-in-your-project"></a>Uppdatera Cordova-version i projektet.
-Om ditt projekt använder en tidigare version av Apache Cordova än v6.1.1, uppdatera klientprojektet. Så här uppdaterar projektet:
+#### <a name="update-hello-cordova-version-in-your-project"></a>Uppdatera hello Cordova-version i projektet.
+Om ditt projekt använder en tidigare version av Apache Cordova än v6.1.1, uppdatera hello klientprojekt. tooupdate hello projekt:
 
-* Högerklicka på `config.xml` att öppna configuration designer.
-* Välj fliken plattformar.
-* Välj 6.1.1 i den **Cordova CLI** textruta.
-* Välj **skapa**, sedan **skapa lösning** att uppdatera projektet.
+* Högerklicka på `config.xml` tooopen hello configuration designer.
+* Välj fliken för hello-plattformar.
+* Välj 6.1.1 i hello **Cordova CLI** textruta.
+* Välj **skapa**, sedan **skapa lösning** tooupdate hello projektet.
 
-#### <a name="install-the-push-plugin"></a>Installera push plugin-programmet
-Apache Cordova-program hanterar inte internt enhet eller nätverket funktioner.  Dessa funktioner som tillhandahålls av plugin-program som publicerats antingen på [npm] [ 10] eller på GitHub.  Den `phonegap-plugin-push` plugin-programmet används för att hantera nätverk push-meddelanden.
+#### <a name="install-hello-push-plugin"></a>Installera hello push plugin-programmet
+Apache Cordova-program hanterar inte internt enhet eller nätverket funktioner.  Dessa funktioner som tillhandahålls av plugin-program som publicerats antingen på [npm] [ 10] eller på GitHub.  Hej `phonegap-plugin-push` plugin-programmet har använt toohandle nätverk push-meddelanden.
 
-Du kan installera pluginprogrammet push i något av följande sätt:
+Du kan installera push-plugin-programmet hello i något av följande sätt:
 
-**Från Kommandotolken:**
+**Från hello-kommandotolk:**
 
-Kör följande kommando:
+Kör följande kommando hello:
 
     cordova plugin add phonegap-plugin-push
 
 **Från Visual Studio:**
 
-1. I Solution Explorer öppnar den `config.xml` klickar du på filen **plugin-program** > **anpassad**väljer **Git** som installationskälla, ange `https://github.com/phonegap/phonegap-plugin-push` som källa.
+1. I Solution Explorer öppnar du hello `config.xml` klickar du på filen **plugin-program** > **anpassad**väljer **Git** som installationskälla, ange `https://github.com/phonegap/phonegap-plugin-push`som hello källa.
 
    ![][img1]
 
-2. Klicka på pilen bredvid installationskälla.
-3. I **SENDER_ID**, om du redan har ett numeriskt projekt-ID för Google Developer Console-projekt, du kan lägga till den här. Annars kan du ange en platshållarvärde, till exempel 777777.  Om du utvecklar för Android, kan du uppdatera det här värdet i config.xml senare.
+2. Klicka på hello pilen Nästa toohello installationskälla.
+3. I **SENDER_ID**, om du redan har ett numeriskt projekt-ID för hello Google Developer Console-projekt, du kan lägga till den här. Annars kan du ange en platshållarvärde, till exempel 777777.  Om du utvecklar för Android, kan du uppdatera det här värdet i config.xml senare.
 4. Klicka på **Lägg till**.
 
-Push-plugin-programmet har installerats.
+hello push-plugin-programmet har installerats.
 
-#### <a name="install-the-device-plugin"></a>Installera plugin-program för enhet
-Följ samma steg som du använde för att installera push plugin-programmet.  Lägga till plugin-program för enhet från listan över Core plugin-program (klicka på **plugin-program** > **Core** att hitta den). Du behöver den här plugin-programmet för att hämta plattformsnamnet på.
+#### <a name="install-hello-device-plugin"></a>Installera hello enheten plugin-programmet
+Följ hello samma procedur som du använde tooinstall hello push plugin-programmet.  Lägg till enhet-plugin-programmet hello hello Core plugin-program listan (klicka på **plugin-program** > **Core** toofind den). Du behöver det här plugin-programmet tooobtain hello plattformsnamnet.
 
 #### <a name="register-your-device-on-application-start-up"></a>Registrera din enhet på programmet uppstart
-Vi ta först minimal kod för Android. Senare ändra app att köras på iOS- eller Windows 10.
+Vi ta först minimal kod för Android. Senare ändra hello app toorun på iOS- eller Windows 10.
 
-1. Lägg till ett anrop till **registerForPushNotifications** under återanrop för inloggningen eller längst ned i den **onDeviceReady** metod:
+1. Lägg till ett anrop för**registerForPushNotifications** under hello återanrop för hello inloggningen eller längst hello hello **onDeviceReady** metod:
 
-        // Login to the service.
+        // Login toohello service.
         client.login('google')
             .then(function () {
                 // Create a table reference
                 todoItemTable = client.getTable('todoitem');
 
-                // Refresh the todoItems
+                // Refresh hello todoItems
                 refreshDisplay();
 
-                // Wire up the UI Event Handler for the Add Item
+                // Wire up hello UI Event Handler for hello Add Item
                 $('#add-item').submit(addItemHandler);
                 $('#refresh').on('click', refreshDisplay);
 
-                    // Added to register for push notifications.
+                    // Added tooregister for push notifications.
                 registerForPushNotifications();
 
             }, handleError);
 
     Det här exemplet visar anropar **registerForPushNotifications** när autentiseringen lyckas.  Du kan anropa `registerForPushNotifications()` så ofta som krävs.
 
-2. Lägg till de nya **registerForPushNotifications** metoden på följande sätt:
+2. Lägga till nya hello **registerForPushNotifications** metoden på följande sätt:
 
         // Register for Push Notifications. Requires that phonegap-plugin-push be installed.
         var pushRegistration = null;
@@ -122,13 +122,13 @@ Vi ta först minimal kod för Android. Senare ändra app att köras på iOS- ell
               wns: {}
           });
 
-        // Handle the registration event.
+        // Handle hello registration event.
         pushRegistration.on('registration', function (data) {
-          // Get the native platform of the device.
+          // Get hello native platform of hello device.
           var platform = device.platform;
-          // Get the handle returned during registration.
+          // Get hello handle returned during registration.
           var handle = data.registrationId;
-          // Set the device-specific message template.
+          // Set hello device-specific message template.
           if (platform == 'android' || platform == 'Android') {
               // Register for GCM notifications.
               client.push.register('gcm', handle, {
@@ -155,27 +155,27 @@ Vi ta först minimal kod för Android. Senare ändra app att köras på iOS- ell
 
         pushRegistration.on('error', handleError);
         }
-3. (Android) I föregående kod ersätter `Your_Project_ID` med numeriskt projektet ID för din app från den [Google Developer Console][18].
+3. (Android) Ersätt i hello föregående kod, `Your_Project_ID` med hello numeriska projektet ID för din app från den [Google Developer Console][18].
 
-## <a name="optional-configure-and-run-the-app-on-android"></a>(Valfritt) Konfigurera och köra appen på Android
-Slutför det här avsnittet om du vill aktivera push-meddelanden för Android.
+## <a name="optional-configure-and-run-hello-app-on-android"></a>(Valfritt) Konfigurera och köra hello app på Android
+Slutför det här avsnittet tooenable push-meddelanden för Android.
 
 #### <a name="enable-gcm"></a>Aktivera Firebase Cloud Messaging
-Eftersom vi utvecklar Google Android-plattformen först, måste du aktivera Firebase Cloud Messaging.
+Eftersom vi utvecklar hello Google Android-plattformen först, måste du aktivera Firebase Cloud Messaging.
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-#### <a name="configure-backend"></a>Konfigurera serverdelen för Mobilappen för att skicka push-begäranden som använder FCM
+#### <a name="configure-backend"></a>Konfigurera hello Mobilapp backend toosend push-begäranden som använder FCM
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 #### <a name="configure-your-cordova-app-for-android"></a>Konfigurera din Cordova-app för Android
-Öppna config.xml i Cordova-app och Ersätt `Your_Project_ID` med numeriskt projektet ID för din app från den [Google Developer Console][18].
+Öppna config.xml i Cordova-app och Ersätt `Your_Project_ID` med hello numeriska projektet ID för din app från hello [Google Developer Console][18].
 
         <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
             <variable name="SENDER_ID" value="Your_Project_ID" />
         </plugin>
 
-Öppna index.js och uppdatera koden med numeriska projekt-ID.
+Öppna index.js och uppdatera hello kod toouse numeriska projekt-ID.
 
         pushRegistration = PushNotification.init({
             android: { senderID: 'Your_Project_ID' },
@@ -184,116 +184,116 @@ Eftersom vi utvecklar Google Android-plattformen först, måste du aktivera Fire
         });
 
 #### <a name="configure-device"></a>Konfigurera din Android-enhet för USB-felsökning
-Innan du kan distribuera programmet till din Android-enhet, måste du aktivera USB-felsökning.  Utför följande steg på din Android-telefon:
+Innan du kan distribuera ditt program tooyour Android-enhet behöver du tooenable USB-felsökning.  Utför följande steg på din Android-telefon:
 
-1. Gå till **inställningar** > **om telefonen**, tryck på **Build-nummer** förrän utvecklarläge har aktiverats (ungefär sju gånger).
-2. Tillbaka i **inställningar** > **utvecklaralternativ** aktivera **USB-felsökning**, Anslut din Android-telefon till din utvecklings-dator med en USB-kabel.
+1. Gå för**inställningar** > **om telefonen**, tryck på hello **Build-nummer** förrän utvecklarläge har aktiverats (ungefär sju gånger).
+2. Tillbaka i **inställningar** > **utvecklaralternativ** aktivera **USB-felsökning**, Anslut din Android-telefon tooyour development dator med en USB-kabel.
 
-Vi testade detta med hjälp av en Google Nexus 5 X-enhet som kör Android 6.0 (Marshmallow).  Teknikerna som är dock gemensamma för alla moderna Android-versionen.
+Vi testade detta med hjälp av en Google Nexus 5 X-enhet som kör Android 6.0 (Marshmallow).  Hello tekniker är dock gemensamma för alla moderna Android-versionen.
 
 #### <a name="install-google-play-services"></a>Installera Google Play-tjänster
-Push-plugin-programmet är beroende av Android Google Play-tjänster för push-meddelanden.
+push-plugin-programmet hello förlitar sig på Android Google Play-tjänster för push-meddelanden.
 
-1. I Visual Studio klickar du på **verktyg** > **Android** > **Android SDK Manager**, expandera den **tillägg** mappen och markera kryssrutan för att kontrollera att var och en av följande SDK är installerat.
+1. I Visual Studio klickar du på **verktyg** > **Android** > **Android SDK Manager**, expandera hello **tillägg** mappen och kontrollera hello rutan toomake att var och en av följande SDK hello har installerats.
 
    * Android 2.3 eller högre
    * Google databasen revision 27 eller högre
    * Google Play Services 9.0.2 eller högre
 
-2. Klicka på **installationspaket** och vänta på att installationen ska slutföras.
+2. Klicka på **installationspaket** och vänta tills hello installation toocomplete.
 
-De aktuella bibliotek som krävs finns i den [phonegap-plugin-push-installation av dokumentationen][19].
+hello aktuella krävs bibliotek visas i hello [phonegap-plugin-push-installation av dokumentationen][19].
 
-#### <a name="test-push-notifications-in-the-app-on-android"></a>Testa push-meddelanden i appen på Android
-Du kan nu testa push-meddelanden genom att köra appen och lägga till objekt i tabellen TodoItem. Du kan testa från samma enhet eller från en annan enhet som du använder samma backend. Testa din Cordova-app på Android-plattformen i något av följande sätt:
+#### <a name="test-push-notifications-in-hello-app-on-android"></a>Testa push-meddelanden i hello app på Android
+Nu kan du testa push-meddelanden genom att köra hello appen och infoga objekt i hello TodoItem-tabell. Du kan testa från hello samma enhet eller från en annan enhet som du använder hello samma backend. Testa din Cordova-app på Android hello-plattformen i något av följande sätt hello:
 
-* **På en fysisk enhet:** Anslut din Android-enhet till utvecklingsdator med en USB-kabel.  I stället för **Google Android-emulatorn**väljer **enhet**. Visual Studio distribuerar programmet till enheten och därefter körs programmet.  Du kan sedan interagera med program på enheten.
+* **På en fysisk enhet:** bifoga Android-enhet tooyour utvecklingsdator med en USB-kabel.  I stället för **Google Android-emulatorn**väljer **enhet**. Visual Studio distribuerar hello programmet toohello enheten och kör sedan programmet hello.  Du kan sedan interagera med hello programmet på hello enhet.
 
-  Förbättra din utvecklingsmetod.  Dela program som skärm [Mobizen] [ 20] kan hjälpa dig att utveckla ett Android-program.  Mobizen projekt skärmen Android till en webbläsare på din dator.
+  Förbättra din utvecklingsmetod.  Dela program som skärm [Mobizen] [ 20] kan hjälpa dig att utveckla ett Android-program.  Mobizen projekt webbläsaren Android skärmen tooa på din dator.
 
 * **På en Android-emulatorn:** finns ytterligare konfigurationssteg som krävs vid körning på en emulator.
 
-    Kontrollera att du distribuerar till en virtuell enhet som innehåller Google APIs som mål, som visas i hanteraren för Android Virtual Device (AVD).
+    Kontrollera att du distribuerar tooa virtuell enhet som har Google APIs som hello mål, enligt hello Android Virtual Device (AVD)-hanteraren.
 
     ![](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
 
-    Om du vill använda en snabbare x86 emulatorn du [installera drivrutinen HAXM] [ 11] och konfigurera emulatorn för att använda den.
+    Om du vill toouse snabbare x86 emulatorn du [installera drivrutinen för hello HAXM] [ 11] och konfigurera hello emulatorn toouse den.
 
-    Lägg till ett Google-konto för Android-enhet genom att klicka på **appar** > **inställningar** > **Lägg till konto**, följ sedan anvisningarna.
+    Lägg till en Google-konto toohello Android-enhet genom att klicka på **appar** > **inställningar** > **Lägg till konto**, följ sedan anvisningarna för hello.
 
     ![](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
-    Kör appen todolist som innan och infoga ett nytt todo-objekt. Den här tiden kan visas en meddelandeikonen i meddelandefältet. Du kan öppna lådan meddelande om du vill visa den fullständiga texten i meddelandet.
+    Kör hello todolist appen som innan och infoga ett nytt todo-objekt. Den här tiden kan visas en meddelandeikonen i meddelandefältet hello. Du kan öppna hello lådan tooview hello fullständig meddelandetext av hello-meddelande.
 
     ![](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
 
 ## <a name="optional-configure-and-run-on-ios"></a>(Valfritt) Konfigurera och köra på iOS
-Det här avsnittet handlar om att köra Cordova-projektet på iOS-enheter. Om du inte arbetar med iOS-enheter, kan du hoppa över det här avsnittet.
+Det här avsnittet handlar om att köra hello Cordova-projekt på iOS-enheter. Om du inte arbetar med iOS-enheter, kan du hoppa över det här avsnittet.
 
-#### <a name="install-and-run-the-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Installera och köra iOS remote build-agent på en Mac- eller molnet tjänst
-Innan du kan köra en Cordova-app på iOS med Visual Studio, gå igenom stegen i den [iOS inställningsguiden] [ 12] att installera och köra remote build-agenten.
+#### <a name="install-and-run-hello-ios-remote-build-agent-on-a-mac-or-cloud-service"></a>Installera och köra hello iOS remote skapa agenten på en Mac- eller molnet
+Innan du kan köra en Cordova-app på iOS med Visual Studio, gå igenom hello steg i hello [iOS inställningsguiden] [ 12] tooinstall och kör hello remote skapa agenten.
 
-Kontrollera att du kan bygga appen för iOS. Stegen i guiden för installation krävs för att skapa för iOS från Visual Studio. Om du inte har en Mac, kan du skapa för iOS med fjärråtkomst build-agenten på en tjänst som MacInCloud. Mer information finns i [kör iOS-app i molnet][21].
+Kontrollera att du kan skapa hello appen för iOS. hello är stegen i guiden hello obligatoriska toobuild för iOS från Visual Studio. Om du inte har en Mac, kan du skapa för iOS med hello remote build-agenten på en tjänst som MacInCloud. Mer information finns i [kör iOS-app i hello molnet][21].
 
 > [!NOTE]
-> XCode 7 eller senare krävs för att använda push-plugin-programmet på iOS.
+> XCode 7 eller senare är obligatoriska toouse hello push-plugin-programmet på iOS.
 
-#### <a name="find-the-id-to-use-as-your-app-id"></a>Hitta ID som ska användas som App-ID
-Innan du registrerar appen för push-meddelanden, öppna config.xml i Cordova-app hitta den `id` attributvärdet i elementet widget och kopiera den för senare användning. I följande XML-ID: T är `io.cordova.myapp7777777`.
+#### <a name="find-hello-id-toouse-as-your-app-id"></a>Hitta hello ID toouse som App-ID
+Innan du registrerar appen för push-meddelanden, öppnar config.xml i Cordova-app, hitta hello `id` attributvärdet i hello widget element och kopiera den för senare användning. Hello-ID i hello följande XML, är `io.cordova.myapp7777777`.
 
         <widget defaultlocale="en-US" id="io.cordova.myapp7777777"
           version="1.0.0" windows-packageVersion="1.1.0.0" xmlns="http://www.w3.org/ns/widgets"
             xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
 
-Använd den här identifieraren senare, när du skapar ett App-ID på Apple developer-portalen. Om du skapar ett annat App-ID på developer-portalen måste du utföra några extra steg senare i den här kursen. ID: T i widget-elementet måste matcha det App-ID på developer-portalen.
+Använd den här identifieraren senare, när du skapar ett App-ID på Apple developer-portalen. Om du skapar ett annat App-ID på hello developer-portalen måste du utföra några extra steg senare i den här kursen. hello-ID i widget-elementet måste matcha hello App-ID på hello developer-portalen.
 
-#### <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Registrera appen för push-meddelanden på Apple developer-portalen
+#### <a name="register-hello-app-for-push-notifications-on-apples-developer-portal"></a>Registrera hello app för push-meddelanden på Apple developer-portalen
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
 [Titta på en video som visar liknande steg](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-5-Set-up-apns-for-push)
 
-#### <a name="configure-azure-to-send-push-notifications"></a>Konfigurera Azure för att skicka push-meddelanden
+#### <a name="configure-azure-toosend-push-notifications"></a>Konfigurera Azure toosend push-meddelanden
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
 #### <a name="verify-that-your-app-id-matches-your-cordova-app"></a>Kontrollera att din App-ID som matchar din Cordova-app
-Om App-ID som du redan skapat i Apple Developer kontot matchar ID för elementet widget i config.xml, kan du hoppa över det här steget. Dock ID: N inte matchar gör du följande:
+Om hello App-ID som du redan skapat i Apple Developer kontot matchar hello-ID för hello widget element i config.xml, kan du hoppa över det här steget. Men om hello-ID: N inte matchar ta hello följande steg:
 
-1. Ta bort mappen plattformar från projektet.
-2. Ta bort mappen plugin-program från ditt projekt.
-3. Ta bort mappen node_modules från projektet.
-4. Uppdatera attributet id för elementet widget i config.xml använda App-ID som du skapade i Apple Developer-konto.
+1. Ta bort hello plattformar mappen i projektet.
+2. Ta bort hello plugin-program-mappen i projektet.
+3. Ta bort hello node_modules mappen i projektet.
+4. Uppdatera hello ID-attribut för hello widget element i config.xml toouse hello App-ID som du skapade i Apple Developer-konto.
 5. Återskapa projektet.
 
 ##### <a name="test-push-notifications-in-your-ios-app"></a>Testa push-meddelanden i iOS-app
-1. I Visual Studio, se till att **iOS** väljs som mål för distribution och välj sedan **enhet** ska köras på den anslutna iOS-enheten.
+1. I Visual Studio, se till att **iOS** väljs som mål för distribution av hello och välj sedan **enhet** toorun på den anslutna iOS-enheten.
 
-    Du kan köra på en iOS-enhet som är ansluten till datorn med iTunes. IOS-simulatorn stöder inte push-meddelanden.
+    Du kan köra på en iOS-enheten ansluten tooyour PC med iTunes. hello iOS-simulatorn stöder inte push-meddelanden.
 
-2. Tryck på den **kör** knappen eller **F5** i Visual Studio för att skapa projektet och starta appen i en iOS-enhet, och klicka på **OK** att ta emot push-meddelanden.
+2. Tryck på hello **kör** knappen eller **F5** Visual Studio toobuild hello projektet och starta hello app i en iOS-enhet och klicka sedan på **OK** tooaccept push-meddelanden.
 
    > [!NOTE]
-   > Appen begär bekräftelse för push-meddelanden under den första körningen.
+   > hello app begär bekräftelse för push-meddelanden under hello kör först.
 
-3. I appen, skriver du en uppgift och klicka sedan på plustecknet (+) ikon.
-4. Kontrollera att ett meddelande tas emot och sedan klicka på OK för att stänga meddelandet.
+3. Skriv en aktivitet i hello appen och klicka sedan på hello plus -ikonen.
+4. Kontrollera att ett meddelande tas emot och sedan klicka på OK toodismiss hello-meddelande.
 
 ## <a name="optional-configure-and-run-on-windows"></a>(Valfritt) Konfigurera och köra i Windows
-Det här avsnittet handlar om att köra Apache Cordova-app-projekt på Windows 10-enheter (PhoneGap push plugin-programmet stöds på Windows 10). Om du inte arbetar med Windows-enheter, kan du hoppa över det här avsnittet.
+Det här avsnittet handlar om att köra hello Apache Cordova-app-projekt på Windows 10-enheter (hello PhoneGap push plugin stöds på Windows 10). Om du inte arbetar med Windows-enheter, kan du hoppa över det här avsnittet.
 
 #### <a name="register-your-windows-app-for-push-notifications-with-wns"></a>Registrera din Windows-app för push-meddelanden med WNS
-Om du vill använda Store-alternativ i Visual Studio, Välj ett mål för Windows från listan över plattformar som lösning som **Windows x64** eller **Windows x86** (undvika **Windows Platform** för push-meddelanden).
+toouse hello Store alternativ i Visual Studio, Välj ett mål för Windows hello lösning plattformar listan som **Windows x64** eller **Windows x86** (undvika **Windows Platform** för push-meddelanden).
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
 [Se en video som visar liknande steg][13]
 
-#### <a name="configure-the-notification-hub-for-wns"></a>Konfigurera meddelandehubben för WNS
+#### <a name="configure-hello-notification-hub-for-wns"></a>Konfigurera hello meddelandehubb för WNS
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-#### <a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>Konfigurera din Cordova-app för att stödja Windows push-meddelanden
-Öppna configuration designer (Högerklicka på config.xml och välj **Vydesigner**), Välj den **Windows** , och välj **Windows 10** under **Windows målversionen**.
+#### <a name="configure-your-cordova-app-toosupport-windows-push-notifications"></a>Konfigurera din Cordova-app toosupport Windows push-meddelanden
+Öppna hello configuration designer (Högerklicka på config.xml och välj **Vydesigner**), Välj hello **Windows** , och välj **Windows 10** under **Windows använder Version**.
 
-Stöd för push-meddelanden i din standard (debug) versioner, öppna build.json fil Kopiera ”version”-konfigurationen till debug-konfiguration.
+toosupport push-meddelanden i din standard (debug) versioner, öppna build.json fil. Kopiera ”version” configuration tooyour debug-konfiguration.
 
         "windows": {
             "release": {
@@ -302,7 +302,7 @@ Stöd för push-meddelanden i din standard (debug) versioner, öppna build.json 
             }
         }
 
-Efter uppdateringen måste bör build.json innehålla följande kod:
+Efter uppdateringen hello bör hello build.json innehålla hello följande kod:
 
     "windows": {
         "release": {
@@ -315,22 +315,22 @@ Efter uppdateringen måste bör build.json innehålla följande kod:
             }
         }
 
-Bygga appen och kontrollera att du har några fel. Klientappen bör nu registrera för meddelanden från serverdelen för Mobilappen. Upprepa det här avsnittet för varje Windows-projekt i din lösning.
+Skapa hello program och kontrollera att du har några fel. Klientappen bör nu registrera för hello meddelanden från hello mobilappsserverdel. Upprepa det här avsnittet för varje Windows-projekt i din lösning.
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>Testa push-meddelanden i Windows-appen
-Se till att en Windows-plattform som är markerad som mål distributionen i Visual Studio **Windows x64** eller **Windows x86**. Om du vill köra appen på en Windows 10-dator som värd för Visual Studio väljer **lokal dator**.
+I Visual Studio, se till att en Windows-plattform som är markerad som mål för distribution av hello, **Windows x64** eller **Windows x86**. toorun hello-appen på en Windows 10-dator som värd för Visual Studio väljer **lokal dator**.
 
-Klicka på Kör för att bygga projektet och starta appen.
+Tryck på hello kör knappen toobuild hello projektet och starta hello app.
 
-Skriv ett namn för en ny todoitem i appen och klicka sedan på plustecknet (+) ikon för att lägga till den.
+Skriv ett namn för en ny todoitem i hello app och klicka sedan på hello plus -ikonen tooadd den.
 
-Kontrollera att ett meddelande tas emot när objektet har lagts till.
+Kontrollera att ett meddelande tas emot när hello-objektet har lagts till.
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs mer om [Meddelandehubbar] [ 17] mer information om push-meddelanden.
-* Om du inte redan har gjort det fortsätta kursen av [att lägga till autentisering] [ 14] i din Apache Cordova-app.
+* Läs mer om [Meddelandehubbar] [ 17] toolearn om push-meddelanden.
+* Om du inte redan har gjort det, fortsätter hello självstudiekursen [att lägga till autentisering] [ 14] tooyour Apache Cordova-app.
 
-Lär dig hur du använder SDK: er.
+Lär dig hur toouse hello SDK: er.
 
 * [Apache Cordova-SDK][15]
 * [ASP.NET Server-SDK][1]

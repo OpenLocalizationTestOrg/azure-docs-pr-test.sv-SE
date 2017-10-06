@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Evernote | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Evernote."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Evernote."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,226 +14,226 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: be94152a84bbbeacb623d7dd8b540e3981931a8e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4d7017e571ed12a0b155aa188c6b0ecb3c9898a2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Självstudier: Azure Active Directory-integrering med Evernote
 
-I kursen får lära du att integrera Evernote med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate Evernote med Azure Active Directory (AD Azure).
 
-Integrera Evernote med Azure AD ger dig följande fördelar:
+Integrera Evernote med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till Evernote.
-- Du kan aktivera användarna att automatiskt hämta loggat in på Evernote (Single Sign-On) med sina Azure AD-konton.
-- Du kan hantera dina konton i en central plats - Azure-portalen.
+- Du kan styra i Azure AD som har åtkomst till tooEvernote.
+- Du kan låta dina användare tooautomatically get inloggade tooEvernote (Single Sign-On) med sina Azure AD-konton.
+- Du kan hantera dina konton i en central plats - hello Azure-portalen.
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med Evernote, behöver du följande:
+tooconfigure Azure AD-integrering med Evernote, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Evernote enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Evernote från galleriet
+1. Att lägga till Evernote från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-evernote-from-the-gallery"></a>Att lägga till Evernote från galleriet
-Du måste lägga till Evernote från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Evernote i Azure AD.
+## <a name="adding-evernote-from-hello-gallery"></a>Att lägga till Evernote från hello-galleriet
+tooconfigure hello integrering av Evernote i Azure AD, behöver du tooadd Evernote hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Evernote från galleriet:**
+**tooadd Evernote från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
-    ![Azure Active Directory-knappen][1]
+    ![hello Azure Active Directory-knappen][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
-    ![Bladet Enterprise program][2]
+    ![hello Enterprise program bladet][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
-    ![Knappen Nytt program][3]
+    ![hello-knappen för nytt program][3]
 
-4. I sökrutan skriver **Evernote**väljer **Evernote** resultatet-panelen klickar **Lägg till** för att lägga till programmet.
+4. Skriv i sökrutan hello **Evernote**väljer **Evernote** resultatet-panelen klickar **Lägg till** knappen tooadd hello program.
 
-    ![Evernote i resultatlistan](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_addfromgallery.png)
+    ![Evernote i hello resultatlistan](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Evernote baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i Evernote motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Evernote upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Evernote är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Evernote toobe upprättas.
 
-I Evernote, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+I Evernote, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Evernote, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Evernote, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Evernote](#create-an-evernote-test-user)**  – du har en motsvarighet för Britta Simon i Evernote som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Evernote](#create-an-evernote-test-user)**  -toohave en motsvarighet för Britta Simon i Evernote som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt Evernote program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt Evernote program.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Evernote:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Evernote:**
 
-1. I Azure-portalen på den **Evernote** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **Evernote** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning länk][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_samlbase.png)
 
-3. På den **Evernote domän och URL: er** avsnittet, utför följande steg om du vill konfigurera programmet i IDP initierade läge:
+3. På hello **Evernote domän och URL: er** avsnittet, utför följande steg om du inte vill tooconfigure hello programmet i IDP initierade läge hello:
 
     ![URL: er och Evernote domän med enkel inloggning information](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_url.png)
 
-    I den **identifierare** textruta anger du URL:`https://www.evernote.com/saml2`
+    I hello **identifierare** textruta typen hello URL:`https://www.evernote.com/saml2`
 
-4. Kontrollera **visa avancerade inställningar för URL: en** och utför följande steg om du vill konfigurera programmet i **SP** initierade läge:
+4. Kontrollera **visa avancerade inställningar för URL: en** och utför följande steg om du inte vill tooconfigure hello programmet hello **SP** initierade läge:
 
     ![URL: er och Evernote domän med enkel inloggning information](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_url1.png)
 
-    I den **inloggning URL** textruta anger du URL:`https://www.evernote.com/Login.action`   
+    I hello **inloggning URL** textruta typen hello URL:`https://www.evernote.com/Login.action`   
 
-5. På den **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara certifikatfilen på datorn.
+5. På hello **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara sedan hello certifikat på datorn.
 
-    ![Länken hämta certifikatet](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_certificate.png) 
+    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_certificate.png) 
 
 6. Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-evernote-tutorial/tutorial_general_400.png)
 
-7. På den **Evernote Configuration** klickar du på **konfigurera Evernote** att öppna **konfigurera inloggning** fönster. Kopiera den **SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
+7. På hello **Evernote Configuration** klickar du på **konfigurera Evernote** tooopen **konfigurera inloggning** fönster. Kopiera hello **SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
 
     ![Evernote konfiguration](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_configure.png) 
 
 8. Logga in på webbplatsen Evernote företag som en administratör i en annan webbläsarfönster.
 
-9. Gå till **Admin Console**
+9. Gå för**Admin Console**
 
     ![Administrationskonsolen](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-10. Från den **Admin Console**, gå till **”säkerhet”** och välj **' Single Sign-On-**
+10. Från hello **Admin Console**, gå för**”säkerhet”** och välj **' Single Sign-On-**
 
     ![SSO-inställning](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_sso.png)
 
-11. Konfigurera följande värden:
+11. Konfigurera hello följande värden:
 
     ![Certifikat-inställning](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_certx.png)
     
-    a.  **Aktivera enkel inloggning:** enkel inloggning är aktiverad som standard (klicka på **inaktivera enkel inloggning** att ta bort kravet SSO)
+    a.  **Aktivera enkel inloggning:** enkel inloggning är aktiverad som standard (klicka på **inaktivera enkel inloggning** tooremove hello SSO krav)
 
-    b. Klistra in **SAML enkel inloggning Tjänstwebbadress** -värde som du har kopierat från Azure-portalen i den **SAML HTTP-begäran URL** textruta.
+    b. Klistra in **SAML enkel inloggning Tjänstwebbadress** -värde som du har kopierat från hello Azure-portalen i hello **SAML HTTP-begäran URL** textruta.
 
-    c. Öppna hämtade certifikatet från Azure AD i en anteckningar och kopiera innehållet inklusive ”BEGIN CERTIFICATE” och ”END CERTIFICATE” och klistrar in det i den **X.509-certifikat** textruta. 
+    c. Öppna hello hämtat certifikat från Azure AD i en anteckningar och kopiera hello innehåll inklusive ”BEGIN CERTIFICATE” och ”END CERTIFICATE” och klistra in den i hello **X.509-certifikat** textruta. 
 
     d.Click **spara ändringar**
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
    ![Skapa en testanvändare i Azure AD][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I Azure-portalen i den vänstra rutan klickar du på den **Azure Active Directory** knappen.
+1. Klicka på hello i hello Azure-portalen hello vänster **Azure Active Directory** knappen.
 
-    ![Azure Active Directory-knappen](./media/active-directory-saas-evernote-tutorial/create_aaduser_01.png)
+    ![hello Azure Active Directory-knappen](./media/active-directory-saas-evernote-tutorial/create_aaduser_01.png)
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper**, och klicka sedan på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper**, och klicka sedan på **alla användare**.
 
-    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-evernote-tutorial/create_aaduser_02.png)
+    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-evernote-tutorial/create_aaduser_02.png)
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i den **alla användare** dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** hello överst i hello **alla användare** dialogrutan.
 
-    ![Knappen Lägg till](./media/active-directory-saas-evernote-tutorial/create_aaduser_03.png)
+    ![hello webbinställningar](./media/active-directory-saas-evernote-tutorial/create_aaduser_03.png)
 
-4. I den **användaren** dialogrutan utför följande steg:
+4. I hello **användaren** dialogrutan utför hello följande steg:
 
-    ![Dialogrutan användare](./media/active-directory-saas-evernote-tutorial/create_aaduser_04.png)
+    ![hello användardialogrutan](./media/active-directory-saas-evernote-tutorial/create_aaduser_04.png)
 
-    a. I den **namn** skriver **BrittaSimon**.
+    a. I hello **namn** skriver **BrittaSimon**.
 
-    b. I den **användarnamn** Skriv användarens Britta Simon e-postadress.
+    b. I hello **användarnamn** rutan typen hello användarens e-postadress Britta Simon.
 
-    c. Välj den **visa lösenordet** kryssrutan och sedan skriva ned det värde som visas i den **lösenord** rutan.
+    c. Välj hello **visa lösenordet** kryssrutan och sedan skriva ned hello-värde som visas i hello **lösenord** rutan.
 
     d. Klicka på **Skapa**.
  
 ### <a name="create-an-evernote-test-user"></a>Skapa en testanvändare Evernote
 
-För att aktivera Azure AD-användare att logga in på Evernote etableras de i Evernote.  
-När det gäller Evernote är etablering en manuell aktivitet.
+I ordning tooenable Azure AD-användare toolog i Evernote, måste de etableras i Evernote.  
+Hello gäller Evernote är etablering en manuell aktivitet.
 
-**Utför följande steg för att etablera en användarkonton:**
+**tooprovision användarkonton, utföra hello följande steg:**
 
-1. Logga in på webbplatsen Evernote företag som administratör.
+1. Logga in tooyour Evernote företagets webbplats som administratör.
 
-2. Klicka på den **Admin Console**.
+2. Klicka på hello **Admin Console**.
 
     ![Administrationskonsolen](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-3. Från den **Admin Console**, gå till **'Lägg till användare ”**.
+3. Från hello **Admin Console**, gå för**'Lägg till användare ”**.
 
     ![Lägg till testUser](./media/active-directory-saas-evernote-tutorial/create_aaduser_0001.png)
 
-4. **Lägg till teammedlemmar** i den **e-post** textruta Skriv e-postadressen för användarkontot och klicka på **bjuda in.**
+4. **Lägg till teammedlemmar** i hello **e-post** textruta Skriv hello e-postadressen för användarkontot och klicka på **bjuda in.**
 
     ![Lägg till testUser](./media/active-directory-saas-evernote-tutorial/create_aaduser_0002.png)
     
-5. När inbjudan har skickats får kontoinnehavaren Azure Active Directory ett e-postmeddelande för att tacka ja till inbjudan.
+5. När inbjudan har skickats får hello Azure Active Directory användare ett e-tooaccept hello inbjudan.
 
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Evernote.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooEvernote.
 
-![Tilldela rollen][200] 
+![Tilldela hello användarroll][200] 
 
-**Om du vill tilldela Evernote Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooEvernote utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Evernote**.
+2. Välj i listan med program hello **Evernote**.
 
-    ![Länken Evernote i listan med program](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_app.png)  
+    ![Hej Evernote länken i listan med program hello](./media/active-directory-saas-evernote-tutorial/tutorial_evernote_app.png)  
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
-    ![Länken ”användare och grupper”][202]
+    ![Hej ”användare och grupper” länk][202]
 
 4. Klicka på **Lägg till** knappen. Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.
 
-    ![Fönstret Lägg till tilldelning][203]
+    ![hello Lägg uppdrag fönstret][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -241,13 +241,13 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen Evernote på åtkomstpanelen du ska hämta loggat in på ditt Evernote program. Du måste logga in som en organisation konto men sedan måste du logga in med ditt eget konto. 
+Du bör få inloggade tooyour Evernote programmet när du klickar på hello Evernote panelen i hello åtkomstpanelen. Du måste logga in som en organisationskonto men måste toolog in med ditt eget konto. 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

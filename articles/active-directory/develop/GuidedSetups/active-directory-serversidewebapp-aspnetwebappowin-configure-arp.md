@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 ASP.NET Web Server komma igång - Config | Microsoft Docs"
+title: "aaaAzure AD v2 ASP.NET Web Server komma igång - Config | Microsoft Docs"
 description: "Implementera Microsoft logga In på en ASP.NET-lösning med ett traditionellt webbläsarbaserade program med OpenID Connect standard"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,24 +15,24 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 8a1650a65e7980f4a13fa4edc7918b0099bb5464
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: badc47e131290a56a507592f944a0fc7093260a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="configure-your-aspnet-web-app-with-the-applications-registration-information"></a>Konfigurera ditt ASP.NET-webbprogram med programmets registreringsinformation
+## <a name="configure-your-aspnet-web-app-with-hello-applications-registration-information"></a>Konfigurera ditt ASP.NET-webbprogram med registreringsinformation Hej program
 
-I det här steget ska du konfigurera ditt projekt för att använda SSL och sedan använda SSL-URL: en för att konfigurera ditt program registreringsinformation. Därefter kan du lägga till programmet ' registreringsinformation i lösningen via *web.config*.
+I det här steget ska du konfigurera ditt projekt toouse SSL och använda hello SSL URL tooconfigure registreringsinformation för ditt program. Sedan lägger du till hello program ' registrering information tooyour lösning via *web.config*.
 
-1.  Välj projektet i Solution Explorer och titta på den `Properties` fönstret (om du inte ser en egenskapsfönstret trycker du på F4)
-2.  Ändra `SSL Enabled` till`True`
-3.  Kopiera värdet från `SSL URL` ovan och klistra in den i den `Redirect URL` fältet överst i den här sidan och klicka sedan på *uppdatering*:<br/><br/>![Egenskaper för](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
-4.  Lägg till följande i `web.config` fil i rotens mappen under avsnittet `configuration\appSettings`:
+1.  Välj hello-projekt i Solution Explorer och titta på hello `Properties` fönstret (om du inte ser en egenskapsfönstret trycker du på F4)
+2.  Ändra `SSL Enabled` för`True`
+3.  Kopiera hello-värde från `SSL URL` ovan och klistra in den i hello `Redirect URL` fältet hello längst upp på sidan och klicka sedan på *uppdatering*:<br/><br/>![Egenskaper för](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />
+4.  Lägg till följande hello i `web.config` fil i rotens mappen under avsnittet `configuration\appSettings`:
 
 ```xml
-<add key="ClientId" value="[Enter the application Id here]" />
-<add key="RedirectUri" value="[Enter the Redirect URL here]" />
+<add key="ClientId" value="[Enter hello application Id here]" />
+<add key="RedirectUri" value="[Enter hello Redirect URL here]" />
 <add key="Tenant" value="common" />
 <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" /> 
 ```

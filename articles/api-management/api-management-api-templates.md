@@ -1,6 +1,6 @@
 ---
-title: API-mallar i Azure API Management | Microsoft Docs
-description: "Lär dig hur du anpassar innehållet i API-sidor i developer-portalen i Azure API Management."
+title: aaaAPI mallar i Azure API Management | Microsoft Docs
+description: "Lär dig hur toocustomize hello innehåll hello API sidor i hello developer-portalen i Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 3802868470f0f74cd1f895a00195259861ea16f8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fdfa76167cfaf3b23b22d6321904f34da077fecb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-templates-in-azure-api-management"></a>API-mallar i Azure API Management
-Azure API Management ger dig möjlighet att anpassa innehållet i developer portalens sidor med hjälp av en uppsättning mallar som konfigurerar deras innehåll. Med hjälp av [DotLiquid](http://dotliquidmarkup.org/) syntax och redigeringsprogram, t.ex [DotLiquid för Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), och en angiven uppsättning lokaliserade [String resurser](api-management-template-resources.md#strings), [glyf resurser](api-management-template-resources.md#glyphs), och [sidan kontroller](api-management-page-controls.md), du har stor flexibilitet för att konfigurera innehåll för sidorna som du vill använda dessa mallar.  
+Azure API Management ger du hello möjlighet toocustomize hello innehållet i developer portalens sidor med hjälp av en uppsättning mallar som konfigurerar deras innehåll. Med hjälp av [DotLiquid](http://dotliquidmarkup.org/) syntax och hello redigeringsprogram, t.ex [DotLiquid för Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), och en angiven uppsättning lokaliserade [String resurser](api-management-template-resources.md#strings), [ Glyf resurser](api-management-template-resources.md#glyphs), och [sidan kontroller](api-management-page-controls.md), du har stor flexibilitet tooconfigure hello innehåll hello sidor som du vill använda dessa mallar.  
   
- Mallarna i det här avsnittet kan du anpassa innehållet i API-sidor i developer-portalen.  
+ hello mallar i det här avsnittet kan du toocustomize hello innehåll hello API sidor i hello developer-portalen.  
   
 -   [API-lista](#APIList)  
 -   [Åtgärd](#Product)  
@@ -38,10 +38,10 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  Standard exempelmallarna ingår i följande dokumentation, men kan komma att ändras på grund av kontinuerliga förbättringar. Du kan visa live standardmallarna i developer-portalen genom att navigera till önskade enskilda mallar. Mer information om hur du arbetar med mallar finns [hur du anpassar API Management developer-portalen med hjälp av mallar](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Standard exempelmallarna ingår i hello följande dokumentation, men är ämne toochange på grund av toocontinuous förbättringar. Du kan visa hello live standardmallarna i hello developer-portalen genom att gå toohello önskad enskilda mallar. Mer information om hur du arbetar med mallar finns [hur toocustomize hello API Management developer-portalen med hjälp av mallar](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="APIList"></a>API-lista  
- Den **API listan** mall kan du anpassa brödtexten i sidan API: N i developer-portalen.  
+ Hej **API listan** mall kan du toocustomize hello brödtext hello API sidan i hello developer-portalen.  
   
  ![Developer Portal API listan](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM Developer Portal API mallistan")  
   
@@ -76,7 +76,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ### <a name="controls"></a>Kontroller  
- Den `API list` mall kan du använda följande [sidan kontroller](api-management-page-controls.md).  
+ Hej `API list` mall kan använda följande hello [sidan kontroller](api-management-page-controls.md).  
   
 -   [växlingsfil-kontroll](api-management-page-controls.md#paging-control)  
   
@@ -86,7 +86,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
   
 |Egenskap|Typ|Beskrivning|  
 |--------------|----------|-----------------|  
-|API: er|Samling av [API-översikten](api-management-template-data-model-reference.md#APISummary) entiteter.|API: erna synliga för den aktuella användaren.|  
+|API: er|Samling av [API-översikten](api-management-template-data-model-reference.md#APISummary) entiteter.|hello-API: er synliga toohello aktuella användaren.|  
   
 ### <a name="sample-template-data"></a>Mallen exempeldata  
   
@@ -109,7 +109,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ##  <a name="Product"></a>Åtgärden  
- Den **åtgärden** mall kan du anpassa brödtexten i sidan åtgärden i developer-portalen.  
+ Hej **åtgärden** mall kan du toocustomize hello brödtext hello åtgärden sida i hello developer-portalen.  
   
  ![Developer Portal åtgärden sidan](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM Developer-portalen mallar åtgärden sida")  
   
@@ -335,21 +335,21 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ### <a name="controls"></a>Kontroller  
- Den `Operation` mallen kan inte användas för någon [sidan kontroller](api-management-page-controls.md).  
+ Hej `Operation` mall tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datamodell  
   
 |Egenskap|Typ|Beskrivning|  
 |--------------|----------|-----------------|  
-|ApiId|Sträng|Id för den aktuella API.|  
-|apiName|Sträng|Namnet på API: et.|  
-|apiDescription|Sträng|En beskrivning av API: et.|  
-|api|[API-översikten](api-management-template-data-model-reference.md#APISummary) entitet.|Den aktuella API.|  
-|åtgärden|[Åtgärd](api-management-template-data-model-reference.md#Operation)|För närvarande visas igen.|  
-|sampleUrl|Sträng|URL till den aktuella åtgärden.|  
+|ApiId|Sträng|hello-id för hello aktuella API.|  
+|apiName|Sträng|hello namnet på hello API.|  
+|apiDescription|Sträng|En beskrivning av hello API.|  
+|api|[API-översikten](api-management-template-data-model-reference.md#APISummary) entitet.|hello aktuella API.|  
+|åtgärden|[Åtgärd](api-management-template-data-model-reference.md#Operation)|hello visas igen.|  
+|sampleUrl|Sträng|hello-URL för hello den aktuella åtgärden.|  
 |operationMenu|[Åtgärd-menyn](api-management-template-data-model-reference.md#Menu)|En meny med åtgärder för detta API.|  
-|consoleUrl|URI: N|URI för den **prova** knappen.|  
-|Exempel|Samling av [kodexemplet](api-management-template-data-model-reference.md#Sample) entiteter.|Kodexempel för den aktuella åtgärden...|  
+|consoleUrl|URI: N|hello URI för hello **prova** knappen.|  
+|Exempel|Samling av [kodexemplet](api-management-template-data-model-reference.md#Sample) entiteter.|hello kodexempel för hello aktuella åtgärden...|  
   
 ### <a name="sample-template-data"></a>Mallen exempeldata  
   
@@ -376,7 +376,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -456,7 +456,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -480,7 +480,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -504,7 +504,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -528,7 +528,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -552,7 +552,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -576,7 +576,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -600,7 +600,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -624,7 +624,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -639,7 +639,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 ```  
   
 ##  <a name="CodeSamples"></a>Kodexempel  
- Följande mallar kan du anpassa brödtext enskilda kodexempel på sidan igen.  
+ hello följande mallar kan du toocustomize hello brödtext hello enskilda kodexempel på hello åtgärden sida.  
   
  ![Developer Portal mallar kodexempel](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM Developer Portal mallar kodexempel")  
   
@@ -660,7 +660,7 @@ Azure API Management ger dig möjlighet att anpassa innehållet i developer port
 -   [Ruby](#Ruby)  
   
 ###  <a name="Curl"></a>CURL  
- Den **DocumentationSamplesCurl** mall kan du anpassa detta kodexempel i avsnittet kod prov på sidan igen.  
+ Hej **DocumentationSamplesCurl** mall kan du toocustomize som code exempel under hello kod prov på hello åtgärden sidan.  
   
 #### <a name="default-template"></a>Standardmall  
   
@@ -678,7 +678,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 #### <a name="controls"></a>Kontroller  
- Koden exempelmallarna tillåter inte användning av någon [sidan kontroller](api-management-page-controls.md).  
+ hello kod exempelmallarna tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datamodell  
  [Kodexempel](api-management-template-data-model-reference.md#Sample) entitet.  
@@ -700,7 +700,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -713,7 +713,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 ###  <a name="CSharp"></a>C#  
- Den **DocumentationSamplesCsharp** mall kan du anpassa detta kodexempel i avsnittet kod prov på sidan igen.  
+ Hej **DocumentationSamplesCsharp** mall kan du toocustomize som code exempel under hello kod prov på hello åtgärden sidan.  
   
 #### <a name="default-template"></a>Standardmall  
   
@@ -731,7 +731,7 @@ namespace CSHttpClientSample
         static void Main()  
         {  
             MakeRequest();  
-            Console.WriteLine("Hit ENTER to exit...");  
+            Console.WriteLine("Hit ENTER tooexit...");  
             Console.ReadLine();  
         }  
   
@@ -857,7 +857,7 @@ namespace CSHttpClientSample
 ```  
   
 #### <a name="controls"></a>Kontroller  
- Koden exempelmallarna tillåter inte användning av någon [sidan kontroller](api-management-page-controls.md).  
+ hello kod exempelmallarna tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datamodell  
  [Kodexempel](api-management-template-data-model-reference.md#Sample) entitet.  
@@ -879,7 +879,7 @@ namespace CSHttpClientSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -892,12 +892,12 @@ namespace CSHttpClientSample
 ```  
   
 ###  <a name="Stub"></a>Java  
- Den **DocumentationSamplesJava** mall kan du anpassa detta kodexempel i avsnittet kod prov på sidan igen.  
+ Hej **DocumentationSamplesJava** mall kan du toocustomize som code exempel under hello kod prov på hello åtgärden sidan.  
   
 #### <a name="default-template"></a>Standardmall  
   
 ```xml  
-// // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// // This sample uses hello Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 import java.net.URI;  
 import org.apache.http.HttpEntity;  
 import org.apache.http.HttpResponse;  
@@ -953,7 +953,7 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Kontroller  
- Koden exempelmallarna tillåter inte användning av någon [sidan kontroller](api-management-page-controls.md).  
+ hello kod exempelmallarna tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datamodell  
  [Kodexempel](api-management-template-data-model-reference.md#Sample) entitet.  
@@ -975,7 +975,7 @@ public class JavaSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -988,7 +988,7 @@ public class JavaSample
 ```  
   
 ###  <a name="JavaScript"></a>JavaScript  
- Den **DocumentationSamplesJs** mall kan du anpassa detta kodexempel i avsnittet kod prov på sidan igen.  
+ Hej **DocumentationSamplesJs** mall kan du toocustomize som code exempel under hello kod prov på hello åtgärden sidan.  
   
 #### <a name="default-template"></a>Standardmall  
   
@@ -1042,7 +1042,7 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Kontroller  
- Koden exempelmallarna tillåter inte användning av någon [sidan kontroller](api-management-page-controls.md).  
+ hello kod exempelmallarna tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datamodell  
  [Kodexempel](api-management-template-data-model-reference.md#Sample) entitet.  
@@ -1064,7 +1064,7 @@ public class JavaSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1077,7 +1077,7 @@ public class JavaSample
 ```  
   
 ###  <a name="ObjectiveC"></a>Objective C  
- Den **DocumentationSamplesObjc** mall kan du anpassa detta kodexempel i avsnittet kod prov på sidan igen.  
+ Hej **DocumentationSamplesObjc** mall kan du toocustomize som code exempel under hello kod prov på hello åtgärden sidan.  
   
 #### <a name="default-template"></a>Standardmall  
   
@@ -1154,7 +1154,7 @@ int main(int argc, const char * argv[])
 ```  
   
 #### <a name="controls"></a>Kontroller  
- Koden exempelmallarna tillåter inte användning av någon [sidan kontroller](api-management-page-controls.md).  
+ hello kod exempelmallarna tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datamodell  
  [Kodexempel](api-management-template-data-model-reference.md#Sample) entitet.  
@@ -1176,7 +1176,7 @@ int main(int argc, const char * argv[])
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1189,13 +1189,13 @@ int main(int argc, const char * argv[])
 ```  
   
 ###  <a name="PHP"></a>PHP  
- Den **DocumentationSamplesPhp** mall kan du anpassa detta kodexempel i avsnittet kod prov på sidan igen.  
+ Hej **DocumentationSamplesPhp** mall kan du toocustomize som code exempel under hello kod prov på hello åtgärden sidan.  
   
 #### <a name="default-template"></a>Standardmall  
   
 ```xml  
 <?php  
-// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// This sample uses hello Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 require_once 'HTTP/Request2.php';  
   
 $request = new Http_Request2('{{scheme}}://{{host}}{{path}}');  
@@ -1244,7 +1244,7 @@ catch (HttpException $ex)
 ```  
   
 #### <a name="controls"></a>Kontroller  
- Koden exempelmallarna tillåter inte användning av någon [sidan kontroller](api-management-page-controls.md).  
+ hello kod exempelmallarna tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datamodell  
  [Kodexempel](api-management-template-data-model-reference.md#Sample) entitet.  
@@ -1266,7 +1266,7 @@ catch (HttpException $ex)
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1279,7 +1279,7 @@ catch (HttpException $ex)
 ```  
   
 ###  <a name="Python"></a>Python  
- Den **DocumentationSamplesPython** mall kan du anpassa detta kodexempel i avsnittet kod prov på sidan igen.  
+ Hej **DocumentationSamplesPython** mall kan du toocustomize som code exempel under hello kod prov på hello åtgärden sidan.  
   
 #### <a name="default-template"></a>Standardmall  
   
@@ -1362,7 +1362,7 @@ except Exception as e:
 ```  
   
 #### <a name="controls"></a>Kontroller  
- Koden exempelmallarna tillåter inte användning av någon [sidan kontroller](api-management-page-controls.md).  
+ hello kod exempelmallarna tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datamodell  
  [Kodexempel](api-management-template-data-model-reference.md#Sample) entitet.  
@@ -1384,7 +1384,7 @@ except Exception as e:
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1397,7 +1397,7 @@ except Exception as e:
 ```  
   
 ###  <a name="Ruby"></a>Ruby  
- Den **DocumentationSamplesRuby** mall kan du anpassa detta kodexempel i avsnittet kod prov på sidan igen.  
+ Hej **DocumentationSamplesRuby** mall kan du toocustomize som code exempel under hello kod prov på hello åtgärden sidan.  
   
 #### <a name="default-template"></a>Standardmall  
   
@@ -1433,7 +1433,7 @@ puts response.body
 ```  
   
 #### <a name="controls"></a>Kontroller  
- Koden exempelmallarna tillåter inte användning av någon [sidan kontroller](api-management-page-controls.md).  
+ hello kod exempelmallarna tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Datamodell  
  [Kodexempel](api-management-template-data-model-reference.md#Sample) entitet.  
@@ -1455,7 +1455,7 @@ puts response.body
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1468,4 +1468,4 @@ puts response.body
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om hur du arbetar med mallar finns [hur du anpassar API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).
+Mer information om hur du arbetar med mallar finns [hur toocustomize hello API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).

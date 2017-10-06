@@ -1,6 +1,6 @@
 ---
-title: "Skapa din första Java-webbapp i Azure"
-description: "Distribuera en grundläggande Java-app och lär dig hur du kör webbappar i App Service."
+title: "aaaCreate din första Java-webbapp i Azure"
+description: "Lär dig hur toorun webbappar i App Service genom att distribuera en grundläggande Java-app."
 services: app-service\web
 documentationcenter: 
 author: rmcmurray
@@ -15,24 +15,24 @@ ms.topic: quickstart
 ms.date: 6/7/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc
-ms.openlocfilehash: b91b9bde5eb8ea0d7e2196056b635fe54095e748
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 81315c07b5aa84cbec50a17b2cb3914927b19c00
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Skapa din första Java-webbapp i Azure
 
-[Webb Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview)-funktionen i [Azure App Service](../app-service/app-service-value-prop-what-is.md) tillhandahåller en mycket skalbar och automatiskt uppdaterad webbvärdtjänst. Den här snabbstarten visar hur du distribuerar en Java-webbapp till App Service med hjälp av [Eclipse IDE för Java EE-utvecklare](http://www.eclipse.org/).
+Hej [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) funktion i [Azure App Service](../app-service/app-service-value-prop-what-is.md) ger en mycket skalbar, automatisk uppdatering värdtjänst. Den här snabbstarten visar hur toodeploy en Java web app tooApp tjänsten med hjälp av hello [Eclipse IDE för Java EE-utvecklare](http://www.eclipse.org/).
 
 !["Hello Azure!" exempelwebbapp](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
 ## <a name="prerequisites"></a>Krav
 
-Installera följande för att slutföra den här snabbstarten:
+toocomplete Snabbstart, installera:
 
-* Kostnadsfria [Eclipse IDE för Java EE-utvecklare](http://www.eclipse.org/downloads/). Den här snabbstarten använder Eclipse Neon.
-* [Azure Toolkit för Eclipse](/azure/azure-toolkit-for-eclipse-installation).
+* hello ledigt [Eclipse IDE för Java EE-utvecklare](http://www.eclipse.org/downloads/). Den här snabbstarten använder Eclipse Neon.
+* Hej [Azure Toolkit för Eclipse](/azure/azure-toolkit-for-eclipse-installation).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,7 +40,7 @@ Installera följande för att slutföra den här snabbstarten:
 
 Välj **Arkiv** > **Nytt** > **Dynamic Web Project** (Dynamiskt webbprojekt) Eclipse.
 
-I dialogrutan **New Dynamic Web Project** (Nytt dynamiskt webbprojekt) ger du projektet namnet **MyFirstJavaOnAzureWebApp** och väljer **Slutför**.
+I hello **nya dynamiskt webbprojekt** dialogrutan, namnet hello projekt **MyFirstJavaOnAzureWebApp**, och välj **Slutför**.
    
 ![Dialogrutan för nytt dynamiskt webbprojekt](./media/app-service-web-get-started-java/new-dynamic-web-project-dialog-box.png)
 
@@ -50,19 +50,19 @@ Om projektutforskaren inte visas kan du återställa den.
 
 ![Java EE-arbetsytan för Eclipse](./media/app-service-web-get-started-java/pe.png)
 
-Expandera projektet **MyFirstJavaOnAzureWebApp** i projektutforskaren.
+Expandera hello i Projektutforskaren **MyFirstJavaOnAzureWebApp** projekt.
 Högerklicka på **Webbinnehåll** och välj sedan **Ny** > **JSP-fil**.
 
 ![Menyn för en ny JSP-fil i projektutforskaren](./media/app-service-web-get-started-java/new-jsp-file-menu.png)
 
-I dialogrutan **Ny JSP-fil**:
+I hello **ny JSP-fil** dialogrutan:
 
-* Namnge filen **index.jsp**.
+* Namnet hello filen **index.jsp**.
 * Välj **Slutför**.
 
   ![Dialogruta för en ny JSP-fil](./media/app-service-web-get-started-java/new-jsp-file-dialog-box-page-1.png)
 
-I filen index.jsp ersätter du elementet `<body></body>` med följande kod:
+Ersätt hello i hello index.jsp-filen, `<body></body>` element med hello följande kod:
 
 ```jsp
 <body>
@@ -70,21 +70,21 @@ I filen index.jsp ersätter du elementet `<body></body>` med följande kod:
 </body>
 ```
 
-Spara ändringarna.
+Spara hello ändringar.
 
-## <a name="publish-the-web-app-to-azure"></a>Publicera webbappen i Azure
+## <a name="publish-hello-web-app-tooazure"></a>Publicera hello web app tooAzure
 
-Högerklicka på projektet i projektutforskaren och välj sedan **Azure** > **Publicera som Azure Web App**.
+Högerklicka på hello-projekt i Projektutforskaren, och välj sedan **Azure** > **Publicera som Azure Web App**.
 
 ![Publicera som Azure Web App (snabbmeny)](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
-I dialogrutan för **Azure-inloggning** behåller du alternativet **Interaktiv** och väljer sedan **Logga in**.
+I hello **Azure logga In** dialogrutan, Behåll hello **interaktiv** alternativet och välj sedan **logga in**.
 
-Följ anvisningarna för inloggning.
+Följ instruktionerna för hello-inloggning.
 
 ### <a name="deploy-web-app-dialog-box"></a>Dialogrutan Distribuera webbapp
 
-När du har loggats in på Azure-kontot visas dialogrutan **Distribuera webbapp**.
+När du har loggat in tooyour Azure-konto hello **distribuera webbprogram** dialogrutan visas.
 
 Välj **Skapa**.
 
@@ -92,20 +92,20 @@ Välj **Skapa**.
 
 ### <a name="create-app-service-dialog-box"></a>Dialogrutan Skapa App Service
 
-Dialogrutan **Skapa App Service** visas med standardvärden. Numret **170602185241** som visas i följande bild skiljer sig från vad som visas i din dialogruta.
+Hej **skapa App Service** dialogruta med standardvärden. Hej nummer **170602185241** visas i följande hello bilden är olika i dialogrutan.
 
 ![Dialogrutan Skapa App Service](./media/app-service-web-get-started-java/cas1.png)
 
-I dialogrutan **Skapa App Service**:
+I hello **skapa App Service** dialogrutan:
 
-* Behåll det genererade namnet för webbappen. Användarnamnet måste vara unikt inom Azure. Namnet är en del av URL-adressen för webbappen. Exempel: om webbappens namn är **MyJavaWebApp** så är URL-adressen *myjavawebapp.azurewebsites.net*.
-* Behåll webbehållaren som är standard.
+* Behåll hello genererade namnet för hello webbprogrammet. Användarnamnet måste vara unikt inom Azure. hello namn är en del av hello URL-adressen för hello webbprogrammet. Exempel: om hello webbprogrammets namn är **MyJavaWebApp**, hello URL: en är *myjavawebapp.azurewebsites.net*.
+* Behåll hello standardbehållaren för webbprogram.
 * Välj en Azure-prenumeration.
-* På fliken **App Service-plan**:
+* På hello **apptjänstplan** fliken:
 
-  * **Skapa ny**: Behåll standardvärdet, som är namnet på App Service-planen.
+  * **Skapa en ny**: Behåll hello standard, vilket är hello namnet på hello App Service-plan.
   * **Plats**: Välj **Europa, västra** eller en plats nära dig.
-  * **Prisnivå**: Markera det kostnadsfria alternativet. Se [Priser för App Service](https://azure.microsoft.com/pricing/details/app-service/) för funktioner.
+  * **Prisnivån**: Välj hello kostnadsfritt alternativ. Se [Priser för App Service](https://azure.microsoft.com/pricing/details/app-service/) för funktioner.
 
    ![Dialogrutan Skapa App Service](./media/app-service-web-get-started-java/create-app-service-dialog-box.png)
 
@@ -113,7 +113,7 @@ I dialogrutan **Skapa App Service**:
 
 ### <a name="resource-group-tab"></a>Flik för resursgrupp
 
-Välj fliken **Resursgrupp**. Behåll det genererade standardvärdet för resursgruppen.
+Välj hello **resursgruppen** fliken. Behåll hello genereras standardvärdet för hello resursgrupp.
 
 ![Flik för resursgrupp](./media/app-service-web-get-started-java/create-app-service-resource-group.png)
 
@@ -122,38 +122,38 @@ Välj fliken **Resursgrupp**. Behåll det genererade standardvärdet för resurs
 Välj **Skapa**.
 
 <!--
-### The JDK tab
+### hello JDK tab
 
-Select the **JDK** tab. Keep the default, and then select **Create**.
+Select hello **JDK** tab. Keep hello default, and then select **Create**.
 
 ![Create App Service plan](./media/app-service-web-get-started-java/create-app-service-specify-jdk.png)
 -->
 
-Webbappen skapas av Azure Toolkit och en dialogruta med en förloppsindikator visas.
+hello Azure Toolkit skapar hello webbprogram och visar en förloppsindikator för.
 
 ![Dialogruta med förloppsindikator för hur apptjänsten skapas](./media/app-service-web-get-started-java/create-app-service-progress-bar.png)
 
 ### <a name="deploy-web-app-dialog-box"></a>Dialogrutan Distribuera webbapp
 
-I dialogrutan **Distribuera webbapp** väljer du **Distribuera till rot**. Om du har en apptjänst på *wingtiptoys.azurewebsites.net* och inte distribuerar webbappen till roten så distribueras webbappen med namnet **MyFirstJavaOnAzureWebApp** till *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp*.
+I hello **distribuera webbprogram** dialogrutan **distribuera tooroot**. Om du har en apptjänst vid *wingtiptoys.azurewebsites.net* och du inte distribuera toohello rot, hello webbprogram med namnet **MyFirstJavaOnAzureWebApp** distribueras för *wingtiptoys.azurewebsites.net/MyFirstJavaOnAzureWebApp*.
 
 ![Dialogrutan Distribuera webbapp](./media/app-service-web-get-started-java/deploy-web-app-to-root.png)
 
-Dialogrutan visar valen för Azure, JDK och webbehållaren.
+hello dialogrutan visar hello Azure och JDK web behållaren val.
 
-Välj **Distribuera** för att publicera webbappen i Azure.
+Välj **distribuera** toopublish hello web app tooAzure.
 
-När publiceringen är klar väljer du länken **Publicerade** i dialogrutan **Azure-aktivitetsloggen**.
+När hello publiceringen är klar väljer du hello **publicerade** länken i hello **Azure-aktivitetsloggen** dialogrutan.
 
 ![Dialogrutan för Azure aktivitetsloggen](./media/app-service-web-get-started-java/aal.png)
 
-Grattis! Din webbapp har distribuerats till Azure. 
+Grattis! Din web app tooAzure har distribuerats. 
 
 !["Hello Azure!" exempelwebbapp](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
-## <a name="update-the-web-app"></a>Uppdatera webbappen
+## <a name="update-hello-web-app"></a>Uppdatera hello webbprogrammet
 
-Ändra JSP-exempelkod till ett annat meddelande.
+Ändra hello JSP kod tooa olika exempelmeddelande.
 
 ```jsp
 <body>
@@ -161,35 +161,35 @@ Grattis! Din webbapp har distribuerats till Azure.
 </body>
 ```
 
-Spara ändringarna.
+Spara hello ändringar.
 
-Högerklicka på projektet i projektutforskaren och välj sedan **Azure** > **Publicera som Azure Web App**.
+Högerklicka på hello-projekt i Projektutforskaren, och välj sedan **Azure** > **Publicera som Azure Web App**.
 
-Dialogrutan **Distribuera webbapp** visas med apptjänsten som du skapade tidigare. 
+Hej **distribuera webbprogram** dialogrutan visas och visar hello app service som du skapade tidigare. 
 
 > [!NOTE]
-> Välj **Distribuera till rot** varje gång du publicerar.
+> Välj **distribuera tooroot** varje gång du publicerar.
 >
 
-Välj webbappen och sedan **Distribuera**. Då publiceras ändringarna.
+Välj hello webbapp och markera **distribuera**, som publicerar hello ändringar.
 
-När länken **Publicering** visas väljer du den för att bläddra till webbappen och se ändringarna.
+När hello **Publishing** länk visas markerar du den toobrowse toohello webbapp och se hello ändringar.
 
-## <a name="manage-the-web-app"></a>Hantera webbappen
+## <a name="manage-hello-web-app"></a>Hantera hello-webbprogram
 
-Gå till <a href="https://portal.azure.com" target="_blank">Azure Portal</a> för att se den webbapp som du skapade.
+Gå toohello <a href="https://portal.azure.com" target="_blank">Azure-portalen</a> toosee hello webbapp som du skapade.
 
-Välj **Resursgrupper** på den vänstra menyn.
+Välj hello vänstra menyn **resursgrupper**.
 
-![Portalnavigering för resursgrupper](media/app-service-web-get-started-java/rg.png)
+![Portalen navigering tooresource grupper](media/app-service-web-get-started-java/rg.png)
 
-Välj resursgruppen. På sidan visas resurserna som du skapade i den här snabbstarten.
+Välj hello resursgrupp. hello sidan visar hello-resurser som du skapade i den här snabbstarten.
 
 ![Resursgruppen myResourceGroup](media/app-service-web-get-started-java/rg2.png)
 
-Välj webbappen (**webbapp-170602193915** i den föregående bilden).
+Välj hello webbprogram (**webapp 170602193915** i föregående bild hello).
 
-Sidan **Översikt** visas. Den här sidan ger dig en översikt över hur det går för appen. Här kan du utföra grundläggande hanteringsåtgärder som att bläddra, stoppa, starta, starta om och ta bort. På flikarna till vänster på sidan kan du se olika konfigurationer som du kan öppna. 
+Hej **översikt** visas. Den här sidan ger dig en överblick över hur hello appen fungerar. Här kan du utföra grundläggande hanteringsåtgärder som att bläddra, stoppa, starta, starta om och ta bort. hello flikar på hello vänster hello sidan visar hello olika konfigurationer som du kan öppna. 
 
 ![App Service-sidan på Azure Portal](media/app-service-web-get-started-java/web-app-blade.png)
 

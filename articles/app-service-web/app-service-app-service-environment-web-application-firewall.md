@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera en brandvägg för webbaserade program (Brandvägg) för Apptjänst-miljö"
-description: "Lär dig hur du konfigurerar en brandvägg för webbaserade program framför din Apptjänst-miljö."
+title: "aaaConfiguring en Web programmet Firewall (Brandvägg) för Apptjänst-miljö"
+description: "Lär dig hur tooconfigure ett webbprogram i brandväggen framför din Apptjänst-miljö."
 services: app-service\web
 documentationcenter: 
 author: naziml
@@ -14,88 +14,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: naziml
-ms.openlocfilehash: 3e9e9fa4ddab60a467e8aa793ec0ca269b0bc4e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0fcf62aea871751c9d4f294d2d24df2186fc0e7e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurera en brandvägg för webbaserade program (Brandvägg) för Apptjänst-miljö
 ## <a name="overview"></a>Översikt
-Web application brandväggar som den [Barracuda Brandvägg för Azure](https://www.barracuda.com/programs/azure) som är tillgänglig på den [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) skyddar dina webbprogram genom att kontrollera inkommande webbtrafik att blockera SQL injektionerna globala webbplatsskript, skadlig kod överföringar & DDoS-program och andra attacker. Den kontrollerar också svar från backend-webbservrar för Data går förlorade förebyggande (DLP). I kombination med isolering och ytterligare skalning som tillhandahålls av Apptjänstmiljöer, ger detta en perfekt miljö till värden kritiska web affärsprogram som måste klara skadliga begäranden och hög trafik.
+Web application brandväggar som hello [Barracuda Brandvägg för Azure](https://www.barracuda.com/programs/azure) som är tillgänglig på hello [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/barracudanetworks/waf-byol/) skyddar dina webbprogram genom att kontrollera inkommande web trafik tooblock SQL injektioner, globala webbplatsskript, skadlig kod överföringar & DDoS-program och andra attacker. Den kontrollerar också hello svar från hello backend-webbservrar för Data går förlorade förebyggande (DLP). I kombination med hello isolering och ytterligare skalning som tillhandahålls av Apptjänstmiljöer, ger detta en perfekt miljö toohost business kritiska webbprogram som behöver toowithstand skadliga begäranden och hög trafik.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
 
 ## <a name="setup"></a>Konfiguration
-För det här dokumentet som vi konfigurerar balanserade våra Apptjänstmiljö bakom flera belastningen instanser av Barracuda Brandvägg så att endast trafik från Brandvägg kan nå Apptjänst-miljön och det inte är tillgänglig från Perimeternätverket. Vi har även Azure Traffic Manager framför våra Barracuda Brandvägg instanser kan belastningsutjämna mellan Azure-datacenter och regioner. En hög nivå diagram över installationen skulle se ut vad som anges nedan.
+För det här dokumentet som vi konfigurerar balanserade våra Apptjänstmiljö bakom flera belastningen instanser av Barracuda Brandvägg så att endast trafik från hello Brandvägg kan nå hello Apptjänst-miljö och det inte är tillgänglig från hello DMZ. Vi har även Azure Traffic Manager framför våra Barracuda Brandvägg instanser tooload balans över Azure-datacenter och regioner. En hög nivå diagram över hello installationen skulle se ut vad som anges nedan.
 
 ![Arkitektur][Architecture] 
 
-> Obs: med introduktionen av [ILB stöd för Apptjänst-miljö](app-service-environment-with-internal-load-balancer.md), kan du konfigurera ASE för att vara tillgänglig från Perimeternätverket och bara är tillgänglig för det privata nätverket. 
+> Obs: med hello införandet av [ILB stöd för Apptjänst-miljö](app-service-environment-with-internal-load-balancer.md), kan du konfigurera hello ASE toobe inte nås från hello DMZ och vara tillgängliga toohello privat nätverk. 
 > 
 > 
 
 ## <a name="configuring-your-app-service-environment"></a>Konfigurera din Apptjänst-miljö
-Så här konfigurerar du en Apptjänst-miljö finns i [vår dokumentation](app-service-web-how-to-create-an-app-service-environment.md) om ämnet. När du har en Apptjänst-miljö skapas, kan du skapa [Web Apps](app-service-web-overview.md), [API Apps](../app-service-api/app-service-api-apps-why-best-platform.md) och [Mobilappar](../app-service-mobile/app-service-mobile-value-prop.md) i den här miljön kommer alla skyddas bakom en Brandvägg som konfigureras i nästa avsnitt.
+tooconfigure en Apptjänst-miljö finns för[vår dokumentation](app-service-web-how-to-create-an-app-service-environment.md) på hello ämne. När du har en Apptjänst-miljö skapas, kan du skapa [Web Apps](app-service-web-overview.md), [API Apps](../app-service-api/app-service-api-apps-why-best-platform.md) och [Mobilappar](../app-service-mobile/app-service-mobile-value-prop.md) i den här miljön kommer alla skyddas bakom hello Brandvägg vi Konfigurera i hello nästa avsnitt.
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>Konfigurera Barracuda Brandvägg Molntjänsten
-Barracuda har en [detaljerad artikel](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) om distribution av dess Brandvägg på en virtuell dator i Azure. Men eftersom vi vill redundans och inte inför en enskild felpunkt som du vill distribuera minst 2 Brandvägg instans virtuella datorer i samma molntjänst när följa dessa anvisningar.
+Barracuda har en [detaljerad artikel](https://campus.barracuda.com/product/webapplicationfirewall/article/WAF/DeployWAFInAzure) om distribution av dess Brandvägg på en virtuell dator i Azure. Men eftersom vi vill redundans och inte inför en enskild felpunkt toodeploy minst 2 Brandvägg instans virtuella datorer i hello samma molntjänst när följa dessa anvisningar.
 
-### <a name="adding-endpoints-to-cloud-service"></a>Att lägga till slutpunkter molntjänst
-När du har 2 eller mer Brandvägg VM-instanser i din molntjänst kan du använda den [Azure-portalen](https://portal.azure.com/) att lägga till HTTP och HTTPS-slutpunkter som används av programmet som visas i bilden nedan.
+### <a name="adding-endpoints-toocloud-service"></a>Att lägga till slutpunkter tooCloud Service
+När du har 2 eller mer Brandvägg VM-instanser i din molntjänst kan du använda hello [Azure-portalen](https://portal.azure.com/) tooadd HTTP och HTTPS-slutpunkter som används av ditt program enligt hello bilden nedan.
 
 ![Konfigurera slutpunkt][ConfigureEndpoint]
 
-Om dina program använder slutpunkter, se till att lägga till dem i listan samt. 
+Om dina program använder slutpunkter kontrollerar du att tooadd samt de toothis listan. 
 
 ### <a name="configuring-barracuda-waf-through-its-management-portal"></a>Konfigurera Barracuda Brandvägg via dess hanteringsportalen
-Barracuda Brandvägg använder TCP-Port 8000 för konfigurationen med hjälp av dess hanteringsportalen. Eftersom vi har flera instanser av de virtuella datorerna Brandvägg behöver du upprepa de här stegen för varje VM-instans. 
+Barracuda Brandvägg använder TCP-Port 8000 för konfigurationen med hjälp av dess hanteringsportalen. Eftersom vi har flera instanser av virtuella datorer hello-Brandvägg måste toorepeat hello här stegen för varje VM-instans. 
 
-> Obs: När du är klar med konfigurationen av Brandvägg, ta bort slutpunkten TCP/8000 från alla din Brandvägg virtuella datorer för att skydda din Brandvägg.
+> Obs: När du är klar med konfigurationen av Brandvägg, ta bort hello TCP/8000 endpoint från din Brandvägg VMs tookeep din Brandvägg säker.
 > 
 > 
 
-Lägg till management-slutpunkt som visas i bilden nedan för att konfigurera din Brandvägg Barracuda.
+Lägg till hello hanteringsslutpunkten enligt hello bild nedan tooconfigure Barracuda-Brandvägg.
 
 ![Lägg till slutpunkt för hantering][AddManagementEndpoint]
 
-Använda en webbläsare för att bläddra till management-slutpunkten på Molntjänsten. Om din molntjänst anropas test.cloudapp.net, skulle du åtkomst till den här slutpunkten genom att bläddra till http://test.cloudapp.net:8000. Du bör se en inloggningssida som nedan kan logga in med autentiseringsuppgifterna som du angav i installationsfasen Brandvägg VM.
+Använd en webbläsare toobrowse toohello management slutpunkt på Molntjänsten. Om din molntjänst anropas test.cloudapp.net, skulle du åtkomst till den här slutpunkten genom att bläddra toohttp://test.cloudapp.net:8000. Du bör se en inloggningssida som nedan kan logga in med autentiseringsuppgifterna som du angav i hello Brandvägg VM installationsfasen.
 
 ![Hantering av inloggningssidan][ManagementLoginPage]
 
-När du loggar in bör du se en instrumentpanel som det i bilden nedan visas grundläggande statistik om Brandvägg skyddet.
+När inloggningen bör du se en instrumentpanel som hello i hello bilden nedan som presenterar grundläggande statistik om hello Brandvägg skydd.
 
 ![Instrumentpanel för hantering][ManagementDashboard]
 
-Klicka på fliken tjänster kan du konfigurera din Brandvägg för tjänster som skyddas. Mer information om hur du konfigurerar din Brandvägg Barracuda finns [deras dokumentation](https://techlib.barracuda.com/waf/getstarted1). I exemplet nedan en Azure-Webbapp har som betjänar trafik via HTTP och HTTPS konfigurerats.
+Klicka på fliken för hello-tjänster kan du konfigurera din Brandvägg för tjänster som skyddas. Mer information om hur du konfigurerar din Brandvägg Barracuda finns [deras dokumentation](https://techlib.barracuda.com/waf/getstarted1). I exemplet hello under en Azure-Webbapp har trafik på HTTP och HTTPS konfigurerats.
 
 ![Hantering av lägga till tjänster][ManagementAddServices]
 
-> Obs: Beroende på hur dina program är konfigurerade och vilka funktioner som används i din Apptjänst-miljö, behöver du vidarebefordrar trafik för TCP andra portar än 80 och 443, t.ex. Om du har IP SSL-inställningar för ett webbprogram. En lista över nätverksportar som används i Apptjänstmiljöer, referera till [kontroll för inkommande trafik dokumentationen](app-service-app-service-environment-control-inbound-traffic.md) nätverksportar avsnitt.
+> Obs: Beroende på hur dina program är konfigurerade och vilka funktioner som används i din Apptjänst-miljö, behöver du tooforward trafik för TCP-portar än 80 och 443, t.ex. Om du har IP SSL-inställningar för ett webbprogram. En lista över nätverksportar som används i Apptjänstmiljöer finns för[kontroll för inkommande trafik dokumentationen](app-service-app-service-environment-control-inbound-traffic.md) nätverksportar avsnitt.
 > 
 > 
 
 ## <a name="configuring-microsoft-azure-traffic-manager-optional"></a>Konfigurera Microsoft Azure Traffic Manager (valfritt)
-Om ditt program är tillgängligt i flera områden, och du vill läsa in balansera dem bakom [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Att göra så att du kan lägga till en slutpunkt i den [klassiska Azure-portalen](https://manage.azure.com) med Molntjänsten namn för din Brandvägg i Traffic Manager-profilen som visas i bilden nedan. 
+Om ditt program är tillgängligt i flera områden, så att du vill ha tooload saldo dem bakom [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). toodo så att du kan lägga till en slutpunkt i hello [klassiska Azure-portalen](https://manage.azure.com) använda hello Molntjänsten namn för din Brandvägg i hello Traffic Manager-profilen som visas i hello bilden nedan. 
 
 ![Traffic Manager-slutpunkt][TrafficManagerEndpoint]
 
-Om ditt program kräver autentisering, se till att du har en resurs som inte kräver någon autentisering för Traffic Manager att pinga tillgängligheten för ditt program. Du kan konfigurera URL: en i avsnittet Konfigurera på den [klassiska Azure-portalen](https://manage.azure.com) enligt nedan.
+Om ditt program kräver autentisering, se till att du har en resurs som inte kräver någon autentisering för Traffic Manager tooping hello tillgänglighet för ditt program. Du kan konfigurera hello URL under hello avsnittet Konfigurera på hello [klassiska Azure-portalen](https://manage.azure.com) enligt nedan.
 
 ![Konfigurera Traffic Manager][ConfigureTrafficManager]
 
-För att vidarebefordra Traffic Manager-ping från din Brandvägg till ditt program, måste du installationen webbplats översättningar på Barracuda-Brandvägg att vidarebefordra trafik till tillämpningsprogrammet som visas i exemplet nedan.
+tooforward hello Traffic Manager-ping från din Brandvägg tooyour program, behöver du toosetup webbplats översättningar till Barracuda Brandvägg tooforward trafik tooyour programmet enligt hello exemplet nedan.
 
 ![Webbplatsen översättningar][WebsiteTranslations]
 
-## <a name="securing-traffic-to-app-service-environment-using-network-security-groups-nsg"></a>Skydda trafik till Apptjänst-miljö med Nätverkssäkerhetsgrupper (NSG)
-Följ den [kontroll för inkommande trafik dokumentationen](app-service-app-service-environment-control-inbound-traffic.md) information om begränsar trafiken till din Apptjänst-miljö från Brandvägg med VIP-adressen för din tjänst i molnet. Här är ett exempel Powershell-kommando för att utföra den här aktiviteten för TCP-port 80.
+## <a name="securing-traffic-tooapp-service-environment-using-network-security-groups-nsg"></a>Att säkra trafiken tooApp Service miljö med hjälp av Nätverkssäkerhetsgrupp grupper (NSG)
+Följ hello [kontroll för inkommande trafik dokumentationen](app-service-app-service-environment-control-inbound-traffic.md) för information om hur du begränsar trafiken tooyour Apptjänstmiljö från hello Brandvägg med hello VIP-adressen för din tjänst i molnet. Här är ett exempel Powershell-kommando för att utföra den här aktiviteten för TCP-port 80.
 
     Get-AzureNetworkSecurityGroup -Name "RestrictWestUSAppAccess" | Set-AzureNetworkSecurityRule -Name "ALLOW HTTP Barracuda" -Type Inbound -Priority 201 -Action Allow -SourceAddressPrefix '191.0.0.1'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
 
-Ersätt SourceAddressPrefix med virtuella IP-adress (VIP) för din Brandvägg Molntjänsten.
+Ersätt hello SourceAddressPrefix med hello virtuella IP-adress (VIP) för din Brandvägg Molntjänsten.
 
-> Obs: VIP för Molntjänsten ändras när du tar bort och återskapa Molntjänsten. Se till att uppdatera IP-adressen i nätverket resursgruppens namn när du gör. 
+> Obs: hello VIP för Molntjänsten ändras när du tar bort och återskapa hello tjänst i molnet. Kontrollera att tooupdate hello IP-adressen i hello nätverket resursgrupp när du gör detta. 
 > 
 > 
 

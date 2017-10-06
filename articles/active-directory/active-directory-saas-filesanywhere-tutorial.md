@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med FilesAnywhere | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och FilesAnywhere."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och FilesAnywhere."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,71 +13,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 4153056bd21006061c6ad8ff9cf3c17de9248628
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 376364a5c75f8d069ea6390c58586acb378cd8b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Självstudier: Azure Active Directory-integrering med FilesAnywhere
 
-I kursen får lära du att integrera FilesAnywhere med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate FilesAnywhere med Azure Active Directory (AD Azure).
 
-Integrera FilesAnywhere med Azure AD ger dig följande fördelar:
+Integrera FilesAnywhere med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till FilesAnywhere
-- Du kan aktivera användarna att automatiskt hämta loggat in på FilesAnywhere (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - till Azure-hanteringsportalen
+- Du kan styra i Azure AD som har åtkomst till tooFilesAnywhere
+- Du kan aktivera din användare tooautomatically get inloggade tooFilesAnywhere (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure Management portal
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med FilesAnywhere, behöver du följande:
+tooconfigure Azure AD-integrering med FilesAnywhere, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En FilesAnywhere enkel inloggning på aktiverade prenumeration
 
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Du bör inte använda produktionsmiljön, om det inte är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion av en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till FilesAnywhere från galleriet
+1. Att lägga till FilesAnywhere från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
 
-## <a name="adding-filesanywhere-from-the-gallery"></a>Att lägga till FilesAnywhere från galleriet
-Du måste lägga till FilesAnywhere från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av FilesAnywhere i Azure AD.
+## <a name="adding-filesanywhere-from-hello-gallery"></a>Att lägga till FilesAnywhere från hello-galleriet
+tooconfigure hello integrering av FilesAnywhere i Azure AD, behöver du tooadd FilesAnywhere hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till FilesAnywhere från galleriet:**
+**tooadd FilesAnywhere från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-hanteringsportalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-hanteringsportalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Klicka på **Lägg till** knappen överst i dialogrutan.
+3. Klicka på **Lägg till** hello längst upp i hello dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **FilesAnywhere**.
+4. Skriv i sökrutan hello **FilesAnywhere**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_search.png)
 
-5. Välj i resultatpanelen **FilesAnywhere**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **FilesAnywhere**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_addfromgallery.png)
 
@@ -85,75 +85,75 @@ Du måste lägga till FilesAnywhere från galleriet i listan över hanterade Saa
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med FilesAnywhere baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i FilesAnywhere motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i FilesAnywhere upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i FilesAnywhere är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i FilesAnywhere toobe upprättas.
 
-Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i FilesAnywhere.
+Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i FilesAnywhere.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med FilesAnywhere, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med FilesAnywhere, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare FilesAnywhere](#creating-a-filesanywhere-test-user)**  – du har en motsvarighet för Britta Simon i FilesAnywhere som är kopplad till Azure AD-representation av henne.
-3. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-4. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare FilesAnywhere](#creating-a-filesanywhere-test-user)**  -toohave en motsvarighet för Britta Simon i FilesAnywhere som är länkade toohello Azure AD-representation av henne.
+3. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+4. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-hanteringsportalen och konfigurera enkel inloggning i ditt FilesAnywhere program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure Management portal och konfigurera enkel inloggning i ditt FilesAnywhere program.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med FilesAnywhere:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med FilesAnywhere:**
 
-1. I Azure-hanteringsportalen på den **FilesAnywhere** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure Management portal på hello **FilesAnywhere** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** dialogrutan som **läge** Välj **SAML-baserade inloggning** att aktivera enkel inloggning på.
+2. På hello **enkel inloggning** dialogrutan som **läge** Välj **SAML-baserade inloggning** tooenable för enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_samlbase.png)
 
-3. På den **FilesAnywhere domän och URL: er** om du vill konfigurera programmet i **IDP initierade läge**:
+3. På hello **FilesAnywhere domän och URL: er** om du vill tooconfigure hello programmet i **IDP initierade läge**:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_filesanywhere_url.png)
     
-    a. I den **Reply URL** textruta Skriv en URL med följande mönster:`https://<company name>.filesanywhere.com/saml20.aspx?c=215`
+    a. I hello **Reply URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<company name>.filesanywhere.com/saml20.aspx?c=215`
 > [!NOTE]
-> Observera att värdet **215** är en **clientid** och är bara ett exempel. Du måste ersätta den med det faktiska clientid-värdet.
+> Observera värdet hello **215** är en **clientid** och är bara ett exempel. Du behöver tooreplace med hello faktiska clientid värde.
 
-4. På den **FilesAnywhere domän och URL: er** om du vill konfigurera programmet i **SP initierade läge**, utför följande steg:
+4. På hello **FilesAnywhere domän och URL: er** om du vill tooconfigure hello programmet i **SP initierade läge**, utföra hello följande steg:
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_filesanywhere_url1.png)
 
-    a. Klicka på den **visa avancerade inställningar för URL: en** alternativet
+    a. Klicka på hello **visa avancerade inställningar för URL: en** alternativet
 
-    b. I den **logga URL** textruta Skriv en URL med följande mönster:`https://<sub domain>.filesanywhere.com/`
+    b. I hello **logga URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<sub domain>.filesanywhere.com/`
 
     > [!NOTE] 
-    > Observera att detta inte är verkliga värden. Du måste uppdatera dessa värden med de faktiska logga URL och Reply-URL. Kontakta [FilesAnywhere supportteamet](mailto:support@FilesAnywhere.com) att hämta dessa värden. 
+    > Observera att detta inte är hello verkliga värden. Du har tooupdate dessa värden med hello faktiska logga URL och svars-URL. Kontakta [FilesAnywhere supportteamet](mailto:support@FilesAnywhere.com) tooget dessa värden. 
 
-5. FilesAnywhere program förväntar SAML-intyg i ett specifikt format. Konfigurera följande anspråk för det här programmet. Du kan hantera värden för attributen från den ”**användarattribut**” avsnitt på sidan för integrering av programmet. Följande skärmbild visar ett exempel för det här.
+5. FilesAnywhere program förväntar hello SAML intyg i ett specifikt format. Konfigurera hello följande anspråk för det här programmet. Du kan hantera hello värden för attributen från hello ”**användarattribut**” avsnitt på sidan för integrering av programmet. hello följande skärmbild visar ett exempel för det här.
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_filesanywhere_attribute.png)
     
-    När användarna loggar med FilesAnywhere de hämta värdet för **clientid** -attributet från [FilesAnywhere team](mailto:support@FilesAnywhere.com). Du måste lägga till ”klient-Id”-attribut med det unika värdet som tillhandahålls av FilesAnywhere. Dessa attribut som visas ovan krävs.
+    Hej när användare loggar in med FilesAnywhere de få hello värdet för **clientid** -attributet från [FilesAnywhere team](mailto:support@FilesAnywhere.com). Du har tooadd hello ”klient-Id”-attribut med hello unikt värde som tillhandahålls av FilesAnywhere. Dessa attribut som visas ovan krävs.
     > [!NOTE] 
-    > Observera att värdet **2331** av **clientid** är bara ett exempel. Du måste ange det faktiska värdet.
+    > Observera värdet hello **2331** av **clientid** är bara ett exempel. Du måste tooprovide hello faktiskt värde.
 
 
-6. I den **användarattribut** avsnitt på den **enkel inloggning** dialogrutan Konfigurera attribut för SAML-token som visas i bilden ovan och utför följande steg:
+6. I hello **användarattribut** avsnittet hello **enkel inloggning** dialogrutan Konfigurera SAML-token attribut som visas i hello bilden ovan och utföra hello följande steg:
     
     | Attributets namn | Attributvärdet |
     | ---------------| --------------- |    
     | clientid | *”uniquevalue”* |
 
-    a. Klicka på **Lägg till attributet** att öppna den **lägga till attributet** dialogrutan.
+    a. Klicka på **Lägg till attributet** tooopen hello **lägga till attributet** dialogrutan.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_04.png)
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_05.png)
     
-    b. I den **namn** textruta ange attributets namn visas för den raden.
+    b. I hello **namn** textruta hello attributnamn visas för den raden.
     
-    c. Från den **värdet** listan, ange det attributvärde som visas för den raden.
+    c. Från hello **värdet** listan attributvärde för typ hello visas för den raden.
     
     d. Klicka på **Ok**
 
@@ -161,46 +161,46 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-hanteringsportal
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_general_400.png)
 
-8. På den **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara certifikatfilen på datorn.
+8. På hello **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara sedan hello certifikat på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_certificate.png) 
 
-9. På den **FilesAnywhere Configuration** klickar du på **konfigurera FilesAnywhere** att öppna **konfigurera inloggning** fönster.
+9. På hello **FilesAnywhere Configuration** klickar du på **konfigurera FilesAnywhere** tooopen **konfigurera inloggning** fönster.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_configure.png) 
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_configuresignon.png)
 
-10. För att få SSO konfigurationen klar för tillämpningsprogrammet FilesAnywhere slutet, kontakta [FilesAnywhere supportteamet](mailto:support@FilesAnywhere.com) och ge dem hämtade SAML tokensignering certifikat och enkel inloggning (SSO)-URL.
+10. tooget SSO konfigurationen har slutförts för programmet i slutet av FilesAnywhere Kontakta [FilesAnywhere supportteamet](mailto:support@FilesAnywhere.com) och ge dem hello hämtas SAML-token signera certifikat och enkel inloggning (SSO)-URL.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure Management portal kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure Management portal kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-hanteringsportalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-hanteringsportalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/create_aaduser_01.png) 
 
-2. Gå till **användare och grupper** och på **alla användare** att visa en lista över användare.
+2. Gå för**användare och grupper** och på **alla användare** toodisplay hello lista över användare.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/create_aaduser_02.png) 
 
-3. Klicka på överst i dialogrutan **Lägg till** att öppna den **användaren** dialogrutan.
+3. Hello överst i dialogrutan hello klickar du på **Lägg till** tooopen hello **användaren** dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-FilesAnywhere-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**. 
 
@@ -208,26 +208,26 @@ Syftet med det här avsnittet är att skapa en testanvändare i Azure Management
 
 ### <a name="creating-a-filesanywhere-test-user"></a>Skapa en testanvändare FilesAnywhere
 
-Programmet stöder bara i tid användaretablering och authentication-användare kommer automatiskt att skapas i programmet. 
+Programmet stöder bara i tid användaretablering och authentication-användare kommer att skapas i hello program automatiskt. 
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja sin åtkomst till FilesAnywhere.
+I det här avsnittet Aktivera Britta Simon toouse Azure enkel inloggning genom att tilldela tooFilesAnywhere sin åtkomst.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela FilesAnywhere Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooFilesAnywhere utför hello följande steg:**
 
-1. Öppna vyn program i Azure-hanteringsportalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure Management portal öppnar du hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **FilesAnywhere**.
+2. Välj i listan med program hello **FilesAnywhere**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-FilesAnywhere-tutorial/tutorial_FilesAnywhere_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -235,7 +235,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -245,14 +245,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen FilesAnywhere på åtkomstpanelen du bör få automatiskt loggat in på ditt FilesAnywhere program.
+Du bör få automatiskt inloggade tooyour FilesAnywhere programmet när du klickar på hello FilesAnywhere panelen i hello åtkomstpanelen.
 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

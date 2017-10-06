@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Dropbox för företag | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Dropbox för företag."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Dropbox för företag."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,84 +13,84 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f7616e47322242f01a13d763f71c93d4ac06a92
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0fb01eab4f7c6c4516eac64a4343e46ea221f98d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-configuring-dropbox-for-business-for-automatic-user-provisioning"></a>Självstudier: Konfigurera Dropbox för företag för automatisk Användaretablering
 
-Syftet med den här kursen är att visa de steg som du behöver göra i Dropbox för företag och Azure AD att automatiskt etablera och avetablera användarkonton från Azure AD till Dropbox för företag.
+hello syftet med den här kursen är tooshow du hello stegen tooperform i Dropbox för företag och Azure AD tooautomatically etablera och avinstallation etablera användarkonton från Azure AD tooDropbox för företag.
 
 ## <a name="prerequisites"></a>Krav
 
-Det scenario som beskrivs i den här kursen förutsätter att du redan har följande objekt:
+hello-scenario som beskrivs i den här kursen förutsätter att du redan har hello följande objekt:
 
 *   En Azure Active directory-klient.
 *   En Dropbox för Business enkel inloggning för aktiverade prenumerationen.
 *   Ett användarkonto i Dropbox för företag med Team administratörsbehörigheter.
 
-## <a name="assigning-users-to-dropbox-for-business"></a>Tilldela användare till Dropbox för företag
+## <a name="assigning-users-toodropbox-for-business"></a>Tilldela användare tooDropbox för företag
 
-Azure Active Directory använder ett begrepp som kallas ”tilldelningar” för att avgöra vilka användare ska få åtkomst till valda appar. I samband med automatisk konto användaretablering, synkroniseras de användare och grupper som har ”tilldelats” till ett program i Azure AD.
+Azure Active Directory använder ett begrepp som kallas ”tilldelningar” toodetermine som användarna ska få åtkomst till tooselected appar. Hello gäller automatisk konto användaretablering är är bara hello användare och grupper som har ”tilldelats” tooan program i Azure AD synkroniserad.
 
-Innan du konfigurerar och aktiverar tjänsten etablering, måste du bestämma vilka användare och/eller grupper i Azure AD representerar de användare som behöver åtkomst till din Dropbox för företag. När bestämt, kan du tilldela dessa användare till din Dropbox för företag genom att följa anvisningarna här:
+Innan du konfigurerar och aktiverar hello etableras, måste toodecide vilka användare och/eller grupper i Azure AD som representerar hello-användare som behöver åtkomst till tooyour Dropbox för företag. När du valt, kan du tilldela dessa användare tooyour Dropbox för företag genom att följa hello anvisningarna här:
 
-[Tilldela en användare eller grupp till en enterprise-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Tilldela en användare eller grupp tooan enterprise app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>Viktiga tips för att tilldela användare till Dropbox för företag
+### <a name="important-tips-for-assigning-users-toodropbox-for-business"></a>Viktiga tips för att tilldela användare tooDropbox för företag
 
-*   Vi rekommenderar att en enda Azure AD-användare är tilldelad till Dropbox för företag att testa allokering konfigurationen. Ytterligare användare och/eller grupper kan tilldelas senare.
+*   Vi rekommenderar att en enda Azure AD-användare är tilldelad tooDropbox för Business tootest hello etablering konfiguration. Ytterligare användare och/eller grupper kan tilldelas senare.
 
-*   Du måste välja en giltig användarroll när du tilldelar en användare till Dropbox för företag. Rollen ”standard åtkomst” fungerar inte för att etablera...
+*   Du måste välja en giltig användarroll när du tilldelar en användare tooDropbox för företag. Hej ”standard” rollen fungerar inte för att etablera...
 
 ## <a name="enable-automated-user-provisioning"></a>Aktivera automatiserad etablering av användare
 
-Det här avsnittet hjälper dig att ansluta din Azure AD till Dropbox för företagets användarkonto API-etablering och konfigurera tjänsten etablering för att skapa, uppdatera och inaktivera tilldelade användarkonton i Dropbox för företag baserat på tilldelning av användare och grupper i Azure AD.
+Det här avsnittet hjälper dig att ansluta din Azure AD-tooDropbox för företagets användarkonto API-etablering och konfigurerar hello etablering service toocreate, uppdatera och inaktivera tilldelade användarkonton i Dropbox för företag baserat på användare och grupper tilldelning i Azure AD.
 
 >[!Tip]
->Du kan också välja att aktivera SAML-baserade enkel inloggning för Dropbox för företag, följer du instruktionerna som anges i [Azure-portalen](https://portal.azure.com). Enkel inloggning kan konfigureras oberoende av Automatisk etablering, även om dessa två funktioner komplettera varandra.
+>Du kan också välja tooenabled SAML-baserade enkel inloggning för Dropbox för företag, följa instruktionerna i hello [Azure-portalen](https://portal.azure.com). Enkel inloggning kan konfigureras oberoende av Automatisk etablering, även om dessa två funktioner komplettera varandra.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Konfigurera automatisk användarens konto-etablering:
+### <a name="tooconfigure-automatic-user-account-provisioning"></a>tooconfigure automatisk användarens konto-etablering:
 
-1. I den [Azure-portalen](https://portal.azure.com), bläddra till den **Azure Active Directory > Företagsappar > alla program** avsnitt.
+1. I hello [Azure-portalen](https://portal.azure.com), bläddra toohello **Azure Active Directory > Företagsappar > alla program** avsnitt.
 
-2. Om du redan har konfigurerat Dropbox för företag för enkel inloggning, söka efter din instans av Dropbox för företag med hjälp av sökfältet. Annars väljer **Lägg till** och Sök efter **Dropbox för företag** i programgalleriet. Välj Dropbox för företag i sökresultatet och lägga till den i listan med program.
+2. Om du redan har konfigurerat Dropbox för företag för enkel inloggning söka efter din instans av Dropbox för företag med hello sökfältet. Annars väljer **Lägg till** och Sök efter **Dropbox för företag** i hello programgalleriet. Välj Dropbox för företag från hello sökresultaten och lägga till den tooyour listan med program.
 
-3. Välj din instans av Dropbox för företag och sedan den **etablering** fliken.
+3. Välj din instans av Dropbox för företag och sedan hello **etablering** fliken.
 
-4. Ange den **Etableringsläge** till **automatisk**. 
+4. Ange hello **etablering läge** för**automatisk**. 
 
     ![Etablering](./media/active-directory-saas-dropboxforbusiness-provisioning-tutorial/provisioning.png)
 
-5. Under den **administratörsautentiseringsuppgifter** klickar du på **auktorisera**. En Dropbox för Business inloggningsruta öppnas i ett nytt webbläsarfönster.
+5. Under hello **administratörsautentiseringsuppgifter** klickar du på **auktorisera**. En Dropbox för Business inloggningsruta öppnas i ett nytt webbläsarfönster.
 
-6. På den **inloggning till Dropbox att länka med Azure AD** dialogrutan Logga in på din Dropbox för företag-klient.
+6. På hello **inloggning tooDropbox toolink med Azure AD** dialogrutan Logga in tooyour Dropbox för företag-klient.
 
      ![Användaretablering](./media/active-directory-saas-dropboxforbusiness-provisioning-tutorial/ic769518.png "användaretablering")
 
-7. Bekräfta att du vill ge Azure Active Directory behörighet att göra ändringar i din Dropbox för företag-klient. Klicka på **Tillåt**.
+7. Bekräfta att du vill att toogive Azure Active Directory behörighet toomake ändringar tooyour Dropbox för företag-klient. Klicka på **Tillåt**.
     
       ![Användaretablering](./media/active-directory-saas-dropboxforbusiness-provisioning-tutorial/ic769519.png "användaretablering")
 
-8. I Azure-portalen klickar du på **Testanslutningen** så Azure AD kan ansluta till din Dropbox för företag. Om anslutningen misslyckas, kontrollera din Dropbox för företag-konto som har administratörsbehörigheter för teamet och försök den **”Godkänn”** steg igen.
+8. I hello Azure-portalen klickar du på **Testanslutningen** tooensure Azure AD kan ansluta tooyour Dropbox för företag. Om hello anslutningen misslyckas, kontrollera din Dropbox för företag-konto som har administratörsbehörigheter för teamet och försök hello **”Godkänn”** steg igen.
 
-9. Ange e-postadressen för en person eller grupp som ska få meddelanden om etablering fel i den **e-postmeddelande** fält och markera kryssrutan.
+9. Ange hello e-postadress för en person eller grupp som ska få meddelanden om etablering fel i hello **e-postmeddelande** fältet och hello kryssrutan.
 
 10. Klicka på **spara.**
 
-11. Välj under avsnittet mappningar **synkronisera Azure Active Directory-användare till Dropbox för företag.**
+11. Välj under hello mappningar avsnitt, **synkronisera Azure Active Directory-användare tooDropbox för företag.**
 
-12. I den **attributmappning** avsnittet kan du granska användarattribut som synkroniseras från Azure AD till Dropbox för företag. De attribut som valts som **matchande** egenskaper som används för att matcha användarkonton i Dropbox för företag för uppdateringsåtgärder. Välj knappen Spara för att genomföra ändringarna.
+12. I hello **attributmappning** avsnittet kan du granska hello användarattribut som synkroniseras från Azure AD tooDropbox för företag. Hej attribut som valts som **matchande** egenskaper är används toomatch hello användarkonton i Dropbox för företag för uppdateringsåtgärder. Välj hello spara knappen toocommit ändringar.
 
-13. Aktivera Azure AD etableras för Dropbox för företag att ändra den **Status för etablering** till **på** i avsnittet Inställningar
+13. tooenable hello Azure AD-etablering tjänsten för Dropbox för företag, ändra hello **Status för etablering** för**på** i hello inställningar
 
 14. Klicka på **spara.**
 
-Startar den första synkroniseringen av användare och/eller grupper som tilldelas till Dropbox för företag i avsnittet användare och grupper. Den första synkroniseringen tar längre tid än efterföljande synkroniseringar som sker ungefär var tjugonde minut så länge som tjänsten körs. Du kan använda den **synkroniseringsinformation** avsnittet för att övervaka förloppet och följ länkarna till att etablera aktivitetsrapporter som beskriver alla åtgärder som utförs av etablering tjänsten i din Dropbox för företag.
+Den startar hello den första synkroniseringen av användare och/eller grupper som tilldelas tooDropbox för företag i hello användare och grupper avsnitt. hello inledande synkronisering tar längre tid tooperform än efterföljande synkroniseringar som sker ungefär var tjugonde minut så länge hello-tjänsten körs. Du kan använda hello **synkroniseringsinformation** avsnittet toomonitor förlopp och följ länkarna tooprovisioning aktivitetsrapporter, som beskriver alla åtgärder som utförs av hello för företag-tjänsten på din Dropbox-etablering.
 
-Du kan nu skapa ett testkonto. Vänta i upp till 20 minuter för att verifiera att kontot har synkroniserats till Dropbox för företag.
+Du kan nu skapa ett testkonto. Vänta tills in too20 minuter tooverify hello kontot har synkroniserats tooDropbox för företag.
 
 En användare som har slutförts etablering cykel visas med status relaterade.
 

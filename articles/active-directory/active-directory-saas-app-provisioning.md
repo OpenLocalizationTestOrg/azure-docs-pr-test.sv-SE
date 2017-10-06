@@ -1,6 +1,6 @@
 ---
-title: "Automatisk SaaS app användaretablering i Azure AD | Microsoft Docs"
-description: "En introduktion till hur du kan använda Azure AD för att automatiskt etablera avetablera och kontinuerligt uppdatera användarkonton över flera SaaS-program från tredje part."
+title: "aaaAutomated SaaS app användaretablering i Azure AD | Microsoft Docs"
+description: "En introduktion toohow som du kan använda Azure AD tooautomatically etablera avetablera och kontinuerligt uppdatera användarkonton över flera SaaS-program från tredje part."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,90 +14,90 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: curtand
-ms.openlocfilehash: 7cb780117d64d67449146b9757f8162e23e65d1e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a1f3ecdd513e2b603f8ad9901e9f551b3b982b2d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisera användaren etablering och avetablering för SaaS-program med Azure Active Directory
+# <a name="automate-user-provisioning-and-deprovisioning-toosaas-applications-with-azure-active-directory"></a>Automatisera användaren etablering och borttagning tooSaaS program med Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Vad är automatisk användaretablering för SaaS-appar?
-Azure Active Directory (Azure AD) kan du automatisera skapandet, underhållet och borttagningen av användaridentiteter i molnet ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) program som Dropbox, Salesforce, ServiceNow med mera.
+Azure Active Directory (Azure AD) kan du skapa en tooautomate hello, underhåll och borttagningen av användaridentiteter i molnet ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) program som Dropbox, Salesforce, ServiceNow med mera.
 
-**Här följer några exempel på vad den här funktionen kan du göra:**
+**Här följer några exempel på vad den här funktionen kan du toodo:**
 
-* Automatiskt skapa nya konton i rätt SaaS-appar för nya användare när de ansluter till ditt team.
-* Inaktivera konton från SaaS-appar automatiskt när personer lämnar oundvikligen teamet.
-* Se till att identiteter i SaaS-appar hålls uppdaterade baserat på ändringar i katalogen.
-* Etablera icke-användare objekt, till exempel grupper till SaaS-appar som stöder dessa.
+* Automatiskt skapa nya konton i hello rätt SaaS-appar för nya användare när de ansluter till ditt team.
+* Inaktivera konton från SaaS-appar automatiskt när personer lämnar oundvikligen hello-teamet.
+* Se till att hello identiteter i SaaS-appar hålls in toodate baserat på ändringar i hello directory.
+* Etablera icke-användare objekt, till exempel grupper, tooSaaS appar som stöder dessa.
 
-**Automatisk användaretablering innehåller även följande funktioner:**
+**Automatisk användaretablering innehåller också hello följande funktioner:**
 
-* Möjligheten att matcha befintliga identiteter mellan Azure AD och SaaS-appar.
-* Anpassningsalternativ i Azure AD-hjälpen passar aktuella konfigurationer av SaaS-appar som din organisation använder för tillfället.
+* Hej möjlighet toomatch befintliga identiteter mellan Azure AD och SaaS-appar.
+* Anpassning alternativ toohelp Azure AD passar hello aktuella konfigurationer av hello SaaS-appar som din organisation använder för tillfället.
 * Valfri e-postaviseringar för att etablera fel.
-* Rapporterings- och aktivitet loggar för bättre övervakning och felsökning.
+* Rapporterings- och aktivitet loggar toohelp med övervakning och felsökning.
 
 ## <a name="why-use-automated-provisioning"></a>Varför använda Automatisk etablering?
 Några vanliga motiveringen för att använda den här funktionen är:
 
-* Att undvika kostnader, ineffektiviteter och handhavarfel vid manuell etablering processer.
-* Att skydda din organisation genom att direkt ta bort användarens identitet från viktiga SaaS-appar när de lämnar organisationen.
-* Enkelt importera ett bulk antal användare till ett visst SaaS-program.
-* Om du vill få nyttan av din etablering köra lösningen från samma app åtkomstprinciper som du har definierat för Azure AD enkel inloggning.
+* tooavoid hello kostnader, ineffektiviteter och handhavarfel vid manuell etablering processer.
+* toosecure din organisation genom att direkt ta bort användarnas identiteter från key SaaS-appar när de lämnar hello organisation.
+* tooeasily importera bulk antalet användare i ett visst SaaS-program.
+* tooenjoy hello nyttan av etablering lösningen kör från hello samma åtkomstprinciper för appar som du har definierat för Azure AD enkel inloggning.
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
-**Hur ofta kan Azure AD för att skriva katalogändringar till SaaS-app?**
+**Hur ofta skriva directory ändringar toohello SaaS app i Azure AD?**
 
-Azure AD som söker efter ändringar varje fem till tio minuter. Om appen SaaS returnerar flera fel (till exempel som i fallet med ogiltig administratörsautentiseringsuppgifter), kommer Azure AD gradvis att minska frekvensen på högst en gång per dag förrän felen har åtgärdats.
+Azure AD som söker efter ändringar var femte minut tooten. Om hello SaaS app returnerar flera fel (till exempel som hello fallet med ogiltig administratörsautentiseringsuppgifter), kommer Azure AD gradvis att försämra dess frekvens tooup tooonce per dag förrän hello fel har åtgärdats.
 
-**Hur lång tid tar det för att etablera Mina användare?**
+**Hur lång tid tar det tooprovision Mina användare?**
 
-Inkrementella ändringar sker nästan omedelbart, men om du försöker att etablera de flesta av din katalog sedan det beror på antalet användare och grupper som du har. Liten kataloger tar bara några minuter, medelstor kataloger kan ta några minuter och mycket stora kataloger kan ta flera timmar.
+Inkrementella ändringar sker nästan omedelbart men om du försöker tooprovision de flesta för din katalog och sedan det beror på hello antalet användare och grupper som du har. Liten kataloger tar bara några minuter, medelstor kataloger kan ta några minuter och mycket stora kataloger kan ta flera timmar.
 
-**Hur kan jag spåra förloppet för den aktuella Etableringsjobbet?**
+**Hur kan jag spåra hello fortskrider hello aktuella Etableringsjobbet?**
 
-Du kan granska konto etablering rapporten under avsnittet rapporter för din katalog. Ett annat alternativ är att besöka fliken instrumentpanel för SaaS-program som du etablerar till och tittar du under avsnittet ”Integration Status” längst ned på sidan.
+Du kan granska hello etablering rapport under hello rapportavsnittet i din katalog. Ett annat alternativ är toovisit hello instrumentpanelen fliken för hello SaaS-program som du etablerar till och tittar du under hello ”Integration Status” avsnittet hello nedre delen av hello-sidan.
 
-**Hur vet jag om användare ska kunna hämta etablerats korrekt?**
+**Hur vet jag om användarna inte tooget etablerats korrekt?**
 
-I slutet av etablering konfigurationen är guiden det ett alternativ för att prenumerera på e-postaviseringar för att etablera fel. Du kan också kontrollera rapporten etablering fel om du vill se vilka användare som inte gick att etableras och varför.
+Hello slutet av hello etablering guiden Konfigurera det är en alternativ toosubscribe tooemail meddelanden för att etablera fel. Du kan också kontrollera hello etablering fel rapporten toosee vilka användare misslyckades toobe etablerad och varför.
 
-**Kan Azure AD skriva ändringar i SaaS-appen tillbaka till katalogen?**
+**Azure AD kan skriva ändringar från hello SaaS tillbaka toohello programkatalogen?**
 
-För de flesta SaaS-appar kan etablering utgående endast, vilket innebär att användare skrivs från katalogen till programmet och ändringar av programmet kan inte skrivas tillbaka till katalogen. För [Workday](https://msdn.microsoft.com/library/azure/dn762434.aspx)dock etablering är inkommande endast, vilket innebär att användare som importeras till katalogen från Workday och likaså ändringar i katalogen inte skrivs tillbaka till Workday.
+För de flesta SaaS-appar kan etablering utgående endast, vilket innebär att användare skrivs från hello directory toohello program och ändringar från hello program inte kan skrivas tillbaka toohello directory. För [Workday](https://msdn.microsoft.com/library/azure/dn762434.aspx)dock etablering är inkommande endast, vilket innebär att användare som importerats till hello directory från Workday och likaså ändringar i hello directory inte skrivs tillbaka till Workday.
 
-**Hur kan jag skicka feedback till teknikteamet?**
+**Hur kan jag skicka feedback toohello teknikteamet?**
 
-Kontakta oss via den [Azure Active Directory Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/).
+Kontakta oss via hello [Azure Active Directory Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/).
 
 ## <a name="how-does-automated-provisioning-work"></a>Hur fungerar automatisk etablering arbete?
-Azure AD etablerar användare till SaaS-appar genom att ansluta till att etablera slutpunkter som tillhandahålls av leverantören av tillämpningsprogrammet. Dessa slutpunkter kan Azure AD för att skapa, uppdatera och ta bort användare. Nedan finns en kort översikt över de olika steg som Azure AD tar för att automatisera etablering.
+Azure AD etablerar användare tooSaaS appar genom att ansluta tooprovisioning slutpunkter som tillhandahålls av leverantören av tillämpningsprogrammet. Dessa slutpunkter låta Azure AD tooprogrammatically skapa, uppdatera och ta bort användare. Nedan finns en kort översikt över hello olika steg för att Azure AD tar tooautomate etablering.
 
-1. När du aktiverar etablering för ett program för första gången, utförs följande åtgärder:
-   * Azure AD försöker matcha eventuella befintliga användare i SaaS-appen med sina motsvarande identiteter i katalogen. När en användare matchas, de är *inte* automatiskt aktiverad för enkel inloggning. För en användare får åtkomst till programmet, måste de uttryckligen tilldelas till appen i Azure AD antingen direkt eller via gruppmedlemskap.
-   * Om du redan har angett vilka användare som ska tilldelas till programmet och Azure AD inte gick att hitta befintliga konton för dessa användare, etablera Azure AD nya konton för dem i programmet.
-2. När den inledande synkroniseringen har slutförts enligt ovan, kommer Azure AD Kontrollera var tionde minut för följande ändringar:
-   * Om nya användare har tilldelats till programmet (direkt eller via gruppmedlemskap), kommer de att vara etablerade ett nytt konto i SaaS-app.
-   * Om en användare har tagits bort och sedan sitt konto i SaaS-appen kommer att markeras som inaktiverade (användarna aldrig fullständigt bort, vilket skyddar du förlorar data vid en felaktig konfiguration).
-   * Om en användare nyligen har tilldelats till programmet och de redan har ett konto i SaaS-app, kontot kommer att markeras som aktiverad och vissa användaregenskaper kan uppdateras om de är inaktuella jämfört med katalogen.
-   * Om en användares information (t.ex telefonnummer, arbetsplats och så vidare) har ändrats i katalogen, kommer också att uppdateras informationen i SaaS-program.
+1. När du aktiverar etablering för ett program för hello första gången utförs hello följande åtgärder:
+   * Azure AD försöker toomatch eventuella befintliga användare i hello SaaS-appen med sina motsvarande identiteter i hello directory. När en användare matchas, de är *inte* automatiskt aktiverad för enkel inloggning. För en toohave åtkomst toohello användarprogram måste de tilldelas toohello app i Azure AD, antingen direkt eller via gruppmedlemskap.
+   * Om du redan har angett vilka användare som ska tilldelas toohello program och Azure AD misslyckas toofind befintliga konton för dessa användare, etablera nya konton för dem i hello program med Azure AD.
+2. När hello inledande synkroniseringen har slutförts enligt ovan, kommer Azure AD Kontrollera var tionde minut för hello följande ändringar:
+   * Om nya användare har tilldelats toohello program (direkt eller via gruppmedlemskap) kommer de att etablera ett nytt konto i hello SaaS-app.
+   * Om en användare har tagits bort och sedan sitt konto i hello SaaS app kommer att markeras som inaktiverade (användarna aldrig fullständigt bort, vilket skyddar du från dataförlust i hello händelse av en felaktig konfiguration).
+   * Om en användare nyligen har tilldelats toohello program och de redan har ett konto i hello SaaS app att kontot kommer att markeras som aktiverad och vissa användaregenskaper kan uppdateras om de är inaktuella jämfört med toohello directory.
+   * Om en användares information (t.ex telefonnummer, arbetsplats och så vidare) har ändrats i hello directory, uppdatera informationen också i hello SaaS-program.
 
-Mer information om hur attribut mappas mellan Azure AD och din SaaS-appar, finns i artikeln om [anpassa attributmappning](active-directory-saas-customizing-attribute-mappings.md).
+Mer information om hur attribut mappas mellan Azure AD och din SaaS-appar finns hello artikel på [anpassa attributmappning](active-directory-saas-customizing-attribute-mappings.md).
 
 ## <a name="list-of-apps-that-support-automated-user-provisioning"></a>Lista över appar som stöder automatiserad etablering av användare
-Alla ”aktuell” appar i Azure AD application gallery stöder automatisk användaretablering. [Lista över aktuella appar kan visas här.](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)
+Alla hello ”aktuell” appar i hello Azure AD application gallery stöder automatisk användaretablering. [hello lista över aktuella appar kan visas här.](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured)
 
-För ett program med stöd för automatisk användaretablering, måste det först ange de nödvändiga slutpunkterna som tillåter för externa program att automatisera skapande, underhåll och borttagning av användare. Därför inte alla SaaS-appar som är kompatibla med den här funktionen. Azure AD-Utvecklingsteamet kommer sedan att kunna skapa en allokering koppling till apparna för appar som stöder detta, och detta verk prioriteras av behoven hos aktuella och potentiella kunder.
+För ett program toosupport automatisk användaretablering, måste det först ange hello nödvändiga slutpunkter som för externa program tooautomate hello skapande, underhåll och borttagning av användare. Därför inte alla SaaS-appar som är kompatibla med den här funktionen. För appar som stöder detta hello Azure AD-Utvecklingsteamet tas sedan kan toobuild en allokering connector toothose appar, och detta verk prioriteras av hello behoven hos aktuella och potentiella kunder.
 
-Kontakta Azure AD engineering team för att begära etablering support för ytterligare program, skicka ett meddelande via den [Azure Active Directory Feedbackforum](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/category/172035-user-provisioning).
+toocontact hello Azure AD-tekniker team toorequest etablering stöd för fler program, så skicka ett meddelande via hello [Azure Active Directory Feedbackforum](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/category/172035-user-provisioning).
 
 ## <a name="related-articles"></a>Relaterade artiklar
 * [Artikelindex för programhantering i Azure Active Directory](active-directory-apps-index.md)
 * [Anpassa attributmappning för Användaretablering](active-directory-saas-customizing-attribute-mappings.md)
 * [Skriva uttryck för attributmappning](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Omfångsfilter för Användaretablering](active-directory-saas-scoping-filters.md)
-* [Använda SCIM för att aktivera automatisk etablering av användare och grupper från Azure Active Directory till program](active-directory-scim-provisioning.md)
+* [Använda SCIM tooenable Automatisk etablering av användare och grupper från Azure Active Directory tooapplications](active-directory-scim-provisioning.md)
 * [Kontot etablering meddelanden](active-directory-saas-account-provisioning-notifications.md)
-* [Lista över självstudier om hur du integrerar SaaS-appar](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar](active-directory-saas-tutorial-list.md)
 

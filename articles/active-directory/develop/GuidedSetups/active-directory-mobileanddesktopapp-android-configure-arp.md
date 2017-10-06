@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 Android komma igång - konfigurera | Microsoft Docs"
+title: "aaaAzure AD v2 Android komma igång - konfigurera | Microsoft Docs"
 description: "Hur en Android-app kan få en åtkomst-token och anropa API: erna som kräver åtkomst-token från Azure Active Directory v2 slutpunkten eller Microsoft Graph API"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,26 +15,26 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: c09937582118ebcc5b8cbc1f43a0a2019f2f7a89
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: eaa41805c92212154ee8d51d3eb3aee1202eef1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="add-the-applications-registration-information-to-your-app"></a>Lägg till programmets registreringsinformation i appen
+## <a name="add-hello-applications-registration-information-tooyour-app"></a>Lägg till hello programmet registrering information tooyour app
 
-Du måste lägga till klient-ID till ditt projekt i det här steget.
+I det här steget måste tooadd hello klient-ID tooyour projekt.
 
 1.  Öppna `MainActivity` (under `app`  >  `java`  >   *`{host}.{namespace}`* )
-2.  Ersätt den rad som börjar med `final static String CLIENT_ID` med:
+2.  Ersätt hello rad som börjar med `final static String CLIENT_ID` med:
 ```java
-final static String CLIENT_ID = "[Enter the application Id here]";
+final static String CLIENT_ID = "[Enter hello application Id here]";
 ```
 3. Öppna:`app` > `manifests` > `AndroidManifest.xml`
-4. Lägg till att följande aktiviteter `manifest\application` nod. Den här registrera en `BrowserTabActivity` så att operativsystem och återuppta programmet när autentiseringen har slutförts:
+4. Lägg till följande aktivitet för hello`manifest\application` nod. Den här registrera en `BrowserTabActivity` tooallow hello OS tooresume programmet när du har slutfört hello autentisering:
 
 ```xml
-<!--Intent filter to capture System Browser calling back to our app after Sign In-->
+<!--Intent filter toocapture System Browser calling back tooour app after Sign In-->
 <activity
     android:name="com.microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -43,8 +43,8 @@ final static String CLIENT_ID = "[Enter the application Id here]";
         <category android:name="android.intent.category.BROWSABLE" />
 
         <!--Add in your scheme/host from registered redirect URI-->
-        <!--By default, the scheme should be similar to 'msal[appId]' -->
-        <data android:scheme="msal[Enter the application Id here]"
+        <!--By default, hello scheme should be similar too'msal[appId]' -->
+        <data android:scheme="msal[Enter hello application Id here]"
             android:host="auth" />
     </intent-filter>
 </activity>

@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory hybrid identity designöverväganden - fastställa kraven för directory-synkronisering | Microsoft Docs"
-description: "Identifiera vilka krav som behövs för att synkronisera alla användare mellan on = lokala och molnbaserade för företaget."
+title: "designöverväganden för aaaAzure Active Directory hybrid identity - fastställa kraven för directory-synkronisering | Microsoft Docs"
+description: "Identifiera vilka krav som behövs för att synkronisera alla hello användare mellan on = lokala och molnbaserade för hello enterprise."
 documentationcenter: 
 services: active-directory
 author: billmath
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 5ef87e606f055359ca325befd6048353ce57ca2b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6646e3792c65f37c3d62eecdb6c6f3bd257f04f1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="determine-directory-synchronization-requirements"></a>Ange krav för directory-synkronisering
-Synkronisering är att tillhandahålla användare en identitet i molnet baserat på deras lokala identitet. Oavsett om de ska använda synkroniserade kontot för autentisering eller federerad autentisering, behöver användarna fortfarande ha en identitet i molnet.  Den här identiteten behöver underhålls och uppdateras regelbundet.  Uppdateringarna kan ta många formulär från titel ändras till ändring av lösenord.  
+Synkronisering är att tillhandahålla användare en identitet i hello molnet baserat på deras lokala identitet. Oavsett om de ska använda synkroniserade kontot för autentisering eller federerad autentisering, måste hello användarna toohave en identitet i hello molnet.  Den här identiteten måste toobe underhålls och uppdateras regelbundet.  hello uppdateringar kan ta många formulär från titel ändringar toopassword ändras.  
 
-Börja med att utvärdera organisationer lokalt identitet lösningen och användaren kraven. Denna utvärdering är viktigt att definiera de tekniska kraven för hur användaridentiteter skapas och underhålls i molnet.  Active Directory är lokala för en majoriteten av organisationer och lokala katalogen som användare kommer att synkroniseras från, men i vissa fall det inte är fallet.  
+Starta genom att utvärdera hello organisationer krav på lokal identitet lösningen och användare. Denna utvärdering är viktiga toodefine hello tekniska krav för hur användaridentiteter skapas och underhålls i molnet hello.  Active Directory är lokala för en majoriteten av organisationer och hello på lokal katalog som användare kommer att synkroniseras från, men i vissa fall detta kommer inte att hello fallet.  
 
-Se till att besvara följande frågor:
+Se till att tooanswer hello följande frågor:
 
 * Har du en AD-skog, flera eller ingen?
   
@@ -36,35 +36,35 @@ Se till att besvara följande frågor:
 * Har du en synkronisering verktyget lokalt?
   
   * Om Ja, har du dina användare om användarna har en virtuell katalog/integrering av identiteter?
-* Har du alla andra directory lokalt som du vill synkronisera (t.ex. LDAP-katalogen, HR-databasen, osv)?
-  * Ska du göra alla GALSync
-  * Vad är det aktuella tillståndet för UPN-namn i din organisation? 
+* Har du alla andra directory lokalt som du vill toosynchronize (t.ex. LDAP-katalogen, HR-databasen, osv)?
+  * Ska du göra några GALSync toobe?
+  * Vad är hello aktuell status för UPN-namn i din organisation? 
   * Har du en annan katalog som användare autentiseras mot?
   * Använder företaget Microsoft Exchange?
     * Kommer de att en exchange-hybridinstallation?
 
-Nu när du har en uppfattning om synkroniseringskrav för måste fastställa vilket verktyg som är korrekt så att de uppfyller dessa krav.  Microsoft erbjuder flera verktyg för att åstadkomma katalogintegrering och synkronisering.  Finns det [Hybrididentitet directory integration verktyg jämförelsetabell](active-directory-hybrid-identity-design-considerations-tools-comparison.md) för mer information. 
+Nu när du har en uppfattning om synkroniseringskrav för måste toodetermine vilket verktyg som hello rätt en toomeet dessa krav.  Microsoft erbjuder flera verktyg tooaccomplish directory-integrering och synkronisering.  Se hello [Hybrididentitet directory integration verktyg jämförelsetabell](active-directory-hybrid-identity-design-considerations-tools-comparison.md) för mer information. 
 
-Nu när du har synkroniseringskrav för och verktyg som gör det för ditt företag, som du behöver utvärdera de program som använder dessa katalogtjänster. Denna utvärdering är viktigt att definiera de tekniska kraven för att integrera dessa program till molnet. Se till att besvara följande frågor:
+Nu när du har synkroniseringskrav och hello-verktyg som gör det för ditt företag måste tooevaluate hello program som använder dessa katalogtjänster. Denna utvärdering är viktigt toodefine hello tekniska krav toointegrate dessa program toohello moln. Se till att tooanswer hello följande frågor:
 
-* Dessa program flyttas till molnet och använda katalogen?
-* Finns det särskilda attribut som måste synkroniseras till molnet så att programmen kan använda dem korrekt?
-* Dessa program måste skrivas igen för att utnyttja fördelarna med molnet auth?
-* Fortsätter programmen live lokalt medan användare komma åt dem med hjälp av molnidentiteten?
+* Dessa program kommer att flyttas toohello molnet och använda hello-katalog?
+* Finns det särskilda attribut som måste synkroniseras toobe toohello molnet så att programmen kan använda dem har?
+* Behöver programmen toobe igen skrivs tootake utnyttja molnet auth?
+* Dessa program fortsätter toolive lokalt medan användarna komma åt dem med hjälp av molnidentitet hello?
 
-Du måste också bestämma säkerhet kraven och begränsningarna katalogsynkronisering. Denna utvärdering är viktigt att hämta en lista över de krav som behövs för att skapa och underhålla användaridentiteter i molnet. Se till att besvara följande frågor:
+Du måste också toodetermine hello säkerhet kraven och begränsningarna katalogsynkronisering. Denna utvärdering är viktiga tooget en lista över hello kraven som krävs i ordning toocreate och underhålla användaridentiteter i hello molnet. Se till att tooanswer hello följande frågor:
 
-* Där kommer att hitta synkroniseringsservern?
+* Där hello synkroniseringsserver placeras?
 * Kommer det att vara ansluten till en domän?
-* Servern finns på ett begränsat nätverk bakom en brandvägg, till exempel en DMZ?
-  * Kommer du att kunna öppna de nödvändiga Brandväggsportarna att stödja synkronisering?
-* Har du en återställningsplan för av synkroniseringsservern?
-* Har du ett konto med rätt behörigheter för alla skogar som du vill synkronisera med?
-  * Om företaget inte känner till svaret på den här frågan, läser du avsnittet ”behörigheter för Lösenordssynkronisering” i artikeln [installera Azure Active Directory Sync Service](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) och ta reda på om du redan har ett konto med dessa behörigheter eller om du behöver skapa en.
-* Om du har mutli-skog synkronisering kan synkroniseringsservern för varje skog?
+* Hello-servern finns på ett begränsat nätverk bakom en brandvägg, till exempel en DMZ?
+  * Kommer du att kunna tooopen hello krävs brandväggen portar toosupport synkronisering?
+* Har du en återställningsplan för hello synkroniseringsserver?
+* Har du ett konto med hello rätt behörigheter för alla skogar som du vill toosynch med?
+  * Om företaget inte vet hello svar för den här frågan, granska hello ”behörigheter för Lösenordssynkronisering” i avsnittet hello artikel [installera hello Azure Active Directory Sync Service](https://msdn.microsoft.com/library/azure/dn757602.aspx#BKMK_CreateAnADAccountForTheSyncService) och ta reda på om du redan har en konto med dessa behörigheter eller om du behöver toocreate en.
+* Om du har inte mutli-skog sync hello synkronisering kan tooget tooeach-serverskogen?
 
 > [!NOTE]
-> Se till att varje svar och försök förstå anledningen till svaret. [Fastställa kraven på incidentsvar](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) kommer att överskrida de tillgängliga alternativen. Har besvarat frågorna väljer du vilket alternativ som bäst passar dina behöver.
+> Se till att tootake anteckningar för varje svar och förstå hello anledningen hello svaret. [Fastställa kraven på incidentsvar](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md) kommer att överskrida hello-alternativ som är tillgängliga. Har besvarat frågorna väljer du vilket alternativ som bäst passar dina behöver.
 > 
 > 
 

@@ -1,5 +1,5 @@
 ---
-title: "Konfigurera säker LDAP (LDAPS) i Azure AD Domain Services | Microsoft Docs"
+title: "aaaConfigure säker LDAP (LDAPS) i Azure AD Domain Services | Microsoft Docs"
 description: "Konfigurera säker LDAP (LDAPS) för en Azure AD Domain Services-hanterad domän"
 services: active-directory-ds
 documentationcenter: 
@@ -14,99 +14,99 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: maheshu
-ms.openlocfilehash: 3b19f078b0d6dc3e02d951014056406fd1b099a8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8781285cd02d690788056b985b017efd7e4d6b3f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurera säker LDAP (LDAPS) för en Azure AD Domain Services-hanterad domän
 
 ## <a name="before-you-begin"></a>Innan du börjar
-Se till att du har slutfört [uppgift 2 – exportera säker LDAP-certifikatet till en. PFX-filen](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md).
+Se till att du har slutfört [uppgift 2 - export hello säker LDAP certifikat tooa. PFX-filen](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md).
 
-Välj om du vill använda förhandsversionen av Azure-portaler eller den klassiska Azure-portalen för att slutföra åtgärden.
+Välj om toouse hello Förhandsgranska Azure-portaler eller hello Azure klassiska portal toocomplete den här uppgiften.
 > [!div class="op_single_selector"]
-> * **Azure-portalen (förhandsgranskning)**: [aktivera säkert LDAP med Azure-portalen](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
-> * **Klassiska Azure-portalen**: [aktivera säkert LDAP med hjälp av den klassiska Azure-portalen](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
+> * **Azure-portalen (förhandsgranskning)**: [aktivera säkert LDAP med hello Azure-portalen](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+> * **Klassiska Azure-portalen**: [aktivera säkert LDAP med hello klassiska Azure-portalen](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
 >
 >
 
 
-## <a name="task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview"></a>Uppgift 3 – aktivera säker LDAP för den hanterade domänen med Azure-portalen (förhandsgranskning)
-Utför följande konfigurationssteg för att aktivera säker LDAP:
+## <a name="task-3---enable-secure-ldap-for-hello-managed-domain-using-hello-azure-portal-preview"></a>Uppgift 3 – aktivera säker LDAP för hello hanterade domänen med hello Azure-portalen (förhandsgranskning)
+tooenable säkert LDAP, utför följande konfigurationssteg hello:
 
-1. Navigera till den  **[Azure-portalen](https://portal.azure.com)**.
+1. Navigera toohello  **[Azure-portalen](https://portal.azure.com)**.
 
-2. Söka efter domain services i den **söka resurser** sökrutan. Välj **Azure AD Domain Services** från sökresultaten. Den **Azure AD Domain Services** bladet visar din hanterade domän.
+2. Sök efter domain services i hello **söka resurser** sökrutan. Välj **Azure AD Domain Services** från hello sökresultatet. Hej **Azure AD Domain Services** bladet visar din hanterade domän.
 
     ![Hitta hanterad domän som har etablerats](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
-2. Klicka på namnet på den hanterade domänen (till exempel ”contoso100.com”) för att se mer information om domänen.
+2. Klicka på hello hanterade domän (till exempel ”contoso100.com”) toosee hello namn mer information om hello domän.
 
     ![DS - Etableringsstatus](./media/getting-started/domain-services-provisioning-state.png)
 
-3. Klicka på **säker LDAP** i navigeringsfönstret.
+3. Klicka på **säker LDAP** hello navigeringsfönstret.
 
     ![DS - säker LDAP-bladet](./media/active-directory-domain-services-admin-guide/secure-ldap-blade.png)
 
-4. Säker LDAP-åtkomst till din hanterade domän är inaktiverat som standard. Växla **säkert LDAP** till **aktivera**.
+4. Säkert LDAP åtkomst tooyour hanterad domän är inaktiverad som standard. Växla **säker LDAP** för**aktivera**.
 
     ![Aktivera säker LDAP](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
-5. Som standard inaktiveras säker LDAP-åtkomst till din hanterade domän via internet. Växla **ger LDAP åtkomst via internet** till **aktivera**om det behövs. 
+5. Som standard hanteras säker LDAP åtkomst tooyour domänen via hello internet är inaktiverad. Växla **Tillåt säker LDAP åtkomst via hello internet** för**aktivera**om det behövs. 
 
-6. Klicka på mappen ikonen följande **. PFX-filen med säker LDAP-certifikat**. Ange sökvägen till PFX-filen med certifikatet för säker LDAP-åtkomst till den hanterade domänen.
+6. Klicka på hello mappen ikonen följande **. PFX-filen med säker LDAP-certifikat**. Ange hello sökvägen toohello PFX-filen med hello certifikat för säker LDAP åtkomst toohello hanterade domän.
 
-7. Ange den **lösenord för att dekryptera. PFX-filen**. Ange samma lösenord som du använde när du exporterar certifikatet till PFX-filen.
+7. Ange hello **lösenord toodecrypt. PFX-filen**. Ange hello samma lösenord som du använde när du exporterar hello certifikatets toohello PFX-fil.
 
-8. När du är klar klickar du på den **spara** knappen.
+8. När du är klar klickar du på hello **spara** knappen.
 
-9. Du ser ett meddelande som informerar du säkert LDAP konfigureras för den hanterade domänen. Andra inställningar för domänen kan inte ändras förrän åtgärden har slutförts.
+9. Du ser ett meddelande som informerar säker LDAP konfigureras för hello-hanterad domän. Du kan inte ändra andra inställningar för hello domän tills åtgärden är slutförd.
 
-    ![Konfigurera säker LDAP för den hanterade domänen](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configuring.png)
+    ![Konfigurera säker LDAP för hello-hanterad domän](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configuring.png)
 
 > [!NOTE]
-> Det tar cirka 10 – 15 minuter för att aktivera säker LDAP för din hanterade domän. Om det tillhandahållna säkra LDAP-certifikatet inte matchar kriterierna som krävs, säker LDAP har inte aktiverats för din katalog och du ser ett fel. Till exempel domännamnet är felaktig, certifikatet redan har upphört att gälla eller upphör snart att gälla. I det här fallet, försök igen med ett giltigt certifikat.
+> Det tar cirka 10 too15 minuter tooenable säkert LDAP för din hanterade domän. Om hello säker LDAP-certifikat inte matchar hello krävs kriterier, säker LDAP har inte aktiverats för din katalog och du ser ett fel. Till exempel hello domännamn är felaktig, hello certifikatet redan har upphört att gälla eller upphör snart att gälla. I det här fallet, försök igen med ett giltigt certifikat.
 >
 >
 
 <br>
 
-## <a name="task-4---configure-dns-to-access-the-managed-domain-from-the-internet"></a>Uppgift 4 – konfigurera DNS för att komma åt den hanterade domänen från internet
+## <a name="task-4---configure-dns-tooaccess-hello-managed-domain-from-hello-internet"></a>Uppgift 4 – konfigurera DNS-tooaccess hello hanterade domänen från hello internet
 > [!NOTE]
-> **Frivillig uppgift** - om du inte planerar att få tillgång till den hanterade domänen med LDAPS via internet, hoppa över det här konfiguration.
+> **Frivillig uppgift** - om du inte planerar tooaccess hello hanterade domänen med LDAPS över Hej internet, hoppa över det här konfiguration.
 >
 >
 
-Innan du börjar den här uppgiften kan du kontrollera att du har slutfört stegen som beskrivs i [uppgift 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview).
+Innan du börjar den här uppgiften kan du kontrollera att du har slutfört stegen i hello [uppgift 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview).
 
-När du har aktiverat säker LDAP-åtkomst via internet för din hanterade domän, måste du uppdatera DNS så att klientdatorerna kan hitta den här hanterade domänen. I slutet av uppgift 3 visas en extern IP-adress på det **egenskaper** bladet i **extern IP-adress för LDAPS åtkomst**.
+När du har aktiverat säker LDAP-åtkomst via hello internet för din hanterade domän måste tooupdate DNS så att klientdatorerna kan hitta den här hanterade domänen. Hello slutet av uppgift 3, visas en extern IP-adress på hello **egenskaper** bladet i **extern IP-adress för LDAPS åtkomst**.
 
-Konfigurera externa DNS-providern så att DNS-namnet på den hanterade domänen (till exempel ldaps.contoso100.com) pekar på den här externa IP-adressen. I vårt exempel måste vi skapa följande DNS-post:
+Konfigurera externa DNS-providern så att hello DNS-namnet på hello hanterade domän (till exempel ldaps.contoso100.com) pekar toothis extern IP-adress. I vårt exempel behöver vi toocreate hello följande DNS-post:
 
     ldaps.contoso100.com  -> 52.165.38.113
 
-Det - du är nu redo att ansluta till den hanterade domänen med säker LDAP via internet.
+Det – nu är du redo tooconnect toohello hanterade domänen med hjälp av säker LDAP över hello internet.
 
 > [!WARNING]
-> Kom ihåg att klientdatorer måste lita LDAPS-certifikatets utfärdare för att kunna ansluta till den hanterade domänen med LDAPS. Om du använder en betrodd offentlig certifikatutfärdare, behöver du inte göra något eftersom dessa certifikatutfärdare litar på klientdatorer. Om du använder ett självsignerat certifikat, installera den offentliga delen av det självsignerade certifikatet i det betrodda certifikatarkivet på klientdatorn.
+> Kom ihåg att klientdatorer måste lita hello utfärdaren av hello LDAPS certifikat toobe kan tooconnect har toohello hanterade domänen med LDAPS. Om du använder en betrodd offentlig certifikatutfärdare, behöver du inte toodo allt eftersom dessa certifikatutfärdare litar på klientdatorer. Om du använder ett självsignerat certifikat, installera hello offentliga del av hello självsignerat certifikat till hello betrodda certifikatarkiv på hello-klientdator.
 >
 >
 
 
-## <a name="task-5---lock-down-ldaps-access-to-your-managed-domain-over-the-internet"></a>Uppgift 5 - låsning LDAPS åtkomst till din hanterade domän via internet
+## <a name="task-5---lock-down-ldaps-access-tooyour-managed-domain-over-hello-internet"></a>Uppgift 5 - låsning LDAPS komma åt tooyour hanterade domänen via hello internet
 > [!NOTE]
-> **Frivillig uppgift** - om du inte har aktiverat LDAPS åtkomst till den hanterade domänen via internet, hoppa över det här konfiguration.
+> **Frivillig uppgift** - om du inte har aktiverat LDAPS åtkomst toohello hanterad domän över Hej internet, hoppa över det här konfiguration.
 >
 >
 
-Innan du börjar den här uppgiften kan du kontrollera att du har slutfört stegen som beskrivs i [uppgift 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview).
+Innan du börjar den här uppgiften kan du kontrollera att du har slutfört stegen i hello [uppgift 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview).
 
-Exponera din hanterade domän för LDAPS åtkomst via internet representerar en säkerhetsrisk. Den hanterade domänen kan nås från internet på porten som används för säker LDAP (det vill säga port 636). Därför kan du välja att begränsa åtkomsten till den hanterade domänen till specifika kända IP-adresser. Skapa en nätverkssäkerhetsgrupp (NSG) för förbättrad säkerhet och associera den med undernätet där du har aktiverat Azure AD Domain Services.
+Visa din hanterade domän för LDAPS åtkomst över hello representerar internet en säkerhetsrisk. hello hanterad domän kan nås från hello internet på hello-port som används för säker LDAP (det vill säga port 636). Därför kan du välja toorestrict åtkomst toohello hanterade domänen toospecific kända IP-adresser. För förbättrad säkerhet skapar en nätverkssäkerhetsgrupp (NSG) och associera den med hello undernät där du har aktiverat Azure AD Domain Services.
 
-I följande tabell visas ett exempel på en NSG som du kan konfigurera för att låsa säker LDAP-åtkomst via internet. NSG: N innehåller en uppsättning regler som tillåter inkommande LDAPS åtkomst via TCP-port 636 endast från en angiven mängd av IP-adresser. 'DenyAll' Standardregeln gäller för inkommande trafik från internet. NSG-regel som tillåter LDAPS åtkomst via internet från den angivna IP-adresser har högre prioritet än DenyAll NSG-regeln.
+hello i tabellen nedan visas ett exempel på en NSG som du kan konfigurera toolock ned säker LDAP åtkomst via hello internet. hello NSG innehåller en uppsättning regler som tillåter inkommande LDAPS åtkomst via TCP-port 636 endast från en angiven mängd av IP-adresser. hello 'DenyAll' Standardregeln gäller tooall andra inkommande trafik från hello internet. hello NSG regeln tooallow LDAPS åtkomst via hello internet från den angivna IP-adresser har högre prioritet än hello DenyAll NSG regeln.
 
-![Exempel NSG till säker LDAPS åtkomst via internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
+![Exempel NSG toosecure LDAPS åtkomst via hello internet](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
 
 **Mer information** - [Nätverkssäkerhetsgrupper](../virtual-network/virtual-networks-nsg.md).
 

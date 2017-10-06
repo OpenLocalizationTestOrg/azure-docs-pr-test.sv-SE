@@ -1,5 +1,5 @@
 ---
-title: Azure API Management-principuttrycken | Microsoft Docs
+title: aaaAzure API Management principuttrycken | Microsoft Docs
 description: "Lär dig mer om principen uttryck i Azure API Management."
 services: api-management
 documentationcenter: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: d96dde8c74141d000c1f7c5fd9ef624ff5e46953
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 79da0d6ca3963307ec811a33aaac3d63a7abd97d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-management-policy-expressions"></a>API Management principuttrycken
-Principen uttryck syntax är C# 6.0. Varje uttryck har åtkomst till den angivna implicit [kontexten](api-management-policy-expressions.md#ContextVariables) variabel och ett tillåtna [delmängd](api-management-policy-expressions.md#CLRTypes) av .NET Framework-typer.  
+Principen uttryck syntax är C# 6.0. Varje uttryck har åtkomst toohello angetts implicit [kontexten](api-management-policy-expressions.md#ContextVariables) variabel och ett tillåtna [delmängd](api-management-policy-expressions.md#CLRTypes) av .NET Framework-typer.  
   
 > [!NOTE]
->  Mer information om principen uttryck finns i [Principuttrycken](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/) video.  
+>  Mer information om principen uttryck finns hello [Principuttrycken](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/) video.  
 >   
->  Demonstration av hur du konfigurerar principer med hjälp av principuttrycken finns [moln omfattar avsnitt 177: mer API Management-funktioner med Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Den här videon innehåller följande princip uttryck demonstrationer.  
+>  Demonstration av hur du konfigurerar principer med hjälp av principuttrycken finns [moln omfattar avsnitt 177: mer API Management-funktioner med Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/). Den här videon innehåller hello följa principen uttryck demonstrationer.  
 >   
->  -   10:30 - se hur du tillämpa principen på API-nivå för att leverera sammanhangsinformation till backend-tjänsten med den [ange frågesträngparametern](api-management-transformation-policies.md#SetQueryStringParameter) och [ange HTTP-huvudet](api-management-transformation-policies.md#SetHTTPheader) principer. Det finns en demonstration av anropa en funktion i developer-portalen där du kan se dessa principer på arbetet vid 12:10.  
-> -   13:50 – se hur du använder den [Validera JWT](api-management-access-restriction-policies.md#ValidateJWT) för att bevilja åtkomst till åtgärder före baserat på token anspråk. Spola fram till 15:00 för att se de principer som konfigurerats i Redigeraren för grupprinciper och sedan till 18:50 för en demonstration av anropa en funktion från utvecklarportal både med och utan autentiseringstoken som krävs.  
-> -   21:00 – se hur du använder en [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) spåra för att se hur principer utvärderas och resultat av utvärderingen.  
-> -   25:25 - finns i princip uttryck med den [hämta från cache](api-management-caching-policies.md#GetFromCache) och [Store cacheminne](api-management-caching-policies.md#StoreToCache) principer för att konfigurera API Management svar cachevaraktighet som matchar svar cachelagring av backend-tjänst som anges av tjänsten säkerhetskopierade `Cache-Control` direktiv.  
-> -   34:30 - se hur du utför innehållsfiltrering genom att ta bort dataelement från svar togs emot från backend-tjänsten använder den [Åtkomstkontrollflödet](api-management-advanced-policies.md#choose) och [konfigurera brödtext](api-management-transformation-policies.md#SetBody) principer. Börja med 31:50 att se en översikt över [mörkt Sky prognos API: N](https://developer.forecast.io/) används för den här demon.  
-> -   För att hämta principrapporter som används i den här videon, se den [api-hantering-exempel principer](https://github.com/Azure/api-management-samples/tree/master/policies) github-lagringsplatsen.  
+>  -   10:30 - se hur tooapply princip hello API nivå toosupply kontexten information toohello serverdelstjänst med hello [ange frågesträngparametern](api-management-transformation-policies.md#SetQueryStringParameter) och [ange HTTP-huvudet](api-management-transformation-policies.md#SetHTTPheader) principer. Det finns en demonstration av anropa en funktion i hello developer-portalen där du kan se dessa principer på arbetet vid 12:10.  
+> -   13:50 – se hur toouse hello [Validera JWT](api-management-access-restriction-policies.md#ValidateJWT) princip toopre-auktorisera åtkomst toooperations baserat på token anspråk. Vidarebefordra snabb too15:00 toosee hello principer som konfigurerats i hello redigeraren och sedan too18:50 för en demonstration av anropa en funktion från hello developer-portalen både med och utan hello krävs autentiseringstoken.  
+> -   21:00 – se hur toouse en [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) spåra toosee hur principer utvärderas och hello hello utvärderingsresultat.  
+> -   25:25 - se hur toouse principuttrycken med hello [hämta från cache](api-management-caching-policies.md#GetFromCache) och [Store toocache](api-management-caching-policies.md#StoreToCache) principer tooconfigure API Management svaret som matchar hello svar cachelagring av hello cachevaraktighet serverdelstjänst som anges av hello säkerhetskopieras tjänstens `Cache-Control` direktiv.  
+> -   34:30 - se hur tooperform innehåll filtrering genom att ta bort dataelement från hello svar togs emot från hello serverdelstjänst med hello [Åtkomstkontrollflödet](api-management-advanced-policies.md#choose) och [konfigurera brödtext](api-management-transformation-policies.md#SetBody) principer. Starta en översikt över vid 31:50 toosee [hello mörkt Sky prognos API](https://developer.forecast.io/) används för den här demon.  
+> -   hanteringsprinciper för toodownload hello används i den här videon finns hello [api-hantering-exempel principer](https://github.com/Azure/api-management-samples/tree/master/policies) github-lagringsplatsen.  
   
   
 ##  <a name="Syntax"></a>Syntax  
@@ -68,13 +68,13 @@ Principen uttryck syntax är C# 6.0. Varje uttryck har åtkomst till den angivna
 ```  
   
 ##  <a name="PolicyExpressionsUsage"></a>Användning  
- Uttryck kan användas som attributvärden eller textvärden i någon av API-hantering [principer](api-management-policies.md), såvida inte principreferens anger något annat.  
+ Uttryck kan användas som attributvärden eller textvärden i någon av hello API Management [principer](api-management-policies.md), såvida inte hello principreferens anger något annat.  
   
 > [!IMPORTANT]
->  Observera att när du använder principuttrycken endast begränsad verifiering av principen uttryck när principen har definierats. Eftersom uttrycken körs vid körning i pipeline för inkommande eller utgående av gateway, resulterar körning undantag genereras av principen uttryck i ett körningsfel i API-anrop.  
+>  Observera att när du använder principuttrycken endast begränsad verifiering av hello principuttrycken när hello princip har definierats. Eftersom hello uttryck körs vid körning i hello inkommande eller utgående pipeline av hello gateway, resulterar körning undantag genereras av hello princip uttryck i ett körningsfel i hello API-anrop.  
   
 ##  <a name="CLRTypes"></a>.NET framework-typer som är tillåtna i uttryck för principen  
- I följande tabell visas .NET Framework-typer och deras medlemmar som tillåts i princip uttryck.  
+ hello följande tabell visas hello .NET Framework-typer och deras medlemmar som tillåts i princip uttryck.  
   
 |CLR-typ|Metoder som stöds|  
 |--------------|-----------------------|  
@@ -168,7 +168,7 @@ Principen uttryck syntax är C# 6.0. Varje uttryck har åtkomst till den angivna
 |System.Xml.XmlNodeType|Alla|  
   
 ##  <a name="ContextVariables"></a>Kontexten variabel  
- En variabel med namnet `context` implicit finns i varje princip [uttryck](api-management-policy-expressions.md#Syntax). Dess medlemmar innehåller information som är relevanta för den `\request`. Alla de `context` medlemmar är skrivskyddad.  
+ En variabel med namnet `context` implicit finns i varje princip [uttryck](api-management-policy-expressions.md#Syntax). Dess medlemmar ger information relevanta toohello `\request`. Alla hello `context` medlemmar är skrivskyddad.  
   
 |Kontexten variabel|Tillåtna metoder, egenskaper och parametervärden|  
 |----------------------|-------------------------------------------------------|  
@@ -179,26 +179,26 @@ Principen uttryck syntax är C# 6.0. Varje uttryck har åtkomst till den angivna
 |kontexten. Åtgärden|ID: sträng<br /><br /> Metod: sträng<br /><br /> Namn: sträng<br /><br /> UrlTemplate: sträng|  
 |kontexten. Produkten|API: er: IEnumerable < IApi\><br /><br /> ApprovalRequired: bool<br /><br /> Grupper: IEnumerable < IGroup\><br /><br /> ID: sträng<br /><br /> Namn: sträng<br /><br /> Tillstånd: enum ProductState {NotPublished, publicerad}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|  
 |kontexten. Begäran|Brödtext: IMessageBody<br /><br /> Certifikat: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> Huvuden: IReadOnlyDictionary < string, string [] ><br /><br /> IP-adress: sträng<br /><br /> MatchedParameters: IReadOnlyDictionary < sträng, sträng ><br /><br /> Metod: sträng<br /><br /> OriginalUrl:IUrl<br /><br /> URL: IUrl|  
-|strängkontext. Request.Headers.GetValueOrDefault (headerName: sträng, defaultValue: sträng)|headerName: sträng<br /><br /> Standardvärde: sträng<br /><br /> Returnerar kommaseparerade värden i huvudet begäran eller `defaultValue` om sidhuvudet inte hittas.|  
+|strängkontext. Request.Headers.GetValueOrDefault (headerName: sträng, defaultValue: sträng)|headerName: sträng<br /><br /> Standardvärde: sträng<br /><br /> Returnerar kommaseparerade värden i huvudet begäran eller `defaultValue` om hello huvudet inte kunde hittas.|  
 |kontexten. Svar|Brödtext: IMessageBody<br /><br /> Huvuden: IReadOnlyDictionary < string, string [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: sträng|  
-|strängkontext. Response.Headers.GetValueOrDefault (headerName: sträng, defaultValue: sträng)|headerName: sträng<br /><br /> Standardvärde: sträng<br /><br /> Returnerar svaret fil med kommaavgränsade värden i huvudet eller `defaultValue` om sidhuvudet inte hittas.|  
+|strängkontext. Response.Headers.GetValueOrDefault (headerName: sträng, defaultValue: sträng)|headerName: sträng<br /><br /> Standardvärde: sträng<br /><br /> Returnerar svaret fil med kommaavgränsade värden i huvudet eller `defaultValue` om hello huvudet inte kunde hittas.|  
 |kontexten. Prenumerationen|CreatedTime: DateTime<br /><br /> EndDate: DateTime?<br /><br /> ID: sträng<br /><br /> Nyckel: sträng<br /><br /> Namn: sträng<br /><br /> PrimaryKey: sträng<br /><br /> Sekundär nyckel: sträng<br /><br /> StartDate: DateTime?|  
 |kontexten. Användaren|E-post: sträng<br /><br /> Förnamn: sträng<br /><br /> Grupper: IEnumerable < IGroup\><br /><br /> ID: sträng<br /><br /> Identiteter: IEnumerable < IUserIdentity\><br /><br /> Efternamn: sträng<br /><br /> Obs: sträng<br /><br /> RegistrationDate: DateTime|  
 |IApi|ID: sträng<br /><br /> Namn: sträng<br /><br /> Sökväg: sträng<br /><br /> Protokoll: IEnumerable < sträng\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|  
 |IGroup|ID: sträng<br /><br /> Namn: sträng|  
-|IMessageBody|Som < T\>(preserveContent: bool = false): där T: sträng, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Den `context.Request.Body.As<T>` och `context.Response.Body.As<T>` metoder som används för att läsa en begäran och svar meddelandetexten i en viss typ av `T`. Som standard använder metoden ursprungliga meddelandeströmmen brödtext och reneders det inte tillgängligt när den returnerar. Du undviker som genom att metoden fungerar på en kopia av brödtextströmmen, ange den `preserveContent` parameter till `true`. Gå [här](api-management-transformation-policies.md#SetBody) att se ett exempel.|  
+|IMessageBody|Som < T\>(preserveContent: bool = false): där T: sträng, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Hej `context.Request.Body.As<T>` och `context.Response.Body.As<T>` metoder är används tooread ett meddelande om begäran och svar organ i en viss typ av `T`. Som standard hello metoden använder hello ursprungliga brödtext meddelandeströmmen och reneders tillgänglig efter det returneras. tooavoid som genom att låta hello-metoden fungerar på en kopia av hello brödtextströmmen, ange hello `preserveContent` parameter för`true`. Gå [här](api-management-transformation-policies.md#SetBody) toosee ett exempel.|  
 |IUrl|Värden: sträng<br /><br /> Sökväg: sträng<br /><br /> Port: int<br /><br /> Fråga: IReadOnlyDictionary < string, string [] ><br /><br /> QueryString: sträng<br /><br /> Schema: sträng|  
 |IUserIdentity|ID: sträng<br /><br /> Providern: sträng|  
 |ISubscriptionKeyParameterNames|Rubrik: sträng<br /><br /> Fråga: sträng|  
-|sträng IUrl.Query.GetValueOrDefault (queryParameterName: sträng, defaultValue: sträng)|queryParameterName: sträng<br /><br /> Standardvärde: sträng<br /><br /> Returnerar kommaavgränsade parametervärden för frågan eller `defaultValue` om parametern inte hittas.|  
-|T-kontext. Variables.GetValueOrDefault < T\>(variabelnamn: sträng, defaultValue: T)|Variabelnamn: sträng<br /><br /> Standardvärde: T<br /><br /> Returnerar värdet på variabeln typkonverteras till typen `T` eller `defaultValue` om variabeln inte hittas.<br /><br /> Den här metoden genereras ett undantag om den angivna typen inte matchar den faktiska typen av returnerade variabeln.|  
-|BasicAuthCredentials AsBasic(input: this string)|indata: sträng<br /><br /> Om parametern innehåller ett giltigt grundläggande HTTP-autentisering auktorisering begäran sidhuvud värde, metoden returnerar ett objekt av typen `BasicAuthCredentials`; annars metoden returnerar null.|  
-|bool TryParseBasic (indata: den här strängen, resultat: ut BasicAuthCredentials)|indata: sträng<br /><br /> resultatet: ut BasicAuthCredentials<br /><br /> Om Indataparametern innehåller ett giltigt grundläggande HTTP-autentisering auktorisering begäran sidhuvud värde, metoden returnerar `true` och resultatet parametern innehåller ett värde av typen `BasicAuthCredentials`; annars returnerar-metoden `false`.|  
+|sträng IUrl.Query.GetValueOrDefault (queryParameterName: sträng, defaultValue: sträng)|queryParameterName: sträng<br /><br /> Standardvärde: sträng<br /><br /> Returnerar kommaavgränsade parametervärden för frågan eller `defaultValue` om hello parametern inte hittas.|  
+|T-kontext. Variables.GetValueOrDefault < T\>(variabelnamn: sträng, defaultValue: T)|Variabelnamn: sträng<br /><br /> Standardvärde: T<br /><br /> Returnerar värdet på variabeln omvandlingen tootype `T` eller `defaultValue` om hello variabeln inte hittas.<br /><br /> Den här metoden genereras ett undantag om hello angivna typen inte matchar hello faktiska typen av hello returnerade variabeln.|  
+|BasicAuthCredentials AsBasic(input: this string)|indata: sträng<br /><br /> Om hello Indataparametern innehåller ett giltigt grundläggande HTTP-autentisering auktorisering begäran sidhuvud värde, hello-metoden returnerar ett objekt av typen `BasicAuthCredentials`; annars hello-metoden returnerar null.|  
+|bool TryParseBasic (indata: den här strängen, resultat: ut BasicAuthCredentials)|indata: sträng<br /><br /> resultatet: ut BasicAuthCredentials<br /><br /> Om hello Indataparametern innehåller ett giltigt grundläggande HTTP-autentisering auktorisering begäran sidhuvud värde, hello-metoden returnerar `true` och hello resultatet parametern innehåller ett värde av typen `BasicAuthCredentials`; annars hello-metoden returnerar `false`.|  
 |BasicAuthCredentials|Lösenord: sträng<br /><br /> Användar-ID: sträng|  
-|Jwt AsJwt(input: this string)|indata: sträng<br /><br /> Om parametern innehåller ett giltigt JWT-token värde, metoden returnerar ett objekt av typen `Jwt`; annars returnerar-metoden `null`.|  
-|bool TryParseJwt (indata: den här strängen, resultat: ut Jwt)|indata: sträng<br /><br /> resultatet: ut Jwt<br /><br /> Om parametern innehåller ett giltigt JWT-token värde, metoden returnerar `true` och resultatet parametern innehåller ett värde av typen `Jwt`; annars returnerar-metoden `false`.|  
+|Jwt AsJwt(input: this string)|indata: sträng<br /><br /> Om hello Indataparametern innehåller ett giltigt JWT-token värde, hello-metoden returnerar ett objekt av typen `Jwt`; annars hello-metoden returnerar `null`.|  
+|bool TryParseJwt (indata: den här strängen, resultat: ut Jwt)|indata: sträng<br /><br /> resultatet: ut Jwt<br /><br /> Om hello Indataparametern innehåller ett giltigt JWT-token värde, hello-metoden returnerar `true` och hello resultatet parametern innehåller ett värde av typen `Jwt`; annars hello-metoden returnerar `false`.|  
 |Jwt|Algoritm: sträng<br /><br /> Målgrupp: IEnumerable < sträng\><br /><br /> Anspråk: IReadOnlyDictionary < string, string [] ><br /><br /> ExpirationTime: DateTime?<br /><br /> ID: sträng<br /><br /> Utfärdare: sträng<br /><br /> Inte före: DateTime?<br /><br /> Ämne: sträng<br /><br /> Typ: sträng|  
-|sträng Jwt.Claims.GetValueOrDefault (claimName: sträng, defaultValue: sträng)|claimName: sträng<br /><br /> Standardvärde: sträng<br /><br /> Returnerar kommaavgränsad anspråksvärden eller `defaultValue` om sidhuvudet inte hittas.|
+|sträng Jwt.Claims.GetValueOrDefault (claimName: sträng, defaultValue: sträng)|claimName: sträng<br /><br /> Standardvärde: sträng<br /><br /> Returnerar kommaavgränsad anspråksvärden eller `defaultValue` om hello huvudet inte kunde hittas.|
 
 ## <a name="next-steps"></a>Nästa steg
 Arbeta med principer för mer information finns i [principer i API Management](api-management-howto-policies.md).  

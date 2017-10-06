@@ -1,6 +1,6 @@
 ---
-title: Distribuera din app till Azure App Service med FTP/S | Microsoft Docs
-description: "Lär dig mer om att distribuera din app till Azure App Service med hjälp av FTP- eller FTPS."
+title: aaaDeploy din app tooAzure App Service med FTP/S | Microsoft Docs
+description: "Lär dig hur toodeploy din app tooAzure App Service med FTP- eller FTPS."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: cephalin;dariac
-ms.openlocfilehash: 9078abbc4ed7eff6975201443992f7bbb84bf57c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 318ae79d4fae269f853ea5c3ce28353b0864131e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Distribuera din app till Azure App Service med FTP/S
+# <a name="deploy-your-app-tooazure-app-service-using-ftps"></a>Distribuera din app tooAzure App Service med FTP/S
 
-Den här artikeln visar hur du använder FTP eller FTPS för att distribuera ditt webbprogram, mobilappsserverdel eller API-appen [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
+Den här artikeln beskrivs hur du toouse FTP eller FTPS toodeploy ditt webbprogram, mobilappsserverdel eller API-app för[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
 
-FTP-/ S-slutpunkten för din app är redan aktiv. Ingen konfiguration krävs för att aktivera FTP/S-distribution.
+hello FTP/S-slutpunkten för din app är redan aktiv. Ingen konfiguration är nödvändiga tooenable FTP/S-distributionen.
 
 > [!IMPORTANT]
-> Vi vidtar kontinuerligt åtgärder för att förbättra säkerheten för Microsoft Azure-plattformen. Som en del av den här pågående arbete planerad uppgradering av webbprogram för Tyskland Central och Tyskland nordöst regioner. Web Apps inaktiverar under denna användning av klartext FTP-protokollet för distributioner. Vår rekommendation för våra kunder är att växla till FTPS för distributioner. Vi förväntar sig inte några avbrott i tjänsten under den här uppgraderingen som är planerat till 9/5. Vi uppskattar du stöd för i den här aktiviteten.
+> Vi tar kontinuerligt steg tooimprove säkerhet för Microsoft Azure-plattformen. Som en del av den här pågående arbete planerad uppgradering av webbprogram för Tyskland Central och Tyskland nordöst regioner. Web Apps inaktiverar under denna hello användning av klartext FTP-protokollet för distributioner. Vår rekommendation tooour kunder är tooswitch tooFTPS för distributioner. Vi förväntar sig inte några avbrott tooyour tjänsten under den här uppgraderingen som är planerat till 9/5. Vi uppskattar du stöd för i den här aktiviteten.
 
 <a name="step1"></a>
 ## <a name="step-1-set-deployment-credentials"></a>Steg 1: Ange autentiseringsuppgifter för distribution
 
-För att komma åt FTP-servern för din app måste du först autentiseringsuppgifter för distribution. 
+tooaccess hello FTP-server för din app, måste du först autentiseringsuppgifter för distribution. 
 
-Om du vill ange eller återställa dina autentiseringsuppgifter för distribution, se [autentiseringsuppgifter för distribution av Azure App Service](app-service-deployment-credentials.md). Den här kursen visar hur du använder användarnivå autentiseringsuppgifter.
+tooset eller återställa dina autentiseringsuppgifter för distribution finns [autentiseringsuppgifter för distribution av Azure App Service](app-service-deployment-credentials.md). Den här kursen visar hello använder användarnivå autentiseringsuppgifter.
 
 ## <a name="step-2-get-ftp-connection-information"></a>Steg 2: Hämta information om FTP-anslutning
 
-1. I den [Azure-portalen](https://portal.azure.com), öppna appens [resursbladet](../azure-resource-manager/resource-group-portal.md#manage-resources).
-2. Välj **översikt** i den vänstra menyn anteckna värdena för **FTP/distribution användaren**, **värdnamn för FTP-**, och **FTPS värdnamn**. 
+1. I hello [Azure-portalen](https://portal.azure.com), öppna appens [resursbladet](../azure-resource-manager/resource-group-portal.md#manage-resources).
+2. Välj **översikt** hello vänstra menyn anteckna hello värden för **FTP/distribution användaren**, **värdnamn för FTP-**, och **FTPS värdnamn**. 
 
     ![Information om FTP-anslutning](./media/web-sites-deploy/FTP-Connection-Info.PNG)
 
     > [!NOTE]
-    > Den **FTP/distribution användaren** användaren värdet som visas i Azure Portal inklusive namnet på appen för att ge rätt kontext för FTP-servern.
-    > Du kan hitta samma information när du väljer **egenskaper** i den vänstra menyn. 
+    > Hej **FTP/distribution användaren** värde som användaren som visas av hello Azure Portal, inklusive appnamn hälsningspaket i ordning tooprovide rätt kontext för hello FTP-servern.
+    > Du kan hitta hello samma information när du väljer **egenskaper** hello vänstra menyn. 
     >
-    > Dessutom visas aldrig lösenord för distribution. Om du glömmer lösenordet distribution kan gå tillbaka till [steg 1](#step1) och återställa lösenordet distribution.
+    > Dessutom visas aldrig hello distribution lösenord. Om du glömmer lösenordet distribution går du tillbaka för[steg 1](#step1) och återställa lösenordet distribution.
     >
     >
 
-## <a name="step-3-deploy-files-to-azure"></a>Steg 3: Distribuera filer till Azure
+## <a name="step-3-deploy-files-tooazure"></a>Steg 3: Distribuera filer tooAzure
 
-1. Från FTP-klient ([Visual Studio](https://www.visualstudio.com/vs/community/), [FileZilla](https://filezilla-project.org/download.php?type=client), osv.), använder informationen som samlats in för att ansluta till din app.
-3. Kopiera filerna och deras respektive katalogstrukturen till den [ **/platsen/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) i Azure (eller **/platsen/wwwroot/App_Data/jobb/** katalogen för WebJobs).
-4. Gå till din app-URL att verifiera appen körs korrekt. 
+1. Från FTP-klient ([Visual Studio](https://www.visualstudio.com/vs/community/), [FileZilla](https://filezilla-project.org/download.php?type=client), osv.), Använd hello anslutningsinformation du samlade in tooconnect tooyour app.
+3. Kopiera filerna och deras respektive directory strukturen toohello [ **/platsen/wwwroot** directory](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure) i Azure (eller hello **/platsen/wwwroot/App_Data/jobb/** katalogen för WebJobs).
+4. Bläddra tooyour appens URL tooverify hello appen körs korrekt. 
 
 > [!NOTE] 
-> Till skillnad från [Git-baserade distributioner](app-service-deploy-local-git.md), FTP-distributionen inte stöder följande distribution automatiseringar: 
+> Till skillnad från [Git-baserade distributioner](app-service-deploy-local-git.md), FTP-distributionen inte stöder hello efter distributionen automatiseringar: 
 >
 > - beroende återställning (till exempel NuGet och NPM, PIP. Composer automatiseringar)
 > - .NET-binärfiler för
@@ -70,7 +70,7 @@ Om du vill ange eller återställa dina autentiseringsuppgifter för distributio
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer avancerade scenarier för distribution, försök [distribution till Azure med Git](app-service-deploy-local-git.md). Git-baserad distribution till Azure kan versionskontroll, paketet återställning, MSBuild och mycket mer.
+Mer avancerade scenarier för distribution, försök [distribuera tooAzure med Git](app-service-deploy-local-git.md). Distribution av Git-baserade tooAzure kan versionskontroll, paketet återställning, MSBuild och mycket mer.
 
 ## <a name="more-resources"></a>Fler resurser
 
