@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Cerner Central | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Cerner Central."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Cerner Central."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,102 +13,102 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 77b5fb94cdfa5722081198aabc59fbf86229c2b0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3493d180e8f229b7cd228769f780f10208114889
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a><span data-ttu-id="502ba-103">Självstudier: Azure Active Directory-integrering med Cerner Central</span><span class="sxs-lookup"><span data-stu-id="502ba-103">Tutorial: Azure Active Directory integration with Cerner Central</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a><span data-ttu-id="c441a-103">Självstudier: Azure Active Directory-integrering med Cerner Central</span><span class="sxs-lookup"><span data-stu-id="c441a-103">Tutorial: Azure Active Directory integration with Cerner Central</span></span>
 
-<span data-ttu-id="502ba-104">I kursen får lära du att integrera Cerner Central med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="502ba-104">In this tutorial, you learn how to integrate Cerner Central with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="c441a-104">I kursen får du lära dig hur toointegrate Cerner Central med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="c441a-104">In this tutorial, you learn how toointegrate Cerner Central with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="502ba-105">Integrera Cerner Central med Azure AD ger dig följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="502ba-105">Integrating Cerner Central with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="c441a-105">Integrera Cerner Central med Azure AD ger dig hello följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="c441a-105">Integrating Cerner Central with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="502ba-106">Du kan styra i Azure AD som har åtkomst till Cerner Central</span><span class="sxs-lookup"><span data-stu-id="502ba-106">You can control in Azure AD who has access to Cerner Central</span></span>
-- <span data-ttu-id="502ba-107">Du kan aktivera användarna att automatiskt hämta loggat in på Cerner Central (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="502ba-107">You can enable your users to automatically get signed-on to Cerner Central (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="502ba-108">Du kan hantera dina konton i en central plats - Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="502ba-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="c441a-106">Du kan styra i Azure AD som har åtkomst tooCerner Central</span><span class="sxs-lookup"><span data-stu-id="c441a-106">You can control in Azure AD who has access tooCerner Central</span></span>
+- <span data-ttu-id="c441a-107">Du kan aktivera din användare tooautomatically get inloggade tooCerner Central (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="c441a-107">You can enable your users tooautomatically get signed-on tooCerner Central (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="c441a-108">Du kan hantera dina konton i en central plats - hello Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="c441a-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="502ba-109">Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="502ba-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="c441a-109">Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="c441a-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="502ba-110">Krav</span><span class="sxs-lookup"><span data-stu-id="502ba-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="c441a-110">Krav</span><span class="sxs-lookup"><span data-stu-id="c441a-110">Prerequisites</span></span>
 
-<span data-ttu-id="502ba-111">Om du vill konfigurera Azure AD-integrering med Cerner Central behöver du följande:</span><span class="sxs-lookup"><span data-stu-id="502ba-111">To configure Azure AD integration with Cerner Central, you need the following items:</span></span>
+<span data-ttu-id="c441a-111">tooconfigure Azure AD-integrering med Cerner Central måste hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="c441a-111">tooconfigure Azure AD integration with Cerner Central, you need hello following items:</span></span>
 
-- <span data-ttu-id="502ba-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="502ba-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="502ba-113">En godkänd Cerner centrala System-kontot</span><span class="sxs-lookup"><span data-stu-id="502ba-113">An approved Cerner Central System Account</span></span>
+- <span data-ttu-id="c441a-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="c441a-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="c441a-113">En godkänd Cerner centrala System-kontot</span><span class="sxs-lookup"><span data-stu-id="c441a-113">An approved Cerner Central System Account</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="502ba-114">Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="502ba-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="c441a-114">tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="c441a-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="502ba-115">Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="502ba-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="c441a-115">tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="c441a-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="502ba-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="502ba-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="502ba-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="502ba-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="c441a-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="c441a-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="c441a-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="c441a-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="502ba-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="502ba-118">Scenario description</span></span>
-<span data-ttu-id="502ba-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="502ba-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="502ba-120">Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="502ba-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="c441a-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="c441a-118">Scenario description</span></span>
+<span data-ttu-id="c441a-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="c441a-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="c441a-120">hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="c441a-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="502ba-121">Att lägga till Cerner Central från galleriet</span><span class="sxs-lookup"><span data-stu-id="502ba-121">Adding Cerner Central from the gallery</span></span>
-2. <span data-ttu-id="502ba-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="502ba-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="c441a-121">Att lägga till Cerner Central från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="c441a-121">Adding Cerner Central from hello gallery</span></span>
+2. <span data-ttu-id="c441a-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="c441a-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-cerner-central-from-the-gallery"></a><span data-ttu-id="502ba-123">Att lägga till Cerner Central från galleriet</span><span class="sxs-lookup"><span data-stu-id="502ba-123">Adding Cerner Central from the gallery</span></span>
-<span data-ttu-id="502ba-124">Du måste lägga till Cerner Central från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Cerner Central i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="502ba-124">To configure the integration of Cerner Central into Azure AD, you need to add Cerner Central from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-cerner-central-from-hello-gallery"></a><span data-ttu-id="c441a-123">Att lägga till Cerner Central från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="c441a-123">Adding Cerner Central from hello gallery</span></span>
+<span data-ttu-id="c441a-124">tooconfigure hello integrering av Cerner Central i Azure AD, behöver du tooadd Cerner Central hello galleriet tooyour listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="c441a-124">tooconfigure hello integration of Cerner Central into Azure AD, you need tooadd Cerner Central from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="502ba-125">**Utför följande steg för att lägga till Cerner Central från galleriet:**</span><span class="sxs-lookup"><span data-stu-id="502ba-125">**To add Cerner Central from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="c441a-125">**tooadd Cerner Central från galleriet hello utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="c441a-125">**tooadd Cerner Central from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="502ba-126">I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="502ba-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="c441a-126">I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="c441a-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="502ba-128">Gå till **företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="502ba-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="502ba-129">Gå till **alla program**.</span><span class="sxs-lookup"><span data-stu-id="502ba-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="c441a-128">Navigera för**företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="c441a-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="c441a-129">Gå sedan för**alla program**.</span><span class="sxs-lookup"><span data-stu-id="c441a-129">Then go too**All applications**.</span></span>
 
     ![Program][2]
     
-3. <span data-ttu-id="502ba-131">Om du vill lägga till nya programmet, klickar du på **nytt program** knappen ovanpå dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="502ba-131">To add new application, click **New application** button on top of the dialog.</span></span>
+3. <span data-ttu-id="c441a-131">tooadd nya program, klickar du på **nytt program** knappen ovanpå hello dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="c441a-131">tooadd new application, click **New application** button on top of hello dialog.</span></span>
 
     ![Program][3]
 
-4. <span data-ttu-id="502ba-133">I sökrutan skriver **Cerner Central**.</span><span class="sxs-lookup"><span data-stu-id="502ba-133">In the search box, type **Cerner Central**.</span></span>
+4. <span data-ttu-id="c441a-133">Skriv i sökrutan hello **Cerner Central**.</span><span class="sxs-lookup"><span data-stu-id="c441a-133">In hello search box, type **Cerner Central**.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_search.png)
 
-5. <span data-ttu-id="502ba-135">Välj i resultatpanelen **Cerner Central**, och klicka sedan på **Lägg till** för att lägga till programmet.</span><span class="sxs-lookup"><span data-stu-id="502ba-135">In the results panel, select **Cerner Central**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="c441a-135">Markera hello resultat på panelen **Cerner Central**, och klicka sedan på **Lägg till** knappen tooadd hello program.</span><span class="sxs-lookup"><span data-stu-id="c441a-135">In hello results panel, select **Cerner Central**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="502ba-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="502ba-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="502ba-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Cerner Central baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="502ba-138">In this section, you configure and test Azure AD single sign-on with Cerner Central based on a test user called "Britta Simon."</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="c441a-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="c441a-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="c441a-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Cerner Central baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="c441a-138">In this section, you configure and test Azure AD single sign-on with Cerner Central based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="502ba-139">Azure AD måste du känna till användaren i Cerner Central motsvarighet till en användare i Azure AD för enkel inloggning ska fungera.</span><span class="sxs-lookup"><span data-stu-id="502ba-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Cerner Central is to a user in Azure AD.</span></span> <span data-ttu-id="502ba-140">Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Cerner Central upprättas.</span><span class="sxs-lookup"><span data-stu-id="502ba-140">In other words, a link relationship between an Azure AD user and the related user in Cerner Central needs to be established.</span></span>
+<span data-ttu-id="c441a-139">För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Cerner Central är tooa i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="c441a-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Cerner Central is tooa user in Azure AD.</span></span> <span data-ttu-id="c441a-140">Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Cerner Central toobe upprättas.</span><span class="sxs-lookup"><span data-stu-id="c441a-140">In other words, a link relationship between an Azure AD user and hello related user in Cerner Central needs toobe established.</span></span>
 
-<span data-ttu-id="502ba-141">Om du vill konfigurera och testa Azure AD enkel inloggning med Cerner Central, måste du utföra följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="502ba-141">To configure and test Azure AD single sign-on with Cerner Central, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="c441a-141">tooconfigure och testa Azure AD enkel inloggning med Cerner Central, behöver du toocomplete hello följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="c441a-141">tooconfigure and test Azure AD single sign-on with Cerner Central, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="502ba-142">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="502ba-142">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="502ba-143">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="502ba-143">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="502ba-144">**[Skapa en testanvändare Cerner Central](#creating-a-cerner-central-test-user)**  – har en motsvarighet för Britta Simon Cerner Central som är kopplad till Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="502ba-144">**[Creating a Cerner Central test user](#creating-a-cerner-central-test-user)** - to have a counterpart of Britta Simon in Cerner Central that is linked to the Azure AD representation of the user.</span></span>
-4. <span data-ttu-id="502ba-145">**[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="502ba-145">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="502ba-146">**[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="502ba-146">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="c441a-142">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="c441a-142">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="c441a-143">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="c441a-143">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="c441a-144">**[Skapa en testanvändare Cerner Central](#creating-a-cerner-central-test-user)**  -toohave en motsvarighet för Britta Simon i Cerner Central som är länkade toohello Azure AD-representation av hello användare.</span><span class="sxs-lookup"><span data-stu-id="c441a-144">**[Creating a Cerner Central test user](#creating-a-cerner-central-test-user)** - toohave a counterpart of Britta Simon in Cerner Central that is linked toohello Azure AD representation of hello user.</span></span>
+4. <span data-ttu-id="c441a-145">**[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="c441a-145">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="c441a-146">**[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="c441a-146">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="502ba-147">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="502ba-147">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="c441a-147">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="c441a-147">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="502ba-148">I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Cerner Central.</span><span class="sxs-lookup"><span data-stu-id="502ba-148">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Cerner Central application.</span></span>
+<span data-ttu-id="c441a-148">I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Cerner Central.</span><span class="sxs-lookup"><span data-stu-id="c441a-148">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Cerner Central application.</span></span>
 
-<span data-ttu-id="502ba-149">**Utför följande steg för att konfigurera Azure AD enkel inloggning med Cerner Central:**</span><span class="sxs-lookup"><span data-stu-id="502ba-149">**To configure Azure AD single sign-on with Cerner Central, perform the following steps:**</span></span>
+<span data-ttu-id="c441a-149">**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Cerner Central:**</span><span class="sxs-lookup"><span data-stu-id="c441a-149">**tooconfigure Azure AD single sign-on with Cerner Central, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="502ba-150">I Azure-portalen på den **Cerner Central** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="502ba-150">In the Azure portal, on the **Cerner Central** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="c441a-150">I hello Azure-portalen på hello **Cerner Central** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="c441a-150">In hello Azure portal, on hello **Cerner Central** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurera enkel inloggning][4]
 
-2. <span data-ttu-id="502ba-152">På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="502ba-152">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="c441a-152">På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="c441a-152">On hello **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_samlbase.png)
 
-3. <span data-ttu-id="502ba-154">På den **Cerner centrala domän och URL: er** avsnittet, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="502ba-154">On the **Cerner Central Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="c441a-154">På hello **Cerner centrala domän och URL: er** avsnittet, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="c441a-154">On hello **Cerner Central Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_url.png)
 
-    <span data-ttu-id="502ba-156">a.</span><span class="sxs-lookup"><span data-stu-id="502ba-156">a.</span></span> <span data-ttu-id="502ba-157">I den **identifierare** textruta Skriv det värde som använder följande mönster:</span><span class="sxs-lookup"><span data-stu-id="502ba-157">In the **Identifier** textbox, type the value using the following patterns:</span></span>
+    <span data-ttu-id="c441a-156">a.</span><span class="sxs-lookup"><span data-stu-id="c441a-156">a.</span></span> <span data-ttu-id="c441a-157">I hello **identifierare** textruta hello TYPVÄRDE med hello följande mönster:</span><span class="sxs-lookup"><span data-stu-id="c441a-157">In hello **Identifier** textbox, type hello value using hello following patterns:</span></span>
     
     | |
     |--|
@@ -118,7 +118,7 @@ ms.lasthandoff: 07/11/2017
     | `https://sandboxcernercentral.com/session-api/protocol/saml2/metadata` |
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/metadata` |
 
-    <span data-ttu-id="502ba-158">b.</span><span class="sxs-lookup"><span data-stu-id="502ba-158">b.</span></span> <span data-ttu-id="502ba-159">I den **Reply URL** textruta Skriv en URL med följande mönster:</span><span class="sxs-lookup"><span data-stu-id="502ba-159">In the **Reply URL** textbox, type a URL using the following patterns:</span></span> 
+    <span data-ttu-id="c441a-158">b.</span><span class="sxs-lookup"><span data-stu-id="c441a-158">b.</span></span> <span data-ttu-id="c441a-159">I hello **Reply URL** textruta, ange en Webbadress med hello följande mönster:</span><span class="sxs-lookup"><span data-stu-id="c441a-159">In hello **Reply URL** textbox, type a URL using hello following patterns:</span></span> 
     | |
     |--|
     | `https://<instancename>.cernercentral.com/session-api/protocol/saml2/sso` |
@@ -128,113 +128,113 @@ ms.lasthandoff: 07/11/2017
     | `https://<subdomain>.sandboxcernercentral.com/<instancename>` |
 
     > [!NOTE] 
-    > <span data-ttu-id="502ba-160">Dessa värden är inte verkligt.</span><span class="sxs-lookup"><span data-stu-id="502ba-160">These values are not the real.</span></span> <span data-ttu-id="502ba-161">Uppdatera dessa värden med den faktiska identifierare och Reply-URL.</span><span class="sxs-lookup"><span data-stu-id="502ba-161">Update these values with the actual Identifier and Reply URL.</span></span> <span data-ttu-id="502ba-162">Kontakta [Cerner Central supportteamet](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) att hämta dessa värden.</span><span class="sxs-lookup"><span data-stu-id="502ba-162">Contact [Cerner Central support team](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) to get these values.</span></span>
+    > <span data-ttu-id="c441a-160">Dessa värden är inte hello verkliga.</span><span class="sxs-lookup"><span data-stu-id="c441a-160">These values are not hello real.</span></span> <span data-ttu-id="c441a-161">Uppdatera dessa värden med hello faktiska identifierare och svars-URL.</span><span class="sxs-lookup"><span data-stu-id="c441a-161">Update these values with hello actual Identifier and Reply URL.</span></span> <span data-ttu-id="c441a-162">Kontakta [Cerner Central supportteamet](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) tooget dessa värden.</span><span class="sxs-lookup"><span data-stu-id="c441a-162">Contact [Cerner Central support team](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations) tooget these values.</span></span>
  
-4. <span data-ttu-id="502ba-163">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="502ba-163">Click **Save** button.</span></span>
+4. <span data-ttu-id="c441a-163">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="c441a-163">Click **Save** button.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-cernercentral-tutorial/tutorial_general_400.png)
 
-5. <span data-ttu-id="502ba-165">Att generera den **Metadata** url, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="502ba-165">To generate the **Metadata** url, perform the following steps:</span></span>
+5. <span data-ttu-id="c441a-165">toogenerate hello **Metadata** url, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="c441a-165">toogenerate hello **Metadata** url, perform hello following steps:</span></span>
 
-    <span data-ttu-id="502ba-166">a.</span><span class="sxs-lookup"><span data-stu-id="502ba-166">a.</span></span> <span data-ttu-id="502ba-167">Klicka på **App registreringar**.</span><span class="sxs-lookup"><span data-stu-id="502ba-167">Click **App registrations**.</span></span>
+    <span data-ttu-id="c441a-166">a.</span><span class="sxs-lookup"><span data-stu-id="c441a-166">a.</span></span> <span data-ttu-id="c441a-167">Klicka på **App registreringar**.</span><span class="sxs-lookup"><span data-stu-id="c441a-167">Click **App registrations**.</span></span>
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_appregistrations.png)
    
-    <span data-ttu-id="502ba-169">b.</span><span class="sxs-lookup"><span data-stu-id="502ba-169">b.</span></span> <span data-ttu-id="502ba-170">Klicka på **slutpunkter** att öppna **slutpunkter** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="502ba-170">Click **Endpoints** to open **Endpoints** dialog box.</span></span>  
+    <span data-ttu-id="c441a-169">b.</span><span class="sxs-lookup"><span data-stu-id="c441a-169">b.</span></span> <span data-ttu-id="c441a-170">Klicka på **slutpunkter** tooopen **slutpunkter** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="c441a-170">Click **Endpoints** tooopen **Endpoints** dialog box.</span></span>  
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_endpointicon.png)
 
-    <span data-ttu-id="502ba-172">c.</span><span class="sxs-lookup"><span data-stu-id="502ba-172">c.</span></span> <span data-ttu-id="502ba-173">Klicka på kopieringsknappen för att kopiera **FEDERATION METADATADOKUMENTET** url och klistra in den i anteckningar.</span><span class="sxs-lookup"><span data-stu-id="502ba-173">Click the copy button to copy **FEDERATION METADATA DOCUMENT** url and paste it into notepad.</span></span>
+    <span data-ttu-id="c441a-172">c.</span><span class="sxs-lookup"><span data-stu-id="c441a-172">c.</span></span> <span data-ttu-id="c441a-173">Klicka på hello Kopiera knappen toocopy **FEDERATION METADATADOKUMENTET** url och klistra in den i anteckningar.</span><span class="sxs-lookup"><span data-stu-id="c441a-173">Click hello copy button toocopy **FEDERATION METADATA DOCUMENT** url and paste it into notepad.</span></span>
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_endpoint.png)
      
-    <span data-ttu-id="502ba-175">d.</span><span class="sxs-lookup"><span data-stu-id="502ba-175">d.</span></span> <span data-ttu-id="502ba-176">Gå till egenskapssidan för **Cerner Central** och kopiera den **program-Id** med **kopiera** knappen och klistra in den i anteckningar.</span><span class="sxs-lookup"><span data-stu-id="502ba-176">Now go to the property page of **Cerner Central** and copy the **Application Id** using **Copy** button and paste it into notepad.</span></span>
+    <span data-ttu-id="c441a-175">d.</span><span class="sxs-lookup"><span data-stu-id="c441a-175">d.</span></span> <span data-ttu-id="c441a-176">Gå nu toohello egenskapssida **Cerner Central** och kopiera hello **program-Id** med **kopiera** knappen och klistra in den i anteckningar.</span><span class="sxs-lookup"><span data-stu-id="c441a-176">Now go toohello property page of **Cerner Central** and copy hello **Application Id** using **Copy** button and paste it into notepad.</span></span>
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_appid.png)
 
-    <span data-ttu-id="502ba-178">e.</span><span class="sxs-lookup"><span data-stu-id="502ba-178">e.</span></span> <span data-ttu-id="502ba-179">Generera den **URL för tjänstmetadata** med hjälp av följande mönster:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`</span><span class="sxs-lookup"><span data-stu-id="502ba-179">Generate the **Metadata URL** using the following pattern: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`</span></span>
+    <span data-ttu-id="c441a-178">e.</span><span class="sxs-lookup"><span data-stu-id="c441a-178">e.</span></span> <span data-ttu-id="c441a-179">Generera hello **URL för tjänstmetadata** med hello följande mönster:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`</span><span class="sxs-lookup"><span data-stu-id="c441a-179">Generate hello **Metadata URL** using hello following pattern: `<FEDERATION METADATA DOCUMENT url>?appid=<application id>`</span></span>
 
-6. <span data-ttu-id="502ba-180">Konfigurera enkel inloggning på **Cerner Central** sida, måste du skicka den **URL för tjänstmetadata** till [Cerner Central support](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations).</span><span class="sxs-lookup"><span data-stu-id="502ba-180">To configure single sign-on on **Cerner Central** side, you need to send the **Metadata URL** to [Cerner Central support](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations).</span></span> <span data-ttu-id="502ba-181">De Konfigurera SSO längs program för att slutföra integrationen.</span><span class="sxs-lookup"><span data-stu-id="502ba-181">They configure the SSO on application side to complete the integration.</span></span>
+6. <span data-ttu-id="c441a-180">tooconfigure enkel inloggning på **Cerner Central** sida, behöver du toosend hello **URL för tjänstmetadata** för[Cerner Central support](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations).</span><span class="sxs-lookup"><span data-stu-id="c441a-180">tooconfigure single sign-on on **Cerner Central** side, you need toosend hello **Metadata URL** too[Cerner Central support](https://wiki.ucern.com/display/CernerCentral/Contacting+Cloud+Operations).</span></span> <span data-ttu-id="c441a-181">De konfigurera hello SSO program på klientsidan toocomplete hello integration.</span><span class="sxs-lookup"><span data-stu-id="c441a-181">They configure hello SSO on application side toocomplete hello integration.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="502ba-182">Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!</span><span class="sxs-lookup"><span data-stu-id="502ba-182">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="502ba-183">När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned.</span><span class="sxs-lookup"><span data-stu-id="502ba-183">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="502ba-184">Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="502ba-184">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="c441a-182">Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!</span><span class="sxs-lookup"><span data-stu-id="c441a-182">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="c441a-183">När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello.</span><span class="sxs-lookup"><span data-stu-id="c441a-183">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="c441a-184">Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="c441a-184">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="502ba-185">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="502ba-185">Creating an Azure AD test user</span></span>
-<span data-ttu-id="502ba-186">Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="502ba-186">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span> 
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="c441a-185">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="c441a-185">Creating an Azure AD test user</span></span>
+<span data-ttu-id="c441a-186">hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="c441a-186">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span> 
 
 ![Skapa Azure AD-användare][100]
 
-<span data-ttu-id="502ba-188">**Utför följande steg för att skapa en testanvändare i Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="502ba-188">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="c441a-188">**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="c441a-188">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="502ba-189">I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="502ba-189">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="c441a-189">I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="c441a-189">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="502ba-191">Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="502ba-191">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="c441a-191">toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="c441a-191">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="502ba-193">Öppna den **användare** dialogrutan klickar du på **Lägg till**.</span><span class="sxs-lookup"><span data-stu-id="502ba-193">To open the **User** dialog, click **Add**.</span></span>
+3. <span data-ttu-id="c441a-193">tooopen hello **användare** dialogrutan klickar du på **Lägg till**.</span><span class="sxs-lookup"><span data-stu-id="c441a-193">tooopen hello **User** dialog, click **Add**.</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="502ba-195">På den **användaren** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="502ba-195">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="c441a-195">På hello **användaren** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="c441a-195">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-cernercentral-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="502ba-197">a.</span><span class="sxs-lookup"><span data-stu-id="502ba-197">a.</span></span> <span data-ttu-id="502ba-198">I den **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="502ba-198">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="c441a-197">a.</span><span class="sxs-lookup"><span data-stu-id="c441a-197">a.</span></span> <span data-ttu-id="c441a-198">I hello **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="c441a-198">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="502ba-199">b.</span><span class="sxs-lookup"><span data-stu-id="502ba-199">b.</span></span> <span data-ttu-id="502ba-200">I den **användarnamn** textruta typ av **e-postadress** av Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="502ba-200">In the **User name** textbox, type the **email address** of Britta Simon.</span></span>
+    <span data-ttu-id="c441a-199">b.</span><span class="sxs-lookup"><span data-stu-id="c441a-199">b.</span></span> <span data-ttu-id="c441a-200">I hello **användarnamn** textruta typen hello **e-postadress** av Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="c441a-200">In hello **User name** textbox, type hello **email address** of Britta Simon.</span></span>
 
-    <span data-ttu-id="502ba-201">c.</span><span class="sxs-lookup"><span data-stu-id="502ba-201">c.</span></span> <span data-ttu-id="502ba-202">Välj **visa lösenordet** och anteckna värdet för den **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="502ba-202">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="c441a-201">c.</span><span class="sxs-lookup"><span data-stu-id="c441a-201">c.</span></span> <span data-ttu-id="c441a-202">Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="c441a-202">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="502ba-203">d.</span><span class="sxs-lookup"><span data-stu-id="502ba-203">d.</span></span> <span data-ttu-id="502ba-204">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="502ba-204">Click **Create**.</span></span>
+    <span data-ttu-id="c441a-203">d.</span><span class="sxs-lookup"><span data-stu-id="c441a-203">d.</span></span> <span data-ttu-id="c441a-204">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="c441a-204">Click **Create**.</span></span>
  
-### <a name="creating-a-cerner-central-test-user"></a><span data-ttu-id="502ba-205">Skapa en testanvändare Cerner Central</span><span class="sxs-lookup"><span data-stu-id="502ba-205">Creating a Cerner Central test user</span></span>
+### <a name="creating-a-cerner-central-test-user"></a><span data-ttu-id="c441a-205">Skapa en testanvändare Cerner Central</span><span class="sxs-lookup"><span data-stu-id="c441a-205">Creating a Cerner Central test user</span></span>
 
-<span data-ttu-id="502ba-206">**Cerner Central** programmet tillåter autentisering från valfri provider som federerad identitet.</span><span class="sxs-lookup"><span data-stu-id="502ba-206">**Cerner Central** application allows authentication from any federated identity provider.</span></span> <span data-ttu-id="502ba-207">Om en användare kan logga in på programmets startsida, de har federerad och har inte behov av manuell etablering.</span><span class="sxs-lookup"><span data-stu-id="502ba-207">If a user is able to log in to the application home page, they are federated and have no need for any manual provisioning.</span></span>
+<span data-ttu-id="c441a-206">**Cerner Central** programmet tillåter autentisering från valfri provider som federerad identitet.</span><span class="sxs-lookup"><span data-stu-id="c441a-206">**Cerner Central** application allows authentication from any federated identity provider.</span></span> <span data-ttu-id="c441a-207">Om en användare kan toolog i toohello programmets startsida är federerad och har inte behov av manuell etablering.</span><span class="sxs-lookup"><span data-stu-id="c441a-207">If a user is able toolog in toohello application home page, they are federated and have no need for any manual provisioning.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="502ba-208">Tilldela Azure AD-testanvändare</span><span class="sxs-lookup"><span data-stu-id="502ba-208">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="c441a-208">Tilldela användare hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="c441a-208">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="502ba-209">I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Cerner Central.</span><span class="sxs-lookup"><span data-stu-id="502ba-209">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Cerner Central.</span></span>
+<span data-ttu-id="c441a-209">I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooCerner Central.</span><span class="sxs-lookup"><span data-stu-id="c441a-209">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooCerner Central.</span></span>
 
 ![Tilldela användare][200] 
 
-<span data-ttu-id="502ba-211">**Om du vill tilldela Cerner Central Britta Simon utför du följande steg:**</span><span class="sxs-lookup"><span data-stu-id="502ba-211">**To assign Britta Simon to Cerner Central, perform the following steps:**</span></span>
+<span data-ttu-id="c441a-211">**tooassign Britta Simon tooCerner Central, utför följande steg hello:**</span><span class="sxs-lookup"><span data-stu-id="c441a-211">**tooassign Britta Simon tooCerner Central, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="502ba-212">Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="502ba-212">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="c441a-212">I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="c441a-212">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Tilldela användare][201] 
 
-2. <span data-ttu-id="502ba-214">Välj i listan med program **Cerner Central**.</span><span class="sxs-lookup"><span data-stu-id="502ba-214">In the applications list, select **Cerner Central**.</span></span>
+2. <span data-ttu-id="c441a-214">Välj i listan med program hello **Cerner Central**.</span><span class="sxs-lookup"><span data-stu-id="c441a-214">In hello applications list, select **Cerner Central**.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-cernercentral-tutorial/tutorial_cernercentral_app.png) 
 
-3. <span data-ttu-id="502ba-216">Klicka på menyn till vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="502ba-216">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="c441a-216">Hello-menyn hello vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="c441a-216">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Tilldela användare][202] 
 
-4. <span data-ttu-id="502ba-218">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="502ba-218">Click **Add** button.</span></span> <span data-ttu-id="502ba-219">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="502ba-219">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="c441a-218">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="c441a-218">Click **Add** button.</span></span> <span data-ttu-id="c441a-219">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="c441a-219">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Tilldela användare][203]
 
-5. <span data-ttu-id="502ba-221">På **användare och grupper** markerar **Britta Simon** på listan användare.</span><span class="sxs-lookup"><span data-stu-id="502ba-221">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="c441a-221">På **användare och grupper** markerar **Britta Simon** i hello användarlistan.</span><span class="sxs-lookup"><span data-stu-id="c441a-221">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="502ba-222">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="502ba-222">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="c441a-222">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="c441a-222">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="502ba-223">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="502ba-223">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="c441a-223">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="c441a-223">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="502ba-224">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="502ba-224">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="c441a-224">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="c441a-224">Testing single sign-on</span></span>
 
-<span data-ttu-id="502ba-225">I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.</span><span class="sxs-lookup"><span data-stu-id="502ba-225">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="c441a-225">I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="c441a-225">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="502ba-226">När du klickar på panelen Cerner Central på åtkomstpanelen du ska hämta automatiskt loggat in på ditt Cerner Central program.</span><span class="sxs-lookup"><span data-stu-id="502ba-226">When you click the Cerner Central tile in the Access Panel, you should get automatically signed-on to your Cerner Central application.</span></span> <span data-ttu-id="502ba-227">Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="502ba-227">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
+<span data-ttu-id="c441a-226">Du bör få automatiskt inloggade tooyour Cerner Central programmet när du klickar på hello Cerner Central panelen i hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="c441a-226">When you click hello Cerner Central tile in hello Access Panel, you should get automatically signed-on tooyour Cerner Central application.</span></span> <span data-ttu-id="c441a-227">Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="c441a-227">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="502ba-228">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="502ba-228">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="c441a-228">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="c441a-228">Additional resources</span></span>
 
-* [<span data-ttu-id="502ba-229">Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="502ba-229">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="502ba-230">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="502ba-230">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="c441a-229">Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="c441a-229">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="c441a-230">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="c441a-230">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

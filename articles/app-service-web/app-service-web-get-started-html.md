@@ -1,6 +1,6 @@
 ---
-title: Skapa en statisk HTML-webbapp i Azure | Microsoft Docs
-description: "Distribuera en statisk HTML-exempelapp och lär dig att köra webbappar i Azure App Service."
+title: aaaCreate statiska HTML-webbapp i Azure | Microsoft Docs
+description: "Lär dig hur toorun web apps i Azure App Service genom att distribuera en statisk HTML sample-appen."
 services: app-service\web
 documentationcenter: 
 author: rick-anderson
@@ -15,49 +15,49 @@ ms.topic: quickstart
 ms.date: 05/26/2017
 ms.author: riande
 ms.custom: mvc
-ms.openlocfilehash: 42af5b08b8d2ff0c75fd73dcfa61c861647fd2c9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: efd8c8189a3aa1ac35602b688eeb31bff6f5a373
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-static-html-web-app-in-azure"></a><span data-ttu-id="db030-103">Skapa en statisk HTML-webbapp i Azure</span><span class="sxs-lookup"><span data-stu-id="db030-103">Create a static HTML web app in Azure</span></span>
+# <a name="create-a-static-html-web-app-in-azure"></a><span data-ttu-id="08ec7-103">Skapa en statisk HTML-webbapp i Azure</span><span class="sxs-lookup"><span data-stu-id="08ec7-103">Create a static HTML web app in Azure</span></span>
 
-<span data-ttu-id="db030-104">Med [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst.</span><span class="sxs-lookup"><span data-stu-id="db030-104">[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) provides a highly scalable, self-patching web hosting service.</span></span>  <span data-ttu-id="db030-105">Den här snabbstarten visar hur du distribuerar en enkel HTML+CSS-webbplats till Azure Web Apps.</span><span class="sxs-lookup"><span data-stu-id="db030-105">This quickstart shows how to deploy a basic HTML+CSS site to Azure Web Apps.</span></span> <span data-ttu-id="db030-106">Du skapar webbappen med [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) och använder Git för att distribuera HTML-innehåll till webbappen.</span><span class="sxs-lookup"><span data-stu-id="db030-106">You create the web app using the [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), and you use Git to deploy sample HTML content to the web app.</span></span>
+<span data-ttu-id="08ec7-104">Med [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst.</span><span class="sxs-lookup"><span data-stu-id="08ec7-104">[Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) provides a highly scalable, self-patching web hosting service.</span></span>  <span data-ttu-id="08ec7-105">Den här snabbstarten visar hur toodeploy grundläggande HTML + CSS plats tooAzure Web Apps.</span><span class="sxs-lookup"><span data-stu-id="08ec7-105">This quickstart shows how toodeploy a basic HTML+CSS site tooAzure Web Apps.</span></span> <span data-ttu-id="08ec7-106">Du skapar hello webbapp med hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), och du kan använda Git toodeploy HTML-innehåll toohello exempelwebbapp.</span><span class="sxs-lookup"><span data-stu-id="08ec7-106">You create hello web app using hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), and you use Git toodeploy sample HTML content toohello web app.</span></span>
 
 ![Startsida för exempelapp](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-<span data-ttu-id="db030-108">Du kan följa stegen nedan på en Mac-, Windows- eller Linux-dator.</span><span class="sxs-lookup"><span data-stu-id="db030-108">You can follow the steps below using a Mac, Windows, or Linux machine.</span></span> <span data-ttu-id="db030-109">Det tar cirka fem minuter att slutföra självstudiekursen när de nödvändiga komponenterna har installerats.</span><span class="sxs-lookup"><span data-stu-id="db030-109">Once the prerequisites are installed, it takes about five minutes to complete the steps.</span></span>
+<span data-ttu-id="08ec7-108">Du kan följa hello stegen nedan använder en Mac, Windows eller Linux-dator.</span><span class="sxs-lookup"><span data-stu-id="08ec7-108">You can follow hello steps below using a Mac, Windows, or Linux machine.</span></span> <span data-ttu-id="08ec7-109">När hello nödvändiga komponenter har installerats, tar cirka fem minuter toocomplete hello steg.</span><span class="sxs-lookup"><span data-stu-id="08ec7-109">Once hello prerequisites are installed, it takes about five minutes toocomplete hello steps.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="db030-110">Krav</span><span class="sxs-lookup"><span data-stu-id="db030-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="08ec7-110">Krav</span><span class="sxs-lookup"><span data-stu-id="08ec7-110">Prerequisites</span></span>
 
-<span data-ttu-id="db030-111">För att slutföra den här snabbstarten behöver du:</span><span class="sxs-lookup"><span data-stu-id="db030-111">To complete this quickstart:</span></span>
+<span data-ttu-id="08ec7-111">toocomplete denna Snabbstart:</span><span class="sxs-lookup"><span data-stu-id="08ec7-111">toocomplete this quickstart:</span></span>
 
-- <span data-ttu-id="db030-112">[Installera Git](https://git-scm.com/)
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]</span><span class="sxs-lookup"><span data-stu-id="db030-112">[Install Git](https://git-scm.com/)
+- <span data-ttu-id="08ec7-112">[Installera Git](https://git-scm.com/)
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]</span><span class="sxs-lookup"><span data-stu-id="08ec7-112">[Install Git](https://git-scm.com/)
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]</span></span>
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-<span data-ttu-id="db030-113">Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare.</span><span class="sxs-lookup"><span data-stu-id="db030-113">If you choose to install and use the CLI locally, this topic requires that you are running the Azure CLI version 2.0 or later.</span></span> <span data-ttu-id="db030-114">Kör `az --version` för att hitta versionen.</span><span class="sxs-lookup"><span data-stu-id="db030-114">Run `az --version` to find the version.</span></span> <span data-ttu-id="db030-115">Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="db030-115">If you need to install or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
+<span data-ttu-id="08ec7-113">Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare.</span><span class="sxs-lookup"><span data-stu-id="08ec7-113">If you choose tooinstall and use hello CLI locally, this topic requires that you are running hello Azure CLI version 2.0 or later.</span></span> <span data-ttu-id="08ec7-114">Kör `az --version` toofind hello version.</span><span class="sxs-lookup"><span data-stu-id="08ec7-114">Run `az --version` toofind hello version.</span></span> <span data-ttu-id="08ec7-115">Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="08ec7-115">If you need tooinstall or upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span> 
 
-## <a name="download-the-sample"></a><span data-ttu-id="db030-116">Hämta exemplet</span><span class="sxs-lookup"><span data-stu-id="db030-116">Download the sample</span></span>
+## <a name="download-hello-sample"></a><span data-ttu-id="08ec7-116">Hämta hello-exempel</span><span class="sxs-lookup"><span data-stu-id="08ec7-116">Download hello sample</span></span>
 
-<span data-ttu-id="db030-117">Kör följande kommando i ett terminalfönster för att klona databasen för exempelappen till den lokala datorn.</span><span class="sxs-lookup"><span data-stu-id="db030-117">In a terminal window, run the following command to clone the sample app repository to your local machine.</span></span>
+<span data-ttu-id="08ec7-117">Kör hello efter kommandot tooclone hello exempel app databasen tooyour lokala datorn i ett terminalfönster.</span><span class="sxs-lookup"><span data-stu-id="08ec7-117">In a terminal window, run hello following command tooclone hello sample app repository tooyour local machine.</span></span>
 
 ```bash
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```
 
-<span data-ttu-id="db030-118">Du använder det här terminalfönstret för att köra alla kommandon i den här snabbstarten.</span><span class="sxs-lookup"><span data-stu-id="db030-118">You use this terminal window to run all the commands in this quickstart.</span></span>
+<span data-ttu-id="08ec7-118">Du använder den här terminalfönster toorun alla hello-kommandon i denna Snabbstart.</span><span class="sxs-lookup"><span data-stu-id="08ec7-118">You use this terminal window toorun all hello commands in this quickstart.</span></span>
 
-## <a name="view-the-html"></a><span data-ttu-id="db030-119">Visa HTML</span><span class="sxs-lookup"><span data-stu-id="db030-119">View the HTML</span></span>
+## <a name="view-hello-html"></a><span data-ttu-id="08ec7-119">Visa hello HTML</span><span class="sxs-lookup"><span data-stu-id="08ec7-119">View hello HTML</span></span>
 
-<span data-ttu-id="db030-120">Navigera till den katalog som innehåller HTML-exemplet.</span><span class="sxs-lookup"><span data-stu-id="db030-120">Navigate to the directory that contains the sample HTML.</span></span> <span data-ttu-id="db030-121">Öppna filen *index.html* i webbläsaren.</span><span class="sxs-lookup"><span data-stu-id="db030-121">Open the *index.html* file in your browser.</span></span>
+<span data-ttu-id="08ec7-120">Navigera toohello katalog som innehåller exempel på hello HTML.</span><span class="sxs-lookup"><span data-stu-id="08ec7-120">Navigate toohello directory that contains hello sample HTML.</span></span> <span data-ttu-id="08ec7-121">Öppna hello *index.html* filen i din webbläsare.</span><span class="sxs-lookup"><span data-stu-id="08ec7-121">Open hello *index.html* file in your browser.</span></span>
 
 ![Exempelstartsida för app](media/app-service-web-get-started-html/hello-world-in-browser.png)
 
-[!INCLUDE [Log in to Azure](../../includes/login-to-azure.md)] 
+[!INCLUDE [Log in tooAzure](../../includes/login-to-azure.md)] 
 
 [!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
 
@@ -69,15 +69,15 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ![Sida för tom webbapp](media/app-service-web-get-started-html/app-service-web-service-created.png)
 
-<span data-ttu-id="db030-124">Nu har du skapat en ny tom webbapp på Azure.</span><span class="sxs-lookup"><span data-stu-id="db030-124">You’ve created an empty new web app in Azure.</span></span>
+<span data-ttu-id="08ec7-124">Nu har du skapat en ny tom webbapp på Azure.</span><span class="sxs-lookup"><span data-stu-id="08ec7-124">You’ve created an empty new web app in Azure.</span></span>
 
 [!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git.md)] 
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push tooAzure](../../includes/app-service-web-git-push-to-azure.md)] 
 
 ```bash
 Counting objects: 13, done.
-Delta compression using up to 4 threads.
+Delta compression using up too4 threads.
 Compressing objects: 100% (11/11), done.
 Writing objects: 100% (13/13), 2.07 KiB | 0 bytes/s, done.
 Total 13 (delta 2), reused 0 (delta 0)
@@ -97,56 +97,56 @@ remote: Copying file: 'README.md'
 remote: Finished successfully.
 remote: Running post deployment command(s)...
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+toohttps://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## <a name="browse-to-the-app"></a><span data-ttu-id="db030-125">Bläddra till appen</span><span class="sxs-lookup"><span data-stu-id="db030-125">Browse to the app</span></span>
+## <a name="browse-toohello-app"></a><span data-ttu-id="08ec7-125">Bläddra toohello app</span><span class="sxs-lookup"><span data-stu-id="08ec7-125">Browse toohello app</span></span>
 
-<span data-ttu-id="db030-126">Gå till Azure-webbappens URL i en webbläsare:</span><span class="sxs-lookup"><span data-stu-id="db030-126">In a browser, go to the Azure web app URL:</span></span>
+<span data-ttu-id="08ec7-126">Gå toohello Azure web app-URL i en webbläsare:</span><span class="sxs-lookup"><span data-stu-id="08ec7-126">In a browser, go toohello Azure web app URL:</span></span>
 
 ```
 http://<app_name>.azurewebsites.net
 ```
 
-<span data-ttu-id="db030-127">Sidan körs som en Azure App Service-webbapp.</span><span class="sxs-lookup"><span data-stu-id="db030-127">The page is running as an Azure App Service web app.</span></span>
+<span data-ttu-id="08ec7-127">hello sidan körs som en webbapp i Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="08ec7-127">hello page is running as an Azure App Service web app.</span></span>
 
 ![Exempelstartsida för app](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
-<span data-ttu-id="db030-129">**Grattis!**</span><span class="sxs-lookup"><span data-stu-id="db030-129">**Congratulations!**</span></span> <span data-ttu-id="db030-130">Du har distribuerat din första HTML-app till App Service.</span><span class="sxs-lookup"><span data-stu-id="db030-130">You've deployed your first HTML app to App Service.</span></span>
+<span data-ttu-id="08ec7-129">**Grattis!**</span><span class="sxs-lookup"><span data-stu-id="08ec7-129">**Congratulations!**</span></span> <span data-ttu-id="08ec7-130">Du har distribuerat din första HTML-app tooApp Service.</span><span class="sxs-lookup"><span data-stu-id="08ec7-130">You've deployed your first HTML app tooApp Service.</span></span>
 
-## <a name="update-and-redeploy-the-app"></a><span data-ttu-id="db030-131">Uppdatera och distribuera om appen</span><span class="sxs-lookup"><span data-stu-id="db030-131">Update and redeploy the app</span></span>
+## <a name="update-and-redeploy-hello-app"></a><span data-ttu-id="08ec7-131">Uppdatera och distribuera hello app</span><span class="sxs-lookup"><span data-stu-id="08ec7-131">Update and redeploy hello app</span></span>
 
-<span data-ttu-id="db030-132">Öppna filen *index.html* i en textredigerare och gör en ändring i koden.</span><span class="sxs-lookup"><span data-stu-id="db030-132">Open the *index.html* file in a text editor, and make a change to the markup.</span></span> <span data-ttu-id="db030-133">Ändra till exempel H1-rubriken från "Azure App Service - Sample Static HTML Site" till endast "Azure App Service".</span><span class="sxs-lookup"><span data-stu-id="db030-133">For example, change the H1 heading from "Azure App Service - Sample Static HTML Site" to just "Azure App Service\`.</span></span>
+<span data-ttu-id="08ec7-132">Öppna hello *index.html* filen i en textredigerare och gör en ändring toohello markeringar.</span><span class="sxs-lookup"><span data-stu-id="08ec7-132">Open hello *index.html* file in a text editor, and make a change toohello markup.</span></span> <span data-ttu-id="08ec7-133">Ändra exempelvis hello H1 rubriken ”Azure App Service – statiska HTML-Exempelplats” toojust ”Azure App Service”.</span><span class="sxs-lookup"><span data-stu-id="08ec7-133">For example, change hello H1 heading from "Azure App Service - Sample Static HTML Site" toojust "Azure App Service\`.</span></span>
 
-<span data-ttu-id="db030-134">Spara ändringarna på Git och skicka sedan kodändringarna till Azure.</span><span class="sxs-lookup"><span data-stu-id="db030-134">Commit your changes in Git, and then push the code changes to Azure.</span></span>
+<span data-ttu-id="08ec7-134">Genomför ändringarna i Git och skicka sedan hello kod ändringar tooAzure.</span><span class="sxs-lookup"><span data-stu-id="08ec7-134">Commit your changes in Git, and then push hello code changes tooAzure.</span></span>
 
 ```bash
 git commit -am "updated HTML"
 git push azure master
 ```
 
-<span data-ttu-id="db030-135">När distributionen är klar väljer du att uppdatera i webbläsaren så att ändringarna visas.</span><span class="sxs-lookup"><span data-stu-id="db030-135">Once deployment has completed, refresh your browser to see the changes.</span></span>
+<span data-ttu-id="08ec7-135">Uppdatera din webbläsare toosee hello ändringar när distributionen är klar.</span><span class="sxs-lookup"><span data-stu-id="08ec7-135">Once deployment has completed, refresh your browser toosee hello changes.</span></span>
 
 ![Uppdaterad exempelstartsida för app](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
-## <a name="manage-your-new-azure-web-app"></a><span data-ttu-id="db030-137">Hantera din nya Azure-webbapp</span><span class="sxs-lookup"><span data-stu-id="db030-137">Manage your new Azure web app</span></span>
+## <a name="manage-your-new-azure-web-app"></a><span data-ttu-id="08ec7-137">Hantera din nya Azure-webbapp</span><span class="sxs-lookup"><span data-stu-id="08ec7-137">Manage your new Azure web app</span></span>
 
-<span data-ttu-id="db030-138">Gå till <a href="https://portal.azure.com" target="_blank">Azure Portal</a> för att hantera den webbapp som du skapade.</span><span class="sxs-lookup"><span data-stu-id="db030-138">Go to the <a href="https://portal.azure.com" target="_blank">Azure portal</a> to manage the web app you created.</span></span>
+<span data-ttu-id="08ec7-138">Gå toohello <a href="https://portal.azure.com" target="_blank">Azure-portalen</a> toomanage hello webbprogram som du skapade.</span><span class="sxs-lookup"><span data-stu-id="08ec7-138">Go toohello <a href="https://portal.azure.com" target="_blank">Azure portal</a> toomanage hello web app you created.</span></span>
 
-<span data-ttu-id="db030-139">Klicka på **Apptjänster** i menyn till vänster och sedan på namnet på din Azure-webbapp.</span><span class="sxs-lookup"><span data-stu-id="db030-139">From the left menu, click **App Services**, and then click the name of your Azure web app.</span></span>
+<span data-ttu-id="08ec7-139">Hello vänstra menyn klickar du på **Apptjänster**, och klicka sedan på hello namnet på din Azure webbapp.</span><span class="sxs-lookup"><span data-stu-id="08ec7-139">From hello left menu, click **App Services**, and then click hello name of your Azure web app.</span></span>
 
-![Navigera till webbappen på Azure Portal](./media/app-service-web-get-started-html/portal1.png)
+![Portalen navigering tooAzure webbprogram](./media/app-service-web-get-started-html/portal1.png)
 
-<span data-ttu-id="db030-141">Nu visas sidan Översikt för din webbapp.</span><span class="sxs-lookup"><span data-stu-id="db030-141">You see your web app's Overview page.</span></span> <span data-ttu-id="db030-142">Här kan du utföra grundläggande hanteringsåtgärder som att bläddra, stoppa, starta, starta om och ta bort.</span><span class="sxs-lookup"><span data-stu-id="db030-142">Here, you can perform basic management tasks like browse, stop, start, restart, and delete.</span></span> 
+<span data-ttu-id="08ec7-141">Nu visas sidan Översikt för din webbapp.</span><span class="sxs-lookup"><span data-stu-id="08ec7-141">You see your web app's Overview page.</span></span> <span data-ttu-id="08ec7-142">Här kan du utföra grundläggande hanteringsåtgärder som att bläddra, stoppa, starta, starta om och ta bort.</span><span class="sxs-lookup"><span data-stu-id="08ec7-142">Here, you can perform basic management tasks like browse, stop, start, restart, and delete.</span></span> 
 
 ![App Service-blad på Azure Portal](./media/app-service-web-get-started-html/portal2.png)
 
-<span data-ttu-id="db030-144">Menyn till vänster innehåller olika sidor för att konfigurera appen.</span><span class="sxs-lookup"><span data-stu-id="db030-144">The left menu provides different pages for configuring your app.</span></span> 
+<span data-ttu-id="08ec7-144">hello vänstra menyn innehåller olika sidor för att konfigurera din app.</span><span class="sxs-lookup"><span data-stu-id="08ec7-144">hello left menu provides different pages for configuring your app.</span></span> 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a><span data-ttu-id="db030-145">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="db030-145">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="08ec7-145">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="08ec7-145">Next steps</span></span>
 
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="db030-146">Mappa anpassad domän</span><span class="sxs-lookup"><span data-stu-id="db030-146">Map custom domain</span></span>](app-service-web-tutorial-custom-domain.md)
+> [<span data-ttu-id="08ec7-146">Mappa anpassad domän</span><span class="sxs-lookup"><span data-stu-id="08ec7-146">Map custom domain</span></span>](app-service-web-tutorial-custom-domain.md)

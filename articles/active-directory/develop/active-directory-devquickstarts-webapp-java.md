@@ -1,5 +1,5 @@
 ---
-title: "Azure AD-Java-webbapp komma igång | Microsoft Docs"
+title: "aaaAzure AD Java-webbapp komma igång | Microsoft Docs"
 description: "Skapa en Java-webbapp som loggar användarna in med ett arbets- eller skolkonto."
 services: active-directory
 documentationcenter: java
@@ -15,49 +15,49 @@ ms.topic: article
 ms.date: 02/01/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 5358404881b65d217ab36a41ca04a73f2c462c86
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 20ae95914e074507ed1a23966565ba950cc3a9dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a><span data-ttu-id="949b1-103">Java-webbapp inloggning och utloggning med Azure AD</span><span class="sxs-lookup"><span data-stu-id="949b1-103">Java web app sign-in and sign-out with Azure AD</span></span>
+# <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a><span data-ttu-id="ca302-103">Java-webbapp inloggning och utloggning med Azure AD</span><span class="sxs-lookup"><span data-stu-id="ca302-103">Java web app sign-in and sign-out with Azure AD</span></span>
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-<span data-ttu-id="949b1-104">Genom att tillhandahålla en enkel inloggning och utloggning med bara några få rader med kod gör Azure Active Directory (AD Azure) det enkelt för dig att flytta ut webbappen Identitetshantering.</span><span class="sxs-lookup"><span data-stu-id="949b1-104">By providing a single sign-in and sign-out with only a few lines of code, Azure Active Directory (Azure AD) makes it simple for you to outsource web-app identity management.</span></span> <span data-ttu-id="949b1-105">Du kan signera användare till och från Java-webbappar med hjälp av Microsofts implementering av community-driven Azure Active Directory Authentication Library för Java (ADAL4J).</span><span class="sxs-lookup"><span data-stu-id="949b1-105">You can sign users in and out of Java web apps by using the Microsoft implementation of the community-driven Azure Active Directory Authentication Library for Java (ADAL4J).</span></span>
+<span data-ttu-id="ca302-104">Genom att tillhandahålla en enkel inloggning och utloggning med bara några få rader med kod, enkelt Azure Active Directory (AD Azure) den för du toooutsource webbappen Identitetshantering.</span><span class="sxs-lookup"><span data-stu-id="ca302-104">By providing a single sign-in and sign-out with only a few lines of code, Azure Active Directory (Azure AD) makes it simple for you toooutsource web-app identity management.</span></span> <span data-ttu-id="ca302-105">Du kan signera användare till och från Java-webbappar med hjälp av hello Microsofts implementering av hello community-driven Azure Active Directory Authentication Library för Java (ADAL4J).</span><span class="sxs-lookup"><span data-stu-id="ca302-105">You can sign users in and out of Java web apps by using hello Microsoft implementation of hello community-driven Azure Active Directory Authentication Library for Java (ADAL4J).</span></span>
 
-<span data-ttu-id="949b1-106">Den här artikeln visar hur du använder ADAL4J till:</span><span class="sxs-lookup"><span data-stu-id="949b1-106">This article shows how to use the ADAL4J to:</span></span>
+<span data-ttu-id="ca302-106">Den här artikeln visar hur toouse hello ADAL4J till:</span><span class="sxs-lookup"><span data-stu-id="ca302-106">This article shows how toouse hello ADAL4J to:</span></span>
 
-* <span data-ttu-id="949b1-107">Logga in användare till webbprogram med hjälp av Azure AD som identitetsleverantören.</span><span class="sxs-lookup"><span data-stu-id="949b1-107">Sign users in to web apps by using Azure AD as the identity provider.</span></span>
-* <span data-ttu-id="949b1-108">Visa viss användarinformation.</span><span class="sxs-lookup"><span data-stu-id="949b1-108">Display some user information.</span></span>
-* <span data-ttu-id="949b1-109">Logga in användare utanför apparna.</span><span class="sxs-lookup"><span data-stu-id="949b1-109">Sign users out of the apps.</span></span>
+* <span data-ttu-id="ca302-107">Logga in användare i tooweb appar med hjälp av Azure AD som hello identitetsleverantör.</span><span class="sxs-lookup"><span data-stu-id="ca302-107">Sign users in tooweb apps by using Azure AD as hello identity provider.</span></span>
+* <span data-ttu-id="ca302-108">Visa viss användarinformation.</span><span class="sxs-lookup"><span data-stu-id="ca302-108">Display some user information.</span></span>
+* <span data-ttu-id="ca302-109">Logga in användare utanför hello appar.</span><span class="sxs-lookup"><span data-stu-id="ca302-109">Sign users out of hello apps.</span></span>
 
-## <a name="before-you-get-started"></a><span data-ttu-id="949b1-110">Innan du börjar</span><span class="sxs-lookup"><span data-stu-id="949b1-110">Before you get started</span></span>
+## <a name="before-you-get-started"></a><span data-ttu-id="ca302-110">Innan du börjar</span><span class="sxs-lookup"><span data-stu-id="ca302-110">Before you get started</span></span>
 
-* <span data-ttu-id="949b1-111">Hämta den [app stommen](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip), eller hämta den [färdiga exemplet](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).</span><span class="sxs-lookup"><span data-stu-id="949b1-111">Download the [app skeleton](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip), or download the [completed sample](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).</span></span>
-* <span data-ttu-id="949b1-112">Du måste också en Azure AD-klient som ska registrera appen.</span><span class="sxs-lookup"><span data-stu-id="949b1-112">You also need an Azure AD tenant in which to register the app.</span></span> <span data-ttu-id="949b1-113">Om du inte redan har en Azure AD-klient [Lär dig hur du skaffa en](active-directory-howto-tenant.md).</span><span class="sxs-lookup"><span data-stu-id="949b1-113">If you don't already have an Azure AD tenant, [learn how to get one](active-directory-howto-tenant.md).</span></span>
+* <span data-ttu-id="ca302-111">Hämta hello [app stommen](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip), eller hämta hello [färdiga exemplet](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).</span><span class="sxs-lookup"><span data-stu-id="ca302-111">Download hello [app skeleton](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip), or download hello [completed sample](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).</span></span>
+* <span data-ttu-id="ca302-112">Du måste också en Azure AD-klient i vilken tooregister hello-app.</span><span class="sxs-lookup"><span data-stu-id="ca302-112">You also need an Azure AD tenant in which tooregister hello app.</span></span> <span data-ttu-id="ca302-113">Om du inte redan har en Azure AD-klient [Lär dig hur tooget en](active-directory-howto-tenant.md).</span><span class="sxs-lookup"><span data-stu-id="ca302-113">If you don't already have an Azure AD tenant, [learn how tooget one](active-directory-howto-tenant.md).</span></span>
 
-<span data-ttu-id="949b1-114">När du är klar följer du procedurerna i nästa nio avsnitt.</span><span class="sxs-lookup"><span data-stu-id="949b1-114">When you are ready, follow the procedures in the next nine sections.</span></span>
+<span data-ttu-id="ca302-114">När du är klar kan du följa hello procedurerna i hello nästa nio avsnitt.</span><span class="sxs-lookup"><span data-stu-id="ca302-114">When you are ready, follow hello procedures in hello next nine sections.</span></span>
 
-## <a name="step-1-register-the-new-app-with-azure-ad"></a><span data-ttu-id="949b1-115">Steg 1: Registrera den nya appen med Azure AD</span><span class="sxs-lookup"><span data-stu-id="949b1-115">Step 1: Register the new app with Azure AD</span></span>
-<span data-ttu-id="949b1-116">Om du vill konfigurera appen för att autentisera användare måste först registrera det i din klient genom att göra följande:</span><span class="sxs-lookup"><span data-stu-id="949b1-116">To set up the app to authenticate users, first register it in your tenant by doing the following:</span></span>
+## <a name="step-1-register-hello-new-app-with-azure-ad"></a><span data-ttu-id="ca302-115">Steg 1: Registrera hello ny app med Azure AD</span><span class="sxs-lookup"><span data-stu-id="ca302-115">Step 1: Register hello new app with Azure AD</span></span>
+<span data-ttu-id="ca302-116">tooset hello app tooauthenticate användare, först registrera det i din klient hello följande:</span><span class="sxs-lookup"><span data-stu-id="ca302-116">tooset up hello app tooauthenticate users, first register it in your tenant by doing hello following:</span></span>
 
-1. <span data-ttu-id="949b1-117">Logga in på [Azure Portal](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="949b1-117">Sign in to the [Azure portal](https://portal.azure.com).</span></span>
-2. <span data-ttu-id="949b1-118">Klicka på namnet på ditt konto på den översta raden.</span><span class="sxs-lookup"><span data-stu-id="949b1-118">On the top bar, click your account name.</span></span> <span data-ttu-id="949b1-119">Under den **Directory** väljer du Active Directory-klient som du vill registrera appen.</span><span class="sxs-lookup"><span data-stu-id="949b1-119">Under the **Directory** list, select the Active Directory tenant where you want to register the app.</span></span>
-3. <span data-ttu-id="949b1-120">Klicka på **fler tjänster** i det vänstra fönstret och välj sedan **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="949b1-120">Click **More Services** in the left pane, and then select **Azure Active Directory**.</span></span>
-4. <span data-ttu-id="949b1-121">Klicka på **App registreringar**, och välj sedan **Lägg till**.</span><span class="sxs-lookup"><span data-stu-id="949b1-121">Click **App registrations**, and then select **Add**.</span></span>
-5. <span data-ttu-id="949b1-122">Följ anvisningarna för att skapa en **webbprogram och/eller WebAPI**.</span><span class="sxs-lookup"><span data-stu-id="949b1-122">Follow the prompts to create a **Web Application and/or WebAPI**.</span></span>
-  * <span data-ttu-id="949b1-123">**Namnet** beskriver app till användare.</span><span class="sxs-lookup"><span data-stu-id="949b1-123">**Name** describes the app to users.</span></span>
-  * <span data-ttu-id="949b1-124">**Inloggnings-URL** är den grundläggande Webbadressen till appen.</span><span class="sxs-lookup"><span data-stu-id="949b1-124">**Sign-On URL** is the base URL of the app.</span></span> <span data-ttu-id="949b1-125">Standard-URL för den stommen är http://localhost: 8080/adal4jsample /.</span><span class="sxs-lookup"><span data-stu-id="949b1-125">The skeleton's default URL is http://localhost:8080/adal4jsample/.</span></span>
-6. <span data-ttu-id="949b1-126">När du har slutfört registreringen, tilldelar Azure AD appen ett unikt-ID.</span><span class="sxs-lookup"><span data-stu-id="949b1-126">After you've completed the registration, Azure AD assigns the app a unique application ID.</span></span> <span data-ttu-id="949b1-127">Kopiera värdet från appsidan att använda i nästa avsnitt.</span><span class="sxs-lookup"><span data-stu-id="949b1-127">Copy the value from the app page to use in the next sections.</span></span>
-7. <span data-ttu-id="949b1-128">Från den **inställningar** -> **egenskaper** för programmet, uppdatera App-ID-URI.</span><span class="sxs-lookup"><span data-stu-id="949b1-128">From the **Settings** -> **Properties** page for your application, update the App ID URI.</span></span> <span data-ttu-id="949b1-129">Den **App-ID URI** är en unik identifierare för appen.</span><span class="sxs-lookup"><span data-stu-id="949b1-129">The **App ID URI** is a unique identifier for the app.</span></span> <span data-ttu-id="949b1-130">Namngivningskonventionen är `https://<tenant-domain>/<app-name>` (till exempel `http://localhost:8080/adal4jsample/`).</span><span class="sxs-lookup"><span data-stu-id="949b1-130">The naming convention is `https://<tenant-domain>/<app-name>` (for example, `http://localhost:8080/adal4jsample/`).</span></span>
+1. <span data-ttu-id="ca302-117">Logga in toohello [Azure-portalen](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="ca302-117">Sign in toohello [Azure portal](https://portal.azure.com).</span></span>
+2. <span data-ttu-id="ca302-118">Klicka på namnet på ditt konto hello översta fältet.</span><span class="sxs-lookup"><span data-stu-id="ca302-118">On hello top bar, click your account name.</span></span> <span data-ttu-id="ca302-119">Under hello **Directory** listan, Välj hello Active Directory-klient där du vill att tooregister hello app.</span><span class="sxs-lookup"><span data-stu-id="ca302-119">Under hello **Directory** list, select hello Active Directory tenant where you want tooregister hello app.</span></span>
+3. <span data-ttu-id="ca302-120">Klicka på **fler tjänster** i hello till vänster och välj sedan **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="ca302-120">Click **More Services** in hello left pane, and then select **Azure Active Directory**.</span></span>
+4. <span data-ttu-id="ca302-121">Klicka på **App registreringar**, och välj sedan **Lägg till**.</span><span class="sxs-lookup"><span data-stu-id="ca302-121">Click **App registrations**, and then select **Add**.</span></span>
+5. <span data-ttu-id="ca302-122">Följ hello prompter toocreate en **webbprogram och/eller WebAPI**.</span><span class="sxs-lookup"><span data-stu-id="ca302-122">Follow hello prompts toocreate a **Web Application and/or WebAPI**.</span></span>
+  * <span data-ttu-id="ca302-123">**Namnet** beskriver hello app toousers.</span><span class="sxs-lookup"><span data-stu-id="ca302-123">**Name** describes hello app toousers.</span></span>
+  * <span data-ttu-id="ca302-124">**Inloggnings-URL** är hello bas-URL för hello app.</span><span class="sxs-lookup"><span data-stu-id="ca302-124">**Sign-On URL** is hello base URL of hello app.</span></span> <span data-ttu-id="ca302-125">hello stommen standard-URL är http://localhost: 8080/adal4jsample /.</span><span class="sxs-lookup"><span data-stu-id="ca302-125">hello skeleton's default URL is http://localhost:8080/adal4jsample/.</span></span>
+6. <span data-ttu-id="ca302-126">När du har slutfört registreringen hello tilldelar Azure AD hello app ett unikt-ID.</span><span class="sxs-lookup"><span data-stu-id="ca302-126">After you've completed hello registration, Azure AD assigns hello app a unique application ID.</span></span> <span data-ttu-id="ca302-127">Kopiera hello värdet från hello app sidan toouse i hello nästa avsnitt.</span><span class="sxs-lookup"><span data-stu-id="ca302-127">Copy hello value from hello app page toouse in hello next sections.</span></span>
+7. <span data-ttu-id="ca302-128">Från hello **inställningar** -> **egenskaper** för programmet, uppdatera hello App-ID-URI.</span><span class="sxs-lookup"><span data-stu-id="ca302-128">From hello **Settings** -> **Properties** page for your application, update hello App ID URI.</span></span> <span data-ttu-id="ca302-129">Hej **App-ID URI** är en unik identifierare för hello app.</span><span class="sxs-lookup"><span data-stu-id="ca302-129">hello **App ID URI** is a unique identifier for hello app.</span></span> <span data-ttu-id="ca302-130">hello namnkonventionen är `https://<tenant-domain>/<app-name>` (till exempel `http://localhost:8080/adal4jsample/`).</span><span class="sxs-lookup"><span data-stu-id="ca302-130">hello naming convention is `https://<tenant-domain>/<app-name>` (for example, `http://localhost:8080/adal4jsample/`).</span></span>
 
-<span data-ttu-id="949b1-131">När du är i portalen för appen, skapa och kopiera en nyckel för appen på den **inställningar** sidan.</span><span class="sxs-lookup"><span data-stu-id="949b1-131">When you are in the portal for the app, create and copy a key for the app on the **Settings** page.</span></span> <span data-ttu-id="949b1-132">Du måste nyckeln inom kort.</span><span class="sxs-lookup"><span data-stu-id="949b1-132">You'll need the key shortly.</span></span>
+<span data-ttu-id="ca302-131">När du är i hello portal för hello app, skapa och kopiera en nyckel för hello-appen på hello **inställningar** sidan.</span><span class="sxs-lookup"><span data-stu-id="ca302-131">When you are in hello portal for hello app, create and copy a key for hello app on hello **Settings** page.</span></span> <span data-ttu-id="ca302-132">Du behöver hello nyckeln inom kort.</span><span class="sxs-lookup"><span data-stu-id="ca302-132">You'll need hello key shortly.</span></span>
 
-## <a name="step-2-set-up-the-app-to-use-the-adal4j-and-prerequisites-by-using-maven"></a><span data-ttu-id="949b1-133">Steg 2: Konfigurera appen för att använda ADAL4J och nödvändiga komponenter med hjälp av Maven</span><span class="sxs-lookup"><span data-stu-id="949b1-133">Step 2: Set up the app to use the ADAL4J and prerequisites by using Maven</span></span>
-<span data-ttu-id="949b1-134">I det här steget konfigurerar du ADAL4J för att använda autentiseringsprotokollet OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="949b1-134">In this step, you configure the ADAL4J to use the OpenID Connect authentication protocol.</span></span> <span data-ttu-id="949b1-135">Du kan använda ADAL4J för att utfärda inloggnings- och utloggningsförfrågningar, hantera användarsessioner, hämta användarinformation och så vidare.</span><span class="sxs-lookup"><span data-stu-id="949b1-135">You use the ADAL4J to issue sign-in and sign-out requests, manage user sessions, get user information, and so forth.</span></span>
+## <a name="step-2-set-up-hello-app-toouse-hello-adal4j-and-prerequisites-by-using-maven"></a><span data-ttu-id="ca302-133">Steg 2: Konfigurera hello app toouse hello ADAL4J och nödvändiga komponenter med hjälp av Maven</span><span class="sxs-lookup"><span data-stu-id="ca302-133">Step 2: Set up hello app toouse hello ADAL4J and prerequisites by using Maven</span></span>
+<span data-ttu-id="ca302-134">I det här steget konfigurerar du hello ADAL4J toouse hello autentiseringsprotokollet OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="ca302-134">In this step, you configure hello ADAL4J toouse hello OpenID Connect authentication protocol.</span></span> <span data-ttu-id="ca302-135">Du använder hello ADAL4J tooissue inloggning och utloggning begäranden, hantera användarsessioner, hämta användarinformation och så vidare.</span><span class="sxs-lookup"><span data-stu-id="ca302-135">You use hello ADAL4J tooissue sign-in and sign-out requests, manage user sessions, get user information, and so forth.</span></span>
 
-<span data-ttu-id="949b1-136">I rotkatalogen för ditt projekt, öppna/skapa `pom.xml`, leta upp `// TODO: provide dependencies for Maven`, och Ersätt den med följande:</span><span class="sxs-lookup"><span data-stu-id="949b1-136">In the root directory of your project, open/create `pom.xml`, locate `// TODO: provide dependencies for Maven`, and replace it with the following:</span></span>
+<span data-ttu-id="ca302-136">I hello rotkatalogen för ditt projekt, öppna/skapa `pom.xml`, leta upp `// TODO: provide dependencies for Maven`, och Ersätt den med hello följande:</span><span class="sxs-lookup"><span data-stu-id="ca302-136">In hello root directory of your project, open/create `pom.xml`, locate `// TODO: provide dependencies for Maven`, and replace it with hello following:</span></span>
 
 ```Java
 
@@ -169,10 +169,10 @@ ms.lasthandoff: 08/03/2017
     </project>
 ```
 
-## <a name="step-3-create-the-java-web-app-files-web-inf"></a><span data-ttu-id="949b1-137">Steg 3: Skapa Java-app webbfiler (WEB-INF)</span><span class="sxs-lookup"><span data-stu-id="949b1-137">Step 3: Create the Java web app files (WEB-INF)</span></span>
-<span data-ttu-id="949b1-138">I det här steget konfigurerar du Java-webbapp för att använda autentiseringsprotokollet OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="949b1-138">In this step, you configure the Java web app to use the OpenID Connect authentication protocol.</span></span> <span data-ttu-id="949b1-139">Använd ADAL4J att utfärda inloggnings- och utloggningsförfrågningar, hantera användarens session, få information om användaren och så vidare.</span><span class="sxs-lookup"><span data-stu-id="949b1-139">Use the ADAL4J to issue sign-in and sign-out requests, manage the user's session, get information about the user, and so forth.</span></span>
+## <a name="step-3-create-hello-java-web-app-files-web-inf"></a><span data-ttu-id="ca302-137">Steg 3: Skapa hello Java web app filer (WEB-INF)</span><span class="sxs-lookup"><span data-stu-id="ca302-137">Step 3: Create hello Java web app files (WEB-INF)</span></span>
+<span data-ttu-id="ca302-138">I det här steget konfigurerar du hello Java web app toouse hello autentiseringsprotokollet OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="ca302-138">In this step, you configure hello Java web app toouse hello OpenID Connect authentication protocol.</span></span> <span data-ttu-id="ca302-139">Användarförfrågningar hello ADAL4J tooissue inloggning och utloggning, hantera hello användarens session, få information om hello användare och så vidare.</span><span class="sxs-lookup"><span data-stu-id="ca302-139">Use hello ADAL4J tooissue sign-in and sign-out requests, manage hello user's session, get information about hello user, and so forth.</span></span>
 
-1. <span data-ttu-id="949b1-140">Öppna filen web.xml finns under \webapp\WEB-INF\, och ange värden för app-konfiguration i XML.</span><span class="sxs-lookup"><span data-stu-id="949b1-140">Open the web.xml file located under \webapp\WEB-INF\, and enter the app configuration values in the XML.</span></span> <span data-ttu-id="949b1-141">XML-filen ska innehålla följande kod:</span><span class="sxs-lookup"><span data-stu-id="949b1-141">The XML file should contain the following code:</span></span>
+1. <span data-ttu-id="ca302-140">Öppna hello web.xml filen finns under \webapp\WEB-INF\, och ange hello app konfigurationsvärden i hello XML.</span><span class="sxs-lookup"><span data-stu-id="ca302-140">Open hello web.xml file located under \webapp\WEB-INF\, and enter hello app configuration values in hello XML.</span></span> <span data-ttu-id="ca302-141">hello XML-filen ska innehålla hello följande kod:</span><span class="sxs-lookup"><span data-stu-id="ca302-141">hello XML file should contain hello following code:</span></span>
 
     ```xml
 
@@ -225,13 +225,13 @@ ms.lasthandoff: 08/03/2017
     </web-app>
     ```
 
- * <span data-ttu-id="949b1-142">YOUR_CLIENT_ID är den **program-Id** tilldelats din app i portalen för registrering.</span><span class="sxs-lookup"><span data-stu-id="949b1-142">YOUR_CLIENT_ID is the **Application Id** assigned to your app in the registration portal.</span></span>
- * <span data-ttu-id="949b1-143">YOUR_CLIENT_SECRET är den **Programhemlighet** som du skapade i portalen.</span><span class="sxs-lookup"><span data-stu-id="949b1-143">YOUR_CLIENT_SECRET is the **Application Secret** that you created in the portal.</span></span>
- * <span data-ttu-id="949b1-144">YOUR_TENANT_NAME är den **klientnamn** för din app (till exempel contoso.onmicrosoft.com).</span><span class="sxs-lookup"><span data-stu-id="949b1-144">YOUR_TENANT_NAME is the **tenant name** of your app (for example, contoso.onmicrosoft.com).</span></span>
+ * <span data-ttu-id="ca302-142">YOUR_CLIENT_ID är hello **program-Id** tilldelade tooyour app i portalen för registrering av hello.</span><span class="sxs-lookup"><span data-stu-id="ca302-142">YOUR_CLIENT_ID is hello **Application Id** assigned tooyour app in hello registration portal.</span></span>
+ * <span data-ttu-id="ca302-143">YOUR_CLIENT_SECRET är hello **Programhemlighet** som du skapade i hello-portalen.</span><span class="sxs-lookup"><span data-stu-id="ca302-143">YOUR_CLIENT_SECRET is hello **Application Secret** that you created in hello portal.</span></span>
+ * <span data-ttu-id="ca302-144">YOUR_TENANT_NAME är hello **klientnamn** för din app (till exempel contoso.onmicrosoft.com).</span><span class="sxs-lookup"><span data-stu-id="ca302-144">YOUR_TENANT_NAME is hello **tenant name** of your app (for example, contoso.onmicrosoft.com).</span></span>
 
- <span data-ttu-id="949b1-145">Som du ser i XML-filen du skriver ett JavaServer sidor (JSP) eller Java Servlet webbprogram som kallas mvc-dispatcher som använder BasicFilter när du besöker den / secure URL.</span><span class="sxs-lookup"><span data-stu-id="949b1-145">As you can see in the XML file, you are writing a JavaServer Pages (JSP) or Java Servlet web app called mvc-dispatcher that uses BasicFilter whenever you visit the /secure URL.</span></span> <span data-ttu-id="949b1-146">I samma kod, använder du / secure som en plats för det skyddade innehållet och för att tvinga autentisering till Azure AD.</span><span class="sxs-lookup"><span data-stu-id="949b1-146">In the same code, you use /secure as a place for the protected content and to force authentication to Azure AD.</span></span>
+ <span data-ttu-id="ca302-145">Som du ser i hello XML-fil skriver du ett JavaServer sidor (JSP) eller Java Servlet webbprogram som kallas mvc-dispatcher som använder BasicFilter när du besöker hello / secure URL.</span><span class="sxs-lookup"><span data-stu-id="ca302-145">As you can see in hello XML file, you are writing a JavaServer Pages (JSP) or Java Servlet web app called mvc-dispatcher that uses BasicFilter whenever you visit hello /secure URL.</span></span> <span data-ttu-id="ca302-146">I hello har samma kod, som du använder / secure som en plats för hello skyddat innehåll och tooforce autentisering tooAzure AD.</span><span class="sxs-lookup"><span data-stu-id="ca302-146">In hello same code, you use /secure as a place for hello protected content and tooforce authentication tooAzure AD.</span></span>
 
-2. <span data-ttu-id="949b1-147">Skapa filen mvc-dispatcher-servlet.xml finns under \webapp\WEB-INF\, och ange följande kod:</span><span class="sxs-lookup"><span data-stu-id="949b1-147">Create the mvc-dispatcher-servlet.xml file located under \webapp\WEB-INF\, and enter the following code:</span></span>
+2. <span data-ttu-id="ca302-147">Skapa hello mvc-dispatcher-servlet.xml fil finns under \webapp\WEB-INF\, och ange hello följande kod:</span><span class="sxs-lookup"><span data-stu-id="ca302-147">Create hello mvc-dispatcher-servlet.xml file located under \webapp\WEB-INF\, and enter hello following code:</span></span>
 
     ```xml
 
@@ -256,16 +256,16 @@ ms.lasthandoff: 08/03/2017
     </beans>
     ```
 
- <span data-ttu-id="949b1-148">Den här koden får webbprogram för att använda värdet och anger var du hittar JSP-fil som du skriver i nästa avsnitt.</span><span class="sxs-lookup"><span data-stu-id="949b1-148">This code tells the web app to use Spring, and it indicates where to find the JSP file, which you write in the next section.</span></span>
+ <span data-ttu-id="ca302-148">Den här koden får hello web app toouse källan och anger det där toofind hello JSP-fil som du kan skriva i hello nästa avsnitt.</span><span class="sxs-lookup"><span data-stu-id="ca302-148">This code tells hello web app toouse Spring, and it indicates where toofind hello JSP file, which you write in hello next section.</span></span>
 
-## <a name="step-4-create-the-jsp-view-files-for-basicfilter-mvc"></a><span data-ttu-id="949b1-149">Steg 4: Skapa JSP visa-filer (för BasicFilter MVC)</span><span class="sxs-lookup"><span data-stu-id="949b1-149">Step 4: Create the JSP View files (for BasicFilter MVC)</span></span>
-<span data-ttu-id="949b1-150">Du är halvvägs genom att skapa ditt webbprogram i WEB INF-filen.</span><span class="sxs-lookup"><span data-stu-id="949b1-150">You are half-way through setting up your web app in WEB-INF.</span></span> <span data-ttu-id="949b1-151">Därefter skapar du JSP-filer för BasicFilter modellen view controller (MVC) som webbappen körs.</span><span class="sxs-lookup"><span data-stu-id="949b1-151">Next, you create the JSP files for BasicFilter model view controller (MVC), which the web app executes.</span></span> <span data-ttu-id="949b1-152">Vi hinted vid skapandet av filer under konfigurationen.</span><span class="sxs-lookup"><span data-stu-id="949b1-152">We hinted at creating the files during the configuration.</span></span>
+## <a name="step-4-create-hello-jsp-view-files-for-basicfilter-mvc"></a><span data-ttu-id="ca302-149">Steg 4: Skapa hello JSP visa filer (för BasicFilter MVC)</span><span class="sxs-lookup"><span data-stu-id="ca302-149">Step 4: Create hello JSP View files (for BasicFilter MVC)</span></span>
+<span data-ttu-id="ca302-150">Du är halvvägs genom att skapa ditt webbprogram i WEB INF-filen.</span><span class="sxs-lookup"><span data-stu-id="ca302-150">You are half-way through setting up your web app in WEB-INF.</span></span> <span data-ttu-id="ca302-151">Därefter måste skapa du hello JSP-filer för BasicFilter modellen view controller (MVC), vilka hello-webbapp körs.</span><span class="sxs-lookup"><span data-stu-id="ca302-151">Next, you create hello JSP files for BasicFilter model view controller (MVC), which hello web app executes.</span></span> <span data-ttu-id="ca302-152">Vi hinted skapa hello filer under hello-konfigurationen.</span><span class="sxs-lookup"><span data-stu-id="ca302-152">We hinted at creating hello files during hello configuration.</span></span>
 
-<span data-ttu-id="949b1-153">Tidigare, du uppmanas Java i XML-konfigurationsfiler som du har en `/` resurs som läser in JSP-filer, och du har en `/secure` resurs som passerar genom ett filter kan du anropa BasicFilter.</span><span class="sxs-lookup"><span data-stu-id="949b1-153">Earlier, you told Java in the XML configuration files that you have a `/` resource that loads JSP files, and you have a `/secure` resource that passes through a filter, which you called BasicFilter.</span></span>
+<span data-ttu-id="ca302-153">Tidigare, du uppmanas Java i hello XML configuration-filer som du har en `/` resurs som läser in JSP-filer, och du har en `/secure` resurs som passerar genom ett filter kan du anropa BasicFilter.</span><span class="sxs-lookup"><span data-stu-id="ca302-153">Earlier, you told Java in hello XML configuration files that you have a `/` resource that loads JSP files, and you have a `/secure` resource that passes through a filter, which you called BasicFilter.</span></span>
 
-<span data-ttu-id="949b1-154">Om du vill skapa JSP-filer, gör du följande:</span><span class="sxs-lookup"><span data-stu-id="949b1-154">To create the JSP files, do the following:</span></span>
+<span data-ttu-id="ca302-154">toocreate hello JSP-filer, hello följande:</span><span class="sxs-lookup"><span data-stu-id="ca302-154">toocreate hello JSP files, do hello following:</span></span>
 
-1. <span data-ttu-id="949b1-155">Skapa filen index.jsp (finns under \webapp\), och klistra in följande kod:</span><span class="sxs-lookup"><span data-stu-id="949b1-155">Create the index.jsp file (located under \webapp\), and then paste the following code:</span></span>
+1. <span data-ttu-id="ca302-155">Skapa hello index.jsp-filen (finns under \webapp\), och sedan hello klistra in följande kod:</span><span class="sxs-lookup"><span data-stu-id="ca302-155">Create hello index.jsp file (located under \webapp\), and then paste hello following code:</span></span>
 
     ```jsp
     <html>
@@ -278,9 +278,9 @@ ms.lasthandoff: 08/03/2017
     </html>
     ```
 
- <span data-ttu-id="949b1-156">Den här koden omdirigerar bara till en säker sida som skyddas av filtret.</span><span class="sxs-lookup"><span data-stu-id="949b1-156">This code simply redirects to a secure page that is protected by the filter.</span></span>
+ <span data-ttu-id="ca302-156">Den här koden omdirigerar bara tooa säker sida som skyddas av hello filter.</span><span class="sxs-lookup"><span data-stu-id="ca302-156">This code simply redirects tooa secure page that is protected by hello filter.</span></span>
 
-2. <span data-ttu-id="949b1-157">Skapa en error.jsp-fil för att fånga eventuella fel som kan inträffa i samma katalog:</span><span class="sxs-lookup"><span data-stu-id="949b1-157">In the same directory, create an error.jsp file to catch any errors that might happen:</span></span>
+2. <span data-ttu-id="ca302-157">I Hej samma katalog, och skapa en error.jsp filen toocatch eventuella fel som kan inträffa:</span><span class="sxs-lookup"><span data-stu-id="ca302-157">In hello same directory, create an error.jsp file toocatch any errors that might happen:</span></span>
 
     ```jsp
 
@@ -296,8 +296,8 @@ ms.lasthandoff: 08/03/2017
     </body>
     </html>
     ```
-3. <span data-ttu-id="949b1-158">Skapa en mapp under \webapp kallas \secure så att katalogen är nu \webapp\secure för att säkra webbsidan.</span><span class="sxs-lookup"><span data-stu-id="949b1-158">To make that secure webpage, create a folder under \webapp called \secure so that the directory is now \webapp\secure.</span></span>
-4. <span data-ttu-id="949b1-159">Skapa en aad.jsp-fil i katalogen \webapp\secure och klistra in följande kod:</span><span class="sxs-lookup"><span data-stu-id="949b1-159">In the \webapp\secure directory, create an aad.jsp file, and then paste the following code:</span></span>
+3. <span data-ttu-id="ca302-158">toomake som säkra webbsidan, skapa en mapp under \webapp kallas \secure så att hello katalogen är nu \webapp\secure.</span><span class="sxs-lookup"><span data-stu-id="ca302-158">toomake that secure webpage, create a folder under \webapp called \secure so that hello directory is now \webapp\secure.</span></span>
+4. <span data-ttu-id="ca302-159">Skapa en aad.jsp-fil i hello \webapp\secure directory och klistra in följande kod hello:</span><span class="sxs-lookup"><span data-stu-id="ca302-159">In hello \webapp\secure directory, create an aad.jsp file, and then paste hello following code:</span></span>
 
     ```jsp
 
@@ -324,28 +324,28 @@ ms.lasthandoff: 08/03/2017
     </html>
     ```
 
-    <span data-ttu-id="949b1-160">Den här sidan dirigerar på specifika förfrågningar som BasicFilter servlet läser och kör sedan med hjälp av ADAJ4J.</span><span class="sxs-lookup"><span data-stu-id="949b1-160">This page redirects to specific requests, which the BasicFilter servlet reads and then executes on by using the ADAJ4J.</span></span>
+    <span data-ttu-id="ca302-160">Den här sidan dirigerar toospecific begäranden, vilka hello BasicFilter servlet läser och kör sedan med hjälp av hello ADAJ4J.</span><span class="sxs-lookup"><span data-stu-id="ca302-160">This page redirects toospecific requests, which hello BasicFilter servlet reads and then executes on by using hello ADAJ4J.</span></span>
 
-<span data-ttu-id="949b1-161">Nu måste du ställa in Java-filer så att servlet kan utföra sitt arbete.</span><span class="sxs-lookup"><span data-stu-id="949b1-161">You now need to set up the Java files so that the servlet can do its work.</span></span>
+<span data-ttu-id="ca302-161">Du måste nu tooset hello Java filer så att hello servlet kan utföra sitt arbete.</span><span class="sxs-lookup"><span data-stu-id="ca302-161">You now need tooset up hello Java files so that hello servlet can do its work.</span></span>
 
-## <a name="step-5-create-some-java-helper-files-for-basicfilter-mvc"></a><span data-ttu-id="949b1-162">Steg 5: Skapa vissa Java helper-filer (för BasicFilter MVC)</span><span class="sxs-lookup"><span data-stu-id="949b1-162">Step 5: Create some Java helper files (for BasicFilter MVC)</span></span>
-<span data-ttu-id="949b1-163">Vårt mål i det här steget är att skapa Java-filer som:</span><span class="sxs-lookup"><span data-stu-id="949b1-163">Our goal in this step is to create Java files that:</span></span>
+## <a name="step-5-create-some-java-helper-files-for-basicfilter-mvc"></a><span data-ttu-id="ca302-162">Steg 5: Skapa vissa Java helper-filer (för BasicFilter MVC)</span><span class="sxs-lookup"><span data-stu-id="ca302-162">Step 5: Create some Java helper files (for BasicFilter MVC)</span></span>
+<span data-ttu-id="ca302-163">Vårt mål i det här steget är toocreate Java filer som:</span><span class="sxs-lookup"><span data-stu-id="ca302-163">Our goal in this step is toocreate Java files that:</span></span>
 
-* <span data-ttu-id="949b1-164">Tillåt för inloggning och utloggning för användaren.</span><span class="sxs-lookup"><span data-stu-id="949b1-164">Allow for sign-in and sign-out of the user.</span></span>
-* <span data-ttu-id="949b1-165">Hämta data om användaren.</span><span class="sxs-lookup"><span data-stu-id="949b1-165">Get some data about the user.</span></span>
+* <span data-ttu-id="ca302-164">Tillåt för inloggning och utloggning för hello användare.</span><span class="sxs-lookup"><span data-stu-id="ca302-164">Allow for sign-in and sign-out of hello user.</span></span>
+* <span data-ttu-id="ca302-165">Hämta data om hello användare.</span><span class="sxs-lookup"><span data-stu-id="ca302-165">Get some data about hello user.</span></span>
 
     > [!NOTE]
-    > <span data-ttu-id="949b1-166">För att få data om användaren kan använda från Azure AD Graph API.</span><span class="sxs-lookup"><span data-stu-id="949b1-166">To get data about the user, use the Graph API from Azure AD.</span></span> <span data-ttu-id="949b1-167">Graph API är en säker webservice som du kan använda för att hämta data om din organisation, inklusive enskilda användare.</span><span class="sxs-lookup"><span data-stu-id="949b1-167">The Graph API is a secure webservice that you can use to grab data about your organization, including individual users.</span></span> <span data-ttu-id="949b1-168">Den här metoden är bättre än före fyllning av känsliga data i token, eftersom det säkerställer att:</span><span class="sxs-lookup"><span data-stu-id="949b1-168">This approach is better than pre-filling sensitive data in tokens, because it ensures that:</span></span>
-    > * <span data-ttu-id="949b1-169">Användare som ber om data har behörighet.</span><span class="sxs-lookup"><span data-stu-id="949b1-169">The users who ask for the data are authorized.</span></span>
-    > * <span data-ttu-id="949b1-170">Alla som kan inträffa att hämta token (från en jailbrokade telefon eller webbläsare cachen på en stationär dator, till exempel) kan inte hämta viktig information om användaren eller organisationen.</span><span class="sxs-lookup"><span data-stu-id="949b1-170">Anyone who might happen to grab the token (from a jailbroken phone or web-browser cache on a desktop, for example) cannot obtain important details about the user or the organization.</span></span>
+    > <span data-ttu-id="ca302-166">tooget data om hello användare använda hello Graph API från Azure AD.</span><span class="sxs-lookup"><span data-stu-id="ca302-166">tooget data about hello user, use hello Graph API from Azure AD.</span></span> <span data-ttu-id="ca302-167">hello Graph API är en säker webservice som du kan använda toograb data om din organisation, inklusive enskilda användare.</span><span class="sxs-lookup"><span data-stu-id="ca302-167">hello Graph API is a secure webservice that you can use toograb data about your organization, including individual users.</span></span> <span data-ttu-id="ca302-168">Den här metoden är bättre än före fyllning av känsliga data i token, eftersom det säkerställer att:</span><span class="sxs-lookup"><span data-stu-id="ca302-168">This approach is better than pre-filling sensitive data in tokens, because it ensures that:</span></span>
+    > * <span data-ttu-id="ca302-169">hello-användare som ber om hello data har behörighet.</span><span class="sxs-lookup"><span data-stu-id="ca302-169">hello users who ask for hello data are authorized.</span></span>
+    > * <span data-ttu-id="ca302-170">Alla som kan inträffa toograb hello token (från en jailbrokade telefon eller webbläsare cachen på en stationär dator, till exempel) kan inte hämta viktig information om hello användaren eller hello organisationen.</span><span class="sxs-lookup"><span data-stu-id="ca302-170">Anyone who might happen toograb hello token (from a jailbroken phone or web-browser cache on a desktop, for example) cannot obtain important details about hello user or hello organization.</span></span>
 
-<span data-ttu-id="949b1-171">Att skriva vissa Java-filer för den här:</span><span class="sxs-lookup"><span data-stu-id="949b1-171">To write some Java files for this work:</span></span>
+<span data-ttu-id="ca302-171">toowrite vissa Java filerna för den här:</span><span class="sxs-lookup"><span data-stu-id="ca302-171">toowrite some Java files for this work:</span></span>
 
-1. <span data-ttu-id="949b1-172">Skapa en mapp i rotkatalogen kallas adal4jsample för att lagra alla Java-filer.</span><span class="sxs-lookup"><span data-stu-id="949b1-172">Create a folder in your root directory called adal4jsample to store all the Java files.</span></span>
+1. <span data-ttu-id="ca302-172">Skapa en mapp i din roten directory kallas adal4jsample toostore alla hello Java-filer.</span><span class="sxs-lookup"><span data-stu-id="ca302-172">Create a folder in your root directory called adal4jsample toostore all hello Java files.</span></span>
 
-    <span data-ttu-id="949b1-173">I det här exemplet använder namnområdet com.microsoft.aad.adal4jsample i Java-filer.</span><span class="sxs-lookup"><span data-stu-id="949b1-173">In this example, you are using the namespace com.microsoft.aad.adal4jsample in the Java files.</span></span> <span data-ttu-id="949b1-174">De flesta IDES eller skapa en kapslad mappstruktur för detta ändamål (till exempel /com/microsoft/aad/adal4jsample).</span><span class="sxs-lookup"><span data-stu-id="949b1-174">Most IDEs create a nested folder structure for this purpose (for example, /com/microsoft/aad/adal4jsample).</span></span> <span data-ttu-id="949b1-175">Du kan också göra detta, men det är inte nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="949b1-175">You can do this also, but it is not necessary.</span></span>
+    <span data-ttu-id="ca302-173">I det här exemplet använder hello namnområde com.microsoft.aad.adal4jsample i hello Java-filer.</span><span class="sxs-lookup"><span data-stu-id="ca302-173">In this example, you are using hello namespace com.microsoft.aad.adal4jsample in hello Java files.</span></span> <span data-ttu-id="ca302-174">De flesta IDES eller skapa en kapslad mappstruktur för detta ändamål (till exempel /com/microsoft/aad/adal4jsample).</span><span class="sxs-lookup"><span data-stu-id="ca302-174">Most IDEs create a nested folder structure for this purpose (for example, /com/microsoft/aad/adal4jsample).</span></span> <span data-ttu-id="ca302-175">Du kan också göra detta, men det är inte nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="ca302-175">You can do this also, but it is not necessary.</span></span>
 
-2. <span data-ttu-id="949b1-176">Skapa en fil med namnet JSONHelper.java som du ska använda för att parsa JSON-data från din token i den här mappen.</span><span class="sxs-lookup"><span data-stu-id="949b1-176">Inside this folder, create a file called JSONHelper.java, which you'll use to help parse the JSON data from your tokens.</span></span> <span data-ttu-id="949b1-177">Klistra in följande kod för att skapa filen:</span><span class="sxs-lookup"><span data-stu-id="949b1-177">To create the file, paste the following code:</span></span>
+2. <span data-ttu-id="ca302-176">Skapa en fil med namnet JSONHelper.java som du ska använda den här mappen toohelp parse hello JSON-data från dina token.</span><span class="sxs-lookup"><span data-stu-id="ca302-176">Inside this folder, create a file called JSONHelper.java, which you'll use toohelp parse hello JSON data from your tokens.</span></span> <span data-ttu-id="ca302-177">toocreate hello fil, klistra in hello följande kod:</span><span class="sxs-lookup"><span data-stu-id="ca302-177">toocreate hello file, paste hello following code:</span></span>
 
     ```Java
 
@@ -365,7 +365,7 @@ ms.lasthandoff: 08/03/2017
     import org.json.JSONObject;
 
     /**
-     * This class provides the methods to parse JSON data from a JSON-formatted
+     * This class provides hello methods tooparse JSON data from a JSON-formatted
      * string.
      *
      * @author Azure Active Directory contributor
@@ -384,8 +384,8 @@ ms.lasthandoff: 08/03/2017
          * within a string.
          *
          * @param jSonData
-         *            The JSON string that holds the collection
-         * @return A JSON array that contains all the collection objects
+         *            hello JSON string that holds hello collection
+         * @return A JSON array that contains all hello collection objects
          * @throws Exception
          */
         public static JSONArray fetchDirectoryObjectJSONArray(JSONObject jsonObject) throws Exception {
@@ -399,7 +399,7 @@ ms.lasthandoff: 08/03/2017
          * within a string.
          *
          * @param jsonObject
-         * @return A JSON object that contains the DirectoryObject
+         * @return A JSON object that contains hello DirectoryObject
          * @throws Exception
          */
         public static JSONObject fetchDirectoryObjectJSONObject(JSONObject jsonObject) throws Exception {
@@ -409,20 +409,20 @@ ms.lasthandoff: 08/03/2017
         }
 
         /**
-         * This method parses the skip token from a JSON-formatted string.
+         * This method parses hello skip token from a JSON-formatted string.
          *
          * @param jsonData
-         *            The JSON-formatted string
-         * @return The skipToken
+         *            hello JSON-formatted string
+         * @return hello skipToken
          * @throws Exception
          */
         public static String fetchNextSkiptoken(JSONObject jsonObject) throws Exception {
             String skipToken = "";
-            // Parse the skip token out of the string.
+            // Parse hello skip token out of hello string.
             skipToken = jsonObject.optJSONObject("responseMsg").optString("odata.nextLink");
 
             if (!skipToken.equalsIgnoreCase("")) {
-                // Remove the unnecessary prefix from the skip token.
+                // Remove hello unnecessary prefix from hello skip token.
                 int index = skipToken.indexOf("$skiptoken=") + (new String("$skiptoken=")).length();
                 skipToken = skipToken.substring(index);
             }
@@ -436,7 +436,7 @@ ms.lasthandoff: 08/03/2017
          */
         public static String fetchDeltaLink(JSONObject jsonObject) throws Exception {
             String deltaLink = "";
-            // Parse the skip token out of the string.
+            // Parse hello skip token out of hello string.
             deltaLink = jsonObject.optJSONObject("responseMsg").optString("aad.deltaLink");
             if (deltaLink == null || deltaLink.length() == 0) {
                 deltaLink = jsonObject.optJSONObject("responseMsg").optString("aad.nextLink");
@@ -444,7 +444,7 @@ ms.lasthandoff: 08/03/2017
 
             }
             if (!deltaLink.equalsIgnoreCase("")) {
-                // Remove the unnecessary prefix from the skip token.
+                // Remove hello unnecessary prefix from hello skip token.
                 int index = deltaLink.indexOf("deltaLink=") + (new String("deltaLink=")).length();
                 deltaLink = deltaLink.substring(index);
             }
@@ -453,13 +453,13 @@ ms.lasthandoff: 08/03/2017
 
         /**
          * This method creates a string consisting of a JSON document with all
-         * the necessary elements set from the HttpServletRequest request.
+         * hello necessary elements set from hello HttpServletRequest request.
          *
          * @param request
-         *            The HttpServletRequest
-         * @return The string containing the JSON document
+         *            hello HttpServletRequest
+         * @return hello string containing hello JSON document
          * @throws Exception
-         *             If there is any error processing the request.
+         *             If there is any error processing hello request.
          */
         public static String createJSONString(HttpServletRequest request, String controller) throws Exception {
             JSONObject obj = new JSONObject();
@@ -521,28 +521,28 @@ ms.lasthandoff: 08/03/2017
         }
 
         /**
-         * This is a generic method that copies the simple attribute values from an
-         * argument jsonObject to an argument generic object.
+         * This is a generic method that copies hello simple attribute values from an
+         * argument jsonObject tooan argument generic object.
          *
          * @param jsonObject
-         *            The jsonObject from where the attributes are to be copied.
+         *            hello jsonObject from where hello attributes are toobe copied.
          * @param destObject
-         *            The object where the attributes should be copied to.
+         *            hello object where hello attributes should be copied to.
          * @throws Exception
-         *             Throws an Exception when the operation is unsuccessful.
+         *             Throws an Exception when hello operation is unsuccessful.
          */
         public static <T> void convertJSONObjectToDirectoryObject(JSONObject jsonObject, T destObject) throws Exception {
 
-            // Get the list of all the field names.
+            // Get hello list of all hello field names.
             Field[] fieldList = destObject.getClass().getDeclaredFields();
 
-            // For all the declared field.
+            // For all hello declared field.
             for (int i = 0; i < fieldList.length; i++) {
-                // If the field is of type String, that is
+                // If hello field is of type String, that is
                 // if it is a simple attribute.
                 if (fieldList[i].getType().equals(String.class)) {
-                    // Invoke the corresponding set method of the destObject using
-                    // the argument taken from the jsonObject.
+                    // Invoke hello corresponding set method of hello destObject using
+                    // hello argument taken from hello jsonObject.
                     destObject
                             .getClass()
                             .getMethod(String.format("set%s", WordUtils.capitalize(fieldList[i].getName())),
@@ -567,7 +567,7 @@ ms.lasthandoff: 08/03/2017
 
     ```
 
-3. <span data-ttu-id="949b1-178">Skapa en fil med namnet HttpClientHelper.java som du ska använda för att parsa HTTP-data från Azure AD-slutpunkten.</span><span class="sxs-lookup"><span data-stu-id="949b1-178">Create a file called HttpClientHelper.java, which you will use to help parse the HTTP data from your Azure AD endpoint.</span></span> <span data-ttu-id="949b1-179">Klistra in följande kod för att skapa filen:</span><span class="sxs-lookup"><span data-stu-id="949b1-179">To create the file, paste the following code:</span></span>
+3. <span data-ttu-id="ca302-178">Skapa en fil med namnet HttpClientHelper.java som du ska använda toohelp parse hello http-data från Azure AD-slutpunkten.</span><span class="sxs-lookup"><span data-stu-id="ca302-178">Create a file called HttpClientHelper.java, which you will use toohelp parse hello HTTP data from your Azure AD endpoint.</span></span> <span data-ttu-id="ca302-179">toocreate hello fil, klistra in hello följande kod:</span><span class="sxs-lookup"><span data-stu-id="ca302-179">toocreate hello file, paste hello following code:</span></span>
 
     ```Java
 
@@ -615,7 +615,7 @@ ms.lasthandoff: 08/03/2017
 
         public static String getResponseStringFromConn(HttpURLConnection conn, String payLoad) throws IOException {
 
-            // Send the http message payload to the server.
+            // Send hello http message payload toohello server.
             if (payLoad != null) {
                 conn.setDoOutput(true);
                 OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream());
@@ -624,7 +624,7 @@ ms.lasthandoff: 08/03/2017
                 osw.close();
             }
 
-            // Get the message response from the server.
+            // Get hello message response from hello server.
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             String line = "";
             StringBuffer stringBuffer = new StringBuffer();
@@ -723,10 +723,10 @@ ms.lasthandoff: 08/03/2017
 
     ```
 
-## <a name="step-6-create-the-java-graph-api-model-files-for-basicfilter-mvc"></a><span data-ttu-id="949b1-180">Steg 6: Skapa Java Graph API modell-filer (för BasicFilter MVC)</span><span class="sxs-lookup"><span data-stu-id="949b1-180">Step 6: Create the Java Graph API Model files (for BasicFilter MVC)</span></span>
-<span data-ttu-id="949b1-181">Enligt tidigare, Använd Graph API för att hämta data om den inloggade användaren.</span><span class="sxs-lookup"><span data-stu-id="949b1-181">As indicated previously, you use the Graph API to get data about the signed-in user.</span></span> <span data-ttu-id="949b1-182">Skapa både en fil för att representera ett katalogobjekt och en fil för att representera användaren så att OO mönstret för Java kan användas för att göra den här processen enkel.</span><span class="sxs-lookup"><span data-stu-id="949b1-182">To make this process easy, create both a file to represent a Directory object and a file to represent the user so that the OO pattern of Java can be used.</span></span>
+## <a name="step-6-create-hello-java-graph-api-model-files-for-basicfilter-mvc"></a><span data-ttu-id="ca302-180">Steg 6: Skapa hello Java Graph API modellen filer (för BasicFilter MVC)</span><span class="sxs-lookup"><span data-stu-id="ca302-180">Step 6: Create hello Java Graph API Model files (for BasicFilter MVC)</span></span>
+<span data-ttu-id="ca302-181">Enligt tidigare, kan du använda hello Graph API tooget data om hello inloggad användare.</span><span class="sxs-lookup"><span data-stu-id="ca302-181">As indicated previously, you use hello Graph API tooget data about hello signed-in user.</span></span> <span data-ttu-id="ca302-182">toomake detta bearbeta lätt och skapa både en fil toorepresent ett katalogobjekt och en fil toorepresent hello användare så att hello OO mönstret för Java kan användas.</span><span class="sxs-lookup"><span data-stu-id="ca302-182">toomake this process easy, create both a file toorepresent a Directory object and a file toorepresent hello user so that hello OO pattern of Java can be used.</span></span>
 
-1. <span data-ttu-id="949b1-183">Skapa en fil med namnet DirectoryObject.java som du använder för att lagra grundläggande information om alla katalogobjekt.</span><span class="sxs-lookup"><span data-stu-id="949b1-183">Create a file called DirectoryObject.java, which you use to store basic data about any Directory object.</span></span> <span data-ttu-id="949b1-184">Du kan senare använda den här filen för andra diagrammet frågor du kan utföra.</span><span class="sxs-lookup"><span data-stu-id="949b1-184">You can use this file later for any other Graph queries you might perform.</span></span> <span data-ttu-id="949b1-185">Klistra in följande kod för att skapa filen:</span><span class="sxs-lookup"><span data-stu-id="949b1-185">To create the file, paste the following code:</span></span>
+1. <span data-ttu-id="ca302-183">Skapa en fil med namnet DirectoryObject.java som du använder toostore grundläggande information om alla katalogobjekt.</span><span class="sxs-lookup"><span data-stu-id="ca302-183">Create a file called DirectoryObject.java, which you use toostore basic data about any Directory object.</span></span> <span data-ttu-id="ca302-184">Du kan senare använda den här filen för andra diagrammet frågor du kan utföra.</span><span class="sxs-lookup"><span data-stu-id="ca302-184">You can use this file later for any other Graph queries you might perform.</span></span> <span data-ttu-id="ca302-185">toocreate hello fil, klistra in hello följande kod:</span><span class="sxs-lookup"><span data-stu-id="ca302-185">toocreate hello file, paste hello following code:</span></span>
 
     ```Java
 
@@ -781,7 +781,7 @@ ms.lasthandoff: 08/03/2017
 
     ```
 
-2. <span data-ttu-id="949b1-186">Skapa en fil med namnet User.java som du använder för att lagra grundläggande information om alla användare i katalogen.</span><span class="sxs-lookup"><span data-stu-id="949b1-186">Create a file called User.java, which you use to store basic data about any user from the directory.</span></span> <span data-ttu-id="949b1-187">Dessa är grundläggande get och set-metoder för katalogdata, så du kan klistra in följande kod:</span><span class="sxs-lookup"><span data-stu-id="949b1-187">These are basic getter and setter methods for directory data, so you can paste the following code:</span></span>
+2. <span data-ttu-id="ca302-186">Skapa en fil med namnet User.java som du använder toostore grundläggande information om alla användare från hello directory.</span><span class="sxs-lookup"><span data-stu-id="ca302-186">Create a file called User.java, which you use toostore basic data about any user from hello directory.</span></span> <span data-ttu-id="ca302-187">Dessa är grundläggande get och set-metoder för katalogdata, så du kan klistra in följande kod hello:</span><span class="sxs-lookup"><span data-stu-id="ca302-187">These are basic getter and setter methods for directory data, so you can paste hello following code:</span></span>
 
     ```Java
 
@@ -795,13 +795,13 @@ ms.lasthandoff: 08/03/2017
     import org.json.JSONObject;
 
     /**
-    *  The **User** class holds together all the members of a WAAD User entity and all the access methods and set methods.
+    *  hello **User** class holds together all hello members of a WAAD User entity and all hello access methods and set methods.
     *  @author Azure Active Directory Contributor
     */
     @XmlRootElement
     public class User extends DirectoryObject{
 
-        // The following are the individual private members of a User object that holds
+        // hello following are hello individual private members of a User object that holds
         // a particular simple attribute of a User object.
         protected String objectId;
         protected String objectType;
@@ -829,7 +829,7 @@ ms.lasthandoff: 08/03/2017
         protected String telephoneNumber;
         protected String usageLocation;
         protected String userPrincipalName;
-        protected boolean isDeleted;  // this will move to dto
+        protected boolean isDeleted;  // this will move toodto
 
         /**
          * These four properties are for future use.
@@ -837,17 +837,17 @@ ms.lasthandoff: 08/03/2017
         // managerDisplayname of this user.
         protected String managerDisplayname;
 
-        // The directReports holds a list of directReports.
+        // hello directReports holds a list of directReports.
         private ArrayList<User> directReports;
 
-        // The groups holds a list of group entities this user belongs to.
+        // hello groups holds a list of group entities this user belongs to.
         private ArrayList<Group> groups;
 
-        // The roles holds a list of role entities this user belongs to.
+        // hello roles holds a list of role entities this user belongs to.
         private ArrayList<Group> roles;
 
         /**
-         * The constructor for the **User** class. Initializes the dynamic lists and managerDisplayname variables.
+         * hello constructor for hello **User** class. Initializes hello dynamic lists and managerDisplayname variables.
          */
         public User(){
             directReports = null;
@@ -870,364 +870,364 @@ ms.lasthandoff: 08/03/2017
     //    
 
         /**
-         * @return The objectId of this user.
+         * @return hello objectId of this user.
          */
         public String getObjectId() {
             return objectId;
         }
 
         /**
-         * @param objectId The objectId to set to this User object.
+         * @param objectId hello objectId tooset toothis User object.
          */
         public void setObjectId(String objectId) {
             this.objectId = objectId;
         }
 
         /**
-         * @return The objectType of this user.
+         * @return hello objectType of this user.
          */
         public String getObjectType() {
             return objectType;
         }
 
         /**
-         * @param objectType The objectType to set to this User object.
+         * @param objectType hello objectType tooset toothis User object.
          */
         public void setObjectType(String objectType) {
             this.objectType = objectType;
         }
 
         /**
-         * @return The userPrincipalName of this user.
+         * @return hello userPrincipalName of this user.
          */
         public String getUserPrincipalName() {
             return userPrincipalName;
         }
 
         /**
-         * @param userPrincipalName The userPrincipalName to set to this User object.
+         * @param userPrincipalName hello userPrincipalName tooset toothis User object.
          */
         public void setUserPrincipalName(String userPrincipalName) {
             this.userPrincipalName = userPrincipalName;
         }
 
         /**
-         * @return The usageLocation of this user.
+         * @return hello usageLocation of this user.
          */
         public String getUsageLocation() {
             return usageLocation;
         }
 
         /**
-         * @param usageLocation The usageLocation to set to this User object.
+         * @param usageLocation hello usageLocation tooset toothis User object.
          */
         public void setUsageLocation(String usageLocation) {
             this.usageLocation = usageLocation;
         }
 
         /**
-         * @return The telephoneNumber of this user.
+         * @return hello telephoneNumber of this user.
          */
         public String getTelephoneNumber() {
             return telephoneNumber;
         }
 
         /**
-         * @param telephoneNumber The telephoneNumber to set to this User object.
+         * @param telephoneNumber hello telephoneNumber tooset toothis User object.
          */
         public void setTelephoneNumber(String telephoneNumber) {
             this.telephoneNumber = telephoneNumber;
         }
 
         /**
-         * @return The surname of this user.
+         * @return hello surname of this user.
          */
         public String getSurname() {
             return surname;
         }
 
         /**
-         * @param surname The surname to set to this User object.
+         * @param surname hello surname tooset toothis User object.
          */
         public void setSurname(String surname) {
             this.surname = surname;
         }
 
         /**
-         * @return The streetAddress of this user.
+         * @return hello streetAddress of this user.
          */
         public String getStreetAddress() {
             return streetAddress;
         }
 
         /**
-         * @param streetAddress The streetAddress to set to this user.
+         * @param streetAddress hello streetAddress tooset toothis user.
          */
         public void setStreetAddress(String streetAddress) {
             this.streetAddress = streetAddress;
         }
 
         /**
-         * @return The state of this user.
+         * @return hello state of this user.
          */
         public String getState() {
             return state;
         }
 
         /**
-         * @param state The state to set to this User object.
+         * @param state hello state tooset toothis User object.
          */
         public void setState(String state) {
             this.state = state;
         }
 
         /**
-         * @return The preferredLanguage of this user.
+         * @return hello preferredLanguage of this user.
          */
         public String getPreferredLanguage() {
             return preferredLanguage;
         }
 
         /**
-         * @param preferredLanguage The preferredLanguage to set to this user.
+         * @param preferredLanguage hello preferredLanguage tooset toothis user.
          */
         public void setPreferredLanguage(String preferredLanguage) {
             this.preferredLanguage = preferredLanguage;
         }
 
         /**
-         * @return The postalCode of this user.
+         * @return hello postalCode of this user.
          */
         public String getPostalCode() {
             return postalCode;
         }
 
         /**
-         * @param postalCode The postalCode to set to this user.
+         * @param postalCode hello postalCode tooset toothis user.
          */
         public void setPostalCode(String postalCode) {
             this.postalCode = postalCode;
         }
 
         /**
-         * @return The physicalDeliveryOfficeName of this user.
+         * @return hello physicalDeliveryOfficeName of this user.
          */
         public String getPhysicalDeliveryOfficeName() {
             return physicalDeliveryOfficeName;
         }
 
         /**
-         * @param physicalDeliveryOfficeName The physicalDeliveryOfficeName to set to this User object.
+         * @param physicalDeliveryOfficeName hello physicalDeliveryOfficeName tooset toothis User object.
          */
         public void setPhysicalDeliveryOfficeName(String physicalDeliveryOfficeName) {
             this.physicalDeliveryOfficeName = physicalDeliveryOfficeName;
         }
 
         /**
-         * @return The passwordPolicies of this user.
+         * @return hello passwordPolicies of this user.
          */
         public String getPasswordPolicies() {
             return passwordPolicies;
         }
 
         /**
-         * @param passwordPolicies The passwordPolicies to set to this User object.
+         * @param passwordPolicies hello passwordPolicies tooset toothis User object.
          */
         public void setPasswordPolicies(String passwordPolicies) {
             this.passwordPolicies = passwordPolicies;
         }
 
         /**
-         * @return The mobile of this user.
+         * @return hello mobile of this user.
          */
         public String getMobile() {
             return mobile;
         }
 
         /**
-         * @param mobile The mobile to set to this User object.
+         * @param mobile hello mobile tooset toothis User object.
          */
         public void setMobile(String mobile) {
             this.mobile = mobile;
         }
 
         /**
-         * @return The password of this user.
+         * @return hello password of this user.
          */
         public String getPassword() {
             return password;
         }
 
         /**
-         * @param password The mobile to set to this User object.
+         * @param password hello mobile tooset toothis User object.
          */
         public void setPassword(String password) {
             this.password = password;
         }
 
         /**
-         * @return The mail of this user.
+         * @return hello mail of this user.
          */
         public String getMail() {
             return mail;
         }
 
         /**
-         * @param mail The mail to set to this User object.
+         * @param mail hello mail tooset toothis User object.
          */
         public void setMail(String mail) {
             this.mail = mail;
         }
 
         /**
-         * @return The MailNickname of this user.
+         * @return hello MailNickname of this user.
          */
         public String getMailNickname() {
             return mailNickname;
         }
 
         /**
-         * @param mail The MailNickname to set to this User object.
+         * @param mail hello MailNickname tooset toothis User object.
          */
         public void setMailNickname(String mailNickname) {
             this.mailNickname = mailNickname;
         }
 
         /**
-         * @return The jobTitle of this user.
+         * @return hello jobTitle of this user.
          */
         public String getJobTitle() {
             return jobTitle;
         }
 
         /**
-         * @param jobTitle The jobTitle to set to this User object.
+         * @param jobTitle hello jobTitle tooset toothis User object.
          */
         public void setJobTitle(String jobTitle) {
             this.jobTitle = jobTitle;
         }
 
         /**
-         * @return The givenName of this user.
+         * @return hello givenName of this user.
          */
         public String getGivenName() {
             return givenName;
         }
 
         /**
-         * @param givenName The givenName to set to this User object.
+         * @param givenName hello givenName tooset toothis User object.
          */
         public void setGivenName(String givenName) {
             this.givenName = givenName;
         }
 
         /**
-         * @return The facsimileTelephoneNumber of this user.
+         * @return hello facsimileTelephoneNumber of this user.
          */
         public String getFacsimileTelephoneNumber() {
             return facsimileTelephoneNumber;
         }
 
         /**
-         * @param facsimileTelephoneNumber The facsimileTelephoneNumber to set to this User object.
+         * @param facsimileTelephoneNumber hello facsimileTelephoneNumber tooset toothis User object.
          */
         public void setFacsimileTelephoneNumber(String facsimileTelephoneNumber) {
             this.facsimileTelephoneNumber = facsimileTelephoneNumber;
         }
 
         /**
-         * @return The displayName of this user.
+         * @return hello displayName of this user.
          */
         public String getDisplayName() {
             return displayName;
         }
 
         /**
-         * @param displayName The displayName to set to this User object.
+         * @param displayName hello displayName tooset toothis User object.
          */
         public void setDisplayName(String displayName) {
             this.displayName = displayName;
         }
 
         /**
-         * @return The dirSyncEnabled of this user.
+         * @return hello dirSyncEnabled of this user.
          */
         public String getDirSyncEnabled() {
             return dirSyncEnabled;
         }
 
         /**
-         * @param dirSyncEnabled The dirSyncEnabled to set to this User object.
+         * @param dirSyncEnabled hello dirSyncEnabled tooset toothis User object.
          */
         public void setDirSyncEnabled(String dirSyncEnabled) {
             this.dirSyncEnabled = dirSyncEnabled;
         }
 
         /**
-         * @return The department of this user.
+         * @return hello department of this user.
          */
         public String getDepartment() {
             return department;
         }
 
         /**
-         * @param department The department to set to this User object.
+         * @param department hello department tooset toothis User object.
          */
         public void setDepartment(String department) {
             this.department = department;
         }
 
         /**
-         * @return The lastDirSyncTime of this user.
+         * @return hello lastDirSyncTime of this user.
          */
         public String getLastDirSyncTime() {
             return lastDirSyncTime;
         }
 
         /**
-         * @param lastDirSyncTime The lastDirSyncTime to set to this User object.
+         * @param lastDirSyncTime hello lastDirSyncTime tooset toothis User object.
          */
         public void setLastDirSyncTime(String lastDirSyncTime) {
             this.lastDirSyncTime = lastDirSyncTime;
         }
 
         /**
-         * @return The country of this user.
+         * @return hello country of this user.
          */
         public String getCountry() {
             return country;
         }
 
         /**
-         * @param country The country to set to this user.
+         * @param country hello country tooset toothis user.
          */
         public void setCountry(String country) {
             this.country = country;
         }
 
         /**
-         * @return The city of this user.
+         * @return hello city of this user.
          */
         public String getCity() {
             return city;
         }
 
         /**
-         * @param city The city to set to this user.
+         * @param city hello city tooset toothis user.
          */
         public void setCity(String city) {
             this.city = city;
         }
 
         /**
-         * @return The accountEnabled attribute of this user.
+         * @return hello accountEnabled attribute of this user.
          */
         public String getAccountEnabled() {
             return accountEnabled;
         }
 
         /**
-         * @param accountEnabled The accountEnabled to set to this user.
+         * @param accountEnabled hello accountEnabled tooset toothis user.
          */
         public void setAccountEnabled(String accountEnabled) {
             this.accountEnabled = accountEnabled;
@@ -1256,9 +1256,9 @@ ms.lasthandoff: 08/03/2017
     }
 
     /**
-    * The DirectReports class holds the essential data for a single DirectReport entry. That is,
-    * it holds the displayName and the objectId of the direct entry. It also provides the
-    * access methods to set or get the displayName and the ObjectId of this entry.
+    * hello DirectReports class holds hello essential data for a single DirectReport entry. That is,
+    * it holds hello displayName and hello objectId of hello direct entry. It also provides the
+    * access methods tooset or get hello displayName and hello ObjectId of this entry.
     */
     //class DirectReport extends User{
     //
@@ -1266,7 +1266,7 @@ ms.lasthandoff: 08/03/2017
     //    private String objectId;
     //     
     //    /**
-    //     * Two arguments Constructor for the DirectReport class.
+    //     * Two arguments Constructor for hello DirectReport class.
     //     * @param displayName
     //     * @param objectId
     //     */
@@ -1276,7 +1276,7 @@ ms.lasthandoff: 08/03/2017
     //    }
     //
     //    /**
-    //     * @return The displayName of this direct report entry.
+    //     * @return hello displayName of this direct report entry.
     //     */
     //    public String getDisplayName() {
     //        return displayName;
@@ -1284,7 +1284,7 @@ ms.lasthandoff: 08/03/2017
     //
     //    
     //    /**
-    //     *  @return The objectId of this direct report entry.
+    //     *  @return hello objectId of this direct report entry.
     //     */
     //    public String getObjectId() {
     //        return objectId;
@@ -1294,16 +1294,16 @@ ms.lasthandoff: 08/03/2017
 
     ```
 
-## <a name="step-7-create-the-authentication-model-and-controller-files-for-basicfilter"></a><span data-ttu-id="949b1-188">Steg 7: Skapa autentiseringen modellen och controller filer (för BasicFilter)</span><span class="sxs-lookup"><span data-stu-id="949b1-188">Step 7: Create the authentication model and controller files (for BasicFilter)</span></span>
-<span data-ttu-id="949b1-189">Vi bekräftar att Java kan utförlig, men du är nästan klar.</span><span class="sxs-lookup"><span data-stu-id="949b1-189">We acknowledge that Java can be verbose, but you're almost done.</span></span> <span data-ttu-id="949b1-190">Innan du skriver BasicFilter servlet för att hantera begäranden som du behöver skriva vissa mer helper-filer som behöver ADAL4J.</span><span class="sxs-lookup"><span data-stu-id="949b1-190">Before you write the BasicFilter servlet to handle the requests, you need to write some more helper files that the ADAL4J needs.</span></span>
+## <a name="step-7-create-hello-authentication-model-and-controller-files-for-basicfilter"></a><span data-ttu-id="ca302-188">Steg 7: Skapa hello autentisering modellen och controller filer (för BasicFilter)</span><span class="sxs-lookup"><span data-stu-id="ca302-188">Step 7: Create hello authentication model and controller files (for BasicFilter)</span></span>
+<span data-ttu-id="ca302-189">Vi bekräftar att Java kan utförlig, men du är nästan klar.</span><span class="sxs-lookup"><span data-stu-id="ca302-189">We acknowledge that Java can be verbose, but you're almost done.</span></span> <span data-ttu-id="ca302-190">Innan du skriver hello BasicFilter servlet toohandle hello begäranden måste toowrite vissa mer helper filer som hello ADAL4J måste.</span><span class="sxs-lookup"><span data-stu-id="ca302-190">Before you write hello BasicFilter servlet toohandle hello requests, you need toowrite some more helper files that hello ADAL4J needs.</span></span>
 
-1. <span data-ttu-id="949b1-191">Skapa en fil med namnet AuthHelper.java, vilket ger metoder för att avgöra tillståndet för den inloggade användaren.</span><span class="sxs-lookup"><span data-stu-id="949b1-191">Create a file called AuthHelper.java, which will give you methods to use to determine the state of the signed-in user.</span></span> <span data-ttu-id="949b1-192">Metoderna är:</span><span class="sxs-lookup"><span data-stu-id="949b1-192">The methods include:</span></span>
+1. <span data-ttu-id="ca302-191">Skapa en fil med namnet AuthHelper.java, vilket ger du metoder toouse toodetermine hello tillståndet för hello inloggad användare.</span><span class="sxs-lookup"><span data-stu-id="ca302-191">Create a file called AuthHelper.java, which will give you methods toouse toodetermine hello state of hello signed-in user.</span></span> <span data-ttu-id="ca302-192">hello metoderna är:</span><span class="sxs-lookup"><span data-stu-id="ca302-192">hello methods include:</span></span>
 
- * <span data-ttu-id="949b1-193">**isAuthenticated()**: returnerar om användaren är inloggad.</span><span class="sxs-lookup"><span data-stu-id="949b1-193">**isAuthenticated()**: Returns whether the user is signed in.</span></span>
- * <span data-ttu-id="949b1-194">**containsAuthenticationData()**: returnerar om token har data.</span><span class="sxs-lookup"><span data-stu-id="949b1-194">**containsAuthenticationData()**: Returns whether the token has data.</span></span>
- * <span data-ttu-id="949b1-195">**isAuthenticationSuccessful()**: returnerar om autentiseringen lyckades för användaren.</span><span class="sxs-lookup"><span data-stu-id="949b1-195">**isAuthenticationSuccessful()**: Returns whether the authentication was successful for the user.</span></span>
+ * <span data-ttu-id="ca302-193">**isAuthenticated()**: returnerar om hello användare är inloggad.</span><span class="sxs-lookup"><span data-stu-id="ca302-193">**isAuthenticated()**: Returns whether hello user is signed in.</span></span>
+ * <span data-ttu-id="ca302-194">**containsAuthenticationData()**: returnerar om hello token innehåller data.</span><span class="sxs-lookup"><span data-stu-id="ca302-194">**containsAuthenticationData()**: Returns whether hello token has data.</span></span>
+ * <span data-ttu-id="ca302-195">**isAuthenticationSuccessful()**: returnerar om hello autentiseringen lyckades för hello användare.</span><span class="sxs-lookup"><span data-stu-id="ca302-195">**isAuthenticationSuccessful()**: Returns whether hello authentication was successful for hello user.</span></span>
 
- <span data-ttu-id="949b1-196">Klistra in följande kod för att skapa filen AuthHelper.java:</span><span class="sxs-lookup"><span data-stu-id="949b1-196">To create the AuthHelper.java file, paste the following code:</span></span>
+ <span data-ttu-id="ca302-196">toocreate Hej AuthHelper.java fil, klistra in följande kod hello:</span><span class="sxs-lookup"><span data-stu-id="ca302-196">toocreate hello AuthHelper.java file, paste hello following code:</span></span>
 
     ```Java
     package com.microsoft.aad.adal4jsample;
@@ -1351,7 +1351,7 @@ ms.lasthandoff: 08/03/2017
     }
     ```
 
-2. <span data-ttu-id="949b1-197">Skapa en fil med namnet AuthParameterNames.java som ger dig vissa ändras variabler som kräver att ADAL4J.</span><span class="sxs-lookup"><span data-stu-id="949b1-197">Create a file called AuthParameterNames.java, which gives you some immutable variables that the ADAL4J requires.</span></span> <span data-ttu-id="949b1-198">Klistra in följande kod för att skapa filen:</span><span class="sxs-lookup"><span data-stu-id="949b1-198">To create the file, paste the following code:</span></span>
+2. <span data-ttu-id="ca302-197">Skapa en fil med namnet AuthParameterNames.java som ger dig vissa ändras variabler som hello ADAL4J kräver.</span><span class="sxs-lookup"><span data-stu-id="ca302-197">Create a file called AuthParameterNames.java, which gives you some immutable variables that hello ADAL4J requires.</span></span> <span data-ttu-id="ca302-198">toocreate hello fil, klistra in hello följande kod:</span><span class="sxs-lookup"><span data-stu-id="ca302-198">toocreate hello file, paste hello following code:</span></span>
 
     ```Java
     package com.microsoft.aad.adal4jsample;
@@ -1369,7 +1369,7 @@ ms.lasthandoff: 08/03/2017
     }
     ```
 
-3. <span data-ttu-id="949b1-199">Skapa en fil med namnet AadController.java som är domänkontrollanten för MVC-mönster.</span><span class="sxs-lookup"><span data-stu-id="949b1-199">Create a file called AadController.java, which is the controller of your MVC pattern.</span></span> <span data-ttu-id="949b1-200">Filen får du JSP-styrenhet och visar secure/aad URL-slutpunkt för appen.</span><span class="sxs-lookup"><span data-stu-id="949b1-200">The file gives you the JSP controller and exposes the secure/aad URL endpoint for the app.</span></span> <span data-ttu-id="949b1-201">Filen innehåller också graph-frågan.</span><span class="sxs-lookup"><span data-stu-id="949b1-201">The file also includes the graph query.</span></span> <span data-ttu-id="949b1-202">Klistra in följande kod för att skapa filen:</span><span class="sxs-lookup"><span data-stu-id="949b1-202">To create the file, paste the following code:</span></span>
+3. <span data-ttu-id="ca302-199">Skapa en fil med namnet AadController.java, vilket är hello styrenhet för MVC-mönster.</span><span class="sxs-lookup"><span data-stu-id="ca302-199">Create a file called AadController.java, which is hello controller of your MVC pattern.</span></span> <span data-ttu-id="ca302-200">hello fil ger dig hello JSP-styrenhet och visar hello secure/aad URL-slutpunkt för hello app.</span><span class="sxs-lookup"><span data-stu-id="ca302-200">hello file gives you hello JSP controller and exposes hello secure/aad URL endpoint for hello app.</span></span> <span data-ttu-id="ca302-201">hello-filen innehåller också hello graph-fråga.</span><span class="sxs-lookup"><span data-stu-id="ca302-201">hello file also includes hello graph query.</span></span> <span data-ttu-id="ca302-202">toocreate hello fil, klistra in hello följande kod:</span><span class="sxs-lookup"><span data-stu-id="ca302-202">toocreate hello file, paste hello following code:</span></span>
 
     ```Java
     package com.microsoft.aad.adal4jsample;
@@ -1419,7 +1419,7 @@ ms.lasthandoff: 08/03/2017
                     accessToken));
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            // Set the appropriate header fields in the request header.
+            // Set hello appropriate header fields in hello request header.
             conn.setRequestProperty("api-version", "2013-04-05");
             conn.setRequestProperty("Authorization", accessToken);
             conn.setRequestProperty("Accept", "application/json;odata=minimalmetadata");
@@ -1446,8 +1446,8 @@ ms.lasthandoff: 08/03/2017
 
     ```
 
-## <a name="step-8-create-the-basicfilter-file-for-basicfilter-mvc"></a><span data-ttu-id="949b1-203">Steg 8: Skapa filen BasicFilter (för BasicFilter MVC)</span><span class="sxs-lookup"><span data-stu-id="949b1-203">Step 8: Create the BasicFilter file (for BasicFilter MVC)</span></span>
-<span data-ttu-id="949b1-204">Du kan nu skapa filen BasicFilter.java som hanterar förfrågningar från vyn JSP-filer.</span><span class="sxs-lookup"><span data-stu-id="949b1-204">You can now create the BasicFilter.java file, which handles the requests from the JSP View files.</span></span> <span data-ttu-id="949b1-205">Klistra in följande kod för att skapa filen:</span><span class="sxs-lookup"><span data-stu-id="949b1-205">To create the file, paste the following code:</span></span>
+## <a name="step-8-create-hello-basicfilter-file-for-basicfilter-mvc"></a><span data-ttu-id="ca302-203">Steg 8: Skapa hello BasicFilter fil (för BasicFilter MVC)</span><span class="sxs-lookup"><span data-stu-id="ca302-203">Step 8: Create hello BasicFilter file (for BasicFilter MVC)</span></span>
+<span data-ttu-id="ca302-204">Du kan nu skapa hello BasicFilter.java fil, som hanterar hello förfrågningar från hello JSP visa filer.</span><span class="sxs-lookup"><span data-stu-id="ca302-204">You can now create hello BasicFilter.java file, which handles hello requests from hello JSP View files.</span></span> <span data-ttu-id="ca302-205">toocreate hello fil, klistra in hello följande kod:</span><span class="sxs-lookup"><span data-stu-id="ca302-205">toocreate hello file, paste hello following code:</span></span>
 
 ```Java
 
@@ -1549,7 +1549,7 @@ public class BasicFilter implements Filter {
                             return;
                     }
                 } else {
-                    // if authenticated, how to check for valid session?
+                    // if authenticated, how toocheck for valid session?
                     AuthenticationResult result = AuthHelper
                             .getAuthSessionObject(httpRequest);
 
@@ -1690,35 +1690,35 @@ public class BasicFilter implements Filter {
 
 ```
 
-<span data-ttu-id="949b1-206">Den här servlet visar de metoder som ADAL4J förväntas från appen körs.</span><span class="sxs-lookup"><span data-stu-id="949b1-206">This servlet exposes all the methods that the ADAL4J will expect from the app to run.</span></span> <span data-ttu-id="949b1-207">Metoderna är:</span><span class="sxs-lookup"><span data-stu-id="949b1-207">The methods include:</span></span>
+<span data-ttu-id="ca302-206">Den här servlet visar alla hello-metoder som hello ADAL4J förväntar sig från hello app toorun.</span><span class="sxs-lookup"><span data-stu-id="ca302-206">This servlet exposes all hello methods that hello ADAL4J will expect from hello app toorun.</span></span> <span data-ttu-id="ca302-207">hello metoderna är:</span><span class="sxs-lookup"><span data-stu-id="ca302-207">hello methods include:</span></span>
 
-* <span data-ttu-id="949b1-208">**getAccessTokenFromClientCredentials()**: hämtar åtkomst-token från det hemliga värdet.</span><span class="sxs-lookup"><span data-stu-id="949b1-208">**getAccessTokenFromClientCredentials()**: Gets the access token from the secret.</span></span>
-* <span data-ttu-id="949b1-209">**getAccessTokenFromRefreshToken()**: hämtar åtkomst-token från en uppdateringstoken.</span><span class="sxs-lookup"><span data-stu-id="949b1-209">**getAccessTokenFromRefreshToken()**: Gets the access token from a refresh token.</span></span>
-* <span data-ttu-id="949b1-210">**getAccessToken()**: hämtar åtkomst-token från en OpenID Connect-flöde (som du använder).</span><span class="sxs-lookup"><span data-stu-id="949b1-210">**getAccessToken()**: Gets the access token from an OpenID Connect flow (which you use).</span></span>
-* <span data-ttu-id="949b1-211">**createSessionPrincipal()**: skapar ett huvudnamn för session ska använda för Graph API-åtkomst.</span><span class="sxs-lookup"><span data-stu-id="949b1-211">**createSessionPrincipal()**: Creates a session principal to use for Graph API access.</span></span>
-* <span data-ttu-id="949b1-212">**getRedirectUrl()**: hämtar RedirectUrl anges att jämföra det med värdet som du angav på portalen.</span><span class="sxs-lookup"><span data-stu-id="949b1-212">**getRedirectUrl()**: Gets the redirectURL to compare it with the value you entered in the portal.</span></span>
+* <span data-ttu-id="ca302-208">**getAccessTokenFromClientCredentials()**: hämtar hello åtkomst-token från hello hemlighet.</span><span class="sxs-lookup"><span data-stu-id="ca302-208">**getAccessTokenFromClientCredentials()**: Gets hello access token from hello secret.</span></span>
+* <span data-ttu-id="ca302-209">**getAccessTokenFromRefreshToken()**: hämtar hello åtkomst-token från en uppdateringstoken.</span><span class="sxs-lookup"><span data-stu-id="ca302-209">**getAccessTokenFromRefreshToken()**: Gets hello access token from a refresh token.</span></span>
+* <span data-ttu-id="ca302-210">**getAccessToken()**: hämtar hello åtkomst-token från en OpenID Connect-flöde (som du använder).</span><span class="sxs-lookup"><span data-stu-id="ca302-210">**getAccessToken()**: Gets hello access token from an OpenID Connect flow (which you use).</span></span>
+* <span data-ttu-id="ca302-211">**createSessionPrincipal()**: skapar en session huvudsakliga toouse för Graph API-åtkomst.</span><span class="sxs-lookup"><span data-stu-id="ca302-211">**createSessionPrincipal()**: Creates a session principal toouse for Graph API access.</span></span>
+* <span data-ttu-id="ca302-212">**getRedirectUrl()**: hämtar hello RedirectUrl anges toocompare med hello värde som du angav i hello-portalen.</span><span class="sxs-lookup"><span data-stu-id="ca302-212">**getRedirectUrl()**: Gets hello redirectURL toocompare it with hello value you entered in hello portal.</span></span>
 
-## <a name="step-9-compile-and-run-the-sample-in-tomcat"></a><span data-ttu-id="949b1-213">Steg 9: Kompilera och köra exemplet i Tomcat</span><span class="sxs-lookup"><span data-stu-id="949b1-213">Step 9: Compile and run the sample in Tomcat</span></span>
+## <a name="step-9-compile-and-run-hello-sample-in-tomcat"></a><span data-ttu-id="ca302-213">Steg 9: Kompilera och köra hello exemplet i Tomcat</span><span class="sxs-lookup"><span data-stu-id="ca302-213">Step 9: Compile and run hello sample in Tomcat</span></span>
 
-1. <span data-ttu-id="949b1-214">Ändra till rotkatalogen.</span><span class="sxs-lookup"><span data-stu-id="949b1-214">Change to your root directory.</span></span>
-2. <span data-ttu-id="949b1-215">Att bygga exemplet du bara sätta ihop med hjälp av `maven`, kör du följande kommando:</span><span class="sxs-lookup"><span data-stu-id="949b1-215">To build the sample you just put together by using `maven`, run the following command:</span></span>
+1. <span data-ttu-id="ca302-214">Ändra tooyour rotkatalog.</span><span class="sxs-lookup"><span data-stu-id="ca302-214">Change tooyour root directory.</span></span>
+2. <span data-ttu-id="ca302-215">toobuild hello exempel du bara flytta tillsammans med `maven`kör hello följande kommando:</span><span class="sxs-lookup"><span data-stu-id="ca302-215">toobuild hello sample you just put together by using `maven`, run hello following command:</span></span>
 
     `$ mvn package`
 
- <span data-ttu-id="949b1-216">Detta kommando använder filen pom.xml som du skrev för beroenden.</span><span class="sxs-lookup"><span data-stu-id="949b1-216">This command uses the pom.xml file that you wrote for dependencies.</span></span>
+ <span data-ttu-id="ca302-216">Detta kommando använder hello pom.xml fil som du skrev för beroenden.</span><span class="sxs-lookup"><span data-stu-id="ca302-216">This command uses hello pom.xml file that you wrote for dependencies.</span></span>
 
-<span data-ttu-id="949b1-217">Du bör nu ha en adal4jsample.war-fil i katalogen /targets.</span><span class="sxs-lookup"><span data-stu-id="949b1-217">You should now have a adal4jsample.war file in your /targets directory.</span></span> <span data-ttu-id="949b1-218">Du kan distribuera filen i Tomcat-behållaren och besök http://localhost: 8080/adal4jsample-URL.</span><span class="sxs-lookup"><span data-stu-id="949b1-218">You can deploy the file in your Tomcat container and visit the http://localhost:8080/adal4jsample/ URL.</span></span>
+<span data-ttu-id="ca302-217">Du bör nu ha en adal4jsample.war-fil i katalogen /targets.</span><span class="sxs-lookup"><span data-stu-id="ca302-217">You should now have a adal4jsample.war file in your /targets directory.</span></span> <span data-ttu-id="ca302-218">Du kan distribuera hello-filen i Tomcat-behållaren och besök hello http://localhost: 8080/adal4jsample-URL.</span><span class="sxs-lookup"><span data-stu-id="ca302-218">You can deploy hello file in your Tomcat container and visit hello http://localhost:8080/adal4jsample/ URL.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="949b1-219">Du kan enkelt distribuera en .war-fil med de senaste Tomcat-servrarna.</span><span class="sxs-lookup"><span data-stu-id="949b1-219">You can easily deploy a .war file with the latest Tomcat servers.</span></span> <span data-ttu-id="949b1-220">Gå till http://localhost: 8080/manager/och följ instruktionerna för att överföra filen adal4jsample.war.</span><span class="sxs-lookup"><span data-stu-id="949b1-220">Go to http://localhost:8080/manager/, and follow the instructions for uploading the adal4jsample.war file.</span></span> <span data-ttu-id="949b1-221">Det kommer autodeploy du med korrekt slutpunkt.</span><span class="sxs-lookup"><span data-stu-id="949b1-221">It will autodeploy for you with the correct endpoint.</span></span>
+> <span data-ttu-id="ca302-219">Du kan enkelt distribuera en .war-fil med hello senaste Tomcat-servrarna.</span><span class="sxs-lookup"><span data-stu-id="ca302-219">You can easily deploy a .war file with hello latest Tomcat servers.</span></span> <span data-ttu-id="ca302-220">Gå toohttp://localhost:8080/manager/och följ hello instruktioner för att ladda upp hello adal4jsample.war-fil.</span><span class="sxs-lookup"><span data-stu-id="ca302-220">Go toohttp://localhost:8080/manager/, and follow hello instructions for uploading hello adal4jsample.war file.</span></span> <span data-ttu-id="ca302-221">Det kommer autodeploy du med hello korrekt slutpunkt.</span><span class="sxs-lookup"><span data-stu-id="ca302-221">It will autodeploy for you with hello correct endpoint.</span></span>
 
 
-## <a name="next-steps"></a><span data-ttu-id="949b1-222">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="949b1-222">Next steps</span></span>
-<span data-ttu-id="949b1-223">Nu har du en fungerande Java-app som kan autentisera användare, på ett säkert sätt anropa webb-API: er med hjälp av OAuth 2.0 och få grundläggande information om användarna.</span><span class="sxs-lookup"><span data-stu-id="949b1-223">You now have a working Java app that can authenticate users, securely call web APIs using OAuth 2.0, and get basic information about the users.</span></span> <span data-ttu-id="949b1-224">Om du inte redan har fyllts i din klient med användare, nu är ett bra tillfälle att göra detta.</span><span class="sxs-lookup"><span data-stu-id="949b1-224">If you haven't already populated your tenant with users, now is a good time to do so.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ca302-222">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="ca302-222">Next steps</span></span>
+<span data-ttu-id="ca302-223">Nu har du en fungerande Java-app som kan autentisera användare på ett säkert sätt anropa webb-API: er med hjälp av OAuth 2.0 och få grundläggande information om hello användare.</span><span class="sxs-lookup"><span data-stu-id="ca302-223">You now have a working Java app that can authenticate users, securely call web APIs using OAuth 2.0, and get basic information about hello users.</span></span> <span data-ttu-id="ca302-224">Om du inte redan har fyllts i din klient med användare, nu är ett bra tillfälle toodo så.</span><span class="sxs-lookup"><span data-stu-id="ca302-224">If you haven't already populated your tenant with users, now is a good time toodo so.</span></span>
 
-<span data-ttu-id="949b1-225">Du kan hämta det slutförda exemplet (utan dina konfigurationsvärden) för ytterligare information finns i på två sätt:</span><span class="sxs-lookup"><span data-stu-id="949b1-225">For additional reference, you can get the completed sample (without your configuration values) in either of two ways:</span></span>
+<span data-ttu-id="ca302-225">Du kan få hello slutförts exemplet (utan dina konfigurationsvärden) för ytterligare information finns på två sätt:</span><span class="sxs-lookup"><span data-stu-id="ca302-225">For additional reference, you can get hello completed sample (without your configuration values) in either of two ways:</span></span>
 
-* <span data-ttu-id="949b1-226">Hämta det som en [ZIP-filen](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip).</span><span class="sxs-lookup"><span data-stu-id="949b1-226">Download it as a [.zip file](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip).</span></span>
-* <span data-ttu-id="949b1-227">Kopiera filen från GitHub genom att ange följande kommando:</span><span class="sxs-lookup"><span data-stu-id="949b1-227">Clone the file from GitHub by entering the following command:</span></span>
+* <span data-ttu-id="ca302-226">Hämta det som en [ZIP-filen](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip).</span><span class="sxs-lookup"><span data-stu-id="ca302-226">Download it as a [.zip file](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip).</span></span>
+* <span data-ttu-id="ca302-227">Klona hello-filen från GitHub genom att ange hello följande kommando:</span><span class="sxs-lookup"><span data-stu-id="ca302-227">Clone hello file from GitHub by entering hello following command:</span></span>
 
  ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```

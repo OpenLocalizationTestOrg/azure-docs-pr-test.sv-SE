@@ -8,7 +8,7 @@
 
 # Kom igång
 ## Klassisk Azure-portal
-### [Uppgift 1: Skapa den administrativa gruppen](active-directory-ds-getting-started-create-group.md)
+### [Uppgift 1: skapa hello administratörsgruppen](active-directory-ds-getting-started-create-group.md)
 ### [Uppgift 2: Skapa eller välj ett virtuellt nätverk](active-directory-ds-getting-started-vnet.md)
 ### [Uppgift 3: Aktivera Azure AD Domain Services](active-directory-ds-getting-started-enableaadds.md)
 ### [Uppgift 4: Uppdatera DNS-inställningar för virtuellt nätverk](active-directory-ds-getting-started-update-dns.md)
@@ -30,9 +30,9 @@
 ### [Administrera DNS på en hanterad domän](active-directory-ds-admin-guide-administer-dns.md)
 ### Konfigurera säker LDAP för en hanterad domän
 #### [Uppgift 1: Hämta ett certifikat för säkert LDAP](active-directory-ds-admin-guide-configure-secure-ldap.md)
-#### [Uppgift 2: Exportera certifikatet för säkert LDAP](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
-#### [Uppgift 3: Aktivera säkert LDAP för den hanterade domänen med den klassiska Azure-portalen](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
-#### [Uppgift 3: Aktivera säkert LDAP för den hanterade domänen med Azure Portal (förhandsversion)](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [Uppgift 2: exportera hello säker LDAP-certifikat](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
+#### [Uppgift 3: aktivera säker LDAP för hello hanterade domänen med klassiska Azure-portalen](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
+#### [Uppgift 3: aktivera säker LDAP för hello hanterade domänen med Azure-portalen (förhandsgranskning)](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
 ### [Skapa en OU på en hanterad domän](active-directory-ds-admin-guide-create-ou.md)
 ### [Administrera grupprincip i en hanterad domän](active-directory-ds-admin-guide-administer-group-policy.md)
@@ -44,7 +44,7 @@
 ## Felsöka
 ### [Vanliga frågor och svar](active-directory-ds-faqs.md)
 ### [Felsökningsguide](active-directory-ds-troubleshooting.md)
-### [Aktivera förhandsgranskningen av Azure Portal](active-directory-ds-azure-portal-enable-preview-access.md)
+### [Aktivera hello förhandsgranskning erfarenhet av Azure portal](active-directory-ds-azure-portal-enable-preview-access.md)
 ### [Lös felmatchade klientfel](active-directory-ds-mismatched-tenant-error.md)
 
 # Referens

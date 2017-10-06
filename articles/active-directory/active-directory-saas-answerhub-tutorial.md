@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med AnswerHub | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och AnswerHub."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och AnswerHub."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,254 +13,254 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 3a1c9cc5d7a2ebe28e9fb7e0e6ed8e3d393873ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 90b530da31abe7e6f18bfa2c5409f8ff1d4f1063
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a><span data-ttu-id="38088-103">Självstudier: Azure Active Directory-integrering med AnswerHub</span><span class="sxs-lookup"><span data-stu-id="38088-103">Tutorial: Azure Active Directory integration with AnswerHub</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a><span data-ttu-id="b0752-103">Självstudier: Azure Active Directory-integrering med AnswerHub</span><span class="sxs-lookup"><span data-stu-id="b0752-103">Tutorial: Azure Active Directory integration with AnswerHub</span></span>
 
-<span data-ttu-id="38088-104">I kursen får lära du att integrera AnswerHub med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="38088-104">In this tutorial, you learn how to integrate AnswerHub with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="b0752-104">I kursen får du lära dig hur toointegrate AnswerHub med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="b0752-104">In this tutorial, you learn how toointegrate AnswerHub with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="38088-105">Integrera AnswerHub med Azure AD ger dig följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="38088-105">Integrating AnswerHub with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="b0752-105">Integrera AnswerHub med Azure AD ger dig hello följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="b0752-105">Integrating AnswerHub with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="38088-106">Du kan styra i Azure AD som har åtkomst till AnswerHub</span><span class="sxs-lookup"><span data-stu-id="38088-106">You can control in Azure AD who has access to AnswerHub</span></span>
-- <span data-ttu-id="38088-107">Du kan aktivera användarna att automatiskt hämta loggat in på AnswerHub (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="38088-107">You can enable your users to automatically get signed-on to AnswerHub (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="38088-108">Du kan hantera dina konton i en central plats - Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="38088-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="b0752-106">Du kan styra i Azure AD som har åtkomst till tooAnswerHub</span><span class="sxs-lookup"><span data-stu-id="b0752-106">You can control in Azure AD who has access tooAnswerHub</span></span>
+- <span data-ttu-id="b0752-107">Du kan aktivera din användare tooautomatically get inloggade tooAnswerHub (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="b0752-107">You can enable your users tooautomatically get signed-on tooAnswerHub (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="b0752-108">Du kan hantera dina konton i en central plats - hello Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="b0752-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="38088-109">Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="38088-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="b0752-109">Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="b0752-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="38088-110">Krav</span><span class="sxs-lookup"><span data-stu-id="38088-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="b0752-110">Krav</span><span class="sxs-lookup"><span data-stu-id="b0752-110">Prerequisites</span></span>
 
-<span data-ttu-id="38088-111">För att konfigurera Azure AD-integrering med AnswerHub, behöver du följande:</span><span class="sxs-lookup"><span data-stu-id="38088-111">To configure Azure AD integration with AnswerHub, you need the following items:</span></span>
+<span data-ttu-id="b0752-111">tooconfigure Azure AD-integrering med AnswerHub, behöver du hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="b0752-111">tooconfigure Azure AD integration with AnswerHub, you need hello following items:</span></span>
 
-- <span data-ttu-id="38088-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="38088-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="38088-113">En AnswerHub enkel inloggning aktiverad prenumeration</span><span class="sxs-lookup"><span data-stu-id="38088-113">An AnswerHub single sign-on enabled subscription</span></span>
+- <span data-ttu-id="b0752-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="b0752-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="b0752-113">En AnswerHub enkel inloggning aktiverad prenumeration</span><span class="sxs-lookup"><span data-stu-id="b0752-113">An AnswerHub single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="38088-114">Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="38088-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="b0752-114">tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="b0752-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="38088-115">Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="38088-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="b0752-115">tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="b0752-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="38088-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="38088-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="38088-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="38088-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="b0752-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="b0752-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="b0752-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="b0752-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="38088-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="38088-118">Scenario description</span></span>
-<span data-ttu-id="38088-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="38088-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="38088-120">Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="38088-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="b0752-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="b0752-118">Scenario description</span></span>
+<span data-ttu-id="b0752-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="b0752-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="b0752-120">hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="b0752-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="38088-121">Att lägga till AnswerHub från galleriet</span><span class="sxs-lookup"><span data-stu-id="38088-121">Adding AnswerHub from the gallery</span></span>
-2. <span data-ttu-id="38088-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="38088-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="b0752-121">Att lägga till AnswerHub från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="b0752-121">Adding AnswerHub from hello gallery</span></span>
+2. <span data-ttu-id="b0752-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="b0752-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-answerhub-from-the-gallery"></a><span data-ttu-id="38088-123">Att lägga till AnswerHub från galleriet</span><span class="sxs-lookup"><span data-stu-id="38088-123">Adding AnswerHub from the gallery</span></span>
-<span data-ttu-id="38088-124">Du måste lägga till AnswerHub från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av AnswerHub i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="38088-124">To configure the integration of AnswerHub into Azure AD, you need to add AnswerHub from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-answerhub-from-hello-gallery"></a><span data-ttu-id="b0752-123">Att lägga till AnswerHub från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="b0752-123">Adding AnswerHub from hello gallery</span></span>
+<span data-ttu-id="b0752-124">tooconfigure hello integrering av AnswerHub i Azure AD, behöver du tooadd AnswerHub hello galleriet tooyour listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="b0752-124">tooconfigure hello integration of AnswerHub into Azure AD, you need tooadd AnswerHub from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="38088-125">**Utför följande steg för att lägga till AnswerHub från galleriet:**</span><span class="sxs-lookup"><span data-stu-id="38088-125">**To add AnswerHub from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="b0752-125">**tooadd AnswerHub från galleriet hello utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="b0752-125">**tooadd AnswerHub from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="38088-126">I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="38088-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="b0752-126">I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="b0752-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="38088-128">Gå till **företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="38088-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="38088-129">Gå till **alla program**.</span><span class="sxs-lookup"><span data-stu-id="38088-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="b0752-128">Navigera för**företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="b0752-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="b0752-129">Gå sedan för**alla program**.</span><span class="sxs-lookup"><span data-stu-id="b0752-129">Then go too**All applications**.</span></span>
 
     ![Program][2]
     
-3. <span data-ttu-id="38088-131">Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="38088-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="b0752-131">tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="b0752-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Program][3]
 
-4. <span data-ttu-id="38088-133">I sökrutan skriver **AnswerHub**.</span><span class="sxs-lookup"><span data-stu-id="38088-133">In the search box, type **AnswerHub**.</span></span>
+4. <span data-ttu-id="b0752-133">Skriv i sökrutan hello **AnswerHub**.</span><span class="sxs-lookup"><span data-stu-id="b0752-133">In hello search box, type **AnswerHub**.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_search.png)
 
-5. <span data-ttu-id="38088-135">Välj i resultatpanelen **AnswerHub**, och klicka sedan på **Lägg till** för att lägga till programmet.</span><span class="sxs-lookup"><span data-stu-id="38088-135">In the results panel, select **AnswerHub**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="b0752-135">Markera hello resultat på panelen **AnswerHub**, och klicka sedan på **Lägg till** knappen tooadd hello program.</span><span class="sxs-lookup"><span data-stu-id="b0752-135">In hello results panel, select **AnswerHub**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="38088-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="38088-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="38088-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med AnswerHub baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="38088-138">In this section, you configure and test Azure AD single sign-on with AnswerHub based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="b0752-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="b0752-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="b0752-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med AnswerHub baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="b0752-138">In this section, you configure and test Azure AD single sign-on with AnswerHub based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="38088-139">Azure AD måste du känna till användaren i AnswerHub motsvarighet till en användare i Azure AD för enkel inloggning ska fungera.</span><span class="sxs-lookup"><span data-stu-id="38088-139">For single sign-on to work, Azure AD needs to know what the counterpart user in AnswerHub is to a user in Azure AD.</span></span> <span data-ttu-id="38088-140">Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i AnswerHub upprättas.</span><span class="sxs-lookup"><span data-stu-id="38088-140">In other words, a link relationship between an Azure AD user and the related user in AnswerHub needs to be established.</span></span>
+<span data-ttu-id="b0752-139">För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i AnswerHub är tooa i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="b0752-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in AnswerHub is tooa user in Azure AD.</span></span> <span data-ttu-id="b0752-140">Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i AnswerHub toobe upprättas.</span><span class="sxs-lookup"><span data-stu-id="b0752-140">In other words, a link relationship between an Azure AD user and hello related user in AnswerHub needs toobe established.</span></span>
 
-<span data-ttu-id="38088-141">I AnswerHub, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.</span><span class="sxs-lookup"><span data-stu-id="38088-141">In AnswerHub, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="b0752-141">I AnswerHub, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.</span><span class="sxs-lookup"><span data-stu-id="b0752-141">In AnswerHub, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="38088-142">Om du vill konfigurera och testa Azure AD enkel inloggning med AnswerHub, måste du utföra följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="38088-142">To configure and test Azure AD single sign-on with AnswerHub, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="b0752-142">tooconfigure och testa Azure AD enkel inloggning med AnswerHub, behöver du toocomplete hello följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="b0752-142">tooconfigure and test Azure AD single sign-on with AnswerHub, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="38088-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="38088-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="38088-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="38088-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="38088-145">**[Skapa en testanvändare AnswerHub](#creating-an-answerhub-test-user)**  – du har en motsvarighet för Britta Simon i AnswerHub som är kopplad till Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="38088-145">**[Creating an AnswerHub test user](#creating-an-answerhub-test-user)** - to have a counterpart of Britta Simon in AnswerHub that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="38088-146">**[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="38088-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="38088-147">**[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="38088-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="b0752-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="b0752-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="b0752-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="b0752-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="b0752-145">**[Skapa en testanvändare AnswerHub](#creating-an-answerhub-test-user)**  -toohave en motsvarighet för Britta Simon i AnswerHub som är länkade toohello Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="b0752-145">**[Creating an AnswerHub test user](#creating-an-answerhub-test-user)** - toohave a counterpart of Britta Simon in AnswerHub that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="b0752-146">**[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="b0752-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="b0752-147">**[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="b0752-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="38088-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="38088-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="b0752-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="b0752-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="38088-149">I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt AnswerHub program.</span><span class="sxs-lookup"><span data-stu-id="38088-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your AnswerHub application.</span></span>
+<span data-ttu-id="b0752-149">I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt AnswerHub program.</span><span class="sxs-lookup"><span data-stu-id="b0752-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your AnswerHub application.</span></span>
 
-<span data-ttu-id="38088-150">**Utför följande steg för att konfigurera Azure AD enkel inloggning med AnswerHub:**</span><span class="sxs-lookup"><span data-stu-id="38088-150">**To configure Azure AD single sign-on with AnswerHub, perform the following steps:**</span></span>
+<span data-ttu-id="b0752-150">**Utför följande steg hello tooconfigure Azure AD enkel inloggning med AnswerHub:**</span><span class="sxs-lookup"><span data-stu-id="b0752-150">**tooconfigure Azure AD single sign-on with AnswerHub, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="38088-151">I Azure-portalen på den **AnswerHub** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="38088-151">In the Azure portal, on the **AnswerHub** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="b0752-151">I hello Azure-portalen på hello **AnswerHub** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="b0752-151">In hello Azure portal, on hello **AnswerHub** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurera enkel inloggning][4]
 
-2. <span data-ttu-id="38088-153">På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="38088-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="b0752-153">På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="b0752-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_samlbase.png)
 
-3. <span data-ttu-id="38088-155">På den **AnswerHub domän och URL: er** avsnittet, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="38088-155">On the **AnswerHub Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="b0752-155">På hello **AnswerHub domän och URL: er** avsnittet, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="b0752-155">On hello **AnswerHub Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_url.png)
 
-    <span data-ttu-id="38088-157">a.</span><span class="sxs-lookup"><span data-stu-id="38088-157">a.</span></span> <span data-ttu-id="38088-158">I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<company>.answerhub.com`</span><span class="sxs-lookup"><span data-stu-id="38088-158">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://<company>.answerhub.com`</span></span>
+    <span data-ttu-id="b0752-157">a.</span><span class="sxs-lookup"><span data-stu-id="b0752-157">a.</span></span> <span data-ttu-id="b0752-158">I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<company>.answerhub.com`</span><span class="sxs-lookup"><span data-stu-id="b0752-158">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://<company>.answerhub.com`</span></span>
 
-    <span data-ttu-id="38088-159">b.</span><span class="sxs-lookup"><span data-stu-id="38088-159">b.</span></span> <span data-ttu-id="38088-160">I den **identifierare** textruta Skriv en URL med följande mönster:`https://<company>.answerhub.com`</span><span class="sxs-lookup"><span data-stu-id="38088-160">In the **Identifier** textbox, type a URL using the following pattern: `https://<company>.answerhub.com`</span></span>
+    <span data-ttu-id="b0752-159">b.</span><span class="sxs-lookup"><span data-stu-id="b0752-159">b.</span></span> <span data-ttu-id="b0752-160">I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<company>.answerhub.com`</span><span class="sxs-lookup"><span data-stu-id="b0752-160">In hello **Identifier** textbox, type a URL using hello following pattern: `https://<company>.answerhub.com`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="38088-161">Dessa värden är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="38088-161">These values are not real.</span></span> <span data-ttu-id="38088-162">Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare.</span><span class="sxs-lookup"><span data-stu-id="38088-162">Update these values with the actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="38088-163">Kontakta [AnswerHub klienten supportteamet](mailto:success@answerhub.com) att hämta dessa värden.</span><span class="sxs-lookup"><span data-stu-id="38088-163">Contact [AnswerHub Client support team](mailto:success@answerhub.com) to get these values.</span></span> 
+    > <span data-ttu-id="b0752-161">Dessa värden är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="b0752-161">These values are not real.</span></span> <span data-ttu-id="b0752-162">Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare.</span><span class="sxs-lookup"><span data-stu-id="b0752-162">Update these values with hello actual Sign-On URL and Identifier.</span></span> <span data-ttu-id="b0752-163">Kontakta [AnswerHub klienten supportteamet](mailto:success@answerhub.com) tooget dessa värden.</span><span class="sxs-lookup"><span data-stu-id="b0752-163">Contact [AnswerHub Client support team](mailto:success@answerhub.com) tooget these values.</span></span> 
  
-4. <span data-ttu-id="38088-164">På den **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara certifikatfilen på datorn.</span><span class="sxs-lookup"><span data-stu-id="38088-164">On the **SAML Signing Certificate** section, click **Certificate(Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="b0752-164">På hello **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara sedan hello certifikat på datorn.</span><span class="sxs-lookup"><span data-stu-id="b0752-164">On hello **SAML Signing Certificate** section, click **Certificate(Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_certificate.png) 
 
-5. <span data-ttu-id="38088-166">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="38088-166">Click **Save** button.</span></span>
+5. <span data-ttu-id="b0752-166">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="b0752-166">Click **Save** button.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-answerhub-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="38088-168">På den **AnswerHub Configuration** klickar du på **konfigurera AnswerHub** att öppna **konfigurera inloggning** fönster.</span><span class="sxs-lookup"><span data-stu-id="38088-168">On the **AnswerHub Configuration** section, click **Configure AnswerHub** to open **Configure sign-on** window.</span></span> <span data-ttu-id="38088-169">Kopiera den **Sign-Out URL och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**</span><span class="sxs-lookup"><span data-stu-id="38088-169">Copy the **Sign-Out URL, and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="b0752-168">På hello **AnswerHub Configuration** klickar du på **konfigurera AnswerHub** tooopen **konfigurera inloggning** fönster.</span><span class="sxs-lookup"><span data-stu-id="b0752-168">On hello **AnswerHub Configuration** section, click **Configure AnswerHub** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="b0752-169">Kopiera hello **Sign-Out URL och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**</span><span class="sxs-lookup"><span data-stu-id="b0752-169">Copy hello **Sign-Out URL, and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_configure.png) 
 
-7. <span data-ttu-id="38088-171">Logga in på webbplatsen AnswerHub företag som en administratör i en annan webbläsarfönster.</span><span class="sxs-lookup"><span data-stu-id="38088-171">In a different web browser window, log into your AnswerHub company site as an administrator.</span></span>
+7. <span data-ttu-id="b0752-171">Logga in på webbplatsen AnswerHub företag som en administratör i en annan webbläsarfönster.</span><span class="sxs-lookup"><span data-stu-id="b0752-171">In a different web browser window, log into your AnswerHub company site as an administrator.</span></span>
    
     >[!NOTE]
-    ><span data-ttu-id="38088-172">Om du behöver hjälp med att konfigurera AnswerHub kontaktar [Answerhubs supportteamet](mailto:success@answerhub.com.).</span><span class="sxs-lookup"><span data-stu-id="38088-172">If you need help configuring AnswerHub, contact [AnswerHub's support team](mailto:success@answerhub.com.).</span></span>
+    ><span data-ttu-id="b0752-172">Om du behöver hjälp med att konfigurera AnswerHub kontaktar [Answerhubs supportteamet](mailto:success@answerhub.com.).</span><span class="sxs-lookup"><span data-stu-id="b0752-172">If you need help configuring AnswerHub, contact [AnswerHub's support team](mailto:success@answerhub.com.).</span></span>
    
-8. <span data-ttu-id="38088-173">Gå till **Administration**.</span><span class="sxs-lookup"><span data-stu-id="38088-173">Go to **Administration**.</span></span>
+8. <span data-ttu-id="b0752-173">Gå för**Administration**.</span><span class="sxs-lookup"><span data-stu-id="b0752-173">Go too**Administration**.</span></span>
 
-9. <span data-ttu-id="38088-174">Klicka på den **användar- och** fliken.</span><span class="sxs-lookup"><span data-stu-id="38088-174">Click the **User and Group** tab.</span></span>
+9. <span data-ttu-id="b0752-174">Klicka på hello **användar- och** fliken.</span><span class="sxs-lookup"><span data-stu-id="b0752-174">Click hello **User and Group** tab.</span></span>
 
-10. <span data-ttu-id="38088-175">I navigeringsfönstret till vänster i den **sociala inställningar** klickar du på **SAML installationsprogrammet**.</span><span class="sxs-lookup"><span data-stu-id="38088-175">In the navigation pane on the left side, in the **Social Settings** section, click **SAML Setup**.</span></span>
+10. <span data-ttu-id="b0752-175">I navigeringsfönstret för hello på vänster sida, i hello hello **sociala inställningar** klickar du på **SAML installationsprogrammet**.</span><span class="sxs-lookup"><span data-stu-id="b0752-175">In hello navigation pane on hello left side, in hello **Social Settings** section, click **SAML Setup**.</span></span>
 
-11. <span data-ttu-id="38088-176">Klicka på **IDP Config** fliken.</span><span class="sxs-lookup"><span data-stu-id="38088-176">Click **IDP Config** tab.</span></span>
+11. <span data-ttu-id="b0752-176">Klicka på **IDP Config** fliken.</span><span class="sxs-lookup"><span data-stu-id="b0752-176">Click **IDP Config** tab.</span></span>
 
-12. <span data-ttu-id="38088-177">På den **IDP Config** fliken, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="38088-177">On the **IDP Config** tab, perform the following steps:</span></span>
+12. <span data-ttu-id="b0752-177">På hello **IDP Config** fliken, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="b0752-177">On hello **IDP Config** tab, perform hello following steps:</span></span>
 
-     <span data-ttu-id="38088-178">![SAML-installationsprogrammet](./media/active-directory-saas-answerhub-tutorial/ic785172.png "SAML-installationen")</span><span class="sxs-lookup"><span data-stu-id="38088-178">![SAML Setup](./media/active-directory-saas-answerhub-tutorial/ic785172.png "SAML Setup")</span></span>  
+     <span data-ttu-id="b0752-178">![SAML-installationsprogrammet](./media/active-directory-saas-answerhub-tutorial/ic785172.png "SAML-installationen")</span><span class="sxs-lookup"><span data-stu-id="b0752-178">![SAML Setup](./media/active-directory-saas-answerhub-tutorial/ic785172.png "SAML Setup")</span></span>  
   
-     <span data-ttu-id="38088-179">a.</span><span class="sxs-lookup"><span data-stu-id="38088-179">a.</span></span> <span data-ttu-id="38088-180">I **IDP inloggnings-URL** textruta klistra in **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="38088-180">In **IDP Login URL** textbox, paste **SAML Single Sign-On Service URL** which you have copied from Azure portal.</span></span>
+     <span data-ttu-id="b0752-179">a.</span><span class="sxs-lookup"><span data-stu-id="b0752-179">a.</span></span> <span data-ttu-id="b0752-180">I **IDP inloggnings-URL** textruta klistra in **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="b0752-180">In **IDP Login URL** textbox, paste **SAML Single Sign-On Service URL** which you have copied from Azure portal.</span></span>
   
-     <span data-ttu-id="38088-181">b.</span><span class="sxs-lookup"><span data-stu-id="38088-181">b.</span></span> <span data-ttu-id="38088-182">I **IDP logga ut URL** textruta klistra in **Sign-Out URL** värde som du har kopierat från Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="38088-182">In **IDP Logout URL** textbox, paste **Sign-Out URL** value which you have copied from Azure portal.</span></span>
+     <span data-ttu-id="b0752-181">b.</span><span class="sxs-lookup"><span data-stu-id="b0752-181">b.</span></span> <span data-ttu-id="b0752-182">I **IDP logga ut URL** textruta klistra in **Sign-Out URL** värde som du har kopierat från Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="b0752-182">In **IDP Logout URL** textbox, paste **Sign-Out URL** value which you have copied from Azure portal.</span></span>
      
-     <span data-ttu-id="38088-183">c.</span><span class="sxs-lookup"><span data-stu-id="38088-183">c.</span></span> <span data-ttu-id="38088-184">I **IDP namnformat identifierare** textruta ange användaren identifierare värdet samma som väljs i Azure-portalen i **användarattribut** avsnitt.</span><span class="sxs-lookup"><span data-stu-id="38088-184">In **IDP Name Identifier Format** textbox, enter the user Identifier value same as selected in Azure portal in **User Attributes** section.</span></span>
+     <span data-ttu-id="b0752-183">c.</span><span class="sxs-lookup"><span data-stu-id="b0752-183">c.</span></span> <span data-ttu-id="b0752-184">I **IDP identifierare namnformat** textruta ange hello användare identifierare värdet samma som väljs i Azure-portalen i **användarattribut** avsnitt.</span><span class="sxs-lookup"><span data-stu-id="b0752-184">In **IDP Name Identifier Format** textbox, enter hello user Identifier value same as selected in Azure portal in **User Attributes** section.</span></span>
   
-     <span data-ttu-id="38088-185">d.</span><span class="sxs-lookup"><span data-stu-id="38088-185">d.</span></span> <span data-ttu-id="38088-186">Klicka på **nycklar och certifikat**.</span><span class="sxs-lookup"><span data-stu-id="38088-186">Click **Keys and Certificates**.</span></span>
+     <span data-ttu-id="b0752-185">d.</span><span class="sxs-lookup"><span data-stu-id="b0752-185">d.</span></span> <span data-ttu-id="b0752-186">Klicka på **nycklar och certifikat**.</span><span class="sxs-lookup"><span data-stu-id="b0752-186">Click **Keys and Certificates**.</span></span>
 
-13. <span data-ttu-id="38088-187">Utför följande steg på fliken nycklar och certifikat:</span><span class="sxs-lookup"><span data-stu-id="38088-187">On the Keys and Certificates tab, perform the following steps:</span></span>
+13. <span data-ttu-id="b0752-187">Utför följande steg hello hello nycklar och certifikat på fliken:</span><span class="sxs-lookup"><span data-stu-id="b0752-187">On hello Keys and Certificates tab, perform hello following steps:</span></span>
     
-     <span data-ttu-id="38088-188">![Nycklar och certifikat](./media/active-directory-saas-answerhub-tutorial/ic785173.png "nycklar och certifikat")</span><span class="sxs-lookup"><span data-stu-id="38088-188">![Keys and Certificates](./media/active-directory-saas-answerhub-tutorial/ic785173.png "Keys and Certificates")</span></span>  
+     <span data-ttu-id="b0752-188">![Nycklar och certifikat](./media/active-directory-saas-answerhub-tutorial/ic785173.png "nycklar och certifikat")</span><span class="sxs-lookup"><span data-stu-id="b0752-188">![Keys and Certificates](./media/active-directory-saas-answerhub-tutorial/ic785173.png "Keys and Certificates")</span></span>  
  
-     <span data-ttu-id="38088-189">a.</span><span class="sxs-lookup"><span data-stu-id="38088-189">a.</span></span> <span data-ttu-id="38088-190">Öppna din Base64-kodade certifikat som du har hämtat från Azure-portalen i anteckningar, kopiera innehållet i den till Urklipp och klistra in den till den **IDP offentlig nyckel (x 509-Format)** textruta.</span><span class="sxs-lookup"><span data-stu-id="38088-190">Open your base-64 encoded certificate which you have downloaded from Azure portal in notepad, copy the content of it into your clipboard, and then paste it to the **IDP Public Key (x509 Format)** textbox.</span></span>
+     <span data-ttu-id="b0752-189">a.</span><span class="sxs-lookup"><span data-stu-id="b0752-189">a.</span></span> <span data-ttu-id="b0752-190">Öppna din Base64-kodade certifikat som du har hämtat från Azure-portalen i anteckningar, kopiera hello innehållet i den i Urklipp, och klistra in den toohello **IDP offentlig nyckel (x 509-Format)** textruta.</span><span class="sxs-lookup"><span data-stu-id="b0752-190">Open your base-64 encoded certificate which you have downloaded from Azure portal in notepad, copy hello content of it into your clipboard, and then paste it toohello **IDP Public Key (x509 Format)** textbox.</span></span>
   
-     <span data-ttu-id="38088-191">b.</span><span class="sxs-lookup"><span data-stu-id="38088-191">b.</span></span> <span data-ttu-id="38088-192">Klicka på **Spara**.</span><span class="sxs-lookup"><span data-stu-id="38088-192">Click **Save**.</span></span>
+     <span data-ttu-id="b0752-191">b.</span><span class="sxs-lookup"><span data-stu-id="b0752-191">b.</span></span> <span data-ttu-id="b0752-192">Klicka på **Spara**.</span><span class="sxs-lookup"><span data-stu-id="b0752-192">Click **Save**.</span></span>
 
-14. <span data-ttu-id="38088-193">På den **IDP Config** klickar du på **spara**.</span><span class="sxs-lookup"><span data-stu-id="38088-193">On the **IDP Config** tab, click **Save**.</span></span>
+14. <span data-ttu-id="b0752-193">På hello **IDP Config** klickar du på **spara**.</span><span class="sxs-lookup"><span data-stu-id="b0752-193">On hello **IDP Config** tab, click **Save**.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="38088-194">Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!</span><span class="sxs-lookup"><span data-stu-id="38088-194">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="38088-195">När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned.</span><span class="sxs-lookup"><span data-stu-id="38088-195">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="38088-196">Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="38088-196">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="b0752-194">Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!</span><span class="sxs-lookup"><span data-stu-id="b0752-194">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="b0752-195">När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello.</span><span class="sxs-lookup"><span data-stu-id="b0752-195">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="b0752-196">Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="b0752-196">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="38088-197">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="38088-197">Creating an Azure AD test user</span></span>
-<span data-ttu-id="38088-198">Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="38088-198">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="b0752-197">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="b0752-197">Creating an Azure AD test user</span></span>
+<span data-ttu-id="b0752-198">hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="b0752-198">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Skapa Azure AD-användare][100]
 
-<span data-ttu-id="38088-200">**Utför följande steg för att skapa en testanvändare i Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="38088-200">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="b0752-200">**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="b0752-200">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="38088-201">I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="38088-201">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="b0752-201">I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="b0752-201">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-answerhub-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="38088-203">Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="38088-203">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="b0752-203">toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="b0752-203">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-answerhub-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="38088-205">Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="38088-205">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="b0752-205">tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="b0752-205">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-answerhub-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="38088-207">På den **användaren** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="38088-207">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="b0752-207">På hello **användaren** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="b0752-207">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-answerhub-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="38088-209">a.</span><span class="sxs-lookup"><span data-stu-id="38088-209">a.</span></span> <span data-ttu-id="38088-210">I den **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="38088-210">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="b0752-209">a.</span><span class="sxs-lookup"><span data-stu-id="b0752-209">a.</span></span> <span data-ttu-id="b0752-210">I hello **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="b0752-210">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="38088-211">b.</span><span class="sxs-lookup"><span data-stu-id="38088-211">b.</span></span> <span data-ttu-id="38088-212">I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="38088-212">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="b0752-211">b.</span><span class="sxs-lookup"><span data-stu-id="b0752-211">b.</span></span> <span data-ttu-id="b0752-212">I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="b0752-212">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="38088-213">c.</span><span class="sxs-lookup"><span data-stu-id="38088-213">c.</span></span> <span data-ttu-id="38088-214">Välj **visa lösenordet** och anteckna värdet för den **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="38088-214">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="b0752-213">c.</span><span class="sxs-lookup"><span data-stu-id="b0752-213">c.</span></span> <span data-ttu-id="b0752-214">Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="b0752-214">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="38088-215">d.</span><span class="sxs-lookup"><span data-stu-id="38088-215">d.</span></span> <span data-ttu-id="38088-216">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="38088-216">Click **Create**.</span></span>
+    <span data-ttu-id="b0752-215">d.</span><span class="sxs-lookup"><span data-stu-id="b0752-215">d.</span></span> <span data-ttu-id="b0752-216">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="b0752-216">Click **Create**.</span></span>
  
-### <a name="creating-an-answerhub-test-user"></a><span data-ttu-id="38088-217">Skapa en testanvändare AnswerHub</span><span class="sxs-lookup"><span data-stu-id="38088-217">Creating an AnswerHub test user</span></span>
+### <a name="creating-an-answerhub-test-user"></a><span data-ttu-id="b0752-217">Skapa en testanvändare AnswerHub</span><span class="sxs-lookup"><span data-stu-id="b0752-217">Creating an AnswerHub test user</span></span>
 
-<span data-ttu-id="38088-218">Om du vill aktivera Azure AD-användare kan logga in på AnswerHub etableras de i AnswerHub.</span><span class="sxs-lookup"><span data-stu-id="38088-218">To enable Azure AD users to log in to AnswerHub, they must be provisioned into AnswerHub.</span></span>  
-<span data-ttu-id="38088-219">När det gäller AnswerHub är etablering en manuell aktivitet.</span><span class="sxs-lookup"><span data-stu-id="38088-219">In the case of AnswerHub, provisioning is a manual task.</span></span>
+<span data-ttu-id="b0752-218">tooenable Azure AD-användare toolog i tooAnswerHub, måste de etableras i AnswerHub.</span><span class="sxs-lookup"><span data-stu-id="b0752-218">tooenable Azure AD users toolog in tooAnswerHub, they must be provisioned into AnswerHub.</span></span>  
+<span data-ttu-id="b0752-219">Hello gäller AnswerHub är etablering en manuell aktivitet.</span><span class="sxs-lookup"><span data-stu-id="b0752-219">In hello case of AnswerHub, provisioning is a manual task.</span></span>
 
-<span data-ttu-id="38088-220">**Utför följande steg om du vill konfigurera ett användarkonto:**</span><span class="sxs-lookup"><span data-stu-id="38088-220">**To provision a user account, perform the following steps:**</span></span>
+<span data-ttu-id="b0752-220">**tooprovision ett användarkonto, utför följande steg hello:**</span><span class="sxs-lookup"><span data-stu-id="b0752-220">**tooprovision a user account, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="38088-221">Logga in på ditt **AnswerHub** företagets webbplats som administratör.</span><span class="sxs-lookup"><span data-stu-id="38088-221">Log in to your **AnswerHub** company site as administrator.</span></span>
+1. <span data-ttu-id="b0752-221">Logga in tooyour **AnswerHub** företagets webbplats som administratör.</span><span class="sxs-lookup"><span data-stu-id="b0752-221">Log in tooyour **AnswerHub** company site as administrator.</span></span>
 
-2. <span data-ttu-id="38088-222">Gå till **Administration**.</span><span class="sxs-lookup"><span data-stu-id="38088-222">Go to **Administration**.</span></span>
+2. <span data-ttu-id="b0752-222">Gå för**Administration**.</span><span class="sxs-lookup"><span data-stu-id="b0752-222">Go too**Administration**.</span></span>
 
-3. <span data-ttu-id="38088-223">Klicka på den **användare och grupper** fliken.</span><span class="sxs-lookup"><span data-stu-id="38088-223">Click the **Users & Groups** tab.</span></span>
+3. <span data-ttu-id="b0752-223">Klicka på hello **användare och grupper** fliken.</span><span class="sxs-lookup"><span data-stu-id="b0752-223">Click hello **Users & Groups** tab.</span></span>
 
-4. <span data-ttu-id="38088-224">I navigeringsfönstret till vänster i den **hantera användare** klickar du på **skapa eller importera användare**.</span><span class="sxs-lookup"><span data-stu-id="38088-224">In the navigation pane on the left side, in the **Manage Users** section, click **Create or import users**.</span></span>
+4. <span data-ttu-id="b0752-224">I navigeringsfönstret för hello på vänster sida, i hello hello **hantera användare** klickar du på **skapa eller importera användare**.</span><span class="sxs-lookup"><span data-stu-id="b0752-224">In hello navigation pane on hello left side, in hello **Manage Users** section, click **Create or import users**.</span></span>
    
-   <span data-ttu-id="38088-225">![Användare och grupper](./media/active-directory-saas-answerhub-tutorial/ic785175.png "användare och grupper")</span><span class="sxs-lookup"><span data-stu-id="38088-225">![Users & Groups](./media/active-directory-saas-answerhub-tutorial/ic785175.png "Users & Groups")</span></span>
+   <span data-ttu-id="b0752-225">![Användare och grupper](./media/active-directory-saas-answerhub-tutorial/ic785175.png "användare och grupper")</span><span class="sxs-lookup"><span data-stu-id="b0752-225">![Users & Groups](./media/active-directory-saas-answerhub-tutorial/ic785175.png "Users & Groups")</span></span>
 
-5. <span data-ttu-id="38088-226">Typ av **e-postadress**, **användarnamn** och **lösenord** för ett giltigt Azure Active Directory-konto som du vill etablera i relaterade textrutor och klicka sedan på  **Spara**.</span><span class="sxs-lookup"><span data-stu-id="38088-226">Type the **Email address**, **Username** and **Password** of a valid Azure Active Directory account you want to provision into the related textboxes, and then click **Save**.</span></span>
+5. <span data-ttu-id="b0752-226">Typen hello **e-postadress**, **användarnamn** och **lösenord** av en giltig Azure Active Directory-konto som du vill använda tooprovision hello relaterade textrutor och klicka sedan på  **Spara**.</span><span class="sxs-lookup"><span data-stu-id="b0752-226">Type hello **Email address**, **Username** and **Password** of a valid Azure Active Directory account you want tooprovision into hello related textboxes, and then click **Save**.</span></span>
 
 >[!NOTE]
-><span data-ttu-id="38088-227">Du kan använda något annat AnswerHub användarens konto skapas verktyg eller API: er som tillhandahålls av AnswerHub att etablera AAD-användarkonton.</span><span class="sxs-lookup"><span data-stu-id="38088-227">You can use any other AnswerHub user account creation tools or APIs provided by AnswerHub to provision AAD user accounts.</span></span>
+><span data-ttu-id="b0752-227">Du kan använda något annat AnswerHub användarens konto skapas verktyg eller API: er som tillhandahålls av AnswerHub tooprovision AAD-användarkonton.</span><span class="sxs-lookup"><span data-stu-id="b0752-227">You can use any other AnswerHub user account creation tools or APIs provided by AnswerHub tooprovision AAD user accounts.</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="38088-228">Tilldela Azure AD-testanvändare</span><span class="sxs-lookup"><span data-stu-id="38088-228">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="b0752-228">Tilldela användare hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="b0752-228">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="38088-229">I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till AnswerHub.</span><span class="sxs-lookup"><span data-stu-id="38088-229">In this section, you enable Britta Simon to use Azure single sign-on by granting access to AnswerHub.</span></span>
+<span data-ttu-id="b0752-229">I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooAnswerHub.</span><span class="sxs-lookup"><span data-stu-id="b0752-229">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooAnswerHub.</span></span>
 
 ![Tilldela användare][200] 
 
-<span data-ttu-id="38088-231">**Om du vill tilldela AnswerHub Britta Simon utför du följande steg:**</span><span class="sxs-lookup"><span data-stu-id="38088-231">**To assign Britta Simon to AnswerHub, perform the following steps:**</span></span>
+<span data-ttu-id="b0752-231">**tooassign Britta Simon tooAnswerHub utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="b0752-231">**tooassign Britta Simon tooAnswerHub, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="38088-232">Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="38088-232">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="b0752-232">I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="b0752-232">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Tilldela användare][201] 
 
-2. <span data-ttu-id="38088-234">Välj i listan med program **AnswerHub**.</span><span class="sxs-lookup"><span data-stu-id="38088-234">In the applications list, select **AnswerHub**.</span></span>
+2. <span data-ttu-id="b0752-234">Välj i listan med program hello **AnswerHub**.</span><span class="sxs-lookup"><span data-stu-id="b0752-234">In hello applications list, select **AnswerHub**.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_app.png) 
 
-3. <span data-ttu-id="38088-236">Klicka på menyn till vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="38088-236">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="b0752-236">Hello-menyn hello vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="b0752-236">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Tilldela användare][202] 
 
-4. <span data-ttu-id="38088-238">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="38088-238">Click **Add** button.</span></span> <span data-ttu-id="38088-239">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="38088-239">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="b0752-238">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="b0752-238">Click **Add** button.</span></span> <span data-ttu-id="b0752-239">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="b0752-239">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Tilldela användare][203]
 
-5. <span data-ttu-id="38088-241">På **användare och grupper** markerar **Britta Simon** på listan användare.</span><span class="sxs-lookup"><span data-stu-id="38088-241">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="b0752-241">På **användare och grupper** markerar **Britta Simon** i hello användarlistan.</span><span class="sxs-lookup"><span data-stu-id="b0752-241">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="38088-242">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="38088-242">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="b0752-242">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="b0752-242">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="38088-243">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="38088-243">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="b0752-243">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="b0752-243">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="38088-244">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="38088-244">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="b0752-244">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="b0752-244">Testing single sign-on</span></span>
 
-<span data-ttu-id="38088-245">I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.</span><span class="sxs-lookup"><span data-stu-id="38088-245">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="b0752-245">I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="b0752-245">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="38088-246">När du klickar på panelen AnswerHub på åtkomstpanelen du bör få automatiskt loggat in på ditt AnswerHub program.</span><span class="sxs-lookup"><span data-stu-id="38088-246">When you click the AnswerHub tile in the Access Panel, you should get automatically signed-on to your AnswerHub application.</span></span>
-<span data-ttu-id="38088-247">Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="38088-247">For more information about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
+<span data-ttu-id="b0752-246">Du bör få automatiskt inloggade tooyour AnswerHub programmet när du klickar på hello AnswerHub panelen i hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="b0752-246">When you click hello AnswerHub tile in hello Access Panel, you should get automatically signed-on tooyour AnswerHub application.</span></span>
+<span data-ttu-id="b0752-247">Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).</span><span class="sxs-lookup"><span data-stu-id="b0752-247">For more information about hello Access Panel, see [Introduction toohello Access Panel](active-directory-saas-access-panel-introduction.md).</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="38088-248">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="38088-248">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="b0752-248">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="b0752-248">Additional resources</span></span>
 
-* [<span data-ttu-id="38088-249">Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="38088-249">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="38088-250">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="38088-250">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="b0752-249">Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="b0752-249">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="b0752-250">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="b0752-250">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

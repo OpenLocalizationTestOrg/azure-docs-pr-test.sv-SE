@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory v2.0 Node.js web app inloggning | Microsoft Docs
-description: "Lär dig hur du skapar en Node.js-webbapp som loggar in användare med hjälp av både ett personligt microsoftkonto och ett arbets- eller skolkonto konto."
+title: aaaAzure Active Directory v2.0 Node.js web app inloggning | Microsoft Docs
+description: "Lär dig hur toobuild en Node.js webbapp som loggar in användare med hjälp av både ett personligt microsoftkonto och ett arbets- eller skolkonto konto."
 services: active-directory
 documentationcenter: nodejs
 author: navyasric
@@ -15,42 +15,42 @@ ms.topic: article
 ms.date: 05/13/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 6d49c742f72440e22830915c90de009d9188db2a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f8ce6e2b841c215cb14e82bcf444fe849634cc88
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-sign-in-to-a-nodejs-web-app"></a><span data-ttu-id="bda13-103">Lägga till inloggning till en Node.js-webbapp</span><span class="sxs-lookup"><span data-stu-id="bda13-103">Add sign-in to a Node.js web app</span></span>
+# <a name="add-sign-in-tooa-nodejs-web-app"></a><span data-ttu-id="57ec2-103">Lägga till inloggning tooa Node.js-webbapp</span><span class="sxs-lookup"><span data-stu-id="57ec2-103">Add sign-in tooa Node.js web app</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="bda13-104">Inte alla Azure Active Directory-scenarier och funktioner fungerar med v2.0-slutpunkten.</span><span class="sxs-lookup"><span data-stu-id="bda13-104">Not all Azure Active Directory scenarios and features work with the v2.0 endpoint.</span></span> <span data-ttu-id="bda13-105">Läs mer om för att avgöra om du ska använda v2.0-slutpunkten eller v1.0 slutpunkten [v2.0 begränsningar](active-directory-v2-limitations.md).</span><span class="sxs-lookup"><span data-stu-id="bda13-105">To determine whether you should use the v2.0 endpoint or the v1.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).</span></span>
+> <span data-ttu-id="57ec2-104">Inte alla Azure Active Directory-scenarier och funktioner fungerar med hello v2.0-slutpunkten.</span><span class="sxs-lookup"><span data-stu-id="57ec2-104">Not all Azure Active Directory scenarios and features work with hello v2.0 endpoint.</span></span> <span data-ttu-id="57ec2-105">toodetermine om du ska använda hello v2.0-slutpunkten eller hello v1.0 slutpunkt och Läs om [v2.0 begränsningar](active-directory-v2-limitations.md).</span><span class="sxs-lookup"><span data-stu-id="57ec2-105">toodetermine whether you should use hello v2.0 endpoint or hello v1.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).</span></span>
 > 
 
-<span data-ttu-id="bda13-106">I den här självstudiekursen använda vi Passport för att göra följande:</span><span class="sxs-lookup"><span data-stu-id="bda13-106">In this tutorial, we use Passport to do the following tasks:</span></span>
+<span data-ttu-id="57ec2-106">I den här självstudiekursen kommer använda vi Passport toodo hello följande uppgifter:</span><span class="sxs-lookup"><span data-stu-id="57ec2-106">In this tutorial, we use Passport toodo hello following tasks:</span></span>
 
-* <span data-ttu-id="bda13-107">Logga in användaren med hjälp av Azure Active Directory (Azure AD) och v2.0-slutpunkten i en webbapp.</span><span class="sxs-lookup"><span data-stu-id="bda13-107">In a web app, sign in the user by using Azure Active Directory (Azure AD) and the v2.0 endpoint.</span></span>
-* <span data-ttu-id="bda13-108">Visa information om användaren.</span><span class="sxs-lookup"><span data-stu-id="bda13-108">Display information about the user.</span></span>
-* <span data-ttu-id="bda13-109">Logga ut från appen användaren.</span><span class="sxs-lookup"><span data-stu-id="bda13-109">Sign the user out of the app.</span></span>
+* <span data-ttu-id="57ec2-107">Logga in hello användare med hjälp av Azure Active Directory (AD Azure) i en webbapp och hello v2.0-slutpunkten.</span><span class="sxs-lookup"><span data-stu-id="57ec2-107">In a web app, sign in hello user by using Azure Active Directory (Azure AD) and hello v2.0 endpoint.</span></span>
+* <span data-ttu-id="57ec2-108">Visa information om hello användare.</span><span class="sxs-lookup"><span data-stu-id="57ec2-108">Display information about hello user.</span></span>
+* <span data-ttu-id="57ec2-109">Logga hello användare utanför hello appen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-109">Sign hello user out of hello app.</span></span>
 
-<span data-ttu-id="bda13-110">**Passport** är ett mellanprogram för autentisering för Node.js.</span><span class="sxs-lookup"><span data-stu-id="bda13-110">**Passport** is authentication middleware for Node.js.</span></span> <span data-ttu-id="bda13-111">Flexibel och modulära, Passport kan släppas diskret in i alla Express-baserade eller restify-webbappar.</span><span class="sxs-lookup"><span data-stu-id="bda13-111">Flexible and modular, Passport can be unobtrusively dropped into any Express-based or restify web application.</span></span> <span data-ttu-id="bda13-112">I Passport, en omfattande uppsättning strategier stöder autentisering med ett användarnamn och lösenord, Facebook, Twitter eller andra alternativ.</span><span class="sxs-lookup"><span data-stu-id="bda13-112">In Passport, a comprehensive set of strategies support authentication by using a username and password, Facebook, Twitter, or other options.</span></span> <span data-ttu-id="bda13-113">Vi har utvecklat en strategi för Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bda13-113">We have developed a strategy for Azure AD.</span></span> <span data-ttu-id="bda13-114">I den här artikeln vi hur du kan installera modulen och Lägg sedan till Azure AD `passport-azure-ad` plugin-programmet.</span><span class="sxs-lookup"><span data-stu-id="bda13-114">In this article, we show you how to install the module, and then add the Azure AD `passport-azure-ad` plug-in.</span></span>
+<span data-ttu-id="57ec2-110">**Passport** är ett mellanprogram för autentisering för Node.js.</span><span class="sxs-lookup"><span data-stu-id="57ec2-110">**Passport** is authentication middleware for Node.js.</span></span> <span data-ttu-id="57ec2-111">Flexibel och modulära, Passport kan släppas diskret in i alla Express-baserade eller restify-webbappar.</span><span class="sxs-lookup"><span data-stu-id="57ec2-111">Flexible and modular, Passport can be unobtrusively dropped into any Express-based or restify web application.</span></span> <span data-ttu-id="57ec2-112">I Passport, en omfattande uppsättning strategier stöder autentisering med ett användarnamn och lösenord, Facebook, Twitter eller andra alternativ.</span><span class="sxs-lookup"><span data-stu-id="57ec2-112">In Passport, a comprehensive set of strategies support authentication by using a username and password, Facebook, Twitter, or other options.</span></span> <span data-ttu-id="57ec2-113">Vi har utvecklat en strategi för Azure AD.</span><span class="sxs-lookup"><span data-stu-id="57ec2-113">We have developed a strategy for Azure AD.</span></span> <span data-ttu-id="57ec2-114">I den här artikeln visar vi du hur tooinstall hello modulen och lägger sedan till hello Azure AD `passport-azure-ad` plugin-programmet.</span><span class="sxs-lookup"><span data-stu-id="57ec2-114">In this article, we show you how tooinstall hello module, and then add hello Azure AD `passport-azure-ad` plug-in.</span></span>
 
-## <a name="download"></a><span data-ttu-id="bda13-115">Ladda ned</span><span class="sxs-lookup"><span data-stu-id="bda13-115">Download</span></span>
-<span data-ttu-id="bda13-116">Koden för den här självstudiekursen [finns på GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs).</span><span class="sxs-lookup"><span data-stu-id="bda13-116">The code for this tutorial is maintained [on GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs).</span></span> <span data-ttu-id="bda13-117">Om du vill följa kursen, kan du [ladda ned appens stomme som en .zip-fil](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) eller klona stommen:</span><span class="sxs-lookup"><span data-stu-id="bda13-117">To follow the tutorial, you can [download the app's skeleton as a .zip file](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) or clone the skeleton:</span></span>
+## <a name="download"></a><span data-ttu-id="57ec2-115">Ladda ned</span><span class="sxs-lookup"><span data-stu-id="57ec2-115">Download</span></span>
+<span data-ttu-id="57ec2-116">hello-koden för den här självstudiekursen upprätthålls [på GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs).</span><span class="sxs-lookup"><span data-stu-id="57ec2-116">hello code for this tutorial is maintained [on GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs).</span></span> <span data-ttu-id="57ec2-117">toofollow hello självstudier, kan du [hämta hello appens stomme som en .zip-fil](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) eller klona hello stommen:</span><span class="sxs-lookup"><span data-stu-id="57ec2-117">toofollow hello tutorial, you can [download hello app's skeleton as a .zip file](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) or clone hello skeleton:</span></span>
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-<span data-ttu-id="bda13-118">Du kan också få det färdiga programmet i slutet av den här kursen.</span><span class="sxs-lookup"><span data-stu-id="bda13-118">You also can get the completed application at the end of this tutorial.</span></span>
+<span data-ttu-id="57ec2-118">Du kan också få hello slutförts programmet hello slutet av den här kursen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-118">You also can get hello completed application at hello end of this tutorial.</span></span>
 
-## <a name="1-register-an-app"></a><span data-ttu-id="bda13-119">1: registrera en app</span><span class="sxs-lookup"><span data-stu-id="bda13-119">1: Register an app</span></span>
-<span data-ttu-id="bda13-120">Skapa en ny app på [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), eller följa [dessa detaljerade steg](active-directory-v2-app-registration.md) att registrera en app.</span><span class="sxs-lookup"><span data-stu-id="bda13-120">Create a new app at [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), or follow [these detailed steps](active-directory-v2-app-registration.md) to register an app.</span></span> <span data-ttu-id="bda13-121">Se till att du:</span><span class="sxs-lookup"><span data-stu-id="bda13-121">Make sure you:</span></span>
+## <a name="1-register-an-app"></a><span data-ttu-id="57ec2-119">1: registrera en app</span><span class="sxs-lookup"><span data-stu-id="57ec2-119">1: Register an app</span></span>
+<span data-ttu-id="57ec2-120">Skapa en ny app på [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), eller följa [dessa detaljerade steg](active-directory-v2-app-registration.md) tooregister en app.</span><span class="sxs-lookup"><span data-stu-id="57ec2-120">Create a new app at [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), or follow [these detailed steps](active-directory-v2-app-registration.md) tooregister an app.</span></span> <span data-ttu-id="57ec2-121">Se till att du:</span><span class="sxs-lookup"><span data-stu-id="57ec2-121">Make sure you:</span></span>
 
-* <span data-ttu-id="bda13-122">Kopiera den **program-Id** tilldelats din app.</span><span class="sxs-lookup"><span data-stu-id="bda13-122">Copy the **Application Id** assigned to your app.</span></span> <span data-ttu-id="bda13-123">Du behöver den för den här självstudiekursen.</span><span class="sxs-lookup"><span data-stu-id="bda13-123">You need it for this tutorial.</span></span>
-* <span data-ttu-id="bda13-124">Lägg till den **Web** plattform för din app.</span><span class="sxs-lookup"><span data-stu-id="bda13-124">Add the **Web** platform for your app.</span></span>
-* <span data-ttu-id="bda13-125">Kopiera den **omdirigerings-URI** från portalen.</span><span class="sxs-lookup"><span data-stu-id="bda13-125">Copy the **Redirect URI** from the portal.</span></span> <span data-ttu-id="bda13-126">Du måste använda URI standardvärdet `urn:ietf:wg:oauth:2.0:oob`.</span><span class="sxs-lookup"><span data-stu-id="bda13-126">You must use the default URI value of `urn:ietf:wg:oauth:2.0:oob`.</span></span>
+* <span data-ttu-id="57ec2-122">Kopiera hello **program-Id** tilldelade tooyour app.</span><span class="sxs-lookup"><span data-stu-id="57ec2-122">Copy hello **Application Id** assigned tooyour app.</span></span> <span data-ttu-id="57ec2-123">Du behöver den för den här självstudiekursen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-123">You need it for this tutorial.</span></span>
+* <span data-ttu-id="57ec2-124">Lägg till hello **Web** plattform för din app.</span><span class="sxs-lookup"><span data-stu-id="57ec2-124">Add hello **Web** platform for your app.</span></span>
+* <span data-ttu-id="57ec2-125">Kopiera hello **omdirigerings-URI** från hello-portalen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-125">Copy hello **Redirect URI** from hello portal.</span></span> <span data-ttu-id="57ec2-126">Du måste använda hello URI standardvärdet `urn:ietf:wg:oauth:2.0:oob`.</span><span class="sxs-lookup"><span data-stu-id="57ec2-126">You must use hello default URI value of `urn:ietf:wg:oauth:2.0:oob`.</span></span>
 
-## <a name="2-add-prerequisities-to-your-directory"></a><span data-ttu-id="bda13-127">2: lägga till prerequisities i katalogen</span><span class="sxs-lookup"><span data-stu-id="bda13-127">2: Add prerequisities to your directory</span></span>
-<span data-ttu-id="bda13-128">Ändra kataloger för att gå till din rotmapp om du inte redan har det i en kommandotolk.</span><span class="sxs-lookup"><span data-stu-id="bda13-128">At a command prompt, change directories to go to your root folder, if you are not already there.</span></span> <span data-ttu-id="bda13-129">Kör följande kommandon:</span><span class="sxs-lookup"><span data-stu-id="bda13-129">Run the following commands:</span></span>
+## <a name="2-add-prerequisities-tooyour-directory"></a><span data-ttu-id="57ec2-127">2: Lägg till prerequisities tooyour katalog</span><span class="sxs-lookup"><span data-stu-id="57ec2-127">2: Add prerequisities tooyour directory</span></span>
+<span data-ttu-id="57ec2-128">Ändra kataloger toogo tooyour rotmapp om du inte redan har det i en kommandotolk.</span><span class="sxs-lookup"><span data-stu-id="57ec2-128">At a command prompt, change directories toogo tooyour root folder, if you are not already there.</span></span> <span data-ttu-id="57ec2-129">Kör följande kommandon hello:</span><span class="sxs-lookup"><span data-stu-id="57ec2-129">Run hello following commands:</span></span>
 
 * `npm install express`
 * `npm install ejs`
@@ -65,22 +65,22 @@ ms.lasthandoff: 07/11/2017
 * `npm install express-session`
 * `npm install cookie-parser`
 
-<span data-ttu-id="bda13-130">Dessutom kan vi använda `passport-azure-ad` i stommen i Snabbstart:</span><span class="sxs-lookup"><span data-stu-id="bda13-130">In addition, we use `passport-azure-ad` in the skeleton of the quickstart:</span></span>
+<span data-ttu-id="57ec2-130">Dessutom kan vi använda `passport-azure-ad` i hello stommen i Snabbstart hello:</span><span class="sxs-lookup"><span data-stu-id="57ec2-130">In addition, we use `passport-azure-ad` in hello skeleton of hello quickstart:</span></span>
 
 * `npm install passport-azure-ad`
 
-<span data-ttu-id="bda13-131">Detta installerar biblioteken som `passport-azure-ad` använder.</span><span class="sxs-lookup"><span data-stu-id="bda13-131">This installs the libraries that `passport-azure-ad` uses.</span></span>
+<span data-ttu-id="57ec2-131">Detta installerar hello bibliotek som `passport-azure-ad` använder.</span><span class="sxs-lookup"><span data-stu-id="57ec2-131">This installs hello libraries that `passport-azure-ad` uses.</span></span>
 
-## <a name="3-set-up-your-app-to-use-the-passport-node-js-strategy"></a><span data-ttu-id="bda13-132">3: konfigurera din app att använda passport-nod-js-strategi</span><span class="sxs-lookup"><span data-stu-id="bda13-132">3: Set up your app to use the passport-node-js strategy</span></span>
-<span data-ttu-id="bda13-133">Konfigurera Express-mellanprogrammet att använda autentiseringsprotokollet OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="bda13-133">Set up the Express middleware to use the OpenID Connect authentication protocol.</span></span> <span data-ttu-id="bda13-134">Du kan använda Passport för att utfärda inloggnings- och utloggningsförfrågningar, hantera användarens session och få information om användare, bland annat.</span><span class="sxs-lookup"><span data-stu-id="bda13-134">You use Passport to issue sign-in and sign-out requests, manage the user's session, and get information about the user, among other things.</span></span>
+## <a name="3-set-up-your-app-toouse-hello-passport-node-js-strategy"></a><span data-ttu-id="57ec2-132">3: Ställ in din app toouse hello passport-nod-js-strategi</span><span class="sxs-lookup"><span data-stu-id="57ec2-132">3: Set up your app toouse hello passport-node-js strategy</span></span>
+<span data-ttu-id="57ec2-133">Ställ in hello Express mellanprogram toouse hello autentiseringsprotokollet OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="57ec2-133">Set up hello Express middleware toouse hello OpenID Connect authentication protocol.</span></span> <span data-ttu-id="57ec2-134">Använda Passport tooissue inloggning och utloggning begäranden, hantera hello användarens session och få information om hello användare, bland annat.</span><span class="sxs-lookup"><span data-stu-id="57ec2-134">You use Passport tooissue sign-in and sign-out requests, manage hello user's session, and get information about hello user, among other things.</span></span>
 
-1.  <span data-ttu-id="bda13-135">Öppna filen Config.js i roten av projektet.</span><span class="sxs-lookup"><span data-stu-id="bda13-135">In the root of the project, open the Config.js file.</span></span> <span data-ttu-id="bda13-136">I den `exports.creds` ange din Apps konfigurationsvärden.</span><span class="sxs-lookup"><span data-stu-id="bda13-136">In the `exports.creds` section, enter your app's configuration values.</span></span>
+1.  <span data-ttu-id="57ec2-135">Hello rot i hello projekt, öppna hello Config.js-fil.</span><span class="sxs-lookup"><span data-stu-id="57ec2-135">In hello root of hello project, open hello Config.js file.</span></span> <span data-ttu-id="57ec2-136">I hello `exports.creds` ange din Apps konfigurationsvärden.</span><span class="sxs-lookup"><span data-stu-id="57ec2-136">In hello `exports.creds` section, enter your app's configuration values.</span></span>
   
-  * <span data-ttu-id="bda13-137">`clientID`: **Program-Id** som har tilldelats din app i Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="bda13-137">`clientID`: The **Application Id** that's assigned to your app in the Azure portal.</span></span>
-  * <span data-ttu-id="bda13-138">`returnURL`: **Omdirigerings-URI** som du angav på portalen.</span><span class="sxs-lookup"><span data-stu-id="bda13-138">`returnURL`: The **Redirect URI** that you entered in the portal.</span></span>
-  * <span data-ttu-id="bda13-139">`clientSecret`: Den hemlighet som du genererade på portalen.</span><span class="sxs-lookup"><span data-stu-id="bda13-139">`clientSecret`: The secret that you generated in the portal.</span></span>
+  * <span data-ttu-id="57ec2-137">`clientID`: hello **program-Id** som är tilldelade tooyour app i hello Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-137">`clientID`: hello **Application Id** that's assigned tooyour app in hello Azure portal.</span></span>
+  * <span data-ttu-id="57ec2-138">`returnURL`: hello **omdirigerings-URI** som du angav i hello-portalen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-138">`returnURL`: hello **Redirect URI** that you entered in hello portal.</span></span>
+  * <span data-ttu-id="57ec2-139">`clientSecret`: hello hemlighet som du skapade i hello-portalen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-139">`clientSecret`: hello secret that you generated in hello portal.</span></span>
 
-2.  <span data-ttu-id="bda13-140">Öppna filen App.js i roten av projektet.</span><span class="sxs-lookup"><span data-stu-id="bda13-140">In the root of the project, open the App.js file.</span></span> <span data-ttu-id="bda13-141">Att anropa OIDCStrategy stratey, som medföljer `passport-azure-ad`, Lägg till följande anrop:</span><span class="sxs-lookup"><span data-stu-id="bda13-141">To invoke the OIDCStrategy stratey, which comes with `passport-azure-ad`, add the following call:</span></span>
+2.  <span data-ttu-id="57ec2-140">Öppna hello App.js filen i hello roten av hello-projekt.</span><span class="sxs-lookup"><span data-stu-id="57ec2-140">In hello root of hello project, open hello App.js file.</span></span> <span data-ttu-id="57ec2-141">tooinvoke hello OIDCStrategy stratey som medföljer `passport-azure-ad`, Lägg till följande anrop hello:</span><span class="sxs-lookup"><span data-stu-id="57ec2-141">tooinvoke hello OIDCStrategy stratey, which comes with `passport-azure-ad`, add hello following call:</span></span>
 
   ```JavaScript
   var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
@@ -91,12 +91,12 @@ ms.lasthandoff: 07/11/2017
   });
   ```
 
-3.  <span data-ttu-id="bda13-142">Använd strategin som du precis refererade till för att hantera dina inloggning begäranden:</span><span class="sxs-lookup"><span data-stu-id="bda13-142">To handle your sign-in requests, use the strategy you just referenced:</span></span>
+3.  <span data-ttu-id="57ec2-142">toohandle din inloggning begäranden, Använd hello strategi som du precis refererade till:</span><span class="sxs-lookup"><span data-stu-id="57ec2-142">toohandle your sign-in requests, use hello strategy you just referenced:</span></span>
 
   ```JavaScript
-  // Use the OIDCStrategy within Passport (section 2)
+  // Use hello OIDCStrategy within Passport (section 2)
   //
-  //   Strategies in Passport require a `validate` function. The function accepts
+  //   Strategies in Passport require a `validate` function. hello function accepts
   //   credentials (in this case, an OpenID identifier), and invokes a callback
   //   with a user object.
   passport.use( new OIDCStrategy({
@@ -131,23 +131,23 @@ ms.lasthandoff: 07/11/2017
   ));
   ```
 
-<span data-ttu-id="bda13-143">Passport använder ett liknande mönster för alla sina strategier (Twitter, Facebook och så vidare).</span><span class="sxs-lookup"><span data-stu-id="bda13-143">Passport uses a similar pattern for all its strategies (Twitter, Facebook, and so on).</span></span> <span data-ttu-id="bda13-144">Alla strategigenererare följer mönstret.</span><span class="sxs-lookup"><span data-stu-id="bda13-144">All strategy writers adhere to the pattern.</span></span> <span data-ttu-id="bda13-145">Skicka en strategi för en `function()` som använder en token och `done` som parametrar.</span><span class="sxs-lookup"><span data-stu-id="bda13-145">Pass the strategy a `function()` that uses a token and `done` as parameters.</span></span> <span data-ttu-id="bda13-146">Strategin som returneras när den gör allt arbete.</span><span class="sxs-lookup"><span data-stu-id="bda13-146">The strategy is returned after it does all its work.</span></span> <span data-ttu-id="bda13-147">Lagra användaren och token så att du inte behöver fråga efter den igen.</span><span class="sxs-lookup"><span data-stu-id="bda13-147">Store the user and stash the token so you don’t need to ask for it again.</span></span>
+<span data-ttu-id="57ec2-143">Passport använder ett liknande mönster för alla sina strategier (Twitter, Facebook och så vidare).</span><span class="sxs-lookup"><span data-stu-id="57ec2-143">Passport uses a similar pattern for all its strategies (Twitter, Facebook, and so on).</span></span> <span data-ttu-id="57ec2-144">Alla strategigenererare följer toohello mönster.</span><span class="sxs-lookup"><span data-stu-id="57ec2-144">All strategy writers adhere toohello pattern.</span></span> <span data-ttu-id="57ec2-145">Skicka hello strategi en `function()` som använder en token och `done` som parametrar.</span><span class="sxs-lookup"><span data-stu-id="57ec2-145">Pass hello strategy a `function()` that uses a token and `done` as parameters.</span></span> <span data-ttu-id="57ec2-146">hello strategi returneras när den gör allt arbete.</span><span class="sxs-lookup"><span data-stu-id="57ec2-146">hello strategy is returned after it does all its work.</span></span> <span data-ttu-id="57ec2-147">Lagra hello användar- och stash hello token så inte behöver du tooask för den igen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-147">Store hello user and stash hello token so you don’t need tooask for it again.</span></span>
 
   > [!IMPORTANT]
-  > <span data-ttu-id="bda13-148">Föregående kod tar alla användare som kan autentisera till servern.</span><span class="sxs-lookup"><span data-stu-id="bda13-148">The preceding code takes any user that can authenticate to your server.</span></span> <span data-ttu-id="bda13-149">Detta kallas för automatisk registrering.</span><span class="sxs-lookup"><span data-stu-id="bda13-149">This is known as auto-registration.</span></span> <span data-ttu-id="bda13-150">På en produktionsserver skulle du vill låta alla i utan att behöva dem gå igenom den registreringsprocess som du väljer.</span><span class="sxs-lookup"><span data-stu-id="bda13-150">On a production server, you wouldn’t want to let anyone in without first having them go through a registration process that you choose.</span></span> <span data-ttu-id="bda13-151">Detta är oftast det mönster som du ser i konsumentappar.</span><span class="sxs-lookup"><span data-stu-id="bda13-151">This is usually the pattern that you see in consumer apps.</span></span> <span data-ttu-id="bda13-152">Appen kan tillåta dig att registrera med Facebook, men sedan du ombedd att ange ytterligare information.</span><span class="sxs-lookup"><span data-stu-id="bda13-152">The app might allow you to register with Facebook, but then it asks you to enter additional information.</span></span> <span data-ttu-id="bda13-153">Om du inte använde ett kommandoradsprogram för den här självstudiekursen, kan du extrahera den e-postadressen från tokenobjektet som returneras.</span><span class="sxs-lookup"><span data-stu-id="bda13-153">If you weren't using a command-line program for this tutorial, you could extract the email from the token object that is returned.</span></span> <span data-ttu-id="bda13-154">Sedan kan du be användaren att ange ytterligare information.</span><span class="sxs-lookup"><span data-stu-id="bda13-154">Then, you might ask the user to enter additional information.</span></span> <span data-ttu-id="bda13-155">Eftersom detta är en testserver kan du lägga till användaren direkt till den minnesintern databasen.</span><span class="sxs-lookup"><span data-stu-id="bda13-155">Because this is a test server, you add the user directly to the in-memory database.</span></span>
+  > <span data-ttu-id="57ec2-148">hello tar föregående kod alla användare som kan autentisera tooyour server.</span><span class="sxs-lookup"><span data-stu-id="57ec2-148">hello preceding code takes any user that can authenticate tooyour server.</span></span> <span data-ttu-id="57ec2-149">Detta kallas för automatisk registrering.</span><span class="sxs-lookup"><span data-stu-id="57ec2-149">This is known as auto-registration.</span></span> <span data-ttu-id="57ec2-150">På en produktionsserver förmodligen du vill toolet vem som helst utan att behöva dem gå igenom den registreringsprocess som du väljer.</span><span class="sxs-lookup"><span data-stu-id="57ec2-150">On a production server, you wouldn’t want toolet anyone in without first having them go through a registration process that you choose.</span></span> <span data-ttu-id="57ec2-151">Detta är vanligtvis hello mönster som du ser i konsumentappar.</span><span class="sxs-lookup"><span data-stu-id="57ec2-151">This is usually hello pattern that you see in consumer apps.</span></span> <span data-ttu-id="57ec2-152">hello app kan tillåta dig tooregister med Facebook, men sedan du tillfrågas tooenter ytterligare information.</span><span class="sxs-lookup"><span data-stu-id="57ec2-152">hello app might allow you tooregister with Facebook, but then it asks you tooenter additional information.</span></span> <span data-ttu-id="57ec2-153">Om du inte använde ett kommandoradsprogram för den här självstudiekursen, kan du extrahera hello e-post från token hello-objekt som returneras.</span><span class="sxs-lookup"><span data-stu-id="57ec2-153">If you weren't using a command-line program for this tutorial, you could extract hello email from hello token object that is returned.</span></span> <span data-ttu-id="57ec2-154">Sedan kan du be hello tooenter ytterligare användarinformation.</span><span class="sxs-lookup"><span data-stu-id="57ec2-154">Then, you might ask hello user tooenter additional information.</span></span> <span data-ttu-id="57ec2-155">Eftersom detta är en testserver kan du lägga till hello användaren direkt toohello minnesinterna databasen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-155">Because this is a test server, you add hello user directly toohello in-memory database.</span></span>
   > 
   > 
 
-4.  <span data-ttu-id="bda13-156">Lägg till metoder som används för att hålla reda på användare som är inloggad, vilket krävs av Passport.</span><span class="sxs-lookup"><span data-stu-id="bda13-156">Add the methods that you use to keep track of users who are signed in, as required by Passport.</span></span> <span data-ttu-id="bda13-157">Detta inkluderar serialisering och avserialisering av användarens information:</span><span class="sxs-lookup"><span data-stu-id="bda13-157">This includes serializing and deserializing the user's information:</span></span>
+4.  <span data-ttu-id="57ec2-156">Lägger till hello metoder för att du använder tookeep reda på användare som är inloggad, vilket krävs av Passport.</span><span class="sxs-lookup"><span data-stu-id="57ec2-156">Add hello methods that you use tookeep track of users who are signed in, as required by Passport.</span></span> <span data-ttu-id="57ec2-157">Detta inkluderar serialisering och avserialisering av hello användarinformation:</span><span class="sxs-lookup"><span data-stu-id="57ec2-157">This includes serializing and deserializing hello user's information:</span></span>
 
   ```JavaScript
 
   // Passport session setup (section 2)
 
-  //   To support persistent login sessions, Passport needs to be able to
-  //   serialize users into, and deserialize users out of, the session. Typically,
-  //   this is as simple as storing the user ID when serializing, and finding
-  //   the user by ID when deserializing.
+  //   toosupport persistent login sessions, Passport needs toobe able to
+  //   serialize users into, and deserialize users out of, hello session. Typically,
+  //   this is as simple as storing hello user ID when serializing, and finding
+  //   hello user by ID when deserializing.
   passport.serializeUser(function(user, done) {
     done(null, user.email);
   });
@@ -158,7 +158,7 @@ ms.lasthandoff: 07/11/2017
     });
   });
 
-  // Array to hold signed-in users
+  // Array toohold signed-in users
   var users = [];
 
   var findByEmail = function(email, fn) {
@@ -173,7 +173,7 @@ ms.lasthandoff: 07/11/2017
   };
   ```
 
-5.  <span data-ttu-id="bda13-158">Lägg till kod som läser in Express-motorn.</span><span class="sxs-lookup"><span data-stu-id="bda13-158">Add the code that loads the Express engine.</span></span> <span data-ttu-id="bda13-159">Du använder standard-/views och /routes mönster som Express tillhandahåller:</span><span class="sxs-lookup"><span data-stu-id="bda13-159">You use the default /views and /routes pattern that Express provides:</span></span>
+5.  <span data-ttu-id="57ec2-158">Lägg till hello-kod som läser in hello Express-motorn.</span><span class="sxs-lookup"><span data-stu-id="57ec2-158">Add hello code that loads hello Express engine.</span></span> <span data-ttu-id="57ec2-159">Du använder hello standard /views och /routes mönster som Express tillhandahåller:</span><span class="sxs-lookup"><span data-stu-id="57ec2-159">You use hello default /views and /routes pattern that Express provides:</span></span>
 
   ```JavaScript
 
@@ -189,7 +189,7 @@ ms.lasthandoff: 07/11/2017
     app.use(cookieParser());
     app.use(expressSession({ secret: 'keyboard cat', resave: true, saveUninitialized: false }));
     app.use(bodyParser.urlencoded({ extended : true }));
-    // Initialize Passport!  Also use passport.session() middleware, to support
+    // Initialize Passport!  Also use passport.session() middleware, toosupport
     // persistent login sessions (recommended).
     app.use(passport.initialize());
     app.use(passport.session());
@@ -199,31 +199,31 @@ ms.lasthandoff: 07/11/2017
 
   ```
 
-6.  <span data-ttu-id="bda13-160">Lägg till POST dirigerar att leverera de faktiska inloggning förfrågningar till den `passport-azure-ad` motorn:</span><span class="sxs-lookup"><span data-stu-id="bda13-160">Add the POST routes that hand off the actual sign-in requests to the `passport-azure-ad` engine:</span></span>
+6.  <span data-ttu-id="57ec2-160">Lägg till hello POST dirigerar att leverera hello faktiska inloggning begäranden toohello `passport-azure-ad` motorn:</span><span class="sxs-lookup"><span data-stu-id="57ec2-160">Add hello POST routes that hand off hello actual sign-in requests toohello `passport-azure-ad` engine:</span></span>
 
   ```JavaScript
 
   // Auth routes (section 3)
 
   // GET /auth/openid
-  //   Use passport.authenticate() as route middleware to authenticate the
-  //   request. The first step in OpenID authentication involves redirecting
-  //   the user to the user's OpenID provider. After authenticating, the OpenID
-  //   provider redirects the user back to this application at
+  //   Use passport.authenticate() as route middleware tooauthenticate the
+  //   request. hello first step in OpenID authentication involves redirecting
+  //   hello user toohello user's OpenID provider. After authenticating, hello OpenID
+  //   provider redirects hello user back toothis application at
   //   /auth/openid/return.
 
   app.get('/auth/openid',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
-      log.info('Authentication was called in the sample');
+      log.info('Authentication was called in hello sample');
       res.redirect('/');
     });
 
   // GET /auth/openid/return
-  //   Use passport.authenticate() as route middleware to authenticate the
-  //   request. If authentication fails, the user is redirected back to the
-  //   sign-in page. Otherwise, the primary route function is called.
-  //   In this example, it redirects the user to the home page.
+  //   Use passport.authenticate() as route middleware tooauthenticate the
+  //   request. If authentication fails, hello user is redirected back toothe
+  //   sign-in page. Otherwise, hello primary route function is called.
+  //   In this example, it redirects hello user toohello home page.
   app.get('/auth/openid/return',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
@@ -232,10 +232,10 @@ ms.lasthandoff: 07/11/2017
     });
 
   // POST /auth/openid/return
-  //   Use passport.authenticate() as route middleware to authenticate the
-  //   request. If authentication fails, the user is redirected back to the
-  //   sign-in page. Otherwise, the primary route function is called. 
-  //   In this example, it redirects the user to the home page.
+  //   Use passport.authenticate() as route middleware tooauthenticate the
+  //   request. If authentication fails, hello user is redirected back toothe
+  //   sign-in page. Otherwise, hello primary route function is called. 
+  //   In this example, it redirects hello user toohello home page.
 
   app.post('/auth/openid/return',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
@@ -245,10 +245,10 @@ ms.lasthandoff: 07/11/2017
     });
   ```
 
-## <a name="4-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a><span data-ttu-id="bda13-161">4: använda Passport för att utfärda inloggnings- och utloggningsförfrågningar till Azure AD</span><span class="sxs-lookup"><span data-stu-id="bda13-161">4: Use Passport to issue sign-in and sign-out requests to Azure AD</span></span>
-<span data-ttu-id="bda13-162">Appen har konfigurerats för att kommunicera med v2.0-slutpunkten med hjälp av autentiseringsprotokollet OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="bda13-162">Your app is now set up to communicate with the v2.0 endpoint by using the OpenID Connect authentication protocol.</span></span> <span data-ttu-id="bda13-163">Den `passport-azure-ad` strategi tar hand om alla detaljer om utforma autentiseringsmeddelanden, verifiera token från Azure AD och upprätthålla användarsessionen.</span><span class="sxs-lookup"><span data-stu-id="bda13-163">The `passport-azure-ad` strategy takes care of all the details of crafting authentication messages, validating tokens from Azure AD, and maintaining the user session.</span></span> <span data-ttu-id="bda13-164">Återstår gör är att ge användarna ett sätt att logga in och logga ut och för att samla in mer information om den användare som har loggat in.</span><span class="sxs-lookup"><span data-stu-id="bda13-164">All that is left to do is to give your users a way to sign in and sign out, and to gather more information about the user who is signed in.</span></span>
+## <a name="4-use-passport-tooissue-sign-in-and-sign-out-requests-tooazure-ad"></a><span data-ttu-id="57ec2-161">4: Använd Passport tooissue inloggning och utloggning begär tooAzure AD</span><span class="sxs-lookup"><span data-stu-id="57ec2-161">4: Use Passport tooissue sign-in and sign-out requests tooAzure AD</span></span>
+<span data-ttu-id="57ec2-162">Appen är nu konfigurera toocommunicate med hello v2.0-slutpunkten med hjälp av autentiseringsprotokollet för hello OpenID Connect.</span><span class="sxs-lookup"><span data-stu-id="57ec2-162">Your app is now set up toocommunicate with hello v2.0 endpoint by using hello OpenID Connect authentication protocol.</span></span> <span data-ttu-id="57ec2-163">Hej `passport-azure-ad` strategi tar hand om alla hello information utforma autentiseringsmeddelanden, verifiera token från Azure AD och upprätthålla hello användarsessioner.</span><span class="sxs-lookup"><span data-stu-id="57ec2-163">hello `passport-azure-ad` strategy takes care of all hello details of crafting authentication messages, validating tokens from Azure AD, and maintaining hello user session.</span></span> <span data-ttu-id="57ec2-164">Alla lämnas toodo är toogive användarna en sätt toosign i och logga ut och toogather mer information om hello användare är inloggad.</span><span class="sxs-lookup"><span data-stu-id="57ec2-164">All that is left toodo is toogive your users a way toosign in and sign out, and toogather more information about hello user who is signed in.</span></span>
 
-1.  <span data-ttu-id="bda13-165">Lägg till den **standard**, **inloggning**, **konto**, och **logga ut** metoder i filen App.js:</span><span class="sxs-lookup"><span data-stu-id="bda13-165">Add the **default**, **login**, **account**, and **logout** methods to your App.js file:</span></span>
+1.  <span data-ttu-id="57ec2-165">Lägg till hello **standard**, **inloggning**, **konto**, och **logga ut** metoder tooyour App.js fil:</span><span class="sxs-lookup"><span data-stu-id="57ec2-165">Add hello **default**, **login**, **account**, and **logout** methods tooyour App.js file:</span></span>
 
   ```JavaScript
 
@@ -265,7 +265,7 @@ ms.lasthandoff: 07/11/2017
   app.get('/login',
     passport.authenticate('azuread-openidconnect', { failureRedirect: '/login' }),
     function(req, res) {
-      log.info('Login was called in the sample');
+      log.info('Login was called in hello sample');
       res.redirect('/');
   });
 
@@ -276,22 +276,22 @@ ms.lasthandoff: 07/11/2017
 
   ```
 
-  <span data-ttu-id="bda13-166">Här följer information:</span><span class="sxs-lookup"><span data-stu-id="bda13-166">Here are the details:</span></span>
+  <span data-ttu-id="57ec2-166">Här följer hello information:</span><span class="sxs-lookup"><span data-stu-id="57ec2-166">Here are hello details:</span></span>
     
-    * <span data-ttu-id="bda13-167">Den `/` kommandot omdirigerar till vyn index.ejs.</span><span class="sxs-lookup"><span data-stu-id="bda13-167">The `/` route redirects to the index.ejs view.</span></span> <span data-ttu-id="bda13-168">Passerar användaren i begäran (om den finns).</span><span class="sxs-lookup"><span data-stu-id="bda13-168">It passes the user in the request (if it exists).</span></span>
-    * <span data-ttu-id="bda13-169">Den `/account` vidarebefordra först *innebär att autentiseras* (du implementera som i följande kod).</span><span class="sxs-lookup"><span data-stu-id="bda13-169">The `/account` route first *ensures that you are authenticated* (you implement that in the following code).</span></span> <span data-ttu-id="bda13-170">Sedan, skickas användaren i begäran.</span><span class="sxs-lookup"><span data-stu-id="bda13-170">Then, it passes the user in the request.</span></span> <span data-ttu-id="bda13-171">Detta är så att du kan få mer information om användaren.</span><span class="sxs-lookup"><span data-stu-id="bda13-171">This is so you can get more information about the user.</span></span>
-    * <span data-ttu-id="bda13-172">Den `/login` kommandot anropar din `azuread-openidconnect` autentiseraren från `passport-azuread`.</span><span class="sxs-lookup"><span data-stu-id="bda13-172">The `/login` route calls your `azuread-openidconnect` authenticator from `passport-azuread`.</span></span> <span data-ttu-id="bda13-173">Om inte fungerar som den dirigerar användaren till `/login`.</span><span class="sxs-lookup"><span data-stu-id="bda13-173">If that doesn't succeed, it redirects the user back to `/login`.</span></span>
-    * <span data-ttu-id="bda13-174">Den `/logout` vägen anropar logout.ejs visa (och väg).</span><span class="sxs-lookup"><span data-stu-id="bda13-174">The `/logout` route calls the logout.ejs view (and route).</span></span> <span data-ttu-id="bda13-175">Detta tar bort cookies och returnerar sedan användaren till index.ejs.</span><span class="sxs-lookup"><span data-stu-id="bda13-175">This clears cookies, and then returns the user back to index.ejs.</span></span>
+    * <span data-ttu-id="57ec2-167">Hej `/` kommandot omdirigerar toohello index.ejs vyn.</span><span class="sxs-lookup"><span data-stu-id="57ec2-167">hello `/` route redirects toohello index.ejs view.</span></span> <span data-ttu-id="57ec2-168">Passerar hello användaren i hello begäran (om den finns).</span><span class="sxs-lookup"><span data-stu-id="57ec2-168">It passes hello user in hello request (if it exists).</span></span>
+    * <span data-ttu-id="57ec2-169">Hej `/account` vidarebefordra först *innebär att autentiseras* (du implementera som i följande kod hello).</span><span class="sxs-lookup"><span data-stu-id="57ec2-169">hello `/account` route first *ensures that you are authenticated* (you implement that in hello following code).</span></span> <span data-ttu-id="57ec2-170">Sedan överförs den hello användaren i hello-begäran.</span><span class="sxs-lookup"><span data-stu-id="57ec2-170">Then, it passes hello user in hello request.</span></span> <span data-ttu-id="57ec2-171">Detta är så att du kan få mer information om hello användare.</span><span class="sxs-lookup"><span data-stu-id="57ec2-171">This is so you can get more information about hello user.</span></span>
+    * <span data-ttu-id="57ec2-172">Hej `/login` kommandot anropar din `azuread-openidconnect` autentiseraren från `passport-azuread`.</span><span class="sxs-lookup"><span data-stu-id="57ec2-172">hello `/login` route calls your `azuread-openidconnect` authenticator from `passport-azuread`.</span></span> <span data-ttu-id="57ec2-173">Om som inte lyckas omdirigerar den hello användaren tillbaka för`/login`.</span><span class="sxs-lookup"><span data-stu-id="57ec2-173">If that doesn't succeed, it redirects hello user back too`/login`.</span></span>
+    * <span data-ttu-id="57ec2-174">Hej `/logout` väg anropar hello logout.ejs visa (och väg).</span><span class="sxs-lookup"><span data-stu-id="57ec2-174">hello `/logout` route calls hello logout.ejs view (and route).</span></span> <span data-ttu-id="57ec2-175">Detta kommando rensar cookies och sedan returnerar hello tillbaka tooindex.ejs för användaren.</span><span class="sxs-lookup"><span data-stu-id="57ec2-175">This clears cookies, and then returns hello user back tooindex.ejs.</span></span>
 
-2.  <span data-ttu-id="bda13-176">Lägg till den **EnsureAuthenticated** metod som du använde tidigare i `/account`:</span><span class="sxs-lookup"><span data-stu-id="bda13-176">Add the **EnsureAuthenticated** method that you used earlier in `/account`:</span></span>
+2.  <span data-ttu-id="57ec2-176">Lägg till hello **EnsureAuthenticated** metod som du använde tidigare i `/account`:</span><span class="sxs-lookup"><span data-stu-id="57ec2-176">Add hello **EnsureAuthenticated** method that you used earlier in `/account`:</span></span>
 
   ```JavaScript
 
-  // Route middleware to ensure the user is authenticated (section 4)
+  // Route middleware tooensure hello user is authenticated (section 4)
 
-  //   Use this route middleware on any resource that needs to be protected. If
-  //   the request is authenticated (typically via a persistent login session),
-  //   the request proceeds. Otherwise, the user is redirected to the
+  //   Use this route middleware on any resource that needs toobe protected. If
+  //   hello request is authenticated (typically via a persistent login session),
+  //   hello request proceeds. Otherwise, hello user is redirected toothe
   //   sign-in page.
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { return next(); }
@@ -300,7 +300,7 @@ ms.lasthandoff: 07/11/2017
 
   ```
 
-3.  <span data-ttu-id="bda13-177">I App.js, skapar du servern:</span><span class="sxs-lookup"><span data-stu-id="bda13-177">In App.js, create the server:</span></span>
+3.  <span data-ttu-id="57ec2-177">App.js, skapa hello server:</span><span class="sxs-lookup"><span data-stu-id="57ec2-177">In App.js, create hello server:</span></span>
 
   ```JavaScript
 
@@ -309,10 +309,10 @@ ms.lasthandoff: 07/11/2017
   ```
 
 
-## <a name="5-create-the-views-and-routes-in-express-that-you-show-your-user-on-the-website"></a><span data-ttu-id="bda13-178">5: skapa vyerna och vägarna i Express du visa din användare på webbplatsen</span><span class="sxs-lookup"><span data-stu-id="bda13-178">5: Create the views and routes in Express that you show your user on the website</span></span>
-<span data-ttu-id="bda13-179">Lägga till vägarna och vyerna som visar information för användaren.</span><span class="sxs-lookup"><span data-stu-id="bda13-179">Add the routes and views that show information to the user.</span></span> <span data-ttu-id="bda13-180">Vägarna och vyerna hanterar även de `/logout` och `/login` vägar som du skapade.</span><span class="sxs-lookup"><span data-stu-id="bda13-180">The routes and views also handle the `/logout` and `/login` routes that you created.</span></span>
+## <a name="5-create-hello-views-and-routes-in-express-that-you-show-your-user-on-hello-website"></a><span data-ttu-id="57ec2-178">5: skapa hello vyerna och vägarna i Express du visa din användare på hello webbplats</span><span class="sxs-lookup"><span data-stu-id="57ec2-178">5: Create hello views and routes in Express that you show your user on hello website</span></span>
+<span data-ttu-id="57ec2-179">Lägg till hello vägarna och vyerna som visar information om toohello användare.</span><span class="sxs-lookup"><span data-stu-id="57ec2-179">Add hello routes and views that show information toohello user.</span></span> <span data-ttu-id="57ec2-180">hello-vägarna och vyerna även hantera hello `/logout` och `/login` vägar som du skapade.</span><span class="sxs-lookup"><span data-stu-id="57ec2-180">hello routes and views also handle hello `/logout` and `/login` routes that you created.</span></span>
 
-1. <span data-ttu-id="bda13-181">Skapa i rotkatalogen på `/routes/index.js` väg.</span><span class="sxs-lookup"><span data-stu-id="bda13-181">In the root directory, create the `/routes/index.js` route.</span></span>
+1. <span data-ttu-id="57ec2-181">Skapa hello i hello rotkatalog `/routes/index.js` vägen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-181">In hello root directory, create hello `/routes/index.js` route.</span></span>
 
   ```JavaScript
 
@@ -325,7 +325,7 @@ ms.lasthandoff: 07/11/2017
   };
   ```
 
-2.  <span data-ttu-id="bda13-182">Skapa i rotkatalogen på `/routes/user.js` väg.</span><span class="sxs-lookup"><span data-stu-id="bda13-182">In the root directory, create the `/routes/user.js` route.</span></span>
+2.  <span data-ttu-id="57ec2-182">Skapa hello i hello rotkatalog `/routes/user.js` vägen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-182">In hello root directory, create hello `/routes/user.js` route.</span></span>
 
   ```JavaScript
 
@@ -338,9 +338,9 @@ ms.lasthandoff: 07/11/2017
   };
   ```
 
-  <span data-ttu-id="bda13-183">`/routes/index.js`och `/routes/user.js` är enkla vägar skickar vidare begäran i vyer, inklusive användare, om sådan finns.</span><span class="sxs-lookup"><span data-stu-id="bda13-183">`/routes/index.js` and `/routes/user.js` are simple routes that pass along the request to your views, including the user, if present.</span></span>
+  <span data-ttu-id="57ec2-183">`/routes/index.js`och `/routes/user.js` är enkla vägar skickar vidare hello begäran tooyour vyer, inklusive hello användaren, om sådan finns.</span><span class="sxs-lookup"><span data-stu-id="57ec2-183">`/routes/index.js` and `/routes/user.js` are simple routes that pass along hello request tooyour views, including hello user, if present.</span></span>
 
-3.  <span data-ttu-id="bda13-184">Skapa i rotkatalogen på `/views/index.ejs` vyn.</span><span class="sxs-lookup"><span data-stu-id="bda13-184">In the root directory, create the `/views/index.ejs` view.</span></span> <span data-ttu-id="bda13-185">Den här sidan anropar din **inloggning** och **logga ut** metoder.</span><span class="sxs-lookup"><span data-stu-id="bda13-185">This page calls your **login** and **logout** methods.</span></span> <span data-ttu-id="bda13-186">Du också använda den `/views/index.ejs` vyn för att avbilda kontoinformation.</span><span class="sxs-lookup"><span data-stu-id="bda13-186">You also use the `/views/index.ejs` view to capture account information.</span></span> <span data-ttu-id="bda13-187">Du kan använda villkorliga `if (!user)` som användaren som skickas via i begäran.</span><span class="sxs-lookup"><span data-stu-id="bda13-187">You can use the conditional `if (!user)` as the user being passed through in the request.</span></span> <span data-ttu-id="bda13-188">Det finns bevis att du har en inloggad användare.</span><span class="sxs-lookup"><span data-stu-id="bda13-188">It is evidence that you have a user signed in.</span></span>
+3.  <span data-ttu-id="57ec2-184">Skapa hello i hello rotkatalog `/views/index.ejs` vyn.</span><span class="sxs-lookup"><span data-stu-id="57ec2-184">In hello root directory, create hello `/views/index.ejs` view.</span></span> <span data-ttu-id="57ec2-185">Den här sidan anropar din **inloggning** och **logga ut** metoder.</span><span class="sxs-lookup"><span data-stu-id="57ec2-185">This page calls your **login** and **logout** methods.</span></span> <span data-ttu-id="57ec2-186">Du också använda hello `/views/index.ejs` visa toocapture kontoinformation.</span><span class="sxs-lookup"><span data-stu-id="57ec2-186">You also use hello `/views/index.ejs` view toocapture account information.</span></span> <span data-ttu-id="57ec2-187">Du kan använda villkorlig hello `if (!user)` som hello användare som skickas via hello-begäran.</span><span class="sxs-lookup"><span data-stu-id="57ec2-187">You can use hello conditional `if (!user)` as hello user being passed through in hello request.</span></span> <span data-ttu-id="57ec2-188">Det finns bevis att du har en inloggad användare.</span><span class="sxs-lookup"><span data-stu-id="57ec2-188">It is evidence that you have a user signed in.</span></span>
 
   ```JavaScript
   <% if (!user) { %>
@@ -353,7 +353,7 @@ ms.lasthandoff: 07/11/2017
   <% } %>
   ```
 
-4.  <span data-ttu-id="bda13-189">Skapa i rotkatalogen på `/views/account.ejs` vyn.</span><span class="sxs-lookup"><span data-stu-id="bda13-189">In the root directory, create the `/views/account.ejs` view.</span></span> <span data-ttu-id="bda13-190">Den `/views/account.ejs` vy kan du visa ytterligare information som `passport-azuread` placerar i användarens begäran.</span><span class="sxs-lookup"><span data-stu-id="bda13-190">The `/views/account.ejs` view allows you to view additional information that `passport-azuread` puts in the user request.</span></span>
+4.  <span data-ttu-id="57ec2-189">Skapa hello i hello rotkatalog `/views/account.ejs` vyn.</span><span class="sxs-lookup"><span data-stu-id="57ec2-189">In hello root directory, create hello `/views/account.ejs` view.</span></span> <span data-ttu-id="57ec2-190">Hej `/views/account.ejs` vy kan du tooview ytterligare information som `passport-azuread` placerar i hello användarens begäran.</span><span class="sxs-lookup"><span data-stu-id="57ec2-190">hello `/views/account.ejs` view allows you tooview additional information that `passport-azuread` puts in hello user request.</span></span>
 
   ```Javascript
   <% if (!user) { %>
@@ -372,7 +372,7 @@ ms.lasthandoff: 07/11/2017
   <% } %>
   ```
 
-5.  <span data-ttu-id="bda13-191">Lägg till en layout.</span><span class="sxs-lookup"><span data-stu-id="bda13-191">Add a layout.</span></span> <span data-ttu-id="bda13-192">Skapa i rotkatalogen på `/views/layout.ejs` vyn.</span><span class="sxs-lookup"><span data-stu-id="bda13-192">In the root directory, create the `/views/layout.ejs` view.</span></span>
+5.  <span data-ttu-id="57ec2-191">Lägg till en layout.</span><span class="sxs-lookup"><span data-stu-id="57ec2-191">Add a layout.</span></span> <span data-ttu-id="57ec2-192">Skapa hello i hello rotkatalog `/views/layout.ejs` vyn.</span><span class="sxs-lookup"><span data-stu-id="57ec2-192">In hello root directory, create hello `/views/layout.ejs` view.</span></span>
 
   ```HTML
 
@@ -399,26 +399,26 @@ ms.lasthandoff: 07/11/2017
   </html>
   ```
 
-6.  <span data-ttu-id="bda13-193">Om du vill skapa och köra appen kör `node app.js`.</span><span class="sxs-lookup"><span data-stu-id="bda13-193">To build and run your app, run `node app.js`.</span></span> <span data-ttu-id="bda13-194">Gå sedan till `http://localhost:3000`.</span><span class="sxs-lookup"><span data-stu-id="bda13-194">Then, go to `http://localhost:3000`.</span></span>
+6.  <span data-ttu-id="57ec2-193">toobuild och kör din app kör `node app.js`.</span><span class="sxs-lookup"><span data-stu-id="57ec2-193">toobuild and run your app, run `node app.js`.</span></span> <span data-ttu-id="57ec2-194">Gå sedan för`http://localhost:3000`.</span><span class="sxs-lookup"><span data-stu-id="57ec2-194">Then, go too`http://localhost:3000`.</span></span>
 
-7.  <span data-ttu-id="bda13-195">Logga in med ett personligt microsoftkonto eller ett arbets- eller skolkonto konto.</span><span class="sxs-lookup"><span data-stu-id="bda13-195">Sign in with either a personal Microsoft account or a work or school account.</span></span> <span data-ttu-id="bda13-196">Observera att användarens identitet avspeglas i listan över /account.</span><span class="sxs-lookup"><span data-stu-id="bda13-196">Note that the user's identity is reflected in the /account list.</span></span> 
+7.  <span data-ttu-id="57ec2-195">Logga in med ett personligt microsoftkonto eller ett arbets- eller skolkonto konto.</span><span class="sxs-lookup"><span data-stu-id="57ec2-195">Sign in with either a personal Microsoft account or a work or school account.</span></span> <span data-ttu-id="57ec2-196">Observera att hello användaridentitet avspeglas i hello /account lista.</span><span class="sxs-lookup"><span data-stu-id="57ec2-196">Note that hello user's identity is reflected in hello /account list.</span></span> 
 
-<span data-ttu-id="bda13-197">Nu har du en webbapp som skyddas med hjälp av standardprotokollen.</span><span class="sxs-lookup"><span data-stu-id="bda13-197">You now have a web app that is secured by using industry standard protocols.</span></span> <span data-ttu-id="bda13-198">Du kan autentisera användare i din app genom att använda sina personliga och arbetet eller skolan konton.</span><span class="sxs-lookup"><span data-stu-id="bda13-198">You can authenticate users in your app by using their personal and work or school accounts.</span></span>
+<span data-ttu-id="57ec2-197">Nu har du en webbapp som skyddas med hjälp av standardprotokollen.</span><span class="sxs-lookup"><span data-stu-id="57ec2-197">You now have a web app that is secured by using industry standard protocols.</span></span> <span data-ttu-id="57ec2-198">Du kan autentisera användare i din app genom att använda sina personliga och arbetet eller skolan konton.</span><span class="sxs-lookup"><span data-stu-id="57ec2-198">You can authenticate users in your app by using their personal and work or school accounts.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="bda13-199">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="bda13-199">Next steps</span></span>
-<span data-ttu-id="bda13-200">Referens tillhandahålls det slutförda exemplet (utan dina konfigurationsvärden) som [en .zip-fil](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip).</span><span class="sxs-lookup"><span data-stu-id="bda13-200">For reference, the completed sample (without your configuration values) is provided as [a .zip file](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip).</span></span> <span data-ttu-id="bda13-201">Du kan också klona det från GitHub:</span><span class="sxs-lookup"><span data-stu-id="bda13-201">You also can clone it from GitHub:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="57ec2-199">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="57ec2-199">Next steps</span></span>
+<span data-ttu-id="57ec2-200">För referens anger hello slutförts exemplet (utan dina konfigurationsvärden) har angetts som [en .zip-fil](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip).</span><span class="sxs-lookup"><span data-stu-id="57ec2-200">For reference, hello completed sample (without your configuration values) is provided as [a .zip file](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip).</span></span> <span data-ttu-id="57ec2-201">Du kan också klona det från GitHub:</span><span class="sxs-lookup"><span data-stu-id="57ec2-201">You also can clone it from GitHub:</span></span>
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-<span data-ttu-id="bda13-202">Därefter kan du gå vidare till mer avancerade avsnitt.</span><span class="sxs-lookup"><span data-stu-id="bda13-202">Next, you can move on to more advanced topics.</span></span> <span data-ttu-id="bda13-203">Du kanske vill prova:</span><span class="sxs-lookup"><span data-stu-id="bda13-203">You might want to try:</span></span>
+<span data-ttu-id="57ec2-202">Därefter kan du gå vidare toomore avancerade alternativ.</span><span class="sxs-lookup"><span data-stu-id="57ec2-202">Next, you can move on toomore advanced topics.</span></span> <span data-ttu-id="57ec2-203">Du kanske vill tootry:</span><span class="sxs-lookup"><span data-stu-id="57ec2-203">You might want tootry:</span></span>
 
-[<span data-ttu-id="bda13-204">Skydda ett Node.js-webb-API med hjälp av v2.0-slutpunkten</span><span class="sxs-lookup"><span data-stu-id="bda13-204">Secure a Node.js web API by using the v2.0 endpoint</span></span>](active-directory-v2-devquickstarts-node-api.md)
+[<span data-ttu-id="57ec2-204">Skydda ett Node.js-webb-API med hjälp av hello v2.0-slutpunkten</span><span class="sxs-lookup"><span data-stu-id="57ec2-204">Secure a Node.js web API by using hello v2.0 endpoint</span></span>](active-directory-v2-devquickstarts-node-api.md)
 
-<span data-ttu-id="bda13-205">Här följer några ytterligare resurser:</span><span class="sxs-lookup"><span data-stu-id="bda13-205">Here are some additional resources:</span></span>
+<span data-ttu-id="57ec2-205">Här följer några ytterligare resurser:</span><span class="sxs-lookup"><span data-stu-id="57ec2-205">Here are some additional resources:</span></span>
 
-* [<span data-ttu-id="bda13-206">Utvecklarhandbok för Azure AD v2.0</span><span class="sxs-lookup"><span data-stu-id="bda13-206">Azure AD v2.0 developer guide</span></span>](active-directory-appmodel-v2-overview.md)
-* [<span data-ttu-id="bda13-207">Stacken spill ”azure-active-directory” tagg</span><span class="sxs-lookup"><span data-stu-id="bda13-207">Stack Overflow "azure-active-directory" tag</span></span>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+* [<span data-ttu-id="57ec2-206">Utvecklarhandbok för Azure AD v2.0</span><span class="sxs-lookup"><span data-stu-id="57ec2-206">Azure AD v2.0 developer guide</span></span>](active-directory-appmodel-v2-overview.md)
+* [<span data-ttu-id="57ec2-207">Stacken spill ”azure-active-directory” tagg</span><span class="sxs-lookup"><span data-stu-id="57ec2-207">Stack Overflow "azure-active-directory" tag</span></span>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-### <a name="get-security-updates-for-our-products"></a><span data-ttu-id="bda13-208">Hämta säkerhetsuppdateringar för våra produkter</span><span class="sxs-lookup"><span data-stu-id="bda13-208">Get security updates for our products</span></span>
-<span data-ttu-id="bda13-209">Vi rekommenderar att du loggar som ska meddelas när säkerhetsincidenter.</span><span class="sxs-lookup"><span data-stu-id="bda13-209">We encourage you to sign up to be notified when security incidents occur.</span></span> <span data-ttu-id="bda13-210">På den [Microsoft tekniska säkerhetsmeddelanden](https://technet.microsoft.com/security/dd252948) kan prenumerera på rekommendationerna säkerhetsaviseringar.</span><span class="sxs-lookup"><span data-stu-id="bda13-210">On the [Microsoft Technical Security Notifications](https://technet.microsoft.com/security/dd252948) page, subscribe to Security Advisories Alerts.</span></span>
+### <a name="get-security-updates-for-our-products"></a><span data-ttu-id="57ec2-208">Hämta säkerhetsuppdateringar för våra produkter</span><span class="sxs-lookup"><span data-stu-id="57ec2-208">Get security updates for our products</span></span>
+<span data-ttu-id="57ec2-209">Vi rekommenderar att du toosign in toobe meddelas när säkerhetsincidenter.</span><span class="sxs-lookup"><span data-stu-id="57ec2-209">We encourage you toosign up toobe notified when security incidents occur.</span></span> <span data-ttu-id="57ec2-210">På hello [Microsoft tekniska säkerhetsmeddelanden](https://technet.microsoft.com/security/dd252948) sidan, prenumerera tooSecurity rekommendationerna aviseringar.</span><span class="sxs-lookup"><span data-stu-id="57ec2-210">On hello [Microsoft Technical Security Notifications](https://technet.microsoft.com/security/dd252948) page, subscribe tooSecurity Advisories Alerts.</span></span>
 

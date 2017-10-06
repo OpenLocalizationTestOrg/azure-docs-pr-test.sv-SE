@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 Android komma igång - testa | Microsoft Docs"
+title: "aaaAzure AD v2 Android komma igång - Test | Microsoft Docs"
 description: "Hur en Android-app kan få en åtkomst-token och anropa API: erna som kräver åtkomst-token från Azure Active Directory v2 slutpunkten eller Microsoft Graph API"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,35 +15,35 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 6df64f4820f8409bd8897d5ac24f81bffeeef102
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 499f32b46fd44cca0e52179bced49b311135d8de
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="test-your-code"></a><span data-ttu-id="ff31c-103">Testa din kod</span><span class="sxs-lookup"><span data-stu-id="ff31c-103">Test your code</span></span>
+## <a name="test-your-code"></a><span data-ttu-id="ddbe8-103">Testa din kod</span><span class="sxs-lookup"><span data-stu-id="ddbe8-103">Test your code</span></span>
 
-1. <span data-ttu-id="ff31c-104">Distribuera din kod till din emulatorn.</span><span class="sxs-lookup"><span data-stu-id="ff31c-104">Deploy your code to your device/emulator.</span></span>
-2. <span data-ttu-id="ff31c-105">Använd när du är redo att testa Microsoft Azure Active Directory (organisationskonto) eller ett Account (live.com, outlook.com) för att logga in.</span><span class="sxs-lookup"><span data-stu-id="ff31c-105">When you're ready to test, use a Microsoft Azure Active Directory (organizational account) or a Microsoft Account (live.com, outlook.com) account to sign in.</span></span> 
+1. <span data-ttu-id="ddbe8-104">Distribuera din kod tooyour/emulatorn.</span><span class="sxs-lookup"><span data-stu-id="ddbe8-104">Deploy your code tooyour device/emulator.</span></span>
+2. <span data-ttu-id="ddbe8-105">När du är klar tootest kan använda Microsoft Azure Active Directory (organisationskonto) eller en Account (live.com, outlook.com) konto toosign i.</span><span class="sxs-lookup"><span data-stu-id="ddbe8-105">When you're ready tootest, use a Microsoft Azure Active Directory (organizational account) or a Microsoft Account (live.com, outlook.com) account toosign in.</span></span> 
 
-<span data-ttu-id="ff31c-106">![Exempel skärmbild](media/active-directory-mobileanddesktopapp-android-test/mainwindow.png)
-</span><span class="sxs-lookup"><span data-stu-id="ff31c-106">![Sample screen shot](media/active-directory-mobileanddesktopapp-android-test/mainwindow.png)
-</span></span><br/><br/><span data-ttu-id="ff31c-107">
-![Logga in](media/active-directory-mobileanddesktopapp-android-test/usernameandpassword.png)</span><span class="sxs-lookup"><span data-stu-id="ff31c-107">
+<span data-ttu-id="ddbe8-106">![Exempel skärmbild](media/active-directory-mobileanddesktopapp-android-test/mainwindow.png)
+</span><span class="sxs-lookup"><span data-stu-id="ddbe8-106">![Sample screen shot](media/active-directory-mobileanddesktopapp-android-test/mainwindow.png)
+</span></span><br/><br/><span data-ttu-id="ddbe8-107">
+![Logga in](media/active-directory-mobileanddesktopapp-android-test/usernameandpassword.png)</span><span class="sxs-lookup"><span data-stu-id="ddbe8-107">
 ![Sign-in](media/active-directory-mobileanddesktopapp-android-test/usernameandpassword.png)</span></span>
 
-### <a name="consent"></a><span data-ttu-id="ff31c-108">Medgivande</span><span class="sxs-lookup"><span data-stu-id="ff31c-108">Consent</span></span>
-<span data-ttu-id="ff31c-109">Första gången en användare loggar in på ditt program, de kommer att visas en medgivande skärm som liknar den nedan, där de måste uttryckligen acceptera:</span><span class="sxs-lookup"><span data-stu-id="ff31c-109">The first time a user signs in to your application, they will be presented with a consent screen similar to the below, where they need to explicitly accept:</span></span> 
+### <a name="consent"></a><span data-ttu-id="ddbe8-108">Medgivande</span><span class="sxs-lookup"><span data-stu-id="ddbe8-108">Consent</span></span>
+<span data-ttu-id="ddbe8-109">hello första gången en användare loggar in tooyour program, de kommer att visas ett medgivande skärm liknande toohello nedan, där de måste acceptera tooexplicitly:</span><span class="sxs-lookup"><span data-stu-id="ddbe8-109">hello first time a user signs in tooyour application, they will be presented with a consent screen similar toohello below, where they need tooexplicitly accept:</span></span> 
 
 ![Medgivande](media/active-directory-mobileanddesktopapp-android-test/androidconsent.png)
 
 
-### <a name="expected-results"></a><span data-ttu-id="ff31c-111">Förväntat resultat</span><span class="sxs-lookup"><span data-stu-id="ff31c-111">Expected results</span></span>
-<span data-ttu-id="ff31c-112">Du bör se resultatet av ett anrop till Microsoft Graph API ”jag” slutpunkt som används till att hämta användarprofil - https://graph.microsoft.com/v1.0/me.</span><span class="sxs-lookup"><span data-stu-id="ff31c-112">You should see the results of a call to Microsoft Graph API ‘me’ endpoint used to to obtain the user profile - https://graph.microsoft.com/v1.0/me.</span></span> <span data-ttu-id="ff31c-113">En lista över vanliga Microsoft Graph slutpunkter finns [artikel](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries).</span><span class="sxs-lookup"><span data-stu-id="ff31c-113">For a list of common Microsoft Graph endpoints, please see this [article](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries).</span></span>
+### <a name="expected-results"></a><span data-ttu-id="ddbe8-111">Förväntat resultat</span><span class="sxs-lookup"><span data-stu-id="ddbe8-111">Expected results</span></span>
+<span data-ttu-id="ddbe8-112">Du bör se hello resultatet av ett anrop tooMicrosoft Graph API ”jag” endpoint används tootooobtain hello användarprofil - https://graph.microsoft.com/v1.0/me.</span><span class="sxs-lookup"><span data-stu-id="ddbe8-112">You should see hello results of a call tooMicrosoft Graph API ‘me’ endpoint used tootooobtain hello user profile - https://graph.microsoft.com/v1.0/me.</span></span> <span data-ttu-id="ddbe8-113">En lista över vanliga Microsoft Graph slutpunkter finns [artikel](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries).</span><span class="sxs-lookup"><span data-stu-id="ddbe8-113">For a list of common Microsoft Graph endpoints, please see this [article](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries).</span></span>
 
 <!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a><span data-ttu-id="ff31c-114">Mer information om scope och delegerade behörigheter</span><span class="sxs-lookup"><span data-stu-id="ff31c-114">More information about scopes and delegated permissions</span></span>
+### <a name="more-information-about-scopes-and-delegated-permissions"></a><span data-ttu-id="ddbe8-114">Mer information om scope och delegerade behörigheter</span><span class="sxs-lookup"><span data-stu-id="ddbe8-114">More information about scopes and delegated permissions</span></span>
 
-<span data-ttu-id="ff31c-115">Microsoft Graph API kräver den `user.read` omfång att läsa användarens profil.</span><span class="sxs-lookup"><span data-stu-id="ff31c-115">The Microsoft Graph API requires the `user.read` scope to read the user's profile.</span></span> <span data-ttu-id="ff31c-116">Detta scope läggs automatiskt som standard i alla program som registreras på vår registreringsportal.</span><span class="sxs-lookup"><span data-stu-id="ff31c-116">This scope is automatically added by default in every application being registered on our registration portal.</span></span> <span data-ttu-id="ff31c-117">Vissa andra API: er för Microsoft Graph samt anpassade API: er för backend-servern kan kräva ytterligare scope.</span><span class="sxs-lookup"><span data-stu-id="ff31c-117">Some other APIs for Microsoft Graph as well as custom APIs for your backend server may require additional scopes.</span></span> <span data-ttu-id="ff31c-118">Till exempel för Microsoft Graph omfånget `Calendars.Read` krävs för att visa en lista med användarens kalendrar.</span><span class="sxs-lookup"><span data-stu-id="ff31c-118">For example, for Microsoft Graph, the scope `Calendars.Read` is required to list the user’s calendars.</span></span> <span data-ttu-id="ff31c-119">För att komma åt användarens kalender i en kontext med ett program måste du lägga till den `Calendars.Read` delegerad behörighet att programmet registreringsinformation och Lägg sedan till den `Calendars.Read` omfånget för den `acquireTokenSilentAsync` anropa.</span><span class="sxs-lookup"><span data-stu-id="ff31c-119">In order to access the user’s calendar in a context of an application, you need to add the `Calendars.Read` delegated permission to the application registration’s information and then add the `Calendars.Read` scope to the `acquireTokenSilentAsync` call.</span></span> <span data-ttu-id="ff31c-120">Användaren kan uppmanas att ytterligare medgivanden när du ökar antalet scope.</span><span class="sxs-lookup"><span data-stu-id="ff31c-120">The user may be prompted for additional consents as you increase the number of scopes.</span></span>
+<span data-ttu-id="ddbe8-115">hello Microsoft Graph API kräver hello `user.read` omfång tooread hello användarens profil.</span><span class="sxs-lookup"><span data-stu-id="ddbe8-115">hello Microsoft Graph API requires hello `user.read` scope tooread hello user's profile.</span></span> <span data-ttu-id="ddbe8-116">Detta scope läggs automatiskt som standard i alla program som registreras på vår registreringsportal.</span><span class="sxs-lookup"><span data-stu-id="ddbe8-116">This scope is automatically added by default in every application being registered on our registration portal.</span></span> <span data-ttu-id="ddbe8-117">Vissa andra API: er för Microsoft Graph samt anpassade API: er för backend-servern kan kräva ytterligare scope.</span><span class="sxs-lookup"><span data-stu-id="ddbe8-117">Some other APIs for Microsoft Graph as well as custom APIs for your backend server may require additional scopes.</span></span> <span data-ttu-id="ddbe8-118">Till exempel hello omfånget för Microsoft Graph `Calendars.Read` är nödvändiga toolist hello användares kalendrar.</span><span class="sxs-lookup"><span data-stu-id="ddbe8-118">For example, for Microsoft Graph, hello scope `Calendars.Read` is required toolist hello user’s calendars.</span></span> <span data-ttu-id="ddbe8-119">I ordning tooaccess hello användarens kalender i en kontext med ett program måste du tooadd hello `Calendars.Read` delegerad behörighet toohello programmet registreringens information och Lägg sedan till hello `Calendars.Read` omfång toohello `acquireTokenSilentAsync` anropa.</span><span class="sxs-lookup"><span data-stu-id="ddbe8-119">In order tooaccess hello user’s calendar in a context of an application, you need tooadd hello `Calendars.Read` delegated permission toohello application registration’s information and then add hello `Calendars.Read` scope toohello `acquireTokenSilentAsync` call.</span></span> <span data-ttu-id="ddbe8-120">hello användare kan uppmanas att ytterligare medgivanden när du ökar hello antal scope.</span><span class="sxs-lookup"><span data-stu-id="ddbe8-120">hello user may be prompted for additional consents as you increase hello number of scopes.</span></span>
 
 <!--end-collapse-->

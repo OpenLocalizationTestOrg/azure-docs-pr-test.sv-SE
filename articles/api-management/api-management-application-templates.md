@@ -1,6 +1,6 @@
 ---
-title: Programmallar i Azure API Management | Microsoft Docs
-description: "Lär dig hur du anpassar innehållet i programsidor i developer-portalen i Azure API Management."
+title: aaaApplication mallar i Azure API Management | Microsoft Docs
+description: "Lär dig hur toocustomize hello innehållet i hello programsidor i hello developer-portalen i Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 6d2d44465800219f16866a621d4822614ac9e1dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f4dc078be7163b047ca2e640a9065ba9e5ba709e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="application-templates-in-azure-api-management"></a><span data-ttu-id="dfdd9-103">Programmallar i Azure API Management</span><span class="sxs-lookup"><span data-stu-id="dfdd9-103">Application templates in Azure API Management</span></span>
-<span data-ttu-id="dfdd9-104">Azure API Management ger dig möjlighet att anpassa innehållet i developer portalens sidor med hjälp av en uppsättning mallar som konfigurerar deras innehåll.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-104">Azure API Management provides you the ability to customize the content of developer portal pages using a set of templates that configure their content.</span></span> <span data-ttu-id="dfdd9-105">Med hjälp av [DotLiquid](http://dotliquidmarkup.org/) syntax och redigeringsprogram, t.ex [DotLiquid för Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), och en angiven uppsättning lokaliserade [String resurser](api-management-template-resources.md#strings), [glyf resurser](api-management-template-resources.md#glyphs), och [sidan kontroller](api-management-page-controls.md), du har stor flexibilitet för att konfigurera innehåll för sidorna som du vill använda dessa mallar.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-105">Using [DotLiquid](http://dotliquidmarkup.org/) syntax and the editor of your choice, such as [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), and a provided set of localized [String resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), and [Page controls](api-management-page-controls.md), you have great flexibility to configure the content of the pages as you see fit using these templates.</span></span>  
+# <a name="application-templates-in-azure-api-management"></a><span data-ttu-id="77011-103">Programmallar i Azure API Management</span><span class="sxs-lookup"><span data-stu-id="77011-103">Application templates in Azure API Management</span></span>
+<span data-ttu-id="77011-104">Azure API Management ger du hello möjlighet toocustomize hello innehållet i developer portalens sidor med hjälp av en uppsättning mallar som konfigurerar deras innehåll.</span><span class="sxs-lookup"><span data-stu-id="77011-104">Azure API Management provides you hello ability toocustomize hello content of developer portal pages using a set of templates that configure their content.</span></span> <span data-ttu-id="77011-105">Med hjälp av [DotLiquid](http://dotliquidmarkup.org/) syntax och hello redigeringsprogram, t.ex [DotLiquid för Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), och en angiven uppsättning lokaliserade [String resurser](api-management-template-resources.md#strings), [ Glyf resurser](api-management-template-resources.md#glyphs), och [sidan kontroller](api-management-page-controls.md), du har stor flexibilitet tooconfigure hello innehåll hello sidor som du vill använda dessa mallar.</span><span class="sxs-lookup"><span data-stu-id="77011-105">Using [DotLiquid](http://dotliquidmarkup.org/) syntax and hello editor of your choice, such as [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), and a provided set of localized [String resources](api-management-template-resources.md#strings), [Glyph resources](api-management-template-resources.md#glyphs), and [Page controls](api-management-page-controls.md), you have great flexibility tooconfigure hello content of hello pages as you see fit using these templates.</span></span>  
   
- <span data-ttu-id="dfdd9-106">Mallarna i det här avsnittet kan du anpassa innehållet i programsidor i developer-portalen.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-106">The templates in this section allow you to customize the content of the Application pages in the developer portal.</span></span>  
+ <span data-ttu-id="77011-106">hello mallar i det här avsnittet kan du toocustomize hello innehållet i hello programsidor i hello developer-portalen.</span><span class="sxs-lookup"><span data-stu-id="77011-106">hello templates in this section allow you toocustomize hello content of hello Application pages in hello developer portal.</span></span>  
   
--   [<span data-ttu-id="dfdd9-107">Programlista</span><span class="sxs-lookup"><span data-stu-id="dfdd9-107">Application list</span></span>](#ProductList)  
+-   [<span data-ttu-id="77011-107">Programlista</span><span class="sxs-lookup"><span data-stu-id="77011-107">Application list</span></span>](#ProductList)  
   
--   [<span data-ttu-id="dfdd9-108">Programmet</span><span class="sxs-lookup"><span data-stu-id="dfdd9-108">Application</span></span>](#Application)  
+-   [<span data-ttu-id="77011-108">Programmet</span><span class="sxs-lookup"><span data-stu-id="77011-108">Application</span></span>](#Application)  
   
 > [!NOTE]
->  <span data-ttu-id="dfdd9-109">Standard exempelmallarna ingår i följande dokumentation, men kan komma att ändras på grund av kontinuerliga förbättringar.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-109">Sample default templates are included in the following documentation, but are subject to change due to continuous improvements.</span></span> <span data-ttu-id="dfdd9-110">Du kan visa live standardmallarna i developer-portalen genom att navigera till önskade enskilda mallar.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-110">You can view the live default templates in the developer portal by navigating to the desired individual templates.</span></span> <span data-ttu-id="dfdd9-111">Mer information om hur du arbetar med mallar finns [hur du anpassar API Management developer-portalen med hjälp av mallar](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span><span class="sxs-lookup"><span data-stu-id="dfdd9-111">For more information about working with templates, see [How to customize the API Management developer portal using templates](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span></span>  
+>  <span data-ttu-id="77011-109">Standard exempelmallarna ingår i hello följande dokumentation, men är ämne toochange på grund av toocontinuous förbättringar.</span><span class="sxs-lookup"><span data-stu-id="77011-109">Sample default templates are included in hello following documentation, but are subject toochange due toocontinuous improvements.</span></span> <span data-ttu-id="77011-110">Du kan visa hello live standardmallarna i hello developer-portalen genom att gå toohello önskad enskilda mallar.</span><span class="sxs-lookup"><span data-stu-id="77011-110">You can view hello live default templates in hello developer portal by navigating toohello desired individual templates.</span></span> <span data-ttu-id="77011-111">Mer information om hur du arbetar med mallar finns [hur toocustomize hello API Management developer-portalen med hjälp av mallar](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span><span class="sxs-lookup"><span data-stu-id="77011-111">For more information about working with templates, see [How toocustomize hello API Management developer portal using templates](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).</span></span>  
   
-##  <span data-ttu-id="dfdd9-112"><a name="ProductList"></a>Programlista</span><span class="sxs-lookup"><span data-stu-id="dfdd9-112"><a name="ProductList"></a> Application list</span></span>  
- <span data-ttu-id="dfdd9-113">Den **programlista** mall kan du anpassa brödtexten i sidan program i developer-portalen.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-113">The **Application list** template allows you to customize the body of the application list page in the developer portal.</span></span>  
+##  <span data-ttu-id="77011-112"><a name="ProductList"></a>Programlista</span><span class="sxs-lookup"><span data-stu-id="77011-112"><a name="ProductList"></a> Application list</span></span>  
+ <span data-ttu-id="77011-113">Hej **programlista** mall kan du toocustomize hello brödtext hello programmet sidan i hello developer-portalen.</span><span class="sxs-lookup"><span data-stu-id="77011-113">hello **Application list** template allows you toocustomize hello body of hello application list page in hello developer portal.</span></span>  
   
- <span data-ttu-id="dfdd9-114">![Lista över sidan Developer Portal programmallar](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM lista sidan Developer Portal programmallar")</span><span class="sxs-lookup"><span data-stu-id="dfdd9-114">![Application List Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM Application List Page Developer Portal Templates")</span></span>  
+ <span data-ttu-id="77011-114">![Lista över sidan Developer Portal programmallar](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM lista sidan Developer Portal programmallar")</span><span class="sxs-lookup"><span data-stu-id="77011-114">![Application List Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM Application List Page Developer Portal Templates")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="dfdd9-115">Standardmall</span><span class="sxs-lookup"><span data-stu-id="dfdd9-115">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="77011-115">Standardmall</span><span class="sxs-lookup"><span data-stu-id="77011-115">Default template</span></span>  
   
 ```xml  
 <div class="row">  
@@ -69,20 +69,20 @@ ms.lasthandoff: 07/11/2017
 </div>  
 ```  
   
-### <a name="controls"></a><span data-ttu-id="dfdd9-116">Kontroller</span><span class="sxs-lookup"><span data-stu-id="dfdd9-116">Controls</span></span>  
- <span data-ttu-id="dfdd9-117">Den `Product list` mall kan du använda följande [sidan kontroller](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dfdd9-117">The `Product list` template may use the following [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="77011-116">Kontroller</span><span class="sxs-lookup"><span data-stu-id="77011-116">Controls</span></span>  
+ <span data-ttu-id="77011-117">Hej `Product list` mall kan använda följande hello [sidan kontroller](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="77011-117">hello `Product list` template may use hello following [page controls](api-management-page-controls.md).</span></span>  
   
--   [<span data-ttu-id="dfdd9-118">växlingsfil-kontroll</span><span class="sxs-lookup"><span data-stu-id="dfdd9-118">paging-control</span></span>](api-management-page-controls.md#paging-control)  
+-   [<span data-ttu-id="77011-118">växlingsfil-kontroll</span><span class="sxs-lookup"><span data-stu-id="77011-118">paging-control</span></span>](api-management-page-controls.md#paging-control)  
   
-### <a name="data-model"></a><span data-ttu-id="dfdd9-119">Datamodell</span><span class="sxs-lookup"><span data-stu-id="dfdd9-119">Data model</span></span>  
+### <a name="data-model"></a><span data-ttu-id="77011-119">Datamodell</span><span class="sxs-lookup"><span data-stu-id="77011-119">Data model</span></span>  
   
-|<span data-ttu-id="dfdd9-120">Egenskap</span><span class="sxs-lookup"><span data-stu-id="dfdd9-120">Property</span></span>|<span data-ttu-id="dfdd9-121">Typ</span><span class="sxs-lookup"><span data-stu-id="dfdd9-121">Type</span></span>|<span data-ttu-id="dfdd9-122">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="dfdd9-122">Description</span></span>|  
+|<span data-ttu-id="77011-120">Egenskap</span><span class="sxs-lookup"><span data-stu-id="77011-120">Property</span></span>|<span data-ttu-id="77011-121">Typ</span><span class="sxs-lookup"><span data-stu-id="77011-121">Type</span></span>|<span data-ttu-id="77011-122">Beskrivning</span><span class="sxs-lookup"><span data-stu-id="77011-122">Description</span></span>|  
 |--------------|----------|-----------------|  
-|<span data-ttu-id="dfdd9-123">Sidindelning</span><span class="sxs-lookup"><span data-stu-id="dfdd9-123">Paging</span></span>|<span data-ttu-id="dfdd9-124">[Växling](api-management-template-data-model-reference.md#Paging) entitet.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-124">[Paging](api-management-template-data-model-reference.md#Paging) entity.</span></span>|<span data-ttu-id="dfdd9-125">Växlingsfil-information för samlingen program.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-125">The paging information for the applications collection.</span></span>|  
-|<span data-ttu-id="dfdd9-126">Program</span><span class="sxs-lookup"><span data-stu-id="dfdd9-126">Applications</span></span>|<span data-ttu-id="dfdd9-127">Samling av [programmet](api-management-template-data-model-reference.md#Application) entiteter.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-127">Collection of [Application](api-management-template-data-model-reference.md#Application) entities.</span></span>|<span data-ttu-id="dfdd9-128">Program som är synliga för den aktuella användaren.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-128">The applications visible to the current user.</span></span>|  
-|<span data-ttu-id="dfdd9-129">Kategorinamn</span><span class="sxs-lookup"><span data-stu-id="dfdd9-129">CategoryName</span></span>|<span data-ttu-id="dfdd9-130">Sträng</span><span class="sxs-lookup"><span data-stu-id="dfdd9-130">string</span></span>|<span data-ttu-id="dfdd9-131">Kategori för programmet.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-131">The category of application.</span></span>|  
+|<span data-ttu-id="77011-123">Sidindelning</span><span class="sxs-lookup"><span data-stu-id="77011-123">Paging</span></span>|<span data-ttu-id="77011-124">[Växling](api-management-template-data-model-reference.md#Paging) entitet.</span><span class="sxs-lookup"><span data-stu-id="77011-124">[Paging](api-management-template-data-model-reference.md#Paging) entity.</span></span>|<span data-ttu-id="77011-125">hello sidindelning information för hello program samling.</span><span class="sxs-lookup"><span data-stu-id="77011-125">hello paging information for hello applications collection.</span></span>|  
+|<span data-ttu-id="77011-126">Program</span><span class="sxs-lookup"><span data-stu-id="77011-126">Applications</span></span>|<span data-ttu-id="77011-127">Samling av [programmet](api-management-template-data-model-reference.md#Application) entiteter.</span><span class="sxs-lookup"><span data-stu-id="77011-127">Collection of [Application](api-management-template-data-model-reference.md#Application) entities.</span></span>|<span data-ttu-id="77011-128">hello program visas toohello aktuella användaren.</span><span class="sxs-lookup"><span data-stu-id="77011-128">hello applications visible toohello current user.</span></span>|  
+|<span data-ttu-id="77011-129">Kategorinamn</span><span class="sxs-lookup"><span data-stu-id="77011-129">CategoryName</span></span>|<span data-ttu-id="77011-130">Sträng</span><span class="sxs-lookup"><span data-stu-id="77011-130">string</span></span>|<span data-ttu-id="77011-131">hello kategori av programmet.</span><span class="sxs-lookup"><span data-stu-id="77011-131">hello category of application.</span></span>|  
   
-### <a name="sample-template-data"></a><span data-ttu-id="dfdd9-132">Mallen exempeldata</span><span class="sxs-lookup"><span data-stu-id="dfdd9-132">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="77011-132">Mallen exempeldata</span><span class="sxs-lookup"><span data-stu-id="77011-132">Sample template data</span></span>  
   
 ```json  
 {  
@@ -133,12 +133,12 @@ ms.lasthandoff: 07/11/2017
 }  
 ```  
   
-##  <span data-ttu-id="dfdd9-133"><a name="Application"></a>Programmet</span><span class="sxs-lookup"><span data-stu-id="dfdd9-133"><a name="Application"></a> Application</span></span>  
- <span data-ttu-id="dfdd9-134">Den **programmet** mall kan du anpassa brödtexten i appen på sidan i developer-portalen.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-134">The **Application** template allows you to customize the body of the application page in the developer portal.</span></span>  
+##  <span data-ttu-id="77011-133"><a name="Application"></a>Programmet</span><span class="sxs-lookup"><span data-stu-id="77011-133"><a name="Application"></a> Application</span></span>  
+ <span data-ttu-id="77011-134">Hej **programmet** mall kan du toocustomize hello brödtext hello appen på sidan i hello developer-portalen.</span><span class="sxs-lookup"><span data-stu-id="77011-134">hello **Application** template allows you toocustomize hello body of hello application page in hello developer portal.</span></span>  
   
- <span data-ttu-id="dfdd9-135">![Programmet sidan Developer Portal mallar](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM sidan Developer Portal programmallar")</span><span class="sxs-lookup"><span data-stu-id="dfdd9-135">![Application Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM Application Page Developer Portal Templates")</span></span>  
+ <span data-ttu-id="77011-135">![Programmet sidan Developer Portal mallar](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM sidan Developer Portal programmallar")</span><span class="sxs-lookup"><span data-stu-id="77011-135">![Application Page Developer Portal Templates](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM Application Page Developer Portal Templates")</span></span>  
   
-### <a name="default-template"></a><span data-ttu-id="dfdd9-136">Standardmall</span><span class="sxs-lookup"><span data-stu-id="dfdd9-136">Default template</span></span>  
+### <a name="default-template"></a><span data-ttu-id="77011-136">Standardmall</span><span class="sxs-lookup"><span data-stu-id="77011-136">Default template</span></span>  
   
 ```xml  
 <h2>{{title}}</h2>  
@@ -176,13 +176,13 @@ ms.lasthandoff: 07/11/2017
   
 ```  
   
-### <a name="controls"></a><span data-ttu-id="dfdd9-137">Kontroller</span><span class="sxs-lookup"><span data-stu-id="dfdd9-137">Controls</span></span>  
- <span data-ttu-id="dfdd9-138">Den `Application` mallen kan inte användas för någon [sidan kontroller](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="dfdd9-138">The `Application` template does not allow the use of any [page controls](api-management-page-controls.md).</span></span>  
+### <a name="controls"></a><span data-ttu-id="77011-137">Kontroller</span><span class="sxs-lookup"><span data-stu-id="77011-137">Controls</span></span>  
+ <span data-ttu-id="77011-138">Hej `Application` mall tillåter inte hello användning av något [sidan kontroller](api-management-page-controls.md).</span><span class="sxs-lookup"><span data-stu-id="77011-138">hello `Application` template does not allow hello use of any [page controls](api-management-page-controls.md).</span></span>  
   
-### <a name="data-model"></a><span data-ttu-id="dfdd9-139">Datamodell</span><span class="sxs-lookup"><span data-stu-id="dfdd9-139">Data model</span></span>  
- <span data-ttu-id="dfdd9-140">[Programmet](api-management-template-data-model-reference.md#Application) entitet.</span><span class="sxs-lookup"><span data-stu-id="dfdd9-140">[Application](api-management-template-data-model-reference.md#Application) entity.</span></span>  
+### <a name="data-model"></a><span data-ttu-id="77011-139">Datamodell</span><span class="sxs-lookup"><span data-stu-id="77011-139">Data model</span></span>  
+ <span data-ttu-id="77011-140">[Programmet](api-management-template-data-model-reference.md#Application) entitet.</span><span class="sxs-lookup"><span data-stu-id="77011-140">[Application](api-management-template-data-model-reference.md#Application) entity.</span></span>  
   
-### <a name="sample-template-data"></a><span data-ttu-id="dfdd9-141">Mallen exempeldata</span><span class="sxs-lookup"><span data-stu-id="dfdd9-141">Sample template data</span></span>  
+### <a name="sample-template-data"></a><span data-ttu-id="77011-141">Mallen exempeldata</span><span class="sxs-lookup"><span data-stu-id="77011-141">Sample template data</span></span>  
   
 ```json  
 {  
@@ -219,5 +219,5 @@ ms.lasthandoff: 07/11/2017
 }  
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="dfdd9-142">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="dfdd9-142">Next steps</span></span>
-<span data-ttu-id="dfdd9-143">Mer information om hur du arbetar med mallar finns [hur du anpassar API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).</span><span class="sxs-lookup"><span data-stu-id="dfdd9-143">For more information about working with templates, see [How to customize the API Management developer portal using templates](api-management-developer-portal-templates.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="77011-142">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="77011-142">Next steps</span></span>
+<span data-ttu-id="77011-143">Mer information om hur du arbetar med mallar finns [hur toocustomize hello API Management developer-portalen med hjälp av mallar](api-management-developer-portal-templates.md).</span><span class="sxs-lookup"><span data-stu-id="77011-143">For more information about working with templates, see [How toocustomize hello API Management developer portal using templates](api-management-developer-portal-templates.md).</span></span>
