@@ -1,5 +1,5 @@
 ---
-title: "Azure AD v2 JS SPA interaktiv installation – konfigurera (ARP) | Microsoft Docs"
+title: aaaAzure AD v2 JS SPA interaktiv installation - konfigurera ARP () | Microsoft Docs
 description: "Hur JavaScript SPA program anropar en API som kräver åtkomst-token i Azure Active Directory v2 slutpunkten ARP)"
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,41 +13,41 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
-ms.openlocfilehash: 708f4ff606d79639de979918a9cacd4ed75db311
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 157f4e342cd684294e24da6ee1fad8a7c2fc266a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-## <a name="add-the-applications-registration-information-to-your-app"></a><span data-ttu-id="f0a47-103">Lägg till programmets registreringsinformation i appen</span><span class="sxs-lookup"><span data-stu-id="f0a47-103">Add the application’s registration information to your App</span></span>
+## <a name="add-hello-applications-registration-information-tooyour-app"></a><span data-ttu-id="19bc0-103">Lägg till hello programmet registrering information tooyour App</span><span class="sxs-lookup"><span data-stu-id="19bc0-103">Add hello application’s registration information tooyour App</span></span>
 
-<span data-ttu-id="f0a47-104">I det här steget måste du konfigurera omdirigerings-URL för din registreringsinformation för programmet och sedan lägga till det program-Id i JavaScript SPA-programmet.</span><span class="sxs-lookup"><span data-stu-id="f0a47-104">In this step, you need to configure the Redirect URL of your application registration information and then add the Application Id to your JavaScript SPA application.</span></span>
+<span data-ttu-id="19bc0-104">I det här steget du behöver tooconfigure hello omdirigerings-URL för din registreringsinformation för programmet och Lägg sedan till hello program-Id tooyour JavaScript SPA program.</span><span class="sxs-lookup"><span data-stu-id="19bc0-104">In this step, you need tooconfigure hello Redirect URL of your application registration information and then add hello Application Id tooyour JavaScript SPA application.</span></span>
 
-### <a name="configure-redirect-url"></a><span data-ttu-id="f0a47-105">Konfigurera omdirigerings-URL</span><span class="sxs-lookup"><span data-stu-id="f0a47-105">Configure redirect URL</span></span>
+### <a name="configure-redirect-url"></a><span data-ttu-id="19bc0-105">Konfigurera omdirigerings-URL</span><span class="sxs-lookup"><span data-stu-id="19bc0-105">Configure redirect URL</span></span>
 
-<span data-ttu-id="f0a47-106">Konfigurera den `Redirect URL` fältet ovan med URL-Adressen för index.html sidan baserat på din webbserver och klicka sedan på *uppdatering*.</span><span class="sxs-lookup"><span data-stu-id="f0a47-106">Configure the `Redirect URL` field above with the URL for your index.html page based on your web server, then click *Update*.</span></span>
+<span data-ttu-id="19bc0-106">Konfigurera hello `Redirect URL` fältet ovan med hello URL för index.html sidan baserat på din webbserver och klicka sedan på *uppdatering*.</span><span class="sxs-lookup"><span data-stu-id="19bc0-106">Configure hello `Redirect URL` field above with hello URL for your index.html page based on your web server, then click *Update*.</span></span>
 
 
-> #### <a name="visual-studio-instructions-for-obtaining-redirect-url"></a><span data-ttu-id="f0a47-107">Visual Studio-instruktionerna för att skaffa omdirigerings-URL</span><span class="sxs-lookup"><span data-stu-id="f0a47-107">Visual Studio instructions for obtaining redirect URL</span></span>
-> <span data-ttu-id="f0a47-108">Följ anvisningarna nedan om du vill hämta omdirigerings-URL:</span><span class="sxs-lookup"><span data-stu-id="f0a47-108">To obtain your redirect URL, follow the instructions below:</span></span>
-> 1.    <span data-ttu-id="f0a47-109">I *Solution Explorer*projektet och välj titta på den `Properties` fönstret (om du inte ser en egenskapsfönstret trycker du på `F4`)</span><span class="sxs-lookup"><span data-stu-id="f0a47-109">In *Solution Explorer*, select the project and look at the `Properties` window (if you don’t see a Properties window, press `F4`)</span></span>
-> 2.    <span data-ttu-id="f0a47-110">Kopiera värdet från `URL` till Urklipp:</span><span class="sxs-lookup"><span data-stu-id="f0a47-110">Copy the value from `URL` to the clipboard:</span></span><br/> <span data-ttu-id="f0a47-111">![Egenskaper för](media/active-directory-singlepageapp-javascriptspa-configure/vs-project-properties-screenshot.png)</span><span class="sxs-lookup"><span data-stu-id="f0a47-111">![Project properties](media/active-directory-singlepageapp-javascriptspa-configure/vs-project-properties-screenshot.png)</span></span><br />
-> 3.    <span data-ttu-id="f0a47-112">Klistra in värdet som en `Redirect URL` överst i den här sidan, klicka på`Update`</span><span class="sxs-lookup"><span data-stu-id="f0a47-112">Paste the value as a `Redirect URL` on the top of this page, then click `Update`</span></span>
+> #### <a name="visual-studio-instructions-for-obtaining-redirect-url"></a><span data-ttu-id="19bc0-107">Visual Studio-instruktionerna för att skaffa omdirigerings-URL</span><span class="sxs-lookup"><span data-stu-id="19bc0-107">Visual Studio instructions for obtaining redirect URL</span></span>
+> <span data-ttu-id="19bc0-108">tooobtain omdirigerings-URL, följ hello instruktionerna nedan:</span><span class="sxs-lookup"><span data-stu-id="19bc0-108">tooobtain your redirect URL, follow hello instructions below:</span></span>
+> 1.    <span data-ttu-id="19bc0-109">I *Solution Explorer*, Välj hello projekt och titta på hello `Properties` fönstret (om du inte ser en egenskapsfönstret trycker du på `F4`)</span><span class="sxs-lookup"><span data-stu-id="19bc0-109">In *Solution Explorer*, select hello project and look at hello `Properties` window (if you don’t see a Properties window, press `F4`)</span></span>
+> 2.    <span data-ttu-id="19bc0-110">Kopiera hello-värde från `URL` toohello Urklipp:</span><span class="sxs-lookup"><span data-stu-id="19bc0-110">Copy hello value from `URL` toohello clipboard:</span></span><br/> <span data-ttu-id="19bc0-111">![Egenskaper för](media/active-directory-singlepageapp-javascriptspa-configure/vs-project-properties-screenshot.png)</span><span class="sxs-lookup"><span data-stu-id="19bc0-111">![Project properties](media/active-directory-singlepageapp-javascriptspa-configure/vs-project-properties-screenshot.png)</span></span><br />
+> 3.    <span data-ttu-id="19bc0-112">Klistra in hello-värde som en `Redirect URL` hello längst upp på sidan, klicka sedan på`Update`</span><span class="sxs-lookup"><span data-stu-id="19bc0-112">Paste hello value as a `Redirect URL` on hello top of this page, then click `Update`</span></span>
 
 <p/>
 
-> #### <a name="setting-redirect-url-for-python"></a><span data-ttu-id="f0a47-113">Inställningen omdirigerings-URL för Python</span><span class="sxs-lookup"><span data-stu-id="f0a47-113">Setting Redirect URL for Python</span></span>
-> <span data-ttu-id="f0a47-114">För Python, kan du ange webben serverport via kommandoraden.</span><span class="sxs-lookup"><span data-stu-id="f0a47-114">For Python, you can set the web server port via command line.</span></span> <span data-ttu-id="f0a47-115">Den interaktiva installationen använder port 8080 för referens men kan använda någon annan port som är tillgängliga.</span><span class="sxs-lookup"><span data-stu-id="f0a47-115">This guided setup uses the port 8080 for reference but feel free to use any other port available.</span></span> <span data-ttu-id="f0a47-116">I varje fall följer du anvisningarna nedan för att ställa in en omdirigerings-URL i registreringsinformation program:</span><span class="sxs-lookup"><span data-stu-id="f0a47-116">In any case, follow the instructions below to set up a redirect URL in the application registration information:</span></span><br/>
-> <span data-ttu-id="f0a47-117">Ange `http://localhost:8080/` som en `Redirect URL` ovanpå den här sidan, eller Använd `http://localhost:[port]/` om du använder en anpassad TCP-port (där *[port]* är anpassade TCP-portnummer), och klicka sedan på ”Uppdatera”</span><span class="sxs-lookup"><span data-stu-id="f0a47-117">Set `http://localhost:8080/` as a `Redirect URL` on the top of this page, or use `http://localhost:[port]/` if you are using a custom TCP port (where *[port]* is the custom TCP port number), and then click 'Update'</span></span>
+> #### <a name="setting-redirect-url-for-python"></a><span data-ttu-id="19bc0-113">Inställningen omdirigerings-URL för Python</span><span class="sxs-lookup"><span data-stu-id="19bc0-113">Setting Redirect URL for Python</span></span>
+> <span data-ttu-id="19bc0-114">För Python, kan du ange hello web server-port via kommandoraden.</span><span class="sxs-lookup"><span data-stu-id="19bc0-114">For Python, you can set hello web server port via command line.</span></span> <span data-ttu-id="19bc0-115">Den interaktiva installationen använder hello port 8080 för referens men känna sig fria toouse någon annan port som är tillgängliga.</span><span class="sxs-lookup"><span data-stu-id="19bc0-115">This guided setup uses hello port 8080 for reference but feel free toouse any other port available.</span></span> <span data-ttu-id="19bc0-116">I varje fall Följ hello instruktionerna nedan tooset upp en omdirigerings-URL i hello registreringsinformation för programmet:</span><span class="sxs-lookup"><span data-stu-id="19bc0-116">In any case, follow hello instructions below tooset up a redirect URL in hello application registration information:</span></span><br/>
+> <span data-ttu-id="19bc0-117">Ange `http://localhost:8080/` som en `Redirect URL` på hello överst på den här sidan eller använda `http://localhost:[port]/` om du använder en anpassad TCP-port (där *[port]* hello anpassade TCP-portnumret), och klicka sedan på ”Uppdatera”</span><span class="sxs-lookup"><span data-stu-id="19bc0-117">Set `http://localhost:8080/` as a `Redirect URL` on hello top of this page, or use `http://localhost:[port]/` if you are using a custom TCP port (where *[port]* is hello custom TCP port number), and then click 'Update'</span></span>
 
-### <a name="configure-your-javascript-spa-application"></a><span data-ttu-id="f0a47-118">Konfigurera JavaScript SPA-program</span><span class="sxs-lookup"><span data-stu-id="f0a47-118">Configure your JavaScript SPA application</span></span>
+### <a name="configure-your-javascript-spa-application"></a><span data-ttu-id="19bc0-118">Konfigurera JavaScript SPA-program</span><span class="sxs-lookup"><span data-stu-id="19bc0-118">Configure your JavaScript SPA application</span></span>
 
-1.  <span data-ttu-id="f0a47-119">Skapa en fil med namnet `msalconfig.js` som innehåller programmet registreringsinformation.</span><span class="sxs-lookup"><span data-stu-id="f0a47-119">Create a file named `msalconfig.js` containing the application registration information.</span></span> <span data-ttu-id="f0a47-120">Om du använder Visual Studio, markera projekt (rotmapp projekt), högerklicka och välj: `Add`  >  `New Item`  >  `JavaScript File`.</span><span class="sxs-lookup"><span data-stu-id="f0a47-120">If you are using Visual Studio, select the project (project root folder), right-click and select: `Add` > `New Item` > `JavaScript File`.</span></span> <span data-ttu-id="f0a47-121">Ge den namnet`msalconfig.js`</span><span class="sxs-lookup"><span data-stu-id="f0a47-121">Name it `msalconfig.js`</span></span>
-2.  <span data-ttu-id="f0a47-122">Lägg till följande kod i din `msalconfig.js` fil:</span><span class="sxs-lookup"><span data-stu-id="f0a47-122">Add the following code to your `msalconfig.js` file:</span></span>
+1.  <span data-ttu-id="19bc0-119">Skapa en fil med namnet `msalconfig.js` som innehåller information om programmet hello.</span><span class="sxs-lookup"><span data-stu-id="19bc0-119">Create a file named `msalconfig.js` containing hello application registration information.</span></span> <span data-ttu-id="19bc0-120">Om du använder Visual Studio, Välj hello projekt (projektets rotmapp), högerklickar och väljer: `Add`  >  `New Item`  >  `JavaScript File`.</span><span class="sxs-lookup"><span data-stu-id="19bc0-120">If you are using Visual Studio, select hello project (project root folder), right-click and select: `Add` > `New Item` > `JavaScript File`.</span></span> <span data-ttu-id="19bc0-121">Ge den namnet`msalconfig.js`</span><span class="sxs-lookup"><span data-stu-id="19bc0-121">Name it `msalconfig.js`</span></span>
+2.  <span data-ttu-id="19bc0-122">Lägg till följande kod tooyour hello `msalconfig.js` fil:</span><span class="sxs-lookup"><span data-stu-id="19bc0-122">Add hello following code tooyour `msalconfig.js` file:</span></span>
 
 ```javascript
 var msalconfig = {
-    clientID: "[Enter the application Id here]",
+    clientID: "[Enter hello application Id here]",
     redirectUri: location.origin
 };
 ``` 

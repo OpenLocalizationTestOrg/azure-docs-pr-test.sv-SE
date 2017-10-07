@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Media Services – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig säker strömning på begäran eller live-video i sändningskvalitet med hjälp av Media Services, en utökningsbar molnplattform. Självstudier, API-referenser och mycket annat."
+title: "aaaAzure Media Services-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur toosecurely strömma på begäran eller live video av med Media Services kan en utökningsbar molnplattform. Självstudier, API-referenser och mycket annat."
 services: media-services
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f0da57cc74e190e6684036c8a793dface3c6dd74
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c36b7dbf14434e7aadc38f2c74ca7d3830a1bd3f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="media-services-documentation"></a>Dokumentation för Media Services
 
-Lär dig hur du strömmar video i sändningskvalitet med hjälp av Media Services, en utökningsbar molnplattform. Självstudier, API-referenser och annan dokumentation visar hur du säkert levererar ljud- eller videoströmmar på begäran och live, som kan skalas till miljontals användare.
+Lär dig hur toostream video av med Media Services kan en utökningsbar molnplattform. Självstudier, API-referenserna och övrig dokumentation visar hur toosecurely levereras på begäran och live video eller ljud dataströmmar som skalas toomillions av användare.
 
 <ul class="panelContent cardsFTitle">
      <li>
@@ -70,7 +70,7 @@ Lär dig hur du strömmar video i sändningskvalitet med hjälp av Media Service
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Komma igång med Azure Media Services med hjälp av Azure Portal</h3>
+                        <h3>Kom igång med Azure Media Services med hello Azure-portalen</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@ Lär dig hur du strömmar video i sändningskvalitet med hjälp av Media Service
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Skapa ett Azure Media Services-konto med hjälp av Azure Portal</h3>
+                        <h3>Skapa ett Azure Media Services-konto med hello Azure-portalen</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Lär dig hur du strömmar video i sändningskvalitet med hjälp av Media Service
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Komma igång med att leverera innehåll med hjälp av Azure Portal</h3>
+                        <h3>Kom igång med innehåll med hjälp av hello Azure-portalen</h3>
                     </div>
                 </div>
             </div>

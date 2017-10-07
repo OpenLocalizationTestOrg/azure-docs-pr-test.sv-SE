@@ -1,6 +1,6 @@
 ---
-title: "Använd MongoChef för Azure Cosmos DB | Microsoft Docs"
-description: "Lär dig hur du använder MongoChef med en Azure-Cosmos-DB: API för MongoDB-konto"
+title: "aaaUse MongoChef för Azure Cosmos DB | Microsoft Docs"
+description: "Lär dig hur toouse MongoChef med en Azure-Cosmos-DB: API för MongoDB-konto"
 keywords: mongochef
 services: cosmos-db
 author: AndrewHoh
@@ -15,57 +15,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anhoh
-ms.openlocfilehash: 54c9799bd646b827f602e2ea2f9a15a4fc853f00
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4b047797b231c34ccc6f2ed02416525c6228d596
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-mongochef-with-an-azure-cosmos-db-api-for-mongodb-account"></a><span data-ttu-id="75256-104">Använda MongoChef med en Azure-Cosmos-DB: API för MongoDB-konto</span><span class="sxs-lookup"><span data-stu-id="75256-104">Use MongoChef with an Azure Cosmos DB: API for MongoDB account</span></span>
+# <a name="use-mongochef-with-an-azure-cosmos-db-api-for-mongodb-account"></a><span data-ttu-id="ca1df-104">Använda MongoChef med en Azure-Cosmos-DB: API för MongoDB-konto</span><span class="sxs-lookup"><span data-stu-id="ca1df-104">Use MongoChef with an Azure Cosmos DB: API for MongoDB account</span></span>
 
-<span data-ttu-id="75256-105">Att ansluta till en Azure-Cosmos-DB: API för MongoDB-konto, måste du:</span><span class="sxs-lookup"><span data-stu-id="75256-105">To connect to an Azure Cosmos DB: API for MongoDB account, you must:</span></span>
+<span data-ttu-id="ca1df-105">tooconnect tooan Azure Cosmos DB: API för MongoDB-konto, måste du:</span><span class="sxs-lookup"><span data-stu-id="ca1df-105">tooconnect tooan Azure Cosmos DB: API for MongoDB account, you must:</span></span>
 
-* <span data-ttu-id="75256-106">Hämta och installera [MongoChef](http://3t.io/mongochef)</span><span class="sxs-lookup"><span data-stu-id="75256-106">Download and install [MongoChef](http://3t.io/mongochef)</span></span>
-* <span data-ttu-id="75256-107">Har Azure Cosmos-DB: API för MongoDB konto [anslutningssträngen](connect-mongodb-account.md) information</span><span class="sxs-lookup"><span data-stu-id="75256-107">Have your Azure Cosmos DB: API for MongoDB account [connection string](connect-mongodb-account.md) information</span></span>
+* <span data-ttu-id="ca1df-106">Hämta och installera [MongoChef](http://3t.io/mongochef)</span><span class="sxs-lookup"><span data-stu-id="ca1df-106">Download and install [MongoChef](http://3t.io/mongochef)</span></span>
+* <span data-ttu-id="ca1df-107">Har Azure Cosmos-DB: API för MongoDB konto [anslutningssträngen](connect-mongodb-account.md) information</span><span class="sxs-lookup"><span data-stu-id="ca1df-107">Have your Azure Cosmos DB: API for MongoDB account [connection string](connect-mongodb-account.md) information</span></span>
 
-## <a name="create-the-connection-in-mongochef"></a><span data-ttu-id="75256-108">Skapa anslutningen i MongoChef</span><span class="sxs-lookup"><span data-stu-id="75256-108">Create the connection in MongoChef</span></span>
-<span data-ttu-id="75256-109">Att lägga till Azure Cosmos-DB: API MongoDB-kontot Anslutningshanteraren MongoChef utför följande steg.</span><span class="sxs-lookup"><span data-stu-id="75256-109">To add your Azure Cosmos DB: API for MongoDB account to the MongoChef connection manager, perform the following steps.</span></span>
+## <a name="create-hello-connection-in-mongochef"></a><span data-ttu-id="ca1df-108">Skapa hello anslutning i MongoChef</span><span class="sxs-lookup"><span data-stu-id="ca1df-108">Create hello connection in MongoChef</span></span>
+<span data-ttu-id="ca1df-109">tooadd Azure Cosmos-DB: API för MongoDB konto toohello MongoChef Anslutningshanteraren, utföra hello följande steg.</span><span class="sxs-lookup"><span data-stu-id="ca1df-109">tooadd your Azure Cosmos DB: API for MongoDB account toohello MongoChef connection manager, perform hello following steps.</span></span>
 
-1. <span data-ttu-id="75256-110">Hämta Azure Cosmos-DB: API: et för MongoDB anslutningsinformationen med instruktioner [här](connect-mongodb-account.md).</span><span class="sxs-lookup"><span data-stu-id="75256-110">Retrieve your Azure Cosmos DB: API for MongoDB connection information using the instructions [here](connect-mongodb-account.md).</span></span>
+1. <span data-ttu-id="ca1df-110">Hämta Azure Cosmos-DB: API: et för MongoDB anslutningsinformationen använder hello instruktioner [här](connect-mongodb-account.md).</span><span class="sxs-lookup"><span data-stu-id="ca1df-110">Retrieve your Azure Cosmos DB: API for MongoDB connection information using hello instructions [here](connect-mongodb-account.md).</span></span>
 
-    ![Skärmbild av bladet anslutning sträng](./media/mongodb-mongochef/ConnectionStringBlade.png)
-2. <span data-ttu-id="75256-112">Klicka på **Anslut** öppna Connection Manager och sedan klicka på **ny anslutning**</span><span class="sxs-lookup"><span data-stu-id="75256-112">Click **Connect** to open the Connection Manager, then click **New Connection**</span></span>
+    ![Skärmbild av bladet för hello anslutning sträng](./media/mongodb-mongochef/ConnectionStringBlade.png)
+2. <span data-ttu-id="ca1df-112">Klicka på **Anslut** tooopen hello Connection Manager och klicka sedan på **ny anslutning**</span><span class="sxs-lookup"><span data-stu-id="ca1df-112">Click **Connect** tooopen hello Connection Manager, then click **New Connection**</span></span>
 
-    ![Skärmbild av MongoChef Anslutningshanteraren](./media/mongodb-mongochef/ConnectionManager.png)
-3. <span data-ttu-id="75256-114">I den **ny anslutning** fönstret på den **Server** ange värden (FQDN) på Azure Cosmos DB: API för MongoDB-kontot och PORT.</span><span class="sxs-lookup"><span data-stu-id="75256-114">In the **New Connection** window, on the **Server** tab, enter the HOST (FQDN) of the Azure Cosmos DB: API for MongoDB account and the PORT.</span></span>
+    ![Skärmbild som visar hello MongoChef Anslutningshanteraren](./media/mongodb-mongochef/ConnectionManager.png)
+3. <span data-ttu-id="ca1df-114">I hello **ny anslutning** fönstret på hello **Server** ange hello värden (FQDN) på hello Azure Cosmos DB: API för MongoDB-konto och hello PORT.</span><span class="sxs-lookup"><span data-stu-id="ca1df-114">In hello **New Connection** window, on hello **Server** tab, enter hello HOST (FQDN) of hello Azure Cosmos DB: API for MongoDB account and hello PORT.</span></span>
 
-    ![Skärmbild av fliken MongoChef anslutning manager server](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
-4. <span data-ttu-id="75256-116">I den **ny anslutning** fönstret på den **autentisering** väljer autentiseringsläge **Standard (CR MONGODB eller SCARM-SHA-1)** och ange användarnamn och lösenord.</span><span class="sxs-lookup"><span data-stu-id="75256-116">In the **New Connection** window, on the **Authentication** tab, choose Authentication Mode **Standard (MONGODB-CR or SCARM-SHA-1)** and enter the USERNAME and PASSWORD.</span></span>  <span data-ttu-id="75256-117">Acceptera standardvärdet autentisering db (admin) eller ange ett eget värde.</span><span class="sxs-lookup"><span data-stu-id="75256-117">Accept the default authentication db (admin) or provide your own value.</span></span>
+    ![Skärmbild som visar hello MongoChef manager-servern på fliken anslutning](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
+4. <span data-ttu-id="ca1df-116">I hello **ny anslutning** fönstret på hello **autentisering** väljer autentiseringsläge **Standard (CR MONGODB eller SCARM-SHA-1)** och ange hello användarnamn och LÖSENORDET.</span><span class="sxs-lookup"><span data-stu-id="ca1df-116">In hello **New Connection** window, on hello **Authentication** tab, choose Authentication Mode **Standard (MONGODB-CR or SCARM-SHA-1)** and enter hello USERNAME and PASSWORD.</span></span>  <span data-ttu-id="ca1df-117">Acceptera hello standard autentisering db (admin) eller ange ett eget värde.</span><span class="sxs-lookup"><span data-stu-id="ca1df-117">Accept hello default authentication db (admin) or provide your own value.</span></span>
 
-    ![Skärmbild av fliken MongoChef connection manager autentisering](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
-5. <span data-ttu-id="75256-119">I den **ny anslutning** fönstret på den **SSL** markerar den **Använd SSL-protokollet för att ansluta** kryssrutan och **accepterar server självsignerade SSL-certifikat** knappen.</span><span class="sxs-lookup"><span data-stu-id="75256-119">In the **New Connection** window, on the **SSL** tab, check the **Use SSL protocol to connect** check box and the **Accept server self-signed SSL certificates** radio button.</span></span>
+    ![Skärmbild som visar hello MongoChef manager autentisering på fliken anslutning](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
+5. <span data-ttu-id="ca1df-119">I hello **ny anslutning** fönstret på hello **SSL** kontrollerar hello **Använd SSL-protokollet tooconnect** kryssrutan och hello **acceptera server självsignerat SSL certifikat** knappen.</span><span class="sxs-lookup"><span data-stu-id="ca1df-119">In hello **New Connection** window, on hello **SSL** tab, check hello **Use SSL protocol tooconnect** check box and hello **Accept server self-signed SSL certificates** radio button.</span></span>
 
-    ![Skärmbild av fliken MongoChef connection manager SSL](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
-6. <span data-ttu-id="75256-121">Klicka på den **Testa anslutning** för att verifiera informationen klickar du på **OK** återgå till fönstret Ny anslutning och klicka sedan på **spara**.</span><span class="sxs-lookup"><span data-stu-id="75256-121">Click the **Test Connection** button to validate the connection information, click **OK** to return to the New Connection window, and then click **Save**.</span></span>
+    ![Skärmbild som visar hello MongoChef manager SSL på fliken anslutning](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
+6. <span data-ttu-id="ca1df-121">Klicka på hello **Testanslutningen** toovalidate hello anslutningsinformation, klicka på **OK** tooreturn toohello nya fönstret anslutning och klicka sedan på **spara**.</span><span class="sxs-lookup"><span data-stu-id="ca1df-121">Click hello **Test Connection** button toovalidate hello connection information, click **OK** tooreturn toohello New Connection window, and then click **Save**.</span></span>
 
-    ![Skärmdump av fönstret MongoChef Testa anslutning](./media/mongodb-mongochef/TestConnectionResults.png)
+    ![Skärmbild som visar fönstret för hello MongoChef Testa anslutning](./media/mongodb-mongochef/TestConnectionResults.png)
 
-## <a name="use-mongochef-to-create-a-database-collection-and-documents"></a><span data-ttu-id="75256-123">Använd MongoChef för att skapa en databas, samling och dokument</span><span class="sxs-lookup"><span data-stu-id="75256-123">Use MongoChef to create a database, collection, and documents</span></span>
-<span data-ttu-id="75256-124">Utför följande steg för att skapa en databas, samling och dokument med hjälp av MongoChef.</span><span class="sxs-lookup"><span data-stu-id="75256-124">To create a database, collection, and documents using MongoChef, perform the following steps.</span></span>
+## <a name="use-mongochef-toocreate-a-database-collection-and-documents"></a><span data-ttu-id="ca1df-123">Använd MongoChef toocreate en databas, samling och dokument</span><span class="sxs-lookup"><span data-stu-id="ca1df-123">Use MongoChef toocreate a database, collection, and documents</span></span>
+<span data-ttu-id="ca1df-124">toocreate en databas, samling och dokument med hjälp av MongoChef, utföra hello följande steg.</span><span class="sxs-lookup"><span data-stu-id="ca1df-124">toocreate a database, collection, and documents using MongoChef, perform hello following steps.</span></span>
 
-1. <span data-ttu-id="75256-125">I **Connection Manager**, markera anslutningen och klicka på **Anslut**.</span><span class="sxs-lookup"><span data-stu-id="75256-125">In **Connection Manager**, highlight the connection and click **Connect**.</span></span>
+1. <span data-ttu-id="ca1df-125">I **Connection Manager**, markera hello anslutningen och klicka på **Anslut**.</span><span class="sxs-lookup"><span data-stu-id="ca1df-125">In **Connection Manager**, highlight hello connection and click **Connect**.</span></span>
 
-    ![Skärmbild av MongoChef Anslutningshanteraren](./media/mongodb-mongochef/ConnectToAccount.png)
-2. <span data-ttu-id="75256-127">Högerklicka på värden och välj **lägga till databas**.</span><span class="sxs-lookup"><span data-stu-id="75256-127">Right click the host and choose **Add Database**.</span></span>  <span data-ttu-id="75256-128">Ange ett namn och klicka på **OK**.</span><span class="sxs-lookup"><span data-stu-id="75256-128">Provide a database name and click **OK**.</span></span>
+    ![Skärmbild som visar hello MongoChef Anslutningshanteraren](./media/mongodb-mongochef/ConnectToAccount.png)
+2. <span data-ttu-id="ca1df-127">Högerklicka på hello värden och välj **lägga till databas**.</span><span class="sxs-lookup"><span data-stu-id="ca1df-127">Right click hello host and choose **Add Database**.</span></span>  <span data-ttu-id="ca1df-128">Ange ett namn och klicka på **OK**.</span><span class="sxs-lookup"><span data-stu-id="ca1df-128">Provide a database name and click **OK**.</span></span>
 
-    ![Skärmdump av alternativet MongoChef lägga till databas](./media/mongodb-mongochef/AddDatabase1.png)
-3. <span data-ttu-id="75256-130">Högerklicka på databasen och välj **lägga till samlingen**.</span><span class="sxs-lookup"><span data-stu-id="75256-130">Right click the database and choose **Add Collection**.</span></span>  <span data-ttu-id="75256-131">Ange ett samlingsnamn och klicka på **skapa**.</span><span class="sxs-lookup"><span data-stu-id="75256-131">Provide a collection name and click **Create**.</span></span>
+    ![Skärmbild som visar hello databasalternativet MongoChef Lägg till](./media/mongodb-mongochef/AddDatabase1.png)
+3. <span data-ttu-id="ca1df-130">Högerklicka på hello databas och välj **lägga till samlingen**.</span><span class="sxs-lookup"><span data-stu-id="ca1df-130">Right click hello database and choose **Add Collection**.</span></span>  <span data-ttu-id="ca1df-131">Ange ett samlingsnamn och klicka på **skapa**.</span><span class="sxs-lookup"><span data-stu-id="ca1df-131">Provide a collection name and click **Create**.</span></span>
 
-    ![Skärmdump av alternativet MongoChef lägga till samlingen](./media/mongodb-mongochef/AddCollection.png)
-4. <span data-ttu-id="75256-133">Klicka på den **samling** menyn, klicka på **Lägg till dokument**.</span><span class="sxs-lookup"><span data-stu-id="75256-133">Click the **Collection** menu item, then click **Add Document**.</span></span>
+    ![Skärmbild som visar hello MongoChef lägga till samlingen alternativet](./media/mongodb-mongochef/AddCollection.png)
+4. <span data-ttu-id="ca1df-133">Klicka på hello **samling** menyn, klicka på **Lägg till dokument**.</span><span class="sxs-lookup"><span data-stu-id="ca1df-133">Click hello **Collection** menu item, then click **Add Document**.</span></span>
 
-    ![Skärmbild som visar menyalternativet MongoChef Lägg till dokument](./media/mongodb-mongochef/AddDocument1.png)
-5. <span data-ttu-id="75256-135">Klistra in följande i dialogrutan Lägg till dokument och klicka sedan på **Lägg till dokument**.</span><span class="sxs-lookup"><span data-stu-id="75256-135">In the Add Document dialog, paste the following and then click **Add Document**.</span></span>
+    ![Skärmbild som visar hello MongoChef Lägg till dokument menyobjekt](./media/mongodb-mongochef/AddDocument1.png)
+5. <span data-ttu-id="ca1df-135">Klistra in hello följande i dialogrutan Lägg till dokument hello och klicka sedan på **Lägg till dokument**.</span><span class="sxs-lookup"><span data-stu-id="ca1df-135">In hello Add Document dialog, paste hello following and then click **Add Document**.</span></span>
 
         {
         "_id": "AndersenFamily",
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
         "address": { "state": "WA", "county": "King", "city": "seattle" },
         "isRegistered": true
         }
-6. <span data-ttu-id="75256-136">Lägg till ett annat dokument nu med följande innehåll.</span><span class="sxs-lookup"><span data-stu-id="75256-136">Add another document, this time with the following content.</span></span>
+6. <span data-ttu-id="ca1df-136">Lägg till ett annat dokument med hello följande innehåll.</span><span class="sxs-lookup"><span data-stu-id="ca1df-136">Add another document, this time with hello following content.</span></span>
 
         {
         "_id": "WakefieldFamily",
@@ -110,9 +110,9 @@ ms.lasthandoff: 07/11/2017
         "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
         "isRegistered": false
         }
-7. <span data-ttu-id="75256-137">Köra en exempelfråga.</span><span class="sxs-lookup"><span data-stu-id="75256-137">Execute a sample query.</span></span> <span data-ttu-id="75256-138">Till exempel söka efter familjer med efternamn 'Andersen' och returnerar det överordnade och tillstånd.</span><span class="sxs-lookup"><span data-stu-id="75256-138">For example, search for families with the last name 'Andersen' and return the parents and state fields.</span></span>
+7. <span data-ttu-id="ca1df-137">Köra en exempelfråga.</span><span class="sxs-lookup"><span data-stu-id="ca1df-137">Execute a sample query.</span></span> <span data-ttu-id="ca1df-138">Till exempel söka efter familjer med hello efternamn 'Andersen' och returnera hello överordnade och tillstånd.</span><span class="sxs-lookup"><span data-stu-id="ca1df-138">For example, search for families with hello last name 'Andersen' and return hello parents and state fields.</span></span>
 
     ![Skärmbild av Mongo Chef frågeresultat](./media/mongodb-mongochef/QueryDocument1.png)
 
-## <a name="next-steps"></a><span data-ttu-id="75256-140">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="75256-140">Next steps</span></span>
-* <span data-ttu-id="75256-141">Utforska Azure Cosmos DB: API för MongoDB [exempel](mongodb-samples.md).</span><span class="sxs-lookup"><span data-stu-id="75256-141">Explore Azure Cosmos DB: API for MongoDB [samples](mongodb-samples.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="ca1df-140">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="ca1df-140">Next steps</span></span>
+* <span data-ttu-id="ca1df-141">Utforska Azure Cosmos DB: API för MongoDB [exempel](mongodb-samples.md).</span><span class="sxs-lookup"><span data-stu-id="ca1df-141">Explore Azure Cosmos DB: API for MongoDB [samples](mongodb-samples.md).</span></span>

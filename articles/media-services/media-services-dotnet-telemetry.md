@@ -1,6 +1,6 @@
 ---
-title: Konfigurera Azure Media Services telemetri med .NET | Microsoft Docs
-description: "Den här artikeln visar hur du använder Azure Media Services-telemetri med .NET SDK."
+title: "aaaConfiguring telemetri för Azure Media Services med .NET | Microsoft Docs"
+description: "Den här artikeln visar hur toouse hello Azure Media Services telemetri med .NET SDK."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 1d857f3d062d8d1b15c64fa4b8c3e27ad6c2247e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4019fa7d080ca3f8a8709bd1e666f7062b883954
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net"></a><span data-ttu-id="11e15-103">Konfigurera Azure Media Services telemetri med .NET</span><span class="sxs-lookup"><span data-stu-id="11e15-103">Configuring Azure Media Services telemetry with .NET</span></span>
+# <a name="configuring-azure-media-services-telemetry-with-net"></a><span data-ttu-id="bf74a-103">Konfigurera Azure Media Services telemetri med .NET</span><span class="sxs-lookup"><span data-stu-id="bf74a-103">Configuring Azure Media Services telemetry with .NET</span></span>
 
-<span data-ttu-id="11e15-104">Det här avsnittet beskriver allmänna steg som du kan utföra när du konfigurerar Azure Media Services (AMS)-telemetri med .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="11e15-104">This topic describes general steps that you might take when configuring the Azure Media Services (AMS) telemetry using .NET SDK.</span></span> 
+<span data-ttu-id="bf74a-104">Det här avsnittet beskriver allmänna steg som du kan utföra när du konfigurerar hello Azure Media Services (AMS) telemetri med .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="bf74a-104">This topic describes general steps that you might take when configuring hello Azure Media Services (AMS) telemetry using .NET SDK.</span></span> 
 
 >[!NOTE]
-><span data-ttu-id="11e15-105">En detaljerad förklaring av vad är AMS telemetri och hur du använder det., finns det [översikt](media-services-telemetry-overview.md) avsnittet.</span><span class="sxs-lookup"><span data-stu-id="11e15-105">For the detailed explanation of what is AMS telemetry and how to consume it, see the [overview](media-services-telemetry-overview.md) topic.</span></span>
+><span data-ttu-id="bf74a-105">För hello detaljerad förklaring av vad är AMS telemetri och hur tooconsume, se hello [översikt](media-services-telemetry-overview.md) avsnittet.</span><span class="sxs-lookup"><span data-stu-id="bf74a-105">For hello detailed explanation of what is AMS telemetry and how tooconsume it, see hello [overview](media-services-telemetry-overview.md) topic.</span></span>
 
-<span data-ttu-id="11e15-106">Du kan använda telemetridata på något av följande sätt:</span><span class="sxs-lookup"><span data-stu-id="11e15-106">You can consume telemetry data in one of the following ways:</span></span>
+<span data-ttu-id="bf74a-106">Du kan använda telemetridata i något av följande sätt hello:</span><span class="sxs-lookup"><span data-stu-id="bf74a-106">You can consume telemetry data in one of hello following ways:</span></span>
 
-- <span data-ttu-id="11e15-107">Läsa data direkt från Azure Table Storage (t.ex. med Storage SDK: N).</span><span class="sxs-lookup"><span data-stu-id="11e15-107">Read data directly from Azure Table Storage (e.g. using the Storage SDK).</span></span> <span data-ttu-id="11e15-108">Beskrivning av telemetri storage-tabeller, finns det **förbrukar telemetri information** i [detta](https://msdn.microsoft.com/library/mt742089.aspx) avsnittet.</span><span class="sxs-lookup"><span data-stu-id="11e15-108">For the description of telemetry storage tables, see the **Consuming telemetry information** in [this](https://msdn.microsoft.com/library/mt742089.aspx) topic.</span></span>
+- <span data-ttu-id="bf74a-107">Läsa data direkt från Azure Table Storage (t.ex. med hello Storage SDK: N).</span><span class="sxs-lookup"><span data-stu-id="bf74a-107">Read data directly from Azure Table Storage (e.g. using hello Storage SDK).</span></span> <span data-ttu-id="bf74a-108">Hello beskrivning av telemetri storage-tabeller finns hello **förbrukar telemetri information** i [detta](https://msdn.microsoft.com/library/mt742089.aspx) avsnittet.</span><span class="sxs-lookup"><span data-stu-id="bf74a-108">For hello description of telemetry storage tables, see hello **Consuming telemetry information** in [this](https://msdn.microsoft.com/library/mt742089.aspx) topic.</span></span>
 
-<span data-ttu-id="11e15-109">Eller</span><span class="sxs-lookup"><span data-stu-id="11e15-109">Or</span></span>
+<span data-ttu-id="bf74a-109">Eller</span><span class="sxs-lookup"><span data-stu-id="bf74a-109">Or</span></span>
 
-- <span data-ttu-id="11e15-110">Använd stöd i Media Services .NET SDK för att läsa storage-data.</span><span class="sxs-lookup"><span data-stu-id="11e15-110">Use the support in the Media Services .NET SDK for reading storage data.</span></span> <span data-ttu-id="11e15-111">Det här avsnittet beskrivs hur du aktiverar telemetri för det angivna AMS-kontot och hur man frågar mått med Azure Media Services .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="11e15-111">This topic shows how to enable telemetry for the specified AMS account and how to query the metrics using the Azure Media Services .NET SDK.</span></span>  
+- <span data-ttu-id="bf74a-110">Använd hello stöd i hello Media Services .NET SDK för att läsa storage-data.</span><span class="sxs-lookup"><span data-stu-id="bf74a-110">Use hello support in hello Media Services .NET SDK for reading storage data.</span></span> <span data-ttu-id="bf74a-111">Det här avsnittet visar hur tooenable telemetri för hello angetts AMS-kontot och hur tooquery hello mått med hello Azure Media Services .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="bf74a-111">This topic shows how tooenable telemetry for hello specified AMS account and how tooquery hello metrics using hello Azure Media Services .NET SDK.</span></span>  
 
-## <a name="configuring-telemetry-for-a-media-services-account"></a><span data-ttu-id="11e15-112">Konfigurera telemetri för Media Services-konto</span><span class="sxs-lookup"><span data-stu-id="11e15-112">Configuring telemetry for a Media Services account</span></span>
+## <a name="configuring-telemetry-for-a-media-services-account"></a><span data-ttu-id="bf74a-112">Konfigurera telemetri för Media Services-konto</span><span class="sxs-lookup"><span data-stu-id="bf74a-112">Configuring telemetry for a Media Services account</span></span>
 
-<span data-ttu-id="11e15-113">Följande steg krävs för att aktivera telemetri:</span><span class="sxs-lookup"><span data-stu-id="11e15-113">The following steps are needed to enable telemetry:</span></span>
+<span data-ttu-id="bf74a-113">hello är följande steg nödvändiga tooenable telemetri:</span><span class="sxs-lookup"><span data-stu-id="bf74a-113">hello following steps are needed tooenable telemetry:</span></span>
 
-- <span data-ttu-id="11e15-114">Hämta autentiseringsuppgifter för det lagringskonto som är kopplade till Media Services-kontot.</span><span class="sxs-lookup"><span data-stu-id="11e15-114">Get the credentials of the storage account attached to the Media Services account.</span></span> 
-- <span data-ttu-id="11e15-115">Skapa en Aviseringsslutpunkten med **EndPointType** inställd på **AzureTable** och endPointAddress som pekar på lagringstabellen.</span><span class="sxs-lookup"><span data-stu-id="11e15-115">Create a Notification Endpoint with **EndPointType** set to **AzureTable** and endPointAddress pointing to the storage table.</span></span>
+- <span data-ttu-id="bf74a-114">Hämta hello autentiseringsuppgifterna för hello storage-konto toohello Media Services-konto.</span><span class="sxs-lookup"><span data-stu-id="bf74a-114">Get hello credentials of hello storage account attached toohello Media Services account.</span></span> 
+- <span data-ttu-id="bf74a-115">Skapa en Aviseringsslutpunkten med **EndPointType** ställa in också**AzureTable** och endPointAddress pekar toohello lagringstabellen.</span><span class="sxs-lookup"><span data-stu-id="bf74a-115">Create a Notification Endpoint with **EndPointType** set too**AzureTable** and endPointAddress pointing toohello storage table.</span></span>
 
         INotificationEndPoint notificationEndPoint = 
                       _context.NotificationEndPoints.Create("monitoring", 
                       NotificationEndPointType.AzureTable,
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
 
-- <span data-ttu-id="11e15-116">Skapa en övervakningskonfiguration inställningar för de tjänster som du vill övervaka.</span><span class="sxs-lookup"><span data-stu-id="11e15-116">Create a monitoring configuration settings for the services you want to monitor.</span></span> <span data-ttu-id="11e15-117">Fler än en övervakning konfigurationsinställningar är tillåtet.</span><span class="sxs-lookup"><span data-stu-id="11e15-117">No more than one monitoring configuration settings is allowed.</span></span> 
+- <span data-ttu-id="bf74a-116">Skapa en övervakningskonfiguration inställningar för hello tjänster du vill toomonitor.</span><span class="sxs-lookup"><span data-stu-id="bf74a-116">Create a monitoring configuration settings for hello services you want toomonitor.</span></span> <span data-ttu-id="bf74a-117">Fler än en övervakning konfigurationsinställningar är tillåtet.</span><span class="sxs-lookup"><span data-stu-id="bf74a-117">No more than one monitoring configuration settings is allowed.</span></span> 
   
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
             new List<ComponentMonitoringSetting>()
@@ -56,21 +56,21 @@ ms.lasthandoff: 08/29/2017
                 new ComponentMonitoringSetting(MonitoringComponent.StreamingEndpoint, MonitoringLevel.Normal)
             });
 
-## <a name="consuming-telemetry-information"></a><span data-ttu-id="11e15-118">Förbrukar telemetri information</span><span class="sxs-lookup"><span data-stu-id="11e15-118">Consuming telemetry information</span></span>
+## <a name="consuming-telemetry-information"></a><span data-ttu-id="bf74a-118">Förbrukar telemetri information</span><span class="sxs-lookup"><span data-stu-id="bf74a-118">Consuming telemetry information</span></span>
 
-<span data-ttu-id="11e15-119">Information om den konsumerande telemetri information, se [detta](media-services-telemetry-overview.md) avsnittet.</span><span class="sxs-lookup"><span data-stu-id="11e15-119">For information about consuming telemetry information, see [this](media-services-telemetry-overview.md) topic.</span></span>
+<span data-ttu-id="bf74a-119">Information om den konsumerande telemetri information, se [detta](media-services-telemetry-overview.md) avsnittet.</span><span class="sxs-lookup"><span data-stu-id="bf74a-119">For information about consuming telemetry information, see [this](media-services-telemetry-overview.md) topic.</span></span>
 
-## <a name="create-and-configure-a-visual-studio-project"></a><span data-ttu-id="11e15-120">Skapa och konfigurera ett Visual Studio-projekt</span><span class="sxs-lookup"><span data-stu-id="11e15-120">Create and configure a Visual Studio project</span></span>
+## <a name="create-and-configure-a-visual-studio-project"></a><span data-ttu-id="bf74a-120">Skapa och konfigurera ett Visual Studio-projekt</span><span class="sxs-lookup"><span data-stu-id="bf74a-120">Create and configure a Visual Studio project</span></span>
 
-1. <span data-ttu-id="11e15-121">Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="11e15-121">Set up your development environment and populate the app.config file with connection information, as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
+1. <span data-ttu-id="bf74a-121">Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md).</span><span class="sxs-lookup"><span data-stu-id="bf74a-121">Set up your development environment and populate hello app.config file with connection information, as described in [Media Services development with .NET](media-services-dotnet-how-to-use.md).</span></span> 
 
-2. <span data-ttu-id="11e15-122">Lägga till följande element för **appSettings** definieras i filen app.config:</span><span class="sxs-lookup"><span data-stu-id="11e15-122">Add the following element to **appSettings** defined in your app.config file:</span></span>
+2. <span data-ttu-id="bf74a-122">Lägg till följande element för hello**appSettings** definieras i filen app.config:</span><span class="sxs-lookup"><span data-stu-id="bf74a-122">Add hello following element too**appSettings** defined in your app.config file:</span></span>
 
     <add key="StorageAccountName" value="storage_name" />
  
-## <a name="example"></a><span data-ttu-id="11e15-123">Exempel</span><span class="sxs-lookup"><span data-stu-id="11e15-123">Example</span></span>  
+## <a name="example"></a><span data-ttu-id="bf74a-123">Exempel</span><span class="sxs-lookup"><span data-stu-id="bf74a-123">Example</span></span>  
     
-<span data-ttu-id="11e15-124">I följande exempel visas hur du aktiverar telemetri för det angivna AMS-kontot och hur man frågar mått med Azure Media Services .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="11e15-124">The following example shows how to enable telemetry for the specified AMS account and how to query the metrics using the Azure Media Services .NET SDK.</span></span>  
+<span data-ttu-id="bf74a-124">hello som följande exempel visar hur tooenable telemetri för hello angetts AMS-kontot och hur tooquery hello mått med hello Azure Media Services .NET SDK.</span><span class="sxs-lookup"><span data-stu-id="bf74a-124">hello following example shows how tooenable telemetry for hello specified AMS account and how tooquery hello metrics using hello Azure Media Services .NET SDK.</span></span>  
 
     using System;
     using System.Collections.Generic;
@@ -192,7 +192,7 @@ ms.lasthandoff: 08/29/2017
 
             var channelMetrics = telemetry.GetChannelHeartbeats(timerangeStart, timerangeEnd);
 
-            // Print the channel metrics.
+            // Print hello channel metrics.
             Console.WriteLine("Channel metrics:");
 
             foreach (var channelHeartbeat in channelMetrics.OrderBy(x => x.ObservedTime))
@@ -210,10 +210,10 @@ ms.lasthandoff: 08/29/2017
     }
 
 
-## <a name="next-steps"></a><span data-ttu-id="11e15-125">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="11e15-125">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="bf74a-125">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="bf74a-125">Next steps</span></span>
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a><span data-ttu-id="11e15-126">Ge feedback</span><span class="sxs-lookup"><span data-stu-id="11e15-126">Provide feedback</span></span>
+## <a name="provide-feedback"></a><span data-ttu-id="bf74a-126">Ge feedback</span><span class="sxs-lookup"><span data-stu-id="bf74a-126">Provide feedback</span></span>
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]

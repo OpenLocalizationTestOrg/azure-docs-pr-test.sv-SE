@@ -1,6 +1,6 @@
 ---
-title: "Skapa ett HBase för Java-program för Windows-baserade Azure HDInsight | Microsoft Docs"
-description: "Lär dig hur du använder Apache Maven för att skapa ett Java-baserad Apache HBase-program och sedan distribuera den till en Windows-baserad Azure HDInsight-kluster."
+title: "aaaBuild ett HBase Java-program för Windows-baserade Azure HDInsight | Microsoft Docs"
+description: "Lär dig hur toouse Apache Maven toobuild en Java-baserad Apache HBase programmet sedan distribuera den tooa Windows-baserade Azure HDInsight-kluster."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,42 +16,42 @@ ms.topic: article
 ms.date: 02/05/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 59c9af5a91b107e68a676f02fe5a936f955b22fa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 33c2f3d12cb6a17b5406817e8bcd3accff239517
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a><span data-ttu-id="45473-103">Använd Maven för att skapa Java-program som använder HBase med Windows-baserade HDInsight (Hadoop)</span><span class="sxs-lookup"><span data-stu-id="45473-103">Use Maven to build Java applications that use HBase with Windows-based HDInsight (Hadoop)</span></span>
-<span data-ttu-id="45473-104">Lär dig hur du skapar och skapa en [Apache HBase](http://hbase.apache.org/) program i Java med hjälp av Apache Maven.</span><span class="sxs-lookup"><span data-stu-id="45473-104">Learn how to create and build an [Apache HBase](http://hbase.apache.org/) application in Java by using Apache Maven.</span></span> <span data-ttu-id="45473-105">Sedan använda programmet Azure HDInsight (Hadoop).</span><span class="sxs-lookup"><span data-stu-id="45473-105">Then use the application with Azure HDInsight (Hadoop).</span></span>
+# <a name="use-maven-toobuild-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a><span data-ttu-id="e1a2b-103">Använd Maven toobuild Java-program som använder HBase med Windows-baserade HDInsight (Hadoop)</span><span class="sxs-lookup"><span data-stu-id="e1a2b-103">Use Maven toobuild Java applications that use HBase with Windows-based HDInsight (Hadoop)</span></span>
+<span data-ttu-id="e1a2b-104">Lär dig hur toocreate och skapa en [Apache HBase](http://hbase.apache.org/) program i Java med hjälp av Apache Maven.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-104">Learn how toocreate and build an [Apache HBase](http://hbase.apache.org/) application in Java by using Apache Maven.</span></span> <span data-ttu-id="e1a2b-105">Använd sedan hello program med Azure HDInsight (Hadoop).</span><span class="sxs-lookup"><span data-stu-id="e1a2b-105">Then use hello application with Azure HDInsight (Hadoop).</span></span>
 
-<span data-ttu-id="45473-106">[Maven](http://maven.apache.org/) är ett projekt hantering och förståelse programverktyg som hjälper dig att skapa programvara, dokumentation och rapporter för Java-projekt.</span><span class="sxs-lookup"><span data-stu-id="45473-106">[Maven](http://maven.apache.org/) is a software project management and comprehension tool that allows you to build software, documentation, and reports for Java projects.</span></span> <span data-ttu-id="45473-107">Du lär dig hur du skapar ett grundläggande Java-program som som skapar frågor, och tar bort en HBase-tabell i ett Azure HDInsight-kluster i den här artikeln.</span><span class="sxs-lookup"><span data-stu-id="45473-107">In this article, you learn how to use it to create a basic Java application that that creates, queries, and deletes an HBase table on an Azure HDInsight cluster.</span></span>
+<span data-ttu-id="e1a2b-106">[Maven](http://maven.apache.org/) är ett projekt hantering och förståelse programverktyg som gör att du toobuild programvara, dokumentation och rapporter för Java-projekt.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-106">[Maven](http://maven.apache.org/) is a software project management and comprehension tool that allows you toobuild software, documentation, and reports for Java projects.</span></span> <span data-ttu-id="e1a2b-107">I den här artikeln får du lära dig hur toouse den toocreate en grundläggande Java-program som som skapar, frågor och tar bort en HBase tabell i ett Azure HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-107">In this article, you learn how toouse it toocreate a basic Java application that that creates, queries, and deletes an HBase table on an Azure HDInsight cluster.</span></span>
 
 > [!IMPORTANT]
-> <span data-ttu-id="45473-108">Stegen i det här dokumentet kräver ett HDInsight-kluster som använder Windows.</span><span class="sxs-lookup"><span data-stu-id="45473-108">The steps in this document require an HDInsight cluster that uses Windows.</span></span> <span data-ttu-id="45473-109">Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare.</span><span class="sxs-lookup"><span data-stu-id="45473-109">Linux is the only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="45473-110">Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="45473-110">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
+> <span data-ttu-id="e1a2b-108">hello stegen i det här dokumentet kräver ett HDInsight-kluster som använder Windows.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-108">hello steps in this document require an HDInsight cluster that uses Windows.</span></span> <span data-ttu-id="e1a2b-109">Linux är hello endast operativsystem på HDInsight version 3.4 eller senare.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-109">Linux is hello only operating system used on HDInsight version 3.4 or greater.</span></span> <span data-ttu-id="e1a2b-110">Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span><span class="sxs-lookup"><span data-stu-id="e1a2b-110">For more information, see [HDInsight retirement on Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).</span></span>
 
-## <a name="requirements"></a><span data-ttu-id="45473-111">Krav</span><span class="sxs-lookup"><span data-stu-id="45473-111">Requirements</span></span>
-* <span data-ttu-id="45473-112">[Java platform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 eller senare</span><span class="sxs-lookup"><span data-stu-id="45473-112">[Java platform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 or later</span></span>
-* [<span data-ttu-id="45473-113">Maven 3.</span><span class="sxs-lookup"><span data-stu-id="45473-113">Maven</span></span>](http://maven.apache.org/)
-* <span data-ttu-id="45473-114">Ett Windows-baserade HDInsight-kluster med HBase</span><span class="sxs-lookup"><span data-stu-id="45473-114">A Windows-based HDInsight cluster with HBase</span></span>
+## <a name="requirements"></a><span data-ttu-id="e1a2b-111">Krav</span><span class="sxs-lookup"><span data-stu-id="e1a2b-111">Requirements</span></span>
+* <span data-ttu-id="e1a2b-112">[Java platform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 eller senare</span><span class="sxs-lookup"><span data-stu-id="e1a2b-112">[Java platform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 or later</span></span>
+* [<span data-ttu-id="e1a2b-113">Maven 3.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-113">Maven</span></span>](http://maven.apache.org/)
+* <span data-ttu-id="e1a2b-114">Ett Windows-baserade HDInsight-kluster med HBase</span><span class="sxs-lookup"><span data-stu-id="e1a2b-114">A Windows-based HDInsight cluster with HBase</span></span>
 
     > [!NOTE]
-    > <span data-ttu-id="45473-115">Stegen i det här dokumentet har testats med HDInsight-kluster version 3.2 och 3.3.</span><span class="sxs-lookup"><span data-stu-id="45473-115">The steps in this document have been tested with HDInsight cluster versions 3.2 and 3.3.</span></span> <span data-ttu-id="45473-116">De standardvärden som i exemplen är för ett 3.3 HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="45473-116">The default values provided in examples are for a HDInsight 3.3 cluster.</span></span>
+    > <span data-ttu-id="e1a2b-115">hello stegen i det här dokumentet har testats med HDInsight-kluster version 3.2 och 3.3.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-115">hello steps in this document have been tested with HDInsight cluster versions 3.2 and 3.3.</span></span> <span data-ttu-id="e1a2b-116">hello standardvärden som i exemplen är för ett 3.3 HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-116">hello default values provided in examples are for a HDInsight 3.3 cluster.</span></span>
 
-## <a name="create-the-project"></a><span data-ttu-id="45473-117">Skapa projektet</span><span class="sxs-lookup"><span data-stu-id="45473-117">Create the project</span></span>
-1. <span data-ttu-id="45473-118">Från kommandoraden i din utvecklingsmiljö, ändra kataloger till platsen där du vill skapa projektet, till exempel `cd code\hdinsight`.</span><span class="sxs-lookup"><span data-stu-id="45473-118">From the command line in your development environment, change directories to the location where you want to create the project, for example, `cd code\hdinsight`.</span></span>
-2. <span data-ttu-id="45473-119">Använd den **mvn** kommandot, som installeras med Maven för att generera scaffold-teknik för projektet.</span><span class="sxs-lookup"><span data-stu-id="45473-119">Use the **mvn** command, which is installed with Maven, to generate the scaffolding for the project.</span></span>
+## <a name="create-hello-project"></a><span data-ttu-id="e1a2b-117">Skapa hello-projekt</span><span class="sxs-lookup"><span data-stu-id="e1a2b-117">Create hello project</span></span>
+1. <span data-ttu-id="e1a2b-118">Ändra kataloger toohello plats där du vill toocreate hello projekt, till exempel från kommandoraden i din utvecklingsmiljö hello `cd code\hdinsight`.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-118">From hello command line in your development environment, change directories toohello location where you want toocreate hello project, for example, `cd code\hdinsight`.</span></span>
+2. <span data-ttu-id="e1a2b-119">Använd hello **mvn** kommandot, som installeras med Maven toogenerate hello scaffold-teknik för hello-projekt.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-119">Use hello **mvn** command, which is installed with Maven, toogenerate hello scaffolding for hello project.</span></span>
 
         mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
-    <span data-ttu-id="45473-120">Det här kommandot skapar en katalog på den aktuella platsen med namnet som angetts av den **artefakt-ID** parameter (**hbaseapp** i det här exemplet.) Den här katalogen innehåller följande:</span><span class="sxs-lookup"><span data-stu-id="45473-120">This command creates a directory in the current location, with the name specified by the **artifactID** parameter (**hbaseapp** in this example.) This directory contains the following items:</span></span>
+    <span data-ttu-id="e1a2b-120">Det här kommandot skapar en katalog på hello aktuella plats, med hello namn anges av hello **artefakt-ID** parameter (**hbaseapp** i det här exemplet.) Den här katalogen innehåller hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-120">This command creates a directory in hello current location, with hello name specified by hello **artifactID** parameter (**hbaseapp** in this example.) This directory contains hello following items:</span></span>
 
-   * <span data-ttu-id="45473-121">**pom.XML**: I projektet Object Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) innehåller information och konfiguration information som används för att skapa projektet.</span><span class="sxs-lookup"><span data-stu-id="45473-121">**pom.xml**:  The Project Object Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) contains information and configuration details used to build the project.</span></span>
-   * <span data-ttu-id="45473-122">**SRC**: den katalog som innehåller den **main\java\com\microsoft\examples** directory, där du ska skapa programmet.</span><span class="sxs-lookup"><span data-stu-id="45473-122">**src**: The directory that contains the **main\java\com\microsoft\examples** directory, where you will author the application.</span></span>
-3. <span data-ttu-id="45473-123">Ta bort den **src\test\java\com\microsoft\examples\apptest.java** filen eftersom den inte används i det här exemplet.</span><span class="sxs-lookup"><span data-stu-id="45473-123">Delete the **src\test\java\com\microsoft\examples\apptest.java** file because it is not used in this example.</span></span>
+   * <span data-ttu-id="e1a2b-121">**pom.XML**: hello projektet Object Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) innehåller information och konfiguration information används toobuild hello-projekt.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-121">**pom.xml**:  hello Project Object Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) contains information and configuration details used toobuild hello project.</span></span>
+   * <span data-ttu-id="e1a2b-122">**SRC**: hello-katalog som innehåller hello **main\java\com\microsoft\examples** directory, där du ska skapa hello program.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-122">**src**: hello directory that contains hello **main\java\com\microsoft\examples** directory, where you will author hello application.</span></span>
+3. <span data-ttu-id="e1a2b-123">Ta bort hello **src\test\java\com\microsoft\examples\apptest.java** filen eftersom den inte används i det här exemplet.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-123">Delete hello **src\test\java\com\microsoft\examples\apptest.java** file because it is not used in this example.</span></span>
 
-## <a name="update-the-project-object-model"></a><span data-ttu-id="45473-124">Uppdatera projekt-objektmodell</span><span class="sxs-lookup"><span data-stu-id="45473-124">Update the Project Object Model</span></span>
-1. <span data-ttu-id="45473-125">Redigera den **pom.xml** och Lägg till följande kod inne i `<dependencies>` avsnitt:</span><span class="sxs-lookup"><span data-stu-id="45473-125">Edit the **pom.xml** file and add the following code inside the `<dependencies>` section:</span></span>
+## <a name="update-hello-project-object-model"></a><span data-ttu-id="e1a2b-124">Uppdatera hello projekt-objektmodell</span><span class="sxs-lookup"><span data-stu-id="e1a2b-124">Update hello Project Object Model</span></span>
+1. <span data-ttu-id="e1a2b-125">Redigera hello **pom.xml** och Lägg till följande kod i hello hello `<dependencies>` avsnitt:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-125">Edit hello **pom.xml** file and add hello following code inside hello `<dependencies>` section:</span></span>
 
         <dependency>
           <groupId>org.apache.hbase</groupId>
@@ -59,20 +59,20 @@ ms.lasthandoff: 08/03/2017
           <version>1.1.2</version>
         </dependency>
 
-    <span data-ttu-id="45473-126">Det här avsnittet visar Maven att projektet kräver **hbase-klient** version **1.1.2**.</span><span class="sxs-lookup"><span data-stu-id="45473-126">This section tells Maven that the project requires **hbase-client** version **1.1.2**.</span></span> <span data-ttu-id="45473-127">Vid kompileringen hämtas detta beroende från standard Maven-databasen.</span><span class="sxs-lookup"><span data-stu-id="45473-127">At compile time, this dependency is downloaded from the default Maven repository.</span></span> <span data-ttu-id="45473-128">Du kan använda den [Maven centrala lagringsplatsen Sök](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) lära dig mer om detta beroende.</span><span class="sxs-lookup"><span data-stu-id="45473-128">You can use the [Maven Central Repository Search](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) to learn more about this dependency.</span></span>
+    <span data-ttu-id="e1a2b-126">Det här avsnittet visar Maven som hello projektet kräver **hbase-klient** version **1.1.2**.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-126">This section tells Maven that hello project requires **hbase-client** version **1.1.2**.</span></span> <span data-ttu-id="e1a2b-127">Vid kompileringen hämtas detta beroende från hello standarddatabas Maven.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-127">At compile time, this dependency is downloaded from hello default Maven repository.</span></span> <span data-ttu-id="e1a2b-128">Du kan använda hello [Maven centrala lagringsplatsen Sök](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) toolearn mer om detta beroende.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-128">You can use hello [Maven Central Repository Search](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) toolearn more about this dependency.</span></span>
 
    > [!IMPORTANT]
-   > <span data-ttu-id="45473-129">Versionsnumret måste matcha versionen av HBase som ingår i ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="45473-129">The version number must match the version of HBase that is provided with your HDInsight cluster.</span></span> <span data-ttu-id="45473-130">Använd följande tabell för att hitta rätt versionsnumret.</span><span class="sxs-lookup"><span data-stu-id="45473-130">Use the following table to find the correct version number.</span></span>
+   > <span data-ttu-id="e1a2b-129">hello versionsnumret måste matcha hello version av HBase som ingår i ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-129">hello version number must match hello version of HBase that is provided with your HDInsight cluster.</span></span> <span data-ttu-id="e1a2b-130">Använd följande tabell toofind hello rätt versionsnummer hello.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-130">Use hello following table toofind hello correct version number.</span></span>
    >
    >
 
-   | <span data-ttu-id="45473-131">HDInsight-kluster av version</span><span class="sxs-lookup"><span data-stu-id="45473-131">HDInsight cluster version</span></span> | <span data-ttu-id="45473-132">HBase-version som ska användas</span><span class="sxs-lookup"><span data-stu-id="45473-132">HBase version to use</span></span> |
+   | <span data-ttu-id="e1a2b-131">HDInsight-kluster av version</span><span class="sxs-lookup"><span data-stu-id="e1a2b-131">HDInsight cluster version</span></span> | <span data-ttu-id="e1a2b-132">HBase version toouse</span><span class="sxs-lookup"><span data-stu-id="e1a2b-132">HBase version toouse</span></span> |
    | --- | --- |
-   | <span data-ttu-id="45473-133">3.2</span><span class="sxs-lookup"><span data-stu-id="45473-133">3.2</span></span> |<span data-ttu-id="45473-134">0.98.4-hadoop2</span><span class="sxs-lookup"><span data-stu-id="45473-134">0.98.4-hadoop2</span></span> |
-   | <span data-ttu-id="45473-135">3.3</span><span class="sxs-lookup"><span data-stu-id="45473-135">3.3</span></span> |<span data-ttu-id="45473-136">1.1.2</span><span class="sxs-lookup"><span data-stu-id="45473-136">1.1.2</span></span> |
+   | <span data-ttu-id="e1a2b-133">3.2</span><span class="sxs-lookup"><span data-stu-id="e1a2b-133">3.2</span></span> |<span data-ttu-id="e1a2b-134">0.98.4-hadoop2</span><span class="sxs-lookup"><span data-stu-id="e1a2b-134">0.98.4-hadoop2</span></span> |
+   | <span data-ttu-id="e1a2b-135">3.3</span><span class="sxs-lookup"><span data-stu-id="e1a2b-135">3.3</span></span> |<span data-ttu-id="e1a2b-136">1.1.2</span><span class="sxs-lookup"><span data-stu-id="e1a2b-136">1.1.2</span></span> |
 
-    <span data-ttu-id="45473-137">Mer information om HDInsight-versioner och komponenter finns [vilka är de olika Hadoop-komponenterna med HDInsight](hdinsight-component-versioning.md).</span><span class="sxs-lookup"><span data-stu-id="45473-137">For more information on HDInsight versions and components, see [What are the different Hadoop components available with HDInsight](hdinsight-component-versioning.md).</span></span>
-2. <span data-ttu-id="45473-138">Om du använder ett 3.3 HDInsight-kluster måste du också lägga till följande för att den `<dependencies>` avsnitt:</span><span class="sxs-lookup"><span data-stu-id="45473-138">If you are using an HDInsight 3.3 cluster, you must also add the following to the `<dependencies>` section:</span></span>
+    <span data-ttu-id="e1a2b-137">Mer information om HDInsight-versioner och komponenter finns [vad är hello olika Hadoop-komponenter tillgänglig med HDInsight](hdinsight-component-versioning.md).</span><span class="sxs-lookup"><span data-stu-id="e1a2b-137">For more information on HDInsight versions and components, see [What are hello different Hadoop components available with HDInsight](hdinsight-component-versioning.md).</span></span>
+2. <span data-ttu-id="e1a2b-138">Om du använder ett 3.3 HDInsight-kluster måste du också lägga till följande toohello hello `<dependencies>` avsnitt:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-138">If you are using an HDInsight 3.3 cluster, you must also add hello following toohello `<dependencies>` section:</span></span>
 
         <dependency>
             <groupId>org.apache.phoenix</groupId>
@@ -80,8 +80,8 @@ ms.lasthandoff: 08/03/2017
             <version>4.4.0-HBase-1.1</version>
         </dependency>
 
-    <span data-ttu-id="45473-139">Phoenix-kärnkomponenterna, som används av Hbase-version läses in detta beroende 1.1.x.</span><span class="sxs-lookup"><span data-stu-id="45473-139">This dependency will load the phoenix-core components, which are used by Hbase version 1.1.x.</span></span>
-3. <span data-ttu-id="45473-140">Lägg till följande kod i den **pom.xml** fil.</span><span class="sxs-lookup"><span data-stu-id="45473-140">Add the following code to the **pom.xml** file.</span></span> <span data-ttu-id="45473-141">Det här avsnittet måste finnas i den `<project>...</project>` taggar i filen, till exempel mellan `</dependencies>` och `</project>`.</span><span class="sxs-lookup"><span data-stu-id="45473-141">This section must be inside the `<project>...</project>` tags in the file, for example, between `</dependencies>` and `</project>`.</span></span>
+    <span data-ttu-id="e1a2b-139">Detta beroende läses hello phoenix-grundläggande komponenter som används av Hbase version 1.1.x.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-139">This dependency will load hello phoenix-core components, which are used by Hbase version 1.1.x.</span></span>
+3. <span data-ttu-id="e1a2b-140">Lägg till följande kod toohello hello **pom.xml** fil.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-140">Add hello following code toohello **pom.xml** file.</span></span> <span data-ttu-id="e1a2b-141">Det här avsnittet måste finnas i hello `<project>...</project>` taggar i hello-fil, till exempel mellan `</dependencies>` och `</project>`.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-141">This section must be inside hello `<project>...</project>` tags in hello file, for example, between `</dependencies>` and `</project>`.</span></span>
 
         <build>
           <sourceDirectory>src</sourceDirectory>
@@ -126,40 +126,40 @@ ms.lasthandoff: 08/03/2017
           </plugins>
         </build>
 
-    <span data-ttu-id="45473-142">Den `<resources>` avsnittet konfigureras en resurs (**conf\hbase site.xml**) som innehåller konfigurationsinformation för HBase.</span><span class="sxs-lookup"><span data-stu-id="45473-142">The `<resources>` section configures a resource (**conf\hbase-site.xml**) that contains configuration information for HBase.</span></span>
+    <span data-ttu-id="e1a2b-142">Hej `<resources>` avsnittet konfigureras en resurs (**conf\hbase site.xml**) som innehåller konfigurationsinformation för HBase.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-142">hello `<resources>` section configures a resource (**conf\hbase-site.xml**) that contains configuration information for HBase.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="45473-143">Du kan också ange konfigurationsvärden via kod.</span><span class="sxs-lookup"><span data-stu-id="45473-143">You can also set configuration values via code.</span></span> <span data-ttu-id="45473-144">Visa kommentarerna i den **CreateTable** för hur du gör följande exempel.</span><span class="sxs-lookup"><span data-stu-id="45473-144">See the comments in the **CreateTable** example that follows for how to do this.</span></span>
+   > <span data-ttu-id="e1a2b-143">Du kan också ange konfigurationsvärden via kod.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-143">You can also set configuration values via code.</span></span> <span data-ttu-id="e1a2b-144">Hello kommentarer i hello **CreateTable** exemplet som följer hur toodo detta.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-144">See hello comments in hello **CreateTable** example that follows for how toodo this.</span></span>
    >
    >
 
-    <span data-ttu-id="45473-145">Detta `<plugins>` avsnittet konfigureras den [Maven-kompilatorn Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) och [Maven skugga Plugin](http://maven.apache.org/plugins/maven-shade-plugin/).</span><span class="sxs-lookup"><span data-stu-id="45473-145">This `<plugins>` section configures the [Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) and [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/).</span></span> <span data-ttu-id="45473-146">Kompilatorn plugin-programmet används för att kompilera topologin.</span><span class="sxs-lookup"><span data-stu-id="45473-146">The compiler plug-in is used to compile the topology.</span></span> <span data-ttu-id="45473-147">Skugga plugin-programmet används för att förhindra licens dubbletter av JAR-paketet som skapas genom Maven.</span><span class="sxs-lookup"><span data-stu-id="45473-147">The shade plug-in is used to prevent license duplication in the JAR package that is built by Maven.</span></span> <span data-ttu-id="45473-148">Det används beror på att duplicerade licensfiler orsakar ett fel vid körning i HDInsight-klustret.</span><span class="sxs-lookup"><span data-stu-id="45473-148">The reason this is used is that the duplicate license files cause an error at run time on the HDInsight cluster.</span></span> <span data-ttu-id="45473-149">Med hjälp av maven-skugga-plugin-programmet med den `ApacheLicenseResourceTransformer` implementering förhindrar det här felet.</span><span class="sxs-lookup"><span data-stu-id="45473-149">Using maven-shade-plugin with the `ApacheLicenseResourceTransformer` implementation prevents this error.</span></span>
+    <span data-ttu-id="e1a2b-145">Detta `<plugins>` avsnittet konfigureras hello [Maven-kompilatorn Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) och [Maven skugga Plugin](http://maven.apache.org/plugins/maven-shade-plugin/).</span><span class="sxs-lookup"><span data-stu-id="e1a2b-145">This `<plugins>` section configures hello [Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) and [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/).</span></span> <span data-ttu-id="e1a2b-146">hello kompilatorn plugin-programmet är används toocompile hello-topologi.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-146">hello compiler plug-in is used toocompile hello topology.</span></span> <span data-ttu-id="e1a2b-147">hello skugga plugin-programmet är dubbletter av används tooprevent licens hello JAR-paketet som skapas genom Maven.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-147">hello shade plug-in is used tooprevent license duplication in hello JAR package that is built by Maven.</span></span> <span data-ttu-id="e1a2b-148">hello beror används på att hello dubbla licensfiler orsakar ett fel vid körning på hello HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-148">hello reason this is used is that hello duplicate license files cause an error at run time on hello HDInsight cluster.</span></span> <span data-ttu-id="e1a2b-149">Med hjälp av maven-skugga-plugin-program med hello `ApacheLicenseResourceTransformer` implementering förhindrar det här felet.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-149">Using maven-shade-plugin with hello `ApacheLicenseResourceTransformer` implementation prevents this error.</span></span>
 
-    <span data-ttu-id="45473-150">Maven-skugga-plugin-programmet ger också en uber jar (eller fat jar) som innehåller alla beroenden som krävs för programmet.</span><span class="sxs-lookup"><span data-stu-id="45473-150">The maven-shade-plugin also produces an uber jar (or fat jar) that contains all the dependencies required by the application.</span></span>
-4. <span data-ttu-id="45473-151">Spara den **pom.xml** fil.</span><span class="sxs-lookup"><span data-stu-id="45473-151">Save the **pom.xml** file.</span></span>
-5. <span data-ttu-id="45473-152">Skapa en ny katalog med namnet **conf** i den **hbaseapp** directory.</span><span class="sxs-lookup"><span data-stu-id="45473-152">Create a new directory named **conf** in the **hbaseapp** directory.</span></span> <span data-ttu-id="45473-153">I den **conf** directory, skapa en fil med namnet **hbase-site.xml**.</span><span class="sxs-lookup"><span data-stu-id="45473-153">In the **conf** directory, create a file named **hbase-site.xml**.</span></span> <span data-ttu-id="45473-154">Använd följande som innehåll i filen:</span><span class="sxs-lookup"><span data-stu-id="45473-154">Use the following as the contents of the file:</span></span>
+    <span data-ttu-id="e1a2b-150">Hej maven-skugga-plugin-programmet ger också en uber jar (eller fat jar) som innehåller alla hello beroenden som krävs av hello program.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-150">hello maven-shade-plugin also produces an uber jar (or fat jar) that contains all hello dependencies required by hello application.</span></span>
+4. <span data-ttu-id="e1a2b-151">Spara hello **pom.xml** fil.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-151">Save hello **pom.xml** file.</span></span>
+5. <span data-ttu-id="e1a2b-152">Skapa en ny katalog med namnet **conf** i hello **hbaseapp** directory.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-152">Create a new directory named **conf** in hello **hbaseapp** directory.</span></span> <span data-ttu-id="e1a2b-153">I hello **conf** directory, skapa en fil med namnet **hbase-site.xml**.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-153">In hello **conf** directory, create a file named **hbase-site.xml**.</span></span> <span data-ttu-id="e1a2b-154">Använd följande hello som hello innehållet i hello-fil:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-154">Use hello following as hello contents of hello file:</span></span>
 
         <?xml version="1.0"?>
         <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
         <!--
         /**
-          * Copyright 2010 The Apache Software Foundation
+          * Copyright 2010 hello Apache Software Foundation
           *
-          * Licensed to the Apache Software Foundation (ASF) under one
-          * or more contributor license agreements.  See the NOTICE file
+          * Licensed toohello Apache Software Foundation (ASF) under one
+          * or more contributor license agreements.  See hello NOTICE file
           * distributed with this work for additional information
-          * regarding copyright ownership.  The ASF licenses this file
-          * to you under the Apache License, Version 2.0 (the
+          * regarding copyright ownership.  hello ASF licenses this file
+          * tooyou under hello Apache License, Version 2.0 (the
           * "License"); you may not use this file except in compliance
-          * with the License.  You may obtain a copy of the License at
+          * with hello License.  You may obtain a copy of hello License at
           *
           *     http://www.apache.org/licenses/LICENSE-2.0
           *
-          * Unless required by applicable law or agreed to in writing, software
-          * distributed under the License is distributed on an "AS IS" BASIS,
+          * Unless required by applicable law or agreed tooin writing, software
+          * distributed under hello License is distributed on an "AS IS" BASIS,
           * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-          * See the License for the specific language governing permissions and
-          * limitations under the License.
+          * See hello License for hello specific language governing permissions and
+          * limitations under hello License.
           */
         -->
         <configuration>
@@ -177,16 +177,16 @@ ms.lasthandoff: 08/03/2017
           </property>
         </configuration>
 
-    <span data-ttu-id="45473-155">Den här filen används för att läsa in HBase-konfiguration för ett HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="45473-155">This file will be used to load the HBase configuration for an HDInsight cluster.</span></span>
+    <span data-ttu-id="e1a2b-155">Den här filen kommer att använda tooload hello HBase konfiguration för ett HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-155">This file will be used tooload hello HBase configuration for an HDInsight cluster.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="45473-156">Detta är en minimal hbase-site.xml-fil och den innehåller utan minimikrav för HDInsight-klustret.</span><span class="sxs-lookup"><span data-stu-id="45473-156">This is a minimal hbase-site.xml file, and it contains the bare minimum settings for the HDInsight cluster.</span></span>
+   > <span data-ttu-id="e1a2b-156">Detta är en minimal hbase-site.xml-fil och den innehåller hello utan minimikrav för hello HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-156">This is a minimal hbase-site.xml file, and it contains hello bare minimum settings for hello HDInsight cluster.</span></span>
 
-6. <span data-ttu-id="45473-157">Spara den **hbase-site.xml** fil.</span><span class="sxs-lookup"><span data-stu-id="45473-157">Save the **hbase-site.xml** file.</span></span>
+6. <span data-ttu-id="e1a2b-157">Spara hello **hbase-site.xml** fil.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-157">Save hello **hbase-site.xml** file.</span></span>
 
-## <a name="create-the-application"></a><span data-ttu-id="45473-158">Skapa programmet</span><span class="sxs-lookup"><span data-stu-id="45473-158">Create the application</span></span>
-1. <span data-ttu-id="45473-159">Gå till den **hbaseapp\src\main\java\com\microsoft\examples** katalog och Byt namn på app.java filen till **CreateTable.java**.</span><span class="sxs-lookup"><span data-stu-id="45473-159">Go to the **hbaseapp\src\main\java\com\microsoft\examples** directory and rename the app.java file to **CreateTable.java**.</span></span>
-2. <span data-ttu-id="45473-160">Öppna den **CreateTable.java** filen och ersätter det befintliga innehållet med följande kod:</span><span class="sxs-lookup"><span data-stu-id="45473-160">Open the **CreateTable.java** file and replace the existing contents with the following code:</span></span>
+## <a name="create-hello-application"></a><span data-ttu-id="e1a2b-158">Skapa hello program</span><span class="sxs-lookup"><span data-stu-id="e1a2b-158">Create hello application</span></span>
+1. <span data-ttu-id="e1a2b-159">Gå toohello **hbaseapp\src\main\java\com\microsoft\examples** katalog och Byt namn på hello app.java filen för**CreateTable.java**.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-159">Go toohello **hbaseapp\src\main\java\com\microsoft\examples** directory and rename hello app.java file too**CreateTable.java**.</span></span>
+2. <span data-ttu-id="e1a2b-160">Öppna hello **CreateTable.java** filen och ersätter hello befintligt innehåll med hello följande kod:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-160">Open hello **CreateTable.java** file and replace hello existing contents with hello following code:</span></span>
 
         package com.microsoft.examples;
         import java.io.IOException;
@@ -212,13 +212,13 @@ ms.lasthandoff: 08/03/2017
             //            "zookeepernode0,zookeepernode1,zookeepernode2");
             //config.set("hbase.zookeeper.property.clientPort", "2181");
             //config.set("hbase.cluster.distributed", "true");
-            // The following sets the znode root for Linux-based HDInsight
+            // hello following sets hello znode root for Linux-based HDInsight
             //config.set("zookeeper.znode.parent","/hbase-unsecure");
 
-            // create an admin object using the config
+            // create an admin object using hello config
             HBaseAdmin admin = new HBaseAdmin(config);
 
-            // create the table...
+            // create hello table...
             HTableDescriptor tableDescriptor = new HTableDescriptor(TableName.valueOf("people"));
             // ... with two column families
             tableDescriptor.addFamily(new HColumnDescriptor("name"));
@@ -236,9 +236,9 @@ ms.lasthandoff: 08/03/2017
 
             HTable table = new HTable(config, "people");
 
-            // Add each person to the table
-            //   Use the `name` column family for the name
-            //   Use the `contactinfo` column family for the email
+            // Add each person toohello table
+            //   Use hello `name` column family for hello name
+            //   Use hello `contactinfo` column family for hello email
             for (int i = 0; i< people.length; i++) {
               Put person = new Put(Bytes.toBytes(people[i][0]));
               person.add(Bytes.toBytes("name"), Bytes.toBytes("first"), Bytes.toBytes(people[i][1]));
@@ -246,15 +246,15 @@ ms.lasthandoff: 08/03/2017
               person.add(Bytes.toBytes("contactinfo"), Bytes.toBytes("email"), Bytes.toBytes(people[i][3]));
               table.put(person);
             }
-            // flush commits and close the table
+            // flush commits and close hello table
             table.flushCommits();
             table.close();
           }
         }
 
-    <span data-ttu-id="45473-161">Det här är den **CreateTable** -klassen, som skapar en tabell med namnet **personer** och fylla det med vissa fördefinierade användare.</span><span class="sxs-lookup"><span data-stu-id="45473-161">This is the **CreateTable** class, which will create a table named **people** and populate it with some predefined users.</span></span>
-3. <span data-ttu-id="45473-162">Spara den **CreateTable.java** fil.</span><span class="sxs-lookup"><span data-stu-id="45473-162">Save the **CreateTable.java** file.</span></span>
-4. <span data-ttu-id="45473-163">I den **hbaseapp\src\main\java\com\microsoft\examples** directory, skapa en ny fil med namnet **SearchByEmail.java**.</span><span class="sxs-lookup"><span data-stu-id="45473-163">In the **hbaseapp\src\main\java\com\microsoft\examples** directory, create a new file named **SearchByEmail.java**.</span></span> <span data-ttu-id="45473-164">Använd följande kod som innehållet i den här filen:</span><span class="sxs-lookup"><span data-stu-id="45473-164">Use the following code as the contents of this file:</span></span>
+    <span data-ttu-id="e1a2b-161">Detta är hello **CreateTable** -klassen, som skapar en tabell med namnet **personer** och fylla det med vissa fördefinierade användare.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-161">This is hello **CreateTable** class, which will create a table named **people** and populate it with some predefined users.</span></span>
+3. <span data-ttu-id="e1a2b-162">Spara hello **CreateTable.java** fil.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-162">Save hello **CreateTable.java** file.</span></span>
+4. <span data-ttu-id="e1a2b-163">I hello **hbaseapp\src\main\java\com\microsoft\examples** directory, skapa en ny fil med namnet **SearchByEmail.java**.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-163">In hello **hbaseapp\src\main\java\com\microsoft\examples** directory, create a new file named **SearchByEmail.java**.</span></span> <span data-ttu-id="e1a2b-164">Använd hello efter koden som hello innehållet i den här filen:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-164">Use hello following code as hello contents of this file:</span></span>
 
         package com.microsoft.examples;
         import java.io.IOException;
@@ -275,18 +275,18 @@ ms.lasthandoff: 08/03/2017
           public static void main(String[] args) throws IOException {
             Configuration config = HBaseConfiguration.create();
 
-            // Use GenericOptionsParser to get only the parameters to the class
-            // and not all the parameters passed (when using WebHCat for example)
+            // Use GenericOptionsParser tooget only hello parameters toohello class
+            // and not all hello parameters passed (when using WebHCat for example)
             String[] otherArgs = new GenericOptionsParser(config, args).getRemainingArgs();
             if (otherArgs.length != 1) {
               System.out.println("usage: [regular expression]");
               System.exit(-1);
             }
 
-            // Open the table
+            // Open hello table
             HTable table = new HTable(config, "people");
 
-            // Define the family and qualifiers to be used
+            // Define hello family and qualifiers toobe used
             byte[] contactFamily = Bytes.toBytes("contactinfo");
             byte[] emailQualifier = Bytes.toBytes("email");
             byte[] nameFamily = Bytes.toBytes("name");
@@ -295,8 +295,8 @@ ms.lasthandoff: 08/03/2017
 
             // Create a new regex filter
             RegexStringComparator emailFilter = new RegexStringComparator(otherArgs[0]);
-            // Attach the regex filter to a filter
-            //   for the email column
+            // Attach hello regex filter tooa filter
+            //   for hello email column
             SingleColumnValueFilter filter = new SingleColumnValueFilter(
               contactFamily,
               emailQualifier,
@@ -304,11 +304,11 @@ ms.lasthandoff: 08/03/2017
               emailFilter
             );
 
-            // Create a scan and set the filter
+            // Create a scan and set hello filter
             Scan scan = new Scan();
             scan.setFilter(filter);
 
-            // Get the results
+            // Get hello results
             ResultScanner results = table.getScanner(scan);
             // Iterate over results and print  values
             for (Result result : results ) {
@@ -327,9 +327,9 @@ ms.lasthandoff: 08/03/2017
           }
         }
 
-    <span data-ttu-id="45473-165">Den **SearchByEmail** klassen kan användas för att söka efter rader av e-postadress.</span><span class="sxs-lookup"><span data-stu-id="45473-165">The **SearchByEmail** class can be used to query for rows by email address.</span></span> <span data-ttu-id="45473-166">Eftersom den använder ett reguljärt uttryck för filter kan du ange en sträng eller ett reguljärt uttryck när du använder klassen.</span><span class="sxs-lookup"><span data-stu-id="45473-166">Because it uses a regular expression filter, you can provide either a string or a regular expression when using the class.</span></span>
-5. <span data-ttu-id="45473-167">Spara den **SearchByEmail.java** fil.</span><span class="sxs-lookup"><span data-stu-id="45473-167">Save the **SearchByEmail.java** file.</span></span>
-6. <span data-ttu-id="45473-168">I den **hbaseapp\src\main\hava\com\microsoft\examples** directory, skapa en ny fil med namnet **DeleteTable.java**.</span><span class="sxs-lookup"><span data-stu-id="45473-168">In the **hbaseapp\src\main\hava\com\microsoft\examples** directory, create a new file named **DeleteTable.java**.</span></span> <span data-ttu-id="45473-169">Använd följande kod som innehållet i den här filen:</span><span class="sxs-lookup"><span data-stu-id="45473-169">Use the following code as the contents of this file:</span></span>
+    <span data-ttu-id="e1a2b-165">Hej **SearchByEmail** klassen kan vara används tooquery för rader av e-postadress.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-165">hello **SearchByEmail** class can be used tooquery for rows by email address.</span></span> <span data-ttu-id="e1a2b-166">Eftersom den använder ett reguljärt uttryck för filter kan du ange en sträng eller ett reguljärt uttryck när hello-klassen.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-166">Because it uses a regular expression filter, you can provide either a string or a regular expression when using hello class.</span></span>
+5. <span data-ttu-id="e1a2b-167">Spara hello **SearchByEmail.java** fil.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-167">Save hello **SearchByEmail.java** file.</span></span>
+6. <span data-ttu-id="e1a2b-168">I hello **hbaseapp\src\main\hava\com\microsoft\examples** directory, skapa en ny fil med namnet **DeleteTable.java**.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-168">In hello **hbaseapp\src\main\hava\com\microsoft\examples** directory, create a new file named **DeleteTable.java**.</span></span> <span data-ttu-id="e1a2b-169">Använd hello efter koden som hello innehållet i den här filen:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-169">Use hello following code as hello contents of this file:</span></span>
 
         package com.microsoft.examples;
         import java.io.IOException;
@@ -342,43 +342,43 @@ ms.lasthandoff: 08/03/2017
           public static void main(String[] args) throws IOException {
             Configuration config = HBaseConfiguration.create();
 
-            // Create an admin object using the config
+            // Create an admin object using hello config
             HBaseAdmin admin = new HBaseAdmin(config);
 
-            // Disable, and then delete the table
+            // Disable, and then delete hello table
             admin.disableTable("people");
             admin.deleteTable("people");
           }
         }
 
-    <span data-ttu-id="45473-170">Den här klassen är för att rensa det här exemplet genom att inaktivera och släppa tabellen som skapats av den **CreateTable** klass.</span><span class="sxs-lookup"><span data-stu-id="45473-170">This class is for cleaning up this example by disabling and dropping the table created by the **CreateTable** class.</span></span>
-7. <span data-ttu-id="45473-171">Spara den **DeleteTable.java** fil.</span><span class="sxs-lookup"><span data-stu-id="45473-171">Save the **DeleteTable.java** file.</span></span>
+    <span data-ttu-id="e1a2b-170">Den här klassen är för att rensa det här exemplet genom att inaktivera och släppa hello tabell skapas av hello **CreateTable** klass.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-170">This class is for cleaning up this example by disabling and dropping hello table created by hello **CreateTable** class.</span></span>
+7. <span data-ttu-id="e1a2b-171">Spara hello **DeleteTable.java** fil.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-171">Save hello **DeleteTable.java** file.</span></span>
 
-## <a name="build-and-package-the-application"></a><span data-ttu-id="45473-172">Skapa och paketera programmet</span><span class="sxs-lookup"><span data-stu-id="45473-172">Build and package the application</span></span>
-1. <span data-ttu-id="45473-173">Öppna en kommandotolk och ändra sökvägen till den **hbaseapp** directory.</span><span class="sxs-lookup"><span data-stu-id="45473-173">Open a command prompt and change directories to the **hbaseapp** directory.</span></span>
-2. <span data-ttu-id="45473-174">Använd följande kommando för att skapa en JAR-fil som innehåller programmet:</span><span class="sxs-lookup"><span data-stu-id="45473-174">Use the following command to build a JAR file that contains the application:</span></span>
+## <a name="build-and-package-hello-application"></a><span data-ttu-id="e1a2b-172">Bygg- och paketet hello-program</span><span class="sxs-lookup"><span data-stu-id="e1a2b-172">Build and package hello application</span></span>
+1. <span data-ttu-id="e1a2b-173">Öppna en kommandotolk och ändra kataloger toohello **hbaseapp** directory.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-173">Open a command prompt and change directories toohello **hbaseapp** directory.</span></span>
+2. <span data-ttu-id="e1a2b-174">Använd följande kommando toobuild JAR-filen som innehåller programmet hello hello:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-174">Use hello following command toobuild a JAR file that contains hello application:</span></span>
 
         mvn clean package
 
-    <span data-ttu-id="45473-175">Detta rensar alla tidigare build-artefakter, hämtas eventuella beroenden som inte redan har installerats, sedan bygger och paket för programmet.</span><span class="sxs-lookup"><span data-stu-id="45473-175">This cleans any previous build artifacts, downloads any dependencies that have not already been installed, then builds and packages the application.</span></span>
-3. <span data-ttu-id="45473-176">När kommandot har slutförts i **hbaseapp\target** katalogen innehåller en fil med namnet **hbaseapp-1.0-SNAPSHOT.jar**.</span><span class="sxs-lookup"><span data-stu-id="45473-176">When the command completes, the **hbaseapp\target** directory contains a file named **hbaseapp-1.0-SNAPSHOT.jar**.</span></span>
+    <span data-ttu-id="e1a2b-175">Detta rensar alla tidigare build-artefakter, hämtas eventuella beroenden som inte redan har installerats, sedan bygger och programmet hello-paket.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-175">This cleans any previous build artifacts, downloads any dependencies that have not already been installed, then builds and packages hello application.</span></span>
+3. <span data-ttu-id="e1a2b-176">När hello-kommandot har slutförts hello **hbaseapp\target** katalogen innehåller en fil med namnet **hbaseapp-1.0-SNAPSHOT.jar**.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-176">When hello command completes, hello **hbaseapp\target** directory contains a file named **hbaseapp-1.0-SNAPSHOT.jar**.</span></span>
 
    > [!NOTE]
-   > <span data-ttu-id="45473-177">Den **hbaseapp-1.0-SNAPSHOT.jar** filen är en uber jar (kallas ibland för en fat jar) som innehåller alla beroenden som krävs för att köra programmet.</span><span class="sxs-lookup"><span data-stu-id="45473-177">The **hbaseapp-1.0-SNAPSHOT.jar** file is an uber jar (sometimes called a fat jar,) which contains all the dependencies required to run the application.</span></span>
+   > <span data-ttu-id="e1a2b-177">Hej **hbaseapp-1.0-SNAPSHOT.jar** filen är en uber jar (kallas ibland för en fat jar) som innehåller alla hello beroenden krävs toorun hello program.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-177">hello **hbaseapp-1.0-SNAPSHOT.jar** file is an uber jar (sometimes called a fat jar,) which contains all hello dependencies required toorun hello application.</span></span>
 
-## <a name="upload-the-jar-file-and-start-a-job"></a><span data-ttu-id="45473-178">Överför JAR-filen och starta ett jobb</span><span class="sxs-lookup"><span data-stu-id="45473-178">Upload the JAR file and start a job</span></span>
-<span data-ttu-id="45473-179">Det finns många sätt att överföra en fil till ditt HDInsight-kluster, enligt beskrivningen i [överföra data för Hadoop-jobb i HDInsight](hdinsight-upload-data.md).</span><span class="sxs-lookup"><span data-stu-id="45473-179">There are many ways to upload a file to your HDInsight cluster, as described in [Upload data for Hadoop jobs in HDInsight](hdinsight-upload-data.md).</span></span> <span data-ttu-id="45473-180">Azure PowerShell använder du följande steg.</span><span class="sxs-lookup"><span data-stu-id="45473-180">The following steps use Azure PowerShell.</span></span>
+## <a name="upload-hello-jar-file-and-start-a-job"></a><span data-ttu-id="e1a2b-178">Överför hello JAR-filen och starta ett jobb</span><span class="sxs-lookup"><span data-stu-id="e1a2b-178">Upload hello JAR file and start a job</span></span>
+<span data-ttu-id="e1a2b-179">Det finns många sätt tooupload ett filen tooyour HDInsight-kluster, enligt beskrivningen i [överföra data för Hadoop-jobb i HDInsight](hdinsight-upload-data.md).</span><span class="sxs-lookup"><span data-stu-id="e1a2b-179">There are many ways tooupload a file tooyour HDInsight cluster, as described in [Upload data for Hadoop jobs in HDInsight](hdinsight-upload-data.md).</span></span> <span data-ttu-id="e1a2b-180">hello använda följande Azure PowerShell.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-180">hello following steps use Azure PowerShell.</span></span>
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
-1. <span data-ttu-id="45473-181">Efter att installera och konfigurera Azure PowerShell, skapa en ny fil med namnet **hbase runner.psm1**.</span><span class="sxs-lookup"><span data-stu-id="45473-181">After installing and configuring Azure PowerShell, create a new file named **hbase-runner.psm1**.</span></span> <span data-ttu-id="45473-182">Använd följande som innehåll i den här filen:</span><span class="sxs-lookup"><span data-stu-id="45473-182">Use the following as the contents of this file:</span></span>
+1. <span data-ttu-id="e1a2b-181">Efter att installera och konfigurera Azure PowerShell, skapa en ny fil med namnet **hbase runner.psm1**.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-181">After installing and configuring Azure PowerShell, create a new file named **hbase-runner.psm1**.</span></span> <span data-ttu-id="e1a2b-182">Använd följande hello som hello innehållet i den här filen:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-182">Use hello following as hello contents of this file:</span></span>
 
         <#
         .SYNOPSIS
-        Copies a file to the primary storage of an HDInsight cluster.
+        Copies a file toohello primary storage of an HDInsight cluster.
         .DESCRIPTION
-        Copies a file from a local directory to the blob container for
-        the HDInsight cluster.
+        Copies a file from a local directory toohello blob container for
+        hello HDInsight cluster.
         .EXAMPLE
         Start-HBaseExample -className "com.microsoft.examples.CreateTable"
         -clusterName "MyHDInsightCluster"
@@ -397,11 +397,11 @@ ms.lasthandoff: 08/03/2017
         function Start-HBaseExample {
         [CmdletBinding(SupportsShouldProcess = $true)]
         param(
-        #The class to run
+        #hello class toorun
         [Parameter(Mandatory = $true)]
         [String]$className,
 
-        #The name of the HDInsight cluster
+        #hello name of hello HDInsight cluster
         [Parameter(Mandatory = $true)]
         [String]$clusterName,
 
@@ -409,34 +409,34 @@ ms.lasthandoff: 08/03/2017
         [Parameter(Mandatory = $false)]
         [String]$emailRegex,
 
-        #Use if you want to see stderr output
+        #Use if you want toosee stderr output
         [Parameter(Mandatory = $false)]
         [Switch]$showErr
         )
 
         Set-StrictMode -Version 3
 
-        # Is the Azure module installed?
+        # Is hello Azure module installed?
         FindAzure
 
-        # Get the login for the HDInsight cluster
-        $creds=Get-Credential -Message "Enter the login for the cluster" -UserName "admin"
+        # Get hello login for hello HDInsight cluster
+        $creds=Get-Credential -Message "Enter hello login for hello cluster" -UserName "admin"
 
-        # The JAR
+        # hello JAR
         $jarFile = "wasb:///example/jars/hbaseapp-1.0-SNAPSHOT.jar"
 
-        # The job definition
+        # hello job definition
         $jobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
             -JarFile $jarFile `
             -ClassName $className `
             -Arguments $emailRegex
 
-        # Get the job output
+        # Get hello job output
         $job = Start-AzureRmHDInsightJob `
             -ClusterName $clusterName `
             -JobDefinition $jobDefinition `
             -HttpCredential $creds
-        Write-Host "Wait for the job to complete ..." -ForegroundColor Green
+        Write-Host "Wait for hello job toocomplete ..." -ForegroundColor Green
         Wait-AzureRmHDInsightJob `
             -ClusterName $clusterName `
             -JobId $job.JobId `
@@ -450,7 +450,7 @@ ms.lasthandoff: 08/03/2017
                     -HttpCredential $creds `
                     -DisplayOutputType StandardError
         }
-        Write-Host "Display the standard output ..." -ForegroundColor Green
+        Write-Host "Display hello standard output ..." -ForegroundColor Green
         Get-AzureRmHDInsightJobOutput `
                     -Clustername $clusterName `
                     -JobId $job.JobId `
@@ -459,10 +459,10 @@ ms.lasthandoff: 08/03/2017
 
         <#
         .SYNOPSIS
-        Copies a file to the primary storage of an HDInsight cluster.
+        Copies a file toohello primary storage of an HDInsight cluster.
         .DESCRIPTION
-        Copies a file from a local directory to the blob container for
-        the HDInsight cluster.
+        Copies a file from a local directory toohello blob container for
+        hello HDInsight cluster.
         .EXAMPLE
         Add-HDInsightFile -localPath "C:\temp\data.txt"
         -destinationPath "example/data/data.txt"
@@ -477,15 +477,15 @@ ms.lasthandoff: 08/03/2017
         function Add-HDInsightFile {
             [CmdletBinding(SupportsShouldProcess = $true)]
             param(
-                #The path to the local file.
+                #hello path toohello local file.
                 [Parameter(Mandatory = $true)]
                 [String]$localPath,
 
-                #The destination path and file name, relative to the root of the container.
+                #hello destination path and file name, relative toohello root of hello container.
                 [Parameter(Mandatory = $true)]
                 [String]$destinationPath,
 
-                #The name of the HDInsight cluster
+                #hello name of hello HDInsight cluster
                 [Parameter(Mandatory = $true)]
                 [String]$clusterName,
 
@@ -496,22 +496,22 @@ ms.lasthandoff: 08/03/2017
 
             Set-StrictMode -Version 3
 
-            # Is the Azure module installed?
+            # Is hello Azure module installed?
             FindAzure
 
-            # Get authentication for the cluster
+            # Get authentication for hello cluster
             $creds=Get-Credential
 
-            # Does the local path exist?
+            # Does hello local path exist?
             if (-not (Test-Path $localPath))
             {
                 throw "Source path '$localPath' does not exist."
             }
 
-            # Get the primary storage container
+            # Get hello primary storage container
             $storage = GetStorage -clusterName $clusterName
 
-            # Upload file to storage, overwriting existing files if -force was used.
+            # Upload file toostorage, overwriting existing files if -force was used.
             Set-AzureStorageBlobContent -File $localPath `
                 -Blob $destinationPath `
                 -force:$force `
@@ -524,7 +524,7 @@ ms.lasthandoff: 08/03/2017
             $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
             if(-not($sub))
             {
-                throw "No active Azure subscription found! If you have a subscription, use the Login-AzureRmAccount cmdlet to login to your subscription."
+                throw "No active Azure subscription found! If you have a subscription, use hello Login-AzureRmAccount cmdlet toologin tooyour subscription."
             }
         }
 
@@ -534,7 +534,7 @@ ms.lasthandoff: 08/03/2017
                 [String]$clusterName
             )
             $hdi = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-            # Does the cluster exist?
+            # Does hello cluster exist?
             if (!$hdi)
             {
                 throw "HDInsight cluster '$clusterName' does not exist."
@@ -550,53 +550,53 @@ ms.lasthandoff: 08/03/2017
             $storageAccountKey=(Get-AzureRmStorageAccountKey `
                 -Name $storageAccountName `
             -ResourceGroupName $resourceGroup)[0].Value
-            # Get the resource group, in case we need that
+            # Get hello resource group, in case we need that
             $return.resourceGroup = $resourceGroup
-            # Get the storage context, as we can't depend
-            # on using the default storage context
+            # Get hello storage context, as we can't depend
+            # on using hello default storage context
             $return.context = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
-            # Get the container, so we know where to
+            # Get hello container, so we know where to
             # find/store blobs
             $return.container = $container
-            # Return storage accounts to support finding all accounts for
+            # Return storage accounts toosupport finding all accounts for
             # a cluster
             $return.storageAccount = $storageAccountName
             $return.storageAccountKey = $storageAccountKey
 
             return $return
         }
-        # Only export the verb-phrase things
+        # Only export hello verb-phrase things
         export-modulemember *-*
 
-    <span data-ttu-id="45473-183">Denna fil innehåller två moduler:</span><span class="sxs-lookup"><span data-stu-id="45473-183">This file contains two modules:</span></span>
+    <span data-ttu-id="e1a2b-183">Denna fil innehåller två moduler:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-183">This file contains two modules:</span></span>
 
-   * <span data-ttu-id="45473-184">**Lägg till HDInsightFile** – används för att överföra filer till HDInsight</span><span class="sxs-lookup"><span data-stu-id="45473-184">**Add-HDInsightFile** - used to upload files to HDInsight</span></span>
-   * <span data-ttu-id="45473-185">**Start-HBaseExample** – används för att köra de klasser som skapades tidigare</span><span class="sxs-lookup"><span data-stu-id="45473-185">**Start-HBaseExample** - used to run the classes created earlier</span></span>
-2. <span data-ttu-id="45473-186">Spara den **hbase runner.psm1** fil.</span><span class="sxs-lookup"><span data-stu-id="45473-186">Save the **hbase-runner.psm1** file.</span></span>
-3. <span data-ttu-id="45473-187">Öppna ett nytt Azure PowerShell-fönster, ändra kataloger till den **hbaseapp** katalog och kör sedan följande kommando.</span><span class="sxs-lookup"><span data-stu-id="45473-187">Open a new Azure PowerShell window, change directories to the **hbaseapp** directory, and then run the following command.</span></span>
+   * <span data-ttu-id="e1a2b-184">**Lägg till HDInsightFile** -används tooupload filer tooHDInsight</span><span class="sxs-lookup"><span data-stu-id="e1a2b-184">**Add-HDInsightFile** - used tooupload files tooHDInsight</span></span>
+   * <span data-ttu-id="e1a2b-185">**Start-HBaseExample** -används toorun hello klasser som skapats tidigare</span><span class="sxs-lookup"><span data-stu-id="e1a2b-185">**Start-HBaseExample** - used toorun hello classes created earlier</span></span>
+2. <span data-ttu-id="e1a2b-186">Spara hello **hbase runner.psm1** fil.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-186">Save hello **hbase-runner.psm1** file.</span></span>
+3. <span data-ttu-id="e1a2b-187">Öppna ett nytt Azure PowerShell-fönster, ändra kataloger toohello **hbaseapp** directory, och sedan kör hello följande kommando.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-187">Open a new Azure PowerShell window, change directories toohello **hbaseapp** directory, and then run hello following command.</span></span>
 
         PS C:\ Import-Module c:\path\to\hbase-runner.psm1
 
-    <span data-ttu-id="45473-188">Ändra sökvägen till platsen för den **hbase runner.psm1** filen som skapades tidigare.</span><span class="sxs-lookup"><span data-stu-id="45473-188">Change the path to the location of the **hbase-runner.psm1** file created earlier.</span></span> <span data-ttu-id="45473-189">Detta registrerar modulen för den här Azure PowerShell-sessionen.</span><span class="sxs-lookup"><span data-stu-id="45473-189">This registers the module for this Azure PowerShell session.</span></span>
-4. <span data-ttu-id="45473-190">Använd följande kommando för att överföra den **hbaseapp-1.0-SNAPSHOT.jar** till HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="45473-190">Use the following command to upload the **hbaseapp-1.0-SNAPSHOT.jar** to your HDInsight cluster.</span></span>
+    <span data-ttu-id="e1a2b-188">Ändra hello toohello sökvägen för hello **hbase runner.psm1** filen som skapades tidigare.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-188">Change hello path toohello location of hello **hbase-runner.psm1** file created earlier.</span></span> <span data-ttu-id="e1a2b-189">Detta registrerar hello-modulen för den här Azure PowerShell-sessionen.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-189">This registers hello module for this Azure PowerShell session.</span></span>
+4. <span data-ttu-id="e1a2b-190">Använd hello följande kommando tooupload hello **hbaseapp-1.0-SNAPSHOT.jar** tooyour HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-190">Use hello following command tooupload hello **hbaseapp-1.0-SNAPSHOT.jar** tooyour HDInsight cluster.</span></span>
 
         Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
 
-    <span data-ttu-id="45473-191">Ersätt **hdinsightclustername** med namnet på ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="45473-191">Replace **hdinsightclustername** with the name of your HDInsight cluster.</span></span> <span data-ttu-id="45473-192">Kommandot laddar upp den **hbaseapp-1.0-SNAPSHOT.jar** till den **exempel/burkar** plats i den primära lagringsplatsen för ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="45473-192">The command uploads the **hbaseapp-1.0-SNAPSHOT.jar** to the **example/jars** location in the primary storage for your HDInsight cluster.</span></span>
-5. <span data-ttu-id="45473-193">När filerna har överförts, använda följande kod för att skapa en tabell med hjälp av den **hbaseapp**:</span><span class="sxs-lookup"><span data-stu-id="45473-193">After the files are uploaded, use the following code to create a table using the **hbaseapp**:</span></span>
+    <span data-ttu-id="e1a2b-191">Ersätt **hdinsightclustername** med hello namnet på ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-191">Replace **hdinsightclustername** with hello name of your HDInsight cluster.</span></span> <span data-ttu-id="e1a2b-192">hello kommandot överför hello **hbaseapp-1.0-SNAPSHOT.jar** toohello **exempel/burkar** plats i hello primära lagringsplatsen för HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-192">hello command uploads hello **hbaseapp-1.0-SNAPSHOT.jar** toohello **example/jars** location in hello primary storage for your HDInsight cluster.</span></span>
+5. <span data-ttu-id="e1a2b-193">När hello filer överförs används hello följande kod toocreate en tabell med hello **hbaseapp**:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-193">After hello files are uploaded, use hello following code toocreate a table using hello **hbaseapp**:</span></span>
 
         Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
 
-    <span data-ttu-id="45473-194">Ersätt **hdinsightclustername** med namnet på ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="45473-194">Replace **hdinsightclustername** with the name of your HDInsight cluster.</span></span>
+    <span data-ttu-id="e1a2b-194">Ersätt **hdinsightclustername** med hello namnet på ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-194">Replace **hdinsightclustername** with hello name of your HDInsight cluster.</span></span>
 
-    <span data-ttu-id="45473-195">Det här kommandot skapar en ny tabell med namnet **personer** i ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="45473-195">This command creates a new table named **people** in your HDInsight cluster.</span></span> <span data-ttu-id="45473-196">Det här kommandot visar inte några utdata i konsolfönstret.</span><span class="sxs-lookup"><span data-stu-id="45473-196">This command does not show any output in the console window.</span></span>
-6. <span data-ttu-id="45473-197">Om du vill söka efter i tabellen, använder du följande kommando:</span><span class="sxs-lookup"><span data-stu-id="45473-197">To search for entries in the table, use the following command:</span></span>
+    <span data-ttu-id="e1a2b-195">Det här kommandot skapar en ny tabell med namnet **personer** i ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-195">This command creates a new table named **people** in your HDInsight cluster.</span></span> <span data-ttu-id="e1a2b-196">Det här kommandot visar inte några utdata i hello konsolfönstret.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-196">This command does not show any output in hello console window.</span></span>
+6. <span data-ttu-id="e1a2b-197">toosearch för poster i hello tabell, Använd hello följande kommando:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-197">toosearch for entries in hello table, use hello following command:</span></span>
 
         Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
 
-    <span data-ttu-id="45473-198">Ersätt **hdinsightclustername** med namnet på ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="45473-198">Replace **hdinsightclustername** with the name of your HDInsight cluster.</span></span>
+    <span data-ttu-id="e1a2b-198">Ersätt **hdinsightclustername** med hello namnet på ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-198">Replace **hdinsightclustername** with hello name of your HDInsight cluster.</span></span>
 
-    <span data-ttu-id="45473-199">Detta kommando använder den **SearchByEmail** klassen för att söka efter alla rader där den **contactinformation** kolumnfamilj och **e-post** kolumnen innehåller strängen **contoso.com**.</span><span class="sxs-lookup"><span data-stu-id="45473-199">This command uses the **SearchByEmail** class to search for any rows where the **contactinformation** column family and the **email** column, contains the string **contoso.com**.</span></span> <span data-ttu-id="45473-200">Du bör få följande resultat:</span><span class="sxs-lookup"><span data-stu-id="45473-200">You should receive the following results:</span></span>
+    <span data-ttu-id="e1a2b-199">Detta kommando använder hello **SearchByEmail** klassen toosearch för alla rader där hello **contactinformation** kolumnfamilj och hello **e-post** kolumnen innehåller hello sträng **contoso.com**. Du bör få hello följande resultat:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-199">This command uses hello **SearchByEmail** class toosearch for any rows where hello **contactinformation** column family and hello **email** column, contains hello string **contoso.com**. You should receive hello following results:</span></span>
 
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2
@@ -605,15 +605,15 @@ ms.lasthandoff: 08/03/2017
           Gabriela Ingram - ID: 6
           Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-    <span data-ttu-id="45473-201">Med hjälp av **fabrikam.com** för den `-emailRegex` värde returnerar de användare som har **fabrikam.com** i fältet e-post.</span><span class="sxs-lookup"><span data-stu-id="45473-201">Using **fabrikam.com** for the `-emailRegex` value returns the users that have **fabrikam.com** in the email field.</span></span> <span data-ttu-id="45473-202">Eftersom den här sökningen implementeras med hjälp av ett reguljärt uttryck baserat filter, du kan också ange reguljära uttryck som **^ r**, vilka returnerar poster där e-postmeddelandet börjar med bokstaven ”r”.</span><span class="sxs-lookup"><span data-stu-id="45473-202">Since this search is implemented by using a regular expression-based filter, you can also enter regular expressions, such as **^r**, which returns entries where the email begins with the letter 'r'.</span></span>
+    <span data-ttu-id="e1a2b-200">Med hjälp av **fabrikam.com** för hello `-emailRegex` värde returnerar hello-användare som har **fabrikam.com** hello e-fältet.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-200">Using **fabrikam.com** for hello `-emailRegex` value returns hello users that have **fabrikam.com** in hello email field.</span></span> <span data-ttu-id="e1a2b-201">Eftersom den här sökningen implementeras med hjälp av ett reguljärt uttryck baserat filter, du kan också ange reguljära uttryck som **^ r**, vilka returnerar poster där hello e-post som börjar med hello bokstaven ”r”.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-201">Since this search is implemented by using a regular expression-based filter, you can also enter regular expressions, such as **^r**, which returns entries where hello email begins with hello letter 'r'.</span></span>
 
-## <a name="delete-the-table"></a><span data-ttu-id="45473-203">Ta bort tabellen</span><span class="sxs-lookup"><span data-stu-id="45473-203">Delete the table</span></span>
-<span data-ttu-id="45473-204">När du är klar med det här exemplet använder du följande kommando från Azure PowerShell-session för att ta bort den **personer** tabell som används i det här exemplet:</span><span class="sxs-lookup"><span data-stu-id="45473-204">When you are done with the example, use the following command from the Azure PowerShell session to delete the **people** table used in this example:</span></span>
+## <a name="delete-hello-table"></a><span data-ttu-id="e1a2b-202">Ta bort hello tabell</span><span class="sxs-lookup"><span data-stu-id="e1a2b-202">Delete hello table</span></span>
+<span data-ttu-id="e1a2b-203">När du är klar med hello exemplet, Använd hello följande kommando från hello Azure PowerShell-session toodelete hello **personer** tabell som används i det här exemplet:</span><span class="sxs-lookup"><span data-stu-id="e1a2b-203">When you are done with hello example, use hello following command from hello Azure PowerShell session toodelete hello **people** table used in this example:</span></span>
 
     Start-HBaseExample -className com.microsoft.examples.DeleteTable -clusterName hdinsightclustername
 
-<span data-ttu-id="45473-205">Ersätt **hdinsightclustername** med namnet på ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="45473-205">Replace **hdinsightclustername** with the name of your HDInsight cluster.</span></span>
+<span data-ttu-id="e1a2b-204">Ersätt **hdinsightclustername** med hello namnet på ditt HDInsight-kluster.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-204">Replace **hdinsightclustername** with hello name of your HDInsight cluster.</span></span>
 
-## <a name="troubleshooting"></a><span data-ttu-id="45473-206">Felsökning</span><span class="sxs-lookup"><span data-stu-id="45473-206">Troubleshooting</span></span>
-### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a><span data-ttu-id="45473-207">Inga resultat eller oväntade resultat när du använder Start HBaseExample</span><span class="sxs-lookup"><span data-stu-id="45473-207">No results or unexpected results when using Start-HBaseExample</span></span>
-<span data-ttu-id="45473-208">Använd den `-showErr` parametern för att visa standardfel (STDERR) som skapas när du kör jobbet.</span><span class="sxs-lookup"><span data-stu-id="45473-208">Use the `-showErr` parameter to view the standard error (STDERR) that is produced while running the job.</span></span>
+## <a name="troubleshooting"></a><span data-ttu-id="e1a2b-205">Felsökning</span><span class="sxs-lookup"><span data-stu-id="e1a2b-205">Troubleshooting</span></span>
+### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a><span data-ttu-id="e1a2b-206">Inga resultat eller oväntade resultat när du använder Start HBaseExample</span><span class="sxs-lookup"><span data-stu-id="e1a2b-206">No results or unexpected results when using Start-HBaseExample</span></span>
+<span data-ttu-id="e1a2b-207">Använd hello `-showErr` parametern tooview hello standardfel (STDERR) som skapas när hello jobb som körs.</span><span class="sxs-lookup"><span data-stu-id="e1a2b-207">Use hello `-showErr` parameter tooview hello standard error (STDERR) that is produced while running hello job.</span></span>

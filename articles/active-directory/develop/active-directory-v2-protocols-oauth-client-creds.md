@@ -1,6 +1,6 @@
 ---
-title: "Använda Azure AD v2.0 åtkomst till säker resurser utan användaråtgärder | Microsoft Docs"
-description: "Skapa webbprogram med hjälp av Azure AD-implementeringen av OAuth 2.0-autentiseringsprotokollet."
+title: "aaaUse Azure AD v2.0 tooaccess skydda resurser utan användaråtgärder | Microsoft Docs"
+description: "Skapa webbprogram med hjälp av hello Azure AD-implementeringen av hello OAuth 2.0-autentiseringsprotokollet."
 services: active-directory
 documentationcenter: 
 author: dstrockis
@@ -15,61 +15,61 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 93b54c3fc4397573f77b2e157c6f1866786690da
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0003ec836d633a5466c48033adedac1108f27203
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# Azure Active Directory v2.0 och OAuth 2.0-klientautentiseringsuppgifter
-Du kan använda den [OAuth 2.0 klientens autentiseringsuppgifter bevilja](http://tools.ietf.org/html/rfc6749#section-4.4), kallas ibland *tvåledade OAuth*, åtkomst till web-värdbaserade resurser med hjälp av identiteten för ett program. Den här typen av bevilja ofta används för server-till-server-interaktioner som måste köras i bakgrunden utan direkt interaktion med användaren. Dessa typer av program som ofta kallas *daemons* eller *tjänstkonton*.
+# Azure Active Directory v2.0 och hello OAuth 2.0 klientens autentiseringsuppgifter flöda
+Du kan använda hello [OAuth 2.0 klientens autentiseringsuppgifter bevilja](http://tools.ietf.org/html/rfc6749#section-4.4), kallas ibland *tvåledade OAuth*, tooaccess webbaserat resurser med hjälp av hello identiteten för ett program. Den här typen av bevilja ofta används för server-till-server-interaktioner som måste köras i bakgrunden hello utan direkt interaktion med användaren. Dessa typer av program som ofta är refererad tooas *daemons* eller *tjänstkonton*.
 
 > [!NOTE]
-> V2.0-slutpunkten stöder inte alla Azure Active Directory-scenarier och funktioner. Läs mer om för att avgöra om du ska använda v2.0-slutpunkten [v2.0 begränsningar](active-directory-v2-limitations.md).
+> hello v2.0-slutpunkten stöder inte alla Azure Active Directory-scenarier och funktioner. toodetermine om du ska använda hello v2.0-slutpunkten Läs om [v2.0 begränsningar](active-directory-v2-limitations.md).
 >
 >
 
-I en normal *treledade OAuth*, ett klientprogram har beviljats behörighet att komma åt en resurs för en viss användares räkning. Behörigheten är delegerad från användaren till programmet, vanligtvis under den [medgivande](active-directory-v2-scopes.md) process. Men i klientautentiseringsuppgifter behörigheter direkt till programmet. När appen med en token för en resurs måste resursen tillämpar som en enkel själva appen har behörighet att utföra en åtgärd och inte som har användaren behörighet.
+I hello vanligare *treledade OAuth*, ett klientprogram är beviljade behörigheten tooaccess en resurs för en viss användares räkning. hello behörigheten delegerad hello användaren toohello, vanligtvis under programmet hello [medgivande](active-directory-v2-scopes.md) process. Men i hello klientautentiseringsuppgifter beviljas behörigheter direkt toohello programmet. När hello appen visas en token tooa resurs, tillämpar hello resurs att själva hello appen har tillståndet tooperform en åtgärd och inte hello användaren har behörighet.
 
 ## Protokollet diagram
-Hela klientautentiseringsuppgifter liknar nästa diagrammet. Varje steg senare i den här artikeln beskrivs.
+hello hela klientautentiseringsuppgifter verkar liknande toohello nästa diagram. Vi beskrivs hello stegen nedan.
 
 ![Klientautentiseringsuppgifter](../../media/active-directory-v2-flows/convergence_scenarios_client_creds.png)
 
 ## Hämta direkt auktorisering
-En app vanligtvis tar emot direkt behörighet att komma åt en resurs i ett av två sätt: via en åtkomstkontrollista (ACL) för resursen eller programmet behörighetstilldelningen i Azure Active Directory (AD Azure). Dessa metoder är de vanligaste i Azure AD, och vi rekommenderar dem för klienter och resurser för klientens autentiseringsuppgifter flödet. En resurs kan välja att tillåta klienter på andra sätt, men. Varje resursservern kan välja den metod som är bäst för sina program.
+En app vanligtvis tar emot direkt auktorisering tooaccess en resurs i ett av två sätt: via en åtkomstkontrollista (ACL) på hello resurs eller programmet behörighetstilldelningen i Azure Active Directory (AD Azure). Dessa metoder är hello vanligaste i Azure AD och rekommenderar vi dem för klienter och resurser för hello klientautentiseringsuppgifter. En resurs kan välja tooauthorize klienter på andra sätt, men. Varje resursservern kan välja hello-metod som passar hello för sina program.
 
 ### Listor för åtkomstkontroll
-En resursleverantör kan tvinga en kontroll av tillståndet baserat på en lista över program-ID som den vet och ger en viss nivå av åtkomst till. När resursen får en token från v2.0-slutpunkten, det kan avkoda token och extrahera klientens program-ID från den `appid` och `iss` anspråk. Den jämför sedan programmet mot en ACL som den upprätthåller. ACL granularitet och metod kan variera avsevärt mellan resurser.
+En resursleverantör kan tvinga en kontroll av tillståndet baserat på en lista över program-ID som den vet och ger en viss nivå av åtkomst till. När hello resurs tar emot en token från hello v2.0-slutpunkten, det kan avkoda hello token och extrahera hello klientens program-ID från hello `appid` och `iss` anspråk. Den jämför sedan hello programmet mot en ACL som den upprätthåller. Hej ACL granularitet och metod kan variera avsevärt mellan resurser.
 
-Ett vanligt användningsfall är att använda en ACL ska kunna köra tester för ett webbprogram eller för en webb-API. Webb-API kan ge en delmängd av fullständig behörighet till en viss klient. Skapa en Testklient som hämtar token från v2.0-slutpunkten och skickar dem till API: et för att köra tester för slutpunkt till slutpunkt på API: et. API: et söker ACL för test-klientens program-ID för fullständig åtkomst till hela den API-funktioner. Om du använder den här typen av ACL, måste du verifiera inte bara anroparens `appid` värde. Kontrollera också att det `iss` värdet för token är betrodd.
+Ett vanligt användningsfall är toouse en ACL-toorun testar för ett webbprogram eller för en webb-API. hello webb-API kan ge en delmängd av fullständig behörighet tooa viss klient. toorun slutpunkt till slutpunkt tester på hello API, skapa en Testklient som hämtar token från hello v2.0-slutpunkten och skickar dem sedan toohello API. hello API och sedan kontrollerar hello ACL för hello testa klientens program-ID för fullständig åtkomst toohello API: er hela funktioner. Om du använder den här typen av ACL, måste toovalidate inte bara hello anroparens `appid` värde. Verifiera att hello `iss` värdet för hello token är betrodd.
 
-Den här typen av auktorisering är vanligt för Daemon och tjänstkonton som behöver åtkomst till data som ägs av konsumentanvändare med personliga Microsoft-konton. För data som ägs av organisationer rekommenderar vi att du får nödvändiga tillståndet via behörigheter för program.
+Den här typen av auktorisering är vanligt för Daemon och tjänstkonton som behöver tooaccess data som ägs av konsumentanvändare med personliga Microsoft-konton. För data som ägs av organisationer rekommenderar vi att du får hello nödvändiga auktorisering via behörigheter för program.
 
 ### Behörigheter för program
-Du kan använda API: er för att exponera en uppsättning behörigheter för program i stället för med ACL: er. Ett program behörighet tilldelas till ett program av en organisations administratör och kan användas endast för att komma åt data som ägs av den organisationen och dess anställda. Till exempel visar Microsoft Graph flera applikationen behörighet att göra följande:
+Du kan använda API: er tooexpose en uppsättning behörigheter för program i stället för med ACL: er. Ett program behörigheten tooan program av en organisations administratör och kan användas endast tooaccess data ägs av den organisationen och dess anställda. Till exempel visar Microsoft Graph flera program behörigheter toodo hello följande:
 
 * Läsa e-post i alla postlådor
 * Läsa och skriva e-post i alla postlådor
 * Skicka e-post som valfri användare
 * Läsa katalogdata
 
-Mer information om behörigheter för program går du till [Microsoft Graph](https://graph.microsoft.io).
+Mer information om behörigheter för program gå för[Microsoft Graph](https://graph.microsoft.io).
 
-Om du vill använda behörigheter för program i din app, gör det diskuterar vi i nästa avsnitt.
+behörigheter för toouse program i din app hello steg diskuterar vi hello nästa avsnitt.
 
-#### Begär behörighet i portalen för registrering av appen
-1. Gå till ditt program i den [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), eller [skapa en app](active-directory-v2-app-registration.md), om du inte redan har gjort. Du måste använda minst en Programhemlighet när du skapar din app.
-2. Leta upp den **direkt programbehörigheter** avsnittet och Lägg sedan till de behörigheter som krävs för din app.
-3. **Spara** appregistrering.
+#### Begär hello behörighet i portalen för registrering av hello-app
+1. Gå tooyour programmet hello [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), eller [skapa en app](active-directory-v2-app-registration.md), om du inte redan har gjort. Du behöver toouse minst en Programhemlighet när du skapar din app.
+2. Leta upp hello **direkt programbehörigheter** avsnittet och Lägg sedan till hello behörigheter som krävs för din app.
+3. **Spara** hello appregistrering.
 
-#### Rekommenderat: Logga in användaren till din app
-När du skapar ett program som använder behörigheter för program kräver normalt appen en sida eller vy som administratören godkänner appens behörigheter. Den här sidan kan vara en del av appens inloggning flödet, en del av appinställningar, eller det kan vara ett dedikerat ”ansluta” flöde. I många fall klokt det för appen att visa detta ”ansluta” Visa endast när en användare har loggat in med ett arbets- eller skolkonto Microsoft-konto.
+#### Rekommenderat: Logga hello användaren i tooyour app
+När du skapar ett program som använder behörigheter för program kräver normalt hello app en sida eller vy på vilken hello admin godkänner hello app-behörigheter. Den här sidan kan vara en del av hello app inloggning flödet, en del av hello app-inställningar, eller så kan vara ett dedikerat ”ansluta” flöde. I många fall klokt det för hello app tooshow detta ”ansluta” Visa endast när en användare har loggat in med ett arbets- eller skolkonto Microsoft-konto.
 
-Om du logga in användaren till din app kan du identifiera organisationen som användaren tillhör innan du be användaren att godkänna behörigheter för program. Även om det inte är absolut nödvändigt, hjälper som dig att skapa en mer intuitiv upplevelse för användarna. Om du vill registrera användaren i Följ våra [v2.0-protokollet självstudier](active-directory-v2-protocols.md).
+Om du registrerar hello användaren i tooyour app kan du identifiera hello organisation toowhich hello användaren tillhör innan du be hello användaren tooapprove hello programbehörigheter. Även om det inte är absolut nödvändigt, hjälper som dig att skapa en mer intuitiv upplevelse för användarna. toosign hello användare i Följ våra [v2.0-protokollet självstudier](active-directory-v2-protocols.md).
 
-#### Begära behörigheter från en katalogadministratör
-När du är redo att begära behörigheter från organisationens administratör kan du omdirigera användaren till v2.0 *medgivande adminslutpunkten*.
+#### Begär hello behörighet från en katalogadministratör
+När du är klar toorequest behörigheter från hello organisations administratör kan du omdirigera hello användaren toohello v2.0 *medgivande adminslutpunkten*.
 
 ```
 // Line breaks are for legibility only.
@@ -81,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 ```
-// Pro tip: Try pasting the following request in a browser!
+// Pro tip: Try pasting hello following request in a browser!
 ```
 
 ```
@@ -90,15 +90,15 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Parameter | Villkor | Beskrivning |
 | --- | --- | --- |
-| Klient |Krävs |Directory-klient som du vill begära tillstånd från. Detta kan vara i GUID- eller format för eget namn. Om du inte vet vilken klient som användaren tillhör och du vill låta dem logga in med en klient använder `common`. |
-| client_id |Krävs |Programmet ID som den [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tilldelats din app. |
-| redirect_uri |Krävs |Omdirigerings-URI där du vill att svar skickas för att hantera din app. Den måste matcha en omdirigerings-URI: er som du har registrerat i portalen, förutom att det måste vara URL-kodade och det kan ha ytterligare sökvägssegment. |
-| state |Rekommenderas |Ett värde som ingår i begäran som också returneras i token svaret. Det kan vara en sträng med innehåll som du vill använda. Tillståndet för att koda information om användarens tillstånd i appen innan autentiseringsbegäran inträffade, exempelvis sidan eller de befann sig i vyn. |
+| Klient |Krävs |hello directory-klient som du vill toorequest tillstånd. Detta kan vara i GUID- eller format för eget namn. Om du inte vet vilken klient hello användaren tillhör tooand som du vill toolet dem logga in med en klient, Använd `common`. |
+| client_id |Krävs |hello program-ID som hello [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tilldelade tooyour app. |
+| redirect_uri |Krävs |hello omdirigerings-URI där du vill att hello svar toobe skickas för din app toohandle. Den måste matcha en hello omdirigerings-URI: er som du har registrerat i hello portal, förutom att det måste vara URL-kodade och det kan ha ytterligare sökvägssegment. |
+| state |Rekommenderas |Ett värde som ingår i hello-begäran som också returneras hello token svar. Det kan vara en sträng med innehåll som du vill använda. hello tillstånd är används tooencode information om hello användarens tillstånd i hello app innan hello autentiseringsbegäran inträffade, exempelvis hello sida eller vy som de var på. |
 
-Azure AD tillämpar nu att endast en Innehavaradministratör kan logga in att slutföra begäran. Administratören blir ombedd att godkänna alla direkt tillämpning behörigheter som du har begärt för din app i portalen för registrering av app.
+Azure AD tillämpar nu att endast en Innehavaradministratör kan logga in toocomplete hello begäran. Hej administratör ombeds tooapprove alla hello direkt tillämpning behörigheter som du har begärt för din app i portalen för registrering av hello-app.
 
 ##### Lyckat svar
-Om administratören godkänner behörigheter för ditt program, lyckat svar som ser ut så här:
+Om Hej administratör godkänner hello behörigheter för ditt program, hello lyckat svar som ser ut så här:
 
 ```
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
@@ -106,12 +106,12 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 | Parameter | Beskrivning |
 | --- | --- | --- |
-| Klient |Directory-klient som beviljats de behörigheter som den begärda i GUID-format för ditt program. |
-| state |Ett värde som ingår i begäran som också returneras i token svaret. Det kan vara en sträng med innehåll som du vill använda. Tillståndet för att koda information om användarens tillstånd i appen innan autentiseringsbegäran inträffade, exempelvis sidan eller de befann sig i vyn. |
-| admin_consent |Ange till **SANT**. |
+| Klient |hello directory-klient som beviljats behörighet programmet hello som den begärda, i GUID-format. |
+| state |Ett värde som ingår i hello-begäran som också returneras hello token svar. Det kan vara en sträng med innehåll som du vill använda. hello tillstånd är används tooencode information om hello användarens tillstånd i hello app innan hello autentiseringsbegäran inträffade, exempelvis hello sida eller vy som de var på. |
+| admin_consent |Ställa in också**SANT**. |
 
 ##### Felsvar
-Om administratören inte godkänner behörigheter för ditt program, misslyckade svaret ser ut så här:
+Om Hej administratör inte godkänner hello behörigheter för ditt program misslyckades hello svar ser ut så här:
 
 ```
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
@@ -119,13 +119,13 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 | Parameter | Beskrivning |
 | --- | --- | --- |
-| fel |Koden felsträng som du kan använda för att klassificera typer av fel, och som du kan använda för att ta hänsyn till fel. |
-| error_description |Ett felmeddelande som kan hjälpa dig att identifiera orsaken till felet. |
+| fel |En felsträng kod som du kan använda tooclassify typer av fel och som du kan använda tooreact tooerrors. |
+| error_description |Ett felmeddelande som kan hjälpa dig att identifiera hello orsaken till felet. |
 
-När du har fått ett lyckat svar från slutpunkten för app-etablering, har din app fått direkt programbehörigheter begärda. Nu kan du begära en token för den resurs som du vill använda.
+När du har mottagit ett lyckat svar från hello app etablering slutpunkten kan har din app fått hello direkt tillämpning behörigheter som begärde. Nu kan du begära en token för hello-resurs som du vill använda.
 
 ## Hämta en token
-När du har skaffat nödvändiga tillståndet för programmet, fortsätter du med erhålla åtkomsttoken för API: er. För att få en token med hjälp av klienten autentiseringsuppgifter bevilja kan skicka en POST-begäran till den `/token` v2.0-slutpunkten:
+När du har skaffat hello nödvändiga auktorisering för ditt program, fortsätter du med erhålla åtkomsttoken för API: er. tooget en token med hjälp av hello klientens autentiseringsuppgifter bevilja skicka en POST-begäran toohello `/token` v2.0-slutpunkten:
 
 ### Först fall: token åtkomst-begäran med en delad hemlighet
 
@@ -143,9 +143,9 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 
 | Parameter | Villkor | Beskrivning |
 | --- | --- | --- |
-| client_id |Krävs |Programmet ID som den [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tilldelats din app. |
-| Omfång |Krävs |Värdet som skickas den `scope` parameter i den här begäran ska vara Resursidentifieraren (program-ID URI) av den resurs du vill, har den `.default` suffix. Värdet är för Microsoft Graph-exempel `https://graph.microsoft.com/.default`. Det här värdet informerar om att det ska utfärda en token för de som associerats med resursen som du vill använda för alla direkt tillämpning behörigheter som du har konfigurerat för din app, v2.0-slutpunkten. |
-| client_secret |Krävs |Den hemlighet som programmet som du skapade för din app i portalen för registrering av app. |
+| client_id |Krävs |hello program-ID som hello [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tilldelade tooyour app. |
+| Omfång |Krävs |hello-värdet som skickades för hello `scope` parameter i den här begäran ska vara hello URI resource identifier (program-ID) av hello-resurs som du vill, försett med hello `.default` suffix. Exempelvis hello Microsoft Graph hello-värdet är `https://graph.microsoft.com/.default`. Det här värdet informerar hello v2.0-slutpunkten att alla hello direkt tillämpning behörigheter du har konfigurerat för din app det ska utfärda en token för hello som associerats med hello-resurs som du vill toouse. |
+| client_secret |Krävs |Hej Programhemlighet som du skapade för din app i portalen för registrering av hello-app. |
 | grant_type |Krävs |Måste vara `client_credentials`. |
 
 ### Andra fall: token åtkomst-begäran med ett certifikat
@@ -160,13 +160,13 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_id=97e0a5b7-d745-40b6-
 
 | Parameter | Villkor | Beskrivning |
 | --- | --- | --- |
-| client_id |Krävs |Programmet ID som den [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tilldelats din app. |
-| Omfång |Krävs |Värdet som skickas den `scope` parameter i den här begäran ska vara Resursidentifieraren (program-ID URI) av den resurs du vill, har den `.default` suffix. Värdet är för Microsoft Graph-exempel `https://graph.microsoft.com/.default`. Det här värdet informerar om att det ska utfärda en token för de som associerats med resursen som du vill använda för alla direkt tillämpning behörigheter som du har konfigurerat för din app, v2.0-slutpunkten. |
-| client_assertion_type |Krävs |Värdet måste vara`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
-| client_assertion |Krävs | Ett intyg (en JSON Web Token) som du behöver för att skapa och registrera med certifikatet du registrerad som autentiseringsuppgifter för ditt program. Läs mer om [certifikat autentiseringsuppgifter](active-directory-certificate-credentials.md) att lära dig att registrera ditt certifikat och format för kontrollen.|
+| client_id |Krävs |hello program-ID som hello [Programregistreringsportalen](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) tilldelade tooyour app. |
+| Omfång |Krävs |hello-värdet som skickades för hello `scope` parameter i den här begäran ska vara hello URI resource identifier (program-ID) av hello-resurs som du vill, försett med hello `.default` suffix. Exempelvis hello Microsoft Graph hello-värdet är `https://graph.microsoft.com/.default`. Det här värdet informerar hello v2.0-slutpunkten att alla hello direkt tillämpning behörigheter du har konfigurerat för din app det ska utfärda en token för hello som associerats med hello-resurs som du vill toouse. |
+| client_assertion_type |Krävs |hello-värdet måste vara`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion |Krävs | Ett intyg (en JSON Web Token) att du behöver toocreate och logga in med hello certifikat du registrerad som autentiseringsuppgifterna för ditt program. Läs mer om [certifikat autentiseringsuppgifter](active-directory-certificate-credentials.md) toolearn hur tooregister ditt certifikat och hello formatering av hello-kontrollen.|
 | grant_type |Krävs |Måste vara `client_credentials`. |
 
-Observera att parametrarna är nästan desamma som i fallet med begäran från delad hemlighet förutom att client_secret-parameter har ersatts av två parametrar: en client_assertion_type och client_assertion.
+Observera att hello parametrar är nästan hello samma som hello fallet med hello begäran av delad hemlighet förutom att hello client_secret parameter har ersatts av två parametrar: en client_assertion_type och client_assertion.
 
 ### Lyckat svar
 Ett lyckat svar ser ut så här:
@@ -181,9 +181,9 @@ Ett lyckat svar ser ut så här:
 
 | Parameter | Beskrivning |
 | --- | --- |
-| access_token |Den begärda åtkomst-token. Appen kan använda denna token för att autentisera till den skyddade resursen som för en webb-API. |
-| token_type |Anger värdet för token-typer. Den enda typen som har stöd för Azure AD är `bearer`. |
-| expires_in |Hur länge den åtkomst-token är giltig (i sekunder). |
+| access_token |hello begärda åtkomst-token. hello app kan använda den här token tooauthenticate toohello skyddad resurs, till exempel tooa Web API. |
+| token_type |Anger hello tokentypen värdet. Hej typ som har stöd för Azure AD är `bearer`. |
+| expires_in |Hur länge hello åtkomst-token är giltig (i sekunder). |
 
 ### Felsvar
 Ett felsvar ser ut så här:
@@ -191,7 +191,7 @@ Ett felsvar ser ut så här:
 ```
 {
   "error": "invalid_scope",
-  "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://foo.microsoft.com/.default is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
+  "error_description": "AADSTS70011: hello provided value for hello input parameter 'scope' is not valid. hello scope https://foo.microsoft.com/.default is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
   "error_codes": [
     70011
   ],
@@ -203,15 +203,15 @@ Ett felsvar ser ut så här:
 
 | Parameter | Beskrivning |
 | --- | --- |
-| fel |Ett felkod sträng som du kan använda för att klassificera typer av fel som inträffar och att ta hänsyn till fel. |
-| error_description |Ett felmeddelande som kan hjälpa dig identifiera orsaken till ett autentiseringsfel. |
+| fel |Ett felkod sträng som du kan använda tooclassify typer av fel som inträffar och tooreact tooerrors. |
+| error_description |Ett felmeddelande som kan hjälpa dig identifiera hello grundorsaken till ett autentiseringsfel. |
 | error_codes |En lista över STS-specifika felkoder som kan hjälpa dig med diagnostik. |
-| tidsstämpel |Tiden då felet inträffade. |
-| trace_id |En unik identifierare för den begäran som kan hjälpa dig med diagnostik. |
-| correlation_id |En unik identifierare för den begäran som kan hjälpa dig med diagnostik för komponenter. |
+| tidsstämpel |hello tid då hello-fel inträffade. |
+| trace_id |En unik identifierare för hello-begäran som kan hjälpa dig med diagnostik. |
+| correlation_id |En unik identifierare för hello-begäran som kan hjälpa dig med diagnostik för komponenter. |
 
 ## Använda en token
-Nu när du har skaffat en token kan du använda token för att göra förfrågningar till resursen. När token upphör att gälla Upprepa begäran till den `/token` slutpunkten för att få en ny åtkomsttoken.
+Nu när du har skaffat en token, använder du hello token toomake begäranden toohello resursen. När hello-token upphör att gälla, upprepa hello begäran toohello `/token` endpoint tooacquire en ny åtkomsttoken.
 
 ```
 GET /v1.0/me/messages
@@ -220,7 +220,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ```
-// Pro tip: Try the following command! (Replace the token with your own.)
+// Pro tip: Try hello following command! (Replace hello token with your own.)
 ```
 
 ```
@@ -228,4 +228,4 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dC
 ```
 
 ## Kodexempel
-Ett exempel på ett program som implementerar klientens autentiseringsuppgifter ger med hjälp av administratören godkänna endpoint finns i vår [v2.0 daemon kodexemplet](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+toosee ett exempel på ett program som implementerar hello klientens autentiseringsuppgifter bevilja med hjälp av hello admin medgivande slutpunkt, finns våra [v2.0 daemon kodexemplet](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).

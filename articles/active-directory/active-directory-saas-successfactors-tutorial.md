@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med SuccessFactors | Microsoft Docs"
-description: "Lär dig hur du använder SuccessFactors med Azure Active Directory för att aktivera enkel inloggning, Automatisk etablering och mycket mer!"
+description: "Lär dig hur toouse SuccessFactors med Azure Active Directory tooenable enkel inloggning, Automatisk etablering och mycket mer!"
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -14,103 +14,103 @@ ms.workload: identity
 ms.date: 07/21/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: e85a38ccbe25263ac42bc76351416b023fb77c87
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3f7895d7d5e26fda27f555ae2f14a1645b50dcba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a><span data-ttu-id="61da2-103">Självstudier: Azure Active Directory-integrering med SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="61da2-103">Tutorial: Azure Active Directory integration with SuccessFactors</span></span>
-<span data-ttu-id="61da2-104">Syftet med den här kursen är att visa dig hur du integrerar SuccessFactors med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="61da2-104">The objective of this tutorial is to show you how to integrate SuccessFactors with Azure Active Directory (Azure AD).</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-successfactors"></a><span data-ttu-id="a856a-103">Självstudier: Azure Active Directory-integrering med SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="a856a-103">Tutorial: Azure Active Directory integration with SuccessFactors</span></span>
+<span data-ttu-id="a856a-104">hello syftet med den här kursen är tooshow du hur toointegrate SuccessFactors med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="a856a-104">hello objective of this tutorial is tooshow you how toointegrate SuccessFactors with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="61da2-105">Integrera SuccessFactors med Azure AD ger dig följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="61da2-105">Integrating SuccessFactors with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="a856a-105">Integrera SuccessFactors med Azure AD ger dig hello följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="a856a-105">Integrating SuccessFactors with Azure AD provides you with hello following benefits:</span></span>
 
-* <span data-ttu-id="61da2-106">Du kan styra i Azure AD som har åtkomst till SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="61da2-106">You can control in Azure AD who has access to SuccessFactors</span></span>
-* <span data-ttu-id="61da2-107">Du kan aktivera användarna att automatiskt hämta loggat in på SuccessFactors (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="61da2-107">You can enable your users to automatically get signed-on to SuccessFactors (Single Sign-On) with their Azure AD accounts</span></span>
-* <span data-ttu-id="61da2-108">Du kan hantera dina konton i en central plats – den klassiska Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="61da2-108">You can manage your accounts in one central location - the Azure classic portal</span></span>
+* <span data-ttu-id="a856a-106">Du kan styra i Azure AD som har åtkomst till tooSuccessFactors</span><span class="sxs-lookup"><span data-stu-id="a856a-106">You can control in Azure AD who has access tooSuccessFactors</span></span>
+* <span data-ttu-id="a856a-107">Du kan aktivera din användare tooautomatically get inloggade tooSuccessFactors (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="a856a-107">You can enable your users tooautomatically get signed-on tooSuccessFactors (Single Sign-On) with their Azure AD accounts</span></span>
+* <span data-ttu-id="a856a-108">Du kan hantera dina konton i en central plats - hello klassiska Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="a856a-108">You can manage your accounts in one central location - hello Azure classic portal</span></span>
 
-<span data-ttu-id="61da2-109">Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="61da2-109">If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="a856a-109">Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="a856a-109">If you want tooknow more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="61da2-110">Krav</span><span class="sxs-lookup"><span data-stu-id="61da2-110">Prerequisites</span></span>
-<span data-ttu-id="61da2-111">För att konfigurera Azure AD-integrering med SuccessFactors, behöver du följande:</span><span class="sxs-lookup"><span data-stu-id="61da2-111">To configure Azure AD integration with SuccessFactors, you need the following items:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="a856a-110">Krav</span><span class="sxs-lookup"><span data-stu-id="a856a-110">Prerequisites</span></span>
+<span data-ttu-id="a856a-111">tooconfigure Azure AD-integrering med SuccessFactors, behöver du hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="a856a-111">tooconfigure Azure AD integration with SuccessFactors, you need hello following items:</span></span>
 
-* <span data-ttu-id="61da2-112">En giltig Azure-prenumeration</span><span class="sxs-lookup"><span data-stu-id="61da2-112">A valid Azure subscription</span></span>
-* <span data-ttu-id="61da2-113">En klient i SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="61da2-113">A tenant in SuccessFactors</span></span>
+* <span data-ttu-id="a856a-112">En giltig Azure-prenumeration</span><span class="sxs-lookup"><span data-stu-id="a856a-112">A valid Azure subscription</span></span>
+* <span data-ttu-id="a856a-113">En klient i SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="a856a-113">A tenant in SuccessFactors</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="61da2-114">Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="61da2-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="a856a-114">tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="a856a-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 > 
 > 
 
-<span data-ttu-id="61da2-115">Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="61da2-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="a856a-115">tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="a856a-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-* <span data-ttu-id="61da2-116">Du bör inte använda produktionsmiljön, om det inte är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="61da2-116">You should not use your production environment, unless this is necessary.</span></span>
-* <span data-ttu-id="61da2-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="61da2-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+* <span data-ttu-id="a856a-116">Du bör inte använda produktionsmiljön, om det inte är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="a856a-116">You should not use your production environment, unless this is necessary.</span></span>
+* <span data-ttu-id="a856a-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="a856a-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="61da2-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="61da2-118">Scenario description</span></span>
-<span data-ttu-id="61da2-119">Syftet med den här kursen är att du ska testa Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="61da2-119">The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="a856a-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="a856a-118">Scenario description</span></span>
+<span data-ttu-id="a856a-119">hello syftet med den här kursen är tooenable du tootest Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="a856a-119">hello objective of this tutorial is tooenable you tootest Azure AD single sign-on in a test environment.</span></span>
 
-<span data-ttu-id="61da2-120">Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="61da2-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+<span data-ttu-id="a856a-120">hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="a856a-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="61da2-121">Att lägga till SuccessFactors från galleriet</span><span class="sxs-lookup"><span data-stu-id="61da2-121">Adding SuccessFactors from the gallery</span></span>
-2. <span data-ttu-id="61da2-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="61da2-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="a856a-121">Att lägga till SuccessFactors från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="a856a-121">Adding SuccessFactors from hello gallery</span></span>
+2. <span data-ttu-id="a856a-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="a856a-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-successfactors-from-the-gallery"></a><span data-ttu-id="61da2-123">Att lägga till SuccessFactors från galleriet</span><span class="sxs-lookup"><span data-stu-id="61da2-123">Adding SuccessFactors from the gallery</span></span>
-<span data-ttu-id="61da2-124">Du måste lägga till SuccessFactors från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av SuccessFactors i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="61da2-124">To configure the integration of SuccessFactors into Azure AD, you need to add SuccessFactors from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-successfactors-from-hello-gallery"></a><span data-ttu-id="a856a-123">Att lägga till SuccessFactors från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="a856a-123">Adding SuccessFactors from hello gallery</span></span>
+<span data-ttu-id="a856a-124">tooconfigure hello integrering av SuccessFactors i Azure AD, behöver du tooadd SuccessFactors hello galleriet tooyour listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="a856a-124">tooconfigure hello integration of SuccessFactors into Azure AD, you need tooadd SuccessFactors from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="61da2-125">**Utför följande steg för att lägga till SuccessFactors från galleriet:**</span><span class="sxs-lookup"><span data-stu-id="61da2-125">**To add SuccessFactors from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="a856a-125">**tooadd SuccessFactors från galleriet hello utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="a856a-125">**tooadd SuccessFactors from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="61da2-126">I den klassiska Azure-portalen på panelen vänstra navigeringsfönstret klickar du på **Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="61da2-126">In the Azure classic portal, on the left navigation panel, click **Active Directory**.</span></span>
+1. <span data-ttu-id="a856a-126">I hello klassiska Azure-portalen på hello vänstra navigeringsfönstret klickar du på **Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="a856a-126">In hello Azure classic portal, on hello left navigation panel, click **Active Directory**.</span></span>
    
     ![Konfigurera enkel inloggning][1]
-2. <span data-ttu-id="61da2-128">Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.</span><span class="sxs-lookup"><span data-stu-id="61da2-128">From the **Directory** list, select the directory for which you want to enable directory integration.</span></span>
-3. <span data-ttu-id="61da2-129">Klicka för att öppna vyn program i vyn directory **program** på huvudmenyn.</span><span class="sxs-lookup"><span data-stu-id="61da2-129">To open the applications view, in the directory view, click **Applications** in the top menu.</span></span>
+2. <span data-ttu-id="a856a-128">Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.</span><span class="sxs-lookup"><span data-stu-id="a856a-128">From hello **Directory** list, select hello directory for which you want tooenable directory integration.</span></span>
+3. <span data-ttu-id="a856a-129">tooopen hello program i vyn hello directory vyn klickar du på **program** i hello huvudmenyn.</span><span class="sxs-lookup"><span data-stu-id="a856a-129">tooopen hello applications view, in hello directory view, click **Applications** in hello top menu.</span></span>
    
     ![Konfigurera enkel inloggning][2]
-4. <span data-ttu-id="61da2-131">Klicka på **Lägg till** längst ned på sidan.</span><span class="sxs-lookup"><span data-stu-id="61da2-131">Click **Add** at the bottom of the page.</span></span>
+4. <span data-ttu-id="a856a-131">Klicka på **Lägg till** på hello hello sidans nederkant.</span><span class="sxs-lookup"><span data-stu-id="a856a-131">Click **Add** at hello bottom of hello page.</span></span>
    
     ![Program][3]
-5. <span data-ttu-id="61da2-133">På den **vad vill du göra** dialogrutan klickar du på **lägga till ett program från galleriet**.</span><span class="sxs-lookup"><span data-stu-id="61da2-133">On the **What do you want to do** dialog, click **Add an application from the gallery**.</span></span>
+5. <span data-ttu-id="a856a-133">På hello **vad vill du vill toodo** dialogrutan klickar du på **lägga till ett program från galleriet hello**.</span><span class="sxs-lookup"><span data-stu-id="a856a-133">On hello **What do you want toodo** dialog, click **Add an application from hello gallery**.</span></span>
    
     ![Konfigurera enkel inloggning][4]
-6. <span data-ttu-id="61da2-135">I den **sökrutan**, typen **SuccessFactors**.</span><span class="sxs-lookup"><span data-stu-id="61da2-135">In the **search box**, type **SuccessFactors**.</span></span>
+6. <span data-ttu-id="a856a-135">I hello **sökrutan**, typen **SuccessFactors**.</span><span class="sxs-lookup"><span data-stu-id="a856a-135">In hello **search box**, type **SuccessFactors**.</span></span>
    
     ![Konfigurera enkel inloggning][5]
-7. <span data-ttu-id="61da2-137">Välj i resultatpanelen **SuccessFactors**, och klicka sedan på **Slutför** lägga till programmet.</span><span class="sxs-lookup"><span data-stu-id="61da2-137">In the results panel, select **SuccessFactors**, and then click **Complete** to add the application.</span></span>
+7. <span data-ttu-id="a856a-137">Markera hello resultat på panelen **SuccessFactors**, och klicka sedan på **Slutför** tooadd hello program.</span><span class="sxs-lookup"><span data-stu-id="a856a-137">In hello results panel, select **SuccessFactors**, and then click **Complete** tooadd hello application.</span></span>
    
     ![Konfigurera enkel inloggning][6]
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="61da2-139">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="61da2-139">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="61da2-140">Syftet med det här avsnittet är att visa dig hur du konfigurerar och testa Azure AD enkel inloggning med SuccessFactors baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="61da2-140">The objective of this section is to show you how to configure and test Azure AD single sign-on with SuccessFactors based on a test user called "Britta Simon".</span></span>
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="a856a-139">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="a856a-139">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="a856a-140">hello syftet med det här avsnittet är tooshow hur tooconfigure och testa Azure AD enkel inloggning med SuccessFactors baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="a856a-140">hello objective of this section is tooshow you how tooconfigure and test Azure AD single sign-on with SuccessFactors based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="61da2-141">För enkel inloggning ska fungera, måste Azure AD motsvarighet användaren i SuccessFactors till en användare i Azure AD är okänt.</span><span class="sxs-lookup"><span data-stu-id="61da2-141">For single sign-on to work, Azure AD needs to know what the counterpart user in SuccessFactors to an user in Azure AD is.</span></span> <span data-ttu-id="61da2-142">Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i SuccessFactors upprättas.</span><span class="sxs-lookup"><span data-stu-id="61da2-142">In other words, a link relationship between an Azure AD user and the related user in SuccessFactors needs to be established.</span></span>
+<span data-ttu-id="a856a-141">För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i SuccessFactors tooan användare i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="a856a-141">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in SuccessFactors tooan user in Azure AD is.</span></span> <span data-ttu-id="a856a-142">Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i SuccessFactors toobe upprättas.</span><span class="sxs-lookup"><span data-stu-id="a856a-142">In other words, a link relationship between an Azure AD user and hello related user in SuccessFactors needs toobe established.</span></span>
 
-<span data-ttu-id="61da2-143">Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="61da2-143">This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in SuccessFactors.</span></span>
+<span data-ttu-id="a856a-143">Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="a856a-143">This link relationship is established by assigning hello value of hello **user name** in Azure AD as hello value of hello **Username** in SuccessFactors.</span></span>
 
-<span data-ttu-id="61da2-144">Om du vill konfigurera och testa Azure AD enkel inloggning med SuccessFactors, måste du utföra följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="61da2-144">To configure and test Azure AD single sign-on with SuccessFactors, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="a856a-144">tooconfigure och testa Azure AD enkel inloggning med SuccessFactors, behöver du toocomplete hello följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="a856a-144">tooconfigure and test Azure AD single sign-on with SuccessFactors, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="61da2-145">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="61da2-145">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="61da2-146">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="61da2-146">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="61da2-147">**[Skapa en testanvändare SuccessFactors](#creating-a-successfactors-test-user)**  – du har en motsvarighet för Britta Simon i SuccessFactors som är kopplad till Azure AD-representation av henne.</span><span class="sxs-lookup"><span data-stu-id="61da2-147">**[Creating a SuccessFactors test user](#creating-a-successfactors-test-user)** - to have a counterpart of Britta Simon in SuccessFactors that is linked to the Azure AD representation of her.</span></span>
-4. <span data-ttu-id="61da2-148">**[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="61da2-148">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="61da2-149">**[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="61da2-149">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="a856a-145">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-single-sign-on) ** -tooenable användare-toouse den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="a856a-145">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="a856a-146">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user) ** -tootest Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="a856a-146">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="a856a-147">**[Skapa en testanvändare SuccessFactors](#creating-a-successfactors-test-user) ** -toohave en motsvarighet för Britta Simon i SuccessFactors som är länkade toohello Azure AD-representation av henne.</span><span class="sxs-lookup"><span data-stu-id="a856a-147">**[Creating a SuccessFactors test user](#creating-a-successfactors-test-user)** - toohave a counterpart of Britta Simon in SuccessFactors that is linked toohello Azure AD representation of her.</span></span>
+4. <span data-ttu-id="a856a-148">**[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="a856a-148">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="a856a-149">**[Testa enkel inloggning](#testing-single-sign-on) ** -tooverify hello om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="a856a-149">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="61da2-150">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="61da2-150">Configuring Azure AD single sign-on</span></span>
-<span data-ttu-id="61da2-151">I det här avsnittet Aktivera Azure AD enkel inloggning i den klassiska portalen och konfigurera enkel inloggning i ditt SuccessFactors program.</span><span class="sxs-lookup"><span data-stu-id="61da2-151">In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your SuccessFactors application.</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="a856a-150">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="a856a-150">Configuring Azure AD single sign-on</span></span>
+<span data-ttu-id="a856a-151">I det här avsnittet Aktivera Azure AD enkel inloggning i hello klassiska portalen och konfigurera enkel inloggning i ditt SuccessFactors program.</span><span class="sxs-lookup"><span data-stu-id="a856a-151">In this section, you enable Azure AD single sign-on in hello classic portal and configure single sign-on in your SuccessFactors application.</span></span>
 
-<span data-ttu-id="61da2-152">**Utför följande steg för att konfigurera Azure AD enkel inloggning med SuccessFactors:**</span><span class="sxs-lookup"><span data-stu-id="61da2-152">**To configure Azure AD single sign-on with SuccessFactors, perform the following steps:**</span></span>
+<span data-ttu-id="a856a-152">**Utför följande steg hello tooconfigure Azure AD enkel inloggning med SuccessFactors:**</span><span class="sxs-lookup"><span data-stu-id="a856a-152">**tooconfigure Azure AD single sign-on with SuccessFactors, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="61da2-153">I den klassiska Azure-portalen på den **SuccessFactors** integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** att öppna den **Konfigurera enkel inloggning** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="61da2-153">In the Azure classic portal, on the **SuccessFactors** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On** dialog.</span></span>
+1. <span data-ttu-id="a856a-153">I hello klassiska Azure-portalen på hello **SuccessFactors** integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** tooopen hello **Konfigurera enkel inloggning** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="a856a-153">In hello Azure classic portal, on hello **SuccessFactors** application integration page, click **Configure single sign-on** tooopen hello **Configure Single Sign On** dialog.</span></span>
    
     ![Konfigurera enkel inloggning][7]
-2. <span data-ttu-id="61da2-155">På den **hur vill du att användarna kan logga in på SuccessFactors** väljer **Microsoft Azure AD enkel inloggning**, och klicka sedan på **nästa**.</span><span class="sxs-lookup"><span data-stu-id="61da2-155">On the **How would you like users to sign on to SuccessFactors** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.</span></span>
+2. <span data-ttu-id="a856a-155">På hello **hur skulle du som användare toosign på tooSuccessFactors** väljer **Microsoft Azure AD enkel inloggning**, och klicka sedan på **nästa**.</span><span class="sxs-lookup"><span data-stu-id="a856a-155">On hello **How would you like users toosign on tooSuccessFactors** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.</span></span>
    
     ![Konfigurera enkel inloggning][8]
-3. <span data-ttu-id="61da2-157">På den **konfigurera App-URL** , utför följande steg, och klickar sedan på **nästa**.</span><span class="sxs-lookup"><span data-stu-id="61da2-157">On the **Configure App URL** page, perform the following steps, and then click **Next**.</span></span>
+3. <span data-ttu-id="a856a-157">På hello **konfigurera App-URL** , utför följande steg hello, och klickar sedan på **nästa**.</span><span class="sxs-lookup"><span data-stu-id="a856a-157">On hello **Configure App URL** page, perform hello following steps, and then click **Next**.</span></span>
    
     ![Konfigurera enkel inloggning][9]
    
-    <span data-ttu-id="61da2-159">a.</span><span class="sxs-lookup"><span data-stu-id="61da2-159">a.</span></span> <span data-ttu-id="61da2-160">I den **logga URL** textruta, ange ett URL-Adressen med något av följande mönster:</span><span class="sxs-lookup"><span data-stu-id="61da2-160">In the **Sign On URL** textbox, type a URL using one of the following patterns:</span></span> 
+    <span data-ttu-id="a856a-159">a.</span><span class="sxs-lookup"><span data-stu-id="a856a-159">a.</span></span> <span data-ttu-id="a856a-160">I hello **logga URL** textruta, ange ett URL-Adressen med något av följande mönster hello:</span><span class="sxs-lookup"><span data-stu-id="a856a-160">In hello **Sign On URL** textbox, type a URL using one of hello following patterns:</span></span> 
    
     |  |
     | --- |
@@ -119,7 +119,7 @@ ms.lasthandoff: 08/03/2017
     | `https://<company name>.successfactors.eu/<company name>` |
     | `https://<company name>.sapsf.eu` |
    
-    <span data-ttu-id="61da2-161">b.</span><span class="sxs-lookup"><span data-stu-id="61da2-161">b.</span></span> <span data-ttu-id="61da2-162">I den **Reply URL** textruta, ange ett URL-Adressen med något av följande mönster:</span><span class="sxs-lookup"><span data-stu-id="61da2-162">In the **Reply URL** textbox, type a URL using one of the following patterns:</span></span> 
+    <span data-ttu-id="a856a-161">b.</span><span class="sxs-lookup"><span data-stu-id="a856a-161">b.</span></span> <span data-ttu-id="a856a-162">I hello **Reply URL** textruta, ange ett URL-Adressen med något av följande mönster hello:</span><span class="sxs-lookup"><span data-stu-id="a856a-162">In hello **Reply URL** textbox, type a URL using one of hello following patterns:</span></span> 
    
     |  |
     | --- |
@@ -129,171 +129,171 @@ ms.lasthandoff: 08/03/2017
     | `https://<company name>.sapsf.eu` |
     | `https://<company name>.sapsf.eu/<company name>` |
    
-    <span data-ttu-id="61da2-163">c.</span><span class="sxs-lookup"><span data-stu-id="61da2-163">c.</span></span> <span data-ttu-id="61da2-164">Klicka på **Nästa**.</span><span class="sxs-lookup"><span data-stu-id="61da2-164">Click **Next**.</span></span> 
+    <span data-ttu-id="a856a-163">c.</span><span class="sxs-lookup"><span data-stu-id="a856a-163">c.</span></span> <span data-ttu-id="a856a-164">Klicka på **Nästa**.</span><span class="sxs-lookup"><span data-stu-id="a856a-164">Click **Next**.</span></span> 
 
     > [!NOTE]
-    > <span data-ttu-id="61da2-165">Observera att detta inte är verkliga värden.</span><span class="sxs-lookup"><span data-stu-id="61da2-165">Please note that these are not the real values.</span></span> <span data-ttu-id="61da2-166">Du måste uppdatera dessa värden med de faktiska logga URL och Reply-URL.</span><span class="sxs-lookup"><span data-stu-id="61da2-166">You have to update these values with the actual Sign On URL and Reply URL.</span></span> <span data-ttu-id="61da2-167">För att få dessa värden kan kontakta [SuccessFactors supportteam](https://www.successfactors.com/en_us/support.html).</span><span class="sxs-lookup"><span data-stu-id="61da2-167">To get these values, contact [SuccessFactors support team](https://www.successfactors.com/en_us/support.html).</span></span>
+    > <span data-ttu-id="a856a-165">Observera att detta inte är hello verkliga värden.</span><span class="sxs-lookup"><span data-stu-id="a856a-165">Please note that these are not hello real values.</span></span> <span data-ttu-id="a856a-166">Du har tooupdate dessa värden med hello faktiska logga URL och svars-URL.</span><span class="sxs-lookup"><span data-stu-id="a856a-166">You have tooupdate these values with hello actual Sign On URL and Reply URL.</span></span> <span data-ttu-id="a856a-167">tooget dessa värden, kontakta [SuccessFactors supportteam](https://www.successfactors.com/en_us/support.html).</span><span class="sxs-lookup"><span data-stu-id="a856a-167">tooget these values, contact [SuccessFactors support team](https://www.successfactors.com/en_us/support.html).</span></span>
 
-1. <span data-ttu-id="61da2-168">På den **Konfigurera enkel inloggning på SuccessFactors** klickar du på **hämta certifikat**, och sedan spara certifikatfilen lokalt på datorn.</span><span class="sxs-lookup"><span data-stu-id="61da2-168">On the **Configure single sign-on at SuccessFactors** page, click **Download certificate**, and then save the certificate file locally on your computer.</span></span>
+1. <span data-ttu-id="a856a-168">På hello **Konfigurera enkel inloggning på SuccessFactors** klickar du på **hämta certifikat**, och sedan spara hello certifikatfilen lokalt på datorn.</span><span class="sxs-lookup"><span data-stu-id="a856a-168">On hello **Configure single sign-on at SuccessFactors** page, click **Download certificate**, and then save hello certificate file locally on your computer.</span></span>
    
     ![Konfigurera enkel inloggning][10]
 
-2. <span data-ttu-id="61da2-170">Logga in i ett annat webbläsarfönster din **SuccessFactors administrationsportalen** som administratör.</span><span class="sxs-lookup"><span data-stu-id="61da2-170">In a different web browser window, log into your **SuccessFactors admin portal** as an administrator.</span></span>
+2. <span data-ttu-id="a856a-170">Logga in i ett annat webbläsarfönster din **SuccessFactors administrationsportalen** som administratör.</span><span class="sxs-lookup"><span data-stu-id="a856a-170">In a different web browser window, log into your **SuccessFactors admin portal** as an administrator.</span></span>
 
-3. <span data-ttu-id="61da2-171">Besök **programsäkerhet** och inbyggd **enkel inloggning på funktionen**.</span><span class="sxs-lookup"><span data-stu-id="61da2-171">Visit **Application Security** and native to **Single Sign On Feature**.</span></span> 
+3. <span data-ttu-id="a856a-171">Besök **programsäkerhet** och egna för**enkel inloggning på funktionen**.</span><span class="sxs-lookup"><span data-stu-id="a856a-171">Visit **Application Security** and native too**Single Sign On Feature**.</span></span> 
 
-4. <span data-ttu-id="61da2-172">Placera alla värden i den **återställa Token** och på **spara Token** att aktivera SAML SSO.</span><span class="sxs-lookup"><span data-stu-id="61da2-172">Place any value in the **Reset Token** and click **Save Token** to enable SAML SSO.</span></span>
+4. <span data-ttu-id="a856a-172">Placera alla värden i hello **återställa Token** och på **spara Token** tooenable SAML SSO.</span><span class="sxs-lookup"><span data-stu-id="a856a-172">Place any value in hello **Reset Token** and click **Save Token** tooenable SAML SSO.</span></span>
    
     ![Konfigurera enkel inloggning på app-sida][11]
 
     > [!NOTE] 
-    > <span data-ttu-id="61da2-174">Det här värdet används bara som växeln på/av.</span><span class="sxs-lookup"><span data-stu-id="61da2-174">This value is just used as the on/off switch.</span></span> <span data-ttu-id="61da2-175">Om inget värde har sparats är SAML SSO Aktiverat.</span><span class="sxs-lookup"><span data-stu-id="61da2-175">If any value is saved, the SAML SSO is ON.</span></span> <span data-ttu-id="61da2-176">Om ett tomt värde har sparats är SAML SSO OFF.</span><span class="sxs-lookup"><span data-stu-id="61da2-176">If a blank value is saved the SAML SSO is OFF.</span></span>
+    > <span data-ttu-id="a856a-174">Det här värdet används bara som hello strömbrytare.</span><span class="sxs-lookup"><span data-stu-id="a856a-174">This value is just used as hello on/off switch.</span></span> <span data-ttu-id="a856a-175">Om inget värde har sparats är hello SAML SSO Aktiverat.</span><span class="sxs-lookup"><span data-stu-id="a856a-175">If any value is saved, hello SAML SSO is ON.</span></span> <span data-ttu-id="a856a-176">Om ett tomt värde har sparats är hello SAML SSO OFF.</span><span class="sxs-lookup"><span data-stu-id="a856a-176">If a blank value is saved hello SAML SSO is OFF.</span></span>
 
-1. <span data-ttu-id="61da2-177">Inbyggd nedan skärmbild och utför följande åtgärder.</span><span class="sxs-lookup"><span data-stu-id="61da2-177">Native to below screenshot and perform the following actions.</span></span>
+1. <span data-ttu-id="a856a-177">Skärmbild av interna toobelow och utför följande åtgärder hello.</span><span class="sxs-lookup"><span data-stu-id="a856a-177">Native toobelow screenshot and perform hello following actions.</span></span>
    
     ![Konfigurera enkel inloggning på app-sida][12]
    
-    <span data-ttu-id="61da2-179">a.</span><span class="sxs-lookup"><span data-stu-id="61da2-179">a.</span></span> <span data-ttu-id="61da2-180">Välj den **SAML v2 SSO** alternativknapp</span><span class="sxs-lookup"><span data-stu-id="61da2-180">Select the **SAML v2 SSO** Radio Button</span></span>
+    <span data-ttu-id="a856a-179">a.</span><span class="sxs-lookup"><span data-stu-id="a856a-179">a.</span></span> <span data-ttu-id="a856a-180">Välj hello **SAML v2 SSO** alternativknapp</span><span class="sxs-lookup"><span data-stu-id="a856a-180">Select hello **SAML v2 SSO** Radio Button</span></span>
    
-    <span data-ttu-id="61da2-181">b.</span><span class="sxs-lookup"><span data-stu-id="61da2-181">b.</span></span> <span data-ttu-id="61da2-182">Ange SAML garanterar part Name(e.g. SAml issuer + company name).</span><span class="sxs-lookup"><span data-stu-id="61da2-182">Set the SAML Asserting Party Name(e.g. SAml issuer + company name).</span></span>
+    <span data-ttu-id="a856a-181">b.</span><span class="sxs-lookup"><span data-stu-id="a856a-181">b.</span></span> <span data-ttu-id="a856a-182">Ange hello SAML garanterar part Name(e.g. SAml issuer + company name).</span><span class="sxs-lookup"><span data-stu-id="a856a-182">Set hello SAML Asserting Party Name(e.g. SAml issuer + company name).</span></span>
    
-    <span data-ttu-id="61da2-183">c.</span><span class="sxs-lookup"><span data-stu-id="61da2-183">c.</span></span> <span data-ttu-id="61da2-184">I den **SAML utfärdaren** textruta ange värdet för **utfärdar-URL** från guiden Konfigurera program för Azure AD.</span><span class="sxs-lookup"><span data-stu-id="61da2-184">In the **SAML Issuer** textbox put the value of **Issuer URL** from Azure AD application configuration wizard.</span></span>
+    <span data-ttu-id="a856a-183">c.</span><span class="sxs-lookup"><span data-stu-id="a856a-183">c.</span></span> <span data-ttu-id="a856a-184">I hello **SAML utfärdaren** textruta placera hello värdet för **utfärdar-URL** från guiden Konfigurera program för Azure AD.</span><span class="sxs-lookup"><span data-stu-id="a856a-184">In hello **SAML Issuer** textbox put hello value of **Issuer URL** from Azure AD application configuration wizard.</span></span>
    
-    <span data-ttu-id="61da2-185">d.</span><span class="sxs-lookup"><span data-stu-id="61da2-185">d.</span></span> <span data-ttu-id="61da2-186">Välj **svar (kunden genereras/IdP/AP)** som **kräver obligatorisk signatur**.</span><span class="sxs-lookup"><span data-stu-id="61da2-186">Select **Response(Customer Generated/IdP/AP)** as **Require Mandatory Signature**.</span></span>
+    <span data-ttu-id="a856a-185">d.</span><span class="sxs-lookup"><span data-stu-id="a856a-185">d.</span></span> <span data-ttu-id="a856a-186">Välj **svar (kunden genereras/IdP/AP)** som **kräver obligatorisk signatur**.</span><span class="sxs-lookup"><span data-stu-id="a856a-186">Select **Response(Customer Generated/IdP/AP)** as **Require Mandatory Signature**.</span></span>
    
-    <span data-ttu-id="61da2-187">e.</span><span class="sxs-lookup"><span data-stu-id="61da2-187">e.</span></span> <span data-ttu-id="61da2-188">Välj **aktiverat** som **aktivera SAML-flaggan**.</span><span class="sxs-lookup"><span data-stu-id="61da2-188">Select **Enabled** as **Enable SAML Flag**.</span></span>
+    <span data-ttu-id="a856a-187">e.</span><span class="sxs-lookup"><span data-stu-id="a856a-187">e.</span></span> <span data-ttu-id="a856a-188">Välj **aktiverat** som **aktivera SAML-flaggan**.</span><span class="sxs-lookup"><span data-stu-id="a856a-188">Select **Enabled** as **Enable SAML Flag**.</span></span>
    
-    <span data-ttu-id="61da2-189">f.</span><span class="sxs-lookup"><span data-stu-id="61da2-189">f.</span></span> <span data-ttu-id="61da2-190">Välj **nr** som **signatur på förfrågan inloggning (SA genereras/SP/RP)**.</span><span class="sxs-lookup"><span data-stu-id="61da2-190">Select **No** as **Login Request Signature(SF Generated/SP/RP)**.</span></span>
+    <span data-ttu-id="a856a-189">f.</span><span class="sxs-lookup"><span data-stu-id="a856a-189">f.</span></span> <span data-ttu-id="a856a-190">Välj **nr** som **signatur på förfrågan inloggning (SA genereras/SP/RP)**.</span><span class="sxs-lookup"><span data-stu-id="a856a-190">Select **No** as **Login Request Signature(SF Generated/SP/RP)**.</span></span>
    
-    <span data-ttu-id="61da2-191">g.</span><span class="sxs-lookup"><span data-stu-id="61da2-191">g.</span></span> <span data-ttu-id="61da2-192">Välj **webbläsare/Post-profilen** som **SAML profil**.</span><span class="sxs-lookup"><span data-stu-id="61da2-192">Select **Browser/Post Profile** as **SAML Profile**.</span></span>
+    <span data-ttu-id="a856a-191">g.</span><span class="sxs-lookup"><span data-stu-id="a856a-191">g.</span></span> <span data-ttu-id="a856a-192">Välj **webbläsare/Post-profilen** som **SAML profil**.</span><span class="sxs-lookup"><span data-stu-id="a856a-192">Select **Browser/Post Profile** as **SAML Profile**.</span></span>
    
-    <span data-ttu-id="61da2-193">h.</span><span class="sxs-lookup"><span data-stu-id="61da2-193">h.</span></span> <span data-ttu-id="61da2-194">Välj **nr** som **genomdriva giltighetsperioden för certifikatet**.</span><span class="sxs-lookup"><span data-stu-id="61da2-194">Select **No** as **Enforce Certificate Valid Period**.</span></span>
+    <span data-ttu-id="a856a-193">h.</span><span class="sxs-lookup"><span data-stu-id="a856a-193">h.</span></span> <span data-ttu-id="a856a-194">Välj **nr** som **genomdriva giltighetsperioden för certifikatet**.</span><span class="sxs-lookup"><span data-stu-id="a856a-194">Select **No** as **Enforce Certificate Valid Period**.</span></span>
    
-    <span data-ttu-id="61da2-195">Jag.</span><span class="sxs-lookup"><span data-stu-id="61da2-195">i.</span></span> <span data-ttu-id="61da2-196">Kopiera innehållet i filen hämtat certifikat och klistrar in det i den **SAML verifiera certifikatet** textruta.</span><span class="sxs-lookup"><span data-stu-id="61da2-196">Copy the content of the downloaded certificate file, and then paste it into the **SAML Verifying Certificate** textbox.</span></span>
+    <span data-ttu-id="a856a-195">Jag.</span><span class="sxs-lookup"><span data-stu-id="a856a-195">i.</span></span> <span data-ttu-id="a856a-196">Kopiera hello innehållet hello hämtat certifikatfilen och klistra in den i hello **SAML verifiera certifikatet** textruta.</span><span class="sxs-lookup"><span data-stu-id="a856a-196">Copy hello content of hello downloaded certificate file, and then paste it into hello **SAML Verifying Certificate** textbox.</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="61da2-197">Certifikatets innehåll måste börja certifikat och certifikat sluttaggar.</span><span class="sxs-lookup"><span data-stu-id="61da2-197">The certificate content must have begin certificate and end certificate tags.</span></span>
+    > <span data-ttu-id="a856a-197">Hej certifikatinnehåll måste börja certifikat och certifikat sluttaggar.</span><span class="sxs-lookup"><span data-stu-id="a856a-197">hello certificate content must have begin certificate and end certificate tags.</span></span>
 
-1. <span data-ttu-id="61da2-198">Gå till SAML V2 och utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="61da2-198">Navigate to SAML V2, and then perform the following steps:</span></span>
+1. <span data-ttu-id="a856a-198">Navigera tooSAML V2 och utför sedan hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="a856a-198">Navigate tooSAML V2, and then perform hello following steps:</span></span>
    
     ![Konfigurera enkel inloggning på app-sida][13]
    
-    <span data-ttu-id="61da2-200">a.</span><span class="sxs-lookup"><span data-stu-id="61da2-200">a.</span></span> <span data-ttu-id="61da2-201">Välj **Ja** som **stöder SP-initierad globala logga ut**.</span><span class="sxs-lookup"><span data-stu-id="61da2-201">Select **Yes** as **Support SP-initiated Global Logout**.</span></span>
+    <span data-ttu-id="a856a-200">a.</span><span class="sxs-lookup"><span data-stu-id="a856a-200">a.</span></span> <span data-ttu-id="a856a-201">Välj **Ja** som **stöder SP-initierad globala logga ut**.</span><span class="sxs-lookup"><span data-stu-id="a856a-201">Select **Yes** as **Support SP-initiated Global Logout**.</span></span>
    
-    <span data-ttu-id="61da2-202">b.</span><span class="sxs-lookup"><span data-stu-id="61da2-202">b.</span></span> <span data-ttu-id="61da2-203">I den **globala logga ut tjänst-URL (LogoutRequest mål)** textruta ange värdet för **Remote logga ut URL** från guiden Konfigurera program för Azure AD.</span><span class="sxs-lookup"><span data-stu-id="61da2-203">In the **Global Logout Service URL (LogoutRequest destination)** textbox put the value of **Remote Logout URL** from Azure AD application configuration wizard.</span></span>
+    <span data-ttu-id="a856a-202">b.</span><span class="sxs-lookup"><span data-stu-id="a856a-202">b.</span></span> <span data-ttu-id="a856a-203">I hello **globala logga ut tjänst-URL (LogoutRequest mål)** textruta placera hello värdet för **Remote logga ut URL** från guiden Konfigurera program för Azure AD.</span><span class="sxs-lookup"><span data-stu-id="a856a-203">In hello **Global Logout Service URL (LogoutRequest destination)** textbox put hello value of **Remote Logout URL** from Azure AD application configuration wizard.</span></span>
    
-    <span data-ttu-id="61da2-204">c.</span><span class="sxs-lookup"><span data-stu-id="61da2-204">c.</span></span> <span data-ttu-id="61da2-205">Välj **nr** som **kräver sp måste kryptera alla NameID elementet**.</span><span class="sxs-lookup"><span data-stu-id="61da2-205">Select **No** as **Require sp must encrypt all NameID element**.</span></span>
+    <span data-ttu-id="a856a-204">c.</span><span class="sxs-lookup"><span data-stu-id="a856a-204">c.</span></span> <span data-ttu-id="a856a-205">Välj **nr** som **kräver sp måste kryptera alla NameID elementet**.</span><span class="sxs-lookup"><span data-stu-id="a856a-205">Select **No** as **Require sp must encrypt all NameID element**.</span></span>
    
-    <span data-ttu-id="61da2-206">d.</span><span class="sxs-lookup"><span data-stu-id="61da2-206">d.</span></span> <span data-ttu-id="61da2-207">Välj **Ospecificerad** som **NameID Format**.</span><span class="sxs-lookup"><span data-stu-id="61da2-207">Select **unspecified** as **NameID Format**.</span></span>
+    <span data-ttu-id="a856a-206">d.</span><span class="sxs-lookup"><span data-stu-id="a856a-206">d.</span></span> <span data-ttu-id="a856a-207">Välj **Ospecificerad** som **NameID Format**.</span><span class="sxs-lookup"><span data-stu-id="a856a-207">Select **unspecified** as **NameID Format**.</span></span>
    
-    <span data-ttu-id="61da2-208">e.</span><span class="sxs-lookup"><span data-stu-id="61da2-208">e.</span></span> <span data-ttu-id="61da2-209">Välj **Ja** som **aktivera sp initierade inloggning (AuthnRequest)**.</span><span class="sxs-lookup"><span data-stu-id="61da2-209">Select **Yes** as **Enable sp initiated login (AuthnRequest)**.</span></span>
+    <span data-ttu-id="a856a-208">e.</span><span class="sxs-lookup"><span data-stu-id="a856a-208">e.</span></span> <span data-ttu-id="a856a-209">Välj **Ja** som **aktivera sp initierade inloggning (AuthnRequest)**.</span><span class="sxs-lookup"><span data-stu-id="a856a-209">Select **Yes** as **Enable sp initiated login (AuthnRequest)**.</span></span>
    
-    <span data-ttu-id="61da2-210">f.</span><span class="sxs-lookup"><span data-stu-id="61da2-210">f.</span></span> <span data-ttu-id="61da2-211">I den **begäran om att skicka som företagsomfattande utgivaren** textruta ange värdet för **Remote inloggnings-URL** från guiden Konfigurera program för Azure AD.</span><span class="sxs-lookup"><span data-stu-id="61da2-211">In the **Send request as Company-Wide issuer** textbox put the value of **Remote Login URL** from Azure AD application configuration wizard.</span></span>
-2. <span data-ttu-id="61da2-212">Utför de här stegen om du vill göra inloggningen användarnamn inte skiftlägeskänsligt.</span><span class="sxs-lookup"><span data-stu-id="61da2-212">Perform these steps if you want to make the login usernames Case Insensitive, .</span></span>
+    <span data-ttu-id="a856a-210">f.</span><span class="sxs-lookup"><span data-stu-id="a856a-210">f.</span></span> <span data-ttu-id="a856a-211">I hello **begäran om att skicka som företagsomfattande utgivaren** textruta placera hello värdet för **Remote inloggnings-URL** från guiden Konfigurera program för Azure AD.</span><span class="sxs-lookup"><span data-stu-id="a856a-211">In hello **Send request as Company-Wide issuer** textbox put hello value of **Remote Login URL** from Azure AD application configuration wizard.</span></span>
+2. <span data-ttu-id="a856a-212">Utför de här stegen om du vill toomake hello inloggning användarnamn inte skiftlägeskänsligt.</span><span class="sxs-lookup"><span data-stu-id="a856a-212">Perform these steps if you want toomake hello login usernames Case Insensitive, .</span></span>
    
-    <span data-ttu-id="61da2-213">a.</span><span class="sxs-lookup"><span data-stu-id="61da2-213">a.</span></span> <span data-ttu-id="61da2-214">Besök **Företagsinställningar**(nästan längst ned).</span><span class="sxs-lookup"><span data-stu-id="61da2-214">Visit **Company Settings**(near the bottom).</span></span>
+    <span data-ttu-id="a856a-213">a.</span><span class="sxs-lookup"><span data-stu-id="a856a-213">a.</span></span> <span data-ttu-id="a856a-214">Besök **Företagsinställningar**(nära hello längst ned).</span><span class="sxs-lookup"><span data-stu-id="a856a-214">Visit **Company Settings**(near hello bottom).</span></span>
    
-    <span data-ttu-id="61da2-215">b.</span><span class="sxs-lookup"><span data-stu-id="61da2-215">b.</span></span> <span data-ttu-id="61da2-216">Markera kryssrutan bredvid **aktivera icke skiftlägeskänslig användarnamn**.</span><span class="sxs-lookup"><span data-stu-id="61da2-216">select checkbox near **Enable Non-Case-Sensitive Username**.</span></span>
+    <span data-ttu-id="a856a-215">b.</span><span class="sxs-lookup"><span data-stu-id="a856a-215">b.</span></span> <span data-ttu-id="a856a-216">Markera kryssrutan bredvid **aktivera icke skiftlägeskänslig användarnamn**.</span><span class="sxs-lookup"><span data-stu-id="a856a-216">select checkbox near **Enable Non-Case-Sensitive Username**.</span></span>
    
-    <span data-ttu-id="61da2-217">c.Click **spara**.</span><span class="sxs-lookup"><span data-stu-id="61da2-217">c.Click **Save**.</span></span>
+    <span data-ttu-id="a856a-217">c.Click **spara**.</span><span class="sxs-lookup"><span data-stu-id="a856a-217">c.Click **Save**.</span></span>
    
     ![Konfigurera enkel inloggning][29]
 
     > [!NOTE] 
-    > <span data-ttu-id="61da2-219">Om du försöker göra detta kontrollerar systemet om det skapar en dubblett SAML-inloggningsnamn.</span><span class="sxs-lookup"><span data-stu-id="61da2-219">If you try to enable this, the system checks if it will create a duplicate SAML login name.</span></span> <span data-ttu-id="61da2-220">Till exempel om kunden har användarnamn Användare1 och Användare1.</span><span class="sxs-lookup"><span data-stu-id="61da2-220">For example if the customer has usernames User1 and user1.</span></span> <span data-ttu-id="61da2-221">Tar bort skiftlägeskänslighet gör dessa dubbletter.</span><span class="sxs-lookup"><span data-stu-id="61da2-221">Taking away case sensitivity makes these duplicates.</span></span> <span data-ttu-id="61da2-222">Systemet får du ett felmeddelande och kommer inte att aktivera funktionen.</span><span class="sxs-lookup"><span data-stu-id="61da2-222">The system will give you an error message and will not enable the feature.</span></span> <span data-ttu-id="61da2-223">Kunden måste ändra något av användarnamnet så att det är faktiskt stavat olika.</span><span class="sxs-lookup"><span data-stu-id="61da2-223">The customer will need to change one of the usernames so it’s actually spelled different.</span></span> 
+    > <span data-ttu-id="a856a-219">Om du försöker tooenable detta, kontrolleras Hej om det skapar en dubblett SAML-inloggningsnamn.</span><span class="sxs-lookup"><span data-stu-id="a856a-219">If you try tooenable this, hello system checks if it will create a duplicate SAML login name.</span></span> <span data-ttu-id="a856a-220">Om exempelvis hello kunden har användarnamn Användare1 och Användare1.</span><span class="sxs-lookup"><span data-stu-id="a856a-220">For example if hello customer has usernames User1 and user1.</span></span> <span data-ttu-id="a856a-221">Tar bort skiftlägeskänslighet gör dessa dubbletter.</span><span class="sxs-lookup"><span data-stu-id="a856a-221">Taking away case sensitivity makes these duplicates.</span></span> <span data-ttu-id="a856a-222">hello system får du ett felmeddelande och kommer inte att aktivera hello-funktionen.</span><span class="sxs-lookup"><span data-stu-id="a856a-222">hello system will give you an error message and will not enable hello feature.</span></span> <span data-ttu-id="a856a-223">hello kunden behöver toochange en hello användarnamn så att det verkligen är stavat olika.</span><span class="sxs-lookup"><span data-stu-id="a856a-223">hello customer will need toochange one of hello usernames so it’s actually spelled different.</span></span> 
 
-1. <span data-ttu-id="61da2-224">Välj bekräftelsen konfiguration för enkel inloggning på den klassiska Azure-portalen och klicka sedan på **Slutför** att stänga den **Konfigurera enkel inloggning** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="61da2-224">On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.</span></span>
+1. <span data-ttu-id="a856a-224">Välj hello konfiguration för enkel inloggning bekräftelse på hello klassiska Azure-portalen, och klicka sedan på **Slutför** tooclose hello **Konfigurera enkel inloggning** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="a856a-224">On hello Azure classic portal, select hello single sign-on configuration confirmation, and then click **Complete** tooclose hello **Configure Single Sign On** dialog.</span></span>
    
     ![Program][14]
-2. <span data-ttu-id="61da2-226">På den **enkel inloggning bekräftelse** klickar du på **Slutför**.</span><span class="sxs-lookup"><span data-stu-id="61da2-226">On the **Single sign-on confirmation** page, click **Complete**.</span></span>
+2. <span data-ttu-id="a856a-226">På hello **enkel inloggning bekräftelse** klickar du på **Slutför**.</span><span class="sxs-lookup"><span data-stu-id="a856a-226">On hello **Single sign-on confirmation** page, click **Complete**.</span></span>
    
     ![Program][15]
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="61da2-228">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="61da2-228">Creating an Azure AD test user</span></span>
-<span data-ttu-id="61da2-229">Syftet med det här avsnittet är att skapa en testanvändare i den klassiska portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="61da2-229">The objective of this section is to create a test user in the classic portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="a856a-228">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="a856a-228">Creating an Azure AD test user</span></span>
+<span data-ttu-id="a856a-229">hello syftet med det här avsnittet är toocreate en testanvändare i hello klassiska portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="a856a-229">hello objective of this section is toocreate a test user in hello classic portal called Britta Simon.</span></span>
 
 ![Skapa Azure AD-användare][16]
 
-<span data-ttu-id="61da2-231">**Utför följande steg för att skapa en testanvändare i Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="61da2-231">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="a856a-231">**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="a856a-231">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="61da2-232">I den **klassiska Azure-portalen**, klicka på det vänstra navigeringsfönstret **Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="61da2-232">In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.</span></span>
+1. <span data-ttu-id="a856a-232">I hello **klassiska Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="a856a-232">In hello **Azure classic Portal**, on hello left navigation pane, click **Active Directory**.</span></span>
    
     ![Skapa en testanvändare i Azure AD][17]
-2. <span data-ttu-id="61da2-234">Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.</span><span class="sxs-lookup"><span data-stu-id="61da2-234">From the **Directory** list, select the directory for which you want to enable directory integration.</span></span>
-3. <span data-ttu-id="61da2-235">Klicka för att visa en lista över användare, på menyn upp **användare**.</span><span class="sxs-lookup"><span data-stu-id="61da2-235">To display the list of users, in the menu on the top, click **Users**.</span></span>
+2. <span data-ttu-id="a856a-234">Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.</span><span class="sxs-lookup"><span data-stu-id="a856a-234">From hello **Directory** list, select hello directory for which you want tooenable directory integration.</span></span>
+3. <span data-ttu-id="a856a-235">toodisplay hello lista över användare i hello menyn hello överst, klickar du på **användare**.</span><span class="sxs-lookup"><span data-stu-id="a856a-235">toodisplay hello list of users, in hello menu on hello top, click **Users**.</span></span>
    
     ![Skapa en testanvändare i Azure AD][18]
-4. <span data-ttu-id="61da2-237">Öppna den **Lägg till användare** i verktygsfältet längst ned i dialogrutan klickar du på **Lägg till användare**.</span><span class="sxs-lookup"><span data-stu-id="61da2-237">To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.</span></span>
+4. <span data-ttu-id="a856a-237">tooopen hello **Lägg till användare** i hello verktygsfältet på hello längst ned i dialogrutan klickar du på **Lägg till användare**.</span><span class="sxs-lookup"><span data-stu-id="a856a-237">tooopen hello **Add User** dialog, in hello toolbar on hello bottom, click **Add User**.</span></span>
    
     ![Skapa en testanvändare i Azure AD][19]
-5. <span data-ttu-id="61da2-239">På den **berätta om den här användaren** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="61da2-239">On the **Tell us about this user** dialog page, perform the following steps:</span></span>
+5. <span data-ttu-id="a856a-239">På hello **berätta om den här användaren** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="a856a-239">On hello **Tell us about this user** dialog page, perform hello following steps:</span></span>
    
     ![Skapa en testanvändare i Azure AD][20]
    
-    <span data-ttu-id="61da2-241">a.</span><span class="sxs-lookup"><span data-stu-id="61da2-241">a.</span></span> <span data-ttu-id="61da2-242">Välj ny användare i din organisation som typ av användare.</span><span class="sxs-lookup"><span data-stu-id="61da2-242">As Type Of User, select New user in your organization.</span></span>
+    <span data-ttu-id="a856a-241">a.</span><span class="sxs-lookup"><span data-stu-id="a856a-241">a.</span></span> <span data-ttu-id="a856a-242">Välj ny användare i din organisation som typ av användare.</span><span class="sxs-lookup"><span data-stu-id="a856a-242">As Type Of User, select New user in your organization.</span></span>
    
-    <span data-ttu-id="61da2-243">b.</span><span class="sxs-lookup"><span data-stu-id="61da2-243">b.</span></span> <span data-ttu-id="61da2-244">I användarnamnet **textruta**, typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="61da2-244">In the User Name **textbox**, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="a856a-243">b.</span><span class="sxs-lookup"><span data-stu-id="a856a-243">b.</span></span> <span data-ttu-id="a856a-244">I hello användarnamn **textruta**, typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="a856a-244">In hello User Name **textbox**, type **BrittaSimon**.</span></span>
    
-    <span data-ttu-id="61da2-245">c.</span><span class="sxs-lookup"><span data-stu-id="61da2-245">c.</span></span> <span data-ttu-id="61da2-246">Klicka på **Nästa**.</span><span class="sxs-lookup"><span data-stu-id="61da2-246">Click **Next**.</span></span>
-6. <span data-ttu-id="61da2-247">På den **användarprofil** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="61da2-247">On the **User Profile** dialog page, perform the following steps:</span></span>
+    <span data-ttu-id="a856a-245">c.</span><span class="sxs-lookup"><span data-stu-id="a856a-245">c.</span></span> <span data-ttu-id="a856a-246">Klicka på **Nästa**.</span><span class="sxs-lookup"><span data-stu-id="a856a-246">Click **Next**.</span></span>
+6. <span data-ttu-id="a856a-247">På hello **användarprofil** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="a856a-247">On hello **User Profile** dialog page, perform hello following steps:</span></span>
    
     ![Skapa en testanvändare i Azure AD][21]
    
-    <span data-ttu-id="61da2-249">a.</span><span class="sxs-lookup"><span data-stu-id="61da2-249">a.</span></span> <span data-ttu-id="61da2-250">I den **Förnamn** textruta typen **Britta**.</span><span class="sxs-lookup"><span data-stu-id="61da2-250">In the **First Name** textbox, type **Britta**.</span></span>  
+    <span data-ttu-id="a856a-249">a.</span><span class="sxs-lookup"><span data-stu-id="a856a-249">a.</span></span> <span data-ttu-id="a856a-250">I hello **Förnamn** textruta typen **Britta**.</span><span class="sxs-lookup"><span data-stu-id="a856a-250">In hello **First Name** textbox, type **Britta**.</span></span>  
    
-    <span data-ttu-id="61da2-251">b.</span><span class="sxs-lookup"><span data-stu-id="61da2-251">b.</span></span> <span data-ttu-id="61da2-252">I den **efternamn** textruta typ, **Simon**.</span><span class="sxs-lookup"><span data-stu-id="61da2-252">In the **Last Name** textbox, type, **Simon**.</span></span>
+    <span data-ttu-id="a856a-251">b.</span><span class="sxs-lookup"><span data-stu-id="a856a-251">b.</span></span> <span data-ttu-id="a856a-252">I hello **efternamn** textruta typ, **Simon**.</span><span class="sxs-lookup"><span data-stu-id="a856a-252">In hello **Last Name** textbox, type, **Simon**.</span></span>
    
-    <span data-ttu-id="61da2-253">c.</span><span class="sxs-lookup"><span data-stu-id="61da2-253">c.</span></span> <span data-ttu-id="61da2-254">I den **visningsnamn** textruta typen **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="61da2-254">In the **Display Name** textbox, type **Britta Simon**.</span></span>
+    <span data-ttu-id="a856a-253">c.</span><span class="sxs-lookup"><span data-stu-id="a856a-253">c.</span></span> <span data-ttu-id="a856a-254">I hello **visningsnamn** textruta typen **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="a856a-254">In hello **Display Name** textbox, type **Britta Simon**.</span></span>
    
-    <span data-ttu-id="61da2-255">d.</span><span class="sxs-lookup"><span data-stu-id="61da2-255">d.</span></span> <span data-ttu-id="61da2-256">I den **rollen** väljer **användaren**.</span><span class="sxs-lookup"><span data-stu-id="61da2-256">In the **Role** list, select **User**.</span></span>
+    <span data-ttu-id="a856a-255">d.</span><span class="sxs-lookup"><span data-stu-id="a856a-255">d.</span></span> <span data-ttu-id="a856a-256">I hello **rollen** väljer **användaren**.</span><span class="sxs-lookup"><span data-stu-id="a856a-256">In hello **Role** list, select **User**.</span></span>
    
-    <span data-ttu-id="61da2-257">e.</span><span class="sxs-lookup"><span data-stu-id="61da2-257">e.</span></span> <span data-ttu-id="61da2-258">Klicka på **Nästa**.</span><span class="sxs-lookup"><span data-stu-id="61da2-258">Click **Next**.</span></span>
-7. <span data-ttu-id="61da2-259">På den **skaffa tillfälligt lösenord** dialogrutan sidan, klickar du på **skapa**.</span><span class="sxs-lookup"><span data-stu-id="61da2-259">On the **Get temporary password** dialog page, click **create**.</span></span>
+    <span data-ttu-id="a856a-257">e.</span><span class="sxs-lookup"><span data-stu-id="a856a-257">e.</span></span> <span data-ttu-id="a856a-258">Klicka på **Nästa**.</span><span class="sxs-lookup"><span data-stu-id="a856a-258">Click **Next**.</span></span>
+7. <span data-ttu-id="a856a-259">På hello **skaffa tillfälligt lösenord** dialogrutan sidan, klickar du på **skapa**.</span><span class="sxs-lookup"><span data-stu-id="a856a-259">On hello **Get temporary password** dialog page, click **create**.</span></span>
    
     ![Skapa en testanvändare i Azure AD][22]
-8. <span data-ttu-id="61da2-261">På den **skaffa tillfälligt lösenord** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="61da2-261">On the **Get temporary password** dialog page, perform the following steps:</span></span>
+8. <span data-ttu-id="a856a-261">På hello **skaffa tillfälligt lösenord** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="a856a-261">On hello **Get temporary password** dialog page, perform hello following steps:</span></span>
    
     ![Skapa en testanvändare i Azure AD][23]
    
-    <span data-ttu-id="61da2-263">a.</span><span class="sxs-lookup"><span data-stu-id="61da2-263">a.</span></span> <span data-ttu-id="61da2-264">Anteckna värdet för den **nytt lösenord**.</span><span class="sxs-lookup"><span data-stu-id="61da2-264">Write down the value of the **New Password**.</span></span>
+    <span data-ttu-id="a856a-263">a.</span><span class="sxs-lookup"><span data-stu-id="a856a-263">a.</span></span> <span data-ttu-id="a856a-264">Skriv ned hello värdet för hello **nytt lösenord**.</span><span class="sxs-lookup"><span data-stu-id="a856a-264">Write down hello value of hello **New Password**.</span></span>
    
-    <span data-ttu-id="61da2-265">b.</span><span class="sxs-lookup"><span data-stu-id="61da2-265">b.</span></span> <span data-ttu-id="61da2-266">Klicka på **Complete** (Slutför).</span><span class="sxs-lookup"><span data-stu-id="61da2-266">Click **Complete**.</span></span>  
+    <span data-ttu-id="a856a-265">b.</span><span class="sxs-lookup"><span data-stu-id="a856a-265">b.</span></span> <span data-ttu-id="a856a-266">Klicka på **Complete** (Slutför).</span><span class="sxs-lookup"><span data-stu-id="a856a-266">Click **Complete**.</span></span>  
 
-### <a name="creating-a-successfactors-test-user"></a><span data-ttu-id="61da2-267">Skapa en testanvändare SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="61da2-267">Creating a SuccessFactors test user</span></span>
-<span data-ttu-id="61da2-268">För att aktivera Azure AD-användare att logga in på SuccessFactors etableras de i SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="61da2-268">In order to enable Azure AD users to log into SuccessFactors, they must be provisioned into SuccessFactors.</span></span>  
-<span data-ttu-id="61da2-269">När det gäller SuccessFactors är etablering en manuell aktivitet.</span><span class="sxs-lookup"><span data-stu-id="61da2-269">In the case of SuccessFactors, provisioning is a manual task.</span></span>
+### <a name="creating-a-successfactors-test-user"></a><span data-ttu-id="a856a-267">Skapa en testanvändare SuccessFactors</span><span class="sxs-lookup"><span data-stu-id="a856a-267">Creating a SuccessFactors test user</span></span>
+<span data-ttu-id="a856a-268">I ordning tooenable Azure AD-användare toolog i SuccessFactors, måste de etableras i SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="a856a-268">In order tooenable Azure AD users toolog into SuccessFactors, they must be provisioned into SuccessFactors.</span></span>  
+<span data-ttu-id="a856a-269">Hello gäller SuccessFactors är etablering en manuell aktivitet.</span><span class="sxs-lookup"><span data-stu-id="a856a-269">In hello case of SuccessFactors, provisioning is a manual task.</span></span>
 
-<span data-ttu-id="61da2-270">För att få användare som skapats i SuccessFactors, måste du kontakta den [SuccessFactors supportteam](https://www.successfactors.com/en_us/support.html).</span><span class="sxs-lookup"><span data-stu-id="61da2-270">To get users created in SuccessFactors, you need to contact the [SuccessFactors support team](https://www.successfactors.com/en_us/support.html).</span></span>
+<span data-ttu-id="a856a-270">tooget-användare som har skapats i SuccessFactors måste toocontact hello [SuccessFactors supportteam](https://www.successfactors.com/en_us/support.html).</span><span class="sxs-lookup"><span data-stu-id="a856a-270">tooget users created in SuccessFactors, you need toocontact hello [SuccessFactors support team](https://www.successfactors.com/en_us/support.html).</span></span>
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="61da2-271">Tilldela Azure AD-testanvändare</span><span class="sxs-lookup"><span data-stu-id="61da2-271">Assigning the Azure AD test user</span></span>
-<span data-ttu-id="61da2-272">Syftet med det här avsnittet är att aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja sin åtkomst till SuccessFactors.</span><span class="sxs-lookup"><span data-stu-id="61da2-272">The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to SuccessFactors.</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="a856a-271">Tilldela användare hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="a856a-271">Assigning hello Azure AD test user</span></span>
+<span data-ttu-id="a856a-272">hello syftet med det här avsnittet är tooenabling Britta Simon toouse Azure enkel inloggning genom att tilldela tooSuccessFactors sin åtkomst.</span><span class="sxs-lookup"><span data-stu-id="a856a-272">hello objective of this section is tooenabling Britta Simon toouse Azure single sign-on by granting her access tooSuccessFactors.</span></span>
 
 ![Tilldela användare][24]
 
-<span data-ttu-id="61da2-274">**Om du vill tilldela SuccessFactors Britta Simon utför du följande steg:**</span><span class="sxs-lookup"><span data-stu-id="61da2-274">**To assign Britta Simon to SuccessFactors, perform the following steps:**</span></span>
+<span data-ttu-id="a856a-274">**tooassign Britta Simon tooSuccessFactors utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="a856a-274">**tooassign Britta Simon tooSuccessFactors, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="61da2-275">På den klassiska portalen för att öppna vyn program i katalogen vyn klickar du på **program** på huvudmenyn.</span><span class="sxs-lookup"><span data-stu-id="61da2-275">On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.</span></span>
+1. <span data-ttu-id="a856a-275">På hello klassiska portalen tooopen hello program i vyn hello directory vyn klickar du på **program** i hello huvudmenyn.</span><span class="sxs-lookup"><span data-stu-id="a856a-275">On hello classic portal, tooopen hello applications view, in hello directory view, click **Applications** in hello top menu.</span></span>
    
     ![Tilldela användare][25]
-2. <span data-ttu-id="61da2-277">Välj i listan med program **SuccessFactors**.</span><span class="sxs-lookup"><span data-stu-id="61da2-277">In the applications list, select **SuccessFactors**.</span></span>
+2. <span data-ttu-id="a856a-277">Välj i listan med program hello **SuccessFactors**.</span><span class="sxs-lookup"><span data-stu-id="a856a-277">In hello applications list, select **SuccessFactors**.</span></span>
    
     ![Konfigurera enkel inloggning][26]
-3. <span data-ttu-id="61da2-279">Klicka på menyn högst upp **användare**.</span><span class="sxs-lookup"><span data-stu-id="61da2-279">In the menu on the top, click **Users**.</span></span>
+3. <span data-ttu-id="a856a-279">Hello-menyn överst hello **användare**.</span><span class="sxs-lookup"><span data-stu-id="a856a-279">In hello menu on hello top, click **Users**.</span></span>
    
     ![Tilldela användare][27]
-4. <span data-ttu-id="61da2-281">Välj i listan användare **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="61da2-281">In the Users list, select **Britta Simon**.</span></span>
-5. <span data-ttu-id="61da2-282">Klicka på i verktygsfältet längst ned i **tilldela**.</span><span class="sxs-lookup"><span data-stu-id="61da2-282">In the toolbar on the bottom, click **Assign**.</span></span>
+4. <span data-ttu-id="a856a-281">Markera i hello användare **Britta Simon**.</span><span class="sxs-lookup"><span data-stu-id="a856a-281">In hello Users list, select **Britta Simon**.</span></span>
+5. <span data-ttu-id="a856a-282">Klicka i hello verktygsfältet hello längst ned **tilldela**.</span><span class="sxs-lookup"><span data-stu-id="a856a-282">In hello toolbar on hello bottom, click **Assign**.</span></span>
    
     ![Tilldela användare][28]
 
-### <a name="testing-single-sign-on"></a><span data-ttu-id="61da2-284">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="61da2-284">Testing single sign-on</span></span>
-<span data-ttu-id="61da2-285">Syftet med det här avsnittet är att testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.</span><span class="sxs-lookup"><span data-stu-id="61da2-285">The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="a856a-284">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="a856a-284">Testing single sign-on</span></span>
+<span data-ttu-id="a856a-285">hello syftet med det här avsnittet är tootest din Azure AD-konfiguration för enkel inloggning med hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="a856a-285">hello objective of this section is tootest your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="61da2-286">När du klickar på panelen SuccessFactors på åtkomstpanelen du bör få automatiskt loggat in på ditt SuccessFactors program.</span><span class="sxs-lookup"><span data-stu-id="61da2-286">When you click the SuccessFactors tile in the Access Panel, you should get automatically signed-on to your SuccessFactors application.</span></span>
+<span data-ttu-id="a856a-286">Du bör få automatiskt inloggade tooyour SuccessFactors programmet när du klickar på hello SuccessFactors panelen i hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="a856a-286">When you click hello SuccessFactors tile in hello Access Panel, you should get automatically signed-on tooyour SuccessFactors application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="61da2-287">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="61da2-287">Additional resources</span></span>
-* [<span data-ttu-id="61da2-288">Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="61da2-288">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="61da2-289">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="61da2-289">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+## <a name="additional-resources"></a><span data-ttu-id="a856a-287">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="a856a-287">Additional resources</span></span>
+* [<span data-ttu-id="a856a-288">Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="a856a-288">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="a856a-289">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="a856a-289">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 

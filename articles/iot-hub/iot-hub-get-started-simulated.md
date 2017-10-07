@@ -1,6 +1,6 @@
 ---
-title: "Komma igång med att ansluta simulerade enheter till Azure IoT Hub | Microsoft Docs"
-description: "Lär dig hur du skapar simulerade IoT-enheter och Anslut dem till Azure IoT Hub. Enheterna kan skicka telemetri IoT-hubb och Iot-hubb kan övervaka och hantera dina enheter."
+title: "Kom igång ansluter simulerade enheterna tooAzure IoT-hubb | Microsoft Docs"
+description: "Lär dig hur toocreate simulerade IoT-enheter och ansluter dem tooAzure IoT-hubb. Enheterna kan skicka telemetri tooIoT NAV- och Iot-hubb kan övervaka och hantera dina enheter."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2017
 ms.author: dobett
-ms.openlocfilehash: 436b3057509a831837159e814490959a2d7455a4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2c9b76477d12c853abd93aa96043417a013daaef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-iot-hub-get-started-with-simulated-devices-tutorials"></a><span data-ttu-id="94fcf-105">Azure IoT-hubb Kom igång med simulerade enheterna självstudier</span><span class="sxs-lookup"><span data-stu-id="94fcf-105">Azure IoT Hub get started with simulated devices tutorials</span></span>
+# <a name="azure-iot-hub-get-started-with-simulated-devices-tutorials"></a><span data-ttu-id="6b665-105">Azure IoT-hubb Kom igång med simulerade enheterna självstudier</span><span class="sxs-lookup"><span data-stu-id="6b665-105">Azure IoT Hub get started with simulated devices tutorials</span></span>
 
-<span data-ttu-id="94fcf-106">Dessa självstudiekurser introduktion till Azure IoT Hub och SDK-enheten.</span><span class="sxs-lookup"><span data-stu-id="94fcf-106">These tutorials introduce you to Azure IoT Hub and the device SDKs.</span></span> <span data-ttu-id="94fcf-107">Kursen beskriver vanliga IoT-scenarier för att demonstrera funktionerna i IoT-hubb.</span><span class="sxs-lookup"><span data-stu-id="94fcf-107">The tutorials cover common IoT scenarios to demonstrate the capabilities of IoT Hub.</span></span> <span data-ttu-id="94fcf-108">Självstudierna visar även hur du kombinerar IoT-hubb med andra Azure-tjänster och verktyg för att skapa mer kraftfulla IoT-lösningar.</span><span class="sxs-lookup"><span data-stu-id="94fcf-108">The tutorials also illustrate how to combine IoT Hub with other Azure services and tools to build more powerful IoT solutions.</span></span> <span data-ttu-id="94fcf-109">Självstudiekurser som anges i följande tabell visar hur du skapar simulerade IoT-enheter.</span><span class="sxs-lookup"><span data-stu-id="94fcf-109">The tutorials listed in the following table show you how to create simulated IoT devices.</span></span>
+<span data-ttu-id="6b665-106">Dessa självstudiekurser införa tooAzure IoT-hubb och hello enhet SDK: er.</span><span class="sxs-lookup"><span data-stu-id="6b665-106">These tutorials introduce you tooAzure IoT Hub and hello device SDKs.</span></span> <span data-ttu-id="6b665-107">hello självstudier beskriver vanliga IoT scenarier toodemonstrate hello funktionerna i IoT-hubb.</span><span class="sxs-lookup"><span data-stu-id="6b665-107">hello tutorials cover common IoT scenarios toodemonstrate hello capabilities of IoT Hub.</span></span> <span data-ttu-id="6b665-108">hello självstudier också illustrerar hur toocombine IoT-hubb med andra Azure-tjänster och verktyg toobuild mer kraftfulla IoT-lösningar.</span><span class="sxs-lookup"><span data-stu-id="6b665-108">hello tutorials also illustrate how toocombine IoT Hub with other Azure services and tools toobuild more powerful IoT solutions.</span></span> <span data-ttu-id="6b665-109">hello självstudiekurser i hello följande tabell visar hur toocreate simulerade IoT-enheter.</span><span class="sxs-lookup"><span data-stu-id="6b665-109">hello tutorials listed in hello following table show you how toocreate simulated IoT devices.</span></span>
 
-| <span data-ttu-id="94fcf-110">Programmeringsspråk</span><span class="sxs-lookup"><span data-stu-id="94fcf-110">Programming language</span></span> |
+| <span data-ttu-id="6b665-110">Programmeringsspråk</span><span class="sxs-lookup"><span data-stu-id="6b665-110">Programming language</span></span> |
 |----------------------|
-| <span data-ttu-id="94fcf-111">[.NET][Sim_NET]</span><span class="sxs-lookup"><span data-stu-id="94fcf-111">[.NET][Sim_NET]</span></span>      |
-| <span data-ttu-id="94fcf-112">[Java][Sim_Jav]</span><span class="sxs-lookup"><span data-stu-id="94fcf-112">[Java][Sim_Jav]</span></span>      |
-| <span data-ttu-id="94fcf-113">[Node.js][Sim_Nd]</span><span class="sxs-lookup"><span data-stu-id="94fcf-113">[Node.js][Sim_Nd]</span></span>    |
-| <span data-ttu-id="94fcf-114">[Python][Sim_Pyth]</span><span class="sxs-lookup"><span data-stu-id="94fcf-114">[Python][Sim_Pyth]</span></span>   |
+| <span data-ttu-id="6b665-111">[.NET][Sim_NET]</span><span class="sxs-lookup"><span data-stu-id="6b665-111">[.NET][Sim_NET]</span></span>      |
+| <span data-ttu-id="6b665-112">[Java][Sim_Jav]</span><span class="sxs-lookup"><span data-stu-id="6b665-112">[Java][Sim_Jav]</span></span>      |
+| <span data-ttu-id="6b665-113">[Node.js][Sim_Nd]</span><span class="sxs-lookup"><span data-stu-id="6b665-113">[Node.js][Sim_Nd]</span></span>    |
+| <span data-ttu-id="6b665-114">[Python][Sim_Pyth]</span><span class="sxs-lookup"><span data-stu-id="6b665-114">[Python][Sim_Pyth]</span></span>   |
 
-<span data-ttu-id="94fcf-115">Dessutom kan du använda en IoT-gräns-gatewayen för att aktivera simulerade enheter ansluter till din IoT-hubb.</span><span class="sxs-lookup"><span data-stu-id="94fcf-115">In addition, you can use an IoT Edge gateway to enable simulated devices to connect to your IoT hub.</span></span>
+<span data-ttu-id="6b665-115">Dessutom kan du använda en IoT-Edge gateway tooenable simulerade enheter tooconnect tooyour IoT-hubb.</span><span class="sxs-lookup"><span data-stu-id="6b665-115">In addition, you can use an IoT Edge gateway tooenable simulated devices tooconnect tooyour IoT hub.</span></span>
 
-| <span data-ttu-id="94fcf-116">Programmeringsspråk</span><span class="sxs-lookup"><span data-stu-id="94fcf-116">Programming language</span></span> | <span data-ttu-id="94fcf-117">Plattform</span><span class="sxs-lookup"><span data-stu-id="94fcf-117">Platform</span></span>           |
+| <span data-ttu-id="6b665-116">Programmeringsspråk</span><span class="sxs-lookup"><span data-stu-id="6b665-116">Programming language</span></span> | <span data-ttu-id="6b665-117">Plattform</span><span class="sxs-lookup"><span data-stu-id="6b665-117">Platform</span></span>           |
 |----------------------|------------------- |
-| <span data-ttu-id="94fcf-118">C</span><span class="sxs-lookup"><span data-stu-id="94fcf-118">C</span></span>                    | <span data-ttu-id="94fcf-119">[Linux][Sim_Lnx]</span><span class="sxs-lookup"><span data-stu-id="94fcf-119">[Linux][Sim_Lnx]</span></span>   |
-| <span data-ttu-id="94fcf-120">C</span><span class="sxs-lookup"><span data-stu-id="94fcf-120">C</span></span>                    | <span data-ttu-id="94fcf-121">[Windows][Sim_Win]</span><span class="sxs-lookup"><span data-stu-id="94fcf-121">[Windows][Sim_Win]</span></span> |
+| <span data-ttu-id="6b665-118">C</span><span class="sxs-lookup"><span data-stu-id="6b665-118">C</span></span>                    | <span data-ttu-id="6b665-119">[Linux][Sim_Lnx]</span><span class="sxs-lookup"><span data-stu-id="6b665-119">[Linux][Sim_Lnx]</span></span>   |
+| <span data-ttu-id="6b665-120">C</span><span class="sxs-lookup"><span data-stu-id="6b665-120">C</span></span>                    | <span data-ttu-id="6b665-121">[Windows][Sim_Win]</span><span class="sxs-lookup"><span data-stu-id="6b665-121">[Windows][Sim_Win]</span></span> |
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]
 

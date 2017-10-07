@@ -46,13 +46,13 @@
 #### [Aktivera offline-synkronisering](app-service-mobile-android-get-started-offline-data.md)
 #### [Lägg till autentisering](app-service-mobile-android-get-started-users.md)
 #### [Lägg till push-meddelanden](app-service-mobile-android-get-started-push.md)
-#### [Arbeta med klient-SDK:n](app-service-mobile-android-how-to-use-client-library.md)
+#### [Arbeta med hello klient-SDK](app-service-mobile-android-how-to-use-client-library.md)
 
 ### Cordova
 #### [Aktivera offline-synkronisering](app-service-mobile-cordova-get-started-offline-data.md)
 #### [Lägg till autentisering](app-service-mobile-cordova-get-started-users.md)
 #### [Lägg till push-meddelanden](app-service-mobile-cordova-get-started-push.md)
-#### Arbeta med klient-SDK:n
+#### Arbeta med hello klient-SDK
 ##### [Cordova](app-service-mobile-cordova-how-to-use-client-library.md)
 ##### [JavaScript/HTML](app-service-mobile-html-how-to-use-client-library.md)
 
@@ -60,52 +60,52 @@
 #### [Aktivera offline-synkronisering](app-service-mobile-ios-get-started-offline-data.md)
 #### [Lägg till autentisering](app-service-mobile-ios-get-started-users.md)
 #### [Lägg till push-meddelanden](app-service-mobile-ios-get-started-push.md)
-#### [Arbeta med klient-SDK:n](app-service-mobile-ios-how-to-use-client-library.md)
+#### [Arbeta med hello klient-SDK](app-service-mobile-ios-how-to-use-client-library.md)
 
 ### Windows
 #### [Aktivera offline-synkronisering](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)
 #### [Lägg till autentisering](app-service-mobile-windows-store-dotnet-get-started-users.md)
 #### [Lägg till push-meddelanden](app-service-mobile-windows-store-dotnet-get-started-push.md)
-#### [Arbeta med klient-SDK:n](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Arbeta med hello klient-SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.Android
 #### [Aktivera offline-synkronisering](app-service-mobile-xamarin-android-get-started-offline-data.md)
 #### [Lägg till autentisering](app-service-mobile-xamarin-android-get-started-users.md)
 #### [Lägg till push-meddelanden](app-service-mobile-xamarin-android-get-started-push.md)
-#### [Arbeta med klient-SDK:n](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Arbeta med hello klient-SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.Forms
 #### [Aktivera offline-synkronisering](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 #### [Lägg till autentisering](app-service-mobile-xamarin-forms-get-started-users.md)
 #### [Lägg till push-meddelanden](app-service-mobile-xamarin-forms-get-started-push.md)
-#### [Arbeta med klient-SDK:n](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Arbeta med hello klient-SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 ### Xamarin.iOS
 #### [Aktivera offline-synkronisering](app-service-mobile-xamarin-ios-get-started-offline-data.md)
 #### [Lägg till autentisering](app-service-mobile-xamarin-ios-get-started-users.md)
 #### [Lägg till push-meddelanden](app-service-mobile-xamarin-ios-get-started-push.md)
-#### [Arbeta med klient-SDK:n](app-service-mobile-dotnet-how-to-use-client-library.md)
+#### [Arbeta med hello klient-SDK](app-service-mobile-dotnet-how-to-use-client-library.md)
 
-### Arbeta med server-SDK:n
+### Arbeta med hello server-SDK
 #### [.NET-serverdelen](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)
 #### [Node.js-serverdelen](app-service-mobile-node-backend-how-to-use-server-sdk.md)
 #### [Versionshantering för klienter och servrar](app-service-mobile-client-and-server-versioning.md)
 
 ### Webbjobb
-#### [Vad är Azure WebJobs-SDK?](../app-service-web/websites-dotnet-webjobs-sdk.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Vad är hello Azure WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Skapa ett .NET WebJob i Azure App Service](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Använda Azure Blob Storage med WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Använda Azure Queue Storage med WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Använda Azure Service Bus med WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Använda Azure Table Storage med WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Hur toouse Azure blob storage med hello WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Hur toouse Azure kö lagring med hello WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Hur toouse Azure Service Bus med hello WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Hur toouse Azure table storage med hello WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ### App Service Environment
 #### [Skapa en webbapp i en App Service Environment](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Skapa en ILB ASE med hjälp av Azure Resource Manager-mallar](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Hur tooCreate en ILB ASE med hjälp av Azure Resource Manager-mallar](../app-service-web/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Använda en intern belastningsutjämnare](../app-service-web/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## [Distribuera](../app-service/app-service-deployment-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Distribuera till App Service](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Distribuera tooApp Service](../app-service-web/web-sites-deploy.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Molnsynkronisera distributionen](../app-service-web/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Kontinuerlig distribution](../app-service-web/app-service-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Mellanlagringsmiljöer](../app-service-web/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -137,14 +137,14 @@
 ### [App Service Environment](../app-service/app-service-app-service-environments-readme.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Konfigurera](../app-service-web/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Anpassade konfigurationsinställningar](../app-service-web/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Kontrollera inkommande trafik](../app-service-web/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Hur toocontrol inkommande trafik](../app-service-web/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Översikt över nätverksarkitekturen](../app-service-web/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Nätverkskonfigurationsinformation med ExpressRoute](../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Migrera
-### [Hur är App Service jämfört med Mobile Services?](app-service-mobile-value-prop-migration-from-mobile-services.md)
-### [Migrera en befintlig mobiltjänst till App Service](app-service-mobile-migrating-from-mobile-services.md)
-### Uppgradera en befintlig mobiltjänst till App Service
+### [Hur jämför tooMobile tjänster i App Service?](app-service-mobile-value-prop-migration-from-mobile-services.md)
+### [Migrera en befintlig Mobiltjänst tooApp Service](app-service-mobile-migrating-from-mobile-services.md)
+### Uppgradera en befintlig Mobiltjänst tooApp Service
 #### [.NET-serverdelen](app-service-mobile-net-upgrading-from-mobile-services.md)
 #### [Node.js-serverdelen](app-service-mobile-node-backend-upgrading-from-mobile-services.md)
 
@@ -167,12 +167,12 @@
 ### Skydda en App Service Environment
 #### [Konfigurera en brandvägg för en webbapp](../app-service-web/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Implementera en arkitektur med flernivåsäkerhet](../app-service-web/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Ansluta säkert till serverdelsresurser](../app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [På ett säkert sätt ansluta tooBackend resurser](../app-service-web/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Backup
+## Säkerhetskopiering
 ### [Säkerhetskopiera din app i Azure](../app-service-web/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Återställa en app i Azure](../app-service-web/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Använd REST för att säkerhetskopiera och återställa App Service-appar](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Använd REST tooback och återställa Apptjänst-appar](../app-service-web/websites-csm-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## [Övervaka](../app-service-web/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Aktivera diagnostikloggning](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -193,15 +193,15 @@
 
 ## Integrera
 ### [Få tillgång till lokala resurser med hjälp av hybridanslutningar](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Skicka e-post med hjälp av SendGrid med Azure](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Exportera till PowerApps och Microsoft Flow](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Hur toosend e-post med SendGrid med Azure](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Exportera tooPowerApps och Microsoft Flow](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Felsöka
 ### Allmän felsökning för Mobile Apps
 #### [.NET-serverdelen](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk)
 #### [Node.js-serverdelen](app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging)
 ### [Aktivera diagnostikloggning](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [Strömningsloggar och konsolen](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [Direktuppspelningsloggar och hello-konsolen](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Felsöka med hjälp av Visual Studio](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 # Referens

@@ -1,6 +1,6 @@
 ---
-title: "Skapa en intern belastningsutjämnare – klassiska Azure CLI | Microsoft Docs"
-description: "Lär dig hur du skapar en intern belastningsutjämnare med hjälp av Azure CLI i den klassiska distributionsmodellen"
+title: "aaaCreate en intern belastningsutjämnare - Azure CLI klassiska | Microsoft Docs"
+description: "Lär dig hur toocreate med en intern belastningsutjämnare hello Azure CLI i hello klassiska distributionsmodellen"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,70 +15,70 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: d24b95f75b5ffd1116b07cf9f8bac33767a9c835
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ef29dfda5f7a75a411bbabe8b688a31c6bf81113
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a><span data-ttu-id="e5660-103">Komma igång med att skapa en intern belastningsutjämnare (klassisk) med hjälp av Azure CLI</span><span class="sxs-lookup"><span data-stu-id="e5660-103">Get started creating an internal load balancer (classic) using the Azure CLI</span></span>
+# <a name="get-started-creating-an-internal-load-balancer-classic-using-hello-azure-cli"></a><span data-ttu-id="462ff-103">Komma igång med en intern belastningsutjämnare (klassiskt) med hjälp av hello Azure CLI</span><span class="sxs-lookup"><span data-stu-id="462ff-103">Get started creating an internal load balancer (classic) using hello Azure CLI</span></span>
 
 > [!div class="op_single_selector"]
-> * [<span data-ttu-id="e5660-104">PowerShell</span><span class="sxs-lookup"><span data-stu-id="e5660-104">PowerShell</span></span>](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
-> * [<span data-ttu-id="e5660-105">Azure CLI</span><span class="sxs-lookup"><span data-stu-id="e5660-105">Azure CLI</span></span>](../load-balancer/load-balancer-get-started-ilb-classic-cli.md)
-> * [<span data-ttu-id="e5660-106">Molntjänster</span><span class="sxs-lookup"><span data-stu-id="e5660-106">Cloud services</span></span>](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
+> * [<span data-ttu-id="462ff-104">PowerShell</span><span class="sxs-lookup"><span data-stu-id="462ff-104">PowerShell</span></span>](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
+> * [<span data-ttu-id="462ff-105">Azure CLI</span><span class="sxs-lookup"><span data-stu-id="462ff-105">Azure CLI</span></span>](../load-balancer/load-balancer-get-started-ilb-classic-cli.md)
+> * [<span data-ttu-id="462ff-106">Molntjänster</span><span class="sxs-lookup"><span data-stu-id="462ff-106">Cloud services</span></span>](../load-balancer/load-balancer-get-started-ilb-classic-cloud.md)
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> <span data-ttu-id="e5660-107">Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="e5660-107">Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../azure-resource-manager/resource-manager-deployment-model.md).</span></span>  <span data-ttu-id="e5660-108">Den här artikeln beskriver den klassiska distributionsmodellen.</span><span class="sxs-lookup"><span data-stu-id="e5660-108">This article covers using the classic deployment model.</span></span> <span data-ttu-id="e5660-109">Microsoft rekommenderar att de flesta nya distributioner använder Resource Manager-modellen.</span><span class="sxs-lookup"><span data-stu-id="e5660-109">Microsoft recommends that most new deployments use the Resource Manager model.</span></span> <span data-ttu-id="e5660-110">Lär dig hur du [utför dessa steg med hjälp av Resource Manager-modellen](load-balancer-get-started-ilb-arm-cli.md).</span><span class="sxs-lookup"><span data-stu-id="e5660-110">Learn how to [perform these steps using the Resource Manager model](load-balancer-get-started-ilb-arm-cli.md).</span></span>
+> <span data-ttu-id="462ff-107">Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="462ff-107">Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../azure-resource-manager/resource-manager-deployment-model.md).</span></span>  <span data-ttu-id="462ff-108">Den här artikeln täcker hello klassiska distributionsmodellen.</span><span class="sxs-lookup"><span data-stu-id="462ff-108">This article covers using hello classic deployment model.</span></span> <span data-ttu-id="462ff-109">Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen.</span><span class="sxs-lookup"><span data-stu-id="462ff-109">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span> <span data-ttu-id="462ff-110">Lär dig hur för[utföra dessa steg med hello Resource Manager-modellen](load-balancer-get-started-ilb-arm-cli.md).</span><span class="sxs-lookup"><span data-stu-id="462ff-110">Learn how too[perform these steps using hello Resource Manager model](load-balancer-get-started-ilb-arm-cli.md).</span></span>
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
-## <a name="to-create-an-internal-load-balancer-set-for-virtual-machines"></a><span data-ttu-id="e5660-111">Så här skapar du en intern belastningsutjämningsuppsättning för virtuella datorer</span><span class="sxs-lookup"><span data-stu-id="e5660-111">To create an internal load balancer set for virtual machines</span></span>
+## <a name="toocreate-an-internal-load-balancer-set-for-virtual-machines"></a><span data-ttu-id="462ff-111">toocreate en intern belastningsutjämningsuppsättning för virtuella datorer</span><span class="sxs-lookup"><span data-stu-id="462ff-111">toocreate an internal load balancer set for virtual machines</span></span>
 
-<span data-ttu-id="e5660-112">Följ dessa steg för att skapa en intern belastningsutjämningsuppsättning och de servrar som ska skicka sin trafik till den:</span><span class="sxs-lookup"><span data-stu-id="e5660-112">To create an internal load balancer set and the servers that will send their traffic to it, you must do the following:</span></span>
+<span data-ttu-id="462ff-112">toocreate en intern belastningsutjämnare ange och hello servrar som skickar sina trafik tooit, måste du göra hello följande:</span><span class="sxs-lookup"><span data-stu-id="462ff-112">toocreate an internal load balancer set and hello servers that will send their traffic tooit, you must do hello following:</span></span>
 
-1. <span data-ttu-id="e5660-113">Skapa en instans för intern belastningsutjämning som ska vara slutpunkten för inkommande trafik som ska belastningsutjämnas mellan servrarna i en belastningsutjämnad uppsättning.</span><span class="sxs-lookup"><span data-stu-id="e5660-113">Create an instance of Internal Load Balancing that will be the endpoint of incoming traffic to be load balanced across the servers of a load-balanced set.</span></span>
-2. <span data-ttu-id="e5660-114">Lägg till slutpunkter som motsvarar de virtuella datorerna som ska ta emot den inkommande trafiken.</span><span class="sxs-lookup"><span data-stu-id="e5660-114">Add endpoints corresponding to the virtual machines that will be receiving the incoming traffic.</span></span>
-3. <span data-ttu-id="e5660-115">Konfigurera servrarna som ska skicka trafiken som ska belastningsutjämnas så att de skickar trafiken till den virtuella IP-adressen för instansen för intern belastningsutjämning.</span><span class="sxs-lookup"><span data-stu-id="e5660-115">Configure the servers that will be sending the traffic to be load balanced to send their traffic to the virtual IP (VIP) address of the Internal Load Balancing instance.</span></span>
+1. <span data-ttu-id="462ff-113">Skapa en instans av intern belastningsutjämning som kommer att vara hello-slutpunkten för inkommande trafik toobe belastningsutjämnas mellan hello en belastningsutjämnad uppsättning servrar.</span><span class="sxs-lookup"><span data-stu-id="462ff-113">Create an instance of Internal Load Balancing that will be hello endpoint of incoming traffic toobe load balanced across hello servers of a load-balanced set.</span></span>
+2. <span data-ttu-id="462ff-114">Lägga till slutpunkter motsvarande toohello virtuella datorer som tar emot hello inkommande trafik.</span><span class="sxs-lookup"><span data-stu-id="462ff-114">Add endpoints corresponding toohello virtual machines that will be receiving hello incoming traffic.</span></span>
+3. <span data-ttu-id="462ff-115">Konfigurera hello-servrar som kommer att skicka hello trafik toobe belastningsutjämnade toosend sina trafik toohello virtuella IP-adresser (VIP)-adressen för hello interna nätverksbelastning instans.</span><span class="sxs-lookup"><span data-stu-id="462ff-115">Configure hello servers that will be sending hello traffic toobe load balanced toosend their traffic toohello virtual IP (VIP) address of hello Internal Load Balancing instance.</span></span>
 
-## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a><span data-ttu-id="e5660-116">Stegvisa anvisningar som beskriver hur du skapar en intern belastningsutjämnare med hjälp av CLI</span><span class="sxs-lookup"><span data-stu-id="e5660-116">Step by step creating an internal load balancer using CLI</span></span>
+## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a><span data-ttu-id="462ff-116">Stegvisa anvisningar som beskriver hur du skapar en intern belastningsutjämnare med hjälp av CLI</span><span class="sxs-lookup"><span data-stu-id="462ff-116">Step by step creating an internal load balancer using CLI</span></span>
 
-<span data-ttu-id="e5660-117">Den här guiden beskriver hur du skapar en intern belastningsutjämnare baserat på scenariot ovan.</span><span class="sxs-lookup"><span data-stu-id="e5660-117">This guide shows how to create an internal load balancer based on the scenario above.</span></span>
+<span data-ttu-id="462ff-117">Den här guiden visar hur toocreate en intern belastningsutjämnare baserat på hello scenariot ovan.</span><span class="sxs-lookup"><span data-stu-id="462ff-117">This guide shows how toocreate an internal load balancer based on hello scenario above.</span></span>
 
-1. <span data-ttu-id="e5660-118">Om du aldrig har använt Azure CLI, se [installera och konfigurera Azure CLI](../cli-install-nodejs.md) och följ instruktionerna upp till den punkt där du väljer Azure-konto och prenumeration.</span><span class="sxs-lookup"><span data-stu-id="e5660-118">If you have never used Azure CLI, see [Install and Configure the Azure CLI](../cli-install-nodejs.md) and follow the instructions up to the point where you select your Azure account and subscription.</span></span>
-2. <span data-ttu-id="e5660-119">Kör kommandot **azure config mode** för att växla till klassiskt läge, som du ser nedan.</span><span class="sxs-lookup"><span data-stu-id="e5660-119">Run the **azure config mode** command to switch to classic mode, as shown below.</span></span>
+1. <span data-ttu-id="462ff-118">Om du aldrig har använt Azure CLI, se [installera och konfigurera hello Azure CLI](../cli-install-nodejs.md) och följer instruktionerna för hello in toohello punkt där du väljer Azure-konto och prenumeration.</span><span class="sxs-lookup"><span data-stu-id="462ff-118">If you have never used Azure CLI, see [Install and Configure hello Azure CLI](../cli-install-nodejs.md) and follow hello instructions up toohello point where you select your Azure account and subscription.</span></span>
+2. <span data-ttu-id="462ff-119">Kör hello **azure config mode** kommandot tooswitch tooclassic läge, som visas nedan.</span><span class="sxs-lookup"><span data-stu-id="462ff-119">Run hello **azure config mode** command tooswitch tooclassic mode, as shown below.</span></span>
 
     ```azurecli
     azure config mode asm
     ```
 
-    <span data-ttu-id="e5660-120">Förväntad utdata:</span><span class="sxs-lookup"><span data-stu-id="e5660-120">Expected output:</span></span>
+    <span data-ttu-id="462ff-120">Förväntad utdata:</span><span class="sxs-lookup"><span data-stu-id="462ff-120">Expected output:</span></span>
 
         info:    New mode is asm
 
-## <a name="create-endpoint-and-load-balancer-set"></a><span data-ttu-id="e5660-121">Skapa slutpunkt och belastningsutjämningsuppsättning</span><span class="sxs-lookup"><span data-stu-id="e5660-121">Create endpoint and load balancer set</span></span>
+## <a name="create-endpoint-and-load-balancer-set"></a><span data-ttu-id="462ff-121">Skapa slutpunkt och belastningsutjämningsuppsättning</span><span class="sxs-lookup"><span data-stu-id="462ff-121">Create endpoint and load balancer set</span></span>
 
-<span data-ttu-id="e5660-122">I det här scenariot förutsätter vi att de virtuella datorerna ”DB1” och ”DB2” i en molntjänst med namnet ”mytestcloud” redan finns.</span><span class="sxs-lookup"><span data-stu-id="e5660-122">The scenario assumes the virtual machines "DB1" and "DB2" in a cloud service called "mytestcloud".</span></span> <span data-ttu-id="e5660-123">Båda de virtuella datorerna använder ett virtuellt nätverk med namnet ”testvnet” med undernätet ”subnet-1”.</span><span class="sxs-lookup"><span data-stu-id="e5660-123">Both virtual machines are using a virtual network called my "testvnet" with subnet "subnet-1".</span></span>
+<span data-ttu-id="462ff-122">hello scenariot förutsätter hello virtuella datorer ”DB1” och ”DB2” i en molntjänst som kallas ”mytestcloud”.</span><span class="sxs-lookup"><span data-stu-id="462ff-122">hello scenario assumes hello virtual machines "DB1" and "DB2" in a cloud service called "mytestcloud".</span></span> <span data-ttu-id="462ff-123">Båda de virtuella datorerna använder ett virtuellt nätverk med namnet ”testvnet” med undernätet ”subnet-1”.</span><span class="sxs-lookup"><span data-stu-id="462ff-123">Both virtual machines are using a virtual network called my "testvnet" with subnet "subnet-1".</span></span>
 
-<span data-ttu-id="e5660-124">I den här guiden skapar vi en intern belastningsutjämningsuppsättning som använder port 1433 som privat port och 1433 som lokal port.</span><span class="sxs-lookup"><span data-stu-id="e5660-124">This guide will create an internal load balancer set using port 1433 as private port and 1433 as local port.</span></span>
+<span data-ttu-id="462ff-124">I den här guiden skapar vi en intern belastningsutjämningsuppsättning som använder port 1433 som privat port och 1433 som lokal port.</span><span class="sxs-lookup"><span data-stu-id="462ff-124">This guide will create an internal load balancer set using port 1433 as private port and 1433 as local port.</span></span>
 
-<span data-ttu-id="e5660-125">Det här är ett vanligt scenario där du har virtuella SQL-datorer på backend-servern som använder en intern belastningsutjämnare för att säkerställa att databasservrarna inte exponeras direkt genom användningen av en offentlig IP-adress.</span><span class="sxs-lookup"><span data-stu-id="e5660-125">This is a common scenario where you have SQL virtual machines on the back end using an internal load balancer to guarantee the database servers won't be exposed directly using a public IP address.</span></span>
+<span data-ttu-id="462ff-125">Det här är ett vanligt scenario där du har SQL virtuella datorer på hello serverdelen med hjälp av en intern belastningsutjämnare tooguarantee hello databasservrar inte visas direkt med en offentlig IP-adress.</span><span class="sxs-lookup"><span data-stu-id="462ff-125">This is a common scenario where you have SQL virtual machines on hello back end using an internal load balancer tooguarantee hello database servers won't be exposed directly using a public IP address.</span></span>
 
-### <a name="step-1"></a><span data-ttu-id="e5660-126">Steg 1</span><span class="sxs-lookup"><span data-stu-id="e5660-126">Step 1</span></span>
+### <a name="step-1"></a><span data-ttu-id="462ff-126">Steg 1</span><span class="sxs-lookup"><span data-stu-id="462ff-126">Step 1</span></span>
 
-<span data-ttu-id="e5660-127">Skapa en intern belastningsutjämningsuppsättning med hjälp av `azure network service internal-load-balancer add`.</span><span class="sxs-lookup"><span data-stu-id="e5660-127">Create an internal load balancer set using `azure network service internal-load-balancer add`.</span></span>
+<span data-ttu-id="462ff-127">Skapa en intern belastningsutjämningsuppsättning med hjälp av `azure network service internal-load-balancer add`.</span><span class="sxs-lookup"><span data-stu-id="462ff-127">Create an internal load balancer set using `azure network service internal-load-balancer add`.</span></span>
 
 ```azurecli
 azure service internal-load-balancer add --serviceName mytestcloud --internalLBName ilbset --subnet-name subnet-1 --static-virtualnetwork-ipaddress 192.168.2.7
 ```
 
-<span data-ttu-id="e5660-128">Mer information finns i `azure service internal-load-balancer --help`.</span><span class="sxs-lookup"><span data-stu-id="e5660-128">Check out `azure service internal-load-balancer --help` for more information.</span></span>
+<span data-ttu-id="462ff-128">Mer information finns i `azure service internal-load-balancer --help`.</span><span class="sxs-lookup"><span data-stu-id="462ff-128">Check out `azure service internal-load-balancer --help` for more information.</span></span>
 
-<span data-ttu-id="e5660-129">Du kan kontrollera egenskaperna för den interna belastningsutjämnaren med hjälp av kommandot `azure service internal-load-balancer list` *molntjänstens namn*.</span><span class="sxs-lookup"><span data-stu-id="e5660-129">You can check the internal load balancer properties using the command `azure service internal-load-balancer list` *cloud service name*.</span></span>
+<span data-ttu-id="462ff-129">Du kan kontrollera hello interna belastningsutjämnarens egenskaper hello kommandot `azure service internal-load-balancer list` *molntjänstnamnet*.</span><span class="sxs-lookup"><span data-stu-id="462ff-129">You can check hello internal load balancer properties using hello command `azure service internal-load-balancer list` *cloud service name*.</span></span>
 
-<span data-ttu-id="e5660-130">Här är ett exempel på utdata som kan returneras:</span><span class="sxs-lookup"><span data-stu-id="e5660-130">Here follows an example of the output:</span></span>
+<span data-ttu-id="462ff-130">Här följer ett exempel på utdata hello:</span><span class="sxs-lookup"><span data-stu-id="462ff-130">Here follows an example of hello output:</span></span>
 
     azure service internal-load-balancer list my-testcloud
     info:    Executing command service internal-load-balancer list
@@ -89,23 +89,23 @@ azure service internal-load-balancer add --serviceName mytestcloud --internalLBN
     info:    service internal-load-balancer list command OK
 
 
-### <a name="step-2"></a><span data-ttu-id="e5660-131">Steg 2</span><span class="sxs-lookup"><span data-stu-id="e5660-131">Step 2</span></span>
+### <a name="step-2"></a><span data-ttu-id="462ff-131">Steg 2</span><span class="sxs-lookup"><span data-stu-id="462ff-131">Step 2</span></span>
 
-<span data-ttu-id="e5660-132">Du konfigurerar den interna belastningsutjämningsuppsättningen när du lägger till den första slutpunkten.</span><span class="sxs-lookup"><span data-stu-id="e5660-132">You configure the internal load balancer set when you add the first endpoint.</span></span> <span data-ttu-id="e5660-133">Du associerar slutpunkten, den virtuella datorn och avsökningsporten till den intern belastningsutjämningsuppsättningen i det här steget.</span><span class="sxs-lookup"><span data-stu-id="e5660-133">You will associate the endpoint, virtual machine and probe port to the internal load balancer set in this step.</span></span>
+<span data-ttu-id="462ff-132">Du kan konfigurera hello intern belastningsutjämningsuppsättning när du lägger till hello första slutpunkten.</span><span class="sxs-lookup"><span data-stu-id="462ff-132">You configure hello internal load balancer set when you add hello first endpoint.</span></span> <span data-ttu-id="462ff-133">Du kopplar hello slutpunkt, virtuell dator och avsökning port toohello intern belastningsutjämningsuppsättning i det här steget.</span><span class="sxs-lookup"><span data-stu-id="462ff-133">You will associate hello endpoint, virtual machine and probe port toohello internal load balancer set in this step.</span></span>
 
 ```azurecli
 azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 1433 --probe-protocol tcp --probe-interval 300 --probe-timeout 600 --internal-load-balancer-name ilbset
 ```
 
-### <a name="step-3"></a><span data-ttu-id="e5660-134">Steg 3</span><span class="sxs-lookup"><span data-stu-id="e5660-134">Step 3</span></span>
+### <a name="step-3"></a><span data-ttu-id="462ff-134">Steg 3</span><span class="sxs-lookup"><span data-stu-id="462ff-134">Step 3</span></span>
 
-<span data-ttu-id="e5660-135">Kontrollera belastningsutjämnarens konfiguration med hjälp av `azure vm show` *namn på virtuell dator*</span><span class="sxs-lookup"><span data-stu-id="e5660-135">Verify the load balancer configuration using `azure vm show` *virtual machine name*</span></span>
+<span data-ttu-id="462ff-135">Kontrollera hello belastningen belastningsutjämnaren konfiguration av `azure vm show` *namn på virtuell dator*</span><span class="sxs-lookup"><span data-stu-id="462ff-135">Verify hello load balancer configuration using `azure vm show` *virtual machine name*</span></span>
 
 ```azurecli
 azure vm show DB1
 ```
 
-<span data-ttu-id="e5660-136">Följande utdata returneras:</span><span class="sxs-lookup"><span data-stu-id="e5660-136">The output will be:</span></span>
+<span data-ttu-id="462ff-136">hello utdata blir:</span><span class="sxs-lookup"><span data-stu-id="462ff-136">hello output will be:</span></span>
 
     azure vm show DB1
     info:    Executing command vm show
@@ -154,28 +154,28 @@ azure vm show DB1
     data:    Network Endpoints 2 loadBalancerName "ilbset"
     info:    vm show command OK
 
-## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a><span data-ttu-id="e5660-137">Skapa en fjärrskrivbordsslutpunkt för en virtuell dator</span><span class="sxs-lookup"><span data-stu-id="e5660-137">Create a remote desktop endpoint for a virtual machine</span></span>
+## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a><span data-ttu-id="462ff-137">Skapa en fjärrskrivbordsslutpunkt för en virtuell dator</span><span class="sxs-lookup"><span data-stu-id="462ff-137">Create a remote desktop endpoint for a virtual machine</span></span>
 
-<span data-ttu-id="e5660-138">Du kan skapa en fjärrskrivbordsslutpunkt för att vidarebefordra nätverkstrafik från en offentlig port till en lokal port för en specifik virtuell dator med hjälp av `azure vm endpoint create`.</span><span class="sxs-lookup"><span data-stu-id="e5660-138">You can create a remote desktop endpoint to forward network traffic from a public port to a local port for a specific virtual machine using `azure vm endpoint create`.</span></span>
+<span data-ttu-id="462ff-138">Du kan skapa en stationär fjärrslutpunkten tooforward nätverkstrafik från en offentlig port tooa lokal port för en specifik virtuell dator med hjälp av `azure vm endpoint create`.</span><span class="sxs-lookup"><span data-stu-id="462ff-138">You can create a remote desktop endpoint tooforward network traffic from a public port tooa local port for a specific virtual machine using `azure vm endpoint create`.</span></span>
 
 ```azurecli
 azure vm endpoint create web1 54580 -k 3389
 ```
 
-## <a name="remove-virtual-machine-from-load-balancer"></a><span data-ttu-id="e5660-139">Ta bort en virtuell dator från belastningsutjämnaren</span><span class="sxs-lookup"><span data-stu-id="e5660-139">Remove virtual machine from load balancer</span></span>
+## <a name="remove-virtual-machine-from-load-balancer"></a><span data-ttu-id="462ff-139">Ta bort en virtuell dator från belastningsutjämnaren</span><span class="sxs-lookup"><span data-stu-id="462ff-139">Remove virtual machine from load balancer</span></span>
 
-<span data-ttu-id="e5660-140">Du kan ta bort en virtuell dator från en intern belastningsutjämningsuppsättning genom att ta bort den associerade slutpunkten.</span><span class="sxs-lookup"><span data-stu-id="e5660-140">You can remove a virtual machine from an internal load balancer set by deleting the associated endpoint.</span></span> <span data-ttu-id="e5660-141">När slutpunkten har tagits bort tillhör inte den virtuella datorn belastningsutjämningsuppsättningen längre.</span><span class="sxs-lookup"><span data-stu-id="e5660-141">Once the endpoint is removed, the virtual machine won't belong to the load balancer set anymore.</span></span>
+<span data-ttu-id="462ff-140">Du kan ta bort en virtuell dator från en intern belastningsutjämningsuppsättning genom att ta bort hello associerade slutpunkt.</span><span class="sxs-lookup"><span data-stu-id="462ff-140">You can remove a virtual machine from an internal load balancer set by deleting hello associated endpoint.</span></span> <span data-ttu-id="462ff-141">När hello slutpunkt har tagits bort, tillhör inte hello virtuella datorn toohello belastningsutjämningsuppsättning längre.</span><span class="sxs-lookup"><span data-stu-id="462ff-141">Once hello endpoint is removed, hello virtual machine won't belong toohello load balancer set anymore.</span></span>
 
-<span data-ttu-id="e5660-142">Om du följer exemplet ovan kan du ta bort slutpunkten som skapats för den virtuella datorn ”DB1” från den intern belastningsutjämningsuppsättningen ”ilbset” med hjälp av kommandot `azure vm endpoint delete`.</span><span class="sxs-lookup"><span data-stu-id="e5660-142">Using the example above, you can remove the endpoint created for virtual machine "DB1" from internal load balancer "ilbset" by using the command `azure vm endpoint delete`.</span></span>
+<span data-ttu-id="462ff-142">Använder hello-exemplet ovan, du kan ta bort hello-slutpunkt skapas för den virtuella datorn ”DB1” från interna belastningsutjämnaren ”ilbset” med kommandot hello `azure vm endpoint delete`.</span><span class="sxs-lookup"><span data-stu-id="462ff-142">Using hello example above, you can remove hello endpoint created for virtual machine "DB1" from internal load balancer "ilbset" by using hello command `azure vm endpoint delete`.</span></span>
 
 ```azurecli
 azure vm endpoint delete DB1 tcp-1433-1433
 ```
 
-<span data-ttu-id="e5660-143">Mer information finns i `azure vm endpoint --help`.</span><span class="sxs-lookup"><span data-stu-id="e5660-143">Check out `azure vm endpoint --help` for more information.</span></span>
+<span data-ttu-id="462ff-143">Mer information finns i `azure vm endpoint --help`.</span><span class="sxs-lookup"><span data-stu-id="462ff-143">Check out `azure vm endpoint --help` for more information.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="e5660-144">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="e5660-144">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="462ff-144">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="462ff-144">Next steps</span></span>
 
-[<span data-ttu-id="e5660-145">Konfigurera ett distributionsläge för belastningsutjämnare med hjälp av käll-IP-tilldelning</span><span class="sxs-lookup"><span data-stu-id="e5660-145">Configure a load balancer distribution mode using source IP affinity</span></span>](load-balancer-distribution-mode.md)
+[<span data-ttu-id="462ff-145">Konfigurera ett distributionsläge för belastningsutjämnare med hjälp av käll-IP-tilldelning</span><span class="sxs-lookup"><span data-stu-id="462ff-145">Configure a load balancer distribution mode using source IP affinity</span></span>](load-balancer-distribution-mode.md)
 
-[<span data-ttu-id="e5660-146">Konfigurera timeout-inställningar för inaktiv TCP för en belastningsutjämnare</span><span class="sxs-lookup"><span data-stu-id="e5660-146">Configure idle TCP timeout settings for your load balancer</span></span>](load-balancer-tcp-idle-timeout.md)
+[<span data-ttu-id="462ff-146">Konfigurera timeout-inställningar för inaktiv TCP för en belastningsutjämnare</span><span class="sxs-lookup"><span data-stu-id="462ff-146">Configure idle TCP timeout settings for your load balancer</span></span>](load-balancer-tcp-idle-timeout.md)

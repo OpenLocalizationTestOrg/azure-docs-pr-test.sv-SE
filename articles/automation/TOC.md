@@ -34,7 +34,7 @@
 ### [Ändra Runbook-inställningar](automation-runbook-settings.md)
 ### [Hantera Azure Automation-data](automation-managing-data.md)
 ### [Anropa Azure Automation Runbook från en Log Analytics-avisering](automation-invoke-runbook-from-omsla-alert.md)
-### [Skicka ett JSON-objekt till en Azure Automation-runbook](automation-pass-json-string.md)
+### [Skicka en JSON-objekt tooan Azure Automation-runbook](automation-pass-json-string.md)
 ## Hybrid Runbook Worker
 ### [Distribuera Hybrid Runbook Worker](automation-hybrid-runbook-worker.md)
 ### [Köra runbook-flöden i arbetsroll](automation-hrw-run-runbooks.md)
@@ -44,7 +44,7 @@
 ### [Konfigurera datorer för hantering](automation-dsc-onboarding.md)
 ### [Kompilera DSC-konfigurationer](automation-dsc-compile.md)
 ### [Kontinuerlig distribution med Chocolatey](automation-dsc-cd-chocolatey.md)
-### [Vidarebefordra Azure Automation DSC-rapportdata till OMS Log Analytics](automation-dsc-diagnostics.md)
+### [Vidarebefordra Azure Automation DSC reporting data tooOMS logganalys](automation-dsc-diagnostics.md)
 ## Hantera tillgångar
 ### [Certifikat](automation-certificates.md)
 ### [Anslutningar](automation-connections.md)
@@ -68,7 +68,7 @@
 ### [Hantering av uppdateringar](../operations-management-suite/oms-solution-update-management.md)
 ### [Starta/stoppa virtuella datorer utanför arbetstid](automation-solution-vm-management.md)
 ## Övervaka
-### [Vidarebefordra jobbdata från Azure Automation till Log Analytics](automation-manage-send-joblogs-log-analytics.md)
+### [Vidarebefordra Azure Automation-jobbet data tooLog Analytics](automation-manage-send-joblogs-log-analytics.md)
 ### [Ta bort länk till Azure Automation-konto från Log Analytics](automation-unlink-from-log-analytics.md)
 ## Migrera
 ### [Migrera från Orchestrator](automation-orchestrator-migration.md)

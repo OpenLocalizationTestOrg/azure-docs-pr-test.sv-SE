@@ -8,7 +8,7 @@
 # Självstudier
 ## Distribuera ett .NET-program
 ### [1- Skapa ett .NET-program](service-fabric-tutorial-create-dotnet-app.md)
-### [2- Distribuera programmet](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+### [2 – distribuera hello program](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 ### [3- Konfigurera CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 ## Lift and shift-hantera ett program
@@ -79,7 +79,7 @@
 
 ## Hantera program
 ### [Översikt](service-fabric-application-lifecycle.md)
-### [ImageStoreConnectionString-inställningen](service-fabric-image-store-connection-string.md)
+### [Hej ImageStoreConnectionString inställning](service-fabric-image-store-connection-string.md)
 ### Programuppgradering
 #### [Översikt](service-fabric-application-upgrade.md)
 #### [Konfiguration](service-fabric-visualstudio-configure-upgrade.md)
@@ -121,7 +121,7 @@
 ### [Diagnostik för tillståndskänslig Reliable Services](service-fabric-reliable-services-diagnostics.md)
 ### [Diagnostik i Reliable Actors](service-fabric-reliable-actors-diagnostics.md)
 
-# Instruktionsguider
+# Hur tooGuides
 ## Ställ in din utvecklingsmiljö
 ### [Windows](service-fabric-get-started.md)
 ### [Linux](service-fabric-get-started-linux.md)
@@ -185,7 +185,7 @@
 #### [Konfigurera kommunikationsinställningar](service-fabric-reliable-actors-fabrictransportsettings.md)
 #### [Konfigurera ReliableDictionaryActorStateProvider](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
 
-### [Migrera gamla Java-program som stöder Maven](service-fabric-migrate-old-javaapp-to-use-maven.md)
+### [Migrera den gamla Java-program toosupport Maven](service-fabric-migrate-old-javaapp-to-use-maven.md)
 
 ### [Konfigurera omvänd proxy för säker kommunikation](service-fabric-reverseproxy-configure-secure-communication.md)
 
@@ -214,7 +214,7 @@
 
 ## Migrera från Cloud Services
 ### [Jämför Cloud Services med Service Fabric](service-fabric-cloud-services-migration-differences.md)
-### [Migrera till Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
+### [Migrera tooService Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
 ### [Rekommenderade metoder](/azure/architecture/service-fabric/migrate-from-cloud-services)
 
 ## Hantera programlivscykel
@@ -239,7 +239,7 @@
 ##### [Använda teståtgärder](service-fabric-testability-actions.md)
 ##### [Under arbetsbelastningar](service-fabric-testability-workload-tests.md)
 ##### [Använda testscenarier](service-fabric-testability-scenarios.md)
-##### [Använda API:er för nodövergång](service-fabric-node-transition-apis.md)
+##### [Med hjälp av hello nod övergången API: er](service-fabric-node-transition-apis.md)
 #### [Belastningstesta ditt program](service-fabric-vso-load-test.md)
 
 ### Konfigurera kontinuerlig integrering
@@ -258,7 +258,7 @@
 #### [Uppgradera](service-fabric-cluster-upgrade.md)
 #### [Ange åtkomstkontroll](service-fabric-cluster-security-roles.md)
 #### [Konfigurera](service-fabric-cluster-fabric-settings.md)
-#### [Öppna en port i belastningsutjämnaren](create-load-balancer-rule.md)
+#### [Öppna en port i hello belastningsutjämnare](create-load-balancer-rule.md)
 #### [Hantera klustercertifikat](service-fabric-cluster-security-update-certs-azure.md)
 #### [Ta bort](service-fabric-cluster-delete.md)
 
@@ -269,14 +269,14 @@
 ##### [Skapa lokalt](service-fabric-cluster-creation-for-windows-server.md)
 ##### [Skydda med hjälp av certifikat](service-fabric-windows-cluster-x509-security.md)  
 ##### [Skydda med hjälp av Windows-säkerhet](service-fabric-windows-cluster-windows-security.md)
-##### [Innehåll i det fristående paketet](service-fabric-cluster-standalone-package-contents.md)
+##### [Innehållet i hello fristående paket](service-fabric-cluster-standalone-package-contents.md)
 #### [Skalning](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [Ange åtkomstkontroll](service-fabric-cluster-security-roles.md)
 #### [Konfigurera](service-fabric-cluster-manifest.md)
 #### [Uppgradera](service-fabric-cluster-upgrade-windows-server.md)
 
 ### [Visualisera ett kluster](service-fabric-visualizing-your-cluster.md)
-### [Ansluta till ett säkert kluster](service-fabric-connect-to-secure-cluster.md)
+### [Ansluta tooa säker kluster](service-fabric-connect-to-secure-cluster.md)
 
 ### [Hantera ett kluster med Service Fabric CLI](service-fabric-cli.md)
 ### [Korrigera klusternoder](service-fabric-patch-orchestration-application.md)
