@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Autotask arbetsplats | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Autotask arbetsplats."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Autotask arbetsplats."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,211 +14,211 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 45130162271b20860607497ff93c6a668c415233
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7f820f24e8e9493fa2e1c075f2ef61d7eaa84f73
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-workplace"></a>Självstudier: Azure Active Directory-integrering med Autotask arbetsplats
 
-I kursen får lära du att integrera Autotask arbetsplats med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate Autotask arbetsplats med Azure Active Directory (AD Azure).
 
-Integrera Autotask arbetsplats med Azure AD ger dig följande fördelar:
+Integrera Autotask arbetsplats med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till arbetsplats Autotask
-- Du kan aktivera användarna att automatiskt hämta inloggade Autotask arbetsyta (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst tooAutotask arbetsplats
+- Du kan aktivera din användare tooautomatically get inloggade tooAutotask arbetsplats (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med Autotask arbetsplats, behöver du följande:
+tooconfigure Azure AD-integrering med Autotask arbetsplats, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Autotask arbetsplatsen enkel inloggning på aktiverade prenumeration
 - Du måste vara administratör eller super administratör i arbetsytan.
-- Du måste ha ett administratörskontot i Azure AD.
-- Användare som använder den här funktionen måste ha konton inom arbetsplats och Azure AD och deras e-postadresser för både måste matcha.
+- Du måste ha ett administratörskontot i hello Azure AD.
+- hello-användare som använder den här funktionen måste ha konton inom arbetsplats och hello Azure AD och deras e-postadresser för både måste matcha.
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Autotask arbetsplats från galleriet
+1. Att lägga till Autotask arbetsplats från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-autotask-workplace-from-the-gallery"></a>Att lägga till Autotask arbetsplats från galleriet
-Du måste lägga till Autotask arbetsplats från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Autotask arbetsplats i Azure AD.
+## <a name="adding-autotask-workplace-from-hello-gallery"></a>Att lägga till Autotask arbetsplats från hello-galleriet
+tooconfigure hello integrering av Autotask arbetsplats i Azure AD, behöver du tooadd Autotask arbetsplats hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Autotask arbetsplats från galleriet:**
+**tooadd Autotask arbetsplats från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
-    ![Azure Active Directory-knappen][1]
+    ![hello Azure Active Directory-knappen][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
-    ![Bladet Enterprise program][2]
+    ![hello Enterprise program bladet][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
-    ![Knappen Nytt program][3]
+    ![hello-knappen för nytt program][3]
 
-4. I sökrutan skriver **Autotask arbetsplats**väljer **Autotask arbetsplats** resultatet-panelen klickar **Lägg till** för att lägga till programmet.
+4. Skriv i sökrutan hello **Autotask arbetsplats**väljer **Autotask arbetsplats** resultatet-panelen klickar **Lägg till** knappen tooadd hello program.
 
-    ![Autotask arbetsplats i resultatlistan](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskworkplace_addfromgallery.png)
+    ![Autotask arbetsplats i hello resulterar lista](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskworkplace_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Autotask arbetsplats baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till motsvarande användaren i Autotask arbetsplats till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Autotask arbetsplatsen upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren Autotask arbetsplatsen är tooa i Azure AD. Med andra ord måste en länk relationen mellan en Azure AD-användare och hello relaterade användare i Autotask arbetsplats toobe upprättas.
 
-I Autotask arbetsplats, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+Tilldela hello värdet hello Autotask arbetsplatsen **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Autotask arbetsplats, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Autotask arbetsplats, måste toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Autotask arbetsplats](#create-an-autotask-workplace-test-user)**  – du har en motsvarighet för Britta Simon Autotask arbetsplatsen som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Autotask arbetsplats](#create-an-autotask-workplace-test-user)**  -toohave en motsvarighet för Britta Simon Autotask arbetsplatsen som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Autotask arbetsplats.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Autotask arbetsplats.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Autotask arbetsplats:**
+**Utför följande hello tooconfigure Azure AD enkel inloggning med Autotask arbetsplats:**
 
-1. I Azure-portalen på den **Autotask arbetsplats** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **Autotask arbetsplats** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning länk][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskworkplace_samlbase.png)
 
-3. Om du vill konfigurera programmet i **IDP** initierade läge, utför följande steg på den **Autotask arbetsplats domän och URL: er** avsnitt:
+3. Om du inte vill tooconfigure hello programmet i **IDP** initierade läge, utför följande steg på hello hello **Autotask arbetsplats domän och URL: er** avsnitt:
 
     ![Autotask arbetsplats domän URL: er och enkel inloggning information för IDP](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskworkplace_url.png)
 
-    a. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
+    a. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<subdomain>.awp.autotask.net/singlesignon/saml/metadata`
 
-    b. I den **Reply URL** textruta Skriv en URL med följande mönster:`https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO`
+    b. I hello **Reply URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<subdomain>.awp.autotask.net/singlesignon/saml/SSO`
 
-4. Om du vill konfigurera programmet i **SP** initierade läge, kontrollera **visa avancerade inställningar för URL: en** och utför följande steg:
+4. Om du inte vill tooconfigure hello programmet i **SP** initierade läge, kontrollera **visa avancerade inställningar för URL: en** och utföra hello följande steg:
 
     ![Autotask arbetsplats domän URL: er och enkel inloggning information för SP](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskworkplace_url1.png)
 
-    I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<subdomain>.awp.autotask.net/loginsso`
+    I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<subdomain>.awp.autotask.net/loginsso`
      
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska identifierare Reply URL och inloggnings-URL. Kontakta [Autotask arbetsplats klienten supportteamet](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) att hämta dessa värden. 
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska identifierare, Reply URL och inloggnings-URL. Kontakta [Autotask arbetsplats klienten supportteamet](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) tooget dessa värden. 
 
-5. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
+5. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
 
-    ![Länken hämta certifikatet](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskworkplace_certificate.png) 
+    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskworkplace_certificate.png) 
 
 6. Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_general_400.png)
 
-7. Logga in på arbetsplatsen Online med administratörsautentiseringsuppgifter för den i ett annat webbläsarfönster.
+7. I en annan webbläsarfönster hello logga in tooWorkplace Online med administratörsbehörighet.
 
     >[!Note]
-    >När du konfigurerar IdP, måste en underdomän anges. För att bekräfta rätt underdomänen, inloggning till arbetsplatsen Online. Efter loggat in kan du anteckna underdomänen i URL-Adressen visas.
-    >Underdomänen ingår mellan ”https://” och ”.awp.autotask.net/” och bör vara oss eu, ca eller au.
+    >När du konfigurerar hello IdP, måste en underdomän toobe anges. tooconfirm hello rätt underdomän, inloggning tooWorkplace Online. När du loggade in gör du Observera toohello underdomän i hello-URL.
+    >hello underdomän ingår hello mellan hello ”https://” och ”.awp.autotask.net/” och bör vara oss eu, ca eller au.
 
-8. Gå till **Configuration** > **enkel inloggning** och utför följande steg:
+8. Gå för**Configuration** > **enkel inloggning** och utföra hello följande steg:
 
     ![Autotask enkel inloggning konfiguration](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskssoconfig1.png)
  
-    a. Välj den **XML-metadatafil** alternativ och sedan ladda upp den **XML-Metadata för** hämtas från Azure-portalen.
+    a. Välj hello **XML-metadatafil** alternativ och sedan ladda upp hello **XML-Metadata för** hämtas från Azure-portalen.
 
     b. Klicka på **aktivera enkel inloggning**.
     
     ![Godkänn Autotask Single Sign-on konfiguration](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskssoconfig2.png)
 
-    c. Välj den **jag bekräfta informationen är korrekt och den här IdP tillförlitliga** kryssrutan.
+    c. Välj hello **jag bekräfta informationen är korrekt och den här IdP tillförlitliga** kryssrutan.
 
     d. Klicka på **godkänna**.
      
 >[!Note]
->Om du behöver hjälp med att konfigurera Autotask arbetsplats finns [den här sidan](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) att få hjälp med ditt arbetsplatskonto.
+>Om du behöver hjälp med att konfigurera Autotask arbetsplats finns [den här sidan](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) tooget hjälp med ditt arbetsplatskonto.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
    ![Skapa en testanvändare i Azure AD][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I Azure-portalen i den vänstra rutan klickar du på den **Azure Active Directory** knappen.
+1. Klicka på hello i hello Azure-portalen hello vänster **Azure Active Directory** knappen.
 
-    ![Azure Active Directory-knappen](./media/active-directory-saas-autotaskworkplace-tutorial/create_aaduser_01.png)
+    ![hello Azure Active Directory-knappen](./media/active-directory-saas-autotaskworkplace-tutorial/create_aaduser_01.png)
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper**, och klicka sedan på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper**, och klicka sedan på **alla användare**.
 
-    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-autotaskworkplace-tutorial/create_aaduser_02.png)
+    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-autotaskworkplace-tutorial/create_aaduser_02.png)
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i den **alla användare** dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** hello överst i hello **alla användare** dialogrutan.
 
-    ![Knappen Lägg till](./media/active-directory-saas-autotaskworkplace-tutorial/create_aaduser_03.png)
+    ![hello webbinställningar](./media/active-directory-saas-autotaskworkplace-tutorial/create_aaduser_03.png)
 
-4. I den **användaren** dialogrutan utför följande steg:
+4. I hello **användaren** dialogrutan utför hello följande steg:
 
-    ![Dialogrutan användare](./media/active-directory-saas-autotaskworkplace-tutorial/create_aaduser_04.png)
+    ![hello användardialogrutan](./media/active-directory-saas-autotaskworkplace-tutorial/create_aaduser_04.png)
 
-    a. I den **namn** skriver **BrittaSimon**.
+    a. I hello **namn** skriver **BrittaSimon**.
 
-    b. I den **användarnamn** Skriv användarens Britta Simon e-postadress.
+    b. I hello **användarnamn** rutan typen hello användarens e-postadress Britta Simon.
 
-    c. Välj den **visa lösenordet** kryssrutan och sedan skriva ned det värde som visas i den **lösenord** rutan.
+    c. Välj hello **visa lösenordet** kryssrutan och sedan skriva ned hello-värde som visas i hello **lösenord** rutan.
 
     d. Klicka på **Skapa**.
 
 ### <a name="create-an-autotask-workplace-test-user"></a>Skapa en testanvändare Autotask arbetsplats
 
-I det här avsnittet skapar du en användare som kallas Britta Simon i Autotask. Se tillsammans med [Autotask arbetsplats supportteamet](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) att lägga till användare i Autotask arbetsplats-plattformen.
+I det här avsnittet skapar du en användare som kallas Britta Simon i Autotask. Se tillsammans med [Autotask arbetsplats supportteamet](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) tooadd hello användare i hello Autotask arbetsplats plattform.
 
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till arbetsplats Autotask.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooAutotask arbetsplats.
 
-![Tilldela rollen][200] 
+![Tilldela hello användarroll][200] 
 
-**Om du vill tilldela Autotask arbetsplats Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooAutotask arbetsplats utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Autotask arbetsplats**.
+2. Välj i listan med program hello **Autotask arbetsplats**.
 
-    ![Länken Autotask arbetsplats i listan med program](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskworkplace_app.png) 
+    ![Hej Autotask arbetsplats länken i listan med program hello](./media/active-directory-saas-autotaskworkplace-tutorial/tutorial_autotaskworkplace_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
-    ![Länken ”användare och grupper”][202]
+    ![Hej ”användare och grupper” länk][202]
 
 4. Klicka på **Lägg till** knappen. Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.
 
-    ![Fönstret Lägg till tilldelning][203]
+    ![hello Lägg uppdrag fönstret][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -226,14 +226,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen Autotask arbetsplats på åtkomstpanelen du ska hämta automatiskt loggat in på ditt Autotask arbetsplats program.
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Du bör få automatiskt inloggade tooyour Autotask arbetsplats programmet när du klickar på hello Autotask arbetsplats panelen i hello åtkomstpanelen.
+Läs mer om åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

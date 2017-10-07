@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med arbetsytan Lms | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och arbetsytan LMS."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och arbetsytan LMS."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 2212b7a81b66d1afd1aa78d1487b07b6d7b84129
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f4a09266a108e2c92326b0909dd0650b1c84d6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas-lms"></a>Självstudier: Azure Active Directory-integrering med arbetsytan LMS
 
-I kursen får lära du att integrera arbetsytan med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate arbetsytan med Azure Active Directory (AD Azure).
 
-Integrera arbetsytan med Azure AD ger dig följande fördelar:
+Integrera arbetsytan med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till arbetsytan
-- Du kan aktivera användarna att automatiskt hämta loggat in på arbetsytan (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till tooCanvas
+- Du kan aktivera din användare tooautomatically get inloggade tooCanvas (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med arbetsyta, behöver du följande:
+tooconfigure Azure AD-integrering med arbetsyta, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En arbetsyta enkel inloggning på aktiverade prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till arbetsytan från galleriet
+1. Att lägga till arbetsytan från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-canvas-from-the-gallery"></a>Att lägga till arbetsytan från galleriet
-Du måste lägga till arbetsytan från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av arbetsytan i Azure AD.
+## <a name="adding-canvas-from-hello-gallery"></a>Att lägga till arbetsytan från hello-galleriet
+tooconfigure hello integrering av arbetsytan i Azure AD, behöver du tooadd arbetsytan hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till arbetsytan från galleriet:**
+**tooadd arbetsytan från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **arbetsytan**.
+4. Skriv i sökrutan hello **arbetsytan**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_search.png)
 
-5. Välj i resultatpanelen **arbetsytan**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **arbetsytan**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med arbetsytan baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till motsvarande användaren i arbetsytan till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i arbetsytan upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i arbetsytan är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i arbetsytan toobe upprättas.
 
-I arbetsytan och tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+I arbetsytan och tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med arbetsyta, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med arbetsyta, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en arbetsyta testanvändare](#creating-a-canvas-test-user)**  – du har en motsvarighet för Britta Simon arbetsytan som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en arbetsyta testanvändare](#creating-a-canvas-test-user)**  -toohave en motsvarighet för Britta Simon arbetsytan som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt program för arbetsytan.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt program för arbetsytan.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med arbetsyta:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med arbetsytan:**
 
-1. I Azure-portalen på den **arbetsytan** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **arbetsytan** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_samlbase.png)
 
-3. På den **arbetsytan domän och URL: er** avsnittet, utför följande steg:
+3. På hello **arbetsytan domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_url.png)
 
-    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<tenant-name>.instructure.com`
+    a. I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<tenant-name>.instructure.com`
 
-    b. I den **identifierare** textruta Skriv det värde som använder följande mönster:`https://<tenant-name>.instructure.com/saml2`
+    b. I hello **identifierare** textruta hello TYPVÄRDE med hello följande mönster:`https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare. Kontakta [arbetsytan klienten supportteamet](https://community.canvaslms.com/community/help) att hämta dessa värden. 
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare. Kontakta [arbetsytan klienten supportteamet](https://community.canvaslms.com/community/help) tooget dessa värden. 
  
-4. På den **SAML-signeringscertifikat** avsnittet, kopiera den **TUMAVTRYCKET** värdet för certifikatet.
+4. På hello **SAML-signeringscertifikat** avsnitt, kopiera hello **TUMAVTRYCKET** värdet för certifikatet.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_certificate.png) 
 
@@ -125,85 +125,85 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-canvas-lms-tutorial/tutorial_general_400.png)
 
-6. På den **arbetsytan Configuration** klickar du på **konfigurera arbetsytan** att öppna **konfigurera inloggning** fönster. Kopiera den **ändra lösenord URL, Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
+6. På hello **arbetsytan Configuration** klickar du på **konfigurera arbetsytan** tooopen **konfigurera inloggning** fönster. Kopiera hello **ändra lösenord URL, Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_configure.png) 
  
-7. I en annan webbläsarfönster loggar du in på webbplatsen arbetsytan företag som administratör.
+7. Logga in tooyour arbetsytan företagets webbplats som en administratör i en annan webbläsarfönster.
 
-8. Gå till **kurser \> hanterade konton \> Microsoft**.
+8. Gå för**kurser \> hanterade konton \> Microsoft**.
    
     ![Arbetsytan](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "arbetsytan")
 
-9. I navigeringsfönstret till vänster, Välj **autentisering**, och klicka sedan på **Lägg till ny SAML-Config**.
+9. Hello navigeringsfönstret hello vänster och välj **autentisering**, och klicka sedan på **Lägg till ny SAML-Config**.
    
     ![Autentisering](./media/active-directory-saas-canvas-lms-tutorial/IC775991.png "autentisering")
 
-10. Utför följande steg på sidan aktuella integrering:
+10. Utför följande hello hello aktuella Integration på sidan:
    
     ![Aktuella Integration](./media/active-directory-saas-canvas-lms-tutorial/IC775992.png "aktuella integrering")
 
-    a. I **IdP enhets-ID** textruta klistra in värdet för **SAML enhets-ID** som du har kopierat från Azure-portalen.
+    a. I **IdP enhets-ID** textruta klistra in hello värdet för **SAML enhets-ID** som du har kopierat från Azure-portalen.
 
-    b. I **loggen URL** textruta klistra in värdet för **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.
+    b. I **loggen URL** textruta klistra in hello värdet för **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.
 
-    c. I **logga ut URL** textruta klistra in värdet för **Sign-Out URL** som du har kopierat från Azure-portalen.
+    c. I **logga ut URL** textruta klistra in hello värdet för **Sign-Out URL** som du har kopierat från Azure-portalen.
 
-    d. I **ändra lösenord länk** textruta klistra in värdet för **ändra lösenord URL** som du har kopierat från Azure-portalen. 
+    d. I **ändra lösenord länk** textruta klistra in hello värdet för **ändra lösenord URL** som du har kopierat från Azure-portalen. 
 
-    e. I **certifikat fingeravtryck** textruta klistra in den **tumavtrycket** värdet för certifikat som du har kopierat från Azure-portalen.      
+    e. I **certifikat fingeravtryck** textruta klistra in hello **tumavtrycket** värdet för certifikat som du har kopierat från Azure-portalen.      
         
-    f. Från den **inloggningen attributet** väljer **NameID**.
+    f. Från hello **inloggningen attributet** väljer **NameID**.
 
-    g. Från den **identifierare Format** väljer **e-postadress**.
+    g. Från hello **identifierare Format** väljer **e-postadress**.
 
     h. Klicka på **spara autentiseringsinställningarna**.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_02.png) 
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-a-canvas-test-user"></a>Skapa en arbetsyta testanvändare
 
-Om du vill aktivera Azure AD-användare kan logga in på arbetsytan, måste de etableras i arbetsytan.
+tooenable Azure AD-användare toolog i tooCanvas, måste de etableras i arbetsytan.
 
 Om arbetsytan är användaretablering en manuell aktivitet.
 
-**Utför följande steg om du vill konfigurera ett användarkonto:**
+**tooprovision ett användarkonto, utför följande steg hello:**
 
-1. Logga in på ditt **arbetsytan** klient.
+1. Logga in tooyour **arbetsytan** klient.
 
-2. Gå till **kurser \> hanterade konton \> Microsoft**.
+2. Gå för**kurser \> hanterade konton \> Microsoft**.
    
    ![Arbetsytan](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "arbetsytan")
 
@@ -215,40 +215,40 @@ Om arbetsytan är användaretablering en manuell aktivitet.
    
    ![Användare](./media/active-directory-saas-canvas-lms-tutorial/IC775996.png "användare")
 
-5. Utför följande steg på guiden Lägg till en ny användare dialogrutan sida:
+5. Utför följande hello på hello Lägg till en ny användare dialogrutan sida:
    
    ![Lägg till användare](./media/active-directory-saas-canvas-lms-tutorial/IC775997.png "lägga till användare")
    
-   a. I den **fullständiga namn** textruta anger du namnet på användaren som **BrittaSimon**.
+   a. I hello **fullständiga namn** textruta anger hello namnet på användaren som **BrittaSimon**.
 
-   b. I den **e-post** textruta ange e-postadress för användaren som  **brittasimon@contoso.com** .
+   b. I hello **e-post** textruta ange hello e-postadress för användaren som  **brittasimon@contoso.com** .
 
-   c. I den **inloggning** textruta ange användarens Azure AD e-postadress som  **brittasimon@contoso.com** .
+   c. I hello **inloggning** textruta ange hello användarens Azure AD e-postadress som  **brittasimon@contoso.com** .
 
-   d. Välj **e-användaren om det här kontot skapas**.
+   d. Välj **hello användare om det här kontot skapas**.
 
    e. Klicka på **lägga till användare**.
 
 >[!NOTE]
->Du kan använda något annat arbetsytan användarens konto skapas verktyg eller API: er som tillhandahålls av arbetsytan etablera AAD-användarkonton.
+>Du kan använda något annat arbetsytan användarens konto skapas verktyg eller API: er som tillhandahålls av arbetsytan tooprovision AAD användarkonton.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till arbetsytan.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooCanvas.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela arbetsytan Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooCanvas utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **arbetsytan**.
+2. Välj i listan med program hello **arbetsytan**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -256,7 +256,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -264,14 +264,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på arbetsytan panelen på åtkomstpanelen du bör få automatiskt loggat in på ditt program i arbetsytan.
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Du bör få automatiskt inloggade tooyour arbetsytan programmet när du klickar på hello arbetsytan panelen i hello åtkomstpanelen.
+Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

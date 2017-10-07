@@ -14,70 +14,70 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: d6695b0c40f56093e8701dfe6394143268114453
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 86eb3513b7bc921c59287600b1b76eeda20c1356
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - guide för felsökning
 Den här artikeln innehåller tips för felsökning för problem som kan uppstå när du konfigurerar eller administrera Azure Active Directory (AD) Domain Services.
 
 ## <a name="you-cannot-enable-azure-ad-domain-services-for-your-azure-ad-directory"></a>Du kan inte aktivera Azure AD Domain Services för din Azure AD-katalog
-Det här avsnittet hjälper dig att felsöka när du försöker aktivera Azure AD Domain Services för din katalog och misslyckas eller växlas tillbaka till ”inaktiverad”.
+Det här avsnittet hjälper du felsöka när du försöker tooenable Azure AD Domain Services för din katalog och det misslyckas eller hämtar växlas tillbaka too'Disabled'.
 
-Välj felsökningsstegen som motsvarar att du får felmeddelandet.
+Välj hello felsökningssteg som motsvarar toohello felmeddelande som du får.
 
 | **Felmeddelande** | **Lösning** |
 | --- |:--- |
-| *Namnet contoso100.com används redan i nätverket. Ange ett namn som inte används.* |[Domän namnkonflikt i virtuella nätverk](active-directory-ds-troubleshooting.md#domain-name-conflict) |
-| *Det gick inte att aktivera Domain Services i den här Azure AD-klienten. Tjänsten har inte tillräcklig behörighet för programmet ”Azure AD Domain Services Sync”. Ta bort programmet ”Azure AD Domain Services Sync” och försök sedan aktivera Domain Services för din Azure AD-klient.* |[Domain Services har inte tillräcklig behörighet för att programmet Azure AD Domain Services-synkronisering](active-directory-ds-troubleshooting.md#inadequate-permissions) |
-| *Det gick inte att aktivera Domain Services i den här Azure AD-klienten. Programmet Domain Services i din Azure AD-klient har inte tillräcklig behörighet för att aktivera Domain Services. Ta bort programmet med programidentifieraren d87dcbc6-a371-462e-88e3-28ad15ec4e64 och försök sedan aktivera Domain Services för din Azure AD-klient.* |[Domain Services-tjänstprogrammet har inte konfigurerats korrekt i din klientorganisation](active-directory-ds-troubleshooting.md#invalid-configuration) |
-| *Det gick inte att aktivera Domain Services i den här Azure AD-klienten. Programmet Microsoft Azure AD är inaktiverat i din Azure AD-klient. Aktivera programmet med programidentifieraren 00000002-0000-0000-c000-000000000000 och försök aktivera Domain Services för din Azure AD-klient.* |[Programmet Microsoft Graph har inaktiverats i Azure AD-klient](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
+| *hello namnet contoso100.com används redan i det här nätverket. Ange ett namn som inte används.* |[Domän namnkonflikt i hello virtuellt nätverk](active-directory-ds-troubleshooting.md#domain-name-conflict) |
+| *Det gick inte att aktivera Domain Services i Azure AD-klient. hello-tjänsten har inte tillräcklig behörighet för toohello program kallat Azure AD Domain Services-synkronisering. Ta bort hello program kallat Azure AD Domain Services-synkronisering och försök sedan tooenable Domain Services för din Azure AD-klient.* |[Domain Services har inte tillräcklig behörighet toohello Azure AD Domain Services synkronisera program](active-directory-ds-troubleshooting.md#inadequate-permissions) |
+| *Det gick inte att aktivera Domain Services i Azure AD-klient. hello Domain Services inte har hello program i Azure AD-klient krävs behörigheter tooenable Domain Services. Ta bort programmet hello med hello programmet identifierare d87dcbc6-a371-462e-88e3-28ad15ec4e64 och försök sedan tooenable Domain Services för din Azure AD-klient.* |[hello Domain Services-programmet har inte konfigurerats korrekt i din klientorganisation](active-directory-ds-troubleshooting.md#invalid-configuration) |
+| *Det gick inte att aktivera Domain Services i Azure AD-klient. hello Microsoft Azure AD-program är inaktiverad i Azure AD-klienten. Aktivera hello program med hello programmet identifierare 00000002-0000-0000-c000-000000000000 och försök sedan tooenable Domain Services för din Azure AD-klient.* |[hello Microsoft Graph-program har inaktiverats i Azure AD-klient](active-directory-ds-troubleshooting.md#microsoft-graph-disabled) |
 
 ### <a name="domain-name-conflict"></a>Namnkonflikt i domänen
 **Ett felmeddelande visas:**
 
-*Namnet contoso100.com används redan i nätverket. Ange ett namn som inte används.*
+*hello namnet contoso100.com används redan i det här nätverket. Ange ett namn som inte används.*
 
 **Reparation:**
 
-Se till att du inte har en befintlig domän med samma domännamn tillgänglig i det virtuella nätverket. Anta exempelvis att det redan finns en domän som heter ”contoso.com” i det valda virtuella nätverket. Senare, försök att aktivera en Azure AD Domain Services-hanterad domän med samma domännamn (dvs, contoso.com) i det virtuella nätverket. Det uppstår ett fel vid försök att aktivera Azure AD Domain Services.
+Kontrollera att du inte har en befintlig domän med hello samma domännamn i det virtuella nätverket. Anta exempelvis att du har en domän som heter ”contoso.com” redan finns på hello valda virtuella nätverket. Senare kan du försöka tooenable en Azure AD Domain Services-hanterad domän med hello samma domännamn (dvs, contoso.com) i det virtuella nätverket. Det uppstår ett fel vid försök tooenable Azure AD Domain Services.
 
-Det här felet beror på namnkonflikter för domännamnet i det virtuella nätverket. I den här situationen måste du använda ett annat namn för att ställa in din Azure AD Domain Services-hanterade domän. Du kan också avetablera den befintliga domänen och sedan aktivera Azure AD Domain Services.
+Det här felet är på grund av tooname konflikter för hello domännamn i det virtuella nätverket. I den här situationen måste du använda ett annat namn tooset in din Azure AD Domain Services-hanterad domän. Du kan också avetablera hello befintlig domän och gå sedan vidare tooenable Azure AD Domain Services.
 
 ### <a name="inadequate-permissions"></a>Otillräckliga behörigheter
 **Ett felmeddelande visas:**
 
-*Det gick inte att aktivera Domain Services i den här Azure AD-klienten. Tjänsten har inte tillräcklig behörighet för programmet ”Azure AD Domain Services Sync”. Ta bort programmet ”Azure AD Domain Services Sync” och försök sedan aktivera Domain Services för din Azure AD-klient.*
+*Det gick inte att aktivera Domain Services i Azure AD-klient. hello-tjänsten har inte tillräcklig behörighet för toohello program kallat Azure AD Domain Services-synkronisering. Ta bort hello program kallat Azure AD Domain Services-synkronisering och försök sedan tooenable Domain Services för din Azure AD-klient.*
 
 **Reparation:**
 
-Kontrollera om det finns ett program med namnet 'Azure AD Domain Services Sync' i Azure AD-katalogen. Om programmet finns, ta bort den och sedan återaktivera Azure AD Domain Services.
+Kontrollera toosee om det finns ett program med namnet hello Azure AD Domain Services-synkronisering i Azure AD-katalogen. Om programmet finns, ta bort den och sedan återaktivera Azure AD Domain Services.
 
-Utför följande steg för att kontrollera förekomst av programmet och ta bort den om programmet redan finns:
+Utföra hello följande steg toocheck hello förekomst av programmet hello och toodelete, om hello program finns:
 
-1. Gå till **den klassiska Azure-portalen** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).
-2. Välj noden **Active Directory** i det vänstra fönstret.
-3. Välj Azure AD-klienten (katalogen) som du vill aktivera Azure AD Domain Services för.
-4. Navigera till den **program** fliken.
-5. Välj den **program som företaget äger** alternativ i listrutan.
-6. Kontrollera om ett program som kallas **Azure AD Domain Services Sync**. Om programmet redan finns fortsätter du att ta bort den.
-7. När du har tagit bort programmet, försök att aktivera Azure AD Domain Services igen.
+1. Navigera toohello **klassiska Azure-portalen** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).
+2. Välj hello **Active Directory** i hello vänstra fönstret.
+3. Välj hello Azure AD-klienten (katalogen) som du vill att tooenable Azure AD Domain Services.
+4. Navigera toohello **program** fliken.
+5. Välj hello **program som företaget äger** alternativ i listrutan hello.
+6. Kontrollera om ett program som kallas **Azure AD Domain Services Sync**. Om programmet hello finns fortsätter toodelete den.
+7. När du har tagit bort programmet hello försök tooenable Azure AD Domain Services igen.
 
 ### <a name="invalid-configuration"></a>Ogiltig konfiguration
 **Ett felmeddelande visas:**
 
-*Det gick inte att aktivera Domain Services i den här Azure AD-klienten. Programmet Domain Services i din Azure AD-klient har inte tillräcklig behörighet för att aktivera Domain Services. Ta bort programmet med programidentifieraren d87dcbc6-a371-462e-88e3-28ad15ec4e64 och försök sedan aktivera Domain Services för din Azure AD-klient.*
+*Det gick inte att aktivera Domain Services i Azure AD-klient. hello Domain Services inte har hello program i Azure AD-klient krävs behörigheter tooenable Domain Services. Ta bort programmet hello med hello programmet identifierare d87dcbc6-a371-462e-88e3-28ad15ec4e64 och försök sedan tooenable Domain Services för din Azure AD-klient.*
 
 **Reparation:**
 
-Kontrollera om du har ett program med namnet 'AzureActiveDirectoryDomainControllerServices' (med en identifierare för d87dcbc6-a371-462e-88e3-28ad15ec4e64) i Azure AD-katalogen. Om det här programmet finns måste du ta bort den och sedan återaktivera Azure AD Domain Services.
+Kontrollera toosee om du har ett program med namnet hello 'AzureActiveDirectoryDomainControllerServices' (med en identifierare för d87dcbc6-a371-462e-88e3-28ad15ec4e64) i Azure AD-katalogen. Om programmet finns behöver du toodelete den och sedan återaktivera Azure AD Domain Services.
 
-Använd följande PowerShell-skript för att hitta programmet och ta bort den.
+Använd följande PowerShell-skriptet toofind hello programmet hello och ta bort den.
 
 > [!NOTE]
-> Det här skriptet använder **Azure AD PowerShell version 2** cmdlets. En fullständig lista över alla tillgängliga cmdletar och för att hämta modulen kan läsa den [AzureAD PowerShell referensdokumentationen](https://msdn.microsoft.com/library/azure/mt757189.aspx).
+> Det här skriptet använder **Azure AD PowerShell version 2** cmdlets. En fullständig lista över alla tillgängliga cmdlets och toodownload hello modulen läsa hello [AzureAD PowerShell referensdokumentationen](https://msdn.microsoft.com/library/azure/mt757189.aspx).
 >
 >
 
@@ -90,7 +90,7 @@ if ($aadDsSp -ne $null)
 {
     Write-Information "Found Azure AD Domain Services application. Deleting it ..."
     Remove-AzureADServicePrincipal -ObjectId $aadDsSp.ObjectId
-    Write-Information "Deleted the Azure AD Domain Services application."
+    Write-Information "Deleted hello Azure AD Domain Services application."
 }
 
 $identifierUri = "https://sync.aaddc.activedirectory.windowsazure.com"
@@ -100,7 +100,7 @@ if ($app -ne $null)
 {
     Write-Information "Found Azure AD Domain Services Sync application. Deleting it ..."
     Remove-AzureADApplication -ObjectId $app.ObjectId
-    Write-Information "Deleted the Azure AD Domain Services Sync application."
+    Write-Information "Deleted hello Azure AD Domain Services Sync application."
 }
 
 $spFilter = "ServicePrincipalNames eq '" + $identifierUri + "'"
@@ -109,7 +109,7 @@ if ($sp -ne $null)
 {
     Write-Information "Found Azure AD Domain Services Sync service principal. Deleting it ..."
     Remove-AzureADServicePrincipal -ObjectId $sp.ObjectId
-    Write-Information "Deleted the Azure AD Domain Services Sync service principal."
+    Write-Information "Deleted hello Azure AD Domain Services Sync service principal."
 }
 ```
 <br>
@@ -117,43 +117,43 @@ if ($sp -ne $null)
 ### <a name="microsoft-graph-disabled"></a>Microsoft Graph inaktiverad
 **Ett felmeddelande visas:**
 
-Det gick inte att aktivera Domain Services i Azure AD-klient. Programmet Microsoft Azure AD är inaktiverat i din Azure AD-klient. Aktivera programmet med 00000002-0000-0000-c000-000000000000 för program-ID och försök sedan att aktivera Domain Services för din Azure AD-klient.
+Det gick inte att aktivera Domain Services i Azure AD-klient. hello Microsoft Azure AD-program är inaktiverad i Azure AD-klienten. Aktivera hello program med hello programmet identifierare 00000002-0000-0000-c000-000000000000 och försök sedan tooenable Domain Services för din Azure AD-klient.
 
 **Reparation:**
 
-Kontrollera om du har inaktiverat ett program med identifierare 00000002-0000-0000-c000-000000000000. Det här programmet är Microsoft Azure AD-program och ger Graph API-åtkomst till Azure AD-klienten. Azure AD Domain Services måste det här programmet måste vara aktiverat för att synkronisera din Azure AD-klient till din hanterade domän.
+Kontrollera toosee om du har inaktiverat ett program med hello identifierare 00000002-0000-0000-c000-000000000000. Det här programmet är hello Microsoft Azure AD-program och ger Graph API åtkomst tooyour Azure AD-klient. Azure AD Domain Services måste det här programmet toobe aktiverat toosynchronize din Azure AD-klient tooyour hanterade domän.
 
-Aktivera det här programmet och försök sedan att aktivera Domain Services för din Azure AD-klient för att lösa det här felet.
+tooresolve det här felet kan aktivera programmet och försök sedan tooenable Domain Services för din Azure AD-klient.
 
-## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>Användarna kan inte logga in på den hanterade domänen för Azure AD Domain Services
-Om en eller flera användare i Azure AD-klienten inte kan logga in på den nyligen skapade hanterade domänen, utför du följande felsökningssteg:
+## <a name="users-are-unable-toosign-in-toohello-azure-ad-domain-services-managed-domain"></a>Användare kan toosign i toohello Azure AD Domain Services-hanterad domän
+Om en eller flera användare i Azure AD-klienten är toosign i toohello nyskapad hanterade domän, utföra hello följande felsökningssteg:
 
-* **Logga in med UPN-format:** försöker logga in med UPN-format (till exempel ”joeuser@contoso.com”) i stället för SAMAccountName format (CONTOSO\joeuser). SAMAccountName kan genereras automatiskt för användare vars UPN-prefixet är alltför lång eller är detsamma som en annan användare på den hanterade domänen. UPN-format är säkert att vara unika inom en Azure AD-klient.
+* **Logga in med UPN-format:** försök toosign med hello UPN-format (till exempel ”joeuser@contoso.com”) i stället för hello SAMAccountName format (CONTOSO\joeuser). hello SAMAccountName kan genereras automatiskt för användare vars UPN-prefixet är alltför långa eller hello är samma som en annan användare på hello-hanterad domän. hello UPN-format är garanterat toobe unika inom en Azure AD-klient.
 
 > [!NOTE]
-> Vi rekommenderar att du använder UPN-format för att logga in på den hanterade domänen med Azure AD Domain Services.
+> Vi rekommenderar att du använder hello UPN-format toosign i toohello Azure AD Domain Services-hanterad domän.
 >
 >
 
-* Kontrollera att du har [aktiverat lösenordssynkronisering](active-directory-ds-getting-started-password-sync.md) i enlighet med anvisningarna i guiden Komma igång.
-* **Externa konton:** Kontrollera att användarkontot påverkas inte är ett externt konto i Azure AD-klient. Exempel på externa konton är Microsoft-konton (till exempel 'joe@live.com') eller användarkonton från en extern Azure AD-katalog. Eftersom Azure AD Domain Services inte har autentiseringsuppgifter för dessa konton kan kan inte dessa användare logga in på den hanterade domänen.
-* **Synkroniserats konton:** om de berörda användarkontona synkroniseras från en lokal katalog, kontrollerar du att:
+* Kontrollera att du har [aktiverat Lösenordssynkronisering](active-directory-ds-getting-started-password-sync.md) i enlighet med hello steg som beskrivs i hello Kom igång-guiden.
+* **Externa konton:** Kontrollera att användarkontot hello påverkas inte är ett externt konto i hello Azure AD-klient. Exempel på externa konton är Microsoft-konton (till exempel 'joe@live.com') eller användarkonton från en extern Azure AD-katalog. Eftersom Azure AD Domain Services inte har autentiseringsuppgifter för dessa konton kan logga användarna inte in toohello hanterad domän.
+* **Synkroniserats konton:** om hello påverkas användarkonton synkroniseras från en lokal katalog, kontrollerar du att:
 
-  * Du har distribuerat eller uppdateras till den [senaste rekommenderade versionen av Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
-  * Du har konfigurerat Azure AD Connect till [utför en fullständig synkronisering](active-directory-ds-getting-started-password-sync.md).
-  * Beroende på storleken på din katalog kan det ta en stund för användarkonton och autentiseringsuppgifter hash-värden ska vara tillgängliga i Azure AD Domain Services. Se till att du vänta tillräckligt länge innan du försöker autentisering (beroende på storleken på din katalog - några timmar på en dag eller två för stora kataloger).
-  * Om problemet kvarstår efter verifiering av ovanstående steg kan du prova att starta om tjänsten Microsoft Azure AD Sync. Starta en kommandotolk och kör följande kommandon från datorn synkronisering:
+  * Du har distribuerat eller uppdatera toohello [senaste rekommenderade versionen av Azure AD Connect](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+  * Du har konfigurerat Azure AD Connect för[utför en fullständig synkronisering](active-directory-ds-getting-started-password-sync.md).
+  * Beroende på hello storlek i din katalog, kan det ta en stund för användarkonton och autentiseringsuppgifter hashvärden toobe tillgängliga i Azure AD Domain Services. Se till att du vänta tillräckligt länge innan du försöker autentisering (beroende på hello storleken på din katalog- eller ett par för stora kataloger några timmar tooa dagar).
+  * Hello problemet kvarstår efter att ha kontrollerat hello föregående steg kan du prova att starta om hello Microsoft Azure AD Sync-tjänsten. Starta en kommandotolk och kör hello följande kommandon från datorn synkronisering:
 
     1. net stop ”Microsoft Azure AD Sync'
     2. net start ”Microsoft Azure AD Sync'
-* **Endast molnbaserad konton**: om berörda användarkontot är en molnbaserad användarkonto, ska du kontrollera att användaren har ändrat sitt lösenord när du har aktiverat Azure AD Domain Services. Det här steget gör att de autentiseringshashvärden som krävs för Azure AD Domain Services genereras.
+* **Endast molnbaserad konton**: om hello påverkas användarkonto är en molnbaserad användarkonto, kontrollera hello användaren har ändrat sitt lösenord när du har aktiverat Azure AD Domain Services. Det här steget gör hello autentiseringsuppgifter autentiseringshasherna som krävs för Azure AD Domain Services toobe genereras.
 
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Användare har tagits bort från Azure AD-klienten tas inte bort från din hanterade domän
-Azure AD skyddar dig mot oavsiktlig borttagning av användarobjekt. När du tar bort ett användarkonto från Azure AD-klienten flyttas motsvarande användarobjekt till papperskorgen. När den här åtgärden synkroniseras till din hanterade domän gör motsvarande användarkonto markeras som inaktiverade. Den här funktionen hjälper dig att återställa eller ångra borttagning användarkontot senare.
+Azure AD skyddar dig mot oavsiktlig borttagning av användarobjekt. När du tar bort ett användarkonto från Azure AD-klienten är hello motsvarande användarobjekt flyttade toohello Papperskorgen. När den här åtgärden är synkroniserade tooyour hanterad domän, gör hello motsvarande användarens konto toobe markerad har inaktiverats. Den här funktionen hjälper dig att återställa eller ångra borttagning hello-konto senare.
 
-Användarkontot förblir inaktiverad i din hanterade domän, även om du återskapa ett användarkonto med samma UPN i Azure AD-katalogen. Om du vill ta bort användarkontot från din hanterade domän måste du tvinga tas bort från Azure AD-klienten.
+Hej användarkontot finns kvar i hello inaktiverat tillstånd i din hanterade domän, även om du vill återskapa ett användarkonto med hello samma UPN i Azure AD-katalogen. tooremove hello användarkontot från din hanterade domän, behöver du tooforce ta bort den från din Azure AD-klient.
 
-Om du vill ta bort användarkontot helt från din hanterade domän, ta bort användaren permanent från Azure AD-klienten. Använd PowerShell-cmdleten Remove-MsolUser med alternativet ”-RemoveFromRecycleBin” enligt beskrivningen i den här [MSDN-artikeln](https://msdn.microsoft.com/library/azure/dn194132.aspx).
+tooremove hello användarkontot helt från din hanterade domän, ta bort hello användaren permanent från Azure AD-klienten. Använd hello Remove-MsolUser PowerShell-cmdlet med hello '-RemoveFromRecycleBin' alternativ, enligt beskrivningen i det här [MSDN-artikel](https://msdn.microsoft.com/library/azure/dn194132.aspx).
 
 ## <a name="contact-us"></a>Kontakta oss
-Kontakta produktteamet Azure Active Directory Domain Services för att [dela feedback eller support](active-directory-ds-contact-us.md).
+Kontakta hello Azure Active Directory Domain Services Produktteamet för[dela feedback eller support](active-directory-ds-contact-us.md).

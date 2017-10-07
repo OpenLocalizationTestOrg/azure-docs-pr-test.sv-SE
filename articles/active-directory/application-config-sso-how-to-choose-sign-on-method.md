@@ -1,6 +1,6 @@
 ---
-title: "Hur du avgör vilken enkel inloggning på metod för att använda | Microsoft Docs"
-description: "Förstå enkel inloggning lägen stöds av Azure AD och hur du väljer vilka som ska användas för programmet som du är intresserad av."
+title: "aaaHow toodetermine vilka enkel inloggning på metoden toouse | Microsoft Docs"
+description: "Förstå hello enkel inloggning lägen som stöds av Azure AD och hur toopick som en toochoose för hello programmet du är intresserad av."
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,41 +13,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 80f4a965920fec9cb578c1bee235c7857f37431e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 64f0bc1dc8281d1ab8222fd50eaceaf710704886
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-determine-what-single-sign-on-method-to-use"></a>Hur du avgör vilken enkel inloggning på metod som ska användas
+# <a name="how-toodetermine-what-single-sign-on-method-toouse"></a>Hur toodetermine vilka enkel inloggning på metoden toouse
 
-Den här artikeln hjälper dig att förstå enkel inloggning lägen stöds av Azure AD och hur du väljer vilka som ska användas för programmet som du är intresserad av.
+Den här artikeln hjälper dig toounderstand hello enkel inloggning lägen som stöds av Azure AD och hur toopick som en toochoose för hello programmet du är intresserad av.
 
 ## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>Enkel inloggning och provisioning lägen som stöds av specifika programtyper
 
-I tabellen nedan beskrivs olika enkel inloggning och allokering lägen som stöds av varje ovan programtyper. Du kan använda den här tabellen hjälper dig att förstå vilket program som du behöver lägga till stöd för ett specifikt mål.
+hello tabellen nedan beskrivs hello olika enkel inloggning och provisioning lägen som stöds av varje hello ovan programtyper. Du kan använda den här tabellen toohelp toounderstand vilket program som du behöver tooadd toosupport ett specifikt mål.
 
   ![Asien/Stillahavsområdet register](./media/application-tables/table1.png)
 
-## <a name="how-to-choose-a-single-sign-on-mode"></a>Hur du väljer ett läge för enkel inloggning
+## <a name="how-toochoose-a-single-sign-on-mode"></a>Hur toochoose ett läge för enkel inloggning
 
-Den stöds **enkel inloggning** lägen för Azure AD-program visas nedan.
+hello stöds **enkel inloggning** lägen för Azure AD-program visas nedan.
 
--   **Azure AD enkel inloggning inaktiverat** – Välj Azure AD enkel inloggning inaktiverad **läget för enkel inloggning** om du ännu inte är redo att integrera programmet med enkel inloggning med Azure AD eller bara testar det.
+-   **Azure AD enkel inloggning inaktiverad** – Välj Azure AD enkel inloggning inaktiverad **läget för enkel inloggning** om du ännu inte klar toointegrate programmet med enkel inloggning med Azure AD, eller bara testar det.
 
--   **Länkad inloggning** – Välj den [inloggning länkade](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **läget för enkel inloggning** om du har ett program som redan är kopplad till en befintlig enkel inloggning lösning eller om du vill publicera en enkel länk för användarna i deras [programmet åtkomstpanelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) eller [startprogrammet för Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
+-   **Länkad inloggning** – Välj hello [inloggning länkade](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **läget för enkel inloggning** om du har ett program som redan är kopplad till en befintlig enkel inloggning lösning, eller om du bara vill toopublish en enkel länka för användarna i deras [programmet åtkomstpanelen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) eller [startprogrammet för Office 365](https://login.microsoftonline.com/common/oauth2/authorize?response_mode=form_post&response_type=id_token&scope=openid&nonce=d508a995-f6d6-4b8a-81b8-825c71f1be46.636253878097046923&state=https%3a%2f%2fsupport.office.com%2farticle%2fMeet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a%3fui%3den-US%26rs%3den-US%26ad%3dUS&client_id=4b233688-031c-404b-9a80-a4f3f2351f90&redirect_uri=https%3a%2f%2fsupport.office.com%2fauth%2fsignin&login_hint=asteen%40microsoft.com&prompt=none)
 
--   **Lösenordsbaserade inloggning** – Välj den [lösenordsbaserade inloggning](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **läget för enkel inloggning** om ditt program visas med ett HTML-fält för användarnamn och lösenord och du vill lagra det användarnamn och lösenord på ett säkert sätt ska återupprepas till programmet senare
+-   **Lösenordsbaserade inloggning** – Välj hello [lösenordsbaserade inloggning](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) **läget för enkel inloggning** om ditt program visas med ett HTML-fält för användarnamn och lösenord och du vill toostore som användarnamn och lösenord på ett säkert sätt toobe spelas toohello programmet senare
 
--   **SAML-baserade inloggning** – Välj den [SAML-baserade inloggning](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) enkel inloggning på läge om programmet stöder SAML- eller OpenID Connect-protokoll eller om du vill kunna mappa användare till programroller för specifika baserat på regler som du definierar i SAML-anspråk *(**Obs:** det här alternativet är inte tillgängligt när application proxy har konfigurerats för ett program) *
+-   **SAML-baserade inloggning** – Välj hello [SAML-baserade inloggning](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) enkel inloggning på läge om programmet stöder hello SAML eller OpenID Connect protokoll eller om du vill toobe kan toomap användare toospecific programroller baserat regler som du definierar i din SAML anspråk *(**Obs:** det här alternativet är inte tillgängligt när hello programproxy konfigureras för ett program) *
 
--   **Rubrik-baserade inloggning** – Välj det här [huvud-baserade inloggning](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) enkel inloggning läge om du har ett program med PingAccess som stöder HTTP-huvudet baseras autentisering som du vill utföra enkel inloggning till *(**Obs:** det här alternativet är bara tillgängligt om application proxy- och PingAccess är konfigurerad för ett program) *
+-   **Rubrik-baserade inloggning** – Välj det här [huvud-baserade inloggning](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) enkel inloggning läge om du har ett program med PingAccess som stöder HTTP-huvudet baseras autentisering som du vill att tooperform enkel inloggning på för *(**Obs:** det här alternativet är endast tillgängligt när hello programproxy och PingAccess konfigureras för ett program) *
 
--   **Integrerad Windows-autentisering** – Välj den [integrerad Windows-autentisering](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) enkel inloggning på läge när exponera ett lokalt WIA program som du vill utföra enkel inloggning till *(**Obs:** det här alternativet är endast tillgängligt när application proxy har konfigurerats för ett program) *
+-   **Integrerad Windows-autentisering** – Välj hello [integrerad Windows-autentisering](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) enkel inloggning på läge när exponera ett lokalt WIA program som du vill att tooperform enkel inloggning på för*()*  *Obs:** det här alternativet är endast tillgängligt när hello programproxy konfigureras för ett program) *
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Enkel inloggning lägen för anpassad utvecklade program
 
-Program som du har anpassat utvecklas genom den [anpassad utvecklat program](#_Custom-Developed_Applications) upplevelse stöder också ytterligare enkel inloggning lägen inte listas här ovan. Exempel på dessa är:
+Program som du har anpassat utvecklas genom hello [anpassad utvecklat program](#_Custom-Developed_Applications) upplevelse stöder också ytterligare enkel inloggning lägen inte listas här ovan. Exempel på dessa är:
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) baserat inloggning
 
@@ -57,28 +57,28 @@ Program som du har anpassat utvecklas genom den [anpassad utvecklat program](#_C
 
 -   [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference) baserat inloggning
 
-Läs den [Utvecklarhandbok för Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) vill veta mer om hur du skapar en anpassad utvecklat program som stöder dessa lägen för enkel inloggning.
+Läs hello [Utvecklarhandbok för Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) toolearn mer om hur toocreate en anpassad utvecklade program som stöder dessa enkel inloggning lägen.
 
-## <a name="how-to-set-an-applications-single-sign-on-mode"></a>Hur du ställer in ett program enkel inloggning läge
+## <a name="how-tooset-an-applications-single-sign-on-mode"></a>Hur tooset ett program har enkel inloggning läge
 
-Så här anger du ett program **enkel inloggning** läge, följ instruktionerna nedan:
+tooset ett program **enkel inloggning** läge, följ hello instruktionerna nedan:
 
-1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
+1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör** eller **Co-administratör.**
 
-2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** att visa en lista över alla program.
+5.  Klicka på **alla program** tooview en lista över alla program.
 
-   * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
+   * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för **Alla program.**
 
-6.  Välj det program som du vill konfigurera enkel inloggning
+6.  Välj hello-program som du vill tooconfigure enkel inloggning
 
-7.  När programmet läses in klickar du på **enkel inloggning** från programmets vänstra navigeringsmenyn.
+7.  När programmet hello läses in klickar du på **enkel inloggning** från hello programmet vänstra navigeringsmenyn.
 
 ## <a name="next-steps"></a>Nästa steg
-[Tillhandahålla enkel inloggning till dina appar med Application Proxy](active-directory-application-proxy-sso-using-kcd.md)
+[Tillhandahålla enkel inloggning tooyour appar med Application Proxy](active-directory-application-proxy-sso-using-kcd.md)
 

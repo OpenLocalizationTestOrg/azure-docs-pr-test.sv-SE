@@ -1,5 +1,5 @@
 ---
-title: "Felsöka dynamiskt medlemskap för grupper | Microsoft Docs"
+title: "aaaTroubleshooting dynamiskt medlemskap för grupper | Microsoft Docs"
 description: "Felsökningstips för dynamiskt medlemskap för grupper i Azure AD."
 services: active-directory
 documentationcenter: 
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: curtand
-ms.openlocfilehash: 32947e8cc69c9a48d9a285bf0a37ab3398571f86
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d792fc406288844e2c5dbe3702c2c9870d09473e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>Felsöka dynamiska medlemskap för grupper
-**Jag har konfigurerat en regel för en grupp men inget medlemskap uppdateras i gruppen**<br/>Kontrollera att den **aktivera delegerad grupphantering** inställningen **Ja** i den **konfigurera** fliken. Den här inställningen visas bara om du är inloggad som en användare som tilldelats en Azure Active Directory Premium-licens. Kontrollera värdena för användarattribut på regeln: det finns användare som uppfyller regeln?
+**Jag har konfigurerat en regel för en grupp, men inget medlemskap uppdateras i hello grupp**<br/>Kontrollera att hello **aktivera delegerad grupphantering** inställningen för**Ja** i hello **konfigurera** fliken. Den här inställningen visas bara om du är inloggad som en användare toowhom en Azure Active Directory Premium-licens har tilldelats. Kontrollera hello värden för användarattribut på hello regeln: det finns användare som uppfyller hello regeln?
 
-**Jag har konfigurerat en regel, men nu befintliga medlemmar i regeln tas bort**<br/>Detta är förväntat. Befintliga medlemmar i gruppen tas bort när en regel är aktiverad eller har ändrats. Användare som har returnerats från tillämpningen av regeln läggs till som medlemmar i gruppen.     
+**Jag har konfigurerat en regel, men nu hello befintliga medlemmar i hello regeln tas bort**<br/>Detta är förväntat. Befintliga medlemmarna i hello tas bort när en regel är aktiverad eller har ändrats. hello-användare som har returnerats från utvärdering av hello regeln läggs till som medlemmar toohello grupp.     
 
-**Jag ser medlemskap ändras direkt när jag lägger till eller ändra en regel, varför inte?**<br/>Dedikerad medlemskapsutvärdering görs med jämna mellanrum i en asynkron bakgrunden. Hur lång tid tar processen bestäms av antalet användare i din katalog och storleken på gruppen som skapades på grund av regeln. Normalt ser med mindre antal användare ändringarna av gruppmedlemskap mindre än några minuter. Med ett stort antal användare kan ta 30 minuter eller längre att fylla i.
+**Jag ser medlemskap ändras direkt när jag lägger till eller ändra en regel, varför inte?**<br/>Dedikerad medlemskapsutvärdering görs med jämna mellanrum i en asynkron bakgrunden. Hur länge hello processen tar bestäms av hello antalet användare i din katalog och hello storleken på hello-gruppen som skapades på grund av hello regeln. Normalt ser med mindre antal användare hello ändringar i gruppmedlemskap mindre än några minuter. Med ett stort antal användare kan ta 30 minuter eller längre toopopulate.
 
 ### <a name="next-steps"></a>Nästa steg
 Dessa artiklar innehåller ytterligare information om Azure Active Directory.
 
-* [Hantera åtkomst till resurser med Azure Active Directory-grupper](active-directory-manage-groups.md)
+* [Hantera åtkomst tooresources med Azure Active Directory-grupper](active-directory-manage-groups.md)
 * [Artikelindex för programhantering i Azure Active Directory](active-directory-apps-index.md)
 * [Vad är Azure Active Directory?](active-directory-whatis.md)
 * [Integrera dina lokala identiteter med Azure Active Directory](active-directory-aadconnect.md)

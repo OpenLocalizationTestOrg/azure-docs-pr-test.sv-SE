@@ -1,5 +1,5 @@
 ---
-title: "Konfigurera SaaS-appar för B2B-samarbete i Azure Active Directory | Microsoft Docs"
+title: "aaaConfigure SaaS-appar för B2B-samarbete i Azure Active Directory | Microsoft Docs"
 description: "Koden och PowerShell-exempel för Azure Active Directory B2B-samarbete"
 services: active-directory
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 149a493f7b369415f0a2726dd6a576f0195c13d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3f22f81567c04ac23ef2316c09de718ecb15d26
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurera SaaS-appar för B2B-samarbete
 
@@ -27,86 +27,86 @@ Azure Active Directory (AD Azure) B2B-samarbete fungerar med de flesta appar som
 
 Innan du tittar på app-specifik anvisningarna är här några tumregel:
 
-* För de flesta appar måste användaren ske manuellt. Det vill säga skapas användare manuellt i appen även.
+* För de flesta hello appar måste användarinställningar toohappen manuellt. Det vill säga skapas användare manuellt i hello-app.
 
-* För appar som har stöd för automatisk installation, till exempel Dropbox, skapas separat inbjudningar från apparna. Användare måste vara säker på att du accepterar varje inbjudan.
+* För appar som har stöd för automatisk installation, till exempel Dropbox, skapas separat inbjudningar från hello appar. Användare måste vara säker på att tooaccept varje inbjudan.
 
-* I användarattributen för att åtgärda eventuella problem med felaktig användarprofil-disk (UPD) i gästanvändare, alltid ange **användar-ID** till **user.mail**.
+* Ange alltid i hello användarattribut, toomitigate eventuella problem med felaktig användarprofil-disk (UPD) i gästanvändare, **användar-ID** för**user.mail**.
 
 
 ## <a name="dropbox-business"></a>Dropbox företag
 
-Om du vill att användarna ska logga in med sina organisation, måste du manuellt konfigurera Dropbox företag om du vill använda Azure AD som en identitetsleverantör Security Assertion Markup Language (SAML). Om Dropbox företag inte har konfigurerats för att göra det, kan inte fråga eller annars tillåter användare att logga in med Azure AD.
+tooenable användare toosign in med sina organisation, måste du manuellt konfigurera Dropbox Business toouse Azure AD som en identitetsleverantör Security Assertion Markup Language (SAML). Fråga om Dropbox företag inte har konfigurerat toodo så kan inte eller annars tillåter användare toosign i med hjälp av Azure AD.
 
-1. Om du vill lägga till Dropbox Business-app till Azure AD, Välj **företagsprogram** i den vänstra rutan, och klicka sedan på **Lägg till**.
+1. tooadd hello Dropbox Business appen till Azure AD, Välj **företagsprogram** i hello till vänster och klicka sedan på **Lägg till**.
 
-  ![Knappen ”Lägg till” på sidan Enterprise program](media/active-directory-b2b-configure-saas-apps/add-dropbox.png)
+  ![Hej ”Lägg till”-knappen hello Enterprise program sida](media/active-directory-b2b-configure-saas-apps/add-dropbox.png)
 
-2. I den **lägga till ett program** fönstret Ange **dropbox** i sökrutan och väljer sedan **Dropbox för företag** i resultatlistan.
+2. I hello **lägga till ett program** fönstret Ange **dropbox** i hello sökrutan och väljer sedan **Dropbox för företag** i hello resultatlistan.
 
-  ![Sök efter ”dropbox” på Lägg till en program-sida](media/active-directory-b2b-configure-saas-apps/add-app-dialog.png)
+  ![Sök efter ”dropbox” på hello Lägg till ett program på sidan](media/active-directory-b2b-configure-saas-apps/add-app-dialog.png)
 
-3. På den **enkel inloggning** väljer **enkel inloggning** i den vänstra rutan och ange sedan **user.mail** i den **användar-ID** rutan. (Det är angivet som UPN som standard.)
+3. På hello **enkel inloggning** väljer **enkel inloggning** i hello till vänster och sedan ange **user.mail** i hello **användar-ID** ruta. (Det är angivet som UPN som standard.)
 
-  ![Konfigurera enkel inloggning för appen](media/active-directory-b2b-configure-saas-apps/configure-app-sso.png)
+  ![Konfigurera enkel inloggning för hello app](media/active-directory-b2b-configure-saas-apps/configure-app-sso.png)
 
-4. För att hämta certifikatet som ska användas för Dropbox-konfiguration, markera **konfigurera DropBox**, och välj sedan **SAML logga på tjänst-URL för enkel** i listan.
+4. toodownload hello certifikat toouse för Dropbox-konfiguration, markera **konfigurera DropBox**, och välj sedan **SAML logga på tjänst-URL för enkel** i hello-listan.
 
-  ![Hämta certifikatet för Dropbox-konfiguration](media/active-directory-b2b-configure-saas-apps/download-certificate.png)
+  ![Hämta hello certifikat för Dropbox-konfiguration](media/active-directory-b2b-configure-saas-apps/download-certificate.png)
 
-5. Logga in till Dropbox med den inloggnings-URL från den **enkel inloggning** sidan.
+5. Logga in tooDropbox med hello inloggning URL från hello **enkel inloggning** sidan.
 
-  ![Sidan för Dropbox](media/active-directory-b2b-configure-saas-apps/sign-in-to-dropbox.png)
+  ![sidan hello Dropbox-inloggning](media/active-directory-b2b-configure-saas-apps/sign-in-to-dropbox.png)
 
-6. Välj på menyn **administratörskonsolen**.
+6. Välj på menyn hello **administratörskonsolen**.
 
-  ![Länken ”Admin Console” på Dropbox-menyn](media/active-directory-b2b-configure-saas-apps/dropbox-menu.png)
+  ![Hej ”Admin Console” länk på hello Dropbox-menyn](media/active-directory-b2b-configure-saas-apps/dropbox-menu.png)
 
-7. I den **autentisering** dialogrutan **mer**, ladda upp certifikatet och sedan, i den **logga in URL: en** ange SAML enkel inloggning URL: en.
+7. I hello **autentisering** dialogrutan **mer**, överför hello certifikat och sedan, i hello **logga in URL: en** anger Webbadressen för hello SAML enkel inloggning.
 
-  ![Länken ”Mer” i dialogrutan minimerade autentisering](media/active-directory-b2b-configure-saas-apps/dropbox-auth-01.png)
+  ![Hej länken ”Mer” hello komprimerad dialogrutan för autentisering](media/active-directory-b2b-configure-saas-apps/dropbox-auth-01.png)
 
-  ![I ”logga in URL: en” i dialogrutan för utökade autentisering](media/active-directory-b2b-configure-saas-apps/paste-single-sign-on-URL.png)
+  ![Hej ”tecken i URL” i hello expanderas dialogrutan autentisering](media/active-directory-b2b-configure-saas-apps/paste-single-sign-on-URL.png)
 
-8. Om du vill konfigurera automatisk användarinställningar i Azure portal, Välj **etablering** i den vänstra rutan, Välj **automatisk** i den **etablering läge** och välj sedan **auktorisera**.
+8. Välj tooconfigure automatisk användarinställningar i hello Azure-portalen **etablering** i hello vänster och välj **automatisk** i hello **etablering läge** och välj sedan **Auktorisera**.
 
-  ![Konfigurera automatisk användaretablering i Azure-portalen](media/active-directory-b2b-configure-saas-apps/set-up-automatic-provisioning.png)
+  ![Konfigurera automatisk användaretablering i hello Azure-portalen](media/active-directory-b2b-configure-saas-apps/set-up-automatic-provisioning.png)
 
-När gästen eller medlem användare har ställts in i appen Dropbox, får de en separat inbjudan från Dropbox. Om du vill använda Dropbox enkel inloggning acceptera inbjudna vill inbjudan genom att klicka på en länk i den.
+När gästen eller medlem användare har ställts in i hello Dropbox app, kan de få en separat inbjudan från Dropbox. toouse Dropbox enkel inloggning inbjudna måste acceptera inbjudan hello genom att klicka på en länk i den.
 
 ## <a name="box"></a>Box
-Du kan låta användare autentisera rutan gästanvändare med sina Azure AD-kontot med hjälp av federation som baseras på SAML-protokoll. Den här metoden Överför metadata till Box.com.
+Du kan aktivera användare tooauthenticate rutan gästanvändare med sina Azure AD-kontot med hjälp av federation som baseras på hello SAML-protokoll. I den här proceduren kan du överföra metadata tooBox.com.
 
-1. Lägg till Box-app från enterprise-appar.
+1. Lägg till hello Box-app från hello företagsappar.
 
-2. Konfigurera enkel inloggning i följande ordning:
+2. Konfigurera enkel inloggning i hello följande ordning:
 
   ![Konfigurera rutan enkel inloggning](media/active-directory-b2b-configure-saas-apps/configure-box-sso.png)
 
- a. I den **inloggning URL** kontrollerar du att den inloggnings-URL är inställd på rätt sätt för rutan i Azure-portalen. Denna URL är Webbadressen till din Box.com-klient. Det bör följa en namngivningskonvention *https://.box.com*.  
- Den **identifierare** gäller inte för den här appen, men den fortfarande visas som ett obligatoriskt fält.
+ a. I hello **inloggning URL** kontrollerar du att hello inloggnings-URL är inställd på rätt sätt för rutan i hello Azure-portalen. Denna URL är hello URL för din Box.com-klient. Det bör följa hello namngivningskonvention *https://.box.com*.  
+ Hej **identifierare** gäller inte toothis appen, men som fortfarande visas som ett obligatoriskt fält.
 
- b. I den **användar-ID** ange **user.mail** (för enkel inloggning för gästkonton).
+ b. I hello **användar-ID** ange **user.mail** (för enkel inloggning för gästkonton).
 
  c. Under **SAML-signeringscertifikat**, klickar du på **Skapa nytt certifikat**.
 
- d. Om du vill börja konfigurera din Box.com klient om du vill använda Azure AD som en identitetsleverantör och hämta metadatafilen och spara den på din lokala enhet.
+ d. Konfigurera din Box.com klient toouse Azure AD som en identitetsleverantör toobegin hämta hello metadatafil och spara sedan det tooyour lokal enhet.
 
- e. Vidarebefordra metadatafil till rutan supportteam, som konfigurerar enkel inloggning för dig.
+ e. Vidarebefordra hello metadata filen toohello rutan supportteamet, som konfigurerar enkel inloggning för dig.
 
-3. Azure AD automatisk användarinställningar, i den vänstra rutan, Välj **etablering**, och välj sedan **auktorisera**.
+3. Azure AD automatisk användarinställningar, i hello vänster och välj **etablering**, och välj sedan **auktorisera**.
 
-  ![Verifiera Azure AD för att ansluta till rutan](media/active-directory-b2b-configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
+  ![Verifiera Azure AD tooconnect tooBox](media/active-directory-b2b-configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 
-Som Dropbox inbjudna lösa rutan inbjudna vill sina inbjudan från Box-app.
+Som Dropbox inbjudna lösa rutan inbjudna vill sina inbjudan från hello Box-app.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Se följande artiklar om Azure AD B2B-samarbete:
+Se följande artiklar om Azure AD B2B-samarbete hello:
 
 * [Vad är Azure AD B2B-samarbete?](active-directory-b2b-what-is-azure-ad-b2b.md)
 * [Egenskaper för användare av B2B-samarbete](active-directory-b2b-user-properties.md)
-* [Lägger till en B2B-samarbete användare till en roll](active-directory-b2b-add-guest-to-role.md)
+* [Lägga till en B2B-samarbete tooa användarroll](active-directory-b2b-add-guest-to-role.md)
 * [Delegera B2B-samarbete inbjudningar](active-directory-b2b-delegate-invitations.md)
 * [Dynamiska grupper och B2B-samarbete](active-directory-b2b-dynamic-groups.md)
 * [B2B-samarbete kod och PowerShell-exempel](active-directory-b2b-code-samples.md)

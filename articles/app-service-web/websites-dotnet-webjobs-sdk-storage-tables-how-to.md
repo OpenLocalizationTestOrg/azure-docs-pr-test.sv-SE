@@ -1,6 +1,6 @@
 ---
-title: "Använd Azure-tabellagring med WebJobs SDK:n"
-description: "Lär dig mer om att använda Azure table storage med WebJobs SDK. Skapa tabeller, lägga till enheter i tabeller och läsa befintliga tabeller."
+title: aaaHow toouse Azure table storage med hello WebJobs SDK
+description: "Lär dig hur toouse Azure table storage med hello WebJobs-SDK. Skapa tabeller, lägga till entiteter tootables och läsa befintliga tabeller."
 services: app-service\web, storage
 documentationcenter: .net
 author: ggailey777
@@ -14,24 +14,24 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: glenga
-ms.openlocfilehash: 13cfc788c14d714df7022ce003d34691cf73d121
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8e28c69df4a934646add9e50c6de28e76dca1636
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-azure-table-storage-with-the-webjobs-sdk"></a>Använd Azure-tabellagring med WebJobs SDK:n
+# <a name="how-toouse-azure-table-storage-with-hello-webjobs-sdk"></a>Hur toouse Azure table storage med hello WebJobs SDK
 ## <a name="overview"></a>Översikt
-Den här guiden innehåller C#-kodexempel som visar hur du läser och skriver Azure storage-tabeller med hjälp av [WebJobs SDK](websites-dotnet-webjobs-sdk.md) version 1.x.
+Den här guiden innehåller C#-kodexempel som visar hur tooread och skriva Azure storage-tabeller med hjälp av [WebJobs SDK](websites-dotnet-webjobs-sdk.md) version 1.x.
 
-Handboken förutsätter att du vet [hur du skapar ett Webbjobb-projekt i Visual Studio med anslutning strängar som pekar på ditt lagringskonto](websites-dotnet-webjobs-sdk-get-started.md) eller [flera lagringskonton](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs).
+hello handboken förutsätts att du vet [hur toocreate ett Webbjobb projekt i Visual Studio med anslutning strängar som punkt tooyour lagringskonto](websites-dotnet-webjobs-sdk-get-started.md) eller för[flera lagringskonton](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs).
 
-Vissa av koden kodavsnitt visas den `Table` attribut som används i funktioner som är [kallas manuellt](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual), det vill säga inte genom att använda ett av attributen för utlösare. 
+Vissa hello kodstycken som visar hello `Table` attribut som används i funktioner som är [kallas manuellt](websites-dotnet-webjobs-sdk-storage-queues-how-to.md#manual), det vill säga inte med någon av hello utlösaren attribut. 
 
-## <a id="ingress"></a>Lägga till entiteter i en tabell
-Om du vill lägga till enheter i en tabell, använder den `Table` attribut med ett `ICollector<T>` eller `IAsyncCollector<T>` parametern där `T` anger schemat för de enheter som du vill lägga till. Attributkonstruktorn använder en strängparameter som anger namnet på tabellen. 
+## <a id="ingress"></a>Hur tooadd entiteter tooa tabell
+tooadd entiteter tooa tabell, Använd hello `Table` attribut med ett `ICollector<T>` eller `IAsyncCollector<T>` parametern där `T` anger hello schemat hello entiteter som du vill tooadd. hello Attributkonstruktorn använder en strängparameter som anger hello namnet på hello tabell. 
 
-Följande kodexempel lägger till `Person` enheter till en tabell med namnet *ingång*.
+hello följande kodexempel lägger till `Person` entiteter tooa tabell med namnet *ingång*.
 
         [NoAutomaticTrigger]
         public static void IngressDemo(
@@ -48,7 +48,7 @@ Följande kodexempel lägger till `Person` enheter till en tabell med namnet *in
             }
         }
 
-Typen du använder vanligtvis med `ICollector` härleds från `TableEntity` eller implementerar `ITableEntity`, men det behöver inte. Något av följande `Person` klasserna arbete med koden som visas i den föregående `Ingress` metod.
+Vanligtvis hello typ som du använder med `ICollector` härleds från `TableEntity` eller implementerar `ITableEntity`, men det behöver inte. Något av följande hello `Person` klasserna arbete med hello koden som visas i föregående hello `Ingress` metod.
 
         public class Person : TableEntity
         {
@@ -62,25 +62,25 @@ Typen du använder vanligtvis med `ICollector` härleds från `TableEntity` elle
             public string Name { get; set; }
         }
 
-Om du vill arbeta direkt med Azure storage API, kan du lägga till en `CloudStorageAccount` parameter till Metodsignaturen.
+Om du vill toowork direkt med hello Azure storage-API, kan du lägga till en `CloudStorageAccount` Metodsignaturen för parametern toohello.
 
 ## <a id="monitor"></a>Realtidsövervakning
-Eftersom dataåtkomstfunktioner ofta bearbetar stora mängder data, innehåller WebJobs SDK instrumentpanelen övervakning realtidsdata. Den **anrop loggen** avsnittet berättar om funktionen fortfarande körs.
+Eftersom dataåtkomstfunktioner ofta bearbetar stora mängder data, innehåller hello WebJobs SDK instrumentpanelen övervakning realtidsdata. Hej **anrop loggen** avsnittet berättar om hello funktionen fortfarande körs.
 
 ![Ingång funktionen körs](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressrunning.png)
 
-Den **anrop information** sidan rapporterar funktionens status (antal entiteter som skrivs) medan den körs och ger dig en möjlighet att avbryta den. 
+Hej **anrop information** sidan rapporterar hello funktionens förlopp (antal entiteter som skrivs) medan den körs och ger dig en möjlighet tooabort den. 
 
 ![Ingång funktionen körs](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingressprogress.png)
 
-När funktionen har slutförts i **anrop information** sidan rapporterar antalet rader som har skrivits.
+När funktionen hello är klar, hello **anrop information** sidan rapporterar hello antalet rader som har skrivits.
 
 ![Ingång funktionen klar](./media/websites-dotnet-webjobs-sdk-storage-tables-how-to/ingresssuccess.png)
 
-## <a id="multiple"></a>Läsa flera enheter från en tabell
-Läs en tabell genom att använda den `Table` attribut med ett `IQueryable<T>` parametern skriver `T` härleds från `TableEntity` eller implementerar `ITableEntity`.
+## <a id="multiple"></a>Hur tooread flera enheter från en tabell
+tooread en tabell, använder hello `Table` attribut med ett `IQueryable<T>` parametern skriver `T` härleds från `TableEntity` eller implementerar `ITableEntity`.
 
-Följande kodexempel läser och loggar alla rader från den `Ingress` tabellen:
+hello följande kodexempel läser och loggar alla rader från hello `Ingress` tabell:
 
         public static void ReadTable(
             [Table("Ingress")] IQueryable<Person> tableBinding,
@@ -94,10 +94,10 @@ Följande kodexempel läser och loggar alla rader från den `Ingress` tabellen:
             }
         }
 
-### <a id="readone"></a>Läsa en enda entitet från en tabell
-Det finns en `Table` Attributkonstruktorn med två ytterligare parametrar som kan du ange partitionsnyckel och radnyckel när du vill binda till en enskild tabell entitet.
+### <a id="readone"></a>Hur tooread en enda entitet från en tabell
+Det finns en `Table` Attributkonstruktorn med två ytterligare parametrar som kan du ange hello partitionsnyckel och radnyckel när du vill toobind tooa tabell entitet.
 
-Följande kodexempel läser en tabellrad för en `Person` entitet baserat på partitionen nyckel- och nyckelvärden togs emot i ett kömeddelande:  
+hello följande kodexempel läser en tabellrad för en `Person` entitet baserat på partitionen nyckel- och nyckelvärden togs emot i ett kömeddelande:  
 
         public static void ReadTableEntity(
             [QueueTrigger("inputqueue")] Person personInQueue,
@@ -117,12 +117,12 @@ Följande kodexempel läser en tabellrad för en `Person` entitet baserat på pa
         }
 
 
-Den `Person` klassen i det här exemplet behöver inte implementera `ITableEntity`.
+Hej `Person` klassen i det här exemplet har inte tooimplement `ITableEntity`.
 
-## <a id="storageapi"></a>Hur du använder .NET Storage API direkt för att arbeta med en tabell
-Du kan också använda den `Table` attribut med ett `CloudTable` objekt för större flexibilitet när du arbetar med en tabell.
+## <a id="storageapi"></a>Hur toouse hello .NET Storage API direkt toowork med en tabell
+Du kan också använda hello `Table` attribut med ett `CloudTable` objekt för större flexibilitet när du arbetar med en tabell.
 
-I följande kod exempel används en `CloudTable` objekt att lägga till en enda entitet till den *ingång* tabell. 
+hello följande kod exempel används en `CloudTable` objekt tooadd en enda entitet toohello *ingång* tabell. 
 
         public static void UseStorageAPI(
             [Table("Ingress")] CloudTable tableBinding,
@@ -138,22 +138,22 @@ I följande kod exempel används en `CloudTable` objekt att lägga till en enda 
             tableBinding.Execute(insertOperation);
         }
 
-Mer information om hur du använder den `CloudTable` objekt, se [använda Table Storage från .NET](../cosmos-db/table-storage-how-to-use-dotnet.md). 
+Mer information om hur toouse hello `CloudTable` objekt, se [hur toouse Table Storage från .NET](../cosmos-db/table-storage-how-to-use-dotnet.md). 
 
-## <a id="queues"></a>Närliggande ämnen som omfattas av den här artikeln köer
-Information om hur du hanterar tabell bearbetning som utlöses av ett kömeddelande eller WebJobs-SDK-scenarier som inte är specifika för bearbetning av tabellen finns [använda Azure queue storage med WebJobs SDK](websites-dotnet-webjobs-sdk-storage-queues-how-to.md). 
+## <a id="queues"></a>Närliggande ämnen som omfattas av hello köer hur-tooarticle
+Information om hur toohandle tabell bearbetning utlöses av ett kömeddelande eller för WebJobs SDK scenarier inte specifika tootable bearbetning, se [hur toouse Azure kö lagring med hello WebJobs SDK](websites-dotnet-webjobs-sdk-storage-queues-how-to.md). 
 
-Följande: avsnitt beskrivs i artikeln
+Avsnitt som beskrivs i artikeln inkludera hello följande:
 
 * Async-funktion
 * Flera instanser
 * Korrekt avslutning
-* Använda WebJobs-SDK-attribut i brödtexten för en funktion
-* Ange anslutningssträngar SDK i kod
+* Använda WebJobs-SDK-attribut i hello brödtext
+* Ange hello SDK-anslutningssträngar i kod
 * Ange värden för WebJobs SDK konstruktorparametrarna i koden
 * Utlös en funktion manuellt
 * Skriva loggar
 
 ## <a id="nextsteps"></a>Nästa steg
-Den här guiden tillhandahåller kodexempel som visar hur du hanterar vanliga scenarier för att arbeta med Azure-tabeller. Mer information om hur du använder Azure WebJobs och WebJobs-SDK finns [Azure WebJobs rekommenderas resurser](http://go.microsoft.com/fwlink/?linkid=390226).
+Den här guiden har angett koden exempel som visar hur toohandle vanliga scenarier för att arbeta med Azure-tabeller. Mer information om hur toouse Azure WebJobs och hello WebJobs SDK, se [Azure WebJobs rekommenderas resurser](http://go.microsoft.com/fwlink/?linkid=390226).
 

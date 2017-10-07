@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med molnet för Microsoft Azure-hanteringsportalen | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och molnet hanteringsportal för Microsoft Azure."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och molnet hanteringsportal för Microsoft Azure."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,118 +13,118 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: bae5f05a161b2730bf662bcb47f20ab3e1799951
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9596826e3dc1289b95009bf01ec8b86f823ef345
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Självstudier: Azure Active Directory-integrering med molntjänster Management Portal för Microsoft Azure
 
-I kursen får lära du att integrera molnet hanteringsportal för Microsoft Azure med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate moln hanteringsportal för Microsoft Azure med Azure Active Directory (AD Azure).
 
-Integrera molnet hanteringsportal för Microsoft Azure med Azure AD ger dig följande fördelar:
+Integrera molnet hanteringsportal för Microsoft Azure med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till molnet Management Portal för Microsoft Azure
-- Du kan aktivera användarna att automatiskt hämta loggat in på molnet hanteringsportal för Microsoft Azure (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst tooCloud hanteringsportal för Microsoft Azure
+- Du kan aktivera din användare tooautomatically get inloggade tooCloud hanteringsportal för Microsoft Azure (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med molntjänster Management Portal för Microsoft Azure, behöver du följande:
+tooconfigure Azure AD-integrering med molntjänster hanteringsportal för Microsoft Azure, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En molnet Management Portal för Microsoft Azure enkel inloggning på aktiverade prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till molnet hanteringsportal för Microsoft Azure från galleriet
+1. Att lägga till molnet hanteringsportal för Microsoft Azure från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-cloud-management-portal-for-microsoft-azure-from-the-gallery"></a>Att lägga till molnet hanteringsportal för Microsoft Azure från galleriet
-Du måste lägga till molnet hanteringsportal för Microsoft Azure från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av molnet hanteringsportal för Microsoft Azure i Azure AD.
+## <a name="adding-cloud-management-portal-for-microsoft-azure-from-hello-gallery"></a>Att lägga till molnet hanteringsportal för Microsoft Azure från hello-galleriet
+tooconfigure hello integrering av molnet hanteringsportal för Microsoft Azure i Azure AD, behöver du tooadd moln Management Portal för Microsoft Azure från hello galleriet tooyour lista över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till molnet hanteringsportal för Microsoft Azure från galleriet:**
+**tooadd moln hanteringsportal för Microsoft Azure från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **molnet för Microsoft Azure-hanteringsportalen**.
+4. Skriv i sökrutan hello **molnet för Microsoft Azure-hanteringsportalen**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_search.png)
 
-5. I resultatpanelen väljer **molnet för Microsoft Azure-hanteringsportalen**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **molnet för Microsoft Azure-hanteringsportalen**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med molnet hanteringsportal för Microsoft Azure baserad på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i molnet för Microsoft Azure-hanteringsportalen motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk mellan en Azure AD-användare och relaterade användaren i molnet Management Portal för Microsoft Azure upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i molnet Management Portal för Microsoft Azure är tooa i Azure AD. Med andra ord måste en länk relationen mellan en Azure AD-användare och hello relaterade användaren i molnet för Microsoft Azure-hanteringsportalen toobe upprättas.
 
-I molnet Management Portal för Microsoft Azure, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+I molnet Management Portal för Microsoft Azure, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med molnet för Microsoft Azure-hanteringsportalen, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med molnet Management Portal för Microsoft Azure, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en moln Management Portal för Microsoft Azure testanvändare](#creating-a-cloud-management-portal-for-microsoft-azure-test-user)**  – du har en motsvarighet för Britta Simon i molnet Management Portal för Microsoft Azure som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en moln Management Portal för Microsoft Azure testanvändare](#creating-a-cloud-management-portal-for-microsoft-azure-test-user)**  -toohave en motsvarighet för Britta Simon i molnet Management Portal för Microsoft Azure som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i molnet Management-portalen för Microsoft Azure-program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i molnet Management-portalen för Microsoft Azure-program.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med molnet för Microsoft Azure-hanteringsportalen:**
+**tooconfigure Azure AD enkel inloggning med molnet Management Portal för Microsoft Azure utför hello följande steg:**
 
-1. I Azure-portalen på den **moln hanteringsportal för Microsoft Azure** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **molnet för Microsoft Azure-hanteringsportalen** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_samlbase.png)
 
-3. På den **moln hanteringsportal för URL: er och Microsoft Azure Domain** avsnittet, utför följande steg:
+3. På hello **moln hanteringsportal för URL: er och Microsoft Azure Domain** avsnittet, utföra hello följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_url.png)
 
-    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster: 
+    a. I hello **inloggnings-URL** textruta, ange en Webbadress med hello följande mönster: 
     
     | |
     |--|
     | `https://portal.newsignature.com/<instancename>` |   
     | `https://portal.igcm.com/<instancename>` |
     
-    b. I den **identifierare** textruta Skriv en URL med följande mönster: 
+    b. I hello **identifierare** textruta, ange en Webbadress med hello följande mönster: 
     
     | |
     |--|
     | `https://<subdomain>.igcm.com` |
     | `https://<subdomain>.newsignature.com` |
 
-    c. I den **Reply URL** textruta Skriv en URL med följande mönster: 
+    c. I hello **Reply URL** textruta, ange en Webbadress med hello följande mönster: 
     
     | |
     |--|
@@ -133,9 +133,9 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
     | `https://<subdomain>.newsignature.com/<instancename>` |
 
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med faktiska inloggnings-URL, identifierare och Reply-URL. Kontakta [moln Management Portal för Microsoft Azure-klient supportteamet](mailto:jczernuszka@newsignature.com) att hämta dessa värden. 
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL, identifierare och svars-URL. Kontakta [moln Management Portal för Microsoft Azure-klient supportteamet](mailto:jczernuszka@newsignature.com) tooget dessa värden. 
  
-4. På den **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara certifikatfilen på datorn.
+4. På hello **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara sedan hello certifikat på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_certificate.png) 
 
@@ -143,68 +143,68 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-newsignature-tutorial/tutorial_general_400.png)
 
-6. På den **moln hanteringsportal för Microsoft Azure Configuration** klickar du på **konfigurera Portal för molnet för Microsoft Azure** att öppna **konfigurera inloggning** fönster. Kopiera den **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
+6. På hello **moln hanteringsportal för Microsoft Azure Configuration** klickar du på **konfigurera Portal för molnet för Microsoft Azure** tooopen **konfigurera inloggning**fönster. Kopiera hello **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_configure.png) 
 
-7. Konfigurera enkel inloggning på **molnet för Microsoft Azure-hanteringsportalen** sida, måste du skicka den hämtade **certifikat**, **Sign-Out URL**, **SAML inloggning tjänst-URL för enkel** och **SAML enhets-ID** till [molnet hanteringsportal för Microsoft Azure-teamet](mailto:jczernuszka@newsignature.com). De kan ange den här inställningen att ha SAML SSO anslutningen korrekt på båda sidor.
+7. tooconfigure enkel inloggning på **molnet för Microsoft Azure-hanteringsportalen** sida, behöver du toosend hello hämtas **certifikat**, **Sign-Out URL**, **SAML enkel inloggning Tjänstwebbadress** och **SAML enhets-ID** för[moln hanteringsportal för Microsoft Azure-teamet](mailto:jczernuszka@newsignature.com). De kan ange den här inställningen toohave hello SAML SSO anslutningen korrekt på båda sidor.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-newsignature-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-newsignature-tutorial/create_aaduser_02.png) 
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-newsignature-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-newsignature-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-a-cloud-management-portal-for-microsoft-azure-test-user"></a>Skapa en moln Management Portal för Microsoft Azure testanvändare
 
-Syftet med det här avsnittet är att skapa en användare som heter Britta Simon i molnet Management-portalen för Microsoft Azure. Se tillsammans med [moln hanteringsportal för Microsoft Azure-teamet](mailto:jczernuszka@newsignature.com) att lägga till användare i hanteringsportalen molnet för Microsoft Azure-konto.
+hello syftet med det här avsnittet är toocreate en användare som heter Britta Simon i molnet Management-portalen för Microsoft Azure. Se tillsammans med [moln hanteringsportal för Microsoft Azure-teamet](mailto:jczernuszka@newsignature.com) tooadd hello användare i hello molnet Management Portal för Microsoft Azure-konto.
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till molnet för Microsoft Azure-hanteringsportalen.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooCloud för Microsoft Azure-hanteringsportalen.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela moln hanteringsportal för Microsoft Azure Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooCloud hanteringsportal för Microsoft Azure utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **molnet för Microsoft Azure-hanteringsportalen**.
+2. Välj i listan med program hello **molnet för Microsoft Azure-hanteringsportalen**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -212,7 +212,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -220,14 +220,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-Syftet med det här avsnittet är att testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
-När du klickar på hanteringsportalen molnet för Microsoft Azure-panelen på åtkomstpanelen du bör få automatiskt loggat in på ditt moln Management Portal för Microsoft Azure-program.
+hello syftet med det här avsnittet är tootest din Azure AD-konfiguration för enkel inloggning med hello åtkomstpanelen.
+När du klickar på hello molnet Management Portal för Microsoft Azure-panelen i hello åtkomstpanelen får automatiskt inloggade tooyour moln Management Portal för Microsoft Azure-program.
 
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

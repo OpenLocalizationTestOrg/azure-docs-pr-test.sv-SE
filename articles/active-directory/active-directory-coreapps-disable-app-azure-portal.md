@@ -1,6 +1,6 @@
 ---
-title: "Inaktivera användarinloggningar för en enterprise-app i Azure Active Directory | Microsoft Docs"
-description: "Så här inaktiverar du en enterprise-programmet så att inga användare kan logga in till den i Azure Active Directory"
+title: "aaaDisable användarinloggningar för en enterprise-app i Azure Active Directory | Microsoft Docs"
+description: "Hur toodisable ett företagsprogram så att inga användare kan logga in tooit i Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
-ms.openlocfilehash: 5d27046370eada0c371c94fb573fa1bcf536f7cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c560b59359d433b0852a7606cc2cc0204866234
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Inaktivera användarinloggningar för en enterprise-app i Azure Active Directory
-Det är enkelt att inaktivera ett företagsprogram så att inga användare kan logga in till den i Azure Active Directory (AD Azure). Du måste ha behörighet att hantera enterprise-appen och du måste vara global administratör för katalogen.
+Det är enkelt toodisable ett företagsprogram så att inga användare kan logga in tooit i Azure Active Directory (AD Azure). Du måste ha en hello behörighet toomanage hello och du måste vara global administratör för hello-katalogen.
 
 ## <a name="how-do-i-disable-user-sign-ins"></a>Hur inaktiverar användarinloggningar?
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för katalogen.
-2. Välj **fler tjänster**, ange **Azure Active Directory** i textrutan och välj sedan **RETUR**.
-3. På den **Azure Active Directory** -  ***directoryname*** bladet (det vill säga Azure AD bladet för den katalog som du hanterar), Välj **företagsprogram**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för hello-katalogen.
+2. Välj **fler tjänster**, ange **Azure Active Directory** i hello textruta och välj sedan **RETUR**.
+3. På hello **Azure Active Directory** -  ***directoryname*** bladet (det vill säga hello Azure AD bladet för hello-katalog som du hanterar) Välj **företagsprogram**.
 
     ![Öppna företagsappar](./media/active-directory-coreapps-disable-app-azure-portal/open-enterprise-apps.png)
-4. På den **företagsprogram** bladet väljer **alla program**. Du kan se en lista över appar som du kan hantera.
-5. På den **företagsprogram - alla program** bladet väljer du en app.
-6. På den ***appname*** bladet (det vill säga bladet med namnet på den valda appen i namnet), Välj **egenskaper**.
+4. På hello **företagsprogram** bladet väljer **alla program**. Du kan se en lista över hello-appar som du kan hantera.
+5. På hello **företagsprogram - alla program** bladet väljer du en app.
+6. På hello ***appname*** bladet (det vill säga hello bladet med hello namn för valda hello-appen i hello rubrik) Välj **egenskaper**.
 
-    ![Att välja kommandot alla program](./media/active-directory-coreapps-disable-app-azure-portal/select-app.png)
-7. På den ***appname*** - **egenskaper** bladet väljer **nr** för **aktiverats för användare att logga in?**.
-8. Välj den **spara** kommando.
+    ![Att välja hello kommandot för alla program](./media/active-directory-coreapps-disable-app-azure-portal/select-app.png)
+7. På hello ***appname*** - **egenskaper** bladet väljer **nr** för **aktiverats för användare i toosign?**.
+8. Välj hello **spara** kommando.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Se alla grupper](active-directory-groups-view-azure-portal.md)
-* [Tilldela en användare eller grupp till en enterprise-app](active-directory-coreapps-assign-user-azure-portal.md)
+* [Tilldela en användare eller grupp tooan enterprise app](active-directory-coreapps-assign-user-azure-portal.md)
 * [Ta bort en användare eller grupp från en enterprise-app](active-directory-coreapps-remove-assignment-azure-portal.md)
-* [Ändra namnet eller logotypen av en enterprise-app](active-directory-coreapps-change-app-logo-user-azure-portal.md)
+* [Ändra hello namn eller logotyp av en enterprise-app](active-directory-coreapps-change-app-logo-user-azure-portal.md)

@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: Komma igång | Microsoft Docs"
-description: "Aktivera Azure Active Directory Domain Services med Azure-portalen (förhandsgranskning)"
+description: "Aktivera Azure Active Directory Domain Services med hello Azure-portalen (förhandsgranskning)"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2017
 ms.author: maheshu
-ms.openlocfilehash: f87bcf33d3b1eb21c7d84814e4c4086f664e293d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8bde872a13bc9960d1e62c74017ff78a8953a0a9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Aktivera Azure Active Directory Domain Services med Azure-portalen (förhandsgranskning)
+# <a name="enable-azure-active-directory-domain-services-using-hello-azure-portal-preview"></a>Aktivera Azure Active Directory Domain Services med hello Azure-portalen (förhandsgranskning)
 
 
 ## <a name="task-3-configure-administrative-group"></a>Uppgift 3: Konfigurera administrativ grupp
-I den här uppgiften skapar du en administrativ grupp i Azure AD-katalogen. Den här särskilda administrativa gruppen kallas *AAD DC administratörer*. Medlemmar i den här gruppen har beviljats administratörsbehörighet på datorer som är ansluten till domänen i den hanterade domänen. Den här gruppen har lagts till administratörsgruppen på domänanslutna datorer. Medlemmar i den här gruppen kan dessutom använda Fjärrskrivbord för att fjärransluta till domänanslutna datorer.
+I den här uppgiften skapar du en administrativ grupp i Azure AD-katalogen. Den här särskilda administrativa gruppen kallas *AAD DC administratörer*. Medlemmar i den här gruppen har beviljats administratörsbehörighet på datorer som är ansluten till domänen toohello hanterad domän. Den här gruppen har lagts till toohello administratörsgruppen på domänanslutna datorer. Medlemmar i den här gruppen kan dessutom använda Fjärrskrivbord tooconnect via fjärranslutning toodomain anslutna datorer.
 
 > [!NOTE]
-> Du har inte behörighet som domänadministratör eller Företagsadministratörer på den hanterade domänen som du skapat med hjälp av Azure Active Directory Domain Services. Dessa behörigheter är reserverade av tjänsten på hanterade domäner och görs inte tillgängliga för användare i klienten. Du kan dock använda särskilda administrativa gruppen som skapats i konfigurationsåtgärden utföra vissa Privilegierade åtgärder. Dessa åtgärder omfattar ansluta datorer till domänen, som hör till gruppen administration på domänanslutna datorer och konfigurera Grupprincip.
+> Du har inte behörighet som domänadministratör eller företagsadministratör på hello-hanterad domän som du skapat med hjälp av Azure Active Directory Domain Services. Dessa behörigheter är reserverade av hello-tjänsten på hanterade domäner och görs inte tillgängliga toousers inom hello-klient. Du kan dock använda hello särskilda administrativa gruppen skapas i den här konfigurationen uppgiften tooperform vissa Privilegierade åtgärder. Dessa åtgärder är ansluta till datorer toohello domän, som tillhör toohello administratörsgrupp på domänanslutna datorer och konfigurera Grupprincip.
 >
 
-Den administrativa gruppen skapas automatiskt i Azure AD-katalogen. Den här gruppen kallas AAD DC-administratörer. Om du har en befintlig grupp med det här namnet i Azure AD-katalogen, väljs den här gruppen. Du kan konfigurera medlemskap med den **administratörsgruppen** sidan i guiden.
+hello guiden skapar automatiskt hello administrativ grupp i Azure AD-katalogen. Den här gruppen kallas AAD DC-administratörer. Om du har en befintlig grupp med det här namnet i Azure AD-katalogen väljs hello den här gruppen. Du kan konfigurera gruppmedlemskap med hello **administratörsgruppen** sidan i guiden.
 
-1. För att konfigurera gruppmedlemskap, klickar du på **AAD DC administratörer**.
+1. tooconfigure gruppmedlemskap, klickar du på **AAD DC administratörer**.
 
     ![Konfigurera gruppmedlemskap](./media/getting-started/domain-services-blade-admingroup.png)
 
-2. Klicka på den **lägga till medlemmar** vill lägga till användare från din Azure AD-katalog i administratörsgruppen.
+2. Klicka på hello **lägga till medlemmar** knappen tooadd användare från din Azure AD directory toohello administratörsgruppen.
 
-3. När du är klar klickar du på **OK** att gå vidare till den **sammanfattning** sidan i guiden.
+3. När du är klar klickar du på **OK** toomove på toohello **sammanfattning** hello guiden.
 
-4. På den **sammanfattning** sidan i guiden, granska konfigurationsinställningarna för den hanterade domänen. Du kan gå tillbaka till något steg i guiden för att göra ändringar, om det behövs. När du är klar klickar du på **OK** att skapa den nya Hantera domänen.
+4. På hello **sammanfattning** hello guiden granska hello konfigurationsinställningar för hello-hanterad domän. Du kan gå tillbaka tooany steg i hello guiden toomake ändringar om det behövs. När du är klar klickar du på **OK** toocreate hello nya hanterade domän.
 
     ![Sammanfattning](./media/getting-started/domain-services-blade-summary.png)
 
-5. Du ser ett meddelande som visar förloppet för distributionen av Azure AD Domain Services. Klicka på meddelandet om du vill se detaljerad status för distributionen.
+5. Du ser ett meddelande som visar hello förloppet för distributionen av Azure AD Domain Services. Klicka på hello-meddelande toosee beskrivs förloppet för hello-distribution.
 
     ![Meddelande - distribution pågår](./media/getting-started/domain-services-blade-deployment-in-progress.png)
 
 
 ## <a name="provision-your-managed-domain"></a>Etablera din hanterade domän
-Processen för etablering din hanterade domän kan ta upp till en timme.
+hello processen för etablering din hanterade domän kan ta upp tooan timme.
 
-1. När din distribution pågår kan du söka efter domain services i den **söka resurser** sökrutan. Välj **Azure AD Domain Services** från sökresultaten. Den **Azure AD Domain Services** bladet visar den hanterade domänen som har etablerats.
+1. När din distribution pågår, kan du söka efter domain services i hello **söka resurser** sökrutan. Välj **Azure AD Domain Services** från hello sökresultatet. Hej **Azure AD Domain Services** bladet visar hello-hanterad domän som har etablerats.
 
     ![Hitta hanterad domän som har etablerats](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
-2. Klicka på namnet på den hanterade domänen (till exempel ”contoso100.com”) för att se mer information om domänen.
+2. Klicka på hello hanterade domän (till exempel ”contoso100.com”) toosee hello namn mer information om hello domän.
 
     ![DS - Etableringsstatus](./media/getting-started/domain-services-provisioning-state.png)
 
-3. Den **översikt** visar att domänen håller på att etableras. Du kan inte konfigurera den hanterade domänen förrän den är helt etablerad. Det kan ta upp till en timme för din hanterade domän ska etableras fullständigt.
+3. Hej **översikt** visar hello domänen håller på att etableras. Du kan konfigurera hello-hanterad domän tills den är helt etablerad. Det kan ta upp tooan timme för din hanterade domän toobe helt etablerad.
 
-    ![DS - översiktsflik under etableringsstatusen ](./media/getting-started/domain-services-provisioning-state-details.png)
+    ![DS - översiktsflik under hello Etableringsstatus ](./media/getting-started/domain-services-provisioning-state-details.png)
 
-4. När den hanterade domänen är helt etablerad, den **översikt** visar status för domänen som **kör**.
+4. När hello-hanterad domän är helt etablerad, hello **översikt** visar status för hello som **kör**.
 
     ![Domain Services - översiktsflik vid full etablering](./media/getting-started/domain-services-provisioned.png)
 
-5. På den **egenskaper** kan du se två IP-adresser på vilken domän domänkontrollanter är tillgängliga för det virtuella nätverket.
+5. På hello **egenskaper** kan du se två IP-adresser på vilken domän domänkontrollanter är tillgängliga för hello virtuellt nätverk.
 
     ![Domain Services – fliken Egenskaper när helt etablerad](./media/getting-started/domain-services-provisioned-properties.png)
 
 
 ## <a name="next-step"></a>Nästa steg
-Uppgift 4: [uppdatera DNS-inställningarna för det virtuella Azure-nätverket](active-directory-ds-getting-started-dns.md)
+[Uppgift 4: uppdatera hello DNS-inställningarna för hello Azure-nätverk](active-directory-ds-getting-started-dns.md)

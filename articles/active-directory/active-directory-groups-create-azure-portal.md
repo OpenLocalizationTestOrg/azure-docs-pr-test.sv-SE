@@ -1,6 +1,6 @@
 ---
-title: "Skapa en grupp för användare i Azure Active Directory | Microsoft Docs"
-description: "Hur du skapar en grupp i Azure Active Directory och lägga till medlemmar i gruppen"
+title: "aaaCreate en grupp för användare i Azure Active Directory | Microsoft Docs"
+description: "Hur toocreate en grupp i Azure Active Directory och lägga till medlemmar toohello grupp"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d3d37761a9fdf9bd9801396d45f2fcd47efb0be
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: fc583a7f02ce50e7f3b2c8f97a9c032a3e2dc33a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Skapa en grupp och lägga till medlemmar i Azure Active Directory
 > [!div class="op_single_selector"]
@@ -29,25 +29,25 @@ ms.lasthandoff: 08/18/2017
 >
 >
 
-Den här artikeln förklarar hur du skapar och fylla i en ny grupp i Azure Active Directory. Använda en grupp för att utföra hanteringsuppgifter, till exempel tilldela licenser eller behörigheter till ett antal användare eller enheter på samma gång.
+Den här artikeln förklarar hur toocreate och fylla i en ny grupp i Azure Active Directory. Använd en grupp tooperform hanteringsuppgifter, till exempel tilldela licenser eller behörigheter tooa antalet användare eller enheter på samma gång.
 
 ## <a name="how-do-i-create-a-group"></a>Hur skapar jag en grupp?
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för katalogen.
-2. Välj **fler tjänster**, ange **användare och grupper** i textrutan och välj sedan **RETUR**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för hello-katalogen.
+2. Välj **fler tjänster**, ange **användare och grupper** i hello textruta och välj sedan **RETUR**.
 
    ![Öppna användarhantering](./media/active-directory-groups-create-azure-portal/search-user-management.png)
-3. På den **användare och grupper** bladet väljer **alla grupper**.
+3. På hello **användare och grupper** bladet väljer **alla grupper**.
 
-   ![Öppna bladet grupper](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
-4. På den **användare och grupper – alla grupper** bladet väljer den **Lägg till** kommando.
+   ![Öppna hello grupper bladet](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
+4. På hello **användare och grupper – alla grupper** bladet, Välj hello **Lägg till** kommando.
 
-   ![Att välja kommandot Lägg till](./media/active-directory-groups-create-azure-portal/add-group-command.png)
-5. På den **grupp** bladet Lägg till ett namn och en beskrivning för gruppen.
-6. Om du vill välja medlemmar som ska läggas till i gruppen **tilldelad** i den **medlemskapstypen** och välj sedan **medlemmar**. Mer information om hur du hanterar medlemskap i en grupp dynamiskt finns [använda attribut för att skapa avancerade regler för gruppmedlemskap](active-directory-groups-dynamic-membership-azure-portal.md).
+   ![Att välja hello tilläggskommando](./media/active-directory-groups-create-azure-portal/add-group-command.png)
+5. På hello **grupp** bladet Lägg till ett namn och beskrivning för hello grupp.
+6. tooselect medlemmar tooadd toohello gruppen väljer **tilldelad** i hello **medlemskapstypen** och välj sedan **medlemmar**. Mer information om hur toomanage hello medlemskap i en grupp dynamiskt finns [genom att använda attribut toocreate avancerade regler för gruppmedlemskap](active-directory-groups-dynamic-membership-azure-portal.md).
 
-   ![Att välja medlemmar för att lägga till](./media/active-directory-groups-create-azure-portal/select-members.png)
-7. På den **medlemmar** bladet, Välj en eller flera användare eller enheter att lägga till i gruppen och välj den **Välj** längst ned på bladet för att lägga till dem i gruppen. Den **användaren** rutan filtrerar baserat på matchning inmatningen till alla delar av namnet på en användare eller enhet. Inga jokertecken godkänns i rutan.
-8. När du är klar med att lägga till medlemmar i gruppen, Välj **skapa** på den **grupp** bladet.    
+   ![Att välja medlemmar tooadd](./media/active-directory-groups-create-azure-portal/select-members.png)
+7. På hello **medlemmar** bladet, Välj en eller flera användare eller enheter tooadd toohello gruppen och välj hello **Välj** knappen längst ned hello hello bladet tooadd dem toohello grupp. Hej **användaren** filtrerar hello visas baserat på matchning post tooany-tillhör ett namn för användaren eller enheten. Inga jokertecken godkänns i rutan.
+8. När du har lagt till medlemmar toohello gruppen, Välj **skapa** på hello **grupp** bladet.    
 
    ![Skapa grupp bekräftelse](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
 

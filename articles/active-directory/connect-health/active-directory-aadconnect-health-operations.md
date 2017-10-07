@@ -1,5 +1,5 @@
 ---
-title: "Åtgärder i Azure Active Directory Connect Health"
+title: "aaaAzure Active Directory Connect Health-åtgärder"
 description: "Den här artikeln beskriver ytterligare åtgärder som kan utföras när du har distribuerat Azure AD Connect Health."
 services: active-directory
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 06afc6b4149ea1590a2994d1638d6979a89035e3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 1dddcee0bca3150ce08621c045a92a1b3ad9df30
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Åtgärder i Azure Active Directory Connect Health
-Det här avsnittet beskrivs de olika åtgärder som du kan utföra med hjälp av Azure Active Directory (AD Azure) Connect Health.
+Det här avsnittet beskrivs hello olika åtgärder du kan utföra med hjälp av Azure Active Directory (AD Azure) Connect Health.
 
 ## <a name="enable-email-notifications"></a>Aktivera e-postaviseringar
-Du kan konfigurera Azure AD Connect Health-tjänsten för att skicka e-postmeddelanden när aviseringar anger identitetsinfrastrukturen inte är felfri. Detta inträffar när en avisering skapas och när den är löst.
+Du kan konfigurera hello Azure AD Connect Health service toosend e-postmeddelanden när aviseringar anger identitetsinfrastrukturen inte är felfri. Detta inträffar när en avisering skapas och när den är löst.
 
 ![Skärmbild av Azure AD Connect Health e-postavisering inställningar](./media/active-directory-aadconnect-health/email_noti_discover.png)
 
@@ -32,118 +32,118 @@ Du kan konfigurera Azure AD Connect Health-tjänsten för att skicka e-postmedde
 >
 >
 
-### <a name="to-enable-azure-ad-connect-health-email-notifications"></a>Aktivera Azure AD Connect Health e-postaviseringar
-1. Öppna den **aviseringar** bladet för tjänsten som du vill få e-postavisering.
-2. I Åtgärdsfältet klickar du på **Meddelandeinställningar**.
-3. Välj på växeln e-postavisering **på**.
-4. Markera kryssrutan om du vill att alla globala administratörer av e-postmeddelanden.
-5. Om du vill ta emot e-postmeddelanden på e-postadresser du anger dem i den **ytterligare e-postmottagare** rutan. Om du vill ta bort en e-postadress från den här listan, högerklicka på posten och välj **ta bort**.
-6. För att slutföra ändringarna klickar du på **spara**. Ändringarna börjar gälla förrän du sparar.
+### <a name="tooenable-azure-ad-connect-health-email-notifications"></a>tooenable Azure AD Connect Health e-postaviseringar
+1. Öppna hello **aviseringar** bladet för hello-tjänsten som du vill tooreceive e-postmeddelande.
+2. Hello Åtgärdsfältet klickar du på **Meddelandeinställningar**.
+3. Hello e-postavisering växeln väljer **på**.
+4. Markera kryssrutan för hello om du vill att alla globala administratörer tooreceive e-postmeddelanden.
+5. Om du vill tooreceive e-postmeddelanden på e-postadresser, anger du dem i hello **ytterligare e-postmottagare** rutan. tooremove en e-postadress från den här listan, högerklickar du på hello-post och välj **ta bort**.
+6. toofinalize hello ändringar klickar du på **spara**. Ändringarna börjar gälla förrän du sparar.
 
 ## <a name="delete-a-server-or-service-instance"></a>Ta bort en server eller service-instans
 
-I vissa fall kanske du vill ta bort en server från som övervakas. Det här är vad du behöver veta för att ta bort en server från Azure AD Connect Health-tjänsten.
+I vissa fall kanske du vill tooremove en server från som övervakas. Här är vad du behöver tooknow tooremove en server från hello Azure AD Connect Health-tjänsten.
 
-När du tar bort en server vara medveten om följande:
+När du tar bort en server vara medveten om följande hello:
 
-* Den här åtgärden slutar att samla in ytterligare data från servern. Den här servern tas bort från övervakningstjänsten. När den här åtgärden går det inte att visa nya aviseringar, övervakning och analys av användningsdata för den här servern.
-* Den här åtgärden avinstalleras inte Hälsoagenten från din server. Om du inte har avinstallerat Hälsoagenten innan du utför det här steget kan det hända att fel som rör Health-agenten på servern.
-* Den här åtgärden tar inte bort data som redan samlats in från den här servern. Data tas bort i enlighet med Azure databevarandeprincip.
-* När du utför den här åtgärden om du vill börja övervaka samma server måste igen och du avinstallera och återinstallera Hälsoagenten på den här servern.
+* Den här åtgärden slutar att samla in ytterligare data från servern. Den här servern tas bort från hello övervakningstjänsten. När den här åtgärden är du inte kan tooview nya aviseringar, övervakning eller analytics användningsdata för den här servern.
+* Hello Health-agenten avinstalleras inte från servern om den här åtgärden. Om du inte har avinstallerat hello Health-agenten innan du utför det här steget kan du se fel relaterade toohello Health-agenten på hello-servern.
+* Den här åtgärden tar inte bort hello data som redan samlats in från den här servern. Data tas bort i enlighet med hello Azure policy för datalagring.
+* När du utför den här åtgärden om du vill övervaka toostart hello samma server igen, måste du avinstallera och installera om hello Health-agenten på den här servern.
 
-### <a name="to-delete-a-server-from-the-azure-ad-connect-health-service"></a>Tar bort en server från Azure AD Connect Health-tjänsten
+### <a name="toodelete-a-server-from-hello-azure-ad-connect-health-service"></a>toodelete en server från hello Azure AD Connect Health-tjänsten
 Azure AD Connect Health för Active Directory Federation Services (AD FS) och Azure AD Connect (synkronisering):
 
-1. Öppna den **Server** bladet från den **serverlista** bladet genom att markera namnet på servern som ska tas bort.
-2. På den **Server** bladet från Åtgärdsfältet klickar du på **ta bort**.
-3. Bekräfta genom att skriva namnet på servern i dialogrutan Bekräfta.
+1. Öppna hello **Server** bladet från hello **serverlista** bladet genom att välja hello server name toobe tas bort.
+2. På hello **Server** bladet från hello Åtgärdsfältet klickar du på **ta bort**.
+3. Bekräfta genom att skriva hello servernamnet i hello bekräftelse.
 4. Klicka på **Ta bort**.
 
 Azure AD Connect Health för Azure Active Directory Domain Services:
 
-1. Öppna den **domänkontrollanter** instrumentpanelen.
-2. Markera domänkontrollanten som ska tas bort.
-3. I Åtgärdsfältet klickar du på **ta bort markerade**.
-4. Bekräfta åtgärden för att ta bort servern.
+1. Öppna hello **domänkontrollanter** instrumentpanelen.
+2. Välj hello domain controller toobe tas bort.
+3. Hello Åtgärdsfältet klickar du på **ta bort markerade**.
+4. Bekräfta hello åtgärd toodelete hello server.
 5. Klicka på **Ta bort**.
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>Ta bort en instans av tjänsten från Azure AD Connect Health service
-I vissa fall kanske du vill ta bort en instans av tjänsten. Det här är vad du behöver veta för att ta bort en instans av tjänsten från Azure AD Connect Health-tjänsten.
+I vissa fall kanske du vill tooremove en instans av tjänsten. Här är vad du behöver tooknow tooremove en tjänst som instansen från hello Azure AD Connect Health-tjänsten.
 
-När du tar bort en instans av tjänsten, Tänk på följande:
+När du tar bort en instans av tjänsten vara medveten om följande hello:
 
-* Den här åtgärden tar bort den aktuella tjänstinstansen från övervakningstjänsten.
-* Den här åtgärden inte avinstallera eller ta bort Hälsoagenten från någon av de servrar som har övervakas som en del av den här tjänstinstansen. Om du inte har avinstallerat Hälsoagenten innan du utför det här steget kan det hända att fel som rör Health-agenten på servrarna.
-* Alla data från den här tjänstinstansen tas bort i enlighet med Azure databevarandeprincip.
-* När du utför den här åtgärden om du vill börja övervaka tjänsten avinstallera och återinstallera Hälsoagenten på alla servrar. När du utför den här åtgärden om du vill börja övervaka samma server igen, avinstallera, installera och registrera Health-agenten på servern.
+* Den här åtgärden tar bort hello aktuella tjänstinstansen från övervakningstjänsten hello.
+* Den här åtgärden inte avinstallera eller ta bort hello Health-agenten från någon av hello-servrar som har övervakas som en del av den här tjänstinstansen. Om du inte har avinstallerat hello Health-agenten innan du utför det här steget kan du se fel relaterade toohello Health-agenten på hello-servrar.
+* Alla data från den här tjänstinstansen tas bort i enlighet med hello Azure policy för datalagring.
+* När du utför den här åtgärden om du vill toostart hello övervakningstjänsten, avinstallera och installera hello Health-agenten på alla hello-servrar. När du utför den här åtgärden om du vill övervaka hello samma server igen, avinstallera, installera och registrera toostart hello Health-agenten på servern.
 
-#### <a name="to-delete-a-service-instance-from-the-azure-ad-connect-health-service"></a>Ta bort en instans av tjänsten från Azure AD Connect Health-tjänsten
-1. Öppna den **Service** bladet från den **Tjänstlista** bladet genom att välja service-identifier (servergruppens namn) som du vill ta bort.
-2. På den **Server** bladet från Åtgärdsfältet klickar du på **ta bort**.
-3. Bekräfta genom att skriva namnet på tjänsten i bekräftelserutan (till exempel: sts.contoso.com).
+#### <a name="toodelete-a-service-instance-from-hello-azure-ad-connect-health-service"></a>toodelete en tjänstinstans från hello Azure AD Connect Health-tjänsten
+1. Öppna hello **Service** bladet från hello **Tjänstlista** bladet genom att välja hello tjänstidentifierare (servergruppens namn) som du vill tooremove.
+2. På hello **Server** bladet från hello Åtgärdsfältet klickar du på **ta bort**.
+3. Bekräfta genom att skriva hello tjänstnamnet i hello bekräftelserutan (till exempel: sts.contoso.com).
 4. Klicka på **Ta bort**.
    <br><br>
 
 [//]: # (Start of RBAC section)
 ## <a name="manage-access-with-role-based-access-control"></a>Hantera åtkomst med rollbaserad åtkomstkontroll
-[Rollbaserad åtkomstkontroll (RBAC)](../role-based-access-control-configure.md) för Azure AD Connect Health tillhandahåller åtkomst till användare och grupper än globala administratörer. RBAC tilldelar roller till de avsedda användarna och grupper och tillhandahåller en mekanism för att begränsa de globala administratörerna i din katalog.
+[Rollbaserad åtkomstkontroll (RBAC)](../role-based-access-control-configure.md) för Azure AD Connect Health tillhandahåller åtkomst toousers och grupper än globala administratörer. RBAC tilldelar roller toohello avsedd användare och grupper och tillhandahåller en mekanism toolimit hello globala administratörer i din katalog.
 
 ### <a name="roles"></a>Roller
-Azure AD Connect Health stöder följande inbyggda roller:
+Azure AD Connect Health stöder hello följande inbyggda roller:
 
 | Roll | Behörigheter |
 | --- | --- |
-| Ägare |Ägare kan *hantera åtkomst* (till exempel tilldela en roll till en användare eller grupp), *se all information* (till exempel visa aviseringar) från portalen och *ändra inställningar* (till exempel e-postmeddelanden) i Azure AD Connect Health. <br>Globala administratörer för Azure AD tilldelas rollen som standard, och detta kan inte ändras. |
-| Deltagare |Deltagare kan *se all information* (till exempel visa aviseringar) från portalen och *ändra inställningar* (till exempel e-postmeddelanden) i Azure AD Connect Health. |
-| Läsare |Läsare kan *se all information* (till exempel visa aviseringar) från i Azure AD Connect Health-portalen. |
+| Ägare |Ägare kan *hantera åtkomst* (till exempel tilldela en roll tooa användare eller grupp), *se all information* (till exempel visa aviseringar) från hello-portalen och *ändra inställningar* () till exempel e-postmeddelanden) i Azure AD Connect Health. <br>Globala administratörer för Azure AD tilldelas rollen som standard, och detta kan inte ändras. |
+| Deltagare |Deltagare kan *se all information* (till exempel visa aviseringar) från hello-portalen och *ändra inställningar* (till exempel e-postmeddelanden) i Azure AD Connect Health. |
+| Läsare |Läsare kan *se all information* (till exempel visa aviseringar) från hello portalen i Azure AD Connect Health. |
 
-Andra roller (till exempel Administratörer för användaren eller DevTest Labs användare) har ingen inverkan på åtkomst i Azure AD Connect Health, även om rollerna som är tillgängliga i portalen upplevelsen.
+Andra roller (till exempel Administratörer för användaren eller DevTest Labs användare) har ingen effekt tooaccess i Azure AD Connect Health, även om hello roller är tillgängliga i hello-portaler.
 
 ### <a name="access-scope"></a>Åtkomstscope
 Azure AD Connect Health har stöd för hantering av åtkomst på två nivåer:
 
-* **Alla instanser av tjänsten**: det här är den rekommenderade sökvägen i de flesta fall. Den styr åtkomst för alla tjänstinstanser (till exempel en AD FS-servergrupp) över alla rolltyper av som övervakas av Azure AD Connect Health.
-* **Tjänstinstansen**: I vissa fall kan du behöva särskilja åtkomst baserat på rolltyper eller av en instans av tjänsten. I det här fallet kan du hantera åtkomst på instansnivå service.  
+* **Alla instanser av tjänsten**: Detta är hello rekommenderas sökväg i de flesta fall. Den styr åtkomst för alla tjänstinstanser (till exempel en AD FS-servergrupp) över alla rolltyper av som övervakas av Azure AD Connect Health.
+* **Tjänstinstansen**: I vissa fall kan du behöva toosegregate åtkomst baserat på rolltyper eller av en instans av tjänsten. I det här fallet kan du hantera åtkomst på hello servicenivå för instansen.  
 
-Tillstånd beviljas om en användare har åtkomst antingen vid angiven katalog eller service-instans nivå.
+Tillstånd beviljas om en användare har åtkomst antingen vid hello katalog eller service-instans nivå.
 
-### <a name="allow-users-or-groups-access-to-azure-ad-connect-health"></a>Tillåt användare eller grupper åtkomst till Azure AD Connect Health
-Följande steg visar hur du tillåter åtkomst.
-#### <a name="step-1-select-the-appropriate-access-scope"></a>Steg 1: Välj lämpliga åtkomstscope
-Att tillåta åtkomst till den *alla tjänstinstanser* nivå i Azure AD Connect Health, öppna huvudbladet i Azure AD Connect Health.<br>
+### <a name="allow-users-or-groups-access-tooazure-ad-connect-health"></a>Tillåt användare eller grupper åtkomst tooAzure AD Connect Health
+hello följande steg visar hur tooallow åt.
+#### <a name="step-1-select-hello-appropriate-access-scope"></a>Steg 1: Välj hello åtkomstbehörighet omfång
+tooallow en användaråtkomst till hello *alla tjänstinstanser* nivå i Azure AD Connect Health, öppna hello huvudblad i Azure AD Connect Health.<br>
 
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>Steg 2: Lägg till användare och grupper och tilldela roller
-1. Från den **konfigurera** klickar du på **användare**.<br>
+1. Från hello **konfigurera** klickar du på **användare**.<br>
    ![Skärmbild av Azure AD Connect Health RBAC huvudblad, med användare som är markerat](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
 2. Välj **Lägg till**.
-3. I den **Välj en roll** rutan, Välj en roll (till exempel **ägare**).<br>
+3. I hello **Välj en roll** rutan, Välj en roll (till exempel **ägare**).<br>
    ![Skärmbild av Azure AD Connect Health RBAC användare fönster](./media/active-directory-aadconnect-health/RBAC_add.png)
-4. Ange namnet eller identifieraren för den aktuella användaren eller gruppen. Du kan välja en eller flera användare eller grupper på samma gång. Klicka på **Välj**.
+4. Ange hello namnet eller identifieraren för hello riktade användare eller grupp. Du kan välja en eller flera användare eller grupper på hello samtidigt. Klicka på **Välj**.
    ![Skärmbild av Azure AD Connect Health RBAC användare fönster](./media/active-directory-aadconnect-health/RBAC_select_users.png)
 5. Välj **OK**.<br>
-6. När rolltilldelningen är klar, visas de användare och grupper i listan.<br>
+6. När hello rolltilldelning är klar visas hello användare och grupper i hello-listan.<br>
    ![Skärmbild av Azure AD Connect Health RBAC användare fönster, med nya användare markerat](./media/active-directory-aadconnect-health/RBAC_user_list.png)
 
-Nu visas användare och grupper har åtkomst till, enligt deras tilldelade roller.
+Nu hello listas användare och grupper har åtkomst till, enligt tootheir som tilldelats roller.
 
 > [!NOTE]
-> * Globala administratörer ha alltid fullständig åtkomst till alla åtgärder, men globala administratörskonton finns inte i listan ovan.
-> * Funktionen bjuda in användare stöds inte i Azure AD Connect Health.
+> * Globala administratörer har fullständig åtkomst tooall hello operations alltid, men globala administratörskonton finns inte i hello som föregår listan.
+> * hello bjuda in användare funktionen stöds inte i Azure AD Connect Health.
 >
 >
 
-#### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>Steg 3: Dela bladet plats med användare eller grupper
+#### <a name="step-3-share-hello-blade-location-with-users-or-groups"></a>Steg 3: Dela hello bladet plats med användare eller grupper
 1. När du tilldelar behörigheter för en användare har åtkomst till Azure AD Connect Health genom att gå [här](http://aka.ms/aadconnecthealth).
-2. I bladet kan Fäst användaren bladet eller olika delar av det, på instrumentpanelen. Klicka bara på den **fäst på instrumentpanelen** ikon.<br>
+2. På bladet hello Fäst hello användaren hello bladet eller olika delar av det, toohello instrumentpanelen. Klicka bara på hello **PIN-kod toodashboard** ikon.<br>
    ![Skärmbild av Azure AD Connect Health RBAC Fäst bladet, med fästikonen markerat](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 
 > [!NOTE]
-> En användare med rollen läsare som tilldelats är inte kan hämta Azure AD Connect Health tillägg från Azure Marketplace. Användaren kan inte utföra nödvändiga ”skapa” igen för att göra det. Användaren kan fortfarande komma åt bladet genom att gå till föregående länk. Användaren kan Fäst bladet på instrumentpanelen för senare användning.
+> En användare med hello Reader roll som inte kan tooget Azure AD Connect Health-tillägget från hello Azure Marketplace. hello-användare kan inte utföra hello nödvändiga ”Skapa” åtgärden toodo så. hello-användare kan fortfarande få toohello bladet genom gå toohello föregående länk. Hello användaren kan fästa hello bladet toohello instrumentpanelen för senare användning.
 >
 >
 
 ### <a name="remove-users-or-groups"></a>Ta bort användare eller grupper
-Du kan ta bort en användare eller grupp läggs till Azure AD Connect Health RBAC. Bara högerklicka på användaren eller gruppen och välj **ta bort**.<br>
+Du kan ta bort en användare eller grupp läggs tooAzure AD Connect Health RBAC. Bara högerklicka hello användaren eller gruppen och välj **ta bort**.<br>
 ![Skärmbild av Azure AD Connect Health RBAC användare fönster med ta bort markerat](./media/active-directory-aadconnect-health/RBAC_remove.png)
 
 [//]: # (End of RBAC section)

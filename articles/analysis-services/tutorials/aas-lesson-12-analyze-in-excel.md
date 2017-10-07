@@ -1,83 +1,65 @@
 ---
-title: "Azure Analysis Services självstudiekurs 12: Analysera i Excel | Microsoft Docs"
-description: "Beskriver hur du använder funktionen Analysera i Excel i Azure Analysis Services-självstudieprojektet."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 05/26/2017
-ms.author: owend
-ms.openlocfilehash: 6f47de43ff8d94de22f8b7c12fa0707a8d7ffbbc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+Rubrik: aaa ”Azure Analysis Services självstudiekursen lektionen 12: Analysera i Excel | Microsoft Docs ”beskrivning: Beskriver hur toouse analysera i Excel i hello Azure Analysis Services-självstudiekurs projektet. tjänster: analysis services dokumentationcenter: '' författare: minewiskan manager: erikre editor: '' taggar: ''
+
+MS.AssetID: ms.service: analysis services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 2017-05/26 ms.author: owend
 ---
 # <a name="lesson-12-analyze-in-excel"></a>Lektion 12: Analysera i Excel
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-Under den här lektionen använder du funktionen Analysera för att öppna Microsoft Excel, automatiskt skapa en anslutning till modellens arbetsyta och automatiskt lägga till en pivottabell i kalkylbladet. Funktionen Analysera i Excel är avsedd att tillhandahålla ett snabbt och enkelt sätt att testa effektiviteten av modelldesignen innan du distribuerar modellen. Du utför inte någon dataanalys under den här lektionen. Syftet med den här lektionen är du, modellskaparen, ska kunna bekanta dig med de verktyg du kan använda för att testa modelldesignen.   
+I kursen använder hello analysera i Excel funktionen tooopen Microsoft Excel, skapa automatiskt en anslutning toohello modellen arbetsyta och lägga till automatiskt en pivottabell toohello kalkylblad. hello analysera i Excel-funktionen är avsedd tooprovide snabbt och enkelt sätt tootest hello effekt av modellen utforma tidigare toodeploying din modell. Du utför inte någon dataanalys under den här lektionen. hello syftet med den här lektionen är toofamiliarize, hello modellen skriva, med hello verktyg du kan använda tootest modelldesignen.   
   
-För att slutföra den här lektionen måste Excel vara installerat på samma dator som SSDT.
+toocomplete kursen Excel måste vara installerad på hello samma dator som SSDT.
   
-Uppskattad tidsåtgång för den här lektionen: **Fem minuter**  
+Uppskattad tid toocomplete lektionen: **fem minuter**  
   
 ## <a name="prerequisites"></a>Krav  
-Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför uppgifterna under den här lektionen bör du ha slutfört föregående lektion: [Lektion 11: Skapa roller](../tutorials/aas-lesson-11-create-roles.md).  
+Det här avsnittet ingår i självstudiekursen för tabellmodellering som bör slutföras i rätt ordning. Innan du utför hello uppgifter i den här lektionen bör du slutfört hello föregående lektionen: [lektionen 11: skapa roller](../tutorials/aas-lesson-11-create-roles.md).  
   
-## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>Bläddra med hjälp av standard- och Internet-försäljningsperspektiven  
-I de första uppgifterna bläddrar du till modellen genom att använda både standardperspektivet, som omfattar alla modellobjekt, och genom att använda Internet-försäljningsperspektivet. Internet-försäljningsperspektivet exkluderar kundtabellobjekt.  
+## <a name="browse-using-hello-default-and-internet-sales-perspectives"></a>Bläddra med hello standard och Internet försäljning perspektiv  
+Dessa första uppgifter du bläddra i din modell med hjälp av både hello standard perspektiv, som innehåller alla modellobjekt, och med hjälp av hello Internet försäljning perspektiv du tidigare. hello Internet försäljning perspektiv undantar hello tabellobjekt för kunden.  
   
-#### <a name="to-browse-by-using-the-default-perspective"></a>Så här bläddrar du med hjälp av standardperspektivet  
+#### <a name="toobrowse-by-using-hello-default-perspective"></a>toobrowse med hjälp av hello standard perspektiv  
   
-1.  Klicka på menyn **Modell** > **Analysera i Excel**.  
+1.  Klicka på hello **modellen** menyn > **analysera i Excel**.  
   
-2.  I dialogrutan **Analysera i Excel** klickar du på **OK**.  
+2.  I hello **analysera i Excel** dialogrutan klickar du på **OK**.  
   
-    Excel öppnas med en ny arbetsbok. En anslutning till en datakälla skapas med det aktuella användarkontot och standardperspektivet används för att definiera fält som visas. En pivottabell läggs automatiskt till i kalkylbladet.  
+    Excel öppnas med en ny arbetsbok. Anslutning till en datakälla skapas med hjälp av hello det aktuella användarkontot och hello standardperspektivet är synlig används toodefine-fält. En pivottabell läggs automatiskt toohello kalkylblad.  
   
-3.  I **fältlistan PivotTable** i Excel ser du hur måttgrupperna **DimDate** och **FactInternetSales** visas. Tabellerna **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** och **FactInternetSales** samt deras respektive kolumner visas också.  
+3.  I hello i Excel **Fältlista**, meddelande hello **DimDate** och **FactInternetSales** måttgrupper visas. Hej **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory**, och **FactInternetSales** tabeller med sina respektive kolumner visas också.  
   
-4.  Stäng Excel utan att spara arbetsboken.  
+4.  Stäng Excel utan att spara hello arbetsboken.  
   
-#### <a name="to-browse-by-using-the-internet-sales-perspective"></a>Så här bläddrar du med hjälp av Internet-försäljningsperspektivet  
+#### <a name="toobrowse-by-using-hello-internet-sales-perspective"></a>toobrowse med hjälp av hello Internet försäljning perspektiv  
   
-1.  Klicka på menyn **Modell** och klicka sedan på **Analysera i Excel**.  
+1.  Klicka på hello **modellen** -menyn och klicka sedan på **analysera i Excel**.  
   
-2.  I dialogrutan **Analysera i Excel** behåller du **Aktuell Windows-användare** markerat, sedan väljer du **Internetförsäljning** i den nedrullningsbara listrutan **Perspektiv** och klickar på **OK**. 
+2.  I hello **analysera i Excel** dialogrutan lämna **aktuella Windows-användaren** markerade, i hello **perspektiv** nedrullningsbara listrutan för väljer **Internet försäljning** , och klicka sedan på **OK**. 
     
     ![aas-lesson12-perspective](../tutorials/media/aas-lesson12-perspective.png)
     
-3.  Observera att tabellen DimCustomer är exkluderad från fältlistan i **Pivottabellfält** i Excel.  
+3.  I Excel i **PivotTable-Fields**, Lägg märke till hello DimCustomer tabeller tas inte hello fältlistan.  
     
     ![aas-lesson12-fields](../tutorials/media/aas-lesson12-fields.png)
     
-4.  Stäng Excel utan att spara arbetsboken.  
+4.  Stäng Excel utan att spara hello arbetsboken.  
   
 ## <a name="browse-by-using-roles"></a>Bläddra med hjälp av roller  
-Roller är en viktig del av alla tabellmodeller. Utan minst en roll där användarna läggs till som medlemmar kan användarna inte komma åt och analysera data med hjälp av modellen. Funktionen Analysera i Excel ger dig ett sätt att testa de roller som du har definierat.  
+Roller är en viktig del av alla tabellmodeller. Utan minst en roll läggs toowhich användare till som medlemmar och användare inte kan komma åt och analysera data med hjälp av din modell. hello analysera i Excel-funktionen kan du tootest hello roller som du har definierat.  
   
-#### <a name="to-browse-by-using-the-sales-manager-user-role"></a>Bläddra med hjälp av användarrollen Säljchef  
+#### <a name="toobrowse-by-using-hello-sales-manager-user-role"></a>toobrowse med hjälp av hello försäljningschef användarroll  
   
-1.  Klicka på menyn **Modell** i SSDT och klicka sedan på **Analysera i Excel**.  
+1.  Klicka på hello i SSDT, **modellen** -menyn och klicka sedan på **analysera i Excel**.  
   
-2.  I **Ange det användarnamn eller den roll som ska användas för att ansluta till modellen** väljer du **Roll**, i den nedrullningsbara listrutan väljer du **Säljchef** och klickar sedan på **OK**.  
+2.  I **ange hello namn eller roll toouse tooconnect toohello användarmodellen**väljer **rollen**, och välj sedan i den nedrullningsbara listrutan för hello **försäljningschef**, och klicka sedan på  **OK**.  
   
-    Excel öppnas med en ny arbetsbok. En pivottabell skapas automatiskt. Fältlistan för pivottabellen innehåller alla datafält som är tillgängliga i den nya modellen.  
+    Excel öppnas med en ny arbetsbok. En pivottabell skapas automatiskt. hello fältlistan för pivottabell tabellen innehåller alla hello data tillgängliga fält i din nya modell.  
       
-3.  Stäng Excel utan att spara arbetsboken.  
+3.  Stäng Excel utan att spara hello arbetsboken.  
   
 ## <a name="whats-next"></a>Nästa steg
-Gå till nästa lektion: [Lektion 13: Distribuera](../tutorials/aas-lesson-13-deploy.md).
+Gå toohello kursen: [lektionen 13: distribuera](../tutorials/aas-lesson-13-deploy.md).
 
   
   

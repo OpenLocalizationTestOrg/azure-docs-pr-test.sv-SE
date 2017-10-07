@@ -1,6 +1,6 @@
 ---
-title: "Behöver du hjälp med portalen Mina appar i Azure Active Directory | Microsoft Docs"
-description: "Hämta anvisningarna för att utföra vanliga uppgifter när du arbetar med åtkomstpanelen."
+title: "Du behöver hjälp med hello Mina appar portalen i Azure Active Directory aaaDo | Microsoft Docs"
+description: "Hämta anvisningarna tooperform vanliga uppgifter när du arbetar med hello åtkomstpanelen."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,97 +15,97 @@ ms.topic: article
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 613c68d5c13793a3b696b6afbfc0e1a31595e201
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5c9a820ab434e068abdab615cd4065a42b28d88c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="do-you-need-help-with-the-my-apps-portal"></a>Behöver du hjälp med Mina appar portal?
+# <a name="do-you-need-help-with-hello-my-apps-portal"></a>Behöver du hjälp med hello Mina appar portal?
 
-Du har troligtvis nått den här sidan eftersom du körde tyvärr ett problem när du använder portalen Mina appar. Det finns fall som du behöver kontakta supportavdelningen eller administratören om du vill hämta en problem löst, är här vissa felsökning avsnitt som kan vara till hjälp först.
+Du har troligtvis nått den här sidan eftersom du körde tyvärr ett problem när du använder hello Mina appar portalen. Det finns fall som kräver att du toocontact support eller din administratör tooget lösta problem, är här vissa felsökningsavsnittet som kanske kan toohelp först.
 
-## <a name="i-am-having-trouble-signing-into-the-my-apps-portal"></a>Jag har problem med att logga in på portalen Mina appar
+## <a name="i-am-having-trouble-signing-into-hello-my-apps-portal"></a>Jag har problem med att logga in på hello Mina appar portal
 
-Allmänna problem med att kontrollera:
+Allmänna problem toocheck:
 
-- Kontrollera om du loggar in rätt URL: [https://myapps.microsoft.com](https://myapps.microsoft.com)
+- Kontrollera toosee om du loggar in hello korrigera URL: [https://myapps.microsoft.com](https://myapps.microsoft.com)
 
-- Försök att lägga till URL: en i webbläsarens betrodda platser.
+- Försök att lägga till hello URL tooyour webbläsarens betrodda platser.
 
-- Kontrollera att lösenordet inte har upphört att gälla eller har glömt. Kontrollera [här](active-directory-passwords-update-your-own-password.md) för mer information om hur du uppdaterar lösenordet.
+- Kontrollera att lösenordet inte har upphört att gälla eller har glömt. Kontrollera [här](active-directory-passwords-update-your-own-password.md) för mer information om hur tooupdate ditt lösenord.
 
-- Kontrollera om din kontaktinformation för autentisering är uppdaterade och inte blockerar åtkomsten. Kontrollera [här](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user) för mer information om hur du konfigurerar autentisering-information.
+- Kontrollera toosee om autentisering kontaktinformation är toodate och inte blockerar åtkomsten. Kontrollera [här](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/end-user/multi-factor-authentication-end-user) för mer information om hur du konfigurerar autentisering-information.
 
-- Prova att rensa cookies i webbläsaren och försök sedan logga in igen.
+- Prova att rensa cookies i webbläsaren och försök sedan toosign i igen.
 
-Om det fortfarande uppstår problem vid försök att logga in, kontaktar du administratören för ytterligare hjälp.
+Om det fortfarande uppstår problem uppstod toosign i, kontaktar du administratören för ytterligare hjälp.
 
 
 ## <a name="how-do-i-update-my-password"></a>Hur uppdaterar lösenordet?
 
-Om du har glömt ditt lösenord aldrig något från din IT-personal, har låsts ute från ditt konto eller vill ändra det, se [hjälp, jag har glömt mitt Azure AD-lösenord](active-directory-passwords-update-your-own-password.md) för mer information.
+Om du har glömt ditt lösenord aldrig något från din IT-personal, har låsts ute från ditt konto eller vill toochange IT-avdelningen, se [hjälp, jag har glömt mitt Azure AD-lösenord](active-directory-passwords-update-your-own-password.md) för mer information.
 
 ## <a name="how-do-i-register-for-password-reset"></a>Hur registrerar jag för återställning av lösenord
 
-Du kan återställa ditt lösenord eller låsa upp ditt konto utan att behöva tala med en person som använder lösenordsåterställning via självbetjäning (SSPR) som en slutanvändare. Innan du kan använda den här funktionen, måste du registrera autentiseringsmetoder eller bekräfta de fördefinierade autentiseringsmetoderna som administratören har fyllt i. Mer information finns i [registrera dig för lösenordsåterställning via självbetjäning](active-directory-passwords-reset-register.md).
+Du kan återställa ditt lösenord eller låsa upp kontot utan toospeak tooa person som använder lösenordsåterställning via självbetjäning (SSPR) som en slutanvändare. Innan du kan använda den här funktionen har tooregister autentiseringsmetoder eller bekräfta hello fördefinierade autentiseringsmetoder som administratören har fyllts i. Mer information finns i [registrera dig för lösenordsåterställning via självbetjäning](active-directory-passwords-reset-register.md).
 
 
-## <a name="i-am-having-trouble-installing-the-my-apps-portal-browser-extension"></a>Jag har problem med att installera Företagsportalen webbläsartillägget för Mina appar
+## <a name="i-am-having-trouble-installing-hello-my-apps-portal-browser-extension"></a>Jag har problem med att installera hello portal webbläsartillägget för Mina appar
 
-Kontrollera om du uppfyller krav på webbläsare:
+Kontrollera toosee om du uppfyller krav på webbläsare:
 
-- Portalen kräver en webbläsare som stöder JavaScript och har aktiverat CSS. Om du använder lösenordsbaserad enkel inloggning appar installeras medföljande tillägget också. Det här tillägget laddas ned automatiskt när du startar ett program som har konfigurerats för lösenordsbaserad enkel inloggning appar.
+- hello portal kräver en webbläsare som stöder JavaScript och har aktiverat CSS. Om du använder lösenordsbaserad enkel inloggning appar måste hello tillhörande tillägg installeras också. Det här tillägget laddas ned automatiskt när du startar ett program som har konfigurerats för lösenordsbaserad enkel inloggning appar.
 
-- Webbläsarkrav för tillägget är:
+- hello Webbläsarkrav för hello tillägg är:
     - Internet Explorer 8, 9, 10, 11 på Windows 7 eller senare
     - Kanten på Windows 10 årsdagar Edition eller senare
     - Chrome på Windows 7 eller senare, och i MacOS X eller senare
     - Firefox 26.0 eller senare på Windows XP SP2 eller senare, och på Mac OS X 10.6 eller senare
 
-Du kan också hämta tillägget för Chrome och kanten från direkt med länkarna nedan:
+Du kan också hämta hello-tillägget för Chrome och kanten från hello Direktlänkar nedan:
 
 - [Chrome-tillägg](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
 - [Edge-tillägg](https://www.microsoft.com/store/apps/9pc9sckkzk84)
 
-Efter installationen och försök följande steg om du upptäcker problem:
+Efter installationen försök hello följande steg om du upptäcker problem:
 
-- Kontrollera i tillägget webbläsarinställningarna att filnamnstillägget är aktiverad.
+- Kontrollera tooin tillägget webbläsarinställningarna som hello tillägget har aktiverats.
 
-- Starta om webbläsaren och logga in på Mina appar-portalen.
+- Starta om webbläsaren och logga in toohello Mina appar portal.
 
-- Rensa cookies i webbläsaren och logga in på Mina appar-portalen.
+- Ta bort cookies i webbläsaren och logga in toohello Mina appar portal.
 
 ## <a name="how-do-i-add-a-new-app"></a>Hur lägger jag till en ny app?
 
-1.  På den **appar** klickar du på **Lägg till App**.
+1.  På hello **appar** klickar du på **Lägg till App**.
 
-2.  Söka efter den app som du vill lägga till och klicka sedan på **Lägg till**.
+2.  Sök hello app du vill tooadd och klicka sedan på **Lägg till**.
 
 **Anmärkning:**
 
-- Du kan bara ha åtkomst till det här alternativet om din administratör har aktiverat detta för ditt konto.
+- Du kan bara ha åtkomst toothis alternativ om din administratör har aktiverat detta för ditt konto.
 
-- Om appen kräver behörighet, kan du behöva vänta på godkännande av administratören.
+- Om hello appen kräver behörighet kan behöva toowait för godkännande av administratören.
 
 
 ## <a name="how-do-i-manage-my-group-memberships"></a>Hur hanterar jag mina gruppmedlemskap
 
-1. Klicka på panelen grupper app. 
-2. Klicka på Skapa grupp om du vill skapa en grupp i grupper som jag äger och följ sedan instruktionerna.
-3. Följ instruktionerna för att ansluta till en grupp i grupper som jag, ansluter till en grupp.
+1. Klicka på hello grupper app-panelen. 
+2. toocreate en grupp under grupper jag äger, klickar du på Skapa grupp och följ sedan instruktionerna hello.
+3. toojoin en grupp under grupper jag, klicka på Anslut till grupp och följ sedan instruktionerna hello.
 
 **Anmärkning:**
 
-- Du kan bara ha åtkomst till det här alternativet om din administratör har aktiverat detta för ditt konto.
+- Du kan bara ha åtkomst toothis alternativ om din administratör har aktiverat detta för ditt konto.
 
-- Grupper som du är medlem i kan du visa information och lämna gruppen.
+- Grupper som du är medlem i kan du tooview information och lämna hello-gruppen.
 
-- Grupper som du är ägare till kan du visa information, lägga till eller ta bort medlemmar och lämna gruppen.
+- Grupper som du är ägare till kan du tooview information, lägga till eller ta bort medlemmar och lämna hello grupp.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Relaterad information om felsökning finns [problem med att använda programmet åtkomst panelen webbplats eller mobila program](active-directory-application-access-panel-content-map.md)
+Relaterad information om felsökning finns [problem med att använda hello programåtkomst panelen webbplats eller mobila program](active-directory-application-access-panel-content-map.md)
 

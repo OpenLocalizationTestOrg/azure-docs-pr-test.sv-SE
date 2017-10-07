@@ -1,6 +1,6 @@
 ---
-title: "Ange inställningar för förhandsgranskning för Azure Application Insights | Microsoft Docs"
-description: "Azure Application Insights Utvecklingsteamet samlar ut nya upplevelser. Du kan ange vilka nya upplevelser som du vill förhandsgranska i Azure-portalen."
+title: "inställningar för aaaSet förhandsvisning för Azure Application Insights | Microsoft Docs"
+description: hello Azure Application Insights Utvecklingsteamet samlar ut nya upplevelser. Du kan ange vilka nya upplevelser som du vill toopreview i hello Azure-portalen.
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/1/2017
 ms.author: bwren
-ms.openlocfilehash: 03b69f68911a79adeab1d29f868d26653d6a7ac0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 04a1d763bd706a9cc050d72512a8ca405f980dc4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="preview-upcoming-changes-to-azure-application-insights"></a>Förhandsgranska kommande ändringar i Azure Application Insights 
+# <a name="preview-upcoming-changes-tooazure-application-insights"></a>Förhandsgranska kommande ändringar tooAzure Application Insights 
 
-Application Insights Frigör ofta nya funktioner. Om du vill se förhandsgranskningar av dessa förbättringar registrera du dig på bladet Application Insights förhandsgranskning.  Utvecklingsteamet tillgängliggör förhandsgranskningar av nya funktioner på ett begränsat sätt innan du gör dem tillgängliga för alla användare. 
+Application Insights Frigör ofta nya funktioner. Om du vill toosee förhandsgranskningar av dessa förbättringar kan registrera du dig på hello Application Insights Preview bladet.  hello Utvecklingsteamet tillgängliggör förhandsgranskningar av nya funktioner på ett begränsat sätt innan du släpper dem tooall användare. 
 
-Följande bild illustrerar hur du ställer in dina inställningar för förhandsgranskning.
+hello följande bild illustrerar hur tooset preview-inställningar.
 
 ![Application Insights Preview bladet](./media/app-insights-preview/preview.png)
 
 ## <a name="set-preferences"></a>Ange inställningar
 
-I bladet Preview kan välja du bland följande alternativ för när du ser förhandsgranskningar.
+Du kan välja från följande alternativ för när du ser förhandsgranskningar hello hello Preview bladet.
 
 - Alltid: Du ser Preview inträffar när de är tillgängliga.
 - Auto: Visas Preview inträffar rekommenderar Microsoft för ditt konto. 

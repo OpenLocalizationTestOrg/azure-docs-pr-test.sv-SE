@@ -1,6 +1,6 @@
 ---
-title: Skapa ett REST-API i Azure med ASP.NET och SQL DB | Microsoft Docs
-description: "En självstudiekurs som lär du dig hur du distribuerar en app som använder ASP.NET Web API till en Azure-webbapp med hjälp av Visual Studio."
+title: aaaCreate en REST-API i Azure med ASP.NET och SQL-databas | Microsoft Docs
+description: "En självstudiekurs som lär du dig hur toodeploy en app som använder hello ASP.NET Web API tooan Azure-webbapp med hjälp av Visual Studio."
 services: app-service\web
 documentationcenter: .net
 author: Rick-Anderson
@@ -15,63 +15,63 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: riande
-ms.openlocfilehash: 64c18f2cfabbb7af6ffd89b4c2a9095fca1cf799
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1ef45dd1582bfda367e53c39f863164422ad678b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-rest-service-using-aspnet-web-api-and-sql-database-in-azure-app-service"></a>Skapa ett REST-tjänst som använder ASP.NET Web API och SQL-databas i Azure App Service
-Den här kursen visar hur du distribuerar ett ASP.NET-webbprogram till en [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) med hjälp av guiden Publicera webbplats i Visual Studio 2013 eller Visual Studio 2013 Community Edition. 
+Den här kursen visar hur toodeploy ett ASP.NET web app tooan [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) med hjälp av guiden för hello Publicera webbplats i Visual Studio 2013 eller Visual Studio 2013 Community Edition. 
 
-Du kan öppna ett Azure-konto gratis och om du inte redan har Visual Studio 2013, SDK installerar Visual Studio 2013 automatiskt för Web Express. Så kan du börja utveckla för Azure och helt kostnadsfritt.
+Du kan öppna ett Azure-konto gratis och om du inte redan har Visual Studio 2013, hello SDK installerar Visual Studio 2013 automatiskt för Web Express. Så kan du börja utveckla för Azure och helt kostnadsfritt.
 
-Den här kursen förutsätter att du har några tidigare erfarenheter av att använda Azure. På den här kursen har du en enkel webbapp upp och körs i molnet.
+Den här kursen förutsätter att du har några tidigare erfarenheter av att använda Azure. På den här kursen har du en enkel webbapp upp och körs i hello moln.
 
 Du får lära dig:
 
-* Hur du aktiverar datorn för Azure-utveckling genom att installera Azure SDK.
-* Hur du skapar ett projekt i Visual Studio ASP.NET MVC 5 och publicera det till en Azure-app.
-* Hur du använder ASP.NET Web API för att aktivera Restful-API-anrop.
-* Hur du använder en SQL-databas för att lagra data i Azure.
-* Hur du publicerar program uppdateras till Azure.
+* Hur tooenable datorn för Azure-utveckling genom att installera hello Azure SDK.
+* Hur toocreate en Visual Studio ASP.NET MVC 5 projektet och publicera den tooan Azure-app.
+* Hur toouse hello ASP.NET Web API tooenable Restful-API-anrop.
+* Hur toouse en SQL-databas toostore data i Azure.
+* Hur uppdaterar toopublish programmet tooAzure.
 
-Du måste skapa ett enkelt kontaktlista webbprogram som bygger på ASP.NET MVC 5 och använder ADO.NET Entity Framework för åtkomst till databasen. Följande bild visar det färdiga programmet:
+Du skapar ett enkelt kontaktlista webbprogram som bygger på ASP.NET MVC 5 och använder hello ADO.NET Entity Framework för åtkomst till databasen. Följande bild visar hello hello slutförts program:
 
 ![Skärmbild av webbplats][intro001]
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
-### <a name="create-the-project"></a>Skapa projektet
+### <a name="create-hello-project"></a>Skapa hello-projekt
 1. Starta Visual Studio 2013.
-2. Från den **filen** Klicka **nytt projekt**.
-3. I den **nytt projekt** dialogrutan Expandera **Visual C#** och välj **Web** och välj sedan **ASP.NET-webbprogram**. Ge programmet namnet **ContactManager** och på **OK**.
+2. Från hello **filen** Klicka **nytt projekt**.
+3. I hello **nytt projekt** dialogrutan Expandera **Visual C#** och välj **Web** och välj sedan **ASP.NET-webbprogram**. Namnge programmet hello **ContactManager** och på **OK**.
    
     ![Dialogrutan Nytt projekt](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr4.png)
-4. I den **nytt ASP.NET-projekt** dialogrutan markerar du den **MVC** mall, kontrollera **Web API** och klicka sedan på **ändra autentisering**.
-5. I dialogrutan **Ändra autentisering** klickar du på **Ingen autentisering** och sedan på **OK**.
+4. I hello **nytt ASP.NET-projekt** dialogrutan, Välj hello **MVC** mall, kontrollera **Web API** och klicka sedan på **ändra autentisering**.
+5. I hello **ändra autentisering** dialogrutan klickar du på **ingen autentisering**, och klicka sedan på **OK**.
    
     ![Ingen autentisering](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/GS13noauth.png)
    
-    Det exempelprogram som du skapar inte funktioner som kräver att användare kan logga in. Information om hur du implementerar autentisering och auktorisering funktioner finns i [nästa steg](#nextsteps) avsnittet i slutet av den här kursen. 
-6. I den **nytt ASP.NET-projekt** dialogrutan Kontrollera den **värd i molnet** är markerad och klicka på **OK**.
+    hello exempelprogram som du skapar inte funktioner som kräver användare toolog i. Information om hur tooimplement autentisering och auktorisering funktioner finns hello [nästa steg](#nextsteps) avsnittet hello slutet av den här kursen. 
+6. I hello **nytt ASP.NET-projekt** dialogrutan, se till att hello **värd i hello molnet** är markerad och klicka på **OK**.
 
-Om du redan inte har registrerat till Azure, uppmanas du att logga in.
+Om du redan inte har registrerat i tooAzure, kommer du att ange toosign i.
 
-1. Guiden för konfiguration av föreslås ett unikt namn baserat på *ContactManager* (se bilden nedan). Välj en region nära dig. Du kan använda [azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") att hitta den lägsta svarstid datacentralen. 
+1. hello konfigurationsguiden föreslås ett unikt namn baserat på *ContactManager* (se hello bilden nedan). Välj en region nära dig. Du kan använda [azurespeed.com](http://www.azurespeed.com/ "AzureSpeed.com") toofind hello lägsta svarstid datacenter. 
 2. Om du inte har skapat en databasserver innan du väljer **Skapa ny server**, ange ett användarnamn och lösenord.
    
     ![Konfigurera Azure-webbplats](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/configAz.PNG)
 
-Om du har en databasserver, använder du den och skapa en ny databas. Databasservrar är en värdefull resurs och du normalt vill skapa flera databaser på samma server för testning och utveckling istället för att skapa en databasserver per databas. Kontrollera att webbplatsen och databasen är i samma region.
+Om du har en databasserver, använder du den toocreate en ny databas. Databasservrar är en värdefull resurs och vanligtvis vill toocreate flera databaser på hello samma server för testning och utveckling istället för att skapa en databasserver per databas. Se till att webbplatsen och databasen tillhör hello samma region.
 
 ![Konfigurera Azure-webbplats](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/configWithDB.PNG)
 
-### <a name="set-the-page-header-and-footer"></a>Ange sidhuvud och sidfot
-1. I **Solution Explorer**, expandera den *Views\Shared* mapp och öppna den *_Layout.cshtml* fil.
+### <a name="set-hello-page-header-and-footer"></a>Ange hello sidhuvud och sidfot
+1. I **Solution Explorer**, expandera hello *Views\Shared* mapp och öppna hello *_Layout.cshtml* fil.
    
     ![_Layout.cshtml i Solution Explorer][newapp004]
-2. Ersätt innehållet i den *Views\Shared_Layout.cshtml* med följande kod:
+2. Ersätt hello innehållet i hello *Views\Shared_Layout.cshtml* fil med hello följande kod:
 
         <!DOCTYPE html>
         <html lang="en">
@@ -109,46 +109,46 @@ Om du har en databasserver, använder du den och skapa en ny databas. Databasser
         </body>
         </html>
 
-Koden ovan ändrar namnet på appen från ”mitt ASP.NET-program” till ”Kontakta Manager” och det tar bort länkar till **Start**, **om** och **Kontakta**.
+hello markup ovan ändringar hello appens namn från ”Mina ASP.NET-App” för ”Kontakta Manager” och tar bort hello länkar för**Start**, **om** och **Kontakta**.
 
-### <a name="run-the-application-locally"></a>Kör programmet lokalt
-1. Tryck på CTRL+F5 för att köra programmet.
-   Med programmets startsida visas i standardwebbläsaren.
-    ![Att göra-lista startsidan](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.png)
+### <a name="run-hello-application-locally"></a>Kör hello programmet lokalt
+1. Tryck på CTRL + F5 toorun hello program.
+   startsidan för hello programmet visas i hello standardwebbläsare.
+    ![startsidan för tooDo lista](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rr5.png)
 
-Det här är allt du behöver göra nu att skapa program som du ska distribuera till Azure. Senare ska du lägga till databasfunktioner.
+Det här är allt du behöver toodo för att du ska distribuera tooAzure nu toocreate hello program. Senare ska du lägga till databasfunktioner.
 
-## <a name="deploy-the-application-to-azure"></a>Distribuera programmet till Azure
-1. I Visual Studio högerklickar du på projektet i **Solution Explorer** och välj **publicera** på snabbmenyn.
+## <a name="deploy-hello-application-tooazure"></a>Distribuera hello programmet tooAzure
+1. I Visual Studio högerklickar du på hello-projekt i **Solution Explorer** och välj **publicera** hello snabbmenyn.
    
     ![Publicera i snabbmenyn för projektet][PublishVSSolution]
    
-    Den **Publicera webbplats** öppnas guiden.
+    Hej **Publicera webbplats** öppnas guiden.
 2. Klicka på **Publicera**.
 
 ![Fliken Inställningar](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/pw.png)
 
-Visual Studio börjar filerna kopieras till Azure-servern. Den **utdata** fönster visar vilka distributionsåtgärder som utförts och rapporterar slutförande av distributionen.
+Visual Studio börjar hello processen att kopiera hello filer toohello Azure-servern. Hej **utdata** fönster visar vilka distributionsåtgärder som utförts och rapporterar slutförande av hello-distribution.
 
-1. Standardwebbläsare öppnas automatiskt URL för den distribuerade webbplatsen.
+1. hello standardwebbläsare öppnas automatiskt toohello URL för hello distribueras webbplats.
    
-   Programmet som du skapade körs nu i molnet.
+   hello-program som du skapade körs nu i hello molnet.
    
-   ![Att göra-lista startsidan körs i Azure][rxz2]
+   ![startsidan för tooDo lista körs i Azure][rxz2]
 
-## <a name="add-a-database-to-the-application"></a>Lägga till en databas för programmet
-Därefter ska du uppdatera MVC-program för att lägga till möjligheten att visa och uppdatera kontakter och lagra data i en databas. Programmet använder Entity Framework för att skapa databasen och för att läsa och uppdatera data i databasen.
+## <a name="add-a-database-toohello-application"></a>Lägg till ett databasprogram toohello
+Därefter måste du uppdatera hello MVC-program tooadd hello möjlighet toodisplay och uppdatera kontakter och lagra hello data i en databas. hello program använder hello Entity Framework toocreate hello databasen och tooread och uppdatera data i hello-databas.
 
-### <a name="add-data-model-classes-for-the-contacts"></a>Lägg till modellen dataklasser för kontakter
+### <a name="add-data-model-classes-for-hello-contacts"></a>Lägg till modellen dataklasser för hello kontakter
 Börjar du med att skapa en enkel datamodell i kod.
 
-1. I **Solution Explorer**, högerklicka på mappen modeller, klicka på **Lägg till**, och sedan **klassen**.
+1. I **Solution Explorer**, högerklicka på mappen för hello modeller, klicka på **Lägg till**, och sedan **klassen**.
    
     ![Lägg till klass i modeller mappen snabbmenyn][adddb001]
-2. I den **Lägg till nytt objekt** dialogrutan namn på den nya klassfilen *Contact.cs*, och klicka sedan på **Lägg till**.
+2. I hello **Lägg till nytt objekt** dialogrutan, namnet hello nya klassfilen *Contact.cs*, och klicka sedan på **Lägg till**.
    
     ![Lägg till nytt objekt-dialogruta][adddb002]
-3. Ersätt innehållet i filen Contacts.cs med följande kod.
+3. Ersätt hello innehållet i hello Contacts.cs filen med hello följande kod.
    
         using System.Globalization;
         namespace ContactManager.Models
@@ -172,49 +172,49 @@ Börjar du med att skapa en enkel datamodell i kod.
             }
         }
 
-Den **Kontakta** klassen definierar de data som ska lagras för varje kontakt, plus en primär nyckel, kontakt ID som krävs av databasen. Du kan få mer information om datamodeller i den [nästa steg](#nextsteps) avsnittet i slutet av den här kursen.
+Hej **Kontakta** definierar klassen hello data som ska lagras för varje kontakt, plus en primär nyckel, kontakt ID som krävs av hello-databasen. Du kan hämta mer information om datamodeller i hello [nästa steg](#nextsteps) avsnittet hello slutet av den här kursen.
 
-### <a name="create-web-pages-that-enable-app-users-to-work-with-the-contacts"></a>Skapa webbsidor som gör appanvändare kan arbeta med kontakter
-ASP.NET MVC funktionen scaffold-teknik kan automatiskt generera kod som utför skapa, läsa, uppdatera och ta bort åtgärder (CRUD).
+### <a name="create-web-pages-that-enable-app-users-toowork-with-hello-contacts"></a>Skapa webbsidor som gör app användare toowork med hello kontakter
+hello ASP.NET MVC hello scaffold-teknik för funktionen automatiskt generera kod som utför skapa, läsa, uppdatera och ta bort åtgärder (CRUD).
 
-## <a name="add-a-controller-and-a-view-for-the-data"></a>Lägg till en domänkontrollant och en vy för data
-1. I **Solution Explorer**, expandera mappen domänkontrollanter.
-2. Skapa projektet **(Ctrl + Skift + B)**. (Du måste skapa projektet innan du använder scaffold-teknik mekanism.) 
-3. Högerklicka på mappen domänkontrollanter och klicka på **Lägg till**, och klicka sedan på **domänkontrollant**.
+## <a name="add-a-controller-and-a-view-for-hello-data"></a>Lägg till en domänkontrollant och en vy för hello data
+1. I **Solution Explorer**, expandera hello domänkontrollanter mappen.
+2. Skapa hello projektet **(Ctrl + Skift + B)**. (Du måste skapa hello projektet innan du använder scaffold-teknik mekanism.) 
+3. Högerklicka på mappen för hello-styrenheter och klicka på **Lägg till**, och klicka sedan på **domänkontrollant**.
    
     ![Lägga till domänkontrollanter i snabbmenyn för domänkontrollanter mapp][addcode001]
-4. I den **Lägg till Kodskelett** dialogrutan **MVC-enhet med vyer, med hjälp av Entity Framework** och på **Lägg till**.
+4. I hello **Lägg till Kodskelett** dialogrutan **MVC-enhet med vyer, med hjälp av Entity Framework** och på **Lägg till**.
    
    ![Lägga till en kontrollant](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rrAC.png)
-5. Ange namnet på domänkontrollanten **HomeController**. Välj **Kontakta** som modellklass. Klicka på den **nya datakontexten** knappen och acceptera standardvärdet ”ContactManager.Models.ContactManagerContext” för den **nya datakontexttyp**. Klicka på **Lägg till**.
+5. Ange hello Kontrollnamn för**HomeController**. Välj **Kontakta** som modellklass. Klicka på hello **nya datakontexten** knappen och acceptera hello standard ”ContactManager.Models.ContactManagerContext” för hello **nya datakontexttyp**. Klicka på **Lägg till**.
 
-    En dialogruta där du uppmanas: ”en fil med namnet HomeController redan. Vill du ersätta den ”?. Klicka på **Ja**. Vi skriver över Start styrenheten som skapades med det nya projektet. Vi använder den nya Start-styrenheten för våra kontaktlista.
+    En dialogruta där du uppmanas: ”en fil med namnet hello HomeController redan. Vill du tooreplace den ”?. Klicka på **Ja**. Vi skriver över hello Start domänkontrollant som har skapats med hello nytt projekt. Vi använder hello nya Start styrenhet för våra kontaktlista.
 
     Visual Studio skapar kontrollantmetoder och vyer för CRUD-åtgärder för databasen för **Kontakta** objekt.
 
-## <a name="enable-migrations-create-the-database-add-sample-data-and-a-data-initializer"></a>Aktivera migrering, skapa databasen, lägga till exempeldata och en data-initieraren
-Nästa uppgift är att aktivera den [Code First Migrations](http://curah.microsoft.com/55220) funktion för att kunna skapa databasen baserat på den datamodell som du skapade.
+## <a name="enable-migrations-create-hello-database-add-sample-data-and-a-data-initializer"></a>Aktivera migrering, skapa hello databas, lägga till exempeldata och en data-initieraren
+hello nästa uppgift är tooenable hello [Code First Migrations](http://curah.microsoft.com/55220) funktion i ordning toocreate hello databasen utifrån hello-datamodell som du skapade.
 
-1. I den **verktyg** väljer du **Library Package Manager** och sedan **Pakethanterarkonsolen**.
+1. I hello **verktyg** väljer du **Library Package Manager** och sedan **Pakethanterarkonsolen**.
    
     ![Package Manager-konsolen i Verktyg-menyn][addcode008]
-2. I den **Pakethanterarkonsolen** fönstret, anger du följande kommando:
+2. I hello **Pakethanterarkonsolen** fönstret Ange hello följande kommando:
    
         enable-migrations 
    
-    Den **aktivera migreringar** kommando skapar en *migreringar* mapp och dess placeras i den mappen en *Configuration.cs* fil som du kan redigera för att konfigurera migreringar. 
-3. I den **Pakethanterarkonsolen** fönstret, anger du följande kommando:
+    Hej **aktivera migreringar** kommando skapar en *migreringar* mapp och dess placeras i den mappen en *Configuration.cs* fil att du kan redigera tooconfigure migreringar. 
+3. I hello **Pakethanterarkonsolen** fönstret Ange hello följande kommando:
    
         add-migration Initial
    
-    Den **lägga till migrering inledande** kommandot genererar en klass som heter  **&lt;date_stamp&gt;inledande** som skapar databasen. Den första parametern ( *inledande* ) är valfri och används för att skapa namn på filen. Du kan se de nya klassen filerna i **Solution Explorer**.
+    Hej **lägga till migrering inledande** kommandot genererar en klass med namnet  **&lt;date_stamp&gt;inledande** som skapar hello-databasen. Hej första parametern ( *inledande* ) är valfri och används toocreate hello namnet på hello-filen. Du kan se hello nya klassfiler i **Solution Explorer**.
    
-    I den **inledande** klassen, de **in** metoden skapar tabellen kontakter och **ned** metod (används när du vill gå tillbaka till föregående tillstånd) släpper den.
-4. Öppna den *Migrations\Configuration.cs* fil. 
-5. Lägg till följande namnområden. 
+    I hello **inledande** class, hello **in** metoden skapar hello tabellen för kontakter och hello **ned** metod (används när du vill tooreturn toohello läget) släpper den.
+4. Öppna hello *Migrations\Configuration.cs* fil. 
+5. Lägg till hello följande namnområden. 
    
          using ContactManager.Models;
-6. Ersätt den *Seed* metoden med följande kod:
+6. Ersätt hello *Seed* metod med hello följande kod:
    
         protected override void Seed(ContactManager.Models.ContactManagerContext context)
         {
@@ -272,23 +272,23 @@ Nästa uppgift är att aktivera den [Code First Migrations](http://curah.microso
                 );
         }
    
-    Den här koden ovan ska initiera databasen med kontaktinformation. Mer information om seeding databasen finns [felsökning (EF Entity Framework) DBs](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx).
-7. I den **Pakethanterarkonsolen** anger du kommandot:
+    Den här koden ovan ska initiera hello databasen med hello kontaktinformation. Mer information om seeding hello databasen finns [felsökning (EF Entity Framework) DBs](http://blogs.msdn.com/b/rickandy/archive/2013/02/12/seeding-and-debugging-entity-framework-ef-dbs.aspx).
+7. I hello **Pakethanterarkonsolen** ange hello-kommando:
    
         update-database
    
     ![Package Manager-konsolen kommandon][addcode009]
    
-    Den **uppdatering databasen** körs den första migrering som skapar databasen. Som standard skapas databasen som en SQL Server Express LocalDB-databas.
-8. Tryck på CTRL+F5 för att köra programmet. 
+    Hej **uppdatering databasen** körs hello första migrering som skapar hello-databas. Som standard skapas hello databasen som en SQL Server Express LocalDB-databas.
+8. Tryck på CTRL + F5 toorun hello program. 
 
-Programmet visar seed-data och redigera, information och ta bort länkar.
+hello programmet hello fördefiniera data och ger redigera, information och ta bort länkar.
 
 ![MVC-vy av data][rxz3]
 
-## <a name="edit-the-view"></a>Redigera vy
-1. Öppna den *Views\Home\Index.cshtml* fil. I nästa steg, kommer vi att ersätta den genererade koden med kod som använder [jQuery](http://jquery.com/) och [Knockout.js](http://knockoutjs.com/). Den här nya koden hämtar listan över kontakter från att använda webb-API och JSON och kopplar sedan kontaktdata till Användargränssnittet med knockout.js. Mer information finns i [nästa steg](#nextsteps) avsnittet i slutet av den här kursen. 
-2. Ersätt innehållet i filen med följande kod.
+## <a name="edit-hello-view"></a>Redigera hello vy
+1. Öppna hello *Views\Home\Index.cshtml* fil. I hello nästa steg, kommer vi att ersätta hello genereras markup med kod som använder [jQuery](http://jquery.com/) och [Knockout.js](http://knockoutjs.com/). Den här nya koden hämtar hello lista över kontakter från att använda webb-API och JSON och bindningar hello kontakta data toohello användargränssnitt med knockout.js. Mer information finns i hello [nästa steg](#nextsteps) avsnittet hello slutet av den här kursen. 
+2. Ersätt hello innehållet i hello-fil med hello följande kod.
    
         @model IEnumerable<ContactManager.Models.Contact>
         @{
@@ -377,12 +377,12 @@ Programmet visar seed-data och redigera, information och ta bort länkar.
                 <input type="submit" value="Add" />
             </fieldset>
         </form>
-3. Högerklicka på mappen innehåll och klicka på **Lägg till**, och klicka sedan på **nytt objekt...** .
+3. Högerklicka på hello innehållsmappen och på **Lägg till**, och klicka sedan på **nytt objekt...** .
    
     ![Lägg till formatmall innehållsmappen snabbmenyn][addcode005]
-4. I den **Lägg till nytt objekt** dialogrutan Ange **Style** i övre högra sökrutan och väljer sedan **formatmall**.
+4. I hello **Lägg till nytt objekt** dialogrutan Ange **Style** i hello övre högra sökrutan och väljer sedan **formatmall**.
     ![Lägg till nytt objekt-dialogruta][rxStyle]
-5. Namn på filen *Contacts.css* och på **Lägg till**. Ersätt innehållet i filen med följande kod.
+5. Namnet hello filen *Contacts.css* och på **Lägg till**. Ersätt hello innehållet i hello-fil med hello följande kod.
    
         .column {
             float: left;
@@ -438,14 +438,14 @@ Programmet visar seed-data och redigera, information och ta bort länkar.
             text-decoration: none;
         }
    
-    Vi använder den här formatmallen för layout, färger och format som används i appen kontakta manager.
-6. Öppna den *App_Start\BundleConfig.cs* fil.
-7. Lägg till följande kod för att registrera den [blockerade](http://knockoutjs.com/index.html "KO") plugin-programmet.
+    Vi använder den här formatmallen för hello layout, färger och format som används i hello kontakta manager app.
+6. Öppna hello *App_Start\BundleConfig.cs* fil.
+7. Lägg till följande kod tooregister hello hello [blockerade](http://knockoutjs.com/index.html "KO") plugin-programmet.
    
         bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
                     "~/Scripts/knockout-{version}.js"));
-    Det här exemplet använder blockering för att förenkla dynamiska JavaScript-kod som hanterar skärmen mallar.
-8. Ändra innehållet/css-post för att registrera den *contacts.css* formatmall. Ändra följande rad:
+    Det här exemplet använder blockerade toosimplify dynamiska JavaScript-kod som hanterar mallar för hello-skärmen.
+8. Ändra hello innehållet/css post tooregister hello *contacts.css* formatmall. Ändra hello följande rad:
    
                  bundles.Add(new StyleBundle("~/Content/css").Include(
                    "~/Content/bootstrap.css",
@@ -456,52 +456,52 @@ Programmet visar seed-data och redigera, information och ta bort länkar.
                    "~/Content/bootstrap.css",
                    "~/Content/contacts.css",
                    "~/Content/site.css"));
-9. Kör följande kommando för att installera blockering i Package Manager-konsolen.
+9. Kör hello efter kommandot tooinstall blockering i hello Package Manager-konsolen.
    
         Install-Package knockoutjs
 
-## <a name="add-a-controller-for-the-web-api-restful-interface"></a>Lägga till en styrenhet för Web API Restful-gränssnittet
+## <a name="add-a-controller-for-hello-web-api-restful-interface"></a>Lägga till en styrenhet för hello Web API Restful-gränssnitt
 1. I **Solution Explorer**, högerklicka på domänkontrollanter och klickar på **Lägg till** och sedan **domänkontrollant...** 
-2. I den **Lägg till Kodskelett** dialogrutan Ange **Web API 2-styrenhet med åtgärder, med hjälp av Entity Framework** och klicka sedan på **Lägg till**.
+2. I hello **Lägg till Kodskelett** dialogrutan Ange **Web API 2-styrenhet med åtgärder, med hjälp av Entity Framework** och klicka sedan på **Lägg till**.
    
     ![Lägga till API-styrenhet](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt1.png)
-3. I den **Lägg till styrenhet** dialogrutan Ange ”ContactsController” som domänkontrollantens namn. Välj ”kontakta (ContactManager.Models)” för den **Modellklass**.  Behåll standardvärdet för den **datakontextklass**. 
+3. I hello **Lägg till styrenhet** dialogrutan Ange ”ContactsController” som domänkontrollantens namn. Välj ”kontakta (ContactManager.Models)” för hello **Modellklass**.  Behåll hello standardvärdet för hello **datakontextklass**. 
 4. Klicka på **Lägg till**.
 
-### <a name="run-the-application-locally"></a>Kör programmet lokalt
-1. Tryck på CTRL+F5 för att köra programmet.
+### <a name="run-hello-application-locally"></a>Kör hello programmet lokalt
+1. Tryck på CTRL + F5 toorun hello program.
    
     ![Sidan Index][intro001]
-2. Ange en kontakt och klicka på **Lägg till**. Appen skickar tillbaka till startsidan och visar den kontakt som du har angett.
+2. Ange en kontakt och klicka på **Lägg till**. hello app returnerar toohello startsidan och visar hello-kontakt som du har angett.
    
     ![Sidan index med uppgiften listobjekt][addwebapi004]
-3. Lägg till i webbläsaren, **/api/contacts** i URL: en.
+3. Lägg till i hello webbläsare, **/api/contacts** toohello URL.
    
-    Den resulterande URL: en ska likna http://localhost:1234-api-kontakter. RESTful-webb-API som du har lagt till returnerar lagrade kontakter. Firefox och Chrome visas data i XML-format.
+    hello resulterande URL: en ska likna http://localhost:1234-api-kontakter. hello RESTful-webb-API som du har lagt till returnerar hello lagras kontakter. Firefox och Chrome visar hello data i XML-format.
    
     ![Sidan index med uppgiften listobjekt][rxFFchrome]
 
-    IE uppmanas du att öppna eller spara kontakter.
+    Internet Explorer ska fråga tooopen eller spara hello kontakter.
 
     ![Webb-API spara dialogrutan][addwebapi006]
 
 
-    Du kan öppna returnerade kontakter i anteckningar eller en webbläsare.
+    Du kan öppna hello returneras kontakter i anteckningar eller en webbläsare.
 
     Den här utdatan kan användas av ett annat program, till exempel mobila webbsida eller ett program.
 
     ![Webb-API spara dialogrutan][addwebapi007]
 
-    **Säkerhetsvarning**: nu är ditt program är osäker och sårbar för angrepp CSRF. Vi tar bort den här säkerhetsrisken senare under kursen. Mer information finns i [hindrar webbplatser begära förfalskning (CSRF) attacker][prevent-csrf-attacks].
+    **Säkerhetsvarning**: nu är ditt program är osäker och sårbar tooCSRF attack. Senare i självstudiekursen hello vi ta bort den här säkerhetsrisken. Mer information finns i [hindrar webbplatser begära förfalskning (CSRF) attacker][prevent-csrf-attacks].
 ## <a name="add-xsrf-protection"></a>Lägga till XSRF skydd
-Begäran förfalskning (även kallat XSRF eller CSRF) är en attack mot webbaserat program där en skadlig webbplats kan påverka interaktionen mellan en klientens webbläsare och en webbplats som är betrodda av den webbläsaren. Dessa attacker är möjligt eftersom webbläsare skickar autentiseringstoken automatiskt med varje begäran till en webbplats. Kanoniskt exempel är en autentiseringscookie, till exempel ASP. NETS biljetten för formulär för autentisering. Webbplatser som använder alla beständiga autentiseringsmekanism (till exempel Windows-autentisering, grundläggande och så vidare) kan vara mål av angrepp.
+Begäran förfalskning (även kallat XSRF eller CSRF) är en attack mot webbaserat program där en skadlig webbplats kan påverka hello interaktionen mellan en klientens webbläsare och en webbplats som är betrodda av den webbläsaren. Dessa attacker är möjligt eftersom webbläsare skickar autentiseringstoken automatiskt med varje begäran tooa webbplats. hello kanoniska exempel är en autentiseringscookie, till exempel ASP. NETS biljetten för formulär för autentisering. Webbplatser som använder alla beständiga autentiseringsmekanism (till exempel Windows-autentisering, grundläggande och så vidare) kan vara mål av angrepp.
 
-En attack XSRF skiljer sig från en phishing-attacker. Nätfiskeattacker kräver interaktion från drabbade. En skadlig webbplats efterliknar målwebbplatsen i en phishing-attacker och offer lurad till att angriparen känslig information. I en XSRF-attack krävs det ofta utan interaktion från drabbade. I stället förlitande angriparen i webbläsare som automatiskt skickar alla relevanta cookies till mål-webbplatsen.
+En attack XSRF skiljer sig från en phishing-attacker. Nätfiskeattacker kräver interaktion från hello drabbade. En skadlig webbplats efterliknar hello målwebbplats i en phishing-attacker och hello drabbade lurad till att tillhandahålla känslig information toohello angripare. I en XSRF-attack krävs det ofta utan interaktion från hello drabbade. I stället förlitande hello angripare hello webbläsare som automatiskt skickar alla relevanta cookies toohello mål webbplats.
 
-Mer information finns i [säkerhet öppna Webbapprojektet](https://www.owasp.org/index.php/Main_Page) (OWASP) [XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_\(CSRF\)).
+Mer information finns i hello [säkerhet öppna Webbapprojektet](https://www.owasp.org/index.php/Main_Page) (OWASP) [XSRF](https://www.owasp.org/index.php/Cross-Site_Request_Forgery_\(CSRF\)).
 
 1. I **Solution Explorer**, höger **ContactManager** projektet och klicka på **Lägg till** och klicka sedan på **klassen**.
-2. Namn på filen *ValidateHttpAntiForgeryTokenAttribute.cs* och Lägg till följande kod:
+2. Namnet hello filen *ValidateHttpAntiForgeryTokenAttribute.cs* och Lägg till följande kod hello:
    
         using System;
         using System.Collections.Generic;
@@ -570,15 +570,15 @@ Mer information finns i [säkerhet öppna Webbapprojektet](https://www.owasp.org
                 }
             }
         }
-3. Lägg till följande *med* instruktionen till kontrakt styrenheten så att du har åtkomst till den **[ValidateHttpAntiForgeryToken]** attribut.
+3. Lägg till följande hello *med* instruktionen toohello kontrakt domänkontrollant så att du har åtkomst toohello **[ValidateHttpAntiForgeryToken]** attribut.
    
         using ContactManager.Filters;
-4. Lägg till den **[ValidateHttpAntiForgeryToken]** attributet Post-metoderna för den **ContactsController** att skydda mot XSRF hot. Du kan lägga till den ”PutContact”, ”PostContact” och **DeleteContact** åtgärdsmetoder.
+4. Lägg till hello **[ValidateHttpAntiForgeryToken]** attributet toohello Post-metoderna för hello **ContactsController** tooprotect från XSRF hot. Du lägger till det toohello ”PutContact”, ”PostContact” och **DeleteContact** åtgärdsmetoder.
    
         [ValidateHttpAntiForgeryToken]
             public IHttpActionResult PutContact(int id, Contact contact)
             {
-5. Uppdatering av *skript* avsnitt i den *Views\Home\Index.cshtml* filen för att inkludera kod för att hämta XSRF-token.
+5. Uppdatera hello *skript* avsnitt i hello *Views\Home\Index.cshtml* filen tooinclude kod tooget hello XSRF token.
    
          @section Scripts {
             @Scripts.Render("~/bundles/knockout")
@@ -633,59 +633,59 @@ Mer information finns i [säkerhet öppna Webbapprojektet](https://www.owasp.org
             </script>
          }
 
-## <a name="publish-the-application-update-to-azure-and-sql-database"></a>Publicera programuppdateringen till Azure och SQL-databas
-Om du vill publicera programmet måste upprepa du proceduren du följt tidigare.
+## <a name="publish-hello-application-update-tooazure-and-sql-database"></a>Publicera hello programmet uppdatering tooAzure och SQL-databas
+toopublish hello programmet du upprepa hello proceduren du följt tidigare.
 
-1. I **Solution Explorer**, högerklicka på projektet och välj **publicera**.
+1. I **Solution Explorer**, högerklicka på hello projektet och välj **publicera**.
    
     ![Publicera][rxP]
-2. Klicka på fliken **Settings** (Inställningar).
-3. Under **ContactsManagerContext(ContactsManagerContext)**, klicka på den **v** ikon för att ändra *Remote anslutningssträngen* i anslutningssträngen för databasen kontakta. Klicka på **ContactDB**.
+2. Klicka på hello **inställningar** fliken.
+3. Under **ContactsManagerContext(ContactsManagerContext)**, klicka på hello **v** ikonen toochange *Remote anslutningssträngen* toohello anslutningssträngen för hello kontakt databas. Klicka på **ContactDB**.
    
     ![Inställningar](./media/web-sites-dotnet-rest-service-aspnet-api-sql-database/rt5.png)
-4. Markera kryssrutan för **köra Code First Migrations (körs vid programstart)**.
-5. Klicka på **nästa** och klicka sedan på **Preview**. Visual Studio visar en lista över de filer som lagts till eller uppdaterats.
+4. Kryssrutan för hello **köra Code First Migrations (körs vid programstart)**.
+5. Klicka på **nästa** och klicka sedan på **Preview**. Visual Studio visar en lista över hello-filer som lagts till eller uppdaterats.
 6. Klicka på **Publicera**.
-   När distributionen är klar öppnas i webbläsaren startsidan för programmet.
+   När hello distributionen är klar öppnar toohello startsida hello programmet hello webbläsaren.
    
     ![Sidan index med inga kontakter][intro001]
    
-    Visual Studio publiceringsprocess automatiskt konfigurerade anslutningssträngen i den distribuerade *Web.config* fil att peka till SQL-databasen. Den kan också konfigureras Code First Migrations för att automatiskt uppgradera databasen till den senaste versionen första gången programmet ansluter till databasen efter distributionen.
+    hello Visual Studio Publicera process som automatiskt konfigurerade hello anslutningssträngen i hello distribueras *Web.config* filen toopoint toohello SQL-databas. Det kan också konfigurerad Code First Migrations tooautomatically uppgradera hello toohello senaste databasversionen hello första gången hello program ansluter hello databasen efter distributionen.
    
-    På grund av den här konfigurationen Code First skapade databasen genom att köra koden i den **inledande** klass som du skapade tidigare. Det gjorde detta första gången programmet försökte få åtkomst till databasen efter distributionen.
-7. Ange en kontakt som du gjorde när du körde appen lokalt, kontrollera att databasen distributionen lyckades.
+    På grund av den här konfigurationen Code First skapade hello databas genom att köra hello kod i hello **inledande** klass som du skapade tidigare. Det gjorde hello första gången hello programmet försökte tooaccess hello databasen efter distributionen.
+7. Ange en kontakt som du gjorde när du körde hello appen lokalt, tooverify databasen distributionen lyckades.
 
-När du ser att objektet som du anger sparas och visas på sidan Kontakta manager vet du att den har lagrats i databasen.
+När du ser att hello-objektet som du anger sparas och visas på hello kontakta manager-sidan, vet du har lagrats i hello-databasen.
 
 ![Sidan index med kontakter][addwebapi004]
 
-Programmet körs nu i molnet, använder SQL-databas för att lagra data. Ta bort när du är klar med att testa programmet i Azure. Programmet är offentlig och har inte en mekanism för att begränsa åtkomst.
+hello programmet körs nu i hello molnet med hjälp av SQL-databas toostore sina data. Ta bort när du är klar med att testa hello program i Azure. hello programmet är offentlig och har inte en mekanism toolimit åtkomst.
 
 > [!NOTE]
-> Om du vill komma igång med Azure Apptjänst innan du registrerar dig för ett Azure-konto kan du gå till [Prova Apptjänst](https://azure.microsoft.com/try/app-service/). Där kan du direkt skapa en tillfällig startwebbapp i Apptjänst. Inget kreditkort krävs, och du gör inga åtaganden.
+> Om du vill tooget igång med Azure App Service innan du registrerar dig för ett Azure-konto går för[prova App Service](https://azure.microsoft.com/try/app-service/), där kan du direkt skapa en tillfällig startwebbapp i App Service. Inget kreditkort krävs, och du gör inga åtaganden.
 > 
 > 
 
 ## <a name="next-steps"></a>Nästa steg
-Ett annat sätt att lagra data i ett Azure-program är att använda Azure storage som ger lagring av icke-relationella data i form av blobbar och tabeller. Följande länkar ger mer information om Web API, ASP.NET MVC och Windows Azure.
+Ett annat sätt toostore data i ett Azure-program är toouse Azure-lagring som innehåller icke-relationella datalagring i hello form av blobbar och tabeller. hello följande länkar ger mer information om Web API, ASP.NET MVC och Windows Azure.
 
 * [Komma igång med Entity Framework med MVC][EFCodeFirstMVCTutorial]
-* [Introduktion till ASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
+* [Introduktion tooASP.NET MVC 5](http://www.asp.net/mvc/tutorials/mvc-5/introduction/getting-started)
 * [Din första ASP.NET-webb-API](http://www.asp.net/web-api/overview/getting-started-with-aspnet-web-api/tutorial-your-first-web-api)
 * [Felsökning av WAWS](web-sites-dotnet-troubleshoot-visual-studio.md)
 
-Den här kursen och exempelprogrammet har skrivits av [Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [ @RickAndMSFT ](https://twitter.com/RickAndMSFT)) med hjälp av Tom Dykstra och Barry Dorrans (Twitter [ @blowdart ](https://twitter.com/blowdart)). 
+Den här kursen och hello exempelprogrammet har skrivits av [Rick Anderson](http://blogs.msdn.com/b/rickandy/) (Twitter [ @RickAndMSFT ](https://twitter.com/RickAndMSFT)) med hjälp av Tom Dykstra och Barry Dorrans (Twitter [ @blowdart ](https://twitter.com/blowdart)). 
 
-Kontrollera bättre lämna feedback om vad du tyckte om, eller vad du skulle vilja se, inte bara om kursen sig själv, men även om de produkter som visar den. Din feedback hjälper oss att prioritera förbättringar. Vi kan särskilt intresserad av att ta reda på hur mycket intresse finns i flera automation för processen för att konfigurera och distribuera medlemskapsdatabasen. 
+Lämna feedback på vad du tyckte om, eller vad du vill toosee förbättras inte bara om hello kursen själva, utan även om hello produkter som visar den. Din feedback hjälper oss att prioritera förbättringar. Vi kan särskilt intresserad av att ta reda på hur mycket intresse det är i flera automation för hello process för att konfigurera och distribuera hello medlemskap i databasen. 
 
 ## <a name="whats-changed"></a>Nyheter
-* En guide till övergången från Webbplatser till App Service finns i: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)
+* En guide toohello övergången från webbplatser tooApp tjänsten finns: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!-- bookmarks -->
 [Add an OAuth Provider]: #addOauth
-[Add Roles to the Membership Database]:#mbrDB
+[Add Roles toohello Membership Database]:#mbrDB
 [Create a Data Deployment Script]:#ppd
-[Update the Membership Database]:#ppd2
+[Update hello Membership Database]:#ppd2
 [setupdbenv]: #bkmk_setupdevenv
 [setupwindowsazureenv]: #bkmk_setupwindowsazure
 [createapplication]: #bkmk_createmvc4app

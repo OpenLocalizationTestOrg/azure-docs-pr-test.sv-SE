@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory Connect Health vanliga frågor och svar – Azure | Microsoft Docs"
-description: "Det här avsnittet får du svar frågor om Azure AD Connect Health. Avsnittet ger svar på frågor om hur du använder tjänsten, inklusive faktureringsmodellen, funktioner, begränsningar och support."
+title: "aaaAzure Active Directory Connect Health vanliga frågor och svar - Azure | Microsoft Docs"
+description: "Det här avsnittet får du svar frågor om Azure AD Connect Health. Det här avsnittet ger frågor om hur du använder hello-tjänsten, inklusive hello fakturering modellen, funktioner, begränsningar och support."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 902e5bdfbbf04ab70989be8c41e16eb69e475908
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3f15d9e9b557b09ef74ceff85806579dd51f2412
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Vanliga frågor och svar om Azure AD Connect Health
-Den här artikeln innehåller svar på vanliga frågor och svar (FAQ) om Azure Active Directory (AD Azure) Connect Health. Dessa vanliga frågor och svar tar upp frågor om hur du använder tjänsten, som innehåller fakturering modellen, funktioner, begränsningar och support.
+Den här artikeln innehåller svar toofrequently frågor (FAQ) och svar om Azure Active Directory (AD Azure) Connect Health. Dessa vanliga frågor och svar tar upp frågor om hur toouse hello-tjänsten, som innehåller hello fakturering modellen, funktioner, begränsningar och support.
 
 ## <a name="general-questions"></a>Allmänna frågor
-**F: jag hantera flera Azure AD-kataloger. Hur växla till en som har Azure Active Directory Premium?**
+**F: jag hantera flera Azure AD-kataloger. Hur växlar toohello har Azure Active Directory Premium?**
 
-Växla mellan olika Azure AD-innehavare, Välj den för tillfället inloggade **användarnamn** på övre högra hörn och sedan välja lämpligt konto. Om kontot inte finns med här, väljer **logga ut**, och sedan använda autentiseringsuppgifter för global administratör för katalogen som har Azure Active Directory Premium aktiverat för att logga in.
+tooswitch mellan olika Azure AD innehavare väljer hello för närvarande inloggad **användarnamn** på hello övre högra hörnet och välj sedan hello lämpligt konto. Om hello konto inte anges här, väljer **logga ut**, och sedan använda hello global administratör autentiseringsuppgifterna för hello directory som har Azure Active Directory Premium aktiverat toosign i.
 
 **F: vilken version av identiteten roller som stöds av Azure AD Connect Health?**
 
-Följande tabell listar rollerna och operativsystemversioner som stöds.
+hello följande tabell visar hello roller och operativsystemversioner som stöds.
 
 |Roll| Operativsystem / Version|
 |--|--|
@@ -38,15 +38,15 @@ Följande tabell listar rollerna och operativsystemversioner som stöds.
 |Azure AD Connect | Version 1.0.9125 eller högre|
 |Active Directory Domain Services (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
-Observera att funktionerna som tillhandahålls av tjänsten kan variera beroende på rollen och operativsystemet. Med andra ord kanske alla funktioner inte tillgänglig för alla versioner av operativsystemet. Funktionsbeskrivning mer information finns i.
+Observera att hello funktioner som tillhandahålls av hello-tjänsten kan skilja sig baserat på hello roll och hello-operativsystemet. Med andra ord kanske alla hello-funktioner inte tillgänglig för alla versioner av operativsystemet. Se hello funktionsbeskrivning mer information.
 
-**F: hur många licenser behöver att övervaka min infrastrukturen?**
+**F: hur många licenser gör jag behöver toomonitor min infrastruktur?**
 
-* Första Connect Health Agent kräver minst en Azure AD Premium-licens.
+* hello kräver första Connect Health Agent minst en Azure AD Premium-licens.
 * Varje ytterligare registrerade agent kräver 25 ytterligare Azure AD Premium-licenser.
-* Agentantal motsvarar det totala antalet agenter som registrerats över alla övervakade roller (AD FS, Azure AD Connect och AD DS).
+* Agentantal är likvärdiga toohello totala antalet agenter som registrerats över alla övervakade roller (AD FS, Azure AD Connect och AD DS).
 
-Licensieringsinformation finns även på den [priser för Azure AD-sidan](https://aka.ms/aadpricing).
+Licensieringsinformation finns även på hello [priser för Azure AD-sidan](https://aka.ms/aadpricing).
 
 Exempel:
 
@@ -61,105 +61,105 @@ Exempel:
 
 ## <a name="installation-questions"></a>Frågor om installation
 
-**F: Vad är effekten av att installera Azure AD Connect Health Agent på enskilda servrar?**
+**F: Vad är hello effekten av installerar hello Azure AD Connect Health Agent på enskilda servrar?**
 
-Effekten av att installera Microsoft Azure AD Connect Health Agent, AD FS, webbprogramproxyservrarna, Azure AD Connect (synkronisering)-servrar, domänkontrollanter är minimal med avseende på CPU, minne används, nätverkets bandbredd och lagring.
+hello effekten av installerar hello-Microsoft Azure AD Connect Health Agent, AD FS-webbprogramproxyservrarna, Azure AD Connect (synkronisering)-servrar, domänkontrollanter är minimal med avseende toohello CPU, minne används, nätverkets bandbredd och lagring.
 
-Följande siffror är en uppskattning:
+hello följande siffror är en uppskattning:
 
 * CPU-förbrukning: ökning ~ 1-5%.
-* Minnesförbrukning: upp till 10% av det totala systemminnet.
+* Minnesförbrukning: too10% systemminne hello totalt.
 
 > [!NOTE]
-> Om agenten inte kan kommunicera med Azure lagrar agenten data lokalt för en definierad högsta gräns. Agenten skriver över ”cachelagrade” data på grundval av ”minst senast underhålls”.
+> Om hello agent inte kan kommunicera med Azure lagrar hello agent hello data lokalt för en definierad högsta gräns. hello agent skriver över hello ”” Cachedata på grundval av ”minst senast underhålls”.
 >
 >
 
 * Bufferten för lokal lagring för Azure AD Connect Health-agenter: ~ 20 MB.
-* För AD FS-servrar rekommenderar vi att du etablerar ett utrymme på 1 024 MB (1 GB) för AD FS-granskning kanal för Azure AD Connect Health-agenter att bearbeta alla granskningsdata innan den skrivs över.
+* För AD FS-servrar rekommenderar vi att du etablerar ett utrymme på 1 024 MB (1 GB) för hello AD FS-granskning kanal för Azure AD Connect Health-agenter tooprocess alla hello granskningsdata innan den skrivs över.
 
-**F: Jag måste starta om min servrar under installationen av den Azure AD Connect Health-agenter?**
+**F: måste jag tooreboot Mina servrar under hello installationen av hello Azure AD Connect Health-agenter?**
 
-Nej. Installationen av agenterna kräver inte att starta om servern. Installationen av vissa nödvändiga steg kan dock kräva en omstart av servern.
+Nej. hello-installation av hello agenter kräver inte du tooreboot hello-servern. Installationen av vissa nödvändiga steg kräva en omstart av hello-server.
 
 Exempelvis kräver installation av .NET Framework för 4.5 på Windows Server 2008 R2 servern startas om.
 
 **F: kan Azure AD Connect Health arbete via en direkt HTTP-proxy?**
 
-Ja. Du kan konfigurera Hälsoagenten om du vill använda en HTTP-proxy för att vidarebefordra utgående HTTP-begäranden för pågående åtgärder.
+Ja. Du kan konfigurera en HTTP-proxy tooforward utgående HTTP-begäranden hello Health Agent toouse för pågående åtgärder.
 Läs mer om [konfigurera HTTP-Proxy för Health-agenter](active-directory-aadconnect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy).
 
-Om du behöver konfigurera en proxyserver under agentregistreringen kan du behöva ändra proxyinställningarna för Internet Explorer i förväg.
+Om du behöver tooconfigure en proxy under agentregistreringen kan behöva du toomodify proxyinställningarna för Internet Explorer i förväg.
 
 1. Öppna Internet Explorer > **inställningar** > **Internetalternativ** > **anslutningar** > **LAN-inställningar** .
 2. Välj **använder en proxyserver för nätverket**.
 3. Välj **Avancerat** om du har en annan proxyserver portar för HTTP och HTTPS/Secure.
 
-**F: kan Azure AD Connect Health stöder grundläggande autentisering när du ansluter till http-proxy?**
+**F: kan Azure AD Connect Health stöder grundläggande autentisering när du ansluter tooHTTP proxyservrar?**
 
-Nej. En mekanism för att ange en valfri användarnamn och lösenord för grundläggande autentisering stöds inte för närvarande.
+Nej. En mekanism toospecify ett godtyckligt användarnamn och lösenord för grundläggande autentisering stöds inte för närvarande.
 
-**F: vad brandväggsportar behöver att öppna för Azure AD Connect Health Agent ska fungera?**
+**F: vad brandväggsportar göra jag behöver tooopen för hello Azure AD Connect Health Agent toowork?**
 
-Finns det [avsnittet krav](active-directory-aadconnect-health-agent-install.md#requirements) lista över portar i brandväggen och andra anslutningskrav.
+Se hello [avsnittet krav](active-directory-aadconnect-health-agent-install.md#requirements) hello lista över portar i brandväggen och andra anslutningskrav.
 
-**F: Varför visas två servrar med samma namn i Azure AD Connect Health-portalen?**
+**F: Varför visas två servrar med samma namn i hello Azure AD Connect Health-portalen hello?**
 
-När du tar bort en agent från en server är på servern inte bort automatiskt från Azure AD Connect Health-portalen. Om du manuellt ta bort en agent från en server eller ta bort själva servern måste du manuellt ta bort posten från Azure AD Connect Health-portalen.
+När du tar bort en agent från en server är hello-servern inte bort automatiskt från hello Azure AD Connect Health-portalen. Om du manuellt ta bort en agent från en server eller ta bort själva hello-servern måste ta bort toomanually hello serverpost från hello Azure AD Connect Health-portalen.
 
-Du kan återavbilda en server eller skapa en ny server med samma information (till exempel datornamnet). Om du inte ta bort servern redan är registrerad från Azure AD Connect Health-portalen, och du har installerat agenten på den nya servern, kan du se två poster med samma namn.
+Du kan återavbilda en server eller skapa en ny server med hello samma information (till exempel datornamnet). Om du inte ta bort hello redan är registrerad server från hello Azure AD Connect Health-portalen, och du har installerat hello-agenten på hello ny server, kan du se två poster med hello samma namn.
 
-I det här fallet Ta manuellt bort posten som hör till äldre server. Data för den här servern ska vara inaktuell.
+I det här fallet manuellt ta bort hello post som tillhör toohello äldre server. hello-data för den här servern vara inaktuell.
 
 ## <a name="health-agent-registration-and-data-freshness"></a>Health Agent registrerings- och dokumentens
 
-**F: Vad är vanliga orsaker till registreringsfel Health Agent och hur felsöker problem?**
+**F: Vad är vanliga orsaker till hello Health Agent-registreringsfel och hur felsöker problem?**
 
-Health-agenten kan inte kan registreras på grund av följande anledningar:
+hello health-agenten kan misslyckas tooregister på grund av toohello följande möjliga orsaker:
 
-* Agenten kan inte kommunicera med de nödvändiga slutpunkterna eftersom en brandvägg blockerar trafik. Detta är särskilt vanligt på webbprogramproxyservrarna. Kontrollera att du har tillåtit utgående kommunikation till de nödvändiga slutpunkter och portar. Finns det [avsnittet krav](active-directory-aadconnect-health-agent-install.md#requirements) mer information.
-* Utgående kommunikation är föremål för SSL-kontroll av nätverksnivån. Detta gör att det certifikat som använder agenten som ska ersättas med inspektion server/entiteten och stegen för att slutföra agentregistreringen misslyckas.
-* Användaren inte behörighet att utföra registreringen av agenten. Globala administratörer har åtkomst som standard. Du kan använda [rollbaserad åtkomstkontroll](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control) att delegera åtkomst till andra användare.
+* hello-agenten kan inte kommunicera med hello krävs slutpunkter eftersom en brandvägg blockerar trafik. Detta är särskilt vanligt på webbprogramproxyservrarna. Kontrollera att du har tillåtit utgående kommunikation toohello krävs slutpunkter och portar. Se hello [avsnittet krav](active-directory-aadconnect-health-agent-install.md#requirements) mer information.
+* Utgående kommunikation är utsatts tooan SSL-kontroll av hello nätverksnivån. Detta medför hello certifikat att hello agenten använder toobe ersättas med hello inspektion server/entiteten och hello steg toocomplete hello agentregistreringen misslyckas.
+* hello användaren har inte åtkomst tooperform hello registrering av hello agent. Globala administratörer har åtkomst som standard. Du kan använda [rollbaserad åtkomstkontroll](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control) toodelegate-tooother användare.
 
-**F: Jag är få ett meddelande om att ”Hälsotjänstens data inte är uppdaterad”. Hur felsöker problemet?**
+**F: Jag är få ett meddelande om att ”Hälsotjänstens data inte är in toodate”. Hur felsöker hello problemet?**
 
-Azure AD Connect Health genererar en avisering när den inte får alla datapunkter från servern under de senaste två timmarna. Det kan finnas flera orsaker till den här aviseringen.
+Azure AD Connect Health genererar hello avisering när den inte får alla hello datapunkter från hello-server i hello senaste två timmarna. Det kan finnas flera orsaker till den här aviseringen.
 
-* Agenten kan inte kommunicera med de nödvändiga slutpunkterna eftersom en brandvägg blockerar trafik. Detta är särskilt vanligt på webbprogramproxyservrarna. Kontrollera att du har tillåtit utgående kommunikation till de nödvändiga slutpunkterna och portar. Finns det [avsnittet krav](active-directory-aadconnect-health-agent-install.md#requirements) mer information.
-* Utgående kommunikation är föremål för SSL-kontroll av nätverksnivån. Detta gör att det certifikat som använder agenten som ska ersättas med inspektion server/entiteten och processen inte kan överföra data till Azure AD Connect Health-tjänsten.
-* Du kan använda kommandot anslutningen inbyggda i agenten. [Läs mer](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service).
-* Agenterna stöder också utgående anslutning via en oautentiserad HTTP-Proxy. [Läs mer](active-directory-aadconnect-health-agent-install.md##configure-azure-ad-connect-health-agents-to-use-http-proxy).
+* hello-agenten kan inte kommunicera med hello krävs slutpunkter eftersom en brandvägg blockerar trafik. Detta är särskilt vanligt på webbprogramproxyservrarna. Kontrollera att du har tillåtit slutpunkter för utgående kommunikation toohello som krävs och portar. Se hello [avsnittet krav](active-directory-aadconnect-health-agent-install.md#requirements) mer information.
+* Utgående kommunikation är utsatts tooan SSL-kontroll av hello nätverksnivån. Detta medför hello certifikat att hello agenten använder toobe ersättas med hello inspektion server/entiteten och hello misslyckas tooupload data toohello Azure AD Connect Health-tjänsten.
+* Du kan använda hello anslutningskommando inbyggd hello agent. [Läs mer](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service).
+* hello-agenter stöder också utgående anslutning via en oautentiserad HTTP-Proxy. [Läs mer](active-directory-aadconnect-health-agent-install.md##configure-azure-ad-connect-health-agents-to-use-http-proxy).
 
 ## <a name="operations-questions"></a>Operations frågor
-**F: behöver jag att aktivera granskning på web application proxy-servrar?**
+**F: måste tooenable granskning på hello webbprogramproxyservrarna?**
 
-Nej, granskning behöver inte aktiveras på web application proxy-servrar.
+Nej, granskning behöver inte aktiverad på hello webbprogramproxyservrarna toobe.
 
 **F: hur Azure AD Connect Health-aviseringar löses?**
 
-Azure AD Connect Health-aviseringar löses på ett lyckat tillstånd. Azure AD Connect Health-agenter identifiera och rapportera lyckade villkor till tjänsten med jämna mellanrum. För några aviseringar är dämpning tidsbaserade. Om samma fel inte observeras inom 72 timmar från varningsgenereringen, matchas med andra ord automatiskt aviseringen.
+Azure AD Connect Health-aviseringar löses på ett lyckat tillstånd. Azure AD Connect Health-agenter identifieras och rapportera hello lyckade villkor toohello service med jämna mellanrum. Hello Undertryckning är några aviseringar baseras på tidpunkt. Med andra ord löses hello samma fel måste iakttas inom 72 timmar från varningsgenereringen automatiskt hello avisering.
 
-**F: Jag är hämtar ett meddelande om att ”Test autentiseringsbegäran (syntetisk transaktion) kunde inte hämta en token”. Hur felsöker problemet?**
+**F: Jag är få ett meddelande om att ”Test autentiseringsbegäran (syntetisk transaktion) misslyckades tooobtain en token”. Hur felsöker hello problemet?**
 
-Azure AD Connect Health för AD FS genererar aviseringen när Health-agenten installeras på en AD FS-servern inte kan hämta en token som en del av en syntetisk transaktion som initieras av Hälsoagenten. Health-agenten använder det lokala systemsammanhanget och försöker hämta en token för ett självsignerat förlitande part. Det här är en fångar in alla test så att AD FS är i ett tillstånd för att utfärda token.
+Azure AD Connect Health för AD FS genererar aviseringen när hello Health Agent installeras på en AD FS-servern inte tooobtain en token som en del av en syntetisk transaktion som initieras av hello Health-agenten. hello Health-agenten använder hello lokala systemsammanhanget och försöker tooget en token för en självutfärdad förlitande part. Det här är en fångar in alla test tooensure som AD FS är i ett tillstånd för att utfärda token.
 
-Det här testet misslyckas oftast eftersom Hälsoagenten inte går att matcha namnet för AD FS-servergruppen. Detta kan inträffa om AD FS-servrar som finns bakom en belastningsutjämnare för nätverket och begäran hämtar initieras från en nod som är bakom belastningsutjämnaren (i stället för en vanlig klient som är framför belastningsutjämnaren). Detta kan åtgärdas genom att uppdatera ”” värdfilen som finns under ”C:\Windows\System32\drivers\etc” med IP-adressen för AD FS-servern eller en loopback-IP-adress (127.0.0.1) för AD FS-servergruppsnamnet (t.ex sts.contoso.com). Lägga till värd-fil kommer kortslutning anropet nätverket, vilket ger Hälsoagenten att hämta token.
+Det här testet misslyckas oftast eftersom hello Health-agenten är tooresolve hello AD FS-servergruppsnamnet. Detta kan inträffa om hello AD FS-servrar som finns bakom en belastningsutjämnare för nätverket och hello begäran hämtar initieras från en nod som är bakom hello belastningsutjämnare (som tooa skillnad från vanliga klient som är framför hello belastningsutjämnare). Detta kan åtgärdas genom att uppdatera hello ”” värdfilen som finns under ”C:\Windows\System32\drivers\etc” tooinclude hello IP-adress hello AD FS-server eller en loopback-IP-adress (127.0.0.1) för hello AD FS-servergruppnamn (t.ex sts.contoso.com). Att lägga till hello värdfilen kommer kortslutning hello nätverksanrop, vilket ger hello Health Agent tooget hello token.
 
-**F: Jag har fått ett e-postmeddelande som anger mina datorer inte korrigeras för senaste ransomeware attacker. Varför fick e-postmeddelandet?**
+**F: Jag har fått ett e-postmeddelande som anger mina datorer inte korrigeras för hello senaste ransomeware attacker. Varför fick e-postmeddelandet?**
 
-Azure AD Connect Health service genomsöks alla datorer som övervakas för att säkerställa uppdateringar som krävs har installerats. E-postmeddelandet skickades till administratörer för klientorganisation om minst en dator inte har kritiska korrigeringar. Följande logik användes för att göra detta.
-1. Hitta alla snabbkorrigeringar som är installerade på datorn.
-2. Kontrollera om minst en av snabbkorrigeringar från listan över definierade finns.
-3. Om Ja, är datorn skyddad. Om inte datorn är i fara för angrepp.
+Azure AD Connect Health service genomsöks alla hello datorer som den övervakar tooensure hello krävs korrigeringsfiler har installerats. hello e-postmeddelandet skickades toohello innehavaradministratörer Om minst en dator inte hade hello kritiska korrigeringar. Hej följande logik har använt toomake den bedömningen.
+1. Hitta alla installerade på datorn hello hello snabbkorrigeringar.
+2. Kontrollera att minst en av hello snabbkorrigeringar från hello definierat lista finns.
+3. Om Ja, är hello datorn skyddad. Om inte, hello datorn är i fara för hello angrepp.
 
-Du kan använda följande PowerShell-skript för att utföra den här kontrollen manuellt. Den implementerar logiken som ovan.
+Du kan använda följande PowerShell-skriptet tooperform hello kontrollen manuellt. Den implementerar hello ovan logik.
 
 ```
 Function CheckForMS17-010 ()
 {
     $hotfixes = "KB3205409", "KB3210720", "KB3210721", "KB3212646", "KB3213986", "KB4012212", "KB4012213", "KB4012214", "KB4012215", "KB4012216", "KB4012217", "KB4012218", "KB4012220", "KB4012598", "KB4012606", "KB4013198", "KB4013389", "KB4013429", "KB4015217", "KB4015438", "KB4015546", "KB4015547", "KB4015548", "KB4015549", "KB4015550", "KB4015551", "KB4015552", "KB4015553", "KB4015554", "KB4016635", "KB4019213", "KB4019214", "KB4019215", "KB4019216", "KB4019263", "KB4019264", "KB4019472", "KB4015221", "KB4019474", "KB4015219", "KB4019473"
 
-    #checks the computer it's run on if any of the listed hotfixes are present
+    #checks hello computer it's run on if any of hello listed hotfixes are present
     $hotfix = Get-HotFix -ComputerName $env:computername | Where-Object {$hotfixes -contains $_.HotfixID} | Select-Object -property "HotFixID"
 
     #confirms whether hotfix is found or not

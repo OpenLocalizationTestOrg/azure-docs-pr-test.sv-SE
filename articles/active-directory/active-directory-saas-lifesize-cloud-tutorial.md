@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med molntjänster Lifesize | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Lifesize moln."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Lifesize moln."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,118 +13,118 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 7542360f9c75786bf400553090ba0a891d9c2fcc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ae599907e872571b3220de7122006c7db8db4a2b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Självstudier: Azure Active Directory-integrering med Lifesize moln
 
-I kursen får lära du att integrera Lifesize moln med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate Lifesize moln med Azure Active Directory (AD Azure).
 
-Integrera Lifesize moln med Azure AD ger dig följande fördelar:
+Integrera Lifesize moln med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till Lifesize moln
-- Du kan aktivera användarna att automatiskt hämta loggat in på molnet Lifesize (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst tooLifesize moln
+- Du kan aktivera din användare tooautomatically get inloggade tooLifesize molnet (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med Lifesize molnet, behöver du följande:
+tooconfigure Azure AD-integrering med Lifesize molnet, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Lifesize enkel inloggning aktiverad molnprenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Lifesize moln från galleriet
+1. Att lägga till Lifesize moln från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-lifesize-cloud-from-the-gallery"></a>Att lägga till Lifesize moln från galleriet
-Du måste lägga till Lifesize moln från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Lifesize moln i Azure AD.
+## <a name="adding-lifesize-cloud-from-hello-gallery"></a>Att lägga till Lifesize moln från hello-galleriet
+tooconfigure hello integrering av Lifesize moln i Azure AD, behöver du tooadd Lifesize moln hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Lifesize moln från galleriet:**
+**tooadd Lifesize moln från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **Lifesize moln**.
+4. Skriv i sökrutan hello **Lifesize moln**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_search.png)
 
-5. Välj i resultatpanelen **Lifesize moln**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **Lifesize moln**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 Du konfigurera och testa Azure AD enkel inloggning med Lifesize molnet baserat på en testanvändare som kallas ”Britta Simon” i det här avsnittet.
 
-Azure AD måste du känna till motsvarande användaren i Lifesize molnet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk mellan en Azure AD-användare och relaterade användaren i Lifesize molnet upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Lifesize molnet är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användaren i Lifesize molnet toobe upprätta.
 
-I Lifesize moln, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+Tilldela hello värdet hello i Lifesize molnet **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Lifesize moln, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Lifesize molnet, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Lifesize moln](#creating-a-lifesize-cloud-test-user)**  – du har en motsvarighet för Britta Simon i Lifesize moln som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Lifesize moln](#creating-a-lifesize-cloud-test-user)**  -toohave en motsvarighet för Britta Simon i Lifesize moln som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Lifesize moln.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Lifesize moln.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Lifesize molnet:**
+**Utför följande hello tooconfigure Azure AD enkel inloggning med Lifesize molnet:**
 
-1. I Azure-portalen på den **Lifesize moln** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **Lifesize moln** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_samlbase.png)
 
-3. På den **Lifesize moln domän och URL: er** avsnittet, utför följande steg:
+3. På hello **Lifesize moln domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_url.png)
 
-    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://login.lifesizecloud.com/ls/?acs`
+    a. I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://login.lifesizecloud.com/ls/?acs`
 
-    b. I den **identifierare** textruta Skriv en URL med följande mönster:`https://login.lifesizecloud.com/<companyname>`
+    b. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://login.lifesizecloud.com/<companyname>`
 
      
-4. Kontrollera **visa avancerade inställningar för URL: en**, utföra följande steg:    
+4. Kontrollera **visa avancerade inställningar för URL: en**, utföra hello följande steg:  
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_url1.png)
 
-    I den **Relay tillstånd** textruta Skriv en URL med följande mönster:`https://webapp.lifesizecloud.com/?ent=<identifier>`
+    I hello **Relay tillstånd** textruta, ange ett URL-Adressen med hello följer mönstret:`https://webapp.lifesizecloud.com/?ent=<identifier>`
    
    > [!NOTE] 
-   >Observera att detta inte är verkliga värden. Du måste uppdatera dessa värden med den faktiska inloggnings-URL, Relay tillstånd och identifierare. Kontakta [Lifesize Cloud klienten supportteamet](https://www.lifesize.com/support) få inloggnings-URL, och identifierar-värden och du kan hämta Relay tillstånd värde från SSO-konfigurationen som beskrivs senare under kursen.
+   >Observera att detta inte är hello verkliga värden. du har tooupdate dessa värden med hello faktiska inloggnings-URL, Relay tillstånd och identifierare. Kontakta [Lifesize Cloud klienten supportteamet](https://www.lifesize.com/support) tooget inloggnings-URL, och identifierar-värden och du kan hämta Relay tillstånd värde från SSO-konfigurationen som beskrivs senare i självstudiekursen hello.
 
-4. På den **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara certifikatfilen på datorn.
+4. På hello **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara sedan hello certifikat på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_certificate.png) 
 
@@ -132,102 +132,102 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_general_400.png)
 
-6. På den **Lifesize Molnkonfigurationen** klickar du på **konfigurera Lifesize moln** att öppna **konfigurera inloggning** fönster. Kopiera den **SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
+6. På hello **Lifesize Molnkonfigurationen** klickar du på **konfigurera Lifesize moln** tooopen **konfigurera inloggning** fönster. Kopiera hello **SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_configure.png) 
 
-7. Att hämta SSO konfigurerats för ditt program, logga in på programmet Lifesize moln med administratörsrättigheter.
+7. tooget SSO konfigurerats för ditt program, logga in på hello Lifesize molnapp med administratörsrättigheter.
 
-8. Klicka på ditt namn i övre högra hörnet och klicka sedan på den **avancerade inställningar**.
+8. Klicka på ditt namn i hello övre högra hörnet och klicka sedan på hello **avancerade inställningar**.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
-9. I avancerade inställningar nu klickar du på den **SSO Configuration** länk. Konfigurationssidan för enkel inloggning för din instans öppnas.
+9. I avancerade inställningar nu klickar du på hello hello **SSO Configuration** länk. Hello SSO konfigurationssidan för din instans öppnas.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
-10. Nu konfigurera följande värden i Användargränssnittet för SSO-konfigurationen.    
+10. Konfigurera följande värden i hello SSO Konfigurationsgränssnittet hello.    
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
     
-    a. I **identitet providern utfärdaren** textruta klistra in värdet för **SAML enhets-ID** som du har kopierat från Azure-portalen.
+    a. I **identitet providern utfärdaren** textruta klistra in hello värdet för **SAML enhets-ID** som du har kopierat från Azure-portalen.
 
-    b.  I **Inloggningswebbadressen** textruta klistra in värdet för **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.
+    b.  I **inloggnings-URL** textruta klistra in hello värdet för **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen.
 
-    c. Öppna din Base64-kodade certifikatet i anteckningar som hämtas från Azure-portalen, kopiera innehållet i den till Urklipp och klistra in den till den **X.509-certifikat** textruta.
+    c. Öppna din Base64-kodade certifikatet i anteckningar som hämtas från Azure-portalen kopiera hello innehållet i den i Urklipp, och klistra in den toohello **X.509-certifikat** textruta.
   
-    d. Mappningar för textrutan förnamn ange värdet som i SAML-attributet **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**
+    d. I hello SAML-attributet mappningar för hello förnamn textrutan anger hello-värde som **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**
     
-    e. I mappningen för SAML-attributet för den **efternamn** textrutan anger du värdet som **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**
+    e. I hello SAML attributmappning för hello **efternamn** textruta ange hello-värde som **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**
     
-    f. I mappningen för SAML-attributet för den **e-post** textrutan anger du värdet som **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**
+    f. I hello SAML attributmappning för hello **e-post** textruta ange hello-värde som **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**
 
-11. Kontrollera konfigurationen kan du klicka på den **Test** knappen.
+11. toocheck hello konfiguration kan du klicka på hello **Test** knappen.
    
     >[!NOTE]
-    >För lyckad testning måste du slutföra guiden för konfiguration av i Azure AD och även ge åtkomst till användare eller grupper som kan utföra testet.
+    >För lyckad testning behöver toocomplete hello konfigurationsguiden i Azure AD och även ange åtkomst toousers eller grupper som kan utföra hello test.
 
-12. Aktivera SSO genom att kontrollera om den **aktivera enkel inloggning** knappen.
+12. Aktivera hello SSO genom att kontrollera på hello **aktivera enkel inloggning** knappen.
 
-13. Klicka på den **uppdatering** knappen så att alla inställningar har sparats. Detta genererar RelayState-värdet. Kopiera värdet RelayState genereras i textrutan, klistra in den i den **Relay tillstånd** textruta under **Lifesize moln domän och URL: er** avsnitt. 
+13. Klicka på hello **uppdatering** knappen så att alla hello inställningarna sparas. Detta genererar hello RelayState värde. Kopiera hello RelayState-värde som har genererats i textrutan för hello, klistra in den i hello **Relay tillstånd** textruta under **Lifesize moln domän och URL: er** avsnitt. 
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_02.png) 
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-lifesize-cloud-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-a-lifesize-cloud-test-user"></a>Skapa en testanvändare Lifesize moln
 
-I det här avsnittet kan du skapa en användare som kallas Britta Simon i Lifesize molnet. Lifesize molnet stöder automatisk användaretablering. Efter en lyckad autentisering vid Azure AD användaren automatiskt att etableras i programmet. 
+I det här avsnittet kan du skapa en användare som kallas Britta Simon i Lifesize molnet. Lifesize molnet stöder automatisk användaretablering. Efter en lyckad autentisering vid Azure AD hello användaren automatiskt att etableras i hello program. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Lifesize moln.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooLifesize moln.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela Lifesize moln Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooLifesize moln, utför följande steg hello:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Lifesize moln**.
+2. Välj i listan med program hello **Lifesize moln**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-lifesize-cloud-tutorial/tutorial_lifesize-cloud_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -235,7 +235,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -243,14 +243,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen Lifesize moln på åtkomstpanelen bör du få inloggningssidan för Lifesize molnapp.
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+När du klickar på hello Lifesize moln panelen i hello åtkomstpanelen bör du hämta inloggningssidan för Lifesize molnapp.
+Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

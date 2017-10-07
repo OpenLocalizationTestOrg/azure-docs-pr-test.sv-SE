@@ -1,6 +1,6 @@
 ---
-title: "Så här ändrar du livslängd för token som standard för en anpassad utvecklade program | Microsoft Docs"
-description: "Så här uppdaterar du principer för livslängd för Token för programmet som du utvecklar på Azure AD"
+title: "livslängd för aaaHow toochange hello token som standard för en anpassad utvecklade program | Microsoft Docs"
+description: "Hur tooupdate livslängd för Token principer för programmet som du utvecklar på Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a28eacd820ed28a6470992ce86b060e886c00bcb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6e1aa1f2a7c33c1f55c5fb619c618ad43cd96273
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Så här ändrar du standardvärdena livslängd för token för en anpassad utvecklade program
+# <a name="how-toochange-hello-token-lifetime-defaults-for-a-custom-developed-application"></a>Hur livslängd för token toochange hello standardvärden för ett anpassat utvecklade program
 
-Azure AD Premium kan utvecklare av program och innehavaradministratörer för att konfigurera livslängd för token som utfärdats för icke-konfidentiella klienter. Livslängd för token policys ställs in på klienten hela bas eller resurser som används.
+Azure AD Premium kan appen utvecklare och administratörer klient tooconfigure hello livslängd för token som utfärdats för icke-konfidentiella klienter. Livslängd för token policys ställs in på klienten hela bas eller hello resurser som används.
 
- * Om du vill ange en livslängd för token-princip måste du hämta den [Azure AD PowerShell-modulen](https://www.powershellgallery.com/packages/AzureADPreview).
+ * tooset en livslängd för token-princip måste toodownload hello [Azure AD PowerShell-modulen](https://www.powershellgallery.com/packages/AzureADPreview).
 
- * Kör den **Connect-AzureAD-Bekräfta** kommando.
+ * Kör hello **Connect-AzureAD-Bekräfta** kommando.
 
- * Här är en exempelprincip som anger den maximala ålder en faktor uppdateringstoken. Skapa principen:```New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"```
+ * Här är en exempelprincip som anger Hej max ålder en faktor uppdateringstoken. Skapa hello princip:```New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"```
 
- * Checka ut den [konfigurera livslängd för token](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes) dokument för att lära dig hur du skapar andra anpassade.
+ * Utcheckning hello [konfigurera livslängd för token](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes) dokumentera toolearn hur toocreate andra anpassade.
 
 ## <a name="next-steps"></a>Nästa steg
 [Konfigurera livslängd för Token](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-configurable-token-lifetimes)<br>

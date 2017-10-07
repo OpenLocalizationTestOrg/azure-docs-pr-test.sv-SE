@@ -1,6 +1,6 @@
 ---
-title: "Hantera ditt första API i Azure API Management | Microsoft Docs"
-description: "Lär dig hur du skapar API:er, lägger till åtgärder och kommer igång med API Management."
+title: "aaaManage din första API i Azure API Management | Microsoft Docs"
+description: "Lär dig hur toocreate API: er, lägga till åtgärder och kom igång med API-hantering."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 6e76d1ee08f804637999ef2ebf5d25becf6a0408
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7d43f33aa359c4d1e605e9fb41e43d323ca6a777
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-your-first-api-in-azure-api-management"></a>Hantera ditt första API i Azure API Management
 ## <a name="overview"> </a>Översikt
-Den här guiden hjälper dig att snabbt komma igång med Azure API Management och att göra ditt första API-anrop.
+Den här guiden visar hur tooquickly Kom igång med Azure API Management och göra din första API-anrop.
 
 ## <a name="concepts"> </a>Vad är Azure API Management?
-Med Azure API Management kan du välja valfri serverdel och köra ett fullvärdigt API-program baserat på den.
+Du kan använda Azure API Management tootake alla serverdelar och starta en komplett API-programmet baseras på den.
 
 Här följer exempel på några vanliga scenarier:
 
 * **Skydda den mobila infrastrukturen** genom att hantera åtkomsten med API-nycklar, förhindra DOS-attacker med hjälp av begränsningar och använda avancerade säkerhetsprinciper som JWT-tokenvalidering.
-* **Aktivera ISV-partnerekosystem** genom att erbjuda snabb partnerintegrering via utvecklarportalen och genom att bygga en API-fasad som är åtskild från interna implementeringar som inte är redo för partneranvändning än.
-* **Kör ett internt API-program** genom att erbjuda en central plats för organisationen där man kan kommunicera kring tillgänglighet och de senaste ändringarna i API:er samt hantera åtkomsten baserat på organisationskonton – allt via en säker kanal mellan API-gatewayen och serverdelen.
+* **Aktivera ISV partner ekosystem** genom att erbjuda snabb partner onboarding via hello developer portal och bygga ett API facade toodecouple från interna implementeringar som inte är mogna för partner förbrukning.
+* **Ett internt API-program körs** genom att erbjuda en central plats för hello organisation toocommunicate om hello tillgänglighet och senaste ändras tooAPIs, gating åtkomst baserat på organisationskonton, alla baserat på en skyddad kanal mellan hello API-gateway och hello backend.
 
-Systemet består av följande komponenter:
+hello system består av hello följande komponenter:
 
-* **API-gatewayen** är slutpunkten som:
+* Hej **API gateway** är hello slutpunkt som:
   
-  * Accepterar API-anrop och dirigerar dem till serverdelen.
+  * Accepterar API-anrop och skickar dem tooyour serverdelar.
   * Verifierar API-nycklar, JWT-token, certifikat och andra autentiseringsuppgifter.
   * Tillämpar användningskvoter och hastighetsbegränsningar.
-  * Transformerar ditt API direkt utan kodändringar.
+  * Transformerar ditt API på hello direkt utan kod ändringar.
   * Cachelagrar backend-svar om detta konfigurerats.
   * Loggar metadata i anrop för analysändamål.
-* **Utgivarportalen** är det administrativa gränssnittet där du konfigurerar ditt API-program. Använd portalen om du vill:
+* Hej **publisher portal** är hello administrationsgränssnittet där du ställa in API-program. Använd portalen om du vill:
   
   * Definiera eller importera API-schemat.
   * Paketera API:er till produkter.
-  * Konfigurera principer som kvoter eller transformationer i API:erna.
+  * Konfigurera principer som kvoter eller omformningar på hello API: er.
   * Få insikter från analyser.
   * Hantera användare.
-* **utvecklarportalen** är en fundamental webbportal för utvecklare, där de kan:
+* Hej **utvecklarportalen** fungerar som hello huvudsakliga webben för utvecklare, där de kan:
   
   * Få tillgång till API-dokumentation.
-  * Testa ett API via den interaktiva konsolen.
-  * Skapa ett konto och börja prenumerera på API-nycklar.
+  * Prova att använda en API via interaktiva hello-konsolen.
+  * Skapa ett konto och prenumerera tooget API-nycklar.
   * Komma åt analyser om deras egen användning.
 
 ## <a name="create-service-instance"> </a>Skapa en API Management-instans
 > [!NOTE]
-> Du behöver ett Azure-konto för att slutföra den här självstudien. Om du inte har något konto kan du skapa ett kostnadsfritt konto på bara några minuter. Mer information finns i [kostnadsfri utvärderingsversion av Azure][Azure Free Trial].
+> toocomplete den här självstudiekursen kommer du behöver ett Azure-konto. Om du inte har något konto kan du skapa ett kostnadsfritt konto på bara några minuter. Mer information finns i [kostnadsfri utvärderingsversion av Azure][Azure Free Trial].
 > 
 > 
 
-Det första steget när du arbetar med API Management är att skapa en tjänstinstans. Logga in på [Azure Portal][Azure Portal] och klicka på **Nytt**, **Web + Mobile**, **API Management**.
+hello första steget i att arbeta med API-hantering är toocreate en instans av tjänsten. Logga in toohello [Azure Portal] [ Azure Portal] och på **ny**, **webb + mobilt**, **API Management**.
 
 ![Ny API Management-instans][api-management-create-instance-menu]
 
-För **Namn** anger du ett unikt underdomännamn som ska användas för tjänst-URL:en.
+För **namn**, ange en unik underordnade domän namnet toouse för hello tjänst-URL.
 
-Välj önskad **prenumeration**, **resursgrupp** och **plats** för din tjänstinstans.
+Välj önskad hello **prenumeration**, **resursgruppen** och **plats** för service-instans.
 
-Ange **Contoso Ltd.** som **organisationsnamn** och ange din e-postadress i fältet **Administratörens e-postadress**.
+Ange **Contoso AB** för hello **organisationsnamn**, och ange din e-postadress i hello **administratör e-post** fältet.
 
 > [!NOTE]
-> Den här e-postadressen används för meddelanden från API Management-systemet. Mer information finns i [Konfigurera meddelanden och e-postmallar i Azure API Management][How to configure notifications and email templates in Azure API Management].
+> E-postadressen används för meddelanden från hello API Management-systemet. Mer information finns i [hur tooconfigure meddelanden och e-mallar i Azure API Management][How tooconfigure notifications and email templates in Azure API Management].
 > 
 > 
 
@@ -83,40 +83,40 @@ Ange **Contoso Ltd.** som **organisationsnamn** och ange din e-postadress i fäl
 API Management-tjänstinstanser är tillgängliga på tre nivåer: Developer, Standard och Premium.
 
 > [!NOTE]
-> Developer-nivån är avsedd för utveckling, testning och pilotprojekt av API-program där hög tillgänglighet inte är något problem. På Standard- och Premium-nivåerna kan du skala antalet reserverade enheter och hantera mer trafik. API Management-tjänsten har mest processorkraft och prestanda på Standard- och Premium-nivåerna. Du kan genomföra den här självstudiekursen med valfri nivå. Mer information om API Management-nivåer finns i avsnittet om [API Management-priser][API Management pricing].
+> hello Developer nivå är för utveckling, testning och API pilotprogram där hög tillgänglighet inte är ett problem. I hello Standard och Premium-nivåer, kan du skala din enhet antal toohandle mer trafik. hello Standard och Premium nivåer ge din API Management-tjänsten med hello de flesta processorkraft och prestanda. Du kan genomföra den här självstudiekursen med valfri nivå. Mer information om API Management-nivåer finns i avsnittet om [API Management-priser][API Management pricing].
 > 
 > 
 
-Klicka på **skapa** för att börja etablera din serviceinstance.
+Klicka på **skapa** toostart etablering service-instans.
 
 ![Ny API Management-tjänst][api-management-instance-created]
 
-När tjänstinstansen har skapats är nästa steg att skapa eller importera ett API.
+När du har skapat hello tjänstinstans hello nästa steg är toocreate eller importerar en API.
 
 ## <a name="create-api"> </a>Importera ett API
-Ett API består av en uppsättning åtgärder som kan anropas från ett klientprogram. API-åtgärder körs via en proxy till befintliga webbtjänster.
+Ett API består av en uppsättning åtgärder som kan anropas från ett klientprogram. API: et är via proxy tooexisting webbtjänster.
 
-API:er kan skapas (och åtgärder kan läggas till) manuellt eller importeras. I den här självstudien ska vi importera API:et för ett exempel på en webbaserad kalkylatortjänst som tillhandahålls av Microsoft och som finns i Azure.
+API:er kan skapas (och åtgärder kan läggas till) manuellt eller importeras. I den här självstudiekursen kommer vi importera hello API för en exempel Kalkylatorn-webbtjänst som tillhandahålls av Microsoft och finns på Azure.
 
 > [!NOTE]
-> Anvisningar för hur du skapar ett API och lägger till åtgärder manuellt finns i [Skapa API:er](api-management-howto-create-apis.md) och [Lägga till åtgärder till ett API](api-management-howto-add-operations.md).
+> Anvisningar för att skapa en API och manuellt lägga till operations finns [hur toocreate API: er](api-management-howto-create-apis.md) och [hur tooadd operations tooan API](api-management-howto-add-operations.md).
 > 
 > 
 
-API: er konfigureras från utgivarportalen. För att nå den, klickar du på **utgivarportalen** i serviceverktygsfältet.
+API: er konfigureras från hello publisher-portalen. tooreach, klickar du på **Publisher portal** hello service verktygsfältet.
 
 ![Utgivarportalen][api-management-management-console]
 
-Du importerar kalkylator-API:et genom att klicka på **API:er** på **API Management**-menyn till vänster och sedan på **Importera API**.
+tooimport hello Kalkylatorn API, klickar du på **API: er** från hello **API Management** menyn på hello vänster och klicka sedan på **Import API**.
 
 ![Knappen Importera API][api-management-import-api]
 
-Konfigurera kalkylator-API:et genom att följa stegen nedan.
+Utför hello följande steg tooconfigure hello Kalkylatorn API:
 
-1. Klicka på **Från URL**, ange **http://calcapi.cloudapp.net/calcapi.json** i textrutan **URL till specifikationsdokument** och klicka på alternativknappen för **Swagger**.
-2. Skriv **calc** i textrutan **URL-suffix för webb-API**.
-3. Klicka i rutan **Produkter (valfritt)** och välj **Starter**.
-4. Klicka på **Spara** för att importera API:et.
+1. Klicka på **från URL: en**, ange **http://calcapi.cloudapp.net/calcapi.json** till hello **specifikation dokumentet URL** text och på hello **Swagger**  knappen.
+2. Typen **beräkna** till hello **URL för Web API-suffix** textruta.
+3. Klicka i hello **produkter (valfritt)** och väljer **Starter**.
+4. Klicka på **spara** tooimport hello API.
 
 ![Lägga till ett nytt API][api-management-import-new-api]
 
@@ -125,95 +125,95 @@ Konfigurera kalkylator-API:et genom att följa stegen nedan.
 > 
 > 
 
-När du har importerat API:et visas sammanfattningssidan för API:et på utgivarportalen.
+När du har importerat hello API visas hello sammanfattningssidan hello-API: t i hello publisher-portalen.
 
 ![API-sammanfattning][api-management-imported-api-summary]
 
-API-avsnittet innehåller flera flikar. Fliken **Sammanfattning** innehåller grundläggande mätvärden och information om API:et. Fliken [Inställningar](api-management-howto-create-apis.md#configure-api-settings) används för att visa och redigera konfigurationen för ett API. Fliken [Åtgärder](api-management-howto-add-operations.md) används för att hantera API-åtgärderna. Fliken **Säkerhet** kan användas för att konfigurera gateway-autentisering för backend-servern med grundläggande autentisering eller [ömsesidig certifikatautentisering](api-management-howto-mutual-certificates.md), och för att konfigurera [användarauktorisering med hjälp av OAuth 2.0](api-management-howto-oauth2.md).  Fliken **Problem** används för att visa problem som har rapporterats av utvecklare som använder dina API:er. Fliken **Produkter** används för att konfigurera produkterna som innehåller API:et.
+hello API-avsnitt har flera flikar. Hej **sammanfattning** fliken visas information om hello API och grundläggande mått. Hej [inställningar](api-management-howto-create-apis.md#configure-api-settings) fliken har konfigurerats att använda tooview och redigera hello API. Hej [Operations](api-management-howto-add-operations.md) är operations används toomanage hello API: er. Hej **säkerhet** flik kan vara används tooconfigure gateway-autentisering för hello backend-servern med hjälp av grundläggande autentisering eller [ömsesidig autentisering](api-management-howto-mutual-certificates.md), och tooconfigure [ Auktoriseringen av användaren med hjälp av OAuth 2.0](api-management-howto-oauth2.md).  Hej **problem** är används tooview problem som rapporteras av hello utvecklare som använder dina API: er. Hej **produkter** är används tooconfigure hello produkter som innehåller detta API.
 
 Som standard medföljer två exempelprodukter varje API Management-instans:
 
 * **Starter**
 * **Obegränsat**
 
-I den här självstudien lades Basic Calculator-API:et till i Starter-produkten när API:et importerades.
+I den här självstudiekursen lades hello grundläggande Kalkylatorn API toohello Starter produkten när hello API importerades.
 
-Innan utvecklare kan göra anrop till ett API måste de prenumerera på en produkt som ger dem åtkomst till API:et. Utvecklare kan prenumerera på produkter via utvecklarportalen, eller så kan en administratör registrera utvecklare för produktprenumerationer från utgivarportalen. Du är administratör eftersom du skapade API Management-instansen i föregående steg i den här självstudiekursen, och som administratör prenumererar du redan på alla produkter som standard.
+Utvecklare måste först prenumerera tooa produkt som ger dem åtkomst tooit i ordning toomake anrop tooan API. Utvecklare kan prenumerera på tooproducts i hello developer-portalen eller administratörer kan prenumerera på utvecklare tooproducts hello publisher-portalen. Du är administratör sedan du skapade hello API Management-instans i hello föregående steg i självstudiekursen hello så att du redan prenumererar på tooevery produkten som standard.
 
-## <a name="call-operation"> </a>Anropa en åtgärd från utvecklarportalen
-Du kan anropa åtgärder direkt från utvecklarportalen, vilket är ett enkelt sätt att visa och testa åtgärderna i ett API. I det här steget i självstudiekursen ska du anropa åtgärden **Lägg till två heltal** i Basic Calculator-API:et. Klicka på **utvecklarportalen** på menyn längst upp till höger på utgivarportalen.
+## <a name="call-operation"></a>Anropa en åtgärd från hello developer-portalen
+Åtgärder kan anropas direkt från hello developer-portalen, vilket ger ett bekvämt sätt tooview och testa hello driften av ett API. I den här självstudiekursen steg ska du anropa hello grundläggande Kalkylatorn API: er **lägga till två heltal** igen. Klicka på **Developer-portalen** hello-menyn på hello övre högra hello publisher portalen.
 
 ![Utvecklarportalen][api-management-developer-portal-menu]
 
-Klicka på **API:er** på den översta menyn och klicka sedan på **Basic Calculator** för att visa de tillgängliga åtgärderna.
+Klicka på **API: er** hello översta menyn och klicka sedan på **grundläggande Kalkylatorn** toosee hello tillgängliga åtgärder.
 
 ![Utvecklarportalen][api-management-developer-portal-calc-api]
 
-Observera exempelbeskrivningarna och exempelparametrarna som importerades tillsammans med API:et och åtgärderna. Beskrivningarna fungerar som en referens för utvecklare som ska använda åtgärden. Dessa beskrivningar kan även läggas till om åtgärder läggs till manuellt.
+Observera hello exempel beskrivningar och parametrarna som har importerats tillsammans med hello API och åtgärder som att tillhandahålla dokumentation för hello utvecklare som använder den här åtgärden. Dessa beskrivningar kan även läggas till om åtgärder läggs till manuellt.
 
-Anropa åtgärden **Lägg till två heltal** genom att klicka på **Prova**.
+toocall hello **lägga till två heltal** åtgärden, klickar du på **prova**.
 
 ![Prova][api-management-developer-portal-calc-api-console]
 
-Ange egna värden för parametrarna eller behåll standardvärdena och klicka sedan på **Skicka**.
+Du kan ange vissa värden för hello parametrar eller hålla hello standardvärden och klicka sedan på **skicka**.
 
 ![HTTP Get][api-management-invoke-get]
 
-När en åtgärd har anropats visas **svarsstatus**, **svarshuvuden** och eventuellt **svarsinnehåll** på utvecklarportalen.
+När en åtgärd har anropats hello developer-portalen visar hello **svarsstatusen**, hello **svarshuvuden**, och en **svar innehåll**.
 
 ![Svar][api-management-invoke-get-response]
 
 ## <a name="view-analytics"> </a>Visa analys
-Om du vill visa analysinformation för Basic Calculator går du tillbaka till utgivarportalen genom att välja **Hantera** på menyn längst upp till höger på utvecklarportalen.
+tooview analytics för grundläggande Kalkylatorn växla tillbaka toohello publisher portal genom att välja **hantera** hello-menyn på hello uppifrån höger om hello developer-portalen.
 
 ![Hantera][api-management-manage-menu]
 
-Standardvyn för utgivarportalen är **Instrumentpanel**, som innehåller en översikt över API Management-instansen.
+hello standardvyn för hello publisher portal är hello **instrumentpanelen**, vilket ger en översikt över API Management-instans.
 
 ![Instrumentpanel][api-management-dashboard]
 
-Hovra med musen över diagrammet för **Basic Calculator** så ser du de specifika mätvärdena relaterade till användningen av API:et under en viss tidsperiod.
+Hovra hello muspekaren över hello diagram för **grundläggande Kalkylatorn** toosee hello specifika mått för hello användning av hello API för en viss tidsperiod.
 
 > [!NOTE]
-> Om du inte ser några rader i diagrammet växlar du tillbaka till utvecklarportalen gör några anrop till API:et, väntar en stund och går sedan tillbaka till instrumentpanelen.
+> Om du inte ser några rader i diagrammet, växla tillbaka toohello developer-portalen och vissa anrop till hello API, vänta en stund och sedan gå tillbaka toohello instrumentpanelen.
 > 
 > 
 
-Klicka på **Visa detaljer** om du vill visa sammanfattningssidan för API:et, inklusive en mer omfattande version av mätvärdena som visas.
+Klicka på **visa information** tooview hello sammanfattningssidan för hello API, inklusive en större version av hello visas mått.
 
 ![Analys][api-management-mouse-over]
 
 ![Sammanfattning][api-management-api-summary-metrics]
 
-Om du vill visa detaljerade mätvärden och rapporter klickar du på **Analys** på **API Management**-menyn till vänster.
+För detaljerad mätvärden och rapporter, klickar du på **Analytics** från hello **API Management** menyn hello vänster.
 
 ![Översikt][api-management-analytics-overview]
 
-Avsnittet **Analys** innehåller följande fyra flikar:
+Hej **Analytics** avsnitt har hello följande fyra flikar:
 
-* **Översikt** innehåller mätvärden om användning och hälsotillstånd, samt de vanligaste utvecklarna, produkterna, API:erna och åtgärderna.
+* **En överblick över** ger totala användningen och hälsotillstånd mått samt hello översta utvecklare, produkter, övre API: er och översta åtgärder.
 * **Användning** innehåller detaljerad information om API-anrop och bandbredd, inklusive en geografisk representation.
 * **Hälsa** fokuserar på statuskoder, lyckade cachelagringsåtgärder, svarstider och API- och tjänstsvarstider.
-* **Aktivitet** innehåller rapporter som visar information om den specifika aktiviteten efter utvecklare, produkt, API och åtgärd.
+* **Aktiviteten** innehåller rapporter som detaljnivån om hello specifik aktivitet efter utvecklare, produkt, API och åtgärden.
 
 ## <a name="next-steps"> </a>Nästa steg
-* Läs mer om hur du [skyddar ditt API med hastighetsbegränsningar](api-management-howto-product-with-rules.md).
+* Lär dig hur för[skydda din API med hastighetsbegränsningar](api-management-howto-product-with-rules.md).
 
 [Azure Free Trial]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 
 [Create an API Management instance]: #create-service-instance
 [Create an API]: #create-api
 [Add an operation]: #add-operation
-[Add the new API to a product]: #add-api-to-product
-[Subscribe to the product that contains the API]: #subscribe
-[Call an operation from the Developer Portal]: #call-operation
+[Add hello new API tooa product]: #add-api-to-product
+[Subscribe toohello product that contains hello API]: #subscribe
+[Call an operation from hello Developer Portal]: #call-operation
 [View analytics]: #view-analytics
 [Next steps]: #next-steps
 
 
-[How to manage developer accounts in Azure API Management]: api-management-howto-create-or-invite-developers.md
+[How toomanage developer accounts in Azure API Management]: api-management-howto-create-or-invite-developers.md
 [Configure API settings]: api-management-howto-create-apis.md#configure-api-settings
-[How to configure notifications and email templates in Azure API Management]: api-management-howto-configure-notifications.md
+[How tooconfigure notifications and email templates in Azure API Management]: api-management-howto-configure-notifications.md
 [Responses]: api-management-howto-add-operations.md#responses
 [How create and publish a product]: api-management-howto-add-products.md
 [API Management pricing]: http://azure.microsoft.com/pricing/details/api-management/

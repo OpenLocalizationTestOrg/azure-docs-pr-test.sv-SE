@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med SAP Business ByDesign | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och SAP Business ByDesign."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och SAP Business ByDesign."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,238 +14,238 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: ab76a0ac1ef954efd3c66e6f565514b889ed9444
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c14714fd27f8d7fc555f25c7be83fad2b0d7f333
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-bydesign"></a>Självstudier: Azure Active Directory-integration med SAP Business ByDesign
 
-Lär dig hur du integrerar SAP Business ByDesign med Azure Active Directory (AD Azure) i den här självstudiekursen.
+I kursen får du lära dig hur toointegrate SAP Business ByDesign med Azure Active Directory (AD Azure).
 
-Integrera SAP Business ByDesign med Azure AD ger dig följande fördelar:
+Integrera SAP Business ByDesign med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till SAP Business ByDesign.
-- Du kan aktivera användarna att automatiskt hämta loggat in på SAP Business ByDesign (Single Sign-On) med sina Azure AD-konton.
-- Du kan hantera dina konton i en central plats - Azure-portalen.
+- Du kan styra i Azure AD som har åtkomst tooSAP Business ByDesign.
+- Du kan låta dina användare tooautomatically get inloggade tooSAP Business ByDesign (Single Sign-On) med sina Azure AD-konton.
+- Du kan hantera dina konton i en central plats - hello Azure-portalen.
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-Om du vill konfigurera Azure AD-integrering med SAP Business ByDesign behöver du följande:
+tooconfigure Azure AD-integrering med SAP Business ByDesign måste hello följande objekt:
 
 - En Azure AD-prenumeration
 - En SAP Business ByDesign enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till SAP Business ByDesign från galleriet
+1. Att lägga till SAP Business ByDesign från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-sap-business-bydesign-from-the-gallery"></a>Att lägga till SAP Business ByDesign från galleriet
-Du måste lägga till SAP Business ByDesign från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av SAP Business ByDesign i Azure AD.
+## <a name="adding-sap-business-bydesign-from-hello-gallery"></a>Att lägga till SAP Business ByDesign från hello-galleriet
+tooconfigure hello integrering av SAP Business ByDesign i Azure AD, behöver du tooadd SAP Business ByDesign hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till SAP Business ByDesign från galleriet:**
+**tooadd SAP Business ByDesign från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
-    ![Azure Active Directory-knappen][1]
+    ![hello Azure Active Directory-knappen][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
-    ![Bladet Enterprise program][2]
+    ![hello Enterprise program bladet][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
-    ![Knappen Nytt program][3]
+    ![hello-knappen för nytt program][3]
 
-4. I sökrutan skriver **SAP Business ByDesign**väljer **SAP Business ByDesign** resultatet-panelen klickar **Lägg till** för att lägga till programmet.
+4. Skriv i sökrutan hello **SAP Business ByDesign**väljer **SAP Business ByDesign** resultatet-panelen klickar **Lägg till** knappen tooadd hello program.
 
-    ![SAP Business ByDesign i resultatlistan](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_addfromgallery.png)
+    ![SAP Business ByDesign i hello resultatlistan](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med SAP Business ByDesign baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i SAP Business ByDesign motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i SAP Business ByDesign upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i SAP Business ByDesign är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i SAP Business ByDesign toobe upprättas.
 
-I SAP Business ByDesign tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+Tilldela hello värdet för hello i SAP Business ByDesign **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med SAP Business ByDesign, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med SAP Business ByDesign, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en SAP Business ByDesign testanvändare](#create-an-sap-business-bydesign-test-user)**  – du har en motsvarighet för Britta Simon i SAP Business ByDesign som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#test-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configure-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#create-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en SAP Business ByDesign testanvändare](#create-an-sap-business-bydesign-test-user)**  -toohave en motsvarighet för Britta Simon i SAP Business ByDesign som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#test-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt program för SAP Business ByDesign.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt program för SAP Business ByDesign.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med SAP Business ByDesign:**
+**tooconfigure Azure AD enkel inloggning med SAP Business ByDesign utför hello följande steg:**
 
-1. I Azure-portalen på den **SAP Business ByDesign** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **SAP Business ByDesign** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning länk][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Enkel inloggning dialogrutan](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_samlbase.png)
 
-3. På den **SAP Business ByDesign domän och URL: er** avsnittet, utför följande steg:
+3. På hello **SAP Business ByDesign domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![URL: er och SAP Business ByDesign domän med enkel inloggning information](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_url.png)
 
-    a. I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://<servername>.sapbydesign.com`
+    a. I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<servername>.sapbydesign.com`
 
-    b. I den **identifierare** textruta Skriv en URL med följande mönster:`https://<servername>.sapbydesign.com`
+    b. I hello **identifierare** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<servername>.sapbydesign.com`
 
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska inloggnings-URL och identifierare. Kontakta [SAP Business ByDesign Client supportteamet](https://www.sap.com/products/cloud-analytics.support.html) att hämta dessa värden.
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL och identifierare. Kontakta [SAP Business ByDesign Client supportteamet](https://www.sap.com/products/cloud-analytics.support.html) tooget dessa värden.
 
-4. På den **användarattribut** avsnittet, utför följande steg:
+4. På hello **användarattribut** avsnittet, utföra hello följande steg:
 
     ![SAP Business ByDesign attributet avsnitt](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_attribute.png)
     
-    a. I **användar-ID** väljer den **ExtractMailPrefix()** funktion.
+    a. I **användar-ID** listan, Välj hello **ExtractMailPrefix()** funktion.
     
-    b. Från den **e** väljer användarattribut som du vill använda för din implementering. Till exempel om du vill använda EmployeeID som unikt identifierare och du har lagrat attributvärdet i ExtensionAttribute2, välj sedan user.extensionattribute2.     
+    b. Från hello **e** listan, Välj hello användarattribut som du vill använda toouse för din implementering. Till exempel om du vill toouse hello EmployeeID som unikt identifierare och du har lagrat hello attributvärdet i hello ExtensionAttribute2, väljer du user.extensionattribute2.   
 
-5. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
+5. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
 
-    ![Länken hämta certifikatet](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_certificate.png) 
+    ![länk för hämtning av hello-certifikat](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_certificate.png) 
 
 6. Klicka på **spara** knappen.
 
     ![Konfigurera enkel inloggning spara](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_general_400.png)
 
-7. På den **SAP Business ByDesign Configuration** klickar du på **konfigurera SAP Business ByDesign** att öppna **konfigurera inloggning** fönster. Kopiera den **SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
+7. På hello **SAP Business ByDesign Configuration** klickar du på **konfigurera SAP Business ByDesign** tooopen **konfigurera inloggning** fönster. Kopiera hello **SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
 
     ![SAP Business ByDesign konfiguration](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_configure.png) 
 
-8. Utför följande steg för att få SSO konfigurerats för ditt program:
+8. tooget SSO konfigurerats för ditt program utför hello följande steg:
    
-    a. Logga in på din SAP Business ByDesign portal med administratörsrättigheter.
+    a. Inloggning tooyour SAP Business ByDesign portal med administratörsrättigheter.
    
-    b. Gå till **program och vanliga användare hanteringsaktivitet** och klicka på den **identitetsleverantör** fliken.
+    b. Navigera för**program och vanliga användare hanteringsaktivitet** och klicka på hello **identitetsleverantör** fliken.
    
-    c. Klicka på **nya identitetsleverantör** och välj metadata XML-filen som du har hämtat från Azure-portalen. Genom att importera metadata filöverföringar systemet automatiskt krävs Signaturcertifikat och certifikat för kryptering.
+    c. Klicka på **nya identitetsleverantör** och välj hello metadata XML-fil som du har hämtat från hello Azure-portalen. Genom att importera hello metadata filöverföringar hello system automatiskt hello krävs Signaturcertifikat och certifikat för kryptering.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_54.png)
    
-    d. Att inkludera den **Assertion konsument-tjänstens URL** i SAML-begäran Välj **inkludera Assertion konsumenten tjänsten URL**.
+    d. tooinclude hello **Assertion konsument-tjänstens URL** till hello SAML-begäran, Välj **inkludera Assertion konsumenten tjänsten URL**.
    
     e. Klicka på **aktivera enkel inloggning**.
    
     f. Spara ändringarna.
    
-    g. Klicka på den **Mina System** fliken.
+    g. Klicka på hello **Mina System** fliken.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_52.png)
    
-    h. Klistra in **SAML enkel inloggning Tjänstwebbadress**, som du har kopierat från Azure portal till den **Azure AD URL: en inloggning** textruta.
+    h. Klistra in **SAML enkel inloggning Tjänstwebbadress**, som du har kopierat från hello Azure-portalen den i hello **Azure AD URL: en inloggning** textruta.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_53.png)
    
-    Jag. Ange om medarbetaren kan välja mellan att logga in med användar-ID och lösenord eller enkel inloggning genom att välja **manuell identitet providern markeringen**.
+    Jag. Ange om hello medarbetare manuellt kan välja mellan att logga in med användar-ID och lösenord eller enkel inloggning genom att välja **manuell identitet providern markeringen**.
    
-    j. I den **SSO URL** avsnitt, ange den URL som ska användas av anställda att logga in på systemet. 
-    I den URL skickas till medarbetare listrutan, kan du välja mellan följande alternativ:
+    j. I hello **SSO URL** avsnittet Ange hello-URL som ska användas av hello medarbetare toologon toohello system. 
+    Du kan välja mellan följande alternativ för hello i hello URL skickas tooEmployee listrutan:
    
     **URL: en icke-SSO**
    
-    Systemet skickar bara normala URL-Adressen till anställde. Medarbetaren kan inte logga in med enkel inloggning, och måste använda lösenordet eller certifikatet i stället.
+    hello skickas endast hello normala URL toohello medarbetare. hello medarbetare kan inte logga in med enkel inloggning, och måste använda lösenordet eller certifikatet i stället.
    
     **URL FÖR ENKEL INLOGGNING** 
    
-    SSO URL skickas till medarbetaren. Medarbetaren kan logga in med enkel inloggning. Autentiseringsbegäran dirigeras via IdP.
+    hello skickas endast hello SSO URL toohello medarbetare. hello medarbetare kan logga in med enkel inloggning. Autentiseringsbegäran dirigeras via hello IdP.
    
     **Automatiskt val**
    
-    Om enkel inloggning inte är aktiv, skickar systemets normala URL: en till medarbetaren. Om enkel inloggning är aktiv, kontrollerar systemet om medarbetaren har ett lösenord. Om det finns ett lösenord skickas både SSO Webbadressen och icke-SSO till medarbetaren. Om medarbetaren har inget lösenord, skickas endast URL för enkel inloggning till medarbetaren.
+    Om enkel inloggning inte är aktiv, skickar hello system hello normala URL toohello medarbetare. Om enkel inloggning är aktiv kontrolleras Hej om hello medarbetare har ett lösenord. Om ett lösenord är tillgängligt skickas både SSO Webbadressen och icke-SSO toohello medarbetare. Men om hello anställda har inget lösenord, skickas endast hello SSO URL toohello medarbetare.
    
     k. Spara ändringarna.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
 
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
    ![Skapa en testanvändare i Azure AD][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I Azure-portalen i den vänstra rutan klickar du på den **Azure Active Directory** knappen.
+1. Klicka på hello i hello Azure-portalen hello vänster **Azure Active Directory** knappen.
 
-    ![Azure Active Directory-knappen](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_01.png)
+    ![hello Azure Active Directory-knappen](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_01.png)
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper**, och klicka sedan på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper**, och klicka sedan på **alla användare**.
 
-    ![”Användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_02.png)
+    ![Hej ”användare och grupper” och ”alla användare” länkar](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_02.png)
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i den **alla användare** dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** hello överst i hello **alla användare** dialogrutan.
 
-    ![Knappen Lägg till](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_03.png)
+    ![hello webbinställningar](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_03.png)
 
-4. I den **användaren** dialogrutan utför följande steg:
+4. I hello **användaren** dialogrutan utför hello följande steg:
 
-    ![Dialogrutan användare](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_04.png)
+    ![hello användardialogrutan](./media/active-directory-saas-sapbusinessbydesign-tutorial/create_aaduser_04.png)
 
-    a. I den **namn** skriver **BrittaSimon**.
+    a. I hello **namn** skriver **BrittaSimon**.
 
-    b. I den **användarnamn** Skriv användarens Britta Simon e-postadress.
+    b. I hello **användarnamn** rutan typen hello användarens e-postadress Britta Simon.
 
-    c. Välj den **visa lösenordet** kryssrutan och sedan skriva ned det värde som visas i den **lösenord** rutan.
+    c. Välj hello **visa lösenordet** kryssrutan och sedan skriva ned hello-värde som visas i hello **lösenord** rutan.
 
     d. Klicka på **Skapa**.
  
 ### <a name="create-an-sap-business-bydesign-test-user"></a>Skapa en SAP Business ByDesign testanvändare
 
-I det här avsnittet skapar du en användare som kallas Britta Simon i SAP Business ByDesign. Se tillsammans med [SAP Business ByDesign Client supportteamet](https://www.sap.com/products/cloud-analytics.support.html) att lägga till användare i SAP Business ByDesign-plattformen. 
+I det här avsnittet skapar du en användare som kallas Britta Simon i SAP Business ByDesign. Se tillsammans med [SAP Business ByDesign Client supportteamet](https://www.sap.com/products/cloud-analytics.support.html) tooadd hello användare i hello SAP Business ByDesign plattform. 
 
 > [!NOTE]
-> Kontrollera att NameID värdet ska vara identiskt med fältet för användarnamn i SAP Business ByDesign-plattformen.
+> Kontrollera att NameID värdet ska vara identiskt med hello användarnamn fält i hello SAP Business ByDesign plattform.
 
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till SAP Business ByDesign.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooSAP Business ByDesign.
 
-![Tilldela rollen][200] 
+![Tilldela hello användarroll][200] 
 
-**Om du vill tilldela SAP Business ByDesign Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooSAP Business ByDesign utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **SAP Business ByDesign**.
+2. Välj i listan med program hello **SAP Business ByDesign**.
 
-    ![Länken SAP Business ByDesign i listan med program](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_app.png)  
+    ![hello SAP Business ByDesign länken i listan med program hello](./media/active-directory-saas-sapbusinessbydesign-tutorial/tutorial_sapbusinessbydesign_app.png)  
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
-    ![Länken ”användare och grupper”][202]
+    ![Hej ”användare och grupper” länk][202]
 
 4. Klicka på **Lägg till** knappen. Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.
 
-    ![Fönstret Lägg till tilldelning][203]
+    ![hello Lägg uppdrag fönstret][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -253,13 +253,13 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="test-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen SAP Business ByDesign på åtkomstpanelen du bör få automatiskt loggat in på ditt SAP Business ByDesign program.
+Du bör få automatiskt inloggade tooyour SAP Business ByDesign programmet när du klickar på hello SAP Business ByDesign panelen i hello åtkomstpanelen.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

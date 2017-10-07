@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4b35c5d126375735f070a7fe2331896c524b5a61
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: af7cb13794bf3a9fee91d355f788aa5c2246e57c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Lösenordsprinciper och begränsningar i Azure Active Directory
 
-Den här artikeln beskriver lösenordsprinciper och krav på komplexitet som är associerade med användarkonton lagras i Azure AD-klienten.
+Den här artikeln beskriver hello lösenordsprinciper och krav på komplexitet som är associerade med användarkonton lagras i Azure AD-klienten.
 
 ## <a name="administrator-password-policy-differences"></a>Administratören lösenord princip skillnader
 
 Microsoft tillämpar en stark standardprincip för lösenordsåterställning med **två portar** för alla Azure-administratörsroller (till exempel Global administratör, Supportavdelningsadministratör och Lösenordsadministratör).
 
-Detta inaktiverar administratörer från att använda säkerhetsfrågor och tillämpar följande.
+Detta inaktiverar administratörer från att använda säkerhetsfrågor och tillämpar hello följande.
 
-Två gate-principen, som kräver två typer av autentiseringsdata (e-postadress **och** telefonnummer), gäller följande omständigheter
+Två gate-principen, som kräver två typer av autentiseringsdata (e-postadress **och** telefonnummer), så tillämpas i hello följande omständigheter
 
 * Alla Azure-administratörsroller
   * Supportavdelningen administratör
@@ -60,84 +60,84 @@ Två gate-principen, som kräver två typer av autentiseringsdata (e-postadress 
 * Azure AD Connect synkroniserar identiteter från din lokala katalog
 
 ### <a name="exceptions"></a>Undantag
-En gate-principen, som kräver en dataenhet autentisering (e-postadress **eller** telefonnummer), gäller följande omständigheter
+En gate-principen, som kräver en dataenhet autentisering (e-postadress **eller** telefonnummer), så tillämpas i hello följande omständigheter
 
 * Första 30 dagar från en utvärderingsversion **eller**
 * Alternativa domänen finns inte (*. onmicrosoft.com) **och** Azure AD Connect inte synkroniserar identiteter
 
 
-## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName principer som gäller för alla användarkonton
+## <a name="userprincipalname-policies-that-apply-tooall-user-accounts"></a>UserPrincipalName principer som gäller tooall användarkonton
 
-Varje användarkonto som behöver logga in på Azure AD måste ha ett unikt huvudnamn (UPN)-attributvärde som associeras med deras konto. Tabellen nedan beskrivs de principer som gäller för både lokala Active Directory-användarkonton synkroniseras till molnet och endast molnbaserad användarkonton.
+Varje användarkonto som behöver toosign i tooAzure AD måste ha ett unikt huvudnamn (UPN)-attributvärde som associeras med deras konto. hello tabellen nedan beskrivs hello principer som gäller tooboth lokala Active Directory-användarkonton synkroniseras toohello moln och endast toocloud användarkonton.
 
 | Egenskap | UserPrincipalName krav |
 | --- | --- |
 | Tecken som tillåts |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
-| Tecken som tillåts inte |<ul> <li>Alla ' @-tecken som inte avgränsa användarnamnet från domänen.</li> <li>Får inte innehålla en punkt '.' omedelbart före den ”@” symbol</li></ul> |
-| Längden begränsningar |<ul> <li>Den totala längden får inte överskrida 113 tecken</li><li>64 tecken innan den ”@” symbol</li><li>48 tecken efter den ”@” symbol</li></ul> |
+| Tecken som tillåts inte |<ul> <li>Alla ' @-tecken som inte avgränsa hello användarnamn från hello domän.</li> <li>Får inte innehålla en punkt '.' närmast föregående hello ”@” symbol</li></ul> |
+| Längden begränsningar |<ul> <li>Den totala längden får inte överskrida 113 tecken</li><li>64 tecken innan hello ”@” symbol</li><li>48 tecken efter hello ”@” symbol</li></ul> |
 
-## <a name="password-policies-that-apply-only-to-cloud-user-accounts"></a>De principer som gäller endast för användarkonton i molnet
+## <a name="password-policies-that-apply-only-toocloud-user-accounts"></a>Lösenordsprinciper som gäller endast toocloud användarkonton
 
-I följande tabell beskrivs de tillgängliga lösenordsprincip som kan tillämpas på konton som skapas och hanteras i Azure AD.
+hello i den följande tabellen beskrivs principinställningarna för hello tillgängliga lösenord som kan vara tillämpade toouser konton som skapas och hanteras i Azure AD.
 
 | Egenskap | Krav |
 | --- | --- |
 | Tecken som tillåts |<ul><li>A – Z</li><li>a - z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
-| Tecken som tillåts inte |<ul><li>Unicode-tecken</li><li>Blanksteg</li><li> **Starka lösenord**: får inte innehålla en punkttecknet '.' omedelbart före den ”@” symbol</li></ul> |
-| Begränsningar för lösenord |<ul><li>minsta-8 tecken och högst 16 tecken</li><li>**Starka lösenord**: kräver 3 utanför 4 av följande:<ul><li>Gemener</li><li>Versaler</li><li>Siffror (0-9)</li><li>Symboler (Se ovanstående begränsningar för lösenord)</li></ul></li></ul> |
-| Giltighetstiden för lösenord |<ul><li>Standardvärde: **90** dagar </li><li>Värdet kan konfigureras med Set-MsolPasswordPolicy cmdlet från Azure Active Directory-modulen för Windows PowerShell.</li></ul> |
-| Meddelande om lösenords upphör att gälla |<ul><li>Standardvärde: **14** dagar (tills lösenordet upphör att gälla)</li><li>Värdet kan konfigureras med cmdlet Set-MsolPasswordPolicy.</li></ul> |
-| Lösenordet upphör att gälla |<ul><li>Standardvärde: **FALSKT** dagar (anger att lösenordet upphör att gälla är aktiverad) </li><li>Värdet kan konfigureras för enskilda användarkonton med cmdlet Set-MsolUser. </li></ul> |
+| Tecken som tillåts inte |<ul><li>Unicode-tecken</li><li>Blanksteg</li><li> **Starka lösenord**: får inte innehålla en punkttecknet '.' närmast föregående hello ”@” symbol</li></ul> |
+| Begränsningar för lösenord |<ul><li>minsta-8 tecken och högst 16 tecken</li><li>**Starka lösenord**: kräver 3 utanför 4 av hello följande:<ul><li>Gemener</li><li>Versaler</li><li>Siffror (0-9)</li><li>Symboler (Se ovanstående begränsningar för lösenord)</li></ul></li></ul> |
+| Giltighetstiden för lösenord |<ul><li>Standardvärde: **90** dagar </li><li>Värdet kan konfigureras med hello Set-MsolPasswordPolicy cmdlet från hello Azure Active Directory-modulen för Windows PowerShell.</li></ul> |
+| Meddelande om lösenords upphör att gälla |<ul><li>Standardvärde: **14** dagar (tills lösenordet upphör att gälla)</li><li>Värdet kan konfigureras med hello Set-MsolPasswordPolicy cmdlet.</li></ul> |
+| Lösenordet upphör att gälla |<ul><li>Standardvärde: **FALSKT** dagar (anger att lösenordet upphör att gälla är aktiverad) </li><li>Värdet kan konfigureras för enskilda användarkonton med hello Set-MsolUser cmdlet. </li></ul> |
 | Lösenordet **ändra** historik |Lösenordet **kan** användas igen när **ändra** ett lösenord. |
 | Lösenordet **återställa** historik | Lösenordet **kan** användas igen när **återställer** glömt lösenordet. |
-| Kontoutelåsning |Efter 10 misslyckade inloggningsförsök (fel lösenord), kommer användaren utelåst under en minut. Ytterligare inloggningsförsök felaktiga Lås ut användaren för att öka varaktighet. |
+| Kontoutelåsning |Efter 10 misslyckade inloggningsförsök (fel lösenord), kommer användaren hello utelåst under en minut. Ytterligare inloggningsförsök felaktiga låser hello användaren för att öka varaktighet. |
 
 ## <a name="set-password-expiration-policies-in-azure-active-directory"></a>Ange lösenordet upphör att gälla principer i Azure Active Directory
 
-En global administratör för en Microsoft-molntjänst kan använda i Microsoft Azure Active Directory-modulen för Windows PowerShell för att ställa in lösenord inte upphör att gälla. Du kan också använda Windows PowerShell-cmdlets för att ta bort den-upphör aldrig konfiguration eller för att se vilka användare lösenord ställs in inte upphör. Den här vägledningen gäller andra leverantörer som Microsoft Intune och Office 365 som också förlitar sig på Microsoft Azure Active Directory för identitets- och directory services.
+En global administratör för en Microsoft-molntjänst kan använda hello Microsoft Azure Active Directory-modulen för Windows PowerShell tooset in att användarlösenord inte tooexpire. Du kan också använda Windows PowerShell cmdlets tooremove hello-upphör aldrig konfiguration eller toosee vilka användarlösenord ställs in inte tooexpire. Den här vägledningen gäller tooother providers som Microsoft Intune och Office 365 som också förlitar sig på Microsoft Azure Active Directory för identitets- och directory services.
 
 > [!NOTE]
-> Endast lösenord för användarkonton som inte är synkroniserade med katalogsynkronisering kan konfigureras för att inte upphör för att gälla. Läs mer om katalogsynkronisering[Anslut AD med Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
+> Endast lösenord för användarkonton som inte är synkroniserade med katalogsynkronisering kan konfigureras toonot går ut. Läs mer om katalogsynkronisering[Anslut AD med Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 >
 >
 
 ## <a name="set-or-check-password-policies-using-powershell"></a>Ange eller kontrollera lösenordsprinciper med hjälp av PowerShell
 
-Om du vill komma igång behöver du [ladda ned och installera Azure AD PowerShell-modulen](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). När du har installerat kan följa du stegen nedan för att konfigurera varje fält.
+tooget igång, du behöver för[ladda ned och installera hello Azure AD PowerShell-modulen](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). När du har installerat kan följa du hello stegen nedan tooconfigure varje fält.
 
-### <a name="how-to-check-expiration-policy-for-a-password"></a>Hur du kontrollerar förfalloprincipen för lösenord
-1. Ansluta till Windows PowerShell med administratörsbehörighet för ditt företag.
-2. Kör något av följande kommandon:
+### <a name="how-toocheck-expiration-policy-for-a-password"></a>Hur toocheck förfalloprincipen för lösenord
+1. Ansluta tooWindows PowerShell med administratörsbehörighet för ditt företag.
+2. Kör något av följande kommandon hello:
 
-   * Kör följande cmdlet för att se om en enskild användares lösenord har angetts att aldrig upphöra, med hjälp av användarens huvudnamn (UPN) (till exempel aprilr@contoso.onmicrosoft.com) eller användar-ID för den användare som du vill kontrollera:`Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
-   * Om du vill se inställningen ”lösenordet upphör aldrig att gälla” för alla användare kör du följande cmdlet:`Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
+   * toosee om en enskild användares lösenord har angetts toonever upphör, kör följande cmdlet med hjälp av användarens huvudnamn (UPN)-hello hello (till exempel aprilr@contoso.onmicrosoft.com) eller hello användar-ID hello användare som du vill toocheck:`Get-MSOLUser -UserPrincipalName <user ID> | Select PasswordNeverExpires`
+   * toosee Hej ”lösenordet upphör aldrig att gälla” inställningen för alla användare, kör följande cmdlet hello:`Get-MSOLUser | Select UserPrincipalName, PasswordNeverExpires`
 
-### <a name="set-a-password-to-expire"></a>Ange ett lösenord ska upphöra att gälla
+### <a name="set-a-password-tooexpire"></a>Ange ett lösenord tooexpire
 
-1. Ansluta till Windows PowerShell med administratörsbehörighet för ditt företag.
-2. Kör något av följande kommandon:
+1. Ansluta tooWindows PowerShell med administratörsbehörighet för ditt företag.
+2. Kör något av följande kommandon hello:
 
-   * Kör följande cmdlet för att ange lösenordet för en användare så att lösenordet upphör att gälla, med hjälp av användarens huvudnamn (UPN) eller användar-ID för användaren:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
-   * För att ange lösenord för alla användare i organisationen så att de upphör att gälla, använder du följande cmdlet:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
+   * tooset hello lösenordet för en användare så att hello lösenordet upphör att gälla, kör följande cmdlet med hjälp av användarens huvudnamn (UPN)-hello hello eller hello användar-ID för hello användare:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $false`
+   * tooset hello lösenord för alla användare i organisationen hello Använd så att de upphör att gälla, hello följande cmdlet:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $false`
 
-### <a name="set-a-password-to-never-expire"></a>Ange ett lösenord aldrig upphör att gälla
+### <a name="set-a-password-toonever-expire"></a>Ange ett lösenord toonever går ut
 
-1. Ansluta till Windows PowerShell med administratörsbehörighet för ditt företag.
-2. Kör något av följande kommandon:
+1. Ansluta tooWindows PowerShell med administratörsbehörighet för ditt företag.
+2. Kör något av följande kommandon hello:
 
-   * Kör följande cmdlet för att ange lösenordet för en användare att aldrig upphöra, med hjälp av användarens huvudnamn (UPN) eller användar-ID för användaren:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
-   * För att ange lösenord för alla användare i en organisation aldrig upphör att gälla, kör du följande cmdlet:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
+   * tooset hello lösenordet för en användare toonever upphör, kör följande cmdlet med hjälp av användarens huvudnamn (UPN)-hello hello eller hello användar-ID för hello användare:`Set-MsolUser -UserPrincipalName <user ID> -PasswordNeverExpires $true`
+   * tooset hello lösenord för alla hello användare i en organisation toonever upphör, kör följande cmdlet hello:`Get-MSOLUser | Set-MsolUser -PasswordNeverExpires $true`
 
 ## <a name="next-steps"></a>Nästa steg
 
-Följande länkar ger ytterligare information om lösenordsåterställning med Azure AD
+hello följande länkar ger ytterligare information om lösenordsåterställning med hjälp av Azure AD
 
 * [**Snabbstart** ](active-directory-passwords-getting-started.md) – Kom igång med självbetjäningsfunktionen för återställning av lösenord i Azure AD 
 * [**Licensiering**](active-directory-passwords-licensing.md) – Konfigurera Azure AD-licensiering
-* [**Data**](active-directory-passwords-data.md) – Förstå de data som krävs och hur de används för lösenordshantering
-* [**Distribution**](active-directory-passwords-best-practices.md) – Planera och distribuera SSPR till dina användare med hjälp av informationen finns här
-* [**Anpassa**](active-directory-passwords-customize.md) – Anpassa utseendet för företagets SSPR-funktion.
+* [**Data** ](active-directory-passwords-data.md) – förstå hello data som krävs och hur de används för lösenordshantering
+* [**Distributionen** ](active-directory-passwords-best-practices.md) -planera och distribuera SSPR tooyour användare som använder hello vägledning finns här
+* [**Anpassa** ](active-directory-passwords-customize.md) -anpassa hello utseende och känslan av hello SSPR upplevelse för ditt företag.
 * [**Rapportering**](active-directory-passwords-reporting.md) – Identifiera om, när och var dina användare kommer åt SSPR-funktioner
-* [**Teknisk djupdykning** ](active-directory-passwords-how-it-works.md) – Ta en titt bakom kulisserna för att förstå hur det hela fungerar
-* [**Vanliga frågor och svar**](active-directory-passwords-faq.md) – Hur gör man? Varför? Vad? Var? Vem? När? – Svar på allt du någonsin velat fråga
-* [**Felsökning** ](active-directory-passwords-troubleshoot.md) – Lär dig att lösa vanliga problem med SSPR
+* [**Tekniska ingående** ](active-directory-passwords-how-it-works.md) -gå bakom hello gardinen toounderstand hur det fungerar
+* [**Vanliga frågor och svar**](active-directory-passwords-faq.md) – Hur gör man? Varför? Vad? Var? Vem? När? -Svar tooquestions du alltid vill ha tooask
+* [**Felsöka** ](active-directory-passwords-troubleshoot.md) – Lär dig hur tooresolve vanliga problem att vi se med SSPR

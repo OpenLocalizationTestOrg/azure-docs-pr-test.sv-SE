@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med Azure Active Directory Identity Protection och Microsoft Graph | Microsoft Docs"
-description: "Innehåller en introduktion till frågan Microsoft Graph en lista över riskhändelser och tillhörande information från Azure Active Directory."
+title: "aaaGet igång med Azure Active Directory Identity Protection och Microsoft Graph | Microsoft Docs"
+description: "Ger en introduktion tooquery Microsoft Graph för en lista över riskhändelser och tillhörande information från Azure Active Directory."
 services: active-directory
 keywords: "Azure active directory identitetsskydd, risk händelse, säkerhetsproblem, säkerhetsprinciper, Microsoft Graph"
 documentationcenter: 
@@ -15,60 +15,60 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9b01ff86da6a1fd4a439a6ba59ea15ed6480cdad
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 75b8b7629a0120d8101f6fde0d9163122503d276
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Kom igång med Azure Active Directory Identity Protection och Microsoft Graph
-Microsoft Graph är Microsoft unified API-slutpunkt och hem för [Azure Active Directory Identity Protection](active-directory-identityprotection.md) API: er. Det första API **identityRiskEvents**, kan du fråga Microsoft Graph en lista över [riskerar händelser](active-directory-identityprotection-risk-events-types.md) och tillhörande information. Den här artikeln hjälper dig att komma igång frågar detta API. En detaljerad introduktion, fullständig dokumentation och åtkomst till diagrammet Explorer finns på [Microsoft Graph plats](https://graph.microsoft.io/).
+Microsoft Graph är hello Microsoft unified API-slutpunkt och hello hem av [Azure Active Directory Identity Protection](active-directory-identityprotection.md) API: er. hello första API, **identityRiskEvents**, kan du tooquery Microsoft Graph för en lista över [riskerar händelser](active-directory-identityprotection-risk-events-types.md) och tillhörande information. Den här artikeln hjälper dig att komma igång frågar detta API. En detaljerad introduktion, fullständig dokumentation och åtkomst toohello diagram Explorer finns hello [Microsoft Graph plats](https://graph.microsoft.io/).
 
 > [!IMPORTANT]
-> Microsoft rekommenderar att du hanterar Azure AD via [Azure AD administratörscenter](https://aad.portal.azure.com) på Azure Portal istället för via den klassiska Azure-portalen som nämns i den här artikeln.
+> Microsoft rekommenderar att du hanterar Azure AD med hjälp av hello [administrationscentret för Azure AD](https://aad.portal.azure.com) i hello Azure-portalen istället för att använda hello klassiska Azure-portalen som hänvisas till i den här artikeln.
 
-Det finns tre steg för att komma åt identitetsskydd data via Microsoft Graph:
+Det finns tre steg tooaccessing identitetsskydd data via Microsoft Graph:
 
 1. Lägg till ett program med en klienthemlighet. 
-2. Använd den här hemligheten och några andra typer av information för att autentisera till Microsoft Graph, där du får en token för autentisering. 
-3. Använda denna token för att göra förfrågningar till API-slutpunkten och komma identitetsskydd data.
+2. Använd den här hemligheten och några andra typer av information tooauthenticate tooMicrosoft diagram, där du får en token för autentisering. 
+3. Använd den här token toomake begäranden toohello API-slutpunkten och komma identitetsskydd data.
 
 Innan du börjar behöver du:
 
-* Administratörsbehörighet för att skapa programmet i Azure AD
-* Namnet på din klient domän (till exempel contoso.onmicrosoft.com)
+* Administratören privilegier toocreate hello program i Azure AD
+* hello namnet på din klient domän (till exempel contoso.onmicrosoft.com)
 
 ## <a name="add-an-application-with-a-client-secret"></a>Lägg till ett program med en klienthemlighet
-1. [Logga in](https://manage.windowsazure.com) till din Azure klassiska portal som administratör. 
-2. I det vänstra navigeringsfönstret, klicka på **Active Directory**. 
+1. [Logga in](https://manage.windowsazure.com) tooyour klassiska Azure-portalen som administratör. 
+2. I hello vänstra navigeringsfönstret, klicka på **Active Directory**. 
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_01.png)
-3. Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.
-4. Klicka på menyn högst upp **program**.
+3. Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.
+4. Hello-menyn överst hello **program**.
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_02.png)
-5. Klicka på **Lägg till** längst ned på sidan.
+5. Klicka på **Lägg till** på hello hello sidans nederkant.
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_03.png)
-6. På den **vad vill du göra** dialogrutan klickar du på **Lägg till ett program som min organisation utvecklar**.
+6. På hello **vad vill du vill toodo** dialogrutan klickar du på **Lägg till ett program som min organisation utvecklar**.
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_04.png)
-7. På den **berätta om tillämpningsprogrammet** dialogrutan, utför följande steg:
+7. På hello **berätta om tillämpningsprogrammet** dialogrutan utföra hello följande steg:
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_05.png)
    
-    a. I den **namn** textruta, ange ett namn för ditt program (t.ex.: AADIP Risk händelse API-program).
+    a. I hello **namn** textruta, ange ett namn för ditt program (t.ex.: AADIP Risk händelse API-program).
    
     b. Som **typen**väljer **webbprogram och / eller webb-API**.
    
     c. Klicka på **Nästa**.
-8. På den **appegenskaper** dialogrutan, utför följande steg:
+8. På hello **appegenskaper** dialogrutan utföra hello följande steg:
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_06.png)
    
-    a. I den **inloggnings-URL** textruta typen `http://localhost`.
+    a. I hello **inloggnings-URL** textruta typen `http://localhost`.
    
-    b. I den **App-ID URI** textruta typen `http://localhost`.
+    b. I hello **App-ID URI** textruta typen `http://localhost`.
    
     c. Klicka på **Complete** (Slutför).
 
@@ -76,14 +76,14 @@ Kan nu konfigurera ditt program.
 
 ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_07.png)
 
-## <a name="grant-your-application-permission-to-use-the-api"></a>Ge ditt program behörighet att använda API: et
-1. På ditt program i menyn överst, klickar du på **konfigurera**. 
+## <a name="grant-your-application-permission-toouse-hello-api"></a>Ge ditt program behörighet toouse hello API
+1. På ditt program i hello menyn hello överst, klickar du på **konfigurera**. 
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_08.png)
-2. I den **behörigheter för andra program** klickar du på **lägga till program**.
+2. I hello **behörigheter tooother program** klickar du på **lägga till program**.
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_09.png)
-3. På den **behörigheter för andra program** dialogrutan, utför följande steg:
+3. På hello **behörigheter tooother program** dialogrutan utföra hello följande steg:
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_10.png)
    
@@ -93,35 +93,35 @@ Kan nu konfigurera ditt program.
 4. Klicka på **behörigheter för program: 0**, och välj sedan **läsa alla risker händelse identitetsinformation**.
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_11.png)
-5. Klicka på **Spara** längst ned på sidan.
+5. Klicka på **spara** på hello hello sidans nederkant.
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_12.png)
 
 ## <a name="get-an-access-key"></a>Hämta en åtkomstnyckel
-1. På sidan för ditt program i den **nycklar** väljer 1 år som varaktighet.
+1. Ditt program i på sidan hello **nycklar** väljer 1 år som varaktighet.
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_13.png)
-2. Klicka på **Spara** längst ned på sidan.
+2. Klicka på **spara** på hello hello sidans nederkant.
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_12.png)
-3. Kopiera värdet för den nya nyckeln i avsnittet nycklar och klistra in den i en säker plats.
+3. Kopiera hello värdet för den nya nyckeln under hello nycklar och klistra in den i en säker plats.
    
     ![Skapa ett program](./media/active-directory-identityprotection-graph-getting-started/tutorial_general_14.png)
    
    > [!NOTE]
-   > Om du tappar bort den här nyckeln kan behöver du gå tillbaka till det här avsnittet och skapa en ny nyckel. Behåll den här nyckeln en hemlighet: alla som har åtkomst till data.
+   > Om du tappar bort den här nyckeln kan du ha tooreturn toothis avsnittet och skapa en ny nyckel. Behåll den här nyckeln en hemlighet: alla som har åtkomst till data.
    > 
    > 
-4. I den **egenskaper** avsnittet, kopiera den **klient-ID**, och klistra in den i en säker plats. 
+4. I hello **egenskaper** avsnitt, kopiera hello **klient-ID**, och klistra in den i en säker plats. 
 
-## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api"></a>Autentisera till Microsoft Graph och frågor identitet Risk händelser API
+## <a name="authenticate-toomicrosoft-graph-and-query-hello-identity-risk-events-api"></a>Autentisera tooMicrosoft diagram och fråga hello identitet Risk händelser API
 Du bör nu ha:
 
-* Klient-ID som du kopierade ovan
-* Den nyckel som du kopierade ovan
-* Namnet på domänen för din klient
+* hello klient-ID som du kopierade ovan
+* hello-nyckel som du kopierade ovan
+* hello namnet på din klient domän
 
-Skicka en post-begäran till för att autentisera, `https://login.microsoft.com` med följande parametrar i brödtext:
+tooauthenticate skicka en post-begäran för`https://login.microsoft.com` med följande parametrar i hello brödtext hello:
 
 * grant_type ”:**client_credentials**”
 * resurs ”:**https://graph.microsoft.com**”
@@ -129,23 +129,23 @@ Skicka en post-begäran till för att autentisera, `https://login.microsoft.com`
 * client_secret:<your key>
 
 > [!NOTE]
-> Du måste ange värden för den **client_id** och **client_secret** parameter.
+> Du behöver tooprovide värden för hello **client_id** och hello **client_secret** parameter.
 > 
 > 
 
 Om det lyckas, returneras en autentiseringstoken.  
-För att anropa API: et, skapar du en rubrik med följande parameter:
+toocall hello API, skapa ett huvud med hello följande parameter:
 
     `Authorization`=”<token_type> <access_token>"
 
 
-När autentisering, hittar du tokentypen och åtkomst-token i den returnerade token.
+När autentisering, hittar du hello tokentypen och åtkomst-token i hello returnerade token.
 
-Skicka detta huvud som en begäran till följande API-URL:`https://graph.microsoft.com/beta/identityRiskEvents`
+Skicka detta huvud som en begäran toohello följande API-URL:`https://graph.microsoft.com/beta/identityRiskEvents`
 
-Svaret, är om det lyckas, en samling av riskhändelser identitet och associerade data i OData JSON-format, som kan parsas och hanteras som passar behoven.
+hello svar, om det lyckas, är en samling identitet riskhändelser och tillhörande data i hello OData JSON-format som kan parsas och hanteras som passar.
 
-Här är exempelkod för autentisering och anropa API: et med hjälp av Powershell.  
+Här är exempelkod för autentisering och anropa hello-API med hjälp av Powershell.  
 Lägg till en klient-ID nyckeln och domän för innehavare.
 
     $ClientID       = "<your client ID here>"        # Should be a ~36 hex character string; insert your info here
@@ -178,10 +178,10 @@ Lägg till en klient-ID nyckeln och domän för innehavare.
 
 
 ## <a name="next-steps"></a>Nästa steg
-Grattis, du skapat din första anropet till Microsoft Graph!  
-Nu kan du fråga identitet riskhändelser och använda data men det är lämpligt.
+Grattis, du skapat din första anropet tooMicrosoft diagram!  
+Nu kan du fråga identitet riskhändelser och använder hello data men det är lämpligt.
 
-Om du vill veta mer om Microsoft Graph och hur du skapar program med hjälp av Graph API kan ta en titt på [dokumentationen](https://graph.microsoft.io/docs) och mycket mer på den [Microsoft Graph plats](https://graph.microsoft.io/). Kontrollera också att skapa ett bokmärke i [Azure AD Identity Protection API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root) sida som visar en lista över Identity Protection API: er finns i diagrammet. När vi lägger till nya sätt att arbeta med Identity Protection via API ser dem på sidan.
+toolearn mer om Microsoft Graph och hur toobuild program med hjälp av hello Graph API kolla hello [dokumentationen](https://graph.microsoft.io/docs) och mycket mer på hello [Microsoft Graph plats](https://graph.microsoft.io/). Se också till att toobookmark hello [Azure AD Identity Protection API](https://graph.microsoft.io/docs/api-reference/beta/resources/identityprotection_root) sida som visar en lista över hello Identity Protection API: er finns i diagrammet. När vi lägger till nya sätt toowork med identitetsskydd via API ser dem på sidan.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)

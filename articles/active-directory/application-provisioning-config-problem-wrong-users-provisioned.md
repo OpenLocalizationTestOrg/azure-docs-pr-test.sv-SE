@@ -1,6 +1,6 @@
 ---
-title: "Fel uppsättning användare tillhandahålls till ett program för Azure AD-galleriet | Microsoft Docs"
-description: "Lär dig att ta reda på varför en annan uppsättning användare tillhandahålls till ett program än de som du förväntade dig"
+title: "aaaWrong uppsättning användare som etablerade tooan Azure AD-galleriet program | Microsoft Docs"
+description: "Lär dig hur toofind varför en annan uppsättning användare som är etablerad tooan program än de som du förväntade dig"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,100 +13,100 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 85b533584c8ec15a23be32e20db7de583fced6a0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: adb90b12a53fb3160ce2b73b2559df92b283438e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Fel uppsättning användare tillhandahålls till ett program för Azure AD-galleriet
+# <a name="wrong-set-of-users-are-being-provisioned-tooan-azure-ad-gallery-application"></a>Fel uppsättning användare som etablerade tooan Azure AD-galleriet program
 
-Vilka användare som har etablerats i appen är främst styrs av vilka användare och grupper har **tilldelade** till programmet.
+Vilka användare etablerade toohello app är främst drivs av vilka användare och grupper har **tilldelade** toohello program.
 
-Använda resurserna nedan för att lära dig att kontrollera vilka användare och grupper har tilldelats ett program i Azure Active Directory.
+Använd hello resurserna nedan toolearn hur toocheck vilka användare och grupper som har tilldelats tooan program i Azure Active Directory.
 
 ## <a name="assign-a-user-directly-as-an-administrator"></a>Tilldela en användare direkt som en administratör
 
-Följ stegen nedan om du vill tilldela en eller flera användare till ett program direkt:
+tooassign en eller flera användare tooan programmet direkt, gör hello nedan:
 
-1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**
+1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**
 
-2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** att visa en lista över alla program.
+5.  Klicka på **alla program** tooview en lista över alla program.
 
-  * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
+  * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för **Alla program.**
 
-6.  Välj det program som du vill tilldela en användare i listan.
+6.  Välj hello-program som du vill tooassign en toofrom hello-användarlistan.
 
-7.  När programmet läses in klickar du på **användare och grupper** från programmets vänstra navigeringsmenyn.
+7.  När programmet hello läses in klickar du på **användare och grupper** från hello programmet vänstra navigeringsmenyn.
 
-8.  Klicka på den **Lägg till** knappen ovanpå den **användare och grupper** att öppna den **Lägg uppdrag** bladet.
+8.  Klicka på hello **Lägg till** knappen ovanpå hello **användare och grupper** lista tooopen hello **Lägg uppdrag** bladet.
 
-9.  Klicka på den **användare och grupper** selector från den **Lägg uppdrag** bladet.
+9.  Klicka på hello **användare och grupper** selector från hello **Lägg uppdrag** bladet.
 
-10. Ange den **fullständigt namn** eller **e-postadress** för den användare som du vill tilldela till den **Sök efter namn eller e-postadress** sökrutan.
+10. Typen i hello **fullständigt namn** eller **e-postadress** för hello-användare som du vill tilldela till hello **Sök efter namn eller e-postadress** sökrutan.
 
-11. Hovra över den **användare** i listan för att visa en **kryssrutan**. Klicka på kryssrutan bredvid användarens profilfoto eller logotyp som du vill lägga till användaren till den **valda** lista.
+11. Hovra över hello **användare** i hello listan tooreveal en **kryssrutan**. Klicka på hello kryssrutan nästa toohello användarens profil foto eller logotypen tooadd användaren-toohello **valda** lista.
 
-12. **Valfritt:** om du vill **lägga till fler än en användare**, typ i en annan **fullständigt namn** eller **e-postadress** till den **Sök efter namn eller e-postadress** sökrutan och klicka på kryssrutan för att lägga till användaren till den **valda** lista.
+12. **Valfritt:** om du vill ha för**lägga till fler än en användare**, typ i en annan **fullständigt namn** eller **e-postadress** till hello **Sök efter namn eller e-postadress** sökrutan och klicka på hello kryssrutan tooadd den här användaren toohello **valda** lista.
 
-13. När du har valt användare klickar du på den **Välj** för att lägga till dem i listan över användare och grupper som tilldelas till programmet.
+13. När du har valt användare klickar du på hello **Välj** knappen tooadd dem toohello lista över användare och grupper toobe tilldelat toohello program.
 
-14. **Valfritt:** klickar du på den **Välj roll** Väljaren i den **Lägg uppdrag** bladet Välj en roll att tilldela användare som du har valt.
+14. **Valfritt:** klickar du på hello **Välj roll** Väljaren i hello **Lägg uppdrag** bladet tooselect en roll tooassign toohello användare som du har valt.
 
-15. Klicka på den **tilldela** för att tilldela program till de valda användarna.
+15. Klicka på hello **tilldela** knappen tooassign hello programmet toohello markerade användare.
 
-Om etablering har konfigurerats och körs redan för en app kan nya användare ska etableras till ett program i cirka 10 minuter. Kontrollera den **granskningsloggar** mer information.
+Om etablering har konfigurerats och körs redan för en app kan nya användare ska vara etablerade tooan programmet i cirka 10 minuter. Kontrollera hello **granskningsloggar** mer information.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Tilldela en grupp direkt till ett program som administratör
+## <a name="assign-a-group-directly-tooan-application-as-an-administrator"></a>Tilldela en grupp direkt tooan programmet som administratör
 
-Följ stegen nedan om du vill tilldela en eller flera grupper till ett program direkt:
+tooassign en eller flera grupper tooan programmet direkt, följ hello stegen nedan:
 
-1.  Öppna den [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**
+1.  Öppna hello [ **Azure Portal** ](https://portal.azure.com/) och logga in som en **Global administratör.**
 
-2.  Öppna den **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst ned i den huvudsakliga vänstra navigeringsmenyn.
+2.  Öppna hello **Azure Active Directory-tillägget** genom att klicka på **fler tjänster** längst hello hello huvudsakliga vänstra navigeringsmenyn.
 
-3.  Skriv i **”Azure Active Directory**” i sökrutan för filter och välj den **Azure Active Directory** objekt.
+3.  Skriv i **”Azure Active Directory**” i sökrutan för hello filter och väljer hello **Azure Active Directory** objekt.
 
-4.  Klicka på **företagsprogram** från Azure Active Directory vänstra navigeringsmenyn.
+4.  Klicka på **företagsprogram** från hello Azure Active Directory vänstra navigeringsmenyn.
 
-5.  Klicka på **alla program** att visa en lista över alla program.
+5.  Klicka på **alla program** tooview en lista över alla program.
 
-  * Om du inte ser programmet som du vill visa här använder du den **Filter** kontrollen längst upp i den **listan med alla program** och ange den **visa** att **alla program.**
+  * Om du inte ser hello-program som du vill visa här använder du hello **Filter** kontroll hello överst i hello **listan med alla program** och ange hello **visa** alternativ för **Alla program.**
 
-6.  Välj det program som du vill tilldela en användare i listan.
+6.  Välj hello-program som du vill tooassign en toofrom hello-användarlistan.
 
-7.  När programmet läses in klickar du på **användare och grupper** från programmets vänstra navigeringsmenyn.
+7.  När programmet hello läses in klickar du på **användare och grupper** från hello programmet vänstra navigeringsmenyn.
 
-8.  Klicka på den **Lägg till** knappen ovanpå den **användare och grupper** att öppna den **Lägg uppdrag** bladet.
+8.  Klicka på hello **Lägg till** knappen ovanpå hello **användare och grupper** lista tooopen hello **Lägg uppdrag** bladet.
 
-9.  Klicka på den **användare och grupper** selector från den **Lägg uppdrag** bladet.
+9.  Klicka på hello **användare och grupper** selector från hello **Lägg uppdrag** bladet.
 
-10. Ange den **fullständig gruppnamn** i gruppen som du vill tilldela till den **Sök efter namn eller e-postadress** sökrutan.
+10. Typen i hello **fullständig gruppnamn** av hello-grupp som du vill tilldela till hello **Sök efter namn eller e-postadress** sökrutan.
 
-11. Hovra över den **grupp** i listan för att visa en **kryssrutan**. Klickar du på kryssrutan bredvid gruppen profilfoto eller logotyp som du vill lägga till användaren till den **valda** lista.
+11. Hovra över hello **grupp** i hello listan tooreveal en **kryssrutan**. Klicka på hello kryssrutan nästa toohello gruppens profil foto eller logotypen tooadd användaren-toohello **valda** lista.
 
-12. **Valfritt:** om du vill **lägga till fler än en grupp**, typ i en annan **fullständig gruppnamn** till den **Sök efter namn eller e-postadress** sökrutan och klicka på kryssrutan för att lägga till den här gruppen till den **valda** lista.
+12. **Valfritt:** om du vill ha för**lägga till fler än en grupp**, typ i en annan **fullständig gruppnamn** till hello **Sök efter namn eller e-postadress** sökrutan och klicka på hello kryssrutan tooadd den här gruppen toohello **valda** lista.
 
-13. När du har valt grupper klickar du på den **Välj** för att lägga till dem i listan över användare och grupper som tilldelas till programmet.
+13. När du har valt grupper klickar du på hello **Välj** knappen tooadd dem toohello lista över användare och grupper toobe tilldelat toohello program.
 
-14. **Valfritt:** klickar du på den **Välj roll** Väljaren i den **Lägg uppdrag** bladet Välj en roll som ska tilldelas de grupper som du har valt.
+14. **Valfritt:** klickar du på hello **Välj roll** Väljaren i hello **Lägg uppdrag** bladet tooselect en roll tooassign toohello grupper som du har valt.
 
-15. Klicka på den **tilldela** för att tilldela program till de valda grupperna.
+15. Klicka på hello **tilldela** knappen tooassign hello programmet toohello valda grupper.
 
-Om etablering har konfigurerats och körs redan för en app kan nya användare som ingår i gruppen ska etableras till ett program i cirka 10 minuter. Kontrollera den **granskningsloggar** mer information.
+Om etablering har konfigurerats och körs redan för en app kan nya användare som ingår i hello grupp ska vara etablerade tooan programmet i cirka 10 minuter. Kontrollera hello **granskningsloggar** mer information.
 
 >[!IMPORTANT]
->Etablering av gruppnamn och gruppinformation förutom medlemmar, om stöd för vissa program. Du kan aktivera eller inaktivera den här funktionen genom att aktivera eller inaktivera den **mappning** för gruppobjekt visas i den **etablering** fliken. 
+>Etablering av hello gruppnamn och gruppera informationen i tillägget toohello medlemmar om stöd för vissa program. Du kan aktivera eller inaktivera den här funktionen genom att aktivera eller inaktivera hello **mappning** för gruppobjekt visas i hello **etablering** fliken. 
 >
 >
 
-Om etablering grupper är aktiverad bör du granska attributmappning för att säkerställa ett lämpligt fält som används för ”matchande ID”. Detta kan vara namn eller e-post alias, som gruppen och dess medlemmar inte etableras om matchning av egenskap är tomt eller inte fyllts i för en grupp i Azure AD.
+Om etablering grupper är aktiverat, måste tooreview hello attributet mappningar tooensure ett lämpligt fält som används för hello ”matchande ID”. Detta kan vara hello namn eller e-post alias, som hello grupp och dess medlemmar inte etableras om hello matchning av egenskap är tomt eller inte fyllts i för en grupp i Azure AD.
 
 ## <a name="next-steps"></a>Nästa steg
-[Automatisera användaren etablering och avetablering för SaaS-program med Azure Active Directory](active-directory-saas-app-provisioning.md)
+[Automatisera Användaretablering och avetablering tooSaaS program med Azure Active Directory](active-directory-saas-app-provisioning.md)

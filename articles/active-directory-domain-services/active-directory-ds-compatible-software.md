@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: 1a4af8c9a5f30cf7ea24d587866d1b41ab9cfb2c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7c393eead91ff43dd862bbf10e3af44062ffeff9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="third-party-software-compatible-with-azure-ad-domain-services"></a>Tredje parts programvara som är kompatibel med Azure AD Domain Services
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 07/11/2017
 
 ![En identitet](./media/compatible-software-icons/OneIdentity.png)
 
-En identitet autentiseringstjänster gör det möjligt för Unix, Linux och Mac OS X-system du använder åtkomst, autentisering och auktorisering av organisationens befintliga Active Directory (AD)-infrastruktur. Autentiseringstjänster har nu stöd för Azure Active Directory Domain Services att aktivera Windows-resurser att använda samma nästa generations plattform som redan använder dina befintliga SaaS-lösningar.
+En identitet autentiseringstjänster gör det möjligt för Unix, Linux och Mac OS X-system toouse hello åtkomst, autentisering och auktorisering av organisationens befintliga Active Directory (AD)-infrastruktur. Autentiseringstjänster har nu stöd för Azure Active Directory Domain Services att aktivera Windows-resurser tooutilize hello samma nästa generations plattform som redan använder dina befintliga SaaS-lösningar.
 
 [En identitet autentiseringstjänster](https://www.quest.com/products/authentication-services/)
 
@@ -37,6 +37,6 @@ En identitet autentiseringstjänster gör det möjligt för Unix, Linux och Mac 
 
 ![Redhat](./media/compatible-software-icons/RedHat.png)
 
-Red Hat Enterprise Linux är världens inledande enterprise Linux-plattformen för att uppfylla behoven i dagens moderna enterprise. Red Hat Enterprise Linux är det bästa valet för arbetsbelastningar på företag Linux virtuella dator (VM) i Microsoft Azure. Red Hat Enterprise Linux är en öppen, tillförlitlig och säker plattform som utformats för kunder som vill ha distribution flexibilitet för sina verksamhetskritiska arbetsbelastningar - från data center till Azure-molnet - backas upp av tätt integrerad, företagsklass stöd från Red Hat och Microsoft.
+Red Hat Enterprise Linux är hello world inledande enterprise Linux-plattformen toomeet hello behoven för dagens moderna enterprise. Red Hat Enterprise Linux är hello önskade alternativ för arbetsbelastningar på företag Linux virtuella dator (VM) i Microsoft Azure. Red Hat Enterprise Linux är en öppen, tillförlitlig och säker plattform som utformats för kunder som vill distribution flexibilitet för sina verksamhetskritiska arbetsbelastningar – från hello data center toohello Azure cloud - backas upp av tätt integrerad företagsklass stöd från Red Hat och Microsoft.
 
-[Anslut RedHat Enterprise Linux 7.2 VM till Azure AD Domain Services](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+[Anslut RedHat Enterprise Linux 7.2 VM tooAzure AD DS](active-directory-ds-admin-guide-join-rhel-linux-vm.md)

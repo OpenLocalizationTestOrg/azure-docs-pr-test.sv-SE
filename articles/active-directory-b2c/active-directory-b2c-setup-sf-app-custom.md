@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory B2C: Lägga till en Salesforce SAML-provider med hjälp av anpassade principer | Microsoft Docs"
-description: "Lär dig mer om hur du skapar och hanterar Azure Active Directory B2C anpassade principer."
+description: "Mer information om hur toocreate och hantera anpassade principer för Azure Active Directory B2C."
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
@@ -14,23 +14,23 @@ ms.topic: article
 ms.devlang: na
 ms.date: 06/11/2017
 ms.author: parakhj
-ms.openlocfilehash: 269cbd80fb6e861fa8588025eec70b6c6e2890d7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f14c9d96980ff124110db7cfb58bf7cd81750b7c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-salesforce-accounts-via-saml"></a>Azure Active Directory B2C: Logga in med hjälp av Salesforce konton via SAML
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Den här artikeln visar hur du använder [anpassade principer](active-directory-b2c-overview-custom.md) att ställa in inloggning för användare från en viss Salesforce-organisation.
+Den här artikeln beskrivs hur du toouse [anpassade principer](active-directory-b2c-overview-custom.md) tooset in inloggning för användare från en viss Salesforce-organisation.
 
 ## <a name="prerequisites"></a>Krav
 
 ### <a name="azure-ad-b2c-setup"></a>Installationsprogram för Azure AD B2C
 
-Kontrollera att du har slutfört alla steg som visar hur till [komma igång med anpassade principer](active-directory-b2c-get-started-custom.md) i Azure Active Directory B2C (Azure AD B2C).
+Kontrollera att du har slutfört alla steg i hello som visar hur för[komma igång med anpassade principer](active-directory-b2c-get-started-custom.md) i Azure Active Directory B2C (Azure AD B2C).
 
 Exempel på dessa är:
 
@@ -38,63 +38,63 @@ Exempel på dessa är:
 * Skapa ett program med Azure AD B2C.
 * Registrera två motorn för program.
 * Ställ in nycklar.
-* Ställ in startpaket.
+* Ställ in hello startpaket.
 
 ### <a name="salesforce-setup"></a>Salesforce-installationen
 
-I den här artikeln förutsätter vi att du redan har gjort följande:
+I den här artikeln förutsätter vi att du redan har gjort hello följande:
 
 * Registrerat dig för en Salesforce-konto. Du kan registrera dig för en [kostnadsfritt konto Developer Edition](https://developer.salesforce.com/signup).
 * [Konfigurera min domän](https://help.salesforce.com/articleView?id=domain_name_setup.htm&language=en_US&type=0) för organisationen Salesforce.
 
 ## <a name="set-up-salesforce-so-users-can-federate"></a>Konfigurera Salesforce så att användare kan federera
 
-Du måste hämta metadata Salesforce-URL för att Azure AD B2C kommunicera med Salesforce.
+toohelp Azure AD B2C kommunicera med Salesforce måste du tooget hello Salesforce metadata-URL.
 
 ### <a name="set-up-salesforce-as-an-identity-provider"></a>Ställ in Salesforce som en identitetsleverantör
 
 > [!NOTE]
 > I den här artikeln förutsätter vi att du använder [Salesforce blixtsnabb upplevelse](https://developer.salesforce.com/page/Lightning_Experience_FAQ).
 
-1. [Logga in till Salesforce](https://login.salesforce.com/). 
-2. På den vänstra menyn under **inställningar**, expandera **identitet**, och klicka sedan på **identitetsleverantör**.
+1. [Logga in tooSalesforce](https://login.salesforce.com/). 
+2. På hello vänster-menyn under **inställningar**, expandera **identitet**, och klicka sedan på **identitetsleverantör**.
 3. Klicka på **aktivera identitetsleverantör**.
-4. Under **Välj certifikatet**, Välj det certifikat du vill Salesforce som du använder för att kommunicera med Azure AD B2C. (Du kan använda standardcertifikatet.) Klicka på **Spara**. 
+4. Under **väljer hello certifikat**väljer hello-certifikat som du vill Salesforce toouse toocommunicate med Azure AD B2C. (Du kan använda hello standardcertifikatet.) Klicka på **Spara**. 
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Skapa en ansluten app i Salesforce
 
-1. På den **identitetsleverantör** går du till **leverantörer**.
+1. På hello **identitetsleverantör** sidan finns för**leverantörer**.
 2. Klicka på **leverantörer skapas nu via anslutna appar. Klicka här.**
-3. Under **grundläggande Information**, ange obligatoriska värden för anslutna appen.
-4. Under **Webbprograminställningarna**, Välj den **aktivera SAML** kryssrutan.
-5. I den **enhets-ID** , ange följande URL-adress. Se till att ersätta värdet för `tenantName`.
+3. Under **grundläggande Information**, ange hello krävs värden för anslutna appen.
+4. Under **Webbprograminställningarna**väljer hello **aktivera SAML** kryssrutan.
+5. I hello **enhets-ID** anger hello följande URL: en. Kontrollera att du ersätter hello värde för `tenantName`.
       ```
       https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase
       ```
-6. I den **ACS URL** , ange följande URL-adress. Se till att ersätta värdet för `tenantName`.
+6. I hello **ACS URL** anger hello följande URL: en. Kontrollera att du ersätter hello värde för `tenantName`.
       ```
       https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
       ```
-7. Lämna standardvärdena för alla andra inställningar.
-8. Bläddra längst ned i listan och klicka sedan på **spara**.
+7. Lämna hello standardvärden för alla andra inställningar.
+8. Rulla toohello längst ned på hello listan och klicka sedan på **spara**.
 
-### <a name="get-the-metadata-url"></a>Hämta metadata-URL
+### <a name="get-hello-metadata-url"></a>Hämta hello metadata-URL
 
-1. På översiktssidan för anslutna appen **hantera**.
-2. Kopiera värdet för **Metadata slutpunktsidentifiering**, och spara den. Du ska använda senare i den här artikeln.
+1. Klicka på översiktssidan för anslutna appen hello **hantera**.
+2. Kopiera hello värde för **Metadata slutpunktsidentifiering**, och spara den. Du ska använda senare i den här artikeln.
 
-### <a name="set-up-salesforce-users-to-federate"></a>Konfigurera Salesforce användare att federera
+### <a name="set-up-salesforce-users-toofederate"></a>Ställ in Salesforce användare toofederate
 
-1. På den **hantera** sidan av dina anslutna appen, gå till **profiler**.
+1. På hello **hantera** sidan appens anslutna gå för**profiler**.
 2. Klicka på **hantera profiler**.
-3. Välj profiler (eller grupper av användare) som du vill federera med Azure AD B2C. Som systemadministratör bör du välja den **systemadministratören** kryssrutan så att du kan federera med hjälp av ditt Salesforce-konto.
+3. Välj hello profiler (eller grupper av användare) som du vill toofederate med Azure AD B2C. Som systemadministratör bör du välja hello **systemadministratören** kryssrutan så att du kan federera med hjälp av ditt Salesforce-konto.
 
 ## <a name="generate-a-signing-certificate-for-azure-ad-b2c"></a>Generera ett signeringscertifikat för Azure AD B2C
 
-Förfrågningar som skickas till Salesforce måste signeras av Azure AD B2C. Öppna Azure PowerShell och kör följande kommandon för att generera ett signeringscertifikat.
+Begäranden skickade tooSalesforce måste toobe som signerats av Azure AD B2C. toogenerate signeringscertifikatet, öppna Azure PowerShell och kör sedan följande kommandon hello.
 
 > [!NOTE]
-> Kontrollera att du uppdaterar innehavarens namn och lösenord i de två översta raderna.
+> Kontrollera att du uppdaterar hello innehavarens namn och lösenord i hello översta två rader.
 
 ```PowerShell
 $tenantName = "<YOUR TENANT NAME>.onmicrosoft.com"
@@ -107,25 +107,25 @@ $pwd = ConvertTo-SecureString -String $pwdText -Force -AsPlainText
 Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 ```
 
-## <a name="add-the-saml-signing-certificate-to-azure-ad-b2c"></a>Lägg till SAML-signeringscertifikat i Azure AD B2C
+## <a name="add-hello-saml-signing-certificate-tooazure-ad-b2c"></a>Lägg till hello SAML signering certifikat tooAzure AD B2C
 
-Överför signeringscertifikatet till din Azure AD B2C-klient: 
+Överför hello signering certifikat tooyour Azure AD B2C-klient: 
 
-1. Gå till din Azure AD B2C-klient. Klicka på **inställningar** > **identitet upplevelse Framework** > **princip nycklar**.
+1. Gå tooyour Azure AD B2C-klient. Klicka på **inställningar** > **identitet upplevelse Framework** > **princip nycklar**.
 2. Klicka på **+ Lägg till**, och sedan:
     1. Klicka på **alternativ** > **överför**.
-    2. Ange en **namn** (till exempel SAMLSigningCert). Prefixet *B2C_1A_* läggs automatiskt till namnet på din nyckel.
-    3. Om du vill välja certifikatet **överför filkontroll**. 
-    4. Ange lösenord för certifikatet som du anger i PowerShell-skript.
+    2. Ange en **namn** (till exempel SAMLSigningCert). hello prefixet *B2C_1A_* läggs till automatiskt toohello namnet på din nyckel.
+    3. tooselect ditt certifikat väljer **överför filkontroll**. 
+    4. Ange hello certifikatets lösenord som du anger i hello PowerShell-skript.
 3. Klicka på **Skapa**.
-4. Kontrollera att du har skapat en nyckel (till exempel B2C_1A_SAMLSigningCert). Anteckna det fullständiga namnet (inklusive *B2C_1A_*). Du kommer att referera till den här nyckeln senare i principen.
+4. Kontrollera att du har skapat en nyckel (till exempel B2C_1A_SAMLSigningCert). Anteckna hello fullständigt namn (inklusive *B2C_1A_*). Du kommer att referera toothis nyckeln senare i hello princip.
 
-## <a name="create-the-salesforce-saml-claims-provider-in-your-base-policy"></a>Skapa anspråksprovider Salesforce SAML i din grundläggande princip
+## <a name="create-hello-salesforce-saml-claims-provider-in-your-base-policy"></a>Skapa hello Salesforce SAML anspråksprovider i din grundläggande princip
 
-Du måste definiera Salesforce som en anspråksprovider så att användarna kan logga in med hjälp av Salesforce. Med andra ord, måste du ange den slutpunkt som Azure AD B2C kommer att kommunicera med. Slutpunkten ska *ange* en uppsättning *anspråk* som Azure AD B2C använder för att verifiera att en specifik användare har autentiserats. Det gör du genom att lägga till en `<ClaimsProvider>` för Salesforce i tilläggsfilen i principen:
+Du måste toodefine Salesforce som en anspråksprovider så att användarna kan logga in med hjälp av Salesforce. Du behöver med andra ord toospecify hello slutpunkt som Azure AD B2C kommer att kommunicera med. hello endpoint kommer *ange* en uppsättning *anspråk* att Azure AD B2C använder tooverify som en specifik användare har autentiserats. toodo detta, Lägg till en `<ClaimsProvider>` för Salesforce i hello tilläggsfilen i principen:
 
-1. Öppna tilläggsfilen (TrustFrameworkExtensions.xml) i arbetskatalogen.
-2. Hitta de `<ClaimsProviders>` avsnitt. Om det inte finns kan du skapa det under rotnoden.
+1. Öppna filen hello-tillägg (TrustFrameworkExtensions.xml) i arbetskatalogen.
+2. Hitta hello `<ClaimsProviders>` avsnitt. Om det inte finns kan du skapa det under hello rotnoden.
 3. Lägg till en ny `<ClaimsProvider>`:
 
     ```XML
@@ -168,90 +168,90 @@ Du måste definiera Salesforce som en anspråksprovider så att användarna kan 
     </ClaimsProvider>
     ```
 
-Under den `<ClaimsProvider>` nod:
+Under hello `<ClaimsProvider>` nod:
 
-1. Ändra värdet för `<Domain>` till ett unikt värde som särskiljer `<ClaimsProvider>` från andra identitetsleverantörer.
-2. Uppdatera värdet för `<DisplayName>` till ett visningsnamn för anspråksprovidern. Det här värdet används för närvarande inte.
+1. Ändra hello för `<Domain>` tooa unikt värde som särskiljer `<ClaimsProvider>` från andra identitetsleverantörer.
+2. Uppdatera hello värdet för `<DisplayName>` tooa visningsnamn för hello anspråk providern. Det här värdet används för närvarande inte.
 
-### <a name="update-the-technical-profile"></a>Uppdatera tekniska profilen
+### <a name="update-hello-technical-profile"></a>Uppdatera hello tekniska profil
 
-Om du vill hämta en SAML-token från Salesforce, definiera de protokoll som använder Azure AD B2C för att kommunicera med Azure Active Directory (AD Azure). Gör detta i den `<TechnicalProfile>` element av `<ClaimsProvider>`:
+tooget en SAML-token från Salesforce, definiera hello protokoll att Azure AD B2C kommer att använda toocommunicate med Azure Active Directory (AD Azure). Gör detta i hello `<TechnicalProfile>` element av `<ClaimsProvider>`:
 
-1. Uppdatera ID för den `<TechnicalProfile>` nod. Detta ID används för att referera till den här tekniska profilen från andra delar av principen.
-2. Uppdatera värdet för `<DisplayName>`. Det här värdet visas på knappen Logga in på sidan logga in.
-3. Uppdatera värdet för `<Description>`.
-4. Salesforce använder SAML 2.0-protokollet. Kontrollera att värdet för `<Protocol>` är **SAML2**.
+1. Uppdatera hello-ID för hello `<TechnicalProfile>` nod. Detta ID är används toorefer toothis tekniska profil från andra delar av hello princip.
+2. Uppdatera hello värde för `<DisplayName>`. Det här värdet visas på hello-knappen Logga in på sidan logga in.
+3. Uppdatera hello värde för `<Description>`.
+4. Salesforce använder hello SAML 2.0-protokollet. Se till att hello-värdet för `<Protocol>` är **SAML2**.
 
-Uppdatering av `<Metadata>` avsnitt i föregående XML att visa inställningarna för ditt specifika Salesforce-konto. Uppdatera värdena metadata i XML:
+Uppdatera hello `<Metadata>` avsnitt i hello före XML-tooreflect hello inställningar för ditt specifika Salesforce-konto. Uppdatera hello metadatavärden i hello XML:
 
-1. Uppdatera värdet i `<Item Key="PartnerEntity">` med Salesforce-metadata-URL som du kopierade tidigare. Det har följande format: 
+1. Uppdatera hello värdet för `<Item Key="PartnerEntity">` med hello Salesforce metadata-URL som du kopierade tidigare. Det har hello följande format: 
 
     `https://contoso-dev-ed.my.salesforce.com/.well-known/samlidp/connectedapp.xml`
 
-2. I den `<CryptographicKeys>` och uppdatera värdet för båda instanser av `StorageReferenceId` till namnet på nyckeln i ditt signeringscertifikat (till exempel B2C_1A_SAMLSigningCert).
+2. I hello `<CryptographicKeys>` avsnittet hello värde för båda instanser av `StorageReferenceId` toohello namnet på hello nyckel för signeringscertifikatet (till exempel B2C_1A_SAMLSigningCert).
 
-### <a name="upload-the-extension-file-for-verification"></a>Ladda upp tilläggsfilen för verifiering
+### <a name="upload-hello-extension-file-for-verification"></a>Överför hello tilläggsfilen för verifiering
 
-Principen har nu konfigurerats så att Azure AD B2C vet hur att kommunicera med Salesforce. Försök att ladda upp tilläggsfilen av din princip för att kontrollera att det inte finns några problem hittills. Att överföra tilläggsfilen i principen:
+Principen har nu konfigurerats så att Azure AD B2C vet hur toocommunicate med Salesforce. Försök att ladda upp hello tilläggsfilen i principen, tooverify att det inte finns några problem hittills. tooupload hello tilläggsfilen i principen:
 
-1. I din Azure AD B2C-klient går du till den **alla principer** bladet.
-2. Välj den **skriva över principen om den finns** kryssrutan.
-3. Ladda upp fil (TrustFrameworkExtensions.xml). Se till att den inte inte kan valideras.
+1. I din Azure AD B2C-klient går toohello **alla principer** bladet.
+2. Välj hello **skriva över hello principen om den finns** kryssrutan.
+3. Ladda upp filen hello-tillägg (TrustFrameworkExtensions.xml). Se till att den inte inte kan valideras.
 
-## <a name="register-the-salesforce-saml-claims-provider-to-a-user-journey"></a>Registrera Salesforce SAML anspråksprovidern för en användare resa
+## <a name="register-hello-salesforce-saml-claims-provider-tooa-user-journey"></a>Registrera hello Salesforce SAML anspråk providern tooa användaren resa
 
-Lägg sedan till Salesforce SAML-identitetsprovider till någon av dina användare resor. Nu identitetsleverantören har ställts in, men den är inte tillgänglig på någon av sidorna användaren registrering eller inloggning. Om du vill lägga till identitetsleverantören till en inloggningssida, först skapa en dubblett av en befintlig mall användaren resa. Ändra sedan mallen så att den har även Azure AD-identitetsleverantör.
+Lägg till hello Salesforce SAML identitet providern tooone resor dina användare. Nu hello identitetsleverantören har ställts in, men den är inte tillgänglig på någon av hello användaren registrering eller inloggning sidor. tooadd hello identitet providern tooa inloggningssidan, först skapar en dubblett av en befintlig mall användaren resa. Ändra hello mallen så att den har även hello Azure AD-identitetsleverantör.
 
-1. Öppna filen grundläggande av principen (till exempel TrustFrameworkBase.xml).
-2. Hitta de `<UserJourneys>` element, och sedan kopiera hela `<UserJourney>` värde, inklusive Id = ”SignUpOrSignIn”.
-3. Öppna tilläggsfilen (till exempel TrustFrameworkExtensions.xml). Hitta de `<UserJourneys>` element. Om det inte finns elementet, skapa en.
-4. Klistra in hela kopieras `<UserJourney>` som underordnad till den `<UserJourneys>` element.
-5. Byt namn på ID för den nya `<UserJourney>` (till exempel SignUpOrSignUsingContoso).
+1. Öppna grundläggande hello-filen för principen (till exempel TrustFrameworkBase.xml).
+2. Hitta hello `<UserJourneys>` element, och sedan kopiera hello hela `<UserJourney>` värde, inklusive Id = ”SignUpOrSignIn”.
+3. Öppna filen hello-tillägg (till exempel TrustFrameworkExtensions.xml). Hitta hello `<UserJourneys>` element. Skapa en om hello elementet inte finns.
+4. Klistra in hello hela kopieras `<UserJourney>` som underordnad till hello `<UserJourneys>` element.
+5. Byt namn på hello-ID för nya hello `<UserJourney>` (till exempel SignUpOrSignUsingContoso).
 
-### <a name="display-the-identity-provider-button"></a>Visa knappen för providern identitet
+### <a name="display-hello-identity-provider-button"></a>Visa hello identitet providern knappen
 
-Den `<ClaimsProviderSelection>` element är detsamma som knappen identity-providern på en registrering eller inloggning. Genom att lägga till en `<ClaimsProviderSelection>` element för Salesforce nya knappen visas när en användare till den här sidan. Knappen ska visas identitet providern:
+Hej `<ClaimsProviderSelection>` elementet är detsamma tooan identitet provider-knappen i ett registrering eller inloggning. Genom att lägga till en `<ClaimsProviderSelection>` element för Salesforce nya knappen visas när en användare toothis sidan. knapp för toodisplay hello identitet providern:
 
-1. I den `<UserJourney>` som du har skapat, söka efter den `<OrchestrationStep>` med `Order="1"`.
-2. Lägg till följande XML-filen:
+1. I hello `<UserJourney>` som du har skapat, hitta hello `<OrchestrationStep>` med `Order="1"`.
+2. Lägg till följande XML hello:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
-3. Ange `TargetClaimsExchangeId` till ett logiskt värde. Vi rekommenderar följande samma regler som andra (exempelvis  *\[ClaimProviderName\]Exchange*).
+3. Ange `TargetClaimsExchangeId` tooa logiskt värde. Vi rekommenderar följande hello samma konvention som andra (exempelvis  *\[ClaimProviderName\]Exchange*).
 
-### <a name="link-the-identity-provider-button-to-an-action"></a>Länka knappen leverantör identitet till en åtgärd
+### <a name="link-hello-identity-provider-button-tooan-action"></a>Länka hello identitet providern tooan åtgärd
 
-Nu när du har en identity-providern knapp på plats kan du länka den till en åtgärd. I det här fallet är åtgärden för Azure AD B2C att kommunicera med Salesforce ta emot en SAML-token. Du kan göra detta genom att länka tekniska profilen för dina Salesforce SAML anspråksleverantör:
+Nu när du har en identity-providern knapp för länka tooan åtgärd. I det här fallet är hello åtgärd för Azure AD B2C toocommunicate med Salesforce tooreceive en SAML-token. Du kan göra detta genom att länka tekniska hello-profil för dina Salesforce SAML anspråksleverantör:
 
-1. I den `<UserJourney>` kan hitta den `<OrchestrationStep>` med `Order="2"`.
-2. Lägg till följande XML-filen:
+1. I hello `<UserJourney>` nod, hitta hello `<OrchestrationStep>` med `Order="2"`.
+2. Lägg till följande XML hello:
 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
     ```
 
-3. Uppdatera `Id` till samma värde som du använde tidigare för `TargetClaimsExchangeId`.
-4. Uppdatera `TechnicalProfileReferenceId` till den `Id` av tekniska profilen du skapade tidigare (till exempel ContosoProfile).
+3. Uppdatera `Id` toohello samma värde som du använde tidigare i `TargetClaimsExchangeId`.
+4. Uppdatera `TechnicalProfileReferenceId` toohello `Id` av hello tekniska profilen du skapade tidigare (till exempel ContosoProfile).
 
-### <a name="upload-the-updated-extension-file"></a>Ladda upp filen uppdaterade tillägg
+### <a name="upload-hello-updated-extension-file"></a>Överför hello uppdaterade tilläggsfilen
 
-Du är klar ändra tilläggsfilen. Spara och ladda upp den här filen. Se till att alla verifieringar lyckas.
+Du är klar ändra hello-tilläggsfilen. Spara och ladda upp den här filen. Se till att alla verifieringar lyckas.
 
-### <a name="update-the-relying-party-file"></a>Uppdatera filen förlitande part
+### <a name="update-hello-relying-party-file"></a>Uppdatera hello förlitande part-filen
 
-Därefter uppdaterar du filen förlitande part (RP) som initierar transporten användare som du skapade:
+Därefter uppdaterar hello förlitande part (RP)-fil som initierar hello användaren resa som du skapade:
 
 1. Gör en kopia av SignUpOrSignIn.xml i arbetskatalogen. Sedan, byta namn på den (till exempel SignUpOrSignInWithAAD.xml).
-2. Öppna ny fil och uppdatera den `PolicyId` attribut för `<TrustFrameworkPolicy>` med ett unikt värde. Detta är namnet på principen (till exempel SignUpOrSignInWithAAD).
-3. Ändra den `ReferenceId` attribut i `<DefaultUserJourney>` så att den matchar den `Id` transporten för nya användare som du skapade (till exempel SignUpOrSignUsingContoso).
-4. Spara ändringarna och sedan ladda upp filen.
+2. Öppna hello nya fil- och update hello `PolicyId` attribut för `<TrustFrameworkPolicy>` med ett unikt värde. Detta är hello namn för principen (till exempel SignUpOrSignInWithAAD).
+3. Ändra hello `ReferenceId` attribut i `<DefaultUserJourney>` toomatch hello `Id` av hello nya användare resa som du skapade (till exempel SignUpOrSignUsingContoso).
+4. Spara ändringarna och sedan överföra hello-fil.
 
 ## <a name="test-and-troubleshoot"></a>Testa och felsöka
 
-Om du vill testa den anpassade principen som du just har överfört i Azure portal, gå till principbladet och klicka sedan på **kör nu**. Om den inte finns [felsöka principer för anpassade](active-directory-b2c-troubleshoot-custom.md).
+tootest hello anpassad princip som du just har överfört, i hello Azure-portalen går toohello principbladet och klicka sedan på **kör nu**. Om den inte finns [felsöka principer för anpassade](active-directory-b2c-troubleshoot-custom.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Ge feedback till [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com).
+Ge feedback för[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com).

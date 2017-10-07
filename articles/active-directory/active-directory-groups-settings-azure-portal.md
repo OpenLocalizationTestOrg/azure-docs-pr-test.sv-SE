@@ -1,6 +1,6 @@
 ---
-title: Hantera egenskaper i Azure Active Directory | Microsoft Docs
-description: "Så här redigerar du egenskaperna och andra konfigurationsinställningar för en grupp i Azure Active Directory"
+title: aaaManage egenskaper i Azure Active Directory | Microsoft Docs
+description: "Hur tooedit hello egenskaper och andra konfigurationsinställningar för en grupp i Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,28 +16,28 @@ ms.date: 08/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: b4baccafc0a9178223dbf64c664fc34ab9f7f916
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: aa17c62b4824e5c2de8adc1d34cd9618f3e722f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Hantera inställningar för en grupp i Azure Active Directory
-Den här artikeln förklarar hur du ändrar inställningarna för en grupp i Azure Active Directory (AD Azure).
+# <a name="manage-hello-settings-for-a-group-in-azure-active-directory"></a>Hantera hello inställningar för en grupp i Azure Active Directory
+Den här artikeln förklarar hur toochange hello inställningar för en grupp i Azure Active Directory (AD Azure).
 
-## <a name="how-do-i-find-and-change-the-settings"></a>Hur hittar jag och ändra inställningarna?
-1. Logga in på [Azure AD administratörscenter](https://aad.portal.azure.com) med ett konto som är en global administratör för katalogen.
-2. Välj **fler tjänster**, ange **användare och grupper** i textrutan och välj sedan **RETUR**.
+## <a name="how-do-i-find-and-change-hello-settings"></a>Hur gör att hitta och ändra hello inställningar?
+1. Logga in toohello [administrationscentret för Azure AD](https://aad.portal.azure.com) med ett konto som är en global administratör för hello-katalogen.
+2. Välj **fler tjänster**, ange **användare och grupper** i hello textruta och välj sedan **RETUR**.
 
    ![Öppna användare och grupper bladet](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
-3. På den **användare och grupper** bladet väljer **alla grupper**.
+3. På hello **användare och grupper** bladet väljer **alla grupper**.
 
-   ![Öppna bladet alla grupper](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
-4. På den **användare och grupper – alla grupper** bladet Välj en grupp.
-5. På den **grupp - *groupname***  bladet väljer **egenskaper**.
+   ![Öppna hello alla grupper bladet](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
+4. På hello **användare och grupper – alla grupper** bladet Välj en grupp.
+5. På hello **grupp - *groupname***  bladet väljer **egenskaper**.
 
-   ![Öppna egenskapsbladet](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
-6. När du har ändrat egenskaper för gruppen, Välj **spara**.    
+   ![Öppna hello egenskapsbladet](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
+6. När du har ändrat egenskaper för hello-gruppen, Välj **spara**.    
 
    ![Spara ändringar av egenskaper](./media/active-directory-groups-settings-azure-portal/save-group-properties.png)
 

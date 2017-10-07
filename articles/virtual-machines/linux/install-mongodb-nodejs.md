@@ -1,6 +1,6 @@
 ---
-title: "Installera MongoDB på en Linux-VM som använder Azure CLI 1.0 | Microsoft Docs"
-description: "Lär dig hur du installerar och konfigurerar MongoDB på en Linux-dator i Azure med hjälp av Resource Manager-distributionsmodellen."
+title: "aaaInstall MongoDB på en Linux VM som använder hello Azure CLI 1.0 | Microsoft Docs"
+description: "Lär dig hur tooinstall och konfigurera MongoDB på en Linux-dator i Azure med hjälp av hello Resource Manager-modellen."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.openlocfilehash: c97ade0a3d95824f723aad55776de861fe49441f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4ce21a2c63da7d00a4422e0a6766e2103e7f12d7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-10"></a>Installera och konfigurera MongoDB på en Linux VM som använder Azure CLI 1.0
-[MongoDB](http://www.mongodb.org) är en populär öppen källkod, högpresterande NoSQL-databas. Den här artikeln visar hur du installerar och konfigurerar MongoDB på en Linux-VM i Azure med hjälp av Resource Manager-distributionsmodellen. Exempel visas hur detaljer till:
+# <a name="how-tooinstall-and-configure-mongodb-on-a-linux-vm-using-hello-azure-cli-10"></a>Hur tooinstall och konfigurera MongoDB på en Linux VM som använder hello Azure CLI 1.0
+[MongoDB](http://www.mongodb.org) är en populär öppen källkod, högpresterande NoSQL-databas. Den här artikeln beskrivs hur du tooinstall och konfigurera MongoDB på en Linux-VM i Azure med hjälp av hello Resource Manager-modellen. Exempel visas hur detaljer till:
 
 * [Installera och konfigurera en grundläggande MongoDB-instansen manuellt](#manually-install-and-configure-mongodb-on-a-vm)
 * [Skapa en grundläggande MongoDB-instans med en Resource Manager-mall](#create-basic-mongodb-instance-on-centos-using-a-template)
 * [Skapa en komplex MongoDB delat kluster med replik anger med hjälp av en Resource Manager-mall](#create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template)
 
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-versioner för att slutföra uppgiften
-Du kan slutföra uppgiften med någon av följande CLI-versioner:
+## <a name="cli-versions-toocomplete-hello-task"></a>CLI versioner toocomplete hello aktivitet
+Du kan göra hello med hjälp av något av följande versioner av CLI hello:
 
-- Azure CLI 1.0 – vårt CLI för den klassiska distributionsmodellen och Resource Manager-distributionsmodellen (den här artikeln)
-- [Azure CLI 2.0](create-cli-complete-nodejs.md) – vår nästa generations CLI för distributionsmodellen resurshantering
+- Azure CLI 1.0 – våra CLI för hello klassisk och resurs management distributionsmodeller (den här artikeln)
+- [Azure CLI 2.0](create-cli-complete-nodejs.md) -vår nästa generations CLI för hello resursdistributionsmodell för hantering
 
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Installera och konfigurera MongoDB på en virtuell dator manuellt
-MongoDB [ange installationsinstruktioner](https://docs.mongodb.com/manual/administration/install-on-linux/) för Linux-distributioner inklusive Red Hat / CentOS, SUSE, Ubuntu och Debian. I följande exempel skapas en *CentOS* VM som använder en SSH-nyckel som lagras på *~/.ssh/id_rsa.pub*. Besvara anvisningarna för lagringskontonamn, DNS-namn och autentiseringsuppgifter som administratör:
+MongoDB [ange installationsinstruktioner](https://docs.mongodb.com/manual/administration/install-on-linux/) för Linux-distributioner inklusive Red Hat / CentOS, SUSE, Ubuntu och Debian. hello följande exempel skapas en *CentOS* VM som använder en SSH-nyckel som lagras på *~/.ssh/id_rsa.pub*. Svaret hello uppmanar för lagringskontonamn, DNS-namn och autentiseringsuppgifter som administratör:
 
 ```azurecli
 azure vm quick-create \
@@ -44,19 +44,19 @@ azure vm quick-create \
     --ssh-publickey-file ~/.ssh/id_rsa.pub 
 ```
 
-Logga in på den virtuella datorn med hjälp av den offentliga IP-adressen som visas i slutet av det föregående steget för virtuell dator skapas:
+Logga in toohello VM med hello offentliga IP-adress visas hello slutet av hello föregående steg i att skapa VM:
 
 ```bash
 ssh azureuser@40.78.23.145
 ```
 
-För att lägga till installationskällor för MongoDB, skapa en **yum** fil i databasen på följande sätt:
+tooadd hello installationskällor för MongoDB, skapa en **yum** fil i databasen på följande sätt:
 
 ```bash
 sudo touch /etc/yum.repos.d/mongodb-org-3.4.repo
 ```
 
-Öppna filen MongoDB lagringsplatsen för redigering. Lägg till följande rader:
+Öppna hello MongoDB-repo-filen för redigering. Lägg till hello följande rader:
 
 ```sh
 [mongodb-org-3.4]
@@ -73,26 +73,26 @@ Installera MongoDB med **yum** på följande sätt:
 sudo yum install -y mongodb-org
 ```
 
-Som standard aktiveras SELinux på CentOS bilder som hindrar dig från att komma åt MongoDB. Installera hanteringsverktyg och konfigurera SELinux för att tillåta MongoDB att använda dess TCP-standardporten 27017 på följande sätt. 
+Som standard aktiveras SELinux på CentOS bilder som hindrar dig från att komma åt MongoDB. Installera hanteringsverktyg och konfigurera SELinux tooallow MongoDB toooperate på dess TCP-standardporten 27017 på följande sätt. 
 
 ```bash
 sudo yum install -y policycoreutils-python
 sudo semanage port -a -t mongod_port_t -p tcp 27017
 ```
 
-Starta tjänsten MongoDB på följande sätt:
+Starta hello MongoDB-tjänsten på följande sätt:
 
 ```bash
 sudo service mongod start
 ```
 
-Kontrollera installationen av MongoDB genom att ansluta med hjälp av lokalt `mongo` klient:
+Kontrollera hello MongoDB installationen genom att ansluta med hello lokala `mongo` klient:
 
 ```bash
 mongo
 ```
 
-Nu testa MongoDB-instansen genom att lägga till vissa data och sedan söka:
+Nu testa hello MongoDB-instansen genom att lägga till vissa data och sedan söka:
 
 ```sh
 > db
@@ -103,7 +103,7 @@ test
 > exit
 ```
 
-Om du vill konfigurera MongoDB för att starta automatiskt under en omstart av systemet:
+Om du vill konfigurera MongoDB toostart automatiskt under en omstart av systemet:
 
 ```bash
 sudo chkconfig mongod on
@@ -111,11 +111,11 @@ sudo chkconfig mongod on
 
 
 ## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>Skapa en grundläggande MongoDB-instans på CentOS med en mall
-Du kan skapa en grundläggande MongoDB-instans på en enda CentOS VM som använder följande Azure quickstart-mall från GitHub. Den här mallen använder tillägget för anpassat skript för Linux för att lägga till en `yum` databasen till den nyligen skapade CentOS VM och sedan installera MongoDB.
+Du kan skapa en grundläggande MongoDB-instans på en enda CentOS VM som använder hello följande Azure quickstart-mall från GitHub. Den här mallen använder hello tillägget för anpassat skript för Linux tooadd en `yum` databasen tooyour nyskapad CentOS VM och sedan installera MongoDB.
 
 * [Grundläggande MongoDB-instansen på CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) -https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-I följande exempel skapas en resursgrupp med namnet `myResourceGroup` i den `eastus` region. Ange egna värden enligt följande:
+hello följande exempel skapar en resursgrupp med namnet hello `myResourceGroup` i hello `eastus` region. Ange egna värden enligt följande:
 
 ```azurecli
 azure group create \
@@ -125,27 +125,27 @@ azure group create \
 ```
 
 > [!NOTE]
-> Azure CLI tillbaka till en fråga inom några sekunder för att skapa distributionen men installationen och konfigurationen tar några minuter att slutföra. Kontrollera statusen för distributionen med `azure group deployment show myResourceGroup`, ange namnet på resursgruppen därefter. Vänta tills den **ProvisioningState** visar *lyckades* innan du försöker SSH till den virtuella datorn.
+> hello Azure CLI returnerar du tooa prompt inom några sekunder för att skapa hello distributionen, men hello installation och konfiguration tar några minuter toocomplete. Kontrollera hello status hello-distribution med `azure group deployment show myResourceGroup`, därför att ange hello namnet på resursgruppen. Vänta tills hello **ProvisioningState** visar *lyckades* innan du försöker tooSSH toohello VM.
 
-När installationen är klar, SSH till den virtuella datorn. Hämta IP-adressen för din virtuella datorn med hjälp av den `azure vm show` kommandot som i följande exempel:
+När hello distribution är Slutför SSH toohello VM. Hämta hello IP-adressen för den virtuella datorn med hjälp av hello `azure vm show` kommandot som i följande exempel hello:
 
 ```azurecli
 azure vm show --resource-group myResourceGroup --name myLinuxVM
 ```
 
-I slutet av utdata visas den offentliga IP-adressen. SSH till den virtuella datorn med IP-adressen för den virtuella datorn:
+Nära hello ände hello utdata visas hello offentlig IP-adress. SSH tooyour VM med hello IP-adressen för den virtuella datorn:
 
 ```bash
 ssh azureuser@138.91.149.74
 ```
 
-Kontrollera installationen av MongoDB genom att ansluta med hjälp av lokalt `mongo` klienten på följande sätt:
+Kontrollera hello MongoDB installationen genom att ansluta med hello lokala `mongo` klienten på följande sätt:
 
 ```bash
 mongo
 ```
 
-Nu testa instansen genom att lägga till vissa data och söka på följande sätt:
+Nu testa hello-instans genom att lägga till vissa data och söka på följande sätt:
 
 ```sh
 > db
@@ -158,14 +158,14 @@ test
 
 
 ## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>Skapa ett komplext delat MongoDB-kluster på CentOS med en mall
-Du kan skapa komplexa delat MongoDB-kluster med hjälp av följande Azure quickstart-mall från GitHub. Den här mallen följer den [MongoDB delat kluster metodtips](https://docs.mongodb.com/manual/core/sharded-cluster-components/) att ge redundans och hög tillgänglighet. Mallen skapar två delar med tre noder i varje replik. En replik för config server med tre noder skapas också, plus två **mongos** router-servrar som tillhandahåller konsekvenskontroll till program från över delar.
+Du kan skapa komplexa delat MongoDB-kluster med hjälp av hello följande Azure quickstart-mall från GitHub. Den här mallen följer hello [MongoDB delat kluster metodtips](https://docs.mongodb.com/manual/core/sharded-cluster-components/) tooprovide redundans och hög tillgänglighet. hello mallen skapar två delar med tre noder i varje replik. En replik för config server med tre noder skapas också, plus två **mongos** router servrar tooprovide konsekvenskontroll tooapplications från över hello delar.
 
 * [MongoDB horisontell partitionering kluster på CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) -https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 
 > [!WARNING]
-> Distribuera det här komplexa delat MongoDB-kluster kräver mer än 20 kärnor, som vanligtvis är standardvärdet för antal kärnor per region för en prenumeration. Öppna ett Azure supportbegäran för att öka din antal kärnor.
+> Distribuera det här komplexa delat MongoDB-kluster kräver mer än 20 kärnor, som vanligtvis är antal hello standard kärnor per region för en prenumeration. Öppna ett Azure-supporten begäran tooincrease din antal kärnor.
 
-I följande exempel skapas en resursgrupp med namnet *myResourceGroup* i den *eastus* region. Ange egna värden enligt följande:
+hello följande exempel skapar en resursgrupp med namnet hello *myResourceGroup* i hello *eastus* region. Ange egna värden enligt följande:
 
 ```azurecli
 azure group create \
@@ -175,13 +175,13 @@ azure group create \
 ```
 
 > [!NOTE]
-> Azure CLI tillbaka till en fråga inom några sekunder för att skapa distributionen men installationen och konfigurationen kan ta över en timme att slutföra. Kontrollera statusen för distributionen med `azure group deployment show myResourceGroup`, justeras efter namnet på resursgruppen. Vänta tills den **ProvisioningState** visar *lyckades* innan du ansluter till de virtuella datorerna.
+> hello Azure CLI returnerar du tooa prompt inom några sekunder för att skapa hello distributionen, men hello installation och konfiguration kan ta över en timme toocomplete. Kontrollera hello status hello-distribution med `azure group deployment show myResourceGroup`, justeras efter hello namnet på resursgruppen. Vänta tills hello **ProvisioningState** visar *lyckades* innan du ansluter toohello virtuella datorer.
 
 
 ## <a name="next-steps"></a>Nästa steg
-I dessa fall måste ansluta du till MongoDB-instansen lokalt från den virtuella datorn. Om du vill ansluta till MongoDB-instansen från en annan virtuell dator eller nätverk, se till att rätt [Nätverkssäkerhetsgruppen regler skapas](nsg-quickstart.md).
+I dessa fall måste ansluta du toohello MongoDB-instansen lokalt från hello VM. Om du vill tooconnect toohello MongoDB-instansen från en annan virtuell dator eller nätverk, se till att lämpliga hello [Nätverkssäkerhetsgruppen regler skapas](nsg-quickstart.md).
 
-Mer information om hur du skapar med hjälp av mallar finns i [översikt över Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+Mer information om hur du skapar med hjälp av mallar finns hello [översikt över Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
-Azure Resource Manager-mallar använda tillägget för anpassat skript för att hämta och köra skript på din virtuella dator. Mer information finns i [med hjälp av tillägget för anpassat skript på Azure med Linux-datorer](extensions-customscript.md).
+hello Azure Resource Manager-Mallar Använd hello toodownload för tillägget för anpassat skript och köra skript på din virtuella dator. Mer information finns i [Using hello tillägget för Azure anpassat skript med Linux-datorer](extensions-customscript.md).
 

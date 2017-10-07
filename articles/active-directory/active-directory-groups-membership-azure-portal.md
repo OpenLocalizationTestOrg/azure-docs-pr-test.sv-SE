@@ -1,6 +1,6 @@
 ---
-title: "Hantera grupper som gruppen tillhör i Azure Active Directory | Microsoft Docs"
-description: "Grupper kan innehålla andra grupper i Azure Active Directory. Här är hur du hanterar dessa medlemskap."
+title: "aaaManage hello grupper som gruppen tillhör tooin Azure Active Directory | Microsoft Docs"
+description: "Grupper kan innehålla andra grupper i Azure Active Directory. Här är hur toomanage dessa medlemskap."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -15,33 +15,33 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08e04a6590176c4084ca47b4bd6cbb22500eca2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d0a0a1967084de0968e1e802559f9cdfd7ca6ae4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Hantera vilka grupper som en grupp tillhör i Azure Active Directory-klient
-Grupper kan innehålla andra grupper i Azure Active Directory. Här är hur du hanterar dessa medlemskap.
+# <a name="manage-toowhich-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Hantera toowhich grupper som en grupp tillhör i Azure Active Directory-klient
+Grupper kan innehålla andra grupper i Azure Active Directory. Här är hur toomanage dessa medlemskap.
 
-## <a name="how-do-i-find-the-groups-my-group-is-a-member-of"></a>Hur hittar jag min grupp är medlem i grupperna?
-1. Logga in på den [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för katalogen.
-2. Välj **fler tjänster**, ange **användare och grupper** i textrutan och välj sedan **RETUR**.
+## <a name="how-do-i-find-hello-groups-my-group-is-a-member-of"></a>Hur hittar hello grupper min grupp är medlem i?
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) med ett konto som är en global administratör för hello-katalogen.
+2. Välj **fler tjänster**, ange **användare och grupper** i hello textruta och välj sedan **RETUR**.
 
    ![Öppna användarhantering](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
-3. På den **användare och grupper** bladet väljer **alla grupper**.
+3. På hello **användare och grupper** bladet väljer **alla grupper**.
 
-   ![Öppna bladet grupper](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
-4. På den **användare och grupper – alla grupper** bladet Välj en grupp.
-5. På den **grupp - *groupname***  bladet väljer **gruppmedlemskap**.
+   ![Öppna hello grupper bladet](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
+4. På hello **användare och grupper – alla grupper** bladet Välj en grupp.
+5. På hello **grupp - *groupname***  bladet väljer **gruppmedlemskap**.
 
-   ![Öppna bladet för medlemskap](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-6. Att lägga till gruppen som en medlem i en annan grupp på den **Group - gruppmedlemskap** bladet väljer den **Lägg till** kommando.
-7. Väljer du en grupp i **Välj grupp** bladet och välj sedan den **Välj** längst ned på bladet. Du kan lägga till din grupp bara en grupp i taget. Den **användaren** rutan filtrerar baserat på matchning inmatningen till alla delar av namnet på en användare eller enhet. Inga jokertecken godkänns i rutan.
+   ![Öppna hello blad för medlemskap](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
+6. tooadd din grupp som en medlem i en annan grupp på hello **Group - gruppmedlemskap** bladet, Välj hello **Lägg till** kommando.
+7. Välj en grupp i hello **Välj grupp** bladet och välj sedan hello **Välj** knappen längst ned hello hello-bladet. Du kan lägga till din grupp tooonly en grupp i taget. Hej **användaren** filtrerar hello visas baserat på matchning post tooany-tillhör ett namn för användaren eller enheten. Inga jokertecken godkänns i rutan.
 
    ![Lägg till en gruppmedlemskap](./media/active-directory-groups-membership-azure-portal/add-group-membership.png)
-8. Ta bort gruppen som en medlem i en annan grupp på den **Group - gruppmedlemskap** bladet Välj en grupp.
-9. På den ***groupname*** bladet väljer den **ta bort** kommando och bekräfta valet i Kommandotolken.
+8. tooremove din grupp som en medlem i en annan grupp på hello **Group - gruppmedlemskap** bladet Välj en grupp.
+9. På hello ***groupname*** bladet, Välj hello **ta bort** kommando och bekräfta valet hello i Kommandotolken.
 
    ![ta bort medlemskap kommandot](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
 10. När du har ändrat medlemskap för gruppen, Välj **spara**.

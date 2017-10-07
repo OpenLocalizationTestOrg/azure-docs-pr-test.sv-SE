@@ -1,6 +1,6 @@
 ---
-title: Skapa webbappar med Django i Azure
-description: "En introduktionskurs till att köra en Python-webbapp i Azure App Service Web Apps."
+title: aaaCreating webbappar med Django i Azure
+description: "En självstudiekurs som presenteras toorunning en Python-webbapp i Azure App Service Web Apps."
 services: app-service\web
 documentationcenter: python
 tags: python
@@ -15,21 +15,21 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2016
 ms.author: huvalo
-ms.openlocfilehash: 388a2db21dd1669b48b3204aaa322d7915905506
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 26a131da358748bd6fe4ee5c114d0a8f91b83cfe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="creating-web-apps-with-django-in-azure"></a>Skapa webbappar med Django i Azure
-Under den här kursen får du veta hur du kommer igång med Python i [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714). Med Web Apps får du begränsat ledigt värdutrymme och snabb distribution och kan använda Python. I takt med att appen växer kan du gå över till betald hantering och även integrera med alla övriga Azure-tjänster.
+Den här självstudiekursen beskriver hur tooget igång med Python i [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714). Med Web Apps får du begränsat ledigt värdutrymme och snabb distribution och kan använda Python. När din app växer, kan du växla toopaid värd och du kan också integrera med alla hello andra Azure-tjänster.
 
-Du får skapa ett program med hjälp av Djangos webbramverk (se motsvarande versioner av kursen för [Flask](web-sites-python-create-deploy-flask-app.md) och [Bottle](web-sites-python-create-deploy-bottle-app.md)). Du får skapa webbappen från Azure Marketplace, konfigurera Git-distribution och klona lagringsplatsen lokalt. Sedan kör du programmet lokalt, gör ändringar, checkar in dem och push-överför dem till Azure. I den här kursen får du veta hur du gör det från Windows eller Mac/Linux.
+Du skapar ett program med hello Djangos webbramverk (se motsvarande versioner av kursen för [Flask](web-sites-python-create-deploy-flask-app.md) och [Bottle](web-sites-python-create-deploy-bottle-app.md)). Du ska skapa hello webbprogrammet från hello Azure Marketplace, konfigurera Git-distribution och klona hello lagringsplatsen lokalt. Du kommer sedan köra hello programmet lokalt, gör ändringar, genomför och push-installera dem tooAzure. Hej självstudiekurs visar hur toodo från Windows eller Mac/Linux.
 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 > [!NOTE]
-> Om du vill komma igång med Azure App Service innan du registrerar dig för ett Azure-konto kan du gå till [Prova App Service](https://azure.microsoft.com/try/app-service/). Där kan du direkt skapa en tillfällig startwebbapp i App Service. Inga kreditkort krävs. Inga åtaganden.
+> Om du vill tooget igång med Azure App Service innan du registrerar dig för ett Azure-konto går för[prova App Service](https://azure.microsoft.com/try/app-service/), där kan du direkt skapa en tillfällig startwebbapp i App Service. Inget kreditkort krävs, och du gör inga åtaganden.
 > 
 > 
 
@@ -43,27 +43,27 @@ Du får skapa ett program med hjälp av Djangos webbramverk (se motsvarande vers
 **Obs**! TFS-publicering stöds för närvarande inte för Python-projekt.
 
 ### <a name="windows"></a>Windows
-Om du inte redan har Python 2.7 eller 3.4 installerat (32-bitars) rekommenderar vi att du installerar [Azure SDK för Python 2.7] eller [Azure SDK för Python 3.4] med hjälp av installationsprogrammet för webbplattform. När du gör det installeras 32-bitarsversionen av Python, installationsverktyg, pip, virtuell miljö med mera. (Det är 32-bitarsversionen av Python som finns installerad på Azure-värddatorerna.) Du kan också hämta Python på [python.org].
+Om du inte redan har Python 2.7 eller 3.4 installerat (32-bitars) rekommenderar vi att du installerar [Azure SDK för Python 2.7] eller [Azure SDK för Python 3.4] med hjälp av installationsprogrammet för webbplattform. Detta installerar hello 32-bitarsversionen av Python, installationsverktyg, pip, virtuell miljö och så vidare (32-bitarsversionen av Python är vad som är installerat på hello Azure-värddatorerna). Du kan också hämta Python på [python.org].
 
-För Git rekommenderar vi [Git för Windows] eller [GitHub för Windows]. Om du använder Visual Studio kan du använda det integrerade Git-stödet.
+För Git rekommenderar vi [Git för Windows] eller [GitHub för Windows]. Om du använder Visual Studio, kan du använda hello integrerad Git-stödet.
 
-Vi rekommenderar också att du installerar [Python Tools 2.2 för Visual Studio]. Det här är valfritt, men om du har [Visual Studio], inklusive det kostnadsfria Visual Studio Community 2013 eller Visual Studio Express 2013 för webben, har du en utmärkt Python IDE.
+Vi rekommenderar också att du installerar [Python Tools 2.2 för Visual Studio]. Det här är valfritt, men om du har [Visual Studio], inklusive hello kostnadsfri Visual Studio Community 2013 eller Visual Studio Express 2013 för webben och det ger dig en utmärkt Python IDE.
 
 ### <a name="maclinux"></a>Mac/Linux
 Du bör redan ha Python och Git installerade, men kontrollera att du har Python 2.7 eller 3.4.
 
 ## <a name="web-app-creation-on-portal"></a>Skapa en webbapp i Azure Portal
-Det första steget i att skapa din app är att skapa webbappen via [Azure Portal](https://portal.azure.com).
+hello första steget i att skapa din app är toocreate hello webbprogram via hello [Azure Portal](https://portal.azure.com).
 
-1. Logga in på Azure Portal och klicka på knappen **NY** i det nedre vänstra hörnet.
-2. Skriv "python" i sökrutan.
-3. I sökresultaten väljer Välj **Django** (publicerat av PTVS) i sökresultatet och klicka sedan på **Skapa**.
-4. Konfigurera den nya Django-appen och skapa till exempel en ny App Service-plan och en ny resursgrupp för den. Klicka på **Skapa**.
-5. Konfigurera Git-publicering för den nya webbappen genom att följa anvisningarna i [Lokal Git-distribution till Azure App Service](app-service-deploy-local-git.md).
+1. Logga in på hello Azure-portalen och klicka på hello **ny** knappen i hello nedre vänstra hörnet.
+2. Skriv ”python” i sökrutan hello.
+3. I sökresultaten hello väljer **Django** (som publicerats av PTVS) Klicka **skapa**.
+4. Konfigurera hello nya Django-appen, till exempel skapa en ny App Service-plan och en ny resursgrupp för den. Klicka på **Skapa**.
+5. Konfigurera Git-publicering för nyskapade webbappen genom att följa anvisningarna hello på [lokal Git-distribution tooAzure Apptjänst](app-service-deploy-local-git.md).
 
 ## <a name="application-overview"></a>Programöversikt
 ### <a name="git-repository-contents"></a>Innehåll på Git-lagringsplatsen
-Här är en översikt över filerna på den första Git-lagringsplatsen, som vi ska klona i nästa avsnitt.
+Här är en översikt över hello-filer som du hittar i hello första Git-lagringsplatsen, som vi ska klona i nästa avsnitt om hello.
 
     \app\__init__.py
     \app\forms.py
@@ -84,15 +84,15 @@ Här är en översikt över filerna på den första Git-lagringsplatsen, som vi 
     \DjangoWebProject\urls.py
     \DjangoWebProject\wsgi.py
 
-Programmets huvudsakliga källor. Består av tre sidor (index, om och kontakt) med bakgrundslayout. Statiskt innehåll och skript inkluderar bootstrap, jquery, modernizr och respond.
+Programmet hello huvudsakliga källor. Består av tre sidor (index, om och kontakt) med bakgrundslayout. Statiskt innehåll och skript inkluderar bootstrap, jquery, modernizr och respond.
 
     \manage.py
 
-Stöd för lokal hanterings- och utvecklingsserver. Används till att köra programmet lokalt, synkronisera databasen med mera.
+Stöd för lokal hanterings- och utvecklingsserver. Använda toorun hello programmet lokalt, synkronisera databasen hello osv.
 
     \db.sqlite3
 
-Standarddatabas. Innehåller de tabeller som krävs för att programmet ska köras, men inga användare. (Du kan skapa användare genom att synkronisera databasen.)
+Standarddatabas. Inkluderar hello nödvändiga tabeller för hello programmet toorun, men innehåller inte några användare (synkronisera hello databasen toocreate en användare).
 
     \DjangoWebProject.pyproj
     \DjangoWebProject.sln
@@ -105,12 +105,12 @@ IIS-proxy för virtuella miljöer och PTVS-stöd för fjärrfelsökning.
 
     \requirements.txt
 
-Externa paket som krävs för programmet. Distributionsskriptet pip-installerar paketen som listas i den här filen.
+Externa paket som krävs för programmet. hello distributionsskriptet pip hello installationspaket som anges i den här filen.
 
     \web.2.7.config
     \web.3.4.config
 
-IIS-konfigurationsfiler. Distributionsskriptet använder lämplig web.x.y.config och skapar kopian web.config.
+IIS-konfigurationsfiler. hello distributionsskriptet använder lämplig web.x.y.config för hello och kopian web.config.
 
 ### <a name="optional-files---customizing-deployment"></a>Valfria filer – anpassa distributionen
 [!INCLUDE [web-sites-python-django-customizing-deployment](../../includes/web-sites-python-django-customizing-deployment.md)]
@@ -119,7 +119,7 @@ IIS-konfigurationsfiler. Distributionsskriptet använder lämplig web.x.y.config
 [!INCLUDE [web-sites-python-customizing-runtime](../../includes/web-sites-python-customizing-runtime.md)]
 
 ### <a name="additional-files-on-server"></a>Ytterligare filer på servern
-Det finns filer på servern som inte har lagts till på Git-lagringsplatsen. Dessa skapas med skriptet för distribution.
+Vissa filer finnas på hello-servern men läggs inte toohello git-lagringsplats. Dessa skapas med hello distributionsskriptet.
 
     \web.config
 
@@ -127,92 +127,92 @@ IIS-konfigurationsfilen. Skapas utifrån web.x.y.config vid varje distribution.
 
     \env\
 
-Python, virtuell miljö Skapas under distributionen om det inte redan finns en kompatibel virtuell miljö i webbappen. De paket som anges i requirements.txt pip-installeras, men pip hoppar över installationen om paketen redan är installerade.
+Python, virtuell miljö Skapas under distributionen om det inte redan finns en kompatibel virtuell miljö hello webbprogrammet. Paket som anges i requirements.txt är pip-installeras, men pip hoppar över installationen om paketen hello redan är installerade.
 
-I följande tre avsnitt beskrivs hur du fortsätter med webbappsutvecklingen i tre olika miljöer:
+hello 3 nästa avsnitt beskrivs hur tooproceed med hello webbappsutveckling under 3 olika miljöer:
 
 * Windows med Python Tools för Visual Studio
 * Windows, med kommandorad
 * Mac/Linux, med kommandorad
 
 ## <a name="web-app-development---windows---python-tools-for-visual-studio"></a>Webbappsutveckling – Windows – Python Tools för Visual Studio
-### <a name="clone-the-repository"></a>Klona lagringsplatsen
-Först klonar du lagringsplatsen med hjälp av webbadressen som tillhandahålls på Azure Portal. Mer information finns i [Lokal Git-distribution till Azure App Service](app-service-deploy-local-git.md).
+### <a name="clone-hello-repository"></a>Klona hello databasen
+Först klonar hello-databas med hjälp av hello Webbadressen som tillhandahålls på hello Azure-portalen. Mer information finns i [lokal Git-distribution tooAzure Apptjänst](app-service-deploy-local-git.md).
 
-Öppna lösningsfilen (.sln) som finns i lagringsplatsens rot.
+Öppna hello lösningsfilen (.sln) som ingår i hello rot hello-databasen.
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-solution-django.png)
 
 ### <a name="create-virtual-environment"></a>Skapa en virtuell miljö
 Nu ska vi skapa en virtuell miljö för lokal utveckling. Högerklicka på **Python Environments** (Python-miljöer) och välj **Add Virtual Environment...** (Lägg till virtuell miljö).
 
-* Kontrollera att namnet på miljön är `env`.
-* Välj bastolk. Se till att använda samma version av Python som valts för webbappen (i runtime.txt eller i bladet **Programinställningar** för webbappen i Azure Portal).
-* Kontrollera att alternativet för att ladda ned och installera paket är markerat.
+* Kontrollera hello hello miljö heter `env`.
+* Välj hello bastolk. Kontrollera att toouse hello samma version av Python som valts för webbappen (i runtime.txt eller hello **programinställningar** bladet för din webbapp i hello Azure Portal).
+* Kontrollera att hello alternativet toodownload och installera paket är markerat.
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-add-virtual-env-27.png)
 
-Klicka på **Skapa**. När du gör det skapas den virtuella miljön och beroenden som är angivna i requirements.txt installeras.
+Klicka på **Skapa**. Detta skapar hello virtuell miljö och installera beroenden som anges i requirements.txt.
 
 ### <a name="create-a-superuser"></a>Skapa en användare med fullständig behörighet
-I databasen som ingår i programmet finns ingen definierad användare med fullständig behörighet. Du måste skapa en användare med fullständig behörighet för att kunna använda inloggningsfunktionen i programmet och administratörsgränssnittet för Django (om du väljer att aktivera det).
+hello har ingår hello programmet inte definierats en superanvändare. Ordning toouse hello inloggning funktionsändringar i hello program eller hello administratörsgränssnittet för Django (om du väljer tooenable den), behöver du toocreate superanvändare.
 
-Kör följande från kommandoraden i projektmappen:
+Kör det från hello kommandoraden i projektmappen:
 
     env\scripts\python manage.py createsuperuser
 
-Följ anvisningarna för att ange användarnamn, lösenord osv.
+Följ hello prompter tooset hello användarnamn, lösenord osv.
 
 ### <a name="run-using-development-server"></a>Kör med utvecklingsservern
-Tryck på F5 för att starta felsökningen. Sidan som körs lokalt öppnas automatiskt i webbläsaren.
+Tryck på F5 toostart felsökning och webbläsaren öppnas automatiskt toohello sidan som körs lokalt.
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-browser-django.png)
 
-Du kan ange brytpunkter i källorna, använda bevakningsfönstren med mera. Mer information om de olika funktionerna finns i [Dokumentationen om Python Tools för Visual Studio].
+Du kan ange brytpunkter i hello källor, Använd hello titta på windows osv. Se hello [Python Tools för Visual Studio-dokumentationen] hello mer information om olika funktioner.
 
 ### <a name="make-changes"></a>Göra ändringar
-Nu kan du experimentera med att göra ändringar i programmets källor och mallar.
+Nu kan du experimentera med att göra ändringar toohello programmets källor och mallar.
 
-När du har testat ändringarna checkar du in dem på Git-lagringsplatsen:
+När du har testat ändringarna checkar du in dem toohello Git-lagringsplatsen:
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-commit-django.png)
 
 ### <a name="install-more-packages"></a>Installera fler paket
 Programmet kan ha beroenden utöver Python och Django.
 
-Du kan installera ytterligare paket med hjälp av pip. Om du vill installera ett paket högerklickar du på den virtuella miljön och väljer **Install Python Package** (Installera Python-paket).
+Du kan installera ytterligare paket med hjälp av pip. tooinstall ett paket, högerklicka på hello virtuell miljö och välj **Install Python Package**.
 
-Om du till exempel vill installera Azure SDK för Python, som ger dig tillgång till Azure Storage, Service Bus och andra Azure-tjänster, anger du `azure`:
+Till exempel tooinstall hello Azure SDK för Python, som ger dig åtkomst tooAzure storage, service bus och andra Azure-tjänster, ange `azure`:
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-install-package-dialog.png)
 
-Uppdatera requirements.txt genom att högerklicka på den virtuella miljön och välja **Generate requirements.txt** (Skapa requirements.txt).
+Högerklicka på hello virtuell miljö och välj **generera requirements.txt** tooupdate requirements.txt.
 
-Checka sedan in ändringarna i requirements.txt på Git-lagringsplatsen.
+Checka sedan in hello ändringar toorequirements.txt toohello Git-lagringsplats.
 
-### <a name="deploy-to-azure"></a>Distribuera till Azure
-Utlös en distribution genom att klicka på **Sync** (Synkronisera) eller **Push** (Pusha). Med synkronisering görs både en överföring och en hämtning.
+### <a name="deploy-tooazure"></a>Distribuera tooAzure
+tootrigger en distribution, klicka på **Sync** eller **Push**. Med synkronisering görs både en överföring och en hämtning.
 
 ![](./media/web-sites-python-create-deploy-django-app/ptvs-git-push.png)
 
-Den första distributionen tar en stund i och med att en virtuell miljö skapas, paket installeras osv.
+hello första distributionen tar en stund, eftersom den skapar en virtuell miljö, paket installeras osv.
 
-I Visual Studio visas inte förloppet för distributionen. Information om hur du granskar utdata finns i avsnittet [Felsökning – distribution](#troubleshooting-deployment).
+Visual Studio visas inte hello fortskrider hello-distribution. Om du vill att tooreview hello utdata avsnittet hello på [felsökning – distribution](#troubleshooting-deployment).
 
-Visa ändringarna genom att gå till Azure-webbadressen.
+Bläddra toohello Azure URL tooview ändringarna.
 
 ## <a name="web-app-development---windows---command-line"></a>Webbappsutveckling – Windows – kommandorad
-### <a name="clone-the-repository"></a>Klona lagringsplatsen
-Först klonar du lagringsplatsen med hjälp av webbadressen som tillhandahålls på Azure Portal. Lägg till Azure-lagringsplatsen som fjärransluten. Mer information finns i [Lokal Git-distribution till Azure App Service](app-service-deploy-local-git.md).
+### <a name="clone-hello-repository"></a>Klona hello databasen
+Först klonar hello lagringsplatsen med hjälp av hello Webbadressen som tillhandahålls på hello Azure-portalen och lägga till hello Azure-lagringsplatsen som fjärransluten. Mer information finns i [lokal Git-distribution tooAzure Apptjänst](app-service-deploy-local-git.md).
 
     git clone <repo-url>
     cd <repo-folder>
     git remote add azure <repo-url>
 
 ### <a name="create-virtual-environment"></a>Skapa en virtuell miljö
-Vi ska skapa en ny virtuell miljö för utveckling (lägg inte till den på lagringsplatsen). Virtuella miljöer i Python är inte relokerbara. Därför måste alla utvecklare som arbetar med programmet skapa sina egna lokalt.
+Vi ska skapa en ny virtuell miljö för utveckling (inte Lägg till den toohello databasen). Virtuella miljöer i Python är inte relokerbara, så alla utvecklare som arbetar på hello programmet skapa sina egna lokalt.
 
-Se till att använda samma version av Python som valts för webbappen (i runtime.txt eller i bladet Programinställningar för webbappen i Azure Portal).
+Kontrollera att toouse hello samma version av Python som valts för webbappen (i runtime.txt eller hello bladet programinställningar för webbappen i hello Azure Portal).
 
 För Python 2.7:
 
@@ -222,36 +222,36 @@ För Python 3.4:
 
     c:\python34\python.exe -m venv env
 
-Installera eventuella externa paket som krävs för programmet. Du kan använda requirements.txt filen i lagringsplatsens rot till att installera paket i den virtuella miljön:
+Installera eventuella externa paket som krävs för programmet. Du kan använda hello requirements.txt filen i hello rot hello databasen tooinstall hello paket i den virtuella miljön:
 
     env\scripts\pip install -r requirements.txt
 
 ### <a name="create-a-superuser"></a>Skapa en användare med fullständig behörighet
-I databasen som ingår i programmet finns ingen definierad användare med fullständig behörighet. Du måste skapa en användare med fullständig behörighet för att kunna använda inloggningsfunktionen i programmet och administratörsgränssnittet för Django (om du väljer att aktivera det).
+hello har ingår hello programmet inte definierats en superanvändare. Ordning toouse hello inloggning funktionsändringar i hello program eller hello administratörsgränssnittet för Django (om du väljer tooenable den), behöver du toocreate superanvändare.
 
-Kör följande från kommandoraden i projektmappen:
+Kör det från hello kommandoraden i projektmappen:
 
     env\scripts\python manage.py createsuperuser
 
-Följ anvisningarna för att ange användarnamn, lösenord osv.
+Följ hello prompter tooset hello användarnamn, lösenord osv.
 
 ### <a name="run-using-development-server"></a>Kör med utvecklingsservern
-Du kan starta programmet under en utvecklingsserver med följande kommando:
+Du kan starta programmet hello under en utvecklingsserver med hello följande kommando:
 
     env\scripts\python manage.py runserver
 
-Konsolen visar webbadressen och porten servern tar emot kommunikation från:
+hello konsolen visar hello URL-adress och port hello servern lyssnar på:
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-run-local-django.png)
 
-Sedan öppnar du webbadressen i webbläsaren.
+Öppna din Webbadress webbläsare toothat.
 
 ![](./media/web-sites-python-create-deploy-django-app/windows-browser-django.png)
 
 ### <a name="make-changes"></a>Göra ändringar
-Nu kan du experimentera med att göra ändringar i programmets källor och mallar.
+Nu kan du experimentera med att göra ändringar toohello programmets källor och mallar.
 
-När du har testat ändringarna checkar du in dem på Git-lagringsplatsen:
+När du har testat ändringarna checkar du in dem toohello Git-lagringsplatsen:
 
     git add <modified-file>
     git commit -m "<commit-comment>"
@@ -259,40 +259,40 @@ När du har testat ändringarna checkar du in dem på Git-lagringsplatsen:
 ### <a name="install-more-packages"></a>Installera fler paket
 Programmet kan ha beroenden utöver Python och Django.
 
-Du kan installera ytterligare paket med hjälp av pip. Om du till exempel vill installera Azure SDK för Python, som ger dig tillgång till Azure Storage, Service Bus och andra Azure-tjänster, anger du:
+Du kan installera ytterligare paket med hjälp av pip. Till exempel tooinstall hello Azure SDK för Python, som ger dig åtkomst till tooAzure storage, service bus och andra Azure-tjänster, typ:
 
     env\scripts\pip install azure
 
-Se till att uppdatera requirements.txt:
+Se till att tooupdate requirements.txt:
 
     env\scripts\pip freeze > requirements.txt
 
-Checka in ändringarna:
+Genomför hello ändringar:
 
     git add requirements.txt
     git commit -m "Added azure package"
 
-### <a name="deploy-to-azure"></a>Distribuera till Azure
-Utlös en distribution genom att push-överföra ändringarna till Azure:
+### <a name="deploy-tooazure"></a>Distribuera tooAzure
+tootrigger en distribution push hello ändrar tooAzure:
 
     git push azure master
 
-Nu visas utdata från skriptet för distribution, inklusive skapandet av en virtuell miljö, installation av paket och skapande av web.config.
+Du ser hello utdata från hello distributionsskriptet, inklusive skapande av virtuell miljö, installation av paket och skapande av web.config.
 
-Visa ändringarna genom att gå till Azure-webbadressen.
+Bläddra toohello Azure URL tooview ändringarna.
 
 ## <a name="web-app-development---maclinux---command-line"></a>Webbappsutveckling – Mac/Linux – kommandorad
-### <a name="clone-the-repository"></a>Klona lagringsplatsen
-Först klonar du lagringsplatsen med hjälp av webbadressen som tillhandahålls på Azure Portal. Lägg till Azure-lagringsplatsen som fjärransluten. Mer information finns i [Lokal Git-distribution till Azure App Service](app-service-deploy-local-git.md).
+### <a name="clone-hello-repository"></a>Klona hello databasen
+Först klonar hello lagringsplatsen med hjälp av hello Webbadressen som tillhandahålls på hello Azure-portalen och lägga till hello Azure-lagringsplatsen som fjärransluten. Mer information finns i [lokal Git-distribution tooAzure Apptjänst](app-service-deploy-local-git.md).
 
     git clone <repo-url>
     cd <repo-folder>
     git remote add azure <repo-url>
 
 ### <a name="create-virtual-environment"></a>Skapa en virtuell miljö
-Vi ska skapa en ny virtuell miljö för utveckling (lägg inte till den på lagringsplatsen). Virtuella miljöer i Python är inte relokerbara. Därför måste alla utvecklare som arbetar med programmet skapa sina egna lokalt.
+Vi ska skapa en ny virtuell miljö för utveckling (inte Lägg till den toohello databasen). Virtuella miljöer i Python är inte relokerbara, så alla utvecklare som arbetar på hello programmet skapa sina egna lokalt.
 
-Se till att använda samma version av Python som valts för webbappen (i runtime.txt eller i bladet Programinställningar för webbappen i Azure Portal).
+Kontrollera att toouse hello samma version av Python som valts för webbappen (i runtime.txt eller hello bladet programinställningar för webbappen i hello Azure Portal).
 
 För Python 2.7:
 
@@ -306,36 +306,36 @@ eller
 
     pyvenv env
 
-Installera eventuella externa paket som krävs för programmet. Du kan använda requirements.txt filen i lagringsplatsens rot till att installera paket i den virtuella miljön:
+Installera eventuella externa paket som krävs för programmet. Du kan använda hello requirements.txt filen i hello rot hello databasen tooinstall hello paket i den virtuella miljön:
 
     env/bin/pip install -r requirements.txt
 
 ### <a name="create-a-superuser"></a>Skapa en användare med fullständig behörighet
-I databasen som ingår i programmet finns ingen definierad användare med fullständig behörighet. Du måste skapa en användare med fullständig behörighet för att kunna använda inloggningsfunktionen i programmet och administratörsgränssnittet för Django (om du väljer att aktivera det).
+hello har ingår hello programmet inte definierats en superanvändare. Ordning toouse hello inloggning funktionsändringar i hello program eller hello administratörsgränssnittet för Django (om du väljer tooenable den), behöver du toocreate superanvändare.
 
-Kör följande från kommandoraden i projektmappen:
+Kör det från hello kommandoraden i projektmappen:
 
     env/bin/python manage.py createsuperuser
 
-Följ anvisningarna för att ange användarnamn, lösenord osv.
+Följ hello prompter tooset hello användarnamn, lösenord osv.
 
 ### <a name="run-using-development-server"></a>Kör med utvecklingsservern
-Du kan starta programmet under en utvecklingsserver med följande kommando:
+Du kan starta programmet hello under en utvecklingsserver med hello följande kommando:
 
     env/bin/python manage.py runserver
 
-Konsolen visar webbadressen och porten servern tar emot kommunikation från:
+hello konsolen visar hello URL-adress och port hello servern lyssnar på:
 
 ![](./media/web-sites-python-create-deploy-django-app/mac-run-local-django.png)
 
-Sedan öppnar du webbadressen i webbläsaren.
+Öppna din Webbadress webbläsare toothat.
 
 ![](./media/web-sites-python-create-deploy-django-app/mac-browser-django.png)
 
 ### <a name="make-changes"></a>Göra ändringar
-Nu kan du experimentera med att göra ändringar i programmets källor och mallar.
+Nu kan du experimentera med att göra ändringar toohello programmets källor och mallar.
 
-När du har testat ändringarna checkar du in dem på Git-lagringsplatsen:
+När du har testat ändringarna checkar du in dem toohello Git-lagringsplatsen:
 
     git add <modified-file>
     git commit -m "<commit-comment>"
@@ -343,27 +343,27 @@ När du har testat ändringarna checkar du in dem på Git-lagringsplatsen:
 ### <a name="install-more-packages"></a>Installera fler paket
 Programmet kan ha beroenden utöver Python och Django.
 
-Du kan installera ytterligare paket med hjälp av pip. Om du till exempel vill installera Azure SDK för Python, som ger dig tillgång till Azure Storage, Service Bus och andra Azure-tjänster, anger du:
+Du kan installera ytterligare paket med hjälp av pip. Till exempel tooinstall hello Azure SDK för Python, som ger dig åtkomst till tooAzure storage, service bus och andra Azure-tjänster, typ:
 
     env/bin/pip install azure
 
-Se till att uppdatera requirements.txt:
+Se till att tooupdate requirements.txt:
 
     env/bin/pip freeze > requirements.txt
 
-Checka in ändringarna:
+Genomför hello ändringar:
 
     git add requirements.txt
     git commit -m "Added azure package"
 
-### <a name="deploy-to-azure"></a>Distribuera till Azure
-Utlös en distribution genom att push-överföra ändringarna till Azure:
+### <a name="deploy-tooazure"></a>Distribuera tooAzure
+tootrigger en distribution push hello ändrar tooAzure:
 
     git push azure master
 
-Nu visas utdata från skriptet för distribution, inklusive skapandet av en virtuell miljö, installation av paket och skapande av web.config.
+Du ser hello utdata från hello distributionsskriptet, inklusive skapande av virtuell miljö, installation av paket och skapande av web.config.
 
-Visa ändringarna genom att gå till Azure-webbadressen.
+Bläddra toohello Azure URL tooview ändringarna.
 
 ## <a name="troubleshooting---package-installation"></a>Felsökning – installation av paket
 [!INCLUDE [web-sites-python-troubleshooting-package-installation](../../includes/web-sites-python-troubleshooting-package-installation.md)]
@@ -372,85 +372,85 @@ Visa ändringarna genom att gå till Azure-webbadressen.
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
 ## <a name="troubleshooting---static-files"></a>Felsökning – statiska filer
-Med Django samlas statiska filer. Det gör att alla statiska filer kopieras från sina ursprungliga platser till en enda mapp. För det här programmet kopieras de till `/static`.
+Django har hello begreppet att samla in statiska filer. Detta tar alla hello statiska filer från deras ursprungliga plats och kopierar dem tooa enstaka mapp. För det här programmet kopieras de för`/static`.
 
-Det görs eftersom statiska filer kan komma från olika "Django-appar". De statiska filerna från administratörsgränssnittet för Django finns till exempel i en undermapp för Django-biblioteket i den virtuella miljön. Statiska filer som definieras av programmet finns i `/app/static`. När du använder flera "Django-appar" sparas statiska filer på flera platser.
+Det görs eftersom statiska filer kan komma från olika "Django-appar". Till exempel finns hello statiska filer från hello administratörsgränssnittet för django i undermappen Django-biblioteket i hello virtuell miljö. Statiska filer som definieras av programmet finns i `/app/static`. När du använder flera "Django-appar" sparas statiska filer på flera platser.
 
-När du kör programmet i felsökningsläge hanterar programmet de statiska filerna från deras ursprungliga plats.
+När du kör programmet hello i felsökningsläge hanterar hello programmet hello statiska filer från deras ursprungliga plats.
 
-När du kör programmet i versionsläge hanterar programmet **inte** de statiska filerna. Det är webbserverns uppgift att hantera filerna. För det här programmet hanterar IIS statiska filer från `/static`.
+När du kör hello programmet i versionsläge hello program har **inte** hantera hello statiska filer. Det är hello ansvar hello web server tooserve hello-filer. För det här programmet hanterar IIS hello statiska filer från `/static`.
 
-Insamling av statiska filer görs automatiskt som en del av distributionsskriptet och tidigare insamlade filer rensas. Det innebär att samlingen sker för varje distribution. Det gör distribution något långsammare, men ser till att filer som inte längre behövs inte är tillgängliga, vilket undanröjer potentiella säkerhetsproblem.
+hello insamlingen av statiska filer görs automatiskt som en del av hello distributionsskriptet rensar tidigare insamlade filer. Detta innebär hello samlingen sker för varje distribution långsammare distribution lite, men ser till att filer inte tillgängliga, vilket undanröjer potentiella säkerhetsproblem.
 
-Om du vill hoppa över insamlingen av statiska filer för Django-programmet:
+Om du vill tooskip insamlingen av statiska filer för Django-programmet:
 
     \.skipDjango
 
-måste du göra insamlingen manuellt på den lokala datorn:
+Sedan behöver du toodo hello samlingen manuellt på den lokala datorn:
 
     env\scripts\python manage.py collectstatic
 
-Ta sedan bort `\static`-mappen från `.gitignore` och lägg till den på Git-lagringsplatsen.
+Ta bort hello `\static` mapp från `.gitignore` och lägga till den toohello Git-lagringsplats.
 
 ## <a name="troubleshooting---settings"></a>Felsökning – inställningar
-Ett flertal inställningar för programmet kan ändras i `DjangoWebProject/settings.py`.
+Olika inställningar för programmet hello kan ändras i `DjangoWebProject/settings.py`.
 
-För enklare utveckling är felsökningsläget aktiverat. En bra bieffekt är att du kan se bilder och annat statiskt innehåll vid lokal körning utan att du behöver samla in statiska filer.
+För enklare utveckling är felsökningsläget aktiverat. En bra bieffekt som är kommer du att kunna toosee bilder och annat statiskt innehåll vid lokal körning utan toocollect statiska filer.
 
-Så här inaktiverar du felsökningsläget:
+toodisable felsökningsläget:
 
     DEBUG = False
 
-När felsökningen är inaktiverad måste värdet för `ALLOWED_HOSTS` uppdateras så att det inkluderar Azure-värdnamnet. Exempel:
+När felsökningen är inaktiverad hello värde för `ALLOWED_HOSTS` behov toobe uppdateras tooinclude hello Azure-värdnamnet. Exempel:
 
     ALLOWED_HOSTS = (
         'pythonapp.azurewebsites.net',
     )
 
-så här aktiverar du valfri:
+eller tooenable alla:
 
     ALLOWED_HOSTS = (
         '*',
     )
 
-I praktiken kan du vilja göra något lite mer komplext för att hantera växlingen mellan felsöknings- och versionsläge och hämta värdnamnet.
+I praktiken kan kanske du vill toodo något mer komplexa toodeal växlingen mellan felsöka och versionsläge och hämta hello-värdnamn.
 
-Du kan ange miljövariabler i Azure Portal på sidan **Konfigurera** i avsnittet **Programinställningar**.  Det kan vara lämpligt när du vill ange värden som du inte vill ska visas i källorna (anslutningssträngar, lösenord osv) eller som du vill ställa in på olika sätt för Azure och den lokala datorn. I `settings.py` kan du söka i miljövariablerna med hjälp av `os.getenv`.
+Du kan ange miljövariabler hello Azure-portalen **konfigurera** i hello sidan **appinställningar** avsnitt.  Detta kan vara användbart för att ange värden som du inte kan ha tooappear i hello källorna (anslutningssträngar, lösenord osv) eller som du vill tooset annorlunda mellan Azure och den lokala datorn. I `settings.py`, du kan fråga hello miljövariablerna med hjälp av `os.getenv`.
 
 ## <a name="using-a-database"></a>Använda en databas
-Den databas som ingår i programmet är en sqlite-databas. Det är en praktisk standarddatabas för utveckling, eftersom den knappt behöver konfigureras. Databasen lagras i filen db.sqlite3 i projektmappen.
+hello-databasen som ingår i programmet hello är en sqlite-databas. Detta är en praktisk standard databasen toouse för utveckling, eftersom den kräver nästan några inställningar. hello databasen lagras i hello DB.sqlite3 i projektmappen hello.
 
-Azure tillhandahåller databastjänster som är lätta att använda i ett Django-program. I kurserna om att använda [SQL Database] och [MySQL] i ett Django-program får du anvisningar för de steg som krävs för att skapa databastjänsten, ändra databasinställningarna i `DjangoWebProject/settings.py` och de bibliotek som måste installeras.
+Azure tillhandahåller databastjänster som är lätt toouse från ett Django-program. Självstudier för att använda [SQL-databas] och [MySQL] från ett Django-program visar hello steg nödvändiga toocreate hello databastjänsten, ändra databasinställningarna för hello i `DjangoWebProject/settings.py`, och hello bibliotek krävs tooinstall.
 
-Om du föredrar att hantera egna databasservrar kan du göra det med hjälp av virtuella Windows- och Linux-datorer som körs på Azure.
+Om du vill toomanage egna databasservrar kan göra du självklart det med hjälp av Windows eller Linux virtuella datorer som körs på Azure.
 
 ## <a name="django-admin-interface"></a>Administratörsgränssnittet för Django
-När du börjar bygga modeller vill du införa data i databasen. Ett enkelt sätt att lägga till och redigera innehåll interaktivt är att använda administratörsgränssnittet för Django.
+När du börjar bygga modeller vill du antagligen toopopulate hello databasen med vissa data. Ett enkelt sätt toodo lägga till och redigera innehåll interaktivt är toouse hello administratörsgränssnittet.
 
-Koden för administratörsgränssnittet har kommenterats ut i programkällorna, men den är tydligt markerad så att du enkelt kan aktivera den (Sök efter "admin").
+hello-koden för hello administratörsgränssnittet har kommenterats ut i programkällorna hello, men den är tydligt markerad så att du enkelt kan aktivera den (Sök efter ”admin”).
 
-När den är aktiverad, synkroniserar du databasen, kör programmet och går till `/admin`.
+När den har aktiverats synkronisera hello databas, köra programmet hello och navigera för`/admin`.
 
 ## <a name="next-steps"></a>Nästa steg
-Via de här länkarna hittar du mer information om Django och Python Tools för Visual Studio:
+Följ dessa länkar toolearn mer om Django och Python Tools för Visual Studio:
 
 * [Django-dokumentation]
-* [Dokumentationen om Python Tools för Visual Studio]
+* [Python Tools för Visual Studio-dokumentationen]
 
 Information om hur du använder SQL Database och MySQL finns i:
 
 * [Django och MySQL på Azure med Python Tools för Visual Studio]
 * [Django och SQL Database på Azure med Python Tools för Visual Studio]
 
-Mer information finns i [Python Developer Center](/develop/python/).
+Mer information finns i hello [Python Developer Center](/develop/python/).
 
 ## <a name="whats-changed"></a>Nyheter
-* En guide till övergången från Webbplatser till App Service finns i: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)
+* En guide toohello övergången från webbplatser tooApp tjänsten finns: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 <!--Link references-->
 [Django och MySQL på Azure med Python Tools för Visual Studio]: web-sites-python-ptvs-django-mysql.md
 [Django och SQL Database på Azure med Python Tools för Visual Studio]: web-sites-python-ptvs-django-sql.md
-[SQL Database]: web-sites-python-ptvs-django-sql.md
+[SQL-databas]: web-sites-python-ptvs-django-sql.md
 [MySQL]: web-sites-python-ptvs-django-mysql.md
 
 <!--External Link references-->
@@ -462,5 +462,5 @@ Mer information finns i [Python Developer Center](/develop/python/).
 [Python Tools för Visual Studio]: http://aka.ms/ptvs
 [Python Tools 2.2 för Visual Studio]: http://go.microsoft.com/fwlink/?LinkID=624025
 [Visual Studio]: http://www.visualstudio.com/
-[Dokumentationen om Python Tools för Visual Studio]: http://aka.ms/ptvsdocs
+[Python Tools för Visual Studio-dokumentationen]: http://aka.ms/ptvsdocs
 [Django-dokumentation]: https://www.djangoproject.com/

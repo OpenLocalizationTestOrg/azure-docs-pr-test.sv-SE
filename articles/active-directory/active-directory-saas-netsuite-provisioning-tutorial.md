@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Netsuite | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Netsuite."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Netsuite."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,82 +13,82 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 277c393536615fc8bfe8af0bc6d487115f04776c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5bb2989c1296b9f2abc9e8c84855731adc484aab
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Självstudier: Konfigurera Netsuite för automatisk Användaretablering
 
-Syftet med den här kursen är att visa de steg som du behöver göra i Netsuite och Azure AD för att automatiskt etablera och avetablera användarkonton från Azure AD till Netsuite.
+hello syftet med den här kursen är tooshow du hello stegen tooperform i Netsuite och Azure AD tooautomatically etablera och avinstallation etablera användarkonton från Azure AD tooNetsuite.
 
 ## <a name="prerequisites"></a>Krav
 
-Det scenario som beskrivs i den här kursen förutsätter att du redan har följande objekt:
+hello-scenario som beskrivs i den här kursen förutsätter att du redan har hello följande objekt:
 
 *   En Azure Active directory-klient.
 *   En Netsuite enkel inloggning för aktiverade prenumerationen.
 *   Ett användarkonto i Netsuite Team administratörsbehörigheter.
 
-## <a name="assigning-users-to-netsuite"></a>Tilldela användare till Netsuite
+## <a name="assigning-users-toonetsuite"></a>Tilldela användare tooNetsuite
 
-Azure Active Directory använder ett begrepp som kallas ”tilldelningar” för att avgöra vilka användare ska få åtkomst till valda appar. I samband med automatisk konto användaretablering, synkroniseras de användare och grupper som har ”tilldelats” till ett program i Azure AD.
+Azure Active Directory använder ett begrepp som kallas ”tilldelningar” toodetermine som användarna ska få åtkomst till tooselected appar. Hello gäller automatisk konto användaretablering är är bara hello användare och grupper som har ”tilldelats” tooan program i Azure AD synkroniserade.
 
-Innan du konfigurerar och aktiverar tjänsten etablering, måste du bestämma vilka användare och/eller grupper i Azure AD representerar de användare som behöver åtkomst till appen Netsuite. När bestämt, kan du tilldela dessa användare i appen Netsuite genom att följa anvisningarna här:
+Innan du konfigurerar och aktiverar hello etableras, måste toodecide vilka användare och/eller grupper i Azure AD representerar hello användare som behöver åtkomst till tooyour Netsuite app. När du valt, kan du tilldela dessa användare tooyour Netsuite app genom att följa hello anvisningarna här:
 
-[Tilldela en användare eller grupp till en enterprise-app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Tilldela en användare eller grupp tooan enterprise app](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-netsuite"></a>Viktiga tips för att tilldela användare till Netsuite
+### <a name="important-tips-for-assigning-users-toonetsuite"></a>Viktiga tips för att tilldela användare tooNetsuite
 
-*   Vi rekommenderar att en enda Azure AD-användare har tilldelats Netsuite för att testa allokering konfigurationen. Ytterligare användare och/eller grupper kan tilldelas senare.
+*   Vi rekommenderar att en enda Azure AD-användare är tilldelad tooNetsuite tootest hello etablering konfiguration. Ytterligare användare och/eller grupper kan tilldelas senare.
 
-*   När du tilldelar en användare Netsuite, måste du välja en giltig användarroll. Rollen ”standard åtkomst” fungerar inte för etablering.
+*   Du måste välja en giltig användarroll när du tilldelar en tooNetsuite för användaren. Hej ”standard” rollen fungerar inte för etablering.
 
 ## <a name="enable-user-provisioning"></a>Aktivera etablering av användare
 
-Det här avsnittet hjälper dig att ansluta din Azure AD till Netsuites användarkonto API-etablering och konfigurera tjänsten etablering för att skapa, uppdatera och inaktivera tilldelade användarkonton i Netsuite baserat på tilldelning av användare och grupper i Azure AD.
+Det här avsnittet hjälper dig att ansluta din Azure AD-tooNetsuite användarkonto API-etablering och konfigurerar hello etablering service toocreate, uppdatera och inaktivera tilldelade användarkonton i Netsuite baserat på tilldelning av användare och grupper i Azure AD.
 
 > [!TIP] 
-> Du kan också välja att aktivera SAML-baserade enkel inloggning för Netsuite, följer du instruktionerna som anges i [Azure-portalen](https://portal.azure.com). Enkel inloggning kan konfigureras oberoende av Automatisk etablering, även om dessa två funktioner komplettera varandra.
+> Du kan också välja tooenabled SAML-baserade enkel inloggning för Netsuite, följa instruktionerna i hello [Azure-portalen](https://portal.azure.com). Enkel inloggning kan konfigureras oberoende av Automatisk etablering, även om dessa två funktioner komplettera varandra.
 
-### <a name="to-configure-user-account-provisioning"></a>Konfigurera användaretablering för kontot:
+### <a name="tooconfigure-user-account-provisioning"></a>tooconfigure användarens konto-etablering:
 
-Syftet med det här avsnittet är att beskriva hur du aktiverar användaretablering för Active Directory-användarkonton till Netsuite.
+hello syftet med det här avsnittet är toooutline hur tooenable användaretablering Active Directory-användare konton tooNetsuite.
 
-1. I den [Azure-portalen](https://portal.azure.com), bläddra till den **Azure Active Directory > Företagsappar > alla program** avsnitt.
+1. I hello [Azure-portalen](https://portal.azure.com), bläddra toohello **Azure Active Directory > Företagsappar > alla program** avsnitt.
 
-2. Om du redan har konfigurerat Netsuite för enkel inloggning, söka efter din instans av Netsuite med hjälp av sökfältet. Annars väljer **Lägg till** och Sök efter **Netsuite** i programgalleriet. Välj Netsuite i sökresultatet och lägga till den i listan med program.
+2. Om du redan har konfigurerat Netsuite för enkel inloggning, söka efter din instans av Netsuite hjälp hello sökfältet. Annars väljer **Lägg till** och Sök efter **Netsuite** i hello programgalleriet. Välj Netsuite från hello sökresultaten och lägga till den tooyour listan med program.
 
-3. Välj din instans av Netsuite och sedan den **etablering** fliken.
+3. Välj din instans av Netsuite och sedan hello **etablering** fliken.
 
-4. Ange den **Etableringsläge** till **automatisk**. 
+4. Ange hello **etablering läge** för**automatisk**. 
 
     ![Etablering](./media/active-directory-saas-netsuite-provisioning-tutorial/provisioning.png)
 
-5. Under den **administratörsautentiseringsuppgifter** och ange följande inställningar:
+5. Under hello **administratörsautentiseringsuppgifter** avsnittet, ange hello följande inställningar:
    
-    a. I den **administratörsanvändarnamnet** textruta typen en Netsuite kontonamn som har den **systemadministratören** profil i Netsuite.com som tilldelats.
+    a. I hello **administratörsanvändarnamnet** textruta typen en Netsuite kontonamn som har hello **systemadministratören** profil i Netsuite.com som tilldelats.
    
-    b. I den **adminlösenord** textruta skriver du lösenordet för det här kontot.
+    b. I hello **adminlösenord** textruta typen hello lösenordet för kontot.
       
-6. I Azure-portalen klickar du på **Testanslutningen** så Azure AD kan ansluta till din Netsuite app.
+6. I hello Azure-portalen klickar du på **Testanslutningen** tooensure Azure AD kan ansluta tooyour Netsuite app.
 
-7. I den **e-postmeddelande** anger du den e-postadressen för en person eller grupp som ska ta emot meddelanden om etablering fel och markera kryssrutan.
+7. I hello **e-postmeddelande** anger hello e-postadressen för en person eller grupp som ska ta emot meddelanden om etablering fel och hello kryssrutan.
 
 8. Klicka på **spara.**
 
-9. Välj under avsnittet mappningar **synkronisera Azure Active Directory-användare Netsuite.**
+9. Välj under hello mappningar avsnitt, **tooNetsuite synkronisera Azure Active Directory-användare.**
 
-10. I den **attributmappning** avsnittet kan du granska användarattribut som synkroniseras från Azure AD till Netsuite. Observera att attribut som är markerade som **matchande** egenskaper som används för att matcha användarkonton i Netsuite för uppdateringsåtgärder. Välj knappen Spara för att genomföra ändringarna.
+10. I hello **attributmappning** avsnittet kan du granska hello användarattribut som synkroniseras från Azure AD tooNetsuite. Observera att hello attribut som valts som **matchande** egenskaper är används toomatch hello användarkonton i Netsuite för uppdateringsåtgärder. Välj hello spara knappen toocommit ändringar.
 
-11. Om du vill aktivera Azure AD-tjänsten för Netsuite-etablering, ändra den **Status för etablering** till **på** i avsnittet Inställningar
+11. tooenable hello Azure AD-etablering tjänsten för Netsuite, ändra hello **Status för etablering** för**på** i hello inställningar
 
 12. Klicka på **spara.**
 
-Startar den första synkroniseringen av användare och/eller grupper som tilldelas till Netsuite i avsnittet användare och grupper. Observera att den första synkroniseringen tar längre tid att utföra än efterföljande synkroniseringar som sker ungefär var tjugonde minut så länge som tjänsten körs. Du kan använda den **synkroniseringsinformation** avsnittet för att övervaka förloppet och följ länkarna till att etablera aktivitetsrapporter som beskriver alla åtgärder som utförs av tjänsten etablering i appen Netsuite.
+Den startar hello den första synkroniseringen av användare och/eller grupper som har tilldelats tooNetsuite i hello användare och grupper avsnitt. Observera att hello inledande synkronisering tar längre tid tooperform än efterföljande synkroniseringar som sker ungefär var tjugonde minut så länge hello-tjänsten körs. Du kan använda hello **synkroniseringsinformation** avsnittet toomonitor förlopp och följ länkarna tooprovisioning aktivitetsrapporter, som beskriver alla åtgärder som utförs av hello etableras Netsuite appen.
 
-Du kan nu skapa ett testkonto. Vänta i upp till 20 minuter för att verifiera att kontot har synkroniserats till Netsuite.
+Du kan nu skapa ett testkonto. Vänta tills in tooverify hello kontot har synkroniserats tooNetsuite too20 i minuter.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

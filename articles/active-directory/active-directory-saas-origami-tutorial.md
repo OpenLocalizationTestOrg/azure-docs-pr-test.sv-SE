@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Origami | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Origami."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Origami."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,109 +13,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 3420409b72ff032e64ac59365083dd141dfc3c1b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a45f2d2b8d2271cf0fc58cb8fad92f007cb5e691
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>Självstudier: Azure Active Directory-integrering med Origami
 
-I kursen får lära du att integrera Origami med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate Origami med Azure Active Directory (AD Azure).
 
-Integrera Origami med Azure AD ger dig följande fördelar:
+Integrera Origami med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till Origami
-- Du kan aktivera användarna att automatiskt hämta loggat in på Origami (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till tooOrigami
+- Du kan aktivera din användare tooautomatically get inloggade tooOrigami (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-Om du vill konfigurera Azure AD-integrering med Origami behöver du följande:
+tooconfigure Azure AD-integrering med Origami måste hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Origami enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Origami från galleriet
+1. Att lägga till Origami från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-origami-from-the-gallery"></a>Att lägga till Origami från galleriet
-Du måste lägga till Origami från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Origami i Azure AD.
+## <a name="adding-origami-from-hello-gallery"></a>Att lägga till Origami från hello-galleriet
+tooconfigure hello integrering av Origami i Azure AD, behöver du tooadd Origami hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Origami från galleriet:**
+**tooadd Origami från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **Origami**.
+4. Skriv i sökrutan hello **Origami**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/tutorial_origami_search.png)
 
-5. Välj i resultatpanelen **Origami**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **Origami**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/tutorial_origami_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Origami baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i Origami motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Origami upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Origami är tooa i Azure AD. Med andra ord måste en länk relationen mellan en Azure AD-användare och hello relaterade användare i Origami toobe upprättas.
 
-I Origami, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+I Origami, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Origami, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Origami, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Origami](#creating-an-origami-test-user)**  – har en motsvarighet för Britta Simon Origami som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Origami](#creating-an-origami-test-user)**  -toohave en motsvarighet för Britta Simon i Origami som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Origami.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Origami.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Origami:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Origami:**
 
-1. I Azure-portalen på den **Origami** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **Origami** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_samlbase.png)
 
-3. På den **Origami domän och URL: er** avsnittet, utför följande steg:
+3. På hello **Origami domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_url.png)
 
-    I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://live.origamirisk.com/origami/account/login?account=<companyname>`
+    I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://live.origamirisk.com/origami/account/login?account=<companyname>`
 
     > [!NOTE] 
-    > Värdet är inte verkliga. Uppdatera värdet med det faktiska inloggnings-URL. Kontakta [Origami klienten supportteamet](https://wordpress.org/support/theme/origami) värdet hämtas. 
+    > hello-värdet är inte verkliga. Hello uppdateringsvärde med hello faktiska inloggnings-URL. Kontakta [Origami klienten supportteamet](https://wordpress.org/support/theme/origami) tooget hello värde. 
  
-4. På den **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara certifikatfilen på datorn.
+4. På hello **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara sedan hello certifikat på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_certificate.png) 
 
@@ -123,62 +123,62 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_general_400.png)
 
-6. På den **Origami Configuration** klickar du på **konfigurera Origami** att öppna **konfigurera inloggning** fönster. Kopiera den **Sign-Out URL och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
+6. På hello **Origami Configuration** klickar du på **konfigurera Origami** tooopen **konfigurera inloggning** fönster. Kopiera hello **Sign-Out URL och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_configure.png) 
 
-7. Logga in på Origami-konto med administratörsrättigheter.
+7. Logga in toohello Origami konto med administratörsrättigheter.
 
-8. Klicka på menyn högst upp **Admin**.
+8. Hello-menyn överst hello **Admin**.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_51.png)
 
-9. Utför följande steg på enkel inloggning på sidan Inställningar av dialogrutan:
+9. Utför följande hello på hello enkel inloggning på dialogrutan installationssidan för:
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_531.png)
 
     a. Välj **aktivera enkel inloggning på**.
 
-    b. I den **identitetsleverantören logga in Sidadress** textruta klistra in värdet för **SAML inloggning tjänst-URL för enkel**, som du har kopierat från Azure-portalen.
+    b. I hello **identitetsleverantören logga in Sidadress** textruta klistra in hello värdet för **SAML inloggning tjänst-URL för enkel**, som du har kopierat från Azure-portalen.
 
-    c. I den **identitetsleverantörens Sign-out Sidadress** textruta klistra in värdet för **Sign-Out URL**, som du har kopierat från Azure-portalen.
+    c. I hello **identitetsleverantörens Sign-out Sidadress** textruta klistra in hello värdet för **Sign-Out URL**, som du har kopierat från Azure-portalen.
 
-    d. Klicka på **Bläddra** att ladda upp det certifikat som du har hämtat från Azure-portalen.
+    d. Klicka på **Bläddra** tooupload hello certifikat som du har hämtat från hello Azure-portalen.
 
     e. Klicka på **spara ändringar**.
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/create_aaduser_02.png) 
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
@@ -186,13 +186,13 @@ Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen k
 
 I det här avsnittet skapar du en användare som kallas Britta Simon i Origami. 
 
-1. Logga in på Origami-konto med administratörsrättigheter.
+1. Logga in toohello Origami konto med administratörsrättigheter.
 
-2. Klicka på menyn högst upp **Admin**.
+2. Hello-menyn överst hello **Admin**.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_51.png)
 
-3. På den **användare och säkerhet** dialogrutan klickar du på **användare**.
+3. På hello **användare och säkerhet** dialogrutan klickar du på **användare**.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_54.png)
 
@@ -200,45 +200,45 @@ I det här avsnittet skapar du en användare som kallas Britta Simon i Origami.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_55.png)
 
-5. I dialogrutan Lägg till ny användare utför du följande steg:
+5. Dialogrutan Lägg till ny användare hello utför hello följande steg:
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_56.png)
 
-    a. I den **användarnamn** textruta ange e-postadress för användaren som  **brittasimon@contoso.com** .
+    a. I hello **användarnamn** textruta ange hello e-postadress för användaren som  **brittasimon@contoso.com** .
 
-    b. I den **lösenord** textruta, ange ett lösenord.
+    b. I hello **lösenord** textruta, ange ett lösenord.
 
-    c. I den **Bekräfta lösenord** textruta, Skriv in lösenordet igen.
+    c. I hello **Bekräfta lösenord** textruta hello lösenordstyp igen.
 
-    d. I den **Förnamn** textruta Ange först namnet på användaren som **Britta**.
+    d. I hello **Förnamn** textruta anger hello först namnet på användaren som **Britta**.
 
-    e. I den **efternamn** textruta Ange efternamn för användaren som **Simon**.
+    e. I hello **efternamn** textruta ange hello efternamn för användaren som **Simon**.
 
     f. Klicka på **Spara**.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_57.png)
 
-6. Tilldela **användarroller** och **klientåtkomst** för användaren. 
+6. Tilldela **användarroller** och **klientåtkomst** toohello användare. 
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_58.png)
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Origami.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooOrigami.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela Origami Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooOrigami utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Origami**.
+2. Välj i listan med program hello **Origami**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -246,7 +246,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -254,13 +254,13 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen Origami på åtkomstpanelen du bör få automatiskt loggat in på ditt Origami program.
+Du bör få automatiskt inloggade tooyour Origami programmet när du klickar på hello Origami panelen i hello åtkomstpanelen.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

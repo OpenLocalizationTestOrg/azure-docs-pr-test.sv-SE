@@ -1,6 +1,6 @@
 ---
-title: "Uppgradera från Mobile Services till Azure App Service"
-description: "Lär dig hur du lätt att uppgradera ditt Mobile Services-program till en Apptjänst Mobile App"
+title: "aaaUpgrade från Mobile Services tooAzure Apptjänst"
+description: "Lär dig hur tooeasily uppgradera din Mobile Services programmet tooan Apptjänst Mobile App"
 services: app-service\mobile
 documentationcenter: 
 author: ggailey777
@@ -14,79 +14,79 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 81173b34d0d3b07c5c49d867b1dc5060c7311f12
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2b75a1b824e8ef0d36c9053f2f19af051479f928
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Uppgradera din befintliga Mobiltjänst för .NET-Azure till App Service
-Apptjänst Mobile är ett nytt sätt att skapa mobila program med Microsoft Azure. Läs mer i [vad är Mobilappar?].
+# <a name="upgrade-your-existing-net-azure-mobile-service-tooapp-service"></a>Uppgradera din befintliga Mobiltjänst med Azure .NET tooApp Service
+Apptjänst Mobile är ett nytt sätt toobuild mobila program med Microsoft Azure. Det finns fler toolearn [vad är Mobilappar?].
 
-Det här avsnittet beskriver hur du uppgraderar ett befintligt program i .NET-serverdel från Azure Mobile Services till en ny Apptjänst Mobilappar. Medan du utför uppgraderingen fortsätter befintliga mobiltjänster programmet att fungera.   Om du behöver uppgradera ett Node.js-program för serverdelen finns [uppgraderar din Mobile Services för Node.js](app-service-mobile-node-backend-upgrading-from-mobile-services.md).
+Det här avsnittet beskrivs hur tooupgrade ett befintligt .NET-serverdel program från Azure Mobile Services tooa nya Mobile Apps i Apptjänst. Befintliga Mobile Services programmet kan fortsätta toooperate medan du utför uppgraderingen.   Om du behöver tooupgrade ett Node.js-serverdel program, se för[uppgraderar din Mobile Services för Node.js](app-service-mobile-node-backend-upgrading-from-mobile-services.md).
 
-När en mobilserverdel uppgraderas till Azure App Service, den har åtkomst till alla funktioner i Apptjänst och debiteras enligt [priser för Apptjänst], inte Mobile Services priser.
+När en mobilserverdel är uppgraderade tooAzure Apptjänst, har den åtkomst tooall App Service-funktionerna och är debiteras enligt för[priser för Apptjänst], inte Mobile Services priser.
 
 ## <a name="migrate-vs-upgrade"></a>Migrera kontra uppgradering
 [!INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
 
 > [!TIP]
-> Vi rekommenderar att du [utför en migrering](app-service-mobile-migrating-from-mobile-services.md) innan du fortsätter med uppgraderingen. På så sätt kan du spärra båda versionerna av programmet på samma App Service-Plan och innebära utan extra kostnad.
+> Vi rekommenderar att du [utför en migrering](app-service-mobile-migrating-from-mobile-services.md) innan du fortsätter med uppgraderingen. På så sätt kan du placera båda versionerna av programmet hello samma App Service-Plan och innebära utan extra kostnad.
 >
 >
 
 ### <a name="improvements-in-mobile-apps-net-server-sdk"></a>Förbättringar i Mobile Apps .NET server SDK
-Uppgradera till den nya [Mobile Apps-SDK](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) ger följande fördelar:
+Uppgradera toohello nya [Mobile Apps-SDK](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) ger hello följande fördelar:
 
-* Större flexibilitet på NuGet-beroenden. Värdmiljön ger längre sina egna versioner av NuGet-paket, så du kan använda alternativa kompatibla versioner. Om det finns nya bugfixes för kritiska uppdateringar eller säkerhetsuppdateringar till Mobile Server SDK eller beroenden, måste du uppdatera tjänsten manuellt.
-* Större flexibilitet i mobila SDK. Du kan styra vilka funktioner som uttryckligen och vägar har ställts in, till exempel autentisering, tabell API: er och slutpunkten för push-registrering. Läs mer i [hur du använder SDK för .NET-server för Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
-* Stöd för andra typer av ASP.NET-projekt och flöden. Du kan nu vara värd för MVC- och webb-API domänkontrollanter i samma projekt som projektet mobila serverdel.
-* Stöd för nya App Service autentiseringsfunktioner, som gör det möjligt att använda en vanlig Autentiseringskonfiguration i ditt webb- och mobilappar.
+* Större flexibilitet på NuGet-beroenden. hello värdmiljön inte längre innehåller sina egna versioner av NuGet-paket, så du kan använda alternativa kompatibla versioner. Om det finns nya kritiska bugfixes eller säkerhet uppdateringar toohello Mobile Server SDK eller beroenden, måste du uppdatera tjänsten manuellt.
+* Större flexibilitet hello mobila SDK. Du explicit kan styra vilka funktioner och vägar har ställts in, till exempel autentisering, tabell API: er, och hello push registrering slutpunkt. Det finns fler toolearn [hur toouse hello server-.NET SDK för Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+* Stöd för andra typer av ASP.NET-projekt och flöden. Du kan nu värd MVC och Web API domänkontrollanter i samma projekt hello som projektet mobila serverdel.
+* Stöd för nya App Service autentiseringsfunktioner, som gör att du toouse en vanlig Autentiseringskonfiguration mellan webb- och mobilappar.
 
 ## <a name="overview"></a>Uppgradera översikt
-I många fall blir uppgraderar bara växla till den nya servern för Mobile Apps SDK och publicera din kod till en ny instans för Mobilapp. Det finns dock några scenarier som kräver ytterligare konfigurering, till exempel scenarier med avancerad autentisering och arbeta med schemalagda jobb. Var och en av dessa beskrivs i senare avsnitt.
+I många fall blir uppgraderar enkelt växla toohello nya Mobile Apps server-SDK och publicera din kod till en ny instans för Mobilapp. Det finns dock några scenarier som kräver ytterligare konfigurering, till exempel scenarier med avancerad autentisering och arbeta med schemalagda jobb. Var och en av dessa beskrivs i hello senare avsnitt.
 
 > [!TIP]
-> Det rekommenderas att du läser och förstå resten av det här avsnittet helt innan du påbörjar en uppgradering. Anteckna alla funktioner som du använder som kallas nedan.
+> Det rekommenderas att du läser och förstå hello resten av det här avsnittet helt innan du påbörjar en uppgradering. Anteckna alla funktioner som du använder som kallas nedan.
 >
 >
 
-Klienten för Mobile Services SDK: er **inte** kompatibel med den nya servern för Mobile Apps SDK. Du bör inte publicera ändringar till en plats som betjänar publicerade klienter för att kunna erbjuda kontinuitet i tjänsten för din app. I stället bör du skapa en ny mobil app som fungerar som en dubblett. Du kan publicera det här programmet på samma App Service-plan för att undvika ytterligare kostnader.
+hello Mobile Services-klienten SDK: er **inte** kompatibel med hello ny Mobile Apps server SDK. I ordning tooprovide tjänstens stabilitet för din app, bör du inte publicera ändringar tooa plats som betjänar publicerade klienter. I stället bör du skapa en ny mobil app som fungerar som en dubblett. Du kan publicera programmet hello samma Apptjänst planerar tooavoid medför ytterligare kostnader.
 
-Du måste sedan två versioner av programmet: en som förblir densamma och fungerar publicerade appar i jokertecken och andra som du kan sedan uppgradera och mål med en ny klientversion. Du kan flytta och testa din kod i din takt, men bör du se till att alla felkorrigeringar som du gör gäller för båda. När du anser att ett önskat antal klientdatorer appar i jokertecken har uppdaterat till den senaste versionen, du kan ta bort den ursprungliga migrerade appen om du vill ha.
+Du måste sedan två versioner av programmet hello: en som förblir hello samma och hanterar publicerade appar i hello vilda och hello andra som du kan sedan uppgradera och mål med en ny klientversion. Du kan flytta och testa din kod i din takt, men du bör se till att alla felkorrigeringar du komma tillämpade tooboth. När du anser att ett önskat antal klientprogram i hello vilda har uppdaterat toohello senaste versionen, ta bort hello ursprungliga migrerade appen om du vill ha.
 
-Fullständig dispositionen för uppgraderingen är följande:
+hello fullständig disposition för hello uppgraderingsprocessen är följande:
 
 1. Skapa en ny Mobile App
-2. Uppdatera projektet om du vill använda den nya Server-SDK
+2. Uppdatera hello projektet toouse hello nya Server-SDK
 3. Använda en ny version av klientprogrammet
 4. (Valfritt) Ta bort din ursprungliga migrerade instans
 
 ## <a name="mobile-app-version"></a>Skapa en andra instans av programmet
-Det första steget i uppgraderingen är att skapa resursen Mobilapp som ska vara värd för den nya versionen av programmet. Om du redan har migrerat en befintlig mobila tjänst kommer du vill skapa den här versionen på samma värd plan. Öppna den [Azure-portalen] och navigera till migrerade programmet. Anteckna Apptjänstplan den körs på.
+hello är första steget när du uppgraderar toocreate hello Mobilapp resurs som ska vara värd för hello ny version av programmet. Om du redan har migrerat en befintlig mobila tjänst du vill toocreate den här versionen på hello samma plan som värd. Öppna hello [Azure-portalen] och navigera tooyour migrerat program. Anteckna hello Apptjänstplan den körs på.
 
-Skapa sedan den andra förekomsten av programmet genom att följa den [.NET-serverdel skapa instruktioner](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app). När du uppmanas att välja du väljer App Service-Plan eller ”värd plan” du planen för migrerade programmet.
+Skapa sedan programmet hello instans av följande hello [.NET-serverdel skapa instruktioner](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app). Ange tooselect väljer du App Service-Plan eller ”värd plan” Hej när planen för migrerade programmet.
 
-Du förmodligen vill använda samma databas och Meddelandehubben som du gjorde i Mobile Services. Du kan kopiera värdena genom att öppna [Azure-portalen] och navigera till det ursprungliga programmet Klicka **inställningar** > **programinställningar**. Under **anslutningssträngar**, kopiera `MS_NotificationHubConnectionString` och `MS_TableConnectionString`. Navigera till den nya platsen för uppgradering och klistra in dem i att skriva över befintliga värden. Upprepa processen för alla andra programinställningar app-behov. Om du inte använder en migrerad tjänst kan du läsa anslutningssträngar och app-inställningar från den **konfigurera** fliken för Mobile Services-avsnitt i den [klassiska Azure-portalen].
+Vill du förmodligen toouse hello samma databas och Meddelandehubben som du gjorde i Mobile Services. Du kan kopiera värdena genom att öppna [Azure-portalen] och sedan navigera toohello ursprungliga programmet på **inställningar** > **programinställningar**. Under **anslutningssträngar**, kopiera `MS_NotificationHubConnectionString` och `MS_TableConnectionString`. Navigera tooyour nya uppgradera platsen och klistra in dem i att skriva över befintliga värden. Upprepa processen för alla andra programinställningar app-behov. Om du inte använder en migrerad tjänst, kan du läsa anslutningssträngar och app-inställningar från hello **konfigurera** för hello avsnitt för Mobile Services i hello [klassiska Azure-portalen].
 
-Skapa en kopia av ASP.NET-projekt för ditt program och publicera det till den nya platsen. Med en kopia av klientprogrammet uppdateras med den nya URL, verifiera att allt fungerar som förväntat.
+Skapa en kopia av hello ASP.NET-projekt för ditt program och publicera den nya platsen för tooyour. Med en kopia av klientprogrammet uppdateras med hello ny URL, verifiera att allt fungerar som förväntat.
 
-## <a name="updating-the-server-project"></a>Uppdatera serverprojektet
-Mobilappar erbjuder en ny [Mobile App-serverns SDK] som innehåller en stor del av samma funktioner som Mobile Services runtime. Först bör du ta bort alla referenser till Mobile Services-paket. I NuGet-Pakethanteraren, söker du efter `WindowsAzure.MobileServices.Backend`. De flesta appar kommer att se flera paket här, inklusive `WindowsAzure.MobileServices.Backend.Tables` och `WindowsAzure.MobileServices.Backend.Entity`. I sådana fall börjar med det lägsta paketet i beroendeträdet t ex `Entity`, och ta bort den. När du uppmanas, ta inte bort alla beroende paket. Upprepa processen tills du har tagit bort `WindowsAzure.MobileServices.Backend` sig själv.
+## <a name="updating-hello-server-project"></a>Uppdatera hello serverprojekt
+Mobilappar erbjuder en ny [Mobile App-serverns SDK] som ger mycket hello samma funktioner som hello Mobile Services runtime. Först bör du ta bort alla referenser toohello Mobile Services paket. I hello NuGet-Pakethanteraren, söker du efter `WindowsAzure.MobileServices.Backend`. De flesta appar kommer att se flera paket här, inklusive `WindowsAzure.MobileServices.Backend.Tables` och `WindowsAzure.MobileServices.Backend.Entity`. I sådana fall börjar med hello lägsta paketet i hello resursberoende träd, t ex `Entity`, och ta bort den. När du uppmanas, ta inte bort alla beroende paket. Upprepa processen tills du har tagit bort `WindowsAzure.MobileServices.Backend` sig själv.
 
 Nu har du ett projekt som inte längre refererar till Mobile Services SDK.
 
-Nästa lägger du till referenser Mobile Apps-SDK. För den här uppgraderingen de flesta utvecklare ska du hämta och installera den `Microsoft.Azure.Mobile.Server.Quickstart` paketet, eftersom detta hämtar i uppsättningen av hela krävs.
+Nästa lägger du till referenser hello Mobile Apps-SDK. För den här uppgraderingen kommer de flesta utvecklare vill toodownload och installera hello `Microsoft.Azure.Mobile.Server.Quickstart` paketet, eftersom detta hämtar i hello hela krävs uppsättningen.
 
-Det blir ett ganska stort antal kompileringsfel som uppstår till följd av skillnaderna mellan SDK: erna, men dessa är lätta att adressen och beskrivs i resten av det här avsnittet.
+Det blir ett ganska stort antal kompileringsfel som uppstår till följd av skillnaderna mellan hello SDK: er, men dessa är enkelt tooaddress och behandlas i hello resten av det här avsnittet.
 
 ### <a name="base-configuration"></a>Grundläggande konfiguration
 Sedan, i WebApiConfig.cs, du kan ersätta:
 
-        // Use this class to set configuration options for your mobile service
+        // Use this class tooset configuration options for your mobile service
         ConfigOptions options = new ConfigOptions();
 
-        // Use this class to set WebAPI configuration options
+        // Use this class tooset WebAPI configuration options
         HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
 
 med
@@ -97,74 +97,74 @@ med
         .ApplyTo(config);
 
 > [!NOTE]
-> Om du vill lära dig mer om den nya servern .NET SDK och Lägg till/ta bort funktioner från din app kan du se den [hur du använder SDK för .NET-server] avsnittet.
+> Om du vill toolearn mer om hello nya .NET server SDK och hur tooadd/ta bort funktioner från din app kan du se hello [hur toouse hello .NET server SDK] avsnittet.
 >
 >
 
-Om din app använder autentiseringsfunktioner måste du också registrera en OWIN-mellanprogram. I det här fallet bör du flytta konfigurationskoden ovan till en ny OWIN-startklass.
+Om din app använder hello autentiseringsfunktioner, måste du också tooregister en OWIN-mellanprogram. I det här fallet bör du flytta hello ovan konfigurationskod till en ny OWIN-startklass.
 
-1. Lägg till NuGet-paketet `Microsoft.Owin.Host.SystemWeb` om det inte redan ingår i projektet.
+1. Lägg till NuGet-paketet för hello `Microsoft.Owin.Host.SystemWeb` om det inte redan ingår i projektet.
 2. I Visual Studio högerklickar du på projektet och välj **Lägg till** -> **nytt objekt**. Välj **Web** -> **allmänna** -> **OWIN-startklass**.
-3. Flytta koden ovan för MobileAppConfiguration från `WebApiConfig.Register()` till den `Configuration()` metod för den nya Start-klassen.
+3. Flytta hello ovan kod för MobileAppConfiguration från `WebApiConfig.Register()` toohello `Configuration()` metod för den nya Start-klassen.
 
-Kontrollera att den `Configuration()` metoden slutar med:
+Se till att hello `Configuration()` metoden slutar med:
 
         app.UseWebApi(config)
         app.UseAppServiceAuthentication(config);
 
-Det finns ytterligare ändringar som är relaterade till autentisering som beskrivs i avsnittet fullständiga autentiseringen.
+Det finns ytterligare ändringar relaterade tooauthentication som beskrivs i hello fullständig autentisering nedan.
 
 ### <a name="working-with-data"></a>Arbeta med Data
-I Mobile Services mobila appnamnet visas som standard schemanamn i Entity Framework-installationsprogrammet.
+I Mobile Services hello mobilappen namn hanteras som hello schemat för standardnamnet i hello Entity Framework-installationsprogrammet.
 
-Så att du har samma schema refereras som tidigare, Använd följande för att ställa in schemat i DbContext för programmet:
+tooensure som du har hello samma schema refereras som tidigare Använd hello följande tooset hello schemat i hello DbContext för programmet:
 
         string schema = System.Configuration.ConfigurationManager.AppSettings.Get("MS_MobileServiceName");
 
-Kontrollera att du har MS_MobileServiceName ange om du gör det som nämns ovan. Du kan också ange en annan schemanamnet om tillämpningsprogrammet anpassat detta tidigare.
+Kontrollera att du har MS_MobileServiceName om du hello ovan. Du kan också ange en annan schemanamnet om tillämpningsprogrammet anpassat detta tidigare.
 
 ### <a name="system-properties"></a>Egenskaper för system
 #### <a name="naming"></a>Namngivning
-I Azure Mobile Services-servern SDK Systemegenskaper alltid innehålla ett dubbelt understreck (`__`)-prefixet för egenskaperna:
+I hello Azure Mobile Services-servern SDK Systemegenskaper alltid innehålla ett dubbelt understreck (`__`)-prefixet för hello egenskaper:
 
 * __createdAt
 * __updatedAt
 * __deleted
 * __version
 
-SDK: er för Mobile Services-klienten har särskilda logik för parsning av Systemegenskaper i det här formatet.
+hello Mobile Services-klienten SDK: er har särskilda logik för parsning av Systemegenskaper i det här formatet.
 
-I Azure Mobile Apps Systemegenskaper inte längre har en särskild format och har följande namn:
+I Azure Mobile Apps har Systemegenskaper inte längre en särskild formatera och har hello följande namn:
 
 * CreatedAt
 * updatedAt
 * ta bort
 * Version
 
-Mobile Apps klienten SDK: er använda de nya egenskaper för namn, så inga ändringar krävs för att klientkod. Men om du direkt gör REST-anrop till din tjänst bör du ändra dina frågor i enlighet med detta.
+hello Mobile Apps-SDK: er används hello nya system egenskaper klientnamn, så att inga ändringar krävs tooclient kod. Om du är direkt gör REST anropar tooyour-tjänsten och du bör ändra dina frågor i enlighet med detta.
 
 #### <a name="local-store"></a>Lokalt Arkiv
-Ändringar till namnen på Systemegenskaper innebär att en lokal databas offlinesynkronisering för Mobile Services inte är kompatibel med Mobile Apps. Om möjligt bör du undvika uppgradering av klienten appar från Mobile Services för Mobilappar förrän efter väntande ändringar har skickats till servern. Sedan kan använda appen uppgraderade ett nytt databasnamn.
+hello ändringar toohello namnen på Systemegenskaper innebär att en lokal databas offlinesynkronisering för Mobile Services inte är kompatibel med Mobile Apps. Om möjligt bör du undvika att uppgradera klientappar från Mobile Services tooMobile appar förrän efter väntande ändringar har skickats toohello server. Sedan ska hello uppgraderade app använda ett nytt databasnamn.
 
-Om ett klientprogram uppgraderas från Mobile Services till Mobilappar när det finns väntande offline ändringar i kö för åtgärden, måste systemdatabasen uppdateras för att använda nya kolumnnamn. På iOS, kan detta uppnås med hjälp av lightweight migreringar ändra kolumnnamnen. På Android- och .NET hanterad klient ska du skriva anpassade SQL Byt namn på kolumner för din datatabeller för objektet.
+Om ett klientprogram uppgraderas från Mobile Services tooMobile appar när det finns väntande ändringar offline i hello åtgärden kö, måste hello-databas vara uppdaterade toouse hello nya kolumnnamn. På iOS, kan detta uppnås med hjälp av lightweight migreringar toochange hello kolumnnamn. På Android- och hello .NET hanterad klient, bör du skriva anpassade SQL toorename hello kolumner för din datatabeller för objektet.
 
-På iOS, bör du ändra schemat för dina data entiteter till följande grundläggande information. Observera att egenskaperna `createdAt`, `updatedAt` och `version` har inte längre ett `ms_` prefix:
+På iOS, bör du ändra schemat grundläggande information för dina data entiteter toomatch hello följande. Observera att hello egenskaper `createdAt`, `updatedAt` och `version` har inte längre ett `ms_` prefix:
 
 | Attribut | Typ | Obs! |
 | --- | --- | --- |
 | id |Strängen som markerats krävs |primärnyckeln i fjärranslutna store |
-| CreatedAt |Date |(valfritt) mappas till createdAt Systemegenskapen |
-| updatedAt |Date |(valfritt) mappas till updatedAt Systemegenskapen |
-| Version |Sträng |(valfritt) används för att identifiera konflikter, mappas till version |
+| CreatedAt |Date |(valfritt) maps toocreatedAt Systemegenskapen |
+| updatedAt |Date |(valfritt) maps tooupdatedAt Systemegenskapen |
+| Version |Sträng |(valfritt) använda toodetect konflikter, maps tooversion |
 
 #### <a name="querying-system-properties"></a>Frågar Systemegenskaper
-I Azure Mobile Services Systemegenskaper skickas inte som standard, men endast när de begär med hjälp av frågesträngen `__systemProperties`. Däremot i Azure Mobile Apps system egenskaper är **alltid valt** eftersom de är en del av objektmodellen server SDK.
+I Azure Mobile Services Systemegenskaper skickas inte som standard, men endast när de begär med hello frågesträngen `__systemProperties`. Däremot i Azure Mobile Apps system egenskaper är **alltid valt** eftersom de ingår i objektmodellen för hello server SDK.
 
-Den här ändringen påverkar huvudsakligen anpassade implementeringar av domän chefer, till exempel tillägg av `MappedEntityDomainManager`. I Mobile Services, om en klient begär aldrig alla Systemegenskaper är det möjligt att använda en `MappedEntityDomainManager` som faktiskt mappar inte alla egenskaper. Men i Azure Mobile Apps genereras egenskaperna omappade ett fel i GET-frågor.
+Den här ändringen påverkar huvudsakligen anpassade implementeringar av domän chefer, till exempel tillägg av `MappedEntityDomainManager`. I Mobile Services, om en klient begär aldrig alla Systemegenskaper är möjliga toouse en `MappedEntityDomainManager` som faktiskt mappar inte alla egenskaper. Men i Azure Mobile Apps genereras egenskaperna omappade ett fel i GET-frågor.
 
-Det enklaste sättet att lösa problemet är att ändra din DTOs så att de ärver från `ITableData` i stället för `EntityData`. Lägg sedan till den `[NotMapped]` attribut till fälten som ska uteslutas.
+Hej enklaste sättet tooresolve hello problemet är toomodify din DTOs så att de ärver från `ITableData` i stället för `EntityData`. Lägg sedan till hello `[NotMapped]` attributet toohello fält som ska uteslutas.
 
-Exempelvis definierar följande `TodoItem` utan system-egenskaper:
+Till exempel hello följande definierar `TodoItem` utan system-egenskaper:
 
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -189,71 +189,71 @@ Exempelvis definierar följande `TodoItem` utan system-egenskaper:
         public byte[] Version { get; set; }
     }
 
-Obs: om det uppstår fel `NotMapped`, lägga till en referens till sammansättningen `System.ComponentModel.DataAnnotations`.
+Obs: om det uppstår fel `NotMapped`, lägga till en referenssammansättning toohello `System.ComponentModel.DataAnnotations`.
 
 ### <a name="cors"></a>CORS
-Mobile Services med vissa stöd för CORS genom att omsluta ASP.NET CORS-lösning. Detta lager med radbrytning har tagits bort för att ge utvecklare mer kontroll så att du direkt kan utnyttja [stöd för ASP.NET-CORS](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api).
+Mobile Services med vissa stöd för CORS genom att omsluta hello ASP.NET CORS-lösning. Radbrytning lagret har tagits bort toogive hello utvecklare mer kontroll så att du kan utnyttja direkt [stöd för ASP.NET-CORS](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api).
 
-De huvudsakliga problemområden om du använder CORS är som den `eTag` och `Location` huvuden måste tillåtas för klient-SDK: er ska fungera korrekt.
+hello huvudsakliga problemområden om du använder CORS är att hello `eTag` och `Location` huvuden måste tillåtas för hello klient-SDK: er toowork korrekt.
 
 ### <a name="push-notifications"></a>Push-meddelanden
-För distribution är objektet kanske saknas från Server SDK PushRegistrationHandler-klass. Registreringar hanteras lite annorlunda i Mobile Apps och tagless registreringar är aktiverade som standard. Hantera taggar kan åstadkommas med hjälp av anpassade API: er. Finns det [registrering för taggar](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags) instruktioner för mer information.
+Huvudobjekt Hej som kan vara saknas från hello-serverns SDK är push, hello PushRegistrationHandler klass. Registreringar hanteras lite annorlunda i Mobile Apps och tagless registreringar är aktiverade som standard. Hantera taggar kan åstadkommas med hjälp av anpassade API: er. Se hello [registrering för taggar](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags) instruktioner för mer information.
 
 ### <a name="scheduled-jobs"></a>Schemalagda jobb
-Schemalagda jobb är inte inbyggda i Mobilappar, så alla befintliga jobb som du har i .NET-serverdel måste uppgraderas individuellt. Ett alternativ är att skapa en schemalagd [Web jobbet] på webbplatsen Mobilapp kod. Du kan också konfigurera en domänkontrollant som innehåller jobbkoden och konfigurera den [Azure Scheduler] att träffa den slutpunkten på det förväntade schemat.
+Schemalagda jobb är inte inbyggda i Mobilappar, så måste alla befintliga jobb som du har i .NET-serverdel toobe uppgraderas individuellt. Ett alternativ är en schemalagd toocreate [Web jobbet] på hello Mobilapp kod platsen. Du kan också konfigurera en domänkontrollant som innehåller jobbkoden och konfigurera hello [Azure Scheduler] toohit denna slutpunkt på hello förväntades schema.
 
 ### <a name="miscellaneous-changes"></a>Funktionsförändringar
-Alla ApiControllers som används av en mobil klient måste nu har den `[MobileAppController]` attribut. Det är inte längre ingår som standard så att andra ApiControllers gå påverkas inte av mobila-formaterare.
+Alla ApiControllers som används av en mobil klient nu måste ha hello `[MobileAppController]` attribut. Detta är inte längre ingår som standard så att andra ApiControllers toogo påverkas inte av hello mobila-formaterare.
 
-Den `ApiServices` objektet är inte längre ingår i SDK. Du kan använda följande för att komma åt Mobile App-inställningar:
+Hej `ApiServices` objektet är inte längre tillhör hello SDK. Du kan använda hello följande tooaccess Mobile App-inställningar:
 
     MobileAppSettingsDictionary settings = this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
 
-På liknande sätt, utförs nu loggning använda standard ASP.NET spårning:
+På samma sätt, utförs nu loggning med hello standard ASP.NET trace skrivning:
 
     ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
     traceWriter.Info("Hello, World");  
 
 ## <a name="authentication"></a>Överväganden för autentisering
-Autentiseringskomponenter i Mobile Services har nu flyttats till funktionen autentisering/auktorisering i Apptjänst. Du kan lära dig om hur du aktiverar detta för webbplatsen genom att läsa den [Lägg till autentisering i appen mobila](app-service-mobile-ios-get-started-users.md) avsnittet.
+hello har autentisering i Mobile Services nu flyttats till hello autentisering/auktorisering i Apptjänst-funktionen. Du kan lära dig om hur du aktiverar detta för webbplatsen genom att läsa hello [Lägg till autentisering tooyour mobilappen](app-service-mobile-ios-get-started-users.md) avsnittet.
 
-För vissa leverantörer, till exempel AAD, Facebook och Google, bör du kunna utnyttja den befintliga registreringen från tillämpningsprogrammet kopia. Du behöver bara gå till portalen för den identitetsleverantör och lägga till en ny omdirigerings-URL i registreringen. Konfigurera autentisering/auktorisering i Apptjänst med klient-ID och hemlighet.
+För vissa leverantörer, till exempel AAD, Facebook och Google, bör du kunna tooleverage hello befintlig registrering från tillämpningsprogrammet kopia. Du bara behöver toonavigate toohello identitetsleverantörens portal och lägga till en ny omdirigerings-URL: en toohello registrering. Konfigurera autentisering/auktorisering i Apptjänst med hello klient-ID och hemlighet.
 
 ### <a name="controller-action-authorization"></a>Domänkontrollanten åtgärd auktorisering
-Alla instanser av den `[AuthorizeLevel(AuthorizationLevel.User)]` attributet nu måste ändras för att använda standard ASP.NET `[Authorize]` attribut. Dessutom är domänkontrollanter nu anonym som standard, som i andra ASP.NET-program.
-Om du använder något av de andra märke AuthorizeLevel alternativ, till exempel Admin eller ett program, Lägg till att de är borta. Du kan i stället konfigurera AuthorizationFilters för delade hemligheter eller konfigurera ett AAD-tjänstens huvudnamn för att aktivera service-to-service-anrop på ett säkert sätt.
+Alla instanser av hello `[AuthorizeLevel(AuthorizationLevel.User)]` attributet måste nu vara ändrade toouse hello standard ASP.NET `[Authorize]` attribut. Dessutom är domänkontrollanter nu anonym som standard, som i andra ASP.NET-program.
+Om du använder en av hello märke andra AuthorizeLevel alternativ, till exempel Admin eller ett program, Lägg till att de är borta. Du kan i stället konfigurera AuthorizationFilters för delade hemligheter eller konfigurera ett AAD tjänstens huvudnamn tooenable tjänst-till-tjänst-anrop på ett säkert sätt.
 
 ### <a name="getting-additional-user-information"></a>Hämtar användarinformation om ytterligare
-Du kan få ytterligare information, inklusive åtkomsttoken via den `GetAppServiceIdentityAsync()` metoden:
+Du kan få ytterligare information, inklusive åtkomsttoken via hello `GetAppServiceIdentityAsync()` metoden:
 
         FacebookCredentials creds = await this.User.GetAppServiceIdentityAsync<FacebookCredentials>();
 
-Dessutom är det viktigt att notera att användar-ID mellan Mobile Services och Apptjänst Mobilappar skiljer sig om ditt program tar beroenden på användar-ID, till exempel lagra dem i en databas. Du kan fortfarande få Mobile Services användar-ID, även om. Alla ProviderCredentials underklasser har en användar-ID-egenskap. Så fortsätter från exempel innan:
+Dessutom, om ditt program tar beroenden på användar-ID, till exempel lagra dem i en databas, är det viktigt toonote som hello användar-ID mellan Mobile Services och Apptjänst Mobilappar är olika. Du kan fortfarande få hello Mobile Services användar-ID, även om. Alla hello ProviderCredentials underklasser har en användar-ID-egenskap. Så fortsätter från hello exempel innan:
 
         string mobileServicesUserId = creds.Provider + ":" + creds.UserId;
 
-Om din app tar några beroenden på användar-ID, är det viktigt att du använder samma registrering med en identitetsprovider om möjligt. Användar-ID är vanligtvis begränsade till registreringen program som har använts, så Vi presenterar en ny registrering kan skapa problem med matchande användare till deras data.
+Om din app tar några beroenden på användar-ID, är det viktigt att du utnyttja hello samma registrering med en identitetsprovider om möjligt. Användar-ID är vanligtvis begränsade toohello appregistrering som användes, så introducerar en ny registrering kan skapa problem med matchande användare tootheir data.
 
 ### <a name="custom-authentication"></a>Anpassad autentisering
-Om din app använder en lösning för anpassad autentisering, kommer du vill kontrollera att den uppgraderade platsen har åtkomst till systemet. Följ instruktionerna för anpassad autentisering i nya den [översikt över SDK för .NET server] att integrera din lösning. Observera att komponenter för anpassad autentisering är fortfarande under förhandsgranskning.
+Om din app använder en lösning för anpassad autentisering, vill du att den uppgraderade hello-platsen har åtkomst toohello system toomake. Följ hello nya instruktioner för anpassad autentisering i hello [översikt över SDK för .NET server] toointegrate din lösning. Observera att hello anpassad autentiseringskomponenter är fortfarande under förhandsgranskning.
 
 ## <a name="updating-clients"></a>Uppdatera klienter
-När du har en operativa mobilappsserverdel kan arbeta du med en ny version av ditt klientprogram som använder den. Mobile Apps innehåller också en ny version av klienten SDK: er och liknar serveruppgraderingen ovan, behöver du ta bort alla referenser till SDK: er för Mobile Services innan du installerar Mobile Apps-versioner.
+När du har en operativa mobilappsserverdel kan arbeta du med en ny version av ditt klientprogram som använder den. Mobile Apps innehåller också en ny version av hello klienten SDK: er och liknande toohello serveruppgraderingen ovan, behöver du tooremove alla referenser toohello Mobile Services SDK innan du installerar hello Mobile Apps versioner.
 
-En av de viktigaste ändringarna mellan versionerna är att konstruktorer längre kräver en nyckel för programmet. Du nu överföra bara URL-adressen till din Mobilapp. Till exempel på .NET-klienter på `MobileServiceClient` konstruktorn är nu:
+En av hello huvudsakliga ändringar mellan hello versioner är att hello konstruktorer inte längre behöver en tangent. Du nu skickar hello URL för din Mobilapp. Till exempel på hello .NET-klienter, hello `MobileServiceClient` konstruktorn är nu:
 
         public static MobileServiceClient MobileService = new MobileServiceClient(
-            "https://contoso.azurewebsites.net", // URL of the Mobile App
+            "https://contoso.azurewebsites.net", // URL of hello Mobile App
         );
 
-Du kan läsa om hur du installerar nya SDK: er och använda den nya strukturen via länkarna nedan:
+Du kan läsa om hur du installerar hello nya SDK: er och använder hello ny struktur via hello länkarna nedan:
 
 * [iOS version 3.0.0 eller senare](app-service-mobile-ios-how-to-use-client-library.md)
 * [.NET (Windows/Xamarin) version 2.0.0 eller senare](app-service-mobile-dotnet-how-to-use-client-library.md)
 
-Om ditt program gör användning av push-meddelanden, anteckna registreringen instruktioner för varje plattform, har eftersom det ändringar det också.
+Om ditt program gör användning av push-meddelanden, anteckna hello registreringen instruktioner för varje plattform, har eftersom det ändringar det också.
 
-När du har den nya klientversionen redo prova mot projektet uppgraderade servern. När du verifierar att det fungerar, kan du släppa en ny version av programmet till kunder. Slutligen, när dina kunder har haft möjlighet att få dessa uppdateringar, du kan ta bort Mobile Services-versionen av din app. Nu är har du uppgraderat till en App Service-Mobilapp med hjälp av den senaste Mobile Apps servern SDK.
+När du har hello nya klientversionen redo prova mot projektet uppgraderade servern. Du kan släppa en ny version av programmet-toocustomers efter verifierar att den fungerar. Slutligen, när dina kunder har fått en chans tooreceive dessa uppdateringar, du kan ta bort hello Mobile Services version av appen. Nu är du har uppgraderat tooan App Service-Mobilapp med hjälp av hello senaste Mobile Apps server-SDK.
 
 <!-- URLs. -->
 
@@ -263,12 +263,12 @@ När du har den nya klientversionen redo prova mot projektet uppgraderade server
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
 [Mobile App-serverns SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Create a Mobile App]: app-service-mobile-xamarin-ios-get-started.md
-[Add push notifications to your mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
-[Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
+[Add push notifications tooyour mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
+[Add authentication tooyour mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /en-us/documentation/services/scheduler/
 [Web jobbet]: ../app-service-web/websites-webjobs-resources.md
-[hur du använder SDK för .NET-server]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
-[Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
+[hur toouse hello .NET server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Migrate from Mobile Services tooan App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
+[Migrate your existing Mobile Service tooApp Service]: app-service-mobile-migrating-from-mobile-services.md
 [priser för Apptjänst]: https://azure.microsoft.com/en-us/pricing/details/app-service/
 [översikt över SDK för .NET server]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

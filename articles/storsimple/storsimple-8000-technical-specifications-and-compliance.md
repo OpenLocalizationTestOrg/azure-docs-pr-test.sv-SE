@@ -1,6 +1,6 @@
 ---
-title: StorSimple tekniska specifikationer | Microsoft Docs
-description: "Beskriver de tekniska specifikationer och standarder kompatibilitetsinformation för maskinvarukomponenter för StorSimple."
+title: aaaStorSimple tekniska specifikationer | Microsoft Docs
+description: "Beskriver hello tekniska specifikationer och standarder kompatibilitetsinformation för hello StorSimple maskinvarukomponenter."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: d7cd31dcb2278284ada6e7ac1d8beab9e1b5b1df
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 98fa3307e2a929551c74e8b3179bb0fb61c0ab53
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Tekniska specifikationer och kompatibilitet för StorSimple-enhet
+# <a name="technical-specifications-and-compliance-for-hello-storsimple-device"></a>Tekniska specifikationer och kompatibilitet för hello StorSimple-enhet
 
 ## <a name="overview"></a>Översikt
 
-Maskinvarukomponenter i din Microsoft Azure StorSimple-enhet följer tekniska specifikationer och standarder beskrivs i den här artikeln. Tekniska specifikationer beskrivs ström och kylning moduler (PCMs), diskenheter, lagringskapacitet och bilagor. Kompatibilitetsinformationen innehåller sådant som internationella standarder, säkerhet och utsläpp och kablar.
+hello maskinvarukomponenter av Microsoft Azure StorSimple-enheten följa toohello tekniska specifikationer och standarder beskrivs i den här artikeln. hello tekniska specifikationer beskrivs hello ström och kylning moduler (PCMs), diskenheter, lagringskapacitet och bilagor. hello kompatibilitetsinformation omfattar bland annat internationella standarder, säkerhet och utsläpp och kablar.
 
 ## <a name="power-and-cooling-module-specifications"></a>Ström och kylning modulen specifikationer
 
-StorSimple-enheten har två 100 – 240 V dubbla fläktar, flesta SBB-kompatibel Power kylning moduler (PCMs). Detta ger en redundant strömförsörjning konfiguration. Om en PCM misslyckas fortsätter enheten att fungera normalt på andra PCM tills modulen misslyckade ersätts.
+Hej StorSimple-enhet har två 100 – 240 V dubbla fläktar, flesta SBB-kompatibel Power kylning moduler (PCMs). Detta ger en redundant strömförsörjning konfiguration. Om en PCM misslyckas fortsätter hello enheten toooperate normalt på hello andra PCM tills hello misslyckades modulen ersätts.
 
-Primär höljet används en 764 W PCM EBOD höljet använder en 580 W PCM. I tabellerna nedan listas de tekniska specifikationer som är kopplade till PCMs.
+Hej EBOD hölje använder en 580 W PCM och primär enhet använder en 764 W PCM. hello de följande tabellerna listan hello tekniska specifikationer som är associerade med hello PCMs.
 
 | Specifikationen | 580 W PCM (EBOD) | 764 W PCM (primär) |
 | --- | --- | --- |
@@ -49,7 +49,7 @@ Primär höljet används en 764 W PCM EBOD höljet använder en 580 W PCM. I tab
 
 ## <a name="power-consumption-statistics"></a>Statistik för Power förbrukning
 
-I följande tabell visas de vanliga strömförbrukningsdata (faktiska värden kan skilja sig från de publicerade) för de olika modellerna i StorSimple-enhet.
+hello följande tabell listar hello vanliga strömförbrukningsdata (faktiska värdena kan variera från hello publicerade) för hello olika modeller av StorSimple-enhet.
 
 | Villkor | 240 V AC | 240 V AC | 240 V AC | 110 V AC | 110 V AC | 110 V AC |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -62,11 +62,11 @@ I följande tabell visas de vanliga strömförbrukningsdata (faktiska värden ka
 
 ## <a name="disk-drive-specifications"></a>Specifikationer för enhet
 
-StorSimple-enheten har stöd för upp till 12 3,5-tums seriellt ansluten SCSI (SAS) disk hårddiskar formfaktor. De faktiska enheterna kan vara en blandning av SSD-enheter (SSD) eller hårddiskar (HDD) beroende på hur produkten. 12 diskenhet platser finns i en konfiguration 3 av 4 framför höljet. EBOD höljet kan ytterligare lagringsutrymme för en annan 12 diskenheter. Dessa är alltid hårddiskar.
+Din StorSimple-enhet stöder upp too12 3,5-tums formuläret faktor seriellt ansluten SCSI (SAS)-enheter. hello faktiska enheter kan vara en blandning av SSD-enheter (SSD) eller hårddiskar (HDD) beroende på hello produktkonfigurationen. hello 12 diskenhet platser finns i en konfiguration 3 av 4 framför hello höljet. Hej EBOD hölje kan ytterligare lagringsutrymme för en annan 12 diskenheter. Dessa är alltid hårddiskar.
 
 ## <a name="storage-specifications"></a>Specifikationer för lagring
 
-StorSimple-enheter har en blandning av hårddiskar och SSD-enheter för både 8100 och 8600. Den totala kapaciteten som kan användas för 8100 och 8600 är ungefär 15 TB och 38 TB. I följande tabell beskrivs information om SSD och HDD kapacitet i samband med kapacitet för StorSimple-lösning.
+Hej StorSimple-enheter har en blandning av hårddiskar och SSD-enheter för både hello 8100 och 8600. hello totala användbara kapaciteten för hello 8100 och 8600 är ungefär 15 TB och 38 TB. i den följande tabellen hello dokument hello information om SSD och HDD kapacitet hello gäller hello StorSimple-lösningen kapacitet.
 
 | Enhetsmodell / kapacitet | 8100 | 8600 |
 | --- | --- | --- |
@@ -80,37 +80,37 @@ StorSimple-enheter har en blandning av hårddiskar och SSD-enheter för både 81
 | Totalt antal användbara kapacitet * |~ 15 TB |~ 38 TB |
 | Lösning för maximal kapacitet (inklusive moln) |200 TB |500 TB |
 
-<sup>* </sup>- *Den totala användbara kapaciteten inkluderar den tillgängliga kapaciteten för data, metadata och buffertar.*
+<sup>* </sup>- *hello totala användbara kapacitet innehåller hello kapacitet för data, metadata och buffertar.*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Höljet dimensioner och vikt specifikationer
 
-I tabellerna nedan listas de olika hölje specifikationerna för dimensioner och vikt.
+följande tabeller visas hello hello olika höljet specifikationer för dimensioner och vikt.
 
 ### <a name="enclosure-dimensions"></a>Höljet dimensioner
 
-I följande tabell visas dimensioner för höljet i millimeter och tum.
+hello visar följande tabell hello dimensioner för hello höljet i millimeter och tum.
 
 | Höljet | Millimeter | Tum |
 | --- | --- | --- |
 | Höjd |87.9 |3.46 |
 | Bredden över montering flänsad |483 |19.02 |
 | Bredden i brödtexten för höljet |443 |17.44 |
-| Djup från fronten till slutet av höljet brödtext |577 |22.72 |
-| Djup operations-panelen för sista delen av hölje |630.5 |24.82 |
-| Djupet från montering flänsad att sista delen av hölje |603 |23.74 |
+| Djup från främre montering flänsad tooextremity av höljet text |577 |22.72 |
+| Djup från operations panelen toofurthest delen av hölje |630.5 |24.82 |
+| Djup från montera flänsad toofurthest delen av hölje |603 |23.74 |
 
 ### <a name="enclosure-weight"></a>Höljet vikt
 
-Beroende på konfigurationen, ett lästs in helt primära hölje kan väg från 21 33 kg och kräver två personer kan hantera den.
+Beroende på hello konfiguration ett lästs in helt primära hölje kan väga från 21 too33 kg och kräver två personer toohandle den.
 
 | Höljet | Vikt |
 | --- | --- |
-| Högsta vikt (beroende på konfigurationen) |30 kg – 33 kg |
+| Högsta vikt (beroende på hello configuration) |30 kg – 33 kg |
 | Tom (inga enheter monterade) |21 – 23 kg |
 
 ## <a name="enclosure-environment-specifications"></a>Specifikationer för höljet miljö
 
-Det här avsnittet innehåller de specifikationer som rör hölje-miljö. Temperatur, fuktighet, höjd, undanröjs, vibrationer, orientering, säkerhet och elektromagnetisk kompatibilitet (EMC) ingår i den här kategorin.
+Det här avsnittet innehåller hello specifikationer relaterade toohello hölje miljö. hello temperatur, fuktighet, höjd, undanröjs, vibrationer, orientering, säkerhet och elektromagnetisk kompatibilitet (EMC) ingår i den här kategorin.
 
 ### <a name="temperature-and-humidity"></a>Temperatur- och fuktighetskonsekvens
 
@@ -123,56 +123,56 @@ Det här avsnittet innehåller de specifikationer som rör hölje-miljö. Temper
 
 | Höljet | Använd specifikationer |
 | --- | --- |
-| Luftflöde |System luftflödet är framifrån och bakåt. Systemet måste köras med en low-pressure, bakre avgaser installation. Skapats av rack dörrar och hinder som ligger högst 5 Pascal (0,5 mätare). |
-| Höjd operativa |-30 mätare till 3045 meter (-100 fot till 10 000 fot) med högsta operativa temperatur Frigör klassificerats av 5 ° C ovan 7000 fot. |
-| Höjd ur drift |-305 mätare till 12 192 meter (– 1 000 fot till 40 000 fot) |
+| Luftflöde |System luftflödet är främre toorear. Systemet måste köras med en low-pressure, bakre avgaser installation. Skapats av rack dörrar och hinder som ligger högst 5 Pascal (0,5 mätare). |
+| Höjd operativa |-30 mätare too3045 mätare (-100 fot too10 000 fot) med högsta temperatur för drift Frigör klassificerats av 5 ° C ovan 7000 fot. |
+| Höjd ur drift |-305 mätare too12, 192 mätare (– 1 000 fot too40 000 fot) |
 | Undanröjs, operativa |5g 10 ms ½ sinus |
 | Undanröjs, ur drift |30g 10 ms ½ sinus |
 | Vibration vid drift |0.21g RMS 5 500 Hz slumpmässiga |
 | Vibration, ur drift |1.04g RMS 2 200 Hz slumpmässiga |
 | Vibration dataflytt |3g 2 200 Hz sinus |
 | Orientering och montering |19-tums rackmonterad (2 EIA enheter) |
-| Rack spår |Rack följer IEC 297 så att de passar djup minsta 700 mm (31.50 tum) |
+| Rack spår |toofit minsta 700 mm (31.50 tum) djup rack följer IEC 297 |
 | Säkerhet och godkännanden |CE och UL SV 61000-3, IEC 61000-3, UL 61000-3 |
 | EMC |EN55022 (CISPR - A), FCC A |
 
 ## <a name="international-standards-compliance"></a>Internationella standarder kompatibilitet
 
-Microsoft Azure StorSimple-enheten uppfyller följande internationella krav:  
+Microsoft Azure StorSimple-enheten uppfyller hello följer internationella standarder:  
 
 * CE - EN 60950-1
-* CB rapporten till IEC 60950-1
-* UL och cUL som UL 60950-1
+* CB rapporten tooIEC 60950-1
+* UL och cUL tooUL 60950-1
 
 ## <a name="safety-compliance"></a>Säkerhet
 
-Microsoft Azure StorSimple-enheten uppfyller följande säkerhet klassificeringar:
+Microsoft Azure StorSimple-enheten uppfyller hello följande säkerhet klassificeringar:
 
 * System produkten typen godkännande: UL, cUL CE
 * Säkerhet: UL 60950 IEC 60950, SV 60950
 
 ## <a name="emc-compliance"></a>EMC-kompatibilitet
 
-Microsoft Azure StorSimple-enheten uppfyller följande EMC-klassificering.
+Microsoft Azure StorSimple-enheten uppfyller hello efter EMC klassificeringar.
 
 ### <a name="emissions"></a>Utsläpp
 
-Enheten är EMC-kompatibel för utförts och UTSTRÅLAD nivåer.
+hello-enheten är EMC-kompatibel för utförts och UTSTRÅLAD nivåer.
 
 * Utförts utsläpp begränsa nivåer: CFR 47 Part 15B klass A EN55022 klass A CISPR klass A
 * UTSTRÅLAD utsläpp begränsa nivåer: CFR 47 Part 15B klass A EN55022 klass A CISPR klass A
 
 ### <a name="harmonics-and-flicker"></a>Övertoner och flimmer
 
-Enheten uppfyller EN61000-3-2/3.
+hello enheten överensstämmer med EN61000-3-2/3.
 
 ### <a name="immunity-limit-levels"></a>Gränsen för immunitetsnivåerna
 
-Enheten uppfyller EN55024.
+hello enheten överensstämmer med EN55024.
 
 ## <a name="ac-power-cord-compliance"></a>AC power kabel kompatibilitet
 
-Plugin och fullständig power kabel sammansättningen måste uppfylla standarder i det land där enheten som används och de måste ha säkerheten godkännanden som accepteras i det landet. I tabellerna nedan listas standarder för USA och Europa.
+hello plug och hello fullständig power kabel sammansättningen måste uppfylla hello standarder för hello land i vilka hello används och de måste ha säkerheten godkännanden som accepteras i det landet. hello följande tabeller listan standarder för hello USA och Europa.
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>Strömkablar AC - USA (måste vara NRTL anges)
 
@@ -191,9 +191,9 @@ Plugin och fullständig power kabel sammansättningen måste uppfylla standarder
 
 ## <a name="supported-network-cables"></a>Stöds nätverkskablarna
 
-De 10 GbE-nätverksgränssnitten DATA 2 och DATA 3 finns i den [lista över stöds nätverkskablarna och moduler](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+Hello 10 GbE-nätverkskort, DATA 2 och DATA 3 finns toohello [lista över stöds nätverkskablarna och moduler](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du är nu redo att distribuera en virtuell StorSimple-enhet i ditt datacenter. Mer information finns i [distribuera din lokala enhet](storsimple-8000-deployment-walkthrough-u2.md).
+Du är nu redo toodeploy en StorSimple-enhet i ditt datacenter. Mer information finns i [distribuera din lokala enhet](storsimple-8000-deployment-walkthrough-u2.md).
 

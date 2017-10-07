@@ -1,5 +1,5 @@
 ---
-title: "Rapportkvarhållningsregler i Azure Active Directory | Microsoft Docs"
+title: "rapportkvarhållningsregler i aaaAzure Active Directory | Microsoft Docs"
 description: "Bevarandeprinciper på rapportdata i Azure Active Directory"
 services: active-directory
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ffeba8a6c32a21c75af21f948bbd6ea88dd9278c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c46a68198cb34e9c92662b2f8461010745392c04
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Rapportkvarhållningsregler i Azure Active Directory
 
 
-Det här avsnittet ger svar på de vanligaste frågorna tillsammans med datalagring för olika aktivitetsrapporter i Azure Active Directory. 
+Det här avsnittet ger dig svar toohello vanligaste frågorna tillsammans med hello datalagring för hello olika aktivitetsrapporter i Azure Active Directory. 
 
-**F: hur kan du få insamlingen av aktivitetsdata starta?**
+**F: hur kan du få hello samling aktivitetsdata igång?**
 
 **S:**
 
 | Azure AD-version | Samlingen Start |
 | :--              | :--   |
 | Azure AD Premium P1 <br /> Azure AD Premium P2 | När du registrerar dig för en prenumeration |
-| Azure AD Kostnadsfri | Första gången du öppnar den [Azure Active Directory-bladet](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) eller använda den [reporting API: er](https://aka.ms/aadreports)  |
+| Azure AD Kostnadsfri | Hej första gången du öppnar hello [Azure Active Directory-bladet](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) eller använda hello [reporting API: er](https://aka.ms/aadreports)  |
 
 ---
-**F: när är aktivitetsdata i Azure portal?**
+**F: när är din aktivitetsdata i hello Azure-portalen?**
 
 **S:**
 
-- **Omedelbart** - om du redan har arbetat med rapporter i den klassiska Azure-portalen
-- **Inom två timmar** - om du inte har aktiverat rapportering i den klassiska Azure-portalen
+- **Omedelbart** - om du redan har arbetat med rapporter i hello klassiska Azure-portalen
+- **Inom två timmar** - om du inte har aktiverat rapportering i hello klassiska Azure-portalen
 
 ---
-**F: hur kan du få insamling av säkerhet signaler igång?**  
+**F: hur kan du få hello insamling av säkerhet signaler igång?**  
 
-**S:** för säkerhet signaler samling processen startar när du delta i använda Identity Protection Center. 
+**S:** för säkerhet signaler hello samling processen startar när du delta i toouse hello Identity Protection Center. 
 
 
 ---
-**F: hur länge insamlade data lagras?**
+**F: hur länge hello insamlade data lagras?**
 
 **S:**
 

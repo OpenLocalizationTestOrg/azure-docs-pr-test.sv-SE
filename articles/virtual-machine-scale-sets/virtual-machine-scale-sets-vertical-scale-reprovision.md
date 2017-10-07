@@ -1,6 +1,6 @@
 ---
-title: "Lodrätt skala skalningsuppsättningar i virtuella Azure-datorn | Microsoft Docs"
-description: "Hur man lodrätt skala en virtuell dator för att övervaka aviseringar med Azure Automation"
+title: "skaluppsättningar för aaaVertically skala virtuell Azure-dator | Microsoft Docs"
+description: Hur toovertically skala en virtuell dator i svaret toomonitoring aviseringar med Azure Automation
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gbowerman
@@ -15,33 +15,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: guybo
-ms.openlocfilehash: 9159a5a9041864fe06785829121233379c46bb03
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1cc35a805b6a5742252a89c21588ca451ff547a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Lodrät Autoskala med skaluppsättningar för den virtuella datorn
-Den här artikeln beskriver hur man lodrätt skala Azure [Skalningsuppsättningar i virtuella](https://azure.microsoft.com/services/virtual-machine-scale-sets/) med eller utan reprovisioning. Lodrät skalning för virtuella datorer som inte är i skalningsuppsättningar, finns i [lodrätt skala virtuella Azure-datorn med Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Den här artikeln beskriver hur toovertically skala Azure [Skalningsuppsättningar i virtuella](https://azure.microsoft.com/services/virtual-machine-scale-sets/) med eller utan reprovisioning. Lodrät skalning av virtuella datorer som inte kommer i skalningsuppsättningar finns för[lodrätt skala virtuella Azure-datorn med Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Lodrät skalning, även kallat *skala upp* och *skala*, betyder att öka eller minska storlekar för virtuella datorer (VM) som svar på en arbetsbelastning. Jämför detta med [teckenbredden](virtual-machine-scale-sets-autoscale-overview.md), vilket även kallas *skala ut* och *skala i*, där antalet VMs ändras beroende på arbetsbelastningen.
+Lodrät skalning, även kallat *skala upp* och *skala*, betyder att öka eller minska storlekar för virtuella datorer (VM) i svaret tooa arbetsbelastning. Jämför detta med [teckenbredden](virtual-machine-scale-sets-autoscale-overview.md), kallas även tooas *skala ut* och *skala i*, där hello antal virtuella datorer ändras beroende på hello arbetsbelastning.
 
-Reprovisioning innebär att ta bort en befintlig virtuell dator och ersätta den med en ny. När du ökar eller minskar storleken på virtuella datorer i en Skaluppsättning i vissa fall vill du ändra storlek på befintliga virtuella datorer och behålla dina data, medan i andra fall måste du distribuera nya virtuella datorer i den nya storleken. Det här dokumentet beskriver båda fallen.
+Reprovisioning innebär att ta bort en befintlig virtuell dator och ersätta den med en ny. När du ökar eller minskar hello storleken på virtuella datorer i en Skaluppsättning i vissa fall du vill tooresize befintliga virtuella datorer och behålla dina data, medan i andra fall behöver du toodeploy nya virtuella datorer ny hello-storlek. Det här dokumentet beskriver båda fallen.
 
 Lodrät skalning kan vara användbart när:
 
-* En tjänst som bygger på virtuella datorer är outnyttjad (till exempel på helger). Minska VM-storlek kan minska kostnaderna för varje månad.
-* Öka storleken på virtuella datorn ska kunna hantera större begäran utan att skapa ytterligare virtuella datorer.
+* En tjänst som bygger på virtuella datorer är outnyttjad (till exempel på helger). Minska hello VM-storlek kan minska kostnaderna för varje månad.
+* Ökad VM-storlek toocope med större behov utan att skapa ytterligare virtuella datorer.
 
-Du kan ställa in lodräta skalning ska utlösta baserat på mått baserade aviseringar från din Skaluppsättning. När aviseringen aktiveras utlöses en webhook som utlösare för en runbook som kan skalas nivå ange uppåt eller nedåt. Lodrät skalning kan konfigureras genom att följa dessa steg:
+Du kan ställa in lodrät skalning toobe utlöses baserat på mått baserade aviseringar från din Skaluppsättning. När hello avisering aktiveras utlöses en webhook som utlösare för en runbook som kan skalas nivå ange uppåt eller nedåt. Lodrät skalning kan konfigureras genom att följa dessa steg:
 
 1. Skapa ett Azure Automation-konto med Kör som-kapacitet.
 2. Importera Lodrät skala för Azure Automation-runbooks för Skalningsuppsättningar i din prenumeration.
-3. Lägg till en webhook i din runbook.
-4. Lägga till en avisering till din VM Scale Set med hjälp av ett webhook-meddelande.
+3. Lägg till en webhook tooyour runbook.
+4. Lägga till en avisering tooyour VM Scale Set med hjälp av ett webhook-meddelande.
 
 > [!NOTE]
-> Lodrät autoskalning kan bara ske inom vissa intervall för VM-storlekar. Jämför specifikationerna för varje storlek innan du beslutar att skala från varandra (högre nummer inte alltid anger större VM-storlek). Du kan välja att skala mellan de följande paren storlekar:
+> Lodrät autoskalning kan bara ske inom vissa intervall för VM-storlekar. Jämför hello specifikationer av varje storlek innan du bestämmer tooscale från en tooanother (högre nummer inte alltid anger större VM-storlek). Du kan välja tooscale mellan hello par med följande:
 > 
 > | VM-storlekar skalning par |  |
 > | --- | --- |
@@ -55,35 +55,35 @@ Du kan ställa in lodräta skalning ska utlösta baserat på mått baserade avis
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Skapa ett Azure Automation-konto med Kör som-kapacitet
-Det första du behöver göra är att skapa ett Azure Automation-konto som ska vara värd för runbooks som används för att anpassa VM Scale Set-instanser. Nyligen [Azure Automation](https://azure.microsoft.com/services/automation/) introducerade funktionen ”Kör som-konto” som gör att du kan konfigurera tjänstens huvudnamn för att automatiskt köra runbooks på en användares vägnar mycket enkelt. Mer information finns i artikeln nedan:
+hello måste du först toodo är att skapa ett Azure Automation-konto som ska vara värd för hello runbooks används tooscale hello VM Scale Set instanser. Nyligen [Azure Automation](https://azure.microsoft.com/services/automation/) introduceras hello ”kör som-konto” funktionen som gör att konfigurera hello tjänstens huvudnamn för att automatiskt köra hello runbooks på en användares vägnar mycket enkelt. Du kan läsa mer om detta i hello artikel nedan:
 
 * [Autentisera runbooks med ett ”Kör som”-konto i Azure](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importera Lodrät skala för Azure Automation-runbooks till din prenumeration
-Runbooks som behövs för att skala din Skalningsuppsättningar lodrätt har redan publicerats i Azure Automation Runbook-galleriet. Om du vill importera följer dem till din prenumeration du stegen i den här artikeln:
+Hej runbooks behövs toovertically skala din Skalningsuppsättningar har redan publicerats i hello Azure Automation Runbook-galleriet. tooimport dem till din prenumeration följer hello stegen i den här artikeln:
 
 * [Azure Automation Runbook- och stänga](../automation/automation-runbook-gallery.md)
 
-Välj alternativet Bläddra galleriet Runbooks-menyn:
+Välj alternativ för hello Bläddra galleriet hello Runbooks menyn:
 
-![Runbooks som ska importeras][runbooks]
+![Runbooks toobe importeras][runbooks]
 
-Runbooks som ska importeras visas. Välj runbook baserat på om du vill lodräta skalning med eller utan reprovisioning:
+Hej runbooks som måste importeras toobe visas. Välj hello runbook baserat på om du vill lodräta skalning med eller utan reprovisioning:
 
 ![Runbooks-galleriet][gallery]
 
-## <a name="add-a-webhook-to-your-runbook"></a>Lägga till en webhook i din runbook
-När du har importerat förse runbooks måste du en webhook runbook så att den kan aktiveras av en avisering från en Skaluppsättning. Information om hur du skapar en webhook för din Runbook beskrivs i den här artikeln:
+## <a name="add-a-webhook-tooyour-runbook"></a>Lägga till en webhook tooyour runbook
+När du har importerat hello runbooks måste tooadd en webhook toohello runbook så att den kan aktiveras av en avisering från en Skaluppsättning. hello information om hur du skapar en webhook för din Runbook beskrivs i den här artikeln:
 
 * [Azure Automation-webhooks](../automation/automation-webhooks.md)
 
 > [!NOTE]
-> Kontrollera att du kopierar webhook URI innan du stänger dialogrutan webhook som du behöver det i nästa avsnitt.
+> Kontrollera att du kopierar hello webhook URI innan du stänger hello webhook dialogrutan som du behöver det i nästa avsnitt om hello.
 > 
 > 
 
-## <a name="add-an-alert-to-your-vm-scale-set"></a>Lägga till en avisering till din Skaluppsättning
-Nedan finns ett PowerShell-skript som visar hur du lägger till en avisering till en Skaluppsättning. Finns i följande artikel för att hämta namnet på måttet ska utlösa aviseringen på: [Azure-Monitor autoskalning vanliga mått](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md).
+## <a name="add-an-alert-tooyour-vm-scale-set"></a>Lägg till en avisering tooyour Skaluppsättning
+Nedan finns ett PowerShell-skript som visar hur tooadd en avisering tooa Skaluppsättning. Referera toohello efter artikel tooget hello namnet på hello mått toofire hello avisering: [Azure-Monitor autoskalning vanliga mått](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md).
 
 ```
 $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail user@contoso.com
@@ -112,11 +112,11 @@ Add-AzureRmMetricAlertRule  -Name  $alertName `
 ```
 
 > [!NOTE]
-> Det rekommenderas att konfigurera en rimlig tidsfönster för aviseringen för att undvika utlösa lodräta skalning och alla associerade avbrott, för ofta. Överväg ett fönster med minst 20 – 30 minuter eller mer. Överväg att vågräta skalning om du vill undvika avbrott.
+> Är det rekommenderade tooconfigure en rimlig tidsfönster för hello avisering i ordning tooavoid utlösa lodräta skalning och alla associerade avbrott i tjänsten, för ofta. Överväg ett fönster med minst 20 – 30 minuter eller mer. Överväg att vågräta skalning om du behöver tooavoid avbrott.
 > 
 > 
 
-Mer information om hur du skapar aviseringar finns i följande artiklar:
+Mer information om hur toocreate aviseringar finns toohello följande artiklar:
 
 * [Azure-Monitor PowerShell Snabbstart-exempel](../monitoring-and-diagnostics/insights-powershell-samples.md)
 * [Azure CLI för övervakaren plattformsoberoende Snabbstart-exempel](../monitoring-and-diagnostics/insights-cli-samples.md)

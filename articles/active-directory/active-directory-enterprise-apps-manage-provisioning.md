@@ -1,6 +1,6 @@
 ---
-title: "Hantering för företagsappar i Azure Active Directory för användaretablering | Microsoft Docs"
-description: "Lär dig att hantera användare konto-etablering för företagsappar som använder Azure Active Directory"
+title: "aaaUser etablering hantering för företagsappar i hello Azure Active Directory | Microsoft Docs"
+description: "Lär dig hur toomanage användarkontot etablering för företagsappar som använder hello Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: asmalser
@@ -15,70 +15,70 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 220f938e5c890554cd596e2b14492782ed829a5d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a613f844c8f51e04b92e62b488313a78ab85f7ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Hantera konto-etablering för företagsappar i Azure-portalen
-Den här artikeln beskriver hur du använder den [Azure-portalen](https://portal.azure.com) att hantera automatisk användar konto-etablering och avetablering för program som stöder detta, särskilt de som har lagts till i kategorin ”aktuell” för den [Azure Active Directory-programgalleriet](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). Läs mer om automatisk konto användaretablering och hur det fungerar i [automatisera Användaretablering och avetablering för SaaS-program med Azure Active Directory](active-directory-saas-app-provisioning.md).
+# <a name="managing-user-account-provisioning-for-enterprise-apps-in-hello-azure-portal"></a>Hantera användarkonto etablering för företagsappar i hello Azure-portalen
+Den här artikeln beskriver hur toouse hello [Azure-portalen](https://portal.azure.com) toomanage automatisk användarkonto etablering och avetablering för program som stöder detta, särskilt de som har lagts till från hello ”aktuella” kategori Hej [Azure Active Directory-programgalleriet](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery). toolearn mer om automatisk konto användaretablering och hur det fungerar, se [automatisera Användaretablering och avetablering tooSaaS program med Azure Active Directory](active-directory-saas-app-provisioning.md).
 
-## <a name="finding-your-apps-in-the-portal"></a>Hitta dina appar i portalen
-Alla program som är konfigurerade för enkel inloggning i en katalog med en directory-administratör med hjälp av den [Azure Active Directory-programgalleriet](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), kan visas och hanteras i den [Azure-portalen](https://portal.azure.com). Programmen kan hittas i den **fler tjänster** &gt; **företagsprogram** avsnitt i portalen. Enterprise-appar är appar som har distribuerats och används i din organisation.
+## <a name="finding-your-apps-in-hello-portal"></a>Hitta dina appar i hello-portalen
+Alla program som är konfigurerade för enkel inloggning i en katalog med en directory-administratör med hjälp av hello [Azure Active Directory-programgalleriet](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery), kan visas och hanteras i hello [Azure-portalen](https://portal.azure.com). hello program finns i hello **fler tjänster** &gt; **företagsprogram** på hello portal. Enterprise-appar är appar som har distribuerats och används i din organisation.
 
 ![Företagsprogram bladet][0]
 
-Att välja den **alla program** länken till vänster som visar en lista över alla appar som har konfigurerats, inklusive appar som har lagts till från galleriet. Markera en app laddas resursbladet för appen, där rapporter kan visas för appen och en rad olika inställningar som kan hanteras.
+Du väljer hello **alla program** länken hello vänster visar en lista över alla appar som har konfigurerats, inklusive appar som har lagts till från hello-galleriet. Markera en app laddas hello resursbladet för appen, där rapporter kan visas för appen och en rad olika inställningar som kan hanteras.
 
-Användarkontot provisioning-inställningar kan hanteras genom att välja **etablering** till vänster.
+Användarkontot provisioning-inställningar kan hanteras genom att välja **etablering** hello vänster.
 
 ![Programmet resursbladet][1]
 
 ## <a name="provisioning-modes"></a>Etablering lägen
-Den **etablering** bladet börjar med en **läge** menyn som visar vilka etablering lägen stöds för ett företagsprogram och gör att de kan konfigureras. Tillgängliga alternativ inkluderar:
+Hej **etablering** bladet börjar med en **läge** menyn som visar vilka etablering lägen stöds för ett företagsprogram och låter dem toobe konfigurerats. hello tillgängliga alternativ inkluderar:
 
-* **Automatisk** -det här alternativet visas om Azure AD stöder automatisk API-baserad etablering och/eller ta bort etableringen av användarkonton till det här programmet. Om du väljer det här läget visas ett gränssnitt som hjälper administratörer via konfigurerar Azure AD för att ansluta till programmets Användarhantering API, skapa mappningar av åtgärdskonto och arbetsflöden som definierar hur användarkonton ska flöda mellan Azure AD och appen och hantera Azure AD etableras.
-* **Manuell** -det här alternativet visas om Azure AD inte stöder automatisk etablering av användarkonton till det här programmet. Det här alternativet innebär att kontot användarposter lagras i programmet måste hanteras med hjälp av en extern process, baserat på användare hantering och etablering funktioner som tillhandahålls av programmet (som kan omfatta etablering av SAML-in).
+* **Automatisk** -det här alternativet visas om Azure AD stöder automatisk API-baserad etablering och/eller ta bort etableringen av användarprogram konton toothis. Om du väljer det här läget visas ett gränssnitt som hjälper administratörer via konfigurerar Azure AD tooconnect toohello programmets Användarhantering API, skapa mappningar av åtgärdskonto och arbetsflöden som definierar hur användarkonton ska flöda mellan Azure AD och hello appen och hantera hello Azure AD allokering-tjänsten.
+* **Manuell** -det här alternativet visas om Azure AD inte stöder automatisk etablering av användarprogram konton toothis. Det här alternativet innebär att kontot användarposter lagras i programmet hello måste hanteras med hjälp av en extern process, baserat på hello användaren hantering och etablering funktioner som tillhandahålls av programmet (som kan omfatta etablering av SAML-in).
 
 ## <a name="configuring-automatic-user-account-provisioning"></a>Konfigurera automatisk användarens konto-etablering
-Att välja den **automatisk** visas en skärm som är indelat i fyra avsnitt:
+Du väljer hello **automatisk** visas en skärm som är indelat i fyra avsnitt:
 
 ### <a name="admin-credentials"></a>Admin-autentiseringsuppgifter
-Det är där autentiseringsuppgifterna som krävs för Azure AD för att ansluta till programmets Användarhantering API har angetts. Indata som krävs varierar beroende på programmet. Läs om autentiseringstyper och krav för specifika program i den [configuration självstudierna för det specifika programmet](active-directory-saas-app-provisioning.md#list-of-apps-that-support-automated-user-provisioning).
+Detta är där hello autentiseringsuppgifter som krävs för Azure AD tooconnect toohello programmets Användarhantering API anges. hello-indata som krävs varierar beroende på programmet hello. toolearn om hello autentiseringstyper och krav för specifika program finns hello [configuration självstudierna för det specifika programmet](active-directory-saas-app-provisioning.md#list-of-apps-that-support-automated-user-provisioning).
 
-Att välja den **Testa anslutning** knappen kan du testa autentiseringsuppgifter genom att låta Azure AD-försök att ansluta till appen etablering app med de angivna autentiseringsuppgifterna.
+Du väljer hello **Testanslutningen** knappen kan du tootest hello autentiseringsuppgifter genom att låta Azure AD försöker tooconnect toohello app etablering app med hello angivna autentiseringsuppgifter.
 
 ### <a name="mappings"></a>Mappningar
-Det är där administratörer kan visa och redigera vad användaren attribut flödet mellan Azure AD och målprogrammet när användarkonton etablerades eller uppdaterades.
+Det är där administratörer kan visa och redigera vad användaren attribut flödet mellan Azure AD och hello målprogrammet när användarkonton etablerades eller uppdaterades.
 
-Det finns en förkonfigurerad uppsättning mappningar mellan användarobjekt i Azure AD och användarobjekt för varje SaaS-app. Vissa appar hantera andra typer av objekt, till exempel grupper eller kontakter. Att välja ett av dessa mappningar i tabellen visar redigeraren mappning till höger, där de kan visas och anpassat.
+Det finns en förkonfigurerad uppsättning mappningar mellan användarobjekt i Azure AD och användarobjekt för varje SaaS-app. Vissa appar hantera andra typer av objekt, till exempel grupper eller kontakter. Att välja ett av dessa mappningar i hello tabellen visar hello mappning editor toohello höger, där de kan visas och anpassat.
 
 ![Programmet resursbladet][2]
 
 Anpassningar som stöds är:
 
-* Aktivera och inaktivera mappningar för specifika objekt, till exempel Azure AD-användarobjekt som appen SaaS användarobjektet.
-* Ändra vilka attribut som flödar från Azure AD-användarobjektet till appens användarobjektet. Mer information om attributmappning finns [förstå mappning attributtyper](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
-* Filtrera de etablering åtgärder som Azure AD utförs på det aktuella programmet. Du kan begränsa de åtgärder som utförs i stället för att Azure AD fullt-Synkronisera objekt. Till exempel genom att bara välja **uppdatering**, Azure AD endast uppdateringar befintliga konton i ett program och inte skapa nya. Genom att bara välja **skapa**, Azure endast skapar nya användarkonton men inte uppdatera befintliga. Den här funktionen kan administratörer skapa olika mappningar för kontoskapande av och uppdatera arbetsflöden.
+* Aktivera och inaktivera mappningar för specifika objekt, till exempel hello Azure AD användaren objektet toohello SaaS appens användarobjektet.
+* Ändra vilka attribut som flödar från hello Azure AD användaren objektet toohello appens användarobjektet. Mer information om attributmappning finns [förstå mappning attributtyper](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
+* Filter hello etablering åtgärder som Azure AD utför hello riktad program. I stället för med Azure AD fullt-Synkronisera objekt, kan du begränsa hello-åtgärder som utförs. Till exempel genom att bara välja **uppdatering**, Azure AD endast uppdateringar befintliga konton i ett program och inte skapa nya. Genom att bara välja **skapa**, Azure endast skapar nya användarkonton men inte uppdatera befintliga. Den här funktionen kan administratörer toocreate olika mappningar för kontot skapa och uppdatera arbetsflöden.
 
 ### <a name="settings"></a>Inställningar
-Det här avsnittet tillåter administratörer att starta och stoppa Azure AD etableras för det valda programmet som du kan också etablering har rensat och starta om tjänsten.
+Det här avsnittet kan administratörer toostart och stoppa hello Azure AD-etablering tjänsten för hello valt program, samt om du vill rensa hello etablering cachelagra och starta om hello-tjänsten.
 
-Om etablering har aktiverats för första gången för ett program, aktivera tjänsten genom att ändra den **Status för etablering** till **på**. Detta gör att Azure AD etableras att utföra en inledande synkronisering där det står att användare som är tilldelade i den **användare och grupper** avsnittet frågar målprogrammet för dem och sedan utför etablering åtgärder som definierats i Azure AD **mappningar** avsnitt. Under den här processen lagrar tjänsten etablering cachelagrade data om vilka användarkonton som hanteras så att icke-hanterade konton i målprogram som fanns inte i omfånget för tilldelning inte påverkas av avetablering åtgärder. När den första synkroniseringen synkroniseras etablering tjänsten automatiskt användar- och gruppobjekt på tio minuter.
+Om etablering har aktiverats för hello första gången för ett program, aktivera hello-tjänsten genom att ändra hello **Status för etablering** för**på**. Detta medför hello Azure AD etablering service tooperform en inledande synkronisering, där det står hello-användare som är tilldelade i hello **användare och grupper** avsnittet frågar hello målprogrammet för dem och utför sedan hello etablering åtgärder som definierats i hello Azure AD **mappningar** avsnitt. Under den här processen lagrar hello etableras cachelagrade data om vilka användarkonton som hanteras så att icke-hanterade konton i hello målprogram som fanns inte i omfånget för tilldelning inte påverkas av avetablering åtgärder. När hello synkroniseras inledande synkronisering, hello etableras automatiskt användar- och gruppobjekt på tio minuter.
 
-Ändra den **Status för etablering** till **av** bara pausar tjänsten etablering. I det här tillståndet Azure inte skapa, uppdatera eller ta bort användare eller gruppobjekt i appen. Ändra tillståndet till på gör att tjänsten ska ta vid där den avbröts.
+Ändra hello **Status för etablering** för**av** bara pausar hello etablering service. I det här tillståndet Azure inte skapa, uppdatera eller ta bort användare eller gruppobjekt i hello app. Om du ändrar hello tillstånd tillbaka tooon resulterar hello service toopick där den avbröts.
 
-Att välja den **Rensa aktuell status och starta om synkroniseringen** kryssrutan och spara stoppar tjänsten etablering Dumpar cachelagrade data om vilka Azure AD-konton som hanterar, startar om tjänsterna och utför den inledande synkroniseringen igen. Det här alternativet kan administratörer att starta etableringsprocessen distribution över igen.
+Du väljer hello **Rensa aktuell status och starta om synkroniseringen** kryssrutan och spara stoppar Hej etablering service, Dumpar hello cachelagrade data om vilka Azure AD-konton som hanterar, startar om hello tjänster och utför hello inledande synkroniseringen igen. Det här alternativet kan administratörer toostart hello etablering distributionsprocessen över igen.
 
 ### <a name="synchronization-details"></a>Information om synkronisering
-Det här avsnittet innehåller ytterligare information om driften av tjänsten etablering, inklusive de första och sista etablering tjänsten har körts för programmet och hur många användare och gruppobjekt som hanteras.
+Det här avsnittet innehåller ytterligare information om hello driften av hello etableras, inklusive hello första och sista gånger hello etablering tjänsten kördes mot hello program och hur många objekt för användare och grupper hanteras.
 
-Länkar som den **etablering aktivitetsrapport**, som innehåller en logg över alla användare och grupper som skapas, uppdateras och tas bort mellan Azure AD och målprogrammet, och den **etablering felrapporten** som ger mer detaljerade felmeddelanden för användare och gruppobjekt som inte kunde läsas, skapas, uppdateras eller tas bort. 
+Länkar finns toohello **etablering aktivitetsrapport**, som innehåller en logg över alla användare och grupper som skapas, uppdateras och tas bort mellan Azure AD och hello målprogrammet och toohello **etablering fel rapporten** som ger mer detaljerade felmeddelanden för användare och grupp objekt som misslyckade toobe läsa, skapa, uppdateras eller tas bort. 
 
 ##<a name="feedback"></a>Feedback
 
-Vi hoppas att du som din Azure AD-upplevelse. Skriv ned feedback kommer! Publicera din feedback och förslag på förbättringar i den **administrationsportalen** avsnitt i vår [Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Vi få är taggade om hur du skapar nya nya produkter varje dag, och använda din vägledning för att formen och definiera vad vi bygga härnäst.
+Vi hoppas att du som din Azure AD-upplevelse. Skriv ned hello feedback kommer! Publicera din feedback och förslag på förbättringar i hello **administrationsportalen** avsnitt i vår [Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal).  Vi få är taggade om hur du skapar nya nya produkter varje dag, och använda vägledning-tooshape och definiera vad vi bygga härnäst.
 
 
 [0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-blade.PNG
