@@ -1,6 +1,6 @@
 ---
-title: "Vanliga frågor och svar om Azure Backup | Microsoft Docs"
-description: "Svar på vanliga frågor om: Azure Backup-funktioner inklusive Recovery Services-valvet, vad du kan säkerhetskopiera, hur det fungerar, kryptering och gränser. "
+title: "aaaAzure säkerhetskopiering vanliga frågor och svar | Microsoft Docs"
+description: "Svar på toocommon frågor om: Azure Backup-funktioner inklusive återställningstjänster valv, den kan säkerhetskopiera upp, hur det fungerar, kryptering och gränser. "
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;
-ms.openlocfilehash: 62ca4e395a7390c57b46c548395333283a06c21a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3338f7620bcc6ebf53c9c161191f2d8bca1a29da
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="questions-about-the-azure-backup-service"></a>Frågor om Azure Backup-tjänsten
-Den här artikeln har avsnitt med svar på vanliga frågor så att du snabbt kan förstå hur Azure Backup-komponenterna fungerar. I vissa svar finns det länkar till artiklar som har omfattande information. Du kan ställa frågor om Azure Backup genom att klicka på **Kommentarer** (till höger). Kommentarerna visas längst ned i den här artikeln. Ett Livefyre-konto krävs för att lämna kommentarer. Du kan också ställa frågor om Azure Backup-tjänsten i [diskussionsforumet](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+# <a name="questions-about-hello-azure-backup-service"></a>Frågor om hello Azure Backup-tjänsten
+Den här artikeln innehåller svar toocommon frågor toohelp du snabbt kan förstå hello Azure Backup-komponenter. I vissa hello-svar finns länkar toohello artiklar som har omfattande information. Du kan ställa frågor om Azure Backup genom att klicka på **kommentarer** (toohello till höger). Kommentarerna visas längst ned hello i den här artikeln. Ett Livefyre konto är obligatoriskt toocomment. Du kan också ställa frågor om hello Azure Backup-tjänsten i hello [diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
-Om du snabbt vill titta igenom avsnitten i denna artikel kan du använda länkarna till höger, under **Innehåll i artikeln**.
+tooquickly genomsökning hello avsnitt i den här artikeln använder hello länkar toohello höger under **i den här artikeln**.
 
 
 ## <a name="recovery-services-vault"></a>Recovery Services-valv
 
-### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>Finns det någon gräns för antalet valv som kan skapas i varje Azure-prenumeration? <br/>
-Ja. Från och med september 2016 kan du skapa 25 Recovery Services- eller säkerhetskopieringsvalv per prenumeration. Du kan skapa upp till 25 Recovery Services-valv för varje Azure Backup-region som stöds per prenumeration. Om du behöver fler valv skapar du ytterligare en prenumeration.
+### <a name="is-there-any-limit-on-hello-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>Finns det någon gräns för hello antalet valv som kan skapas i varje Azure-prenumeration? <br/>
+Ja. Från och med september 2016 kan du skapa 25 Recovery Services- eller säkerhetskopieringsvalv per prenumeration. Du kan skapa upp too25 återställningstjänster valv per stöds region för Azure Backup per prenumeration. Om du behöver fler valv skapar du ytterligare en prenumeration.
 
-### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Finns det några begränsningar för hur många servrar/datorer som kan registreras mot varje valv? <br/>
-Ja, du kan registrera upp till 50 datorer per valv. För virtuella Azure IaaS-datorer är gränsen 200 virtuella datorer per valv. Om du behöver registrera fler datorer skapar du ett till valv.
+### <a name="are-there-limits-on-hello-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Finns det någon gräns på hello många servrar/datorer som kan registreras mot varje valvet? <br/>
+Ja, kan du registrera dig too50 datorer per valvet. För Azure IaaS-virtuella datorer är hello gränsen 200 virtuella datorer per valvet. Om du behöver tooregister flera datorer, kan du skapa ett annat valv.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Min organisation har ett valv. Hur kan jag isolera en servers data från en annan server när jag återställer data?<br/>
-Alla servrar som är registrerade för samma valv kan återställa data som säkerhetskopierats av andra servrar *som använder samma lösenfras*. Om du vill isolera säkerhetskopierade data på en server från andra servrar i organisationen kan du använda en annan lösenfras för dessa servrar. HR-servrarna kan till exempel använda en krypteringslösenfras, redovisningsservrarna en annan och lagringsservrar en tredje.
+Alla servrar som är registrerade toohello samma valvet kan återställa hello data som säkerhetskopieras av andra servrar *som använder hello samma lösenfras*. Om du har servrar vars säkerhetskopierade data du vill tooisolate från andra servrar i din organisation använder en lösenfras som är avsedda för dessa servrar. HR-servrarna kan till exempel använda en krypteringslösenfras, redovisningsservrarna en annan och lagringsservrar en tredje.
 
 ### <a name="can-i-migrate-my-backup-data-or-vault-between-subscriptions-br"></a>Kan jag ”migrera” mina säkerhetskopierade data eller mitt säkerhetskopierade valv mellan prenumerationer? <br/>
-Nej. Valvet skapas på prenumerationsnivå och kan inte tilldelas en annan prenumeration när det har skapats.
+Nej. hello valvet har skapats på en prenumerationsnivå och kan inte omtilldelas tooanother prenumeration när den har skapats.
 
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-classic-mode-still-supported-br"></a>Recovery Services-valv är baserade på resurshanteraren. Stöds säkerhetskopieringsvalv (klassiskt läge) fortfarande? <br/>
-Alla befintliga säkerhetskopieringsvalv i den [klassiska portalen](https://manage.windowsazure.com) stöds även i fortsättningen. Du kan dock inte längre använda den klassiska portalen för att distribuera nya säkerhetskopieringsvalv. Microsoft rekommenderar att du skapar Recovery Services-valv för alla distributioner, eftersom framtida förbättringar endast kommer att gälla för Recovery Services-valv. Om du försöker skapa ett säkerhetskopieringsvalv i den klassiska portalen omdirigeras du till [Azure Portal](https://portal.azure.com).
+Alla befintliga säkerhetskopieringsvalv i hello [klassiska portalen](https://manage.windowsazure.com) fortsätta toobe som stöds. Du kan inte längre använda hello klassiska portal toodeploy nya säkerhetskopieringsvalv. Microsoft rekommenderar att du använder Recovery Services-valv för alla distributioner eftersom framtida förbättringar gäller tooRecovery Services valv, endast. Om du försöker toocreate ett säkerhetskopieringsvalv i hello klassiska portal kommer du att omdirigerade toohello [Azure-portalen](https://portal.azure.com).
 
-### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>Kan jag migrera ett Backup-valv till ett Recovery Services-valv? <br/>
-Nej, tyvärr. Du kan inte migrera innehållet i ett Backup-valv till ett Recovery Services-valv. Vi arbetar med att lägga till den här funktionen, men den är inte tillgänglig för närvarande.
+### <a name="can-i-migrate-a-backup-vault-tooa-recovery-services-vault-br"></a>Kan jag migrera en Backup-valvet tooa Recovery Services-valvet? <br/>
+Tyvärr Nej, kan inte du migrera hello innehållet i en Backup-valvet tooa Recovery Services-valvet. Vi arbetar med att lägga till den här funktionen, men den är inte tillgänglig för närvarande.
 
-### <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Jag har säkerhetskopierat mina klassiska virtuella datorer i ett säkerhetskopieringsvalv. Kan jag migrera mina virtuella datorer från klassiskt läge till Resource Manager-läge och skydda dem i ett Recovery Services-valv?
-Återställningspunkter för klassiska virtuella datorer i ett säkerhetskopieringsvalv migreras inte automatiskt till ett Recovery Services-valv när du flyttar den virtuella datorn från klassiskt läge till Resource Manager-läge. Överför dina VM-säkerhetskopior genom att följa dessa anvisningar:
+### <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-tooresource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Jag har säkerhetskopierat mina klassiska virtuella datorer i ett säkerhetskopieringsvalv. Kan jag migrera Mina virtuella datorer från klassiskt läge tooResource Manager läge och skydda dem i ett Recovery Services-valv?
+Klassiska Virtuella återställningspunkter i ett säkerhetskopieringsvalv migrerar inte tooa Recovery Services-valvet automatiskt när du flyttar hello VM från klassiska tooResource Manager-läget. Följ dessa steg tootransfer VM-säkerhetskopieringar:
 
-1. I säkerhetskopieringsvalvet går du till fliken **Skyddade objekt** och väljer den virtuella datorn. Klicka på [Stoppa skydd](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines). Lämna alternativet *Ta bort associerade säkerhetskopieringsdata* **avmarkerat**.
-2. Ta bort tillägget för säkerhetskopiering/ögonblicksbild från den virtuella datorn.
-3. Migrera den virtuella datorn från klassiskt läge till Resource Manager-läge. Kontrollera att lagrings- och nätverksinformationen för den virtuella datorn också migreras till Resource Manager-läge.
-4. Skapa ett Recovery Services-valv och konfigurera säkerhetskopiering på den migrerade virtuella datorn med åtgärden **Backup** på valvets instrumentpanel. Detaljerad information om hur du säkerhetskopierar en virtuell dator till ett Recovery Services-valv finns i artikeln [Skydda virtuella datorer i Azure med ett Recovery Services-valv](backup-azure-vms-first-look-arm.md).
+1. Hello Backup-valvet, gå toohello **skyddade objekt** fliken och markera hello VM. Klicka på [Stoppa skydd](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines). Lämna alternativet *Ta bort associerade säkerhetskopieringsdata* **avmarkerat**.
+2. Ta bort hello säkerhetskopiering/ögonblicksbild tillägg från hello VM.
+3. Migrera hello virtuell dator från klassiskt läge tooResource Manager läge. Kontrollera att hello lagring och nätverk information motsvarande toohello virtuell dator är också migreras tooResource Manager-läget.
+4. Skapa ett Recovery Services-valvet och konfigurera säkerhetskopiering på hello migrerade virtuella datorn med hjälp av **säkerhetskopiering** åtgärd ovanpå valvet instrumentpanelen. Detaljerad information om säkerhetskopiering av en VM tooa Recovery Services valvet, finns hello artikeln [skydda virtuella Azure-datorer med ett Recovery Services-valv](backup-azure-vms-first-look-arm.md).
 
 ## <a name="azure-backup-agent"></a>Azure Backup-agent
 En detaljerad lista med frågor finns i [vanliga frågor och svar om säkerhetskopiering av Azure-filmappen](backup-azure-file-folder-backup-faq.md)
@@ -63,40 +63,40 @@ En detaljerad lista med frågor finns i avsnittet [Vanliga frågor och svar om s
 
 ## <a name="back-up-vmware-servers"></a>Säkerhetskopiera VMware-servrar
 
-### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>Kan jag säkerhetskopiera VMware vCenter-servrar till Azure?
+### <a name="can-i-back-up-vmware-vcenter-servers-tooazure"></a>Kan jag säkerhetskopiera VMware vCenter-servrar tooAzure?
 
-Ja. Du kan använda Azure Backup Server för att säkerhetskopiera VMware vCenter och ESXi till Azure. Information om VMware-versionen som stöds finns i artikeln om [Azure Backup Server-skyddsmatrisen](backup-mabs-protection-matrix.md). Stegvisa instruktioner finns i artikeln om att [använda Azure Backup Server för att säkerhetskopiera en VMware-server](backup-azure-backup-server-vmware.md).
+Ja. Du kan använda Azure Backup Server tooback VMware vCenter-och ESXi tooAzure. Information om hello stöds VMware version finns hello artikel [Azure Backup Server protection matrisen](backup-mabs-protection-matrix.md). Stegvisa instruktioner finns [Använd Azure Backup Server tooback in en VMware-server](backup-azure-backup-server-vmware.md).
 
 
 ## <a name="azure-backup-server-and-system-center-data-protection-manager"></a>Azure Backup Server och System Center Data Protection Manager
-### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Kan jag använda Azure Backup Server för att skapa en BMR-säkerhetskopia (Bare Metal Recovery) för en fysisk server? <br/>
+### <a name="can-i-use-azure-backup-server-toocreate-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Kan jag använda Azure Backup-Server toocreate en Bare Metal Recovery (BMR) säkerhetskopia för en fysisk server? <br/>
 Ja.
 
-### <a name="can-i-register-my-dpm-server-to-multiple-vaults-br"></a>Kan jag registrera min DPM-server för flera valv? <br/>
-Nej. En DPM- eller MABS-server kan bara registreras för ett enda valv.
+### <a name="can-i-register-my-dpm-server-toomultiple-vaults-br"></a>Kan jag registrera min toomultiple valv för DPM-servern? <br/>
+Nej. En server med DPM eller MABS kan vara registrerade tooonly en valvet.
 
 ### <a name="which-version-of-system-center-data-protection-manager-is-supported-br"></a>Vilken version av System Center Data Protection Manager stöds? <br/>
-Vi rekommenderar att du installerar den [senaste](http://aka.ms/azurebackup_agent) Azure Backup-agenten med den senaste samlade uppdateringen (UR) för System Center Data Protection Manager (DPM). Från och med augusti 2016 är Samlad uppdatering 11 den senaste uppdateringen.
+Vi rekommenderar att du installerar hello [senaste](http://aka.ms/azurebackup_agent) Azure Backup-agenten på hello senaste samlade uppdateringen (UR) för System Center Data Protection Manager (DPM). Från och med augusti 2016 är Update Rollup 11 hello senaste uppdateringen.
 
-### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-now-install-system-center-dpm-to-work-with-azure-backup-agent-to-protect-on-premises-applicationvm-workloads-to-azure-br"></a>Jag har installerat Azure Backup-agenten för att skydda mina filer och mappar. Kan jag nu installera System Center DPM för användning med Azure Backup-agenten om jag vill skydda lokala program/VM-arbetsbelastningar i Azure? <br/>
-Om du vill använda Azure Backup med System Center Data Protection Manager (DPM) installerar du först DPM och sedan Azure Backup-agenten. Genom att installera Azure Backup-komponenterna i den här ordningen säkerställer du att Azure Backup-agenten fungerar med DPM. Installera inte Azure Backup-agenten innan du installerar DPM. Detta varken rekommenderas eller stöds.
+### <a name="i-have-installed-azure-backup-agent-tooprotect-my-files-and-folders-can-i-now-install-system-center-dpm-toowork-with-azure-backup-agent-tooprotect-on-premises-applicationvm-workloads-tooazure-br"></a>Jag har installerat Azure Backup agent tooprotect Mina filer och mappar. Kan jag nu installera System Center DPM toowork med Azure Backup agent tooprotect lokala program och VM-arbetsbelastningar tooAzure? <br/>
+toouse Azure Backup med System Center Data Protection Manager (DPM), installera DPM först och sedan installera Azure Backup-agenten. Installera hello Azure Backup-komponenter i den här ordningen säkerställer hello Azure Backup-agenten fungerar med DPM. Hello Azure Backup agent installeras innan du installerar DPM är inte bäst eller så stöds.
 
 
 ## <a name="how-azure-backup-works"></a>Så här fungerar Azure Backup
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted-br"></a>Tas säkerhetskopierade data som redan har överförts bort om jag avbryter ett säkerhetskopieringsjobb som redan har startat? <br/>
-Nej. Alla data som har överförts till valvet innan säkerhetskopieringen avbröts finns kvar i valvet. Azure Backup använder en kontrollpunktsmekanism för att då och då lägga till kontrollpunkter till säkerhetskopierade data under säkerhetskopieringen. Eftersom det finns kontrollpunkter i säkerhetskopian kan nästa säkerhetskopiering validera filernas integritet. Nästa säkerhetskopieringsjobb är en inkrementell säkerhetskopiering mot tidigare säkerhetskopierade data. Vid inkrementella säkerhetskopieringar överförs bara nya eller ändrade data, vilket innebär att bandbredden utnyttjas bättre.
+### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-hello-transferred-backup-data-deleted-br"></a>Om jag avbryter en säkerhetskopiering när den har startat hello överförda säkerhetskopieringsdata raderas? <br/>
+Nej. Alla data som överförs till hello valvet innan hello säkerhetskopieringsjobbet avbröts förblir i hello-valvet. Azure Backup använder en kontrollpunkt mekanism toooccasionally lägga till kontrollpunkter toohello säkerhetskopierade data under hello säkerhetskopiering. Eftersom det finns kontrollpunkter i hello säkerhetskopieringsdata Validera hello nästa säkerhetskopieringsprocessen hello integriteten hos hello-filer. hello nästa säkerhetskopieringsjobb kommer att inkrementella toohello data som tidigare har säkerhetskopierat. Inkrementella säkerhetskopieringar Överför bara nya eller ändrade data som är lika toobetter utnyttjande av bandbredd.
 
-Om du avbryter ett säkerhetskopieringsjobb för en virtuella Azure-dator ignoreras alla överförda data. Nästa säkerhetskopieringsjobb överför inkrementella data från det senaste lyckade säkerhetskopieringsjobbet.
+Om du avbryter ett säkerhetskopieringsjobb för en virtuella Azure-dator ignoreras alla överförda data. hello nästa säkerhetskopieringsjobb överför inkrementella data från hello senaste lyckade säkerhetskopieringsjobb.
 
 ### <a name="are-there-limits-on-when-or-how-many-times-a-backup-job-can-be-scheduledbr"></a>Finns det någon gräns för när eller hur många gånger ett säkerhetskopieringsjobb kan schemaläggas?<br/>
-Ja. Du kan köra säkerhetskopieringsjobb på Windows Server eller Windows-arbetsstationer upp till tre gånger per dag. Du kan köra säkerhetskopieringsjobb i System Center DPM upp till två gånger om dagen. Du kan köra ett säkerhetskopieringsjobb för virtuella IaaS-datorer en gång om dagen. Du kan använda schemaläggningsprincipen för Windows Server eller Windows-arbetsstationen för att ange dagliga och veckovisa scheman. Med System Center DPM kan du definiera dags-, vecko-, månads- och årsscheman.
+Ja. Du kan köra säkerhetskopieringsjobb på Windows Server eller Windows-arbetsstationer in toothree tider / dag. Du kan köra säkerhetskopieringsjobb på System Center DPM in tootwice per dag. Du kan köra ett säkerhetskopieringsjobb för virtuella IaaS-datorer en gång om dagen. Du kan använda hello schemalägger princip för Windows Server eller Windows-arbetsstation toospecify dagliga och veckovisa scheman. Med System Center DPM kan du definiera dags-, vecko-, månads- och årsscheman.
 
-### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Varför är storleken på data som överförs till Recovery Services-valvet mindre än de data jag säkerhetskopierar?<br/>
- Alla de data som säkerhetskopieras från Azure Backup Agent, SCDPM eller Azure Backup Server komprimeras och krypteras innan de överförs. När komprimering och kryptering tillämpats är storleken på data i säkerhetskopieringsvalvet 30–40 % mindre.
+### <a name="why-is-hello-size-of-hello-data-transferred-toohello-recovery-services-vault-smaller-than-hello-data-i-backed-upbr"></a>Varför är hello storleken på hello data som överförs toohello Recovery Services-valvet mindre än hello data I säkerhetskopierade?<br/>
+ Alla hello-data som har säkerhetskopierats från Azure Backup-agenten eller SCDPM eller Azure Backup Server, komprimeras och krypteras innan de överförs. När hello komprimering och kryptering används är hello data i hello säkerhetskopieringsvalvet 30-40% mindre.
 
 ## <a name="what-can-i-back-up"></a>Vad kan jag säkerhetskopiera
 ### <a name="which-operating-systems-do-azure-backup-support-br"></a>Vilka operativsystem stöder Azure Backup? <br/>
-Azure Backup stöder följande lista över operativsystem för säkerhetskopiering av filer och mappar, och arbetsbelastningsprogram som skyddas med Azure Backup Server och System Center Data Protection Manager (DPM).
+Azure Backup stöder följande lista över operativsystem för att säkerhetskopiera hello: filer och mappar och arbetsbelastningen program som skyddas med Azure Backup Server och System Center Data Protection Manager (DPM).
 
 | Operativsystem | Plattform | SKU |
 |:--- | --- |:--- |
@@ -116,12 +116,12 @@ Azure Backup stöder följande lista över operativsystem för säkerhetskopieri
 
 **Säkerhetskopiering av virtuell Azure-dator:**
 
-* **Linux**: Azure Backup stöder [en lista över distributioner som godkänts av Azure](../virtual-machines/linux/endorsed-distros.md) med undantag för Core OS Linux.  Andra Bring-Your-Own-Linux-distributioner kan också fungera så länge som den virtuella datoragenten är tillgänglig på den virtuella datorn och stöd för Python finns.
+* **Linux**: Azure Backup stöder [en lista över distributioner som godkänts av Azure](../virtual-machines/linux/endorsed-distros.md) med undantag för Core OS Linux.  Andra Bring-Your-äger-Linux-distributioner kan också fungera så länge hello VM agent är tillgänglig på den virtuella datorn hello och stöd för Python finns.
 * **Windows Server**: versioner som är äldre än Windows Server 2008 R2 stöds inte.
 
 
-### <a name="is-there-a-limit-on-the-size-of-each-data-source-being-backed-up-br"></a>Finns det någon storleksgräns för en datakälla som säkerhetskopieras? <br/>
-Det finns ingen gräns för hur mycket data du kan säkerhetskopiera till ett valv. Azure Backup begränsar den största storleken för datakällan. Dessa gränser är dock stora. Från och med augusti 2015 är den största storleken för en datakälla för operativsystem som stöds:
+### <a name="is-there-a-limit-on-hello-size-of-each-data-source-being-backed-up-br"></a>Finns det en gräns för hello storleken för varje datakälla som säkerhetskopieras? <br/>
+Det finns ingen gräns på hello mängden data som du kan säkerhetskopiera tooa valvet. Azure-säkerhetskopiering begränsar hello maxstorleken för hello datakällan, men dessa gränser är stora. Från och med augusti 2015 är hello maximala storleken för en datakälla för hello stöds operativsystem:
 
 | Nr | Operativsystem | Största storlek på datakälla |
 |:---:|:--- |:--- |
@@ -130,56 +130,56 @@ Det finns ingen gräns för hur mycket data du kan säkerhetskopiera till ett va
 | 3 |Windows Server 2008, Windows Server 2008 R2 |1 700 GB |
 | 4 |Windows 7 |1 700 GB |
 
-Följande tabell beskriver hur datakällans storlek bestäms.
+hello i den följande tabellen beskrivs hur varje datakällans storlek bestäms.
 
 | Datakälla | Detaljer |
 |:---:|:--- |
-| Volym |Mängden data som säkerhetskopieras från en enskild volym på en server eller klientdator |
-| Virtuell Hyper-V-dator |Summan av data på alla virtuella hårddiskar på den virtuella datorn som säkerhetskopieras |
+| Volym |hello mängden data som säkerhetskopieras från enkel volym på en server eller klient-dator |
+| Virtuell Hyper-V-dator |Summan av data för alla hello virtuella hårddiskar för hello virtuella datorn säkerhetskopieras |
 | Microsoft SQL Server-databas |Storleken på en enskild SQL-databas som säkerhetskopieras |
-| Microsoft SharePoint |Summan av innehållet och konfigurationsdatabaserna i en SharePoint-servergrupp som säkerhetskopieras |
+| Microsoft SharePoint |Summan av hello innehåll och konfiguration databaser i en SharePoint-servergruppen säkerhetskopieras |
 | Microsoft Exchange |Summan av alla Exchange-databaser på en Exchange-server som säkerhetskopieras |
-| BMR/systemtillstånd |Varje enskild kopia av BMR eller systemtillstånd på datorn som säkerhetskopieras |
+| BMR/systemtillstånd |Varje enskild kopia av BMR eller systemtillstånd för hello datorn säkerhetskopieras |
 
-Varje virtuell dator kan ha upp till 16 datadiskar med varje datadisk som har storleken 1 023 GB eller mindre för virtuell Azure-säkerhetskopiering. 
+För Virtuella Azure-säkerhetskopiering, kan varje virtuell dator har in too16 datadiskar med varje data disk som storlek 1 023 GB eller mindre. 
 
 ## <a name="retention-policy-and-recovery-points"></a>Bevarandeprincip och återställningspunkter
-### <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>Finns det någon skillnad mellan bevarandeprincipen för DPM och Windows Server/Windows-klienten (dvs. på Windows Server utan DPM)?<br/>
+### <a name="is-there-a-difference-between-hello-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>Det är skillnad mellan hello bevarandeprincip för DPM och Windows-servern eller-klienten (det vill säga på Windows Server utan DPM)?<br/>
 Ingen, både DPM och Windows Server/Windows-klienten har dagliga, veckovisa, månatliga och årliga bevarandeprinciper.
 
 ### <a name="can-i-configure-my-retention-policies-selectively--ie-configure-weekly-and-daily-but-not-yearly-and-monthlybr"></a>Kan jag konfigurera mina bevarandeprinciper selektivt, dvs. konfigurera veckovisa och dagliga men inte årliga och månatliga?<br/>
-Ja, bevarandestrukturen i Azure Backup är mycket flexibel och du kan definiera bevarandeprincipen efter dina behov.
+Ja, hello Azure Backup kvarhållning strukturen kan du toohave fullständig flexibilitet för att definiera hello bevarandeprincip enligt dina krav.
 
 ### <a name="can-i-schedule-a-backup-at-6pm-and-specify-retention-policies-at-a-different-timebr"></a>Kan jag ”schemalägga en säkerhetskopiering” kl. 18:00 och ange bevarandeprinciper vid en annan tidpunkt?<br/>
-Nej. Bevarandeprinciper kan bara användas med säkerhetskopieringspunkter. I följande bild har bevarandeprincipen angetts för säkerhetskopieringar som körs kl. 12:00 och 18:00. <br/>
+Nej. Bevarandeprinciper kan bara användas med säkerhetskopieringspunkter. I följande bild hello, har hello bevarandeprincip angetts för säkerhetskopieringar som utförts på 12: 00 och 18: 00. <br/>
 
 ![Schemalägg säkerhetskopiering och kvarhållning](./media/backup-azure-backup-faq/Schedule.png)
 <br/>
 
-### <a name="if-a-backup-is-retained-for-a-long-duration-does-it-take-more-time-to-recover-an-older-data-point-br"></a>Tar det längre tid att återställa en äldre datapunkt om en säkerhetskopia bevaras under lång tid? <br/>
-Nej. Det tar lika lång tid att återställa den äldsta och den senaste punkten. Varje återställningspunkt beter sig som en fullständig punkt.
+### <a name="if-a-backup-is-retained-for-a-long-duration-does-it-take-more-time-toorecover-an-older-data-point-br"></a>Om en säkerhetskopia sparas för en lång tid tar det mer tid toorecover ett äldre datapunkt? <br/>
+Hello tid toorecover hello äldsta eller hello senaste punkt är Nej – hello samma. Varje återställningspunkt beter sig som en fullständig punkt.
 
-### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storagebr"></a>Om varje återställningspunkt fungerar som en fullständig punkt, påverkas i så fall den totalt fakturerbara lagringen av säkerhetskopior?<br/>
-Typiska produkter för långsiktiga kvarhållningspunkter lagrar säkerhetskopierade data som fullständiga punkter. De fullständiga punkterna är *ineffektiva* ur lagringssynvinkel men är enklare och snabbare att återställa. Inkrementella kopior är *lagringseffektiva* men kräver att du återställer en kedja med data som påverkar återställningstiden. Azure Backup-lagringsarkitekturen ger dig det bästa av två världar genom att lagra data för snabb återställning till låga lagringskostnader. Den här datalagringsmetoden säkerställer att den in- och utgående bandbredden används effektivt. Både mängden datalagring och tiden som krävs för att återställa data hålls nere på ett minimum. Läs mer om vad som gör [inkrementell säkerhetskopiering](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/) effektiv.
+### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-hello-total-billable-backup-storagebr"></a>Påverkar den hello totala fakturerbar säkerhetskopieringslagring om varje återställningspunkt som en fullständig plats?<br/>
+Typiska produkter för långsiktiga kvarhållningspunkter lagrar säkerhetskopierade data som fullständiga punkter. hello fullständig punkter är lagring *ineffektiv* men är enklare och snabbare toorestore. Inkrementell kopiorna är lagring *effektivt* men kräver toorestore en kedja av data, vilket påverkar tiden för återställning. Azure Backup storage-arkitektur ger du hello bäst hos båda genom att lagra data för snabb återställning och medför låg lagringskostnader optimalt. Den här datalagringsmetoden säkerställer att den in- och utgående bandbredden används effektivt. Både hello tidsperiod data lagring och hello behövs toorecover hello data, behålls tooa minsta. Läs mer om vad som gör [inkrementell säkerhetskopiering](https://azure.microsoft.com/blog/microsoft-azure-backup-save-on-long-term-storage/) effektiv.
 
-### <a name="is-there-a-limit-on-the-number-of-recovery-points-that-can-be-createdbr"></a>Finns det någon gräns för antalet återställningspunkter som kan skapas?<br/>
-Du kan skapa upp till 9999 återställningspunkter per skyddad instans. En skyddad instans är en dator eller server (fysisk eller virtuell) eller en arbetsbelastning som konfigurerats för att säkerhetskopiera data till Azure. Mer information finns i [Säkerhetskopiering och kvarhållning](./backup-introduction-to-azure-backup.md#backup-and-retention) och [Vad är en skyddad instans?](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)
+### <a name="is-there-a-limit-on-hello-number-of-recovery-points-that-can-be-createdbr"></a>Finns det en gräns på hello antal återställningspunkter som kan skapas?<br/>
+Du kan skapa upp too9999 återställningspunkter per skyddad instans. Skyddade instansen är en dator, server (fysiska eller virtuella) eller arbetsbelastning konfigurerad tooback upp data tooAzure. Mer information finns i hello förklaringar av [säkerhetskopiering och kvarhållning](./backup-introduction-to-azure-backup.md#backup-and-retention), och [vad är en skyddad instans](./backup-introduction-to-azure-backup.md#what-is-a-protected-instance)?
 
-### <a name="how-many-recoveries-can-i-perform-on-the-data-that-is-backed-up-to-azurebr"></a>Hur många återställningar kan jag göra av data som säkerhetskopierats till Azure?<br/>
-Det finns ingen gräns för antalet återställningar från Azure Backup.
+### <a name="how-many-recoveries-can-i-perform-on-hello-data-that-is-backed-up-tooazurebr"></a>Hur många återställningar kan utföra på hello data som säkerhetskopieras tooAzure?<br/>
+Det finns ingen gräns för hello antalet återställningar från Azure Backup.
 
-### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure-br"></a>Betalar jag för den utgående trafiken från Azure när jag återställer data? <br/>
-Nej. Återställningarna är gratis och du debiteras inte för den utgående trafiken.
+### <a name="when-restoring-data-do-i-pay-for-hello-egress-traffic-from-azure-br"></a>När du återställer data betalar jag för hello utgående trafik från Azure? <br/>
+Nej. Din återställningar är ledigt och du debiteras inte för hello utgående trafik.
 
 ## <a name="azure-backup-encryption"></a>Azure Backup-kryptering
-### <a name="is-the-data-sent-to-azure-encrypted-br"></a>Krypteras informationen som skickas till Azure? <br/>
-Ja. Data krypteras på den lokala server-/klient-/SCDPM-datorn med hjälp av AES256 och informationen skickas via en säker HTTPS-anslutning.
+### <a name="is-hello-data-sent-tooazure-encrypted-br"></a>Hello data skickas tooAzure krypteras? <br/>
+Ja. Data krypteras hello lokalt SCDPM-server/klient datorn med AES256 och hello data skickas via en säker HTTPS-länk.
 
-### <a name="is-the-backup-data-on-azure-encrypted-as-wellbr"></a>Är säkerhetskopierade data i Azure också krypterade?<br/>
-Ja. Data som skickas till Azure förblir krypterade (i vila). Microsoft dekrypterar aldrig dina säkerhetskopierade data. När du säkerhetskopierar en virtuell Azure-dator använder Azure Backup kryptering för den virtuella datorn. Om den virtuella datorn till exempel har krypterats med Azure Disk Encryption, eller en annan krypteringsteknik, använder Azure Backup den krypteringen för att skydda dina data.
+### <a name="is-hello-backup-data-on-azure-encrypted-as-wellbr"></a>Är hello säkerhetskopierade data i Azure krypteras samt?<br/>
+Ja. hello data skickas tooAzure förblir krypterade (vilande). Microsoft dekrypterar inte hello säkerhetskopierade data när som helst. När du säkerhetskopierar en Azure VM använder Azure Backup kryptering av hello virtuell dator. Till exempel om den virtuella datorn är krypterad med hjälp av Azure Disk Encryption eller någon annan krypteringsteknik, använder Azure Backup den kryptering toosecure dina data.
 
-### <a name="what-is-the-minimum-length-of-encryption-key-used-to-encrypt-backup-data-br"></a>Vilken är den minsta längden på krypteringsnyckeln som används för att kryptera säkerhetskopierade data? <br/>
-Krypteringsnyckeln ska innehålla minst 16 tecken när du använder Azure-säkerhetskopieringsagenten. För virtuella Azure-datorer finns det ingen begränsning av längden på de nycklar som används av Azure KeyVault. 
+### <a name="what-is-hello-minimum-length-of-encryption-key-used-tooencrypt-backup-data-br"></a>Vad hello minsta längd på krypteringsnyckel används tooencrypt säkerhetskopierade data? <br/>
+hello krypteringsnyckeln ska vara på minst 16 tecken när du använder Azure backup-agenten. Det finns ingen gräns toolength av nycklar som används av Azure KeyVault för virtuella Azure-datorer. 
 
-### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-or-can-microsoft-recover-the-data-br"></a>Vad händer om jag tappar bort krypteringsnyckeln? Kan jag (eller Microsoft) återställa mina data? <br/>
-Nyckeln som används för att kryptera säkerhetskopierade data finns bara hos kunden. Microsoft sparar ingen kopia i Azure och har inte åtkomst till nyckeln. Om du tappar bort nyckeln kan inte Microsoft återställa dina säkerhetskopierade data.
+### <a name="what-happens-if-i-misplace-hello-encryption-key-can-i-recover-hello-data-or-can-microsoft-recover-hello-data-br"></a>Vad händer om jag misplace hello krypteringsnyckeln? Kan jag återställa hello data (eller) kan återställa Microsoft hello data? <br/>
+hello nyckel används tooencrypt hello säkerhetskopierade data finns bara lokalt hello kunden. Microsoft har inte en kopia i Azure och har inte någon toohello snabbtangent. Om hello kunden misplaces hello nyckel, återställa inte Microsoft hello säkerhetskopierade data.

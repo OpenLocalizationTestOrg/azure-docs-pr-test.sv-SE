@@ -1,5 +1,5 @@
 ---
-title: "Azure Batch uppgiften händelsen klar | Microsoft Docs"
+title: "aaa ”Azure Batch uppgiften complete-händelsen | Microsoft Docs ”"
 description: "Referens för Batch uppgiften complete-händelsen."
 services: batch
 author: tamram
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.openlocfilehash: 015adf7dbc47c29a78df4e4889b2ee1ddcccdd8e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c126bf897071c008be3d24190cf77bba5878b807
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="task-complete-event"></a>Fullständig händelseuppgiften
 
- Denna händelse genereras när en aktivitet har slutförts, oavsett slutkoden. Den här händelsen kan användas för att fastställa varaktigheten för en aktivitet där aktiviteten kördes och om den gjordes.
+ Denna händelse genereras när en aktivitet har slutförts, oavsett hello slutkod. Den här händelsen kan vara används toodetermine hello varaktighet för en aktivitet som hello uppgiften kördes och om den gjordes.
 
 
- I följande exempel visar innehållet i en aktivitet slutförts händelse.
+ hello visar följande exempel hello brödtexten i en aktivitet slutförts händelse.
 
 ```
 {
@@ -53,40 +53,40 @@ ms.lasthandoff: 07/11/2017
 
 |Elementnamn|Typ|Anteckningar|
 |------------------|----------|-----------|
-|JobId|Sträng|Id för jobbet som innehåller aktiviteten.|
-|id|Sträng|Id för aktiviteten.|
-|taskType|Sträng|Typ av uppgiften. Detta kan vara visar det är en projektaktivitet manager ' JobManager' eller 'User' som anger den inte är en projektaktivitet manager. Den här händelsen har inte genererats för jobbet förberedande uppgifter, versionen jobbuppgifter eller starta uppgifter.|
-|systemTaskVersion|Int32|Detta är räknaren interna försök för en uppgift. Internt kan Batch-tjänsten försöka med att en aktivitet för att tillfälligt problem. De här problemen kan innehålla interna schemaläggning fel eller försöker återställa från compute-noder i ett felaktigt tillstånd.|
-|[nodeInfo](#nodeInfo)|Komplex typ|Innehåller information om Beräkningsnoden där aktiviteten kördes.|
-|[multiInstanceSettings](#multiInstanceSettings)|Komplex typ|Anger att aktiviteten är en aktivitet för flera instanser som kräver flera compute-noder.  Se [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) mer information.|
-|[villkor](#constraints)|Komplex typ|Begränsningar för körning som gäller för den här uppgiften.|
-|[executionInfo](#executionInfo)|Komplex typ|Innehåller information om körning av uppgiften.|
+|JobId|Sträng|hello-id för hello jobb som innehåller hello aktiviteten.|
+|id|Sträng|hello-id för hello-aktivitet.|
+|taskType|Sträng|hello typ av uppgift som hello. Detta kan vara visar det är en projektaktivitet manager ' JobManager' eller 'User' som anger den inte är en projektaktivitet manager. Den här händelsen har inte genererats för jobbet förberedande uppgifter, versionen jobbuppgifter eller starta uppgifter.|
+|systemTaskVersion|Int32|Detta är hello interna försök räknare för en uppgift. Internt kan hello Batch-tjänsten försöka med att en uppgift tooaccount för tillfälliga problem. De här problemen kan innehålla interna schemaläggning fel eller försök toorecover från compute-noder i ett felaktigt tillstånd.|
+|[nodeInfo](#nodeInfo)|Komplex typ|Innehåller information om hello compute-nod på vilka hello uppgiften kördes.|
+|[multiInstanceSettings](#multiInstanceSettings)|Komplex typ|Anger hello aktiviteten är en aktivitet för flera instanser som kräver flera compute-noder.  Se [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) mer information.|
+|[villkor](#constraints)|Komplex typ|hello körning begränsningar som gäller toothis aktivitet.|
+|[executionInfo](#executionInfo)|Komplex typ|Innehåller information om hello körningen av hello-aktivitet.|
 
 ###  <a name="nodeInfo"></a>nodeInfo
 
 |Elementnamn|Typ|Anteckningar|
 |------------------|----------|-----------|
-|poolId|Sträng|Id för poolen som aktiviteten kördes.|
-|nodeId|Sträng|Id för noden som aktiviteten kördes.|
+|poolId|Sträng|hello-id för hello poolen på vilka hello uppgiften kördes.|
+|nodeId|Sträng|hello-id för hello nod på vilka hello uppgiften kördes.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings
 
 |Elementnamn|Typ|Anteckningar|
 |------------------|----------|-----------|
-|numberOfInstances|Int32|Antalet beräkningsnoder som uppgiften kräver.|
+|numberOfInstances|Int32|hello antal datornoderna krävs hello uppgiften.|
 
 ###  <a name="constraints"></a>villkor
 
 |Elementnamn|Typ|Anteckningar|
 |------------------|----------|-----------|
-|maxTaskRetryCount|Int32|Maximalt antal gånger uppgiften får köras på nytt. Batch-tjänsten försöker upprätta en uppgift om dess slutkod inte är noll.<br /><br /> Observera att det här värdet uttryckligen styr antalet försök. Batch-tjänsten försöker aktiviteten en gång och försök sedan upp till den här gränsen. Till exempel maximalt antal försök är 3, Batch försöker en aktivitet upp till gånger 4 (ett första försök och 3 försök).<br /><br /> Maximalt antal försök är 0, försök uppgifter inte igen av Batch-tjänsten.<br /><br /> Om det högsta antalet nya försök är -1, försöker Batch-tjänsten aktiviteter utan begränsning.<br /><br /> Standardvärdet är 0 (inga nya försök).|
+|maxTaskRetryCount|Int32|hello maximalt antal gånger hello uppgift får köras igen. hello Batch-tjänsten försöker upprätta en uppgift om dess slutkod inte är noll.<br /><br /> Observera att det här värdet uttryckligen styr hello antalet försök. hello Batch-tjänsten försöker hello aktiviteten en gång och försök sedan in toothis gränsen. Om hello högsta antal försök är 3, försöker Batch en uppgift upp too4 gånger (en inledande försök och 3 försök).<br /><br /> Om hello högsta antal försök är 0 hello Batch-tjänsten inte att försök uppgifter.<br /><br /> Om hello högsta antal försök är -1 försöker hello Batch-tjänsten aktiviteter utan begränsning.<br /><br /> hello standardvärdet är 0 (inga nya försök).|
 
 ###  <a name="executionInfo"></a>executionInfo
 
 |Elementnamn|Typ|Anteckningar|
 |------------------|----------|-----------|
-|startTime|Datum och tid|Den tid då aktiviteten startades. 'Körs' motsvarar den **kör** tillstånd, så om aktiviteten anger resursfiler eller programpaket, visar starttiden tidpunkten då aktiviteten startades hämtas eller distribution av dessa.  Om aktiviteten har startats om eller ett nytt försök, är det senaste tillfälle då aktiviteten startades.|
-|Sluttid|Datum och tid|Den tid då aktiviteten är slutförd.|
-|Slutkod|Int32|Slutkoden för aktiviteten.|
-|retryCount|Int32|Antal gånger som aktiviteten gjordes av Batch-tjänsten. Uppgiften försöks om avslutas med ett annat värde än noll slutkoden upp till den angivna MaxTaskRetryCount.|
-|requeueCount|Int32|Antalet gånger uppgiften har åter placerats i kö av Batch-tjänsten som ett resultat av en användarbegäran.<br /><br /> När användaren tar bort noder från en pool (genom att ändra storlek på eller minska storleken på poolen) eller när jobbet är inaktiverad, användaren kan ange att aktiviteter som körs på noderna vara placerats i kö för körning. Räknaren håller reda på hur många gånger uppgiften har åter placerats i kö av dessa skäl.|
+|startTime|Datum och tid|hello tid hello aktivitetsinformation började köras. 'Körs' motsvarar toohello **kör** tillstånd, så om hello aktivitet anger resursfiler eller programpaket, visar hello starttiden hello tid vid vilken hello uppgiften startas hämta eller distribution av dessa.  Om hello aktiviteten har startats om eller ett nytt försök, är hello senast vid vilka hello uppgiften har startats.|
+|endTime|Datum och tid|hello tid vid vilken hello uppgiften slutfördes.|
+|Slutkod|Int32|hello avslutningskoden hello-aktivitet.|
+|retryCount|Int32|hello antal gånger hello aktiviteten gjordes av hello Batch-tjänsten. hello uppgiften försöks om avslutas med slutkoden noll anges MaxTaskRetryCount in toohello.|
+|requeueCount|Int32|Hej antal gånger hello aktivitet har åter placerats i kö av hello Batch-tjänsten som hello resultatet av en användarbegäran.<br /><br /> När hello användaren tar bort noder från en pool (genom att ändra storlek på eller krympa hello pool) eller när hello jobbet är inaktiverad, hello användaren kan ange att köra uppgifter på hello noder vara placerats i kö för körning. Räknaren håller reda på hur många gånger hello aktivitet har åter placerats i kö av dessa skäl.|

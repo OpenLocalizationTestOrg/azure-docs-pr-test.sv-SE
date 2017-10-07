@@ -1,5 +1,5 @@
 ---
-title: "Självstudiekurs för Azure Container Service - skala program | Microsoft Docs"
+title: "Självstudier för aaaAzure Container Service - skala program | Microsoft Docs"
 description: "Självstudiekurs för Azure Container Service - skala program"
 services: container-service
 documentationcenter: 
@@ -17,34 +17,34 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 62e70e34d06f5220734ff85c70a0c9b475f9579b
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 29571eef0fd91bd6b40f00d8c018539f320179bf
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Skala Kubernetes skida och Kubernetes infrastruktur
 
-Om du har följande självstudierna du ha en fungerande Kubernetes kluster i Azure Container Service och du har distribuerat appen Azure röstning. 
+Om du har följande hello självstudiekurser du ha en fungerande Kubernetes kluster i Azure Container Service och du har distribuerat hello Azure röstning app. 
 
-I den här självstudiekursen tillhör fem sju, skala ut skida i appen och försök baljor autoskalning. Du också lära dig hur du skalar antalet noder som Virtuella Azure-agenten att ändra klustrets kapacitet för värd för arbetsbelastningar. Aktiviteter har slutförts är:
+I den här självstudiekursen tillhör fem sju, skala ut hello skida i hello app och försök baljor autoskalning. Du lär dig också hur tooscale hello antal Virtuella Azure-agenten noder toochange hello klustrets kapacitet för värd för arbetsbelastningar. Aktiviteter har slutförts är:
 
 > [!div class="checklist"]
 > * Skalning Kubernetes skida manuellt
-> * Konfigurera Autoskala skida kör app klientdelen
-> * Skala Kubernetes Azure agent noder
+> * Konfigurera Autoskala skida kör hello app klientdel
+> * Skala hello Kubernetes Azure-agenten noder
 
-Programmet Azure rösten uppdateras i efterföljande självstudiekurser och Operations Management Suite som konfigurerats för att övervaka Kubernetes klustret.
+Hello Azure rösten programmet uppdateras i efterföljande självstudiekurser och Operations Management Suite konfigurerad toomonitor hello Kubernetes klustret.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-I föregående självstudier, ett program som har paketerats i en behållare avbildning, avbildningen har överförts till registret för Azure-behållaren och ett Kubernetes kluster skapas. Programmet körs sedan Kubernetes klustret. Om du inte har gjort dessa steg och vill följa med, gå tillbaka till den [kursen 1 – skapa behållaren bilder](./container-service-tutorial-kubernetes-prepare-app.md). 
+I tidigare självstudier, ett program som har paketerats till en behållare bild, den här avbildningen överfört tooAzure behållare registret och ett Kubernetes kluster skapas. hello programmet körs sedan hello Kubernetes klustret. Om du inte har gjort dessa steg och vill toofollow längs, returnerar toohello [kursen 1 – skapa behållaren bilder](./container-service-tutorial-kubernetes-prepare-app.md). 
 
 Kursen krävs åtminstone ett Kubernetes kluster med ett program som körs.
 
 ## <a name="manually-scale-pods"></a>Skala skida manuellt
 
-Därmed distribuerats långt Azure rösten frontend och Redis-instans har, var och en med en enskild replik. Du kan kontrollera genom att köra den [kubectl hämta](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) kommando.
+Hittills, hello Azure rösten frontend och Redis-instansen har distribuerats, var och en med en enskild replik. tooverify, kör hello [kubectl hämta](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) kommando.
 
 ```azurecli-interactive
 kubectl get pods
@@ -58,13 +58,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Manuellt ändra antalet skida i den `azure-vote-front` distribution med den [kubectl skala](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#scale) kommando. Det här exemplet ökar antalet till 5.
+Manuellt ändra hello antal skida i hello `azure-vote-front` distribution med hello [kubectl skala](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#scale) kommando. Det här exemplet ökar hello nummer too5.
 
 ```azurecli-interactive
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Kör [kubectl hämta skida](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) att verifiera att Kubernetes skapar skida. När en minut eller så kan kör ytterligare skida:
+Kör [kubectl hämta skida](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) tooverify att Kubernetes skapar hello skida. Efter en minut eller så körs hello ytterligare skida:
 
 ```azurecli-interactive
 kubectl get pods
@@ -84,9 +84,9 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Autoskala skida
 
-Har stöd för Kubernetes [vågräta baljor autoskalning](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) för att justera antalet skida i en distribution beroende på CPU-användning eller annan välja mått. 
+Har stöd för Kubernetes [vågräta baljor autoskalning](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) tooadjust hello antalet skida i en distribution beroende på CPU-användning eller annan välja mått. 
 
-Om du vill använda autoscaler ha din skida CPU-begäranden och gränser har definierats. I den `azure-vote-front` distribution, behållaren frontend begäranden 0,25 processor, med högst 0,5 CPU. Det ser ut som inställningarna:
+toouse hello autoscaler din skida måste ha CPU-begäranden och gränser har definierats. I hello `azure-vote-front` distribution hello frontend behållaren begäranden 0,25 processor, med högst 0,5 CPU. Det ser ut som hello inställningar:
 
 ```YAML
 resources:
@@ -96,14 +96,14 @@ resources:
      cpu: 500m
 ```
 
-I följande exempel används den [kubectl Autoskala](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#autoscale) kommandot Autoskala antalet skida i den `azure-vote-front` distribution. Om processoranvändningen överskrider 50%, ökar autoscaler här skida högst 10.
+hello följande exempel används hello [kubectl Autoskala](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#autoscale) kommandot tooautoscale hello antalet skida i hello `azure-vote-front` distribution. Om processoranvändningen överskrider 50%, ökar hello autoscaler här hello skida tooa högst 10.
 
 
 ```azurecli-interactive
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-Om du vill se status för autoscaler, kör du följande kommando:
+toosee hello status för hello autoscaler, kör hello följande kommando:
 
 ```azurecli-interactive
 kubectl get hpa
@@ -116,19 +116,19 @@ NAME               REFERENCE                     TARGETS    MINPODS   MAXPODS   
 azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        3          2m
 ```
 
-Efter några minuter med minimal belastning på appen Azure röst minskar antalet baljor replikerna automatiskt till 3.
+Efter några minuter med minimal belastning på hello Azure rösten app minskar hello antal baljor repliker automatiskt too3.
 
-## <a name="scale-the-agents"></a>Skala agenter
+## <a name="scale-hello-agents"></a>Skala hello agenter
 
-Om du har skapat klustret Kubernetes standard kommandona i föregående självstudiekursen har tre agent-noder. Du kan justera antalet agenter manuellt om du planerar fler eller färre arbetsbelastningar i behållare på ditt kluster. Använd den [az acs skala](/cli/azure/acs#scale) kommando och ange hur många agenter med den `--new-agent-count` parameter.
+Om du har skapat klustret Kubernetes standard kommandona i hello tidigare kursen har tre agent-noder. Du kan justera hello antalet agenter manuellt om du planerar fler eller färre arbetsbelastningar i behållare på ditt kluster. Använd hello [az acs skala](/cli/azure/acs#scale) kommando och ange hello antalet agenter med hello `--new-agent-count` parameter.
 
-I följande exempel ökar antalet noder som agenten till 4 i Kubernetes klustret med namnet *myK8sCluster*. Kommandot tar några minuter att slutföra.
+hello följande exempel ökar hello antalet agent noder too4 i hello Kubernetes kluster med namnet *myK8sCluster*. hello kommandot tar några minuter toocomplete.
 
 ```azurecli-interactive
 az acs scale --resource-group=myResourceGroup --name=myK8SCluster --new-agent-count 4
 ```
 
-Kommandoutdata visar antalet agent noder i värdet för `agentPoolProfiles:count`:
+hello kommandoutdata visar hello antalet agent noder i hello värdet av `agentPoolProfiles:count`:
 
 ```azurecli
 {
@@ -151,10 +151,10 @@ I den här kursen används olika skalning funktioner i Kubernetes klustret. Uppg
 
 > [!div class="checklist"]
 > * Skalning Kubernetes skida manuellt
-> * Konfigurera Autoskala skida kör app klientdelen
-> * Skala Kubernetes Azure agent noder
+> * Konfigurera Autoskala skida kör hello app klientdel
+> * Skala hello Kubernetes Azure-agenten noder
 
-Gå vidare till nästa kurs att lära dig om att uppdatera programmet i Kubernetes.
+Nästa självstudiekurs toolearn toohello om att uppdatera programmet i Kubernetes i förväg.
 
 > [!div class="nextstepaction"]
 > [Uppdatera ett program i Kubernetes](./container-service-tutorial-kubernetes-app-update.md)

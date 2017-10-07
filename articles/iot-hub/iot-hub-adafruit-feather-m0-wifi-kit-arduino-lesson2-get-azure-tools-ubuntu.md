@@ -1,5 +1,5 @@
 ---
-title: 'Ansluta Arduino till Azure IoT - lektionen 2: Azure-verktyg (Ubuntu) | Microsoft Docs'
+title: 'Ansluta Arduino tooAzure IoT - lektionen 2: Azure-verktyg (Ubuntu) | Microsoft Docs'
 description: "Installera Python och Azure-kommandoradsgränssnittet (Azure CLI) på Ubuntu."
 services: iot-hub
 documentationcenter: 
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: a2f83e59a37abc3f44e770b22ac089b88481a6a4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7eb9c891a6340fee018894883583022d740ecb6f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-azure-tools-ubuntu-1604"></a>Hämta Azure-verktyg (Ubuntu 16.04)
 
@@ -32,23 +32,23 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="what-you-will-do"></a>Vad du ska göra
 
-Installera Azure-kommandoradsgränssnittet (Azure CLI). Om du har några problem kan hitta lösningar på den [felsökning sidan](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md) för Adafruit ludd M0 WiFi Arduino-skiva.
+Installera hello Azure-kommandoradsgränssnittet (Azure CLI). Om du har några problem med söka efter lösningar på hello [felsökning sidan](iot-hub-adafruit-feather-m0-wifi-kit-arduino-troubleshooting.md) för Adafruit ludd M0 WiFi Arduino-skiva.
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
 I den här artikeln får du lära dig:
-* Så här installerar du Azure CLI.
-* Hur du lägger till en IoT-undergrupp av Azure CLI.
+* Hur tooinstall hello Azure CLI.
+* Hur tooadd en IoT-undergrupp till hello Azure CLI.
 
 ## <a name="what-you-need"></a>Vad du behöver
 * En Ubuntu-dator med en Internet-anslutning.
 * En aktiv Azure-prenumeration. Om du inte har ett konto kan du skapa en [ledigt utvärderingskonto](http://azure.microsoft.com/pricing/free-trial/) i bara några minuter.
 
-## <a name="install-the-azure-cli"></a>Installera Azure CLI
-Azure CLI tillhandahåller en flera plattformar kommandoraden för Azure, så att du kan arbeta direkt från kommandoraden för att etablera och hantera resurser.
+## <a name="install-hello-azure-cli"></a>Installera hello Azure CLI
+hello Azure CLI tillhandahåller en flera plattformar kommandoraden för Azure, vilket gör att du toowork direkt från kommandoraden-tooprovision och hantera resurser.
 
-Följ dessa steg om du vill installera den senaste Azure CLI:
+tooinstall Hej senaste Azure CLI, gör du följande:
 
-1. Kör följande kommandon i ett terminalfönster. Det kan ta fem minuter att installera Azure CLI.
+1. Kör följande kommandon i ett terminalfönster hello. Det kan ta fem minuter tooinstall hello Azure CLI.
 
    ```bash
    sudo apt-get update
@@ -59,18 +59,18 @@ Följ dessa steg om du vill installera den senaste Azure CLI:
    sudo pip install --upgrade azure-cli
    sudo pip install --upgrade azure-cli-iot
    ```
-2. Verifiera installationen genom att köra följande kommando:
+2. Kontrollera hello installationen genom att köra följande kommando hello:
 
    ```bash
    az iot -h
    ```
 
-Du bör se följande utdata om installationen har slutförts.
+Du bör se hello följande utdata om hello-installationen har slutförts.
 
 ![Utdata som indikerar att det lyckades][output]
 
 ## <a name="summary"></a>Sammanfattning
-Du har installerat Azure CLI. Nästa uppgift är att skapa din Azure IoT hub- och enhetsidentitet som med hjälp av Azure CLI.
+Du har installerat hello Azure CLI. Nästa uppgift är toocreate dina Azure IoT-hubb och enheter identitet med hjälp av hello Azure CLI.
 
 ## <a name="next-steps"></a>Nästa steg
 [Skapa din IoT-hubb och registrera Arduino-kort][create-your-iot-hub-and-register-your-arduino-board]

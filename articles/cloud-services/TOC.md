@@ -25,13 +25,13 @@
 ### [Konfigurera trafikregler för en roll](cloud-services-enable-communication-role-instances.md)
 ### [Hantera livscykelhändelser för molntjänst](cloud-services-role-lifecycle-dotnet.md)
 ### [Socket.io (Node.js)](cloud-services-nodejs-chat-app-socketio.md)
-### [Använda Twilio för att ringa ett telefonsamtal (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
+### [Använd Twilio toomake ett telefonsamtal (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
 ### [New Relic](../store-new-relic-cloud-services-dotnet-application-performance-management.md)
 
 ### Konfigurera startuppgifter
 #### [Skapa startuppgifter](cloud-services-startup-tasks.md)
 #### [Vanliga startuppgifter](cloud-services-startup-tasks-common.md)
-#### [Använd en åtgärd för att installera .NET på en molntjänstroll](cloud-services-dotnet-install-dotnet.md)
+#### [Använda en aktivitet tooInstall .NET på en tjänst i molnet roll](cloud-services-dotnet-install-dotnet.md)
 
 ### Konfigurera Fjärrskrivbord
 #### [Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -47,7 +47,7 @@
 #### [Portal](cloud-services-custom-domain-name-portal.md)
 #### [Klassisk portal](cloud-services-custom-domain-name.md)
 ### [Mellanlagra en molntjänstdistribution (Node.js)](cloud-services-nodejs-stage-application.md)
-### [Anslut till en anpassad domänkontrollant](cloud-services-connect-to-custom-domain.md)
+### [Ansluta tooa anpassad domänkontrollant](cloud-services-connect-to-custom-domain.md)
 
 ## Hantera tjänst
 ### Vanliga administrativa uppgifter
@@ -60,7 +60,7 @@
 ### Konfigurera automatisk skalning
 #### [Portal](cloud-services-how-to-scale-portal.md)
 #### [Klassisk portal](cloud-services-how-to-scale.md)
-### [Använd Python för att hantera Azure-resurser](cloud-services-python-how-to-use-service-management.md)
+### [Använda Python toomanage Azure-resurser](cloud-services-python-how-to-use-service-management.md)
 
 ### [Gästoperativsystemets korrigeringsfiler](cloud-services-guestos-msrc-releases.md)
 ### Gästoperativsystem, indragning
@@ -86,7 +86,7 @@
 ### [Använda prestandaräknare i Azure Diagnostics](cloud-services-dotnet-diagnostics-performance-counters.md)
 ### [Lagra och visa diagnostikdata i Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
 ### [Spåra en molntjänst med diagnostik](cloud-services-dotnet-diagnostics-trace-flow.md)
-### [Skicka diagnostikdata till App Insights](cloud-services-dotnet-diagnostics-applicationinsights.md)
+### [Skicka diagnostikdata tooApp insikter](cloud-services-dotnet-diagnostics-applicationinsights.md)
 
 ## Felsöka
 ### Felsökning 
@@ -98,7 +98,7 @@
 ### [Vanliga orsaker till rollåteranvändning i molntjänst](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)
 ### [TEMP-standardmappen är för liten för en roll](cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md)
 ### [Vanliga distributionsproblem](cloud-services-troubleshoot-deployment-problems.md)
-### [Rollen startades inte](cloud-services-troubleshoot-roles-that-fail-start.md)
+### [Rollen kunde inte toostart](cloud-services-troubleshoot-roles-that-fail-start.md)
 ### [Vägledning för återställning](cloud-services-disaster-recovery-guidance.md)
 ### Vanliga frågor och svar om Cloud Services
 #### [Vanliga frågor och svar om program- och tjänsttillgänglighet](cloud-services-application-and-service-availability-faq.md)

@@ -1,6 +1,6 @@
 ---
-title: "Läs in data från SQL Server till Azure SQL Data Warehouse (SSIS) | Microsoft Docs"
-description: "Visar hur du skapar ett paket för SQL Server Integration Services (SSIS) för att flytta data från en mängd olika datakällor till SQL Data Warehouse."
+title: "aaaLoad data från SQL Server till Azure SQL Data Warehouse (SSIS) | Microsoft Docs"
+description: "Visar hur toocreate SQL Server Integration Services (SSIS) toomove paketdata från en mängd olika data datakällor tooSQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 03/30/2017
 ms.author: cakarst;douglasl;barbkess
-ms.openlocfilehash: 6c9cebdd715b6997d0633bc725a3945ba9e0c357
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bb28a08807a5b07832b85f2f074c2acf912c1dc3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-ssis"></a>Läs in data från SQL Server till Azure SQL Data Warehouse (SSIS)
 > [!div class="op_single_selector"]
@@ -29,148 +29,148 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Skapa ett SQL Server Integration Services (SSIS)-paket för att läsa in data från SQL Server till Azure SQL Data Warehouse. Du kan alternativt omstrukturera, transformera och rensa data som överförs via SSIS-dataflöde.
+Skapa ett SQL Server Integration Services (SSIS) paketet tooload data från SQL Server till Azure SQL Data Warehouse. Du kan alternativt omstrukturera, transformera och rensa hello data när det överförs via hello SSIS-dataflöde.
 
 I den här kursen ska du:
 
 * Skapa ett nytt Integration Services-projekt i Visual Studio.
-* Ansluta till datakällor, inklusive SQL Server (som en källa) och SQL Data Warehouse (som mål).
-* Utforma ett SSIS-paket som läser in data från källan till målet.
-* Kör SSIS-paket för att läsa in data.
+* Ansluta toodata källor, till exempel SQL Server (som en källa) och SQL Data Warehouse (som mål).
+* Utforma ett SSIS-paket som läser in data från hello källa i hello mål.
+* Kör hello SSIS-paket tooload hello data.
 
-Den här kursen använder SQL Server som datakällan. SQL Server kan köras lokalt eller i en virtuell Azure-dator.
+Den här kursen använder SQL Server som hello datakälla. SQL Server kan köras lokalt eller i en virtuell Azure-dator.
 
 ## <a name="basic-concepts"></a>Grundläggande begrepp
-Paketet är arbetsenheten i SSIS. Relaterade paket grupperas i projekt. Du skapar projekt och design paket i Visual Studio med SQL Server Data Tools. Designprocessen är en visuell process där du dra komponenter från verktygslådan till designytan, ansluter dem, och ange deras egenskaper. När du har ditt paket kan distribuera du om du vill den till SQL Server för omfattande hantering, övervakning och säkerhet.
+hello-paket är hello arbetsenheten i SSIS. Relaterade paket grupperas i projekt. Du skapar projekt och design paket i Visual Studio med SQL Server Data Tools. hello design processen är en visuell process där du drar och släpper komponenter från hello verktygslådan toohello designytan, ansluter dem och ange deras egenskaper. När du har ditt paket kan distribuera du om du vill den tooSQL Server för omfattande hantering, övervakning och säkerhet.
 
 ## <a name="options-for-loading-data-with-ssis"></a>Alternativ för att läsa in data med SSIS
 SQL Server Integration Services (SSIS) är en flexibel uppsättning verktyg som ger en mängd olika alternativ för att ansluta till och läsa in data i SQL Data Warehouse.
 
-1. Använd ett ADO NET mål för att ansluta till SQL Data Warehouse. Den här kursen använder ett ADO NET mål eftersom den har minst antal konfigurationsalternativ.
-2. Använd en OLE DB-mål för att ansluta till SQL Data Warehouse. Det här alternativet kan ge något bättre prestanda än ADO NET målet.
-3. Använd Azure Blob överför aktiviteten för att mellanlagra data i Azure Blob Storage. Använd sedan SSIS kör SQL-uppgiften för att starta en Polybase-skript som läser in data i SQL Data Warehouse. Det här alternativet ger den bästa prestandan av tre alternativ som visas här. För att få ladda upp Azure Blob-aktiviteten, hämtar den [Microsoft SQL Server 2016 Integration Services Feature Pack för Azure][Microsoft SQL Server 2016 Integration Services Feature Pack for Azure]. Läs mer om Polybase i [PolyBase-guiden][PolyBase Guide].
+1. Använd en ADO NET mål tooconnect tooSQL Data Warehouse. Den här kursen använder ett ADO NET mål eftersom den har hello minst antal konfigurationsalternativ.
+2. Använd en OLE DB mål tooconnect tooSQL Data Warehouse. Det här alternativet kan ge något bättre prestanda än hello ADO NET mål.
+3. Använd hello Azure Blob överför toostage hello aktivitetsdata i Azure Blob Storage. Använd sedan hello SSIS kör SQL-uppgiften toolaunch en Polybase-skript som läses in hello data i SQL Data Warehouse. Det här alternativet ger hello bästa prestanda av hello tre alternativ som visas här. tooget hello Azure Blob-överför aktiviteten hämta hello [Microsoft SQL Server 2016 Integration Services Feature Pack för Azure][Microsoft SQL Server 2016 Integration Services Feature Pack for Azure]. toolearn mer om Polybase, se [PolyBase-guiden][PolyBase Guide].
 
 ## <a name="before-you-start"></a>Innan du börjar
-För att gå igenom de här självstudierna, behöver du:
+toostep igenom den här kursen behöver du:
 
-1. **SQL Server Integration Services (SSIS)**. SSIS är en komponent i SQL Server och kräver en utvärderingsversion eller en licensierad version av SQL Server. Om du vill hämta en utvärderingsversion av SQL Server 2016 Preview finns [SQL Server-utvärderingar][SQL Server Evaluations].
-2. **Visual Studio**. Kostnadsfri Visual Studio Community Edition finns [Visual Studio Community][Visual Studio Community].
-3. **SQL Server Data Tools för Visual Studio (SSDT)**. SQL Server Data Tools för Visual Studio finns [Hämta SQL Server Data Tools (SSDT)][Download SQL Server Data Tools (SSDT)].
-4. **Exempeldata**. Den här kursen använder exempeldata som lagras i SQL Server i exempeldatabasen AdventureWorks som källdata som ska läsas in i SQL Data Warehouse. För att få exempeldatabasen AdventureWorks finns [AdventureWorks exempeldatabas för 2014][AdventureWorks 2014 Sample Databases].
-5. **En SQL Data Warehouse-databas och behörigheter**. Den här självstudiekursen ansluter till en instans av SQL Data Warehouse och läser in data i den. Du måste ha behörigheter att skapa en tabell och läsa in data.
-6. **En brandväggsregel**. Du måste skapa en brandväggsregel på SQL Data Warehouse med IP-adressen för den lokala datorn innan du kan överföra data till SQL Data Warehouse.
+1. **SQL Server Integration Services (SSIS)**. SSIS är en komponent i SQL Server och kräver en utvärderingsversion eller en licensierad version av SQL Server. tooget en utvärderingsversion av SQL Server 2016 Preview finns [SQL Server-utvärderingar][SQL Server Evaluations].
+2. **Visual Studio**. tooget Hej kostnadsfri Visual Studio Community Edition, se [Visual Studio Community][Visual Studio Community].
+3. **SQL Server Data Tools för Visual Studio (SSDT)**. tooget SQL Server Data Tools för Visual Studio finns [Hämta SQL Server Data Tools (SSDT)][Download SQL Server Data Tools (SSDT)].
+4. **Exempeldata**. Den här kursen använder exempeldata som lagras i SQL Server i hello exempeldatabasen AdventureWorks som hello källa data toobe läses in i SQL Data Warehouse. tooget hello exempeldatabasen AdventureWorks finns [AdventureWorks exempeldatabas för 2014][AdventureWorks 2014 Sample Databases].
+5. **En SQL Data Warehouse-databas och behörigheter**. Den här självstudiekursen ansluter tooa SQL Data Warehouse-instans och läser in data i den. Du har toohave behörigheter toocreate en tabell och tooload data.
+6. **En brandväggsregel**. Du har toocreate en brandväggsregel på SQL Data Warehouse med hello IP-adressen för den lokala datorn innan du kan ladda upp data toohello SQL Data Warehouse.
 
 ## <a name="step-1-create-a-new-integration-services-project"></a>Steg 1: Skapa ett nytt Integration Services-projekt
 1. Starta Visual Studio.
-2. På den **filen** väljer du **ny | Projektet**.
-3. Navigera till den **installerat | Mallar | Business Intelligence | Integration Services** projekttyper.
+2. På hello **filen** väljer du **ny | Projektet**.
+3. Navigera toohello **installerad | Mallar | Business Intelligence | Integration Services** projekttyper.
 4. Välj **Integration Services-projekt**. Ange värden för **namn** och **plats**, och välj sedan **OK**.
 
-Visual Studio öppnas och skapar ett nytt projekt för Integration Services (SSIS). Visual Studio öppnas designer för det enda nya SSIS-paketet (Package.dtsx) i projektet. Du kan se på följande områden:
+Visual Studio öppnas och skapar ett nytt projekt för Integration Services (SSIS). Visual Studio öppnas hello designer för hello enda nya SSIS-paket (Package.dtsx) i hello-projekt. Du ser hello följande områden:
 
-* Till vänster i **verktygslådan** SSIS-komponenter.
-* I mitten designytan med flera flikar. Normalt använder du minst den **Kontrollflöde** och **dataflöde** flikar.
-* Till höger i **Solution Explorer** och **egenskaper** fönster.
+* Hello vänster hello **verktygslådan** SSIS-komponenter.
+* Hello mitten hello designytan med flera flikar. Normalt använder du minst hello **Kontrollflöde** och hello **dataflöde** flikar.
+* På rätt hello, hello **Solution Explorer** och hello **egenskaper** fönster.
   
     ![][01]
 
-## <a name="step-2-create-the-basic-data-flow"></a>Steg 2: Skapa grundläggande dataflödet
-1. Dra en Data flödar aktivitet från verktygslådan till mitten av designytan (på den **Kontrollflöde** fliken).
+## <a name="step-2-create-hello-basic-data-flow"></a>Steg 2: Skapa hello grundläggande dataflöde
+1. Dra en Data flödar aktivitet från hello verktygslådan toohello mittpunkt hello designytan (på hello **Kontrollflöde** fliken).
    
     ![][02]
-2. Dubbelklicka på aktiviteten flöda Data för att gå till fliken dataflöde.
-3. Dra en ADO.NET-datakälla från listan andra källor i verktygslådan till designytan. Käll-kort fortfarande markerat, ändra dess namn till **SQL Server-datakälla** i den **egenskaper** fönstret.
-4. Dra en ADO.NET-mål från listan andra mål i verktygslådan till designytan under ADO.NET-källa. Mål-kort fortfarande markerat, ändra dess namn till **SQL DW mål** i den **egenskaper** fönstret.
+2. Dubbelklicka på fliken för hello Data flödar aktivitet tooswitch toohello dataflöde.
+3. Dra en ADO.NET källa toohello designytan hello andra källor listan i hello verktygslådan. Med hello källa kort fortfarande markerat, ändra namnet för**SQL Server-datakälla** i hello **egenskaper** fönstret.
+4. Dra en ADO.NET mål toohello designytan under hello ADO.NET källa hello andra mål listan i hello verktygslådan. Hej målnätverkskort fortfarande markerat, ändra dess namn för**SQL DW mål** i hello **egenskaper** fönstret.
    
     ![][09]
 
-## <a name="step-3-configure-the-source-adapter"></a>Steg 3: Konfigurera käll-kort
-1. Dubbelklickar du på käll-kortet för att öppna den **ADO.NET källa Editor**.
+## <a name="step-3-configure-hello-source-adapter"></a>Steg 3: Konfigurera hello källa nätverkskort
+1. Dubbelklicka på hello källa kortet tooopen hello **ADO.NET källa Editor**.
    
     ![][03]
-2. På den **Connection Manager** för den **ADO.NET källa Editor**, klickar du på den **ny** knappen bredvid den **ADO.NET Anslutningshanteraren** lista Öppna den **konfigurera ADO.NET Anslutningshanteraren** dialogrutan och skapa anslutningsinställningar för SQL Server-databas som den här kursen läser in data.
+2. På hello **Connection Manager** för hello **ADO.NET källa Editor**, klicka på hello **ny** knappen Nästa toohello **ADO.NET Anslutningshanteraren**lista tooopen hello **konfigurera ADO.NET Anslutningshanteraren** dialogrutan och skapa anslutningsinställningar för hello SQL Server-databas som den här kursen läser in data.
    
     ![][04]
-3. I den **konfigurera ADO.NET Anslutningshanteraren** dialogrutan klickar du på den **ny** för att öppna den **Connection Manager** dialogrutan och skapa en ny anslutning.
+3. I hello **konfigurera ADO.NET Anslutningshanteraren** dialogrutan klickar du på hello **ny** knappen tooopen hello **Connection Manager** dialogrutan och skapa en ny anslutning.
    
     ![][05]
-4. I den **Connection Manager** dialogrutan Gör följande saker.
+4. I hello **Connection Manager** dialogrutan rutan, hello följande saker.
    
-   1. För **Provider**, Välj SqlClient-dataprovidern.
-   2. För **servernamn**, ange namnet på SQL Server.
-   3. I den **logga in på servern** väljer eller ange autentiseringsinformation.
-   4. I den **Anslut till en databas** väljer exempeldatabasen AdventureWorks.
+   1. För **Provider**, Välj hello SqlClient-dataprovidern.
+   2. För **servernamn**, ange hello SQL Server-namn.
+   3. I hello **inloggning toohello server** väljer eller ange autentiseringsinformation.
+   4. I hello **Anslut tooa databasen** väljer hello exempeldatabasen AdventureWorks.
    5. Klicka på **Anslutningstestet**.
       
        ![][06]
-   6. Klicka i dialogrutan som rapporterar resultatet av Anslutningstestet **OK** att återgå till den **Connection Manager** dialogrutan.
-   7. I den **Connection Manager** dialogrutan klickar du på **OK** att återgå till den **konfigurera ADO.NET Anslutningshanteraren** dialogrutan.
-5. I den **konfigurera ADO.NET Anslutningshanteraren** dialogrutan klickar du på **OK** att återgå till den **ADO.NET källa Editor**.
-6. I den **ADO.NET källa Editor**i den **namnet på tabellen eller vyn** väljer den **Sales.SalesOrderDetail** tabell.
+   6. Klicka på dialogrutan för hello som rapporterar hello resultatet av anslutningstestet hello, **OK** tooreturn toohello **Connection Manager** dialogrutan.
+   7. I hello **Connection Manager** dialogrutan klickar du på **OK** tooreturn toohello **konfigurera ADO.NET Anslutningshanteraren** dialogrutan.
+5. I hello **konfigurera ADO.NET Anslutningshanteraren** dialogrutan klickar du på **OK** tooreturn toohello **ADO.NET källa Editor**.
+6. I hello **ADO.NET källa Editor**, i hello **namnet på hello tabell eller vy hello** listan, Välj hello **Sales.SalesOrderDetail** tabell.
    
     ![][07]
-7. Klicka på **Preview** att se de första 200 raderna med data i källtabellen i den **Preview frågeresultat** dialogrutan.
+7. Klicka på **Preview** toosee hello först 200 rader med data i hello källtabellen i hello **Preview frågeresultat** dialogrutan.
    
     ![][08]
-8. I den **Preview frågeresultat** dialogrutan klickar du på **Stäng** att återgå till den **ADO.NET källa Editor**.
-9. I den **ADO.NET källa Editor**, klickar du på **OK** till Slutför konfigurationen av datakällan.
+8. I hello **Preview frågeresultat** dialogrutan klickar du på **Stäng** tooreturn toohello **ADO.NET källa Editor**.
+9. I hello **ADO.NET källa Editor**, klickar du på **OK** toofinish konfigurera hello-datakällan.
 
-## <a name="step-4-connect-the-source-adapter-to-the-destination-adapter"></a>Steg 4: Anslut käll-kortet till målnätverkskort
-1. Välj källa kortet i designvyn.
-2. Välj en blå pil som sträcker sig från käll-kort och drar den till mål-redigeraren förrän den har fästs på plats.
+## <a name="step-4-connect-hello-source-adapter-toohello-destination-adapter"></a>Steg 4: Anslut hello källa kortet toohello målnätverkskort
+1. Välj hello käll-kortet på hello designytan.
+2. Välj hello blå pil som sträcker sig från hello källa nätverkskort och dra toohello mål editor tills den har fästs på plats.
    
     ![][10]
    
-    I en typisk SSIS-paket använder du ett antal andra komponenter från verktygslådan SSIS mellan källan och målet att omstrukturera, transformera och rensa data som överförs via SSIS-dataflöde. Om du vill behålla det här exemplet så enkel som möjligt, ansluter vi källan direkt till målet.
+    I en typisk SSIS-paket, använda ett antal andra komponenter från hello SSIS verktygslådan between hello källa och hello mål toorestructure, transformering och rensa data som överförs via hello SSIS-dataflöde. tookeep det här exemplet är så enkel som möjligt, vi ansluter hello datakälla direkt toohello mål.
 
-## <a name="step-5-configure-the-destination-adapter"></a>Steg 5: Konfigurera målnätverkskort
-1. Dubbelklicka på målnätverkskort att öppna den **ADO.NET mål Editor**.
+## <a name="step-5-configure-hello-destination-adapter"></a>Steg 5: Konfigurera hello-målnätverkskort
+1. Dubbelklicka på hello målet nätverkskort tooopen hello **ADO.NET mål Editor**.
    
     ![][11]
-2. På den **Connection Manager** för den **ADO.NET mål Editor**, klickar du på den **ny** knappen bredvid den **Anslutningshanteraren** listan till Öppna den **konfigurera ADO.NET Anslutningshanteraren** dialogrutan och skapa anslutningsinställningar för Azure SQL Data Warehouse-databas som den här kursen läser in data.
-3. I den **konfigurera ADO.NET Anslutningshanteraren** dialogrutan klickar du på den **ny** för att öppna den **Connection Manager** dialogrutan och skapa en ny anslutning.
-4. I den **Connection Manager** dialogrutan Gör följande saker.
-   1. För **Provider**, Välj SqlClient-dataprovidern.
-   2. För **servernamn**, anger du namnet på SQL Data Warehouse.
-   3. I den **logga in på servern** väljer **används SQL Server-autentisering** och ange autentiseringsinformation.
-   4. I den **Anslut till en databas** väljer du en befintlig SQL Data Warehouse-databas.
+2. På hello **Connection Manager** för hello **ADO.NET mål Editor**, klicka på hello **ny** knappen Nästa toohello **Anslutningshanteraren**lista tooopen hello **konfigurera ADO.NET Anslutningshanteraren** dialogrutan och skapa anslutningsinställningar för hello Azure SQL Data Warehouse-databas som den här kursen läser in data.
+3. I hello **konfigurera ADO.NET Anslutningshanteraren** dialogrutan klickar du på hello **ny** knappen tooopen hello **Connection Manager** dialogrutan och skapa en ny anslutning.
+4. I hello **Connection Manager** dialogrutan rutan, hello följande saker.
+   1. För **Provider**, Välj hello SqlClient-dataprovidern.
+   2. För **servernamn**, ange hello SQL Data Warehouse namn.
+   3. I hello **inloggning toohello server** väljer **används SQL Server-autentisering** och ange autentiseringsinformation.
+   4. I hello **Anslut tooa databasen** väljer du en befintlig SQL Data Warehouse-databas.
    5. Klicka på **Anslutningstestet**.
-   6. Klicka i dialogrutan som rapporterar resultatet av Anslutningstestet **OK** att återgå till den **Connection Manager** dialogrutan.
-   7. I den **Connection Manager** dialogrutan klickar du på **OK** att återgå till den **konfigurera ADO.NET Anslutningshanteraren** dialogrutan.
-5. I den **konfigurera ADO.NET Anslutningshanteraren** dialogrutan klickar du på **OK** att återgå till den **ADO.NET mål Editor**.
-6. I den **ADO.NET mål Editor**, klickar du på **ny** bredvid den **använder en tabell eller vy** att öppna den **Create Table** dialogrutan för att skapa en nya måltabellen med en kolumnlista som matchar källtabellen.
+   6. Klicka på dialogrutan för hello som rapporterar hello resultatet av anslutningstestet hello, **OK** tooreturn toohello **Connection Manager** dialogrutan.
+   7. I hello **Connection Manager** dialogrutan klickar du på **OK** tooreturn toohello **konfigurera ADO.NET Anslutningshanteraren** dialogrutan.
+5. I hello **konfigurera ADO.NET Anslutningshanteraren** dialogrutan klickar du på **OK** tooreturn toohello **ADO.NET mål Editor**.
+6. I hello **ADO.NET mål Editor**, klickar du på **ny** nästa toohello **använder en tabell eller vy** lista tooopen hello **Create Table** dialogrutan toocreate en ny måltabell med en kolumnlista som matchar hello källtabellen.
    
     ![][12a]
-7. I den **Create Table** dialogrutan Gör följande saker.
+7. I hello **Create Table** dialogrutan rutan, hello följande saker.
    
-   1. Ändra namnet på tabellen till **SalesOrderDetail**.
-   2. Ta bort den **rowguid** kolumn. Den **uniqueidentifier** datatyp stöds inte i SQL Data Warehouse.
-   3. Ändra datatypen för den **LineTotal** kolumnen till **pengar**. Den **decimal** datatyp stöds inte i SQL Data Warehouse. Information om vilka datatyper finns [CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse)][CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse)].
+   1. Ändra hello hello måltabellen för**SalesOrderDetail**.
+   2. Ta bort hello **rowguid** kolumn. Hej **uniqueidentifier** datatyp stöds inte i SQL Data Warehouse.
+   3. Ändra hello datatyp hello **LineTotal** kolumn för**pengar**. Hej **decimal** datatyp stöds inte i SQL Data Warehouse. Information om vilka datatyper finns [CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse)][CREATE TABLE (Azure SQL Data Warehouse, Parallel Data Warehouse)].
       
        ![][12b]
-   4. Klicka på **OK** att skapa tabellen och återgå till den **ADO.NET mål Editor**.
-8. I den **ADO.NET mål Editor**, Välj den **mappningar** fliken för att se hur kolumner i källans mappas till kolumnerna i mål.
+   4. Klicka på **OK** toocreate hello tabellen och returnerar toohello **ADO.NET mål Editor**.
+8. I hello **ADO.NET mål Editor**väljer hello **mappningar** fliken toosee hur kolumner i hello källan mappas toocolumns i hello målet.
    
     ![][13]
-9. Klicka på **OK** till Slutför konfigurationen av datakällan.
+9. Klicka på **OK** toofinish konfigurera hello-datakällan.
 
-## <a name="step-6-run-the-package-to-load-the-data"></a>Steg 6: Kör för att läsa in data
-Kör paketet genom att klicka på den **starta** knappen i verktygsfältet eller genom att välja något av de **kör** alternativ på den **felsöka** menyn.
+## <a name="step-6-run-hello-package-tooload-hello-data"></a>Steg 6: Kör hello paketdata tooload hello
+Kör hello paketet genom att klicka på hello **starta** knappen hello verktygsfältet eller välja ett hello **kör** alternativ på hello **felsöka** menyn.
 
-När paketet börjar köras, se gul snurrande hjul som visar aktivitet samt antalet bearbetade hittills rader.
+Hello paketet börjar toorun, se gul snurrande hjul tooindicate som hello antalet bearbetade hittills rader.
 
 ![][14]
 
-När paketet har körts kan du se grön bockmarkering som anger lyckad samt det totala antalet rader med data som har lästs in från källan till målet.
+När hello paketet har körts du finns grön bockmarkering tooindicate lyckade samt hello Totalt antal rader med data som har lästs in från hello källa toohello mål.
 
 ![][15]
 
-Grattis! Du har använt SQL Server Integration Services att läsa in data till Azure SQL Data Warehouse.
+Grattis! Du har använt SQL Server Integration Services tooload data till Azure SQL Data Warehouse.
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs mer om SSIS-dataflöde. Börja här: [dataflöde][Data Flow].
-* Lär dig att felsöka dina paket direkt i design-miljön. Börja här: [felsökningsverktyg för paketet utveckling][Troubleshooting Tools for Package Development].
-* Lär dig mer om att distribuera SSIS-projekt och paket till Integration Services-servern eller en annan lagringsplats. Börja här: [projekt för distribution av och paket][Deployment of Projects and Packages].
+* Läs mer om hello SSIS-dataflöde. Börja här: [dataflöde][Data Flow].
+* Lär dig hur toodebug och felsöka dina paket direkt i hello design-miljön. Börja här: [felsökningsverktyg för paketet utveckling][Troubleshooting Tools for Package Development].
+* Lär dig hur toodeploy din SSIS projekt och paketerar tooIntegration Services-Server eller tooanother lagringsplats. Börja här: [projekt för distribution av och paket][Deployment of Projects and Packages].
 
 <!-- Image references -->
 [01]:  ./media/sql-data-warehouse-load-from-sql-server-with-integration-services/ssis-designer-01.png

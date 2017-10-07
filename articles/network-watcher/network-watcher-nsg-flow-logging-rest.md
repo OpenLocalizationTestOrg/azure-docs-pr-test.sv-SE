@@ -1,6 +1,6 @@
 ---
-title: "Hantera Nätverkssäkerhetsgruppen flöde loggar med Azure Nätverksbevakaren - REST API | Microsoft Docs"
-description: "Den här sidan förklarar hur du hanterar Nätverkssäkerhetsgruppen flöde loggar i Azure Nätverksbevakaren med REST API"
+title: "aaaManage Nätverkssäkerhetsgruppen flöde loggar med Azure Nätverksbevakaren - REST API | Microsoft Docs"
+description: "Den här sidan förklarar hur toomanage Nätverkssäkerhetsgruppen flöde loggar i Azure Nätverksbevakaren med REST API"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: c89a2ab4c39978771c940a819493b4e2283d5f9f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: be81e35f4d01c67efef99773e9b4e2ae4b8e209e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurera Nätverkssäkerhetsgruppen flöde loggar med hjälp av REST API
 
@@ -29,20 +29,20 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 
-Nätverkssäkerhetsgruppen flöde loggarna är en funktion i Nätverksbevakaren där du kan visa information om ingående och utgående IP-trafik via en Nätverkssäkerhetsgrupp. Loggarna flödet skrivs i json-format och visa utgående och inkommande flöden på grundval av per regel, NIC flödet gäller för 5-tuppel information om flödet (källan/målet IP-källan/målet Port Protocol), och om trafiken tillåts eller nekas.
+Nätverkssäkerhetsgruppen flöde loggarna är en funktion i Nätverksbevakaren som gör att du tooview information om ingående och utgående IP-trafik via en Nätverkssäkerhetsgrupp. Loggarna flödet skrivs i json-format och visa utgående och inkommande flöden på grundval av per regel hello NIC hello flödet gäller för 5-tuppel information om hello flödet (källan/målet IP-källan/målet Port Protocol) och om hello trafik tilläts eller nekad.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-ARMclient används för att anropa REST-API med hjälp av PowerShell. ARMClient hittas på chocolatey på [ARMClient på Chocolatey](https://chocolatey.org/packages/ARMClient)
+ARMclient är används toocall hello REST-API med hjälp av PowerShell. ARMClient hittas på chocolatey på [ARMClient på Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-Det här scenariot förutsätter att du redan har följt stegen i [skapa en Nätverksbevakaren](network-watcher-create.md) att skapa en Nätverksbevakaren.
+Det här scenariot förutsätter att du redan har följt stegen hello i [skapa en Nätverksbevakaren](network-watcher-create.md) toocreate en Nätverksbevakaren.
 
 > [!Important]
-> För nätverket Watcher REST API-anrop som resursgruppens namn i URI-begäran är resursgruppen som innehåller Nätverksbevakaren, inte resurserna du utför de diagnostiska åtgärderna på.
+> För nätverket Watcher REST API-anrop hello resursgruppens namn i hello Begärd URI är hello resursgruppen som innehåller hello Nätverksbevakaren, inte hello resurser som du utför hello diagnostiska åtgärder på.
 
 ## <a name="scenario"></a>Scenario
 
-Det scenario som beskrivs i den här artikeln visar hur du aktivera, inaktivera och fråga flödet loggar med hjälp av REST-API. Läs mer om Nätverkssäkerhetsgrupp flöde loggings [Nätverkssäkerhetsgruppen flöde loggning - översikt över](network-watcher-nsg-flow-logging-overview.md).
+hello-scenario som beskrivs i den här artikeln visar hur tooenable, inaktivera och fråga flöda loggar med hello REST API. toolearn mer om Nätverkssäkerhetsgrupp flöde loggings finns [Nätverkssäkerhetsgruppen flöde loggning - översikt över](network-watcher-nsg-flow-logging-overview.md).
 
 I det här scenariot kommer du att:
 
@@ -52,7 +52,7 @@ I det här scenariot kommer du att:
 
 ## <a name="log-in-with-armclient"></a>Logga in med ARMClient
 
-Logga in på armclient med dina autentiseringsuppgifter för Azure.
+Logga in tooarmclient med dina autentiseringsuppgifter för Azure.
 
 ```PowerShell
 armclient login
@@ -60,7 +60,7 @@ armclient login
 
 ## <a name="register-insights-provider"></a>Registrera providern insikter
 
-För att flöda loggning för att fungera korrekt, den **Microsoft.Insights** provider måste vara registrerad. Om du inte är säker på om den **Microsoft.Insights** provider är registrerad, kör följande skript.
+Flöde för loggning toowork, hello **Microsoft.Insights** provider måste vara registrerad. Om du inte är säker på om hello **Microsoft.Insights** provider är registrerad, kör hello följande skript.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -69,7 +69,7 @@ armclient post "https://management.azure.com//subscriptions/${subscriptionId}/pr
 
 ## <a name="enable-network-security-group-flow-logs"></a>Aktivera Nätverkssäkerhetsgruppen flöde loggar
 
-Kommandot för att aktivera flödet loggarna visas i följande exempel:
+hello kommandot tooenable flöde loggar visas i följande exempel hello:
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -94,7 +94,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-Svaret som returnerades från föregående exempel är följande:
+hello svar returneras från hello föregående exempel är följande:
 
 ```json
 {
@@ -112,7 +112,7 @@ Svaret som returnerades från föregående exempel är följande:
 
 ## <a name="disable-network-security-group-flow-logs"></a>Inaktivera Nätverkssäkerhetsgruppen flöde loggar
 
-Använd följande exempel för att inaktivera flödet loggar. Anropet är detsamma som att aktivera flödet loggar, utom **FALSKT** har angetts för egenskapen enabled.
+Använd hello följande exempel toodisable flöde loggar. hello anropet är hello detsamma som att aktivera flödet loggar, utom **FALSKT** har angetts för egenskapen hello aktiverad.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -137,7 +137,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-Svaret som returnerades från föregående exempel är följande:
+hello svar returneras från hello föregående exempel är följande:
 
 ```json
 {
@@ -155,7 +155,7 @@ Svaret som returnerades från föregående exempel är följande:
 
 ## <a name="query-flow-logs"></a>Frågan flödet loggar
 
-Följande frågor för REST-anrop status för flöde loggar på en Nätverkssäkerhetsgrupp.
+hello följande frågor hello status för flödet av REST-anrop loggar på en Nätverkssäkerhetsgrupp.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -171,7 +171,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/queryFlowLogStatus?api-version=2016-12-01" $requestBody
 ```
 
-Följande är ett exempel på svaret som returnerades:
+hello följande är ett exempel på hello svaret som returnerades:
 
 ```json
 {
@@ -189,9 +189,9 @@ Följande är ett exempel på svaret som returnerades:
 
 ## <a name="download-a-flow-log"></a>Hämta en logg flöde
 
-Lagringsplatsen för en flödet logg definieras på Skapa. Ett enkelt verktyg för att komma åt dessa flödet loggar som sparats i ett lagringskonto är Microsoft Azure Lagringsutforskaren, som kan hämtas här: http://storageexplorer.com/
+hello lagringsplatsen för en flödet logg definieras på Skapa. En lämplig verktyget tooaccess dessa flödet loggar som sparas tooa storage-konto är Microsoft Azure Lagringsutforskaren, som kan hämtas här: http://storageexplorer.com/
 
-Om ett storage-konto anges sparas paket avbilda filer till ett lagringskonto på följande plats:
+Om ett lagringskonto har angetts sparas paket avbilda filer tooa storage-konto på hello följande plats:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId%3D/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.network/networksecuritygroups/{nsgName}/{year}/{month}/{day}/PT1H.json
@@ -199,6 +199,6 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du [visualisera dina NSG flödet loggar med PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Lär dig hur för[visualisera dina NSG flödet loggar med PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 
-Lär dig hur du [visualisera dina NSG flödet loggar med öppen källkod verktyg](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Lär dig hur för[visualisera dina NSG flödet loggar med öppen källkod verktyg](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)

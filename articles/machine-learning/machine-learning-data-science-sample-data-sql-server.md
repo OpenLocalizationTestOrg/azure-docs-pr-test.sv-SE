@@ -1,5 +1,5 @@
 ---
-title: "Exempeldata i SQLServer på Azure | Microsoft Docs"
+title: "aaaSample Data i SQL Server på Azure | Microsoft Docs"
 description: "Exempeldata i SQLServer på Azure"
 services: machine-learning
 documentationcenter: 
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: fashah;garye;bradsev
-ms.openlocfilehash: 1bdcc7175dac325de1144d805e977264524b3fbc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dc7f9529c771f6deb633775557e64a04b774f5b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="heading"></a>Exempeldata i SQL Server på Azure
-Det här dokumentet visar hur du samla in data som lagras i SQL Server på Azure med hjälp av SQL- eller Python-programmeringsspråket. Den visar även hur du flyttar samplade data till Azure Machine Learning genom att spara den till en fil, överföra den till en Azure blob och läsa den i Azure Machine Learning Studio.
+Det här dokumentet beskrivs hur toosample data lagras i SQL Server på Azure med hjälp av SQL eller hello Python-programmeringsspråket. Den visar även hur toomove exempeldata i Azure Machine Learning genom att spara den tooa filen, överföra den tooan Azure blob och läs sedan i Azure Machine Learning Studio.
 
-Python provtagning använder den [pyodbc](https://code.google.com/p/pyodbc/) ODBC-biblioteket för att ansluta till SQL Server på Azure och [Pandas](http://pandas.pydata.org/) biblioteket för att göra beräkningarna.
+hello Python provtagning använder hello [pyodbc](https://code.google.com/p/pyodbc/) ODBC-biblioteket tooconnect tooSQL Server på Azure och hello [Pandas](http://pandas.pydata.org/) biblioteket toodo hello provtagning.
 
 > [!NOTE]
-> Exempelkoden SQL i det här dokumentet förutsätter att data i en SQL Server på Azure. Om det inte finns [flytta data till SQL Server på Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) avsnittet för instruktioner om hur du flyttar dina data till SQL Server på Azure.
+> hello SQL exempelkoden i det här dokumentet förutsätter att hello data är i en SQL Server på Azure. Om det inte finns för[flytta data tooSQL Server på Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) avsnittet för instruktioner om hur toomove dina data tooSQL Server på Azure.
 > 
 > 
 
-Följande **menyn** länkar till avsnitt som beskriver hur du exempeldata från olika miljöer för lagring. 
+hello följande **menyn** länkar tootopics som beskriver hur toosample data från olika miljöer för lagring. 
 
 [!INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
 **Varför exempel dina data?**
-Om datamängden som du planerar att analysera är stort, men det är vanligtvis en bra idé att ned-sample data för att minska det till en mindre men representativt och mer användarvänlig storlek. Detta underlättar data förstå undersökning och funktionen tekniker. Roll i den [Team Data vetenskap processen (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) är att aktivera snabb prototyper för databearbetning funktions- och maskininlärning modeller.
+Om hello dataset som du planerar tooanalyze är stor, är det vanligtvis en god idé toodown sampel hello data tooreduce den tooa mindre men representativt och mer användarvänlig storlek. Detta underlättar data förstå undersökning och funktionen tekniker. Roll i hello [Team Data vetenskap processen (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) är tooenable snabb prototyper hello databearbetning funktioner och maskininlärning modeller.
 
-Sampling uppgiften är ett steg i den [Team Data vetenskap processen (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Sampling uppgiften är ett steg i hello [Team Data vetenskap processen (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="SQL"></a>Med SQL
-Det här avsnittet beskrivs flera metoder som använder SQL för att utföra enkla slumpmässig provtagning mot data i databasen. Välj en metod baserat på datastorleken på din och dess distributionsplatser.
+Det här avsnittet beskrivs flera metoder som använder SQL tooperform obundet slumpmässigt urval mot hello data i hello-databasen. Välj en metod baserat på datastorleken på din och dess distributionsplatser.
 
-De två objekten nedan visar hur du använder newid i SQL Server för att utföra beräkningarna. Vilken metod du väljer beror på hur slumpmässiga du vill att samplet som ska vara (pk_id i koden nedan antas vara en automatiskt genererad primärnyckel).
+hello två objekt nedan visar hur toouse newid i SQL Server-tooperform hello provtagning. hello metod du väljer beror på hur slumpmässiga du vill hello exempel toobe (pk_id i hello exempelkoden nedan antas toobe en automatiskt genererad primärnyckel).
 
 1. Mindre strikta slumpmässigt prov
    
@@ -53,7 +53,7 @@ De två objekten nedan visar hur du använder newid i SQL Server för att utför
         SELECT * FROM <table_name>
         WHERE 0.1 >= CAST(CHECKSUM(NEWID(), <primary_key>) & 0x7fffffff AS float)/ CAST (0x7fffffff AS int)
 
-Tablesample kan vara används för provtagning som visas nedan. Detta kan vara en bättre metod om dina data är stor (förutsatt att data på olika sidor inte korreleras) och för frågan ska slutföras inom en rimlig tid.
+Tablesample kan vara används för provtagning som visas nedan. Detta kan vara en bättre metod om dina data är stor (förutsatt att data på olika sidor inte korreleras) och för hello frågan toocomplete i rimlig tid.
 
     SELECT *
     FROM <table_name> 
@@ -64,34 +64,34 @@ Tablesample kan vara används för provtagning som visas nedan. Detta kan vara e
 > 
 > 
 
-### <a name="sql-aml"></a>Ansluta till Azure Machine Learning
-Du kan använda exempelfrågor ovan direkt i Azure Machine Learning [importera Data] [ import-data] modulen ned-sample data direkt och sätta den i ett Azure Machine Learning-experiment. En skärmbild av med hjälp av modulen läsare för att läsa samplade data visas nedan:
+### <a name="sql-aml"></a>Ansluta tooAzure Machine Learning
+Du kan använda hello exempelfrågor ovan direkt i hello Azure Machine Learning [importera Data] [ import-data] modulen toodown sampel hello data på hello föra och sätta den i ett Azure Machine Learning-experiment. En skärmbild av med hello reader modulen tooread hello provtagning data visas nedan:
 
 ![läsaren sql][1]
 
-## <a name="python"></a>Använder Python programmeringsspråket
-Det här avsnittet visas hur du använder den [pyodbc biblioteket](https://code.google.com/p/pyodbc/) att upprätta en ODBC ansluta till en SQL server-databas i Python. Anslutningssträngen för databasen är följande: (Ersätt servername, dbname, användarnamn och lösenord med din konfiguration):
+## <a name="python"></a>Med hjälp av programmeringsspråk för hello Python
+Det här avsnittet visas hur du använder hello [pyodbc biblioteket](https://code.google.com/p/pyodbc/) tooestablish ODBC ansluta tooa SQL server-databas i Python. hello databasanslutningssträng är följande: (Ersätt servername, dbname, användarnamn och lösenord med din konfiguration):
 
-    #Set up the SQL Azure connection
+    #Set up hello SQL Azure connection
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-Den [Pandas](http://pandas.pydata.org/) i Python-bibliotek innehåller ett stort utbud av datastrukturer och verktyg för analys av data för datamanipulering för Python-programmering. Koden nedan läser en 0,1% exempeldata från en tabell i Azure SQL-databas i en Pandas data:
+Hej [Pandas](http://pandas.pydata.org/) i Python-bibliotek innehåller ett stort utbud av datastrukturer och verktyg för analys av data för datamanipulering för Python-programmering. hello koden nedan läser ett 0,1% exempel hello data från en tabell i Azure SQL-databas i en Pandas data:
 
     import pandas as pd
 
-    # Query database and load the returned results in pandas data frame
+    # Query database and load hello returned results in pandas data frame
     data_frame = pd.read_sql('''select column1, cloumn2... from <table_name> tablesample (0.1 percent)''', conn)
 
-Nu kan du arbeta med samplade data i ramen Pandas data. 
+Nu kan du arbeta med hello provtagning data i hello Pandas data ram. 
 
-### <a name="python-aml"></a>Ansluta till Azure Machine Learning
-Du kan använda följande exempelkod för att spara provtagning ned data till en fil och överför den till en Azure blob. Data i blob direkt kan läsas in i ett Experiment i Azure Machine Learning med hjälp av den [importera Data] [ import-data] modul. Stegen är följande: 
+### <a name="python-aml"></a>Ansluta tooAzure Machine Learning
+Du kan använda följande kod toosave hello ned sampla tooa exempeldatafil hello och överföra den tooan Azure blob. hello data i blob hello kan direkt läsas in i ett Azure Machine Learning-Experiment med hello [importera Data] [ import-data] modul. hello stegen är följande: 
 
-1. Skriva ramen pandas data till en lokal fil
+1. Skriva hello pandas ram tooa lokala datafilen
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Ladda upp en lokal fil till Azure-blob
+2. Ladda upp en lokal fil tooAzure blob
    
         from azure.storage import BlobService
         import tables
@@ -112,12 +112,12 @@ Du kan använda följande exempelkod för att spara provtagning ned data till en
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Läsa data från Azure blob med hjälp av Azure Machine Learning [importera Data] [ import-data] modulen som visas i den skärmen grab nedan:
+3. Läsa data från Azure blob med hjälp av Azure Machine Learning [importera Data] [ import-data] modulen som visas i fälten för hello-skärmen nedan:
 
 ![läsaren blob][2]
 
-## <a name="the-team-data-science-process-in-action-example"></a>Team vetenskap av data i åtgärden exempel
-En slutpunkt till slutpunkt genomgången exempel på Team av vetenskapliga data med en offentlig dataset finns [Team vetenskap av data i praktiken: med hjälp av SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
+## <a name="hello-team-data-science-process-in-action-example"></a>hello Team av vetenskapliga data i åtgärden exempel
+En slutpunkt till slutpunkt genomgången exempel på hello Team av vetenskapliga data med en offentlig dataset finns [Team vetenskap av data i praktiken: med hjälp av SQL Server](machine-learning-data-science-process-sql-walkthrough.md).
 
 [1]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_database.png
 [2]: ./media/machine-learning-data-science-sample-sql-server-virtual-machine/reader_blob.png

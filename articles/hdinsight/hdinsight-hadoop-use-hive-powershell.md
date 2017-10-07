@@ -1,6 +1,6 @@
 ---
-title: "Använda Hadoop Hive med PowerShell i HDInsight - Azure | Microsoft Docs"
-description: "Använd PowerShell för att köra Hive-frågor i Hadoop på HDInsight."
+title: aaaUse Hadoop Hive med PowerShell i HDInsight - Azure | Microsoft Docs
+description: "Använd PowerShell toorun Hive-frågor i Hadoop i HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,26 +16,26 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/16/2017
 ms.author: larryfr
-ms.openlocfilehash: e1cb2e4a1fc82fb43082e79a5feba71b81b3eaa8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 9e0b72a25c5b12431f837b1a34a63ecc06223528
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-hive-queries-using-powershell"></a>Köra Hive-frågor med hjälp av PowerShell
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
 
-Det här dokumentet innehåller ett exempel på att använda Azure PowerShell i Azure-resursgrupp läge för att köra Hive-frågor i en Hadoop på HDInsight-kluster.
+Det här dokumentet innehåller ett exempel på hur Azure PowerShell i hello Azure-resursgrupp läge toorun Hive-frågor i en Hadoop på HDInsight-kluster.
 
 > [!NOTE]
-> Det här dokumentet ger inte en detaljerad beskrivning av HiveQL-instruktioner som används i exemplen gör. Information om HiveQL som används i det här exemplet finns [använda Hive med Hadoop i HDInsight](hdinsight-use-hive.md).
+> Det här dokumentet ger inte en detaljerad beskrivning av vad hello HiveQL-instruktioner som används i hello exempel göra. Mer information om hello HiveQL som används i det här exemplet finns [använda Hive med Hadoop i HDInsight](hdinsight-use-hive.md).
 
 **Förutsättningar**
 
-* **Ett Azure HDInsight-kluster**: Det spelar ingen roll om klustret är Windows eller Linux-baserade.
+* **Ett Azure HDInsight-kluster**: Det spelar ingen roll om hello klustret är Windows eller Linux-baserade.
 
   > [!IMPORTANT]
-  > Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * **En arbetsstation med Azure PowerShell**.
 
@@ -43,49 +43,49 @@ Det här dokumentet innehåller ett exempel på att använda Azure PowerShell i 
 
 ## <a name="run-hive-queries-using-azure-powershell"></a>Köra Hive-frågor med hjälp av Azure PowerShell
 
-Azure PowerShell innehåller *cmdlets* som gör det möjligt att köra Hive-frågor via fjärranslutning på HDInsight. Internt, cmdletarna gör REST-anrop till [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) på HDInsight-kluster.
+Azure PowerShell innehåller *cmdlets* som gör det möjligt tooremotely kör Hive-frågor i HDInsight. Internt hello cmdlets gör REST-anrop för[WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) på hello HDInsight-kluster.
 
-Följande cmdlets som används när du kör Hive-frågor i en fjärransluten HDInsight-kluster:
+hello används följande cmdletar när du kör Hive-frågor i en fjärransluten HDInsight-kluster:
 
-* **Lägg till AzureRmAccount**: autentiserar till Azure-prenumeration i Azure PowerShell
-* **Nya AzureRmHDInsightHiveJobDefinition**: skapar ett *jobbet definition* med hjälp av de angivna HiveQL-instruktionerna
-* **Start-AzureRmHDInsightJob**: skickar jobbdefinitionen till HDInsight, startar jobbet och returnerar ett *jobbet* objekt som kan användas för att kontrollera status för jobbet
-* **Vänta AzureRmHDInsightJob**: använder jobbobjektet för att kontrollera status för jobbet. Den väntar tills jobbet slutförs eller väntetiden har överskridits.
-* **Get-AzureRmHDInsightJobOutput**: används för att hämta utdata för jobbet
-* **Anropa AzureRmHDInsightHiveJob**: används för att köra HiveQL-instruktioner. Den här cmdlet-block frågan har slutförts, och returnerar sedan resultatet
-* **Använd AzureRmHDInsightCluster**: Anger det aktuella klustret ska användas för den **Invoke-AzureRmHDInsightHiveJob** kommando
+* **Lägg till AzureRmAccount**: autentiserar Azure PowerShell tooyour Azure-prenumeration
+* **Nya AzureRmHDInsightHiveJobDefinition**: skapar ett *jobbet definition* anges med hjälp av hello HiveQL-instruktioner
+* **Start-AzureRmHDInsightJob**: skickar hello jobbet definition tooHDInsight, startar hello jobb och returnerar ett *jobbet* objekt som kan vara används toocheck hello status för hello jobb
+* **Vänta AzureRmHDInsightJob**: använder hello objektet toocheck hello jobbstatus för hello jobb. Den väntar tills hello jobbet slutförs eller hello väntetiden har överskridits.
+* **Get-AzureRmHDInsightJobOutput**: används tooretrieve hello utdata för hello jobb
+* **Anropa AzureRmHDInsightHiveJob**: används toorun HiveQL-instruktioner. Den här cmdlet block hello frågan har slutförts, och returnerar sedan hello resultat
+* **Använd AzureRmHDInsightCluster**: Anger hello aktuella klustret toouse för hello **Invoke-AzureRmHDInsightHiveJob** kommando
 
-Följande steg visar hur du använder dessa cmdlets för att köra ett jobb i HDInsight-kluster:
+hello följande steg visar hur toouse dessa cmdlets toorun ett jobb i HDInsight-kluster:
 
-1. Med hjälp av en redigerare, spara följande kod som **hivejob.ps1**.
+1. Med hjälp av en redigerare, spara hello efter koden som **hivejob.ps1**.
 
-    [!code-powershell[huvudsakliga](../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
+    [!code-powershell[main](../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=5-42)]
 
-2. Öppna ett nytt **Azure PowerShell** kommandotolk. Ändra kataloger till platsen för den **hivejob.ps1** filen och sedan använder du följande kommando för att köra skriptet:
+2. Öppna ett nytt **Azure PowerShell** kommandotolk. Ändra kataloger toohello placeringen hello **hivejob.ps1** filen och sedan använda hello följande kommandoskript toorun hello:
 
         .\hivejob.ps1
 
-    När skriptet körs, uppmanas du att ange klusternamnet och HTTPS/Admin-autentiseringsuppgifter för klustret. Du kan också uppmanas att logga in på Azure-prenumerationen.
+    När hello skriptet körs, är du tillfrågas tooenter hello klustrets namn och hello HTTPS/Admin autentiseringsuppgifter för hello klustret. Du kanske också ange toolog i tooyour Azure-prenumeration.
 
-3. När jobbet är slutfört returnerar den information liknar följande thext:
+3. När hello jobbet är slutfört, returnerar information liknande toohello följande thext:
 
-        Display the standard output...
+        Display hello standard output...
         2012-02-03      18:35:34        SampleClass0    [ERROR] incorrect       id
         2012-02-03      18:55:54        SampleClass1    [ERROR] incorrect       id
         2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
 
-4. Som tidigare nämnts **Invoke-Hive** kan användas för att köra en fråga och vänta på svar. Använd följande skript för att se hur Invoke-Hive fungerar:
+4. Som tidigare nämnts **Invoke-Hive** kan använda toorun en fråga och vänta på hello svar. Använd följande skript toosee hur Invoke-Hive fungerar hello:
 
-    [!code-powershell[huvudsakliga](../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
+    [!code-powershell[main](../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
 
-    Det ser ut som följande utdata:
+    hello utdata ser ut så hello följande text:
 
         2012-02-03    18:35:34    SampleClass0    [ERROR]    incorrect    id
         2012-02-03    18:55:54    SampleClass1    [ERROR]    incorrect    id
         2012-02-03    19:25:27    SampleClass4    [ERROR]    incorrect    id
 
    > [!NOTE]
-   > Du kan använda Azure PowerShell för längre HiveQL frågor **här strängar** cmdlet eller HiveQL skriptfiler. Följande utdrag visar hur du använder den **Invoke-Hive** för att köra en HiveQL-skriptfil. HiveQL skriptfilen måste överföras till wasb: / /.
+   > Du kan använda hello Azure PowerShell för längre HiveQL frågor **här strängar** cmdlet eller HiveQL skriptfiler. hello följande fragment visas hur toouse hello **Invoke-Hive** cmdlet toorun en HiveQL-skriptfil. Hej HiveQL skriptfilen måste vara överförs toowasb: / /.
    >
    > `Invoke-AzureRmHDInsightHiveJob -File "wasb://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
@@ -93,10 +93,10 @@ Följande steg visar hur du använder dessa cmdlets för att köra ett jobb i HD
 
 ## <a name="troubleshooting"></a>Felsökning
 
-Om ingen information returneras när jobbet är slutfört, har ett fel inträffat under bearbetning. Om du vill visa information om fel för det här jobbet, lägger du till följande i slutet av den **hivejob.ps1** filen, spara den och kör det igen.
+Om ingen information returneras när hello jobbet är slutfört, har ett fel inträffat under bearbetning. tooview felinformation för det här jobbet kan lägga till hello efter toohello hello **hivejob.ps1** filen, spara den och kör det igen.
 
 ```powershell
-# Print the output of the Hive job.
+# Print hello output of hello Hive job.
 Get-AzureRmHDInsightJobOutput `
         -Clustername $clusterName `
         -JobId $job.JobId `
@@ -104,11 +104,11 @@ Get-AzureRmHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-Denna cmdlet returnerar informationen som skrivs till STDERR på servern när du körde jobbet.
+Denna cmdlet returnerar hello information som skrivs tooSTDERR på hello server när du körde hello jobbet.
 
 ## <a name="summary"></a>Sammanfattning
 
-Du kan se ger Azure PowerShell ett enkelt sätt att köra Hive-frågor i ett HDInsight-kluster, övervaka jobbstatus och hämta utdata.
+Som du kan se Azure PowerShell tillhandahåller ett enkelt sätt toorun Hive-frågor i ett HDInsight-kluster, övervaka hello jobbstatusen och hämta hello utdata.
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -29,8 +29,8 @@
 
 ## Utveckla
 ### [API-versioner](search-api-versions.md)
-### [Uppgradera SDK](search-dotnet-sdk-migration.md)
-### [Uppgradera REST API](search-api-migration.md)
+### [Uppgradera hello SDK](search-dotnet-sdk-migration.md)
+### [Uppgradera hello REST API](search-api-migration.md)
 ### [Skapa modeller över komplexa datatyper](search-howto-complex-data-types.md)
 ### [Hantera samtidiga uppdateringar](search-howto-concurrency.md)
 ### [Kodexempel](https://azure.microsoft.com/resources/samples/?service=search)
@@ -50,7 +50,7 @@
 ### [Azure Cosmos DB-indexeraren](search-howto-index-documentdb.md)
 ### [Index CSV-blobar](search-howto-index-csv-blobs.md)
 ### [Index JSON-blobar](search-howto-index-json-blobs.md)
-### [Konfigurera indexerarens anslutningar till SQL Server på Azure VM](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
+### [Konfigurera indexeraren anslutningar tooSQL Server på Azure VM](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 ### [Fältmappningar i indexerare](search-indexer-field-mappings.md)
 ##  Search
 ### [Så här fungerar fulltextsökning](search-lucene-query-architecture.md)

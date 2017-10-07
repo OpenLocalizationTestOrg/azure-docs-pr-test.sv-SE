@@ -1,6 +1,6 @@
 ---
-title: "Automatiserade skript för att skapa webbprogram för Service Manager att ansluta med IT Service Management-anslutningstjänsten i OMS | Microsoft Docs"
-description: "Skapa en webbapp för Service Manager med ett automatiserat skript för att ansluta med IT Service Management-anslutningstjänsten i OMS, och centralt övervaka och hantera arbetsobjekt ITSM."
+title: "aaaAutomated skript toocreate Service Manager Web app tooconnect med IT Service Management-anslutningstjänsten i OMS | Microsoft Docs"
+description: "Skapa ett webbprogram för Service Manager med hjälp av ett automatiserat skript tooconnect med IT Service Management-anslutningstjänsten i OMS, centralt övervaka och hantera hello ITSM arbetsobjekt."
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: v-jysur
-ms.openlocfilehash: ad69d82e57be8bfd9ba40dd88cbc0a979c9e1722
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cbe6a1f75548ac541fd428a977edf64eea959e4f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script-preview"></a>Skapa Service Manager-webbprogram med hjälp av automatiserade skript (förhandsgranskning)
+# <a name="create-service-manager-web-app-using-hello-automated-script-preview"></a>Skapa Service Manager-webbprogram med hjälp av hello automatiserade skript (förhandsgranskning)
 
-Använd följande skript för att skapa webbprogram för Service Manager-instansen. Mer information om Service Manager-anslutningen finns här: [Service Manager-webbprogram](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Använd hello följande skript toocreate hello webbapp för Service Manager-instansen. Mer information om Service Manager-anslutningen finns här: [Service Manager-webbprogram](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
-Kör skript genom att tillhandahålla följande obligatoriska uppgifter:
+Kör hello skript genom att tillhandahålla hello följande obligatoriska information:
 
 - Information om Azure-prenumeration
 - Resursgruppens namn
@@ -33,16 +33,16 @@ Kör skript genom att tillhandahålla följande obligatoriska uppgifter:
 - Platsen namnprefixet för ditt webbprogram
 - ServiceBus-Namespace.
 
-Skriptet skapar webbappen med hjälp av namnet som du angav (tillsammans med några ytterligare strängar som gör det unikt). Den genererar den **Webbappens URL**, **klient-ID** och **klienthemlighet**.
+hello skriptet skapar hello webbapp med hello namnet du angav (tillsammans med några ytterligare strängar toomake den unika). Den genererar hello **Webbappens URL**, **klient-ID** och **klienthemlighet**.
 
 Spara dessa värden måste dessa när du skapar en anslutning med IT Service Management-anslutningstjänsten.
 
 ## <a name="prerequisites"></a>Krav
 
  Windows Management Framework 5.0 eller senare.
-Windows 10 har 5.1 som standard. Du kan hämta framework från [här](https://www.microsoft.com/download/details.aspx?id=53347):
+Windows 10 har 5.1 som standard. Du kan hämta hello framework från [här](https://www.microsoft.com/download/details.aspx?id=53347):
 
-Använd följande skript:
+Använd hello följande skript:
 
 ```
 ####################################
@@ -52,7 +52,7 @@ Använd följande skript:
 # Subscription name in Azure account. Check in Azure Portal.
 $azureSubscriptionName = ""
 
-# Resource group name for resource deployment. Could be an existing resource group or a new one to be created.
+# Resource group name for resource deployment. Could be an existing resource group or a new one toobe created.
 $resourceGroupName = ""
 
 # Location for existing resource group or new resource group deployment
@@ -70,7 +70,7 @@ $username = ""
 $password = ""
 
 
-# Azure site Name Prefix. Default is "smoc". It can be configured to any desired value.
+# Azure site Name Prefix. Default is "smoc". It can be configured tooany desired value.
 $siteNamePrefix = ""
 
 # Service Bus namespace. Please provide an already existing service bus namespace.
@@ -85,7 +85,7 @@ $serviceName = ""
 # Installations
 ################
 
-# Allowing the execution of the script for current user.  
+# Allowing hello execution of hello script for current user.  
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
 
 Write-Host "Checking for required modules..."
@@ -141,7 +141,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }
     catch
     {
-        Write-Host "Failed to Register Microsoft.Web Resource Provider. Please register it in Azure Portal."
+        Write-Host "Failed tooRegister Microsoft.Web Resource Provider. Please register it in Azure Portal."
         exit
     }   
 }
@@ -203,7 +203,7 @@ try
 }
 catch
 {
-    # Delete the deployed web app if Azure AD application fails
+    # Delete hello deployed web app if Azure AD application fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
     Write-Host "Faiure occured in Azure AD application....Try again!!"
@@ -247,10 +247,10 @@ catch
 {
     Write-Host "Web App configuration failed. Please ensure all values are provided in Service Manager Authentication Settings in User Configuration Section"
 
-    # Delete the AzureRm AD Application if confiuration fails
+    # Delete hello AzureRm AD Application if confiuration fails
     Remove-AzureRmADApplication -ObjectId $adApp.ObjectId -Force
 
-    # Delete the deployed web app if configuration fails
+    # Delete hello deployed web app if configuration fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
     exit
@@ -276,7 +276,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }
     catch
     {
-        Write-Host "Failed to Register Microsoft.Relay Resource Provider. Please register it in Azure Portal."
+        Write-Host "Failed tooRegister Microsoft.Relay Resource Provider. Please register it in Azure Portal."
     }   
 }
 
@@ -305,7 +305,7 @@ if(!$resource)
 
 }
 
-Write-Host "Note: Please Configure Hybrid connection in the Networking section of the web application in Azure Portal to link to the on-premises system.`n"
+Write-Host "Note: Please Configure Hybrid connection in hello Networking section of hello web application in Azure Portal toolink toohello on-premises system.`n"
 Write-Host "App Details"
 Write-Host "============"
 Write-Host "App Name:"  $siteName
@@ -319,4 +319,4 @@ if(!$err)
 
 ```
 ## <a name="next-steps"></a>Nästa steg
-[Konfigurera anslutningen Hybrid](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).
+[Konfigurera hello hybridanslutning](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).

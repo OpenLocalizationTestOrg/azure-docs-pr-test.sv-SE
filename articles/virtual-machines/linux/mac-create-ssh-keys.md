@@ -1,6 +1,6 @@
 ---
-title: "Skapa och använd ett SSH-nyckelpar för virtuella Linux-datorer i Azure | Microsoft Docs"
-description: "Så här skapar och använder du ett offentligt och privat SSH-nyckelpar för virtuella Linux-datorer i Azure för att förbättra säkerheten för autentiseringsprocessen."
+title: "aaaCreate och använder en SSH-nyckelpar för Linux virtuella datorer i Azure | Microsoft Docs"
+description: "Hur toocreate och använder ett SSH offentliga och privata nyckelpar för Linux virtuella datorer i Azure tooimprove hello säkerheten för hello autentiseringsprocessen."
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 0fb71d2ffe533afba6e1e527b727a7b085e7da14
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7fb94841d34d5bc006f3134adf91102ddce5f174
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Så här skapar du säkert ett offentligt och ett privat SSH-nyckelpar för virtuella Linux-datorer i Azure
-Med ett SSH-nyckelpar kan du skapa virtuella datorer i Azure som använder SSH-nycklar för autentisering, vilket gör att inga lösenord krävs för att logga in. I den här artikeln visas hur du kan skapa ett RSA-nyckelfilpar med SSH-protokollversion 2 med en offentlig och en privat nyckel för virtuella Linux-datorer. Mer detaljerade steg och ytterligare exempel finns i [detaljerade steg för att skapa SSH-nyckelpar och certifikat](create-ssh-keys-detailed.md).
+# <a name="how-toocreate-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Hur toocreate och använder en SSH-offentliga och privata nyckel koppla för Linux virtuella datorer i Azure
+Du kan använda ett nyckelpar för secure shell (SSH), för att skapa virtuella datorer (VM) i Azure som använder SSH-nycklar för autentisering, vilket eliminerar hello behovet av att lösenord toolog i. Den här artikeln visar hur tooquickly generera och använda en SSH-protokollet version 2 RSA offentliga och privata nyckelfilen nyckelpar för Linux virtuella datorer. Mer detaljerad steg och ytterligare exempel finns [detaljerade steg toocreate SSH-nyckelpar och certifikat](create-ssh-keys-detailed.md).
 
 ## <a name="create-an-ssh-key-pair"></a>Skapa ett SSH-nyckelpar
-Använd kommandot `ssh-keygen` för att skapa offentliga och privata SSH-nyckelfiler som skapas i katalogen `~/.ssh` som standard. Du kan också ange en annan plats och ytterligare lösenfras (ett lösenord för att få åtkomst till den privata nyckelfilen) när du blir ombedd att göra det. Kör följande kommando från ett Bash-kommando och svara på frågorna med din egen information.
+Använd hello `ssh-keygen` kommandot toocreate SSH offentliga och privata nyckelfiler som är som standard som skapats i hello `~/.ssh` directory, men du kan ange en annan plats och ytterligare lösenfras (en lösenord tooaccess hello fil för privat nyckel) när Du uppmanas till detta. Kör följande kommando från ett Bash-gränssnitt hello besvara hello frågar med din egen information.
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
-## <a name="use-the-ssh-key-pair"></a>Använda SSH-nyckelpar
-Den offentliga nyckel du placerar i din virtuella Linux-dator i Azure lagras som standard i `~/.ssh/id_rsa.pub`, om du inte har ändrat plats när du skapade den. Om du använder [Azure CLI 2.0](/cli/azure) när du skapar din virtuella dator anger du plats för den offentliga nyckeln när du använder [az vm create](/cli/azure/vm#create) med alternativet `--ssh-key-path`. Om du kopierar och klistrar in innehållet i den offentliga nyckelfilen för att använda det i Azure Portal eller i en Resource Manager-mall ska du se till att inte kopiera några extra blanksteg. Om du exempelvis använder OS X kan du skicka den offentliga nyckelfilen (som standard **~/.ssh/id_rsa.pub**) till **pbcopy** för att kopiera innehållet (det finns andra Linux-program som gör samma sak, som `xclip`).
+## <a name="use-hello-ssh-key-pair"></a>Använd hello SSH-nyckel
+hello offentliga nyckeln som placeras på din Linux VM i Azure är som standard i `~/.ssh/id_rsa.pub`, om du har ändrat hello plats när du har skapat. Om du använder hello [Azure CLI 2.0](/cli/azure) toocreate din VM, ange hello platsen för den här offentliga nyckeln när du använder hello [az vm skapa](/cli/azure/vm#create) med hello `--ssh-key-path` alternativet. Om du kopierar och klistrar in hello innehållet i hello offentlig nyckelfil toouse i hello Azure-portalen eller Resource Manager-mall, kontrollera att du inte kopiera några ytterligare blanksteg. Till exempel om du använder OS X, kan du skicka hello-fil för offentlig nyckel (som standard **~/.ssh/id_rsa.pub**) för**pbcopy** toocopy hello innehållet (det finns andra Linux-program som hello samma sak, till exempel `xclip`).
 
 Om du inte är bekant med offentliga nycklar för SSH kan du se din offentliga nyckel genom att köra `cat` enligt följande, och ersätta `~/.ssh/id_rsa.pub` med din egen plats för offentlig nyckelfil:
 
@@ -40,20 +40,20 @@ Om du inte är bekant med offentliga nycklar för SSH kan du se din offentliga n
 cat ~/.ssh/id_rsa.pub
 ```
 
-Med den offentliga nyckeln på din virtuella Azure-dator, SSH till din virtuella dator med datorns IP-adress eller DNS-namn (kom ihåg att ersätta `azureuser` och `myvm.westus.cloudapp.azure.com` nedan med adminanvändarnamnet och det fullständigt kvalificerade domännamnet – eller IP-adress):
+Med hello offentlig nyckel på Azure VM, SSH tooyour VM med hello IP-adress eller DNS-namnet på den virtuella datorn (Kom ihåg tooreplace `azureuser` och `myvm.westus.cloudapp.azure.com` nedan med hello administratörsanvändarnamnet och fullständigt kvalificerat domännamn för hello- eller IP-adress):
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
 ```
 
-Om du angav en lösenfras när du skapade ditt nyckelpar ska du ange lösenfrasen när frågan kommer under inloggningen. (Servern läggs till i din `~/.ssh/known_hosts`-mapp, och du blir inte ombedd att ansluta igen förrän den offentliga nyckeln på din virtuella Azure-dator ändras eller när servernamnet tas bort från `~/.ssh/known_hosts`.)
+Om du angav en lösenfras när du skapade din nyckelpar, ange hello lösenfras när frågan under hello inloggningen. (hello server läggs tooyour `~/.ssh/known_hosts` och du inte uppge tooconnect igen förrän hello offentliga nyckel på Virtuella Azure-ändringar eller hello servernamn tas bort från `~/.ssh/known_hosts`.)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lösenord är som standard inaktiverade för virtuella datorer som skapas med SSH-nycklar för att göra råstyrkeattacker något dyrare och därför svåra. I det här avsnittet beskrivs hur du skapar en enkel SSH-nyckel för snabb användning. Om du behöver mer hjälp för att skapa SSH-nyckelpar eller om du behöver fler certifikat finns [detaljerade steg för att skapa SSH-nyckelpar och certifikat](create-ssh-keys-detailed.md).
+Virtuella datorer som skapats med hjälp av SSH-nycklar är som standard konfigurerade med lösenord inaktiveras, toomake nyckelsökningsattacker gissa försöker frågeprestanda avsevärt dyrare och därför svårt. I det här avsnittet beskrivs hur du skapar en enkel SSH-nyckel för snabb användning. Om du behöver mer hjälp med att skapa SSH-nyckel eller kräver ytterligare certifikat, se [detaljerade steg toocreate SSH-nyckelpar och certifikat](create-ssh-keys-detailed.md).
 
-Du kan skapa virtuella datorer som använder ditt SSH-nyckelpar med Azure Portal, CLI och mallar:
+Du kan skapa virtuella datorer som använder en SSH-nyckel med hjälp av hello Azure-portalen, CLI och mallar:
 
-* [Skapa en säker virtuell Linux-dator med hjälp av Azure Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Skapa en säker virtuell Linux-dator med hjälp av Azure CLI 2.0)](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Skapa en säker Linux VM som använder hello Azure-portalen](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Skapa en säker Linux VM som använder hello Azure CLI 2.0)](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Skapa en säker virtuell Linux-dator med hjälp av en Azure-mall](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

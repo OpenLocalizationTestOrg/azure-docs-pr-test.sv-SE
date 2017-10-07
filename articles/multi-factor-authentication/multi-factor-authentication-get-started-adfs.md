@@ -1,6 +1,6 @@
 ---
-title: "Tvåstegsverifiering och AD FS – Azure MFA | Microsoft Docs"
-description: "Det här är sidan om Azure Multi-Factor Authentication som beskriver hur du kommer igång med Azure MFA och AD FS."
+title: aaaTwo steg verifiering och AD FS - Azure MFA | Microsoft Docs
+description: "Det här är hello Azure Multi-Factor authentication sida som beskriver hur tooget igång med Azure MFA och AD FS."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/23/2017
 ms.author: kgremban
-ms.openlocfilehash: 28aede545c738137ff04257214e4a3f42792d85c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7c1c925039d3cb753ba60e286168e5869faeae4d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Komma igång med Azure Multi-Factor Authentication och Active Directory Federation Services
 <center>![Moln](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
@@ -28,22 +28,22 @@ Om din organisation har federerat det lokala Active Directory med Azure Active D
 * Skydda molnresurser med Azure Multi-Factor Authentication eller Active Directory Federation Services
 * Skydda molnet och lokala resurser med Azure Multi-Factor Authentication Server
 
-Följande tabell sammanfattar verifieringsupplevelsen när resurser skyddas med Azure Multi-Factor Authentication och AD FS
+hello följande tabell sammanfattas hello verifiering upplevelse mellan att skydda resurser med Azure Multi-Factor Authentication och AD FS
 
 | Verifieringsupplevelse – webbläsarbaserade appar | Verifieringsupplevelse – appar som inte är webbläsarbaserade |
 |:--- |:--- |:--- |
-| Skydda Azure AD-resurser med hjälp av Azure Multi-Factor Authentication |<li>Det första verifieringssteget utförs lokalt med hjälp av AD FS.</li> <li>Det andra steget är en telefonbaserad metod som utförs med hjälp av molnautentisering.</li> |
-| Skydda Azure AD-resurser med hjälp av Active Directory Federation Services |<li>Det första verifieringssteget utförs lokalt med hjälp av AD FS.</li><li>Det andra steget utförs lokalt genom att anspråket tillämpas.</li> |
+| Skydda Azure AD-resurser med hjälp av Azure Multi-Factor Authentication |<li>hello första verifieringssteget utförs lokalt med hjälp av AD FS.</li> <li>hello andra steget är en telefonbaserad metod som utförs genom att använda autentisering i molnet.</li> |
+| Skydda Azure AD-resurser med hjälp av Active Directory Federation Services |<li>hello första verifieringssteget utförs lokalt med hjälp av AD FS.</li><li>hello andra steget är utförs lokalt genom att respektera hello anspråk.</li> |
 
 Varningar med applösenord för federerade användare:
 
 * Applösenord verifieras med molnautentisering och kringgår därför federation. Federation används endast aktivt när applösenorden konfigureras.
 * Inställningar för lokal klientåtkomstkontroll respekteras inte av applösenord.
 * Du kan inte använda lokal autentiseringsloggning med applösenord.
-* Inaktiveringen eller borttagningen av konton kan ta upp till tre timmar för katalogsynkronisering, vilket försenar inaktiveringen eller borttagningen av applösenord i molnidentiteten.
+* Inaktivering/borttagning av konto kan ta toothree timmar för directory-synkronisering, vilket fördröjer inaktivering/borttagning av applösenord i hello molnidentitet.
 
 ## <a name="next-steps"></a>Nästa steg
-Information om hur du konfigurerar Azure Multi-Factor Authentication eller Azure Multi-Factor Authentication Server med AD FS finns i följande artiklar:
+Information om hur du konfigurerar Azure Multi-Factor Authentication eller hello Azure Multi-Factor Authentication-Server med AD FS finns i hello följande artiklar:
 
 * [Skydda molnresurser med hjälp av Azure Multi-Factor Authentication och AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
 * [Skydda molnresurser och lokala resurser med Azure Multi-Factor Authentication Server med Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)

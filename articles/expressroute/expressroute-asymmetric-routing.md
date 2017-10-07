@@ -1,6 +1,6 @@
 ---
-title: Asymmetrisk routning | Microsoft Docs
-description: "Den här artikeln beskriver problem som kan uppstå i samband med asymmetrisk routning i en kunds nätverk som har flera länkar till ett mål."
+title: aaaAsymmetric Routning | Microsoft Docs
+description: "Den här artikeln vägleder dig genom hello problem en kund kan utsättas med asymmetriska routning i ett nätverk som har flera länkar tooa mål."
 documentationcenter: na
 services: expressroute
 author: osamazia
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: osamam
-ms.openlocfilehash: 8568c13d2834a0643e15ab1814a35c92123837d1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 01a16242437a3674dcfe27b074911a829a6c1abd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>Asymmetrisk routning med flera nätverksvägar
 Den här artikeln förklarar hur utgående och återvändande nätverkstrafik kan ta olika vägar när det finns flera vägar tillgängliga mellan nätverkskällan och målet.
 
-Det är viktigt att förstå två begrepp för att förstå asymmetrisk routning. Ett är effekten av flera nätverksvägar. Det andra är hur enheter, som en brandvägg, behåller tillstånd. Dessa typer av enheter kallas tillståndskänsliga enheter. En kombination av dessa två faktorer skapar scenarier där trafik ignoreras av en tillståndskänslig enhet eftersom den tillståndskänsliga enheten inte kunde identifiera att trafik hade sitt ursprung i själva enheten.
+Det är viktigt toounderstand två begrepp toounderstand asymmetriska routning. En är hello effekten av flera nätverkssökvägar. hello andra är hur enheter som en brandvägg, hålla tillstånd. Dessa typer av enheter kallas tillståndskänsliga enheter. En kombination av dessa två faktorer skapar scenarier som trafik ignoreras av en tillståndskänslig enhet eftersom hello tillståndskänslig enheten inte kunde identifiera att trafiken kommer med själva hello-enheten.
 
 ## <a name="multiple-network-paths"></a>Flera nätverksvägar
-När ett företagsnätverk bara har en länk till Internet via sin Internetleverantör reser all trafik till och från Internet via samma väg. Företag köper ofta flera kanaler, som redundanta sökvägar, för att förbättra nätverkets aktiva tid. När detta sker, kan det hända att trafik går utanför nätverket, till Internet, via en länk, och den returnerade trafiken passerar via en annan länk. Detta kallas asymmetrisk routning. Vid omvänd nätverkstrafik tar asymmetrisk routning en annan väg från det ursprungliga flödet.
+När ett företagsnätverk har endast en länk toohello Internet via deras Internet-leverantör, alla trafik tooand från hello Internet flyttar hello samma sökväg. Företag köpa ofta flera kretsar som redundanta sökvägar, tooimprove nätverk drifttid. Då kan returnera det är möjligt att trafik som går utanför hello nätverk, toohello Internet genomgår en länk och hello trafik som passerar en annan länk. Detta kallas asymmetrisk routning. Omvänd nätverkstrafik tar asymmetriska routning, en annan sökväg från hello ursprungliga flöde.
 
 ![Nätverk med flera sökvägar](./media/expressroute-asymmetric-routing/AsymmetricRouting3.png)
 
-Även om det främst uppstår på Internet, gäller även asymmetrisk routning för andra kombinationer av flera vägar. Det gäller till exempel både för en Internet-väg och en privat väg som går till samma mål och för flera privata vägar till samma mål.
+Även om det uppstår i första hand i hello Internet, gäller även asymmetriska routning tooother kombinationer av flera sökvägar. Det gäller, till exempel både tooan Internet sökväg och ett privat sökväg gå toohello samma mål och toomultiple privata sökvägar som går toohello samma mål.
 
-Varje router på vägen från källan till målet, beräknar den bästa vägen för att nå ett mål. Den bästa möjliga vägen fastställs av routern baserat på två huvudfaktorer:
+Varje router hello vägen från källan toodestination beräknar hello bästa sökvägen tooreach ett mål. hello baseras routerns bestämning av bästa möjliga sökvägar på två huvudsakliga faktorer:
 
-* Routning mellan externa nätverk baseras på ett routningsprotokoll, Border Gateway Protocol (BGP). BGP tar annonser från grannar och kör dem via ett antal åtgärder för att avgöra den bästa vägen till det avsedda målet. Bästa vägen lagras i dess routningstabell.
-* Längden på en nätmask som är associerad med en väg påverkar routningsvägarna. Om en router tar emot flera annonser för samma IP-adress men med olika nätmasker, föredrar routern annonsen med en längre nätmask eftersom den betraktas som en mer specifik väg.
+* Routning mellan externa nätverk baseras på ett routningsprotokoll, Border Gateway Protocol (BGP). BGP tar annonser från grannar och kör dem via en serie steg toodetermine hello bästa sökväg toohello avsedda mål. Hello bästa sökvägen lagras i routningstabellen.
+* hello längden på nätmasken som är kopplade till en väg påverkar routning sökvägar. Om en router tar emot flera annonser för hello samma IP-adress men med olika nätmasker hello router föredrar hello annons med nätmasken längre tid eftersom den har anses vara en mer specifik väg.
 
 ## <a name="stateful-devices"></a>Tillståndskänsliga enheter
-Routrar tittar på ett pakets IP-huvud för att bestämma routningen. Vissa enheter leta djupare i paketet. Normalt tittar enheterna på Layer4-huvuden (Transmission Control Protocol eller TCP; eller User Datagram Protocol eller UDP), eller Layer7-huvuden (Application Layer). Dessa typer av enheter är antingen säkerhetsenheter eller enheter för bandbreddsoptimering. 
+Routrar titta på hello IP-rubriken för ett paket för routning. Vissa enheter leta djupare i hello-paket. Normalt tittar enheterna på Layer4-huvuden (Transmission Control Protocol eller TCP; eller User Datagram Protocol eller UDP), eller Layer7-huvuden (Application Layer). Dessa typer av enheter är antingen säkerhetsenheter eller enheter för bandbreddsoptimering. 
 
-En brandvägg är ett vanligt exempel på en tillståndskänslig enhet. En brandvägg tillåter eller nekar ett paket passage genom sina gränssnitt baserat på olika fält som protokoll, TCP/UDP-port och URL-huvuden. Den här nivån av paketinspektion placerar kraftig belastningen på enheten. För att förbättra prestanda inspekterar brandväggen det första paketet i ett flöde. Om paketet tillåts fortsätta, sparas flödesinformationen i tillståndstabellen. Alla efterföljande paket som är relaterade till detta flöde tillåts baserat på det första beslutet. Ett paket som är en del av ett befintligt flöde kan nå brandväggen. Om brandväggen inte har någon tidigare statusinformation om paketet, utelämnar brandväggen paketet.
+En brandvägg är ett vanligt exempel på en tillståndskänslig enhet. En brandvägg tillåter eller nekar ett paket toopass via dess gränssnitt baserat på olika fält som protokoll, TCP/UDP-port och URL-huvuden. Den här nivån av paketinspektion placerar kraftig belastningen på hello enhet. tooimprove prestanda hello brandväggen undersöker hello första paketet i ett flöde. Om det tillåter hello paket tooproceed behålls hello flödesinformation i tabell tillstånd. Alla efterföljande paket relaterade toothis flöde tillåts baserat på hello bestämning. Ett paket som ingår i en befintlig flöde kan nå hello brandväggen. Om hello brandväggen har ingen tidigare tillståndsinformation om den, släpper hello brandväggen hello-paket.
 
 ## <a name="asymmetric-routing-with-expressroute"></a>Asymmetrisk routning med ExpressRoute
-När du ansluter till Microsoft via Azure ExpressRoute, ändras nätverket så här:
+När du ansluter tooMicrosoft via Azure ExpressRoute som dina ändringar i nätverket detta:
 
-* Du har flera länkar till Microsoft. En länk är din befintliga Internetanslutning och den andra är via ExpressRoute. En del trafik till Microsoft kan gå genom Internet men komma tillbaka via ExpressRoute eller tvärtom.
-* Du får mer specifika IP-adresser via ExpressRoute. För trafik från ditt nätverk till Microsoft för tjänster som erbjuds via ExpressRoute föredrar routrar därför alltid ExpressRoute.
+* Du har flera länkar tooMicrosoft. En länk är din befintliga Internet-anslutning och hello andra är via ExpressRoute. Vissa trafik tooMicrosoft kan gå igenom hello Internet men komma tillbaka via ExpressRoute, och vice versa.
+* Du får mer specifika IP-adresser via ExpressRoute. Så för trafik från din tooMicrosoft nätverk för tjänster som erbjuds via ExpressRoute föredrar routrar alltid ExpressRoute.
 
-För att förstå den effekt som dessa två ändringar har på ett nätverk kan vi tänka oss vissa scenarier. Anta att du bara har en kanal till Internet och att du använder alla Microsofts tjänster via Internet. Trafiken från nätverket till Microsoft och tillbaka passerar samma Internetlänk och passerar genom brandväggen. Brandväggen registrerar flödet när den ser det första paketet och returpaket tillåts eftersom flödet finns i tillståndstabellen.
+toounderstand hello effekt dessa två ändringar har på ett nätverk, nu ska vi titta vissa scenarier. Du har bara en krets toohello Internet och du använder alla Microsoft-tjänster via hello Internet exempelvis. hello trafik från ditt nätverk tooMicrosoft och tillbaka går hello samma Internet-länk och passerar genom hello brandväggen. hello brandväggen registrerar hello flödet ser hello första paketet och returnera paket tillåts eftersom hello flödet finns i hello tillstånd tabellen.
 
 ![Asymmetrisk routning med ExpressRoute](./media/expressroute-asymmetric-routing/AsymmetricRouting1.png)
 
-Sedan aktiverar du ExpressRoute och använder tjänster som erbjuds av Microsoft via ExpressRoute. Alla andra tjänster från Microsoft används via Internet. Du distribuerar en separat brandvägg vid din nätverksgräns som är ansluten till ExpressRoute. Microsoft annonserar mer specifika prefix till ditt nätverk via ExpressRoute för specifika tjänster. Din routningsinfrastruktur väljer ExpressRoute som primär väg för dessa prefix. Om du inte annonserar dina offentliga IP-adresser till Microsoft via ExpressRoute kommunicerar Microsoft med dina offentliga IP-adresser via Internet. Vidarebefordran av trafiken från nätverket till Microsoft görs via ExpressRoute och omvänd trafik från Microsoft görs via Internet. När brandväggen vid din nätverksgräns ser ett svarspaket för ett flöde som den inte hittar i tillståndstabellen ignorerar den returtrafiken.
+Sedan aktiverar du ExpressRoute och använder tjänster som erbjuds av Microsoft via ExpressRoute. Alla andra tjänster från Microsoft förbrukas över hello Internet. Du kan distribuera en separat brandvägg på din kant som är anslutna tooExpressRoute. Microsoft meddelar mer specifikt prefixen tooyour nätverk via ExpressRoute för vissa tjänster. Infrastruktur för routning väljer ExpressRoute som hello primära sökvägen för dessa prefix. Om du inte annonserar din offentliga IP-adresser tooMicrosoft via ExpressRoute kommunicerar Microsoft med din offentliga IP-adresser via hello Internet. Vidarebefordra trafik från nätverket-tooMicrosoft använder ExpressRoute och omvänd trafik från Microsoft använder hello Internet. När hello brandväggen hello kant ser ett svarspaket för ett flöde som inte hittas i tabellen för hello tillstånd, släpper hello returnerade trafik.
 
-Om du väljer att använda samma NAT-pool för ExpressRoute och för Internet ser du liknande problem med klienter i ditt nätverk på privata IP-adresser. Begäranden av tjänster som Windows Update går genom Internet eftersom IP-adresser för dessa tjänster inte annonseras via ExpressRoute. Returtrafiken kommer dock tillbaka via ExpressRoute. Om Microsoft tar emot en IP-adress med samma nätmask från Internet och ExpressRoute, prioriteras ExpressRoute framför Internet. Om en brandvägg eller en annan tillståndskänslig enhet vid din nätverksgräns och som använder ExpressRoute, inte har någon befintlig information om flödet, ignorerar den paket som hör till det flödet.
+Om du väljer toouse hello samma network address translation (NAT) poolen för ExpressRoute och hello Internet visas liknande problem med hello klienter i nätverket på privata IP-adresser. Begäranden för tjänster som Windows Update att gå via hello Internet eftersom IP-adresser för de här tjänsterna inte annonseras via ExpressRoute. Dock kommer hello returnerade trafik tillbaka via ExpressRoute. Om Microsoft tar emot en IP-adress med hello samma nätmask från hello Internet och ExpressRoute den föredrar ExpressRoute över hello Internet. Om en brandvägg eller en annan tillståndskänslig enhet som finns på din nätverksgräns och inför ExpressRoute har ingen tidigare information om hello flödet, släpper hälsningspaket som tillhör toothat flöde.
 
 ## <a name="asymmetric-routing-solutions"></a>Lösningar för asymmetrisk routning
-Det finns två olika sätt att lösa problemet med asymmetriska routning. Ett är via routning och det andra är med hjälp av källbaserad NAT (SNAT).
+Du har två huvudsakliga alternativ toosolve hello problemet med asymmetriska routning. En är via Routning och hello andra är med hjälp av käll-baserade NAT (SNAT).
 
 ### <a name="routing"></a>Routning
-Se till att dina offentliga IP-adresser annonseras till relevanta WAN-länkar. Om du t.ex. vill använda Internet för autentiseringstrafik och ExpressRoute för e-posttrafik bör du inte annonseras din offentliga IP-adresser för Active Directory Federation Services (AD FS) över ExpressRoute. Se även till att exponera lokal AD FS-servern till IP-adresser som routern som tar emot via ExpressRoute. Routning som tas emot via ExpressRoute är mer specifik och gör ExpressRoute till förstahandsvalet för autentiseringstrafik till Microsoft. Detta leder till asymmetrisk routning.
+Kontrollera att din offentliga IP-adresser är länkar till annonserade tooappropriate wide area network (WAN). Till exempel om du vill toouse hello Internet för autentiseringstrafik och ExpressRoute för e-post-trafik kan ska du inte annonseras din offentliga IP-adresser för Active Directory Federation Services (AD FS) via ExpressRoute. På samma sätt bör inte tooexpose en lokal AD FS tooIP serveradresser som hello router tar emot via ExpressRoute. Vägar som tas emot via ExpressRoute är mer specifika så att de ExpressRoute hello primära sökvägen för autentisering trafik tooMicrosoft. Detta leder till asymmetrisk routning.
 
-Om du vill använda ExpressRoute för autentisering måste du annonsera offentliga IP-adresser för ADFS via ExpressRoute utan NAT. På det här sättet går trafik som kommer från Microsoft och går till lokal AD FS-servern över ExpressRoute. Returtrafik från kund till Microsoft använder ExpressRoute eftersom det är den prioriterade vägen via Internet.
+Om du vill toouse ExpressRoute för autentisering, se till att du annonserar AD FS offentliga IP-adresser via ExpressRoute utan NAT. På så sätt kan trafik som kommer från Microsoft och går tooan lokal AD FS-servern går över ExpressRoute. Returnerar trafik från kunden tooMicrosoft använder ExpressRoute eftersom den är hello prioriterade vägen över hello Internet.
 
 ### <a name="source-based-nat"></a>Källbaserad NAT
-Ett annat sätt att lösa problem med asymmetrisk routning är att använda SNAT. Exempelvis har du inte annonserat den offentliga IP-adressen för en lokal SMTP-server över ExpressRoute eftersom du planerar att använda Internet för den här typen av kommunikation. En begäran som har sitt ursprung hos Microsoft och sedan går till den lokala SMTP-servern passerar via Internet. Du använder SNAT för att skicka den inkommande begäran till en intern IP-adress. Omvänd trafik från SMTP-servern går till gränsbrandväggen (som du använder för NAT) i stället för via ExpressRoute. Returtrafiken går tillbaka via Internet.
+Ett annat sätt att lösa problem med asymmetrisk routning är att använda SNAT. Till exempel har du inte annonseras hello offentliga IP-adressen för en lokal SMTP Simple Mail Transfer Protocol ()-server via ExpressRoute eftersom toouse hello Internet för den här typen av kommunikation. En begäran som har sitt ursprung med Microsoft och sedan öppnar tooyour lokalt SMTP-servern passerar hello Internet. Du SNAT hello inkommande begäran tooan interna IP-adress. Omvänd trafik från hello SMTP-server går toohello gränsbrandvägg (som du använder för NAT) i stället för via ExpressRoute. hello returnerade trafik går tillbaka via hello Internet.
 
 ![Nätverkskonfiguration för källbaserad NAT](./media/expressroute-asymmetric-routing/AsymmetricRouting2.png)
 
 ## <a name="asymmetric-routing-detection"></a>Identifiering av asymmetrisk routning
-Traceroute är det bästa sättet att kontrollera att nätverkstrafik skickas via rätt väg. Om du förväntar dig att trafik från din lokala SMTP-server till Microsoft ska ta Internetvägen så är förväntad traceroute från SMTP-servern till Office 365. Resultatet bekräftar att trafiken verkligen lämnar ditt nätverk mot Internet och inte mot ExpressRoute.
+Traceroute är hello bästa sätt toomake till att nätverkstrafiken passerar genom hello förväntade sökvägen. Om du räknar trafik från din lokala SMTP server tooMicrosoft tootake hello Internet sökväg förväntades hello traceroute är från hello SMTP server tooOffice 365. hello resultatet verifierar att trafiken verkligen lämna ditt nätverk mot hello Internet och inte mot ExpressRoute.
 

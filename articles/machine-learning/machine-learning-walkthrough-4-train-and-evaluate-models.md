@@ -1,6 +1,6 @@
 ---
-title: "Steg 4: Träna och utvärdera de analytiska förutsägelsemodeller | Microsoft Docs"
-description: "Steg 4 i utveckla en förutsägelselösning genomgång: tåg och poängsätta och utvärdera flera modeller i Azure Machine Learning Studio."
+title: "Steg 4: Träna och utvärdera hello analytiska förutsägelsemodeller | Microsoft Docs"
+description: "Steg 4 i hello utveckla en förutsägelselösning genomgång: tåg och poängsätta och utvärdera flera modeller i Azure Machine Learning Studio."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,180 +14,180 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: 58d46dd1464ec0a3fc9639f78d4429e0e778c2bf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d86d7c5ae7524f71fe44d985db67c4618b7965a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="walkthrough-step-4-train-and-evaluate-the-predictive-analytic-models"></a>Genomgång steg 4: Utbilda i och utvärdera förutsägbara analytiska modeller
-Det här avsnittet innehåller det fjärde steget i den här genomgången [utveckla en förutsägelseanalys i Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
+# <a name="walkthrough-step-4-train-and-evaluate-hello-predictive-analytic-models"></a>Genomgång steg 4: Träna och utvärdera hello analytiska förutsägelsemodeller
+Det här avsnittet innehåller hello fjärde steget i hello genomgången [utveckla en förutsägelseanalys i Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Skapa en Machine Learning-arbetsyta](machine-learning-walkthrough-1-create-ml-workspace.md)
 2. [Överför befintliga data](machine-learning-walkthrough-2-upload-data.md)
 3. [Skapa ett nytt experiment](machine-learning-walkthrough-3-create-new-experiment.md)
-4. **Träna och utvärdera modellerna**
-5. [Distribuera webbtjänsten](machine-learning-walkthrough-5-publish-web-service.md)
-6. [Få åtkomst till webbtjänsten](machine-learning-walkthrough-6-access-web-service.md)
+4. **Träna och utvärdera hello modeller**
+5. [Distribuera hello-webbtjänst](machine-learning-walkthrough-5-publish-web-service.md)
+6. [Få åtkomst till hello-webbtjänsten](machine-learning-walkthrough-6-access-web-service.md)
 
 - - -
-En av fördelarna med att använda Azure Machine Learning Studio för att skapa machine learning-modeller är möjligheten att testa fler än en typ av modellen samtidigt i en enda experiment och jämför resultaten. Den här typen av experiment hjälper dig att hitta den bästa lösningen för ditt problem.
+En av hello fördelarna med att använda Azure Machine Learning Studio för att skapa machine learning-modeller är hello möjlighet tootry mer än en typ av modellen samtidigt i en enda experiment och jämföra hello resultat. Den här typen av experiment hjälper dig att hitta hello bästa lösningen för ditt problem.
 
-I experimentet Vi utvecklar i den här genomgången, vi skapa två olika typer av modeller och sedan jämföra bedömningsprofil resultaten för att avgöra vilken algoritm som vi vill använda i vår slutliga experimentet.  
+I hello experiment Vi utvecklar i den här genomgången, vi skapa två olika typer av modeller och jämför deras bedömningsprofil resultat toodecide vilken algoritm vi vill toouse i vår slutliga experimentet.  
 
-Det finns olika modeller som vi kan välja från. För att se de tillgängliga modellerna, expandera den **Maskininlärning** nod på modulpaletten, och expandera sedan **initiera modell** och noderna under den. Vid tillämpningen av experimentet vi välja den [Two-Class Support Vector Machine] [ two-class-support-vector-machine] (SVM) och [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] moduler.    
+Det finns olika modeller som vi kan välja från. toosee hello modeller är tillgängliga, expandera hello **Maskininlärning** nod i hello modulpaletten och expandera sedan **initiera modell** och hello noder under den. Hello enligt experimentet vi välja hello [Two-Class Support Vector Machine] [ two-class-support-vector-machine] (SVM) och hello [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] moduler.    
 
 > [!TIP]
-> För att få hjälp för att bestämma vilken Machine Learning-algoritm som bäst passar viss problemet du försöker lösa, se [så väljer du algoritmer för Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
+> tooget hjälp för att bestämma vilka Machine Learning-algoritmen bäst passar hello viss problemet du försöker toosolve, se [hur toochoose algoritmer för Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
 > 
 > 
 
-## <a name="train-the-models"></a>Träna modeller
+## <a name="train-hello-models"></a>Träna hello modeller
 
-Vi lägger till både den [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] modulen och [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modul i experimentet.
+Vi lägger till båda hello [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] modulen och [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modul i detta experimentet.
 
 ### <a name="two-class-boosted-decision-tree"></a>Two-Class Tvåklassförhöjda beslutsträdet
 
-Först ska vi ställa in förstärkta trädet modellen.
+Först ska vi ställa in hello ökat beslut trädet modellen.
 
-1. Hitta de [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] modulen på modulpaletten och drar den till arbetsytan.
+1. Hitta hello [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] modul i hello modulpaletten och drar den till hello arbetsytan.
 
-2. Hitta de [Träningsmodell] [ train-model] modulen, drar den till arbetsytan och ansluter sedan utdata från den [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] modulen till vänster inkommande port för den [Träningsmodell] [ train-model] modul.
+2. Hitta hello [Träningsmodell] [ train-model] modulen, drar den till arbetsytan hello och ansluter sedan hello utdata från hello [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree]modulen toohello kvar indataport av hello [Träningsmodell] [ train-model] modul.
    
-   Den [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] modulen initierar allmän modell och [träna modell] [ train-model] använder utbildningsdata för att träna på modell. 
+   Hej [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] modulen initierar hello allmän modell, och [Träningsmodell] [ train-model] använder träningsdata tootrain hello modell. 
 
-3. Ansluta vänstra utdata från vänster [köra R-skriptet] [ execute-r-script] modulen till höger inkommande port för den [Träningsmodell] [ train-model] modul (vi valt i [Steg3](machine-learning-walkthrough-3-create-new-experiment.md) i den här genomgången för att använda data från vänster sida av modulen dela Data för utbildning).
+3. Ansluta hello vänstra utdata från hello vänster [köra R-skriptet] [ execute-r-script] modulen toohello höger inkommande port för hello [Träningsmodell] [ train-model] modul (vi valt i [steg3](machine-learning-walkthrough-3-create-new-experiment.md) för den här genomgången toouse hello data från vänster sida av hello dela Data-modulen för utbildning hello).
    
    > [!TIP]
-   > Vi behöver inte två indata och en av utdata för den [köra R-skriptet] [ execute-r-script] modul för experimentet, så vi kan lämna dem. 
+   > Vi behöver inte två hello indata och en av hello utdata för hello [köra R-skriptet] [ execute-r-script] modul för experimentet, så vi kan lämna dem. 
    > 
    > 
 
-Den här delen av experimentet nu ser ut ungefär så här:  
+Den här delen av hello experiment nu ser ut ungefär så här:  
 
 ![En modell][1]
 
-Nu behöver vi berätta det [Träningsmodell] [ train-model] modul som vi vill modellen för att förutsäga kreditrisken för värdet.
+Nu måste vi tootell hello [Träningsmodell] [ train-model] modul som vi vill hello modellen toopredict hello kreditrisk värde.
 
-1. Välj den [Träningsmodell] [ train-model] modul. I den **egenskaper** rutan klickar du på **starta kolumnväljaren**.
+1. Välj hello [Träningsmodell] [ train-model] modul. I hello **egenskaper** rutan klickar du på **starta kolumnväljaren**.
 
-2. I den **Markera en kolumn** dialogrutan Skriv ”kredit risk” i sökfältet under **tillgängliga kolumner**, markerar ”kredit risk” nedan och klicka på högerpilen ( **>** ) att flytta ”kreditrisk” till **valda kolumner**. 
+2. I hello **Markera en kolumn** dialogrutan Skriv ”kredit risk” i hello sökfältet under **tillgängliga kolumner**markerar ”kredit risk” nedan och klicka på högerpilen för hello ( **>** ) toomove ”kredit risk” för**valda kolumner**. 
 
-    ![Välj kolumnen kreditrisken för träningsmodellmodulen][0]
+    ![Markera hello kreditrisk kolumnen för hello träningsmodellmodulen][0]
 
-3. Klicka på den **OK** är markerat.
+3. Klicka på hello **OK** är markerat.
 
 ### <a name="two-class-support-vector-machine"></a>Tvåklassig dator för vektorstöd
 
-Nu ska ställa vi in SVM modellen.  
+Nu ska ställa vi in hello SVM modellen.  
 
-Första, en förklaring om SVM. Förstärkta beslutsträd fungerar bra med funktioner för alla typer. Men eftersom modulen SVM genererar en linjär klassificerare, har den modell som genereras bästa testfel när alla numeriska funktioner har samma skala. Om du vill konvertera alla numeriska funktioner samma skala vi använder en ”Tanh”-omvandling (med den [normalisera Data] [ normalize-data] module). Detta omvandlar våra nummer i intervallet [0,1]. Modulen SVM konverterar sträng funktioner till kategoriska funktioner och sedan till binära 0-1-funktioner, så vi inte behöver manuellt Omforma strängen funktioner. Dessutom vill vi inte transformera kreditrisk kolumnen (kolumn 21) - är det numeriska men det är det värde som vi tränar modellen för att förutsäga, så vi behöver inte använder den.  
+Första, en förklaring om SVM. Förstärkta beslutsträd fungerar bra med funktioner för alla typer. Men eftersom hello SVM modulen genererar en linjär klassificerare, hello som genereras har hello bästa testfel när alla numeriska funktioner har hello samma skala. tooconvert alla numeriska funktioner toohello samma skala måste vi använder en ”Tanh”-omvandling (med hello [normalisera Data] [ normalize-data] module). Detta omvandlar våra siffror till intervallet för hello [0,1]. hello SVM modulen konverterar sträng funktioner toocategorical funktioner och sedan toobinary 0-1-funktioner, så vi inte behöver toomanually Omforma strängen funktioner. Dessutom bör inte tootransform hello kreditrisk kolumn (21) – är det numeriska, men det är hello värdet vi tränar hello modellen toopredict tooleave måste den enbart.  
 
-Om du vill konfigurera SVM modellen gör du följande:
+tooset in hello SVM modell hello följande:
 
-1. Hitta de [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modulen på modulpaletten och drar den till arbetsytan.
+1. Hitta hello [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modul i hello modulpaletten och drar den till hello arbetsytan.
 
-2. Högerklicka på den [Träningsmodell] [ train-model] modulen, Välj **kopiera**, och högerklicka sedan på arbetsytan och välj **klistra in**. Kopia av den [Träningsmodell] [ train-model] modulen har samma kolumn urval som originalet.
+2. Högerklicka på hello [Träningsmodell] [ train-model] modulen, Välj **kopiera**, och högerklicka hello arbetsytan och välj **klistra in**. Hej kopia av hello [Träningsmodell] [ train-model] modulen har hello samma Kolumnurval av hello ursprungliga.
 
-3. Ansluta utdata från den [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modulen till vänster inkommande port för andra [Träningsmodell] [ train-model] modul.
+3. Ansluta hello utdata från hello [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modulen toohello kvar indataport av hello andra [Träningsmodell] [ train-model] modul.
 
-4. Hitta de [normalisera Data] [ normalize-data] modulen och drar den till arbetsytan.
+4. Hitta hello [normalisera Data] [ normalize-data] modulen och drar den till hello arbetsytan.
 
-5. Ansluta vänstra utdata från vänster [köra R-skriptet] [ execute-r-script] modulen till indata för den här modulen (Observera att utdataporten för en modul kan anslutas till mer än en modul).
+5. Ansluta hello vänstra utdata från hello vänster [köra R-skriptet] [ execute-r-script] toohello modulindata till den här modulen (Observera att hello utdataporten för en modul kan vara anslutna toomore än en modul).
 
-6. Anslut den vänstra utdataporten för den [normalisera Data] [ normalize-data] modulen till höger inkommande port för andra [Träningsmodell] [ train-model] modul.
+6. Ansluta hello kvar utdataporten för hello [normalisera Data] [ normalize-data] modulen toohello höger inkommande port för hello andra [Träningsmodell] [ train-model] modul.
 
 Den här delen av vår experimentet bör nu se ut ungefär så här:  
 
-![Andra modell][2]  
+![Utbildning hello andra modell][2]  
 
-Konfigurera nu den [normalisera Data] [ normalize-data] modulen:
+Nu konfigurera hello [normalisera Data] [ normalize-data] modulen:
 
-1. Markera den [normalisera Data] [ normalize-data] modul. I den **egenskaper** väljer **Tanh** för den **omvandling metoden** parameter.
+1. Klicka på tooselect hello [normalisera Data] [ normalize-data] modul. I hello **egenskaper** väljer **Tanh** för hello **omvandling metoden** parameter.
 
-2. Klicka på **starta kolumnväljaren**, Välj ”inga kolumner” för **börjar med**väljer **inkludera** i den första listrutan väljer **kolumntypen** i den andra listrutan och välj **numeriska** i tredje listrutan. Anger att alla numeriska kolumner (och endast numeriskt) omvandlas.
+2. Klicka på **starta kolumnväljaren**, Välj ”inga kolumner” för **börjar med**väljer **inkludera** i hello första listrutan väljer **kolumntypen**i hello andra listrutan och välj **numeriska** i hello tredje listrutan. Anger att alla hello numeriska kolumner (och endast numeriskt) omvandlas.
 
-3. Klicka på plustecknet (+) till höger om den här raden - detta skapar en rad av nedrullningsbara listorna. Välj **undanta** i den första listrutan väljer **kolumnnamn** i andra listrutan och ange ”kredit risk” i textfältet. Detta anger att kolumnen kreditrisk ska ignoreras (vi behöver göra detta eftersom den här kolumnen är numeriska och så skulle omvandlas om vi inte utesluter den).
+3. Klicka på hello plustecken (+) toohello höger i den här raden - detta skapar en rad av nedrullningsbara listorna. Välj **undanta** i hello första listrutan väljer **kolumnnamn** i hello andra listrutan och ange ”kredit risk” i hello textfältet. Detta anger hello kreditrisk kolumnen ska ignoreras (vi måste toodo detta eftersom den här kolumnen är numeriska och så skulle omvandlas om vi inte utesluter den).
 
-4. Klicka på den **OK** är markerat.  
+4. Klicka på hello **OK** är markerat.  
 
-    ![Välj kolumner för modulen normalisera Data][5]
+    ![Välj kolumner för hello normalisera Data modulen][5]
 
-Den [normalisera Data] [ normalize-data] modulen nu är inställd på att utföra en Tanh omvandling på alla numeriska kolumner utom den kreditrisk.  
+Hej [normalisera Data] [ normalize-data] modulen är nu set tooperform en Tanh omvandling på alla numeriska kolumner utom hello kreditrisk.  
 
-## <a name="score-and-evaluate-the-models"></a>Poängsätta och utvärdera modellerna
+## <a name="score-and-evaluate-hello-models"></a>Poängsätta och utvärdera hello modeller
 
-Vi använder informationen tester som separeras av den [dela Data] [ split] modulen poängsätta våra tränade modeller. Vi kan sedan jämföra resultatet av de två modellerna Se som genererats bättre resultat.  
+Vi använder hello testa data som separeras av hello [dela Data] [ split] modulen tooscore våra tränade modeller. Vi kan sedan jämföra hello resultaten av hello två modeller toosee som genererade bättre resultat.  
 
-### <a name="add-the-score-model-modules"></a>Lägga till poängsätta modell-moduler
+### <a name="add-hello-score-model-modules"></a>Lägga till hello poängsätta modell moduler
 
-1. Hitta de [Poängmodell] [ score-model] modulen och drar den till arbetsytan.
+1. Hitta hello [Poängmodell] [ score-model] modulen och drar den till hello arbetsytan.
 
-2. Ansluta den [Träningsmodell] [ train-model] modul som är ansluten till den [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] modulen till vänster inkommande port för den [Poängmodell] [ score-model] modul.
+2. Ansluta hello [Träningsmodell] [ train-model] modul som har anslutit toohello [två-Tvåklassförhöjt beslutsträd] [ two-class-boosted-decision-tree] modulen toohello vänstra indata porten för hello [Poängmodell] [ score-model] modul.
 
-3. Ansluta till höger [köra R-skriptet] [ execute-r-script] modul (våra tester data) till höger inkommande port för den [Poängmodell] [ score-model] modul.
+3. Ansluta hello höger [köra R-skriptet] [ execute-r-script] modul (våra tester data) toohello höger inkommande port för hello [Poängmodell] [ score-model] modul.
 
     ![Ansluten att modulen poängsätta modell][6]
    
-   Den [Poängmodell] [ score-model] modul kan nu ta kredit information från tester data, kör via modellen och jämföra förutsägelser modellen genererar med den faktiska kredit risk kolumnen i den testa data.
+   Hej [Poängmodell] [ score-model] modul kan nu ta hello kredit information från hello testning informationen genom att köra via hello modellen, och jämföra hello förutsägelser hello modellen genererar med hello faktiska kredit risk kolumnen i hello testa data.
 
-4. Kopiera och klistra in den [Poängmodell] [ score-model] modul för att skapa en andra kopia.
+4. Kopiera och klistra in hello [Poängmodell] [ score-model] modulen toocreate en andra kopia.
 
-5. Ansluta utdata från SVM modellen (det vill säga utdataporten för den [Träningsmodell] [ train-model] modul som är ansluten till den [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modulen) till den inkommande porten för andra [Poängmodell] [ score-model] modul.
+5. Ansluta hello utdata från hello SVM modellen (det vill säga hello utgående port för hello [Träningsmodell] [ train-model] modul som har anslutit toohello [Two-Class Support Vector Machine] [ two-class-support-vector-machine] modulen) toohello inkommande port för hello andra [Poängmodell] [ score-model] modul.
 
-6. Vi har utför samma transformeringen till testdata som vi gjorde för utbildning-data för SVM-modellen. Så kopiera och klistra in den [normalisera Data] [ normalize-data] modul för att skapa en andra kopia och ansluta till höger [köra R-skriptet] [ execute-r-script] modul.
+6. För hello SVM modellen har vi toodo hello samma omvandling toohello testdata som vi gjorde toohello utbildningsdata. Kopiera och klistra in hello så [normalisera Data] [ normalize-data] modulen toocreate en andra kopia och koppla den högra toohello [köra R-skriptet] [ execute-r-script] modul.
 
-7. Ansluta vänstra utdata från andra [normalisera Data] [ normalize-data] modulen till höger inkommande port för andra [Poängmodell] [ score-model] modul.
+7. Ansluta hello vänstra utdata från hello andra [normalisera Data] [ normalize-data] modulen toohello höger inkommande port för hello andra [Poängmodell] [ score-model] modul.
 
     ![Båda poängsätta modell-moduler som är ansluten][7]
 
-### <a name="add-the-evaluate-model-module"></a>Lägg till modulen utvärdera modell
+### <a name="add-hello-evaluate-model-module"></a>Lägg till hello utvärdera modell
 
-Om du vill utvärdera bedömningsprofil resultaten och jämför dem, använder vi en [utvärdera modell] [ evaluate-model] modul.  
+tooevaluate hello två bedömningsprofil resultat och jämför dem, vi använder en [utvärdera modell] [ evaluate-model] modul.  
 
-1. Hitta de [utvärdera modell] [ evaluate-model] modulen och drar den till arbetsytan.
+1. Hitta hello [utvärdera modell] [ evaluate-model] modulen och drar den till hello arbetsytan.
 
-2. Ansluta utdataporten för den [Poängmodell] [ score-model] modul som är associerade med den förstärkta träd modellen till den vänstra indataporten av den [utvärdera modell] [ evaluate-model] modul.
+2. Ansluta hello utdataporten för hello [Poängmodell] [ score-model] modulen som hör till hello ökat beslut trädet modellen vänster toohello inkommande port för hello [utvärdera modell] [ evaluate-model] modul.
 
-3. Anslut den andra [Poängmodell] [ score-model] modulen till höger inkommande port.  
+3. Ansluta hello andra [Poängmodell] [ score-model] modulen toohello höger inkommande port.  
 
     ![Utvärdera modellen modulen ansluten][8]
 
-### <a name="run-the-experiment-and-check-the-results"></a>Kör experimentet och kontrollera resultaten
+### <a name="run-hello-experiment-and-check-hello-results"></a>Kör experimentet hello och kontrollera hello resultat
 
-Kör experimentet genom att klicka på den **kör** knapp under arbetsytan. Det kan ta några minuter. En snurrande indikator för varje modul visar att den körs, och sedan en grön bock visas när modulen är klar. När alla moduler är markerat har experimentet slutförts.
+toorun Hej experiment, klicka på hello **kör** nedan hello arbetsytan. Det kan ta några minuter. En snurrande indikator för varje modul visar att det körs och sedan en grön bock visas när hello modulen är klar. När alla hello-moduler har markerat, har hello experimentet slutförts.
 
-Experimentet bör nu se ut ungefär så här:  
+hello experimentet bör nu se ut ungefär så här:  
 
 ![Utvärdering av båda modellerna][3]
 
-Kontrollera resultaten, klicka på utdataporten för den [utvärdera modell] [ evaluate-model] modulen och välj **visualisera**.  
+toocheck hello resultaten klickar du på hello utdataporten för hello [utvärdera modell] [ evaluate-model] modulen och välj **visualisera**.  
 
-Den [utvärdera modell] [ evaluate-model] modulen genererar ett par med kurvor och mått som gör det möjligt att jämföra resultatet av de två poängsatta modellerna. Du kan visa resultat som mottagaren operatorn egenskap (ROC) kurvor, Precision/återkalla kurvor eller Lift kurvor. Ytterligare data som visas innehåller en förvirring matris kumulativa värden för området under kurvan (AUC) och andra mått. Du kan ändra tröskelvärdet genom att flytta skjutreglaget åt vänster eller höger och se hur den påverkar uppsättningen mått.  
+Hej [utvärdera modell] [ evaluate-model] modulen genererar ett par med kurvor och mått som gör att du toocompare hello resultaten av hello två poängsatta modeller. Du kan visa hello resultat som mottagaren operatorn egenskap (ROC) kurvor, Precision/återkalla kurvor eller Lift kurvor. Ytterligare data som visas innehåller en matris med förvirring kumulativa värden för hello område under hello kurvan (AUC) och andra mått. Du kan ändra hello tröskelvärdet genom att flytta skjutreglaget hello åt vänster eller höger och se hur den påverkar hello uppsättning mått.  
 
-Klicka till höger om diagrammet **bedömas dataset** eller **bedömas dataset för att jämföra** Markera associerade kurvan och visa den associerade måtten nedan. I förklaringen för kurvorna ”bedömas dataset” motsvarar den vänstra indataporten av den [utvärdera modell] [ evaluate-model] modul - i vårt fall är detta förstärkta trädet modellen. ”Bedömas dataset för att jämföra” motsvarar den högra indataporten - SVM modellen i vårt fall. När du klickar på en av etiketterna kurvan för den modellen som är markerad och motsvarande mått visas som visas i följande bild.  
+toohello direkt av hello diagram, klickar du på **bedömas dataset** eller **bedömas dataset toocompare** toohighlight hello associerade kurva och toodisplay hello associerade mått nedan. Hello förklaring för hello kurvor, ”bedömas dataset” motsvarar toohello kvar indataport av hello [utvärdera modell] [ evaluate-model] modul - i vårt fall är hello ökat beslut trädet modellen. ”Bedömas dataset toocompare” motsvarar toohello högra indataporten - hello SVM modellen i vårt fall. När du klickar på en av etiketterna hello kurva för den modellen som är markerad och hello motsvarande mått visas som visas i följande bild hello.  
 
 ![ROC kurvor för modeller][4]
 
-Du kan välja vilken modell som ligger närmast ger dig det resultat som du letar efter genom att undersöka dessa värden. Du kan gå tillbaka och iterera experimentet genom att ändra parametervärden i olika modeller. 
+Du kan välja vilken modell är närmaste toogiving du hello resultat som du letar efter genom att undersöka dessa värden. Du kan gå tillbaka och iterera experimentet genom att ändra parametervärden i hello olika modeller. 
 
-Vetenskap och bilder av tolka resultaten och justera prestanda för modellen ligger utanför omfånget för den här genomgången. För ytterligare hjälp kan du läsa följande artiklar:
-- [Hur du utvärdera modellen prestanda i Azure Machine Learning](machine-learning-evaluate-model-performance.md)
-- [Välj parametrar för att optimera algoritmerna i Azure Machine Learning](machine-learning-algorithm-parameters-optimize.md)
+hello vetenskap och bilder av tolka resultaten och justera hello modellen prestanda är utanför hello omfånget för den här genomgången. För ytterligare hjälp kan du läsa hello följande artiklar:
+- [Hur tooevaluate modell prestanda i Azure Machine Learning](machine-learning-evaluate-model-performance.md)
+- [Välj parametrar toooptimize algoritmerna i Azure Machine Learning](machine-learning-algorithm-parameters-optimize.md)
 - [Tolka modellen resultaten i Azure Machine Learning](machine-learning-interpret-model-results.md)
 
 > [!TIP]
-> Varje gång du kör experimentet en post på den iterationen sparas i historiken kör. Du kan visa dessa iterationer och återgå till någon av dem, genom att klicka på **visa KÖRNINGSHISTORIK** under arbetsytan. Du kan också klicka på **tidigare kör** i den **egenskaper** rutan Gå tillbaka till iteration omedelbart före den som du har öppnat.
+> Varje gång du kör hello experiment en post på den iterationen sparas i hello Körningshistorik. Du kan visa dessa iterationer och returnera tooany av dem genom att klicka på **visa KÖRNINGSHISTORIK** nedan hello arbetsytan. Du kan också klicka på **tidigare kör** i hello **egenskaper** fönstret tooreturn toohello iteration omedelbart före hello en öppen.
 > 
-> Du kan göra en kopia av eventuella iterationer av experimentet genom att klicka på **Spara som** under arbetsytan. 
-> Använda arbetsytan för experimentet **sammanfattning** och **beskrivning** egenskaper för att hålla reda på vad du har gjort i iterationer av experiment.
+> Du kan göra en kopia av eventuella iterationer av experimentet genom att klicka på **Spara som** nedan hello arbetsytan. 
+> Använd hello experiment **sammanfattning** och **beskrivning** egenskaper tookeep en post på vad du har gjort i iterationer av experiment.
 > 
 > Mer information finns i [hantera iterationer av experiment i Azure Machine Learning Studio](machine-learning-manage-experiment-iterations.md).  
 > 
 > 
 
 - - -
-**Nästa: [distribuera webbtjänsten](machine-learning-walkthrough-5-publish-web-service.md)**
+**Nästa: [distribuera hello-webbtjänst](machine-learning-walkthrough-5-publish-web-service.md)**
 
 [0]: ./media/machine-learning-walkthrough-4-train-and-evaluate-models/train-model-select-column.png
 [1]: ./media/machine-learning-walkthrough-4-train-and-evaluate-models/experiment-with-train-model.png

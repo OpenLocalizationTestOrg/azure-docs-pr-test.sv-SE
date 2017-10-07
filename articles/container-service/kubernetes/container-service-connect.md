@@ -1,6 +1,6 @@
 ---
-title: Ansluta till ett Azure Container Service-kluster | Microsoft Docs
-description: "Ansluta till ett Kubernetes-, DC/OS- eller Docker Swarm-kluster i Azure Container Service från en fjärrdator"
+title: aaaConnect tooan Azure Container Service-kluster | Microsoft Docs
+description: "Ansluta tooa Kubernetes, DC/OS eller Docker Swarm-kluster i Azure Container Service från en fjärrdator"
 services: container-service
 documentationcenter: 
 author: dlepow
@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: b741e4919ce7d5bf20d82c366a92be1cf1b8599f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b39c908832dd440774e8a33f7051b6bfe0fc5956
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 [!INCLUDE [container-service-connect.md](../../../includes/container-service-connect.md)]

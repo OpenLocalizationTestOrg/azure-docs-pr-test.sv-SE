@@ -1,6 +1,6 @@
 ---
-title: "Ansluter till Media Services-konto med hjälp av REST API | Microsoft Docs"
-description: "Det här avsnittet visar hur du ansluter till Media Services med REST API."
+title: "aaaConnecting tooMedia Services-konto med hjälp av REST API | Microsoft Docs"
+description: "Det här avsnittet visar hur tooconnect tooMedia tjänster med REST API."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,52 +14,52 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: 4feb0eb81823835e8e0b701463d85b27f5598019
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1d5064a3612dc96f5c5ad910d183d84fb70a3b6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connecting-to-media-services-account-using-media-services-rest-api"></a>Ansluter till Media Services-konto med hjälp av Media Services REST API
+# <a name="connecting-toomedia-services-account-using-media-services-rest-api"></a>Ansluta tooMedia Services-konto med Media Services REST API
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-connect-programmatically.md)
 > * [REST](media-services-rest-connect-programmatically.md)
 > 
 > 
 
-Det här avsnittet beskriver hur du skaffar en programmässiga anslutning till Microsoft Azure Media Services vid programmering med Media Services REST API.
+Det här avsnittet beskrivs hur tooobtain programmässiga anslutning-tooMicrosoft Azure Media Services vid programmering med hello Media Services REST API.
 
-Det krävs två saker att få åtkomst till Microsoft Azure Media Services: en åtkomst-token som tillhandahålls av Azure Access Control-tjänster (ACS) och URI Media Services sig själv. Du kan använda andra metoder som du vill använda när du skapar dessa begäranden som du anger rätt huvudvärden och korrekt skicka i åtkomsttoken vid anrop till Media Services.
+Det krävs två saker att få åtkomst till Microsoft Azure Media Services: en åtkomst-token som tillhandahålls av Azure Access Control-tjänster (ACS) och hello URI för Media Services sig själv. Du kan använda andra metoder som du vill använda när du skapar dessa begäranden som du anger hello rätt huvudvärden och korrekt skicka i hello åtkomsttoken vid anrop till Media Services.
 
-Följande steg beskriver de vanligaste arbetsflödet när du använder Media Services REST API för att ansluta till Media Services:
+hello följande steg beskriver hello vanligaste arbetsflödet när med hello Media Services REST API tooconnect tooMedia Services:
 
 1. Hämta en åtkomst-token 
-2. Ansluter till Media Services URI 
+2. Ansluta toohello Media Services-URI 
    
    > [!NOTE]
-   > När du har anslutit till https://media.windows.net, får du en 301 omdirigering att ange en annan Media Services-URI. Du måste göra följande anrop till en ny URI.
-   > Du kan också få HTTP/1.1 200 svar som innehåller beskrivningen för ODATA-API-metadata.
+   > När du har anslutit toohttps://media.windows.net, får du en 301 omdirigering att ange en annan Media Services-URI. Du måste göra följande anrop toohello ny URI.
+   > Du kan också få HTTP/1.1 200 svar som innehåller hello beskrivning för ODATA-API-metadata.
    > 
    > 
-3. Publicera din efterföljande API-anrop till den nya URL. 
+3. Bokför efterföljande API-anrop toohello nya URL: en. 
    
-    Till exempel om när du försöker ansluta har du följande:
+    Till exempel om när du har försökt tooconnect, du har fått hello följande:
    
         HTTP/1.1 301 Moved Permanently
         Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
    
-    Du bör publicera dina efterföljande API-anrop till https://wamsbayclus001rest-hs.cloudapp.net/api/.
+    Du bör publicera dina efterföljande API-anrop toohttps://wamsbayclus001rest-hs.cloudapp.net/api/.
 
     >[!NOTE]
-    >Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda samma princip-ID om du alltid använder samma dagar/åtkomstbehörigheter, till exempel principer för positionerare som är avsedda att vara på plats under en längre tid (icke-överföringsprinciper). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
+    >Det finns en gräns på 1 000 000 principer för olika AMS-principer (till exempel för positionerarprincipen eller ContentKeyAuthorizationPolicy). Du bör använda hello samma princip-ID om du alltid använder hello samma dagar / åtkomstbehörigheter, till exempel principer för lokaliserare som är avsedda tooremain på plats för lång tid (icke-överföringen principer). Mer information finns i [detta](media-services-dotnet-manage-entities.md#limit-access-policies) avsnitt.
 
 ## <a name="access-control-address"></a>-Adressen
 Media Services-adressen är https://wamsprodglobal001acs.accesscontrol.windows.net förutom norra Kina region, där det är https://wamsprodglobal001acs.accesscontrol.chinacloudapi.cn.
 
 ## <a name="getting-an-access-token"></a>Hämta en åtkomst-token
-Hämta en åtkomst-token från ACS och använder den under varje HTTP-begäran som du gör i tjänsten för att komma åt Media Services direkt via REST API. Denna token liknar andra token som tillhandahålls av ACS baserat på åtkomst anspråk som angetts i rubriken för en HTTP-begäran och använder protokollet OAuth v2. Du behöver inte eventuella andra nödvändiga komponenter innan du ansluter direkt till Media Services.
+tooaccess Media Services direkt via hello REST-API, hämta en åtkomst-token från ACS och använder den under varje HTTP-begäran som du gör i hello-tjänsten. Denna token är liknande tooother token som tillhandahålls av ACS baserat på åtkomst anspråk levereras i hello-rubriken för en HTTP-begäran och med hello OAuth v2-protokollet. Du behöver inte eventuella andra nödvändiga komponenter innan du ansluter direkt tooMedia tjänster.
 
-I följande exempel visar HTTP-begärans rubrik och text som används för att hämta en token.
+hello följande exempel visar hello HTTP-begärans rubrik och text används tooretrieve en token.
 
 **Huvudet**:
 
@@ -74,9 +74,9 @@ I följande exempel visar HTTP-begärans rubrik och text som används för att h
 
 **Brödtext**:
 
-Du behöver bevisa värdena client_id och client_secret i brödtexten i begäran. client_id och client_secret motsvarar värdena AccountName eller AccountKey. Dessa värden som du av Media Services när du konfigurerar ditt konto. 
+Du behöver tooprove hello client_id och client_secret värden i hello brödtexten i begäran. client_id och client_secret motsvaras toohello AccountName och AccountKey värden. Dessa värden tillhandahålls tooyou av Media Services när du har lagt upp ditt konto. 
 
-Observera att AccountKey för Media Services-kontot måste vara URL-kodade (se [procent-Encoding](http://tools.ietf.org/html/rfc3986#section-2.1) när du använder client_secret värdet i din token åtkomstbegäran.
+Observera att hello AccountKey för Media Services-kontot måste vara URL-kodade (se [procent-Encoding](http://tools.ietf.org/html/rfc3986#section-2.1) när du använder som hello client_secret värdet i din token åtkomstbegäran.
 
     grant_type=client_credentials&client_id=ams_account_name&client_secret=URL_encoded_ams_account_key&scope=urn%3aWindowsAzureMediaServices
 
@@ -86,7 +86,7 @@ Exempel:
     grant_type=client_credentials&client_id=amstestaccount001&client_secret=wUNbKhNj07oqjqU3Ah9R9f4kqTJ9avPpfe6Pk3YZ7ng%3d&scope=urn%3aWindowsAzureMediaServices
 
 
-I följande exempel visas HTTP-svar som innehåller åtkomsten-token i brödtext för svar.
+hello följande exempel visar hello HTTP-svar som innehåller hello åtkomst-token i hello svarstexten.
 
     HTTP/1.1 200 OK
     Cache-Control: no-cache, no-store
@@ -108,18 +108,18 @@ I följande exempel visas HTTP-svar som innehåller åtkomsten-token i brödtext
 
 
 > [!NOTE]
-> Det rekommenderas att cachelagra värdena ”access_token” och ”expires_in” till en extern lagring. Token data kan senare hämtas från lagringen och återanvändas i Media Services REST API-anrop. Detta är särskilt användbart för scenarier där token kan delas på ett säkert sätt mellan flera processer eller datorer.
+> Det rekommenderas toocache hello ”access_token” och ”expires_in” värden tooan extern lagring. hello token data kan senare hämtas från hello lagring och återanvändas i Media Services REST API-anrop. Detta är särskilt användbart för scenarier där hello token kan delas på ett säkert sätt mellan flera processer eller datorer.
 > 
 > 
 
-Se till att övervaka ”expires_in”-värdet för den åtkomst-token och uppdatera REST API-anrop med nya token efter behov.
+Kontrollera att toomonitor hello ”expires_in” värdet av hello åtkomst-token och uppdaterar REST API-anrop med nya token efter behov.
 
-### <a name="connecting-to-the-media-services-uri"></a>Ansluter till Media Services URI
-Rot-URI för Media Services är https://media.windows.net/. Du ansluta först till den här URI och om du får en 301 omdirigering tillbaka i svaret, bör du se efterföljande anrop till ny URI. Dessutom inte använda några Följ-auto-omdirigering logik i din begäran. HTTP-verb och begäran organ vidarebefordras inte till en ny URI.
+### <a name="connecting-toohello-media-services-uri"></a>Ansluta toohello Media Services-URI
+hello rot-URI för Media Services är https://media.windows.net/. Du bör först ansluta toothis URI och om du får en 301 omdirigering tillbaka i svaret, bör du se följande anrop toohello ny URI. Dessutom inte använda några Följ-auto-omdirigering logik i din begäran. HTTP-verb och begäran organ inte vidarebefordras toohello ny URI.
 
-Observera att roten URI för filöverföring tillgångsfiler https://yourstorageaccount.blob.core.windows.net/ där lagringskontonamnet är samma du använde under din kontokonfiguration för Media Services.
+Observera att hello rot URI för filöverföring tillgångsfiler är https://yourstorageaccount.blob.core.windows.net/ där hello lagringskontonamnet hello samma som du använde under din kontokonfiguration för Media Services.
 
-Exemplet nedan visar HTTP-begäran till Media Services roten URI (https://media.windows.net/). Begäran hämtar 301 omdirigering tillbaka i svaret. Efterföljande begäran använder nya URI: N (https://wamsbayclus001rest-hs.cloudapp.net/api/).     
+hello som följande exempel visar http-begäran toohello Media Services rot URI (https://media.windows.net/). hello begäran hämtar 301 omdirigering tillbaka i svaret. hello efterföljande begäran använder hello ny URI (https://wamsbayclus001rest-hs.cloudapp.net/api/).     
 
 **HTTP-begäran**:
 
@@ -143,11 +143,11 @@ Exemplet nedan visar HTTP-begäran till Media Services roten URI (https://media.
     Content-Length: 164
 
     <html><head><title>Object moved</title></head><body>
-    <h2>Object moved to <a href="https://wamsbayclus001rest-hs.cloudapp.net/api/">here</a>.</h2>
+    <h2>Object moved too<a href="https://wamsbayclus001rest-hs.cloudapp.net/api/">here</a>.</h2>
     </body></html>
 
 
-**HTTP-begäran** (med ny URI):
+**HTTP-begäran** (med hjälp av hello ny URI):
 
     GET https://wamsbayclus001rest-hs.cloudapp.net/api/ HTTP/1.1
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f19258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421500579&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=ElVWXOnMVggFQl%2ft9vhdcv1qH1n%2fE8l3hRef4zPmrzg%3d
@@ -176,7 +176,7 @@ Exemplet nedan visar HTTP-begäran till Media Services roten URI (https://media.
 
 
 > [!NOTE]
-> När du har hämtat den nya URI som är den URI som ska användas för att kommunicera med Media Services. 
+> När du har hämtat hello nya hello URI som är URI: N som ska använda toocommunicate med Media Services. 
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
-title: "Skicka säkra Push-meddelanden med Azure Notification Hubs"
-description: "Lär dig mer om att skicka säkra push-meddelanden till en Android-app från Azure. Kodexempel som skrivits i Java- och C#."
+title: aaaSending Secure Push-meddelanden med Azure Notification Hubs
+description: "Lär dig hur säker toosend push-meddelanden tooan Android-app från Azure. Kodexempel som skrivits i Java- och C#."
 documentationcenter: android
 keywords: push-meddelande, push-meddelanden, push-meddelanden, android push-meddelanden
 author: ysxu
@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 29f8c516e611c13fb73c7edc15e7c52708c75bb0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d07943c4691ed07acb987086228ef565e6281d57
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sending-secure-push-notifications-with-azure-notification-hubs"></a>Skicka säkra Push-meddelanden med Azure Notification Hubs
 > [!div class="op_single_selector"]
@@ -31,26 +31,26 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="overview"></a>Översikt
 > [!IMPORTANT]
-> Du måste ha ett aktivt Azure-konto för att slutföra den här kursen. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
+> toocomplete den här självstudiekursen kommer du måste ha ett aktivt Azure-konto. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-ios-get-started).
 > 
 > 
 
-Stöd för push-meddelanden i Microsoft Azure kan du komma åt en lätt att använda, multiplatform, skalats ut push-meddelande-infrastruktur, vilket förenklar implementeringen av push-meddelanden för konsument- och enterprise-program för mobila plattformar.
+Stöd för push-meddelanden i Microsoft Azure kan du tooaccess en lätt att använda flera plattformar, skalats ut push meddelandet infrastruktur, vilket förenklar hello implementering av push-meddelanden för konsument- och enterprise-program för mobila plattformar.
 
-På grund av reglerande säkerhetsbegränsningar, ibland ett program kan också innehålla något i meddelandet inte kan överföras via de standard push-infrastrukturen. Den här självstudiekursen beskrivs hur du kan uppnå samma upplevelse genom att skicka känslig information via en säker och autentiserad anslutning mellan klienten Android-enhet och appens serverdel.
+På grund av tooregulatory eller säkerhet begränsningar kanske ibland ett program tooinclude någonting i hello-meddelande som kan överföras via hello standard push-infrastruktur. Den här självstudiekursen beskrivs hur tooachieve hello samma upplevelse genom att skicka känslig information via en säker och autentiserad anslutning mellan hello klienten Android-enhet och hello-appserverdelen.
 
-På en hög nivå är flödet:
+På en hög nivå är hello flödet följande:
 
-1. På appens serverdel:
+1. hello appens serverdel:
    * Lagrar säker nyttolast i backend-databas.
-   * Skickar ID för det här meddelandet till Android-enhet (ingen säker information skickas).
-2. Appen på enheten när du tar emot meddelandet:
-   * Android-enhet kontaktar serverdelen begär säker nyttolasten.
-   * Appen kan du visa nyttolasten som ett meddelande på enheten.
+   * Skickar hello-ID för det här meddelandet toohello Android-enhet (ingen säker information skickas).
+2. hello appen på hello enhet, när du tar emot hello-meddelande:
+   * hello Android-enhet kontaktar hello backend-begärande hello säker nyttolast.
+   * hello app kan du visa hello-nyttolast som ett meddelande på hello enhet.
 
-Det är viktigt att Observera att i det föregående flödet (och i den här självstudiekursen) antar vi att enheten lagrar en autentiseringstoken i lokal lagring när en användare loggar in. Detta garanterar en helt integrerad upplevelse som enheten kan hämta den anmälan säker nyttolast med denna token. Om ditt program inte kan lagra autentiseringstoken på enheten, eller om dessa token kan ha gått, visas vid mottagning av push-meddelanden i appen enhet ett allmänt meddelande där användaren uppmanas att starta appen. Appen sedan autentiserar användaren och visar nyttolasten för meddelanden.
+Det är viktigt toonote att vi antar hello enheten i hello föregående flöde (och i den här självstudiekursen) lagrar en autentiseringstoken i lokal lagring när hello användare loggar in. Detta garanterar en helt integrerad upplevelse som hello enhet kan hämta hello-meddelande säker nyttolast med denna token. Om ditt program inte kan lagra autentiseringstoken på hello enhet eller om dessa token kan ha gått, ska hello enhetsapp vid mottagning av hello push-meddelanden visa ett allmänt meddelande som uppmanar hello användaren toolaunch hello app. hello app sedan autentiserar hello användare och visar hello notification nyttolast.
 
-Den här kursen visar hur du skickar säker push-meddelanden. Den bygger på den [meddela användare](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) självstudier, så bör du genomföra stegen i den här självstudiekursen först om du inte redan har gjort.
+Den här kursen visar hur säker toosend push-meddelanden. Den bygger på hello [meddela användare](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md) självstudier, så bör du genomföra hello stegen i den här självstudiekursen först om du inte redan har gjort.
 
 > [!NOTE]
 > Den här kursen förutsätter att du har skapat och konfigurerat din meddelandehubb enligt beskrivningen i [komma igång med Notification Hubs (Android)](notification-hubs-android-push-notification-google-gcm-get-started.md).
@@ -59,17 +59,17 @@ Den här kursen visar hur du skickar säker push-meddelanden. Den bygger på den
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
-## <a name="modify-the-android-project"></a>Ändra Android-projekt
-Nu när du har ändrat din appens serverdel att skicka bara den *id* av ett push-meddelande måste du ändra din Android-app för att hantera detta meddelande och ringa upp din serverdel för att hämta det säkra meddelandet som ska visas.
-Du måste se till att din Android-app användas att autentisera sig med din serverdel när den tar emot push-meddelanden för att åstadkomma detta.
+## <a name="modify-hello-android-project"></a>Ändra hello Android-projekt
+Nu när du har ändrat din app backend-toosend bara hello *id* för push-meddelanden du har toochange din Android-app toohandle att meddelanden och motringning backend-tooretrieve-hello säkra meddelandet toobe visas.
+tooachieve det här målet, har toomake till att din Android-app vet hur tooauthenticate med din serverdel när den tar emot hello push-meddelanden.
 
-Vi kommer nu att ändra den *inloggning* flödet för att kunna spara huvudvärde autentisering i delade inställningar för din app. Liknande metoder kan användas för att lagra alla autentiseringstoken (t.ex. OAuth-token) som appen kommer att använda utan att användarens autentiseringsuppgifter.
+Vi kommer nu att ändra hello *inloggning* flödet i ordning toosave hello autentisering huvudets värde i hello delade inställningar för din app. Liknande mekanismer kan vara används toostore någon autentiseringstoken (t.ex. OAuth-token) som hello app har toouse utan att användarens autentiseringsuppgifter.
 
-1. Lägg till följande konstanter i projektet Android-app överst i den **MainActivity** klass:
+1. Lägg till följande konstanter hello överst i hello hello i projektet Android-app **MainActivity** klass:
    
         public static final String NOTIFY_USERS_PROPERTIES = "NotifyUsersProperties";
         public static final String AUTHORIZATION_HEADER_PROPERTY = "AuthorizationHeader";
-2. Fortfarande i den **MainActivity** klass, uppdaterar den `getAuthorizationHeader()` metoden innehåller följande kod:
+2. Fortfarande i hello **MainActivity** klass, uppdatering hello `getAuthorizationHeader()` metoden toocontain hello följande kod:
    
         private String getAuthorizationHeader() throws UnsupportedEncodingException {
             EditText username = (EditText) findViewById(R.id.usernameText);
@@ -82,20 +82,20 @@ Vi kommer nu att ändra den *inloggning* flödet för att kunna spara huvudvärd
    
             return basicAuthHeader;
         }
-3. Lägg till följande `import` instruktioner överst i den **MainActivity** fil:
+3. Lägg till följande hello `import` instruktioner överst hello i hello **MainActivity** fil:
    
         import android.content.SharedPreferences;
 
-Nu ska vi ändra hanteraren som anropas när meddelandet tas emot.
+Nu ska vi ändra hello hanterare som anropas när hello meddelandet tas emot.
 
-1. I den **MyHandler** klassen ändra den `OnReceive()` metoden innehålla:
+1. I hello **MyHandler** klassen ändra hello `OnReceive()` metoden toocontain:
    
         public void onReceive(Context context, Bundle bundle) {
             ctx = context;
             String secureMessageId = bundle.getString("secureId");
             retrieveNotification(secureMessageId);
         }
-2. Lägg sedan till den `retrieveNotification()` metod, ersätter platshållaren `{back-end endpoint}` med backend-slutpunkten som erhålls vid distribution av din serverdel:
+2. Lägg sedan till hello `retrieveNotification()` metod, ersätter hello platshållare `{back-end endpoint}` med hello backend-slutpunkt som erhålls vid distribution av din serverdel:
    
         private void retrieveNotification(final String secureMessageId) {
             SharedPreferences sp = ctx.getSharedPreferences(MainActivity.NOTIFY_USERS_PROPERTIES, Context.MODE_PRIVATE);
@@ -116,7 +116,7 @@ Nu ska vi ändra hanteraren som anropas när meddelandet tas emot.
                         JSONObject secureNotification = new JSONObject(secureNotificationJSON);
                         sendNotification(secureNotification.getString("Payload"));
                     } catch (Exception e) {
-                        Log.e("MainActivity", "Failed to retrieve secure notification - " + e.getMessage());
+                        Log.e("MainActivity", "Failed tooretrieve secure notification - " + e.getMessage());
                         return e;
                     }
                     return null;
@@ -124,15 +124,15 @@ Nu ska vi ändra hanteraren som anropas när meddelandet tas emot.
             }.execute(null, null, null);
         }
 
-Den här metoden anropar din appens serverdel för att hämta det meddelandeinnehåll med de autentiseringsuppgifter som lagras i delade inställningar och visas som ett vanligt meddelande. Meddelandet verkar app användaren exakt samma sätt som andra push-meddelande.
+Den här metoden anropar app backend-tooretrieve hello-meddelande innehåll med hello autentiseringsuppgifter lagras i hello delade inställningar och visar den som ett vanligt meddelande. hello-meddelande verkar toohello app användaren exakt samma sätt som andra push-meddelande.
 
-Observera att det är bättre att hantera de egenskap som saknas autentisering sidhuvud eller underkännande av serverdelen. Särskild hantering av dessa fall beror huvudsakligen på användarupplevelsen mål. Ett alternativ är att visa ett meddelande med en allmän fråga att autentisera användaren att hämta anmälan.
+Observera att det är bättre toohandle hello fall egenskap som saknas autentisering sidhuvud eller avvisning hello serverdel. hello Särskild hantering av dessa fall beror huvudsakligen på användarupplevelsen mål. Ett alternativ är toodisplay ett meddelande med en allmän fråga om hello tooauthenticate tooretrieve hello faktiska användarmeddelande.
 
-## <a name="run-the-application"></a>Köra programmet
-Om du vill köra programmet, gör du följande:
+## <a name="run-hello-application"></a>Kör hello program
+toorun Hej program, hello följande:
 
-1. Kontrollera att **AppBackend** distribueras i Azure. Om du använder Visual Studio, köra den **AppBackend** Web API-program. En ASP.NET-webbsida visas.
-2. Kör appen på en fysisk Android-enhet eller emulatorn i Eclipse.
-3. Ange ett användarnamn och lösenord i Användargränssnittet Android app. Det kan vara valfri sträng, men de måste ha samma värde.
-4. I Android-appen UI, klickar du på **logga in**. Klicka på **skicka push**.
+1. Kontrollera att **AppBackend** distribueras i Azure. Om du använder Visual Studio, köra hello **AppBackend** Web API-program. En ASP.NET-webbsida visas.
+2. Kör hello app på en fysisk enhet eller hello androidemulator i Eclipse.
+3. Ange ett användarnamn och lösenord i hello Android app Användargränssnittet. Dessa kan vara valfri sträng, men de måste vara hello samma värde.
+4. I hello Android UI-app, klickar du på **logga in**. Klicka på **skicka push**.
 

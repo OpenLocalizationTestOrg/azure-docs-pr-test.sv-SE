@@ -1,6 +1,6 @@
 ---
-title: "Vad är en datavetenskap virtuell dator? | Microsoft Docs"
-description: "Hur du kommer igång gör key analytics scenarier med datavetenskap virtuella datorer."
+title: "aaaWhat är en datavetenskap virtuell dator? | Microsoft Docs"
+description: "Hur igång tooget göra viktiga analytics scenarier med datavetenskap virtuella datorer."
 keywords: "datavetenskap verktyg, datavetenskap virtuell dator, verktyg för datavetenskap, datavetenskap för linux"
 services: machine-learning
 documentationcenter: 
@@ -15,42 +15,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: d6346419756cb0841c23f3ba63e479ba2397af54
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 18c7a75208671c663f3b6be6ee8d0bf666772e01
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-the-cloud-based-data-science-virtual-machine-for-linux-and-windows"></a>Introduktion till den molnbaserade datavetenskap virtuella för Linux och Windows
-Den virtuella datorn på vetenskap (DSVM) är en anpassad VM-avbildning på Microsoft Azure-molnet som skapats specifikt för att göra datavetenskap. Det har många populära datavetenskap och andra verktyg förinstallerat och förkonfigurerad för att aldrig skapa intelligent program för avancerade analyser. Den är tillgänglig på Windows Server och Linux. Vi erbjuder Windows-utgåva av DSVM på Server 2016 och Server 2012. Vi erbjuder Linux-versionen av DSVM på Ubuntu 16.04 LTS och OpenLogic 7.2 CentOS-baserade Linux-distributioner. 
+# <a name="introduction-toohello-cloud-based-data-science-virtual-machine-for-linux-and-windows"></a>Introduktion toohello molnbaserade datavetenskap virtuell dator för Linux och Windows
+hello Data vetenskap virtuell dator (DSVM) är en anpassad VM-avbildning på Microsoft Azure-molnet som skapats specifikt för att göra datavetenskap. Det har många populära datavetenskap och andra verktyg förinstallerat och förkonfigurerade toojump-börja utveckla intelligent program för avancerade analyser. Den är tillgänglig på Windows Server och Linux. Vi erbjuder Windows-versionen av DSVM på Server 2016 och Server 2012. Vi erbjuder Linux-versionen av hello DSVM på Ubuntu 16.04 LTS och OpenLogic 7.2 CentOS-baserade Linux-distributioner. 
 
-Det här avsnittet beskrivs vad du kan göra med den virtuella datorn vetenskapliga Data, en översikt över viktiga scenarier för att använda den virtuella datorn, specificerar de viktigaste funktionerna som är tillgängliga i Windows och Linux-versioner och innehåller instruktioner om hur du kommer igång med dem.
+Det här avsnittet beskrivs vad du kan göra med hello datavetenskap VM, en översikt över hello viktiga scenarier för att använda hello VM, specificerar hello viktiga funktioner som är tillgängliga på hello Windows och Linux-versioner och innehåller instruktioner om hur tooget igång med dem.
 
-## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>Vad kan jag göra med datavetenskap virtuella datorn?
-Målet av datavetenskap Virtual Machine är att ge data personal på alla funktioner och roller med en kostnadsfri friktion datavetenskap miljö. Den här virtuella datorn sparar mycket tid som du tog henne om du har distribuerat en jämförbar miljö på egen hand. Starta projektet datavetenskap i stället, direkt i en nyligen skapade VM-instans. 
+## <a name="what-can-i-do-with-hello-data-science-virtual-machine"></a>Vad kan jag göra med hello datavetenskap virtuella datorn?
+hello målet med hello datavetenskap virtuella datorn är tooprovide data tekniker hos alla funktioner och roller med en kostnadsfri friktion datavetenskap miljö. Den här virtuella datorn sparar mycket tid som du tog henne om du har distribuerat en jämförbar miljö på egen hand. Starta projektet datavetenskap i stället, direkt i en nyligen skapade VM-instans. 
 
-Den virtuella datorn datavetenskap designas och konfigurerad för att arbeta med en bred Användningsscenarier. Du kan skala din miljö uppåt eller nedåt när projektet behöver ändras. Du kan använda programmet datavetenskap aktiviteter önskade språk. Du kan installera andra verktyg och anpassa systemet för dina specifika behov.
+hello datavetenskap VM är utformad och konfigurerad för att arbeta med en bred Användningsscenarier. Du kan skala din miljö uppåt eller nedåt när projektet behöver ändras. Du är kan toouse önskat språk tooprogram datavetenskap aktiviteterna. Du kan installera andra verktyg och anpassa hello system för dina specifika behov.
 
 ## <a name="key-scenarios"></a>Viktiga scenarier
-Det här avsnittet beskrivs några viktiga scenarier som den virtuella datorn datavetenskap kan distribueras.
+Det här avsnittet beskrivs några viktiga scenarier för vilka hello datavetenskap VM kan distribueras.
 
-### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>Förkonfigurerade analytics skrivbordet i molnet
-Den virtuella datorn vetenskap Data innehåller en grundläggande konfiguration för datavetenskap team vill ersätta sina lokala datorer med en hanterad dator. Den här baslinjen garanterar att alla data forskare i ett team har en konsekvent konfiguration som du vill kontrollera experiment och främja samarbete. Det minskar även kostnaderna genom att minska belastningen sysadmin och spara på den tid som behövs för att utvärdera, installera och underhålla olika programvarupaket som behövs för att göra avancerade analyser.  
+### <a name="preconfigured-analytics-desktop-in-hello-cloud"></a>Förkonfigurerade analytics skrivbordet i hello moln
+hello datavetenskap VM innehåller en grundläggande konfiguration för datavetenskap team söker tooreplace sina lokala datorer med en hanterad dator. Den här baslinjen säkerställer att alla hello datavetare i ett team har en konsekvent konfiguration med vilka tooverify experiment och främja samarbete. Minskar även kostnaderna genom att minska hello sysadmin belastningen och sparar på hello tid behövs tooevaluate, installera och underhålla hello olika programvarupaket behövs toodo avancerade analyser.  
 
 ### <a name="data-science-training-and-education"></a>Kurser och utbildning om datavetenskap
-Enterprise lärare och lärare utbilda som datavetenskap klasser normalt innehåller en avbildning av virtuell dator för att säkerställa att deras studenter har en konsekvent konfiguration och att exemplen förutsägbart fungerar. Datavetenskap VM skapar en på-begäran-miljö med en konsekvent konfiguration som underlättar support och inkompatibilitet utmaningar. Fall där dessa miljöer behöver skapas ofta, särskilt för kortare utbildning klasser nytta avsevärt.
+Ange en virtuell dator avbildningen tooensure att deras studenter har en konsekvent konfiguration och att hello exempel fungerar förutsägbart Enterprise lärare och lärare som vanligtvis utbilda vetenskap dataklasser. hello datavetenskap VM skapar en på-begäran-miljö med en konsekvent konfiguration som underlättar hello support och inkompatibilitet utmaningar. Fall där dessa miljöer måste toobe inbyggda ofta, särskilt för kortare utbildning klasser, dra avsevärt.
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>På begäran elastisk kapacitet för storskaliga projekt
-Datavetenskap hackathons/tävlingar eller storskaliga datamodellering och utforskning kräver utskalad maskinvarukapacitet, vanligtvis under kort tid. Den virtuella datorn vetenskapliga Data hjälper replikera datavetenskap miljö snabbt på begäran på skaländras ut servrar som tillåter experiment som kräver kraftfulla databearbetningsresurser för att köras.
+Datavetenskap hackathons/tävlingar eller storskaliga datamodellering och utforskning kräver utskalad maskinvarukapacitet, vanligtvis under kort tid. hello datavetenskap VM kan hjälpa replikera hello datavetenskap miljö snabbt på begäran, skaländras ut servrar som tillåter experiment som kräver kraftfulla databehandling resurser toobe körs.
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Kortsiktig undersökningar och utvärdering
-Den virtuella datorn datavetenskap kan vara används för att utvärdera och lära dig verktyg som Microsoft R Server, SQL Server, Visual Studio tools, Jupyter, djupa learning / ML verktyg och nya verktyg populära i gemenskapen med minimal installation arbete. Eftersom den virtuella datorn datavetenskap kan ställas in snabbt, kan den användas i andra kortsiktig användarscenarier som replikerar publicerade experiment, köra demonstrationer följande genomgång i online sessioner eller konferens självstudier.
+hello datavetenskap VM kan använda tooevaluate eller Läs verktyg som Microsoft R Server, SQL Server, Visual Studio tools, Jupyter, djupa learning / ML verktyg och nya verktyg som är vanliga i hello community med minimal installation ansträngning. Eftersom hello datavetenskap VM kan ställas in snabbt, kan den användas i andra kortsiktig användarscenarier som replikerar publicerade experiment, köra demonstrationer följande genomgång i online sessioner eller konferens självstudier.
 
 ### <a name="deep-learning"></a>Djupgående learning
-Datavetenskap VM kan användas för utbildning-modell med djup learning algoritmer på GPU (Graphics bearbetningsenheter) baserad maskinvara. Använda VM skalning maskinvarufunktioner för Azure-molnet kan DSVM du använda GPU-baserad maskinvara på molnet enligt behov. En kan växla till en GPU baserat VM när utbildning stora modeller eller behöver hög hastighet beräkningar samtidigt som samma OS-disk.  Windows Server 2016-versionen av DSVM finns förinstallerat med GPU drivrutiner, ramverk och GPU-versionen av djup learning algoritmer. Linux, djup learning på GPU är aktiverat bara på den [datavetenskap virtuell dator för Linux (Ubuntu) edition](http://aka.ms/dsvm/ubuntu). Du kan distribuera Windows-Ubuntu 2016-versionen av datavetenskap VM till icke GPU baserade virtuella Azure-datorn då djup learning ramverk återgår till att CPU-läge. Tidigare, för Windows Server 2012 vi publicerade en [djup learning toolkit](http://aka.ms/dsvm/deeplearning) men nu bör du använda Windows Server 2016 för Windows-baserade djup learning arbetsbelastningar. Versionen av DSVM innehåller endast baserat på CentOS Linux Processorn bygger på några av djup lära (CNTK, Tensorflow, MXNet) men kommer inte förinstallerat GPU drivrutiner och ramverk. 
+Hej datavetenskap VM kan användas för utbildning-modell med djup learning algoritmer på GPU (Graphics bearbetningsenheter) baserad maskinvara. Använda VM skalning maskinvarufunktioner för Azure-molnet kan DSVM du använda GPU-baserad maskinvara på hello molnet enligt behov. En kan växla tooa GPU baserat VM när utbildning stora modeller eller behöver hög hastighet beräkningar medan hello samma OS-disken.  hello Windows Server 2016 version av DSVM finns förinstallerat med GPU drivrutiner, ramverk och GPU-versionen av hello djup learning algoritmer. Hello Linux djup learning på GPU är aktiverat på hello [datavetenskap virtuell dator för Linux (Ubuntu) edition](http://aka.ms/dsvm/ubuntu). Du kan distribuera hello 2016-Ubuntu-Windows-versionen av datavetenskap VM toonon GPU-baserad virtuell dator i Azure i så fall kommer alla hello djup learning ramverk återställningsplats toohello CPU-läge. Tidigare, för Windows Server 2012 vi publicerade en [djup learning toolkit](http://aka.ms/dsvm/deeplearning) men nu bör du använda Windows Server 2016 för Windows-baserade djup learning arbetsbelastningar. hello baserat på CentOS Linux-versionen av hello DSVM innehåller endast hello CPU bygger på några av hello djup lära (CNTK, Tensorflow, MXNet) men kommer inte förinstallerat hello GPU drivrutiner och ramverk. 
 
-## <a name="whats-included-in-the-data-science-vm"></a>Vad ingår i den virtuella datorn vetenskap Data?
-Datavetenskap virtuell dator har många populära datavetenskap och djup lära redan har installerats och konfigurerats. Den omfattar också verktyg som gör det enkelt att arbeta med olika Azure-data och analyser produkter. Du kan utforska och skapa förutsägelsemodeller i stora datauppsättningar genom att använda Microsoft R Server eller SQL Server 2016. En mängd andra verktyg från community för öppen källkod och från Microsoft finns också inkluderade som exempel koden och bärbara datorer. I följande tabell specificerar och jämför huvudkomponenterna som ingår i Windows och Linux-versioner av datavetenskap Virtual Machine.
+## <a name="whats-included-in-hello-data-science-vm"></a>Vad ingår i hello datavetenskap VM?
+hello datavetenskap virtuell dator har många populära datavetenskap och djup lära redan har installerats och konfigurerats. Den omfattar också verktyg som gör det enkelt toowork olika Azure-data och analyser produkter. Du kan utforska och skapa förutsägelsemodeller i stora datauppsättningar genom att använda hello Microsoft R Server eller SQL Server 2016. En mängd andra verktyg från hello öppen källkod och från Microsoft finns också inkluderade som exempel koden och bärbara datorer. hello följande tabell specificerar och jämför hello huvudkomponenterna i hello Windows och Linux-versionerna av hello datavetenskap virtuell dator.
 
 
 | **Verktyget**                                                           | **Windows-version** | **Linux-version** |
@@ -84,7 +84,7 @@ Datavetenskap virtuell dator har många populära datavetenskap och djup lära r
 | &nbsp;&nbsp;&nbsp;&nbsp;* OpenJDK | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* .net framework | Y | N |
 | PowerBI Desktop | Y | N |
-| SDK: er för åtkomst till Azure och Cortana Intelligence Suite av tjänster | Y | Y |
+| SDK: er tooaccess Azure och Cortana Intelligence Suite av tjänster | Y | Y |
 | **Dataförflyttning och hanteringsverktyg** | | |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Azure Lagringsutforskaren | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Azure CLI](https://docs.microsoft.com/cli/azure/overview) | Y | Y |
@@ -119,18 +119,18 @@ Datavetenskap virtuell dator har många populära datavetenskap och djup lära r
 
 
 
-## <a name="how-to-get-started-with-the-windows-data-science-vm"></a>Hur du kommer igång med Windows datavetenskap VM
-* Skapa en instans av önskad Windows DSVM edition genom att gå till
+## <a name="how-tooget-started-with-hello-windows-data-science-vm"></a>Hur tooget igång med hello Windows datavetenskap VM
+* Skapa en instans av hello önskad Windows DSVM edition genom att gå till
   * [Windows Server 2016 baserat DSVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.windows-data-science-vm)
   
   eller 
   * [Windows Server 2012 baserad DSVM](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/) 
-* Klicka på den **hämta IT nu** knappen.
-* Logga in på den virtuella datorn från fjärrskrivbordet med de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
-* För att identifiera och starta verktyg som finns tillgängliga, klickar du på den **starta** menyn.
+* Klicka på hello **hämta IT nu** knappen.
+* Logga in toohello VM från fjärrskrivbordet med hello autentiseringsuppgifter du angav när du skapade hello VM.
+* toodiscover och starta hello verktygen, klicka på hello **starta** menyn.
 
-## <a name="get-started-with-the-linux-data-science-vm"></a>Kom igång med Linux datavetenskap VM
-* Skapa en instans av önskade Linux DSVM edition genom att gå till 
+## <a name="get-started-with-hello-linux-data-science-vm"></a>Kom igång med hello Linux datavetenskap VM
+* Skapa en instans av hello önskad Linux DSVM edition genom att navigera för
   * [Ubuntu baserat DSVM](http://aka.ms/dsvm/ubuntu)
 
   eller
@@ -138,17 +138,17 @@ Datavetenskap virtuell dator har många populära datavetenskap och djup lära r
   * [OpenLogic CentOS baserat DSVM](http://aka.ms/dsvm/centos)
 
   
-* Klicka på den **blir det nu** knappen.
-* Logga in på den virtuella datorn från en SSH-klienten, till exempel Putty eller SSH-kommando, med de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
-* Ange dsvm mer information i Kommandotolken-gränssnittet.
-* Hämta X2Go klienten för din klientplattform för ett grafiskt skrivbord [här](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) och följ instruktionerna i Linux datavetenskap VM dokumentet [etablera Linux datavetenskap virtuell dator](machine-learning-data-science-linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* Klicka på hello **blir det nu** knappen.
+* Logga in toohello virtuell dator från en SSH-klienten, till exempel Putty eller SSH-kommando, med hello autentiseringsuppgifter du angav när du skapade hello VM.
+* Ange dsvm mer information i Kommandotolken för hello-gränssnittet.
+* Ett grafiskt skrivbord hämta hello X2Go klienten för din klientplattform [här](http://wiki.x2go.org/doku.php/doc:installation:x2goclient) och följer instruktionerna för hello i hello Linux datavetenskap VM dokumentet [etablera hello Linux datavetenskap virtuella](machine-learning-data-science-linux-dsvm-intro.md#installing-and-configuring-x2go-client).
 
 ## <a name="next-steps"></a>Nästa steg
-### <a name="for-the-windows-data-science-vm"></a>För Windows-datavetenskap VM
-* Mer information om hur du kör specifika verktyg som är tillgängliga på Windows-versionen finns [etablera Microsoft datavetenskap Virtual Machine](machine-learning-data-science-provision-vm.md) och
-* Mer information om hur du utför olika uppgifter som behövs för projektet datavetenskap på Windows-VM finns [tio saker du kan göra på datavetenskap virtuella](machine-learning-data-science-vm-do-ten-things.md).
+### <a name="for-hello-windows-data-science-vm"></a>För hello Windows datavetenskap VM
+* Mer information om hur toorun specifika verktyg på hello Windows-versionen finns [etablera hello Microsoft datavetenskap Virtual Machine](machine-learning-data-science-provision-vm.md) och
+* Mer information om hur tooperform olika uppgifter som behövs för projektet datavetenskap på hello Windows VM Se [tio saker du kan göra på hello datavetenskap virtuella](machine-learning-data-science-vm-do-ten-things.md).
 
-### <a name="for-the-linux-data-science-vm"></a>För Linux datavetenskap VM
-* Mer information om hur du kör specifika verktyg som är tillgängliga på Linux-versionen finns [etablera Linux datavetenskap virtuell dator](machine-learning-data-science-linux-dsvm-intro.md).
-* En genomgång som visar hur du utför flera gemensamma datavetenskap med Linux VM finns [datavetenskap på den Linux datavetenskap virtuella](machine-learning-data-science-linux-dsvm-walkthrough.md).
+### <a name="for-hello-linux-data-science-vm"></a>För hello Linux datavetenskap VM
+* Mer information om hur toorun specifika verktyg på hello Linux-version finns [etablera hello Linux datavetenskap virtuella](machine-learning-data-science-linux-dsvm-intro.md).
+* En genomgång som visar hur tooperform flera vanliga datavetenskap aktiviteter med hello Linux VM finns [datavetenskap på hello Linux datavetenskap virtuella](machine-learning-data-science-linux-dsvm-walkthrough.md).
 

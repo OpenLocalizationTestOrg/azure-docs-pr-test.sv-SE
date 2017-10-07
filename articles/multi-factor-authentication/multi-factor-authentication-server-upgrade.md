@@ -1,6 +1,6 @@
 ---
-title: Uppgraderingen av Azure MFA-Server | Microsoft Docs
-description: "Steg och vägledning för att uppgradera Azure Multi-Factor Authentication-Server till en nyare version."
+title: uppgradering av aaaAzure MFA-Server | Microsoft Docs
+description: Anvisningar och riktlinjer tooupgrade hello Azure Multi-Factor Authentication-servern tooa nyare version.
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -15,96 +15,96 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.openlocfilehash: 6e4e09f8539aad56f92ad9137f4a6b9eb0d82370
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aaa8d400e0e5f1c6be3a6d22cde6dd893ef4d546
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Uppgradera till den senaste Azure Multi-Factor Authentication-servern
+# <a name="upgrade-toohello-latest-azure-multi-factor-authentication-server"></a>Uppgradera toohello senaste Azure Multi-Factor Authentication-servern
 
-Den här artikeln vägleder dig genom processen med att uppgradera Azure Multi-Factor Authentication (MFA) Server v6.0 eller högre. Om du behöver uppgradera en gammal version av PhoneFactor Agent finns [uppgradera PhoneFactor-agenten till Azure-flerfunktionsautentisering](multi-factor-authentication-get-started-server-upgrade.md).
+Den här artikeln vägleder dig genom hello processen med att uppgradera Azure Multi-Factor Authentication (MFA) Server v6.0 eller högre. Om du behöver tooupgrade en gammal version av hello PhoneFactor Agent Se för[uppgradera hello PhoneFactor Agent tooAzure servern för flerfunktionsautentisering](multi-factor-authentication-get-started-server-upgrade.md).
 
-Om du uppgraderar från v6.x eller äldre till v7.x eller senare, ändra alla komponenter från .NET 2.0 till .NET 4.5. Alla komponenter måste också Microsoft Visual C++ 2015 Redistributable Update 1 eller högre. MFA-Server-installationsprogrammet installerar x86 och x64 versioner av dessa komponenter om de inte redan har installerats. Om Användarportalen och Mobilappwebbtjänsten körs på separata servrar, måste du installera dessa paket innan du uppgraderar komponenterna. Du kan söka efter den senaste uppdateringen för Microsoft Visual C++ 2015 Redistributable på den [Microsoft Download Center](https://www.microsoft.com/en-us/download/). 
+Om du inte uppgradera från v6.x eller äldre toov7.x eller senare kan ändra alla komponenter från .NET 2.0 too.NET 4.5. Alla komponenter måste också Microsoft Visual C++ 2015 Redistributable Update 1 eller högre. Hej MFA-Server installer installerar både hello x86 och x64 versioner av dessa komponenter om de inte redan har installerats. Om hello Användarportalen och Mobilappwebbtjänsten körs på separata servrar, måste tooinstall paketen innan du uppgraderar komponenterna. Du kan söka efter hello senaste Microsoft Visual C++ 2015 Redistributable uppdateringen på hello [Microsoft Download Center](https://www.microsoft.com/en-us/download/). 
 
-## <a name="install-the-latest-version-of-azure-mfa-server"></a>Installera den senaste versionen av Azure MFA-Server
+## <a name="install-hello-latest-version-of-azure-mfa-server"></a>Installera hello senaste versionen av Azure MFA-Server
 
-1. Följ instruktionerna i [hämta Azure Multi-Factor Authentication-servern](multi-factor-authentication-get-started-server.md#download-the-azure-multi-factor-authentication-server) att hämta den senaste versionen av Azure MFA-Server.
-2. Gör en säkerhetskopia av filen MFA-servern data finns i C:\Program program\multi-Factor Authentication Server\Data\PhoneFactor.pfdata (förutsatt att installera standardplatsen) på din MFA-huvudservern.
-3. Om du kör flera servrar för hög tillgänglighet, ändra klientsystem som autentiseras till MFA-servern så att de slutar skickar trafik till de servrar som uppgraderas. Om du använder en belastningsutjämnare, ta bort en MFA-Server från belastningsutjämnaren, uppgraderingen och Lägg sedan till servern i servergruppen.
-4. Kör installationsprogrammet för nya på varje MFA-Server. Uppgradera först underordnade servrar eftersom de kan läsa den gamla datafilen replikeras av hanteraren. 
+1. Använd hello-instruktioner i [Download hello Azure Multi-Factor Authentication-servern](multi-factor-authentication-get-started-server.md#download-the-azure-multi-factor-authentication-server) tooget hello senaste versionen av hello Azure MFA-Server.
+2. Gör en säkerhetskopia av hello MFA-serverns datafil som finns i C:\Program program\multi-Factor Authentication Server\Data\PhoneFactor.pfdata (antagande om hello installera standardplatsen) på din MFA-huvudservern.
+3. Om du kör flera servrar för hög tillgänglighet, ändra hello klientsystem som autentiseras toohello MFA-servern så att de slutar skickar trafik toohello servrar som uppgraderas. Om du använder en belastningsutjämnare, ta bort en MFA-Server från belastningsutjämnaren hello gör hello uppgradering och Lägg sedan till hello servern tillbaka till hello servergruppen.
+4. Kör hello nya installationsprogrammet på varje MFA-Server. Uppgradera först underordnade servrar eftersom de kan läsa hello gamla datafilen replikeras av hello master. 
 
-  Du behöver inte avinstallera den aktuella MFA-servern innan du kör installationsprogrammet. Installationsprogrammet utför en uppgradering på plats. Installationssökvägen hämtas från registret från den tidigare installationen, så installeras på samma plats (till exempel C:\Program program\multi-Factor Authentication-servern). 
+  Du behöver inte toouninstall din aktuella MFA-servern innan du kör installationsprogrammet för hello. hello installer utför en uppgradering på plats. hello installationssökväg hämtas från registret hello från hello tidigare installation, så installeras i hello samma plats (till exempel C:\Program program\multi-Factor Authentication-servern). 
   
-5. Acceptera uppmaningen om du uppmanas att installera Microsoft Visual C++ 2015 Redistributable uppdateringspaketet. X86 och x64 versioner av paketet installeras.
-5. Om du använder SDK för webbtjänst, uppmanas du att installera ny webbtjänst-SDK. När du installerar nya webbtjänst-SDK måste du kontrollera att namnet på virtuella katalogen matchar tidigare installerade virtuell katalog (till exempel MultiFactorAuthWebServiceSdk).
-6. Upprepa steg på alla underordnade servrar. Uppgradera en av underordnade ska vara den nya hanteraren och sedan uppgradera den gamla huvudservern. 
+5. Om du inte ange tooinstall en Microsoft Visual C++ 2015 Redistributable uppdateringspaketet kan acceptera uppmaningen om hello. Båda hello x86 och x64 versioner av hello-paket installeras.
+5. Om du använder hello webbtjänst-SDK, uppmanas du tooinstall hello ny webbtjänst-SDK. När du installerar Hej ny webbtjänst-SDK, se till att det virtuella katalognamnet hello matchar hello tidigare installerade virtuell katalog (till exempel MultiFactorAuthWebServiceSdk).
+6. Upprepa steg hello på alla underordnade servrar. Uppgradera en av hello underordnade toobe hello ny mall och sedan uppgradera hello gamla huvudservern. 
 
-## <a name="upgrade-the-user-portal"></a>Uppgradera Användarportalen
+## <a name="upgrade-hello-user-portal"></a>Uppgradera hello Användarportalen
 
-1. Skapa en säkerhetskopia av filen Web.config i den virtuella katalogen för Användarportalen installationsplatsen (till exempel C:\inetpub\wwwroot\MultiFactorAuth). Om ändringar som gjordes i standardtemat, skapa en säkerhetskopia av mappen App_Themes\Default. Det är bättre att skapa en kopia av standardmappen och skapa ett nytt tema än om du vill ändra standardtemat.
-2. Om Användarportalen körs på samma server som de andra komponenterna i MFA-Server, uppmanas du att uppdatera Användarportalen MFA-Server-installationen. Acceptera uppmaningen och installera uppdateringen för Användarportalen. Kontrollera att namnet på virtuella katalogen matchar tidigare installerade virtuell katalog (till exempel MultiFactorAuth).
-3. Om Användarportalen finns på en egen server, kopiera filen MultiFactorAuthenticationUserPortalSetup64.msi från installationsplatsen för en av MFA-servrar och placera den på webbservern för Användarportalen. Kör installationsprogrammet. 
+1. Gör en säkerhetskopia av hello web.config-fil som finns i hello virtuella katalogen för hello installationsplats för Användarportalen (till exempel C:\inetpub\wwwroot\MultiFactorAuth). Gör en säkerhetskopia av hello App_Themes\Default mappen även om några ändringar har gjorts toohello standardtemat. Det är bättre toocreate en kopia av hello standardmapp och skapa ett nytt tema än toochange hello standardtemat.
+2. Om hello Användarportalen körs på samma server som hello andra MFA-Server-komponenter, hello hello uppmaning MFA serverinstallation tooupdate hello Användarportalen. Acceptera uppmaningen om hello och installera hello Användarportalen uppdatering. Kontrollera att hello katalognamnet matchar hello tidigare installerade virtuell katalog (till exempel MultiFactorAuth).
+3. Om hello Användarportalen finns på en egen server, kopiera hello MultiFactorAuthenticationUserPortalSetup64.msi fil från hello installationsplats för en av hello MFA-servrar och placera den på hello Användarportalen webbserver. Kör installationsprogrammet för hello. 
 
-  Om ett fel inträffar anger ”Microsoft Visual C++ 2015 Redistributable uppdatering 1 eller senare krävs”, hämta och installera det senaste uppdateringspaketet från den [Microsoft Download Center](https://www.microsoft.com/download/). Installera både x86 och x64 versioner.
+  Om ett fel inträffar anger ”Microsoft Visual C++ 2015 Redistributable uppdatering 1 eller senare krävs”, hämta och installera hello senaste uppdateringspaketet från hello [Microsoft Download Center](https://www.microsoft.com/download/). Installera båda hello x86 och x64 versioner.
 
-4. Jämför web.config säkerhetskopiorna i steg 1 med den nya web.config-filen när den uppdaterade Användarportalen programvaran har installerats. Om det finns inga nya attribut i den nya web.config, kopiera filen web.config för säkerhetskopiering till den virtuella katalogen för att skriva över en ny. Ett annat alternativ är att kopiera och klistra in appSettings värdena och URL för webbtjänsten SDK från säkerhetskopian till den nya web.config.
+4. Jämför hello web.config säkerhetskopiorna i steg 1 med hello nya web.config-filen när hello uppdaterats Användarportalen programvara är installerad. Om det finns inga nya attribut i hello nya web.config, kopiera filen web.config för säkerhetskopiering till hello virtuell katalog toooverwrite hello ny. Ett annat alternativ är toocopy och klistra in hello appSettings värden och hello webbtjänst-SDK URL från hello säkerhetskopian till hello nya web.config.
 
-Om du har Användarportalen på flera servrar, Upprepa installationen på dem alla. 
+Om du har hello Användarportalen på flera servrar, upprepa hello installation på dem alla. 
 
 
-## <a name="upgrade-the-mobile-app-web-service"></a>Uppgradera Mobilappwebbtjänsten
+## <a name="upgrade-hello-mobile-app-web-service"></a>Uppgradera hello Mobilappwebbtjänsten
 
-1. Skapa en säkerhetskopia av filen Web.config i den virtuella katalogen för Mobilappwebbtjänsten installationsplatsen (till exempel C:\inetpub\wwwroot\app eller C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService).
-2. Kopiera filen MultiFactorAuthenticationMobileAppWebServiceSetup64.msi från installationsplatsen för MFA-servrar och placera den på webbservern för Mobilapp registrering.
-3. Kör installationsprogrammet. 
+1. Gör en säkerhetskopia av hello web.config-fil som finns i hello virtuella katalogen för hello Mobilappwebbtjänsten installationsplatsen (till exempel C:\inetpub\wwwroot\app eller C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService).
+2. Kopiera hello MultiFactorAuthenticationMobileAppWebServiceSetup64.msi fil från hello installera platsen för hello MFA-servrar och placera den på hello Mobilapp registreringsserver.
+3. Kör installationsprogrammet för hello. 
 
-  Om det uppstår ett fel som anger att Microsoft Visual C++ 2015 Redistributable uppdatering 1 eller senare krävs, hämta och installera det senaste uppdateringspaketet från den [Microsoft Download Center](https://www.microsoft.com/download/). Installera både x86 och x64 versioner.
+  Om det uppstår ett fel som anger att Microsoft Visual C++ 2015 Redistributable uppdatering 1 eller senare krävs, hämta och installera hello senaste uppdateringspaketet från hello [Microsoft Download Center](https://www.microsoft.com/download/). Installera båda hello x86 och x64 versioner.
 
-4. Jämför web.config-filen som har säkerhetskopierats i steg 1 med den nya web.config-filen när den uppdaterade Mobilappwebbtjänsten programvaran har installerats. Om det finns inga nya attribut i den nya web.config, kan du kopiera dina sparade web.config tillbaka till den virtuella katalogen och skriva över den nya servern. Ett annat alternativ är att kopiera och klistra in appSettings värdena och URL för webbtjänsten SDK från säkerhetskopian till den nya web.config.
+4. Jämför hello web.config-filen som har säkerhetskopierats i steg 1 med hello nya web.config-filen när hello uppdateras Mobilappwebbtjänsten programvara har installerats. Om det finns inga nya attribut i hello nya web.config, kan du kopiera dina sparade web.config till hello virtuell katalog och skriver över hello ny. Ett annat alternativ är toocopy och klistra in hello appSettings värden och hello webbtjänst-SDK URL från hello säkerhetskopian till hello nya web.config.
 
-Om du har den Mobilappwebbtjänsten på flera servrar kan du upprepa installationen på dem alla. 
+Om du har hello Mobilappwebbtjänsten på flera servrar, upprepa hello installation på dem alla. 
 
-## <a name="upgrade-the-ad-fs-adapters"></a>Uppgradera AD FS-kort
+## <a name="upgrade-hello-ad-fs-adapters"></a>Uppgradera hello AD FS-kort
 
 
 ### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Om MFA körs på olika servrar än AD FS
 
-Dessa anvisningar gäller endast om du kör servern för flerfunktionsautentisering separat från AD FS-servrarna. Om båda tjänsterna körs på samma servrar, hoppa över det här avsnittet och gå till följande steg. 
+Dessa anvisningar gäller endast om du kör servern för flerfunktionsautentisering separat från AD FS-servrarna. Om båda tjänsterna körs hello samma servrar, hoppa över det här avsnittet och gå toohello installationssteg. 
 
-1. Spara en kopia av filen multifactorauthenticationadfsadapter.config som har registrerats i AD FS eller exportera konfigurationen med följande PowerShell-kommando: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`. Att kortets namn är ”WindowsAzureMultiFactorAuthentication” eller ”AzureMfaServerAuthentication” beroende på vilken version som installerats tidigare.
-2. Kopiera följande filer från installationsplatsen för MFA-servern till AD FS-servrarna:
+1. Spara en kopia av hello MultiFactorAuthenticationAdfsAdapter.config fil som har registrerats i AD FS eller exportera hello-konfigurationen med hjälp av följande PowerShell-kommando hello: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path tooconfig file]`. hello kortets namn är ”WindowsAzureMultiFactorAuthentication” eller ”AzureMfaServerAuthentication” beroende på hello-version som installerats tidigare.
+2. Kopiera följande filer från hello MFA-Server installation plats toohello AD FS-servrarna hello:
 
   - MultiFactorAuthenticationAdfsAdapterSetup64.msi
   - Register-MultiFactorAuthenticationAdfsAdapter.ps1
   - Unregister-MultiFactorAuthenticationAdfsAdapter.ps1
   - MultiFactorAuthenticationAdfsAdapter.config
 
-3. Redigera skriptet Register-MultiFactorAuthenticationAdfsAdapter.ps1 genom att lägga till `-ConfigurationFilePath [path]` till slutet av den `Register-AdfsAuthenticationProvider` kommando. Ersätt *[sökväg]* med den fullständiga sökvägen till MultiFactorAuthenticationAdfsAdapter.config exporterade filen eller konfigurationsfilen i föregående steg. 
+3. Redigera hello Register-MultiFactorAuthenticationAdfsAdapter.ps1 skript genom att lägga till `-ConfigurationFilePath [path]` toohello slutet av hello `Register-AdfsAuthenticationProvider` kommando. Ersätt *[sökväg]* med hello fullständig sökväg toohello MultiFactorAuthenticationAdfsAdapter.config exporterade filen eller hello-konfigurationsfilen i hello föregående steg. 
 
-  Kontrollera attributen i den nya MultiFactorAuthenticationAdfsAdapter.config att se om de matchar den gamla config-fil. Om några attribut har lagts till eller tas bort i den nya versionen, kopiera attributvärden från den gamla konfigurationsfilen till en ny eller ändra gammal konfigurationsfil att matcha.
+  Kontrollera hello attribut i hello nya MultiFactorAuthenticationAdfsAdapter.config toosee om de matchar hello gammal konfigurationsfil. Om några attribut har lagts till eller tas bort i hello ny version, kopiera hello attributvärden från hello gamla configuration file toohello ny eller ändra hello gamla configuration file toomatch.
 
 ### <a name="install-new-ad-fs-adapters"></a>Installera nya AD FS-kort
 
 > [!IMPORTANT] 
-> Användarna uppmanas inte att utföra tvåstegsverifiering under steg 3 – 8 av det här avsnittet. Om du har AD FS som konfigurerats i flera kluster kan du ta bort, uppgradera och återställa varje kluster i servergruppen oberoende av andra kluster att undvika driftsavbrott.
+> Användarna kommer inte att nödvändiga tooperform tvåstegsverifiering under steg 3 – 8 av det här avsnittet. Om du har AD FS som konfigurerats i flera kluster, kan du ta bort, uppgradering och återställa varje kluster i hello servergrupp oberoende av hello andra kluster tooavoid driftstopp.
 
-1. Ta bort vissa AD FS-servrar från gruppen. Uppdatera servrarna medan de andra fortfarande körs.
-2. Installera den nya AD FS-adaptern på varje server som tas bort från AD FS-servergruppen. Om MFA-servern är installerad på varje AD FS-servern, kan du uppdatera via MFA serveradministratören UX. Uppdatera annars genom att köra sedan filerna MultiFactorAuthenticationAdfsAdapterSetup64.msi. 
+1. Ta bort några AD FS-servrar från hello servergruppen. Uppdatera servrarna när hello andra fortfarande körs.
+2. Installera hello nya AD FS-adaptern på varje server som tas bort från hello AD FS-servergrupp. Om hello MFA-servern är installerad på varje AD FS-servern, kan du uppdatera via hello MFA-administratören UX. Uppdatera annars genom att köra sedan filerna MultiFactorAuthenticationAdfsAdapterSetup64.msi. 
 
-  Om ett fel inträffar anger ”Microsoft Visual C++ 2015 Redistributable uppdatering 1 eller senare krävs”, hämta och installera det senaste uppdateringspaketet från den [Microsoft Download Center](https://www.microsoft.com/download/). Installera både x86 och x64 versioner.
+  Om ett fel inträffar anger ”Microsoft Visual C++ 2015 Redistributable uppdatering 1 eller senare krävs”, hämta och installera hello senaste uppdateringspaketet från hello [Microsoft Download Center](https://www.microsoft.com/download/). Installera båda hello x86 och x64 versioner.
 
-3. Gå till **AD FS** > **autentiseringsprinciper** > **redigera globala flerfunktionsautentisering princip**. Avmarkera **WindowsAzureMultiFactorAuthentication** eller **AzureMFAServerAuthentication** (beroende på den aktuella installerade versionen). 
+3. Gå för**AD FS** > **autentiseringsprinciper** > **Multifaktoråtkomstkontroll certifikatautentisering**. Avmarkera **WindowsAzureMultiFactorAuthentication** eller **AzureMFAServerAuthentication** (beroende på hello aktuell version installerad). 
 
   När det här steget har slutförts är tvåstegsverifiering via MFA-servern inte tillgänglig i det här AD FS-klustret förrän du har slutfört steg 8.
 
-4. Avregistrera den äldre versionen av AD FS-adaptern genom att köra Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell-skript. Se till att den *-namnet* parameter (”WindowsAzureMultiFactorAuthentication” eller ”AzureMFAServerAuthentication”) som matchar namnet som visas i steg 3. Detta gäller för alla servrar i samma AD FS-kluster eftersom det inte finns en central konfiguration.
-5. Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell-skript för att registrera nya AD FS-adaptern. Detta gäller för alla servrar i samma AD FS-kluster eftersom det inte finns en central konfiguration.
-6. Starta om AD FS-tjänsten på varje server som tas bort från AD FS-servergruppen.
-7. Lägga till uppdaterade servrar i AD FS-servergruppen och ta bort de andra servrarna från servergruppen.
-8. Gå till **AD FS** > **autentiseringsprinciper** > **redigera globala flerfunktionsautentisering princip**. Kontrollera **AzureMfaServerAuthentication**.
-9. Upprepa steg 2 för att uppdatera de servrar som har nu tagits bort från AD FS-servergruppen och starta om AD FS-tjänsten på dessa servrar.
-10. Lägga till dessa servrar i AD FS-servergruppen igen.
+4. Avregistrera hello äldre version av hello AD FS-adaptern genom att köra hello Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell-skript. Se till att hello *-namnet* parameter (”WindowsAzureMultiFactorAuthentication” eller ”AzureMFAServerAuthentication”) som matchar hello-namnet som visas i steg 3. Detta gäller tooall servrar i hello samma AD FS-klustret eftersom det inte finns en central konfiguration.
+5. Registrera hello nya AD FS-adaptern genom att köra hello Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell-skript. Detta gäller tooall servrar i hello samma AD FS-klustret eftersom det inte finns en central konfiguration.
+6. Starta om hello AD FS-tjänsten på varje server som tas bort från hello AD FS-servergrupp.
+7. Lägg till hello uppdateras servrar tillbaka toohello AD FS-grupp och ta bort hello servrar från hello servergruppen.
+8. Gå för**AD FS** > **autentiseringsprinciper** > **Multifaktoråtkomstkontroll certifikatautentisering**. Kontrollera **AzureMfaServerAuthentication**.
+9. Upprepa steg 2 tooupdate hello servrar som har nu tagits bort från hello AD FS-grupp och starta om hello AD FS-tjänsten på dessa servrar.
+10. Lägg till dessa servrar till hello AD FS-servergrupp.
 
 ## <a name="next-steps"></a>Nästa steg
 

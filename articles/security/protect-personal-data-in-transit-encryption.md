@@ -1,6 +1,6 @@
 ---
-title: "Skydda personliga data under överföringen med kryptering i Azure | Microsoft Docs"
-description: "Använder kryptering i Azure för att skydda personliga data"
+title: "aaaProtect personliga data under överföring med kryptering i Azure | Microsoft Docs"
+description: "Med hjälp av kryptering i Azure tooprotect personliga data"
 services: security
 documentationcenter: na
 author: Barclayn
@@ -15,133 +15,133 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 99e40b8a09a2f151e7f83fbb58bdfc00ae4b1268
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 218ad3f49326e8dec299a6d92b18116da65eae71
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-in-transit-with-encryption"></a>Azure krypteringstekniker: skydda personliga data under överföringen med kryptering
 
-Den här artikeln hjälper dig att förstå och använda Azure krypteringstekniker att skydda data under överföringen. 
+Den här artikeln hjälper dig att förstå och använda Azure kryptering tekniker toosecure data under överföringen. 
 
-Skydd av personliga data över nätverket är en viktig del av en flera lager skydd på djupet säkerhetsstrategi. Kryptering under överföring är utformat för att hindra en angripare fångar upp överföringar från att visa eller använda data.
+Skydda hello sekretess personliga data är över nätverket hello en viktig del av en flera lager skydd på djupet säkerhetsstrategi. Kryptering under överföring är utformad tooprevent en angripare fångar upp överföringar från att kunna tooview eller Använd hello-data.
 
 ## <a name="scenario"></a>Scenario
 
-Ett stort kryssning företag, sitt säte i USA utökar åtgärderna för att erbjuda färdvägar i Medelhavet, Adriatiska havet, baltiska havet samt Förenta staterna. För att stödja dessa ansträngningar genererade den flera mindre kryssning rader i Italien, Tyskland, Danmark och Storbritannien 
+Ett stort kryssning företag, sitt säte i hello USA utökar dess operations toooffer färdvägar i hello Medelhavet, Adriatiska havet, baltiska havet samt hello brittiska staterna. toosupport dessa ansträngningar den genererade flera mindre kryssning rader i Italien Tyskland, Danmark och hello Storbritannien 
 
-Företaget använder Microsoft Azure för att lagra företagets data i molnet. Detta inkluderar personligt identifierbar information, till exempel namn, adresser, telefonnummer och kreditkortsinformation av dess globala kundbas. Den innehåller också traditionella personal information, till exempel adresser, telefonnummer, skatt identifikationsnummer och medicinska information om företagets anställda på alla platser. Raden kryssning har också en stor databas med medlemmar av trafik och förmåner som innehåller personuppgifter för att spåra relationer med aktuella och tidigare kunder.
+hello företag använder Microsoft Azure toostore företagsdata i hello molnet. Detta inkluderar personligt identifierbar information, till exempel namn, adresser, telefonnummer och kreditkortsinformation av dess globala kundbas. Den innehåller också traditionella personal information, till exempel adresser, telefonnummer, skatt identifikationsnummer och medicinska information om företagets anställda på alla platser. hello kryssning rad har också en stor databas med medlemmar av trafik och förmåner som innehåller personuppgifter tootrack relationer med aktuella och tidigare kunder.
 
-Personliga data för kunder som har angetts i databasen från företagets fjärranslutna kontor och från resa agenter finns runtom i världen. Dokument som innehåller kundinformation överförs via nätverket till Azure-lagring.
+Personliga data av kunder har angetts i hello databasen från hello företagets fjärranslutna kontor och resa agenter finns runt hello world. Dokument som innehåller kundinformation överförs via hello tooAzure nätverkslagring.
 
 ## <a name="problem-statement"></a>Problembeskrivning
 
-Företaget måste skydda kundernas och anställdas personliga data när den är i överföringen till och från Azure-tjänster.
+hello företag måste skydda hello sekretessen för kunders och anställdas personliga data när den är i överföringen tooand från Azure-tjänster.
 
 ## <a name="company-goal"></a>Företagets mål
 
-Företagets målet så att personliga data krypteras när av disken. Om obehöriga avlyssna av disk personliga data, måste den vara i ett formulär som kommer att visas inte kan läsas. Tillämpa kryptering ska vara enkelt eller helt transparent för användare och administratörer.
+Hej företagets mål tooensure personliga data som är krypterade när av disken. Om obehöriga avlyssna hello av disk personliga data, måste den vara i ett formulär som kommer att visas inte kan läsas. Tillämpa kryptering ska vara enkelt eller helt transparent för användare och administratörer.
 
 ## <a name="solutions"></a>Lösningar
 
-Azure-tjänster ger flera verktyg och tekniker som hjälper dig att skydda personliga data under överföringen.
+Azure tillhandahåller flera verktyg och tekniker toohelp du skydda personliga data under överföringen.
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Data som lagras i molnet måste åka till klienten och som kan vara fysiskt finns var som helst i världen, till Azure-datacentret. När dessa data hämtas av användare, flyttar du det igen i motsatt riktning. Data som är under överföring via det offentliga Internet är alltid i fara för avlyssning av angripare. Det är viktigt att skydda personliga data med hjälp av kryptering på transportnivå för att skydda den som flyttas mellan platser.
+Data som lagras i molnet hello färdas från hello-klienten, vilket kan vara fysiskt finns någonstans i hälsningsmeddelande toohello Azure-datacenter. När dessa data hämtas av användare, de överförs igen i hello motsatt riktning. Data som är under överföring över hello offentliga Internet är alltid risk för avlyssning av angripare. Det är viktigt tooprotect hello sekretess personliga data med hjälp av kryptering på transportnivå toosecure som den flyttas mellan platser.
 
-HTTPS-protokollet ger en säker och krypterad kommunikationskanal via Internet. HTTPS ska användas för åtkomst till objekt i Azure Storage och vid anrop av REST API: er. Du kan framtvinga användning av HTTPS-protokollet när du använder [signaturer för delad åtkomst](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) (SAS) för att delegera åtkomst till Azure Storage-objekt. Det finns två typer av SAS: tjänst-SAS och konto-SAS.
+hello HTTPS-protokollet ger en säker och krypterad kommunikationskanal över hello Internet. HTTPS ska använda tooaccess objekt i Azure Storage och vid anrop av REST API: er. Du framtvinga användningen av hello HTTPS-protokollet när du använder [signaturer för delad åtkomst](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) (SAS) toodelegate åtkomst tooAzure lagringsobjekt. Det finns två typer av SAS: tjänst-SAS och konto-SAS.
 
 #### <a name="how-do-i-construct-a-service-sas"></a>Hur jag för att skapa en tjänst-SAS?
 
-En tjänst-SAS delegerar åtkomst till en resurs i en av lagringstjänsterna (blob, kö-, tabell- eller filen service). Om du vill skapa en tjänst-SAS gör du följande:
+En tjänst-SAS delegater åtkomst tooa resurs i en av hello lagringstjänster (blob, kö-, tabell- eller filen service). tooconstruct en tjänst-SAS hello följande:
 
-1. Ange fältet signerade Version
+1. Ange hello signerat versionsfältet
 
-2. Ange den signera resursen (Blob och fil-tjänsten)
+2. Ange hello signerat resurs (Blob och endast filen Service)
 
-3. Ange frågeparametrar om du vill åsidosätta svarshuvuden (Blob-tjänsten och fil-tjänsten)
+3. Ange frågeparametrar tooOverride svarshuvuden (Blob-tjänsten och endast filen Service)
 
-4. Ange tabellnamnet på (endast Tabelltjänsten)
+4. Ange hello tabellnamn (endast tabellen Service)
 
-5. Ange åtkomstprincipen
+5. Ange hello åtkomstprincipen
 
-6. Ange giltighetsintervall signatur
+6. Ange hello giltighetsintervall för signatur
 
 8. Ange behörigheter
 
 9. Ange IP-adress eller IP-intervall
 
-10. Ange HTTP-protokollet
+10. Ange hello HTTP-protokoll
 
 11. Ange intervall för åtkomst av tabell
 
-12. Ange den signerade identifieraren
+12. Ange hello signerat identifierare
 
-13. Ange signaturen
+13. Ange hello signatur
 
 Mer instruktioner finns [hur du skapar en tjänst-SAS](https://docs.microsoft.com/rest/api/storageservices/Constructing-a-Service-SAS?redirectedfrom=MSDN).
 
 #### <a name="how-do-i-construct-an-account-sas"></a>Hur jag för att skapa ett konto-SAS?
 
-En konto-SAS delegerar åtkomst till resurser i en eller flera av lagringstjänsterna. Du kan också delegera åtkomst till läs-, skriv- och borttagningsåtgärder i blobbbehållare, tabeller, köer och filresurser som inte tillåts med en tjänst-SAS. Skapa ett konto-SAS liknar som en tjänst-SAS. Detaljerade instruktioner finns [hur du skapar ett konto-SAS.](https://docs.microsoft.com/rest/api/storageservices/Constructing-an-Account-SAS?redirectedfrom=MSDN)
+En konto-SAS delegerar åtkomst tooresources i en eller flera av hello lagringstjänster. Du kan också delegera åtkomst tooread-, Skriv- och delete-åtgärder på blob-behållare, tabeller, köer och filresurser som inte tillåts med en tjänst-SAS. Skapa ett konto-SAS är liknande toothat av en tjänst-SAS. Detaljerade instruktioner finns [hur du skapar ett konto-SAS.](https://docs.microsoft.com/rest/api/storageservices/Constructing-an-Account-SAS?redirectedfrom=MSDN)
 
 #### <a name="how-do-i-enforce-https-when-calling-rest-apis"></a>Hur behöver jag använda HTTPS vid anrop av REST API: er?
 
-Om du vill framtvinga användning av HTTPS vid anrop av REST API: er för åtkomst till objekt i storage-konton, kan du aktivera säker överföring krävs för lagringskontot. 
+tooenforce hello HTTPS används vid anrop av REST API: er tooaccess objekt i storage-konton, du kan aktivera säker överföring krävs för hello storage-konto. 
 
-1. Välj i Azure-portalen **skapa Lagringskonto**, eller ett befintligt lagringskonto, Välj **inställningar** och sedan **Configuration**.
+1. Markera i hello Azure-portalen, **skapa Lagringskonto**, eller ett befintligt lagringskonto, Välj **inställningar** och sedan **Configuration**.
 
 2. Under **säker överföring krävs**väljer **aktiverad**.
 
 ![Skapa ett lagringskonto](media/protect-personal-data-in-transit-encryption/create-storage-account.png)
 
-Detaljerade instruktioner, inklusive hur du ger säker överföring krävs programmässigt, se [kräver säker överföring](https://docs.microsoft.com/azure/storage/storage-require-secure-transfer).
+Detaljerade instruktioner, inklusive hur tooenable säker överföring krävs programmässigt, se [kräver säker överföring](https://docs.microsoft.com/azure/storage/storage-require-secure-transfer).
 
 #### <a name="how-do-i-encrypt-data-in-azure-file-storage"></a>Hur jag för att kryptera data i Azure File Storage?
 
-Kryptera data under överföring med [Azure File Storage](https://docs.microsoft.com/azure/storage/storage-file-how-to-use-files-portal), du kan använda SMB 3.x med Windows 8, 8.1 och 10 och Windows Server 2012 R2 och Windows Server 2016. När du använder tjänsten Azure-filer, misslyckas en anslutning utan kryptering när ”säker överföring krävs” är aktiverat. Detta inkluderar scenarier med hjälp av SMB 2.1 och SMB 3.0 utan kryptering vissa varianter av Linux SMB-klienten.
+tooencrypt data under överföring med [Azure File Storage](https://docs.microsoft.com/azure/storage/storage-file-how-to-use-files-portal), du kan använda SMB 3.x med Windows 8, 8.1 och 10 och Windows Server 2012 R2 och Windows Server 2016. När du använder hello Azure Files tjänsten misslyckas en anslutning utan kryptering när ”säker överföring krävs” är aktiverat. Detta inkluderar scenarier med hjälp av SMB 2.1 och SMB 3.0 utan kryptering vissa varianter av hello Linux SMB-klienten.
 
 #### <a name="azure-client-side-encryption"></a>Azure klientsidan kryptering
 
-Ett annat alternativ för att skydda personliga data medan de överförs mellan ett klientprogram och Azure Storage är [Client side Encryption](https://docs.microsoft.com/azure/storage/storage-client-side-encryption). Data krypteras innan de överförs till Azure Storage och när du hämtar data från Azure Storage data dekrypteras när den tas emot på klientsidan.
+Ett annat alternativ för att skydda personliga data medan de överförs mellan ett klientprogram och Azure Storage är [Client side Encryption](https://docs.microsoft.com/azure/storage/storage-client-side-encryption). hello data krypteras innan de överförs till Azure Storage och när du hämtar hello data från Azure Storage hello data dekrypteras när den tas emot på hello på klientsidan.
 
 ### <a name="azure-site-to-site-vpn"></a>Azure VPN för plats-till-plats
 
-Ett effektivt sätt att skydda personliga data som överförs mellan ett företagsnätverk eller användare och virtuella Azure-nätverket är att använda en [plats-till-plats](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) eller [punkt-till-plats](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal) virtuella privata nätverk (VPN). En VPN-anslutning skapar en säker krypterad tunnel via Internet.
+Ett effektivt sätt tooprotect personliga data som överförs mellan ett företagsnätverk eller användare och hello virtuella Azure-nätverket är toouse en [plats-till-plats](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal) eller [punkt-till-plats](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal) virtuella privata nätverk (VPN). En VPN-anslutning skapar en säker krypterad tunnel via hello Internet.
 
 #### <a name="how-do-i-create-a-site-to-site-vpn-connection"></a>Hur skapar jag en plats-till-plats VPN-anslutning
 
-En plats-till-plats-VPN ansluter flera användare på företagets nätverk till Azure. Om du vill skapa en plats-till-plats-anslutning i Azure-portalen, gör du följande:
+En plats-till-plats-VPN ansluter flera användare på hello företagsnätverket tooAzure. toocreate en plats-till-plats-anslutning i hello Azure-portalen hello följande:
 
 1. Skapa ett virtuellt nätverk.
 
 2. Ange en DNS-server.
 
-3. Skapa gateway-undernätet.
+3. Skapa hello gateway-undernätet.
 
-4. Skapa VPN-gatewayen. 
+4. Skapa hello VPN-gateway. 
 
     ![](media/protect-personal-data-in-transit-encryption/vpn-step-01.png)
 
-5. Skapa lokal nätverksgateway.
+5. Skapa hello lokal nätverksgateway.
 
     ![](media/protect-personal-data-in-transit-encryption/vpn-step-02.png)
 
 6. Konfigurera din VPN-enhet.
 
-7. Skapa VPN-anslutningen.
+7. Skapa hello VPN-anslutning.
 
     ![](media/protect-personal-data-in-transit-encryption/vpn-step-03.png)
 
-8. Kontrollera VPN-anslutningen.
+8. Kontrollera hello VPN-anslutning.
 
-Mer detaljerad information om hur du skapar en plats-till-plats-anslutning i Azure portal finns i [skapa en plats-till-plats-anslutning i Azure Portal.] (https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
+Detaljerade instruktioner om hur toocreate plats-till-plats-anslutning i hello Azure portal, se [skapa en plats-till-plats-anslutning i hello Azure-portalen.] (https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
 
 #### <a name="how-do-i-create-a-point-to-site-vpn-connection"></a>Hur skapar jag en punkt-till-plats VPN-anslutning
 
-En punkt-till-plats-VPN skapar en säker anslutning från en enskild klientdator till ett virtuellt nätverk. Detta är användbart när du vill ansluta till Azure från en fjärrdator som hemma eller ett hotell eller konferens Center. Att skapa en punkt-till-plats-anslutning i Azure-portalen
+En punkt-till-plats-VPN skapar en säker anslutning från en enskild klient tooa virtuella datornätverk. Detta är användbart när du vill tooconnect tooAzure från en fjärrdator som hemma eller ett hotell eller konferens Center. toocreate en punkt-till-plats-anslutning i hello Azure-portalen
 
 1. Skapa ett virtuellt nätverk.
 
@@ -153,37 +153,37 @@ En punkt-till-plats-VPN skapar en säker anslutning från en enskild klientdator
 
 5. Generera certifikat.
 
-6. Lägg till klient-adresspool.
+6. Lägg till hello klient-adresspool.
 
-7. Ladda upp roten certifikat certifikatets offentliga data.
+7. Överföra hello root certifikat certifikatets offentliga data.
 
-8. Generera och installera VPN-klientpaketet för konfigurationen.
+8. Generera och installera hello VPN-klientpaketet konfiguration.
 
 9. Installera ett exporterade klientcertifikat.
 
-10. Ansluta till Azure.
+10. Ansluta tooAzure.
 
 11. Verifiera anslutningen.
 
-Mer instruktioner finns [konfigurerar en punkt-till-plats-anslutning till ett virtuellt nätverk som använder certifikatautentisering för: Azure-portalen.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
+Mer instruktioner finns [konfigurerar en punkt-till-plats-anslutning tooa VNet använder certifikatautentisering för: Azure-portalen.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
 
 ### <a name="ssltls"></a>SSL/TLS
 
-Microsoft rekommenderar att du alltid använder SSL/TLS-protokoll för att utbyta data mellan olika platser. Organisationer som använder [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) länk kan flytta stora datamängder via ett dedikerat snabba WAN också kryptera data på programnivå-med hjälp av SSL/TLS- eller andra protokoll för skydd.
+Microsoft rekommenderar att du alltid använder SSL/TLS-protokollen tooexchange data mellan olika platser. Organisationer som väljer toouse [ExpressRoute](https://docs.microsoft.com/azure/expressroute/) toomove stora datamängder dedikerade snabba WAN-länk kan också kryptera hello data i hello på programnivå med hjälp av SSL/TLS- eller andra protokoll för extra skydd.
 
 ### <a name="encryption-by-default"></a>Kryptering som standard
 
-Microsoft använder kryptering för att skydda data under överföring mellan kunder och Azure-molntjänster. Om du interagerar med Azure Storage via Azure Portal, alla transaktioner ska ske via HTTPS.
+Microsoft använder kryptering tooprotect data som överförs mellan kunder och Azure-molntjänster. Om du interagerar med Azure Storage via hello Azure-portalen, alla transaktioner ska ske via HTTPS.
 
-[Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) är det protokoll som Microsoft-datacenter försöker att förhandla med klientdatorer som ansluter till Microsofts molntjänster. TLS innehåller stark autentisering, meddelandesekretess, och integritet (aktiveras identifiering av meddelandet manipulation avlyssning och förfalskning), samverkan, flexibla algoritmer, enkel distribution och användning.
+[Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) är Microsoft-datacenter försöker toonegotiate med klientdatorer som ansluter till molntjänster tooMicrosoft hello-protokollet. TLS innehåller stark autentisering, meddelandesekretess, och integritet (aktiveras identifiering av meddelandet manipulation avlyssning och förfalskning), samverkan, flexibla algoritmer, enkel distribution och användning.
 
-[Perfekt Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (Secrecy) används också så att varje anslutning mellan Microsofts molntjänster och kunders klientsystem använda unika nycklar. Anslutningar till Microsoft-molntjänster också dra nytta av RSA baserat 2 048-bitarskryptering nyckellängder. Kombinationen av TLS, RSA 2 048-bitars nyckellängd, och PFS gör det mycket svårare för andra att snappa upp och komma åt data som överförs mellan Microsoft-molntjänster och kunder.
+[Perfekt Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (Secrecy) används också så att varje anslutning mellan Microsofts molntjänster och kunders klientsystem använda unika nycklar. Anslutningar tooMicrosoft molntjänster också dra nytta av RSA baserat 2 048-bitarskryptering nyckellängder. Hej kombination av TLS, RSA 2 048-bitars nyckellängd, och PFS gör det mycket svårare för toointercept och komma åt data som överförs mellan Microsoft-molntjänster och kunder.
 
-Det krypteras alltid data under överföring i [Data Lake Store] (https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overview). Förutom att kryptera data före lagring till permanenta media skyddas alltid även data under överföring eller i rörelse med hjälp av HTTPS. HTTPS är det enda protokoll som stöds för Data Lake Store REST-gränssnitt.
+Det krypteras alltid data under överföring i [Data Lake Store] (https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overview). Dessutom tooencrypting data tidigare toostoring toopersistent media hello data alltid skyddas under överföringen med hjälp av HTTPS. HTTPS är hello enda protokoll som stöds för hello Data Lake Store REST-gränssnitt.
 
 ## <a name="summary"></a>Sammanfattning
 
-Företaget kan göra syftet med att skydda personliga data och sekretessen för sådana data genom att använda HTTPS-anslutningar till Azure Storage, använder signaturer för delad åtkomst och att aktivera säker överföring krävs på storage-konton. De kan även skydda personliga data med hjälp av SMB 3.0-anslutningar och implementera kryptering på klientsidan. Plats-till-plats VPN-anslutningar från företagsnätverket till virtuella Azure-nätverket och punkt-till-plats VPN-anslutningar från enskilda användare skapar en säker tunnel som personliga data på ett säkert sätt kan överföras. Microsofts standard kryptering praxis att ytterligare skydda personliga data.
+hello företagets åstadkommer syftet med att skydda personliga data och hello sekretessen för sådana data genom att använda HTTPS-anslutningar tooAzure lagring, använder signaturer för delad åtkomst och att aktivera säker överföring krävs på hello storage-konton. De kan även skydda personliga data med hjälp av SMB 3.0-anslutningar och implementera kryptering på klientsidan. Plats-till-plats VPN-anslutningar från hello företagsnätverket toohello virtuella Azure-nätverket och punkt-till-plats VPN-anslutningar från enskilda användare skapar en säker tunnel som personliga data på ett säkert sätt kan överföras. Microsofts standard kryptering praxis skydda ytterligare hello sekretess personliga data.
 
 ## <a name="next-steps"></a>Nästa steg
 

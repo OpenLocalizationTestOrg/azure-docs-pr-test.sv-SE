@@ -1,6 +1,6 @@
 ---
-title: "Skapa en fullständig Linux-miljö med Azure CLI 1.0 | Microsoft Docs"
-description: "Skapa lagring, en Linux VM, ett virtuellt nätverk och undernät, belastningsutjämning, ett nätverkskort, en offentlig IP-adress och en nätverkssäkerhetsgrupp alla från grunden med hjälp av Azure CLI 1.0."
+title: "aaaCreate en fullständig Linux-miljö med hello Azure CLI 1.0 | Microsoft Docs"
+description: "Skapa lagring, en Linux VM, ett virtuellt nätverk och undernät, belastningsutjämning, ett nätverkskort, en offentlig IP-adress och en nätverkssäkerhetsgrupp allt från hello bakgrund med hjälp av hello Azure CLI 1.0."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
@@ -15,117 +15,117 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 201ccd523e49d638ace50fbc0ffdceb705b35473
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7fe00e138704fe9c9a1c9b87a7dd1afd6174e527
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Skapa en fullständig Linux-miljö med Azure CLI 1.0
-I den här artikeln skapar vi ett enkelt nätverk med en belastningsutjämnare och ett par med virtuella datorer som är användbara för utveckling och enkel datoranvändning. Vi går igenom processen kommandot av kommandot förrän du har två fungerar, säker virtuella Linux-datorer som du kan ansluta från var som helst på Internet. Sedan kan du gå vidare till mer komplexa nätverk och miljöer.
+# <a name="create-a-complete-linux-environment-with-hello-azure-cli-10"></a>Skapa en fullständig Linux-miljö med hello Azure CLI 1.0
+I den här artikeln skapar vi ett enkelt nätverk med en belastningsutjämnare och ett par med virtuella datorer som är användbara för utveckling och enkel datoranvändning. Vi går igenom processen hello kommandot och kommandot, tills du har två fungerande säkra virtuella Linux-datorer toowhich du ansluter från var som helst på hello Internet. Du kan flytta på toomore komplexa nätverk och miljöer.
 
-På vägen du lär dig mer om beroende hierarkin att Resource Manager-distributionsmodellen ger dig och starta om hur mycket den innehåller. När du ser hur systemet byggs, kan du återskapa den mycket snabbare med hjälp av [Azure Resource Manager-mallar](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). När du lär dig hur delarna av din miljö fungerar ihop, blir hur du skapar mallar för att automatisera dem också enklare.
+Hello vägen du lär dig mer om hello beroende hierarkin att hello Resource Manager-distributionsmodellen ger dig och om hur mycket energi ger. När du ser hur hello systemet byggs, kan du återskapa den mycket snabbare med hjälp av [Azure Resource Manager-mallar](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Även efter att du lär dig hur hello delar av din miljö fungerar ihop, hur du skapar mallar tooautomate dem blir enklare.
 
-Miljön innehåller:
+hello miljö innehåller:
 
 * Två virtuella datorer i en tillgänglighetsuppsättning.
 * En belastningsutjämnare med en regel för belastningsutjämning på port 80.
-* Nätverks-regler för nätverkssäkerhetsgrupper (NSG) till att skydda den virtuella datorn från oönskad trafik.
+* Nätverkssäkerhetsgrupp (NSG) regler tooprotect den virtuella datorn från oönskad trafik.
 
-Om du vill skapa den här anpassade miljön, måste senast [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i Resource Manager-läget (`azure config mode arm`). Du måste också en JSON-parsning verktyget. Det här exemplet används [jq](https://stedolan.github.io/jq/).
+toocreate den här anpassade miljön, behöver du hello senaste [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i Resource Manager-läget (`azure config mode arm`). Du måste också en JSON-parsning verktyget. Det här exemplet används [jq](https://stedolan.github.io/jq/).
 
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-versioner för att slutföra uppgiften
-Du kan slutföra uppgiften med någon av följande CLI-versioner:
+## <a name="cli-versions-toocomplete-hello-task"></a>CLI versioner toocomplete hello aktivitet
+Du kan göra hello med hjälp av något av följande versioner av CLI hello:
 
-- [Azure CLI 1.0](#quick-commands) – våra CLI för klassisk och resurs management på distributionsmodeller (den här artikeln)
-- [Azure CLI 2.0](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) – vår nästa generations CLI för distributionsmodellen resurshantering
+- [Azure CLI 1.0](#quick-commands) – våra CLI för hello klassisk och resurs management distributionsmodeller (den här artikeln)
+- [Azure CLI 2.0](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -vår nästa generations CLI för hello resursdistributionsmodell för hantering
 
 
 ## <a name="quick-commands"></a>Snabbkommandon
-Om du behöver utföra aktiviteten följande avsnittet beskriver grundläggande kommandon för att överföra en virtuell dator till Azure. Mer detaljerad information och kontext för varje steg i resten av dokumentet, med början [här](#detailed-walkthrough).
+Om du behöver tooquickly utföra hello uppgiften, hello följande avsnitt information hello bas kommandon tooupload tooAzure en VM. Mer detaljerad information och kontext för varje steg i hello resten av hello dokumentet med början [här](#detailed-walkthrough).
 
-Se till att du har [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) loggas och med hjälp av Resource Manager-läge:
+Se till att du har [hello Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) loggas och med hjälp av Resource Manager-läge:
 
 ```azurecli
 azure config mode arm
 ```
 
-Ersätt exempel parameternamn med egna värden i följande exempel. Exempel parameternamn inkluderar `myResourceGroup`, `mystorageaccount`, och `myVM`.
+Följande exempel Ersätt exempel parameternamn i hello med egna värden. Exempel parameternamn inkluderar `myResourceGroup`, `mystorageaccount`, och `myVM`.
 
-Skapa resursgruppen. I följande exempel skapas en resursgrupp med namnet `myResourceGroup` i den `westeurope` plats:
+Skapa hello resursgrupp. hello följande exempel skapar en resursgrupp med namnet `myResourceGroup` i hello `westeurope` plats:
 
 ```azurecli
 azure group create -n myResourceGroup -l westeurope
 ```
 
-Kontrollera resursgruppen med hjälp av JSON-parsern:
+Kontrollera hello resursgrupp med hjälp av hello JSON-parsern:
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
 ```
 
-Skapa lagringskontot. I följande exempel skapas ett lagringskonto med namnet `mystorageaccount`. (Lagringskontonamn måste vara unikt, så ange dina egna unika namn)
+Skapa hello storage-konto. hello följande exempel skapas ett lagringskonto med namnet `mystorageaccount`. (hello lagringskontonamn måste vara unikt, så ange dina egna unika namn)
 
 ```azurecli
 azure storage account create -g myResourceGroup -l westeurope \
   --kind Storage --sku-name GRS mystorageaccount
 ```
 
-Kontrollera storage-konto med hjälp av JSON-parsern:
+Kontrollera hello storage-konto med hjälp av hello JSON-parsern:
 
 ```azurecli
 azure storage account show -g myResourceGroup mystorageaccount --json | jq '.'
 ```
 
-Skapa det virtuella nätverket. I följande exempel skapas ett virtuellt nätverk med namnet `myVnet`:
+Skapa hello virtuellt nätverk. hello följande exempel skapas ett virtuellt nätverk med namnet `myVnet`:
 
 ```azurecli
 azure network vnet create -g myResourceGroup -l westeurope\
   -n myVnet -a 192.168.0.0/16
 ```
 
-Skapa ett undernät. I följande exempel skapas ett undernät med namnet `mySubnet`:
+Skapa ett undernät. hello följande exempel skapas ett undernät med namnet `mySubnet`:
 
 ```azurecli
 azure network vnet subnet create -g myResourceGroup \
   -e myVnet -n mySubnet -a 192.168.1.0/24
 ```
 
-Kontrollera det virtuella nätverk och undernät med hjälp av JSON-parsern:
+Verifiera hello virtuellt nätverk och undernät med hello JSON-parsern:
 
 ```azurecli
 azure network vnet show myResourceGroup myVnet --json | jq '.'
 ```
 
-Skapa en offentlig IP-adress. I följande exempel skapas en offentlig IP-adress med namnet `myPublicIP` med DNS-namnet på `mypublicdns`. (DNS-namnet måste vara unikt, så ange dina egna unika namn)
+Skapa en offentlig IP-adress. hello följande exempel skapas en offentlig IP-adress med namnet `myPublicIP` med hello DNS-namnet på `mypublicdns`. (hello DNS-namn måste vara unikt, så ange dina egna unika namn)
 
 ```azurecli
 azure network public-ip create -g myResourceGroup -l westeurope \
   -n myPublicIP  -d mypublicdns -a static -i 4
 ```
 
-Skapa belastningsutjämnaren. I följande exempel skapas en belastningsutjämnare med namnet `myLoadBalancer`:
+Skapa hello belastningsutjämnaren. hello följande exempel skapas en belastningsutjämnare med namnet `myLoadBalancer`:
 
 ```azurecli
 azure network lb create -g myResourceGroup -l westeurope -n myLoadBalancer
 ```
 
-Skapa en frontend IP-adresspool för belastningsutjämnaren och associera den offentliga IP-Adressen. I följande exempel skapas en frontend IP-pool med namnet `mySubnetPool`:
+Skapa en frontend IP-adresspool för hello belastningsutjämnare och associera hello offentlig IP. hello följande exempel skapas en frontend IP-pool med namnet `mySubnetPool`:
 
 ```azurecli
 azure network lb frontend-ip create -g myResourceGroup -l myLoadBalancer \
   -i myPublicIP -n myFrontEndPool
 ```
 
-Skapa backend-IP-adresspool för belastningsutjämnaren. I följande exempel skapas en backend-IP-pool med namnet `myBackEndPool`:
+Skapa hello backend-IP-adresspool för hello belastningsutjämnaren. hello följande exempel skapas en backend-IP-pool med namnet `myBackEndPool`:
 
 ```azurecli
 azure network lb address-pool create -g myResourceGroup -l myLoadBalancer \
   -n myBackEndPool
 ```
 
-Skapa SSH inkommande network adress translation (NAT) regler för belastningsutjämnaren. I följande exempel skapas två regler för inläsning av belastningsutjämnare, `myLoadBalancerRuleSSH1` och `myLoadBalancerRuleSSH2`:
+Skapa SSH inkommande network adress translation (NAT) regler för hello belastningsutjämnaren. hello följande exempel skapar två regler för inläsning av belastningsutjämnare, `myLoadBalancerRuleSSH1` och `myLoadBalancerRuleSSH2`:
 
 ```azurecli
 azure network lb inbound-nat-rule create -g myResourceGroup -l myLoadBalancer \
@@ -134,7 +134,7 @@ azure network lb inbound-nat-rule create -g myResourceGroup -l myLoadBalancer \
   -n myLoadBalancerRuleSSH2 -p tcp -f 4223 -b 22
 ```
 
-Skapa webben inkommande NAT-regler för belastningsutjämnaren. I följande exempel skapas en regel för belastningsutjämnare med namnet `myLoadBalancerRuleWeb`:
+Skapa hello webb ingående NAT-regler för hello belastningsutjämnare. hello följande exempel skapas en regel för belastningsutjämnare med namnet `myLoadBalancerRuleWeb`:
 
 ```azurecli
 azure network lb rule create -g myResourceGroup -l myLoadBalancer \
@@ -142,22 +142,22 @@ azure network lb rule create -g myResourceGroup -l myLoadBalancer \
   -t myFrontEndPool -o myBackEndPool
 ```
 
-Skapa den belastningsutjämnaren, hälsoavsökningen. I följande exempel skapas en TCP-avsökning med namnet `myHealthProbe`:
+Skapa hello belastningsutjämnaren, hälsoavsökningen. hello följande exempel skapas en TCP-avsökning med namnet `myHealthProbe`:
 
 ```azurecli
 azure network lb probe create -g myResourceGroup -l myLoadBalancer \
   -n myHealthProbe -p "tcp" -i 15 -c 4
 ```
 
-Kontrollera belastningsutjämnare, IP-adresspooler och NAT-regler med hjälp av JSON-parsern:
+Kontrollera hello belastningsutjämnare, IP-adresspooler och NAT-regler med hjälp av hello JSON-parsern:
 
 ```azurecli
 azure network lb show -g myResourceGroup -n myLoadBalancer --json | jq '.'
 ```
 
-Skapa första network interface card (NIC). Ersätt den `#####-###-###` avsnitt med din egen Azure prenumerations-ID. Din prenumeration ID anges i resultatet av **jq** när du undersöker de resurser som du skapar. Du kan också visa ditt prenumerations-ID med `azure account list`.
+Skapa hello första nätverksgränssnittskortet (NIC). Ersätt hello `#####-###-###` avsnitt med din egen Azure prenumerations-ID. Din prenumeration ID anges i hello utdata från **jq** när du undersöker hello-resurser som du skapar. Du kan också visa ditt prenumerations-ID med `azure account list`.
 
-I följande exempel skapas ett nätverkskort med namnet `myNic1`:
+hello följande exempel skapas ett nätverkskort med namnet `myNic1`:
 
 ```azurecli
 azure network nic create -g myResourceGroup -l westeurope \
@@ -166,7 +166,7 @@ azure network nic create -g myResourceGroup -l westeurope \
   -e "/subscriptions/########-####-####-####-############/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH1"
 ```
 
-Skapa det andra nätverkskortet. I följande exempel skapas ett nätverkskort med namnet `myNic2`:
+Skapa hello andra nätverkskort. hello följande exempel skapas ett nätverkskort med namnet `myNic2`:
 
 ```azurecli
 azure network nic create -g myResourceGroup -l westeurope \
@@ -175,21 +175,21 @@ azure network nic create -g myResourceGroup -l westeurope \
   -e "/subscriptions/########-####-####-####-############/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH2"
 ```
 
-Kontrollera de två nätverkskorten med hjälp av JSON-parsern:
+Verifiera hello två nätverkskort med hello JSON-parsern:
 
 ```azurecli
 azure network nic show myResourceGroup myNic1 --json | jq '.'
 azure network nic show myResourceGroup myNic2 --json | jq '.'
 ```
 
-Skapa nätverkssäkerhetsgruppen. I följande exempel skapas en nätverkssäkerhetsgrupp som heter `myNetworkSecurityGroup`:
+Skapa hello nätverkssäkerhetsgruppen. hello följande exempel skapar en nätverkssäkerhetsgrupp med namnet `myNetworkSecurityGroup`:
 
 ```azurecli
 azure network nsg create -g myResourceGroup -l westeurope \
   -n myNetworkSecurityGroup
 ```
 
-Lägga till två regler för inkommande trafik för nätverkssäkerhetsgruppen. I följande exempel skapas två regler `myNetworkSecurityGroupRuleSSH` och `myNetworkSecurityGroupRuleHTTP`:
+Lägga till två regler för inkommande trafik för hello nätverkssäkerhetsgruppen. hello följande exempel skapar två regler `myNetworkSecurityGroupRuleSSH` och `myNetworkSecurityGroupRuleHTTP`:
 
 ```azurecli
 azure network nsg rule create -p tcp -r inbound -y 1000 -u 22 -c allow \
@@ -198,26 +198,26 @@ azure network nsg rule create -p tcp -r inbound -y 1001 -u 80 -c allow \
   -g myResourceGroup -a myNetworkSecurityGroup -n myNetworkSecurityGroupRuleHTTP
 ```
 
-Kontrollera nätverkssäkerhetsgruppen och regler för inkommande trafik med hjälp av JSON-parsern:
+Kontrollera hello nätverkssäkerhetsgruppen och regler för inkommande trafik med hjälp av hello JSON-parsern:
 
 ```azurecli
 azure network nsg show -g myResourceGroup -n myNetworkSecurityGroup --json | jq '.'
 ```
 
-Binda nätverkssäkerhetsgruppen till två nätverkskort:
+Binda hello nätverkssäkerhet gruppera toohello två nätverkskort:
 
 ```azurecli
 azure network nic set -g myResourceGroup -o myNetworkSecurityGroup -n myNic1
 azure network nic set -g myResourceGroup -o myNetworkSecurityGroup -n myNic2
 ```
 
-Skapa tillgänglighetsuppsättningen. I följande exempel skapas en tillgänglighetsuppsättning namngivna `myAvailabilitySet`:
+Skapa hello tillgänglighetsuppsättning. hello följande exempel skapas en tillgänglighetsuppsättning namngivna `myAvailabilitySet`:
 
 ```azurecli
 azure availset create -g myResourceGroup -l westeurope -n myAvailabilitySet
 ```
 
-Skapa första Linux VM. I följande exempel skapas en virtuell dator med namnet `myVM1`:
+Skapa hello första Linux VM. hello följande exempel skapas en virtuell dator med namnet `myVM1`:
 
 ```azurecli
 azure vm create \
@@ -235,7 +235,7 @@ azure vm create \
     --admin-username azureuser
 ```
 
-Skapa andra Linux VM. I följande exempel skapas en virtuell dator med namnet `myVM2`:
+Skapa hello andra Linux VM. hello följande exempel skapas en virtuell dator med namnet `myVM2`:
 
 ```azurecli
 azure vm create \
@@ -253,32 +253,32 @@ azure vm create \
     --admin-username azureuser
 ```
 
-Använda JSON-parsern för att kontrollera att allt som har skapats:
+Använd hello JSON-parsern tooverify att allt som har skapats:
 
 ```azurecli
 azure vm show -g myResourceGroup -n myVM1 --json | jq '.'
 azure vm show -g myResourceGroup -n myVM2 --json | jq '.'
 ```
 
-Exportera den nya miljön till en mall för att snabbt skapa nya instanser:
+Exportera din nya miljö tooa mallen tooquickly återskapa nya instanser:
 
 ```azurecli
 azure group export myResourceGroup
 ```
 
 ## <a name="detailed-walkthrough"></a>Detaljerad genomgång
-Detaljerade anvisningar som följer beskrivs vad varje kommando gör när du skapar i din miljö. De här koncepten är användbara när du skapar dina egna anpassade miljöer för utveckling och produktion.
+hello beskrivs detaljerade anvisningar som följer vad varje kommando gör när du skapar i din miljö. De här koncepten är användbara när du skapar dina egna anpassade miljöer för utveckling och produktion.
 
-Se till att du har [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) loggas och med hjälp av Resource Manager-läge:
+Se till att du har [hello Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) loggas och med hjälp av Resource Manager-läge:
 
 ```azurecli
 azure config mode arm
 ```
 
-Ersätt exempel parameternamn med egna värden i följande exempel. Exempel parameternamn inkluderar `myResourceGroup`, `mystorageaccount`, och `myVM`.
+Följande exempel Ersätt exempel parameternamn i hello med egna värden. Exempel parameternamn inkluderar `myResourceGroup`, `mystorageaccount`, och `myVM`.
 
 ## <a name="create-resource-groups-and-choose-deployment-locations"></a>Skapa resursgrupper och välj distributionen platser
-Azure-resursgrupper är distribution av logiska enheter som innehåller information om konfiguration och metadata för att aktivera logiska hantering av resurs-distributioner. I följande exempel skapas en resursgrupp med namnet `myResourceGroup` i den `westeurope` plats:
+Azure-resursgrupper är distribution av logiska enheter som innehåller information och metadata tooenable hello logiska konfigurationshantering för resurs-distributioner. hello följande exempel skapar en resursgrupp med namnet `myResourceGroup` i hello `westeurope` plats:
 
 ```azurecli
 azure group create --name myResourceGroup --location westeurope
@@ -301,9 +301,9 @@ info:    group create command OK
 ```
 
 ## <a name="create-a-storage-account"></a>skapar ett lagringskonto
-Du måste storage-konton för VM-diskar och eventuella ytterligare hårddiskar som du vill lägga till. Du kan skapa storage-konton nästan omedelbart när du skapar resursgrupper.
+Du måste storage-konton för VM-diskar och eventuella ytterligare hårddiskar som du vill tooadd. Du kan skapa storage-konton nästan omedelbart när du skapar resursgrupper.
 
-Här exemplet använder vi den `azure storage account create` kommandot skickar platsen för kontot, resursgruppen som styr och typ av Lagringsstöd som du vill använda. I följande exempel skapas ett lagringskonto med namnet `mystorageaccount`:
+Här använder vi hello `azure storage account create` kommandot Skicka hello platsen för hello konto, hello resursgruppen som styr och hello typ av Lagringsstöd som du vill använda. hello följande exempel skapas ett lagringskonto med namnet `mystorageaccount`:
 
 ```azurecli
 azure storage account create \  
@@ -321,7 +321,7 @@ info:    Executing command storage account create
 info:    storage account create command OK
 ```
 
-För att granska våra resursgrupp med hjälp av den `azure group show` kommando använder vi den [jq](https://stedolan.github.io/jq/) verktyget tillsammans med den `--json` Azure CLI-alternativet. (Du kan använda **jsawk** eller något språk bibliotek som du föredrar att parsa JSON.)
+tooexamine våra resursgrupp med hjälp av hello `azure group show` kommando använder vi hello [jq](https://stedolan.github.io/jq/) verktyget tillsammans med hello `--json` Azure CLI-alternativet. (Du kan använda **jsawk** eller något språk bibliotek som du föredrar tooparse hello JSON.)
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -359,7 +359,7 @@ Resultat:
 }
 ```
 
-För att undersöka storage-konto med hjälp av CLI, måste du först ange kontonamn och nycklar. Ersätt namnet på lagringskontot i följande exempel med ett namn som du väljer:
+tooinvestigate hello storage-konto med hjälp av hello CLI, måste du först tooset hello kontonamn och nycklar. Ersätt hello namnet på hello storage-konto i följande exempel med ett namn som du väljer hello:
 
 ```bash
 export AZURE_STORAGE_CONNECTION_STRING="$(azure storage account connectionstring show mystorageaccount --resource-group myResourceGroup --json | jq -r '.string')"
@@ -383,7 +383,7 @@ info:    storage container list command OK
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Skapa ett virtuellt nätverk och undernät
-Härnäst ska du behöver skapa ett virtuellt nätverk som körs i Azure och ett undernät som du kan skapa dina virtuella datorer. I följande exempel skapas ett virtuellt nätverk med namnet `myVnet` med den `192.168.0.0/16` adressprefix:
+Härnäst ska tooneed toocreate ett virtuellt nätverk som körs i Azure och ett undernät som du kan skapa dina virtuella datorer. hello följande exempel skapas ett virtuellt nätverk med namnet `myVnet` med hello `192.168.0.0/16` adressprefix:
 
 ```azurecli
 azure network vnet create --resource-group myResourceGroup --location westeurope \
@@ -407,7 +407,7 @@ data:      192.168.0.0/16
 info:    network vnet create command OK
 ```
 
-Igen och Använd alternativet--json i vi `azure group show` och `jq` att se hur vi bygger våra resurser. Nu har vi en `storageAccounts` resurs och ett `virtualNetworks` resurs.  
+Igen, vi alternativet hello--json av `azure group show` och `jq` toosee hur vi bygger våra resurser. Nu har vi en `storageAccounts` resurs och ett `virtualNetworks` resurs.  
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -452,7 +452,7 @@ Resultat:
 }
 ```
 
-Nu skapar vi ett undernät i det `myVnet` virtuella nätverk som de virtuella datorerna har distribuerats. Vi använder den `azure network vnet subnet create` kommandot tillsammans med de resurser som redan har vi skapat: den `myResourceGroup` resursgrupp och `myVnet` virtuellt nätverk. I följande exempel tar vi lägga till undernätet med namnet `mySubnet` med det undernät adressprefixet `192.168.1.0/24`:
+Nu ska vi skapa ett undernät i hello `myVnet` virtuellt nätverk i vilka hello virtuella datorer distribueras. Vi använder hello `azure network vnet subnet create` kommandot tillsammans med hello resurser som redan har vi skapat: hello `myResourceGroup` resursgrupp och hello `myVnet` virtuellt nätverk. I följande exempel hello, vi lägga till hello undernät med namnet `mySubnet` med hello undernät adressprefixet `192.168.1.0/24`:
 
 ```azurecli
 azure network vnet subnet create --resource-group myResourceGroup \
@@ -463,9 +463,9 @@ Resultat:
 
 ```azurecli
 info:    Executing command network vnet subnet create
-+ Looking up the subnet "mySubnet"
++ Looking up hello subnet "mySubnet"
 + Creating subnet "mySubnet"
-+ Looking up the subnet "mySubnet"
++ Looking up hello subnet "mySubnet"
 data:    Id                              : /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet
 data:    Type                            : Microsoft.Network/virtualNetworks/subnets
 data:    ProvisioningState               : Succeeded
@@ -475,7 +475,7 @@ data:
 info:    network vnet subnet create command OK
 ```
 
-Eftersom undernätet är logiskt i det virtuella nätverket, leta vi efter information om undernät med ett något annorlunda kommando. Vi använder kommandot är `azure network vnet show`, men vi fortsätta att använda för att undersöka JSON-utdata `jq`.
+Eftersom hello undernät är logiskt i hello virtuella nätverket, ser vi hello undernät information med ett något annorlunda kommando. hello-kommandot som vi använder `azure network vnet show`, men vi fortsätta tooexamine hello JSON-utdata med hjälp av `jq`.
 
 ```azurecli
 azure network vnet show myResourceGroup myVnet --json | jq '.'
@@ -513,7 +513,7 @@ Resultat:
 ```
 
 ## <a name="create-a-public-ip-address"></a>Skapa en offentlig IP-adress
-Nu ska vi skapa offentlig IP-adress (PIP) som vi tilldela din belastningsutjämnare. Du kan ansluta till dina virtuella datorer från Internet med hjälp av `azure network public-ip create` kommando. Eftersom standardadressen är dynamisk kan vi skapa en namngiven DNS-post i den **cloudapp.azure.com** domänen med hjälp av den `--domain-name-label` alternativet. I följande exempel skapas en offentlig IP-adress med namnet `myPublicIP` med DNS-namnet på `mypublicdns`. Eftersom DNS-namnet måste vara unikt, kan du ange egna unikt DNS-namn:
+Nu skapar vi hello offentlig IP-adress (PIP) som vi tilldelar tooyour belastningsutjämnaren. Det gör att du tooconnect tooyour virtuella datorer från hello Internet med hjälp av hello `azure network public-ip create` kommando. Eftersom hello standardadressen är dynamiska, vi skapa en namngiven DNS-post i hello **cloudapp.azure.com** domänen med hjälp av hello `--domain-name-label` alternativet. hello följande exempel skapas en offentlig IP-adress med namnet `myPublicIP` med hello DNS-namnet på `mypublicdns`. Eftersom hello DNS-namnet måste vara unikt, kan du ange egna unikt DNS-namn:
 
 ```azurecli
 azure network public-ip create --resource-group myResourceGroup \
@@ -524,9 +524,9 @@ Resultat:
 
 ```azurecli
 info:    Executing command network public-ip create
-+ Looking up the public ip "myPublicIP"
++ Looking up hello public ip "myPublicIP"
 + Creating public ip address "myPublicIP"
-+ Looking up the public ip "myPublicIP"
++ Looking up hello public ip "myPublicIP"
 data:    Id                              : /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myPublicIP
 data:    Name                            : myPublicIP
 data:    Type                            : Microsoft.Network/publicIPAddresses
@@ -539,7 +539,7 @@ data:    FQDN                            : mypublicdns.westeurope.cloudapp.azure
 info:    network public-ip create command OK
 ```
 
-Den offentliga IP-adressen är också en översta resurs så att du kan se den med `azure group show`.
+hello offentliga IP-adressen är också en översta resurs så att du kan se den med `azure group show`.
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -591,7 +591,7 @@ Resultat:
 }
 ```
 
-Du kan undersöka mer resursinformation,, inklusive det fullständigt kvalificerade domännamnet (FQDN) för underdomänen, med hjälp av det fullständiga `azure network public-ip show` kommando. Den offentliga IP-adressresursen har allokerats logiskt, men en specifik adress har ännu inte tilldelats. För att erhålla en IP-adress kommer du att behöva en belastningsutjämnare som vi ännu inte har skapats.
+Du kan undersöka mer resursinformation,, inklusive hello fullständigt kvalificerade domännamnet (FQDN) för hello underdomänen med hjälp av hello fullständig `azure network public-ip show` kommando. hello offentliga IP-adressresurs har allokerats logiskt, men en specifik adress har ännu inte tilldelats. tooobtain en IP-adress ska tooneed en belastningsutjämnare som vi ännu inte har skapats.
 
 ```azurecli
 azure network public-ip show myResourceGroup myPublicIP --json | jq '.'
@@ -617,7 +617,7 @@ Resultat:
 ```
 
 ## <a name="create-a-load-balancer-and-ip-pools"></a>Skapa en belastningsutjämnare och IP-pooler
-När du skapar en belastningsutjämnare, kan du distribuera trafik mellan flera virtuella datorer. Det ger också redundans i tillämpningsprogrammet genom att köra flera virtuella datorer som svarar på begäranden från användare vid underhåll eller tunga laster. I följande exempel skapas en belastningsutjämnare med namnet `myLoadBalancer`:
+När du skapar en belastningsutjämnare kan du toodistribute trafik över flera virtuella datorer. Det ger också redundans tooyour program genom att köra flera virtuella datorer som svarar toouser begäranden i hello händelsen för underhåll eller tunga laster. hello följande exempel skapas en belastningsutjämnare med namnet `myLoadBalancer`:
 
 ```azurecli
 azure network lb create --resource-group myResourceGroup --location westeurope \
@@ -628,7 +628,7 @@ Resultat:
 
 ```azurecli
 info:    Executing command network lb create
-+ Looking up the load balancer "myLoadBalancer"
++ Looking up hello load balancer "myLoadBalancer"
 + Creating load balancer "myLoadBalancer"
 data:    Id                              : /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer
 data:    Name                            : myLoadBalancer
@@ -638,9 +638,9 @@ data:    Provisioning state              : Succeeded
 info:    network lb create command OK
 ```
 
-Vår belastningsutjämnare är ganska tomt, så vi skapa vissa IP-adresspooler. Vi vill skapa två IP-adresspooler för våra belastningsutjämnare, en för klientdelen och en för serverdelen. Frontend IP-adresspool är synligt offentligt. Det är också den plats som vi tilldela PIP som vi skapade tidigare. Sedan använder vi backend-poolen som en plats för våra virtuella datorer för att ansluta till. På så sätt kan trafiken kan flöda till belastningsutjämnaren till de virtuella datorerna.
+Vår belastningsutjämnare är ganska tomt, så vi skapa vissa IP-adresspooler. Vi vill toocreate två IP-adresspooler för våra belastningsutjämnare, en för hello klientdelen och en för hello serverdel. hello frontend IP-adresspool är synligt offentligt. Det är också hello plats toowhich vi tilldela hello PIP som vi skapade tidigare. Sedan använder vi hello backend-adresspool som en plats för våra VMs tooconnect till. På så sätt kan hello trafiken kan flöda via hello load balancer toohello virtuella datorer.
 
-Först skapar vi vårt frontend IP-adresspool. I följande exempel skapas en frontend-pool med namnet `myFrontEndPool`:
+Först skapar vi vårt frontend IP-adresspool. hello följande exempel skapas en frontend-pool med namnet `myFrontEndPool`:
 
 ```azurecli
 azure network lb frontend-ip create --resource-group myResourceGroup \
@@ -652,8 +652,8 @@ Resultat:
 
 ```azurecli
 info:    Executing command network lb frontend-ip create
-+ Looking up the load balancer "myLoadBalancer"
-+ Looking up the public ip "myPublicIP"
++ Looking up hello load balancer "myLoadBalancer"
++ Looking up hello public ip "myPublicIP"
 + Updating load balancer "myLoadBalancer"
 data:    Name                            : myFrontEndPool
 data:    Provisioning state              : Succeeded
@@ -662,9 +662,9 @@ data:    Public IP address id            : /subscriptions/guid/resourceGroups/my
 info:    network lb mySubnet-ip create command OK
 ```
 
-Observera hur vi använde den `--public-ip-name` växel för att skicka in den `myPublicIP` som vi skapade tidigare. Tilldela den offentliga IP-adressen till belastningsutjämnaren kan du nå din virtuella dator via Internet.
+Observera hur vi använde hello `--public-ip-name` växla toopass i hello `myPublicIP` som vi skapade tidigare. Tilldela hello offentliga IP-adress toohello belastningsutjämnare kan du tooreach din virtuella dator över hello Internet.
 
-Nu ska vi skapa våra andra IP-adresspool nu för våra backend-trafik. I följande exempel skapas en backend-pool med namnet `myBackEndPool`:
+Nu ska vi skapa våra andra IP-adresspool nu för våra backend-trafik. hello följande exempel skapas en backend-pool med namnet `myBackEndPool`:
 
 ```azurecli
 azure network lb address-pool create --resource-group myResourceGroup \
@@ -675,14 +675,14 @@ Resultat:
 
 ```azurecli
 info:    Executing command network lb address-pool create
-+ Looking up the load balancer "myLoadBalancer"
++ Looking up hello load balancer "myLoadBalancer"
 + Updating load balancer "myLoadBalancer"
 data:    Name                            : myBackEndPool
 data:    Provisioning state              : Succeeded
 info:    network lb address-pool create command OK
 ```
 
-Vi kan se hur våra belastningsutjämnaren fungerar genom att titta med `azure network lb show` och undersöka JSON-utdata:
+Vi kan se hur våra belastningsutjämnaren fungerar genom att titta med `azure network lb show` och undersöka hello JSON-utdata:
 
 ```azurecli
 azure network lb show myResourceGroup myLoadBalancer --json | jq '.'
@@ -728,7 +728,7 @@ Resultat:
 ```
 
 ## <a name="create-load-balancer-nat-rules"></a>Skapa belastningsutjämnaren NAT-regler
-Vi behöver skapa network address translation (NAT) regler som anger inkommande eller utgående åtgärder för att få trafik som passerar genom vår belastningsutjämnaren. Du kan ange protokoll och sedan mappa externa portar till interna portar som du vill. Nu ska vi skapa vissa regler som tillåter SSH via vårt belastningsutjämnaren till vår virtuella datorer för våra miljö. Vi konfigurerar TCP-portarna 4222 och 4223 att dirigera till TCP-port 22 på vår virtuella datorer (som vi skapa senare). I följande exempel skapas en regel med namnet `myLoadBalancerRuleSSH1` att mappa TCP-port 4222 port 22:
+tooget trafik som passerar genom vår belastningsutjämnaren måste toocreate network address translation (NAT) regler som anger inkommande eller utgående åtgärder. Du kan ange hello protokollet toouse sedan mappa externa portar toointernal portar som du vill. Nu ska vi skapa vissa regler som tillåter SSH via vårt belastningen belastningsutjämnaren tooour virtuella datorer för våra miljö. Vi konfigurerar TCP-portarna 4222 och 4223 toodirect tooTCP-port 22 på vår virtuella datorer (som vi skapa senare). hello följande exempel skapas en regel med namnet `myLoadBalancerRuleSSH1` toomap TCP-port 4222 tooport 22:
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -740,7 +740,7 @@ Resultat:
 
 ```azurecli
 info:    Executing command network lb inbound-nat-rule create
-+ Looking up the load balancer "myLoadBalancer"
++ Looking up hello load balancer "myLoadBalancer"
 warn:    Using default enable floating ip: false
 warn:    Using default idle timeout: 4
 warn:    Using default mySubnet IP configuration "myFrontEndPool"
@@ -756,7 +756,7 @@ data:    mySubnet IP configuration id    : /subscriptions/guid/resourceGroups/my
 info:    network lb inbound-nat-rule create command OK
 ```
 
-Upprepa proceduren för andra NAT-regeln för SSH. I följande exempel skapas en regel med namnet `myLoadBalancerRuleSSH2` att mappa TCP-port 4223 port 22:
+Upprepa hello proceduren för andra NAT-regel för SSH. hello följande exempel skapas en regel med namnet `myLoadBalancerRuleSSH2` toomap TCP-port 4223 tooport 22:
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -764,7 +764,7 @@ azure network lb inbound-nat-rule create --resource-group myResourceGroup \
   --frontend-port 4223 --backend-port 22
 ```
 
-Nu ska vi också gå vidare och skapa en NAT-regel för TCP-port 80 för webbtrafik, koppla upp regeln upp till vår IP-adresspooler. Om vi koppla en regel till en IP-adresspool, i stället för att koppla upp en regel till vår virtuella datorer separat, vi lägga till eller ta bort virtuella datorer från IP-adresspool. Belastningsutjämnaren justeras automatiskt trafikflödet. I följande exempel skapas en regel med namnet `myLoadBalancerRuleWeb` att mappa TCP-port 80 till port 80:
+Nu ska vi också gå vidare och skapa en NAT-regel för TCP-port 80 för webbtrafik, koppla upp hello regeln upp tooour IP-adresspooler. Om vi koppla samman hello regeln tooan IP-poolen, i stället för att koppla upp dig hello regeln tooour VMs individuellt kan vi lägga till eller ta bort virtuella datorer från hello IP-pool. hello belastningsutjämnaren justeras automatiskt hello flödet av trafik. hello följande exempel skapas en regel med namnet `myLoadBalancerRuleWeb` toomap TCP-port 80 tooport 80:
 
 ```azurecli
 azure network lb rule create --resource-group myResourceGroup \
@@ -777,7 +777,7 @@ Resultat:
 
 ```azurecli
 info:    Executing command network lb rule create
-+ Looking up the load balancer "myLoadBalancer"
++ Looking up hello load balancer "myLoadBalancer"
 warn:    Using default idle timeout: 4
 warn:    Using default enable floating ip: false
 warn:    Using default load distribution: Default
@@ -796,7 +796,7 @@ info:    network lb rule create command OK
 ```
 
 ## <a name="create-a-load-balancer-health-probe"></a>Skapa en belastningsutjämnaren, hälsoavsökningen
-En avsökning med jämna mellanrum kontroller på virtuella datorer som är bakom våra belastningsutjämnare för att kontrollera att de fungerar och svarar på förfrågningar som har definierats. Om inte, de tas bort från igen så att användare inte dirigeras till dem. Du kan definiera egna kontroller för hälsoavsökningen tillsammans med intervall och timeout-värden. Läs mer om hälsoavsökningar [avsökningar belastningsutjämnaren](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). I följande exempel skapas en TCP hälsa avsöktes namngivna `myHealthProbe`:
+En avsökning med jämna mellanrum kontroller på hello virtuella datorer som finns bakom våra belastningen belastningsutjämnaren toomake att de fungerar och svarar toorequests som har definierats. Om inte, de tas bort från dirigerad åtgärden tooensure som användare inte toothem. Du kan definiera egna kontroller för hello hälsoavsökningen tillsammans med intervall och timeout-värden. Läs mer om hälsoavsökningar [avsökningar belastningsutjämnaren](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). hello följande exempel skapas en TCP hälsa avsöktes namngivna `myHealthProbe`:
 
 ```azurecli
 azure network lb probe create --resource-group myResourceGroup \
@@ -809,7 +809,7 @@ Resultat:
 ```azurecli
 info:    Executing command network lb probe create
 warn:    Using default probe port: 80
-+ Looking up the load balancer "myLoadBalancer"
++ Looking up hello load balancer "myLoadBalancer"
 + Updating load balancer "myLoadBalancer"
 data:    Name                            : myHealthProbe
 data:    Provisioning state              : Succeeded
@@ -820,16 +820,16 @@ data:    Number of probes                : 4
 info:    network lb probe create command OK
 ```
 
-Vi anges här, ett intervall på 15 sekunder för våra hälsokontroller. Vi kan missa högst fyra avsökningar (en minut) innan belastningsutjämnaren anser att värden inte längre fungerar.
+Vi anges här, ett intervall på 15 sekunder för våra hälsokontroller. Vi kan missa högst fyra avsökningar (en minut) innan hello belastningsutjämnaren anser hello värden fungerar inte längre.
 
-## <a name="verify-the-load-balancer"></a>Kontrollera belastningsutjämnaren
-Belastningsutjämningskonfigurationen är nu klar. Här följer de steg som du tog:
+## <a name="verify-hello-load-balancer"></a>Kontrollera hello belastningsutjämnare
+Nu görs hello konfiguration av belastningsutjämning. Här är hello steg som du tog:
 
 1. Du har skapat en belastningsutjämnare.
-2. Du har skapat en frontend IP-adresspool och tilldelats en offentlig IP-adress.
+2. Du har skapat en frontend IP-adresspool och tilldelats en offentlig IP-tooit.
 3. Du har skapat en backend-IP-adresspool som virtuella datorer kan ansluta till.
-4. Du har skapat NAT-regler som tillåter SSH till VM: ar för hantering, tillsammans med en regel som tillåter TCP-port 80 för våra webbprogrammet.
-5. Du har lagt till en hälsoavsökningen för att regelbundet kontrollera de virtuella datorerna. Den här hälsoavsökningen säkerställer att användare inte försöker komma åt en virtuell dator som inte längre fungerar eller betjänar innehåll.
+4. Du har skapat NAT-regler som tillåter SSH toohello virtuella datorer för hantering, tillsammans med en regel som tillåter TCP-port 80 för våra webbprogrammet.
+5. Du har lagt till en hälsa avsökningen tooperiodically Kontrollera hello virtuella datorer. Den här hälsoavsökningen säkerställer att användare inte försöker tooaccess en virtuell dator som inte längre fungerar eller betjänar innehåll.
 
 Nu ska vi se hur din belastningsutjämnare ser ut nu:
 
@@ -954,12 +954,12 @@ Resultat:
 }
 ```
 
-## <a name="create-an-nic-to-use-with-the-linux-vm"></a>Skapa ett nätverkskort som ska användas med Linux VM
-Nätverkskort är tillgängliga via programmering eftersom du kan använda regler för deras användning. Du kan också ha fler än en. I följande `azure network nic create` kommandot du ansluta nätverkskortet till backend-IP-adresspool för belastning och associera det med NAT-regel för att tillåta SSH-trafik.
+## <a name="create-an-nic-toouse-with-hello-linux-vm"></a>Skapa ett NIC-toouse med hello Linux VM
+Nätverkskort är tillgängliga via programmering eftersom du kan använda regler tootheir användning. Du kan också ha fler än en. I följande hello `azure network nic create` kommandot du koppla samman hello NIC toohello belastningen backend-IP-pool och associera det med hello NAT-regeln toopermit SSH-trafik.
 
-Ersätt den `#####-###-###` avsnitt med din egen Azure prenumerations-ID. Din prenumeration ID anges i resultatet av `jq` när du undersöker de resurser som du skapar. Du kan också visa ditt prenumerations-ID med `azure account list`.
+Ersätt hello `#####-###-###` avsnitt med din egen Azure prenumerations-ID. Din prenumeration ID anges i hello utdata från `jq` när du undersöker hello-resurser som du skapar. Du kan också visa ditt prenumerations-ID med `azure account list`.
 
-I följande exempel skapas ett nätverkskort med namnet `myNic1`:
+hello följande exempel skapas ett nätverkskort med namnet `myNic1`:
 
 ```azurecli
 azure network nic create --resource-group myResourceGroup --location westeurope \
@@ -972,8 +972,8 @@ Resultat:
 
 ```azurecli
 info:    Executing command network nic create
-+ Looking up the subnet "mySubnet"
-+ Looking up the network interface "myNic1"
++ Looking up hello subnet "mySubnet"
++ Looking up hello network interface "myNic1"
 + Creating network interface "myNic1"
 data:    Id                              : /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myNic1
 data:    Name                            : myNic1
@@ -995,7 +995,7 @@ data:
 info:    network nic create command OK
 ```
 
-Du kan se information genom att undersöka resursen direkt. Du undersöka resursen med hjälp av den `azure network nic show` kommando:
+Du kan se hello information genom att undersöka hello resursen direkt. Du undersöka hello resursen med hjälp av hello `azure network nic show` kommando:
 
 ```azurecli
 azure network nic show myResourceGroup myNic1 --json | jq '.'
@@ -1043,7 +1043,7 @@ Resultat:
 }
 ```
 
-Nu skapar vi det andra nätverkskortet kopplar i vår backend-IP-adresspool igen. Den här gången andra NAT-regeln tillåter SSH-trafik. I följande exempel skapas ett nätverkskort med namnet `myNic2`:
+Nu skapar vi hello andra nätverkskortet, koppla upp i tooour backend-IP-poolen igen. Den här gången hello andra NAT-regeln tillåter SSH-trafik. hello följande exempel skapas ett nätverkskort med namnet `myNic2`:
 
 ```azurecli
 azure network nic create --resource-group myResourceGroup --location westeurope \
@@ -1053,14 +1053,14 @@ azure network nic create --resource-group myResourceGroup --location westeurope 
 ```
 
 ## <a name="create-a-network-security-group-and-rules"></a>Skapa en säkerhetsgrupp för nätverk och regler
-Nu skapa vi en säkerhetsgrupp för nätverk och de inkommande reglerna som styr åtkomsten till nätverkskortet. En nätverkssäkerhetsgrupp kan tillämpas på ett nätverkskort eller ett undernät. Du kan definiera regler för att styra flödet av trafik till och från dina virtuella datorer. I följande exempel skapas en nätverkssäkerhetsgrupp som heter `myNetworkSecurityGroup`:
+Nu när vi skapa en säkerhetsgrupp för nätverk och hello inkommande regler som styr åtkomst till toohello NIC. En nätverkssäkerhetsgrupp kan vara tillämpade tooa nätverkskort eller ett undernät. Du kan definiera regler toocontrol hello flödet av trafik till och från dina virtuella datorer. hello följande exempel skapar en nätverkssäkerhetsgrupp med namnet `myNetworkSecurityGroup`:
 
 ```azurecli
 azure network nsg create --resource-group myResourceGroup --location westeurope \
   --name myNetworkSecurityGroup
 ```
 
-Lägg till regel för inkommande trafik för NSG: N att tillåta inkommande anslutningar på port 22 (till stöd för SSH). I följande exempel skapas en regel med namnet `myNetworkSecurityGroupRuleSSH` att tillåta TCP på port 22:
+Lägg till hello regel för inkommande trafik hello NSG tooallow inkommande anslutningar på port 22 (toosupport SSH). hello följande exempel skapas en regel med namnet `myNetworkSecurityGroupRuleSSH` tooallow TCP på port 22:
 
 ```azurecli
 azure network nsg rule create --resource-group myResourceGroup \
@@ -1069,7 +1069,7 @@ azure network nsg rule create --resource-group myResourceGroup \
   --name myNetworkSecurityGroupRuleSSH
 ```
 
-Nu ska vi lägga till regel för inkommande trafik för NSG: N att tillåta inkommande anslutningar på port 80 (för att stödja webbtrafik). I följande exempel skapas en regel med namnet `myNetworkSecurityGroupRuleHTTP` att tillåta TCP på port 80:
+Nu ska vi lägga till hello regel för inkommande trafik hello NSG tooallow inkommande anslutningar på port 80 (toosupport webbtrafik). hello följande exempel skapas en regel med namnet `myNetworkSecurityGroupRuleHTTP` tooallow TCP på port 80:
 
 ```azurecli
 azure network nsg rule create --resource-group myResourceGroup \
@@ -1079,12 +1079,12 @@ azure network nsg rule create --resource-group myResourceGroup \
 ```
 
 > [!NOTE]
-> Regel för inkommande trafik är ett filter för inkommande nätverksanslutningar. I det här exemplet Binder vi NSG: N till det virtuella nätverkskortet virtuella datorer, vilket innebär att alla förfrågningar till port 22 överförs via till nätverkskortet på vår VM. Denna regel för inkommande trafik som handlar om en nätverksanslutning och inte om en slutpunkt som är det skulle ha varit om i klassiska distributioner. Om du vill öppna en port måste du lämna den `--source-port-range` inställd på '\*”(standardvärdet) att acceptera inkommande begäranden från **alla** begär port. Det finns vanligtvis dynamiska portar.
+> regel för inkommande trafik hello är ett filter för inkommande nätverksanslutningar. I det här exemplet Binder vi hello NSG toohello virtuellt nätverkskort för virtuella datorer, vilket innebär att alla begäran tooport 22 överförs via toohello NIC på vår VM. Denna regel för inkommande trafik som handlar om en nätverksanslutning och inte om en slutpunkt som är det skulle ha varit om i klassiska distributioner. tooopen en port du lämnar hello `--source-port-range` angetts för '\*' (hello standardvärdet) tooaccept inkommande begäranden från **alla** begär port. Det finns vanligtvis dynamiska portar.
 >
 >
 
-## <a name="bind-to-the-nic"></a>Binda till nätverkskortet
-Binda NSG: N till nätverkskorten. Vi behöver ansluta våra nätverkskort med vår nätverkssäkerhetsgruppen. Kör både kommandon för att koppla samman både våra nätverkskort:
+## <a name="bind-toohello-nic"></a>Binda toohello NIC
+Binda hello NSG toohello nätverkskort. Vi behöver tooconnect våra nätverkskort med vår nätverkssäkerhetsgruppen. Kör både kommandon toohook in båda våra nätverkskort:
 
 ```azurecli
 azure network nic set --resource-group myResourceGroup --name myNic1 \
@@ -1097,32 +1097,32 @@ azure network nic set --resource-group myResourceGroup --name myNic2 \
 ```
 
 ## <a name="create-an-availability-set"></a>Skapa en tillgänglighetsuppsättning
-Tillgänglighetsuppsättningar hjälp spridning din virtuella dator över feldomäner och uppgradera domäner. Nu ska vi skapa en tillgänglighetsuppsättning för dina virtuella datorer. I följande exempel skapas en tillgänglighetsuppsättning namngivna `myAvailabilitySet`:
+Tillgänglighetsuppsättningar hjälp spridning din virtuella dator över feldomäner och uppgradera domäner. Nu ska vi skapa en tillgänglighetsuppsättning för dina virtuella datorer. hello följande exempel skapas en tillgänglighetsuppsättning namngivna `myAvailabilitySet`:
 
 ```azurecli
 azure availset create --resource-group myResourceGroup --location westeurope
   --name myAvailabilitySet
 ```
 
-Feldomäner definiera en gruppering av virtuella datorer som delar en gemensam käll- och strömbrytare. Som standard är de virtuella datorer som har konfigurerats i din tillgänglighetsuppsättning åtskilda över upp till tre feldomäner. Tanken är att maskinvaruproblem i något av dessa feldomäner inte påverkar varje virtuell dator som kör din app. Azure distribuerar automatiskt virtuella datorer i feldomäner när de placeras i en tillgänglighetsuppsättning.
+Feldomäner definiera en gruppering av virtuella datorer som delar en gemensam käll- och strömbrytare. Som standard separeras hello virtuella datorer som har konfigurerats i din tillgänglighetsuppsättning över in toothree feldomäner. hello idé är att maskinvaruproblem i något av dessa feldomäner inte påverkar varje virtuell dator som kör din app. Azure distribuerar automatiskt virtuella datorer över hello feldomäner när de placeras i en tillgänglighetsuppsättning.
 
-Uppgraderingsdomäner ange grupper av virtuella datorer och underliggande fysiska maskinvara som kan startas på samma gång. Den ordning i vilken uppgraderingsdomäner startas om kanske inte sekventiella under planerat underhåll, men bara en uppgradering på att startas samtidigt. Igen, Azure automatiskt distribuerar din virtuella dator över uppgraderingsdomäner när de placeras i en tillgänglig plats.
+Uppgraderingsdomäner ange grupper av virtuella datorer och underliggande fysiska maskinvara som kan startas på hello samtidigt. hello ordning i vilken uppgraderingsdomäner startas om kan inte vara sekventiella under planerat underhåll, men endast en uppgradering på att startas samtidigt. Igen, Azure automatiskt distribuerar din virtuella dator över uppgraderingsdomäner när de placeras i en tillgänglig plats.
 
-Läs mer om [hantera tillgängligheten för virtuella datorer](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Läs mer om [hantera hello tillgängligheten för virtuella datorer](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="create-the-linux-vms"></a>Skapa de virtuella Linux-datorerna
-Du har skapat resurser för lagring och nätverk för att stödja Internet-tillgängliga virtuella datorer. Nu ska vi skapa de virtuella datorer och skydda dem med en SSH-nyckel som inte har ett lösenord. I det här fallet är det dags att skapa en Ubuntu VM baserat på senaste LTS. Vi Leta upp avbildningsinformationen med hjälp av `azure vm image list`, enligt beskrivningen i [söker Azure VM-bilder](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="create-hello-linux-vms"></a>Skapa hello virtuella Linux-datorer
+Du har skapat hello lagring och nätverksresurser toosupport Internet-tillgängliga virtuella datorer. Nu ska vi skapa de virtuella datorer och skydda dem med en SSH-nyckel som inte har ett lösenord. I det här fallet ska vi toocreate en Ubuntu VM baserat på hello senaste LTS. Vi Leta upp avbildningsinformationen med hjälp av `azure vm image list`, enligt beskrivningen i [söker Azure VM-bilder](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Vi valde en avbildning med hjälp av kommandot `azure vm image list westeurope canonical | grep LTS`. I detta fall kan vi använda `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`. Vi klara för det senaste fältet `latest` så att i framtiden vi alltid får den senaste versionen. (Vi använder strängen är `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`).
+Vi valde en bild med hello kommandot `azure vm image list westeurope canonical | grep LTS`. I detta fall kan vi använda `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`. Hello sista fältet, skickar vi `latest` så att i framtiden hello vi alltid får hello den senaste versionen. (vi använder hello-strängen är `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`).
 
-Nästa steg är bekant för alla som redan har skapat ett ssh rsa-offentliga och privata nyckel koppla på Linux- eller Mac med hjälp av **ssh-keygen - t rsa -b 2048**. Om du inte har några certifikat nyckelpar i din `~/.ssh` katalog så kan du skapa dem:
+Nästa steg är bekant tooanyone som redan har skapat ett ssh rsa-offentliga och privata nyckel koppla på Linux- eller Mac med hjälp av **ssh-keygen - t rsa -b 2048**. Om du inte har några certifikat nyckelpar i din `~/.ssh` katalog så kan du skapa dem:
 
-* Automatiskt, med hjälp av den `azure vm create --generate-ssh-keys` alternativet.
-* Manuellt med hjälp av [instruktionerna för att skapa dem själv](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Automatiskt, genom att använda hello `azure vm create --generate-ssh-keys` alternativet.
+* Manuellt med hjälp av [hello instruktioner toocreate dem själv](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Du kan också använda den `--admin-password` metod för att autentisera SSH-anslutningar när den virtuella datorn har skapats. Den här metoden är vanligtvis mindre säker.
+Du kan också använda hello `--admin-password` metoden tooauthenticate SSH-anslutningar när hello VM skapas. Den här metoden är vanligtvis mindre säker.
 
-Vi skapa den virtuella datorn genom att våra resurser och information tillsammans med den `azure vm create` kommando:
+Vi skapar hello VM genom att våra resurser och information tillsammans med hello `azure vm create` kommando:
 
 ```azurecli
 azure vm create \
@@ -1144,22 +1144,22 @@ Resultat:
 
 ```azurecli
 info:    Executing command vm create
-+ Looking up the VM "myVM1"
-info:    Verifying the public key SSH file: /home/ahmet/.ssh/id_rsa.pub
-info:    Using the VM Size "Standard_DS1"
-info:    The [OS, Data] Disk or image configuration requires storage account
-+ Looking up the storage account mystorageaccount
-+ Looking up the availability set "myAvailabilitySet"
++ Looking up hello VM "myVM1"
+info:    Verifying hello public key SSH file: /home/ahmet/.ssh/id_rsa.pub
+info:    Using hello VM Size "Standard_DS1"
+info:    hello [OS, Data] Disk or image configuration requires storage account
++ Looking up hello storage account mystorageaccount
++ Looking up hello availability set "myAvailabilitySet"
 info:    Found an Availability set "myAvailabilitySet"
-+ Looking up the NIC "myNic1"
++ Looking up hello NIC "myNic1"
 info:    Found an existing NIC "myNic1"
-info:    Found an IP configuration with virtual network subnet id "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet" in the NIC "myNic1"
+info:    Found an IP configuration with virtual network subnet id "/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet" in hello NIC "myNic1"
 info:    This is an NIC without publicIP configured
-info:    The storage URI 'https://mystorageaccount.blob.core.windows.net/' will be used for boot diagnostics settings, and it can be overwritten by the parameter input of '--boot-diagnostics-storage-uri'.
+info:    hello storage URI 'https://mystorageaccount.blob.core.windows.net/' will be used for boot diagnostics settings, and it can be overwritten by hello parameter input of '--boot-diagnostics-storage-uri'.
 info:    vm create command OK
 ```
 
-Du kan ansluta till den virtuella datorn direkt med hjälp av din standard SSH-nycklar. Se till att du anger rätt port eftersom vi passera belastningsutjämnaren. (För vårt första virtuella dator vi konfigurera NAT-regeln att vidarebefordra port 4222 till vår VM.)
+Du kan ansluta tooyour VM omedelbart genom att använda din standard SSH-nycklar. Se till att du anger rätt port för hello eftersom vi passera hello belastningsutjämnaren. (För vårt första VM vi ställa in hello NAT-regel tooforward port 4222 tooour VM.)
 
 ```bash
 ssh ops@mypublicdns.westeurope.cloudapp.azure.com -p 4222
@@ -1168,11 +1168,11 @@ ssh ops@mypublicdns.westeurope.cloudapp.azure.com -p 4222
 Resultat:
 
 ```bash
-The authenticity of host '[mypublicdns.westeurope.cloudapp.azure.com]:4222 ([xx.xx.xx.xx]:4222)' can't be established.
+hello authenticity of host '[mypublicdns.westeurope.cloudapp.azure.com]:4222 ([xx.xx.xx.xx]:4222)' can't be established.
 ECDSA key fingerprint is 94:2d:d0:ce:6b:fb:7f:ad:5b:3c:78:93:75:82:12:f9.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added '[mypublicdns.westeurope.cloudapp.azure.com]:4222,[xx.xx.xx.xx]:4222' (ECDSA) to the list of known hosts.
-Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-34-generic x86_64)
+Are you sure you want toocontinue connecting (yes/no)? yes
+Warning: Permanently added '[mypublicdns.westeurope.cloudapp.azure.com]:4222,[xx.xx.xx.xx]:4222' (ECDSA) toohello list of known hosts.
+Welcome tooUbuntu 16.04.1 LTS (GNU/Linux 4.4.0-34-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com
@@ -1187,7 +1187,7 @@ Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-34-generic x86_64)
 ops@myVM1:~$
 ```
 
-Gå vidare och skapa den virtuella datorn med andra på samma sätt:
+Gå vidare och skapa den virtuella datorn med andra i hello samma sätt:
 
 ```azurecli
 azure vm create \
@@ -1205,7 +1205,7 @@ azure vm create \
   --admin-username azureuser
 ```
 
-Du kan nu använda den `azure vm show myResourceGroup myVM1` kommando för att undersöka vad du har skapat. Nu är kör du dina Ubuntu virtuella datorer bakom en belastningsutjämnare i Azure som du kan logga in till endast med SSH-nyckel (eftersom lösenord är inaktiverade). Du kan installera nginx eller httpd distribuera en webbapp och se att trafiken flödet genom belastningsutjämnaren till båda de virtuella datorerna.
+Du kan nu använda hello `azure vm show myResourceGroup myVM1` kommandot tooexamine vad du har skapat. Nu är kör du dina Ubuntu virtuella datorer bakom en belastningsutjämnare i Azure som du kan logga in till endast med SSH-nyckel (eftersom lösenord är inaktiverade). Du kan installera nginx eller httpd distribuera en webbapp och se hello trafik flödet genom hello belastningen belastningsutjämnaren tooboth hello virtuella datorer.
 
 ```azurecli
 azure vm show --resource-group myResourceGroup --name myVM1
@@ -1215,8 +1215,8 @@ Resultat:
 
 ```azurecli
 info:    Executing command vm show
-+ Looking up the VM "TestVM1"
-+ Looking up the NIC "myNic1"
++ Looking up hello VM "TestVM1"
++ Looking up hello NIC "myNic1"
 data:    Id                              :/subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM1
 data:    ProvisioningState               :Succeeded
 data:    Name                            :myVM1
@@ -1269,23 +1269,23 @@ info:    vm show command OK
 ```
 
 
-## <a name="export-the-environment-as-a-template"></a>Exportera miljön som en mall
-Nu när du har skapat i den här miljön, vad händer om du vill skapa en ytterligare utvecklingsmiljö med samma parametrar eller en produktionsmiljö som matchar det? Hanteraren för filserverresurser använder JSON-mallar som definierar alla parametrar för din miljö. Du bygga ut hela miljöer genom att referera till den här JSON-mallen. Du kan [skapa JSON-mallarna manuellt](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) eller exportera en befintlig miljö för att skapa JSON-mallen du:
+## <a name="export-hello-environment-as-a-template"></a>Exportera hello miljö som en mall
+Nu när du har skapat i den här miljön om du vill att toocreate en ytterligare utvecklingsmiljö med hello samma parametrar eller en produktionsmiljö som matchar det? Hanteraren för filserverresurser använder JSON-mallar som definierar alla hello parametrar för din miljö. Du bygga ut hela miljöer genom att referera till den här JSON-mallen. Du kan [skapa JSON-mallarna manuellt](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) eller exportera en befintlig miljö toocreate hello JSON mall:
 
 ```azurecli
 azure group export --name myResourceGroup
 ```
 
-Det här kommandot skapar den `myResourceGroup.json` filen i din aktuella arbetskatalogen. När du skapar en miljö med den här mallen kan uppmanas du alla resursnamn, inklusive namn för belastningsutjämnaren, nätverkskort eller virtuella datorer. Du kan fylla i dessa namn i mallfilen genom att lägga till den `-p` eller `--includeParameterDefaultValue` parametern till den `azure group export` kommando som visades tidigare. Redigera JSON-mall om du vill ange resursnamn, eller [skapa en fil med parameters.json](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) som anger resursnamnen.
+Det här kommandot skapar hello `myResourceGroup.json` fil i den aktuella arbetskatalogen. När du skapar en miljö med den här mallen kan uppmanas du alla hello resursnamn, inklusive hello namn för hello belastningsutjämnare, nätverkskort eller virtuella datorer. Du kan fylla i dessa namn i mallfilen genom att lägga till hello `-p` eller `--includeParameterDefaultValue` parametern toohello `azure group export` kommando som visades tidigare. Redigera din JSON mallen toospecify hello resursnamn, eller [skapa en fil med parameters.json](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) som anger hello resursnamn.
 
-Skapa en miljö från mallen:
+toocreate en miljö med din mall:
 
 ```azurecli
 azure group deployment create --resource-group myNewResourceGroup \
   --template-file myResourceGroup.json
 ```
 
-Du kanske vill läsa [mer om hur du distribuerar från mallar](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Läs mer om hur du uppdaterar miljöer, använda parameterfilen och komma åt mallar från en enda lagringsplats inkrementellt.
+Du kanske vill tooread [mer om hur toodeploy från mallar](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Läs mer om hur tooincrementally uppdatering miljöer, använda hello parameterfilen och komma åt mallar från en enda lagringsplats.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu är du redo att börja arbeta med flera nätverkskomponenter och virtuella datorer. Du kan använda det här exemplet miljö för att bygga ut ditt program med hjälp av de kärnkomponenter som introducerades här.
+Nu är du redo toobegin arbeta med flera nätverkskomponenter och virtuella datorer. Du kan använda det här exemplet miljö toobuild ut ditt program med hjälp av hello kärnkomponenter introduceras här.

@@ -1,6 +1,6 @@
 ---
-title: "Kopiera data från Azure Storage-Blobbar till Data Lake Store | Microsoft Docs"
-description: "Använd AdlCopy för att kopiera data från Azure Storage-Blobbar till Data Lake Store"
+title: "aaaCopy data från Azure Storage-Blobbar i Data Lake Store | Microsoft Docs"
+description: "Använda AdlCopy verktyget toocopy data från Azure Storage BLOB tooData Datasjölager"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.openlocfilehash: 68f44991432a76c2ef1c79ec6dffdea4c62bcb17
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a3d4172eaefe7395cdef2fff72691bd70f642b78
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="copy-data-from-azure-storage-blobs-to-data-lake-store"></a>Kopiera data från Azure Storage-blobar till Data Lake Store
+# <a name="copy-data-from-azure-storage-blobs-toodata-lake-store"></a>Kopiera data från Azure Storage BLOB tooData Datasjölager
 > [!div class="op_single_selector"]
 > * [Använda DistCp](data-lake-store-copy-data-wasb-distcp.md)
 > * [Använda AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 >
 >
 
-Azure Data Lake Store ger ett kommandoradsverktyg [AdlCopy](http://aka.ms/downloadadlcopy), för att kopiera data från följande källor:
+Azure Data Lake Store ger ett kommandoradsverktyg [AdlCopy](http://aka.ms/downloadadlcopy), toocopy data från hello följande källor:
 
-* Från Azure Storage BLOB till Data Lake Store. Du kan inte använda AdlCopy för att kopiera data från Data Lake Store till Azure Storage BLOB.
+* Från Azure Storage BLOB till Data Lake Store. Du kan inte använda AdlCopy toocopy data från Data Lake Store tooAzure Storage-blobbar.
 * Mellan två Azure Data Lake Store-konton.
 
-Du kan också använda verktyget AdlCopy i två olika lägen:
+Du kan också använda verktyget för hello AdlCopy i två olika lägen:
 
-* **Fristående**, där verktyget använder Data Lake Store-resurser för att utföra åtgärden.
-* **Med ett Data Lake Analytics-konto**, där enheter som tilldelats till ditt Data Lake Analytics-konto som används för att utföra kopieringen. Du kanske vill använda det här alternativet när du behöver utföra uppgifter kopiera förutsägbart.
+* **Fristående**, där hello verktyget använder Data Lake Store resurser tooperform hello aktivitet.
+* **Med ett Data Lake Analytics-konto**, där hello-enheter som tilldelats tooyour Data Lake Analytics-konto är används tooperform hello kopieringen. Du kanske vill toouse det här alternativet när du söker tooperform hello kopiera aktiviteter förutsägbart.
 
 ## <a name="prerequisites"></a>Krav
-Innan du påbörjar den här artikeln måste du ha:
+Du måste ha hello följande innan du börjar den här artikeln:
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Storage-Blobbar** behållare med vissa data.
-* **Ett Azure Data Lake Store-konto**. Anvisningar om hur du skapar en finns [Kom igång med Azure Data Lake Store](data-lake-store-get-started-portal.md)
-* **Azure Data Lake Analytics-kontot (valfritt)** -finns [Kom igång med Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) anvisningar om hur du skapar ett Data Lake Store-konto.
-* **AdlCopy verktyget**. Installera verktyget AdlCopy från [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy).
+* **Ett Azure Data Lake Store-konto**. Anvisningar för hur toocreate en, se [Kom igång med Azure Data Lake Store](data-lake-store-get-started-portal.md)
+* **Azure Data Lake Analytics-kontot (valfritt)** -finns [Kom igång med Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) anvisningar för hur toocreate ett Data Lake lagrar konto.
+* **AdlCopy verktyget**. Installera verktyget för hello AdlCopy från [http://aka.ms/downloadadlcopy](http://aka.ms/downloadadlcopy).
 
-## <a name="syntax-of-the-adlcopy-tool"></a>Syntaxen för verktyget AdlCopy
-Använd följande syntax för att arbeta med verktyget AdlCopy
+## <a name="syntax-of-hello-adlcopy-tool"></a>Syntaxen för verktyget för hello AdlCopy
+Använd följande syntax toowork med hello AdlCopy verktyget hello
 
     AdlCopy /Source <Blob or Data Lake Store source> /Dest <Data Lake Store destination> /SourceKey <Key for Blob account> /Account <Data Lake Analytics account> /Unit <Number of Analytics units> /Pattern
 
-Parametrarna i syntaxen beskrivs nedan:
+hello parametrar i hello syntaxen beskrivs nedan:
 
 | Alternativ | Beskrivning |
 | --- | --- |
-| Källa |Anger platsen för datakällan i Azure storage blob. Källan kan vara en blob-behållare, en blobb eller en annan Data Lake Store-konto. |
-| Målet |Anger målet att kopiera till Data Lake Store. |
-| SourceKey |Anger lagringsåtkomstnyckel för Azure storage blob-källa. Detta krävs endast om källan är en blob-behållare eller en blob. |
-| Konto |**Valfritt**. Använd det här alternativet om du vill använda Azure Data Lake Analytics-konto för att köra jobbet kopia. Om du använder alternativet /Account syntaxen men inte anger ett Data Lake Analytics-konto, använder AdlCopy ett standardkonto för att köra jobbet. Även om du använder det här alternativet måste du lägga källa (Azure Storage Blob) och mål (Azure Data Lake Store) som datakällor för Data Lake Analytics-kontot. |
-| Enheter |Anger antalet Data Lake Analytics-enheter som ska användas för Kopiera projekt. Det här alternativet är obligatoriskt om du använder den **/kontot** alternativet för att ange Data Lake Analytics-kontot. |
-| Mönstret |Anger ett regex-mönster som anger vilka blobbar eller filer som ska kopieras. AdlCopy använder skiftlägeskänsliga matchar. Det Standardmönster som används när inga mönster har angetts används för att kopiera alla objekt. Ange flera filen mönster stöds inte. |
+| Källa |Anger hello plats hello källdata i hello Azure storage blob. hello källan kan vara en blob-behållare, en blobb eller en annan Data Lake Store-konto. |
+| Målet |Anger hello Data Lake Store mål toocopy till. |
+| SourceKey |Anger hello lagringsåtkomstnyckel för hello Azure storage blob källa. Detta krävs endast om hello källan är en blob-behållare eller en blob. |
+| Konto |**Valfritt**. Använd det här alternativet om du vill toouse Azure Data Lake Analytics-konto toorun hello kopieringsjobbet. Om du använder hello /Account alternativet i hello syntax men inte anger ett Data Lake Analytics-konto, använder AdlCopy ett standard konto toorun hello jobb. Även om du använder det här alternativet måste du lägga hello källa (Azure Storage Blob) och mål (Azure Data Lake Store) som datakällor för Data Lake Analytics-kontot. |
+| Enheter |Anger hello antalet Data Lake Analytics-enheter som ska användas för hello kopieringsjobbet. Det här alternativet är obligatoriskt om du använder hello **/kontot** alternativet toospecify hello Data Lake Analytics-konto. |
+| Mönstret |Anger ett regex-mönster som anger vilka filer eller BLOB toocopy. AdlCopy använder skiftlägeskänsliga matchar. hello Standardmönster som används när inga mönster anges är toocopy alla objekt. Ange flera filen mönster stöds inte. |
 
-## <a name="use-adlcopy-as-standalone-to-copy-data-from-an-azure-storage-blob"></a>Använd AdlCopy (som fristående) för att kopiera data från ett Azure Storage-blob
-1. Öppna en kommandotolk och gå till den katalog där AdlCopy installeras normalt `%HOMEPATH%\Documents\adlcopy`.
-2. Kör följande kommando för att kopiera en specifik blobb från käll-behållare till ett Data Lake Store:
+## <a name="use-adlcopy-as-standalone-toocopy-data-from-an-azure-storage-blob"></a>Använda AdlCopy (som fristående) toocopy data från en Azure Storage-blob
+1. Öppna en kommandotolk och navigera toohello directory där AdlCopy installeras normalt `%HOMEPATH%\Documents\adlcopy`.
+2. Kör följande kommando toocopy hello en specifik blobb från hello källa behållaren tooa Data Lake Store:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
@@ -72,9 +72,9 @@ Parametrarna i syntaxen beskrivs nedan:
 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
-    >[AZURE.NOTE] Ovanstående syntax anger den fil som ska kopieras till en mapp i Data Lake Store-konto. AdlCopy verktyget skapar en mapp om namnet på angivna mappen inte finns.
+    >[AZURE.NOTE] hello ovanstående syntax anger hello toobe kopierade tooa mapp i hello Data Lake Store-konto. AdlCopy verktyget skapar en mapp om hello angivna mappen inte finns.
 
-    Du uppmanas att ange autentiseringsuppgifter för Azure-prenumerationen som du har ditt Data Lake Store-konto. Du kommer se utdata som liknar följande:
+    Du kan ange tooenter hello autentiseringsuppgifter för hello Azure-prenumeration som du har ditt Data Lake Store-konto. En liknande toohello följande i utdata visas:
 
         Initializing Copy.
         Copy Started.
@@ -82,7 +82,7 @@ Parametrarna i syntaxen beskrivs nedan:
         Finishing Copy.
         Copy Completed. 1 file copied.
 
-1. Du kan också kopiera alla blobbar från en behållare till Data Lake Store-konto med följande kommando:
+1. Du kan också kopiera alla hello BLOB från en behållare toohello Data Lake Store-konto med hello följande kommando:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/ /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>        
 
@@ -92,13 +92,13 @@ Parametrarna i syntaxen beskrivs nedan:
 
 ### <a name="performance-considerations"></a>Saker att tänka på gällande prestanda
 
-Om du kopierar från ett Azure Blob Storage-konto kan du begränsas vid kopiering av blob storage-sida. Detta försämrar prestanda för Kopiera projekt. Mer information om gränserna för Azure Blob Storage finns Azure Lagringsgränser på [Azure-prenumeration och tjänstbegränsningarna](../azure-subscription-service-limits.md).
+Om du kopierar från ett Azure Blob Storage-konto kan du begränsas under kopia på hello blob-lagring på klientsidan. Hello prestanda kopiera jobbet kommer att försämras. toolearn mer om hello gränserna för Azure Blob Storage finns i Azure Storage gränser med [Azure-prenumeration och tjänstbegränsningarna](../azure-subscription-service-limits.md).
 
-## <a name="use-adlcopy-as-standalone-to-copy-data-from-another-data-lake-store-account"></a>Använd AdlCopy (som fristående) för att kopiera data från en annan Data Lake Store-konto
-Du kan också använda AdlCopy för att kopiera data mellan två Data Lake Store-konton.
+## <a name="use-adlcopy-as-standalone-toocopy-data-from-another-data-lake-store-account"></a>Använda AdlCopy (som fristående) toocopy data från en annan Data Lake Store-konto
+Du kan också använda AdlCopy toocopy data mellan två Data Lake Store-konton.
 
-1. Öppna en kommandotolk och gå till den katalog där AdlCopy installeras normalt `%HOMEPATH%\Documents\adlcopy`.
-2. Kör följande kommando för att kopiera en fil från ett Data Lake Store-konto till en annan.
+1. Öppna en kommandotolk och navigera toohello directory där AdlCopy installeras normalt `%HOMEPATH%\Documents\adlcopy`.
+2. Kör följande kommando toocopy hello en viss fil från ett Data Lake Store-konto tooanother.
 
         AdlCopy /Source adl://<source_adls_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adls_account>.azuredatalakestore.net/<path>/
 
@@ -107,36 +107,36 @@ Du kan också använda AdlCopy för att kopiera data mellan två Data Lake Store
         AdlCopy /Source adl://mydatastore.azuredatalakestore.net/mynewfolder/909f2b.log /dest adl://mynewdatalakestore.azuredatalakestore.net/mynewfolder/
 
    > [!NOTE]
-   > Ovanstående syntax anger den fil som ska kopieras till en mapp i målet Data Lake Store-konto. AdlCopy verktyget skapar en mapp om namnet på angivna mappen inte finns.
+   > hello ovanstående syntax anger hello toobe kopierade tooa mapp i hello mål Data Lake Store-konto. AdlCopy verktyget skapar en mapp om hello angivna mappen inte finns.
    >
    >
 
-    Du uppmanas att ange autentiseringsuppgifter för Azure-prenumerationen som du har ditt Data Lake Store-konto. Du kommer se utdata som liknar följande:
+    Du kan ange tooenter hello autentiseringsuppgifter för hello Azure-prenumeration som du har ditt Data Lake Store-konto. En liknande toohello följande i utdata visas:
 
         Initializing Copy.
         Copy Started.|
         100% data copied.
         Finishing Copy.
         Copy Completed. 1 file copied.
-3. Följande kommando kopierar alla filer i en mapp i Data Lake Store-konto för källan till en mapp i målet Data Lake Store-konto.
+3. hello kopierar följande kommando alla filer i en mapp i hello Data Lake Store-konto tooa källmapp i hello målet Data Lake Store-konto.
 
         AdlCopy /Source adl://mydatastore.azuredatalakestore.net/mynewfolder/ /dest adl://mynewdatalakestore.azuredatalakestore.net/mynewfolder/
 
 ### <a name="performance-considerations"></a>Saker att tänka på gällande prestanda
 
-När du använder AdlCopy som ett fristående verktyg kopian körs på delade, Azure hanterade resurser. Prestanda kan du få i den här miljön är beroende av systembelastning och tillgängliga resurser. Det här läget är bäst för mindre överföringar på ad hoc-basis. Inga parametrar behöver justeras när du använder AdlCopy som ett fristående verktyg.
+När du använder AdlCopy som ett fristående verktyg hello kopia körs på delade, Azure hanterade resurser. hello prestanda du kan få i den här miljön är beroende av systembelastning och tillgängliga resurser. Det här läget är bäst för mindre överföringar på ad hoc-basis. Inga parametrar måste toobe justerade när du använder AdlCopy som ett fristående verktyg.
 
-## <a name="use-adlcopy-with-data-lake-analytics-account-to-copy-data"></a>Använd AdlCopy (med Data Lake Analytics-konto) för att kopiera data
-Du kan också använda ditt Data Lake Analytics-konto för att köra jobbet AdlCopy för att kopiera data från Azure storage BLOB till Data Lake Store. Du använder normalt bara det här alternativet när data flyttas är inom räckhåll gigabyte och terabyte och du vill bättre och förutsägbar prestanda genomflöde.
+## <a name="use-adlcopy-with-data-lake-analytics-account-toocopy-data"></a>Använda AdlCopy (med Data Lake Analytics-konto) toocopy data
+Du kan också använda Data Lake Analytics konto toorun hello AdlCopy toocopy jobbdata från Azure storage-blobbar tooData Lake Store. Normalt använder du det här alternativet när hello data toobe flyttas är i intervallet hello gigabyte och terabyte och du vill ha bättre och förutsägbar prestanda, genomströmning.
 
-Om du vill använda ditt Data Lake Analytics-konto med AdlCopy för att kopiera från en Azure Storage Blob, läggas källan (Azure Storage Blob) till som en datakälla för Data Lake Analytics-kontot. Anvisningar för att lägga till ytterligare datakällor i Data Lake Analytics-kontot finns [hantera Data Lake Analytics-kontot datakällor](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#manage-data-sources).
+toouse ditt Data Lake Analytics-konto med AdlCopy toocopy från ett Azure Storage Blob, hello källa (Azure Storage Blob) måste läggas till som en datakälla för Data Lake Analytics-kontot. Anvisningar för att lägga till ytterligare datakällor tooyour Data Lake Analytics-konto finns [hantera Data Lake Analytics-kontot datakällor](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#manage-data-sources).
 
 > [!NOTE]
-> Om du kopierar från ett Azure Data Lake Store-konto som källa med ett Data Lake Analytics-konto behöver du inte associera Data Lake Store-kontot med Data Lake Analytics-konto. Kravet på att associera arkivet källa med Data Lake Analytics-kontot är endast om källan är ett Azure Storage-konto.
+> Om du kopierar från ett Azure Data Lake Store-konto som hello-datakälla med hjälp av ett Data Lake Analytics-konto behöver du inte tooassociate hello Data Lake Store-konto med hello Data Lake Analytics-konto. hello krav tooassociate hello källa store med hello Data Lake Analytics-konto är bara när hello källa är ett Azure Storage-konto.
 >
 >
 
-Kör följande kommando för att kopiera från en Azure Storage blob till ett Data Lake Store-konto med Data Lake Analytics-konto:
+Kör följande kommando toocopy från ett Azure Storage blob tooa Data Lake Store-konto med hjälp av Data Lake Analytics-konto hello:
 
     AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Account <data_lake_analytics_account> /Unit <number_of_data_lake_analytics_units_to_be_used>
 
@@ -144,19 +144,19 @@ Exempel:
 
     AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeanalyticaccount /Units 2
 
-På liknande sätt, kör följande kommando för att kopiera från en Azure Storage blob till ett Data Lake Store-konto med Data Lake Analytics-konto:
+På liknande sätt, kör hello efter kommandot toocopy från ett Azure Storage blob tooa Data Lake Store-konto med hjälp av Data Lake Analytics-konto:
 
     AdlCopy /Source adl://mysourcedatalakestore.azuredatalakestore.net/mynewfolder/ /dest adl://mydestdatastore.azuredatalakestore.net/mynewfolder/ /Account mydatalakeanalyticaccount /Units 2
 
 ### <a name="performance-considerations"></a>Saker att tänka på gällande prestanda
 
-När du kopierar data i intervallet terabyte ger med din egen Azure Data Lake Analytics-konto AdlCopy bättre och mer förutsägbar prestanda. Parametern som ska justeras är antalet Azure Data Lake Analytics-enheter ska användas för Kopiera projekt. Öka antalet enheter kommer att öka prestanda för Kopiera projekt. Varje fil som ska kopieras kan använda maximalt en enhet. Ange fler enheter än antalet filer som kopieras kommer inte att öka prestanda.
+När du kopierar data i intervallet hello terabyte ger AdlCopy med din egen Azure Data Lake Analytics-kontot bättre och mer förutsägbar prestanda. hello-parameter som ska justeras är hello Azure Data Lake Analytics enheter toouse för hello kopieringsjobbet. Öka hello antalet enheter ökar hello prestanda för Kopiera projekt. Varje fil toobe kopieras kan använda maximalt en enhet. Ange fler enheter än hello antalet filer som kopieras kommer inte att öka prestanda.
 
-## <a name="use-adlcopy-to-copy-data-using-pattern-matching"></a>Använd AdlCopy för att kopiera data med hjälp av mönstermatchning
-I det här avsnittet kan du lära dig hur du använder AdlCopy för att kopiera data från en källa (i vårt exempel nedan använder vi Azure Storage Blob) till ett mål Data Lake Store-konto med hjälp av mönstermatchning. Du kan till exempel använda instruktionerna nedan för att kopiera alla filer med filnamnstillägget .csv från blob för källan till målet.
+## <a name="use-adlcopy-toocopy-data-using-pattern-matching"></a>Använd AdlCopy toocopy data med hjälp av mönstermatchning
+I det här avsnittet lär du dig hur toouse AdlCopy toocopy data från en källa (i vårt exempel nedan använder vi Azure Storage Blob) tooa mål Data Lake Store-konto med hjälp av mönstermatchning. Du kan till exempel använda hello stegen nedan toocopy alla filer med CSV-fil från hello källa blob toohello mål.
 
-1. Öppna en kommandotolk och gå till den katalog där AdlCopy installeras normalt `%HOMEPATH%\Documents\adlcopy`.
-2. Kör följande kommando för att kopiera alla filer med filnamnstillägget *.csv från en specifik blobb från käll-behållare till ett Data Lake Store:
+1. Öppna en kommandotolk och navigera toohello directory där AdlCopy installeras normalt `%HOMEPATH%\Documents\adlcopy`.
+2. Kör följande kommando toocopy hello alla filer med *.csv tillägg från en specifik blobb från hello källa behållaren tooa Data Lake Store:
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adls_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
 
@@ -165,18 +165,18 @@ I det här avsnittet kan du lära dig hur du använder AdlCopy för att kopiera 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestore.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
 
 ## <a name="billing"></a>Fakturering
-* Om du använder verktyget AdlCopy som fristående kommer du att debiteras för kostnader för nätverksegress för att flytta data, om källan Azure Storage-konto inte är i samma region som Data Lake Store.
-* Om du använder verktyget AdlCopy med Data Lake Analytics-kontot, standard [Data Lake Analytics fakturering priser](https://azure.microsoft.com/pricing/details/data-lake-analytics/) gäller.
+* Om du använder hello AdlCopy verktyget som fristående du debiteras för kostnader för nätverksegress för att flytta hello data om hello källa Azure Storage-konto inte är i samma region som hello Data Lake Store.
+* Om du använder hello AdlCopy verktyget med Data Lake Analytics-kontot, standard [Data Lake Analytics fakturering priser](https://azure.microsoft.com/pricing/details/data-lake-analytics/) gäller.
 
 ## <a name="considerations-for-using-adlcopy"></a>Överväganden för att använda AdlCopy
-* AdlCopy (för version 1.0.5), har stöd för kopiering av data från källor som gemensamt har mer än tusentals filer och mappar. Om det uppstår problem kopiera en stor datauppsättning kan du dock distribuera filer/mappar till olika undermappar och Använd sökvägen till de underordnade mapparna som källa i stället.
+* AdlCopy (för version 1.0.5), har stöd för kopiering av data från källor som gemensamt har mer än tusentals filer och mappar. Om det uppstår problem kopiera en stor datauppsättning kan du dock distribuera hello filer/mappar till olika undermappar och Använd hello sökvägen toothose undermappar som hello källa i stället.
 
 ## <a name="performance-considerations-for-using-adlcopy"></a>Prestandaöverväganden för att använda AdlCopy
 
-AdlCopy har stöd för kopiering av data som innehåller tusentals filer och mappar. Om du får problem med kopiera en stor datauppsättning kan du distribuera filer/mappar till mindre underordnade mappar. AdlCopy skapades för ad hoc-kopior. Om du vill kopiera data regelbundet, bör du använda [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) som ger fullständig hantering runt åtgärderna kopia.
+AdlCopy har stöd för kopiering av data som innehåller tusentals filer och mappar. Om du får problem med kopiera en stor datauppsättning kan du distribuera hello filer/mappar till mindre underordnade mappar. AdlCopy skapades för ad hoc-kopior. Om du försöker toocopy data regelbundet, bör du använda [Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) som ger fullständig hantering runt hello kopieringsåtgärd.
 
 ## <a name="release-notes"></a>Viktig information
-* 1.0.13 - om du kopierar data till samma Azure Data Lake Store-konto över flera adlcopy kommandon du behöver inte ange dina autentiseringsuppgifter för varje kör längre. Adlcopy nu cachelagras informationen över flera körs.
+* 1.0.13 - om du kopierar data toohello samma Azure Data Lake Store-konto över flera adlcopy kommandon du inte behöver tooreenter dina autentiseringsuppgifter för varje köras längre. Adlcopy nu cachelagras informationen över flera körs.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Säkra data i Data Lake Store](data-lake-store-secure-data.md)

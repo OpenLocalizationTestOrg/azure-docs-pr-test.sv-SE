@@ -1,6 +1,6 @@
 ---
-title: Ansluta Operations Manager till logganalys | Microsoft Docs
-description: "För att underhålla din investering i System Center Operations Manager och använder utökade funktioner med logganalys, kan du integrera Operations Manager med din OMS-arbetsyta."
+title: aaaConnect Operations Manager tooLog Analytics | Microsoft Docs
+description: "toomaintain din investering i System Center Operations Manager och använda utökat funktioner med logganalys, du kan integrera Operations Manager med din OMS-arbetsyta."
 services: log-analytics
 documentationcenter: 
 author: MGoedtel
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: magoedte
-ms.openlocfilehash: bcfffe05dbce2824ea4933997865e8c7e86610b6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b2841c7aa209fec7357dc4c8b1ff4325fdaa37ef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-operations-manager-to-log-analytics"></a>Ansluta Operations Manager till logganalys
-För att underhålla din investering i System Center Operations Manager och använder utökade funktioner med logganalys, kan du integrera Operations Manager med din OMS-arbetsyta.  På så sätt kan du utnyttja möjligheter i OMS medan du använder Operations Manager till:
+# <a name="connect-operations-manager-toolog-analytics"></a>Ansluta Operations Manager tooLog Analytics
+toomaintain din investering i System Center Operations Manager och använda utökat funktioner med logganalys, du kan integrera Operations Manager med din OMS-arbetsyta.  På så sätt kan du utnyttja hello möjligheter i OMS medan toouse Operations Manager till:
 
-* Fortsätta övervaka hälsotillståndet för din IT-tjänster med Operations Manager
+* Fortsätta övervaka hello hälsotillståndet för din IT-tjänster med Operations Manager
 * Underhåll integration med dina ITSM lösningar stöd för hantering av incidenter och problem
-* Hantera livscykeln för agenter som distribuerats till lokalt och offentliga moln IaaS-virtuella datorer som du övervakar med Operations Manager
+* Hantera hello livscykeln för agenter distribueras tooon lokala och offentliga moln IaaS-virtuella datorer som du övervakar med Operations Manager
 
-Integrering med System Center Operations Manager tillför värde till din strategi för tjänsten åtgärder med hjälp av hastighet och prestanda för OMS i att samla in, lagra och analysera data från Operations Manager.  OMS hjälper korrelera och arbeta för att identifiera fel på problem och visa repetitioner stöd för din befintliga problem-hanteringen.   Möjlighet att sökmotor för att granska prestanda, händelser och aviseringsdata med omfattande instrumentpaneler och rapporteringsfunktioner att exponera informationen på ett meningsfullt sätt visar styrkan OMS ger i complimenting Operations Manager.
+Integrering med System Center Operations Manager lägger till värdet tooyour service operations strategi genom att använda hello hastighet och prestanda för OMS i att samla in, lagra och analysera data från Operations Manager.  OMS hjälper till att korrelera och arbete mot identifierar hello fel på problem och visa repetitioner stöd för din befintliga problem-hanteringen.   hello flexibilitet hello Sök motorn tooexamine prestanda, händelser och avisering data, med omfattande instrumentpaneler och dessa data på ett meningsfullt sätt reporting funktioner tooexpose visar hello styrkan OMS ger i complimenting Operations Manager.
 
-Agenter som rapporterar till Operations Manager-hanteringsgruppen samla in data från dina servrar baserat på logganalys-datakällor och lösningar som du har aktiverat i OMS-prenumeration.  Beroende på den lösning som du har aktiverat data från dessa lösningar antingen skickas direkt från en hanteringsserver för Operations Manager till OMS-webbtjänst eller på grund av mängden data som samlas in på datorn hanteras med agent, skickas direkt från agenten till OMS-webbtjänsten. Management-servern vidarebefordrar OMS-data direkt till OMS-webbtjänsten; den skrivs aldrig till databasen OperationsManager eller OperationsManagerDW.  När en hanteringsserver förlorar anslutningen till OMS-webbtjänsten, cachelagrar data lokalt tills kommunikation har återupprättats med OMS.  Om management-servern är offline på grund av planerat underhåll eller oplanerade avbrott, fortsätter anslutningen till OMS med en annan hanteringsserver i hanteringsgruppen.  
+hello-agenter som rapporterar toohello Operations Manager-hanteringsgruppen samla in data från dina servrar baserat på hello logganalys-datakällor och lösningar som du har aktiverat i OMS-prenumeration.  Beroende på hello-lösning som du har aktiverat är data från dessa lösningar antingen skickas direkt från en hanteringsserver för Operations Manager toohello OMS-webbtjänsten eller på grund av hello mängden data som samlas in på hello hanteras med agent system skickas direkt från hello agent tooOMS webbtjänsten. hello management-servern vidarebefordrar hello OMS data direkt toohello OMS webbtjänsten; den skrivs aldrig toohello OperationsManager eller OperationsManagerDW-databasen.  När en hanteringsserver förlorar anslutningen till hello OMS-webbtjänsten, cachelagrar hello data lokalt tills kommunikation har återupprättats med OMS.  Om hello management-servern är offline på grund av tooplanned underhåll eller oplanerade avbrott, återupptar en annan hanteringsserver i hanteringsgruppen hello anslutningen till OMS.  
 
-Följande diagram visar anslutningen mellan hanteringsservrarna och agenterna i en hanteringsgrupp för System Center Operations Manager och OMS, inklusive riktning och portar.   
+hello visar följande diagram hello anslutning mellan hello hanteringsservrar och agenter i System Center Operations Manager-hanteringsgruppen och OMS, inklusive hello riktning och portar.   
 
 ![OMS-operationer-manager-integrering-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-Om din IT-säkerhetsprinciper inte tillåter datorer i nätverket för att ansluta till Internet, kan hanteringsservrar konfigureras för att ansluta till OMS-Gateway för att ta emot information om konfiguration och skicka insamlade data beroende på lösningen som du har aktiverat.  Mer information och anvisningar om hur du konfigurerar din Operations Manager-hanteringsgrupp att kommunicera via en OMS-Gateway till OMS-tjänsten finns [ansluta datorer till OMS med OMS-gatewayen](log-analytics-oms-gateway.md).  
+Om din IT-säkerhetsprinciper inte tillåter datorer på ditt nätverk tooconnect toohello Internet, kan hanteringsservrar vara konfigurerade tooconnect toohello OMS Gateway tooreceive konfigurationsinformation och skicka insamlade data beroende hello lösning har aktiverat.  Mer information och anvisningar om hur tooconfigure Operations Manager management group toocommunicate via en OMS-Gateway toohello OMS-tjänst, se [ansluta datorer tooOMS med hello OMS Gateway](log-analytics-oms-gateway.md).  
 
 ## <a name="system-requirements"></a>Systemkrav
-Granska följande information för att verifiera förutsättningar vara uppfyllda innan du börjar.
+Granska hello följande information tooverify förutsättningar vara uppfyllda innan du börjar.
 
 * OMS har bara stöd för Operations Manager 2016, UR6 för Operations Manager 2012 SP1 och senare, och Operations Manager 2012 R2 UR2 och större.  Stöd för proxy har lagts till i Operations Manager 2012 SP1 UR7 och Operations Manager 2012 R2 UR3.
-* Alla Operations Manager-agenter måste uppfylla krav på minsta. Kontrollera att agenterna finns på den lägsta uppdateringen annars trafik för Windows-agenten misslyckas och många fel kan fylla i Operations Manager-händelseloggen.
+* Alla Operations Manager-agenter måste uppfylla krav på minsta. Kontrollera att agenter på hello minsta uppdatering, annars trafik för Windows-agenten misslyckas och många fel kan fylla hello Operations Manager-händelseloggen.
 * En OMS-prenumeration.  Mer information finns [Kom igång med logganalys](log-analytics-get-started.md).
 
 ### <a name="network"></a>Nätverk
-Informationen nedan lista över proxy- och brandväggsinställningarna configuration information som krävs för Operations Manager-agenten, hanteringsservrar och driftkonsolen att kommunicera med OMS.  Trafik från varje komponent är utgående från nätverket till OMS-tjänsten.     
+hello informationen under listan hello proxy- och brandväggsinställningarna konfigurationsinformation krävs för hello Operations Manager-agenten och hanteringsservrar Operations-konsolen toocommunicate med OMS.  Trafik från varje komponent är utgående från din nätverkstjänst toohello OMS.     
 
 |Resurs | Portnummer| Kringgå http-kontroll|  
 |---------|------|-----------------------|  
@@ -59,7 +59,7 @@ Informationen nedan lista över proxy- och brandväggsinställningarna configura
 |\*.blob.core.windows.net| 443| Ja|  
 |\*.ods.opinsights.azure.com| 443| Ja|  
 |*.azure-automation.net | 443| Ja|  
-|**Operations Manager-konsolen till OMS**|||  
+|**Operations Manager-konsolen tooOMS**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
 |\*.live.com| 80 och 443||  
@@ -69,133 +69,133 @@ Informationen nedan lista över proxy- och brandväggsinställningarna configura
 |login.windows.net| 80 och 443||  
 
 
-## <a name="connecting-operations-manager-to-oms"></a>Ansluta Operations Manager till OMS
-Utför följande steg för att konfigurera hanteringsgruppen för Operations Manager för att ansluta till en av dina arbetsytor OMS-serien.
+## <a name="connecting-operations-manager-toooms"></a>Ansluta Operations Manager tooOMS
+Utför följande serie steg tooconfigure hello din Operations Manager management group tooconnect tooone OMS-arbetsytor.
 
-1. I Operations Manager-konsolen väljer du den **Administration** arbetsytan.
-2. Expandera noden Operations Management Suite och klicka på **anslutning**.
-3. Klicka på den **registrera till Operations Management Suite** länk.
-4. På den **guiden Operations Management Suite Onboarding: autentisering** , ange e-postadress eller telefonnummer och lösenordet för administratörskontot som är associerad med din OMS-prenumeration och klicka på  **Logga in**.
-5. När du har autentiserats, på den **guiden Operations Management Suite Onboarding: Välj arbetsyta** sidan uppmanas du för att välja din OMS-arbetsyta.  Om du har mer än en arbetsytan väljer du arbetsytan som du vill registrera med Operations Manager-hanteringsgruppen från den nedrullningsbara listan och klicka sedan på **nästa**.
+1. I hello Operations Manager-konsolen väljer du hello **Administration** arbetsytan.
+2. Expandera hello Operations Management Suite-noden och klicka på **anslutning**.
+3. Klicka på hello **registrera tooOperations Management Suite** länk.
+4. På hello **guiden Operations Management Suite Onboarding: autentisering** , ange hello e-postadress eller telefonnummer och lösenordet för administratörskontot för hello som är associerad med din OMS-prenumeration och klicka på  **Logga in**.
+5. När du har autentiserats, på hello **guiden Operations Management Suite Onboarding: Välj arbetsyta** sidan som du är uppmanas tooselect OMS-arbetsyta.  Om du har mer än en arbetsytan, Välj hello arbetsytan som du vill tooregister hello Operations Manager-hanteringsgruppen från hello listrutan och klicka sedan på **nästa**.
    
    > [!NOTE]
-   > Operations Manager stöder bara en OMS-arbetsytan i taget. Anslutningen och de datorer som registrerats till OMS med arbetsytan tidigare tas bort från OMS.
+   > Operations Manager stöder bara en OMS-arbetsytan i taget. hello anslutning och hello-datorer som var registrerade tooOMS med hello tidigare arbetsytan tas bort från OMS.
    > 
    > 
-6. På den **guiden Operations Management Suite Onboarding: Sammanfattning** , bekräfta dina inställningar och om de är korrekt, klickar du på **skapa**.
-7. På den **guiden Operations Management Suite Onboarding: Slutför** klickar du på **Stäng**.
+6. På hello **guiden Operations Management Suite Onboarding: Sammanfattning** , bekräfta dina inställningar och om de är korrekt, klickar du på **skapa**.
+7. På hello **guiden Operations Management Suite Onboarding: Slutför** klickar du på **Stäng**.
 
 ### <a name="add-agent-managed-computers"></a>Lägg till datorer som hanteras med agent
-När du har konfigurerat integrering med din OMS-arbetsyta detta endast upprättar en anslutning med OMS, inga data samlas in från agenter som rapporterar till hanteringsgruppen. Detta sker inte förrän efter att du konfigurerar vilka specifika datorer som hanteras med agent samlar in data för Log Analytics. Du kan antingen välja datorobjekt individuellt eller så kan du välja en grupp som innehåller Windows-datorobjekt. Du kan inte välja en grupp som innehåller instanser av en annan klass, till exempel logiska diskar eller SQL-databaser.
+När du har konfigurerat integrering med din OMS-arbetsyta detta endast upprättar en anslutning med OMS, inga data samlas in från hello agenter som rapporterar tooyour hanteringsgruppen. Detta sker inte förrän efter att du konfigurerar vilka specifika datorer som hanteras med agent samlar in data för Log Analytics. Du kan antingen välja hello datorobjekt individuellt eller så kan du välja en grupp som innehåller Windows-datorobjekt. Du kan inte välja en grupp som innehåller instanser av en annan klass, till exempel logiska diskar eller SQL-databaser.
 
-1. Öppna Operations Manager-konsolen och välj arbetsytan **Administration**.
-2. Expandera noden Operations Management Suite och klicka på **anslutning**.
-3. Klicka på den **lägga till en datorgrupp** länk under åtgärder rubriken på höger sida av fönstret.
-4. I den **datorsökning** dialogrutan som du kan söka efter datorer eller grupper som övervakas av Operations Manager. Välj datorer eller grupper som ska publiceras till OMS, klicka på **Lägg till**, och klicka sedan på **OK**.
+1. Öppna hello Operations Manager-konsolen och välj hello **Administration** arbetsytan.
+2. Expandera hello Operations Management Suite-noden och klicka på **anslutning**.
+3. Klicka på hello **lägga till en datorgrupp** länken under hello åtgärder rubriken hello-höger på hello-fönstret.
+4. I hello **datorsökning** dialogrutan som du kan söka efter datorer eller grupper som övervakas av Operations Manager. Välj datorer eller grupper tooonboard tooOMS, klicka på **Lägg till**, och klicka sedan på **OK**.
 
-Du kan visa datorer och grupper som konfigurerats för att samla in data från datorer som hanteras med noden under Operations Management Suite i den **Administration** arbetsyta i driftkonsolen.  Härifrån kan du lägga till eller ta bort datorer och grupper som behövs.
+Du kan visa datorer och grupper konfigurerade toocollect data från hello datorer som hanteras med noden under Operations Management Suite i hello **Administration** arbetsytan hello Operations-konsolen.  Härifrån kan du lägga till eller ta bort datorer och grupper som behövs.
 
-### <a name="configure-oms-proxy-settings-in-the-operations-console"></a>Konfigurera proxyinställningar för OMS i Operations-konsolen
-Utför följande steg om en intern proxyserver mellan hanteringsgruppen och OMS-webbtjänsten.  De här inställningarna hanteras från hanteringsgruppen och distribueras till agenthanterade datorer som ingår i omfånget för att samla in data för OMS centralt.  Detta är fördelaktigt för när vissa lösningar kringgå hanteringsservern och skicka data direkt till OMS-webbtjänsten.
+### <a name="configure-oms-proxy-settings-in-hello-operations-console"></a>Konfigurera proxyinställningar för OMS i hello Operations-konsolen
+Utför följande steg om en intern proxyserver mellan hello hanteringsgrupp och OMS-webbtjänsten hello.  De här inställningarna hanteras centralt från hello hanteringsgruppen och distribuerade tooagent-hanterade system som ingår i hello scope toocollect data för OMS.  Detta är fördelaktigt för när vissa lösningar kringgå hello management server och skicka data direkt tooOMS webbtjänsten.
 
-1. Öppna Operations Manager-konsolen och välj arbetsytan **Administration**.
+1. Öppna hello Operations Manager-konsolen och välj hello **Administration** arbetsytan.
 2. Expandera Operations Management Suite och klicka sedan på **anslutningar**.
-3. I vyn OMS-anslutning klickar du på **Konfigurera proxyserver**.
-4. På **guiden Operations Management Suite: proxyserver** väljer **använder en proxyserver för att få åtkomst till Operations Management Suite**, och Skriv URL: en för med portnummer, till exempel http:// corpproxy:80 och klicka sedan på **Slutför**.
+3. I hello OMS anslutning vyn klickar du på **konfigurera proxyservern**.
+4. På **guiden Operations Management Suite: proxyserver** väljer **använder en proxy server tooaccess hello Operations Management Suite**, och skriv sedan hello URL: en med hello portnummer, till exempel http:// corpproxy:80 och klicka sedan på **Slutför**.
 
-Om proxyservern kräver autentisering, utför följande steg för att konfigurera autentiseringsuppgifter och inställningar som måste tillämpas på hanterade datorer som rapporterar till OMS i hanteringsgruppen.
+Om proxyservern kräver autentisering, utföra hello följande steg tooconfigure autentiseringsuppgifter och inställningar som behöver toopropagate toomanaged datorer som rapporterar tooOMS i hello management group.
 
-1. Öppna Operations Manager-konsolen och välj arbetsytan **Administration**.
+1. Öppna hello Operations Manager-konsolen och välj hello **Administration** arbetsytan.
 2. Under **Kör som-konfiguration** väljer du **Profiler**.
-3. Öppna profilen **Kör som-profilproxy för System Center Advisor**.
-4. I guiden kör som-profil, klickar du på Lägg till om du vill använda ett kör som-konto. Du kan skapa en [kör som-konto](https://technet.microsoft.com/library/hh321655.aspx) eller Använd ett befintligt konto. Det här kontot måste ha tillräcklig behörighet för att kunna passera genom proxyservern.
-5. Om du vill ange kontot som ska hantera Välj **en vald klass, grupp eller objekt**, klickar du på **Välj...** och klicka sedan på **grupp...** Öppna den **grupp Sök** rutan.
-6. Sök efter och välj sedan **övervakning servergrupp för Microsoft System Center Advisor**.  Klicka på **OK** när du har valt gruppen för att stänga den **grupp Sök** rutan.
-7. Klicka på **OK** att stänga den **Lägg till ett kör som-konto** rutan.
-8. Klicka på **spara** att slutföra guiden och spara dina ändringar.
+3. Öppna hello **System Center Advisor Run As Profile Proxy** profil.
+4. Klicka på Lägg till toouse kör som-konto i hello guiden kör som-profilen. Du kan skapa en [kör som-konto](https://technet.microsoft.com/library/hh321655.aspx) eller Använd ett befintligt konto. Det här kontot måste toohave tillräckliga behörigheter toopass via hello proxyserver.
+5. tooset Hej konto toomanage, Välj **en vald klass, grupp eller objekt**, klicka på **Välj...** och klicka sedan på **grupp...** tooopen hello **grupp Sök** rutan.
+6. Sök efter och välj sedan **övervakning servergrupp för Microsoft System Center Advisor**.  Klicka på **OK** när du har valt hello grupp tooclose hello **grupp Sök** rutan.
+7. Klicka på **OK** tooclose hello **Lägg till ett kör som-konto** rutan.
+8. Klicka på **spara** toocomplete hello guiden och spara ändringarna.
 
-När anslutningen har skapats och du konfigurerar vilka agenter som samlar in och rapportera data till OMS, används följande konfiguration i hanteringsgruppen, inte nödvändigtvis i ordning:
+När hello anslutning skapas och du kan konfigurera vilka agenter som ska samla in och rapportera data tooOMS används hello följande konfiguration i hello management-grupp, inte nödvändigtvis i ordning:
 
-* Kör som-kontot **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** skapas.  Den är associerad med Kör som-profilen **Microsoft System Center Advisor kör som-profilen Blob** och är på två klasser - **insamlingsserver** och **Operations Manager-Hanteringsgrupp** .
-* Två kopplingar skapas.  Först heter **Microsoft.SystemCenter.Advisor.DataConnector** och konfigureras automatiskt med en prenumeration som vidarebefordrar alla varningar som genereras av instanser av alla klasser i hanteringsgruppen till OMS logganalys. Den andra kopplingen är **Advisor Connector**, som ansvarar för kommunikation med OMS-webbtjänst och delning av data.
-* Agenter och grupper som du har valt att samla in data i hanteringsgruppen läggs till i **övervakning servergrupp för Microsoft System Center Advisor**.
+* hello kör som-konto **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** skapas.  Den är associerad med hello-kör som-profilen **Microsoft System Center Advisor kör som-profilen Blob** och är på två klasser - **insamlingsserver** och **Operations Manager-Hanteringsgrupp** .
+* Två kopplingar skapas.  hello först heter **Microsoft.SystemCenter.Advisor.DataConnector** och konfigureras automatiskt med en prenumeration som vidarebefordrar alla varningar som genereras av instanser av alla klasser i hello management group tooOMS logg Analytics. hello andra connector är **Advisor Connector**, som ansvarar för kommunikation med OMS-webbtjänst och delning av data.
+* Agenter och grupper som du har valt toocollect data i hello management group läggs toohello **övervakning servergrupp för Microsoft System Center Advisor**.
 
 ## <a name="management-pack-updates"></a>Uppdateringar av hanteringspaket
-När konfigurationen är klar upprättar en anslutning med tjänsten OMS Operations Manager-hanteringsgruppen.  Hanteringsservern synkroniserar med webbtjänsten och ta emot uppdaterade konfigurationsinformation i form av hanteringspaket för lösningar som du har aktiverat som integreras med Operations Manager.   Operations Manager söker efter uppdateringar för dessa hanteringspaket och automatiskt hämta och importerar dem när de är tillgängliga.  Det finns två regler särskilt som styra detta:
+När konfigurationen är klar upprättar hello Operations Manager-hanteringsgruppen en anslutning med hello OMS-tjänsten.  hello hanteringsservern synkroniserar hello webbtjänsten och ta emot uppdaterade konfigurationsinformation i hello form av hanteringspaket för hello lösningar som du har aktiverat som integrerar med Operations Manager.   Operations Manager söker efter uppdateringar för dessa hanteringspaket och automatiskt hämta och importerar dem när de är tillgängliga.  Det finns två regler särskilt som styra detta:
 
-* **Microsoft.SystemCenter.Advisor.MPUpdate** -uppdaterar grundläggande OMS-hanteringspaket. Som standard körs var 12: e timme.
+* **Microsoft.SystemCenter.Advisor.MPUpdate** -uppdaterar hello grundläggande OMS-hanteringspaket. Som standard körs var 12: e timme.
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** -uppdaterar lösning hanteringspaket som är aktiverad i din arbetsyta. Körs var fem (5): e minut som standard.
 
-Du kan åsidosätta de här två reglerna för att förhindra automatisk hämtning genom att inaktivera dem eller ändra frekvensen för hur ofta hanteringsservern synkroniserar med OMS att fastställa om ett nytt management pack är tillgänglig och att de ska hämtas.  Följ stegen [hur du åsidosätter en regel eller Övervakare](https://technet.microsoft.com/library/hh212869.aspx) att ändra den **frekvens** parametern med värdet i sekunder för att ändra synkroniseringsschemat eller ändra den **aktiverad**parametern för att inaktivera reglerna.  Rikta åsidosättningar för alla objekt i klassen Operations Manager-Hanteringsgrupp.
+Du kan åsidosätta de här två reglerna tooeither förhindra automatisk hämtning genom att inaktivera dem eller ändra hello frekvens för hur ofta hello hanteringsservern synkroniseras med OMS toodetermine om ett nytt management pack är tillgänglig och ska hämtas.  Gör hello [hur tooOverride en regel eller Övervakare](https://technet.microsoft.com/library/hh212869.aspx) toomodify hello **frekvens** parameter med ett värde i sekunder toochange hello synkroniseringsschema eller ändra hello **aktiverad**  parametern toodisable hello regler.  Mål hello åsidosätter tooall objekt i klassen Operations Manager-Hanteringsgrupp.
 
-Om du vill fortsätta efter befintliga Ändra kontroll processen för att styra management pack-versioner i hanteringsgruppen för produktion kan du inaktivera reglerna och aktivera dem vid specifika tidpunkter när uppdateringar är tillåtna. Om du har en utvecklings- eller QA hanteringsgruppen i din miljö och den är ansluten till Internet, kan du konfigurera den hanteringsgruppen med en OMS-arbetsyta som stöd för det här scenariot.  På så sätt kan du granska och utvärdera iterativ versioner av hanteringspaket OMS innan du släpper dem till hanteringsgruppen för produktion.
+Om du vill toocontinue efter befintliga Ändra kontroll processen för att styra management pack-versioner i hanteringsgruppen för produktion, kan du inaktivera hello regler och aktivera dem vid specifika tidpunkter när uppdateringar är tillåtna. Om du har en utvecklings- eller QA hanteringsgruppen i din miljö och anslutningen toohello Internet, kan du konfigurera den hanteringsgruppen med en OMS-arbetsytan toosupport det här scenariot.  Detta gör du tooreview och utvärdera hello iterativ versioner av hello OMS hanteringspaket innan du släpper dem till hanteringsgruppen för produktion.
 
-## <a name="switch-an-operations-manager-group-to-a-new-oms-workspace"></a>Växla en Operations Manager-gruppen till en ny OMS-arbetsyta
-1. Logga in på OMS-prenumeration och skapa en arbetsyta i [Microsoft Operations Management Suite](http://oms.microsoft.com/).
-2. Öppna Operations Manager-konsolen med ett konto som är medlem i rollen Operations Manager-administratörer och välj den **Administration** arbetsytan.
+## <a name="switch-an-operations-manager-group-tooa-new-oms-workspace"></a>Växla en Operations Manager grupp tooa ny OMS-arbetsyta
+1. Logga in tooyour OMS-prenumeration och skapa en arbetsyta i [Microsoft Operations Management Suite](http://oms.microsoft.com/).
+2. Öppna hello Operations Manager-konsolen med ett konto som är medlem i rollen för hello Operations Manager-administratörer och väljer hello **Administration** arbetsytan.
 3. Expandera Operations Management Suite och välj **anslutningar**.
-4. Välj den **konfigurera åtgärden Management Suite** länk i mitten-sida av fönstret.
-5. Följ den **guiden Operations Management Suite Onboarding** och ange e-postadress eller telefonnummer antal och lösenordet för administratörskontot som är associerad med den nya OMS-arbetsytan.
+4. Välj hello **konfigurera åtgärden Management Suite** länk på hello mitten sida av fönstret hello.
+5. Följ hello **guiden Operations Management Suite Onboarding** och ange hello e-postadressen eller telefonnumret numret och lösenordet för administratörskontot för hello som är associerad med den nya OMS-arbetsytan.
    
    > [!NOTE]
-   > Den **guiden Operations Management Suite Onboarding: Välj arbetsyta** visar befintlig arbetsyta som används.
+   > Hej **guiden Operations Management Suite Onboarding: Välj arbetsyta** visar hello befintlig arbetsyta som används.
    > 
    > 
 
 ## <a name="validate-operations-manager-integration-with-oms"></a>Kontrollera Operations Manager Integration with OMS
-Det finns några olika sätt som du kan kontrollera att din OMS till integrering av Operations Manager har lyckats.
+Det finns några olika sätt som du kan kontrollera att din OMS tooOperations integrering Manager har lyckats.
 
-### <a name="to-confirm-integration-from-the-oms-portal"></a>Bekräfta integration från OMS-portalen
-1. I OMS-portalen klickar du på den **inställningar** panelen
+### <a name="tooconfirm-integration-from-hello-oms-portal"></a>tooconfirm integration från hello OMS-portalen
+1. I hello OMS-portalen klickar du på hello **inställningar** panelen
 2. Välj **anslutna källor**.
-3. Du bör se namnet på hanteringsgruppen som visas i listan med antalet agenter och status när data togs emot senast i tabellen i avsnittet System Center Operations Manager.
+3. Du bör se hello namnet på hello hanteringsgrupp visas i listan med hello antalet agenter och status när data togs emot senast i hello tabell under hello System Center Operations Manager-avsnittet.
    
    ![OMS-inställningar-connectedsources](./media/log-analytics-om-agents/oms-settings-connectedsources.png)
-4. Observera den **arbetsyte-ID** värde under vänster på sidan Inställningar.  Du kan verifiera den mot din Operations Manager-hanteringsgrupp nedan.  
+4. Obs hello **arbetsyte-ID** värde under hello vänster sida i hello inställningssidan.  Du kan verifiera den mot din Operations Manager-hanteringsgrupp nedan.  
 
-### <a name="to-confirm-integration-from-the-operations-console"></a>Bekräfta integration från Operations-konsolen
-1. Öppna Operations Manager-konsolen och välj arbetsytan **Administration**.
-2. Välj **hanteringspaket** och i den **letar:** Skriv text **Advisor** eller **Intelligence**.
-3. Beroende på de lösningar som du har aktiverat kan du se ett motsvarande hanteringspaket som visas i sökresultaten.  Om du har aktiverat aviseringen hanteringslösningen, till exempel är hanteringspaket Microsoft System Center Advisor Alert Management i listan.
-4. Från den **övervakning** visa, navigera till den **Operations hanteringstillstånd Suite\Health** vyn.  Välj en hanteringsserver under den **Hanteringsservertillstånd** fönstret och i den **detaljvy** rutan Bekräfta värdet för egenskapen **URI för autentiseringstjänst** matchar OMS arbetsyte-ID.
+### <a name="tooconfirm-integration-from-hello-operations-console"></a>tooconfirm integration från hello Operations-konsolen
+1. Öppna hello Operations Manager-konsolen och välj hello **Administration** arbetsytan.
+2. Välj **hanteringspaket** och i hello **letar:** Skriv text **Advisor** eller **Intelligence**.
+3. Beroende på hello lösningar som du har aktiverat, kan du se ett motsvarande hanteringspaket som anges i hello sökresultat.  Om du har aktiverat hello lösning för aviseringar, till exempel finns hello hanteringspaket Microsoft System Center Advisor Alert Management i hello lista.
+4. Från hello **övervakning** visa, navigera toohello **Operations hanteringstillstånd Suite\Health** vyn.  Välj en hanteringsserver under hello **Hanteringsservertillstånd** fönstret och i hello **detaljvy** rutan Bekräfta hello värdet för egenskapen **URI för autentiseringstjänst** matchar hello OMS arbetsyte-ID.
    
    ![OMS-OpsMgr-mg-authsvcuri-Property-MS](./media/log-analytics-om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-oms"></a>Ta bort Integration med OMS
-Det finns flera steg som krävs för att ta bort anslutning och konfiguration korrekt i hanteringsgruppen när du inte längre behöver integrering mellan Operations Manager-hanteringsgruppen och OMS-arbetsyta. Följande procedur har du uppdatera din OMS-arbetsyta genom att ta bort referensen till hanteringsgruppen, ta bort OMS-kopplingar och ta sedan bort hanteringspaket stöder OMS.   
+När du inte längre behöver integrering mellan Operations Manager-hanteringsgruppen och OMS-arbetsyta, finns det flera steg som krävs för tooproperly ta bort hello anslutning och konfiguration i hello management group. hello har följande procedur du uppdatera din OMS-arbetsyta genom att ta bort hello-referens för hanteringsgruppen, ta bort hello OMS-kopplingar och ta sedan bort hanteringspaket stöder OMS.   
 
-Hanteringspaketen för lösningarna som du har aktiverat som integreras med Operations Manager och de hanteringspaket som krävs för att stödja integration med OMS-tjänsten kan inte enkelt tas bort från hanteringsgruppen.  Det beror på att vissa av OMS-hanteringspaket har beroenden i andra relaterade management packs.  Hämta skriptet för att ta bort hanteringspaket med ett beroende på andra hanteringspaket [ta bort ett hanteringspaket med beroenden](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) från TechNet Script Center.  
+Hanteringspaket för hello lösningar som du har aktiverat som integrerar med Operations Manager och hello management packs krävs toosupport integrering med hello OMS-tjänsten kan inte enkelt tas bort från hello hanteringsgrupp.  Det beror på att vissa av hello OMS hanteringspaket har beroenden i andra relaterade management packs.  toodelete hanteringspaket med ett beroende på andra hanteringspaket hämta hello skriptet [ta bort ett hanteringspaket med beroenden](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) från TechNet Script Center.  
 
-1. Öppna Kommandotolken för Operations Manager med ett konto som är medlem i rollen Operations Manager-administratörer.
+1. Öppna hello Operations Managers kommandotolk med ett konto som är medlem i rollen för hello Operations Manager-administratörer.
    
     > [!WARNING]
-    > Verifiera du inte har några anpassade hanteringspaket med word Advisor eller IntelligencePack i namnet innan du fortsätter, annars följande tas bort från hanteringsgruppen.
+    > Verifiera du inte har några anpassade hanteringspaket med hello word Advisor eller IntelligencePack i hello namn innan du fortsätter, annars hello följande ta bort dem från hello hanteringsgruppen.
     > 
 
-2. Från Kommandotolken, skriver du:`Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+2. Hello Kommandotolken, Skriv`Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 3. Nästa typ`Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-4. Ta bort återstående som är beroende av andra hanteringspaket för System Center Advisor management packs med skriptet *RecursiveRemove.ps1* du tidigare hämtade från TechNet Script Center.  
+4. tooremove management packs återstående som är beroende av andra System Center Advisor management Pack ska du använda hello skriptet *RecursiveRemove.ps1* du hämtade från tidigare hello TechNet Script Center.  
  
     > [!NOTE]
-    > Ta inte bort Microsoft System Center Advisor eller Microsoft System Center Advisor internt hanteringspaket.  
+    > Ta inte bort hello Microsoft System Center Advisor eller Microsoft System Center Advisor internt hanteringspaket.  
     >  
 
-5. Öppna Operations Manager Operations-konsolen med ett konto som är medlem i rollen Operations Manager-administratörer.
-6. Under **Administration**, Välj den **hanteringspaket** nod och i den **letar:** skriver **Advisor** och kontrollera följande hanteringspaket importeras fortfarande i hanteringsgruppen:
+5. Öppna hello Operations Manager Operations-konsolen med ett konto som är medlem i rollen för hello Operations Manager-administratörer.
+6. Under **Administration**väljer hello **hanteringspaket** nod och i hello **letar:** skriver **Advisor** och kontrollera hello följande hanteringspaket importeras fortfarande i hanteringsgruppen:
    
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor internt
-7. Klicka på panelen **Inställningar** på OMS-portalen.
+7. I hello OMS-portalen klickar du på hello **inställningar** panelen.
 8. Välj **anslutna källor**.
-9. Du bör se namnet på hanteringsgruppen som du vill ta bort från arbetsytan i tabellen i avsnittet System Center Operations Manager.  Under kolumnen **senaste Data**, klickar du på **ta bort**.  
+9. Du bör se hello namn i hello tabell under hello System Center Operations Manager-avsnittet, hello management-grupp som du vill tooremove från hello arbetsyta.  Under kolumnen hello **senaste Data**, klickar du på **ta bort**.  
    
     > [!NOTE]
-    > Den **ta bort** länken blir inte tillgängliga förrän efter 14 dagar om ingen aktivitet upptäckts från den anslutna hanteringsgruppen.  
+    > Hej **ta bort** länken blir inte tillgängliga förrän efter 14 dagar om ingen aktivitet upptäckts från hello ansluten hanteringsgrupp.  
     > 
 
-10. Ett fönster visas där du uppmanas att bekräfta att du vill ta bort volymen.  Klicka på **Ja** att fortsätta. 
+10. Ett fönster visas där du tooconfirm som du vill tooproceed med hello borttagningen.  Klicka på **Ja** tooproceed. 
 
-Ta bort två kopplingar - Microsoft.SystemCenter.Advisor.DataConnector Advisor Connector spara PowerShell-skriptet nedan på datorn och utför med hjälp av följande exempel:
+toodelete hello två kopplingar - Microsoft.SystemCenter.Advisor.DataConnector och Advisor Connector, spara hello PowerShell-skriptet nedan tooyour datorn och köra med hello följande exempel:
 
 ```
     .\OM2012_DeleteConnector.ps1 “Advisor Connector” <ManagementServerName>
@@ -203,7 +203,7 @@ Ta bort två kopplingar - Microsoft.SystemCenter.Advisor.DataConnector Advisor C
 ```
 
 > [!NOTE]
-> Den dator som du kör skriptet från, om inte en hanteringsserver, bör ha Operations Manager-kommandogränssnittet installerat beroende på vilken version av hanteringsgruppen.
+> hello-dator som du kör skriptet från, om inte en hanteringsserver, bör ha hello Operations Managers kommandotolk installerat beroende på hello version av hanteringsgruppen.
 > 
 > 
 
@@ -215,7 +215,7 @@ Ta bort två kopplingar - Microsoft.SystemCenter.Advisor.DataConnector Advisor C
     $mg = new-object Microsoft.EnterpriseManagement.ManagementGroup $msName
     $admin = $mg.GetConnectorFrameworkAdministration()
     ##########################################################################################
-    # Configures a connector with the specified name.
+    # Configures a connector with hello specified name.
     ##########################################################################################
     function New-Connector([String] $name)
     {
@@ -239,7 +239,7 @@ Ta bort två kopplingar - Microsoft.SystemCenter.Advisor.DataConnector Advisor C
     return $connectorForTest
     }
     ##########################################################################################
-    # Removes a connector with the specified name.
+    # Removes a connector with hello specified name.
     ##########################################################################################
     function Remove-Connector([String] $name)
     {
@@ -293,9 +293,9 @@ Ta bort två kopplingar - Microsoft.SystemCenter.Advisor.DataConnector Advisor C
     Remove-Connector $connectorName
 ```
 
-I framtiden om du planerar att ansluta din hanteringsgrupp till en OMS-arbetsyta, måste du importera den `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` management pack-filen från den senaste samlade uppdateringen som tillämpas på din hanteringsgrupp.  Du hittar den här filen i den `%ProgramFiles%\Microsoft System Center 2012` eller `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` mapp.
+I framtida hello om du tänker ansluta din management group tooan OMS-arbetsyta, behöver du toore import hello `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` management pack-filen från hello senaste uppdateringen tillämpas tooyour hanteringsgruppen.  Du hittar den här filen i hello `%ProgramFiles%\Microsoft System Center 2012` eller hello `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` mapp.
 
 ## <a name="next-steps"></a>Nästa steg
-Om du vill lägga till funktioner och samla in data, se [lägga till logganalys lösningar från galleriet lösningar](log-analytics-add-solutions.md).
+tooadd funktioner och samla data, se [lägga till logganalys lösningar från hello lösningar galleriet](log-analytics-add-solutions.md).
 
 

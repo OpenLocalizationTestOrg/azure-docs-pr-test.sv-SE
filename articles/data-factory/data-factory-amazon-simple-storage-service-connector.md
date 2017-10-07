@@ -1,6 +1,6 @@
 ---
-title: "Flytta data från Amazon enkla Storage-tjänsten med hjälp av Data Factory | Microsoft Docs"
-description: "Lär dig mer om hur du flyttar data från Amazon enkla lagringstjänst (S3) med hjälp av Azure Data Factory."
+title: "aaaMove data från Amazon enkla Storage-tjänsten med hjälp av Data Factory | Microsoft Docs"
+description: "Mer information om hur toomove data från Amazon enkla lagringstjänst (S3) med hjälp av Azure Data Factory."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.openlocfilehash: 3e21f7dfccc3b235071344a28c7d94f65e6bf9ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8a8cd2845fd1de74413bd0372f3aabfb4817549b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Flytta data från Amazon enkla Storage-tjänsten med hjälp av Azure Data Factory
-Den här artikeln förklarar hur du använder kopieringsaktiviteten i Azure Data Factory för att flytta data från Amazon enkla Storage-tjänst (S3). Den bygger på den [Data movement aktiviteter](data-factory-data-movement-activities.md) artikel som presenterar en allmän översikt över dataflyttning med copy-aktivitet.
+Den här artikeln förklarar hur toouse hello kopieringsaktiviteten i Azure Data Factory toomove data från Amazon enkla lagringstjänst (S3). Den bygger på hello [Data movement aktiviteter](data-factory-data-movement-activities.md) artikel som ger en allmän översikt över dataflyttning hello kopieringsaktiviteten.
 
-Du kan kopiera data från Amazon S3 till alla stöds sink-datalagret. En lista över datakällor som stöds som sänkor av kopieringsaktiviteten, finns det [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabell. Data Factory stöder för närvarande endast flytta data från Amazon S3 till andra databaser, men inte flytta data från andra data lagras på Amazon S3.
+Du kan kopiera data från Amazon S3 tooany stöds sink-datalagret. En lista över data lagras som stöds när egenskaperna av hello kopieringsaktiviteten Se hello [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabell. Data Factory stöder för närvarande endast flytta data från Amazon S3 tooother datalager, men inte flytta data från andra data lagrar tooAmazon S3.
 
 ## <a name="required-permissions"></a>Behörigheter som krävs
-Om du vill kopiera data från Amazon S3, kontrollera att du har beviljats följande behörigheter:
+toocopy data från Amazon S3, kontrollera att du har beviljats hello följande behörigheter:
 
 * `s3:GetObject`och `s3:GetObjectVersion` för Amazon S3 objekt åtgärder.
-* `s3:ListBucket`för Amazon S3 Bucket-åtgärder. Om du använder guiden Data Factory kopiera `s3:ListAllMyBuckets` krävs också.
+* `s3:ListBucket`för Amazon S3 Bucket-åtgärder. Om du använder hello Data Factory kopiera guiden `s3:ListAllMyBuckets` krävs också.
 
-Mer information om en fullständig lista över Amazon S3 behörigheter finns [att ange behörigheter i en princip](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
+Mer information om hello fullständig lista över Amazon S3 behörigheter finns [att ange behörigheter i en princip](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
 ## <a name="getting-started"></a>Komma igång
 Du kan skapa en pipeline med en kopia-aktivitet som flyttar data från en källa för Amazon S3 med hjälp av olika verktyg eller API: er.
 
-Det enklaste sättet att skapa en pipeline är att använda den **guiden Kopiera**. För en snabb genomgång, se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md).
+hello enklaste sättet toocreate en pipeline är toouse hello **guiden Kopiera**. För en snabb genomgång, se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md).
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Azure-portalen**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-mall**, **.NET API**, och **REST API**. Stegvisa instruktioner för att skapa en pipeline med en kopieringsaktiviteten, finns det [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Du kan också använda följande verktyg toocreate en pipeline hello: **Azure-portalen**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-mall** , **.NET API**, och **REST API**. Stegvisa instruktioner toocreate en pipeline med en kopieringsaktiviteten finns hello [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
-Om du använder verktyg eller API: er, kan du utföra följande steg för att skapa en pipeline som flyttar data från ett dataarkiv som källa till ett dataarkiv som mottagare:
+Om du använder verktyg eller API: er kan utföra du hello följande steg toocreate en pipeline som flyttar data från en källdata lagra tooa sink-datalagret:
 
-1. Skapa **länkade tjänster** att länka inkommande och utgående data lagras till din data factory.
-2. Skapa **datauppsättningar** att representera inkommande och utgående data för kopieringen.
+1. Skapa **länkade tjänster** toolink indata och utdata lagrar tooyour data factory.
+2. Skapa **datauppsättningar** toorepresent indata och utdata för hello kopieringsåtgärden.
 3. Skapa en **pipeline** med en kopia-aktivitet som tar en datamängd som indata och en dataset som utdata.
 
-När du använder guiden skapas JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och pipelinen) automatiskt för dig. När du använder verktyg eller API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av JSON-format. Ett exempel med JSON-definitioner för Data Factory-entiteter som används för att kopiera data från ett dataarkiv för Amazon S3 finns i [JSON-exempel: kopiera data från Amazon S3 till Azure Blob](#json-example-copy-data-from-amazon-s3-to-azure-blob) i den här artikeln.
+När du använder guiden hello skapas automatiskt JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och hello pipeline) för dig. När du använder verktyg eller API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av hello JSON-format. Ett exempel med JSON-definitioner för Data Factory-entiteter som ska använda toocopy data från ett dataarkiv för Amazon S3 finns hello [JSON-exempel: kopiera data från Amazon S3 tooAzure Blob](#json-example-copy-data-from-amazon-s3-to-azure-blob) i den här artikeln.
 
 > [!NOTE]
 > Mer information om fil- och komprimering de format som stöds för en kopieringsaktiviteten finns [format och komprimering i Azure Data Factory](data-factory-supported-file-and-compression-formats.md).
 
-Följande avsnitt innehåller information om JSON-egenskaper som används för att definiera Data Factory entiteter för Amazon S3.
+hello följande avsnitt innehåller information om JSON-egenskaper används toodefine Data Factory entiteter specifika tooAmazon S3.
 
 ## <a name="linked-service-properties"></a>Länkad tjänstegenskaper
-En länkad tjänst länkar ett datalager till en data factory. Du skapar en länkad tjänst av typen **AwsAccessKey** länka Amazon S3 datalager till din data factory. Följande tabell innehåller beskrivning för JSON-element som är specifika för Amazon S3 (AwsAccessKey) länkade tjänsten.
+En länkad tjänst länkar en data store tooa data factory. Du skapar en länkad tjänst av typen **AwsAccessKey** toolink Amazon S3 data lagra tooyour data factory. hello i den följande tabellen finns beskrivning för JSON-element specifika tooAmazon S3 (AwsAccessKey) länkad tjänst.
 
 | Egenskap | Beskrivning | Tillåtna värden | Krävs |
 | --- | --- | --- | --- |
-| accessKeyID |ID för den hemliga åtkomstnyckeln. |Sträng |Ja |
-| secretAccessKey |Hemlig själva åtkomstnyckeln. |Krypterad hemliga sträng |Ja |
+| accessKeyID |ID för hello hemliga snabbtangent. |Sträng |Ja |
+| secretAccessKey |hello hemliga åtkomst själva nyckeln. |Krypterad hemliga sträng |Ja |
 
 Här är ett exempel:
 
@@ -77,22 +77,22 @@ Här är ett exempel:
 ```
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
-Om du vill ange en datamängd som representerar indata i Azure Blob storage ange egenskapen type för datauppsättningen till **AmazonS3**. Ange den **linkedServiceName** -egenskapen för datauppsättningen till namnet på Amazon S3 länkade tjänsten. En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera datauppsättningar finns [skapa datauppsättningar](data-factory-create-datasets.md). 
+toospecify en dataset toorepresent mata in data i Azure Blob storage, ange hello type-egenskapen för hello dataset för**AmazonS3**. Ange hello **linkedServiceName** -egenskapen för hello dataset toohello namnet på hello Amazon S3 länkade tjänsten. En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera datauppsättningar finns [skapa datauppsättningar](data-factory-create-datasets.md). 
 
-Avsnitt som struktur, tillgänglighet och principen är liknande för alla dataset-typer (till exempel SQL-databas, Azure blob och Azure-tabellen). Den **typeProperties** avsnitt är olika för varje typ av dataset och innehåller information om placeringen av data i datalagret. Den **typeProperties** avsnittet för en dataset av typen **AmazonS3** (som omfattar Amazon S3 dataset) har följande egenskaper:
+Avsnitt som struktur, tillgänglighet och principen är liknande för alla dataset-typer (till exempel SQL-databas, Azure blob och Azure-tabellen). Hej **typeProperties** avsnitt är olika för varje typ av dataset och ger information om hello platsen för hello data i datalagret hello. Hej **typeProperties** avsnittet för en dataset av typen **AmazonS3** (som omfattar hello Amazon S3 dataset) har hello följande egenskaper:
 
 | Egenskap | Beskrivning | Tillåtna värden | Krävs |
 | --- | --- | --- | --- |
-| bucketName |S3-Bucketnamn. |Sträng |Ja |
-| key |S3 objekt nyckeln. |Sträng |Nej |
-| prefix |Prefix för nyckeln S3 objekt. Objekt vars nycklar som börjar med prefixet är markerade. Gäller endast när nyckeln är tom. |Sträng |Nej |
-| Version |Versionen av objektet S3 om S3 versionshantering är aktiverad. |Sträng |Nej |
-| Format | Följande format stöds: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ange den **typen** egenskap under format till ett av dessa värden. Mer information finns i [textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-formatet](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format), och [parkettgolv format ](data-factory-supported-file-and-compression-formats.md#parquet-format) avsnitt. <br><br> Om du vill kopiera filer som-är mellan filbaserade butiker (binär kopia), hoppa över avsnittet format i både inkommande och utgående dataset-definitioner. |Nej | |
-| Komprimering | Ange typ och kompression för data. Typer som stöds är: **GZip**, **Deflate**, **BZip2**, och **ZipDeflate**. Nivåerna som stöds är: **Optimal** och **snabbast**. Mer information finns i [format och komprimering i Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nej | |
+| bucketName |hello S3 bucket-namn. |Sträng |Ja |
+| key |hello S3 Objektnyckel. |Sträng |Nej |
+| prefix |Prefix för hello S3 objekt nyckeln. Objekt vars nycklar som börjar med prefixet är markerade. Gäller endast när nyckeln är tom. |Sträng |Nej |
+| Version |hello version av hello S3 objekt, om S3 versionshantering är aktiverat. |Sträng |Nej |
+| Format | hello följande formattyper stöds: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Ange hello **typen** egenskap under format tooone av dessa värden. Mer information finns i hello [textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-formatet](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc format](data-factory-supported-file-and-compression-formats.md#orc-format), och [parkettgolv format ](data-factory-supported-file-and-compression-formats.md#parquet-format) avsnitt. <br><br> Om du vill toocopy filer som-mellan filbaserade butiker (binär kopia), hoppa över hello format-avsnittet i både inkommande och utgående dataset-definitioner. |Nej | |
+| Komprimering | Ange hello typ och kompression för hello data. hello stöds typer är: **GZip**, **Deflate**, **BZip2**, och **ZipDeflate**. hello som stöds är: **Optimal** och **snabbast**. Mer information finns i [format och komprimering i Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nej | |
 
 
 > [!NOTE]
-> **bucketName + nyckeln** anger platsen för S3 objekt, där bucket är Rotbehållare för S3 objekt och nyckeln är den fullständiga sökvägen till S3 objekt.
+> **bucketName + nyckeln** anger hello platsen för hello S3 objekt, där bucket är hello Rotbehållare för S3 objekt och nyckeln är hello fullständig sökväg toohello S3 objekt.
 
 ### <a name="sample-dataset-with-prefix"></a>Exempeldatamängd med prefix
 
@@ -143,7 +143,7 @@ Avsnitt som struktur, tillgänglighet och principen är liknande för alla datas
 ```
 
 ### <a name="dynamic-paths-for-s3"></a>Dynamisk sökvägar för S3
-Föregående exempel använder fasta värden för den **nyckeln** och **bucketName** egenskaper i Amazon S3 datamängden.
+hello föregående exempel använder fasta värden för hello **nyckeln** och **bucketName** egenskaper i hello Amazon S3 dataset.
 
 ```json
 "key": "testFolder/test.orc",
@@ -157,19 +157,19 @@ Du kan ha Data Factory beräkna egenskaperna dynamiskt vid körning, med hjälp 
 "bucketName": "$$Text.Format('{0:yyyy}', SliceStart)"
 ```
 
-Du kan göra samma för den **prefix** -egenskapen för en Amazon S3 datauppsättning. En lista över funktioner som stöds och variabler, se [Data Factory-funktioner och systemvariabler](data-factory-functions-variables.md).
+Du kan göra hello samma för hello **prefix** -egenskapen för en Amazon S3 datauppsättning. En lista över funktioner som stöds och variabler, se [Data Factory-funktioner och systemvariabler](data-factory-functions-variables.md).
 
 ## <a name="copy-activity-properties"></a>Kopiera egenskaper för aktivitet
-En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera aktiviteter, se [skapar pipelines](data-factory-create-pipelines.md). Egenskaper som namn, beskrivning, ingående och utgående tabeller och principer är tillgängliga för alla typer av aktiviteter. Egenskaper som är tillgängliga i den **typeProperties** avsnitt i aktiviteten varierar med varje aktivitetstyp. För kopieringsaktiviteten variera egenskaperna beroende på vilka typer av datakällor och sänkor. När en källa i kopieringsaktiviteten är av typen **FileSystemSource** (som omfattar Amazon S3), av följande egenskap är tillgänglig i **typeProperties** avsnitt:
+En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera aktiviteter, se [skapar pipelines](data-factory-create-pipelines.md). Egenskaper som namn, beskrivning, ingående och utgående tabeller och principer är tillgängliga för alla typer av aktiviteter. Egenskaper som är tillgängliga i hello **typeProperties** avsnittet hello aktivitet varierar med varje aktivitetstyp. För hello kopieringsaktiviteten varierar egenskaper beroende på hello typer av datakällor och sänkor. När en källa i hello kopieringsaktiviteten är av typen **FileSystemSource** (som omfattar Amazon S3), hello efter egenskapen finns i **typeProperties** avsnitt:
 
 | Egenskap | Beskrivning | Tillåtna värden | Krävs |
 | --- | --- | --- | --- |
-| Rekursiva |Anger om att rekursivt listan S3 objekt i katalogen. |SANT/FALSKT |Nej |
+| Rekursiva |Anger om toorecursively lista S3 objekt under hello katalog. |SANT/FALSKT |Nej |
 
-## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON-exempel: kopiera data från Amazon S3 till Azure Blob storage
-Det här exemplet visas hur du kopierar data från Amazon S3 till ett Azure Blob storage. Dock datan kan kopieras direkt till [någon sänkor som stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med hjälp av kopieringsaktiviteten i Data Factory.
+## <a name="json-example-copy-data-from-amazon-s3-tooazure-blob-storage"></a>JSON-exempel: kopiera data från Amazon S3 tooAzure Blob storage
+Det här exemplet visas hur toocopy data från Amazon S3 tooan Azure Blob storage. Dock datan kan kopieras direkt för[någon hello sänkor som stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med hello kopieringsaktiviteten i Data Factory.
 
-Exemplet innehåller JSON definitioner för följande Data Factory-enheter. Du kan använda dessa definitioner för att skapa en pipeline för att kopiera data från Amazon S3 till Blob storage med hjälp av den [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), eller [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md).   
+hello exempel innehåller JSON definitioner för hello följande Data Factory entiteter. Du kan använda dessa definitioner toocreate pipeline toocopy data från Amazon S3 tooBlob lagring med hjälp av hello [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), eller [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md).   
 
 * En länkad tjänst av typen [AwsAccessKey](#linked-service-properties).
 * En länkad tjänst av typen [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
@@ -177,7 +177,7 @@ Exemplet innehåller JSON definitioner för följande Data Factory-enheter. Du k
 * Utdata [dataset](data-factory-create-datasets.md) av typen [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 * En [pipeline](data-factory-create-pipelines.md) med kopieringsaktiviteten som använder [FileSystemSource](#copy-activity-properties) och [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Exemplet kopierar data från Amazon S3 till en Azure blob varje timme. JSON-egenskaper som används i exemplen beskrivs i exemplen i följande avsnitt.
+hello exemplet kopierar data från Amazon S3 tooan Azure blob varje timme. hello JSON egenskaper som används i exemplen beskrivs i hello-exempel i följande avsnitt.
 
 ### <a name="amazon-s3-linked-service"></a>Amazon S3 länkad tjänst
 
@@ -210,7 +210,7 @@ Exemplet kopierar data från Amazon S3 till en Azure blob varje timme. JSON-egen
 
 ### <a name="amazon-s3-input-dataset"></a>Amazon S3 inkommande dataset
 
-Ange **”externa”: true** informerar Data Factory-tjänsten att datamängden är extern till datafabriken. Ange den här egenskapen till true för en inkommande datauppsättningen som inte tillverkas av en aktivitet i pipelinen.
+Ange **”externa”: true** informerar hello Data Factory-tjänsten som hello dataset är externa toohello data factory. Ange den här egenskapen tootrue på ett inkommande datamängd som inte tillverkas av en aktivitet i hello pipeline.
 
 ```json
     {
@@ -237,7 +237,7 @@ Ange **”externa”: true** informerar Data Factory-tjänsten att datamängden 
 
 ### <a name="azure-blob-output-dataset"></a>Utdatauppsättning för Azure-blobb
 
-Data skrivs till en ny blob varje timme (frekvens: timme, intervall: 1). Sökvägen till mappen för blobben utvärderas dynamiskt baserat på starttiden för den sektor som bearbetas. Mappsökvägen använder år, månad, dag och timmar delar av starttiden.
+Data skrivs tooa nya blob varje timme (frekvens: timme, intervall: 1). hello mappsökväg för hello blob utvärderas dynamiskt baserat på hello starttiden för hello-segment som bearbetas. hello mappsökväg använder hello år, månad, dag och timmar delar av hello starttid.
 
 ```json
 {
@@ -298,7 +298,7 @@ Data skrivs till en ny blob varje timme (frekvens: timme, intervall: 1). Sökvä
 
 ### <a name="copy-activity-in-a-pipeline-with-an-amazon-s3-source-and-a-blob-sink"></a>Kopiera aktivitet i en pipeline med en källa för Amazon S3 och en blob-mottagare
 
-Pipelinen innehåller en kopia-aktivitet som är konfigurerad för att använda indata och utdata-datauppsättningar och är schemalagd att köras varje timme. I pipeline-JSON-definitionen av **källa** är inställd på **FileSystemSource**, och **sink** är inställd på **BlobSink**.
+hello pipelinen innehåller en kopia-aktivitet som är konfigurerade toouse hello inkommande och utgående datauppsättningar och är schemalagda toorun varje timme. I hello pipeline JSON-definitionen hello **källa** typ har angetts för**FileSystemSource**, och **sink** typ har angetts för**BlobSink**.
 
 ```json
 {
@@ -346,12 +346,12 @@ Pipelinen innehåller en kopia-aktivitet som är konfigurerad för att använda 
 }
 ```
 > [!NOTE]
-> Om du vill mappa kolumner från en datamängd för källan till kolumner från en datamängd sink finns [mappa dataset kolumner i Azure Data Factory](data-factory-map-columns.md).
+> toomap kolumner från en källa dataset toocolumns från en mottagare datamängd finns [mappa dataset kolumner i Azure Data Factory](data-factory-map-columns.md).
 
 
 ## <a name="next-steps"></a>Nästa steg
-Se följande artiklar:
+Se hello följande artiklar:
 
-* Mer information om viktiga faktorer som påverkan prestanda för flytt av data (kopieringsaktiviteten) i Data Factory och olika sätt att optimera den finns i [kopiera aktivitet prestanda och prestandajustering guiden](data-factory-copy-activity-performance.md).
+* toolearn om nyckeln faktorer som påverkan prestanda för flytt av data (kopieringsaktiviteten) i Data Factory och olika sätt toooptimize, se hello [kopiera aktivitet prestanda och prestandajustering guiden](data-factory-copy-activity-performance.md).
 
-* Stegvisa instruktioner för att skapa en pipeline med kopiera aktiviteter finns i [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+* Stegvisa instruktioner för att skapa en pipeline med en kopieringsaktiviteten finns hello [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

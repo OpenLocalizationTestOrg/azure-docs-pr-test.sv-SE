@@ -1,6 +1,6 @@
 ---
-title: Ansluta till en virtuell Windows Server-dator | Microsoft Docs
-description: "Lär dig hur du ansluter till och loggar in på en virtuell Windows-dator med hjälp av Azure Portal och Resource Manager-distributionsmodellen."
+title: aaaConnect tooa Windows Server VM | Microsoft Docs
+description: "Lär dig hur tooconnect och logga in tooa Windows VM med hello Azure-portalen och hello Resource Manager-distributionsmodellen."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,33 +15,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/01/2017
 ms.author: cynthn
-ms.openlocfilehash: 88431377a36d5bc36220c630f0c8d4a46ab4a434
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dc397f435ef165ae5af09f1d037ad3d520bb7ac3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Ansluta till och logga in på en virtuell Azure-dator som kör Windows
-Du använder knappen **Anslut** på Azure Portal för att starta en fjärrskrivbordssession (RDP) från ett Windows-skrivbord. Du börjar med att ansluta till den virtuella datorn och loggar sedan in.
+# <a name="how-tooconnect-and-log-on-tooan-azure-virtual-machine-running-windows"></a>Hur tooconnect och logga in tooan Azure virtuella datorn kör Windows
+Du kommer att använda hello **Anslut** knapp i hello Azure portal toostart en session för fjärrskrivbord (RDP) från en Windows-skrivbordet. Du ansluter toohello virtuell dator och du loggar in.
 
-Om du försöker ansluta till en virtuell Windows-dator från en Mac måste du installera en RDP-klient för Mac som [Microsoft Remote Desktop](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
+Om du försöker tooconnect tooa Windows virtuell dator från en Mac måste tooinstall som en RDP-klient för Mac [Microsoft Remote Desktop](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
 
-## <a name="connect-to-the-virtual-machine"></a>Ansluta till den virtuella datorn
-1. Om du inte redan gjort det loggar du in på [Azure Portal](https://portal.azure.com/).
-2. Klicka på **Virtual Machines** på navmenyn.
-3. Välj den virtuella datorn i listan.
-4. Klicka på **Anslut** i bladet för den virtuella datorn.
+## <a name="connect-toohello-virtual-machine"></a>Ansluta toohello virtuell dator
+1. Om du inte redan har gjort det loggar du in toohello [Azure-portalen](https://portal.azure.com/).
+2. Hej hubbmenyn, klicka på **virtuella datorer**.
+3. Välj hello virtuella hello-listan.
+4. Klicka på hello bladet för den virtuella datorn hello **Anslut**.
    
-    ![Skärmbild av Azure Portal som visar hur du ansluter till den virtuella datorn.](./media/connect-logon/connect.png)
+    ![Skärmbild av hello Azure portal som visar hur tooconnect tooyour VM.](./media/connect-logon/connect.png)
    
    > [!TIP]
-   > Om knappen **Anslut** på portalen är nedtonad och du inte är ansluten till Azure via [Express Route](../../expressroute/expressroute-introduction.md) eller en [VPN-anslutning för plats till plats](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) måste du skapa och tilldela den virtuella datorn en offentlig IP-adress innan du kan använda RDP. Du kan läsa mer om [offentliga IP-adresser i Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+   > Om hello **Anslut** knappen hello-portalen är nedtonad och du inte är ansluten tooAzure via en [Express Route](../../expressroute/expressroute-introduction.md) eller [plats-till-plats VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) anslutning, behöver du toocreate och tilldela den virtuella datorn en offentlig IP-adress innan du kan använda RDP. Du kan läsa mer om [offentliga IP-adresser i Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
    > 
    > 
 
-## <a name="log-on-to-the-virtual-machine"></a>Logga in på den virtuella datorn
+## <a name="log-on-toohello-virtual-machine"></a>Logga in toohello virtuell dator
 [!INCLUDE [virtual-machines-log-on-win-server](../../../includes/virtual-machines-log-on-win-server.md)]
 
 ## <a name="next-steps"></a>Nästa steg
-Om du får problem när du försöker ansluta läser du [Felsöka anslutningar till fjärrskrivbord](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Den här artikeln beskriver hur du diagnostiserar och löser vanliga problem.
+Om du stöter på problem när du försöker tooconnect, se [felsöka fjärrskrivbordsanslutningar](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Den här artikeln beskriver hur du diagnostiserar och löser vanliga problem.
 

@@ -1,6 +1,6 @@
 ---
-title: "Hantera paket insamlingar med Azure Nätverksbevakaren - PowerShell | Microsoft Docs"
-description: "Den här sidan förklarar hur du hanterar funktionen paket avbildning i Nätverksbevakaren med hjälp av PowerShell"
+title: "aaaManage paket som samlar in med Azure Nätverksbevakaren - PowerShell | Microsoft Docs"
+description: "Den här sidan förklarar hur toomanage hello paket avbilda funktion i Nätverksbevakaren med hjälp av PowerShell"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: abd3b3641da80ee835fac85b4bde68594449e451
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 77a522a1b05e020a73ba7140c1410615eb8761da
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Hantera paket insamlingar med Azure Nätverksbevakaren med hjälp av PowerShell
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST-API](network-watcher-packet-capture-manage-rest.md)
 
-Nätverket Watcher paketinsamling kan du skapa avbildning sessioner för att spåra trafik till och från en virtuell dator. Filter har angetts för hämtningens så du fångar upp trafiken som du vill använda. Det hjälper dig för att diagnostisera nätverk avvikelser reaktivt och proaktivt paketinsamling. Andra användningsområden omfattar att samla in nätverksstatistik får information om nätverket intrång felsöka klient-/ serverkommunikation och mycket mer. Genom att via fjärranslutning utlösa paket insamlingar, underlättar den här funktionen för att köra en paketinsamling manuellt och på den önskade datorn, vilket sparar värdefull tid.
+Nätverket Watcher paketinsamling kan toocreate avbilda sessioner tootrack trafik tooand från en virtuell dator. Filter har angetts för hello avbilda session tooensure du fånga in endast hello trafik som du vill använda. Paketinsamling hjälper toodiagnose nätverk avvikelser reaktivt och proaktivt. Andra användningsområden omfattar att samla in nätverksstatistik får information om nätverket intrång, toodebug klient / server-kommunikation och mycket mer. Den här funktionen underlättar genom kan tooremotely utlösaren paket insamlingar, hello belastningen körs en paketinsamling manuellt och på hello önskade dator som sparar värdefull tid.
 
-Den här artikeln tar dig igenom de olika administrativa uppgifter som är tillgängliga för paketinsamling.
+Den här artikeln tar dig igenom hello olika administrativa uppgifter som är tillgängliga för paketinsamling.
 
 - [**Starta en paketinsamling**](#start-a-packet-capture)
 - [**Stoppa en paketinsamling**](#stop-a-packet-capture)
@@ -40,14 +40,14 @@ Den här artikeln tar dig igenom de olika administrativa uppgifter som är tillg
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Den här artikeln förutsätter att du har följande resurser:
+Den här artikeln förutsätter att du har hello följande resurser:
 
-* En instans av Nätverksbevakaren i den region som du vill skapa en paketinsamling
+* En instans Nätverksbevakaren i hello region som du vill toocreate en paketinsamling
 
-* En virtuell dator med filnamnstillägget paket avbilda aktiverad.
+* En virtuell dator med hello paket avbilda tillägget aktiverat.
 
 > [!IMPORTANT]
-> Paketinsamling kräver ett tillägg för virtuell dator `AzureNetworkWatcherExtension`. Installera tillägget på en Windows VM finns [tillägg för virtuell dator i Azure Network Watcher Agent för Windows](../virtual-machines/windows/extensions-nwa.md) och för Linux VM besöka [tillägg för virtuell dator i Azure Network Watcher Agent för Linux](../virtual-machines/linux/extensions-nwa.md).
+> Paketinsamling kräver ett tillägg för virtuell dator `AzureNetworkWatcherExtension`. Installera hello tillägg på en Windows VM finns [tillägg för virtuell dator i Azure Network Watcher Agent för Windows](../virtual-machines/windows/extensions-nwa.md) och för Linux VM besöka [tillägg för virtuell dator i Azure Network Watcher Agent för Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="install-vm-extension"></a>Installera tillägg för virtuell dator
 
@@ -59,10 +59,10 @@ $VM = Get-AzureRmVM -ResourceGroupName testrg -Name VM1
 
 ### <a name="step-2"></a>Steg 2
 
-I följande exempel hämtar tillägget information som behövs för att köra den `Set-AzureRmVMExtension` cmdlet. Denna cmdlet installerar paketet avbilda agent på den virtuella gästdatorn.
+hello följande exempel hämtar hello tillägget information behövs toorun hello `Set-AzureRmVMExtension` cmdlet. Denna cmdlet installerar hello paket avbilda agent på hello virtuella gästdatorn.
 
 > [!NOTE]
-> Den `Set-AzureRmVMExtension` cmdlet kan ta flera minuter att slutföra.
+> Hej `Set-AzureRmVMExtension` cmdlet kan ta flera minuter toocomplete.
 
 För Windows-datorer:
 
@@ -80,7 +80,7 @@ $ExtensionName = "AzureNetworkWatcherExtension"
 Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ````
 
-Följande exempel är ett lyckat svar när du har kört den `Set-AzureRmVMExtension` cmdlet.
+hello följande exempel är ett lyckat svar när du har kört hello `Set-AzureRmVMExtension` cmdlet.
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -90,13 +90,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ### <a name="step-3"></a>Steg 3
 
-För att säkerställa att agenten är installerad, kör den `Get-AzureRmVMExtension` cmdlet och överför den virtuella datornamn och namnet.
+tooensure som hello agenten är installerad, kör hello `Get-AzureRmVMExtension` cmdlet och skickar den hello virtuella datornamn och hello Tilläggsnamn.
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-I följande exempel är ett exempel på svar från att köras`Get-AzureRmVMExtension`
+hello följande exempel är ett exempel på hello svar från att köras`Get-AzureRmVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -120,11 +120,11 @@ ForceUpdateTag          :
 
 ## <a name="start-a-packet-capture"></a>Starta en paketinsamling
 
-När de föregående stegen är klar kan är paket avbilda agenten installerad på den virtuella datorn.
+När hello föregående steg är klar kan är hello paket avbilda agenten installerad på hello virtuell dator.
 
 ### <a name="step-1"></a>Steg 1
 
-Nästa steg är att hämta Nätverksbevakaren-instans. Den här variabeln har överförts till den `New-AzureRmNetworkWatcherPacketCapture` cmdlet i steg 4.
+hello nästa steg är tooretrieve hello Nätverksbevakaren instans. Den här variabeln skickas toohello `New-AzureRmNetworkWatcherPacketCapture` cmdlet i steg 4.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -133,7 +133,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 
 ### <a name="step-2"></a>Steg 2
 
-Hämta ett lagringskonto. Det här lagringskontot används för att spara filen i paketet.
+Hämta ett lagringskonto. Det här lagringskontot är används toostore hello paket filen.
 
 ```powershell
 $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name testrgsa123
@@ -141,7 +141,7 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name test
 
 ### <a name="step-3"></a>Steg 3
 
-Filter kan användas för att begränsa de data som lagras med paketinsamling. I följande exempel ställer in två filter.  Ett filter samlar in utgående TCP-trafik från lokala IP 10.0.0.3 för målportar 20, 80 och 443.  Det andra filtret samlar in UDP-trafik.
+Filter kan vara används toolimit hello data som lagras av hello paketinsamling. hello ställer följande exempel in två filter.  Ett filter samlar in utgående TCP-trafik från lokala IP 10.0.0.3 toodestination portarna 20, 80 och 443.  hello andra filtret samlar in UDP-trafik.
 
 ```powershell
 $filter1 = New-AzureRmPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
@@ -153,13 +153,13 @@ $filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP
 
 ### <a name="step-4"></a>Steg 4
 
-Kör den `New-AzureRmNetworkWatcherPacketCapture` att starta avbildningsprocessen paket skickas nödvändiga värden hämtas i föregående steg.
+Kör hello `New-AzureRmNetworkWatcherPacketCapture` cmdlet toostart hello paket processen, skicka hello krävs värden hämtas i hello föregående steg.
 ```powershell
 
 New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filters $filter1, $filter2
 ```
 
-Följande är exempel på utdata som förväntas från att köras i `New-AzureRmNetworkWatcherPacketCapture` cmdlet.
+hello följande exempel är hello förväntades utdata från kör hello `New-AzureRmNetworkWatcherPacketCapture` cmdlet.
 
 ```
 Name                    : PacketCaptureTest
@@ -199,13 +199,13 @@ Filters                 : [
 
 ## <a name="get-a-packet-capture"></a>Hämta en paketinsamling
 
-Kör den `Get-AzureRmNetworkWatcherPacketCapture` cmdlet, hämtar status för en paketinsamling som körs eller har slutförts.
+Kör hello `Get-AzureRmNetworkWatcherPacketCapture` cmdlet, hämtar hello status för en paketinsamling som körs eller har slutförts.
 
 ```powershell
 Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
-Följande är exempel på utdata från den `Get-AzureRmNetworkWatcherPacketCapture` cmdlet. I följande exempel är när avbildningen har slutförts. Värdet för PacketCaptureStatus stoppas med en StopReason TimeExceeded. Det här värdet visar att paketinsamling lyckades och kördes tiden.
+hello följande exempel är hello utdata från hello `Get-AzureRmNetworkWatcherPacketCapture` cmdlet. hello följande exempel är när hello hämtningen är klar. Hej PacketCaptureStatus värdet stoppas med en StopReason TimeExceeded. Det här värdet visar att hello paketinsamling lyckades och kördes tiden.
 ```
 Name                    : PacketCaptureTest
 Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -246,14 +246,14 @@ PacketCaptureError      : []
 
 ## <a name="stop-a-packet-capture"></a>Stoppa en paketinsamling
 
-Genom att köra den `Stop-AzureRmNetworkWatcherPacketCapture` cmdlet, om en avbildningssessionen pågår den har stoppats.
+Genom att köra hello `Stop-AzureRmNetworkWatcherPacketCapture` cmdlet, om en avbildningssessionen pågår den har stoppats.
 
 ```powershell
 Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]
-> Cmdleten returnerar inga svar när kördes på en pågående avbildningssessionen eller en befintlig session som redan har stoppats.
+> hello cmdlet returnerar inget svar när kördes på en pågående avbildningssessionen eller en befintlig session som redan har stoppats.
 
 ## <a name="delete-a-packet-capture"></a>Ta bort en paketinsamling
 
@@ -262,13 +262,13 @@ Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -Packe
 ```
 
 > [!NOTE]
-> Om du tar bort en paketinsamling tar inte bort filen i lagringskontot.
+> Om du tar bort en paketinsamling tar inte bort hello-filen i hello storage-konto.
 
 ## <a name="download-a-packet-capture"></a>Hämta en paketinsamling
 
-När paketet avbildningssessionen är klar, kan avbilda filen laddas upp till blob-lagring eller till en lokal fil på den virtuella datorn. Lagringsplatsen för paketinsamling har definierats vid skapandet av sessionen. Ett enkelt verktyg för att komma åt dessa avbilda filer som sparats till ett lagringskonto är Microsoft Azure Lagringsutforskaren, som kan hämtas här: http://storageexplorer.com/
+När paketet avbildningssessionen är klar kan hello avbilda filen vara överförda tooblob lagring eller tooa lokal fil på hello VM. hello lagringsplats för hello paketinsamling har definierats vid skapande av hello. En lämplig verktyget tooaccess dessa avbilda filer sparade tooa storage-konto är Microsoft Azure Lagringsutforskaren, som kan hämtas här: http://storageexplorer.com/
 
-Om ett storage-konto anges sparas paket avbilda filer till ett lagringskonto på följande plats:
+Om ett lagringskonto har angetts sparas paket avbilda filer tooa storage-konto på hello följande plats:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
@@ -276,7 +276,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig att automatisera insamlingar paket med virtuella aviseringar genom att visa [skapar en avisering utlösta paketinsamling](network-watcher-alert-triggered-packet-capture.md)
+Lär dig hur fångar tooautomate paket med virtuella aviseringar genom att visa [skapar en avisering utlösta paketinsamling](network-watcher-alert-triggered-packet-capture.md)
 
 Hitta om vissa trafik tillåts i orr utanför den virtuella datorn genom att besöka [Kontrollera Kontrollera IP-flöde](network-watcher-check-ip-flow-verify-portal.md)
 

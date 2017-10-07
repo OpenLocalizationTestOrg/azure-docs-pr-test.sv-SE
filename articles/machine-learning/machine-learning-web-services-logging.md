@@ -1,6 +1,6 @@
 ---
-title: "Loggning för Machine Learning-webbtjänster | Microsoft Docs"
-description: "Lär dig hur du aktiverar loggning för Machine Learning-webbtjänster. Loggning ger ytterligare information för att felsöka de API: er."
+title: "aaaLogging för Machine Learning-webbtjänster | Microsoft Docs"
+description: "Lär dig hur tooenable loggning för Machine Learning-webbtjänster. Loggning ger ytterligare information toohelp felsöka hello API: er."
 services: machine-learning
 documentationcenter: 
 author: raymondlaghaeian
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
 ms.author: raymondl;garye
-ms.openlocfilehash: 7d0b2db01427430d6b0a317cdfefc265dd4b06e2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ed23933d52d2151af658af2307d7df8743071f65
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Aktivera loggning för Machine Learning-webbtjänster
-Det här dokumentet innehåller information om loggningsfunktioner av Machine Learning-webbtjänster. Loggning ger ytterligare information, förutom bara ett felnummer och ett meddelande som kan hjälpa dig att felsöka dina anrop till API: er för Machine Learning.  
+Det här dokumentet innehåller information om hello loggning möjligheterna för Machine Learning-webbtjänster. Loggning ger ytterligare information, förutom bara ett felnummer och ett meddelande som kan hjälpa dig att felsöka din anrop toohello Machine Learning API: er.  
 
-## <a name="how-to-enable-logging-for-a-web-service"></a>Så här aktiverar du loggning för en webbtjänst
+## <a name="how-tooenable-logging-for-a-web-service"></a>Hur tooenable loggning för en webbtjänst
 
-Du aktiverar loggning från den [Azure Machine Learning-webbtjänster](https://services.azureml.net) portal. 
+Du aktiverar loggning från hello [Azure Machine Learning-webbtjänster](https://services.azureml.net) portal. 
 
-1. Logga in på Azure Machine Learning-webbtjänster portalen på [https://services.azureml.net](https://services.azureml.net). För en klassisk webbtjänst, du kan också få till portalen genom att klicka på **nya Web Services upplevelsen** på sidan Machine Learning-webbtjänster i Machine Learning Studio.
+1. Logga in toohello Azure Machine Learning-webbtjänster portalen på [https://services.azureml.net](https://services.azureml.net). För en klassisk webbtjänst, du kan också få toohello portal genom att klicka på **nya Web Services upplevelsen** på hello Machine Learning-webbtjänster sida i Machine Learning Studio.
 
    ![Ny Services webbupplevelse länk](media/machine-learning-web-services-logging/new-web-services-experience-link.png)
 
-2. På översta menyraden klickar du på **Web Services** för en ny webbtjänst eller klicka på **klassiska webbtjänster** ett klassiskt webbtjänsten.
+2. Hello översta menyraden klickar du på **Web Services** för en ny webbtjänst eller klicka på **klassiska webbtjänster** ett klassiskt webbtjänsten.
 
    ![Välj ny eller klassisk webbtjänster](media/machine-learning-web-services-logging/select-web-service.png)
 
-3. Klicka på namnet på webben för en ny webbtjänst. För en klassisk webbtjänst klickar du på namnet på webben och sedan på nästa sida klickar du på lämplig slutpunkten.
+3. Klicka på hello webbtjänstnamn för en ny webbtjänst. Klicka på hello webbtjänstnamn och på hello nästa sida klickar du på lämplig hello-slutpunkten för en klassisk webbtjänst.
 
-4. Klicka på översta verktygsfältet och **konfigurera**.
+4. Klicka på hello huvudmenyn **konfigurera**.
 
-5. Ange den **aktivera loggning** att *fel* (för att logga endast fel) eller *alla* (för fullständig loggning).
+5. Ange hello **aktivera loggning** alternativet för*fel* (toolog endast fel) eller *alla* (för fullständig loggning).
 
    ![Välj loggningsnivån](media/machine-learning-web-services-logging/enable-logging.png)
 
 6. Klicka på **Spara**.
 
-7. Klassisk webbtjänster, skapa den **ml-diagnostik** behållare.
+7. För klassisk webbtjänster, skapa hello **ml-diagnostik** behållare.
 
-   Alla web service loggar sparas i en blobbbehållare med namnet **ml-diagnostik** i storage-konto som är kopplade till webbtjänsten. För nya webbtjänster skapas den här behållaren första gången du få åtkomst till webbtjänsten. För klassisk webbtjänster måste du skapa behållaren om den inte redan finns. 
+   Alla web service loggar sparas i en blobbbehållare med namnet **ml-diagnostik** i hello storage-konto som är associerade med hello-webbtjänsten. Nya webbtjänster, har den här behållaren skapats hello första gången du öppnar hello-webbtjänsten. För klassisk webbtjänster behöver du toocreate hello behållaren om den inte redan finns. 
 
-   1. I den [Azure-portalen](https://portal.azure.com)går du till lagringskontot som är associerade med webbtjänsten.
+   1. I hello [Azure-portalen](https://portal.azure.com)går toohello storage-konto som är associerade med hello-webbtjänsten.
 
    2. Under **Blob-tjänsten**, klickar du på **behållare**.
 
-   3. Om behållaren **ml-diagnostik** inte finns, klickar du på **+ behållare**, och ge behållaren namnet ”ml-diagnostik” och välj den **komma åt typen** som ”Blob”. Klicka på **OK**.
+   3. Om hello behållaren **ml-diagnostik** inte finns, klickar du på **+ behållare**, ge hello behållaren hello namnet ”ml-diagnostik” och välj hello **komma åt typen** som ”Blob”. Klicka på **OK**.
 
       ![Välj loggningsnivån](media/machine-learning-web-services-logging/create-ml-diagnostics-container.png)
 
 > [!TIP]
 >
-> Web Services instrumentpanelen i Machine Learning Studio har också en växel för att aktivera loggning för en klassisk webbtjänst. Men eftersom loggning hanteras nu via Web Services-portalen, måste du aktivera loggning på portalen, enligt beskrivningen i den här artikeln. Om du redan loggar in Studio, inaktivera loggning i Web Services-portalen och aktivera det igen.
+> Hello Web Services instrumentpanelen i Machine Learning Studio har också en växel tooenable loggning för en klassisk webbtjänst. Eftersom loggning hanteras nu via hello Web Services-portalen, behöver du dock tooenable via hello portal som beskrivs i den här artikeln. Om du redan loggar in Studio, inaktivera loggning i hello Web Services-portalen och aktivera det igen.
 
 
-## <a name="the-effects-of-enabling-logging"></a>Effekterna av att aktivera loggning
-När loggning är aktiverat, diagnostik och fel från webbtjänstslutpunkt loggas i den **ml-diagnostik** blob-behållaren i Azure Storage-konto som är kopplad till användarens arbetsytan. Den här behållaren innehåller diagnostikinformation för alla slutpunkterna för webbtjänster för alla arbetsytor som är associerade med det här lagringskontot.
+## <a name="hello-effects-of-enabling-logging"></a>hello effekterna av att aktivera loggning
+När loggning är aktiverat hello diagnostik- och fel från hello webbtjänstslutpunkt loggas i hello **ml-diagnostik** blob-behållaren i hello Azure Storage-konto som är kopplad till hello användarens arbetsytan. Den här behållaren innehåller alla hello diagnostikinformationen för alla hello slutpunkter för webbtjänster för alla hello arbetsytor som är associerade med det här lagringskontot.
 
-Loggarna kan visas med hjälp av flera verktyg som finns tillgängliga att utforska Azure Storage-konto. Den enklaste kanske vill navigera till storage-konto i Azure-portalen klickar du på **behållare**, och klicka sedan på behållaren **ml-diagnostik**.  
+hello loggar kan visas med hjälp av hello flera verktyg tillgängliga tooexplore ett Azure Storage-konto. hello enklaste får toonavigate toohello storage-konto i hello Azure-portalen, klicka på **behållare**, och klicka sedan på hello behållaren **ml-diagnostik**.  
 
 ## <a name="log-blob-detail-information"></a>Information om blob logg
-Varje blobb i behållaren innehåller diagnostikinformationen för exakt ett av följande åtgärder:
+Varje blobb i behållaren hello innehåller hello diagnostikinformationen för exakt ett av hello följande åtgärder:
 
-* En körning av metoden Batch Execution  
-* En körning av metoden begäran och svar  
+* En körning av hello batchkörning metoden  
+* En körning av metoden hello begäran och svar  
 * Initieringen av en begäran och svar-behållare
 
-Namnet på varje blobb har ett prefix i följande format: 
+hello namnet på varje blob har prefixet hello följande format: 
 
 
 `{Workspace Id}-{Web service Id}-{Endpoint Id}/{Log type}`
 
 
-Där _logga typen_ är ett av följande värden:  
+Där _logga typen_ är en av hello följande värden:  
 
 * Batch  
 * score-begäranden  

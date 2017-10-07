@@ -1,6 +1,6 @@
 ---
-title: "Väder prognos med data från IoT-hubb Azure Machine Learning | Microsoft Docs"
-description: "Använd Azure Machine Learning att förutsäga risken för regn baserat på din IoT-hubb som samlar in från en sensor temperatur- och fuktighetskonsekvens data."
+title: "aaaWeather prognos med data från IoT-hubb Azure Machine Learning | Microsoft Docs"
+description: "Använd Azure Machine Learning toopredict hello risken för regn utifrån hello temperatur- och fuktighetskonsekvens data din IoT-hubb som samlar in från en sensor."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,64 +15,64 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
-ms.openlocfilehash: 50ae54b9476c49b80236e295c0bf244df8236cff
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 04abe97558ccfc152bae2e0d435033433c0023dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Väder prognos använder sensordata från IoT-hubb i Azure Machine Learning
+# <a name="weather-forecast-using-hello-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Väder prognos med hello sensordata från IoT-hubb i Azure Machine Learning
 
 ![Diagram för slutpunkt till slutpunkt](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-Machine learning är en teknik för datavetenskap som hjälper datorer lära sig från befintliga data att förutsäga framtida beteenden, resultat och trender. Azure Machine Learning är en molnbaserad tjänst för förutsägelseanalys som gör det möjligt att snabbt skapa och distribuera förutsägelsemodeller som analyslösningar.
+Machine learning är en teknik för datavetenskap som hjälper datorer Läs från befintliga data tooforecast framtida beteenden, resultat och trender. Azure Machine Learning är en molntjänst för förutsägelseanalys som gör det möjligt tooquickly skapa och distribuera förutsägelsemodeller som Analyslösningar.
 
 ## <a name="what-you-learn"></a>Detta får du får lära dig
 
-Du lär dig hur du använder Azure Machine Learning att väder prognos (risken för regn) med hjälp av temperatur- och fuktighetskonsekvens data från Azure IoT-hubben. Risken för regn är resultatet av en modell för förberedda väder förutsägelse. Modellen bygger på historiska data för att bedöma risken för regn baserat på temperatur- och fuktighetskonsekvens.
+Du lär dig hur toouse Azure Machine Learning toodo väder prognos (risken för regn) med hjälp av hello temperatur- och fuktighetskonsekvens data från din Azure IoT-hubb. hello risken för regn är hello utdata från en förberedd väder förutsägelse modell. hello modellen bygger på historiska data tooforecast risken för regn baserat på temperatur- och fuktighetskonsekvens.
 
 ## <a name="what-you-do"></a>Vad du gör
 
-- Distribuera väder förutsägelse modellen som en webbtjänst.
+- Distribuera hello väder förutsägelse modellen som en webbtjänst.
 - Förbereda din IoT-hubb för åtkomst till data genom att lägga till en konsumentgrupp.
-- Skapa ett Stream Analytics-jobb och konfigurera jobbet är:
+- Skapa ett Stream Analytics-jobb och konfigurera hello jobbet:
   - Läsa temperatur- och fuktighetskonsekvens data från IoT-hubb.
-  - Anropa webbtjänsten för att få regn risken.
-  - Spara resultatet till en Azure blob storage.
-- Använda Microsoft Azure Lagringsutforskaren för att visa väder prognos.
+  - Anropa hello web service tooget hello regn risken.
+  - Spara hello resultatet tooan Azure blob storage.
+- Använd Microsoft Azure Lagringsutforskaren tooview hello väderprognos.
 
 ## <a name="what-you-need"></a>Vad du behöver
 
-- Kursen [konfigurera enheten](iot-hub-raspberry-pi-kit-node-get-started.md) slutförts som omfattar följande krav:
+- Kursen [konfigurera enheten](iot-hub-raspberry-pi-kit-node-get-started.md) slutförts som omfattar hello följande krav:
   - En aktiv Azure-prenumeration.
   - En Azure IoT-hubb i din prenumeration.
-  - Ett klientprogram som skickar meddelanden till din Azure IoT-hubb.
+  - Ett klientprogram som skickar meddelanden tooyour Azure IoT-hubb.
 - Ett konto i Azure Machine Learning Studio. ([Försök Machine Learning Studio gratis](https://studio.azureml.net/)).
 
-## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Distribuera väder förutsägelse modellen som en webbtjänst
+## <a name="deploy-hello-weather-prediction-model-as-a-web-service"></a>Distribuera hello väder förutsägelse modellen som en webbtjänst
 
-1. Gå till den [väder förutsägelse modellen sidan](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
+1. Gå toohello [väder förutsägelse modellen sidan](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
 1. Klicka på **öppna i Studio** i Microsoft Azure Machine Learning Studio.
-   ![Öppna sidan väder förutsägelse modellen i Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
-1. Klicka på **kör** att validera stegen i modellen. Det här steget kan ta 2 minuter att slutföra.
-   ![Öppna väder förutsägelse modellen i Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![Öppna hello väder förutsägelse modellen sida i Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
+1. Klicka på **kör** toovalidate hello steg i hello modellen. Det här steget kan ta 2 minuter toocomplete.
+   ![Öppna hello väder förutsägelse modellen i Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. Klicka på **konfigurera WEBBTJÄNSTEN** > **förutsägande webbtjänsten**.
-   ![Distribuera väder förutsägelse modellen i Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. Dra i den den **Web service indata** modulen någonstans nära den **Poängmodell** modul.
-1. Ansluta den **Web service indata** modulen till den **Poängmodell** modul.
+   ![Distribuera hello väder förutsägelse modellen i Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
+1. Dra i hello hello **Web service indata** modulen någonstans nära hello **Poängmodell** modul.
+1. Ansluta hello **Web service indata** modulen toohello **Poängmodell** modul.
    ![Ansluta två moduler i Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
-1. Klicka på **kör** att validera stegen i modellen.
-1. Klicka på **DISTRIBUERA WEBBTJÄNSTEN** att distribuera modellen som en webbtjänst.
-1. På instrumentpanelen i modellen, ladda ned den **Excel 2010 eller tidigare arbetsboken** för **frågor och svar**.
+1. Klicka på **kör** toovalidate hello steg i hello modellen.
+1. Klicka på **DISTRIBUERA WEBBTJÄNSTEN** toodeploy hello modellen som en webbtjänst.
+1. Hämta hello på hello instrumentpanelen för hello modellen **Excel 2010 eller tidigare arbetsboken** för **frågor och svar**.
 
    > [!Note]
-   > Se till att du hämtar den **Excel 2010 eller tidigare arbetsboken** även om du kör en senare version av Excel på datorn.
+   > Se till att du hämtar hello **Excel 2010 eller tidigare arbetsboken** även om du kör en senare version av Excel på datorn.
 
-   ![Hämta Excel för REQUEST RESPONSE-slutpunkt](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
+   ![Hämta hello Excel för hello REQUEST RESPONSE slutpunkt](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
 
-1. Öppna Excel-arbetsboken, notera den **URL för WEBBTJÄNSTEN** och **ÅTKOMSTNYCKELN**.
+1. Öppna hello Excel-arbetsbok, anteckna hello **URL för WEBBTJÄNSTEN** och **ÅTKOMSTNYCKELN**.
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
@@ -80,60 +80,60 @@ Du lär dig hur du använder Azure Machine Learning att väder prognos (risken f
 
 ### <a name="create-a-stream-analytics-job"></a>Skapa ett Stream Analytics-jobb
 
-1. I den [Azure-portalen](https://ms.portal.azure.com/), klickar du på **ny** > **Sakernas Internet** > **Stream Analytics-jobbet**.
-1. Ange följande information för jobbet.
+1. I hello [Azure-portalen](https://ms.portal.azure.com/), klickar du på **ny** > **Sakernas Internet** > **Stream Analytics-jobbet**.
+1. Ange följande information för jobbet hello hello.
 
-   **Jobbnamnet**: namnet på jobbet. Namnet måste vara globalt unikt.
+   **Jobbnamnet**: hello namnet på hello jobb. hello namn måste vara globalt unika.
 
-   **Resursgruppen**: använda samma resursgrupp som använder din IoT-hubb.
+   **Resursgruppen**: Använd hello samma resursgrupp som använder din IoT-hubb.
 
-   **Plats**: använda samma plats som resursgruppen.
+   **Plats**: Använd hello samma plats som resursgruppen.
 
-   **Fäst på instrumentpanelen**: Markera det här alternativet för enkel åtkomst till din IoT-hubb från instrumentpanelen.
+   **PIN-kod toodashboard**: Markera det här alternativet för enkel åtkomst tooyour IoT-hubb hello instrumentpanel.
 
    ![Skapa ett Stream Analytics-jobb i Azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
 1. Klicka på **Skapa**.
 
-### <a name="add-an-input-to-the-stream-analytics-job"></a>Lägga till indata till Stream Analytics-jobbet
+### <a name="add-an-input-toohello-stream-analytics-job"></a>Lägg till ett inkommande toohello Stream Analytics-jobb
 
-1. Öppna Stream Analytics-jobbet.
+1. Öppna hello Stream Analytics-jobbet.
 1. Under **jobbet topologi**, klickar du på **indata**.
-1. I den **indata** rutan klickar du på **Lägg till**, och ange följande information:
+1. I hello **indata** rutan klickar du på **Lägg till**, och ange sedan hello följande information:
 
-   **Ett inmatat alias**: unika alias för indata.
+   **Ett inmatat alias**: unika hello-alias för hello indata.
 
    **Källan**: Välj **IoT-hubb**.
 
-   **Konsumentgrupp**: Välj konsumentgrupp som du skapade.
+   **Konsumentgrupp**: Välj hello konsumentgrupp som du skapade.
 
-   ![Lägga till indata till Stream Analytics-jobbet i Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
+   ![Lägg till ett inkommande toohello Stream Analytics-jobb i Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
 1. Klicka på **Skapa**.
 
-### <a name="add-an-output-to-the-stream-analytics-job"></a>Lägga till utdata till Stream Analytics-jobbet
+### <a name="add-an-output-toohello-stream-analytics-job"></a>Lägga till utdata toohello Stream Analytics-jobbet
 
 1. Under **jobbet topologi**, klickar du på **utdata**.
-1. I den **utdata** rutan klickar du på **Lägg till**, och ange följande information:
+1. I hello **utdata** rutan klickar du på **Lägg till**, och ange sedan hello följande information:
 
-   **Kolumnalias**: unika alias för utdata.
+   **Kolumnalias**: unikt hello-alias för hello utdata.
 
    **Sink**: Välj **Blob Storage**.
 
-   **Lagringskontot**: storage-konto för blobblagring. Du kan skapa ett lagringskonto eller använda en befintlig.
+   **Lagringskontot**: hello storage-konto för blobblagring. Du kan skapa ett lagringskonto eller använda en befintlig.
 
-   **Behållaren**: behållaren där blob sparas. Du kan skapa en behållare eller använda en befintlig.
+   **Behållaren**: hello behållaren där hello blob sparas. Du kan skapa en behållare eller använda en befintlig.
 
    **Händelsen serialiseringsformat**: Välj **CSV**.
 
-   ![Lägga till utdata till Stream Analytics-jobbet i Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
+   ![Lägga till utdata toohello Stream Analytics-jobbet i Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
 1. Klicka på **Skapa**.
 
-### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Lägga till en funktion i Stream Analytics-jobbet för att anropa webbtjänsten som du distribuerat
+### <a name="add-a-function-toohello-stream-analytics-job-toocall-hello-web-service-you-deployed"></a>Lägg till en funktion toohello Stream Analytics-jobbet toocall hello webbtjänst du distribuerat
 
 1. Under **jobbet topologi**, klickar du på **funktioner** > **Lägg till**.
-1. Ange följande information:
+1. Ange hello följande information:
 
    **Funktionen Alias**: Ange `machinelearning`.
 
@@ -141,18 +141,18 @@ Du lär dig hur du använder Azure Machine Learning att väder prognos (risken f
 
    **Importera alternativet**: Välj **importera från en annan prenumeration**.
 
-   **URL: en**: Ange URL för WEBBTJÄNSTEN som du antecknade ned från Excel-arbetsboken.
+   **URL: en**: Ange hello WEBBTJÄNST-URL som du antecknade ned från hello Excel-arbetsbok.
 
-   **Nyckeln**: Ange ÅTKOMSTNYCKEL som du antecknade ned från Excel-arbetsboken.
+   **Nyckeln**: Ange hello ÅTKOMSTNYCKEL som du antecknade ned från hello Excel-arbetsbok.
 
-   ![Lägga till en funktion i Stream Analytics-jobbet i Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
+   ![Lägg till en funktion toohello Stream Analytics-jobbet i Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
 1. Klicka på **Skapa**.
 
-### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurera frågan i Stream Analytics-jobbet
+### <a name="configure-hello-query-of-hello-stream-analytics-job"></a>Konfigurera hello frågan för hello Stream Analytics-jobbet
 
 1. Under **jobbet topologi**, klickar du på **frågan**.
-1. Ersätt den befintliga koden med följande kod:
+1. Ersätt hello befintlig kod med hello följande kod:
 
    ```sql
    WITH machinelearning AS (
@@ -163,33 +163,33 @@ Du lär dig hur du använder Azure Machine Learning att väder prognos (risken f
    From machinelearning
    ```
 
-   Ersätt `[YourInputAlias]` med indata alias för jobbet.
+   Ersätt `[YourInputAlias]` med hello Ange alias för hello jobb.
 
-   Ersätt `[YourOutputAlias]` med utdataalias för jobbet.
+   Ersätt `[YourOutputAlias]` med hello kolumnalias för hello jobb.
 
 1. Klicka på **Spara**.
 
-### <a name="run-the-stream-analytics-job"></a>Kör Stream Analytics-jobbet
+### <a name="run-hello-stream-analytics-job"></a>Kör hello Stream Analytics-jobbet
 
-Klicka på i Stream Analytics-jobbet **starta** > **nu** > **starta**. När jobbet har startar jobbets status har ändrats från **stoppad** till **kör**.
+Klicka på hello Stream Analytics-jobbet **starta** > **nu** > **starta**. När hello jobbet har startar hello jobbets status har ändrats från **stoppad** för**kör**.
 
-![Kör Stream Analytics-jobbet](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
+![Kör hello Stream Analytics-jobbet](media/iot-hub-weather-forecast-machine-learning/11_run-stream-analytics-job-azure.png)
 
-## <a name="use-microsoft-azure-storage-explorer-to-view-the-weather-forecast"></a>Använda Microsoft Azure Lagringsutforskaren för att visa väder prognos
+## <a name="use-microsoft-azure-storage-explorer-tooview-hello-weather-forecast"></a>Använd Microsoft Azure Lagringsutforskaren tooview hello väderprognos
 
-Köra klientprogram att börja samla in och skicka temperatur- och fuktighetskonsekvens data till din IoT-hubb. För varje meddelande som tar emot din IoT-hubb anropar Stream Analytics-jobbet väder prognos webbtjänsten för att skapa risken för regn. Resultatet sparas sedan till Azure blob storage. Azure Lagringsutforskaren är ett verktyg som du kan använda för att visa resultatet.
+Kör hello klienten programmet toostart samla in och skicka temperatur- och fuktighetskonsekvens data tooyour IoT-hubb. För varje meddelande som tar emot din IoT-hubb anropar hello Stream Analytics-jobbet hello väder prognos web service tooproduce hello risken för regn. hello-resultatet sparas sedan tooyour Azure blob storage. Azure Lagringsutforskaren är ett verktyg som du kan använda tooview hello resultat.
 
 1. [Hämta och installera Microsoft Azure Lagringsutforskaren](http://storageexplorer.com/).
 1. Öppna Utforskaren i Azure Storage.
-1. Logga in på ditt Azure-konto.
+1. Logga in tooyour Azure-konto.
 1. Välj din prenumeration.
 1. Klicka på din prenumeration > **Lagringskonton** > ditt lagringskonto > **Blob-behållare** > din behållare.
-1. Öppna en CSV-fil om du vill se resultatet. Den sista kolumnen registrerar risken för regn.
+1. Öppna ett CSV-filen toosee hello resultat. hello sista kolumnen poster hello risken för regn.
 
    ![Få väder prognos resultat med Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
 
 ## <a name="summary"></a>Sammanfattning
 
-Du har använt Azure Machine Learning risken för regn baserat på de temperatur- och fuktighetskonsekvens som tar emot din IoT-hubb gav inga.
+Du har använt Azure Machine Learning tooproduce hello risken för regn baserat på hello temperatur- och fuktighetskonsekvens data som tar emot din IoT-hubb.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

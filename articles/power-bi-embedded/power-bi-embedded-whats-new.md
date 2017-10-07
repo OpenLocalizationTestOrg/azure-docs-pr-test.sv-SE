@@ -1,6 +1,6 @@
 ---
-title: Nyheter i Power BI Embedded
-description: "Få den senaste informationen om vad är nytt i Power BI Embedded"
+title: "aaaWhat är nytt i Power BI Embedded"
+description: "Få hello senaste information om vad är nytt i Power BI Embedded"
 services: power-bi-embedded
 documentationcenter: 
 author: guyinacube
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 03/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 07c53a5d6b1881a4c207a2aefed9fcede0fa069e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 859fa57eda4311b17a0098d0e5cb7fa4f969b534
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="whats-new-in-power-bi-embedded"></a>Nyheter i Power BI Embedded
 
-Uppdateringar för **Power BI Embedded** släpps regelbundet. Dock innehåller inte alla viktig nya funktioner för användarinriktad; vissa versioner fokuserar på funktioner för backend-tjänst. Vi ska markera nya användarinriktad funktioner här. Tänk på att Kom tillbaka ofta.
+Uppdateringar för**Power BI Embedded** släpps regelbundet. Dock innehåller inte alla viktig nya funktioner för användarinriktad; vissa versioner fokuserar på funktioner för backend-tjänst. Vi ska markera nya användarinriktad funktioner här. Vara säker på att toocheck tillbaka ofta.
 
 ## <a name="march-2017"></a>Mars 2017
 
@@ -44,7 +44,7 @@ Uppdateringar för **Power BI Embedded** släpps regelbundet. Dock innehåller i
 **Management-API: er**
 
 * Klona rapporten och datamängd
-* Binda rapporten till en annan datauppsättning
+* Binda rapporten tooa olika dataset
 
 **Exempel**
 
@@ -62,18 +62,18 @@ Uppdateringar för **Power BI Embedded** släpps regelbundet. Dock innehåller i
 Ingår i den här versionen:
 
 * Alla nya JavaScript SDK som stöder [avancerade filtrering och sidan navigering](power-bi-embedded-interact-with-reports.md).
-* Power BI Embedded stöds nu i Kanada Central datacentret. Kontrollera [datacenter status](https://azure.microsoft.com/status/).
+* Power BI Embedded stöds nu i hello Kanada Central datacenter. Kontrollera [datacenter status](https://azure.microsoft.com/status/).
 
 ## <a name="july-11th-2016"></a>11 juli 2016
 Ingår i den här versionen:
 
-* **Goda nyheter!** Power BI Embedded tjänsten är inte längre i preview - är nu GA (allmänt tillgänglig).  
-* Alla REST API: er har flyttats från **/beta** till **/v1.0**.
+* **Goda nyheter!** hello Power BI Embedded tjänsten är inte längre i preview - är nu GA (allmänt tillgänglig).  
+* Alla REST API: er har flyttats från **/beta** för**/v1.0**.
 * .NET- och JavaScript SDK har uppdaterats för **v1.0**.
-* Power BI-API-anrop kan nu autentiseras direkt med hjälp av API-nycklar. Apptoken krävs endast för att bädda in. Etablera och dev token har tagits bort v1.0 API: er som en del av detta, men de kommer att fortsätta att arbeta i betaversionen till 2016/12/30. Läs mer i [autentisera och auktorisera med Power BI Embedded](power-bi-embedded-app-token-flow.md).
-* Raden säkerhet på radnivå (RLS) stöd för apptoken och inbäddade rapporter. Läs mer i [rad säkerhet på radnivå med Power BI Embedded](power-bi-embedded-rls.md).
+* Power BI-API-anrop kan nu autentiseras direkt med hjälp av API-nycklar. Apptoken krävs endast för att bädda in. Etablera och dev token har tagits bort v1.0 API: er som en del av detta, men de kommer att fortsätta toowork i hello betaversion tills 2016/12/30. Det finns fler toolearn [autentisera och auktorisera med Power BI Embedded](power-bi-embedded-app-token-flow.md).
+* Raden säkerhet på radnivå (RLS) stöd för apptoken och inbäddade rapporter. Det finns fler toolearn [rad säkerhet på radnivå med Power BI Embedded](power-bi-embedded-rls.md).
 * Uppdatera exempelprogram för alla **v1.0** API-anrop.
 * Power BI Embedded stöd för Azure SDK, PowerShell och CLI.
-* Användare kan exportera visualiseringen data till en **.csv**.
-* Power BI Embedded stöds nu i alla de samma/språk som Microsoft Azure. Läs mer i [Azure - språk](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx).
+* Användarna kan exportera visualiseringen data tooa **.csv**.
+* Power BI Embedded stöds nu i alla hello samma språk som Microsoft Azure. Det finns fler toolearn [Azure - språk](http://social.technet.microsoft.com/wiki/contents/articles/4234.windows-azure-extent-of-localization.aspx).
 

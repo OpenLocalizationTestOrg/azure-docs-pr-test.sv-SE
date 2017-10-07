@@ -1,5 +1,5 @@
 ---
-title: "Självstudiekurs för Azure Container Service - övervakaren Kubernetes | Microsoft Docs"
+title: "Självstudier för aaaAzure Container Service - övervakaren Kubernetes | Microsoft Docs"
 description: "Självstudiekurs för Azure Container Service - övervakaren Kubernetes med Microsoft Operations Management Suite (OMS)"
 services: container-service
 documentationcenter: 
@@ -17,40 +17,40 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f4d09973ada8e3cd0ff2b00d20aca979e834cd7f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 54fa789453768529deaf25d7575e5b21d0e41882
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-a-kubernetes-cluster-with-operations-management-suite"></a>Övervaka ett Kubernetes kluster med Operations Management Suite
 
 Övervaka dina Kubernetes klustret och behållare är viktigt, särskilt när du hanterar ett produktionskluster i skala och med flera appar. 
 
-Du kan dra nytta av flera Kubernetes övervakningslösningar, antingen från Microsoft eller andra leverantörer. I kursen får du övervaka Kubernetes klustret med hjälp av behållare lösningen i [Operations Management Suite](../../operations-management-suite/operations-management-suite-overview.md), Microsofts molnbaserade IT hanteringslösning. (OMS behållare lösningen är i förhandsvisning.)
+Du kan dra nytta av flera Kubernetes övervakningslösningar, antingen från Microsoft eller andra leverantörer. I kursen får du övervaka Kubernetes klustret med hjälp av hello behållare lösning i [Operations Management Suite](../../operations-management-suite/operations-management-suite-overview.md), Microsofts molnbaserade IT hanteringslösning. (hello OMS behållare lösningen är i förhandsvisning.)
 
-Den här självstudien tillhör sju sju, omfattar följande aktiviteter:
+Den här kursen, tillhör sju sju, ingår hello följande uppgifter:
 
 > [!div class="checklist"]
 > * Hämta OMS-arbetsytan inställningar
-> * Ställ in OMS-agenterna på noderna Kubernetes
-> * Åtkomst till övervakningsinformation i OMS-portalen eller Azure-portalen
+> * Ställ in OMS-agenter på hello Kubernetes noder
+> * Åtkomst till övervakningsinformation i hello OMS-portalen eller Azure-portalen
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-I föregående självstudiekurser ett program som har paketerats i behållaren bilder, dessa bilder som har överförts till registret för Azure-behållaren och ett Kubernetes kluster skapas. Om du inte har gjort dessa steg och vill följa med, gå tillbaka till [kursen 1 – skapa behållaren bilder](./container-service-tutorial-kubernetes-prepare-app.md). 
+I tidigare självstudier, ett program som har paketerats till behållaren bilder, dessa avbildningar överfört tooAzure behållare registret och ett Kubernetes kluster skapas. Om du inte har gjort dessa steg och vill toofollow längs, returnerar för[kursen 1 – skapa behållaren bilder](./container-service-tutorial-kubernetes-prepare-app.md). 
 
 Kursen krävs åtminstone ett Kubernetes kluster med Linux-agenten noder och ett konto med Operations Management Suite (OMS). Om det behövs kan du registrera dig för en [kostnadsfri utvärderingsversion OMS](https://www.microsoft.com/en-us/cloud-platform/operations-management-suite-trial).
 
 ## <a name="get-workspace-settings"></a>Hämta arbetsytan inställningar
 
-När du har åtkomst till den [OMS-portalen](https://mms.microsoft.com), gå till **inställningar** > **anslutna källor** > **Linux-servrar**. Där hittar du den *arbetsyte-ID* och en primär eller sekundär *Arbetsytenyckel*. Anteckna dessa värden som du måste ställa in OMS-agenterna på klustret.
+När du har åtkomst till hello [OMS-portalen](https://mms.microsoft.com), gå för**inställningar** > **anslutna källor** > **Linux-servrar**. Där du kan hitta hello *arbetsyte-ID* och en primär eller sekundär *Arbetsytenyckel*. Anteckna dessa värden som du behöver tooset upp OMS-agenterna på hello klustret.
 
 ## <a name="set-up-oms-agents"></a>Ställ in OMS-Agent
 
-Här är en YAML-fil för att ställa in OMS-agenterna på noderna i Linux. Den skapar en Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), som körs en enda identiska baljor på varje nod i klustret. Resursen DaemonSet är idealiskt för distribution av en övervakningsagent. 
+Här är en YAML filen tooset in OMS-agenterna på noderna hello Linux. Den skapar en Kubernetes [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/), som körs en enda identiska baljor på varje nod i klustret. Hej DaemonSet resursen är idealiskt för distribution av en övervakningsagent. 
 
-Spara följande text i en fil med namnet `oms-daemonset.yaml`, och ersätter platshållarvärdena för *myWorkspaceID* och *myWorkspaceKey* med din OMS arbetsyte-ID och nyckel. (För i produktion, kan du koda värdena som hemligheter.)
+Spara hello följande tooa textfil med namnet `oms-daemonset.yaml`, och Ersätt hello platshållarvärdena för *myWorkspaceID* och *myWorkspaceKey* med din OMS arbetsyte-ID och nyckel. (För i produktion, kan du koda värdena som hemligheter.)
 
 ```YAML
 apiVersion: extensions/v1beta1
@@ -105,40 +105,40 @@ spec:
        path: /var/log
 ```
 
-Skapa DaemonSet med följande kommando:
+Skapa hello DaemonSet med hello följande kommando:
 
 ```azurecli-interactive
 kubectl create -f oms-daemonset.yaml
 ```
 
-För att se att DaemonSet har skapats, kör du:
+toosee som hello DaemonSet skapas, kör:
 
 ```azurecli-interactive
 kubectl get daemonset
 ```
 
-De utdata som genereras liknar följande:
+Utdata är liknande toohello följande:
 
 ```azurecli-interactive
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR   AGE
 omsagent   3         3         3         0            3           <none>          5m
 ```
 
-När agenterna körs tar flera minuter för OMS att mata in och bearbeta data.
+När hello agenter körs tar flera minuter för OMS tooingest och processen hello-data.
 
 ## <a name="access-monitoring-data"></a>Åtkomst till övervakningsdata
 
-Visa och analysera OMS-behållaren övervakningsdata med den [behållare lösning](../../log-analytics/log-analytics-containers.md) i OMS-portalen eller Azure-portalen. 
+Visa och analysera hello OMS behållaren övervakningsdata med hello [behållare lösning](../../log-analytics/log-analytics-containers.md) i hello OMS-portalen eller hello Azure-portalen. 
 
-Att installera lösningen behållaren med den [OMS-portalen](https://mms.microsoft.com), gå till **lösningar galleriet**. Lägg sedan till **behållare lösning**. Du kan också lägga till behållare lösningar från den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
+tooinstall hello behållaren lösning med hjälp av hello [OMS-portalen](https://mms.microsoft.com), gå för**lösningar galleriet**. Lägg sedan till **behållare lösning**. Du kan också lägga till hello behållare lösningen från hello [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.containersoms?tab=Overview).
 
-I OMS-portalen, söka efter en **behållare** panelen Sammanfattning på OMS-instrumentpanelen. Klicka på panelen för information, inklusive: behållaren händelser, fel, status, bild inventering och processor- och minnesanvändning. Mer detaljerad information finns på en rad på panelen eller utföra en [loggen Sök](../../log-analytics/log-analytics-log-searches.md).
+I hello OMS-portalen, söka efter en **behållare** panelen Sammanfattning på hello OMS-instrumentpanelen. Klicka på panelen hello för information, inklusive: behållaren händelser, fel, status, bild inventering och processor- och minnesanvändning. Mer detaljerad information finns på en rad på panelen eller utföra en [loggen Sök](../../log-analytics/log-analytics-log-searches.md).
 
 ![Instrumentpanel för behållare i OMS-portalen](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
-På samma sätt i Azure-portalen går du till **logganalys** och välj namnet på din arbetsyta. Se den **behållare** panelen Sammanfattning, klickar du på **lösningar** > **behållare**. Klicka på panelen om du vill se information.
+På samma sätt i hello Azure-portalen, går för**logganalys** och välj namnet på din arbetsyta. toosee hello **behållare** panelen Sammanfattning, klickar du på **lösningar** > **behållare**. toosee information Klicka hello-panelen.
 
-Finns det [Azure logganalys dokumentationen](../../log-analytics/index.md) för detaljerad information om frågor och analys av övervakningsdata.
+Se hello [Azure logganalys dokumentationen](../../log-analytics/index.md) för detaljerad information om frågor och analys av övervakningsdata.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -146,11 +146,11 @@ I den här självstudiekursen övervakade Kubernetes klustret med OMS. Uppgifter
 
 > [!div class="checklist"]
 > * Hämta OMS-arbetsytan inställningar
-> * Ställ in OMS-agenterna på noderna Kubernetes
-> * Åtkomst till övervakningsinformation i OMS-portalen eller Azure-portalen
+> * Ställ in OMS-agenter på hello Kubernetes noder
+> * Åtkomst till övervakningsinformation i hello OMS-portalen eller Azure-portalen
 
 
-Den här länken för att se förskapad skriptexempel Container Service.
+Följ den här länken toosee inbyggd skriptexempel för Container Service.
 
 > [!div class="nextstepaction"]
 > [Azure Container Service-skriptexempel](cli-samples.md)

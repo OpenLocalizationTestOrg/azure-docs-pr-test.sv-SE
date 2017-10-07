@@ -1,6 +1,6 @@
 ---
-title: Publicera-WebApplicationWebSite (Windows PowerShell-skript) | Microsoft Docs
-description: "Lär dig hur du publicerar ett webbprojekt till en Azure-webbplats. Det här skriptet skapar resurserna som krävs i din Azure-prenumeration om de inte redan finns."
+title: aaaPublish WebApplicationWebSite (Windows PowerShell-skript) | Microsoft Docs
+description: "Lär dig hur toopublish en web project tooan Azure-webbplatsen. Det här skriptet skapar hello krävs resurser i din Azure-prenumeration om de inte redan finns."
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.openlocfilehash: 07d21b7ce6cd8aee1cff704d316e7a2ca8c00437
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d46904e30e3c2e040e57888fa31543e8e366527f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="publish-webapplicationwebsite-windows-powershell-script"></a>Publicera-WebApplicationWebSite (Windows PowerShell-skript)
 ## <a name="syntax"></a>Syntax
-Publicerar ett webbprojekt till en Azure-webbplats. Skriptet skapar resurserna som krävs i din Azure-prenumeration om de inte redan finns.
+Publicerar en web project tooan Azure-webbplatsen. hello skriptet skapar hello krävs resurser i din Azure-prenumeration om de inte redan finns.
 
     Publish-WebApplicationWebSite
     –Configuration <configuration>
@@ -34,7 +34,7 @@ Publicerar ett webbprojekt till en Azure-webbplats. Skriptet skapar resurserna s
 
 
 ## <a name="configuration"></a>Konfiguration
-Sökvägen till JSON-konfigurationsfil som innehåller information om distributionen.
+hello sökvägen toohello JSON konfigurationsfil som beskriver hello information om hello distributionen.
 
 | Parameter | Standardvärde |
 | --- | --- |
@@ -46,7 +46,7 @@ Sökvägen till JSON-konfigurationsfil som innehåller information om distributi
 | Acceptera jokertecken? |FALSKT |
 
 ## <a name="subscriptionname"></a>SubscriptionName
-Namnet på Azure-prenumeration som du vill skapa webbplatsen i.
+hello namnet på hello Azure-prenumeration som du vill ha toocreate hello webbplats.
 
 | Parameter | Standardvärde |
 | --- | --- |
@@ -58,7 +58,7 @@ Namnet på Azure-prenumeration som du vill skapa webbplatsen i.
 | Acceptera jokertecken? |FALSKT |
 
 ## <a name="webdeploypackage"></a>WebDeployPackage
-Sökvägen till distributionspaketets att publicera på webbplatsen. Du kan skapa det här paketet med hjälp av guiden Publicera webbplats i Visual Studio. Mer information finns i [Kom igång med Azure Cloud Services och ASP.NET](http://go.microsoft.com/fwlink/p/?LinkID=623089).
+hello sökvägen toohello web distribution paketet toopublish toohello webbplats. Du kan skapa det här paketet med hjälp av guiden för hello Publicera webbplats i Visual Studio. Mer information finns i [Kom igång med Azure Cloud Services och ASP.NET](http://go.microsoft.com/fwlink/p/?LinkID=623089).
 
 | Parameter | Standardvärde |
 | --- | --- |
@@ -70,7 +70,7 @@ Sökvägen till distributionspaketets att publicera på webbplatsen. Du kan skap
 | Acceptera jokertecken? |FALSKT |
 
 ## <a name="databaseserverpassword"></a>DatabaseServerPassword
-Användarnamn och lösenord för SQL-databas i Azure.
+hello användarnamn och lösenord för hello SQL-databas i Azure.
 
 | Parameter | Standardvärde |
 | --- | --- |
@@ -82,7 +82,7 @@ Användarnamn och lösenord för SQL-databas i Azure.
 | Acceptera jokertecken? |FALSKT |
 
 ## <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
-Om värdet är true, Skriv ut meddelanden från skriptet till utdataströmmen.
+Om värdet är true utdata ut meddelanden från hello skriptet toohello dataströmmen.
 
 | Parameter | Standardvärde |
 | --- | --- |
@@ -94,9 +94,9 @@ Om värdet är true, Skriv ut meddelanden från skriptet till utdataströmmen.
 | Acceptera jokertecken? |FALSKT |
 
 ## <a name="remarks"></a>Kommentarer
-En fullständig förklaring av hur du använder skriptet för att skapa utvecklings- och testmiljöer finns [med hjälp av Windows PowerShell-skript för publicera utvecklings-och testmiljöer](vs-azure-tools-publishing-using-powershell-scripts.md).
+En fullständig förklaring av hur toouse hello skriptet toocreate utvecklings- och testmiljöer, se [med hjälp av Windows PowerShell-skript tooPublish tooDev och testmiljöer](vs-azure-tools-publishing-using-powershell-scripts.md).
 
-JSON-konfigurationsfil anger information om vad som distribueras. Den innehåller information som du angav när du skapade projektet, till exempel namn och användarnamn för webbplatsen. Den omfattar också databasen för att etablera, om sådana finns. Följande kod visar ett exempel JSON-konfigurationsfil:
+hello JSON-konfigurationsfil anger hello information om vad är toobe distribueras. Den omfattar hello information som du angav när du skapade hello projekt, till exempel hello namn och användarnamn för hello webbplats. Den omfattar också hello databasen tooprovision eventuella. hello följande kod visar ett exempel JSON-konfigurationsfil:
 
     {
         "environmentSettings": {
@@ -120,7 +120,7 @@ JSON-konfigurationsfil anger information om vad som distribueras. Den innehålle
         }
     }
 
-Du kan redigera JSON-konfigurationsfil om du vill ändra vilka distribueras. Ett avsnitt på webbplatsen krävs, men databasen-avsnittet är valfritt.
+Du kan redigera hello JSON configuration file toochange vad distribueras. Ett avsnitt på webbplatsen krävs men hello databasen avsnittet är valfritt.
 
 ## <a name="next-steps"></a>Nästa steg
 Mer information finns i [publicera WebApplicationVM (Windows PowerShell-skript)](vs-azure-tools-publish-webapplicationvm.md)

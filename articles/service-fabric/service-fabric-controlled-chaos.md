@@ -1,6 +1,6 @@
 ---
-title: Framkalla Chaos i Service Fabric-kluster | Microsoft Docs
-description: "Använda fel Injection och klustret Analysis Service API: er för att hantera Chaos i klustret."
+title: aaaInduce Chaos i Service Fabric-kluster | Microsoft Docs
+description: "Med hjälp av fel Injection och klustret Analysis Service API: er toomanage Chaos i hello kluster."
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/09/2017
 ms.author: motanv
-ms.openlocfilehash: 3b3b93bc9ec5ecdcfc289e5b62e84de6aa4172ed
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7e87cae22645fc4ba52e258471d8f3a4ffdb1cce
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Framkalla kontrollerade Chaos i Service Fabric-kluster
-Stora distribuerade system som molninfrastrukturer är natur instabilt. Azure Service Fabric kan utvecklare skriva tillförlitliga distribuerade tjänster på ett instabilt infrastruktur. Om du vill skriva robust distribuerade tjänster på en infrastruktur med instabilt behöver utvecklare för att kunna testa stabiliteten i sina tjänster medan den underliggande instabilt infrastrukturen gå igenom komplicerade tillståndsövergångar på grund av fel.
+Stora distribuerade system som molninfrastrukturer är natur instabilt. Azure Service Fabric kan utvecklare toowrite tillförlitliga distribuerade tjänster på ett instabilt infrastruktur. toowrite robust distribuerade tjänster på ett instabilt infrastruktur, utvecklare behöver toobe kan tootest hello stabiliteten i sina tjänster medan hello underliggande instabilt infrastruktur gå igenom komplicerade tillståndsövergångar på grund av toofaults.
 
-Den [fel Injection och analys klustertjänsten](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-testability-overview) (även kallat fel Analysis Service) gör att utvecklare kan orsaka fel för att testa sina tjänster. Dessa mål simulerade fel, som [startar om en partition](https://docs.microsoft.com/en-us/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), kan hjälpa dig att utöva de vanligaste tillståndsövergångar. Men buggar riktade simulerade fel prioriterar per definition och därmed missa som visar upp endast i tillståndsövergångar svårt att förutse, långa och komplicerade ordning. Du kan använda Chaos för en oprioriterad testning.
+Hej [fel Injection och analys klustertjänsten](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-testability-overview) (även kallat hello fel Analysis Service) ger utvecklare möjligheten för hello tooinduce hos tootest sina tjänster. Dessa mål simulerade fel, som [startar om en partition](https://docs.microsoft.com/en-us/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), kan hjälpa dig att utöva hello vanligaste tillståndsövergångar. Men buggar riktade simulerade fel prioriterar per definition och därmed missa som visar upp endast i tillståndsövergångar svårt att förutse, långa och komplicerade ordning. Du kan använda Chaos för en oprioriterad testning.
 
-Chaos simulerar periodiska, överlagrad fel (korrekt och städat) i hela klustret under en längre tid. När du har konfigurerat Chaos med frekvensen och typ av fel, kan du starta Chaos via C# eller Powershell API ska börja generera fel i klustret och dina tjänster. Du kan konfigurera Chaos ska köras under en angiven tidsperiod (till exempel under en timme), efter vilken Chaos stoppar automatiskt eller så kan du anropa StopChaos API (C# eller Powershell) slutar när som helst.
+Chaos simulerar periodiska, överlagrad fel (korrekt och städat) under hela hello kluster under en längre tid. När du har konfigurerat Chaos med hello hastighet och hello slags fel, kan du starta Chaos via C# eller Powershell API toostart genererar fel i hello kluster och i dina tjänster. Du kan konfigurera Chaos toorun för en angiven tidsperiod (till exempel under en timme), efter vilken Chaos stoppar automatiskt, eller så kan du anropa StopChaos API (C# eller Powershell) toostop den när som helst.
 
 > [!NOTE]
-> I sin nuvarande form startar Chaos endast säker fel, vilket innebär att om externa fel en förlorar kvorum eller förlust av data sker aldrig.
+> I sin nuvarande form startar Chaos endast säker fel, vilket innebär att externa fel hello saknas en förlorar kvorum eller förlust av data sker aldrig.
 >
 
-När Chaos körs, ger olika händelser som Spara tillståndet för körs för tillfället. En ExecutingFaultsEvent innehåller till exempel alla fel som Chaos har valt att köra i den iterationen. En ValidationFailedEvent innehåller information om valideringsfelet (hälsa eller stabilitet problem) som hittades under valideringen av klustret. Du kan anropa GetChaosReport API (C# eller Powershell) för att få rapporten Chaos körs. Dessa händelser hämta kvar i en [tillförlitliga ordlista](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-reliable-collections), som har en trunkering princip enligt två konfigurationer: **MaxStoredChaosEventCount** (standardvärdet är 25000) och **StoredActionCleanupIntervalInSeconds** (standardvärdet är 3600). Varje *StoredActionCleanupIntervalInSeconds* Chaos kontroller och alla men den senaste *MaxStoredChaosEventCount* händelser, rensas från tillförlitliga ordlistan.
+När Chaos körs, ger olika händelser som samlar in hello kör för tillfället hello hello tillstånd. En ExecutingFaultsEvent innehåller till exempel alla hello fel Chaos beslutat tooexecute i den iterationen. En ValidationFailedEvent innehåller hello information om valideringsfelet (hälsa eller stabilitet problem) som hittades vid verifiering av hello hello-klustret. Du kan anropa hello GetChaosReport API (C# eller Powershell) tooget hello rapport över Chaos körs. Dessa händelser hämta kvar i en [tillförlitliga ordlista](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-reliable-services-reliable-collections), som har en trunkering princip enligt två konfigurationer: **MaxStoredChaosEventCount** (standardvärdet är 25000) och **StoredActionCleanupIntervalInSeconds** (standardvärdet är 3600). Varje *StoredActionCleanupIntervalInSeconds* Chaos kontroller och alla men hello senaste *MaxStoredChaosEventCount* händelser, rensas från hello tillförlitliga ordlistan.
 
 ## <a name="faults-induced-in-chaos"></a>Fel i Chaos
-Chaos genererar fel över hela Service Fabric-kluster och komprimerar fel som visas i månader eller år till några timmar. Kombinationen av överlagrad fel med hög feltolerans hastighet hittar specialfall som annars kan missas. Den här övningen kaotisk leder till en betydande förbättringar i koden Tjänstkvalitet.
+Chaos genererar fel över hello hela Service Fabric-kluster och komprimerar fel som visas i månader eller år till några timmar. hello kombination av överlagrad fel med hög feltolerans hello hittar specialfall som annars kan missas. Den här övningen kaotisk leads tooa betydande förbättringar i hello kod tjänstkvalitet hello.
 
-Chaos startar fel i följande kategorier:
+Chaos startar fel från hello följande kategorier:
 
 * Starta om en nod
 * Starta om distribuerade kodpaketet
@@ -45,31 +45,31 @@ Chaos startar fel i följande kategorier:
 * Flytta en primär replik (konfigureras)
 * Flytta en sekundär replik (konfigureras)
 
-Chaos körs i flera iterationer. Varje iteration består av fel och klusterverifieringen för den angivna perioden. Du kan konfigurera den tid som krävs att hålla klustret och för verifiering ska lyckas. Om det finns ett fel i klusterverifieringen Chaos genererar och en ValidationFailedEvent med UTC-tidsstämpel och information om felet kvarstår. Anta till exempel att en instans av Chaos som är konfigurerat för körning i en timma med högst tre samtidiga fel. Chaos startar tre fel och verifierar hälsa för klustret. Det går igenom den tidigare skickar steg tills den är uttryckligen stoppad via StopChaosAsync API eller en timme. Om klustret blir ohälsosamt i varje iteration (dvs, den inte hålla inom MaxClusterStabilizationTimeout skickades i), Chaos genererar en ValidationFailedEvent. Den här händelsen tyder på att något är fel kan behöva ytterligare undersökning.
+Chaos körs i flera iterationer. Varje iteration består av fel och klusterverifieringen för hello angett period. Du kan konfigurera hello tidsåtgången för hello klustret toostabilize och validering toosucceed. Om det finns ett fel i klusterverifieringen Chaos genererar och en ValidationFailedEvent med hello UTC-tidsstämpel och hello information om felet kvarstår. Anta till exempel att en instans av Chaos som har angetts toorun för en timme med högst tre samtidiga fel. Chaos startar tre fel och validerar hello klustret hälsa. Det går igenom hello föregående steg tills den är uttryckligen stoppad via hello StopChaosAsync API eller en timme skickar. Om hello klustret blir ohälsosamt i varje iteration (dvs, den inte hålla inom hello skickades i MaxClusterStabilizationTimeout), Chaos genererar en ValidationFailedEvent. Den här händelsen tyder på att något är fel kan behöva ytterligare undersökning.
 
-Du kan använda GetChaosReport API (powershell eller C#) för att få vilka fel Chaos framkallas. API: et hämtar Chaos rapporten utifrån skickades i fortsättningstoken eller skickades i-tidsintervallet nästa segment. Du kan antingen ange ContinuationToken för att få rapporten Chaos nästa segment eller du kan ange tidsintervall via StartTimeUtc och EndTimeUtc, men du kan inte ange både ContinuationToken och tidsintervallet i samma anropet. När det finns fler än 100 Chaos händelser, returneras Chaos rapporten segment där ett segment innehåller fler än 100 Chaos händelser.
+Du kan använda GetChaosReport API (powershell eller C#) tooget som hos Chaos framkallas. hello API hämtar hello nästa segment av hello Chaos rapporter utifrån hello skickades i fortsättningstoken eller hello skickades i-tidsintervall. Du kan antingen ange hello ContinuationToken tooget hello nästa segment av hello Chaos rapport eller du kan ange hello-tidsintervall via StartTimeUtc och EndTimeUtc, men du kan inte ange både hello ContinuationToken och hello tidsintervall i hello samma anrop. När det finns fler än 100 Chaos händelser, returneras hello Chaos rapporten segment där ett segment innehåller fler än 100 Chaos händelser.
 
 ## <a name="important-configuration-options"></a>Viktiga konfigurationsalternativ
-* **TimeToRun**: Total tid som Chaos kör innan den är klar med framgång. Du kan stoppa Chaos innan den har körts för perioden TimeToRun via StopChaos-API.
+* **TimeToRun**: Total tid som Chaos kör innan den är klar med framgång. Du kan stoppa Chaos innan den har körts under hello TimeToRun via hello StopChaos API.
 
-* **MaxClusterStabilizationTimeout**: maximal mängd väntetiden för att klustret ska bli felfri innan du skapar en ValidationFailedEvent. Den här vänta är att minska belastningen på klustret när den återställs. De kontroller som utförs är:
-  * Om klustret hälsa är OK
-  * Om tjänstens hälsa är OK
-  * Om mål replikuppsättningen storleken uppnås för service-partition
+* **MaxClusterStabilizationTimeout**: hello maximala mängden tid toowait för hello klustret toobecome felfri innan du skapar en ValidationFailedEvent. Den här vänta är tooreduce hello belastningen på hello klustret medan den återställs. hello kontrollerna utförs är:
+  * Om hello klustret hälsa är OK
+  * Om hello tjänstens hälsa är OK
+  * Om hello mål replikuppsättningen storleken uppnås för hello service partition
   * Att det inte finns några InBuild-repliker
-* **MaxConcurrentFaults**: det maximala antalet samtidiga fel som framkallas i varje iteration. Högre nummer, desto mer aggressivt kaos är redundansväxlingarna och tillstånd övergången kombinationer som klustret passerar är också mer komplexa. 
+* **MaxConcurrentFaults**: hello maximalt antal samtidiga fel som framkallas i varje iteration. hello högre hello nummer, hello mer aggressivt Chaos är och hello redundans och hello tillstånd övergången kombinationer som hello klustret passerar är också mer komplexa. 
 
 > [!NOTE]
-> Oavsett hur högt värde *MaxConcurrentFaults* har Chaos garanterar - om externa fel - det finns ingen förlorar kvorum eller förlust av data.
+> Oavsett hur högt värde *MaxConcurrentFaults* har Chaos garanterar - hello saknas externa fel - det finns ingen förlorar kvorum eller förlust av data.
 >
 
-* **EnableMoveReplicaFaults**: aktiverar eller inaktiverar de fel som orsakar att flytta primära eller sekundära replikerna. Dessa fel är inaktiverade som standard.
-* **WaitTimeBetweenIterations**: tidsperiod som ska förflyta mellan iterationer. Det vill säga pausar hur lång tid Chaos efter att ha utförs en runda av fel och har slutförts med motsvarande verifieringen av hälsotillståndet för klustret. Ju högre värdet Ju lägre är den genomsnittliga fel injection hastigheten.
-* **WaitTimeBetweenFaults**: tidsperiod som ska förflyta mellan två på varandra följande fel i en enda iteration. Ju högre värdet är, desto lägre samtidighet på (eller överlapp mellan) hos.
-* **ClusterHealthPolicy**: klustret hälsoprincip används för att kontrollera hälsotillståndet för klustret between Chaos iterationer. Om klustret hälsa är felaktigt eller om ett oväntat undantag inträffar under körning av fel Chaos ska vänta i 30 minuter innan nästa-hälsotillståndskontroll - att ge lite tid att recuperate klustret.
-* **Kontexten**: en samling (sträng, sträng) anger nyckel-värdepar. Kartan kan användas för att registrera information om Chaos kör. Det får inte finnas fler än 100 par och varje sträng (nyckel eller ett värde) får innehålla högst 4095 tecken. Den här kartan anges av starter kaotisk kör för att lagra kontexten om specifika kör.
+* **EnableMoveReplicaFaults**: aktiverar eller inaktiverar hello-fel som orsakar hello primära eller sekundära repliker toomove. Dessa fel är inaktiverade som standard.
+* **WaitTimeBetweenIterations**: hello mängden tid toowait mellan iterationer. Det vill säga hello tid Chaos pausar efter med utförs en runda av fel och att ha slutfört hello motsvarande validering hello hälsotillståndet hos hello klustret. Hej högre hello värde hello lägre är hello genomsnittlig fel injection hastighet.
+* **WaitTimeBetweenFaults**: hello mängden tid toowait mellan två på varandra följande fel i en enda iteration. Hej högre hello-värde, hello lägre hello samtidighet på (eller hello överlapp mellan) fel.
+* **ClusterHealthPolicy**: hälsoprincip för klustret är används toovalidate hello hälsotillstånd hello klustret between Chaos iterationer. Om hello klustret hälsa är felaktigt eller om ett oväntat undantag inträffar under körning av fel Chaos ska vänta i 30 minuter innan hello nästa hälsokontroll - tooprovide hello kluster med vissa toorecuperate tid.
+* **Kontexten**: en samling (sträng, sträng) anger nyckel-värdepar. hello kartan kan vara används toorecord information om hello Chaos kör. Det får inte finnas fler än 100 par och varje sträng (nyckel eller ett värde) får innehålla högst 4095 tecken. Den här kartan anges av hello starter hello Chaos kör toooptionally store hello kontexten om hello specifika kör.
 
-## <a name="how-to-run-chaos"></a>Hur du kör Chaos
+## <a name="how-toorun-chaos"></a>Hur toorun Chaos
 
 ```csharp
 using System;
@@ -117,7 +117,7 @@ class Program
             }
             catch (FabricChaosAlreadyRunningException)
             {
-                Console.WriteLine("An instance of Chaos is already running in the cluster.");
+                Console.WriteLine("An instance of Chaos is already running in hello cluster.");
             }
 
             var filter = new ChaosReportFilter(startTimeUtc, DateTime.MaxValue);
@@ -137,7 +137,7 @@ class Program
                 }
 
                 // When Chaos stops, a StoppedEvent is created.
-                // If a StoppedEvent is found, exit the loop.
+                // If a StoppedEvent is found, exit hello loop.
                 var lastEvent = report.History.LastOrDefault();
 
                 if (lastEvent is StoppedEvent)

@@ -1,6 +1,6 @@
 ---
-title: "Ändra faktureringen för Azure RemoteApp | Microsoft Docs"
-description: "Lär dig mer om att stoppa faktureras för Azure RemoteApp."
+title: "aaaChange hello fakturering för Azure RemoteApp | Microsoft Docs"
+description: "Lär dig hur toostop att debiteras för Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 18c369c4e8ccf828c35ec4a964e61f13613f899b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a0d449a6a9759c4b55156c1694fcd161a1face76
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-stop-being-billed-for-azure-remoteapp"></a>Hur du stoppar faktureras för Azure RemoteApp
+# <a name="how-toostop-being-billed-for-azure-remoteapp"></a>Hur faktureras toostop för Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
-Så länge som du har Azure RemoteApp-samlingar, även om inga användare har tilldelats, debiteras du för RemoteApp. Ta bort alla samlingar om du vill avbryta den här fakturering. 
+Så länge som du har Azure RemoteApp-samlingar, även om inga användare har tilldelats, debiteras du för RemoteApp. toostop denna fakturering, ta bort alla samlingar. 
 
-Ta bort samlingen:
+toodelete samlingen:
 
-1. Öppna sidan RemoteApp i den klassiska Azure-portalen.
-2. Klicka på samlingen som du vill ta bort och klicka sedan på **ta bort** längst ned på sidan.
+1. Öppna hello RemoteApp-sidan i hello klassiska Azure-portalen.
+2. Klicka på hello samling du toodelete, och klickar sedan på **ta bort** på hello hello sidans nederkant.
 3. Upprepa detta för varje samling i din prenumeration. 
 
-Det kan ta några minuter att ta bort varje samling.
+Det kan ta några minuter toodelete varje samling.
 

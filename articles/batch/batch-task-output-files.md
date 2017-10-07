@@ -1,6 +1,6 @@
 ---
-title: "Spara jobb- och utdata till Azure Storage med API för Azure Batch-tjänsten | Microsoft Docs"
-description: "Lär dig hur du använder API för Batch-tjänsten för att bevara Batch aktivitets- och utdata till Azure Storage."
+title: "aaaPersist projekt- och utdata tooAzure lagring med hello Azure Batch-tjänsten API | Microsoft Docs"
+description: "Lär dig hur toouse API för Batch-tjänsten toopersist batchaktiviteten och jobbet utdata tooAzure lagring."
 services: batch
 author: tamram
 manager: timlt
@@ -12,49 +12,49 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
-ms.openlocfilehash: 2530b7c20347b9fb58aee4dfe693847cf3911741
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 71b3f7c0dda2d2a9d8eb3eef83229873c70ca22c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Spara aktivitetsdata till Azure Storage med API för Batch-tjänsten
+# <a name="persist-task-data-tooazure-storage-with-hello-batch-service-api"></a>Spara aktiviteten data tooAzure lagring med hello API för Batch-tjänsten
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
 
-Från och med version 2017-05-01, stöder API för Batch-tjänsten bestående av utdata till Azure Storage för aktiviteter och jobb manager aktiviteter som körs på pooler med konfigurationen av virtuella datorn. När du lägger till en aktivitet kan du ange en behållare i Azure Storage som mål för aktivitetens utdata. Batch-tjänsten skriver sedan alla data på behållaren när uppgiften har slutförts.
+Från och med version 2017-05-01, stöder hello API för Batch-tjänsten bestående utgående data tooAzure lagring för aktiviteter och jobb manager aktiviteter som körs på pooler med hello konfiguration av virtuell dator. När du lägger till en aktivitet kan du ange en behållare i Azure Storage som hello mål för hello uppgiftens utdata. Hej Batch-tjänsten och sedan skriver en utgående data toothat behållare när hello åtgärden är klar.
 
-En fördel med API för Batch-tjänsten för att bevara uppgiftsutdata är att du inte behöver ändra programmet som aktiviteten körs. Du kan i stället kvarstår aktivitetens utdata från inom den kod som skapar uppgiften med några enkla ändringar i ditt klientprogram.   
+En fördel toousing hello Batch service API toopersist uppgiftsutdata är att du inte behöver toomodify hello program som hello aktivitet körs. Med några enkla ändringar tooyour-klientprogram, kan du i stället kvarstår hello uppgiftens utdata från inom hello-kod som skapar hello aktiviteten.   
 
-## <a name="when-do-i-use-the-batch-service-api-to-persist-task-output"></a>När använder API för Batch-tjänsten för att bevara uppgiftsutdata?
+## <a name="when-do-i-use-hello-batch-service-api-toopersist-task-output"></a>När använder hello API för Batch-tjänsten toopersist uppgiftens utdata?
 
-Azure Batch tillhandahåller mer än ett sätt att bevara uppgiftens utdata. Med API för Batch-tjänsten är en praktisk metod som passar bäst för dessa scenarier:
+Azure Batch tillhandahåller mer än ett sätt toopersist uppgiftens utdata. Med hjälp av hello API för Batch-tjänsten är en praktisk metod som är bäst lämpade toothese scenarier:
 
-- Vill du skriva kod för att bevara uppgiftens utdata från inom ditt klientprogram utan att ändra de program som uppgiften körs.
-- Vill du spara utdata från Batch-aktiviteter och jobb manager aktiviteter i pooler som har skapats med den virtuella datorkonfigurationen.
-- Vill du spara utdata till en Azure Storage-behållare med ett godtyckligt namn.
-- Du vill spara utdata till en Azure Storage-behållare med namnet enligt den [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
+- Du vill toowrite kod toopersist uppgiftens utdata från i ditt klientprogram utan att ändra hello-program som uppgiften körs.
+- Vill du toopersist utdata från Batch-aktiviteter och jobb manager aktiviteter i pooler som har skapats med hello konfiguration av virtuell dator.
+- Vill du toopersist utdata tooan Azure Storage-behållare med ett godtyckligt namn.
+- Du vill toopersist utdata tooan Azure Storage-behållare med namnet bl.a toohello [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
 
-Om ditt scenario skiljer sig från de som visas ovan, kan du behöva överväga en annan metod. Till exempel stöder API för Batch-tjänsten för närvarande inte strömmande utdata till Azure Storage när aktiviteten körs. Överväg att använda Batch filen konventioner-bibliotek för .NET för att strömma utdata. För andra språk behöver du implementera din egen lösning. Mer information om andra alternativ för bestående uppgiftsutdata finns [spara projekt- och utdata till Azure Storage](batch-task-output.md). 
+Om ditt scenario skiljer sig från de som visas ovan, kanske du måste tooconsider en annan metod. Till exempel stöder hello API för Batch-tjänsten för närvarande inte strömmande utdata tooAzure lagring medan hello aktiviteten körs. toostream utdata, Överväg att använda hello Batch filen konventioner bibliotek, tillgängliga för .NET. För andra språk behöver du tooimplement din egen lösning. Mer information om andra alternativ för bestående uppgiftsutdata finns [spara projekt- och utdata tooAzure lagring](batch-task-output.md). 
 
 ## <a name="create-a-container-in-azure-storage"></a>Skapa en behållare i Azure Storage
 
-För att bevara uppgiftens utdata till Azure Storage, behöver du skapa en behållare som fungerar som mål för utgående filer. Skapa behållaren innan du kör uppgiften, helst innan du skickar ditt jobb. Använd lämplig Azure Storage-klientbibliotek eller SDK för att skapa behållaren. Mer information om Azure Storage-API: er finns i [Azure Storage-dokumentationen](https://docs.microsoft.com/azure/storage/).
+toopersist aktivitet utdata tooAzure lagring måste du toocreate en behållare som fungerar som hello mål för utgående filer. Skapa hello behållare innan du kör uppgiften, helst innan du skickar ditt jobb. toocreate hello behållare, Använd hello lämplig Azure Storage-klientbibliotek eller SDK. Mer information om Azure Storage-API: er finns i hello [Azure Storage-dokumentationen](https://docs.microsoft.com/azure/storage/).
 
-Till exempel om du skapar ditt program i C#, använda den [Azure Storage-klientbibliotek för .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). I följande exempel visas hur du skapar en behållare:
+Till exempel om du skapar ditt program i C#, använda hello [Azure Storage-klientbibliotek för .NET](https://www.nuget.org/packages/WindowsAzure.Storage/). följande exempel visar hur hello toocreate en behållare:
 
 ```csharp
 CloudBlobContainer container = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
 await conainer.CreateIfNotExists();
 ```
 
-## <a name="get-a-shared-access-signature-for-the-container"></a>Hämta en signatur för delad åtkomst för behållaren
+## <a name="get-a-shared-access-signature-for-hello-container"></a>Hämta en signatur för delad åtkomst för hello behållare
 
-När du har skapat behållaren får du en signatur för delad åtkomst (SAS) med skrivbehörighet till behållaren. En SAS ger delegerad åtkomst till behållaren. SAS beviljar åtkomst med en angiven uppsättning behörigheter och under ett angivet tidsintervall. Batch-tjänsten måste en SAS med skrivbehörighet för att skriva uppgiftens utdata till behållaren. Mer information om SAS finns [använder signaturer för delad åtkomst \(SAS\) i Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+När du har skapat hello behållaren får du en signatur för delad åtkomst (SAS) med skrivbehörighet toohello behållare. En SAS ger delegerad åtkomst toohello behållare. hello SAS beviljar åtkomst med en angiven uppsättning behörigheter och under ett angivet tidsintervall. hello Batch-tjänsten måste en SAS med skriva behörigheter toowrite aktivitet utdata toohello behållare. Mer information om SAS finns [använder signaturer för delad åtkomst \(SAS\) i Azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-När du får en SAS med hjälp av Azure Storage-API: er returnerar API: N en SAS-token sträng. Den här token strängen innehåller alla parametrar för SAS, inklusive behörigheter och den period under vilken SAS är giltig. Om du vill använda SAS för att få åtkomst till en behållare i Azure Storage, måste du lägga till SAS-token strängen till resurs-URI. Resurs-URI, tillsammans med tillagda SAS-token ger autentiserad åtkomst till Azure Storage.
+När du får en SAS med hello Azure Storage-API: er returnerar hello API en SAS-token-sträng. Den här token strängen innehåller alla parametrar för hello SAS, inklusive hello behörigheter och hello intervall över vilka hello SAS är giltig. toouse hello SAS tooaccess en behållare i Azure Storage, behöver du tooappend hello SAS-token sträng toohello resurs-URI. hello resurs-URI, tillsammans med hello läggs SAS-token, ger autentiserad åtkomst tooAzure lagring.
 
-I följande exempel visar hur du hämtar en lässkyddad SAS-token sträng för behållaren och sedan lägger till SAS till behållaren för URI:
+hello följande exempel visar hur tooget en lässkyddad SAS token sträng för hello-behållaren och sedan lägger till hello SAS toohello behållare URI:
 
 ```csharp
 string containerSasToken = container.GetSharedAccessSignature(new SharedAccessBlobPolicy()
@@ -68,9 +68,9 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 ## <a name="specify-output-files-for-task-output"></a>Ange utdatafilerna för uppgiftsutdata
 
-Skapa en samling för att ange utdatafilerna för en aktivitet, [utdatafil](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) objekt, och tilldela den till den [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) egenskapen när du skapar uppgiften. 
+toospecify utdatafilerna för en aktivitet, skapa en samling [utdatafil](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) objekt och tilldela den toohello [CloudTask.OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) egenskapen när du skapar hello-aktivitet. 
 
-.NET följande exempel skapar en uppgift som skriver slumptal till en fil med namnet `output.txt`. I exemplet skapas en utdatafil för `output.txt` som ska skrivas till behållaren. Exemplet skapar också utdatafilerna för alla loggfiler som matchar mönstret för filen `std*.txt` (_t.ex._, `stdout.txt` och `stderr.txt`). Behållarens Webbadress kräver SAS som skapades tidigare för behållaren. Batch-tjänsten använder SAS för att autentisera åtkomst till behållaren: 
+hello följande kodexempel för .NET skapar en uppgift som skriver slumptal tooa fil med namnet `output.txt`. hello exempel skapas en utdatafil för `output.txt` toobe skrivs toohello behållare. hello exemplet skapar också utdatafilerna för alla loggfiler som matchar mönstret för hello filen `std*.txt` (_t.ex._, `stdout.txt` och `stderr.txt`). hello behållarens Webbadress kräver hello SAS som skapades tidigare för hello behållare. hello Batch-tjänsten använder hello SAS tooauthenticate åtkomst toohello behållare: 
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -98,99 +98,99 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 ### <a name="specify-a-file-pattern-for-matching"></a>Ange ett mönster för matchning för filen
 
-När du anger en utdatafil, kan du använda den [OutputFile.FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) att ange ett fil-mönster för matchning. Filmönstret kan matcha noll filer, en fil eller en uppsättning filer som skapas av uppgiften.
+När du anger en utdatafil, kan du använda hello [OutputFile.FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) egenskapen toospecify filen mönster för matchning. Hej filmönstret kan matcha noll filer, en fil eller en uppsättning filer som skapas av hello-aktivitet.
 
-Den **FilePattern** egenskapen stöder standard filesystem jokertecken som `*` (för icke-rekursiva matchar) och `**` (för rekursiv matchar). Till exempel kodexemplet ovan anger filen mönstret `std*.txt` icke-rekursivt: 
+Hej **FilePattern** egenskapen stöder standard filesystem jokertecken som `*` (för icke-rekursiva matchar) och `**` (för rekursiv matchar). Till exempel hello kodexemplet ovan anger hello filen mönster toomatch `std*.txt` icke-rekursivt: 
 
 `filePattern: @"..\std*.txt"`
 
-Ange ett fil-mönster med jokertecken för att ladda upp en fil. Till exempel kodexemplet ovan anger filen mönstret `output.txt`:
+tooupload en enskild fil, ange ett fil-mönster med jokertecken. Till exempel hello kodexemplet ovan anger hello filen mönster toomatch `output.txt`:
 
 `filePattern: @"output.txt"`
 
 ### <a name="specify-an-upload-condition"></a>Ange ett villkor för överföring
 
-Den [OutputFileUploadOptions.UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) egenskapen tillåter villkorlig överföra utdatafilerna. Ett vanligt scenario är att lägga upp en uppsättning filer om aktiviteten lyckas och en annan uppsättning filer om den misslyckas. Du kanske vill ladda upp utförlig loggfiler när uppgiften misslyckas och avslutas med slutkoden inte är noll. På samma sätt kan du vill överföra filer resultatet bara om aktiviteten lyckas, eftersom dessa filer kanske saknas eller är ofullständig om aktiviteten misslyckas.
+Hej [OutputFileUploadOptions.UploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileuploadoptions.uploadcondition#Microsoft_Azure_Batch_OutputFileUploadOptions_UploadCondition) egenskapen tillåter villkorlig överföra utdatafilerna. Ett vanligt scenario är tooupload en uppsättning filer om hello aktiviteten lyckas och en annan uppsättning filer om den misslyckas. Exempelvis kanske tooupload utförlig loggfiler när hello uppgiften misslyckas och avslutas med slutkoden inte är noll. På liknande sätt kan kanske du vill tooupload resultatet filer endast om hello aktiviteten lyckas, eftersom dessa filer kanske saknas eller är ofullständig om hello misslyckas.
 
-Kodexemplen ovan anger den **UploadCondition** egenskapen **TaskCompletion**. Den här inställningen anger att filen ska överföras när aktiviteterna har slutförts, oavsett värde för slutkoden. 
+hello kodexemplen ovan anger hello **UploadCondition** egenskapen för**TaskCompletion**. Den här inställningen anger att hello-filen är toobe överförs när hello aktiviteter har slutförts, oavsett hello värdet för hello slutkod. 
 
 `uploadCondition: OutputFileUploadCondition.TaskCompletion`
 
-Andra inställningar finns i [OutputFileUploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition) enum.
+Andra inställningar finns i hello [OutputFileUploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.outputfileuploadcondition) enum.
 
-### <a name="disambiguate-files-with-the-same-name"></a>Undvika tvetydigheten filer med samma namn
+### <a name="disambiguate-files-with-hello-same-name"></a>Undvika tvetydigheten filer med hello samma namn
 
-Aktiviteter i ett projekt kan ge filer som har samma namn. Till exempel `stdout.txt` och `stderr.txt` skapas för varje aktivitet som körs i ett jobb. Eftersom varje aktivitet körs i sin egen kontext, filerna inte är i konflikt i den noden filsystemet. När du överför filer från flera aktiviteter till en delad behållare, måste du dock att undvika tvetydigheten filer med samma namn.
+hello aktiviteter i ett projekt kan skapa filer som har hello samma namn. Till exempel `stdout.txt` och `stderr.txt` skapas för varje aktivitet som körs i ett jobb. Eftersom varje aktivitet körs i sin egen kontext, filerna inte är i konflikt i hello nodens filsystemet. Men när du överför filer från flera aktiviteter tooa delade behållaren måste toodisambiguate filer med hello samma namn.
 
-Den [OutputFileBlobContainerDestination.Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) egenskapen anger mål-blob eller virtuell katalog för utdatafilerna. Du kan använda den **sökväg** egenskapen att namnge blob eller virtuella katalogen så att filer med samma namn unikt namn i Azure Storage. Med hjälp av aktivitets-ID i sökvägen är ett bra sätt att kontrollera unika namn och lätt att identifiera filer.
+Hej [OutputFileBlobContainerDestination.Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) egenskapen anger hello mål blob eller virtuell katalog för utdatafilerna. Du kan använda hello **sökväg** egenskapen tooname hello blob eller virtuella katalogen så att utdata filer med samma namn är unikt namngivna i Azure Storage hello. Med hjälp av hello aktivitets-ID i hello sökväg är ett bra sätt tooensure unika namn och att identifiera lätt filer.
 
-Om den **FilePattern** egenskap är inställd på ett jokerteckenuttryck och alla filer som matchar mönstret som överförs till den virtuella katalogen som anges av den **sökväg** egenskapen. Om behållaren är till exempel `mycontainer`, aktiviteten med ID: T är `mytask`, och filmönstret är `..\std*.txt`, och sedan den absoluta URI: er till utdatafilerna i Azure Storage kommer att likna:
+Om hello **FilePattern** egenskapen tooa jokerteckenuttryck så kan alla filer som matchar mönstret hello överförda toohello virtuella katalog som anges av hello **sökväg** egenskapen. Om hello behållare är exempelvis `mycontainer`, hello uppgiften ID är `mytask`, och hello filen mönstret är `..\std*.txt`, hello absolut URI: er toohello utdatafilerna i Azure Storage kommer att likna:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stderr.txt
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stdout.txt
 ```
 
-Om den **FilePattern** egenskap är inställd på matcha ett enda namn, vilket innebär att den inte innehåller jokertecken och sedan värdet för den **sökväg** egenskapen anger fullständigt kvalificerade blobbnamnet. Om du tror namngivningskonflikter med en enda fil från flera aktiviteter, inkluderar du namnet på den virtuella katalogen som en del av filnamnet för att undvika tvetydigheten dessa filer. Till exempel den **sökväg** egenskapen aktivitets-ID, ett avgränsningstecken (vanligtvis ett snedstreck) och namnet på filen:
+Om hello **FilePattern** egenskapen är uppsättningen toomatch ett enda filnamn, vilket innebär att den inte innehåller jokertecken, sedan hello värdet för hello **sökväg** egenskapen anger hello blob fullständigt kvalificerat namn . Om du tror namngivningskonflikter med en enda fil från flera aktiviteter innehålla hello namnet på hello virtuella katalogen som en del av hello filen namnet toodisambiguate dessa filer. Till exempel ange hello **sökväg** egenskapen tooinclude hello aktivitets-ID, hello avgränsningstecken (vanligtvis ett snedstreck) och hello filnamn:
 
 `path: taskId + @"/output.txt"`
 
-Absolut URI: er för utdata för en uppsättning uppgifter ska likna följande:
+hello absolut URI: er toohello utdatafilerna för en uppsättning uppgifter ska likna följande:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-Mer information om virtuella kataloger i Azure Storage finns [visa blobbar i en behållare](../storage/blobs/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container).
+Mer information om virtuella kataloger i Azure Storage finns [visa hello blobbar i en behållare](../storage/blobs/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container).
 
 
 ## <a name="diagnose-file-upload-errors"></a>Diagnostisera överför filfel
 
-Om överföringen utdatafilerna till Azure Storage misslyckas aktiviteten och går sedan till den **slutförd** tillstånd och [TaskExecutionInformation.FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) -egenskapen anges. Granska de **FailureInformation** egenskapen fastställa vilka fel uppstod. Här är till exempel ett fel som uppstår på filöverföringen om behållaren inte kan hittas: 
+Om överföring av utgående filer tooAzure lagring misslyckas hello aktivitet och går sedan toohello **slutförd** tillstånd och hello [TaskExecutionInformation.FailureInformation](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskexecutioninformation.failureinformation#Microsoft_Azure_Batch_TaskExecutionInformation_FailureInformation) -egenskapen anges. Granska hello **FailureInformation** egenskapen toodetermine vilka fel uppstod. Här är till exempel ett fel som uppstår på filöverföringen om hello behållare inte hittas: 
 
 ```
 Category: UserError
 Code: FileUploadContainerNotFound
-Message: One of the specified Azure container(s) was not found while attempting to upload an output file
+Message: One of hello specified Azure container(s) was not found while attempting tooupload an output file
 ```
 
-På varje filöverföringen Batch skriver två loggfiler compute-nod `fileuploadout.txt` och `fileuploaderr.txt`. Du kan undersöka dessa loggfiler för mer information om ett specifikt fel. I fall där filöverföringen aldrig gjordes, till exempel eftersom själva uppgiften inte gick att köra sedan finns loggfilerna inte.
+På varje filöverföringen Batch skriver två logga filer toohello compute-nod, `fileuploadout.txt` och `fileuploaderr.txt`. Du kan undersöka dessa loggen filer toolearn mer om ett specifikt fel. I fall där hello hämtningsförsöket aldrig gjordes, till exempel eftersom själva hello aktiviteten inte gick att köra sedan finns loggfilerna inte.
 
 ## <a name="diagnose-file-upload-performance"></a>Diagnostisera filen överföringsprestanda
 
-Den `fileuploadout.txt` filen loggar överföringen pågår. Du kan undersöka den här filen om du vill lära dig mer om hur lång tid tar din filöverföringar. Tänk på att det finns många bidragande faktorer att överföra prestanda, inklusive storleken på noden, andra aktiviteter på noden vid tiden för överföringen, om Målbehållaren är i samma region som Batch-pool, hur många noder överförs till stora Ge kontot på samma gång och så vidare.
+Hej `fileuploadout.txt` filen loggar överföringen pågår. Du kan undersöka den här filen toolearn mer om hur länge din filöverföringar tar. Tänk på att det finns många bidragande faktorer tooupload prestanda, bland annat hello storlek hello nod, andra aktiviteter på hello nod när hello hello överför om hello Målbehållaren hello samma region som hello Batch-pool, hur många noder är Överför toohello storage-konto på hello samma tidpunkt, och så vidare.
 
-## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>Använd API för Batch-tjänsten med standarden konventioner för Batch-fil
+## <a name="use-hello-batch-service-api-with-hello-batch-file-conventions-standard"></a>Använda hello API för Batch-tjänsten med hello Batch filen konventioner standard
 
-När du bevara uppgiftens utdata med API för Batch-tjänsten kan namnge din målbehållare och blobbar du själv vill. Du kan också välja att ge dem enligt den [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). Filen konventioner standard avgör målbehållare och blob i Azure Storage för en given utdatafilen baserat på namnen på de projekt- och namn. Om du använder filen konventioner standard för namngivning av filer och utgående filer är tillgängliga för visning i den [Azure-portalen](https://portal.azure.com).
+När du bevara uppgiftens utdata med hello API för Batch-tjänsten kan namnge din målbehållare och blobbar du själv vill. Du kan också välja tooname dem enligt toohello [Batch filen konventioner standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). hello filen konventioner standard avgör hello namnen på hello målbehållare och blob i Azure Storage för en given utdatafilen baserat på hello namnen på hello projekt- och. Om du använder hello filen konventioner standard för namngivning av filer och utgående filer är tillgängliga för visning i hello [Azure-portalen](https://portal.azure.com).
 
-Om du utvecklar i C#, kan du använda de metoder som är inbyggda i den [filen konventioner för Batch-biblioteket för .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files). Det här biblioteket skapas korrekt namngivna behållare och blob sökvägar. Du kan till exempel anropa API för att få rätt namn för den behållaren, baserat på jobbnamnet:
+Om du utvecklar i C#, kan du använda hello metoder som är inbyggda i hello [filen konventioner för Batch-biblioteket för .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files). Det här biblioteket skapar hello korrekt angiven behållare och blob-sökvägar för dig. Du kan till exempel anropa hello API tooget hello rätt namn hello behållare, baserat på hello jobbnamn:
 
 ```csharp
 string containerName = job.OutputStorageContainerName();
 ```
 
-Du kan använda den [CloudJobExtensions.GetOutputStorageContainerUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) metod för att returnera en URL för delad åtkomst signatur (SAS) som används för att skriva till behållaren. Du kan sedan överföra den här SAS för den [OutputFileBlobContainerDestination](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination) konstruktor.
+Du kan använda hello [CloudJobExtensions.GetOutputStorageContainerUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.conventions.files.cloudjobextensions.getoutputstoragecontainerurl) metoden tooreturn en URL för delad åtkomst signatur (SAS) som är används toowrite toohello behållare. Du kan sedan överföra den här SAS-toohello [OutputFileBlobContainerDestination](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination) konstruktor.
 
-Om du utvecklar i ett annat språk än C#, behöver du implementera filen konventioner standard själv.
+Om du utvecklar i ett annat språk än C#, behöver du tooimplement hello filen konventioner standard själv.
 
 ## <a name="code-sample"></a>Kodexempel
 
-Den [PersistOutputs] [ github_persistoutputs] exempelprojektet är en av de [kodexempel för Azure Batch] [ github_samples] på GitHub. Visual Studio-lösningen visar hur du använder Batch-klientbibliotek för .NET för att bevara uppgiftens utdata till beständig lagring. Följ dessa steg om du vill köra exemplet:
+Hej [PersistOutputs] [ github_persistoutputs] exempelprojektet är en av hello [kodexempel för Azure Batch] [ github_samples] på GitHub. Den här Visual Studio-lösningen visar hur toouse hello Batch-klientbibliotek för .NET toopersist aktivitet utdata toodurable lagring. toorun hello exempel, följer du dessa steg:
 
-1. Öppna projektet i **Visual Studio 2015 eller senare**.
-2. Lägg till grupp och lagring **kontoautentiseringsuppgifter** till **AccountSettings.settings** i Microsoft.Azure.Batch.Samples.Common-projektet.
-3. **Skapa** (men inte kör) lösningen. Återställa NuGet-paket om du uppmanas till detta.
-4. Använda Azure-portalen för att överföra en [programpaket](batch-application-packages.md) för **PersistOutputsTask**. Inkludera den `PersistOutputsTask.exe` och dess beroende sammansättningar i ZIP-paketet, ange program-ID till ”PersistOutputsTask” och programpaketets version ”1.0”.
-5. **Starta** (kör) den **PersistOutputs** projekt.
-6. När du uppmanas att välja beständiga teknik användas för att köra exemplet genom att ange **2** att köra exemplet med API för Batch-tjänsten för att bevara uppgiftens utdata.
-7. Om du vill köra exemplet igen, ange **3** att bevara utdata med API för Batch-tjänsten och att namnge målsökvägen för behållaren och blob enligt filen konventioner standard.
+1. Öppna hello-projekt i **Visual Studio 2015 eller senare**.
+2. Lägg till grupp och lagring **kontoautentiseringsuppgifter** för**AccountSettings.settings** i hello Microsoft.Azure.Batch.Samples.Common projekt.
+3. **Skapa** (men inte kör) hello lösning. Återställa NuGet-paket om du uppmanas till detta.
+4. Använd hello Azure portal tooupload en [programpaket](batch-application-packages.md) för **PersistOutputsTask**. Inkludera hello `PersistOutputsTask.exe` och dess beroende sammansättningar i hello ZIP-paketet, ange hello program-ID för ”PersistOutputsTask” och programmet hello Paketversion för ”1.0”.
+5. **Starta** (kör) hello **PersistOutputs** projekt.
+6. När begärd toochoose hello beständiga teknik toouse körs hello exempel anger **2** toorun hello exempel med hjälp av hello API för Batch-tjänsten toopersist uppgiftens utdata.
+7. Om du vill köra hello exemplet igen, ange **3** toopersist utdata med API för hello Batch-tjänsten och tooname hello-behållaren och blob målsökväg enligt toohello filen konventioner som standard.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Mer information om bestående uppgiftens utdata med filen konventioner-biblioteket för .NET finns [spara projekt- och data till Azure Storage med Batch filen konventioner biblioteket för .NET att bevara ](batch-task-output-file-conventions.md).
-- Information om andra metoder för bestående av utdata i Azure Batch finns [spara projekt- och utdata till Azure Storage](batch-task-output.md).
+- Mer information om bestående uppgiftens utdata med hello filen konventioner bibliotek för .NET finns [spara projekt- och data tooAzure lagring med hello Batch filen konventioner biblioteket för .NET-toopersist ](batch-task-output-file-conventions.md).
+- Information om andra metoder för bestående av utdata i Azure Batch finns [spara projekt- och utdata tooAzure lagring](batch-task-output.md).
 
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples

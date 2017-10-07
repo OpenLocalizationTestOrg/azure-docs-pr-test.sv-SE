@@ -1,6 +1,6 @@
 ---
-title: "Vilken typ av samling behöver du för Azure RemoteApp? | Microsoft Docs"
-description: "Lär dig mer om vilka typer av samlingar som är tillgängliga med Azure RemoteApp."
+title: "aaaWhat typ av samling gör du behöver för Azure RemoteApp? | Microsoft Docs"
+description: "Läs mer om hello typer av samlingar som är tillgängliga med Azure RemoteApp."
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,48 +13,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 10f6c0533027767b6635ebff1e6a9872bde06a68
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f00b5fe41af597cf75e26300bf7842c3a8ff94fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="what-kind-of-collection-do-you-need-for-azure-remoteapp"></a>Vilken typ av samling behöver du för Azure RemoteApp?
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
-Azure RemoteApp kan du dela appar och resurser med användare på alla enheter. Vi göra detta genom att skapa samlingar för att rymma appar och resurser och sedan du dela dessa samlingar med användare. Det finns 2 annan samling alternativ med olika nätverks- och autentiseringsalternativ - som är rätt för dig?
+Azure RemoteApp kan du dela appar och resurser med användare på alla enheter. Vi göra detta genom att skapa samlingar toohold hello appar och resurser och sedan du dela dessa samlingar med användare. Det finns 2 annan samling alternativ med olika nätverks- och autentiseringsalternativ - som är rätt för dig?
 
-Låt oss gå igenom de olika överväganden och alternativ som du behöver göra att få ut mesta möjliga av Azure RemoteApp-samlingen. 
+Låt oss gå igenom hello olika överväganden och alternativ som du behöver toomake tooget hello mest utanför Azure RemoteApp-samlingen. 
 
-## <a name="quick-differences-between-the-collection-types"></a>Snabb skillnaderna mellan samlingstyper
+## <a name="quick-differences-between-hello-collection-types"></a>Snabb skillnaderna mellan hello samlingstyper
 |  | Molnet | Hybrid |
 | --- | --- | --- |
 | Använd ett befintligt virtuellt nätverk |Ja |Ja |
 | Kräver AD-anslutna konton (DirSync) |Nej |Ja |
 | Kräver domänanslutning |Nej |Ja |
-| Kräver en domänkontrollant tillgänglig för virtuella nätverk |Nej |Ja |
+| Kräver domain controller tillgänglig tooVNET |Nej |Ja |
 
 ## <a name="cloud-collections"></a>Molnsamlingar
-* Snabbt att skapa - samlingen etableras snabbt, vilket innebär att dina appar får användare snabbare.
-* Ta med egna appar eller dela oss. Du kan använda en anpassad avbildning (skapas från en Azure VM) eller en av avbildningarna som ingår i din prenumeration.
-* Du behöver inte konfigurera en anslutning mellan din samling och den lokala domänen.
-* Men du kan också använda ditt eget virtuella Azure-att ge åtkomst till din lokala miljö för delning av data eller att använda Windows-autentisering till resurser som SQL Server (med Databasautentisering).
+* Snabb toocreate - hello samling etableras snabbt, vilket innebär att dina appar får toousers snabbare.
+* Ta med egna appar eller dela oss. Du kan använda en anpassad avbildning (skapas från en Azure VM) eller en av hello avbildningarna som ingår i din prenumeration.
+* Du behöver inte tooconfigure en anslutning mellan din samling och den lokala domänen.
+* Men du kan eventuellt använda din egen Azure VNET tooprovide åtkomst i din lokala miljö för data delas eller toouse icke-Windows-autentisering till resurser som SQL Server (med Databasautentisering).
 
 OK, hur skapar jag en?
 
-* Molnet? Skapa med de **Snabbregistrering** alternativet i portalen.
-* Molnet + VNET? Skapa med hjälp av den **skapa med VNET** alternativet men inte väljer att ansluta till en domän.
+* Molnet? Skapa med hello **Snabbregistrering** alternativet i hello-portalen.
+* Molnet + VNET? Skapa med hjälp av hello **skapa med VNET** alternativet men inte väljer toojoin en domän.
 
 ## <a name="hybrid-collections"></a>Hybridsamlingar
-* Ge full åtkomst till lokala nätverk + Azure VNET.
+* Ger fullständig åtkomst tooon lokala nätverk + Azure VNET.
 * Innehåller koppling domänåtkomst för appar och data. Fjärrprogram kan autentisering mot din lokala Active Directory - de kan sedan komma åt resurser i domänen.
 * Aktivera avancerad övervakning och hantering av med befintliga System Center-lösningar och principer för Windows-grupp (via en anpassad avbildning som bygger på Windows Server 2012 R2)
-* Stöd för [ExpressRoute](https://azure.microsoft.com/services/expressroute/) att ansluta ditt Azure VNET till ditt lokala VNET.
+* Stöd för [ExpressRoute](https://azure.microsoft.com/services/expressroute/) tooconnect Azure VNET-tooyour virtuella lokala nätverk.
 
-Skapa med hjälp av den **skapa med VNET** alternativet och väljer att ansluta till en domän.
+Skapa med hjälp av hello **skapa med VNET** alternativet och välj toojoin en domän.
 
 ## <a name="authentication-options"></a>Autentiseringsalternativ
 Azure RemoteApp stöder både Microsoft-konton och Azure Active Directory-konton, men inte alla samlingar stöder alla metoder. 
@@ -71,23 +71,23 @@ Azure RemoteApp stöder både Microsoft-konton och Azure Active Directory-konton
 | Multi-Factor Authentication | |Ja |Ja |Ja |
 
 ### <a name="cloud-and-cloud--vnet"></a>Molnet och molnet + VNET
-Du kan använda Microsoft-konton, Azure AD-konton eller en blandning av båda med molnsamlingar. Använd de konton som passar bäst för dina användare.
+Du kan använda Microsoft-konton, Azure AD-konton eller en blandning av hello två med molnsamlingar. Använd hello-konton som passar bäst för dina användare.
 
 Det finns inga särskilda krav för att använda Microsoft-konton. 
 
-Om du vill använda Azure AD-konton måste du kontrollera att din Azure AD-klient matchar det som är associerade med prenumerationen. När du skapade din Azure RemoteApp-prenumeration, associerades Azure AD-klient som du använde automatiskt med din prenumeration. Alla Azure AD-användare som du ger behörighet att måste vara samma klient. Om det behövs kan du [ändra Azure AD-klient](remoteapp-changetenant.md) som är associerade med prenumerationen.
+Om du vill toouse Azure AD-konton, måste toomake till att din Azure AD-klient matchar hello en associerad med din prenumeration. När du skapade din Azure RemoteApp-prenumeration associerades hello Azure AD-klient som du använde automatiskt med din prenumeration. Azure AD-användare ger behörighet tooneeds toobe samma klient. Om det behövs kan du [ändra hello Azure AD-klienten](remoteapp-changetenant.md) som är associerade med prenumerationen.
 
 ### <a name="hybrid-or-cloud--azure-ad--ad"></a>Hybrid (eller molnet + Azure AD + AD)
-Använda Azure AD + lokala Active Directory är en förutsättning för en hybridsamling. Du måste använda AD Connect för att integrera två kataloger. Men du har vissa val när det gäller hur du konfigurerar AD Connect. 
+Använda Azure AD + lokala Active Directory är en förutsättning för en hybridsamling. Du måste toouse AD Connect toointegrate hello två kataloger. Men du har vissa val när det gäller toohow som du konfigurerar AD Connect. 
 
-Det finns 2 AD Connect scenarier - genom att använda Lösenordssynkronisering eller federation med AD. Kolla in den [AD Connect information](../active-directory/active-directory-aadconnect.md) ta reda på vilken av dessa fungerar bäst för dig.
+Det finns 2 AD Connect scenarier - genom att använda Lösenordssynkronisering eller federation med AD. Kolla in hello [AD Connect information](../active-directory/active-directory-aadconnect.md) toofigure reda på om de passar bäst för dig.
 
-Du kan också använda Azure AD + AD med en molnsamling. Kontrollera att du följer samma ställa in steg.
+Du kan också använda Azure AD + AD med en molnsamling. Kontrollera att du följer hello samma konfigurera steg.
 
-Checka ut [Azure AD + Active Directory-krav för Azure RemoteApp](remoteapp-ad.md) steg för att konfigurera Azure AD och Active Directory.
+Checka ut [Azure AD + Active Directory-krav för Azure RemoteApp](remoteapp-ad.md) för hello steg krävs tooconfigure Azure AD och Active Directory.
 
 ## <a name="go-create-your-collection"></a>Gå att skapa samlingen!
-OK, tror jag att vi har förstått det nu, så det finns bara en sak kvar att göra - skapa din första Azure RemoteApp-samling.
+Jag tror OK, vi har förstått det nu, så det finns bara en sak vänstra toodo – skapa din första Azure RemoteApp-samling.
 
 [Skapa en molnsamling](remoteapp-create-cloud-deployment.md) eller [skapa en hybridsamling](remoteapp-create-hybrid-deployment.md) -bara hämta skapa.
 

@@ -1,5 +1,5 @@
 ---
-title: "Drivrutiner för SQL Data Warehouse | Microsoft Docs"
+title: "aaaDrivers för SQL Data Warehouse | Microsoft Docs"
 description: "Anslutningssträngar och drivrutiner för SQL Data Warehouse"
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,14 +15,14 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.openlocfilehash: e71ea1d23f68ed41c03bbce88b08863d2831c1bd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a808839a8cfc49c2d7b16038c88ffb39a9f97825
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="drivers-for-azure-sql-data-warehouse"></a>Drivrutiner för Azure SQL Data Warehouse
-Du kan ansluta till SQL Data Warehouse med flera olika programprotokoll såsom [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP] [ PHP] och [JDBC][JDBC]. Nedan följer några exempel på anslutningar strängar för varje protokoll.  Du kan också använda Azure-portalen för att skapa anslutningssträngen.  För att skapa anslutningssträngen med hjälp av Azure portal, navigerar du till ditt databas-blad under *Essentials* klickar du på *visa databasanslutningssträngar*.
+Du kan ansluta tooSQL Data Warehouse med flera olika protokoll som, [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP] [ PHP] och [JDBC][JDBC]. Nedan följer några exempel på anslutningar strängar för varje protokoll.  Du kan också använda hello Azure portal toobuild anslutningssträngen.  toobuild din anslutningssträng genom att använda hello Azure-portalen navigera tooyour databasbladet under *Essentials* klickar du på *visa databasanslutningssträngar*.
 
 ## <a name="sample-adonet-connection-string"></a>Exempel ADO.NET-anslutningssträngen
 ```C#
@@ -36,7 +36,7 @@ Driver={SQL Server Native Client 11.0};Server=tcp:{your_server}.database.windows
 
 ## <a name="sample-php-connection-string"></a>Exempel PHP-anslutningssträng
 ```PHP
-Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting to SQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
+Server: {your_server}.database.windows.net,1433 \r\nSQL Database: {your_database}\r\nUser Name: {your_user_name}\r\n\r\nPHP Data Objects(PDO) Sample Code:\r\n\r\ntry {\r\n   $conn = new PDO ( \"sqlsrv:server = tcp:{your_server}.database.windows.net,1433; Database = {your_database}\", \"{your_user_name}\", \"{your_password_here}\");\r\n    $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );\r\n}\r\ncatch ( PDOException $e ) {\r\n   print( \"Error connecting tooSQL Server.\" );\r\n   die(print_r($e));\r\n}\r\n\rSQL Server Extension Sample Code:\r\n\r\n$connectionInfo = array(\"UID\" => \"{your_user_name}\", \"pwd\" => \"{your_password_here}\", \"Database\" => \"{your_database}\", \"LoginTimeout\" => 30, \"Encrypt\" => 1, \"TrustServerCertificate\" => 0);\r\n$serverName = \"tcp:{your_server}.database.windows.net,1433\";\r\n$conn = sqlsrv_connect($serverName, $connectionInfo);
 ```
 
 ## <a name="sample-jdbc-connection-string"></a>Exempel JDBC-anslutningssträngen
@@ -45,12 +45,12 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ```
 
 > [!NOTE]
-> Överväg att ange timeout för anslutningen med 300 sekunder för att tillåta anslutning till överleva korta tidsperioder för tillfället.
+> Överväg att inställningen hello anslutning timeout too300 sekunder i ordning tooallow hello anslutning toosurvive korta tidsperioder för tillfället.
 > 
 > 
 
 ## <a name="next-steps"></a>Nästa steg
-Om du vill starta frågar ditt data warehouse med Visual Studio och andra program, se [fråga med Visual Studio][Query with Visual Studio].
+toostart fråga ditt data warehouse med Visual Studio och andra program, se [fråga med Visual Studio][Query with Visual Studio].
 
 <!--Image references-->
 

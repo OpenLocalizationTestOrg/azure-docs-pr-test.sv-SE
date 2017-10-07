@@ -1,6 +1,6 @@
 ---
-title: " Överför filer till ett Media Services-konto med Azure-portalen | Microsoft Docs"
-description: "Den här kursen vägleder dig igenom steg som överför filer till ett Media Services-konto med Azure-portalen"
+title: "aaa ”Överför filer till ett Media Services-konto med hello Azure-portalen | Microsoft Docs ”"
+description: "Den här självstudiekursen vägleder dig genom stegen hello laddar upp filer till ett Media Services-konto med hjälp av hello Azure-portalen"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 3a1dd7470f940da839687478b636464d930d8ab7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4ce1e133c72854532735ba7c72a43c92a75bc240
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upload-files-into-a-media-services-account-using-the-azure-portal"></a>Överför filer till ett Media Services-konto med Azure-portalen
+# <a name="upload-files-into-a-media-services-account-using-hello-azure-portal"></a>Överföra filer till ett Media Services-konto med hello Azure-portalen
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
 > 
 > [!NOTE]
-> Du behöver ett Azure-konto för att slutföra den här självstudien. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/). 
+> toocomplete den här självstudiekursen kommer du behöver ett Azure-konto. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 
 
-I Media Services överför du dina digitala filer till en tillgång. Tillgång kan innehålla video, ljud, bilder, miniatyrsamlingar, textspår och filer med dold textning (samt metadata om dessa filer.) När filerna har överförts lagras innehållet på ett säkert sätt i molnet för ytterligare bearbetning och strömning.
+I Media Services överför du dina digitala filer till en tillgång. hello tillgång kan innehålla video, ljud, bilder, miniatyrsamlingar, text spår och textning filer (och hello metadata om dessa filer.) När hello filerna har överförts lagras innehållet på ett säkert sätt i hello molnet för ytterligare bearbetning och strömning.
 
 
 ## <a name="upload-files"></a>Överföra filer
 
 >[!NOTE]
->Det finns en gräns för maximal filstorlek för bearbetning i Media Services. Information om filstorleksbegränsningen finns i [det här](media-services-quotas-and-limitations.md) avsnittet.
+>Det finns en gräns toohello maximal filstorlek som stöds för bearbetning i Media Services. Se [detta](media-services-quotas-and-limitations.md) avsnittet för information om hello filstorleksbegränsningar.
 >
 
-1. Välj ditt Azure Media Services-konto i [Azure-portalen](https://portal.azure.com/).
-2. I bladet **Inställningar** klickar du på **Tillgångar**.
+1. I hello [Azure-portalen](https://portal.azure.com/), Välj Azure Media Services-konto.
+2. På hello **inställningar** bladet, klickar du på **tillgångar**.
    
     ![Överföra filer](./media/media-services-portal-vod-get-started/media-services-upload.png)
-3. Klicka på knappen **Överför**.
+3. Klicka på hello **överför** knappen.
    
-    Fönstret **Överför en videotillgång** visas.
+    Hej **överför en videotillgång** visas.
    
    > [!NOTE]
    > Det finns inga filstorleksbegränsningar.
    > 
    > 
-4. Bläddra till den önskade videon på datorn, markera den och tryck på OK.  
+4. Bläddra toohello önskade videon på datorn, markerar du den och tryck på OK.  
    
-    Överföringen startar och du kan följa förloppet under filnamnet.  
+    hello överföringen startar och du kan se hello förloppet under filnamnet hello.  
 
-När överföringen är klar visas den nya tillgången i listan **Tillgångar**. 
+När hello överföringen har slutförts visas hello nya tillgången i hello **tillgångar** fönster. 
 
 ## <a name="next-steps"></a>Nästa steg
 Du kan nu koda överförda tillgångar. Mer information finns i [Koda tillgångar](media-services-portal-encode.md).
 
-Du kan också använda Azure Functions för att utlösa ett kodningsjobb baserat på en fil som skickas till den konfigurerade behållaren. Mer information finns i [det här exemplet](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
+Du kan också använda Azure Functions tootrigger ett kodningsjobb baserat på en fil som inkommer på hello konfigurerats behållare. Mer information finns i [det här exemplet](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/ ).
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

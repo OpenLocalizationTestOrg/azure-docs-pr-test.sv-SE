@@ -1,6 +1,6 @@
 ---
-title: Hantera en arbetsyta i Machine Learning | Microsoft Docs
-description: "Hantera åtkomst till Azure Machine Learning arbetsytor och distribuera och hantera ml – API-tjänster"
+title: aaaManage Machine Learning-arbetsytan | Microsoft Docs
+description: "Hantera åtkomst tooAzure Machine Learning arbetsytor och distribuera och hantera ml – API-webbtjänster"
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,125 +14,125 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
 ms.author: garye
-ms.openlocfilehash: 94800f51baf83311c33490cada5f991ff2101da9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7bd378d82aa46f4340ca974c7dc5a612c089cdca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Hantera en Azure Machine Learning-arbetsyta
 
 > [!NOTE]
-> Information om hur du hanterar webbtjänster i Machine Learning-webbtjänster portal finns [hantera en webbtjänst med hjälp av Azure Machine Learning-webbtjänster portal](machine-learning-manage-new-webservice.md).
+> Information om hur du hanterar Web services hello Machine Learning-webbtjänster portal finns [hantera en webbtjänst med hjälp av hello Azure Machine Learning-webbtjänster portal](machine-learning-manage-new-webservice.md).
 > 
 > 
 
-Du kan hantera Machine Learning arbetsytor i Azure-portalen eller den klassiska Azure-portalen.
+Du kan hantera Machine Learning arbetsytor i antingen hello Azure-portalen eller hello klassiska Azure-portalen.
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="use-the-azure-portal"></a>Använda Azure-portalen
+## <a name="use-hello-azure-portal"></a>Använd hello Azure-portalen
 
-Hantera en arbetsyta i Azure-portalen:
+toomanage en arbetsyta i hello Azure-portalen:
 
-1. Logga in på den [Azure-portalen](https://portal.azure.com/) med ett administratörskonto för Azure-prenumeration.
-2. Ange ”dator learning arbetsytor” i sökrutan överst på sidan och välj sedan **Machine Learning arbetsytor**.
-3. Klicka på arbetsytan som du vill hantera.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com/) med ett administratörskonto för Azure-prenumeration.
+2. Ange i sökrutan överst hello på hello sidan hello ”datorn learning arbetsytor” och välj sedan **Machine Learning arbetsytor**.
+3. Klicka på hello-arbetsyta som du vill toomanage.
 
-Förutom standard resursinformation för hantering och alternativ som är tillgängliga kan du:
+Dessutom toohello standard management resursinformation och alternativ som är tillgängliga, kan du:
 
-- Visa **egenskaper** – den här sidan visar arbetsytan och resursen och du kan ändra gruppen prenumeration och resurs som den här arbetsytan är kopplad till.
-- **Omsynkronisering Lagringsnycklar** -arbetsytan underhåller nycklar till lagringskontot. Om lagringskontot ändras nycklar och du kan klicka på **omsynkronisering nycklar** att synkronisera nycklar med arbetsytan.
+- Visa **egenskaper** – den här sidan visar hello arbetsytan och resursen och du kan ändra hello prenumeration och resursgrupp som den här arbetsytan är kopplad till.
+- **Omsynkronisering Lagringsnycklar** -hello arbetsytan underhåller nycklar toohello storage-konto. Om hello storage-konto ändras nycklar och du kan klicka på **omsynkronisering nycklar** toosynchronize hello nycklar med hello-arbetsyta.
 
-Använd portalen Machine Learning-webbtjänster för att hantera de webbtjänster som är associerade med den här arbetsytan. Se [hantera en webbtjänst med hjälp av Azure Machine Learning-webbtjänster portal](machine-learning-manage-new-webservice.md) fullständig information.
+toomanage hello webbtjänster som är associerade med den här arbetsytan kan använda hello Machine Learning-webbtjänster portal. Se [hantera en webbtjänst med hjälp av hello Azure Machine Learning-webbtjänster portal](machine-learning-manage-new-webservice.md) fullständig information.
 
 > [!NOTE]
-> Om du vill distribuera eller hantera nya webbtjänster måste du tilldelas rollen deltagare eller administratör på den prenumeration som webbtjänsten har distribuerats. Om du bjuda in en annan användare till en machine learning-arbetsytan måste du tilldela dem en roll för deltagare eller administratör för prenumerationen innan de kan distribuera eller hantera webbtjänster. 
+> toodeploy eller hantera nya webbtjänster som du måste tilldelas en deltagare eller administratörsroll hello prenumeration toowhich hello webbtjänsten har distribuerats. Om du bjuda in en annan användare tooa maskininlärning arbetsytan måste du tilldela dem tooa rollen deltagare eller administratör på hello prenumeration innan de kan distribuera eller hantera webbtjänster. 
 > 
->Mer information om inställningen åtkomstbehörighet finns [visa åtkomst-tilldelningar för användare och grupper i Azure portal – förhandsversion](../active-directory/role-based-access-control-manage-assignments.md).
+>Mer information om inställningen åtkomstbehörighet finns [visa åtkomst-tilldelningar för användare och grupper i hello Azure portal – förhandsversion](../active-directory/role-based-access-control-manage-assignments.md).
 
-## <a name="use-the-azure-classic-portal"></a>Använd den klassiska Azure-portalen
+## <a name="use-hello-azure-classic-portal"></a>Använd hello klassiska Azure-portalen
 
-Med den klassiska Azure-portalen kan hantera du arbetsytorna Machine Learning till:
+Du kan hantera dina Machine Learning arbetsytor att med hello klassiska Azure-portalen:
 
-* Övervaka hur arbetsytan används
-* Konfigurera arbetsyta om du vill tillåta eller neka åtkomst
-* Hantera webbtjänster som skapats i arbetsytan
-* Ta bort arbetsytan
+* Övervaka hur hello arbetsytan används
+* Konfigurera hello arbetsytan tooallow eller nekar åtkomst
+* Hantera webbtjänster som skapats i hello arbetsyta
+* Ta bort hello-arbetsytan
 
-Dessutom innehåller en översikt över arbetsytan-användning och en snabb överblick över din arbetsyta information fliken instrumentpanel.  
+Dessutom innehåller hello instrumentpanelen en översikt över arbetsytan-användning och en snabb överblick över din arbetsyta information.  
 
 > [!TIP]
-> I Azure Machine Learning Studio på den **WEB SERVICES** fliken, du kan lägga till, uppdatera eller ta bort en Machine Learning-webbtjänst.
+> I Azure Machine Learning Studio, på hello **WEB SERVICES** fliken, du kan lägga till, uppdatera eller ta bort en Machine Learning-webbtjänst.
 > 
 > 
 
-Hantera en arbetsyta i den klassiska Azure-portalen:
+toomanage en arbetsyta i hello klassiska Azure-portalen:
 
-1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com/) med Microsoft Azure-konto – Använd det konto som är kopplad till den Azure-prenumerationen.
-2. Klicka på panelen för Microsoft Azure-tjänster **MASKININLÄRNING**.
-3. Klicka på arbetsytan som du vill hantera.
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com/) med Microsoft Azure-konto, Använd hello-konto som är kopplad till hello Azure-prenumeration.
+2. Klicka på hello Microsoft Azure-tjänster Kontrollpanelen **MASKININLÄRNING**.
+3. Klicka på hello-arbetsyta som du vill toomanage.
 
-Arbetsytssidan har tre flikar:
+hello arbetsytssidan har tre flikar:
 
-* **INSTRUMENTPANELEN** -gör att du kan visa arbetsytan användnings- och information
-* **Konfigurera** -kan du hantera åtkomst till arbetsytan
-* **WEBBTJÄNSTER** -låter dig hantera webbtjänster som har publicerats från arbetsytan
+* **INSTRUMENTPANELEN** -gör att du tooview arbetsytan användning och information
+* **Konfigurera** -tillåter toomanage åtkomst toohello arbetsytan
+* **WEBBTJÄNSTER** -tillåter toomanage webbtjänster som har publicerats från arbetsytan
 
-### <a name="to-monitor-how-the-workspace-is-being-used"></a>Att övervaka hur arbetsytan används
-Klicka på den **INSTRUMENTPANELEN** fliken.
+### <a name="toomonitor-how-hello-workspace-is-being-used"></a>toomonitor hur hello arbetsytan används
+Klicka på hello **INSTRUMENTPANELEN** fliken.
 
-Du kan visa övergripande användning av arbetsytan och få en snabb överblick över arbetsytan information från instrumentpanelen.
+Du kan visa övergripande användning av arbetsytan och få en snabb överblick över arbetsytan information från hello instrumentpanelen.
 
-* Den **COMPUTE** diagrammet visar de beräkningsresurser som används av arbetsytan. Du kan ändra vy för att visa relativa eller absoluta värden och du kan ändra den tidsperiod som visas i diagrammet.
-* **Användningsöversikten** visar Azure-lagring som används av arbetsytan.
+* Hej **COMPUTE** diagrammet visar hello beräkningsresurser som används av hello arbetsytan. Du kan ändra hello visa toodisplay relativa eller absoluta värden och du kan ändra hello tidsram som visas i diagrammet hello.
+* **Användningsöversikten** visar Azure-lagring som används av hello arbetsytan.
 * **Snabböversikten** innehåller en översikt över arbetsyteinformation och länkar.
 
 > [!NOTE]
-> Den **logga in på ML Studio** länken öppnar Machine Learning Studio med Account du för närvarande är inloggad på. Account du använde för att logga in på den klassiska Azure-portalen för att skapa en arbetsyta har inte behörighet att öppna arbetsytan automatiskt. Om du vill öppna en arbetsyta, måste du vara inloggad på Account som har definierats som ägare till arbetsytan eller måste du få en inbjudan från ägare att ansluta till arbetsytan.
+> Hej **inloggning tooML Studio** länken öppnar Machine Learning Studio med hello Account du för närvarande är inloggad på. Hej Account du använde toosign i toohello Azure klassiska portal toocreate en arbetsyta har automatiskt inte behörighet tooopen arbetsytan. tooopen en arbetsyta, måste du vara inloggad i toohello Account som har definierats som hello ägare av hello arbetsytan eller måste tooreceive en inbjudan från hello ägare toojoin hello arbetsytan.
 > 
 > 
 
-### <a name="to-grant-or-suspend-access-for-users"></a>Att bevilja eller pausa åtkomst för användare
-Klicka på den **konfigurera** fliken.
+### <a name="toogrant-or-suspend-access-for-users"></a>toogrant eller pausar åtkomst för användare
+Klicka på hello **konfigurera** fliken.
 
-På konfigurationsfliken kan du:
+Från fliken för hello-konfiguration kan du:
 
-* Inaktivera åtkomst till Machine Learning-arbetsytan genom att klicka på NEKA. Användare kommer inte längre att kunna öppna arbetsytan i Machine Learning Studio. För att återställa åtkomsten, klickar du på TILLÅT.
+* Pausa åtkomst toohello Machine Learning-arbetsytan genom att klicka på NEKA. Användare kommer inte längre att kunna tooopen hello arbetsyta i Machine Learning Studio. toorestore åtkomst till, klickar du på TILLÅT.
 
-Om du vill hantera ytterligare konton som har åtkomst till arbetsytan i Machine Learning Studio klickar du på **logga in på ML Studio** i den **INSTRUMENTPANELEN** fliken (se anmärkning som föregår angående **logga in på ML Studio**). Då öppnas arbetsytan i Machine Learning Studio. Härifrån kan du klicka på den **inställningar** fliken och sedan **användare**. Du kan klicka på **bjuda in fler användare** att ge användare åtkomst till arbetsytan, eller välj en användare och klicka på **ta bort**.
+toomanage ytterligare konton som har åtkomst toohello arbetsyta i Machine Learning Studio klickar du på **inloggning tooML Studio** i hello **INSTRUMENTPANELEN** fliken (se anmärkning för hello som föregår rörande  **Sign-in tooML Studio**). Detta öppnar hello arbetsyta i Machine Learning Studio. Klicka på hello från den här **inställningar** fliken och sedan **användare**. Du kan klicka på **bjuda in fler användare** toogive användare åtkomst toohello arbetsytan, eller välj en användare och klicka på **ta bort**.
 
-### <a name="to-manage-web-services-in-this-workspace"></a>Hantera webbtjänster i den här arbetsytan
-Klicka på den **WEB SERVICES** fliken.
+### <a name="toomanage-web-services-in-this-workspace"></a>toomanage webbtjänster i den här arbetsytan
+Klicka på hello **WEB SERVICES** fliken.
 
 Detta visar en lista över webbtjänster som publicerats från den här arbetsytan.
-Klicka på namnet i listan för att öppna tjänstsidan för att hantera en webbtjänst.
+toomanage en webbtjänst, klicka på hello i hello listan tooopen hello-webbtjänstsida.
 
 En webbtjänst kan ha en eller flera slutpunkter som definierats.
 
-* Du kan definiera flera slutpunkter förutom ”Default”-slutpunkten. Om du vill lägga till slutpunkten, klickar du på **hantera slutpunkter** längst ned i instrumentpanelen för att öppna Azure Machine Learning-webbtjänster-portalen.
-* Ta bort en slutpunkt (du inte kan ta bort slutpunkten för ”Default”) och klicka på kryssrutan i början av raden slutpunkt och på **ta bort**. Detta tar bort slutpunkten från webbtjänsten.
+* Du kan definiera flera slutpunkter i tillägg toohello ”standard” slutpunkt. tooadd Hej slutpunkt, klickar du på **hantera slutpunkter** längst hello hello instrumentpanelen tooopen hello Azure Machine Learning-webbtjänster portal.
+* toodelete slutpunkt (du inte kan ta bort hello ”standard” endpoint), markerar du kryssrutan för hello hello början av hello endpoint raden och klicka på **ta bort**. Detta tar bort hello endpoint från hello webbtjänsten.
   
   > [!NOTE]
-  > Om ett program använder webbtjänstslutpunkt när slutpunkten har tagits bort, får programmet ett fel nästa gång den försöker komma åt tjänsten.
+  > Om ett program använder hello webbtjänstslutpunkt när hello slutpunkt har tagits bort, får hello programmet ett fel hello nästa gång den försöker tooaccess hello-tjänsten.
   > 
   > 
 
-Klicka på namnet på en slutpunkt för webbtjänsten så att den öppnas. 
+Klicka på en Web service endpoint tooopen hello namn den. 
 
-Du kan visa övergripande användning av webbtjänsten under en viss tidsperiod från instrumentpanelen. Du kan välja vilken om du vill visa från listrutan Period i det övre högra hörnet för användning. Instrumentpanelen visar följande information:
+Du kan visa övergripande användning av webbtjänsten under en viss tidsperiod hello instrumentpanel. Du kan välja hello period tooview från hello Period listrutan i hello övre högra hörnet av hello användning diagram. hello instrumentpanelen visar hello följande information:
 
-* **Begäranden över tid** visar ett steg diagram över hur många begäranden för den valda tidsperioden. Det hjälper dig identifiera om det uppstår toppar i användning.
-* **Begäran och svar begäranden** visar det totala antalet anrop för begäran och svar tjänsten har tagit emot och den valda tidsperioden och hur många av dem misslyckades.
-* **Genomsnittlig tid för begäran och svar Compute** visar ett genomsnitt av tiden som krävs för att köra den mottagna begäranden.
-* **Batch-begäranden** visar det totala antalet gruppbegäranden tjänsten har tagit emot och den valda tidsperioden och hur många av dem misslyckades.
-* **Genomsnittlig svarstid för jobbet** visar ett genomsnitt av tiden som krävs för att köra den mottagna begäranden.
-* **Fel** visar det sammanlagda antalet fel som har inträffat på anrop till webbtjänsten.
-* **Services kostnader** visar avgifterna för den faktureringsplan som är associerad med tjänsten.
+* **Begäranden över tid** visar ett steg diagram över hello antal begäranden via hello tidsperiod. Det hjälper dig identifiera om det uppstår toppar i användning.
+* **Begäran och svar begäranden** visar hello Totalt antal anrop för begäran och svar hello-tjänsten har tagit emot och hello tidsperioden och hur många av dem misslyckades.
+* **Genomsnittlig tid för begäran och svar Compute** visar en Genomsnittlig tid för hello behövs tooexecute hello emot begäranden.
+* **Batch-begäranden** visar hello Totalt antal gruppbegäranden hello-tjänsten har tagit emot och hello tidsperiod och hur många av dem misslyckades.
+* **Genomsnittlig svarstid för jobbet** visar en Genomsnittlig tid för hello behövs tooexecute hello emot begäranden.
+* **Fel** visar hello sammanlagda antalet fel som har inträffat på anrop toohello-webbtjänsten.
+* **Services kostnader** visar hello kostnader för hello faktureringsplan som associeras med hello-tjänsten.
 
-Du kan använda sidan Konfigurera för att uppdatera följande egenskaper:
+Hello Konfigurera sidan kan du uppdatera hello följande egenskaper:
 
-* **Beskrivning** kan du ange en beskrivning för webbtjänsten. Beskrivningen är ett obligatoriskt fält.
-* **Loggning av** kan du aktivera eller inaktivera felloggning på slutpunkten. Mer information om loggning finns i Aktivera [loggning för Machine Learning-webbtjänster](machine-learning-web-services-logging.md).
-* **Aktivera exempeldata** kan du ange exempeldata som du kan använda för att testa tjänsten begäran och svar. Om du har skapat webbtjänsten i Machine Learning Studio hämtas exempeldata från data din används för att träna din modell. Om du har skapat tjänsten programmässigt hämtas data från de exempel informationen som en del av JSON-paketet.
+* **Beskrivning** kan du tooenter en beskrivning för hello webbtjänsten. Beskrivningen är ett obligatoriskt fält.
+* **Loggning av** kan du tooenable eller inaktivera felloggning på hello slutpunkt. Mer information om loggning finns i Aktivera [loggning för Machine Learning-webbtjänster](machine-learning-web-services-logging.md).
+* **Aktivera exempeldata** kan du tooprovide exempeldata som du kan använda tootest hello svar på begäranden tjänsten. Om du har skapat hello-webbtjänsten i Machine Learning Studio hello exempeldata hämtas från hello data din används tootrain din modell. Om du har skapat hello service programmässigt hämtas hello data från hello exempeldata som du angav som en del av hello JSON-paketet.
 

@@ -1,5 +1,5 @@
 ---
-title: "Självstudiekurs: Skapa en pipeline för att flytta data med hjälp av Azure PowerShell | Microsoft-dokument"
+title: "Självstudier: Skapa en pipeline toomove data med hjälp av Azure PowerShell | Microsoft Docs"
 description: "I den här självstudiekursen kommer du att skapa en Azure Data Factory-pipeline med en kopieringsaktivitet genom att använda Azure PowerShell."
 services: data-factory
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 81efe7c6af29af778686e1f6bcf62fedc9711052
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 21406d7dfaa0c555b2538fbb52839d761c140fc5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Självstudiekurs: Skapa en Data Factory-pipeline som flyttar data med hjälp av Azure PowerShell
 > [!div class="op_single_selector"]
@@ -33,119 +33,119 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-I den här artikeln får du lära dig hur du använder PowerShell för att skapa en datafabrik med en pipeline som kopierar data från en Azure-bloblagring till en Azure SQL-databas. Om du inte har använt Azure Data Factory, bör du läsa igenom artikeln [Introduktion till Azure Data Factory](data-factory-introduction.md) innan du genomför den här självstudien.   
+I den här artikeln får du lära dig hur toouse PowerShell toocreate en datafabrik med en rörledning som kopierar data från Azure blob storage tooan Azure SQL-databas. Om du är ny tooAzure Data Factory, Läs igenom hello [introduktion tooAzure Data Factory](data-factory-introduction.md) artikel innan du utför den här kursen.   
 
-I den här självstudien får du skapa en pipeline i en aktivitet: kopieringsaktivitet. Kopieringsaktiviteten kopierar data från källans datalager till mottagarens datalager. En lista över datakällor som stöds som källor och mottagare finns i [datalager som stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Aktiviteten drivs av en globalt tillgänglig tjänst som kan kopiera data mellan olika datalager på ett säkert, tillförlitligt och skalbart sätt. Se artikeln [Dataförflyttningsaktiviteter](data-factory-data-movement-activities.md) för information om kopieringsaktiviteten.
+I den här självstudien får du skapa en pipeline i en aktivitet: kopieringsaktivitet. Hej kopieringsaktiviteten kopierar data från ett datalager för data som stöds store tooa stöds mottagare. En lista över datakällor som stöds som källor och mottagare finns i [datalager som stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats). hello aktiviteten drivs av en globalt tillgänglig tjänst som kan kopiera data mellan olika datalager på ett säkert, tillförlitligt och skalbar sätt. Läs mer om hello Kopieringsaktiviteten [Data Movement aktiviteter](data-factory-data-movement-activities.md).
 
-En pipeline kan ha fler än en aktivitet. Du kan länka två aktiviteter (köra en aktivitet efter en annan) genom att ställa in datauppsättningen för utdata för en aktivitet som den inkommande datauppsättningen för den andra aktiviteten. Mer information finns i [flera aktiviteter i en pipeline](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
+En pipeline kan ha fler än en aktivitet. Och du kan länka två aktiviteter (köra en aktivitet efter ett annat) genom att ange hello datamängd för utdata för en aktivitet som hello indatauppsättning av hello andra aktiviteter. Mer information finns i [flera aktiviteter i en pipeline](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
 > [!NOTE]
-> Den här artikeln beskriver inte alla Data Factory-cmdletar. Se [Cmdlet-referens för Data Factory](/powershell/module/azurerm.datafactories) för omfattande dokumentation om dessa cmdletar.
+> Den här artikeln täcker inte alla hello Data Factory-cmdletar. Se [Cmdlet-referens för Data Factory](/powershell/module/azurerm.datafactories) för omfattande dokumentation om dessa cmdletar.
 > 
-> Datapipelinen i den här självstudien kopierar data från ett källdatalager till ett måldatalager. Om du vill se en självstudie som visar hur du omvandlar data med Azure Data Factory går du till [Tutorial: Build a pipeline to transform data using Hadoop cluster](data-factory-build-your-first-pipeline.md) (Självstudie: Bygg en pipeline för att omvandla data med Hadoop-kluster).
+> hello data pipeline i den här kursen kopierar data från en källa data store tooa målarkiv data. En självstudiekurs om hur tootransform data med hjälp av Azure Data Factory finns [Självstudier: skapa en pipeline tootransform data med Hadoop-kluster](data-factory-build-your-first-pipeline.md).
 
 ## <a name="prerequisites"></a>Krav
-- Slutför stegen i artikeln [Självstudier – förhandskrav](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-- **Installera Azure PowerShell**. Följ instruktionerna i [Så här installerar och konfigurerar du Azure PowerShell](../powershell-install-configure.md).
+- Slutföra förutsättningar som anges i hello [förutsättningar för självstudien](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) artikel.
+- **Installera Azure PowerShell**. Följ anvisningarna för hello i [hur tooinstall och konfigurera Azure PowerShell](../powershell-install-configure.md).
 
 ## <a name="steps"></a>Steg
-Här är de steg du utför som en del av de här självstudierna:
+Här är hello steg du utför som en del av den här kursen:
 
 1. Skapa en Azure-**datafabrik**. I det här steget skapar du en datafabrik med namnet ADFTutorialDataFactoryPSH. 
-2. Skapa **länkade tjänster** i den här datafabriken. I det här steget kan du skapa två länkade tjänster: Azure Storage och Azure SQL-databas. 
+2. Skapa **länkade tjänster** i hello data factory. I det här steget kan du skapa två länkade tjänster: Azure Storage och Azure SQL-databas. 
     
-    AzureStorageLinkedService länkar ditt Azure Storage-konto till datafabriken. Du har skapat en behållare och överfört data till det här lagringskontot som en del av [förhandskraven](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
+    Hej AzureStorageLinkedService länkar din Azure storage-konto toohello data factory. Du har skapat en behållare och överföra data toothis storage-konto som en del av [krav](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
-    AzureSqlLinkedService länkar din Azure SQL-databas till datafabriken. Data som kopieras från blob-lagringen sparas i den här databasen. Du har skapat den SQL-tabellen i den här databasen som en del av [förhandskraven](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
-3. Skapa **datauppsättningar** för indata och utdata i datafabriken.  
+    AzureSqlLinkedService länkar din Azure SQL database toohello data factory. hello-data som kopieras från hello blob storage lagras i den här databasen. Du har skapat den SQL-tabellen i den här databasen som en del av [förhandskraven](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
+3. Skapa ingående och utgående **datauppsättningar** i hello data factory.  
     
-    Den länkade Azure storage-tjänsten anger anslutningssträngen som Data Factory-tjänsten använder vid körning för att ansluta till ditt Azure storage-konto. Och en Azure Blob-datauppsättning anger vilken blobbehållare och mapp som innehåller data.  
+    hello länkad Azure storage-tjänst anger hello anslutningssträngen som Data Factory-tjänsten använder vid körning tooconnect tooyour Azure storage-konto. Och hello inkommande blobbdatauppsättning anger hello-behållaren och hello-mapp som innehåller hello indata.  
 
-    Den länkade Azure SQL-databasen anger anslutningssträngen som Data Factory-tjänsten använder vid körning för att ansluta till ditt Azure SQL-databas. Och utdatauppsättningen för SQL-tabellen anger tabellen i databasen som data kopieras till från blob-lagringen.
-4. Skapa en **pipeline** i datafabriken. I det här steget kan du skapa en pipeline med en kopieringsaktivitet.   
+    På samma sätt anger hello Azure SQL Database länkad tjänst hello anslutningssträngen som Data Factory-tjänsten använder vid körning tooconnect tooyour Azure SQL-databas. Och hello utdatauppsättningen SQL tabellen anger hello tabellen i hello toowhich hello databasdata från hello blob storage kopieras.
+4. Skapa en **pipeline** i hello data factory. I det här steget kan du skapa en pipeline med en kopieringsaktivitet.   
     
-    Kopieringsaktiviteten kopierar data från en Azure-blob till en tabell i Azure SQL-databasen. Du kan använda en kopieringsaktivitet i en pipeline för att kopiera data från alla datakällor som stöds till ett mål som stöds. I avsnittet [Dataförflyttningsaktiviteter](data-factory-data-movement-activities.md#supported-data-stores-and-formats) finns en lista över datalager som stöds. 
-5. Övervaka pipeline. I det här steget ska du **övervaka** sektorer från indata- och utdatauppsättningar med hjälp av PowerShell.
+    Hej kopieringsaktiviteten kopierar data från en blobb i hello Azure blob storage tooa tabellen i hello Azure SQL-databas. Du kan använda en kopia aktivitet i en pipeline toocopy data från alla stöds källan tooany stöds målet. I avsnittet [Dataförflyttningsaktiviteter](data-factory-data-movement-activities.md#supported-data-stores-and-formats) finns en lista över datalager som stöds. 
+5. Övervakaren hello pipeline. I det här steget du **övervakaren** hello segment av inkommande och utgående datamängder med hjälp av PowerShell.
 
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 > [!IMPORTANT]
-> Slutför [förutsättningarna för självstudiekursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) om du inte redan har utfört dessa.   
+> Fullständig [förutsättningar för självstudiekursen hello](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) om du inte redan gjort det..   
 
-En datafabrik kan ha en eller flera pipelines. En pipeline kan innehålla en eller flera aktiviteter. Det kan exempelvis vara en kopieringsaktivitet som kopierar data från en källa till ett måldataarkiv och en HDInsight Hive-aktivitet som kör Hive-skript för att transformera indata till produktutdata. Låt oss börja med att skapa datafabriken i det här steget.
+En datafabrik kan ha en eller flera pipelines. En pipeline kan innehålla en eller flera aktiviteter. Till exempel ange en Kopieringsaktiviteten toocopy data från ett dataarkiv som källa tooa mål och en HDInsight Hive aktiviteten toorun tootransform en Hive-skript data tooproduct utdata. Låt oss börja med att skapa hello data factory i det här steget.
 
-1. Starta **PowerShell**. Låt Azure PowerShell vara öppet tills du är klar med självstudien. Om du stänger och öppnar det igen måste du köra kommandona en gång till.
+1. Starta **PowerShell**. Behåll Azure PowerShell öppen tills hello slutet av den här kursen. Om du stänga och öppna måste toorun hello kommandon igen.
 
-    Kör följande kommando och ange det användarnamn och lösenord som du använder för att logga in i Azure Portal:
+    Kör följande kommando hello och ange hello användarnamn och lösenord som du använder toosign i toohello Azure-portalen:
 
     ```PowerShell
     Login-AzureRmAccount
     ```   
    
-    Kör följande kommando för att visa alla prenumerationer för det här kontot:
+    Kör följande kommando tooview hello alla hello prenumerationer för kontot:
 
     ```PowerShell
     Get-AzureRmSubscription
     ```
 
-    Kör följande kommando för att välja den prenumeration som du vill arbeta med. Ersätt **&lt;NameOfAzureSubscription**&gt; med namnet på din Azure-prenumeration:
+    Hello kör följande kommando tooselect hello prenumeration som du vill toowork med. Ersätt  **&lt;NameOfAzureSubscription** &gt; med hello namnet på din Azure-prenumeration:
 
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
-2. Skapa en Azure-resursgrupp med namnet **ADFTutorialResourceGroup** genom att köra följande kommando:
+2. Skapa en Azure-resursgrupp med namnet **ADFTutorialResourceGroup** genom att köra följande kommando hello:
 
     ```PowerShell
     New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
     
-    Vissa av stegen i den här självstudien förutsätter att du använder resursgruppen med namnet **ADFTutorialResourceGroup**. Om du använder en annan resursgrupp måste du använda den i stället för ADFTutorialResourceGroup i den här självstudiekursen.
-3. Kör cmdleten **New-AzureRmDataFactory** och skapa en datafabrik med namnet: **ADFTutorialDataFactoryPSH**:  
+    Några av hello stegen i den här självstudiekursen förutsätter att du använder hello resursgrupp med namnet **ADFTutorialResourceGroup**. Om du använder en annan resursgrupp måste toouse den i stället för ADFTutorialResourceGroup i den här självstudiekursen.
+3. Kör hello **ny AzureRmDataFactory** cmdlet toocreate en datafabrik som heter **ADFTutorialDataFactoryPSH**:  
 
     ```PowerShell
     $df=New-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH –Location "West US"
     ```
-    Det här namnet har kanske redan tagits. Därför bör namnet på datafabriken göras unikt genom att lägga till ett prefix eller suffix (till exempel: ADFTutorialDataFactoryPSH05152017) och köra kommandot igen.  
+    Det här namnet har kanske redan tagits. Därför att hello namn i hello data factory unika genom att lägga till ett prefix eller suffix (till exempel: ADFTutorialDataFactoryPSH05152017) och kör hello kommandot igen.  
 
-Observera följande punkter:
+Observera följande punkter hello:
 
-* Namnet på Azure Data Factory måste vara globalt unikt. Om du får följande fel ändrar du namnet (till exempel dittnamnADFTutorialDataFactoryPSH). Använd det här namnet i stället för ADFTutorialFactoryPSH när du utför stegen i självstudien. Se artikeln [Data Factory – namnregler](data-factory-naming-rules.md) för information om Data Factory-artefakter.
+* hello namn i hello Azure data factory måste vara globalt unika. Om du får följande fel hello ändra hello namn (till exempel yournameADFTutorialDataFactoryPSH). Använd det här namnet i stället för ADFTutorialFactoryPSH när du utför stegen i självstudien. Se artikeln [Data Factory – namnregler](data-factory-naming-rules.md) för information om Data Factory-artefakter.
 
     ```
     Data factory name “ADFTutorialDataFactoryPSH” is not available
     ```
-* Om du vill skapa Data Factory-instanser måste du vara deltagare/administratör för Azure-prenumerationen.
-* Namnet på datafabriken kan registreras som ett DNS-namn i framtiden och blir då synligt offentligt.
-* Följande fel kan visas: ”**Prenumerationen har inte registrerats för användning av namnområdet Microsoft.DataFactory.**” Gör något av följande och försök publicera igen:
+* toocreate Data Factory instanser måste du vara en deltagare eller en administratör för hello Azure-prenumeration.
+* hello namnet på hello data factory kan registreras som en DNS-namnet i hello framtida och därför bli synligt offentligt.
+* Du kan få hello följande fel ”:**den här prenumerationen är inte registrerad toouse namnområde Microsoft.DataFactory.**” Gör något av följande hello och försök att publicera igen:
 
-  * I Azure PowerShell kör du följande kommando för att registrera Data Factory-providern:
+  * Kör hello efter kommandot tooregister hello Data Factory-providern i Azure PowerShell:
 
     ```PowerShell
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
-    Du kan köra följande kommando om du vill kontrollera att Data Factory-providern är registrerad:
+    Kör följande kommando tooconfirm hello som hello Data Factory providern är registrerad:
 
     ```PowerShell
     Get-AzureRmResourceProvider
     ```
-  * Logga in i [Azure Portal](https://portal.azure.com) via Azure-prenumerationen. Gå till ett Data Factory-blad, eller skapa en datafabrik i Azure Portal. Med den här åtgärden registreras providern automatiskt.
+  * Logga in med hjälp av hello Azure-prenumeration toohello [Azure-portalen](https://portal.azure.com). Gå tooa Data Factory-bladet, eller skapa en datafabrik i hello Azure-portalen. Den här åtgärden registrerar automatiskt hello-providern för dig.
 
 ## <a name="create-linked-services"></a>Skapa länkade tjänster
-Du kan skapa länkade tjänster i en datafabrik för att länka ditt datalager och beräkna datafabrik-tjänster. I den här självstudiekursen kommer använder du inte någon beräkningstjänst, till exempel Azure HDInsight eller Azure Data Lake Analytics. Du använder två datalager av typen Azure Storage (källa) och Azure SQL Database (mål). 
+Du kan skapa länkade tjänster i en data factory toolink dina data lagras och beräkna services toohello data factory. I den här självstudiekursen kommer använder du inte någon beräkningstjänst, till exempel Azure HDInsight eller Azure Data Lake Analytics. Du använder två datalager av typen Azure Storage (källa) och Azure SQL Database (mål). 
 
 Därför kan du skapa två länkade tjänster som heter AzureStorageLinkedService och AzureSqlLinkedService av typerna: AzureStorage och AzureSqlDatabase.  
 
-AzureStorageLinkedService länkar ditt Azure Storage-konto till datafabriken. Använd det lagringskonto i vilket du skapade en behållare och laddade upp data under [förberedelsestegen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
+Hej AzureStorageLinkedService länkar din Azure storage-konto toohello data factory. Det här lagringskontot är hello något som du skapade en behållare och överföra hello data som en del av [krav](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).   
 
-AzureSqlLinkedService länkar din Azure SQL-databas till datafabriken. Data som kopieras från blob-lagringen sparas i den här databasen. Du har skapat den tomma tabellen i den här databasen som en del av [förhandskraven](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
+AzureSqlLinkedService länkar din Azure SQL database toohello data factory. hello-data som kopieras från hello blob storage lagras i den här databasen. Du har skapat hello tomma tabellen i den här databasen som en del av [krav](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md). 
 
 ### <a name="create-a-linked-service-for-an-azure-storage-account"></a>Skapa en länkad tjänst för ett Azure-lagringskonto
-I det här steget länkar du ditt Azure-lagringskonto till datafabriken.
+I det här steget kan länka du din Azure storage-konto tooyour data factory.
 
-1. Skapa en JSON-fil med namnet **AzureStorageLinkedService.json** i mappen **C:\ADFGetStartedPSH** med följande innehåll: (skapa mappen ADFGetStartedPSH om den inte redan finns.)
+1. Skapa en JSON-fil med namnet **AzureStorageLinkedService.json** i **C:\ADFGetStartedPSH** mapp med hello följande innehåll: (skapa hello mapp ADFGetStartedPSH om den inte redan finns).
 
     > [!IMPORTANT]
-    > Ersätt &lt;accountname&gt; och &lt;accountkey&gt; med namnet och nyckeln för ditt Azure-lagringskonto innan du sparar filen. 
+    > Ersätt &lt;accountname&gt; och &lt;accountkey&gt; med namnet och nyckeln för ditt Azure storage-konto innan du sparar hello-filen. 
 
     ```json
     {
@@ -158,13 +158,13 @@ I det här steget länkar du ditt Azure-lagringskonto till datafabriken.
         }
      }
     ``` 
-2. I **Azure PowerShell** växlar du till appen **ADFGetStartedPSH**.
-4. Kör cmdleten **New-AzureRmDataFactoryLinkedService** för att skapa den länkade tjänsten: **AzureStorageLinkedService**. Med den här cmdleten och andra Data Factory-cmdlets som du använder i den här självstudien måste du ange värden för parametrarna **ResourceGroupName** och **DataFactoryName**. Du kan också skicka DataFactory-objektet som returnerades av cmdlet:en New-AzureRmDataFactory utan att ange ResourceGroupName och DataFactoryName varje gång du kör en cmdlet. 
+2. I **Azure PowerShell**, växla toohello **ADFGetStartedPSH** mapp.
+4. Kör hello **ny AzureRmDataFactoryLinkedService** cmdlet toocreate hello länkade tjänsten: **AzureStorageLinkedService**. Denna cmdlet och andra Data Factory-cmdletar som du använder i den här kursen kräver att du toopass värden för hello **ResourceGroupName** och **DataFactoryName** parametrar. Du kan också skicka hello DataFactory objektet som returnerades av hello ny AzureRmDataFactory cmdlet utan att ange ResourceGroupName och DataFactoryName varje gång du kör en cmdlet. 
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
     ```
-    Här är exempel på utdata:
+    Här är exempel på utdata från hello:
 
     ```
     LinkedServiceName : AzureStorageLinkedService
@@ -174,16 +174,16 @@ I det här steget länkar du ditt Azure-lagringskonto till datafabriken.
     ProvisioningState : Succeeded
     ``` 
 
-    Andra sätt att skapa den här länkade tjänsten är att ange resursgruppens namn och datafabriksnamnet istället för att ange DataFactory-objektet.  
+    Andra sätt att skapa den här länkade tjänsten är toospecify resursgruppens namn och datafabriksnamnet istället för att ange hello DataFactory objekt.  
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService -ResourceGroupName ADFTutorialResourceGroup -DataFactoryName <Name of your data factory> -File .\AzureStorageLinkedService.json
     ```
 
 ### <a name="create-a-linked-service-for-an-azure-sql-database"></a>Skapa en länkad tjänst för en Azure SQL Database
-I det här steget länkar du Azure SQL-databasen till din datafabrik.
+I det här steget kan länka du din Azure SQL database tooyour data factory.
 
-1. Skapa en JSON-fil med namnet AzureSqlLinkedService.json i mappen C:\ADFGetStartedPSH med följande innehåll:
+1. Skapa en JSON-fil som heter AzureSqlLinkedService.json i C:\ADFGetStartedPSH mappen med hello följande innehåll:
 
     > [!IMPORTANT]
     > Ersätt &lt;servername&gt;, &lt;databasename&gt;, &lt;username@servername&gt; och &lt;password&gt; med namnen för Azure SQL-servern, databasen, användarkontot och lösenordet.
@@ -199,13 +199,13 @@ I det här steget länkar du Azure SQL-databasen till din datafabrik.
         }
      }
     ```
-2. Kör följande kommando för att skapa en länkad tjänst:
+2. Kör följande kommando toocreate hello en länkad tjänst:
 
     ```PowerShell
     New-AzureRmDataFactoryLinkedService $df -File .\AzureSqlLinkedService.json
     ```
     
-    Här är exempel på utdata:
+    Här är exempel på utdata från hello:
 
     ```
     LinkedServiceName : AzureSqlLinkedService
@@ -215,26 +215,26 @@ I det här steget länkar du Azure SQL-databasen till din datafabrik.
     ProvisioningState : Succeeded
     ```
 
-   Bekräfta att inställningen **Tillåt åtkomst till Azure-tjänster** är aktiverad för SQL-databasservern. Gör så här för att kontrollera och aktivera den:
+   Bekräfta att **och ge åtkomst tooAzure tjänster** inställningen är aktiverad för SQL-databasservern. tooverify och den aktiveras, hello följande steg:
 
-    1. Logga in på [Azure-portalen](https://portal.azure.com)
-    2. Klicka på **fler tjänster >** till vänster och klicka på **SQL-servrar** i kategorin **DATABASER**.
-    3. Markera din server i listan över SQL-servrar.
-    4. Klicka på länken **Visa brandväggsinställningar** på SQL server-bladet.
-    5. På bladet **Brandväggsinställningar** klickar du på **På** för **Tillåt åtkomst till Azure-tjänster**.
-    6. Klicka på **Spara** i verktygsfältet. 
+    1. Logga in toohello [Azure-portalen](https://portal.azure.com)
+    2. Klicka på **fler tjänster >** hello vänster och klicka på **SQL-servrar** i hello **databaser** kategori.
+    3. Markera din server i hello lista över SQL-servrar.
+    4. Klicka på hello SQL server-bladet **visa brandväggsinställningar** länk.
+    5. I hello **brandväggsinställningar** bladet, klickar du på **ON** för **och ge åtkomst tooAzure tjänster**.
+    6. Klicka på **spara** hello i verktygsfältet. 
 
 ## <a name="create-datasets"></a>Skapa datauppsättningar
-I det föregående steget skapade du kopplade tjänster för att länka ett Azure-lagringskonto och en Azure SQL-databas till datafabriken. I det här steget definierar du två datauppsättningar – InputDataset och OutputDataset – som visar in- och utdata som lagras i de datalager som refereras till av AzureStorageLinkedService och AzureSqlLinkedService.
+I föregående steg hello Skapa länkade tjänster toolink dina Azure Storage-konto och Azure SQL database tooyour data factory. I det här steget definierar du två datamängder som heter InputDataset och OutputDataset som representerar indata och utdata som är lagrad i hello datalager som anges av AzureStorageLinkedService och AzureSqlLinkedService respektive.
 
-Den länkade Azure storage-tjänsten anger anslutningssträngen som Data Factory-tjänsten använder vid körning för att ansluta till ditt Azure storage-konto. Och en indatauppsättning anger vilken blobbehållare och mapp som innehåller indata.  
+hello länkad Azure storage-tjänst anger hello anslutningssträngen som Data Factory-tjänsten använder vid körning tooconnect tooyour Azure storage-konto. Och hello inkommande blobbdatauppsättning (InputDataset) anger hello-behållaren och hello-mapp som innehåller hello indata.  
 
-Den länkade Azure SQL-databasen anger anslutningssträngen som Data Factory-tjänsten använder vid körning för att ansluta till ditt Azure SQL-databas. Och utdatauppsättningen (OutputDataset) för SQL-tabellen anger tabellen i databasen som data kopieras till från blob-lagringen. 
+På samma sätt anger hello Azure SQL Database länkad tjänst hello anslutningssträngen som Data Factory-tjänsten använder vid körning tooconnect tooyour Azure SQL-databas. Och hello utgående SQL tabell datauppsättningen (OututDataset) anger hello tabellen i hello databasen toowhich hello kopieras data från hello blob storage. 
 
 ### <a name="create-an-input-dataset"></a>Skapa en indatauppsättning
-I det här steget skapar du en datauppsättning med namnet InputDataset som pekar på en blobfil (emp.ext) i rotmappen i en blobbehållare (adftutorial) i Azure Storage som representeras av den länkade tjänsten AzureStorageLinkedService. Om du inte anger ett värde för filnamnet (eller hoppar över det), kommer data från alla blobbar i indatamappen att kopieras till målet. I den här kursen anger du ett värde för filnamnet.  
+I det här steget skapar du en datauppsättning med namnet InputDataset som pekar tooa blob-fil (emp.txt) i blob-behållaren (adftutorial) hello rotmapp i hello Azure Storage som representeras av hello AzureStorageLinkedService länkade tjänsten. Om du inte ange ett värde för hello filnamn (eller hoppa över den), är data från alla blobbar i hello inkommande mappen kopierade toohello mål. I kursen får ange du ett värde för hello filnamnet.  
 
-1. Skapa en JSON-fil med namnet **InputDataset.json** i mappen **C:\ADFGetStartedPSH** med följande innehåll:
+1. Skapa en JSON-fil med namnet **InputDataset.json** i hello **C:\ADFGetStartedPSH** mapp med hello följande innehåll:
 
     ```json
     {
@@ -269,26 +269,26 @@ I det här steget skapar du en datauppsättning med namnet InputDataset som peka
      }
     ```
 
-    Följande tabell innehåller beskrivningar av de JSON-egenskaper som användes i kodfragmentet:
+    hello innehåller följande tabell beskrivningar för hello JSON egenskaper som används i hello fragment:
 
     | Egenskap | Beskrivning |
     |:--- |:--- |
-    | typ | Typegenskapen har angetts till **AzureBlob** eftersom det finns data i Azure Blob-lagringen. |
-    | linkedServiceName | Refererar till **AzureStorageLinkedService** som du skapade tidigare. |
-    | folderPath | Anger vilken **blobbehållare** och **mapp** som innehåller indatablobbar. I den här självstudiekursen adftutorial är blob-behållaren och -mappen rotmappen. | 
-    | fileName | Den här egenskapen är valfri. Om du tar bort egenskapen kommer alla filer från folderPath hämtas. I den här självstudiekursen har angetts **emp.txt** som filnamn så att endast den filen hämtas för bearbetning. |
-    | format -> typ |Indatafilen är i textformat, så vi använder **TextFormat**. |
-    | columnDelimiter | Kolumner i loggfilerna avgränsas med **kommatecken (`,`)**. |
-    | frekvens/intervall | Frekvensen är **timme** och intervallet är **1**, vilket innebär att indatasektorerna är tillgängliga en gång i **timmen**. Det betyder att tjänsten Data Factory söker efter indata varje timme i rotmappen för den angivna blobbehållaren (**adftutorial**). Den söker data i pipelinens start- och sluttider och inte före eller efter dessa tider.  |
-    | extern | Den här egenskapen anges som **true** om indatan inte skapades av denna pipeline. Inkommande data i den här självstudien finns i filen emp.txt som genereras av denna pipeline, så vi ställer in den här egenskapen på true. |
+    | typ | hello typegenskapen har ställts in för**AzureBlob** eftersom data finns i ett Azure blob storage. |
+    | linkedServiceName | Refererar toohello **AzureStorageLinkedService** som du skapade tidigare. |
+    | folderPath | Anger hello blob **behållare** och hello **mappen** som innehåller inkommande blobbar. I den här självstudiekursen adftutorial är hello blob-behållaren och mappen är hello rotmappen. | 
+    | fileName | Den här egenskapen är valfri. Om du utesluter den här egenskapen har alla filer från hello folderPath plockats. I den här självstudiekursen **emp.txt** har angetts för hello filnamn, så att endast filen hämtas för bearbetning. |
+    | format -> typ |hello indatafilen är i hello-format, så vi använder **TextFormat**. |
+    | columnDelimiter | hello kolumner i hello indatafilen avgränsas med **kommatecken tecken (`,`)**. |
+    | frekvens/intervall | hello frekvens har angetts för**timme** och intervallet anges för**1**, vilket innebär att hello indata segment är tillgängliga **varje timme**. Med andra ord hello Data Factory-tjänsten söker efter indata varje timme i hello rotmapp blob-behållaren (**adftutorial**) du har angett. Det ser ut för hello data inom hello pipeline start- och tider, inte före eller efter dessa tider.  |
+    | extern | Den här egenskapen anges för**SANT** om hello data inte genereras av denna pipeline. hello inkommande data i den här självstudiekursen har hello emp.txt fil, som genereras av denna pipeline, så vi ställa in den här egenskapen tootrue. |
 
     Mer information om de här JSON-egenskaperna finns i artikeln [Azure Blob-anslutningsapp](data-factory-azure-blob-connector.md#dataset-properties).
-2. Kör följande kommando för att skapa Data Factory-datauppsättningen.
+2. Kör följande kommando toocreate hello Data Factory dataset hello.
 
     ```PowerShell  
     New-AzureRmDataFactoryDataset $df -File .\InputDataset.json
     ```
-    Här är exempel på utdata:
+    Här är exempel på utdata från hello:
 
     ```
     DatasetName       : InputDataset
@@ -303,9 +303,9 @@ I det här steget skapar du en datauppsättning med namnet InputDataset som peka
     ```
 
 ### <a name="create-an-output-dataset"></a>Skapa en datauppsättning för utdata
-I den här delen av steget ska du skapa en utdatauppsättning med namnet **OutputDataset**. Den här datauppsättningen pekar på en SQL-tabell i Azure SQL-databasen som representeras av **AzureSqlLinkedService**. 
+I den här delen av hello steget skapar du en datamängd för utdata som heter **OutputDataset**. Denna dataset pekar tooa SQL-tabellen i hello Azure SQL-databas som representeras av **AzureSqlLinkedService**. 
 
-1. Skapa en JSON-fil med namnet **OutputDataset.json** i mappen **C:\ADFGetStartedPSH** med följande innehåll:
+1. Skapa en JSON-fil med namnet **OutputDataset.json** i hello **C:\ADFGetStartedPSH** mapp med hello följande innehåll:
 
     ```json
     {
@@ -334,25 +334,25 @@ I den här delen av steget ska du skapa en utdatauppsättning med namnet **Outpu
     }
     ```
 
-    Följande tabell innehåller beskrivningar av de JSON-egenskaper som användes i kodfragmentet:
+    hello innehåller följande tabell beskrivningar för hello JSON egenskaper som används i hello fragment:
 
     | Egenskap | Beskrivning |
     |:--- |:--- |
-    | typ | Typegenskapen är **AzureSqlTable** eftersom data kopieras till en tabell i en Azure SQL-databas. |
-    | linkedServiceName | Refererar till **AzureSqlLinkedService** som du skapade tidigare. |
-    | tableName | Ange **tabellen** dit data kopieras. | 
-    | frekvens/intervall | Frekvensen är inställd på **timme** och intervallet är **1**, vilket innebär att utdatasegment produceras **varje timme** mellan pipelinens start- och sluttider, inte före eller efter dessa tider.  |
+    | typ | hello typegenskapen har ställts in för**AzureSqlTable** eftersom data är kopierade tooa tabell i Azure SQL-databas. |
+    | linkedServiceName | Refererar toohello **AzureSqlLinkedService** som du skapade tidigare. |
+    | tableName | Angivna hello **tabell** toowhich hello data kopieras. | 
+    | frekvens/intervall | hello frekvens har angetts för**timme** och är **1**, vilket innebär att hello utdata segment produceras **varje timme** mellan hello pipeline start och slut tider inte före eller När dessa tider.  |
 
-    Det finns tre kolumner – **ID**, **FirstName** och **LastName** – i emp-tabellen i databasen. ID är en identitetskolumn, så du anger bara **FirstName** och **LastName** här.
+    Det finns tre kolumner – **ID**, **Förnamn**, och **efternamn** – i hello tomma tabellen i hello-databasen. ID: T är en identitetskolumn, så du behöver bara toospecify **Förnamn** och **efternamn** här.
 
     Mer information om de här JSON-egenskaperna finns i artikeln [Azure SQL-anslutningsapp](data-factory-azure-sql-connector.md#dataset-properties).
-2. Skapa datafabriksdatauppsättningen genom att köra följande kommando.
+2. Kör följande kommando toocreate hello data factory dataset hello.
 
     ```PowerShell   
     New-AzureRmDataFactoryDataset $df -File .\OutputDataset.json
     ```
 
-    Här är exempel på utdata:
+    Här är exempel på utdata från hello:
 
     ```
     DatasetName       : OutputDataset
@@ -369,16 +369,16 @@ I den här delen av steget ska du skapa en utdatauppsättning med namnet **Outpu
 ## <a name="create-a-pipeline"></a>Skapa en pipeline
 I det här steget ska du skapa en pipeline med en **kopieringsaktivitet** som använder **InputDataset** som indata och **OutputDataset** som utdata.
 
-Schemat styrs för närvarande av utdatamängd. I den här självstudiekursen är datamängden för utdata konfigurerad för att skapa ett segment en gång i timmen. Pipelinen har en starttid och sluttid som är en dag från varandra, vilket är 24 timmar. Därför produceras 24 segment för utdatauppsättningen av pipeline. 
+Datamängd för utdata är för närvarande vilka enheter hello schema. I den här kursen är utdatauppsättningen konfigurerade tooproduce ett segment en gång i timmen. hello pipeline har en starttid och sluttid som är en dag från varandra, vilket är 24 timmar. Därför produceras 24 segment för utdatauppsättningen av hello pipeline. 
 
 
-1. Skapa en JSON-fil med namnet **ADFTutorialPipeline.json** i mappen **C:\ADFGetStartedPSH** med följande innehåll:
+1. Skapa en JSON-fil med namnet **ADFTutorialPipeline.json** i hello **C:\ADFGetStartedPSH** mapp med hello följande innehåll:
 
     ```json   
     {
       "name": "ADFTutorialPipeline",
       "properties": {
-        "description": "Copy data from a blob to Azure SQL table",
+        "description": "Copy data from a blob tooAzure SQL table",
         "activities": [
           {
             "name": "CopyFromBlobToSQL",
@@ -416,28 +416,28 @@ Schemat styrs för närvarande av utdatamängd. I den här självstudiekursen ä
       }
     } 
     ```
-    Observera följande punkter:
+    Observera följande punkter hello:
    
-    - I avsnittet Aktiviteter finns det bara en aktivitet vars **typ** anges till **Kopia**. Se artikeln [Dataförflyttningsaktiviteter](data-factory-data-movement-activities.md) för information om kopieringsaktiviteten. I Data Factory-lösningar, kan du också använda [datatransformeringsaktiviteter](data-factory-data-transformation-activities.md).
-    - Indata för aktiviteten är inställd på **InputDataset** och utdata för aktiviteten är inställd på **OutputDataset**. 
-    - I avsnittet för **typeProperties** har **BlobSource** angetts som källtyp och **SqlSink** har angetts som mottagartyp. En fullständig lista över datakällor som stöds av kopieringsaktiviteten som källor och mottagare finns i [Datalager som stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Klicka på länken i tabellen om du vill veta hur du använder ett visst datalager som stöds som källa/mottagare.  
+    - Under hello aktiviteter är bara en aktivitet vars **typen** har angetts för**kopiera**. Läs mer om hello kopieringsaktiviteten [data movement aktiviteter](data-factory-data-movement-activities.md). I Data Factory-lösningar, kan du också använda [datatransformeringsaktiviteter](data-factory-data-transformation-activities.md).
+    - Indata för hello aktiviteten är inställd för**InputDataset** och utdata för hello aktiviteten är inställd för**OutputDataset**. 
+    - I hello **typeProperties** avsnittet **BlobSource** har angetts som hello källtypen och **SqlSink** har angetts som hello Mottagartypen. En fullständig lista över datakällor som stöds av hello kopieringsaktiviteten som källor och sänkor finns [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats). toolearn hur toouse en specifik stöds data lagras som en källor/mottagare, klicka länken hello i hello tabell.  
      
-    Ersätt värdet i **start**egenskapen med den aktuella dagen och **slut**värdet med nästa dag. Du kan ange endast datumdelen och hoppa över tidsvärdet. Till exempel ”2016-02-03” som motsvarar ”2016-02-03T00:00:00Z”
+    Ersätt hello värdet för hello **starta** egenskap med hello aktuell dag och **end** värdet med hello nästa dag. Du kan ange endast hello DatumDel och hoppa över hello time-delen av hello datum och tid. Till exempel ”2016-02-03”, vilket motsvarar för ”2016-02-03T00:00:00Z”
      
-    Både start- och slutdatum måste vara i [ISO-format](http://en.wikipedia.org/wiki/ISO_8601). Exempel: 2016-10-14T16:32:41Z. **Sluttiden** är valfri, men vi använder den i den här självstudiekursen. 
+    Både start- och slutdatum måste vara i [ISO-format](http://en.wikipedia.org/wiki/ISO_8601). Exempel: 2016-10-14T16:32:41Z. Hej **end** tid är valfritt, men vi använda den i den här självstudiekursen. 
      
-    Om du inte anger värdet för **slut**egenskapen, beräknas det som ”**start + 48 timmar**”. Om du vill köra pipelinen på obestämd tid, anger du **9999-09-09** som värde för **slut**egenskapen.
+    Om du inte anger värdet för hello **end** egenskapen, det beräknas som ”**start + 48 timmar**”. toorun hello pipeline på obestämd tid, ange **9999-09-09** som hello värde hello **end** egenskapen.
      
-    I det föregående exemplet finns det 24 datasektorer eftersom varje datasektor skapas varje timme.
+    I föregående exempel hello, finns det 24 datasektorer som varje datasektorn produceras per timma.
 
     Beskrivningar av JSON-egenskaper i en pipeline-definition finns i artikeln [skapa pipelines](data-factory-create-pipelines.md). Beskrivningar av JSON-egenskaper i en kopieringsaktivitet-definition finns i artikeln [aktiviteter för dataflyttning](data-factory-data-movement-activities.md). Beskrivningar av JSON-egenskaper som stöds av BlobSource finns i artikeln [Azure Blob-anslutningsapp](data-factory-azure-blob-connector.md). Beskrivningar av JSON-egenskaper som stöds av SqlSink finns i artikeln [Azure SQL Database-anslutningsapp](data-factory-azure-sql-connector.md).
-2. Kör följande kommando för att skapa datafabrikstabellen.
+2. Kör följande kommando toocreate hello data factory-tabell hello.
 
     ```PowerShell   
     New-AzureRmDataFactoryPipeline $df -File .\ADFTutorialPipeline.json
     ```
 
-    Här är exempel på utdata: 
+    Här är exempel på utdata från hello: 
 
     ```
     PipelineName      : ADFTutorialPipeline
@@ -447,12 +447,12 @@ Schemat styrs för närvarande av utdatamängd. I den här självstudiekursen ä
     ProvisioningState : Succeeded
     ```
 
-**Grattis!** Du har skapat en Azure-datafabrik med en pipeline för att kopiera data från en Azure blob-lagring till en Azure SQL-databas. 
+**Grattis!** Du har skapat ett Azure data factory med en rörledning toocopy data från Azure blob storage tooan Azure SQL-databas. 
 
-## <a name="monitor-the-pipeline"></a>Övervaka pipeline
-I det här steget använder du Azure PowerShell till att övervaka vad som händer i en Azure Data Factory.
+## <a name="monitor-hello-pipeline"></a>Övervakaren hello pipeline
+I det här steget använder du Azure PowerShell toomonitor vad som händer i ett Azure data factory.
 
-1. Ersätt &lt;DataFactoryName&gt; med namnet på din datafabrik och kör **Get-AzureRmDataFactory**. Tilldela en utdatan till en $df-variabel.
+1. Ersätt &lt;DataFactoryName&gt; med hello namn för din data factory och kör **Get-AzureRmDataFactory**, och tilldela hello utdata tooa variabeln $df.
 
     ```PowerShell  
     $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name <DataFactoryName>
@@ -463,7 +463,7 @@ I det här steget använder du Azure PowerShell till att övervaka vad som händ
     $df=Get-AzureRmDataFactory -ResourceGroupName ADFTutorialResourceGroup -Name ADFTutorialDataFactoryPSH0516
     ```
     
-    Skriv sedan ut innehållet i $df för att se följande utdata: 
+    Kör sedan skriva ut hello innehållet i $df toosee hello följande utdata: 
     
     ```
     PS C:\ADFGetStartedPSH> $df
@@ -476,15 +476,15 @@ I det här steget använder du Azure PowerShell till att övervaka vad som händ
     Properties        : Microsoft.Azure.Management.DataFactories.Models.DataFactoryProperties
     ProvisioningState : Succeeded
     ```
-2. Kör **Get-AzureRmDataFactorySlice** att få information om alla sektorer av **OutputDataset**, vilket är utdatan för pipelinen.  
+2. Kör **Get-AzureRmDataFactorySlice** tooget information om alla segment av hello **OutputDataset**, vilket är hello utdatauppsättningen för hello pipeline.  
 
     ```PowerShell   
     Get-AzureRmDataFactorySlice $df -DatasetName OutputDataset -StartDateTime 2017-05-11T00:00:00Z
     ```
 
-   Den här inställningen måste matcha **Start**-värdet i pipelinens JSON. Du bör se 24 sektorer, en för varje timme från kl. 12:00 den aktuella dagen till 12:00 nästa dag.
+   Den här inställningen ska matcha hello **starta** värdet i hello pipeline-JSON. Du bör se 24 segment, en för varje timme från 12: 00 av hello dagens too12 är av hello nästa dag.
 
-   Här följer tre exempelsegment från utdata: 
+   Här följer tre exempel segment från hello utdata: 
 
     ``` 
     ResourceGroupName : ADFTutorialResourceGroup
@@ -520,13 +520,13 @@ I det här steget använder du Azure PowerShell till att övervaka vad som händ
     LatencyStatus     :
     LongRetryCount    : 0
     ```
-3. Kör **Get-AzureRmDataFactoryRun** för att hämta information om aktiviteten som körs för en **viss** sektor. Kopiera datum-/tid-värde från utdata från det föregående kommandot för att ange värdet för parametern StartDateTime. 
+3. Kör **Get-AzureRmDataFactoryRun** tooget hello information om aktivitet körs för en **specifika** sektorn. Kopiera hello datetime-värde från hello utdata från hello föregående kommando toospecify hello värde för hello StartDateTime parameter. 
 
     ```PowerShell  
     Get-AzureRmDataFactoryRun $df -DatasetName OutputDataset -StartDateTime "5/11/2017 09:00:00 PM"
     ```
 
-   Här är exempel på utdata: 
+   Här är exempel på utdata från hello: 
 
     ```
     Id                  : c0ddbd75-d0c7-4816-a775-704bbd7c7eab_636301332000000000_636301368000000000_OutputDataset
@@ -551,20 +551,20 @@ I det här steget använder du Azure PowerShell till att övervaka vad som händ
 Se [Cmdlet-referens för Data Factory](/powershell/module/azurerm.datafactories) för omfattande dokumentation om Data Factory-cmdletar.
 
 ## <a name="summary"></a>Sammanfattning
-I den här självstudien har du skapat en Azure-datafabrik som kopierar data från en Azure-blobb till en Azure SQL-databas. Du använde PowerShell till att skapa datafabriken, länkade tjänster, datauppsättningar och en pipeline. Här är de avancerade steg som du utförde i självstudien:  
+I kursen får skapat du ett Azure data factory toocopy data från Azure blob tooan Azure SQL-databas. Du kan använda PowerShell toocreate hello data factory, länkade tjänster, datauppsättningar och en pipeline. Här följer hello anvisningar som du utförde i den här kursen:  
 
 1. Du skapade en Azure **Data Factory**.
 2. Du skapade **länkade tjänster**:
 
-   a. En länkad **Azure Storage**-tjänst som länkar Azure-lagringskontot som innehåller indata.     
-   b. En länkad **Azure SQL**-tjänst som länkar den SQL-databas som innehåller utdata.
+   a. En **Azure Storage** länkade tjänsten toolink ditt Azure storage-konto som innehåller data som indata.     
+   b. En **Azure SQL** länkade tjänsten toolink din SQL-databas som innehåller hello utdata.
 3. Du skapade **datauppsättningar** som beskriver indata och utdata för pipelines.
-4. Du skapade en **pipeline** med **Kopiera aktivitet**, med **BlobSource** som källa och **SqlSink** som mottagare.
+4. Skapa en **pipeline** med **Kopieringsaktiviteten**, med **BlobSource** som hello källa och **SqlSink** som hello mottagare.
 
 ## <a name="next-steps"></a>Nästa steg
-I den här kursen används Azure blob storage som ett datalager för källa och en Azure SQL-databas som ett dataarkiv som mål i en kopieringsåtgärd. Följande tabell innehåller en lista över datalager som stöds som källor och mål av kopieringsaktiviteten: 
+I den här kursen används Azure blob storage som ett datalager för källa och en Azure SQL-databas som ett dataarkiv som mål i en kopieringsåtgärd. hello innehåller följande tabell en lista över datakällor som stöds som källor och mål av hello kopieringsaktiviteten: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../includes/data-factory-supported-data-stores.md)]
 
-För mer information om hur du kopierar data till/från ett datalager klickar du på länken för datalagret i tabellen. 
+toolearn om hur toocopy till eller från en databas, klicka länken hello för hello datalager i hello tabell. 
 

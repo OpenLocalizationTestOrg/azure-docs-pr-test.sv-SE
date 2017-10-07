@@ -1,5 +1,5 @@
 ---
-title: HD-baserade Standard kostnadseffektiv lagring och Azure VM diskar | Microsoft Docs
+title: aaaHD-baserade Standard kostnadseffektiv lagring och Azure VM diskar | Microsoft Docs
 description: Diskutera kostnadseffektiv standardlagring och ohanterade och hanterade Virtuella diskar.
 services: storage
 documentationcenter: 
@@ -14,52 +14,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: yuemlu
-ms.openlocfilehash: cdcc06844dce5df09b50a9a5f6a97a7a96a9ef48
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c454c61254c6b160bdf2cd39ea3319452e3e4898
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Kostnadseffektiv standardlagring och ohanterade och hanterade Virtuella Azure-diskar
 
-Azure standardlagring ger stöd för tillförlitlig, billig diskar för virtuella datorer som kör latens-okänslig arbetsbelastningar. Det stöder också blobbar, tabeller, köer och filer. Med standardlagring lagras data på hårddiskar (HDD). När du arbetar med virtuella datorer kan använda du standardlagring diskar för utveckling och testning scenarier och mindre viktiga arbetsbelastningar och premiumdiskar lagring för kritiska produktionsprogram. Standardlagring är tillgänglig i alla Azure-regioner. 
+Azure standardlagring ger stöd för tillförlitlig, billig diskar för virtuella datorer som kör latens-okänslig arbetsbelastningar. Det stöder också blobbar, tabeller, köer och filer. Med standardlagring lagras hello data på hårddiskar (HDD). När du arbetar med virtuella datorer kan använda du standardlagring diskar för utveckling och testning scenarier och mindre viktiga arbetsbelastningar och premiumdiskar lagring för kritiska produktionsprogram. Standardlagring är tillgänglig i alla Azure-regioner. 
 
-Den här artikeln fokuserar på att använda standardlagring för Virtuella diskar. Mer information om hur du använder lagring med blobbar, tabeller, köer och filer finns i den [introduktion till Storage](storage-introduction.md).
+Den här artikeln fokuserar på hello användningen av standardlagring för Virtuella diskar. Mer information om hello använder lagring med blobbar, tabeller, köer och filer finns toohello [introduktion tooStorage](storage-introduction.md).
 
 ## <a name="disk-types"></a>Disktyper
 
-Det finns två sätt att skapa standarddiskar för virtuella Azure-datorer:
+Det finns två sätt toocreate standarddiskar för virtuella Azure-datorer:
 
-**Ohanterad diskar**: Detta är den ursprungliga metoden där du hanterar storage-konton som används för att lagra VHD-filer som motsvarar VM-diskarna. VHD-filer lagras som sidblobbar i storage-konton. Ohanterad diskar kan kopplas till en Azure VM-storlek, inklusive de virtuella datorer som i första hand använder Premiumlagring, till exempel DSv2 och GS-serien. Virtuella Azure-datorer stöder bifoga flera standarddiskar tillåter upp till 256 TB lagringsutrymme per virtuell dator.
+**Ohanterad diskar**: Detta är hello ursprungliga metod där du hanterar hello lagring konton som används toostore hello VHD-filer som motsvarar toohello Virtuella diskar. VHD-filer lagras som sidblobbar i storage-konton. Ohanterad diskar kan vara anslutna tooany Azure VM-storlek, inklusive hello virtuella datorer som i första hand använder Premiumlagring, till exempel hello DSv2 och GS-serien. Virtuella Azure-datorer stöder bifoga flera standarddiskar tillåter upp too256 TB lagringsutrymme per virtuell dator.
 
-[**Azure-hanterade diskar**](storage-managed-disks-overview.md): funktionen hanterar storage-konton som används för de Virtuella diskarna för dig. Du anger typ (Premium eller Standard) och storlek på disk och Azure skapar och hanterar disken du. Du behöver inte bry dig om att placera diskarna över flera lagringskonton för att säkerställa att du håller dig inom skalbarhetsgränser lagringskontots--Azure hanterar som du.
+[**Azure-hanterade diskar**](storage-managed-disks-overview.md): den här funktionen hanterar hello storage-konton som används för hello Virtuella diskar som du. Du anger hello typ (Premium eller Standard) och storlek på disk och Azure skapar och hanterar hello disk du. Du har inte tooworry om placera hello diskar över flera lagringskonton i ordning tooensure du hålla sig inom hello skalbarhetsbegränsningar för hello lagringskonton--Azure hanterar som du.
 
-Även om båda typer av diskar är tillgängliga, bör du använda hanterade diskar dra nytta av de många funktionerna.
+Även om båda typer av diskar är tillgängliga, bör du använda hanterade diskar tootake nytta av de många funktionerna.
 
-Kom igång med Azure standardlagring, besök [Kom igång gratis](https://azure.microsoft.com/pricing/free-trial/). 
+Besök tooget igång med Azure standardlagring [Kom igång gratis](https://azure.microsoft.com/pricing/free-trial/). 
 
-För information om hur du skapar en virtuell dator med hanterade diskar, se något av följande artiklar.
+Mer information om hur toocreate en virtuell dator för hanterade diskar, finns en hello följande artiklar.
 
 * [Skapa en virtuell dator med Resource Manager och PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md)
-* [Skapa en virtuell Linux-dator med hjälp av Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md)
+* [Skapa en Linux VM som använder hello Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md)
 
 ## <a name="standard-storage-features"></a>Standardlagring funktioner 
 
-Låt oss ta en titt på några av funktionerna i standardlagring. Mer information, se [introduktion till Azure Storage](storage-introduction.md).
+Låt oss ta en titt på några av funktionerna hello standardlagring. Mer information, se [introduktion tooAzure lagring](storage-introduction.md).
 
-**Standardlagring**: Azure standardlagring stöder Azure-diskar, Azure BLOB, Azure File storage, Azure-tabeller och köer i Azure. Om du vill använda standardlagring services måste börja med [skapa ett Azure Storage-konto](storage-create-storage-account.md#create-a-storage-account).
+**Standardlagring**: Azure standardlagring stöder Azure-diskar, Azure BLOB, Azure File storage, Azure-tabeller och köer i Azure. toouse standardlagring tjänster, startar med [skapa ett Azure Storage-konto](storage-create-storage-account.md#create-a-storage-account).
 
-**Standard lagringsdiskar:** standardlagring diskar kan kopplas till alla virtuella datorer i Azure inklusive storlek-serien virtuella datorer som används med Premium-lagring, till exempel DSv2 och GS-serien. En standardlagring disk kan endast kopplas till en virtuell dator. Du kan dock koppla en eller flera av dessa diskar till en virtuell dator, upp till antalet maximal disk som definierats för denna VM-storlek. I följande avsnitt på Standard skalbarhets- och Storage prestandamål beskriver vi specifikationer i detalj. 
+**Standard lagringsdiskar:** standardlagring diskar kan vara ansluten tooall virtuella Azure-datorer inklusive storlek-serien virtuella datorer som används med Premium-lagring, till exempel hello DSv2 och GS-serien. En standardlagring disk kan bara vara anslutna tooone VM. Men kan du koppla en eller flera av dessa diskar tooa VM, in toohello maximala antal har definierats för denna VM-storlek. I följande avsnitt på Standard skalbarhets- och Storage prestandamål hello, kommer vi beskriver hello specifikationer i detalj. 
 
-**Standard sidblob**: Standard sidblobar används för att lagra beständiga diskar för virtuella datorer och kan också komma åt direkt via REST precis som andra typer av Azure-BLOB. [Sidblobbar](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) är en samling 512 byte-sidor som är optimerade för slumpmässiga Läs- och skrivåtgärder. 
+**Standard sidblob**: Standard sidblobbar är används toohold beständiga diskar för virtuella datorer och kan också komma åt direkt via REST precis som andra typer av Azure-BLOB. [Sidblobbar](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) är en samling 512 byte-sidor som är optimerade för slumpmässiga Läs- och skrivåtgärder. 
 
-**Storage-replikering:** i de flesta regioner data i ett standardlagringskonto kan vara lokalt replikerade eller georeplikerad i flera datacenter. Fyra typer av replikering är tillgängligt är lokalt Redundant lagring (LRS), Zonredundant lagring (ZRS), Geo-Redundant lagring (GRS) och Geo-Redundant lagring med läsbehörighet (RA-GRS). Hanterade diskar i standardlagring stöder för närvarande lokalt Redundant lagring (LRS) bara. Mer information finns [Lagringsreplikering](storage-redundancy.md).
+**Storage-replikering:** i de flesta regioner data i ett standardlagringskonto kan vara lokalt replikerade eller georeplikerad i flera datacenter. hello fyra typer av replikering som är tillgängliga är lokalt Redundant lagring (LRS), Zonredundant lagring (ZRS), Geo-Redundant lagring (GRS) och Geo-Redundant lagring med läsbehörighet (RA-GRS). Hanterade diskar i standardlagring stöder för närvarande lokalt Redundant lagring (LRS) bara. Mer information finns [Lagringsreplikering](storage-redundancy.md).
 
 ## <a name="scalability-and-performance-targets"></a>Mål för skalbarhet och prestanda
 
-I det här avsnittet beskriver vi de mål för skalbarhet och prestanda som du behöver tänka på när du använder standardlagring.
+I det här avsnittet beskriver vi hello skalbarhets- och prestandamål som du behöver tooconsider när med standardlagring.
 
-### <a name="account-limits--does-not-apply-to-managed-disks"></a>Lagringskontogränser – gäller inte för hanterade diskar
+### <a name="account-limits--does-not-apply-toomanaged-disks"></a>Lagringskontogränser – gäller inte toomanaged diskar
 
 | **Resurs** | **Standardgräns** |
 |--------------|-------------------|
@@ -68,51 +68,51 @@ I det här avsnittet beskriver vi de mål för skalbarhet och prestanda som du b
 | Maximalt antal utgående<sup>1</sup> per lagringskonto (oss regioner) | 20 Gbit/s om RA-GRS/GRS/ZRS aktiverad 30 Gbit/s för LRS |
 | Max ingång<sup>1</sup> per lagringskonto (Europeiska och östasiatiska regioner) | 5 Gbit/s om GRS/ZRS aktiverad, 10 Gbit/s för LRS |
 | Maximalt antal utgående<sup>1</sup> per lagringskonto (Europeiska och östasiatiska regioner) | 10 Gbit/s om RA-GRS/GRS/ZRS aktiverad 15 Gbit/s för LRS |
-| Begära frekvens (förutsatt att 1 KB Objektstorlek) per lagringskonto | Upp till 20 000 IOPS, enheter per sekund eller meddelanden per sekund |
+| Begära frekvens (förutsatt att 1 KB Objektstorlek) per lagringskonto | Konfigurera too20 000 IOPS, enheter per sekund eller meddelanden per sekund |
 
-<sup>1</sup> ingång refererar till alla data (antal begäranden) som skickas till ett lagringskonto. Utgående avser alla data (svar) tas emot från ett lagringskonto.
+<sup>1</sup> ingång refererar tooall data (antal begäranden) som skickas tooa storage-konto. Utgående refererar tooall data (svar) tas emot från ett lagringskonto.
 
 Mer information finns i [Azure Storage skalbarhets- och prestandamål](storage-scalability-targets.md).
 
-Om behov av programmet överskrider skalbarhetsmål för ett enda lagringskonto, skapa ditt program att använda flera lagringskonton och partitionera data mellan dessa lagringskonton. Alternativt kan du kan Azure hanterade diskar och Azure ska hantera partitionering och placering av dina data för dig.
+Om hello måste programmet överskrider hello skalbarhetsmål för ett enda lagringskonto, bygga program-toouse flera lagringskonton och partitionera data mellan dessa lagringskonton. Alternativt kan du kan Azure hanterade diskar och Azure ska hantera hello partitionering och placering av dina data för dig.
 
 ### <a name="standard-disks-limits"></a>Standarddiskar gränser
 
-Till skillnad från Premiumdiskar etableras i/o-åtgärder per sekund (IOPS) och dataflöde (bandbredd) standarddiskar inte. Prestanda för standarddiskar varierar beroende på VM-storlek på disken är ansluten, inte storleken på disken. Du kan förvänta dig att få upp till prestanda gränsen som anges i tabellen nedan.
+Till skillnad från Premiumdiskar etableras hello i/o-åtgärder per sekund (IOPS) och dataflöde (bandbredd) standarddiskar inte. hello prestanda för standarddiskar varierar beroende på hello VM toowhich hello disken kopplas inte toohello storleken på hello disk. Du kan förvänta dig tooachieve in toohello prestanda gränsen som anges i hello tabellen nedan.
 
 **Standarddiskar gränser (hanterade och ohanterade)**
 
 | **VM-nivå**            | **Grundnivån VM** | **Standardnivån VM** |
 |------------------------|-------------------|----------------------|
 | Max diskens storlek          | 4095 GB           | 4095 GB              |
-| Maximalt antal 8 KB IOPS per disk | Upp till 300         | Upp till 500            |
-| Max Bandwidth per disk | Upp till 60 MB/s     | Upp till 60 MB/s        |
+| Maximalt antal 8 KB IOPS per disk | Konfigurera too300         | Konfigurera too500            |
+| Max Bandwidth per disk | Konfigurera too60 MB/s     | Konfigurera too60 MB/s        |
 
-Om din arbetsbelastning kräver stöd för diskar med hög prestanda, låg latens, bör du använda Premium-lagring. Om du vill veta mer fördelarna med Premium-lagring finns [lagring med höga prestanda Premium och Azure VM diskar](storage-premium-storage.md). 
+Om din arbetsbelastning kräver stöd för diskar med hög prestanda, låg latens, bör du använda Premium-lagring. tooknow mer fördelarna med Premium-lagring finns [lagring med höga prestanda Premium och Azure VM diskar](storage-premium-storage.md). 
 
 ## <a name="snapshots-and-copy-blob"></a>Ögonblicksbilder och kopiera blob
 
-Till tjänsten Storage är VHD-filen en sidblobb. Du kan ta ögonblicksbilder av sidblobar och kopiera dem till en annan plats, till exempel ett annat lagringskonto.
+toohello lagringstjänsten hello VHD-filen är en sidblobb. Du kan ta ögonblicksbilder av sidblobar och kopiera dem tooanother plats, till exempel ett annat lagringskonto.
 
 ### <a name="unmanaged-disks"></a>Ohanterade diskar
 
-Du kan skapa [inkrementell ögonblicksbilder](storage-incremental-snapshots.md) för ohanterade standarddiskar på samma sätt som du kan använda ögonblicksbilder med standardlagring. Vi rekommenderar att du skapar ögonblicksbilderna och kopierar sedan dessa ögonblicksbilder till ett geo-redundant standardlagringskonto om källdisken är i ett lokalt redundant lagringskonto. Mer information finns i [Azure lagringsalternativ för redundans](storage-redundancy.md).
+Du kan skapa [inkrementell ögonblicksbilder](storage-incremental-snapshots.md) för ohanterade standard diskar i hello samma sätt som du använder ögonblicksbilder med standardlagring. Vi rekommenderar att du skapar ögonblicksbilderna och kopierar sedan dessa ögonblicksbilder tooa geo-redundant standardlagringskonto om källdisken är i ett lokalt redundant lagringskonto. Mer information finns i [Azure lagringsalternativ för redundans](storage-redundancy.md).
 
-Om en disk ansluten till en virtuell dator ska tillåts inte vissa API-åtgärder på diskarna. Du kan exempelvis utföra en [kopiera Blob](/rest/api/storageservices/Copy-Blob) åtgärden på blobben så länge disken som är kopplad till en virtuell dator. I stället först skapa en ögonblicksbild av blobben med hjälp av den [ögonblicksbild Blob](/rest/api/storageservices/Snapshot-Blob) REST API-metoden och utför sedan den [kopiera Blob](/rest/api/storageservices/Copy-Blob) av ögonblicksbilden kopiera ansluten disk. Alternativt kan du koppla bort disken och utföra alla nödvändiga åtgärder.
+Om en disk ansluten tooa VM tillåts inte vissa API-åtgärder på hello diskar. Du kan exempelvis utföra en [kopiera Blob](/rest/api/storageservices/Copy-Blob) åtgärden på blobben så länge hello disken är ansluten tooa VM. I stället först skapa en ögonblicksbild av blobben med hjälp av hello [ögonblicksbild Blob](/rest/api/storageservices/Snapshot-Blob) REST API-metoden och utför sedan hello [kopiera Blob](/rest/api/storageservices/Copy-Blob) av hello ögonblicksbild toocopy hello ansluten disk. Alternativt kan du koppla bort disk hello och utföra alla nödvändiga åtgärder.
 
-Om du vill behålla geo-redundant kopior av dina ögonblicksbilder, kan du kopiera ögonblicksbilder från ett lokalt redundant lagringskonto till ett geo-redundant standardlagringskonto med hjälp av AzCopy eller kopiera Blob. Mer information finns i [överföra data med kommandoradsverktyget Azcopy](storage-use-azcopy.md) och [kopiera Blob](/rest/api/storageservices/Copy-Blob).
+toomaintain geo-redundant kopior av dina ögonblicksbilder, du kan kopiera ögonblicksbilder från ett lokalt redundant lagring konto tooa geo-redundant standardlagringskonto med hjälp av AzCopy eller kopiera Blob. Mer information finns i [överföra data med kommandoradsverktyget Azcopy hello](storage-use-azcopy.md) och [kopiera Blob](/rest/api/storageservices/Copy-Blob).
 
 Detaljerad information om hur du utför REST-åtgärder mot sidblobbar i standard storage-konton finns [Azure Storage Services REST API](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
 
 ### <a name="managed-disks"></a>Hanterade diskar
 
-En ögonblicksbild för hanterade diskar är en skrivskyddad kopia av den hantera disken som lagras som en standard hanterade diskar. Inkrementell ögonblicksbilder stöds inte för närvarande för hanterade diskar, men kommer att stödjas framöver.
+En ögonblicksbild för hanterade diskar är en skrivskyddad kopia av hello hanterade diskar som lagras som en standard hanterade diskar. Inkrementell ögonblicksbilder stöds inte för närvarande för hanterade diskar men stöds i framtida hello.
 
-Om hanterade disken kopplas till en virtuell dator, tillåts inte vissa API-åtgärder på diskarna. Du kan till exempel generera en signatur för delad åtkomst (SAS) för att utföra en kopieringsåtgärd medan disken som är kopplad till en virtuell dator. I stället först skapa en ögonblicksbild av disken och kopiera ögonblicksbilden. Du kan också koppla bort disken och generera en signatur för delad åtkomst (SAS) för att utföra kopieringen.
+Om hanterade diskar är anslutna tooa VM, tillåts inte vissa API-åtgärder på hello diskar. Du kan till exempel generera en delad åtkomst (SAS)-signaturen tooperform en kopieringsåtgärd medan hello disken är anslutna tooa VM. I stället först skapa en ögonblicksbild av hello disken och sedan kopiera hello hello ögonblicksbilder. Du kan också koppla bort hello disken och sedan skapa en kopieringsåtgärd för delad åtkomst (SAS)-signaturen tooperform hello.
 
 ## <a name="pricing-and-billing"></a>Priser och fakturering
 
-När du använder standardlagring gäller fakturering följande:
+När du använder standardlagring hello följande för debitering:
 
 * Standardlagring ohanterad diskar/datastorlek 
 * Hanterade standarddiskar
@@ -120,15 +120,15 @@ När du använder standardlagring gäller fakturering följande:
 * Utgående dataöverföringar
 * Transaktioner
 
-**Ohanterad lagringsstorleken för data och disk:** för ohanterade diskar och andra data (blobbar, tabeller, köer och -filer), debiteras du bara den mängd utrymme som du använder. Till exempel om du har en virtuell dator vars sidblob har etablerats som 127 GB, men den virtuella datorn verkligen är du bara använder 10 GB utrymme du debiteras för 10 GB ledigt utrymme. Vi stöder standardlagring upp till 8191 GB och Standard ohanterad diskar upp till 4095 GB. 
+**Ohanterad lagringsstorleken för data och disk:** för ohanterade diskar och andra data (blobbar, tabeller, köer och -filer), debiteras du bara för hello mängden utrymme som du använder. Om du har en virtuell dator vars sidblob har etablerats som 127 GB, men hello VM verkligen är till exempel bara använder 10 GB utrymme du debiteras för 10 GB ledigt utrymme. Vi stöder standardlagring in too8191 GB och ohanterade standarddiskar in too4095 GB. 
 
-**Hanterade diskar:** hanterade diskar debiteras för den allokerade storleken. Om disken har etablerats som en disk på 10 GB och du bara använder 5 GB, ska du debiteras för etablera storleken på 10 GB.
+**Hanterade diskar:** hanterade diskar debiteras hello allokerade storleken. Om disken har etablerats som en disk på 10 GB och du bara använder 5 GB kan debiteras du fortfarande för hello etablera storlek på 10 GB.
 
-**Ögonblicksbilder**: ögonblicksbilder av standarddiskar debiteras för ytterligare kapacitet som används av ögonblicksbilder. Mer information om ögonblicksbilder finns [skapa en ögonblicksbild av en Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
+**Ögonblicksbilder**: ögonblicksbilder av standarddiskar debiteras för hello ytterligare kapacitet som används av hello ögonblicksbilder. Mer information om ögonblicksbilder finns [skapa en ögonblicksbild av en Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 
 **Utgående dataöverföringar**: [utgående dataöverföringar](https://azure.microsoft.com/pricing/details/data-transfers/) (data skickas från Azure-datacenter) debiteras för bandbreddsanvändning.
 
-**Transaktionen**: Azure debiterar $0.0036 per 100 000 transaktioner för standardlagring. Transaktioner omfattar både läs- och skrivåtgärder till lagringsutrymmet.
+**Transaktionen**: Azure debiterar $0.0036 per 100 000 transaktioner för standardlagring. Transaktioner omfattar både läs- och skrivaktiviteter operations toostorage.
 
 Detaljerad information om priser för standardlagring för finns virtuella datorer och hanterade diskar:
 
@@ -140,11 +140,11 @@ Detaljerad information om priser för standardlagring för finns virtuella dator
 
 Virtuella datorer med ohanterad diskar kan säkerhetskopieras med Azure Backup. [Mer information](../backup/backup-azure-vms-first-look-arm.md).
 
-Du kan också använda tjänsten Azure Backup med hanterade diskar för att skapa en säkerhetskopiering med tidsbaserade säkerhetskopieringar, enkelt VM-återställning och principer för lagring av säkerhetskopior.. Du kan läsa mer om detta i [med hjälp av Azure Backup-tjänsten för virtuella datorer med hanterade diskar](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
+Du kan också använda hello Azure Backup service med hanterade diskar toocreate en säkerhetskopiering med tidsbaserade säkerhetskopieringar, enkelt VM-återställning och säkerhetskopiering bevarandeprinciper. Du kan läsa mer om detta i [med hjälp av Azure Backup-tjänsten för virtuella datorer med hanterade diskar](../backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Introduktion till Azure Storage](storage-introduction.md)
+* [Introduktion tooAzure lagring](storage-introduction.md)
 
 * [Skapa ett lagringskonto](storage-create-storage-account.md)
 
@@ -152,4 +152,4 @@ Du kan också använda tjänsten Azure Backup med hanterade diskar för att skap
 
 * [Skapa en virtuell dator med Resource Manager och PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md)
 
-* [Skapa en virtuell Linux-dator med hjälp av Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md)
+* [Skapa en Linux VM som använder hello Azure CLI 2.0](../virtual-machines/linux/quick-create-cli.md)

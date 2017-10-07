@@ -1,5 +1,5 @@
 ---
-title: "Utforska data i Hive-tabeller med Hive-frågor | Microsoft Docs"
+title: "aaaExplore data i Hive-tabeller med Hive-frågor | Microsoft Docs"
 description: "Utforska data i Hive-tabeller med hjälp av Hive-frågor."
 services: machine-learning
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: 67a33a9abc3d3dcdd2fc7205e11feff97e3582a3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2ede3d41682aa08ced19284f7a83ec95e0c2a93a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Utforska data i Hive-tabeller med Hive-frågor
-Det här dokumentet innehåller exempel på Hive-skript som används för att utforska data i Hive-tabeller i ett HDInsight Hadoop-kluster.
+Det här dokumentet innehåller exempel Hive-skript som används tooexplore data i Hive-tabeller i ett HDInsight Hadoop-kluster.
 
-Följande **menyn** länkar till avsnitt som beskriver hur du använder Verktyg för att utforska data från olika miljöer för lagring.
+hello följande **menyn** länkar tootopics som beskriver hur toouse verktyg tooexplore data från olika miljöer för lagring.
 
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
@@ -31,18 +31,18 @@ Följande **menyn** länkar till avsnitt som beskriver hur du använder Verktyg 
 Den här artikeln förutsätter att du har:
 
 * Skapa ett Azure storage-konto. Om du behöver mer information, se [skapa ett Azure Storage-konto](../storage/common/storage-create-storage-account.md#create-a-storage-account)
-* Etablera ett anpassat Hadoop-kluster med HDInsight-tjänst. Om du behöver mer information, se [anpassa Azure HDInsight Hadoop-kluster för Advanced Analytics](machine-learning-data-science-customize-hadoop-cluster.md).
-* Data har överförts till Hive-tabeller i Azure HDInsight Hadoop-kluster. Om det inte har det, följ instruktionerna i [skapa och läsa in data till Hive-tabeller](machine-learning-data-science-move-hive-tables.md) först överföra data till Hive-tabeller.
-* Aktivera fjärråtkomst till klustret. Om du behöver mer information, se [komma åt det Head nod för Hadoop-kluster](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
-* Om du behöver information om hur du skicka Hive-frågor finns [så skicka Hive-frågor](machine-learning-data-science-move-hive-tables.md#submit)
+* Etablera ett anpassat Hadoop-kluster med hello HDInsight-tjänst. Om du behöver mer information, se [anpassa Azure HDInsight Hadoop-kluster för Advanced Analytics](machine-learning-data-science-customize-hadoop-cluster.md).
+* hello data har laddats upp tooHive tabeller i Azure HDInsight Hadoop-kluster. Om den inte har följer du anvisningarna för hello i [skapa och läsa in tooHive datatabeller](machine-learning-data-science-move-hive-tables.md) tooupload data tooHive tabeller först.
+* Aktivera fjärråtkomst toohello klustret. Om du behöver mer information, se [åtkomst hello Head-nod för Hadoop-kluster](machine-learning-data-science-customize-hadoop-cluster.md#headnode).
+* Om du behöver mer information om hur toosubmit Hive-frågor finns [hur tooSubmit Hive-frågor](machine-learning-data-science-move-hive-tables.md#submit)
 
 ## <a name="example-hive-query-scripts-for-data-exploration"></a>Exempelskript Hive-fråga för datagranskning
-1. Hämta antal observationer per partition`SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Hämta antal observationer per dag`SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
-3. Hämta nivåerna i en kategoriska kolumn  
+1. Hämta hello antal observationer per partition`SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. Hämta hello antal observationer per dag`SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+3. Hämta hello nivåer i en kategoriska kolumn  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Hämta antalet nivåer i kombination med två kategoriska kolumner`SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
-5. Hämta distribution för numeriska kolumner  
+4. Hämta hello antalet nivåer i kombination med två kategoriska kolumner`SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+5. Hämta hello distribution för numeriska kolumner  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
 6. Extrahera poster från två tabeller
    
@@ -72,5 +72,5 @@ Den här artikeln förutsätter att du har:
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>Ytterligare fråga skript för taxi resa datascenarier
-Exempel på frågor som är specifika för [NYC Taxi resa Data](http://chriswhong.com/open-data/foil_nyc_taxi/) scenarier finns också i [GitHub-lagringsplatsen](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). De här frågorna har angetts dataschemat redan och är redo att skickas till kör.
+Exempel på frågor som är specifika för[NYC Taxi resa Data](http://chriswhong.com/open-data/foil_nyc_taxi/) scenarier finns också i [GitHub-lagringsplatsen](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Dessa frågor som redan har angivna dataschemat och är redo toobe som skickats toorun.
 

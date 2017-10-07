@@ -1,6 +1,6 @@
 ---
-title: Installera Azure CLI 1.0 | Microsoft Docs
-description: "Installera Azure CLI 1.0 för Mac, Linux och Windows att börja använda Azure-tjänster"
+title: aaaInstall hello Azure CLI 1.0 | Microsoft Docs
+description: "Installera hello Azure CLI 1.0 för Mac, Linux och Windows toostart med hjälp av Azure-tjänster"
 editor: 
 manager: timlt
 documentationcenter: 
@@ -15,96 +15,96 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-ms.openlocfilehash: 63b35ed25b809a16b61b685fd35aa67474b0a369
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a8cd4e38fde6e4b17a768a7caecd280cd91a70f2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="install-the-azure-cli-10"></a>Installera Azure CLI 1.0
+# <a name="install-hello-azure-cli-10"></a>Installera hello Azure CLI 1.0
 > [!div class="op_single_selector"]
 > * [PowerShell](/powershell/azure/overview)
 > * [Azure CLI 1.0](cli-install-nodejs.md)
 > * [Azure CLI 2.0](/cli/azure/install-azure-cli)
 
 > [!IMPORTANT]
-> Det här avsnittet beskriver hur du installerar Azure CLI 1.0, som bygger på nodeJs och stöder alla klassisk distribution API-anrop, samt ett stort antal aktiviteter för Resource Manager distribution. Du bör använda den [Azure CLI 2.0](/cli/azure/overview) för nya eller framtida CLI-distribution och hantering.
+> Det här avsnittet beskrivs hur tooinstall hello Azure CLI version 1.0, som bygger på nodeJs och stöder alla klassisk distribution API-anrop samt ett stort antal aktiviteter för Resource Manager distribution. Du bör använda hello [Azure CLI 2.0](/cli/azure/overview) för nya eller framtida CLI-distribution och hantering.
 
-Snabbt installera Azure-kommandoradsgränssnittet (Azure CLI 1.0) om du vill använda en uppsättning med öppen källkod shell-baserade kommandon för att skapa och hantera resurser i Microsoft Azure. Du har flera alternativ för att installera verktygen plattformsoberoende på datorn:
+Snabbt installera hello Azure-kommandoradsgränssnittet (Azure CLI 1.0) toouse öppen källkod shell-baserade kommandon för att skapa och hantera resurser i Microsoft Azure. Har du flera alternativ tooinstall verktygen plattformsoberoende på datorn:
 
-* **npm paketet** -kör npm (package manager för JavaScript) för att installera det senaste Azure CLI 1.0-paketet på din distribution av Linux eller OS. Kräver node.js och npm på datorn.
+* **npm paketet** – kör npm (hello package manager för JavaScript) tooinstall hello senaste Azure CLI 1.0-paket på din distribution av Linux eller OS. Kräver node.js och npm på datorn.
 * **Installer** -hämta ett installationsprogram för enkel installation på Mac- eller Windows.
-* **Dockerbehållare** - Start med hjälp av senaste CLI i en klar och kör dockerbehållare. Kräver Docker värden på datorn.
+* **Dockerbehållare** – börja använda hello senaste CLI i en klar och kör dockerbehållare. Kräver Docker värden på datorn.
 
-Fler alternativ och bakgrunden finns i databasen projektet på [GitHub](https://github.com/azure/azure-xplat-cli).
+Fler alternativ och bakgrunden finns hello projektet databasen på [GitHub](https://github.com/azure/azure-xplat-cli).
 
-När du har installerat Azure CLI 1.0 [ansluta till din Azure-prenumeration](xplat-cli-connect.md) och kör den **azure** kommandon från din kommandoradsgränssnittet (Bash, Terminal, Kommandotolken och så vidare) att arbeta med din Azure-resurser.
+När du har installerat hello Azure CLI 1.0 [ansluta till din Azure-prenumeration](xplat-cli-connect.md) och kör hello **azure** kommandon från din kommandoradsgränssnittet (Bash, Terminal, Kommandotolken och så vidare) toowork med Azure-resurser.
 
 ## <a name="option-1-install-an-npm-package"></a>Alternativ 1: Installera npm-paket
-Om du vill installera CLI från ett npm-paket, kontrollera att du har hämtat och installerat den [senaste Node.js och npm](https://nodejs.org/en/download/package-manager/). Kör sedan **installera npm** att installera azure cli-paketet:
+tooinstall hello CLI från ett npm-paket, kontrollera att du har hämtat och installerat hello [senaste Node.js och npm](https://nodejs.org/en/download/package-manager/). Kör sedan **installera npm** tooinstall hello azure cli paketet:
 
 ```bash
 npm install -g azure-cli
 ```
 
-På Linux-distributioner, kan du behöva använda **sudo** för att köra den **npm** kommandot på följande sätt:
+På Linux-distributioner måste du kanske toouse **sudo** toosuccessfully kör hello **npm** kommandot på följande sätt:
 
 ```bash
 sudo npm install -g azure-cli
 ```
 
 > [!NOTE]
-> Om du behöver installera eller uppdatera Node.js och npm på Linux-distribution eller OS, rekommenderar vi att du installerar den senaste versionen för Node.js LTS (4.x). Om du använder en äldre version, kan du hämta installationsfel.
+> Om du behöver tooinstall eller uppdatera Node.js och npm på Linux-distribution eller OS, rekommenderar vi att du installerar hello senaste Node.js LTS versionen (4.x). Om du använder en äldre version, kan du hämta installationsfel.
 
-Om du vill hämta den senaste Linux [tar-filen] [ linux-installer] för npm paketet lokalt. Installera sedan hämtade npm-paketet enligt följande (på Linux-distributioner som du kan behöva använda **sudo**):
+Om du vill hämta hello senaste Linux [tar-filen] [ linux-installer] hello npm paketet lokalt. Installera sedan hello hämtade npm-paketet enligt följande (på Linux-distributioner måste du kanske toouse **sudo**):
 
 ```bash
-npm install -g <path to downloaded tar file>
+npm install -g <path toodownloaded tar file>
 ```
 
 ## <a name="option-2-use-an-installer"></a>Alternativ 2: Använda ett installationsprogram
-Om du använder en Mac- eller Windows-dator är följande CLI installationsprogram hämtas:
+Om du använder en dator med Mac- eller Windows kan hello följande CLI installationsprogram hämtas:
 
 * [Mac OS X-installationsprogrammet][mac-installer]
 * [Windows MSI][windows-installer]
 
 > [!TIP]
-> I Windows, kan du också hämta de [installationsprogram för webbplattform](https://go.microsoft.com/?linkid=9828653) installera CLI. Det här installationsprogrammet kan du välja att installera ytterligare Azure SDK och kommandoradsverktygen när du har installerat CLI.
+> I Windows, kan du också hämta hello [installationsprogram för webbplattform](https://go.microsoft.com/?linkid=9828653) tooinstall hello CLI. Installationsprogrammet kan du hello alternativet tooinstall ytterligare Azure SDK och kommandoradsverktygen när du har installerat hello CLI.
 
 ## <a name="option-3-use-a-docker-container"></a>Alternativ 3: Använda en dockerbehållare
-Om du har konfigurerat datorn som en [Docker](https://docs.docker.com/engine/understanding-docker/) värd, kan du köra den senaste Azure CLI 1.0 i en dockerbehållare. Kör följande kommando (på Linux-distributioner som du kan behöva använda **sudo**):
+Om du har konfigurerat datorn som en [Docker](https://docs.docker.com/engine/understanding-docker/) värden som du kan köra hello senaste Azure CLI 1.0 i en dockerbehållare. Kör hello följande kommando (på Linux-distributioner måste du kanske toouse **sudo**):
 
 ```bash
 docker run -it microsoft/azure-cli
 ```
 
 ## <a name="run-azure-cli-10-commands"></a>Kör kommandon för Azure CLI 1.0
-När Azure CLI 1.0 installeras, kör du den **azure** från kommandoraden användargränssnittet (Bash, Terminal, Kommandotolken och så vidare). Till exempel för att köra kommandot help, skriver du följande:
+När du har installerat hello Azure CLI 1.0 kör hello **azure** från kommandoraden användargränssnittet (Bash, Terminal, Kommandotolken och så vidare). Till exempel toorun hello hjälpkommando skriver du hello följande:
 
 ```azurecli
 azure help
 ```
 
 > [!NOTE]
-> På vissa Linux-distributioner kan du få ett felmeddelande liknande `/usr/bin/env: ‘node’: No such file or directory`. Det här felet kommer från nya installationer av Node.js som installeras på /usr/bin/nodejs. Åtgärda det genom att skapa en symbolisk länk till /usr/bin/node genom att köra det här kommandot:
+> På vissa Linux-distributioner kan du få ett felmeddelande liknande för`/usr/bin/env: ‘node’: No such file or directory`. Det här felet kommer från nya installationer av Node.js som installeras på /usr/bin/nodejs. toofix, skapa en symbolisk länk för/usr/bin/nod genom att köra det här kommandot:
 
 ```bash
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 ```
 
-Om du vill se versionen av Azure CLI 1.0 som du har installerat, skriver du följande:
+toosee hello version av hello Azure CLI 1.0 du installerat typen hello följande:
 
 ```azurecli
 azure --version
 ```
 
-Nu är du klar! Åtkomst till alla CLI-kommandona ska fungera med egna resurser, [ansluta till din Azure-prenumeration från Azure CLI](xplat-cli-connect.md).
+Nu är du klar! alla tooaccess hello CLI-kommandon toowork med egna resurser, [ansluta tooyour Azure-prenumeration från hello Azure CLI](xplat-cli-connect.md).
 
 > [!NOTE]
-> När du börjar använda Azure CLI, visas ett meddelande som frågar om du vill att Microsoft ska kunna samla in information om användning. Det är frivilligt att delta. Om du väljer att delta, du kan stoppa när som helst genom att köra `azure telemetry --disable`. Om du vill aktivera delta när som helst köra `azure telemetry --enable`.
+> När du börjar använda Azure CLI, visas ett meddelande som frågar om du vill tooallow Microsoft toocollect användningsinformation. Det är frivilligt att delta. Om du väljer tooparticipate måste du stoppa när som helst genom att köra `azure telemetry --disable`. tooenable delta när som helst köra `azure telemetry --enable`.
 
-## <a name="update-the-cli"></a>Uppdatera CLI
-Microsoft släpper ofta uppdaterade versioner av Azure CLI. Installera om CLI med hjälp av installationsprogrammet för operativsystemet eller kör den senaste dockerbehållare. Om du har de senaste Node.js och npm installerad, uppdatera genom att skriva följande (på Linux-distributioner som du kan behöva använda **sudo**).
+## <a name="update-hello-cli"></a>Uppdatera hello CLI
+Microsoft släpper ofta uppdaterade versioner av hello Azure CLI. Installera om hello CLI med hello installer för ditt operativsystem eller köra hello senaste dockerbehållare. Om du har hello senaste Node.js och npm installerad, uppdatera genom att skriva följande hello (på Linux-distributioner måste du kanske toouse **sudo**).
 
 ```bash
 npm update -g azure-cli
@@ -113,13 +113,13 @@ npm update -g azure-cli
 ## <a name="enable-tab-completion"></a>Aktivera flikavslutande
 Flikslutförande av CLI-kommandon stöds för Mac- och Linux.
 
-Om du vill aktivera den i zsh, kör du:
+tooenable i zsh, kör:
 
 ```bash
 echo '. <(azure --completion)' >> .zshrc
 ```
 
-Om du vill aktivera den i bash, kör du:
+tooenable i bash, kör:
 
 ```bash
 azure --completion >> ~/azure.completion.sh
@@ -128,9 +128,9 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 
 
 ## <a name="next-steps"></a>Nästa steg
-* [Ansluta från CLI på Azure-prenumerationen](xplat-cli-connect.md) att skapa och hantera Azure-resurser.
-* Om du vill veta mer om Azure CLI, ladda ned källkoden rapportera problem eller bidra till projektet, finns det [GitHub-lagringsplatsen för Azure CLI](https://github.com/azure/azure-xplat-cli).
-* Om du har frågor om hur du använder Azure CLI eller Azure finns i [Azure forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).
+* [Ansluta från hello CLI tooyour Azure-prenumeration](xplat-cli-connect.md) toocreate och hantera Azure-resurser.
+* toolearn mer om hello Azure CLI, ladda ned källkoden, rapportera problem, eller bidra toohello projekt, besök hello [GitHub-lagringsplatsen för hello Azure CLI](https://github.com/azure/azure-xplat-cli).
+* Om du har frågor om hur du använder hello Azure CLI eller Azure besöka hello [Azure forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting).
 
 
 [mac-installer]: http://aka.ms/mac-azure-cli

@@ -1,6 +1,6 @@
 ---
-title: "Connect Raspberry PI (C) till Azure IoT - lektionen 3: köra exemplet | Microsoft Docs"
-description: "Distribuera och köra ett exempelprogram hallon Pi 3 som skickar meddelanden till din IoT-hubb och blinkar på Indikator."
+title: "Connect Raspberry PI (C) tooAzure IoT - lektionen 3: köra exemplet | Microsoft Docs"
+description: "Distribuera och köra en exempel programmet tooRaspberry Pi 3 som skickar meddelanden tooyour IoT-hubb och blinkar hello-Indikator."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,51 +17,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: e583ba455a94f9afcc7b31e49425b518d7968919
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c484beb2e2d3a3cf19f071f2ba87b9a4fe41c1fb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a>Kör ett exempelprogram för att skicka meddelanden från enhet till moln
+# <a name="run-a-sample-application-toosend-device-to-cloud-messages"></a>Kör ett exempel programmet toosend meddelanden från enhet till moln
 ## <a name="what-you-will-do"></a>Vad du ska göra
-Den här artikeln visar hur du distribuera och köra ett exempelprogram på hallon Pi 3 som skickar meddelanden till din IoT-hubb. Om du har några problem kan hitta lösningar på den [felsökning sidan](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
+Den här artikeln visar hur toodeploy och kör ett exempelprogram på hallon Pi 3 som skickar meddelanden tooyour IoT-hubb. Om du har några problem med söka efter lösningar på hello [felsökning sidan](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
-Du lära dig hur du använder verktyget gulp att distribuera och köra Node.js exempelprogrammet på Pi.
+Du kommer lära dig hur toouse hello gulp verktyget toodeploy och köra hello exempelprogrammet Node.js på Pi.
 
 ## <a name="what-you-need"></a>Vad du behöver
-* Innan du börjar den här uppgiften måste har slutförts [skapa en funktionsapp i Azure-och ett lagringskonto för att bearbeta och lagra IoT-hubb meddelanden](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md).
+* Innan du börjar den här uppgiften måste har slutförts [skapa en funktionsapp i Azure-och en storage-konto tooprocess och lagra IoT-hubb meddelanden](iot-hub-raspberry-pi-kit-c-lesson3-deploy-resource-manager-template.md).
 
 ## <a name="get-your-iot-hub-and-device-connection-strings"></a>Hämta din IoT-hubb och enheten anslutningssträngar
-Anslutningssträngen enheten används av din Pi för att ansluta till din IoT-hubb. IoT-hubb anslutningssträngen används för att ansluta till identitetsregistret i IoT-hubb för att hantera enheter som tillåts att ansluta till din IoT-hubb. 
+anslutningssträngen för hello enheten används av din Pi tooconnect tooyour IoT-hubb. hello anslutningssträngen för IoT-hubben är används tooconnect toohello identitetsregistret i din IoT-hubb toomanage hello enheter som beviljats tooconnect tooyour IoT-hubb. 
 
-* Lista alla IoT hubs i resursgruppen genom att köra följande kommando i Azure CLI:
+* Lista alla IoT hubs i resursgruppen genom att köra hello följande Azure CLI-kommando:
 
 ```bash
 az iot hub list -g iot-sample --query [].name
 ```
 
-Använd `iot-sample` som värde för `{resource group name}` om du inte ändra värdet.
+Använd `iot-sample` som hello värde för `{resource group name}` om du inte ändrar hello-värdet.
 
-* Hämta anslutningssträngen för IoT-hubb genom att köra följande kommando i Azure CLI:
+* Hämta hello IoT hub-anslutningssträng genom att köra hello följande Azure CLI-kommando:
 
 ```bash
 az iot hub show-connection-string --name {my hub name} -g iot-sample
 ```
 
-`{my hub name}`är det namn som du angav när du skapade din IoT-hubb och registrerat Pi.
+`{my hub name}`är hello-namn som du angav när du skapade din IoT-hubb och registrerat Pi.
 
-* Hämta anslutningssträngen för enheten genom att köra följande kommando:
+* Hämta anslutningssträngen för hello enheten genom att köra följande kommando hello:
 
 ```bash
 az iot device show-connection-string --hub-name {my hub name} --device-id myraspberrypi -g iot-sample
 ```
 
-Använd `myraspberrypi` som värde för `{device id}` om du inte ändra värdet.
+Använd `myraspberrypi` som hello värde för `{device id}` om du inte ändrar hello-värdet.
 
-## <a name="configure-the-device-connection"></a>Konfigurera enhetsanslutning
-1. Initiera konfigurationsfilen genom att köra följande kommandon:
+## <a name="configure-hello-device-connection"></a>Konfigurera hello enhetsanslutning
+1. Initiera hello konfigurationsfilen genom att köra följande kommandon hello:
    
    ```bash
    npm install
@@ -71,7 +71,7 @@ Använd `myraspberrypi` som värde för `{device id}` om du inte ändra värdet.
 > [!NOTE]
 > Kör **gulp installera verktyg** samt, om du inte gjort det i lektionen 1.
 
-2. Öppna konfigurationsfilen enheten `config-raspberrypi.json` i Visual Studio-koden genom att köra följande kommando:
+2. Öppna hello enheten konfigurationsfilen `config-raspberrypi.json` i Visual Studio-koden genom att köra följande kommando hello:
    
    ```bash
    # For Windows command prompt
@@ -82,31 +82,31 @@ Använd `myraspberrypi` som värde för `{device id}` om du inte ändra värdet.
    ```
    
    ![Config.JSON](media/iot-hub-raspberry-pi-lessons/lesson3/config.png)
-3. Se följande ersättningar i den `config-raspberrypi.json` filen:
+3. Se följande ersättningar i hello hello `config-raspberrypi.json` fil:
    
-   * Ersätt **[enhet värdnamn eller IP-adress]** med IP-adressen eller värdnamnet enhetsnamnet som du fick från `device-discovery-cli` eller med värdet överförs när du har konfigurerat din enhet.
-   * Ersätt **[anslutningssträngen för IoT-enhet]** med den `device connection string` du fick.
-   * Ersätt **[anslutningssträngen för IoT-hubb]** med den `iot hub connection string` du fick.
+   * Ersätt **[enhet värdnamn eller IP-adress]** med hello IP-adressen eller värdnamnet enhetsnamn som du fick från `device-discovery-cli` eller med hello-värde som överförs när du har konfigurerat din enhet.
+   * Ersätt **[anslutningssträngen för IoT-enhet]** med hello `device connection string` du fick.
+   * Ersätt **[anslutningssträngen för IoT-hubb]** med hello `iot hub connection string` du fick.
 
 > [!NOTE]
 > Du behöver inte `azure_storage_connection_string` i den här artikeln. Se till att den är.
 
-Uppdatera den `config-raspberrypi.json` filen så att du kan distribuera exempelprogrammet från datorn.
+Uppdatera hello `config-raspberrypi.json` filen så att du kan distribuera hello exempelprogrammet från datorn.
 
-## <a name="deploy-and-run-the-sample-application"></a>Distribuera och köra exempelprogrammet
-Distribuera och köra exempelprogrammet på Pi genom att köra följande kommando:
+## <a name="deploy-and-run-hello-sample-application"></a>Distribuera och köra hello exempelprogrammet
+Distribuera och köra hello exempelprogrammet på Pi genom att köra följande kommando hello:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-## <a name="verify-that-the-sample-application-works"></a>Kontrollera att det fungerar exempelprogrammet
-Du bör se som är ansluten till Pi blinkande varannan sekund LED. Varje gång Indikatorn blinkar exempelprogrammet skickar ett meddelande till din IoT-hubb och verifierar att meddelandet har skickats till din IoT-hubb. Dessutom kan ut varje meddelande tas emot av IoT-hubben i konsolfönstret. Exempelprogrammet avbryter automatiskt efter 20 meddelanden skickas.
+## <a name="verify-that-hello-sample-application-works"></a>Kontrollera att det fungerar hello exempelprogrammet
+Du bör se hello Indikator som är anslutna tooPi blinka varannan sekund. Varje gång hello Indikator blinkar hello exempelprogrammet skickar ett meddelande tooyour IoT-hubb och verifierar att hello-meddelande har skickats tooyour IoT-hubb. Dessutom kan ut varje meddelande tas emot av hello IoT-hubb i hello konsolfönstret. hello exempelprogrammet avbryter automatiskt efter 20 meddelanden skickas.
 
 ![Exempelprogrammet med skickade och mottagna meddelanden](media/iot-hub-raspberry-pi-lessons/lesson3/gulp_run_c.png)
 
 ## <a name="summary"></a>Sammanfattning
-Du har distribuerat och kör ny blinka exempelprogrammet på Pi för att skicka meddelanden från enhet till moln till din IoT-hubb. Du kan nu övervaka dina meddelanden när de skrivs till lagringskontot.
+Du har distribuerat och köra hello nya blinka exempelprogrammet på Pi toosend meddelanden från enhet till moln tooyour IoT-hubb. Du kan nu övervaka dina meddelanden som de är skrivna toohello storage-konto.
 
 ## <a name="next-steps"></a>Nästa steg
 [Läs meddelandena kvar i Azure Storage](iot-hub-raspberry-pi-kit-c-lesson3-read-table-storage.md)

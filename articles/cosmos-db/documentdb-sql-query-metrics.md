@@ -1,6 +1,6 @@
 ---
-title: "SQL-frågan mätvärden för Azure Cosmos DB DocumentDB API | Microsoft Docs"
-description: "Lär dig mer om hur du instrumentera och felsöka frågeprestanda SQL Azure DB som Cosmos-begäranden."
+title: "aaaSQL fråga mätvärden för Azure Cosmos DB DocumentDB API | Microsoft Docs"
+description: "Läs mer om hur tooinstrument och felsökningsloggar hello frågeprestanda för SQL Azure DB som Cosmos-begäranden."
 keywords: "SQL-syntax, sql-fråga, sql-frågor, json-frågespråket, databasbegrepp och sql-frågor, mängdfunktioner"
 services: cosmos-db
 documentationcenter: 
@@ -15,47 +15,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: arramac
-ms.openlocfilehash: d928113e809e5ad43901e79dc256a8a39c210181
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2fee3786b7d48d254162699471943e316764b003
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Justera prestanda för frågor med Azure Cosmos DB
-Azure Cosmos-DB tillhandahåller en [SQL API för datafrågor](documentdb-sql-query.md), utan att schemat eller sekundärindex. Den här artikeln innehåller följande information för utvecklare:
+Azure Cosmos-DB tillhandahåller en [SQL API för datafrågor](documentdb-sql-query.md), utan att schemat eller sekundärindex. Den här artikeln innehåller följande information för utvecklare hello:
 
 * Utförlig information om hur fungerar Azure Cosmos DB SQL-frågan
 * Information om frågan begärande- och svarshuvuden och alternativ för klient-SDK
 * Tips och bästa praxis för prestanda för frågor
-* Exempel på hur du använder SQL-körningen statistik för att felsöka prestanda för frågor
+* Exempel på hur tooutilize SQL körning statistik toodebug fråga prestanda
 
 ## <a name="about-sql-query-execution"></a>Om körning av SQL-fråga
 
-I Azure Cosmos DB du lagra data i behållare, som kan växa till någon [storlek eller begäran genomflödet](partition-data.md). Azure Cosmos-DB skalas sömlöst data över fysiska partitioner under försättsbladen att hantera datatillväxt eller ökar med etablerat dataflöde. Du kan utfärda SQL-frågor till en behållare med REST API eller något av de stöds [DocumentDB SDK: er](documentdb-sdk-dotnet.md).
+I Azure Cosmos DB du lagra data i behållare, som kan växa tooany [storlek eller begäran genomflödet](partition-data.md). Azure Cosmos-DB skalas sömlöst data över fysiska partitioner under hello omfattar toohandle datatillväxt eller ökning dataflöde. Du kan utfärda SQL-frågor tooany behållare med hello REST API eller en av hello stöds [DocumentDB SDK: er](documentdb-sdk-dotnet.md).
 
-En kort översikt över partitionering: du anger en partitionsnyckel som ”stad”, som avgör hur data delas mellan fysiska partitioner. Data som hör till en enda partitionsnyckel (till exempel ”stad” == ”Seattle”) lagras i en fysiska partition, men en enda fysisk partition har vanligtvis flera partitionsnycklar. När en partition når lagringsstorlek, tjänsten sömlöst delar partitionen i två nya partitioner och dividerar Partitionsnyckeln jämnt mellan dessa partitioner. Eftersom partitioner är tillfälligt använda API: er i en abstraktion av en ”partitionsnyckelintervallet”, som anger intervall för partition viktiga hashvärden. 
+En kort översikt över partitionering: du anger en partitionsnyckel som ”stad”, som avgör hur data delas mellan fysiska partitioner. Data som tillhör tooa enda partitionsnyckel (till exempel ”stad” == ”Seattle”) lagras i en fysiska partition, men en enda fysisk partition har vanligtvis flera partitionsnycklar. När en partition når lagringsstorlek hello service sömlöst delar hello partition i två nya partitioner och dividerar hello partitionsnyckel jämnt mellan dessa partitioner. Eftersom partitioner är tillfälligt använder hello API: er en abstraktion av en ”partitionsnyckelintervallet”, som anger hello intervallen för partition viktiga hashvärden. 
 
-När du skickar en fråga till Azure Cosmos DB utför stegen logiska SDK:
+När du skickar en fråga tooAzure Cosmos DB utför stegen logiska hello SDK:
 
-* Parsa SQL-frågan för att fastställa körning frågeplanen. 
-* Om frågan innehåller ett filter mot Partitionsnyckeln, som `SELECT * FROM c WHERE c.city = "Seattle"`, dirigeras till en enskild partition. Om frågan inte har ett filter på partitionsnyckel, sedan den körs i alla partitioner och resultat kombineras på klientsidan.
-* Frågan köras inom varje partition i serien eller parallell, baserat på klientens konfiguration. Inom varje partition frågan kan göra att en eller flera sändningar beroende på hur komplex fråga konfigurerats sidstorlek och etableras genomflöde i mängden. Varje körning returnerar antalet [programbegäran](request-units.md) används genom att köra frågor och eventuellt statistik för körning av frågan. 
-* SDK utför en sammanfattning av frågeresultatet över partitioner. Till exempel om frågan innefattar en ORDER BY över partitioner, är sedan resultaten från enskilda partitioner merge sorteras du returnerar resultat på globalt sorteringsordningen. Om frågan är en samling som `COUNT`, antal från enskilda partitioner summeras för att skapa det totala antalet.
+* Parsa hello SQL-frågan toodetermine hello körning frågeplanen. 
+* Om hello frågan innehåller ett filter mot hello partitionsnyckel, som `SELECT * FROM c WHERE c.city = "Seattle"`, är det routade tooa enkel partition. Om hello frågan har inte ett filter på partitionsnyckel, sedan den körs i alla partitioner och resultat kombineras på klientsidan.
+* hello frågan köras inom varje partition i serien eller parallell, baserat på klientens konfiguration. Inom varje partition hello fråga kan göra att en eller flera sändningar beroende på hello frågan komplexitet konfigurerad sidstorlek och etablerat dataflöde hello mängden. Varje körning returnerar hello antalet [programbegäran](request-units.md) används genom att köra frågor och eventuellt statistik för körning av frågan. 
+* hello SDK utför en sammanfattning av hello frågeresultat över partitioner. Till exempel om hello fråga innehåller en ORDER BY över partitioner, är sedan resultaten från enskilda partitioner merge sorteras tooreturn resultat i globalt sorteringsordningen. Om hello frågan är en samling som `COUNT`, hello från enskilda partitioner är samlade tooproduce hello övergripande antal.
 
-SDK: erna tillhandahåller olika alternativ för frågekörning. Till exempel i .NET dessa alternativ är tillgängliga i den `FeedOptions` klass. I följande tabell beskrivs dessa alternativ och hur de påverkar körningstid för frågan. 
+hello SDK tillhandahåller olika alternativ för frågekörning. Till exempel i .NET dessa alternativ är tillgängliga i hello `FeedOptions` klass. hello följande tabell beskrivs dessa alternativ och hur de påverkar körningstid för frågan. 
 
 | Alternativ | Beskrivning |
 | ------ | ----------- |
-| `EnableCrossPartitionQuery` | Måste anges till true för en fråga som måste köras på mer än en partition. Det här är en explicit flagga så att du kompromissa medvetna prestanda under utveckling. |
-| `EnableScanInQuery` | Måste anges till true om du har valt att inte indexera, men vill ändå kör frågan via en genomsökning. Endast är tillgängligt för indexering för den begärda filtret sökvägen inaktiverad. | 
-| `MaxItemCount` | Maximalt antal objekt som ska returneras per tur och RETUR till servern. Genom att ange-1, kan du låta servern hantera antalet objekt. Eller så kan du sänka detta värde att hämta litet antal objekt per onödig kommunikation. 
-| `MaxBufferedItemCount` | Detta är ett alternativ för klientsidan och används för att begränsa minnesförbrukningen när du utför cross-partition ORDER BY. Ett högre värde hjälper till att minska svarstiden för cross-partition sortering. |
-| `MaxDegreeOfParallelism` | Hämtar eller anger antalet samtidiga åtgärder som körs på klientsidan under parallell frågekörning i tjänsten Azure DocumentDB-databasen. Ett positivt egenskapsvärde begränsar antalet samtidiga åtgärder att ange värdet. Om det är mindre än 0, bestämmer systemet automatiskt antalet samtidiga åtgärder att köra. |
-| `PopulateQueryMetrics` | Aktiverar detaljerad loggning av statistik tid som ägnats åt olika faser i Frågekörningen som kompileringstid, indexet loop tid och dokument laddas gång. Utdata från frågan statistik kan du dela med Azure-supporten att diagnostisera prestandaproblem för frågan. |
-| `RequestContinuation` | Du kan återuppta körning av fråga genom att passera i täckande fortsättningstoken som returnerades av en fråga. Fortsättningstoken kapslar in alla tillstånd som krävs för frågekörning. |
-| `ResponseContinuationTokenLimitInKb` | Du kan begränsa den maximala storleken för fortsättningstoken som returnerades av servern. Du kan behöva ange detta om din programvärden har gränser för huvudstorlek. Anger det här kan öka den övergripande varaktighet och RUs som används för frågan.  |
+| `EnableCrossPartitionQuery` | Du måste ange tootrue för alla frågor som kräver toobe som körs i mer än en partition. Det här är en explicit flaggan tooenable du toomake medvetna prestanda kompromisser under utveckling. |
+| `EnableScanInQuery` | Måste anges tootrue om du har valt att inte indexera, men ändå vill toorun hello frågan via en genomsökning. Endast tillgängligt för indexering för hello begärt filter sökväg är inaktiverad. | 
+| `MaxItemCount` | hello maximalt antal objekt tooreturn per serveranrop toohello server. Du kan låta hello server hantera hello antal objekt genom att ange för 1. Eller så kan du sänka detta värde tooretrieve litet antal objekt per onödig kommunikation. 
+| `MaxBufferedItemCount` | Detta är ett alternativ för klientsidan och används toolimit hello minnesförbrukning när du utför cross-partition ORDER BY. Ett högre värde hjälper till att minska hello svarstiden för cross-partition sortering. |
+| `MaxDegreeOfParallelism` | Hämtar eller anger hello antalet samtidiga åtgärder som körs på klientsidan under parallell frågekörning i hello Azure DocumentDB database-tjänsten. Ett positivt egenskapsvärde begränsar hello antal samtidiga åtgärder toohello ange värde. Om den anges tooless än 0 beslutar hello system automatiskt hello antalet samtidiga åtgärder toorun. |
+| `PopulateQueryMetrics` | Aktiverar detaljerad loggning av statistik tid som ägnats åt olika faser i Frågekörningen som kompileringstid, indexet loop tid och dokument laddas gång. Utdata från frågan statistik kan du dela med Azure-supporten toodiagnose frågan prestandaproblem. |
+| `RequestContinuation` | Du kan återuppta körning av fråga genom att passera i täckande hello fortsättningstoken som returnerades av en fråga. Hej fortsättningstoken kapslar in alla tillstånd som krävs för frågekörning. |
+| `ResponseContinuationTokenLimitInKb` | Du kan begränsa hello maxstorleken för hello fortsättningstoken som returnerades av hello-servern. Du kan behöva tooset detta om din programvärden har gränser för huvudstorlek. Anger det här kan öka hello övergripande varaktighet och RUs som används för hello frågan.  |
 
-Till exempel ta en exempelfråga på partitionsnyckel som efterfrågas på en samling med `/city` som partition nyckel och etablerats med 100 000 RU/s genomströmning. Du begär den här frågan med `CreateDocumentQuery<T>` i .NET på följande:
+Till exempel ta en exempelfråga på partitionsnyckel som efterfrågas på en samling med `/city` som hello partition nyckel och etablerats med 100 000 RU/s genomströmning. Du begär den här frågan med `CreateDocumentQuery<T>` i .NET hello följande:
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -72,7 +72,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 FeedResponse<dynamic> result = await query.ExecuteNextAsync();
 ```
 
-SDK-fragment ovan motsvarar följande REST API-begäran:
+Hej SDK fragment ovan, motsvarar toohello på REST API-begäran:
 
 ```
 POST https://arramacquerymetrics-westus.documents.azure.com/dbs/db/colls/sample/docs HTTP/1.1
@@ -99,9 +99,9 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-Varje sida för körning av frågan som motsvarar en REST-API `POST` med den `Accept: application/query+json` sidhuvud och SQL-frågan i brödtexten. Varje fråga gör en eller flera förfrågningar till servern med den `x-ms-continuation` token eko mellan klienten och servern för att återuppta körning. Konfigurationsalternativen i FeedOptions skickas till servern i form av huvuden för begäran. Till exempel `MaxItemCount` motsvarar `x-ms-max-item-count`. 
+Varje sida för körning av fråga motsvarar tooa REST API `POST` med hello `Accept: application/query+json` sidhuvud och hello SQL-frågan i hello brödtext. Varje fråga gör en eller flera avrunda resor toohello server med hello `x-ms-continuation` token eko mellan hello klienten och servern tooresume körning. hello konfigurationsalternativen i FeedOptions skickas toohello server i hello form av huvuden för begäran. Till exempel `MaxItemCount` motsvarar för`x-ms-max-item-count`. 
 
-Begäran returnerar följande (trunkerad för läsbarhet) svar:
+hello-begäran returnerar hello följande (trunkerad för läsbarhet) svar:
 
 ```
 HTTP/1.1 200 Ok
@@ -128,54 +128,54 @@ x-ms-gatewayversion: version=1.14.33.2
 Date: Tue, 27 Jun 2017 21:59:49 GMT
 ```
 
-Nyckel-svarshuvuden som returnerades från frågan inkluderar följande:
+viktiga hello svarshuvuden som returnerades från frågan hello inkludera hello följande:
 
 | Alternativ | Beskrivning |
 | ------ | ----------- |
-| `x-ms-item-count` | Antal objekt som returneras i svaret. Detta är beroende av den angivna `x-ms-max-item-count`, antalet objekt som får plats i nyttolasten för Maximal svarsstorlek, dataflöde och körningstid för frågan. |  
-| `x-ms-continuation:` | Fortsättningstoken att återuppta körning av frågan, om ytterligare resultat är tillgängliga. | 
-| `x-ms-documentdb-query-metrics` | Frågan statistik för körning. Det här är en avgränsad sträng som innehåller statistik över tid i olika faser i frågan. Returneras om `x-ms-documentdb-populatequerymetrics` är inställd på `True`. | 
-| `x-ms-request-charge` | Antalet [programbegäran](request-units.md) förbrukas av frågan. | 
+| `x-ms-item-count` | hello antal objekt som returneras i hello svar. Detta är beroende av hello angivna `x-ms-max-item-count`, hello antal objekt som ryms inom hello maximala nyttolasten svarsstorlek hello etablerat dataflöde och körningstid för frågan. |  
+| `x-ms-continuation:` | hello fortsättning token tooresume körning av hello fråga om ytterligare resultat är tillgängliga. | 
+| `x-ms-documentdb-query-metrics` | hello frågan statistik för hello körning. Det här är en avgränsad sträng som innehåller statistik över tid i hello olika faser i frågan. Returneras om `x-ms-documentdb-populatequerymetrics` har angetts för`True`. | 
+| `x-ms-request-charge` | Hej antalet [programbegäran](request-units.md) förbrukas av hello frågan. | 
 
-Mer information om REST API-huvuden för begäran och alternativ finns [förfrågan efter resurser med hjälp av REST-API DocumentDB](https://docs.microsoft.com/rest/api/documentdb/querying-documentdb-resources-using-the-rest-api).
+Mer information om hello REST API-huvuden för begäran och alternativ finns [förfrågan efter resurser med hjälp av hello DocumentDB REST API](https://docs.microsoft.com/rest/api/documentdb/querying-documentdb-resources-using-the-rest-api).
 
 ## <a name="best-practices-for-query-performance"></a>Bästa praxis för prestanda för frågor
-Följande är de vanligaste faktorer som påverkar Azure Cosmos DB frågeprestanda. Vi gräva djupare i var och en av dessa avsnitt i den här artikeln.
+hello följande är hello vanligaste faktorer som påverkar Azure Cosmos DB frågeprestanda. Vi gräva djupare i var och en av dessa avsnitt i den här artikeln.
 
 | Faktor | Tips | 
 | ------ | -----| 
-| Etablerat dataflöde | Mät RU per fråga och se till att du har det tillhandahållna dataflödet som krävs för dina frågor. | 
-| Partitionering och partitionsnycklar | Ge företräde åt frågor med partitionsnyckelvärde i filterinstruktionen för låg fördröjning. |
+| Etablerat dataflöde | Mät RU per fråga och se till att du har etablerat dataflöde för hello krävs för dina frågor. | 
+| Partitionering och partitionsnycklar | Ge företräde åt frågor med hello partitionsnyckelvärde i hello filtersatsen för låg latens. |
 | SDK-och frågealternativ | Följ Metodtips för SDK som direkt anslutning och finjustera frågealternativ körning på klientsidan. |
-| Svarstid för nätverk | Kontot för nätverk omkostnader i mått och använda flera API: er för att läsa från den närmaste regionen. |
-| Indexprincip | Se till att du har den nödvändiga sökvägar/indexprincip för frågan. |
-| Mätvärden för körning av frågan | Analysera de mått för körning av frågan för att identifiera potentiella omskrivningar av frågor och former.  |
+| Svarstid för nätverk | Kontot för nätverk omkostnader i mått och använda flera API: er tooread från hello närmsta region. |
+| Indexprincip | Se till att du har hello krävs sökvägar/indexprincip för hello frågan. |
+| Mätvärden för körning av frågan | Analysera hello frågan körning mått tooidentify potentiella omskrivningar av frågor och former.  |
 
 ### <a name="provisioned-throughput"></a>Etablerat dataflöde
-Skapa behållare av data med reserverat dataflöde, uttryckt i begäran enheter (RU) per sekund i Cosmos DB. En läsning av ett dokument på 1 KB är 1 RU och varje åtgärd (inklusive frågor) är normaliserat till ett fast antal RUs baserat på dess komplexitet. Till exempel om du har 1000 RU/s som skapats för din behållare och du har en fråga som `SELECT * FROM c WHERE c.city = 'Seattle'` som förbrukar 5 RUs och du kan utföra (1000 RU/s) / (5 RU/query) = 200 frågan/s sådana frågor per sekund. 
+Skapa behållare av data med reserverat dataflöde, uttryckt i begäran enheter (RU) per sekund i Cosmos DB. En läsning av ett dokument på 1 KB är 1 RU och varje åtgärd (inklusive frågor) är normaliserat tooa fast antal RUs baserat på dess komplexitet. Till exempel om du har 1000 RU/s som skapats för din behållare och du har en fråga som `SELECT * FROM c WHERE c.city = 'Seattle'` som förbrukar 5 RUs och du kan utföra (1000 RU/s) / (5 RU/query) = 200 frågan/s sådana frågor per sekund. 
 
-Om du skickar fler än 200 per sekund startas tjänsten hastighetsbegränsande inkommande begäranden över 200/s. SDK: erna hanterar automatiskt det här fallet genom att utföra en backoff/försök, därför ser du kanske en högre latens för dessa frågor. Öka dataflöde till det obligatoriska värdet förbättrar dina svarstid och genomströmning. 
+Om du skickar fler än 200 per sekund startar hello-tjänsten hastighetsbegränsande inkommande begäranden över 200/s. hello SDK: er hanterar automatiskt det här fallet genom att utföra en backoff/försök, därför ser du kanske en högre latens för dessa frågor. Öka hello etablerat dataflöde toohello krävs värdet förbättrar dina svarstid och genomströmning. 
 
-Mer information om frågeenheter finns [programbegäran](request-units.md).
+toolearn mer information om frågeenheter, se [programbegäran](request-units.md).
 
 ### <a name="partitioning-and-partition-keys"></a>Partitionering och partitionsnycklar
-Med Azure Cosmos DB brukar utföra frågor i följande ordning från snabbaste/mest effektiva till långsammare/mindre effektiva. 
+Med Azure Cosmos DB vanligtvis utför frågor i hello ordning från snabbaste/mest effektiva tooslower/mindre effektiva. 
 
 * HÄMTA på en enda partitionsnyckel och objektet nyckel
 * Frågan med en filtersats på en enda partitionsnyckel
 * Fråga utan en likhet eller intervallet filtersats om en egenskap
 * Fråga utan filter
 
-Frågor som behöver kontakta alla partitioner måste högre latens och kan använda högre RUs. Eftersom varje partition har automatisk indexering mot alla egenskaper, kan frågan hanteras effektivt från indexet i det här fallet. Du kan skapa frågor som sträcker sig över partitioner snabbare genom att använda parallellitet.
+Frågor som behöver tooconsult alla partitioner behovet av högre latens och kan använda högre RUs. Eftersom varje partition har automatisk indexering mot alla egenskaper, kan hello fråga hanteras effektivt från hello index i det här fallet. Du kan skapa frågor som sträcker sig över partitioner snabbare genom att använda hello parallellitet alternativ.
 
-Mer information om partitionering och partitionsnycklar finns [partitionering i Azure Cosmos DB](partition-data.md).
+toolearn mer information om partitionering och partitionsnycklar, se [partitionering i Azure Cosmos DB](partition-data.md).
 
 ### <a name="sdk-and-query-options"></a>SDK-och frågealternativ
-Se [prestandatips](performance-tips.md) och [prestandatester](performance-testing.md) att få bästa möjliga prestanda för klientsidan från Azure Cosmos DB. Detta inkluderar med de senaste SDK: er, konfigurera plattformsspecifika konfigurationer som Standardantal anslutningar, frekvensen för skräpinsamling, samt med lightweight anslutningsalternativ som direkt/TCP. 
+Se [prestandatips](performance-tips.md) och [prestandatester](performance-testing.md) för hur tooget hello bäst klientsidans prestanda från Azure Cosmos DB. Detta innefattar att använda hello senaste SDK: er, konfigurera plattformsspecifika konfigurationer som Standardantal anslutningar, frekvensen för skräpinsamling, och använda lightweight anslutningsalternativ som direkt/TCP. 
 
 
 #### <a name="max-item-count"></a>Max antal
-För frågor med värdet för `MaxItemCount` kan ha en betydande inverkan på Frågetid för slutpunkt till slutpunkt. Varje onödig kommunikation till servern returnerar inga fler än antalet objekt i `MaxItemCount` (standard 100 objekt). Ange detta till ett högre värde (-1 är högsta och rekommenderade) förbättrar din övergripande varaktighet för frågan genom att begränsa antalet sändningar mellan servern och klienten, särskilt för frågor med stora resultatuppsättningar.
+Hej värdet för frågor `MaxItemCount` kan ha en betydande inverkan på Frågetid för slutpunkt till slutpunkt. Varje rundtur toohello returnerar servern högst hello antal objekt i `MaxItemCount` (standard 100 objekt). Tooa högre värdet (-1 är högsta och rekommenderade) förbättrar din övergripande varaktighet för frågan genom att begränsa hello antal turer mellan servern och klienten, särskilt för frågor med stora resultatuppsättningar.
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -188,7 +188,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 #### <a name="max-degree-of-parallelism"></a>Max grad av parallellitet
-Frågor, finjustera den `MaxDegreeOfParallelism` att identifiera de bästa konfigurationerna för programmet, särskilt om du utför mellan partition-frågor (utan ett filter på partitionsnyckel värdet). `MaxDegreeOfParallelism`Anger det maximala antalet parallella aktiviteter, t.ex. maximalt antalet partitioner som ska användas parallellt. 
+För frågor finjustera hello `MaxDegreeOfParallelism` tooidentify hello rekommenderade konfigurationer för programmet, särskilt om du utför mellan partition-frågor (utan ett filter på hello partitionsnyckel värdet). `MaxDegreeOfParallelism`styr hello maximala antalet parallella aktiviteter, d.v.s. hello maximalt antal partitioner toobe besökt parallellt. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -202,11 +202,11 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 ```
 
 Vi antar som
-* D = standard maximalt antal parallella aktiviteter (= totalt antal processorn i klientdatorn)
+* D = standard maximalt antal parallella aktiviteter (= totalt antal processorn i hello klientdatorn)
 * P = användaren har angett maximalt antal parallella aktiviteter
-* N = antalet partitioner som ska användas för att svara på en fråga
+* N = antalet partitioner som behöver toobe besökt för att svara på en fråga
 
-Följande är effekterna av hur de parallella frågorna skulle fungera för olika värden för P.
+Följande är effekterna av hur hello parallella frågor skulle fungera för olika värden för P.
 * (P == 0) = > Serial-läge
 * (P == 1) = > maximalt en uppgift
 * (P > 1) = > Min (P, N) parallella aktiviteter 
@@ -215,15 +215,15 @@ Följande är effekterna av hur de parallella frågorna skulle fungera för olik
 För SDK viktig information och information om implementerade klasser och metoder finns [DocumentDB-SDK](documentdb-sdk-dotnet.md)
 
 ### <a name="network-latency"></a>Svarstid för nätverk
-Se [Azure Cosmos DB global distributionsplatsen](tutorial-global-distribution-documentdb.md) att konfigurera distributionslistor och ansluta till den närmaste regionen. Nätverksfördröjningen har en betydande inverkan på prestanda när du behöver göra flera turer eller hämta en stor resultatmängd från frågan. 
+Se [Azure Cosmos DB global distributionsplatsen](tutorial-global-distribution-documentdb.md) för hur tooset upp global distributionsplatsen och ansluta toohello närmaste region. Nätverksfördröjningen har en betydande inverkan på prestanda när du behöver toomake flera turer eller hämtar en stor resultatmängd från hello fråga. 
 
-Avsnitt om frågan körning mått förklarar hur du hämta server körningstiden för frågor ( `totalExecutionTimeInMs`), så att du kan skilja mellan tid i Frågekörningen och tid i nätverket överföring.
+hello på mått för körning av frågan förklaras hur tooretrieve hello server körningstid för frågor ( `totalExecutionTimeInMs`), så att du kan skilja mellan tid i Frågekörningen och tid i nätverket överföring.
 
 ### <a name="indexing-policy"></a>Indexprincip
-Se [konfigurera indexprincip](indexing-policies.md) för indexering sökvägar, typer, och lägen och hur de påverkar Frågekörningen. Som standard indexprincip använder hash-indexering för strängar, vilket är effektiv för likhetsfrågor, men inte för intervall frågor/order by-frågor. Om du behöver intervallet frågor efter strängar, rekommenderar vi att ange intervallet index för alla strängar. 
+Se [konfigurera indexprincip](indexing-policies.md) för indexering sökvägar, typer, och lägen och hur de påverkar Frågekörningen. Hello indexering principen används som standard hash-indexering för strängar, vilket är effektiv för likhetsfrågor, men inte för intervall frågor/order by-frågor. Om du behöver intervallet frågor efter strängar, rekommenderar vi att ange hello intervallet Indextypen för alla strängar. 
 
 ## <a name="query-execution-metrics"></a>Mätvärden för körning av frågan
-Du kan få detaljerad mått på körning av fråga om den valfria `x-ms-documentdb-populatequerymetrics` huvud (`FeedOptions.PopulateQueryMetrics` i .NET SDK). Det värde som returneras i `x-ms-documentdb-query-metrics` har följande nyckel-värdepar avsett för avancerad felsökning av Frågekörningen. 
+Du kan hämta detaljerade mått i frågan genom att passera i hello valfria `x-ms-documentdb-populatequerymetrics` huvud (`FeedOptions.PopulateQueryMetrics` i hello .NET SDK). Hej värde som returneras i `x-ms-documentdb-query-metrics` har hello följande nyckel-värdepar avsett för avancerad felsökning av Frågekörningen. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -245,8 +245,8 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | millisekunder | Körningstid för frågan | 
 | `queryCompileTimeInMs` | millisekunder | Frågan kompilering  | 
-| `queryLogicalPlanBuildTimeInMs` | millisekunder | Tid att skapa logiska frågeplan | 
-| `queryPhysicalPlanBuildTimeInMs` | millisekunder | Tid att skapa fysisk frågeplan | 
+| `queryLogicalPlanBuildTimeInMs` | millisekunder | Tid toobuild logiska frågeplan | 
+| `queryPhysicalPlanBuildTimeInMs` | millisekunder | Tid toobuild fysiska frågeplan | 
 | `queryOptimizationTimeInMs` | millisekunder | Tid som ägnats åt att optimera frågan | 
 | `VMExecutionTimeInMs` | millisekunder | Tid i frågan runtime | 
 | `indexLookupTimeInMs` | millisekunder | Tid i fysiska index lager | 
@@ -257,27 +257,27 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 | `retrievedDocumentSize` | Byte | Total storlek på hämtade dokument i byte  | 
 | `outputDocumentCount` | Antal | Antal dokument som utdata | 
 | `writeOutputTimeInMs` | millisekunder | Tid i millisekunder för att köra frågan | 
-| `indexUtilizationRatio` | förhållandet mellan (< = 1) | Förhållandet mellan antalet dokument som matchar filtret till antal dokument som läses in  | 
+| `indexUtilizationRatio` | förhållandet mellan (< = 1) | Förhållandet mellan antalet dokument som matchas av hello filter toohello antal dokument som läses in  | 
 
-Klient-SDK: internt göra flera frågeåtgärder att utföra frågan inom varje partition. Klienten gör flera anrop per partition om totalt resultat överskrider `x-ms-max-item-count`, om frågan överskrider det tillhandahållna dataflödet för partition, eller om frågan nyttolasten når maximal storlek per sida, eller om frågan når systemets allokerade Timeout-gränsen. Varje partiella Frågekörningen returnerar en `x-ms-documentdb-query-metrics` för sidan. 
+hello klienten SDK: er kan internt göra flera åtgärder tooserve hello fråga inom varje partition. hello klient gör flera anrop per partition om hello totalt resultat överskrider `x-ms-max-item-count`om hello frågan överskrider hello etablerat dataflöde för hello partition, eller om hello frågan nyttolast når hello maximal storlek per sida eller om hello frågan når hello system allokerade timeout-gränsen. Varje partiella Frågekörningen returnerar en `x-ms-documentdb-query-metrics` för sidan. 
 
-Här är några exempelfrågor och hur du tolkar vissa av mätvärdena som returnerades från Frågekörningen: 
+Här följer några exempelfrågor och hur toointerpret vissa hello mått returnerades från frågan: 
 
 | Fråga | Exempel mått | Beskrivning | 
 | ------ | -----| ----------- |
-| `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Antal dokument som hämtats är 100 + 1 för att matcha TOP-instruktion. Frågetid används främst i `WriteOutputTime` och `DocumentLoadTime` eftersom det är en genomsökning. | 
-| `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount är nu högre (500 + 1 för att matcha TOP-instruktion). | 
+| `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | hello antal dokument som hämtats är 100 + 1 toomatch hello TOP-instruktion. Frågetid används främst i `WriteOutputTime` och `DocumentLoadTime` eftersom det är en genomsökning. | 
+| `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount är nu högre (500 + 1 toomatch hello TOP-instruktion). | 
 | `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Om 0,9 ms används i IndexLookupTime för en nyckel sökning, eftersom det är ett index sökning `/N/?`. | 
 | `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Något mer tid (1,7 ms) som används IndexLookupTime via en genomsökning för intervallet, eftersom det är ett index sökning `/N/?`. | 
 | `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | Samma tid som ägnats `DocumentLoadTime` som tidigare frågor men lägre `WriteOutputTime` eftersom vi projicerar bara en egenskap. | 
-| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Om 213 ms ägnats åt `UserDefinedFunctionExecutionTime` köra en användardefinierad funktion på varje värde i `c.N`. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Om 0,6 ms ägnats åt `IndexLookupTime` på `/Name/?`. De flesta av frågan körningstid (ms ~ 7) i `SystemFunctionExecutionTime`. |
+| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Om 213 ms ägnats åt `UserDefinedFunctionExecutionTime` körs hello UDF på varje värde i `c.N`. |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Om 0,6 ms ägnats åt `IndexLookupTime` på `/Name/?`. De flesta av hello fråga körningstid (ms ~ 7) i `SystemFunctionExecutionTime`. |
 | `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Frågan utförs som en genomsökning eftersom den använder `LOWER`, och 500 utanför 2491 hämtade dokument som returneras. |
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs om stöds SQL frågeoperatorer och nyckelord i [SQL-frågan](documentdb-sql-query.md). 
-* Mer information om frågeenheter, se [programbegäran](request-units.md).
-* Läs om indexprincip i [indexering princip](indexing-policies.md) 
+* toolearn om hello stöds SQL frågeoperatorer och nyckelord, se [SQL-frågan](documentdb-sql-query.md). 
+* toolearn om frågeenheter, se [programbegäran](request-units.md).
+* toolearn om indexprincip, se [indexering princip](indexing-policies.md) 
 
 

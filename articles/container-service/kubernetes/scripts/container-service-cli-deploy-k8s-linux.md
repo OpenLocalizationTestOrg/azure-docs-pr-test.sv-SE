@@ -1,5 +1,5 @@
 ---
-title: Azure CLI Script exempel - skapa ACS Linux Kubernetes kluster | Microsoft Docs
+title: aaaAzure CLI skriptexempel - skapa ACS Linux Kubernetes kluster | Microsoft Docs
 description: Azure CLI Script exempel - skapa ACS Linux Kubernetes kluster
 services: container-service
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: c6a392217f84f549f2cae3c68fed85b9f888db77
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: cf3798ea8b08e3fc32acb35dabab4b2fbea179dd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-container-service-kubernetes-linux-cluster"></a>Skapa ett Azure Container Service Kubernetes Linux-kluster
 
@@ -44,7 +44,7 @@ az acs create \
 
 ## <a name="clean-up-deployment"></a>Rensa distribution 
 
-Kör följande kommando för att ta bort resursgruppen, virtuell dator och alla relaterade resurser.
+Kör följande kommando tooremove hello resursgrupp, VM och alla relaterade resurser hello.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -52,7 +52,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon för att skapa distributionen. Varje objekt i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon toocreate hello distribution. Varje objekt i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
@@ -61,7 +61,7 @@ Det här skriptet använder följande kommandon för att skapa distributionen. V
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
+Mer information om hello Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
 
-Ytterligare Azure Container Service CLI skriptexempel finns i den [Azure Container Service-dokumentationen](../cli-samples.md).
+Ytterligare Azure Container Service CLI skriptexempel finns i hello [Azure Container Service-dokumentationen](../cli-samples.md).
 

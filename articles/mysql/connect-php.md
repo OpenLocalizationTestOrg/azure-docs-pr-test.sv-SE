@@ -1,6 +1,6 @@
 ---
-title: "Ansluta till Azure Database för MySQL från PHP | Microsoft Docs"
-description: "I den här snabbstarten finns ett kodexempel i PHP som du kan använda för att ansluta till och fråga efter data från Azure Database för MySQL."
+title: "Ansluta tooAzure databas för MySQL från PHP | Microsoft Docs"
+description: "Denna Snabbstart innehåller flera PHP-kodexempel du kan använda tooconnect och fråga efter data från Azure-databas för MySQL."
 services: mysql
 author: mswutao
 ms.author: wuta
@@ -10,17 +10,17 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 07/12/2017
-ms.openlocfilehash: 59da1ab9e76685d7ed0c4415ef99578c982e956c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b928748c473c1aef320ae2183f237b5b845e83f2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database för MySQL: Använda PHP för att ansluta och fråga efter data
-Den här snabbstarten visar hur du ansluter till en Azure Database för MySQL med hjälp av ett [PHP](http://php.net/manual/intro-whatis.php)-program. Den visar hur du använder SQL-instruktioner för att fråga, infoga, uppdatera och ta bort data i databasen. Den här artikeln förutsätter att du är van att utveckla i PHP, men saknar erfarenhet av Azure Database för MySQL.
+# <a name="azure-database-for-mysql-use-php-tooconnect-and-query-data"></a>Azure-databas för MySQL: Använd PHP tooconnect och fråga data
+Den här snabbstarten visar hur tooconnect tooan Azure-databas för MySQL med hjälp av en [PHP](http://php.net/manual/intro-whatis.php) program. Den visar hur toouse SQL-instruktioner tooquery infoga, uppdatera och ta bort data i hello-databas. Den här artikeln förutsätter att du är bekant med utveckling med hjälp av PHP, men som du är ny tooworking med Azure-databas för MySQL.
 
 ## <a name="prerequisites"></a>Krav
-I den här snabbstarten används de resurser som skapades i någon av följande guider som utgångspunkt:
+Denna Snabbstart använder hello resurser som skapades i någon av dessa guider som utgångspunkt:
 - [Skapa en Azure Database för MySQL med Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Skapa en Azure Database för MySQL-server med Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
@@ -29,32 +29,32 @@ Installera PHP på din server, eller skapa en Azure-[webbapp](https://docs.micro
 
 ### <a name="macos"></a>MacOS
 - Hämta [PHP 7.1.4](http://php.net/downloads.php)
-- Installera PHP och se [PHP-handboken](http://php.net/manual/install.macosx.php) för ytterligare konfiguration
+- Installera PHP och finns toohello [PHP-handboken](http://php.net/manual/install.macosx.php) för ytterligare konfiguration
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 - Hämta [PHP 7.1.4 (x64), ej trådsäker version](http://php.net/downloads.php)
-- Installera PHP och se [PHP-handboken](http://php.net/manual/install.unix.php) för ytterligare konfiguration
+- Installera PHP och finns toohello [PHP-handboken](http://php.net/manual/install.unix.php) för ytterligare konfiguration
 
 ### <a name="windows"></a>Windows
 - Hämta [PHP 7.1.4 (x64), ej trådsäker version](http://windows.php.net/download#php-7.1)
-- Installera PHP och se [PHP-handboken](http://php.net/manual/install.windows.php) för ytterligare konfiguration
+- Installera PHP och finns toohello [PHP-handboken](http://php.net/manual/install.windows.php) för ytterligare konfiguration
 
 ## <a name="get-connection-information"></a>Hämta anslutningsinformation
-Skaffa den information som du behöver för att ansluta till Azure Database för MySQL. Du behöver det fullständiga servernamnet och inloggningsuppgifter.
+Hämta hello anslutning information som behövs för tooconnect toohello Azure-databas för MySQL. Du måste hello server fullständigt kvalificerade namnet och autentiseringsuppgifterna för inloggning.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. I den vänstra rutan klickar du på **alla resurser** och söker sedan efter servern som du skapade (till exempel **myserver4demo**).
-3. Klicka på servernamnet.
-4. Välj sidan **Egenskaper** för servern. Anteckna **servernamn** och **inloggningsnamnet för serveradministratören**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com/).
+2. Hello vänster klickar du på **alla resurser**, och sök sedan efter hello-server som du har skapat (till exempel **myserver4demo**).
+3. Klicka på hello servernamn.
+4. Välj hello server **egenskaper** sidan. Anteckna hello **servernamn** och **serverinloggningsnamnet för admin**.
  ![Azure Database för MySQL-servernamn](./media/connect-php/1_server-properties-name-login.png)
-5. Om du glömmer inloggningsinformationen för servern öppnar du sidan **Översikt** för att se inloggningsnamnet för serveradministratören. Om det behövs kan du återställa lösenordet.
+5. Om du glömmer bort inloggningsinformationen server navigera toohello **översikt** sidan tooview hello admin serverinloggningsnamnet och, om nödvändigt återställa hello lösenord.
 
 ## <a name="connect-and-create-a-table"></a>Ansluta och skapa en tabell
-Använd följande kod för att ansluta och skapa en tabell med hjälp av SQL-instruktionen **CREATE TABLE**. 
+Använd hello följande kod tooconnect och skapa en tabell med hjälp av **CREATE TABLE** SQL-instruktionen. 
 
-Koden använder klassen **MySQL Improved extension** (mysqli) som ingår i PHP. Metoderna [mysqli_init](http://php.net/manual/mysqli.init.php) och [mysqli_real_connect](http://php.net/manual/mysqli.real-connect.php) anropas för att ansluta till MySQL. Sedan anropas metoden [mysqli_query](http://php.net/manual/mysqli.query.php) för att köra frågan. Sedan anropas metoden [mysqli_close](http://php.net/manual/mysqli.close.php) för att stänga anslutningen.
+hello koden använder hello **MySQL förbättrad tillägget** (mysqli)-klass som ingår i PHP. Hej kod anropet metoder [mysqli_init](http://php.net/manual/mysqli.init.php) och [mysqli_real_connect](http://php.net/manual/mysqli.real-connect.php) tooconnect tooMySQL. Sedan anropas metoden [mysqli_query](http://php.net/manual/mysqli.query.php) toorun hello frågan. Sedan anropas metoden [mysqli_close](http://php.net/manual/mysqli.close.php) tooclose hello anslutning.
 
-Ersätt parametrarna host, username, password och db_name med dina egna värden. 
+Ersätt hello värden, användarnamn, lösenord och %{db_name/ parametrar med egna värden. 
 
 ```php
 <?php
@@ -63,14 +63,14 @@ $username = 'myadmin@myserver4demo';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Establishes hello connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 
-// Run the create table query
+// Run hello create table query
 if (mysqli_query($conn, '
 CREATE TABLE Products (
 `Id` INT NOT NULL AUTO_INCREMENT ,
@@ -83,17 +83,17 @@ PRIMARY KEY (`Id`)
 printf("Table created\n");
 }
 
-//Close the connection
+//Close hello connection
 mysqli_close($conn);
 ?>
 ```
 
 ## <a name="insert-data"></a>Infoga data
-Använd följande kod för att ansluta och infoga data med en **INSERT**-SQL-instruktion.
+Använd hello följande kod tooconnect och infoga data med hjälp av en **infoga** SQL-instruktionen.
 
-Koden använder klassen **MySQL Improved extension** (mysqli) som ingår i PHP. I koden används metoden [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) för att skapa en förberedd insert-instruktion och sedan binds parametrarna för varje infogat kolumnvärde med metoden [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). Sedan körs instruktionen med metoden [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) och efteråt stängs instruktionen med metoden [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
+hello koden använder hello **MySQL förbättrad tillägget** (mysqli)-klass som ingår i PHP. hello används metoden [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) toocreate en förberedd Infoga instruktionen sedan bindningar hello parametrar för varje värde i infogade kolumnen med metoden [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). hello koden körs hello-instruktion som använder metoden [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) och därefter stängs hello-instruktion som använder metoden [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
 
-Ersätt parametrarna host, username, password och db_name med dina egna värden. 
+Ersätt hello värden, användarnamn, lösenord och %{db_name/ parametrar med egna värden. 
 
 ```php
 <?php
@@ -102,11 +102,11 @@ $username = 'myadmin@myserver4demo';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Establishes hello connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 
 //Create an Insert prepared statement and run it
@@ -120,15 +120,15 @@ printf("Insert: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
 mysqli_stmt_close($stmt);
 }
 
-// Close the connection
+// Close hello connection
 mysqli_close($conn);
 ?>
 ```
 
 ## <a name="read-data"></a>Läsa data
-Använd följande kod för att ansluta och läsa data med en **SELECT**-SQL-instruktion.  Koden använder klassen **MySQL Improved extension** (mysqli) som ingår i PHP. Metoden [mysqli_query](http://php.net/manual/mysqli.query.php) används för att utföra sql-frågan och metoden [mysqli_fetch_assoc](http://php.net/manual/mysqli-result.fetch-assoc.php) används för att hämta de resulterande raderna.
+Använd hello följande kod tooconnect och läsa hello data med hjälp av en **Välj** SQL-instruktionen.  hello koden använder hello **MySQL förbättrad tillägget** (mysqli)-klass som ingår i PHP. hello används metoden [mysqli_query](http://php.net/manual/mysqli.query.php) utföra hello sql-fråga och använder [mysqli_fetch_assoc](http://php.net/manual/mysqli-result.fetch-assoc.php) metoden toofetch hello resulterande rader.
 
-Ersätt parametrarna host, username, password och db_name med dina egna värden. 
+Ersätt hello värden, användarnamn, lösenord och %{db_name/ parametrar med egna värden. 
 
 ```php
 <?php
@@ -137,31 +137,31 @@ $username = 'myadmin@myserver4demo';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Establishes hello connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 
-//Run the Select query
+//Run hello Select query
 printf("Reading data from table: \n");
 $res = mysqli_query($conn, 'SELECT * FROM Products');
 while ($row = mysqli_fetch_assoc($res)) {
 var_dump($row);
 }
 
-//Close the connection
+//Close hello connection
 mysqli_close($conn);
 ?>
 ```
 
 ## <a name="update-data"></a>Uppdatera data
-Använd följande kod för att ansluta och uppdatera data med en **UPDATE**-SQL-instruktion.
+Använd hello följande kod tooconnect och uppdatera hello data med hjälp av en **uppdatera** SQL-instruktionen.
 
-Koden använder klassen **MySQL Improved extension** (mysqli) som ingår i PHP. Metoden [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) används för att skapa en förberedd update-instruktion och sedan binds parametrarna för varje uppdaterat kolumnvärde med metoden [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). Sedan körs instruktionen med metoden [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) och efteråt stängs instruktionen med metoden [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
+hello koden använder hello **MySQL förbättrad tillägget** (mysqli)-klass som ingår i PHP. hello används metoden [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) toocreate en förberedd update-instruktion Binder sedan hello parametrar för varje värde i uppdaterade kolumnen med metoden [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). hello koden körs hello-instruktion som använder metoden [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) och därefter stängs hello-instruktion som använder metoden [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
 
-Ersätt parametrarna host, username, password och db_name med dina egna värden. 
+Ersätt hello värden, användarnamn, lösenord och %{db_name/ parametrar med egna värden. 
 
 ```php
 <?php
@@ -170,14 +170,14 @@ $username = 'myadmin@myserver4demo';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Establishes hello connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 
-//Run the Update statement
+//Run hello Update statement
 $product_name = 'BrandNewProduct';
 $new_product_price = 15.1;
 if ($stmt = mysqli_prepare($conn, "UPDATE Products SET Price = ? WHERE ProductName = ?")) {
@@ -185,7 +185,7 @@ mysqli_stmt_bind_param($stmt, 'ds', $new_product_price, $product_name);
 mysqli_stmt_execute($stmt);
 printf("Update: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
 
-//Close the connection
+//Close hello connection
 mysqli_stmt_close($stmt);
 }
 
@@ -195,11 +195,11 @@ mysqli_close($conn);
 
 
 ## <a name="delete-data"></a>Ta bort data
-Använd följande kod för att ansluta och läsa data med en **DELETE**-SQL-instruktion. 
+Använd hello följande kod tooconnect och läsa hello data med hjälp av en **ta bort** SQL-instruktionen. 
 
-Koden använder klassen **MySQL Improved extension** (mysqli) som ingår i PHP. Metoden [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) används för att skapa en förberedd delete-instruktion och sedan binds parametrarna för where-satsen med metoden [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). Sedan körs instruktionen med metoden [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) och efteråt stängs instruktionen med metoden [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
+hello koden använder hello **MySQL förbättrad tillägget** (mysqli)-klass som ingår i PHP. hello används metoden [mysqli_prepare](http://php.net/manual/mysqli.prepare.php) toocreate en förberedd ta bort instruktionen och bindningar hello parametrar för hello där instruktionen i hello-uttrycket med metoden [mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php). hello koden körs hello-instruktion som använder metoden [mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) och därefter stängs hello-instruktion som använder metoden [mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php).
 
-Ersätt parametrarna host, username, password och db_name med dina egna värden. 
+Ersätt hello värden, användarnamn, lösenord och %{db_name/ parametrar med egna värden. 
 
 ```php
 <?php
@@ -208,14 +208,14 @@ $username = 'myadmin@myserver4demo';
 $password = 'your_password';
 $db_name = 'your_database';
 
-//Establishes the connection
+//Establishes hello connection
 $conn = mysqli_init();
 mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306);
 if (mysqli_connect_errno($conn)) {
-die('Failed to connect to MySQL: '.mysqli_connect_error());
+die('Failed tooconnect tooMySQL: '.mysqli_connect_error());
 }
 
-//Run the Delete statement
+//Run hello Delete statement
 $product_name = 'BrandNewProduct';
 if ($stmt = mysqli_prepare($conn, "DELETE FROM Products WHERE ProductName = ?")) {
 mysqli_stmt_bind_param($stmt, 's', $product_name);
@@ -224,7 +224,7 @@ printf("Delete: Affected %d rows\n", mysqli_stmt_affected_rows($stmt));
 mysqli_stmt_close($stmt);
 }
 
-//Close the connection
+//Close hello connection
 mysqli_close($conn);
 ?>
 ```

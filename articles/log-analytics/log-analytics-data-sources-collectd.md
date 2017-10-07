@@ -1,5 +1,5 @@
 ---
-title: "Samla in data från CollectD i OMS Log Analytics | Microsoft Docs"
+title: "aaaCollect data från CollectD i OMS Log Analytics | Microsoft Docs"
 description: "CollectD är en öppen källkod Linux-demonen som regelbundet samlar in data från program och information om systemet.  Den här artikeln innehåller information om att samla in data från CollectD i logganalys."
 services: log-analytics
 documentationcenter: 
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
-ms.openlocfilehash: a63b15ca5126b45451f0694c9ee75d7b67b1ceaf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7ad82c9c67a664aabd44f08bef2253d84cd2dfba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Samla in data från CollectD på Linux-agenter i logganalys
-[CollectD](https://collectd.org/) är en öppen källkod Linux-demonen som regelbundet samlar in prestandastatistik från program och information om systemet. Exempelprogram inkluderar Java Virtual Machine (JVM), MySQL-servern och Nginx. Den här artikeln innehåller information om att samla in prestandadata från CollectD i logganalys.
+[CollectD](https://collectd.org/) är en öppen källkod Linux-demonen som regelbundet samlar in prestandastatistik från program och information om systemet. Exempelprogram inkluderar hello Java Virtual Machine (JVM), MySQL-Server och Nginx. Den här artikeln innehåller information om att samla in prestandadata från CollectD i logganalys.
 
 En fullständig lista över tillgängliga plugin-program finns på [tabell av plugin-program](https://collectd.org/wiki/index.php/Table_of_Plugins).
 
 ![Översikt över CollectD](media/log-analytics-data-sources-collectd/overview.png)
 
-Konfigurera följande CollectD ingår i OMS-Agent för Linux att vidarebefordra CollectD data till OMS-Agent för Linux.
+hello ingår följande CollectD konfiguration i hello OMS-Agent för Linux tooroute CollectD data toohello OMS-Agent för Linux.
 
     LoadPlugin write_http
 
@@ -39,7 +39,7 @@ Konfigurera följande CollectD ingår i OMS-Agent för Linux att vidarebefordra 
          </Node>
     </Plugin>
 
-Dessutom, om du använder en versioner av collectD innan 5.5 använder följande konfiguration i stället.
+Dessutom, om du använder en versioner av collectD innan 5.5 använda hello följande konfiguration i stället.
 
     LoadPlugin write_http
 
@@ -50,12 +50,12 @@ Dessutom, om du använder en versioner av collectD innan 5.5 använder följande
        </URL>
     </Plugin>
 
-CollectD konfigurationen använder standard`write_http` plugin-programmet för att skicka mått prestandadata via port 26000 till OMS-Agent för Linux. 
+Hej CollectD konfigurationen använder hello standard`write_http` plugin-programmet toosend mått prestandadata via port 26000 tooOMS Agent för Linux. 
 
 > [!NOTE]
-> Den här porten kan konfigureras att ett egendefinierat porten om det behövs.
+> Den här porten kan vara konfigurerade tooa anpassade porten om det behövs.
 
-OMS-Agent för Linux också lyssnar på port 26000 CollectD mått och konverterar dem till OMS-schemat statistik. Följande är OMS-Agent för Linux-konfiguration `collectd.conf`.
+hello OMS-Agent för Linux också lyssnar på port 26000 CollectD mått och konverterar dem tooOMS schemat mått. hello följer hello OMS-Agent för Linux-konfiguration `collectd.conf`.
 
     <source>
       type http
@@ -74,15 +74,15 @@ OMS-Agent för Linux också lyssnar på port 26000 CollectD mått och konvertera
 
 
 ## <a name="configuration"></a>Konfiguration
-Här följer grundläggande steg för att konfigurera insamling av data för CollectD i logganalys.
+hello nedan följer stegen tooconfigure samling CollectD data i logganalys.
 
-1. Konfigurera CollectD för att skicka data till OMS-Agent för Linux med write_http plugin-programmet.  
-2. Konfigurera OMS-Agent för Linux att lyssna efter CollectD data på rätt port.
+1. Konfigurera CollectD toosend data toohello OMS-Agent för Linux med hello write_http plugin-programmet.  
+2. Konfigurera hello OMS-Agent för Linux toolisten för hello CollectD data på hello rätt port.
 3. Starta om CollectD och OMS-Agent för Linux.
 
-### <a name="configure-collectd-to-forward-data"></a>Konfigurera CollectD för att vidarebefordra data 
+### <a name="configure-collectd-tooforward-data"></a>Konfigurera CollectD tooforward data 
 
-1. Att vidarebefordra CollectD data till OMS-Agent för Linux `oms.conf` måste läggas till Collectds konfigurationskatalogen. Mål för den här filen är beroende av Linux-distro av din dator.
+1. tooroute CollectD data toohello OMS-Agent för Linux `oms.conf` behov toobe läggs Toocollectd's konfigurationskatalogen. hello mål för den här filen är beroende av hello Linux distro av din dator.
 
     Om din CollectD config directory finns i /etc/collectd.d/:
 
@@ -93,20 +93,20 @@ Här följer grundläggande steg för att konfigurera insamling av data för Col
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >Du behöver ändra taggar i för CollectD versioner före 5.5 `oms.conf` som ovan.
+    >För CollectD versioner före 5.5 behöver toomodify hello taggar `oms.conf` som ovan.
     >
 
-2. Kopiera collectd.conf till arbetsytan önskade omsagent konfigurationskatalogen.
+2. Kopiera collectd.conf toohello önskad arbetsytan omsagent konfigurationskatalogen.
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
         sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
 
-3. Starta om CollectD och OMS-Agent för Linux med följande kommandon.
+3. Starta om CollectD och OMS-Agent för Linux med hello följande kommandon.
 
     sudo service collectd omstart sudo /opt/microsoft/omsagent/bin/service_control omstart
 
-## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>CollectD mått till logganalys schemat konvertering
-Om du vill behålla en bekant modell mellan infrastruktur-mätvärden som redan samlats in av OMS-Agent för Linux och nya mått som samlas in av CollectD följande schemamappning används:
+## <a name="collectd-metrics-toolog-analytics-schema-conversion"></a>CollectD mått tooLog Analytics schemat konvertering
+toomaintain en bekant modell mellan infrastruktur-mätvärden som redan samlats in av OMS-Agent för Linux och hello nya mått som samlas in av CollectD hello följande schemamappning används:
 
 | Fältet CollectD mått | Log Analytics-fält |
 |:--|:--|
@@ -120,6 +120,6 @@ Om du vill behålla en bekant modell mellan infrastruktur-mätvärden som redan 
 | [] värden | CounterValue |
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om [logga sökningar](log-analytics-log-searches.md) att analysera data som samlas in från datakällor och lösningar. 
-* Använd [anpassade fält](log-analytics-custom-fields.md) att tolka data från syslog-poster till enskilda fält.
+* Lär dig mer om [logga sökningar](log-analytics-log-searches.md) tooanalyze hello data som samlas in från datakällor och lösningar. 
+* Använd [anpassade fält](log-analytics-custom-fields.md) tooparse data från syslog-poster till enskilda fält.
 

@@ -1,6 +1,6 @@
 ---
-title: "Vyer i Operations Management Suite (OMS) hanteringslösningar | Microsoft Docs"
-description: "En eller flera vyer om du vill visualisera data inkluderar vanligtvis hanteringslösningar i Operations Management Suite (OMS).  Den här artikeln beskriver hur du exporterar en vy som skapats av Vydesigner och inkludera den i en lösning. "
+title: "aaaViews i hanteringslösningar för Operations Management Suite (OMS) | Microsoft Docs"
+description: "En eller flera vyer toovisualize data inkluderar vanligtvis hanteringslösningar i Operations Management Suite (OMS).  Den här artikeln beskriver hur tooexport vyn skapats av hello Vydesigner och inkludera den i en lösning. "
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
-ms.openlocfilehash: 533b5564a805e0b41f2b1a4ad92e12b133220952
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 303861465014a27289f831332b3d95925c0ae66d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Vyer i Operations Management Suite (OMS) hanteringslösningar (förhandsgranskning)
 > [!NOTE]
-> Den här är dokumentationen preliminär för att skapa lösningar för hantering i OMS som för närvarande finns i förhandsgranskningen. Ett schema som beskrivs nedan kan ändras.    
+> Den här är dokumentationen preliminär för att skapa lösningar för hantering i OMS som för närvarande finns i förhandsgranskningen. Ett schema som beskrivs nedan är ämne toochange.    
 >
 >
 
-[Lösningar för hantering i Operations Management Suite (OMS)](operations-management-suite-solutions.md) inkluderar vanligtvis en eller flera vyer om du vill visualisera data.  Den här artikeln beskriver hur du exporterar en vy som skapades av den [Vydesigner](../log-analytics/log-analytics-view-designer.md) och inkludera den i en lösning.  
+[Lösningar för hantering i Operations Management Suite (OMS)](operations-management-suite-solutions.md) inkluderar vanligtvis en eller flera vyer toovisualize data.  Den här artikeln beskriver hur tooexport vyn skapats av hello [Vydesigner](../log-analytics/log-analytics-view-designer.md) och inkludera den i en lösning.  
 
 > [!NOTE]
-> Exemplen i den här artikeln använder parametrar och variabler som är obligatoriska eller vanligt att hanteringslösningar och beskrivs i [och skapa lösningar för hantering i Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)
+> hello exempel i den här artikeln använder parametrar och variabler är antingen obligatorisk eller vanliga toomanagement lösningar som beskrivs i [och skapa lösningar för hantering i Operations Management Suite (OMS)](operations-management-suite-solutions-creating.md)
 >
 >
 
 ## <a name="prerequisites"></a>Krav
-Den här artikeln förutsätter att du redan är bekant med [skapar en lösning för](operations-management-suite-solutions-creating.md) och strukturen för en lösningsfil.
+Den här artikeln förutsätter att du redan är bekant med för[skapar en lösning för](operations-management-suite-solutions-creating.md) och hello struktur för en lösningsfil.
 
 ## <a name="overview"></a>Översikt
-Om du vill inkludera en vy i en lösning som du skapar en **resurs** för den i den [lösningsfilen](operations-management-suite-solutions-creating.md).  JSON som beskriver den visa detaljerad konfiguration är komplex men och inte något att en typisk lösning författare skulle kunna skapa manuellt.  Den vanligaste metoden är att skapa en vy med hjälp av den [Vydesigner](../log-analytics/log-analytics-view-designer.md), exportera den och sedan lägga till den detaljerade konfigurationen i lösningen.
+tooinclude en vy i en lösning som du skapar en **resurs** för den i hello [lösningsfilen](operations-management-suite-solutions-creating.md).  hello JSON som beskriver hello visa detaljerad konfiguration är komplex men och inte något att en typisk lösning författare skulle vara kan toocreate manuellt.  hello vanligaste metoden är toocreate hello vy med hello [Vydesigner](../log-analytics/log-analytics-view-designer.md), exportera den och Lägg sedan till den detaljerade konfiguration toohello lösningen.
 
-De grundläggande stegen för att lägga till en vy i en lösning är som följer.  Varje steg beskrivs detaljerat i nedanstående avsnitt.
+hello grundläggande steg tooadd en vy tooa lösning är som följer.  Varje steg beskrivs detaljerat i hello avsnitten nedan.
 
-1. Exportera vyn till en fil.
-2. Skapa vy resursen i lösningen.
-3. Lägga till vyn Detaljer.
+1. Exportera hello visa tooa fil.
+2. Skapa hello visa resurs i hello-lösning.
+3. Lägg till hello visa information.
 
-## <a name="export-the-view-to-a-file"></a>Exportera vyn till en fil
-Följ anvisningarna på [Log Analytics Vydesigner](../log-analytics/log-analytics-view-designer.md) att exportera en vy till en fil.  Den exporterade filen kommer att i JSON-format med samma [element som lösningsfilen](operations-management-suite-solutions-solution-file.md).  
+## <a name="export-hello-view-tooa-file"></a>Exportera hello visa tooa fil
+Följ instruktionerna för hello på [Log Analytics Vydesigner](../log-analytics/log-analytics-view-designer.md) tooexport en vy tooa-fil.  hello exporterade filen ska vara i JSON-format med hello samma [element som hello lösningsfilen](operations-management-suite-solutions-solution-file.md).  
 
-Den **resurser** element i filen vyn har en resurs med en typ av **Microsoft.OperationalInsights/workspaces** som representerar OMS-arbetsyta.  Det här elementet har ett underelement av typen **vyer** som representerar vyn och innehåller detaljerade konfigurationen.  Du kan kopiera information om det här elementet och kopierar den till din lösning.
+Hej **resurser** element av hello visa filen har en resurs med en typ av **Microsoft.OperationalInsights/workspaces** som representerar hello OMS-arbetsyta.  Det här elementet har ett underelement av typen **vyer** som representerar hello vyn och innehåller detaljerade konfigurationen.  Du kopierar hello information om det här elementet och kopierar den till din lösning.
 
-## <a name="create-the-view-resource-in-the-solution"></a>Skapa vy resursen i lösningen
-Lägg till följande vy resursen till den **resurser** element i din lösningsfil.  Den använder variabler som beskrivs nedan som du måste också lägga till.  Observera att den **instrumentpanelen** och **OverviewTile** egenskaper är platshållare som kommer att skrivas över med motsvarande egenskaper från den exportera visa filen.
+## <a name="create-hello-view-resource-in-hello-solution"></a>Skapa hello visa resurs i hello-lösning
+Lägg till följande visa resursen toohello hello **resurser** element i din lösningsfil.  Den använder variabler som beskrivs nedan som du måste också lägga till.  Observera att hello **instrumentpanelen** och **OverviewTile** egenskaper är platshållare som kommer att skrivas över med hello motsvarande egenskaper från hello exporterade visa filen.
 
     {
         "apiVersion": "[variables('LogAnalyticsApiVersion')]",
@@ -73,28 +73,28 @@ Lägg till följande vy resursen till den **resurser** element i din lösningsfi
         }
     }
 
-Lägg till följande variabler i elementet variabler i lösningsfilen och Ersätt värdena som de för din lösning.
+Lägg till följande variabler toohello variabler element av hello lösningsfilen hello och Ersätt hello värden toothose för lösningen.
 
     "LogAnalyticsApiVersion": "2015-11-01-preview",
     "ViewAuthor": "Your name."
-    "ViewDescription": "Optional description of the view."
-    "ViewName": "Provide a name for the view here."
+    "ViewDescription": "Optional description of hello view."
+    "ViewName": "Provide a name for hello view here."
 
 
-Observera att du kan kopiera hela vyn resursen från din exporterade visa filen, men måste du göra följande ändringar att fungera i din lösning.  
+Observera att du kan kopiera hello hela vyn resurs från din exporterade visa filen, men du behöver toomake hello följande ändringar för den toowork i din lösning.  
 
-* Den **typen** för vyn resurs ska ändras från **vyer** till **Microsoft.OperationalInsights/workspaces**.
-* Den **namn** -egenskapen för resursen visa behöver ändras för att inkludera namnet på arbetsytan.
-* Beroende på arbetsytan måste tas bort eftersom den arbetsyta resursen har inte definierats i lösningen.
-* **DisplayName** egenskapen måste läggas till vyn.  Den **Id**, **namn**, och **DisplayName** måste matcha alla.
-* Parameternamn måste ändras för att matcha uppsättningen parametrar som krävs.
-* Variabler ska definieras i lösningen och används i lämpliga egenskaper.
+* Hej **typen** för hello vyn resursbehov toobe har ändrats från **vyer** för**Microsoft.OperationalInsights/workspaces**.
+* Hej **namn** egenskapen för hello visa resursen måste toobe ändras tooinclude hello arbetsytans namn.
+* hello beroende hello arbetsytan måste toobe tas bort eftersom hello arbetsytan resursen har inte definierats i hello-lösning.
+* **DisplayName** egenskapen behov toobe läggs toohello vyn.  Hej **Id**, **namn**, och **DisplayName** måste matcha alla.
+* Parameternamn måste ändras toomatch hello krävs uppsättning parametrar.
+* Variabler ska definieras i hello lösning och används i hello lämpliga egenskaper.
 
-## <a name="add-the-view-details"></a>Lägg till Visa detaljer
-Visa resursen i filen exporterade vyn innehåller två element i den **egenskaper** element med namnet **instrumentpanelen** och **OverviewTile** som innehåller den detaljerade konfiguration av vyn.  Kopiera dessa två element och innehållet i den **egenskaper** element i vyn resurs i din lösningsfilen.
+## <a name="add-hello-view-details"></a>Lägg till hello Visa detaljer
+hello visa resurs i hello exporteras visa filen innehåller två element i hello **egenskaper** element med namnet **instrumentpanelen** och **OverviewTile** som innehåller hello detaljerade konfigurationen av hello vyn.  Kopiera dessa två element och deras innehåll till hello **egenskaper** element av hello visa resurs i din lösningsfilen.
 
 ## <a name="example"></a>Exempel
-I följande exempel visar exempelvis en enkel lösning-fil med en vy.  Ellipserna (...) visas för den **instrumentpanelen** och **OverviewTile** innehållet utrymme skäl.
+Till exempel visar hello som följande exempel en enkel lösning-fil med en vy.  Ellipserna (...) visas för hello **instrumentpanelen** och **OverviewTile** innehållet utrymme skäl.
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",

@@ -1,6 +1,6 @@
 ---
-title: "Installera Mobilitetstjänsten (VMware eller fysisk till Azure) | Microsoft Docs"
-description: "Lär dig mer om att installera Mobilitetstjänsten agenten för att skydda dina lokala datorer."
+title: "aaaInstall Mobilitetstjänsten (VMware eller fysiska tooAzure) | Microsoft Docs"
+description: "Lär dig hur hello tooinstall Mobilitetstjänsten agent tooprotect lokala datorer."
 services: site-recovery
 documentationcenter: 
 author: AnoopVasudavan
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: 848284f37ae2470a169d8f8a8c9c0bb5b926abe3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f7836e6b35d3838bae1eff927838ce4b245b9f56
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="install-mobility-service-vmware-or-physical-to-azure"></a>Installera Mobilitetstjänsten (VMware eller fysisk till Azure)
-Azure Site Recovery-Mobilitetstjänsten samlar in dataskrivningar på en dator och vidarebefordrar dem till processervern. Distribuera Mobilitetstjänsten till varje dator (VMware VM eller fysiska server) som du vill replikera till Azure. Du kan distribuera Mobilitetstjänsten till servrar som du vill skydda med hjälp av följande metoder:
+# <a name="install-mobility-service-vmware-or-physical-tooazure"></a>Installera Mobilitetstjänsten (VMware eller fysiska tooAzure)
+Azure Site Recovery-Mobilitetstjänsten samlar in dataskrivningar på en dator och vidarebefordrar dem toohello processervern. Distribuera Mobilitetstjänsten tooevery dator (VMware VM eller fysiska servrar som du vill tooreplicate tooAzure). Du kan distribuera Mobilitetstjänsten toohello servrar som du vill tooprotect med hjälp av hello följande metoder:
 
 
 * [Installera Mobilitetstjänsten med hjälp av verktyg för programvarudistribution som System Center Configuration Manager](site-recovery-install-mobility-service-using-sccm.md)
 * [Installera Mobilitetstjänsten med hjälp av Azure Automation och Desired State Configuration Automation DSC)](site-recovery-automate-mobility-service-install.md)
-* [Installera Mobilitetstjänsten manuellt med hjälp av det grafiska användargränssnittet (GUI)](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-by-using-the-gui)
+* [Installera Mobilitetstjänsten manuellt med hjälp av hello grafiskt användargränssnitt (GUI)](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-by-using-the-gui)
 * [Installera Mobilitetstjänsten manuellt i en kommandotolk](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-at-a-command-prompt)
 * [Installera Mobilitetstjänsten genom push-installation från Azure Site Recovery](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery)
 
 
 >[!IMPORTANT]
-> Från och med version 9.7.0.0, på Windows-datorer (VM), Mobilitetstjänsten installerar installationsprogrammet också den senaste tillgängliga [Virtuella Azure-datoragenten](../virtual-machines/windows/extensions-features.md#azure-vm-agent). När en dator växlar till Azure måste uppfyller datorn installationen av nödvändiga för att använda alla VM-tillägg.
+> Från och med version 9.7.0.0, på Windows-datorer (VM), hello Mobilitetstjänsten installerar installationsprogrammet också hello senaste tillgängliga [Virtuella Azure-datoragenten](../virtual-machines/windows/extensions-features.md#azure-vm-agent). När en dator växlar tooAzure, uppfyller hello datorn hello agentinstallation som är nödvändiga för att använda alla VM-tillägg.
 
 ## <a name="prerequisites"></a>Krav
 Gör följande förutsättningar innan du installerar Mobilitetstjänsten manuellt på servern:
-1. Logga in på din server för konfiguration och öppna ett kommandotolksfönster som administratör.
-2. Ändra katalogen till bin-mappen och sedan skapa en lösenfras fil:
+1. Logga in tooyour konfigurationsservern och öppna ett kommandotolksfönster som administratör.
+2. Ändra hello directory toohello bin-mappen och sedan skapa en lösenfras fil:
 
     ```
     cd %ProgramData%\ASR\home\svsystems\bin
     genpassphrase.exe -v > MobSvc.passphrase
     ```
-3. Lagra filen lösenfras på en säker plats. Du kan använda filen under installationen av Mobilitetstjänsten.
-4. Mobility Service installationsprogram för alla operativsystem som stöds finns i mappen %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository.
+3. Lagra hello lösenfras på en säker plats. Du kan använda hello fil under hello installation av Mobilitetstjänsten.
+4. Mobility Service installationsprogram för alla operativsystem som stöds finns i hello %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository mappen.
 
 ### <a name="mobility-service-installer-to-operating-system-mapping"></a>Mobility-installationsprogram för operativsystem systemmappning
 
@@ -59,10 +59,10 @@ Gör följande förutsättningar innan du installerar Mobilitetstjänsten manuel
 |Microsoft ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04 (endast 64-bitars)|
 
 
-## <a name="install-mobility-service-manually-by-using-the-gui"></a>Installera Mobilitetstjänsten manuellt med hjälp av det grafiska Användargränssnittet
+## <a name="install-mobility-service-manually-by-using-hello-gui"></a>Installera Mobilitetstjänsten manuellt med hjälp av hello GUI
 
 >[!IMPORTANT]
-> Om du använder en **konfigurationsservern** att replikera **Azure IaaS-virtuella datorer** från ett Azure prenumeration eller en Region till en annan sedan **använda kommandoradsverktyget baserat installationen** metod
+> Om du använder en **konfigurationsservern** tooreplicate **Azure IaaS-virtuella datorer** från en Azure-prenumeration/Region tooanother sedan **använda hello baserat kommandoradsinstallation**  metod
 
 [!INCLUDE [site-recovery-install-mob-svc-gui](../../includes/site-recovery-install-mob-svc-gui.md)]
 
@@ -76,7 +76,7 @@ Gör följande förutsättningar innan du installerar Mobilitetstjänsten manuel
 
 
 ## <a name="install-mobility-service-by-push-installation-from-azure-site-recovery"></a>Installera Mobilitetstjänsten genom push-installation från Azure Site Recovery
-Alla måldatorer måste uppfylla följande krav för att göra en push-installation av Mobilitetstjänsten genom att använda Site Recovery.
+toodo en push-installation av Mobilitetstjänsten genom att använda Site Recovery alla måldatorer måste uppfylla följande förutsättningar hello.
 
 [!INCLUDE [site-recovery-prepare-push-install-mob-svc-win](../../includes/site-recovery-prepare-push-install-mob-svc-win.md)]
 
@@ -84,18 +84,18 @@ Alla måldatorer måste uppfylla följande krav för att göra en push-installat
 
 
 > [!NOTE]
-När Mobilitetstjänsten är installerad i Azure portal, väljer du den **replikera** knappen för att börja skydda dessa virtuella datorer.
+När Mobilitetstjänsten är installerad i hello Azure-portalen markerar hello **replikera** knappen toostart skyddar dessa virtuella datorer.
 
 ## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>Avinstallera Mobilitetstjänsten på en dator med Windows Server
-Använd någon av följande metoder för att avinstallera Mobilitetstjänsten på en Windows Server.
+Använd någon av hello följande metoder toouninstall Mobilitetstjänsten på en Windows Server-dator.
 
-### <a name="uninstall-by-using-the-gui"></a>Avinstallera genom att använda det grafiska Användargränssnittet
+### <a name="uninstall-by-using-hello-gui"></a>Avinstallera med hello GUI
 1. På Kontrollpanelen, Välj **program**.
 2. Välj **Microsoft Azure Site Recovery Mobility tjänsten eller Huvudtjänsten målservern**, och välj sedan **avinstallera**.
 
 ### <a name="uninstall-at-a-command-prompt"></a>Avinstallera i en kommandotolk
 1. Öppna ett kommandotolksfönster som administratör.
-2. Om du vill avinstallera Mobilitetstjänsten, kör du följande kommando:
+2. toouninstall Mobilitetstjänsten, kör hello följande kommando:
 
 ```
 MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
@@ -103,8 +103,8 @@ MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\
 
 ## <a name="uninstall-mobility-service-on-a-linux-computer"></a>Avinstallera Mobilitetstjänsten på en Linux-dator
 1. Logga in på Linux-servern som en **rot** användare.
-2. Gå till /user/local/ASR i en terminal.
-3. Om du vill avinstallera Mobilitetstjänsten, kör du följande kommando:
+2. Gå för/användare/lokal/ASR i en terminal.
+3. toouninstall Mobilitetstjänsten, kör hello följande kommando:
 
 ```
 uninstall.sh -Y

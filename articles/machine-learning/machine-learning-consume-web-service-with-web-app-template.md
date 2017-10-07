@@ -1,6 +1,6 @@
 ---
-title: "Använda en Machine Learning-webbtjänst med en mall för appen | Microsoft Docs"
-description: "Använd en mall för app i Azure Marketplace för att använda en förutsägbar webbtjänst i Azure Machine Learning."
+title: "aaaConsume en Machine Learning-webbtjänst med en mall för appen | Microsoft Docs"
+description: "Använd en mall för app i Azure Marketplace tooconsume förutsägande webbtjänst i Azure Machine Learning."
 keywords: "maskininlärning för webbtjänst, operationalization REST API"
 services: machine-learning
 documentationcenter: 
@@ -15,48 +15,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye;raymondl
-ms.openlocfilehash: 95aa1fa23d83ec0dcd00870179167e803bafbd16
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1199377bead470807d58ca7f7a667175cbb88450
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="consume-an-azure-machine-learning-web-service-with-a-web-app-template"></a>Använda en Azure Machine Learning-webbtjänst med en webbappmall
 
-När du har utvecklat din förutsägelsemodell och distribueras som en Azure-webbtjänst med hjälp av Machine Learning Studio eller med verktyg som R eller Python kan du komma åt operationalized modellen med hjälp av REST-API.
+När du har utvecklat din förutsägelsemodell och distribueras som en Azure-webbtjänst med hjälp av Machine Learning Studio eller med verktyg som R eller Python kan du komma åt hello operationalized modellen med hjälp av REST-API.
 
-Det finns ett antal sätt att använda REST-API och få åtkomst till webbtjänsten. Du kan till exempel skriva ett program i C#, R eller Python med exempelkoden genererade för dig när du distribuerade webbtjänsten (tillgänglig i den [Machine Learning Web Services-portalen](https://services.azureml.net/quickstart) eller i web service instrumentpanelen i Machine Learning Studio). Eller så kan du använda exemplet Microsoft Excel-arbetsbok på samma gång.
+Det finns ett antal sätt tooconsume hello REST-API och åtkomst hello webbtjänsten. Exempelvis kan du skriva ett program i C#, R eller Python med hello exempelkod som skapas automatiskt när du distribuerade hello-webbtjänst (tillgänglig i hello [Machine Learning Web Services-portalen](https://services.azureml.net/quickstart) eller i hello web service instrumentpanelen i Machine Learning Studio). Du kan också använda hello exempel Microsoft Excel-arbetsbok på hello samtidigt.
 
-Men de snabbaste och enklaste sättet att komma åt webbtjänsten är via Web App mallar som är tillgängliga i den [Azure Web App Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/).
+Men hello snabbaste och enklaste sättet tooaccess webbtjänsten är via hello Web App mallar som är tillgängliga i hello [Azure Web App Marketplace](https://azure.microsoft.com/marketplace/web-applications/all/).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="the-azure-machine-learning-web-app-templates"></a>I Azure Machine Learning mallar för App
-Web app tillgängliga mallar i Azure Marketplace kan skapa ett anpassat webbprogram som känner din webbtjänsten indata och förväntat resultat. Allt du behöver göra är att ge appen webbåtkomst webbtjänsten och data och mallen gör resten.
+## <a name="hello-azure-machine-learning-web-app-templates"></a>hello mallar för Azure Machine Learning-App
+hello web app mallar som är tillgängliga i hello Azure Marketplace kan skapa ett anpassat webbprogram som känner din webbtjänsten indata och förväntat resultat. Allt du behöver toodo är att ge hello app åtkomst tooyour webbtjänst och data och hello mallen hello rest.
 
 Två mallar är tillgängliga:
 
 * [Azure ML-svar på begäranden tjänstmall Web App](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlaspnettemplateforrrs/)
 * [Azure ML-Batch Execution Service Web App mall](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/)
 
-Varje mall skapar ett exempel ASP.NET-program med hjälp av API-URI och nyckel för webbtjänsten, och distribuerar den som en webbplats till Azure. Svar på begäranden tjänsten (RR) skapas en webbapp som gör det möjligt att skicka en enda rad med data till webbtjänsten för att få ett enskilt resultat. Batch Execution Service BES-mallen skapar en webbapp som gör att du kan skicka många rader med data för att få flera resultat.
+Varje mall skapar ett exempel ASP.NET-program med hjälp av hello API-URI och nyckel för webbtjänsten, och distribuerar den som en webbplats tooAzure. hello skapas svar på begäranden tjänsten (RR) en webbapp som du kan använda toosend en enda rad med data toohello web service tooget ett enskilt resultat. hello Batch Execution Service BES-mallen skapar ett webbprogram som du kan använda toosend många rader med data tooget flera resultat.
 
-Ingen kodning krävs för att använda dessa mallar. Du ange bara API-nyckel och URI och mallen skapar program åt dig.
+Ingen kodning är obligatoriska toouse dessa mallar. Du ange bara hello API-nyckel och URI och hello mallen skapar hello program åt dig.
 
-Hämta API-nyckel och Begärd URI för en webbtjänst:
+tooget hello API-nyckel och Begärd URI för en webbtjänst:
 
-1. I den [Web Services-portalen](https://services.azureml.net/quickstart), en ny webbtjänst klickar du på **Web Services** längst upp. Eller för en klassisk web service klickar du på **klassiska webbtjänster**.
-2. Klicka på den webbtjänst som du vill komma åt.
-3. Klicka på den slutpunkt som du vill komma åt för en klassisk webbtjänst.
-4. Klicka på **förbruka** längst upp.
-5. Kopiera den **primära** eller **sekundärnyckeln** och spara den.
-6. Om du skapar en mall för svar på begäranden tjänsten (RR), kopiera den **begäran och svar** URI och spara den. Om du skapar en mall för Batch Execution Service BES-, kopiera den **gruppbegäranden** URI och spara den.
+1. I hello [Web Services-portalen](https://services.azureml.net/quickstart), en ny webbtjänst klickar du på **Web Services** hello överst. Eller för en klassisk web service klickar du på **klassiska webbtjänster**.
+2. Klicka på hello-webbtjänst som du vill tooaccess.
+3. Klicka på hello-slutpunkt som du vill använda tooaccess för klassisk-webbtjänsten.
+4. Klicka på **förbruka** hello överst.
+5. Kopiera hello **primära** eller **sekundärnyckeln** och spara den.
+6. Om du skapar en mall för svar på begäranden tjänsten (RR) kan du kopiera hello **begäran och svar** URI och spara den. Om du skapar en mall för Batch Execution Service BES-, kopiera hello **gruppbegäranden** URI och spara den.
 
 
-## <a name="how-to-use-the-request-response-service-rrs-template"></a>Hur du använder mallen svar på begäranden tjänsten (RR)
-Följ dessa steg om du vill använda mallen Resursposter web app, som visas i följande diagram.
+## <a name="how-toouse-hello-request-response-service-rrs-template"></a>Hur toouse hello svar på begäranden tjänsten (RR) mall
+Följ dessa steg toouse hello Resursposter web app mall, som visas i följande diagram hello.
 
-![Processen för att använda Resursposter webbmall][image1]
+![Web processmall toouse Resursposter][image1]
 
 
 <!--    ![API Key][image3] -->
@@ -67,61 +67,61 @@ Följ dessa steg om du vill använda mallen Resursposter web app, som visas i f�
    
     ![Request URI][image4] -->
 
-1. Gå till den [Azure-portalen](https://portal.azure.com), **inloggning**, klickar du på **ny**, söka efter och välj **Azure ML-svar på begäranden Service Web App**, klicka på **skapa**. 
+1. Gå toohello [Azure-portalen](https://portal.azure.com), **inloggning**, klickar du på **ny**, söka efter och välj **Azure ML-svar på begäranden Service Web App**, klicka på **Skapa**. 
    
-   * Ge ett unikt namn för ditt webbprogram. URL till webbprogrammet blir namnet följt av `.azurewebsites.net.` t.ex.`http://carprediction.azurewebsites.net.`
-   * Välj Azure-prenumeration och tjänster som webbtjänsten körs under.
+   * Ge ett unikt namn för ditt webbprogram. hello-URL för hello webbprogrammet blir namnet följt av `.azurewebsites.net.` t.ex.`http://carprediction.azurewebsites.net.`
+   * Välj hello Azure-prenumeration och tjänster som webbtjänsten körs under.
    * Klicka på **Skapa**.
      
      ![Skapa webbapp][image5]
 
-4. När Azure distribution webbprogrammet har slutförts, klickar du på den **URL** på webbappsinställningarna sidan i Azure eller anger en URL i en webbläsare. Till exempel, `http://carprediction.azurewebsites.net.`
-5. När webbappen körs första gången uppmanas du för den **API Post URL** och **API-nyckeln**.
-   Ange de värden som du sparade tidigare (**Begärd URI** och **API-nyckel**respektive).
+4. När Azure distribution hello webbprogrammet har slutförts, klickar du på hello **URL** på hello inställningssidan för web app i Azure, eller ange hello URL i en webbläsare. Till exempel, `http://carprediction.azurewebsites.net.`
+5. När hello web app första körs den ber dig om hello **API Post URL** och **API-nyckeln**.
+   Ange hello-värden som du sparade tidigare (**Begärd URI** och **API-nyckel**respektive).
      
      Klicka på **skicka**.
      
      ![Ange Post URI och API-nyckel][image6]
 
-6. Web app visar dess **Webbappkonfigurationen** sidan med de aktuella inställningarna för web service. Här kan du ändra inställningarna som används av webbappen.
+6. Hej web app visar dess **Webbappkonfigurationen** sidan med hello aktuella webbtjänstinställningar. Här kan du ändra toohello inställningarna som används av hello webbprogrammet.
    
    > [!NOTE]
-   > Om du ändrar de här inställningarna endast ändras dem för det här webbprogrammet. Standardinställningarna för webbtjänsten ändras inte. Till exempel om du ändrar den **beskrivning** här ändras inte den beskrivning som visas på instrumentpanelen web service i Machine Learning Studio.
+   > Hello inställningar här endast ändras dem för det här webbprogrammet. Hello standardinställningarna för webbtjänsten ändras inte. Till exempel om du ändrar hello **beskrivning** här ändringen inte hello beskrivning visas på hello web service instrumentpanelen i Machine Learning Studio.
    > 
    > 
    
-    När du är klar klickar du på **spara ändringar**, och klicka sedan på **gå till startsidan**.
+    När du är klar klickar du på **spara ändringar**, och klicka sedan på **gå tooHome sidan**.
 
-7. Du kan ange värden ska skickas till webbtjänsten från startsidan. Klicka på **skicka** när du är klar och resultatet returneras.
+7. Startsidan kan du ange värden från hello toosend tooyour-webbtjänsten. Klicka på **skicka** när du är klar och hello resultat returneras.
 
-Om du vill gå tillbaka till den **Configuration** går du till den `setting.aspx` sidan i webbprogrammet. Till exempel: `http://carprediction.azurewebsites.net/setting.aspx.` uppmanas du att ange API-nyckeln igen – du behöver som kan komma åt sidan och uppdatera inställningarna.
+Om du vill tooreturn toohello **Configuration** sidan finns toohello `setting.aspx` sidan av hello webbprogram. Till exempel: `http://carprediction.azurewebsites.net/setting.aspx.` du kommer att tillfrågas tooenter hello API-nyckeln igen – du behöver att tooaccess hello sidan och uppdatera inställningarna för hello.
 
-Du kan stoppa, starta om eller ta bort webbprogrammet i Azure-portalen som andra webbprogram. Så länge som den körs kan du bläddra till hem webbadressen och ange nya värden.
+Du kan stoppa, starta om eller ta bort hello webbprogram i hello Azure-portalen som andra webbprogram. Du kan bläddra toohello hem webbadressen och ange nya värden så länge som den körs.
 
-## <a name="how-to-use-the-batch-execution-service-bes-template"></a>Hur du använder Batch Execution Service BES-mall
-Du kan använda mallen BES web app på samma sätt som RR-mall, förutom att webbappen har skapats kan du skicka flera rader med data och ta emot flera resultat.
+## <a name="how-toouse-hello-batch-execution-service-bes-template"></a>Hur toouse hello Batch Execution Service BES-mall
+Du kan använda hello BES web app mall i hello samma sätt som hello RR-mall, förutom att hello-webbprogram som har skapats kan du toosubmit flera rader med data och ta emot flera resultat.
 
-Indatavärden för en webbtjänst för batch-körningen kan komma från Azure-lagring eller en lokal fil. resultatet lagras i en Azure storage-behållare.
-Så du behöver en Azure storage-behållare för att hålla resultaten som returnerades av webbprogrammet och måste du förbereda dina indata.
+hello indatavärden för en webbtjänst för batch-körningen kan komma från Azure-lagring eller en lokal fil. hello resultat lagras i en Azure storage-behållare.
+Därför ska du behöver ett Azure storage-behållare toohold hello resultaten som returnerades av hello webbprogram och du behöver tooget dina indata redo.
 
-![Processen för att använda mallen för BES-webbtjänst][image2]
+![Bearbeta toouse BES webbmall][image2]
 
-1. Följ samma procedur för att skapa webbprogram BES som mallen Resursposter utom gå till [Azure ML Batch Execution Service Web Appmallen](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) öppnas BES-mallen på Azure Marketplace och på **skapa webbprogrammet**.
+1. Följ hello samma procedur toocreate hello BES webbapp som hello Resursposter mall, utom gå för[Azure ML Batch Execution Service Web Appmallen](https://azure.microsoft.com/marketplace/partners/microsoft/azuremlbeswebapptemplate/) tooopen hello BES-mall i Azure Marketplace och klicka på **skapa webbprogram** .
 
-2. Där du vill att resultatet lagras ange mål behållaren information på sidan web app. Ange också där webbprogrammet får indatavärden, antingen i en lokal fil eller en Azure storage-behållare.
+2. toospecify där du vill att hello resultatet lagras, ange hello mål behållaren information på startsidan för hello web app. Ange var hello webbprogrammet kan få hello indatavärden, antingen i en lokal fil eller en Azure storage-behållare.
    Klicka på **skicka**.
    
     ![Storage-informationen][image7]
 
-Webbprogrammet visas en sida med jobbstatus.
-När jobbet har slutförts får du platsen för resultaten i Azure blob storage. Du har också möjlighet att hämta resultaten till en lokal fil.
+hello webbprogrammet visas en sida med jobbstatus.
+När hello jobbet har slutförts får du hello platsen för hello resultat i Azure blob storage. Du kan också ha hello alternativet för att hämta hello resultat tooa lokal fil.
 
 ## <a name="for-more-information"></a>Mer information
-Mer information om...
+Mer information om toolearn...
 
 * Skapa ett experiment i machine learning med Machine Learning Studio finns [skapa ditt första experiment i Azure Machine Learning Studio](machine-learning-create-experiment.md)
-* hur du distribuerar ditt machine learning-experiment som en webbtjänst finns [distribuera en Azure Machine Learning-webbtjänst](machine-learning-publish-a-machine-learning-web-service.md)
-* andra sätt att få åtkomst till din webbtjänsten finns [använda en Azure Machine Learning-webbtjänst](machine-learning-consume-web-services.md)
+* hur toodeploy din maskininlärning experiment som en webbtjänst finns [distribuera en Azure Machine Learning-webbtjänst](machine-learning-publish-a-machine-learning-web-service.md)
+* andra sätt tooaccess webbtjänsten, se [hur tooconsume en Azure Machine Learning-webbtjänst](machine-learning-consume-web-services.md)
 
 [image1]: media/machine-learning-consume-web-service-with-web-app-template/rrs-web-template-flow.png
 [image2]: media/machine-learning-consume-web-service-with-web-app-template/bes-web-template-flow.png

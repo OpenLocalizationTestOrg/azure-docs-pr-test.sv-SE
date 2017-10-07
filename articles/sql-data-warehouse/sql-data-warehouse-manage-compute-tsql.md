@@ -1,6 +1,6 @@
 ---
-title: "Pausa, återuppta, skala med T-SQL i Azure SQL Data Warehouse | Microsoft Docs"
-description: "Transact-SQL (T-SQL) uppgifter till skalbar prestanda genom att justera dwu: er. Spara kostnader genom att skala tillbaka under tider med låg belastning."
+title: "aaaPause, återuppta, skala med T-SQL i Azure SQL Data Warehouse | Microsoft Docs"
+description: "Transact-SQL (T-SQL) uppgifter tooscale ut prestanda genom att justera dwu: er. Spara kostnader genom att skala tillbaka under tider med låg belastning."
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 03/30/2017
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 9221d72ecf8ab2ba8b04e4bc97eeef7157817cca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 84c6868acb673221d8853319ac9a05bb98b2b7c2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-t-sql"></a>Hantera datorkraft i Azure SQL Data Warehouse (T-SQL)
 > [!div class="op_single_selector"]
@@ -33,11 +33,11 @@ ms.lasthandoff: 07/11/2017
 <a name="current-dwu-bk"></a>
 
 ## <a name="view-current-dwu-settings"></a>Visa aktuella DWU-inställningar
-Visa det aktuella DWU-inställningen för dina databaser:
+tooview hello aktuella DWU-inställningar för dina databaser:
 
 1. Öppna SQL Server Object Explorer i Visual Studio.
-2. Ansluta till master-databasen som är kopplade till den logiska SQL Database-servern.
-3. Välj vyn sys.database_service_objectives dynamisk hantering. Här är ett exempel: 
+2. Ansluta toohello master-databasen som är associerade med hello logiska SQL Database-server.
+3. Välj hello sys.database_service_objectives dynamisk hanteringsvy. Här är ett exempel: 
 
 ```sql
 SELECT
@@ -56,10 +56,10 @@ JOIN
 ## <a name="scale-compute"></a>Skala bearbetning
 [!INCLUDE [SQL Data Warehouse scale DWUs description](../../includes/sql-data-warehouse-scale-dwus-description.md)]
 
-Ändra de dwu: er:
+toochange hello dwu: er:
 
-1. Ansluta till master-databasen som är associerade med din logiska SQL Database-server.
-2. Använd den [ALTER DATABASE] [ ALTER DATABASE] TSQL-instruktion. I följande exempel anger servicenivåmålet till DW1000 för MySQLDW-databasen. 
+1. Ansluta toohello master-databasen som är associerade med din logiska SQL Database-server.
+2. Använd hello [ALTER DATABASE] [ ALTER DATABASE] TSQL-instruktion. hello anger följande exempel hello service nivån mål tooDW1000 för hello databasen MySQLDW. 
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -71,8 +71,8 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000')
 
 ## <a name="check-database-state-and-operation-progress"></a>Kontrollera databasen tillstånd och åtgärden pågår
 
-1. Ansluta till master-databasen som är associerade med din logiska SQL Database-server.
-2. Skicka fråga om du vill kontrollera databasens status
+1. Ansluta toohello master-databasen som är associerade med din logiska SQL Database-server.
+2. Skicka fråga toocheck databasens status
 
 ```sql
 SELECT *
@@ -80,7 +80,7 @@ FROM
 sys.databases
 ```
 
-3. Skicka fråga om du vill kontrollera status för åtgärden
+3. Skicka fråga toocheck status för åtgärden
 
 ```sql
 SELECT *
@@ -92,7 +92,7 @@ AND
     major_resource_id = 'MySQLDW'
 ```
 
-Den här DMV returnerar information om olika hanteringsåtgärder på ditt SQL Data Warehouse, till exempel igen och tillstånd för processen som ska antingen vara IN_PROGRESS eller SLUTFÖRTS.
+Den här DMV returnerar information om olika hanteringsåtgärder på ditt SQL Data Warehouse, till exempel hello åtgärden och hello hello åtgärdens status, som ska antingen vara IN_PROGRESS eller SLUTFÖRTS.
 
 
 

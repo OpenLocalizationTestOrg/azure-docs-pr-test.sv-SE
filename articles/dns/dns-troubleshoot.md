@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS felsökningsguiden | Microsoft Docs"
-description: "Felsökning av vanliga problem med Azure DNS"
+title: "aaaAzure DNS felsökningsguiden | Microsoft Docs"
+description: Hur tootroubleshoot vanliga problem med Azure DNS
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
 ms.author: jonatul
-ms.openlocfilehash: 1d9bb681a864bdc3e5a2f9c9a531d9566b16ada4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 944aa1811c980063f739268cd2c79b647b2754a4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS felsökningsguiden
 
@@ -29,12 +29,12 @@ Om stegen inte löser problemet kan du också söka efter eller ett inlägg prob
 
 ## <a name="i-cant-create-a-dns-zone"></a>Jag kan inte skapa en DNS-zon
 
-Prova ett eller flera av följande steg för att lösa vanliga problem:
+tooresolve vanliga problem, försök med en eller flera av följande hello:
 
-1.  Gå igenom granskningsloggar Azure DNS för att ta reda på orsaken till felet.
-2.  Varje DNS-zonnamn måste vara unikt inom sin resursgrupp. Det innebär att två DNS-zoner med samma namn inte kan dela en resursgrupp. Försök med ett annat zonnamn eller en annan resursgrupp.
-3.  Ett felmeddelande om att ”Du har nått eller överskridit maxantalet zoner i prenumerationen {subscription id}” kanske visas. Då kan du antingen använda en annan Azure-prenumeration, ta bort vissa zoner eller kontakta Azure-supporten för att öka prenumerationsgränsen.
-4.  Ett felmeddelande om att ”Zonen {zone name} inte är tillgänglig” kanske visas. Detta fel innebär att Azure DNS inte kunde allokera namnservrar för den här DNS-zonen. Försök med ett annat zonnamn. Om du är ägare till domännamnet kan du även kontakta Azure-supporten som kan allokera namnservrar åt dig.
+1.  Granska hello Azure DNS granska loggar toodetermine hello orsaken till felet.
+2.  Varje DNS-zonnamn måste vara unikt inom sin resursgrupp. Det vill säga två DNS-zoner med hello samma namn kan inte dela en resursgrupp. Försök med ett annat zonnamn eller en annan resursgrupp.
+3.  Du kan se ett fel ”du har nått eller överskridit hello maxantalet zoner i prenumerationen {prenumerations-id}”. Antingen använder en annan Azure-prenumeration, ta bort vissa zoner eller kontakta Azure-supporten tooraise prenumerationsgränsen för.
+4.  Du kan se ett fel ”hello-zonen {zonen name}' är inte tillgänglig”. Felet innebär att Azure DNS användes tooallocate namnservrar för denna DNS-zon. Försök med ett annat zonnamn. Du kan också om du är hello domain name ägare kontakta Azure-supporten, som kan allokera namnservrar för dig.
 
 
 ### <a name="recommended-documents"></a>**Rekommenderade dokument**
@@ -45,13 +45,13 @@ Prova ett eller flera av följande steg för att lösa vanliga problem:
 
 ## <a name="i-cant-create-a-dns-record"></a>Jag kan inte skapa någon DNS-post
 
-Prova ett eller flera av följande steg för att lösa vanliga problem:
+tooresolve vanliga problem, försök med en eller flera av följande hello:
 
-1.  Gå igenom granskningsloggar Azure DNS för att ta reda på orsaken till felet.
-2.  Finns postuppsättningen redan?  Azure DNS hanterar poster med post*uppsättningar*, vilket är en samling av poster med samma namn och av samma typ. Om det redan finns en post med samma namn och typ, redigerar du den befintliga postuppsättningen om du vill lägga till ännu en post.
-3.  Försöker du skapa en post i DNS-basdomänen (zonens ”rot”)? Om så är fallet använder DNS-konventionen tecknet ”@” som postens namn. Observera också att DNS-standarden inte tillåter CNAME-poster i basdomänen.
-4.  Har du en CNAME-konflikt?  DNS-standarden tillåter inte en CNAME-post med samma namn som en post av någon annan typ. Om du har ett befintligt CNAME kommer du att misslyckas om du försöker skapa en post med samma namn och av en annan typ.  På samma sätt går det inte att skapa ett CNAME om namnet matchar en befintlig post av en annan typ. Lös konflikten genom att ta bort den andra posten eller välja ett annat postnamn.
-5.  Har du nått gränsen för antal postuppsättningar som tillåts i en DNS-zon? Det aktuella antalet postuppsättningar och det maximala antalet postuppsättningar visas i Azure Portal under ”Egenskaper” för zonen. Om du har uppnått gränsen kan du antingen ta bort vissa postuppsättningar eller kontakta Azure-supporten om du vill öka gränsen för den här zonen. Försök sedan igen. 
+1.  Granska hello Azure DNS granska loggar toodetermine hello orsaken till felet.
+2.  Hello postuppsättning finns det redan?  Azure DNS hanterar poster med hjälp av posten *anger*, som är hello uppsättning poster av hello samma namn och hello samma typ. Om en post med hello samma namn och Skriv redan finns tooadd en annan post du ska redigera hello befintlig post anger.
+3.  Försöker toocreate en post på hello DNS-zonens apex (hello-rot' hello zonen)? Om så hello DNS-konventionen är toouse hello ”@-tecknet som hello postens namn. Observera också att hello DNS-standarden inte tillåter CNAME-poster på hello zonens apex.
+4.  Har du en CNAME-konflikt?  hello DNS-standarden tillåter inte en CNAME-post med hello samma namn som en post för andra typer. Om du har en befintlig CNAME, skapa en post med samma namn som en annan typ misslyckas hello.  På samma sätt misslyckas att skapa en CNAME-post om hello namnet matchar en befintlig post av en annan typ. Ta bort hello konflikten genom att ta bort hello andra poster eller välja en annan postnamnet.
+5.  Har du nått hello begränsning på hello postuppsättningar som tillåts i en DNS-zon. hello aktuellt antal uppsättningar av poster och hello maximalt antal uppsättningar av poster visas i hello Azure-portalen under hello ”egenskaper” för hello zonen. Om du har nått den här gränsen, antingen ta bort vissa postuppsättningar eller kontakta Azure-supporten tooraise postuppsättning gränsen för den här zonen, och försök sedan igen. 
 
 
 ### <a name="recommended-documents"></a>**Rekommenderade dokument**
@@ -64,37 +64,37 @@ Prova ett eller flera av följande steg för att lösa vanliga problem:
 
 ## <a name="i-cant-resolve-my-dns-record"></a>Jag kan inte matcha min DNS-post
 
-DNS-namnmatchningen är en process i flera steg som kan misslyckas av flera orsaker. Följande steg hjälper dig att undersöka varför DNS-matchningen inte fungerar för en DNS-post i en zon som finns i Azure DNS.
+DNS-namnmatchningen är en process i flera steg som kan misslyckas av flera orsaker. hello följande steg när du undersöka varför inte DNS-matchning för en DNS-post i en zon som finns i Azure DNS.
 
-1.  Kontrollera att DNS-posterna har konfigurerats korrekt i Azure DNS. Granska DNS-posterna i Azure Portal och kontrollera att zonnamn, postnamn samt posttyp är korrekta.
-2.  Kontrollera att DNS-posterna matchas korrekt på Azure DNS-namnservrarna.
-    - Om du skapar DNS-frågor från din lokala dator, kan cachelagrade resultat visas som inte motsvarar det aktuella tillståndet för namnservrarna.  Företagsnätverk använder dessutom ofta DNS-proxyservrar, vilket förhindrar att DNS-frågor dirigeras till specifika namnservrar.  Undvik dessa problem genom att använda en webbaserad namnmatchningstjänst som t.ex. [digwebinterface](http://digwebinterface.com).
-    - Se till att ange rätt namnservrar för DNS-zonen, enligt det som visas i Azure Portal.
-    - Kontrollera att DNS-namnet är korrekt (du måste ange det fullständiga namnet, inklusive zonnamnet) och att posttypen stämmer
-3.  Kontrollera att DNS-domännamnet har [delegerats till Azure DNS-namnservrarna](dns-domain-delegation.md) på rätt sätt. Det finns [många tredjeparts webbplatser som erbjuder DNS-delegeringsverifiering](https://www.bing.com/search?q=dns+check+tool). Det här testet är ett *zon*delegeringstest, så du bör bara ange DNS-zonens namn och inte det fullständiga postnamnet.
-4.  När du har utfört ovanstående bör DNS-posten matchas korrekt. Om du vill kontrollera detta använder du [digwebinterface](http://digwebinterface.com) igen, men nu med standardinställningarna för namnservern.
+1.  Bekräfta att hello DNS-poster har konfigurerats korrekt i Azure DNS. Granska hello DNS-poster i hello Azure-portalen kontrollerar att hello zonnamnet och postnamnet posttyp är korrekta.
+2.  Bekräfta att hello DNS-poster ska matcha på hello Azure DNS-namnservrar.
+    - Om du gör DNS-frågor från din lokala dator, kan det hända att cachelagrade resultaten inte avspeglar hello hello namnservrar aktuella tillstånd.  Företagsnätverk ofta använda DNS-proxyservrar, vilket gör att DNS-frågor inte dirigeras toospecific namnservrar.  tooavoid dessa problem använder en webbaserad namnmatchningstjänst som [digwebinterface](http://digwebinterface.com).
+    - Vara säker på att toospecify hello rätt namnservrar för DNS-zonen som visas i hello Azure-portalen.
+    - Kontrollera att hello DNS-namnet är rätt (du har toospecify hello fullständigt kvalificerade namn, inklusive hello zonnamnet) och hello posttyp är korrekt
+3.  Bekräfta att hello DNS-namnet har korrekt [delegerad toohello Azure DNS-namnservrar](dns-domain-delegation.md). Det finns [många tredjeparts webbplatser som erbjuder DNS-delegeringsverifiering](https://www.bing.com/search?q=dns+check+tool). Det här testet är en *zon* delegeringstest, så bör du bara ange hello DNS-zonnamnet och inte hello fullständigt kvalificerade postnamnet.
+4.  Efter att ha utfört hello ovan, ska DNS-post nu matcha korrekt. tooverify, kan du igen använda [digwebinterface](http://digwebinterface.com), nu med hello standardinställningar namn på servern.
 
 
 ### <a name="recommended-documents"></a>**Rekommenderade dokument**
 
-[Delegera en domän till Azure DNS](dns-domain-delegation.md)
+[Delegera en domän tooAzure DNS](dns-domain-delegation.md)
 
 
 
-## <a name="how-do-i-specify-the-service-and-protocol-for-an-srv-record"></a>Hur anger jag ”tjänst” och ”protokoll” för en SRV-post?
+## <a name="how-do-i-specify-hello-service-and-protocol-for-an-srv-record"></a>Hur jag ange hello ”tjänst” och ”protokoll” för en SRV-post?
 
-Azure DNS hanterar DNS-poster som postuppsättningar, vilket är en samling av poster med samma namn och av samma typ. För en SRV-postuppsättning måste ”tjänst” och ”protokoll” anges som en del av namnet på postuppsättningen. Andra SRV-parametrar (”prioritet”, ”vikt”, ”port” och ”mål”) anges separat för varje post i postuppsättningen.
+Azure DNS hanterar DNS-poster som postuppsättningar – hello samling poster med hello samma namn och hello samma typ. Måste anges som del av hello postuppsättningsnamnet toobe för en SRV-postuppsättning hello ”tjänst” och ”protokoll”. hello SRV parametrar ('priority', 'vikt', '-port' och 'target') anges separat för varje post i hello postuppsättning.
 
 Exempel på SRV-postnamn (tjänstnamn ”sip”, protokoll ”tcp”):
 
-- \_sip.\_tcp (skapar en postuppsättning i basdomänen)
+- \_SIP. \_tcp (skapar en postuppsättning på zonens apex hello)
 - \_sip.\_tcp.sipservice (skapar en postuppsättning med namnet ”sipservice”)
 
 ### <a name="recommended-documents"></a>**Rekommenderade dokument**
 
 [DNS-zoner och -poster](dns-zones-records.md)
 <br>
-[Skapa DNS-postuppsättningar och poster med hjälp av Azure-portalen](dns-getstarted-create-recordset-portal.md)
+[Skapa uppsättningar av DNS-poster och poster med hjälp av hello Azure-portalen](dns-getstarted-create-recordset-portal.md)
 <br>
 [SRV-posttyp (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
 
@@ -102,6 +102,6 @@ Exempel på SRV-postnamn (tjänstnamn ”sip”, protokoll ”tcp”):
 ## <a name="next-steps"></a>Nästa steg
 
 * Lär dig mer om [Azure DNS-zoner och poster](dns-zones-records.md)
-* Om du vill börja använda Azure DNS, lär du dig hur du [skapa en DNS-zon](dns-getstarted-create-dnszone-portal.md) och [skapa DNS-poster](dns-getstarted-create-recordset-portal.md).
-* Om du vill migrera en befintlig DNS-zon, lär du dig hur du [importera och exportera en DNS-zonfilen](dns-import-export.md).
+* toostart med hjälp av Azure DNS Lär dig hur för[skapa en DNS-zon](dns-getstarted-create-dnszone-portal.md) och [skapa DNS-poster](dns-getstarted-create-recordset-portal.md).
+* toomigrate en befintlig DNS-zon Lär dig hur för[importera och exportera en DNS-zonfilen](dns-import-export.md).
 

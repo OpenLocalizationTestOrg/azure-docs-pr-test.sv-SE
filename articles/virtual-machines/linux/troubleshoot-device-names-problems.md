@@ -1,6 +1,6 @@
 ---
-title: "Linux VM enhetsnamn har ändrats i Azure | Microsoft Docs"
-description: "Förklarar varför enhetsnamn ändras och ger lösning på problemet."
+title: "namn på aaaLinux Virtuella enheter har ändrats i Azure | Microsoft Docs"
+description: "Förklarar hello varför enhetsnamn ändras och ger lösning på problemet."
 services: virtual-machines-linux
 documentationcenter: 
 author: genlin
@@ -14,45 +14,45 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 07/12/2017
 ms.author: genli
-ms.openlocfilehash: 789f4580901a22dc3aaae9599c7205c76f268403
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 4d3a5853d61edd2c8e8b85ab69e5ed3b3bc00bb8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshooting-linux-vm-device-names-are-changed"></a>Felsöka: Linux VM enhetsnamn har ändrats
 
-Artikeln förklarar varför enhetsnamn ändras efter att du startar om en Linux-dator (VM) eller återansluta diskarna. Det ger också lösningen på problemet.
+hello artikeln förklarar varför enhetsnamn ändras efter att du startar om en Linux-dator (VM) eller återansluta hello diskar. Det ger också hello lösning på problemet.
 
 ## <a name="symptom"></a>Symtom
 
-Följande problem kan uppstå när du kör virtuella Linux-datorer i Microsoft Azure.
+Det kan uppstå hello följande problem när du kör virtuella Linux-datorer i Microsoft Azure.
 
-- Den virtuella datorn inte startar efter en omstart.
+- hello VM misslyckas tooboot efter en omstart.
 
-- Om datadiskar oberoende och anbringas på nytt, ändra enheter namnet för diskar.
+- Om datadiskar oberoende och anbringas på nytt, ändra hello enheter namnet för diskar.
 
-- Det går inte att ett program eller skript som refererar till en disk med hjälp av enhetsnamn. Du hittar enhetens namn på disken ändras.
+- Det går inte att ett program eller skript som refererar till en disk med hjälp av enhetsnamn. Du hittar den hello enhetsnamn hello disken har ändrats.
 
 ## <a name="cause"></a>Orsak
 
-Sökvägar till enheter i Linux är inte garanterat vara konsekvent mellan olika omstarter. Enhetsnamn består av större (bokstav) och mindre siffror.  När drivrutinen Linux lagring identifierar en ny enhet, tilldelar högre och lägre enhetsnummer till den från intervall. När en enhet tas bort frigörs siffror för enheten för att senare.
+Sökvägar till enheter i Linux är inte garanterat toobe konsekvent mellan olika omstarter. Enhetsnamn består av större (bokstav) och mindre siffror.  När drivrutinen för hello Linux lagring identifierar en ny enhet, tilldelas enheten högre och lägre nummer tooit från hello intervall. När en enhet tas bort är hello enhetsnummer frigjort toobe återanvändas.
 
-Problemet beror på att enheten skanning i Linux schemalagda av SCSI-undersystemet sker asynkront. Sista enhet sökväg namngivningen kan variera mellan olika omstarter. 
+hello uppstår problemet eftersom hello skanning i Linux schemalagda av undersystem för hello SCSI-enhet händer asynkront. namngivning av hello sista enhet sökvägen kan variera mellan olika omstarter. 
 
 ## <a name="solution"></a>Lösning
 
-Använd beständiga naming för att lösa problemet. Det finns fyra metoder att namngivning av beständiga – av filsystem etikett, uuid, efter id och sökväg. Vi rekommenderar filesystem etikett och UUID metoder för virtuella Azure Linux-datorer. 
+tooresolve det här problemet använder beständiga naming. Det finns fyra metoderna toopersistent naming - av filsystem etikett, uuid, efter id och sökväg. Vi rekommenderar hello filesystem etikett och UUID metoder för virtuella Azure Linux-datorer. 
 
-De flesta distributioner ange antingen det **nofail** eller **nobootwait** fstab alternativ. De här alternativen kan ett system för att starta även om disken inte montera vid start. Dokumentationen för den distribution för mer information om dessa parametrar. Läs mer om hur du konfigurerar en Linux VM för att använda en UUID när du lägger till en datadisk [Anslut till Linux-VM för att montera den nya disken](add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk). 
+De flesta distributioner ger också antingen hello **nofail** eller **nobootwait** fstab alternativ. De här alternativen kan ett system tooboot även om hello disk kraschar toomount vid start. Hello distribution i dokumentationen för mer information om dessa parametrar. Mer information om hur tooconfigure Linux VM-toouse en UUID när du lägger till en datadisk Se [ansluta toohello Linux VM toomount hello ny disk](add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk). 
 
-När Azure Linux-agenten är installerad på en virtuell dator, används Udev regler för att skapa en uppsättning symboliska länkar under **/dev/disk/azure**. De här Udev-reglerna kan användas av program och skript för att identifiera diskar som är kopplade till den virtuella datorn, typ och LUN.
+När hello Azure Linux-agenten är installerad på en virtuell dator, används Udev regler tooconstruct en uppsättning symboliska länkar under **/dev/disk/azure**. Reglerna Udev kan användas av program och skript tooidentify diskar som är anslutna toohello VM, typ, och hello LUN.
 
 ## <a name="more-information"></a>Mer information
 
 ### <a name="identify-disk-luns"></a>Identifiera disk LUN
 
-Ett program kan använda LUN för att hitta alla anslutna diskar och konstruera symboliska länkar. Azure Linux-agenten har nu udev regler som konfigurera symboliska länkar från en LUN till enheterna, enligt följande:
+Ett program kan använda LUN toofind alla hello anslutna diskar och konstruera symboliska länkar. hello Azure Linux-agenten innehåller nu udev regler som ställts in symboliska länkar från en LUN toohello enheter på följande sätt:
 
     $ tree /dev/disk/azure
 
@@ -70,7 +70,7 @@ Ett program kan använda LUN för att hitta alla anslutna diskar och konstruera 
         └── lun1-part3 -> ../../../sdd3                                    
                                  
 
-LUN-information kan också hämtas från Linux gästen använder lsscsi eller liknande verktyg på följande sätt.
+LUN-information kan också hämtas från hello Linux gäst lsscsi eller liknande verktyg på följande sätt.
 
        $ sudo lsscsi
 
@@ -84,7 +84,7 @@ LUN-information kan också hämtas från Linux gästen använder lsscsi eller li
 
       [5:0:0:1] disk Msft Virtual Disk 1.0 /dev/sdd
 
-Den här gäst LUN-information kan användas med Azure-prenumeration metadata som identifierar platsen i Azure-lagring för den virtuella Hårddisken som lagrar data för partitionen. Till exempel använda az cli:
+Den här gäst LUN-information kan användas med Azure-prenumeration metadata tooidentify hello platsen i Azure storage hello VHD som lagrar hello partition data. Till exempel använda hello az cli:
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks                                        
     [                                                                                                                                                                  
@@ -116,7 +116,7 @@ Den här gäst LUN-information kan användas med Azure-prenumeration metadata so
 
 ### <a name="discover-filesystem-uuids-by-using-blkid"></a>Identifiera filesystem UUID: er med hjälp av blkid
 
-Ett skript eller program kan läsa utdata från blkid eller liknande källor till information och skapa symboliska länkar i **/dev** för användning. Utdata visar UUID: er för alla diskar som är kopplade till den virtuella datorn och enhetsfilen som de är kopplade:
+Ett skript eller program kan läsa hello utdata från blkid eller liknande källor till information och skapa symboliska länkar i **/dev** för användning. hello utdata visar hello UUID: er för alla diskar kopplade toohello VM och hello enhet filen toowhich de är kopplade:
 
     $ sudo blkid -s UUID
 
@@ -125,7 +125,7 @@ Ett skript eller program kan läsa utdata från blkid eller liknande källor til
     /dev/sdb1: UUID="176250df-9c7c-436f-94e4-d13f9bdea744"
     /dev/sdc1: UUID="b0048738-4ecc-4837-9793-49ce296d2692"
 
-Waagent udev regler skapar en uppsättning symboliska länkar under **/dev/disk/azure**:
+Hej waagent udev regler skapar en uppsättning symboliska länkar under **/dev/disk/azure**:
 
 
     $ ls -l /dev/disk/azure
@@ -137,24 +137,24 @@ Waagent udev regler skapar en uppsättning symboliska länkar under **/dev/disk/
     lrwxrwxrwx 1 root root 10 Jun  2 23:17 root-part1 -> ../../sda1
 
 
-Programmet kan använda den här informationen identifierar disk startenheten och resurs (tillfälliga) disken. I Azure, bör avser program **/dev/disk/azure/root-part1** eller **/dev/disk/azure-resource-part1** att identifiera dessa partitioner.
+hello program kan använda den här informationen identifierar hello disk startenheten och hello resurs (tillfälliga) disk. I Azure, program för vända**/dev/disk/azure/root-part1** eller **/dev/disk/azure-resource-part1** toodiscover partitionerna.
 
-Det finns ytterligare partitioner från listan över blkid, ligga på en datadisk. Program kan underhålla UUID för dessa partitioner och använda en sökväg som den nedan för att identifiera namnet på en enhet vid körning:
+Det finns ytterligare partitioner från hello blkid lista, ligga på en datadisk. Program kan underhålla hello UUID för dessa partitioner och använda en sökväg som hello nedan toodiscover hello enhetsnamn vid körning:
 
     $ ls -l /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692
 
     lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
 
     
-### <a name="get-the-latest-azure-storage-rules"></a>Hämta de senaste Azure storage-reglerna
+### <a name="get-hello-latest-azure-storage-rules"></a>Hämta hello senaste Azure storage-regler
 
-Senaste Azure storage-reglerna kör behandlas följande kommandon:
+toohello senaste Azure storage-regler, kör behandlas följande kommandon:
 
     # sudo curl -o /etc/udev/rules.d/66-azure-storage.rules https://raw.githubusercontent.com/Azure/WALinuxAgent/master/config/66-azure-storage.rules
     # sudo udevadm trigger --subsystem-match=block
 
 
-Mer information finns i följande artiklar:
+Mer information finns i följande artiklar hello:
 
 - [Ubuntu: Med UUID](https://help.ubuntu.com/community/UsingUUID)
 
@@ -162,5 +162,5 @@ Mer information finns i följande artiklar:
 
 - [Linux: Vad UUID: er kan du göra](https://www.linux.com/news/what-uuids-can-do-you)
 
-- [Udev: Introduktion till hantering av enheter i moderna Linux-System](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
+- [Udev: Introduktion tooDevice Management i moderna Linux-System](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
 

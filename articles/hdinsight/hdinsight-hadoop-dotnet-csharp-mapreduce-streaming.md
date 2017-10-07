@@ -1,6 +1,6 @@
 ---
-title: "Använda C# med MapReduce med Hadoop i HDInsight - Azure | Microsoft Docs"
-description: "Lär dig använda C# för att skapa lösningar för MapReduce med Hadoop i Azure HDInsight."
+title: aaaUse C# med MapReduce med Hadoop i HDInsight - Azure | Microsoft Docs
+description: "Lär dig hur toouse C# toocreate MapReduce lösningar med Hadoop i Azure HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,52 +16,52 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: larryfr
-ms.openlocfilehash: adb454e56378a800c671614735aec78b6851aeb2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dd8b684e74155bc1a37d4ab8d6f9033276ef5aa3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>Använda C# med MapReduce strömning på Hadoop i HDInsight
 
-Lär dig använda C# för att skapa en lösning för MapReduce på HDInsight.
+Lär dig hur toouse C# toocreate MapReduce lösningar för HDInsight.
 
 > [!IMPORTANT]
-> Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight component-versioning](hdinsight-component-versioning.md).
+> Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight component-versioning](hdinsight-component-versioning.md).
 
-Hadoop streaming är ett verktyg som låter dig köra MapReduce-jobb med hjälp av ett skript eller en körbar fil. I det här exemplet används .NET för att implementera mapper och reducer för en word antal lösning.
+Hadoop streaming är ett verktyg som gör att du använder ett skript eller körbara filer toorun MapReduce-jobb. I det här exemplet är .NET används tooimplement hello mapper och reducer för en word antal lösning.
 
 ## <a name="net-on-hdinsight"></a>.NET på HDInsight
 
-__Linux-baserat HDInsight__ kluster Använd [Mono (https://mono-project.com)](https://mono-project.com) att köra .NET-program. Monoljud version 4.2.1 ingår i HDInsight version 3.5. Mer information om versionen av Mono som ingår i HDInsight finns [HDInsight komponenten versioner](hdinsight-component-versioning.md). Om du vill använda en viss version av Mono, finns det [installera eller uppdatera Mono](hdinsight-hadoop-install-mono.md) dokumentet.
+__Linux-baserat HDInsight__ kluster Använd [Mono (https://mono-project.com)](https://mono-project.com) toorun .NET-program. Monoljud version 4.2.1 ingår i HDInsight version 3.5. Mer information om hello version Mono som ingår i HDInsight finns [HDInsight komponenten versioner](hdinsight-component-versioning.md). toouse en viss version av Mono, se hello [installera eller uppdatera Mono](hdinsight-hadoop-install-mono.md) dokumentet.
 
 Mer information om monoljud kompatibilitet med .NET Framework-versioner finns [monoljud kompatibilitet](http://www.mono-project.com/docs/about-mono/compatibility/).
 
 ## <a name="how-hadoop-streaming-works"></a>Så här fungerar Hadoop-strömning
 
-Den grundläggande processen som används för strömning i det här dokumentet är följande:
+hello grundläggande process används för strömning i det här dokumentet är följande:
 
-1. Hadoop skickar data till mapper (mapper.exe i det här exemplet) på STDIN.
-2. Mapparen bearbetar data och skickar tabbavgränsad nyckel/värde-par STDOUT.
-3. Utdata läses av Hadoop och skickas sedan till reducer (reducer.exe i det här exemplet) STDIN.
-4. Reducer läser tabbavgränsad nyckel/värde-par, bearbetar data och skickar sedan resultatet som tabbavgränsad nyckel/värde-par i STDOUT.
-5. Utdata läses av Hadoop och skrivs till den angivna katalogen.
+1. Hadoop skickar datamappning toohello (mapper.exe i det här exemplet) på STDIN.
+2. hello mapper bearbetar hello data och genererar tabbavgränsad nyckel/värde-par tooSTDOUT.
+3. hello utdata läses av Hadoop och skickas sedan STDIN toohello reducer (reducer.exe i det här exemplet).
+4. Hej reducer läser hello tabbavgränsad nyckel/värde-par, bearbetar hello data och skickar sedan hello resultatet som tabbavgränsad nyckel/värde-par i STDOUT.
+5. hello utdata läses av Hadoop och skrivs toohello målkatalogen.
 
 Mer information om strömning finns [Hadoop Streaming (https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html).
 
 ## <a name="prerequisites"></a>Krav
 
-* Tidigare erfarenhet av skrivning och bygga C#-kod som riktar sig till .NET Framework 4.5. Stegen i det här dokumentet använder Visual Studio 2017.
+* Tidigare erfarenhet av skrivning och bygga C#-kod som riktar sig till .NET Framework 4.5. hello stegen i det här dokumentet används Visual Studio 2017.
 
-* Ett sätt att överföra .exe-filer till klustret. Stegen i det här dokumentet använder Data Lake-verktyg för Visual Studio för att överföra filer till primära lagring för klustret.
+* Ett sätt tooupload .exe-filer toohello kluster. hello använder stegen i det här dokumentet hello Data Lake-verktyg för Visual Studio tooupload hello filer tooprimary lagringen för hello klustret.
 
 * Azure PowerShell eller en SSH-klient.
 
 * En Hadoop på HDInsight-kluster. Mer information om hur du skapar ett kluster finns [skapar ett HDInsight-kluster](hdinsight-provision-clusters.md).
 
-## <a name="create-the-mapper"></a>Skapa mapparen
+## <a name="create-hello-mapper"></a>Skapa hello mapper
 
-I Visual Studio skapar en ny __Konsolapp__ med namnet __mapper__. Använd följande kod för programmet:
+I Visual Studio skapar en ny __Konsolapp__ med namnet __mapper__. Använd följande kod för hello programmet hello:
 
 ```csharp
 using System;
@@ -74,14 +74,14 @@ namespace mapper
         static void Main(string[] args)
         {
             string line;
-            //Hadoop passes data to the mapper on STDIN
+            //Hadoop passes data toohello mapper on STDIN
             while((line = Console.ReadLine()) != null)
             {
                 // We only want words, so strip out punctuation, numbers, etc.
                 var onlyText = Regex.Replace(line, @"\.|;|:|,|[0-9]|'", "");
                 // Split at whitespace.
                 var words = Regex.Matches(onlyText, @"[\w]+");
-                // Loop over the words
+                // Loop over hello words
                 foreach(var word in words)
                 {
                     //Emit tab-delimited key/value pairs.
@@ -94,11 +94,11 @@ namespace mapper
 }
 ```
 
-När du har skapat programmet, skapar du det att skapa den `/bin/Debug/mapper.exe` filen i projektkatalogen.
+När du har skapat programmet hello skapar det tooproduce hello `/bin/Debug/mapper.exe` filen i hello projektkatalogen.
 
-## <a name="create-the-reducer"></a>Skapa reducer
+## <a name="create-hello-reducer"></a>Skapa hello reducer
 
-I Visual Studio skapar en ny __Konsolapp__ med namnet __reducer__. Använd följande kod för programmet:
+I Visual Studio skapar en ny __Konsolapp__ med namnet __reducer__. Använd följande kod för hello programmet hello:
 
 ```csharp
 using System;
@@ -119,19 +119,19 @@ namespace reducer
             {
                 // Data from Hadoop is tab-delimited key/value pairs
                 var sArr = line.Split('\t');
-                // Get the word
+                // Get hello word
                 string word = sArr[0];
-                // Get the count
+                // Get hello count
                 int count = Convert.ToInt32(sArr[1]);
 
-                //Do we already have a count for the word?
+                //Do we already have a count for hello word?
                 if(words.ContainsKey(word))
                 {
-                    //If so, increment the count
+                    //If so, increment hello count
                     words[word] += count;
                 } else
                 {
-                    //Add the key to the collection
+                    //Add hello key toohello collection
                     words.Add(word, count);
                 }
             }
@@ -147,9 +147,9 @@ namespace reducer
 }
 ```
 
-När du har skapat programmet, skapar du det att skapa den `/bin/Debug/reducer.exe` filen i projektkatalogen.
+När du har skapat programmet hello skapar det tooproduce hello `/bin/Debug/reducer.exe` filen i hello projektkatalogen.
 
-## <a name="upload-to-storage"></a>Överföra till lagring
+## <a name="upload-toostorage"></a>Överför toostorage
 
 1. Öppna i Visual Studio **Server Explorer**.
 
@@ -157,29 +157,29 @@ När du har skapat programmet, skapar du det att skapa den `/bin/Debug/reducer.e
 
 3. Om du uppmanas ange dina autentiseringsuppgifter för Azure-prenumeration och klicka sedan på **logga In**.
 
-4. Expandera HDInsight-klustret som du vill distribuera programmet till. En post med texten __(standard Storage-konto)__ visas.
+4. Expandera hello HDInsight-kluster som du vill toodeploy programmet. En post med hello text __(standard Storage-konto)__ visas.
 
-    ![Server Explorer visar lagringskontot för klustret](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
+    ![Server Explorer som visar hello storage-konto för hello-kluster](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/storage.png)
 
-    * Om den här posten kan utökas måste du använder en __Azure Storage-konto__ som standardlagring för klustret. Om du vill visa filerna på lagringsutrymmet som standard för klustret, expandera posten och dubbelklicka sedan på den __(standardbehållaren)__.
+    * Om den här posten kan utökas måste du använder en __Azure Storage-konto__ som standard lagringen för hello klustret. tooview hello filer på hello standardlagring för hello-kluster expanderar hello-post och dubbelklicka sedan på hello __(standardbehållaren)__.
 
-    * Om den här posten inte kan expanderas, använder du __Azure Data Lake Store__ som standardlagring för klustret. Om du vill visa filerna på lagringsutrymmet som standard för klustret, dubbelklickar du på den __(standardkontot för lagring)__ post.
+    * Om den här posten inte kan expanderas, använder du __Azure Data Lake Store__ som hello standardlagring för hello-kluster. tooview hello filer på hello standardlagring för hello kluster, dubbelklicka på hello __(standardkontot för lagring)__ post.
 
-5. Använd någon av följande metoder för att ladda upp .exe-filer:
+5. tooupload hello .exe-filer med någon av följande metoder hello:
 
-    * Om du använder en __Azure Storage-konto__, klicka på ikonen överföringen och bläddra sedan till den **bin\debug** mapp för den **mapper** projekt. Välj slutligen den **mapper.exe** fil och klicka på **Ok**.
+    * Om du använder en __Azure Storage-konto__, klicka på ikonen för hello överföringen och bläddra sedan toohello **bin\debug** mapp för hello **mapper** projekt. Välj slutligen hello **mapper.exe** fil och klicka på **Ok**.
 
         ![Överför ikon](./media/hdinsight-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * Om du använder __Azure Data Lake Store__, högerklicka på ett tomt område i listan över filer och välj sedan __överför__. Välj slutligen den **mapper.exe** fil och klicka på **öppna**.
+    * Om du använder __Azure Data Lake Store__, högerklicka på ett tomt område i hello med och välj sedan __överför__. Välj slutligen hello **mapper.exe** fil och klicka på **öppna**.
 
-    En gång i __mapper.exe__ överföringen har slutförts, Upprepa processen för att ladda upp den __reducer.exe__ fil.
+    En gång hello __mapper.exe__ överföringen har slutförts, upprepa hello överföringsprocessen för hello __reducer.exe__ fil.
 
 ## <a name="run-a-job-using-an-ssh-session"></a>Kör ett jobb: använder en SSH-session
 
-1. Använda SSH för att ansluta till HDInsight-klustret. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
+1. Använda SSH tooconnect toohello HDInsight-kluster. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
 
-2. Använd en av följande kommando för att starta MapReduce-jobb:
+2. Använd någon av följande kommando toostart hello MapReduce-jobb hello:
 
     * Om du använder __Datasjölager__ som standardlagring:
 
@@ -193,22 +193,22 @@ När du har skapat programmet, skapar du det att skapa den `/bin/Debug/reducer.e
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
         ```
 
-    I följande lista beskrivs vad varje parameter är:
+    hello följande lista beskrivs vad varje parameter är:
 
-    * `hadoop-streaming.jar`: Jar-fil som innehåller funktioner för direktuppspelning MapReduce.
-    * `-files`: Lägger till den `mapper.exe` och `reducer.exe` filer till det här jobbet. Den `adl:///` eller `wasb:///` innan varje fil är sökvägen till roten i standardlagring för klustret.
-    * `-mapper`: Anger vilken fil som implementerar mapparen.
-    * `-reducer`: Anger vilken fil som implementerar reducer.
-    * `-input`: Indata.
-    * `-output`: Den angivna katalogen.
+    * `hadoop-streaming.jar`: hello jar-filen som innehåller hello strömning MapReduce-funktioner.
+    * `-files`: Lägger till hello `mapper.exe` och `reducer.exe` filer toothis jobb. Hej `adl:///` eller `wasb:///` innan varje fil är hello sökvägen toohello roten standardlagring för hello-kluster.
+    * `-mapper`: Anger vilken fil som implementerar hello mapper.
+    * `-reducer`: Anger vilken fil som implementerar hello reducer.
+    * `-input`: hello indata.
+    * `-output`: hello målkatalogen.
 
-3. När MapReduce-jobbet har slutförts kan du använda följande för att visa resultatet:
+3. När hello MapReduce-jobbet har slutförts använder du följande tooview hello resultat hello:
 
     ```bash
     hdfs dfs -text /example/wordcountout/part-00000
     ```
 
-    Följande är ett exempel på de data som returneras av kommandot:
+    hello är följande ett exempel på hello data som returneras av kommandot:
 
         you     1128
         young   38
@@ -222,11 +222,11 @@ När du har skapat programmet, skapar du det att skapa den `/bin/Debug/reducer.e
 
 ## <a name="run-a-job-using-powershell"></a>Kör ett jobb: med hjälp av PowerShell
 
-Använd följande PowerShell-skript för att köra ett MapReduce-jobb och hämta resultaten.
+Använd följande PowerShell-skriptet toorun ett MapReduce-jobb hello och hämta hello resultat.
 
-[!code-powershell[huvudsakliga](../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
+[!code-powershell[main](../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-Det här skriptet uppmanas du att klustret konto inloggningsnamn och lösenord, tillsammans med HDInsight-klustrets namn. När jobbet är slutfört utdata hämtas till den `output.txt` filen i katalogen skriptet kördes från. Följande är ett exempel på data i den `output.txt` filen:
+Det här skriptet efterfrågar hello klustret konto inloggningsnamn och lösenord, tillsammans med hello HDInsight-klustrets namn. När hello jobbet är slutfört, hello utdata är hämtade toohello `output.txt` filen i hello directory hello skriptet kördes från. hello följande är ett exempel på hello data i hello `output.txt` fil:
 
     you     1128
     young   38

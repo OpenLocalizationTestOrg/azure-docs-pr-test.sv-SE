@@ -1,6 +1,6 @@
 ---
-title: "Flytta data från Salesforce med hjälp av Data Factory | Microsoft Docs"
-description: "Läs mer om hur du flyttar data från Salesforce med hjälp av Azure Data Factory."
+title: "aaaMove data från Salesforce med hjälp av Data Factory | Microsoft Docs"
+description: "Mer information om hur toomove data från Salesforce med hjälp av Azure Data Factory."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,122 +14,122 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2017
 ms.author: jingwang
-ms.openlocfilehash: 9390b992bce2dede750c3fc55b7783a6b0db678f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c1bde2a333f5a3c0a995eb8c13ecf585132888b9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Flytta data från Salesforce med hjälp av Azure Data Factory
-Den här artikeln beskrivs hur du kan använda Kopieringsaktiviteten i ett Azure data factory för att kopiera data från Salesforce till alla datalager som anges under kolumnen mottagare i den [källor och sänkor stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabell. Den här artikeln bygger på den [data movement aktiviteter](data-factory-data-movement-activities.md) artikel som ger en allmän översikt över dataflyttning stöds data store kombinationer och Kopieringsaktivitet.
+Den här artikeln beskrivs hur du kan använda Kopieringsaktiviteten i ett Azure data factory toocopy data från datalagret för Salesforce tooany som visas under hello Sink-kolumn i hello [källor och sänkor stöds](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabell. Den här artikeln bygger på hello [data movement aktiviteter](data-factory-data-movement-activities.md) artikel som ger en allmän översikt över dataflyttning stöds data store kombinationer och Kopieringsaktivitet.
 
-Azure Data Factory stöder för närvarande endast flytta data från Salesforce till [stöds sink datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats), men inte stöder att flytta data från andra data lagras till Salesforce.
+Azure Data Factory stöder för närvarande endast flytta data från Salesforce för[stöds sink datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats), men stöder inte flytta data från andra data lagras tooSalesforce.
 
 ## <a name="supported-versions"></a>Versioner som stöds
-Den här anslutningen har stöd för följande versioner av Salesforce: Developer Edition, Professional Edition, Enterprise Edition eller obegränsade Edition. Och kopiera från Salesforce produktion, sandbox och anpassade domäner.
+Den här anslutningen har stöd för följande versioner av Salesforce hello: Developer Edition, Professional Edition, Enterprise Edition eller obegränsade Edition. Och kopiera från Salesforce produktion, sandbox och anpassade domäner.
 
 ## <a name="prerequisites"></a>Krav
 * API-behörighet måste aktiveras. Se [hur aktivera API-åtkomst i Salesforce av behörighetsgrupp?](https://www.data2crm.com/migration/faqs/enable-api-access-salesforce-permission-set/)
-* Om du vill kopiera data från Salesforce till lokala datalager, du har Data Management Gateway 2.0 är installerat i din lokala miljö.
+* toocopy data från Salesforce tooon lokala datalager, du måste ha minst Data Management Gateway 2.0 är installerat i din lokala miljö.
 
 ## <a name="salesforce-request-limits"></a>Salesforce begärandebegränsningar
-Salesforce har begränsningar för både förfrågningarna API och samtidiga API-begäranden. Observera följande punkter:
+Salesforce har begränsningar för både förfrågningarna API och samtidiga API-begäranden. Observera följande punkter hello:
 
-- Om antalet samtidiga begäranden överskrider gränsen, begränsning inträffar och slumpmässiga fel visas.
-- Om det totala antalet begäranden överskrider gränsen, blockeras Salesforce-konto i 24 timmar.
+- Om hello antalet samtidiga begäranden överskrider gränsen hello, begränsning inträffar och slumpmässiga fel visas.
+- Om hello Totalt antal begäranden överskrider gränsen hello, blockeras hello Salesforce-konto i 24 timmar.
 
-Du kan också få ”REQUEST_LIMIT_EXCEEDED”-fel i båda scenarierna. Se avsnittet ”API Begärandebegränsningar” i den [Salesforce Developer gränser](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) artikeln för information.
+Du kan också få hello ”REQUEST_LIMIT_EXCEEDED” fel i båda scenarierna. I avsnittet hello ”API Förfrågningsgränser” i hello [Salesforce Developer gränser](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) artikeln för information.
 
 ## <a name="getting-started"></a>Komma igång
 Du kan skapa en pipeline med en kopia-aktivitet som flyttar data från Salesforce med hjälp av olika verktyg/API: er.
 
-Det enklaste sättet att skapa en pipeline är att använda den **guiden Kopiera**. Finns [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genomgång om hur du skapar en pipeline med hjälp av guiden Kopiera data.
+hello enklaste sättet toocreate en pipeline är toouse hello **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genomgång om hur du skapar en pipeline med hjälp av guiden för hello kopiera data.
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Azure-portalen**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-mall**, **.NET API**, och **REST API**. Se [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) för stegvisa instruktioner för att skapa en pipeline med en Kopieringsaktivitet. 
+Du kan också använda följande verktyg toocreate en pipeline hello: **Azure-portalen**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-mall** , **.NET API**, och **REST API**. Se [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) för stegvisa instruktioner toocreate en pipeline med en Kopieringsaktivitet. 
 
-Om du använder verktyg eller API: er, kan du utföra följande steg för att skapa en pipeline som flyttar data från ett dataarkiv som källa till ett dataarkiv som mottagare: 
+Om du använder hello verktyg eller API: er kan utföra du hello följande steg toocreate en pipeline som flyttar data från en källdata lagra tooa sink-datalagret: 
 
-1. Skapa **länkade tjänster** att länka inkommande och utgående data lagras till din data factory.
-2. Skapa **datauppsättningar** att representera inkommande och utgående data för kopieringen. 
+1. Skapa **länkade tjänster** toolink indata och utdata lagrar tooyour data factory.
+2. Skapa **datauppsättningar** toorepresent indata och utdata för hello kopieringsåtgärden. 
 3. Skapa en **pipeline** med en kopia-aktivitet som tar en datamängd som indata och en dataset som utdata. 
 
-När du använder guiden skapas JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och pipelinen) automatiskt för dig. När du använder Verktyg/API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av JSON-format.  Ett exempel med JSON-definitioner för Data Factory-entiteter som används för att kopiera data från Salesforce finns [JSON-exempel: kopiera data från Salesforce till Azure Blob](#json-example-copy-data-from-salesforce-to-azure-blob) i den här artikeln. 
+När du använder guiden hello skapas automatiskt JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och hello pipeline) för dig. När du använder Verktyg/API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av hello JSON-format.  Ett exempel med JSON-definitioner för Data Factory-entiteter som ska använda toocopy data från Salesforce finns [JSON-exempel: kopiera data från Salesforce tooAzure Blob](#json-example-copy-data-from-salesforce-to-azure-blob) i den här artikeln. 
 
-Följande avsnitt innehåller information om JSON-egenskaper som används för att definiera Data Factory entiteter till Salesforce: 
+hello följande avsnitt innehåller information om JSON-egenskaper som är specifika tooSalesforce för används toodefine Data Factory-enheter: 
 
 ## <a name="linked-service-properties"></a>Länkad tjänstegenskaper
-Följande tabell innehåller beskrivningar för JSON-element som är specifika för Salesforce länkade tjänsten.
+hello i den följande tabellen finns beskrivningar JSON-element som är specifika toohello Salesforce länkade tjänsten.
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| typ |Egenskapen type måste anges till: **Salesforce**. |Ja |
-| environmentUrl | Ange URL: en för Salesforce-instans. <br><br> – Standardvärdet är ”https://login.salesforce.com”. <br> -Ange ”https://test.salesforce.com” om du vill kopiera data från sandbox. <br> -Om du vill kopiera data från domänen, ange, till exempel ”https://[domain].my.salesforce.com”. |Nej |
-| användarnamn |Ange ett användarnamn för användarkontot. |Ja |
-| lösenord |Ange ett lösenord för användarkontot. |Ja |
-| securityToken |Ange en säkerhetstoken för användarkontot. Se [hämta säkerhetstoken](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) för instruktioner om hur du återställa/hämta en säkerhetstoken. Läs om säkerhetstoken i allmänhet i [säkerhets- och API: et](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Ja |
+| typ |hello Typegenskapen måste anges till: **Salesforce**. |Ja |
+| environmentUrl | Ange hello URL Salesforce-instans. <br><br> – Standardvärdet är ”https://login.salesforce.com”. <br> -toocopy data från sandbox, ange ”https://test.salesforce.com”. <br> -toocopy data från domän, till exempel ange ”https://[domain].my.salesforce.com”. |Nej |
+| användarnamn |Ange ett användarnamn för hello användarkonto. |Ja |
+| lösenord |Ange ett lösenord för hello användarkonto. |Ja |
+| securityToken |Ange en säkerhetstoken för hello användarkonto. Se [hämta säkerhetstoken](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) anvisningar för hur tooreset/hämta en säkerhetstoken. i allmänhet finns i toolearn om säkerhetstoken [säkerhet och hello API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Ja |
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
-En fullständig lista över egenskaper som är tillgängliga för att definiera datauppsättningar och avsnitt, finns det [skapa datauppsättningar](data-factory-create-datasets.md) artikel. Avsnitt som struktur, tillgänglighet och princip på en datamängd JSON är liknande för alla typer av datauppsättningen (Azure SQL Azure blob, Azure-tabellen och så vidare).
+En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera datauppsättningar finns hello [skapa datauppsättningar](data-factory-create-datasets.md) artikel. Avsnitt som struktur, tillgänglighet och princip på en datamängd JSON är liknande för alla typer av datauppsättningen (Azure SQL Azure blob, Azure-tabellen och så vidare).
 
-Den **typeProperties** avsnitt är olika för varje typ av dataset och innehåller information om placeringen av data i datalagret. TypeProperties avsnittet för en dataset av typen **RelationalTable** har följande egenskaper:
+Hej **typeProperties** avsnitt är olika för varje typ av dataset och ger information om hello platsen för hello data i datalagret hello. Hej typeProperties avsnittet för en dataset av hello typen **RelationalTable** har hello följande egenskaper:
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| tableName |Namnet på tabellen i Salesforce. |Nej (om en **frågan** av **RelationalSource** har angetts) |
+| tableName |Namnet på hello tabell i Salesforce. |Nej (om en **frågan** av **RelationalSource** har angetts) |
 
 > [!IMPORTANT]
-> ”__C”-delen av API-namnet krävs för alla anpassade objekt.
+> Hej ”__c” tillhör hello API namn krävs för alla anpassade objekt.
 
 ![Namnet på data Factory - anslutning Salesforce - API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 ## <a name="copy-activity-properties"></a>Kopiera egenskaper för aktivitet
-En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera aktiviteter finns i [skapar pipelines](data-factory-create-pipelines.md) artikel. Egenskaper som namn, beskrivning, indata och utdata tabeller och olika principer är tillgängliga för alla typer av aktiviteter.
+En fullständig lista över avsnitt och egenskaper som är tillgängliga för att definiera aktiviteter finns hello [skapar pipelines](data-factory-create-pipelines.md) artikel. Egenskaper som namn, beskrivning, indata och utdata tabeller och olika principer är tillgängliga för alla typer av aktiviteter.
 
-De egenskaper som är tillgängliga i avsnittet typeProperties aktiviteten å andra sidan varierar beroende på varje aktivitetstyp. För Kopieringsaktivitet kan variera de beroende på vilka typer av datakällor och sänkor.
+hello-egenskaper som är tillgängliga i hello typeProperties avsnittet hello aktivitet på hello andra sidan, varierar med varje aktivitetstyp. För Kopieringsaktivitet kan varierar de beroende på hello typer av datakällor och sänkor.
 
-I en Kopieringsaktivitet när källan är av typen **RelationalSource** (som omfattar Salesforce), följande egenskaper finns i avsnittet typeProperties:
+I en Kopieringsaktivitet när hello källan är av typen hello **RelationalSource** (som omfattar Salesforce), hello följande egenskaper finns i avsnittet typeProperties:
 
 | Egenskap | Beskrivning | Tillåtna värden | Krävs |
 | --- | --- | --- | --- |
-| DocumentDB |Använd anpassad fråga för att läsa data. |En SQL-92-fråga eller [Salesforce objektet Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) frågan. Till exempel: `select * from MyTable__c`. |Nej (om den **tableName** av den **dataset** har angetts) |
+| DocumentDB |Använda hello anpassad fråga tooread data. |En SQL-92-fråga eller [Salesforce objektet Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) frågan. Till exempel: `select * from MyTable__c`. |Nej (om hello **tableName** av hello **dataset** har angetts) |
 
 > [!IMPORTANT]
-> ”__C”-delen av API-namnet krävs för alla anpassade objekt.
+> Hej ”__c” tillhör hello API namn krävs för alla anpassade objekt.
 
 ![Namnet på data Factory - anslutning Salesforce - API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
 ## <a name="query-tips"></a>Frågan tips
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Hämtning av data med hjälp av where-sats för kolumnen datum/tid
-När ange SOQL eller SQL-fråga, titta närmare på skillnaden för DateTime-format. Exempel:
+Ange när hello SOQL eller SQL fråga, pay kontrolleras toohello skillnaden för DateTime-format. Exempel:
 
 * **SOQL exempel**:`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **SQL-exempel**:
-    * **Använd guiden Kopiera för att ange frågan:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
-    * **Med JSON Redigera om du vill ange frågan (escape-tecken korrekt):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
+    * **Med hjälp av kopiera guiden toospecify hello fråga:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
+    * **Med JSON redigerar toospecify hello fråga (escape-tecken korrekt):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
 
 ### <a name="retrieving-data-from-salesforce-report"></a>Hämtar data från Salesforce-rapport
 Du kan hämta data från Salesforce-rapporter genom att ange frågan som `{call "<report name>"}`, till exempel. `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Hämta borttagna poster från Salesforce-Papperskorgen
-Om du vill fråga ej permanent borttagna poster från Salesforce-Papperskorgen, kan du ange **”IsDeleted = 1”** i frågan. Exempel:
+tooquery hello ej permanent borttagna poster från Salesforce-Papperskorgen, kan du ange **”IsDeleted = 1”** i frågan. Exempel:
 
-* Om du vill fråga endast borttagna poster, ange ”Välj * från MyTable__c **där IsDeleted = 1**”
-* Om du vill fråga efter alla poster som inklusive det befintliga och den borttagna, ange ”Välj * från MyTable__c **där IsDeleted = 0 eller IsDeleted = 1**”
+* Ange tooquery endast hello bort poster ”Välj * från MyTable__c **där IsDeleted = 1**”
+* tooquery alla hello poster som hello befintliga och hello bort, ange ”Välj * från MyTable__c **där IsDeleted = 0 eller IsDeleted = 1**”
 
-## <a name="json-example-copy-data-from-salesforce-to-azure-blob"></a>JSON-exempel: kopiera data från Salesforce till Azure-Blob
-I följande exempel innehåller exempel JSON definitioner som du kan använda för att skapa en pipeline med hjälp av den [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De visar hur du kopierar data från Salesforce till Azure Blob Storage. Dock datan kan kopieras till någon av sänkor anges [här](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med hjälp av aktiviteten kopiera i Azure Data Factory.   
+## <a name="json-example-copy-data-from-salesforce-tooazure-blob"></a>JSON-exempel: kopiera data från Salesforce tooAzure Blob
+hello följande exempel innehåller exempel JSON definitioner som du kan använda toocreate en pipeline med hjälp av hello [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md), [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md), eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De visar hur toocopy data från Salesforce tooAzure Blob Storage. Data kan dock vara kopierade tooany av hello sänkor anges [här](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med hello Kopieringsaktiviteten i Azure Data Factory.   
 
-Här är Data Factory-artefakter som du behöver skapa för att implementera scenariot. Avsnitten som följer en lista innehåller information om de här stegen.
+Här följer hello Data Factory-artefakter behöver toocreate tooimplement hello scenario. hello avsnitten som följer hello lista innehåller information om de här stegen.
 
-* En länkad tjänst av typen [Salesforce](#linked-service-properties)
-* En länkad tjänst av typen [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
-* Indata [dataset](data-factory-create-datasets.md) av typen [RelationalTable](#dataset-properties)
-* Utdata [dataset](data-factory-create-datasets.md) av typen [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
+* En länkad tjänst av typen hello [Salesforce](#linked-service-properties)
+* En länkad tjänst av typen hello [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
+* Indata [dataset](data-factory-create-datasets.md) av hello typen [RelationalTable](#dataset-properties)
+* Utdata [dataset](data-factory-create-datasets.md) av hello typen [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
 * En [pipeline](data-factory-create-pipelines.md) med Kopieringsaktiviteten som använder [RelationalSource](#copy-activity-properties) och [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)
 
 **Salesforce länkad tjänst**
 
-Det här exemplet används den **Salesforce** länkade tjänsten. Finns det [Salesforce länkade tjänsten](#linked-service-properties) avsnittet för egenskaper som stöds av den här länkade tjänsten.  Se [hämta säkerhetstoken](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) för instruktioner om hur du återställa/hämta säkerhetstoken.
+Det här exemplet används hello **Salesforce** länkade tjänsten. Se hello [Salesforce länkade tjänsten](#linked-service-properties) avsnittet för hello egenskaper som stöds av den här länkade tjänsten.  Se [hämta säkerhetstoken](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) anvisningar för hur tooreset/hämta hello säkerhetstoken.
 
 ```json
 {
@@ -186,16 +186,16 @@ Det här exemplet används den **Salesforce** länkade tjänsten. Finns det [Sal
 }
 ```
 
-Ange **externa** till **SANT** informerar Data Factory-tjänsten att datamängden är extern till data factory och inte tillverkas av en aktivitet i datafabriken.
+Ange **externa** för**SANT** informerar hello Data Factory-tjänsten som hello dataset är externa toohello data factory och inte tillverkas av en aktivitet i hello data factory.
 
 > [!IMPORTANT]
-> ”__C”-delen av API-namnet krävs för alla anpassade objekt.
+> Hej ”__c” tillhör hello API namn krävs för alla anpassade objekt.
 
 ![Namnet på data Factory - anslutning Salesforce - API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name.png)
 
 **Utdatauppsättning för Azure-blobb**
 
-Data skrivs till en ny blob varje timme (frekvens: timme, intervall: 1).
+Data skrivs tooa nya blob varje timme (frekvens: timme, intervall: 1).
 
 ```json
 {
@@ -219,9 +219,9 @@ Data skrivs till en ny blob varje timme (frekvens: timme, intervall: 1).
 
 **Rörledningen med Kopieringsaktiviteten**
 
-Pipelinen innehåller Kopieringsaktiviteten som är konfigurerad för att använda indata och utdata-datauppsättningar och är schemalagd att köras varje timme. I pipeline-JSON-definitionen av **källa** är inställd på **RelationalSource**, och **sink** är inställd på **BlobSink**.
+hello pipeline innehåller Kopieringsaktiviteten som är konfigurerad för toouse hello inkommande och utgående datauppsättningar och är schemalagda toorun varje timme. I hello pipeline JSON-definitionen hello **källa** typ har angetts för**RelationalSource**, och hello **sink** typ har angetts för**BlobSink**.
 
-Se [RelationalSource Typegenskaper](#copy-activity-properties) lista över egenskaper som stöds av RelationalSource.
+Se [RelationalSource Typegenskaper](#copy-activity-properties) hello lista över egenskaper som stöds av hello RelationalSource.
 
 ```json
 {  
@@ -233,7 +233,7 @@ Se [RelationalSource Typegenskaper](#copy-activity-properties) lista över egens
         "activities":[  
         {
             "name": "SalesforceToAzureBlob",
-            "description": "Copy from Salesforce to an Azure blob",
+            "description": "Copy from Salesforce tooan Azure blob",
             "type": "Copy",
             "inputs": [
             {
@@ -270,7 +270,7 @@ Se [RelationalSource Typegenskaper](#copy-activity-properties) lista över egens
 }
 ```
 > [!IMPORTANT]
-> ”__C”-delen av API-namnet krävs för alla anpassade objekt.
+> Hej ”__c” tillhör hello API namn krävs för alla anpassade objekt.
 
 ![Namnet på data Factory - anslutning Salesforce - API](media/data-factory-salesforce-connector/data-factory-salesforce-api-name-2.png)
 
@@ -287,7 +287,7 @@ Se [RelationalSource Typegenskaper](#copy-activity-properties) lista över egens
 | Id |Sträng |
 | Uppslagsrelation |Sträng |
 | Flerval listruta |Sträng |
-| Antal |dubbla |
+| Tal |dubbla |
 | Procent |dubbla |
 | Telefon |Sträng |
 | Listruta |Sträng |
@@ -299,9 +299,9 @@ Se [RelationalSource Typegenskaper](#copy-activity-properties) lista över egens
 | URL: EN |Sträng |
 
 > [!NOTE]
-> Om du vill mappa kolumner från källan dataset till kolumner från sink dataset finns [mappa dataset kolumner i Azure Data Factory](data-factory-map-columns.md).
+> toomap kolumner från källan dataset toocolumns från sink dataset finns [mappa dataset kolumner i Azure Data Factory](data-factory-map-columns.md).
 
 [!INCLUDE [data-factory-structure-for-rectangualr-datasets](../../includes/data-factory-structure-for-rectangualr-datasets.md)]
 
 ## <a name="performance-and-tuning"></a>Prestanda- och justering
-Finns det [prestandajustering guide och Kopieringsaktivitet prestanda](data-factory-copy-activity-performance.md) vill veta mer om viktiga faktorer som påverkan prestanda för flytt av data (Kopieringsaktiviteten) i Azure Data Factory och olika sätt att optimera den.
+Se hello [prestandajustering guide och Kopieringsaktivitet prestanda](data-factory-copy-activity-performance.md) toolearn om nyckeln faktorer som påverkan prestanda för flytt av data (Kopieringsaktiviteten) i Azure Data Factory och olika sätt toooptimize den.

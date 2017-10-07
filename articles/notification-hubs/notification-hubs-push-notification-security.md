@@ -1,5 +1,5 @@
 ---
-title: "Säkerhet för Notification hub"
+title: "aaaSecurity för Notification hub"
 description: "Det här avsnittet beskriver security för Azure notification hubs."
 services: notification-hubs
 documentationcenter: .net
@@ -14,35 +14,35 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 7c3283799806135060bb8ca57ea398c93d1106bb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f59ad4594c2c0a2e2b22ab0b6d6bad53825a4dc2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="security"></a>Säkerhet
 ## <a name="overview"></a>Översikt
-Det här avsnittet beskriver säkerhetsmodellen i Azure Notification Hubs. Eftersom Meddelandehubbar är en Service Bus-entitet, implementeras som i samma säkerhetsmodell som Service Bus. Mer information finns i [Service Bus autentisering](https://msdn.microsoft.com/library/azure/dn155925.aspx) avsnitt.
+Det här avsnittet beskriver hello säkerhetsmodellen i Azure Notification Hubs. Eftersom Meddelandehubbar är en Service Bus-entitet, som implementeras hello samma säkerhetsmodell som Service Bus. Mer information finns i hello [Service Bus autentisering](https://msdn.microsoft.com/library/azure/dn155925.aspx) avsnitt.
 
 ## <a name="shared-access-signature-security-sas"></a>Säkerhet för delad åtkomst signatur (SAS)
-Notification Hubs implementerar en på entitetsnivå säkerhetsprogram kallas SAS (signatur för delad åtkomst). Det här schemat kan meddelandeentiteter att deklarera upp till 12 auktoriseringsregler i deras beskrivning som ger rättigheter på denna enhet.
+Notification Hubs implementerar en på entitetsnivå säkerhetsprogram kallas SAS (signatur för delad åtkomst). Det här schemat kan meddelanden entiteter toodeclare in too12 auktoriseringsregler i deras beskrivning som ger rättigheter på denna enhet.
 
-Varje regel innehåller ett namn, ett nyckelvärde (delad hemlighet) och en uppsättning rättigheter, som beskrivs i avsnittet ”säkerhetsanspråk”. När du skapar en Meddelandehubb skapas två regler automatiskt: en med lyssna-behörighet (med klientappen) och en med alla rättigheter (som använder appens serverdel).
+Varje regel innehåller ett namn, ett nyckelvärde (delad hemlighet) och en uppsättning rättigheter, enligt beskrivningen i hello ”säkerhetsmålen”. När du skapar en Meddelandehubb skapas två regler automatiskt: en med lyssna rättigheter (som hello app-klienten använder) och en med alla rättigheter (som hello app backend används).
 
-När du utför registreringen management från klientappar om informationen som skickas meddelanden är inte känslig (till exempel väder uppdateringar), ett vanligt sätt att komma åt en Meddelandehubb är att ge nyckelvärdet för regeln endast lyssna-åtkomst till klientappen och ge nyckelvärdet för regeln fullständig åtkomst till appens serverdel.
+När du utför registreringen management från klientappar om hello information skickas meddelanden inte känsliga (t.ex, väder uppdateringar), ett vanligt sätt tooaccess en Meddelandehubb toogive hello nyckelvärdet för hello regeln bara lyssna toohello klientappen och toogive hello nyckelvärdet för hello regeln fullständig åtkomst toohello appserverdelen.
 
-Det rekommenderas inte att bädda in värdet för nyckeln i Windows Store-appar för klienten. Ett sätt att undvika att bädda in värdet för nyckeln är att ha klientappen hämta från appens serverdel vid start.
+Det rekommenderas inte att bädda in hello nyckelvärdet i Windows Store-appar för klienten. Ett sätt tooavoid bädda in hello nyckelvärdet är toohave hello-klientappen att hämta det från hello appserverdelen vid start.
 
-Det är viktigt att förstå att nyckeln med lyssna åtkomst tillåter ett klientprogram att registrera dig för en tagg. Om din app måste begränsa registreringar till särskilda taggar till specifika klienter (till exempel när taggar representerar användar-ID), måste din Apps serverdel utföra registreringar. Mer information finns i hantering av registreringen. Observera att på så sätt kan klientappen inte kommer har direkt åtkomst till Notification Hubs.
+Det är viktigt toounderstand som hello nyckel med lyssna åtkomst gör att en klient app tooregister för en tagg. Om din app måste begränsa registreringar toospecific taggar toospecific klienter (till exempel när taggar representerar användar-ID), måste din Apps serverdel utföra hello registreringar. Mer information finns i hantering av registreringen. Observera att på så sätt kan hello-klientappen inte ska ha direktåtkomst tooNotification Hubs.
 
 ## <a name="security-claims"></a>Säkerhetsmålen
-Precis som andra entiteter, Notification Hub tillåts för tre säkerhetsanspråk: lyssna, skicka och hantera.
+Liknande tooother entiteter Notification Hub tillåts för tre säkerhetsanspråk: lyssna, skicka och hantera.
 
 | Begär | Beskrivning | Tillåtna åtgärder |
 | --- | --- | --- |
 | Lyssna |Skapa eller uppdatera, läsa och ta bort enda registreringar |Skapa eller uppdatera registrering<br><br>Läs registrering<br><br>Läsa alla registreringar för en referens<br><br>Ta bort registrering |
-| Skicka |Skicka meddelanden till meddelandehubben |Skicka meddelande |
+| Skicka |Skicka meddelanden toohello meddelandehubb |Skicka meddelande |
 | Hantera |CRUDs om Notification Hubs (inklusive uppdaterar PNS-autentiseringsuppgifter och säkerhetsnycklar) och Läs registreringar baserat på taggar |Skapa/uppdatera och läsa/ta bort notification hub<br><br>Läs registreringar efter tagg |
 
-Notification Hubs godkänna anspråk som beviljas av Microsoft Azure Access Control-token och av signatur-token som genereras med delade nycklar direkt på Meddelandehubben.
+Notification Hubs godkänna anspråk som beviljas av Microsoft Azure Access Control-token och av signatur-token som genereras med delade nycklar direkt på hello Notification Hub.
 

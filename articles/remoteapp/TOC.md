@@ -25,15 +25,15 @@
 # Gör så här för att
 
 ## [Migrera användardata från Azure RemoteApp](remoteapp-migrate.md)
-## [Migrera till MyCloudIT](remoteapp-migrate-mycloudit.md)
-## [Migrera till Citrix XenApp Essentials](remoteapp-migrate-citrix.md)
+## [Migrera tooMyCloudIT](remoteapp-migrate-mycloudit.md)
+## [Migrera tooCitrix XenApp Essentials](remoteapp-migrate-citrix.md)
 ## Skapa en RemoteApp-samling
 ### [Vilken samling behöver du?](remoteapp-collections.md)
 ### [Skapa en molnsamling](remoteapp-create-cloud-deployment.md)
 ### [Skapa en hybridsamling](remoteapp-create-hybrid-deployment.md)
 ### [Uppdatera din samling](remoteapp-update.md)
 ### [Skapa en RemoteApp-avbildning](remoteapp-imageoptions.md)
-### [Vad ingår i mallavbildningen?](remoteapp-images.md)
+### [Vad är hello mallavbildningen?](remoteapp-images.md)
 ### [Avbildningskrav](remoteapp-imagereqs.md)
 ### [Ladda upp en avbildning](remoteapp-uploadimage.md)
 ### [Skapa en avbildning från en virtuell Azure-dator](remoteapp-image-on-azurevm.md)
@@ -41,13 +41,13 @@
 ### [Planera ditt virtuella nätverk](remoteapp-planvnet.md)
 ### [Information om port och URL](remoteapp-ports.md)
 ### [Verifiera ditt virtuella nätverk](remoteapp-vnet.md)
-### [Migrera till ett Azure VNET](remoteapp-migratevnet.md)
+### [Migrera tooan Azure VNET](remoteapp-migratevnet.md)
 ## Publicera program
-### [Publicera en app](remoteapp-publish.md)
+### [Hur toopublish en app](remoteapp-publish.md)
 ## Hantera användare
-### [Lägga till användare](remoteapp-user.md)
+### [Hur tooadd användare](remoteapp-user.md)
 ### [Konfigurera Active Directory](remoteapp-ad.md)
-### [Ändra Azure AD-klientorganisationen](remoteapp-changetenant.md)
+### [Ändra hello Azure AD-klient](remoteapp-changetenant.md)
 ### [Office 365-användarkonton](remoteapp-o365user.md)
 ### [Säkra data](remoteapp-secureaccess.md)
 ### [Användardata](remoteapp-upd.md)

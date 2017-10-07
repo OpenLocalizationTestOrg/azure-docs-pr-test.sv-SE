@@ -1,5 +1,5 @@
 ---
-title: Mallar
+title: aaaTemplates
 description: "Det här avsnittet beskriver mallar för Azure notification hubs."
 services: notification-hubs
 documentationcenter: .net
@@ -14,29 +14,29 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0149f0c7473e5a4b952905bc8217582b58db2a0d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="templates"></a>Mallar
 ## <a name="overview"></a>Översikt
-Mallar kan ett klientprogram att ange det exakta formatet för den vill ta emot meddelanden. Med hjälp av mallar, Tänk en app flera olika fördelar, inklusive följande:
+Mallar kan klienten programmet toospecify hello exakt format hello meddelanden läggs tooreceive. Med hjälp av mallar, Tänk en app flera olika fördelar, inklusive hello följande:
 
 * En plattformsoberoende serverdel
 * Anpassade meddelanden
 * Klientversionen oberoende
 * Enkelt lokalisering
 
-Det här avsnittet innehåller två ingående exempel på hur du använder mallar att skicka plattformsoberoende meddelanden målobjekt för alla enheter på plattformar och för att anpassa broadcast-meddelanden för varje enhet.
+Det här avsnittet innehåller två ingående exempel på hur toouse mallar toosend-plattformsoberoende meddelanden målobjekt för alla enheter på plattformar och toopersonalize broadcast-meddelanden tooeach enhet.
 
 ## <a name="using-templates-cross-platform"></a>Med hjälp av mallar plattformar
-Standardmetoden för att skicka push-meddelanden är att skicka för varje meddelande som ska skickas, en specifik nyttolast till platform notification services (WNS, APN). Om du vill skicka en avisering till APN är till exempel nyttolasten ett Json-objekt av följande format:
+hello standardmetoden toosend push-meddelanden är toosend för varje meddelande som är toobe skickas, en specifik nyttolast tooplatform notification services (WNS, APN). Till exempel toosend en avisering tooAPNS är hello nyttolasten ett Json-objekt för hello följande form:
 
     {"aps": {"alert" : "Hello!" }}
 
-Om du vill skicka ett liknande popup-meddelande på en Windows Store-programmet är nyttolasten i XML:
+toosend ett liknande popup-meddelande på en Windows Store-programmet hello XML-nyttolasten är följande:
 
     <toast>
       <visual>
@@ -48,19 +48,19 @@ Om du vill skicka ett liknande popup-meddelande på en Windows Store-programmet 
 
 Du kan skapa liknande nyttolaster för MPNS (Windows Phone) och (Android) GCM-plattformar.
 
-Det här kravet tvingar appens serverdel för att skapa olika nyttolaster för varje plattform och blir serverdelen som ansvarar för en del av presentation lager av appen. Vissa problem är lokalisering och grafiska layouter (särskilt för Windows Store-appar som innehåller meddelanden för olika typer av paneler).
+Det här kravet tvingar hello app backend tooproduce olika nyttolaster för varje plattform och blir hello backend som ansvarar för en del av hello presentation säkerhetslager hello app. Vissa problem är lokalisering och grafiska layouter (särskilt för Windows Store-appar som innehåller meddelanden för olika typer av paneler).
 
-Notification Hubs mall-funktionen kan ett klientprogram att skapa särskilda registreringar som kallas mall registreringar, bland annat, utöver uppsättningen taggar, en mall. Notification Hubs mall-funktionen kan ett klientprogram att associera enheter med mallar om du arbetar med installationer (rekommenderas) eller registreringar. Nyttolasten i föregående exempel är, endast plattformsoberoende information den faktiska varning (Hej!). En mall är en uppsättning instruktioner för Meddelandehubben om hur du formaterar meddelandet plattformsoberoende för registrering av den specifika klient-app. I föregående exempel plattform oberoende meddelandet är en enskild egenskap: **message = Hej!**.
+Hej Meddelandehubbar mall funktionen kan en klient app toocreate särskilda registreringar, kallas mall registreringar, bland annat dessutom toohello uppsättning taggar, en mall. Hej Meddelandehubbar mall funktionen kan en app tooassociate klientenheter med mallar om du arbetar med installationer (rekommenderas) eller registreringar. Hello föregående exempel nyttolast är, hello endast plattformsoberoende information hello faktiska meddelande (Hej!). En mall är en uppsättning instruktioner för hello Notification Hub på hur tooformat en plattformsoberoende meddelande för hello registreringen av den specifika klient-app. I föregående exempel hello, oberoende hälsningsmeddelande för plattformen är en enskild egenskap: **message = Hej!**.
 
-Följande bild illustrerar processen för ovan:
+hello följande bild visar hello ovan processen:
 
 ![](./media/notification-hubs-templates/notification-hubs-hello.png)
 
-Mallen för iOS-app klientregistrering är följande:
+hello-mall för hello iOS app klientregistrering är följande:
 
     {"aps": {"alert": "$(message)"}}
 
-Motsvarande mallen för Windows Store-klientappen är:
+hello motsvarande mall för hello Windows Store-klientappen är:
 
     <toast>
         <visual>
@@ -70,16 +70,16 @@ Motsvarande mallen för Windows Store-klientappen är:
         </visual>
     </toast>
 
-Observera att det faktiska meddelandet ersätts av uttrycket $(meddelande). Det här uttrycket instruerar Meddelandehubben, när den skickar ett meddelande till den här viss registreringen att skapa ett meddelande som följer den och växlar i vanliga värdet.
+Observera att hello faktiska meddelandet ersätts av hello uttryck $(meddelande). Det här uttrycket instruerar hello Notification Hub när den skickar ett meddelande toothis viss registrering, toobuild ett meddelande som följer den och växlar i hello vanliga värde.
 
-Om du arbetar med installationsmodell innehåller nyckeln ”mallar” installationen en JSON över flera mallar. Om du arbetar med registrering modell kan klientprogrammet skapa flera registreringar för att kunna använda flera mallar. till exempel uppdateringar en mall för aviseringar och en mall för bricka. Klientprogram kan också blanda interna registreringar (registreringar utan någon mall) och mallen registreringar.
+Om du arbetar med installationsmodell innehåller hello installationen ”mallar” nyckeln en JSON över flera mallar. Om du arbetar med registrering modell kan hello klientprogrammet skapa flera registreringar i ordning toouse flera mallar. till exempel uppdateringar en mall för aviseringar och en mall för bricka. Klientprogram kan också blanda interna registreringar (registreringar utan någon mall) och mallen registreringar.
 
-Notification Hub skickar en avisering för varje mall utan att överväga om de hör till klientappen med samma. Det här beteendet kan användas för att översätta plattformsoberoende meddelanden till flera meddelanden. Till exempel kan samma plattform oberoende meddelande Notification Hub sömlöst översättas i ett popup-meddelande och en sida vid sida-uppdatering utan backend ska vara medvetna om det. Observera att vissa plattformar (till exempel iOS) kan komprimera flera meddelanden till samma enhet om de skickas i en kort tidsperiod.
+hello Notification Hub skickar en avisering för varje mall utan att överväga om de tillhör toohello samma klientapp. Det här problemet kan vara används tootranslate plattformsoberoende meddelanden till flera meddelanden. Till exempel hello samma plattform oberoende meddelandet toohello Notification Hub kan översättas sömlöst i en popup-avisering och en sida vid sida-uppdatering utan hello backend toobe medveten om den. Observera att vissa plattformar (till exempel iOS) kan komprimera flera meddelanden toohello samma enhet om de skickas i en kort tidsperiod.
 
 ## <a name="using-templates-for-personalization"></a>Med hjälp av mallar för anpassning
-En annan fördel med att använda mallar är möjligheten att använda Notification Hubs för att utföra per registrering anpassningar av meddelanden. Anta till exempel att en väder-app som visar en panel med väder villkor på en viss plats. En användare kan välja mellan Celsius eller Fahrenheit grader och en enkel eller fem dagar prognos. Med hjälp av mallar, kan varje app klientinstallation registreras för det format som krävs (1 dag Celsius, 1 dag Fahrenheit, 5 dagar Celsius 5 dagar Fahrenheit), och skicka ett enda meddelande som innehåller den information som krävs för att fylla mallarna serverdelen (till exempel fem dagar vid en prognos med Celsius och Fahrenheit grader).
+En annan fördel toousing mallar är hello möjlighet toouse Meddelandehubbar tooperform per registrering anpassningar av meddelanden. Anta till exempel att en väder-app som visar en panel med hello väder på en viss plats. En användare kan välja mellan Celsius eller Fahrenheit grader och en enkel eller fem dagar prognos. Med hjälp av mallar, kan varje app klientinstallation registreras för hello-format som krävs (1 dag Celsius, 1 dag Fahrenheit, 5 dagar Celsius 5 dagar Fahrenheit), och har hello backend skicka ett enda meddelande som innehåller alla hello information krävs toofill de mallar (till exempel fem dagar vid en prognos med Celsius och Fahrenheit grader).
 
-Mall för en dag prognosen med Celsius temperaturer är följande:
+hello mall för hello en dag prognos med Celsius temperaturer är följande:
 
     <tile>
       <visual>
@@ -91,7 +91,7 @@ Mall för en dag prognosen med Celsius temperaturer är följande:
       </visual>
     </tile>
 
-Meddelandet som skickas till Meddelandehubben innehåller följande egenskaper:
+hello-meddelande skickat toohello Notification Hub innehåller alla hello följande egenskaper:
 
 <table border="1">
 
@@ -102,33 +102,33 @@ Meddelandet som skickas till Meddelandehubben innehåller följande egenskaper:
 <tr><td>day1_tempF</td><td>day2_tempF</td><td>day3_tempF</td><td>day4_tempF</td><td>day5_tempF</td></tr>
 </table><br/>
 
-Med hjälp av det här mönstret skickas serverdelen endast ett meddelande utan att behöva lagra specifika anpassningsalternativ för appanvändare. Följande bild visar det här scenariot:
+Med hjälp av det här mönstret skickas hello backend endast ett meddelande utan att behöva toostore anpassningsalternativ för hello appanvändare. hello följande bild visar det här scenariot:
 
 ![](./media/notification-hubs-templates/notification-hubs-registration-specific.png)
 
-## <a name="how-to-register-templates"></a>Så här registrerar du mallar
-Om du vill registrera med mallar med hjälp av installationsmodell (rekommenderas) eller registrering av modellen, se [registrering Management](notification-hubs-push-notification-registration-management.md).
+## <a name="how-tooregister-templates"></a>Hur tooregister mallar
+tooregister med mallar med hjälp av hello installationsmodell (rekommenderas) eller hello registrering modellen finns [registrering Management](notification-hubs-push-notification-registration-management.md).
 
 ## <a name="template-expression-language"></a>Språk för malluttryck
-Mallar är begränsade till XML- eller JSON-dokumentformat. Du kan också bara placera uttryck på särskilda platser. till exempel noden attribut eller värden för XML, sträng egenskapsvärden för JSON.
+Mallar är begränsad tooXML eller JSON-dokumentformat. Du kan också bara placera uttryck på särskilda platser. till exempel noden attribut eller värden för XML, sträng egenskapsvärden för JSON.
 
-I följande tabell visas det språk som tillåts i mallar:
+hello visar följande tabell hello språk som tillåts i mallar:
 
 | uttryck | Beskrivning |
 | --- | --- |
-| $(prop) |Referens till en händelseegenskap med det angivna namnet. Egenskapsnamn är inte skiftlägeskänsliga. Det här uttrycket löser i egenskapsvärdet text eller en tom sträng om egenskapen inte finns. |
-| $(prop, n) |Som ovan, men texten är uttryckligen bryts vid n tecken, till exempel $(rubrik 20) klipp innehållet i egenskapen Rubrik på 20 tecken. |
-| . (prop, n) |Som ovan, men texten suffixet med tre punkter som den klipps. Den totala storleken på den förkortade strängen och suffixet överstiger inte n tecken. . (rubrik, 20) med en inkommande egenskap ”är rubriken” resultaten i **detta är titeln...** |
-| %(prop) |Liknar $(name) förutom att utdata URI-kodad. |
-| #(prop) |Används i JSON-mallar (t.ex, för iOS och Android mallar).<br><br>Den här funktionen fungerar exakt samma sätt som $(prop) tidigare angiven förutom när det används i JSON-mallar (till exempel Apple mallar). I det här fallet, om den här funktionen inte är omgiven av ”{” ”,}” (till exempel 'myJsonProperty': '#(namn)'), och utvärderas till ett tal i Javascript-format, till exempel regexp: (0 &#124; (&#91; 1 – 9, #93; & #91, 0-9 & #93 ;*))(\. &#91; 0-9 & #93. +)? ((e &#124; E) (+ &#124;-)? &#91; 0-9 & #93. +)?, och sedan utdata-JSON är ett tal.<br><br>Till exempel ' Aktivitetsikon: ”#(namn)” blir ”badge': 40 (och inte” 40'). |
+| $(prop) |Referens tooan händelseegenskap med namnet hello. Egenskapsnamn är inte skiftlägeskänsliga. Det här uttrycket löser i textvärdet hello egenskap eller en tom sträng om hello egenskapen inte finns. |
+| $(prop, n) |Som ovan, men hello text är uttryckligen bryts vid n tecken, till exempel $(rubrik 20) klipp hello innehållet i hello objektets egenskap title på 20 tecken. |
+| . (prop, n) |Som ovan, men hello suffixet text med tre punkter som den klipps. hello total storlek på hello klipps sträng och hello suffix överskrida inte n tecken. . (rubrik, 20) med en inkommande egenskap ”är hello rubriken” resultaten i **detta är hello rubrik...** |
+| %(prop) |Liknande too$(name) förutom att hello-utdata är URI-kodad. |
+| #(prop) |Används i JSON-mallar (t.ex, för iOS och Android mallar).<br><br>Den här funktionen fungerar hello exakt samma som $(prop) tidigare angiven förutom när det används i JSON-mallar (till exempel Apple mallar). I det här fallet, om den här funktionen inte är omgiven av ”{” ”,}” (till exempel 'myJsonProperty': '#(namn)'), och det utvärderar tooa nummer i Javascript-format, till exempel regexp: (0 &#124; (&#91; 1 – 9, #93; & #91, 0-9 & #93 ;*))(\. &#91; 0-9 & #93. +)? ((e &#124; E) (+ &#124;-)? &#91; 0-9 & #93. +)?, och sedan hello utdata-JSON är ett tal.<br><br>Till exempel ' Aktivitetsikon: ”#(namn)” blir ”badge': 40 (och inte” 40'). |
 | ”text” eller ”text” |En literal. Literaler innehålla godtycklig text inom enkla eller dubbla citattecken. |
-| Uttr1 + uttr2 |Operatorn sammanfogning koppla två uttryck till en sträng. |
+| Uttr1 + uttr2 |hello sammanfogning operator koppla två uttryck till en sträng. |
 
-Uttrycken kan vara något av de föregående formulär.
+hello uttryck kan vara någon av hello föregående formulär.
 
-När du använder sammanfogning måste helt uttryck omges av {}. Till exempel {$(prop) + '-' + $(prop2)}. |
+När du använder sammanfogning måste hello helt uttryck omges av {}. Till exempel {$(prop) + '-' + $(prop2)}. |
 
-Till exempel är följande inte en giltig XML-mall:
+Till exempel är hello följande inte en giltig XML-mall:
 
     <tile>
       <visual>

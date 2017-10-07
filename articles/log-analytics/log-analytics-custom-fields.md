@@ -1,6 +1,6 @@
 ---
-title: "Anpassade fält i Log Analytics | Microsoft Docs"
-description: "Funktionen anpassade fält i logganalys kan du skapa egna sökbara fält från OMS-data som lägger till egenskaperna för en post som samlats in.  Den här artikeln beskriver processen för att skapa ett anpassat fält och ger en detaljerad genomgång en exempelhändelse."
+title: "aaaCustom fält i Log Analytics | Microsoft Docs"
+description: "hello anpassade fält för Log Analytics kan du toocreate egna sökbara fält från OMS-data som lägger till toohello egenskaper för en post som samlats in.  Den här artikeln beskriver hello processen toocreate ett anpassat fält och ger en detaljerad genomgång en exempelhändelse."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,75 +14,75 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
-ms.openlocfilehash: 9e02094f155eaade9bc5fb49c4fbb798e546e989
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1aa0e497d5b1d7898b0da6a5ef40f568e63bc589
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="custom-fields-in-log-analytics"></a>Anpassade fält i logganalys
-Den **anpassade fält** funktionen för Log Analytics kan du utöka befintliga poster i OMS-databasen genom att lägga till egna sökbara fält.  Anpassade fält fylls automatiskt i från data som hämtats från andra egenskaper i samma post.
+Hej **anpassade fält** funktionen för Log Analytics gör att du tooextend befintliga poster i hello OMS-databas genom att lägga till egna sökbara fält.  Anpassade fält fylls automatiskt i från data som hämtats från andra egenskaper i hello samma post.
 
 ![Översikt över anpassade fält](media/log-analytics-custom-fields/overview.png)
 
-Posten exemplet nedan har till exempel användbara data begravd i händelsebeskrivningen.  Extrahera data i separata egenskaper gör den tillgänglig för exempelvis sortera och filtrera.
+Till exempel har hello exempelpost nedan användbara data begravd i hello händelsebeskrivningen.  Extrahera data i separata egenskaper gör den tillgänglig för exempelvis sortera och filtrera.
 
 ![Logga sökknappen](media/log-analytics-custom-fields/sample-extract.png)
 
 > [!NOTE]
-> Du är begränsad till 100 anpassade fält i din arbetsyta i förhandsgranskningen.  Den här gränsen ska expanderas när den här funktionen når allmän tillgänglighet.
+> I hello Förhandsgranska är du begränsad too100 anpassade fält i arbetsytan.  Den här gränsen ska expanderas när den här funktionen når allmän tillgänglighet.
 > 
 > 
 
 ## <a name="creating-a-custom-field"></a>Skapa ett anpassat fält
-När du skapar ett anpassat fält förstå logganalys vilka data som ska användas för att fylla i dess värde.  En teknik från Microsoft Research kallas FlashExtract används för att snabbt identifiera dessa data.  I stället för att kräva att du explicit anvisningar logganalys lär sig om de data som du vill extrahera från de exempel som du anger.
+När du skapar ett anpassat fält måste logganalys veta vilka data toouse toopopulate dess värde.  Den använder en teknik från Microsoft Research kallas FlashExtract tooquickly identifiera dessa data.  I stället för att kräva att du tooprovide explicit instruktioner logganalys lär sig hello data vill du tooextract från de exempel som du anger.
 
-Följande avsnitt innehåller proceduren för att skapa ett anpassat fält.  Är en genomgång av en exempel-extrahering längst ned i den här artikeln.
+hello följande avsnitt innehåller hello procedur för att skapa ett anpassat fält.  Hello är längst ned på den här artikeln en genomgång av en exempel-extrahering.
 
 > [!NOTE]
-> Det anpassade fältet fylls när poster som matchar de angivna kriterierna läggs till datalagret OMS så visas endast på poster som samlas in när det anpassade fältet har skapats.  Anpassat fält kommer inte att lägga till poster som redan finns i datalagret när den skapas.
+> hello anpassat fält fylls som innehåller matchande hello angivna villkor läggs toohello OMS-databasen, så visas endast på poster som samlas in när hello anpassat fält har skapats.  hello anpassat fält läggs inte toorecords som redan finns i datalagret hello när den skapas.
 > 
 > 
 
-### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>Steg 1 – identifiera vilka poster som har anpassade fält
-Det första steget är att identifiera de poster som får det anpassade fältet.  Du börjar med en [standard loggen Sök](log-analytics-log-searches.md) och välj sedan en post som fungerar som den modell som logganalys lära dig från.  När du anger att du kommer att extrahera data i ett anpassat fält i **fältet Extraheringsguiden** öppnas där du validerar och finjustera villkoret.
+### <a name="step-1--identify-records-that-will-have-hello-custom-field"></a>Steg 1 – identifiera poster som ska ha hello anpassat fält
+hello första steget är tooidentify hello poster som får hello anpassat fält.  Du börjar med en [standard loggen Sök](log-analytics-log-searches.md) och välj sedan en post tooact som hello-modell som logganalys lära dig från.  När du anger att du ska tooextract data i ett anpassat fält hello **fältet Extraheringsguiden** öppnas där du validerar och förfina hello kriterier.
 
-1. Gå till **loggen Sök** och använda en [att hämta posterna](log-analytics-log-searches.md) som har det anpassade fältet.
-2. Markera en post som Log Analytics för att fungera som en modell för att extrahera data för att fylla i det anpassade fältet.  Du identifierar de data som du vill extrahera från den här posten och Log Analytics använder den här informationen för att bestämma logiken för att fylla i det anpassade fältet för alla liknande poster.
-3. Klicka på knappen till vänster om varje text-egenskap i posten och välj **extrahera fält från**.
-4. Den **fältet Extraheringsguiden öppnas**, och den valda posten visas i den **Main exempel** kolumn.  Det anpassade fältet ska definieras för de posterna som har samma värden i de egenskaper som är markerade.  
-5. Om markeringen är inte exakt vad du vill kan du välja ytterligare fält att begränsa kriterierna.  För att kunna ändra värdena för villkoret måste du avbryta och väljer en annan post som matchar de villkor du vill använda.
+1. Gå för**loggen Sök** och använda en [fråga tooretrieve hello poster](log-analytics-log-searches.md) som har hello anpassat fält.
+2. Markera en post att Log Analytics använder tooact som en modell för att extrahera data toopopulate hello anpassat fält.  Du identifierar hello data som du vill tooextract från den här posten och Log Analytics använder denna information toodetermine hello logik toopopulate hello anpassat fält för alla liknande poster.
+3. Klicka på hello knappen toohello till vänster i en textegenskap av hello och välja **extrahera fält från**.
+4. Hej **fältet Extraheringsguiden öppnas**, och hello-post som du har valt visas i hello **Main exempel** kolumn.  hello anpassat fält definieras posterna mot hello samma värden i hello egenskaper som är markerade.  
+5. Om hello markeringen är inte exakt vad du vill kan du välja ytterligare fält toonarrow hello villkor.  I ordning toochange hello fältvärden för hello villkor, måste du avbryta och väljer en annan post matchar hello villkoren som du vill.
 
 ### <a name="step-2---perform-initial-extract"></a>Steg 2 – utför inledande extrahera.
-När du har identifierat de poster som har det anpassade fältet kan identifiera du de data som du vill extrahera.  Log Analytics använder den här informationen för att identifiera liknande mönster i liknande poster.  I steg efter detta kommer du att kunna Validera resultaten och visa ytterligare information om logganalys ska användas i sin analys.
+När du har hittat hello-poster som ska ha hello anpassat fält, kan du identifiera hello data som du vill tooextract.  Log Analytics använder denna information tooidentify liknande mönster i liknande poster.  I hello steg efter detta du ska kunna toovalidate hello resultat och ange ytterligare information för Log Analytics toouse i sin analys.
 
-1. Markera texten i exempelpost som du vill fylla i det anpassade fältet.  Sedan visas en dialogruta för att ange ett namn på fältet och utföra de inledande extrahera.  Tecknen  **\_CF** läggs automatiskt.
-2. Klicka på **extrahera** att utföra en analys av insamlade poster.  
-3. Den **sammanfattning** och **sökresultat** avsnitt visas resultatet av rättigheten extrahera så kan du granska dess noggrannhet.  **Sammanfattning** visar de kriterier som används för att identifiera poster och ett antal för varje datavärdena identifieras.  **Sökresultat** ger en detaljerad lista över poster som matchar villkoren.
+1. Markera hello text i hello exempelpost som du vill toopopulate hello anpassat fält.  Sedan visas med en dialogrutan rutan tooprovide ett namn för hello fältet och tooperform hello inledande extrahera.  Hej tecken  **\_CF** läggs automatiskt.
+2. Klicka på **extrahera** tooperform en analys av insamlade poster.  
+3. Hej **sammanfattning** och **sökresultat** avsnitt visas hello resultaten av hello extrahera så kan du granska dess noggrannhet.  **Sammanfattning** visar hello kriterierna tooidentify poster och ett antal för varje hello datavärden identifieras.  **Sökresultat** ger en detaljerad lista över poster som matchar hello villkor.
 
-### <a name="step-3--verify-accuracy-of-the-extract-and-create-custom-field"></a>Steg 3 – verifiera noggrannhet rättigheten extrahera och skapa anpassade fält
-När du har utfört den inledande extrahera visas logganalys resultaten baserat på data som redan samlats in.  Om resultatet ser korrekt kan du skapa anpassade fält med inget ytterligare arbete.  Om inte, sedan kan du förfina resultatet så att Log Analytics kan förbättra sin logik.
+### <a name="step-3--verify-accuracy-of-hello-extract-and-create-custom-field"></a>Steg 3 – verifiera noggrannhet hello extrahera och skapa anpassade fält
+När du har utfört hello inledande extrahera visas logganalys resultaten baserat på data som redan samlats in.  Om hello resultatet ser ut korrekt kan du skapa hello anpassat fält med inget ytterligare arbete.  Om inte, du kan förfina hello resultat så att Log Analytics kan förbättra sin logik.
 
-1. Om alla värden i den första extrahera inte stämmer klickar du på **redigera** ikonen bredvid ett felaktigt och välja **ändra den här markeringen** för att ändra valet.
-2. Posten kopieras till den **ytterligare exempel** avsnittet under den **Main exempel**.  Du kan justera markeringen här för att förstå markeringen skulle ha gjort logganalys.
-3. Klicka på **extrahera** att använda nya informationen för att utvärdera alla befintliga poster.  Resultatet kan ändras efter poster än den du just har ändrat baserat på den här nya intelligence.
-4. Fortsätta att lägga till korrigeringar tills alla poster i rättigheten extrahera identifiera data för att fylla i det nya anpassade fälten.
-5. Klicka på **spara extrahera** när du är nöjd med resultaten.  Det anpassade fältet definieras nu, men den läggs inte till några poster ännu.
-6. Vänta tills den nya poster som matchar de angivna villkoren ska samlas in och kör sedan log-sökningen igen. Nya poster ska ha det anpassade fältet.
-7. Använd det anpassade fältet precis som andra poster egenskapen.  Du kan använda den för att aggregera och gruppera data och även använda den för att skapa nya insikter.
+1. Om alla värden i hello inledande extrahera inte stämmer klickar hello **redigera** ikonen nästa tooan felaktig post och välj **ändra den här markeringen** i ordning toomodify hello markering.
+2. hello-posten är kopierade toohello **ytterligare exempel** avsnitt under hello **Main exempel**.  Du kan justera hello Markera här toohelp logganalys förstå hello markeringen skulle ha gjort.
+3. Klicka på **extrahera** toouse som den här nya information tooevaluate alla hello befintliga poster.  hello resultat kan ändras efter poster än hello något du just har ändrat baserat på den här nya intelligence.
+4. Fortsätt tooadd korrigeringar tills alla poster i hello extrahera korrekt identifiera hello toopopulate hello nya anpassade fält.
+5. Klicka på **spara extrahera** när du är nöjd med hello resultat.  hello anpassat fält definieras nu, men det kommer inte att lägga till tooany poster ännu.
+6. Vänta tills nya poster som matchar hello ange kriterier toobe samlas in och kör sedan hello log-sökningen igen. Nya poster ska ha hello anpassat fält.
+7. Använd hello anpassat fält som andra poster egenskapen.  Du kan använda det tooaggregate och gruppera data och även använda tooproduce nya insikter.
 
 ## <a name="viewing-custom-fields"></a>Visa anpassade fält
-Du kan visa en lista över alla anpassade fält i hanteringsgruppen från den **inställningar** panelen på OMS-instrumentpanelen.  Välj **Data** och sedan **anpassade fält** en lista över alla anpassade fält i arbetsytan.  
+Du kan visa en lista över alla anpassade fält i din hanteringsgrupp från hello **inställningar** panelen hello OMS-instrumentpanelen.  Välj **Data** och sedan **anpassade fält** en lista över alla anpassade fält i arbetsytan.  
 
 ![Anpassade fält](media/log-analytics-custom-fields/list.png)
 
 ## <a name="removing-a-custom-field"></a>Ta bort ett anpassat fält
-Det finns två sätt att ta bort ett anpassat fält.  Först är den **ta bort** alternativ för varje fält när du visar den fullständiga listan enligt beskrivningen ovan.  Den andra metoden är att hämta en post och klicka på knappen till vänster om fältet.  Menyn har ett alternativ för att ta bort det Anpassa fältet.
+Det finns två sätt tooremove ett anpassat fält.  hello är först hello **ta bort** alternativ för varje fält när du visar hello lista enligt beskrivningen ovan.  hello är andra metoden tooretrieve en hello posten och klicka på knappen-toohello till vänster i hello-fältet.  hello menyn har ett anpassat fält för alternativet tooremove hello.
 
 ## <a name="sample-walkthrough"></a>Exempel genomgång
-Följande avsnitt beskriver hur en komplett exempel på hur du skapar anpassade fält.  Det här exemplet extraherar tjänstnamnet i Windows-händelser som indikerar att en tjänst som ändrar tillstånd.  Detta är beroende av händelser som skapas av Service Control Manager i systemloggen på Windows-datorer.  Om du vill följa det här exemplet måste du vara [samla informationshändelser i systemloggen](log-analytics-data-sources-windows-events.md).
+hello följande avsnitt beskriver hur en komplett exempel på hur du skapar anpassade fält.  Det här exemplet extraherar hello-tjänstnamnet i Windows-händelser som indikerar att en tjänst som ändrar tillstånd.  Detta är beroende av händelser som skapas av Service Control Manager i hello systemloggen på Windows-datorer.  Om du vill toofollow det här exemplet måste du vara [att samla in händelser med Information om hello systemloggen](log-analytics-data-sources-windows-events.md).
 
-Vi anger du följande fråga för att returnera alla händelser från Service Control Manager som har händelse-ID 7036 som är den händelse som anger en tjänst startar eller stoppar.
+Vi ange hello följande fråga tooreturn alla händelser från Service Control Manager som har händelse-ID 7036 som är hello händelse som anger att en tjänst startar eller stoppar.
 
 ![Fråga](media/log-analytics-custom-fields/query.png)
 
@@ -90,55 +90,55 @@ Vi kan sedan välja en post med händelse-ID 7036.
 
 ![Posten i datakällan](media/log-analytics-custom-fields/source-record.png)
 
-Vi vill tjänstnamnet som visas i den **RenderedDescription** egenskapen och välj knappen bredvid den här egenskapen.
+Vi vill hello tjänstnamn som visas i hello **RenderedDescription** egenskapen och välj hello knappen Nästa toothis.
 
 ![Extrahera fält](media/log-analytics-custom-fields/extract-fields.png)
 
-Den **fältet Extraheringsguiden** har öppnats och **EventLog** och **EventID** fält har markerats i den **Main exempel** kolumn.  Detta anger att det anpassade fältet definieras händelser från systemloggen med händelse-ID 7036.  Detta är tillräckliga så vi inte behöver välja andra fält.
+Hej **fältet Extraheringsguiden** öppnas och hello **EventLog** och **EventID** fält har markerats i hello **Main exempel** kolumn.  Detta anger det Anpassa fältet hello definieras händelser från hello systemloggen med händelse-ID 7036.  Detta är tillräckliga så vi inte behöver tooselect andra fält.
 
 ![Main-exempel](media/log-analytics-custom-fields/main-example.png)
 
-Vi markerar du namnet på tjänsten i den **RenderedDescription** egenskapen och Använd **Service** att identifiera namnet på tjänsten.  Det anpassade fältet anropas **Service_CF**.
+Vi fokusera hello namnet på hello tjänst i hello **RenderedDescription** egenskapen och Använd **Service** tooidentify hello tjänstnamn.  hello anpassat fält som ska anropas **Service_CF**.
 
 ![Fältet Rubrik](media/log-analytics-custom-fields/field-title.png)
 
-Vi kan se att tjänstnamnet identifieras korrekt för vissa poster men inte för andra.   Den **sökresultat** visas som en del av namnet på den **WMI-prestanda adaptern** inte valts.  Den **sammanfattning** visar fyra poster med **DPRMA** service felaktigt ingår en extra word och två poster identifieras **moduler Installer** i stället för **Windows moduler Installer**.  
+Vi kan se att hello namn identifieras korrekt för vissa poster men inte för andra.   Hej **sökresultat** visas som en del av hello namn för hello **WMI-prestanda adaptern** inte valts.  Hej **sammanfattning** visar fyra poster med **DPRMA** service felaktigt ingår en extra word och två poster identifieras **moduler Installer** i stället för **Windows moduler Installer**.  
 
 ![Sökresultat](media/log-analytics-custom-fields/search-results-01.png)
 
-Vi börjar med den **WMI-prestanda adaptern** post.  Vi klickar på redigeringsikonen och sedan **ändra den här markeringen**.  
+Vi börjar med hello **WMI-prestanda adaptern** post.  Vi klickar på redigeringsikonen och sedan **ändra den här markeringen**.  
 
 ![Ändra markeringen](media/log-analytics-custom-fields/modify-highlight.png)
 
-Markera om du vill inkludera ordet ökas **WMI** och kör sedan rättigheten extrahera.  
+Vi öka hello markeringen tooinclude hello word **WMI** och kör sedan hello extrahera.  
 
 ![Ytterligare exempel](media/log-analytics-custom-fields/additional-example-01.png)
 
-Vi kan se det poster för **WMI-prestanda adaptern** har korrigerats och logganalys också använder informationen för att korrigera poster för **Windows Installer för modulen**.  Vi kan se i den **sammanfattning** om avsnittet som **DPMRA** är fortfarande inte identifieras korrekt.
+Kan vi se att hello poster för **WMI-prestanda adaptern** har korrigerats och logganalys också att toocorrect hello informationsposter för **Windows modulen Installer**.  Vi kan se i hello **sammanfattning** om avsnittet som **DPMRA** är fortfarande inte identifieras korrekt.
 
 ![Sökresultat](media/log-analytics-custom-fields/search-results-02.png)
 
-Vi bläddrar du till en post med DPMRA-tjänsten och använder samma process för att korrigera posten.
+Vi rulla tooa post med hello DPMRA-tjänsten och använder samma process toocorrect registrera hello.
 
 ![Ytterligare exempel](media/log-analytics-custom-fields/additional-example-02.png)
 
- När vi kör uppackningen kan vi se att alla våra resultat nu är korrekt.
+ När vi kör hello extrahering, kan vi se att alla våra resultat nu är korrekt.
 
 ![Sökresultat](media/log-analytics-custom-fields/search-results-03.png)
 
-Vi kan se det **Service_CF** har skapats, men ännu inte har lagts till alla poster.
+Vi kan se det **Service_CF** har skapats, men har ännu inte lagts tooany poster.
 
 ![Inledande antal](media/log-analytics-custom-fields/initial-count.png)
 
-Efter en stund har passerat så nya händelser som samlas in, kan vi se som som den **Service_CF** fältet läggs nu till poster som matchar våra villkor.
+Efter en stund har passerat så nya händelser som samlas in, kan vi se som hello **Service_CF** fältet läggs nu toorecords som matchar våra villkor.
 
 ![Slutresultatet](media/log-analytics-custom-fields/final-results.png)
 
-Vi kan nu använda det anpassade fälten som någon annan post-egenskap.  För att illustrera detta vi skapa en fråga som grupper med den nya **Service_CF** fält som du vill kontrollera vilka tjänster som är mest aktiva.
+Vi kan nu använda hello anpassat fält som någon annan post-egenskap.  tooillustrate kan vi skapa en fråga som grupperar efter nya hello **Service_CF** fältet tooinspect tjänster som är mest aktiva hello.
 
 ![Grupp av frågan](media/log-analytics-custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig mer om [logga sökningar](log-analytics-log-searches.md) att skapa frågor med anpassade fält för villkoret.
+* Lär dig mer om [logga sökningar](log-analytics-log-searches.md) toobuild frågor med anpassade fält för villkoret.
 * Övervakaren [anpassade loggfiler](log-analytics-data-sources-custom-logs.md) som du tolkas med anpassade fält.
 

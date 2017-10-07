@@ -1,6 +1,6 @@
 ---
-title: "Nästa steg för Service Fabric-projekt skapa | Microsoft Docs"
-description: "Den här artikeln innehåller länkar till en uppsättning core development uppgifter för Service Fabric"
+title: "Nästa steg för att skapa aaaService Fabric projektet | Microsoft Docs"
+description: "Den här artikeln innehåller länkar tooa development uppgifter för Service Fabric"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,64 +14,64 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: rwike77
-ms.openlocfilehash: 74019850c507902d9ef7ec47a364fff234aaf32b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 45598bfabedf280fba8af449ef920f40b409a609
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric-programmet och nästa steg
-Azure Service Fabric-programmet har skapats. Den här artikeln beskriver makeup för ditt projekt och vissa potentiella nästa steg.
+Azure Service Fabric-programmet har skapats. Den här artikeln beskriver hello makeup för ditt projekt och vissa potentiella nästa steg.
 
 ## <a name="your-application"></a>Ditt program
-Alla nya program innehåller ett projekt för programmet. Det kan finnas en eller två ytterligare projekt, beroende på vilken sorts tjänst som är valt.
+Alla nya program innehåller ett projekt för programmet. Det kan finnas en eller två ytterligare projekt, beroende på hello typ av tjänst som är valt.
 
-### <a name="the-application-project"></a>Application-projekt
-Projektet för konsolprogrammet består av:
+### <a name="hello-application-project"></a>hello application-projekt
+hello-programprojekt består av:
 
-* En uppsättning referenser till de tjänster som utgör ditt program.
-* Tre publicera profiler (1-nod lokala 5-nod lokala och moln) som du kan använda för att underhålla inställningar för att arbeta med olika miljöer, till exempel göra inställningar för en kluster-slutpunkt och om du vill utföra uppgraderingen distributioner som standard.
-* Tre program parametern filer (samma som ovan) som du kan använda för att underhålla miljö-specifika programkonfigurationer, till exempel antalet partitioner för att skapa för en tjänst.
-* Ett skript för distribution som du kan använda för att distribuera ditt program från kommandoraden eller som en del av en automatisk kontinuerlig integrering och distribution pipeline.
-* Applikationsmanifestet som beskriver programmet. Manifestet hittar du under mappen ApplicationPackageRoot.
+* En uppsättning referenser toohello tjänster som utgör ditt program.
+* Tre publicera profiler (1-nod lokala 5-nod lokala och moln) som du kan använda toomaintain inställningar för att arbeta med olika miljöer, till exempel inställningar relaterade tooa klusterslutpunkten och om tooperform uppgradera distributioner som standard.
+* Tre parametern programfiler (samma som ovan) som du kan använda toomaintain miljö-specifika programkonfigurationer, till exempel hello antal partitioner toocreate för en tjänst.
+* Ett skript för distribution som du kan använda toodeploy programmet hello kommandoraden eller som en del av en automatisk kontinuerlig integrering och distribution pipeline.
+* hello programmanifestet som beskriver hello program. Du hittar hello manifestet hello ApplicationPackageRoot i mappen.
 
 ### <a name="stateless-service"></a>Tillståndslösa tjänsten
-När du lägger till en ny tjänst för tillståndslösa Visual Studio lägger till en service-projekt i lösningen som innehåller en typ som underordnade `StatelessService`. Tjänsten ökar en lokal variabel i en räknare.
+När du lägger till en ny tjänst för tillståndslösa Visual Studio lägger till ett projekt tooyour lösning som innehåller en typ som underordnade `StatelessService`. hello service delar en lokal variabel i en räknare.
 
 ### <a name="stateful-service"></a>Tillståndskänslig service
-När du lägger till en ny tjänst för tillståndskänsliga Visual Studio lägger till en service-projekt i lösningen som innehåller en typ som underordnade `StatefulService`. Tjänsten ökar en räknare i dess `RunAsync` metod och lagrar resultatet i ett `ReliableDictionary`.
+När du lägger till en ny tjänst för tillståndskänsliga Visual Studio lägger till ett projekt tooyour lösning som innehåller en typ som underordnade `StatefulService`. hello service ökar en räknare i dess `RunAsync` metoden och lagrar hello resultera i en `ReliableDictionary`.
 
 ### <a name="actor-service"></a>Aktören service
-När du lägger till en ny tillförlitliga aktören Visual Studio lägger till två projekten i din lösning: en aktören projektet och ett gränssnitt.
+När du lägger till en ny tillförlitliga aktören Visual Studio lägger till två projekt tooyour lösning: en aktören projektet och ett gränssnitt.
 
-Aktören projektet innehåller metoder för inställningen och på ett tillförlitligt sätt att hämta värdet på en räknare som sparas i den aktörstillstånd. Gränssnittet projektet tillhandahåller ett gränssnitt som andra tjänster kan använda för att anropa aktören.
+hello aktören projektet tillhandahåller metoder för inställningen och hämta hello värdet på en räknare som sparas på ett tillförlitligt sätt inom hello aktörstillstånd. hello gränssnittet projektet tillhandahåller ett gränssnitt som andra tjänster kan använda tooinvoke hello aktören.
 
 ### <a name="stateless-web-api"></a>Tillståndslösa webb-API
-Tillståndslösa Web API-projektet innehåller en grundläggande webbtjänst som du kan använda för att öppna programmet till externa klienter. Mer information om hur projektet strukturerad, finns [Service Fabric Web API-tjänster med OWIN värd själv](service-fabric-reliable-services-communication-webapi.md).
+hello tillståndslös Web API-projekt innehåller en grundläggande webbtjänst som du kan använda tooopen-tooexternal-klienter. Mer information om hur hello projektet strukturerad finns [Service Fabric Web API-tjänster med OWIN värd själv](service-fabric-reliable-services-communication-webapi.md).
 
 
 ### <a name="aspnet-core"></a>ASP.NET core
-Service Fabric-SDK innehåller samma uppsättning ASP.NET Core mallar som är tillgängliga för fristående ASP.NET Core projekt: tom [Web API][aspnet-webapi], och [webbprogram] [aspnet-webapp].
+hello Service Fabric SDK innehåller hello samma uppsättning ASP.NET Core mallar som är tillgängliga för fristående ASP.NET Core projekt: tom [Web API][aspnet-webapi], och [webbprogram][aspnet-webapp].
 
 ### <a name="guest-executables-and-guest-containers"></a>Gästen körbara filer och Gäst-behållare
 
-Ett Service Fabric ”gäst” är en tjänst som inte är inbyggd med plattformens programmeringsmodeller. Du kan även Paketera om binärfilerna för gäst antingen [direkt i programpaketet](service-fabric-deploy-existing-app.md) eller [via en behållare avbildning](service-fabric-deploy-container.md). I båda fallen Visual Studio skapar nödvändiga artefakter i den **ApplicationPackageRoot** mappen i projektet för konsolprogrammet. Visual Studio kommer inte att skapa ett nytt service-projekt eftersom koden redan finns någon annanstans. Om du vill hantera projektet gäst tillsammans med Service Fabric application-projekt kan du lägga till dem i samma Visual Studio-lösning.
+Ett Service Fabric ”gäst” är en tjänst som inte är inbyggd med programmeringsmodeller hello-plattformen. Du kan även paketera hello binärfilerna för gäst antingen [direkt i hello programpaketet](service-fabric-deploy-existing-app.md) eller [via en behållare avbildning](service-fabric-deploy-container.md). I båda fallen Visual Studio skapar hello nödvändiga artefakter i hello **ApplicationPackageRoot** för hello projektet. Visual Studio kommer inte att skapa ett nytt service-projekt eftersom hello koden finns redan på en annan plats. Om du vill att toomanage gästerna projekt tillsammans med hello Service Fabric application-projekt, du kan lägga till dem toohello samma Visual Studio-lösning.
 
 ## <a name="next-steps"></a>Nästa steg
 ### <a name="create-an-azure-cluster"></a>Skapa ett Azure-kluster
-Service Fabric-SDK tillhandahåller ett lokala kluster för utveckling och testning. Om du vill skapa ett kluster i Azure, se [ställa in ett Service Fabric-kluster från Azure portal][create-cluster-in-portal].
+hello Service Fabric SDK innehåller ett lokala kluster för utveckling och testning. toocreate ett kluster i Azure, se [installera ett Service Fabric-kluster från hello Azure-portalen][create-cluster-in-portal].
 
-### <a name="publish-your-application-to-azure"></a>Publicera programmet till Azure
-Du kan publicera programmet direkt från Visual Studio till ett Azure-kluster. Mer information finns i avsnittet [publicering av programmet till Azure][publish-app-to-azure].
+### <a name="publish-your-application-tooazure"></a>Publicera program-tooAzure
+Du kan publicera programmet direkt från Visual Studio tooan Azure klustret. toolearn finns i avsnittet [publicering av program-tooAzure][publish-app-to-azure].
 
-### <a name="use-service-fabric-explorer-to-visualize-your-cluster"></a>Använda Service Fabric Explorer för att visualisera ditt kluster
-Service Fabric Explorer erbjuder ett enkelt sätt att visualisera ditt kluster, inklusive distribuerade program och fysiska struktur. Läs mer i [visualisera ditt kluster med hjälp av Service Fabric Explorer][visualize-with-sfx].
+### <a name="use-service-fabric-explorer-toovisualize-your-cluster"></a>Använda Service Fabric Explorer toovisualize klustret
+Service Fabric Explorer erbjuder ett enkelt sätt toovisualize klustret, inklusive distribuerade program och fysiska struktur. Det finns fler toolearn [visualisera ditt kluster med hjälp av Service Fabric Explorer][visualize-with-sfx].
 
 ### <a name="version-and-upgrade-your-services"></a>Version och uppgradera dina tjänster
-Service Fabric kan oberoende versionshantering och uppgradering av oberoende tjänster i ett program. Läs mer i [versionshantering och uppgradera dina tjänster][app-upgrade-tutorial].
+Service Fabric kan oberoende versionshantering och uppgradering av oberoende tjänster i ett program. Det finns fler toolearn [versionshantering och uppgradera dina tjänster][app-upgrade-tutorial].
 
 ### <a name="configure-continuous-integration-with-visual-studio-team-services"></a>Konfigurera kontinuerlig integrering med Visual Studio Team Services
-Information om hur du ställer in en kontinuerlig integrationsprocess för Service Fabric-program finns [konfigurera kontinuerlig integrering med Visual Studio Team Services][ci-with-vso].
+toolearn hur du kan ställa in en kontinuerlig integrationsprocess för ditt Service Fabric-program finns i [konfigurera kontinuerlig integrering med Visual Studio Team Services][ci-with-vso].
 
 <!-- Links -->
 [add-web-frontend]: service-fabric-add-a-web-frontend.md

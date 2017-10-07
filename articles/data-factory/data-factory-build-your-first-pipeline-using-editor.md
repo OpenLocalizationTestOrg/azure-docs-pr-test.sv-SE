@@ -1,6 +1,6 @@
 ---
-title: "Skapa din första datafabrik (Azure Portal) | Microsoft Docs"
-description: "I den här självstudien skapar du ett exempel på en Azure Data Factory-pipeline med hjälp av Data Factory-redigeraren i Azure Portal."
+title: "aaaBuild din första data factory (Azure portal) | Microsoft Docs"
+description: "I den här självstudiekursen skapar du en pipeline för Azure Data Factory av exemplet med Data Factory-redigeraren i hello Azure-portalen."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 9c958aecb841fa02349c6b9e5e1984f6ba4fb611
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: fc80776001b181a59c04d80d2e05c20b107a63f3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-portal"></a>Självstudier: Skapa din första Azure-datafabrik med Azure-portalen
 > [!div class="op_single_selector"]
@@ -30,86 +30,86 @@ ms.lasthandoff: 08/29/2017
 > * [REST-API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
 
-I den här artikeln får du lära dig hur du använder [Azure Portal](https://portal.azure.com/) till att skapa din första Azure Data Factory. Om du vill gå igenom självstudien med andra verktyg/SDK:er kan du välja något av alternativen i listrutan. 
+I den här artikeln får du lära dig hur toouse [Azure-portalen](https://portal.azure.com/) toocreate din första Azure data factory. toodo hello självstudier med andra verktyg/SDK: er, Välj ett alternativ för hello hello listrutan. 
 
-Pipeline i den här självstudiekursen har en aktivitet: **HDInsight Hive-aktivitet**. Aktiviteten kör ett Hive-skript i ett Azure HDInsight-kluster som omvandlar indata för till utdata. Denna pipeline är schemalagd att köras en gång i månaden mellan angivna start- och sluttider. 
+hello pipeline i den här självstudiekursen har en aktivitet: **HDInsight Hive aktiviteten**. Den här aktiviteten körs en hive-skript på ett Azure HDInsight-kluster att transformeringar inkommande data tooproduce utdata. hello pipeline är schemalagda toorun när en månad mellan hello angivna start- och sluttider. 
 
 > [!NOTE]
-> Datapipelinen i den här självstudien transformerar indata för att generera utdata. En självstudiekurs om hur du kopierar data med Azure Data Factory finns i [Tutorial: Copy data from Blob Storage to SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Självstudie: Kopiera data från Blob Storage till SQL Database).
+> hello data pipeline i den här handledningen omvandlar indata tooproduce utdata. En självstudiekurs om hur toocopy data med hjälp av Azure Data Factory finns [Självstudier: kopiera data från Blob Storage tooSQL databasen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 > 
-> En pipeline kan ha fler än en aktivitet. Du kan länka två aktiviteter (köra en aktivitet efter en annan) genom att ställa in datauppsättningen för utdata för en aktivitet som den inkommande datauppsättningen för den andra aktiviteten. Mer detaljerad information finns i [Scheduling and execution in Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) (Schemaläggning och utförande i Data Factory).
+> En pipeline kan ha fler än en aktivitet. Och du kan länka två aktiviteter (köra en aktivitet efter ett annat) genom att ange hello datamängd för utdata för en aktivitet som hello indatauppsättning av hello andra aktiviteter. Mer detaljerad information finns i [Scheduling and execution in Data Factory](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) (Schemaläggning och utförande i Data Factory).
 
 ## <a name="prerequisites"></a>Krav
-1. Läs igenom artikeln [Självstudier – översikt](data-factory-build-your-first-pipeline.md) och slutför de **nödvändiga** stegen.
-2. Den här artikeln ger inte någon konceptuell översikt över Azure Data Factory-tjänsten. Vi rekommenderar att du läser igenom den detaljerade översikt över tjänsten som finns i [Introduktion till Azure Data Factory](data-factory-introduction.md).  
+1. Läs igenom [kursen översikt](data-factory-build-your-first-pipeline.md) artikeln och fullständig hello **nödvändiga** steg.
+2. Den här artikeln innehåller inte en översikt över hello Azure Data Factory-tjänsten. Vi rekommenderar att du går igenom [introduktion tooAzure Data Factory](data-factory-introduction.md) artikel en detaljerad översikt av hello-tjänsten.  
 
 ## <a name="create-data-factory"></a>Skapa en datafabrik
-En datafabrik kan ha en eller flera pipelines. En pipeline kan innehålla en eller flera aktiviteter. Det kan exempelvis vara en kopieringsaktivitet som kopierar data från en källa till ett måldataarkiv och en HDInsight Hive-aktivitet som kör Hive-skript för att transformera indata till produktutdata. Låt oss börja med att skapa datafabriken i det här steget.
+En datafabrik kan ha en eller flera pipelines. En pipeline kan innehålla en eller flera aktiviteter. Till exempel ange en Kopieringsaktiviteten toocopy data från ett dataarkiv som källa tooa mål och en HDInsight Hive aktiviteten toorun tootransform en Hive-skript data tooproduct utdata. Låt oss börja med att skapa hello data factory i det här steget.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. Klicka på **NY** på den vänstra menyn, klicka på **Data + Analys**, och klicka på **Data Factory**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com/).
+2. Klicka på **ny** på hello vänstra menyn **Data + analys**, och klicka på **Data Factory**.
 
    ![Bladet Skapa](./media/data-factory-build-your-first-pipeline-using-editor/create-blade.png)
-3. På bladet **Ny datafabrik** anger du **GetStartedDF** som namn.
+3. I hello **nya datafabriken** bladet ange **GetStartedDF** för hello namn.
 
    ![Bladet Ny datafabrik](./media/data-factory-build-your-first-pipeline-using-editor/new-data-factory-blade.png)
 
    > [!IMPORTANT]
-   > Namnet på Azure Data Factory måste vara **globalt unikt**. Om du tar emot felet **Datafabriksnamnet "GetStartedDF" är inte tillgängligt**. Ändra datafabrikens namn (till exempelvs dittnamnGetStartedDF) och försök skapa igen. Se artikeln [Data Factory – namnregler](data-factory-naming-rules.md) för namnregler för Data Factory-artefakter.
+   > hello hello Azure data factory måste vara **globalt unika**. Om felmeddelandet hello: **datafabriksnamnet ”GetStartedDF” är inte tillgänglig**. Ändra hello namn i hello data factory (till exempel yournameGetStartedDF) och försök att skapa igen. Se artikeln [Data Factory – namnregler](data-factory-naming-rules.md) för namnregler för Data Factory-artefakter.
    >
-   > Namnet på datafabriken kan komma att registreras som ett **DNS**-namn i framtiden och blir då synligt offentligt.
+   > hello namn i hello data factory får registreras som en **DNS** namn i hello framtiden och därför bli synligt offentligt.
    >
    >
-4. Välj den **Azure-prenumeration** där du vill att datafabriken ska skapas.
-5. Välj befintlig **resursgrupp** eller skapa en resursgrupp. Skapa en resursgrupp för självstudien med namnet: **ADFGetStartedRG**.
-6. Välj **plats** för datafabriken. Endast regioner som stöds av tjänsten Data Factory visas i listrutan.
-7. Välj **fäst till instrumentpanelen**. 
-8. Klicka på **Skapa** på bladet **Ny datafabrik**.
+4. Välj hello **Azure-prenumeration** där du vill att hello data factory toobe skapas.
+5. Välj befintlig **resursgrupp** eller skapa en resursgrupp. Hello självstudiekurs skapar du en resursgrupp med namnet: **ADFGetStartedRG**.
+6. Välj hello **plats** för hello data factory. Endast de regioner som stöds av hello Data Factory-tjänsten som visas i listrutan hello.
+7. Välj **PIN-kod toodashboard**. 
+8. Klicka på **skapa** på hello **nya data factory** bladet.
 
    > [!IMPORTANT]
-   > Om du vill skapa Data Factory-instanser måste du vara medlem i [Data Factory-deltagarrollen](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) på gruppnivå/resursgrupp.
+   > toocreate Data Factory instanser måste du vara medlem i hello [Data Factory deltagare](../active-directory/role-based-access-built-in-roles.md#data-factory-contributor) rollen på hello-prenumeration/resursgruppsnivå.
    >
    >
-7. På instrumentpanelen visas följande panel med statusen: Distribuerar datafabrik.    
+7. Hello instrumentpanelen visas hello följande panelen med status: distribuera data factory.    
 
    ![Skapar datafabrikstatus](./media/data-factory-build-your-first-pipeline-using-editor/creating-data-factory-image.png)
-8. Grattis! Du har skapat din första datafabrik. När datafabriken har skapats visas datafabrikssidan med innehållet i datafabriken.     
+8. Grattis! Du har skapat din första datafabrik. När hello datafabriken har skapats, visas hello data factory sidan som visar hello innehållet i hello data factory.     
 
     ![Bladet Datafabrik](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-blade.png)
 
-Du måste först skapa några Data Factory-entiteter innan du skapar en pipeline i datafabriken. Du skapar först länkade tjänster för att länka datalager/beräkningar till ditt datalager, sedan definierar du de indata- och utdatauppsättningar som ska representera in- och utdata i länkade datalager och därefter skapar du pipelinen med en aktivitet som använder dessa datauppsättningar.
+Innan du skapar en pipeline i hello data factory, måste toocreate några Data Factory-entiteter först. Du måste först skapa länkade tjänster toolink data lagrar/beräknar tooyour data lagras, definiera indata och utdata datauppsättningar toorepresent in-/ utdata i länkade datalager och sedan skapa hello pipeline med en aktivitet som använder dessa data.
 
 ## <a name="create-linked-services"></a>Skapa länkade tjänster
-I det här steget länkar du ditt Azure Storage-konto och ett Azure HDInsight-kluster på begäran till din datafabrik. In- och utdata för pipelinen i det här exemplet lagras i Azure Storage-kontot. En länkad HDInsight-tjänst används för att köra Hive-skriptet som anges i pipeline-aktiviteten i det här exemplet. Identifiera vilka [beräkningstjänster](data-factory-data-movement-activities.md)/[för datalager](data-factory-compute-linked-services.md) som används i scenariot och länka dessa tjänster till datafabriken genom att skapa länkade tjänster.  
+I det här steget kan länka du ditt Azure Storage-konto och en på begäran Azure HDInsight-kluster tooyour data factory. hello Azure Storage-konto innehåller hello inkommande och utgående data för hello pipeline i det här exemplet. hello länkad HDInsight-tjänst är används toorun en Hive-skript som angetts i hello aktivitet för hello pipeline i det här exemplet. Identifiera vad [datalagret](data-factory-data-movement-activities.md)/[compute services](data-factory-compute-linked-services.md) används i din situation och länka dessa tjänster toohello data factory genom att skapa länkade tjänster.  
 
 ### <a name="create-azure-storage-linked-service"></a>Skapa en länkad Azure-lagringstjänst
-I det här steget länkar du ditt Azure Storage-konto till din datafabrik. I de här självstudierna använder du samma Azure Storage-konto för att lagra indata/utdata och HQL-skriptfilen.
+I det här steget kan länka du din Azure Storage-konto tooyour data factory. I den här kursen använder du hello samma Azure Storage-konto toostore i/o-data och hello HQL skriptfil.
 
-1. Klicka på **Författare och distribution** på bladet **DATA FACTORY** för **GetStartedDF**. Du bör se Data Factory-redigeraren.
+1. Klicka på **författare och distribuera** på hello **DATAFABRIKEN** bladet för **GetStartedDF**. Du bör se hello Data Factory-redigeraren.
 
    ![Ikonen Författare och distribution](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
 2. Klicka på **Nytt datalager** och välj **Azure-lagring**.
 
    ![Ny datalagring - Azure Storage - meny](./media/data-factory-build-your-first-pipeline-using-editor/new-data-store-azure-storage-menu.png)
-3. Du bör se JSON-skriptet för att skapa en länkad Azure-lagringstjänst i redigeraren.
+3. Du bör se hello JSON-skript för att skapa ett Azure Storage länkade tjänsten i hello-redigeraren.
 
    ![Länkad Azure-lagringstjänst](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
-4. Ersätt **kontonamn** med namnet på ditt Azure-lagringskonto och **kontonyckel** med åtkomstnyckeln för Azure-lagringskontot. Information om hur du hämtar lagringsåtkomstnyckeln finns i avsnitten om hur du visar, kopierar och återskapar åtkomstnycklar i [Manage your storage account](../storage/common/storage-create-storage-account.md#manage-your-storage-account) (Hantera ditt lagringskonto).
-5. Klicka på **Distribuera** i kommandofältet för att distribuera den länkade tjänsten.
+4. Ersätt **kontonamn** med hello namnet på ditt Azure storage-konto och **kontonyckel** med hello snabbtangent av hello Azure storage-konto. toolearn hur tooget lagringen åtkomst till nyckeln, se hello information om hur tooview, kopiera och generera lagring åtkomstnycklar i [hantera ditt lagringskonto](../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+5. Klicka på **distribuera** på hello i kommandofältet toodeploy hello länkade tjänsten.
 
     ![Knappen Distribuera](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
-   När den länkade tjänsten har distribuerats, bör fönstret **Draft-1** försvinna och du ser **AzureStorageLinkedService** i trädvyn till vänster.
+   När hello länkade tjänsten har distribuerats korrekt hello **utkast 1** fönstret bör försvinner och du ser **AzureStorageLinkedService** i hello trädvyn hello vänster.
 
     ![Länkad lagringstjänst i menyn](./media/data-factory-build-your-first-pipeline-using-editor/StorageLinkedServiceInTree.png)    
 
 ### <a name="create-azure-hdinsight-linked-service"></a>Skapa en Azure HDInsight-länkad tjänst
-I det här steget ska du länka ett HDInsight-kluster på begäran till datafabriken. HDInsight-klustret skapas automatiskt vid körning och tas bort när bearbetningen är klar. Det är inaktivt under en angiven tidsrymd.
+I det här steget kan länka du ett på begäran HDInsight-kluster tooyour data factory. Hej HDInsight-kluster skapas under körning och tas bort när den är klar bearbetning och inaktiv för hello angiven tidsperiod automatiskt.
 
-1. I **Data Factory-redigeraren**, klicka på **... Fler**, klicka på **Ny beräkning**, och välj **På begäran HDInsight-kluster**.
+1. I hello **Data Factory-redigeraren**, klickar du på **... Fler**, klicka på **Ny beräkning**, och välj **På begäran HDInsight-kluster**.
 
     ![Ny beräkning](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
-2. Kopiera och klistra in följande kodfragment till fönstret **Draft-1**. JSON-kodfragmentet beskriver de egenskaper som används för att skapa HDInsight-klustret på begäran.
+2. Kopiera och klistra in följande kodutdrag toohello hello **utkast 1** fönster. hello JSON fragment beskriver hello egenskaper används toocreate hello HDInsight-kluster på begäran.
 
     ```JSON
     {
@@ -127,38 +127,38 @@ I det här steget ska du länka ett HDInsight-kluster på begäran till datafabr
     }
     ```
 
-    Följande tabell innehåller beskrivningar av de JSON-egenskaper som användes i kodfragmentet:
+    hello innehåller följande tabell beskrivningar för hello JSON egenskaper som används i hello fragment:
 
    | Egenskap | Beskrivning |
    |:--- |:--- |
-   | ClusterSize |Anger HDInsight-klustrets storlek. |
-   | TimeToLive | Anger inaktivitetstiden för HDInsight-klustret innan det tas bort. |
-   | linkedServiceName | Anger lagringskontot som används för att spara loggarna som genereras av HDInsight. |
+   | ClusterSize |Anger hello storleken på hello HDInsight-kluster. |
+   | TimeToLive | Anger den inaktiva tiden hello för hello HDInsight-kluster, innan den tas bort. |
+   | linkedServiceName | Anger hello storage-konto som används toostore hello loggar som genereras av HDInsight. |
 
-    Observera följande punkter:
+    Observera följande punkter hello:
 
-   * Data Factory skapar ett **Linux-baserat** HDInsight-kluster åt dig med JSON. Se [HDInsight-länkad tjänst på begäran](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) för mer information.
+   * hello Data Factory skapar en **Linux-baserade** HDInsight-kluster du hello JSON. Se [HDInsight-länkad tjänst på begäran](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) för mer information.
    * Du kan använda **ditt eget HDInsight-kluster** i stället för att använda ett HDInsight-kluster på begäran. Se [HDInsight-länkad tjänst](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) för mer information.
-   * HDInsight-klustret skapar en **standardbehållare** i den blobblagring som du angav i JSON (**linkedServiceName**). HDInsight tar inte bort den här behållaren när klustret tas bort. Det här beteendet är avsiktligt. Med en HDInsight-länkad tjänst på begäran skapas ett HDInsight-kluster varje gång en sektor bearbetas, såvida det inte finns ett befintligt live-kluster (**timeToLive**). Klustret tas bort automatiskt när bearbetningen är klar.
+   * Hej HDInsight-kluster skapas en **standardbehållaren** i hello blob storage som du angav i hello JSON (**linkedServiceName**). HDInsight tar inte bort den här behållaren när hello kluster har tagits bort. Det här beteendet är avsiktligt. Med en HDInsight-länkad tjänst på begäran skapas ett HDInsight-kluster varje gång en sektor bearbetas, såvida det inte finns ett befintligt live-kluster (**timeToLive**). hello klustret tas bort automatiskt när hello bearbetningen är klar.
 
-       Allteftersom fler sektorer bearbetas kan du se mång behållare i ditt Azure Blob Storage. Om du inte behöver dem för att felsöka jobb, kan du ta bort dem för att minska lagringskostnaderna. Namnen på de här behållarna följer ett mönster: ”adf**datafabrikensnamn**-**denlänkadetjänstensnamn**-datumtidsstämpel”. Använd verktyg som [Microsoft Lagringsutforskaren](http://storageexplorer.com/) till att ta bort behållare i din Azure Blob-lagring.
+       Allteftersom fler sektorer bearbetas kan du se många behållare i ditt Azure Blob Storage. Om du inte behöver dem för felsökning av hello jobb, kanske du vill toodelete dem tooreduce hello lagring kostnad. hello namnen på de här behållarna följer ett mönster ”: adf**yourdatafactoryname**-**linkedservicename**- datetimestamp”. Använd verktyg som [Microsoft Lagringsutforskaren](http://storageexplorer.com/) toodelete behållare i din Azure blob storage.
 
      Se [HDInsight-länkad tjänst på begäran](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) för mer information.
-3. Klicka på **Distribuera** i kommandofältet för att distribuera den länkade tjänsten.
+3. Klicka på **distribuera** på hello i kommandofältet toodeploy hello länkade tjänsten.
 
     ![Distribuera på begäran länkad HDInsight-tjänst](./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png)
-4. Kontrollera att du ser både **AzureStorageLinkedService** och **HDInsightOnDemandLinkedService** i trädvyn till vänster.
+4. Bekräfta att du ser både **AzureStorageLinkedService** och **HDInsightOnDemandLinkedService** i hello trädvyn hello vänster.
 
     ![Trädvy med länkade tjänster](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
 ## <a name="create-datasets"></a>Skapa datauppsättningar
-I det här steget skapar du datauppsättningar som ska representera in- och utdata för Hive-bearbetning. Dessa datauppsättningar avser den **AzureStorageLinkedService** som du skapade tidigare i självstudien. Den länkade tjänsten pekar på ett Azure-lagringskonto och datauppsättningarna anger behållare, mapp och filnamn i det lagringsutrymme som innehåller indata och utdata.   
+I det här steget Skapa datauppsättningar toorepresent hello indata och utdata för Hive-bearbetning. De här datauppsättningarna finns toohello **AzureStorageLinkedService** du har skapat tidigare i den här kursen. Hej länkade tjänsten punkter tooan Azure Storage-konto och datauppsättningar anger behållare, mapp, filnamn i hello lagring som innehåller indata och utdata.   
 
 ### <a name="create-input-dataset"></a>Skapa indatauppsättning
-1. I **Data Factory-redigeraren**, klicka på **... Fler** på kommandofältet klickar du på **Ny datamängd** och välj **Azure Blob-lagring**.
+1. I hello **Data Factory-redigeraren**, klickar du på **... Flera** på hello kommandofältet klickar du på **ny datamängd**, och välj **Azure Blob storage**.
 
     ![Ny datauppsättning](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
-2. Kopiera och klistra in följande kodfragment till fönstret Draft-1. I JSON-kodfragmentet skapar du en datauppsättning med namnet **AzureBlobInput** som representerar indata för en aktivitet i pipelinen. Dessutom kan du ange att indata finns i blobbehållaren **adfgetstarted** och i mappen **inputdata**.
+2. Kopiera och klistra in hello följande fragment toohello utkast-1-fönstret. Hello JSON fragment du skapar en datauppsättning som kallas **AzureBlobInput** som representerar indata för en aktivitet i hello pipeline. Dessutom kan du ange att hello indata finns i hello blob-behållaren som kallas **adfgetstarted** och hello mapp som heter **inputdata**.
 
     ```JSON
     {
@@ -183,27 +183,27 @@ I det här steget skapar du datauppsättningar som ska representera in- och utda
         }
     }
     ```
-    Följande tabell innehåller beskrivningar av de JSON-egenskaper som användes i kodfragmentet:
+    hello innehåller följande tabell beskrivningar för hello JSON egenskaper som används i hello fragment:
 
    | Egenskap | Beskrivning |
    |:--- |:--- |
-   | typ |Typegenskapen har angetts till **AzureBlob** eftersom det finns data i Azure Blob-lagringen. |
-   | linkedServiceName |Refererar till **AzureStorageLinkedService** som du skapade tidigare. |
-   | folderPath | Anger vilken **blobbehållare** och **mapp** som innehåller indatablobbar. | 
-   | fileName |Den här egenskapen är valfri. Om du tar bort egenskapen kommer alla filer från folderPath hämtas. I det här fallet bearbetas bara **input.log**. |
-   | typ |Loggfilerna är i textformat, så vi använder **TextFormat**. |
-   | columnDelimiter |kolumner i loggfilerna avgränsas med **kommatecken (`,`)** |
-   | frekvens/intervall |frekvensen är **månad** och intervallet är **1**, vilket innebär att indatasektorerna är tillgängliga en gång i månaden. |
-   | extern | Den här egenskapen anges som **true** om indatan inte skapades av denna pipeline. I den här självstudiekursen genereras inte input.log-filen av denna pipeline, så vi ställa in egenskapen på true. |
+   | typ |hello typegenskapen har ställts in för**AzureBlob** eftersom data finns i ett Azure blob storage. |
+   | linkedServiceName |Refererar toohello **AzureStorageLinkedService** du skapade tidigare. |
+   | folderPath | Anger hello blob **behållare** och hello **mappen** som innehåller inkommande blobbar. | 
+   | fileName |Den här egenskapen är valfri. Om du utesluter den här egenskapen har alla hello-filer från hello folderPath plockats. I den här självstudiekursen bara hello **input.log** bearbetas. |
+   | typ |hello loggfilerna i textformat, så vi använder **TextFormat**. |
+   | columnDelimiter |kolumner i hello loggfiler avgränsas med **kommatecken tecken (`,`)** |
+   | frekvens/intervall |Ange frekvensen för**månad** och är **1**, vilket innebär att hello indata segment som är tillgängliga varje månad. |
+   | extern | Den här egenskapen anges för**SANT** om hello indata inte genereras av denna pipeline. I den här självstudiekursen genereras hello input.log inte av denna pipeline, så vi ställa in hello egenskapen tootrue. |
 
     Mer information om de här JSON-egenskaperna finns i artikeln [Azure Blob-anslutningsapp](data-factory-azure-blob-connector.md#dataset-properties).
-3. Klicka på **Distribuera** i kommandofältet för att distribuera den nyskapade datauppsättningen. Du bör se datauppsättningen i trädvyn till vänster.
+3. Klicka på **distribuera** på hello i kommandofältet toodeploy hello nyskapad dataset. Du bör se hello datauppsättning i hello trädvyn hello vänster.
 
 ### <a name="create-output-dataset"></a>Skapa datauppsättning för utdata
-Nu skapar du den utdatauppsättning som representerar de utdata som lagras i Azure Blob Storage.
+Nu kan skapa du hello utdata dataset toorepresent hello utgående data som lagras i hello Azure Blob storage.
 
-1. I **Data Factory-redigeraren**, klicka på **... Fler** på kommandofältet klickar du på **Ny datamängd** och välj **Azure Blob-lagring**.  
-2. Kopiera och klistra in följande kodfragment till fönstret Draft-1. I JSON-kodfragmentet skapar du en datauppsättning som kallas **AzureBlobOutput** och anger strukturen för de data som produceras av Hive-skriptet. Dessutom kan du ange att resultaten lagras i blobbehållaren **adfgetstarted** och i mappen **partitioneddata**. I avsnittet **tillgänglighet** anges att utdatauppsättningen skapas månadsvis.
+1. I hello **Data Factory-redigeraren**, klickar du på **... Flera** på hello kommandofältet klickar du på **ny datamängd**, och välj **Azure Blob storage**.  
+2. Kopiera och klistra in hello följande fragment toohello utkast-1-fönstret. Hello JSON fragment du skapar en datauppsättning som kallas **AzureBlobOutput**, och ange hello strukturen för hello data som produceras av hello Hive-skript. Dessutom kan du ange att hello resultat lagras i hello blob-behållaren som kallas **adfgetstarted** och hello mapp som heter **partitioneddata**. Hej **tillgänglighet** avsnittet anger att hello utdatauppsättningen skapas varje månad.
 
     ```JSON
     {
@@ -225,22 +225,22 @@ Nu skapar du den utdatauppsättning som representerar de utdata som lagras i Azu
       }
     }
     ```
-    Se **Skapa datauppsättning för indata** för beskrivningar av dessa egenskaper. Du anger inte den externa egenskapen för en utdatauppsättning, eftersom datauppsättningen produceras av Data Factory-tjänsten.
-3. Klicka på **Distribuera** i kommandofältet för att distribuera den nyskapade datauppsättningen.
-4. Kontrollera att datauppsättningen har skapats.
+    Se **skapa hello inkommande dataset** avsnitt beskrivs dessa egenskaper. Du anger inte externa hello-egenskapen på en datamängd för utdata som hello dataset produceras av hello Data Factory-tjänsten.
+3. Klicka på **distribuera** på hello i kommandofältet toodeploy hello nyskapad dataset.
+4. Kontrollera att hello datauppsättningen har skapats.
 
     ![Trädvy med länkade tjänster](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-data-set.png)
 
 ## <a name="create-pipeline"></a>Skapa pipeline
-I det här steget ska du skapa din första pipeline med en **HDInsightHive**-aktivitet. Indatasektorn är tillgänglig månadsvis (frequency: Month, Interval: 1), utdatasektorn skapas varje månad och schemaegenskapen för aktiviteten har också inställningen Month. Inställningarna för utdatauppsättningen och aktivitetsschemaläggaren måste matcha. För närvarande är det utdatauppsättningen som skapar schemat. Därför måste du skapa en utdatauppsättning även om aktiviteten inte genererar några utdata. Om aktiviteten inte får några indata, kan du hoppa över att skapa indatauppsättningen. I slutet av det här avsnittet beskrivs de egenskaper som användes i följande JSON.
+I det här steget ska du skapa din första pipeline med en **HDInsightHive**-aktivitet. Inkommande segmentet är tillgängliga månad (frekvens: månad, intervall: 1), utdata segment skapas varje månad och hello scheduler för hello aktiviteten också egenskapen toomonthly. hello inställningar för hello utdatauppsättningen och hello aktivitet Schemaläggaren måste matcha. Datamängd för utdata är för närvarande vilka enheter hello schema, så du måste skapa en datamängd för utdata även om hello aktiviteten inte producerar några utdata. Om hello aktiviteten inte tar några indata, kan du hoppa över skapar hello inkommande dataset. hello-egenskaper som används i följande JSON hello beskrivs hello slutet av det här avsnittet.
 
-1. I **Data Factory-redigeraren** klickar du på **Tre punkter (...) Fler kommandon** och sedan på **Ny pipeline**.
+1. I hello **Data Factory-redigeraren**, klickar du på **ellips (...) Fler kommandon** och klicka sedan på **ny pipeline**.
 
     ![knappen ny pipeline](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
-2. Kopiera och klistra in följande kodfragment till fönstret Draft-1.
+2. Kopiera och klistra in hello följande fragment toohello utkast-1-fönstret.
 
    > [!IMPORTANT]
-   > Ersätt **storageaccountname** med namnet på ditt lagringskonto i JSON.
+   > Ersätt **storageaccountname** med hello namnet på ditt lagringskonto i hello JSON.
    >
    >
 
@@ -289,111 +289,111 @@ I det här steget ska du skapa din första pipeline med en **HDInsightHive**-akt
     }
     ```
 
-    I JSON-kodfragmentet skapar du en pipeline med en enda aktivitet, som använder Hive till att bearbeta data i ett HDInsight-kluster.
+    Hello JSON kodutdrag skapar du en pipeline som består av en enskild aktivitet som använder Hive tooprocess Data på ett HDInsight-kluster.
 
-    Hive-skriptfilen **partitionweblogs.hql** lagras i Azure-lagringskontot (anges med scriptLinkedService, kallas **AzureStorageLinkedService**), och i mappen **skript** i behållaren **adfgetstarted**.
+    hello Hive-skriptfil, **partitionweblogs.hql**, lagras i hello Azure storage-konto (anges av hello scriptLinkedService, kallas **AzureStorageLinkedService**), och i  **skriptet** mapp i hello behållaren **adfgetstarted**.
 
-    Avsnittet **Definierar** används för att ange körningsinställningar som skickas till Hive-skriptet som Hive-konfigurationsvärden (t.ex. ${hiveconf:inputtable}, ${hiveconf:partitionedtable}).
+    Hej **definierar** avsnitt är används toospecify hello runtime inställningarna som överförs toohello hive-skript som Hive konfigurationsvärden (t.ex. ${hiveconf: inputtable}, ${hiveconf:partitionedtable}).
 
-    Egenskaperna **start** och **slut** för pipelinen anger den aktiva perioden för pipelinen.
+    Hej **starta** och **end** egenskaper för hello pipeline anger hello aktiva perioden för hello pipeline.
 
-    I JSON-aktiviteten anger du att Hive-skriptet körs i den beräkning som anges av **linkedServiceName** – **HDInsightOnDemandLinkedService**.
+    I hello aktivitets-JSON, anger du den hello Hive-skript som körs på hello beräkning som anges av hello **linkedServiceName** – **HDInsightOnDemandLinkedService**.
 
    > [!NOTE]
-   > Information om JSON-egenskaper som används i exemplet finns i avsnittet om Pipeline-JSON i [Pipelines and activities in Azure Data Factory](data-factory-create-pipelines.md) (Pipelines och aktiviteter i Azure Data Factory).
+   > Se ”Pipeline-JSON” i [Pipelines och aktiviteter i Azure Data Factory](data-factory-create-pipelines.md) mer information om JSON-egenskaper som används i hello exempel.
    >
    >
-3. Kontrollera följande:
+3. Bekräfta hello följande:
 
-   1. **Input.log**-filen finns i mappen **inputdata** i behållaren **adfgetstarted** i Azure-blobblagringen
-   2. **partitionweblogs.hql**-filen finns i mappen **script** i behållaren **adfgetstarted** i Azure-blobblagringen. Slutför de nödvändiga stegen i [Självstudier - översikt](data-factory-build-your-first-pipeline.md) om du inte ser de här filerna.
-   3. Kontrollera att du ersatte **storageaccountname** med namnet på ditt lagringskonto i JSON-pipelinen.
-4. Klicka på **Distribuera** i kommandofältet för att distribuera pipelinen. Eftersom tiderna för **start** och **slut** har angetts tidigare och **isPaused** har angetts till false, kommer pipelinen (aktiviteten i pipelinen) köras omedelbart efter att du har distribuerat.
-5. Kontrollera att du ser pipelinen i trädvyn.
+   1. **Input.log** filen finns på hello **inputdata** för hello **adfgetstarted** behållare i hello Azure blob-lagring
+   2. **partitionweblogs.hql** filen finns på hello **skriptet** för hello **adfgetstarted** behållare i hello Azure blob storage. Fullständig hello nödvändiga steg i hello [kursen översikt](data-factory-build-your-first-pipeline.md) om du inte ser de här filerna.
+   3. Bekräfta att du har ersatt **storageaccountname** med hello namnet på ditt lagringskonto i hello pipeline-JSON.
+4. Klicka på **distribuera** på hello i kommandofältet toodeploy hello pipeline. Eftersom hello **starta** och **end** gånger ställs i hello senaste och **isPaused** är uppsättningen toofalse, hello pipeline (aktivitet i pipelinen hello) körs omedelbart när du har distribuerat.
+5. Bekräfta att du ser hello pipeline i hello trädvyn.
 
     ![Trädvy med pipeline](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-pipeline.png)
 6. Grattis, du har skapat din första pipeline!
 
 ## <a name="monitor-pipeline"></a>Övervaka pipeline
 ### <a name="monitor-pipeline-using-diagram-view"></a>Övervaka pipeline med diagramvyn
-1. Klicka på **X** för att stänga bladen i Data Factory-redigeraren och för att gå tillbaka till Data Factory-bladet och klicka på **Diagram**.
+1. Klicka på **X** tooclose Data Factory-redigeraren blad toonavigate tillbaka toohello Data Factory-bladet och på **Diagram**.
 
     ![Ikonen Diagram](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
-2. I diagramvyn visas en översikt över pipelines och datauppsättningar som används i den här självstudien.
+2. I hello diagramvyn visas en översikt över hello pipelines och datauppsättningar som används i den här självstudiekursen.
 
     ![Diagramvy](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png)
-3. Högerklicka på pipelinen i diagrammet om du vill visa alla aktiviteter i pipelinen. Klicka sedan på Öppna pipeline.
+3. tooview alla aktiviteter i hello pipeline, högerklicka på pipeline i hello diagram och klicka på Öppna Pipeline.
 
     ![Menyn Öppna pipeline](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-menu.png)
-4. Kontrollera att du ser HDInsightHive-aktiviteten i pipelinen.
+4. Bekräfta att du ser hello HDInsightHive aktivitet i hello pipeline.
 
     ![Vyn Öppna pipeline](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-view.png)
 
-    Om du vill gå tillbaka till den föregående vyn klickar du på **Datafabrik** i adressfältmenyn längst upp.
-5. Dubbelklicka på datauppsättningen **AzureBlobInput** i **diagramvyn**. Kontrollera att sektorn har statusen **Klar**. Det kan ta några minuter innan sektorn visas med statusen Klar. Om det inte händer trots att du har väntat ett tag, kontrollerar du om du har indatafilen (input.log) placerad i rätt behållare (adfgetstarted) och mapp (inputdata).
+    toonavigate bakifrån toohello tidigare, klicka på **datafabriken** i hello dynamiska menyn hello överst.
+5. I hello **diagramvyn**, dubbelklicka på hello dataset **AzureBlobInput**. Kontrollera att hello-segment i **klar** tillstånd. Det kan ta några minuter för hello sektorn tooshow i tillståndet Ready. Om det inte sker när du vänta ett tag, kan du se om du har hello indatafilen (input.log) placerade i rätt hello-behållaren (adfgetstarted) och mappen (inputdata).
 
    ![Indatasektor med statusen Klar](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
-6. Klicka på **X** för att stänga bladet **AzureBlobInput**.
-7. Dubbelklicka på datauppsättningen **AzureBlobOutput** i **diagramvyn**. Den sektor som för närvarande bearbetas visas.
+6. Klicka på **X** tooclose **AzureBlobInput** bladet.
+7. I hello **diagramvyn**, dubbelklicka på hello dataset **AzureBlobOutput**. Du ser att hello-segment som håller på att behandlas.
 
    ![Datauppsättning](./media/data-factory-build-your-first-pipeline-using-editor/dataset-blade.png)
-8. När bearbetningen är klar visas sektorn med statusen **Klar**.
+8. När bearbetningen är klar visas hello sektor i **klar** tillstånd.
 
    ![Datauppsättning](./media/data-factory-build-your-first-pipeline-using-editor/dataset-slice-ready.png)  
 
    > [!IMPORTANT]
-   > Att skapa ett HDInsight-kluster på begäran kan ta lite längre tid (cirka 20 minuter). Förvänta dig därför att det       tar **cirka 30 minuter** för pipelinen att bearbeta sektorn.
+   > Att skapa ett HDInsight-kluster på begäran kan ta lite längre tid (cirka 20 minuter). Därför förvänta sig hello pipeline för ta **cirka 30 minuter** tooprocess hello sektorn.
    >
    >
 
-9. När sektorn har statusen **Klar**, kontrollerar du mappen **partitioneddata** i behållaren **adfgetstarted** i blobblagringen för utdatan.  
+9. När hello sektorn är i **klar** tillstånd, kontrollera hello **partitioneddata** mapp i hello **adfgetstarted** behållare i blobblagring för hello utdata.  
 
    ![utdata](./media/data-factory-build-your-first-pipeline-using-editor/three-ouptut-files.png)
-10. Klicka på sektorn om du vill se information om den i ett **Datasektor**-blad.
+10. Klicka på hello sektorn toosee information om den i en **datasektorn** bladet.
 
    ![Information om datasektorn](./media/data-factory-build-your-first-pipeline-using-editor/data-slice-details.png)  
-11. Klicka på en aktivitet som körs i **Lista med aktivitetskörningar** för att se information om en aktivitetskörning (Hive-aktivitet i vårt exempel) i ett fönster med **Aktivitetskörningsinformation**.   
+11. Klicka på en aktivitet som körs i hello **aktiviteten körs listan** toosee information om en aktivitet kör (Hive aktivitet i vårt scenario) i en **aktivitet köras information** fönster.   
 
    ![Aktivitetskörningsinformation](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-blade.png)    
 
-   Du kan se Hive-frågan som kördes och statusinformation i loggfilerna. Dessa loggar är användbara vid felsökning av eventuella problem.
+   Du kan se hello Hive-fråga som har utförts och statusinformation från hello loggfiler. Dessa loggar är användbara vid felsökning av eventuella problem.
    Se artikeln [Övervaka och hantera pipelines med Azure-portalblad](data-factory-monitor-manage-pipelines.md) för mer information.
 
 > [!IMPORTANT]
-> Indatafilen tas bort när sektorn har bearbetats. Om du vill köra sektorn eller gå igenom självstudien igen överför du därför indatafilen (input.log) till indatamappen i behållaren adfgetstarted.
+> hello indatafilen hämtar bort när hello segment har bearbetats. Om du vill toorerun hello segment eller hello kursen igen överför därför hello indatafilen (input.log) toohello inputdata mapp för hello adfgetstarted behållare.
 >
 >
 
 ### <a name="monitor-pipeline-using-monitor--manage-app"></a>Övervaka pipeline med övervaknings- och hanteringsappen
-Du kan också använda övervaknings- och hanteringsprogrammet till att övervaka dina pipelines. Se [Övervaka och hantera Azure Data Factory-pipelines med övervaknings- och hanteringsappen](data-factory-monitor-manage-app.md) för mer information om att använda programmet.
+Du kan också använda Övervakare och hantera program toomonitor din pipelines. Se [Övervaka och hantera Azure Data Factory-pipelines med övervaknings- och hanteringsappen](data-factory-monitor-manage-app.md) för mer information om att använda programmet.
 
-1. Klicka på ikonen **Övervaka och hantera** på datafabrikens startsida.
+1. Klicka på **övervaka och hantera** panelen på hello startsidan för din data factory.
 
     ![Ikonen Övervaka och hantera](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
-2. Du bör se **Övervakaren och hantera program**. Ändra **Starttid** och **Sluttid** så att de matchar starttid och sluttid i pipelinen. Klicka sedan på **Tillämpa**.
+2. Du bör se **Övervakaren och hantera program**. Ändra hello **starttid** och **sluttiden** toomatch starta sluttider för din pipeline och på **tillämpa**.
 
     ![Appen Övervaka och hantera](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
-3. Välj ett aktivitetsfönster i listan **Aktivitetsfönster** om du vill se information om det.
+3. Välj en aktivitetsfönstret i hello **aktivitet Windows** listan toosee information om den.
 
     ![Information om aktivitetsfönstret](./media/data-factory-build-your-first-pipeline-using-editor/activity-window-details.png)
 
 ## <a name="summary"></a>Sammanfattning
-I den här självstudien skapade du en Azure-datafabrik som bearbetar data genom att köra ett Hive-skript i ett Hadoop-kluster i HDInsight. Du utförde följande steg med hjälp av Data Factory-redigeraren i Azure Portal:  
+I kursen får skapat du ett Azure data factory tooprocess data genom att köra Hive-skript på ett HDInsight hadoop-kluster. Du har använt hello Data Factory-redigeraren i hello Azure portal toodo hello följande steg:  
 
 1. Du skapade en Azure **Data Factory**.
 2. Du skapade två **länkade tjänster**:
-   1. En länkad **Azure Storage-**tjänst som länkar din Azure Blob-lagring med in-/utdatafiler till datafabriken.
-   2. En länkad **Azure HDInsight**-tjänst på begäran som länkar ett Hadoop-kluster i HDInsight på begäran till datafabriken. Azure Data Factory skapar ett Hadoop-kluster i HDInsight i rätt tid för att bearbeta indata och skapa utdata.
-3. Du skapade två **datauppsättningar** som beskriver in- och utdata för Hive-aktiviteten för HDInsight i pipelinen.
+   1. **Azure Storage** länkade tjänsten toolink din Azure blob-lagring som innehåller in-/ utdata filer toohello data factory.
+   2. **Azure HDInsight** på begäran länkade tjänsten toolink en på begäran HDInsight Hadoop-kluster toohello data factory. Azure Data Factory skapar ett HDInsight Hadoop klustret just-in-time tooprocess indata och utdata för produkten.
+3. Skapa två **datauppsättningar**, som beskriver inkommande och utgående data för HDInsight Hive aktivitet i hello pipeline.
 4. Du skapade en **pipeline** med en **HDInsight Hive**-aktivitet.
 
 ## <a name="next-steps"></a>Nästa steg
-I den här artikeln har du skapat en pipeline med en transformeringsaktivitet (HDInsight-aktivitet) som kör ett Hive-skript på ett HDInsight-kluster på begäran. Om du vill se hur du använder en kopieringsaktivitet till att kopiera data från en Azure-blobb till Azure SQL kan du läsa mer i [Självstudie: Kopiera data från en Azure-blobb till Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+I den här artikeln har du skapat en pipeline med en transformeringsaktivitet (HDInsight-aktivitet) som kör ett Hive-skript på ett HDInsight-kluster på begäran. hur toouse en Kopieringsaktiviteten toocopy data från ett Azure Blob-tooAzure SQL, se toosee [Självstudier: kopiera data från ett Azure blob-tooAzure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Se även
 | Avsnitt | Beskrivning |
 |:--- |:--- |
-| [Pipelines](data-factory-create-pipelines.md) |I den här artikeln beskriver vi pipelines och aktiviteter i Azure Data Factory och hur du kan använda dem för att konstruera datadrivna arbetsflöden från slutpunkt till slutpunkt för ditt scenario eller ditt företag. |
+| [Pipelines](data-factory-create-pipelines.md) |Den här artikeln hjälper dig att förstå pipelines och aktiviteter i Azure Data Factory och hur toouse dem tooconstruct slutpunkt till slutpunkt datadrivna arbetsflöden för din scenario eller ditt företag. |
 | [Datauppsättningar](data-factory-create-datasets.md) |I den här artikeln förklaras hur datauppsättningar fungerar i Azure Data Factory. |
-| [Schemaläggning och körning](data-factory-scheduling-and-execution.md) |I den här artikeln beskrivs aspekter för schemaläggning och körning av Azure Data Factory-programmodellen. |
-| [Övervaka och hantera pipelines med övervakningsappen](data-factory-monitor-manage-app.md) |Den här artikeln beskriver hur du övervakar, hanterar och felsöker pipelines med övervaknings- och hanteringsappen. |
+| [Schemaläggning och körning](data-factory-scheduling-and-execution.md) |Den här artikeln förklarar hello schemaläggning och körning av aspekter av Azure Data Factory programmodell. |
+| [Övervaka och hantera pipelines med övervakningsappen](data-factory-monitor-manage-app.md) |Den här artikeln beskriver hur toomonitor, hantera och felsöka pipelines med hello övervakning & Management-appen. |

@@ -1,6 +1,6 @@
 ---
-title: "Virtuella Azure-nätverk och virtuella Linux-datorer | Microsoft Docs"
-description: "Självstudiekurs – hantera virtuella Azure-nätverk och virtuella Linux-datorer med Azure CLI"
+title: "aaaAzure virtuella nätverk och virtuella Linux-datorer | Microsoft Docs"
+description: "Självstudiekurs – hantera virtuella Azure-nätverk och virtuella Linux-datorer med hello Azure CLI"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,38 +16,38 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2366905b8160675f77cbc41ba97540af70be8c01
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 57e6bd4de16f0e31d53dc67bf50dc5730d43712b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-the-azure-cli"></a>Hantera virtuella Azure-nätverk och virtuella Linux-datorer med Azure CLI
+# <a name="manage-azure-virtual-networks-and-linux-virtual-machines-with-hello-azure-cli"></a>Hantera virtuella Azure-nätverk och virtuella Linux-datorer med hello Azure CLI
 
-Azure virtual machines använder Azure-nätverk för interna och externa nätverkskommunikation. Den här kursen går igenom hur du distribuerar två virtuella datorer och konfigurera Azure nätverk för dessa virtuella datorer. Exemplen i den här kursen förutsätter att de virtuella datorerna är värd för ett webbprogram med en-databas, men ett program inte har distribuerats i självstudiekursen. I den här guiden får du lära dig hur man:
+Azure virtual machines använder Azure-nätverk för interna och externa nätverkskommunikation. Den här kursen går igenom hur du distribuerar två virtuella datorer och konfigurera Azure nätverk för dessa virtuella datorer. hello exemplen i den här kursen förutsätter att hello virtuella datorer är värdar för ett webbprogram med en-databas, men ett program inte har distribuerats i hello självstudiekursen. I den här guiden får du lära dig hur man:
 
 > [!div class="checklist"]
 > * Distribuera ett virtuellt nätverk
 > * Skapa ett undernät i ett virtuellt nätverk
-> * Anslut virtuella datorer till ett undernät
+> * Anslut virtuella datorer tooa undernät
 > * Hantera virtuella offentliga IP-adresser
 > * Skydda inkommande trafik för internet
-> * Säker VM VM-trafik
+> * Skydda Virtuella tooVM trafik
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt kursen krävs att du använder Azure CLI version 2.0.4 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kursen krävs att du kör hello Azure CLI version 2.0.4 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="vm-networking-overview"></a>VM-nätverk – översikt
 
-Virtuella Azure-nätverk kan säkra nätverksanslutningar mellan virtuella datorer, internet och andra Azure-tjänster, till exempel Azure SQL-databas. Virtuella nätverk är uppdelad i logiska segment som kallas subnät. Undernät används för flödeskontroll för nätverk och som en säkerhetsgräns. När du distribuerar en virtuell dator innehåller vanligtvis ett virtuellt nätverksgränssnitt som är ansluten till ett undernät.
+Virtuella Azure-nätverk kan säkra nätverksanslutningar mellan virtuella datorer, hello internet och andra Azure-tjänster, till exempel Azure SQL-databas. Virtuella nätverk är uppdelad i logiska segment som kallas subnät. Undernät används toocontrol nätverk flöde, och som en säkerhetsgräns. När du distribuerar en virtuell dator innehåller vanligtvis ett virtuellt nätverksgränssnitt som är bifogade tooa undernät.
 
 ## <a name="deploy-virtual-network"></a>Distribuera virtuella nätverk
 
 Ett enda virtuellt nätverk skapas med två undernät för den här kursen. Ett frontend undernät som värd för ett webbprogram och ett backend-undernät som värd för en databasserver.
 
-Innan du kan skapa ett virtuellt nätverk, skapa en resursgrupp med [az gruppen skapa](/cli/azure/group#create). I följande exempel skapas en resursgrupp med namnet *myRGNetwork* eastus plats.
+Innan du kan skapa ett virtuellt nätverk, skapa en resursgrupp med [az gruppen skapa](/cli/azure/group#create). hello följande exempel skapar en resursgrupp med namnet *myRGNetwork* hello eastus plats.
 
 ```azurecli-interactive 
 az group create --name myRGNetwork --location eastus
@@ -55,7 +55,7 @@ az group create --name myRGNetwork --location eastus
 
 ### <a name="create-virtual-network"></a>Skapa det virtuella nätverket
 
-Oss den [az network vnet skapa](/cli/azure/network/vnet#create) kommando för att skapa ett virtuellt nätverk. I det här exemplet är nätverket heter *mvVnet* och ges en adressprefixet *10.0.0.0/16*. Dessutom skapas ett undernät med namnet *mySubnetFrontEnd* och prefixet *10.0.1.0/24*. Senare i den här självstudiekursen är frontend VM anslutet till det här undernätet. 
+Oss hello [az network vnet skapa](/cli/azure/network/vnet#create) kommandot toocreate ett virtuellt nätverk. I det här exemplet hello nätverk med namnet *mvVnet* och ges en adressprefixet *10.0.0.0/16*. Dessutom skapas ett undernät med namnet *mySubnetFrontEnd* och prefixet *10.0.1.0/24*. Senare i den här kursen är en frontend VM anslutna toothis undernät. 
 
 ```azurecli-interactive 
 az network vnet create \
@@ -68,7 +68,7 @@ az network vnet create \
 
 ### <a name="create-subnet"></a>Skapa ett undernät
 
-Ett nytt undernät har lagts till i det virtuella nätverket med hjälp av den [az undernät för virtuellt nätverk skapa](/cli/azure/network/vnet/subnet#create) kommando. I det här exemplet undernätet med namnet *mySubnetBackEnd* och ges en adressprefixet *10.0.2.0/24*. Det här undernätet används med alla backend-tjänster.
+Ett nytt undernät läggs toohello virtuellt nätverk med hello [az undernät för virtuellt nätverk skapa](/cli/azure/network/vnet/subnet#create) kommando. I det här exemplet hello undernät med namnet *mySubnetBackEnd* och ges en adressprefixet *10.0.2.0/24*. Det här undernätet används med alla backend-tjänster.
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -78,21 +78,21 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Ett nätverk har nu skapats och upp i två undernät, en för frontend-tjänster och en för backend-tjänster. I nästa avsnitt, virtuella datorer skapas och anslutna till dessa undernät.
+Ett nätverk har nu skapats och upp i två undernät, en för frontend-tjänster och en för backend-tjänster. I nästa avsnitt om hello, virtuella datorer skapas och anslutna toothese undernät.
 
 ## <a name="understand-public-ip-address"></a>Förstå offentlig IP-adress
 
-En offentlig IP-adress kan Azure-resurser ska vara tillgänglig på internet. I det här avsnittet av kursen skapas en virtuell dator för att demonstrera hur du arbetar med offentliga IP-adresser.
+En offentlig IP-adress kan toobe Azure-resurser tillgängliga på hello internet. I det här avsnittet av kursen hello skapas en virtuell dator toodemonstrate hur toowork med en offentlig IP-adresser.
 
 ### <a name="allocation-method"></a>Allokeringsmetod
 
-En offentlig IP-adress kan fördelas som dynamiska eller statiska. Offentliga IP-adressen tilldelas dynamiskt som standard. Dynamiska IP-adresser släpps när en virtuell dator har frigjorts. Detta medför IP-adressen ändras under åtgärder som innehåller en VM-flyttningen.
+En offentlig IP-adress kan fördelas som dynamiska eller statiska. Offentliga IP-adressen tilldelas dynamiskt som standard. Dynamiska IP-adresser släpps när en virtuell dator har frigjorts. Detta medför hello IP-adress toochange under åtgärder som innehåller en VM-flyttningen.
 
-Allokeringsmetoden kan anges till statisk som säkerställer att IP adress fortsätter vara tilldelade till en virtuell dator, även under en frigjord tillstånd. Den IP-adressen kan inte anges när du använder en statiskt tilldelade IP-adress. Istället tilldelas den från en pool med tillgängliga adresser.
+hello allokeringsmetod kan ställas in toostatic, vilket säkerställer att hello IP-adress vara tilldelad tooa VM, även under en frigjord tillstånd. När du använder en statiskt tilldelade IP-adress, kan hello själva IP-adressen inte anges. Istället tilldelas den från en pool med tillgängliga adresser.
 
 ### <a name="dynamic-allocation"></a>Dynamisk allokering
 
-När du skapar en virtuell dator med den [az vm skapa](/cli/azure/vm#create) kommandot offentliga IP-adress allokering standardmetoden är dynamisk. I följande exempel skapas en virtuell dator med en dynamisk IP-adress. 
+När du skapar en virtuell dator med hello [az vm skapa](/cli/azure/vm#create) kommandot hello standard offentliga IP-adress allokeringsmetoden är dynamisk. I följande exempel hello, skapas en virtuell dator med en dynamisk IP-adress. 
 
 ```azurecli-interactive 
 az vm create \
@@ -108,25 +108,25 @@ az vm create \
 
 ### <a name="static-allocation"></a>Statisk tilldelning
 
-När du skapar en virtuell dator med hjälp av den [az vm skapa](/cli/azure/vm#create) kommandot, innehåller den `--public-ip-address-allocation static` argumentet att tilldela en statisk offentlig IP-adress. Den här åtgärden visas inte i den här självstudiekursen, men i nästa avsnitt ändras dynamiskt allokerade IP-adress till ett statiskt allokerade adressen. 
+När du skapar en virtuell dator med hello [az vm skapa](/cli/azure/vm#create) kommandot, inkludera hello `--public-ip-address-allocation static` argumentet tooassign en statisk offentlig IP-adress. Den här åtgärden visas inte i den här kursen, men i nästa avsnitt om hello en dynamiskt tilldelad IP-adress är ändrade tooa statiskt tilldelade adressen. 
 
 ### <a name="change-allocation-method"></a>Ändra allokeringsmetod
 
-Allokeringsmetod för IP-adress kan ändras med den [az nätverket offentliga ip-uppdatering](/cli/azure/network/public-ip#update) kommando. I det här exemplet ändras allokeringsmetoden av frontend VM IP-adress till statisk.
+hello allokeringsmetod för IP-adress kan ändras med hello [az nätverket offentliga ip-uppdatering](/cli/azure/network/public-ip#update) kommando. I det här exemplet hello allokeringsmetod för IP-adress för hello frontend VM ändras toostatic.
 
-Ta bort den virtuella datorn först.
+Först frigöra hello VM.
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myRGNetwork --name myFrontEndVM
 ```
 
-Använd den [az nätverket offentliga ip-uppdatering](/cli/azure/network/public-ip#update) kommando för att uppdatera allokeringsmetoden. I det här fallet den `--allocation-method` anges till *statiska*.
+Använd hello [az nätverket offentliga ip-uppdatering](/cli/azure/network/public-ip#update) kommandot tooupdate hello allokeringsmetod. I det här fallet hello `--allocation-method` anges för*statiska*.
 
 ```azurecli-interactive 
 az network public-ip update --resource-group myRGNetwork --name myFrontEndIP --allocation-method static
 ```
 
-Starta den virtuella datorn.
+Starta hello VM.
 
 ```azurecli-interactive 
 az vm start --resource-group myRGNetwork --name myFrontEndVM --no-wait
@@ -134,37 +134,37 @@ az vm start --resource-group myRGNetwork --name myFrontEndVM --no-wait
 
 ### <a name="no-public-ip-address"></a>Ingen offentlig IP-adress
 
-Ofta behöver inte en virtuell dator som är tillgängliga via internet. Om du vill skapa en virtuell dator utan en offentlig IP-adress, använder den `--public-ip-address ""` argument med en tom uppsättning med dubbla citattecken. Den här konfigurationen visas senare i den här självstudiekursen
+Ofta är en virtuell dator måste inte toobe nås över hello internet. toocreate en virtuell dator utan en offentlig IP-adress, Använd hello `--public-ip-address ""` argument med en tom uppsättning med dubbla citattecken. Den här konfigurationen visas senare i den här självstudiekursen
 
 ## <a name="secure-network-traffic"></a>Skydda nätverkstrafik
 
-En nätverkssäkerhetsgrupp (NSG) innehåller en lista över säkerhetsregler som tillåter eller nekar nätverkstrafik till resurser som är anslutna till virtuella Azure-nätverk (VNet). NSG: er kan vara kopplad till undernät eller individuella nätverksgränssnitt. När en NSG är associerad med ett nätverksgränssnitt gäller bara den associera virtuella datorn. När en nätverkssäkerhetsgrupp är kopplad till ett undernät gäller reglerna för alla resurser som är anslutna till undernätet. 
+En nätverkssäkerhetsgrupp (NSG) innehåller en lista över säkerhetsregler som tillåter eller nekar nätverket trafik tooresources anslutna tooAzure virtuella nätverk (VNet). NSG: er kan vara associerade toosubnets eller enskilda nätverksgränssnitt. När en NSG är associerad med ett nätverksgränssnitt gäller endast hello associerade VM. När en NSG är associerad tooa undernät, tillämpas hello reglerna tooall resurser anslutna toohello undernät. 
 
 ### <a name="network-security-group-rules"></a>Regler för nätverkssäkerhetsgrupper
 
-NSG-regler definiera nätverk portar under vilken trafik tillåts eller nekas. Regler kan innehålla käll- och IP-adressintervall så att trafik styrs mellan specifika system eller undernät. NSG-regler kan även innehålla en prioritet (mellan 1 – och 4096). Reglerna utvärderas prioritsordning. En regel med en prioritet på 100 utvärderas innan en regel med prioritet 200.
+NSG-regler definiera nätverk portar under vilken trafik tillåts eller nekas. hello-regler kan innehålla käll- och IP-adressintervall så att trafik styrs mellan specifika system eller undernät. NSG-regler kan även innehålla en prioritet (mellan 1 – och 4096). Reglerna utvärderas hello efter prioritet. En regel med en prioritet på 100 utvärderas innan en regel med prioritet 200.
 
-Alla NSG:er har en uppsättning standardregler. Standardreglerna kan inte tas bort, men eftersom de tilldelas lägst prioritet så kan de överskridas av de reglerna du själv skapar.
+Alla NSG:er har en uppsättning standardregler. hello standardreglerna kan inte tas bort, men eftersom de har tilldelats lägst prioritet för hello, de kan åsidosättas med hello regler som du skapar.
 
 - **Virtuellt nätverk** - trafik med ursprung och slutar med ett virtuellt nätverk tillåts både i inkommande och utgående riktningar.
 - **Internet** - utgående trafik tillåts, men inkommande trafik blockeras.
-- **Belastningsutjämnaren** -Tillåt Azure belastningsutjämnare avsökning hälsotillståndet för dina virtuella datorer och rollinstanser. Om du inte använder en belastningsutjämnad uppsättning, kan du åsidosätta den här regeln.
+- **Belastningsutjämnaren** -Tillåt Azure belastningen belastningsutjämnaren tooprobe hello hälsotillståndet för dina virtuella datorer och rollinstanser. Om du inte använder en belastningsutjämnad uppsättning, kan du åsidosätta den här regeln.
 
 ### <a name="create-network-security-groups"></a>Skapa säkerhetsgrupper för nätverk
 
-En nätverkssäkerhetsgrupp kan skapas samtidigt som en virtuell dator med hjälp av den [az vm skapa](/cli/azure/vm#create) kommando. När du gör det NSG: N är kopplad till nätverksgränssnitt för virtuella datorer och en NSG-regel är skapade för att tillåta trafik på port automatiskt *22* från andra källor. Tidigare i den här självstudien har frontend NSG: N skapats automatiskt med frontend VM. En regel för NSG har också automatiskt skapat för port 22. 
+En nätverkssäkerhetsgrupp kan skapas på hello samma tid som en virtuell dator med hjälp av hello [az vm skapa](/cli/azure/vm#create) kommando. När du gör det hello NSG är associerad med hello nätverksgränssnitt för virtuella datorer och en NSG-regel är skapas automatiskt tooallow trafik på port *22* från andra källor. Tidigare i den här självstudien hello hello frontend NSG har skapats automatiskt med frontend VM. En regel för NSG har också automatiskt skapat för port 22. 
 
-I vissa fall kan vara det bra att skapa en NSG till exempel när standardreglerna för SSH inte skapas eller när NSG: N ska kopplas till ett undernät. 
+I vissa fall kan det vara bra toopre-skapa en NSG till exempel när standardreglerna för SSH inte skapas eller när hello NSG ska vara anslutna tooa undernät. 
 
-Använd den [az nätverket nsg skapa](/cli/azure/network/nsg#create) kommando för att skapa en nätverkssäkerhetsgrupp.
+Använd hello [az nätverket nsg skapa](/cli/azure/network/nsg#create) kommandot toocreate en nätverkssäkerhetsgrupp.
 
 ```azurecli-interactive 
 az network nsg create --resource-group myRGNetwork --name myNSGBackEnd
 ```
 
-I stället för att koppla NSG till ett nätverksgränssnitt, är den associerad med ett undernät. I den här konfigurationen ärver någon virtuell dator som är kopplad till undernätet NSG-regler.
+I stället för att associera hello NSG tooa nätverksgränssnitt, är den associerad med ett undernät. I den här konfigurationen ärver någon virtuell dator som är bifogade toohello undernät hello NSG-regler.
 
-Uppdatera befintliga undernätet med namnet *mySubnetBackEnd* med nya NSG: N.
+Uppdatera hello befintligt undernät med namnet *mySubnetBackEnd* med hello ny NSG.
 
 ```azurecli-interactive 
 az network vnet subnet update \
@@ -174,7 +174,7 @@ az network vnet subnet update \
   --network-security-group myNSGBackEnd
 ```
 
-Nu skapa en virtuell dator som är ansluten till den *mySubnetBackEnd*. Observera att den `--nsg` argumentet har värdet tomt dubbla citattecken. En NSG behöver inte skapas med den virtuella datorn. Den virtuella datorn är ansluten till backend-undernät, som är skyddat med backend-förskapade NSG: N. Den här NSG gäller för den virtuella datorn. Observera också här som den `--public-ip-address` argumentet har värdet tomt dubbla citattecken. Den här konfigurationen skapar en virtuell dator utan en offentlig IP-adress. 
+Nu skapa en virtuell dator som är bifogade toohello *mySubnetBackEnd*. Observera att hello `--nsg` argumentet har värdet tomt dubbla citattecken. En NSG behöver inte toobe som skapats med hello VM. hello VM är anslutna toohello backend-undernät, som är skyddat med hello förskapade backend-NSG. Den här NSG gäller toohello VM. Observera också här den hello `--public-ip-address` argumentet har värdet tomt dubbla citattecken. Den här konfigurationen skapar en virtuell dator utan en offentlig IP-adress. 
 
 ```azurecli-interactive 
 az vm create \
@@ -190,9 +190,9 @@ az vm create \
 
 ### <a name="secure-incoming-traffic"></a>Skydda inkommande trafik
 
-När frontend VM skapades, skapades en NSG-regel för att tillåta inkommande trafik på port 22. Den här regeln kan SSH-anslutningar till den virtuella datorn. I det här exemplet trafik även ska tillåtas på port *80*. Den här konfigurationen kan ett program som kan nås på den virtuella datorn.
+När hello frontend VM skapades skapades en NSG regeln tooallow inkommande trafik på port 22. Den här regeln kan SSH-anslutningar toohello VM. I det här exemplet trafik även ska tillåtas på port *80*. Den här konfigurationen kan en web application toobe åt på hello VM.
 
-Använd den [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create) kommando för att skapa en regel för port *80*.
+Använd hello [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create) kommandot toocreate en regel för port *80*.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -209,7 +209,7 @@ az network nsg rule create \
   --destination-port-range 80
 ```
 
-Frontend VM är nu endast tillgänglig på port *22* och port *80*. All annan inkommande trafik blockeras på nätverkssäkerhetsgruppen. Det kan vara bra att visualisera regelkonfigurationer NSG. Returnera NSG regelkonfigurationen med den [az nätverket regellistan](/cli/azure/network/nsg/rule#list) kommando. 
+hello frontend virtuella datorn är nu endast tillgänglig på port *22* och port *80*. All annan inkommande trafik blockeras på hello nätverkssäkerhetsgruppen. Det kan vara användbara toovisualize hello NSG konfigurationer. Returnerar hello NSG regelkonfigurationen med hello [az nätverket regellistan](/cli/azure/network/nsg/rule#list) kommando. 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myNSGFrontEnd --output table
@@ -224,11 +224,11 @@ Allow     *                                               22  Inbound      defau
 Allow     *                                               80  Inbound      http                      200  Tcp         Succeeded            myRGNetwork      *                      *
 ```
 
-### <a name="secure-vm-to-vm-traffic"></a>Säker VM VM-trafik
+### <a name="secure-vm-toovm-traffic"></a>Skydda Virtuella tooVM trafik
 
-Regler för nätverkssäkerhetsgrupper kan också använda mellan virtuella datorer. I det här exemplet frontend VM behöver kommunicera med backend-VM på port *22* och *3306*. Den här konfigurationen tillåter SSH-anslutningar från frontend VM och även att ett program på den frontend virtuella datorn kan kommunicera med en backend-MySQL-databas. All annan trafik ska blockeras mellan frontend- och virtuella datorer.
+Regler för nätverkssäkerhetsgrupper kan också använda mellan virtuella datorer. I det här exemplet hello hello frontend VM måste toocommunicate med backend-VM på port *22* och *3306*. Den här konfigurationen tillåter SSH-anslutningar från hello frontend VM och även att ett program på hello frontend VM toocommunicate med en backend-MySQL-databas. All annan trafik ska blockeras mellan hello frontend- och virtuella datorer.
 
-Använd den [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create) kommando för att skapa en regel för port 22. Observera att den `--source-address-prefix` argumentet anger ett värde för *10.0.1.0/24*. Den här konfigurationen säkerställer att endast trafik från undernätet som frontend tillåts via NSG: N.
+Använd hello [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create) kommandot toocreate en regel för port 22. Observera att hello `--source-address-prefix` argumentet anger ett värde för *10.0.1.0/24*. Den här konfigurationen säkerställer att endast trafik från hello frontend undernät tillåts via hello NSG.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -262,7 +262,7 @@ az network nsg rule create \
   --destination-port-range "3306"
 ```
 
-Slutligen: eftersom NSG: er har en standardregel som tillåter all trafik mellan virtuella datorer i samma virtuella nätverk, en regel skapas för backend-NSG: er att blockera all trafik. Observera som den `--priority` ges värdet *300*, vilket är lägre som både MySQL och NSG-regler. Den här konfigurationen garanterar att SSH och MySQL trafiken fortfarande tillåts NSG: N.
+Slutligen eftersom NSG: er har en standard regel all trafik mellan virtuella datorer i hello samma virtuella nätverk, en regel kan skapas för hello backend-NSG: er tooblock all trafik. Observera att hello `--priority` ges värdet *300*, vilket är lägre både hello NSG och MySQL regler. Den här konfigurationen garanterar att SSH och MySQL trafiken fortfarande tillåts hello NSG.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -279,7 +279,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Backend-VM är nu endast tillgänglig på port *22* och port *3306* från frontend undernät. All annan inkommande trafik blockeras på nätverkssäkerhetsgruppen. Det kan vara bra att visualisera regelkonfigurationer NSG. Returnera NSG regelkonfigurationen med den [az nätverket regellistan](/cli/azure/network/nsg/rule#list) kommando. 
+hello backend-VM är nu endast tillgänglig på port *22* och port *3306* från hello frontend undernät. All annan inkommande trafik blockeras på hello nätverkssäkerhetsgruppen. Det kan vara användbara toovisualize hello NSG konfigurationer. Returnerar hello NSG regelkonfigurationen med hello [az nätverket regellistan](/cli/azure/network/nsg/rule#list) kommando. 
 
 ```azurecli-interactive 
 az network nsg rule list --resource-group myRGNetwork --nsg-name myNSGBackEnd --output table
@@ -297,17 +297,17 @@ Deny      *                           *                       Inbound      denyA
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudiekursen skapas och skyddas av Azure-nätverk som är relaterade till virtuella datorer. Du har lärt dig hur till:
+I den här självstudiekursen skapas och skyddas av Azure-nätverk som relaterade toovirtual datorer. Du har lärt dig att:
 
 > [!div class="checklist"]
 > * Distribuera ett virtuellt nätverk
 > * Skapa ett undernät i ett virtuellt nätverk
-> * Anslut virtuella datorer till ett undernät
+> * Anslut virtuella datorer tooa undernät
 > * Hantera virtuella offentliga IP-adresser
 > * Skydda inkommande trafik för internet
-> * Säker VM VM-trafik
+> * Skydda Virtuella tooVM trafik
 
-Gå vidare till nästa kurs att lära dig att skydda data på virtuella datorer med Azure backup. 
+Avancera toohello nästa självstudiekurs toolearn om hur du skyddar data på virtuella datorer med Azure backup. 
 
 > [!div class="nextstepaction"]
 > [Säkerhetskopiera virtuella Linux-datorer i Azure](./tutorial-backup-vms.md)

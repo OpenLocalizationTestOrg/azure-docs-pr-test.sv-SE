@@ -1,6 +1,6 @@
 ---
-title: "Felsöka omtränings en Azure Machine Learning klassiska webbtjänst | Microsoft Docs"
-description: "Identifiera och lösa vanliga problem uppstod när du omtränings modellen för en Azure Machine Learning-webbtjänst."
+title: "aaaTroubleshoot omtränings en Azure Machine Learning klassiska webbtjänsten | Microsoft Docs"
+description: "Identifiera och lösa vanliga problem uppstod när du omtränings hello modellen för en Azure Machine Learning-webbtjänst."
 services: machine-learning
 documentationcenter: 
 author: VDonGlover
@@ -14,95 +14,93 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: fc36499ebff88c86635228ff899c85e9166aabed
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2b6a78eaba161877106dccdc23437b5e454fca7b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Felsökning av omtränings av en Azure Machine Learning klassiska-webbtjänst
+# <a name="troubleshooting-hello-retraining-of-an-azure-machine-learning-classic-web-service"></a>Felsöka hello omtränings av en Azure Machine Learning klassiska-webbtjänst
 ## <a name="retraining-overview"></a>Omtränings översikt
-När du distribuerar en prediktivt experiment som en bedömningsprofil webbtjänst är en statisk modell. När nya data blir tillgängliga eller när konsumenten API har sina egna data, måste vara retrained modellen. 
+När du distribuerar en prediktivt experiment som en bedömningsprofil webbtjänst är en statisk modell. När nya data blir tillgängliga eller när hello konsumenter av hello API har sina egna data, måste hello modellen toobe retrained. 
 
-En fullständig genomgång av hur omtränings klassiska webbtjänsten finns [träna om Machine Learning-modeller via programmering](machine-learning-retrain-models-programmatically.md).
+En fullständig genomgång av hello omtränings av en klassiska webbtjänst finns [träna om Machine Learning-modeller via programmering](machine-learning-retrain-models-programmatically.md).
 
 ## <a name="retraining-process"></a>Omtränings process
-När du behöver träna om webbtjänsten måste du lägga till vissa ytterligare delar:
+När du behöver tooretrain hello webbtjänsten måste du lägga till vissa ytterligare delar:
 
-* En webbtjänst som distribueras från utbildning experimentet. Experimentet måste ha en **Web Service utdata** modulen ansluten till utdataporten för den **Träningsmodell** modul.  
+* En webbtjänst som distribueras från hello Träningsexperiment. hello experiment måste ha en **Web Service utdata** modulen ansluten toohello utdata från hello **Träningsmodell** modul.  
   
-    ![Koppla web service utdata till train-modell.][image1]
-* En ny slutpunkt som lagts till bedömningsprofil webbtjänsten.  Du kan lägga till slutpunkten programmässigt med exempelkoden som refereras i träna om Machine Learning-modeller via programmering avsnittet eller via den klassiska Azure-portalen.
+    ![Koppla hello web service utdata toohello train-modell.][image1]
+* En ny slutpunkt läggs tooyour poängsättning av webbtjänsten.  Du kan lägga till hello endpoint programmässigt med hello exempelkod som refereras i hello träna om Machine Learning-modeller via programmering avsnittet eller via hello klassiska Azure-portalen.
 
-Du kan sedan använda C# exempelkoden från hjälpsidan för utbildning-webbtjänsten API för att träna om modellen. När du har utvärderat resultaten och är nöjd med dem kan uppdatera du den tränade modellen bedömningen webbtjänst med hjälp av den nya slutpunkt som du har lagt till.
+Du kan sedan använda hello C# exempelkod från hello utbildning Web tjänstens API hjälp sidan tooretrain modell. När du har utvärderat hello resultat och är nöjd med dem kan uppdatera du hello tränade modellen bedömningen webbtjänsten med hello ny slutpunkt som du har lagt till.
 
-Med alla delar på plats är de viktigaste stegen som du måste vidta för att träna om modellen följande:
+Med alla hello delar på plats är hello viktiga steg du måste vidta tooretrain hello modellen följande:
 
-1. Anropa webbtjänsten utbildning: anropet är att den Batch körning Service BES-, inte de begär svar Service (RR). Du kan använda C# exempelkoden på hjälpsidan API för att ringa. 
-2. Värden för att hitta den *BaseLocation*, *RelativeLocation*, och *SasBlobToken*: dessa värden returneras i utdata från anrop till webbtjänsten utbildning. 
-   ![Visar resultatet av omtränings provet och värdena BaseLocation, RelativeLocation och SasBlobToken.][image6]
-3. Uppdatera tillagda slutpunkten från bedömningsprofil webbtjänsten med den nya tränade modellen: med den exempelkoden i träna om Machine Learning-modeller via programmering, uppdatera ny slutpunkt som du har lagt till bedömningsprofil modellen med den nyligen tränade modellen från webbtjänsten utbildning.
+1. Anropa hello utbildning webbtjänst: hello anropet är toohello Batch Execution Service BES-, inte hello Begär svar Service (RR). Du kan använda hello C# exempelkoden i hello API hjälp sidan toomake hello anropet. 
+2. Hitta hello värden för hello *BaseLocation*, *RelativeLocation*, och *SasBlobToken*: dessa värden returneras i hello utdata från din anropet toohello utbildning Tjänsten. 
+   ![Visar hello utdata från hello omtränings exemplet och hello BaseLocation, RelativeLocation och SasBlobToken värden.][image6]
+3. Uppdateringen hello läggs endpoint från hello bedömningen webbtjänst med hello nya tränats modellen: med hello exempelkod anges i hello träna om Machine Learning modeller via programmering, uppdatera hello ny slutpunkt du har lagt till toohello bedömningen modellen med hello nyligen tränade modellen från hello utbildning webbtjänsten.
 
 ## <a name="common-obstacles"></a>Vanliga hinder
-### <a name="check-to-see-if-you-have-the-correct-patch-url"></a>Kontrollera om du har rätt korrigering URL
-KORRIGERING av Webbadressen som du använder måste vara den som är kopplade till den nya bedömningsprofil slutpunkt som du lagt till bedömningsprofil webbtjänsten. Det finns ett antal sätt att hämta URL: en korrigering:
+### <a name="check-toosee-if-you-have-hello-correct-patch-url"></a>Kontrollera toosee om du har hello korrigera korrigering URL
+hello korrigering URL som du använder måste vara hello något som är associerade med hello nya bedömningsslutpunkten du har lagt till toohello poängsättning av webbtjänsten. Det finns ett antal sätt tooobtain hello korrigering URL:
 
 **Alternativ 1: genom att programmera**
 
-Hämta rätt korrigering URL:
+tooget hello korrigera korrigering URL:
 
-1. Kör den [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) exempelkod.
-2. Utdata från AddEndpoint, Sök efter den *HelpLocation* värdet och kopiera Webbadressen.
+1. Kör hello [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) exempelkod.
+2. Hitta hello från hello-utdata för AddEndpoint *HelpLocation* värde och kopiera hello-URL.
    
-   ![HelpLocation i utdata addEndpoint-exemplet.][image2]
-3. Klistra in Webbadressen i en webbläsare för att navigera till en sida som innehåller hjälplänkar för webbtjänsten.
-4. Klicka på den **uppdatering resurs** länk för att öppna sidan korrigering hjälp.
+   ![HelpLocation i hello utdata hello addEndpoint exemplet.][image2]
+3. Klistra in hello URL i en webbläsare toonavigate tooa sida som innehåller hjälplänkar för hello webbtjänsten.
+4. Klicka på hello **uppdatering resurs** hjälpsidan för länken tooopen hello korrigering.
 
-**Alternativ 2: Använd den klassiska Azure-portalen**
+**Alternativ 2: Använd hello klassiska Azure-portalen**
 
-1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com).
-2. Öppna fliken Machine Learning. 
-   ![Datorn lutande fliken.][image4]
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com).
+2. Öppna hello Machine Learning-fliken. ![Datorn lutande fliken.][image4]
 3. Klicka på arbetsytans namn, sedan **Web Services**.
-4. Klicka på bedömningsprofil webbtjänsten som du arbetar med. (Om du inte ändrar standardnamnet på webbtjänsten, det går ut om [bedömningen Exp.].)
+4. Klicka på hello bedömningen webbtjänst som du arbetar med. (Om du inte ändrar hello standardnamnet hello-webbtjänsten, det går ut om [bedömningen Exp.].)
 5. Klicka på **lägga till slutpunkten**.
-6. När slutpunkten har lagts till, klickar du på namnet på slutpunkten. Klicka på **uppdatering resurs** att öppna sidan uppdatering hjälp.
+6. När hello slutpunkt har lagts till, klickar du på namnet på slutpunkten hello. Klicka på **uppdatering resurs** tooopen hello hjälpsidan för uppdatering.
 
 > [!NOTE]
-> Om du har lagt till slutpunkten för utbildning Web Service i stället för förutsägande webbtjänsten, du får följande felmeddelande när du klickar på den **uppdatering resurs** länk: tyvärr, men den här funktionen kan inte stöds i den här kontexten. Den här webbtjänsten har inga resurser för uppdateras. Vi ber om ursäkt för besväret och arbetar med att förbättra det här arbetsflödet.
+> Om du har lagt till hello endpoint toohello utbildning webbtjänsten i stället för hello förutsägande webbtjänsten, du får följande fel när du klickar på hello hello **uppdatering resurs** länk: tyvärr, men den här funktionen stöds inte eller tillgängligt i den här kontexten. Den här webbtjänsten har inga resurser för uppdateras. Vi ber om ursäkt för besväret hello och arbetar med att förbättra det här arbetsflödet.
 > 
 > 
 
 ![Ny slutpunkt instrumentpanel.][image3]
 
-Hjälpsidan korrigering innehåller korrigering URL: en måste du använda och innehåller exempelkod som du kan använda för att anropa den.
+hello korrigering hjälpsidan innehåller hello korrigering URL måste du använda och exempelkod som du kan använda toocall den.
 
 ![Patch-URL.][image5]
 
-### <a name="check-to-see-that-you-are-updating-the-correct-scoring-endpoint"></a>Se till att du uppdaterar korrekt bedömningsprofil slutpunkt
-* Inte korrigering webbtjänsten utbildning: patch-åtgärden måste utföras på bedömningsprofil webbtjänsten.
-* Inte korrigering standardslutpunkten webbtjänsten: patch-åtgärden måste utföras på den nya bedömningsprofil webbtjänstslutpunkt som du har lagt till.
+### <a name="check-toosee-that-you-are-updating-hello-correct-scoring-endpoint"></a>Kontrollera att du uppdaterar hello korrekt bedömningsprofil slutpunkt toosee
+* Inte korrigering hello utbildning webbtjänst: hello korrigering åtgärden måste utföras på hello poängsättning av webbtjänsten.
+* Inte korrigering hello standardslutpunkten webbtjänsten: hello korrigering åtgärden måste utföras på hello nya bedömningen webbtjänstslutpunkt som du har lagt till.
 
-Du kan kontrollera vilka webbtjänsten slutpunkten finns på den klassiska Azure-portalen. 
+Du kan kontrollera vilka hello webbtjänstslutpunkt är som besökande hello klassiska Azure-portalen. 
 
 > [!NOTE]
-> Var noga med att du lägger till slutpunkten förutsägande webbtjänsten inte utbildning-webbtjänsten. Om du har distribuerat en utbildnings- och en förutsägbar webbtjänst korrekt, bör du se två separata webbtjänster som anges. Förutsägande webbtjänsten ska avslutas med ”[förutsägande exp.]”.
+> Var noga med att du lägger till hello endpoint toohello förutsägande webbtjänst, inte hello utbildning webbtjänsten. Om du har distribuerat en utbildnings- och en förutsägbar webbtjänst korrekt, bör du se två separata webbtjänster som anges. hello förutsägande webbtjänsten ska avslutas med ”[förutsägande exp.]”.
 > 
 > 
 
-1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com).
-2. Öppna fliken Machine Learning. 
-   ![Machine learning-arbetsytan Användargränssnittet.][image4]
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com).
+2. Öppna hello Machine Learning-fliken. ![Machine learning-arbetsytan Användargränssnittet.][image4]
 3. Välj din arbetsyta.
 4. Klicka på **webbtjänster**.
 5. Välj förutsägbara webbtjänsten.
-6. Kontrollera att din nya slutpunkt har lagts till webbtjänsten.
+6. Kontrollera att din nya slutpunkt har lagts till toohello webbtjänsten.
 
-### <a name="check-the-workspace-that-your-web-service-is-in-to-ensure-it-is-in-the-correct-region"></a>Kontrollera arbetsytan som webbtjänsten i ska se till att den är i rätt region
-1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com).
-2. Välj Machine Learning på menyn.
+### <a name="check-hello-workspace-that-your-web-service-is-in-tooensure-it-is-in-hello-correct-region"></a>Kontrollera hello-arbetsyta som webbtjänsten har tooensure i hello rätt region
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com).
+2. Välj Machine Learning hello-menyn.
    ![Machine learning region Användargränssnittet.][image4]
-3. Kontrollera platsen för din arbetsyta.
+3. Kontrollera hello platsen för din arbetsyta.
 
 <!-- Image Links -->
 

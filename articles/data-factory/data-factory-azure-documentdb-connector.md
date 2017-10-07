@@ -1,5 +1,5 @@
 ---
-title: "Flytta data till/från Azure Cosmos DB | Microsoft Docs"
+title: "aaaMove data till/från Azure Cosmos DB | Microsoft Docs"
 description: "Lär dig hur du ska flytta data till/från Azure Cosmos DB samlingen med hjälp av Azure Data Factory"
 services: data-factory, cosmosdb
 documentationcenter: 
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.openlocfilehash: 7a11c6ade0325b08ad520448bbf82d64a0a555f3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bd23ce4e004a972ce6f3e4165cfdea4f0c18fecc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Flytta data till och från Azure Cosmos-databasen med Azure Data Factory
-Den här artikeln förklarar hur du använder aktiviteten kopiera i Azure Data Factory för att flytta data till och från Azure Cosmos DB (DocumentDB-API). Den bygger på den [Data Movement aktiviteter](data-factory-data-movement-activities.md) artikel som presenterar en allmän översikt över dataflyttning med copy-aktivitet. 
+# <a name="move-data-tooand-from-azure-cosmos-db-using-azure-data-factory"></a>Flytta data tooand från Azure Cosmos-databasen med Azure Data Factory
+Den här artikeln förklarar hur toouse hello Kopieringsaktiviteten i Azure Data Factory toomove data till och från Azure Cosmos DB (DocumentDB-API). Den bygger på hello [Data Movement aktiviteter](data-factory-data-movement-activities.md) artikel som ger en allmän översikt över dataflyttning hello kopieringsaktiviteten. 
 
-Du kan kopiera data från alla stöds källa datalagret till Azure Cosmos DB eller Azure Cosmos DB till alla stöds sink-datalagret. En lista över datakällor som stöds som datakällor eller sänkor av kopieringsaktiviteten, finns det [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabell. 
+Du kan kopiera data från en stöds källa data tooAzure Cosmos DB eller från Azure Cosmos DB tooany stöds sink data. En lista över datakällor som stöds som datakällor eller sänkor av hello kopieringsaktiviteten finns hello [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabell. 
 
 > [!IMPORTANT]
 > Azure DB Cosmos-anslutningen har endast stöd för DocumentDB-API.
 
-Att kopiera data som-är till/från JSON-filer eller en annan Cosmos DB samling finns [Import/Export JSON-dokument](#importexport-json-documents).
+toocopy data som-är till/från JSON-filer eller en annan Cosmos DB samling finns [Import/Export JSON-dokument](#importexport-json-documents).
 
 ## <a name="getting-started"></a>Komma igång
 Du kan skapa en pipeline med en kopia-aktivitet som flyttar data till och från Azure Cosmos DB med hjälp av olika verktyg/API: er.
 
-Det enklaste sättet att skapa en pipeline är att använda den **guiden Kopiera**. Finns [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genomgång om hur du skapar en pipeline med hjälp av guiden Kopiera data.
+hello enklaste sättet toocreate en pipeline är toouse hello **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genomgång om hur du skapar en pipeline med hjälp av guiden för hello kopiera data.
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Azure-portalen**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-mall**, **.NET API**, och **REST API**. Se [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) för stegvisa instruktioner för att skapa en pipeline med en Kopieringsaktivitet. 
+Du kan också använda följande verktyg toocreate en pipeline hello: **Azure-portalen**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-mall** , **.NET API**, och **REST API**. Se [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) för stegvisa instruktioner toocreate en pipeline med en Kopieringsaktivitet. 
 
-Om du använder verktyg eller API: er, kan du utföra följande steg för att skapa en pipeline som flyttar data från ett dataarkiv som källa till ett dataarkiv som mottagare: 
+Om du använder hello verktyg eller API: er kan utföra du hello följande steg toocreate en pipeline som flyttar data från en källdata lagra tooa sink-datalagret: 
 
-1. Skapa **länkade tjänster** att länka inkommande och utgående data lagras till din data factory.
-2. Skapa **datauppsättningar** att representera inkommande och utgående data för kopieringen. 
+1. Skapa **länkade tjänster** toolink indata och utdata lagrar tooyour data factory.
+2. Skapa **datauppsättningar** toorepresent indata och utdata för hello kopieringsåtgärden. 
 3. Skapa en **pipeline** med en kopia-aktivitet som tar en datamängd som indata och en dataset som utdata. 
 
-När du använder guiden skapas JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och pipelinen) automatiskt för dig. När du använder Verktyg/API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av JSON-format.  Exempel med JSON-definitioner för Data Factory-entiteter som används för att kopiera data till/från Cosmos DB finns [JSON-exempel](#json-examples) i den här artikeln. 
+När du använder guiden hello skapas automatiskt JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och hello pipeline) för dig. När du använder Verktyg/API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av hello JSON-format.  Exempel med JSON-definitioner för Data Factory-entiteter som har använt toocopy data till/från Cosmos DB finns [JSON-exempel](#json-examples) i den här artikeln. 
 
-Följande avsnitt innehåller information om JSON-egenskaper som används för att definiera Data Factory entiteter Cosmos DB: 
+hello följande avsnitt innehåller information om JSON-egenskaper används toodefine Data Factory entiteter specifika tooCosmos DB: 
 
 ## <a name="linked-service-properties"></a>Länkad tjänstegenskaper
-Följande tabell innehåller en beskrivning för JSON-element som är specifika för Azure Cosmos DB länkad tjänst.
+hello följande tabell ger en beskrivning för JSON-element specifika tooAzure Cosmos DB länkade tjänsten.
 
 | **Egenskap** | **Beskrivning** | **Krävs** |
 | --- | --- | --- |
-| typ |Egenskapen type måste anges till: **DocumentDb** |Ja |
-| connectionString |Ange information som behövs för att ansluta till Azure DB som Cosmos-databasen. |Ja |
+| typ |hello Typegenskapen måste anges till: **DocumentDb** |Ja |
+| connectionString |Ange information som behövs för tooconnect tooAzure Cosmos-DB-databas. |Ja |
 
 Exempel:
 
@@ -70,13 +70,13 @@ Exempel:
 ```
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
-En fullständig lista över egenskaper som är tillgängliga för att definiera datauppsättningarna & avsnitt hittar du den [skapa datauppsättningar](data-factory-create-datasets.md) artikel. Avsnitt som struktur, tillgänglighet och princip på en datamängd JSON är liknande för alla typer av dataset (Azure SQL Azure blob, Azure-tabellen, osv.).
+En fullständig lista över egenskaper som är tillgängliga för att definiera datauppsättningarna & avsnitt finns toohello [skapa datauppsättningar](data-factory-create-datasets.md) artikel. Avsnitt som struktur, tillgänglighet och princip på en datamängd JSON är liknande för alla typer av dataset (Azure SQL Azure blob, Azure-tabellen, osv.).
 
-Avsnittet typeProperties är olika för varje typ av dataset och ger information om placeringen av data i datalagret. TypeProperties avsnittet för datauppsättningen av typen **DocumentDbCollection** har följande egenskaper.
+hello typeProperties avsnittet är olika för varje typ av dataset och ger information om hello platsen för hello data i datalagret hello. Hej typeProperties avsnittet för hello dataset av typen **DocumentDbCollection** har hello följande egenskaper.
 
 | **Egenskap** | **Beskrivning** | **Krävs** |
 | --- | --- | --- |
-| Samlingsnamn |Namnet på samlingen Cosmos DB dokumentet. |Ja |
+| Samlingsnamn |Namnet på hello Cosmos DB dokumentsamlingen. |Ja |
 
 Exempel:
 
@@ -98,35 +98,35 @@ Exempel:
 }
 ```
 ### <a name="schema-by-data-factory"></a>Schema som Data Factory
-För schemafria data butiker, till exempel Azure Cosmos DB härleder Data Factory-tjänsten schemat på något av följande sätt:  
+För schemafria data butiker, till exempel Azure Cosmos DB skapar hello Data Factory-tjänsten hello schema i något av följande sätt hello:  
 
-1. Om du anger strukturen för data med hjälp av den **struktur** egenskap i datauppsättningsdefinitionen Data Factory-tjänsten godkänner den här strukturen som schema. Om en rad inte innehåller ett värde för en kolumn, tillhandahålls i det här fallet ett null-värde för den.
-2. Om du inte anger strukturen för data med hjälp av den **struktur** egenskap i datauppsättningsdefinitionen Data Factory-tjänsten härleder schemat med hjälp av den första raden i data. I det här fallet om den första raden inte innehåller fullständig schemat kommer vissa kolumner att saknas i resultatet av kopieringsåtgärden.
+1. Om du anger hello strukturen för data med hjälp av hello **struktur** egenskap i hello Data Factory-tjänsten i datauppsättningsdefinitionen hello godkänner den här strukturen som hello schema. Om en rad inte innehåller ett värde för en kolumn, tillhandahålls i det här fallet ett null-värde för den.
+2. Om du inte anger hello strukturen för data med hjälp av hello **struktur** egenskap i hello datauppsättningsdefinitionen, hello Data Factory-tjänsten skapar hello schema med hjälp av hello första raden i hello data. I det här fallet om hello första raden inte innehåller fullständig hello-schemat, kommer vissa kolumner att saknas i hello resultatet av kopieringsåtgärden.
 
-Därför för schemafria datakällor, det bästa sättet är att ange hur dina data med hjälp av den **struktur** egenskapen.
+Därför är hello bästa praxis för schemafria datakällor toospecify hello struktur data med hjälp av hello **struktur** egenskapen.
 
 ## <a name="copy-activity-properties"></a>Kopiera egenskaper för aktivitet
-En fullständig lista över egenskaper som är tillgängliga för att definiera aktiviteter & avsnitt hittar du den [skapar Pipelines](data-factory-create-pipelines.md) artikel. Egenskaper som namn, beskrivning, ingående och utgående tabeller och principen är tillgängliga för alla typer av aktiviteter.
+En fullständig lista över avsnitt & egenskaper som är tillgängliga för att definiera aktiviteter finns toohello [skapar Pipelines](data-factory-create-pipelines.md) artikel. Egenskaper som namn, beskrivning, ingående och utgående tabeller och principen är tillgängliga för alla typer av aktiviteter.
 
 > [!NOTE]
-> Kopieringsaktiviteten tar endast en inmatning och ger en enda utdata.
+> Hej Kopieringsaktiviteten tar endast en inmatning och ger en enda utdata.
 
-Egenskaper som är tillgängliga i avsnittet typeProperties i aktiviteten å andra sidan varierar med varje aktivitetstyp och vid kopieringsaktiviteten de varierar beroende på vilka typer av datakällor och sänkor.
+Egenskaper i hello typeProperties avsnittet hello aktivitet på hello andra sidan varierar med varje aktivitetstyp och vid kopieringsaktiviteten de varierar beroende på hello typer av datakällor och sänkor.
 
-Vid kopieringsaktiviteten när datakällan är av typen **DocumentDbCollectionSource** följande egenskaper är tillgängliga i **typeProperties** avsnitt:
-
-| **Egenskap** | **Beskrivning** | **Tillåtna värden** | **Krävs** |
-| --- | --- | --- | --- |
-| DocumentDB |Ange frågan som läser data. |Frågesträng stöds av Azure Cosmos DB. <br/><br/>Exempel:`SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nej <br/><br/>Om inget annat anges, SQL-instruktionen som körs:`select <columns defined in structure> from mycollection` |
-| nestingSeparator |Specialtecken som visar att dokumentet är kapslad |Valfritt tecken. <br/><br/>Azure Cosmos-DB är en NoSQL store för JSON-dokument, där kapslade strukturer är tillåtna. Azure Data Factory gör det möjligt för användaren att ange hierarkin via nestingSeparator, vilket är ””. i ovanstående exempel. Med avgränsare, kopieringsaktiviteten genererar ”Name”-objektet med tre underordnade element först mellan- och efternamn enligt ”Name.First”, ”Name.Middle” och ”Name.Last” i tabelldefinitionen. |Nej |
-
-**DocumentDbCollectionSink** stöder följande egenskaper:
+Vid kopieringsaktiviteten när datakällan är av typen **DocumentDbCollectionSource** hello följande egenskaper är tillgängliga i **typeProperties** avsnitt:
 
 | **Egenskap** | **Beskrivning** | **Tillåtna värden** | **Krävs** |
 | --- | --- | --- | --- |
-| nestingSeparator |Ett specialtecken i källkolumnsnamnet att ange kapslade dokumentet krävs. <br/><br/>Till exempel ovan: `Name.First` i utdata tabell ger följande JSON-strukturen i Cosmos-DB-dokument:<br/><br/>”Name”: {<br/>    ”Första”: ”John”<br/>}, |Tecken som används för att avgränsa kapslingsnivåer.<br/><br/>Standardvärdet är `.` (punkt). |Tecken som används för att avgränsa kapslingsnivåer. <br/><br/>Standardvärdet är `.` (punkt). |
-| writeBatchSize |Antalet parallella begäranden till Azure DB som Cosmos-tjänsten att skapa dokument.<br/><br/>Du kan finjustera prestanda vid kopiering av data till och från Cosmos-databas med hjälp av den här egenskapen. Du kan förvänta dig bättre prestanda om du ökar writeBatchSize eftersom flera parallella begäranden till Cosmos DB skickas. Men du behöver undvika begränsning som kan utlösa ett felmeddelande: ”begär frekvensen är stor”.<br/><br/>Begränsning bestäms av ett antal faktorer, bland annat storlek dokument, antalet villkoren i dokument, indexering princip målsamling osv. För kopieringsåtgärd, du kan använda en bättre samling (t.ex. S3) har mest genomströmning tillgänglig (2 500 begärande enheter per sekund). |Integer |Nej (standard: 5) |
-| writeBatchTimeout |Vänta tills åtgärden har slutförts innan tidsgränsen uppnås. |TimeSpan<br/><br/> Exempel ”: 00: 30:00” (30 minuter). |Nej |
+| DocumentDB |Ange hello frågan tooread data. |Frågesträng stöds av Azure Cosmos DB. <br/><br/>Exempel:`SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nej <br/><br/>Om inget anges hello SQL-instruktionen som körs:`select <columns defined in structure> from mycollection` |
+| nestingSeparator |Specialtecken tooindicate som hello dokumentet är kapslad |Valfritt tecken. <br/><br/>Azure Cosmos-DB är en NoSQL store för JSON-dokument, där kapslade strukturer är tillåtna. Azure Data Factory aktiverar toodenote användarhierarkin via nestingSeparator, vilket är ””. i hello exemplen ovan. Med hello avgränsare hello kopieringsaktiviteten genererar hello ”Name”-objekt med tre underordnade element första mellersta och sista, bl.a too"Name.First”, ”Name.Middle” och ”Name.Last” i hello tabell definition. |Nej |
+
+**DocumentDbCollectionSink** stöder hello följande egenskaper:
+
+| **Egenskap** | **Beskrivning** | **Tillåtna värden** | **Krävs** |
+| --- | --- | --- | --- |
+| nestingSeparator |Det krävs ett specialtecken i hello källa kolumnen namn tooindicate som kapslade dokument. <br/><br/>Till exempel ovan: `Name.First` i hello utdata producerar tabellen hello följande JSON-strukturen i hello Cosmos DB dokument:<br/><br/>”Name”: {<br/>    ”Första”: ”John”<br/>}, |Tecken som används tooseparate kapslingsnivåer.<br/><br/>Standardvärdet är `.` (punkt). |Tecken som används tooseparate kapslingsnivåer. <br/><br/>Standardvärdet är `.` (punkt). |
+| writeBatchSize |Antalet parallella begäranden tooAzure Cosmos DB toocreate servicedokument.<br/><br/>Du kan finjustera hello prestanda vid kopiering av data till och från Cosmos-databas med hjälp av den här egenskapen. Du kan förvänta dig bättre prestanda om du ökar writeBatchSize eftersom flera parallella begäranden tooCosmos DB skickas. Men du behöver tooavoid begränsning som kan utlösa hello felmeddelande: ”begär frekvensen är stor”.<br/><br/>Begränsning bestäms av ett antal faktorer, bland annat storlek dokument, antalet villkoren i dokument, indexering princip målsamling osv. Kopieringen, kan du använda en bättre samling (t.ex. S3) toohave hello de flesta genomströmning tillgänglig (2 500 begärande enheter per sekund). |Integer |Nej (standard: 5) |
+| writeBatchTimeout |Vänta tills hello åtgärden toocomplete innan tidsgränsen uppnås. |TimeSpan<br/><br/> Exempel ”: 00: 30:00” (30 minuter). |Nej |
 
 ## <a name="importexport-json-documents"></a>Importera och exportera JSON-dokument
 Den här Cosmos-DB-anslutningen kan du enkelt
@@ -135,15 +135,15 @@ Den här Cosmos-DB-anslutningen kan du enkelt
 * Exportera JSON-dokument från Cosmos DB collecton till olika filbaserade butiker.
 * Migrera data mellan två Cosmos DB samlingar som-är.
 
-Att uppnå kopian schema-oberoende 
-* När du använder guiden Kopiera, kontrollera den **”exportera som – som JSON-filer eller Cosmos DB samling”** alternativet.
-* När med JSON redigering inte anger avsnittet ”struktur” i Cosmos DB datauppsättning/ar eller egenskapen ”nestingSeparator” i Cosmos DB källor/mottagare i en Kopieringsaktivitet. Om du vill importera från / exportera till JSON-filer, ange formatet i filen store datamängden som ”JsonFormat”, config ”filePattern” och hoppa över inställningarna för rest-format, se [JSON-format](data-factory-supported-file-and-compression-formats.md#json-format) avsnittet detaljer.
+tooachieve sådana schema-oberoende kopiera, 
+* När du använder guiden Kopiera Kontrollera hello **”exportera som-tooJSON filer eller Cosmos DB samlingen”** alternativet.
+* När med JSON redigering inte anger hello ”struktur” avsnittet i Cosmos DB datauppsättning/ar eller egenskapen ”nestingSeparator” i Cosmos DB källor/mottagare i en Kopieringsaktivitet. tooimport från / exportera tooJSON filer, ange formattyp i hello filen store dataset som ”JsonFormat”, config ”filePattern” och hoppa över hello rest-formatinställningar, se [JSON-format](data-factory-supported-file-and-compression-formats.md#json-format) avsnittet detaljer.
 
 ## <a name="json-examples"></a>JSON-exempel
-Följande exempel ger exempel JSON definitioner som du kan använda för att skapa en pipeline med hjälp av [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md) eller [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De visar hur du kopierar data till och från Azure Cosmos DB och Azure Blob Storage. Dock datan kan kopieras **direkt** från någon av källorna till någon av sänkor anges [här](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med hjälp av aktiviteten kopiera i Azure Data Factory.
+hello följande exempel ger exempel JSON definitioner som du kan använda toocreate en pipeline med hjälp av [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md) eller [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De visar hur toocopy data tooand från Azure Cosmos DB och Azure Blob Storage. Dock datan kan kopieras **direkt** från någon av hello källor tooany av hello sänkor anges [här](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med hello Kopieringsaktiviteten i Azure Data Factory.
 
-## <a name="example-copy-data-from-azure-cosmos-db-to-azure-blob"></a>Exempel: Kopiera data från Azure Cosmos DB till Azure-Blob
-Exemplet nedan visar:
+## <a name="example-copy-data-from-azure-cosmos-db-tooazure-blob"></a>Exempel: Kopiera data från Azure Cosmos DB tooAzure Blob
+hello exemplet nedan visar:
 
 1. En länkad tjänst av typen [DocumentDb](#linked-service-properties).
 2. En länkad tjänst av typen [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
@@ -151,7 +151,7 @@ Exemplet nedan visar:
 4. Utdata [dataset](data-factory-create-datasets.md) av typen [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 5. En [pipeline](data-factory-create-pipelines.md) med Kopieringsaktiviteten som använder [DocumentDbCollectionSource](#copy-activity-properties) och [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Exemplet kopierar data i Azure Cosmos DB till Azure-Blob. JSON-egenskaper som används i exemplen beskrivs i exemplen i följande avsnitt.
+hello exemplet kopierar data i Azure Cosmos DB tooAzure Blob. hello JSON egenskaper som används i exemplen beskrivs i hello-exempel i följande avsnitt.
 
 **Azure Cosmos-DB länkade tjänsten:**
 
@@ -181,9 +181,9 @@ Exemplet kopierar data i Azure Cosmos DB till Azure-Blob. JSON-egenskaper som an
 ```
 **Azure dokumentet DB indatauppsättning:**
 
-Exemplet förutsätter att du har en samling med namnet **Person** i Azure DB som Cosmos-databasen.
+hello exemplet förutsätter att du har en samling med namnet **Person** i Azure DB som Cosmos-databasen.
 
-Inställningen ”externa”: ”true” och ange externalData principinformation Azure Data Factory-tjänsten att tabellen är extern till data factory och inte kommer från en aktivitet i datafabriken.
+Inställningen ”externa”: ”true” och ange externalData principinformation hello Azure Data Factory-tjänsten hello tabellen är externa toohello data factory och inte kommer från en aktivitet i hello data factory.
 
 ```JSON
 {
@@ -205,7 +205,7 @@ Inställningen ”externa”: ”true” och ange externalData principinformatio
 
 **Azure Blob utdatauppsättningen:**
 
-Data kopieras till en ny blob varje timme med sökvägen för blobben reflektion specifika datetime med timme granularitet.
+Data är kopierade tooa nya blob varje timme med hello sökvägen för hello blob reflektion hello specifika datetime med timme granularitet.
 
 ```JSON
 {
@@ -228,7 +228,7 @@ Data kopieras till en ny blob varje timme med sökvägen för blobben reflektion
   }
 }
 ```
-Exempel JSON-dokumentet i samlingen Person i en Cosmos-DB-databas:
+Exempel JSON-dokumentet i hello Person samling i en Cosmos-DB-databas:
 
 ```JSON
 {
@@ -248,7 +248,7 @@ Exempel:
 SELECT Person.PersonId, Person.Name.First AS FirstName, Person.Name.Middle as MiddleName, Person.Name.Last AS LastName FROM Person
 ```
 
-Följande pipeline kopierar data från samlingen Person i Azure DB som Cosmos-databasen till en Azure blob. Datauppsättningar har angetts som en del av kopieringsaktiviteten indata och utdata.  
+hello följande pipeline kopierar data från hello Person samling i hello Azure Cosmos DB databasen tooan Azure blob. Som en del av hello kopiera aktivitet hello har inkommande och utgående datauppsättningar angetts.  
 
 ```JSON
 {
@@ -291,8 +291,8 @@ Följande pipeline kopierar data från samlingen Person i Azure DB som Cosmos-da
   }
 }
 ```
-## <a name="example-copy-data-from-azure-blob-to-azure-cosmos-db"></a>Exempel: Kopiera data från Azure Blob till Azure Cosmos DB 
-Exemplet nedan visar:
+## <a name="example-copy-data-from-azure-blob-tooazure-cosmos-db"></a>Exempel: Kopiera data från Azure Blob-tooAzure Cosmos DB 
+hello exemplet nedan visar:
 
 1. En länkad tjänst av typen [DocumentDb](#azure-documentdb-linked-service-properties).
 2. En länkad tjänst av typen [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
@@ -300,7 +300,7 @@ Exemplet nedan visar:
 4. Utdata [dataset](data-factory-create-datasets.md) av typen [DocumentDbCollection](#azure-documentdb-dataset-type-properties).
 5. En [pipeline](data-factory-create-pipelines.md) med Kopieringsaktiviteten som använder [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) och [DocumentDbCollectionSink](#azure-documentdb-copy-activity-type-properties).
 
-Exemplet kopierar data från Azure blob till Azure Cosmos DB. JSON-egenskaper som används i exemplen beskrivs i exemplen i följande avsnitt.
+hello exemplet kopierar data från Azure blob-tooAzure Cosmos DB. hello JSON egenskaper som används i exemplen beskrivs i hello-exempel i följande avsnitt.
 
 **Azure Blob storage länkade tjänsten:**
 
@@ -373,7 +373,7 @@ Exemplet kopierar data från Azure blob till Azure Cosmos DB. JSON-egenskaper so
 ```
 **Azure Cosmos-DB utdatauppsättningen:**
 
-Exemplet kopierar data till en samling med namnet ”Person”.
+hello exemplet kopierar tooa datainsamling med namnet ”Person”.
 
 ```JSON
 {
@@ -409,7 +409,7 @@ Exemplet kopierar data till en samling med namnet ”Person”.
   }
 }
 ```
-Följande pipeline kopierar data från Azure Blob till samlingen Person i Cosmos-databasen. Datauppsättningar har angetts som en del av kopieringsaktiviteten indata och utdata.
+hello följande pipeline kopierar data från Azure Blob toohello Person samling i hello Cosmos DB. Som en del av hello kopiera aktivitet hello har inkommande och utgående datauppsättningar angetts.
 
 ```JSON
 {
@@ -430,7 +430,7 @@ Följande pipeline kopierar data från Azure Blob till samlingen Person i Cosmos
           }
           "translator": {
               "type": "TabularTranslator",
-              "ColumnMappings": "FirstName: Name.First, MiddleName: Name.Middle, LastName: Name.Last, BusinessEntityID: BusinessEntityID, PersonType: PersonType, NameStyle: NameStyle, Title: Title, Suffix: Suffix, EmailPromotion: EmailPromotion, rowguid: rowguid, ModifiedDate: ModifiedDate"
+              "ColumnMappings": "FirstName: Name.First, MiddleName: Name.Middle, LastName: Name.Last, BusinessEntityID: BusinessEntityID, PersonType: PersonType, NameStyle: NameStyle, title: aaaTitle, Suffix: Suffix, EmailPromotion: EmailPromotion, rowguid: rowguid, ModifiedDate: ModifiedDate"
           }
         },
         "inputs": [
@@ -454,12 +454,12 @@ Följande pipeline kopierar data från Azure Blob till samlingen Person i Cosmos
   }
 }
 ```
-Om blob Exempelindata som
+Om hello Exempelindata blob som
 
 ```
 1,John,,Doe
 ```
-Utdata JSON i Cosmos DB blir som:
+Hello utdata JSON i Cosmos DB blir som:
 
 ```JSON
 {
@@ -472,15 +472,15 @@ Utdata JSON i Cosmos DB blir som:
   "id": "a5e8595c-62ec-4554-a118-3940f4ff70b6"
 }
 ```
-Azure Cosmos-DB är en NoSQL store för JSON-dokument, där kapslade strukturer är tillåtna. Azure Data Factory gör det möjligt för användaren att ange hierarkin via **nestingSeparator**, vilket är ””. i det här exemplet. Med avgränsare, kopieringsaktiviteten genererar ”Name”-objektet med tre underordnade element först mellan- och efternamn enligt ”Name.First”, ”Name.Middle” och ”Name.Last” i tabelldefinitionen.
+Azure Cosmos-DB är en NoSQL store för JSON-dokument, där kapslade strukturer är tillåtna. Azure Data Factory aktiverar toodenote användarhierarkin via **nestingSeparator**, vilket är ””. i det här exemplet. Med hello avgränsare hello kopieringsaktiviteten genererar hello ”Name”-objekt med tre underordnade element första mellersta och sista, bl.a too"Name.First”, ”Name.Middle” och ”Name.Last” i hello tabell definition.
 
 ## <a name="appendix"></a>Bilaga
-1. **Fråga:** har stöd för att uppdatera Kopieringsaktiviteten befintliga poster?
+1. **Fråga:** hello Kopieringsaktiviteten stöd för uppdatering av befintliga poster?
 
     **Svar:** Nej.
-2. **Fråga:** hur redan har ett nytt försök till en kopia till Azure Cosmos DB behandlar kopieras poster?
+2. **Fråga:** hur redan har ett nytt försök till en kopia tooAzure Cosmos DB behandlar kopieras poster?
 
-    **Svar:** om poster har ett ”ID”-fält och kopieringen görs ett försök att infoga en post med samma ID, kopieringen genererar ett fel.  
+    **Svar:** om poster har ett ”ID”-fält och hello kopieringsåtgärden försöker tooinsert post med hello samma ID, hello kopieringsåtgärden genererar ett fel.  
 3. **Fråga:** stöder Data Factory [intervall eller hash-baserad Datapartitionering](../documentdb/documentdb-partition-data.md)?
 
     **Svar:** Nej.
@@ -489,4 +489,4 @@ Azure Cosmos-DB är en NoSQL store för JSON-dokument, där kapslade strukturer 
     **Svar:** Nej. Endast en samling kan anges just nu.
 
 ## <a name="performance-and-tuning"></a>Prestanda och finjustering
-Se [kopiera aktivitet prestanda och justera guiden](data-factory-copy-activity-performance.md) vill veta mer om viktiga faktorer som påverkan prestanda för flytt av data (Kopieringsaktiviteten) i Azure Data Factory och olika sätt att optimera den.
+Se [kopiera aktivitet prestanda och justera guiden](data-factory-copy-activity-performance.md) toolearn om nyckeln faktorer som påverkan prestanda för flytt av data (Kopieringsaktiviteten) i Azure Data Factory och olika sätt toooptimize den.

@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera ett Kör som-konto i Azure | Microsoft Docs"
-description: "Den här självstudien beskriver steg för steg hur du skapar, testar och använder autentisering med säkerhetsobjekt i Azure Automation."
+title: "aaaConfigure ett Azure kör som-konto | Microsoft Docs"
+description: "Den här självstudiekursen vägleder dig genom hello skapa, testa och exempel användning av säkerhetsobjekt autentisering i Azure Automation."
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -17,79 +17,79 @@ ms.date: 04/06/2017
 ms.author: magoedte
 ROBOTS: NOINDEX
 redirect_url: /azure/automation/
-redirect_document_id: TRUE
-ms.openlocfilehash: f88c775eba19bb227d0e206d6420c08b57305b92
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: 06675d2f6b9d8e7260ffaead4f2b2f61c2b98d13
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="authenticate-runbooks-with-an-azure-run-as-account"></a>Autentisera runbookflöden med ett Kör som-konto i Azure
-Den här artikeln beskriver hur du konfigurerar ett Azure Automation-konto på Azure Portal. Du gör detta genom att använda funktionen Kör som-konto för att autentisera runbookflöden som hanterar resurser i Azure Resource Manager eller Azure Service Management.
+Den här artikeln visar hur tooconfigure en Azure Automation-kontot i hello Azure-portalen. toodo så är fallet bör du använda hello kör som-konto funktionen tooauthenticate runbooks hantera resurser i Azure Resource Manager eller Azure Service Management.
 
-När du skapar ett Automation-konto på Azure Portal skapar du automatiskt två konton:
+När du skapar ett Automation-konto i hello Azure-portalen kan skapa du automatiskt två konton:
 
-* Ett Kör som-konto. Det här kontot skapar ett tjänstobjekt i Azure Active Directory (AD Azure) och ett certifikat. Det tilldelar också den rollbaserade åtkomstkontrollen (RBAC) för deltagare, som hanterar Resource Manager-resurser med hjälp av runbookflöden.
-* Ett klassiskt Kör som-konto. Det här kontot överför ett hanteringscertifikat som används för att hantera Service Management-resurser eller klassiska resurser med hjälp av runbookflöden.
+* Ett Kör som-konto. Det här kontot skapar ett tjänstobjekt i Azure Active Directory (AD Azure) och ett certifikat. Det ger också hello deltagare rollbaserad åtkomstkontroll (RBAC), som hanterar Resource Manager-resurser med hjälp av runbooks.
+* Ett klassiskt Kör som-konto. Det här kontot laddar upp ett hanteringscertifikat som används toomanage Service Management eller klassiska resurser med hjälp av runbooks.
 
-Genom att skapa ett Automation-konto kan du underlätta processen och snabbt börja skapa och distribuera runbookflöden för dina automatiseringsbehov.
+Skapa en Automation konto gör hello enklare för dig och hjälper dig att snabbt börja skapa och distribuera runbooks toosupport ditt automation måste.
 
 Med Kör som-konton och klassiska Kör som-konton kan du:
 
-* Tillhandahålla en standardiserad metod för att autentisera med Azure när du hanterar Resource Manager- eller Service Management-resurser från runbookflöden på Azure Portal.
-* Automatisera användningen av globala runbook som du kan konfigurera i Azure Alerts.
+* Ange ett standardiserat sätt tooauthenticate med Azure när du hanterar hanteraren för filserverresurser eller Service Management-resurser från runbooks i hello Azure-portalen.
+* Automatisera hello användning av globala runbooks som du kan konfigurera i Azure-aviseringar.
 
 > [!NOTE]
-> För [integreringsfunktionen för Azure-aviseringar](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) med globala Automation-runbookflöden krävs ett Automation-konto som konfigurerats med ett Kör som-konto och ett klassiskt Kör som-konto. Du kan välja ett Automation-konto som redan har definierade Kör som-konton och klassiska Kör som-konton eller välja att skapa ett nytt Automation-konto.
+> Hej [Azure integration postaviseringsfunktionen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) med Automation globala runbooks kräver ett Automation-konto som har konfigurerats med en Kör som-konto och klassiska kör som-konto. Du kan välja ett Automation-konto som redan har definierats kör som och klassiska kör som-konton eller du toocreate ett nytt Automation-konto.
 >  
 
-Den här artikeln beskriver hur du skapar ett Automation-konto från Azure Portal, hur du uppdaterar ett Automation-konto med hjälp av Azure PowerShell, hur hanterar kontokonfigurationen samt hur du autentiserar i dina runbookflöden.
+Den här artikeln visar hur toocreate ett Automation-konto från hello Azure-portalen, uppdatera ett Automation-konto med hjälp av Azure PowerShell, hantera hello kontokonfiguration och autentiseras i dina runbooks.
 
-Innan du skapar ett Automation-konto är det viktigt att du förstår och tänker på följande:
+Innan du börjar skapa ett Automation-konto, är en bra idé toounderstand och Tänk hello följande:
 
-* Nya Automation-konton som du skapar påverkar inte Automation-konton som du redan har skapat i den klassiska distributionsmodellen eller i Resource Manager-distributionsmodellen.
-* Processen fungerar endast för Automation-konton som du skapar på Azure Portal. Om du försöker skapa ett konto från den klassiska Azure-portalen så replikeras inte Kör som-kontokonfigurationen.
-* Om du redan har runbookflöden och tillgångar (till exempel scheman eller variabler) för att hantera klassiska resurser och du vill att dina runbookflöden ska autentisera med det nya klassiska Kör som-kontot, gör du något av följande:
+* Skapa ett Automation-konto påverkar inte Automation-konton som du kanske redan har skapat i hello klassiska eller Resource Manager-distributionsmodellen.
+* hello processen fungerar endast för Automation-konton som du skapar i hello Azure-portalen. Försöker toocreate ett konto från hello klassiska Azure-portalen replikerar inte konfigurationen hello kör som-konto.
+* Om du redan har runbookflöden och tillgångar (till exempel scheman eller variabler) i plats toomanage klassiska resurser och du vill runbooks tooauthenticate med hello nya klassiska kör som-konto, gör du något av följande hello:
 
-  * Om du vill skapa ett klassiskt Kör som-konto följer du anvisningarna i avsnittet ”Hantera ett Kör som-konto”. 
-  * Om du vill uppdatera ett befintligt konto använder du PowerShell-skriptet i avsnittet ”Uppdatera ett Automation-konto med hjälp av PowerShell”.
-* För att autentisera med det nya Kör som-kontot och det klassiska Kör som-kontot för Automation måste du ändra dina befintliga runbookflöden med hjälp av exempelkoden i avsnittet [Exempel på autentiseringskod](#authentication-code-examples).
+  * toocreate klassiska kör som-konton, följ instruktionerna för hello under hello ”hantera dina kör som-konto”. 
+  * tooupdate ditt befintliga konto, Använd hello PowerShell-skript under hello ”uppdatera ditt Automation-konto med hjälp av PowerShell”.
+* tooauthenticate med hjälp av hello nytt kör som-konto och klassiska kör som Automation-konto behöver du toomodify dina befintliga runbooks med hello exempelkoden som visas i avsnittet hello [Autentiseringskod](#authentication-code-examples).
 
     >[!NOTE]
-    >Kör som-kontot används för autentisering mot Resource Manager-resurser med hjälp av det certifikatbaserade tjänstobjektet. Det klassisk Kör som-kontot används för att autentisera mot Service Management-resurser med ett hanteringscertifikat.
+    >hello kör som-konto är för autentisering gentemot Resource Manager-resurser med hjälp av hello certifikatbaserad tjänstens huvudnamn. hello klassiska kör som-konto är för att autentisera mot Service Management-resurser med ett certifikat.
 
-## <a name="create-an-automation-account-from-the-azure-portal"></a>Skapa ett Automation-konto från Azure Portal
-I det här avsnittet skapar du ett Azure Automation-konto från Azure Portal, vilket i sin tur skapar både ett Kör som-konto och ett klassiskt Kör som-konto.
+## <a name="create-an-automation-account-from-hello-azure-portal"></a>Skapa ett Automation-konto från hello Azure-portalen
+I det här avsnittet skapar du ett Azure Automation-konto från hello Azure-portalen, vilket i sin tur skapar både en Kör som-konto och klassiska kör som-konto.
 
 >[!NOTE]
->För att kunna skapa ett Automation-konto måste du vara medlem i rollen Tjänstadministratörer eller vara medadministratör för den prenumeration som ger åtkomst till prenumerationen. Du måste också läggas till som användare i prenumerationens Active Directory-standardinstans. Kontot behöver inte tilldelas en privilegierad roll.
+>toocreate ett Automation-konto som du måste vara Rollmedlem hello Service administratörer eller medadministratör för hello-prenumeration som ger åtkomst toohello prenumeration. Du måste också läggas till som en användare toothat prenumeration standardinstansen för Active Directory. hello kontot behöver inte toobe som tilldelats en privilegierad roll.
 >
->Om du inte är medlem i prenumerationens Active Directory-instans innan du läggs till i rollen som medadministratör för prenumerationen, läggs du till i Active Directory som gäst. I detta fall visas varningen ”Du har inte behörighet att skapa ...” på bladet **Lägg till Automation-konto**.
+>Om du inte är medlem i Active Directory-instans för hello prenumeration innan du lade toohello medadministratör rollen hello prenumeration kan läggs du tooActive Directory som en gäst. I den här instansen får du en ”du har inte behörighet toocreate...” varning för hello **lägga till Automation-konto** bladet.
 >
->Användare som har lagts till i rollen som medadministratör kan först tas bort från prenumerationens Active Directory-instans och sedan läggas till igen så att de blir fullständiga användare i Active Directory. Du kan kontrollera detta i rutan **Azure Active Directory** på Azure Portal genom att välja **Användare och grupper**, välja **Alla användare**, välja den specifika användaren och sedan välja **Profil**. Värdet för attributet **Användartyp** under användarens profil bör inte vara lika med **Gäst**.
+>Användare som har lagts till toohello samtidigt administratörsroll först kan tas bort från hello prenumeration Active Directory-instans och läggas till toomake dem en fullständig användare i Active Directory. tooverify detta hello **Azure Active Directory** rutan i hello Azure-portalen genom att välja **användare och grupper**, välja **alla användare** och, när du har valt hello specifika användare, välja **profil**. Hej värdet för hello **användartyp** attributet under hello användare profil ska inte vara lika med **gäst**.
 >
 
-1. Logga in på Azure Portal med ett konto som är medlem i rollen för prenumerationsadministratörer och som är medadministratör för prenumerationen.
+1. Logga in toohello Azure-portalen med ett konto som är medlem i administratörsrollen i hello prenumeration och medadministratör för hello prenumeration.
 
 2. Välj **Automation-konton**.
 
-3. Klicka på **Lägg till** på bladet **Automation-konton**.
-Bladet **Lägg till Automation-konto** öppnas.
+3. På hello **Automation-konton** bladet, klickar du på **Lägg till**.
+Hej **lägga till Automation-konto** blad öppnas.
 
- ![Bladet ”Lägg till Automation-konto”](media/automation-sec-configure-azure-runas-account/create-automation-account-properties-b.png)
+ ![Hej ”Lägg till Automation-konto” bladet](media/automation-sec-configure-azure-runas-account/create-automation-account-properties-b.png)
 
    > [!NOTE]
-   > Om ditt konto inte är medlem i rollen för prenumerationsadministratörer och medadministratör för prenumerationen visas följande varning på bladet **Lägg till Automation-konto**:
+   > Om ditt konto inte är medlem i administratörsrollen i hello prenumeration och medadministratör för prenumerationen hello hello följande varning visas på hello **lägga till Automation-konto** bladet:
    >
    >![Varningsmeddelande för Lägg till Automation-konto](media/automation-sec-configure-azure-runas-account/create-account-without-perms.png)
    >
    >
 
-4. På bladet **Lägg till Automation-konto** skriver du namnet på det nya Automation-kontot i rutan **Namn**.
+4. På hello **lägga till Automation-konto** bladet i hello **namn** Skriv ett namn för det nya Automation-kontot.
 
-5. Om du har mer än en prenumeration gör du följande:
+5. Om du har mer än en prenumeration hello följande:
 
-    a. Under **Prenumeration** anger du en prenumeration för det nya kontot.
+    a. Under **prenumeration**, ange ett nytt hello-konto.
 
     b. Under **Resursgrupp** klickar du på **Skapa ny** eller på **Använd befintlig**.
 
@@ -98,189 +98,189 @@ Bladet **Lägg till Automation-konto** öppnas.
 6. Under **Skapa Kör som-konto i Azure** väljer du **Ja** och klickar sedan på **Skapa**.
 
    > [!NOTE]
-   > Om du väljer att inte skapa Kör som-kontot genom att välja **Nej** visas ett varningsmeddelande på bladet **Lägg till Automation-konto**. Även om kontot skapas på Azure Portal har det ingen motsvarande autentiseringsidentitet i katalogtjänsten för din klassiska prenumeration eller Resource Manager-prenumeration. Kontot har därför inte åtkomst till resurser i din prenumeration. Det här scenariot förhindrar att runbookflöden som refererar till det här kontot autentiseras och utför åtgärder mot resurser i dessa distributionsmodeller.
+   > Om du väljer inte toocreate hello kör som-konto genom att välja **nr**, visas ett varningsmeddelande hello **lägga till Automation-konto** bladet. Även om hello kontot skapas i hello Azure-portalen har inte en motsvarande autentiseringsidentitet inom din klassiska eller Resource Manager prenumeration katalogtjänsten. Hello-kontot har därför ingen åtkomst tooresources i din prenumeration. Det här scenariot förhindrar att runbookflöden som refererar till det här kontot autentiseras och utför åtgärder mot resurser i dessa distributionsmodeller.
    >
-   > ![Varningsmeddelande på bladet ”Lägg till Automation-konto”](media/automation-sec-configure-azure-runas-account/create-account-decline-create-runas-msg.png)
+   > ![Varningsmeddelande på hello ”Lägg till Automation-konto” blad](media/automation-sec-configure-azure-runas-account/create-account-decline-create-runas-msg.png)
    >
-   > Dessutom, eftersom tjänstobjektet inte skapas, så tilldelas inte rollen Deltagare.
+   > Dessutom kan tilldelas inte hello deltagarrollen eftersom hello tjänstens huvudnamn inte har skapats.
    >
 
-7. Medan Azure skapar Automation-kontot kan du följa förloppet under **Meddelanden** på menyn.
+7. Medan Azure skapar hello Automation-konto, du kan följa förloppet för hello under **meddelanden** hello-menyn.
 
 ### <a name="resources"></a>Resurser
-När Automation-kontot har skapats skapas flera resurser automatiskt. Resurserna sammanfattas i följande två tabeller:
+När hello Automation-konto har skapats, skapas flera resurser automatiskt åt dig. hello resurser sammanfattas i följande två tabeller hello:
 
 #### <a name="run-as-account-resources"></a>Resurser för Kör som-konton
 
 | Resurs | Beskrivning |
 | --- | --- |
-| AzureAutomationTutorial-runbook | Ett exempel på en grafisk runbook som visar hur du autentiserar med hjälp av Kör som-kontot och hur du hämtar alla Resource Manager-resurser. |
-| AzureAutomationTutorialScript-runbook | Ett exempel på en PowerShell-runbook som visar hur du autentiserar med hjälp av Kör som-kontot och hur du hämtar alla Resource Manager-resurser. |
-| AzureRunAsCertificate | Certifikattillgången som skapas automatiskt när du skapar ett Automation-konto eller använder följande PowerShell-skript för ett befintligt konto. Certifikatet gör att du kan autentisera med Azure så att du kan hantera Azure Resource Manager-resurser från runbookflöden. Certifikatet har en livslängd på ett år. |
-| AzureRunAsConnection | Anslutningstillgången som skapas automatiskt när du skapar ett Automation-konto eller använder PowerShell-skriptet för ett befintligt konto. |
+| AzureAutomationTutorial-runbook | Ett exempel grafisk runbook som visar hur hello tooauthenticate med hjälp av kör som-konto och hämtar alla hello Resource Manager-resurser. |
+| AzureAutomationTutorialScript-runbook | Ett exempel PowerShell-runbook som visar hur hello tooauthenticate med hjälp av kör som-konto och hämtar alla hello Resource Manager-resurser. |
+| AzureRunAsCertificate | Hej certifikattillgång som skapas automatiskt när du skapar ett Automation-konto eller använda hello följande PowerShell-skript för ett befintligt konto. hello certifikatet kan tooauthenticate med Azure så att du kan hantera Azure Resource Manager-resurser från runbooks. hello certifikatet har en livslängd för ett år. |
+| AzureRunAsConnection | Hej anslutningstillgång som skapas automatiskt när du skapar ett Automation-konto eller använda hello PowerShell-skript för ett befintligt konto. |
 
 #### <a name="classic-run-as-account-resources"></a>Resurser för klassiska Kör som-konton
 
 | Resurs | Beskrivning |
 | --- | --- |
-| AzureClassicAutomationTutorial-runbook | Ett exempel på en grafisk runbook som hämtar alla virtuella datorer som skapas med den klassiska distributionsmodellen i en prenumeration med hjälp av det klassiska Kör som-kontot (certifikat) och som sedan skriver namnet och statusen för de virtuella datorerna. |
-| AzureClassicAutomationTutorial Script-runbook | Ett exempel på en PowerShell-runbook som hämtar alla klassiska virtuella datorer i en prenumeration med hjälp av det klassiska Kör som-kontot (certifikat) och som sedan skriver namnet och statusen för de virtuella datorerna. |
-| AzureClassicRunAsCertificate | Certifikattillgången som skapas automatiskt och som du använder för att autentisera med Azure så att du kan hantera klassiska Azure-resurser från runbookflöden. Certifikatet har en livslängd på ett år. |
-| AzureClassicRunAsConnection | Anslutningstillgången som skapas automatiskt och som du använder för att autentisera med Azure så att du kan hantera klassiska Azure-resurser från runbookflöden. |
+| AzureClassicAutomationTutorial-runbook | En grafisk exempel-runbook som hämtar alla hello virtuella datorer som skapas med hello klassiska distributionsmodellen för en prenumeration med hjälp av hello klassiska kör som-konto (certifikat) och sedan skriver hello VM namn och status. |
+| AzureClassicAutomationTutorial Script-runbook | Ett exempel PowerShell-runbook som hämtar alla hello klassiska virtuella datorer i en prenumeration med hjälp av hello klassiska kör som-konto (certifikat) och sedan skriver hello VM-namn och status. |
+| AzureClassicRunAsCertificate | hello skapas automatiskt certifikattillgång använda tooauthenticate med Azure så att du kan hantera Azure klassiska resurser från runbooks. hello certifikatet har en livslängd för ett år. |
+| AzureClassicRunAsConnection | hello automatiskt skapade anslutningstillgång använda tooauthenticate med Azure så att du kan hantera Azure klassiska resurser från runbooks. |
 
 ## <a name="verify-run-as-authentication"></a>Verifiera Kör som-autentisering
-Utför ett litet test för att bekräfta att du kan autentisera med hjälp av det nya Kör som-kontot.
+Utför en test små tooconfirm som du kan autentisera med hjälp av hello nytt kör som-konto.
 
-1. Öppna Automation-kontot som du skapade tidigare på Azure Portal.
+1. Öppna hello Automation-konto som du skapade tidigare i hello Azure-portalen.
 
-2. Öppna listan med runbookflöden genom att klicka på panelen med **runbookflöden**.
+2. Klicka på hello **Runbooks** panelen tooopen hello lista över runbooks.
 
-3. Välj **AzureAutomationTutorialScript**-runbooken och klicka sedan på **Starta** för att starta runbooken. Följande sker:
- * Ett [runbook-jobb](automation-runbook-execution.md) skapas, bladet **Jobb** visas och jobbstatusen visas på panelen **Jobbsammanfattning**.
- * Jobbets första status är **I kö** vilket betyder att det väntar på att en runbook-arbetsroll i molnet ska bli tillgänglig.
- * Statusen ändras till **Startar** när ett arbetsobjekt begär jobbet.
- * Statusen ändras till **Körs** när runbooken börjar köras.
- * När runbook-jobbet har körts bör statusen vara **Slutfört**.
+3. Välj hello **AzureAutomationTutorialScript** runbook, och klicka sedan på **starta** toostart hello runbook. hello följande händelser inträffar:
+ * En [runbook-jobbet](automation-runbook-execution.md) skapas hello **jobbet** bladet visas och hello jobbstatus visas i hello **jobbsammanfattning** panelen.
+ * hello jobbstatus börjar som **i kö**, vilket betyder att det väntar på att en runbook worker i hello molnet toobecome tillgängliga.
+ * hello statusen **Start** när en arbetsprocess anspråk hello jobb.
+ * hello statusen **kör** när hello runbook börjar köras.
+ * När hello runbook-jobbet har körts ska du se statusen **slutförd**.
 
        ![Security Principal Runbook Test](media/automation-sec-configure-azure-runas-account/job-summary-automationtutorialscript.png)
-4. Om du vill visa ett detaljerat resultat av runbook-jobbet klickar du på panelen **Utdata**.  
-Bladet **Utdata** visas och anger att runbooken har autentiserats och returnerat en lista över alla tillgängliga resurser i resursgruppen.
+4. toosee Hej detaljerade resultat för hello runbook, klicka på hello **utdata** panelen.  
+Hej **utdata** bladet visas, visar att hello runbook har autentiserats och returneras en lista över alla resurser som är tillgängliga i hello resursgruppen.
 
-5. Stäng bladet **Utdata** och gå tillbaka till bladet **Jobbsammanfattning**.
+5. Stäng hello **utdata** bladet tooreturn toohello **jobbsammanfattning** bladet.
 
-6. Stäng bladet **Jobbsammanfattning** och motsvarande blad för **AzureAutomationTutorialScript**-runbooken.
+6. Stäng hello **jobbsammanfattning** bladet och hello motsvarande **AzureAutomationTutorialScript** runbook-bladet.
 
 ## <a name="verify-classic-run-as-authentication"></a>Verifiera klassisk Kör som-autentisering
-Utför ett liknande litet test för att bekräfta att du kan autentisera med hjälp av det nya klassiska Kör som-kontot.
+Utföra en liknande liten testa tooconfirm som du kan autentisera med hjälp av hello nya klassiska kör som-konto.
 
-1. Öppna Automation-kontot som du skapade tidigare på Azure Portal.
+1. Öppna hello Automation-konto som du skapade tidigare i hello Azure-portalen.
 
-2. Öppna listan med runbookflöden genom att klicka på panelen med **runbookflöden**.
+2. Klicka på hello **Runbooks** panelen tooopen hello lista över runbooks.
 
-3. Välj **AzureAutomationTutorialScript**-runbooken och klicka på **Starta** för att starta runbooken. Följande sker:
+3. Välj hello **AzureClassicAutomationTutorialScript** runbook, och klicka sedan på **starta** för startar hello runbook. hello följande händelser inträffar:
 
- * Ett [runbook-jobb](automation-runbook-execution.md) skapas, bladet **Jobb** visas och jobbstatusen visas på panelen **Jobbsammanfattning**.
- * Jobbets första status är **I kö** vilket betyder att det väntar på att en runbook-arbetsroll i molnet ska bli tillgänglig.
- * Statusen ändras till **Startar** när ett arbetsobjekt begär jobbet.
- * Statusen ändras till **Körs** när runbooken börjar köras.
- * När runbook-jobbet har körts bör statusen vara **Slutfört**.
+ * En [runbook-jobbet](automation-runbook-execution.md) skapas hello **jobbet** bladet visas och hello jobbstatus visas i hello **jobbsammanfattning** panelen.
+ * hello jobbstatus börjar som **i kö**, vilket betyder att det väntar på att en runbook worker i hello molnet toobecome tillgängliga.
+ * hello statusen **Start** när en arbetsprocess anspråk hello jobb.
+ * hello statusen **kör** när hello runbook börjar köras.
+ * När hello runbook-jobbet har körts ska du se statusen **slutförd**.
 
     ![Runbook-test för säkerhetsobjekt](media/automation-sec-configure-azure-runas-account/job-summary-automationclassictutorialscript.png)<br>
-4. Om du vill visa ett detaljerat resultat av runbook-jobbet klickar du på panelen **Utdata**.  
-Bladet **Utdata** visas och anger att runbooken har autentiserats och returnerat en lista över alla klassiska virtuella datorer i prenumerationen.
+4. toosee Hej detaljerade resultat för hello runbook, klicka på hello **utdata** panelen.  
+Hej **utdata** bladet visas, där den hello runbook har autentiserats och returneras en lista över alla klassiska virtuella datorer i hello prenumeration.
 
-5. Stäng bladet **Utdata** och gå tillbaka till bladet **Jobbsammanfattning**.
+5. Stäng hello **utdata** bladet tooreturn toohello **jobbsammanfattning** bladet.
 
-6. Stäng bladet **Jobbsammanfattning** och motsvarande blad för **AzureAutomationTutorialScript**-runbooken.
+6. Stäng hello **jobbsammanfattning** bladet och hello motsvarande **AzureAutomationTutorialScript** runbook-bladet.
 
 ## <a name="managing-your-run-as-account"></a>Hantera ett Kör som-konto
-Någon gång innan Automation-kontot går ut måste du förnya certifikatet. Om du tror att ditt Kör som-konto har komprometterats kan du ta bort och återskapa det. Det här avsnittet beskriver hur du utför dessa åtgärder.
+Någon gång innan det Automation-kontot upphör att gälla måste toorenew hello certifikat. Om du tror att hello kör som-konto har komprometterats kan du ta bort och skapa den igen. Det här avsnittet beskrivs hur tooperform dessa åtgärder.
 
 ### <a name="self-signed-certificate-renewal"></a>Förnya självsignerade certifikat
-Det självsignerade certifikatet som du skapade för Kör som-kontot går ut ett år efter det datum då det skapades. Du kan förnya det när som helst innan det upphör att gälla. När du förnyar det behålls det aktuella giltiga certifikatet för att säkerställa att alla runbookflöden som placerats i kö eller som körs aktivt, och som autentiserar med Kör som-kontot, inte påverkas negativt. Certifikatet förblir giltigt fram till dess förfallodatum.
+hello självsignerat certifikat som du skapade för hello kör som-konto går ut ett år från hello dag skapas. Du kan förnya det när som helst innan det upphör att gälla. När du förnyar det är hello aktuella giltiga certifikat kvarhållna tooensure att alla runbooks som lagts i kö upp eller aktivt körs och som autentiserar med hello kör som-konto inte påverkas negativt. hello intyg är giltigt fram till dess förfallodatum.
 
 > [!NOTE]
-> Om du har konfigurerat ditt Kör som-konto för Automation att använda ett certifikat som utfärdats av din företagscertifikatutfärdare och du använder det här alternativet, så ersätts företagscertifikatet av ett självsignerat certifikat.
+> Om du har konfigurerat ditt Automation kör som-konto toouse ett certifikat utfärdat av en enterprise-certifikatutfärdare och du använder det här alternativet, ersätts hello företagscertifikat av ett självsignerat certifikat.
 
-Du förnyar certifikatet genom att göra följande:
+toorenew hello certifikat, hello följande:
 
-1. Öppna ditt Automation-konto på Azure Portal.
+1. Öppna hello Automation-konto i hello Azure-portalen.
 
-2. På bladet **Automation-konto** väljer du **Kör som-konton** under **Kontoinställningar** i rutan **Kontoegenskaper**.
+2. På hello **Automation-konto** bladet i hello **konto egenskaper** rutan under **kontoinställningar**väljer **kör som-konton**.
 
     ![Egenskapsrutan för Automation-konto](media/automation-sec-configure-azure-runas-account/automation-account-properties-pane.png)
-3. På egenskapsbladet för **Kör som-konton** väljer du antingen Kör som-kontot eller det klassiska Kör som-kontot som du vill förnya certifikatet för.
+3. På hello **kör som-konton** egenskapsbladet, Välj antingen hello kör som-konto eller hello klassiska kör som-konto som du vill ha toorenew hello certifikat för.
 
-4. På bladet **Egenskaper** för det valda kontot klickar du på **Förnya certifikat**.
+4. På hello **egenskaper** bladet för hello valt konto, klickar du på **förnya certifikat**.
 
     ![Förnya certifikat för Kör som-konto](media/automation-sec-configure-azure-runas-account/automation-account-renew-runas-certificate.png)
 
-5. Medan certifikatet förnyas kan du följa förloppet under **Meddelanden** på menyn.
+5. Medan hello-certifikat förnyas du kan följa förloppet för hello under **meddelanden** hello-menyn.
 
 ### <a name="delete-a-run-as-or-classic-run-as-account"></a>Ta bort ett Kör som-konto eller ett klassiskt Kör som-konto
-Det här avsnittet beskriver hur du tar bort och sedan återskapar ett Kör som-konto eller ett klassiskt Kör som-konto. När du utför den här åtgärden behålls Automation-kontot. När du har tagit bort ett Kör som-konto eller ett klassiskt Kör som-konto kan du återskapa det på Azure Portal.
+Det här avsnittet beskrivs hur toodelete och sedan skapa ett kör som eller klassiska kör som-konto. När du utför den här åtgärden sparas hello Automation-konto. När du har tagit bort ett kör som eller klassiska kör som-konto kan skapa du den igen hello Azure-portalen.
 
-1. Öppna ditt Automation-konto på Azure Portal.
+1. Öppna hello Automation-konto i hello Azure-portalen.
 
-2. På bladet **Automation-konto** väljer du **Kör som-konton** i rutan för kontoegenskaper.
+2. På hello **automatiseringskontot** bladet i hello konto egenskapsrutan, Välj **kör som-konton**.
 
-3. På egenskapsbladet för **Kör som-konton** väljer du antingen Kör som-kontot eller det klassiska Kör som-kontot som du vill ta bort. Klicka på **Ta bort** på bladet **Egenskaper** för det valda kontot.
+3. På hello **kör som-konton** egenskapsbladet, Välj antingen hello kör som-konto eller klassiska kör som-konto som du vill toodelete. Klicka sedan på hello **egenskaper** bladet för hello valt konto, klickar du på **ta bort**.
 
  ![Ta bort Kör som-konto](media/automation-sec-configure-azure-runas-account/automation-account-delete-runas.png)
 
-4. Medan kontot tas bort kan du följa förloppet under **Meddelanden** på menyn.
+4. Medan hello konto raderas, du kan följa förloppet hello under **meddelanden** hello-menyn.
 
-5. När kontot har tagits bort måste du återskapa det på egenskapsbladet för **Kör som-konton** genom att välja alternativet Skapa för **Kör som-konto i Azure**.
+5. När hello-konto har tagits bort, du kan skapa den igen på hello **kör som-konton** egenskapsbladet genom att välja hello skapa alternativet **Azure kör som-konto**.
 
- ![Återskapa Kör som-kontot för Automation](media/automation-sec-configure-azure-runas-account/automation-account-create-runas.png)
+ ![Skapa nytt hello Automation kör som-konto](media/automation-sec-configure-azure-runas-account/automation-account-create-runas.png)
 
 ### <a name="misconfiguration"></a>Felaktig konfiguration
-Vissa konfigurationsobjekt som krävs för att Kör som-kontot eller det klassiska Kör som-kontot ska fungera kanske har tagits bort eller kanske inte skapades korrekt under den ursprungliga konfigurationen. Exempel på dessa objekt är:
+Vissa konfigurationsobjekt som är nödvändiga för hello kör som eller klassiska kör som-konto toofunction kanske korrekt har tagits bort eller skapats felaktigt under installationen. hello-objekt är:
 
 * Certifikattillgång
 * Anslutningstillgång
-* Kör som-konto har tagits bort från deltagarrollen
+* Kör som-konto har tagits bort från hello deltagarrollen
 * Huvudnamn för tjänsten eller program i Azure AD
 
-I den föregående instansen och andra instanser av felaktiga konfigurationer identifierar Automation-kontot ändringarna och visar statusen *Ofullständig* på egenskapsbladet för **Kör som-konton** för kontot.
+I föregående hello och andra instanser av felaktig konfiguration hello Automation-konto identifierar hello ändras och visar statusen *ofullständigt* på hello **kör som-konton** egenskapsbladet för hello konto.
 
 ![Konfigurationsstatusen Ofullständig för Kör som-konto](media/automation-sec-configure-azure-runas-account/automation-account-runas-incomplete-config.png)
 
-När du väljer Kör som-kontot visas följande felmeddelande i rutan **Egenskaper** för kontot:
+När du väljer hello-kör som-konto hello konto **egenskaper** hello följande felmeddelande visas:
 
 ![Varningsmeddelande om ofullständig konfiguration av Kör som-konto](media/automation-sec-configure-azure-runas-account/automation-account-runas-incomplete-config-msg.png).
 
-Du kan snabbt lösa dessa problem med Kör som-kontot genom att ta bort och återskapa kontot.
+Du kan snabbt lösa problemen kör som-konto genom att ta bort och återskapa hello-konto.
 
 ## <a name="update-your-automation-account-by-using-powershell"></a>Uppdatera Automation-kontot med hjälp av PowerShell
-Du kan använda PowerShell för att uppdatera ett befintligt Automation-konto om:
+Du kan använda PowerShell tooupdate befintligt Automation-konto om:
 
-* Du skapar ett Automation-konto men väljer att inte skapa Kör som-kontot.
-* Du redan har ett Automation-konto för att hantera Resource Manager-resurser och du vill uppdatera det med ett Kör som-konto för runbook-autentisering.
-* Du redan hanterar klassiska resurser med hjälp av ett Automation-konto och du vill uppdatera det och använda det klassiska Kör som-kontot i stället för att skapa ett nytt konto och migrera dina runbookflöden och tillgångar till det.   
-* Du vill skapa ett Kör som-konto och ett klassiskt Kör som-konto genom att använda ett certifikat utfärdat av en företagscertifikatutfärdare (CA).
+* Du skapar ett Automation-konto men neka toocreate hello kör som-konto.
+* Du använder redan en Automation-konto toomanage Resource Manager-resurser och du vill tooupdate hello konto tooinclude hello kör som-konto för runbook-autentisering.
+* Du redan använder en Automation-konto toomanage klassiska resurser och du vill tooupdate den toouse hello klassiska kör som-konto i stället för att skapa ett nytt konto och migrera dina runbook-flöden och tillgångar tooit.   
+* Vill du toocreate kör som och klassiska kör som-konto med hjälp av ett certifikat utfärdat av enterprise-certifikatutfärdare (CA).
 
-Skriptet har följande krav:
+hello skriptet har hello följande krav:
 
-* Skriptet kan endast köras i Windows 10 och Windows Server 2016 med Azure Resource Manager-moduler med version 2.01 och senare. Det stöds inte i tidigare versioner av Windows.
-* Azure PowerShell 1.0 och senare. Information om PowerShell 1.0-versionen finns i [Installera och konfigurera Azure PowerShell](/powershell/azure/overview).
-* Ett Automation-konto, som refereras som värdet för *-AutomationAccountName*- och *-ApplicationDisplayName*-parametrarna i följande PowerShell-skript.
+* hello-skript kan köras endast på Windows 10 och Windows Server 2016 med Azure Resource Manager moduler 2.01 och senare. Det stöds inte i tidigare versioner av Windows.
+* Azure PowerShell 1.0 och senare. Information om hello PowerShell 1.0-versionen finns [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
+* Ett Automation-konto som refereras till som hello värde hello *– AutomationAccountName* och *- ApplicationDisplayName* parametrar i hello följande PowerShell-skript.
 
-Du hämtar värdena för *SubscriptionID*, *ResourceGroup* och *AutomationAccountName*, som är obligatoriska parametrar för skripten, genom att göra följande:
-1. På Azure Portal väljer du ditt Automation-konto på bladet **Automation-konto** och väljer sedan **Alla inställningar**. 
-2. På bladet **Alla inställningar** väljer du **Egenskaper** under **Kontoinställningar**. 
-3. Notera värdena på bladet **Egenskaper**.
+tooget hello värden för *SubscriptionID*, *ResourceGroup*, och *AutomationAccountName*, som är nödvändiga parametrar för hello skript, hello följande:
+1. I hello Azure-portalen, Välj ditt Automation-konto på hello **automatiseringskontot** bladet och väljer sedan **alla inställningar**. 
+2. På hello **alla inställningar** bladet under **kontoinställningar**väljer **egenskaper**. 
+3. Observera hello värden på hello **egenskaper** bladet.
 
-![Bladet Egenskaper för Automation-kontot](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
+![hello Automation-konto ”egenskaper” bladet](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
 
 ### <a name="create-a-run-as-account-powershell-script"></a>Skapa ett PowerShell-skript för ett Kör som-konto
-Det här PowerShell-skriptet har stöd för följande konfigurationer:
+Detta PowerShell-skript har stöd för hello följande konfigurationer:
 
 * Skapa ett Kör som-konto med hjälp av ett självsignerat certifikat.
 * Skapa ett Kör som-konto och ett klassiska Kör som-konto med hjälp av ett självsignerat certifikat.
 * Skapa ett Kör som-konto och ett klassiskt Kör som-konto med hjälp av ett företagscertifikat.
-* Skapa ett Kör som-konto och ett klassiskt Kör som-konto med hjälp av ett självsignerat certifikat i Azure Government-molnet.
+* Skapa ett kör som-konto och klassiska kör som-konto med hjälp av ett självsignerat certifikat i hello Azure Government-molnet.
 
-Skriptet skapar följande objekt, beroende på de konfigurationsalternativ som du väljer.
+Beroende på hello alternativ du väljer, skapar hello skriptet hello följande objekt.
 
 **För Kör som-konton:**
 
-* Skapar ett Azure AD-program som ska exporteras med det självsignerade certifikatets eller företagscertifikatets offentliga nyckel, skapar ett tjänstobjektskonto för programmet i Azure AD och tilldelar rollen Deltagare för kontot i din aktuella prenumeration. Du kan ändra den här inställningen till Ägare eller en annan roll. Mer information finns i [Rollbaserad åtkomstkontroll i Azure Automation](automation-role-based-access-control.md).
-* Skapar en Automation-certifikattillgång med namnet *AzureRunAsCertificate* i det angivna Automation-kontot. Certifikattillgången innehåller certifikatets privata nyckel som används av Azure AD-programmet.
-* Skapar en Automation-anslutningstillgång med namnet *AzureRunAsConnection* i det angivna Automation-kontot. Anslutningstillgången innehåller applicationId, tenantId, subscriptionId och certifikatets tumavtryck.
+* Skapar en Azure AD application toobe exporteras med antingen hello självsignerat eller enterprise certifikatets offentliga nyckel, skapar en tjänstens objektkonto för hello program i Azure AD och tilldelar hello deltagarrollen för hello konto i din aktuella prenumeration. Du kan ändra den här inställningen tooOwner eller någon annan roll. Mer information finns i [Rollbaserad åtkomstkontroll i Azure Automation](automation-role-based-access-control.md).
+* Skapar ett Automation-certifikattillgång med namnet *AzureRunAsCertificate* angiven i hello Automation-konto. Hej certifikattillgång innehåller hello certifikatets privata nyckel som används av programmet hello Azure AD.
+* Skapar ett Automation-anslutningstillgång med namnet *AzureRunAsConnection* angiven i hello Automation-konto. Hej anslutningstillgång innehåller hello applicationId, tenantId, prenumerations-ID och tumavtrycket för certifikatet.
 
 **För klassiska Kör som-konton:**
 
-* Skapar en Automation-certifikattillgång med namnet *AzureClassicRunAsCertificate* i det angivna Automation-kontot. Certifikattillgången innehåller den privata nyckelns certifikat som används av hanteringscertifikatet.
-* Skapar en Automation-anslutningstillgång med namnet *AzureClassicRunAsConnection* i det angivna Automation-kontot. Anslutningstillgången innehåller prenumerationsnamnet, subscriptionId och certifikattillgångens namn.
+* Skapar ett Automation-certifikattillgång med namnet *AzureClassicRunAsCertificate* angiven i hello Automation-konto. Hej certifikattillgång innehåller hello certifikatets privata nyckel används av hello certifikat.
+* Skapar ett Automation-anslutningstillgång med namnet *AzureClassicRunAsConnection* angiven i hello Automation-konto. Hej anslutningstillgång innehåller hello prenumerationsnamn, prenumerations-ID och certifikatnamn för tillgången.
 
 >[!NOTE]
-> Om du väljer något av alternativen för att skapa ett klassiskt Kör som-konto laddar du upp det offentliga certifikatet (filnamnstillägget .cer) när skriptet har körts till hanteringsarkivet för den prenumeration som Automation-kontot skapades i.
+> Om du väljer något av alternativen för att skapa en klassisk kör som-konto när hello skriptet körs skapades överför hello offentliga certifikatarkiv (.cer-filnamnstillägget) toohello management för hello prenumeration som hello Automation-kontot.
 > 
 
-Så här kör du skriptet och laddar upp certifikatet:
+tooexecute Hej skript och överför hello certifikat, hello följande:
 
-1. Spara följande skript på datorn. I det här exemplet sparar du det med filnamnet *New-RunAsAccount.ps1*.
+1. Spara hello följande skript på datorn. I det här exemplet spara om filen med hello filename *ny RunAsAccount.ps1*.
 
         #Requires -RunAsAdministrator
          Param (
@@ -350,7 +350,7 @@ Så här kör du skriptet och laddar upp certifikatet:
         $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId
         $GetServicePrincipal = Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id
 
-        # Sleep here for a few seconds to allow the service principal application to become active (ordinarily takes a few seconds)
+        # Sleep here for a few seconds tooallow hello service principal application toobecome active (ordinarily takes a few seconds)
         Sleep -s 15
         $NewRole = New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
         $Retries = 0;
@@ -381,7 +381,7 @@ Så här kör du skriptet och laddar upp certifikatet:
         $AzureRMProfileVersion= (Get-Module AzureRM.Profile).Version
         if (!(($AzureRMProfileVersion.Major -ge 2 -and $AzureRMProfileVersion.Minor -ge 1) -or ($AzureRMProfileVersion.Major -gt 2)))
         {
-           Write-Error -Message "Please install the latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
+           Write-Error -Message "Please install hello latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
            return
         }
 
@@ -408,16 +408,16 @@ Så här kör du skriptet och laddar upp certifikatet:
         $PfxCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($PfxCertPathForRunAsAccount, $PfxCertPlainPasswordForRunAsAccount)
         $ApplicationId=CreateServicePrincipal $PfxCert $ApplicationDisplayName
 
-        # Create the Automation certificate asset
+        # Create hello Automation certificate asset
         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $CertifcateAssetName $PfxCertPathForRunAsAccount $PfxCertPlainPasswordForRunAsAccount $true
 
-        # Populate the ConnectionFieldValues
+        # Populate hello ConnectionFieldValues
         $SubscriptionInfo = Get-AzureRmSubscription -SubscriptionId $SubscriptionId
         $TenantID = $SubscriptionInfo | Select TenantId -First 1
         $Thumbprint = $PfxCert.Thumbprint
         $ConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId}
 
-        # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
+        # Create an Automation connection asset named AzureRunAsConnection in hello Automation account. This connection uses hello service principal.
         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ConnectionAssetName $ConnectionTypeName $ConnectionFieldValues
 
         if ($CreateClassicRunAsAccount) {
@@ -425,9 +425,9 @@ Så här kör du skriptet och laddar upp certifikatet:
             $ClassicRunAsAccountCertifcateAssetName = "AzureClassicRunAsCertificate"
             $ClassicRunAsAccountConnectionAssetName = "AzureClassicRunAsConnection"
             $ClassicRunAsAccountConnectionTypeName = "AzureClassicCertificate "
-            $UploadMessage = "Please upload the .cer format of #CERT# to the Management store by following the steps below." + [Environment]::NewLine +
-                    "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
-                    "Then click Upload and upload the .cer format of #CERT#"
+            $UploadMessage = "Please upload hello .cer format of #CERT# toohello Management store by following hello steps below." + [Environment]::NewLine +
+                    "Log in toohello Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
+                    "Then click Upload and upload hello .cer format of #CERT#"
 
              if ($EnterpriseCertPathForClassicRunAsAccount -and $EnterpriseCertPlainPasswordForClassicRunAsAccount ) {
              $PfxCertPathForClassicRunAsAccount = $EnterpriseCertPathForClassicRunAsAccount
@@ -442,14 +442,14 @@ Så här kör du skriptet och laddar upp certifikatet:
              CreateSelfSignedCertificate $KeyVaultName $ClassicRunAsAccountCertificateName $PfxCertPlainPasswordForClassicRunAsAccount $PfxCertPathForClassicRunAsAccount $CerCertPathForClassicRunAsAccount $SelfSignedCertNoOfMonthsUntilExpired
         }
 
-        # Create the Automation certificate asset
+        # Create hello Automation certificate asset
         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountCertifcateAssetName $PfxCertPathForClassicRunAsAccount $PfxCertPlainPasswordForClassicRunAsAccount $false
 
-        # Populate the ConnectionFieldValues
+        # Populate hello ConnectionFieldValues
         $SubscriptionName = $subscription.Subscription.SubscriptionName
         $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
 
-        # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
+        # Create an Automation connection asset named AzureRunAsConnection in hello Automation account. This connection uses hello service principal.
         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountConnectionAssetName $ClassicRunAsAccountConnectionTypeName $ClassicRunAsAccountConnectionFieldValues
 
         Write-Host -ForegroundColor red $UploadMessage
@@ -457,9 +457,9 @@ Så här kör du skriptet och laddar upp certifikatet:
 
 2. Klicka på **Start** på datorn och starta sedan **Windows PowerShell** med utökade användarrättigheter.
 
-3. Från det upphöjda PowerShell-kommandoradsgränssnittet går du till mappen som innehåller skriptet som du skapade i steg 1.
+3. Från hello utökade PowerShell kommandoradsgränssnitt, gå toohello mapp som innehåller hello-skript som du skapade i steg 1.
 
-4. Kör skriptet genom att använda de parametervärden för konfigurationen som du behöver.
+4. Kör hello-skript med hjälp av hello parametervärden för hello-konfiguration som du behöver.
 
     **Skapa ett Kör som-konto med hjälp av ett självsignerat certifikat**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false`
@@ -470,36 +470,36 @@ Så här kör du skriptet och laddar upp certifikatet:
     **Skapa ett Kör som-konto och ett klassiskt Kör som-konto med hjälp av ett företagscertifikat**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>`
 
-    **Skapa ett Kör som-konto och ett klassiskt Kör som-konto med hjälp av ett självsignerat certifikat i Azure Government-molnet**  
+    **Skapa ett kör som-konto och klassiska kör som-konto med hjälp av ett självsignerat certifikat i hello Azure Government-moln**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment`
 
     > [!NOTE]
-    > När skriptet har körts uppmanas du att autentisera med Azure. Logga in med ett konto som är medlem i rollen för prenumerationsadministratörer och som är medadministratör för prenumerationen.
+    > Du kommer att tillfrågas tooauthenticate med Azure när hello skriptet har körts. Logga in med ett konto som är medlem i administratörsrollen i hello prenumeration och medadministratör för hello prenumeration.
     >
     >
 
-Notera följande när skriptet har körts:
-* Om du skapade ett klassiskt Kör som-konto med ett självsignerat offentligt certifikat (CER-fil) skapas och sparas det av skriptet i mappen för tillfälliga filer på datorn under användarprofilen *%USERPROFILE%\AppData\Local\Temp*, som du använde för att köra PowerShell-sessionen.
-* Om du skapade ett klassiskt Kör som-konto med ett offentligt företagscertifikat (CER-fil) använder du det här certifikatet. Följ anvisningarna för hur du [laddar upp ett hanterings-API-certifikat till den klassiska Azure-portalen](../azure-api-management-certs.md) och verifiera sedan konfigurationen av autentiseringsuppgifterna med Service Management-resurser med hjälp av [exempelkoden för autentisering med Service Management-resurser](#sample-code-to-authenticate-with-service-management-resources). 
-* Om du *inte* skapade ett klassiskt Kör som-konto autentiserar du med Resource Manager-resurser och verifierar konfigurationen av autentiseringsuppgifterna med hjälp av [exempelkoden för autentisering med Service Management-resurser](#sample-code-to-authenticate-with-resource-manager-resources).
+Observera följande hello efter hello skriptet har körts:
+* Om du har skapat en klassiska kör som-konto med ett självsignerat certifikat med offentlig (.cer-fil) hello skriptet skapar och sparar toohello tillfällig mapp på datorn under hello användarprofil *%USERPROFILE%\AppData\Local\Temp*, som du använde tooexecute hello PowerShell-session.
+* Om du skapade ett klassiskt Kör som-konto med ett offentligt företagscertifikat (CER-fil) använder du det här certifikatet. Följ anvisningarna för hello för [överför en hanterings-API certifikat toohello klassiska Azure-portalen](../azure-api-management-certs.md), och sedan Validera hello behörighetskonfigurationen med Service Management-resurser med hjälp av hello [exempelkod tooauthenticate med Service Management-resurser](#sample-code-to-authenticate-with-service-management-resources). 
+* Om du har gjort *inte* skapa klassiska kör som-konton, autentisera med Resource Manager-resurser och validera hello autentiseringsuppgifter konfigurationen med hjälp av hello [exempelkod för att autentisera med Service Management resurser](#sample-code-to-authenticate-with-resource-manager-resources).
 
-## <a name="sample-code-to-authenticate-with-resource-manager-resources"></a>Exempelkod för att autentisera med Resource Manager-resurser
-Du kan använda följande uppdaterade exempelkod, som kommer från exempel-runbooken *AzureAutomationTutorialScript*, om du vill autentisera med hjälp av Kör som-kontot för att hantera Resource Manager-resurser med dina runbookflöden.
+## <a name="sample-code-tooauthenticate-with-resource-manager-resources"></a>Exempel kod tooauthenticate med Resource Manager-resurser
+Du kan använda hello följande uppdaterad exempelkod tas från hello *AzureAutomationTutorialScript* exempel-runbook, tooauthenticate med hello kör som-konto toomanage Resource Manager-resurser med dina runbooks.
 
     $connectionName = "AzureRunAsConnection"
     $SubId = Get-AutomationVariable -Name 'SubscriptionId'
     try
     {
-       # Get the connection "AzureRunAsConnection "
+       # Get hello connection "AzureRunAsConnection "
        $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
-       "Signing in to Azure..."
+       "Signing in tooAzure..."
        Add-AzureRmAccount `
          -ServicePrincipal `
          -TenantId $servicePrincipalConnection.TenantId `
          -ApplicationId $servicePrincipalConnection.ApplicationId `
          -CertificateThumbprint $servicePrincipalConnection.CertificateThumbprint
-       "Setting context to a specific subscription"     
+       "Setting context tooa specific subscription"     
        Set-AzureRmContext -SubscriptionId $SubId              
     }
     catch {
@@ -513,34 +513,34 @@ Du kan använda följande uppdaterade exempelkod, som kommer från exempel-runbo
          }
     }
 
-Skriptet innehåller två ytterligare rader med kod som gör det möjligt att referera till en prenumerationskontext så att du enkelt kan arbeta med flera prenumerationer. En variabeltillgång med namnet *SubscriptionId* innehåller ID:t för prenumerationen. Efter cmdlet-instruktionen `Add-AzureRmAccount` används cmdleten [ `Set-AzureRmContext` ](/powershell/module/azurerm.profile/set-azurermcontext) med parameteruppsättningen *-SubscriptionId*. Om variabelnamnet är för allmänt kan du ändra det och lägga till ett prefix eller använda en annan namngivningskonvention så att det blir lättare att identifiera. Du kan också använda parameteruppsättningen *-SubscriptionName* i stället för *-SubscriptionId* med en tillhörande variabeltillgång.
+toohelp du tooeasily fungerar mellan flera prenumerationer, hello skriptet innehåller två ytterligare rader med kod som har stöd för refererar till en prenumerationskontext. En variabeltillgång med namnet *SubscriptionId* innehåller hello-ID för hello prenumeration. Efter hello `Add-AzureRmAccount` cmdlet instruktionen hello [ `Set-AzureRmContext` ](/powershell/module/azurerm.profile/set-azurermcontext) cmdlet anges med hello parameteruppsättning *- SubscriptionId*. Om hello variabelnamn för Allmänt kan du ändra tooinclude ett prefix till den eller använda en annan naming convention toomake den enklare tooidentify. Du kan också använda hello parameteruppsättning *- SubscriptionName* i stället för *- SubscriptionId* med en motsvarande variabeltillgång.
 
-Den cmdlet som du använder för autentisering i runbooken, `Add-AzureRmAccount`, använder parameteruppsättningen *ServicePrincipalCertificate*. Den autentiserar med hjälp av tjänstobjektscertifikatet, inte användarautentiseringsuppgifterna.
+Hej cmdlet som du använder för att autentisera i hello runbook `Add-AzureRmAccount`, använder hello *ServicePrincipalCertificate* parameteruppsättning. Det autentiserar med hjälp av hello service principal certifikat, inte hello användarens autentiseringsuppgifter.
 
-## <a name="sample-code-to-authenticate-with-service-management-resources"></a>Exempelkod för att autentisera med Service Management-resurser
-Du kan använda följande uppdaterade exempelkod, som kommer från exempel-runbooken *AzureClassicAutomationTutorialScript*, om du vill autentisera med hjälp av det klassiska Kör som-kontot för att hantera klassiska resurser med dina runbookflöden.
+## <a name="sample-code-tooauthenticate-with-service-management-resources"></a>Exempel kod tooauthenticate med Service Management-resurser
+Du kan använda följande uppdaterad exempelkod som hämtas från hello hello *AzureClassicAutomationTutorialScript* exempel-runbook, tooauthenticate med hjälp av hello klassiska kör som-kontot toomanage klassiska resurser med din runbooks.
 
     $ConnectionAssetName = "AzureClassicRunAsConnection"
-    # Get the connection
+    # Get hello connection
     $connection = Get-AutomationConnection -Name $connectionAssetName        
 
-    # Authenticate to Azure with certificate
+    # Authenticate tooAzure with certificate
     Write-Verbose "Get connection asset: $ConnectionAssetName" -Verbose
     $Conn = Get-AutomationConnection -Name $ConnectionAssetName
     if ($Conn -eq $null)
     {
-       throw "Could not retrieve connection asset: $ConnectionAssetName. Assure that this asset exists in the Automation account."
+       throw "Could not retrieve connection asset: $ConnectionAssetName. Assure that this asset exists in hello Automation account."
     }
 
     $CertificateAssetName = $Conn.CertificateAssetName
-    Write-Verbose "Getting the certificate: $CertificateAssetName" -Verbose
+    Write-Verbose "Getting hello certificate: $CertificateAssetName" -Verbose
     $AzureCert = Get-AutomationCertificate -Name $CertificateAssetName
     if ($AzureCert -eq $null)
     {
-       throw "Could not retrieve certificate asset: $CertificateAssetName. Assure that this asset exists in the Automation account."
+       throw "Could not retrieve certificate asset: $CertificateAssetName. Assure that this asset exists in hello Automation account."
     }
 
-    Write-Verbose "Authenticating to Azure with certificate." -Verbose
+    Write-Verbose "Authenticating tooAzure with certificate." -Verbose
     Set-AzureSubscription -SubscriptionName $Conn.SubscriptionName -SubscriptionId $Conn.SubscriptionID -Certificate $AzureCert
     Select-AzureSubscription -SubscriptionId $Conn.SubscriptionID
 

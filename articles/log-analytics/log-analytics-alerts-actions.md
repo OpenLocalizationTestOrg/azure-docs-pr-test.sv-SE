@@ -1,6 +1,6 @@
 ---
-title: "Svar på aviseringar i OMS Log Analytics | Microsoft Docs"
-description: "Aviseringar i Log Analytics kan identifiera viktig information i OMS-databasen och proaktivt meddelar dig om problem eller anropa åtgärder om du vill försöka åtgärda.  Den här artikeln beskriver hur du skapar en aviseringsregel och information om olika åtgärder som de kan ta."
+title: aaaResponses tooalerts i OMS Log Analytics | Microsoft Docs
+description: "Aviseringar i Log Analytics identifiera viktig information i OMS-databasen och kan proaktivt meddelar dig om problem eller anropa åtgärder tooattempt toocorrect dem.  Den här artikeln beskriver hur toocreate en aviseringsregel och information hello olika åtgärder de kan vidta."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -15,78 +15,78 @@ ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b8731e1fe48b7d809b113eb5273e3962542b8f34
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d24bb726a96e7143985f111c0599dc4e7898b4f0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-actions-to-alert-rules-in-log-analytics"></a>Lägg till åtgärder i Varningsregler i logganalys
-När en [avisering skapas i logganalys](log-analytics-alerts.md), har möjlighet att [konfigurera varningsregeln](log-analytics-alerts.md) att utföra en eller flera åtgärder.  Den här artikeln beskrivs olika åtgärder som är tillgängliga och information om hur du konfigurerar varje slag.
+# <a name="add-actions-tooalert-rules-in-log-analytics"></a>Lägg till åtgärder tooalert regler i logganalys
+När en [avisering skapas i logganalys](log-analytics-alerts.md), har hello möjlighet att [varningsregel för att konfigurera hello](log-analytics-alerts.md) tooperform en eller flera åtgärder.  Den här artikeln beskriver hello olika åtgärder som är tillgängliga och information om hur du konfigurerar varje slag.
 
 | Åtgärd | Beskrivning |
 |:--|:--|
-| [E-post](#email-actions) | Skicka ett e-postmeddelande med information om aviseringen till en eller flera mottagare. |
+| [E-post](#email-actions) | Skicka ett e-postmeddelande med hello information om hello avisering tooone eller flera mottagare. |
 | [Webhook](#webhook-actions) | Anropa en extern process via en enkel HTTP POST-begäran. |
 | [Runbook](#runbook-actions) | Starta en runbook i Azure Automation. |
 
 
 ## <a name="email-actions"></a>E-post-åtgärder
-E-post-åtgärder skicka ett e-postmeddelande med information om aviseringen till en eller flera mottagare.  Du kan ange ämnet för e-post, men dess innehåll är ett standardformat genom logganalys.  Den innehåller översiktsinformation till exempel namnet för aviseringen förutom information om upp till tio poster som returneras av loggen sökningen.  Den innehåller också en länk till en logg sökning i logganalys som att returnera hela uppsättningen av poster från frågan.   Avsändaren av e-postmeddelandet är *Microsoft Operations Management Suite-teamet &lt; noreply@oms.microsoft.com &gt;* . 
+E-post-åtgärder skicka ett e-postmeddelande med hello information om hello avisering tooone eller flera mottagare.  Du kan ange hello ämne hello e-post, men dess innehåll är ett standardformat genom logganalys.  Tillägg toodetails av upp tooten poster som returneras av hello loggen sökningen innehåller översiktsinformation, till exempel hello namn för hello avisering.  Den innehåller också en länk tooa loggen sökning i logganalys som returnerar hello hela uppsättningen av poster från frågan.   hello avsändaren hello e-post är *Microsoft Operations Management Suite-teamet &lt; noreply@oms.microsoft.com &gt;* . 
 
-E-post-åtgärder kräver egenskaperna i följande tabell.
+E-post-åtgärder kräver hello egenskaper i hello i den följande tabellen.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| Ämne |Ämne för e-postmeddelandet.  Du kan inte ändra innehållet i e-postmeddelandet. |
-| mottagare |Tar med alla e-postmottagare.  Om du anger fler än en adress sedan Avgränsa adresserna med semikolon (;). |
+| Ämne |Ämnesnamn i hello e-post.  Du kan inte ändra hello brödtext hello e-post. |
+| mottagare |Tar med alla e-postmottagare.  Om du anger fler än en adress och sedan separat hello-adresser med ett semikolon (;). |
 
 
 ## <a name="webhook-actions"></a>Webhook-åtgärder
 
-Webhook-åtgärder kan du anropa en extern process via en enkel HTTP POST-begäran.  Tjänsten som anropas bör stöder webhooks och kontrollera hur den använder alla nyttolast tas emot.  Du kan också kontakta en REST-API som inte uttryckligen stöder webhooks som begäran finns i ett format som kan användas med API: et.  Exempel på användning av en webhook som svar på en avisering skickas ett meddelande [Slack](http://slack.com) eller skapa en incident i [PagerDuty](http://pagerduty.com/).  En fullständig genomgång för att skapa en aviseringsregel med en webhook att anropa Slack finns på [Webhooks i logganalys aviseringar](log-analytics-alerts-webhooks.md).
+Webhook-åtgärder kan du tooinvoke en extern process via en enkel HTTP POST-begäran.  hello-tjänsten som anropas bör stöder webhooks och kontrollera hur den använder alla nyttolast tas emot.  Du kan också kontakta en REST-API som inte uttryckligen stöder webhooks så länge hello-begäran är i ett format som hello API förstår.  Exempel på användning av en webhook i svaret tooan avisering skickar ett meddelande i [Slack](http://slack.com) eller skapa en incident i [PagerDuty](http://pagerduty.com/).  En fullständig genomgång för att skapa en aviseringsregel med en webhook toocall Slack finns på [Webhooks i logganalys aviseringar](log-analytics-alerts-webhooks.md).
 
-Webhook-åtgärder kräver egenskaperna i följande tabell.
+Webhook-åtgärder kräver hello egenskaper i hello i den följande tabellen.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| Webhooksadressen |URL till webhooken. |
-| Anpassad JSON-nyttolast |Anpassad nyttolast för att skicka med webhooken.  Mer information finns i nedan. |
+| Webhooksadressen |hello-URL för hello webhooken. |
+| Anpassad JSON-nyttolast |Anpassad nyttolast toosend med hello webhooken.  Mer information finns i nedan. |
 
 
-Webhooks är en URL och en nyttolast som har formaterats i JSON som är data som skickas till externa-tjänsten.  Som standard innehåller nyttolasten värdena i tabellen nedan.  Du kan välja att ersätta den här nyttolasten med ett anpassat egen.  Du kan i så fall använda variabler i tabellen för var och en av parametrarna ta sina värdet i din anpassade nyttolast.
+Webhooks lägga till en URL och en nyttolast som har formaterats i JSON som är hello data skickas toohello extern tjänst.  Som standard innehåller hello nyttolasten hello värden i den följande tabellen hello.  Du kan välja den här nyttolasten med en anpassad egen tooreplace.  I så fall kan du använda hello variabler i hello tabellen för varje hello parametrar tooinclude deras värde i din anpassade nyttolast.
 
 | Parameter | Variabel | Beskrivning |
 |:--- |:--- |:--- |
-| AlertRuleName |#alertrulename |Namnet på regeln. |
-| AlertThresholdOperator |#thresholdoperator |Tröskelvärdet operator för regeln.  *Större än* eller *mindre än*. |
-| AlertThresholdValue |#thresholdvalue |Tröskelvärde för regeln. |
-| LinkToSearchResults |#linktosearchresults |Länka till logganalys loggen sökning som returnerar poster från frågan som skapade aviseringen. |
-| ResultCount |#searchresultcount |Antalet poster i sökresultaten. |
-| SearchIntervalEndtimeUtc |#searchintervalendtimeutc |Sluttid för frågan i UTC-format. |
-| SearchIntervalInSeconds |#searchinterval |Tidsfönstret för regeln. |
-| SearchIntervalStartTimeUtc |#searchintervalstarttimeutc |Starttid för frågan i UTC-format. |
-| searchQuery |#searchquery |Loggen sökfråga används av regeln. |
-| SearchResults |Nedan finns |Poster som returneras av frågan i JSON-format.  Begränsad till de första 5 000 posterna. |
+| AlertRuleName |#alertrulename |Namnet på hello varningsregel. |
+| AlertThresholdOperator |#thresholdoperator |Tröskelvärdet operator för hello varningsregel.  *Större än* eller *mindre än*. |
+| AlertThresholdValue |#thresholdvalue |Tröskelvärde för hello varningsregel. |
+| LinkToSearchResults |#linktosearchresults |Länka tooLog Analytics loggen sökning som returnerar hello poster från hello-fråga som skapade hello avisering. |
+| ResultCount |#searchresultcount |Antalet poster i hello sökresultat. |
+| SearchIntervalEndtimeUtc |#searchintervalendtimeutc |Sluttid för hello frågan i UTC-format. |
+| SearchIntervalInSeconds |#searchinterval |Tidsfönstret för hello varningsregel. |
+| SearchIntervalStartTimeUtc |#searchintervalstarttimeutc |Starttid för hello frågan i UTC-format. |
+| searchQuery |#searchquery |Loggen sökfråga används av hello varningsregel. |
+| SearchResults |Nedan finns |Poster som returneras av hello frågan i JSON-format.  Begränsad toohello första 5 000 poster. |
 | WorkspaceID |#workspaceid |ID för din OMS-arbetsyta. |
 
-Du kan till exempel ange följande anpassad nyttolast som innehåller en enda parameter med namnet *text*.  Den tjänst som denna webhook anropar skulle förväntas den här parametern.
+Du kan till exempel ange hello följande anpassad nyttolast som innehåller en enda parameter med namnet *text*.  hello-tjänst som denna webhook anropar skulle förväntas den här parametern.
 
     {
         "text":"#alertrulename fired with #searchresultcount over threshold of #thresholdvalue."
     }
 
-Nyttolasten i det här exemplet skulle matchas till något som liknar följande när du skickar webhooken.
+Det här exemplet nyttolast löser toosomething som hello efter när skickas toohello webhooken.
 
     {
         "text":"My Alert Rule fired with 18 records over threshold of 10 ."
     }
 
-Inkludera sökresultat i en anpassad nyttolast genom att lägga till följande rad som en egenskap för översta nivån i json-nyttolast.  
+tooinclude sökresultat i en anpassad nyttolast Lägg till följande rad som en egenskap för översta nivån i hello json-nyttolast hello.  
 
     "IncludeSearchResults":true
 
-Om du vill skapa en anpassad nyttolast som innehåller bara aviseringsnamn och sökresultaten kan du exempelvis använda följande. 
+Till exempel toocreate en anpassad nyttolast som innehåller bara hello aviseringsnamn och hello sökresultat, du kan använda följande hello. 
 
     {
        "alertname":"#alertrulename",
@@ -94,29 +94,29 @@ Om du vill skapa en anpassad nyttolast som innehåller bara aviseringsnamn och s
     }
 
 
-Du kan gå igenom en komplett exempel på hur du skapar en aviseringsregel med en webhook att starta en extern tjänst på [skapar en avisering webhook-åtgärd i OMS Log Analytics för att skicka meddelanden till Slack](log-analytics-alerts-webhooks.md).
+Du kan gå igenom en komplett exempel på hur du skapar en aviseringsregel med en webhook toostart en extern tjänst på [skapar en avisering webhook-åtgärd i OMS logganalys toosend meddelandet tooSlack](log-analytics-alerts-webhooks.md).
 
 ## <a name="runbook-actions"></a>Runbook-åtgärder
-Runbook-åtgärder startar en runbook i Azure Automation.  För att kunna använda den här typen av åtgärden, måste du ha den [automatiseringslösning](log-analytics-add-solutions.md) installeras och konfigureras i OMS-arbetsyta.  Du kan välja från runbooks i automation-kontot som du konfigurerade i Automation-lösningen.
+Runbook-åtgärder startar en runbook i Azure Automation.  Ordna toouse denna typ av åtgärd måste du ha hello [automatiseringslösning](log-analytics-add-solutions.md) installeras och konfigureras i OMS-arbetsyta.  Du kan välja mellan hello runbooks i hello automation-konto som du konfigurerade i hello Automation-lösningen.
 
-Runbook-åtgärder kräver egenskaperna i följande tabell.
+Runbook-åtgärder kräver hello egenskaper i hello i den följande tabellen.
 
 | Egenskap | Beskrivning |
 |:--- |:---|
-| Runbook | Runbook som du vill starta när en avisering skapas. |
-| Kör på | Ange **Azure** att köra runbook i molnet.  Ange **Hybrid worker** att köra runbook på en agent med [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md ) installerad.  |
+| Runbook | Runbook som du vill toostart när en avisering skapas. |
+| Kör på | Ange **Azure** toorun hello runbook i hello molnet.  Ange **Hybrid worker** toorun hello runbook på en agent med [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md ) installerad.  |
 
-Runbook-åtgärder starta en runbook med hjälp av en [webhook](../automation/automation-webhooks.md).  När du skapar varningsregeln automatiskt skapas en ny webhook för runbook med namnet **OMS avisering reparation** följt av ett GUID.  
+Runbook-åtgärder starta hello runbook med hjälp av en [webhook](../automation/automation-webhooks.md).  När du skapar hello varningsregeln automatiskt skapas en ny webhook för hello runbook med namnet hello **OMS avisering reparation** följt av ett GUID.  
 
-Direkt kan du fylla i parametrar av runbook, men [$WebhookData parametern](../automation/automation-webhooks.md) innehåller information om aviseringen, inklusive resultaten av den logg som den skapades.  Runbook måste du definiera **$WebhookData** som en parameter att komma åt egenskaper för aviseringen.  Aviseringen data är tillgängliga i json-format i en enda egenskap som kallas **SearchResults** i den **RequestBody** -egenskapen för **$WebhookData**.  Detta har med egenskaper i följande tabell.
+Du kan inte direkt fylla eventuella parametrar för hello runbook, men hello [$WebhookData parametern](../automation/automation-webhooks.md) innehåller hello information om hello aviseringen, inklusive hello resultaten av hello logg som den skapades.  Hej runbook behöver toodefine **$WebhookData** som en parameter för den tooaccess hello egenskaper för hello avisering.  hello aviseringsdata är tillgänglig i json-format i en enda egenskap som kallas **SearchResults** i hello **RequestBody** -egenskapen för **$WebhookData**.  Detta har med hello egenskaper i hello i den följande tabellen.
 
 | Node | Beskrivning |
 |:--- |:--- |
-| id |Sökvägen och GUID för sökningen. |
-| __metadata |Information om aviseringen, inklusive antalet poster och status i sökresultaten. |
-| värde |Separat post för varje post i sökresultatet.  Information om transaktionen matchar egenskaperna och värdena för posten. |
+| id |Sökvägen och GUID hello sökning. |
+| __metadata |Information om hello avisering inklusive hello antalet poster och status för hello sökresultat. |
+| värde |Separat post för varje post i hello sökresultat.  hello information om hello transaktionen matchar hello egenskaper och värden för hello-post. |
 
-Följande runbook skulle exempelvis extrahera de poster som returneras av loggen sökningen och tilldela olika egenskaper baserat på vilken typ av varje post.  Observera att startar runbook genom att konvertera **RequestBody** från json så att den kan bearbetas med som ett objekt i PowerShell.
+Till exempel skulle hello följande runbook extrahera hello-poster som returneras av hello loggen Sök och tilldela olika egenskaper utifrån hello typ av varje post.  Observera att hello runbook startas genom att konvertera **RequestBody** från json så att den kan bearbetas med som ett objekt i PowerShell.
 
     param ( 
         [object]$WebhookData
@@ -148,4 +148,4 @@ Följande runbook skulle exempelvis extrahera de poster som returneras av loggen
 
 ## <a name="next-steps"></a>Nästa steg
 - Slutföra en genomgång för [konfigurerar en webook](log-analytics-alerts-webhooks.md) med en aviseringsregel.  
-- Lär dig hur du skriver [runbooks i Azure Automation](https://azure.microsoft.com/documentation/services/automation) att åtgärda problem som identifieras av aviseringar.
+- Lär dig hur toowrite [runbooks i Azure Automation](https://azure.microsoft.com/documentation/services/automation) tooremediate problem som identifieras av aviseringar.

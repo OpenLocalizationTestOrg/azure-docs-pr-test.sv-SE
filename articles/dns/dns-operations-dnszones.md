@@ -1,6 +1,6 @@
 ---
-title: Hantera DNS-zoner i Azure DNS - PowerShell | Microsoft Docs
-description: "Du kan hantera DNS-zoner med hjälp av Azure Powershell. Den här artikeln beskriver hur du uppdaterar, ta bort och skapa DNS-zoner på Azure DNS"
+title: aaaManage DNS-zoner i Azure DNS - PowerShell | Microsoft Docs
+description: "Du kan hantera DNS-zoner med hjälp av Azure Powershell. Den här artikeln beskriver hur tooupdate, ta bort och skapa DNS-zoner på Azure DNS"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2016
 ms.author: gwallace
-ms.openlocfilehash: 92f1da660d875c76d5d826669d6c1d12018c3d0a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 261b89f72213aa9784034d47ff9d1c55a4e80d65
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-manage-dns-zones-using-powershell"></a>Hur du hanterar DNS-zoner med hjälp av PowerShell
+# <a name="how-toomanage-dns-zones-using-powershell"></a>Hur toomanage DNS-zoner med hjälp av PowerShell
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 > * [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-dnszones-cli.md)
 
-Den här artikeln visar hur du hanterar DNS-zoner med hjälp av Azure PowerShell. Du kan också hantera DNS-zoner med flera plattformar [Azure CLI](dns-operations-dnszones-cli.md) eller Azure-portalen.
+Den här artikeln visar hur toomanage DNS-zoner med hjälp av Azure PowerShell. Du kan också hantera DNS-zoner med hello plattformsoberoende [Azure CLI](dns-operations-dnszones-cli.md) eller hello Azure-portalen.
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
@@ -36,15 +36,15 @@ Den här artikeln visar hur du hanterar DNS-zoner med hjälp av Azure PowerShell
 
 ## <a name="create-a-dns-zone"></a>Skapa en DNS-zon
 
-En DNS-zon skapas med hjälp av cmdleten `New-AzureRmDnsZone`.
+En DNS-zon skapas med hjälp av hello `New-AzureRmDnsZone` cmdlet.
 
-I följande exempel skapas en DNS-zon som kallas *contoso.com* i resursgruppen kallas *MyResourceGroup*:
+hello följande exempel skapas en DNS-zon som kallas *contoso.com* i hello resursgrupp med namnet *MyResourceGroup*:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-I följande exempel visas hur du skapar en DNS-zon med två [Azure Resource Manager taggar](dns-zones-records.md#tags), *projekt = demo* och *env = test*:
+hello följande exempel visas hur toocreate ett DNS zonen med två [Azure Resource Manager taggar](dns-zones-records.md#tags), *projekt = demo* och *env = test*:
 
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
@@ -52,7 +52,7 @@ New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Ta
 
 ## <a name="get-a-dns-zone"></a>Hämta en DNS-zon
 
-Använd för att hämta en DNS-zon på `Get-AzureRmDnsZone` cmdlet. Den här åtgärden returnerar ett objekt för DNS-zon som motsvarar en befintlig zon i Azure DNS. Objektet innehåller information om zonen (till exempel antal uppsättningar av poster), men innehåller inte postuppsättningar själva (se `Get-AzureRmDnsRecordSet`).
+tooretrieve en DNS-zon använder hello `Get-AzureRmDnsZone` cmdlet. Den här åtgärden returnerar ett DNS-zonen objektet motsvarande tooan befintlig zon i Azure DNS. hello objekt innehåller information om hello zonen (till exempel hello Antal uppsättningar av poster), men innehåller inte hello postuppsättningar själva (se `Get-AzureRmDnsRecordSet`).
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com –ResourceGroupName MyAzureResourceGroup
@@ -69,13 +69,13 @@ MaxNumberOfRecordSets : 5000
 
 ## <a name="list-dns-zones"></a>Lista över DNS-zoner
 
-Genom att utelämna zonnamnet från `Get-AzureRmDnsZone`, kan du räkna upp alla zoner i en resursgrupp. Den här åtgärden returnerar en matris med zonen objekt.
+Genom att utelämna hello zonnamnet från `Get-AzureRmDnsZone`, kan du räkna upp alla zoner i en resursgrupp. Den här åtgärden returnerar en matris med zonen objekt.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone -ResourceGroupName MyAzureResourceGroup
 ```
 
-Genom att utelämna både zonnamnet och resursgruppens namn från `Get-AzureRmDnsZone`, kan du räkna upp alla zoner i Azure-prenumeration.
+Genom att utelämna både hello zonnamnet och hello resursgruppens namn från `Get-AzureRmDnsZone`, kan du räkna upp alla zoner i hello Azure-prenumeration.
 
 ```powershell
 $zoneList = Get-AzureRmDnsZone
@@ -83,24 +83,24 @@ $zoneList = Get-AzureRmDnsZone
 
 ## <a name="update-a-dns-zone"></a>Uppdatera en DNS-zon
 
-En DNS-zon resurs kan ändras med hjälp av `Set-AzureRmDnsZone`. Denna cmdlet inte uppdatera alla DNS-postuppsättningar i zonen (se [hur du hanterar DNS-poster](dns-operations-recordsets.md)). Den används endast för att uppdatera egenskaper för resursen zonen. Skrivbar zonegenskaperna är för tillfället begränsad till den [Azure Resource Manager-taggar ”för resursen zonen](dns-zones-records.md#tags).
+Ändrar tooa DNS-zonresurs kan göras med hjälp av `Set-AzureRmDnsZone`. Denna cmdlet inte uppdatera alla hello DNS-postuppsättningar i zonen hello (se [hur tooManage DNS-poster](dns-operations-recordsets.md)). Den används endast tooupdate egenskaper för hello zonresurs sig själv. hello skrivbar zonegenskaperna är för närvarande begränsad toohello [Azure Resource Manager-taggar' för hello zonresurs](dns-zones-records.md#tags).
 
-Använd någon av följande två sätt att uppdatera en DNS-zon:
+Använd någon av följande två sätt tooupdate hello en DNS-zon:
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group"></a>Ange zonen med namn och resursen zoner
+### <a name="specify-hello-zone-using-hello-zone-name-and-resource-group"></a>Ange hello zon med hjälp av hello namn och en resurs i zoner
 
-Den här metoden ersätter befintliga zonens taggarna med de angivna värdena.
+Den här metoden ersätter hello befintliga zonen taggar med hello värden som har angetts.
 
 ```powershell
 Set-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Ange zonen med ett $zone-objekt
+### <a name="specify-hello-zone-using-a-zone-object"></a>Ange hello zon med ett $zone-objekt
 
-Den här metoden hämtar det befintliga objektet i zonen, ändrar taggar och genomför ändringarna. På så sätt kan kan befintliga taggar bevaras.
+Den här metoden hämtar hello befintlig zon objekt, ändrar hello taggar och genomför ändringar som hello. På så sätt kan kan befintliga taggar bevaras.
 
 ```powershell
-# Get the zone object
+# Get hello zone object
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 
 # Remove an existing tag
@@ -113,61 +113,61 @@ $zone.Tags.Add("status","approved")
 Set-AzureRmDnsZone -Zone $zone
 ```
 
-När du använder `Set-AzureRmDnsZone` med ett $zone-objekt [Etag kontrollerar](dns-zones-records.md#etags) används för att kontrollera samtidiga ändringar inte att skrivas över. Du kan använda det valfria `-Overwrite` växel för att ignorera dessa kontroller.
+När du använder `Set-AzureRmDnsZone` med ett $zone-objekt [Etag kontrollerar](dns-zones-records.md#etags) används tooensure samtidiga ändringar inte att skrivas över. Du kan använda valfri hello `-Overwrite` växla toosuppress kontrollerna.
 
 ## <a name="delete-a-dns-zone"></a>Ta bort en DNS-zon
 
-DNS-zoner kan tas bort med den `Remove-AzureRmDnsZone` cmdlet.
+DNS-zoner kan tas bort med hello `Remove-AzureRmDnsZone` cmdlet.
 
 > [!NOTE]
-> En DNS-zon också tar du bort DNS-poster i zonen. Den här åtgärden kan inte ångras. Om DNS-zonen misslyckas tjänster med hjälp av zonen när zonen tas bort.
+> En DNS-zon också tar du bort DNS-poster i zonen hello. Den här åtgärden kan inte ångras. Om hello DNS-zon används, misslyckas tjänster med hjälp av hello zon när hello zon tas bort.
 >
->För att skydda mot oavsiktlig zonen borttagning finns [Skydda DNS-zoner och poster](dns-protect-zones-recordsets.md).
+>tooprotect mot oavsiktlig zonen radering finns [hur tooprotect DNS zoner och registrerar](dns-protect-zones-recordsets.md).
 
 
-Använd någon av följande två sätt att ta bort en DNS-zon:
+Använd någon av följande två sätt toodelete hello en DNS-zon:
 
-### <a name="specify-the-zone-using-the-zone-name-and-resource-group-name"></a>Ange zonen med zonnamnet och resursgruppens namn
+### <a name="specify-hello-zone-using-hello-zone-name-and-resource-group-name"></a>Ange hello zon med hjälp av hello zonnamnet och resursgruppens namn
 
 ```powershell
 Remove-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 
-### <a name="specify-the-zone-using-a-zone-object"></a>Ange zonen med ett $zone-objekt
+### <a name="specify-hello-zone-using-a-zone-object"></a>Ange hello zon med ett $zone-objekt
 
-Du kan ange zonen som ska tas bort med hjälp av en `$zone` objektet som returnerades av `Get-AzureRmDnsZone`.
+Du kan ange hello zonen toobe tas bort med hjälp av en `$zone` objektet som returnerades av `Get-AzureRmDnsZone`.
 
 ```powershell
 $zone = Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 Remove-AzureRmDnsZone -Zone $zone
 ```
 
-Objektet zon kan även skickas i stället för att skickas som en parameter:
+hello zonen objekt kan även skickas i stället för att skickas som en parameter:
 
 ```powershell
 Get-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup | Remove-AzureRmDnsZone
 
 ```
 
-Precis som med `Set-AzureRmDnsZone`, ange en zon med hjälp av en `$zone` objekt gör det möjligt för Etag-kontroller för att säkerställa samtidiga ändringar inte tas bort. Använd den `-Overwrite` växel för att ignorera dessa kontroller.
+Precis som med `Set-AzureRmDnsZone`, att ange hello zon med hjälp av en `$zone` objekt aktiverar Etag kontrollerar tooensure samtidiga ändringar inte tas bort. Använd hello `-Overwrite` växla toosuppress kontrollerna.
 
 ## <a name="confirmation-prompts"></a>Konfigurera meddelanden
 
-Den `New-AzureRmDnsZone`, `Set-AzureRmDnsZone`, och `Remove-AzureRmDnsZone` cmdlets alla stöder konfigurera meddelanden.
+Hej `New-AzureRmDnsZone`, `Set-AzureRmDnsZone`, och `Remove-AzureRmDnsZone` cmdlets alla stöder konfigurera meddelanden.
 
-Båda `New-AzureRmDnsZone` och `Set-AzureRmDnsZone` fråga efter bekräftelse om de `$ConfirmPreference` PowerShell inställningsvariabeln har värdet `Medium` eller lägre. På grund av potentiellt hög effekten av att ta bort en DNS-zon på `Remove-AzureRmDnsZone` cmdlet uppmanas att bekräfta om den `$ConfirmPreference` PowerShell variabel har ett värde annat än `None`.
+Båda `New-AzureRmDnsZone` och `Set-AzureRmDnsZone` fråga efter bekräftelse om hello `$ConfirmPreference` PowerShell inställningsvariabeln har värdet `Medium` eller lägre. På grund av toohello potentiellt hög inverkan av att ta bort en DNS-zon hello `Remove-AzureRmDnsZone` cmdlet uppmanas att bekräfta om hello `$ConfirmPreference` PowerShell variabel har ett värde annat än `None`.
 
-Eftersom standardvärdet för `$ConfirmPreference` är `High`, endast `Remove-AzureRmDnsZone` uppmanas att bekräfta som standard.
+Eftersom hello standardvärdet för `$ConfirmPreference` är `High`, endast `Remove-AzureRmDnsZone` uppmanas att bekräfta som standard.
 
-Du kan åsidosätta aktuellt `$ConfirmPreference` inställningen med hjälp av den `-Confirm` parameter. Om du anger `-Confirm` eller `-Confirm:$True` , så uppmanas du att bekräfta innan den körs. Om du anger `-Confirm:$False` , cmdleten visas inte efter bekräftelse.
+Du kan åsidosätta hello aktuella `$ConfirmPreference` inställningen med hello `-Confirm` parameter. Om du anger `-Confirm` eller `-Confirm:$True` , hello cmdlet uppmanar dig att bekräfta innan den körs. Om du anger `-Confirm:$False` , hello cmdleten visas inte efter bekräftelse.
 
 Mer information om `-Confirm` och `$ConfirmPreference`, se [om variabler för](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du [hantera uppsättningar av poster och poster](dns-operations-recordsets.md) i DNS-zonen.
+Lär dig hur för[hantera uppsättningar av poster och poster](dns-operations-recordsets.md) i DNS-zonen.
 <br>
-Lär dig hur du [Delegera din domän till Azure DNS](dns-domain-delegation.md).
+Lär dig hur för[Delegera din domän tooAzure DNS](dns-domain-delegation.md).
 <br>
-Granska de [Azure DNS-PowerShell referensdokumentationen](/powershell/module/azurerm.dns).
+Granska hello [Azure DNS-PowerShell referensdokumentationen](/powershell/module/azurerm.dns).
 

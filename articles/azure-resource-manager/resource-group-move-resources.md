@@ -1,6 +1,6 @@
 ---
-title: Flytta Azure-resurser till nya prenumerationen eller resursen grupp | Microsoft Docs
-description: "Använd Azure Resource Manager för att flytta resurser till en ny resursgrupp eller prenumeration."
+title: aaaMove Azure-resurser toonew prenumerationen eller resursen grupp | Microsoft Docs
+description: "Använd Azure Resource Manager toomove resurser tooa ny resursgrupp eller prenumeration."
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: e138f80e808968ab4bf5c11cfd5fd46fe4a1bcce
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 09d35f0afbbcdc0c66779f98a982d878f0807497
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-resources-to-new-resource-group-or-subscription"></a>Flytta resurser till en ny resursgrupp eller prenumeration
-Det här avsnittet visar hur du flyttar resurser till en ny prenumeration eller en ny resursgrupp med samma prenumeration. Du kan använda portalen, PowerShell, Azure CLI eller REST API för att flytta resursen. Flytta åtgärder i det här avsnittet kan du utan hjälp från Azure-supporten.
+# <a name="move-resources-toonew-resource-group-or-subscription"></a>Flytta resurser toonew resursgrupp eller prenumeration
+Det här avsnittet visar hur toomove resurser tooeither en ny prenumeration eller en ny resurs gruppera i hello samma prenumeration. Du kan använda hello portal, PowerShell, Azure CLI eller hello REST API toomove resurs. hello flytta åtgärder i det här avsnittet är tillgängliga tooyou utan hjälp från Azure-supporten.
 
-När du flyttar resurser, låst både gruppen och målgruppen under åtgärden. Skriva och ta bort blockeras på resursgrupper tills flyttningen är klar. Låset innebär det går inte att lägga till, uppdatera eller ta bort resurser i resursgrupper, men innebär inte resurserna som är låsta. Om du flyttar en SQL Server och dess databas till en ny resursgrupp påträffar ett program som använder databasen utan avbrott. Det kan fortfarande läsa och skriva till databasen.
+När du flyttar resurser, låst både hello källgrupp och hello målgruppen under hello igen. Skriva och ta bort blockeras på hello resursgrupper tills hello flytta har slutförts. Låset innebär det går inte att lägga till, uppdatera eller ta bort hello resursgrupper, men innebär inte hello resurser är låsta. Om du flyttar en SQL Server och dess databas tooa ny resursgrupp, påträffar ett program som använder hello databas utan avbrott. Det kan fortfarande läsa och skriva toohello databas.
 
-Du kan inte ändra platsen för resursen. Flytta en resurs bara flyttas till en ny resursgrupp. Den nya resursgruppen kan ha en annan plats, men som ändra inte platsen för resursen.
+Du kan inte ändra hello platsen för hello resurs. Om du flyttar en resurs flyttas det endast tooa ny resursgrupp. hello ny resursgrupp kan ha en annan plats, men som ändras inte hello platsen för hello resurs.
 
 > [!NOTE]
-> Den här artikeln beskrivs hur du flyttar resurser i en befintlig Azure-konto erbjudanden. Om du vill ändra ditt Azure-konto erbjudande (till exempel uppgraderar från betala per användning före betala) när fortsätter att fungera med din befintliga resurser, se [växla din Azure-prenumeration till ett annat erbjudande](../billing/billing-how-to-switch-azure-offer.md).
+> Den här artikeln beskriver hur toomove resurser i en befintlig Azure-konto erbjudanden. Om du verkligen vill toochange ditt Azure-konto erbjudande (till exempel uppgraderar från betalning per användning toopre-pay) medan toowork med din befintliga resurser, se [växla Azure-prenumeration tooanother erbjudandet](../billing/billing-how-to-switch-azure-offer.md).
 >
 >
 
 ## <a name="checklist-before-moving-resources"></a>Checklista innan du flyttar resurser
-Några viktiga steg måste utföras innan en resurs flyttas. Du kan undvika fel genom att verifiera dessa villkor.
+Det finns vissa viktiga steg tooperform innan du flyttar en resurs. Du kan undvika fel genom att verifiera dessa villkor.
 
-1. Käll- och -prenumerationer måste finnas inom samma [Azure Active Directory-klient](../active-directory/active-directory-howto-tenant.md). Använd Azure PowerShell eller Azure CLI för att kontrollera att båda prenumerationer har samma klient-ID.
+1. hello käll- och prenumerationer måste finnas inom hello samma [Azure Active Directory-klient](../active-directory/active-directory-howto-tenant.md). toocheck att båda prenumerationer har hello samma klient-ID, använda Azure PowerShell eller Azure CLI.
 
   Använd för Azure PowerShell:
 
@@ -49,28 +49,28 @@ Några viktiga steg måste utföras innan en resurs flyttas. Du kan undvika fel 
   az account show --subscription "Example Subscription" --query tenantId
   ```
 
-  Om klient-ID: N för käll- och -prenumerationer inte är samma, kan du försöka ändra katalogen för prenumerationen. Det här alternativet är endast tillgänglig för administratörer som har loggat in med ett Microsoft-konto (inte ett organisationskonto). Logga in för att försöka ändra katalogen till den [klassiska portalen](https://manage.windowsazure.com/), och välj **inställningar**, och välj prenumerationen. Om den **redigera katalog** ikonen är tillgänglig kan du välja att ändra de associerade Azure Active Directory.
+  Om hello klient-ID för är hello käll- och prenumerationer inte hello samma försök toochange hello katalogen för hello-prenumeration. Det här alternativet är dock endast tillgängliga tooService administratörer som har loggat in med ett Microsoft-konto (inte ett organisationskonto). Ändra hello directory, logga in toohello tooattempt [klassiska portalen](https://manage.windowsazure.com/), och välj **inställningar**, och välj hello-prenumeration. Om hello **redigera katalog** ikonen är tillgänglig, markerar du den toochange hello som är associerade med Azure Active Directory.
 
   ![Redigera katalog](./media/resource-group-move-resources/edit-directory.png)
 
-  Om ikonen inte är tillgängligt måste du kontakta supporten om du vill flytta resurserna till en ny klient.
+  Om ikonen inte är tillgängligt måste du kontakta supporten toomove hello resurser tooa nya innehavaren.
 
-2. Tjänsten måste göra det möjligt att flytta resurser. Det här avsnittet visas vilka tjänster kan flytta resurser och tjänster som gör inte flytta resurser.
-3. Målprenumerationen måste vara registrerad för resursprovidern för den resurs som flyttas. Om inte, du får ett felmeddelande om att den **prenumerationen har inte registrerats för en resurstyp**. Du kan stöta på detta problem när en resurs flyttas till en ny prenumeration, men prenumerationen aldrig har använts med den resurstypen. Information om hur du kontrollerar registreringsstatus och registrerar resursprovidrar finns i [Resursprovidrar och typer](resource-manager-supported-services.md).
+2. hello-tjänsten måste aktivera hello möjlighet toomove resurser. Det här avsnittet visas vilka tjänster kan flytta resurser och tjänster som gör inte flytta resurser.
+3. Hej målprenumerationen måste registreras för hello resursprovidern hello resurs som flyttas. Om inte, du får ett felmeddelande om att hello **prenumerationen har inte registrerats för en resurstyp**. Det här problemet kan uppstå när du flyttar en resurs tooa ny prenumeration, men den prenumerationen aldrig har använts med den resurstypen. toolearn hur toocheck hello registreringsstatus och registrera resursprovidrar finns [resursproviders och typer](resource-manager-supported-services.md).
 
-## <a name="when-to-call-support"></a>När anropet stöd
-Du kan flytta de flesta resurser via självbetjäning åtgärder visas i det här avsnittet. Använd åtgärderna självbetjäning till:
+## <a name="when-toocall-support"></a>När toocall stöd
+Du kan flytta de flesta resurser via hello självbetjäning åtgärder visas i det här avsnittet. Använd hello självbetjäning åtgärder:
 
 * Flytta resurshanterarens resurser.
-* Flytta klassiska resurser enligt den [klassisk distribution begränsningar](#classic-deployment-limitations).
+* Flytta klassiska resurser enligt toohello [klassisk distribution begränsningar](#classic-deployment-limitations).
 
 Ring supporten när du behöver:
 
-* Flytta dina resurser till en ny Azure-konto (och Azure Active Directory-klient).
-* Flytta klassiska resurser men har problem med begränsningar.
+* Flytta resurser tooa nya Azure-konto (och Azure Active Directory-klient).
+* Flytta klassiska resurser men har problem med hello begränsningar.
 
 ## <a name="services-that-enable-move"></a>Tjänster som gör att flytta
-För tillfället är de tjänster som gör att du flyttar till en ny resursgrupp och en prenumeration
+Hello-tjänster som möjliggör glidande tooboth en ny resursgrupp och prenumerationen är för tillfället:
 
 * API Management
 * Apptjänst-appar (webbprogram) - finns [Apptjänst begränsningar](#app-service-limitations)
@@ -110,18 +110,18 @@ För tillfället är de tjänster som gör att du flyttar till en ny resursgrupp
 * Lagring
 * Storage (klassisk) - finns [klassisk distribution begränsningar](#classic-deployment-limitations)
 * Stream Analytics - Stream Analytics-jobb inte kan flyttas när du kör i läget.
-* SQL Database-server - databasen och servern måste finnas i samma resursgrupp. När du flyttar en SQLServer, flyttas även alla databaser.
+* SQL-databasservern - hello databasen och servern måste finnas i hello samma resursgrupp. När du flyttar en SQLServer, flyttas även alla databaser.
 * Traffic Manager
 * Virtuella datorer
-* Virtuella datorer med certifikat som lagras i Key Vault - flytta till ny resurs gruppen i samma prenumeration är aktiverad men flytta mellan prenumeration har inte aktiverats.
+* Virtuella datorer med certifikat som lagras i Key Vault - flytta toonew resursgrupp i samma prenumeration har aktiverats men flytta mellan prenumeration har inte aktiverats.
 * Virtuella datorer (klassisk) - finns [klassisk distribution begränsningar](#classic-deployment-limitations)
 * Skalningsuppsättningar för Virtual Machines
-* Virtuella nätverk - just nu, ett peered virtuellt nätverk går inte att flytta tills VNet-peering har inaktiverats. När inaktiverat, det virtuella nätverket kan flyttas utan problem och VNet-peering kan aktiveras. Ett virtuellt nätverk kan dessutom inte flyttas till en annan prenumeration om det virtuella nätverket innehåller inget undernät med resursnavigeringslänkar. Ett undernät för virtuellt nätverk har till exempel en resurslänk för navigering när en resurs för Microsoft.Cache redis har distribuerats i det här undernätet.
+* Virtuella nätverk - just nu, ett peered virtuellt nätverk går inte att flytta tills VNet-peering har inaktiverats. När inaktiverad hello virtuellt nätverk kan flyttas utan problem och hello VNet-peering kan aktiveras. Dessutom får inte ett virtuellt nätverk vara flyttade tooa annan prenumeration om hello virtuellt nätverk innehåller inget undernät med resursnavigeringslänkar. Ett undernät för virtuellt nätverk har till exempel en resurslänk för navigering när en resurs för Microsoft.Cache redis har distribuerats i det här undernätet.
 * VPN-gateway
 
 
 ## <a name="services-that-do-not-enable-move"></a>Tjänster som inte gör flytta
-De tjänster som för närvarande inte aktiverar flytta en resurs är:
+hello-tjänster som för närvarande inte aktiverar flytta en resurs är:
 
 * AD DS
 * AD-Hybrid-tjänsten för hälsotillstånd
@@ -130,26 +130,26 @@ De tjänster som för närvarande inte aktiverar flytta en resurs är:
 * BizTalk Services
 * Container Service
 * Express Route
-* DevTest Labs - flyttar till en ny resursgrupp i samma prenumeration har aktiverats men flytta mellan prenumeration har inte aktiverats.
+* DevTest Labs - flytta toonew resursgrupp i samma prenumeration har aktiverats men mellan flytta för prenumerationen har inte aktiverats.
 * Dynamics LCS
 * Bilder som har skapats från hanterade diskar
 * Managed Disks
 * Hanterade program
-* Recovery Services-ventilen - också vill inte flytta beräknings-, nätverks- och resurser som är associerade med Recovery Services-valvet finns [återställningstjänster begränsningar](#recovery-services-limitations).
+* Recovery Services-valvet – även hello återställningstjänster av inte flytta hello beräknings-, nätverks- och resurser som är associerade med valvet, se [återställningstjänster begränsningar](#recovery-services-limitations).
 * Säkerhet
 * Ögonblicksbilder som skapats från hanterade diskar
 * StorSimple Enhetshanteraren
 * Virtuella datorer med hanterade diskar
 * Virtuella nätverk (klassiskt) - finns [klassisk distribution begränsningar](#classic-deployment-limitations)
-* Virtuella datorer som skapats från Marketplace resurser - kan inte flyttas mellan prenumerationer. Resursen måste avetableras i den aktuella prenumerationen och distribuerade igen på den nya prenumerationen
+* Virtuella datorer som skapats från Marketplace resurser - kan inte flyttas mellan prenumerationer. Resursen behöver toobe avetableras i hello aktuell prenumeration och distribueras igen i hello ny prenumeration
 
 ## <a name="app-service-limitations"></a>Begränsningar för App Service
-När du arbetar med Apptjänst-appar kan flytta du inte endast en App Service-plan. Om du vill flytta Apptjänst-appar är alternativen:
+När du arbetar med Apptjänst-appar kan flytta du inte endast en App Service-plan. toomove Apptjänst-appar, alternativen är:
 
-* Flytta App Service-plan och alla andra resurser i Apptjänst i resursgruppen till en ny resursgrupp som inte redan har App Service-resurser. Det här kravet innebär måste du flytta även Apptjänst resurser som inte är associerad med App Service-plan.
-* Flytta apparna till en annan resursgrupp men behålla alla programtjänstplaner i den ursprungliga resursgruppen.
+* Flytta hello App Service-plan och alla andra resurser i Apptjänst i som gruppen tooa ny resurs resursgruppen som inte redan har App Service-resurser. Det här kravet innebär måste du flytta även hello Apptjänst resurser som inte är associerad med hello App Service-plan.
+* Flytta hello appar tooa annan resursgrupp, men behålla alla programtjänstplaner i hello ursprungliga resursgruppen.
 
-Programtjänstplanen behöver inte finnas i samma resursgrupp som appen för appen ska fungera korrekt.
+hello hello App Service-plan inte behöver tooreside i samma resursgrupp som hello app för hello app toofunction korrekt.
 
 Om till exempel din resursgrupp innehåller:
 
@@ -165,65 +165,65 @@ Alternativen är:
 
 Alla andra kombinationer involverar lämnar bakom en resurstyp som kan finnas kvar när du flyttar en apptjänstplan (någon typ av App Service-resurs).
 
-Om ditt webbprogram finns i en annan resursgrupp än dess App Service-plan, men du vill flytta både en ny resursgrupp, måste du flytta i två steg. Exempel:
+Om ditt webbprogram finns i en annan resursgrupp än dess App Service-plan, men toomove båda tooa ny resursgrupp, måste du flytta hello i två steg. Exempel:
 
 * **Web-a** finns i **web-grupp**
 * **Planera en** finns i **plan-grupp**
-* Du vill **web-a** och **planera en** finns i **kombineras grupp**
+* Du vill **web-a** och **planera en** tooreside i **kombineras grupp**
 
-För att åstadkomma detta steg, utför du två separata flytta åtgärderna i följande ordning:
+tooaccomplish detta flytta utföra åtgärder för två separata flytta i hello följande ordning:
 
-1. Flytta den **web-a** till **plan-grupp**
-2. Flytta **web-a** och **planera en** till **kombineras grupp**.
+1. Flytta hello **web-a** för**plan-grupp**
+2. Flytta **web-a** och **planera en** för**kombineras grupp**.
 
-Du kan flytta ett certifikat för App Service till en ny resursgrupp eller prenumeration utan problem. Om webbappen innehåller ett SSL-certifikat som du köpt externt och överförs till appen, måste du radera certifikatet innan du flyttar webbprogrammet. Exempelvis kan du utföra följande steg:
+Du kan flytta en App tjänstcertifikat tooa ny resursgrupp eller prenumeration utan problem. Om webbappen innehåller ett SSL-certifikat som du köpt externt och överföra toohello app, måste du radera hello certifikat innan glidande hello-webbprogram. Du kan exempelvis utföra hello följande steg:
 
-1. Ta bort det överförda certifikatet från webbappen
-2. Flytta webbappen
-3. Överför certifikatet till webbappen
+1. Ta bort hello upp certifikatet från hello webbapp
+2. Flytta hello-webbprogram
+3. Överföra hello certifikat toohello webbapp
 
 ## <a name="recovery-services-limitations"></a>Recovery Services-begränsningar
-Flytta inte har aktiverats för lagring, nätverk, eller beräkningsresurser som används för att ställa in katastrofåterställning med Azure Site Recovery.
+Flytta har inte aktiverats för lagring, nätverk, eller beräkningsresurser används tooset in katastrofåterställning med Azure Site Recovery.
 
-Anta att du har ställt in replikering av din lokala datorer till ett lagringskonto (Storage1) och vill att den skydda datorn att starta efter en redundansväxling till Azure som en virtuell dator (VM1) ansluten till ett virtuellt nätverk (Network1). Du kan inte flytta resurserna Azure - Storage1 VM1 och Network1 - över resursgrupper inom samma prenumeration eller alla prenumerationer.
+Till exempel anta att du har ställt in replikering av ditt lokala datorer tooa storage-konto (Storage1) och vill att hello skyddad dator toocome efter redundans tooAzure som en virtuell dator (VM1) kopplad tooa virtuella nätverk (Network1). Du kan inte flytta någon av dessa Azure-resurser - Storage1, VM1, och Network1 - över resurs grupper inom hello samma prenumeration eller mellan prenumerationer.
 
 ## <a name="hdinsight-limitations"></a>HDInsight-begränsningar
 
-Du kan flytta HDInsight-kluster till en ny prenumeration eller resursgrupp. Men kan inte du flytta alla prenumerationer som nätverksresurser som är kopplad till HDInsight-klustret (till exempel virtuella nätverk, nätverkskort eller belastningsutjämning). Dessutom kan flytta du inte till en ny resursgrupp ett nätverkskort som är kopplad till en virtuell dator för klustret.
+Du kan flytta HDInsight-kluster tooa ny prenumeration eller resursgrupp. Men kan inte du flytta mellan prenumerationer hello nätverk resurser länkade toohello HDInsight-kluster (till exempel hello virtuellt nätverk, nätverkskort eller belastningsutjämnare). Dessutom kan du flytta tooa ny resursgrupp ett nätverkskort som är anslutna tooa virtuell dator för hello-kluster.
 
-När du flyttar ett HDInsight-kluster till en ny prenumeration kan du först flytta andra resurser (till exempel storage-konto). Flytta sedan HDInsight-kluster av sig själv.
+När du flyttar en ny prenumeration för HDInsight-kluster tooa först flytta andra resurser (till exempel hello storage-konto). Flytta sedan hello HDInsight-kluster av sig själv.
 
 ## <a name="classic-deployment-limitations"></a>Klassisk distribution begränsningar
-Alternativ för att flytta resurser har distribuerats via den klassiska modellen variera beroende på om du flyttar resurser inom en prenumeration eller till en ny prenumeration.
+hello variera alternativ för att flytta resurser har distribuerats via hello klassiska modellen beroende på om du flyttar hello resurser inom en prenumeration eller tooa ny prenumeration.
 
 ### <a name="same-subscription"></a>Samma prenumeration
-När du flyttar resurser från en resursgrupp till en annan resursgrupp inom samma prenumeration, gäller följande begränsningar:
+När du flyttar resurser från en grupp tooanother resurs resursgrupp inom samma prenumeration, hello följande begränsningar gäller hello:
 
 * Virtuella nätverk (klassiskt) kan inte flyttas.
-* Virtuella datorer (klassisk) måste flyttas med Molntjänsten.
-* Molntjänsten kan bara flyttas när flytten omfattar alla virtuella datorer.
+* Virtuella datorer (klassisk) måste flyttas med hello-Molntjänsten.
+* Molntjänsten kan bara flyttas när hello flytta innehåller alla virtuella datorer.
 * Endast en molnbaserad tjänst kan flyttas åt gången.
 * Endast en storage-konto (klassiskt) kan flyttas åt gången.
-* Storage-konto (klassiskt) kan inte flyttas på samma gång med en virtuell dator eller en tjänst i molnet.
+* Storage-konto (klassisk) inte kan flyttas i hello samma igen med en virtuell dator eller en tjänst i molnet.
 
-Om du vill flytta klassiska resurser till en ny resursgrupp inom samma prenumeration, använder du standard move-åtgärder via den [portal](#use-portal), [Azure PowerShell](#use-powershell), [Azure CLI](#use-azure-cli), eller [REST API](#use-rest-api). Du kan använda samma åtgärder som du använder för att flytta Resource Manager-resurser.
+toomove klassiska resurser tooa ny resursgrupp i Hej samma prenumeration, använda hello standard flytta åtgärder med hjälp av hello [portal](#use-portal), [Azure PowerShell](#use-powershell), [Azure CLI](#use-azure-cli), eller [REST API](#use-rest-api). Du använder hello samma åtgärder som du använder för att flytta Resource Manager-resurser.
 
 ### <a name="new-subscription"></a>Ny prenumeration
-När resurserna flyttas till en ny prenumeration, gäller följande begränsningar:
+När du flyttar resurser tooa ny prenumeration gäller hello följande begränsningar:
 
-* Alla klassiska resurser i prenumerationen måste flyttas samtidigt.
-* Målprenumerationen får inte innehålla andra klassiska resurser.
-* Flyttningen kan endast begäras via en separat REST-API för klassiska flyttar. Kommandona flytta standard Resource Manager fungerar inte när du flyttar klassiska resurser till en ny prenumeration.
+* Alla klassiska resurser i hello prenumerationen måste flyttas i hello samma åtgärd.
+* Hej målprenumerationen får inte innehålla andra klassiska resurser.
+* hello flytta kan endast begäras via en separat REST-API för klassiska flyttar. hello Resource Manager flytta standardkommandon fungerar inte när du flyttar klassiska resurser tooa ny prenumeration.
 
-Flytta klassiska resurser till en ny prenumeration genom att använda REST-åtgärder som är specifika för klassiska resurser. Utför följande steg om du vill använda REST:
+toomove klassiska resurser tooa ny prenumeration, Använd hello REST-åtgärder som är specifika tooclassic resurser. toouse vila, utför följande steg hello:
 
-1. Kontrollera om källprenumerationen kan delta i en flytt mellan prenumerationer. Använd följande åtgärd:
+1. Kontrollera om hello källprenumerationen kan delta i över prenumerationer flytta. Använd hello följande åtgärd:
 
   ```HTTP   
   POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
   ```
 
-     I frågans brödtext är:
+     I hello frågans brödtext är:
 
   ```json
   {
@@ -231,7 +231,7 @@ Flytta klassiska resurser till en ny prenumeration genom att använda REST-åtg�
   }
   ```
 
-     Svaret för valideringen har följande format:
+     hello-svar för hello valideringen har hello följande format:
 
   ```json
   {
@@ -243,13 +243,13 @@ Flytta klassiska resurser till en ny prenumeration genom att använda REST-åtg�
   }
   ```
 
-2. Kontrollera om målprenumerationen kan delta i en flytt mellan prenumerationer. Använd följande åtgärd:
+2. Kontrollera om hello målprenumerationen kan delta i över prenumerationer flytta. Använd hello följande åtgärd:
 
   ```HTTP
   POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
   ```
 
-     I frågans brödtext är:
+     I hello frågans brödtext är:
 
   ```json
   {
@@ -257,14 +257,14 @@ Flytta klassiska resurser till en ny prenumeration genom att använda REST-åtg�
   }
   ```
 
-     Svaret är i samma format som källa prenumeration verifieringen.
-3. Om båda prenumerationer har klarat valideringen, flytta alla klassiska resurser från en prenumeration till en annan prenumeration med följande åtgärd:
+     hello svaret är i hello samma format som hello källa prenumeration validering.
+3. Om båda prenumerationer har klarat valideringen, flytta alla klassiska resurser från en prenumeration tooanother prenumeration med hello följande åtgärd:
 
   ```HTTP
   POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
   ```
 
-    I frågans brödtext är:
+    I hello frågans brödtext är:
 
   ```json
   {
@@ -272,38 +272,38 @@ Flytta klassiska resurser till en ny prenumeration genom att använda REST-åtg�
   }
   ```
 
-Åtgärden kan ta flera minuter.
+hello-åtgärden kan ta flera minuter.
 
 ## <a name="use-portal"></a>Använda portalen
-Välj den resursgrupp som innehåller resurserna för att flytta resurser och välj sedan den **flytta** knappen.
+toomove resurser, Välj hello resursgruppen som innehåller de resurserna och välj sedan hello **flytta** knappen.
 
 ![Flytta resurser](./media/resource-group-move-resources/select-move.png)
 
-Välj om du flyttar resurser till en ny resursgrupp eller en ny prenumeration.
+Välj om du flyttar hello resurser tooa ny resursgrupp eller en ny prenumeration.
 
-Välj att flytta resurserna och resursgruppen mål. Bekräfta att du behöver uppdatera skript för dessa resurser och välj **OK**. Om du valde ikonen Redigera prenumeration i föregående steg, måste du också välja målprenumerationen.
+Välj hello resurser toomove och hello mål resursgruppen. Bekräfta att du behöver tooupdate skript för dessa resurser och välj **OK**. Om du har valt hello redigeringsikonen prenumeration i hello föregående steg, måste du också välja hello målprenumerationen.
 
 ![Välj mål](./media/resource-group-move-resources/select-destination.png)
 
-I **meddelanden**, du ser att flyttåtgärden körs.
+I **meddelanden**, du ser att hello flytta åtgärd körs.
 
 ![Visa flytta status](./media/resource-group-move-resources/show-status.png)
 
-När det har slutförts, meddelas du om resultatet.
+När det har slutförts, meddelas du om hello resultat.
 
 ![Visa flytta resultat](./media/resource-group-move-resources/show-result.png)
 
 ## <a name="use-powershell"></a>Använd PowerShell
-Flytta befintliga resurser till en annan resursgrupp eller prenumeration genom att använda den `Move-AzureRmResource` kommando.
+toomove befintliga resurser tooanother resursgrupp eller prenumeration, använda hello `Move-AzureRmResource` kommando.
 
-Det första exemplet visar hur du flyttar en resurs till en ny resursgrupp.
+Hej det första exemplet visas hur toomove en resurs tooa ny resursgrupp.
 
 ```powershell
 $resource = Get-AzureRmResource -ResourceName ExampleApp -ResourceGroupName OldRG
 Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $resource.ResourceId
 ```
 
-Det andra exemplet visar hur du flyttar flera resurser till en ny resursgrupp.
+hello andra exempel visar hur toomove flera resurser tooa ny resursgrupp.
 
 ```powershell
 $webapp = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExampleSite
@@ -311,14 +311,14 @@ $plan = Get-AzureRmResource -ResourceGroupName OldRG -ResourceName ExamplePlan
 Move-AzureRmResource -DestinationResourceGroupName NewRG -ResourceId $webapp.ResourceId, $plan.ResourceId
 ```
 
-Om du vill flytta till en ny prenumeration, innehåller ett värde för den `DestinationSubscriptionId` parameter.
+toomove tooa ny prenumeration, innehåller ett värde för hello `DestinationSubscriptionId` parameter.
 
-Du uppmanas att bekräfta att du vill flytta de angivna resurserna.
+Du uppmanas tooconfirm som du vill toomove hello anges resurser.
 
 ```powershell
 Confirm
-Are you sure you want to move these resources to the resource group
-'/subscriptions/{guid}/resourceGroups/newRG' the resources:
+Are you sure you want toomove these resources toohello resource group
+'/subscriptions/{guid}/resourceGroups/newRG' hello resources:
 
 /subscriptions/{guid}/resourceGroups/destinationgroup/providers/Microsoft.Web/serverFarms/exampleplan
 /subscriptions/{guid}/resourceGroups/destinationgroup/providers/Microsoft.Web/sites/examplesite
@@ -326,28 +326,28 @@ Are you sure you want to move these resources to the resource group
 ```
 
 ## <a name="use-azure-cli-20"></a>Använda Azure CLI 2.0
-Flytta befintliga resurser till en annan resursgrupp eller prenumeration genom att använda den `az resource move` kommando. Ange resurs-ID för resurserna för att flytta. Du kan få resurs-ID med följande kommando:
+toomove befintliga resurser tooanother resursgrupp eller prenumeration, använda hello `az resource move` kommando. Ange hello resurs-ID för hello resurser toomove. Du kan få resurs-ID med hello följande kommando:
 
 ```azurecli
 az resource show -g sourceGroup -n storagedemo --resource-type "Microsoft.Storage/storageAccounts" --query id
 ```
 
-I följande exempel visas hur du flyttar ett storage-konto till en ny resursgrupp. I den `--ids` parameter, ange en blankstegsavgränsad lista över resurs-ID att flytta.
+hello som följande exempel visar hur toomove en lagringsplats för kontot tooa ny resursgrupp. I hello `--ids` parameter, ange en blankstegsavgränsad lista över hello resurs-ID: N toomove.
 
 ```azurecli
 az resource move --destination-group newgroup --ids "/subscriptions/{guid}/resourceGroups/sourceGroup/providers/Microsoft.Storage/storageAccounts/storagedemo"
 ```
 
-Om du vill flytta till en ny prenumeration, ange den `--destination-subscription-id` parameter.
+toomove tooa ny prenumeration, ange hello `--destination-subscription-id` parameter.
 
 ## <a name="use-azure-cli-10"></a>Använda Azure CLI 1.0
-Flytta befintliga resurser till en annan resursgrupp eller prenumeration genom att använda den `azure resource move` kommando. Ange resurs-ID för resurserna för att flytta. Du kan få resurs-ID med följande kommando:
+toomove befintliga resurser tooanother resursgrupp eller prenumeration, använda hello `azure resource move` kommando. Ange hello resurs-ID för hello resurser toomove. Du kan få resurs-ID med hello följande kommando:
 
 ```azurecli
 azure resource list -g sourceGroup --json
 ```
 
-Som returnerar följande format:
+Som returnerar hello följande format:
 
 ```azurecli
 [
@@ -366,25 +366,25 @@ Som returnerar följande format:
 ]
 ```
 
-I följande exempel visas hur du flyttar ett storage-konto till en ny resursgrupp. I den `-i` parameter, ange en kommaavgränsad lista över resurs-ID att flytta.
+hello som följande exempel visar hur toomove en lagringsplats för kontot tooa ny resursgrupp. I hello `-i` parameter, ange en kommaavgränsad lista över hello resurs-ID: N toomove.
 
 ```azurecli
 azure resource move -i "/subscriptions/{guid}/resourceGroups/sourceGroup/providers/Microsoft.Storage/storageAccounts/storagedemo" -d "destinationGroup"
 ```
 
-Du uppmanas att bekräfta att du vill flytta den angivna resursen.
+Du uppmanas tooconfirm som du vill toomove hello angivna resursen.
 
 ## <a name="use-rest-api"></a>Använd REST-API
-För att flytta befintliga resurser till en annan resursgrupp eller prenumeration, kör du:
+toomove befintliga resurser tooanother resursgrupp eller prenumeration, kör:
 
 ```HTTP
 POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version}
 ```
 
-I begärandetexten anger du målresursgruppen och resurser för att flytta. Mer information om REST-flyttåtgärden finns [flyttar resurser](https://msdn.microsoft.com/library/azure/mt218710.aspx).
+I hello begärantext anger du hello målresursgruppen och hello resurser toomove. Läs mer om hello flytta REST-åtgärden [flyttar resurser](https://msdn.microsoft.com/library/azure/mt218710.aspx).
 
 ## <a name="next-steps"></a>Nästa steg
-* Mer information om PowerShell-cmdletar för att hantera din prenumeration, se [med hjälp av Azure PowerShell med Resource Manager](powershell-azure-resource-manager.md).
-* Mer information om Azure CLI-kommandon för att hantera din prenumeration, se [med hjälp av Azure CLI med Resource Manager](xplat-cli-azure-resource-manager.md).
-* Mer information om Företagsportalen funktioner för att hantera din prenumeration, se [med Azure-portalen för att hantera resurser](resource-group-portal.md).
-* Läs om hur du kopplar logiskt till resurser i [med taggar för att organisera dina resurser](resource-group-using-tags.md).
+* toolearn om PowerShell-cmdletar för att hantera din prenumeration, se [med hjälp av Azure PowerShell med Resource Manager](powershell-azure-resource-manager.md).
+* toolearn om Azure CLI-kommandon för att hantera din prenumeration, se [Using hello Azure CLI med Resource Manager](xplat-cli-azure-resource-manager.md).
+* toolearn om portalen funktioner för att hantera din prenumeration, se [använder hello Azure portal toomanage resurser](resource-group-portal.md).
+* toolearn om hur du kopplar ett logiskt tooyour resurser, se [med hjälp av taggar tooorganize dina resurser](resource-group-using-tags.md).

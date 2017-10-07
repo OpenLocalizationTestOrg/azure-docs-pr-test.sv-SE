@@ -1,6 +1,6 @@
 ---
-title: "Skapa ett fristående kluster med Azure virtuella datorer som kör Windows | Microsoft Docs"
-description: "Lär dig hur du skapar och hanterar Azure Service Fabric-kluster på Azure virtuella datorer som kör Windows Server."
+title: "aaaCreate en fristående kluster med Azure virtuella datorer som kör Windows | Microsoft Docs"
+description: "Lär dig hur toocreate och hantera en Azure Service Fabric-kluster på Azure virtuella datorer som kör Windows Server."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,22 +15,22 @@ ms.workload: NA
 ms.date: 06/21/2017
 ms.author: ryanwi;chackdan
 redirect_url: /azure/service-fabric/service-fabric-cluster-creation-via-arm
-ms.openlocfilehash: f8a0305a22c00f9bdbdb1bdb06dc299cccee23dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8900204fe69887a7a0ca54b06e0d32534421bcfa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-three-node-standalone-service-fabric-cluster-with-azure-virtual-machines-running-windows-server"></a>Skapa en tre noder fristående Service Fabric-kluster med Azure virtuella datorer som kör Windows Server
-Den här artikeln beskriver hur du skapar ett kluster på Windows-baserade virtuella Azure-datorer (VM) med fristående Service Fabric-installationsprogram för Windows Server. Scenariot är ett specialfall av [skapa och hantera ett kluster som körs på Windows Server](service-fabric-cluster-creation-for-windows-server.md) där de virtuella datorerna är [Azure virtuella datorer som kör Windows Server](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), men du inte skapar [en Azure molnbaserad Service Fabric-kluster](service-fabric-cluster-creation-via-portal.md). Skillnad i följande det här mönstret är att fristående Service Fabric-kluster skapas med följande steg hanteras helt av dig, medan Azure molnbaserade Service Fabric klustren hanteras och uppgraderas av Service Fabric-resurs providern.
+Den här artikeln beskriver hur toocreate ett kluster på Windows-baserade virtuella Azure-datorer (VM) med hjälp av hello fristående Service Fabric-installationsprogram för Windows Server. hello scenario är ett specialfall av [skapa och hantera ett kluster som körs på Windows Server](service-fabric-cluster-creation-for-windows-server.md) där hello är [Azure virtuella datorer som kör Windows Server](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), men du inte skapar [en Azure molnbaserad Service Fabric-kluster](service-fabric-cluster-creation-via-portal.md). hello skillnad i följande det här mönstret är att hello fristående Service Fabric-kluster som skapats av hello följande hanteras helt av dig, medan hello Azure molnbaserade Service Fabric-kluster hanteras och uppgraderas av hello Service Fabric resursprovidern.
 
-## <a name="steps-to-create-the-standalone-cluster"></a>Steg för att skapa fristående klustret
-1. Logga in på Azure-portalen och skapa en ny Windows Server 2012 R2 Datacenter eller Windows Server 2016 Datacenter VM i en resursgrupp. Läs artikeln [skapa en virtuell Windows-dator i Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) för mer information.
-2. Lägga till några fler virtuella datorer i samma resursgrupp. Kontrollera att var och en av de virtuella datorerna har samma administratörsanvändarnamn och lösenord när de skapas. En gång skapade du bör se alla tre virtuella datorer i samma virtuella nätverk.
-3. Ansluta till var och en av de virtuella datorerna och inaktivera Windows-brandväggen med den [Serverhanteraren instrumentpanelen lokal Server](https://technet.microsoft.com/library/jj134147.aspx). Detta säkerställer att nätverkstrafik kan kommunicera mellan datorerna. När du är ansluten till varje dator hämta IP-adress genom att öppna en kommandotolk och skriva `ipconfig`. Du kan också se IP-adressen för varje dator på portalen genom att välja resursen virtuellt nätverk för resursgruppen och kontrollera nätverksgränssnitt som skapats för var och en av dessa datorer.
-4. Ansluta till en av de virtuella datorerna och testa att du kan pinga har de andra två virtuella datorerna.
-5. Ansluta till en av de virtuella datorerna och [hämta fristående Service Fabric-paket för Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) till en ny mapp på datorn och extrahera paketet.
-6. Öppna den *ClusterConfig.Unsecure.MultiMachine.json* filen i anteckningar och redigera varje nod med tre IP-adresser för datorer. Ändra klusternamnet överst och spara filen.  En partiell exempel på klustermanifestet visas nedan.
+## <a name="steps-toocreate-hello-standalone-cluster"></a>Steg toocreate hello fristående kluster
+1. Logga in toohello Azure-portalen och skapa en ny Windows Server 2012 R2 Datacenter eller Windows Server 2016 Datacenter VM i en resursgrupp. Läs hello artikel [skapa en virtuell Windows-dator i hello Azure-portalen](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) för mer information.
+2. Lägga till några fler virtuella datorer toohello samma resursgrupp. Se till att varje hello virtuella datorer har hello samma administratörsanvändarnamn och lösenord när de skapas. En gång skapade du bör se alla tre virtuella datorer i hello samma virtuella nätverk.
+3. Ansluta tooeach av hello virtuella datorer och inaktiverar hello Windows-brandväggen med hjälp av hello [Serverhanteraren instrumentpanelen lokal Server](https://technet.microsoft.com/library/jj134147.aspx). Detta säkerställer att hello nätverkstrafik kan kommunicera mellan hello datorer. När anslutna tooeach datorn hämta hello IP-adress genom att öppna en kommandotolk och skriva `ipconfig`. Du kan också se hello IP-adressen för varje dator på hello-portalen genom att välja hello virtuella nätverksresurs för hello resursgrupp och kontrollerar hello nätverksgränssnitt som skapats för var och en av dessa datorer.
+4. Anslut tooone av hello virtuella datorer och kontrollera att du kan pinga hello andra två virtuella datorer har.
+5. Ansluta tooone av hello virtuella datorer och [hämta hello fristående Service Fabric-paket för Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) till en ny mapp på hello datorn och extrahera hello-paketet.
+6. Öppna hello *ClusterConfig.Unsecure.MultiMachine.json* filen i anteckningar och redigera varje nod med hello tre IP-adresser hello datorer. Ändra hello klusternamnet hello överst och spara hello-filen.  En partiell exempel på hello klustermanifestet visas nedan.
    
     ```
     {
@@ -61,20 +61,20 @@ Den här artikeln beskriver hur du skapar ett kluster på Windows-baserade virtu
         }
         ],
     ```
-7. Om du vill att detta ska vara en säker, besluta säkerhetsåtgärd som du vill använda och följ stegen i den associerade länken: [X509 certifikat](service-fabric-windows-cluster-x509-security.md) eller [Windows-säkerhet](service-fabric-windows-cluster-windows-security.md). Om klustret med Windows-säkerhet, behöver du konfigurera en domänkontrollant för att hantera Active Directory. Observera att en domänkontrollant dator som en Service Fabric nod inte stöds.
-8. Öppna en [fönstret PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise). Navigera till mappen där du extraherade installationspaketet hämtade fristående och spara konfigurationsfilen för klustret. Kör följande PowerShell-kommando för att distribuera klustret:
+7. Om du planerar denna toobe säker kluster, bestämma hello säkerhetsåtgärd du gillar toouse och följ anvisningarna hello i hello associerade länk: [X509 certifikat](service-fabric-windows-cluster-x509-security.md) eller [Windows-säkerhet](service-fabric-windows-cluster-windows-security.md). Om du ställer in hello-kluster med hjälp av Windows-säkerhet behöver tooset upp en domain controller toomanage Active Directory. Observera att en domänkontrollant dator som en Service Fabric nod inte stöds.
+8. Öppna en [fönstret PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise). Navigera toohello mappen där du extraherade hello hämtade fristående installer-paketet och sparat hello konfigurationsfilen för klustret. Kör följande PowerShell-kommandot toodeploy hello klustret hello:
    
     ```
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
     ```
 
-Skriptet fjärrkonfigurera Service Fabric-kluster och bör rapportera förlopp som distributionen samlar via.
+hello skriptet fjärrkonfigurera hello Service Fabric-kluster och bör rapportera förlopp som distributionen samlar via.
 
-9. Efter ungefär en minut kan du kontrollera om klustret fungerar genom att ansluta till Service Fabric-Utforskaren med ett av datorns IP-adresser, till exempel med hjälp av `http://10.1.0.5:19080/Explorer/index.html`. 
+9. Efter ungefär en minut kan du kontrollera om hello klustret fungerar genom att ansluta toohello Service Fabric Explorer med någon av hello dator-IP-adresser, till exempel med hjälp av `http://10.1.0.5:19080/Explorer/index.html`. 
 
 ## <a name="next-steps"></a>Nästa steg
 * [Skapa fristående Service Fabric-kluster i Windows Server eller Linux](service-fabric-deploy-anywhere.md)
-* [Lägg till eller ta bort noder i ett fristående Service Fabric-kluster](service-fabric-cluster-windows-server-add-remove-nodes.md)
+* [Lägg till eller ta bort noder tooa fristående Service Fabric-kluster](service-fabric-cluster-windows-server-add-remove-nodes.md)
 * [Konfigurationsinställningar för fristående Windows-kluster](service-fabric-cluster-manifest.md)
 * [Skydda ett fristående kluster på Windows med hjälp av Windows-säkerhet](service-fabric-windows-cluster-windows-security.md)
 * [Skydda ett fristående kluster på Windows med X509 certifikat](service-fabric-windows-cluster-x509-security.md)

@@ -1,6 +1,6 @@
 ---
-title: "Skapa ett Azure Service Fabric-kluster från en mall | Microsoft Docs"
-description: "Den här artikeln beskriver hur du ställer in en säker Service Fabric-kluster i Azure med Azure Resource Manager, Azure Key Vault och Azure Active Directory (Azure AD) för klientautentisering."
+title: "aaaCreate ett Azure Service Fabric-kluster från en mall | Microsoft Docs"
+description: "Den här artikeln beskriver hur tooset upp en säker Service Fabric-kluster i Azure med Azure Resource Manager, Azure Key Vault och Azure Active Directory (Azure AD) för klientautentisering."
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.openlocfilehash: 420ea486e626763af65a23e49ce04033ea418fb4
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: a4563c58a68127720a8290c3be0df9d026833eb4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Skapa ett Service Fabric-kluster med hjälp av Azure Resource Manager
 > [!div class="op_single_selector"]
@@ -27,22 +27,22 @@ ms.lasthandoff: 08/18/2017
 >
 >
 
-Den här stegvisa guiden vägleder dig genom att skapa en säker Azure Service Fabric-kluster i Azure med hjälp av Azure Resource Manager. Vi bekräftar att artikeln är långt. Dock om du redan är väl bekanta dig med innehållet, måste du följa varje steg noggrant.
+Den här stegvisa guiden vägleder dig genom att skapa en säker Azure Service Fabric-kluster i Azure med hjälp av Azure Resource Manager. Vi bekräftar den hello artikeln är långt. Dock om du redan är noggrant bekant med hello innehåll vara säker på att toofollow varje steg noggrant.
 
-Guiden innehåller följande procedurer:
+hello handboken innehåller hello följande procedurer:
 
-* Ställa in en Azure key vault för att ladda upp certifikat för kluster- och säkerhet
+* Skapa ett Azure key vault tooupload certifikat för kluster- och säkerhet
 * Skapar en skyddad kluster i Azure med hjälp av Azure Resource Manager
 * Autentisering av användare med hjälp av Azure Active Directory (Azure AD) för hantering av kluster
 
-En säker klustret är ett kluster som förhindrar obehörig åtkomst till hanteringsåtgärder. Detta inkluderar distribution, uppgradera och ta bort program, tjänster och de data som de innehåller. Ett oskyddat klustret är ett kluster alla kan ansluta till när som helst och utföra hanteringsåtgärder. Men det är möjligt att skapa ett oskyddade kluster, rekommenderar vi starkt att du skapar en säker klustret redan från början. Eftersom ett oskyddade kluster inte kan säkras senare, måste du skapa ett nytt kluster.
+En säker klustret är ett kluster som förhindrar obehörig åtkomst toomanagement åtgärder. Detta inkluderar att distribuera, uppgradering, och ta bort program, tjänster och hello data de innehåller. Ett oskyddat klustret är ett kluster alla kan ansluta tooat helst och utföra hanteringsåtgärder. Men det är möjligt toocreate ett oskyddade kluster, rekommenderar vi starkt att du skapar en säker kluster från hello början. Eftersom ett oskyddade kluster inte kan säkras senare, måste du skapa ett nytt kluster.
 
-Konceptet för att skapa skyddade kluster är densamma, oavsett om de är Linux eller Windows-kluster. Mer information och hjälp skript för att skapa säkra Linux-kluster, se [att skapa skyddade kluster på Linux](#secure-linux-clusters).
+hello begreppet skapa skyddade kluster är hello samma, oavsett om de är Linux eller Windows-kluster. Mer information och hjälp skript för att skapa säkra Linux-kluster, se [att skapa skyddade kluster på Linux](#secure-linux-clusters).
 
-## <a name="sign-in-to-your-azure-account"></a>Logga in på ditt Azure-konto
-Den här guiden använder [Azure PowerShell][azure-powershell]. När du startar en ny PowerShell-session, logga in på ditt Azure-konto och välja din prenumeration innan du kan köra kommandon för Azure.
+## <a name="sign-in-tooyour-azure-account"></a>Logga in tooyour Azure-konto
+Den här guiden använder [Azure PowerShell][azure-powershell]. När du startar en ny PowerShell-session, logga in tooyour Azure-konto och välja din prenumeration innan du kan köra kommandon för Azure.
 
-Logga in på ditt Azure-konto:
+Logga in tooyour Azure-konto:
 
 ```powershell
 Login-AzureRmAccount
@@ -56,28 +56,28 @@ Set-AzureRmContext -SubscriptionId <guid>
 ```
 
 ## <a name="set-up-a-key-vault"></a>Ställ in ett nyckelvalv
-Det här avsnittet beskrivs skapa nyckelvalvet för Service Fabric-kluster i Azure och för Service Fabric-program. En fullständig guide till Azure Key Vault finns i den [Key Vault Kom igång med][key-vault-get-started].
+Det här avsnittet beskrivs skapa nyckelvalvet för Service Fabric-kluster i Azure och för Service Fabric-program. Fullständig guide-tooAzure Key Vault finns toohello [Key Vault Kom igång med][key-vault-get-started].
 
-Service Fabric använder X.509-certifikat för att skydda ett kluster och säkerhetsfunktioner för programmet. Du kan använda Nyckelvalv för att hantera certifikat för Service Fabric-kluster i Azure. När ett kluster distribueras i Azure, Azure-resursprovider som ansvarar för att skapa Service Fabric-kluster hämtar certifikat från Nyckelvalvet och installerar dem på klustret virtuella datorer.
+Service Fabric använder X.509-certifikat toosecure ett kluster och säkerhetsfunktioner för programmet. Du använder Key Vault toomanage certifikat för Service Fabric-kluster i Azure. När ett kluster distribueras i Azure hämtar certifikat från Nyckelvalvet hello Azure-resursprovider som ansvarar för att skapa Service Fabric-kluster och installerar dem på hello klustrets virtuella datorer.
 
-Följande diagram illustrerar förhållandet mellan Azure Key Vault, Service Fabric-kluster och Azure-resursprovider som använder certifikat som lagras i en nyckelvalvet när den skapar ett kluster:
+hello illustrerar följande diagram hello förhållandet mellan Azure Key Vault, Service Fabric-kluster och hello Azure-resursprovider som använder certifikat som lagras i en nyckelvalvet när den skapar ett kluster:
 
 ![Diagram över certifikatinstallation][cluster-security-cert-installation]
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
-Det första steget är att skapa en resursgrupp för nyckelvalvet. Vi rekommenderar att du placera nyckelvalvet i sin egen resursgruppen. Den här åtgärden kan du ta bort beräkning och lagring resursgrupper, inklusive resursgruppen som innehåller Service Fabric-klustret utan att förlora dina nycklar och hemligheter. Resursgruppen som innehåller nyckelvalvet _måste vara i samma region_ som klustret som använder den.
+hello första steget är toocreate en resursgrupp för nyckelvalvet. Vi rekommenderar att du placerar hello nyckelvalv i sin egen resursgrupp. Den här åtgärden kan du ta bort hello beräkning och lagring resursgrupper, inklusive hello resursgruppen som innehåller Service Fabric-klustret utan att förlora dina nycklar och hemligheter. hello resursgruppen som innehåller nyckelvalvet _hello måste ha samma region_ som hello-kluster som använder den.
 
-Om du planerar att distribuera kluster i flera områden, föreslår vi att du namnger resursgruppen och nyckeln valvet på ett sätt som anger vilken region som den tillhör.  
+Om du planerar toodeploy kluster i flera områden, föreslår vi att du namnger hello resursgrupp och hello nyckelvalv på ett sätt som anger vilken region som den tillhör.  
 
 ```powershell
 
     New-AzureRmResourceGroup -Name westus-mykeyvault -Location 'West US'
 ```
-Resultatet bör se ut så här:
+hello utdata ska se ut så här:
 
 ```powershell
 
-    WARNING: The output object type of this cmdlet is going to be modified in a future release.
+    WARNING: hello output object type of this cmdlet is going toobe modified in a future release.
 
     ResourceGroupName : westus-mykeyvault
     Location          : westus
@@ -88,8 +88,8 @@ Resultatet bör se ut så här:
 ```
 <a id="new-key-vault"></a>
 
-### <a name="create-a-key-vault-in-the-new-resource-group"></a>Skapa en nyckelvalvet i den nya resursgruppen
-Nyckelvalvet _måste vara aktiverat för distribution_ att compute-resursprovidern så att hämta certifikat från det och installera det på instanser för virtuella datorer:
+### <a name="create-a-key-vault-in-hello-new-resource-group"></a>Skapa en nyckelvalvet i hello ny resursgrupp
+Hej nyckelvalv _måste vara aktiverat för distribution_ tooallow hello beräkning resource provider tooget certifikat från den och installera det på instanser för virtuella datorer:
 
 ```powershell
 
@@ -97,7 +97,7 @@ Nyckelvalvet _måste vara aktiverat för distribution_ att compute-resursprovide
 
 ```
 
-Resultatet bör se ut så här:
+hello utdata ska se ut så här:
 
 ```powershell
 
@@ -116,8 +116,8 @@ Resultatet bör se ut så här:
                                        Object ID                :    <guid>
                                        Application ID           :
                                        Display Name             :    
-                                       Permissions to Keys      :    get, create, delete, list, update, import, backup, restore
-                                       Permissions to Secrets   :    all
+                                       Permissions tooKeys      :    get, create, delete, list, update, import, backup, restore
+                                       Permissions tooSecrets   :    all
 
 
     Tags                             :
@@ -126,7 +126,7 @@ Resultatet bör se ut så här:
 
 ## <a name="use-an-existing-key-vault"></a>Använd en befintlig nyckelvalv
 
-Att använda en befintlig nyckelvalv du _måste aktivera den för distribution_ att compute-resursprovidern så att hämta certifikat från det och installera den på klusternoder:
+toouse en befintlig nyckelvalv du _måste aktivera den för distribution_ tooallow hello beräkning resource provider tooget certifikat från den och installera den på klusternoder:
 
 ```powershell
 
@@ -136,36 +136,36 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployme
 
 <a id="add-certificate-to-key-vault"></a>
 
-## <a name="add-certificates-to-your-key-vault"></a>Lägga till certifikat i nyckelvalvet
+## <a name="add-certificates-tooyour-key-vault"></a>Lägg till certifikat tooyour nyckelvalv
 
-Certifikat används i Service Fabric till att autentisera och kryptera olika delar av ett kluster och de program som körs där. Mer information om hur du använder certifikat i Service Fabric finns [säkerhetsscenarier för Service Fabric-klustret][service-fabric-cluster-security].
+Certifikat används i Service Fabric tooprovide autentisering och kryptering toosecure olika aspekter av ett kluster och dess program. Mer information om hur du använder certifikat i Service Fabric finns [säkerhetsscenarier för Service Fabric-klustret][service-fabric-cluster-security].
 
 ### <a name="cluster-and-server-certificate-required"></a>Kluster- och certifikat (krävs)
-Detta certifikat krävs för att skydda ett kluster och förhindra obehörig åtkomst till den. Det ger säkerhet i klustret på två sätt:
+Det här certifikatet är obligatoriska toosecure ett kluster och förhindra obehörig åtkomst tooit. Det ger säkerhet i klustret på två sätt:
 
-* Autentisering för klustret: autentiserar nod till nod kommunikation för klustret. Endast noder som kan bevisa sin identitet med det här certifikatet kan ansluta till klustret.
-* Serverautentisering: verifierar att klustret management slutpunkter management-klienten så att klienten management vet pratar till verkliga klustret. Det här certifikatet ger också en SSL för HTTPS-hanterings-API och för Service Fabric Explorer via HTTPS.
+* Autentisering för klustret: autentiserar nod till nod kommunikation för klustret. Endast noder som kan bevisa sin identitet med det här certifikatet kan gå hello klustret.
+* Serverautentisering: autentiserar hello cluster management slutpunkter tooa management-klienten, så att hello Hanteringsklient vet pratar toohello verkliga klustret. Det här certifikatet ger också en SSL för hello HTTPS hanterings-API och för Service Fabric Explorer via HTTPS.
 
-Om du vill hantera dessa ändamål måste certifikatet uppfylla följande krav:
+tooserve dessa ändamål hello certifikat måste uppfylla följande krav hello:
 
-* Certifikatet måste innehålla en privat nyckel.
-* Certifikatet måste skapas för nyckelutbyte, som kan exporteras till en Personal Information Exchange (.pfx)-fil.
-* Certifikatets ämnesnamn måste matcha den domän som du använder för att få åtkomst till Service Fabric-klustret. Den här matchar krävs att tillhandahålla en SSL för klustrets HTTPS management slutpunkter och Service Fabric Explorer. Du kan skaffa ett SSL-certifikat från en certifikatutfärdare (CA) för det. cloudapp.azure.com domän. Du måste skaffa ett anpassat domännamn för klustret. När du begär ett certifikat från en Certifikatutfärdare måste certifikatets ämnesnamn matcha det anpassade domännamnet som du använder för klustret.
+* hello certifikatet måste innehålla en privat nyckel.
+* hello certifikat måste skapas för nyckelutbyte, som kan exporteras tooa Personal Information Exchange (.pfx)-fil.
+* hello certifikatets ämnesnamn måste matcha hello-domän som du använder tooaccess hello Service Fabric-klustret. Den här matchning är obligatoriska tooprovide en SSL för hello klustrets HTTPS management slutpunkter och Service Fabric Explorer. Du kan skaffa ett SSL-certifikat från en certifikatutfärdare (CA) för hello. cloudapp.azure.com domän. Du måste skaffa ett anpassat domännamn för klustret. När du begär ett certifikat från en Certifikatutfärdare måste hello certifikatets ämnesnamn matcha hello domännamn som du använder för klustret.
 
 ### <a name="application-certificates-optional"></a>Certifikat för programmet (valfritt)
-Valfritt antal ytterligare certifikat kan installeras på ett kluster av säkerhetsskäl för programmet. Tänk på applikationssäkerhets-scenarier som kräver ett certifikat installeras på noderna, som innan du skapar klustret:
+Valfritt antal ytterligare certifikat kan installeras på ett kluster av säkerhetsskäl för programmet. Tänk hello applikationssäkerhets-scenarier som kräver ett certifikat toobe som har installerats på hello noder innan du skapar klustret:
 
 * Kryptering och dekryptering av konfigurationsvärden för programmet.
 * Kryptering av data mellan noderna under replikeringen.
 
 ### <a name="formatting-certificates-for-azure-resource-provider-use"></a>Formatering certifikat för användning av Azure resource provider
-Du kan lägga till och använda privata nyckelfiler (.pfx) direkt via nyckelvalvet. Azure compute-resursprovidern kräver dock nycklar lagras i en särskild JavaScript Object Notation (JSON)-format. Formatet som innehåller PFX-filen som en base 64-kodad sträng och lösenordet för privata nyckeln. Om du vill anpassa dessa krav ska nycklarna placeras i en JSON-sträng och sedan lagras som ”hemligheter” i nyckelvalvet.
+Du kan lägga till och använda privata nyckelfiler (.pfx) direkt via nyckelvalvet. Hello Azure compute-resursprovidern kräver dock nycklar toobe lagras i ett specialformat JavaScript Object Notation (JSON). hello-formatet innehåller hello .pfx-fil som en base 64-kodad sträng och lösenordet för hello privata nyckeln. tooaccommodate kraven hello nycklar måste placeras i en JSON-sträng och sedan lagras som ”hemligheter” i hello nyckeln valvet.
 
-Att göra den här processen enklare, en [PowerShell-modulen finns på GitHub][service-fabric-rp-helpers]. Om du vill använda modulen, gör du följande:
+toomake detta enklare och bearbeta en [PowerShell-modulen finns på GitHub][service-fabric-rp-helpers]. toouse hello modulen hello följande:
 
-1. Hämta hela innehållet på lagringsplatsen till en lokal katalog.
-2. Gå till den lokala katalogen.
-2. Importera modulen ServiceFabricRPHelpers i PowerShell-fönstret:
+1. Hämta hello hela innehållet i hello lagringsplatsen till en lokal katalog.
+2. Gå toohello lokal katalog.
+2. Importera hello ServiceFabricRPHelpers modul i PowerShell-fönstret:
 
 ```powershell
 
@@ -173,7 +173,7 @@ Att göra den här processen enklare, en [PowerShell-modulen finns på GitHub][s
 
 ```
 
-Den `Invoke-AddCertToKeyVault` kommandot i PowerShell-modulen automatiskt formaterar en certifikatets privata nyckel till en JSON-sträng och överförs till nyckelvalvet. Använd kommandot för att lägga till kluster-certifikat och några ytterligare certifikat i nyckelvalvet. Upprepa det här steget för några ytterligare certifikat som du vill installera i klustret.
+Hej `Invoke-AddCertToKeyVault` kommandot i PowerShell-modulen automatiskt formaterar en certifikatets privata nyckel till en JSON-sträng och överförs toohello nyckelvalvet. Använd hello kommandot tooadd hello klustret certifikat och nyckelvalv några ytterligare certifikat toohello. Upprepa det här steget för några ytterligare certifikat som du vill använda tooinstall i klustret.
 
 #### <a name="uploading-an-existing-certificate"></a>Ladda upp ett befintligt certifikat
 
@@ -183,10 +183,10 @@ Den `Invoke-AddCertToKeyVault` kommandot i PowerShell-modulen automatiskt format
 
 ```
 
-Om du får ett felmeddelande som visas här är oftast det att det finns en konflikt för resurs-URL. Ändra namnet på nyckelvalv för att lösa konflikten.
+Om du får ett felmeddelande, till exempel hello som visas här är oftast det att det finns en konflikt för resurs-URL. tooresolve hello konflikt, ändra hello nyckelvalv namn.
 
 ```
-Set-AzureKeyVaultSecret : The remote name could not be resolved: 'westuskv.vault.azure.net'
+Set-AzureKeyVaultSecret : hello remote name could not be resolved: 'westuskv.vault.azure.net'
 At C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1:440 char:11
 + $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $Certif ...
 +           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -195,16 +195,16 @@ At C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelp
 
 ```
 
-Efter att konflikten löses utdata ska se ut så här:
+När hello konflikten har lösts hello utdata ska se ut så här:
 
 ```
 
-    Switching context to SubscriptionId <guid>
+    Switching context tooSubscriptionId <guid>
     Ensuring ResourceGroup westus-mykeyvault in West US
-    WARNING: The output object type of this cmdlet is going to be modified in a future release.
+    WARNING: hello output object type of this cmdlet is going toobe modified in a future release.
     Using existing value mywestusvault in West US
     Reading pfx file from C:\path\to\key.pfx
-    Writing secret to mywestusvault in vault mywestusvault
+    Writing secret toomywestusvault in vault mywestusvault
 
 
 Name  : CertificateThumbprint
@@ -219,13 +219,13 @@ Value : https://mywestusvault.vault.azure.net:443/secrets/mycert/4d087088df974e8
 ```
 
 >[!NOTE]
->Du måste de tre föregående strängar, CertificateThumbprint, SourceVault och CertificateURL att ställa in en säker Service Fabric-klustret och att hämta programmet certifikat som du kan använda för programsäkerhet. Om du inte sparar strängar kan det vara svårt att hämta dem genom att fråga nyckelvalvet senare.
+>Du måste hello tre föregående strängar, CertificateThumbprint och SourceVault CertificateURL tooset av säker Service Fabric-kluster och tooobtain programcertifikat som du kan använda för programsäkerhet. Om du inte sparar hello strängar kan vara det svårt tooretrieve dem genom att fråga hello nyckeln valvet senare.
 
 <a id="add-self-signed-certificate-to-key-vault"></a>
 
-#### <a name="creating-a-self-signed-certificate-and-uploading-it-to-the-key-vault"></a>Skapa ett självsignerat certifikat och överföra den till nyckelvalvet
+#### <a name="creating-a-self-signed-certificate-and-uploading-it-toohello-key-vault"></a>Skapa ett självsignerat certifikat och överföra den toohello nyckelvalv
 
-Hoppa över det här steget om du redan har överfört din certifikat till nyckelvalvet. Det här steget är för att generera ett nytt självsignerat certifikat och överföra den till nyckelvalvet. När du ändrar parametrar i följande skript och kör det ska efterfrågas ett lösenord för certifikatet.  
+Hoppa över det här steget om du redan har överfört certifikat toohello nyckelvalvet. Det här steget är för att generera ett nytt självsignerat certifikat och överföra den tooyour nyckelvalvet. När du ändrar hello parametrar i hello följande skript och kör sedan det ska efterfrågas ett lösenord för certifikatet.  
 
 ```powershell
 
@@ -234,17 +234,17 @@ $VName = "chackokv2"
 $SubID = "6c653126-e4ba-42cd-a1dd-f7bf96ae7a47"
 $locationRegion = "westus"
 $newCertName = "chackotestcertificate1"
-$dnsName = "www.mycluster.westus.mydomain.com" #The certificate's subject name must match the domain used to access the Service Fabric cluster.
-$localCertPath = "C:\MyCertificates" # location where you want the .PFX to be stored
+$dnsName = "www.mycluster.westus.mydomain.com" #hello certificate's subject name must match hello domain used tooaccess hello Service Fabric cluster.
+$localCertPath = "C:\MyCertificates" # location where you want hello .PFX toobe stored
 
  Invoke-AddCertToKeyVault -SubscriptionId $SubID -ResourceGroupName $ResourceGroup -Location $locationRegion -VaultName $VName -CertificateName $newCertName -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
 
 ```
 
-Om du får ett felmeddelande som visas här är oftast det att det finns en konflikt för resurs-URL. Lös konflikten genom att ändra nyckelvalv namn, RG namn och så vidare.
+Om du får ett felmeddelande, till exempel hello som visas här är oftast det att det finns en konflikt för resurs-URL. tooresolve hello konflikt, ändra hello nyckelvalv namn, RG namn och så vidare.
 
 ```
-Set-AzureKeyVaultSecret : The remote name could not be resolved: 'westuskv.vault.azure.net'
+Set-AzureKeyVaultSecret : hello remote name could not be resolved: 'westuskv.vault.azure.net'
 At C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1:440 char:11
 + $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $Certif ...
 +           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -253,17 +253,17 @@ At C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelp
 
 ```
 
-Efter att konflikten löses utdata ska se ut så här:
+När hello konflikten har lösts hello utdata ska se ut så här:
 
 ```
 PS C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers> Invoke-AddCertToKeyVault -SubscriptionId $SubID -ResourceGroupName $ResouceGroup -Location $locationRegion -VaultName $VName -CertificateName $newCertName -Password $certPassword -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
-Switching context to SubscriptionId 6c343126-e4ba-52cd-a1dd-f8bf96ae7a47
+Switching context tooSubscriptionId 6c343126-e4ba-52cd-a1dd-f8bf96ae7a47
 Ensuring ResourceGroup chackowestuskv in westus
-WARNING: The output object type of this cmdlet will be modified in a future release.
+WARNING: hello output object type of this cmdlet will be modified in a future release.
 Creating new vault westuskv1 in westus
 Creating new self signed certificate at C:\MyCertificates\chackonewcertificate1.pfx
 Reading pfx file from C:\MyCertificates\chackonewcertificate1.pfx
-Writing secret to chackonewcertificate1 in vault westuskv1
+Writing secret toochackonewcertificate1 in vault westuskv1
 
 
 Name  : CertificateThumbprint
@@ -278,52 +278,52 @@ Value : https://westuskv1.vault.azure.net:443/secrets/chackonewcertificate1/ee24
 ```
 
 >[!NOTE]
->Du måste de tre föregående strängar, CertificateThumbprint, SourceVault och CertificateURL att ställa in en säker Service Fabric-klustret och att hämta programmet certifikat som du kan använda för programsäkerhet. Om du inte sparar strängar kan det vara svårt att hämta dem genom att fråga nyckelvalvet senare.
+>Du måste hello tre föregående strängar, CertificateThumbprint och SourceVault CertificateURL tooset av säker Service Fabric-kluster och tooobtain programcertifikat som du kan använda för programsäkerhet. Om du inte sparar hello strängar kan vara det svårt tooretrieve dem genom att fråga hello nyckeln valvet senare.
 
- Du bör nu ha följande element på plats:
+ Du bör nu ha hello följande element på plats:
 
-* Resursgruppen för nyckelvalv.
-* Nyckelvalvet och dess URL (kallas SourceVault i föregående PowerShell utdata).
-* Certifikat för serverautentisering i klustret och dess URL: en i nyckelvalvet.
-* Programcertifikat och deras URL: er i nyckelvalvet.
+* Hej nyckelvalv resursgrupp.
+* Hej nyckelvalvet och Webbadressen (kallas SourceVault i hello föregående PowerShell-utdata).
+* hello klustret certifikat för serverautentisering och URL: en i hello nyckelvalvet.
+* hello programmet certifikat och deras URL: er i hello nyckelvalvet.
 
 
 <a id="add-AAD-for-client"></a>
 
 ## <a name="set-up-azure-active-directory-for-client-authentication"></a>Konfigurera Azure Active Directory för klientautentisering
 
-Azure AD kan organisationer (kallas även klienter) för att hantera användarnas åtkomst till program. Program är indelade i dem med en webbaserad inloggning användargränssnitt och de med inbyggda klientupplevelsen. I den här artikeln förutsätter vi att du redan har skapat en klient. Om du inte har börja med att läsa [skaffa en Azure Active Directory-klient][active-directory-howto-tenant].
+Azure AD kan organisationer (kallas klienter) toomanage användaren åtkomst tooapplications. Program är indelade i dem med en webbaserad inloggning användargränssnitt och de med inbyggda klientupplevelsen. I den här artikeln förutsätter vi att du redan har skapat en klient. Om du inte har börja med att läsa [hur tooget ett Azure Active Directory-klient][active-directory-howto-tenant].
 
-Ett Service Fabric-kluster erbjuder flera startpunkter till dess hanteringsfunktioner, inklusive den webbaserade [Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] och [Visual Studio] [ service-fabric-manage-application-in-visual-studio]. Därför kan skapa du två Azure AD-program för att styra åtkomsten till klustret, ett webbprogram och en programspecifika.
+Ett Service Fabric-kluster erbjuder flera posten pekar tooits hanteringsfunktioner, inklusive hello webbaserade [Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] och [Visual Studio] [service-fabric-manage-application-in-visual-studio]. Därför kan skapa du två Azure AD-program toocontrol åtkomst toohello klustret, ett webbprogram och en programspecifika.
 
-Vi har skapat en uppsättning Windows PowerShell-skript för att förenkla vissa av stegen som ingår i att konfigurera Azure AD med ett Service Fabric-kluster.
+toosimplify några av hello stegen som är involverad i Konfigurera Azure AD med ett Service Fabric-kluster, vi har skapat en uppsättning Windows PowerShell-skript.
 
 > [!NOTE]
-> Du måste slutföra följande steg innan du skapar klustret. Eftersom skripten förväntas klusternamn och slutpunkter kan värdena bör planeras och värden inte som du redan har skapat.
+> Du måste slutföra följande steg innan du skapar klustret hello hello. Eftersom hello skript räknar klusternamn och slutpunkter, bör planeras hello värden och värden inte som du redan har skapat.
 
-1. [Hämta skripten] [ sf-aad-ps-script-download] till datorn.
-2. Högerklicka på zip-filen, Välj **egenskaper**, Välj den **avblockera** kryssrutan och klicka sedan på **tillämpa**.
-3. Extrahera zip-filen.
-4. Kör `SetupApplications.ps1`, och anger TenantId, klusternamn och WebApplicationReplyUrl som parametrar. Exempel:
+1. [Hämta hello skript] [ sf-aad-ps-script-download] tooyour dator.
+2. Högerklicka på hello zip-filen, Välj **egenskaper**väljer hello **avblockera** kryssrutan och klicka sedan på **tillämpa**.
+3. Extrahera hello zip-filen.
+4. Kör `SetupApplications.ps1`, och ange hello TenantId, klusternamn och WebApplicationReplyUrl som parametrar. Exempel:
 
     ```powershell
     .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
     ```
 
-    Du kan hitta din TenantId genom att köra PowerShell-kommando `Get-AzureSubscription`. Kör det här kommandot visar TenantId för varje prenumeration.
+    Du kan hitta din TenantId genom att köra PowerShell-kommando för hello `Get-AzureSubscription`. Kör det här kommandot visar hello TenantId för varje prenumeration.
 
-    Klusternamn används som prefix i Azure AD-program som skapats av skriptet. Det behöver inte matcha exakt faktiska klustrets namn. Det är endast avsedd att göra det enklare att mappa Service Fabric-klustret som de som används med Azure AD-artefakter.
+    Klusternamn är används tooprefix hello Azure AD-program som skapats av hello-skriptet. Det behöver inte toomatch hello faktiska klusternamnet exakt. Det är avsedda enbart toomake den enklare toomap Azure AD-artefakter toohello Service Fabric-kluster som de som används med.
 
-    WebApplicationReplyUrl är standardslutpunkten som Azure AD tillbaka till användarna när de har loggat in. Ange den här slutpunkten som Service Fabric Explorer-slutpunkt för klustret, vilket som standard är:
+    WebApplicationReplyUrl är hello standardslutpunkt som Azure AD returnerar tooyour användare när de har loggat in. Ange den här slutpunkten som hello Service Fabric Explorer slutpunkt för klustret, vilket som standard är:
 
     https://&lt;cluster_domain&gt;: 19080/Explorer
 
-    Du uppmanas att logga in på ett konto som har administratörsbehörighet för Azure AD-klient. När du loggar in skapar skriptet webb- och interna program för att representera Service Fabric-klustret. Om du tittar på klientens program i den [klassiska Azure-portalen][azure-classic-portal], bör du se två nya poster:
+    Du kan ange toosign i tooan konto som har administratörsbehörighet för hello Azure AD-klient. När du loggar in hello skriptet skapar hello webb- och interna program toorepresent Service Fabric-klustret. Om du tittar på hello klient program i hello [klassiska Azure-portalen][azure-classic-portal], bör du se två nya poster:
 
    * *Klusternamn*\_kluster
    * *Klusternamn*\_klienten
 
-   Skriptet skriver ut JSON som krävs av Azure Resource Manager-mallen när du skapar klustret i nästa avsnitt, så det är en bra idé att öppna PowerShell-fönstret.
+   hello skript skrivs hello JSON som krävs av hello Azure Resource Manager-mall när du skapar hello kluster i hello nästa avsnitt, så det är en bra idé tookeep hello PowerShell-fönstret öppnas.
 
 ```json
 "azureActiveDirectory": {
@@ -334,18 +334,18 @@ Vi har skapat en uppsättning Windows PowerShell-skript för att förenkla vissa
 ```
 
 ## <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Skapa en mall för Service Fabric-kluster Resource Manager
-I det här avsnittet används utdata av föregående PowerShell-kommandon i Service Fabric-kluster Resource Manager-mall.
+I det här avsnittet hello matar ut av hello föregående PowerShell-kommandon som används i en Service Fabric-kluster Resource Manager-mall.
 
-Exempel Resource Manager-mallar är tillgängliga i den [Azure Snabbkurs mallgalleriet på GitHub][azure-quickstart-templates]. Dessa mallar kan användas som en startpunkt för mallen för klustret.
+Exempel Resource Manager-mallar är tillgängliga i hello [Azure Snabbkurs mallgalleriet på GitHub][azure-quickstart-templates]. Dessa mallar kan användas som en startpunkt för mallen för klustret.
 
-### <a name="create-the-resource-manager-template"></a>Skapa Resource Manager-mallen
-Den här guiden använder den [säker kluster med 5] [ service-fabric-secure-cluster-5-node-1-nodetype] exempel mallen och mallparametrar. Hämta `azuredeploy.json` och `azuredeploy.parameters.json` till din dator och öppna filer i valfri textredigerare.
+### <a name="create-hello-resource-manager-template"></a>Skapa hello Resource Manager-mall
+Den här guiden använder hello [säker kluster med 5] [ service-fabric-secure-cluster-5-node-1-nodetype] exempel mallen och mallparametrar. Hämta `azuredeploy.json` och `azuredeploy.parameters.json` tooyour datorn och öppna filer i valfri textredigerare.
 
 ### <a name="add-certificates"></a>Lägg till certifikat
-Du lägga till certifikat i ett kluster Resource Manager-mall genom att referera till nyckelvalvet som innehåller certifikatnycklarna. Vi rekommenderar att du placera nyckelvalvet värden i en parameterfil för Resource Manager-mall. Gör det håller resurshanteraren mallfilen återanvändbara och utan värden specifika till en distribution.
+Du kan lägga till certifikat tooa klustret Resource Manager-mall genom att referera hello nyckelvalv som innehåller hello certifikatnycklar. Vi rekommenderar att du placerar hello nyckelvalvet värden i en parameterfil för Resource Manager-mall. Då behåller hello Resource Manager mallfilen återanvändbara och utan värden specifika tooa distribution.
 
-#### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Lägg till alla certifikat i virtual machine scale set osProfile
-Alla certifikat som installeras i klustret måste konfigureras i avsnittet osProfile i scale set-resurs (Microsoft.Compute/virtualMachineScaleSets). Den här åtgärden instruerar resursprovidern att installera certifikatet på virtuella datorer. Den här installationen innehåller både certifikatet kluster och alla program security-certifikat som du planerar att använda för dina program:
+#### <a name="add-all-certificates-toohello-virtual-machine-scale-set-osprofile"></a>Lägg till alla certifikat toohello virtuella skaluppsättning osProfile
+Alla certifikat som har installerats i hello klustret måste konfigureras under hello osProfile i hello scale set resurs (Microsoft.Compute/virtualMachineScaleSets). Den här åtgärden instruerar hello resource provider tooinstall hello certifikatet på hello virtuella datorer. Den här installationen innehåller både hello klustret certifikat och några security-certifikat för programmet som du planerar toouse för dina program:
 
 ```json
 {
@@ -379,8 +379,8 @@ Alla certifikat som installeras i klustret måste konfigureras i avsnittet osPro
 }
 ```
 
-#### <a name="configure-the-service-fabric-cluster-certificate"></a>Konfigurera certifikat för Service Fabric-kluster
-Certifikatet för autentisering av klustret måste konfigureras i båda Service Fabric klusterresursen (Microsoft.ServiceFabric/clusters) och Service Fabric-tillägget för virtuell dator skala anger i den virtuella dator skala set resursen. Den här ordningen kan Service Fabric-resursprovidern så att konfigurera den som ska användas för autentisering för klustret och serverautentisering för av hanteringsslutpunkter.
+#### <a name="configure-hello-service-fabric-cluster-certificate"></a>Konfigurera certifikat för hello Service Fabric-kluster
+hello autentiseringscertifikat för klustret måste konfigureras i båda hello Service Fabric-klusterresursen (Microsoft.ServiceFabric/clusters) och hello Service Fabric-tillägget för virtuell dator skala anger i hello virtuella scale set datorresurser. Den här ordningen tillåter hello Service Fabric resource provider tooconfigure den som ska användas för autentisering för klustret och serverautentisering för av hanteringsslutpunkter.
 
 ##### <a name="virtual-machine-scale-set-resource"></a>Virtuella skaluppsättning för resursen:
 ```json
@@ -435,7 +435,7 @@ Certifikatet för autentisering av klustret måste konfigureras i båda Service 
 ```
 
 ### <a name="insert-azure-ad-configuration"></a>Infoga Azure AD-konfiguration
-Azure AD-konfiguration som du skapade tidigare kan infogas direkt i Resource Manager-mall. Vi rekommenderar dock att du först extrahera värdena i en fil med parametrar att hålla resurshanteraren mall kan återanvändas och fria från värden som är specifika för en distribution.
+hello Azure AD-konfiguration som du skapade tidigare kan infogas direkt i Resource Manager-mall. Vi rekommenderar dock att du först extrahera hello värden till en parametrar filen tookeep hello Resource Manager-mall kan återanvändas och utan värden specifika tooa distribution.
 
 ```json
 {
@@ -460,8 +460,8 @@ Azure AD-konfiguration som du skapade tidigare kan infogas direkt i Resource Man
 ```
 
 ### < en ”konfigurera arm” ></a>konfigurera Hanteraren för filserverresurser mallparametrar
-<!--- Loc Comment: It seems that <a "configure-arm" > must be replaced with <a name="configure-arm"></a> since the link seems not to be redirecting correctly --->
-Använd slutligen utdatavärden från nyckelvalvet och Azure AD PowerShell-kommandon för att fylla i parameterfilen:
+<!--- Loc Comment: It seems that <a "configure-arm" > must be replaced with <a name="configure-arm"></a> since hello link seems not toobe redirecting correctly --->
+Använd slutligen hello utdatavärden från hello nyckelvalvet och Azure AD PowerShell-kommandon toopopulate hello parameterfilen:
 
 ```json
 {
@@ -500,7 +500,7 @@ Använd slutligen utdatavärden från nyckelvalvet och Azure AD PowerShell-komma
     }
 }
 ```
-Du bör nu ha följande element på plats:
+Du bör nu ha hello följande element på plats:
 
 * Nyckelvalv resursgruppen.
   * Nyckelvalv
@@ -514,22 +514,22 @@ Du bör nu ha följande element på plats:
   * Certifikat konfigureras via nyckelvalv
   * Azure Active Directory konfigurerat
 
-Följande diagram illustrerar där ditt nyckelvalv och Azure AD-konfiguration passar i Resource Manager-mall.
+hello följande diagram illustrerar där ditt nyckelvalv och Azure AD-konfiguration passar i Resource Manager-mall.
 
 ![Hanteraren för filserverresurser beroendekarta för anslutningar][cluster-security-arm-dependency-map]
 
-## <a name="create-the-cluster"></a>Skapa klustret
-Du är nu redo att skapa klustret med hjälp av [Azure-resurs malldistribution][resource-group-template-deploy].
+## <a name="create-hello-cluster"></a>Skapa hello-kluster
+Nu är du redo toocreate hello kluster med hjälp av [Azure-resurs malldistribution][resource-group-template-deploy].
 
 #### <a name="test-it"></a>testa den
-Använd följande PowerShell-kommando för att testa Resource Manager-mall med en fil med parametrar:
+Använd följande PowerShell-kommandot tootest hello Resource Manager-mall med en fil med parametrar:
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
 #### <a name="deploy-it"></a>distribuera den
-Om hanteraren för filserverresurser mallen testet lyckas, kan du använda följande PowerShell-kommando för att distribuera Resource Manager-mall med en fil med parametrar:
+Om hello Resource Manager-mall testet lyckas, använder du följande PowerShell-kommandot toodeploy hello Resource Manager-mall med en fil med parametrar:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
@@ -537,16 +537,16 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 
 <a name="assign-roles"></a>
 
-## <a name="assign-users-to-roles"></a>Tilldela användare till roller
-När du har skapat de program som ska representera klustret tilldelar användarna till de roller som stöds av Service Fabric: skrivskyddade och administratör. Du kan tilldela roller med hjälp av den [klassiska Azure-portalen][azure-classic-portal].
+## <a name="assign-users-tooroles"></a>Tilldela användare tooroles
+När du har skapat hello program toorepresent klustret, tilldela dina användare toohello roller som stöds av Service Fabric: skrivskyddade och administratör. Du kan tilldela hello roller med hjälp av hello [klassiska Azure-portalen][azure-classic-portal].
 
-1. Gå till din klient i Azure-portalen och väljer sedan **program**.
-2. Välj webbprogram som har ett namn som `myTestCluster_Cluster`.
-3. Klicka på den **användare** fliken.
-4. Välj en användare att tilldela och klicka sedan på den **tilldela** längst ned på skärmen.
+1. Gå tooyour klient i hello Azure-portalen, och välj sedan **program**.
+2. Välj hello webbprogram som har ett namn som `myTestCluster_Cluster`.
+3. Klicka på hello **användare** fliken.
+4. Välj en användare tooassign och klicka sedan på hello **tilldela** knappen längst ned hello hello-skärmen.
 
-    ![Tilldela användare till roller knappen][assign-users-to-roles-button]
-5. Välj rollen för att tilldela användaren.
+    ![Tilldela användare tooroles knappen][assign-users-to-roles-button]
+5. Välj hello rollen tooassign toohello användare.
 
     ![”Tilldela användare” dialogrutan][assign-users-to-roles-dialog]
 
@@ -556,31 +556,31 @@ När du har skapat de program som ska representera klustret tilldelar användarn
 >
 
  <a name="secure-linux-clusters"></a>
- <!--- Loc Comment: It seems that letter S in cluster was missing, which caused the wrong redirection of the link --->
+ <!--- Loc Comment: It seems that letter S in cluster was missing, which caused hello wrong redirection of hello link --->
 
 ## <a name="create-secure-clusters-on-linux"></a>Skapa skyddade kluster på Linux
-Du kan förenkla processen har vi angett ett [helper skriptet](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux). Innan du använder skriptet helper se till att du redan har Azure-kommandoradsgränssnittet (CLI) installerad och den är i din sökväg. Kontrollera att skriptet har behörighet att köra genom att köra `chmod +x cert_helper.py` när du har hämtat den. Det första steget är att logga in på ditt Azure-konto med hjälp av CLI med den `azure login` kommando. När du loggar in på ditt Azure-konto, använder du helper skriptet med din CA-signerat certifikat, så som visas i följande kommando:
+toomake hello processen enklare, som vi har angett en [helper skriptet](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux). Innan du använder skriptet helper se till att du redan har Azure-kommandoradsgränssnittet (CLI) installerad och den är i din sökväg. Se till att hello skript har behörigheter tooexecute genom att köra `chmod +x cert_helper.py` när du har hämtat den. hello första steget är toosign i tooyour Azure-konto med hjälp av CLI med hello `azure login` kommando. När du har registrerat i tooyour Azure-konto, signerade Använd hello helper skript med Certifikatutfärdaren certifikat, som följande kommando visar hello:
 
 ```sh
 ./cert_helper.py [-h] CERT_TYPE [-ifile INPUT_CERT_FILE] [-sub SUBSCRIPTION_ID] [-rgname RESOURCE_GROUP_NAME] [-kv KEY_VAULT_NAME] [-sname CERTIFICATE_NAME] [-l LOCATION] [-p PASSWORD]
 ```
 
-Parametern - ifile kan ta en .pfx-fil eller en PEM-filen som indata med certifikattyp (pfx eller pem eller ss om det är ett självsignerat certifikat).
-I parametern -h skriver ut den hjälptext som visas.
+hello - ifile parameter kan ta en .pfx-fil eller en PEM-filen som indata med hello certifikattyp (pfx eller pem eller ss om det är ett självsignerat certifikat).
+hello parametern -h skriver ut hello hjälptexten.
 
 
-Det här kommandot returnerar följande tre strängar som utdata:
+Det här kommandot returnerar hello följande tre strängar som hello utdata:
 
-* SourceVaultID, vilket är ID för nya KeyVault ResourceGroup den skapas automatiskt
-* CertificateUrl för åtkomst till certifikatet
+* SourceVaultID som är hello-ID för hello nya KeyVault ResourceGroup den skapas automatiskt
+* CertificateUrl för att komma åt hello certifikat
 * CertificateThumbprint som används för autentisering
 
-I följande exempel visas hur du använder kommandot:
+hello som följande exempel visar hur toouse hello kommando:
 
 ```sh
 ./cert_helper.py pfx -sub "fffffff-ffff-ffff-ffff-ffffffffffff"  -rgname "mykvrg" -kv "mykevname" -ifile "/home/test/cert.pfx" -sname "mycert" -l "East US" -p "pfxtest"
 ```
-Kör kommandot ovan ger dig de tre strängarna på följande sätt:
+Köra hello före kommandot ger du hello tre strängar på följande sätt:
 
 ```sh
 SourceVault: /subscriptions/fffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/mykvrg/providers/Microsoft.KeyVault/vaults/mykvname
@@ -588,74 +588,74 @@ CertificateUrl: https://myvault.vault.azure.net/secrets/mycert/00000000000000000
 CertificateThumbprint: 0xfffffffffffffffffffffffffffffffffffffffff
 ```
 
-Certifikatets ämnesnamn måste matcha den domän som du använder för att få åtkomst till Service Fabric-klustret. Matchningen krävs för att tillhandahålla en SSL för klustrets HTTPS management slutpunkter och Service Fabric Explorer. Du kan skaffa ett SSL-certifikat från en Certifikatutfärdare för den `.cloudapp.azure.com` domän. Du måste skaffa ett anpassat domännamn för klustret. När du begär ett certifikat från en Certifikatutfärdare måste certifikatets ämnesnamn matcha det anpassade domännamnet som du använder för klustret.
+hello certifikatets ämnesnamn måste matcha hello-domän som du använder tooaccess hello Service Fabric-klustret. Matchningen är obligatoriska tooprovide en SSL för hello klustrets HTTPS management slutpunkter och Service Fabric Explorer. Du kan skaffa ett SSL-certifikat från en Certifikatutfärdare för hello `.cloudapp.azure.com` domän. Du måste skaffa ett anpassat domännamn för klustret. När du begär ett certifikat från en Certifikatutfärdare måste hello certifikatets ämnesnamn matcha hello domännamn som du använder för klustret.
 
-Dessa ämnesnamn är transaktioner som du behöver skapa en säker Service Fabric-klustret (utan Azure AD), enligt beskrivningen i [konfigurera Hanteraren för filserverresurser mallparametrar](#configure-arm). Du kan ansluta till det säkra klustret genom att följa anvisningarna för [autentisera klientåtkomst till ett kluster](service-fabric-connect-to-secure-cluster.md). Linux preview kluster stöder inte Azure AD-autentisering. Du kan tilldela roller admin och klienten enligt beskrivningen i den [tilldela roller till användare](#assign-roles) avsnitt. Du måste ange tumavtryck för certifikatet för autentisering när du anger admin och klienten roller för en Linux-kluster för förhandsgranskning. (Du inte anger namnet på certifikatmottagaren eftersom ingen verifiering av certifikatkedjan eller återkallade utförs i den här förhandsversionen.)
+Dessa ämnesnamn är hello poster du behöver toocreate säker Service Fabric-klustret (utan Azure AD), enligt beskrivningen i [konfigurera Hanteraren för filserverresurser mallparametrar](#configure-arm). Du kan ansluta toohello säker klustret genom att följa hello anvisningar för [autentisera klient åtkomst tooa kluster](service-fabric-connect-to-secure-cluster.md). Linux preview kluster stöder inte Azure AD-autentisering. Du kan tilldela roller admin och klienten enligt beskrivningen i hello [tilldela roller toousers](#assign-roles) avsnitt. När du anger admin och klienten roller för en Linux-kluster i förhandsgranskningen har tooprovide certifikattumavtryck för autentisering. (Du inte anger hello ämnesnamn eftersom ingen verifiering av certifikatkedjan eller återkallade utförs i den här förhandsversionen.)
 
-Du kan använda samma skript för att generera en om du vill använda ett självsignerat certifikat för testning. Du kan sedan överföra certifikatet till nyckelvalvet genom att ange flaggan `ss` i stället för att ange certifikatets sökväg och certifikatets namn. Se exempelvis följande kommando för att skapa och ladda upp ett självsignerat certifikat:
+Om du vill toouse ett självsignerat certifikat för testning, kan du använda hello samma skript toogenerate en. Du kan sedan ladda upp certifikatet hello tooyour nyckelvalv genom att tillhandahålla hello flaggan `ss` i stället för att tillhandahålla hello certifikatets sökväg och certifikatet namn. Se exempelvis hello följande kommando för att skapa och ladda upp ett självsignerat certifikat:
 
 ```sh
 ./cert_helper.py ss -rgname "mykvrg" -sub "fffffff-ffff-ffff-ffff-ffffffffffff" -kv "mykevname"   -sname "mycert" -l "East US" -p "selftest" -subj "mytest.eastus.cloudapp.net"
 ```
-Det här kommandot returnerar samma tre strängar: SourceVault, CertificateUrl och CertificateThumbprint. Du kan sedan använda strängarna för att skapa både en säker Linux-kluster och en plats där det självsignerade certifikatet är placerad. Du måste det självsignerade certifikatet för att ansluta till klustret. Du kan ansluta till det säkra klustret genom att följa anvisningarna för [autentisera klientåtkomst till ett kluster](service-fabric-connect-to-secure-cluster.md).
+Det här kommandot returnerar hello samma tre strängar: SourceVault, CertificateUrl och CertificateThumbprint. Du kan sedan använda hello strängar toocreate både en säker Linux-kluster och en plats där hello självsignerat certifikat är placerad. Du måste hello självsignerat certifikat tooconnect toohello klustret. Du kan ansluta toohello säker klustret genom att följa hello anvisningar för [autentisera klient åtkomst tooa kluster](service-fabric-connect-to-secure-cluster.md).
 
-Certifikatets ämnesnamn måste matcha den domän som du använder för att få åtkomst till Service Fabric-klustret. Matchningen krävs för att tillhandahålla en SSL för klustrets HTTPS management slutpunkter och Service Fabric Explorer. Du kan skaffa ett SSL-certifikat från en Certifikatutfärdare för den `.cloudapp.azure.com` domän. Du måste skaffa ett anpassat domännamn för klustret. När du begär ett certifikat från en Certifikatutfärdare måste certifikatets ämnesnamn matcha det anpassade domännamnet som du använder för klustret.
+hello certifikatets ämnesnamn måste matcha hello-domän som du använder tooaccess hello Service Fabric-klustret. Matchningen är obligatoriska tooprovide en SSL för hello klustrets HTTPS management slutpunkter och Service Fabric Explorer. Du kan skaffa ett SSL-certifikat från en Certifikatutfärdare för hello `.cloudapp.azure.com` domän. Du måste skaffa ett anpassat domännamn för klustret. När du begär ett certifikat från en Certifikatutfärdare måste hello certifikatets ämnesnamn matcha hello domännamn som du använder för klustret.
 
-Du kan fylla parametrarna från helper-skriptet i Azure-portalen, enligt beskrivningen i den [skapa ett kluster i Azure portal](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal) avsnitt.
+Du kan fylla hello parametrar från hello helper skriptet i hello Azure-portalen, enligt beskrivningen i hello [skapar ett kluster i hello Azure-portalen](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal) avsnitt.
 
 ## <a name="next-steps"></a>Nästa steg
-Du har nu en säker kluster med Azure Active Directory med management-autentisering. Nästa [ansluta till klustret](service-fabric-connect-to-secure-cluster.md) och lära dig hur du [hantera program hemligheter](service-fabric-application-secret-management.md).
+Du har nu en säker kluster med Azure Active Directory med management-autentisering. Nästa [ansluta tooyour klustret](service-fabric-connect-to-secure-cluster.md) och lära dig hur för[hantera program hemligheter](service-fabric-application-secret-management.md).
 
 ## <a name="troubleshoot-setting-up-azure-active-directory-for-client-authentication"></a>Felsöka ställa in Azure Active Directory för klientautentisering
-Om du stöter på ett problem när du konfigurerar Azure AD för klientautentisering, granska möjliga lösningar i det här avsnittet.
+Om du stöter på ett problem när du konfigurerar Azure AD för klientautentisering, granska hello möjliga lösningar i det här avsnittet.
 
-### <a name="service-fabric-explorer-prompts-you-to-select-a-certificate"></a>Service Fabric Explorer uppmanar dig att välja ett certifikat
+### <a name="service-fabric-explorer-prompts-you-tooselect-a-certificate"></a>Service Fabric Explorer uppmanar tooselect ett certifikat
 #### <a name="problem"></a>Problem
-När du lyckas logga in till Azure AD i Service Fabric Explorer webbläsaren tillbaka till startsidan men uppmanas du att välja ett certifikat.
+När du loggar in har tooAzure AD i Service Fabric Explorer hello webbläsare returnerar toohello startsidan men får ett meddelande om tooselect ett certifikat.
 
 ![Dialogrutan för SFX Välj certifikat][sfx-select-certificate-dialog]
 
 #### <a name="reason"></a>Orsak
-Användaren är inte tilldelad en roll i Azure AD-programmet för klustret. Azure AD-autentiseringen misslyckas därför på Service Fabric-klustret. Service Fabric Explorer faller tillbaka till certifikatautentisering.
+hello användaren inte är tilldelad en roll i hello Azure AD-program för klustret. Azure AD-autentiseringen misslyckas därför på Service Fabric-klustret. Service Fabric Explorer använder toocertificate autentisering.
 
 #### <a name="solution"></a>Lösning
-Följ instruktionerna för att konfigurera Azure AD och tilldela användarroller. Dessutom vi rekommenderar att du aktiverar ”Användartilldelning krävs för att komma åt appen”, som `SetupApplications.ps1` har.
+Följ hello instruktioner för att konfigurera Azure AD och tilldela användarroller. Dessutom vi rekommenderar att du aktiverar ”användare tilldelning krävs tooaccess app” som `SetupApplications.ps1` har.
 
-### <a name="connection-with-powershell-fails-with-an-error-the-specified-credentials-are-invalid"></a>Anslutning med PowerShell misslyckas med felmeddelandet: ”de angivna autentiseringsuppgifterna är ogiltiga”
+### <a name="connection-with-powershell-fails-with-an-error-hello-specified-credentials-are-invalid"></a>Anslutning med PowerShell misslyckas med felmeddelandet: ”hello angivna autentiseringsuppgifterna är ogiltiga”
 #### <a name="problem"></a>Problem
-När du använder PowerShell för att ansluta till klustret med hjälp av ”AzureActiveDirectory” säkerhetsläget när du loggar in har i Azure AD, om anslutningen misslyckas med felmeddelandet: ”de angivna autentiseringsuppgifterna är ogiltiga”.
+När du använder PowerShell tooconnect toohello kluster med hjälp av ”AzureActiveDirectory” säkerhetsläget när du loggar in har tooAzure AD hello anslutningen misslyckas med felmeddelandet: ”hello angivna autentiseringsuppgifterna är ogiltiga”.
 
 #### <a name="solution"></a>Lösning
-Den här lösningen är samma som det föregående.
+Den här lösningen är hello samma som hello före en.
 
 ### <a name="service-fabric-explorer-returns-a-failure-when-you-sign-in-aadsts50011"></a>Service Fabric Explorer returnerar ett fel när du loggar in: ”AADSTS50011”
 #### <a name="problem"></a>Problem
-När du försöker logga in på Azure AD i Service Fabric Explorer sidan returnerar ett fel ”: AADSTS50011: svarsadressen &lt;url&gt; matchar inte reply-adresser som har konfigurerats för programmet: &lt;guid&gt;”.
+När du försöker toosign i tooAzure AD i Service Fabric Explorer hello sidan returnerar ett fel ”: AADSTS50011: hello svarsadressen &lt;url&gt; matchar inte hello svar adresser som har konfigurerats för programmet hello: &lt;guid&gt;."
 
 ![SFX svarsadressen matchar inte][sfx-reply-address-not-match]
 
 #### <a name="reason"></a>Orsak
-Klustret (webb) som representerar Service Fabric Explorer försöker autentisera mot Azure AD och som en del av begäran ger den returnera omdirigerings-URL. Men URL-Adressen ingår inte i Azure AD-programmet **REPLY URL** lista.
+försöker hello kluster (webb) program som representerar Service Fabric Explorer tooauthenticate mot Azure AD och som en del av hello begäran ger RETUR hello omdirigerings-URL. Men hello URL visas i hello Azure AD-program **REPLY URL** lista.
 
 #### <a name="solution"></a>Lösning
-På den **konfigurera** fliken i klustret (webb)-programmet att lägga till URL: en för Service Fabric Explorer till den **REPLY URL** listan eller ersätta ett av objekten i listan. När du är klar kan du spara ändringen.
+På hello **konfigurera** för hello (webbprogram) bör du lägga till hello URL för Service Fabric Explorer toohello **REPLY URL** listan eller ersätta en hello objekt i hello lista. När du är klar kan du spara ändringen.
 
 ![Url till webbprogram svar][web-application-reply-url]
 
-### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>Ansluta till klustret med hjälp av Azure AD-autentisering via PowerShell
-Använd följande PowerShell-kommandot exempel för att ansluta Service Fabric-kluster:
+### <a name="connect-hello-cluster-by-using-azure-ad-authentication-via-powershell"></a>Ansluta hello kluster med hjälp av Azure AD-autentisering via PowerShell
+tooconnect hello Service Fabric-kluster använder hello följande exempel för PowerShell-kommando:
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 
-Läs om cmdlet Connect-ServiceFabricCluster i [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx).
+toolearn om hello Connect-ServiceFabricCluster: se [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx).
 
-### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>Kan jag återanvända samma Azure AD-klienten i flera kluster?
-Ja. Men kom ihåg att lägga till URL: en för Service Fabric Explorer i ditt program i klustret (webb). Annars fungerar Service Fabric Explorer inte.
+### <a name="can-i-reuse-hello-same-azure-ad-tenant-in-multiple-clusters"></a>Kan jag återanvända hello samma Azure AD-klient i flera kluster?
+Ja. Men kom ihåg tooadd hello URL för Service Fabric Explorer tooyour kluster (webb) program. Annars fungerar Service Fabric Explorer inte.
 
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Varför måste jag göra fortfarande ett servercertifikat medan Azure AD är aktiverad?
-FabricClient och FabricGateway utför en ömsesidig autentisering. Azure AD-integreringen ger en klientens identitet till servern under Azure AD-autentisering, och certifikatet används för att kontrollera serveridentitet. Mer information om Service Fabric-certifikat finns [X.509-certifikat och Service Fabric][x509-certificates-and-service-fabric].
+FabricClient och FabricGateway utför en ömsesidig autentisering. Integrering med Azure AD tillhandahåller en identitet toohello server under Azure AD-autentisering och hello servercertifikatet är används tooverify hello-serveridentitet. Mer information om Service Fabric-certifikat finns [X.509-certifikat och Service Fabric][x509-certificates-and-service-fabric].
 
 <!-- Links -->
 [azure-powershell]:https://azure.microsoft.com/documentation/articles/powershell-install-configure/

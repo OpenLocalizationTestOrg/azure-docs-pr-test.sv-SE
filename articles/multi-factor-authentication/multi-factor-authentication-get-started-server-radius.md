@@ -1,6 +1,6 @@
 ---
-title: RADIUS-autentisering och Azure MFA Server | Microsoft Docs
-description: "Det här är sidan om Azure Multi-Factor Authentication som hjälper dig att distribuera RADIUS-autentisering och Azure Multi-Factor Authentication Server."
+title: aaaRADIUS autentisering och Azure MFA-Server | Microsoft Docs
+description: "Det här är hello Azure Multi-Factor authentication sida som hjälper distribuera RADIUS-autentisering och Azure Multi-Factor Authentication-servern."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -15,65 +15,65 @@ ms.date: 02/26/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: a4c52cc40b17902d92f7a94028ddb3c641911e8d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dac061b83f2657c67192a7aa9c5de63ffeffaaa8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integrera RADIUS-autentisering och Azure Multi-Factor Authentication Server
-Du aktiverar och konfigurerar RADIUS-autentisering i avsnittet RADIUS-autentisering i Azure MFA Server. RADIUS är ett standardprotokoll för att acceptera autentiseringsförfrågningar och för att bearbeta dessa. Azure Multi-Factor Authentication-servern fungerar som en RADIUS-server. Lägg till den mellan din RADIUS-klient (VPN-enhet) och autentiseringsmålet, som kan vara Active Directory (AD), en LDAP-katalog eller en annan RADIUS-server, för att lägga till Azure Multi-Factor Authentication. För att Azure Multi-Factor Authentication (MFA) ska fungera måste du konfigurera Azure MFA-servern så att den kan kommunicera med både klientservrarna och autentiseringsmålet. Azure MFA-servern tar emot förfrågningar från en RADIUS-klient, validerar autentiseringsuppgifter mot autentiseringsmålet, lägger till Azure Multi-Factor Authentication och skickar tillbaka ett svar till RADIUS-klienten. Autentiseringsbegäran lyckas bara om både den primära autentiseringen och Azure Multi-Factor Authentication lyckas.
+Använd hello RADIUS-autentisering avsnitt i Azure MFA-Server tooenable och konfigurera RADIUS-autentisering. RADIUS är en standard för protokollet tooaccept autentiseringsbegäranden och tooprocess dessa förfrågningar. hello Azure Multi-Factor Authentication-servern fungerar som en RADIUS-server. Infoga det mellan RADIUS-klienten (VPN-installation) och autentiseringsmål-, som kan vara Active Directory (AD), en LDAP-katalog eller en annan RADIUS-server tooadd Azure Multi-Factor Authentication. Azure Multi-Factor Authentication (MFA) toofunction måste du konfigurera hello Azure MFA-servern så att den kan kommunicera med både klientservrar hello och hello-autentiseringsmål. hello Azure MFA-servern accepterar begäranden från RADIUS-klient, verifierar autentiseringsuppgifter mot hello-autentiseringsmål, lägger till Azure Multi-Factor Authentication och skickar en svar tillbaka toohello RADIUS-klient. hello autentiseringsbegäran lyckas bara om både hello primär autentisering och hello Azure Multi-Factor Authentication lyckas.
 
 > [!NOTE]
-> MFA-servern stöder endast RADIUS-protokollen PAP (Password Authentication Protocol) och MSCHAPv2 (Microsoft Challenge Handshake Authentication Protocol) när den fungerar som en RADIUS-server.  Andra protokoll som EAP (Extensible Authentication Protocol) kan användas när MFA-servern fungerar som en RADIUS-proxy till en annan RADIUS-server som stöder det protokollet.
+> Hej MFA-Server endast stöder PAP (lösenord authentication protocol) och MSCHAPv2 (Microsoft Challenge Handshake Authentication Protocol) RADIUS protokoll när fungerar som en RADIUS-server.  Andra protokoll, som EAP (extensible authentication protocol), som kan användas när hello MFA-servern fungerar som en RADIUS-proxy tooanother RADIUS-server som har stöd för protokollet.
 >
-> I den här konfigurationen fungerar inte enkelriktade SMS- och OATH-token eftersom MFA-servern inte kan initiera ett lyckat RADIUS-svar med hjälp av alternativa protokoll.
+> I den här konfigurationen fungerar inte enkelriktad SMS och OATH-token eftersom hello MFA-servern inte kan initiera lyckade RADIUS-svar med hjälp av alternativa protokoll.
 
 ![RADIUS-autentisering](./media/multi-factor-authentication-get-started-server-rdg/radius.png)
 
 ## <a name="add-a-radius-client"></a>Lägga till en RADIUS-klient
-Om du vill konfigurera RADIUS-autentisering installerar du Azure Multi-Factor Authentication Server på en Windows-server. Om du har en Active Directory-miljö ansluter du servern till domänen i nätverket. Konfigurera Azure Multi-Factor Authentication Server genom att följa dessa steg:
+tooconfigure RADIUS-autentisering, installera hello Azure Multi-Factor Authentication-servern på en Windows server. Om du har en Active Directory-miljö ska hello server vara domänansluten toohello i hello nätverk. Använd hello följa proceduren tooconfigure hello Azure Multi-Factor Authentication-servern:
 
-1. Klicka på ikonen för RADIUS-autentisering på den vänstra menyn i Azure Multi-Factor Authentication Server.
-2. Markera kryssrutan **Aktivera RADIUS-autentisering**.
-3. På fliken Klienter ändrar du portarna för autentisering och kontohantering om Azure MFA RADIUS-tjänsten måste lyssna efter RADIUS-förfrågningar på andra portar än standardportarna.
+1. Klicka på hello RADIUS-autentisering ikonen hello vänstra menyn i hello Azure Multi-Factor Authentication-servern.
+2. Kontrollera hello **aktivera RADIUS-autentisering** kryssrutan.
+3. Ändra hello autentisering- och redovisningsportar hello klienter på fliken om hello Azure MFA RADIUS tjänsten behöver toolisten för RADIUS-begäranden på portar som inte är standard.
 4. Klicka på **Lägg till**.
-5. Ange IP-adressen för enheten eller servern som ska autentisera mot Azure Multi-Factor Authentication-servern, ett programnamn (valfritt) och en delad hemlighet.
+5. Ange hello IP-adressen hello enheten/servern som autentiserar toohello Azure Multi-Factor Authentication-servern och ett programnamn (valfritt) en delad hemlighet.
 
-  Programnamnet visas i Azure Multi-Factor Authentication-rapporter och kan visas i autentiseringsmeddelanden i SMS- eller mobilappar.
+  hello programnamn i Azure Multi-Factor Authentication-rapporter och kan visas i autentiseringsmeddelanden SMS eller Mobilapp.
 
-  Den delade hemligheten måste vara samma på både Azure Multi-Factor Authentication-servern och enheten eller servern.
+  hello delade hemliga behov toobe hello samma på båda hello Azure Multi-Factor Authentication-servern och enheten/servern.
 
-6. Markera rutan om att **Multi-Factor Authentication-användarmatchning krävs** om alla användare har importerats eller ska importeras till servern och om multifaktorautentisering används. Om ett stort antal användare inte har importerats till servern än, eller om de ska undantas från tvåstegsverifiering, lämnar du rutan avmarkerad.
-7. Markera rutan **Aktivera OATH-reservtoken** om du vill använda OATH-lösenord från mobilverifieringsappar som reserv för telefonsamtal, SMS- eller push-meddelanden utanför IP-nätverket (out-of-band).
+6. Kontrollera hello **Multi-Factor Authentication-användarmatchning** om alla användare har eller importeras till hello Server och ämne toomulti-factor-autentisering. Om ett stort antal användare inte har ännu importerats till hello Server och/eller ska undantas från tvåstegsverifiering, lämnar du hello kryssrutan avmarkerad.
+7. Kontrollera hello **aktivera återställningsplats OATH-token** rutan om du vill toouse OATH-lösenord från mobil verifiering appar som en reserv toohello out-of-band telefonsamtal, SMS, eller push-meddelande.
 8. Klicka på **OK**.
 
-Upprepa steg 4 till och med 8 och lägg till så många RADIUS-klienter som du behöver.
+Upprepa steg 4 till 8 tooadd så många ytterligare RADIUS-klienter som du behöver.
 
 ## <a name="configure-your-radius-client"></a>Konfigurera RADIUS-klienten
 
-1. Klicka på fliken **Mål**.
-2. Om Azure MFA-servern är installerad på en domänansluten server i en Active Directory-miljö väljer du Windows-domän.
+1. Klicka på hello **mål** fliken.
+2. Om hello Azure MFA-Server är installerad på en domänansluten server i en Active Directory-miljö, väljer du Windows-domän.
 3. Om användarna ska autentiseras mot en LDAP-katalog väljer du **LDAP-bindning**.
 
-  Om du vill använda LDAP-bindning klickar du på ikonen för katalogintegrering och redigerar LDAP-konfigurationen på fliken Inställningar så att servern kan bindas till katalogen. Anvisningar för hur du konfigurerar LDAP finns i [LDAP-proxykonfigurationsguiden](multi-factor-authentication-get-started-server-ldap.md).
+  toouse LDAP-bindning, klickar du på ikonen för hello katalogintegrering och redigera hello LDAP-konfiguration på hello-inställningar så att hello servern kan binda tooyour directory. Instruktioner för att konfigurera LDAP hittar du i hello [LDAP-Proxy konfigurationsguiden](multi-factor-authentication-get-started-server-ldap.md).
 
 4. Om användarna ska verifieras mot en annan RADIUS-server väljer du RADIUS-server.
-5. Klicka på **Lägg till** för att konfigurera servern som Azure MFA-servern ska vidarebefordra RADIUS-förfrågningarna till.
-6. I dialogrutan Lägg till RADIUS-server anger du IP-adressen för RADIUS-servern och en delad hemlighet.
+5. Klicka på **Lägg till** tooconfigure hello server toowhich hello Azure MFA-Server kommer proxy hello RADIUS-begäranden.
+6. Ange hello IP-adressen för hello RADIUS-server och en delad hemlighet hello Lägg till RADIUS-Server i dialogrutan.
 
-  Den delade hemligheten måste vara samma på både Azure Multi-Factor Authentication-servern och RADIUS-servern. Ändra autentiseringsporten och redovisningsporten om olika portar används av RADIUS-servern.
+  hello delade hemliga behov toobe hello samma på båda hello Azure Multi-Factor Authentication-servern och RADIUS-servern. Ändra hello autentiseringsport och redovisningsporten om olika portar som används av hello RADIUS-server.
 
 7. Klicka på **OK**.
-8. Lägg till Azure MFA-servern som en RADIUS-klient på den andra RADIUS-servern så att den kan bearbeta åtkomstförfrågningar som Azure MFA-servern skickar till den. Använd samma delade hemlighet som konfigurerats i Azure Multi-Factor Authentication Server.
+8. Lägg till hello Azure MFA-Server som en RADIUS-klient i hello annan RADIUS-server så att den kan bearbeta förfrågningar skickas tooit från hello Azure MFA-Server. Använd hello samma delade hemlighet som konfigurerats i hello Azure Multi-Factor Authentication-servern.
 
-Upprepa dessa steg om du vill lägga till fler RADIUS-servrar och använd knapparna **Flytta upp** och **Flytta ned** för att konfigurera i vilken ordning Azure MFA-servern anropar dem.
+Upprepa dessa steg tooadd flera RADIUS-servrar och konfigurera hello ordning i vilken hello Azure MFA-servern ska ringa upp dem med hello **Flytta upp** och **Flytta ned** knappar.
 
-Nu är Azure Multi-Factor Authentication Server-konfigurationen klar. Nu lyssnar servern på de konfigurerade portarna för RADIUS-åtkomstförfrågningar från de konfigurerade klienterna.   
+Detta avslutar hello Azure Multi-Factor Authentication-konfigurationen. hello servern lyssnar nu på hello konfigurerade portar för RADIUS-förfrågningar från klienter hello konfigurerats.   
 
 ## <a name="radius-client-configuration"></a>RADIUS-klientkonfiguration
-Följ dessa riktlinjer när du konfigurerar RADIUS-klienten:
+tooconfigure hello RADIUS-klient, Använd hello riktlinjer:
 
-* Konfigurera enheten/servern att autentisera via RADIUS till Azure Multi-Factor Authentication-serverns IP-adress, som fungerar som RADIUS-servern.
-* Använd samma delade hemlighet som du konfigurerade ovan.
-* Konfigurera RADIUS-serverns timeout-värde till mellan 30 och 60 sekunder så att det finns tid att verifiera användarens autentiseringsuppgifter, utföra tvåstegsverifiering, ta emot svaret och sedan svara på RADIUS-åtkomstbegäran.
+* Konfigurera din enhet/server tooauthenticate via RADIUS toohello Azure Multi-Factor Authentication-serverns IP-adress som ska fungera som hello RADIUS-server.
+* Använd hello samma delade hemlighet som har konfigurerats tidigare.
+* Konfigurera hello RADIUS timeout too30 60 sekunder så att det är tid toovalidate hello användarens autentiseringsuppgifter, utföra tvåstegsverifiering, deras svar och svara toohello RADIUS-åtkomstbegäran.

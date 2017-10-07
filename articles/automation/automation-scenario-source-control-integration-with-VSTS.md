@@ -1,5 +1,5 @@
 ---
-title: "Integrera Azure Automation med Visual Stuido Team Services källkontrollen | Microsoft Docs"
+title: "aaaIntegrate Azure Automation med Visual Stuido Team Services källkontrollen | Microsoft Docs"
 description: "Scenariot beskriver hur du ställer in integration med en Azure Automation-konto och Visual Stuido Team Services källkontroll."
 services: automation
 documentationcenter: 
@@ -14,89 +14,89 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
-ms.openlocfilehash: 01f9c01c9e04e02dbb548b68cf99684ba6ddd57e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f6faa596a5ad1f8b72e820ca320b3e103d83579
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation-scenario – Automation källkontrollintegrering med Visual Studio Team Services
 
-I det här scenariot har du ett projekt i Visual Studio Team Services som du använder för att hantera Azure Automation-runbooks eller DSC-konfigurationer för källkontroll.
-Den här artikeln beskriver hur du integrerar VSTS med Azure Automation-miljö så att kontinuerlig integration sker för varje incheckning.
+I det här scenariot har du ett Visual Studio Team Services-projekt som du använder toomanage Azure Automation-runbook eller DSC-konfigurationer för källkontroll.
+Den här artikeln beskriver hur toointegrate VSTS med Azure Automation-miljön så att kontinuerlig integration sker för varje incheckning.
 
-## <a name="getting-the-scenario"></a>Hämta scenariot
+## <a name="getting-hello-scenario"></a>Hämta hello scenario
 
-Det här scenariot består av två PowerShell-runbooks som kan importeras direkt från den [Runbook-galleriet](automation-runbook-gallery.md) i Azure-portalen eller hämtas från den [PowerShell-galleriet](https://www.powershellgallery.com).
+Det här scenariot består av två PowerShell-runbooks som kan importeras direkt från hello [Runbook-galleriet](automation-runbook-gallery.md) hello Azure-portalen eller ladda ned från hello [PowerShell-galleriet](https://www.powershellgallery.com).
 
 ### <a name="runbooks"></a>Runbooks
 
 Runbook | Beskrivning| 
 --------|------------|
-Synkronisera VSTS | Importera runbooks eller konfigurationer från VSTS källkontroll när en incheckning är klar. Om du kör manuellt den importera och publicera alla runbooks eller konfigurationer i Automation-kontot.| 
-Synkronisera VSTSGit | Importera runbooks eller konfigurationer från VSTS Git källkontroll när en incheckning är klar. Om du kör manuellt den importera och publicera alla runbooks eller konfigurationer i Automation-kontot.|
+Synkronisera VSTS | Importera runbooks eller konfigurationer från VSTS källkontroll när en incheckning är klar. Om du kör manuellt den importera och publicera alla runbooks eller konfigurationer i hello Automation-konto.| 
+Synkronisera VSTSGit | Importera runbooks eller konfigurationer från VSTS Git källkontroll när en incheckning är klar. Om du kör manuellt den importera och publicera alla runbooks eller konfigurationer i hello Automation-konto.|
 
 ### <a name="variables"></a>Variabler
 
 Variabel | Beskrivning|
 -----------|------------|
-VSToken | Säker variabeltillgång skapar du som innehåller VSTS personliga åtkomsttoken. Du kan lära dig hur du skapar en personlig åtkomsttoken VSTS på den [VSTS autentiseringssidan](https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview). 
+VSToken | Säker variabeltillgång skapar du som innehåller hello VSTS personliga åtkomsttoken. Du kan lära dig hur toocreate en VSTS personlig åtkomst-token på hello [VSTS autentiseringssidan](https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview). 
 ## <a name="installing-and-configuring-this-scenario"></a>Installera och konfigurera det här scenariot
 
-Skapa en [personlig åtkomsttoken](https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview) i VSTS som du använder för att synkronisera runbooks eller konfigurationer i ditt automation-konto.
+Skapa en [personlig åtkomsttoken](https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview) i VSTS som du ska använda toosync hello runbooks eller konfigurationer till ditt automation-konto.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPersonalToken.png) 
 
-Skapa en [säker variabeln](automation-variables.md) i ditt automation-konto för att rymma personlig åtkomst-token så att runbook kan autentisera till VSTS och synkronisera runbooks eller konfigurationer i Automation-kontot. Du kan kalla den här VSToken. 
+Skapa en [säker variabeln](automation-variables.md) i ditt automation-konto toohold hello personliga token så att hello runbook kan autentisera tooVSTS och sync hello runbooks eller konfigurationer till hello Automation-konto. Du kan kalla den här VSToken. 
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSTokenVariable.png)
 
-Importera runbook som kommer att synkronisera dina runbooks eller konfigurationer till automation-kontot. Du kan använda den [VSTS exempel-runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) eller [VSTS med Git exempel-runbook] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) från PowerShellGallery.com beroende på om du använder VSTS källa kontrollen eller VSTS med Git och distribuera dem till ditt automation-konto.
+Importera hello-runbook som kommer att synkronisera dina runbooks eller konfigurationer i hello automation-konto. Du kan använda hello [VSTS exempel-runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) eller hello [VSTS med Git exempel-runbook] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) från hello PowerShellGallery.com beroende på om du använder VSTS käll-kontroll eller VSTS med Git och distribuera tooyour automation-konto.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPowerShellGallery.png)
 
 Du kan nu [publicera](automation-creating-importing-runbook.md#publishing-a-runbook) denna runbook så att du kan skapa en webhook. 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPublishRunbook.png)
 
-Skapa en [webhook](automation-webhooks.md) för synkronisering VSTS runbook och Fyll i parametrarna som visas nedan. Kontrollera att du kopierar webhooksadressen som du behöver för en tjänst hook i VSTS. VSAccessTokenVariableName är namn (VSToken) för säker variabeln som du skapade tidigare för att rymma den personliga åtkomsttoken. 
+Skapa en [webhook](automation-webhooks.md) för synkronisering VSTS runbook och Fyll i hello parametrar som visas nedan. Kontrollera att du kopierar hello webhooksadressen som du behöver för en tjänst hook i VSTS. Hej VSAccessTokenVariableName är hello namn (VSToken) för hello säker variabel som du skapade tidigare toohold hello personliga åtkomsttoken. 
 
-Integrera med VSTS (synkronisera VSTS.ps1) tar följande parametrar.
+Integrera med VSTS (synkronisera VSTS.ps1) tar hello följande parametrar.
 ### <a name="sync-vsts-parameters"></a>Synkronisera VSTS parametrar
 
 Parameter | Beskrivning| 
 --------|------------|
-WebhookData | Checka in informationen som skickas från VSTS service hook kommer att innehålla. Den här parametern bör lämna tomt.| 
-ResourceGroup | Detta är namnet på resursgruppen som automation-kontot.|
-AutomationAccountName | Namnet på automation-kontot kommer att synkroniseras med VSTS.|
-VSFolder | Namnet på mappen i VSTS där runbooks och konfigurationer finns.|
-VSAccount | Namnet på Visual Studio Team Services-konto.| 
-VSAccessTokenVariableName | Namnet på den säkra variabel (VSToken) som innehåller VSTS personliga åtkomsttoken.| 
+WebhookData | Detta kommer att innehålla hello checka in informationen som skickas från hello VSTS service hook. Den här parametern bör lämna tomt.| 
+ResourceGroup | Det här är hello hello resursgruppen som hello automation-konto.|
+AutomationAccountName | hello namnet på hello automation-konto som synkroniseras med VSTS.|
+VSFolder | Namnet på mappen hello i VSTS där hello runbooks och konfigurationer finns.|
+VSAccount | hello namnet på hello Visual Studio Team Services-konto.| 
+VSAccessTokenVariableName | hello namnet på hello säker variabeln (VSToken) som innehåller hello VSTS personliga åtkomsttoken.| 
 
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSWebhook.png)
 
-Om du använder VSTS med GIT (synkronisera VSTSGit.ps1) tar följande parametrar.
+Om du använder VSTS med GIT (synkronisera VSTSGit.ps1) tar hello följande parametrar.
 
 Parameter | Beskrivning|
 --------|------------|
-WebhookData | Checka in informationen som skickas från VSTS service hook kommer att innehålla. Den här parametern bör lämna tomt.| ResourceGroup | Det här namnet på resursgruppen som automation-kontot.|
-AutomationAccountName | Namnet på automation-kontot kommer att synkroniseras med VSTS.|
-VSAccount | Namnet på Visual Studio Team Services-konto.|
-VSProject | Namnet på projektet i VSTS där runbooks och konfigurationer finns.|
-GitRepo | Namnet på Git-lagringsplats.|
-GitBranch | Namnet på filialen i VSTS Git-lagringsplats.|
-Mapp | Namnet på mappen i VSTS Git grenen.|
-VSAccessTokenVariableName | Namnet på den säkra variabel (VSToken) som innehåller VSTS personliga åtkomsttoken.|
+WebhookData | Detta kommer att innehålla hello checka in informationen som skickas från hello VSTS service hook. Den här parametern bör lämna tomt.| ResourceGroup | Den här hello namnet på hello resursgrupp som hello automation-konto.|
+AutomationAccountName | hello namnet på hello automation-konto som synkroniseras med VSTS.|
+VSAccount | hello namnet på hello Visual Studio Team Services-konto.|
+VSProject | hello namnet på hello-projekt i VSTS där hello runbooks och konfigurationer finns.|
+GitRepo | hello namnet på hello Git-lagringsplats.|
+GitBranch | hello namnet på hello gren i VSTS Git-lagringsplats.|
+Mapp | hello namn på hello mapp i VSTS Git grenen.|
+VSAccessTokenVariableName | hello namnet på hello säker variabeln (VSToken) som innehåller hello VSTS personliga åtkomsttoken.|
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSGitWebhook.png)
 
-Skapa en tjänst hook i VSTS för incheckningar till den mapp som utlöser denna webhook på Checka in kod. Välj webbserver skapar som tjänsten för att integrera med när du skapar en ny prenumeration. Du kan lära dig mer om tjänsten hook på [VSTS Service hook dokumentationen](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started).
+Skapa en tjänst hook i VSTS för incheckningar toohello mapp som utlöser denna webhook på Checka in kod. Välj webbserver skapar som hello service toointegrate med när du skapar en ny prenumeration. Du kan lära dig mer om tjänsten hook på [VSTS Service hook dokumentationen](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started).
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSServiceHook.png)
 
-Du bör nu kunna göra alla incheckningar runbooks och konfigurationer i VSTS och låta dessa automatiskt synkronisering d i ditt automation-konto.
+Du bör nu kunna toodo alla incheckningar runbooks och konfigurationer i VSTS och dessa automatiskt synkroniseras hade till ditt automation-konto.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSSyncRunbookOutput.png)
 
-Om du kör runbook manuellt utan som utlöses av VSTS parametern webhookdata du kan lämna tomt och den kommer att göra en fullständig synkronisering från mappen VSTS anges.
+Om du kör runbook manuellt utan som utlöses av VSTS, kan du låta hello webhookdata parametern tom och den kommer att göra en fullständig synkronisering från hello VSTS mappen som anges.
 
-Om du vill avinstallera scenariot, ta bort tjänsten hook från VSTS bort runbook och variabeln VSToken.
+Om du inte vill toouninstall hello scenariot, ta bort hello service hook från VSTS, ta bort hello runbook och hello VSToken variabeln.

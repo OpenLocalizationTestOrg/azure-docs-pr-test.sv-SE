@@ -1,6 +1,6 @@
 ---
-title: Skapa en Azure IoT-Edge-modul med Node.js | Microsoft Docs
-description: "Den här kursen visar hur du skriver en TIVERA data konverteraren modul med de senaste Azure IoT kant NPM-paketen och Yeoman generator."
+title: aaaCreate en Azure IoT kant modul med Node.js | Microsoft Docs
+description: "Den här kursen visar hur toowrite en TIVERA data konverteraren modulen med hjälp av hello senaste Azure IoT kant NPM-paket och Yeoman generator."
 services: iot-hub
 author: sushi
 manager: timlt
@@ -11,23 +11,23 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: sushi
-ms.openlocfilehash: ba466f47e157d805600c41fa3d84ed5a0363969c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d3e696b5a310377ffb8e99998ff0714bf7c0bb41
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-nodejs"></a>Skapa en Azure IoT-Edge-modul med Node.js
 
-Den här kursen visar hur du skapar en modul för Azure IoT gränsen i JS.
+Den här kursen visar hur toocreate en modul för Azure IoT gränsen i JS.
 
-I den här självstudiekursen kommer vi att gå igenom miljökonfiguration och hur du skriver en [TIVERA](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) data konverteraren modul med de senaste Azure IoT kant NPM-paket.
+I den här självstudiekursen kommer vi att gå igenom miljökonfiguration och hur toowrite en [TIVERA](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) data konverteraren modul med hello senaste Azure IoT kant NPM-paket.
 
 ## <a name="prerequisites"></a>Krav
 
-I det här avsnittet kan du ställa in din miljö för utveckling av IoT kant-modulen. Det gäller både *64-bitars Windows* och *64-bitars Linux (Ubuntu 14 +)* operativsystem.
+I det här avsnittet kan du ställa in din miljö för utveckling av IoT kant-modulen. Det gäller tooboth *64-bitars Windows* och *64-bitars Linux (Ubuntu 14 +)* operativsystem.
 
-Följande programvara krävs:
+hello följande programvara krävs:
 * [Git klienten](https://git-scm.com/downloads).
 * [Noden LTS](https://nodejs.org).
 * `npm install -g yo`.
@@ -35,41 +35,41 @@ Följande programvara krävs:
 
 ## <a name="architecture"></a>Arkitektur
 
-Azure IoT kant-plattformen kraftigt antar den [Von Neumann arkitektur](https://en.wikipedia.org/wiki/Von_Neumann_architecture). Vilket innebär att hela kant för Azure IoT-arkitekturen är ett system som bearbetar indata och utdata; och att varje enskild modul är en liten input-output-undersystemet. I den här självstudiekursen introducerar vi följande två moduler:
+hello Azure IoT kant plattform kraftigt antar hello [Von Neumann arkitektur](https://en.wikipedia.org/wiki/Von_Neumann_architecture). Vilket innebär att hela hello Azure IoT kant arkitekturen är ett system som bearbetar indata och utdata; och att varje enskild modul är en liten input-output-undersystemet. I den här självstudiekursen kommer introducerar vi hello följande två moduler:
 
 1. En modul som tar emot en simulerad [TIVERA](https://en.wikipedia.org/wiki/Bluetooth_Low_Energy) signalerar och konverterar den till en formaterad [JSON](https://en.wikipedia.org/wiki/JSON) meddelande.
-2. En modul som skriver ut den mottagna [JSON](https://en.wikipedia.org/wiki/JSON) meddelande.
+2. En modul som skriver ut hello emot [JSON](https://en.wikipedia.org/wiki/JSON) meddelande.
 
-Följande bild visar den vanliga slutpunkt till slutpunkt-dataflöde för det här projektet:
+hello visar följande bild hello vanliga slutet tooend dataflöde för det här projektet:
 
 ![Dataflöde mellan tre moduler](media/iot-hub-iot-edge-create-module/dataflow.png "indata: simulerade TIVERA modulen. Processor: Konverterare modulen. Utdata: Skrivare modul")
 
-## <a name="set-up-the-environment"></a>Konfigurera miljön
-Nedan hur vi du snabbt ställa in miljön att börja skriva ditt första TIVERA konverteraren modulen med JS.
+## <a name="set-up-hello-environment"></a>Konfigurera hello-miljö
+Nedan visar vi hur tooquickly du konfigurerar miljön toostart toowrite din första TIVERA konverteraren modulen med JS.
 
 ### <a name="create-module-project"></a>Skapa modul-projekt
 1. Öppna ett kommandoradsfönster, kör `yo az-iot-gw-module`.
-2. Följ anvisningarna på skärmen för att slutföra initieringen av projektet modulen.
+2. Följ hello stegen på skärmen hello toofinish hello initiering av modul-projekt.
 
 ### <a name="project-structure"></a>Projektstruktur
-Ett JS modulen Projekt består av följande komponenter:
+Ett JS modulen Projekt består av hello följande komponenter:
 
-`modules`-Anpassade JS modulen källfilerna. Ersätt standard `sensor.js` och `printer.js` med modulen filerna.
+`modules`-hello anpassade JS modulen källfiler. Ersätt hello standard `sensor.js` och `printer.js` med modulen filerna.
 
-`app.js`-Posten filen som ska starta Edge-instans.
+`app.js`-hello post fil toostart hello Edge-instans.
 
-`gw.config.json`-Konfigurationsfilen att anpassa modulerna som ska startas av kant.
+`gw.config.json`-hello configuration file toocustomize hello moduler toobe läses in av kant.
 
-`package.json`-Metadata-information för modulen projekt.
+`package.json`-hello metadatainformation för modulen projekt.
 
-`README.md`-Den grundläggande dokumentationen för modulen projekt.
+`README.md`-hello grundläggande dokumentation för modulen projekt.
 
 
 ### <a name="package-file"></a>Paketfilen
 
-Detta `package.json` deklarerar alla metadata-information som krävs av en modul-projekt som innehåller namn, version, post, skript, runtime och utveckling beroenden.
+Detta `package.json` deklarerar alla hello metadata-information som krävs av en modul-projekt som innehåller hello namn, version, post, skript, runtime och utveckling beroenden.
 
-Följande kodavsnitt visar hur du konfigurerar för TIVERA konverteraren exempelprojektet.
+Följande kodfragment visas hur tooconfigure TIVERA konverterare exempel projekt.
 ```json
 {
   "name": "converter",
@@ -95,7 +95,7 @@ Följande kodavsnitt visar hur du konfigurerar för TIVERA konverteraren exempel
 
 
 ### <a name="entry-file"></a>Den första filen
-Den `app.js` definierar sätt att initiera edge-instans. Här behöver vi inte göra några ändringar.
+Hej `app.js` definierar hello sätt tooinitialize hello edge-instans. Här behöver vi inte toomake ändringar.
 
 ```javascript
 (function() {
@@ -117,13 +117,13 @@ Den `app.js` definierar sätt att initiera edge-instans. Här behöver vi inte g
 ### <a name="interface-of-module"></a>Gränssnittet för modulen
 Du kan hantera en Azure IoT kant-modul som en data-processor vars uppgift är att: indata, behandlas och resultat.
 
-Indata kan vara data från maskinvara (till exempel en rörelsedetektor), ett meddelande från andra moduler eller något annat (till exempel ett slumptal som genererats med jämna mellanrum av en timer).
+hello indata kan inte data från maskinvara (till exempel en rörelsedetektor), ett meddelande från andra moduler eller något annat (till exempel ett slumptal som genererats med jämna mellanrum av en timer).
 
-Utdata liknar indata, den kan utlösa beteendet för maskinvara (till exempel blinkande LED), ett meddelande till andra moduler eller något annat (till exempel utskrift i konsolen).
+hello utdata är liknande toohello indata, det kan utlösa beteendet för maskinvara (till exempel hello blinka Indikator), en meddelandet tooother moduler eller något annat (till exempel utskrift toohello console).
 
-Moduler som kommunicerar med varandra med hjälp av `message` objekt. Den **innehåll** av en `message` är en bytematris som kan som representerar alla typer av data som du vill. **Egenskaper för** är också tillgängliga i den `message` och är helt enkelt en string-string-mappning. Du kan tänka dig **egenskaper** som rubriker i en HTTP-begäran eller metadata för en fil.
+Moduler som kommunicerar med varandra med hjälp av `message` objekt. Hej **innehåll** av en `message` är en bytematris som kan som representerar alla typer av data som du vill. **Egenskaper för** är också tillgängliga i hello `message` och är helt enkelt en string-string-mappning. Du kan tänka dig **egenskaper** som hello rubriker i en HTTP-begäran eller hello metadata för en fil.
 
-För att utveckla en kant för Azure IoT-modul i JS, måste du skapa en ny Modulobjekt som implementerar obligatoriska metoder `receive()`. Du kan nu även välja att implementera den valfria `create()` eller `start()`, eller `destroy()` samt metoder. Följande kodavsnitt visar JS Modulobjekt scaffold-teknik.
+I ordning toodevelop en kant för Azure IoT-modul i JS, behöver du toocreate ett nytt Modulobjekt som implementerar metoderna hello krävs `receive()`. Du kan nu även välja tooimplement hello valfria `create()` eller `start()`, eller `destroy()` samt metoder. hello följande kodfragment som visar du hello scaffold-teknik för JS module-objektet.
 
 ```javascript
 'use strict';
@@ -158,16 +158,16 @@ module.exports = {
 | ------------------------ | -------------------------------------- | ---------------------- | ---------------------- |
 | Meddelande för temperatur-data | Analysera och skapa ett nytt JSON-meddelande | Strukturen JSON-meddelande | `converter.js` |
 
-Denna modul är en typisk Azure IoT kant-modul. Den godkänner temperatur meddelanden från andra moduler (maskinvara modulen, eller i det här fallet våra simulerade Bell-modulen); och normaliserar temperatur meddelande i en strukturerad JSON-meddelandet (inklusive bifoga meddelande-ID, ställer in egenskapen för om vi behöver utlösa aviseringen temperatur och så vidare).
+Denna modul är en typisk Azure IoT kant-modul. Den godkänner temperatur meddelanden från andra moduler (maskinvara modulen, eller i det här fallet våra simulerade Bell-modulen); och normaliserar temperatur hälsningsmeddelande i tooa strukturerad JSON-meddelande (inklusive bifoga hello meddelande-ID, hello-egenskapen för om vi behöver tootrigger hello temperatur aviseringen och så vidare).
 
 ```javascript
 receive: function (message) {
-  // Initialize the messageCount in global object at first time.
+  // Initialize hello messageCount in global object at first time.
   if (!global.messageCount) {
     global.messageCount = 0;
   }
 
-  // Read the content and properties objects from message.
+  // Read hello content and properties objects from message.
   let rawContent = JSON.parse(Buffer.from(message.content).toString('utf8'));
   let rawProperties = message.properties;
 
@@ -185,7 +185,7 @@ receive: function (message) {
     temperature: rawContent.temperature
   };
 
-  // Publish the new message to broker.
+  // Publish hello new message toobroker.
   this.broker.publish(
     {
       properties: newProperties,
@@ -198,9 +198,9 @@ receive: function (message) {
 ### <a name="printer-module"></a>Modul för skrivare
 | Indata                          | Processor | Resultat                     | Källfilen          |
 | ------------------------------ | --------- | -------------------------- | -------------------- |
-| Alla meddelanden från andra moduler | Saknas       | Logga meddelandet-konsolen | `printer.js` |
+| Alla meddelanden från andra moduler | Saknas       | Logga tooconsole för hello-meddelande | `printer.js` |
 
-Denna modul är enkla, självförklarande, som matar ut de mottagna meddelandena (egenskap, innehåll) till fönstret terminal.
+Denna modul är enkla, självförklarande, som matar ut hello mottagna meddelanden (egenskap, innehåll) toohello terminalfönster.
 
 ```javascript
 receive: function (message) {
@@ -213,9 +213,9 @@ receive: function (message) {
 ```
 
 ### <a name="configuration"></a>Konfiguration
-Det sista steget innan du kör modulerna som är att konfigurera Azure IoT kant och upprätta anslutningar mellan moduler.
+hello sista steget innan du kör hello moduler är tooconfigure hello Azure IoT kant och tooestablish hello anslutningar mellan moduler.
 
-Vi måste först deklarera vår `node` inläsaren (eftersom Azure IoT kant stöder inläsare med olika språk) som kan refereras till av dess `name` i avsnitten efteråt.
+Vi måste först toodeclare vår `node` inläsaren (eftersom Azure IoT kant stöder inläsare med olika språk) som kan refereras till av dess `name` i hello avsnitt efteråt.
 
 ```json
 "loaders": [
@@ -226,7 +226,7 @@ Vi måste först deklarera vår `node` inläsaren (eftersom Azure IoT kant stöd
 ]
 ```
 
-När vi har deklarerat våra inläsare, behöver vi även deklarera samt våra moduler. Precis som deklarerar inläsare, de kan också refereras av deras `name` attribut. När du deklarerar en modul, vi behöver ange ska det använda inläsaren (som ska vara det som vi definierade innan) och startpunkten (ska vara normaliserade klassnamnet för våra modulen) för varje modul. Den `simulated_device` modul är en inbyggd modul som ingår i Azure IoT kant core runtime-paketet. Inkludera `args` i JSON-filen även om det är `null`.
+När vi har deklarerat våra inläsare måste vi också toodeclare samt våra moduler. Liknande toodeclaring hello inläsare de kan också refereras av deras `name` attribut. När du deklarerar en modul måste toospecify hello inläsaren ska det använda (som ska vara hello en vi definierade innan) och hello startpunkten (ska vara hello normaliserade klassnamnet för våra modulen) för varje modul. Hej `simulated_device` modul är en inbyggd modul som ingår i hello Azure IoT kant core runtime-paketet. Inkludera `args` i hello JSON-filen även om den `null`.
 
 ```json
 "modules": [
@@ -266,7 +266,7 @@ När vi har deklarerat våra inläsare, behöver vi även deklarera samt våra m
 ]
 ```
 
-I slutet av konfigurationen upprätta vi anslutningar. Varje anslutning uttrycks av `source` och `sink`. De bör både referera en fördefinierad modul. Det utgående meddelandet i `source` modulen vidarebefordras till indata för `sink` modul.
+Hello slutet av hello konfiguration upprätta vi hello anslutningar. Varje anslutning uttrycks av `source` och `sink`. De bör både referera en fördefinierad modul. hälsningsmeddelande för utdata av `source` modulen vidarebefordras toohello indata för `sink` modul.
 
 ```json
 "links": [
@@ -281,11 +281,11 @@ I slutet av konfigurationen upprätta vi anslutningar. Varje anslutning uttrycks
 ]
 ```
 
-## <a name="running-the-modules"></a>Kör moduler
+## <a name="running-hello-modules"></a>Kör hello-moduler
 1. `npm install`
 2. `npm start`
 
-Om du vill avsluta programmet trycker du på `<Enter>` nyckel.
+Om du vill tooterminate hello program, trycker du på `<Enter>` nyckel.
 
 > [!IMPORTANT]
-> Det rekommenderas inte att använda Ctrl + C för att avsluta programmet IoT kant. Som det här sättet kan orsaka processen att avbrytas onormalt.
+> Det rekommenderas inte toouse Ctrl + C tooterminate hello IoT kant program. Som det här sättet kan orsaka hello processen tooterminate onormalt.

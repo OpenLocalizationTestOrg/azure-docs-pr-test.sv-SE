@@ -1,6 +1,6 @@
 ---
-title: "Azure Backup - Använd PowerShell för att säkerhetskopiera DPM-arbetsbelastningar | Microsoft Docs"
-description: "Lär dig hur du distribuerar och hanterar Azure Backup för Data Protection Manager (DPM) med hjälp av PowerShell"
+title: "aaaAzure säkerhetskopia - Använd PowerShell tooback in DPM-arbetsbelastningar | Microsoft Docs"
+description: "Lär dig hur toodeploy och hantera Azure Backup för Data Protection Manager (DPM) med hjälp av PowerShell"
 services: backup
 documentationcenter: 
 author: NKolli1
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/23/2017
 ms.author: adigan;anuragm;trinadhk;markgal
-ms.openlocfilehash: 2e3b4a094511a59cfa02917efc2e3e053840af0c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 27d2b4b3127b68c9da564697eb61dc3ccbc34b3d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Distribuera och hantera säkerhetskopiering till Azure för DPM-servrar (Data Protection Manager) med PowerShell
+# <a name="deploy-and-manage-backup-tooazure-for-data-protection-manager-dpm-servers-using-powershell"></a>Distribuera och hantera säkerhetskopiering tooAzure för Data Protection Manager (DPM) servrar med hjälp av PowerShell
 > [!div class="op_single_selector"]
 > * [ARM](backup-dpm-automation.md)
 > * [Klassisk](backup-dpm-automation-classic.md)
 >
 >
 
-Den här artikeln visar hur du använder PowerShell för att konfigurera Azure Backup på en DPM-server och för att hantera säkerhetskopiering och återställning.
+Den här artikeln beskrivs hur du toouse PowerShell-toosetup Azure Backup på en DPM-servern och toomanage säkerhetskopiering och återställning.
 
-## <a name="setting-up-the-powershell-environment"></a>Ställa in PowerShell-miljö
+## <a name="setting-up-hello-powershell-environment"></a>Konfigurera hello PowerShell-miljö
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-Innan du kan använda PowerShell för att hantera säkerhetskopiering från Data Protection Manager till Azure, måste du har rätt miljö i PowerShell. Se till att du kör följande kommando för att importera modulerna som är rätt och att du kan korrekt refererar till DPM-cmdlets i början av PowerShell-session:
+Innan du kan använda PowerShell toomanage säkerhetskopior från Data Protection Manager tooAzure, behöver du toohave hello rätt miljö i PowerShell. Kontrollera att du kör hello efter kommandot tooimport hello rätt moduler och Tillåt toocorrectly referens hello DPM cmdlets hello början av hello PowerShell-session:
 
 ```
 PS C:> & "C:\Program Files\Microsoft System Center 2012 R2\DPM\DPM\bin\DpmCliInitScript.ps1"
 
-Welcome to the DPM Management Shell!
+Welcome toohello DPM Management Shell!
 
 Full list of cmdlets: Get-Command
 Only DPM cmdlets: Get-DPMCommand
@@ -48,45 +48,45 @@ Sample DPM scripts: Get-DPMSampleScript
 ```
 
 ## <a name="setup-and-registration"></a>Installation och registrering
-Börja:
+toobegin:
 
 1. [Hämta senaste PowerShell](https://github.com/Azure/azure-powershell/releases) (lägsta version som krävs är: 1.0.0)
-2. Aktivera Azure Backup-kommandon genom att växla till *AzureResourceManager* läge med hjälp av den **Switch-AzureMode** cmdleten igen:
+2. Aktivera hello Azure Backup-kommandon genom att växla för*AzureResourceManager* läge med hjälp av hello **Switch-AzureMode** cmdleten igen:
 
 ```
 PS C:\> Switch-AzureMode AzureResourceManager
 ```
 
-Följande uppgifter för installation och registrering kan automatiseras med PowerShell:
+hello kan följande inställningar och registrering aktiviteter automatiseras med PowerShell:
 
 * Skapa ett Recovery Services-valv
-* Installera Azure Backup-agenten
-* Registreras med Azure Backup-tjänsten
+* Installera hello Azure Backup-agenten
+* Registrera med hello Azure Backup-tjänsten
 * Nätverksinställningar
 * Krypteringsinställningar
 
 ## <a name="create-a-recovery-services-vault"></a>Skapa ett Recovery Services-valv
-Följande steg leder dig genom att skapa ett Recovery Services-valvet. Recovery Services-valvet skiljer sig en Backup-valvet.
+hello följande steg leder dig genom att skapa ett Recovery Services-valvet. Recovery Services-valvet skiljer sig en Backup-valvet.
 
-1. Om du använder Azure Backup för första gången, måste du använda den **registrera AzureRMResourceProvider** för att registrera providern Azure Recovery-tjänsten med din prenumeration.
+1. Om du använder Azure Backup för hello första gången, måste du använda hello **registrera AzureRMResourceProvider** cmdlet tooregister hello Azure Recovery Service provider med din prenumeration.
 
     ```
     PS C:\> Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-2. Recovery Services-valvet är en ARM-resurs, så du måste placera det inom en resursgrupp. Du kan använda en befintlig resursgrupp eller skapa en ny. När du skapar en ny resursgrupp måste ange namn och plats för resursgruppen.  
+2. hello Recovery Services-valvet är en ARM-resurs, så du måste tooplace den inom en resursgrupp. Du kan använda en befintlig resursgrupp eller skapa en ny. När du skapar en ny resursgrupp, ange hello namn och plats för hello resursgrupp.  
 
     ```
     PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
     ```
-3. Använd den **ny AzureRmRecoveryServicesVault** för att skapa ett nytt valv. Se till att ange samma plats för valvet som användes för resursgruppen.
+3. Använd hello **ny AzureRmRecoveryServicesVault** cmdlet toocreate ett nytt valv. Glöm toospecify hello samma plats för hello valvet som användes för hello resursgrupp.
 
     ```
     PS C:\> New-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName " test-rg" -Location "West US"
     ```
-4. Ange vilken typ av lagring redundans ska användas. Du kan använda [lokalt Redundant lagring (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) eller [Geo-Redundant lagring (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). I följande exempel visas alternativet - BackupStorageRedundancy för testVault anges till GeoRedundant.
+4. Ange hello typ av lagring redundans toouse; Du kan använda [lokalt Redundant lagring (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) eller [Geo-Redundant lagring (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). hello följande exempel visar hello - BackupStorageRedundancy alternativet för testVault anges tooGeoRedundant.
 
    > [!TIP]
-   > Många Azure Backup-cmdletar kräver Recovery Services-valvet objekt som indata. Därför är det praktiskt att lagra säkerhetskopian Recovery Services-valvet objekt i en variabel.
+   > Många Azure Backup-cmdletar kräver hello Recovery Services-valvet objekt som indata. Därför är det praktiskt toostore hello säkerhetskopiering Recovery Services-valvet objekt i en variabel.
    >
    >
 
@@ -95,10 +95,10 @@ Följande steg leder dig genom att skapa ett Recovery Services-valvet. Recovery 
     PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
-## <a name="view-the-vaults-in-a-subscription"></a>Visa valv i en prenumeration
-Använd **Get-AzureRmRecoveryServicesVault** att visa listan över alla valv i den aktuella prenumerationen. Du kan använda det här kommandot för att kontrollera att ett nytt valv skapades eller för att se vilka valv är tillgängliga i prenumerationen.
+## <a name="view-hello-vaults-in-a-subscription"></a>Visa hello valv i en prenumeration
+Använd **Get-AzureRmRecoveryServicesVault** tooview hello lista över alla valv i hello nuvarande prenumeration. Du kan använda det här kommandot toocheck att ett nytt valv skapades eller toosee vilka valv är tillgängliga i hello prenumeration.
 
-Kör kommandot Get-AzureRmRecoveryServicesVault, och i alla valv i prenumerationen.
+Kör hello kommandot Get-AzureRmRecoveryServicesVault, och alla valv i hello prenumeration visas.
 
 ```
 PS C:\> Get-AzureRmRecoveryServicesVault
@@ -112,36 +112,36 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
 
-## <a name="installing-the-azure-backup-agent-on-a-dpm-server"></a>Installation av Azure Backup-agenten på en DPM-Server
-Innan du installerar Azure Backup-agenten som du behöver ha installationsprogrammet hämtade och finns på Windows Server. Du kan hämta den senaste versionen av installationsprogrammet från den [Microsoft Download Center](http://aka.ms/azurebackup_agent) eller från instrumentpanelssida Recovery Services-valvet. Spara installationsprogrammet i en lättillgänglig plats som * C:\Downloads\*.
+## <a name="installing-hello-azure-backup-agent-on-a-dpm-server"></a>Hello Azure Backup agent installeras på en DPM-Server
+Innan du installerar hello Azure Backup-agenten måste toohave hello installer hämtats och finns på hello Windows Server. Du kan hämta hello senaste versionen av hello installer från hello [Microsoft Download Center](http://aka.ms/azurebackup_agent) eller från hello återställningstjänster valvet instrumentpanelens sida. Spara hello installer tooan lättillgänglig plats som * C:\Downloads\*.
 
-Om du vill installera agenten, kör du följande kommando i en upphöjd PowerShell-konsol **på DPM-servern**:
+tooinstall hello agent, kör följande kommando i en upphöjd PowerShell-konsol hello **på hello DPM-servern**:
 
 ```
 PS C:\> MARSAgentInstaller.exe /q
 ```
 
-Detta installerar agent med alla standardalternativ. Installationen tar några minuter i bakgrunden. Om du inte anger den */nu* alternativet den **Windows Update** öppnas i slutet av installationen att söka efter uppdateringar.
+Detta installerar hello agent med alla hello standardvärdet. hello installationen tar några minuter i hello bakgrund. Om du inte anger hello */nu* alternativet hello **Windows Update** öppnas hello slutet av hello installation toocheck för alla uppdateringar.
 
-Agenten visas i listan över installerade program. Listan över installerade program, gå till **Kontrollpanelen** > **program** > **program och funktioner**.
+hello agenten visas i hello listan över installerade program. toosee hello listan över installerade program finns för**Kontrollpanelen** > **program** > **program och funktioner**.
 
 ![Agenten är installerad](./media/backup-dpm-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Installationsalternativ
-Om du vill se alla alternativ som är tillgängliga via kommandoraden använder du följande kommando:
+toosee alla hello alternativ som är tillgängliga via hello kommandorad, Använd hello följande kommando:
 
 ```
 PS C:\> MARSAgentInstaller.exe /?
 ```
 
-Tillgängliga alternativ inkluderar:
+hello tillgängliga alternativ inkluderar:
 
 | Alternativ | Information | Standard |
 | --- | --- | --- |
 | /q |Tyst installation |- |
-| / p: ”plats” |Sökvägen till installationsmappen för Azure Backup-agenten. |C:\Program Files\Microsoft Azure Recovery Services-agenten |
-| / s: ”plats” |Sökväg till cachemappen för Azure Backup-agenten. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
-| /m |Delta i Microsoft Update |- |
+| / p: ”plats” |Sökvägen toohello installationsmappen för hello Azure Backup-agenten. |C:\Program Files\Microsoft Azure Recovery Services-agenten |
+| / s: ”plats” |Sökvägen toohello cachemappen för hello Azure Backup-agenten. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
+| /m |Anmäl tooMicrosoft uppdatering |- |
 | /nu |Sök inte efter uppdateringar när installationen är klar |- |
 | /d |Avinstallerar Microsoft Azure Recovery Services-agenten |- |
 | /pH |Värden proxyadress |- |
@@ -149,8 +149,8 @@ Tillgängliga alternativ inkluderar:
 | /Pu |Värddatorn Proxyanvändarnamnet |- |
 | /PW |Lösenord för proxy |- |
 
-## <a name="registering-dpm-to-a-recovery-services-vault"></a>Registrera DPM till en Recovery Services-valvet
-När du har skapat Recovery Services-valvet, ladda ned den senaste agenten och autentiseringsuppgifter för valv och lagra den på en lämplig plats som C:\Downloads.
+## <a name="registering-dpm-tooa-recovery-services-vault"></a>Registrerar DPM tooa Recovery Services-valvet
+När du har skapat hello Recovery Services-valvet Hämta senaste hello-agenten och hello valvautentiseringsuppgifter och lagra den på en lämplig plats som C:\Downloads.
 
 ```
 PS C:\> $credspath = "C:\downloads"
@@ -159,7 +159,7 @@ PS C:\> $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-På DPM-servern och kör den [Start OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) för att registrera datorn med valvet.
+Hello DPM-servern kör hello [Start OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) cmdlet tooregister hello datorn med hello-valvet.
 
 ```
 PS C:\> $cred = $credspath + $credsfilename
@@ -172,44 +172,44 @@ Machine registration succeeded.
 ```
 
 ### <a name="initial-configuration-settings"></a>Inledande konfigurationsinställningar
-När DPM-servern registreras med Recovery Services-valvet, startar med standardinställningar för prenumerationen. Inställningarna prenumeration omfattar nätverk, kryptering och mellanlagringsområdet. Du ändrar inställningarna måste du först få grepp om de befintliga inställningarna för (standard) med hjälp av den [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) cmdlet:
+När hello DPM-servern har registrerats med hello Recovery Services-valvet, den börjar med standardinställningar för prenumerationen. Inställningarna prenumeration omfattar nätverk, kryptering och hello mellanlagringsområdet. toochange prenumerationsinställningar toofirst måste få en referens för hello befintliga (standard)-inställningar med hjälp av hello [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) cmdlet:
 
 ```
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-Alla ändringar som görs till den här lokala PowerShell-objektet ```$setting``` och sedan fullständig objektet strävar efter att DPM och Azure Backup för att spara dem med hjälp av den [Set DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) cmdlet. Du måste använda den ```–Commit``` flagga för att säkerställa att ändringarna sparas. Inställningarna kommer inte tillämpas och används av Azure Backup såvida inte genomförts.
+Alla ändringar har gjorts toothis lokala PowerShell-objektet ```$setting``` och sedan hello fullt objekt är allokerat tooDPM och Azure Backup toosave dem med hello [Set DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) cmdlet. Du behöver toouse hello ```–Commit``` flaggan tooensure som hello ändringar sparas. hello-inställningarna kommer inte tillämpas och används av Azure Backup såvida inte genomförts.
 
 ```
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
 ```
 
 ## <a name="networking"></a>Nätverk
-Om anslutningen till DPM-datorn till Azure Backup-tjänsten på internet via en proxyserver, måste inställningarna för proxyservern anges för lyckade säkerhetskopieringar. Detta görs med hjälp av den ```-ProxyServer```och ```-ProxyPort```, ```-ProxyUsername``` och ```ProxyPassword``` parametrar med den [Set DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) cmdlet. I det här exemplet har ingen proxyserver så vi uttryckligen avmarkera alla proxy-relaterad information.
+Om hello anslutningen för hello DPM datorn toohello Azure Backup-tjänsten på hello internet via en proxyserver, bör hello proxyserverinställningar anges för säkerhetskopiering. Detta görs med hjälp av hello ```-ProxyServer```och ```-ProxyPort```, ```-ProxyUsername``` och hello ```ProxyPassword``` parametrar med hello [Set DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) cmdlet. I det här exemplet har ingen proxyserver så vi uttryckligen avmarkera alla proxy-relaterad information.
 
 ```
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
 ```
 
-Bandbreddsanvändning kan också kontrolleras med alternativ för ```-WorkHourBandwidth``` och ```-NonWorkHourBandwidth``` för en given uppsättning dagar i veckan. I det här exemplet anger vi inte någon begränsning.
+Bandbreddsanvändning kan också kontrolleras med alternativ för ```-WorkHourBandwidth``` och ```-NonWorkHourBandwidth``` för en given uppsättning hello veckodagar. I det här exemplet anger vi inte någon begränsning.
 
 ```
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoThrottle
 ```
 
-## <a name="configuring-the-staging-area"></a>Konfigurera mellanlagringsområdet
-Azure Backup-agenten som körs på DPM-servern behöver tillfällig lagring för data som återställs från molnet (lokalt mellanlagringsområde). Konfigurera mellanlagringsområdet med hjälp av den [Set DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) cmdlet och ```-StagingAreaPath``` parameter.
+## <a name="configuring-hello-staging-area"></a>Konfigurera hello mellanlagringsområde
+hello Azure Backup-agenten körs på hello DPM-servern behöver tillfällig lagring för data som återställs från hello molnet (lokalt mellanlagringsområde). Konfigurera hello mellanlagringsområdet med hello [Set DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) cmdlet och hello ```-StagingAreaPath``` parameter.
 
 ```
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
 ```
 
-I exemplet ovan mellanlagringsområdet anges till *C:\StagingArea* i PowerShell-objektet ```$setting```. Se till att den angivna mappen finns redan, annars misslyckas det slutliga genomförandet av prenumerationsinställningar.
+I hello-exemplet ovan, hello mellanlagringsområde ska anges för*C:\StagingArea* i hello PowerShell-objektet ```$setting```. Se till att hello mappen redan finns, annars hello slutliga genomförande av hello prenumerationsinställningar misslyckas.
 
 ### <a name="encryption-settings"></a>Krypteringsinställningar
-Den säkerhetskopiera informationen som skickas till Azure Backup krypteras för att skydda sekretessen för data. Krypteringslösenfrasen är ”password” att dekryptera data vid tidpunkten för återställning. Det är viktigt att behålla den här informationen säkert när den har angetts.
+hello säkerhetskopierade data skickas tooAzure säkerhetskopiering är krypterad tooprotect hello sekretess hello. Hej krypteringslösenfrasen har hello ”password” toodecrypt hello data vid hello tiden för återställning. Det är viktigt tookeep denna information säkert och säker när den har angetts.
 
-I exemplet nedan det första kommandot konverterar strängen ```passphrase123456789``` till en säker sträng och tilldelar säker sträng till variabeln med namnet ```$Passphrase```. Det andra kommandot anger säker sträng i ```$Passphrase``` som lösenord för kryptering av säkerhetskopieringar.
+I hello exemplet nedan hello första kommandot konverterar hello ```passphrase123456789``` tooa säker sträng och tilldelar hello säker toohello variabel med namnet ```$Passphrase```. hello andra kommandot anger hello säker sträng i ```$Passphrase``` som hello lösenord för kryptering av säkerhetskopieringar.
 
 ```
 PS C:\> $Passphrase = ConvertTo-SecureString -string "passphrase123456789" -AsPlainText -Force
@@ -218,52 +218,52 @@ PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -Subscrip
 ```
 
 > [!IMPORTANT]
-> Behåll informationen lösenfras säkert när den har angetts. Du kommer inte att återställa data från Azure utan lösenfras.
+> Hålla hello lösenfras information säkert när den har angetts. Du kommer inte att kunna toorestore data från Azure utan lösenfras.
 >
 >
 
-Nu ska du har gjort alla nödvändiga ändringar av den ```$setting``` objekt. Kom ihåg att spara ändringarna.
+Nu ska du har gjort alla hello krävs ändringar toohello ```$setting``` objekt. Kom ihåg toocommit hello ändringar.
 
 ```
 PS C:\> Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
 ```
 
-## <a name="protect-data-to-azure-backup"></a>Skydda data till Azure Backup
-I det här avsnittet kan du lägga till en produktionsservern till DPM och skydda sedan data till lokala DPM-lagring och sedan till Azure Backup. I exemplen visar vi hur du säkerhetskopierar filer och mappar. Logiken kan enkelt utökas för att säkerhetskopiera alla datakällor som stöds av DPM. Alla DPM-säkerhetskopieringar styrs av en skydd grupp (PG) med fyra delar:
+## <a name="protect-data-tooazure-backup"></a>Skydda data tooAzure säkerhetskopiering
+I det här avsnittet kan du lägga till en server tooDPM för produktion och skydda hello datalagring toolocal DPM och tooAzure säkerhetskopiering. I hello exemplen visar vi hur tooback av filer och mappar. hello logik kan enkelt att utökade toobackup alla stöd för DPM-datakällor. Alla DPM-säkerhetskopieringar styrs av en skydd grupp (PG) med fyra delar:
 
-1. **Medlemmar** är en lista över alla skyddsobjekt (även kallat *datakällor* i DPM) som du vill skydda i samma skyddsgrupp. Du kanske vill skydda produktion virtuella datorer i en skyddsgrupp och SQL Server-databaser i en annan skyddsgrupp som de kan ha olika krav för säkerhetskopiering. Innan du kan säkerhetskopiera någon datakälla på en produktionsserver måste du kontrollera att DPM-agenten är installerad på servern och hanteras av DPM. Följ anvisningarna för [installera DPM-agenten](https://technet.microsoft.com/library/bb870935.aspx) och länkas till rätt DPM-servern.
-2. **Dataskyddsmetod** anger de målplatserna - band, disk och molnet. I vårt exempel skyddar vi data till den lokala disken och till molnet.
-3. En **Säkerhetskopieringsschemat** som anger när säkerhetskopieringar behöver tas och hur ofta data ska synkroniseras mellan DPM-servern och produktionsservern.
-4. En **bevarandeschema** som anger hur lång tid att behålla återställningspunkter i Azure.
+1. **Medlemmar** är en lista över alla hello skyddsobjekt (även kallat *datakällor* i DPM) som du vill tooprotect i hello samma skyddsgrupp. Exempelvis kanske tooprotect produktion virtuella datorer i en skyddsgrupp och SQL Server-databaser i en annan skyddsgrupp som de kan ha olika krav för säkerhetskopiering. Innan du kan säkerhetskopiera någon datakälla på en produktionsserver måste toomake att hello DPM-agenten är installerad på hello server och hanteras av DPM. Hello gör för [installerar hello DPM-agenten](https://technet.microsoft.com/library/bb870935.aspx) och länka den toohello lämpliga DPM-servern.
+2. **Dataskyddsmetod** anger hello mål platser - band, disk och molnet. I vårt exempel skyddar vi data toohello lokal disk och toohello moln.
+3. En **Säkerhetskopieringsschemat** som anger när säkerhetskopieringar behöver toobe tas och hur ofta hello data ska synkroniseras mellan hello DPM-servern och hello produktionsservern.
+4. En **bevarandeschema** som anger hur länge tooretain hello Återställningspunkter i Azure.
 
 ### <a name="creating-a-protection-group"></a>Skapa en skyddsgrupp
-Börja med att skapa en ny Skyddsgrupp med hjälp av [ny DPMProtectionGroup](https://technet.microsoft.com/library/hh881722) cmdlet.
+Börja med att skapa en ny Skyddsgrupp med hello [ny DPMProtectionGroup](https://technet.microsoft.com/library/hh881722) cmdlet.
 
 ```
 PS C:\> $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-Cmdleten ovan skapar en Skyddsgrupp med namnet *ProtectGroup01*. En befintlig skyddsgrupp kan också ändras senare om du vill lägga till säkerhetskopiering till Azure-molnet. Dock göra några ändringar i skyddsgruppen - ny eller befintlig - vi behöver skaffa en referens till en *ändringsbar* objekt med hjälp av [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) cmdlet.
+hello ovan cmdlet skapar en Skyddsgrupp med namnet *ProtectGroup01*. En befintlig skyddsgrupp kan också ändras senare tooadd säkerhetskopiering toohello Azure-molnet. Dock toomake ändringar toohello Skyddsgrupp – nya eller befintliga - vi behöver tooget en referens i en *ändringsbar* objekt med hello [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) cmdlet.
 
 ```
 PS C:\> $MPG = Get-ModifiableProtectionGroup $PG
 ```
 
-### <a name="adding-group-members-to-the-protection-group"></a>Lägga till medlemmar i skyddsgruppen
-Varje DPM-agenten vet listan med datakällor på den server som den är installerad på. DPM-agenten måste först skicka en lista med datakällorna på DPM-servern för att lägga till en datakälla i skyddsgruppen. En eller flera datakällor är sedan valt och lägga till Skyddsgruppen. PowerShell-stegen som behövs för att uppnå detta är:
+### <a name="adding-group-members-toohello-protection-group"></a>Att lägga till gruppen medlemmar toohello Skyddsgrupp
+Varje DPM-agenten vet hello lista över datakällor på hello-server som den är installerad på. tooadd datasource-toohello Skyddsgrupp hello DPM-agenten måste toofirst skicka en lista över hello datakällor tillbaka toohello DPM-servern. En eller flera datakällor är markerade och tillagda toohello Skyddsgruppen. hello PowerShell steg behövs tooachieve detta är:
 
-1. Hämta en lista över alla servrar som hanterade med DPM via DPM-agenten.
+1. Hämta en lista över alla servrar som hanteras av DPM via hello DPM-agenten.
 2. Välj en specifik server.
-3. Hämta en lista över alla datakällor på servern.
-4. Välj en eller flera datakällor och lägga till dem i Skyddsgruppen
+3. Hämta en lista över alla datakällor på hello-servern.
+4. Välj en eller flera datakällor och lägga till dem toohello Skyddsgrupp
 
-I listan med servrar där DPM-agenten är installerad och hanteras av DPM-servern förvärvas med den [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) cmdlet. I det här exemplet kommer att filtrera och bara konfigurera PS med namnet *productionserver01* för säkerhetskopiering.
+hello listan över servrar på vilka hello DPM-agenten är installerad och hanteras av hello DPM-servern förvärvas med hello [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) cmdlet. I det här exemplet kommer att filtrera och bara konfigurera PS med namnet *productionserver01* för säkerhetskopiering.
 
 ```
 PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”
 ```
 
-Nu att hämta listan över datakällor på ```$server``` med hjälp av den [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) cmdlet. I det här exemplet vi filtrering för volymen * D:\* som vi vill konfigurera för säkerhetskopiering. Den här datakällan läggs sedan till Skyddsgruppen med hjälp av den [Lägg till DPMChildDatasource](https://technet.microsoft.com/library/hh881732) cmdlet. Kom ihåg att använda den *ändringsbar* skydd gruppobjekt ```$MPG``` att tilläggen.
+Hämta nu hello lista över datakällor på ```$server``` med hello [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) cmdlet. I det här exemplet vi filtrering för hello volym * D:\* som vi vill tooconfigure för säkerhetskopiering. Datakällan läggs sedan toohello Skyddsgruppen med hjälp av hello [Lägg till DPMChildDatasource](https://technet.microsoft.com/library/hh881732) cmdlet. Kom ihåg toouse hello *ändringsbar* skydd gruppobjekt ```$MPG``` toomake hello tillägg.
 
 ```
 PS C:\> $DS = Get-Datasource -ProductionServer $server -Inquire | where { $_.Name -contains “D:\” }
@@ -271,26 +271,26 @@ PS C:\> $DS = Get-Datasource -ProductionServer $server -Inquire | where { $_.Nam
 PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS
 ```
 
-Upprepa detta steg så många gånger som krävs, tills du har lagt till de valda datakällorna i skyddsgruppen. Du kan också starta med en datakälla och slutföra arbetsflödet för att skapa Skyddsgruppen och senare lägga till flera datakällor i Skyddsgruppen.
+Upprepa detta steg så många gånger som krävs, tills du har lagt till alla hello valt datakällor toohello skyddsgruppen. Du kan också starta med en datakälla och fullständig hello arbetsflöde för att skapa hello Skyddsgruppen och senare lägga till flera datakällor toohello Skyddsgruppen.
 
-### <a name="selecting-the-data-protection-method"></a>Välja dataskyddsmetod
-När datakällorna har lagts till Skyddsgruppen, nästa steg är att ange metoden skydd med den [Set DPMProtectionType](https://technet.microsoft.com/library/hh881725) cmdlet. I det här exemplet är Skyddsgruppen inställningar för lokal disk och säkerhetskopiering i molnet. Du måste också ange datasource som du vill skydda till molnet med den [Lägg till DPMChildDatasource](https://technet.microsoft.com/library/hh881732.aspx) cmdlet med - Online flagga.
+### <a name="selecting-hello-data-protection-method"></a>Att välja hello dataskyddsmetod
+När hello datakällorna har lagts till toohello Skyddsgrupp, hello nästa steg är toospecify hello skyddsmetod med hello [Set DPMProtectionType](https://technet.microsoft.com/library/hh881725) cmdlet. I det här exemplet är hello Skyddsgrupp inställningar för lokal disk och säkerhetskopiering i molnet. Du måste också toospecify hello datakällan som du vill tooprotect toocloud med hello [Lägg till DPMChildDatasource](https://technet.microsoft.com/library/hh881732.aspx) cmdlet med - Online flagga.
 
 ```
 PS C:\> Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
 PS C:\> Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 ```
 
-### <a name="setting-the-retention-range"></a>Ange kvarhållningsintervallet
-Loggperiod för säkerhetskopieringen återställningspunkter med de [Set DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) cmdlet. När det kan verka udda loggperiod innan schemat för säkerhetskopiering har definierats med den ```Set-DPMPolicyObjective``` cmdlet anger automatiskt ett standardschema för säkerhetskopiering som sedan kan ändras. Det är alltid möjligt att ange säkerhetskopieringen schemalägga först och bevarandeprincip efter.
+### <a name="setting-hello-retention-range"></a>Ange hello Kvarhållningsintervall
+Ange hello kvarhållning för hello säkerhetskopiering punkter med hello [Set DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) cmdlet. När det kan verka udda tooset hello kvarhållning innan hello schemat för säkerhetskopiering har definierats med hello ```Set-DPMPolicyObjective``` cmdlet anger automatiskt ett standardschema för säkerhetskopiering som sedan kan ändras. Det är alltid möjligt tooset hello Säkerhetskopieringsschemat först och hello bevarandeprincip efter.
 
-I exemplet nedan anger cmdleten kvarhållning parametrarna för säkerhetskopiering till disk. Detta behåller säkerhetskopior för 10 dagar och synkronisera data var 6 timme mellan produktionsservern och DPM-servern. Den ```SynchronizationFrequencyMinutes``` inte definierar hur ofta en säkerhetskopiering skapas, men hur ofta data kopieras till DPM-servern.  Den här inställningen förhindrar att säkerhetskopiorna blir för stor.
+I hello exemplet nedan anger hello cmdlet hello kvarhållning parametrar för säkerhetskopiering till disk. Detta behåller säkerhetskopior för 10 dagar och synkronisera data var 6 timme mellan hello produktionsservern och hello DPM-servern. Hej ```SynchronizationFrequencyMinutes``` inte definierar hur ofta en säkerhetskopiering skapas, men hur ofta data är kopierade toohello DPM-servern.  Den här inställningen förhindrar att säkerhetskopiorna blir för stor.
 
 ```
 PS C:\> Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
 ```
 
-För säkerhetskopiering ska Azure (DPM refererar till dem som onlinesäkerhetskopieringar) i kvarhållningsperioder kan konfigureras för [långsiktigt kvarhållning med en farfar-pappa-Son (offentlig sektor GFS)](backup-azure-backup-cloud-as-tape.md). Det vill säga kan du definiera en kombinerad bevarandeprincip som rör varje dag, vecka, månad och år bevarandeprinciper. I det här exemplet vi skapa en matris som representerar det komplexa kvarhållning schema som vi vill och sedan konfigurera kvarhållning intervall med den [Set DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) cmdlet.
+För säkerhetskopiering ska tooAzure (DPM refererar toothem som onlinesäkerhetskopieringar) hello kvarhållningsperioder kan konfigureras för [långsiktigt kvarhållning med en farfar-pappa-Son (offentlig sektor GFS)](backup-azure-backup-cloud-as-tape.md). Det vill säga kan du definiera en kombinerad bevarandeprincip som rör varje dag, vecka, månad och år bevarandeprinciper. I det här exemplet vi skapa en matris som representerar hello komplexa kvarhållning schema som vi vill och konfigurera hello Kvarhållningsintervall med hello [Set DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) cmdlet.
 
 ```
 PS C:\> $RRlist = @()
@@ -301,8 +301,8 @@ PS C:\> $RRList += (New-Object -TypeName Microsoft.Internal.EnterpriseStorage.Dl
 PS C:\> Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList $RRlist
 ```
 
-### <a name="set-the-backup-schedule"></a>Ange schemat för säkerhetskopiering
-DPM anger en säkerhetskopiering standardschemat automatiskt om du anger en skydd mål med hjälp av den ```Set-DPMPolicyObjective``` cmdlet. Du kan ändra standardscheman den [Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) cmdlet följt av den [Set DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) cmdlet.
+### <a name="set-hello-backup-schedule"></a>Ange schemat för säkerhetskopiering av hello
+DPM anger en säkerhetskopiering standardschemat automatiskt om du anger hello skyddsmålet med hello ```Set-DPMPolicyObjective``` cmdlet. toochange hello standardscheman används hello [Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) cmdlet följt av hello [Set DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) cmdlet.
 
 ```
 PS C:\> $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
@@ -313,36 +313,36 @@ PS C:\> Set-DPMPolicySchedule -ProtectionGroup $MPG -Schedule $onlineSch[3] -Tim
 PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
 
-I exemplet ovan ```$onlineSch``` är en matris med fyra element som innehåller befintliga schema för onlineskydd för Skyddsgruppen i GFS schemat:
+I hello ovan exempelvis ```$onlineSch``` är en matris med fyra element som innehåller hello befintligt onlineskydd schema för hello Skyddsgruppen i hello GFS schemat:
 
-1. ```$onlineSch[0]```innehåller dagsschema
-2. ```$onlineSch[1]```innehåller veckoschemat
-3. ```$onlineSch[2]```innehåller månadsschema
-4. ```$onlineSch[3]```innehåller årlig schemat
+1. ```$onlineSch[0]```innehåller hello dagsschema
+2. ```$onlineSch[1]```innehåller hello veckoschema
+3. ```$onlineSch[2]```innehåller hello månadsschema
+4. ```$onlineSch[3]```innehåller hello årlig schema
 
-Om du behöver ändra veckoschemat måste referera till den ```$onlineSch[1]```.
+Om du behöver toomodify hello veckoschema måste du toorefer toohello ```$onlineSch[1]```.
 
 ### <a name="initial-backup"></a>Den första säkerhetskopieringen
-När en datakälla för första gången, måste DPM säkerhetskopierar skapas första replik som skapar en fullständig kopia av datasource som ska skyddas på DPM-replikvolymen. Den här aktiviteten kan antingen schemaläggas för en viss tid, eller kan aktiveras manuellt med hjälp av den [Set DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) cmdlet med parametern ```-NOW```.
+När säkerhetskopiering av en datakälla för hello första gången, DPM måste skapas första replik som skapar en fullständig kopia av hello datasource toobe skyddas på DPM-replikvolymen. Den här aktiviteten kan antingen schemaläggas för en viss tid, eller kan aktiveras manuellt med hjälp av hello [Set DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) -cmdlet med parametern hello ```-NOW```.
 
 ```
 PS C:\> Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 ```
-### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>Ändra storlek på DPM-replikeringen & återställningspunktvolymen
-Du kan också ändra storlek på DPM-replikvolymen och skuggkopia av volymen med hjälp av [Set DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) cmdlet enligt följande exempel: Get-DatasourceDiskAllocation - Datasource $DS Set-DatasourceDiskAllocation - DataSource $DS - protectiongroup $MPG-manuell - ReplicaArea (2 gb) - ShadowCopyArea (2 gb)
+### <a name="changing-hello-size-of-dpm-replica--recovery-point-volume"></a>Ändra hello storlek på DPM-replikeringen & återställningspunktvolymen
+Du kan också ändra hello storleken på DPM-replikvolymen och skuggkopia av volymen med hjälp av [Set DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) cmdlet enligt följande exempel hello: Get-DatasourceDiskAllocation - Datasource $DS Set-DatasourceDiskAllocation - Datasource $DS - protectiongroup $MPG-manuell - ReplicaArea (2 gb) - ShadowCopyArea (2 gb)
 
-### <a name="committing-the-changes-to-the-protection-group"></a>Bekräfta ändringarna i skyddsgruppen
-Slutligen måste ändringarna genomföras innan DPM kan säkerhetskopiera per den nya Skyddsgruppen-konfigurationen. Du kan göra detta med hjälp av den [Set DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) cmdlet.
+### <a name="committing-hello-changes-toohello-protection-group"></a>Genomför hello ändringar toohello Skyddsgrupp
+Slutligen måste hello ändringar toobe allokerat innan DPM kan säkerhetskopiera hello per hello ny Skyddsgrupp konfiguration. Du kan göra detta med hjälp av hello [Set DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) cmdlet.
 
 ```
 PS C:\> Set-DPMProtectionGroup -ProtectionGroup $MPG
 ```
-## <a name="view-the-backup-points"></a>Visa säkerhetskopiering punkter
-Du kan använda den [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) att hämta en lista över alla återställningspunkter för en datakälla. I det här exemplet ska du:
+## <a name="view-hello-backup-points"></a>Visa hello säkerhetskopiering punkter
+Du kan använda hello [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) cmdlet tooget en lista över alla återställningspunkter för en datakälla. I det här exemplet ska du:
 
-* Hämta alla PGs på DPM-servern och lagras i en matris```$PG```
-* Hämta datakällorna som motsvarar den```$PG[0]```
-* Hämta alla återställningspunkter för en datakälla.
+* Hämta alla hello PGs på hello DPM-servern och lagras i en matris```$PG```
+* Hämta hello datakällor motsvarande toohello```$PG[0]```
+* Hämta alla hello Återställningspunkter för en datakälla.
 
 ```
 PS C:\> $PG = Get-DPMProtectionGroup –DPMServerName "TestingServer"
@@ -351,13 +351,13 @@ PS C:\> $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 ```
 
 ## <a name="restore-data-protected-on-azure"></a>Återställa skyddade data på Azure
-Återställa data är en kombination av en ```RecoverableItem``` objekt och en ```RecoveryOption``` objekt. I det föregående avsnittet vi en lista över säkerhetskopiering punkter för en datakälla.
+Återställa data är en kombination av en ```RecoverableItem``` objekt och en ```RecoveryOption``` objekt. I föregående avsnitt hello vi en lista över hello säkerhetskopiering punkter för en datakälla.
 
-I exemplet nedan visar vi hur du återställer en virtuell dator för Hyper-V från Azure Backup genom att kombinera säkerhetskopiering punkter med mål för återställning. Det här exemplet innehåller:
+I hello exemplet nedan visar hur toorestore Hyper-V virtuell dator från Azure Backup genom att kombinera säkerhetskopiering punkter med hello mål för återställning. Det här exemplet innehåller:
 
-* Skapa en återställningspunkt alternativet med hjälp av den [ny DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) cmdlet.
-* Hämtar punktmatrisen säkerhetskopiering med hjälp av den ```Get-DPMRecoveryPoint``` cmdlet.
-* Om du väljer en säkerhetskopieringspunkt att återställa från.
+* Skapa ett återställningsalternativ med hello [ny DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) cmdlet.
+* Hämtning hello punktmatrisen säkerhetskopiering med hello ```Get-DPMRecoveryPoint``` cmdlet.
+* Om du väljer en säkerhetskopiering punkt toorestore från.
 
 ```
 PS C:\> $RecoveryOption = New-DPMRecoveryOption -HyperVDatasource -TargetServer "HVDCenter02" -RecoveryLocation AlternateHyperVServer -RecoveryType Recover -TargetLocation “C:\VMRecovery”
@@ -369,7 +369,7 @@ PS C:\> $RecoveryPoints = Get-DPMRecoverypoint -Datasource $DS[0] -Online
 PS C:\> Restore-DPMRecoverableItem -RecoverableItem $RecoveryPoints[0] -RecoveryOption $RecoveryOption
 ```
 
-Kommandona kan enkelt utökas för någon typ av datakälla.
+hello kommandona kan enkelt utökas för någon typ av datakälla.
 
 ## <a name="next-steps"></a>Nästa steg
-* Mer information om DPM till Azure Backup finns [introduktion till DPM-säkerhetskopiering](backup-azure-dpm-introduction.md)
+* Mer information om DPM tooAzure säkerhetskopiering finns [introduktion tooDPM säkerhetskopiering](backup-azure-dpm-introduction.md)

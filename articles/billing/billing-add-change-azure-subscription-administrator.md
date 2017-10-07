@@ -1,6 +1,6 @@
 ---
-title: "Lägga till eller ändra Azure-prenumeration för administratörsroller | Microsoft Docs"
-description: "Beskriver hur du lägger till eller ändrar Medadministratör för Azure, tjänstadministratören och kontoadministratör"
+title: "aaaAdd eller ändra Azure-prenumeration administratörsroller | Microsoft Docs"
+description: "Beskriver hur tooadd eller ändra Medadministratör för Azure, tjänstadministratören och kontoadministratör"
 services: 
 documentationcenter: 
 author: genlin
@@ -15,113 +15,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: genli
-ms.openlocfilehash: da5995535d42ed52772cb09e0f4da51bbf878748
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 14eaecf2dbfd7152775ac3552bf3a7ae3db596b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>Lägg till eller ändra Azure-administratörsroller som hanterar prenumerationen eller tjänster
-Du kan ändra Azure administratören som hanterar din Azure-prenumeration eller hanterar Azure-tjänster används i din prenumeration. Om du vill visa faktureringsinformation för Azure och hantera prenumerationer som du måste logga in på den [Kontocenter](https://account.windowsazure.com/Home/Index) som kontoadministratör. 
+# <a name="add-or-change-azure-administrator-roles-that-manage-hello-subscription-or-services"></a>Lägg till eller ändra Azure-administratörsroller som hanterar hello prenumeration eller tjänster
+Du kan ändra hello Azure administratören som hanterar din Azure-prenumeration eller hanterar hello Azure-tjänster används i din prenumeration. tooview Azure faktureringsinformation och hantera prenumerationer måste du logga in toohello [Kontocenter](https://account.windowsazure.com/Home/Index) som hello kontoadministratör. 
 
 ## <a name="add-an-admin-for-a-subscription"></a>Lägg till en administratör för en prenumeration
-Du kan lägga till en Azure-administratör i Azure-portalen eller i den klassiska Azure-portalen.
+Du kan lägga till en Azure-administratör i hello Azure-portalen eller hello klassiska Azure-portalen.
 
 **Azure Portal**
 
-Om du vill lägga till någon som en administratör för en prenumeration på Azure-portalen måste ge du dem rollen som ägare. Rollen som ägare kan bara hantera resurserna i prenumerationen som du tilldelade. Den har inte behörighet att använda till andra prenumerationer. Ägare som du lägger till via den [Azure-portalen](https://portal.azure.com) kan inte hantera resurs i den [klassiska Azure-portalen](https://manage.windowsazure.com).
+tooadd någon som administratör för en prenumeration i hello Azure-portalen, du ge dem hello ägarrollen. hello ägarrollen kan endast hantera hello resurser i hello-prenumeration som du tilldelade. Den har inte åtkomst privilegium tooother prenumerationer. Hej ägare som du lägger till via hello [Azure-portalen](https://portal.azure.com) kan inte hantera resurs i hello [klassiska Azure-portalen](https://manage.windowsazure.com).
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
-2. På navmenyn väljer **prenumeration** > *den prenumeration som du vill att administratören att komma åt*.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).
+2. På navmenyn hello väljer **prenumeration** > *hello prenumeration som du vill hello admin tooaccess*.
 
     ![Skärmbild som visar den valda prenumerationen](./media/billing-add-change-azure-subscription-administrator/newselectsub.png)
 
-3. Välj i prenumerationsbladet **åtkomstkontroll (IAM)**.
-4. Välj **lägga till** > **rollen** > **ägare**. Skriv e-postadressen för den användare som du vill lägga till som ägare, Välj användaren och välj sedan **spara**.
+3. Välj i hello prenumerationsbladet **åtkomstkontroll (IAM)**.
+4. Välj **lägga till** > **rollen** > **ägare**. Skriv hello hello användarens tooadd som ägare, Välj hello användare, och sedan markera e-postadress **spara**.
 
-    ![Skärmbild som visar ägarrollen som valts](./media/billing-add-change-azure-subscription-administrator/add-role.png)
+    ![Skärmbild som visar hello ägarrollen markerat](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
-5. Om du vill lägga till kontot ägare som medadministratör, i den **åtkomstkontroll (IAM)** sidan, högerklicka på användaren och välj sedan **Lägg till som medadministratör**. Den här funktionen finns nu i [Azure preview portal](https://preview.portal.azure.com/). 
+5. Om du vill tooadd hello ägare kontot som medadministratör i hello **åtkomstkontroll (IAM)** sidan, högerklicka på hello användare och välj sedan **Lägg till som medadministratör**. Den här funktionen finns nu i [Azure preview portal](https://preview.portal.azure.com/). 
 
      ![Skärmbild som lägger till medadministratör](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
 
     >[!TIP]
-    >Du måste lägga till användaren ”ägare” som medadministratör om användaren behöver hantera Azure-tjänster i [klassiska Azure-portalen](https://manage.windowsazure.com/).
+    >Du behöver tooadd hello ”ägare” användare som medadministratör om hello användare behöver toomanage hello Azure-tjänster i [klassiska Azure-portalen](https://manage.windowsazure.com/).
 
-    Om du vill ta bort behörigheten medadministratör, högerklicka på användaren som ”medadministratör” och välj sedan **ta bort medadministratör**.
+    tooremove hello medadministratör behörighet, högerklicka på hello ”medadministratör” användare och välj sedan **ta bort medadministratör**.
 
     ![Skärmbild som tar bort medadministratör](./media/billing-add-change-azure-subscription-administrator/remove-coadmin.png)
 
 
 **Klassisk Azure-portal**
 
-1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com/).
-2. I navigeringsfönstret väljer **inställningar**> **administratörer**> **Lägg till**. </br>
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com/).
+2. Hello navigeringsfönstret och välj **inställningar**> **administratörer**> **Lägg till**. </br>
 
-    ![Skärmbild som visar hur du kommer till knappen Lägg till](./media/billing-add-change-azure-subscription-administrator/addcoadmin.png)
-3. Skriv e-postadressen för den person som du vill lägga till som medadministratör och välj den prenumeration som du vill medadministratörerna åtkomst till.</br>
+    ![Skärmbild som visar hur tooget toohello knappen Lägg till](./media/billing-add-change-azure-subscription-administrator/addcoadmin.png)
+3. Ange hello hello person som du vill tooadd som medadministratör och välj sedan hello-prenumeration som du vill hello medadministratör tooaccess e-postadress.</br>
 
     ![Skärmbild som visar en prenumeration som har valts ](./media/billing-add-change-azure-subscription-administrator/addcoadmin2.png)</br>
 
-Följande e-postadress kan läggas till som Medadministratör:
+hello följande e-postadress kan läggas till som Medadministratör:
 
 * **Account** (tidigare Windows Live ID) </br>
-  Du kan använda ett Account för att logga in på alla konsumentinriktade Microsoft-produkter och molntjänster, till exempel Outlook (Hotmail), Skype MSN, OneDrive, Windows Phone och Xbox LIVE.
+  Du kan använda en Account toosign i tooall konsumentinriktade Microsoft-produkter och molntjänster, till exempel Outlook (Hotmail), Skype MSN, OneDrive, Windows Phone och Xbox LIVE.
 * **Organisationskonto**</br>
-  Ett organisationskonto är ett konto som har skapats under Azure Active Directory. Adressen organisationskonto har följande format:
+  Ett organisationskonto är ett konto som har skapats under Azure Active Directory. Hej organisationskonto adress har följande format:
 
     användare @&lt;din domän&gt;. onmicrosoft.com
 
 ## <a name="change-service-administrator-for-a-subscription"></a>Ändra tjänstadministratör för en prenumeration
-Enbart administratörskontot kan ändra den tjänstadministratör för en prenumeration.
+Endast hello kontoadministratör kan ändra hello tjänstadministratör för en prenumeration.
 
-1. Logga in på [Azure Kontocenter](https://account.windowsazure.com/subscriptions) med hjälp av kontoadministratören.
-2. Välj den prenumeration som du vill ändra.
-3. Välj höger, **redigera prenumeration** information. </br>
+1. Logga in för[Azure Kontocenter](https://account.windowsazure.com/subscriptions) med hjälp av hello kontoadministratör.
+2. Välj hello-prenumeration som du vill toochange.
+3. Välj hello höger **redigera prenumeration** information. </br>
 
     ![editsub](./media/billing-add-change-azure-subscription-administrator/editsub.png)
-4. I den **TJÄNSTADMINISTRATÖR** ange e-postadressen för den nya tjänstadministratören. </br>
+4. I hello **TJÄNSTADMINISTRATÖR** ange hello e-postadress hello nya tjänstadministratören. </br>
 
     ![changeSA](./media/billing-add-change-azure-subscription-administrator/changeSA.png)
 
-## <a name="change-the-account-administrator"></a>Ändra kontoadministratören
-Att överföra ägarskap för Azure-konto till ett annat konto finns [överföra ägarskap för en Azure-prenumeration](billing-subscription-transfer.md).
+## <a name="change-hello-account-administrator"></a>Ändra hello kontoadministratör
+tootransfer ägarskap för hello Azure-konto tooanother konto, se [överföra ägarskap för en Azure-prenumeration](billing-subscription-transfer.md).
 
-Vi rekommenderar starkt att du inte ta bort eller byta namn på kontot administratörens e-postadress. Du kan se oväntad och oönskat beteende med Azure-konto. Du kan inte vara kan logga in på Azure med det kontot, göra ändringar i kontot eller hantera resurser med det kontot. 
+Vi rekommenderar starkt att du inte ta bort eller byta namn på hello konto administratörens e-postadress. Du kan se oväntad och oönskat beteende med hello Azure-konto. Du kan inte vara kan logga in tooAzure med det kontot, ändrar toohello konto eller hantera resurser med det kontot. 
 
-## <a name="check-the-account-administrator-of-the-subscription"></a>Kontrollera kontoadministratören för prenumerationen
-Om du inte vet som kontoadministratör för din prenumeration, kan du använda följande steg för att ta reda på.
+## <a name="check-hello-account-administrator-of-hello-subscription"></a>Kontrollera hello kontoadministratör för hello prenumerationen
+Om du inte vet som hello kontoadministratör för din prenumeration, använder du följande steg toofind ut hello.
 
-  1. Logga in på [Azure Portal](https://portal.azure.com).
-  2. På navmenyn väljer **prenumeration**.
-  3. Välj den prenumeration som du vill kontrollera och se **inställningar**.
-  4. Välj **egenskaper**. Kontoadministratören för prenumerationen visas i den **kontoadministratören** rutan.  
+  1. Logga in toohello [Azure-portalen](https://portal.azure.com).
+  2. På navmenyn hello väljer **prenumeration**.
+  3. Välj hello prenumeration du vill använda toocheck och tittar du under **inställningar**.
+  4. Välj **egenskaper**. hello kontoadministratör för hello prenumerationen visas i hello **kontoadministratören** rutan.  
 
 ## <a name="types-of-azure-admin-accounts"></a>Typer av Azure administratörskonton
- Kontoadministratör tjänstadministratören och medadministratör finns tre typer av administratörsroller i Microsoft Azure. I följande tabell beskrivs skillnaden mellan dessa administrativa roller.
+ Kontoadministratören, tjänstadministratören och medadministratör är hello tre typer av administratörsroller i Microsoft Azure. hello beskrivs följande tabell hello skillnaden mellan dessa administrativa roller.
 
 | Administrativ roll | Gräns | Beskrivning |
 | --- | --- | --- |
-| Kontoadministratör (AA) |1 per Azure-konto |Det här är den person som registrerade sig för eller har köpt Azure-prenumerationer och har behörighet att komma åt den [Kontocenter](https://account.windowsazure.com/Home/Index) och utföra olika hanteringsuppgifter. Dessa inkluderar att kunna skapa prenumerationer, avbryta prenumerationer, ändra faktureringen för en prenumeration och ändra tjänstadministratören. |
-| Tjänsten systemadministratörens (SA) |1 per Azure-prenumeration |Den här rollen har behörighet att hantera tjänster i den [Azure-portalen](https://portal.azure.com). Kontoadministratören är också den tjänstadministratör som standard för en ny prenumeration. |
-| Medadministratör (CA) i den [klassiska Azure-portalen](https://manage.windowsazure.com) |200 per prenumeration |Den här rollen har samma åtkomstbehörigheter som tjänstadministratören, men kan inte ändra associationen mellan prenumerationer och Azure-kataloger. |
+| Kontoadministratör (AA) |1 per Azure-konto |Detta är hello person som registrerade sig för eller har köpt Azure-prenumerationer och är auktoriserade tooaccess hello [Kontocenter](https://account.windowsazure.com/Home/Index) och utföra olika hanteringsuppgifter. Dessa inkluderar att kan toocreate prenumerationer, avbryta prenumerationer, ändra hello fakturering för en prenumeration och ändra hello tjänstadministratör. |
+| Tjänsten systemadministratörens (SA) |1 per Azure-prenumeration |Den här rollen är auktoriserade toomanage tjänster i hello [Azure-portalen](https://portal.azure.com). Som standard för en ny prenumeration är hello kontoadministratör också hello tjänstadministratör. |
+| Medadministratör (CA) i hello [klassiska Azure-portalen](https://manage.windowsazure.com) |200 per prenumeration |Den här rollen har hello samma behörighet som hello tjänstadministratör, men kan inte ändra hello associationen mellan prenumerationer tooAzure kataloger. |
 
-Azure Active Directory-rollbaserad åtkomstkontroll (RBAC) kan användare som ska läggas till flera roller. Mer information finns i [Azure Active Directory-rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-configure.md).
+Azure Active Directory-rollbaserad åtkomstkontroll (RBAC) kan användare toobe läggs toomultiple roller. Mer information finns i [Azure Active Directory-rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-configure.md).
 
 ## <a name="limitations-and-restrictions-for-admin-accounts"></a>Begränsningar och restriktioner för administratörskonton
-* Varje prenumeration är associerad med en Azure AD-katalog (även kallat standard katalogen). Gå till för att hitta standardkatalog prenumerationen är associerad med den [klassiska Azure-portalen](https://manage.windowsazure.com/)väljer **inställningar** > **prenumerationer**. Kontrollera prenumerations-ID för att hitta katalogen som standard.
-* Du är inloggad med ett Account, kan du bara lägga till andra Microsoft-Accounts eller användare i katalogen som standard som Medadministratör.
-* Om du har loggat in med ett organisationskonto kan du lägga till andra organisationskonton i din organisation som Medadministratör. Till exempel abby@contoso.com kan lägga till bob@contoso.com som administratör eller Medadministratör, men det går inte att lägga till john@notcontoso.com om john@notcontoso.com är i katalogen. Användare som har loggat in med organisationskonton kan fortsätta att lägga till Account användare som administratör eller Medadministratör.
-* Nu när det är möjligt att logga in på Azure med ett organisationskonto följer krav tjänstadministratören och medadministratör ändringarna:
+* Varje prenumeration är associerad med en Azure AD-katalog (även kallat hello standardkatalog). toofind hello standardkatalog hello prenumeration är associerad med gå toohello [klassiska Azure-portalen](https://manage.windowsazure.com/)väljer **inställningar** > **prenumerationer**. Kontrollera hello prenumerations-ID toofind hello standardkatalog.
+* Du är inloggad med ett Account kan du endast lägga till andra Microsoft-Accounts eller användare i hello standardkatalog som Medadministratör.
+* Om du har loggat in med ett organisationskonto kan du lägga till andra organisationskonton i din organisation som Medadministratör. Till exempel abby@contoso.com kan lägga till bob@contoso.com som administratör eller Medadministratör, men det går inte att lägga till john@notcontoso.com om john@notcontoso.com är i katalogen. Användare som har loggat in med organisationskonton kan fortsätta tooadd Account användare som administratör eller Medadministratör.
+* Nu när det är möjligt toosign i tooAzure med ett organisationskonto är här hello ändringar tooService administratör och medadministratör krav:
 
-  | Logga in metod | Lägga till Account eller användare i standardkatalog som CA: N eller SA? | Lägg till organisationens konto i samma organisation som Certifikatutfärdare eller SA? | Lägg till organisationens konto i en annan organisation som Certifikatutfärdare eller SA? |
+  | Logga in metod | Lägga till Account eller användare i standardkatalog som CA: N eller SA? | Lägg till organisationens konto i hello samma organisation som Certifikatutfärdare eller SA? | Lägg till organisationens konto i en annan organisation som Certifikatutfärdare eller SA? |
   | --- | --- | --- | --- |
   |  Microsoft-konto |Ja |Nej |Nej |
   |  Organisationskonto |Ja |Ja |Nej |
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>Mer information om åtkomstkontroll till resurser och Active Directory
-* Läs mer om hur resursåtkomsten hanteras i Microsoft Azure i [förstå resursåtkomst i Azure](../active-directory/active-directory-understanding-resource-access.md).
+* toolearn mer information om hur resursåtkomsten hanteras i Microsoft Azure finns [förstå resursåtkomst i Azure](../active-directory/active-directory-understanding-resource-access.md).
 * Läs mer om Azure Active Directory [hur Azure-prenumerationer är associerade med Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md) och [Tilldela administratörsroller i Azure Active Directory](../active-directory/active-directory-assign-admin-roles.md).
 
 ## <a name="need-help-contact-support"></a>Behöver du hjälp? Kontakta supporten.
-Om du fortfarande behöver hjälp [supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) få snabbt lösa problemet.
+Om du fortfarande behöver hjälp [supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget problemet lösas snabbt.

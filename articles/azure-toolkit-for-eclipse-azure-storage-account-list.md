@@ -1,6 +1,6 @@
 ---
-title: "Lista över Azure Storage-konto"
-description: "Hantera lagringsinställningarna för ditt konto med hjälp av Azure-verktygen för Eclipse"
+title: aaaAzure Lagringskontolistan
+description: "Hantera lagringsinställningarna för ditt konto med hello Azure Toolkit för Eclipse"
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,90 +14,90 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: f859efa389d3fe0b4b7b16255d57f1aa13123319
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 35e25881ca95ae4050a26283e4726d9549b37f46
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-storage-account-list"></a>Lista över Azure Storage-konto
-Azure storage-konton aktivera hämtningsplatser som ska användas för JDK, programserver och godtyckliga komponenter, samt för att lagra tillstånd när du använder cachelagring. Eclipse upprätthåller en lista över kända lagringskonton som är tillgängliga för ditt projekt i Eclipse-arbetsyta. Öppna den **Lagringskonton** dialog, som används för att hantera listan i Eclipse klickar du på **fönstret**, klickar du på **inställningar**, expandera **Azure**, och klicka sedan på **Lagringskonton**.
+Azure storage konton aktivera hämta platser toobe som används för JDK, programserver och godtyckliga komponenter, samt för att lagra tillstånd när du använder cachelagring. Eclipse upprätthåller en lista över kända lagringskonton som är tillgängliga tooyour projekt i Eclipse-arbetsytan. tooopen hello **Lagringskonton** dialog, som har använt toomanage som listas i Eclipse klickar du på **fönstret**, klickar du på **inställningar**, expandera **Azure** , och klicka sedan på **Lagringskonton**.
 
-I följande visas den **Lagringskonton** dialogrutan.
+hello följande visar hello **Lagringskonton** dialogrutan.
 
 ![][ic719496]
 
-Den här dialogrutan kan även öppnas från en **konton** länk i dialogrutor som använder storage-konton, till exempel följande:
+Den här dialogrutan kan även öppnas från en **konton** länk i dialogrutor som använder storage-konton, till exempel hello följande:
 
-* Den **JDK** för den **serverkonfiguration** dialogrutan.
-* Den **Server** för den **serverkonfiguration** dialogrutan.
-* Den **Lägg till komponent** dialogrutan.
-* Den **cachelagring** egenskapsdialogrutan.
+* Hej **JDK** för hello **serverkonfiguration** dialogrutan.
+* Hej **Server** för hello **serverkonfiguration** dialogrutan.
+* Hej **Lägg till komponent** dialogrutan.
+* Hej **cachelagring** egenskapsdialogrutan.
 
-## <a name="to-import-your-storage-accounts-using-a-publish-settings-file"></a>Importera dina lagringskonton med hjälp av en fil med inställningar i Publicera
-1. I den **Lagringskonton** dialogrutan klickar du på **Import från PUBLICERINGSINSTÄLLNINGARNA filen**.
+## <a name="tooimport-your-storage-accounts-using-a-publish-settings-file"></a>tooimport lagringen användarkonton med en publicera inställningsfil
+1. Inom hello **Lagringskonton** dialogrutan klickar du på **Import från PUBLICERINGSINSTÄLLNINGARNA filen**.
 
-2. (Hoppa över det här steget om du redan har sparat en Publicera fil på den lokala datorn.) I den **importera prenumerationsinformation** dialogrutan klickar du på **hämta PUBLICERINGSINSTÄLLNINGARNA filen**. Om du inte ännu loggat in på ditt Azure-konto, uppmanas du att logga in. Du uppmanas sedan att spara en Azure inställningsfilen för publicering. (Du kan ignorera resulterande anvisningarna som visas på sidorna för inloggning - de som tillhandahålls av Azure portal och är avsedda för användare i Visual Studio.) Spara den på din lokala dator.
+2. (Hoppa över det här steget om du redan har sparat en publicera inställningar filen tooyour lokal dator.) I hello **importera prenumerationsinformation** dialogrutan klickar du på **hämta PUBLICERINGSINSTÄLLNINGARNA filen**. Om du inte ännu loggat in på ditt Azure-konto, kommer du att ange toolog i. Sedan uppmanas du att toosave en Azure inställningsfilen för publicering. (Du kan ignorera hello resulterande anvisningarna som visas på hello inloggning sidor - de som tillhandahålls av hello Azure-portalen och är avsedda för användare i Visual Studio.) Spara den tooyour lokal dator.
 
-3. Fortfarande i den **importera prenumerationsinformation** dialogrutan klickar du på den **Bläddra** knappen Välj publicera inställningsfilen som du sparade lokalt tidigare och klicka sedan på **öppna**.
+3. Fortfarande i hello **importera prenumerationsinformation** dialogrutan klickar du på hello **Bläddra** knappen, Välj hello Publicera fil med inställningar som du sparade lokalt tidigare och klicka sedan på **öppna**.
 
-4. Klicka på **OK** att stänga den **importera prenumerationsinformation** dialogrutan.
+4. Klicka på **OK** tooclose hello **importera prenumerationsinformation** dialogrutan.
 
-## <a name="to-create-a-new-storage-account"></a>Skapa ett nytt lagringskonto
-1. I den **Lagringskonton** dialogrutan klickar du på **Lägg till**.
+## <a name="toocreate-a-new-storage-account"></a>toocreate ett nytt lagringskonto
+1. Inom hello **Lagringskonton** dialogrutan klickar du på **Lägg till**.
 
-2. I den **lägga till Lagringskontot** dialogrutan klickar du på **ny**.
+2. Inom hello **lägga till Lagringskontot** dialogrutan klickar du på **ny**.
 
-3. I den **Lagringskonto** dialogrutan, ange värden för följande:
+3. Inom hello **Lagringskonto** dialogrutan, ange värden för hello följande:
 
    * Lagringskontonamn.
 
-   * Platsen för lagringskontot.
+   * Platsen för hello storage-konto.
 
-   * Beskrivning av lagringskontot.
+   * Beskrivning av hello storage-konto.
 
-   * Den prenumeration som lagringskontot tillhör.
+   * hello prenumeration toowhich hello lagringskontot tillhör.
 
-4. Klicka på **OK** att stänga den **Lagringskonto** dialogrutan.
+4. Klicka på **OK** tooclose hello **Lagringskonto** dialogrutan.
 
-Det kan ta flera minuter för ditt lagringskonto skapas. När den har skapats klickar du på **OK** att stänga den **lägga till Lagringskontot** dialogrutan och det nya kontot läggs till i listan över tillgängliga storage-konton.
+Det kan ta flera minuter innan din lagring konto toobe skapas. När den har skapats klickar du på **OK** tooclose hello **lägga till Lagringskontot** dialogrutan, och det nya kontot läggs toohello lista över tillgängliga storage-konton.
 
-## <a name="to-add-an-existing-storage-account-to-the-list"></a>Att lägga till ett befintligt lagringskonto i listan
-1. Om du inte redan har ett Azure storage-konto kan du skapa en genom att följa stegen i den **att skapa ett nytt avsnitt för storage-konto** ovan. (Du kan också skapa ett nytt lagringskonto på den [Azure-hanteringsportalen][Azure Management Portal].)
+## <a name="tooadd-an-existing-storage-account-toohello-list"></a>tooadd en befintlig toohello lagringskontolistan
+1. Om du inte redan har ett Azure storage-konto, skapa en genom att följa hello stegen som anges i hello **toocreate ett nytt avsnitt för storage-konto** ovan. (Du kan också skapa ett nytt lagringskonto på hello [Azure-hanteringsportalen][Azure Management Portal].)
 
-2. I den **Lagringskonton** dialogrutan klickar du på **Lägg till**.
+2. Inom hello **Lagringskonton** dialogrutan klickar du på **Lägg till**.
 
-3. I den **lägga till Lagringskontot** dialogrutan Ange värden för **namn** och **åtkomstnyckeln**. Namn och kontonyckel måste vara för ett befintligt Azure storage-konto. Använd den **lagring** avsnitt i den [Azure-hanteringsportalen] [ Azure Management Portal] att visa dina lagringskontonamn och nycklar. Din **lägga till Lagringskontot** dialogrutan ser ut ungefär så här.
+3. Inom hello **lägga till Lagringskontot** dialogrutan, ange värden för **namn** och **åtkomstnyckeln**. hello namn och kontonyckel måste vara för ett befintligt Azure storage-konto. Använd hello **lagring** avsnitt i hello [Azure-hanteringsportalen] [ Azure Management Portal] tooview lagringskontots namn och nycklar. Din **lägga till Lagringskontot** dialogrutan kommer att se liknande toohello följande.
    
    ![][ic719497]
 
-4. Klicka på **OK** att stänga den **lägga till Lagringskontot** dialogrutan.
+4. Klicka på **OK** tooclose hello **lägga till Lagringskontot** dialogrutan.
 
-## <a name="to-modify-a-storage-account-to-use-a-new-access-key"></a>Så här ändrar du ett storage-konto om du vill använda en ny snabbtangent
-1. I den **Lagringskonton** dialogrutan, klickar du på lagringen konto som du vill redigera och klicka sedan på **redigera**.
+## <a name="toomodify-a-storage-account-toouse-a-new-access-key"></a>toomodify en storage-konto toouse en ny snabbtangent
+1. Inom hello **Lagringskonton** dialogrutan klickar du på hello storage-konto du vill tooedit och klicka sedan på **redigera**.
 
-2. I den **redigera åtkomstnyckeln för Lagringskontot** dialogrutan Ändra den **åtkomstnyckeln** värde.
+2. Inom hello **redigera åtkomstnyckeln för Lagringskontot** dialogrutan Ändra hello **åtkomstnyckeln** värde.
 
-3. Klicka på **OK** att stänga den **redigera åtkomstnyckeln för Lagringskontot** dialogrutan.
+3. Klicka på **OK** tooclose hello **redigera åtkomstnyckeln för Lagringskontot** dialogrutan.
 
-## <a name="to-remove-a-storage-account-from-the-list-maintained-in-eclipse"></a>Ta bort ett lagringskonto i listan som underhålls i Eclipse
-1. I den **Lagringskonton** dialogrutan, klickar du på lagringen konto som du vill redigera och klicka sedan på **ta bort**.
+## <a name="tooremove-a-storage-account-from-hello-list-maintained-in-eclipse"></a>tooremove ett lagringskonto hello listan underhålls i Eclipse
+1. Inom hello **Lagringskonton** dialogrutan klickar du på hello storage-konto du vill tooedit och klicka sedan på **ta bort**.
 
-2. Klicka på **OK** när du uppmanas att ta bort lagringskontot.
+2. Klicka på **OK** när begärd tooremove hello storage-konto.
 
 > [!NOTE]
-> Tar bort lagringskonto via den **Lagringskonton** dialogrutan bara tar bort den från listan över storage-konton visas i Eclipse. Lagringskontot tas inte bort från din Azure-prenumeration. Dessutom kan lagringskontot visas igen i listan efter Eclipse läser information om din prenumeration.
+> Tar bort hello lagringskonto via hello **Lagringskonton** dialogrutan bara bort från hello lista med lagringskonton som visas i Eclipse. Hej lagringskontot tas inte bort från din Azure-prenumeration. Dessutom kan hello storage-konto visas igen i listan efter Eclipse laddar hello information om din prenumeration.
 > 
 > 
 
 ## <a name="see-also"></a>Se även
 [Azure Toolkit för Eclipse][Azure Toolkit for Eclipse]
 
-[Installera Azure Toolkit för Eclipse][Installing the Azure Toolkit for Eclipse] 
+[Installera hello Azure Toolkit för Eclipse][Installing hello Azure Toolkit for Eclipse] 
 
 [Skapa ett Hello World-program för Azure i Eclipse][Creating a Hello World Application for Azure in Eclipse]
 
-Mer information om hur du använder Azure med Java finns det [Azure Java Developer Center][Azure Java Developer Center].
+Mer information om hur du använder Azure med Java finns hello [Azure Java Developer Center][Azure Java Developer Center].
 
 <!-- URL List -->
 
@@ -105,8 +105,8 @@ Mer information om hur du använder Azure med Java finns det [Azure Java Develop
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
 [Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
-[What's New in the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
+[Installing hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[What's New in hello Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699552
 
 <!-- IMG List -->
 

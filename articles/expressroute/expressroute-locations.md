@@ -1,6 +1,6 @@
 ---
 title: "Anslutningsleverantörer och platser: Azure ExpressRoute | Microsoft Docs"
-description: "Den här artikeln innehåller en detaljerad översikt över platser där tjänster erbjuds och hur du ansluter till Azure-regioner. Sorteras efter anslutningsleverantör."
+description: "Den här artikeln innehåller en detaljerad översikt över platser där tjänster erbjuds och hur tooconnect tooAzure regioner. Sorteras efter anslutningsleverantör."
 services: expressroute
 documentationcenter: na
 author: cherylmc
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/17/2017
 ms.author: kaanan
-ms.openlocfilehash: c9f44dbc943e854915c4e34b4dffa2c294f7866d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: df906ae6ff4e149c9cab4aa46ab78c8dd6aa4366
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partners och peeringplatser
 
@@ -27,17 +27,17 @@ ms.lasthandoff: 08/29/2017
 > * [Leverantörer efter plats](expressroute-locations-providers.md)
 
 
-Tabellerna i den här artikeln innehåller information om ExpressRoute-anslutningsleverantörer, ExpressRoutes geografiska täckning, Microsoft-molntjänster som stöds via ExpressRoute och ExpressRoutes systemintegratörer (SI).
+hello tabeller i den här artikeln innehåller information om ExpressRoute anslutning providers, ExpressRoute geografisk omfattning, Microsoft-molntjänster som stöds för ExpressRoute- och ExpressRoute systemintegrerare (SIs).
 
 ## <a name="partners"></a>Anslutningsproviders för ExpressRoute
-ExpressRoute stöds i alla Azures regioner och platser. Följande karta innehåller en lista med Azures regioner och ExpressRoute-platser. ExpressRoute-platser avser platser där Microsoft peerkopplas med flera tjänstleverantörer.
+ExpressRoute stöds i alla Azures regioner och platser. hello följande mappning innehåller en lista över Azure-regioner och ExpressRoute-platser. ExpressRoute-platser finns i toothose där Microsoft peer-datorer med flera leverantörer.
 
 ![Platskarta][0]
 
-Du har åtkomst till Azure-tjänster i alla regioner inom en geopolitisk region, om du är ansluten till minst en ExpressRoute-plats inom den geopolitiska regionen.
+Har du åtkomst till tooAzure tjänster över alla regioner inom en geopolitiska region om du är ansluten tooat åtminstone en ExpressRoute plats i hello geopolitiska region.
 
-### <a name="azure-regions-to-expressroute-locations-within-a-geopolitical-region"></a>Azure-regioner till ExpressRoute-platser inom en geopolitisk region.
-Följande tabell innehåller en karta över Azures regioner till ExpressRoute-platser inom en geopolitisk region.
+### <a name="azure-regions-tooexpressroute-locations-within-a-geopolitical-region"></a>Azure-regioner tooExpressRoute platser inom en geopolitiska region.
+hello följande tabell ger en karta över Azure-regioner tooExpressRoute platser inom en geopolitiska region.
 
 | **Geopolitisk region** | **Azure-regioner** | **ExpressRoute-platser** |
 | --- | --- | --- |
@@ -51,7 +51,7 @@ Följande tabell innehåller en karta över Azures regioner till ExpressRoute-pl
 | **Sydkorea** |Centrala Korea, Sydkorea |Busan, Söul |
 
 ### <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Regioner och geopolitiska gränser för nationella moln
-Tabellen nedan innehåller information om regioner och geopolitiska gränser för nationella moln.
+hello tabellen nedan innehåller information om regioner och geopolitiska gränser för nationella moln.
 
 | **Geopolitisk region** | **Azure-regioner** | **ExpressRoute-platser** |
 | --- | --- | --- |
@@ -59,11 +59,11 @@ Tabellen nedan innehåller information om regioner och geopolitiska gränser fö
 | **Kina** |Norra Kina, östra Kina |Beijing, Shanghai |
 | **Tyskland** |Centrala Tyskland, östra Tyskland |Berlin, Frankfurt |
 
-Anslutningen mellan geopolitiska regioner stöds inte för standard-SKU:er i ExpressRoute. Du måste aktivera ExpressRoutes premiumtillägg som stöder global anslutning. Anslutning till nationella molnmiljöer stöds inte. Kontakta din anslutningsleverantör om detta behov uppstår.
+Anslutningen mellan geopolitiska regioner stöds inte på hello standard ExpressRoute SKU. Du behöver tooenable hello ExpressRoute premium tillägget toosupport globala anslutningen. Anslutningen toonational molnmiljöer stöds inte. Kontakta din anslutningsleverantör om detta behov uppstår.
 
 ## <a name="locations"></a>Platser för anslutningsleverantörer
 
-I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillgängliga leverantörer efter plats går du till [Tjänsteleverantörer efter plats](expressroute-locations-providers.md#locations).
+hello följande tabell visar platser av tjänstleverantören. Om du vill tooview tillgängliga providers per plats, se [tjänsteleverantörer efter plats](expressroute-locations-providers.md#locations).
 
 
 ### <a name="production-azure"></a>Produktions-Azure
@@ -139,7 +139,7 @@ I följande tabell visas platser efter tjänstleverantör. Om du vill visa tillg
 | --- | --- | --- | --- |
 | **China Telecom** |Stöds |Stöds inte |Beijing, Shanghai |
 
-Läs mer i [ExpressRoute i Kina](http://www.windowsazure.cn/home/features/expressroute/).
+Det finns fler toolearn [ExpressRoute i Kina](http://www.windowsazure.cn/home/features/expressroute/).
 
 ### <a name="germany"></a>Tyskland
 | **Tjänstleverantör** | **Microsoft Azure** | **Office 365** | **Platser** |
@@ -155,7 +155,7 @@ Läs mer i [ExpressRoute i Kina](http://www.windowsazure.cn/home/features/expres
 
 Om inte din anslutningsleverantör finns med i föregående avsnitt, kan du fortfarande skapa en anslutning.
 
-* Fråga anslutningsleverantören om de är anslutna till något av utbytena i tabellen ovan. Du kan använda följande länkar för att samla in mer information om tjänster som erbjuds av utbytesleverantörer. Flera anslutningsleverantörer är redan ansluten till Ethernet-utbyten.
+* Kontrollera med din anslutning providern toosee om de är anslutna tooany av hello utbyten i hello tabellen ovan. Du kan kontrollera hello följande länkar toogather mer information om tjänster som erbjuds av exchange-providers. Flera anslutningen providers är redan anslutet tooEthernet utbyte.
   * [Cologix](http://www.cologix.com/)
   * [Konsol](https://www.consoleconnect.com/partners/cloudsaas/)
   * [CoreSite](http://www.coresite.com/)
@@ -164,10 +164,10 @@ Om inte din anslutningsleverantör finns med i föregående avsnitt, kan du fort
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [NextDC](http://www.nextdc.com/)
   * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
-* Låt anslutningsleverantören utöka ditt nätverk till den valda peeringplatsen.
+* Ha anslutningsleverantören utöka toohello peering nätverksplats föredrar.
   * Se till att anslutningsleverantören utökar anslutningen med hög tillgänglighet så att det inte finns några enskilda problempunkter.
-* Beställ en ExpressRoute-krets med utbyte så att anslutningsleverantören kan ansluta till Microsoft.
-  * Följ stegen i [Skapa en ExpressRoute-krets](expressroute-howto-circuit-classic.md) för att konfigurera anslutningen.
+* Ordna en ExpressRoute-krets med hello exchange som anslutningsleverantören tooconnect tooMicrosoft.
+  * Följ stegen i [skapar du en ExpressRoute-krets](expressroute-howto-circuit-classic.md) tooset upp anslutningar.
 
 ## <a name="connectivity-through-additional-service-providers"></a>Anslutning med ytterligare leverantörer
 
@@ -232,10 +232,10 @@ Om inte din anslutningsleverantör finns med i föregående avsnitt, kan du fort
 | **SINET**|
 | **Surfnet, via GÉANT**|
 
-* Om din anslutningsleverantör inte finns med här kan du se om den är ansluten till någon av de ExpressRoute Exchange-partner som anges ovan.
+* Om anslutningsleverantören inte visas här kan du kontrollera toosee om de är anslutna tooany av hello ExpressRoute Exchange-Partners som anges ovan.
 
 ## <a name="expressroute-system-integrators"></a>ExpressRoute-systemintegratörer
-Att aktivera privata anslutningar så att de passar dina behov kan vara svårt, beroende på hur stort nätverk du har. Du kan använda någon av systemintegratörer som finns i följande tabell. De hjälper dig med integrationen till ExpressRoute.
+Aktivera privata anslutningen toofit kan vara en utmaning dina behov, baserat på hello skalan för nätverket. Du kan arbeta med någon av hello systemintegrerare som anges i följande tabell tooassist hello du med onboarding tooExpressRoute.
 
 | **Systemintegrator** | **Kontinent** |
 | --- | --- |
@@ -246,7 +246,7 @@ Att aktivera privata anslutningar så att de passar dina behov kan vara svårt, 
 | **[Equinix Professional Services](http://www.equinix.com/services/consulting/)** | Nordamerika |
 | **[FlexManage](http://www.flexmanage.com/cloud)** | Nordamerika |
 | **[Inframon](http://www.inframon.com/partner/microsoft/)** | Europa |
-| **[The IT Consultancy Group](http://itconsult.com.au/microsoft-expressroute)** | Australien |
+| **[hello konsulter IT-grupp](http://itconsult.com.au/microsoft-expressroute)** | Australien |
 | **[MOQdigital](http://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Australien |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | Europa (Tyskland) |
 | **[Nelite](http://nelite.com/)** | Europa |
@@ -260,7 +260,7 @@ Att aktivera privata anslutningar så att de passar dina behov kan vara svårt, 
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Mer information om ExpressRoute finns i [Vanliga frågor och svar om ExpressRoute](expressroute-faqs.md).
+* Mer information om ExpressRoute finns hello [ExpressRoute vanliga frågor och svar](expressroute-faqs.md).
 * Kontrollera att alla krav är uppfyllda. Se [ExpressRoute-krav](expressroute-prerequisites.md).
 
 <!--Image References-->

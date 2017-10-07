@@ -1,6 +1,6 @@
 ---
-title: "Scenarier och exempel för prenumerationen styrningen | Microsoft Docs"
-description: "Ger exempel på hur du implementerar styrning av Azure-prenumeration för vanliga scenarier."
+title: "aaaScenarios och exempel för prenumerationen styrningen | Microsoft Docs"
+description: "Innehåller exempel på hur tooimplement styrning av Azure-prenumeration för vanliga scenarier."
 services: azure-resource-manager
 documentationcenter: na
 author: rdendtler
@@ -14,114 +14,114 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 14ec59087b0aede76a18034f5aa93cb6ecd67a7e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f750e834519c8e64f57f87e2067801feb38b5c29
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Exempel på att implementera kodskelett Azure enterprise
-Det här avsnittet innehåller exempel på hur ett företag kan implementera rekommendationer för en [Azure enterprise kodskelett](resource-manager-subscription-governance.md). Fiktiva företaget Contoso används för att illustrera Metodtips för vanliga scenarier.
+Det här avsnittet innehåller exempel på hur ett företag kan implementera hello rekommendationer för en [Azure enterprise kodskelett](resource-manager-subscription-governance.md). Den använder fiktiva företaget Contoso tooillustrate bästa praxis för vanliga scenarier.
 
 ## <a name="background"></a>Bakgrund
-Contoso är ett globalt företag som tillhandahåller ange kedjan lösningar för kunder i allt från en modell för ”programvara som tjänst” till en paketerad modell distribueras lokalt.  De utvecklar programvara världen med betydande Utvecklingscenter i Indien, USA och Kanada.
+Contoso är ett globalt företag som tillhandahåller ange kedjan lösningar för kunder i allt från en ”programvara som tjänst” modell tooa paketerade modell distribueras lokalt.  De utvecklar programvara över hello jordglob med betydande Utvecklingscenter i Indien, hello USA och Kanada.
 
-ISV-delen av företaget är indelade i flera oberoende affärsenheter som hanterar produkter i ett betydande företag. Varje affärsenhet har egna utvecklare, projektledare och arkitekter.
+hello ISV-delen av hello företagets är indelade i flera oberoende affärsenheter som hanterar produkter i ett betydande företag. Varje affärsenhet har egna utvecklare, projektledare och arkitekter.
 
-Enterprise teknik Services ETS affärsenhet ger centraliserade IT och hanterar flera datacenter där affärsenheter värd sina program. Tillsammans med hantering av datacenter, ETS organisationen ger och hanterar centraliserad samarbete (till exempel e-post och webbplatser) och nätverk/telefoni tjänster. De kan också hantera kund-riktade arbetsbelastningar för mindre enheter som inte har operativa personal.
+hello Enterprise teknik Services ETS affärsenhet ger centraliserade IT och hanterar flera datacenter där affärsenheter värd sina program. Tillsammans med hantering av hello datacenter, hello ETS organisation ger och hanterar centraliserad samarbete (till exempel e-post och webbplatser) och nätverk/telefoni tjänster. De kan också hantera kund-riktade arbetsbelastningar för mindre enheter som inte har operativa personal.
 
-Följande personer som används i det här avsnittet:
+Hej efter personer som används i det här avsnittet:
 
-* Dave är ETS Azure-administratör.
-* Alice har Contosos Director för utveckling i affärsenheten ange kedjan.
+* Dave är hello ETS Azure-administratör.
+* Alice är Contosos Director för utveckling i hello ange kedjan affärsenhet.
 
-Contoso måste skapa en line-of-business-app och en kund-riktade app. Beslutade att köra apparna på Azure. Dave läser den [normativ prenumeration styrning](resource-manager-subscription-governance.md) avsnittet, och är nu redo att implementera rekommendationerna.
+Contoso måste toobuild line-of-business-app och en kund-riktade app. Beslutade toorun hello appar i Azure. Dave läser hello [normativ prenumeration styrning](resource-manager-subscription-governance.md) avsnittet, och är nu redo tooimplement hello rekommendationer.
 
 ## <a name="scenario-1-line-of-business-application"></a>Scenario 1: line-of-business-program
-Contoso skapar ett hanteringssystem för källa kod (BitBucket) som ska användas av utvecklare över hela världen.  Programmet använder infrastruktur som en tjänst (IaaS) som värd för och består av webbservrar och en databasserver. Utvecklare får åtkomst till servrar i utvecklingsmiljöer, men de behöver inte åtkomst till servrarna i Azure. Contoso ETS vill tillåta program ägare och team för att hantera programmet. Programmet är endast tillgängligt när Contosos företagsnätverk. Dave måste ställa in prenumerationen för det här programmet. Prenumerationen kommer också vara värd för andra developer-relaterade program i framtiden.  
+Contoso skapar en källa kod management system (BitBucket) toobe används för utvecklare hälsningsmeddelande.  hello program använder infrastruktur som en tjänst (IaaS) som värd för och består av webbservrar och en databasserver. Utvecklare får åtkomst till servrar i utvecklingsmiljöer, men de inte behöver komma åt toohello servrar i Azure. Contoso ETS önskar tooallow hello programmet ägare och team toomanage hello program. hello programmet är endast tillgängligt när Contosos företagsnätverk. Dave behöver tooset upp hello prenumerationen för det här programmet. hello prenumeration kommer också vara värd för andra developer-relaterade program i hello framtida.  
 
 ### <a name="naming-standards--resource-groups"></a>Namnge standards & resursgrupper
-Dave skapar en prenumeration för att stödja utvecklingsverktyg som är gemensamma för alla affärsenheter. Han måste skapa beskrivande namn för prenumeration och resurs grupper (för programmet och nätverk). Han skapar följande prenumeration och resurs grupper:
+Dave skapar en prenumeration toosupport utvecklingsverktyg som är gemensamma för alla hello affärsenheter. Han måste toocreate beskrivande namn för hello prenumeration och resursgrupp (för programmet hello och hello nätverk). Han skapar hello efter prenumeration och resurs grupper:
 
 | Objekt | Namn | Beskrivning |
 | --- | --- | --- |
 | Prenumeration |Contoso ETS DeveloperTools produktion |Stöder common utvecklingsverktygen |
-| Resursgrupp |rgBitBucket |Innehåller program-webbservern och databasserver |
-| Resursgrupp |rgCoreNetworks |Innehåller de virtuella nätverk och gateway för plats-till-plats-anslutning |
+| Resursgrupp |rgBitBucket |Innehåller hello programmet webbservern och databasserver |
+| Resursgrupp |rgCoreNetworks |Innehåller hello virtuella nätverk och gateway för plats-till-plats-anslutning |
 
 ### <a name="role-based-access-control"></a>Rollbaserad åtkomstkontroll
-När du har skapat sin prenumeration vill Dave se till att rätt team och programägarna kan komma åt sina resurser. Dave identifierar att varje grupp har olika krav. Han använder de grupper som har synkroniserats från Contosos lokala Active Directory (AD) till Azure Active Directory och ger åtkomst till team rätt nivå.
+När du har skapat sin prenumeration Dave vill tooensure som hello rätt team och programägarna kan komma åt sina resurser. Dave identifierar att varje grupp har olika krav. Han använder hello-grupper som har synkroniserats från Contosos lokala Active Directory (AD) tooAzure Active Directory och ger hello rätt nivå av åtkomst toohello team.
 
-Dave tilldelar följande roller för prenumerationen:
+Dave tilldelar hello följande roller för hello prenumerationen:
 
-| Roll | Tilldelad till | Beskrivning |
+| Roll | Tilldelade för| Beskrivning |
 | --- | --- | --- |
 | [Ägare](../active-directory/role-based-access-built-in-roles.md#owner) |Hanterade ID från Contosos AD |Detta ID kontrolleras med precis tid JIT-åtkomst via Contosos Identitetshantering verktyg och säkerställer att granskas fullständigt prenumeration ägare åtkomst. |
-| [Säkerhetshantering](../active-directory/role-based-access-built-in-roles.md#security-manager) |Avdelningen för informationssäkerhet och riskhantering management |Den här rollen kan du titta i Azure Security Center och status för resurser. |
-| [Nätverksdeltagare](../active-directory/role-based-access-built-in-roles.md#network-contributor) |Nätverk-teamet |Den här rollen kan Contosos nätverksteam för att hantera plats-till-plats-VPN och virtuella nätverk. |
-| *Anpassad roll* |Programmet ägare |Dave skapar en roll som ger möjlighet att ändra resurser i resursgruppen. Mer information finns i [anpassade roller i Azure RBAC](../active-directory/role-based-access-control-custom-roles.md) |
+| [Säkerhetshantering](../active-directory/role-based-access-built-in-roles.md#security-manager) |Avdelningen för informationssäkerhet och riskhantering management |Den här rollen kan användare toolook på hello Azure Security Center och hello status för hello resurser. |
+| [Nätverksdeltagare](../active-directory/role-based-access-built-in-roles.md#network-contributor) |Nätverk-teamet |Den här rollen kan Contosos nätverket team toomanage hello plats tooSite VPN och hello virtuella nätverk. |
+| *Anpassad roll* |Programmet ägare |Dave skapar en roll som ger hello möjlighet toomodify resurser inom hello resursgrupp. Mer information finns i [anpassade roller i Azure RBAC](../active-directory/role-based-access-control-custom-roles.md) |
 
 ### <a name="policies"></a>Principer
-Dave har följande krav för att hantera resurser i prenumerationen:
+Dave har följande krav för att hantera resurser i prenumerationen hello hello:
 
-* Eftersom utvecklingsverktyg stöder utvecklare över hela världen, vill inte han hindra användare från att skapa resurser i en region. Dock behöver han veta där resurserna skapas.
-* Han är berörda med kostnader. Därför kan vill han förhindra att ägare i onödan dyra virtuella datorer skapas.  
-* Eftersom det här programmet har utvecklare på flera enheter, vill han tagga varje resurs med företagsägaren enhet och program. Med hjälp av dessa taggar debiterar ETS rätt team.
+* Eftersom hello utvecklingsverktyg stöder utvecklare över hello world, vill inte han tooblock användare från att skapa resurser i en region. Dock måste han tooknow där resurserna skapas.
+* Han är berörda med kostnader. Han vill därför tooprevent programägarna från att skapa onödigt dyra virtuella datorer.  
+* Eftersom det här programmet har utvecklare på flera enheter, vill han tootag varje resurs med hello enhet och program företagsägaren. Med hjälp av dessa taggar debiterar ETS hello rätt team.
 
-Han skapar följande [Resource Manager principer](resource-manager-policy.md):
+Han skapar hello följande [Resource Manager principer](resource-manager-policy.md):
 
 | Fält | Verkan | Beskrivning |
 | --- | --- | --- |
-| location |Granska |Gransknings-och skapa resurser i en region |
+| location |Granska |Granska hello skapandet av hello resurser i en region |
 | typ |Neka |Neka G-serien virtuella datorer med skapas |
 | tags |Neka |Kräv program ägare tagg |
 | tags |Neka |Kräv kostnaden center tagg |
-| tags |Lägg till |Lägga till taggnamnet på **affärsenheten** och Taggvärde **ETS** till alla resurser |
+| tags |Lägg till |Lägga till taggnamnet på **affärsenheten** och Taggvärde **ETS** tooall resurser |
 
 ### <a name="resource-tags"></a>Resurstaggar
-Dave förstår att han måste ha specifik information om faktura för att identifiera kostnadsställe för BitBucket-implementering. Dessutom vill Dave veta alla resurser som ETS äger.
+Dave förstår att han måste toohave specifik information om hello faktura tooidentify hello kostnadsställe för hello BitBucket implementering. Dessutom vill Dave tooknow alla hello resurser som ETS äger.
 
-Han lägger till följande [taggar](resource-group-using-tags.md) till resursgrupper och resurser.
+Han lägger till följande hello [taggar](resource-group-using-tags.md) toohello resursgrupper och resurser.
 
 | Taggnamn | Taggvärdet |
 | --- | --- |
-| ApplicationOwner |Namnet på den person som hanterar det här programmet. |
-| CostCenter |Kostnadsstället på gruppen som betalar för Azure-förbrukningen. |
-| Affärsenheten |**ETS** (affärsenhet som är associerade med prenumerationen) |
+| ApplicationOwner |hello namnet på hello person som hanterar det här programmet. |
+| CostCenter |hello kostnadsställe i hello-grupp som betalar för hello Azure-förbrukningen. |
+| Affärsenheten |**ETS** (hello affärsenhet som associeras med hello) |
 
 ### <a name="core-network"></a>Kärnnätverket
-Contoso ETS information informationssäkerhet och riskhantering ledningen granskar Daves föreslagna planen för att flytta programmet till Azure. De vill se till att programmet inte exponerad mot internet.  Dave har också developer-appar som i framtiden kommer att flyttas till Azure. Dessa appar kräver offentliga gränssnitt.  Han ger både interna och externa virtuella nätverk och en säkerhetsgrupp för nätverk för att begränsa åtkomsten för att uppfylla kraven.
+hello Contoso ETS information informationssäkerhet och riskhantering management-teamet har granskat Daves föreslagna planera toomove hello programmet tooAzure. De vill tooensure hello programmet inte är exponeras toohello internet.  Dave har också developer-appar som hello framtida kommer att flyttas tooAzure. Dessa appar kräver offentliga gränssnitt.  toomeet dessa krav han ger både interna och externa virtuella nätverk och en network security toorestrict åtkomst.
 
-Han skapar följande resurser:
+Han skapar hello följande resurser:
 
 | Resurstyp | Namn | Beskrivning |
 | --- | --- | --- |
-| Virtual Network |vnInternal |Används med BitBucket-programmet och är ansluten via ExpressRoute till Contosos företagsnätverk.  Ett undernät (sbBitBucket) ger programmet med en specifik IP-adressutrymme. |
+| Virtual Network |vnInternal |Används med hello BitBucket program och är ansluten via ExpressRoute tooContoso företagsnätverket.  Ett undernät (sbBitBucket) ger hello program med en specifik IP-adressutrymme. |
 | Virtual Network |vnExternal |Tillgänglig för framtida program som kräver offentliga slutpunkter. |
-| Nätverkssäkerhetsgrupp |nsgBitBucket |Garanterar att minimeras risken för angrepp på arbetsbelastningen genom att tillåta anslutningar endast på port 443 för undernätet där programmet finns (sbBitBucket). |
+| Nätverkssäkerhetsgrupp |nsgBitBucket |Garanterar att hello minimeras risken för angrepp på arbetsbelastningen genom att tillåta anslutningar endast på port 443 för hello undernät där programmet hello bor (sbBitBucket). |
 
 ### <a name="resource-locks"></a>Resurslås
-Dave identifierar att anslutningen mellan Contosos företagsnätverket och det interna virtuella nätverket måste skyddas från wayward skript eller oavsiktlig borttagning.
+Dave identifierar att hello anslutningen från Contosos företagsnätverket toohello internt virtuellt nätverk måste skyddas från wayward skript eller oavsiktlig borttagning.
 
-Han skapar följande [resurslås](resource-group-lock-resources.md):
+Han skapar hello följande [resurslås](resource-group-lock-resources.md):
 
 | Låstypen | Resurs | Beskrivning |
 | --- | --- | --- |
-| **CanNotDelete** |vnInternal |Förhindrar att användare tar bort virtuellt nätverk eller undernät, men förhindrar inte att lägga till nya undernät. |
+| **CanNotDelete** |vnInternal |Förhindrar att användare tar bort hello virtuellt nätverk eller undernät, men förhindra inte hello lägga till nya undernät. |
 
 ### <a name="azure-automation"></a>Azure Automation
-Dave har inget att automatisera för det här programmet. Även om han skapade ett Azure Automation-konto använda inte han den först.
+Dave har inget tooautomate för det här programmet. Även om han skapade ett Azure Automation-konto använda inte han den först.
 
 ### <a name="azure-security-center"></a>Azure Security Center
-Contoso IT-tjänsthantering behöver snabbt identifiera och hantera hot. De vill också att förstå vilka problem kan finnas.  
+Contoso IT-tjänsthantering måste tooquickly identifiera och hantera hot. De vill också toounderstand vilka problem kan finnas.  
 
-För att uppfylla dessa datahanteringskrav Dave gör den [Azure Security Center](../security-center/security-center-intro.md), och ger åtkomst till rollen Security Manager.
+toofulfill dessa krav, Dave aktiverar hello [Azure Security Center](../security-center/security-center-intro.md), och ger åtkomst toohello Security Manager roll.
 
 ## <a name="scenario-2-customer-facing-app"></a>Scenario 2: kund-riktade app
-Företag position inom affärsenheten ange kedja har identifierats av olika möjligheter att öka användarnas interaktion med Contosos kunder med en kortet. Alice team måste skapa det här programmet och beslutar att Azure ökar de kan uppfylla företagets behov. Alice fungerar med Dave från ETS så här konfigurerar du två prenumerationer för utveckling och drift av det här programmet.
+hello business position inom hello ange kedjan affärsenhet har identifierats av olika affärsmöjligheter tooincrease interaktion med Contosos kunder med en kortet. Alice team måste skapa det här programmet och beslutar att Azure ökar deras möjlighet toomeet hello affärsbehov. Alice fungerar med Dave från ETS tooconfigure två prenumerationer för utveckling och drift av det här programmet.
 
 ### <a name="azure-subscriptions"></a>Azure-prenumerationer
-Dave loggar in på Azure Enterprise Portal och ser att ange kedjan avdelning redan finns.  Det här projektet är det första utvecklingsprojektet för leverans kedjan team i Azure, identifierar Dave behovet av att ett nytt konto för Alice Utvecklingsteamet.  Han skapar kontot ”R & D” för sitt team och tilldelar åtkomst till Alice. Alice loggar in via Azure portal och skapar två prenumerationer: ett för utveckling-servrar och ett för produktionsservrarna.  Hon följer de tidigare upprättad namngivning standarderna när du skapar följande prenumerationer:
+Dave loggar i toohello Azure Enterprise Portal och ser hello ange kedjan avdelningen finns redan.  Det här projektet är hello första utvecklingsprojekt för hello ange kedjan team i Azure, identifierar Dave hello behovet av att ett nytt konto för Alice Utvecklingsteamet.  Han skapar hello ”R & D” konto för sitt team och tilldelar åtkomst tooAlice. Alice loggar in via hello Azure-portalen och skapar två prenumerationer: en toohold hello development servrar och en toohold hello produktionsservrar.  Hon följer hello som tidigare har upprättats namngivning standarder när du skapar hello följande prenumerationer:
 
 | Använd prenumeration | Namn |
 | --- | --- |
@@ -129,71 +129,71 @@ Dave loggar in på Azure Enterprise Portal och ser att ange kedjan avdelning red
 | Produktion |SupplyChain Operations LoyaltyCard produktion |
 
 ### <a name="policies"></a>Principer
-Dave och Alice diskutera programmet och identifiera att det här programmet endast hanterar kunder i Nordamerika region.  Alice och hennes team du tänker använda Azures program-miljön och Azure SQL för att skapa programmet. De kan behöva skapa virtuella datorer under utvecklingen.  Alice vill se till att hennes utvecklare har de resurser som de behöver för att utforska och undersöka problem utan dra i ETS.
+Dave och Alice diskutera hello program och identifiera att det här programmet endast hanterar kunder i Nordamerika hello-region.  Alice och hennes team planera toouse Azure program-miljön och Azure SQL toocreate hello program. De kan behöva toocreate virtuella datorer under utveckling.  Anna vill tooensure som hennes utvecklare har de behöver tooexplore och undersöka problem utan dra i ETS hello-resurser.
 
-För den **development prenumeration**, de skapar följande princip:
-
-| Fält | Verkan | Beskrivning |
-| --- | --- | --- |
-| location |Granska |Granska skapa resurser i en region. |
-
-De begränsa inte typ av sku som en användare kan skapa under utveckling och de behöver inte taggar för alla resursgrupper eller resurser.
-
-För den **produktion prenumeration**, de skapar följande principer:
+För hello **development prenumeration**, de skapar hello följande princip:
 
 | Fält | Verkan | Beskrivning |
 | --- | --- | --- |
-| location |Neka |Neka skapandet av resurser utanför USA datacenter. |
+| location |Granska |Granska hello skapandet av hello resurser i en region. |
+
+Begränsa de inte hello typ av sku som en användare kan skapa under utveckling och de behöver inte taggar för alla resursgrupper eller resurser.
+
+För hello **produktion prenumeration**, de skapar hello följande principer:
+
+| Fält | Verkan | Beskrivning |
+| --- | --- | --- |
+| location |Neka |Neka hello skapandet av resurser utanför hello USA datacenter. |
 | tags |Neka |Kräv program ägare tagg |
 | tags |Neka |Kräv avdelning taggen. |
-| tags |Lägg till |Lägg till tagg i varje resursgrupp som anger produktionsmiljön. |
+| tags |Lägg till |Lägg till tagg tooeach resursgruppen som anger produktionsmiljön. |
 
-De begränsar inte typ av sku som en användare kan skapa i produktion.
+De begränsar inte hello typ av sku som en användare kan skapa i produktion.
 
 ### <a name="resource-tags"></a>Resurstaggar
-Dave förstår att han måste ha specifik information för att identifiera rätt affärsgrupper för fakturering och ägare. Han definierar resurstaggar för resursgrupper och resurser.
+Dave förstår att han måste toohave specifik information rätt affärsgrupper för tooidentify hello för fakturering och ägare. Han definierar resurstaggar för resursgrupper och resurser.
 
 | Taggnamn | Taggvärdet |
 | --- | --- |
-| ApplicationOwner |Namnet på den person som hanterar det här programmet. |
-| Avdelning |Kostnadsstället på gruppen som betalar för Azure-förbrukningen. |
-| EnvironmentType |**Produktion** (trots att prenumerationen innehåller **produktion** i namnet, inklusive den här taggen möjliggör enkel identifiering när du tittar på resurser i portalen eller på växeln.) |
+| ApplicationOwner |hello namnet på hello person som hanterar det här programmet. |
+| Avdelning |hello kostnadsställe i hello-grupp som betalar för hello Azure-förbrukningen. |
+| EnvironmentType |**Produktion** (även om hello prenumeration inkluderar **produktion** i hello namn, inklusive den här taggen möjliggör enkel identifiering när du tittar på resurser i hello-portalen eller på hello faktura.) |
 
 ### <a name="core-networks"></a>Core nätverk
-Contoso ETS information informationssäkerhet och riskhantering ledningen granskar Daves föreslagna planen för att flytta programmet till Azure. De vill säkerställa att programmet kortet korrekt isoleras och skyddas i ett DMZ-nätverk.  För att uppfylla detta krav Dave och Alice att skapa ett externt virtuellt nätverk och en säkerhetsgrupp för nätverk för att isolera kortet program från företagsnätverket Contoso.  
+hello Contoso ETS information informationssäkerhet och riskhantering management-teamet har granskat Daves föreslagna planera toomove hello programmet tooAzure. De vill tooensure som hello kortet program korrekt isoleras och skyddas i ett DMZ-nätverk.  toofulfill det här kravet Dave och Alice skapa ett externt virtuellt nätverk och en network security grupp tooisolate hello kortet programmet från hello Contoso företagsnätverk.  
 
-För den **development prenumeration**, de skapar:
-
-| Resurstyp | Namn | Beskrivning |
-| --- | --- | --- |
-| Virtual Network |vnInternal |Utvecklingsmiljö Contoso kortet fungerar och är ansluten via ExpressRoute till Contosos företagsnätverk. |
-
-För den **produktion prenumeration**, de skapar:
+För hello **development prenumeration**, de skapar:
 
 | Resurstyp | Namn | Beskrivning |
 | --- | --- | --- |
-| Virtual Network |vnExternal |Värd för kortet programmet och inte är anslutet direkt till Contosos ExpressRoute. Koden skickas via deras källkoden system direkt till PaaS-tjänster. |
-| Nätverkssäkerhetsgrupp |nsgBitBucket |Garanterar att minimeras risken för angrepp på arbetsbelastningen genom att bara tillåta inkommande kommunikation på TCP 443.  Contoso undersöker också med hjälp av en brandvägg för webbaserade program ger ytterligare skydd. |
+| Virtual Network |vnInternal |Fungerar hello Contoso kortet utvecklingsmiljö och är ansluten via ExpressRoute tooContoso företagsnätverket. |
+
+För hello **produktion prenumeration**, de skapar:
+
+| Resurstyp | Namn | Beskrivning |
+| --- | --- | --- |
+| Virtual Network |vnExternal |Värd hello kortet programmet och inte är anslutet direkt tooContoso har ExpressRoute. Koden skickas via deras källkoden system direkt toohello PaaS-tjänster. |
+| Nätverkssäkerhetsgrupp |nsgBitBucket |Garanterar att hello minimeras risken för angrepp på arbetsbelastningen genom att bara tillåta inkommande kommunikation på TCP 443.  Contoso undersöker också med hjälp av en brandvägg för webbaserade program ger ytterligare skydd. |
 
 ### <a name="resource-locks"></a>Resurslås
-Dave och Alice ger och väljer att lägga till resurslås på vissa viktiga resurser i miljön för att förhindra oavsiktlig borttagning under ett hänga kod push.
+Dave och Alice ger och bestäm tooadd resurslås på vissa hello viktiga resurser i hello miljö tooprevent oavsiktlig borttagning under ett hänga kod push.
 
-De skapar följande låset:
+De skapar hello följande Lås:
 
 | Låstypen | Resurs | Beskrivning |
 | --- | --- | --- |
-| **CanNotDelete** |vnExternal |Förhindra att användare tar bort virtuellt nätverk eller undernät. Låset innebär inte att lägga till nya undernät. |
+| **CanNotDelete** |vnExternal |tooprevent personer från att ta bort hello virtuellt nätverk eller undernät. hello Lås inte hello lägga till nya undernät. |
 
 ### <a name="azure-automation"></a>Azure Automation
-Alice och hennes Utvecklingsteamet har omfattande runbooks för att hantera miljön för det här programmet. Runbooks tillåter för tillägg/borttagning av noder för programmet och andra DevOps-uppgifter.
+Alice och hennes Utvecklingsteamet har omfattande runbooks toomanage hello miljön för det här programmet. Hej runbooks tillåter för hello tillägg/borttagning av programmet hello-noder och andra DevOps-uppgifter.
 
-Om du vill använda dessa runbooks kan [Automation](../automation/automation-intro.md).
+toouse dessa runbooks kan [Automation](../automation/automation-intro.md).
 
 ### <a name="azure-security-center"></a>Azure Security Center
-Contoso IT-tjänsthantering behöver snabbt identifiera och hantera hot. De vill också att förstå vilka problem kan finnas.  
+Contoso IT-tjänsthantering måste tooquickly identifiera och hantera hot. De vill också toounderstand vilka problem kan finnas.  
 
-För att uppfylla kraven kan Dave Azure Security Center. Han säkerställer att Azure Security Center övervakning av resurser och ger åtkomst till team DevOps och säkerhet.
+toofulfill kraven Dave aktiverar Azure Security Center. Han kontrollerar att hello Azure Security Center övervakar hello resurser och ger åtkomst toohello DevOps och säkerhet team.
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs om hur du skapar Resource Manager-mallar i [bästa praxis för att skapa mallar för Azure Resource Manager](resource-manager-template-best-practices.md).
+* toolearn om hur du skapar Resource Manager-mallar finns [bästa praxis för att skapa mallar för Azure Resource Manager](resource-manager-template-best-practices.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "Onboarding-datorer för hantering av Azure Automation DSC | Microsoft Docs"
-description: "Hur du ställer in datorer för hantering med Azure Automation DSC"
+title: "aaaOnboarding datorer för hantering av Azure Automation DSC | Microsoft Docs"
+description: "Hur toosetup datorer för hantering med Azure Automation DSC"
 services: automation
 documentationcenter: dev-center-name
 author: eslesar
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: eslesar
-ms.openlocfilehash: cc9b1ea19b4e17374d47e12f970cb333a8051559
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ef15801fec2ffea4ba62dcba2fbe9af09268e424
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Onboarding-datorer för hantering av Azure Automation DSC
 
 ## <a name="why-manage-machines-with-azure-automation-dsc"></a>Varför hantera datorer med Azure Automation DSC?
 
-Som [PowerShell Desired State Configuration](https://technet.microsoft.com/library/dn249912.aspx), Azure Automation Desired State Configuration är en enkel men kraftfull, configuration management-tjänst för DSC-noder (fysiska och virtuella datorer) i molnet eller lokalt Datacenter. Den möjliggör skalbarhet över tusentals datorer snabbt och enkelt från en central, säker plats. Du kan enkelt publicera datorer, tilldela dem deklarativ konfigurationer och visa rapporter som visar var datorn överensstämmelse till det tillstånd som du angav. Azure Automation DSC management lagret är att DSC vad Azure Automation management lagret är att PowerShell-skript. Med andra ord på samma sätt som Azure Automation kan du hantera PowerShell-skript, får du också hantera DSC-konfigurationer. Läs mer om fördelarna med att använda Azure Automation DSC i [översikt över Azure Automation DSC](automation-dsc-overview.md).
+Som [PowerShell Desired State Configuration](https://technet.microsoft.com/library/dn249912.aspx), Azure Automation Desired State Configuration är en enkel men kraftfull, configuration management-tjänst för DSC-noder (fysiska och virtuella datorer) i molnet eller lokalt Datacenter. Den möjliggör skalbarhet över tusentals datorer snabbt och enkelt från en central, säker plats. Du kan enkelt publicera datorer, tilldela dem deklarativ konfigurationer och visa rapporter som visar var datorn toohello önskad kompatibilitetstillstånd du angett. hello Azure Automation DSC management lagret är tooDSC vilka hello Azure Automation-hanteringslager är tooPowerShell skript. Med andra ord i hello samma sätt som med hjälp av Azure Automation kan du hantera PowerShell-skript, du kan också hantera DSC-konfigurationer. toolearn mer om hello fördelarna med att använda Azure Automation DSC finns [översikt över Azure Automation DSC](automation-dsc-overview.md).
 
-Azure Automation DSC kan användas för att hantera en mängd olika datorer:
+Azure Automation DSC kan vara används toomanage olika datorer:
 
 * Virtuella Azure-datorer (klassisk)
 * Virtuella Azure-datorer
@@ -33,26 +33,26 @@ Azure Automation DSC kan användas för att hantera en mängd olika datorer:
 * Fysisk virtuell Windows-datorer lokalt eller i ett moln än Azure/AWS
 * Fysisk virtuell Linux-datorer lokalt, i Azure eller i ett moln än Azure
 
-Dessutom om du inte är redo att hantera datorkonfigurationen från molnet kan Azure Automation DSC också användas som en endast rapport-slutpunkt. På så sätt kan du ange (push) önskad konfiguration via DSC lokala och visa omfattande rapportering på noden kompatibilitet med tillståndet i Azure Automation.
+Dessutom om du inte är redo toomanage datorkonfigurationen från molnet hello kan Azure Automation DSC också användas som en endast rapport-slutpunkt. Detta kan du tooset (push) önskad konfiguration via DSC lokala och visa information om omfattande reporting på noden följer hello önskad status i Azure Automation.
 
-I följande avsnitt beskrivs hur du kan publicera varje typ av dator till Azure Automation DSC.
+hello följande avsnitt beskriver hur du kan publicera varje typ av dator tooAzure Automation DSC.
 
 ## <a name="azure-virtual-machines-classic"></a>Virtuella Azure-datorer (klassisk)
 
-Med Azure Automation DSC kan du enkelt publicera virtuella Azure-datorer (klassisk) för konfigurationshantering med antingen Azure-portalen eller PowerShell. Under huven och en administratör behöver fjärråtkomst till den virtuella datorn, registrerar Azure VM Desired State Configuration-tillägget den virtuella datorn med Azure Automation DSC. Eftersom Azure VM Desired State Configuration-tillägg körs asynkront, steg att följa upp förloppet eller felsöka den finns i den [ **felsöka Azure virtuella onboarding** ](#troubleshooting-azure-virtual-machine-onboarding) avsnittet nedan.
+Med Azure Automation DSC kan du enkelt publicera virtuella Azure-datorer (klassisk) för konfigurationshantering med hello Azure-portalen eller PowerShell. Under huven hello och en administratör med tooremote i hello VM registrerar hello Azure VM Desired State Configuration-tillägget hello VM med Azure Automation DSC. Eftersom hello Azure VM Desired State Configuration-tillägg körs asynkront, steg tootrack förloppet eller felsöka den finns i hello [ **felsöka Azure virtuella onboarding** ](#troubleshooting-azure-virtual-machine-onboarding)nedan.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-I den [Azure-portalen](http://portal.azure.com/), klickar du på **Bläddra** -> **virtuella datorer (klassisk)**. Välj Windows virtuell dator som du vill publicera. Klicka på den virtuella datorns instrumentpanelen bladet **alla inställningar** -> **tillägg** -> **Lägg till** -> **Azure Automation DSC** -> **skapa**. Ange den [PowerShell DSC Local Configuration Manager värden](https://msdn.microsoft.com/powershell/dsc/metaconfig4) krävs för din användningsfall registreringsnyckel ditt Automation-konto och URL: en registrering och eventuellt en nodkonfiguration att tilldela den virtuella datorn.
+I hello [Azure-portalen](http://portal.azure.com/), klickar du på **Bläddra** -> **virtuella datorer (klassisk)**. Välj hello Windows VM som du vill tooonboard. På bladet instrumentpanelen hello virtuell dator klickar du på **alla inställningar** -> **tillägg** -> **Lägg till**  ->   **Azure Automation DSC** -> **skapa**. Ange hello [PowerShell DSC Local Configuration Manager värden](https://msdn.microsoft.com/powershell/dsc/metaconfig4) krävs för din användningsfall registreringsnyckel ditt Automation-konto och URL: en registrering och eventuellt en nod configuration tooassign toohello VM.
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_1.png)
 
-Att hitta URL: en för registrering och nyckeln för Automation-konto för att publicera datorn för att se den [ **Secure registrering** ](#secure-registration) nedan.
+URL: en för registrering av toofind hello och nyckeln för hello Automation-konto tooonboard hello dator, se hello [ **Secure registrering** ](#secure-registration) nedan.
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-# log in to both Azure Service Management and Azure Resource Manager
+# log in tooboth Azure Service Management and Azure Resource Manager
 Add-AzureAccount
 Add-AzureRmAccount
 
@@ -62,14 +62,14 @@ $ServiceName = ""
 $AutomationAccountName = ""
 $AutomationAccountResourceGroup = ""
 
-# fill in the name of a Node Configuration in Azure Automation DSC, for this VM to conform to
+# fill in hello name of a Node Configuration in Azure Automation DSC, for this VM tooconform to
 $NodeConfigName = ""
 
 # get Azure Automation DSC registration info
 $Account = Get-AzureRmAutomationAccount -ResourceGroupName $AutomationAccountResourceGroup -Name $AutomationAccountName
 $RegistrationInfo = $Account | Get-AzureRmAutomationRegistrationInfo
 
-# use the DSC extension to onboard the VM for management with Azure Automation DSC
+# use hello DSC extension tooonboard hello VM for management with Azure Automation DSC
 $VM = Get-AzureVM -Name $VMName -ServiceName $ServiceName
 
 $PublicConfiguration = ConvertTo-Json -Depth 8 @{
@@ -115,99 +115,99 @@ $VM | Update-AzureVM
 
 ## <a name="azure-virtual-machines"></a>Virtuella Azure-datorer
 
-Azure Automation DSC kan du enkelt publicera virtuella Azure-datorer för konfigurationshantering, med hjälp av Azure-portalen, Azure Resource Manager-mallar eller PowerShell. Under huven och en administratör behöver fjärråtkomst till den virtuella datorn, registrerar Azure VM Desired State Configuration-tillägget den virtuella datorn med Azure Automation DSC. Eftersom Azure VM Desired State Configuration-tillägg körs asynkront, steg att följa upp förloppet eller felsöka den finns i den [ **felsöka Azure virtuella onboarding** ](#troubleshooting-azure-virtual-machine-onboarding) avsnittet nedan.
+Azure Automation DSC kan du enkelt publicera virtuella Azure-datorer för konfigurationshantering, med hello Azure-portalen, Azure Resource Manager-mallar eller PowerShell. Under huven hello och en administratör med tooremote i hello VM registrerar hello Azure VM Desired State Configuration-tillägget hello VM med Azure Automation DSC. Eftersom hello Azure VM Desired State Configuration-tillägg körs asynkront, steg tootrack förloppet eller felsöka den finns i hello [ **felsöka Azure virtuella onboarding** ](#troubleshooting-azure-virtual-machine-onboarding)nedan.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-I den [Azure-portalen](https://portal.azure.com/), gå till Azure Automation-konto där du vill publicera virtuella datorer. Klicka på instrumentpanelen för automatisering konto, **DSC-noder** -> **lägga till Azure VM**.
+I hello [Azure-portalen](https://portal.azure.com/), navigera toohello Azure Automation-konto där du vill tooonboard virtuella datorer. Klicka på instrumentpanelen för hello Automation-konto, **DSC-noder** -> **lägga till Azure VM**.
 
-Under **Välj virtuella datorer som ska publiceras**, Välj en eller flera Azure virtuella datorer att publicera.
+Under **Välj virtuella datorer tooonboard**, Välj en eller flera Azure virtuella datorer tooonboard.
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_2.png)
 
-Under **konfigurera registreringsdata**, ange den [PowerShell DSC Local Configuration Manager värden](https://msdn.microsoft.com/powershell/dsc/metaconfig4) krävs för din användningsfall och eventuellt en nodkonfiguration att tilldela den virtuella datorn.
+Under **konfigurera registreringsdata**, ange hello [PowerShell DSC Local Configuration Manager värden](https://msdn.microsoft.com/powershell/dsc/metaconfig4) krävs för din användningsfall och eventuellt en nod configuration tooassign toohello VM.
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_3.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure Resource Manager-mallar
 
-Virtuella Azure-datorer kan distribueras och publicerats så att Azure Automation DSC via Azure Resource Manager-mallar. Se [konfigurera en virtuell dator via DSC-tillägg och Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) för en exempelmall som onboards en befintlig virtuell dator till Azure Automation DSC. Att hitta Registreringsnyckeln och URL: en registrering vidtas som indata i den här mallen finns i [ **Secure registrering** ](#secure-registration) nedan.
+Virtuella Azure-datorer kan distribueras och publicerats så tooAzure Automation DSC via Azure Resource Manager-mallar. Se [konfigurera en virtuell dator via DSC-tillägg och Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) för en exempelmall som onboards en befintlig virtuell dator tooAzure Automation DSC. toofind hello nyckel och registrering URL: en registrering vidtas som indata i den här mallen finns hello [ **Secure registrering** ](#secure-registration) nedan.
 
 ### <a name="powershell"></a>PowerShell
 
-Den [registrera AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) cmdlet kan användas för att publicera virtuella datorer i Azure-portalen via PowerShell.
+Hej [registrera AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) används tooonboard virtuella datorer i hello Azure-portalen via PowerShell kan du vara.
 
 ## <a name="amazon-web-services-aws-virtual-machines"></a>Amazon Web Services (AWS) virtuella datorer
 
-Du kan enkelt publicera Amazon Web Services virtuella datorer för konfigurationshantering av Azure Automation DSC med AWS DSC Toolkit. Du kan lära dig mer om toolkit [här](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/).
+Du kan enkelt publicera Amazon Web Services virtuella datorer för konfigurationshantering av Azure Automation DSC med hello AWS DSC Toolkit. Du kan lära dig mer om hello toolkit [här](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/).
 
 ## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>Fysisk virtuell Windows-datorer lokalt eller i ett moln än Azure/AWS
 
-Lokalt Windows-datorer och Windows-datorer i Azure-moln (till exempel Amazon Web Services) kan också vara publicerats så att Azure Automation DSC, så länge som de har utgående åtkomst till internet, via några enkla steg:
+Lokalt Windows-datorer och Windows-datorer i Azure-moln (till exempel Amazon Web Services) kan också vara publicerats så tooAzure Automation DSC, så länge som de har utgående åtkomst toohello internet, via några enkla steg:
 
-1. Kontrollera att den senaste versionen av [WMF 5](http://aka.ms/wmf5latest) installeras på datorer som du vill publicera till Azure Automation DSC.
-2. Följ anvisningarna i avsnittet [ **genererar DSC metaconfigurations** ](#generating-dsc-metaconfigurations) nedan för att skapa en mapp som innehåller nödvändiga DSC-metaconfigurations.
-3. Via fjärranslutning tillämpa PowerShell DSC-metakonfigurationen för de datorer du vill publicera. **Datorn som kommandot körs från måste ha den senaste versionen av [WMF 5](http://aka.ms/wmf5latest) installerat**:
+1. Se till att hello senaste versionen av [WMF 5](http://aka.ms/wmf5latest) är installerad på hello datorer du vill tooonboard tooAzure Automation DSC.
+2. Följ hello anvisningarna i avsnittet [ **genererar DSC metaconfigurations** ](#generating-dsc-metaconfigurations) nedan toogenerate behövs en mapp som innehåller hello DSC metaconfigurations.
+3. Tillämpa hello PowerShell DSC metakonfigurationen toohello datorer du vill tooonboard via fjärranslutning. **hello-datorn det här kommandot körs från måste ha hello senaste versionen av [WMF 5](http://aka.ms/wmf5latest) installerat**:
 
     ```powershell
     Set-DscLocalConfigurationManager -Path C:\Users\joe\Desktop\DscMetaConfigs -ComputerName MyServer1, MyServer2
     ```
 
-4. Om du inte använder PowerShell DSC-metaconfigurations via fjärranslutning, kopiera mappen metaconfigurations från steg 2 till varje dator för att publicera. Sedan anropar **Set DscLocalConfigurationManager** lokalt på varje dator som ska publiceras.
-5. Med hjälp av Azure-portalen eller cmdletar måste du kontrollera att datorerna som ska publiceras visas som DSC-noder som är registrerade i Azure Automation-konto.
+4. Om du inte använder hello PowerShell DSC metaconfigurations via fjärranslutning, kopiera hello metaconfigurations mappen från steg 2 till varje dator tooonboard. Sedan anropar **Set DscLocalConfigurationManager** lokalt på varje dator tooonboard.
+5. Med hello Azure-portalen eller cmdletar måste du kontrollera att hello datorer tooonboard nu visas som DSC-noder som är registrerade i Azure Automation-konto.
 
 ## <a name="physicalvirtual-linux-machines-on-premises-in-azure-or-in-a-cloud-other-than-azure"></a>Fysisk virtuell Linux-datorer lokalt, i Azure eller i ett moln än Azure
 
-Lokal Linux-datorer, Linux-datorer i Azure och Linux-datorer i Azure-moln kan också vara publicerats så att Azure Automation DSC, så länge som de har utgående åtkomst till internet, via några enkla steg:
+Lokal Linux-datorer, Linux-datorer i Azure, och Linux-datorer i Azure-moln kan också vara publicerats så tooAzure Automation DSC, så länge som de har utgående åtkomst toohello internet, via några enkla steg:
 
-1. Kontrollera att den senaste versionen av [PowerShell Desired State Configuration för Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) installeras på datorer som du vill publicera till Azure Automation DSC.
-2. Om den [PowerShell DSC Local Configuration Manager standardvärden](https://msdn.microsoft.com/powershell/dsc/metaconfig4) matchar din användningsfall och du vill publicera datorer så att de **både** hämtar från och rapportera till Azure Automation DSC:
+1. Se till att hello senaste versionen av [PowerShell Desired State Configuration för Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) är installerad på hello datorer du vill tooonboard tooAzure Automation DSC.
+2. Om hello [PowerShell DSC Local Configuration Manager standardvärden](https://msdn.microsoft.com/powershell/dsc/metaconfig4) matchar din användningsfall och du vill tooonboard datorer så att de **både** hämtar från och rapportera tooAzure Automation DSC:
 
-   + Använd Register.py på varje Linux-dator för att publicera till Azure Automation DSC, ska publiceras Local Configuration Manager för PowerShell DSC-standardvärden:
+   + Använd Register.py tooonboard med hello PowerShell DSC Local Configuration Manager som standard på varje Linux datorn tooonboard tooAzure Automation DSC:
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   + Registreringsnyckel och URL: en registrering för Automation-kontot finns i [ **Secure registrering** ](#secure-registration) nedan.
+   + toofind hello nyckel och registrering URL: en registrering för Automation-kontot finns hello [ **Secure registrering** ](#secure-registration) nedan.
 
-     Om PowerShell DSC Local Configuration Manager som standard **gör** **inte** matchar din användningsfall, eller om du vill publicera datorer så att de endast rapportera till Azure Automation DSC, men inte hämtar konfigurationen eller PowerShell-moduler från den, Följ steg 3-6. Annars Fortsätt direkt till steg 6.
+     Om hello PowerShell DSC Local Configuration Manager som standard **gör** **inte** matchar din användningsfall eller om du vill tooonboard datorer så att de endast rapportera tooAzure Automation DSC, men inte hämtar konfiguration eller PowerShell-moduler från den, följer du steg 3-6. Annars Fortsätt direkt toostep 6.
 
-3. Följ anvisningarna i den [ **genererar DSC metaconfigurations** ](#generating-dsc-metaconfigurations) avsnittet nedan för att skapa en mapp som innehåller nödvändiga DSC-metaconfigurations.
-4. Via fjärranslutning tillämpa PowerShell DSC-metakonfigurationen för de datorer du vill publicera:
+3. Följ anvisningarna hello i hello [ **genererar DSC metaconfigurations** ](#generating-dsc-metaconfigurations) avsnittet nedan toogenerate en mapp som innehåller hello behövs DSC metaconfigurations.
+4. Via fjärranslutning gäller hello PowerShell DSC metakonfigurationen toohello datorer du vill tooonboard:
 
     ```powershell
     $SecurePass = ConvertTo-SecureString -String "<root password>" -AsPlainText -Force
     $Cred = New-Object System.Management.Automation.PSCredential "root", $SecurePass
     $Opt = New-CimSessionOption -UseSsl -SkipCACheck -SkipCNCheck -SkipRevocationCheck
 
-    # need a CimSession for each Linux machine to onboard
+    # need a CimSession for each Linux machine tooonboard
 
     $Session = New-CimSession -Credential $Cred -ComputerName <your Linux machine> -Port 5986 -Authentication basic -SessionOption $Opt
 
     Set-DscLocalConfigurationManager -CimSession $Session -Path C:\Users\joe\Desktop\DscMetaConfigs
     ```
 
-Datorn som kommandot körs från måste ha den senaste versionen av [WMF 5](http://aka.ms/wmf5latest) installerad.
+hello-datorn det här kommandot körs från måste ha hello senaste versionen av [WMF 5](http://aka.ms/wmf5latest) installerad.
 
-1. Om du inte använda PowerShell DSC-metaconfigurations via fjärranslutning, för varje Linux-dator för att publicera, kopiera metakonfigurationen som motsvarar den datorn från mappen i steg 5 till Linux-dator. Sedan anropar `SetDscLocalConfigurationManager.py` lokalt på varje Linux-dator du vill publicera till Azure Automation DSC:
+1. Om du inte kan använda hello PowerShell DSC metaconfigurations via fjärranslutning, för varje dator tooonboard Linux kopiera hello metakonfigurationen motsvarande toothat dator från hello mapp i steg 5 till hello Linux-dator. Sedan anropar `SetDscLocalConfigurationManager.py` lokalt på varje Linux-dator du vill tooonboard tooAzure Automation DSC:
 
-   `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path to metaconfiguration file>`
+   `/opt/microsoft/dsc/Scripts/SetDscLocalConfigurationManager.py -configurationmof <path toometaconfiguration file>`
 
-2. Med hjälp av Azure-portalen eller cmdletar måste du kontrollera att datorerna som ska publiceras visas som DSC-noder som är registrerade i Azure Automation-konto.
+2. Med hello Azure-portalen eller cmdletar måste du kontrollera att hello datorer tooonboard nu visas som DSC-noder som är registrerade i Azure Automation-konto.
 
 ## <a name="generating-dsc-metaconfigurations"></a>Generera DSC metaconfigurations
 
-Att publicera Allmänt någon dator till Azure Automation DSC en [DSC-metakonfigurationen](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig) kan genereras som, när tillämpas, talar om DSC-agenten på datorn för att hämta från och/eller rapportera till Azure Automation DSC. DSC-metaconfigurations för Azure Automation DSC kan genereras med hjälp av en PowerShell DSC-konfiguration eller Azure Automation PowerShell-cmdlets.
+toogenerically publicera någon datorn tooAzure Automation DSC, en [DSC-metakonfigurationen](https://msdn.microsoft.com/en-us/powershell/dsc/metaconfig) kan genereras som, när tillämpas, visar hello DSC-agenten på hello datorn toopull från och/eller rapportera tooAzure Automation DSC. DSC-metaconfigurations för Azure Automation DSC kan genereras med hjälp av antingen en PowerShell DSC-konfiguration eller hello Azure Automation PowerShell-cmdlets.
 
 > [!NOTE]
-> DSC-metaconfigurations innehåller hemligheterna behövs till publicera en dator till ett Automation-konto för hantering. Se till att skydda alla DSC-metaconfigurations som du skapar eller tar bort dem efter användning.
+> DSC-metaconfigurations innehålla hello hemligheter behövs tooonboard dator-tooan Automation-konto för hantering. Se till att tooproperly skydda alla DSC-metaconfigurations som du skapar eller tar bort dem när du har använt.
 
 ### <a name="using-a-dsc-configuration"></a>Med hjälp av DSC-konfiguration
 
-1. Öppna PowerShell ISE som administratör på en dator i din lokala miljö. Datorn måste ha den senaste versionen av [WMF 5](http://aka.ms/wmf5latest) installerad.
-2. Kopiera följande skript lokalt. Det här skriptet innehåller en PowerShell DSC-konfiguration för att skapa metaconfigurations och ett kommando för att skapa metakonfigurationen startar.
+1. Öppna hello PowerShell ISE som administratör på en dator i din lokala miljö. hello datorn måste ha hello senaste versionen av [WMF 5](http://aka.ms/wmf5latest) installerad.
+2. Kopiera hello följande skript lokalt. Det här skriptet innehåller en PowerShell DSC-konfiguration för att skapa metaconfigurations och ett kommando tookick hello metakonfigurationen skapa.
 
     ```powershell
-    # The DSC configuration that will generate metaconfigurations
+    # hello DSC configuration that will generate metaconfigurations
     [DscLocalConfigurationManager()]
     Configuration DscMetaConfigs
     {
@@ -296,12 +296,12 @@ Att publicera Allmänt någon dator till Azure Automation DSC en [DSC-metakonfig
         }
     }
 
-    # Create the metaconfigurations
-    # TODO: edit the below as needed for your use case
+    # Create hello metaconfigurations
+    # TODO: edit hello below as needed for your use case
     $Params = @{
         RegistrationUrl = '<fill me in>';
         RegistrationKey = '<fill me in>';
-        ComputerName = @('<some VM to onboard>', '<some other VM to onboard>');
+        ComputerName = @('<some VM tooonboard>', '<some other VM tooonboard>');
         NodeConfigurationName = 'SimpleConfig.webserver';
         RefreshFrequencyMins = 30;
         ConfigurationModeFrequencyMins = 15;
@@ -309,45 +309,45 @@ Att publicera Allmänt någon dator till Azure Automation DSC en [DSC-metakonfig
         AllowModuleOverwrite = $False;
         ConfigurationMode = 'ApplyAndMonitor';
         ActionAfterReboot = 'ContinueConfiguration';
-        ReportOnly = $False;  # Set to $True to have machines only report to AA DSC but not pull from it
+        ReportOnly = $False;  # Set too$True toohave machines only report tooAA DSC but not pull from it
     }
 
-    # Use PowerShell splatting to pass parameters to the DSC configuration being invoked
+    # Use PowerShell splatting toopass parameters toohello DSC configuration being invoked
     # For more info about splatting, run: Get-Help -Name about_Splatting
     DscMetaConfigs @Params
     ```
 
-3. Fyll i registreringsnyckel och URL: en för ditt Automation-konto, samt namnen på datorerna som ska publiceras. Alla andra parametrar är valfria. Registreringsnyckel och URL: en registrering för Automation-kontot finns i [ **Secure registrering** ](#secure-registration) nedan.
-4. Om du vill att datorerna rapportera DSC statusinformation till Azure Automation DSC, men inte pull-konfiguration eller PowerShell-moduler, ange den **ReportOnly** parameter till true.
-5. Kör skriptet. Du bör nu ha en mapp med namnet **DscMetaConfigs** som innehåller PowerShell DSC-metaconfigurations för datorer i arbetskatalogen publicera (som administratör):
+3. Fyll i hello registreringsnyckel och URL: en för Automation-konto, samt hello namnen på hello datorer tooonboard. Alla andra parametrar är valfria. toofind hello nyckel och registrering URL: en registrering för Automation-kontot finns hello [ **Secure registrering** ](#secure-registration) nedan.
+4. Om du vill hello datorer tooreport DSC status information tooAzure Automation DSC, men inte pull-konfiguration eller PowerShell-moduler, ange hello **ReportOnly** parametern tootrue.
+5. Kör skriptet hello. Du bör nu ha en mapp med namnet **DscMetaConfigs** arbetskatalogen med hello PowerShell DSC metaconfigurations för hello datorer tooonboard (som administratör):
 
     ```powershell
     Set-DscLocalConfigurationManager -Path ./DscMetaConfigs
     ```
 
-### <a name="using-the-azure-automation-cmdlets"></a>Med hjälp av Azure Automation-cmdlets
+### <a name="using-hello-azure-automation-cmdlets"></a>Med hjälp av hello Azure Automation-cmdlets
 
-Om standardinställningarna PowerShell DSC Local Configuration Manager som matchar dina användningsfall och du vill publicera datorer så att de hämtar från såväl rapportera till Azure Automation DSC, ger Azure Automation-cmdlets en förenklad metoden för att skapa DSC metaconfigurations behövs:
+Om hello PowerShell DSC Local Configuration Manager standardvärden matchar din användningsfall och du vill att tooonboard datorerna så att de hämtar från såväl rapportera tooAzure Automation DSC, ger hello Azure Automation cmdlets en förenklad metoden för att skapa hello DSC metaconfigurations behövs:
 
-1. Öppna PowerShell-konsolen eller PowerShell ISE som administratör på en dator i din lokala miljö.
-2. Anslut till Azure Resource Manager med **Add-AzureRmAccount**
-3. Ladda ned PowerShell DSC-metaconfigurations för datorer som du vill ska publiceras från Automation-kontot som du vill publicera noder:
+1. Öppna hello PowerShell-konsolen eller PowerShell ISE som administratör på en dator i din lokala miljö.
+2. Ansluta tooAzure Resource Manager med **Add-AzureRmAccount**
+3. Hämta hello PowerShell DSC metaconfigurations för hello-datorer som du vill använda tooonboard från hello Automation-kontot toowhich som du vill tooonboard noder:
 
     ```powershell
-    # Define the parameters for Get-AzureRmAutomationDscOnboardingMetaconfig using PowerShell Splatting
+    # Define hello parameters for Get-AzureRmAutomationDscOnboardingMetaconfig using PowerShell Splatting
     $Params = @{
 
-        ResourceGroupName = 'ContosoResources'; # The name of the ARM Resource Group that contains your Azure Automation Account
-        AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
-        ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
+        ResourceGroupName = 'ContosoResources'; # hello name of hello ARM Resource Group that contains your Azure Automation Account
+        AutomationAccountName = 'ContosoAutomation'; # hello name of hello Azure Automation Account where you want a node on-boarded to
+        ComputerName = @('web01', 'web02', 'sql01'); # hello names of hello computers that hello meta configuration will be generated for
         OutputFolder = "$env:UserProfile\Desktop\";
     }
-    # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
+    # Use PowerShell splatting toopass parameters toohello Azure Automation cmdlet being invoked
     # For more info about splatting, run: Get-Help -Name about_Splatting
     Get-AzureRmAutomationDscOnboardingMetaconfig @Params
     ```
     
-4. Du bör nu ha en mapp med namnet ***DscMetaConfigs***, som innehåller PowerShell DSC-metaconfigurations för datorer publicera (som administratör):
+4. Du bör nu ha en mapp med namnet ***DscMetaConfigs***, som innehåller hello PowerShell DSC metaconfigurations för hello datorer tooonboard (som administratör):
     
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
@@ -355,36 +355,36 @@ Om standardinställningarna PowerShell DSC Local Configuration Manager som match
 
 ## <a name="secure-registration"></a>Säker registrering
 
-Datorer kan på ett säkert sätt publicera till en Azure Automation-konto via WMF 5 DSC registrering protokollet, vilket låter en DSC-nod att autentisera till en Pull-PowerShell DSC V2 eller Reporting server (inklusive Azure Automation DSC). Noden registrerar till servern på en **URL: en registrering**, autentiseras med hjälp av en **registreringsnyckel**. Under registreringen, DSC-nod och DSC Pull/rapportserver förhandla ett unikt certifikat för den här noden ska användas för autentisering till servern efter registreringen. Den här processen förhindrar publicerats så noder från personifiera en annan, till exempel om en nod har komprometterats och uppför medvetet. Efter registreringen nyckel för tjänstregistrering används inte för autentiseringen igen och tas bort från noden.
+Datorer kan på ett säkert sätt publicera tooan Azure Automation-konto via hello WMF 5 DSC registrering protokollet, vilket låter en DSC-nod tooauthenticate tooa PowerShell DSC V2 Pull eller Reporting server (inklusive Azure Automation DSC). hello nod registrerar toohello server på en **URL: en registrering**, autentiseras med hjälp av en **registreringsnyckel**. Under registreringen förhandla hello DSC-nod och DSC Pull/rapportserver ett unikt certifikat för den här noden toouse för autentisering toohello server efter registreringen. Den här processen förhindrar publicerats så noder från personifiera en annan, till exempel om en nod har komprometterats och uppför medvetet. Efter registreringen hello registreringsnyckel används inte för autentisering igen och tas bort från hello-nod.
 
-Du kan hämta den information som krävs för protokollet för DSC-registreringen från den **hantera nycklar** bladet i Azure preview portal. Öppna bladet genom att klicka på nyckelikonen på den **Essentials** panelen för Automation-kontot.
+Du kan hämta hello information som krävs för protokollet för hello DSC-registreringen från hello **hantera nycklar** bladet i hello Azure preview portal. Öppna bladet genom att klicka på nyckelikonen för hello på hello **Essentials** för hello Automation-konto.
 
 ![](./media/automation-dsc-onboarding/DSC_Onboarding_4.png)
 
-* URL: en för registrering är URL-fältet i bladet hantera nycklar.
-* Nyckel för tjänstregistrering är den primära åtkomstnyckeln eller sekundära åtkomstnyckeln i bladet hantera nycklar. Antingen nyckeln kan användas.
+* URL: en registrering är hello URL-fältet i hello hantera nycklar bladet.
+* Registreringsnyckel är hello primärnyckel åtkomst eller sekundära åtkomstnyckeln i bladet för hello hantera nycklar. Antingen nyckeln kan användas.
 
-För extra säkerhet kan primära och sekundära åtkomstnycklarna för ett Automation-konto kan genereras när som helst (om den **hantera nycklar** bladet) för att förhindra framtida nod registreringar med tidigare nycklar.
+För extra säkerhet kan hello primära och sekundära åtkomstnycklar för ett Automation-konto kan genereras när som helst (på hello **hantera nycklar** bladet) tooprevent framtida nod registreringar med tidigare nycklar.
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Felsökning av virtuell dator i Azure-onboarding
 
-Azure Automation DSC kan du enkelt inbyggda Windows Azure-datorer för konfigurationshantering. Under huven används Azure VM Desired State Configuration-tillägget för att registrera den virtuella datorn med Azure Automation DSC. Eftersom Azure VM Desired State Configuration-tillägg körs asynkront, spåra förloppet och felsökning av körningen kan det vara viktigt.
+Azure Automation DSC kan du enkelt inbyggda Windows Azure-datorer för konfigurationshantering. Under hello tak är hello Azure VM Desired State Configuration-tillägget används tooregister hello virtuell dator med Azure Automation DSC. Eftersom hello Azure VM Desired State Configuration-tillägg körs asynkront, kan spåra förloppet och felsökning av körningen vara viktigt.
 
 > [!NOTE]
-> En metod för onboarding av en virtuell Azure Windows-dator till Azure Automation DSC som använder Azure VM Desired State Configuration-tillägget kan ta upp till en timme att visa upp som har registrerats i Azure Automation-nod. Detta beror på att installationen av Windows Management Framework 5.0 på den virtuella datorn via Azure VM DSC-tillägg som krävs för att publicera den virtuella datorn till Azure Automation DSC.
+> En metod för onboarding som en virtuell Azure Windows-dator tooAzure Automation DSC som använder hello Azure VM Desired State Configuration-tillägget kan ta upp tooan timme för hello nod tooshow upp som har registrerats i Azure Automation. Detta är på grund av toohello installationen av Windows Management Framework 5.0 på hello VM av hello Azure VM DSC-tillägg som är nödvändiga tooonboard hello VM tooAzure Automation DSC.
 
-Tillägget i Azure-portalen går du till den virtuella datorn som publicerats så att felsöka eller visa status för Azure VM Desired State Configuration och sedan klicka -> **alla inställningar** -> **tillägg**  ->  **DSC**. Mer information kan du klicka på **visa detaljerad statusinformation om**.
+tootroubleshoot eller visa hello status hello Azure VM Desired State Configuration-tillägget i hello Azure-portalen navigera toohello VM som publicerats så, sedan klickar du på -> **alla inställningar** -> **tillägg**   ->  **DSC**. Mer information kan du klicka på **visa detaljerad statusinformation om**.
 
 [![](./media/automation-dsc-onboarding/DSC_Onboarding_5.png)](https://technet.microsoft.com/library/dn249912.aspx)
 
 ## <a name="certificate-expiration-and-reregistration"></a>Certifikatet upphör att gälla och omregistrering
 
-När du registrerar en dator som en DSC-nod i Azure Automation DSC, finns det flera skäl till varför du kanske måste registrera om noden i framtiden:
+När du registrerar en dator som en DSC-nod i Azure Automation DSC, finns det flera skäl till varför du kanske behöver tooreregister noden i hello framtida:
 
-* Varje nod förhandlar automatiskt ett unikt certifikat för autentisering som upphör att gälla efter ett år efter registrering. Protokollet PowerShell DSC-registrering kan för närvarande automatiskt förnya certifikat när de närmar sig förfallodatum, så du behöver registrera om noderna efter ett år tid. Innan du registrerar om, kontrollerar du att varje nod körs Windows Management Framework 5.0 RTM. Om en nod Autentiseringscertifikatet upphör att gälla och noden inte återregistrerade, noden kan inte kommunicera med Azure Automation och kommer att markeras Unresponsive. Omregistreringen utförs 90 dagar eller mindre från certifikatets förfallotid eller när som helst efter tidpunkt då certifikatet upphör att gälla, leder till ett nytt certifikat som genereras och används.
-* Att ändra [PowerShell DSC Local Configuration Manager värden](https://msdn.microsoft.com/powershell/dsc/metaconfig4) som angavs under registreringen av noden, till exempel ConfigurationMode. För närvarande kan värdena DSC-agenten endast ändras via omregistreringen. Det enda undantaget är nodkonfiguration tilldelad noden – här kan ändras i Azure Automation DSC direkt.
+* Varje nod förhandlar automatiskt ett unikt certifikat för autentisering som upphör att gälla efter ett år efter registrering. För närvarande hello PowerShell DSC-registreringen protokollet kan inte automatiskt att förnya certifikat när de närmar sig förfallodatum, så du måste tooreregister hello noder efter ett år tid. Innan du registrerar om, kontrollerar du att varje nod körs Windows Management Framework 5.0 RTM. Om en nod Autentiseringscertifikatet upphör att gälla och hello noden inte återregistrerade, hello noden toocommunicate med Azure Automation och markeras Unresponsive. Omregistreringen utförs 90 dagar eller mindre från hello certifikatets förfallotid eller när som helst efter hello certifikatets förfallotid leder till ett nytt certifikat som genereras och används.
+* toochange alla [PowerShell DSC Local Configuration Manager värden](https://msdn.microsoft.com/powershell/dsc/metaconfig4) som angavs under registreringen av hello-nod, till exempel ConfigurationMode. För närvarande kan värdena DSC-agenten endast ändras via omregistreringen. hello ett undantag är hello nodkonfiguration tilldelade toohello nod – här kan ändras i Azure Automation DSC direkt.
 
-Omregistreringen kan utföras på samma sätt som du har registrerat noden till en början med hjälp av onboarding-metoderna som beskrivs i det här dokumentet. Du behöver inte att avregistrera en nod från Azure Automation DSC innan du registrerar om den.
+Omregistreringen kan utföras i hello samma sätt som du har registrerat hello nod först använda någon av hello onboarding metoder som beskrivs i det här dokumentet. Du behöver inte toounregister en nod från Azure Automation DSC innan du registrerar om den.
 
 ## <a name="related-articles"></a>Relaterade artiklar
 

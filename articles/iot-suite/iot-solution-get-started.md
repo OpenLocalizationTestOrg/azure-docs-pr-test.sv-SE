@@ -1,6 +1,6 @@
 ---
 title: 'MyDriving Azure IoT-exempel: Snabbstart | Microsoft Docs'
-description: "Kom igång med en app som är en omfattande demonstration av hur du kan skapa en IoT-system med hjälp av Microsoft Azure, inklusive Stream Analytics, Machine Learning och Händelsehubbar."
+description: "Kom igång med en app som är en omfattande demonstration av hur tooarchitect en IoT-system med hjälp av Microsoft Azure, inklusive Stream Analytics, Machine Learning och Händelsehubbar."
 services: 
 documentationcenter: .net
 suite: 
@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/25/2016
 ms.author: harikm
-ms.openlocfilehash: 031b492df1f186087e7b91102cbb44f552999293
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 411b9a992deb22b915f8291d8559e2917d976b2d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="mydriving-iot-system-quick-start"></a>MyDriving IoT system: Snabbstart
-MyDriving är ett system som visar designen och implementeringen av en typisk [Sakernas Internet](iot-suite-overview.md) (IoT)-lösning som samlar in telemetri från enheter, bearbetar data i molnet och använder maskininlärning att ange en anpassningsbar svar. Demonstrationen av loggar data om din bil resor, med hjälp av data från både din mobiltelefon och ett kort som samlar in information från en bil kontrollsystem. Dessa data används för att ge feedback om formatmallen intresseväckande jämförelse med andra användare.
+MyDriving är ett system som visar hello designen och implementeringen av en typisk [Sakernas Internet](iot-suite-overview.md) (IoT)-lösning som samlar in telemetri från enheter, bearbetar data i molnet hello och tillämpar maskininlärning tooprovide ett anpassningsbar svar. hello demonstration loggar data om din bil resor, med hjälp av data från både din mobiltelefon och ett kort som samlar in information från en bil kontrollsystem. Den använder denna data tooprovide feedback på formatmallen intresseväckande jämförelse tooother användare.
 
-Det verkliga syftet med MyDriving är att komma igång med att skapa en egen IoT-lösning. Men innan som ska få igång med MyDriving själva appen--som medlem i vår test användare team. Detta ger dig en upplevelse av appen och systemet bakom det som en konsument innan du detaljerad information om arkitekturen. Den också ger en introduktion till HockeyApp, ett kall sätt att hantera dina appar alpha och beta-distributioner att testa användare.
+hello verkliga syftet med MyDriving är tooget som du startade i att skapa en egen IoT-lösning. Men innan som ska få igång med hello MyDriving själva appen--som medlem i vår test användare team. Detta ger dig en upplevelse av hello app och hello system bakom det som en konsument innan du ger dig i hello-arkitekturen. Introducerar även du tooHockeyApp kall sätt för att hantera hello alpha och beta distribution av appar tootest användarna.
 
-## <a name="use-the-mobile-experience"></a>Använd mobila upplevelsen
-Du kan använda appen MyDriving om du har en Android, iOS eller Windows 10-enhet.
+## <a name="use-hello-mobile-experience"></a>Använd hello mobila upplevelsen
+Du kan använda hello MyDriving app om du har en Android, iOS eller Windows 10-enhet.
 
 ### <a name="android-and-windows-10-mobile-installation"></a>Android och Windows 10 Mobile-installation
 På din enhet:
@@ -35,82 +35,82 @@ På din enhet:
    
    * Android: I **inställningar** > **säkerhet**, Tillåt appar från **okända källor**.
    * Windows 10: I **inställningar** > **uppdateringar** > **för utvecklare**, ange **utvecklarläge**.
-2. Ansluta till vår beta testgruppen genom att registrera sig med eller logga in på, [HockeyApp](https://rink.hockeyapp.net). HockeyApp gör det enkelt att distribuera tidigare versioner av appen för att testa användare.
+2. Ansluta till vår beta testgruppen genom att registrera sig med eller logga in på, [HockeyApp](https://rink.hockeyapp.net). HockeyApp gör det enkelt toodistribute tidig versioner av app tootest användarna.
    
-   Om du använder Windows 10 kan du använda Edge-webbläsaren.
+   Om du använder Windows 10, använda hello Edge-webbläsaren.
    
-   Om du har en Build 2016 deltagare, logga in med samma Microsoft-konto e-postmeddelandet du registrerat för konferens, genom att använda ett Microsoft-knappar. Du har redan loggat med HockeyApp.
+   Om du har en Build 2016 deltagare, logga in med hello samma Microsoft-konto e-post som har registrerats för hello konferens med någon av hello Microsoft knappar. Du har redan loggat med HockeyApp.
    
    ![HockeyApp inloggningssida](./media/iot-solution-get-started/image1.png)
-3. Hämta och installera appen från den här:
+3. Hämta och installera appen hello härifrån:
    
    * [Android](http://rink.io/spMyDrivingAndroid)
    * [Windows 10](http://rink.io/spMyDrivingUWP)
    
-   Det finns två objekt. Installera certifikatet i **betrodda personer**. Installera appen.
+   Det finns två objekt. Installera hello certifikat i **betrodda personer**. Installera sedan hello app.
 
-*Eventuella problem som startar appen på Windows 10 Mobile?* Din telefon kan vara en uppdatering eller två bakom. Kontrollera att du har de senaste uppdateringarna eller installera:
+*Eventuella problem som startar hello app på Windows 10 Mobile?* Din telefon kan vara en uppdatering eller två bakom. Kontrollera att du har fått hello senaste uppdateringar eller installera:
 
 * [Microsoft.NET.Native.Framework.1.2.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Framework.1.2.appx) 
 * [Microsoft.NET.Native.Runtime.1.1.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Runtime.1.1.appx) 
 * [Microsoft.VCLibs.ARM.14.00.appx](https://download.hockeyapp.net/packages/win10/Microsoft.VCLibs.ARM.14.00.appx)
 
 ### <a name="ios-installation"></a>iOS-installation
-Om du var Build 2016 hämta appen som en medlem i vår test-teamet på HockeyApp:
+Om du var Build 2016 hämta hello appen som en medlem i vår test-teamet på HockeyApp:
 
-1. Logga in på din iOS-enhet till [HockeyApp](https://rink.hockeyapp.net).
-   Använd någon av Microsoft-inloggning knapparna och logga in med samma Microsoft-konto e-postmeddelandet som du har registrerat med konferens. (Använd inte fälten e-post och lösenord.)
+1. På iOS-enheten, logga in för[HockeyApp](https://rink.hockeyapp.net).
+   Använd en av hello Microsoft inloggning knappar och loggar in med hello samma Microsoft-konto e-post som du har registrerat med hello konferens. (Använd inte hello fälten för e-post och lösenord.)
    
    ![HockeyApp inloggningssida](./media/iot-solution-get-started/image1.png)
-2. Välj MyDriving på HockeyApp-instrumentpanel och ladda ned den.
-3. Auktorisera betaversion från HockeyApp:
+2. Välj MyDriving hello HockeyApp instrumentpanelen och ladda ned den.
+3. Auktorisera hello betaversion från HockeyApp:
    
-   a. Gå till **inställningar** > **allmänna** > **profiler och hantering av enheter.**
+   a. Gå för**inställningar** > **allmänna** > **profiler och hantering av enheter.**
    
-   b. Förtroende för den **bitars Stadium GmbH** certifikat.
+   b. Förtroende hello **bitars Stadium GmbH** certifikat.
 
-Om du inte tar tag Build 2016, kan du skapa och distribuera appen själv:
+Om du inte tar tag Build 2016, kan du skapa och distribuera hello app själv:
 
-1. Hämta koden [från GitHub].
+1. Hämta hello koden [från GitHub].
 2. Skapa och distribuera med [med Xamarin].
 
-Mer information i den [MyDriving referenshandboken](http://aka.ms/mydrivingdocs).
+Mer information finns i hello [MyDriving referenshandboken](http://aka.ms/mydrivingdocs).
 
 ## <a name="get-an-obd-adapter-optional"></a>Hämta ett OBD-kort (valfritt)
-Detta är den del som är detta en verklig Sakernas Internet system! Du kan använda appen utan en, men det är roligt med verkligt och de är inte dyrt.
+Detta är en del av hello som gör det en verklig Sakernas Internet system! Du kan använda hello app utan ett, men det är roligt med hello verkligt och de är inte dyrt.
 
-Inbyggd diagnostik (OBD) är en funktion av bilen garaget använder för att finjustera bilen och diagnostisera udda brus och varning ljus. Om inte bilen är för stor antiquity, hittar du en socket någonstans i utrustning vanligtvis bakom en flik under instrumentpanelen. Med rätt-anslutningen kan du hämta mätvärden för motorns prestanda och gör vissa ändringar. En OBD-koppling kan köpas billigt på vanligt sätt. Ansluter med hjälp av Bluetooth- eller Wi-Fi till en app på din telefon.
+Inbyggd diagnostik (OBD) är hello funktion i bilen som hello garage använder tootune in bilen och diagnostisera udda brus och varning ljus. Om inte bilen är för stor antiquity, hittar du en socket någonstans i hello utrustning vanligtvis bakom en flik under hello instrumentpanelen. Med rätt hello-anslutningen kan du hämta mätvärden för hello motorns prestanda och gör vissa ändringar. En OBD-koppling kan köpas billigt från hello vanliga platser. Ansluter med hjälp av Bluetooth- eller Wi-Fi tooan app på din telefon.
 
-I det här fallet är det dags att ansluta bilen till molnet. Direktanslutning från OBD är att din telefon, men vår app fungerar som ett relä. En bil telemetri skickas direkt till MyDriving IoT-hubb där den bearbetas logga körda mil och utvärdera din intresseväckande stil.
+I det här fallet vi tooconnect bilen toohello molnet. hello direkt anslutning från hello OBD är tooyour telefon, men vår app fungerar som ett relä. En bil telemetri skickas raka toohello MyDriving IoT-hubb, där det är bearbetas toolog körda mil och utvärdera din intresseväckande stil.
 
-Att ansluta en OBD-enhet:
+tooconnect en OBD-enhet:
 
 1. Kontrollera att bilen har en OBD-socket.
 2. Hämta ett OBD-nätverkskort:
    
    * Om du använder en Android eller Windows phone måste ett Bluetooth-aktiverade OBD II-kort. Vi använde [BAFX produkter 34t5 Bluetooth OBDII Scan Tool].
    * Om du använder en iOS-telefoner, måste ett Wi-Fi-aktiverade OBD-kort. Vi använde [Sökningsverktyget OBDLink MX Wi-Fi: OBD-kort/diagnostik skanner].
-3. Följ instruktionerna som medföljer OBD kortet att ansluta till din telefon. Tänk på följande:
+3. Följ instruktionerna för hello som medföljer din OBD-kort tooconnect den tooyour phone. Tänk på följande hello:
    
-   * En Bluetooth-adapter måste kombineras med telefonen och på den **inställningar** sidan.
-   * En Wi-Fi-nätverkskortet ha en adress i intervallet 192.168.xxx.xxx.
+   * En Bluetooth-adapter måste kombineras med hello telefon på hello **inställningar** sidan.
+   * Wi-Fi-kort måste ha en adress i hello intervallet 192.168.xxx.xxx.
 4. Om du har flera bilar kan hämta du ett separat nätverkskort för varje (högst tre).
 
-Om du inte har ett kort OBD-appen kommer fortfarande att skicka data för platsen och hastighet från telefonens GPS-mottagare till serverdelen och ber om du vill simulera en OBD.
+Om du inte har ett OBD-kort, hello appen fortfarande skickar plats och hastighet data från hello phone GPS-mottagare toohello tillbaka avslutas och ber om du vill toosimulate en OBD.
 
-Du hittar mer information om hur appen använder data från OBD-kort och alternativ för att skapa OBD-enheten i 2.1, ”IoT-enheter” i den [MyDriving referenshandboken](http://aka.ms/mydrivingdocs).
+Du hittar mer information om hur hello appen använder data från hello OBD-kort och alternativ för att skapa OBD-enheten i 2.1, ”IoT-enheter” i hello [MyDriving referenshandboken](http://aka.ms/mydrivingdocs).
 
-## <a name="use-the-app"></a>Använd appen
-Starta appen. Det finns en inledande Snabbstart som leder dig igenom hur det fungerar.
+## <a name="use-hello-app"></a>Använda hello app
+Starta hello app. Det finns en inledande Quickstart toowalk igenom hur det fungerar.
 
 ### <a name="track-your-trips"></a>Spåra dina resor
-Knacka på posten (stort röd cirkel längst ned på skärmen) för att starta en resa och tryck på igen om du vill avsluta.
+Knacka hello poster knappen (stort röd cirkel längst hello hello-skärmen) toostart resa och igen på tooend.
 
-![Bild av knappen post för resa spårning](./media/iot-solution-get-started/image2.png)
+![Bild av hello post knapp för resa spårning](./media/iot-solution-get-started/image2.png)
 
-Varje gång du startar en resa, om det finns ingen OBD-enhet, får du en fråga om du vill använda simulatorn.
+Varje gång du startar en resa, om det finns ingen OBD-enhet, får du en fråga om du vill toouse hello simulatorn.
 
-Klicka på Stopp i slutet av en resa och du får en översikt.
+Hello slutet av en resa får tryck hello stopp-knappen, och du en sammanfattning.
 
 ![Exempel på en sammanfattande resa](./media/iot-solution-get-started/image3.png)
 
@@ -121,22 +121,22 @@ Klicka på Stopp i slutet av en resa och du får en översikt.
 ![Exempel på en profil för körning-format](./media/iot-solution-get-started/image5.png)
 
 ## <a name="send-us-your-test-feedback"></a>Skicka test-feedback
-Eftersom vi skapade MyDriving att rivstart IoT systemen vill vi verkligen veta hur det fungerar. Berätta för oss om:
+Eftersom vi skapade MyDriving toohelp rivstart IoT systemen vill vi verkligen toohear från dig om hur det fungerar. Berätta för oss om:
 
 * Du stöter på problem eller utmaningar.
-* Det finns en plats för tillägg som gör det passar bättre för ditt scenario.
-* Du hittar ett mer effektivt sätt att utföra vissa behov.
+* Det finns en plats för tillägg som gör det lämpligare tooyour scenario.
+* Du hittar ett mer effektivt sätt tooaccomplish vissa behov.
 * Du har några förslag för att förbättra MyDriving eller den här dokumentationen.
 
-Inom MyDriving själva appen, du kan använda den inbyggda HockeyApp feedback mekanismen: på iOS och Android bara ge din telefon en shake eller använda den **Feedback** kommando. Detta ska koppla en skärmbild automatiskt så att vi vet vad du pratar om. Och om det finns några olycklig krascher, HockeyApp samlar in krascher loggarna om du vill berätta om dem. Du kan också ge feedback via den [HockeyApp-portalen].
+Du kan använda hello inbyggd HockeyApp feedback mekanism i hello MyDriving app sig själv: på iOS och Android bara ge din telefon en shake eller använda hello **Feedback** kommando. Detta ska koppla en skärmbild automatiskt så att vi vet vad du pratar om. Och om det finns några olycklig krascher, HockeyApp samlar in hello krascher loggar tootell oss om dem. Du kan också ge feedback via hello [HockeyApp-portalen].
 
 Du kan också lagra en [problemet på GitHub], eller lämna en kommentar nedan (SV-oss edition).
 
-Vi hoppas att få höra från dig!
+Vi ser fram emot toohearing från dig!
 
 ## <a name="next-steps"></a>Nästa steg
-* Utforska den [MyDriving referenshandboken](http://aka.ms/mydrivingdocs) att förstå hur vi har utformat och skapat MyDriving hela systemet.
-* [Skapa och distribuera ett system med din egen](iot-solution-build-system.md) med hjälp av vår Azure Resource Manager-skript. Den [MyDriving referenshandboken](http://aka.ms/mydrivingdocs) hjälper dig också att områden där du ska göra de anpassningar.
+* Utforska hello [MyDriving referenshandboken](http://aka.ms/mydrivingdocs) toounderstand hur vi har utformat och skapat hello hela MyDriving system.
+* [Skapa och distribuera ett system med din egen](iot-solution-build-system.md) med hjälp av vår Azure Resource Manager-skript. Hej [MyDriving referenshandboken](http://aka.ms/mydrivingdocs) hjälper dig också att områden där du ska göra hello de flesta anpassningar.
 
 [från GitHub]: https://github.com/Azure-Samples/MyDriving
 [med Xamarin]: https://developer.xamarin.com/guides/ios/getting_started/installation/

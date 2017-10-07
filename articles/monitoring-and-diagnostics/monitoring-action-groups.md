@@ -1,6 +1,6 @@
 ---
-title: "Skapa och hantera åtgärdsgrupper i Azure portal | Microsoft Docs"
-description: "Lär dig hur du skapar och hanterar åtgärdsgrupper i Azure-portalen."
+title: "aaaCreate och hantera åtgärdsgrupper i hello Azure-portalen | Microsoft Docs"
+description: "Lär dig hur toocreate och hantera åtgärdsgrupper i hello Azure-portalen."
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -14,43 +14,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
-ms.openlocfilehash: ea15705bf02d9773507c6cb59f2da4c1dd0f9d77
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 97e0b22bea7787fff6856f895a7e6256c177efd9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Skapa och hantera åtgärdsgrupper i Azure-portalen
+# <a name="create-and-manage-action-groups-in-hello-azure-portal"></a>Skapa och hantera åtgärdsgrupper i hello Azure-portalen
 ## <a name="overview"></a>Översikt ##
-Den här artikeln visar hur du skapar och hanterar åtgärdsgrupper i Azure-portalen.
+Den här artikeln beskrivs hur du toocreate och hantera åtgärdsgrupper i hello Azure-portalen.
 
-Du kan konfigurera en lista med åtgärder med åtgärdsgrupper. Dessa grupper kan sedan användas när du definierar aktiviteten loggen aviseringar. Dessa grupper kan sedan återanvändas av varje aktivitet loggen aviseringen som du definierar, se till att samma åtgärder vidtas för varje gång som aktiviteten loggen avisering utlöses.
+Du kan konfigurera en lista med åtgärder med åtgärdsgrupper. Dessa grupper kan sedan användas när du definierar aktiviteten loggen aviseringar. Dessa grupper kan sedan återanvändas av varje aktivitet loggen aviseringen som du definierar, se till att hello samma åtgärder vidtas för varje gång hello loggen varning utlöses.
 
-En grupp kan ha upp till 10 för varje åtgärdstyp av. Varje åtgärd består av följande egenskaper:
+En grupp kan ha upp too10 för varje åtgärdstyp av. Varje åtgärd består av hello följande egenskaper:
 
-* **Namnet**: en unik identifierare inom åtgärdsgruppen.  
+* **Namnet**: en unik identifierare inom hello grupp.  
 * **Åtgärdstyp**: skicka ett SMS, skicka ett e-postmeddelande eller anropa en webhook.  
-* **Information om**: motsvarande phone nummer, e-postadress eller webhook URI.
+* **Information om**: hello motsvarande telefonnummer, e-postadress eller webhook URI.
 
-Information om hur du använder Azure Resource Manager-mallar för att konfigurera åtgärdsgrupper finns [åtgärd grupp Resource Manager-mallar](monitoring-create-action-group-with-resource-manager-template.md).
+Mer information om hur toouse Azure Resource Manager-mallar tooconfigure åtgärdsgrupper, se [åtgärd grupp Resource Manager-mallar](monitoring-create-action-group-with-resource-manager-template.md).
 
-## <a name="create-an-action-group-by-using-the-azure-portal"></a>Skapa en grupp med hjälp av Azure portal ##
-1. I den [portal](https://portal.azure.com)väljer **övervakaren**. Den **övervakaren** bladet konsoliderar alla dina övervakning inställningar och data i en vy.
+## <a name="create-an-action-group-by-using-hello-azure-portal"></a>Skapa en grupp med hjälp av hello Azure-portalen ##
+1. I hello [portal](https://portal.azure.com)väljer **övervakaren**. Hej **övervakaren** bladet konsoliderar alla dina övervakning inställningar och data i en vy.
 
-    ![Tjänsten ”Övervakaren”](./media/monitoring-action-groups/home-monitor.png)
-2. I den **aktivitetsloggen** väljer **åtgärdsgrupper**.
+    ![Hej ”övervakningstjänsten”](./media/monitoring-action-groups/home-monitor.png)
+2. I hello **aktivitetsloggen** väljer **åtgärdsgrupper**.
 
-    ![Fliken ”åtgärdsgrupper”](./media/monitoring-action-groups/action-groups-blade.png)
-3. Välj **Lägg till grupp**, och Fyll i fälten.
+    ![Hej ”åtgärdsgrupper” fliken](./media/monitoring-action-groups/action-groups-blade.png)
+3. Välj **Lägg till grupp**, och hello fält fylls i.
 
-    ![Kommandot ”Lägg till grupp”](./media/monitoring-action-groups/add-action-group.png)
-4. Ange ett namn i den **åtgärd gruppnamn** och ange ett namn i den **kortnamnet** rutan. Det korta namnet används i stället för en fullständig åtgärd gruppnamn när meddelanden som skickas med den här gruppen.
+    ![Hej ”Lägg till grupp” kommando](./media/monitoring-action-groups/add-action-group.png)
+4. Ange ett namn i hello **åtgärd gruppnamn** och ange ett namn i hello **kortnamnet** rutan. hello kort namn används i stället för en fullständig åtgärd gruppnamn när meddelanden som skickas med den här gruppen.
 
-      ![Dialogrutan Lägg till grupp för åtgärden ”](./media/monitoring-action-groups/action-group-define.png)
+      ![dialogrutan hello Lägg till grupp ”](./media/monitoring-action-groups/action-group-define.png)
 
-5. Den **prenumeration** rutan autofills med din aktuella prenumeration. Den här prenumerationen är den som åtgärdsgruppen sparas.
+5. Hej **prenumeration** rutan autofills med din aktuella prenumeration. Den här prenumerationen är hello något i vilken åtgärd hello-grupp har sparats.
 
-6. Välj den **resursgruppen** i åtgärdsgruppen har sparats.
+6. Välj hello **resursgruppen** där hello åtgärd spara gruppen.
 
 7. Definiera en lista med åtgärder genom att ge varje åtgärd:
 
@@ -58,19 +58,19 @@ Information om hur du använder Azure Resource Manager-mallar för att konfigure
 
     b. **Åtgärdstyp**: Välj SMS, e-post eller webhooken.
 
-    c. **Information om**: baserat på typen av, ange ett telefonnummer, e-postadress eller webhook URI.
+    c. **Information om**: baserat på hello åtgärdstyp, ange ett telefonnummer, e-postadress eller webhook URI.
 
-8. Välj **OK** att skapa åtgärdsgruppen.
+8. Välj **OK** toocreate hello grupp.
 
 ## <a name="manage-your-action-groups"></a>Hantera åtgärdsgrupper ##
-När du skapar en grupp, är det visas i den **åtgärdsgrupper** avsnitt i den **övervakaren** bladet. Välj den grupp du vill hantera att:
+När du har skapat en grupp, den är synlig i hello **åtgärdsgrupper** avsnitt i hello **övervakaren** bladet. Välj hello åtgärd du vill toomanage till:
 
 * Lägga till, redigera eller ta bort åtgärder.
-* Ta bort åtgärdsgruppen.
+* Ta bort hello grupp.
 
 ## <a name="next-steps"></a>Nästa steg ##
 * Lär dig mer om [SMS Varna beteende](monitoring-sms-alert-behavior.md).  
-* Få en [förståelse av aviseringen webhook för aktivitetslogg](monitoring-activity-log-alerts-webhook.md).  
+* Få en [förståelse av hello avisering webhook för aktivitetslogg](monitoring-activity-log-alerts-webhook.md).  
 * Lär dig mer om [hastighetsbegränsning](monitoring-alerts-rate-limiting.md) aviseringar för. 
-* Hämta en [översikt över aktivitet loggen aviseringar](monitoring-overview-alerts.md), och lära dig hur du tar emot aviseringar.  
-* Lär dig hur du [konfigurera aviseringar när ett meddelande om tjänstens hälsa är bokförd](monitoring-activity-log-alerts-on-service-notifications.md).
+* Hämta en [översikt över aktivitet loggen aviseringar](monitoring-overview-alerts.md), och lära dig hur tooreceive aviseringar.  
+* Lär dig hur för[konfigurera aviseringar när ett meddelande om tjänstens hälsa är bokförd](monitoring-activity-log-alerts-on-service-notifications.md).

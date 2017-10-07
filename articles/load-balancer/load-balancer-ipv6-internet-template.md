@@ -1,6 +1,6 @@
 ---
-title: "Distribuera en Internetriktade belastningsutjämnare med IPv6 - Azure-mall | Microsoft Docs"
-description: "Så här distribuerar du IPv6-stöd för Azure belastningsutjämnare och belastningsutjämnade virtuella datorer."
+title: "aaaDeploy mot Internet-belastningsutjämnaren med IPv6 - Azure-mall | Microsoft Docs"
+description: "Hur stöder toodeploy IPv6 Azure belastningsutjämnare och belastningsutjämnade virtuella datorer."
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2016
 ms.author: kumud
-ms.openlocfilehash: 95962833f853886476630d703c8959bad1852e50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 68b9ba874a50161243577b64c4a6d9c76b39156c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Distribuera en Internetriktade belastningsutjämnare-lösning med IPv6 med en mall
 
@@ -29,32 +29,32 @@ ms.lasthandoff: 07/11/2017
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Mall](load-balancer-ipv6-internet-template.md)
 
-En Azure belastningsutjämnare är en Layer 4-belastningsutjämnare (TCP, UDP). Belastningsutjämnaren ger hög tillgänglighet genom att distribuera inkommande trafik mellan felfria tjänstinstanser i molntjänster eller virtuella datorer i en belastningsutjämningsuppsättning. Azure belastningsutjämnare kan även presentera dessa tjänster på flera portar, flera IP-adresser eller både och.
+En Azure belastningsutjämnare är en Layer 4-belastningsutjämnare (TCP, UDP). hello belastningsutjämnare ger hög tillgänglighet genom att distribuera inkommande trafik mellan felfri tjänstinstanser i molntjänster eller virtuella datorer i en belastningen belastningsutjämnaren. Azure belastningsutjämnare kan även presentera dessa tjänster på flera portar, flera IP-adresser eller både och.
 
 ## <a name="example-deployment-scenario"></a>Exempelscenario för distribution
 
-Följande diagram illustrerar nätverkslösning för belastningsutjämning som distribueras med hjälp av mallen exempel som beskrivs i den här artikeln.
+hello följande diagram illustrerar hello nätverkslösning för belastningsutjämning som distribueras med hjälp av hello exempelmall som beskrivs i den här artikeln.
 
 ![Belastningsutjämningsscenario](./media/load-balancer-ipv6-internet-template/lb-ipv6-scenario.png)
 
-I det här scenariot skapar du följande Azure-resurser:
+I det här scenariot skapar du hello följande Azure-resurser:
 
 * ett virtuellt nätverksgränssnitt för varje virtuell dator med både IPv4 och IPv6-adresser som tilldelats
 * en Internetriktade belastningsutjämnare med en IPv4 och IPv6-offentlig IP-adress
-* två läsa in belastningsutjämning regler för att mappa offentliga VIP till privata slutpunkter
-* en Tillgänglighetsuppsättning med två virtuella datorer
+* två läsa in belastningsutjämning regler toomap hello offentliga VIP toohello privata slutpunkter
+* en Tillgänglighetsuppsättning som innehåller hello två virtuella datorer
 * två virtuella datorer (VM)
 
-## <a name="deploying-the-template-using-the-azure-portal"></a>Distribuera mallen med hjälp av Azure portal
+## <a name="deploying-hello-template-using-hello-azure-portal"></a>Distribuera hello mallen med hjälp av hello Azure-portalen
 
-Den här artikeln refererar till en mall som har publicerats i den [Azure Quickstart mallar](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) gallery. Du kan hämta en mall från galleriet eller starta distributionen i Azure direkt från galleriet. Den här artikeln förutsätter att du har hämtat mallen till den lokala datorn.
+Den här artikeln refererar till en mall som har publicerats i hello [Azure Quickstart mallar](https://azure.microsoft.com/documentation/templates/201-load-balancer-ipv6-create/) gallery. Du kan hämta hello mallen från galleriet hello eller starta hello distribution i Azure direkt från hello-galleriet. Den här artikeln förutsätter att du har hämtat hello mallen tooyour lokal dator.
 
-1. Öppna Azure-portalen och logga in med ett konto som har behörighet att skapa virtuella datorer och nätverksresurser i en Azure-prenumeration. Om du inte använder befintliga resurser, måste kontot också behörighet att skapa en resursgrupp och ett lagringskonto.
-2. Klicka på ”+ ny” från menyn och anger ”mall” i sökrutan. Välj ”malldistribution” i sökresultatet.
+1. Öppna hello Azure-portalen och logga in med ett konto som har behörigheter toocreate virtuella datorer och nätverksresurser i en Azure-prenumeration. Även om du inte använder befintliga resurser hello kontot måste behörighet toocreate en resursgrupp och ett lagringskonto.
+2. Klicka på ”+ ny” från hello-menyn och ange ”mall” i sökrutan för hello sedan. Välj ”malldistribution” hello sökresultat.
 
     ![lb-ipv6-portalen – steg 2](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step2.png)
 
-3. I den allt bladet, klickar du på ”malldistribution”.
+3. Hej allt i bladet, klickar du på ”malldistribution”.
 
     ![lb-ipv6-portalen – steg 3](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step3.png)
 
@@ -62,73 +62,73 @@ Den här artikeln refererar till en mall som har publicerats i den [Azure Quicks
 
     ![lb-ipv6-portal-step4](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step4.png)
 
-5. Klicka på ”Redigera mallen”. Ta bort det befintliga innehållet och kopiera och klistra in i hela innehållet i mallfilen (som innehåller början och sluta {}) och sedan klicka på ”Spara”.
+5. Klicka på ”Redigera mallen”. Hello befintliga innehållet tas bort och kopiera och klistra in i hello hela innehållet i hello mallfilen (tooinclude hello start och sluta {}), klicka på ”Spara”.
 
     > [!NOTE]
-    > Om du använder Microsoft Internet Explorer när du klistrar du in visas en dialogruta där du ombeds att tillåta åtkomst till Urklipp. Klicka på ”Tillåt åtkomst”.
+    > Om du använder Microsoft Internet Explorer när du klistrar du in visas en dialogruta där du tooallow åtkomst toohello Urklipp. Klicka på ”Tillåt åtkomst”.
 
     ![lb-ipv6-portal-step5](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step5.png)
 
-6. Klicka på ”Redigera parametrar”. Ange värden för varje riktlinjerna i avsnittet mallen parametrar i bladet parametrar och sedan på ”Spara” för att stänga bladet parametrar. Välj din prenumeration, en befintlig resursgrupp eller skapa en anpassad distribution-bladet. Om du skapar en resursgrupp, väljer du en plats för resursgruppen. Klicka sedan på **juridiska villkor**, klicka på **inköp** för de juridiska villkoren. Azure börjar distribuera resurserna. Det tar flera minuter att distribuera alla resurser.
+6. Klicka på ”Redigera parametrar”. Ange hello-värden per hello vägledning i hello mallsektion parametrar i hello-bladet parametrar och sedan på ”Spara” tooclose hello parametrar bladet. Välj din prenumeration, en befintlig resursgrupp eller skapa en hello anpassad distribution-bladet. Om du skapar en resursgrupp, väljer du en plats för hello resursgruppen. Klicka sedan på **juridiska villkor**, klicka på **inköp** för hello juridiska villkor. Azure börjar distribuera hello resurser. Det tar flera minuter toodeploy alla hello-resurser.
 
     ![lb-ipv6-portal-step6](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step6.png)
 
-    Mer information om dessa parametrar finns i [mallparametrar och variabler](#template-parameters-and-variables) senare i den här artikeln.
+    Mer information om dessa parametrar finns hello [mallparametrar och variabler](#template-parameters-and-variables) senare i den här artikeln.
 
-7. Klicka på Bläddra om du vill se de resurser som skapas av mallen, bläddra nedåt i listan tills du se ”resursgrupper” och klickar sedan.
+7. toosee hello resurser som skapats av hello mallen klickar du på Bläddra, bläddrar du nedåt hello listan tills du se ”resursgrupper” och sedan klicka på den.
 
     ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 
-8. Klicka på namnet på resursgruppen som du angav i steg 6 på resursbladet grupper. Du kan se en lista över alla resurser som har distribuerats. Om alla gått bra ska det stå ”Succeeded” under ”senaste distribution”. Om inte, kan du kontrollera att det konto du använder har behörighet att skapa de nödvändiga resurserna.
+8. Hello resursbladet till grupper, klicka på hello namnet på hello resursgrupp som du angav i steg 6. Du kan se en lista över alla hello-resurser som har distribuerats. Om alla gått bra ska det stå ”Succeeded” under ”senaste distribution”. Om inte, kontrollera att hello kontot du använder har behörighet toocreate hello nödvändiga resurser.
 
     ![lb-ipv6-portal-step8](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step8.png)
 
     > [!NOTE]
-    > Om du bläddrar resursgrupperna omedelbart när du har slutfört steg 6 Visa ”senaste distribution” status för ”Deploying” medan resurserna som distribueras.
+    > Om du bläddrar resursgrupperna omedelbart när du har slutfört steg 6 visas hello status för ”distribution” för ”senaste distribution” medan hello resurser distribueras.
 
-9. Klicka på ”myIPv6PublicIP” i listan över resurser. Du kan se att det finns en IPv6-adress under IP-adress och att dess DNS-namn är du det angivna värdet för parametern dnsNameforIPv6LbIP i steg 6. Den här resursen är offentliga IPv6-adress och värddatornamn namnet som har åtkomst till Internet-klienter.
+9. Klicka på ”myIPv6PublicIP” i hello lista över resurser. Du kan se att det finns en IPv6-adress under IP-adress och att DNS-namnet är hello-värde som du angav för hello dnsNameforIPv6LbIP parameter i steg 6. Den här resursen är hello offentliga IPv6-adress och värddatornamn namn som är tillgänglig tooInternet-klienter.
 
     ![lb-ipv6-portal-step9](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step9.png)
 
 ## <a name="validate-connectivity"></a>Kontrollera anslutning
 
-När mallen har distribuerats kan du verifiera anslutningen genom att slutföra följande uppgifter:
+När hello mallen har distribuerats verifiera du anslutningsbarhet genom att slutföra hello följande uppgifter:
 
-1. Logga in på Azure-portalen och Anslut till var och en av de virtuella datorerna som skapats med mallen distribueras. Om du har distribuerat en Windows Server-VM köra ipconfig/alla från en kommandotolk. Du ser att de virtuella datorerna har både IPv4 och IPv6-adresser. Om du har distribuerat virtuella Linux-datorer måste du konfigurera Linux-operativsystem för att ta emot dynamiska IPv6-adresser med hjälp av anvisningarna för Linux-distribution.
-2. Initiera en anslutning till den offentliga IPv6-adressen för belastningsutjämnaren från en klient för IPv6-Internet-anslutna. Du kan installera en webbserver som Microsoft Internet Information Services (IIS) på varje virtuell dator för att bekräfta att belastningsutjämnaren belastningsutjämning mellan de två virtuella datorerna. Standardwebbsidan på varje server kan innehålla text ”Server0” eller ”Server1” för att identifiera den. Öppna en webbläsare på en IPv6-Internet-ansluten klient och bläddra till värdnamnet för parametern dnsNameforIPv6LbIP av belastningsutjämnare för att bekräfta slutpunkt till slutpunkt IPv6-anslutning till varje virtuell dator. Om du bara ser webbsidan från bara en server kan du behöva rensa webbläsarens cacheminne. Öppna flera privata webbläsarsessioner. Du bör se svar från varje server.
-3. Initiera en anslutning till den offentliga IPv4-adressen för belastningsutjämnaren från en klient för IPv4-Internet-anslutna. För att bekräfta att belastningsutjämnaren är två virtuella datorer för belastningsutjämning, kan du testa med hjälp av IIS, enligt anvisningarna i steg 2.
-4. Starta en utgående anslutning till en IPv6- eller IPv4-ansluten till Internet-enhet från varje virtuell dator. I båda fallen är käll-IP som setts av målenheten den offentliga IPv4- eller IPv6-adressen för belastningsutjämnaren.
+1. Logga in toohello Azure-portalen och ansluta tooeach av hello virtuella datorer som skapats av hello malldistribution. Om du har distribuerat en Windows Server-VM köra ipconfig/alla från en kommandotolk. Ser du att hello virtuella datorer både IPv4 och IPv6-adresser. Om du har distribuerat virtuella Linux-datorer måste tooconfigure hello Linux OS tooreceive dynamisk IPv6-adresser med hjälp av hello anvisningarna för Linux-distribution.
+2. Initiera en anslutning toohello offentliga IPv6-adressen för belastningsutjämnaren hello från en klient för IPv6-Internet-anslutna. tooconfirm som hello belastningsutjämnaren belastningsutjämning mellan hello två virtuella datorer, kan du installera en webbserver som Microsoft Internet Information Services (IIS) på varje hello virtuella datorer. hello standardwebbsidan på varje server kan innehålla hello text ”Server0” eller ”Server1” toouniquely identifieras. Öppna en webbläsare på en IPv6-Internet-ansluten klient och bläddra toohello värdnamn som du angav för hello dnsNameforIPv6LbIP parameter av hello belastningen belastningsutjämnaren tooconfirm slutpunkt till slutpunkt IPv6-anslutning tooeach VM. Om du bara ser hello webbsida från en enda server kanske du måste tooclear webbläsarens cacheminne. Öppna flera privata webbläsarsessioner. Du bör se svar från varje server.
+3. Initiera anslutning toohello offentlig IPv4-adress för hello belastningsutjämnare i en IPv4-Internet-ansluten klient. tooconfirm som hello belastningsutjämnare är belastningsutjämning hello två virtuella datorer, kan du testa med hjälp av IIS, enligt anvisningarna i steg 2.
+4. Starta en utgående anslutning tooan IPv6 eller en IPv4-anslutna Internet-enhet från varje virtuell dator. I båda fallen kan är ses av hello målenheten hello käll-IP hello offentliga IPv4- eller IPv6-adressen för belastningsutjämnaren hello.
 
 > [!NOTE]
-> ICMP för både IPv4 och IPv6 är blockerad i Azure-nätverk. Därför ICMP-verktyg som pinga alltid att misslyckas. Använda ett TCP-alternativ, till exempel TCPing eller PowerShell Test-NetConnection cmdlet för att testa anslutningen. Observera att IP-adresser som visas i diagrammet är exempel på värden som kan visas. Eftersom IPv6-adresser tilldelas dynamiskt adresserna visas varierar och kan variera beroende på region. Dessutom är det vanligt för offentliga IPv6-adressen på belastningsutjämnaren ska börja med ett annat prefix än privata IPv6-adresser i backend-poolen.
+> ICMP för både IPv4 och IPv6 är blockerad i hello Azure-nätverk. Därför ICMP-verktyg som pinga alltid att misslyckas. tootest anslutning, använda en TCP-alternativ, till exempel TCPing eller hello PowerShell Test-NetConnection cmdlet. Observera att hello IP-adresser som visas i diagram hello är exempel på värden som kan visas. Eftersom hello IPv6-adresser tilldelas dynamiskt hello-adresser som visas varierar och kan variera beroende på region. Dessutom är det vanligt för hello offentliga IPv6-adress på hello load balancer toostart med ett annat prefix än hello privata IPv6-adresser i hello backend-adresspool.
 
 ## <a name="template-parameters-and-variables"></a>Mallparametrar och variabler
 
-En Azure Resource Manager-mall innehåller flera variabler och parametrar som du kan anpassa efter dina behov. Variabler används för fasta värden som du inte vill att en användare kan ändra. Parametrar som används för värden som du vill att en användare att ange när mallen distribueras. Exempel mallen har konfigurerats för det scenario som beskrivs i den här artikeln. Du kan anpassa efter behoven för din miljö.
+En Azure Resource Manager-mall innehåller flera variabler och parametrar som du kan anpassa tooyour behov. Variabler används för fasta värden som du inte vill att en användare toochange. Parametrar som används för värden som du vill tooprovide en användare när du distribuerar hello mallen. hello exempel mallen har konfigurerats för hello-scenariot som beskrivs i den här artikeln. Du kan anpassa den här tooneeds i din miljö.
 
-Exempel-mallen som används i den här artikeln innehåller följande variabler och parametrar:
+hello exempel mall som används i den här artikeln innehåller hello följande parametrar och variabler:
 
 | Parametern / Variable | Anteckningar |
 | --- | --- |
-| adminUsername |Ange namnet på det administratörskonto som används för att logga in på de virtuella datorerna med. |
-| adminPassword |Ange lösenordet för det administratörskonto som används för att logga in på de virtuella datorerna med. |
-| dnsNameforIPv4LbIP |Ange DNS-värdnamn som du vill tilldela som det offentliga namnet på belastningsutjämnaren. Det här namnet matchar belastningsutjämnarens offentlig IPv4-adress. Namnet måste vara gemener och matchar regex: ^ [a-z][a-z0-9-]{1,61}[a-z0-9]$. |
-| dnsNameforIPv6LbIP |Ange DNS-värdnamn som du vill tilldela som det offentliga namnet på belastningsutjämnaren. Det här namnet matchar belastningsutjämnarens offentliga IPv6-adress. Namnet måste vara gemener och matchar regex: ^ [a-z][a-z0-9-]{1,61}[a-z0-9]$. Det kan vara samma namn som IPv4-adress. När en klient skickar en DNS-fråga för det här namnet Azure returnerar registrerar A- och AAAA när namnet delas. |
-| vmNamePrefix |Ange namnprefixet VM. Mallen till en siffra (0, 1, etc.) med namnet när de virtuella datorerna har skapats. |
-| nicNamePrefix |Ange namnprefixet network interface. Mallen till en siffra (0, 1, etc.) med namnet när nätverksgränssnitten skapas. |
-| storageAccountName |Ange namnet på ett befintligt lagringskonto eller ange namnet på en ny skapas av mallen. |
-| availabilitySetName |Ange sedan namnet på tillgänglighetsuppsättningen som ska användas med de virtuella datorerna |
-| addressPrefix |Adressprefixet som används för att definiera adressintervall för det virtuella nätverket |
-| subnetName |Namnet på undernät i skapas för VNet |
-| subnetPrefix |Adressprefixet som används för att definiera adressintervallet i undernätet |
-| vnetName |Ange namn för det VNet som används av de virtuella datorerna. |
-| ipv4PrivateIPAddressType |Allokeringsmetoden används för den privata IP-adressen (statisk eller dynamisk) |
-| ipv6PrivateIPAddressType |Allokeringsmetoden som används för privat IP-adress (dynamisk). IPv6 har endast stöd för dynamisk allokering. |
-| numberOfInstances |Antalet instanser för Utjämning av nätverksbelastning distribueras av mallen |
-| ipv4PublicIPAddressName |Ange DNS-namn som du vill använda för att kommunicera med den offentliga IPv4-adressen för belastningsutjämnaren. |
-| ipv4PublicIPAddressType |Allokeringsmetoden används för den offentliga IP-adressen (statisk eller dynamisk) |
-| Ipv6PublicIPAddressName |Ange DNS-namn som du vill använda för att kommunicera med den offentliga IPv6-adressen för belastningsutjämnaren. |
-| ipv6PublicIPAddressType |Allokeringsmetod som används för den offentliga IP-adressen (dynamisk). IPv6 har endast stöd för dynamisk allokering. |
-| lbName |Ange namnet på belastningsutjämnaren. Det här namnet visas i portalen eller används för att referera till den med CLI eller PowerShell-kommando. |
+| adminUsername |Ange hello namnet på hello administratörskonto används toosign i toohello virtuella datorer med. |
+| adminPassword |Ange hello lösenordet för administratörskontot för hello används toosign i toohello virtuella datorer med. |
+| dnsNameforIPv4LbIP |Ange hello DNS-värdnamn som du vill använda tooassign som hello offentliga namn hello belastningsutjämnaren. Det här namnet matchar toohello belastningsutjämnaren offentlig IPv4-adress. hello-namnet måste vara gemener och matchar hello regex: ^ [a-z][a-z0-9-]{1,61}[a-z0-9]$. |
+| dnsNameforIPv6LbIP |Ange hello DNS-värdnamn som du vill använda tooassign som hello offentliga namn hello belastningsutjämnaren. Det här namnet matchar toohello belastningsutjämnarens offentliga IPv6-adress. hello-namnet måste vara gemener och matchar hello regex: ^ [a-z][a-z0-9-]{1,61}[a-z0-9]$. Detta kan vara hello samma namn som hello IPv4-adress. När en klient skickar returnerar en DNS-fråga för Azure både hello A och AAAA-poster när hello namnet delas. |
+| vmNamePrefix |Ange hello VM prefixet. hello mallen till en siffra (0, 1, etc.) toohello namn när hello virtuella datorer skapas. |
+| nicNamePrefix |Ange hello nätverksprefixet gränssnittet namn. hello mallen till en siffra (0, 1, etc.) toohello namn när hello nätverksgränssnitt skapas. |
+| storageAccountName |Ange hello namnet på ett befintligt lagringskonto eller hello namnet på en ny en toobe som skapats av hello mallen. |
+| availabilitySetName |Ange namnet på hello tillgänglighet ställa in toobe som används med hello virtuella datorer |
+| addressPrefix |hello-adressprefix används toodefine hello adressintervall hello virtuellt nätverk |
+| subnetName |hello namnet på hello undernät i skapas för hello VNet |
+| subnetPrefix |hello-adressprefix används toodefine hello adressintervall hello undernät |
+| vnetName |Ange hello namn för hello VNet som används av hello virtuella datorer. |
+| ipv4PrivateIPAddressType |hello allokeringsmetod som används för hello privata IP-adress (statisk eller dynamisk) |
+| ipv6PrivateIPAddressType |hello allokeringsmetod som används för hello privata IP-adress (dynamisk). IPv6 har endast stöd för dynamisk allokering. |
+| numberOfInstances |hello antalet belastningen belastningsutjämnade instanser som distribuerats av hello mall |
+| ipv4PublicIPAddressName |Ange hello DNS-namn som du vill toouse toocommunicate med hello offentliga IPv4-adress för hello belastningsutjämnare. |
+| ipv4PublicIPAddressType |hello allokeringsmetod för hello offentlig IP-adress (statisk eller dynamisk) |
+| Ipv6PublicIPAddressName |Ange hello DNS-namn som du vill toouse toocommunicate med hello offentliga IPv6-adressen för hello belastningsutjämnaren. |
+| ipv6PublicIPAddressType |hello allokeringsmetod för hello offentlig IP-adress (dynamisk). IPv6 har endast stöd för dynamisk allokering. |
+| lbName |Ange hello namn hello belastningsutjämnaren. Det här namnet visas på portalen hello eller används för att referera tooit med CLI eller PowerShell-kommando. |
 
-De återstående variablerna i mallen innehåller härledda värden som tilldelas när Azure skapar resurser. Ändra inte dessa variabler.
+hello återstående variabler i hello mallen innehåller härledda värden som tilldelas när Azure skapar hello resurser. Ändra inte dessa variabler.

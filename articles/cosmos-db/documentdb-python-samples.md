@@ -1,5 +1,5 @@
 ---
-title: "DocumentDB API Python-exempel för Azure Cosmos DB | Microsoft Docs"
+title: aaaDocumentDB API Python exempel Azure Cosmos DB | Microsoft Docs
 description: "Hitta Python exemplen på github för vanliga uppgifter i Azure Cosmos-databasen, inklusive CRUD-åtgärder."
 keywords: Python-exempel
 services: cosmos-db
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2016
 ms.author: moderakh
-ms.openlocfilehash: d1577eeeb8fe8007394431ce70a1c7a6ee61776b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d8f240782b0997f2d32b68d310dc6f4ff6cb36d0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python-exempel
 > [!div class="op_single_selector"]
@@ -30,25 +30,25 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Exempel lösningar som utför CRUD-åtgärder och andra vanliga åtgärder på Azure DB som Cosmos-resurser som ingår i den [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples) GitHub-lagringsplatsen. Den här artikeln innehåller:
+Exempel lösningar som utför CRUD-åtgärder och andra vanliga åtgärder på Azure DB som Cosmos-resurser som ingår i hello [azure-documentdb-python](https://github.com/Azure/azure-documentdb-python/tree/master/samples) GitHub-lagringsplatsen. Den här artikeln innehåller:
 
-* Länkar till aktiviteter i varje Python-exempel projektfiler. 
-* Länkar till relaterade API: N referera till innehåll.
+* Länkar toohello aktiviteter i varje hello Python exempel projektfiler. 
+* Länkar toohello relaterat innehåll för API-referens.
 
 **Förutsättningar**
 
-1. Du behöver ett Azure-konto du använder dessa Python-exempel:
-   * Du kan [kostnadsfritt registrera ett Azure-konto](https://azure.microsoft.com/pricing/free-trial/): du får då krediter som kan användas för att pröva Azure-betaltjänster och när du har använt upp dem så kan du behålla kontot och använda kostnadsfria Azure-tjänster, till exempel Websites. Ditt kreditkort kommer aldrig att debiteras om du inte specifikt ändrar dina inställningar och ber om det.
+1. Du behöver ett Azure-konto toouse exemplen Python:
+   * Du kan [öppna ett Azure-konto gratis](https://azure.microsoft.com/pricing/free-trial/): du får kredit du kan använda tootry ut betald Azure-tjänster och även när de används upp du kan behålla hello kontot och använda kostnadsfria Azure-tjänster, till exempel Websites. Ditt kreditkort kommer aldrig att debiteras, såvida du inte uttryckligen ändrar dina inställningar och be toobe debiteras.
      * Du kan [aktivera Visual Studio-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/): din Visual Studio-prenumeration ger dig krediter varje månad som du kan använda för Azure-betaltjänster.
-2. Du måste också den [Python SDK](documentdb-sdk-python.md). 
+2. Du måste också hello [Python SDK](documentdb-sdk-python.md). 
    
    > [!NOTE]
-   > Varje exempel är självständigt, den konfigurerar sig själv och rensar efter sig själv. Därför exemplen utfärda flera anrop till [document_client. CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html). Varje gång det är klart prenumerationen kommer att debiteras för 1 timme användning per prestandanivån på samlingen som skapas. 
+   > Varje exempel är självständigt, den konfigurerar sig själv och rensar efter sig själv. Därför hello exempel utfärda flera anrop för[document_client. CreateCollection](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html). Varje gång det gör du din prenumeration kommer att debiteras för 1 timme användning per hello prestandanivån mängden hello håller på att skapas. 
    > 
    > 
 
 ## <a name="database-examples"></a>Databas-exempel
-Den [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement/Program.py) -filen för den [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement) projektet visar hur du utför följande uppgifter.
+Hej [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement/Program.py) -filen för hello [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/DatabaseManagement) projektet visar hur tooperform hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |
@@ -59,7 +59,7 @@ Den [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/sa
 | [Ta bort en databas](https://github.com/Azure/azure-documentdb-python/blob/d78170214467e3ab71ace1a7400f5a7fa5a7b5b0/samples/DatabaseManagement/Program.py#L113-L126) |[document_client. DeleteDatabase](http://azure.github.io/azure-documentdb-python/api/pydocumentdb.document_client.html) |
 
 ## <a name="collection-examples"></a>Exempel för samlingen
-Den [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement/Program.py) -filen för den [CollectionManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement) projektet visar hur du utför följande uppgifter.
+Hej [Program.py](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement/Program.py) -filen för hello [CollectionManagement](https://github.com/Azure/azure-documentdb-python/tree/master/samples/CollectionManagement) projektet visar hur tooperform hello följande uppgifter.
 
 | Aktivitet | API-referens |
 | --- | --- |

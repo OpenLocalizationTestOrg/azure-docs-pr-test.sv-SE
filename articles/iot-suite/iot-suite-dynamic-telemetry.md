@@ -1,6 +1,6 @@
 ---
-title: "Använd dynamiska telemetri | Microsoft Docs"
-description: "Den här kursen om du vill veta hur du använder dynamiska telemetri med Azure IoT Suite remote förkonfigurerade övervakningslösning."
+title: aaaUse dynamiska telemetri | Microsoft Docs
+description: "Följ den här självstudiekursen toolearn hur toouse dynamiska telemetri med hello Azure IoT Suite fjärrövervaknings förkonfigurerade lösningen."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: 0114f27f9b8ae76e1170d04ddf66e2c4bf20686a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 06cb2a370b67b4950efdfa4c7d906ac92106f4a0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>Använd dynamiska telemetri med fjärråtkomst övervakning förkonfigurerade lösningen
+# <a name="use-dynamic-telemetry-with-hello-remote-monitoring-preconfigured-solution"></a>Använda dynamisk telemetri med hello remote förkonfigurerade övervakningslösning
 
-Dynamisk telemetri kan du visualisera alla telemetri som skickas till den fjärranslutna förkonfigurerade övervakningslösning. Simulerade enheter som distribueras med förkonfigurerade lösningen skicka temperatur- och fuktighetskonsekvens telemetri som du kan visualisera på instrumentpanelen. Om du anpassa befintliga simulerade enheter, skapa nya simulerade enheter eller ansluta fysiska enheter till den förkonfigurerade lösningen kan du skicka andra telemetri värden som externa temperatur, RPM eller vindhastigheten. Sedan kan du visualisera detta ytterligare telemetri på instrumentpanelen.
+Dynamisk telemetri gör du toovisualize alla telemetri skickas toohello remote förkonfigurerade övervakningslösning. hello simulerade enheter som distribueras med hello förkonfigurerade lösningen skickar temperatur- och fuktighetskonsekvens telemetri som du visualisera på hello instrumentpanel. Om du anpassar befintliga simulerade enheter, skapa nya simulerade enheter eller ansluta fysiska enheter toohello förkonfigurerade lösningen kan du skicka andra telemetri värden som hello externa temperatur, RPM eller vindhastigheten. Sedan kan du visualisera detta ytterligare telemetri för hello instrumentpanelen.
 
-Den här kursen använder en enkel Node.js simulerade enhet som du kan enkelt ändra om du vill experimentera med dynamiska telemetri.
+Den här kursen använder en enkel simulerade Node.js-enhet som du kan enkelt ändra tooexperiment med dynamiska telemetri.
 
-Den här kursen behöver du:
+toocomplete den här kursen behöver du:
 
 * En aktiv Azure-prenumeration. Om du inte har något konto kan du skapa ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information finns i [kostnadsfri utvärderingsversion av Azure][lnk_free_trial].
 * [Node.js] [ lnk-node] version 0.12.x eller senare.
@@ -40,10 +40,10 @@ Du kan slutföra den här självstudiekursen på alla operativsystem, till exemp
 
 ## <a name="add-a-telemetry-type"></a>Lägga till en telemetri typ.
 
-Nästa steg är att ersätta telemetri som genererats av Node.js simulerade enheten med en ny uppsättning värden:
+hello nästa steg är tooreplace hello telemetri som genererats av hello Node.js simulerade enhet med en ny uppsättning värden:
 
-1. Stoppa Node.js simulerade enheten genom att skriva **Ctrl + C** i Kommandotolken eller shell.
-2. Du kan se grunddata värdena för befintliga temperatur, fuktighet och externa temperatur telemetri i filen remote_monitoring.js. Lägg till ett värde för basdata för **rpm** på följande sätt:
+1. Stoppa hello Node.js simulerade enheten genom att skriva **Ctrl + C** i Kommandotolken eller shell.
+2. Du kan se hello grunddata värden för hello befintliga temperatur, fuktighet och externa temperatur telemetri i hello remote_monitoring.js-filen. Lägg till ett värde för basdata för **rpm** på följande sätt:
 
     ```nodejs
     // Sensors data
@@ -53,7 +53,7 @@ Nästa steg är att ersätta telemetri som genererats av Node.js simulerade enhe
     var rpm = 200;
     ```
 
-3. Node.js simulerade enheten använder den **generateRandomIncrement** funktion i filen remote_monitoring.js att lägga till en slumpmässig ökning i grunddata-värden. Slumpa den **rpm** värde genom att lägga till en rad med kod efter befintliga randomizations på följande sätt:
+3. Hej Node.js simulerade enhet använder hello **generateRandomIncrement** fungera i hello remote_monitoring.js filen tooadd en slumpmässig ökning toohello grunddata värden. Slumpa hello **rpm** värde genom att lägga till en rad med kod efter hello befintliga randomizations på följande sätt:
 
     ```nodejs
     temperature += generateRandomIncrement();
@@ -62,7 +62,7 @@ Nästa steg är att ersätta telemetri som genererats av Node.js simulerade enhe
     rpm += generateRandomIncrement();
     ```
 
-4. Lägg till det nya rpm-värdet i JSON-nyttolast enheten skickar till IoT-hubb:
+4. Lägg till hello nya rpm värdet toohello JSON-nyttolast hello enheten skickar tooIoT hubb:
 
     ```nodejs
     var data = JSON.stringify({
@@ -74,20 +74,20 @@ Nästa steg är att ersätta telemetri som genererats av Node.js simulerade enhe
     });
     ```
 
-5. Kör Node.js simulerade enheten med följande kommando:
+5. Kör hello Node.js simulerade enhet med hjälp av hello följande kommando:
 
     `node remote_monitoring.js`
 
-6. Se den nya typen av RPM telemetri som visas i diagram på instrumentpanelen:
+6. Observera hello ny RPM telemetri typ som visas på hello diagram i hello instrumentpanelen:
 
-![Lägg till RPM på instrumentpanelen][image3]
+![Lägga till RPM toohello instrumentpanel][image3]
 
 > [!NOTE]
-> Du kan behöva inaktivera och aktivera sedan Node.js-enhet på den **enheter** sida i instrumentpanelen för att se ändringen direkt.
+> Du kanske behöver toodisable och sedan aktivera hello Node.js-enheten på hello **enheter** sida i hello instrumentpanelen toosee hello ändra omedelbart.
 
-## <a name="customize-the-dashboard-display"></a>Anpassa instrumentpanelsvy
+## <a name="customize-hello-dashboard-display"></a>Anpassa hello instrumentpanelsvy
 
-Den **enhetsinformation** meddelandet kan innehålla metadata om den telemetriska enheten kan skicka till IoT-hubb. Dessa metadata kan ange vilka telemetri enheten skickar. Ändra den **deviceMetaData** värdet i filen remote_monitoring.js för att inkludera en **telemetri** definition följande den **kommandon** definition. I följande kod fragment visas den **kommandon** definition (se till att lägga till en `,` när den **kommandon** definition):
+Hej **enhetsinformation** meddelandet kan innehålla metadata om hello telemetri hello enheten kan skicka tooIoT hubb. Dessa metadata kan ange hello telemetri typer hello enheten skickar. Ändra hello **deviceMetaData** värdet i hello remote_monitoring.js filen tooinclude en **telemetri** definition följande hello **kommandon** definition. hello följande kodavsnitt visar hello **kommandon** definition (vara säker på att tooadd en `,` efter hello **kommandon** definition):
 
 ```nodejs
 'Commands': [{
@@ -119,10 +119,10 @@ Den **enhetsinformation** meddelandet kan innehålla metadata om den telemetrisk
 ```
 
 > [!NOTE]
-> Fjärråtkomst övervakningslösning använder en skiftlägeskänslig matchning för att jämföra metadatadefinitionen med data i dataströmmen telemetri.
+> hello remote övervakningslösning använder en icke-skiftlägeskänsliga matchningen toocompare hello metadatadefinition med data i hello telemetri dataströmmen.
 
 
-Lägga till en **telemetri** definition som visas i föregående kodfragment ändrar inte beteendet för instrumentpanelen. Metadata kan dock också inkludera en **DisplayName** attribut för att anpassa visningen i instrumentpanelen. Uppdatering av **telemetri** metadatadefinitionen som visas i följande utdrag:
+Lägga till en **telemetri** definition enligt hello föregående kodfragment inte ändra hello beteende hello instrumentpanelen. Dock hello metadata kan även inkludera ett **DisplayName** attributet toocustomize hello visas i hello instrumentpanelen. Uppdatera hello **telemetri** metadatadefinitionen som visas i följande fragment hello:
 
 ```nodejs
 'Telemetry': [
@@ -144,18 +144,18 @@ Lägga till en **telemetri** definition som visas i föregående kodfragment än
 ]
 ```
 
-Följande skärmbild visar hur den här ändringen ändrar diagramförklaringen på instrumentpanelen:
+hello följande skärmbild visar hur den här ändringen ändrar hello diagramförklaringen på hello instrumentpanelen:
 
-![Anpassa diagrammets förklaring][image4]
+![Anpassa hello diagrammets förklaring][image4]
 
 > [!NOTE]
-> Du kan behöva inaktivera och aktivera sedan Node.js-enhet på den **enheter** sida i instrumentpanelen för att se ändringen direkt.
+> Du kanske behöver toodisable och sedan aktivera hello Node.js-enheten på hello **enheter** sida i hello instrumentpanelen toosee hello ändra omedelbart.
 
-## <a name="filter-the-telemetry-types"></a>Filtrera telemetri-typer
+## <a name="filter-hello-telemetry-types"></a>Filtrera hello telemetri typer
 
-Som standard visar diagram på instrumentpanelen varje dataserie i telemetri dataströmmen. Du kan använda den **enhetsinformation** metadata för visningen av specifika telemetri typer i diagrammet. 
+Som standard visar hello diagram på instrumentpanelen för hello varje dataserie i hello telemetri dataströmmen. Du kan använda hello **enhetsinformation** metadata toosuppress hello visningen av specifika telemetri typer i hello diagram. 
 
-Att visa endast temperatur- och Fuktighetskonsekvens telemetri, utelämna **ExternalTemperature** från den **enhetsinformation** **telemetri** metadata på följande sätt:
+toomake hello diagram visar endast temperatur- och Fuktighetskonsekvens telemetri utelämna **ExternalTemperature** från hello **enhetsinformation** **telemetri** metadata på följande sätt:
 
 ```nodejs
 'Telemetry': [
@@ -177,22 +177,22 @@ Att visa endast temperatur- och Fuktighetskonsekvens telemetri, utelämna **Exte
 ]
 ```
 
-Den **utomhus temperatur** inte längre visas i diagrammet:
+Hej **utomhus temperatur** visas inte längre i hello diagram:
 
-![Filtrera telemetri på instrumentpanelen][image5]
+![Filtrera hello telemetri för hello instrumentpanelen][image5]
 
-Den här ändringen påverkar bara diagramvyn. Den **ExternalTemperature** datavärden fortfarande lagras och blir tillgänglig för alla backend-bearbetning.
+Den här ändringen påverkar bara hello diagramvyn. Hej **ExternalTemperature** datavärden fortfarande lagras och blir tillgänglig för alla backend-bearbetning.
 
 > [!NOTE]
-> Du kan behöva inaktivera och aktivera sedan Node.js-enhet på den **enheter** sida i instrumentpanelen för att se ändringen direkt.
+> Du kanske behöver toodisable och sedan aktivera hello Node.js-enheten på hello **enheter** sida i hello instrumentpanelen toosee hello ändra omedelbart.
 
 ## <a name="handle-errors"></a>Hantera fel
 
-För en dataström som ska visas i diagrammet, dess **typen** i den **enhetsinformation** metadata måste matcha värdena telemetri datatyp. Till exempel om metadata som anger att den **typen** för fuktighet data är **int** och en **dubbla** hittas i dataströmmen telemetri och sedan fuktighet telemetri inte visas i diagrammet. Men den **fuktighet** värden fortfarande lagras och blir tillgänglig för alla backend-bearbetning.
+För en data-dataströmmen toodisplay av hello diagram, dess **typen** i hello **enhetsinformation** metadata måste matcha hello datatyp hello telemetri värden. Till exempel om hello metadata anger att hello **typen** för fuktighet data är **int** och en **dubbla** hittas i hello telemetri dataströmmen sedan hello fuktighet telemetri har Visa inte i hello schemat. Dock hello **fuktighet** värden fortfarande lagras och blir tillgänglig för alla backend-bearbetning.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har lärt dig hur du använder dynamiska telemetri, kan du läsa mer om hur förkonfigurerade lösningar använder enhetsinformation: [enhetens information metadata för fjärranslutna övervakningen förkonfigurerade lösningen] [ lnk-devinfo].
+Nu när du har sett hur toouse dynamiska telemetri, kan du lära dig mer om hur hello förkonfigurerade lösningar använder enhetsinformation: [enheten information metadata i hello fjärrövervaknings förkonfigurerade lösningen] [ lnk-devinfo].
 
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 

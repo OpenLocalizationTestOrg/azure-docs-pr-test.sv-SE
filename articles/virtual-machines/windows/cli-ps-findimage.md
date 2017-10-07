@@ -1,6 +1,6 @@
 ---
-title: "Välj Windows VM-avbildningar i Azure | Microsoft Docs"
-description: "Lär dig hur du använder Azure PowerSHell för att fastställa utgivare, erbjudande, SKU och version för Marketplace VM-avbildningar."
+title: aaaSelect Windows VM bilder i Azure | Microsoft Docs
+description: "Lär dig hur toouse Azure PowerSHell toodetermine hello utgivare, erbjudande, SKU och version för Marketplace VM-avbildningar."
 services: virtual-machines-windows
 documentationcenter: 
 author: dlepow
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/12/2017
 ms.author: danlep
-ms.openlocfilehash: 814ae260123c045d4b6766bf4b312f874cd77068
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 752edcd0935f5141832e49503ae800ea0145e219
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Hitta Windows VM-avbildningar i Azure Marketplace med Azure PowerShell
+# <a name="how-toofind-windows-vm-images-in-hello-azure-marketplace-with-azure-powershell"></a>Hur toofind Windows VM bilder i hello Azure Marketplace med Azure PowerShell
 
-Det här avsnittet beskriver hur du använder Azure PowerShell för att hitta VM-avbildningar i Azure Marketplace. Använd informationen för att ange en Marketplace-avbildning när du skapar en virtuell Windows-dator.
+Det här avsnittet beskrivs hur toouse Azure PowerShell toofind VM bilder i hello Azure Marketplace. Använd den här informationen toospecify Marketplace-avbildning när du skapar en virtuell Windows-dator.
 
-Kontrollera att du har installerat och konfigurerat senast [Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps).
+Kontrollera att du har installerat och konfigurerat hello senaste [Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps).
 
 
 
@@ -48,44 +48,44 @@ Kontrollera att du har installerat och konfigurerat senast [Azure PowerShell-mod
 ## <a name="find-specific-images"></a>Söka efter specifika avbildningar
 
 
-När du skapar en ny virtuell dator med Azure Resource Manager måste du i vissa fall ange en avbildning med följande kombination av egenskaper:
+När du skapar en ny virtuell dator med Azure Resource Manager kan i vissa fall behöver du toospecify en bild med hello kombination av hello följande egenskaper:
 
 * Utgivare
 * Erbjudande
 * SKU
 
-Till exempel använda dessa värden med den [Set AzureRMVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) PowerShell-cmdlet eller med en mall för gruppen av resurs som du måste ange vilken typ av virtuell dator som ska skapas.
+Till exempel använda dessa värden med hello [Set AzureRMVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage) PowerShell-cmdlet eller med en mall för gruppen av resurs som du måste ange hello typ av VM-toobe skapas.
 
-Om du behöver kunna bedöma dessa värden kan du köra den [Get-AzureRMVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), [Get-AzureRMVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer), och [Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -cmdletar för att navigera bilder. Du kan bestämma dessa värden.
+Om du behöver toodetermine dessa värden, kan du köra hello [Get-AzureRMVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), [Get-AzureRMVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer), och [Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) cmdlets toonavigate hello bilder. Du kan bestämma dessa värden.
 
-1. Visa en lista över avbildningsutgivare.
+1. Lista hello avbildningen utgivare.
 2. Visa en lista över erbjudanden från en viss utgivare.
 3. Visa en lista över SKU:er för ett visst erbjudande.
 
-Börja med att skapa en lista över utgivare med hjälp av följande kommandon:
+Först lista hello utgivare med hello följande kommandon:
 
 ```powershell
 $locName="<Azure location, such as West US>"
 Get-AzureRMVMImagePublisher -Location $locName | Select PublisherName
 ```
 
-Fyll i namnet på den valda utgivaren och kör följande kommandon:
+Fyll i din valda utgivarens namn och kör hello följande kommandon:
 
 ```powershell
 $pubName="<publisher>"
 Get-AzureRMVMImageOffer -Location $locName -Publisher $pubName | Select Offer
 ```
 
-Fyll i namnet på det valda erbjudandet och kör följande kommandon:
+Fyll i namnet på din valda erbjudandet och kör följande kommandon hello:
 
 ```powershell
 $offerName="<offer>"
 Get-AzureRMVMImageSku -Location $locName -Publisher $pubName -Offer $offerName | Select Skus
 ```
 
-Från utdata från den `Get-AzureRMVMImageSku` kommando du har all information du behöver ange bild för en ny virtuell dator.
+Från hello utdata från hello `Get-AzureRMVMImageSku` kommando du har alla hello information du behöver toospecify hello avbildning för en ny virtuell dator.
 
-Följande visar ett fullständigt exempel:
+hello följande visar ett fullständigt exempel:
 
 ```powershell
 $locName="West US"
@@ -111,7 +111,7 @@ Canonical
 ...
 ```
 
-För utgivaren ”MicrosoftWindowsServer”:
+För hello ”Microsoft Windows Server” publisher:
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -128,7 +128,7 @@ WindowsServer
 WindowsServer-HUB
 ```
 
-För erbjudandet ”WindowsServer”:
+För hello ”Windows Server”-erbjudande:
 
 ```powershell
 $offerName="WindowsServer"
@@ -154,7 +154,7 @@ Skus
 2016-Nano-Server
 ```
 
-Kopiera det valda SKU-namnet från listan så har du all information om `Set-AzureRMVMSourceImage` PowerShell-cmdleten eller om en resursgruppmall.
+Kopiera hello valt SKU namn från den här listan, och du har alla hello-information för hello `Set-AzureRMVMSourceImage` PowerShell-cmdlet eller för en resurs Gruppmall.
 
 ## <a name="next-steps"></a>Nästa steg
-Du kan nu välja exakt den avbildning som du vill använda. För att snabbt skapa en virtuell dator med hjälp av avbildningsinformationen som du har hittat finns [skapar en virtuell Windows-dator med PowerShell](quick-create-powershell.md).
+Nu kan du välja exakt hello bild du toouse. toocreate finns i en virtuell dator snabbt med hjälp av hello avbildningen information som du har hittat [skapar en virtuell Windows-dator med PowerShell](quick-create-powershell.md).

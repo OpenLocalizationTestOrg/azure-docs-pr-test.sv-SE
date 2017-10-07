@@ -1,5 +1,5 @@
 ---
-title: "Viktig information för Data Management Gateway | Microsoft Docs"
+title: "aaaRelease anteckningar för Data Management Gateway | Microsoft Docs"
 description: Data Management Gateway tory viktig information
 services: data-factory
 author: nabhishek
@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: abnarain
 published: True
-ms.openlocfilehash: c052d7e9f757164429ce867201b96305e405dce9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3165d7537410a0531e0bb7f7fe584767f9155574
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Viktig information för gateway för datahantering
-En av utmaningarna för moderna dataintegrering är att flytta data till och från lokalt till molnet. Data Factory gör den här integreringen med Data Management Gateway, vilket är en agent som att du kan installera lokalt för att aktivera hybrid dataflyttning.
+En av hello utmaningar för moderna dataintegrering är toomove data tooand från lokala toocloud. Data Factory gör den här integreringen med Data Management Gateway, vilket är en agent som du installerar lokalt tooenable hybrid dataflyttning.
 
-Se följande artiklar för detaljerad information om Data Management Gateway och hur du använder den:
+Se följande artiklar för detaljerad information om Data Management Gateway hello och hur toouse den:
 
 *  [Gateway för datahantering](data-factory-data-management-gateway.md)
 *  [Flytta data mellan lokala och molnet med Azure Data Factory](data-factory-move-data-between-onprem-and-cloud.md)
@@ -32,9 +32,9 @@ Se följande artiklar för detaljerad information om Data Management Gateway och
 ## <a name="current-version-21063477"></a>AKTUELL VERSION (2.10.6347.7)
 
 ### <a name="enhancements-"></a>Förbättringar-
-- Du kan lägga till DNS-poster godkända service bus i stället för vitlistning av alla Azure-IP-adresser från din brandvägg (vid behov). Du hittar motsvarande DNS-post på Azure-portalen (Data Factory -> 'Författare och distribution' -> 'Gateways' -> ”serviceUrls” (i JSON)
+- Du kan lägga till DNS-poster toowhitelist service bus i stället för vitlistning av alla Azure-IP-adresser från din brandvägg (vid behov). Du hittar motsvarande DNS-post på Azure-portalen (Data Factory -> 'Författare och distribution' -> 'Gateways' -> ”serviceUrls” (i JSON)
 - HDFS connector stöder nu självsignerat certifikat med offentlig genom att du kan hoppa över validering av SSL.
-- Fast: Problem med gateway offline under uppdateringen (på grund av klockavvikelser)
+- Fast: Problem med gateway offline under uppdateringen (förfaller tooclock förskjutning)
 
 
 
@@ -42,12 +42,12 @@ Se följande artiklar för detaljerad information om Data Management Gateway och
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>Förbättringar-
--   Du kan lägga till DNS-poster godkända Service Bus i stället för vitlistning av alla Azure-IP-adresser från din brandvägg (vid behov). Mer information här.
--   Nu kan du kopieringsdata till och från ett enda block blob upp till 4,75 TB, vilket är den största storleken som stöds av blockblob. (tidigare gränsen var 195 GB).
+-   Du kan lägga till DNS-poster toowhitelist Service Bus i stället för vitlistning av alla Azure-IP-adresser från din brandvägg (vid behov). Mer information här.
+-   Nu kan du kopiera data till och från en enda blockblobb in too4.75 TB, vilket är Hej max stöds storleken på blockblob. (tidigare gränsen var 195 GB).
 -   Fast: Slut på minne problemet när man öppnar flera mindre filer under kopieringsaktiviteten.
--   Fast: Indexet ligger utanför intervallet problem vid kopiering från dokumentet DB till en lokal SQL Server med idempotens funktionen.
+-   Fast: Indexet ligger utanför intervallet problem vid kopiering från dokumentet DB tooan lokal SQL Server med idempotens funktionen.
 -   Fast: SQL-skriptet för rensning av fungerar inte med lokala SQL Server från guiden Kopiera.
--   Fast: Kolumnnamnet med utrymme i slutet fungerar inte i en Kopieringsaktivitet.
+-   Fast: Kolumnnamnet med utrymme i slutet av hello fungerar inte i en Kopieringsaktivitet.
 
 ## <a name="28662833"></a>2.8.66283.3
 ### <a name="enhancements-"></a>Förbättringar-
@@ -71,58 +71,58 @@ Se följande artiklar för detaljerad information om Data Management Gateway och
 
 ## <a name="2561641"></a>2.5.6164.1
 ### <a name="enhancements"></a>Förbättringar
-- Bättre och mer robust Gateway registrering experience – nu kan du spåra förloppsstatus under registreringen Gateway, vilket gör registreringen uppleva snabbare.
-- Förbättring i Gateway återställa Process - du kan fortfarande återställa gateway, även om du inte har den säkerhetskopiera filen gateway med den här uppdateringen. Detta kräver du återställa länkade tjänsten autentiseringsuppgifter i portalen.
+- Bättre och mer robust Gateway registrering experience – nu kan du spåra förloppsstatus under hello Gateway registreringen, vilket gör hello registrering får snabbare.
+- Förbättring i Gateway återställa Process - du kan fortfarande återställa gateway, även om du inte har hello gateway-säkerhetskopia med den här uppdateringen. Detta skulle kräva tooreset länkade tjänsten autentiseringsuppgifter i portalen.
 - Buggfix.
 
 ## <a name="2461511"></a>2.4.6151.1
 
 ### <a name="whats-new"></a>Nyheter
 
-- Nu kan du lagra autentiseringsuppgifterna för datakällan lokalt. Autentiseringsuppgifterna krypteras. Autentiseringsuppgifterna för datakällan kan återställas och återställas med hjälp av säkerhetskopian som kan exporteras från den befintliga gatewayen, alla lokala.
+- Nu kan du lagra autentiseringsuppgifterna för datakällan lokalt. hello autentiseringsuppgifterna krypteras. hello autentiseringsuppgifterna för datakällan kan återställas och återställas med hjälp av hello säkerhetskopian som kan exporteras från hello befintlig Gateway, alla lokala.
 
 ### <a name="enhancements-"></a>Förbättringar-
 
 - Bättre och mer robust Gateway registrering upplevelse.
-- Stöd för automatisk identifiering av QuoteChar konfiguration för textformat i guiden Kopiera och förbättra övergripande format identifiering.
+- Stöd för automatisk identifiering av QuoteChar konfiguration för textformat i guiden Kopiera och förbättra hello övergripande formatera identifiering noggrannhet.
 
 ## <a name="2361002"></a>2.3.6100.2
 
 - Stöd för firstRowAsHeader och automatisk identifiering av SkipLineCount i guiden Kopiera textfiler i lokala filsystemet och HDFS.
-- Förbättra stabiliteten för nätverksanslutningen mellan gateway och Service Bus
+- Förbättra hello stabiliteten för nätverksanslutningen mellan gateway och Service Bus
 - Några buggkorrigeringar
 
 
 ## <a name="2260721"></a>2.2.6072.1
 
-*  Har stöd för inställningen HTTP-proxy för gatewayen med Konfigurationshanteraren för Gateway. Om konfigurerad, kan Azure Blob, Azure Table, Azure Data Lake och dokumentet DB nås via HTTP-proxy.
-*  Har stöd för huvudet hantering för TextFormat vid kopiering av data från/till Azure Blob Azure Data Lake Store lokalt filsystem, och lokala HDFS.
-*  Kopiera data från Lägg till Blob och Sidblob tillsammans med redan stöds Blockblob stöder.
-*  Introducerar en ny gateway status **Online (begränsat)**, vilket tyder på att de flesta funktioner för gatewayen fungerar utom interaktiva åtgärden stöd för guiden Kopiera.
-*  Förbättrar gateway-registrering med registreringsnyckel stabilitet.
+*  Har stöd för inställningen HTTP-proxy för hello gateway med hello Gateway Configuration Manager. Om konfigurerad, kan Azure Blob, Azure Table, Azure Data Lake och dokumentet DB nås via HTTP-proxy.
+*  Har stöd för huvudet hantering för TextFormat vid kopiering av data från / tooAzure Blob, Azure Data Lake Store lokala filsystemet och lokala HDFS.
+*  Kopiera data från Lägg till Blob och Sidblob tillsammans med hello redan stöder stöds Blockblob.
+*  Introducerar en ny gateway status **Online (begränsat)**, vilket anger att hello huvudfunktioner hello gateway fungerar utom hello interaktiva åtgärden stöd för guiden Kopiera.
+*  Förbättrar hello stabilitet av gateway-registrering med hjälp av nyckel för tjänstregistrering.
 
 ## <a name="216040"></a>2.1.6040.
 
-*  DB2 drivrutin ingår nu i gateway-installationspaketet. Du behöver inte installera det separat.
-*  DB2-drivrutinen stöder nu z/OS och DB2 för jag (AS / 400) tillsammans med de plattformar som redan stöds (Linux, Unix- och Windows).
+*  DB2 drivrutin ingår nu i hello gateway-installationspaketet. Du behöver inte tooinstall den separat.
+*  DB2-drivrutinen stöder nu z/OS och DB2 för jag (AS / 400) tillsammans med hello plattformar som redan stöds (Linux, Unix- och Windows).
 *  Stöder Azure Cosmos DB som källa eller mål för lokala datalager
-*  Har stöd för kopiering av data från/till kall/frekvent blob-lagring tillsammans med redan stöds Allmänt lagringskonto.
-*  Kan du ansluta till lokal SQL Server via en gateway med behörighet för fjärrinloggning.  
+*  Har stöd för kopiering av data från/toocold/hot blob-lagring tillsammans med hello redan stöds Allmänt lagringskonto.
+*  Låter dig tooconnect tooon lokala SQL Server via en gateway med behörighet för fjärrinloggning.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
-*  Du kan välja språkkulturen som ska användas av en gateway vid manuell installation.
+*  Du kan välja hello språkkulturen/toobe används av en gateway vid manuell installation.
 
-*  När gatewayen inte fungerar som förväntat, kan du välja att skicka gateway-loggarna för senaste sju dagarna till Microsoft för att underlätta felsökning av problemet. Om gateway inte är ansluten till Molntjänsten kan du välja att spara och arkivera gateway-loggarna.  
+*  När gatewayen inte fungerar som förväntat, kan du välja toosend gateway-loggarna för senaste sju dagarna tooMicrosoft toofacilitate felsökning av hello problemet. Om gateway inte är ansluten toohello Molntjänsten, kan du välja toosave och arkivera gateway-loggarna.  
 
 *  Användargränssnittet för gateway configuration manager:
 
-    *  Se gatewayens status tydligare på fliken Start.
+    *  Se gatewayens status tydligare på fliken för hello start.
 
     *  Organiseras och förenklad kontroller.
 
-    *  Du kan kopiera data från en lagring med hjälp av den [kod utan kopiera preview verktyget](data-factory-copy-data-wizard-tutorial.md). Se [mellanlagrad kopiera](data-factory-copy-activity-performance.md#staged-copy) mer information om den här funktionen i allmänhet.
-*  Du kan använda Data Management Gateway till ingång data direkt från en lokal SQL Server-databas i Azure Machine Learning.
+    *  Du kan kopiera data från en lagring med hjälp av hello [kod utan kopiera preview verktyget](data-factory-copy-data-wizard-tutorial.md). Se [mellanlagrad kopiera](data-factory-copy-activity-performance.md#staged-copy) mer information om den här funktionen i allmänhet.
+*  Du kan använda Data Management Gateway tooingress data direkt från en lokal SQL Server-databas i Azure Machine Learning.
 
 *  Prestandaförbättringar
 
@@ -134,9 +134,9 @@ Se följande artiklar för detaljerad information om Data Management Gateway och
 
 ## <a name="11159181"></a>1.11.5918.1
 
-*  Maximal storlek för gateway-händelseloggen har ökat från 1 MB till 40 MB.
+*  Maximal storlek för händelselogg hello har ökat från 1 MB too40 MB.
 
-*  Ett varningsmeddelande visas om en omstart krävs under gateway automatisk uppdatering. Du kan välja att starta om normalt sedan eller senare.
+*  Ett varningsmeddelande visas om en omstart krävs under gateway automatisk uppdatering. Du kan välja toorestart höger sedan eller senare.
 
 *  Om automatisk uppdatering misslyckas, försöker installationsprogrammet för gateway automatisk uppdatering tre gånger på maximalt.
 
@@ -156,8 +156,8 @@ Se följande artiklar för detaljerad information om Data Management Gateway och
 
 *  Funktionen noll touch automatisk uppdatering
 *  Ny ikon med indikatorer för gateway-status
-*  Möjligheten att ”uppdatera nu” från klienten
-*  Möjlighet att ställa in schemat Uppdateringstid
+*  Möjlighet för ”Uppdatera nu” hello-klient
+*  Möjlighet tooset Uppdateringstid schema
 *  PowerShell-skript för att använda automatisk uppdatering av/på
 *  Stöd för JSON-format  
 *  Prestandaförbättringar
@@ -237,12 +237,12 @@ Se följande artiklar för detaljerad information om Data Management Gateway och
 ### <a name="1454921"></a>1.4.5492.1
 
 *  Enhetlig binary som har stöd för både Microsoft Azure Data Factory och Power BI för Office 365-tjänster
-*  Förfina processen användargränssnitt och registrering
+*  Förfina hello användargränssnitt och registrering processen
 *  Azure Data Factory – Azure ingående och utgående stöd för SQL Server-datakälla
 
 ### <a name="1253031"></a>1.2.5303.1
 
-*  Åtgärda problemet tidsgränsen för att stödja mer tidskrävande datakällanslutningar.
+*  Åtgärda timeout problemet toosupport mer tidskrävande datakällanslutningar.
 
 ### <a name="1155268"></a>1.1.5526.8
 

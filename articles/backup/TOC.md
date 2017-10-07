@@ -14,26 +14,26 @@
 ### Installera eller uppgradera
 #### [Förbereda Azure Backup Server-arbetsbelastningar i Azure Portal](backup-azure-microsoft-azure-backup.md)
 #### [Förbereda Azure Backup Server-arbetsbelastningar i den klassiska portalen](backup-azure-microsoft-azure-backup-classic.md)
-#### [Lägga till lagringsutrymme på Azure Backup Server](backup-mabs-add-storage.md)
-#### [Uppgradera Azure Backup Server till v.2](backup-mabs-upgrade-to-v2.md)
+#### [Lägga till lagring tooAzure Backup Server](backup-mabs-add-storage.md)
+#### [Uppgradera Azure Backup-Server toov.2](backup-mabs-upgrade-to-v2.md)
 #### [Obevakad installation av Azure Backup Server](backup-mabs-unattended-install.md)
 ### Skydda arbetsbelastningar
-#### [Säkerhetskopiera en VMware-server med hjälp av Azure Backup Server](backup-azure-backup-server-vmware.md)
-#### [Säkerhetskopiera Exchange med hjälp av Azure Backup Server](backup-azure-exchange-mabs.md)
-#### [Säkerhetskopiera en SharePoint-grupp med hjälp av Azure Backup Server](backup-azure-backup-sharepoint-mabs.md)
-#### [Säkerhetskopiera SQL med hjälp av Azure Backup Server](backup-azure-sql-mabs.md)
+#### [Använda Azure Backup Server tooback in en VMware-server](backup-azure-backup-server-vmware.md)
+#### [Använda Azure Backup Server tooback in Exchange](backup-azure-exchange-mabs.md)
+#### [Använda Azure Backup Server tooback upp en SharePoint-grupp](backup-azure-backup-sharepoint-mabs.md)
+#### [Använda Azure Backup Server tooback in SQL](backup-azure-sql-mabs.md)
 #### [Skydda systemtillstånd och Bare Metal Recovery](backup-mabs-system-state-and-bmr.md)
 ### [Återställa data från Azure Backup Server](backup-azure-alternate-dpm-server.md)
 
 ## Virtuella Azure-datorer
-### Förbereda den virtuella datorn
+### Förbereda hello VM
 #### [Förbereda resurshanterarens distribuerade virtuella datorer](backup-azure-arm-vms-prepare.md)
 #### [Programkonsekventa säkerhetskopior av virtuella Linux-datorer](backup-azure-linux-app-consistent.md)
 #### [Förbereda virtuella Azure-datorer](backup-azure-vms-prepare.md)
 ### Planera din miljö
 #### [Planera säkerhetskopiering av VM-infrastrukturen](backup-azure-vms-introduction.md)
 ### Säkerhetskopiera virtuella datorer
-#### [Säkerhetskopiera virtuella Azure-datorer till ett Recovery Services-valv](backup-azure-arm-vms.md)
+#### [Säkerhetskopiera virtuella datorer i Azure tooa Recovery Services-valvet](backup-azure-arm-vms.md)
 #### [Säkerhetskopiera krypterade virtuella datorer](backup-azure-vms-encryption.md)
 #### [Säkerhetskopiera virtuella Azure-datorer](backup-azure-vms.md)
 ### Hantera och övervaka virtuella datorer
@@ -55,10 +55,10 @@
 ## Data Protection Manager
 ### [Förbereda DPM-arbetsbelastningar i Azure Portal](backup-azure-dpm-introduction.md)
 ### [Förbereda DPM-arbetsbelastningar i den klassiska portalen](backup-azure-dpm-introduction-classic.md)
-### [Använd System Center DPM för att säkerhetskopiera Exchange-server](backup-azure-backup-exchange-server.md)
-### [Återställa data till en annan DPM-server](backup-azure-alternate-dpm-server.md)
-### [Använda DPM för att säkerhetskopiera SQL Server-arbetsbelastningar](backup-azure-backup-sql.md)
-### [Använda DPM för att säkerhetskopiera en SharePoint-servergrupp](backup-azure-backup-sharepoint.md)
+### [Använda System Center DPM tooback Exchange Server](backup-azure-backup-exchange-server.md)
+### [Återställa data tooan alternativa DPM-servern](backup-azure-alternate-dpm-server.md)
+### [Använda DPM tooback in SQL Server-arbetsbelastningar](backup-azure-backup-sql.md)
+### [Använda DPM tooback upp en SharePoint-grupp](backup-azure-backup-sharepoint.md)
 
 ## Använd PowerShell
 ### [Virtuella Azure-datorer i Azure Portal](backup-azure-vms-automation.md)
@@ -77,23 +77,23 @@
 ## Windows Server
 ### [Säkerhetskopiera Windows Server-filer och -mappar](backup-configure-vault.md)
 ### [Säkerhetskopiera Windows Server System-tillstånd](backup-azure-system-state.md)
-### [Återställa filer från Azure till Windows Server](backup-azure-restore-windows-server.md)
+### [Återställa filer från Azure tooWindows Server](backup-azure-restore-windows-server.md)
 ### [Återställa Windows Server System-tillstånd](backup-azure-restore-system-state.md)
 ### [Övervaka och hantera Recovery Services-valv](backup-azure-manage-windows-server.md)
-### Säkerhetskopiera och återställa med den klassiska portalen
-#### [Windows Server med den klassiska distributionsmodellen](backup-configure-vault-classic.md)
-#### [Hantera säkerhetskopieringsvalv och servrar med hjälp av den klassiska distributionsmodellen](backup-azure-manage-windows-server-classic.md)
-#### [Återställ filer till en Windows-server med hjälp av den klassiska distributionsmodellen](backup-azure-restore-windows-server-classic.md)
+### Säkerhetskopiera och återställa med hjälp av hello klassiska portal
+#### [Windows Server med hjälp av hello klassiska distributionsmodellen](backup-configure-vault-classic.md)
+#### [Hantera säkerhetskopieringsvalv med hello klassiska distributionsmodellen](backup-azure-manage-windows-server-classic.md)
+#### [Återställa filer tooa Windows Server med hjälp av hello klassiska distributionsmodellen](backup-azure-restore-windows-server-classic.md)
 
 ## Recovery Services-valv
 ### [Översikt över Recovery Services-valv](backup-azure-recovery-services-vault-overview.md)
-### [Uppgradera ett säkerhetskopieringsvalv till Recovery Services-valvet](backup-azure-upgrade-backup-to-recovery-services.md)
+### [Uppgradera en Backup-valvet tooRecovery Services-valvet](backup-azure-upgrade-backup-to-recovery-services.md)
 ### [Ta bort ett Recovery Services-valv](backup-azure-delete-vault.md)
 
 ## Felsöka
 ### [Problem med virtuella Azure-säkerhetskopieringar i Azure Portal](backup-azure-vms-troubleshoot.md)
 ### [Problem med virtuella Azure-säkerhetskopieringar i den klassiska portalen](backup-azure-vms-troubleshoot-classic.md)
-### [Fel vid säkerhetskopiering av virtuell Azure-dator: Det gick inte att kommunicera med VM-agenten för ögonblicksbildstatus – Tidsgränsen uppnåddes för underåtgärden för ögonblicksbilds-VM](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
+### [Azure VM säkerhetskopiering misslyckas: kunde inte kommunicera med hello VM-agent för ögonblicksbild status - ögonblicksbild VM Tidsgränsen nåddes för](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)
 ### [Långsam säkerhetskopiering av filer och mappar i Azure Backup](backup-azure-troubleshoot-slow-backup-performance-issue.md)
 ### [Felsöka Azure Backup Server](backup-azure-mabs-troubleshoot.md)
 

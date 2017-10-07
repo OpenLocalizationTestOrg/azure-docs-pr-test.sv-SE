@@ -1,6 +1,6 @@
 ---
-title: "Använda Queue storage från Node.js | Microsoft Docs"
-description: "Lär dig hur du använder Azure-Kötjänsten för att skapa och ta bort köer, infoga, hämta och ta bort meddelanden. Exempel som skrivits i Node.js."
+title: "aaaHow toouse Queue storage från Node.js | Microsoft Docs"
+description: "Lär dig hur toouse hello Azure Queue service toocreate och ta bort köer och infoga, hämta och ta bort meddelanden. Exempel som skrivits i Node.js."
 services: storage
 documentationcenter: nodejs
 author: robinsh
@@ -14,33 +14,33 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-ms.openlocfilehash: 15c1d3cb6eac8fc14837277c4a4275dea91701cd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7e9778da4efa69f2e9d8fd480b9b6f5ace85951e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-queue-storage-from-nodejs"></a>Använda Queue Storage från Node.js
+# <a name="how-toouse-queue-storage-from-nodejs"></a>Hur toouse Queue storage från Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>Översikt
-Den här guiden visar hur du utför vanliga scenarier med hjälp av Microsoft Azure-kötjänsten. Exemplen är skrivna med Node.js-API. Scenarier som tas upp inkluderar **infoga**, **granskning**, **komma**, och **bort** kö meddelanden, samt **skapa och ta bort köer**.
+Den här guiden visar hur hello tooperform vanliga scenarier med hjälp av Microsoft Azure-kötjänsten. hello exempel skrivs med hello Node.js API. hello beskrivs scenarier där **infoga**, **granskning**, **komma**, och **bort** kö meddelanden, samt  **Skapa och ta bort köer**.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Skapa en Node.js-program
-Skapa ett tomt Node.js-program. Instruktioner om att skapa en Node.js-program finns i [skapa en Node.js-webbapp i Azure App Service](../../app-service-web/app-service-web-get-started-nodejs.md), [skapa och distribuera ett Node.js-program till en Azure-molntjänst](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) med Windows PowerShell eller [skapa och distribuera en Node.js-webbapp till Azure med hjälp av Web Matrix](https://www.microsoft.com/web/webmatrix/).
+Skapa ett tomt Node.js-program. Instruktioner om att skapa en Node.js-program finns i [skapa en Node.js-webbapp i Azure App Service](../../app-service-web/app-service-web-get-started-nodejs.md), [skapa och distribuera en Node.js-programmet tooan Azure Cloud Service](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) med Windows PowerShell eller [ Skapa och distribuera en Node.js web app tooAzure med hjälp av Web Matrix](https://www.microsoft.com/web/webmatrix/).
 
-## <a name="configure-your-application-to-access-storage"></a>Konfigurera ditt program för att komma åt lagringsutrymme
-Om du vill använda Azure storage, behöver du Azure Storage SDK: N för Node.js som innehåller en uppsättning bekvämlighet bibliotek som kommunicerar med storage REST-tjänster.
+## <a name="configure-your-application-tooaccess-storage"></a>Konfigurera ditt program tooAccess lagring
+toouse Azure storage, behöver du hello Azure Storage SDK för Node.js som innehåller en uppsättning bekvämlighet bibliotek som kommunicerar med hello storage REST-tjänster.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Använd noden Package Manager (NPM) för att hämta paketet
-1. Använd ett kommandoradsgränssnitt som **PowerShell** (Windows), **Terminal** (Mac) eller **Bash** (Unix), navigera till mappen där du skapade exempelprogrammet.
-2. Typen **npm installera azure-lagring** i kommandofönstret. Utdata från kommandot liknar följande exempel.
+### <a name="use-node-package-manager-npm-tooobtain-hello-package"></a>Använd noden Package Manager (NPM) tooobtain hello-paket
+1. Använd ett kommandoradsgränssnitt som **PowerShell** (Windows), **Terminal** (Mac) eller **Bash** (Unix), navigera toohello mappen där du skapade exempelprogrammet.
+2. Typen **npm installera azure-lagring** i hello kommandofönstret. Utdata från kommandot hello är liknande toohello följande exempel.
  
     ```
     azure-storage@0.5.0 node_modules\azure-storage
@@ -55,28 +55,28 @@ Om du vill använda Azure storage, behöver du Azure Storage SDK: N för Node.js
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
     ```
 
-3. Du kan köra manuellt på **ls** kommando för att kontrollera att en **nod\_moduler** mappen har skapats. I mappen hittar du den **azure storage** paket som innehåller de bibliotek som du behöver åtkomst till lagring.
+3. Du kan köra hello manuellt **ls** kommandot tooverify som en **nod\_moduler** mappen har skapats. I mappen hittar du hello **azure storage** paket som innehåller hello bibliotek som du behöver åtkomst till lagring.
 
-### <a name="import-the-package"></a>Importera paketet
-I anteckningar eller något annat textredigeringsprogram, lägger du till följande upp den **server.js** filen för programmet som du tänker använda lagring:
+### <a name="import-hello-package"></a>Importera hello-paket
+Använda anteckningar eller något annat textredigeringsprogram, Lägg till hello följande toohello upp den **server.js** -filen för programmet hello där du ska toouse lagring:
 
 ```
 var azure = require('azure-storage');
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Skapa ett Azure Storage-anslutning
-Azure-modulen läses miljövariablerna AZURE\_lagring\_konto och AZURE\_lagring\_åtkomst\_nyckel eller AZURE\_lagring\_anslutning\_sträng för information som krävs för att ansluta till Azure storage-konto. Om de här miljövariablerna inte har angetts måste du ange kontoinformationen vid anrop av **createQueueService**.
+hello azure modulen läser hello miljövariabler AZURE\_lagring\_konto och AZURE\_lagring\_åtkomst\_nyckel eller AZURE\_lagring\_anslutning \_Sträng för information som krävs för tooconnect tooyour Azure storage-konto. Om de här miljövariablerna inte har angetts måste du ange hello kontoinformation när du anropar **createQueueService**.
 
-Ett exempel på Ange miljövariabler i den [Azure Portal](https://portal.azure.com) en Azure-webbplats finns i [Node.js-webbapp som använder tjänsten Azure tabell].
+Ett exempel på inställningen hello miljövariabler i hello [Azure Portal](https://portal.azure.com) en Azure-webbplats finns i [Node.js web app med hjälp av hello Azure Tabelltjänsten].
 
 ## <a name="how-to-create-a-queue"></a>Så här: Skapa en kö
-Följande kod skapar en **QueueService** -objektet, vilket gör att du kan arbeta med köer.
+hello följande kod skapar en **QueueService** -objektet, vilket gör att du toowork med köer.
 
 ```
 var queueSvc = azure.createQueueService();
 ```
 
-Använd den **createQueueIfNotExists** metod som returnerar den angivna kön om det redan finns eller skapar en ny kö med det angivna namnet om det inte redan finns.
+Använd hello **createQueueIfNotExists** metod som returnerar hello kö som anges om det redan finns eller skapar en ny kö med hello angivna namnet om det inte redan finns.
 
 ```
 queueSvc.createQueueIfNotExists('myqueue', function(error, result, response){
@@ -86,24 +86,24 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, result, response){
 });
 ```
 
-Om kön har skapats, `result.created` är true. Om kön finns, `result.created` är false.
+Om hello kön skapas `result.created` är true. Om hello kön finns, `result.created` är false.
 
 ### <a name="filters"></a>Filter
-Valfria filtrering åtgärder kan användas för åtgärder som utförs med hjälp av **QueueService**. Filtrering operations kan innehålla loggning, försöker automatiskt igen och så vidare. Filtren är objekt som implementerar en metod med signaturen:
+Valfria filtrering åtgärder kan vara tillämpade toooperations utförs med hjälp av **QueueService**. Filtrering operations kan innehålla loggning, försöker automatiskt igen och så vidare. Filtren är objekt som implementerar en metod med hello signatur:
 
 ```
 function handle (requestOptions, next)
 ```
 
-Metoden måste anropa ”nästa” Skicka en motringning med följande signatur när du har gjort dess förbearbetning på begäran-alternativ:
+När du har gjort dess förbearbetning på hello begäran alternativ måste hello metoden toocall ”nästa” Skicka en motringning med hello följande signatur:
 
 ```
 function (returnObject, finalCallback, next)
 ```
 
-I den här motringning och efter bearbetning returnObject (svar från begäran till servern), måste återanropet anropa sedan om den finns för att fortsätta att bearbeta filter eller anropa bara finalCallback på annat sätt för att få service-anrop.
+I den här motringning och efter bearbetning hello returnObject (hello svar från hello begäran toohello server), hello-återanrop måste tooeither anropa sedan om den finns toocontinue bearbetning filter eller helt enkelt anropa finalCallback annars tooend in hello Service-anrop.
 
-Två filter som implementerar logik som medföljer Azure SDK för Node.js, **ExponentialRetryPolicyFilter** och **LinearRetryPolicyFilter**. Följande kod skapar en **QueueService** objekt som använder den **ExponentialRetryPolicyFilter**:
+Två filter som implementerar logik som medföljer hello Azure SDK för Node.js, **ExponentialRetryPolicyFilter** och **LinearRetryPolicyFilter**. hello följande skapar en **QueueService** objekt som använder hello **ExponentialRetryPolicyFilter**:
 
 ```
 var retryOperations = new azure.ExponentialRetryPolicyFilter();
@@ -111,7 +111,7 @@ var queueSvc = azure.createQueueService().withFilter(retryOperations);
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Så här: Infoga ett meddelande i en kö
-Om du vill infoga ett meddelande i en kö, använda den **createMessage** metoden för att skapa ett nytt meddelande och lägga till den i kön.
+tooinsert ett meddelande i en kö, Använd hello **createMessage** metod för att skapa ett nytt meddelande och Lägg till den toohello kön.
 
 ```
 queueSvc.createMessage('myqueue', "Hello world!", function(error, result, response){
@@ -121,8 +121,8 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, result, respon
 });
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Så här: Granska nästa meddelande
-Du kan kika på meddelandet först i en kö utan att ta bort det från kön genom att anropa den **peekMessages** metod. Som standard **peekMessages** tittar på ett enda meddelande.
+## <a name="how-to-peek-at-hello-next-message"></a>Så här: Granska hello nästa meddelande
+Du kan kika på hello-meddelande i hello framför en kö utan att ta bort den från hello kö genom att anropa hello **peekMessages** metod. Som standard **peekMessages** tittar på ett enda meddelande.
 
 ```
 queueSvc.peekMessages('myqueue', function(error, result, response){
@@ -132,20 +132,20 @@ queueSvc.peekMessages('myqueue', function(error, result, response){
 });
 ```
 
-Den `result` innehåller meddelandet.
+Hej `result` innehåller hello-meddelande.
 
 > [!NOTE]
-> Med hjälp av **peekMessages** när det finns inga meddelanden i kön inte returneras ett fel, men inga meddelanden ska returneras.
+> Med hjälp av **peekMessages** när det finns inga meddelanden i kö för hello inte returnerar ett fel, men inga meddelanden ska returneras.
 > 
 > 
 
-## <a name="how-to-dequeue-the-next-message"></a>Så här: Status Created nästa meddelande
+## <a name="how-to-dequeue-hello-next-message"></a>Så här: Status Created hello nästa meddelande
 Bearbetning av ett meddelande är en process i två steg:
 
-1. Meddelandet har status Created.
-2. Ta bort meddelandet.
+1. Hello-meddelande har status Created.
+2. Ta bort hello-meddelande.
 
-För att ett meddelande har status Created använda **GetMessage**. Det gör att meddelanden i kön, så att inga andra klienter kan bearbeta dem. När programmet har bearbetats ett meddelande kan anropa **deleteMessage** ta bort det från kön. I följande exempel hämtar ett meddelande och sedan tar bort den:
+toodequeue ett meddelande som använder **GetMessage**. Detta gör hälsningsmeddelande i hello kö, så att inga andra klienter kan bearbeta dem. När programmet har bearbetats ett meddelande kan anropa **deleteMessage** toodelete från hello kön. hello följande exempel hämtar ett meddelande och sedan tar bort den:
 
 ```
 queueSvc.getMessages('myqueue', function(error, result, response){
@@ -162,20 +162,20 @@ queueSvc.getMessages('myqueue', function(error, result, response){
 ```
 
 > [!NOTE]
-> Som standard döljs bara ett meddelande i 30 sekunder, efter vilken den är synlig för andra klienter. Du kan ange ett annat värde med hjälp av `options.visibilityTimeout` med **GetMessage**.
+> Som standard döljs bara ett meddelande i 30 sekunder, efter vilken den är synlig tooother klienter. Du kan ange ett annat värde med hjälp av `options.visibilityTimeout` med **GetMessage**.
 > 
 > [!NOTE]
-> Med hjälp av **GetMessage** när det finns inga meddelanden i kön inte returneras ett fel, men inga meddelanden ska returneras.
+> Med hjälp av **GetMessage** när det finns inga meddelanden i kö för hello inte returnerar ett fel, men inga meddelanden ska returneras.
 > 
 > 
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Så här: Ändra innehållet i ett meddelande i kön
-Du kan ändra innehållet i ett meddelande direkt i kön med **updateMessage**. I följande exempel uppdateras texten för ett meddelande:
+## <a name="how-to-change-hello-contents-of-a-queued-message"></a>Så här: Ändra hello innehållet i meddelandet i kön
+Du kan ändra hello innehållet i ett meddelande direkt i hello kön med **updateMessage**. följande exempel hello uppdateringar hello texten för ett meddelande:
 
 ```
 queueSvc.getMessages('myqueue', function(error, result, response){
   if(!error){
-    // Got the message
+    // Got hello message
     var message = result[0];
     queueSvc.updateMessage('myqueue', message.messageId, message.popReceipt, 10, {messageText: 'new text'}, function(error, result, response){
       if(!error){
@@ -189,10 +189,10 @@ queueSvc.getMessages('myqueue', function(error, result, response){
 ## <a name="how-to-additional-options-for-dequeuing-messages"></a>Så här: Ytterligare alternativ för mellan köer meddelanden
 Det finns två sätt som du kan anpassa meddelandehämtningen från en kö:
 
-* `options.numOfMessages`-Hämta en grupp med meddelanden (upp till 32).
+* `options.numOfMessages`-Hämta en grupp med meddelanden (upp too32.)
 * `options.visibilityTimeout`-Ange en tidsgräns för osynlighet längre eller kortare.
 
-I följande exempel används den **GetMessage** metod för att hämta 15 meddelanden i ett anrop. Sedan bearbetas varje meddelande med hjälp av en for-loop. Den anger också tidsgränsen för osynlighet till fem minuter för alla meddelanden som returneras av den här metoden.
+hello följande exempel används hello **GetMessage** metoden tooget 15 meddelanden i ett anrop. Sedan bearbetas varje meddelande med hjälp av en for-loop. Den anger också hello osynlighet timeout toofive minuter för alla meddelanden som returneras av den här metoden.
 
 ```
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, result, response){
@@ -211,8 +211,8 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 });
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Så här: Hämta kölängden
-Den **getQueueMetadata** returnerar metadata om kön, inklusive det ungefärliga antalet väntande meddelanden i kön.
+## <a name="how-to-get-hello-queue-length"></a>Så här: Hämta hello Kölängd
+Hej **getQueueMetadata** returnerar metadata om hello kö, inklusive hello ungefärliga antalet väntande meddelanden i kön hello.
 
 ```
 queueSvc.getQueueMetadata('myqueue', function(error, result, response){
@@ -223,20 +223,20 @@ queueSvc.getQueueMetadata('myqueue', function(error, result, response){
 ```
 
 ## <a name="how-to-list-queues"></a>Så här: Listan köer
-Använd för att hämta en lista över köer **listQueuesSegmented**. Använd för att hämta en lista filtreras efter ett specifikt prefix **listQueuesSegmentedWithPrefix**.
+tooretrieve en lista över köer, Använd **listQueuesSegmented**. tooretrieve en lista filtreras efter ett specifikt prefix använder **listQueuesSegmentedWithPrefix**.
 
 ```
 queueSvc.listQueuesSegmented(null, function(error, result, response){
   if(!error){
-    // result.entries contains the list of queues
+    // result.entries contains hello list of queues
   }
 });
 ```
 
-Om inte det går att returnera alla köer `result.continuationToken` kan användas som den första parametern för **listQueuesSegmented** eller den andra parametern för **listQueuesSegmentedWithPrefix** att hämta fler resultat.
+Om inte det går att returnera alla köer `result.continuationToken` kan användas som hello första parametern för **listQueuesSegmented** eller hello andra parametern för **listQueuesSegmentedWithPrefix** tooretrieve resultat.
 
 ## <a name="how-to-delete-a-queue"></a>Så här: Ta bort en kö
-Om du vill ta bort en kö och alla meddelanden som finns i den anropar den **deleteQueue** metoden för köobjektet.
+toodelete en kö och alla hälsningsmeddelande finns i den, anropa den **deleteQueue** metod för hello köobjekt.
 
 ```
 queueSvc.deleteQueue(queueName, function(error, response){
@@ -246,14 +246,14 @@ queueSvc.deleteQueue(queueName, function(error, response){
 });
 ```
 
-Om du vill rensa alla meddelanden från en kö utan att ta bort den använda **clearMessages**.
+tooclear alla meddelanden från en kö utan att ta bort det, Använd **clearMessages**.
 
 ## <a name="how-to-work-with-shared-access-signatures"></a>Så här: arbeta med signaturer för delad åtkomst
-Delad åtkomst signaturer (SAS) är ett säkert sätt att tillhandahålla detaljerade åtkomst till köer utan att erbjuda dina lagringskontonamn eller nycklar. SAS används ofta för att ge begränsad åtkomst till din köer, till exempel att tillåta en mobil app att skicka meddelanden.
+Delad åtkomst signaturer (SAS) är ett säkert sätt tooprovide detaljerade åtkomst tooqueues utan att erbjuda dina lagringskontonamn eller nycklar. Säkerhetsassociationer är ofta använda tooprovide begränsad åtkomst tooyour köer, till exempel att tillåta en mobil app toosubmit meddelanden.
 
-En betrodda program, till exempel en molnbaserad tjänst genererar en SAS med hjälp av den **generateSharedAccessSignature** av den **QueueService**, och ger den till ett program som inte är betrodd eller delvis betrodda. Till exempel en mobil app. SAS genereras med hjälp av en princip som beskriver de då SAS är giltig start- och slutdatum samt den åtkomstnivå som beviljats till SAS-innehavare.
+En betrodda program, till exempel en molnbaserad tjänst genererar en SAS med hello **generateSharedAccessSignature** av hello **QueueService**, och ger den tooan inte är betrodd eller delvis betrodda program. Till exempel en mobil app. hello SAS genereras med en princip som beskriver hello start- och slutdatum under vilka hello SAS är giltigt, samt hello åtkomst nivån beviljade toohello SAS innehavaren.
 
-I följande exempel skapar en ny princip för delad åtkomst som låter innehavaren SAS att lägga till meddelanden i kön och upphör att gälla 100 minuter efter den tidpunkt som den har skapats.
+hello följande exempel skapar en ny princip för delad åtkomst som gör att hello SAS innehavaren tooadd toohello kön och upphör att gälla 100 minuter efter hello när det skapas.
 
 ```
 var startDate = new Date();
@@ -273,9 +273,9 @@ var queueSAS = queueSvc.generateSharedAccessSignature('myqueue', sharedAccessPol
 var host = queueSvc.host;
 ```
 
-Observera att information om värden måste anges, eftersom det är nödvändigt när SAS-innehavaren försöker få åtkomst till kön.
+Observera att information om hello värden måste anges också som krävs när hello SAS innehavaren försöker tooaccess hello kön.
 
-Klientprogrammet sedan använder SAS med **QueueServiceWithSAS** att utföra åtgärder mot kön. I följande exempel ansluter till kön och skapar ett meddelande.
+Hej klientprogrammet och sedan använder hello SAS med **QueueServiceWithSAS** tooperform åtgärder mot hello kön. följande exempel hello ansluter toohello kön och skapar ett meddelande.
 
 ```
 var sharedQueueService = azure.createQueueServiceWithSas(host, queueSAS);
@@ -286,12 +286,12 @@ sharedQueueService.createMessage('myqueue', 'Hello world from SAS!', function(er
 });
 ```
 
-Eftersom SAS genererades med Lägg till åtkomst om ett försök gjordes att läsa, uppdatera eller ta bort meddelanden, returneras ett fel.
+Eftersom hello SAS genererades med Lägg till åtkomst om ett försök gjordes tooread, uppdatera eller ta bort meddelanden, returneras ett fel.
 
 ### <a name="access-control-lists"></a>Listor för åtkomstkontroll
-Du kan också använda en åtkomstkontrollista (ACL) för att ange åtkomstprincipen för en SAS. Detta är användbart om du vill att flera klienter kan komma åt kön, men ger olika åtkomstprinciper för varje klient.
+Du kan också använda en åtkomstkontrollista (ACL) tooset hello åtkomstprincip för en SAS. Detta är användbart om du vill tooallow flera klienter tooaccess hello kön, men ange olika principer för varje klient.
 
-En ACL implementeras med hjälp av en matris med principer för åtkomst med ett ID som är associerade med varje princip. I följande exempel definierar två principer; en för 'Användare1' och en för 'användare2':
+En ACL implementeras med hjälp av en matris med principer för åtkomst med ett ID som är associerade med varje princip. hello följande exempel definierar två principer; en för 'Användare1' och en för 'användare2':
 
 ```
 var sharedAccessPolicy = {
@@ -308,7 +308,7 @@ var sharedAccessPolicy = {
 };
 ```
 
-I följande exempel hämtar den aktuella ACL för **MinKö**, lägger till nya principer med hjälp av **setQueueAcl**. Den här metoden kan:
+följande exempel hämtar hello hello aktuella ACL för **MinKö**, lägger till nya principer för hello med **setQueueAcl**. Den här metoden kan:
 
 ```
 var extend = require('extend');
@@ -324,25 +324,25 @@ queueSvc.getQueueAcl('myqueue', function(error, result, response) {
 });
 ```
 
-Du kan sedan skapa en SAS baserat på ID för en princip när du har angett ACL. I följande exempel skapas en ny SAS för 'användare2':
+En gång hello ACL har ställts in, du kan sedan skapa en SAS baserat på hello-ID för en princip. hello följande exempel skapas en ny SAS för 'användare2':
 
 ```
 queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig grunderna i queue storage följa dessa länkar för att lära dig mer komplexa lagringsuppgifter.
+Nu när du har lärt dig hello grunderna i queue storage kan du följa dessa länkar toolearn om mer komplexa lagringsuppgifter.
 
-* Besök [Azure Storage-teamets blogg] [Azure Storage-teamets blogg].
-* Besök den [Azure Storage SDK: N för noden] [ Azure Storage SDK for Node] databasen på GitHub.
+* Besök hello [Azure Storage-teamets blogg] [Azure Storage-teamets blogg].
+* Besök hello [Azure Storage SDK: N för noden] [ Azure Storage SDK for Node] databasen på GitHub.
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
-[using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
+[using hello REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
 [Azure Portal]: https://portal.azure.com
 [Skapa en Node.js-webbapp i Azure App Service](../../app-service-web/app-service-web-get-started-nodejs.md)   
-[Node.js-webbapp som använder tjänsten Azure-tabell](../../app-service-web/storage-nodejs-use-table-storage-web-site.md)
+[Node.js-webbapp med hjälp av hello Azure Table-tjänsten](../../app-service-web/storage-nodejs-use-table-storage-web-site.md)
   
 
 
-[Skapa och distribuera ett Node.js-program till en Azure-molntjänst](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)   
-[Azure Storage-teamets blogg]: http://blogs.msdn.com/b/windowsazurestorage/ [skapa och distribuera en Node.js-webbapp till Azure med hjälp av Web Matrix]: https://www.microsoft.com/web/webmatrix/   
+[Skapa och distribuera en Node.js-programmet tooan Azure Cloud Service](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)   
+[Azure Storage-teamets blogg]: http://blogs.msdn.com/b/windowsazurestorage/ [skapa och distribuera en Node.js web app tooAzure med hjälp av Web Matrix]: https://www.microsoft.com/web/webmatrix/   

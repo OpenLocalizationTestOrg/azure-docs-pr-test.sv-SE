@@ -1,5 +1,5 @@
 ---
-title: "Användargränssnittet för Azure Mobile Engagement - Reach så"
+title: "aaaAzure användargränssnitt för Mobile Engagement - nå hur man"
 description: "Användargränssnitt, översikt för Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 33a0a9d0c399cb7f0a791c4c16dde2e2d62364ca
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4b6dafd09d894214d4c386f5c6f157a77671606f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-get-started-using-and-managing-pushes-to-reach-out-to-your-end-users"></a>Hur du kommer igång med och hantera push-meddelanden nå ut till användarna
-När SDK är helt integrerat i din app, du kan börja använda den Reach-avsnittet i Användargränssnittet för Push-meddelanden för användarna i din app.  
+# <a name="how-tooget-started-using-and-managing-pushes-tooreach-out-tooyour-end-users"></a>Hur tooget igång med att använda och hantera push-meddelanden tooreach ut tooyour slutanvändare
+När hello SDK är helt integrerat i din app, kan du börja använda hello hello Reach-avsnittet i hello UI tooPush meddelanden toohello användare i appen.  
 
 ## <a name="do-your-first-push-notification-campaign"></a>Gör din första Push-Meddelandekampanj
-* Bekräfta att räckhåll är integrerat i din app med SDK. 
+* Bekräfta att räckhåll är integrerat i din app med hello SDK. 
 * Välj ditt program
 
 ![First1][1]
 
-* Gå till avsnittet ”Reach” och klicka på ”nya meddelandet”
+* Gå toohello ”Reach” avsnittet och klicka på ”nytt meddelande”
 
 ![First2][2]
 
@@ -37,19 +37,19 @@ När SDK är helt integrerat i din app, du kan börja använda den Reach-avsnitt
   
 ![First3][3]
 
-* Välj hur meddelandet ska skickas, som i appen bara
+* Välj hur hello-meddelande ska skickas, som i appen bara
 
 ![First4][4]
 
-* Skapa meddelande som du vill skicka
+* Skapa hello-meddelande som du vill toopush
 
 ![First5][5]
 
-* Du kan skriva en titel på meddelandet (valfritt).
+* Du kan skriva en titel på hello-meddelande (valfritt).
 * Skriva innehållet för push-meddelandet.
-* Du kan ladda upp en bild. Tänk på att storleken på filen inte får överstiga 32 768 byte.
-* Du har också möjlighet att välja fler alternativ, men för fokus för den här självstudiekursen kommer vi att se som senare.
-* Välj innehållstypen som meddelande endast
+* Du kan ladda upp en bild. Tänk på att hello storleken på hello-filen inte får överstiga 32 768 byte.
+* Du har också hello möjlighet tooselect ytterligare alternativ, men för hello fokus för den här självstudiekursen, kommer vi att se som senare.
+* Välj hello innehållstyp som meddelande endast
 
 ![First6][6]
 
@@ -61,58 +61,58 @@ När SDK är helt integrerat i din app, du kan börja använda den Reach-avsnitt
 ![test1][8]
 
 * Registrera din enhet.
-* Klicka på kryssrutan på den enhet som du vill skicka.
-* Klicka på knappen ”Test” för att skicka push-meddelandet till enheten.
+* Klicka på hello kryssrutan för hello enhet du vill toopush.
+* Klicka på hello ”Test” knappen toosend hello push toohello enhet.
 
 ![Test2][9]
 
-* Aktivera kampanjen
+* Aktivera hello kampanj
 
 ![test3][10]
 
-* Nu när du har skapat din kampanj måste du aktivera den för meddelandet ska skickas till användarna.
+* Nu när du har skapat din kampanj behöver du bara tooactivate för hello meddelande toobe pushas tooyour användare.
 
 ## <a name="send-personalized-pushes"></a>Skicka push-meddelanden anpassade
-* Det här exemplet skapar en distribution där en anpassad rabatt-kod har angetts i push-meddelande.
+* Det här exemplet skapar en distribution där en anpassad rabatt-kod har angetts i hello push-meddelande.
 
 ![Personalize1][11]
 
-Anpassning fungerar genom att ersätta en markör av från en app-info tagg så har du se till att användaren har rätt app-info definieras först. I det här exemplet har utvalda användare en app info-tagg med namnet rebate_code som definierats.
-Som du ser ovan innehåller push notification innehållet markör ${rebate_code} som visar att det är som ska ersättas med det faktiska innehållet i app-info-taggen.
+Anpassning fungerar genom att ersätta en markör av från en app-info tagg så har du toomake till hello användaren har hello rätt app-info definieras först. I det här exemplet hello har utvalda användare en app info-tagg med namnet rebate_code som definierats.
+Som du ser ovan innehåller hello push notification-innehållet hello markör ${rebate_code} som visar att det är toobe ersättas med hello själva innehållet hello app-info tagg.
 
 > [!WARNING]
-> Om taggen app-info inte har definierats för användaren, får inte push-meddelandet.
+> Om taggen för hello app-info inte har definierats för hello användaren får inte hello användaren hello push.
 
 * Resultat
 
 ![Personalize2][12]
 
-### <a name="you-can-further-personalize-the-text-your-notification"></a>Du kan anpassa texten som ditt meddelande
+### <a name="you-can-further-personalize-hello-text-your-notification"></a>Du kan anpassa text hello-meddelande
 ![Personalize3][13]
 
-* Rubrik på meddelandet, inklusive
-* Och innehållet i meddelandet.
-* Välj typ av meddelande (textvy eller webbvy)
+* Inklusive hello rubrik av hello-meddelande
+* Och hello innehåll hello-meddelande.
+* Välj hello typ för meddelande (textvy eller webbvy)
 
 ![Personalize4][14]
 
-### <a name="the-body-of-an-announcement-may-also-be-personalized-with"></a>Brödtexten i ett meddelande kan också anpassas med:
-* Åtgärds-URL bör du vill anpassa landningssida
-* Titeln,
-* Innehållet i meddelandet.
+### <a name="hello-body-of-an-announcement-may-also-be-personalized-with"></a>hello brödtexten i ett meddelande kan också anpassas med:
+* hello åtgärdens URL Om du vill att toocustomize hello landningssida
+* hello-rubrik
+* hello brödtext hello-meddelande.
 
 ## <a name="differentiate-your-push-notification-in-or-out-of-app"></a>Skilja mellan din Push Notification (i eller utanför appen)
-* Välj typ av meddelande du push, Välj ditt program, finns i avsnittet ”nå”, väljer eller skapar en push-kampanj och gå till avsnittet ”meddelanden”.
-* Klicka på ”leveransläget” som du vill.
-* Klicka på kryssrutan ”begränsa aktiviteter” om du vill att aviseringen uppstår på specifika aktiviteter (skärmar).
+* Välj hello typen av meddelande push, Välj ditt program, gå toohello ”Reach” avsnittet, väljer eller skapar en push-kampanj och gå toohello ”meddelanden” avsnittet.
+* Klicka på hello ”leveransläget” som du vill.
+* Klicka på hello ”begränsa aktiviteter” kryssrutan om du vill hello-meddelande som uppstår på specifika aktiviteter (skärmar).
 
 ![Differentiate1][15]
 
 ### <a name="out-of-app-only-delivery-mode"></a>Leveransläget ”endast utanför appen
 ![Differentiate2][16]
 
-”Endast utanför appen” leveransläge ger push-meddelanden när programmet avslutas. Detta är standard push-meddelande.
-När du väljer ”endast utanför appen” måste du har redan angett certifikat från den plattform som programmet skapar på (APN eller GCM).
+”Endast utanför appen” leveransläge ger push-meddelanden när hello programmet stängs. Detta är hello standard push-meddelande.
+När du väljer ”endast utanför appen” måste du har redan angett hello certifikat från hello-plattform som programmet skapar på (APN eller GCM).
 
 ### <a name="see-also"></a>Se även
 * [Certifikat för Apple Push Notification Service –](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging-certifikat](http://developer.android.com/google/gcm/index.html) 
@@ -120,75 +120,75 @@ När du väljer ”endast utanför appen” måste du har redan angett certifika
 ### <a name="in-app-only-delivery-mode"></a>”i appen bara” leveransläge
 ![Differentiate3][17]
 
-”I appen bara” leveransläge ger push-meddelanden när programmet körs.
-Du behöver inte gå igenom APN och GCM-systemet för det här meddelandet.
-Du kan använda i appen leverans system för att nå dina slutanvändare.
-Du kan helt anpassa meddelandet och bestämma i vilken aktivitet (skärm) meddelandet ska visas.
+”I appen bara” leveransläge ger push-meddelanden när hello program körs.
+För det här meddelandet behöver inte toogo via hello APN och GCM-system.
+Du kan använda hello i appen leverans system tooreach dina slutanvändare.
+Du kan helt anpassa hello-meddelande och bestämma i vilken aktivitet (skärm) hello-meddelande som ska visas.
 
 ### <a name="anytime-delivery-mode"></a>”När som helst” leveransläge
-Du kan välja ett ”när som helst” leveransläge, säkerställer du att nå slutanvändaren om programmet körs eller inte.
-När du väljer ”när som helst” måste du har redan angett certifikat från den plattform som programmet skapar (APN eller GCM). 
+Du kan välja ett ”när som helst” leveransläge, säkerställer tooreach slutanvändaren hello om programmet körs eller inte.
+När du väljer ”när som helst” måste du har redan angett hello certifikat från hello-plattform som programmet skapar (APN eller GCM). 
 
 ## <a name="schedule-a-push-campaign"></a>Schemalägga en Push-kampanj
-### <a name="plan-to-start-a-campaign"></a>Planera att starta en kampanj
+### <a name="plan-toostart-a-campaign"></a>Planera tooStart en kampanj
 ![Shedule1][18]
 
-Det är den 21 av mars och du har ett meddelande att göra och hyvlat för den 22 av mars vid midnatt. Du behöver inte vara framför gränssnittet för att göra en push! Du kan planera i förväg exakt minut meddelanden ska skickas.
+Det är hello 21 mars och du har ett meddelande toomake och hyvlat för hello 22nd mars vid midnatt. Du har inte toostay framför hello gränssnittet toodo en push! Du kan planera i förväg hello exakt minut meddelanden ska skickas.
 
-* Avmarkera ”None” kryssrutan och välj en starttid 
-* Välj datumet och tidpunkt som du vill starta push-kampanj.
+* Avmarkera hello ”None” kryssrutan och välj en starttid 
+* Välj hello datum- och hello du vill toostart hello push-kampanj.
 
-### <a name="plan-to-end-a-campaign"></a>Planera att avsluta en kampanj
+### <a name="plan-tooend-a-campaign"></a>Planera tooend en kampanj
 ![Shedule2][19]
 
-Du vill kampanjen slutar på det 25 av mars klockan 3:00, men du vet att du inte kan göra det.
-Du behöver inte vara framför gränssnittet till push! Du kan planera i förväg exakt minut kampanjen slutar.
+Du vill din kampanj toostop på hello 25 mars 3:00 pm men du vet att du inte kan toodo den.
+Du har inte toostay framför hello gränssnittet toopush! Du kan planera i förväg hello exakt minut kampanjen slutar.
 
-* Klicka på ”None” kryssrutan eller välj en sluttid
-* Välj datumet och tidpunkt som du vill slutföra push-kampanj.
+* Klicka på hello ”None” kryssrutan eller välj en sluttid
+* Välj hello datum- och hello du vill toofinish hello push-kampanj.
 
 ### <a name="end-a-campaign-manually"></a>Avsluta en kampanj manuellt
 ![Shedule3][20]
 
-Som standard till ”None”-kryssrutorna är markerade.
-Det innebär att kampanjen startar så fort du aktivera den i avsnittet reach och avslutas när du vill sluta på reach-avsnittet.
+Hej ”None”-kryssrutorna är markerade som standard.
+Detta innebär att hello kampanj startar så fort du aktivera den i hello nå avsnittet och uppnår slutet när du vill sluta på hello avsnitt.
 
 > [!NOTE]
-> Kampanjer som skapats utan ett slutdatum lagra push lokalt på enheten och visar den nästa gång appen öppnas även om kampanjen manuellt avslutas.
+> Kampanjer som har skapats utan ett slutdatum lagra hello push lokalt på hello enhet och visar den hello nästa gång hello appen öppnas även om hello kampanj manuellt avslutas.
 
 ## <a name="enhance-a-push-notification-with-a-text-view"></a>Förbättra ett Push-meddelande med en textvy
 ### <a name="what-is-a-text-view"></a>Vad är en textvy?
 ![TextView1][21]
 
-En textvy som är ett popup-fönster med textinnehåll. Det här popup-fönstret visas när slutanvändaren har klickat på push-meddelandet.
-En textvy kan du visa mer innehåll till slutanvändaren. Det är också möjlighet att lämna ett anrop till åtgärd, till exempel hoppa till en sida för din app, omdirigering till en butik, öppna en webbsida, e-post, startar en geolokaliserade sökning, etc...
+En textvy som är ett popup-fönster med textinnehåll. Det här popup-fönstret visas när hello slutanvändaren har klickat på hello push-meddelande.
+En textvy kan du toopresent mer innehåll tooyour slutanvändaren. Det är också hello möjlighet toopresent en tooaction anrop, till exempel hoppa tooa sidan för din app, omdirigera tooa Store, öppna en webbsida, e-post, startar en geolokaliserade sökning osv...
 
 ### <a name="example-text-view"></a>Exempel: Textvy
-* Skapa din Push-meddelandekampanj i avsnittet ”Reach” och namnge din kampanj
+* Skapa din Push-meddelandekampanj i hello ”nå” och namnge din kampanj
 
 ![TextView2][22]
 
-* Skriva ett meddelande som ska visas på meddelandet.
-* Välj ”text” meddelande innehållstyp
+* Skriv hello-meddelande som ska visas på hello-meddelande.
+* Välj hello-meddelande innehållstyp ”text”
 
 ![TextView3][23]
 
 > [!NOTE]
 > När du överför en textvy kommer alltid med ett meddelande först. 
 
-* Definiera texten (efter att ha markerat meddelande textinnehåll i underavsnittet visas så att du kan definiera den text som du vill ska visas.)
+* Definiera hello text (när du har valt hello för meddelande textinnehåll hello underavsnittet visas så att du toodefine hello text som du vill toobe visas.)
 
 ![TextView4][24]
 
-* Skriva rubrik som visas överst i meddelandet.
-* Skriva innehållet i textvyn.
-* Skriv det innehåll som visas på åtgärdsknappen (en med åtgärdsknappen kan programmet för att göra något, till exempel öppna en sida i programmet, omdirigering till en App-butik eller alla typer av datakällor som du kan ange).
-* Skriv innehållet som ska visas på knappen Avsluta (genom att klicka på knappen Stäng, textvyn försvinner.)
-* Skapa din push-meddelandekampanj och den visas på listan kampanj.
+* Skriva hello rubrik som visas överst hello i hello-meddelande.
+* Skriva hello huvuddragen av hello textvy.
+* Skriv hello innehåll som visas på hello åtgärdsknappen (en med åtgärdsknappen kan hello programmet toomake något, till exempel öppna en sida av programmet hello dirigera tooan App store eller alla typer av datakällor som du kan ange).
+* Skriv hello innehåll som visas på hello avsluta-knappen (genom att klicka på hello avsluta-knappen, hello textvy försvinner.)
+* Skapa din push-meddelandekampanj och visas i listan för hello kampanj.
 
 ![TextView5][25]
 
-* Aktivera push-meddelandekampanj för att skicka textvyn till användarna.
+* Aktivera push notification kampanj toosend hello text visa tooyour användarna.
 
 ![TextView6][26]
 
@@ -196,51 +196,51 @@ En textvy kan du visa mer innehåll till slutanvändaren. Det är också möjlig
 
 ![TextView7][27]
 
-* Användaren får ett meddelande och klicka på det.
-* Textvyn visas som ett popup-fönster som tillåter användaren att interagera med den.
+* hello användaren får hello-meddelande och klicka på det.
+* hello textvy visas som ett popup-vilket gör att hello användaren toointeract med den.
 
 ## <a name="enhance-a-push-notification-with-a-web-view"></a>Förbättra ett Push-meddelande med en webbvy
 ### <a name="what-is-a-web-view"></a>Vad är en webbvy?
 ![WebView1][28]
 
-En webbvy är ett popup-fönster med webbinnehåll. Det här popup-fönstret visas när slutanvändaren har klickat på push-meddelandet.
-En webbvy möjliggör mer interaktion med slutanvändaren.
-Det är också möjlighet att lämna ett anrop till åtgärd, till exempel omdirigering till App Store, öppna en webbsida, e-post, starta en geolokaliserade sökning, etc...
+En webbvy är ett popup-fönster med webbinnehåll. Det här popup-fönster visas när hello slutanvändaren har klickat på hello push-meddelande.
+En webbvy möjliggör toohave mer interaktion med hello slutanvändaren.
+Det är också hello möjlighet toopresent en tooaction anrop, till exempel omdirigering av tooApp Store, öppna en webbsida, e-post, startar en geolokaliserade sökning osv...
 
 ### <a name="example-web-view"></a>Exempel: Webbvy
-* Skapa din Push-kampanj i avsnittet ”Reach” och namnge din kampanj.
+* Skapa din Push-kampanj i hello ”nå” och namnge din kampanj.
 
 ![WebView2][29]
 
-* Skriva ett meddelande som ska visas på meddelandet.
-* Välj typen av meddelande-innehåll som ”web”
+* Skriv hello-meddelande som ska visas på hello-meddelande.
+* Välj hello meddelande innehållstyp som ”web”
 
 ![WebView3][30]
 
 ### <a name="about-announcement-types"></a>Om meddelandet typer:
-* Endast meddelande: det är ett enkelt standard meddelande. Vilket innebär att om en användare klickar på den, ingen extra vy visas, men endast den åtgärd som är kopplade till den sker.
-* SMS-meddelande: det är ett meddelande som snabbt tillkallar användaren måste ha en titt på textvyn.
-* Web meddelande: det är ett meddelande som snabbt tillkallar användaren att titta på en webbvy.
-  Välj innehållet som ”Web meddelandet”.
+* Endast meddelande: det är ett enkelt standard meddelande. Vilket innebär att om en användare klickar på den, ingen extra vy visas, men endast hello åtgärd som är associerade tooit sker.
+* SMS-meddelande: det är ett meddelande som snabbt tillkallar hello användaren toohave en titt på textvyn.
+* Web meddelande: det är ett meddelande som snabbt tillkallar hello användaren toohave en titt på en webbvy.
+  Välj hello ”Web meddelandet” innehåll.
 
 > [!NOTE]
 > När du överför en webbvy kommer alltid med ett meddelande först.
 
-* Definiera webbinnehållet (efter att ha valt meddelande webbinnehåll underavsnittet visas så att du kan definiera den webbinnehåll du vill ska visas.)
+* Definiera hello webbinnehåll (när du har valt hello för meddelande webbinnehåll hello avsnitt visas så att du toodefine hello webbinnehåll du vill toobe visas.)
 
 ![WebView4][31]
 
-* Skriva rubrik som visas överst i meddelandet (valfritt).
+* Skriva hello rubrik som visas överst hello i hello-meddelande (valfritt).
 * Skriv in HTML-koden här.
-* Klicka på knappen för att växla edition och se hur den ser ut för redigering.
-* Skriv det innehåll som visas på åtgärdsknappen (en med åtgärdsknappen kan programmet för att göra något, till exempel öppna en sida i programmet, omdirigering till en butik eller alla typer av datakällor som du kan ange).
-* Skriv innehållet som ska visas på knappen Avsluta (genom att klicka på knappen Stäng, webbvyn försvinner).
+* Klicka på hello läge knappen tooswitch edition för redigering och se hur den ser ut.
+* Skriv hello innehåll som visas på hello åtgärdsknappen (en med åtgärdsknappen kan hello programmet toomake något, till exempel öppna en sida av programmet hello omdirigera tooa Store eller alla typer av datakällor som du kan ange).
+* Skriv hello innehåll som visas på hello avsluta-knappen (genom att klicka på hello avsluta-knappen, hello webbvy försvinner).
 * Resultat
 
 ![WebView5][32]
 
-* Användaren ta emot meddelandet och klicka på den.
-* Textvyn visas som ett popup-fönster som tillåter användaren att interagera med den.
+* hello användaren hello-meddelande och klicka på den.
+* hello textvy visas som ett popup-vilket gör att hello användaren toointeract med den.
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-how-tos/First1.png

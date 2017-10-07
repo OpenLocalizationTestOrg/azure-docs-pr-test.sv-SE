@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB Automation - hantering med Powershell | Microsoft Docs
+title: aaaAzure Cosmos DB Automation - hantering med Powershell | Microsoft Docs
 description: "Använd Azure Powershell hantera dina Azure DB som Cosmos-konton."
 services: cosmos-db
 author: dmakwana
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: 25c543528119410dff0684845a713dcb0d6151d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3239fb815918a0e47bff69fcd1ab6562519e429b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Skapa ett Azure DB som Cosmos-konto med hjälp av PowerShell
 
-Enligt följande anvisningar beskriver kommandon för att automatisera hanteringen av dina Azure Cosmos DB databasen konton med hjälp av Azure Powershell. Den inkluderar också kommandon för att hantera nycklar och prioriteringar för växling vid fel i [flera regioner databasen konton][scaling-globally]. Uppdatera ditt konto kan du ändra konsekvenskontroll principer och Lägg till/ta bort regioner. Plattformsoberoende hantering av Azure DB som Cosmos-konto, kan använda antingen [Azure CLI](cli-samples.md), [Resource Provider REST API][rp-rest-api], eller [Azure-portalen ](create-documentdb-dotnet.md#create-account).
+hello beskriver följande guiden kommandon tooautomate hanteringen av dina Azure Cosmos DB databasen konton med hjälp av Azure Powershell. Den innehåller också kommandon toomanage nycklar och prioriteringar för växling vid fel i [flera regioner databasen konton][scaling-globally]. Uppdatera ditt konto kan du toomodify konsekvenskontroll principer och Lägg till/ta bort regioner. Plattformsoberoende hantering av Azure DB som Cosmos-konto, kan använda antingen [Azure CLI](cli-samples.md), hello [Resource Provider REST API][rp-rest-api], eller hello [Azure portalen](create-documentdb-dotnet.md#create-account).
 
 ## <a name="getting-started"></a>Komma igång
 
-Följ instruktionerna i [hur du installerar och konfigurerar du Azure PowerShell] [ powershell-install-configure] att installera och logga in på ditt Azure Resource Manager-konto i Powershell.
+Följ anvisningarna för hello i [hur tooinstall och konfigurera Azure PowerShell] [ powershell-install-configure] tooinstall och logga in tooyour Azure Resource Manager-kontot i Powershell.
 
 ### <a name="notes"></a>Anteckningar
 
-* Om du vill köra följande kommandon utan bekräftelse från användaren, Lägg till den `-Force` flaggan i kommandot.
-* Följande kommandon är synkrona.
+* Om du vill att tooexecute hello följande kommandon utan bekräftelse från användaren att lägga till hello `-Force` flaggan toohello kommando.
+* Alla hello följande kommandon är synkrona.
 
 ## <a id="create-documentdb-account-powershell"></a>Skapa ett Azure Cosmos DB-konto
 
-Det här kommandot kan du skapa ett databaskonto Azure Cosmos DB. Konfigurera ditt nya konto som antingen en region eller [flera regioner] [ scaling-globally] med en viss [konsekvent princip](consistency-levels.md).
+Det här kommandot kan du toocreate ett konto för Azure DB som Cosmos-databasen. Konfigurera ditt nya konto som antingen en region eller [flera regioner] [ scaling-globally] med en viss [konsekvent princip](consistency-levels.md).
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -44,15 +44,15 @@ Det här kommandot kan du skapa ett databaskonto Azure Cosmos DB. Konfigurera di
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name>  -Location "<resource-group-location>" -Name <database-account-name> -Properties $CosmosDBProperties
     
-* `<write-region-location>`Platsnamnet för databaskontot skrivåtgärder regionen. Den här platsen måste ha ett värde för växling vid fel prioritet 0. Det måste finnas exakt en skrivning region per konto.
-* `<read-region-location>`Platsnamnet för den skrivskyddade regionen för databaskontot. Den här platsen måste ha ett värde för prioritet för växling vid fel som är större än 0. Det kan finnas mer än en skrivskyddad regioner per konto.
-* `<ip-range-filter>`Anger uppsättningen IP-adresser och IP-adressintervall i CIDR-format ska ingå som listan över tillåtna klientens IP-adresser för en viss databas-konto. IP-adressintervall måste vara kommatecken avgränsade och får inte innehålla blanksteg. Mer information finns i [Azure Cosmos DB-brandväggsstöd](firewall-support.md)
-* `<default-consistency-level>`Konsekvenskontroll standardnivå för Azure DB som Cosmos-konto. Mer information finns i [Konsekvensnivåer i Azure Cosmos DB](consistency-levels.md).
-* `<max-interval>`När det används med begränsas föråldringskonsekvens representerar det här värdet tid mängden föråldrad (i sekunder) tolereras. Tillåtet område för det här värdet är 1-100.
-* `<max-staleness-prefix>`När det används med begränsas föråldringskonsekvens representerar det här värdet antalet inaktuella begäranden tolereras. Tillåtet område för det här värdet är 1 – 2 147 483 647.
-* `<resource-group-name>`Namnet på den [Azure-resursgrupp] [ azure-resource-groups] som det nya kontot i Azure Cosmos DB databasen tillhör.
-* `<resource-group-location>`Platsen för Azure-resursgrupp som det nya kontot i Azure Cosmos DB databasen tillhör.
-* `<database-account-name>`Namnet på kontot som ska skapas Azure Cosmos DB. Det kan endast använda gemena bokstäver, siffror, den '-' tecken och måste vara mellan 3 och 50 tecken.
+* `<write-region-location>`namn på hello hello skriva regionens hello konto. Den här platsen är nödvändig toohave redundans prioriteringsvärdet 0. Det måste finnas exakt en skrivning region per konto.
+* `<read-region-location>`namn på hello hello läsa regionens hello databaskonto. Den här platsen är nödvändig toohave ett prioritetsvärde för växling vid fel som är större än 0. Det kan finnas mer än en skrivskyddad regioner per konto.
+* `<ip-range-filter>`Anger hello uppsättning IP-adresser och IP-adressintervall i CIDR formuläret toobe inkluderad som hello tillåts lista över klientens IP-adresser för en viss databas-konto. IP-adressintervall måste vara kommatecken avgränsade och får inte innehålla blanksteg. Mer information finns i [Azure Cosmos DB-brandväggsstöd](firewall-support.md)
+* `<default-consistency-level>`hello konsekvenskontroll standardnivå för hello Azure DB som Cosmos-konto. Mer information finns i [Konsekvensnivåer i Azure Cosmos DB](consistency-levels.md).
+* `<max-interval>`När det används med begränsas föråldringskonsekvens representerar det här värdet hello tid föråldrad (i sekunder) tolereras. Tillåtet område för det här värdet är 1-100.
+* `<max-staleness-prefix>`När det används med begränsas föråldringskonsekvens representerar det här värdet hello antal inaktiva begäranden tolereras. Tillåtet område för det här värdet är 1 – 2 147 483 647.
+* `<resource-group-name>`hello namnet på hello [Azure-resursgrupp] [ azure-resource-groups] toowhich hello nya Azure Cosmos DB databaskonto tillhör.
+* `<resource-group-location>`hello platsen för hello Azure-resursgrupp toowhich hello nya Azure Cosmos DB konto tillhör.
+* `<database-account-name>`hello namnet på hello Azure Cosmos DB databasen konto toobe skapas. Det kan endast använda gemena bokstäver, siffror, hello '-' tecken och måste vara mellan 3 och 50 tecken.
 
 Exempel: 
 
@@ -63,15 +63,15 @@ Exempel:
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
 ### <a name="notes"></a>Anteckningar
-* I föregående exempel skapas ett databaskonto med två områden. Det är också möjligt att skapa ett databaskonto med en region (som är utsedd till skrivåtgärder region och har ett prioritetsvärde för växling vid fel 0) eller fler än två regioner. Mer information finns i [flera regioner databasen konton][scaling-globally].
-* Platser måste vara regioner som Azure Cosmos DB är allmänt tillgänglig. Den aktuella listan över regioner finns på den [Azure-regioner sidan](https://azure.microsoft.com/regions/#services).
+* hello skapar exemplet ovan ett konto med två områden. Det är också möjligt toocreate ett databaskonto med en region (som är utsedd till hello skrivåtgärder region och har ett prioritetsvärde för växling vid fel 0) eller fler än två regioner. Mer information finns i [flera regioner databasen konton][scaling-globally].
+* hello platser måste vara regioner som Azure Cosmos DB är allmänt tillgänglig. hello aktuell lista över regioner finns på hello [Azure-regioner sidan](https://azure.microsoft.com/regions/#services).
 
 ## <a id="update-documentdb-account-powershell"></a>Uppdatera ett DocumentDB-databaskonto
 
-Det här kommandot kan du uppdatera kontoegenskaperna Azure DB som Cosmos-databasen. Detta inkluderar konsekvenskontroll principen och de platser som kontot som finns i.
+Det här kommandot ger tooupdate kontoegenskaperna Azure DB som Cosmos-databasen. Detta inkluderar hello konsekvent princip och hello platser vilka hello konto finns i.
 
 > [!NOTE]
-> Det här kommandot kan du lägga till och ta bort regioner, men tillåter inte att ändra prioriteringarna för växling vid fel. Om du vill ändra prioriteringarna för växling vid fel finns [under](#modify-failover-priority-powershell).
+> Det här kommandot kan du tooadd och ta bort regioner, men kan du inte toomodify redundans prioriteter. toomodify redundans prioriteter finns [under](#modify-failover-priority-powershell).
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -79,15 +79,15 @@ Det här kommandot kan du uppdatera kontoegenskaperna Azure DB som Cosmos-databa
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     Set-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <resource-group-name> -Name <database-account-name> -Properties $CosmosDBProperties
     
-* `<write-region-location>`Platsnamnet för databaskontot skrivåtgärder regionen. Den här platsen måste ha ett värde för växling vid fel prioritet 0. Det måste finnas exakt en skrivning region per konto.
-* `<read-region-location>`Platsnamnet för den skrivskyddade regionen för databaskontot. Den här platsen måste ha ett värde för prioritet för växling vid fel som är större än 0. Det kan finnas mer än en skrivskyddad regioner per konto.
-* `<default-consistency-level>`Konsekvenskontroll standardnivå för Azure DB som Cosmos-konto. Mer information finns i [Konsekvensnivåer i Azure Cosmos DB](consistency-levels.md).
-* `<ip-range-filter>`Anger uppsättningen IP-adresser och IP-adressintervall i CIDR-format ska ingå som listan över tillåtna klientens IP-adresser för en viss databas-konto. IP-adressintervall måste vara kommatecken avgränsade och får inte innehålla blanksteg. Mer information finns i [Azure Cosmos DB-brandväggsstöd](firewall-support.md)
-* `<max-interval>`När det används med begränsas föråldringskonsekvens representerar det här värdet tid mängden föråldrad (i sekunder) tolereras. Tillåtet område för det här värdet är 1-100.
-* `<max-staleness-prefix>`När det används med begränsas föråldringskonsekvens representerar det här värdet antalet inaktuella begäranden tolereras. Tillåtet område för det här värdet är 1 – 2 147 483 647.
-* `<resource-group-name>`Namnet på den [Azure-resursgrupp] [ azure-resource-groups] som det nya kontot i Azure Cosmos DB databasen tillhör.
-* `<resource-group-location>`Platsen för Azure-resursgrupp som det nya kontot i Azure Cosmos DB databasen tillhör.
-* `<database-account-name>`Namnet på kontot som ska uppdateras Azure Cosmos DB.
+* `<write-region-location>`namn på hello hello skriva regionens hello konto. Den här platsen är nödvändig toohave redundans prioriteringsvärdet 0. Det måste finnas exakt en skrivning region per konto.
+* `<read-region-location>`namn på hello hello läsa regionens hello databaskonto. Den här platsen är nödvändig toohave ett prioritetsvärde för växling vid fel som är större än 0. Det kan finnas mer än en skrivskyddad regioner per konto.
+* `<default-consistency-level>`hello konsekvenskontroll standardnivå för hello Azure DB som Cosmos-konto. Mer information finns i [Konsekvensnivåer i Azure Cosmos DB](consistency-levels.md).
+* `<ip-range-filter>`Anger hello uppsättning IP-adresser och IP-adressintervall i CIDR formuläret toobe inkluderad som hello tillåts lista över klientens IP-adresser för en viss databas-konto. IP-adressintervall måste vara kommatecken avgränsade och får inte innehålla blanksteg. Mer information finns i [Azure Cosmos DB-brandväggsstöd](firewall-support.md)
+* `<max-interval>`När det används med begränsas föråldringskonsekvens representerar det här värdet hello tid föråldrad (i sekunder) tolereras. Tillåtet område för det här värdet är 1-100.
+* `<max-staleness-prefix>`När det används med begränsas föråldringskonsekvens representerar det här värdet hello antal inaktiva begäranden tolereras. Tillåtet område för det här värdet är 1 – 2 147 483 647.
+* `<resource-group-name>`hello namnet på hello [Azure-resursgrupp] [ azure-resource-groups] toowhich hello nya Azure Cosmos DB databaskonto tillhör.
+* `<resource-group-location>`hello platsen för hello Azure-resursgrupp toowhich hello nya Azure Cosmos DB konto tillhör.
+* `<database-account-name>`hello namnet på hello Azure Cosmos DB databasen konto toobe uppdateras.
 
 Exempel: 
 
@@ -99,12 +99,12 @@ Exempel:
 
 ## <a id="delete-documentdb-account-powershell"></a>Ta bort en DocumentDB-databaskonto
 
-Det här kommandot kan du ta bort ett befintligt konto i Azure DB som Cosmos-databasen.
+Det här kommandot kan du toodelete ett befintligt konto i Azure DB som Cosmos-databasen.
 
     Remove-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
     
-* `<resource-group-name>`Namnet på den [Azure-resursgrupp] [ azure-resource-groups] som det nya kontot i Azure Cosmos DB databasen tillhör.
-* `<database-account-name>`Namnet på det Azure Cosmos DB kontot ska tas bort.
+* `<resource-group-name>`hello namnet på hello [Azure-resursgrupp] [ azure-resource-groups] toowhich hello nya Azure Cosmos DB databaskonto tillhör.
+* `<database-account-name>`hello namnet på hello Azure Cosmos DB databasen konto toobe tas bort.
 
 Exempel:
 
@@ -112,12 +112,12 @@ Exempel:
 
 ## <a id="get-documentdb-properties-powershell"></a>Hämta egenskaper för ett DocumentDB-databaskonto
 
-Det här kommandot kan du hämta egenskaperna för ett befintligt konto i Azure DB som Cosmos-databasen.
+Det här kommandot kan du tooget hello egenskaper för ett befintligt konto i Azure DB som Cosmos-databasen.
 
     Get-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
-* `<resource-group-name>`Namnet på den [Azure-resursgrupp] [ azure-resource-groups] som det nya kontot i Azure Cosmos DB databasen tillhör.
-* `<database-account-name>`Namnet på Azure Cosmos DB databaskontot.
+* `<resource-group-name>`hello namnet på hello [Azure-resursgrupp] [ azure-resource-groups] toowhich hello nya Azure Cosmos DB databaskonto tillhör.
+* `<database-account-name>`hello namnet på hello Azure Cosmos DB konto.
 
 Exempel:
 
@@ -125,10 +125,10 @@ Exempel:
 
 ## <a id="update-tags-powershell"></a>Uppdatera taggar för ett konto för Azure Cosmos DB-databas
 
-I följande exempel beskrivs hur du ställer in [Azure resurstaggar] [ azure-resource-tags] Azure Cosmos-DB databasen i kontot.
+hello följande exempel beskrivs hur tooset [Azure resurstaggar] [ azure-resource-tags] Azure Cosmos-DB databasen i kontot.
 
 > [!NOTE]
-> Det här kommandot kan kombineras med kommandon för att skapa eller uppdatera genom att lägga till den `-Tags` flaggan med motsvarande parameter.
+> Det här kommandot kan kombineras med hello skapa eller uppdatera kommandon genom att lägga till hello `-Tags` flagga hello motsvarande parameter.
 
 Exempel:
 
@@ -137,12 +137,12 @@ Exempel:
 
 ## <a id="list-account-keys-powershell"></a>Lista nycklar
 
-När du skapar ett konto i Azure Cosmos DB genererar tjänsten två master åtkomstnycklar som kan användas för autentisering vid åtkomst av Azure DB som Cosmos-konto. Genom att tillhandahålla två åtkomstnycklar kan Azure Cosmos DB du återskapa nycklarna utan avbrott i Azure DB som Cosmos-konto. Det finns också skrivskyddade nycklar för att autentisera skrivskyddade åtgärder. Det finns två skrivskyddad (primär eller sekundär) och två skrivskyddade nycklar (primär eller sekundär).
+När du skapar ett konto i Azure Cosmos DB genererar hello tjänsten två master åtkomstnycklar som kan användas för autentisering när hello Azure Cosmos DB konto används. Genom att tillhandahålla två åtkomstnycklar kan Azure Cosmos DB du tooregenerate hello nycklarna utan avbrott tooyour Azure DB som Cosmos-konto. Det finns också skrivskyddade nycklar för att autentisera skrivskyddade åtgärder. Det finns två skrivskyddad (primär eller sekundär) och två skrivskyddade nycklar (primär eller sekundär).
 
     $keys = Invoke-AzureRmResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
-* `<resource-group-name>`Namnet på den [Azure-resursgrupp] [ azure-resource-groups] som det nya kontot i Azure Cosmos DB databasen tillhör.
-* `<database-account-name>`Namnet på Azure Cosmos DB databaskontot.
+* `<resource-group-name>`hello namnet på hello [Azure-resursgrupp] [ azure-resource-groups] toowhich hello nya Azure Cosmos DB databaskonto tillhör.
+* `<database-account-name>`hello namnet på hello Azure Cosmos DB konto.
 
 Exempel:
 
@@ -150,12 +150,12 @@ Exempel:
 
 ## <a id="list-connection-strings-powershell"></a>Lista över anslutningssträngar
 
-För MongoDB-konton, kan du hämta anslutningssträngen till Anslut MongoDB-appen till databaskontot med följande kommando.
+Hej anslutning sträng tooconnect MongoDB för app toohello databaskonto kan hämtas med hello följande kommando för MongoDB-konton.
 
     $keys = Invoke-AzureRmResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
-* `<resource-group-name>`Namnet på den [Azure-resursgrupp] [ azure-resource-groups] som det nya kontot i Azure Cosmos DB databasen tillhör.
-* `<database-account-name>`Namnet på Azure Cosmos DB databaskontot.
+* `<resource-group-name>`hello namnet på hello [Azure-resursgrupp] [ azure-resource-groups] toowhich hello nya Azure Cosmos DB databaskonto tillhör.
+* `<database-account-name>`hello namnet på hello Azure Cosmos DB konto.
 
 Exempel:
 
@@ -163,13 +163,13 @@ Exempel:
 
 ## <a id="regenerate-account-key-powershell"></a>Återskapa Kontonyckel
 
-Du bör ändra åtkomstnycklarna till ditt Azure DB som Cosmos-konto med jämna mellanrum för att skydda dina anslutningar. Två åtkomstnycklar tilldelas så att du kan upprätthålla anslutningar till Azure Cosmos DB kontot den ena åtkomstnyckeln medan du återskapar den andra åtkomstnyckeln.
+Du bör ändra hello nycklar tooyour Azure Cosmos DB åtkomstkonto regelbundet toohelp skydda dina anslutningar. Två åtkomstnycklar tilldelas tooenable du toomaintain anslutningar toohello Azure DB som Cosmos-konto med hjälp av ena åtkomstnyckeln medan du återskapar hello andra snabbtangent.
 
     Invoke-AzureRmResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"keyKind"="<key-kind>"}
 
-* `<resource-group-name>`Namnet på den [Azure-resursgrupp] [ azure-resource-groups] som det nya kontot i Azure Cosmos DB databasen tillhör.
-* `<database-account-name>`Namnet på Azure Cosmos DB databaskontot.
-* `<key-kind>`En av de fyra typerna av nycklar: [”primär” | ” Sekundär ”|” PrimaryReadonly ”|” SecondaryReadonly ”] som du vill återskapa.
+* `<resource-group-name>`hello namnet på hello [Azure-resursgrupp] [ azure-resource-groups] toowhich hello nya Azure Cosmos DB databaskonto tillhör.
+* `<database-account-name>`hello namnet på hello Azure Cosmos DB konto.
+* `<key-kind>`Hello fyra typer av nycklar: [”primär” | ” Sekundär ”|” PrimaryReadonly ”|” SecondaryReadonly ”] som du vill att tooregenerate.
 
 Exempel:
 
@@ -177,15 +177,15 @@ Exempel:
 
 ## <a id="modify-failover-priority-powershell"></a>Ändra redundans prioriteten för en Azure Cosmos DB-databaskonto
 
-Du kan ändra prioriteten för växling vid fel för olika regioner som Azure Cosmos DB databaskontot finns i för flera regioner databasen konton. Mer information om växling vid fel i din Azure Cosmos DB databaskonto finns [distribuera data globalt med Azure Cosmos DB][distribute-data-globally].
+Du kan ändra hello redundans prioriteten för hello olika regioner som hello Azure Cosmos DB konto finns i för flera regioner databasen konton. Mer information om växling vid fel i din Azure Cosmos DB databaskonto finns [distribuera data globalt med Azure Cosmos DB][distribute-data-globally].
 
     $failoverPolicies = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0},@{"locationName"="<read-region-location>"; "failoverPriority"=1})
     Invoke-AzureRmResourceAction -Action failoverPriorityChange -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"failoverPolicies"=$failoverPolicies}
 
-* `<write-region-location>`Platsnamnet för databaskontot skrivåtgärder regionen. Den här platsen måste ha ett värde för växling vid fel prioritet 0. Det måste finnas exakt en skrivning region per konto.
-* `<read-region-location>`Platsnamnet för den skrivskyddade regionen för databaskontot. Den här platsen måste ha ett värde för prioritet för växling vid fel som är större än 0. Det kan finnas mer än en skrivskyddad regioner per konto.
-* `<resource-group-name>`Namnet på den [Azure-resursgrupp] [ azure-resource-groups] som det nya kontot i Azure Cosmos DB databasen tillhör.
-* `<database-account-name>`Namnet på Azure Cosmos DB databaskontot.
+* `<write-region-location>`namn på hello hello skriva regionens hello konto. Den här platsen är nödvändig toohave redundans prioriteringsvärdet 0. Det måste finnas exakt en skrivning region per konto.
+* `<read-region-location>`namn på hello hello läsa regionens hello databaskonto. Den här platsen är nödvändig toohave ett prioritetsvärde för växling vid fel som är större än 0. Det kan finnas mer än en skrivskyddad regioner per konto.
+* `<resource-group-name>`hello namnet på hello [Azure-resursgrupp] [ azure-resource-groups] toowhich hello nya Azure Cosmos DB databaskonto tillhör.
+* `<database-account-name>`hello namnet på hello Azure Cosmos DB konto.
 
 Exempel:
 
@@ -194,11 +194,11 @@ Exempel:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Om du vill ansluta med hjälp av .NET finns [ansluter och frågar med .NET](create-documentdb-dotnet.md).
-* Om du vill ansluta med .NET Core, se [Anslut och fråga med .NET Core](create-documentdb-dotnet-core.md).
-* Om du vill ansluta med Node.js, se [ansluter och frågar med Node.js och en MongoDB-app](create-mongodb-nodejs.md).
+* tooconnect med hjälp av .NET, se [ansluter och frågar med .NET](create-documentdb-dotnet.md).
+* tooconnect med .NET Core finns [Anslut och fråga med .NET Core](create-documentdb-dotnet-core.md).
+* tooconnect med Node.js, se [ansluter och frågar med Node.js och en MongoDB-app](create-mongodb-nodejs.md).
 
-<!--Reference style links - using these makes the source content way more readable than using inline links-->
+<!--Reference style links - using these makes hello source content way more readable than using inline links-->
 [powershell-install-configure]: https://docs.microsoft.com/azure/powershell-install-configure
 [scaling-globally]: distribute-data-globally.md#EnableGlobalDistribution
 [distribute-data-globally]: distribute-data-globally.md

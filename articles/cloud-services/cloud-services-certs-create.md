@@ -1,6 +1,6 @@
 ---
-title: "Molntjänster och hanteringscertifikat | Microsoft Docs"
-description: "Lär dig hur du skapar och använder certifikat med Microsoft Azure"
+title: "aaaCloud tjänster och hantering av certifikat | Microsoft Docs"
+description: "Lär dig hur toocreate och använda certifikat med Microsoft Azure"
 services: cloud-services
 documentationcenter: .net
 author: Thraka
@@ -14,57 +14,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: f760bfd93b19c43d12889b5dd38015c5eba0a8ac
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 69cb5467ece58a91dae06b4120954aeb2826bde1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Översikt över certifikat för Azure-molntjänster
-Certifikat används i Azure för molntjänster ([tjänsten certifikat](#what-are-service-certificates)) och för att autentisera med management API ([hanteringscertifikat](#what-are-management-certificates) när du använder den klassiska Azure-portalen och inte den icke-klassisk Azure-portalen). Det här avsnittet ger en allmän översikt över båda typer av certifikat, hur till [skapa](#create) och [distribuera](#deploy) dem till Azure.
+Certifikat används i Azure för molntjänster ([tjänsten certifikat](#what-are-service-certificates)) och för att autentisera med hello management API ([hanteringscertifikat](#what-are-management-certificates) när med hello klassiska Azure-portalen och inte hello-klassisk Azure-portalen). Det här avsnittet ger en allmän översikt över båda typer av certifikat, hur för[skapa](#create) och [distribuera](#deploy) dem tooAzure.
 
 Certifikat som används i Azure är x.509 v3-certifikat och kan vara signerat av en annan betrodda certifikat eller så kan de vara självsignerade. Ett självsignerat certifikat som är signerat av en egen skapare, därför inte är betrodd som standard. De flesta webbläsare kan ignorera det här problemet. Du bör endast använda självsignerade certifikat när du utvecklar och testar dina molntjänster. 
 
-Certifikat som används av Azure kan innehålla en privat eller offentlig nyckel. Certifikatet har ett tumavtryck som ett sätt att identifiera dem på ett entydigt sätt. Det här tumavtrycket används i Azure [konfigurationsfilen](cloud-services-configure-ssl-certificate.md) för att identifiera vilket certifikat som en tjänst i molnet ska använda. 
+Certifikat som används av Azure kan innehålla en privat eller offentlig nyckel. Certifikatet har ett tumavtryck som ger en innebär tooidentify dem på ett entydigt sätt. Det här tumavtrycket används i hello Azure [konfigurationsfilen](cloud-services-configure-ssl-certificate.md) tooidentify som en tjänst i molnet av certifikat ska använda. 
 
 ## <a name="what-are-service-certificates"></a>Vad är service-certifikat?
-Tjänstcertifikat som är kopplade till molntjänster och aktivera säker kommunikation till och från tjänsten. Om du har distribuerat en webbroll skulle du till exempel vill ange ett certifikat som kan autentisera en exponerade HTTPS-slutpunkt. Tjänstcertifikat som definierats i din tjänstdefinitionen distribueras automatiskt till den virtuella datorn som kör en instans av din roll. 
+Tjänstcertifikat som är bifogade toocloud tjänster och aktivera säker kommunikation tooand från hello-tjänsten. Till exempel om du har distribuerat en webbroll kan toosupply ett certifikat som kan autentisera en exponerade HTTPS-slutpunkt. Tjänstcertifikat som definierats i din tjänstdefinitionen är automatiskt distribuerade toohello virtuell dator som kör en instans av din roll. 
 
-Du kan överföra tjänstcertifikat till klassiska Azure-portalen antingen med hjälp av den klassiska Azure-portalen eller genom att använda den klassiska distributionsmodellen. Tjänstcertifikat som är associerade med en specifik molnbaserad tjänst. De är tilldelade till en distribution i tjänstdefinitionsfilen.
+Du kan ladda upp tjänsten certifikat tooAzure klassisk portal antingen med hjälp av hello Azure klassiska portal eller genom att använda hello klassiska distributionsmodellen. Tjänstcertifikat som är associerade med en specifik molnbaserad tjänst. De är tilldelade tooa distribution i hello tjänstdefinitionsfilen.
 
-Tjänstcertifikat kan hanteras separat från dina tjänster och kan hanteras av olika personer. En utvecklare kan till exempel överföra en tjänstpaket som refererar till ett certifikat som en IT-chef tidigare har överförts till Azure. En IT-chef kan hantera och förnya certifikatet (ändra konfigurationen av tjänsten) utan att behöva ladda upp ett nytt tjänstepaket. Det är möjligt att uppdatera utan ett nytt tjänstepaket eftersom logiska namn, store-namn och plats för certifikatet tjänstdefinitionsfilen och när certifikatets tumavtryck har angetts i tjänstkonfigurationsfilen. Om du vill uppdatera certifikatet krävs endast att överföra ett nytt certifikat och ändra tumavtrycksvärde i tjänstekonfigurationsfilen.
+Tjänstcertifikat kan hanteras separat från dina tjänster och kan hanteras av olika personer. En utvecklare kan till exempel överföra ett servicepaket som refererar tooa certifikat att en IT-chef tidigare har överförts tooAzure. En IT-chef kan hantera och förnya certifikatet (ändra hello konfigurering av hello-tjänst) utan att behöva tooupload ett nytt tjänstepaket. Det är möjligt att uppdatera utan ett nytt tjänstepaket eftersom hello logiskt namn och store-namn och placering för hello certifikatet tjänstdefinitionsfilen hello och när hello certifikatets tumavtryck har angetts i konfigurationsfilen för hello-tjänsten. tooupdate hello certifikat, är det endast nödvändiga tooupload ett nytt certifikat och ändra hello tumavtrycket värdet i konfigurationsfilen för hello-tjänsten.
 
 >[!Note]
->Den [Cloud Services vanliga frågor och svar](cloud-services-faq.md) artikeln innehåller användbar information om certifikat.
+>Hej [Cloud Services vanliga frågor och svar](cloud-services-faq.md) artikeln innehåller användbar information om certifikat.
 
 ## <a name="what-are-management-certificates"></a>Vad är certifikat?
-Certifikat kan du autentisera med den klassiska distributionsmodellen. Många program och verktyg (till exempel Visual Studio eller Azure SDK) kan du använda dessa certifikat för att automatisera konfigurationen och distributionen av olika Azure-tjänster. Dessa är inte relaterade till molntjänster verkligen. 
+Certifikat kan du tooauthenticate med hello klassiska distributionsmodellen. Många program och verktyg (till exempel Visual Studio eller hello Azure SDK) använda dessa certifikat tooautomate konfiguration och distribution av olika Azure-tjänster. Dessa är inte verkligen relaterade toocloud tjänster. 
 
 > [!WARNING]
-> Var försiktig! Dessa typer av certifikat kan alla som autentiserar med dem för att hantera de är associerade med prenumerationen. 
+> Var försiktig! Dessa typer av certifikat att alla som autentiserar med dem toomanage hello prenumeration de hör till. 
 > 
 > 
 
 ### <a name="limitations"></a>Begränsningar
-Det finns en gräns på 100 hanteringscertifikat per prenumeration. Det finns en gräns på 100 hanteringscertifikat för alla prenumerationer under en viss tjänstadministratör användar-ID. Om användar-ID för kontoadministratören har redan använts för att lägga till 100 hanteringscertifikat och det finns flera certifikat måste du lägga till en medadministratör för att lägga till ytterligare certifikat. 
+Det finns en gräns på 100 hanteringscertifikat per prenumeration. Det finns en gräns på 100 hanteringscertifikat för alla prenumerationer under en viss tjänstadministratör användar-ID. Om hello användar-ID för hello kontoadministratör redan har använt tooadd 100 hanteringscertifikat och det finns flera certifikat måste du lägga till en medadministratör tooadd hello ytterligare certifikat. 
 
-Innan du lägger till fler än 100 certifikat finns i om du kan återanvända ett befintligt certifikat. Med hjälp av medadministratörer lägger till potentiellt onödig komplexitet process för hantering av certifikat.
+Innan du lägger till fler än 100 certifikat finns i om du kan återanvända ett befintligt certifikat. Med hjälp av medadministratörer lägger till potentiellt onödig komplexitet tooyour process för hantering av certifikat.
 
 <a name="create"></a>
 ## <a name="create-a-new-self-signed-certificate"></a>Skapa ett nytt självsignerat certifikat
-Du kan använda ett verktyg som är tillgängliga för att skapa ett självsignerat certifikat, så länge de följer dessa inställningar:
+Du kan använda alla tillgängliga toocreate för verktyget ett självsignerat certifikat, så länge de följer toothese inställningar:
 
 * Ett X.509-certifikat.
 * Innehåller en privat nyckel.
 * Skapa för utbyte av nycklar (.pfx-fil).
-* Ämnesnamn måste matcha den domän som används för åtkomst till Molntjänsten.
+* Ämnesnamn måste matcha hello domän används tooaccess hello-Molntjänsten.
 
-    > Du kan inte skaffa ett SSL-certifikat för cloudapp.net (eller något Azure-relaterade) domän. certifikatets ämnesnamn måste matcha det anpassade domännamnet som används för åtkomst till ditt program. Till exempel **contoso.net**, inte **contoso.cloudapp.net**.
+    > Du kan inte skaffa ett SSL-certifikat för hello cloudapp.net (eller något Azure-relaterade) domän. hello certifikatets ämnesnamn måste matcha hello domänen namnet som används för tooaccess ditt program. Till exempel **contoso.net**, inte **contoso.cloudapp.net**.
 
 * Minst 2048-bitars kryptering.
-* **Tjänsten certifikat endast**: klientsidan certifikatet måste finnas i den *personliga* certifikatarkiv.
+* **Tjänsten certifikat endast**: klientsidan certifikatet måste finnas i hello *personliga* certifikatarkiv.
 
-Det finns två enkelt sätt att skapa ett certifikat i Windows, med den `makecert.exe` verktyg eller IIS.
+Det finns två sätt toocreate ett certifikat i Windows, med hello `makecert.exe` verktyg eller IIS.
 
 ### <a name="makecertexe"></a>MakeCert.exe
 Det här verktyget är inaktuell och inte längre dokumenteras här. Mer information finns i [MSDN-artikel](https://msdn.microsoft.com/library/windows/desktop/aa386968).
@@ -77,26 +77,26 @@ Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $pass
 ```
 
 > [!NOTE]
-> Om du vill använda ett certifikat med en IP-adress i stället för en domän kan du använda IP-adressen i parametern - DNS-namn.
+> Om du vill toouse hello certifikat med en IP-adress i stället för en domän, kan du använda hello IP-adress i hello - DnsName-parametern.
 
 
-Om du vill använda den här [certifikat med hanteringsportalen](../azure-api-management-certs.md), exportera den till en **.cer** fil:
+Om du vill toouse [certifikat med hanteringsportalen hello](../azure-api-management-certs.md), exportera den tooa **.cer** fil:
 
 ```powershell
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
 ### <a name="internet-information-services-iis"></a>Internet Information Services (IIS)
-Det finns många sidor på internet som beskriver hur du gör detta med IIS. [Här](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) är en bra jag hittade som tror förklarar det bra. 
+Det finns många sidor på hello internet som beskriver hur toodo detta med IIS. [Här](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) är en bra jag hittade som tror förklarar det bra. 
 
 ### <a name="java"></a>Java
-Du kan använda Java till [skapa ett certifikat](../app-service-web/java-create-azure-website-using-java-sdk.md#create-a-certificate).
+Du kan använda Java för[skapa ett certifikat](../app-service-web/java-create-azure-website-using-java-sdk.md#create-a-certificate).
 
 ### <a name="linux"></a>Linux
-[Detta](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) artikeln beskriver hur du skapar certifikat med SSH.
+[Detta](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) artikeln beskriver hur toocreate certifikat med SSH.
 
 ## <a name="next-steps"></a>Nästa steg
-[Överför din tjänstcertifikat till den klassiska Azure-portalen](cloud-services-configure-ssl-certificate.md) (eller [Azure-portalen](cloud-services-configure-ssl-certificate-portal.md)).
+[Ladda upp din tjänst certifikat toohello klassiska Azure-portalen](cloud-services-configure-ssl-certificate.md) (eller hello [Azure-portalen](cloud-services-configure-ssl-certificate-portal.md)).
 
-Överför en [hanteringscertifikat API](../azure-api-management-certs.md) till den klassiska Azure-portalen. Azure-portalen använder inte certifikat för autentisering.
+Överför en [hanteringscertifikat API](../azure-api-management-certs.md) toohello klassiska Azure-portalen. hello Azure-portalen använder inte certifikat för autentisering.
 

@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Application Insights – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur du använder Application Insights, en utökningsbar hantering av programprestanda för identifiering, sortering och diagnosticering av problem i webbappar och tjänster."
+title: "aaaAzure Application Insights-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur toouse Application Insights en extensible application performance management toodetect, hantera och diagnostisera problem i webbprogram och tjänster."
 services: application-insights
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 1f3fc2431bacd6852c6babc7ebbb07c6a3b74145
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 341ac74463dc44ea477c9f0f7bcf83fed6189f0b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-insights-documentation"></a>Application Insights-dokumentation
 
-Lär dig att använda Application Insights, en utökningsbar hanteringstjänst för programprestanda, för webbutvecklare. Självstudier, API-referenser och annan dokumentation som visar hur du identifierar, sorterar och diagnosticerar problem i webbappar och tjänster.
+Lär dig hur toouse Application Insights en utökningsbar programhantering prestanda tjänsten för webbutvecklare. Visar självstudier, API-referenserna och övrig dokumentation hur toodetect, hantera och diagnostisera problem i webbprogram och tjänster.
 
 <ul class="panelContent cardsFTitle">
     <li>

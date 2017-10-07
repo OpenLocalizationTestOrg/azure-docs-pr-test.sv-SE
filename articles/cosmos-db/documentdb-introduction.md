@@ -1,6 +1,6 @@
 ---
 title: "DocumentDB-API:et för Azure Cosmos DB | Microsoft Docs"
-description: "Lär dig hur du kan använda Azure Cosmos DB för att lagra och skicka frågor mot enorma mängder JSON-dokument med korta svarstider med hjälp av SQL och JavaScript."
+description: "Lär dig hur du kan använda Azure Cosmos DB toostore och fråga massiva mängder JSON-dokument med låg latens med hjälp av SQL- och JavaScript."
 keywords: json-databas, dokumentdatabas
 services: cosmos-db
 author: mimig1
@@ -15,61 +15,61 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: mimig
-ms.openlocfilehash: 2cb4bd74ea973c8ff980d208a8c5f63a98ec1edd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c96dfa5e2685782a99d2bcaf992f88dd2bef920b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-azure-cosmos-db-documentdb-api"></a>Introduktion till DocumentDB-API:et för Azure Cosmos DB
+# <a name="introduction-tooazure-cosmos-db-documentdb-api"></a>Introduktion tooAzure Cosmos DB: DocumentDB-API
 
-[Azure Cosmos DB](introduction.md) är Microsofts globalt distribuerade databastjänst för flera datamodeller för verksamhetskritiska program. Azure Cosmos DB erbjuder [nyckelfärdig global distribution](distribute-data-globally.md), [elastisk skalning av dataflöde och lagring](partition-data.md) världen över, ensiffrig svarstid som den 99:e percentilen, [fem väldefinierade konsekvensnivåer](consistency-levels.md) och garanterat hög tillgänglighet, och allt understöds av [branschledande serviceavtal](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Azure Cosmos DB [indexerar alla data automatiskt](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) utan att du behöver bry dig om schema- eller indexhantering. Det stöder flera modeller och dokument, nyckelvärde graf och kolumndatamodeller. 
+[Azure Cosmos DB](introduction.md) är Microsofts globalt distribuerade databastjänst för flera datamodeller för verksamhetskritiska program. Azure Cosmos-DB tillhandahåller [nyckelfärdig global distributionsplatsen](distribute-data-globally.md), [elastisk skalbarhet av dataflöden och lagringsutrymmen](partition-data.md) över hela världen, en siffra millisekunders latens vid hello 99th percentilen, [fem väldefinierade konsekvensnivåer](consistency-levels.md), och garanteras hög tillgänglighet, alla säkerhetskopieras av [branschledande serviceavtal](https://azure.microsoft.com/support/legal/sla/cosmos-db/). Azure Cosmos-DB [indexerar automatiskt data](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) utan att du toodeal med hantering av schemat och index. Det stöder flera modeller och dokument, nyckelvärde graf och kolumndatamodeller. 
 
 ![Azure DocumentDB-API:et](./media/documentdb-introduction/cosmosdb-documentdb.png) 
 
-Genom DocumentDB-API:et tillhandahåller Azure Cosmos DB omfattande och välbekanta [SQL-frågefunktioner](documentdb-sql-query.md) med genomgående korta svarstider för schemalösa JSON-data. Den här artikeln innehåller en översikt över DocumentDB-API:et för Azure Cosmos DB och förklarar hur du kan använda det för att lagra enorma mängder JSON-data och skicka frågor mot dem med svarstider på bara några millisekunder. Artikeln beskriver också hur du enkelt kan utveckla schemat. 
+Med hello DocumentDB API, Azure Cosmos DB tillhandahåller omfattande och välbekanta [SQL frågefunktioner](documentdb-sql-query.md) med genomgående korta svarstiderna över schemat mindre JSON-data. Vi ger en översikt över hello Azure Cosmos DB'S DocumentDB API och hur du kan använda den toostore massiva mängder JSON-data, fråga dem i ordning millisekunder svarstid och enkelt utvecklas hello schema i den här artikeln. 
 
 ## <a name="what-capabilities-and-key-features-does-azure-cosmos-db-offer"></a>Vilka är de viktigaste funktionerna i Azure Cosmos DB?
-Azure Cosmos DB erbjuder, via DocumentDB-API:et, följande funktioner och fördelar:
+Azure Cosmos DB via hello DocumentDB API ger hello följande viktiga funktioner och fördelar:
 
-* **Elastiska och skalbara dataflöden och lagringsutrymmen:** Skala enkelt upp eller ned din JSON-databas så att den passar dina programbehov. Dina data lagras på SSD-diskar (Solid State Disk) för korta och förutsägbara svarstider. Azure Cosmos DB stöder behållare för lagring av JSON-data kallade samlingar som kan skalas till praktiskt taget obegränsade lagringsstorlekar och etablerade dataflöden. Du kan skala Azure Cosmos DB elastiskt och smidigt med förutsägbara prestanda allteftersom programmet växer. 
-
-
-* **Replikering mellan flera regioner:** Azure Cosmos DB replikerar data transparent till alla regioner som du har associerat med ditt Azure Cosmos DB-konto, så att du kan utveckla program som kräver global åtkomst till data med rätt balans mellan konsekvens, tillgänglighet och prestanda – allt med motsvarande garantier. Azure Cosmos DB tillhandahåller transparent regional redundans med flera API:er, och möjligheten att elastiskt skala dataflöde och lagring i hela världen. Mer information finns i [Distribute data globally with Azure Cosmos DB](distribute-data-globally.md) (Distribuera data globalt med Azure Cosmos DB).
-
-* **Ad hoc-frågor med välbekant SQL-syntax:** Lagra heterogena JSON-dokument och skicka frågor mot dokumenten med hjälp av en välbekant SQL-syntax. Azure Cosmos DB använder en samtidig, låsfri, loggstrukturerad indexeringsteknik som automatiskt indexerar allt dokumentinnehåll. På så vis kan du skicka omfattande förfrågningar i realtid utan att behöva ange schematips, sekundärindex eller vyer. Mer information finns i [Query Azure Cosmos DB](documentdb-sql-query.md) (Skicka frågor mot Azure Cosmos DB). 
-* **JavaScript-körning i databasen:** Uttryck programlogik som lagrade procedurer, utlösare och användardefinierade funktioner (UFD:er) med standard JavaScript. Då kan applogiken bearbeta data utan bekymmer för matchningsfel mellan appen och databasschemat. DocumentDB-API:et erbjuder fullständig transaktionell körning av JavaScript-programlogik direkt i databasmotorn. Med den djupgående integrationen av JavaScript kan åtgärderna INFOGA, ERSÄTT, TA BORT och VÄLJ köras från ett JavaScript-program som en isolerad transaktion. Mer information finns i [Programmering av serversidan i DocumentDB](programming.md).
-
-* **Justerbara konsekvensnivåer:** Välj mellan fem väldefinierade konsekvensnivåer för bästa möjliga balans mellan konsekvens och prestanda. Azure Cosmos DB erbjuder fem olika konsekvensnivåer för frågor och läsåtgärder: stark, bunden utgång, session, enhetligt prefix och slutlig. Med de här detaljerade, väldefinierade konsekvensnivåerna kan du själv avgöra balansen mellan konsekvens, tillgänglighet och svarstid. Läs mer om hur du [maximerar tillgänglighet och prestanda med hjälp av konsekvensnivåer](consistency-levels.md).
-
-* **Fullständigt hanterad:** Eliminerar behovet av att hantera databasen och datorresurser. Eftersom det är en fullständigt hanterad Microsoft Azure-tjänst behöver du inte hantera virtuella datorer, distribuera och konfigurera programvara, hantera skalning eller hantera komplexa uppgraderingar av datanivåer. Alla databaser säkerhetskopieras och skyddas automatiskt mot regionala fel. Du kan enkelt lägga till ett Azure Cosmos DB-konto och etablera kapacitet när du behöver den, så att du kan fokusera på din app i stället för på driften och hanteringen av databasen. 
-
-* **Öppen design:** Kom igång snabbt med hjälp av befintliga kunskaper och verktyg. Det är enkelt att programmera mot DocumentDB-API:et och du behöver inte skaffa nya verktyg eller använda de vanliga tilläggen för JSON eller JavaScript. Du kommer åt databasens alla funktioner, som CRUD-, fråge- och JavaScript-bearbetning, över ett enkelt RESTful HTTP-gränssnitt. DocumentDB-API:et omfattar befintliga format, språk och standarder och erbjuder dessutom värdefull databaskapacitet.
-
-* **Automatisk indexering:** Som standard indexerar Azure Cosmos DB automatiskt alla dokument i databasen och varken förväntar sig eller kräver något schema eller att sekundära index skapas. Vill du inte indexera allt? Oroa dig inte, du kan även [välja bort sökvägar i JSON-filer](indexing-policies.md).
-
-* **Stöd för ändringsfeed:** Ändringsfeed ger en sorterad lista över dokument i en Azure Cosmos DB-samling i den ordning som de har ändrats. Denna feed kan användas för att lyssna efter ändringar av data för att replikera data, utlösa API-anrop eller utföra strömbearbetning av uppdateringar. Ändringsfeed aktiveras automatiskt och är lättanvänd: [Läs mer om ändringsfeed](https://docs.microsoft.com/azure/cosmos-db/change-feed). 
-
-## <a name="data-management"></a>Hur hanteras data med DocumentDB-API?
-Med DocumentDB-API:et hanteras JSON-data med hjälp av väldefinierade databasresurser. Dessa resurser replikeras för hög tillgänglighet och är unikt adresserbara genom sina logiska URI:er. DocumentDB-API:et erbjuder en enkel HTTP-baserad RESTful-programmeringsmiljö för alla resurser. 
+* **Elastiska och skalbara dataflöden och lagring:** enkelt skala upp eller ned din JSON-databas toomeet programmet behöver. Dina data lagras på SSD-diskar (Solid State Disk) för korta och förutsägbara svarstider. Azure Cosmos-DB stöder behållare för JSON-data lagras anropade samlingar som kan skalas toovirtually obegränsade lagringsstorlekar och dataflöde. Du kan skala Azure Cosmos DB elastiskt och smidigt med förutsägbara prestanda allteftersom programmet växer. 
 
 
-Azure Cosmos DB-databaskontot är ett unikt namnområde som ger dig åtkomst till Azure Cosmos DB. Innan du kan skapa ett databaskonto måste du ha en Azure-prenumeration, som ger dig tillgång till en mängd olika Azure-tjänster. 
+* **Flera regioner replikering:** Azure Cosmos DB replikerar transparent tooall dataområden som du har kopplat till ditt Azure DB som Cosmos-konto så att du toodevelop program som kräver global åtkomst toodata samtidigt som din kompromisser mellan konsekvens, tillgänglighet och prestanda, alla med motsvarande garantier. Azure Cosmos-DB ger transparent regional växling vid fel med flera API: er och hello möjlighet tooelastically skalbara dataflöden och lagringsutrymmen över hello jordglob. Mer information finns i [Distribute data globally with Azure Cosmos DB](distribute-data-globally.md) (Distribuera data globalt med Azure Cosmos DB).
+
+* **Ad hoc-frågor med välbekant SQL-syntax:** Lagra heterogena JSON-dokument och skicka frågor mot dokumenten med hjälp av en välbekant SQL-syntax. Azure Cosmos-DB använder en samtidig, låsfri, loggstrukturerad indexering teknik tooautomatically index allt dokumentinnehåll. Detta gör omfattande förfrågningar i realtid utan hello måste toospecify schematips, sekundärindex eller vyer. Mer information finns i [Query Azure Cosmos DB](documentdb-sql-query.md) (Skicka frågor mot Azure Cosmos DB). 
+* **JavaScript-körning inom hello databasen:** uttryck programlogik som lagrade procedurer, utlösare och användardefinierade funktioner (UDF) med standard JavaScript. Detta gör dina program logik toooperate över data utan att oroa hello matchningsfel mellan hello program och hello databasschemat. Hej DocumentDB API ger fullständig transaktionell körning av JavaScript-programlogik direkt i databasmotorn hello. hello djupgående integration av JavaScript aktiverar hello körning av Infoga, Ersätt, ta bort och välj köras från ett JavaScript-program som en isolerad transaktion. Mer information finns i [Programmering av serversidan i DocumentDB](programming.md).
+
+* **Justerbara konsekvensnivåer:** väljer från fem väldefinierade konsekvenskontroll nivåer tooachieve optimal kompromiss mellan konsekvens och prestanda. Azure Cosmos DB erbjuder fem olika konsekvensnivåer för frågor och läsåtgärder: stark, bunden utgång, session, enhetligt prefix och slutlig. Dessa detaljerade, väldefinierade konsekvensnivåerna kan toomake själv avgöra balansen mellan konsekvens, tillgänglighet och svarstid. Läs mer i [med konsekvenskontroll nivåer toomaximize tillgänglighet och prestanda](consistency-levels.md).
+
+* **Fullständigt hanterade:** eliminera hello måste toomanage databasen och datorresurser. Som en fullständigt hanterad Microsoft Azure-tjänst, gör inte behöver toomanage virtuella datorer, distribuera och konfigurera programvara, hantera skalning eller hantera komplexa datanivå uppgraderingar. Alla databaser säkerhetskopieras och skyddas automatiskt mot regionala fel. Du kan enkelt lägga till ett Azure DB som Cosmos-konto och etablera kapacitet när du behöver den, så att du toofocus för ditt program i stället för att använda och hantera din databas. 
+
+* **Öppen design:** Kom igång snabbt med hjälp av befintliga kunskaper och verktyg. Programmera mot hello DocumentDB API är enkelt och användarvänligt, och inte kräver tooadopt nya verktyg eller följer toocustom tillägg tooJSON eller JavaScript. Du kan komma åt alla hello databasfunktioner inklusive CRUD-, fråge- och JavaScript-bearbetning, över ett enkelt RESTful HTTP-gränssnitt. hello API DocumentDB omfattar befintliga format, språk och standarder och erbjuder värdefulla databasen funktioner utöver dem.
+
+* **Automatisk indexering:** som standard, Azure Cosmos DB automatiskt indexerar alla hello dokument i hello-databasen och inte förväntar sig eller kräver något schema eller att sekundärindex. Inte vill tooindex allt? Oroa dig inte, du kan även [välja bort sökvägar i JSON-filer](indexing-policies.md).
+
+* **Ändra feed stöd:** ändra feed ger en sorterad lista över dokument inom en samling Azure Cosmos DB i hello ordning de ändrades. Denna feed kan använda toolisten för ändringar toodata i ordning tooreplicate data, utlöser API-anrop eller utföra dataströmmen bearbetning av uppdateringar. Ändra feed är aktiverad och automatiskt enkelt toouse: [Lär dig mer om att ändra feed](https://docs.microsoft.com/azure/cosmos-db/change-feed). 
+
+## <a name="data-management"></a>Hur hanterar du data med hello API DocumentDB?
+Hej DocumentDB API hjälper dig att hantera JSON-data via väldefinierade databasresurser. Dessa resurser replikeras för hög tillgänglighet och är unikt adresserbara genom sina logiska URI:er. Hej DocumentDB API erbjuder en enkel HTTP-baserad RESTful-programmeringsmiljö för alla resurser. 
+
+
+hello Azure DB som Cosmos-databaskontot är ett unikt namnområde som ger dig åtkomst till tooAzure Cosmos DB. Innan du kan skapa ett databaskonto, du måste ha en Azure-prenumeration som ger dig åtkomst till tooa olika Azure-tjänster. 
 
 Alla resurser i Azure Cosmos DB modelleras och lagras som JSON-dokument. Resurser hanteras som objekt, som är JSON-dokument med metadata, och som flöden, som är samlingar av objekt. Objektuppsättningar ingår i respektive flöde.
 
-Bilden nedan visar relationerna mellan Azure DB Cosmos-resurserna:
+hello bilden nedan visar hello relationerna mellan hello Azure DB som Cosmos-resurser:
 
-![Den hierarkiska relationen mellan resurser i Azure Cosmos DB][1] 
+![hello hierarkiska relationen mellan resurser i Azure Cosmos DB][1] 
 
-Ett databaskonto består av en uppsättning databaser som alla innehåller flera samlingar, som i sin tur kan innehålla lagrade procedurer, utlösare, UDF:er, dokument och relaterade bilagor. En databas har också associerade användare med en uppsättning behörigheter att komma åt andra samlingar, lagrade procedurer, utlösare, UDF:er, dokument eller bilagor. Databaser, användare, behörigheter och samlingar är systemdefinierade resurser med välkända scheman, men dokument, lagrade procedurer, utlösare, UDF:er och bilagor innehåller godtyckligt användardefinierat JSON-innehåll.  
+Ett databaskonto består av en uppsättning databaser som alla innehåller flera samlingar, som i sin tur kan innehålla lagrade procedurer, utlösare, UDF:er, dokument och relaterade bilagor. En databas har också associerade användare med en uppsättning behörigheter tooaccess olika andra samlingar, lagrade procedurer, utlösare, UDF: er, dokument eller bilagor. Databaser, användare, behörigheter och samlingar är systemdefinierade resurser med välkända scheman, men dokument, lagrade procedurer, utlösare, UDF:er och bilagor innehåller godtyckligt användardefinierat JSON-innehåll.  
 
 > [!NOTE]
-> Eftersom DocumentDB-API:et tidigare var tillgängligt som Azure DocumentDB-tjänsten kan du fortsätta att etablera, övervaka och hantera konton som skapats med REST-API:et eller verktygen för Azure Resource Management genom att använda antingen Azure DocumentDB- eller Azure Cosmos DB-resursnamn. Vi använder namnen utan åtskillnad när vi refererar till Azure DocumentDB-API:erna. 
+> Eftersom det fanns tidigare hello DocumentDB API som hello Azure DocumentDB-tjänsten, kan du fortsätta tooprovision, övervaka och hantera konton som skapats via hello REST-API för Azure-hantering eller med hjälp av antingen hello Azure DocumentDB eller Azure Cosmos DB resursnamn. Vi använder synonymt hello namn när det gäller toohello Azure DocumentDB APIs. 
 
-## <a name="develop"></a>Hur kan jag utveckla appar med DocumentDB-API:et?
+## <a name="develop"></a>Hur kan jag utveckla appar med hello API DocumentDB?
 
-Azure Cosmos DB exponerar resurser via ett REST-API som kan anropas av alla språk som stöder HTTP/HTTPS-förfrågningar. Vi erbjuder också programmeringsbibliotek för flera populära språk för DocumentDB-API:et. Klientbiblioteken förenklar många aspekter av arbetet med API:et eftersom de hanterar information om till exempel cachelagring av adresser, hantering av undantag och automatiska nya försök. Bibliotek finns just nu tillgängliga för följande språk och plattformar:  
+Azure Cosmos-DB visar resurser via hello REST API: er som kan anropas med valfritt språk som kan göra HTTP/HTTPS-förfrågningar. Vi erbjuder dessutom programmeringsbibliotek för flera populära språk för hello DocumentDB-API. hello klientbibliotek förenklar många aspekter av arbetet med hello API genom att hantera information om till exempel cachelagring av adresser, undantagshantering, automatiska omförsök och så vidare. Bibliotek är tillgängliga för hello följande språk och plattformar:  
 
 | Ladda ned | Dokumentation |
 | --- | --- |
@@ -82,21 +82,21 @@ Azure Cosmos DB exponerar resurser via ett REST-API som kan anropas av alla spr�
 | Saknas | [API för MongoDB](mongodb-introduction.md)
 
 
-Med [Azure Cosmos DB-emulatorn](local-emulator.md) kan du utveckla och testa ditt program lokalt med DocumentDB-API:et, utan att skapa en Azure-prenumeration och utan kostnad. När du är nöjd med hur programmet fungerar i emulatorn kan du växla till ett Azure Cosmos DB-konto i molnet.
+Med hjälp av hello [Azure Cosmos DB emulatorn](local-emulator.md), du kan utveckla och testa programmet lokalt med hello DocumentDB API, utan att skapa en Azure-prenumeration eller kostnader. När du är nöjd med hur programmet fungerar i hello-emulatorn kan växla du toousing ett Azure DB som Cosmos-konto i hello molnet.
 
-DocumentDB-API:et tillhandahåller inte bara grundläggande åtgärder för generering, läsning, uppdatering och borttagning, utan även ett omfattande SQL-gränssnitt för hämtning av JSON-dokument och stöd på serversidan för transaktionell körning av JavaScript-programlogik. Gränssnitten för fråge- och skriptkörning finns tillgängliga via alla plattformsbibliotek samt REST-API:erna. 
+Utöver basic skapa, läsa, uppdatera och ta bort hello DocumentDB API innehåller en omfattande SQL-gränssnitt för att hämta JSON-dokument och server-sida-stöd för transaktionell körning av JavaScript-programlogik. hello fråge- och körningen gränssnitt är tillgängliga via alla plattformsbibliotek samt hello REST API: er. 
 
 ### <a name="sql-query"></a>SQL-fråga
-DocumentDB-API:et stöder frågekörning mot dokument med ett SQL-språk, som bygger på JavaScript-typsystemet, och uttryck med stöd för relations-, hierarki- och spatialfrågor. Frågespråket i DocumentDB är ett enkelt men kraftfullt gränssnitt för förfrågningar till JSON-dokument. Språket har stöd för en delmängd av ANSI SQL-grammatiken och dessutom djupgående integration av objekt, matriser, objektkonstruktion och funktionsanrop i JavaScript. Frågemodellen i DocumentDB-API:et erbjuds utan uttryckliga scheman eller indexeringstips från utvecklaren.
+Hej DocumentDB API stöder frågar dokument med hjälp av en SQL-språk, som finns i hello JavaScript skriver system och uttryck med stöd för relationella hierarkiska och spatial frågor. Hej DocumentDB-frågespråket är ett enkelt men kraftfullt gränssnitt tooquery JSON-dokument. hello språk stöder en delmängd av ANSI SQL-grammatiken och dessutom djupgående integration av JavaScript-objekt, matriser, objektkonstruktion och funktionsanrop. Hej DocumentDB API ger frågemodellen utan uttryckliga scheman eller indexeringstips från hello-utvecklare.
 
-Användardefinierade funktioner (UDF:er) kan registreras med DocumentDB-API:et och refereras till som en del av en SQL-fråga, vilket innebär att grammatiken även stöder anpassad programlogik. Dessa UDF:er skrivs som JavaScript-program och körs i databasen. 
+Användardefinierade funktioner (UDF) kan registreras med hello DocumentDB-API och refereras till som en del av en SQL-fråga, vilket innebär att hello grammatik toosupport anpassad programlogik. Dessa UDF: er skrivs som JavaScript-program och köras inom hello-databasen. 
 
-För .NET-utvecklare erbjuder DocumentDB-API:et [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.aspx) även en LINQ-frågeprovider. 
+Hej DocumentDB API för .NET-utvecklare [.NET SDK](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.linq.aspx) erbjuder även en LINQ-frågeleverantör. 
 
 ### <a name="transactions-and-javascript-execution"></a>Transaktioner och JavaScript-körning
-Med DocumentDB-API:et kan du skriva programlogiken som namngivna program helt skrivna i JavaScript. Programmen registreras i en samling och kan utfärda databasåtgärder i dokumenten inom en angiven samling. JavaScript kan registreras för körning som en utlösare, lagrad procedur eller användardefinierad funktion. Utlösare och lagrade procedurer kan skapa, läsa, uppdatera och ta bort dokument medan användardefinierade funktioner körs som en del av frågans körningslogik utan skrivåtkomst till samlingen.
+Hej DocumentDB API kan du toowrite programlogiken som namngivna program helt skrivna i JavaScript. Programmen registreras för en samling och kan utfärda databasåtgärder i hello dokument inom en viss samling. JavaScript kan registreras för körning som en utlösare, lagrad procedur eller användardefinierad funktion. Utlösare och lagrade procedurer kan skapa, läsa, uppdatera och ta bort dokument medan användardefinierade funktioner körs som en del av hello frågans körningslogik utan skrivåtkomst toohello samling.
 
-JavaScript-körning inom Cosmos DB modelleras efter begrepp som stöds av relationsdatabassystem, med JavaScript som en modern ersättning för Transact-SQL. All JavaScript-logik körs inom en omgivande ACID-transaktion med ögonblicksbildisolering. Om JavaScript genererar ett undantag under körningen avbryts hela transaktionen.
+JavaScript-körning inom hello Cosmos DB modelleras efter begrepp som hello stöds av relationsdatabassystem, med JavaScript som en modern ersättning för Transact-SQL. All JavaScript-logik körs inom en omgivande ACID-transaktion med ögonblicksbildisolering. Under hello att körningen avbryts om JavaScript genererar ett undantag hello hello sedan hela transaktionen.
 
 ## <a name="are-there-any-online-courses-on-azure-cosmos-db"></a>Finns det några onlinekurser om Azure Cosmos DB?
 
