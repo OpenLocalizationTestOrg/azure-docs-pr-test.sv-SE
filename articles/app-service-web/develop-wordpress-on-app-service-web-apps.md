@@ -1,6 +1,6 @@
 ---
-title: "Utveckla WordPress i Azure Apptjänst"
-description: "Läs om bästa praxis för att utveckla och skala WordPress på Azure."
+title: "aaaDeveloping WordPress på Azure App Service"
+description: "Lär dig hello bästa praxis för utveckling och skalning WordPress på Azure."
 keywords: App service, azure app service, skala wordpress skalbar wordpress, wordpress
 services: app-service
 documentationcenter: 
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: sunbuild
-ms.openlocfilehash: eeaafd4ba27709b0f2203035c2a7ae85aeea545f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d865416e9439adb1fb146569d4ee6355f86598c8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="developing-wordpress-on-azure-app-service"></a><span data-ttu-id="6973d-104">Utveckla WordPress i Azure Apptjänst</span><span class="sxs-lookup"><span data-stu-id="6973d-104">Developing WordPress on Azure App Service</span></span>
+# <a name="developing-wordpress-on-azure-app-service"></a><span data-ttu-id="3a687-104">Utveckla WordPress i Azure Apptjänst</span><span class="sxs-lookup"><span data-stu-id="3a687-104">Developing WordPress on Azure App Service</span></span>
 [!INCLUDE [app-service-blueprint-guide-for-wordpress](../../includes/app-service-blueprint-guide-for-wordpress.md)]
 

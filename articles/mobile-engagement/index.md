@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Mobile Engagement – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur du får insikter om mobilappanvändning och användarsegmentering i realtid, och hur du aktiverar kontextmedvetna push-meddelanden och meddelanden i appen."
+title: "aaaAzure Mobile Engagement-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur tooget insikter om mobilappen användning och användarsegmentering och hur tooenable kontextmedvetna push-meddelanden och meddelanden i appen."
 services: mobile-engagement
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 738cc1fc5b5cca411c08fda4229950f481cd0aa6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c9d9dd859914d620b6e3c287bbde1906142f4736
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="mobile-engagement-documentation"></a>Dokumentation om Mobile Engagement
 
-Lär dig hur du ökar användningen, kvarhållningen och intäktsskapandet i mobila appar med Mobile Engagement. Självstudier, SDK:er och annan dokumentation visar hur du får insikter om appanvändning och användarsegmentering i realtid, och hur du aktiverar kontextmedvetna push-meddelanden och meddelanden i appen.
+Lär dig hur tooincrease hello användning, kvarhållning och Monetarisering av mobila appar med Mobile Engagement. Självstudier, SDK: er och andra dokumentationen visar hur tooget insikter om appanvändningen och användarsegmentering och hur tooenable kontextmedvetna push-meddelanden och meddelanden i appen.
 
 <ul class="panelContent cardsFTitle">
     <li>

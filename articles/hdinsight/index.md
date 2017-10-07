@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure HDInsight – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig om Hadoop på HDInsight. Dokumentation som visar dig hur du kan använda Hadoop, Spark, HBase, R-Server med flera för att bearbeta, analysera och få insikter från stordata."
+title: "aaaAzure HDInsight-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig om Hadoop på HDInsight. Dokumentationen visar hur toouse Hadoop, Spark, HBase, R-Server och flera tooprocess analysera och få insikter från stordata."
 services: hdinsight
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 6f16d77f3590bedf9338afc784110c2acff80592
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 592c31863df2e90886c9e9596b1a24edea79e990
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="azure-hdinsight-documentation"></a>Dokumentation om Azure HDInsight
 
-Lär dig hur du använder Hadoop i molnet på HDInsight för att analysera strömmande eller historiska data. Självstudiekurser och annan dokumentationen visar hur du skapar kluster, bearbetar och analyserar stordata och utvecklar lösningar med Hadoop, Spark, HBase, R-Server, Storm och andra tekologier i Hadoop-ekosystemet.
+Lär dig hur toouse Hadoop i hello cloud på HDInsight tooanalyze strömmande eller historiska data. Självstudier och andra dokumentationen visar hur toocreate kluster, bearbeta och analysera stordata och utveckla lösningar med Hadoop, Spark, HBase, R-Server, Storm och andra tekniker i hello Hadoop-ekosystemet.
 
 <ul class="panelContent cardsFTitle">
     <li>

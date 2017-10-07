@@ -1,6 +1,6 @@
 ---
-title: "Automatiserade skript för att skapa webbprogram för Service Manager att ansluta med IT Service Management-anslutningstjänsten i OMS | Microsoft Docs"
-description: "Skapa en webbapp för Service Manager med ett automatiserat skript för att ansluta med IT Service Management-anslutningstjänsten i OMS, och centralt övervaka och hantera arbetsobjekt ITSM."
+title: "aaaAutomated skript toocreate Service Manager Web app tooconnect med IT Service Management-anslutningstjänsten i OMS | Microsoft Docs"
+description: "Skapa ett webbprogram för Service Manager med hjälp av ett automatiserat skript tooconnect med IT Service Management-anslutningstjänsten i OMS, centralt övervaka och hantera hello ITSM arbetsobjekt."
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: v-jysur
-ms.openlocfilehash: ad69d82e57be8bfd9ba40dd88cbc0a979c9e1722
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cbe6a1f75548ac541fd428a977edf64eea959e4f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-service-manager-web-app-using-the-automated-script-preview"></a><span data-ttu-id="18244-103">Skapa Service Manager-webbprogram med hjälp av automatiserade skript (förhandsgranskning)</span><span class="sxs-lookup"><span data-stu-id="18244-103">Create Service Manager Web app using the automated script (Preview)</span></span>
+# <a name="create-service-manager-web-app-using-hello-automated-script-preview"></a><span data-ttu-id="05e73-103">Skapa Service Manager-webbprogram med hjälp av hello automatiserade skript (förhandsgranskning)</span><span class="sxs-lookup"><span data-stu-id="05e73-103">Create Service Manager Web app using hello automated script (Preview)</span></span>
 
-<span data-ttu-id="18244-104">Använd följande skript för att skapa webbprogram för Service Manager-instansen.</span><span class="sxs-lookup"><span data-stu-id="18244-104">Use the following script to create the Web app for your Service Manager instance.</span></span> <span data-ttu-id="18244-105">Mer information om Service Manager-anslutningen finns här: [Service Manager-webbprogram](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)</span><span class="sxs-lookup"><span data-stu-id="18244-105">More information about Service Manager connection is here: [Service Manager Web app](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)</span></span>
+<span data-ttu-id="05e73-104">Använd hello följande skript toocreate hello webbapp för Service Manager-instansen.</span><span class="sxs-lookup"><span data-stu-id="05e73-104">Use hello following script toocreate hello Web app for your Service Manager instance.</span></span> <span data-ttu-id="05e73-105">Mer information om Service Manager-anslutningen finns här: [Service Manager-webbprogram](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)</span><span class="sxs-lookup"><span data-stu-id="05e73-105">More information about Service Manager connection is here: [Service Manager Web app](log-analytics-itsmc-connections.md#create-and-deploy-service-manager-web-app-service)</span></span>
 
-<span data-ttu-id="18244-106">Kör skript genom att tillhandahålla följande obligatoriska uppgifter:</span><span class="sxs-lookup"><span data-stu-id="18244-106">Run the script by providing the following required details:</span></span>
+<span data-ttu-id="05e73-106">Kör hello skript genom att tillhandahålla hello följande obligatoriska information:</span><span class="sxs-lookup"><span data-stu-id="05e73-106">Run hello script by providing hello following required details:</span></span>
 
-- <span data-ttu-id="18244-107">Information om Azure-prenumeration</span><span class="sxs-lookup"><span data-stu-id="18244-107">Azure subscription details</span></span>
-- <span data-ttu-id="18244-108">Resursgruppens namn</span><span class="sxs-lookup"><span data-stu-id="18244-108">Resource group name</span></span>
-- <span data-ttu-id="18244-109">Plats</span><span class="sxs-lookup"><span data-stu-id="18244-109">Location</span></span>
-- <span data-ttu-id="18244-110">Information om Service Manager (servernamnet, domän, användarnamn och lösenord)</span><span class="sxs-lookup"><span data-stu-id="18244-110">Service Manager server details (server name,    domain, username and password)</span></span>
-- <span data-ttu-id="18244-111">Platsen namnprefixet för ditt webbprogram</span><span class="sxs-lookup"><span data-stu-id="18244-111">Site name prefix for your Web app</span></span>
-- <span data-ttu-id="18244-112">ServiceBus-Namespace.</span><span class="sxs-lookup"><span data-stu-id="18244-112">ServiceBus Namespace.</span></span>
+- <span data-ttu-id="05e73-107">Information om Azure-prenumeration</span><span class="sxs-lookup"><span data-stu-id="05e73-107">Azure subscription details</span></span>
+- <span data-ttu-id="05e73-108">Resursgruppens namn</span><span class="sxs-lookup"><span data-stu-id="05e73-108">Resource group name</span></span>
+- <span data-ttu-id="05e73-109">Plats</span><span class="sxs-lookup"><span data-stu-id="05e73-109">Location</span></span>
+- <span data-ttu-id="05e73-110">Information om Service Manager (servernamnet, domän, användarnamn och lösenord)</span><span class="sxs-lookup"><span data-stu-id="05e73-110">Service Manager server details (server name,    domain, username and password)</span></span>
+- <span data-ttu-id="05e73-111">Platsen namnprefixet för ditt webbprogram</span><span class="sxs-lookup"><span data-stu-id="05e73-111">Site name prefix for your Web app</span></span>
+- <span data-ttu-id="05e73-112">ServiceBus-Namespace.</span><span class="sxs-lookup"><span data-stu-id="05e73-112">ServiceBus Namespace.</span></span>
 
-<span data-ttu-id="18244-113">Skriptet skapar webbappen med hjälp av namnet som du angav (tillsammans med några ytterligare strängar som gör det unikt).</span><span class="sxs-lookup"><span data-stu-id="18244-113">The script will create the Web app using the name that you specified (along with few additional strings to make it unique).</span></span> <span data-ttu-id="18244-114">Den genererar den **Webbappens URL**, **klient-ID** och **klienthemlighet**.</span><span class="sxs-lookup"><span data-stu-id="18244-114">It generates the **Web app URL**, **client ID** and **client secret**.</span></span>
+<span data-ttu-id="05e73-113">hello skriptet skapar hello webbapp med hello namnet du angav (tillsammans med några ytterligare strängar toomake den unika).</span><span class="sxs-lookup"><span data-stu-id="05e73-113">hello script will create hello Web app using hello name that you specified (along with few additional strings toomake it unique).</span></span> <span data-ttu-id="05e73-114">Den genererar hello **Webbappens URL**, **klient-ID** och **klienthemlighet**.</span><span class="sxs-lookup"><span data-stu-id="05e73-114">It generates hello **Web app URL**, **client ID** and **client secret**.</span></span>
 
-<span data-ttu-id="18244-115">Spara dessa värden måste dessa när du skapar en anslutning med IT Service Management-anslutningstjänsten.</span><span class="sxs-lookup"><span data-stu-id="18244-115">Save these values, you will need these when you create a connection with IT Service Management Connector.</span></span>
+<span data-ttu-id="05e73-115">Spara dessa värden måste dessa när du skapar en anslutning med IT Service Management-anslutningstjänsten.</span><span class="sxs-lookup"><span data-stu-id="05e73-115">Save these values, you will need these when you create a connection with IT Service Management Connector.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="18244-116">Krav</span><span class="sxs-lookup"><span data-stu-id="18244-116">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="05e73-116">Krav</span><span class="sxs-lookup"><span data-stu-id="05e73-116">Prerequisites</span></span>
 
- <span data-ttu-id="18244-117">Windows Management Framework 5.0 eller senare.</span><span class="sxs-lookup"><span data-stu-id="18244-117">Windows Management Framework 5.0 or above.</span></span>
-<span data-ttu-id="18244-118">Windows 10 har 5.1 som standard.</span><span class="sxs-lookup"><span data-stu-id="18244-118">Windows 10 has 5.1 by default.</span></span> <span data-ttu-id="18244-119">Du kan hämta framework från [här](https://www.microsoft.com/download/details.aspx?id=53347):</span><span class="sxs-lookup"><span data-stu-id="18244-119">You can download the framework from [here](https://www.microsoft.com/download/details.aspx?id=53347):</span></span>
+ <span data-ttu-id="05e73-117">Windows Management Framework 5.0 eller senare.</span><span class="sxs-lookup"><span data-stu-id="05e73-117">Windows Management Framework 5.0 or above.</span></span>
+<span data-ttu-id="05e73-118">Windows 10 har 5.1 som standard.</span><span class="sxs-lookup"><span data-stu-id="05e73-118">Windows 10 has 5.1 by default.</span></span> <span data-ttu-id="05e73-119">Du kan hämta hello framework från [här](https://www.microsoft.com/download/details.aspx?id=53347):</span><span class="sxs-lookup"><span data-stu-id="05e73-119">You can download hello framework from [here](https://www.microsoft.com/download/details.aspx?id=53347):</span></span>
 
-<span data-ttu-id="18244-120">Använd följande skript:</span><span class="sxs-lookup"><span data-stu-id="18244-120">Use the following script:</span></span>
+<span data-ttu-id="05e73-120">Använd hello följande skript:</span><span class="sxs-lookup"><span data-stu-id="05e73-120">Use hello following script:</span></span>
 
 ```
 ####################################
@@ -52,7 +52,7 @@ ms.lasthandoff: 07/11/2017
 # Subscription name in Azure account. Check in Azure Portal.
 $azureSubscriptionName = ""
 
-# Resource group name for resource deployment. Could be an existing resource group or a new one to be created.
+# Resource group name for resource deployment. Could be an existing resource group or a new one toobe created.
 $resourceGroupName = ""
 
 # Location for existing resource group or new resource group deployment
@@ -70,7 +70,7 @@ $username = ""
 $password = ""
 
 
-# Azure site Name Prefix. Default is "smoc". It can be configured to any desired value.
+# Azure site Name Prefix. Default is "smoc". It can be configured tooany desired value.
 $siteNamePrefix = ""
 
 # Service Bus namespace. Please provide an already existing service bus namespace.
@@ -85,7 +85,7 @@ $serviceName = ""
 # Installations
 ################
 
-# Allowing the execution of the script for current user.  
+# Allowing hello execution of hello script for current user.  
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
 
 Write-Host "Checking for required modules..."
@@ -141,7 +141,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }
     catch
     {
-        Write-Host "Failed to Register Microsoft.Web Resource Provider. Please register it in Azure Portal."
+        Write-Host "Failed tooRegister Microsoft.Web Resource Provider. Please register it in Azure Portal."
         exit
     }   
 }
@@ -203,7 +203,7 @@ try
 }
 catch
 {
-    # Delete the deployed web app if Azure AD application fails
+    # Delete hello deployed web app if Azure AD application fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
     Write-Host "Faiure occured in Azure AD application....Try again!!"
@@ -247,10 +247,10 @@ catch
 {
     Write-Host "Web App configuration failed. Please ensure all values are provided in Service Manager Authentication Settings in User Configuration Section"
 
-    # Delete the AzureRm AD Application if confiuration fails
+    # Delete hello AzureRm AD Application if confiuration fails
     Remove-AzureRmADApplication -ObjectId $adApp.ObjectId -Force
 
-    # Delete the deployed web app if configuration fails
+    # Delete hello deployed web app if configuration fails
     Remove-AzureRmResource -ResourceGroupName $resourceGroupName -ResourceName $siteName -ResourceType Microsoft.Web/sites -Force
 
     exit
@@ -276,7 +276,7 @@ if(!$resourceProvider -or $resourceProvider[0].RegistrationState -ne "Registered
     }
     catch
     {
-        Write-Host "Failed to Register Microsoft.Relay Resource Provider. Please register it in Azure Portal."
+        Write-Host "Failed tooRegister Microsoft.Relay Resource Provider. Please register it in Azure Portal."
     }   
 }
 
@@ -305,7 +305,7 @@ if(!$resource)
 
 }
 
-Write-Host "Note: Please Configure Hybrid connection in the Networking section of the web application in Azure Portal to link to the on-premises system.`n"
+Write-Host "Note: Please Configure Hybrid connection in hello Networking section of hello web application in Azure Portal toolink toohello on-premises system.`n"
 Write-Host "App Details"
 Write-Host "============"
 Write-Host "App Name:"  $siteName
@@ -318,5 +318,5 @@ if(!$err)
 }
 
 ```
-## <a name="next-steps"></a><span data-ttu-id="18244-121">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="18244-121">Next steps</span></span>
-<span data-ttu-id="18244-122">[Konfigurera anslutningen Hybrid](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span><span class="sxs-lookup"><span data-stu-id="18244-122">[Configure the Hybrid connection](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="05e73-121">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="05e73-121">Next steps</span></span>
+<span data-ttu-id="05e73-122">[Konfigurera hello hybridanslutning](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span><span class="sxs-lookup"><span data-stu-id="05e73-122">[Configure hello Hybrid connection](log-analytics-itsmc-connections.md#configure-the-hybrid-connection).</span></span>

@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Virtual Network – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur du använder ett virtuellt nätverk i molnet. Dokumentation som visar hur du distribuerar ett VNet, använder det för att starta resurser och integrerar med ett nätverk på plats."
+title: "aaaAzure virtuella nätverk-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur toouse ett virtuellt nätverk i hello cloud. Dokumentationen visar hur toodeploy VNet, använda den toolaunch resurser och integrera med ett lokalt nätverk."
 services: virtual-network
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c3535b428fa4cb4ca3fc348e4f57eab8a0def1e9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ecaecfab31a2bbfb46a712a035e07a059fa40be7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="virtual-network-documentation"></a>Dokumentation om Virtual Network
 
-Lär dig hur du använder ett virtuellt nätverk (VNet), en logisk representation av ditt eget nätverk i molnet. Dokumentation som visar du hur konfigurerar och hanterar ett VNet, använder det för att starta virtuella datorer eller molntjänster, ansluter VNet till det lokala nätverket och expanderar ditt nätverk till molnet och samtidigt har kontroll över resurser.
+Lär dig hur toouse virtuella nätverk (VNet), en logisk representation av ditt nätverk i hello cloud. Dokumentationen visar du hur konfigurera och hantera ett VNet, använda den toolaunch virtuella datorer eller molntjänster, ansluta hello VNet tooyour lokala nätverk och expandera ditt nätverk toohello moln samtidigt som kontrollen över resurser.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Lär dig hur du använder ett virtuellt nätverk (VNet), en logisk representatio
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med Virtual Network med Azure Portal</h3>
+                        <h3>Kom igång med virtuellt nätverk med hello Azure-portalen</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Lär dig hur du använder ett virtuellt nätverk (VNet), en logisk representatio
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med Virtual Network med Azure CLI</h3>
+                        <h3>Kom igång med virtuellt nätverk med hello Azure CLI</h3>
                     </div>
                 </div>
             </div>

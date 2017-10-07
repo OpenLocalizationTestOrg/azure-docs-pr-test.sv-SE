@@ -1,12 +1,12 @@
 # Översikt
-## [Introduktion till Azure Data Factory](data-factory-introduction.md)
+## [Introduktion tooAzure Data Factory](data-factory-introduction.md)
 ## Koncept
 ### [Pipelines och aktiviteter](data-factory-create-pipelines.md)
 ### [Datauppsättningar](data-factory-create-datasets.md)
 ### [Schemaläggning och körning](data-factory-scheduling-and-execution.md)
 
 # Kom igång
-## [Självstudier: Skapa en pipeline för att kopiera data](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+## [Självstudier: Skapa en pipeline toocopy data](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 ### [Guiden Kopiera](data-factory-copy-data-wizard-tutorial.md)
 ### [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 ### [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
@@ -14,7 +14,7 @@
 ### [Azure Resource Manager-mall](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 ### [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 ### [.NET-API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
-## [Självstudier: Skapa en pipeline för att omvandla data](data-factory-build-your-first-pipeline.md)
+## [Självstudier: Skapa en pipeline tootransform data](data-factory-build-your-first-pipeline.md)
 ### [Azure Portal](data-factory-build-your-first-pipeline-using-editor.md)
 ### [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
 ### [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
@@ -64,7 +64,7 @@
 ### Gateway för datahantering
 #### [Översikt](data-factory-data-management-gateway.md)
 #### [Hög tillgänglighet och skalbarhet (förhandsversion)](data-factory-data-management-gateway-high-availability-scalability.md)
-#### [Genomgång: Flytta data från en lokal SQL Server till Azure Blob Storage](data-factory-move-data-between-onprem-and-cloud.md)
+#### [Genomgång: Flytta data från en lokal SQL Server-tooAzure Blob Storage](data-factory-move-data-between-onprem-and-cloud.md)
 
 
 ## [Omvandla data](data-factory-data-transformation-activities.md)

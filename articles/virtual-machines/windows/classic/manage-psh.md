@@ -1,6 +1,6 @@
 ---
-title: "Hantera dina virtuella datorer med hjälp av Azure PowerShell | Microsoft Docs"
-description: "Lär dig kommandon som du kan använda för att automatisera aktiviteter i hantering av virtuella datorer."
+title: "aaaManage dina virtuella datorer med hjälp av Azure PowerShell | Microsoft Docs"
+description: "Lär dig kommandon som du kan använda tooautomate uppgifter vid hantering av virtuella datorer."
 services: virtual-machines-windows
 documentationcenter: windows
 author: singhkays
@@ -15,87 +15,87 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
-ms.openlocfilehash: fd2df7e1029ced11974d0b832258bed2cf3bbb27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e4ca6f098519243a321eac98b6692790fe18c22c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-your-virtual-machines-by-using-azure-powershell"></a><span data-ttu-id="ba122-103">Hantera dina virtuella datorer med Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="ba122-103">Manage your virtual machines by using Azure PowerShell</span></span>
+# <a name="manage-your-virtual-machines-by-using-azure-powershell"></a><span data-ttu-id="973e2-103">Hantera dina virtuella datorer med Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="973e2-103">Manage your virtual machines by using Azure PowerShell</span></span>
 > [!IMPORTANT] 
-> <span data-ttu-id="ba122-104">Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="ba122-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="ba122-105">Den här artikeln täcker den klassiska distributionsmodellen.</span><span class="sxs-lookup"><span data-stu-id="ba122-105">This article covers using the Classic deployment model.</span></span> <span data-ttu-id="ba122-106">Microsoft rekommenderar att de flesta nya distributioner använder Resource Manager-modellen.</span><span class="sxs-lookup"><span data-stu-id="ba122-106">Microsoft recommends that most new deployments use the Resource Manager model.</span></span> <span data-ttu-id="ba122-107">Vanliga PowerShell-kommandon med hjälp av Resource Manager-modellen, se [här](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="ba122-107">For common PowerShell commands using the Resource Manager model, see [here](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
+> <span data-ttu-id="973e2-104">Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="973e2-104">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="973e2-105">Den här artikeln täcker hello klassiska distributionsmodellen.</span><span class="sxs-lookup"><span data-stu-id="973e2-105">This article covers using hello Classic deployment model.</span></span> <span data-ttu-id="973e2-106">Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen.</span><span class="sxs-lookup"><span data-stu-id="973e2-106">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span> <span data-ttu-id="973e2-107">Vanliga PowerShell-kommandon med hjälp av hello Resource Manager-modellen, se [här](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="973e2-107">For common PowerShell commands using hello Resource Manager model, see [here](../../virtual-machines-windows-ps-common-ref.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
 
-<span data-ttu-id="ba122-108">Många uppgifter du utför varje dag för att hantera dina virtuella datorer kan automatiseras med hjälp av Azure PowerShell-cmdlets.</span><span class="sxs-lookup"><span data-stu-id="ba122-108">Many tasks you do each day to manage your VMs can be automated by using Azure PowerShell cmdlets.</span></span> <span data-ttu-id="ba122-109">Den här artikeln får du exempel på kommandon för enklare aktiviteter och länkar till artiklar som visar kommandon för mer avancerade aktiviteter.</span><span class="sxs-lookup"><span data-stu-id="ba122-109">This article gives you example commands for simpler tasks, and links to articles that show the commands for more complex tasks.</span></span>
+<span data-ttu-id="973e2-108">Många uppgifter du utför varje dag toomanage dina virtuella datorer kan automatiseras med hjälp av Azure PowerShell-cmdlets.</span><span class="sxs-lookup"><span data-stu-id="973e2-108">Many tasks you do each day toomanage your VMs can be automated by using Azure PowerShell cmdlets.</span></span> <span data-ttu-id="973e2-109">Den här artikeln innehåller exempel på kommandon för enklare aktiviteter och länkar tooarticles som visar hello-kommandon för mer avancerade aktiviteter.</span><span class="sxs-lookup"><span data-stu-id="973e2-109">This article gives you example commands for simpler tasks, and links tooarticles that show hello commands for more complex tasks.</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="ba122-110">Om du inte har installerat och konfigurerat Azure PowerShell men du kan hämta anvisningarna i artikeln [hur du installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="ba122-110">If you haven't installed and configured Azure PowerShell yet, you can get instructions in the article [How to install and configure Azure PowerShell](/powershell/azure/overview).</span></span>
+> <span data-ttu-id="973e2-110">Om du inte har installerat och konfigurerat Azure PowerShell men du kan hämta instruktioner i hello artikel [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).</span><span class="sxs-lookup"><span data-stu-id="973e2-110">If you haven't installed and configured Azure PowerShell yet, you can get instructions in hello article [How tooinstall and configure Azure PowerShell](/powershell/azure/overview).</span></span>
 > 
 > 
 
-## <a name="how-to-use-the-example-commands"></a><span data-ttu-id="ba122-111">Hur du använder kommandona exempel</span><span class="sxs-lookup"><span data-stu-id="ba122-111">How to use the example commands</span></span>
-<span data-ttu-id="ba122-112">Du måste ersätta del av texten i kommandona med text som är lämplig för din miljö.</span><span class="sxs-lookup"><span data-stu-id="ba122-112">You'll need to replace some of the text in the commands with text that's appropriate for your environment.</span></span> <span data-ttu-id="ba122-113">Den < och > symbolerna anger du måste ersätta texten.</span><span class="sxs-lookup"><span data-stu-id="ba122-113">The < and > symbols indicate text you need to replace.</span></span> <span data-ttu-id="ba122-114">När du ersätter texten, ta bort symbolerna men lämna citattecken på plats.</span><span class="sxs-lookup"><span data-stu-id="ba122-114">When you replace the text, remove the symbols but leave the quote marks in place.</span></span>
+## <a name="how-toouse-hello-example-commands"></a><span data-ttu-id="973e2-111">Hur toouse hello exempelkommandon</span><span class="sxs-lookup"><span data-stu-id="973e2-111">How toouse hello example commands</span></span>
+<span data-ttu-id="973e2-112">Du behöver tooreplace vissa hello text i hello kommandon med text som är lämpliga för din miljö.</span><span class="sxs-lookup"><span data-stu-id="973e2-112">You'll need tooreplace some of hello text in hello commands with text that's appropriate for your environment.</span></span> <span data-ttu-id="973e2-113">Ange text som du behöver tooreplace Hej < och > symboler.</span><span class="sxs-lookup"><span data-stu-id="973e2-113">hello < and > symbols indicate text you need tooreplace.</span></span> <span data-ttu-id="973e2-114">När du ersätter hello text, ta bort hello symboler men lämna hello citattecken på plats.</span><span class="sxs-lookup"><span data-stu-id="973e2-114">When you replace hello text, remove hello symbols but leave hello quote marks in place.</span></span>
 
-## <a name="get-a-vm"></a><span data-ttu-id="ba122-115">Hämta en virtuell dator</span><span class="sxs-lookup"><span data-stu-id="ba122-115">Get a VM</span></span>
-<span data-ttu-id="ba122-116">Detta är en grundläggande uppgift som du ofta använder.</span><span class="sxs-lookup"><span data-stu-id="ba122-116">This is a basic task you'll use often.</span></span> <span data-ttu-id="ba122-117">Du kan använda den för att hämta information om en virtuell dator, utföra aktiviteter på en virtuell dator eller hämta utdata för att lagra i en variabel.</span><span class="sxs-lookup"><span data-stu-id="ba122-117">Use it to get information about a VM, perform tasks on a VM, or get output to store in a variable.</span></span>
+## <a name="get-a-vm"></a><span data-ttu-id="973e2-115">Hämta en virtuell dator</span><span class="sxs-lookup"><span data-stu-id="973e2-115">Get a VM</span></span>
+<span data-ttu-id="973e2-116">Detta är en grundläggande uppgift som du ofta använder.</span><span class="sxs-lookup"><span data-stu-id="973e2-116">This is a basic task you'll use often.</span></span> <span data-ttu-id="973e2-117">Använd den tooget information om en virtuell dator, utföra aktiviteter på en virtuell dator eller hämta utdata toostore i en variabel.</span><span class="sxs-lookup"><span data-stu-id="973e2-117">Use it tooget information about a VM, perform tasks on a VM, or get output toostore in a variable.</span></span>
 
-<span data-ttu-id="ba122-118">För att få information om den virtuella datorn kan köra det här kommandot ersätter allt inom citattecken, inklusive den < och > tecken:</span><span class="sxs-lookup"><span data-stu-id="ba122-118">To get information about the VM, run this command, replacing everything in the quotes, including the < and > characters:</span></span>
+<span data-ttu-id="973e2-118">tooget information om hello VM, kör detta kommando ersätter allt i hello citattecken, inklusive Hej < och > tecken:</span><span class="sxs-lookup"><span data-stu-id="973e2-118">tooget information about hello VM, run this command, replacing everything in hello quotes, including hello < and > characters:</span></span>
 
      Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-<span data-ttu-id="ba122-119">Om du vill lagra utdata i en variabel $vm, kör du:</span><span class="sxs-lookup"><span data-stu-id="ba122-119">To store the output in a $vm variable, run:</span></span>
+<span data-ttu-id="973e2-119">toostore hello utdata i en variabel i $vm, kör:</span><span class="sxs-lookup"><span data-stu-id="973e2-119">toostore hello output in a $vm variable, run:</span></span>
 
     $vm = Get-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-## <a name="log-on-to-a-windows-based-vm"></a><span data-ttu-id="ba122-120">Logga in på en Windows-baserad virtuell dator</span><span class="sxs-lookup"><span data-stu-id="ba122-120">Log on to a Windows-based VM</span></span>
-<span data-ttu-id="ba122-121">Kör följande kommandon:</span><span class="sxs-lookup"><span data-stu-id="ba122-121">Run these commands:</span></span>
+## <a name="log-on-tooa-windows-based-vm"></a><span data-ttu-id="973e2-120">Logga in tooa Windows-baserade Virtuella</span><span class="sxs-lookup"><span data-stu-id="973e2-120">Log on tooa Windows-based VM</span></span>
+<span data-ttu-id="973e2-121">Kör följande kommandon:</span><span class="sxs-lookup"><span data-stu-id="973e2-121">Run these commands:</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="ba122-122">Du kan hämta namnet på den virtuella datorn och moln från visningen av den **Get-AzureVM** kommando.</span><span class="sxs-lookup"><span data-stu-id="ba122-122">You can get the virtual machine and cloud service name from the display of the **Get-AzureVM** command.</span></span>
+> <span data-ttu-id="973e2-122">Du kan hämta hello virtuell dator och molntjänstnamnet från hello visningen av hello **Get-AzureVM** kommando.</span><span class="sxs-lookup"><span data-stu-id="973e2-122">You can get hello virtual machine and cloud service name from hello display of hello **Get-AzureVM** command.</span></span>
 > 
-> <span data-ttu-id="ba122-123">$svcName = ”<cloud service name>” $vmName = ”<virtual machine name>” $localPath = ”< enhet och mapp plats att lagra nedladdade RDP-filen, exempel: c:\temp >” $localFile = $localPath + ”\" + $vmname +” .rdp ”Get-AzureRemoteDesktopFile - ServiceName $svcName-namnet $vmName - LocalPath $localFile-starta</span><span class="sxs-lookup"><span data-stu-id="ba122-123">$svcName = "<cloud service name>" $vmName = "<virtual machine name>" $localPath = "<drive and folder location to store the downloaded RDP file, example: c:\temp >" $localFile = $localPath + "\" + $vmname + ".rdp" Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch</span></span>
+> <span data-ttu-id="973e2-123">$svcName = ”<cloud service name>” $vmName = ”<virtual machine name>” $localPath = ”< enhet och mapp plats toostore hello ned RDP-filen, exempel: c:\temp >” $localFile = $localPath + ”\" + $vmname +” .rdp ”Get-AzureRemoteDesktopFile - ServiceName $svcName-Name $vmName - LocalPath $localFile-starta</span><span class="sxs-lookup"><span data-stu-id="973e2-123">$svcName = "<cloud service name>" $vmName = "<virtual machine name>" $localPath = "<drive and folder location toostore hello downloaded RDP file, example: c:\temp >" $localFile = $localPath + "\" + $vmname + ".rdp" Get-AzureRemoteDesktopFile -ServiceName $svcName -Name $vmName -LocalPath $localFile -Launch</span></span>
 > 
 > 
 
-## <a name="stop-a-vm"></a><span data-ttu-id="ba122-124">Stoppa en virtuell dator</span><span class="sxs-lookup"><span data-stu-id="ba122-124">Stop a VM</span></span>
-<span data-ttu-id="ba122-125">Kör följande kommando:</span><span class="sxs-lookup"><span data-stu-id="ba122-125">Run this command:</span></span>
+## <a name="stop-a-vm"></a><span data-ttu-id="973e2-124">Stoppa en virtuell dator</span><span class="sxs-lookup"><span data-stu-id="973e2-124">Stop a VM</span></span>
+<span data-ttu-id="973e2-125">Kör följande kommando:</span><span class="sxs-lookup"><span data-stu-id="973e2-125">Run this command:</span></span>
 
     Stop-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
 > [!IMPORTANT]
-> <span data-ttu-id="ba122-126">Använd den här parametern om du vill behålla det virtuella IP (VIP) för Molntjänsten om det är den sista virtuella datorn i Molntjänsten.</span><span class="sxs-lookup"><span data-stu-id="ba122-126">Use this parameter to keep the virtual IP (VIP) of the cloud service in case it's the last VM in that cloud service.</span></span> <br><br> <span data-ttu-id="ba122-127">Om du använder parametern StayProvisioned kan faktureras du fortfarande för den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="ba122-127">If you use the StayProvisioned parameter, you'll still be billed for the VM.</span></span>
+> <span data-ttu-id="973e2-126">Använd den här parametern tookeep hello virtuella IP (VIP) för hello moln tjänsten om det är hello senaste VM i Molntjänsten.</span><span class="sxs-lookup"><span data-stu-id="973e2-126">Use this parameter tookeep hello virtual IP (VIP) of hello cloud service in case it's hello last VM in that cloud service.</span></span> <br><br> <span data-ttu-id="973e2-127">Om du använder hello StayProvisioned parameter kan faktureras du fortfarande för hello VM.</span><span class="sxs-lookup"><span data-stu-id="973e2-127">If you use hello StayProvisioned parameter, you'll still be billed for hello VM.</span></span>
 > 
 > 
 
-## <a name="start-a-vm"></a><span data-ttu-id="ba122-128">Starta en virtuell dator</span><span class="sxs-lookup"><span data-stu-id="ba122-128">Start a VM</span></span>
-<span data-ttu-id="ba122-129">Kör följande kommando:</span><span class="sxs-lookup"><span data-stu-id="ba122-129">Run this command:</span></span>
+## <a name="start-a-vm"></a><span data-ttu-id="973e2-128">Starta en virtuell dator</span><span class="sxs-lookup"><span data-stu-id="973e2-128">Start a VM</span></span>
+<span data-ttu-id="973e2-129">Kör följande kommando:</span><span class="sxs-lookup"><span data-stu-id="973e2-129">Run this command:</span></span>
 
     Start-AzureVM -ServiceName "<cloud service name>" -Name "<virtual machine name>"
 
-## <a name="attach-a-data-disk"></a><span data-ttu-id="ba122-130">Anslut en datadisk</span><span class="sxs-lookup"><span data-stu-id="ba122-130">Attach a data disk</span></span>
-<span data-ttu-id="ba122-131">Den här uppgiften krävs några steg.</span><span class="sxs-lookup"><span data-stu-id="ba122-131">This task requires a few steps.</span></span> <span data-ttu-id="ba122-132">Först måste du använda den *** Add-AzureDataDisk *** för att lägga till disken till objektet $vm.</span><span class="sxs-lookup"><span data-stu-id="ba122-132">First, you use the ****Add-AzureDataDisk**** cmdlet to add the disk to the $vm object.</span></span> <span data-ttu-id="ba122-133">Sedan kan du använda **uppdatering AzureVM** att uppdatera konfigurationen av den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="ba122-133">Then, you use **Update-AzureVM** cmdlet to update the configuration of the VM.</span></span>
+## <a name="attach-a-data-disk"></a><span data-ttu-id="973e2-130">Anslut en datadisk</span><span class="sxs-lookup"><span data-stu-id="973e2-130">Attach a data disk</span></span>
+<span data-ttu-id="973e2-131">Den här uppgiften krävs några steg.</span><span class="sxs-lookup"><span data-stu-id="973e2-131">This task requires a few steps.</span></span> <span data-ttu-id="973e2-132">Använd först hello *** Add-AzureDataDisk *** cmdlet tooadd hello toohello $vm diskobjektet.</span><span class="sxs-lookup"><span data-stu-id="973e2-132">First, you use hello ****Add-AzureDataDisk**** cmdlet tooadd hello disk toohello $vm object.</span></span> <span data-ttu-id="973e2-133">Sedan kan du använda **uppdatering AzureVM** cmdlet tooupdate hello konfigurationen av hello VM.</span><span class="sxs-lookup"><span data-stu-id="973e2-133">Then, you use **Update-AzureVM** cmdlet tooupdate hello configuration of hello VM.</span></span>
 
-<span data-ttu-id="ba122-134">Du måste också bestämma om du vill koppla en ny disk eller en som innehåller data.</span><span class="sxs-lookup"><span data-stu-id="ba122-134">You'll also need to decide whether to attach a new disk or one that contains data.</span></span> <span data-ttu-id="ba122-135">För en ny disk kommandot skapar VHD-filen och bifogar den.</span><span class="sxs-lookup"><span data-stu-id="ba122-135">For a new disk, the command creates the .vhd file and attaches it.</span></span>
+<span data-ttu-id="973e2-134">Du måste också toodecide om tooattach en ny disk eller en som innehåller data.</span><span class="sxs-lookup"><span data-stu-id="973e2-134">You'll also need toodecide whether tooattach a new disk or one that contains data.</span></span> <span data-ttu-id="973e2-135">För en ny disk hello skapar hello VHD-filen och bifogas.</span><span class="sxs-lookup"><span data-stu-id="973e2-135">For a new disk, hello command creates hello .vhd file and attaches it.</span></span>
 
-<span data-ttu-id="ba122-136">Om du vill koppla en ny disk, kör du följande kommando:</span><span class="sxs-lookup"><span data-stu-id="ba122-136">To attach a new disk, run this command:</span></span>
+<span data-ttu-id="973e2-136">tooattach kör det här kommandot för en ny disk:</span><span class="sxs-lookup"><span data-stu-id="973e2-136">tooattach a new disk, run this command:</span></span>
 
     Add-AzureDataDisk -CreateNew -DiskSizeInGB 128 -DiskLabel "<main>" -LUN <0> -VM $vm | Update-AzureVM
 
-<span data-ttu-id="ba122-137">Om du vill koppla en befintlig disk kör du följande kommando:</span><span class="sxs-lookup"><span data-stu-id="ba122-137">To attach an existing data disk, run this command:</span></span>
+<span data-ttu-id="973e2-137">tooattach en befintlig datadisk kör detta kommando:</span><span class="sxs-lookup"><span data-stu-id="973e2-137">tooattach an existing data disk, run this command:</span></span>
 
     Add-AzureDataDisk -Import -DiskName "<MyExistingDisk>" -LUN <0> | Update-AzureVM
 
-<span data-ttu-id="ba122-138">Om du vill koppla datadiskar från en befintlig VHD-fil i blob storage, kör du kommandot:</span><span class="sxs-lookup"><span data-stu-id="ba122-138">To attach data disks from an existing .vhd file in blob storage, run this command:</span></span>
+<span data-ttu-id="973e2-138">tooattach datadiskar från en befintlig VHD-fil i blob storage kör detta kommando:</span><span class="sxs-lookup"><span data-stu-id="973e2-138">tooattach data disks from an existing .vhd file in blob storage, run this command:</span></span>
 
     Add-AzureDataDisk -ImportFrom -MediaLocation `
               "<https://mystorage.blob.core.windows.net/mycontainer/MyExistingDisk.vhd>" `
               -DiskLabel "<main>" -LUN <0> |
               Update-AzureVM
 
-## <a name="create-a-windows-based-vm"></a><span data-ttu-id="ba122-139">Skapa en Windows-baserad virtuell dator</span><span class="sxs-lookup"><span data-stu-id="ba122-139">Create a Windows-based VM</span></span>
-<span data-ttu-id="ba122-140">Om du vill skapa en ny Windows-baserad virtuell dator i Azure, följ instruktionerna i [använda Azure PowerShell för att skapa och förkonfigurera Windows-baserade virtuella datorer](create-powershell.md).</span><span class="sxs-lookup"><span data-stu-id="ba122-140">To create a new Windows-based virtual machine in Azure, use the instructions in [Use Azure PowerShell to create and preconfigure Windows-based virtual machines](create-powershell.md).</span></span> <span data-ttu-id="ba122-141">Det här avsnittet steg du genom att skapa en Azure PowerShell kommandouppsättning som skapar ett Windows-baserade Virtuella kan förkonfigureras:</span><span class="sxs-lookup"><span data-stu-id="ba122-141">This topic steps you through the creation of an Azure PowerShell command set that creates a Windows-based VM that can be preconfigured:</span></span>
+## <a name="create-a-windows-based-vm"></a><span data-ttu-id="973e2-139">Skapa en Windows-baserad virtuell dator</span><span class="sxs-lookup"><span data-stu-id="973e2-139">Create a Windows-based VM</span></span>
+<span data-ttu-id="973e2-140">toocreate en ny Windows-baserad virtuell dator i Azure, Använd hello instruktionerna i [använda Azure PowerShell toocreate och förkonfigurera en Windows-baserade virtuella datorer](create-powershell.md).</span><span class="sxs-lookup"><span data-stu-id="973e2-140">toocreate a new Windows-based virtual machine in Azure, use hello instructions in [Use Azure PowerShell toocreate and preconfigure Windows-based virtual machines](create-powershell.md).</span></span> <span data-ttu-id="973e2-141">Det här avsnittet steg du via hello skapandet av en Azure PowerShell kommandouppsättning som skapar ett Windows-baserade Virtuella kan förkonfigureras:</span><span class="sxs-lookup"><span data-stu-id="973e2-141">This topic steps you through hello creation of an Azure PowerShell command set that creates a Windows-based VM that can be preconfigured:</span></span>
 
-* <span data-ttu-id="ba122-142">Med medlemskap i Active Directory-domän.</span><span class="sxs-lookup"><span data-stu-id="ba122-142">With Active Directory domain membership.</span></span>
-* <span data-ttu-id="ba122-143">Med ytterligare diskar.</span><span class="sxs-lookup"><span data-stu-id="ba122-143">With additional disks.</span></span>
-* <span data-ttu-id="ba122-144">Anger som en medlem av en befintlig belastningsutjämnad.</span><span class="sxs-lookup"><span data-stu-id="ba122-144">As a member of an existing load-balanced set.</span></span>
-* <span data-ttu-id="ba122-145">Med en statisk IP-adress.</span><span class="sxs-lookup"><span data-stu-id="ba122-145">With a static IP address.</span></span>
+* <span data-ttu-id="973e2-142">Med medlemskap i Active Directory-domän.</span><span class="sxs-lookup"><span data-stu-id="973e2-142">With Active Directory domain membership.</span></span>
+* <span data-ttu-id="973e2-143">Med ytterligare diskar.</span><span class="sxs-lookup"><span data-stu-id="973e2-143">With additional disks.</span></span>
+* <span data-ttu-id="973e2-144">Anger som en medlem av en befintlig belastningsutjämnad.</span><span class="sxs-lookup"><span data-stu-id="973e2-144">As a member of an existing load-balanced set.</span></span>
+* <span data-ttu-id="973e2-145">Med en statisk IP-adress.</span><span class="sxs-lookup"><span data-stu-id="973e2-145">With a static IP address.</span></span>
 
