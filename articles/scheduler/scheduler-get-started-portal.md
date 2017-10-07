@@ -1,5 +1,5 @@
 ---
-title: "Komma igång med Azure Scheduler på Azure-portalen | Microsoft-dokument"
+title: "aaaGet igång med Azure Schemaläggaren i Azure-portalen | Microsoft Docs"
 description: "Komma igång med Azure Scheduler på Azure-portalen"
 services: scheduler
 documentationcenter: .NET
@@ -14,33 +14,33 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: deli
-ms.openlocfilehash: 3861ee121ed1c4d086ea81640e84d924d7d17ea1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 58255c0ad19da65932f8b1d36cb8fef1ff6e651b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Komma igång med Azure Scheduler på Azure-portalen
-Det är enkelt att skapa schemalagda jobb i Azure Scheduler. I den här självstudiekursen lär du dig hur du skapar ett jobb. Du lär dig också om övervaknings- och hanteringsfunktionerna i Scheduler.
+Det är enkelt toocreate schemalagda jobb i Schemaläggaren på Azure. I den här kursen lär du dig hur toocreate ett jobb. Du lär dig också om övervaknings- och hanteringsfunktionerna i Scheduler.
 
 ## <a name="create-a-job"></a>Skapa ett jobb
-1. Logga in på [Azure-portalen](https://portal.azure.com/).  
-2. Klicka på **+Nytt** > skriv *Scheduler* i sökrutan >  välj **Scheduler** i resultatet > klicka på **Skapa**.
+1. Logga in för[Azure-portalen](https://portal.azure.com/).  
+2. Klicka på **+ ny** > typen *Scheduler* i sökrutan hello > Välj **Scheduler** i resultaten > klickar du på **skapa**.
    
     ![][marketplace-create]
-3. Vi ska skapa ett jobb som bara skickar en GET-begäran mot http://www.microsoft.com/. Ange följande information på skärmen **Scheduler-jobb**:
+3. Vi ska skapa ett jobb som bara skickar en GET-begäran mot http://www.microsoft.com/. I hello **jobb i Schemaläggaren** anger hello följande information:
    
    1. **Namn:** `getmicrosoft`  
    2. **Prenumeration:** Din Azure-prenumeration   
    3. **Jobbsamling:** Markera en befintlig jobbsamling eller klicka på **Skapa ny** > ange ett namn.
-4. Nu ska du definiera följande värden i **Åtgärdsinställningar**:
+4. Nästa i **åtgärdsinställningar**, definiera hello följande värden:
    
    1. **Åtgärdstyp:** ` HTTP`  
    2. **Metod:** `GET`  
    3. **URL:** ` http://www.microsoft.com`  
       
       ![][action-settings]
-5. Till sist ska vi definiera ett schema. Jobbet kan definieras som ett engångsjobb, men vi väljer ett upprepningsschema:
+5. Till sist ska vi definiera ett schema. hello jobb kan definieras som ett enstaka jobb, men väljer vi ett återkommande schema:
    
    1. **Återkommande**: `Recurring`
    2. **Start**: Dagens datum
@@ -51,7 +51,7 @@ Det är enkelt att skapa schemalagda jobb i Azure Scheduler. I den här självst
 6. Klicka på **Skapa**
 
 ## <a name="manage-and-monitor-jobs"></a>Hantera och övervaka jobb
-När ett jobb har skapats visas det på den primära Azure-instrumentpanelen. Klicka på jobbet så öppnas ett nytt fönster med följande flikar:
+När ett jobb har skapats visas den i hello Azure huvudinstrumentpanelen. Klicka på hello jobbet och en ny öppnas med hello följande flikar:
 
 1. Egenskaper  
 2. Åtgärdsinställningar  
@@ -62,34 +62,34 @@ När ett jobb har skapats visas det på den primära Azure-instrumentpanelen. Kl
    ![][job-overview]
 
 ### <a name="properties"></a>Egenskaper
-Dessa skrivskyddade egenskaper beskriver hanteringsmetadata för Scheduler-jobbet.
+Dessa skrivskyddade egenskaper beskrivs hello management metadata för hello jobb i Schemaläggaren.
 
    ![][job-properties]
 
 ### <a name="action-settings"></a>Åtgärdsinställningar
-Om du klickar på ett jobb på skärmen **Jobb** kan du konfigurera jobbet. Du kan konfigurera avancerade inställningar om du inte konfigurerade dem i snabbregistreringsguiden.
+Klicka på ett jobb i hello **jobb** sidan kan du tooconfigure jobbet. På så sätt kan du konfigurera avancerade inställningar, om du inte konfigurerar dem i hello-Snabbregistrering guiden.
 
-För alla åtgärdstyper kan du ändra återförsöksprincipen och felåtgärden.
+Du kan ändra hello återförsöksprincip och hello felåtgärd för alla åtgärdstyper av.
 
-För HTTP- och HTTPS-jobbåtgärdstyper kan du ändra metoden till valfritt tillåtet HTTP-verb. Du kan också lägga till, ta bort eller ändra sidhuvudena och grundläggande autentiseringsinformation.
+Du kan ändra hello metoden tooany tillåten HTTP-verb för HTTP och HTTPS Jobbåtgärden typer. Du kan också lägga till, ta bort eller ändra hello sidhuvuden och information om grundläggande autentisering.
 
-För åtgärdstyper för lagringskön kan du ändra lagringskontot, könamnet, SAS-token och brödtexten.
+Du kan ändra hello lagringskonto, könamn, SAS-token och brödtext för kön åtgärd lagringstyper.
 
-För Service Bus-åtgärdstyper kan du ändra namnrymden, ämnes-/kösökvägen, autentiseringsinställningarna, transporttypen, meddelandeegenskaperna och meddelandetexten.
+Du kan ändra hello namnområdet, avsnittet/kösökvägen, autentiseringsinställningar, transporttyp, meddelandeegenskaper och meddelandetexten för åtgärdstyper för service bus.
 
    ![][job-action-settings]
 
 ### <a name="schedule"></a>Schema
-Här kan du konfigurera om schemat om du vill ändra schemat som du skapade i snabbregistreringsguiden.
+På så sätt kan du konfigurera om hello schema, om du vill att toochange hello schema som du skapade i hello-Snabbregistrering guiden.
 
-Här har du möjlighet att skapa [komplexa scheman och avancerad upprepning för jobbet](scheduler-advanced-complexity.md)
+Detta är en möjlighet toobuild [komplexa scheman och avancerade upprepning i jobbet](scheduler-advanced-complexity.md)
 
-Du kan ändra startdatum och starttid, upprepningsschemat och slutdatumet och sluttiden (om jobbet är återkommande).
+Du kan ändra hello startdatum och tid, återkommande schema och hello slutdatum och tid (om hello jobbet är återkommande.)
 
    ![][job-schedule]
 
 ### <a name="history"></a>Historik
-Fliken **Historik** innehåller utvalda mätvärden för varje jobbkörning i systemet för det valda jobbet. Dessa mätvärden är realtidsvärden som beskriver följande hälsoindikatorer i Scheduler:
+Hej **historik** fliken visas valda måtten för varje jobbkörningen i hello system för hello valda jobbet. De här måtten ange realtid värden om hello hälsotillståndet för din Schemaläggaren:
 
 1. Status  
 2. Detaljer  
@@ -100,12 +100,12 @@ Fliken **Historik** innehåller utvalda mätvärden för varje jobbkörning i sy
    
    ![][job-history]
 
-Du kan klicka på en körning om du vill visa  dess **historikinformation**, inklusive hela svaret för varje körning. I den här dialogrutan kan du också kopiera svaret till Urklipp.
+Du kan klicka på Kör tooview dess **historikinformation**, inklusive hello hela svaret för varje körning. Den här dialogrutan kan du också toocopy hello svar toohello Urklipp.
 
    ![][job-history-details]
 
 ### <a name="users"></a>Användare
-Rollbaserad åtkomstkontroll (RBAC) i Azure ger tillgång till ingående åtkomsthantering för Azure Scheduler. Information om hur du använder fliken Användare finns i [Rollbaserad åtkomstkontroll i Azure](../active-directory/role-based-access-control-configure.md)
+Rollbaserad åtkomstkontroll (RBAC) i Azure ger tillgång till ingående åtkomsthantering för Azure Scheduler. toolearn hur toouse hello användare på fliken finns för[rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-configure.md)
 
 ## <a name="see-also"></a>Se även
  [Vad är Scheduler?](scheduler-intro.md)
@@ -114,7 +114,7 @@ Rollbaserad åtkomstkontroll (RBAC) i Azure ger tillgång till ingående åtkoms
 
  [Prenumerationer och fakturering i Azure Scheduler](scheduler-plans-billing.md)
 
- [Skapa komplexa scheman och avancerad upprepning med Azure Scheduler](scheduler-advanced-complexity.md)
+ [Hur toobuild komplex schemaläggs och avancerade upprepning med Azure Schemaläggaren](scheduler-advanced-complexity.md)
 
  [REST API-referens för Scheduler](https://msdn.microsoft.com/library/mt629143)
 

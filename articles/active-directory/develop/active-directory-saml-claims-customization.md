@@ -1,6 +1,6 @@
 ---
-title: "Anpassa anspråk som utfärdats i SAML-token för förintegrerade appar i Azure Active Directory | Microsoft Docs"
-description: "Lär dig hur du anpassar anspråk som utfärdats i SAML-token för förintegrerade appar i Azure Active Directory"
+title: "aaaCustomizing anspråk som utfärdats i hello SAML-token för förintegrerade appar i Azure Active Directory | Microsoft Docs"
+description: "Lär dig hur toocustomize hello anspråk utfärdas i hello SAML-token för förintegrerade appar i Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -15,66 +15,66 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6d232759630fcc567788a8326b566b659f89d17a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: a376318929472403e799f02fdd3fbddc91d0a70c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="customizing-claims-issued-in-the-saml-token-for-pre-integrated-apps-in-azure-active-directory"></a>Anpassa anspråk som utfärdats i SAML-token för förintegrerade appar i Azure Active Directory
-Azure Active Directory stöder idag tusentals förintegrerade program i Azure AD Application Gallery, inklusive över 360 som har stöd för enkel inloggning med SAML 2.0-protokollet. När en användare autentiseras till ett program via Azure AD med SAML skickar en token i Azure AD till programmet (via en HTTP POST). Och sedan programmet validerar och använder token för att logga in användaren i stället för att fråga efter användarnamn och lösenord. Dessa SAML-token innehålla uppgifter om användaren som kallas ”anspråk”.
+# <a name="customizing-claims-issued-in-hello-saml-token-for-pre-integrated-apps-in-azure-active-directory"></a>Anpassa anspråk som utfärdats i hello SAML-token för förintegrerade appar i Azure Active Directory
+Idag Azure Active Directory har stöd för tusentals förintegrerade program i hello Azure AD Application Gallery, inklusive över 360 som har stöd för enkel inloggning med hello SAML 2.0-protokollet. När en användare autentiseras tooan program via Azure AD med SAML skickar ett token toohello program (via en HTTP POST) i Azure AD. Och sedan programmet hello validerar och använder hello token toolog hello användare i i stället för att fråga efter användarnamn och lösenord. Dessa SAML-token innehålla uppgifter om hello användare som kallas ”anspråk”.
 
-I identity-tala är ett ”anspråk” information som en identitetsleverantör tillstånd om en användare i den token som de utfärdar för användaren. I [SAML-token](http://en.wikipedia.org/wiki/SAML_2.0), dessa data finns vanligtvis i SAML Attribute-uttryck. Användarens unika ID: T är vanligtvis representeras i SAML-ämne som även kallas namnidentifierare.
+I identity-tala är ett ”anspråk” information som en identitetsleverantör tillstånd om en användare i hello-token som de utfärdar för användaren. I [SAML-token](http://en.wikipedia.org/wiki/SAML_2.0), dessa data finns vanligtvis i hello SAML Attribute-uttryck. hello är användarens unika ID: T vanligtvis representeras i hello SAML ämne även kallas namnidentifierare.
 
-Azure Active Directory utfärdar en SAML-token till ditt program som innehåller ett NameIdentifier-anspråk med ett värde på användarens användarnamn (AKA användarens huvudnamn) i Azure AD som standard. Det här värdet kan identifiera användaren. SAML-token innehåller även ytterligare anspråk som innehåller användarens e-postadress, Förnamn och efternamn.
+Azure Active Directory utfärdar en SAML-token tooyour program som innehåller ett NameIdentifier-anspråk med ett värde av hello användarens användarnamn (AKA användarens huvudnamn) i Azure AD som standard. Det här värdet kan identifiera hello användare. hello SAML-token innehåller även ytterligare anspråk som innehåller hello användarens e-postadress, Förnamn och efternamn.
 
-Om du vill visa eller redigera anspråk som utfärdats i SAML-token till programmet genom att öppna programmet i Azure-portalen. Välj sedan den **visa och redigera andra användarattribut** kryssrutan i den **användarattribut** avsnitt i programmet.
+tooview eller redigera hello anspråk som utfärdats i hello SAML-token toohello program, öppna hello i Azure-portalen. Välj hello **visa och redigera andra användarattribut** kryssrutan i hello **användarattribut** avsnitt av programmet hello.
 
 ![Användaren attribut avsnitt][1]
 
-Det finns två möjliga orsaker till varför du kan behöva redigera anspråk som utfärdats i SAML-token:
-* Programmet har skrivits till kräver en annan uppsättning anspråk URI: er eller anspråksvärden.
-* Programmet har distribuerats på ett sätt som kräver NameIdentifier att anspråket ska vara något annat än användarnamnet (AKA användarens huvudnamn) lagras i Azure Active Directory.
+Det finns två möjliga orsaker till varför du kanske behöver tooedit hello anspråk som utfärdats i hello SAML-token:
+* programmet hello har skrivits toorequire en annan uppsättning anspråk URI: er eller anspråksvärden.
+* hello-programmet har distribuerats på ett sätt som kräver hello NameIdentifier anspråk toobe något annat än hello användarnamn (AKA användarens huvudnamn) lagras i Azure Active Directory.
 
-Du kan redigera standardvärdena för anspråk. Välj anspråk raden i tabellen för SAML-token attribut. Då öppnas den **Redigera attribut** avsnittet och du sedan kan redigera anspråkets namn, värde och namnområde som hör till anspråket.
+Du kan redigera hello standardvärden för anspråk. Välj hello anspråk raden i tabellen för hello SAML-token attribut. Då öppnas hello **Redigera attribut** avsnittet och du sedan kan redigera anspråkets namn, värde och namnområde som hör till hello anspråk.
 
 ![Redigera användarattribut][2]
 
-Du kan också ta bort anspråk (andra än NameIdentifier) med snabbmenyn som öppnas genom att klicka på den **...**  ikon.  Du kan också lägga till nya anspråk med hjälp av den **Lägg till attributet** knappen.
+Du kan också ta bort anspråk (andra än NameIdentifier) med hello snabbmeny som öppnas genom att klicka på hello **...**  ikon.  Du kan också lägga till nya anspråk med hello **Lägg till attributet** knappen.
 
 ![Redigera användarattribut][3]
 
-## <a name="editing-the-nameidentifier-claim"></a>Redigera NameIdentifier anspråk
-Att lösa problemet där programmet har distribuerats med hjälp av ett annat användarnamn, klicka på den **användar-ID** listrutan den **användarattribut** avsnittet. Den här åtgärden visar en dialogruta med flera olika alternativ:
+## <a name="editing-hello-nameidentifier-claim"></a>Redigera hello NameIdentifier anspråk
+toosolve hello problem där hello programmet har distribuerats med hjälp av ett annat användarnamn klickar du på hello **användar-ID** listrutan i hello **användarattribut** avsnitt. Den här åtgärden visar en dialogruta med flera olika alternativ:
 
 ![Redigera användarattribut][4]
 
-Välj i listrutan, **user.mail** ange NameIdentifier begäran om att användarens e-postadress i katalogen. Eller välj **user.onpremisessamaccountname** till användare vars SAM-kontonamnet som har synkroniserats från lokala Azure AD.
+I hello listrutan, Välj **user.mail** tooset hello NameIdentifier anspråk toobe hello användarens e-postadress i hello directory. Eller välj **user.onpremisessamaccountname** tooset toohello användarens SAM-kontonamn som har synkroniserats från lokala Azure AD.
 
-Du kan också använda särskilda **ExtractMailPrefix()** funktion för att ta bort domänsuffix från e-postadress, SAM-kontonamn eller användarens huvudnamn. Detta extraherar bara den första delen av användarnamnet som skickas via (till exempel ”joe_smith” i stället för joe_smith@contoso.com).
+Du kan också använda hello särskilda **ExtractMailPrefix()** tooremove funktionen hello domänsuffix från hello e-postadress, SAM-kontonamn eller hello huvudnamn. Då extraheras endast hello första delen av hello användaren namn som skickas via (till exempel ”joe_smith” i stället för joe_smith@contoso.com).
 
 ![Redigera användarattribut][5]
 
-Vi har nu lagt till den **join()** funktion för att ansluta till den verifierade domänen med identifierarvärde för användaren. När du väljer funktionen join() i den **användar-ID** först välja användar-ID som t.ex. e-postadress eller användaren huvudnamn och välj sedan din verifierade domän i andra listrutan. Om du markerar den e-postadressen med verifierade domän och Azure AD extraherar användarnamnet från det första värdet joe_smith från joe_smith@contoso.com och lägger till dem med contoso.onmicrosoft.com. Se följande exempel:
+Vi har nu lagt till hello **join()** funktionen toojoin hello verifierade domän med hello user ID-värde. När du väljer hello join() funktionen i hello **användar-ID** först välja hello användar-ID som t.ex. e-postadress eller användaren huvudnamn och välj sedan din verifierade domän i hello andra listrutan. Om du markerar hello e-postadress med hello verifierad domän och Azure AD extraherar hello användarnamn från hello första värde joe_smith från joe_smith@contoso.com och lägger till dem med contoso.onmicrosoft.com. Se följande exempel hello:
 
 ![Redigera användarattribut][6]
 
 ## <a name="adding-claims"></a>Lägga till anspråk
-Du kan ange attributets namn (som endast inte behöver följa ett URI-mönster enligt SAML-specifikationen) när du lägger till ett anspråk. Ange värdet till valfria användarattribut som lagras i katalogen.
+När du lägger till ett anspråk kan du ange hello attributnamn (som endast inte behöver toofollow ett URI-mönster enligt hello SAML-specifikationen). Attributet hello värdet tooany användare som är lagrad i hello directory.
 
 ![Lägg till användarattribut][7]
 
-Du måste till exempel skicka avdelningen som användaren tillhör i organisationen som ett anspråk (till exempel försäljning). Ange namnet anspråk som förväntades av programmet och välj sedan **user.department** som värde.
+Till exempel måste toosend hello avdelningen som hello användaren tillhör tooin organisationen som ett anspråk (till exempel försäljning). Ange hello anspråkets namn som förväntades av programmet hello och välj sedan **user.department** som hello-värde.
 
 > [!NOTE]
-> Om det finns inget värde som lagras i ett valt attribut för en viss användare, är inte det anspråket som utfärdats i token.
+> Om det finns inget värde som lagras i ett valt attribut för en viss användare, är inte det anspråket som utfärdas i hello token.
 
 > [!TIP]
-> Den **user.onpremisesecurityidentifier** och **user.onpremisesamaccountname** stöds endast när synkronisering av användardata från lokala Active Directory med hjälp av den [Azure AD Connect-verktyget](../active-directory-aadconnect.md).
+> Hej **user.onpremisesecurityidentifier** och **user.onpremisesamaccountname** stöds endast när synkronisering av användardata från lokala Active Directory med hello [Azure AD Connect-verktyget](../active-directory-aadconnect.md).
 
 ## <a name="restricted-claims"></a>Begränsat anspråk
 
-Det finns vissa begränsade anspråk i SAML. Om du lägger till dessa anspråk skickas dessa anspråk inte i Azure AD. Följande är uppsättningen SAML begränsad anspråk:
+Det finns vissa begränsade anspråk i SAML. Om du lägger till dessa anspråk skickas dessa anspråk inte i Azure AD. Följande är hello SAML begränsad anspråksuppsättning:
 
     | Anspråkstyp (URI) |
     | ------------------- |
@@ -127,7 +127,7 @@ Det finns vissa begränsade anspråk i SAML. Om du lägger till dessa anspråk s
 
 ## <a name="next-steps"></a>Nästa steg
 * [Artikelindex för programhantering i Azure Active Directory](../active-directory-apps-index.md)
-* [Konfigurera enkel inloggning för program som inte ingår i Azure Active Directory-programgalleriet](../active-directory-saas-custom-apps.md)
+* [Konfigurera enkel inloggning tooapplications som inte ingår i hello Azure Active Directory-programgalleriet](../active-directory-saas-custom-apps.md)
 * [Felsökning av SAML-baserade enkel inloggning](active-directory-saml-debugging.md)
 
 <!--Image references-->

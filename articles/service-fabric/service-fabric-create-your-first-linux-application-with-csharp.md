@@ -1,5 +1,5 @@
 ---
-title: "Skapa din första Azure-mikrotjänstapp i Linux med hjälp av C# | Microsoft Docs"
+title: "aaaCreate din första Azure mikrotjänster app i Linux med C# | Microsoft Docs"
 description: Skapa och distribuera ett Service Fabric-program med C#
 services: service-fabric
 documentationcenter: csharp
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/21/2017
 ms.author: subramar
-ms.openlocfilehash: adcafaa5522fcddc0a01eb1dc8deba04ebfc38f2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 68d685e130be338ebcdb2f1af24b66d1e14f580a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Skapa ditt första Azure Service Fabric-program
 > [!div class="op_single_selector"]
@@ -28,15 +28,15 @@ ms.lasthandoff: 08/29/2017
 >
 >
 
-Service Fabric innehåller SDK:er för att skapa tjänster i Linux i både .NET Core och Java. I den här självstudien, visar vi hur man skapar ett program för Linux och en tjänst med C# (.NET Core).
+Service Fabric innehåller SDK:er för att skapa tjänster i Linux i både .NET Core och Java. I den här självstudiekursen kommer vi titta på hur toocreate ett program för Linux och skapa en tjänst med C# (.NET Core).
 
 ## <a name="prerequisites"></a>Krav
 Du måste [konfigurera Linux-utvecklingsmiljön](service-fabric-get-started-linux.md) innan du börjar. Om du använder Mac OS X kan du [konfigurera en Linux-miljö på en virtuell dator med hjälp av Vagrant](service-fabric-get-started-mac.md).
 
-Du bör även installera [Service Fabric CLI](service-fabric-cli.md)
+Vill du även tooinstall hello [Service Fabric CLI](service-fabric-cli.md)
 
-### <a name="install-and-set-up-the-generators-for-csharp"></a>Installera och konfigurera generatorerna för CSharp
-Service Fabric tillhandahåller ramverktyg som hjälper dig att skapa ett Service Fabric CSharp-program från terminalen med en Yeoman-mallgenerator. Följ stegen nedan för att se till att du har Service Fabric Yeoman-mallgeneratorn för CSharp på datorn.
+### <a name="install-and-set-up-hello-generators-for-csharp"></a>Installera och konfigurera hello generatorer för CSharp
+Service Fabric tillhandahåller ramverktyg som hjälper dig att skapa ett Service Fabric CSharp-program från terminalen med en Yeoman-mallgenerator. Följ hello stegen nedan tooensure som du har hello Service Fabric yeoman mall generator för CSharp som arbetar på din dator.
 1. Installera nodejs och NPM på datorn
 
   ```bash
@@ -48,85 +48,85 @@ Service Fabric tillhandahåller ramverktyg som hjälper dig att skapa ett Servic
   ```bash
   sudo npm install -g yo
   ```
-3. Installera Service Fabric Yeo Java-programgeneratorn från NPM
+3. Installera hello Service Fabric Yeo Java-program generator från NPM
 
   ```bash
   sudo npm install -g generator-azuresfcsharp
   ```
 
-## <a name="create-the-application"></a>Skapa programmet
-Ett Service Fabric-program kan innehålla en eller flera tjänster, som var och en ansvarar för att leverera programmets funktioner. Service Fabric [Yeoman](http://yeoman.io/)-generatorn för CSharp, som du installerade i förra steget, gör det enkelt att skapa din första tjänst och lägga till fler senare. Använd Yeoman för att skapa ett program med en enskild tjänst.
+## <a name="create-hello-application"></a>Skapa hello program
+Ett Service Fabric-program kan innehålla en eller flera tjänster med en viss roll i att leverera hello-funktionerna. hello Service Fabric [Yeoman](http://yeoman.io/) generatorn för CSharp som du installerade i sista steget, gör det enkelt toocreate din första tjänst och tooadd mer senare. Nu ska vi använda Yeoman toocreate ett program med en enskild tjänst.
 
-1. Skriv följande kommando i en terminal, för att börja bygga ställningarna: `yo azuresfcsharp`
+1. Skriv hello efter kommandot toostart skapa hello scaffold-teknik i en terminal:`yo azuresfcsharp`
 2. Namnge ditt program.
-3. Välj vilken typ din första tjänst ska ha och namnge den. För den här självstudien väljer vi en Reliable Actor-tjänst.
+3. Välj hello typ av din första tjänst och ge den namnet. Vi väljer en tillförlitlig tjänst för aktören hello enligt den här kursen.
 
    ![Service Fabric Yeoman-generator för C#][sf-yeoman]
 
 > [!NOTE]
-> Mer information om alternativen finns i [Översikt över Service Fabric-programmeringsmodell](service-fabric-choose-framework.md).
+> Läs mer om alternativen för hello [Service Fabric programming översikt över säkerhetsmodell](service-fabric-choose-framework.md).
 >
 >
 
-## <a name="build-the-application"></a>Skapa programmet
-Service Fabric Yeoman-mallarna inkluderar ett byggskript som du kan använda för att skapa programmet från terminalen (efter att du navigerat till programmappen).
+## <a name="build-hello-application"></a>Skapa hello program
+hello Service Fabric Yeoman mallar innehåller ett build-skript som du kan använda toobuild hello-app från hello terminal (efter att navigera toohello programmappen).
 
   ```sh
  cd myapp
  ./build.sh
   ```
 
-## <a name="deploy-the-application"></a>Distribuera programmet
+## <a name="deploy-hello-application"></a>Distribuera programmet hello
 
-När du har skapat programmet kan du distribuera det till det lokala klustret.
+När hello programmet är skapat kan distribuera du den toohello lokala klustret.
 
-1. Anslut till det lokala Service Fabric-klustret.
+1. Ansluta toohello lokala Service Fabric-klustret.
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
 
-2. Kör installationsskriptet som medföljer mallen för att kopiera programpaketet till klustrets avbildningsarkiv, registrera programtypen och skapa en instans av programmet.
+2. Kör hello installationsskriptet hello mallen toocopy programmet hello paketet toohello klustret avbildningsarkivet, registrera hello programtyp och skapa en instans av programmet hello.
 
     ```bash
     ./install.sh
     ```
 
-Distributionen går till på samma sätt som för andra Service Fabric-program. Detaljerade instruktioner finns i dokumentationen om att [hantera ett Service Fabric-program med Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md).
+Distribuera hello inbyggda program är hello samma som andra Service Fabric-program. Hello-dokumentationen på [hantera ett Service Fabric-program med hello Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md) detaljerade anvisningar.
 
-Du hittar parametrarna till de här kommandona i de genererade manifesten i programpaketet.
+Parametrarna toothese kommandon finns i manifest hello genereras inuti hello programpaket.
 
-När programmet har distribuerats öppnar du en webbläsare och går till [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) på adressen [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Expandera sedan noden **Program** och observera att det nu finns en post för din programtyp och en post för den första instansen av den typen.
+När programmet hello har distribuerats, öppna en webbläsare och gå till [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) på [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Expandera sedan hello **program** nod och Observera att det finns en post för din typ av program och en annan för hello första instansen av den typen.
 
-## <a name="start-the-test-client-and-perform-a-failover"></a>Starta testklienten och utför en redundansväxling
-Aktörsprojekt gör ingenting på egen hand. Det behövs en annan tjänst eller klient för att skicka meddelanden till dem. Aktörsmallen innehåller ett enkelt testskript som du kan använda för att interagera med aktörstjänsten.
+## <a name="start-hello-test-client-and-perform-a-failover"></a>Starta hello test-klienten och utför en växling vid fel
+Aktörsprojekt gör ingenting på egen hand. De kräver en annan tjänst eller klient toosend dem meddelanden. hello aktören mallen innehåller ett enkelt testskript som du kan använda toointeract med hello aktören-tjänsten.
 
-1. Kör skriptet med övervakningsverktyget för att se resultatet av aktörstjänsten.
+1. Köra hello skript med hello titta på verktyget toosee hello utdata från hello aktören service.
 
     ```bash
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh
     ```
-2. I Service Fabric Explorer letar du reda på noden där den primära repliken för aktörstjänsten finns. På skärmbilden nedan är det nod 3.
+2. Leta upp nod som värd för hello primära repliken för hello aktören tjänsten i Service Fabric Explorer. I hello skärmbilden nedan är noden 3.
 
-    ![Hitta den primära repliken i Service Fabric Explorer][sfx-primary]
-3. Klicka på noden du hittade i föregående steg och välj sedan **Deactivate (restart)** (Inaktivera (omstart)) på menyn Actions (Åtgärder). Den här åtgärden startar om en nod i ditt lokala kluster, vilket framtvingar en redundansväxling till en sekundär replik som körs på en annan nod. När du utför åtgärden, ska du vara uppmärksam på utdata från testklienten och notera att räknaren fortsätter att öka trots redundansen.
+    ![Hitta hello primära repliken i Service Fabric Explorer][sfx-primary]
+3. Klicka på hello nod du hittades i hello föregående steg och sedan välja **inaktivera (omstart)** hello Åtgärder-menyn. Den här åtgärden startar om en nod i klustret lokala för att tvinga en växling vid fel tooa sekundär replik körs på en annan nod. När du utför den här åtgärden betala uppmärksamhet toohello utdata från hello testklienten och Observera hello räknaren fortsätter tooincrement trots hello växling vid fel.
 
-## <a name="adding-more-services-to-an-existing-application"></a>Lägga till fler tjänster till ett befintligt program
+## <a name="adding-more-services-tooan-existing-application"></a>Lägga till fler tjänster tooan befintliga program
 
-Om du vill lägga till en till tjänst till ett program som redan har skapats med hjälp av `yo` utför du följande steg:
-1. Ändra katalogen till roten för det befintliga programmet.  Till exempel `cd ~/YeomanSamples/MyApplication` om `MyApplication` är programmet som skapats av Yeoman.
+tooadd en annan tooan tjänstprogrammet redan skapats med hjälp av `yo`, utföra hello följande steg:
+1. Ändra toohello rotkatalog till hello befintliga program.  Till exempel `cd ~/YeomanSamples/MyApplication`om `MyApplication` är hello-program som skapats av Yeoman.
 2. Kör `yo azuresfcsharp:AddService`
 
-## <a name="migrating-from-projectjson-to-csproj"></a>Migrera från project.json till .csproj
-1. Om du kör ”dotnet migrate” i projektets rotkatalog migreras alla project.json-filer till csproj-format.
-2. Uppdatera projektreferenserna till csproj-filer i projektfiler.
-3. Uppdatera projektfilnamnen till csproj-filer i build.sh.
+## <a name="migrating-from-projectjson-toocsproj"></a>Migrera från project.json too.csproj
+1. Kör 'dotnet migrera' i projektets rotkatalog kommer att migrera alla hello project.json toocsproj format.
+2. Uppdatera hello projekt refererar till detta toocsproj filer i projektfiler.
+3. Uppdatera hello projektet namn toocsproj-filer i build.sh.
 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Läs mer om Reliable Actors](service-fabric-reliable-actors-introduction.md)
-* [Interagera med Service Fabric-kluster med Service Fabric CLI](service-fabric-cli.md)
+* [Interaktion med Service Fabric-kluster med hello Service Fabric CLI](service-fabric-cli.md)
 * Lär dig mer om [Service Fabric-supportalternativen](service-fabric-support.md)
 * [Kom igång med Service Fabric CLI](service-fabric-cli.md)
 

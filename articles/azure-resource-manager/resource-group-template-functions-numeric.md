@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager Mallfunktioner - numeriska | Microsoft Docs
-description: "Beskriver funktionerna du använder i en Azure Resource Manager-mall för att arbeta med siffror."
+title: aaaAzure Resource Manager Mallfunktioner - numeriska | Microsoft Docs
+description: Beskriver hello funktioner toouse i en Azure Resource Manager mallen toowork med siffror.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: ae0261134b8d4a934048f58d6c679a48a904950b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 855d5b354d094b9815edc160e3d72efbfd36ba77
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numeriska funktioner för Azure Resource Manager-mallar
 
-Hanteraren för filserverresurser innehåller följande funktioner för att arbeta med heltal:
+Hanteraren för filserverresurser innehåller följande funktioner för att arbeta med heltal hello:
 
 * [Lägg till](#add)
 * [copyIndex](#copyindex)
@@ -40,22 +40,22 @@ Hanteraren för filserverresurser innehåller följande funktioner för att arbe
 ## <a name="add"></a>Lägg till
 `add(operand1, operand2)`
 
-Returnerar summan av de två angivna heltal.
+Returnerar hello summan av hello två angivna heltal.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- | 
-|operand1 |Ja |int |Första numret att lägga till. |
-|operand2 |Ja |int |Andra talet att lägga till. |
+|operand1 |Ja |int |Första nummer tooadd. |
+|operand2 |Ja |int |Andra nummer tooadd. |
 
 ### <a name="return-value"></a>Returvärde
 
-Ett heltal som innehåller summan av parametrar.
+Ett heltal som innehåller hello summan av hello parametrar.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel läggs två parametrar.
+hello följande exempel lägger till två parametrar.
 
 ```json
 {
@@ -66,14 +66,14 @@ I följande exempel läggs två parametrar.
             "type": "int",
             "defaultValue": 5,
             "metadata": {
-                "description": "First integer to add"
+                "description": "First integer tooadd"
             }
         },
         "second": {
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Second integer to add"
+                "description": "Second integer tooadd"
             }
         }
     },
@@ -88,7 +88,7 @@ I följande exempel läggs två parametrar.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -99,26 +99,26 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-Returnerar index för en upprepning loop. 
+Returnerar hello index för en upprepning loop. 
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| loopName | Nej | Sträng | Namnet på slingan för att hämta upprepning. |
-| förskjutning |Nej |int |Siffra och lägger till värdet nollbaserade iteration. |
+| loopName | Nej | Sträng | hello namnet på hello-slinga för att hämta hello iteration. |
+| förskjutning |Nej |int |Hej tooadd toohello nollbaserade iteration siffra. |
 
 ### <a name="remarks"></a>Kommentarer
 
-Den här funktionen används alltid med en **kopiera** objekt. Om inget värde har angetts för **offset**, det aktuella värdet för upprepning returneras. Värdet för upprepning börjar på noll.
+Den här funktionen används alltid med en **kopiera** objekt. Om inget värde har angetts för **offset**, hello aktuella iteration värdet returneras. hello iteration värdet börjar på noll.
 
-Den **loopName** egenskapen kan du ange om copyIndex hänvisar till en resurs iteration eller egenskapen iteration. Om inget värde har angetts för **loopName**, den aktuella resursen typen iterationen används. Ange ett värde för **loopName** när iteration av en egenskap. 
+Hej **loopName** egenskapen gör att du toospecify om copyIndex hänvisar tooa resurs iteration eller egenskapen iteration. Om inget värde har angetts för **loopName**, hello aktuella resurs typen iteration används. Ange ett värde för **loopName** när iteration av en egenskap. 
  
 En fullständig beskrivning av hur du använder **copyIndex**, se [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas en kopia loop och indexvärdet ingår i namnet. 
+hello visas följande exempel en kopia loop och hello indexvärde ingå i hello namn. 
 
 ```json
 "resources": [ 
@@ -136,29 +136,29 @@ I följande exempel visas en kopia loop och indexvärdet ingår i namnet.
 
 ### <a name="return-value"></a>Returvärde
 
-Ett heltal som representerar det aktuella indexet för upprepning.
+Ett heltal som representerar hello aktuella indexet för hello iteration.
 
 <a id="div" />
 
 ## <a name="div"></a>div
 `div(operand1, operand2)`
 
-Returnerar heltalsdivisionen av två angivna heltal.
+Returnerar hello Heltalsdivision med hello två angivna heltal.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Det tal som delas. |
-| operand2 |Ja |int |Det tal som används för att dela upp. Det går inte att vara 0. |
+| operand1 |Ja |int |hello nummer delas. |
+| operand2 |Ja |int |hello-nummer som används toodivide. Det går inte att vara 0. |
 
 ### <a name="return-value"></a>Returvärde
 
-Ett heltal som representerar delningen.
+Ett heltal som representerar hello division.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel delar upp en parameter av en annan parametern.
+följande exempel hello delar upp en parameter av en annan parametern.
 
 ```json
 {
@@ -176,7 +176,7 @@ I följande exempel delar upp en parameter av en annan parametern.
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Integer used to divide"
+                "description": "Integer used toodivide"
             }
         }
     },
@@ -191,7 +191,7 @@ I följande exempel delar upp en parameter av en annan parametern.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -202,20 +202,20 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="float"></a>flyttal
 `float(arg1)`
 
-Konverterar värdet till ett flyttal peka nummer. Du kan bara använda den här funktionen vid sändning av anpassade parametrar till ett program, till exempel en Logikapp.
+Konverterar hello värdet tooa flyttal. Du kan bara använda den här funktionen vid sändning av anpassade parametrar tooan program, till exempel en Logikapp.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |sträng eller ett heltal |Värdet som ska konverteras till ett flyttal peka nummer. |
+| arg1 |Ja |sträng eller ett heltal |hello värdet tooconvert tooa flyttal. |
 
 ### <a name="return-value"></a>Returvärde
 En flytande peka nummer.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder float för att skicka parametrar till en Logikapp:
+hello som följande exempel visar hur toouse float toopass parametrar tooa Logikapp:
 
 ```json
 {
@@ -236,21 +236,21 @@ I följande exempel visas hur du använder float för att skicka parametrar till
 ## <a name="int"></a>int
 `int(valueToConvert)`
 
-Konverterar det angivna värdet till ett heltal.
+Konverterar hello angivet värde tooan heltal.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Ja |sträng eller ett heltal |Värdet som ska konverteras till ett heltal. |
+| valueToConvert |Ja |sträng eller ett heltal |hello värdet tooconvert tooan heltal. |
 
 ### <a name="return-value"></a>Returvärde
 
-Ett heltal av det konvertera värdet.
+Ett heltal hello konverteras värdet.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel konverterar som användaren tillhandahållit parametervärdet heltal.
+hello konverterar följande exempel hello som användaren tillhandahållit parametern värdet toointeger.
 
 ```json
 {
@@ -273,7 +273,7 @@ I följande exempel konverterar som användaren tillhandahållit parametervärde
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -285,21 +285,21 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="min"></a>min.
 `min (arg1)`
 
-Returnerar det lägsta värdet från en heltalsmatris eller en kommaavgränsad lista med heltal.
+Returnerar hello minimivärdet från en matris av heltal eller en kommaavgränsad lista med heltal.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matris med heltal eller en kommaavgränsad lista med heltal |Samlingen för att hämta det minsta värdet. |
+| arg1 |Ja |matris med heltal eller en kommaavgränsad lista med heltal |hello samling tooget hello minimivärde. |
 
 ### <a name="return-value"></a>Returvärde
 
-Ett heltal som representerar minimivärdet från samlingen.
+Ett heltal som representerar minimivärdet från hello samling.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder min med en matris och en lista med heltal:
+följande exempel visar hur hello toouse min med en matris och en lista med heltal:
 
 ```json
 {
@@ -325,7 +325,7 @@ I följande exempel visas hur du använder min med en matris och en lista med he
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -337,21 +337,21 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="max"></a>Max
 `max (arg1)`
 
-Returnerar det största värdet från en matris av heltal eller en kommaavgränsad lista med heltal.
+Returnerar hello högsta värde från en heltalsmatris eller en kommaavgränsad lista med heltal.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matris med heltal eller en kommaavgränsad lista med heltal |Samlingen för att hämta det högsta värdet. |
+| arg1 |Ja |matris med heltal eller en kommaavgränsad lista med heltal |hello samling tooget hello maximivärde. |
 
 ### <a name="return-value"></a>Returvärde
 
-Ett heltal som representerar det högsta värdet från samlingen.
+Ett heltal som representerar maximivärdet för hello från hello samling.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder max med en matris och en lista med heltal:
+följande exempel visar hur hello toouse max med en matris och en lista med heltal:
 
 ```json
 {
@@ -377,7 +377,7 @@ I följande exempel visas hur du använder max med en matris och en lista med he
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -389,21 +389,21 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="mod"></a>MOD
 `mod(operand1, operand2)`
 
-Returnerar resten av Heltalsdivision med två angivna heltal.
+Returnerar hello resten av hello Heltalsdivision med hello två angivna heltal.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Det tal som delas. |
-| operand2 |Ja |int |Talet som används för att dela upp, får inte vara 0. |
+| operand1 |Ja |int |hello nummer delas. |
+| operand2 |Ja |int |hello-värde som är används toodivide får inte vara 0. |
 
 ### <a name="return-value"></a>Returvärde
-Ett heltal som representerar resten.
+Ett heltal som representerar hello resten.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel returnerar resten av att dividera en parameter av en annan parametern.
+hello returneras följande exempel hello återstoden av att dividera en parameter av en annan parametern.
 
 ```json
 {
@@ -421,7 +421,7 @@ I följande exempel returnerar resten av att dividera en parameter av en annan p
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Integer used to divide"
+                "description": "Integer used toodivide"
             }
         }
     },
@@ -436,7 +436,7 @@ I följande exempel returnerar resten av att dividera en parameter av en annan p
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -447,22 +447,22 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="mul"></a>mul
 `mul(operand1, operand2)`
 
-Returnerar multiplicering av två angivna heltal.
+Returnerar hello multiplicering av hello två angivna heltal.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Första talet som multipliceras. |
-| operand2 |Ja |int |Andra talet som multipliceras. |
+| operand1 |Ja |int |Första nummer toomultiply. |
+| operand2 |Ja |int |Andra nummer toomultiply. |
 
 ### <a name="return-value"></a>Returvärde
 
-Ett heltal som representerar multiplikationen.
+Ett heltal som representerar hello multiplikation.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel multiplicerar en parameter av en annan parametern.
+följande exempel hello multiplicerar en parameter av en annan parametern.
 
 ```json
 {
@@ -473,14 +473,14 @@ I följande exempel multiplicerar en parameter av en annan parametern.
             "type": "int",
             "defaultValue": 5,
             "metadata": {
-                "description": "First integer to multiply"
+                "description": "First integer toomultiply"
             }
         },
         "second": {
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Second integer to multiply"
+                "description": "Second integer toomultiply"
             }
         }
     },
@@ -495,7 +495,7 @@ I följande exempel multiplicerar en parameter av en annan parametern.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -506,21 +506,21 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="sub"></a>Sub
 `sub(operand1, operand2)`
 
-Returnerar subtraktion av två angivna heltal.
+Returnerar hello subtraktion av hello två angivna heltal.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| operand1 |Ja |int |Talet som subtraktionen från. |
-| operand2 |Ja |int |Numret som subtraheras. |
+| operand1 |Ja |int |hello-nummer som dras från. |
+| operand2 |Ja |int |hello-nummer som subtraheras. |
 
 ### <a name="return-value"></a>Returvärde
-Ett heltal som representerar subtraktion.
+Ett heltal som representerar hello subtraktion.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel tar bort en parameter från en annan parameter.
+följande exempel hello subtraherar en parameter från en annan parameter.
 
 ```json
 {
@@ -538,7 +538,7 @@ I följande exempel tar bort en parameter från en annan parameter.
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Integer to subtract"
+                "description": "Integer toosubtract"
             }
         }
     },
@@ -553,15 +553,15 @@ I följande exempel tar bort en parameter från en annan parameter.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
 | subResult | int | 4 |
 
 ## <a name="next-steps"></a>Nästa steg
-* En beskrivning av avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
-* Om du vill slå samman flera mallar, se [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md).
-* Iterera ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
-* Information om hur du distribuerar mallen som du har skapat finns [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
+* En beskrivning av hello avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+* flera mallar finns i toomerge [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
+* toosee hur toodeploy hello mallen som du har skapat, finns i [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
 

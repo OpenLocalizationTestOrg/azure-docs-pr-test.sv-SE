@@ -1,6 +1,6 @@
 ---
-title: "Överföra data för Hadoop-jobb i HDInsight | Microsoft Docs"
-description: "Lär dig mer om att överföra och komma åt data för Hadoop-jobb i HDInsight med hjälp av Azure CLI, Azure Lagringsutforskaren, Azure PowerShell, kommandorad för Hadoop eller Sqoop."
+title: "aaaUpload data för Hadoop-jobb i HDInsight | Microsoft Docs"
+description: "Lär dig hur tooupload och komma åt data för Hadoop-jobb i HDInsight med hello Azure CLI, Azure Lagringsutforskaren, Azure PowerShell, kommandorad för hello Hadoop eller Sqoop."
 keywords: "etl-hadoop, hämta data till hadoop, Läs in data för hadoop"
 services: hdinsight,storage
 documentationcenter: 
@@ -17,36 +17,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: jgao
-ms.openlocfilehash: 6867f96c8ea0e31ed0e682cef48e7aa5e3f65f86
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 15da602085d41c19789e34800f3d9e238d7d1de8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Ladda upp data för Hadoop-jobb i HDInsight
-Azure HDInsight ger en komplett Hadoop distributed file system (HDFS) över Azure Blob storage. Den är utformad som ett HDFS-tillägg för att förse kunder en sömlös upplevelse. Den gör en fullständig uppsättning komponenter i Hadoop-ekosystemet att arbeta direkt med de data som den hanterar. Azure Blob storage och HDFS är distinkt filsystem som är optimerade för lagring av data och beräkningar på dessa data. Information om fördelarna med att använda Azure Blob storage finns [använda Azure Blob storage med HDInsight][hdinsight-storage].
+Azure HDInsight ger en komplett Hadoop distributed file system (HDFS) över Azure Blob storage. Den är utformad som en HDFS tillägget tooprovide en sömlös upplevelse toocustomers. Den gör hello fullständig uppsättning komponenter i hello Hadoop-ekosystemet toooperate direkt på hello data som den hanterar. Azure Blob storage och HDFS är distinkt filsystem som är optimerade för lagring av data och beräkningar på dessa data. Information om hello fördelarna med att använda Azure Blob storage finns [använda Azure Blob storage med HDInsight][hdinsight-storage].
 
 **Förutsättningar**
 
-Observera följande krav innan du börjar:
+Observera följande krav innan du börjar hello:
 
 * Ett Azure HDInsight-kluster. Instruktioner finns i [komma igång med Azure HDInsight] [ hdinsight-get-started] eller [etablera HDInsight-kluster][hdinsight-provision].
 
 ## <a name="why-blob-storage"></a>Varför blob storage?
-Azure HDInsight-kluster distribueras vanligtvis för att köra MapReduce-jobb och kluster tas bort när de här jobben har slutförts. Behålla data i HDFS är kluster när beräkningar har slutförts en kostsam sätt att lagra dessa data. Azure Blob storage är en hög tillgänglighet, skalbara, hög kapacitet, låg kostnad och delbart lagringsalternativ för data som ska bearbetas med HDInsight. Lagra data i en blob kan HDInsight-kluster som används för beräkning frigörs utan att förlora data på ett säkert sätt.
+Azure HDInsight-kluster är vanligtvis distribuerats toorun MapReduce-jobb och hello kluster tas bort när de här jobben har slutförts. Behålla hello data i hello HDFS kluster när beräkningar har slutförts skulle vara en kostsam sätt toostore dessa data. Azure Blob storage är en hög tillgänglighet, skalbara, hög kapacitet, låg kostnad och delbart lagringsalternativ för data som är toobe bearbetas med HDInsight. Lagra data i en blob kan hello HDInsight-kluster som används för beräkning toobe publicerat på ett säkert sätt utan att förlora data.
 
 ### <a name="directories"></a>Kataloger
-Azure Blob storage-behållare som lagrar data som nyckel/värde-par och det finns ingen Kataloghierarki. Men tecknet ”/” kan användas i nyckelnamnet så att det visas som om en fil lagras i en katalogstruktur. HDInsight ser dessa som om de faktiska kataloger.
+Azure Blob storage-behållare som lagrar data som nyckel/värde-par och det finns ingen Kataloghierarki. Men hello ”/” tecken kan användas i hello nyckelnamn toomake visas den som om en fil lagras i en katalogstruktur. HDInsight ser dessa som om de faktiska kataloger.
 
-Nyckeln för en blob kan till exempel vara *input/log1.txt*. Det finns inga faktiska ”input” katalog, men på grund av förekomsten av ”/”-tecken i namnet har utseendet på en sökväg till filen.
+Nyckeln för en blob kan till exempel vara *input/log1.txt*. Ingen verklig ”input” katalog finns, men på grund av toohello förekomst av hello tecknet ”/” hello nyckelnamn, den har hello utseendet på en sökväg till filen.
 
 Om du använder Azure Explorer-verktyg kan du märka vissa 0 byte-filer. Filerna har två syften:
 
-* Om det finns tomma mappar, markera de av finns i mappen. Azure Blob storage är smarta du behöver veta om det finns en blob som kallas foo-fältet, det finns en mapp med namnet **foo**. Men det enda sättet för att ange en tom mapp att kallas **foo** av är att ha särskilda 0 byte filen på plats.
-* De innehåller särskilda metadata som krävs av Hadoop-filsystem, särskilt behörigheter och ägare för mappar.
+* Om det finns tomma mappar, markera de av hello finns hello-mappen. Azure Blob storage är tillräckligt smarta tooknow att om en blob som kallas foo-fältet finns det finns en mapp med namnet **foo**. Men hello endast sätt toosignify kallas för en tom mapp **foo** av är att ha särskilda 0 byte filen på plats.
+* De innehåller särskilda metadata som behövs av hello Hadoop filsystem, särskilt hello behörigheter och ägare för hello mappar.
 
 ## <a name="command-line-utilities"></a>Kommandoradsverktyg
-Microsoft tillhandahåller följande verktyg för att arbeta med Azure Blob storage:
+Microsoft tillhandahåller hello följande verktyg toowork med Azure Blob storage:
 
 | Verktyget | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
@@ -56,58 +56,58 @@ Microsoft tillhandahåller följande verktyg för att arbeta med Azure Blob stor
 | [Hadoop-kommando](#commandline) |✔ |✔ |✔ |
 
 > [!NOTE]
-> Medan Azure CLI, Azure PowerShell och AzCopy kan alla användas utanför Azure, Hadoop kommandot är endast tillgängligt för HDInsight-klustret och kan bara läsa in data från det lokala filsystemet i Azure Blob storage.
+> Medan hello Azure CLI, Azure PowerShell och AzCopy kan alla användas utanför Azure, hello Hadoop kommandot är bara tillgängligt på hello HDInsight-kluster och kan bara läsa in data från hello lokala filsystem i Azure Blob storage.
 >
 >
 
 ### <a id="xplatcli"></a>Azure CLI
-Azure CLI är ett plattformsoberoende verktyg som hjälper dig att hantera Azure-tjänster. Använd följande steg för att överföra data till Azure Blob storage:
+hello Azure CLI är ett verktyg för flera plattformar som du kan använda toomanage Azure services. Använd följande steg tooupload data tooAzure Blob storage hello:
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-1. [Installera och konfigurera Azure CLI för Mac, Linux och Windows](../cli-install-nodejs.md).
-2. Öppna en kommandotolk, bash eller andra gränssnitt och Använd följande för att autentisera till Azure-prenumeration.
+1. [Installera och konfigurera hello Azure CLI för Mac, Linux och Windows](../cli-install-nodejs.md).
+2. Öppna en kommandotolk, bash eller andra gränssnitt och använda hello följande tooauthenticate tooyour Azure-prenumeration.
 
         azure login
 
-    När du uppmanas, anger du användarnamn och lösenord för din prenumeration.
-3. Ange följande kommando för att visa en lista med lagringskonton för din prenumeration:
+    När du uppmanas ange hello användarnamn och lösenord för din prenumeration.
+3. Ange hello efter kommandot toolist hello storage-konton för din prenumeration:
 
         azure storage account list
-4. Välj lagringskonto som innehåller blob som du vill arbeta med och sedan använder du följande kommando för att hämta nyckeln för det här kontot:
+4. Markera hello storage-konto som innehåller hello blob som du vill toowork med och använda följande kommando tooretrieve hello nyckeln för det här kontot hello:
 
         azure storage account keys list <storage-account-name>
 
-    Detta bör returnera **primära** och **sekundära** nycklar. Kopiera den **primära** nyckelvärdet eftersom den används i nästa steg.
-5. Använd följande kommando för att hämta en lista över blobbbehållare i storage-konto:
+    Detta bör returnera **primära** och **sekundära** nycklar. Kopiera hello **primära** nyckelvärdet eftersom den används i hello nästa steg.
+5. Använd hello efter kommandot tooretrieve en lista över blobbbehållare i hello storage-konto:
 
         azure storage container list -a <storage-account-name> -k <primary-key>
-6. Ladda upp och laddar ned filer till blob med hjälp av följande kommandon:
+6. Använd följande kommandon tooupload hello och hämta filer toohello blob:
 
-   * Att överföra en fil:
+   * tooupload en fil:
 
            azure storage blob upload -a <storage-account-name> -k <primary-key> <source-file> <container-name> <blob-name>
-   * Att hämta en fil:
+   * toodownload en fil:
 
            azure storage blob download -a <storage-account-name> -k <primary-key> <container-name> <blob-name> <destination-file>
 
 > [!NOTE]
-> Om du kommer alltid att arbeta med samma lagringskonto, kan du ange följande miljövariabler i stället för att ange konto och nyckel för varje kommando:
+> Om du kommer alltid att arbeta med hello samma lagringskonto som du kan ange hello följande miljövariabler i stället för att ange hello konto och nyckel för varje kommando:
 >
-> * **AZURE\_lagring\_konto**: lagringskontonamnet
-> * **AZURE\_lagring\_åtkomst\_NYCKELN**: lagringskontots åtkomstnyckel
+> * **AZURE\_lagring\_konto**: hello lagringskontonamn
+> * **AZURE\_lagring\_åtkomst\_NYCKELN**: hello lagringskontonyckel
 >
 >
 
 ### <a id="powershell"></a>Azure PowerShell
-Azure PowerShell är en skriptmiljö som du kan använda för att styra och automatisera distributionen och hanteringen av dina arbetsbelastningar i Azure. Information om hur du konfigurerar din arbetsstation för att köra Azure PowerShell finns i [installera och konfigurera Azure PowerShell](/powershell/azure/overview).
+Azure PowerShell är en skriptmiljö som du kan använda toocontrol och automatisera hello distribution och hantering av dina arbetsbelastningar i Azure. Information om hur du konfigurerar din arbetsstation toorun Azure PowerShell finns i [installera och konfigurera Azure PowerShell](/powershell/azure/overview).
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell.md)]
 
-**Att överföra en lokal fil till Azure Blob storage**
+**tooupload en lokal fil tooAzure Blob storage**
 
-1. Öppna Azure PowerShell-konsol som finns beskrivet i [installera och konfigurera Azure PowerShell](/powershell/azure/overview).
-2. Ange värden för de första fem variablerna i skriptet med följande:
+1. Öppna hello Azure PowerShell-konsolen som finns beskrivet i [installera och konfigurera Azure PowerShell](/powershell/azure/overview).
+2. Ange hello värdena för hello fem första variabler i hello följande skript:
 
         $resourceGroupName = "<AzureResourceGroupName>"
         $storageAccountName = "<StorageAccountName>"
@@ -116,41 +116,41 @@ Azure PowerShell är en skriptmiljö som du kan använda för att styra och auto
         $fileName ="<LocalFileName>"
         $blobName = "<BlobName>"
 
-        # Get the storage account key
+        # Get hello storage account key
         $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName)[0].Value
-        # Create the storage context object
+        # Create hello storage context object
         $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageaccountkey
 
-        # Copy the file from local workstation to the Blob container
+        # Copy hello file from local workstation toohello Blob container
         Set-AzureStorageBlobContent -File $fileName -Container $containerName -Blob $blobName -context $destContext
-3. Klistra in skriptet i Azure PowerShell-konsolen för att köra den att kopiera filen.
+3. Klistra in hello skript i hello Azure PowerShell-konsolen toorun som toocopy hello-filen.
 
-Till exempel PowerShell-skript som skapats för att arbeta med HDInsight, se [HDInsight tools](https://github.com/blackmist/hdinsight-tools).
+Till exempel PowerShell-skript har skapats toowork med HDInsight, se [HDInsight tools](https://github.com/blackmist/hdinsight-tools).
 
 ### <a id="azcopy"></a>AzCopy
-AzCopy är ett kommandoradsverktyg som förenklar uppgiften att överföra data till och från ett Azure Storage-konto. Du kan använda den som ett fristående verktyg eller innehålla verktyget i ett befintligt program. [Hämta AzCopy][azure-azcopy-download].
+AzCopy är ett kommandoradsverktyg som är utformade toosimplify hello aktiviteten för att överföra data till och från ett Azure Storage-konto. Du kan använda den som ett fristående verktyg eller innehålla verktyget i ett befintligt program. [Hämta AzCopy][azure-azcopy-download].
 
-AzCopy-syntaxen är:
+Hej AzCopy syntaxen är:
 
     AzCopy <Source> <Destination> [filePattern [filePattern...]] [Options]
 
 Mer information finns i [AzCopy - överföring/hämta filer för Azure-BLOB][azure-azcopy].
 
 ### <a id="commandline"></a>Hadoop-kommandorad
-Hadoop-kommandoraden är bara användbara för att lagra data i blob-lagring när data finns redan på klustrets huvudnod.
+Hej Hadoop kommandoraden är bara användbara för att lagra data i blob-lagring när data hello finns redan på hello klustrets huvudnod.
 
-För att kunna använda kommandot Hadoop, måste du först ansluta till headnode med någon av följande metoder:
+I ordning toouse hello Hadoop-kommandot, måste du först ansluta toohello headnode med någon av följande metoder hello:
 
 * **Windows-baserade HDInsight**: [ansluta med hjälp av fjärrskrivbord](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
-* **Linux-baserat HDInsight**: ansluta via SSH ([SSH-kommandot](hdinsight-hadoop-linux-use-ssh-unix.md) eller [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md))
+* **Linux-baserat HDInsight**: ansluta via SSH ([hello SSH-kommandot](hdinsight-hadoop-linux-use-ssh-unix.md) eller [PuTTY](hdinsight-hadoop-linux-use-ssh-windows.md))
 
-När du är ansluten, kan du använda följande syntax för att överföra en fil till lagring.
+När du är ansluten, kan du använda följande syntax tooupload en fil toostorage hello.
 
     hadoop -copyFromLocal <localFilePath> <storageFilePath>
 
 Till exempel, `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
-Eftersom filsystemet för HDInsight i Azure Blob storage är /example/data.txt i Azure Blob storage. Du kan också gå till filen som:
+Eftersom hello standardfilsystem för HDInsight i Azure Blob storage är /example/data.txt i Azure Blob storage. Du kan också se toohello filen som:
 
     wasb:///example/data/data.txt
 
@@ -161,12 +161,12 @@ eller
 En lista med andra Hadoop-kommandon som fungerar med filer, finns [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
 > [!WARNING]
-> I HBase-kluster standard blockstorlek som används när data skrivs är 256KB. När det här fungerar bra när du använder HBase APIs eller REST API: er med hjälp av den `hadoop` eller `hdfs dfs` kommandon för att skriva data som är större än ~ 12 GB resulterar i ett fel. Finns det [skrivning till blob storage-undantag](#storageexception) avsnittet nedan för mer information.
+> På HBase-kluster hello standardblockstorleken används när data skrivs är 256KB. När det här fungerar bra när du använder HBase APIs eller REST API: er med hjälp av hello `hadoop` eller `hdfs dfs` kommandon toowrite data är större än ~ 12 GB resulterar i ett fel. Se hello [skrivning till blob storage-undantag](#storageexception) avsnittet nedan för mer information.
 >
 >
 
 ## <a name="graphical-clients"></a>Grafisk klienter
-Det finns också flera program som ger ett grafiskt gränssnitt för att arbeta med Azure Storage. Följande är en lista över några av dessa program:
+Det finns också flera program som ger ett grafiskt gränssnitt för att arbeta med Azure Storage. hello nedan följer en lista över några av dessa program:
 
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
@@ -178,46 +178,46 @@ Det finns också flera program som ger ett grafiskt gränssnitt för att arbeta 
 | [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
 
 ### <a name="visual-studio-tools-for-hdinsight"></a>Visual Studio-verktygen för HDInsight
-Mer information finns i [navigera de länkade resurserna](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources).
+Mer information finns i [analysera hello länkade resurser](hdinsight-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources).
 
 ### <a id="storageexplorer"></a>Azure Lagringsutforskaren
-*Azure Lagringsutforskaren* är användbart för att kontrollera och ändra data i BLOB. Det är ett kostnadsfritt, Öppna källa verktyg som kan hämtas från [http://storageexplorer.com/](http://storageexplorer.com/). Källkoden är tillgänglig från den här länken samt.
+*Azure Lagringsutforskaren* är användbart för att kontrollera och ändra hello data i BLOB. Det är ett kostnadsfritt, Öppna källa verktyg som kan hämtas från [http://storageexplorer.com/](http://storageexplorer.com/). hello källkoden är tillgänglig från den här länken samt.
 
-Innan du använder verktyget, måste du känna till din Azure storage-konto och nyckel. Anvisningar om hur du får den här informationen finns i ”så här: visa, kopiera och generera lagring åtkomstnycklar” avsnitt i [skapa, hantera eller ta bort ett lagringskonto][azure-create-storage-account].
+Innan du använder verktyget hello, måste du känna till din Azure storage-konto och nyckel. Anvisningar om hur du får den här informationen finns hello ”så här: visa, kopiera och generera lagring åtkomstnycklar” avsnittet av [skapa, hantera eller ta bort ett lagringskonto][azure-create-storage-account].
 
-1. Kör Azure Lagringsutforskaren. Om det här är första gången du har kört Lagringsutforskaren, du uppmanas att den **_Storage kontonamn** och **lagringskontonyckel**. Om du har kört den innan du använder den **Lägg till** för att lägga till ett nytt lagringskontonamn och nyckel.
+1. Kör Azure Lagringsutforskaren. Om det är hello första gången du har kört hello Lagringsutforskaren, du uppmanas att hello **_Storage kontonamn** och **lagringskontonyckel**. Om du har kört den innan du använder hello **Lägg till** knappen tooadd ett nytt lagringskontonamn och nyckel.
 
-    Ange namnet och nyckeln för storage-konto som används av ditt HDInsight-kluster och välj sedan **Spara & Öppna**.
+    Ange hello namn och nyckel för hello storage-konto som används av ditt HDInsight-kluster och välj sedan **Spara & Öppna**.
 
     ![HDI. AzureStorageExplorer][image-azure-storage-explorer]
-2. I listan över behållare till vänster om gränssnittet, klickar du på namnet på behållaren som är kopplad till ditt HDInsight-kluster. Detta är namnet på HDInsight-klustret som standard men kan skilja sig om du har angett ett specifikt namn när du skapar klustret.
-3. I verktygsfältet, väljer du ikonen överföringen.
+2. Hello namnet på hello-behållare som är kopplad till ditt HDInsight-kluster på hello listan behållare toohello kvar för hello-gränssnittet. Detta är hello namnet på hello HDInsight-kluster som standard men kan skilja sig om du har angett ett specifikt namn när du skapar hello kluster.
+3. Välj hello överför ikonen hello verktygsfältet.
 
     ![Verktygsfält med överför ikonen markerat](./media/hdinsight-upload-data/toolbar.png)
-4. Ange en fil för att ladda upp och klicka sedan på **öppna**. När du uppmanas, Välj **överför** att överföra filen till roten på lagringsbehållaren. Om du vill överföra filen till en specifik sökväg anger du sökvägen i den **mål** fältet och välj sedan **överför**.
+4. Ange en fil tooupload och klicka sedan på **öppna**. När du uppmanas, Välj **överför** tooupload hello filen toohello rot hello lagringsbehållaren. Om du vill tooupload hello tooa specifika sökväg, ange hello sökväg i hello **mål** fältet och välj sedan **överför**.
 
     ![Överför fildialogruta](./media/hdinsight-upload-data/fileupload.png)
 
-    När filen har överförts, kan du använda den från jobb i HDInsight-klustret.
+    När hello-filen har överförts, kan du använda den från jobb på hello HDInsight-kluster.
 
 ## <a name="mount-azure-blob-storage-as-local-drive"></a>Montera Azure Blob Storage som lokal enhet
 Se [montera Azure Blob Storage som lokala enhet](http://blogs.msdn.com/b/bigdatasupport/archive/2014/01/09/mount-azure-blob-storage-as-local-drive.aspx).
 
 ## <a name="services"></a>Tjänster
 ### <a name="azure-data-factory"></a>Azure Data Factory
-Azure Data Factory-tjänsten är en helt hanterad tjänst för att skapa lagring, databehandling och data movement datatjänster till produktion pipeline-effektiviserad, skalbara och tillförlitliga data.
+hello Azure Data Factory-tjänsten är en helt hanterad tjänst för att skapa lagring, databehandling och data movement datatjänster till produktion pipeline-effektiviserad, skalbara och tillförlitliga data.
 
-Azure Data Factory kan användas för att flytta data till Azure Blob storage, eller för att skapa data pipelines som använder HDInsight-funktioner, till exempel Hive och Pig direkt.
+Azure Data Factory kan vara används toomove data till Azure Blob storage eller toocreate data pipelines som använder direkt HDInsight funktioner som Hive och svin.
 
-Mer information finns i [dokumentation för Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/).
+Mer information finns i hello [dokumentation för Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/).
 
 ### <a id="sqoop"></a>Apache Sqoop
-Sqoop är ett verktyg som utformats för att överföra data mellan Hadoop och relationsdatabaser. Du kan använda den för att importera data från ett relationella databashanteringssystem (RDBMS), exempelvis SQL Server, MySQL eller Oracle i Hadoop distributed file system (HDFS) Transformera data i Hadoop med MapReduce eller Hive och exportera data till en RDBMS.
+Sqoop är ett verktyg tootransfer data mellan Hadoop och relationsdatabaser. Du kan använda den tooimport data från ett relationella databashanteringssystem (RDBMS) som SQL Server, MySQL eller Oracle till hello Hadoop distributed file system (HDFS), transformera hello data i Hadoop med MapReduce eller Hive och sedan exportera hello data tillbaka till en RDBMS.
 
 Mer information finns i [använda Sqoop med HDInsight][hdinsight-use-sqoop].
 
 ## <a name="development-sdks"></a>SDK: er för utveckling
-Azure Blob storage kan även nås med ett Azure SDK från följande programmeringsspråk:
+Azure Blob storage kan även nås med ett Azure SDK från hello följande programmeringsspråk:
 
 * .NET
 * Java
@@ -226,11 +226,11 @@ Azure Blob storage kan även nås med ett Azure SDK från följande programmerin
 * Python
 * Ruby
 
-Mer information om hur du installerar Azure SDK: erna finns [hämtar Azure](https://azure.microsoft.com/downloads/)
+Mer information om hur du installerar hello Azure SDK finns [hämtar Azure](https://azure.microsoft.com/downloads/)
 
 ## <a name="troubleshooting"></a>Felsökning
 ### <a id="storageexception"></a>Skrivning till blob Storage-undantag
-**Symptom**: när du använder den `hadoop` eller `hdfs dfs` kommandon för att skriva filer som är ~ 12 GB eller större på ett HBase-kluster kan du stöta på följande fel:
+**Symptom**: när du använder hello `hadoop` eller `hdfs dfs` kommandon toowrite filer som är ~ 12 GB eller större på ett HBase-kluster som kan uppstå hello följande fel:
 
     ERROR azure.NativeAzureFileSystem: Encountered Storage Exception for write on Blob : example/test_large_file.bin._COPYING_ Exception details: null Error Code : RequestBodyTooLarge
     copyFromLocal: java.io.IOException
@@ -243,7 +243,7 @@ Mer information om hur du installerar Azure SDK: erna finns [hämtar Azure](http
             at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
             at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
             at java.lang.Thread.run(Thread.java:745)
-    Caused by: com.microsoft.azure.storage.StorageException: The request body is too large and exceeds the maximum permissible limit.
+    Caused by: com.microsoft.azure.storage.StorageException: hello request body is too large and exceeds hello maximum permissible limit.
             at com.microsoft.azure.storage.StorageException.translateException(StorageException.java:89)
             at com.microsoft.azure.storage.core.StorageRequest.materializeException(StorageRequest.java:307)
             at com.microsoft.azure.storage.core.ExecutionEngine.executeWithRetry(ExecutionEngine.java:182)
@@ -252,27 +252,27 @@ Mer information om hur du installerar Azure SDK: erna finns [hämtar Azure](http
             at com.microsoft.azure.storage.blob.BlobOutputStream$1.call(BlobOutputStream.java:354)
             ... 7 more
 
-**Orsak**: HBase på HDInsight-kluster standard till en blockstorlek på 256 KB när du skriver till Azure-lagring. När det här fungerar för HBase APIs eller REST API: er det kommer att resultera i ett fel när du använder den `hadoop` eller `hdfs dfs` kommandoradsverktyg.
+**Orsak**: HBase på HDInsight-kluster tooa standardblockstorleken på 256 KB när du skriver tooAzure lagring. När det här fungerar för HBase APIs eller REST API: er det kommer att resultera i ett fel när du använder hello `hadoop` eller `hdfs dfs` kommandoradsverktyg.
 
-**Lösning**: Använd `fs.azure.write.request.size` att ange en större blockstorlek. Du kan göra detta på grundval av per användning med hjälp av den `-D` parameter. Följande är ett exempel som använder den här parametern med det `hadoop` kommando:
+**Lösning**: Använd `fs.azure.write.request.size` toospecify en större blockstorlek. Du kan göra detta på grundval av per tillfälle genom att använda hello `-D` parameter. hello följande är ett exempel som använder den här parametern med hello `hadoop` kommando:
 
     hadoop -fs -D fs.azure.write.request.size=4194304 -copyFromLocal test_large_file.bin /example/data
 
-Du kan också öka värdet för `fs.azure.write.request.size` globalt med Ambari. Följande steg kan användas för att ändra värdet i Ambari-Webbgränssnittet:
+Du kan också öka hello värdet för `fs.azure.write.request.size` globalt med Ambari. hello följande steg kan vara används toochange hello värdet i hello Ambari-Webbgränssnittet:
 
-1. Gå till Ambari-Webbgränssnittet för klustret i din webbläsare. Detta är https://CLUSTERNAME.azurehdinsight.net, där **KLUSTERNAMN** är namnet på klustret.
+1. Gå toohello Ambari-Webbgränssnittet för klustret i webbläsaren. Detta är https://CLUSTERNAME.azurehdinsight.net, där **KLUSTERNAMN** är hello namnet på klustret.
 
-    När du uppmanas, anger du admin namn och lösenord för klustret.
-2. Vänster sida av skärmen, Välj **HDFS**, och välj sedan den **konfigurationerna** fliken.
-3. I den **Filter...**  anger `fs.azure.write.request.size`. Detta visas i fältet och det aktuella värdet i mitten på sidan.
-4. Ändra värdet från 262144 (256KB) till det nya värdet. Till exempel 4194304 (4MB).
+    När du uppmanas ange hello admin namn och lösenord för hello klustret.
+2. Hello vänster sida av hello-skärmen, Välj **HDFS**, och välj sedan hello **konfigurationerna** fliken.
+3. I hello **Filter...**  anger `fs.azure.write.request.size`. Visas hello fältet och det aktuella värdet hello mitten av hello-sidan.
+4. Ändra hello värdet från 262144 (256KB) toohello nytt värde. Till exempel 4194304 (4MB).
 
-![Bild av ändra värdet via Ambari-Webbgränssnittet](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
+![Bild av ändra hello-värdet via Ambari-Webbgränssnittet](./media/hdinsight-upload-data/hbase-change-block-write-size.png)
 
-Läs mer om hur du använder Ambari [hantera HDInsight-kluster med Ambari-Webbgränssnittet](hdinsight-hadoop-manage-ambari.md).
+Läs mer om hur du använder Ambari [hantera HDInsight-kluster med Ambari-Webbgränssnittet för hello](hdinsight-hadoop-manage-ambari.md).
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du vet hur du hämta data till HDInsight kan du läsa följande artiklar om du vill lära dig att utföra analyser av:
+Nu när du förstår hur tooget data till HDInsight, läsa hello följande artiklar toolearn hur tooperform analys:
 
 * [Kom igång med Azure HDInsight][hdinsight-get-started]
 * [Skicka Hadoop-jobb via programmering][hdinsight-submit-jobs]

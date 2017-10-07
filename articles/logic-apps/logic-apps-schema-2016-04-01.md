@@ -1,5 +1,5 @@
 ---
-title: Schemat uppdateras juni 1 2016 - Azure Logic Apps | Microsoft Docs
+title: aaaSchema uppdaterar juni 1 2016 - Azure Logic Apps | Microsoft Docs
 description: "Skapa JSON-definitioner för Logic Apps i Azure med schemaversionen 2016-06-01"
 author: jeffhollan
 manager: anneta
@@ -15,21 +15,21 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 43df04d6478e44c82c88b17d916cfc9fe4afc03e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b0347fbbd692a93b63a2f8b741402a225450b35a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Schema-uppdateringar för Logikappar i Azure - 1 juni 2016
 
-Den här nya schemat och API-version för Logikappar i Azure innehåller viktiga förbättringar som gör logikappar mer tillförlitlig och enklare att använda:
+Den här nya schemat och API-version för Logikappar i Azure innehåller viktiga förbättringar som gör logikappar mer tillförlitlig och enklare toouse:
 
 * [Scope](#scopes) låter dig kapsla åtgärder som en samling åtgärder.
 * [Villkor och slingor](#conditions-loops) är nu förstklassigt åtgärder.
-* Mer exakta ordning för åtgärder med körs den `runAfter` egenskapen ersätta`dependsOn`
+* Mer exakta ordning för att köra åtgärder med hello `runAfter` egenskapen ersätta`dependsOn`
 
-Att uppgradera dina logic apps från 1 augusti 2015 preview schemat till den 1 juni 2016-schemat [kolla avsnittet Uppgradera](##upgrade-your-schema).
+tooupgrade dina logikappar från hello 1 augusti 2015 Förhandsgranska schemat toohello den 1 juni 2016 schemat [kolla hello uppgradera avsnittet](##upgrade-your-schema).
 
 <a name="scopes"></a>
 ## <a name="scopes"></a>Scope
@@ -88,9 +88,9 @@ I tidigare schemat har versioner, villkor och slingor parametrar som är associe
 <a name="run-after"></a>
 ## <a name="runafter-property"></a>Egenskapen 'runAfter'
 
-Den `runAfter` egenskapen ersätter `dependsOn`, ger högre precision när du anger kör ordning för åtgärder baserat på status för tidigare åtgärder.
+Hej `runAfter` egenskapen ersätter `dependsOn`, ger högre precision när du anger hello kör ordning för åtgärder baserat på hello status för tidigare åtgärder.
 
-Den `dependsOn` egenskapen var synonym med ”åtgärden kördes och lyckades”, oavsett hur många gånger som du vill utföra en åtgärd, baserat på om den föregående åtgärden lyckades, misslyckades eller hoppas över. Den `runAfter` egenskapen ger den flexibiliteten som ett objekt som anger alla åtgärdsnamn efter vilken objektet körs. Den här egenskapen definierar också en matris med statuslägen som är godkända som utlösare. Till exempel om du vill köra när steget A lyckas och även efter steg B lyckas eller misslyckas kan du skapa detta `runAfter` egenskapen:
+Hej `dependsOn` egenskapen var synonym med ”hello åtgärd kördes och lyckades”, oavsett hur många gånger du vill ha tooexecute en åtgärd, baserat på om hello föregående åtgärd har slutförts, misslyckades eller hoppas över. Hej `runAfter` egenskapen ger den flexibiliteten som ett objekt som anger alla hello åtgärdsnamn efter vilken hello objektet körs. Den här egenskapen definierar också en matris med statuslägen som är godkända som utlösare. Till exempel om du vill toorun efter steget A slutförs och även efter steg B lyckas eller misslyckas kan du skapa det här `runAfter` egenskapen:
 
 ```
 {
@@ -104,59 +104,59 @@ Den `dependsOn` egenskapen var synonym med ”åtgärden kördes och lyckades”
 
 ## <a name="upgrade-your-schema"></a>Uppgradera schemat
 
-Uppgradera till det nya schemat tar bara några steg. Uppgraderingsprocessen innehåller kör uppgraderingsskriptet, spara i en ny logikapp och du kan eventuellt att skriva över tidigare logikappen.
+Uppgradera toohello tar nya schemat bara några steg. hello uppgraderingsprocessen innehåller kör hello uppgraderingsskript, Spara som en ny logikapp och du kan eventuellt att skriva över hello tidigare logikapp.
 
-1. Öppna logikappen i Azure-portalen.
+1. Öppna logikappen i hello Azure-portalen.
 
-2. Gå till **översikt**. I verktygsfältet logik app välja **uppdatera Schema**.
+2. Gå för**översikt**. Välj hello logik app verktygsfältet **uppdatera Schema**.
    
     ![Välj Uppdatera Schema][1]
    
-    Definitionen för uppgraderade returneras som du kan kopiera och klistra in i en resursdefinition om det behövs. 
-    Men vi **rekommenderar** du väljer **Spara som** att se till att alla referenser för anslutningen är giltig i uppgraderade logikappen.
+    hello returneras uppgraderade definition, som du kan kopiera och klistra in i en resursdefinition om det behövs. 
+    Men vi **rekommenderar** du väljer **Spara som** toomake till att alla referenser för anslutningen är giltiga i hello uppgraderas logikapp.
 
-3. I verktygsfältet uppgradera bladet väljer **Spara som**.
+3. I hello uppgradera bladet i verktygsfältet väljer **Spara som**.
 
-4. Ange logiken namn och status. För att distribuera din uppgraderade logikapp, Välj **skapa**.
+4. Ange hello logik namn och status. toodeploy logikappen uppgraderade väljer **skapa**.
 
 5. Bekräfta att logikappen uppgraderade fungerar som förväntat.
    
    > [!NOTE]
-   > Om du använder en manuell eller begäran utlösare ändrar återanrop URL i den nya logikappen. Testa den nya URL Om du vill kontrollera slutpunkt till slutpunkt experience fungerar. För att bevara tidigare URL: er, kan du klona via din befintliga logikapp.
+   > Om du använder en manuell eller begäran utlösare ändras hello återanrop URL i den nya logikappen. Test hello nya URL: en toomake att hello slutpunkt till slutpunkt-upplevelse fungerar. toopreserve tidigare URL: er, kan du klona via din befintliga logikapp.
 
-6. *Valfria* om du vill skriva över tidigare logikappen med den nya schemaversionen i verktygsfältet väljer **klona**, bredvid **uppdatera Schema**. Det här steget krävs endast om du vill behålla samma resurs-ID eller begära utlösaren URL för din logikapp.
+6. *Valfria* toooverwrite logikappen tidigare med hello ny schemaversion hello i verktygsfältet väljer **klona**, nästa för**uppdatera Schema**. Det här steget är nödvändigt endast om du vill tookeep hello samma resurs-ID eller begäran utlösaren URL för din logikapp.
 
 ### <a name="upgrade-tool-notes"></a>Uppgradering av verktyget
 
 #### <a name="mapping-conditions"></a>Mappningsvillkoren
 
-I den uppgraderade definitionen gör verktyget bästa prestanda på Gruppera true och false gren åtgärder som omfattning. Mer specifikt designer mönstret för `@equals(actions('a').status, 'Skipped')` ska visas som en `else` åtgärd. Om verktyget upptäcker inte kan tolkas mönster, kan verktyget Skapa olika villkor för både på true och false grenen. Du kan mappa om åtgärder efter uppgraderingen, om det behövs.
+I hello uppgraderas definition är hello-verktyget bästa prestanda på Gruppera true och false gren åtgärder som omfattning. Mer specifikt hello designer mönstret för `@equals(actions('a').status, 'Skipped')` ska visas som en `else` åtgärd. Om hello upptäcks inte kan tolkas mönster, kan hello verktyget Skapa olika villkor för både hello true och hello falsk förgrening. Du kan mappa om åtgärder efter uppgraderingen, om det behövs.
 
 #### <a name="foreach-loop-with-condition"></a>'foreach-loop med villkoret
 
-I det nya schemat kan du använda filteråtgärd för att replikera mönstret för en `foreach` med ett villkor per artikel, men den här ändringen ska ske automatiskt när du uppgraderar. Villkoret blir en filteråtgärd innan foreach-slinga för att returnera en matris med objekt som matchar villkoret och den matrisen skickades till foreach-åtgärd. Ett exempel finns [slingor och scope](../logic-apps/logic-apps-loops-and-scopes.md).
+I nya hello-schemat kan du använda hello åtgärd tooreplicate hello filtermönstret av en `foreach` med ett villkor per artikel, men den här ändringen ska ske automatiskt när du uppgraderar. hello villkor blir en filteråtgärd innan hello foreach-slinga för att returnera en matris av objekt som matchar villkoret hello och att matris skickades till hello foreach-åtgärd. Ett exempel finns [slingor och scope](../logic-apps/logic-apps-loops-and-scopes.md).
 
 #### <a name="resource-tags"></a>Resurstaggar
 
-När du har uppgraderat tas resurstaggar bort, så måste du återställa dem för det uppgraderade arbetsflödet.
+När du har uppgraderat tas resurstaggar bort, så måste du återställa dem för hello uppgraderas arbetsflödet.
 
 ## <a name="other-changes"></a>Andra ändringar
 
-### <a name="renamed-manual-trigger-to-request-trigger"></a>Har bytt namn till ”manuell” utlösaren till ”begäran” utlösare
+### <a name="renamed-manual-trigger-toorequest-trigger"></a>Byta namn på ”manuell” utlösaren too'request-utlösare
 
-Den `manual` utlösartypen var föråldrad och bytt namn till `request` med typen `http`. Den här ändringen skapar mer konsekvens för typ av mönster som utlösaren används för att skapa.
+Hej `manual` utlösartypen var föråldrad och har fått nytt namn för`request` med typen `http`. Den här ändringen skapar mer konsekvens för hello typ av mönster som hello utlösare är används toobuild.
 
 ### <a name="new-filter-action"></a>Ny ”filter”-åtgärd
 
-Filtrera en stor matris till en mindre uppsättning objekt som den nya `filter` accepterar en matris och ett villkor, utvärderar villkor för varje objekt och returnerar en matris med objekt som uppfyller villkoret.
+toofilter en stor matris ned tooa mindre uppsättning objekt, hello nya `filter` accepterar en matris och ett villkor, utvärderar hello villkor för varje objekt och returnerar en matris med objekt som uppfyller villkoret hello.
 
 ### <a name="restrictions-for-foreach-and-until-actions"></a>Begränsningar för 'foreach ”och” till ”-åtgärder
 
-Den `foreach` och `until` loop är begränsade till en enda åtgärd.
+Hej `foreach` och `until` loop är begränsad tooa enda åtgärd.
 
 ### <a name="new-trackedproperties-for-actions"></a>Ny 'trackedProperties' för åtgärder
 
-Åtgärder kan nu använda en annan egenskap som kallas `trackedProperties`, som är på samma nivå i `runAfter` och `type` egenskaper. Det här objektet anger vissa åtgärd indata eller utdata som du vill inkludera i Azure diagnostisk telemetri, orsakat som en del av ett arbetsflöde. Exempel:
+Åtgärder kan nu använda en annan egenskap som kallas `trackedProperties`, vilket är samma nivå toohello `runAfter` och `type` egenskaper. Det här objektet anger vissa åtgärd indata eller utdata som du vill tooinclude i hello Azure diagnostisk telemetri orsakat som en del av ett arbetsflöde. Exempel:
 
 ```
 {                

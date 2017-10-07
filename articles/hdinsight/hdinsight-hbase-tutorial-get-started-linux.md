@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med HBase-exempel på HDInsight - Azure | Microsoft Docs"
-description: "Följ stegen i det här exemplet om Apache HBase om du vill börja använda hadoop med HDInsight. Skapa tabeller från HBase-gränssnittet och ställ frågor för dem med Hive."
+title: "aaaGet igång med exempel HBase på HDInsight - Azure | Microsoft Docs"
+description: "Följ den här toostart för exempel av Apache HBase med hadoop i HDInsight. Skapa tabeller från hello HBase-gränssnittet och fråga dem med Hive."
 keywords: hbasecommand,hbase example
 services: hdinsight
 documentationcenter: 
@@ -16,65 +16,65 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: jgao
-ms.openlocfilehash: bbd8a838062795ee03ae02dc5e3fd45d841a6e17
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 43419780142b320b16180a2b1f25020dee2f7a11
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Kom igång med ett Apache HBase-exempel i HDInsight
 
-Lär dig skapa ett HBase-kluster i HDInsight, skapa HBase-tabeller och frågetabeller med Hive. Allmän HBase-information finns i [HDInsight HBase-översikt][hdinsight-hbase-overview].
+Lär dig hur toocreate ett HBase-kluster i HDInsight, skapa HBase-tabeller och frågetabeller med Hive. Allmän HBase-information finns i [HDInsight HBase-översikt][hdinsight-hbase-overview].
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="prerequisites"></a>Krav
-Innan du testar det här HBase-exemplet måste du ha följande objekt:
+Innan du försöker exemplet HBase, måste du ha hello följande objekt:
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Secure Shell(SSH)](hdinsight-hadoop-linux-use-ssh-unix.md). 
 * [curl](http://curl.haxx.se/download.html).
 
 ## <a name="create-hbase-cluster"></a>Skapa HBase-kluster
-Följande procedur använder en Azure Resource Manager-mall för att skapa ett version 3.4 Linux-baserat HBase-kluster och det beroende standardkontot för Azure Storage. Mer information om de parametrar som används i proceduren och andra metoder för att skapa kluster finns i [Skapa Linux-baserade Hadoop-kluster i HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+hello följande procedur används en mall för Azure Resource Manager-toocreate en version 3.4 Linux-baserade HBase-kluster och hello beroende Azure standardkontot för lagring. toounderstand hello parametrar som används i hello proceduren och andra metoder, se [skapa Linux-baserade Hadoop-kluster i HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-1. Klicka på följande bild för att öppna mallen i Azure Portal. Mallen finns i en offentlig blob-behållare. 
+1. Klicka på hello följande bild tooopen hello mallen i hello Azure-portalen. hello-mallen finns i en offentlig blob-behållare. 
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. Från bladet **Anpassad distribution** anger du följande värden:
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy tooAzure"></a>
+2. Från hello **anpassad distribution** bladet ange hello följande värden:
    
-   * **Prenumeration**: Välj den Azure-prenumeration som kommer användas för att skapa klustret.
+   * **Prenumerationen**: Välj din Azure-prenumeration som används toocreate hello klustret.
    * **Resursgrupp**: Skapa en Azure Resource Management-grupp eller använd en befintlig.
-   * **Plats**: Ange platsen för resursgruppen. 
-   * **Klusternamn**: Ange ett namn för HBase-klustret.
-   * **Klustrets inloggningsnamn och lösenord**: Inloggningsnamnet är som standard **admin**.
-   * **SSH-användarnamn och lösenord**: Standardanvändarnamnet är **sshuser**.  Du kan byta namn.
+   * **Plats**: Ange hello plats hello resursgruppen. 
+   * **Klusternamn**: Ange ett namn för hello HBase-kluster.
+   * **Klustrets inloggningsnamn och lösenord**: hello standard inloggningsnamnet är **admin**.
+   * **SSH-användarnamn och lösenord**: hello Standardanvändarnamnet är **sshuser**.  Du kan byta namn.
      
      Andra parametrar är valfria.  
      
-     Varje kluster är beroende av ett Azure Storage-konto. När du tar bort ett kluster stannar aktuella data kvar på lagringskontot. Klustrets lagringskonto av standardtyp har det klusternamn som omfattar tillägget ”store”. Det är hårdkodat i avsnittet för mallvariabler.
-3. Välj **Jag godkänner villkoren som anges ovan** och klicka sedan på **Köp**. Det tar cirka 20 minuter att skapa ett kluster.
+     Varje kluster är beroende av ett Azure Storage-konto. När du har tagit bort ett kluster behåller hello data i hello storage-konto. hello klustret standard lagringskontonamnet är hello klusternamnet med tillägget ”store”. Det är hårdkodat i hello mallsektion variabler.
+3. Välj **acceptera toohello villkoren ovan**, och klicka sedan på **inköp**. Det tar cirka 20 minuter toocreate ett kluster.
 
 > [!NOTE]
-> När ett HBase-kluster har tagits bort kan du skapa ett annat HBase-kluster med hjälp av samma standard-blob-behållare. Det nya klustret hämtar de HBase-tabeller som du skapade i det ursprungliga klustret. Om du vill undvika inkonsekvenser rekommenderar vi att du inaktiverar HBase-tabellerna innan du tar bort klustret.
+> När ett HBase-kluster har tagits bort kan du skapa ett annat HBase-kluster med hjälp av hello samma standardblob-behållare. hello nya klustret hämtar hello HBase-tabeller som du skapade i hello ursprungliga klustret. tooavoid inkonsekvenser, rekommenderar vi att du inaktiverar hello HBase-tabeller innan du tar bort hello klustret.
 > 
 > 
 
 ## <a name="create-tables-and-insert-data"></a>Skapa tabeller och infoga data
-Du kan använda SSH för att ansluta till HBase-kluster och sedan använda HBase Shell för att skapa HBase-tabeller, infoga data och ställa frågor till data. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
+Du kan använda SSH tooconnect tooHBase kluster och sedan använda HBase Shell toocreate HBase-tabeller, infoga data och fråga efter data. Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
 
-För de flesta visas data i tabellformat:
+För de flesta visas data i tabellformat hello:
 
 ![HDInsight HBase-tabelldata][img-hbase-sample-data-tabular]
 
-I HBase, som är en implementering av BigTable, ser samma data ut så här:
+Hej samma data ser ut som i HBase (en implementering av BigTable):
 
 ![HDInsight HBase BigTable-data][img-hbase-sample-data-bigtable]
 
 
-**Använd HBase Shell**
+**toouse hello HBase-gränssnittet**
 
-1. Från SSH kör du följande HBase-kommando:
+1. Kör hello följande HBase-kommando från SSH:
    
     ```bash
     hbase shell
@@ -103,20 +103,20 @@ I HBase, som är en implementering av BigTable, ser samma data ut så här:
     get 'Contacts', '1000'
     ```
    
-    Samma resultat visas som med skanningskommandot eftersom det bara finns en rad.
+    Hello samma resultat visas som med hello skanningskommandot eftersom det är bara en rad.
    
-    Mer information om HBase-tabellschemat finns i [Introduktion till design av HBase-schema][hbase-schema]. Fler HBase-kommandon finns i [referensguiden för Apache HBase][hbase-quick-start].
-5. Lämna gränssnittet
+    Mer information om hello HBase-tabellschemat finns [introduktion tooHBase schemat Design][hbase-schema]. Fler HBase-kommandon finns i [referensguiden för Apache HBase][hbase-quick-start].
+5. Avsluta hello shell
    
     ```hbaseshell
     exit
     ```
 
-**För att läsa in data i bulk i HBase-tabellen kontakter**
+**toobulk Läs in data i HBase-tabellen för hello kontakter**
 
 HBase innehåller flera metoder för att läsa in data i tabeller.  Mer information finns i [Massinläsning](http://hbase.apache.org/book.html#arch.bulk.load).
 
-En exempeldatafil finns i en offentlig blob-behållare, *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  Innehållet i datafilen är:
+En exempeldatafil finns i en offentlig blob-behållare, *wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt*.  hello är hello datafilen:
 
     8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.
     16600   Karen Wu         646-555-0113    230-555-0192    9265 La Paz
@@ -129,32 +129,32 @@ En exempeldatafil finns i en offentlig blob-behållare, *wasb://hbasecontacts@hd
     4761    Caleb Alexander  670-555-0141    230-555-0199    4775 Kentucky Dr.
     16443   Terry Chander    998-555-0171    230-555-0200    771 Northridge Drive
 
-Du kan även skapa en textfil och överföra filen till ditt eget lagringskonto. Anvisningarna finns i [Överföra data för Hadoop-jobb i HDInsight][hdinsight-upload-data].
+Du kan om du vill skapa en textfil och överföra hello filen tooyour egna storage-konto. Hello instruktioner finns i [överföra data för Hadoop-jobb i HDInsight][hdinsight-upload-data].
 
 > [!NOTE]
-> Den här proceduren använder den HBase-tabell för kontakter som du skapade i föregående procedur.
+> Den här proceduren använder hello kontakter HBase-tabell som du har skapat i hello föregående procedur.
 > 
 
-1. Kör följande kommando från SSH för att omvandla datafilen till StoreFiles och lagra vid en relativ sökväg som anges av Dimporttsv.bulk.output.  Om du är i HBase Shell använder du avslutningskommandot för att avsluta.
+1. Kör följande kommando tootransform hello filen tooStoreFiles och lagra vid en relativ sökväg som anges av Dimporttsv.bulk.output hello från SSH.  Om du är i HBase Shell Använd hello avsluta kommandot tooexit.
 
     ```bash   
     hbase org.apache.hadoop.hbase.mapreduce.ImportTsv -Dimporttsv.columns="HBASE_ROW_KEY,Personal:Name,Personal:Phone,Office:Phone,Office:Address" -Dimporttsv.bulk.output="/example/data/storeDataFileOutput" Contacts wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt
     ```
 
-2. Kör följande kommando för att överföra data från /example/data/storeDataFileOutput till  HBase-tabellen:
+2. Kör följande kommando tooupload hello data från/storedatafileoutput toohello HBase-tabellen hello:
    
     ```bash
     hbase org.apache.hadoop.hbase.mapreduce.LoadIncrementalHFiles /example/data/storeDataFileOutput Contacts
     ```
 
-3. Du kan öppna HBase-gränssnittet och använda skanningskommandot för att lista tabellinnehållet.
+3. Du kan öppna hello HBase-gränssnittet och använda hello genomsökning kommandot toolist hello innehållet.
 
-## <a name="use-hive-to-query-hbase"></a>Använd Hive för att ställa frågor till HBase
+## <a name="use-hive-tooquery-hbase"></a>Använda Hive tooquery HBase
 
-Du kan fråga efter data i HBase-tabeller med hjälp av Hive. I det här avsnittet skapar du en Hive-tabell som mappar till HBase-tabellen och använder den för att fråga efter data i din HBase-tabell.
+Du kan fråga efter data i HBase-tabeller med hjälp av Hive. I det här avsnittet skapar du en Hive-tabell som mappar toohello HBase-tabellen och använder den tooquery hello data i HBase-tabellen.
 
-1. Öppna **PuTTY** och anslut till klustret.  Se anvisningarna i föregående procedur.
-2. Från SSH-sessionen använder du följande kommando för att starta Beeline:
+1. Öppna **PuTTY**, och Anslut toohello klustret.  Se hello instruktioner i hello föregående procedur.
+2. Använd följande kommando toostart Beeline hello från hello SSH-sessionen:
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
@@ -162,7 +162,7 @@ Du kan fråga efter data i HBase-tabeller med hjälp av Hive. I det här avsnitt
 
     Mer information om Beeline finns i [Use Hive with Hadoop in HDInsight with Beeline](hdinsight-hadoop-use-hive-beeline.md) (Använda Hive med Hadoop i HDInsight med Beeline).
        
-3. Kör följande HiveQL-skript för att skapa en Hive-tabell som mappar till HBase-tabellen. Kontrollera att du har skapat den exempeltabell som vi hänvisade till tidigare i den här självstudien med hjälp av HBase-gränssnittet innan du kör den här instruktionen.
+3. Kör följande HiveQL-skript toocreate hello en Hive-tabell som mappar toohello HBase-tabellen. Kontrollera att du har skapat hello exempeltabell hänvisade till tidigare i den här kursen med hjälp av hello HBase-gränssnittet innan du kör instruktionen.
 
     ```hiveql   
     CREATE EXTERNAL TABLE hbasecontacts(rowkey STRING, name STRING, homephone STRING, officephone STRING, officeaddress STRING)
@@ -171,7 +171,7 @@ Du kan fråga efter data i HBase-tabeller med hjälp av Hive. I det här avsnitt
     TBLPROPERTIES ('hbase.table.name' = 'Contacts');
     ```
 
-4. Kör följande HiveQL-skript för att fråga data i HBase-tabellen:
+4. Kör följande HiveQL-skript tooquery hello data i hello HBase-tabellen hello:
 
     ```hiveql   
     SELECT count(rowkey) FROM hbasecontacts;
@@ -179,16 +179,16 @@ Du kan fråga efter data i HBase-tabeller med hjälp av Hive. I det här avsnitt
 
 ## <a name="use-hbase-rest-apis-using-curl"></a>Använd HBase REST API:er med Curl
 
-REST API skyddas via [grundläggande autentisering](http://en.wikipedia.org/wiki/Basic_access_authentication). Du bör alltid göra begäranden genom att använda säker HTTP (HTTPS) för att säkerställa att dina autentiseringsuppgifter skickas på ett säkert sätt till servern.
+hello REST API skyddas via [grundläggande autentisering](http://en.wikipedia.org/wiki/Basic_access_authentication). Du bör alltid göra begäranden genom att använda säker HTTP (HTTPS) toohelp se till att dina autentiseringsuppgifter skickas toohello server på ett säkert sätt.
 
-2. Använd följande kommando för att lista de befintliga HBase-tabellerna:
+2. Använd hello följande kommando toolist hello befintliga HBase-tabeller:
 
     ```bash
     curl -u <UserName>:<Password> \
     -G https://<ClusterName>.azurehdinsight.net/hbaserest/
     ```
 
-3. Använd följande kommando för att skapa en ny HBase-tabell med två kolumnserier:
+3. Använd följande kommando toocreate en ny HBase-tabell med två kolumnserier hello:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -199,8 +199,8 @@ REST API skyddas via [grundläggande autentisering](http://en.wikipedia.org/wiki
     -v
     ```
 
-    Schemat tillhandahålls i JSon-format.
-4. Använd följande kommando för att infoga vissa data:
+    hello schemat tillhandahålls i hello JSon-format.
+4. Använd följande kommando tooinsert hello vissa data:
 
     ```bash   
     curl -u <UserName>:<Password> \
@@ -211,14 +211,14 @@ REST API skyddas via [grundläggande autentisering](http://en.wikipedia.org/wiki
     -v
     ```
    
-    Du måste base64-koda de värden som anges i switchen -d. I exemplet:
+    Du måste base64 koda hello värdena som anges i hello -d växel. I exemplet hello:
    
    * MTAwMA ==: 1000
    * UGVyc29uYWw6TmFtZQ==: Personal:Name
    * Sm9obiBEb2xl: John Dole
      
-     [false-row-key](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) gör att du kan infoga flera (gruppbaserade) värden.
-5. Använd följande kommando för att få en rad:
+     [FALSKT radnyckel](https://hbase.apache.org/apidocs/org/apache/hadoop/hbase/rest/package-summary.html#operation_cell_store_single) kan du tooinsert (batch) flera värden.
+5. Använd följande kommando tooget en rad hello:
    
     ```bash 
     curl -u <UserName>:<Password> \
@@ -232,30 +232,30 @@ Mer information om HBase Rest finns i [Referensguiden för Apache HBase](https:/
 > [!NOTE]
 > Thrift stöds inte av HBase i HDInsight.
 >
-> När du använder Curl eller annan REST-kommunikation med WebHCat, måste du autentisera begärandena genom att ange användarnamn och lösenord för HDInsight-klustrets administratör. Du måste också använda klustrets namn som en del av den URI (Uniform Resource Identifier) som används för att skicka begäranden till servern.
+> När du använder Curl eller annan REST-kommunikation med WebHCat, måste du autentisera hello begäranden genom att tillhandahålla hello användarnamn och lösenord för hello HDInsight-klustrets administratör. Du måste också använda hello klustrets namn som en del av hello identifierare URI (Uniform Resource) används toosend hello begäranden toohello server:
 > 
 >   
 >        curl -u <UserName>:<Password> \
 >        -G https://<ClusterName>.azurehdinsight.net/templeton/v1/status
 >   
->    Du bör få ett svar som liknar följande svar:
+>    Du bör få ett svar liknande toohello efter svar:
 >   
 >        {"status":"ok","version":"v1"}
    
 
 
 ## <a name="check-cluster-status"></a>Kontrollera klusterstatus
-HBase i HDInsight levereras med ett webbgränssnitt för övervakning av kluster. Du kan använda webbgränssnittet för att begära statistik eller information om regioner.
+HBase i HDInsight levereras med ett webbgränssnitt för övervakning av kluster. Du kan använda hello Webbgränssnittet för att begära statistik eller information om regioner.
 
-**Så här får du åtkomst till HBase Master UI**
+**tooaccess hello HBase Master UI**
 
-1. Logga in på Ambari-webbgränssnittet på https://&lt;Clustername>.azurehdinsight.net.
-2. Klicka på **HBase** på den vänstra menyn.
-3. Klicka på **Snabblänkar** överst på sidan, peka på den aktiva Zookeeper-nodlänken och klicka sedan på **HBase Master UI**.  Gränssnittet har öppnats i en annan webbläsarflik:
+1. Logga in på hello hello Ambari-Webbgränssnittet på https://&lt;klusternamn >. azurehdinsight.net.
+2. Klicka på **HBase** hello vänstra menyn.
+3. Klicka på **snabblänkar** hello hello sida, punkt toohello active Zookeeper nod länk, och klicka sedan på **HBase Master UI**.  hello UI öppnas i en annan flik i webbläsaren:
 
   ![HDInsight HBase HMaster UI](./media/hdinsight-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
-  HBase Master UI innehåller följande avsnitt:
+  Hej HBase Master UI innehåller hello följande avsnitt:
 
   - regionservrar
   - huvudservrar för säkerhetskopiering
@@ -263,8 +263,8 @@ HBase i HDInsight levereras med ett webbgränssnitt för övervakning av kluster
   - uppgifter
   - attribut för programvara
 
-## <a name="delete-the-cluster"></a>Ta bort klustret
-Om du vill undvika inkonsekvenser rekommenderar vi att du inaktiverar HBase-tabellerna innan du tar bort klustret.
+## <a name="delete-hello-cluster"></a>Ta bort hello kluster
+tooavoid inkonsekvenser, rekommenderar vi att du inaktiverar hello HBase-tabeller innan du tar bort hello klustret.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -273,9 +273,9 @@ Om du vill undvika inkonsekvenser rekommenderar vi att du inaktiverar HBase-tabe
 Om du får problem med att skapa HDInsight-kluster läser du [åtkomstkontrollkrav](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 ## <a name="next-steps"></a>Nästa steg
-I den artikeln har du fått lära dig att skapa ett HBase-kluster och hur du skapar tabeller och visar data i dessa tabeller från HBase-gränssnittet. Du har också fått lära dig hur man använder en Hive-fråga på data i HBase-tabeller och hur man använder HBase C# REST-API:er för att skapa en HBase-tabell och hämta data från tabellen.
+I den här artikeln får du lära dig hur hello toocreate ett HBase-kluster och hur toocreate tabellerna och vyerna hello data i dessa tabeller från HBase-gränssnittet. Du också lära dig hur toouse registreringsdata fråga på data i HBase-tabeller och hur toouse hello HBase C# REST API: er toocreate en HBase-tabell och hämta data från hello tabell.
 
-Du kan läsa mer här:
+Det finns fler toolearn:
 
 * [HDInsight HBase-översikt][hdinsight-hbase-overview]: HBase är en NoSQL-databas av Apachetyp med öppen källkod som bygger på Hadoop och som ger direktåtkomst och stark konsekvens för stora mängder ostrukturerade och semistrukturerade data.
 

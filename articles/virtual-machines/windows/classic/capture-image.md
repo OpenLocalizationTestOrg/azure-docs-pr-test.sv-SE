@@ -1,6 +1,6 @@
 ---
-title: "Hämta en avbildning av en Windows Azure-dator | Microsoft Docs"
-description: Avbilda en virtuell Windows-dator skapad med den klassiska distributionsmodellen.
+title: aaaCapture en avbildning av en Windows Azure-dator | Microsoft Docs
+description: "Hämta en avbildning av en virtuell dator för Windows Azure som skapats med hello klassiska distributionsmodellen."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,71 +15,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 6032263848c469ce2f416306e5c91c29f4cb30e4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b9bbc437012aa44295f90941c9d72e39509df28f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>Avbilda en virtuell Windows-dator skapad med den klassiska distributionsmodellen.
+# <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-hello-classic-deployment-model"></a>Hämta en avbildning av en virtuell dator för Windows Azure som skapats med hello klassiska distributionsmodellen.
 > [!IMPORTANT]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../resource-manager-deployment-model.md). Den här artikeln täcker den klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder Resource Manager-modellen. Resource Manager modellinformation finns i [samla in en hanterad avbildning av en generaliserad virtuell dator i Azure](../capture-image-resource.md).
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../resource-manager-deployment-model.md). Den här artikeln täcker hello klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen. Resource Manager modellinformation finns i [samla in en hanterad avbildning av en generaliserad virtuell dator i Azure](../capture-image-resource.md).
 
-Den här artikeln visar hur du avbildar en Azure-dator som kör Windows, så du kan använda den som en bild för att skapa andra virtuella datorer. Den här avbildningen innehåller operativsystemdisken och eventuella hårddiskar som är kopplade till den virtuella datorn. Det finns inget nätverkskonfigurationer, så du behöver konfigurera nätverkskonfigurationer när du skapar de andra virtuella datorer som använder avbildningen.
+Den här artikeln beskrivs hur du toocapture en virtuell Azure-dator med Windows så att du kan använda den som en bild toocreate andra virtuella datorer. Den här avbildningen innehåller hello operativsystemdisken och datadiskar som är anslutna toohello virtuella datorn. Det finns inget nätverkskonfigurationer, så du behöver tooset upp nätverkskonfigurationer när du skapar hello andra virtuella datorer som använder hello bild.
 
-Azure lagrar bilden under **VM-avbildningar (klassisk)**, **Compute** tjänst som visas när du visar alla Azure-tjänster. Det här är samma plats där alla bilder som du har överfört lagras. Mer information om avbildningar finns [om avbildningar för virtuella datorer](about-images.md?toc=%2fazure%2fvirtual-machines%2fWindows%2fclassic%2ftoc.json).
+Azure lagrar hello bilden under **VM-avbildningar (klassisk)**, **Compute** tjänst som visas när du visar alla hello Azure-tjänster. Detta är hello samma ställe där du har överfört bilder lagras. Mer information om avbildningar finns [om avbildningar för virtuella datorer](about-images.md?toc=%2fazure%2fvirtual-machines%2fWindows%2fclassic%2ftoc.json).
 
 ## <a name="before-you-begin"></a>Innan du börjar
-Dessa instruktioner förutsätter att du redan skapat en virtuell Azure-dator och konfigurerat operativsystemet, inklusive bifoga datadiskar. Om du inte gjort det ännu, finns i följande artiklar för information om hur du skapar och förbereder den virtuella datorn:
+De här stegen förutsätter att du har redan skapat en virtuell Azure-dator och konfigurerat hello operativsystemet, inklusive bifoga datadiskar. Om du inte gjort det ännu, se hello följande artiklar information för att skapa och förbereder hello virtuella datorn:
 
 * [Skapa en virtuell dator från en avbildning](createportal.md)
-* [Så här kopplar du en datadisk till en virtuell dator](attach-disk.md)
-* Se till att serverroller som stöds med Sysprep. Mer information finns i [Sysprep-stöd för serverroller](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
+* [Hur tooattach data disk tooa virtuell dator](attach-disk.md)
+* Kontrollera att hello serverroller stöds med Sysprep. Mer information finns i [Sysprep-stöd för serverroller](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles).
 
 > [!WARNING]
-> Den här processen tar bort den ursprungliga virtuella datorn när den är klar.
+> Den här processen tar bort hello ursprungliga virtuella datorn när den är klar.
 >
 >
 
-Innan du gör en avbildning av en virtuell Azure-dator, rekommenderas det att säkerhetskopiera den virtuella måldatorn. Virtuella Azure-datorer kan säkerhetskopieras med Azure Backup. Mer information finns i [Säkerhetskopiera virtuella Azure-datorer](../../../backup/backup-azure-vms.md). Det finns andra lösningar från certifierade partner. Om du vill ta reda på vad som finns för närvarande kan du söka på Azure Marketplace.
+Tidigare toocapturing en bild av en virtuell Azure-dator bör säkerhetskopieras hello virtuella måldatorn. Virtuella Azure-datorer kan säkerhetskopieras med Azure Backup. Mer information finns i [Säkerhetskopiera virtuella Azure-datorer](../../../backup/backup-azure-vms.md). Det finns andra lösningar från certifierade partner. toofind reda på vad som är tillgänglig, Sök hello Azure Marketplace.
 
-## <a name="capture-the-virtual-machine"></a>Avbilda den virtuella datorn
-1. I den [Azure-portalen](http://portal.azure.com), **Anslut** till den virtuella datorn. Instruktioner finns i [så att logga in på en virtuell dator som kör Windows Server][How to sign in to a virtual machine running Windows Server].
+## <a name="capture-hello-virtual-machine"></a>Avbilda hello virtuella datorn
+1. I hello [Azure-portalen](http://portal.azure.com), **Anslut** toohello virtuella datorn. Instruktioner finns i [hur toosign i tooa virtuell dator som kör Windows Server][How toosign in tooa virtual machine running Windows Server].
 2. Öppna ett kommandotolksfönster som administratör.
-3. Ändra katalogen till `%windir%\system32\sysprep`, och sedan köra sysprep.exe.
-4. Den **systemförberedelseverktyget** dialogrutan visas. Gör följande:
+3. Ändra hello katalogen för`%windir%\system32\sysprep`, och sedan köra sysprep.exe.
+4. Hej **systemförberedelseverktyget** dialogrutan visas. Hej du följande:
 
-   * I **Rensa systemåtgärd**väljer **ange System Out of Box Experience (OOBE)** och se till att **Generalize** är markerad. Mer information om att använda Sysprep finns [så att använda Sysprep: en introduktion][How to Use Sysprep: An Introduction].
+   * I **Rensa systemåtgärd**väljer **ange System Out of Box Experience (OOBE)** och se till att **Generalize** är markerad. Mer information om att använda Sysprep finns [hur tooUse Sysprep: en introduktion][How tooUse Sysprep: An Introduction].
    * I **avstängningsalternativ**väljer **avstängning**.
    * Klicka på **OK**.
 
    ![Kör Sysprep](./media/capture-image/SysprepGeneral.png)
-5. Sysprep stängs den virtuella datorn, som ändrar status för den virtuella datorn i Azure portal och **stoppad**.
-6. I Azure-portalen klickar du på **virtuella datorer (klassisk)** och välj den virtuella dator som du vill samla in. Den **VM-avbildningar (klassisk)** grupp visas under **Compute** när du visar **fler tjänster**.
+5. Sysprep stängs av hello virtuell dator som ändrar hello status för hello virtuell dator i hello Azure-portalen för**stoppad**.
+6. I hello Azure-portalen klickar du på **virtuella datorer (klassisk)** och välj hello virtuell dator som du vill toocapture. Hej **VM-avbildningar (klassisk)** grupp visas under **Compute** när du visar **fler tjänster**.
 
-7. Klicka på kommandofältet **avbilda**.
+7. Klicka på hello kommandofältet **avbilda**.
 
    ![Avbilda virtuell dator](./media/capture-image/CaptureVM.png)
 
-   Den **avbilda den virtuella datorn** dialogrutan visas.
+   Hej **avbilda hello virtuella** dialogrutan visas.
 
-8. I **avbildningsnamn**, Skriv ett namn för den nya avbildningen. I **avbildningsetiketten**, ange en etikett för den nya avbildningen.
+8. I **avbildningsnamn**, Skriv ett namn för hello ny avbildning. I **avbildningsetiketten**, ange en etikett för hello ny avbildning.
 
-9. Klicka på **jag har kört Sysprep på den virtuella datorn**. Den här kryssrutan refererar till åtgärder med Sysprep i steg 3-5. En avbildning _måste_ vara generaliserad med Sysprep innan du lägger till en Windows Server-avbildning till en uppsättning anpassade avbildningar.
+9. Klicka på **jag har kört Sysprep på den virtuella datorn hello**. Den här kryssrutan refererar toohello åtgärder med Sysprep i steg 3-5. En avbildning _måste_ vara generaliserad med Sysprep innan du lägger till en Windows Server avbildningen tooyour uppsättning anpassade avbildningar.
 
-10. När avbildningen har slutförts, den nya avbildningen blir tillgängligt i den **Marketplace**i den **Compute**, **VM-avbildningar (klassisk)** behållare.
+10. När hello avbildningen har slutförts hello ny avbildning blir tillgängligt i hello **Marketplace**, i hello **Compute**, **VM-avbildningar (klassisk)** behållare.
 
     ![Avbildningen lyckades](./media/capture-image/VMCapturedImageAvailable.png)
 
 ## <a name="next-steps"></a>Nästa steg
-Bilden är redo att användas för att skapa virtuella datorer. Om du vill göra det, ska du skapa en virtuell dator genom att välja den **fler tjänster** menyalternativet längst ned i tjänster menyn och sedan **VM-avbildningar (klassisk)** i den **Compute** grupp. Instruktioner finns i [skapa en virtuell dator från en avbildning](createportal.md).
+hello bilden är klar toobe används toocreate virtuella datorer. toodo, ska du skapa en virtuell dator genom att välja hello **fler tjänster** menyalternativet längst hello hello services menyn och sedan **VM-avbildningar (klassisk)** i hello **Compute**grupp. Instruktioner finns i [skapa en virtuell dator från en avbildning](createportal.md).
 
-[How to sign in to a virtual machine running Windows Server]:connect-logon.md
-[How to Use Sysprep: An Introduction]: http://technet.microsoft.com/library/bb457073.aspx
+[How toosign in tooa virtual machine running Windows Server]:connect-logon.md
+[How tooUse Sysprep: An Introduction]: http://technet.microsoft.com/library/bb457073.aspx
 [Run Sysprep.exe]: ./media/virtual-machines-capture-image-windows-server/SysprepCommand.png
 [Enter Sysprep.exe options]: ./media/capture-image/SysprepGeneral.png
-[The virtual machine is stopped]: ./media/virtual-machines-capture-image-windows-server/SysprepStopped.png
-[Capture an image of the virtual machine]: ./media/capture-image/CaptureVM.png
-[Enter the image name]: ./media/virtual-machines-capture-image-windows-server/Capture.png
+[hello virtual machine is stopped]: ./media/virtual-machines-capture-image-windows-server/SysprepStopped.png
+[Capture an image of hello virtual machine]: ./media/capture-image/CaptureVM.png
+[Enter hello image name]: ./media/virtual-machines-capture-image-windows-server/Capture.png
 [Image capture successful]: ./media/virtual-machines-capture-image-windows-server/CaptureSuccess.png
-[Use the captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png
+[Use hello captured image]: ./media/virtual-machines-capture-image-windows-server/MyImagesWindows.png

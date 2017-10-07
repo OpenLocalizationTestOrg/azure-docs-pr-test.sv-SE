@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Container Registry – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur du skapar och underhåller behållarregister för att lagra dina distributionsavbildningar med en hanterad Docker registry-tjänst. Självstudier, API-referens och mycket annat."
+title: "aaaAzure behållaren registret-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur toocreate och underhåller behållaren register toostore distributionen bilder med en hanterad Docker registry-tjänsten. Självstudier, API-referens och mycket annat."
 services: container-registry
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 3962f34170cf3a19fe51b2f90b49fa21e01fc6cc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d759eb2b00b59797cfdf8ce3b4071317a574c2b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-container-registry-documentation"></a>Azure Container Registry-dokumentation
 
-Lär dig hur du använder Container Registry för att lagra och hantera avbildningar av alla typer av behållardistributioner. Självstudier, REST-API-referenser och annan dokumentation visar hur du skapar och underhåller behållarregister med denna hanterade Docker registry-tjänst.
+Lär dig hur toouse behållare registret toostore och hantera avbildningar för alla typer av distribution i behållare. Självstudier, REST API-referensen och andra dokumentationen visar hur toocreate och underhåller behållaren register med den här hanteras Docker registry-tjänsten.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -52,7 +52,7 @@ Lär dig hur du använder Container Registry för att lagra och hantera avbildni
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med att skapa ett register med portalen</h3>
+                        <h3>Komma igång med ett register med hello portal</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ Lär dig hur du använder Container Registry för att lagra och hantera avbildni
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Kom igång med att skapa ett register med CLI:n</h3>
+                        <h3>Kom igång med att skapa ett register med hello CLI</h3>
                     </div>
                 </div>
             </div>

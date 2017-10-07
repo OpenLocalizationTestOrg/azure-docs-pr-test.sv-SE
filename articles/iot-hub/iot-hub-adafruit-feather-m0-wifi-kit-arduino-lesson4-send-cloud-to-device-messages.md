@@ -1,6 +1,6 @@
 ---
-title: 'Ansluta Arduino (C) till Azure IoT - lektionen 4: moln till enhet | Microsoft Docs'
-description: "Ett exempelprogram som körs på Adafruit ludd M0 WiFi och Övervakare inkommande meddelanden från din IoT-hubb. En ny uppgift gulp skickar meddelanden till Adafruit ludd M0 WiFi från din IoT-hubb blinkar på Indikator."
+title: 'Connect Arduino (C) tooAzure IoT - lektionen 4: moln till enhet | Microsoft Docs'
+description: "Ett exempelprogram som körs på Adafruit ludd M0 WiFi och Övervakare inkommande meddelanden från din IoT-hubb. En ny uppgift gulp skickar meddelanden tooAdafruit ludd M0 WiFi från din IoT-hubb tooblink hello Indikator."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,57 +17,57 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: b4f4c1d86b10b64c104ac812d1f650d723322be8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dcddd61ff684f49436103675938d719cb227c409
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-a-sample-application-to-receive-cloud-to-device-messages"></a>Kör ett exempelprogram som tar emot meddelanden moln till enhet
+# <a name="run-a-sample-application-tooreceive-cloud-to-device-messages"></a>Kör ett exempel programmet tooreceive meddelanden moln till enhet
 I den här artikeln får distribuera du ett exempelprogram på Adafruit ludd M0 WiFi Arduino-kort.
 
-Exempelprogrammet övervakar inkommande meddelanden från din IoT-hubb. Du kan också köra en aktivitet med gulp på datorn för att skicka meddelanden till Arduino-kort från din IoT-hubb. När exempelprogrammet som tar emot meddelanden, blinkar på Indikator. Om du har några problem kan hitta lösningar på den [felsökning sidan][troubleshooting].
+hello exempelprogrammet övervakar inkommande meddelanden från din IoT-hubb. Du också köra en aktivitet med gulp på din dator toosend meddelanden tooyour Arduino board från din IoT-hubb. När hello exempelprogrammet får hälsningsmeddelande, blinkar hello-Indikator. Om du har några problem med söka efter lösningar på hello [felsökning sidan][troubleshooting].
 
 ## <a name="what-you-will-do"></a>Vad du ska göra
-* Ansluta till din IoT-hubb exempelprogrammet.
-* Distribuera och köra exempelprogrammet.
-* Skicka meddelanden från din IoT-hubb din Arduino planen blinkar på Indikator.
+* Ansluta hello exempel programmet tooyour IoT-hubb.
+* Distribuera och köra hello exempelprogrammet.
+* Skicka meddelanden från din IoT-hubb tooyour Arduino board tooblink hello Indikator.
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
 I den här artikeln får du lära dig:
-* Så här övervakar du inkommande meddelanden från din IoT-hubb.
-* Hur du skickar meddelanden moln till enhet från din IoT-hubb Arduino-planen.
+* Hur toomonitor inkommande meddelanden från din IoT-hubb.
+* Hur toosend moln till enhet meddelanden från din IoT-hubb tooyour Arduino-kort.
 
 ## <a name="what-you-need"></a>Vad du behöver
-* Kort din Arduino som ställts in för användning. Information om hur du ställer in Arduino-kort finns [konfigurera din enhet][configure-your-device].
-* En IoT-hubb som skapas i din Azure-prenumeration. Information om hur du skapar din IoT-hubb finns [skapa Azure IoT Hub][create-your-azure-iot-hub].
+* Kort din Arduino som ställts in för användning. hur tooset in Arduino-kort Se toolearn [konfigurera din enhet][configure-your-device].
+* En IoT-hubb som skapas i din Azure-prenumeration. toolearn hur toocreate din IoT-hubb finns [skapa Azure IoT Hub][create-your-azure-iot-hub].
 
-## <a name="connect-the-sample-application-to-your-iot-hub"></a>Ansluta exempelprogrammet till din IoT-hubb
+## <a name="connect-hello-sample-application-tooyour-iot-hub"></a>Ansluta hello exempel programmet tooyour IoT-hubb
 
-1. Kontrollera att du är i mappen lagringsplatsen `iot-hub-c-feather-m0-getting-started`.
+1. Kontrollera att du arbetar i hello lagringsplatsen mappen `iot-hub-c-feather-m0-getting-started`.
 
-   Öppna exempelprogrammet i Visual Studio Code genom att köra följande kommandon:
+   Öppna hello exempelprogrammet i Visual Studio Code genom att köra följande kommandon hello:
 
    ```bash
    cd Lesson4
    code .
    ```
 
-   Observera den `app.ino` filen i den `app` undermappen. Den `app.ino` filen är viktiga källfilen som innehåller koden för övervakning av inkommande meddelanden från IoT-hubben. Den `blinkLED` funktionen blinkar på Indikator.
+   Meddelande hello `app.ino` filen i hello `app` undermappen. Hej `app.ino` filen är hello källa som innehåller hello toomonitor inkommande meddelanden från hello IoT-hubb. Hej `blinkLED` funktionen blinkar hello-Indikator.
 
-   ![Lagringsplatsen strukturen i exempelprogrammet][repo-structure]
+   ![Lagringsplatsen strukturen i hello exempelprogram][repo-structure]
 
-2. Hämta den seriella porten på enheten med enheten identifiering cli:
+2. Hämta hello serieport av hello-enhet med hello enheten identifiering cli:
 
    ```bash
    devdisco list --usb
    ```
 
-   Du bör se utdata som liknar följande och hitta usb COM-port för Arduino-skiva:
+   Du bör se utdata som är liknande toohello följande och hitta hello usb COM-port för Arduino-skiva:
 
    ![Identifiering av nätverksenheter][device-discovery]
 
-3. Öppna filen `config.json` i mappen lektionen och inmatade värdet för hittade COM-portnummer:
+3. Öppna hello filen `config.json` i hello lektionen mapp och inkommande hello värdet för hello hitta COM-portnummer:
 
    ```json
    {
@@ -78,9 +78,9 @@ I den här artikeln får du lära dig:
    ![Config.JSON][config-json]
 
    > [!NOTE]
-   > COM-porten på Windows-plattformen, den har formatet för `COM1, COM2, ...`. I macOS eller Ubuntu startas med `/dev/`.
+   > För hello COM-port på Windows-plattformen, den har hello format för `COM1, COM2, ...`. I macOS eller Ubuntu startas med `/dev/`.
 
-4. Initiera konfigurationsfilen genom att köra följande kommandon:
+4. Initiera hello konfigurationsfilen genom att köra följande kommandon hello:
 
    ```bash
    # For Windows command prompt
@@ -89,42 +89,42 @@ I den här artikeln får du lära dig:
    gulp install-tools
    ```
 
-5. Se följande ersättningar i den `config-arduino.json` filen:
+5. Se följande ersättningar i hello hello `config-arduino.json` fil:
 
-   Om du har slutfört stegen i [skapa ett Azure-funktion appen och storage-konto] [ create-an-azure-function-app-and-storage-account] på den här datorn alla konfigurationer ärvs, så du kan hoppa över steg för att distribuera och köra exempelprogrammet. Om du har slutfört stegen i [skapa ett Azure-funktion appen och storage-konto] [ create-an-azure-function-app-and-storage-account] på en annan dator som du behöver ersätta platshållare i den `config-arduino.json` filen. Den `config-arduino.json` filen finns i undermappen arbetsmappen.
+   Om du har slutfört hello stegen i [skapa ett Azure-funktion appen och storage-konto] [ create-an-azure-function-app-and-storage-account] på den här datorn alla konfigurationer av hello ärvs, så du kan hoppa över hello steg toohello aktiviteten för att distribuera och Kör hello exempelprogrammet. Om du har slutfört hello stegen i [skapa ett Azure-funktion appen och storage-konto] [ create-an-azure-function-app-and-storage-account] på en annan dator måste tooreplace hello platshållare i hello `config-arduino.json` fil. Hej `config-arduino.json` filen har hello undermapp i arbetsmappen.
 
-   ![Innehållet i filen config arduino.json][config-arduino-json]
+   ![Innehållet i hello arduino.json config-fil][config-arduino-json]
 
-   * Ersätt **[Wi-Fi SSID]** med din Wi-Fi-SSID ansluten till Internet.
-   * Ersätt **[Wi-Fi-lösenord]** med Wi-Fi-lösenord. Ta bort strängen om din Wi-Fi inte kräver lösenord.
-   * Ersätt **[anslutningssträngen för IoT-enhet]** med den anslutningssträng för enheten som du får genom att köra den `az iot device show-connection-string --hub-name {my hub name} --device-id {device id}` kommando.
-   * Ersätt **[anslutningssträngen för IoT-hubb]** med IoT-hubb anslutningssträngen som du får genom att köra den `az iot hub show-connection-string --name {my hub name}` kommando.
+   * Ersätt **[Wi-Fi SSID]** med din Wi-Fi-SSID som anslutna toohello Internet.
+   * Ersätt **[Wi-Fi-lösenord]** med Wi-Fi-lösenord. Ta bort hello sträng om din Wi-Fi inte kräver lösenord.
+   * Ersätt **[anslutningssträngen för IoT-enhet]** med anslutningssträngen för hello enhet som du får genom att köra hello `az iot device show-connection-string --hub-name {my hub name} --device-id {device id}` kommando.
+   * Ersätt **[anslutningssträngen för IoT-hubb]** med hello anslutningssträngen för IoT-hubb som är tillgängliga genom att köra hello `az iot hub show-connection-string --name {my hub name}` kommando.
 
-## <a name="deploy-and-run-the-sample-application"></a>Distribuera och köra exempelprogrammet
-Distribuera och köra exempelprogrammet på Arduino-kort genom att köra följande kommandon:
+## <a name="deploy-and-run-hello-sample-application"></a>Distribuera och köra hello exempelprogrammet
+Distribuera och köra hello exempelprogrammet på Arduino-kort genom att köra följande kommandon hello:
 
 ```bash
 gulp run
-# You can monitor the serial port by running listen task:
+# You can monitor hello serial port by running listen task:
 gulp listen
 
 # Or you can combine above two gulp tasks into one:
 gulp run --listen
 ```
 
-Kommandot gulp distribuerar exempelprogrammet Arduino-planen. Därefter körs programmet på Arduino-kort och en separat åtgärd på värddatorn för att skicka 20 blinka meddelanden till Arduino-kort från din IoT-hubb.
+Hej gulp kommandot distribuerar hello exempel programmet tooyour Arduino kort. Sedan körs programmet hello på Arduino-kort och en separat åtgärd på din värd datorn toosend 20 blinka meddelanden tooyour Arduino board från din IoT-hubb.
 
-När exempelprogrammet som körs, startas lyssnar på meddelanden från din IoT-hubb. Gulp-aktivitet skickar under tiden kan flera ”blinkar” meddelanden från din IoT-hubb Arduino-planen. För varje meddelande blinka som tar emot planen exempelprogrammet anropar den `blinkLED` funktionen blinkar på Indikator.
+När hello exempelprogrammet körs, startas lyssnar toomessages från IoT-hubb. Under tiden skickar hello gulp aktivitet flera ”blinkar” meddelanden från din IoT-hubb tooyour Arduino-kort. För varje blinka meddelande som hello board får hello exempelprogrammet anropar hello `blinkLED` funktionen tooblink hello Indikator.
 
-Du bör se Indikator blinka varannan sekund som aktiviteten gulp 20 meddelanden skickas från din IoT-hubb till Arduino-kort. Den sista som är en ”stoppa” meddelande som förhindrar att program körs.
+Du bör se hello Indikator blinkar varannan sekund som hello gulp aktivitet skickar 20 meddelanden från din IoT-hubb tooyour Arduino-kort. hello senast är en ett ”stop” visas som stoppar hello program från att köras.
 
 ![Exempelprogrammet med gulp kommandot och blinkar meddelanden][sample-application]
 
 ## <a name="summary"></a>Sammanfattning
-Du har skickat meddelanden från din IoT-hubb till din Arduino board blinkar på Indikator. Nästa uppgift är valfritt: ändra på och av beteendet för Indikatorn.
+Du har skickat meddelanden från din IoT-hubb tooyour Arduino board tooblink hello Indikator. hello nästa uppgift är valfritt: ändra hello och inaktivera beteendet för hello Indikator.
 
 ## <a name="next-steps"></a>Nästa steg
-[Ändra på och av beteendet för Indikatorn][change-the-on-and-off-led-behavior]
+[Ändra hello och inaktivera beteendet för hello Indikator][change-the-on-and-off-led-behavior]
 
 
 <!-- Images and links -->

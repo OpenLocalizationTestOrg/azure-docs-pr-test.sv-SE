@@ -1,6 +1,6 @@
 ---
-title: Azure Log Analytics query language fusklapp | Microsoft Docs
-description: "Den här artikeln innehåller hjälp om övergång till nya frågespråket för Log Analytics om du redan är bekant med det äldre språket."
+title: aaaAzure Log Analytics query language fusklapp | Microsoft Docs
+description: "Den här artikeln innehåller hjälp om övergång toohello nya frågespråk för Log Analytics om du redan är bekant med hello äldre språk."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -13,29 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/23/2017
 ms.author: bwren
-ms.openlocfilehash: 10b7f3ad23d9c5451bc7ff82b8927c260230f6da
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8b4ee3d0b5e1ec8a9f95a09e0ad9835615ad1342
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Övergång till nya Azure Log Analytics-frågespråket
+# <a name="transitioning-tooazure-log-analytics-new-query-language"></a>Övergång tooAzure logganalys nya frågespråket
 
 > [!NOTE]
-> Du kan läsa mer om den nya Log Analytics-frågespråket och få proceduren för att uppgradera din arbetsyta vid uppgraderingen din [Azure logganalys-arbetsytan till ny logg sökning](log-analytics-log-search-upgrade.md).
+> Du kan läsa mer om hello nya Log Analytics-frågespråket och få hello proceduren tooupgrade arbetsytan vid uppgraderingen din [Azure logganalys arbetsytan toonew loggen Sök](log-analytics-log-search-upgrade.md).
 
-Den här artikeln innehåller hjälp om övergång till nya frågespråket för Log Analytics om du redan är bekant med det äldre språket.
+Den här artikeln innehåller hjälp om övergång toohello nya frågespråk för Log Analytics om du redan är bekant med hello äldre språk.
 
 ## <a name="language-converter"></a>Språk konverterare
 
-Om du är bekant med det äldre Log Analytics-frågespråket är det enklaste sättet att skapa samma fråga på nytt språk konverteraren språk som har installerats i loggen Sök portal när din arbetsyta konverteras.  Konverteraren är lika enkelt som att skriva i en äldre fråga i den översta textrutan och klicka sedan på **konvertera**.  Du kan antingen klicka på Sök för att köra frågan eller kopiera och klistra in den för att använda den någon annanstans.
+Om du är bekant med hello äldre Log Analytics-frågespråket enklast hello toocreate hello samma fråga på nytt språk för hello toouse hello språk konverterare som är installerad i hello loggen Sök portal när din arbetsyta konverteras.  Hello konverteraren är lika enkelt som att skriva i en äldre fråga i hello översta textrutan och klicka sedan på **konvertera**.  Du kan klicka på hello knappen toorun hello sökfråga eller kopiera och klistra in den toouse den någon annanstans.
 
 ![Språk konverterare](media/log-analytics-log-search-upgrade/language-converter.png)
 
 
 ## <a name="cheat-sheet"></a>Fusklapp
 
-Följande tabell innehåller en jämförelse mellan olika vanliga frågor till motsvarande kommandon mellan nya och gamla frågespråket i Azure logganalys.
+hello följande tabell innehåller en jämförelse mellan olika vanliga frågor tooequivalent kommandon mellan hello nya och gamla frågespråket i Azure logganalys.
 
 | Beskrivning | Äldre | Ny |
 |:--|:--|:--|
@@ -61,5 +61,5 @@ Följande tabell innehåller en jämförelse mellan olika vanliga frågor till m
 
 
 ## <a name="next-steps"></a>Nästa steg
-- Checka ut en [självstudier om hur du skriver frågor](https://go.microsoft.com/fwlink/?linkid=856078) med det nya språket i fråga.
-- Referera till den [Språkreferens för frågan](https://go.microsoft.com/fwlink/?linkid=856079) detaljer om alla kommandot operatorer och funktioner för det nya språket i fråga.  
+- Checka ut en [självstudier om hur du skriver frågor](https://go.microsoft.com/fwlink/?linkid=856078) med hello nya frågespråk.
+- Se toohello [Språkreferens för frågan](https://go.microsoft.com/fwlink/?linkid=856079) detaljer om alla kommandot operatorer och funktioner för hello nya frågespråk.  

@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure ny supportförfrågan filöverföring verktyget riktlinjer | Microsoft Docs"
-description: "Beskriver riktlinjer när du använder Microsoft Azure ny supportbegäran filöverföring verktyget"
+title: "aaaMicrosoft Azure nytt stöd för begäran filöverföring verktyget riktlinjer | Microsoft Docs"
+description: "Beskriver hello riktlinjer när du använder Microsoft Azure ny supportbegäran filöverföring verktyget"
 services: 
 documentationcenter: 
 author: genlin
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
-ms.openlocfilehash: ba6dafd8d890d88478a5e3213dd023921908f4bf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 19e51b40b82a71454b4b04752ebeefd5d26c2db5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure ny supportförfrågan filöverföring verktyget riktlinjer
-När du [skapa en supportbegäran](https://portal.azure.com/#create/Microsoft.Support), verktyget Filöverföring kan hjälpa dig att enkelt överför diagnostiska filer eller andra filer som du tror är relevanta för incidenten.  
+När du [skapa en supportbegäran](https://portal.azure.com/#create/Microsoft.Support), hello filöverföring som kan hjälpa dig enkelt överför diagnostiska filer eller andra filer som du tror att relevanta toohello incident.  
 
 > [!NOTE]
-> För att skydda din integritet genom att inte uppge någon personlig information i överföra.
+> tooprotect din integritet inte uppge någon personlig information i överföra.
 >
 >
 
-Följ dessa riktlinjer när du använder verktyget filöverföring:
+Följ dessa riktlinjer när du använder hello filöverföring verktyget:
 
-* Alla filer måste ha ett filnamnstillägg, till exempel .docx eller .xlsx. Se tabellen innehåller en lista över tillåtna filnamnstillägg.
-* Filnamnet måste vara högst 110 tecken.
+* Alla filer måste ha ett filnamnstillägg, till exempel .docx eller .xlsx. Se tabellen hello hello lista över tillåtna filnamnstillägg.
+* hello-filnamnet måste vara högst 110 tecken.
 * Du kan inte överföra mer än en fil.
 * Filer får inte vara större än 4 MB.
 
-## <a name="table-of-the-allowed-file-name-extensions"></a>Tabell över tillåtna filnamnstillägg
+## <a name="table-of-hello-allowed-file-name-extensions"></a>Tabell med hello tillåtna filnamnstillägg
 | 0-9, A-C    | D-G   | TIM-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
 | .7z         | dat  | .hwl        | .odx  | .RAR     | .tdb       | .xlam   |

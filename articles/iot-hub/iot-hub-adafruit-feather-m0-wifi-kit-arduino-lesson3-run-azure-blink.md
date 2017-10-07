@@ -1,12 +1,12 @@
 ---
-title: "Connect Arduino (C) till Azure IoT - lektionen 3: köra exemplet | Microsoft Docs"
-description: "Distribuera och köra ett exempelprogram till Adafruit ludd M0 WiFi som skickar meddelanden till din IoT-hubb och blinkar på Indikator."
+title: "Connect Arduino (C) tooAzure IoT - lektionen 3: köra exemplet | Microsoft Docs"
+description: "Distribuera och köra en exempel programmet tooAdafruit ludd M0 WiFi som skickar meddelanden tooyour IoT-hubb och blinkar hello-Indikator."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "IOT-Molntjänsten, arduino skicka data till molnet"
+keywords: "IOT-Molntjänsten, arduino skicka data toocloud"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started
 ms.assetid: 92cce319-2b17-4c9b-889d-deac959e3e7c
@@ -17,64 +17,64 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 0c17fe74dbd78abca955f7789a1674ed6333367f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ddca015a3655f8a1a9de2a00e718ec0d28a5affb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="run-a-sample-application-to-send-device-to-cloud-messages"></a>Kör ett exempelprogram för att skicka meddelanden från enhet till moln
+# <a name="run-a-sample-application-toosend-device-to-cloud-messages"></a>Kör ett exempel programmet toosend meddelanden från enhet till moln
 ## <a name="what-you-will-do"></a>Vad du ska göra
-Den här artikeln visar hur du distribuera och köra ett exempelprogram på Adafruit ludd M0 WiFi Arduino-kort som skickar meddelanden till din IoT-hubb.
+Den här artikeln visar hur toodeploy och kör ett exempelprogram på din Adafruit ludd M0 WiFi Arduino board som skickar meddelanden tooyour IoT-hubb.
 
-Om du har några problem kan hitta lösningar på den [felsökning sidan][troubleshooting].
+Om du har några problem med söka efter lösningar på hello [felsökning sidan][troubleshooting].
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
-Du lära dig hur du använder verktyget gulp att distribuera och köra Arduino exempelprogrammet på Arduino-kort.
+Du kommer lära dig hur toouse hello gulp verktyget toodeploy och köra hello exempelprogrammet Arduino på Arduino-kort.
 
 ## <a name="what-you-need"></a>Vad du behöver
-* Innan du börjar den här uppgiften måste har slutförts [skapa en funktionsapp i Azure-och ett lagringskonto för att bearbeta och lagra IoT-hubb meddelanden][process-and-store-iot-hub-messages].
+* Innan du börjar den här uppgiften måste har slutförts [skapa en funktionsapp i Azure-och en storage-konto tooprocess och lagra IoT-hubb meddelanden][process-and-store-iot-hub-messages].
 
 ## <a name="get-your-iot-hub-and-device-connection-strings"></a>Hämta din IoT-hubb och enheten anslutningssträngar
-Anslutningssträngen enheten används för att ansluta Arduino-kort till din IoT-hubb. IoT-hubb anslutningssträngen används för att ansluta din IoT-hubb för enhetens identitet som representerar Arduino-kort i IoT-hubben.
+Hej enheten anslutningssträngen är används tooconnect din Arduino board tooyour IoT-hubb. anslutningssträngen för hello IoT hub är används tooconnect din IoT-hubb toohello enhetsidentitet som representerar din Arduino board i hello IoT-hubb.
 
-* Lista alla IoT hubs i resursgruppen genom att köra följande kommando i Azure CLI:
+* Lista alla IoT hubs i resursgruppen genom att köra hello följande Azure CLI-kommando:
 
 ```bash
 az iot hub list -g iot-sample --query [].name
 ```
 
-Använd `iot-sample` som värde för `{resource group name}` om du inte ändra värdet.
+Använd `iot-sample` som hello värde för `{resource group name}` om du inte ändrar hello-värdet.
 
-* Hämta anslutningssträngen för IoT-hubb genom att köra följande kommando i Azure CLI:
+* Hämta hello IoT hub-anslutningssträng genom att köra hello följande Azure CLI-kommando:
 
 ```bash
 az iot hub show-connection-string --name {my hub name}
 ```
 
-`{my hub name}`är det namn som du angav när du skapade din IoT-hubb och registrerat Arduino-kort.
+`{my hub name}`är hello-namn som du angav när du skapade din IoT-hubb och registrerat Arduino-kort.
 
-* Hämta anslutningssträngen för enheten genom att köra följande kommando:
+* Hämta anslutningssträngen för hello enheten genom att köra följande kommando hello:
 
 ```bash
 az iot device show-connection-string --hub-name {my hub name} --device-id mym0wifi
 ```
 
-Använd `mym0wifi` som värde för `{device id}` om du inte ändra värdet.
-## <a name="configure-the-device-connection"></a>Konfigurera enhetsanslutning
-Följ dessa steg för att konfigurera enhetsanslutningen:
+Använd `mym0wifi` som hello värde för `{device id}` om du inte ändrar hello-värdet.
+## <a name="configure-hello-device-connection"></a>Konfigurera hello enhetsanslutning
+tooconfigure Hej enhetsanslutning, gör du följande:
 
-1. Hämta den seriella porten på enheten med enheten identifiering cli:
+1. Hämta hello serieport av hello-enhet med hello enheten identifiering cli:
 
    ```bash
    devdisco list --usb
    ```
 
-   Du bör se utdata som liknar följande och hitta usb COM-port för Arduino-skiva:
+   Du bör se utdata som är liknande toohello följande och hitta hello usb COM-port för Arduino-skiva:
 
    ![Identifiering av nätverksenheter][device-discovery]
 
-2. Öppna filen `config.json` i mappen lektionen och lägga till värdet för hittade COM-portnummer:
+2. Öppna hello filen `config.json` i hello lektionen mappen och Lägg till hello värdet hello hitta COM-portnummer:
 
    ```json
    {
@@ -85,16 +85,16 @@ Följ dessa steg för att konfigurera enhetsanslutningen:
    ![Config.JSON][config-json]
 
    > [!NOTE]
-   > COM-porten på Windows-plattformen, den har formatet för `COM1, COM2, ...`. I macOS eller Ubuntu det börjar med `/dev/`.
+   > För hello COM-port på Windows-plattformen, den har hello format för `COM1, COM2, ...`. I macOS eller Ubuntu det börjar med `/dev/`.
 
-3. Initiera konfigurationsfilen genom att köra följande kommandon:
+3. Initiera hello konfigurationsfilen genom att köra följande kommandon hello:
 
    ```bash
    npm install
    gulp init
    gulp install-tools
    ```
-4. Öppna konfigurationsfilen enheten `config-arduino.json` i Visual Studio-koden genom att köra följande kommando:
+4. Öppna hello enheten konfigurationsfilen `config-arduino.json` i Visual Studio-koden genom att köra följande kommando hello:
 
    ```bash
    # For Windows command prompt
@@ -106,22 +106,22 @@ Följ dessa steg för att konfigurera enhetsanslutningen:
 
    ![config-arduino.json][config-arduino-json]
 
-5. Se följande ersättningar i den `config-arduino.json` filen:
+5. Se följande ersättningar i hello hello `config-arduino.json` fil:
 
-   * Ersätt **[Wi-Fi SSID]** med din Wi-Fi-SSID ansluten till Internet.
-   * Ersätt **[Wi-Fi-lösenord]** med Wi-Fi-lösenord. Ta bort strängen om din Wi-Fi inte kräver lösenord.
-   * Ersätt **[anslutningssträngen för IoT-enhet]** med den `device connection string` du fick.
-   * Ersätt **[anslutningssträngen för IoT-hubb]** med den `iot hub connection string` du fick.
+   * Ersätt **[Wi-Fi SSID]** med din Wi-Fi-SSID som anslutna toohello Internet.
+   * Ersätt **[Wi-Fi-lösenord]** med Wi-Fi-lösenord. Ta bort hello sträng om din Wi-Fi inte kräver lösenord.
+   * Ersätt **[anslutningssträngen för IoT-enhet]** med hello `device connection string` du fick.
+   * Ersätt **[anslutningssträngen för IoT-hubb]** med hello `iot hub connection string` du fick.
 
    > [!NOTE]
    > Du behöver inte `azure_storage_connection_string` i den här artikeln. Se till att den är.
 
-## <a name="deploy-and-run-the-sample-application"></a>Distribuera och köra exempelprogrammet
-Distribuera och köra exempelprogrammet på Arduino-kort genom att köra följande kommando:
+## <a name="deploy-and-run-hello-sample-application"></a>Distribuera och köra hello exempelprogrammet
+Distribuera och köra hello exempelprogrammet på Arduino-kort genom att köra följande kommando hello:
 
 ```bash
 gulp run
-# You can monitor the serial port by running listen task:
+# You can monitor hello serial port by running listen task:
 gulp listen
 
 # Or you can combine above two gulp tasks into one:
@@ -129,15 +129,15 @@ gulp run --listen
 ```
 
 > [!NOTE]
-> Standard gulp aktiviteten körs `install-tools` och `run` aktiviteter sekventiellt. När du [har distribuerat appen blinka][deployed-the-blink-app], du körde dessa uppgifter separat.
+> hello standard gulp aktiviteten körs `install-tools` och `run` aktiviteter sekventiellt. När du [distribuerat hello blinka app][deployed-the-blink-app], du körde dessa uppgifter separat.
 
-## <a name="verify-that-the-sample-application-works"></a>Kontrollera att det fungerar exempelprogrammet
-Du bör se den GPIO #0 inbyggd Indikator blinkande varannan sekunder. Varje gång Indikatorn blinkar exempelprogrammet skickar ett meddelande till din IoT-hubb och verifierar att meddelandet har skickats till din IoT-hubb. Dessutom kan ut varje meddelande tas emot av IoT-hubben i konsolfönstret. Exempelprogrammet avbryter automatiskt efter 20 meddelanden skickas.
+## <a name="verify-that-hello-sample-application-works"></a>Kontrollera att det fungerar hello exempelprogrammet
+Du bör se hello GPIO #0 inbyggd Indikator blinkande varannan sekund. Varje gång hello Indikator blinkar hello exempelprogrammet skickar ett meddelande tooyour IoT-hubb och verifierar att hello-meddelande har skickats tooyour IoT-hubb. Dessutom kan ut varje meddelande tas emot av hello IoT-hubb i hello konsolfönstret. hello exempelprogrammet avbryter automatiskt efter 20 meddelanden skickas.
 
 ![Exempelprogrammet med skickade och mottagna meddelanden][sample-application-with-sent-and-received-messages]
 
 ## <a name="summary"></a>Sammanfattning
-Du har distribuerat och köra den nya blinka exempelprogrammet på Arduino-kort för att skicka meddelanden från enhet till moln till din IoT-hubb. Du kan nu övervaka dina meddelanden när de skrivs till lagringskontot.
+Du har distribuerat och köra hello nya blinka exempelprogrammet på din Arduino board toosend meddelanden från enhet till moln tooyour IoT-hubb. Du kan nu övervaka dina meddelanden som de är skrivna toohello storage-konto.
 
 ## <a name="next-steps"></a>Nästa steg
 [Läs meddelandena kvar i Azure Storage][read-messages-persisted-in-azure-storage]

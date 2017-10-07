@@ -1,5 +1,5 @@
 ---
-title: "Arbetsflödesåtgärder och utlösare - Azure Logic Apps | Microsoft Docs"
+title: "aaaWorkflow åtgärder och utlösare - Azure Logic Apps | Microsoft Docs"
 description: 
 services: logic-apps
 author: MandiOhlinger
@@ -14,25 +14,25 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
-ms.openlocfilehash: bd3f1d225b974ebde889738bb435825658d1e1e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 857927b7d7df3fc9cdc4931ffdb613efde0db9f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="workflow-actions-and-triggers-for-azure-logic-apps"></a>Arbetsflödesåtgärder och utlösare för Logic Apps i Azure
 
-Logikappar består av utlösare och åtgärder. Det finns sex olika typer av utlösare. Varje typ har olika gränssnitt och olika beteenden. Du kan också lära dig om andra uppgifter genom att titta på information om den [språk i arbetsflödesdefinitionen](logic-apps-workflow-definition-language.md).  
+Logikappar består av utlösare och åtgärder. Det finns sex olika typer av utlösare. Varje typ har olika gränssnitt och olika beteenden. Du kan också lära dig om andra uppgifter genom att titta på hello information om hello [språk i arbetsflödesdefinitionen](logic-apps-workflow-definition-language.md).  
   
-Läs vidare för att lära dig mer om utlösare och åtgärder och hur du kan använda dem för att skapa logikappar för att förbättra din affärsprocesser och arbetsflöden.  
+Läsa på toolearn mer information om utlösare och åtgärder och hur du kan använda dem toobuild logic apps tooimprove dina affärsprocesser och arbetsflöden.  
   
 ### <a name="triggers"></a>Utlösare  
 
-En utlösare Anger anrop som kan initiera en körning av arbetsflödet logik app. Här följer två olika sätt att starta en körning av arbetsflödet:  
+En utlösare Anger hello-anrop som kan initiera en körning av arbetsflödet logik app. Här följer hello två olika sätt tooinitiate arbetsflödet körs:  
   
 -   En avsökning utlösare  
 
--   En push-utlösare - genom att anropa den [arbetsflöde Service REST API](https://docs.microsoft.com/rest/api/logic/workflows)  
+-   En push-utlösare - genom att anropa hello [arbetsflöde Service REST API](https://docs.microsoft.com/rest/api/logic/workflows)  
   
 Alla utlösare innehålla de översta elementen:  
   
@@ -45,8 +45,8 @@ Alla utlösare innehålla de översta elementen:
         "interval": "<recurrence interval in units of frequency>"
     },
     "conditions": [ <array-of-required-conditions > ],
-    "splitOn" : "<property to create runs for>",
-    "operationOptions": "<operation options on the trigger>"
+    "splitOn" : "<property toocreate runs for>",
+    "operationOptions": "<operation options on hello trigger>"
 }
 ```
 
@@ -54,22 +54,22 @@ Alla utlösare innehålla de översta elementen:
 
 Du kan använda dessa typer av utlösare:
   
--   **Begära** \- gör logikappen en slutpunkt att anropa  
+-   **Begära** \- gör hello logikapp en slutpunkt för du toocall  
   
 -   **Återkommande** \- utlöses baserat på ett definierat schema  
   
--   **HTTP** \- avsöker en HTTP-slutpunkt för webbprogram. HTTP-slutpunkten måste motsvara en specifik utlösande kontraktet \- antingen med hjälp av en 202\-asynk.mönster, eller genom att returnera en matris  
+-   **HTTP** \- avsöker en HTTP-slutpunkt för webbprogram. hello HTTP-slutpunkten måste uppfylla tooa specifik utlösande kontraktet \- antingen med hjälp av en 202\-asynk.mönster, eller genom att returnera en matris  
   
--   **ApiConnection** \- Utlös avsökningar t.ex. HTTP, men den kan du utnyttja den [Microsoft-hanterade API: er](https://docs.microsoft.com/azure/connectors/apis-list)  
+-   **ApiConnection** \- Utlös avsökningar som hello HTTP, men den kan du utnyttja hello [Microsoft-hanterade API: er](https://docs.microsoft.com/azure/connectors/apis-list)  
   
--   **HTTPWebhook** \- öppnas en slutpunkt som liknar den manuella utlösaren, men också anropar till en angiven URL för att registrera och avregistrera  
+-   **HTTPWebhook** \- öppnas en slutpunkt och liknande toohello manuell utlösare, men också anropar ut tooa angivna URL: en tooregister och avregistrera  
   
--   **ApiConnectionWebhook** \- Operates som HTTPWebhook utlösaren genom att dra nytta av de Microsoft-hanterade API: er       
+-   **ApiConnectionWebhook** \- fungerar som hello HTTPWebhook utlösaren genom att utnyttja hello Microsoft-hanterade API: er       
     Varje typ av utlösare som har en annan uppsättning **indata** som definierar sitt beteende.  
   
 ## <a name="request-trigger"></a>Begäran utlösare  
 
-Den här utlösaren fungerar som en slutpunkt som anropas via en HTTP-begäran att anropa logikappen. Det ser ut som i det här exemplet en utlösare för begäran:  
+Den här utlösaren fungerar som en slutpunkt som anropas via en HTTP-begäran tooinvoke logikappen. Det ser ut som i det här exemplet en utlösare för begäran:  
   
 ```json
 "<name-of-the-trigger>" : {
@@ -92,9 +92,9 @@ Det finns även en valfri egenskap som kallas **schemat**:
   
 |Elementnamn|Krävs|Beskrivning|  
 |----------------|------------|---------------|  
-|Schemat|Nej|En JSON-schema som kontrollerar den inkommande begäranden. Användbart för att hjälpa efterföljande arbetsflödessteg veta vilka egenskaper som ska referera till.|
+|Schemat|Nej|En JSON-schema som validerar hello inkommande begäran. Användbart för att hjälpa efterföljande arbetsflödessteg veta vilka egenskaper tooreference.|
 
-Om du vill anropa den här slutpunkten måste du anropa den *listCallbackUrl* API. Se [arbetsflöde Service REST API](https://docs.microsoft.com/rest/api/logic/workflows).  
+tooinvoke den här slutpunkten måste toocall hello *listCallbackUrl* API. Se [arbetsflöde Service REST API](https://docs.microsoft.com/rest/api/logic/workflows).  
   
 ## <a name="recurrence-trigger"></a>Utlösare för upprepning  
 
@@ -110,16 +110,16 @@ En utlösare för upprepning är något som körs baserat på ett definierat sch
 }
 ```
 
-Som du ser är ett enkelt sätt att köra ett arbetsflöde.  
+Som du ser är ett enkelt sätt toorun ett arbetsflöde.  
   
 |Elementnamn|Krävs|Beskrivning|  
 |----------------|------------|---------------|  
-|frekvens|Ja|Hur ofta utlösaren körs. Använd endast ett av dessa värden: sekund, minut, timma, dag, vecka, månad eller år|  
-|intervall|Ja|Intervallet för den angivna frekvensen för återkommande|  
+|frequency|Ja|Hur ofta hello utlösaren körs. Använd endast ett av dessa värden: sekund, minut, timma, dag, vecka, månad eller år|  
+|interval|Ja|Hello angivna frekvensen för hello återkommande tidsintervall|  
 |startTime|Nej|Om en startTime anges utan en UTC-förskjutningen, används den här tidszonen.|  
 |Tidszon|Nej|Om en startTime anges utan en UTC-förskjutningen, används den här tidszonen.|  
   
-Du kan även schemalägga en utlösare för att starta körning vid en viss tidpunkt i framtiden. Om du vill starta en vecka rapport varje måndag kan du schemalägga logikappen att starta varje måndag genom att skapa följande utlösaren:  
+Du kan även schemalägga en utlösare toostart körs på någon punkt i hello framtida. Till exempel om du vill att en vecka rapportera varje måndag toostart kan du schemalägga hello logik app toostart varje måndag genom att skapa hello följande utlösare:  
 
 ```json
 "dailyReport" : {
@@ -134,46 +134,46 @@ Du kan även schemalägga en utlösare för att starta körning vid en viss tidp
 
 ## <a name="http-trigger"></a>HTTP-utlösare  
 
-HTTP-utlösare avsöker den angivna slutpunkten och kontrollera svaret för att avgöra om arbetsflödet ska köras. Objektet indata tar uppsättningen parametrar som krävs för att konstruera ett HTTP-anrop:  
+HTTP-utlösare avsöker den angivna slutpunkten och kontrollera hello svar toodetermine om hello arbetsflödet ska köras. hello indata objektet tar hello uppsättning parametrar krävs tooconstruct ett HTTP-anrop:  
   
 |Elementnamn|Krävs|Beskrivning|Typ|  
 |----------------|------------|---------------|--------|  
-|Metoden|Ja|Kan vara något av följande metoder för HTTP: GET, POST, PUT, DELETE, KORRIGERINGSFIL eller HEAD|Sträng|  
-|URI: N|Ja|Http eller https slutpunkten som anropas. Högst 2 kilobyte.|Sträng|  
-|frågor|Nej|Ett objekt som representerar frågeparametrar att lägga till URL: en. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` till URL: en.|Objekt|  
-|Rubriker|Nej|Ett objekt som representerar alla huvuden som skickas till begäran. Till exempel ange språk och Skriv begäran:`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|Objekt|  
-|Brödtext|Nej|Ett objekt som representerar nyttolasten som skickas till slutpunkten.|Objekt|  
-|retryPolicy|Nej|Ett objekt som kan du anpassa försök beteendet för 4xx eller 5xx-fel.|Objekt|  
-|Autentisering|Nej|Representerar den metod som ska autentisera begäran. Mer information om det här objektet finns [Scheduler utgående autentisering](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication). Utöver scheduler, är en mer stöds egenskap: `authority` det här värdet är som standard `https://login.windows.net` om anges, men du kan använda en annan publik som`https://login.windows\-ppe.net`|Objekt|  
+|Metoden|Ja|Kan vara något av följande HTTP-metoderna hello: GET, POST, PUT, DELETE, KORRIGERINGSFIL eller HEAD|Sträng|  
+|URI: N|Ja|hello http eller https-slutpunkt som anropas. Högst 2 kilobyte.|Sträng|  
+|frågor|Nej|Ett objekt som representerar hello frågan parametrar tooadd toohello URL. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` toohello URL.|Objekt|  
+|Rubriker|Nej|Ett objekt som representerar alla hello-huvuden som skickas toohello begäran. Till exempel tooset hello språk och typen på en begäran:`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|Objekt|  
+|Brödtext|Nej|Ett objekt som representerar hello-nyttolast som har skickats toohello slutpunkt.|Objekt|  
+|retryPolicy|Nej|Ett objekt som kan du anpassa hello försök beteende för 4xx eller 5xx-fel.|Objekt|  
+|Autentisering|Nej|Representerar hello metod som hello begäran ska autentiseras. Mer information om det här objektet finns [Scheduler utgående autentisering](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication). Utöver scheduler, är en mer stöds egenskap: `authority` det här värdet är som standard `https://login.windows.net` om anges, men du kan använda en annan publik som`https://login.windows\-ppe.net`|Objekt|  
   
-HTTP-utlösaren kräver HTTP-API för att överensstämma med ett specifikt mönster för att fungera med din logikapp. Det krävs följande fält:  
+hello HTTP-utlösaren kräver hello HTTP API tooconform med ett specifikt mönster toowork tillsammans med din logikapp. Det krävs hello följande fält:  
   
 |Svar|Beskrivning|  
 |------------|---------------|  
-|Statuskod|Statuskod 200 \(OK\) framkalla en körning. Andra statuskod göra inte en körning.|  
-|Försök\-efter huvudet|Antalet sekunder tills logikappen avsöker slutpunkten igen.|  
-|Platshuvud|URL: en att anropa nästa avsökningsintervall. Om inget anges används den ursprungliga URL: en.|  
+|Statuskod|Statuskod 200 \(OK\) toocause körs. Andra statuskod göra inte en körning.|  
+|Försök\-efter huvudet|Antalet sekunder tills hello logikapp avsöker hello slutpunkt igen.|  
+|Platshuvud|hello URL toocall på hello nästa avsökningsintervall. Om inget anges används hello ursprungliga URL: en.|  
   
 Här följer några exempel på olika beteenden för olika typer av begäranden:  
   
 |Svarskod|Försök\-efter|Beteende|  
 |-----------------|----------------|------------|  
-|200|\(Ingen\)|Inte en giltig utlösare, försök igen\-efter krävs, eller annan motorn aldrig avsöker för nästa begäran.|  
-|202|60|Inte Utlös arbetsflödet. Nästa försök sker i en minut.|  
-|200|10|Köra arbetsflödet och Sök igen efter mer innehåll om 10 sekunder.|  
-|400|\(Ingen\)|Felaktig begäran inte köra arbetsflödet. Om det finns inga **försök princip** definierats standardprincipen används. Utlösaren är inte längre giltig när antalet försök har nåtts.|  
-|500|\(Ingen\)|Arbetsflödet körs inte på Server-fel.  Om det finns inga **försök princip** definierats standardprincipen används. Utlösaren är inte längre giltig när antalet försök har nåtts.|  
+|200|\(Ingen\)|Inte en giltig utlösare, försök igen\-efter är obligatorisk eller annan hello motor aldrig söker efter nästa hello-begäran.|  
+|202|60|Utlöses inte hello arbetsflöde. hello försöker sker i en minut.|  
+|200|10|Kör hello arbetsflöde och Sök igen efter mer innehåll om 10 sekunder.|  
+|400|\(Ingen\)|Felaktig begäran körs inte hello arbetsflöde. Om det finns inga **försök princip** definierats hello standardprincipen används. När hello antalet försök har nåtts, är hello utlösare inte längre giltig.|  
+|500|\(Ingen\)|Hello arbetsflödet körs inte på Server-fel.  Om det finns inga **försök princip** definierats hello standardprincipen används. När hello antalet försök har nåtts, är hello utlösare inte längre giltig.|  
   
-Det ser ut som i det här exemplet utdata för en HTTP-utlösare:  
+Det ser ut som i det här exemplet Hello utdata för en HTTP-utlösare:  
   
 |Elementnamn|Beskrivning|Typ|  
 |----------------|---------------|--------|  
-|Rubriker|Sidhuvuden för http-svaret.|Objekt|  
-|Brödtext|Brödtexten i http-svaret.|Objekt|  
+|Rubriker|hello-huvuden hello http-svar.|Objekt|  
+|Brödtext|hello brödtext hello http-svar.|Objekt|  
   
 ## <a name="api-connection-trigger"></a>Utlösare för API-anslutningen  
 
-Utlösare för API-anslutningen är samma som HTTP-utlösaren i dess grundläggande funktioner. Parametrar för att identifiera åtgärden är dock olika. Här är ett exempel:  
+hello API anslutning utlösaren är liknande toohello http-utlösaren i dess grundläggande funktioner. Dock är hello parametrar för att identifiera hello åtgärd olika. Här är ett exempel:  
   
 ```json
 "dailyReport" : {
@@ -197,31 +197,31 @@ Utlösare för API-anslutningen är samma som HTTP-utlösaren i dess grundlägga
 
 |Elementnamn|Krävs|Typ|Beskrivning|  
 |----------------|------------|--------|---------------|  
-|värden|Ja||ApiApp finns gateway och ID: t.|  
-|Metoden|Ja|Sträng|Kan vara något av följande metoder för HTTP: **hämta**, **POST**, **PLACERA**, **ta bort**, **korrigering**, eller **HEAD**|  
-|frågor|Nej|Objekt|Representerar frågeparametrar som ska läggas till URL: en. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` till URL: en.|  
-|Rubriker|Nej|Objekt|Representerar var och en av huvuden som skickas till begäran. Till exempel ange språk och Skriv begäran:`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
-|Brödtext|Nej|Objekt|Representerar nyttolasten som skickas till slutpunkten.|  
-|retryPolicy|Nej|Objekt|Kan du anpassa försök beteendet för 4xx eller 5xx-fel.|  
-|Autentisering|Nej|Objekt|Representerar den metod som ska autentisera begäran. Mer information om det här objektet finns [Scheduler utgående autentisering](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication)|  
+|värden|Ja||Hej ApiApp finns gateway och ID: t.|  
+|Metoden|Ja|Sträng|Kan vara något av följande HTTP-metoderna hello: **hämta**, **POST**, **PLACERA**, **ta bort**, **korrigering**, eller  **HUVUDET**|  
+|frågor|Nej|Objekt|Representerar hello frågan parametrar toobe lägga toohello URL. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` toohello URL.|  
+|Rubriker|Nej|Objekt|Representerar varje hello-huvuden som skickas toohello begäran. Till exempel tooset hello språk och typen på en begäran:`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
+|Brödtext|Nej|Objekt|Representerar hello-nyttolast som har skickats toohello slutpunkt.|  
+|retryPolicy|Nej|Objekt|Låter dig toocustomize hello försök beteende för 4xx eller 5xx-fel.|  
+|Autentisering|Nej|Objekt|Representerar hello metod som hello begäran ska autentiseras. Mer information om det här objektet finns [Scheduler utgående autentisering](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication)|  
   
-Egenskaper för värden är:  
+hello egenskaper för värden är:  
   
 |Elementnamn|Krävs|Beskrivning|  
 |----------------|------------|---------------|  
-|API-runtimeUrl|Ja|Hanterade API-slutpunkt.|  
-|Anslutningens namn||Måste vara en referens till en parameter med namnet `$connection` och är namnet på den hanterade API-anslutningen som används i arbetsflödet.|
+|API-runtimeUrl|Ja|hello-slutpunkten för hello hanterade API.|  
+|Anslutningens namn||Måste en referens tooa parameter anropas `$connection` och är hello på hello hanterade API-anslutningen som hello arbetsflödet använder.|
   
-Utdata för en utlösare för API-anslutning är:
+hello utdata för en utlösare för API-anslutning är:
   
 |Elementnamn|Typ|Beskrivning|  
 |----------------|--------|---------------|  
-|Rubriker|Objekt|Sidhuvuden för http-svaret.|  
-|Brödtext|Objekt|Brödtexten i http-svaret.|  
+|Rubriker|Objekt|hello-huvuden hello http-svar.|  
+|Brödtext|Objekt|hello brödtext hello http-svar.|  
   
 ## <a name="httpwebhook-trigger"></a>HTTPWebhook utlösare  
 
-Utlösaren HTTPWebhook öppnar en slutpunkt som liknar den manuella utlösaren men HTTPWebhook utlösaren anropar också till en angiven URL för att registrera och avregistrera. Här är ett exempel på hur en HTTPWebhook-utlösare kan se ut:  
+Hej HTTPWebhook utlösaren öppnas en slutpunkt, liknande toohello manuell utlösare, men hello HTTPWebhook utlösaren anropar också ut tooa angivna URL: en tooregister och avregistrera. Här är ett exempel på hur en HTTPWebhook-utlösare kan se ut:  
 
 ```json
 "myappspottrigger": {
@@ -254,41 +254,41 @@ Utlösaren HTTPWebhook öppnar en slutpunkt som liknar den manuella utlösaren m
     }
 ```
 
-Många av dessa avsnitt är valfria och Webhooken beror på vilka avsnitt som eller utelämnas.  
-Egenskaperna för en Webhook är följande:  
+Många av dessa avsnitt är valfria och hello beteendet för hello Webhook beror på vilka avsnitt som eller utelämnas.  
+hello egenskaperna för en Webhook är följande:  
   
 |Elementnamn|Krävs|Beskrivning|  
 |----------------|------------|---------------|  
-|prenumerera på|Nej|Utgående begäran som anropas när utlösaren skapas och utför registreringen.|  
-|avbryta prenumerationen|Nej|Utgående begäran när utlösaren tas bort.|  
+|prenumerera på|Nej|hello utgående begäran som anropas när hello utlösare skapas och utför hello registreringen.|  
+|avbryta prenumerationen|Nej|hello utgående begäran när hello utlösaren tas bort.|  
   
--   **Prenumerera på** är utgående anrop som har gjorts att starta lyssnar på händelser. Det här anropet börjar med samma uppsättning parametrar som gör de vanliga HTTP-åtgärderna. Utgående anropet görs någon gång arbetsflödet ändras på något sätt, till exempel när autentiseringsuppgifterna samlas eller ändra utlösarens indataparametrar.
+-   **Prenumerera på** är hello utgående anrop som har gjorts toostart lyssnande tooevents. Det här anropet börjar med hello har samma uppsättning parametrar som hello vanliga HTTP-åtgärder. Utgående anropet görs varje gång hello ändringar av arbetsflödet på något sätt, till exempel när hello autentiseringsuppgifter samlas eller hello utlösaren input parametrar ändringen.
   
-    För att stödja det här anropet är en ny funktion: `@listCallbackUrl()`. Den här funktionen returnerar en unik URL för den här specifika utlösaren i det här arbetsflödet. Den motsvarar den unika identifieraren för slutpunkter som använder Service REST.  
+    toosupport detta anrop, det finns en ny funktion: `@listCallbackUrl()`. Den här funktionen returnerar en unik URL för den här specifika utlösaren i det här arbetsflödet. Det motsvarar hello unika identifieraren för hello-slutpunkter som använder hello Service REST.  
   
 -   **Avbryta prenumerationen** anropas när en åtgärd återgivningar utlösaren är ogiltig, inklusive:  
   
-    -   Ta bort eller inaktivera utlösaren  
+    -   Ta bort eller inaktivera hello utlösare  
   
-    -   Ta bort eller inaktivera arbetsflödet  
+    -   Ta bort eller inaktivera hello-arbetsflöde  
   
-    -   Ta bort eller inaktivera prenumerationen  
+    -   Ta bort eller inaktivera hello prenumeration  
   
-    Åtgärden Avbryt prenumeration anropar automatiskt i logikappen. Parametrarna för den här funktionen är samma som HTTP-utlösaren.  
+    Hej logikapp automatiskt anropar hello avbryta prenumerationen åtgärd. hello parametrar toothis funktion är hello samma som hello http-utlösare.  
   
-    Utdata för HTTPWebhook utlösaren är innehållet i den inkommande begäranden:  
+    hello är utdata för hello HTTPWebhook utlösare hello innehållet i hello inkommande begäran:  
   
 |Elementnamn|Typ|Beskrivning|  
 |-----------------|--------|---------------|  
-|Rubriker|Objekt|Sidhuvuden för http-begäran.|  
-|Brödtext|Objekt|Brödtexten i http-begäran.|  
+|Rubriker|Objekt|hello-huvuden hello HTTP-begäran.|  
+|Brödtext|Objekt|hello brödtext hello HTTP-begäran.|  
 
-Gränserna för ett webhook-åtgärder kan anges på samma sätt som [HTTP asynkron gränser](#asynchronous-limits).
+Gränserna för ett webhook-åtgärden kan anges i hello samma sätt som [HTTP asynkron gränser](#asynchronous-limits).
   
 
 ## <a name="conditions"></a>Villkor  
 
-Du kan använda ett eller flera villkor för alla utlösare för att avgöra om arbetsflödet ska köras eller inte. Exempel:  
+Du kan använda en eller flera villkor toodetermine om hello arbetsflödet ska köras eller inte för alla utlösare. Exempel:  
 
 ```json
 "dailyReport" : {
@@ -303,7 +303,7 @@ Du kan använda ett eller flera villkor för alla utlösare för att avgöra om 
 }
 ```
 
-I det här fallet rapporten endast utlösare när arbetsflödets `sendReports` parameter är angiven till true. Slutligen får villkor referera statuskod för utlösaren. Exempelvis kan startar du ett arbetsflöde endast när din webbplats returnerar en statuskod 500, enligt följande:
+I det här fallet hello rapporten endast utlösare när hello arbetsflöde `sendReports` tootrue är angiven. Slutligen får villkor referera hello statuskod hello utlösare. Exempelvis kan startar du ett arbetsflöde endast när din webbplats returnerar en statuskod 500, enligt följande:
   
 ```  
 "conditions": [  
@@ -314,13 +314,13 @@ I det här fallet rapporten endast utlösare när arbetsflödets `sendReports` p
 ```  
   
 > [!NOTE]  
-> När ett uttryck som refererar till statuskod för utlösaren \(på något sätt\), standardbeteendet \(utlösaren endast på 200 \(OK\) \) ersätts. Till exempel om du vill aktivera både statuskod 200 och statuskod 201 du behöver ta: `@or(equals(triggers().code, 200),equals(triggers().code,201))` som dina villkor.  
+> När ett uttryck som refererar till hello statuskod hello utlösare \(på något sätt\), hello standardbeteendet \(utlösaren endast på 200 \(OK\) \) ersätts. Till exempel om du vill tootrigger både statuskod 200 och statuskod 201 ha tooinclude: `@or(equals(triggers().code, 200),equals(triggers().code,201))` som dina villkor.  
   
 ## <a name="start-multiple-runs-for-a-request"></a>Starta flera körs för en begäran
 
-Att startar flera körningar för en enskild begäran `splitOn` är användbart, till exempel när du vill söka en slutpunkt som kan ha flera nya objekt mellan avsökningsintervall.
+tookick av flera körningar för en enskild begäran `splitOn` är användbart, till exempel om du vill toopoll en slutpunkt som kan ha flera nya objekt mellan avsökningsintervall.
   
-Med `splitOn`, du anger egenskapen i nyttolasten av svar som innehåller ett antal objekt som du vill använda för att starta en körning av utlösaren. Anta att du har en API som returnerar följande svar:  
+Med `splitOn`, du anger hello-egenskapen i hello svar-nyttolast som innehåller hello matris av objekt, som du vill toouse toostart hello utlösaren körs. Anta att du har en API som returnerar hello efter svar:  
   
 ```json
 {
@@ -338,7 +338,7 @@ Med `splitOn`, du anger egenskapen i nyttolasten av svar som innehåller ett ant
 }
 ```
   
-Din logikapp kan du bara behöver rader innehåll, så du kan skapa en utlösare som det här exemplet:  
+Din logikapp behöver endast hello rader innehåll, så du kan skapa en utlösare som det här exemplet:  
   
 ```json
 "mysplitter" : {
@@ -355,7 +355,7 @@ Din logikapp kan du bara behöver rader innehåll, så du kan skapa en utlösare
 }
 ```
   
-I arbetsflödesdefinitionen, `@triggerBody().name` returnerar `mycoolrow` för den första körningen och `another row` för andra kör. Utlösaren utdata ser ut det här exemplet:  
+Sedan hello arbetsflödesdefinitionen `@triggerBody().name` returnerar `mycoolrow` för hello först köra och `another row` för hello andra kör. hello utlösaren utdata ser ut som i det här exemplet:  
   
 ```json
 {
@@ -366,16 +366,16 @@ I arbetsflödesdefinitionen, `@triggerBody().name` returnerar `mycoolrow` för d
 }
 ```
 
-Om du använder `SplitOn`, du kan inte hämta de egenskaper som är utanför matrisen, i det här fallet den `Status` fältet.  
+Om du använder `SplitOn`, du kan inte hämta hello egenskaper som är utanför hello matris i det här fallet hello `Status` fältet.  
   
 > [!NOTE]  
-> I det här exemplet använder vi den `?` operatorn för att undvika ett fel om den `Rows` egenskapen finns inte. 
+> I det här exemplet använder vi hello `?` operatorn toobe kan tooavoid ett fel om hello `Rows` egenskapen finns inte. 
   
 ## <a name="single-run-instance"></a>Kör instans
 
-Du kan konfigurera utlösare som har en upprepning egenskap eller bara om alla aktiva körningar har slutförts. Om en schemalagd upprepning inträffar när det finns en pågående kör utlösaren hoppar över och väntar tills nästa schemalagda Upprepningsintervall söka igen.
+Du kan konfigurera utlösare som har en upprepning egenskapen tooonly brand om alla aktiva körningar har slutförts. Om en schemalagd upprepning inträffar när det finns en pågående kör hoppar över hello utlösare och väntar tills hello nästa schemalagda återkommande intervall toocheck igen.
 
-Du kan konfigurera den här inställningen i alternativen för åtgärden:
+Du kan konfigurera den här inställningen via hello åtgärden alternativ:
 
 ```json
 "triggers": {
@@ -396,9 +396,9 @@ Det finns många typer av åtgärder med unika beteende. Åtgärder för samling
 
 -   **HTTP** den här åtgärden kräver en HTTP-slutpunkt för webbprogram.  
   
--   **ApiConnection** \- åtgärden fungerar som HTTP-åtgärden, men använder Microsoft-hanterade API: erna.  
+-   **ApiConnection** \- åtgärden fungerar som en hello HTTP-åtgärd, men använder hello Microsoft-hanterade API: er.  
   
--   **ApiConnectionWebhook** \- som HTTPWebhook men använder Microsoft-hanterade API: erna.  
+-   **ApiConnectionWebhook** \- som HTTPWebhook, men använder hello Microsoft-hanterade API: er.  
   
 -   **Svaret** \- åtgärden definierar ett svar för ett inkommande samtal.  
   
@@ -412,30 +412,30 @@ Det finns många typer av åtgärder med unika beteende. Åtgärder för samling
 
 -   **Scope** \- den här åtgärden är en logisk gruppering av andra åtgärder.
 
--   **Villkoret** \- åtgärden utvärderar ett uttryck och kör grenen motsvarande resultat.
+-   **Villkoret** \- åtgärden utvärderar ett uttryck och kör hello motsvarande resultatet grenen.
 
 -   **ForEach** \- slingor åtgärden upprepas i en matris och utför inre åtgärder för varje objekt.
 
--   **Tills** \- åtgärden slingor kör inre åtgärder tills ett villkor resultatet till true.
+-   **Tills** \- åtgärden slingor kör inre åtgärder tills ett villkor resulterar tootrue.
   
 Varje typ av åtgärd har en annan uppsättning **indata** som definierar beteendet för en åtgärd.  
   
 ## <a name="http-action"></a>HTTP-åtgärd  
 
-HTTP-åtgärder anropa den angivna slutpunkten och kontrollera svaret för att avgöra om arbetsflödet ska köras. Den **indata** objektet tar uppsättningen parametrar som krävs för att konstruera HTTP-anropet:  
+HTTP-åtgärder anropa den angivna slutpunkten och kontrollera hello svar toodetermine om hello arbetsflödet ska köras. Hej **indata** objektet tar hello uppsättning parametrar krävs tooconstruct hello HTTP anropet:  
   
 |Elementnamn|Krävs|Typ|Beskrivning|  
 |----------------|------------|--------|---------------|  
-|Metoden|Ja|Sträng|Kan vara något av följande metoder för HTTP: **hämta**, **POST**, **PLACERA**, **ta bort**, **korrigering**, eller **HEAD**|  
-|URI: N|Ja|Sträng|Http eller https slutpunkten som anropas. Maximal längd är 2 kB.|  
-|frågor|Nej|Objekt|Representerar frågeparametrar att lägga till URL: en. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` till URL: en.|  
-|Rubriker|Nej|Objekt|Representerar var och en av huvuden som skickas till begäran. Till exempel ange språk och Skriv begäran:`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
-|Brödtext|Nej|Objekt|Representerar nyttolasten som skickas till slutpunkten.|  
-|retryPolicy|Nej|Objekt|Kan du anpassa försök beteendet för 4xx eller 5xx-fel.|  
-|operationsOptions|Nej|Sträng|Definierar de särskilda beteenden att åsidosätta.|  
-|Autentisering|Nej|Objekt|Representerar den metod som ska autentisera begäran. Mer information om det här objektet finns [Scheduler utgående autentisering](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication). Utöver scheduler, är en mer stöds egenskap: `authority`. Detta är som standard `https://login.windows.net` om anges, men du kan använda en annan publik som`https://login.windows\-ppe.net`|  
+|Metoden|Ja|Sträng|Kan vara något av följande HTTP-metoderna hello: **hämta**, **POST**, **PLACERA**, **ta bort**, **korrigering**, eller  **HUVUDET**|  
+|URI: N|Ja|Sträng|hello http eller https-slutpunkt som anropas. Maximal längd är 2 kB.|  
+|frågor|Nej|Objekt|Representerar hello frågan parametrar tooadd toohello URL. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` toohello URL.|  
+|Rubriker|Nej|Objekt|Representerar varje hello-huvuden som skickas toohello begäran. Till exempel tooset hello språk och typen på en begäran:`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
+|Brödtext|Nej|Objekt|Representerar hello-nyttolast som har skickats toohello slutpunkt.|  
+|retryPolicy|Nej|Objekt|Kan du anpassa hello försök beteende för 4xx eller 5xx-fel.|  
+|operationsOptions|Nej|Sträng|Definierar hello särskilda beteenden toooverride.|  
+|Autentisering|Nej|Objekt|Representerar hello metod som hello begäran ska autentiseras. Mer information om det här objektet finns [Scheduler utgående autentisering](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication). Utöver scheduler, är en mer stöds egenskap: `authority`. Detta är som standard `https://login.windows.net` om anges, men du kan använda en annan publik som`https://login.windows\-ppe.net`|  
   
-HTTP-åtgärder \(och API-anslutningen\) åtgärder stöd försök principer. En återförsöksprincip som gäller för återkommande fel som betecknas som HTTP-statuskoder 408 och 429 5xx utöver eventuella undantag. Den här principen nedan används den *retryPolicy* objekt som är definierat som visas här:
+HTTP-åtgärder \(och API-anslutningen\) åtgärder stöd försök principer. En återförsöksprincip gäller toointermittent fel, kännetecknas som HTTP-status 408, 429 och 5xx i tillägg tooany undantag. Den här principen nedan används hello *retryPolicy* objekt som är definierat som visas här:
   
 ```json
 "retryPolicy" : {
@@ -445,9 +445,9 @@ HTTP-åtgärder \(och API-anslutningen\) åtgärder stöd försök principer. En
 }
 ```
   
-Intervallet anges i ISO 8601-format. Det här intervallet har standard och minst 20 sekunder medan det maximala värdet är en timme. Standard- och maximalt antal för nya försök är fyra timmar. Om principdefinitionen försök anges en `fixed` strategi som används med försök antal och intervall standardvärden. Om du vill inaktivera återförsöksprincipen sägs dess typ `None`.  
+hello återförsöksintervall har angetts i hello ISO 8601-format. Det här intervallet har en standard och minsta 20 sekunder medan hello maxvärdet är en timme. hello standard och maximalt antal för nya försök är fyra timmar. Om hello försök principdefinitionen anges en `fixed` strategi som används med försök antal och intervall standardvärden. toodisable hello återförsöksprincip, ange dess för`None`.  
   
-Till exempel i följande nya försök hämta de senaste nyheterna två gånger om återkommande fel totalt tre körningar med en fördröjning på 30 sekunder mellan varje försök:  
+Till exempel återförsök hello följande åtgärd hämtning hello nyheter två gånger om återkommande fel totalt tre körningar med en fördröjning på 30 sekunder mellan varje försök:  
   
 ```json
 "latestNews" : {
@@ -465,9 +465,9 @@ Till exempel i följande nya försök hämta de senaste nyheterna två gånger o
 ```
 ### <a name="asynchronous-patterns"></a>Asynkront mönster
 
-Som standard stöder alla HTTP-baserade åtgärder mönstret standard asynkron åtgärd. Om fjärrservern anger att begäran är godkänd för behandling med en 202 \(godkända\) svar, Logic Apps motorn håller avsöker den URL som anges i svarshuvud plats tills ett avslutat tillstånd \(inte\-202 svar\).  
+Som standard stöder alla HTTP-baserade åtgärder hello standard asynkron åtgärd mönster. Så om hello fjärrservern visar hello begäran är godkänd för behandling med en 202 \(godkända\) svar, hello Logic Apps motorn håller avsökning hello-URL som anges i hello svar platshuvud tills en terminal tillstånd \(inte\-202 svar\).  
   
-Om du vill inaktivera beteendet asynkron som beskrevs tidigare, ange en `DisableAsyncPattern` alternativ på åtgärd-indata. I det här fallet är resultatet av åtgärden baserad på det första 202 svaret från servern.  
+toodisable hello asynkron beteende tidigare beskrivs, ange en `DisableAsyncPattern` alternativ i hello åtgärd indata. I det här fallet är hello utdata från hello åtgärden baserad på hello inledande 202 svaret från hello-servern.  
   
 ```json
 "invokeLongRunningOperation" : {
@@ -482,7 +482,7 @@ Om du vill inaktivera beteendet asynkron som beskrevs tidigare, ange en `Disable
 
 #### <a name="asynchronous-limits"></a>Asynkron gränser
 
-Du kan begränsa ett asynkront mönster varaktigheten för ett visst tidsintervall.  Om tidsintervallet långa utan att ett avslutat tillstånd åtgärdens status kommer att markeras `Cancelled` med koden `ActionTimedOut`.  Begränsa tidsgränsen har angetts i ISO 8601-format.  Gränser kan anges med följande syntax:
+Ett asynkront mönster kan begränsas i dess duration tooa angivet tidsintervall.  Om hello tidsintervall långa utan att ett avslutat tillstånd hello status för hello åtgärd markeras `Cancelled` med koden `ActionTimedOut`.  hello gränsen timeout anges i ISO 8601-format.  Gränser kan anges med hello följande syntax:
 
 ``` json
 "<action-name>": {
@@ -497,18 +497,18 @@ Du kan begränsa ett asynkront mönster varaktigheten för ett visst tidsinterva
 ## <a name="api-connection"></a>API-anslutningen  
 
 API-anslutningen är en åtgärd som refererar till en Microsoft-hanterad koppling.
-Den här åtgärden kräver en referens till en giltig anslutning och information om API och parametrar som krävs.
+Den här åtgärden kräver en giltig referens tooa-anslutning och information om hello API och parametrar som krävs.
 
 |Elementnamn|Krävs|Typ|Beskrivning|  
 |----------------|------------|--------|---------------|  
-|värden|Ja|Objekt|Representerar connector-information, till exempel runtimeUrl och referens till connection-objektet|
-|Metoden|Ja|Sträng|Kan vara något av följande metoder för HTTP: **hämta**, **POST**, **PLACERA**, **ta bort**, **korrigering**, eller **HEAD**|  
-|Sökväg|Ja|Sträng|Sökvägen till API-åtgärd.|  
-|frågor|Nej|Objekt|Representerar frågeparametrar att lägga till URL: en. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` till URL: en.|  
-|Rubriker|Nej|Objekt|Representerar var och en av huvuden som skickas till begäran. Till exempel ange språk och Skriv begäran:`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
-|Brödtext|Nej|Objekt|Representerar nyttolasten som skickas till slutpunkten.|  
-|retryPolicy|Nej|Objekt|Kan du anpassa försök beteendet för 4xx eller 5xx-fel.|  
-|operationsOptions|Nej|Sträng|Definierar de särskilda beteenden att åsidosätta.|  
+|värden|Ja|Objekt|Representerar hello connector information, till exempel hello referens och runtimeUrl toohello anslutningsobjekt|
+|Metoden|Ja|Sträng|Kan vara något av följande HTTP-metoderna hello: **hämta**, **POST**, **PLACERA**, **ta bort**, **korrigering**, eller  **HUVUDET**|  
+|Sökväg|Ja|Sträng|hello sökväg hello API-åtgärden.|  
+|frågor|Nej|Objekt|Representerar hello frågan parametrar tooadd toohello URL. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` toohello URL.|  
+|Rubriker|Nej|Objekt|Representerar varje hello-huvuden som skickas toohello begäran. Till exempel tooset hello språk och typen på en begäran:`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
+|Brödtext|Nej|Objekt|Representerar hello-nyttolast som har skickats toohello slutpunkt.|  
+|retryPolicy|Nej|Objekt|Kan du anpassa hello försök beteende för 4xx eller 5xx-fel.|  
+|operationsOptions|Nej|Sträng|Definierar hello särskilda beteenden toooverride.|  
 
 ```json
 "Send_Email": {
@@ -563,11 +563,11 @@ Den här åtgärden kräver en referens till en giltig anslutning och informatio
 }
 ```
 
-Gränserna för ett webhook-åtgärder kan anges på samma sätt som [HTTP asynkron gränser](#asynchronous-limits).
+Gränserna för ett webhook-åtgärden kan anges i hello samma sätt som [HTTP asynkron gränser](#asynchronous-limits).
   
 ## <a name="response-action"></a>Svaret åtgärd  
 
-Den här typen innehåller hela svaret nyttolast från en HTTP-begäran och ett statusCode, brödtext och rubriker:  
+Den här typen innehåller hello hela svaret nyttolast från en HTTP-begäran och ett statusCode, brödtext och rubriker:  
   
 ```json
 "myresponse" : {
@@ -587,17 +587,17 @@ Den här typen innehåller hela svaret nyttolast från en HTTP-begäran och ett 
 }
 ```
   
-Instruktionen svar har särskilda begränsningar som inte gäller för andra åtgärder. Närmare bestämt:  
+hello svar åtgärd har särskilda begränsningar som inte gäller tooother åtgärder. Närmare bestämt:  
   
--   Responsåtgärder får inte vara parallellt i en definition av eftersom en deterministisk svar på inkommande begäran krävs.  
+-   Responsåtgärder får inte vara parallellt i en definition av eftersom en inkommande begäran om toohello deterministiska svar krävs.  
   
--   Om en åtgärd för svar uppnås när den inkommande begäranden tog emot ett svar, åtgärden betraktas som misslyckad \(konflikt\), och därför inte `Failed`.  
+-   Om en åtgärd för svar uppnås när hello inkommande begäran tog emot ett svar, hello anses misslyckades \(konflikt\), och därför hello kör `Failed`.  
   
--   Ett arbetsflöde med responsåtgärder kan inte ha `splitOn` i dess utlösare eftersom ett anrop gör många körs. Det bör därför verifieras när flödet är PUT och orsaken en felaktig begäran.  
+-   Ett arbetsflöde med responsåtgärder kan inte ha `splitOn` i dess utlösare eftersom ett anrop gör många körs. Det bör därför verifieras när hello flödet är PUT- och orsaken en felaktig begäran.  
   
 ## <a name="wait-action"></a>Vänta åtgärd  
 
-Den `wait` åtgärd pausar körningen av arbetsflödet för det angivna intervallet. Du kan till exempel använda den här fragment för att vänta 15 minuter:  
+Hej `wait` åtgärd pausar körningen av arbetsflödet för hello angivna intervallet. Du kan använda den här fragment exempelvis toowait 15 minuter:  
   
 ```json
 "waitForFifteenMinutes" : {
@@ -611,7 +611,7 @@ Den `wait` åtgärd pausar körningen av arbetsflödet för det angivna interval
 }
 ```  
   
-Om du vill vänta tills en särskild tidpunkt, kan du också använda det här exemplet:  
+Du kan också toowait tills en särskild tidpunkt, du kan använda det här exemplet:  
   
 ```json
 "waitUntilOctober" : {
@@ -625,19 +625,19 @@ Om du vill vänta tills en särskild tidpunkt, kan du också använda det här e
 ```
   
 > [!NOTE]  
-> Vänta varaktighet kan anges antingen med hjälp av den **intervall** objekt eller **tills** objekt, men inte båda.  
+> hello vänta varaktighet kan anges antingen med hjälp av hello **intervall** objekt eller hello **tills** objekt, men inte båda.  
   
 |Namn|Krävs|Typ|Beskrivning|  
 |--------|------------|--------|---------------|  
-|intervall|Nej|Objekt|Vänta varaktighet baserat på tid.|  
+|interval|Nej|Objekt|Hej väntans varaktighet baserat på tid.|  
 |intervall|Ja|Sträng|En av dessa intervall: sekund, minut, timma, dag, vecka, månad, år.|  
-|intervall för antal|Ja|Sträng|Varaktighet baserat på den angivna interna enheten.|  
-|fram till|Nej|Objekt|Vänta varaktighet baserat på en punkt i tiden.|  
-|tills tidsstämpel|Ja|Sträng|Sträng &#124; Punkten i tiden i UTC när väntetiden upphör att gälla.|  
+|intervall för antal|Ja|Sträng|Varaktighet baserat på hello angiven interna enhet.|  
+|fram till|Nej|Objekt|Hej väntans varaktighet baserat på en punkt i tiden.|  
+|tills tidsstämpel|Ja|Sträng|Sträng &#124; hello tidpunkt i UTC när hello vänta upphör att gälla.|  
 
 ## <a name="query-action"></a>Frågeåtgärden
 
-Den `query` åtgärd kan du filtrera en matris baserat på ett villkor. Till exempel för att välja nummer som är större än 2, kan du använda:
+Hej `query` åtgärd kan du filtrera en matris baserat på ett villkor. Till exempel tooselect tal som är större än 2, du kan använda:
 
 ```json
 "FilterNumbers" : {
@@ -649,20 +649,20 @@ Den `query` åtgärd kan du filtrera en matris baserat på ett villkor. Till exe
 }
 ```
 
-Utdata från den `query` åtgärden är en matris som har element från Indatamatrisen som uppfyller villkoret.
+Hej utdata från hello `query` åtgärden är en matris som har element från hello Indatamatrisen som uppfyller villkoret hello.
 
 > [!NOTE]
-> Om inga värden uppfyller de `where` villkoret, resultatet är en tom matris.
+> Om inga värden uppfyller hello `where` villkor, hello resultatet är en tom matris.
 
 |Namn|Krävs|Typ|Beskrivning|
 |--------|------------|--------|---------------|
-|Från|Ja|matris|Källmatrisen.|
-|där|Ja|Sträng|Villkoret som gäller för varje element i källmatrisen.|
+|Från|Ja|Matris|hello källmatrisen.|
+|där|Ja|Sträng|hello villkoret tooapply tooeach element i källmatrisen hello.|
 
 ## <a name="select-action"></a>Välj åtgärd
 
-Den `select` du kan projicera varje element i en matris till ett nytt värde.
-Till exempel om du vill konvertera en matris av talen i en array med objekt som kan du använda:
+Hej `select` du kan projicera varje element i en matris till ett nytt värde.
+Till exempel tooconvert en matris av talen i en matris av objekt, kan du använda:
 
 ```json
 "SelectNumbers" : {
@@ -674,16 +674,16 @@ Till exempel om du vill konvertera en matris av talen i en array med objekt som 
 }
 ```
 
-Utdata från den `select` åtgärden är en matris som har samma kardinalitet som Indatamatrisen, där varje element omvandlas som definieras av den `select` egenskapen. Om indata är en tom matris, är utdata också en tom matris.
+Hej utdata från hello `select` åtgärden är en matris som har hello samma kardinalitet som hello Indatamatrisen, där varje element omvandlas som definierats av hello `select` egenskapen. Om hello-indata är en tom matris, hello utdata är också en tom matris.
 
 |Namn|Krävs|Typ|Beskrivning|
 |--------|------------|--------|---------------|
-|Från|Ja|matris|Källmatrisen.|
-|Välj|Ja|Alla|Projektionen som ska gälla för varje element i källmatrisen.|
+|Från|Ja|Matris|hello källmatrisen.|
+|Välj|Ja|Alla|hello projektion tooapply tooeach element i källmatrisen hello.|
 
 ## <a name="terminate-action"></a>Åtgärden Avbryt
 
-Åtgärden Avsluta avbryts körningen av arbetsflödet kör, avbryts alla pågående åtgärder och hoppa över eventuella återstående åtgärder. Till exempel för att avsluta en körning med statusen **misslyckades**, kan du använda följande utdrag:
+hello avbrottsåtgärd avbryts körningen av hello arbetsflödet körs, avbryts alla pågående åtgärder och hoppa över eventuella återstående åtgärder. Till exempel tooterminate körs med statusen **misslyckades**, kan du använda följande fragment hello:
 
 ```json
 "HandleUnexpectedResponse" : {
@@ -699,18 +699,18 @@ Utdata från den `select` åtgärden är en matris som har samma kardinalitet so
 ```
 
 > [!NOTE]
-> Åtgärder som redan har slutförts påverkas inte av åtgärden Avsluta.
+> Åtgärder som redan har slutförts påverkas inte av hello Avbryt.
 
 |Namn|Krävs|Typ|Beskrivning|
 |--------|------------|--------|---------------|
-|runStatus|Ja|Sträng|Målet kör status. Antingen **misslyckades** eller **avbröts**.|
-|runError|Nej|Objekt|Felinformation. Endast när **runStatus** är inställd på **misslyckades**.|
-|runError kod|Nej|Sträng|Kör felkoden.|
-|runError meddelande|Nej|Sträng|Kör ett felmeddelande.|
+|runStatus|Ja|Sträng|hello mål Körningsstatus. Antingen **misslyckades** eller **avbröts**.|
+|runError|Nej|Objekt|hello felinformation. Endast när **runStatus** har angetts för**misslyckades**.|
+|runError kod|Nej|Sträng|hello kör felkoden.|
+|runError meddelande|Nej|Sträng|hello kör felmeddelande.|
 
 ## <a name="compose-action"></a>Skriv åtgärd
 
-Skriv åtgärd kan du skapa ett godtyckligt objekt. Utdata från åtgärden Skriv är ett resultat av utvärderingen av indata. Du kan till exempel använda Skriv åtgärd för att sammanfoga utdata för flera åtgärder:
+hello Skriv åtgärd kan du skapa ett godtyckligt objekt. hello utdata från hello utgöra åtgärd är hello resultat av utvärderingen av indata. Du kan till exempel använda hello utgöra åtgärd toomerge utdata för flera åtgärder:
 
 ```json
 "composeUserRecord" : {
@@ -725,11 +725,11 @@ Skriv åtgärd kan du skapa ett godtyckligt objekt. Utdata från åtgärden Skri
 ```
 
 > [!NOTE]
-> Den **Compose** åtgärd kan användas för att skapa några utdata, inklusive objekt, matriser och andra typer som stöds av logikappar som XML och binary.
+> Hej **Compose** åtgärd kan vara används tooconstruct inga utdata, inklusive objekt, matriser och andra typer som stöds av logikappar som XML och binary.
 
 ## <a name="table-action"></a>Åtgärden för tabellen
 
-Den `table` kan du konvertera en matris med-objekt till en **CSV** eller **HTML** tabell.
+Hej `table` kan du tooconvert en matris med objekt till en **CSV** eller **HTML** tabell.
 
 Anta att @triggerBodyär)
 
@@ -743,7 +743,7 @@ Anta att @triggerBodyär)
 }]
 ```
 
-Och låta den åtgärd som definierats som
+Och låta hello åtgärd definieras som
 
 ```json
 "ConvertToTable" : {
@@ -755,11 +755,11 @@ Och låta den åtgärd som definierats som
 }
 ```
 
-Ovanstående skulle skapa
+hello ovan skulle skapa
 
 <table><thead><tr><th>id</th><th>namn</th></tr></thead><tbody><tr><td>0</td><td>Äpplen</td></tr><tr><td>1</td><td>orange</td></tr></tbody></table>"
 
-För att anpassa tabellen kan du ange vilka kolumner explicit. Exempel:
+I ordning toocustomize hello tabellen du vill kan du ange hello kolumner explicit. Exempel:
 
 ```json
 "ConvertToTable" : {
@@ -778,29 +778,29 @@ För att anpassa tabellen kan du ange vilka kolumner explicit. Exempel:
 }
 ```
 
-Ovanstående skulle skapa
+hello ovan skulle skapa
 
-<table><thead><tr><th>Skapa id</th><th>Beskrivning</th></tr></thead><tbody><tr><td>0</td><td>ny äpplen</td></tr><tr><td>1</td><td>ny orange</td></tr></tbody></table>"
+<table><thead><tr><th>Skapa id</th><th>description</th></tr></thead><tbody><tr><td>0</td><td>ny äpplen</td></tr><tr><td>1</td><td>ny orange</td></tr></tbody></table>"
 
-Om den `from` egenskapsvärdet är en tom matris, utdata är en tom tabell.
+Om hello `from` egenskapsvärdet är en tom matris, hello utdata är en tom tabell.
 
 |Namn|Krävs|Typ|Beskrivning|
 |--------|------------|--------|---------------|
-|Från|Ja|matris|Källmatrisen.|
-|Format|Ja|Sträng|Format, antingen **CSV** eller **HTML**.|
-|Kolumner|Nej|matris|Kolumner. Tillåter för att åsidosätta standard formen i tabellen.|
-|kolumnrubrik|Nej|Sträng|Rubriken för kolumnen.|
-|värde i kolumnen|Ja|Sträng|Värdet för kolumnen.|
+|Från|Ja|Matris|hello källmatrisen.|
+|Format|Ja|Sträng|hello-format, antingen **CSV** eller **HTML**.|
+|Kolumner|Nej|Matris|hello kolumner. Tillåter toooverride hello standard form hello tabellen.|
+|kolumnrubrik|Nej|Sträng|hello rubrik för hello-kolumn.|
+|värde i kolumnen|Ja|Sträng|hello värdet för hello kolumnen.|
 
 ## <a name="workflow-action"></a>Arbetsflödesåtgärd   
 
 |Namn|Krävs|Typ|Beskrivning|  
 |--------|------------|--------|---------------|  
-|värd-id|Ja|Sträng|Resurs-ID för det arbetsflöde som du vill anropa.|  
-|värden Utlösarnamn|Ja|Sträng|Namnet på utlösaren som du vill anropa.|  
-|frågor|Nej|Objekt|Representerar frågeparametrar att lägga till URL: en. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` till URL: en.|  
-|Rubriker|Nej|Objekt|Representerar var och en av huvuden som skickas till begäran. Till exempel ange språk och Skriv begäran:`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
-|Brödtext|Nej|Objekt|Representerar nyttolasten skickas till slutpunkten.|  
+|värd-id|Ja|Sträng|hello resurs-ID för hello arbetsflöde som du vill toocall.|  
+|värden Utlösarnamn|Ja|Sträng|hello namnet hello utlösare som du vill tooinvoke.|  
+|frågor|Nej|Objekt|Representerar hello frågan parametrar tooadd toohello URL. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` toohello URL.|  
+|Rubriker|Nej|Objekt|Representerar varje hello-huvuden som skickas toohello begäran. Till exempel tooset hello språk och typen på en begäran:`"headers" : { "Accept-Language": "en-us",  "Content-Type": "application/json" }`|  
+|Brödtext|Nej|Objekt|Representerar hello nyttolasten skickas toohello slutpunkt.|  
   
 ```json
 "mynestedwf" : {
@@ -826,19 +826,19 @@ Om den `from` egenskapsvärdet är en tom matris, utdata är en tom tabell.
     }
 ```
   
-En åtkomstkontroll görs på arbetsflödet \(mer specifikt utlösaren\), vilket innebär att du behöver åtkomst till arbetsflödet.  
+En åtkomstkontroll görs på hello arbetsflöde \(mer specifikt hello utlösaren\), vilket innebär att du behöver komma åt toohello arbetsflöde.  
   
-Utdata från den `workflow` åtgärd baserat på vad du har definierat i på `response` åtgärd i arbetsflöden. Om du inte har definierat någon `response` åtgärd och sedan utdata är tomma.  
+hello matar ut från hello `workflow` åtgärd baserat på vad du har definierat i hello `response` åtgärden i hello underordnat arbetsflöde. Om du inte har definierat någon `response` åtgärd och sedan hello utdata är tomma.  
 
 ## <a name="function-action"></a>Funktionen åtgärd   
 
 |Namn|Krävs|Typ|Beskrivning|  
 |--------|------------|--------|---------------|  
-|funktionen id|Ja|Sträng|Resurs-ID för den funktion som du vill anropa.|  
-|Metoden|Nej|Sträng|HTTP-metoden som används för att anropa funktionen. Som standard är det `POST` om inget värde anges.|  
-|frågor|Nej|Objekt|Representerar frågeparametrar att lägga till URL: en. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` till URL: en.|  
-|Rubriker|Nej|Objekt|Representerar var och en av huvuden som skickas till begäran. Till exempel ange språk och typ för en begäran: `"headers" : { "Accept-Language": "en-us" }`.|  
-|Brödtext|Nej|Objekt|Representerar nyttolasten skickas till slutpunkten.|  
+|funktionen id|Ja|Sträng|hello resurs-ID för hello-funktionen som du vill tooinvoke.|  
+|Metoden|Nej|Sträng|hello HTTP-metoden används tooinvoke hello-funktionen. Som standard är det `POST` om inget värde anges.|  
+|frågor|Nej|Objekt|Representerar hello frågan parametrar tooadd toohello URL. Till exempel `"queries" : { "api-version": "2015-02-01" }` lägger till `?api-version=2015-02-01` toohello URL.|  
+|Rubriker|Nej|Objekt|Representerar varje hello-huvuden som skickas toohello begäran. Till exempel tooset hello språk och typen på en begäran: `"headers" : { "Accept-Language": "en-us" }`.|  
+|Brödtext|Nej|Objekt|Representerar hello nyttolasten skickas toohello slutpunkt.|  
 
 ```json
 "myfunc" : {
@@ -863,25 +863,25 @@ Utdata från den `workflow` åtgärd baserat på vad du har definierat i på `re
 }
 ```
 
-När du sparar logikappen kan göra vi några kontroller på den angivna funktionen:
--   Du måste ha tillgång till funktionen.
+När du sparar hello logikapp kan göra vi några kontroller för hello refererar till funktionen:
+-   Du måste toohave åtkomst toohello funktion.
 -   Endast är standard HTTP-utlösare eller allmänna JSON webhook utlösare tillåten.
 -   Det får inte innehålla någon väg som har definierats.
 -   Endast ”fungera” och ”anonym” åtkomstnivå är tillåten.
 
-Utlösaren URL: en hämtas, cachelagras och används vid körning. Så om någon åtgärd upphäver den cachelagra URL, misslyckas åtgärden under körning. Undvik detta genom att spara logikappen igen, vilket leder till logikapp du hämtar och cachelagrar utlösaren URL: en igen.
+hello utlösaren URL hämtas, cachelagras och används vid körning. Om någon åtgärd upphäver hello cachelagras URL, så misslyckas hello åtgärden vid körning. toowork runt problemet, spara hello logikappen igen, vilket orsakar logik app tooretrieve och cachelagra hello utlösaren URL igen.
 
 ## <a name="collection-actions-scopes-and-loops"></a>Samling åtgärder (scope och slingor)
 
-Vissa åtgärdstyper av kan innehålla åtgärder i själva. Referens-åtgärder i en samling kan refereras direkt utanför samlingen. Om du har definierat `http` i en omfattning `@body('http')` fortfarande är giltigt var som helst i ett arbetsflöde. Åtgärder i en samling kan `runAfter` endast andra åtgärder i samma samling.
+Vissa åtgärdstyper av kan innehålla åtgärder i själva. Referens-åtgärder i en samling kan refereras direkt utanför hello samling. Om du har definierat `http` i en omfattning `@body('http')` fortfarande är giltigt var som helst i ett arbetsflöde. Åtgärder i en samling kan `runAfter` endast andra åtgärder i hello samma samling.
 
 ## <a name="scope-action"></a>Scope-åtgärd
 
-Den `scope` åtgärd kan du logiskt gruppera åtgärder i ett arbetsflöde.
+Hej `scope` åtgärd kan du logiskt gruppera åtgärder i ett arbetsflöde.
 
 |Namn|Krävs|Typ|Beskrivning|  
 |--------|------------|--------|---------------|  
-|åtgärder|Ja|Objekt|Inre åtgärder för att köra inom omfånget|
+|åtgärder|Ja|Objekt|Inre åtgärder tooexecute inom hello omfång|
 
 ```json
 {
@@ -901,13 +901,13 @@ Den `scope` åtgärd kan du logiskt gruppera åtgärder i ett arbetsflöde.
 
 ## <a name="foreach-action"></a>ForEach-åtgärd
 
-Åtgärden slingor upprepas i en matris och utför inre åtgärder för varje objekt. Som standard kör foreach-loop parallellt (20 körningar parallellt i taget). Du kan ange regler för körning med hjälp av den `operationOptions` parameter.
+Åtgärden slingor upprepas i en matris och utför inre åtgärder för varje objekt. Som standard kör hello foreach loop parallellt (20 körningar parallellt i taget). Du kan ange körning regler med hjälp av hello `operationOptions` parameter.
 
 |Namn|Krävs|Typ|Beskrivning|  
 |--------|------------|--------|---------------|  
-|åtgärder|Ja|Objekt|Inre åtgärder för att köra inom loopen|
-|foreach|Ja|Sträng|Matrisen och iterera över|
-|operationOptions|Nej|Sträng|Åtgärden alternativ för beteende. Stöder för närvarande endast `sequential` att utföra iterationer sekventiellt (standard är parallella)|
+|åtgärder|Ja|Objekt|Inre åtgärder tooexecute inom hello loop|
+|foreach|Ja|Sträng|hello matris tooiterate över|
+|operationOptions|Nej|Sträng|Åtgärden alternativ för beteende. För närvarande endast stöd för `sequential` tooexecute iterationer sekventiellt (standard är parallella)|
 
 ```json
 "forEach_email": {
@@ -938,15 +938,15 @@ Den `scope` åtgärd kan du logiskt gruppera åtgärder i ett arbetsflöde.
 
 ## <a name="until-action"></a>Förrän åtgärden
 
-Åtgärden slingor kör inre åtgärder tills ett villkor resultatet till true.
+Åtgärden slingor kör inre åtgärder tills ett villkor resulterar tootrue.
 
 |Namn|Krävs|Typ|Beskrivning|  
 |--------|------------|--------|---------------|  
-|åtgärder|Ja|Objekt|Inre åtgärder för att köra inom loopen|
-|uttryck|Ja|Sträng|Uttrycket som ska utvärderas efter varje iteration|
-|Gränsen|Ja|Objekt|Gränser för loop - minst en gräns måste anges|
-|Antal|Nej|int|Gränsen för antalet upprepningar som kan utföras|
-|Timeout|Nej|Sträng|Tidsgräns för hur länge det ska köras i slinga.  ISO 8601-format|
+|åtgärder|Ja|Objekt|Inre åtgärder tooexecute inom hello loop|
+|uttryck|Ja|Sträng|hello uttryck tooevaluate efter varje iteration|
+|Gränsen|Ja|Objekt|hello gränser för hello loop - minst en gräns måste anges|
+|Antal|Nej|int|hello begränsa toohello antalet upprepningar som kan utföras|
+|timeout|Nej|Sträng|hello tidsgräns för hur länge det ska köras i slinga.  ISO 8601-format|
 
 
 ```json
@@ -973,13 +973,13 @@ Den `scope` åtgärd kan du logiskt gruppera åtgärder i ett arbetsflöde.
 
 ## <a name="conditions---if-action"></a>Villkor - om åtgärden
 
-Den `If` åtgärd kan du utvärdera ett villkor och köra en gren baserat på om uttrycket utvärderas till `true`.
+Hej `If` åtgärd kan du utvärdera ett villkor och köra en gren baserat på om hello uttrycket utvärderas för`true`.
 
 |Namn|Krävs|Typ|Beskrivning|  
 |--------|------------|--------|---------------|  
-|åtgärder|Ja|Objekt|Inre åtgärder för att köras när uttrycket utvärderas till`true`|
-|uttryck|Ja|Sträng|Uttrycket som ska utvärderas|
-|annan|Nej|Objekt|Inre åtgärder för att köras när uttrycket utvärderas till`false`|
+|åtgärder|Ja|Objekt|Inre åtgärder tooexecute när uttrycket utvärderas för`true`|
+|uttryck|Ja|Sträng|hello uttryck tooevaluate|
+|annan|Nej|Objekt|Inre åtgärder tooexecute när uttrycket utvärderas för`false`|
   
 ```json
 "My_condition": {
@@ -1011,17 +1011,17 @@ Den `If` åtgärd kan du utvärdera ett villkor och köra en gren baserat på om
 }
 ```  
   
-I följande tabell visas exempel på hur villkor kan använda uttryck i en åtgärd:  
+hello visas följande tabell exempel på hur villkor kan använda uttryck i en åtgärd:  
   
 |JSON-värde|Resultat|  
 |--------------|----------|  
-|`"expression": "@parameters('hasSpecialAction')"`|Ett värde som kan utvärderas till SANT gör detta villkor att skicka. Endast booleskt uttryck stöds. Konvertera andra typer till Boolean med funktioner `empty`, `equals`.|  
-|`"expression": "@greater(actions('act1').output.value, parameters('threshold'))"`|Jämförelse funktioner stöds. Exempelvis den här körs åtgärden endast när utdata från act1 är större än tröskelvärdet.|  
-|`"expression": "@or(greater(actions('act1').output.value, parameters('threshold')), less(actions('act1').output.value, 100))"`|Logik funktioner stöds även för att skapa kapslade booleska uttryck. I det här fallet körs åtgärden när resultatet av act1 är över tröskelvärdet eller under 100.|  
-|`"expression": "@equals(length(actions('act1').outputs.errors), 0))"`|Du kan använda matrisfunktioner för att kontrollera om en matris har några objekt. I det här fallet körs åtgärden när fel matrisen är tom.| 
+|`"expression": "@parameters('hasSpecialAction')"`|Ett värde som utvärderar tootrue gör det här villkoret toopass. Endast booleskt uttryck stöds. tooconvert andra typer tooBoolean, Använd funktioner `empty`, `equals`.|  
+|`"expression": "@greater(actions('act1').output.value, parameters('threshold'))"`|Jämförelse funktioner stöds. Exempelvis hello här körs bara hello åtgärden när hello utdata från act1 är större än hello tröskelvärdet.|  
+|`"expression": "@or(greater(actions('act1').output.value, parameters('threshold')), less(actions('act1').output.value, 100))"`|Logik funktionerna finns även stöds toocreate kapslade booleska uttryck. I det här fallet körs hello åtgärden när hello utdata från act1 är tröskelvärdet hello eller under 100.|  
+|`"expression": "@equals(length(actions('act1').outputs.errors), 0))"`|Du kan använda matrisen funktioner toocheck om en matris har några objekt. I det här fallet körs hello åtgärden när hello fel matrisen är tom.| 
 |`"expression": "parameters('hasSpecialAction')"`|Fel - inte ett giltigt tillstånd eftersom @ krävs för villkor.|  
   
-Om ett villkor utvärderas har, villkor har markerats som `Succeeded`. Åtgärder i antingen den `actions` eller `else` objekt utvärderas till `Succeeded` när den exekveras och lyckades, `Failed` när den exekveras och misslyckades, eller `Skipped` när den grenen körs inte.
+Om ett villkor utvärderas har, hello villkor har markerats som `Succeeded`. Åtgärder i antingen hello `actions` eller `else` objekt utvärdera för`Succeeded` när den exekveras och lyckades, `Failed` när den exekveras och misslyckades, eller `Skipped` när den grenen körs inte.
 
 ## <a name="next-steps"></a>Nästa steg
 

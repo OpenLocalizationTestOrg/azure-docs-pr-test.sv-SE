@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: skapa en app med Node.js och DocumentDB-API:n | Microsoft Docs'
-description: "Presenterar ett .Node.js-kodexempel som du kan använda för att ansluta till och fråga Azure Cosmos DB DocumentDB-API:n"
+title: 'Azure Cosmos DB: Skapa en app med Node.js och hello DocumentDB API | Microsoft Docs'
+description: "Anger en Node.js-kodexempel som du kan använda tooconnect tooand query hello Azure Cosmos DB DocumentDB API"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,21 +15,21 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 26e3548bf6aacbc60c4c46a5cc88749ca14cec01
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 287d860c7d6f788f05a397b238ef0f841c3c30ca
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-build-a-documentdb-api-app-with-nodejs-and-the-azure-portal"></a>Azure Cosmos DB: skapa en DocumentDB-API-app med Node.js och Azure Portal
+# <a name="azure-cosmos-db-build-a-documentdb-api-app-with-nodejs-and-hello-azure-portal"></a>Azure DB Cosmos: Skapa en DocumentDB-API-app med Node.js och hello Azure-portalen
 
-Azure Cosmos DB är Microsofts globalt distribuerade databastjänst för flera datamodeller. Du kan snabbt skapa och ställa frågor mot databaser med dokument, nyckel/värde-par och grafer. Du får fördelar av den globala distributionen och den horisontella skalningsförmågan som ligger i grunden hos Azure Cosmos DB. 
+Azure Cosmos DB är Microsofts globalt distribuerade databastjänst för flera datamodeller. Du kan snabbt skapa och fråga dokument och nyckel/värde-diagrammet databaser, som omfattas av hello global distributionsplatsen och skala horisontellt funktionerna i hello kärnan i Azure Cosmos DB. 
 
-I den här snabbstarten visas hur du skapar ett Azure Cosmos DB-konto, en dokumentdatabas och en samling med hjälp av Azure Portal. Sedan skapar du och kör en konsolapp som är byggd med [DocumentDB Node.js API](documentdb-sdk-node.md).
+Den här snabbstartsguide visar hur toocreate ett konto i Azure Cosmos DB, dokumentdatabasen och samlingen använder hello Azure-portalen. Du sedan skapa och köra en konsolapp som bygger på hello [DocumentDB Node.js API](documentdb-sdk-node.md).
 
 ## <a name="prerequisites"></a>Krav
 
-* Innan du kan köra det här exemplet måste du uppfylla följande krav:
+* Innan du kan köra det här exemplet måste du ha hello följande krav:
     * [Node.js](https://nodejs.org/en/) version v0.10.29 eller senare
     * [Git](http://git-scm.com/)
 
@@ -43,23 +43,23 @@ I den här snabbstarten visas hur du skapar ett Azure Cosmos DB-konto, en dokume
 
 [!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
 
-## <a name="clone-the-sample-application"></a>Klona exempelprogrammet
+## <a name="clone-hello-sample-application"></a>Klona hello exempelprogrammet
 
-Nu ska vi klona en DocumentDB-API-app från github, ange anslutningssträngen och köra den. Du kommer att se hur lätt det är att arbeta med data programmässigt. 
+Nu ska vi klona en DocumentDB-API-app från github, ange hello anslutningssträngen och kör den. Du ser hur enkelt är det toowork med data programmässigt. 
 
-1. Öppna ett git-terminalfönster, till exempel git bash, och `CD` till en arbetskatalog.  
+1. Öppna ett git terminalfönster, till exempel git bash och `CD` tooa arbetskatalogen.  
 
-2. Klona exempellagringsplatsen med följande kommando. 
+2. Hello kör följande kommando tooclone hello exempel lagringsplatsen. 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-nodejs-getting-started.git
     ```
 
-## <a name="review-the-code"></a>Granska koden
+## <a name="review-hello-code"></a>Granska hello kod
 
-Vi gör en snabb genomgång av vad som händer i appen. Öppna filen `app.js` så ser du att de här kodraderna skapar Azure Cosmos DB-resurserna. 
+Låt oss göra en snabb genomgång av vad som händer i hello app. Öppna hello `app.js` fil och du hittar att dessa rader med kod skapar hello Azure Cosmos DB resurser. 
 
-* `documentClient` har initierats.
+* Hej `documentClient` har initierats.
 
     ```nodejs
     var client = new documentClient(config.endpoint, { "masterKey": config.primaryKey });
@@ -113,43 +113,43 @@ Vi gör en snabb genomgång av vad som händer i appen. Öppna filen `app.js` s�
 
 ## <a name="update-your-connection-string"></a>Uppdatera din anslutningssträng
 
-Gå nu tillbaka till Azure Portal för att hämta information om din anslutningssträng och kopiera den till appen.
+Gå tillbaka toohello Azure portal tooget din Anslutningssträngsinformation nu och kopierar den till hello app.
 
-1. I [Azure Portal](http://portal.azure.com/) går du till ditt Azure Cosmos DB-konto. Klicka på **Nycklar** i det västra navigeringsfönstret och sedan på **läs- och skrivnycklar**. Du använder kopiera-knapparna till höger på skärmen för att kopiera URI:n och primärnyckeln i `config.js`-filen i nästa steg.
+1. I hello [Azure-portalen](http://portal.azure.com/), i din Azure Cosmos DB konto, i hello vänstra navigeringsrutan klickar du på **nycklar**, och klicka sedan på **skrivskyddad nycklar**. Du måste använda hello kopiera knappar i hello höger sida av hello skärmen toocopy hello URI och primärnyckel i hello `config.js` filen i hello nästa steg.
 
-    ![Visa och kopiera åtkomstnyckeln i Azure Portal, bladet Nycklar](./media/create-documentdb-dotnet/keys.png)
+    ![Visa och kopiera en snabbtangent i hello Azure-portalen, bladet nycklar](./media/create-documentdb-dotnet/keys.png)
 
-2. Öppna filen `config.js`. 
+2. I öppna hello `config.js` fil. 
 
-3. Kopiera ditt URI-värde från portalen (med kopieringsknappen) och gör det till värdet för slutpunktsnyckeln i `config.js`. 
+3. Kopiera URI-värdet från hello-portal (med hello kopieringsknappen) och gör den hello värdet för hello endpoint nyckeln i `config.js`. 
 
     `config.endpoint = "https://FILLME.documents.azure.com"`
 
-4. Kopiera sedan värdet för primärnyckeln från portalen och gör det till värdet för `config.primaryKey` i `config.js`. Du har nu uppdaterat appen med all information som behövs för kommunikation med Azure Cosmos DB. 
+4. Kopiera värdet för PRIMÄRNYCKELN från hello-portalen och gör det hello värdet för hello `config.primaryKey` i `config.js`. Du har nu uppdaterat din app med alla hello information som behövs för toocommunicate med Azure Cosmos DB. 
 
     `config.primaryKey "FILLME"`
     
-## <a name="run-the-app"></a>Kör appen
-1. Kör `npm install` i en terminal för att installera de npm-moduler som krävs
+## <a name="run-hello-app"></a>Kör hello-appen
+1. Kör `npm install` krävs npm-modulerna i en terminal tooinstall
 
-2. Kör `node app.js` i en terminal för att starta nodprogrammet.
+2. Kör `node app.js` i en terminal toostart node-App.
 
-Du kan nu gå tillbaka till datautforskaren och se frågan, ändra och arbeta med dessa nya data. 
+Du kan nu gå tillbaka tooData Explorer Se fråga, ändra och arbeta med dessa nya data. 
 
-## <a name="review-slas-in-the-azure-portal"></a>Granska serviceavtal i Azure Portal
+## <a name="review-slas-in-hello-azure-portal"></a>Granska SLA: er i hello Azure-portalen
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du inte planerar att fortsätta använda den här appen tar du bort alla resurser som skapades i snabbstarten i Azure Portal med följande steg:
+Om du inte kommer toocontinue toouse den här appen, tar du bort alla resurser som skapats av denna Snabbstart i hello Azure-portalen med hello följande steg:
 
-1. Klicka på **Resursgrupper** på den vänstra menyn i Azure Portal och sedan på namnet på den resurs du skapade. 
-2. På sidan med resursgrupper klickar du på **Ta bort**, skriver in namnet på resursen att ta bort i textrutan och klickar sedan på **Ta bort**.
+1. Hello vänstra menyn i hello Azure-portalen klickar du på **resursgrupper** och klicka sedan på hello namnet på hello resurs du skapat. 
+2. På din resurs gruppen klickar du på **ta bort**typnamn hello för hello resurs toodelete i hello textrutan och klicka sedan på **ta bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabbstarten har du lärt dig hur man skapar ett Azure Cosmos DB-konto, skapar en samling med datautforskaren och kör en app. Du kan nu importera ytterligare data till ditt Cosmos DB-konto. 
+Du har lärt dig hur toocreate ett Azure DB som Cosmos-konto, skapa en samling med hello Data Explorer och kör en app i denna Snabbstart. Nu kan du importera ytterligare data tooyour Cosmos-DB-konto. 
 
 > [!div class="nextstepaction"]
 > [Importera data till Azure Cosmos DB](import-data.md)

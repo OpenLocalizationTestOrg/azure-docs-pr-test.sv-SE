@@ -1,5 +1,5 @@
 ---
-title: "Snabbreferens för Azure Import/Export verktyget import jobbet kommandon | Microsoft Docs"
+title: "aaaQuick referens för Azure Import/Export verktyget import jobbet kommandon | Microsoft Docs"
 description: "Azure Import/Export-verktyget kommandoreferens för vanliga importera jobbet kommandon."
 author: muralikk
 manager: syadav
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: e9377e0c5001cf5be220e19e06ff96c1e058e853
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0a615aed938e5e1b52d55a340aa6b48fa0744367
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>Snabbreferens för ofta använda kommandon för importjobb
 
@@ -48,7 +48,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /AbortSession
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /ResumeSession
 ```
 
-## <a name="add-drives-to-latest-session"></a>Lägga till enheter i senaste sessionen
+## <a name="add-drives-toolatest-session"></a>Lägg till enheter toolatest session
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /AdditionalDriveSet:driveset-2.csv
@@ -56,4 +56,4 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /AdditionalDriveS
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Exempelarbetsflöde för att förbereda hårddiskar för ett importjobb](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
+* [Exempel arbetsflödet tooprepare hårddiskar för ett importjobb](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)

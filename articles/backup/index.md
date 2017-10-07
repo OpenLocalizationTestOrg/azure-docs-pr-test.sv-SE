@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure Backup – Självstudier, API-referens | Microsoft Docs"
-description: "I dokumentationen om Backup kan du läsa om hur du säkerhetskopierar till molnet. Mer information finns i självstudierna och videoklippen för säkerhetskopiering av program, Windows-server och virtuella Azure-datorer."
+title: "aaaAzure Backup-dokumentation – självstudier, API-referens | Microsoft Docs"
+description: "Använd säkerhetskopiering dokumentationen toolearn hur tooback in toohello cloud. Mer information finns i självstudierna och videoklippen för säkerhetskopiering av program, Windows-server och virtuella Azure-datorer."
 services: backup
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 3d8b07dc9903a48f6481ceda1922479cc7cd9ef6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 648c83a3ecdc4770859fbea0cc5af9ac2d1fdfd2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="backup-documentation"></a>Dokumentation om Backup
 
-Lär dig hur du använder Azure Backup i molnet för att skydda data för långsiktig kvarhållning och återställning. Självstudier, videoklipp och annan dokumentation visar hur du säkerhetskopierar data, program, Windows-servrar och virtuella datorer i Azure.
+Lär dig hur toouse Azure Backup i hello cloud tooprotect data för långsiktig kvarhållning och återställning. Självstudier, videor och andra dokumentationen visar hur tooback in data, program, Windows-servrar och virtuella Azure-datorer.
 
 <ul class="panelContent cardsFTitle">
     <li>

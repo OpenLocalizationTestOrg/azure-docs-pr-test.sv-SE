@@ -1,6 +1,6 @@
 ---
-title: "Översikt över funktioner i Azure SQL Database | Microsoft Docs"
-description: "Den här sidan innehåller en översikt över Azure SQL Database logiska servrar och databaser och innehåller en matris över funktionsstöds med länkar för varje listad funktion."
+title: "aaaAzure översikt över funktioner i SQL-databasen | Microsoft Docs"
+description: "Den här sidan innehåller en översikt över logiska hello Azure SQL Database-servrar och databaser och innehåller en funktion stöd matrix med länkar varje funktion i listan."
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: 4ef119d5218c844f3949bf4fc17fb320a7cbf7b4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 463c88edcd38eabbc768cfb701bc74461836aa36
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database-funktioner
 
-Azure SQL Database delar en gemensam kodbas med SQL Server och på nivån databasen stöder de flesta av samma funktioner. Större funktion skillnaderna mellan Azure SQL Database och SQL Server finns på instansnivå. 
+Azure SQL Database delar en gemensam kodbas med SQL Server och stöder de flesta av hello på hello databasnivå samma funktioner. hello större funktionsskillnader mellan Azure SQL Database och SQL Server finns på instansnivå hello. 
 
-Vi fortsätter att lägga till funktioner till Azure SQL Database. Så vi rekommenderar att du besöker vår webbsida för tjänstuppdateringar för Azure och dess filter:
+Vi fortsätta tooadd funktioner tooAzure SQL-databas. Så vi rekommenderar att du toovisit vår tjänst uppdateringar för webbsidan för Azure och toouse dess filter:
 
-* Filtrerade till [SQL Database-tjänsten](https://azure.microsoft.com/updates/?service=sql-database).
-* Filtrerade till allmän tillgänglighet [meddelanden (GA)](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) för SQL Database-funktioner.
+* Filtrerade toohello [SQL Database-tjänsten](https://azure.microsoft.com/updates/?service=sql-database).
+* Filtrerade tooGeneral tillgänglighet [(GA) meddelanden](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) för SQL Database-funktioner.
 
 ## <a name="sql-server-and-sql-database-feature-support"></a>Stöder SQL Server och SQL-databas
 
-I följande tabell visar de viktigaste funktionerna i SQL Server och innehåller information om huruvida varje viss funktion stöds och en länk till mer information om funktionen. Om du vill veta vilka Transact-SQL-skillnader du ska ha i åtanke när du migrerar en befintlig databaslösning kan du läsa [Azure SQL Database Transact-SQL skillnader](sql-database-transact-sql-information.md).
+hello nedan visas hello viktiga funktioner i SQL Server och ger information om huruvida varje viss funktion stöds och en länk toomore information om hello-funktionen. Transact-SQL skillnader tooconsider när du migrerar en befintlig databaslösning, se [lösa Transact-SQL-skillnader under migreringen tooSQL databasen](sql-database-transact-sql-information.md).
 
 
 | **SQL Server-funktionen** | **Stöds i Azure SQL-databas** | 
@@ -127,5 +127,5 @@ I följande tabell visar de viktigaste funktionerna i SQL Server och innehåller
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Information om Azure SQL Database-tjänsten finns i [Vad är SQL Database?](sql-database-technical-overview.md)
-- Mer information om stöd för och skillnader jämfört med Transact-SQL finns i [Azure SQL Database Transact-SQL skillnader](sql-database-transact-sql-information.md).
+- Information om hello Azure SQL Database-tjänsten finns [vad är SQL Database?](sql-database-technical-overview.md)
+- Information om stöd för Transact-SQL och skillnader finns [lösa Transact-SQL-skillnader under migreringen tooSQL databasen](sql-database-transact-sql-information.md).

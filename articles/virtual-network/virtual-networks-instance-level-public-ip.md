@@ -1,6 +1,6 @@
 ---
-title: "Azure instansnivå offentlig IP-adress (klassisk)-adresser | Microsoft Docs"
-description: "Förstå instans nivån offentliga IP-går adresser och hantera dem med hjälp av PowerShell."
+title: "aaaAzure instansnivå offentlig IP-adress (klassisk)-adresser | Microsoft Docs"
+description: "Förstå instans nivån offentliga IP-går adresser och hur toomanage dem med hjälp av PowerShell."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
-ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 832143ee6fdd80b634e1cebfddc759a8cacda583
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Instansen offentlig IP (klassisk): översikt
-En instans nivån offentliga IP-går är en offentlig IP-adress som kan tilldelas direkt till en virtuell dator eller molntjänster rollinstans i stället för till Molntjänsten som din Virtuella eller roll instans finns i. En går äga inte rum för den virtuella IP (VIP) som är tilldelad till Molntjänsten. Det är en ytterligare IP-adress som du kan använda för att ansluta direkt till din Virtuella eller roll-instans.
+En instans i nivån offentliga IP-går är offentlig IP-adress som du kan tilldela direkt tooa VM eller molntjänster rollinstansen snarare än toohello molnbaserad tjänst som din Virtuella eller roll instans finns i. En går ske inte hello av hello virtuell IP-adress (VIP) som är tilldelad tooyour Molntjänsten. Det är en ytterligare IP-adress som du kan använda tooconnect direkt tooyour VM eller roll-instans.
 
 > [!IMPORTANT]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Den här artikeln beskriver den klassiska distributionsmodellen. Microsoft rekommenderar att skapa virtuella datorer via Resource Manager. Kontrollera att du förstår hur [IP-adresser](virtual-network-ip-addresses-overview-classic.md) fungerar i Azure.
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Den här artikeln täcker hello klassiska distributionsmodellen. Microsoft rekommenderar att skapa virtuella datorer via Resource Manager. Kontrollera att du förstår hur [IP-adresser](virtual-network-ip-addresses-overview-classic.md) fungerar i Azure.
 
 ![Skillnaden mellan att går och VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-I bild 1 visas Molntjänsten används med en VIP samtidigt som de enskilda virtuella datorerna används normalt med VIP:&lt;portnummer&gt;. Genom att tilldela en går till en specifik virtuell dator kan kan den virtuella datorn nås direkt med den IP-adressen.
+Som visas i bild 1 hello Molntjänsten används med en VIP, medan hello enskilda virtuella datorer vanligtvis hämtas med hjälp av VIP:&lt;portnummer&gt;. Genom att tilldela en tooa går åt specifik VM som virtuell dator kan vara direkt med den IP-adressen.
 
-När du skapar en molnbaserad tjänst i Azure skapas motsvarande DNS A-poster automatiskt för att tillåta åtkomst till tjänsten via ett fullständigt kvalificerat domännamn (FQDN), i stället för verkliga VIP. Samma process som sker för en går att tillåta åtkomst till virtuell dator eller roll-instansen av FQDN i stället för i går. Till exempel om du skapar en molntjänst med namnet *contosoadservice*, och du konfigurerar en webbroll med namnet *contosoweb* med två instanser Azure registrerar följande A-poster för instanserna:
+När du skapar en molnbaserad tjänst i Azure skapas motsvarande DNS A-poster automatiskt tooallow access toohello-tjänsten via ett fullständigt kvalificerat domännamn (FQDN), istället för att använda hello faktiska VIP. hello samma process som sker för en går att tillåta åtkomst toohello VM eller roll instans av FQDN i stället för hello går. Till exempel om du skapar en molntjänst med namnet *contosoadservice*, och du konfigurerar en webbroll med namnet *contosoweb* med två instanser Azure registren hello efter en registrerar för hello instanser:
 
 * contosoweb\_IN_0.contosoadservice.cloudapp.net
 * contosoweb\_IN_1.contosoadservice.cloudapp.net 
 
 > [!NOTE]
-> Du kan tilldela en enda går för varje virtuell dator eller roll-instans. Du kan använda upp till 5 ILPIPs per prenumeration. ILPIPs stöds inte för virtuella datorer som flera nätverkskort.
+> Du kan tilldela en enda går för varje virtuell dator eller roll-instans. Du kan använda upp too5 ILPIPs per prenumeration. ILPIPs stöds inte för virtuella datorer som flera nätverkskort.
 > 
 > 
 
 ## <a name="why-would-i-request-an-ilpip"></a>Varför skulle jag för att begära en går?
-Om du vill kunna ansluta till din Virtuella eller roll-instans med en IP-adress som tilldelats till den i stället för att använda molnet tjänsten VIP:&lt;portnummer&gt;, begär en går för din virtuella dator eller din rollinstans.
+Om du vill toobe kan tooconnect tooyour VM eller rollinstansen av en IP-adress tilldelas direkt tooit, i stället för via hello molnet tjänsten VIP:&lt;portnummer&gt;, begär en går för din virtuella dator eller din rollinstans.
 
-* **Aktiva FTP** -genom att tilldela en går till en virtuell dator kan den ta emot trafik på alla portar. Slutpunkter krävs inte för den virtuella datorn tar emot trafik.  Information om FTP-protokollet finns i (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) [FTP-Protokollöversikt].
-* **Utgående IP** – utgående trafik från den virtuella datorn är mappad till går som källa och går identifierar den virtuella datorn till externa enheter.
+* **Aktiva FTP** -genom att tilldela en går tooa VM, kan den ta emot trafik på alla portar. Slutpunkter är inte obligatoriska för hello VM tooreceive trafik.  Mer information på hello FTP-protokollet finns i (https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) [FTP-Protokollöversikt].
+* **Utgående IP** – utgående trafik från hello VM är mappad toohello går som hello källa och hello går identifierar hello VM tooexternal entiteter.
 
 > [!NOTE]
-> Tidigare som går-adress kallas en offentlig IP (PIP)-adress.
+> I tidigare hello var en går adress enligt tooas en offentlig IP (PIP)-adress.
 > 
 
 ## <a name="manage-an-ilpip-for-a-vm"></a>Hantera en går för en virtuell dator
-Följande aktiviteter kan du skapa, tilldela och ta bort ILPIPs från virtuella datorer:
+hello följande aktiviteter kan du toocreate, tilldela och ta bort ILPIPs från virtuella datorer:
 
-### <a name="how-to-request-an-ilpip-during-vm-creation-using-powershell"></a>Hur du begär ett går under Skapa en virtuell dator med hjälp av PowerShell
-Följande PowerShell-skript skapar en molntjänst med namnet *FTPService*, hämtar en avbildning från Azure, skapar en virtuell dator med namnet *FTPInstance* använder den hämtade avbildningen anger den virtuella datorn att använda en går och lägger till den virtuella datorn till den nya tjänsten:
+### <a name="how-toorequest-an-ilpip-during-vm-creation-using-powershell"></a>Hur toorequest en går under Skapa en virtuell dator med hjälp av PowerShell
+hello följande PowerShell-skript skapar en molntjänst med namnet *FTPService*, hämtar en avbildning från Azure, skapar en virtuell dator med namnet *FTPInstance* med hello Hämta bild anger hello VM toouse en går och lägger till hello VM toohello ny tjänst:
 
 ```powershell
 New-AzureService -ServiceName FTPService -Location "Central US"
@@ -65,8 +65,8 @@ New-AzureVMConfig -Name FTPInstance -InstanceSize Small -ImageName $image.ImageN
 | Set-AzurePublicIP -PublicIPName ftpip | New-AzureVM -ServiceName FTPService -Location "Central US"
 ```
 
-### <a name="how-to-retrieve-ilpip-information-for-a-vm"></a>Hur du hämtar går information för en virtuell dator
-Kör följande PowerShell-kommando för att visa går informationen för den virtuella datorn som skapats med föregående skript, och notera att värdena för *PublicIPAddress* och *PublicIPName*:
+### <a name="how-tooretrieve-ilpip-information-for-a-vm"></a>Hur tooretrieve går information för en virtuell dator
+tooview hello går informationen för hello skapas den virtuella datorn med hello föregående skript, kör följande PowerShell-kommando hello och notera hello värden för *PublicIPAddress* och *PublicIPName*:
 
 ```powershell
 Get-AzureVM -Name FTPInstance -ServiceName FTPService
@@ -101,15 +101,15 @@ Förväntad utdata:
     OperationId                 : 568d88d2be7c98f4bbb875e4d823718e
     OperationStatus             : OK
 
-### <a name="how-to-remove-an-ilpip-from-a-vm"></a>Ta bort en går från en virtuell dator
-Kör följande PowerShell-kommando för att ta bort går till den virtuella datorn i föregående skript:
+### <a name="how-tooremove-an-ilpip-from-a-vm"></a>Hur tooremove en går från en virtuell dator
+tooremove hello går läggas till toohello VM i hello föregående skript och köras hello följande PowerShell-kommando:
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Remove-AzurePublicIP | Update-AzureVM
 ```
 
-### <a name="how-to-add-an-ilpip-to-an-existing-vm"></a>Hur du lägger till en går till en befintlig virtuell dator
-Om du vill lägga till en går till den virtuella datorn skapas med hjälp av skript som tidigare, kör du följande kommando:
+### <a name="how-tooadd-an-ilpip-tooan-existing-vm"></a>Hur tooadd en går tooan befintlig virtuell dator
+tooadd en går toohello VM som skapats med hjälp av hello skript tidigare, kör hello följande kommando:
 
 ```powershell
 Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -PublicIPName ftpip2 | Update-AzureVM
@@ -117,10 +117,10 @@ Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -Publi
 
 ## <a name="manage-an-ilpip-for-a-cloud-services-role-instance"></a>Hantera en går för en roll Cloud Services-instans
 
-Utför följande steg för att lägga till en går till en roll Cloud Services-instans:
+tooadd en går tooa molntjänster rollinstans, fullständig hello följande steg:
 
-1. Hämta .cscfg-filen för Molntjänsten genom att slutföra stegen i den [hur du konfigurerar molntjänster](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artikel.
-2. Uppdatera .cscfg-filen genom att lägga till den `InstanceAddress` element. I följande exempel lägger till en går med namnet *MyPublicIP* till en roll med namnet *WebRole1*: 
+1. Hämta hello .cscfg-filen för hello molntjänst genom att slutföra hello stegen i hello [hur tooConfigure Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artikel.
+2. Uppdatera hello .cscfg-filen genom att lägga till hello `InstanceAddress` element. hello följande exempel lägger till en går med namnet *MyPublicIP* tooa rollinstansen med namnet *WebRole1*: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -142,8 +142,8 @@ Utför följande steg för att lägga till en går till en roll Cloud Services-i
       </NetworkConfiguration>
     </ServiceConfiguration>
     ```
-3. Överför .cscfg-filen för Molntjänsten genom att slutföra stegen i den [hur du konfigurerar molntjänster](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artikel.
+3. Överför hello .cscfg-filen för hello molntjänst genom att slutföra hello stegen i hello [hur tooConfigure Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artikel.
 
 ## <a name="next-steps"></a>Nästa steg
-* Förstå hur [IP-adressering](virtual-network-ip-addresses-overview-classic.md) fungerar i den klassiska distributionsmodellen.
+* Förstå hur [IP-adressering](virtual-network-ip-addresses-overview-classic.md) fungerar i hello klassiska distributionsmodellen.
 * Lär dig mer om [reserverade IP-adresser](virtual-networks-reserved-public-ip.md).

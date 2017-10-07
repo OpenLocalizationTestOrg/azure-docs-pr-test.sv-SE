@@ -1,6 +1,6 @@
 ---
 title: 'Azure AD Connect: Aktivera tillbakaskrivning av enheter | Microsoft Docs'
-description: "Det här dokumentet beskriver hur du aktiverar tillbakaskrivning av enheter med Azure AD Connect"
+description: "Det här dokumentet information hur tooenable tillbakaskrivning av enheter med Azure AD Connect"
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,46 +14,46 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 3b14013894b7fabdd4658a64f8fdfd29216ba268
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2566a514137fed85b21929207cf3230e6878ebbe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: Aktivera tillbakaskrivning av enheter
 > [!NOTE]
-> Det krävs en prenumeration på Azure AD Premium för tillbakaskrivning av enheter.
+> Det krävs en prenumeration tooAzure AD Premium för tillbakaskrivning av enheter.
 > 
 > 
 
-Följande dokumentation innehåller information om hur du aktiverar funktionen för tillbakaskrivning av enhet i Azure AD Connect. Tillbakaskrivning av enheter används i följande scenarier:
+hello följande dokumentation innehåller information om hur tooenable hello tillbakaskrivning av enheter funktion i Azure AD Connect. Tillbakaskrivning av enheter används i hello följande scenarier:
 
-* Aktivera villkorlig åtkomst baserad på AD FS-enheter (2012 R2 eller högre) skyddade applikationer (förtroenden för beroende part).
+* Aktivera villkorlig åtkomst baserat på enheter tooADFS (2012 R2 eller högre) skyddade applikationer (förtroenden för beroende part).
 
-Det ger ökad säkerhet och garanterar att beviljas åtkomst till program bara till betrodda enheter. Mer information om villkorlig åtkomst finns [hantera risker med villkorlig åtkomst](../active-directory-conditional-access.md) och [konfigurera lokal villkorlig åtkomst med hjälp av Azure Active Directory Device Registration](../active-directory-conditional-access-automatic-device-registration-setup.md).
+Detta ger ökad säkerhet och försäkran om att komma åt tooapplications beviljas endast tootrusted enheter. Mer information om villkorlig åtkomst finns [hantera risker med villkorlig åtkomst](../active-directory-conditional-access.md) och [konfigurera lokal villkorlig åtkomst med hjälp av Azure Active Directory Device Registration](../active-directory-conditional-access-automatic-device-registration-setup.md).
 
 > [!IMPORTANT]
-> <li>Enheter måste finnas i samma skog som användarna. Eftersom enheter måste skrivas tillbaka till en enda skog, stöder funktionen för närvarande inte en distribution med flera skogar för användaren.</li>
-> <li>Konfigurationsobjekt för endast en enhet registreringen kan läggas till lokala Active Directory-skogen. Den här funktionen är inte kompatibel med en topologi där lokala Active Directory synkroniseras till flera Azure AD-kataloger.</li>> 
+> <li>Enheter måste finnas i samma skog som hello användare hello. Eftersom enheter måste skrivas tillbaka tooa enkel skog, stöder funktionen för närvarande inte en distribution med flera skogar för användaren.</li>
+> <li>Konfigurationsobjekt för endast en enhet registreringen kan läggas till toohello lokala Active Directory-skog. Den här funktionen är inte kompatibel med en topologi där hello lokala Active Directory är synkroniserade toomultiple Azure AD-kataloger.</li>> 
 
 ## <a name="part-1-install-azure-ad-connect"></a>Del 1: Installera Azure AD Connect
-1. Installera Azure AD Connect med anpassade eller standardinställningar. Microsoft rekommenderar att börja med alla användare och grupper har synkroniserats innan du aktiverar tillbakaskrivning av enheter.
+1. Installera Azure AD Connect med anpassade eller standardinställningar. Microsoft rekommenderar toostart med alla användare och grupper som synkroniserats innan du aktiverar tillbakaskrivning av enheter.
 
 ## <a name="part-2-prepare-active-directory"></a>Del 2: Förbereda Active Directory
-Använd följande steg för att förbereda för att använda tillbakaskrivning av enheter.
+Använd hello följande steg tooprepare för att använda tillbakaskrivning av enheter.
 
-1. Starta PowerShell från den dator där Azure AD Connect är installerat i upphöjt läge.
-2. Om Active Directory PowerShell-modulen inte har installerats, installerar du den med hjälp av följande kommando:
+1. Starta PowerShell från hello datorn där Azure AD Connect är installerat i upphöjt läge.
+2. Om hello Active Directory PowerShell-modulen inte är installerad, installerar du den med hjälp av hello följande kommando:
    
    `Add-WindowsFeature RSAT-AD-PowerShell`
-3. Om Azure Active Directory PowerShell-modulen inte är installerat kan du hämta och installera den från [Azure Active Directory-modulen för Windows PowerShell (64-bitars version)](http://go.microsoft.com/fwlink/p/?linkid=236297). Den här komponenten har ett beroende på inloggningsassistenten, som installeras med Azure AD Connect.
-4. Kör följande kommandon och avsluta sedan PowerShell med enterprise-administratörsautentiseringsuppgifter.
+3. Om hello Azure Active Directory PowerShell-modulen inte är installerat kan du hämta och installera den från [Azure Active Directory-modulen för Windows PowerShell (64-bitars version)](http://go.microsoft.com/fwlink/p/?linkid=236297). Den här komponenten har ett beroende på hello-inloggningsassistent, som installeras med Azure AD Connect.
+4. Kör följande kommandon hello och avsluta sedan PowerShell med enterprise-administratörsautentiseringsuppgifter.
    
    `Import-Module 'C:\Program Files\Microsoft Azure Active Directory Connect\AdPrep\AdSyncPrep.psm1'`
    
    `Initialize-ADSyncDeviceWriteback {Optional:–DomainName [name] Optional:-AdConnectorAccount [account]}`
 
-Enterprise-administratörsautentiseringsuppgifter krävs eftersom namnområdet konfiguration behövs. En domänadministratör har inte tillräcklig behörighet.
+Enterprise-administratörsautentiseringsuppgifter krävs eftersom ändringar toohello configuration namnrymd krävs. En domänadministratör har inte tillräcklig behörighet.
 
 ![PowerShell för att aktivera tillbakaskrivning av enhet.](./media/active-directory-aadconnect-feature-device-writeback/powershell.png)
 
@@ -61,74 +61,74 @@ Beskrivning:
 
 * Om de inte finns redan, skapar och konfigurerar nya behållare och objekt under CN = konfiguration för Enhetsregistrering, CN = Services, CN = Configuration, [skog dn].
 * Om de inte finns redan, skapar och konfigurerar nya behållare och objekt under CN = Registreradeenheter, [domän-dn]. Enhetsobjekt skapas i den här behållaren.
-* Anger behörigheter som krävs för Azure AD Connector-konto att hantera enheter i din Active Directory.
-* Endast måste köras i en skog, även om Azure AD Connect installeras på flera skogar.
+* Anger behörigheter som krävs för hello Azure AD-anslutningskontot toomanage enheter i din Active Directory.
+* Behöver bara toorun i en skog, även om Azure AD Connect installeras på flera skogar.
 
 Parametrar:
 
 * Domännamn: Active Directory-domän där enhetsobjekt kommer att skapas. Obs: Alla enheter för en viss Active Directory-skog skapas i en domän.
-* AdConnectorAccount: Active Directory-konto som ska användas av Azure AD Connect för att hantera objekt i katalogen. Detta är det konto som används av Azure AD Connect-synkronisering för att ansluta till AD. Om du har installerat med standardinställningar är det konto som föregås av MSOL_.
+* AdConnectorAccount: Active Directory-konto som ska användas av Azure AD Connect toomanage objekt i hello directory. Detta är hello-konto som används av Azure AD Connect sync tooconnect tooAD. Hello-kontot med MSOL_ prefixet är om du har installerat med standardinställningar.
 
 ## <a name="part-3-enable-device-writeback-in-azure-ad-connect"></a>Del 3: Aktivera tillbakaskrivning av enhet i Azure AD Connect
-Använd följande procedur för att aktivera tillbakaskrivning av enheter i Azure AD Connect.
+Använd följande procedur tooenable tillbakaskrivning av enhet i Azure AD Connect hello.
 
-1. Kör installationsguiden igen. Välj **anpassa synkroniseringsalternativ** från ytterligare aktiviteter och klicka på **nästa**.
+1. Kör hello installationsguiden igen. Välj **anpassa synkroniseringsalternativ** från hello ytterligare uppgifter och klickar på **nästa**.
    ![Anpassad installation anpassa synkroniseringsalternativ](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback2.png)
-2. På sidan valfria funktioner är tillbakaskrivning av enheter inte längre nedtonade. Du ska Observera att om Azure AD Connect prep steg inte är slutförda tillbakaskrivning vara nedtonade ut på sidan valfria funktioner. Markera kryssrutan för tillbakaskrivning av enheter och på **nästa**. Om kryssrutan är fortfarande inaktiverad, finns det [avsnittet om felsökning](#the-writeback-checkbox-is-still-disabled).
+2. Hello valfria funktioner på sidan är tillbakaskrivning av enheter inte längre nedtonade. Observera att om hello Azure AD Connect prep stegen inte har slutförts kommer grå tillbakaskrivning av enheter ut hello valfria funktioner på sidan. Hej för tillbakaskrivning av enheter och klickar på **nästa**. Om kryssrutan hello fortfarande är inaktiverad finns hello [avsnittet om felsökning](#the-writeback-checkbox-is-still-disabled).
    ![Anpassad installation valfria funktioner för tillbakaskrivning av enhet.](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback3.png)
-3. På sidan tillbakaskrivning visas den angivna domänen som standard enheten tillbakaskrivning skog.
+3. Hello tillbakaskrivning på sidan visas hello angivna domän som hello standard enheten tillbakaskrivning skog.
    ![Anpassad installation enheten tillbakaskrivning målskogen](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback4.png)
-4. Slutför installationen av guiden utan ytterligare konfigurationsändringar. Om det behövs, referera till [anpassad installation av Azure AD Connect.](active-directory-aadconnect-get-started-custom.md)
+4. Slutför hello installationen av hello guiden utan ytterligare konfigurationsändringar. Om det behövs, referera för[anpassad installation av Azure AD Connect.](active-directory-aadconnect-get-started-custom.md)
 
 ## <a name="enable-conditional-access"></a>Aktivera villkorlig åtkomst
-Detaljerade instruktioner för att aktivera det här scenariot finns i [konfigurera lokal villkorlig åtkomst med hjälp av Azure Active Directory Device Registration](../active-directory-conditional-access-automatic-device-registration-setup.md).
+Detaljerade anvisningar tooenable det här scenariot är tillgängliga i [konfigurera lokal villkorlig åtkomst med hjälp av Azure Active Directory Device Registration](../active-directory-conditional-access-automatic-device-registration-setup.md).
 
-## <a name="verify-devices-are-synchronized-to-active-directory"></a>Kontrollera att enheter ska synkroniseras med Active Directory
-Tillbakaskrivning av enheter bör nu fungerar korrekt. Tänk på att det kan ta upp till tre timmar för enhetsobjekt som ska skrivas tillbaka till AD.  Gör för att kontrollera att dina enheter som har synkroniserats korrekt följande när reglerna synkroniseringen är klar:
+## <a name="verify-devices-are-synchronized-tooactive-directory"></a>Kontrollera att enheterna är synkroniserade tooActive Directory
+Tillbakaskrivning av enheter bör nu fungerar korrekt. Tänk på att det kan ta upp too3 timmar för enheten objekt toobe skrivs tillbaka tooAD.  tooverify att dina enheter som synkroniseras korrekt, hello efter när hello sync regler har slutfört:
 
 1. Starta Active Directory Administrationscenter.
-2. Expandera Registreradeenheter inom domänen som är att federerade.
+2. Expandera Registreradeenheter, inom hello domän är som federerat.
    ![Active Directory Administrationscenter registrerade enheter](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback5.png)
 3. Aktuella registrerade enheter visas det.
    ![Active Directory Administrationscenter registrerade enheter lista](./media/active-directory-aadconnect-feature-device-writeback/devicewriteback6.png)
 
 ## <a name="troubleshooting"></a>Felsökning
-### <a name="the-writeback-checkbox-is-still-disabled"></a>Kryssrutan tillbakaskrivning är fortfarande inaktiverad
-Om kryssrutan för tillbakaskrivning av enheter inte är aktiverad trots att du har följt stegen ovan följande steg hjälper dig att vad installationsguiden verifierar innan den aktiveras.
+### <a name="hello-writeback-checkbox-is-still-disabled"></a>hello tillbakaskrivning kryssrutan är fortfarande inaktiverad
+Om hello kryssrutan för tillbakaskrivning av enheter inte är aktiverat trots att du har följt hello stegen ovan hello följande steg vägleder dig genom vilka hello installation verifierar guiden innan hello rutan är aktiverad.
 
 Första sakerna första:
 
-* Kontrollera att minst en skog som har Windows Server 2012 R2. Typ av enhet objekt måste finnas.
-* Om installationsguiden körs redan, kommer alla ändringar inte identifieras. I det här fallet slutföra Installationsguiden och kör det igen.
-* Kontrollera att det konto som du anger i skriptet initieringen är faktiskt rätt användare som används av Active Directory-kopplingen. Följ dessa steg om du vill kontrollera detta:
-  * Start-menyn, öppna **synkroniseringstjänsten**.
-  * Öppna den **kopplingar** fliken.
-  * Hitta anslutningen med typen Active Directory Domain Services och markera den.
+* Kontrollera att minst en skog som har Windows Server 2012 R2. hello enhetstyp objekt måste finnas.
+* Om hello installationsguiden körs redan, kommer alla ändringar inte identifieras. I det här fallet Slutför installationsguiden för hello och kör det igen.
+* Kontrollera att hello-konto som du anger i hello Initieringsskript är faktiskt hello rätt användare används av hello Active Directory-kopplingen. tooverify, gör du följande:
+  * Hello start-menyn och öppna **synkroniseringstjänsten**.
+  * Öppna hello **kopplingar** fliken.
+  * Hitta hello anslutningen med Active Directory Domain Services och markera den.
   * Under **åtgärder**väljer **egenskaper**.
-  * Gå till **ansluta till Active Directory-skog**. Kontrollera att namnet på domänen och användarnamnet som angetts på den här skärmen matchar det konto som anges i skriptet.
+  * Gå för**ansluta tooActive Directory-skog**. Kontrollera att hello domän och användarnamn namnet som angetts på den här skärmen matchar hello konto toohello skript.
     ![Connector-kontot i Sync Service Manager](./media/active-directory-aadconnect-feature-device-writeback/connectoraccount.png)
 
 Kontrollera konfigurationen i Active Directory:
 
-* Kontrollera att registreringstjänsten för enheter finns på plats nedan (CN = DeviceRegistrationService, CN = enheten registreringen Services, CN = konfiguration för Enhetsregistrering, CN = Services, CN = Configuration) enligt konfigurationsnamngivningskontexten.
+* Kontrollera att hello registreringstjänsten för enheter finns i hello plats nedan (CN DeviceRegistrationService, CN = = enheten registreringen Services, CN = konfiguration för Enhetsregistrering, CN = Services, CN = Configuration) enligt konfigurationsnamngivningskontexten.
 
 ![Felsöka DeviceRegistrationService i konfigurationen namnområde](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot1.png)
 
-* Kontrollera att det finns endast en konfigurationsobjektet genom att söka configuration-namnområdet. Ta bort Dubbletten om det finns fler än en.
+* Kontrollera att det finns endast en konfigurationsobjektet genom att söka hello configuration namnområde. Om det finns fler än en bort hello dubblett.
 
-![Felsöka, Sök efter duplicerade objekt](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot2.png)
+![Felsöka, Sök efter duplicerade hello-objekt](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot2.png)
 
-* Kontrollera att attributet msDS-DeviceLocation finns och har ett värde på objektet Registreringstjänst för enheter. Sökning sökvägen och se till att det finns en sådan med objectType msDS-DeviceContainer.
+* Kontrollera att hello attributet msDS-DeviceLocation finns och har ett värde på hello Device Registration Service-objekt. Sökning sökvägen och se till att det finns en sådan med hello objectType msDS-DeviceContainer.
 
 ![Felsöka msDS-DeviceLocation](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot3.png)
 
 ![Felsöka Registreradeenheter objektklass](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot4.png)
 
-* Kontrollera kontot som används av Active Directory-kopplingen har behörighet för behållaren registrerade enheter som föregående steg. Detta är förväntat behörigheterna för den här behållaren:
+* Kontrollera hello konto som används av hello Active Directory-kopplingen har behörigheter som krävs på hello registrerade enheter behållare som påträffats av hello föregående steg. Detta är förväntat hello behörigheter på den här behållaren:
 
 ![Felsöka, kontrollera behörigheter för behållaren](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot5.png)
 
-* Verifiera Active Directory-kontot har behörighet på CN = konfiguration för Enhetsregistrering, CN = Services, CN = Configuration-objekt.
+* Kontrollera hello Active Directory-konto har behörigheter för hello CN = konfiguration för Enhetsregistrering, CN = Services, CN = Configuration-objekt.
 
 ![Felsöka, kontrollera behörigheter på konfigurationen för Enhetsregistrering](./media/active-directory-aadconnect-feature-device-writeback/troubleshoot6.png)
 

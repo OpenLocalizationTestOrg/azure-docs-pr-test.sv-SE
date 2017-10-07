@@ -1,6 +1,6 @@
 ---
-title: Skapa en PHP- och MySQL-webbapp i Azure | Microsoft Docs
-description: "Lär dig hur du hämtar en PHP-app som arbetar i Azure, med anslutning till en MySQL-databas i Azure."
+title: aaaBuild en PHP- och MySQL-webbapp i Azure | Microsoft Docs
+description: "Lär dig hur tooget en PHP-app som arbetar i Azure, med anslutning tooa MySQL-databas i Azure."
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 07/21/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6e8d8962180f7534b0b9074f03ecc8ea431ae1a4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 3c050b30e2e2c80d011bed989cd5f8cecac35d15
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>Skapa en PHP- och MySQL-webbapp i Azure
 
-Med [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst. Den här kursen visar hur du skapar en PHP-webbapp i Azure och ansluta till en MySQL-databas. När du är klar har du en [Laravel](https://laravel.com/) app som körs på Azure App Service Web Apps.
+Med [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) får du en mycket skalbar och automatiskt uppdaterad webbvärdtjänst. Den här kursen visar hur toocreate en PHP webbapp i Azure och koppla den tooa MySQL-databas. När du är klar har du en [Laravel](https://laravel.com/) app som körs på Azure App Service Web Apps.
 
 ![PHP-app som körs i Azure App Service](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
@@ -31,20 +31,20 @@ I den här guiden får du lära dig hur man:
 
 > [!div class="checklist"]
 > * Skapa en MySQL-databas i Azure
-> * Ansluta en PHP-app till MySQL
-> * Distribuera appen till Azure
-> * Uppdatera datamodellen och distribuera appen
+> * Ansluta en app tooMySQL för PHP
+> * Distribuera hello app tooAzure
+> * Uppdatera hello-datamodell och omdistribuera hello app
 > * Dataströmmen diagnostiska loggar från Azure
-> * Hantera appen i Azure-portalen
+> * Hantera hello appen i hello Azure-portalen
 
 ## <a name="prerequisites"></a>Krav
 
-För att slutföra den här kursen behöver du:
+toocomplete den här kursen:
 
 * [Installera Git](https://git-scm.com/)
 * [Installera PHP 5.6.4 eller senare](http://php.net/downloads.php)
 * [Installera Composer](https://getcomposer.org/doc/00-intro.md)
-* Aktivera följande PHP-tillägg Laravel behov: OpenSSL, PDO MySQL, Mbstring, Tokenizer, XML
+* Aktivera följande PHP-tillägg Laravel behov hello: OpenSSL, PDO MySQL, Mbstring, Tokenizer, XML
 * [Installera och starta MySQL](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -53,21 +53,21 @@ För att slutföra den här kursen behöver du:
 
 I det här steget kan skapa du en databas i din lokala MySQL-server för användning i den här kursen.
 
-### <a name="connect-to-local-mysql-server"></a>Ansluta till lokala MySQL-servern
+### <a name="connect-toolocal-mysql-server"></a>Anslut toolocal MySQL-server
 
-Anslut till din lokala MySQL-server i ett terminalfönster. Du kan använda den här terminalfönster för att köra alla kommandon i den här självstudiekursen.
+Anslut tooyour lokala MySQL-servern i ett terminalfönster. Du kan använda den här terminalfönster toorun alla hello-kommandon i den här självstudiekursen.
 
 ```bash
 mysql -u root -p
 ```
 
-Om du uppmanas att ange ett lösenord anger du lösenordet för den `root` konto. Om du inte kommer ihåg rotlösenordet, se [MySQL: hur du återställer Rotlösenordet](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
+Om du uppmanas att ange ett lösenord anger hello lösenordet för hello `root` konto. Om du inte kommer ihåg rotlösenordet, se [MySQL: hur tooReset hello Rotlösenordet](https://dev.mysql.com/doc/refman/5.7/en/resetting-permissions.html).
 
-Om kommandot körs utan problem, är MySQL-servern igång. Om inte, kontrollera att den lokala MySQL-servern är igång genom att följa den [MySQL efter installationssteg](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html).
+Om kommandot körs utan problem, är MySQL-servern igång. Om inte, kontrollera att den lokala MySQL-servern har startats med följande hello [MySQL efter installationssteg](https://dev.mysql.com/doc/refman/5.7/en/postinstallation.html).
 
 ### <a name="create-a-database-locally"></a>Skapa en databas lokalt
 
-På den `mysql` uppmanar, skapa en databas.
+Vid hello `mysql` uppmanar, skapa en databas.
 
 ```sql 
 CREATE DATABASE sampledb;
@@ -84,18 +84,18 @@ quit
 ## <a name="create-a-php-app-locally"></a>Skapa en PHP-app lokalt
 I det här steget hämta ett Laravel exempelprogram, konfigurera dess databasanslutningen och köra det lokalt. 
 
-### <a name="clone-the-sample"></a>Klona exemplet
+### <a name="clone-hello-sample"></a>Klona hello-exempel
 
-I fönstret terminal `cd` till en arbetskatalog.
+I hello terminalfönster, `cd` tooa arbetskatalogen.
 
-Klona exempellagringsplatsen med följande kommando.
+Hello kör följande kommando tooclone hello exempel lagringsplatsen.
 
 ```bash
 git clone https://github.com/Azure-Samples/laravel-tasks
 ```
 
-`cd`till klonade-katalogen.
-Installera de nödvändiga paketen.
+`cd`tooyour klonade katalog.
+Installera hello krävs paket.
 
 ```bash
 cd laravel-tasks
@@ -104,7 +104,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>Konfigurera MySQL-anslutning
 
-Skapa en fil med namnet i Lagringsplatsens rot *.env*. Kopiera följande variabler i den *.env* fil. Ersätt den  _&lt;root_password >_ med MySQL rotanvändarens lösenord.
+Skapa en fil med namnet i hello Lagringsplatsens rot *.env*. Kopiera hello följande variabler i hello *.env* fil. Ersätt hello  _&lt;root_password >_ med hello MySQL rotanvändarens lösenord.
 
 ```
 APP_ENV=local
@@ -118,11 +118,11 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-Mer information om hur Laravel använder den _.env_ fil, se [Laravel miljö Configuration](https://laravel.com/docs/5.4/configuration#environment-configuration).
+Mer information om hur Laravel använder hello _.env_ fil, se [Laravel miljö Configuration](https://laravel.com/docs/5.4/configuration#environment-configuration).
 
-### <a name="run-the-sample-locally"></a>Köra exemplet lokalt
+### <a name="run-hello-sample-locally"></a>Kör hello exempel lokalt
 
-Kör [Laravel databasen migreringar](https://laravel.com/docs/5.4/migrations) skapa tabellerna programmet behöver. Om du vill se vilka tabeller skapas av migreringar finns i den _databasen/migreringar_ katalog i Git-lagringsplats.
+Kör [Laravel databasen migreringar](https://laravel.com/docs/5.4/migrations) toocreate hello tabeller hello programbehov. vilka tabeller skapas hello migreringar titta i hello toosee _databasen/migreringar_ katalogen i hello Git-lagringsplats.
 
 ```bash
 php artisan migrate
@@ -134,23 +134,23 @@ Skapa en ny Laravel programmet nyckel.
 php artisan key:generate
 ```
 
-Kör appen.
+Kör hello program.
 
 ```bash
 php artisan serve
 ```
 
-Gå till `http://localhost:8000` i en webbläsare. Lägg till några åtgärder på sidan.
+Navigera för`http://localhost:8000` i en webbläsare. Lägga till några åtgärder på hello-sidan.
 
-![PHP ansluter har till MySQL](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
+![PHP ansluter har tooMySQL](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
 
-Om du vill stoppa PHP skriver `Ctrl + C` i terminalen.
+Skriv toostop PHP `Ctrl + C` i hello terminal.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-mysql-in-azure"></a>Skapa MySQL i Azure
 
-I det här steget skapar du en MySQL-databas i [Azure-databas för MySQL (förhandsgranskning)](/azure/mysql). Senare kan konfigurera du PHP-program att ansluta till den här databasen.
+I det här steget skapar du en MySQL-databas i [Azure-databas för MySQL (förhandsgranskning)](/azure/mysql). Senare kan konfigurera du hello PHP tooconnect toothis databas.
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -158,9 +158,9 @@ I det här steget skapar du en MySQL-databas i [Azure-databas för MySQL (förha
 
 ### <a name="create-a-mysql-server"></a>Skapa en MySQL-server
 
-Skapa en server i Azure-databas för MySQL (förhandsversion) med den [az mysql-servern skapa](/cli/azure/mysql/server#create) kommando.
+Skapa en server i Azure-databas för MySQL (förhandsversion) med hello [az mysql-servern skapa](/cli/azure/mysql/server#create) kommando.
 
-Ersätt namnet på MySQL-servern där du ser i följande kommando i  _&lt;mysql_server_name >_ platshållare (giltiga tecken är `a-z`, `0-9`, och `-`). Det här namnet är en del av MySQL-serverns värdnamn (`<mysql_server_name>.database.windows.net`), den måste vara globalt unika.
+Hello följande kommando, Ersätt namnet på MySQL-servern där du ser hello  _&lt;mysql_server_name >_ platshållare (giltiga tecken är `a-z`, `0-9`, och `-`). Det här namnet är en del av hello MySQL serverns värdnamn (`<mysql_server_name>.database.windows.net`), den måste toobe globalt unika.
 
 ```azurecli-interactive
 az mysql server create \
@@ -171,7 +171,7 @@ az mysql server create \
     --admin-password MySQLAzure2017
 ```
 
-När MySQL-servern har skapats visas Azure CLI information liknar följande exempel:
+När hello MySQL server skapas visar hello Azure CLI information liknande toohello följande exempel:
 
 ```json
 {
@@ -188,7 +188,7 @@ När MySQL-servern har skapats visas Azure CLI information liknar följande exem
 
 ### <a name="configure-server-firewall"></a>Konfigurera server-brandväggen
 
-Skapa en brandväggsregel för MySQL-servern att tillåta klientanslutningar med hjälp av den [az mysql-brandväggsregel skapa](/cli/azure/mysql/server/firewall-rule#create) kommando.
+Skapa en brandväggsregel för MySQL server tooallow klienten anslutningar med hello [az mysql-brandväggsregel skapa](/cli/azure/mysql/server/firewall-rule#create) kommando.
 
 ```azurecli-interactive
 az mysql server firewall-rule create \
@@ -200,23 +200,23 @@ az mysql server firewall-rule create \
 ```
 
 > [!NOTE]
-> Azure-databas för MySQL (förhandsgranskning) begränsa inte för närvarande anslutningar endast till Azure-tjänster. IP-adresser i Azure tilldelas dynamiskt, är det bättre att aktivera alla IP-adresser. Tjänsten är i förhandsgranskningen. Bättre metoder för att skydda databasen planeras.
+> Azure-databas för MySQL (förhandsgranskning) begränsa inte för närvarande anslutningar endast tooAzure tjänster. IP-adresser i Azure tilldelas dynamiskt, är det bättre tooenable alla IP-adresser. hello-tjänsten är i förhandsgranskning. Bättre metoder för att skydda databasen planeras.
 >
 >
 
-### <a name="connect-to-production-mysql-server-locally"></a>Ansluta till MySQL produktionsservern lokalt
+### <a name="connect-tooproduction-mysql-server-locally"></a>Ansluta tooproduction MySQL server lokalt
 
-Anslut till MySQL-server i Azure i fönstret terminal. Använd värdet du angav tidigare för  _&lt;mysql_server_name >_.
+Hello terminalfönster, Anslut toohello MySQL-server i Azure. Använd hello-värde som du angav tidigare för  _&lt;mysql_server_name >_.
 
 ```bash
 mysql -u adminuser@<mysql_server_name> -h <mysql_server_name>.database.windows.net -P 3306 -p
 ```
 
-När du uppmanas att ange ett lösenord, Använd _tr0ngPa $$ w0rd!_, som du angav när du skapade databasen.
+När du uppmanas att ange ett lösenord, Använd _tr0ngPa $$ w0rd!_, som du angav när du skapade hello-databasen.
 
 ### <a name="create-a-production-database"></a>Skapa en produktionsdatabas
 
-På den `mysql` uppmanar, skapa en databas.
+Vid hello `mysql` uppmanar, skapa en databas.
 
 ```sql
 CREATE DATABASE sampledb;
@@ -224,28 +224,28 @@ CREATE DATABASE sampledb;
 
 ### <a name="create-a-user-with-permissions"></a>Skapa en användare med behörighet
 
-Skapa en databasanvändare som kallas _phpappuser_ och ge alla behörigheter i den `sampledb` databas.
+Skapa en databasanvändare som kallas _phpappuser_ och ge den alla behörigheter i hello `sampledb` databas.
 
 ```sql
 CREATE USER 'phpappuser' IDENTIFIED BY 'MySQLAzure2017'; 
-GRANT ALL PRIVILEGES ON sampledb.* TO 'phpappuser';
+GRANT ALL PRIVILEGES ON sampledb.* too'phpappuser';
 ```
 
-Avsluta server-anslutningen genom att skriva `quit`.
+Avsluta hello serveranslutning genom att skriva `quit`.
 
 ```sql
 quit
 ```
 
-## <a name="connect-app-to-azure-mysql"></a>Anslut appen till Azure MySQL
+## <a name="connect-app-tooazure-mysql"></a>Ansluta appen tooAzure MySQL
 
-I det här steget kan ansluta du PHP-program på MySQL-databas som du skapade i Azure-databas för MySQL (förhandsversion).
+I det här steget kan ansluta du hello PHP programmet toohello MySQL-databas du skapade i Azure-databas för MySQL (förhandsversion).
 
 <a name="devconfig"></a>
 
-### <a name="configure-the-database-connection"></a>Konfigurera anslutningen till databasen
+### <a name="configure-hello-database-connection"></a>Konfigurera hello databasanslutning
 
-I Lagringsplatsens rot, skapa en _. env.production_ filen och kopiera följande variabler i den. Ersätt platshållaren  _&lt;mysql_server_name >_.
+I Lagringsplatsens rot hello, skapar en _. env.production_ filen och kopiera hello följande variabler i den. Ersätt platshållaren hello  _&lt;mysql_server_name >_.
 
 ```
 APP_ENV=production
@@ -260,17 +260,17 @@ DB_PASSWORD=MySQLAzure2017
 MYSQL_SSL=true
 ```
 
-Spara ändringarna.
+Spara hello ändringar.
 
 > [!TIP]
-> Om du vill skydda din MySQL anslutningsinformationen den här filen har redan exkluderats från Git-lagringsplats (se _.gitignore_ i Lagringsplatsens rot). Senare kan du lära dig hur du konfigurerar miljövariabler i App Service för att ansluta till databasen i Azure-databas för MySQL (förhandsversion). Med miljövariabler, behöver du inte den *.env* filen i App Service.
+> toosecure MySQL anslutningsinformationen, den här filen har redan exkluderats från hello Git-lagringsplats (se _.gitignore_ i hello Lagringsplatsens rot). Senare kan du lära dig hur tooconfigure miljövariabler i Apptjänst tooconnect tooyour databasen i Azure-databas för MySQL (förhandsversion). Med miljövariabler, behöver du inte hello *.env* filen i App Service.
 >
 
 ### <a name="configure-ssl-certificate"></a>Konfigurera SSL-certifikat
 
-Som standard tillämpar Azure-databas för MySQL SSL-anslutningar från klienter. Om du vill ansluta till din MySQL-databas i Azure måste du använda en _.pem_ SSL-certifikat.
+Som standard tillämpar Azure-databas för MySQL SSL-anslutningar från klienter. tooconnect tooyour MySQL-databas i Azure, måste du använda en _.pem_ SSL-certifikat.
 
-Öppna _config/database.php_ och lägga till den _sslmode_ och _alternativ_ parametrar till `connections.mysql`som visas i följande kod.
+Öppna _config/database.php_ och Lägg till hello _sslmode_ och _alternativ_ parametrar för`connections.mysql`som visas i följande kod hello.
 
 ```php
 'mysql' => [
@@ -282,54 +282,54 @@ Som standard tillämpar Azure-databas för MySQL SSL-anslutningar från klienter
 ],
 ```
 
-Information om hur du genererar detta _certificate.pem_, se [Konfigurera SSL-anslutning i ditt program för att ansluta säkert till Azure-databas för MySQL](../mysql/howto-configure-ssl.md).
+toolearn hur toogenerate detta _certificate.pem_, se [Konfigurera SSL-anslutning i ditt program toosecurely ansluta tooAzure databas för MySQL](../mysql/howto-configure-ssl.md).
 
 > [!TIP]
-> Sökvägen _/ssl/certificate.pem_ pekar på ett befintligt _certificate.pem_ filen i Git-lagringsplats. Den här filen finns i informationssyfte i den här självstudiekursen. För bästa praxis bör du inte utföra din _.pem_ certifikat till källkontroll. 
+> hello sökvägen _/ssl/certificate.pem_ pekar tooan befintliga _certificate.pem_ filen i hello Git-lagringsplats. Den här filen finns i informationssyfte i den här självstudiekursen. För bästa praxis bör du inte utföra din _.pem_ certifikat till källkontroll. 
 >
 
-### <a name="test-the-application-locally"></a>Testa programmet lokalt
+### <a name="test-hello-application-locally"></a>Testa hello programmet lokalt
 
-Kör Laravel databasen migreringar med _. env.production_ som filen miljö att skapa tabellerna i din MySQL-databas på Azure-databas för MySQL (förhandsversion). Kom ihåg att _. env.production_ har anslutningsinformationen så att MySQL-databas i Azure.
+Kör Laravel databasen migreringar med _. env.production_ som hello miljö filen toocreate hello tabeller i MySQL-databas i Azure-databas för MySQL (förhandsversion). Kom ihåg att _. env.production_ har hello anslutning information tooyour MySQL-databas i Azure.
 
 ```bash
 php artisan migrate --env=production --force
 ```
 
-_. env.production_ inte redan har en giltig App-nyckel. Generera en ny för det i terminalen.
+_. env.production_ inte redan har en giltig App-nyckel. Generera en ny för det i hello terminal.
 
 ```bash
 php artisan key:generate --env=production --force
 ```
 
-Kör exempelprogrammet med _. env.production_ som filen miljö.
+Köra hello exempelprogrammet med _. env.production_ som hello miljö fil.
 
 ```bash
 php artisan serve --env=production
 ```
 
-Navigera till `http://localhost:8000`. Om sidan läses in utan fel, ansluter PHP-program till MySQL-databas i Azure.
+Navigera för`http://localhost:8000`. Om hello sidan läses in utan fel ansluter hello PHP-program toohello MySQL-databas i Azure.
 
-Lägg till några åtgärder på sidan.
+Lägga till några åtgärder på hello-sidan.
 
-![PHP kan upprätta anslutningen till Azure-databas för MySQL (förhandsgranskning)](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
+![PHP ansluter har tooAzure databas för MySQL (förhandsgranskning)](./media/app-service-web-tutorial-php-mysql/mysql-connect-success.png)
 
-Om du vill stoppa PHP skriver `Ctrl + C` i terminalen.
+Skriv toostop PHP `Ctrl + C` i hello terminal.
 
 ### <a name="commit-your-changes"></a>Genomför ändringarna
 
-Kör följande Git-kommandon för att genomföra ändringarna:
+Kör hello följande Git-kommandon toocommit ändringarna:
 
 ```bash
 git add .
 git commit -m "database.php updates"
 ```
 
-Appen är redo att distribueras.
+Appen är redo toobe distribueras.
 
-## <a name="deploy-to-azure"></a>Distribuera till Azure
+## <a name="deploy-tooazure"></a>Distribuera tooAzure
 
-I det här steget kan distribuera du MySQL-anslutna PHP-program till Azure App Service.
+I det här steget kan distribuera du hello MySQL-anslutna PHP programmet tooAzure Apptjänst.
 
 ### <a name="create-an-app-service-plan"></a>Skapa en App Service-plan
 
@@ -339,11 +339,11 @@ I det här steget kan distribuera du MySQL-anslutna PHP-program till Azure App S
 
 [!INCLUDE [Create web app no h](../../includes/app-service-web-create-web-app-no-h.md)]
 
-### <a name="set-the-php-version"></a>Ange PHP-version
+### <a name="set-hello-php-version"></a>Ange hello PHP-version
 
-Ange PHP-version som krävs av program med hjälp av den [az webapp konfigurationsuppsättning](/cli/azure/webapp/config#set) kommando.
+Ange hello PHP-version som hello program kräver via hello [az webapp konfigurationsuppsättning](/cli/azure/webapp/config#set) kommando.
 
-Följande kommando anger PHP-version till _7.0_.
+hello anger följande kommando hello PHP version too_7.0_.
 
 ```azurecli-interactive
 az webapp config set \
@@ -354,11 +354,11 @@ az webapp config set \
 
 ### <a name="configure-database-settings"></a>Konfigurera databasinställningar för
 
-Du kan ansluta till din Azure MySQL-databas med miljövariabler i App Service som pekas tidigare.
+Du kan ansluta tooyour Azure MySQL-databas med miljövariabler i App Service som pekas tidigare.
 
-I App Service som du anger miljövariabler som _appinställningar_ med hjälp av den [az webapp appsettings konfigurationsuppsättning](/cli/azure/webapp/config/appsettings#set) kommando.
+I App Service som du anger miljövariabler som _appinställningar_ med hjälp av hello [az webapp appsettings konfigurationsuppsättning](/cli/azure/webapp/config/appsettings#set) kommando.
 
-Följande kommando konfigurerar appinställningarna `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, och `DB_PASSWORD`. Ersätt platshållarna  _&lt;appname >_ och  _&lt;mysql_server_name >_.
+hello följande kommando konfigurerar hello appinställningar `DB_HOST`, `DB_DATABASE`, `DB_USERNAME`, och `DB_PASSWORD`. Ersätt platshållarna hello  _&lt;appname >_ och  _&lt;mysql_server_name >_.
 
 ```azurecli-interactive
 az webapp config appsettings set \
@@ -367,7 +367,7 @@ az webapp config appsettings set \
     --settings DB_HOST="<mysql_server_name>.database.windows.net" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
 
-Du kan använda PHP [getenv](http://www.php.net/manual/function.getenv.php) metod för att komma åt inställningarna. Laravel koden använder en [env](https://laravel.com/docs/5.4/helpers#method-env) wrapper över PHP `getenv`. Till exempel MySQL konfigurationen i _config/database.php_ ser ut som följande kod:
+Du kan använda hello PHP [getenv](http://www.php.net/manual/function.getenv.php) metoden tooaccess hello inställningar. Hej Laravel koden använder en [env](https://laravel.com/docs/5.4/helpers#method-env) wrapper över hello PHP `getenv`. Till exempel hello MySQL konfigurationen i _config/database.php_ ser ut som följande kod hello:
 
 ```php
 'mysql' => [
@@ -384,13 +384,13 @@ Du kan använda PHP [getenv](http://www.php.net/manual/function.getenv.php) meto
 
 Laravel måste en tangent i App Service. Du kan konfigurera den med app-inställningar.
 
-Använd `php artisan` att generera en ny nyckel för program utan att spara den till _.env_.
+Använd `php artisan` toogenerate en ny nyckel för program utan att spara den too_.env_.
 
 ```bash
 php artisan key:generate --show
 ```
 
-Ange nyckeln för programmet i App Service webbapp med hjälp av den [az webapp konfigurationsuppsättning appsettings](/cli/azure/webapp/config/appsettings#set) kommando. Ersätt platshållarna  _&lt;appname >_ och  _&lt;outputofphpartisankey: Generera >_.
+Ange hello tangent i hello Apptjänst webbprogram med hjälp av hello [az webapp konfigurationsuppsättning appsettings](/cli/azure/webapp/config/appsettings#set) kommando. Ersätt platshållarna hello  _&lt;appname >_ och  _&lt;outputofphpartisankey: Generera >_.
 
 ```azurecli-interactive
 az webapp config appsettings set \
@@ -399,13 +399,13 @@ az webapp config appsettings set \
     --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
-`APP_DEBUG="true"`Anger Laravel returnerar felsökningsinformation när den distribuerade webbappen påträffar ett fel. När du kör ett produktionsprogram värdet `false`, vilket är säkrare.
+`APP_DEBUG="true"`Anger Laravel tooreturn felsökningsinformation när hello distribuerade webbapp påträffar ett fel. När du kör ett produktionsprogram ställa in den också`false`, vilket är säkrare.
 
-### <a name="set-the-virtual-application-path"></a>Ange sökväg till virtuella program
+### <a name="set-hello-virtual-application-path"></a>Ange sökväg för hello virtuella program
 
-Ange den virtuella sökvägen för webbprogrammet. Det här steget är nödvändigt eftersom den [Laravel programmet livscykel](https://laravel.com/docs/5.4/lifecycle) börjar i den _offentliga_ katalog i stället för i tillämpningsprogrammets rotkatalog. Andra PHP-ramverk vars livscykel startar i rotkatalogen kan arbeta utan manuell konfiguration av den virtuella sökvägen.
+Ange sökväg till hello virtuella program för hello webbprogrammet. Det här steget är nödvändigt eftersom hello [Laravel programmet livscykel](https://laravel.com/docs/5.4/lifecycle) börjar i hello _offentliga_ katalog i stället för hello tillämpningsprogrammets rotkatalog. Andra PHP-ramverk vars livscykel startar i rotkatalogen för hello kan arbeta utan manuell konfiguration av hello virtuell sökväg.
 
-Ange sökvägen till virtuella programmet med hjälp av den [az resurs uppdaterades](/cli/azure/resource#update) kommando. Ersätt den  _&lt;appname >_ platshållare.
+Ange hello virtuella programmet sökväg med hjälp av hello [az resurs uppdaterades](/cli/azure/resource#update) kommando. Ersätt hello  _&lt;appname >_ platshållare.
 
 ```azurecli-interactive
 az resource update \
@@ -418,7 +418,7 @@ az resource update \
     --api-version 2015-06-01
 ```
 
-Som standard pekar rotsökvägen för virtuella program i Azure App Service (_/_) till rotkatalogen för distribuerade programfilerna (_sites\wwwroot_).
+Som standard pekar hello rotsökvägen för virtuella program i Azure App Service (_/_) toohello rotkatalog hello distribueras programfiler (_sites\wwwroot_).
 
 ### <a name="configure-a-deployment-user"></a>Konfigurera en distributionsanvändare
 
@@ -428,15 +428,15 @@ Som standard pekar rotsökvägen för virtuella program i Azure App Service (_/_
 
 [!INCLUDE [Configure local git](../../includes/app-service-web-configure-local-git-no-h.md)]
 
-### <a name="push-to-azure-from-git"></a>Skicka till Azure från Git
+### <a name="push-tooazure-from-git"></a>Push-tooAzure från Git
 
-Lägg till en Azure-fjärrdatabas till din lokala Git-databas.
+Lägg till en Azure remote tooyour lokal Git-lagringsplats.
 
 ```bash
 git remote add azure <paste_copied_url_here>
 ```
 
-Skicka till Azure remote distribuera PHP-program. Du ombeds ange lösenordet du angav tidigare som en del av skapandet av distribution av användaren.
+Skicka toohello Azure remote toodeploy hello PHP-program. Du uppmanas hello lösenordet du angav tidigare som en del av hello skapandet av hello distribution av användaren.
 
 ```bash
 git push azure master
@@ -446,7 +446,7 @@ Under distributionen kommunicerar förloppet med Git i Azure App Service.
 
 ```bash
 Counting objects: 3, done.
-Delta compression using up to 8 threads.
+Delta compression using up too8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
@@ -460,18 +460,18 @@ remote: Running deployment command...
 ```
 
 > [!NOTE]
-> Det kan hända att distributionsprocessen installerar [Composer](https://getcomposer.org/) paket i slutet. App Service körs inte dessa automatiseringar under distributionen av standard, så det här exemplet databasen har tre ytterligare filer i rotkatalogen för att den:
+> Det kan hända att hello distributionsprocessen installerar [Composer](https://getcomposer.org/) paket hello slutet. App Service kör inte dessa automatiseringar under distributionen av standard, så att det här exemplet databasen har tre ytterligare filer i dess rot directory tooenable som:
 >
-> - `.deployment`-Den här filen talar om App Service för att köra `bash deploy.sh` som anpassade distributions-skriptet.
-> - `deploy.sh`-Anpassade skriptet för distribution. Om du granska filen ser du att den körs `php composer.phar install` när `npm install`.
-> - `composer.phar`-Composer package manager.
+> - `.deployment`-Den här filen talar om Apptjänst toorun `bash deploy.sh` som hello distribution av anpassade skript.
+> - `deploy.sh`-hello anpassat distributionsskriptet. Om du har läst hello-fil, ser du att den körs `php composer.phar install` när `npm install`.
+> - `composer.phar`-hello Composer Pakethanteraren.
 >
-> Du kan använda den här metoden för att lägga till något steg i distributionen Git-baserade till App Service. Mer information finns i [anpassat distributionsskriptet](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
+> Du kan använda den här metoden tooadd alla steg tooyour Git-baserad distribution tooApp Service. Mer information finns i [anpassat distributionsskriptet](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
 >
 
-### <a name="browse-to-the-azure-web-app"></a>Bläddra till Azure-webbappen
+### <a name="browse-toohello-azure-web-app"></a>Bläddra toohello Azure-webbapp
 
-Bläddra till `http://<app_name>.azurewebsites.net` och lägga till några åtgärder i listan.
+Bläddra för`http://<app_name>.azurewebsites.net` och lägga till några uppgifter toohello lista.
 
 ![PHP-app som körs i Azure App Service](./media/app-service-web-tutorial-php-mysql/php-mysql-in-azure.png)
 
@@ -479,23 +479,23 @@ Grattis, du kör en datadrivna PHP-app i Azure App Service.
 
 ## <a name="update-model-locally-and-redeploy"></a>Uppdatera modellen lokalt och distribuera
 
-I det här steget du ändrar enkla till den `task` datamodellen och webapp, och sedan publicera uppdateringen till Azure.
+I det här steget kan du göra en enkel förändring toohello `task` data modellen hello webapp och sedan publicera hello uppdatering tooAzure.
 
-För scenariot uppgifter ändra programmet så att du kan markera en aktivitet som slutförd.
+Hello uppgifter scenariot ändra hello program så att du kan markera en aktivitet som slutförd.
 
 ### <a name="add-a-column"></a>Lägg till en kolumn
 
-Navigera till roten för Git-lagringsplats i terminalen.
+Navigera i hello terminal, toohello rot hello Git-lagringsplats.
 
-Generera en ny Databasmigrering för den `tasks` tabellen:
+Generera en ny Databasmigrering för hello `tasks` tabell:
 
 ```bash
 php artisan make:migration add_complete_column --table=tasks
 ```
 
-Det här kommandot visar namnet på migreringsfilen som genereras. Den här filen i _databasen/migreringar_ och öppna den.
+Detta kommando visar hello av namnet på hello migreringsfilen som genereras. Den här filen i _databasen/migreringar_ och öppna den.
 
-Ersätt den `up` metoden med följande kod:
+Ersätt hello `up` metod med hello följande kod:
 
 ```php
 public function up()
@@ -506,9 +506,9 @@ public function up()
 }
 ```
 
-Föregående kod lägger till en boolesk kolumn i den `tasks` tabell som kallas `complete`.
+hello föregående kod lägger till en boolesk kolumn i hello `tasks` tabell som kallas `complete`.
 
-Ersätt den `down` metod med följande kod för Återföringsåtgärd:
+Ersätt hello `down` metod med följande kod för hello Återföringsåtgärd hello:
 
 ```php
 public function down()
@@ -519,19 +519,19 @@ public function down()
 }
 ```
 
-I terminalen och kör Laravel databasen migrering för att göra ändringen i den lokala databasen.
+Kör Laravel migreringar toomake hello databasändring i hello terminal, i hello lokal databas.
 
 ```bash
 php artisan migrate
 ```
 
-Baserat på den [Laravel namngivningskonvention](https://laravel.com/docs/5.4/eloquent#defining-models), modellen `Task` (se _app/Task.php_) mappas till den `tasks` tabellen som standard.
+Baserat på hello [Laravel namngivningskonvention](https://laravel.com/docs/5.4/eloquent#defining-models), hello modellen `Task` (se _app/Task.php_) mappar toohello `tasks` tabellen som standard.
 
 ### <a name="update-application-logic"></a>Uppdatera programlogik
 
-Öppna den *routes/web.php* fil. Programmet definierar dess vägar och affärslogik här.
+Öppna hello *routes/web.php* fil. hello programmet definierar dess vägar och affärslogik här.
 
-Lägga till en väg med följande kod i slutet av filen:
+Hello slutet av hello-fil, lägger du till en väg med hello följande kod:
 
 ```php
 /**
@@ -548,25 +548,25 @@ Route::post('/task/{id}', function ($id) {
 });
 ```
 
-Föregående kod gör en enkel uppdatering till datamodellen genom att klicka på värdet för `complete`.
+hello föregående kod gör en enkel update toohello datamodell genom att klicka hello värdet för `complete`.
 
-### <a name="update-the-view"></a>Uppdatera vyn
+### <a name="update-hello-view"></a>Uppdatera hello vy
 
-Öppna den *resources/views/tasks.blade.php* fil. Hitta de `<tr>` startkoden och Ersätt den med:
+Öppna hello *resources/views/tasks.blade.php* fil. Hitta hello `<tr>` startkoden och Ersätt den med:
 
 ```html
 <tr class="{{ $task->complete ? 'success' : 'active' }}" >
 ```
 
-Föregående kod ändrar färg raden beroende på om aktiviteten är klar.
+hello föregående kod ändrar hello raden färg beroende på om hello åtgärden är klar.
 
-På nästa rad kan du använda följande kod:
+Hello nästa rad har du hello följande kod:
 
 ```html
 <td class="table-text"><div>{{ $task->name }}</div></td>
 ```
 
-Ersätt hela raden med följande kod:
+Ersätt hello hela raden med hello följande kod:
 
 ```html
 <td>
@@ -581,31 +581,31 @@ Ersätt hela raden med följande kod:
 </td>
 ```
 
-Föregående kod lägger till skickaknappen som refererar till det flöde som du angav tidigare.
+hello föregående kod lägger till hello Skicka-knapp som refererar till hello flödet som du angav tidigare.
 
-### <a name="test-the-changes-locally"></a>Testa ändringar lokalt
+### <a name="test-hello-changes-locally"></a>Testa hello ändringar lokalt
 
-Kör utvecklingsservern från rotkatalogen på Git-lagringsplats.
+Kör hello utvecklingsserver från hello rotkatalogen för hello Git-lagringsplats.
 
 ```bash
 php artisan serve
 ```
 
-Att se aktivitetsstatus ändra, gå till `http://localhost:8000` och markera kryssrutan.
+toosee hello uppgift status ändras, navigera för`http://localhost:8000` och välj hello kryssruta.
 
-![Tillagda kryssrutan till aktivitet](./media/app-service-web-tutorial-php-mysql/complete-checkbox.png)
+![Tillagda kryssrutan tootask](./media/app-service-web-tutorial-php-mysql/complete-checkbox.png)
 
-Om du vill stoppa PHP skriver `Ctrl + C` i terminalen.
+Skriv toostop PHP `Ctrl + C` i hello terminal.
 
-### <a name="publish-changes-to-azure"></a>Publicera ändringar i Azure
+### <a name="publish-changes-tooazure"></a>Publicera ändringar tooAzure
 
-I terminalen och kör Laravel databasen migreringar med anslutningssträngen produktion göra ändringar i Azure-databasen.
+I hello terminal, kör du Laravel databasen migreringar med hello produktion anslutning sträng toomake hello ändring i hello Azure-databas.
 
 ```bash
 php artisan migrate --env=production --force
 ```
 
-Genomför alla ändringar i Git och skicka sedan koden ändringarna till Azure.
+Genomför alla hello ändringar i Git och skicka sedan hello kod ändringar tooAzure.
 
 ```bash
 git add .
@@ -613,17 +613,17 @@ git commit -m "added complete checkbox"
 git push azure master
 ```
 
-En gång i `git push` är klar, gå till Azure webbapp och testa de nya funktionerna.
+En gång hello `git push` är slutförd, navigera toohello Azure web app och testa hello nya funktioner.
 
-![Ändringar i modellen och databasen publiceras på Azure](media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
+![Ändringar i modellen och databasen publicerade tooAzure](media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
-Om du har lagt till alla uppgifter som finns kvar i databasen. Uppdateringar till dataschemat lämna befintliga data intakta.
+Om du har lagt till alla uppgifter som finns kvar i hello-databasen. Uppdateringar toohello dataschemat lämna befintliga data intakta.
 
 ## <a name="stream-diagnostic-logs"></a>Dataströmmen diagnostikloggar
 
-Du kan hämta loggarna för konsolen skickas till terminalen när PHP-program körs i Azure App Service. På så sätt kan du få samma diagnostiska meddelanden för att felsöka programfel.
+När hello PHP-program körs i Azure App Service kan få du hello konsolen loggar via rörledningar tooyour terminal. På så sätt kan du hello diagnostiska meddelanden för samma toohelp du felsöka programfel.
 
-Starta loggen strömning med den [az webapp loggen pilslut](/cli/azure/webapp/log#tail) kommando.
+toostart loggen direktuppspelning, Använd hello [az webapp loggen pilslut](/cli/azure/webapp/log#tail) kommando.
 
 ```azurecli-interactive
 az webapp log tail \
@@ -631,28 +631,28 @@ az webapp log tail \
     --resource-group myResourceGroup
 ```
 
-Uppdatera Azure-webbapp i webbläsaren att hämta vissa webbtrafik när loggen streaming har startats. Du kan nu se loggarna för konsolen skickas till terminalen. Om du inte ser loggarna för konsolen omedelbart, Kontrollera igen i 30 sekunder.
+Uppdatera hello Azure-webbapp i hello webbläsare tooget vissa webbtrafik när loggen streaming har startats. Du kan nu se konsolen loggar via rörledningar toohello terminal. Om du inte ser loggarna för konsolen omedelbart, Kontrollera igen i 30 sekunder.
 
-Om du vill sluta logga strömning på när som helst, Skriv `Ctrl` + `C`.
+toostop loggen strömning när som helst, typen `Ctrl` + `C`.
 
 > [!TIP]
-> Ett PHP-program kan använda standarden [error_log()](http://php.net/manual/function.error-log.php) till utdata till konsolen. Exempelprogrammet använder den här metoden i _app/Http/routes.php_.
+> Ett PHP-program kan använda hello standard [error_log()](http://php.net/manual/function.error-log.php) toooutput toohello-konsolen. hello exempelprogrammet använder den här metoden i _app/Http/routes.php_.
 >
-> Som ett webbramverk [Laravel använder Monolog](https://laravel.com/docs/5.4/errors) som loggning-provider. Information om hur du hämtar Monolog utgående meddelanden till konsolen finns [PHP: hur du använder monolog loggar konsolen (php://out)](http://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
+> Som ett webbramverk [Laravel använder Monolog](https://laravel.com/docs/5.4/errors) som hello loggning provider. toosee tooget Monolog toooutput felmeddelanden toohello-konsolen finns [PHP: hur toouse monolog toolog tooconsole (php://out)](http://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
 >
 >
 
-## <a name="manage-the-azure-web-app"></a>Hantera Azure-webbappen
+## <a name="manage-hello-azure-web-app"></a>Hantera hello Azure-webbapp
 
-Gå till [Azure Portal](https://portal.azure.com) för att hantera den webbapp som du skapade.
+Gå toohello [Azure-portalen](https://portal.azure.com) toomanage hello webbprogram som du skapade.
 
-Klicka på **Apptjänster** i menyn till vänster och sedan på namnet på din Azure-webbapp.
+Hello vänstra menyn klickar du på **Apptjänster**, och klicka sedan på hello namnet på din Azure webbapp.
 
-![Navigera till webbappen på Azure Portal](./media/app-service-web-tutorial-php-mysql/access-portal.png)
+![Portalen navigering tooAzure webbprogram](./media/app-service-web-tutorial-php-mysql/access-portal.png)
 
 Nu visas sidan Översikt för din webbapp. Här kan du utföra grundläggande hanteringsuppgifter som att stoppa, starta, omstart, bläddra och ta bort.
 
-Den vänstra menyn innehåller sidor för att konfigurera din app.
+hello vänstra menyn innehåller sidor för att konfigurera din app.
 
 ![App Service-sidan på Azure Portal](./media/app-service-web-tutorial-php-mysql/web-app-blade.png)
 
@@ -666,13 +666,13 @@ I den här självstudiekursen lärde du dig att:
 
 > [!div class="checklist"]
 > * Skapa en MySQL-databas i Azure
-> * Ansluta en PHP-app till MySQL
-> * Distribuera appen till Azure
-> * Uppdatera datamodellen och distribuera appen
+> * Ansluta en app tooMySQL för PHP
+> * Distribuera hello app tooAzure
+> * Uppdatera hello-datamodell och omdistribuera hello app
 > * Dataströmmen diagnostiska loggar från Azure
-> * Hantera appen i Azure-portalen
+> * Hantera hello appen i hello Azure-portalen
 
-Gå vidare till nästa kurs att lära dig hur du mappar en anpassad DNS-namn till ett webbprogram.
+I förväg toohello nästa självstudiekurs toolearn hur toomap en anpassad DNS namn tooa webbprogram.
 
 > [!div class="nextstepaction"]
-> [Mappa ett befintligt anpassat DNS-namn till Azure Web Apps](app-service-web-tutorial-custom-domain.md)
+> [Mappa en befintlig anpassad DNS-namnet tooAzure Web Apps](app-service-web-tutorial-custom-domain.md)

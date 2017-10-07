@@ -1,5 +1,5 @@
 ---
-title: Diagnostisera fel och undantag i web apps med Azure Application Insights | Microsoft Docs
+title: aaaDiagnose fel och undantag i webbappar med Azure Application Insights | Microsoft Docs
 description: "Fånga undantag från ASP.NET appar tillsammans med begärandetelemetri."
 services: application-insights
 documentationcenter: .net
@@ -13,23 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.openlocfilehash: 7eeacdc6677ccdebb1653e94a163ecb47090b7ee
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8930e6d2b29f83ea635c4ecb7afd11fc1d97d085
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostisera undantag i ditt webbprogram med Application Insights
-Undantag i livewebbappar rapporteras av [Programinsikter](app-insights-overview.md). Du kan jämföra misslyckade begäranden med undantag och andra händelser på både klienten och servern, så att du snabbt kan diagnostisera orsaker.
+Undantag i livewebbappar rapporteras av [Programinsikter](app-insights-overview.md). Du kan jämföra misslyckade begäranden med undantag och andra händelser på både hello klienten och servern, så att du snabbt kan diagnostisera hello orsaker.
 
 ## <a name="set-up-exception-reporting"></a>Konfigurera undantag reporting
-* Ha undantag som rapporterats från din server:
+* toohave undantag som rapporterats från din server:
   * Installera [Application Insights SDK](app-insights-asp-net.md) i din Appkod eller
   * IIS-webbservrar: kör [Application Insights Agent](app-insights-monitor-performance-live-website-now.md); eller
-  * Azure-webbappar: lägga till den [Application Insights Extension](app-insights-azure-web-apps.md)
-  * Java-webbappar: installera den [Java-agent](app-insights-java-agent.md)
-* Installera den [JavaScript-kodfragment](app-insights-javascript.md) på webbsidorna för att fånga undantag från webbläsaren.
-* I vissa ramverk för programmet eller med vissa inställningar måste du vidta ytterligare åtgärder för att fånga flera undantag:
+  * Azure-webbappar: Lägg till hello [Application Insights Extension](app-insights-azure-web-apps.md)
+  * Java-webbappar: Installera hello [Java-agent](app-insights-java-agent.md)
+* Installera hello [JavaScript-kodfragment](app-insights-javascript.md) i din webbsidor toocatch webbläsarundantag.
+* I vissa ramverk för programmet eller med vissa inställningar, behöver du tootake några extra steg toocatch flera undantag:
   * [Webbformulär](#web-forms)
   * [MVC](#mvc)
   * [Webb-API-1.*](#web-api-1)
@@ -37,77 +37,77 @@ Undantag i livewebbappar rapporteras av [Programinsikter](app-insights-overview.
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostisera undantag med Visual Studio
-Öppna appen lösningen i Visual Studio för att hjälpa dig med felsökning.
+Öppna hello app lösningen i Visual Studio toohelp med felsökning.
 
-Kör appen på din server eller på utvecklingsdatorn med F5.
+Kör hello appen på din server eller på utvecklingsdatorn med F5.
 
-Öppna fönstret Application Insights i Visual Studio och ställas in att visa händelser från din app. När du felsöker kan du göra detta genom att klicka på knappen Application Insights.
+Öppna fönstret för hello Application Insights Sök i Visual Studio och ange toodisplay händelser från din app. Du kan göra detta genom att klicka hello Application Insights-knappen när du felsöker.
 
-![Högerklicka på projektet och välj Application Insights, öppna.](./media/app-insights-asp-net-exceptions/34.png)
+![Högerklicka på hello-projektet och välj Application Insights, öppna.](./media/app-insights-asp-net-exceptions/34.png)
 
-Observera att du kan filtrera rapporten ska visa bara undantag.
+Observera att du kan filtrera hello rapporten tooshow bara undantag.
 
 *Inga undantag visar? Se [fånga undantag](#exceptions).*
 
-Klicka på en felrapport att visa dess stack-spårning.
-Klicka på en radreferens i stackspårningen att öppna filen relevant kod.  
+Klicka på ett undantag rapporten tooshow dess stack-spårning.
+Klicka på en radreferens i hello stack-spårning, tooopen hello relevanta kodfilen.  
 
-Observera att CodeLens visar information om undantagen i koden:
+Observera att CodeLens visar data om hello undantag i hello kod:
 
 ![CodeLens meddelande om undantag.](./media/app-insights-asp-net-exceptions/35.png)
 
-## <a name="diagnosing-failures-using-the-azure-portal"></a>Diagnostisera fel i Azure Portal
-Från Application Insights-översikten över appen panelen fel visar diagram av undantag och misslyckade HTTP-begäranden, tillsammans med en lista över begäran URL: er som orsakar de vanligaste felen.
+## <a name="diagnosing-failures-using-hello-azure-portal"></a>Felsökning av med hello Azure-portalen
+Från hello Application Insights översikten över appen, hello fel innehåller diagram av undantag och misslyckade HTTP-begäranden, tillsammans med en lista över hello begära URL: er som orsakar hello de vanligaste fel.
 
 ![Välj inställningar för fel](./media/app-insights-asp-net-exceptions/012-start.png)
 
-Klicka dig igenom en av de misslyckade undantag typerna i listan till enskilda förekomster av undantag, där du kan se detaljer och Stackspårning:
+Klicka på ett av hello misslyckades undantag typer i hello listan tooget tooindividual förekomster av hello undantag, där du kan se hello information och Stackspårning:
 
-![Välj en instans av en misslyckad begäran och under undantagsinformation, hämta till instanser av undantaget.](./media/app-insights-asp-net-exceptions/030-req-drill.png)
+![Välj en instans av en misslyckad begäran och under undantagsinformation, hämta tooinstances hello undantag.](./media/app-insights-asp-net-exceptions/030-req-drill.png)
 
-**Du kan också** du kan starta från listan med begäranden och hitta undantag som är relaterade till den.
+**Du kan också** du kan starta från hello lista med begäranden och hitta undantag relaterade tooit.
 
 *Inga undantag visar? Se [fånga undantag](#exceptions).*
 
 
 ## <a name="custom-tracing-and-log-data"></a>Anpassade spårning och loggdata
-Du kan infoga kod för att skicka telemetridata för att få diagnostiska uppgifter som är specifika för din app. Detta visas i diagnostiska tillsammans med begäran, vyn sida och andra automatiskt insamlade data.
+tooget diagnostikdata specifika tooyour app som du kan infoga kod toosend telemetridata. Detta visas i diagnostiska tillsammans med hello begäran, vyn sida och andra automatiskt insamlade data.
 
 Har du flera alternativ:
 
-* [Trackevent ()](app-insights-api-custom-events-metrics.md#trackevent) används vanligtvis för att övervaka användningsmönster, men data som skickas också visas under Anpassad händelser i diagnostiska sökningen. Händelser är namngivna och kan utföra strängegenskaper och numeriska mått som du kan [filtrera sökningen diagnostiska](app-insights-diagnostic-search.md).
+* [Trackevent ()](app-insights-api-custom-events-metrics.md#trackevent) används vanligtvis för att övervaka användningsmönster, men hello data skickas också visas under Anpassad händelser i diagnostiska sökningen. Händelser är namngivna och kan utföra strängegenskaper och numeriska mått som du kan [filtrera sökningen diagnostiska](app-insights-diagnostic-search.md).
 * [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) kan du skicka längre data, till exempel efter information.
 * [TrackException()](#exceptions) skickar Stacka spårningar. [Mer information om undantag](#exceptions).
 * Om du redan använder ett loggningsramverk som Log4Net eller NLog, kan du [samla in dessa loggar](app-insights-asp-net-trace-logs.md) och se dem i diagnostiska sökningen tillsammans med data för begäran och undantag.
 
-Om du vill se händelserna [Sök](app-insights-diagnostic-search.md), öppna Filter och välj sedan Custom Event, spårning eller undantag.
+toosee dessa händelser, öppna [Sök](app-insights-diagnostic-search.md), öppna Filter och välj sedan Custom Event, spårning eller undantag.
 
 ![Detaljvisning](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
 
 > [!NOTE]
-> Om din app genererar mycket telemetri minskar den anpassningsbara insamlingsmodulen automatiskt den mängd som skickas till portalen genom att bara skicka en representativ del av händelserna. Händelser som ingår i samma åtgärd ska markeras eller avmarkeras som en grupp, så att du kan navigera mellan relaterade händelser. [Läs mer om sampling.](app-insights-sampling.md)
+> Om din app genererar mycket telemetri, minska hello anpassningsbar provtagning modulen automatiskt hello volymen som skickas toohello portal genom att skicka en representativ del av händelser. Händelser som är en del av hello samma åtgärd ska markeras eller avmarkeras som en grupp, så att du kan navigera mellan relaterade händelser. [Läs mer om sampling.](app-insights-sampling.md)
 >
 >
 
-### <a name="how-to-see-request-post-data"></a>Hur man ser begäran postdata
-Information om begäran innehåller inte data som skickas till din app i en POST-anrop. Rapporterade att dessa data:
+### <a name="how-toosee-request-post-data"></a>Hur toosee begära postdata
+Information om begäran med inte hello data som skickas tooyour app i en POST-anrop. toohave rapporteras för dessa data:
 
-* [Installera SDK](app-insights-asp-net.md) i projektet program.
-* Infoga kod i ditt program att anropa [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Skicka efter data i parametern meddelandet. Det finns en gräns för den tillåtna storleken du ska försöka skicka bara viktiga data.
-* När du undersöker en misslyckad begäran att hitta de associerade spårningar.  
+* [Installera hello SDK](app-insights-asp-net.md) i projektet program.
+* Infoga kod i dina program toocall [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Skicka hello postdata i hello message-parameter. Det finns en gräns toohello tillåtna storlek, bör du toosend bara hello viktiga data.
+* När du undersöker en misslyckad begäran hitta hello associerade spårningar.  
 
 ![Detaljvisning](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
 ## <a name="exceptions"></a>Fånga undantag och relaterade diagnostikdata
-Först visas inte i portalen alla undantag som orsakar fel i din app. Du ser alla webbläsarundantag (om du använder den [JavaScript SDK](app-insights-javascript.md) på webbsidorna). Men de flesta undantag fångas av IIS och du måste skriva koden för att se dem lite.
+Först visas inte i hello portal alla hello-undantag som orsakar fel i din app. Du ser alla webbläsarundantag (om du använder hello [JavaScript SDK](app-insights-javascript.md) på webbsidorna). Men de flesta undantag fångas av IIS och du har toowrite lite kod toosee dem.
 
 Du kan:
 
-* **Logga undantag uttryckligen** genom att infoga kod i undantagshanterare att rapportera undantagen.
-* **Fånga undantag automatiskt** genom att konfigurera ASP.NET framework. De nödvändiga tilläggen är olika för olika typer av framework.
+* **Logga undantag uttryckligen** genom att infoga kod i undantagshanterare tooreport hello undantag.
+* **Fånga undantag automatiskt** genom att konfigurera ASP.NET framework. hello nödvändiga tillägg är olika för olika typer av framework.
 
 ## <a name="reporting-exceptions-explicitly"></a>Rapportering undantag uttryckligen
-Det enklaste sättet är att infoga ett anrop till TrackException() i en undantagshanterare.
+hello är enklaste sättet tooinsert en anropet tooTrackException() i en undantagshanterare.
 
 JavaScript
 
@@ -137,7 +137,7 @@ C#
        var measurements = new Dictionary <string, double>
          {{"Users", currentGame.Users.Count}};
 
-       // Send the exception telemetry:
+       // Send hello exception telemetry:
        telemetry.TrackException(ex, properties, measurements);
     }
 
@@ -155,21 +155,21 @@ VB
       Dim measurements = New Dictionary (Of String, Double)
       measurements.Add("Users", currentGame.Users.Count)
 
-      ' Send the exception telemetry:
+      ' Send hello exception telemetry:
       telemetry.TrackException(ex, properties, measurements)
     End Try
 
-Egenskaper och mätningar parametrar är valfria, men är användbara för [filtrering och lägga till](app-insights-diagnostic-search.md) extra information. Om du har en app som kan köra flera spel hitta du till exempel alla undantag rapporter som hör till ett visst spel. Du kan lägga till så många objekt som du vill att varje ordlista.
+hello egenskaper och mätningar parametrar är valfria, men är användbara för [filtrering och lägga till](app-insights-diagnostic-search.md) extra information. Till exempel om du har en app som kan köra flera spel hittade alla hello undantag rapporter relaterade tooa visst spel. Du kan lägga till så många objekt som du precis som tooeach ordlistan.
 
 ## <a name="browser-exceptions"></a>Webbläsarundantag
 De flesta webbläsarundantag rapporteras.
 
-Om din webbsida innehåller skriptfiler från nätverk för innehållsleverans eller andra domäner, kontrollera din skripttypen har attributet ```crossorigin="anonymous"```, och att servern skickar [CORS huvuden](http://enable-cors.org/). Detta kan du få ett stack-spårning och detaljer för ohanterade JavaScript-undantag från dessa resurser.
+Om din webbsida innehåller skriptfiler från nätverk för innehållsleverans eller andra domäner, kontrollera din skripttypen har hello attributet ```crossorigin="anonymous"```, och den hello-servern skickar [CORS huvuden](http://enable-cors.org/). Detta gör att du tooget stack-spårning och information för ohanterade JavaScript-undantag från dessa resurser.
 
 ## <a name="web-forms"></a>Webbformulär
-HTTP-modul kommer att kunna samla in undantag när det finns inga omdirigeringar som konfigurerats med CustomErrors för web forms.
+Webbformulär ska hello HTTP-modul kunna toocollect hello undantag när det finns inga omdirigeringar som konfigurerats med CustomErrors.
 
-Men om du har active omdirigeringar, lägger du till följande rader funktionen Application_Error i Global.asax.cs. (Lägg till en Global.asax-fil om du inte redan har ett.)
+Men om du har active omdirigeringar, lägger du till följande rader toohello Application_Error funktion i Global.asax.cs hello. (Lägg till en Global.asax-fil om du inte redan har ett.)
 
 *C#*
 
@@ -185,7 +185,7 @@ Men om du har active omdirigeringar, lägger du till följande rader funktionen 
 
 
 ## <a name="mvc"></a>MVC
-Om den [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurationen är `Off`, undantag ska vara tillgängliga för den [HTTP-modul](https://msdn.microsoft.com/library/ms178468.aspx) att samla in. Men om det är `RemoteOnly` (standard), eller `On`, undantaget ska vara avmarkerad och inte tillgängliga för Application Insights att automatiskt samla in. Du kan åtgärda detta genom att åsidosätta den [System.Web.Mvc.HandleErrorAttribute klassen](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx), och tillämpa åsidosatt klassen som visas för de olika MVC-versionerna nedan ([github-källan](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Om hello [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigurationen är `Off`, undantag ska vara tillgängliga för hello [HTTP-modul](https://msdn.microsoft.com/library/ms178468.aspx) toocollect. Men om det är `RemoteOnly` (standard), eller `On`, hello undantag kommer att tas bort och inte tillgängligt för Application Insights tooautomatically samla in. Du kan åtgärda detta genom att åsidosätta hello [System.Web.Mvc.HandleErrorAttribute klassen](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx), och tillämpa hello åsidosätts klass som visas för hello MVC-versionerna nedan ([github-källan](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
     using System;
     using System.Web.Mvc;
@@ -200,7 +200,7 @@ Om den [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigur
         {
             if (filterContext != null && filterContext.HttpContext != null && filterContext.Exception != null)
             {
-                //If customError is Off, then AI HTTPModule will report the exception
+                //If customError is Off, then AI HTTPModule will report hello exception
                 if (filterContext.HttpContext.IsCustomErrorEnabled)
                 {   //or reuse instance (recommended!). see note above  
                     var ai = new TelemetryClient();
@@ -213,7 +213,7 @@ Om den [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) konfigur
     }
 
 #### <a name="mvc-2"></a>MVC 2
-Ersätt attributet HandleError med din nya attribut i dina domänkontrollanter.
+Ersätt hello HandleError attribut med din nya attribut i dina domänkontrollanter.
 
     namespace MVC2App.Controllers
     {
@@ -244,7 +244,7 @@ Registrera AiHandleErrorAttribute som ett globalt filter i FilterConfig.cs:
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
       {
-        // Default replaced with the override to track unhandled exceptions
+        // Default replaced with hello override tootrack unhandled exceptions
         filters.Add(new AiHandleErrorAttribute());
       }
     }
@@ -273,7 +273,7 @@ Registrera AiHandleErrorAttribute som ett globalt filter i FilterConfig.cs:
       }
     }
 
-Du kan lägga till den här åsidosatt attribut till specifika domänkontrollanter eller lägga till den globala filterkonfiguration i klassen WebApiConfig:
+Du kan lägga till den här åsidosatt attributet toospecific domänkontrollanter eller lägga till den toohello globala filterkonfiguration i hello WebApiConfig klass:
 
     using System.Web.Http;
     using WebApi1.x.App_Start;
@@ -297,7 +297,7 @@ Du kan lägga till den här åsidosatt attribut till specifika domänkontrollant
 
 [Exempel](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-Det finns ett antal fall som undantagsfilter inte kan hantera. Exempel:
+Det finns ett antal fall som hello-undantagsfilter som inte kan hantera. Exempel:
 
 * Undantag från domänkontrollanten konstruktorer.
 * Undantag från meddelandehanterare.
@@ -326,7 +326,7 @@ Lägg till en implementering av IExceptionLogger:
       }
     }
 
-Lägg till det här tjänsterna i WebApiConfig:
+Lägga till den här toohello tjänsterna i WebApiConfig:
 
     using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
@@ -357,8 +357,8 @@ Lägg till det här tjänsterna i WebApiConfig:
 
 Alternativt kan du:
 
-1. Ersätt endast ExceptionHandler med en anpassad implementering av IExceptionHandler. Detta är endast anropas när ramen är fortfarande kunna välja vilken svarsmeddelande att skicka (inte när anslutningen avbryts exempelvis)
-2. Undantagsfilter (enligt beskrivningen i avsnittet Web API 1.x domänkontrollanter ovan) - inte anropas i samtliga fall.
+1. Ersätt hello endast ExceptionHandler med en anpassad implementering av IExceptionHandler. Detta är endast anropas när hello framework fortfarande toochoose vilka svar meddelande toosend (inte när hello-anslutningen avbröts exempelvis)
+2. Undantagsfilter (enligt beskrivningen i avsnittet hello på webb-API 1.x domänkontrollanter ovan) - inte anropas i samtliga fall.
 
 ## <a name="wcf"></a>WCF
 Lägg till en klass som utökar Attribute och implementerar IErrorHandler och IServiceBehavior.
@@ -412,7 +412,7 @@ Lägg till en klass som utökar Attribute och implementerar IErrorHandler och IS
       }
     }
 
-Lägg till attributet implementeringar tjänsten:
+Lägg till implementeringar av hello attributet toohello tjänsten:
 
     namespace WcfService4
     {
@@ -424,19 +424,19 @@ Lägg till attributet implementeringar tjänsten:
 [Exempel](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Prestandaräknare för undantag
-Om du har [installerat Application Insights Agent](app-insights-monitor-performance-live-website-now.md) på servern, du kan få ett diagram över undantag hastighet, mätt av .NET. Detta inkluderar både hanterade och ohanterade undantag för .NET.
+Om du har [installerat hello Application Insights Agent](app-insights-monitor-performance-live-website-now.md) på servern, du kan få ett diagram över hello undantag hastighet, mätt av .NET. Detta inkluderar både hanterade och ohanterade undantag för .NET.
 
 Öppna ett mått Explorer-bladet, lägga till ett nytt diagram och välj **undantag hastighet**, listade under prestandaräknare.
 
-.NET framework beräknar hastigheten genom att räkna antalet undantag i ett intervall och dividera med längden på intervallet.
+hello .NET framework beräknar hello hastighet genom inventering hello antalet undantag i ett intervall och dividera med hello längden på hello intervall.
 
-Observera att det är samma som antalet 'Undantag' beräknas av Application Insights-portalen genom att räkna TrackException rapporter. Insamlingsintervallen är olika och SDK skickar inte TrackException rapporter för alla hanterade och ohanterade undantag.
+Observera att det är detsamma som hello undantag antal beräknas genom hello Application Insights-portalen genom att räkna TrackException rapporter. Hej insamlingsintervallen är olika och hello SDK skickar inte TrackException rapporter för alla hanterade och ohanterade undantag.
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="next-steps"></a>Nästa steg
-* [Övervaka REST, SQL och andra anrop till beroenden](app-insights-asp-net-dependencies.md)
+* [Övervaka REST, SQL och andra anrop toodependencies](app-insights-asp-net-dependencies.md)
 * [Övervaka sidinläsningstider, webbläsarundantag och AJAX-anrop](app-insights-javascript.md)
 * [Övervaka prestandaräknare](app-insights-performance-counters.md)

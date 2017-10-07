@@ -1,6 +1,6 @@
 ---
-title: "Datakällor som stöds i Azure Data Catalog | Microsoft Docs"
-description: "Den här artikeln innehåller specifikationer av datakällor som för närvarande stöds."
+title: "aaaSupported datakällor i Azure Data Catalog | Microsoft Docs"
+description: "Den här artikeln visas hello stöds för närvarande datakällor."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.openlocfilehash: d6867c73bc6ea3c238cceef8a68466d451f3365c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4bfcabf31bf9fd781c939a5026abc42a5407df32
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Datakällor som stöds i Azure Data Catalog
 
-Du kan publicera metadata med hjälp av en offentlig API eller klicka-registrering när verktyget eller web portal genom att manuellt ange information direkt till Azure Data Catalog. I följande tabell sammanfattas alla datakällor som stöds av katalogen idag och publishing funktionerna för var och en. Listan finns även externa Dataverktyg som varje datakälla kan starta från vår portal ”öppna i” erfarenhet. Den andra tabellen innehåller en mer teknisk specifikation för varje datakälla Anslutningsegenskapen.
+Du kan publicera metadata med hjälp av en offentlig API eller ett klick-en gång registreringsverktyget eller genom att manuellt ange information direkt toohello Azure Data Catalog web portal. hello sammanfattas följande tabell alla datakällor som stöds av hello catalog idag och hello publishing funktioner för varje. Listan finns även hello externa verktyg som varje datakälla kan starta från vår portal ”öppna i” erfarenhet. hello andra tabellen innehåller en mer teknisk specifikation för varje datakälla Anslutningsegenskapen.
 
 
 ## <a name="list-of-supported-data-sources"></a>Lista över datakällor som stöds
@@ -443,12 +443,12 @@ Du kan publicera metadata med hjälp av en offentlig API eller klicka-registreri
     </tr>
 </table>
 
-Om du behöver stöd för ytterligare källor kan skicka en funktionsbegäran till den [Azure Data Catalog forum](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
+Om du behöver stöd för ytterligare källor kan skicka en funktionen begäran toohello [Azure Data Catalog forum](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409).
 
 
 ## <a name="data-source-reference-specification"></a>Referens-specifikationen för datakälla
 > [!NOTE]
-> Den **DSL-strukturen** kolumnen i tabellen nedan visas endast de anslutningsegenskaper ”adress” egenskapsuppsättningen som används av Azure Data Catalog. Det vill säga kan ”adress” egenskapsuppsättning innehålla andra anslutningsegenskaper för datakällan som Azure Data Catalog kvarstår, men använder inte.
+> Hej **DSL-strukturen** kolumnen i den följande tabellen hello visas endast hello anslutningsegenskaper ”adress” egenskapsuppsättningen som används av Azure Data Catalog. Det vill säga kan ”adress” egenskapsuppsättning innehålla andra anslutningsegenskaperna för hello datakällan som Azure Data Catalog kvarstår, men använder inte.
 
 <table>
     <tr>
@@ -970,7 +970,7 @@ Om du behöver stöd för ytterligare källor kan skicka en funktionsbegäran ti
       </td>
     </tr>
     <tr>
-      <td>Andra (inget av ovanstående)</td>
+      <td>Andra (ingen hälsningspaket ovan)</td>
       <td>\*</td>
       <td>\*</td>
       <td>

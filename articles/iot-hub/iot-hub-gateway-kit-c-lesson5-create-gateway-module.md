@@ -1,6 +1,6 @@
 ---
-title: "Skapa din första Azure IoT Gateway-modulen | Microsoft Docs"
-description: "Skapa en modul och lägga till den i en exempelapp för att anpassa modulen beteenden."
+title: "aaaCreate din första Azure IoT Gateway-modulen | Microsoft Docs"
+description: "Skapa en modul och Lägg den tooa exempel app toocustomize modulen beteenden."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,26 +17,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 5e28422158684c3aaf0ac3fdf5b19c80fbccfb02
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 48996fc026c8b708e328b5629801465810e5b6a2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="lesson-5-create-your-first-azure-iot-gateway-module"></a>Lektionen 5: Skapa ditt första Azure IoT Gateway-modul
-Med Azure IoT gräns kan du skapa moduler som skrivits i Java, .NET eller Node.js, vägleder den här självstudiekursen dig genom stegen för att skapa en modul i C.
+Med Azure IoT kant kan toobuild moduler som skrivits i Java, .NET eller Node.js, vägleder den här självstudiekursen dig genom hello stegen för att skapa en modul i C.
 
 ## <a name="what-you-will-do"></a>Vad du ska göra
 
-- Kompilera och köra hello_world sample-appen på Intel NUC.
+- Kompilera och köra hello hello_world sample-appen på Intel NUC.
 - Skapa en modul och kompilera på Intel NUC.
-- Lägg till ny modul hello_world sample-appen och sedan köra exemplet på Intel NUC. Ny modul skriver ut ”hello_world” meddelanden med en tidsstämpel.
+- Lägg till hello ny modul toohello hello_world sample-appen och sedan köra hello prov på Intel NUC. hello ny modul skriver ut ”hello_world” meddelanden med en tidsstämpel.
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
 
-- Så att kompilera och köra en exempelapp på Intel NUC.
-- Så här skapar du en modul.
-- Hur du lägger till modulen sample-appen.
+- Hur toocompile och köra en exempelapp på Intel NUC.
+- Hur toocreate en modul.
+- Hur tooadd modulen tooa sample-appen.
 
 ## <a name="what-you-need"></a>Vad du behöver
 
@@ -44,20 +44,20 @@ Azure IoT-kant som har installerats på värddatorn.
 
 ## <a name="folder-structure"></a>Mappstruktur
 
-Det finns i undermappen lektionen 5 i exempelkoden som du har klonat i lektionen 1 en `module` mapp och en `sample` mapp.
+Hello lektionen 5 undermapp av hello exempelkod som du har klonat i lektionen 1, det finns en `module` mapp och en `sample` mapp.
 
 ![my_module](media/iot-hub-gateway-kit-lessons/lesson5/my_module.png)
 
-- Den `module/my_module` mappen innehåller källkoden och skript för att skapa modulen.
-- Den `sample` mappen innehåller källkoden och skript för att skapa sample-appen.
+- Hej `module/my_module` mappen innehåller hello kod och skript toobuild hello modul.
+- Hej `sample` mappen innehåller hello källa kod och skript toobuild hello sample-appen.
 
-## <a name="compile-and-run-the-helloworld-sample-app-on-intel-nuc"></a>Kompilera och köra hello_world sample-appen på Intel NUC
+## <a name="compile-and-run-hello-helloworld-sample-app-on-intel-nuc"></a>Kompilera och köra hello hello_world sample-appen på Intel NUC
 
-Den `hello_world` exemplet skapar gateway baserat på den `hello_world.json` -fil som anger de två fördefinierade moduler som är associerat med appen. Gatewayen loggas ett meddelande om ”hello world” i en fil var femte sekund. I det här avsnittet kan du kompilera och köra den `hello_world` app med den standard-modulen.
+Hej `hello_world` exemplet skapar gateway baserat på hello `hello_world.json` -fil som anger hello två fördefinierade moduler som är associerade med hello app. hello gateway loggar tooa för ”hello world” meddelandefilen 5 sekunder. I det här avsnittet kan du kompilera och köra hello `hello_world` app med den standard-modulen.
 
-Att kompilera och köra den `hello_world` appen, Följ dessa steg på värddatorn:
+toocompile och kör hello `hello_world` appen, Följ dessa steg på värddatorn:
 
-1. Initiera konfigurationsfilerna genom att köra följande kommandon:
+1. Initiera hello konfigurationsfiler genom att köra följande kommandon hello:
 
    ```bash
    cd iot-hub-c-intel-nuc-gateway-getting-started
@@ -66,9 +66,9 @@ Att kompilera och köra den `hello_world` appen, Följ dessa steg på värddator
    gulp init
    ```
 
-1. Uppdatera konfigurationsfilen gateway med Intel NUC MAC-adress. Hoppa över det här steget om du har gått igenom lektionen till [konfigurera och köra ett exempelprogram TIVERA][config_ble].
+1. Uppdatera konfigurationsfilen för hello gateway med hello Intel NUC MAC-adress. Hoppa över det här steget om du har gått igenom hello lektionen för[konfigurera och köra ett exempelprogram TIVERA][config_ble].
 
-   1. Öppna konfigurationsfilen gateway genom att köra följande kommando:
+   1. Öppna konfigurationsfilen för hello gateway genom att köra följande kommando hello:
 
       ```bash
       # For Windows command prompt
@@ -78,31 +78,31 @@ Att kompilera och köra den `hello_world` appen, Följ dessa steg på värddator
       code ~/.iot-hub-getting-started/config-gateway.json
       ```
 
-   1. Uppdatering av gateway-MAC-adressen när du [konfigurera Intel NUC som en gateway för IoT][setup_nuc], och sedan spara filen.
+   1. Uppdateringen hello gateway MAC-adressen när du [konfigurera Intel NUC som en IoT-gateway][setup_nuc], och sedan spara hello-filen.
 
-1. Kompilera källkoden exemplet genom att köra följande kommando:
+1. Kompilera hello exempelkod för källdatorn genom att köra följande kommando hello:
 
    ```bash
    gulp compile
    ```
 
-   Kommandot överför exempelkod för källan till Intel NUC och kör `build.sh` att kompilera den.
+   hello kommandot överför hello exempel källa kod tooIntel NUC och kör `build.sh` toocompile den.
 
-1. Kör den `hello_world` appen på Intel NUC genom att köra följande kommando:
+1. Kör hello `hello_world` appen på Intel NUC genom att köra följande kommando hello:
 
    ```bash
    gulp run
    ```
 
-   Kommandot körs `../Tools/run-hello-world.js` som anges i `config.json` starta sample-appen på Intel NUC.
+   Hej kommandot körs `../Tools/run-hello-world.js` som anges i `config.json` toostart hello sample-appen på Intel NUC.
 
    ![run_sample](media/iot-hub-gateway-kit-lessons/lesson5/run_sample.png)
 
 ## <a name="create-a-new-module-and-compile-it-on-intel-nuc"></a>Skapa en ny modul och kompilera på Intel NUC
 
-Stegen nedan hjälper dig att skapa en ny modul och kompilera på Intel NUC. Modulen skriver ut meddelanden med en tidsstämpel vid mottagning av dem. I det här avsnittet skapar du din första anpassade gateway-modulen.
+hello stegen nedan hjälper dig att skapa en ny modul och kompilera på Intel NUC. hello modulen skriver ut meddelanden med en tidsstämpel vid mottagning av dem. I det här avsnittet skapar du din första anpassade gateway-modulen.
 
-Azure IoT kant modul måste implementera följande gränssnitt:
+Azure IoT kant modul måste implementera hello följande gränssnitt:
 
    ```C
    pfModule_ParseConfigurationFromJson Module_ParseConfigurationFromJson
@@ -112,19 +112,19 @@ Azure IoT kant modul måste implementera följande gränssnitt:
    pfModule_Receive Module_Receive
    ```
 
-Alternativt kan du implementera följande gränssnitt:
+Du kan eventuellt implementera hello följande gränssnitt:
 
    ```C
    pfModule_Start Module_Start
    ```
 
-Följande diagram visar viktiga tillstånd sökvägar för en modul. Kvadratisk rektanglar representerar metoder som du implementerar för att utföra åtgärder när modulen flyttar emellan. Ovalerna är större tillstånd modulen kan vara i.
+hello visar följande diagram hello viktiga tillstånd sökvägar för en modul. hello kvadratisk rektanglar representerar metoder som du implementerar tooperform åtgärder när hello modulen flyttar emellan. hello oval är större tillstånd hello modul kan ha.
 
 ![state_path](media/iot-hub-gateway-kit-lessons/lesson5/state_path.png)
 
-Nu ska vi skapa en modul som baseras på mallen:
+Nu ska vi skapa en modul utifrån hello mallen:
 
-1. Öppna mallmappen genom att köra följande kommando:
+1. Öppna hello mallmapp genom att köra följande kommando hello:
 
    ```bash
    code module/my_module
@@ -132,16 +132,16 @@ Nu ska vi skapa en modul som baseras på mallen:
 
    ![code_module](media/iot-hub-gateway-kit-lessons/lesson5/code_module.png)
 
-   - `src/my_module.c`fungerar som en mall som underlättar skapandet av en modul. Mallen deklarerar gränssnitten. Allt du behöver göra är att lägga till kod till den `MyModule_Receive` funktion.
-   - `build.sh`är build-skript för att kompilera modulen på Intel NUC.
-1. Öppna den `src/my_module.c` filen och innehåller två rubrikfiler:
+   - `src/my_module.c`fungerar som en mall som underlättar hello skapandet av en modul. hello mallen deklarerar hello gränssnitt. Allt du behöver toodo är tooadd logik toohello `MyModule_Receive` funktion.
+   - `build.sh`är hello build toocompile hello skriptmodul på Intel NUC.
+1. Öppna hello `src/my_module.c` filen och innehåller två rubrikfiler:
 
    ```C
    #include <stdio.h>
    #include "azure_c_shared_utility/xlogging.h"
    ```
 
-1. Lägg till följande kod i den `MyModule_Receive` funktionen:
+1. Lägg till följande kod toohello hello `MyModule_Receive` funktionen:
 
    ```C
    if (message == NULL)
@@ -150,9 +150,9 @@ Nu ska vi skapa en modul som baseras på mallen:
    }
    else
    {
-      // get the message content
+      // get hello message content
       const CONSTBUFFER * content = Message_GetContent(message);
-      // get the local time and format it
+      // get hello local time and format it
       time_t temp = time(NULL);
       if (temp == (time_t)-1)
       {
@@ -170,7 +170,7 @@ Nu ska vi skapa en modul som baseras på mallen:
               char timetemp[80] = { 0 };
               if (strftime(timetemp, sizeof(timetemp) / sizeof(timetemp[0]), "%c", t) == 0)
               {
-                  LogError("unable to strftime");
+                  LogError("unable toostrftime");
               }
               else
               {
@@ -181,15 +181,15 @@ Nu ska vi skapa en modul som baseras på mallen:
    }
    ```
 
-1. Uppdatering av `config.json` att ange den `workspace` mapp på värddatorn och sökvägen för distribution på Intel NUC. Under kompilering av filerna i den `workspace` mappen kommer att överföras till sökvägen för distribution.
+1. Uppdatera hello `config.json` filen toospecify hello `workspace` mapp på din dator och hello distribution värdsökvägen på Intel NUC. Under kompilering, hello filer i hello `workspace` mappen kommer att vara överförda toohello sökvägen.
 
-   1. Öppna den `config.json` filen genom att köra följande kommando:
+   1. Öppna hello `config.json` filen genom att köra följande kommando hello:
 
       ```bash
       code config.json
       ```
 
-   1. Uppdatera `config.json` med följande konfiguration:
+   1. Uppdatera `config.json` med hello följande konfiguration:
 
       ```json
       "workspace": "./module/my_module",
@@ -198,41 +198,41 @@ Nu ska vi skapa en modul som baseras på mallen:
 
       ![config_json](media/iot-hub-gateway-kit-lessons/lesson5/config_json.png)
 
-1. Kompilera modulen genom att köra följande kommando:
+1. Kompilera hello modulen genom att köra följande kommando hello:
 
    ```bash
    gulp compile
    ```
 
-   Kommandot överför källkoden till Intel NUC och kör `build.sh` att kompilera modulen.
+   hello kommandot överför hello källa kod tooIntel NUC och kör `build.sh` toocompile hello modulen.
 
-## <a name="add-the-module-to-the-helloworld-sample-app-and-run-the-app-on-intel-nuc"></a>Lägga till modulen hello_world sample-appen och kör appen på Intel NUC
+## <a name="add-hello-module-toohello-helloworld-sample-app-and-run-hello-app-on-intel-nuc"></a>Lägg till hello modulen toohello hello_world sample-appen och kör hello app på Intel NUC
 
-Följ dessa steg om du vill utföra den här uppgiften:
+tooperform detta uppgift, gör du följande:
 
-1. Lista alla tillgängliga modulen binärfilerna (.so-filer) på Intel NUC genom att köra följande kommando:
+1. Lista alla hello tillgängliga modulen binärfiler (.so-filer) på Intel NUC genom att köra följande kommando hello:
 
    ```bash
    gulp modules --list
    ```
 
-   Binär sökväg för `my_module` som du kompilerat bör nu visas enligt nedan:
+   hello binär sökväg för `my_module` som du kompilerat bör nu visas enligt nedan:
 
    ```path
    /root/gateway_sample/module/my_module/build/libmy_module.so
    ```
 
-   Om du ändrar inloggningen Standardanvändarnamnet i `config-gateway.json`, binär sökväg startar med `home/<your username>` i stället för `root`.
+   Om du ändrar hello inloggningen Standardanvändarnamnet i `config-gateway.json`, hello binär sökväg startar med `home/<your username>` i stället för `root`.
 
-1. Lägg till `my_module` till den `hello_world` sample-appen:
+1. Lägg till `my_module` toohello `hello_world` exempelapp:
 
-   1. Öppna den `hello_world.json` filen genom att köra följande kommando:
+   1. Öppna hello `hello_world.json` filen genom att köra följande kommando hello:
 
       ```bash
       code sample/hello_world/src/hello_world.json
       ```
 
-   1. Lägg till följande kod i den `modules` avsnitt:
+   1. Lägg till följande kod toohello hello `modules` avsnitt:
 
       ```json
       {
@@ -247,8 +247,8 @@ Följ dessa steg om du vill utföra den här uppgiften:
       }
       ```
 
-      Värdet för `module.path` ska vara `/root/gateway_sample/module/my_module/build/libmy_module.so`. Koden deklarerar `my_module` som ska associeras med gatewayen som platsen för den binära modul som anges i `module.path`.
-   1. Lägg till följande kod i den `links` avsnitt:
+      Hej värdet för `module.path` ska vara `/root/gateway_sample/module/my_module/build/libmy_module.so`. hello koden deklarerar `my_module` toobe som är associerade med hello gateway samt hello plats hello modulen binära anges i `module.path`.
+   1. Lägg till följande kod toohello hello `links` avsnitt:
 
       ```json
       {
@@ -257,25 +257,25 @@ Följ dessa steg om du vill utföra den här uppgiften:
       }
       ```
 
-      Den här koden anger att meddelanden överförs från den `hello_world` modulen `my_module`.
+      Den här koden anger att meddelanden överförs från hello `hello_world` modul för`my_module`.
 
       ![hello_world_json](media/iot-hub-gateway-kit-lessons/lesson5/hello_world_json.png)
 
-1. Kör den `hello_world` sample-appen genom att köra följande kommando:
+1. Kör hello `hello_world` sample-appen genom att köra följande kommando hello:
 
    ```bash
    gulp run --config sample/hello_world/src/hello_world.json
    ```
 
-   Den `--config` parametern tvingar den `run-hello-world.js` skriptet ska köras med hjälp av den `hello_world.json` filen.
+   Hej `--config` parametern tvingar hello `run-hello-world.js` skript toorun med hjälp av hello `hello_world.json` fil.
 
    ![hello_world_new](media/iot-hub-gateway-kit-lessons/lesson5/hello_world_new.png)
 
-Grattis. Du kan nu se beteendet för den här nya modulen, den bara skrivs ut ”hello world”-meddelanden med en tidsstämpel, ett annat resultat från den ursprungliga modulen ”hello_world”.
+Grattis! Du kan nu se hello beteendet för den här nya modulen, den bara skrivs ut ”hello world”-meddelanden med en tidsstämpel, ett annat slutresultat hello ursprungliga ”hello_world”-modul.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har skapat en ny modul, lägga till exempel hello_world och get sample-appen ska köras med den nya modulen på din gateway. Om du vill veta mer om Azure IoT gateway moduler hittar du mer modulen exempel här: [https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules](https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules).
+Du har skapat en ny modul, lade till den toohello hello_world exemplet och get hello exempel app toorun med nya hello-modulen på din gateway. Om du vill toolearn mer om Azure IoT gateway moduler, hittar du mer modulen exempel här: [https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules](https://github.com/Azure/azure-iot-gateway-sdk/tree/master/modules).
 
 <!-- Images and links -->
 

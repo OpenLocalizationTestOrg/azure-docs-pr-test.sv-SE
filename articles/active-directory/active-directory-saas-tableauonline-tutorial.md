@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Tableau Online | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Tableau Online."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Tableau Online."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,108 +13,108 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 443fab1198a91a4d5749e6421f7b8603fc75a81e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 590b2674270c340b4750c7b6feeaf4f0df4bf853
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Självstudier: Azure Active Directory-integrering med Tableau Online
 
-Lär dig hur du integrerar Tableau Online med Azure Active Directory (AD Azure) i den här självstudiekursen.
+I kursen får du lära dig hur toointegrate Tableau Online med Azure Active Directory (AD Azure).
 
-Integrera Tableau Online med Azure AD ger dig följande fördelar:
+Integrera Tableau Online med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till Tableau Online
-- Du kan aktivera användarna att automatiskt hämta loggat in på Tableau Online (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst tooTableau Online
+- Du kan aktivera din användare tooautomatically get inloggade tooTableau Online (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med Tableau Online, behöver du följande:
+tooconfigure Azure AD-integrering med Tableau Online, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Tableau Online enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Tableau Online från galleriet
+1. Att lägga till Tableau Online från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-tableau-online-from-the-gallery"></a>Att lägga till Tableau Online från galleriet
-Du måste lägga till Tableau Online från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Tableau Online i Azure AD.
+## <a name="adding-tableau-online-from-hello-gallery"></a>Att lägga till Tableau Online från hello-galleriet
+tooconfigure hello integrering av Tableau Online i Azure AD, behöver du tooadd Tableau Online hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Om du vill lägga till Tableau Online från galleriet, utför du följande steg:**
+**tooadd Tableau Online från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **Tableau Online**.
+4. Skriv i sökrutan hello **Tableau Online**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_search.png)
 
-5. Välj i resultatpanelen **Tableau Online**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **Tableau Online**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Tableau Online baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till motsvarande användaren i Tableau Online till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk mellan en Azure AD-användare och relaterade användaren i Tableau Online upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Tableau Online är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användaren i Tableau Online toobe upprättas.
 
-I Tableau Online, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+Tilldela hello värdet hello i Tableau Online **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Tableau Online, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Tableau Online, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en Tableau Online testanvändare](#creating-a-tableau-online-test-user)**  – du har en motsvarighet för Britta Simon i Tableau Online som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en Tableau Online testanvändare](#creating-a-tableau-online-test-user)**  -toohave en motsvarighet för Britta Simon i Tableau Online som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Tableau Online.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Tableau Online.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Tableau Online:**
+**Utför följande hello tooconfigure Azure AD enkel inloggning med Tableau Online:**
 
-1. I Azure-portalen på den **Tableau Online** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **Tableau Online** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
 
-3. På den **Tableau Online domän och URL: er** avsnittet, utför följande steg:
+3. På hello **Tableau Online domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_url.png)
     
-    a. I den **inloggnings-URL** textruta anger du URL:`https://sso.online.tableau.com`
+    a. I hello **inloggnings-URL** textruta typen hello URL:`https://sso.online.tableau.com`
 
-    b. I den **identifierare** textruta anger du URL:`https://sso.online.tableau.com/public/sp/<instancename>`
+    b. I hello **identifierare** textruta typen hello URL:`https://sso.online.tableau.com/public/sp/<instancename>`
 
-4. På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.
+4. På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
 
@@ -122,39 +122,39 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/tutorial_general_400.png)
 
-6. I ett annat webbläsarfönster inloggning i tillämpningsprogrammet Tableau Online. Gå till **inställningar** och sedan **autentisering**.
+6. I ett annat fönster i webbläsaren, inloggning tooyour Tableau Online-programmet. Gå för**inställningar** och sedan **autentisering**.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_09.png)
     
-7. Aktivera SAML Under **autentiseringstyper** avsnitt. Kontrollera den **enkel inloggning med SAML** kryssrutan.
+7. tooenable SAML under **autentiseringstyper** avsnitt. Kontrollera hello **enkel inloggning med SAML** kryssrutan.
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_12.png)
 
-8. Rulla nedåt tills **metadata importfilen till Tableau Online** avsnitt.  Klicka på Bläddra och importera metadatafilen som du har hämtat från Azure AD. Klicka på **tillämpa**.
+8. Rulla nedåt tills **metadata importfilen till Tableau Online** avsnitt.  Klicka på Bläddra och importera hello metadatafil som du har hämtat från Azure AD. Klicka på **tillämpa**.
    
    ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_13.png)
 
-9. I den **matchar intyg** avsnittet, infoga motsvarande identitetsleverantör assertion namn för **e-postadress**, **Förnamn**, och **efternamn**. Hämta informationen från Azure AD: 
+9. I hello **matchar intyg** avsnittet, infoga hello motsvarande identitetsleverantör assertion namn för **e-postadress**, **Förnamn**, och **efternamn** . tooget informationen från Azure AD: 
   
-    a. I Azure-portalen går du den **Tableau Online** sidan för integrering av programmet.
+    a. I hello Azure-portalen, går du vidare hello **Tableau Online** sidan för integrering av programmet.
     
-    b. I attributavsnittet väljer den **”visa och redigera andra användarattribut”** kryssrutan. 
+    b. Välj hello hello attribut under **”visa och redigera andra användarattribut”** kryssrutan. 
     
    ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/attributesection.png)
       
-    c. Kopiera namnområdesvärdet för dessa attribut: givenname, e-post- och efternamn med hjälp av följande steg:
+    c. Kopiera hello namnområdesvärdet för dessa attribut: givenname, e- och efternamn med hjälp av hello följande steg:
 
    ![Azure AD-Single Sign-On](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_10.png)
     
     d. Klicka på **user.givenname** värde 
     
-    e. Kopiera värdet från den **namnområde** textruta.
+    e. Kopiera hello värdet från hello **namnområde** textruta.
 
    ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/attributesection2.png)
 
-    f. Om du vill kopiera namesapce anvisningarna värden för efternamn och e-ovan.
+    f. toocopy hello namesapce värden för hello e-post och efternamn Följ hello föregående steg.
 
-    g. Växla till programmet Tableau Online, och sedan ange den **Tableau Onlineattribut** avsnittet på följande sätt:
+    g. Växla till toohello Tableau Online program och sedan ange hello **Tableau Onlineattribut** avsnittet på följande sätt:
      * E-post: **e** eller **userprincipalname**
      * Förnamn: **givenname**
      * Efternamn: **efternamn**
@@ -162,37 +162,37 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
    ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_14.png)
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-tableauonline-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-tableauonline-tutorial/create_aaduser_02.png) 
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-tableauonline-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-tableauonline-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
@@ -200,31 +200,31 @@ Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen k
 
 I det här avsnittet skapar du en användare som kallas Britta Simon i Tableau Online.
 
-1. På **Tableau Online**, klickar du på **inställningar** och sedan **autentisering** avsnitt. Rulla ned till **Välj användare** avsnitt. Klicka på **lägga till användare** och sedan **ange e-postadresser**.
+1. På **Tableau Online**, klickar du på **inställningar** och sedan **autentisering** avsnitt. Rulla nedåt för**Välj användare** avsnitt. Klicka på **lägga till användare** och sedan **ange e-postadresser**.
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_15.png)
-2. Välj **lägga till användare för enkel inloggning (SSO) autentisering**. I den **ange e-postadresser** textruta Lägg tillbritta.simon@contoso.com
+2. Välj **lägga till användare för enkel inloggning (SSO) autentisering**. I hello **ange e-postadresser** textruta Lägg tillbritta.simon@contoso.com
    
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_11.png)
 3. Klicka på **Skapa**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Tableau Online.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooTableau Online.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela Britta Simon Tableau Online, utför du följande steg:**
+**tooassign Britta Simon tooTableau Online, utför följande steg hello:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Tableau Online**.
+2. Välj i listan med program hello **Tableau Online**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-tableauonline-tutorial/tutorial_tableauonline_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -232,7 +232,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -240,13 +240,13 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-Syftet med det här avsnittet är att testa Azure AD SSO-konfigurationen med hjälp av panelen åtkomst.
+hello syftet med det här avsnittet är tootest din Azure AD SSO konfiguration av hello åtkomstpanelen.
 
-När du klickar på panelen Tableau Online på åtkomstpanelen du bör få automatiskt loggat in i tillämpningsprogrammet Tableau Online.
+Du bör få automatiskt inloggade tooyour Tableau Online programmet när du klickar på hello Tableau Online panelen i hello åtkomstpanelen.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

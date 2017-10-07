@@ -1,5 +1,5 @@
 ---
-title: "Virtuella Azure-nätverk och virtuella Windows-datorer | Microsoft Docs"
+title: "aaaAzure virtuella nätverk och virtuella Windows-datorer | Microsoft Docs"
 description: "Självstudiekurs – hantera virtuella Azure-nätverk och virtuella Windows-datorer med Azure PowerShell"
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: c71c07f8ecd123a7e27848ba5043d46e315fcf03
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ed77d9d5873e849fcb2aaf15e41899d7ad8c781a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Hantera virtuella Azure-nätverk och virtuella Windows-datorer med Azure PowerShell
 
@@ -32,19 +32,19 @@ Azure virtual machines använder Azure-nätverk för interna och externa nätver
 > * Kontrollera nätverkstrafik med Nätverkssäkerhetsgrupper
 > * Visa regler för nätverkstrafik i praktiken
 
-Den här självstudien kräver Azure PowerShell-modul version 3.6 eller senare. Kör ` Get-Module -ListAvailable AzureRM` för att hitta versionen. Om du behöver uppgradera [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps).
+Den här kursen kräver hello Azure PowerShell module 3,6 eller senare. Kör ` Get-Module -ListAvailable AzureRM` toofind hello version. Om du behöver tooupgrade finns [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps).
 
 ## <a name="create-vnet"></a>Skapa VNet
 
-Ett virtuellt nätverk är en representation av ditt eget nätverk i molnet. Ett virtuellt nätverk är en logisk isolering av Azure-molnet dedikerad till din prenumeration. Du hittar undernät, regler för anslutning till dessa undernät och anslutningar från de virtuella datorerna till undernäten inom ett VNet.
+Ett virtuellt nätverk är en representation av ditt eget nätverk i hello molnet. Ett virtuellt nätverk är en logisk isolering av hello Azure-molnet dedikerad tooyour prenumeration. Du hittar undernät, regler för anslutningen toothose undernät och anslutningar från hello VMs toohello undernät inom ett VNet.
 
-Innan du kan skapa andra Azure-resurser, måste du skapa en resursgrupp med [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). I följande exempel skapas en resursgrupp med namnet *myRGNetwork* i den *EastUS* plats:
+Innan du kan skapa andra Azure-resurser, behöver du toocreate en resursgrupp med [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). hello följande exempel skapar en resursgrupp med namnet *myRGNetwork* i hello *EastUS* plats:
 
 ```powershell
 New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-Ett undernät är en underordnad resurs i ett VNet och hjälper dig att definiera segmenten i adressutrymmen i CIDR-block med IP-adressprefix. Nätverkskorten kan läggas till i undernät och anslutna till virtuella datorer kan man har anslutning för olika arbetsbelastningar.
+Ett undernät är en underordnad resurs i ett VNet och hjälper dig att definiera segmenten i adressutrymmen i CIDR-block med IP-adressprefix. Nätverkskort läggas toosubnets och anslutna tooVMs som man har anslutning för olika arbetsbelastningar.
 
 Skapa ett undernät med [ny AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig):
 
@@ -67,7 +67,7 @@ $vnet = New-AzureRmVirtualNetwork `
 
 ## <a name="create-front-end-vm"></a>Skapa frontend VM
 
-En virtuell dator, för att kommunicera på ett VNet måste den ha ett virtuellt nätverksgränssnitt (NIC). Den *myFrontendVM* nås från internet, så måste en offentlig IP-adress. 
+För en VM toocommunicate i ett VNet, måste den ha ett virtuellt nätverksgränssnitt (NIC). Hej *myFrontendVM* kan nås från hello internet, så måste en offentlig IP-adress. 
 
 Skapa en offentlig IP-adress med [ny AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress):
 
@@ -91,13 +91,13 @@ $frontendNic = New-AzureRmNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-Ange användarnamn och lösenord behövs för administratören konto på den virtuella datorn med [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
+Ange hello användarnamn och lösenord som krävs för hello administratörskontot på hello VM med [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Skapa de virtuella datorerna med [nya AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig), [Set AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem), [Set AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage), [Set AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk), [lägga till AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface), och [nya AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). 
+Skapa hello virtuella datorer med [ny AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig), [Set AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem), [Set AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage), [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk), [Lägga till AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface), och [nya AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). 
 
 ```powershell
 $frontendVM = New-AzureRmVMConfig `
@@ -133,9 +133,9 @@ New-AzureRmVM `
 
 ## <a name="install-web-server"></a>Installera webbserver
 
-Du kan installera IIS på *myFrontendVM* med hjälp av en fjärrskrivbordssession. Du måste hämta offentlig IP-adressen för den virtuella datorn att komma åt den.
+Du kan installera IIS på *myFrontendVM* med hjälp av en fjärrskrivbordssession. Du behöver tooget hello offentliga IP-adress hello VM tooaccess den.
 
-Du kan hämta den offentliga IP-adressen för *myFrontendVM* med [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). I följande exempel hämtar IP-adressen för *myPublicIPAddress* skapade tidigare:
+Du kan hämta hello offentliga IP-adressen för *myFrontendVM* med [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). hello följande exempel hämtar hello IP-adress för *myPublicIPAddress* skapade tidigare:
 
 ```powershell
 Get-AzureRmPublicIPAddress `
@@ -145,31 +145,31 @@ Get-AzureRmPublicIPAddress `
 
 Anteckna denna IP-adress så att du kan använda den i kommande steg.
 
-Använd följande kommando för att skapa en fjärrskrivbords-session med *myFrontendVM*. Ersätt  *<publicIPAddress>*  med adressen som du antecknade tidigare. När du uppmanas, anger du de autentiseringsuppgifter som används när du skapade den virtuella datorn.
+Använd hello följande kommando toocreate en fjärrskrivbordssession med *myFrontendVM*. Ersätt  *<publicIPAddress>*  med hello-adress som du antecknade tidigare. När du uppmanas ange hello-autentiseringsuppgifter som används när du skapade hello VM.
 
 ```
 mstsc /v:<publicIpAddress>
 ``` 
 
-Nu när du har loggat in *myFrontendVM*, du kan använda en rad med PowerShell för att installera IIS och aktivera regeln för lokala brandväggen att tillåta webbtrafik. Öppna en PowerShell-kommandotolk och kör följande kommando:
+Nu när du har loggat in för*myFrontendVM*, kan du använda en rad med PowerShell tooinstall IIS och aktivera hello lokala brandväggen regeln tooallow webbtrafik. Öppna en PowerShell-kommandotolk och kör följande kommando hello:
 
-Använd [Install-WindowsFeature](https://technet.microsoft.com/itpro/powershell/windows/servermanager/install-windowsfeature) att köra tillägget för anpassat skript som installerar IIS-webbserver:
+Använd [Install-WindowsFeature](https://technet.microsoft.com/itpro/powershell/windows/servermanager/install-windowsfeature) toorun hello tillägget för anpassat skript som installerar hello IIS-webbserver:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Nu kan du använda den offentliga IP-adressen och bläddra till den virtuella datorn att se IIS-webbplatsen.
+Du kan nu använda hello offentliga IP-adress toobrowse toohello VM toosee hello IIS-plats.
 
 ![Standardwebbplatsen i IIS](./media/tutorial-virtual-network/iis.png)
 
 ## <a name="manage-internal-traffic"></a>Hantera intern trafik
 
-En nätverkssäkerhetsgrupp (NSG) innehåller en lista över säkerhetsregler som tillåter eller nekar nätverkstrafik till resurser som är anslutna till ett virtuellt nätverk. NSG: er kan vara kopplad till undernät eller individuella nätverkskort som är kopplade till virtuella datorer. Öppna eller stänga åtkomst till virtuella datorer via portar görs med hjälp av NSG-regler. När du skapade *myFrontendVM*, inkommande port 3389 öppnas automatiskt för RDP-anslutning.
+En nätverkssäkerhetsgrupp (NSG) innehåller en lista över säkerhetsregler som tillåter eller nekar nätverket trafik tooresources anslutna tooa VNet. NSG: er kan vara associerade toosubnets eller individuella nätverkskort kopplade tooVMs. Öppna eller stänga åtkomst tooVMs via portar görs med hjälp av NSG-regler. När du skapade *myFrontendVM*, inkommande port 3389 öppnas automatiskt för RDP-anslutning.
 
-Intern kommunikation för virtuella datorer kan konfigureras med en NSG. I det här avsnittet kan du lära dig hur du skapar en ytterligare undernät i nätverket och tilldelar en NSG till den för att tillåta en anslutning från *myFrontendVM* till *myBackendVM* på port 1433. Undernätet sedan tilldelas den virtuella datorn när den skapas.
+Intern kommunikation för virtuella datorer kan konfigureras med en NSG. I det här avsnittet lär du dig hur toocreate ett ytterligare undernät i hello nätverks- och tilldela en NSG tooit tooallow en anslutning från *myFrontendVM* för*myBackendVM* på port 1433. hello undernät tilldelas sedan toohello VM när den skapas.
 
-Du kan begränsa intern trafik till *myBackendVM* från endast *myFrontendVM* genom att skapa en NSG för backend-undernät. I följande exempel skapas en NSG regeln med namnet *myBackendNSGRule* med [ny AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig):
+Du kan begränsa intern trafik för*myBackendVM* från endast *myFrontendVM* genom att skapa en NSG för hello backend-undernät. hello följande exempel skapas en NSG regeln med namnet *myBackendNSGRule* med [ny AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig):
 
 ```powershell
 $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -195,7 +195,7 @@ $nsgBackend = New-AzureRmNetworkSecurityGroup `
 ```
 ## <a name="add-back-end-subnet"></a>Lägg till backend-undernät
 
-Lägg till *myBackEndSubnet* till *myVNet* med [Lägg till AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig):
+Lägg till *myBackEndSubnet* för*myVNet* med [Lägg till AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig):
 
 ```powershell
 Add-AzureRmVirtualNetworkSubnetConfig `
@@ -211,7 +211,7 @@ $vnet = Get-AzureRmVirtualNetwork `
 
 ## <a name="create-back-end-vm"></a>Skapa backend-VM
 
-Det enklaste sättet att skapa den virtuella datorn serverdel är med hjälp av en SQL Server-avbildning. Den här kursen kan du bara skapar den virtuella datorn med databasservern, men ger inte information om åtkomst till databasen.
+hello enklaste sättet toocreate hello backend-VM är med hjälp av en SQL Server-avbildning. Den här självstudiekursen bara skapar hello VM med hello databasserver, men det innehåller inte information om åtkomst till hello-databasen.
 
 Skapa *myBackendNic*:
 
@@ -223,7 +223,7 @@ $backendNic = New-AzureRmNetworkInterface `
   -SubnetId $vnet.Subnets[1].Id
 ```
 
-Ange användarnamn och lösenord för administratörskontot på den virtuella datorn med Get-Credential:
+Ange hello användarnamn och lösenord för administratörskontot för hello på hello virtuell dator med Get-Credential:
 
 ```powershell
 $cred = Get-Credential
@@ -263,11 +263,11 @@ New-AzureRmVM `
   -VM $backendVM
 ```
 
-Den bild som används för SQL Server är installerad men används inte i den här kursen. Den ingår för att visa hur du kan konfigurera en virtuell dator för att hantera webbtrafik och en virtuell dator för att hantera databasen.
+hello-bild som används SQL Server är installerad men används inte i den här kursen. Det är inkluderade tooshow du hur du kan konfigurera en VM toohandle webbtrafik och en VM toohandle databashantering.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudiekursen skapas och skyddas av Azure-nätverk som är relaterade till virtuella datorer. 
+I den här självstudiekursen skapas och skyddas av Azure-nätverk som relaterade toovirtual datorer. 
 
 > [!div class="checklist"]
 > * Skapa ett virtuellt nätverk
@@ -275,7 +275,7 @@ I den här självstudiekursen skapas och skyddas av Azure-nätverk som är relat
 > * Kontrollera nätverkstrafik med Nätverkssäkerhetsgrupper
 > * Visa regler för nätverkstrafik i praktiken
 
-Gå vidare till nästa kurs vill veta mer om övervakning för att skydda data på virtuella datorer med hjälp av Azure-säkerhetskopiering. .
+Avancera toohello nästa självstudiekurs toolearn om övervakning för att skydda data på virtuella datorer med hjälp av Azure-säkerhetskopiering. .
 
 > [!div class="nextstepaction"]
 > [Säkerhetskopiera Windows-datorer i Azure](./tutorial-backup-vms.md)

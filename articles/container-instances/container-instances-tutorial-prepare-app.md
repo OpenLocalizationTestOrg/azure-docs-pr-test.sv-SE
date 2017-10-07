@@ -1,6 +1,6 @@
 ---
-title: "Självstudiekurs om Azure Container Instances – förbereda din app | Azure Docs"
-description: "Förbereda en app för distribution till Azure Container Instances"
+title: "aaaAzure Behållarinstanser tutorial – förbereda din app | Azure-dokument"
+description: "Förbereda en app för distribution tooAzure Behållarinstanser"
 services: container-instances
 documentationcenter: 
 author: seanmck
@@ -17,44 +17,44 @@ ms.workload: na
 ms.date: 08/01/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 167297e10eed11833623ff797e676ad43c65f9ad
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 406ba796e5fefb1527f2e894cc3f7bbd8f7a5fd1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-container-for-deployment-to-azure-container-instances"></a>Skapa behållare för distribution till Azure Container Instances
+# <a name="create-container-for-deployment-tooazure-container-instances"></a>Skapa en behållare för distribution tooAzure Behållarinstanser
 
 Azure Container Instances möjliggör distribution av Docker-behållare till en Azure-infrastruktur utan att tillhandahålla några virtuella datorer eller anpassa eventuella tjänster på högre nivå. I den här självstudien får du bygga en enkel webbapp i Node.js och paketera den i en behållare som kan köras med Azure Container Instances. Vi kommer att ta upp:
 
 > [!div class="checklist"]
 > * Klona programkällan från GitHub  
 > * Skapa behållaravbildningar från en programkälla
-> * Testa avbildningarna i en lokal Docker-miljö
+> * Testar hello-avbildningar i en lokal Docker-miljö
 
-I efterföljande självstudier får du ladda upp din avbildning till ett Azure Container Registry och sedan distribuera den till Azure Container Instances.
+I efterföljande självstudiekurser du överför din bild tooan Azure Container registret, och sedan distribuera dem tooAzure Behållarinstanser.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
 Den här självstudien förutsätter grundläggande kunskaper om grundläggande Docker-begrepp som behållare, behållaravbildningar och grundläggande docker-kommandon. Om det behövs kan du läsa [Get started with Docker]( https://docs.docker.com/get-started/) (Komma igång med Docker) för att få en genomgång av grunden för behållare. 
 
-För att slutföra den här självstudien behöver du en Docker-utvecklingsmiljö. Docker innehåller paket som enkelt kan konfigurera Docker på en [Mac-](https://docs.docker.com/docker-for-mac/), [Windows-](https://docs.docker.com/docker-for-windows/) eller [Linux-](https://docs.docker.com/engine/installation/#supported-platforms)dator.
+toocomplete den här kursen behöver du en Docker-utvecklingsmiljö. Docker innehåller paket som enkelt kan konfigurera Docker på en [Mac-](https://docs.docker.com/docker-for-mac/), [Windows-](https://docs.docker.com/docker-for-windows/) eller [Linux-](https://docs.docker.com/engine/installation/#supported-platforms)dator.
 
 ## <a name="get-application-code"></a>Hämta programkod
 
-Exemplet i den här självstudien innehåller en enkel webbapp som skapats i [Node.js](http://nodejs.org). Appen har en statisk HTML-sida och ser ut så här:
+hello-exempel i den här självstudiekursen innehåller en enkel webbapp som skapats [Node.js](http://nodejs.org). hello appen fungerar statiska HTML-sidan och ser ut så här:
 
 ![Självstudieappen visas i webbläsare][aci-tutorial-app]
 
-Ladda ned exempelfilerna med Git:
+Använda git toodownload hello exemplet:
 
 ```bash
 git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```
 
-## <a name="build-the-container-image"></a>Bygga behållaravbildningen
+## <a name="build-hello-container-image"></a>Skapa hello behållaren image
 
-Den Dockerfile som finns i exempelrepon visar hur behållaren är byggd. Den börjar från en [officiell Node.js-avbildning][dockerhub-nodeimage] baserat på [Alpine Linux](https://alpinelinux.org/), en liten distribution som är lämplig för användning med behållare. Den kopierar sedan programfilerna till behållaren, installerar beroenden med Node Package Manager (nodpaketshanteraren) och startar slutligen programmet.
+hello Dockerfile i lagringsplatsen för hello exempel visar hur hello behållare skapas. Den startar från en [officiella Node.js bild] [ dockerhub-nodeimage] baserat på [Alpine Linux](https://alpinelinux.org/), en liten distribution som är väl lämpade toouse med behållare. Den sedan kopierar hello programfiler till hello container, installerar beroenden med hello noden Package Manager och slutligen startar hello-program.
 
 ```
 FROM node:8.2.0-alpine
@@ -65,13 +65,13 @@ RUN npm install
 CMD node /usr/src/app/index.js
 ```
 
-Använd kommandot `docker build` för att skapa behållaravbildningen, och märk den med *aci-tutorial-app*:
+Använd hello `docker build` kommandot toocreate hello behållaren bilden, märkning som *aci kursen app*:
 
 ```bash
 docker build ./aci-helloworld -t aci-tutorial-app
 ```
 
-Använd `docker images` för att se den skapade avbildningen:
+Använd hello `docker images` toosee hello inbyggda avbildningen:
 
 ```bash
 docker images
@@ -84,31 +84,31 @@ REPOSITORY                   TAG                 IMAGE ID            CREATED    
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
 ```
 
-## <a name="run-the-container-locally"></a>Kör behållaren lokalt
+## <a name="run-hello-container-locally"></a>Kör hello behållaren lokalt
 
-Innan du försöker distribuera behållaren till Azure Container Instances ska du köra den lokalt för att bekräfta att den fungerar. Med växeln `-d` kan behållaren köras i bakgrunden, medan `-p` gör att du kan mappa en godtycklig port för dina beräkningar till port 80 i behållaren.
+Innan du försöker distribuera hello behållaren tooAzure Behållarinstanser köra det lokalt tooconfirm att det fungerar. Hej `-d` växel kan hello-behållare som körs i bakgrunden hello, medan `-p` kan du toomap en valfri port på din beräknings-tooport 80 i hello behållaren.
 
 ```bash
 docker run -d -p 8080:80 aci-tutorial-app
 ```
 
-Öppna webbläsaren till http://localhost:8080 för att kontrollera att behållaren körs.
+Öppna hello webbläsare toohttp://localhost:8080 tooconfirm som hello behållare körs.
 
-![Köra appen lokalt i webbläsaren][aci-tutorial-app-local]
+![Hello-app som körs lokalt i hello webbläsare][aci-tutorial-app-local]
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du skapat en behållaravbildning som kan distribueras till Azure Container Instances. Följande steg har slutförts:
+I kursen får skapat du en avbildning av behållare som kan vara distribuerade tooAzure Behållarinstanser. hello följande steg har slutförts:
 
 > [!div class="checklist"]
-> * Klona programkällan från GitHub  
+> * Kloningen hello programmet källa från GitHub  
 > * Skapa behållaravbildningar från en programkälla
-> * Testa behållaren lokalt
+> * Testa hello behållaren lokalt
 
-Fortsätt till nästa självstudie och lär dig om att lagra behållaravbildningar i ett Azure Container Registry.
+Avancera toohello nästa självstudiekurs toolearn om att lagra behållaren bilder i ett Azure Container registret.
 
 > [!div class="nextstepaction"]
-> [Push-avbildningar med Azure Container Registry](./container-instances-tutorial-prepare-acr.md)
+> [Push-avbildningar tooAzure behållare registret](./container-instances-tutorial-prepare-acr.md)
 
 <!-- LINKS -->
 [dockerhub-nodeimage]: https://hub.docker.com/r/library/node/tags/8.2.0-alpine/

@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager-mall fungerar - matriser och -objekt | Microsoft Docs
-description: "Beskriver funktionerna som ska användas i en Azure Resource Manager-mall för att arbeta med matriser och -objekt."
+title: aaaAzure Resource Manager-mall fungerar - matriser och -objekt | Microsoft Docs
+description: "Beskriver hello funktioner toouse i en Azure Resource Manager-mall för att arbeta med matriser och -objekt."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 0bd9ec41761c9ce575f3bcf4d1f8e8578b83e01c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e5f1a9b2a71039562eae7e48c2474a1fa59a7bea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Array- och funktioner för Azure Resource Manager-mallar 
 
@@ -42,20 +42,20 @@ Resource Manager innehåller flera funktioner för att arbeta med matriser och -
 * [ta](#take)
 * [Union](#union)
 
-En matris med strängvärden som avgränsas med ett värde finns [dela](resource-group-template-functions-string.md#split).
+tooget en matris med strängvärden som avgränsas med ett värde, se [dela](resource-group-template-functions-string.md#split).
 
 <a id="array" />
 
 ## <a name="array"></a>matris
 `array(convertToArray)`
 
-Konverterar värdet till en matris.
+Konverterar hello tooan värdematrisen.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Ja |int, string, matris eller objekt |Värdet som ska konverteras till en matris. |
+| convertToArray |Ja |int, string, matris eller objekt |Hej tooconvert tooan värdematrisen. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -63,7 +63,7 @@ En matris.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder funktionen matris med olika typer.
+hello följande exempel visas hur toouse hello matris-funktionen med olika typer.
 
 ```json
 {
@@ -102,35 +102,35 @@ I följande exempel visas hur du använder funktionen matris med olika typer.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
-| intOutput | matris | [1] |
-| stringOutput | matris | [”a”] |
-| objectOutput | matris | [{”a”: ”b”, ”c”: ”d”}] |
+| intOutput | Matris | [1] |
+| stringOutput | Matris | [”a”] |
+| objectOutput | Matris | [{”a”: ”b”, ”c”: ”d”}] |
 
 <a id="coalesce" />
 
 ## <a name="coalesce"></a>Slå samman
 `coalesce(arg1, arg2, arg3, ...)`
 
-Returnerar första icke-null-värde från parametrarna. Tomma strängar, tomma matriser och tomt-objekt är inte null.
+Returnerar första icke-null-värde från hello parametrar. Tomma strängar, tomma matriser och tomt-objekt är inte null.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int, string, matris eller objekt |Det första värdet för null. |
-| ytterligare argument |Nej |int, string, matris eller objekt |Ytterligare värden att testa till null. |
+| arg1 |Ja |int, string, matris eller objekt |hello första värde tootest för null. |
+| ytterligare argument |Nej |int, string, matris eller objekt |Ytterligare värden tootest för null. |
 
 ### <a name="return-value"></a>Returvärde
 
-Värdet för de första icke-null-parametrar, som kan vara en sträng, int, matris eller ett objekt. Null om alla parametrar är null. 
+hello värde av hello första icke-null-parametrar, vilket kan vara en sträng, int, matris eller ett objekt. Null om alla parametrar är null. 
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas utdata från olika användningsområden för coalesce.
+hello visar följande exempel hello utdata från olika användningsområden för coalesce.
 
 ```json
 {
@@ -176,14 +176,14 @@ I följande exempel visas utdata från olika användningsområden för coalesce.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
 | stringOutput | Sträng | Standard |
 | intOutput | int | 1 |
 | objectOutput | Objekt | {”första”: ”default”} |
-| arrayOutput | matris | [1] |
+| arrayOutput | Matris | [1] |
 | emptyOutput | bool | True |
 
 <a id="concat" />
@@ -191,23 +191,23 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="concat"></a>concat
 `concat(arg1, arg2, arg3, ...)`
 
-Kombinerar flera matriser och returnerar sammanfogad matris eller kombinerar flera strängvärden och returnerar en sammanfogad sträng. 
+Kombinerar flera matriser och returnerar hello sammanfogas matrisen eller kombinerar flera strängvärden och returnerar hello sammanfogas sträng. 
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matris eller sträng |Den första matrisen eller sträng för sammanslagning. |
+| arg1 |Ja |matris eller sträng |Hej första matrisen eller sträng för sammanslagning. |
 | ytterligare argument |Nej |matris eller sträng |Ytterligare matriser eller strängar i tur och ordning för sammanslagning. |
 
-Den här funktionen kan ta valfritt antal argument och kan acceptera strängar eller matriser för parametrarna.
+Den här funktionen kan ta valfritt antal argument och kan acceptera strängar eller matriser för hello parametrar.
 
 ### <a name="return-value"></a>Returvärde
 En sträng eller en matris med sammanfogade värdena.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du kombinerar två matriser.
+hello som följande exempel visar hur toocombine två matriser.
 
 ```json
 {
@@ -242,13 +242,13 @@ I följande exempel visas hur du kombinerar två matriser.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
-| Returnera | matris | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| Returnera | Matris | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-I följande exempel visar hur du kombinerar två strängvärden och returnerar en sammanfogad sträng.
+hello som följande exempel visar hur toocombine två sträng värden och returnerar en sammanfogad sträng.
 
 ```json
 {
@@ -270,7 +270,7 @@ I följande exempel visar hur du kombinerar två strängvärden och returnerar e
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -287,16 +287,16 @@ Kontrollerar om en matris som innehåller ett värde, ett objekt som innehåller
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| Behållaren |Ja |matris, objekt eller sträng |Det värde som innehåller ett värde att söka efter. |
-| itemToFind |Ja |sträng eller ett heltal |Värde att söka efter. |
+| Behållaren |Ja |matris, objekt eller sträng |hello-värde som innehåller hello värdet toofind. |
+| itemToFind |Ja |sträng eller ett heltal |hello värdet toofind. |
 
 ### <a name="return-value"></a>Returvärde
 
-**SANT** om objektet är hittas, annars **FALSKT**.
+**SANT** om hello objekt hittades, annars **FALSKT**.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder innehåller med olika typer:
+hello följande exempel visas hur toouse innehåller med olika typer:
 
 ```json
 {
@@ -347,7 +347,7 @@ I följande exempel visas hur du använder innehåller med olika typer:
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -363,14 +363,14 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="createarray"></a>createarray
 `createArray (arg1, arg2, arg3, ...)`
 
-Skapar en matris av parametrarna.
+Skapar en matris av hello parametrar.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Sträng, heltal, matris eller objekt |Det första värdet i matrisen. |
-| ytterligare argument |Nej |Sträng, heltal, matris eller objekt |Ytterligare värdena i matrisen. |
+| arg1 |Ja |Sträng, heltal, matris eller objekt |hello första värdet i hello matris. |
+| ytterligare argument |Nej |Sträng, heltal, matris eller objekt |Ytterligare värden i hello matris. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -378,7 +378,7 @@ En matris.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder createArray med olika typer:
+följande exempel visar hur hello toouse createArray med olika typer:
 
 ```json
 {
@@ -417,14 +417,14 @@ I följande exempel visas hur du använder createArray med olika typer:
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
-| stringArray | matris | [”a”, ”b”, ”c”] |
-| intArray | matris | [1, 2, 3] |
-| objectArray | matris | [{”1”: ”a”, ”två”: ”b”, ”tre”: ”c”}] |
-| arrayArray | matris | [[”1”, ”två”, ”tre”]] |
+| stringArray | Matris | [”a”, ”b”, ”c”] |
+| intArray | Matris | [1, 2, 3] |
+| objectArray | Matris | [{”1”: ”a”, ”två”: ”b”, ”tre”: ”c”}] |
+| arrayArray | Matris | [[”1”, ”två”, ”tre”]] |
 
 <a id="empty" />
 
@@ -438,15 +438,15 @@ Anger om en matris, objekt eller sträng är tom.
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Ja |matris, objekt eller sträng |Värdet för att kontrollera om den är tom. |
+| itemToTest |Ja |matris, objekt eller sträng |Hej värdet toocheck om den är tom. |
 
 ### <a name="return-value"></a>Returvärde
 
-Returnerar **SANT** om värdet är tomt, annars **FALSKT**.
+Returnerar **SANT** om hello-värdet är tomt, annars **FALSKT**.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel kontrollerar om en matris och objektet sträng är tom.
+följande exempel hello kontrollerar om en matris och objektet sträng är tom.
 
 ```json
 {
@@ -485,7 +485,7 @@ I följande exempel kontrollerar om en matris och objektet sträng är tom.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -498,21 +498,21 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="first"></a>första
 `first(arg1)`
 
-Returnerar det första elementet i matrisen eller första tecknet i strängen.
+Returnerar hello första elementet i matrisen hello eller första tecknet i hello-sträng.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matris eller sträng |Värdet för att hämta det första elementet eller tecken. |
+| arg1 |Ja |matris eller sträng |hello värdet tooretrieve hello första elementet eller tecken. |
 
 ### <a name="return-value"></a>Returvärde
 
-Typen (sträng, int, matris eller objekt) för det första elementet i en matris eller det första tecknet i en sträng.
+hello (sträng, int, matris eller objekt) typ av hello första elementet i en matris eller hello första tecknet i en sträng.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder den första funktionen med en matris och sträng.
+hello följande exempel visas hur toouse hello första funktion med en matris och en sträng.
 
 ```json
 {
@@ -539,7 +539,7 @@ I följande exempel visas hur du använder den första funktionen med en matris 
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -551,23 +551,23 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="intersection"></a>skärningspunkten
 `intersection(arg1, arg2, arg3, ...)`
 
-Returnerar en enda matris eller ett objekt med vanliga element från parametrarna.
+Returnerar en enda matris eller ett objekt med hello gemensamma element från hello parametrar.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matris eller ett objekt |Det första värdet som ska användas för att söka efter vanliga element. |
-| arg2 |Ja |matris eller ett objekt |Det andra värdet som ska användas för att söka efter vanliga element. |
-| ytterligare argument |Nej |matris eller ett objekt |Ytterligare värden som ska användas för att söka efter vanliga element. |
+| arg1 |Ja |matris eller ett objekt |hello första värde toouse för att söka efter vanliga element. |
+| arg2 |Ja |matris eller ett objekt |hello andra värdet toouse för att söka efter vanliga element. |
+| ytterligare argument |Nej |matris eller ett objekt |Ytterligare värden toouse för att söka efter vanliga element. |
 
 ### <a name="return-value"></a>Returvärde
 
-En matris eller ett objekt med vanliga element.
+En matris eller ett objekt med hello gemensamma element.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder skärningspunkten med matriser och -objekt:
+Hej följande exempel visar hur toouse snitt med matriser och -objekt:
 
 ```json
 {
@@ -606,12 +606,12 @@ I följande exempel visas hur du använder skärningspunkten med matriser och -o
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
 | objectOutput | Objekt | {”1”: ”a”, ”tre”: ”c”} |
-| arrayOutput | matris | [”två”, ”tre”] |
+| arrayOutput | Matris | [”två”, ”tre”] |
 
 
 ## <a name="json"></a>JSON
@@ -623,16 +623,16 @@ Returnerar ett JSON-objekt.
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Sträng |Värdet som ska konverteras till JSON. |
+| arg1 |Ja |Sträng |hello värdet tooconvert tooJSON. |
 
 
 ### <a name="return-value"></a>Returvärde
 
-JSON-objekt från den angivna strängen eller ett tomt-objekt när **null** har angetts.
+hello JSON-objekt från hello angiven sträng eller ett tomt-objekt när **null** har angetts.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder skärningspunkten med matriser och -objekt:
+Hej följande exempel visar hur toouse snitt med matriser och -objekt:
 
 ```json
 {
@@ -653,7 +653,7 @@ I följande exempel visas hur du använder skärningspunkten med matriser och -o
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -665,21 +665,21 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="last"></a>senaste
 `last (arg1)`
 
-Returnerar det sista elementet i matrisen eller sista tecknet i strängen.
+Returnerar hello sista elementet i matrisen hello eller sista tecknet i hello strängen.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matris eller sträng |Värdet för att hämta det sista elementet eller tecken. |
+| arg1 |Ja |matris eller sträng |hello värdet tooretrieve hello sista elementet eller tecken. |
 
 ### <a name="return-value"></a>Returvärde
 
-Typen (sträng, int, matris eller objekt) för det sista elementet i en matris eller det sista tecknet i en sträng.
+hello (sträng, int, matris eller objekt) typ av hello sista elementet i en matris eller hello sista tecknet i en sträng.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder funktionen senaste med en matris och en sträng.
+hello följande exempel visas hur toouse hello senaste funktion med en matris och en sträng.
 
 ```json
 {
@@ -706,7 +706,7 @@ I följande exempel visas hur du använder funktionen senaste med en matris och 
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -718,13 +718,13 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="length"></a>Längd
 `length(arg1)`
 
-Returnerar antalet element i en matris eller tecken i en sträng.
+Returnerar hello antalet element i en matris eller tecken i en sträng.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matris eller sträng |Matrisen ska användas för att hämta antalet element eller strängen som ska användas för att hämta antalet tecken. |
+| arg1 |Ja |matris eller sträng |Hej matris toouse för att hämta hello antalet element eller hello sträng toouse för att hämta hello antalet tecken. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -732,7 +732,7 @@ Int.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder längd med en matris och sträng:
+följande exempel visar hur hello toouse längd med en matris och sträng:
 
 ```json
 {
@@ -766,14 +766,14 @@ I följande exempel visas hur du använder längd med en matris och sträng:
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
 
-Du kan ange antal upprepningar när du skapar resurser genom att använda den här funktionen med en matris. I följande exempel parametern **siteNames** referera till en matris med namn som ska använda när du skapar webbplatser.
+Du kan använda den här funktionen med en matris toospecify hello antal upprepningar när du skapar resurser. I följande exempel hello, hello parametern **siteNames** referera tooan matris med namnen toouse när du skapar hello-webbplatser.
 
 ```json
 "copy": {
@@ -789,21 +789,21 @@ Mer information om hur du använder den här funktionen med en matris finns [ska
 ## <a name="min"></a>min.
 `min(arg1)`
 
-Returnerar det lägsta värdet från en heltalsmatris eller en kommaavgränsad lista med heltal.
+Returnerar hello minimivärdet från en matris av heltal eller en kommaavgränsad lista med heltal.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matris med heltal eller en kommaavgränsad lista med heltal |Samlingen för att hämta det minsta värdet. |
+| arg1 |Ja |matris med heltal eller en kommaavgränsad lista med heltal |hello samling tooget hello minimivärde. |
 
 ### <a name="return-value"></a>Returvärde
 
-Ett heltal som representerar det minsta värdet.
+Ett heltal som representerar hello minimivärdet.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder min med en matris och en lista med heltal:
+följande exempel visar hur hello toouse min med en matris och en lista med heltal:
 
 ```json
 {
@@ -829,7 +829,7 @@ I följande exempel visas hur du använder min med en matris och en lista med he
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -841,21 +841,21 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="max"></a>Max
 `max(arg1)`
 
-Returnerar det största värdet från en matris av heltal eller en kommaavgränsad lista med heltal.
+Returnerar hello högsta värde från en heltalsmatris eller en kommaavgränsad lista med heltal.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matris med heltal eller en kommaavgränsad lista med heltal |Samlingen för att hämta det högsta värdet. |
+| arg1 |Ja |matris med heltal eller en kommaavgränsad lista med heltal |hello samling tooget hello maximivärde. |
 
 ### <a name="return-value"></a>Returvärde
 
-Ett heltal som representerar det högsta värdet.
+Ett heltal som representerar hello maximivärdet.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder max med en matris och en lista med heltal:
+följande exempel visar hur hello toouse max med en matris och en lista med heltal:
 
 ```json
 {
@@ -881,7 +881,7 @@ I följande exempel visas hur du använder max med en matris och en lista med he
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -899,8 +899,8 @@ Skapar en heltalsmatris från början heltal och som innehåller ett antal objek
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| startingInteger |Ja |int |Det första heltal i matrisen. |
-| numberofElements |Ja |int |Antal heltal i matrisen. |
+| startingInteger |Ja |int |hello första heltal i hello matris. |
+| numberofElements |Ja |int |hello antal heltal i hello matris. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -908,7 +908,7 @@ En heltalsmatris.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder funktionen intervall:
+hello som följande exempel visar hur toouse hello intervallet funktionen:
 
 ```json
 {
@@ -934,25 +934,25 @@ I följande exempel visas hur du använder funktionen intervall:
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
-| rangeOutput | matris | [5, 6, 7] |
+| rangeOutput | Matris | [5, 6, 7] |
 
 <a id="skip" />
 
 ## <a name="skip"></a>Hoppa över
 `skip(originalValue, numberToSkip)`
 
-Returnerar en matris med alla element efter det angivna värdet i matrisen eller returnerar en sträng med alla tecken efter det angivna värdet i strängen.
+Returnerar en matris med alla hello-element efter hello nummer som angetts i hello matrisen eller returnerar en sträng med tecken för alla hello när hello angett numret i hello-sträng.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| Ursprungligt värde |Ja |matris eller sträng |Matris eller sträng som ska användas för att hoppa över. |
-| numberToSkip |Ja |int |Antalet element eller tecken som ska hoppas över. Om det här värdet är 0 eller mindre, returneras alla element eller tecken i-värdet. Om den är större än längden på matrisen eller sträng returneras en tom matris eller sträng. |
+| Ursprungligt värde |Ja |matris eller sträng |Hej array eller string toouse för att hoppa över. |
+| numberToSkip |Ja |int |hello antal element eller tecken tooskip. Om det här värdet är 0 eller mindre, alla hello element eller tecken i hello-värde som ska returneras. Om den är större än hello längd hello matris eller sträng returneras en tom matris eller sträng. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -960,7 +960,7 @@ En matris eller sträng.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel hoppar över det angivna antalet element i matrisen och det angivna antalet tecken i en sträng.
+hello följande exempel hoppar över hello angivna antalet element i matrisen hello och hello angivet antal tecken i en sträng.
 
 ```json
 {
@@ -1002,11 +1002,11 @@ I följande exempel hoppar över det angivna antalet element i matrisen och det 
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
-| arrayOutput | matris | [”tre”] |
+| arrayOutput | Matris | [”tre”] |
 | stringOutput | Sträng | två tre |
 
 <a id="take" />
@@ -1014,14 +1014,14 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="take"></a>ta
 `take(originalValue, numberToTake)`
 
-Returnerar en matris med det angivna antalet element från början av matrisen eller en sträng med det angivna antalet tecken från början av strängen.
+Returnerar en matris med hello angivna antalet element från hello start av hello matris eller en sträng med hello angivet antal tecken från hello början av hello-sträng.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| Ursprungligt värde |Ja |matris eller sträng |Matris eller sträng för att ta elementen från. |
-| numberToTake |Ja |int |Antalet element eller tecken som ska ta. Om det här värdet är 0 eller mindre, returneras en tom matris eller sträng. Om den är större än längden på den angivna matrisen eller sträng returneras alla element i en matris eller en sträng. |
+| Ursprungligt värde |Ja |matris eller sträng |Hej array eller string tootake hello element från. |
+| numberToTake |Ja |int |hello antal element eller tecken tootake. Om det här värdet är 0 eller mindre, returneras en tom matris eller sträng. Om den är större än hello hello matris eller sträng returneras alla hello-element i hello array eller string. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -1029,7 +1029,7 @@ En matris eller sträng.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel tar det angivna antalet element från matrisen och tecken från en sträng.
+följande exempel tar hello hello angivet antal element från hello matris och tecken från en sträng.
 
 ```json
 {
@@ -1071,11 +1071,11 @@ I följande exempel tar det angivna antalet element från matrisen och tecken fr
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
-| arrayOutput | matris | [””, ”två”] |
+| arrayOutput | Matris | [””, ”två”] |
 | stringOutput | Sträng | på |
 
 <a id="union" />
@@ -1083,15 +1083,15 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="union"></a>Union
 `union(arg1, arg2, arg3, ...)`
 
-Returnerar en enda matris eller ett objekt med alla element från parametrarna. Duplicerade värden eller nycklar är bara ingår en gång.
+Returnerar en enda matris eller ett objekt med alla element från hello parametrar. Duplicerade värden eller nycklar är bara ingår en gång.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |matris eller ett objekt |Det första värdet ska användas för anslutning element. |
-| arg2 |Ja |matris eller ett objekt |Det andra värdet som ska användas för anslutning element. |
-| ytterligare argument |Nej |matris eller ett objekt |Ytterligare värden som ska användas för att ansluta till element. |
+| arg1 |Ja |matris eller ett objekt |hello första värde toouse för att ansluta till element. |
+| arg2 |Ja |matris eller ett objekt |hello andra värdet toouse för att ansluta till element. |
+| ytterligare argument |Nej |matris eller ett objekt |Ytterligare värden toouse för att ansluta till element. |
 
 ### <a name="return-value"></a>Returvärde
 
@@ -1099,7 +1099,7 @@ En matris eller ett objekt.
 
 ### <a name="example"></a>Exempel
 
-I följande exempel visas hur du använder union med matriser och -objekt:
+Hej följande exempel visar hur toouse union med matriser och -objekt:
 
 ```json
 {
@@ -1138,16 +1138,16 @@ I följande exempel visas hur du använder union med matriser och -objekt:
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
 | objectOutput | Objekt | {”1”: ”a”, ”två”: ”b”, ”tre”: ”c”, ”fyra”: ”d”, ”fem”: ”e”} |
-| arrayOutput | matris | [”1”, ”två”, ”tre”, ”fyra”] |
+| arrayOutput | Matris | [”1”, ”två”, ”tre”, ”fyra”] |
 
 ## <a name="next-steps"></a>Nästa steg
-* En beskrivning av avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
-* Om du vill slå samman flera mallar, se [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md).
-* Iterera ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
-* Information om hur du distribuerar mallen som du har skapat finns [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
+* En beskrivning av hello avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+* flera mallar finns i toomerge [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
+* toosee hur toodeploy hello mallen som du har skapat, finns i [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
 

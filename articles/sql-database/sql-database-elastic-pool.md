@@ -1,5 +1,5 @@
 ---
-title: "Vad är elastiska pooler? Hantera flera SQL-databaser – Azure | Microsoft Docs"
+title: "aaaWhat är elastiska pooler? Hantera flera SQL-databaser – Azure | Microsoft Docs"
 description: "Hantera och skala flera databaser i SQL - hundratals och tusentalsavgränsare - med elastiska pooler. Ett pris för resurser som du kan distribuera om det behövs."
 keywords: flera databaser, databasresurser, databasprestanda
 services: sql-database
@@ -16,15 +16,15 @@ ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: 89e014a073dc555c927e872d75edfc014740c8ca
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2098d7817ebe1277b5c131421f23c00803ec78f8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-sql-databases"></a>Hjälper dig att hantera och skala flera SQL-databaser för elastiska pooler
 
-SQL-databas elastiska pooler är en enkel och kostnadseffektiv lösning för att hantera och skala flera databaser som har olika och oförutsägbart krav för användning. Databaserna i en elastisk pool finns på en enda Azure SQL Database-server och delar ett visst antal resurser ([elastiska Database Transaction Units](sql-database-what-is-a-dtu.md) (edtu: er)) till ett angivet pris. Med elastiska pooler i Azure SQL Database kan SaaS-utvecklare optimera prisprestanda för en grupp med databaser inom en fastställd budget samtidigt som de levererar flexibla prestanda för varje databas.   
+SQL-databas elastiska pooler är en enkel och kostnadseffektiv lösning för att hantera och skala flera databaser som har olika och oförutsägbart krav för användning. hello-databaserna i en elastisk pool finns på en enda Azure SQL Database-server och delar ett visst antal resurser ([elastiska Database Transaction Units](sql-database-what-is-a-dtu.md) (edtu: er)) till ett angivet pris. Elastiska pooler i Azure SQL Database aktivera SaaS utvecklare toooptimize hello pris prestanda för en grupp databaser i en föreskrivna budget leverera prestanda elasticitet för varje databas.   
 
 > [!NOTE]
 > Elastiska pooler är allmänt tillgängliga (GA) i alla Azure-regioner utom Västra Indien där de genomgår förhandsgranskning.  GA för elastiska pooler i den här regionen inträffar så snart som möjligt.
@@ -32,277 +32,277 @@ SQL-databas elastiska pooler är en enkel och kostnadseffektiv lösning för att
 
 ## <a name="what-are-sql-elastic-pools"></a>Vad är SQL elastiska pooler? 
 
-SaaS-utvecklare utvecklar program på storskaliga datanivåer som består av flera databaser. Ett vanligt programmönster är att etablera en enkel databas för varje kund. Men olika kunder har ofta varierande och oförutsägbara användningsmönster, och det är svårt att förutse resursbehoven för varje enskild databasanvändare. Traditionellt har du två alternativ: 
+SaaS-utvecklare utvecklar program på storskaliga datanivåer som består av flera databaser. En gemensam programmönster är tooprovision en enskild databas för varje kund. Men olika kunder har ofta olika och oförutsägbara användningsmönster, och det är svårt toopredict hello resurskraven för enskilda användare. Traditionellt har du två alternativ: 
 
 - Etablera över resurser baserat på högsta användningsnivå och över lön, eller
-- Under etablera spara kostnaden på bekostnad av prestanda och nöjda kunder under toppar. 
+- Under etablera toosave kostnaden vid hello kostnaden för prestanda och nöjda kunder under toppar. 
 
-Elastiska pooler lösa detta problem genom att säkerställa att databaser får prestanda-resurser som de behöver, när de behöver den. De tillhandahåller en enkel resursallokeringsmekanism med en förutsägbar budget. Läs mer om designmönster för SaaS-program med elastiska pooler i [Designmönster för SaaS-program med flera klienter med Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+Elastiska pooler lösa detta problem genom att säkerställa som databaser får hello prestanda resurser som de behöver när de behöver. De tillhandahåller en enkel resursallokeringsmekanism med en förutsägbar budget. toolearn mer om designmönster för SaaS-program med elastiska pooler finns [designmönster för flera innehavare SaaS-program med Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
 
-Elastiska pooler aktivera utvecklare att köpa [elastiska Database Transaction Units](sql-database-what-is-a-dtu.md) (edtu: er) för en pool som delas av flera databaser för oväntade perioder med användning av enskilda databaser. eDTU-kravet för en pool baseras på den sammanlagda användningen av dess databaser. Antalet eDTU:er som är tillgängligt för poolen beror på utvecklarens budget. Utvecklaren lägger bara till databaser i poolen, anger det minsta och största antalet eDTU:er för databaserna och väljer sedan poolens eDTU baserat på budget. Med hjälp av pooler kan utvecklare sömlöst expandera sina tjänster från en idé till en mogen affärsverksamhet som bara fortsätter att växa.
+Elastiska pooler aktivera hello developer toopurchase [elastiska Database Transaction Units](sql-database-what-is-a-dtu.md) (edtu: er) för en pool som delas av flera databaser tooaccommodate oförutsägbart perioder med användning av enskilda databaser. Hej eDTU krav för en pool bestäms av hello sammanställd användning av databaserna. hello antalet edtu: er tillgängliga toohello pool styrs av hello developer budget. hello utvecklare lägger bara till databaser toohello pool, anger hello lägsta och högsta edtu: er för hello databaser och anger hello eDTU för hello pool baserat på deras budget. En utvecklare kan använda pooler tooseamlessly växa tjänsten från ett lean Start tooa mogen på allt större skala.
 
-I poolen kan de enskilda databaserna skalas automatiskt inom fastställda parametrar. Vid hög belastning kan en databas använda fler eDTU:er för att uppfylla efterfrågan. Databaser med lätt arbetsbelastning förbrukar mindre, och databaser utan belastning förbrukar inga eDTU:er. Genom att etablera resurser för hela poolen i stället för enskilda databaser kan du förenkla dina hanteringsuppgifter. Dessutom har du en förutsägbar budget för poolen. Ytterligare eDTU:er kan läggas till i en befintlig pool utan något avbrott i databasen, förutom att databaserna kan behöva flyttas för att ge ytterligare beräkningsresurser för den nya eDTU-reservationen. På samma sätt kan eDTU:er som inte längre behövs tas bort från en befintlig pool när som helst. Och du kan lägga till eller ta bort databaser i poolen. Om du vet att en databas underförbrukar resurser tar du bort den.
+Inom hello poolen ges enskilda databaser hello flexibilitet tooauto skala inom de angivna parametrarna. En databas kan använda flera edtu: er toomeet begäran vid hög belastning. Databaser med lätt arbetsbelastning förbrukar mindre, och databaser utan belastning förbrukar inga eDTU:er. Etablerar resurser för hello hela poolen i stället för enskilda databaser förenklar administrativa uppgifter. Plus du har en förutsägbar budget för hello poolen. Ytterligare edtu: er kan läggas till tooan befintlig pool utan avbrott i databasen, förutom att hello databaser behöva flytta toobe tooprovide hello ytterligare beräkningsresurser för hello nya eDTU reservation. På samma sätt kan eDTU:er som inte längre behövs tas bort från en befintlig pool när som helst. Och du kan lägga till eller ta bort databaser toohello pool. Om du vet att en databas underförbrukar resurser tar du bort den.
 
-Du kan skapa och hantera en elastisk pool med hjälp av den [Azure-portalen](sql-database-elastic-pool-manage-portal.md), [PowerShell](sql-database-elastic-pool-manage-powershell.md), [Transact-SQL](sql-database-elastic-pool-manage-tsql.md), [C#](sql-database-elastic-pool-manage-csharp.md), och REST-API. 
+Du kan skapa och hantera en elastisk pool med hello [Azure-portalen](sql-database-elastic-pool-manage-portal.md), [PowerShell](sql-database-elastic-pool-manage-powershell.md), [Transact-SQL](sql-database-elastic-pool-manage-tsql.md), [C#](sql-database-elastic-pool-manage-csharp.md), och hello REST API. 
 
 ## <a name="when-should-you-consider-a-sql-database-elastic-pool"></a>När bör du överväga en SQL Database-elastisk pool?
 
 Pooler lämpar sig för ett stort antal databaser med specifika användningsmönster. För en viss databas kännetecknas det här mönstret av låg genomsnittlig användning med relativt ovanliga användningstoppar.
 
-Ju fler databaser du kan lägga till i en pool desto större blir dina besparingar. Beroende på ditt programanvändningsmönster kan du få besparingar med så lite som två S3-databaser.  
+hello flera databaser du kan lägga till tooa pool hello större blir din besparingar. Beroende på din programmönster användning är det möjligt toosee besparingar med så lite som två S3 databaser.  
 
-Följande avsnitt hjälper dig att förstå hur du avgör om en specifik samling databaser kan ha nytta av att tillhöra en pool. I exemplen används Standard-pooler, men samma principer gäller även för Basic- och Premium-pooler.
+hello följande avsnitt hjälper dig att förstå hur tooassess om din specifika samling av databaser kan dra nytta av att den finns i en pool. hello exemplen använder Standard pooler men hello samma principer gäller även tooBasic och Premium-pooler.
 
 ### <a name="assessing-database-utilization-patterns"></a>Utvärdera databasanvändningsmönster
 
-Följande bild visar ett exempel på en databas med mycket inaktiv tid, men även med regelbundna aktivitetstoppar. Det här är ett användningsmönster som passar för en pool:
+hello visar följande bild ett exempel på en databas som tillbringar mycket tid inaktiv, men också regelbundet ger spikar i diagrammet med aktivitet. Det här är ett användningsmönster som passar för en pool:
 
    ![en enkel databas som är lämplig för en pool](./media/sql-database-elastic-pool/one-database.png)
 
-Under femminutersperioden som visas har DB1 toppar med 90 DTU:er, men en genomsnittlig användning på mindre än 5 DTU:er. En S3-prestandanivå krävs för att köra den här arbetsbelastningen i en enkel databas, men det innebär att de flesta av resurserna inte används under perioder med låg aktivitet.
+För hello fem minuter långa perioden visas, DB1 toppar in too90 dtu: er, men genomsnittliga användningen är mindre än 5 dtu: er. En S3 prestandanivå krävs toorun arbetsbelastningen i en enskild databas, men detta lämnar de flesta av hello resurser inte används under perioder med låg aktivitet.
 
-En pool gör att dessa oanvända DTU:er kan delas av flera databaser och minskar således de DTU:er som krävs och den sammanlagda kostnaden.
+En pool kan dessa oanvända dtu: er toobe som delas mellan flera databaser och minskar hello dtu: er behövs och den totala kostnaden.
 
-Vi ska bygga vidare på föregående exempel och antar att det finns ytterligare databaser med liknande användningsmönster som DB1. De två bilderna nedan illustrerar användningen av 4 databaser och 20 databaser i samma diagram för att visa hur deras användning inte överlappar varandra över tid:
+Bygger på hello föregående exempel, anta att det finns ytterligare databaser med liknande användningsmönster som DB1. Hej användning av fyra databaserna i hello två figurerna nedan, och 20 databaser är lager till hello samma kurva tooillustrate hello icke-överlappande uppbyggnad deras belastning över tid:
 
    ![4 databaser med ett användningsmönster som passar för en pool](./media/sql-database-elastic-pool/four-databases.png)
 
   ![20 databaser med ett användningsmönster som passar för en pool](./media/sql-database-elastic-pool/twenty-databases.png)
 
-Den sammanlagda DTU-användningen över alla 20 databaser illustreras av den svarta linjen i föregående bild. Detta visar att den sammanlagda DTU-användningen aldrig överskrider 100 DTU:er och indikerar att 20 databaser kan dela 100 eDTU:er under den här tidsperioden. Detta resulterar i 20 gånger färre DTU:er och 13 gånger lägre pris jämfört med om varje databas läggs till i S3-prestandanivåer för enskilda databaser.
+hello sammanställd DTU-utnyttjande på alla 20 databaser illustreras av hello svart linje i hello föregående bild. Det visar att hello sammanställd DTU-utnyttjande aldrig överskrider 100 dtu: er och anger att hello 20 databaser kan dela 100 edtu: er för den här tidsperioden. Detta resulterar i 20 x minska dtu: er och en 13 x pris minskning jämfört med tooplacing varje hello databaser i S3 prestandanivåer för enskilda databaser.
 
-Det här exemplet är idealisk av följande anledningar:
+Det här exemplet är idealisk för hello följande orsaker:
 
 * Skillnaderna mellan användningen vid hög aktivitet och den genomsnittliga användningen per databas är stora.  
-* Belastningstopparna för varje databas inträffar vid olika tidpunkter.
+* hello belastning belastningen för varje databas inträffar vid olika tidpunkter i tid.
 * eDTU:er som delas mellan flera databaser.
 
-Priset för en pool är associerat med poolens eDTU:er. Även om eDTU-enhetspriset för en pool är 1,5 gånger större än DTU-enhetspriset för en enkel databas, så kan **pool-DTU:erna delas av många databaser och det behövs färre eDTU:er**. Dessa skillnader i pris och eDTU-delning utgör grunden för de prisbesparingar som pooler kan medföra.  
+hello priset för poolen är en funktion av hello pool-edtu: er. Medan hello eDTU enhetspriset för en pool är 1,5 x större än hello DTU enhetspriset för en enskild databas **pool-edtu: er kan delas av många databaser och färre totala edtu: er som krävs för**. Dessa skillnader i priser och eDTU delning är hello grunden för hello pris besparingar potentiella pooler kan ge.  
 
-Genom att följa nedanstående tumregler för antalet databaser och databasanvändning kan du vara säker på att en pool ger mindre kostnader jämfört med användningen av prestandanivåer för enskilda databaser.
+hello relaterade följande tumregel toodatabase antal och databasen användning hjälp tooensure som levererar en pool minskar kostnaden jämfört med toousing prestandanivåer för enskilda databaser.
 
 ### <a name="minimum-number-of-databases"></a>Minsta antal databaser
 
-Om summan av DTU:er för prestandanivåer för enskilda databaser är mindre än 1,5 gånger antalet eDTU:er som behövs för en pool, så är en elastisk pool ett mer kostnadseffektivt alternativ. Information om tillgängliga storlekar finns i avsnittet om [eDTU:er och lagringsgränser för elastiska pooler och elastiska databaser](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools).
+Om hello summan av hello dtu: erna för prestandanivåer för enskilda databaser är mer än 1,5 x hello edtu: er som behövs för hello pool, är det mer kostnadseffektivt med en elastisk pool. Information om tillgängliga storlekar finns i avsnittet om [eDTU:er och lagringsgränser för elastiska pooler och elastiska databaser](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools).
 
 ***Exempel***<br>
-Minst två S3-databaser eller minst 15 S0-databaser behövs för att en pool med 100 eDTU:er ska vara mer kostnadseffektivt än användningen av prestandanivåer för enskilda databaser.
+Minst två S3 databaser eller minst 15 S0 databaser krävs för en 100 eDTU-pool toobe mer kostnadseffektivt än att använda prestandanivåer för enskilda databaser.
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Högsta antal samtidigt databaser med aktivitetstoppar
 
-När eDTU:er delas kan inte alla databaser i en pool samtidigt använda eDTU:er upp till den tillgängliga gränsen om prestandanivåer för enskilda databaser används. Ju färre databaser som har hög aktivitet samtidigt, desto lägre pool-eDTU kan anges och desto mer kostnadseffektiv blir poolen. I allmänhet bör inte mer än 2/3 (eller 67 %) av databaserna i poolen samtidigt ha hög aktivitet upp till deras eDTU-gräns.
+Genom att dela edtu: er kan kan inte alla databaser i poolen samtidigt använda edtu: er in toohello begränsa tillgängliga när du använder prestandanivåer för enskilda databaser. Hej färre databaser som högsta samtidigt, hello lägre hello pool-eDTU kan ställas in och hello blir mer kostnadseffektiv hello-poolen. I allmänhet begränsa inte fler än 2/3 (eller 67%) av hello databaser i poolen hello bör samtidigt högsta tootheir eDTU.
 
 ***Exempel***<br>
-För att minska kostnaderna för tre S3-databaser i en pool med 200 eDTU:er kan högst två av dessa databaser ha belastningstoppar samtidigt. Annars, om fler än två av dessa fyra S3-databaser har toppar samtidigt, skulle poolen behöva utökas till mer än 200 eDTU:er. Om poolen utökas till mer än 200 eDTU:er skulle fler S3-databaser behöva läggas till i poolen för att kostnaderna ska vara lägre än med prestandanivåer för enskilda databaser.
+tooreduce kostnader för tre S3 databaser i en 200 eDTU-pool, högst två av dessa databaser kan samtidigt högsta i deras användning. Om fler än två av dessa fyra S3 databaser högsta samtidigt, annars måste hello poolen toobe storlek toomore än 200 edtu: er. Om hello poolen är storleksändrade toomore än 200 edtu: er, behöver mer S3 databaser toobe som lagts till toohello pool tookeep kostnader lägre än prestandanivåer för enskilda databaser.
 
-Observera att det här exemplet inte tar hänsyn till användningen av andra databaser i poolen. Om alla databaser har viss belastning vid en given tidpunkt kan mindre än 2/3 (eller 67 %) av databaserna ha aktivitetstoppar samtidigt.
+Observera användning av andra databaser i poolen hello inte beaktas i det här exemplet. Om alla databaser har vissa användning vid en viss tidpunkt, sedan mindre än 2/3 (eller 67%) av hello databaser kan högsta samtidigt.
 
 ### <a name="dtu-utilization-per-database"></a>DTU-användning per databas
-En stor skillnad mellan topp- och genomsnittsanvändningen av en databas indikerar långa perioder med låg belastning och korta perioder med hög användning. Det här användningsmönstret är idealisk för delning av resurser mellan databaser. Du bör överväga att lägga till en databas i en pool om dess högsta användning är runt 1,5 gånger större än dess genomsnittliga användning.
+En stor skillnad mellan hello belastning och genomsnittlig användning av en databas anger långvarig perioder med låg belastning och korta perioder med hög belastning. Det här användningsmönstret är idealisk för delning av resurser mellan databaser. Du bör överväga att lägga till en databas i en pool om dess högsta användning är runt 1,5 gånger större än dess genomsnittliga användning.
 
 ***Exempel***<br>
-En S3-databas som behöver 100 DTU:er vid hög aktivitet och som har en genomsnittlig användning på 67 DTU:er eller mindre är lämplig för delning av eDTU:er i en pool. På motsvarande sätt är en S1-databas som använder 20 DTU:er vid hög belastning och som har en genomsnittsanvändning på 13 DTU:er inte lämplig för en pool.
+S3-databas som toppar som pekar åt too100 dtu: er och använder i genomsnitt 67 dtu: er eller mindre är en bra kandidat för delning av edtu: er i poolen. Du kan också en S1-databas som toppar som pekar åt too20 dtu: er och använder i genomsnitt 13 dtu: er eller mindre är en bra kandidat för en pool.
 
-## <a name="how-do-i-choose-the-correct-pool-size"></a>Hur väljer rätt poolstorleken?
+## <a name="how-do-i-choose-hello-correct-pool-size"></a>Hur väljer hello rätt poolstorlek?
 
-Den bästa storleken för en pool beror på det totala antalet eDTU:er och lagringsresurser som behövs för alla databaser i poolen. Det betyder att du måste fastställa det större av följande:
+hello bästa storleken för en pool beror på hello sammanställd edtu: er och storage-resurser som krävs för alla databaser i hello pool. Detta omfattar att fastställa hello större hello följande:
 
-* Högsta antal DTU:er som används av alla databaser i poolen.
-* Högsta lagringsutrymme i byte som används av alla databaser i poolen.
+* Maximal dtu: er används av alla databaser i hello pool.
+* Maximalt lagringsutrymme byte som används av alla databaser i hello pool.
 
 Information om tillgängliga storlekar finns i avsnittet om [eDTU:er och lagringsgränser för elastiska pooler och elastiska databaser](#what-are-the-resource-limits-for-elastic-pools).
 
-SQL Database utvärderar automatiskt den historiska resursanvändningen för databaser på en befintlig SQL Database-server och rekommenderar lämplig poolkonfiguration på Azure Portal. Förutom rekommendationerna finns det en inbyggd beräkning som uppskattar eDTU-användningen för en anpassad grupp databaser på servern. Detta gör att du kan utföra en konsekvensanalys genom att interaktivt lägga till databaser i poolen och sedan ta bort dem för att visa en analys över resursanvändningen och storleksrekommendationer innan du genomför ändringarna. Mer information finns i [Monitor, manage, and size an elastic pool](sql-database-elastic-pool-manage-portal.md) (Övervaka, hantera och ändra storlek på en elastisk pool).
+SQL-databasen automatiskt utvärderar hello historiska resursanvändningen för databaser i en befintlig SQL-databasserver och rekommenderar hello poolen konfigurationen i hello Azure-portalen. I tillägg toohello rekommendationer beräknar en inbyggd upplevelse hello eDTU-användning för en anpassad grupp av databaser på hello-server. Detta gör toodo en ”” konsekvensanalys av interaktivt lägga till databaser toohello poolen och ta bort dem tooget resurs användningsanalys och storleksanpassa råd innan du genomför ändringarna. Mer information finns i [Monitor, manage, and size an elastic pool](sql-database-elastic-pool-manage-portal.md) (Övervaka, hantera och ändra storlek på en elastisk pool).
 
-I de fall då du inte kan använda verktygsuppsättningar kan du följa stegen nedan för att ta reda på om en pool är ett mer kostnadseffektivt alternativ än enskilda databaser:
+I fall där du inte kan använda verktygsuppsättning hjälper hello följande steg för steg dig att beräkna om poolen är mer kostnadseffektivt än enskilda databaser:
 
-1. Beräkna hur många eDTU:er som behövs för poolen så här:
+1. Beräkna hello edtu: er som behövs för hello poolen på följande sätt:
 
    MAX(<*totalt antal databaser* × *genomsnittlig DTU-användning per databas*>,<br>
    <*Antal databaser som har aktivitetstoppar samtidigt* × *DTU-toppbelastning per databas*)
-2. Beräkna hur stort lagringsutrymme som krävs för poolen genom att lägga till antalet byte som behövs för alla databaser i poolen. Fastställ sedan den eDTU-poolstorlek som ger den här mängden lagringsutrymme. Information om gränser för poollagring baserat på eDTU-poolstorlek finns i [eDTU and storage limits for elastic database pools and elastic databases](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools) (eDTU:er och lagringsgränser för elastiska pooler och elastiska databaser).
-3. Använd den större av eDTU-beräkningarna från steg 1 och steg 2.
-4. Gå till [sidan med SQL Database-priser](https://azure.microsoft.com/pricing/details/sql-database/) och leta upp den minsta eDTU-poolstorleken som är större än beräkningen från steg 3.
-5. Jämför poolpriset i steg 5 med priset för att använda lämpliga prestandanivåer för enskilda databaser.
+2. Beräkna hello lagringsutrymme som krävs för hello poolen genom att lägga till hello antalet byte som krävs för alla hello databaser i hello pool. Sedan fastställa hello eDTU poolstorlek som innehåller den här mängden lagringsutrymme. Information om gränser för poollagring baserat på eDTU-poolstorlek finns i [eDTU and storage limits for elastic database pools and elastic databases](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools) (eDTU:er och lagringsgränser för elastiska pooler och elastiska databaser).
+3. Ta hello större hello eDTU uppskattningar från steg 1 och 2.
+4. Se hello [SQL-databas sida med priser](https://azure.microsoft.com/pricing/details/sql-database/) och hitta eDTU-pool med hello minsta storlek som är större än hello uppskattning från steg3.
+5. Jämför hello poolen price från steg 5 toohello priset för att använda hello lämpliga prestandanivåer för enskilda databaser.
 
 ### <a name="changing-elastic-pool-resources"></a>Ändra elastisk pool resurser
 
-Du kan öka eller minska resurserna som är tillgängliga för en elastisk pool baserat på resursbehov.
+Du kan öka eller minska hello resurser tillgängliga tooan elastisk pool baserat på resursbehov.
 
-* Ändra min edtu: er per databas eller max edtu: er per databas vanligtvis har slutförts i 5 minuter eller mindre.
-* Ändra edtu: er per pool beror på den totala mängden diskutrymme som används av alla databaser i poolen. Ändringarna tar i genomsnitt 90 minuter eller mindre per 100 GB. Om det totala utrymmet som används av alla databaser i poolen är exempelvis 200 GB och den förväntade svarstiden för att ändra pool-eDTU per pool är 3 timmar eller mindre.
+* Ändra hello min edtu: er per databas eller max edtu: er per databas vanligtvis har slutförts i 5 minuter eller mindre.
+* Ändra hello edtu: er per pool beror på hello totala mängden diskutrymme som används av alla databaser i hello pool. Ändringarna tar i genomsnitt 90 minuter eller mindre per 100 GB. Om hello totalt utrymme som används av alla databaser i poolen hello är exempelvis 200 GB, och sedan hello förväntade svarstid för att ändra hello pool-eDTU per pool är tre timmar eller mindre.
 
-## <a name="what-are-the-resource-limits-for-elastic-pools"></a>Vilka är gränserna för elastiska pooler?
+## <a name="what-are-hello-resource-limits-for-elastic-pools"></a>Vad är hello gränserna för elastiska pooler?
 
-I följande tabeller beskrivs resurs-gränserna för elastiska pooler.  Observera att resursen gränserna för enskilda databaser i elastiska pooler är vanligtvis samma som för enskilda databaser utanför pooler baserat på dtu: er och tjänstnivån.  Högsta antal samtidiga arbetare för en S2-databas är till exempel 120 arbetare.  Högsta antal samtidiga arbetare för en databas i en Standardpool är därför också 120 arbetare om max DTU per databas i poolen är 50 dtu: er (som motsvarar S2).
+hello följande tabeller beskrivs hello gränserna för elastiska pooler.  Observera att hello gränserna för enskilda databaser i elastiska pooler är vanligtvis hello desamma som för enskilda databaser utanför pooler baserat på dtu: er och hello tjänstnivån.  Hej max samtidiga arbetare för en S2-databas är till exempel 120 arbetare.  Hej max samtidiga arbetare för en databas i en Standardpool är därför också 120 arbetare om Hej max DTU per databas i hello poolen är 50 dtu: er (som är likvärdiga tooS2).
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 
-Om alla DTU:er för en elastisk pool används får varje databas i poolen lika många resurser för att bearbeta frågor.  SQL Database-tjänsten tillhandahåller rättvis resursdelning mellan databaser genom att tilldela lika mycket beräkningstid till dem. En rättvis resursdelning i elastiska pooler tillämpas utöver den mängd resurser som varje databas är garanterad om det minsta antalet DTU:er per databas har angetts till ett annat värde än noll.
+Om alla dtu: er för en elastisk pool, får varje databas i hello pool lika mycket resurser tooprocess frågor.  hello SQL Database-tjänsten tillhandahåller resursdelning skälighet mellan databaser genom att säkerställa lika kortare perioder för beräkning. Elastisk pool resursdelning skälighet är dessutom tooany resurs annars garanteras tooeach databasen när minsta för hello DTU per databas är värdet tooa inte är noll.
 
 ### <a name="database-properties-for-pooled-databases"></a>Databasegenskaper för grupperade databaser
 
-I följande tabell beskrivs egenskaperna för pool-databaser.
+hello i den följande tabellen beskrivs hello egenskaper för grupperade databaser.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| Maximalt antal eDTU:er per databas |Det högsta antalet eDTU:er som en databas i poolen kan använda, om de är tillgängliga beroende på användningen av andra databaser i poolen.  Det högsta antalet eDTU:er per databas utgör ingen resursgaranti för en databas.  Den här inställningen är en global inställning som gäller för alla databaser i poolen. Ange ett högsta antal eDTU:er per databas som är tillräckligt högt för att hantera toppar i databasanvändningen. En viss grad av övertilldelning är att förvänta eftersom poolen normalt arbetar efter ett mönster med frekvent och lågfrekvent användning av databaser där inte alla databaser har aktivitetstoppar samtidigt. Anta exempelvis att toppanvändningen per databas är 20 eDTU:er och att endast 20 % av de 100 databaserna i poolen har hög belastning samtidigt.  Om det högsta antalet eDTU:er per databas har angetts till 20 eDTU:er är det rimligt att övertilldela poolen med 5 gånger så mycket och ange eDTU:erna per pool till 400. |
-| Minimalt antal eDTU:er per databas |Det minsta antalet eDTU:er som en databas i poolen är garanterad.  Den här inställningen är en global inställning som gäller för alla databaser i poolen. Det minsta antalet eDTU:er per databas kan anges till 0, vilket även är standardvärdet. Den här egenskapen anges till ett värde mellan 0 och den genomsnittliga eDTU-användningen per databas. Produkten av antalet databaser i poolen och det minsta antalet eDTU:er per databas får inte överskrida antalet eDTU:er per pool.  Om en pool till exempel har 20 databaser och det minsta antalet eDTU:er per databas har angetts till 10 eDTU:er så måste antalet eDTU:er per pool vara minst 200 eDTU:er. |
-| Maximalt datalagringsutrymme per databas |Det största lagringsutrymmet för en databas i en pool. Eftersom databaser i en pool delar poolens lagringsutrymme är databaslagringen begränsad till poolens återstående lagringsutrymme eller det största lagringsutrymmet per databas, beroende på vilket som är minst. Maximalt lagringsutrymme per pool avser det maximala lagringsutrymmet för datafiler i poolen och omfattar inte utrymme som används av loggfiler. |
+| Maximalt antal eDTU:er per databas |hello maximala antalet edtu: er som alla databaser i poolen hello kan använda om tillgängliga baserat på användning av andra databaser i hello pool.  Det högsta antalet eDTU:er per databas utgör ingen resursgaranti för en databas.  Den här inställningen är en global inställning som gäller tooall databaser i hello pool. Ange max edtu: er per databas tillräckligt högt toohandle toppar i databasen användning. Vissa graden av överanstränger förväntas eftersom hello poolen vanligtvis förutsätter varm eller kall användningsmönster för databaser där alla databaser inte samtidigt peaking. Anta exempelvis att hello belastning användning per databas är 20 edtu: er och bara 20% av hello 100 databaser i poolen hello belastning på hello samtidigt.  Om hello eDTU max per databas är too20 edtu: er, är rimliga tooovercommit hello pool av 5 gånger och ange hello edtu: er per pool too400. |
+| Minimalt antal eDTU:er per databas |hello minsta antal edtu: er som alla databaser i poolen hello garanterat.  Den här inställningen är en global inställning som gäller tooall databaser i hello pool. hello min eDTU per databas får anges too0 och är också hello standardvärdet. Den här egenskapen anges tooanywhere mellan 0 och hello genomsnittlig eDTU-användning per databas. hello produkten av hello antal databaser i poolen hello och hello min edtu: er per databas får inte överskrida hello edtu: er per pool.  Till exempel om poolen har 20 databaser och hello eDTU min per databas too10 edtu: er kan måste sedan hello edtu: er per pool vara minst lika stor som 200 edtu: er. |
+| Maximalt datalagringsutrymme per databas |hello maximalt lagringsutrymme för en databas i en pool. Grupperade databaser dela lagringsutrymme för pool så databaslagring är begränsad toohello mindre lagringsutrymme för återstående pool och maximal lagringskapacitet per databas. Maximalt lagringsutrymme per databas refererar toohello maxstorleken för hello datafiler och innehåller inte hello utrymme som används av loggfiler. |
 |||
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Använda andra funktioner i SQL-databas med elastiska pooler
 
 ### <a name="elastic-jobs-and-elastic-pools"></a>Elastiska jobb och elastiska pooler
 
-Med en pool förenklas hanteringsuppgifterna eftersom du kan köra skript i **[elastiska jobb](sql-database-elastic-jobs-overview.md)**. Ett elastiskt jobb underlättar hanteringen av stora antal databaser. För att komma igång kan du se [Kom igång med elastiska jobb](sql-database-elastic-jobs-getting-started.md).
+Med en pool förenklas hanteringsuppgifterna eftersom du kan köra skript i **[elastiska jobb](sql-database-elastic-jobs-overview.md)**. Ett elastiskt jobb underlättar hanteringen av stora antal databaser. toobegin, se [komma igång med elastiska jobb](sql-database-elastic-jobs-getting-started.md).
 
 Mer information om andra databasverktyg för att jobba med flera databaser, finns i [Skala ut med Azure SQL Database](sql-database-elastic-scale-introduction.md).
 
 ### <a name="business-continuity-options-for-databases-in-an-elastic-pool"></a>Alternativ för verksamhetskontinuitet för databaser i en elastisk pool
-Databaser i pool stöder generellt sett samma [funktioner för affärskontinuitet](sql-database-business-continuity.md) som finns tillgängliga för enskilda databaser.
+Pooler databaser vanligtvis stöd hello samma [funktionerna för verksamhetskontinuitet](sql-database-business-continuity.md) som är tillgängliga toosingle databaser.
 
-- **Återställning vid tidpunkt**: punkt i tiden återställning använder automatiska säkerhetskopieringar för att återställa en databas i en pool till en specifik tidpunkt. Mer information finns i avsnittet om [återställning till tidpunkt](sql-database-recovery-using-backups.md#point-in-time-restore)
+- **Återställning vid tidpunkt**: punkt i tiden återställning använder automatisk databasen säkerhetskopieringar toorecover en databas i en pool tooa punkt i tiden. Mer information finns i avsnittet om [återställning till tidpunkt](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **GEO-återställning**: Geo-återställning ger standardalternativet när en databas är inte tillgänglig på grund av en incident i den region där databasen finns. Mer information finns i avsnittet [Restore an Azure SQL Database or failover to a secondary](sql-database-disaster-recovery.md) (Återställa en Azure SQL-databas eller växla över till en sekundär databas)
+- **GEO-återställning**: Geo-återställning ger hello standardalternativet när en databas är inte tillgänglig på grund av en incident i hello region där hello-databasen finns. Se [återställa en Azure SQL Database eller failover tooa sekundär](sql-database-disaster-recovery.md)
 
 - **Aktiv geo-replikering**: konfigurera för program som har mer aggressivt recovery krav än geo-återställning kan erbjuda [aktiv geo-replikering](sql-database-geo-replication-overview.md).
 
-## <a name="manage-sql-database-elastic-pools-using-the-azure-portal"></a>Hantera SQL Database: elastiska pooler med Azure-portalen
+## <a name="manage-sql-database-elastic-pools-using-hello-azure-portal"></a>Hantera SQL Database: elastiska pooler med hello Azure-portalen
 
-### <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Skapa en ny SQL Database-elastisk pool med Azure-portalen
+### <a name="creating-a-new-sql-database-elastic-pool-using-hello-azure-portal"></a>Skapa en ny SQL Database-elastisk pool med hello Azure-portalen
 
-Det finns två sätt att skapa en elastisk pool i Azure-portalen. Du kan göra det från grunden om du vet vilken typ av pool du vill ha, eller så kan du börja med en rekommendation från tjänsten. SQL Database har inbyggd intelligens som rekommenderar en elastisk pool-installationen om det är mer kostnadseffektivt baserat på den senaste användningstelemetrin för dina databaser. 
+Det finns två sätt som du kan skapa en elastisk pool i hello Azure-portalen. Du kan göra det från grunden om du vet hello pool-installationen du vill eller börja med en rekommendation från hello-tjänsten. SQL Database har inbyggd intelligens som rekommenderar en elastisk pool-installationen om det är mer kostnadseffektivt baserat på hello senaste användningstelemetrin för dina databaser. 
 
-Skapa en elastisk pool från en befintlig **server** blad i portalen är det enklaste sättet att flytta befintliga databaser till en elastisk pool. Du kan också skapa en elastisk pool genom att söka **elastiska SQL-poolen** i den **Marketplace** eller klicka på **+ Lägg till** i den **SQL elastiska pooler** Bläddra i bladet. Du kan ange en ny eller befintlig server via den här poolen etablering av arbetsflöde.
+Skapa en elastisk pool från en befintlig **server** bladet i hello portal är hello enklaste sättet toomove befintliga databaser till en elastisk pool. Du kan också skapa en elastisk pool genom att söka **elastiska SQL-poolen** i hello **Marketplace** eller klicka på **+ Lägg till** i hello **SQL elastiska pooler**Bläddra bladet. Du kan kan toospecify en ny eller befintlig server via den här poolen etablering av arbetsflöde.
 
 > [!NOTE]
-> Du kan skapa flera pooler på en server, men du kan inte lägga till databaser från olika servrar i samma pool.
+> Du kan skapa flera pooler på en server, men du kan inte lägga till databaser från olika servrar i hello samma pool.
 >  
 
-Prisnivån för poolen avgör vilka funktioner som är tillgängliga för elastics i poolen och maximala antalet edtu: er (eDTU MAX) och lagringsutrymme (GB) är tillgängliga för varje databas. Mer information finns i [tjänstnivåer](#edtu-and-storage-limits-for-elastic-pools).
+hello avgör prisnivån för poolen hello funktioner tillgängliga toohello elastics i hello poolen och hello maximala antalet edtu: er (eDTU MAX) och lagringsutrymme (GB) tillgängliga tooeach databas. Mer information finns i [tjänstnivåer](#edtu-and-storage-limits-for-elastic-pools).
 
-Om du vill ändra prisnivå för poolen klickar du på **Prisnivå**, klickar på önskad prisnivå och sedan på **Välj**.
+toochange hello prisnivå för poolen hello, klickar du på **prisnivå**, klicka på hello prisnivån och klickar sedan på **Välj**.
 
 > [!IMPORTANT]
-> När du valt prisnivå och bekräftat ditt val genom att klicka på **OK** i det sista steget, kommer du inte kunna ändra prisnivå för poolen igen. Om du vill ändra prisnivå för en befintlig elastisk pool, skapa en elastisk pool i den önskade prisnivån och migrera databaserna till den nya poolen.
+> När du väljer hello prisnivån och genomför ändringarna genom att klicka på **OK** hello sista steget, inte kan toochange hello prisnivån för hello pool. toochange hello prisnivå för en befintlig elastisk pool, skapa en elastisk pool i hello önskade prisnivån och migrera hello databaser toothis ny pool.
 >
 
-Om de databaser du arbetar med har tillräckligt med historisk användningstelemetri, kommer stapeldiagrammen **Beräknad eDTU- och GB-användning** och **Faktisk eDTU-användning** att uppdateras för att hjälpa dig att fatta konfigurationsbeslut. Tjänsten kan också ge dig ett rekommendationsmeddelande för att hjälpa dig få rätt storlek på poolen.
+Om hello databaser du arbetar med har tillräckligt med historisk användningstelemetri, hello **beräknad eDTU och GB-användning** diagram och hello **faktisk eDTU-användning** stapeldiagram uppdatering toohelp du göra konfiguration beslut. Dessutom du hello-tjänsten kan ge en rekommendation meddelandet toohelp du rätt storlek hello poolen.
 
-SQL Database-tjänsten utvärderar användningshistorik och rekommenderar en eller flera pooler när det är mer kostnadseffektivt än att använda enskilda databaser. Varje rekommendation är konfigurerad med en unik delmängd av serverns databaser som bäst passar i poolen.
+hello SQL Database-tjänsten utvärderar Användningshistorik och rekommenderar en eller flera pooler när det är mer kostnadseffektivt än att använda enskilda databaser. Varje rekommendation är konfigurerad med en unik delmängd av hello server-databaser som bäst passar hello poolen.
 
 ![rekommenderad pool](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)  
 
-Pool-rekommendationerna omfattar:
+hello pool-rekommendationerna omfattar:
 
-- En prisnivå för poolen (Basic, Standard, Premium eller Premium RS)
+- En prisnivå för hello poolen (Basic, Standard, Premium eller Premium RS)
 - Lämpliga **POOL-eDTU:er** (kallas även Max eDTU:er per pool)
-- **eDTU MAX** och **eDTU Min** per databas
-- Listan över rekommenderade databaser för poolen
+- Hej **eDTU MAX** och **eDTU Min** per databas
+- hello listan över rekommenderade databaser för hello-pool
 
 > [!IMPORTANT]
-> Tjänsten tar hänsyn till de senaste 30 dagarnas telemetri vid rekommendation av pooler. Det måste finnas minst 7 dagar för en databas ska anses som en kandidat för en elastisk pool. Databaser som redan finns i en elastisk pool är inte rekommenderade kandidater för elastiska pooler.
+> hello service beaktas hello senaste 30 dagarnas telemetri vid rekommendation av pooler. För en databas toobe betraktas som en kandidat för en elastisk pool, måste det finnas minst 7 dagar. Databaser som redan finns i en elastisk pool är inte rekommenderade kandidater för elastiska pooler.
 >
 
-Tjänsten utvärderar resursbehov och kostnadseffektivitet vid flytt av de enskilda databaserna i varje tjänstnivå till pooler inom samma nivå. Alla standard-databaser på servern utvärderas exempelvis för hur de skulle passa in i en standard elastisk pool. Det innebär att tjänsten inte göra rekommendationer mellan olika nivåer, som att flytta en standard-databas till en premium-pool.
+hello tjänsten utvärderar resursbehov och kostnadseffektivitet av glidande hello enda databaser i varje tjänstnivå till pooler inom hello samma nivå. Alla standard-databaser på servern utvärderas exempelvis för hur de skulle passa in i en standard elastisk pool. Det innebär att hello-tjänsten inte göra rekommendationer mellan olika nivåer, till exempel flytta en Standard-databas till en Premium-pool.
 
-När du lägger till databaserna i poolen, genereras dynamiskt rekommendationer baserat på historisk användning av databaserna som du har valt. De här rekommendationerna som visas i eDTU och GB Användningsdiagram och i en rekommendations-banderoll överst i den **konfigurera pool** bladet. De här rekommendationerna är avsedda att hjälpa dig att skapa en elastisk pool som är optimerade för dina specifika databaser.
+När du lägger till databaser toohello pool genereras dynamiskt rekommendationer baserat på hello historisk användning av hello-databaser som du har valt. De här rekommendationerna som visas i hello eDTU och GB och i en rekommendations-banderoll överst hello i hello **konfigurera pool** bladet. De här rekommendationerna är avsedda tooassist som du skapar en elastisk pool optimerad för dina specifika databaser.
 
 ![dynamiska rekommendationer](./media/sql-database-elastic-pool-create-portal/dynamic-recommendation.png)
 
 ### <a name="manage-and-monitor-an-elastic-pool"></a>Hantera och övervaka en elastisk pool
 
-Du kan övervaka användningen av en elastisk pool och databaserna i poolen i Azure-portalen. Du kan också göra en uppsättning ändringar i den elastiska poolen och skicka alla ändringar på samma gång. De här förändringarna innefattar att lägga till eller ta bort databaser, ändra inställningarna elastisk pool eller ändra databasinställningarna.
+Du kan övervaka hello-belastningen för en elastisk pool och hello databaser i poolen i hello Azure-portalen. Du kan också göra en uppsättning ändringar tooyour elastisk pool och skicka alla ändringar på hello samma tid. De här förändringarna innefattar att lägga till eller ta bort databaser, ändra inställningarna elastisk pool eller ändra databasinställningarna.
 
-Följande bild visar ett exempel elastisk pool. Vyn innehåller:
+hello följande bild visar ett exempel elastisk pool. hello-vyn innehåller:
 
-*  Diagram för övervakning av resursanvändningen för både den elastiska poolen och databaser som ingår i poolen.
-*  Den **konfigurera** pool för att göra ändringar i den elastiska poolen.
-*  Den **Skapa databas** knapp som skapar en databas och lägger till den aktuella elastisk pool.
+*  Diagram för övervakning av resursanvändningen för både hello elastisk pool och hello databaser som ingår i hello pool.
+*  Hej **konfigurera** pool knappen toomake ändras toohello elastisk pool.
+*  Hej **Skapa databas** skapar du en databas och lägger till den toohello aktuella elastisk pool.
 *  Elastiska jobb som hjälper dig hantera stort antal databaser genom att köra Transact-SQL-skript mot alla databaser i en lista.
 
 ![Pool-vy](./media/sql-database-elastic-pool-manage-portal/basic.png)
 
-Du kan gå till en viss pool för att se dess resursutnyttjande. Som standard konfigureras poolen om du vill visa lagrings- och eDTU-användning för den senaste timmen. Diagrammet kan konfigureras för att visa olika mätvärden via olika tidsfönster. Klicka på den **resursutnyttjande** diagram **elastisk pool övervakning** att visa en detaljerad vy av de angivna mätvärdena via den angivna tidsperioden.
+Du kan gå tooa viss poolen toosee dess resursutnyttjande. Hello poolen är som standard konfigurerade tooshow lagring och eDTU-användning för hello senaste timmen. hello diagrammet kan vara konfigurerade tooshow olika mätvärden via olika tidsfönster. Klicka på hello **resursutnyttjande** diagram **elastisk pool övervakning** tooshow en detaljerad vy av hello angetts mätvärden via hello angivna tidsfönstret.
 
 ![Övervakning av elastisk pool](./media/sql-database-elastic-pool-manage-portal/basic-2.png)
 
 ![Bladet Mått](./media/sql-database-elastic-pool-manage-portal/metric.png)
 
-### <a name="to-customize-the-chart-display"></a>Du kan anpassa diagram
+### <a name="toocustomize-hello-chart-display"></a>toocustomize hello diagramvyn
 
-Du kan redigera diagrammet och mått bladet för att visa andra mått som CPU-procent, data IO-procent och loggen IO-procent som används.
+Du kan redigera hello diagram och hello mått bladet toodisplay andra mått som CPU-procent, data IO-procent och loggen IO-procent som används.
 
 ![Klicka på Redigera](./media/sql-database-elastic-pool-manage-portal/edit-metric.png)
 
-På den **redigera diagram** formuläret, du kan välja ett tidsintervall (efter timme, dag, eller föregående vecka), eller klicka på **anpassade** att välja alla datumintervall under de senaste två veckorna. Du kan välja mellan ett fält eller ett linjediagram och välj sedan resurserna som ska övervaka.
+På hello **redigera diagram** formuläret, du kan välja ett tidsintervall (efter timme, dag, eller föregående vecka), eller klicka på **anpassade** tooselect i hello vara ett datum senaste två veckorna. Du kan välja mellan ett fält eller ett linjediagram och välj sedan hello resurser toomonitor.
 
 > [!Note]
-> Endast mått med samma enheten kan visas i diagrammet på samma gång. Till exempel om du väljer ”eDTU i procent” kan du bara välja andra mått med procentandel som enheten.
+> Endast mått med samma enhet som kan visas i hello hello diagram på hello samma tid. Till exempel om du väljer ”eDTU i procent” kan du bara välja andra mått med procentandel som hello enhet.
 >
 
 [Klicka på Redigera](./media/sql-database-elastic-pool-manage-portal/edit-chart.png)
 
 ### <a name="manage-and-monitor-databases-in-an-elastic-pool"></a>Hantera och övervaka databaser i en elastisk pool
 
-Enskilda databaser kan också övervakas för potentiella problem. Under **elastisk databas övervakning**, det finns ett diagram som visar mått för fem databaser. Som standard i diagrammet visas de översta 5 databaserna i poolen efter genomsnittlig eDTU-användning under den senaste timmen. 
+Enskilda databaser kan också övervakas för potentiella problem. Under **elastisk databas övervakning**, det finns ett diagram som visar mått för fem databaser. Som standard hello diagrammet visar hello övre 5 databaser i poolen hello av genomsnittlig eDTU-användning i hello senaste timmen. 
 
 ![Övervakning av elastisk pool](./media/sql-database-elastic-pool-manage-portal/basic-3.png)
 
-Klicka på den **eDTU-användning för databaser för den senaste timmen** under **elastisk databas övervakning**. Då öppnas **databasen resursutnyttjande** och ger en detaljerad vy av databasanvändningen i poolen. Med rutnätet i den nedre delen av bladet kan välja du alla databaser i poolen för att visa dess användning i diagrammet (upp till 5 databaser). Du kan också anpassa fönstret mått och tid som visas i diagrammet genom att klicka på **redigera diagram**.
+Klicka på hello **eDTU-användning för databaser för hello senaste timmen** under **elastisk databas övervakning**. Då öppnas **databasen resursutnyttjande** och ger en detaljerad vy av hello databasanvändningen i hello pool. Använder hello rutnät i hello nedre delen av hello-bladet, kan du välja alla databaser i hello poolen toodisplay användningen i hello diagram (upp too5 databaser). Du kan också anpassa hello mått och tid fönster som visas i diagrammet hello genom att klicka på **redigera diagram**.
 
 ![-Databasresursbladet användning](./media/sql-database-elastic-pool-manage-portal/db-utilization.png)
 
-### <a name="to-customize-the-view"></a>Anpassa vyn
+### <a name="toocustomize-hello-view"></a>toocustomize hello vy
 
-Du kan redigera diagram om du vill markera ett tidsintervall (efter timme eller senaste 24 timmarna) eller klicka på **anpassade** att välja en annan dag under de senaste 2 veckorna ska visas.
+Du kan redigera hello diagram tooselect tidsintervall (efter timme eller senaste 24 timmarna) eller klicka på **anpassade** tooselect en annan dag i hello efter två veckor toodisplay.
 
 ![Klicka på Redigera diagram](./media/sql-database-elastic-pool-manage-portal/db-utilization-blade.png)
 
 ![Klicka på anpassad](./media/sql-database-elastic-pool-manage-portal/editchart-date-time.png)
 
-Du kan också klicka på **databaser genom att jämföra** listrutan och välj ett annat mått som ska användas vid jämförelse av databaser.
+Du kan också klicka på hello **databaser genom att jämföra** listrutan tooselect olika mått toouse när databaser.
 
-![Redigera schemat](./media/sql-database-elastic-pool-manage-portal/edit-comparison-metric.png)
+![Redigera hello diagram](./media/sql-database-elastic-pool-manage-portal/edit-comparison-metric.png)
 
-### <a name="to-select-databases-to-monitor"></a>Att välja databaser för att övervaka
+### <a name="tooselect-databases-toomonitor"></a>tooselect databaser toomonitor
 
-I databaslistan i den **databasen resursutnyttjande** bladet hittar du viss databaser genom att titta igenom sidorna i listan eller genom att skriva namnet på en databas. Använd kryssrutan för att välja databasen.
+I listan för hello databasen hello **databasen resursutnyttjande** bladet hittar du viss databaser genom att titta igenom hello sidorna i hello listan eller genom att skriva hello namnet på en databas. Använd hello kryssrutan tooselect hello-databasen.
 
-![Sök efter databaser för att övervaka](./media/sql-database-elastic-pool-manage-portal/select-dbs.png)
+![Sök efter databaser toomonitor](./media/sql-database-elastic-pool-manage-portal/select-dbs.png)
 
 
-### <a name="add-an-alert-to-an-elastic-pool-resource"></a>Lägga till en avisering till en elastisk pool-resurs
+### <a name="add-an-alert-tooan-elastic-pool-resource"></a>Lägg till en resurs för avisering tooan elastisk pool
 
-Du kan lägga till regler för en elastisk pool som skickar e-post till personer eller avisering strängar till URL: en slutpunkter när den elastiska poolen träffar ett tröskelvärde för användning som du skapat.
+Du kan lägga till regler tooan elastisk pool som skickar e-post toopeople eller varning strängar tooURL slutpunkter när hello elastisk pool träffar ett tröskelvärde för användning som du skapat.
 
-**Lägga till en avisering till en resurs:**
+**tooadd en avisering tooany resurs:**
 
-1. Klicka på den **resursutnyttjande** diagrammet för att öppna den **mått** bladet klickar du på **Lägg till avisering**, och fyller sedan informationen i den **lägga till en varningsregel** bladet (**resurs** har angetts automatiskt upp till att du arbetar med poolen).
-2. Ange en **namn** och **beskrivning** som identifierar aviseringen du och mottagare.
-3. Välj en **mått** som du vill Varna från listan.
+1. Klicka på hello **resursutnyttjande** diagram tooopen hello **mått** bladet, klickar du på **Lägg till avisering**, och fyller sedan hello informationen i hello **lägga till en avisering regeln** bladet (**resurs** konfigureras automatiskt toobe hello pool du arbetar med).
+2. Ange en **namn** och **beskrivning** som identifierar hello avisering tooyou och hello mottagare.
+3. Välj en **mått** som du vill tooalert hello-listan.
 
-    Diagrammet visar dynamiskt resursanvändningen för den måtten för att välja ett tröskelvärde.
+    hello diagrammet visar dynamiskt resursanvändningen för den mått toohelp du väljer ett tröskelvärde.
 
 4. Välj en **villkoret** (större än mindre än osv) och en **tröskelvärdet**.
-5. Välj en **Period** som mått regeln måste uppfyllas innan aviseringen utlösare.
+5. Välj en **Period** som hello mått regeln måste uppfyllas innan hello avisering utlösare.
 6. Klicka på **OK**.
 
 Mer information finns i [skapa SQL-databas aviseringar i Azure-portalen](sql-database-insights-alerts-portal.md).
 
 ### <a name="move-a-database-into-an-elastic-pool"></a>Flytta en databas till en elastisk pool
 
-Du kan lägga till eller ta bort databaser från en befintlig adresspool. Databaserna kan vara i andra pooler. Du kan bara lägga till databaser som finns på samma logiska server.
+Du kan lägga till eller ta bort databaser från en befintlig adresspool. hello databaser kan vara i andra pooler. Men du kan bara lägga till databaser som finns på hello samma logiska server.
 
  ![Klicka på Konfigurera pool](./media/sql-database-elastic-pool-manage-portal/configure-pool.png)
 
-![Klicka på Lägg till pool](./media/sql-database-elastic-pool-manage-portal/add-to-pool.png)
+![Klicka på Lägg till toopool](./media/sql-database-elastic-pool-manage-portal/add-to-pool.png)
 
-![Välj databaser att lägga till](./media/sql-database-elastic-pool-manage-portal/add-databases-pool.png)
+![Välj databaser tooadd](./media/sql-database-elastic-pool-manage-portal/add-databases-pool.png)
 
 ![Väntande pool-tillägg](./media/sql-database-elastic-pool-manage-portal/pending-additions.png)
 
@@ -320,9 +320,9 @@ Du kan lägga till eller ta bort databaser från en befintlig adresspool. Databa
 
 ### <a name="change-performance-settings-of-an-elastic-pool"></a>Ändra inställningar för prestanda för en elastisk pool
 
-När du övervakar resursanvändningen för en elastisk pool kan du märka att några justeringar behövs. Poolen måste kanske en ändring i gränser prestanda eller lagring. Kanske vill du ändra databasinställningarna i poolen. Du kan ändra inställningarna för poolen när som helst för att hämta den bästa balansen mellan prestanda och kostnader. Se [när en elastisk pool kan användas?](sql-database-elastic-pool.md) för mer information.
+När du övervakar hello resursanvändningen för en elastisk pool kan du märka att några justeringar behövs. Hello poolen behöver kanske en ändring i hello prestanda eller lagring gränser. Du vill eventuellt toochange hello databasinställningarna i hello pool. Du kan ändra hello installationen av hello poolen på varje gång tooget hello bästa balansen mellan prestanda och kostnad. Se [när en elastisk pool kan användas?](sql-database-elastic-pool.md) för mer information.
 
-Begränsar per pool och edtu: er per databas om du vill ändra edtu: er eller lagring:
+toochange hello edtu: er eller lagring gränser per pool och edtu: er per databas:
 
 ![Resursutnyttjande elastisk pool](./media/sql-database-elastic-pool-manage-portal/resize-pool.png)
 
@@ -330,10 +330,10 @@ Begränsar per pool och edtu: er per databas om du vill ändra edtu: er eller la
 
 ## <a name="manage-sql-database-elastic-pools-using-powershell"></a>Hantera SQL Database: elastiska pooler med hjälp av PowerShell
 
-Använd följande PowerShell-cmdlets för att skapa och hantera SQL-databas elastiska pooler med Azure PowerShell. Om du behöver installera eller uppgradera PowerShell, se [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps). Om du vill skapa och hantera databaser, servrar och brandväggsregler, se [skapa och hantera Azure SQL Database-servrar och databaser med hjälp av PowerShell](sql-database-servers-databases.md#manage-azure-sql-servers-databases-and-firewalls-using-powershell). 
+toocreate och hantera SQL-databas elastiska pooler med Azure PowerShell, Använd hello följande PowerShell-cmdlets. Om du behöver tooinstall eller uppgradera PowerShell Se [installera Azure PowerShell-modulen](/powershell/azure/install-azurerm-ps). toocreate och hantera databaser, servrar och brandväggsregler, se [skapa och hantera Azure SQL Database-servrar och databaser med hjälp av PowerShell](sql-database-servers-databases.md#manage-azure-sql-servers-databases-and-firewalls-using-powershell). 
 
 > [!TIP]
-> PowerShell-exempelskript, se [skapa elastiska pooler och flytta databaser mellan pooler och från en pool med PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) och [Använd PowerShell för att övervaka och skala en elastisk SQL-pool i Azure SQL Database](scripts/sql-database-monitor-and-scale-pool-powershell.md).
+> PowerShell-exempelskript, se [skapa elastiska pooler och flytta databaser mellan pooler och från en pool med PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) och [Använd PowerShell toomonitor och skala en SQL-elastisk pool i Azure SQL Database](scripts/sql-database-monitor-and-scale-pool-powershell.md).
 >
 
 | Cmdlet | Beskrivning |
@@ -342,22 +342,22 @@ Använd följande PowerShell-cmdlets för att skapa och hantera SQL-databas elas
 |[Get-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/get-azurermsqlelasticpool)|Hämtar elastiska pooler och deras värden på en logisk SQLServer.|
 |[Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)|Ändrar egenskaper för en elastisk databaspool på en logisk SQLServer.|
 |[Ta bort AzureRmSqlElasticPool](/powershell/module/azurerm.sql/remove-azurermsqlelasticpool)|Tar bort en elastisk databaspool på en logisk SQLServer.|
-|[Get-AzureRmSqlElasticPoolActivity](/powershell/module/azurerm.sql/get-azurermsqlelasticpoolactivity)|Hämtar status för åtgärder på en elastisk pool på en logisk SQLServer.|
+|[Get-AzureRmSqlElasticPoolActivity](/powershell/module/azurerm.sql/get-azurermsqlelasticpoolactivity)|Hämtar hello status för åtgärder på en elastisk pool på en logisk SQLServer.|
 |[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|Skapar en ny databas i en befintlig adresspool eller som en enskild databas. |
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Hämtar en eller flera databaser.|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Anger egenskaperna för en databas eller flyttar en befintlig databas i, slut på eller mellan elastiska pooler.|
 |[Ta bort-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|Tar bort en databas.|
 
 > [!TIP]
-> Skapandet av många databaser i en elastisk pool kan ta tid när det görs med portalen eller PowerShell-cmdletar som skapar bara en enskild databas åt gången. Om du vill automatisera skapande i en elastisk pool, se [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).
+> Skapandet av många databaser i en elastisk pool kan ta tid när det görs med hello portal eller PowerShell-cmdletar som skapar bara en enskild databas åt gången. tooautomate skapande i en elastisk pool, se [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).
 >
 
-## <a name="manage-sql-database-elastic-pools-using-the-azure-cli"></a>Hantera SQL Database: elastiska pooler med hjälp av Azure CLI
+## <a name="manage-sql-database-elastic-pools-using-hello-azure-cli"></a>Hantera SQL Database: elastiska pooler med hello Azure CLI
 
-Skapa och hantera SQL-databas elastiska pooler med den [Azure CLI](/cli/azure/overview), Använd följande [Azure CLI SQL Database](/cli/azure/sql/db) kommandon. Använd [Cloud Shell](/azure/cloud-shell/overview) för att köra CLI i webbläsaren eller [installera](/cli/azure/install-azure-cli) det på macOS, Linux eller Windows. 
+toocreate och hantera SQL-databas elastiska pooler med hello [Azure CLI](/cli/azure/overview), använder hello följande [Azure CLI SQL Database](/cli/azure/sql/db) kommandon. Använd hello [moln Shell](/azure/cloud-shell/overview) toorun hello CLI i webbläsaren eller [installera](/cli/azure/install-azure-cli) på macOS, Linux och Windows. 
 
 > [!TIP]
-> Azure CLI exempelskript finns [Använd CLI för att flytta en Azure SQL database i en elastisk pool SQL](scripts/sql-database-move-database-between-pools-cli.md) och [Använd Azure CLI för att skala en elastisk SQL-pool i Azure SQL Database](scripts/sql-database-scale-pool-cli.md).
+> Azure CLI exempelskript finns [Använd CLI toomove en Azure SQL database i en elastisk pool SQL](scripts/sql-database-move-database-between-pools-cli.md) och [Använd Azure CLI tooscale en elastisk SQL-pool i Azure SQL Database](scripts/sql-database-scale-pool-cli.md).
 >
 
 | Cmdlet | Beskrivning |
@@ -365,32 +365,32 @@ Skapa och hantera SQL-databas elastiska pooler med den [Azure CLI](/cli/azure/ov
 |[Skapa AZ sql elastisk pool](/cli/azure/sql/elastic-pool#create)|Skapar en elastisk pool.|
 |[AZ sql elastisk pool lista](/cli/azure/sql/elastic-pool#list)|Returnerar en lista över elastiska pooler i en server.|
 |[AZ sql elastisk pool lista-databaser](/cli/azure/sql/elastic-pool#list-dbs)|Returnerar en lista över databaser i en elastisk pool.|
-|[AZ sql elastisk pool lista-versioner](/cli/azure/sql/elastic-pool#list-editions)|Även tillgängliga poolen DTU inställningar, Lagringsgränser och per databasinställningarna. För att minska detaljnivå ytterligare Lagringsgränser och per databas inställningar döljs som standard.|
+|[AZ sql elastisk pool lista-versioner](/cli/azure/sql/elastic-pool#list-editions)|Även tillgängliga poolen DTU inställningar, Lagringsgränser och per databasinställningarna. Inställningar för döljs som standard i ordning tooreduce detaljnivå ytterligare Lagringsgränser och per databas.|
 |[AZ sql elastisk pool uppdateringen](/cli/azure/sql/elastic-pool#update)|Uppdaterar en elastisk pool.|
-|[ta bort AZ sql-elastisk pool](/cli/azure/sql/elastic-pool#delete)|Tar bort den elastiska poolen.|
+|[ta bort AZ sql-elastisk pool](/cli/azure/sql/elastic-pool#delete)|Tar bort hello elastisk pool.|
 
 ## <a name="manage-sql-database-elastic-pools-using-transact-sql"></a>Hantera SQL Database: elastiska pooler med Transact-SQL
 
-Skapa och flytta databaser i befintliga elastiska pooler eller att returnera information om en SQL Database-elastisk pool med Transact-SQL, Använd följande T-SQL-kommandon. Du kan skicka dessa kommandon med hjälp av Azure portal [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), eller andra program som kan ansluta till en Azure SQL Database-server och skicka Transact-SQL-kommandon. Om du vill skapa och hantera databaser, servrar och brandväggsregler, se [skapa och hantera Azure SQL Database-servrar och databaser med hjälp av Transact-SQL](sql-database-servers-databases.md#manage-azure-sql-servers-databases-and-firewalls-using-transact-sql).
+toocreate och flytta databaser i befintliga elastiska pooler eller tooreturn information om en SQL Database-elastisk pool med Transact-SQL, Använd hello följande T-SQL-kommandon. Du kan skicka dessa kommandon använder hello Azure-portalen [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs), eller andra program som kan ansluta tooan Azure SQL Database-server och skicka Transact-SQL kommandon. toocreate och hantera databaser, servrar och brandväggsregler, se [skapa och hantera Azure SQL Database-servrar och databaser med hjälp av Transact-SQL](sql-database-servers-databases.md#manage-azure-sql-servers-databases-and-firewalls-using-transact-sql).
 
 > [!IMPORTANT]
-> Du kan inte skapa, uppdatera eller ta bort en Azure SQL Database-elastisk pool med Transact-SQL. Du kan lägga till eller ta bort databaser från en elastisk pool och du kan använda av DMV: er för att returnera information om befintliga elastiska pooler.
+> Du kan inte skapa, uppdatera eller ta bort en Azure SQL Database-elastisk pool med Transact-SQL. Du kan lägga till eller ta bort databaser från en elastisk pool och du kan använda av DMV: er tooreturn information om befintliga elastiska pooler.
 >
 
 | Kommando | Beskrivning |
 | --- | --- |
-|[Skapa databas (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Skapar en ny databas i en befintlig adresspool eller som en enskild databas. Du måste vara ansluten till huvuddatabasen för att skapa en ny databas.|
+|[Skapa databas (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Skapar en ny databas i en befintlig adresspool eller som en enskild databas. Du måste vara anslutna toohello huvuddatabasen toocreate en ny databas.|
 | [ALTER DATABASE (Azure SQL-databas)](/sql/t-sql/statements/alter-database-azure-sql-database) |Flytta en databas i, slut på eller mellan elastiska pooler.|
 |[Ta bort databasen (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Tar bort en databas.|
-|[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Returnerar resurs användningsstatistik för elastiska databaspooler i en logisk server. För varje elastisk databaspool att det finns en rad för varje 15 sekunder reporting fönstret (fyra rader per minut). Detta inkluderar CPU, IO, Log, användningen av lagringsutrymme och samtidiga begäran-session användning av alla databaser i poolen.|
-|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Returnerar edition (tjänstnivån), tjänstmålet (prisnivån) och namn på elastisk pool, för en Azure SQL-databas eller ett Azure SQL Data Warehouse. Returnerar information om alla databaser om inloggad på master-databasen i en Azure SQL Database-server. För Azure SQL Data Warehouse, måste du vara ansluten till master-databasen.|
+|[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Returnerar resurs användningsstatistik för alla hello elastiska databaspooler i en logisk server. För varje elastisk databaspool att det finns en rad för varje 15 sekunder reporting fönstret (fyra rader per minut). Detta inkluderar CPU, IO, Log, användningen av lagringsutrymme och samtidiga begäran-session användning alla databaser i hello pool.|
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Returnerar hello edition (tjänstnivån), tjänstmålet (prisnivån) och namn på elastisk pool, för en Azure SQL-databas eller ett Azure SQL Data Warehouse. Returnerar information om alla databaser om inloggad toohello master-databasen i en Azure SQL Database-server. Du måste vara anslutna toohello huvuddatabasen för Azure SQL Data Warehouse.|
 
-## <a name="manage-sql-database-elastic-pools-using-the-rest-api"></a>Hantera SQL Database: elastiska pooler med hjälp av REST-API
+## <a name="manage-sql-database-elastic-pools-using-hello-rest-api"></a>Hantera SQL Database: elastiska pooler med hello REST API
 
-Om du vill skapa och hantera SQL Database: elastiska pooler med hjälp av REST-API, se [Azure SQL Database REST API](/rest/api/sql/).
+toocreate och hantera SQL Database: elastiska pooler med hello REST-API, se [Azure SQL Database REST API](/rest/api/sql/).
 
 ## <a name="next-steps"></a>Nästa steg
 
 * Se en video [Microsoft Virtual Academy video kursen på Azure SQL Database-elastisk funktioner](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
-* Läs mer om designmönster för SaaS-program med elastiska pooler i [Designmönster för SaaS-program med flera klienter med Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
-* Om du har en SaaS-självstudiekurs med elastiska pooler finns [introduktion till Wingtip SaaS-program](sql-database-wtp-overview.md).
+* toolearn mer om designmönster för SaaS-program med elastiska pooler finns [designmönster för flera innehavare SaaS-program med Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+* Om du har en SaaS-självstudiekurs med elastiska pooler finns [introduktion toohello Wingtip SaaS-program](sql-database-wtp-overview.md).

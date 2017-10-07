@@ -1,6 +1,6 @@
 ---
-title: "Lägg till anpassad Service Fabric-hälsorapporter | Microsoft Docs"
-description: "Beskriver hur du skickar anpassade hälsorapporter till Azure Service Fabric hälsa entiteter. Ger rekommendationer för att utforma och implementera kvalitet hälsorapporter."
+title: "aaaAdd anpassad Service Fabric-hälsorapporter | Microsoft Docs"
+description: "Beskriver hur toosend anpassade hälsorapporter tooAzure Service Fabric hälsa entiteter. Ger rekommendationer för att utforma och implementera kvalitet hälsorapporter."
 services: service-fabric
 documentationcenter: .net
 author: oanapl
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: oanapl
-ms.openlocfilehash: ed10eef347d4d93012078456b3a145589e66d30e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 12c9f664e2a457b4e1e8f340873ca60ebcefb097
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Lägga till anpassade hälsorapporter i Service Fabric
-Azure Service Fabric introducerar en [hälsomodell](service-fabric-health-introduction.md) utformats för att flaggan ohälsosamt klustret och villkoren för programmet på specifika enheter. Hälsomodell använder **hälsa rapportörer** (systemkomponenter och watchdogs). Målet är enkelt och snabbt diagnos och reparation. Service-skrivare måste du tänka igenom summa om hälsotillstånd. Eventuella villkor som kan påverka hälsa redovisas, särskilt om det kan hjälpa flaggan problem nära roten. Information om hälsa kan spara tid och pengar på felsökning och undersökning. Användbarhet är särskilt tydligt när tjänsten är igång och körs i skala i molnet (privat eller Azure).
+Azure Service Fabric introducerar en [hälsomodell](service-fabric-health-introduction.md) utformad tooflag ohälsosamt kluster och villkoren för programmet på specifika enheter. Hej hälsomodell använder **hälsa rapportörer** (systemkomponenter och watchdogs). hello målet är enkelt och snabbt diagnos och reparation. Service-skrivare måste toothink förskott om hälsotillstånd. Eventuella villkor som kan påverka hälsa redovisas, särskilt om kan hjälpa flaggan problem Stäng toohello rot. hello hälsoinformation kan spara tid och pengar på felsökning och undersökning. hello användbarhet är särskilt tydligt när hello-tjänsten är igång och körs i skala i hello molnet (privat eller Azure).
 
-Service Fabric-rapportörer övervakaren identifieras villkor av intresse. De rapport om dessa villkor baserat på deras lokala vyn. Den [hälsoarkivet](service-fabric-health-introduction.md#health-store) samlar in hälsa data skickas av alla rapportörer för att avgöra om enheterna är globalt felfritt. Modellen är avsedd att vara omfattande, flexibla och enkla att använda. Kvaliteten på hälsorapporter anger korrektheten i vyn hälsa i klustret. Falska positiva identifieringar som visar felaktigt ohälsosamt problem kan påverka uppgraderingar och andra tjänster som använder hälsa data. Exempel på sådana tjänster är reparation och mekanismer för aviseringar. Därför behövs tänka för att tillhandahålla rapporter som samlar in villkor för intresse för bästa möjliga sätt.
+hello Service Fabric-rapportörer Övervakare identifiera villkor av intresse. De rapport om dessa villkor baserat på deras lokala vyn. Hej [hälsoarkivet](service-fabric-health-introduction.md#health-store) aggregerar hälsa data som skickas av alla rapportörer toodetermine om enheter är globalt felfria. hello modellen är avsedda toobe omfattande, flexibel och enkel toouse. hello kvaliteten på hello hälsorapporter anger hello riktighet hello hälsotillståndsvy hello-klustret. Falska positiva identifieringar som visar felaktigt ohälsosamt problem kan påverka uppgraderingar och andra tjänster som använder hälsa data. Exempel på sådana tjänster är reparation och mekanismer för aviseringar. Därför tänka är nödvändiga tooprovide rapporter som samlar in villkor för intresse för hello bästa möjliga sättet.
 
-För att utforma och implementera hälsa reporting watchdogs och systemkomponenter måste:
+toodesign och implementera hälsa reporting watchdogs komponenterna, och system måste:
 
-* Definiera villkoret intressanta och hur den är övervakad inverkan på funktionen kluster eller ett program. Baserat på den här informationen kan besluta om hälsa rapportegenskap och hälsotillstånd.
-* Ta reda på [entiteten](service-fabric-health-introduction.md#health-entities-and-hierarchy) som rapporten avser.
-* Avgöra var reporting är klart, från tjänsten eller från en intern eller extern watchdog.
-* Definiera en datakälla som används för att identifiera personen.
-* Välj en reporting strategi regelbundet eller på övergångar. Det rekommenderade sättet är att med jämna mellanrum, eftersom det kräver att enklare koden och är mindre risk för fel.
-* Avgör hur lång tid rapporten för ohälsosamt villkor ska vara i health store och hur det ska vara avmarkerade. Med den här informationen kan bestämma time to live-rapportens och ta bort på förfallodatum beteende.
+* Definiera villkor för hello intressanta, hello sättet som den är övervakad och hello inverkan på hello klustret eller programmet funktioner. Baserat på den här informationen kan besluta om hello rapporten egenskapen och hälsa hälsotillstånd.
+* Fastställa hello [entiteten](service-fabric-health-introduction.md#health-entities-and-hierarchy) hello rapporten avser.
+* Avgöra var reporting hello utförs, inifrån hello tjänsten eller från en intern eller extern watchdog.
+* Definiera en datakälla som används för tooidentify hello-rapport.
+* Välj en reporting strategi regelbundet eller på övergångar. hello rekommenderat sätt är med jämna mellanrum, eftersom det kräver att enklare koden och är mindre risk tooerrors.
+* Avgör hur lång hello-rapport för ohälsosamt villkor ska vara i hello health store och hur det ska vara avmarkerade. Med den här informationen kan bestämma hello rapporten tid toolive och ta bort på förfallodatum beteende.
 
 Som tidigare nämnts kan kan reporting göras från:
 
-* Övervakade Service Fabric-tjänsten-repliken.
-* Internt watchdogs distribueras som en Service Fabric-tjänsten till exempel ett Service Fabric tillståndslös som övervakar villkor och skickar rapporter. Watchdogs kan vara distribueras ett alla noder eller kan tillhöra den övervakade tjänsten.
-* Internt watchdogs som körs på Service Fabric-noder, men som *inte* implementeras som Service Fabric-tjänster.
-* Externa watchdogs som avsökning resurs från *utanför* Service Fabric-klustret (till exempel övervakningstjänsten som Gomez).
+* hello övervakade replik för Service Fabric-tjänsten.
+* Internt watchdogs distribueras som en Service Fabric-tjänsten till exempel ett Service Fabric tillståndslös som övervakar villkor och skickar rapporter. Hej watchdogs kan vara distribueras ett alla noder eller kan vara tillhör toohello övervakas tjänst.
+* Internt watchdogs som körs på hello Service Fabric-noder, men som *inte* implementeras som Service Fabric-tjänster.
+* Externa watchdogs avsökningen hello resursen från *utanför* hello Service Fabric-klustret (till exempel övervakningstjänsten som Gomez).
 
 > [!NOTE]
-> Out of box fylls klustret med hälsorapporter som skickas av systemkomponenter. Läs mer på [med systemhälsa rapporter för felsökning](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). Rapporterna som användaren måste skickas [hälsa entiteter](service-fabric-health-introduction.md#health-entities-and-hierarchy) som redan har skapats av systemet.
+> Out of box hello fylls hello kluster med hälsorapporter som skickas av hello systemkomponenter. Läs mer på [med systemhälsa rapporter för felsökning](service-fabric-understand-and-troubleshoot-with-system-health-reports.md). hello Användarrapporter måste skickas [hälsa entiteter](service-fabric-health-introduction.md#health-entities-and-hierarchy) som redan har skapats av hello system.
 > 
 > 
 
-När hälsotillståndet reporting design är avmarkerad, hälsorapporter kan skickas enkelt. Du kan använda [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) för rapporten hälsa om klustret inte [säker](service-fabric-cluster-security.md) eller om fabric-klienten har administratörsrättigheter. Rapportering kan göras via API: et genom att använda [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), via PowerShell eller via REST. Konfigurationen rattar batch-rapporter för bättre prestanda.
+En gång hello hälsa reporting design är avmarkerad, hälsorapporter kan skickas enkelt. Du kan använda [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) tooreport hälsa om hello klustret inte [säker](service-fabric-cluster-security.md) eller om hello fabric-klienten har administratörsrättigheter. Reporting kan göras via hello API med hjälp av [FabricClient.HealthManager.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth), via PowerShell eller via REST. Konfigurationen rattar batch-rapporter för bättre prestanda.
 
 > [!NOTE]
-> Rapportera hälsa är synkron och representerar validering arbete på klientsidan. Det faktum att rapporten har godkänts av klientens hälsa eller `Partition` eller `CodePackageActivationContext` objekt innebär inte att tillämpas i arkivet. Skickas asynkront och eventuellt batchar med andra rapporter. Bearbetning på servern misslyckas fortfarande: sekvensnumret kan vara inaktuella, entiteten som rapporten ska tillämpas har tagits bort, osv.
+> Rapporten hälsa är synkron och representerar endast hello validering arbete på hello på klientsidan. hello att hello rapporten accepteras av hello hälsa klient eller hello `Partition` eller `CodePackageActivationContext` objekt innebär inte att tillämpas i hello store. Skickas asynkront och eventuellt batchar med andra rapporter. hello bearbetning på servern hello misslyckas fortfarande: hello sekvensnummer kan vara inaktuella, hello entiteten på vilka hello rapporten måste tillämpas har tagits bort, osv.
 > 
 > 
 
 ## <a name="health-client"></a>Hälsotillstånd klienten
-Hälsorapporter skickas till hälsoarkivet via en hälsa-klient finns i fabric-klienten. Klientens hälsa kan konfigureras med följande inställningar:
+hello hälsorapporter skickas toohello health store via en hälsa-klient finns i hello fabric-klienten. hello hälsa klient kan konfigureras med hello följande inställningar:
 
-* **HealthReportSendInterval**: fördröjning mellan då rapporten läggs till klienten och det skickas till arkivet hälsa. Används för batch-rapporter i ett enda meddelande, i stället för att skicka ett meddelande för varje rapport. Den batchbearbetning förbättrar prestanda. Standard: 30 sekunder.
-* **HealthReportRetrySendInterval**: intervallet då hälsa klienten skickar ackumulerade hälsa rapporterar till health store. Standard: 30 sekunder.
-* **HealthOperationTimeout**: tidsgränsen för en rapport meddelandet som skickades till health store. Om ett meddelande på grund av timeout, klientens hälsa den tills health store bekräftar att rapporten har bearbetats. Standard: två minuter.
+* **HealthReportSendInterval**: hello fördröjning mellan hello tid hello rapporten är tillagda toohello klienten hello tid och det skickas toohello health store. Använda toobatch rapporter i ett enda meddelande, i stället för att skicka ett meddelande för varje rapport. hello batchbearbetning förbättrar prestanda. Standard: 30 sekunder.
+* **HealthReportRetrySendInterval**: hello intervall på vilka hello hälsa klienten skickar ackumulerade hälsa rapporterar toohello health store. Standard: 30 sekunder.
+* **HealthOperationTimeout**: hello tidsgränsen för ett rapportmeddelande skickas toohello health store. Om ett meddelande på grund av timeout, klientens hello hälsa den tills hello hälsoarkivet bekräftar att hello rapporten har bearbetats. Standard: två minuter.
 
 > [!NOTE]
-> När rapporterna grupperas fabric-klienten måste hållas aktiva för minst HealthReportSendInterval så att de skickas. Om meddelandet försvinner eller health store kan inte använda dem på grund av tillfälliga fel fabric-klienten måste hållas aktiva längre att ge det en risk att försöka igen.
+> När hello rapporter grupperas hello fabric-klienten måste hållas aktiva för minst hello HealthReportSendInterval tooensure som de skickas. Om hello-meddelande försvinner eller hello health store kan inte använda dem på grund av fel tootransient hello fabric-klienten måste hållas alive längre toogive den en chansen tooretry.
 > 
 > 
 
-Buffring på klienten tar unika rapporterna i beräkningen. Till exempel om en viss felaktiga rapport rapporterar 100 rapporter per sekund på samma tillhör samma entitet ersätts rapporterna med den senaste versionen. Högst en sådan rapport finns i kön för klienten. Om batchbearbetning är konfigurerad, är antal rapporter som skickas till arkivet hälsa bara en per skicka intervall. Den här rapporten är sista tillagda rapporten som visar det senaste läget för entiteten.
-Ange konfigurationsparametrar när `FabricClient` har skapats genom att skicka [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) med önskade värden hälsa-relaterade poster.
+hello buffring på hello klient tar hello unika hello rapporter i beräkningen. Till exempel om en viss felaktiga rapport rapporterar 100 rapporter per sekund på hello samma egenskap för hello hello rapporter har ersatts med den senaste versionen av hello samma entitet. Högst en sådan rapport finns i kön för hello-klienten. Om batchbearbetning konfigureras, skickas hello antal rapporter toohello health store är bara en per skicka intervall. Den här rapporten är hello senaste tillagda rapporten som visar hello hello entitet mest aktuella tillstånd.
+Ange konfigurationsparametrar när `FabricClient` har skapats genom att skicka [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) med hello önskade värden hälsa-relaterade poster.
 
-I följande exempel skapar en fabric-klienten och anger att rapporterna ska skickas när de har lagts till. På timeout och fel som kan göras inträffa försök varje 40 sekunder.
+hello följande exempel skapas en fabric-klienten och anger hello rapporter ska skickas när de har lagts till. På timeout och fel som kan göras inträffa försök varje 40 sekunder.
 
 ```csharp
 var clientSettings = new FabricClientSettings()
@@ -80,9 +80,9 @@ var clientSettings = new FabricClientSettings()
 var fabricClient = new FabricClient(clientSettings);
 ```
 
-Rekommenderar vi att fabric standardklient inställningar som anges för `HealthReportSendInterval` till 30 sekunder. Den här inställningen garanterar optimala prestanda på grund av batchbearbetning. Kritiska rapporter som måste skickas så snart som möjligt, använda `HealthReportSendOptions` med Immediate `true` i [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API. Omedelbar rapporter kringgå batching intervall. Använd den här flaggan med försiktighet; Vi vill dra nytta av klientens hälsa batchbearbetning när det är möjligt. Omedelbar skicka är också praktisk när du stänger fabric-klienten (t.ex, processen har fastställt ogiltigt tillstånd och måste stängas för att förhindra sidoeffekter). Det garanterar en bästa skicka ackumulerade rapporter. När en rapport läggs med omedelbar flaggan batchar klientens hälsa alla ackumulerade rapporter sedan senaste överföringen.
+Rekommenderar vi att hello standard fabric klientinställningar som angetts `HealthReportSendInterval` too30 sekunder. Den här inställningen garanterar optimala prestanda på grund av toobatching. Kritiska rapporter som måste skickas så snart som möjligt, använda `HealthReportSendOptions` med Immediate `true` i [FabricClient.HealthClient.ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) API. Omedelbar rapporter kringgå hello batchbearbetning intervall. Använd den här flaggan med försiktighet; Vi vill tootake nytta av hello hälsa klienten batchbearbetning när det är möjligt. Omedelbar skicka är också praktisk när du stänger hello fabric-klienten (till exempel hello processen har fastställt ogiltigt tillstånd och behöver tooshut ned tooprevent sidoeffekter). Det garanterar en bästa skicka hello ackumulerade rapporter. När en rapport läggs med omedelbar flaggan batchar hello hälsa klienten alla hello ackumulerade rapporter sedan senaste överföringen.
 
-Samma parametrar kan anges när en anslutning till ett kluster skapas med hjälp av PowerShell. Följande exempel startar en anslutning till det lokala klustret:
+Samma parametrar kan anges när en anslutning tooa klustret har skapats med hjälp av PowerShell. hello följande exempel startas en anslutning tooa lokala klustret:
 
 ```powershell
 PS C:\> Connect-ServiceFabricCluster -HealthOperationTimeoutInSec 120 -HealthReportSendIntervalInSec 0 -HealthReportRetrySendIntervalInSec 40
@@ -110,80 +110,80 @@ GatewayInformation   : {
                        }
 ```
 
-På liknande sätt API, rapporter kan skickas med `-Immediate` växeln ska skickas omedelbart, oavsett den `HealthReportSendInterval` värde.
+På liknande sätt tooAPI, rapporter kan skickas med `-Immediate` växla toobe skickas direkt, oavsett hello `HealthReportSendInterval` värde.
 
-För övriga skickas rapporterna till Service Fabric-gatewayen, som har en intern fabric-klienten. Som standard den här klienten är konfigurerad för att skicka rapporter batchar med 30 sekunders mellanrum. Du kan ändra intervallet batch med klustret Konfigurationsinställningen `HttpGatewayHealthReportSendInterval` på `HttpGateway`. Som tidigare nämnts kan ett bättre alternativ är att skicka rapporter med `Immediate` SANT. 
+För övriga skickas hello rapporterna toohello Service Fabric-gateway som har en intern fabric-klienten. Den här klienten är som standard konfigurerade toosend rapporter batchar med 30 sekunders mellanrum. Du kan ändra hello batch intervall med hello klustret Konfigurationsinställningen `HttpGatewayHealthReportSendInterval` på `HttpGateway`. Som tidigare nämnts kan ett bättre alternativ är toosend hello rapporter med `Immediate` SANT. 
 
 > [!NOTE]
-> Konfigurera servern för att godkänna begäranden endast från skyddade klienter för att säkerställa att obehörig services inte kan rapportera hälsa mot entiteter i klustret. Den `FabricClient` används för rapportering måste ha Säkerhetsaktiverade för att kunna kommunicera med klustret (till exempel med Kerberos eller certifikat-autentisering). Läs mer om [kluster säkerhet](service-fabric-cluster-security.md).
+> tooensure som obehörig services kan inte rapportera hälsa mot hello entiteter i hello kluster, konfigurera hello server tooaccept begäranden endast från skyddade klienter. Hej `FabricClient` används för rapportering måste ha Säkerhetsaktiverade toobe kan toocommunicate med hello-kluster (till exempel med Kerberos eller certifikat-autentisering). Läs mer om [kluster säkerhet](service-fabric-cluster-security.md).
 > 
 > 
 
 ## <a name="report-from-within-low-privilege-services"></a>Rapport från i låg behörighet services
-Om Service Fabric-tjänster inte har administratörsåtkomst till klustret, kan du rapportera hälsan på enheter från den aktuella kontexten via `Partition` eller `CodePackageActivationContext`.
+Om Service Fabric-tjänster inte har admin åtkomst toohello kluster, kan du rapportera hälsa på entiteter från hello aktuell kontext via `Partition` eller `CodePackageActivationContext`.
 
-* För tillståndslösa tjänster använder [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) att rapportera om den aktuella tjänstinstansen.
-* Tillståndskänsliga tjänster använder [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) att rapportera om aktuella repliken.
-* Använd [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) att rapportera om den aktuella partition entiteten.
-* Använd [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) att rapportera om aktuella programmet.
-* Använd [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) att rapportera om det aktuella programmet har distribuerats på den aktuella noden.
-* Använd [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) att rapportera om inget tjänstepaket för program som distribuerats på den aktuella noden.
+* För tillståndslösa tjänster använder [IStatelessServicePartition.ReportInstanceHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatelessservicepartition.reportinstancehealth) tooreport på hello aktuella tjänstinstansen.
+* Tillståndskänsliga tjänster använder [IStatefulServicePartition.ReportReplicaHealth](https://docs.microsoft.com/dotnet/api/system.fabric.istatefulservicepartition.reportreplicahealth) tooreport på aktuella repliken.
+* Använd [IServicePartition.ReportPartitionHealth](https://docs.microsoft.com/dotnet/api/system.fabric.iservicepartition.reportpartitionhealth) tooreport på hello aktuell partition entitet.
+* Använd [CodePackageActivationContext.ReportApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportapplicationhealth) tooreport på aktuella programmet.
+* Använd [CodePackageActivationContext.ReportDeployedApplicationHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedapplicationhealth) tooreport på hello aktuella program som distribuerats på hello aktuella noden.
+* Använd [CodePackageActivationContext.ReportDeployedServicePackageHealth](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext.reportdeployedservicepackagehealth) tooreport på inget tjänstepaket för hello-program som distribuerats på hello aktuella noden.
 
 > [!NOTE]
-> Internt, den `Partition` och `CodePackageActivationContext` håller en hälsa-klient som konfigurerats med standardinställningar. Enligt beskrivningen för den [hälsa klienten](service-fabric-report-health.md#health-client), rapporter batchbearbetas och skickas på en timer. Objekten ska hållas aktiv att ha möjlighet att skicka rapporten.
+> Internt hello `Partition` och hello `CodePackageActivationContext` håller en hälsa-klient som konfigurerats med standardinställningar. Enligt beskrivningen för hello [hälsa klienten](service-fabric-report-health.md#health-client), rapporter batchbearbetas och skickas på en timer. hello-objekt ska vara kvar alive toohave en chans toosend hello-rapport.
 > 
 > 
 
-Du kan ange `HealthReportSendOptions` när du skickar rapporter via `Partition` och `CodePackageActivationContext` hälsa API: er. Om du har kritiska rapporter som måste skickas så snart som möjligt, Använd `HealthReportSendOptions` med Immediate `true`. Omedelbar rapporter kringgå batching intervallet för interna hälsa-klienten. Som tidigare nämnts, Använd den här flaggan med försiktighet; Vi vill dra nytta av klientens hälsa batchbearbetning när det är möjligt.
+Du kan ange `HealthReportSendOptions` när du skickar rapporter via `Partition` och `CodePackageActivationContext` hälsa API: er. Om du har kritiska rapporter som måste skickas så snart som möjligt, Använd `HealthReportSendOptions` med Immediate `true`. Omedelbar rapporter kringgå hello batchbearbetning intervall på hello interna hälsa klienten. Som tidigare nämnts, Använd den här flaggan med försiktighet; Vi vill tootake nytta av hello hälsa klienten batchbearbetning när det är möjligt.
 
 ## <a name="design-health-reporting"></a>Utforma hälsa reporting
-Det första steget i skapa hög kvalitet rapporter identifierar de villkor som kan påverka hälsotillståndet för tjänsten. Eventuella villkor som kan hjälpa flaggan problem med tjänsten eller klustret när den startar-- eller ännu bättre innan ett problem inträffar--kan potentiellt spara miljarder dollar. Fördelarna innefattar mindre stillestånd, färre nattetid för att undersöka och reparera problem och högre nöjda.
+hello identifierar första steget i att generera rapporter för hög kvalitet hello villkor som kan påverka hello hälsotillståndet för hello-tjänsten. Eventuella villkor som kan hjälpa flaggan problem i hello tjänst eller ett kluster när den startar-- eller ännu bättre innan ett problem inträffar--kan potentiellt spara miljarder dollar. hello fördelar mindre stillestånd, färre nattetid för att undersöka och reparera problem och högre nöjda.
 
-När villkoren identifieras behöver watchdog skrivare ta reda på det bästa sättet att övervaka dem för balans mellan kostnader och användbarhet. Anta till exempel att en tjänst som utför komplexa beräkningar som använder vissa temporära filer på en nätverksresurs. En watchdog kan övervaka resurs för att säkerställa att det finns tillräckligt med utrymme. Det kan lyssna efter meddelanden om ändringar av filen eller katalogen. Det kan rapportera en varning om ett tröskelvärde för Summa har nåtts och rapportera ett fel om resursen är full. På en varning startade en reparation system Rensa äldre filer på resursen. På ett fel kan ett system för reparation flytta service repliken till en annan nod. Observera hur villkoret tillstånd beskrivs vad gäller hälsa: tillståndet för villkoret som kan uppfattas som Felfri (ok) eller ohälsosamt (varning eller fel).
+När hello villkor har identifierats, måste watchdog skrivare toofigure ut hello bästa sätt toomonitor dem för balans mellan kostnader och användbarhet. Anta till exempel att en tjänst som utför komplexa beräkningar som använder vissa temporära filer på en nätverksresurs. En watchdog kan övervaka hello resursen tooensure att det finns tillräckligt med utrymme. Det kan lyssna efter meddelanden om ändringar av filen eller katalogen. Det kan rapportera en varning om ett tröskelvärde för Summa har nåtts och rapportera ett fel om hello resursen är full. På en varning startade en reparation system Rensa äldre filer på hello resursen. En reparation system kan flytta hello-replik tooanother tjänstnoden på ett fel. Observera hur hello villkoret tillstånd beskrivs vad gäller hälsa: hello hello villkor som kan uppfattas som Felfri (ok) eller ohälsosamt (varning eller fel).
 
-Efter att övervaka information har angetts måste ta reda på hur du implementerar watchdog watchdog-skrivaren. Om villkoren kan fastställas från inom tjänsten, kan watchdog ingå i den övervakade tjänsten sig själv. Kod som kan exempelvis kontrollera om resursen och rapportera varje gång den försöker att skriva en fil. Fördelen med den här metoden är att reporting är enkel. Vara måste försiktig att förhindra att watchdog buggar påverka funktionen för tjänsten.
+Efter hello övervakning information har angetts måste en watchdog skrivare toofigure ut hur tooimplement hello watchdog. Om hello villkor kan fastställas från inom hello service, kan hello watchdog ingå i själva hello övervakade tjänsten. Hello-Tjänstkod kan exempelvis kontrollera hello resursen användning och rapportera varje gång den försöker toowrite en fil. hello nytta av den här metoden är att reporting är enkel. Vara måste försiktig tooprevent watchdog buggar från påverka hello-funktionerna.
 
-Rapportering inifrån är den övervakade tjänsten inte alltid ett alternativ. En watchdog inom tjänsten kanske inte kan identifiera villkoren. Det kan inte ha logik och data att göra en avvägning. Arbetet med att övervaka villkor som kan vara hög. Villkor kan inte heller specifika för en tjänst, men i stället påverkar samverkan mellan tjänster. Ett annat alternativ är att ha watchdogs i klustret som separata processer. Watchdogs övervaka villkor och rapport, utan att påverka tjänster på något sätt. Till exempel kan dessa watchdogs implementeras som tillståndslösa tjänster i samma program som distribuerats på alla noder på samma noder som för tjänsten.
+Rapportering i hello övervakas service är inte alltid ett alternativ. En watchdog inom hello-tjänsten kanske inte kan toodetect hello villkor. Det får inte ha hello logik och data toomake hello bestämning. hello arbetet med att övervaka hello villkor kan vara hög. hello villkor får även inte vara specifika tooa service, men i stället påverkar samverkan mellan tjänster. Ett annat alternativ är toohave watchdogs i hello kluster som separata processer. Hej watchdogs övervaka hello villkor och rapport, utan att påverka hello tjänster på något sätt. Till exempel dessa watchdogs kan genomföras som tillståndslösa tjänster i hello samma program som distribueras på alla noder eller hello samma noder som hello-tjänst.
 
-Ibland kan är en watchdog som körs i klustret inte ett alternativ antingen. Om övervakade villkoret är tillgänglighet eller funktion som användarna ser det, är det bäst att watchdogs på samma plats som användaren-klienter. De kan det, testa åtgärder på samma sätt som användare ringa upp dem. Du kan till exempel ha en watchdog som finns utanför klustret, skickar begäranden till tjänsten och kontrollerar den latens och resultatet är korrekt. (För en Kalkylatorn tjänst, till exempel 2 + 2 returnerar 4 inom en rimlig tid?)
+Ibland kan är en watchdog som körs i klustret hello inte ett alternativ antingen. Om hello övervakas villkoret är hello tillgänglighet eller funktionerna i hello tjänsten som användarna ser den, är det bästa toohave hello watchdogs i hello samma placera som hello användaren klienter. Där de kan testa hello åtgärder i hello samma hur användare ringa upp dem. Du kan till exempel ha en watchdog som finns utanför hello kluster utfärdar begäranden toohello tjänsten och kontrollerar hello svarstid och hello resultatet är korrekt. (För en Kalkylatorn tjänst, till exempel 2 + 2 returnerar 4 inom en rimlig tid?)
 
-När informationen watchdog har avslutats, måste du bestämma på en käll-ID som unikt identifierar den. Om flera watchdogs av samma typ bor i klustret, måste rapporterar på olika enheter, eller om de rapporterar på samma enhet, ska du använda olika käll-ID eller egenskap. Det här sättet sina rapporter kan samexistera. Egenskapen hälsorapporten ska avbilda övervakade villkoret. (Till exempel ovan egenskapen kunde **ShareSize**.) Om flera rapporter gäller samma villkor, bör egenskapen innehålla vissa dynamisk information som tillåter rapporter kan samexistera. Om flera resurser behöver övervakas egenskapsnamnet kan exempelvis **ShareSize sharename**.
+När hello watchdog information har avslutats, bör du bestämma på en käll-ID som unikt identifierar den. Om flera watchdogs av samma typ bor i hello hello kluster, måste de rapportera på olika enheter, eller om de rapporterar på hello samma entitet, Använd olika käll-ID eller egenskap. Det här sättet sina rapporter kan samexistera. hello-egenskapen för hello hälsorapport ska avbilda hello övervakas villkor. (Exempelvis hello ovan hello egenskapen kunde **ShareSize**.) Om flera rapporter gäller toohello samma villkor, hello egenskapen innehålla vissa dynamisk information som tillåter toocoexist rapporter. Om flera resurser behöver toobe övervakas, hello egenskapsnamn kan exempelvis **ShareSize sharename**.
 
 > [!NOTE]
-> Gör *inte* använda health store för att hålla statusinformation. Hälsorelaterade information ska rapporteras som hälsa, som den här informationen som påverkar hälsotillståndet utvärderingen av en entitet. Health store har inte utformats som ett allmänt Arkiv. Logik för utvärdering av hälsotillstånd används för att aggregera alla data till hälsotillståndet. Skicka information som inte är relaterade till hälsa (som rapporterar status med ett hälsotillstånd OK) påverkar inte aggregerade hälsotillståndet, men det kan påverka prestanda för health store.
+> Gör *inte* Använd hello health store tookeep statusinformation. Endast hälsa-relaterad information ska rapporteras som hälsa, som den här informationen påverkar hello hälsa utvärdering för en entitet. hello health store har inte utformats som ett allmänt Arkiv. Används hälsa utvärdering logik tooaggregate alla data i hello hälsotillstånd. Skicka information orelaterade toohealth (som rapporterar status med ett hälsotillstånd OK) inte påverkar hello samman hälsotillstånd, men det kan påverka hello prestanda för hello health store.
 > 
 > 
 
-Nästa Beslutspunkt är vilken entitet till rapporten på. De flesta fall villkoret tydligt idetifies entiteten. Välj entiteten med bästa möjliga granularitet. Om ett villkor som påverkar alla repliker i en partition, en rapport om partitionen inte på tjänsten. Det finns specialfall där flera tankar krävs dock. Om villkoret påverkar en entitet, till exempel en replik, men att webbprogrammet är att ha villkoret som flaggats för fler än varaktigheten för replik livslängd och redovisas på partitionen. I annat fall när repliken tas bort rensar health store alla rapporter. Watchdog-skrivare måste du tänka livslängd för entiteten och rapporten. Det måste vara tydlig när en rapport måste rensas från en butik (till exempel när ett fel rapporteras på en enhet inte längre gäller).
+hello är nästa beslut vilken entitet tooreport på. För mesta hello hello villkoret tydligt hello idetifies du entiteten. Välja hello entitet med bästa möjliga granularitet. Om ett villkor som påverkar alla repliker i en partition, en rapport om hello partition, inte på hello-tjänsten. Det finns specialfall där flera tankar krävs dock. Om hello villkor påverkar en entitet, till exempel en replik, men hello är önskan toohave hello villkor som flaggats för mer än hello replik livslängd redovisas på hello partition. I annat fall när hello repliken tas bort rensar hello hälsoarkivet alla rapporter. Watchdog-skrivare måste du tänka hello livslängd hello enhetens och hello rapporten. Det måste vara tydlig när en rapport måste rensas från en butik (till exempel när ett fel rapporteras på en enhet inte längre gäller).
 
-Nu ska vi titta på ett exempel som sätter ihop punkter I som beskrivs. Överväg ett Service Fabric-program består av en master tillståndskänslig beständig tjänst och sekundära tillståndslösa tjänster som distribueras på alla noder (en sekundär service typ för varje typ av aktivitet). Huvudmålservern har en kö för bearbetning som innehåller kommandon för att köras av sekundärservrar. Sekundära utför inkommande begäranden och skicka tillbaka bekräftelse signaler. Ett villkor som kan övervakas är längden på köns master bearbetning. Om master kölängden når ett tröskelvärde, rapporterade en varning. Varningen anger att sekundära inte kan hantera belastningen. Om kön når maximal längd och kommandon släpps, ett fel rapporteras som tjänsten går inte att återställa. Rapporterna kan vara i egenskapen **QueueStatus**. Watchdog finns i tjänsten och det har skickats på master primära repliken. Time to live är två minuter och skickas regelbundet var 30: e sekund. Om den primära servern kraschar, rensas rapporten automatiskt från store. Om tjänsten repliken är in, men det är ett dödläge eller med andra problem, rapporten upphör att gälla i health store. I det här fallet utvärderas entiteten vid fel.
+Nu ska vi titta på ett exempel som sätter ihop hello punkter I som beskrivs. Överväg ett Service Fabric-program består av en master tillståndskänslig beständig tjänst och sekundära tillståndslösa tjänster som distribueras på alla noder (en sekundär service typ för varje typ av aktivitet). hello-hanteraren har en kö för bearbetning som innehåller kommandon toobe körs av sekundärservrar. hello sekundärservrar utför hello inkommande begäranden och skicka tillbaka bekräftelse signaler. Ett villkor som kan övervakas är hello hello master bearbetningskön. Om hello master Kölängd når ett tröskelvärde, rapporterade en varning. hello varning anger att hello sekundärservrar inte kan hantera hello belastning. Om hello kön når hello maxlängd och kommandon släpps, ett fel rapporteras, som hello tjänsten går inte att återställa. hello rapporter kan finnas på hello egenskapen **QueueStatus**. hello watchdog finns i hello-tjänsten och det har skickats på hello master primära repliken. hello tid toolive är två minuter och skickas regelbundet var 30: e sekund. Om hello primära kraschar rensas hello rapporten automatiskt från store. Om hello service repliken är in, men det är ett dödläge eller andra problem med hello rapporten går ut i hello health store. I det här fallet utvärderas hello entiteten vid fel.
 
-Ytterligare villkor som kan övervakas är körningstid för aktiviteten. Huvudservern distribuerar uppgifter till sekundärservrar baserat på aktivitetstyp. Beroende på utformning, kunde huvudservern avsöka sekundärservrar för aktivitetsstatus. Det kan också vänta tills sekundärservrar för att skicka tillbaka bekräftelse signaler när de görs. I det andra fallet måste vara försiktig att identifiera situationer där sekundärservrar die eller meddelanden går förlorade. Ett alternativ är att skicka en ping-begäran till samma sekundär som skickar tillbaka dess status. Om ingen status tas emot huvudservern anser att det är ett fel och schemaläggs aktiviteten automatiskt på nytt. Det här beteendet förutsätts att aktiviteterna idempotent.
+Ytterligare villkor som kan övervakas är körningstid för aktiviteten. hello master distribuerar uppgifter toohello sekundärservrar baserat på hello aktivitetstyp. Beroende på hello design kunde hello master avsöka hello sekundärservrar för aktivitetsstatus. Det kan också vänta tills sekundärservrar toosend tillbaka bekräftelse signaler när de görs. I andra fall hello måste vara försiktig toodetect situationer där sekundärservrar die eller meddelanden går förlorade. Ett alternativ är för hello master toosend toohello en ping-begäran samma sekundär som skickar tillbaka dess status. Om ingen status tas emot hello master anser att det är ett fel och schemaläggs automatiskt hello uppgift på nytt. Det här beteendet förutsätts att hello uppgifter idempotent.
 
-Övervakade villkoret kan översättas som en varning om aktiviteten inte har gjort i en viss tid (**t1**, till exempel 10 minuter). Om aktiviteten inte slutförs i tid (**t2**, till exempel 20 minuter), övervakade villkoret kan översättas som fel. Den här reporting kan du göra detta på flera olika sätt:
+hello övervakas villkor kan översättas som en varning om hello aktiviteten inte har gjort i en viss tid (**t1**, till exempel 10 minuter). Om hello åtgärden inte slutförs i tid (**t2**, till exempel 20 minuter), hello övervakas villkor kan översättas som fel. Den här reporting kan du göra detta på flera olika sätt:
 
-* Den primära repliken master rapporter om sig själv med jämna mellanrum. Du kan ha en egenskap för alla väntande aktiviteter i kön. Om minst en uppgift tar längre tid, Rapportstatus på egenskapen **PendingTasks** är en varning eller fel efter behov. Om det finns inga väntande aktiviteter eller alla aktiviteter startade körningen kan är rapportera status OK. Uppgifter som är permanent. Om den primära servern kraschar, kan den nyligen uppgraderat primärt fortsätta att rapportera korrekt.
-* En annan watchdog processen (i molnet eller externa) kontrollerar aktiviteter (från utanför, baserat på resultatet aktiviteten) att se om de är slutförda. Om de inte tar hänsyn till tröskelvärdena, skickas en rapport på tjänsten master. En rapport som också skickas med varje aktivitet som innehåller aktivitets-ID som **PendingTask + taskId**. Rapporter ska skickas endast ohälsosamt tillstånd. Ange tid att live några minuter och markera rapporterna som ska tas bort när de upphör att rensa.
-* Den sekundära som kör en uppgift rapporterar när det tar längre tid än väntat att köra den. Rapporterar på tjänstinstansen i egenskapen **PendingTasks**. Rapporten lokaliserar service-instans som har problem, men det fånga inte situation där instansen dör. Rapporterna rensas sedan. Det kan rapportera om tjänsten secondary. Om sekundärt Slutför uppgiften rensar den sekundära instansen rapporten från store. Rapporten fånga inte situation där bekräftelsemeddelandet går förlorad och aktiviteten är inte klar ur den master.
+* hello master primära repliken rapporter om sig själv med jämna mellanrum. Du kan ha en egenskap för alla väntande aktiviteter i hello kö. Om minst en uppgift tar längre tid, hello rapportera status för hello egenskapen **PendingTasks** är en varning eller fel efter behov. Om det finns inga väntande aktiviteter eller alla aktiviteter startade körningen är hello rapportera status OK. hello uppgifter är beständiga. Om hello primära kraschar fortsätta hello nyligen upphöja primära tooreport korrekt.
+* En annan watchdog process (i hello molnet eller externa) kontrollerar hello uppgifter (från utanför, baserat på hello önskad aktivitet resultatet) toosee om de är slutförda. Om de inte följa hello tröskelvärden, skickas en rapport på hello-huvudtjänsten. En rapport som också skickas med varje aktivitet som innehåller hello aktivitets-ID som **PendingTask + taskId**. Rapporter ska skickas endast ohälsosamt tillstånd. Ange tid toolive tooa några minuter och markera hello rapporter toobe tas bort när de upphör att gälla tooensure rensning.
+* sekundär hello som kör en uppgift rapporterar när det tar längre tid än förväntat toorun den. Rapporterar på hello tjänstinstans för hello egenskapen **PendingTasks**. hello rapporten lokaliserar hello service-instans som har problem, men det fånga inte hello situation där hello instans dör. hello rapporter rensas sedan. Det kan rapportera om hello sekundär service. Om hello sekundära är klar hello uppgiften rensar hello sekundära instans hello rapport från hello store. hello rapporten fånga inte hello situation där hello bekräftelsemeddelande går förlorad och hello aktiviteten är inte klar hello master utgångspunkt från.
 
-Men reporting görs i de fall som beskrivs ovan, fångas rapporterna i programmets hälsotillstånd när hälsa utvärderas.
+Men hello reporting görs i hello fall som beskrivs ovan, fångas hello rapporter i programmets hälsotillstånd när hälsa utvärderas.
 
 ## <a name="report-periodically-vs-on-transition"></a>Rapport med jämna mellanrum kontra om övergång
-Med hjälp av hälsotillstånd rapportmodellen skicka watchdogs rapporter med jämna mellanrum eller övergångar. Det rekommenderade sättet för rapportering av watchdog är med jämna mellanrum, eftersom koden är mycket enklare och mindre känslig för fel. Watchdogs måste strävar efter att vara så enkelt som möjligt för att undvika buggar som utlöser felaktiga rapporter. Felaktig *ohälsosamt* rapporter påverka hälsa utvärderingar och scenarier baserat på hälsa, inklusive uppgraderingar. Felaktig *felfri* rapporter dölja problem i klustret, som inte används.
+Med hjälp av modellen för hälsotillståndsrapportering hello skicka watchdogs rapporter med jämna mellanrum eller övergångar. hello bör sätt för watchdog rapportering med jämna mellanrum, eftersom hello koden är mycket enklare och mindre känslig tooerrors. Hej watchdogs måste arbetar toobe så enkelt som möjligt tooavoid buggar som utlöser felaktiga rapporter. Felaktig *ohälsosamt* rapporter påverka hälsa utvärderingar och scenarier baserat på hälsa, inklusive uppgraderingar. Felaktig *felfri* rapporter dölja problem i hello-kluster, vilket inte är önskvärd.
 
-För periodiska rapportering, kan watchdog implementeras med en timer. På en timer-återanrop i watchdog Kontrollera tillståndet och skicka en rapport baserad på det aktuella tillståndet. Det finns inget behov av att se vilka som skickats tidigare eller se alla optimeringar vad gäller meddelanden. Klienten hälsotillstånd har batchbearbetning logik för bättre prestanda. När klienten hälsa hålls alive, försöker den internt tills rapporten bekräftas av health store eller watchdog genererar en nyare rapport med samma entitet, egenskap och källa.
+Hello watchdog kan implementeras med en timer för periodiska rapporteringen. På en timer-återanrop hello watchdog Kontrollera hello tillstånd och skicka en rapport som baseras på hello aktuella tillstånd. Det finns inga behov toosee vilken rapport har skickats tidigare eller se alla optimeringar vad gäller meddelanden. hello hälsa klienten har batchbearbetning logik toohelp med prestanda. Medan hello hälsa klienten hålls alive, nytt försök internt tills hello rapporten bekräftas av hello health store eller hello watchdog genererar en nyare rapport med hello samma entitet, egenskap och källa.
 
-Rapportering i övergångar krävs noggrann hantering av tillstånd. Watchdog övervakar vissa villkor och rapporterar endast när villkor som ändrar. Upp-och med den här metoden är att färre rapporter behövs. Nackdelen är att logiken i watchdog komplexa. Watchdog måste upprätthålla villkoren eller rapporter, så att de kan kontrolleras för att avgöra tillstånd ändras. På redundanskluster, måste vara försiktig med rapporter som har lagts till, men ännu inte skickats till health store. Sekvensnumret måste vara allt större. Om inte, avvisas rapporterna som föråldrade. I sällsynta fall där dataförlust uppstår kan synkronisering behövas mellan tillståndet för rapport och tillståndet för health store.
+Rapportering i övergångar krävs noggrann hantering av tillstånd. hello watchdog övervakar vissa villkor och rapporterar endast när hello villkoren ändras. hello upp och med den här metoden är att färre rapporter behövs. hello Nackdelen är att hello logiken för hello watchdog komplexa. hello watchdog måste upprätthålla hello villkor eller hello rapporter så att de kan vara inspekterade toodetermine tillstånd ändras. På redundanskluster, måste vara försiktig med rapporter som har lagts till, men ännu inte skickats toohello health store. hello sekvensnummer måste vara allt större. Om inte, avvisas hello rapporter som inaktiva. Synkroniseringen kan behövas mellan hello tillståndet för hello rapport och hello tillståndet för hello health store i hello sällsynta fall där dataförlust uppstår.
 
-Rapportering av övergångar passar för tjänster som rapporterar på själva via `Partition` eller `CodePackageActivationContext`. När det lokala objektet (replikerings- eller distribuerat tjänstpaket / distribuerat program) är bort alla rapporter tas också bort. Den här automatisk rensning sänker behovet av att synkroniseringen mellan rapport och health store. Om rapporten avser överordnade partitionen eller det överordnade programmet, måste vara försiktig vid redundans att undvika inaktuella rapporter i health store. Logik måste läggas till upprätthålla rätt tillstånd och ta bort rapporten från lagring när det inte behövs längre.
+Rapportering av övergångar passar för tjänster som rapporterar på själva via `Partition` eller `CodePackageActivationContext`. När hello lokalt objekt (replikerings- eller distribuerat tjänstpaket / distribuerat program) är bort alla rapporter tas också bort. Den här automatisk rensning sänker hello behovet av att synkroniseringen mellan rapport och health store. Om hello rapporten avser överordnade partitionen eller det överordnade programmet, iakttas försiktighet på redundans tooavoid inaktuella rapporter i hello health store. Logik måste läggas toomaintain hello rätt tillstånd och avmarkera hello rapport från store när de inte behövs längre.
 
 ## <a name="implement-health-reporting"></a>Implementera hälsa reporting
-När entiteten och rapportera information är klar kan skickar hälsorapporter göras via API: et, PowerShell eller REST.
+När hello entiteten och rapportera information är klar, kan skickar hälsorapporter göras via hello API: et, PowerShell eller REST.
 
 ### <a name="api"></a>API
-Om du vill rapportera via API, måste du skapa en hälsorapport specifika för entitetstypen som de vill rapportera om. Ge rapporten till en klient för hälsotillstånd. Du kan också skapa en hälsoinformation och skickar den för att åtgärda rapporteringsmetoder på `Partition` eller `CodePackageActivationContext` att rapportera om aktuella entiteter.
+tooreport via hello API du behöver toocreate hälsa specifika toohello entitet rapporttyp de vill tooreport på. Ge hello rapporten tooa hälsa klienten. Du kan också skapa en hälsoinformation och skickar den toocorrect rapporteringsmetoder på `Partition` eller `CodePackageActivationContext` tooreport på aktuella entiteter.
 
-I följande exempel visas periodiska reporting från en watchdog i klustret. Watchdog kontrollerar om en extern resurs kan nås inifrån en nod. Resursen som krävs av en tjänstmanifestet i programmet. Om resursen är tillgänglig, kan andra tjänster i programmet fortfarande att fungera korrekt. Därför skickas rapporten på den distribuerade tjänst paketet entiteten med 30 sekunders mellanrum.
+hello följande exempel visar periodiska reporting från en watchdog inom hello kluster. hello watchdog kontrollerar om en extern resurs kan nås inifrån en nod. hello resursen krävs av ett service manifest hello-programmet. Om hello resursen är tillgänglig, kan hello andra tjänster inom hello program fortfarande fungerar korrekt. Därför hello rapporten skickas på hello distribuerad tjänst paketet enhet var 30: e sekund.
 
 ```csharp
 private static Uri ApplicationName = new Uri("fabric:/WordCount");
@@ -194,10 +194,10 @@ private static FabricClient Client = new FabricClient(new FabricClientSettings()
 
 public static void SendReport(object obj)
 {
-    // Test whether the resource can be accessed from the node
+    // Test whether hello resource can be accessed from hello node
     HealthState healthState = this.TestConnectivityToExternalResource();
 
-    // Send report on deployed service package, as the connectivity is needed by the specific service manifest
+    // Send report on deployed service package, as hello connectivity is needed by hello specific service manifest
     // and can be different on different nodes
     var deployedServicePackageHealthReport = new DeployedServicePackageHealthReport(
         ApplicationName,
@@ -207,8 +207,8 @@ public static void SendReport(object obj)
 
     // TODO: handle exception. Code omitted for snippet brevity.
     // Possible exceptions: FabricException with error codes
-    // FabricHealthStaleReport (non-retryable, the report is already queued on the health client),
-    // FabricHealthMaxReportsReached (retryable; user should retry with exponential delay until the report is accepted).
+    // FabricHealthStaleReport (non-retryable, hello report is already queued on hello health client),
+    // FabricHealthMaxReportsReached (retryable; user should retry with exponential delay until hello report is accepted).
     Client.HealthManager.ReportHealth(deployedServicePackageHealthReport);
 }
 ```
@@ -216,7 +216,7 @@ public static void SendReport(object obj)
 ### <a name="powershell"></a>PowerShell
 Skicka hälsorapporter med  **skicka ServiceFabric*EntityType*HealthReport **.
 
-I följande exempel visas periodiska rapportering om CPU-värden på en nod. Rapporterna ska skickas med 30 sekunders mellanrum, och de har en livstiden på två minuter. Om de upphör att gälla har personen problem, så noden som ska utvärderas vid fel. När Processorn överskrider ett tröskelvärde har rapporten ett hälsotillstånd varning. När Processorn överskrider ett tröskelvärde för mer än den konfigurerade tidpunkten, rapporteras den som ett fel. Annars skickar personen ett hälsotillstånd OK.
+hello följande exempel visar periodiska rapportering om CPU-värden på en nod. hello rapporter ska skickas med 30 sekunders mellanrum, och de har en tid toolive på två minuter. Om de upphör att gälla har hello rapport problem, så hello nod utvärderas vid fel. När hello CPU överskrider ett tröskelvärde har hello rapporten ett hälsotillstånd varning. När hello CPU förblir överskrider ett tröskelvärde för mer än hello konfigurerats tid, rapporteras den som ett fel. Annars skickar hello rapport ett hälsotillstånd OK.
 
 ```powershell
 PS C:\> Send-ServiceFabricNodeHealthReport -NodeName Node.1 -HealthState Warning -SourceId PowershellWatcher -HealthProperty CPU -Description "CPU is above 80% threshold" -TimeToLiveSec 120
@@ -253,14 +253,14 @@ HealthEvents          :
                         Transitions           : ->Warning = 4/21/2015 9:01:21 PM
 ```
 
-I följande exempel rapporterar en varning om tillfälligt på en replik. Först hämtar partitions-ID och replik-ID för tjänsten som den är intresserad av. Skickar sedan en rapport från **PowershellWatcher** i egenskapen **ResourceDependency**. Rapporten är av intresse för bara två minuter och det bort automatiskt från arkivet.
+hello rapporterar följande exempel en varning om tillfälligt på en replik. Den först hämtar hello partitions-ID och hello replik-ID för hello-tjänsten som den är intresserad av. Skickar sedan en rapport från **PowershellWatcher** på hello egenskapen **ResourceDependency**. hello rapporten är av intresse för bara två minuter och det bort automatiskt från hello store.
 
 ```powershell
 PS C:\> $partitionId = (Get-ServiceFabricPartition -ServiceName fabric:/WordCount/WordCount.Service).PartitionId
 
 PS C:\> $replicaId = (Get-ServiceFabricReplica -PartitionId $partitionId | where {$_.ReplicaRole -eq "Primary"}).ReplicaId
 
-PS C:\> Send-ServiceFabricReplicaHealthReport -PartitionId $partitionId -ReplicaId $replicaId -HealthState Warning -SourceId PowershellWatcher -HealthProperty ResourceDependency -Description "The external resource that the primary is using has been rebooted at 4/21/2015 9:01:21 PM. Expect processing delays for a few minutes." -TimeToLiveSec 120 -RemoveWhenExpired
+PS C:\> Send-ServiceFabricReplicaHealthReport -PartitionId $partitionId -ReplicaId $replicaId -HealthState Warning -SourceId PowershellWatcher -HealthProperty ResourceDependency -Description "hello external resource that hello primary is using has been rebooted at 4/21/2015 9:01:21 PM. Expect processing delays for a few minutes." -TimeToLiveSec 120 -RemoveWhenExpired
 
 PS C:\> Get-ServiceFabricReplicaHealth  -PartitionId $partitionId -ReplicaOrInstanceId $replicaId
 
@@ -291,23 +291,23 @@ HealthEvents          :
                         SentAt                : 4/21/2015 9:12:57 PM
                         ReceivedAt            : 4/21/2015 9:12:57 PM
                         TTL                   : 00:02:00
-                        Description           : The external resource that the primary is using has been rebooted at 4/21/2015 9:01:21 PM. Expect processing delays for a few minutes.
+                        Description           : hello external resource that hello primary is using has been rebooted at 4/21/2015 9:01:21 PM. Expect processing delays for a few minutes.
                         RemoveWhenExpired     : True
                         IsExpired             : False
                         Transitions           : ->Warning = 4/21/2015 9:12:32 PM
 ```
 
 ### <a name="rest"></a>REST
-Skicka hälsorapporter med POST-förfrågningar som går du till entitet och har i själva hälsa Rapportbeskrivning REST. Till exempel visas hur du skickar REST [kluster hälsorapporter](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) eller [tjänsten hälsorapporter](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Alla enheter som stöds.
+Skicka hälsorapporter med POST-förfrågningar som går toohello önskad entiteten och har i beskrivningen av rapporten hello brödtext hello hälsa REST. Till exempel visas hur toosend REST- [kluster hälsorapporter](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-cluster) eller [tjänsten hälsorapporter](https://docs.microsoft.com/rest/api/servicefabric/report-the-health-of-a-service). Alla enheter som stöds.
 
 ## <a name="next-steps"></a>Nästa steg
-Baserat på data i hälsa, kan service-skrivare och kluster/application-administratörer Se sätt att använda informationen. De kan till exempel konfigurera aviseringar baserat på hälsostatus för att fånga allvarliga problem innan de leda till avbrott. Administratörer kan också ställa in reparera system för att åtgärda problem automatiskt.
+Baserat på hello hälsa data kan service-skrivare och kluster/application-administratörer Se sätt tooconsume hello information. De kan exempelvis ställa in varningar baserat på status toocatch allvarliga problem innan de leda till avbrott. Administratörer kan också ställa in reparera system toofix problem automatiskt.
 
-[Introduktion till Service Fabric hälsa övervakning](service-fabric-health-introduction.md)
+[Introduktion tooService hälsotillståndet för Infrastrukturresurser övervakning](service-fabric-health-introduction.md)
 
 [Visa Service Fabric-hälsorapporter](service-fabric-view-entities-aggregated-health.md)
 
-[Hur du rapporten och kontrollera tjänstens hälsa](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+[Hur tooreport och kontrollera-tjänsten för hälsotillstånd](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
 [Använda systemet hälsorapporter för felsökning](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 

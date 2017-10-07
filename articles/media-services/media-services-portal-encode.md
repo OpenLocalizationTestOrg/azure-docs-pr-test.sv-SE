@@ -1,6 +1,6 @@
 ---
-title: "Koda en tillgång med Media Encoder Standard med Azure-portalen | Microsoft Docs"
-description: "Den här självstudiekursen vägleder dig genom stegen för att koda en tillgång med Media Encoder Standard med Azure-portalen."
+title: "aaaEncode en tillgång med Media Encoder Standard med hello Azure-portalen | Microsoft Docs"
+description: "Den här självstudiekursen vägleder dig genom hello stegen för att koda en tillgång med Media Encoder Standard med hello Azure-portalen."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: a299245e285c4caa68988b184799cd6f4d13e080
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0d118bbbe1fa9f4ba0bfa3ea3b10fb541d1d6379
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="encode-an-asset-using-media-encoder-standard-with-the-azure-portal"></a>Koda en tillgång med Media Encoder Standard med Azure-portalen
+# <a name="encode-an-asset-using-media-encoder-standard-with-hello-azure-portal"></a>Koda en tillgång med Media Encoder Standard med hello Azure-portalen
 > [!NOTE]
-> Du behöver ett Azure-konto för att slutföra den här självstudien. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/). 
+> toocomplete den här självstudiekursen kommer du behöver ett Azure-konto. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-När du arbetar med Azure Media Services är ett av de vanligaste scenarierna att leverera strömning med anpassad bithastighet till dina klienter. Media Services har stöd för följande strömningstekniker med anpassningsbar bithastighet: HTTP-liveuppspelning (HLS), jämn direktuppspelning, MPEG DASH. För att förbereda dina videor för strömning med anpassad bithastighet måste du koda källvideon till filer i multibithastighet. Du bör använda kodaren **Media Encoder Standard** för att koda dina videor.  
+När du arbetar med Azure Media Services är ett av hello vanligaste scenarierna att leverera med anpassningsbar bithastighet strömmande tooyour klienter. Media Services stöder följande strömningstekniker med anpassningsbar bithastighet hello: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH. tooprepare videor för anpassningsbar bithastighet strömning måste tooencode källfilerna video i flera bithastigheter filer. Du bör använda hello **Media Encoder Standard** kodare tooencode videor.  
 
-Media Services tillhandahåller också dynamisk paketering som gör att du kan leverera dina MP4s multibithastighet i följande strömningsformat: MPEG DASH, HLS, Smooth Streaming, utan att du behöver packa om till dessa strömningsformat. Med dynamisk paketering behöver du bara lagra och betala för filerna i ett enda lagringsformat, och Media Services skapar och ger lämplig respons baserat på begäranden från en klient.
+Media Services tillhandahåller också dynamisk paketering som gör toodeliver din multibithastighet MP4s i hello följande strömningsformat: MPEG DASH, HLS, Smooth Streaming, utan att behöva toore-paket till dessa strömningsformat. Med dynamisk paketering behöver du bara toostore och betala för hello filer i ett enda lagringsformat och Media Services skapar och ger hello lämplig respons baserat på begäranden från en klient.
 
-Om du vill dra nytta av dynamisk paketering måste du koda din källfil till en uppsättning MP4-filer med flera bithastigheter (kodningsstegen visas längre fram i det här avsnittet).
+tootake nytta av dynamisk paketering behöver du behöver tooencode källfilen till en uppsättning med flera bithastigheter MP4-filer (hello kodningsstegen senare i det här avsnittet).
 
-Om du vill skala media bearbetning, se [detta](media-services-portal-scale-media-processing.md) avsnittet.
+tooscale media bearbetning, se [detta](media-services-portal-scale-media-processing.md) avsnittet.
 
-## <a name="encode-with-the-azure-portal"></a>Koda med Azure-portalen
-I det här avsnittet beskrivs de steg som du kan vidta för att koda ditt innehåll med Media Encoder Standard.
+## <a name="encode-with-hello-azure-portal"></a>Koda med hello Azure-portalen
+Det här avsnittet beskrivs hello åtgärder du kan vidta tooencode ditt innehåll med Media Encoder Standard.
 
-1. Välj ditt Azure Media Services-konto i [Azure-portalen](https://portal.azure.com/).
-2. I fönstret **Inställningar** väljer du **Tillgångar**.  
-3. I fönstret **Tillgångar** väljer du den tillgång som du vill koda.
-4. Tryck på knappen **Koda**.
-5. I fönstret **Koda en tillgång** väljer du processorn ”Media Encoder Standard” och en förinställning. Information om förinställningar finns i [auto-generate a bitrate ladder](media-services-autogen-bitrate-ladder-with-mes.md) (autogenerera en bithastighetsstege) och [Task Presets for MES](media-services-mes-presets-overview.md) (Uppgiftsförinställningar för MES). Om du planerar att styra vilka kodningsförinställningar, kom ihåg att det är viktigt att välja den förinställning som är mest lämplig för din indatavideo. Om du till exempel vet att din indatavideo har en upplösning på 1 920 x 1 080 bildpunkter, kan du använda förinställningen ”H264 multibithastighet 1080p”. Om du har en video med låg upplösning (640 x 360) bör du inte använda förinställningen ”H264 multibithastighet 1080p”.
+1. I hello [Azure-portalen](https://portal.azure.com/), Välj Azure Media Services-konto.
+2. I hello **inställningar** väljer **tillgångar**.  
+3. I hello **tillgångar** fönster, Välj hello tillgång som du vill att tooencode.
+4. Tryck på hello **koda** knappen.
+5. I hello **koda en tillgång** fönster, Välj hello ”Media Encoder Standard” processor och en förinställning. Information om förinställningar finns i [auto-generate a bitrate ladder](media-services-autogen-bitrate-ladder-with-mes.md) (autogenerera en bithastighetsstege) och [Task Presets for MES](media-services-mes-presets-overview.md) (Uppgiftsförinställningar för MES). Om du planerar toocontrol vilka kodning förinställda används, Kom ihåg: det är viktigt tooselect hello förinställning som är mest lämpliga för din indatavideo. Till exempel om du vet att din indatavideo har en upplösning på 1 920 x 1 080 bildpunkter, du kan använda hello ”H264 Multibithastighet 1080p” förinställda. Om du har en video med låg upplösning (640 x 360) bör du inte använda förinställningen ”H264 multibithastighet 1080p”.
    
-   Du kan redigera namnet på utdatatillgången och namnet på jobbet för enklare hantering.
+   Har en möjlighet att redigera hello av hello utdatatillgången och hello namn för hello jobbet för enklare hantering.
    
    ![Koda tillgångar](./media/media-services-portal-vod-get-started/media-services-encode1.png)
 6. Tryck på **Skapa**.
 
 ## <a name="next-step"></a>Nästa steg
-Du kan övervaka kodningsjobb med Azure-portalen, enligt beskrivningen i [detta](media-services-portal-check-job-progress.md) artikel.  
+Du kan övervaka kodningsjobb med hello Azure-portalen, enligt beskrivningen i [detta](media-services-portal-check-job-progress.md) artikel.  
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

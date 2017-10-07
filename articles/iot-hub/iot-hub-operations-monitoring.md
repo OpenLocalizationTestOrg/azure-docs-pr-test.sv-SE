@@ -1,6 +1,6 @@
 ---
-title: "Åtgärder i Azure IoT-hubb övervakning | Microsoft Docs"
-description: "Hur du använder Azure IoT Hub operations övervakning för att övervaka status för åtgärder för din IoT-hubb i realtid."
+title: "aaaAzure IoT-hubb operations övervakning | Microsoft Docs"
+description: "Hur toouse Azure IoT Hub operations övervakning toomonitor hello status för åtgärder för din IoT-hubb i realtid."
 services: iot-hub
 documentationcenter: 
 author: nberdy
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: nberdy
-ms.openlocfilehash: b6de5c5df5f9401a41be152bfa06eb994594e83d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a0b233ef2d9bd0827e19fa30fdbdd49b2b61b813
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT-hubb operations övervakning
 
-IoT-hubb operations övervakning kan du övervaka status för åtgärder för din IoT-hubb i realtid. IoT-hubb spårar händelser över flera kategorier av åtgärder. Du kan välja att skicka händelser från en eller flera kategorier för en slutpunkt av din IoT-hubb för bearbetning. Du kan övervaka data för fel eller ställa in mer komplexa bearbetning baserat på datamönster.
+IoT-hubb operations övervakning kan du toomonitor hello status för åtgärder för din IoT-hubb i realtid. IoT-hubb spårar händelser över flera kategorier av åtgärder. Du kan välja att skicka händelser från en eller flera kategorier tooan slutpunkten för din IoT-hubb för bearbetning. Du kan övervaka hello data för fel eller ställa in mer komplexa bearbetning baserat på datamönster.
 
 IoT-hubb övervakar sex kategorier av händelser:
 
@@ -33,28 +33,28 @@ IoT-hubb övervakar sex kategorier av händelser:
 * Filöverföringar
 * Meddelanderoutning
 
-## <a name="how-to-enable-operations-monitoring"></a>Så här aktiverar du operations övervakning
+## <a name="how-tooenable-operations-monitoring"></a>Hur tooenable operations övervakning
 
-1. Skapa en IoT-hubb. Du hittar anvisningar om hur du skapar en IoT-hubb i den [Kom igång] [ lnk-get-started] guide.
+1. Skapa en IoT-hubb. Du hittar anvisningar om hur toocreate en IoT-hubb i hello [Kom igång] [ lnk-get-started] guide.
 
-1. Öppna bladet för din IoT-hubb. Därifrån klickar du på **Operations övervakning**.
+1. Öppna hello bladet för din IoT-hubb. Därifrån klickar du på **Operations övervakning**.
 
-    ![Åtkomståtgärder övervakning konfigurationen för portalen][1]
+    ![Åtkomståtgärder övervakning konfigurationen hello-portalen][1]
 
-1. Välj övervakning kategorier som du vill övervaka och klicka sedan på **spara**. Händelserna som är tillgängliga för att läsa från Event Hub-kompatibel slutpunkten som anges i **övervakningsinställningarna**. IoT-hubb-slutpunkt anropas `messages/operationsmonitoringevents`.
+1. Välj hello övervakning av du vill toomonitor och klicka sedan på **spara**. hello händelser som är tillgängliga för att läsa från hello Event Hub-kompatibel slutpunkt som anges i **övervakningsinställningarna**. Hej IoT-hubb kallas `messages/operationsmonitoringevents`.
 
     ![Konfigurera operations övervakning på din IoT-hubb][2]
 
 > [!NOTE]
-> Att välja **utförlig** övervakning för den **anslutningar** kategori orsakar IoT-hubb för att generera diagnostikmeddelanden för ytterligare. För alla kategorier, den **utförlig** inställningsändringar mängd information IoT-hubb ingår i varje felmeddelande.
+> Att välja **utförlig** övervakning för hello **anslutningar** kategori orsakar IoT-hubb toogenerate ytterligare diagnostiska meddelanden. Alla kategorier, hello **utförlig** inställningsändringar hello mängd information IoT-hubb ingår i varje felmeddelande.
 
-## <a name="event-categories-and-how-to-use-them"></a>Kategorier och hur du använder dem.
+## <a name="event-categories-and-how-toouse-them"></a>Kategorier och hur toouse dem.
 
 Varje operations övervakning kategorin spårar en annan typ av interaktion med IoT-hubb och varje övervakning kategori har ett schema som definierar hur händelser i den kategorin är strukturerad.
 
 ### <a name="device-identity-operations"></a>Enhetens identitet åtgärder
 
-Enhetskategori identitet operations spårar fel som uppstår vid försök att skapa, uppdatera eller ta bort en post i registret för din IoT-hubb identitet. Spårning av den här kategorin är användbart för att etablera scenarier.
+hello enhetskategori identitet operations spårar fel som uppstår när du försöker toocreate, uppdatera eller ta bort en post i registret för din IoT-hubb identitet. Spårning av den här kategorin är användbart för att etablera scenarier.
 
 ```json
 {
@@ -73,7 +73,7 @@ Enhetskategori identitet operations spårar fel som uppstår vid försök att sk
 
 ### <a name="device-telemetry"></a>Enhetstelemetrin
 
-Telemetri enhetskategori spårar fel som uppstår vid IoT-hubb och är relaterade till telemetri pipeline. Den här kategorin innehåller fel som uppstår när du skickar telemetriska händelser (till exempel begränsning) och ta emot telemetriska händelser (till exempel obehöriga läsare). Den här kategorin kan inte fånga fel som orsakats av kod som körs på själva enheten.
+hello telemetri enhetskategori spårar fel som uppstår vid hello IoT-hubb och är relaterade toohello telemetri pipeline. Den här kategorin innehåller fel som uppstår när du skickar telemetriska händelser (till exempel begränsning) och ta emot telemetriska händelser (till exempel obehöriga läsare). Den här kategorin kan inte fånga fel som orsakats av kod som körs på själva hello-enheten.
 
 ```json
 {
@@ -97,7 +97,7 @@ Telemetri enhetskategori spårar fel som uppstår vid IoT-hubb och är relaterad
 
 ### <a name="cloud-to-device-commands"></a>Moln till enhet kommandon
 
-Moln till enhet kommandon kategorin spårar fel som uppstår vid IoT-hubb och är relaterade till moln-till-enhetsmeddelande pipeline. Den här kategorin innehåller fel som uppstår när meddelanden moln till enhet (till exempel obehöriga avsändaren), ta emot meddelanden moln till enhet (till exempel leverans för många) och ta emot meddelandet moln till enhet feedback (t ex feedback har upphört att gälla). Den här kategorin fånga inte fel från en enhet som hanterar ett moln till enhet meddelande felaktigt om moln till enhet meddelandet levererades har.
+hello moln till enhet kommandon kategorin spårar fel som uppstår vid hello IoT-hubb och är relaterade toohello moln-till-enhetsmeddelande pipeline. Den här kategorin innehåller fel som uppstår när meddelanden moln till enhet (till exempel obehöriga avsändaren), ta emot meddelanden moln till enhet (till exempel leverans för många) och ta emot meddelandet moln till enhet feedback (t ex feedback har upphört att gälla). Den här kategorin fånga inte fel från en enhet som hanterar ett moln till enhet meddelande felaktigt om moln till enhet hälsningsmeddelande levereras.
 
 ```json
 {
@@ -121,7 +121,7 @@ Moln till enhet kommandon kategorin spårar fel som uppstår vid IoT-hubb och ä
 
 ### <a name="connections"></a>Anslutningar
 
-Anslutningar kategorin spårar fel som uppstår när enheter ansluta eller koppla från en IoT-hubb. Spårning av den här kategorin är användbar för att identifiera obehöriga anslutningsförsök och för att spåra när anslutningen bryts för enheter i områden i dålig anslutning.
+hello anslutningar kategorin spårar fel som uppstår när enheter ansluta eller koppla från en IoT-hubb. Spårning av den här kategorin är användbar för att identifiera obehöriga anslutningsförsök och för att spåra när anslutningen bryts för enheter i områden i dålig anslutning.
 
 ```json
 {
@@ -141,13 +141,13 @@ Anslutningar kategorin spårar fel som uppstår när enheter ansluta eller koppl
 
 ### <a name="file-uploads"></a>Filöverföringar
 
-Filen överför kategorin spårar fel som uppstår vid IoT-hubb och är relaterade till funktioner för överföring av filer. Den här kategorin omfattar:
+hello filen överför kategorin spårar fel som uppstår vid hello IoT-hubb och är relaterade toofile överför funktioner. Den här kategorin omfattar:
 
-* Fel som inträffar med SAS-URI, till exempel när det upphör att gälla innan en enhet meddelar hubb för en överförda.
-* Det gick inte överföringar som rapporteras av enheten.
+* Fel som inträffar med hello SAS URI, till exempel när det upphör att gälla innan en enhet meddelar hello hubb för en överförda.
+* Det gick inte överföringar som rapporterats av hello enhet.
 * Fel som uppstår när en fil inte hittas i lagringen under skapande av IoT-hubb notification meddelandet.
 
-Den här kategorin kan inte fånga fel som uppstår direkt medan enheten är Överför en fil till lagring.
+Den här kategorin kan inte fånga fel som uppstår direkt medan hello enheten laddar upp en fil toostorage.
 
 ```json
 {
@@ -168,7 +168,7 @@ Den här kategorin kan inte fånga fel som uppstår direkt medan enheten är Öv
 
 ### <a name="message-routing"></a>Meddelanderoutning
 
-Meddelandet routning kategorin spårar fel som inträffar när meddelandet väg utvärdering och slutpunkten hälsa som uppfattas av IoT-hubb. Den här kategorin innefattar händelser, t.ex. när en regel som utvärderar till ”undefined”, när IoT-hubb markerar en slutpunkt som förlorade och andra fel togs emot från en slutpunkt. Den här kategorin omfattar inte felen om själva meddelandena (till exempel enhet begränsning fel) som har rapporterats under kategorin ”enhetstelemetrin”.
+hello-meddelande routning kategorin spårar fel som inträffar när meddelandet väg utvärdering och slutpunkten hälsa som uppfattas av IoT-hubb. Den här kategorin innefattar händelser, t.ex. när en regel utvärderar för ”Odefinierad” när IoT-hubb markerar en slutpunkt som förlorade och andra fel togs emot från en slutpunkt. Den här kategorin omfattar inte felen om hälsningsmeddelande för sig (t.ex enheten begränsning fel) som har rapporterats under hello ”enhetstelemetrin” kategori.
 
 ```json
 {
@@ -187,49 +187,49 @@ Meddelandet routning kategorin spårar fel som inträffar när meddelandet väg 
 
 ## <a name="view-events"></a>Visa händelser
 
-Du kan använda den *iothub explorer* verktyg för att snabbt testa att din IoT-hubb genererar övervakning händelser. Om du vill installera verktyget, se anvisningarna i den [iothub explorer] [ lnk-iothub-explorer] GitHub-lagringsplatsen.
+Du kan använda hello *iothub explorer* verktyget tooquickly testa att din IoT-hubb genererar övervakning händelser. tooinstall hello verktyget, se hello instruktionerna i hello [iothub explorer] [ lnk-iothub-explorer] GitHub-lagringsplatsen.
 
-1. Kontrollera att den **anslutningar** övervakning kategori är inställd på **utförlig** i portalen.
+1. Se till att hello **anslutningar** övervakning kategori har angetts för**utförlig** hello-portalen.
 
-1. Kör följande kommando för att läsa från övervakning slutpunkten i en kommandotolk:
+1. Kör hello efter kommandot tooread från hello övervakning slutpunkt i en kommandotolk:
 
     ```
     iothub-explorer monitor-ops --login {your iothubowner connection string}
     ```
 
-1. Kör följande kommando för att simulera en enhet som skickar meddelanden från enhet till moln i en annan kommandotolk:
+1. Kör följande kommando toosimulate hello en enhet som skickar meddelanden från enhet till moln i en annan kommandotolk:
 
     ```
     iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
     ```
 
-1. Första Kommandotolken visar händelser som övervakning som den simulerade enheten ansluter till din IoT-hubb.
+1. hello första kommandotolk visar hello övervakning händelser som hello simulerade enheten ansluter tooyour IoT-hubb.
 
-## <a name="connect-to-the-monitoring-endpoint"></a>Ansluta till övervakning slutpunkt
+## <a name="connect-toohello-monitoring-endpoint"></a>Ansluta toohello övervakning slutpunkt
 
-Övervakning slutpunkten på din IoT-hubb är Event Hub-kompatibel slutpunkt. Du kan använda någon mekanism som fungerar med Händelsehubbar att läsa övervakning meddelanden från den här slutpunkten. I följande exempel skapar en grundläggande läsare som inte lämpar sig för en distribution med hög genomströmning. Mer information om hur du bearbetar meddelanden från Event Hubs finns i självstudiekursen [Komma igång med Event Hubs][lnk-eventhubs-tutorial].
+hello övervakning slutpunkt på din IoT-hubb är Event Hub-kompatibel slutpunkt. Du kan använda någon mekanism som fungerar med Händelsehubbar tooread övervakning meddelanden från den här slutpunkten. hello skapar följande exempel en grundläggande läsare som inte lämpar sig för en distribution med hög genomströmning. Mer information om hur tooprocess meddelanden från Händelsehubbar finns hello [Kom igång med Händelsehubbar] [ lnk-eventhubs-tutorial] kursen.
 
-För att ansluta till slutpunkten för övervakning, behöver du en anslutningssträng och namnet på slutpunkten. Följande steg visar hur du hittar de nödvändiga värdena i portalen:
+tooconnect toohello övervakning slutpunkt, behöver du en sträng och hello endpoint anslutningsnamn. hello följande steg visar hur toofind hello nödvändiga värden i hello portal:
 
-1. Gå till resursbladet för din IoT-hubb i portalen.
+1. Navigera tooyour resursbladet för IoT-hubb i hello-portalen.
 
-1. Välj **Operations övervakning**, och anteckna den **Event Hub-kompatibelt namn** och **Event Hub-kompatibel endpoint** värden:
+1. Välj **Operations övervakning**, och anteckna hello **Event Hub-kompatibelt namn** och **Event Hub-kompatibel endpoint** värden:
 
     ![Event Hub-kompatibel endpoint värden][img-endpoints]
 
-1. Välj **principer för delad åtkomst**, Välj **tjänsten**. Anteckna den **primärnyckel** värde:
+1. Välj **principer för delad åtkomst**, Välj **tjänsten**. Anteckna hello **primärnyckel** värde:
 
     ![Primär nyckel för tjänsten delad åtkomst-princip][img-service-key]
 
-Följande C# kodexempel hämtas från Visual Studio **klassiska Windows-skrivbordet** C#-konsolapp. Projektet har den **WindowsAzure.ServiceBus** NuGet-paketet installeras.
+hello följande kodexempel för C# hämtas från Visual Studio **klassiska Windows-skrivbordet** C#-konsolapp. hello-projekt har hello **WindowsAzure.ServiceBus** NuGet-paketet installeras.
 
-* Ersätt platshållaren för anslutningssträngen med en anslutningssträng som använder den **Event Hub-kompatibel endpoint** och tjänsten **primärnyckel** värden som du antecknade tidigare som visas i följande exempel:
+* Ersätt hello anslutning sträng platshållaren med en anslutningssträng som använder hello **Event Hub-kompatibel endpoint** och tjänsten **primärnyckel** värden som du antecknade tidigare enligt följande hello Exempel:
 
     ```cs
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* Ersätt platshållaren namn övervakning slutpunkten för med den **Event Hub-kompatibelt namn** värdet som du antecknade tidigare.
+* Ersätt hello övervakning endpoint platshållare med hello **Event Hub-kompatibelt namn** värdet som du antecknade tidigare.
 
 ```cs
 class Program
@@ -240,7 +240,7 @@ class Program
 
     static void Main(string[] args)
     {
-        Console.WriteLine("Monitoring. Press Enter key to exit.\n");
+        Console.WriteLine("Monitoring. Press Enter key tooexit.\n");
 
         eventHubClient = EventHubClient.CreateFromConnectionString(connectionString, monitoringEndpointName);
         var d2cPartitions = eventHubClient.GetRuntimeInformation().PartitionIds;
@@ -282,7 +282,7 @@ class Program
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Om du vill utforska ytterligare funktionerna i IoT-hubb, se:
+toofurther utforska hello funktionerna i IoT Hub, se:
 
 * [Utvecklarhandbok för IoT-hubb][lnk-devguide]
 * [Simulera en enhet med Azure IoT kant][lnk-iotedge]

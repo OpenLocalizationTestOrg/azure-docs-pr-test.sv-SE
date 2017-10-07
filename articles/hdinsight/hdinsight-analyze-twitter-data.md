@@ -1,6 +1,6 @@
 ---
-title: Analysera Twitter-data med Hadoop i HDInsight - Azure | Microsoft Docs
-description: "Lär dig hur du använder Hive för att analysera Twitter-data med Hadoop i HDInsight för att hitta frekvensen för användning av ett visst ord."
+title: aaaAnalyze Twitter-data med Hadoop i HDInsight - Azure | Microsoft Docs
+description: "Lär dig hur toouse Hive tooanalyze Twitter-data på Hadoop i HDInsight toofind hello Användningsfrekvens av ett visst ord."
 services: hdinsight
 documentationcenter: 
 author: mumian
@@ -15,71 +15,71 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 711d364c36c3aba699326f4a76d42891ba3219fb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 40c0a1afbc1fff10c070d22a99cd9d32d42f230a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analysera Twitter-data med Hive i HDInsight
-Sociala webbplatser är en av större Drivande faktorer för stordata införande. Offentliga API: er som tillhandahålls av webbplatser som Twitter är en användbar datakälla för att analysera och förstå populära trender.
-I den här självstudiekursen kommer du få tweets med hjälp av en Twitter streaming API och sedan använda Apache Hive på Azure HDInsight för att hämta en lista över Twitter-användare som skickade de flesta tweets som innehöll ett visst ord.
+Sociala webbplatser är en av hello större Drivande faktorer för stordata införande. Offentliga API: er som tillhandahålls av webbplatser som Twitter är en användbar datakälla för att analysera och förstå populära trender.
+I den här självstudiekursen kommer du få tweets med hjälp av en Twitter streaming API och sedan använda Apache Hive på Azure HDInsight tooget en lista över Twitter-användare som skickade hello de flesta tweets som innehöll ett visst ord.
 
 > [!IMPORTANT]
-> Stegen i det här dokumentet kräver ett Windows-baserade HDInsight-kluster. Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Åtgärder som är specifika för ett Linux-baserade kluster, se [analysera Twitter-data med hjälp av Hive i HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
+> hello kräver stegen i det här dokumentet ett Windows-baserade HDInsight-kluster. Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement). Steg specifika tooa Linux-baserade kluster, se [analysera Twitter-data med hjälp av Hive i HDInsight (Linux)](hdinsight-analyze-twitter-data-linux.md).
 
 ## <a name="prerequisites"></a>Krav
-Innan du påbörjar de här självstudierna måste du ha:
+Innan du påbörjar den här självstudien måste du ha hello följande:
 
 * **En arbetsstation** med Azure PowerShell installeras och konfigureras.
 
-    Om du vill köra Windows PowerShell-skript, måste du köra Azure PowerShell som administratör och ange körningsprincipen som *RemoteSigned*. Se [kör Windows PowerShell-skript][powershell-script].
+    tooexecute Windows PowerShell-skript som du måste köra Azure PowerShell som administratör och ange hello körningsprincipen för*RemoteSigned*. Se [kör Windows PowerShell-skript][powershell-script].
 
-    Kontrollera att du är ansluten till din Azure-prenumeration med hjälp av följande cmdlet innan du kör Windows PowerShell-skript:
+    Kontrollera att du är ansluten tooyour Azure-prenumeration med hjälp av följande cmdlet hello innan du kör Windows PowerShell-skript:
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-    Om du har flera Azure-prenumerationer, använder du följande cmdlet för att ange den aktuella prenumerationen:
+    Om du har flera Azure-prenumerationer använder du följande cmdlet tooset hello aktuell prenumeration hello:
 
     ```powershell
     Select-AzureRmSubscription -SubscriptionID <Azure Subscription ID>
     ```
 
     > [!IMPORTANT]
-    > Azure PowerShell-stöd för hantering av HDInsight-resurser med hjälp av Azure Service Manager **är föråldrat** och togs bort den 1 januari 2017. I stegen i det här dokumentet används de nya HDInsight-cmdletarna som fungerar med Azure Resource Manager.
+    > Azure PowerShell-stöd för hantering av HDInsight-resurser med hjälp av Azure Service Manager **är föråldrat** och togs bort den 1 januari 2017. hello stegen i det här dokumentet används hello nya HDInsight-cmdletarna som fungerar med Azure Resource Manager.
     >
-    > Följ stegen i [Installera och konfigurera Azure PowerShell](/powershell/azureps-cmdlets-docs) för att installera den senaste versionen av Azure PowerShell. Om du har skript som behöver ändras för att använda de nya cmdletarna som fungerar med Azure Resource Manager, hittar du mer information i [Migrera till Azure Resource Manager-baserade utvecklingsverktyg för HDInsight-kluster](hdinsight-hadoop-development-using-azure-resource-manager.md).
+    > Följ stegen hello i [installera och konfigurera Azure PowerShell](/powershell/azureps-cmdlets-docs) tooinstall hello senaste versionen av Azure PowerShell. Om du har skript som behöver toobe ändras toouse hello nya cmdletarna som fungerar med Azure Resource Manager kan se [migrera tooAzure Resource Manager-baserade development tools för HDInsight-kluster](hdinsight-hadoop-development-using-azure-resource-manager.md) för mer information.
 
-* **Ett Azure HDInsight-kluster**. Mer information om klusteretablering finns [komma igång med HDInsight] [ hdinsight-get-started] eller [etablera HDInsight-kluster][hdinsight-provision]. Klusternamnet måste senare under kursen.
+* **Ett Azure HDInsight-kluster**. Mer information om klusteretablering finns [komma igång med HDInsight] [ hdinsight-get-started] eller [etablera HDInsight-kluster][hdinsight-provision]. Du behöver hello klusternamnet senare i självstudiekursen hello.
 
-I följande tabell visas de filer som används i den här självstudiekursen:
+hello visas följande tabell hello-filer som används i den här självstudiekursen:
 
 | Filer | Beskrivning |
 | --- | --- |
-| /tutorials/Twitter/data/tweets.txt |Källdata för Hive-jobb. |
-| /tutorials/Twitter/Output |Den utgående mappen för Hive-jobb. Hive-jobbet utdata Standardfilnamnet är **000000_0**. |
-| tutorials/Twitter/Twitter.hql |HiveQL skriptfilen. |
-| /tutorials/Twitter/JobStatus |Hadoop-jobbstatus. |
+| /tutorials/Twitter/data/tweets.txt |hello källdata hello Hive-jobb. |
+| /tutorials/Twitter/Output |hello utdatamapp för hello Hive-jobb. hello Hive-jobbet utdata Standardfilnamnet är **000000_0**. |
+| tutorials/Twitter/Twitter.hql |Hej HiveQL skriptfilen. |
+| /tutorials/Twitter/JobStatus |Hej Hadoop jobbstatus. |
 
 ## <a name="get-twitter-feed"></a>Get Twitter-flöde
-I den här kursen använder du den [Twitter-API: er för strömning][twitter-streaming-api]. Specifika Twitter streaming API som du ska använda är [statusar/filter][twitter-statuses-filter].
+I den här självstudiekursen kommer du använda hello [Twitter-API: er för strömning][twitter-streaming-api]. hello specifika Twitter streaming API som du ska använda är [statusar/filter][twitter-statuses-filter].
 
 > [!NOTE]
-> En fil som innehåller 10 000 tweets och Hive-skriptfil (beskrivs i nästa avsnitt) har laddats upp i en offentlig blobbbehållare. Du kan hoppa över det här avsnittet om du vill använda de överförda filerna.
+> En fil som innehåller 10 000 tweets och hello Hive skriptfilen (beskrivs i nästa avsnitt av hello) har laddats upp i en offentlig blobbbehållare. Du kan hoppa över det här avsnittet om du vill toouse hello överföra filer.
 
-[Tweets data](https://dev.twitter.com/docs/platform-objects/tweets) lagras i formatet JavaScript Object Notation (JSON) som innehåller en komplex kapslade struktur. I stället för att skriva många rader med kod med hjälp av en konventionell programmeringsspråk, kan du omvandla den här kapslade strukturen i en Hive-tabell så att den kan efterfrågas av en SQL Structured Query Language ()-som språk som kallas HiveQL.
+[Tweets data](https://dev.twitter.com/docs/platform-objects/tweets) lagras i hello JavaScript Object Notation (JSON)-format som innehåller en komplex kapslade struktur. I stället för att skriva många rader med kod med hjälp av en konventionell programmeringsspråk, kan du omvandla den här kapslade strukturen i en Hive-tabell så att den kan efterfrågas av en SQL Structured Query Language ()-som språk som kallas HiveQL.
 
-Twitter använder OAuth för auktoriserad åtkomst till dess API. OAuth är ett autentiseringsprotokoll som tillåter användare att godkänna program fungerar åt utan att dela sina lösenord. Mer information finns på [oauth.net](http://oauth.net/) eller i den utmärkt [Nybörjarguide till OAuth](http://hueniverse.com/oauth/) från Hueniverse.
+Twitter använder OAuth tooprovide auktoriserad åtkomst tooits API. OAuth är ett autentiseringsprotokoll som gör att användare tooapprove program tooact åt utan att dela sina lösenord. Mer information finns på [oauth.net](http://oauth.net/) eller i hello utmärkt [nybörjares Guide tooOAuth](http://hueniverse.com/oauth/) från Hueniverse.
 
-Det första steget att använda OAuth är att skapa ett nytt program på webbplatsen Twitter-utvecklare.
+hello första steg toouse OAuth är toocreate ett nytt program på hello Twitter Developer.
 
-**Skapa ett Twitter-program**
+**toocreate ett Twitter-program**
 
-1. Logga in på [https://apps.twitter.com/](https://apps.twitter.com/). Klicka på den **registrera nu** länk om du inte har ett Twitter-konto.
+1. Logga in för[https://apps.twitter.com/](https://apps.twitter.com/). Klicka på hello **registrera nu** länk om du inte har ett Twitter-konto.
 2. Klicka på **Skapa ny App**.
-3. Ange **namn**, **beskrivning**, **webbplats**. Du kan göra upp en URL för den **webbplats** fältet. I följande tabell visas några exempelvärden som ska användas:
+3. Ange **namn**, **beskrivning**, **webbplats**. Du kan göra upp en URL för hello **webbplats** fältet. hello följande tabell visar några exempel värden toouse:
 
    | Fält | Värde |
    | --- | --- |
@@ -87,46 +87,46 @@ Det första steget att använda OAuth är att skapa ett nytt program på webbpla
    |  Beskrivning |MyHDInsightApp |
    |  Webbplats |http://www.myhdinsightapp.com |
 4. Kontrollera **Ja, jag godkänner**, och klicka sedan på **skapa programmet Twitter**.
-5. Klicka på den **behörigheter** fliken. Standardbehörigheten är **skrivskyddad**. Detta är tillräcklig för den här kursen.
-6. Klicka på den **nycklar och åtkomst-token** fliken.
+5. Klicka på hello **behörigheter** är fliken hello standardbehörigheten **skrivskyddad**. Detta är tillräcklig för den här kursen.
+6. Klicka på hello **nycklar och åtkomst-token** fliken.
 7. Klicka på **skapa åtkomst-token**.
-8. Klicka på **Test OAuth** i det övre högra hörnet på sidan.
-9. Skriv ned **konsumenten nyckeln**, **konsumenthemlighet**, **åtkomsttoken**, och **åtkomst-token hemlighet**. Du behöver värdena senare under kursen.
+8. Klicka på **Test OAuth** i hello övre högra hörnet av hello-sidan.
+9. Skriv ned **konsumenten nyckeln**, **konsumenthemlighet**, **åtkomsttoken**, och **åtkomst-token hemlighet**. Behöver du hello värden senare i självstudiekursen hello.
 
-I den här självstudiekursen kommer du använda Windows PowerShell för att anropa webbtjänsten. En .NET C# exempel hittar [analysera realtid Twitter-åsikter med HBase i HDInsight][hdinsight-hbase-twitter-sentiment]. Andra populära verktyget göra webbtjänstanrop [ *Curl*][curl]. CURL kan hämtas från [här][curl-download].
+I den här kursen använder du Windows PowerShell toomake hello webbtjänstanrop. En .NET C# exempel hittar [analysera realtid Twitter-åsikter med HBase i HDInsight][hdinsight-hbase-twitter-sentiment]. hello webbtjänstanrop andra populära verktyget toomake är [ *Curl*][curl]. CURL kan hämtas från [här][curl-download].
 
 > [!NOTE]
-> När du använder curl-kommando i Windows, Använd dubbla citattecken i stället för enkla citattecken för värden för alternativ.
+> När du använder hello curl-kommando i Windows, Använd dubbla citattecken i stället för enkla citattecken för hello alternativvärden.
 
-**Få tweets**
+**tooget tweets**
 
-1. Öppna Windows PowerShell Integrated Scripting Environment (ISE). (Ange på startskärmen för Windows 8 **PowerShell_ISE** och klicka sedan på **Windows PowerShell ISE**. Se [starta Windows PowerShell på Windows 8 och Windows][powershell-start].)
-2. Kopiera följande skript i skriptfönstret:
+1. Öppna hello Windows PowerShell Integrated Scripting Environment (ISE). (På hello Start i Windows 8-skärmen, skriver **PowerShell_ISE** och klicka sedan på **Windows PowerShell ISE**. Se [starta Windows PowerShell på Windows 8 och Windows][powershell-start].)
+2. Kopiera följande skript i hello Skriptfönster hello:
 
     ```powershell
     #region - variables and constants
-    $clusterName = "<HDInsightClusterName>" # Enter the HDInsight cluster name
+    $clusterName = "<HDInsightClusterName>" # Enter hello HDInsight cluster name
 
-    # Enter the OAuth information for your Twitter application
+    # Enter hello OAuth information for your Twitter application
     $oauth_consumer_key = "<TwitterAppConsumerKey>";
     $oauth_consumer_secret = "<TwitterAppConsumerSecret>";
     $oauth_token = "<TwitterAppAccessToken>";
     $oauth_token_secret = "<TwitterAppAccessTokenSecret>";
 
-    $destBlobName = "tutorials/twitter/data/tweets.txt" # This script saves the tweets into this blob.
+    $destBlobName = "tutorials/twitter/data/tweets.txt" # This script saves hello tweets into this blob.
 
-    $trackString = "Azure, Cloud, HDInsight" # This script gets the tweets containing these keywords.
+    $trackString = "Azure, Cloud, HDInsight" # This script gets hello tweets containing these keywords.
     $track = [System.Uri]::EscapeDataString($trackString);
-    $lineMax = 10000  # The script will get this number of tweets. It is about 3 minutes every 100 lines.
+    $lineMax = 10000  # hello script will get this number of tweets. It is about 3 minutes every 100 lines.
     #endregion
 
-    #region - Connect to Azure subscription
-    Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+    #region - Connect tooAzure subscription
+    Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
     Login-AzureRmAccount
     #endregion
 
     #region - Create a block blob object for writing tweets into Blob storage
-    Write-Host "Get the default storage account name and Blob container name using the cluster name ..." -ForegroundColor Green
+    Write-Host "Get hello default storage account name and Blob container name using hello cluster name ..." -ForegroundColor Green
     $myCluster = Get-AzureRmHDInsightCluster -Name $clusterName
     $resourceGroupName = $myCluster.ResourceGroup
     $storageAccountName = $myCluster.DefaultStorageAccount.Replace(".blob.core.windows.net", "")
@@ -134,7 +134,7 @@ I den här självstudiekursen kommer du använda Windows PowerShell för att anr
     Write-Host "`tThe storage account name is $storageAccountName." -ForegroundColor Yellow
     Write-Host "`tThe blob container name is $containerName." -ForegroundColor Yellow
 
-    Write-Host "Define the Azure storage connection string ..." -ForegroundColor Green
+    Write-Host "Define hello Azure storage connection string ..." -ForegroundColor Green
     $storageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName)[0].Value
     $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$storageAccountName;AccountKey=$storageAccountKey"
     Write-Host "`tThe connection string is $storageConnectionString." -ForegroundColor Yellow
@@ -217,8 +217,8 @@ I den här självstudiekursen kommer du använda Windows PowerShell för att anr
     }
     #endregion
 
-    #region - Write tweets to Blob storage
-    Write-Host "Write to the destination blob ..." -ForegroundColor Green
+    #region - Write tweets tooBlob storage
+    Write-Host "Write toohello destination blob ..." -ForegroundColor Green
     $writeStream.Flush()
     $memStream.Seek(0, "Begin")
     $destBlob.UploadFromStream($memStream)
@@ -229,44 +229,44 @@ I den här självstudiekursen kommer du använda Windows PowerShell för att anr
     Write-Host "Completed!" -ForegroundColor Green
     ```
 
-3. Ange först fem till åtta variabler i skriptet:
+3. Ange hello fem första tooeight variabler i hello skript:
 
     Variabel|Beskrivning
     ---|---
-    $clusterName|Detta är namnet på HDInsight-klustret där du vill köra programmet.
-    $oauth_consumer_key|Detta är det Twitter-programmet **konsumenten nyckeln** du skrivit tidigare när du skapade Twitter-programmet.
-    $oauth_consumer_secret|Detta är det Twitter-programmet **konsumenthemlighet** du skrev ned tidigare.
-    $oauth_token|Detta är det Twitter-programmet **åtkomsttoken** du skrev ned tidigare.
-    $oauth_token_secret|Detta är det Twitter-programmet **åtkomst-token hemlighet** du skrev ned tidigare.
-    $destBlobName|Detta är blob utdatanamn. Standardvärdet är **tutorials/twitter/data/tweets.txt**. Om du ändrar standardvärdet, behöver du uppdateras också Windows PowerShell-skript.
-    $trackString|Webbtjänsten returneras tweets som rör nyckelorden. Standardvärdet är **Azure moln, HDInsight**. Om du ändrar standardvärdet, uppdaterar du Windows PowerShell-skript i enlighet med detta.
-    $lineMax|Värdet anger hur många tweets skriptet läses. Det tar cirka tre minuter för att läsa 100 tweets. Du kan ange ett större värde, men det tar längre tid att hämta.
+    $clusterName|Detta är hello HDInsight-kluster där du vill att toorun hello programmet hello namn.
+    $oauth_consumer_key|Detta är hello Twitter program **konsumenten nyckeln** du skrivit tidigare när du skapade hello Twitter-programmet.
+    $oauth_consumer_secret|Detta är hello Twitter program **konsumenthemlighet** du skrev ned tidigare.
+    $oauth_token|Detta är hello Twitter program **åtkomsttoken** du skrev ned tidigare.
+    $oauth_token_secret|Detta är hello Twitter program **åtkomst-token hemlighet** du skrev ned tidigare.
+    $destBlobName|Detta är hello blob utdatanamn. hello standardvärdet är **tutorials/twitter/data/tweets.txt**. Om du ändrar standardvärdet för hello måste tooupdate hello Windows PowerShell-skript i enlighet med detta.
+    $trackString|hello webbtjänsten returneras tweets relaterade toothese nyckelord. hello standardvärdet är **Azure moln, HDInsight**. Om du ändrar hello standardvärdet, uppdaterar du hello Windows PowerShell-skript i enlighet med detta.
+    $lineMax|hello värdet avgör hur många tweets hello skriptet läses. Det tar cirka tre minuter tooread 100 tweets. Du kan ange ett större värde, men det tar mer tid toodownload.
 
-1. Tryck **F5** för att köra skriptet. Om du stöter på problem, som en tillfällig lösning kan du markera alla rader och tryck sedan på **F8**.
-2. Du bör se ”Slutför”! i slutet av utdata. Eventuella felmeddelanden visas i rött.
+1. Tryck på **F5** toorun hello skript. Om du stöter på problem, som en tillfällig lösning kan markera alla hello rader och tryck sedan på **F8**.
+2. Du bör se ”Slutför”! hello slutet av hello utdata. Eventuella felmeddelanden visas i rött.
 
-Du kan kontrollera filen, som en valideringsproceduren **/tutorials/twitter/data/tweets.txt**, på ditt Azure Blob storage med hjälp av en Azure Lagringsutforskaren eller Azure PowerShell. En Windows PowerShell-exempelskript för att lista filer, se [använda Blob storage med HDInsight][hdinsight-storage-powershell].
+Som en valideringsproceduren kan du hello utdatafilen **/tutorials/twitter/data/tweets.txt**, på ditt Azure Blob storage med hjälp av en Azure Lagringsutforskaren eller Azure PowerShell. En Windows PowerShell-exempelskript för att lista filer, se [använda Blob storage med HDInsight][hdinsight-storage-powershell].
 
 ## <a name="create-hiveql-script"></a>Skapa HiveQL-skript
-Med Azure PowerShell kan du köra flera HiveQL-instruktioner en i taget eller paketet HiveQL-instruktionen i en skriptfil. I den här självstudiekursen skapar du en HiveQL-skript. Skriptfilen måste överföras till Azure Blob storage. I nästa avsnitt ska du köra skriptfilen med hjälp av Azure PowerShell.
+Med Azure PowerShell kan köra du flera HiveQL-instruktioner som vid en tidpunkt eller paketet hello HiveQL-instruktionen i en skriptfil. I den här självstudiekursen skapar du en HiveQL-skript. hello skriptfilen måste vara överförda tooAzure Blob storage. Hello nästa avsnitt, ska du köra hello skriptfilen med hjälp av Azure PowerShell.
 
 > [!NOTE]
-> Hive skriptfilen och en fil som innehåller 10 000 tweets har laddats upp i en offentlig blobbbehållare. Du kan hoppa över det här avsnittet om du vill använda de överförda filerna.
+> hello Hive-skriptfilen och en fil som innehåller 10 000 tweets har laddats upp i en offentlig blobbbehållare. Du kan hoppa över det här avsnittet om du vill toouse hello överföra filer.
 
-HiveQL-skript kommer att utföra följande:
+Hej HiveQL-skript utför hello följande:
 
-1. **Ta bort tabellen tweets_raw** om tabellen redan finns.
-2. **Skapa Hive-tabell tweets_raw**. Hive strukturerade registret innehåller data för ytterligare extrahering, transformering och laddning (ETL) bearbetning. Mer information om partitioner finns [Hive kursen][apache-hive-tutorial].
-3. **Läs in data** från källmappen /tutorials/twitter/data. Stora tweets datauppsättningen i kapslade JSON-format har nu tagits omvandlas till en tillfällig Hive tabellstruktur.
-4. **Ta bort tabellen tweets** om tabellen redan finns.
-5. **Skapa tabellen tweets**. Innan du kan fråga mot tweets dataset med hjälp av Hive, måste du kör en annan ETL-processen. ETL-processen definierar en mer detaljerad tabellschemat för de data som du har lagrat i tabellen ”twitter_raw”.
-6. **Skriv över för infoga**. Det här komplexa Hive-skriptet kommer startar en uppsättning lång MapReduce-jobb med Hadoop-kluster. Detta kan ta ungefär 10 minuter beroende på datamängden och storleken på ditt kluster.
-7. **Infoga skriva över katalogen**. Kör en fråga och utdatauppsättningen till en fil. Den här frågan returnerar en lista över Twitter-användare som skickade de flesta tweets som innehåller ordet ”Azure”.
+1. **Släppa hello tweets_raw tabellen** hello tabellen redan finns.
+2. **Skapa hello tweets_raw Hive-tabell**. Hive strukturerade registret innehåller hello data för ytterligare extrahering, transformering och laddning (ETL) bearbetning. Mer information om partitioner finns [Hive kursen][apache-hive-tutorial].
+3. **Läs in data** från källmappen hello, /tutorials/twitter/data. hello stora tweets dataset i kapslade JSON-format har nu tagits omvandlas till en tillfällig Hive tabellstruktur.
+4. **Släpp hello tweets tabell** hello tabellen redan finns.
+5. **Skapa hello tweets tabell**. Innan du kan fråga mot hello tweets dataset med hjälp av Hive, behöver du toorun en annan ETL-processen. ETL-processen definierar en mer detaljerad tabellschemat för hello data som du har lagrat i hello ”twitter_raw” tabell.
+6. **Skriv över för infoga**. Det här komplexa Hive-skriptet kommer startar en uppsättning lång MapReduce-jobb av hello Hadoop-kluster. Detta kan ta ungefär 10 minuter beroende på dina dataset och hello storleken på ditt kluster.
+7. **Infoga skriva över katalogen**. Kör en fråga och utdata hello dataset tooa fil. Den här frågan returnerar en lista över Twitter-användare som skickade de flesta tweets hello ordet ”Azure”.
 
-**Skapa en Hive-skript och överföra det till Azure**
+**toocreate en Hive-skript och ladda upp den tooAzure**
 
 1. Öppna Windows PowerShell ISE.
-2. Kopiera följande skript i skriptfönstret:
+2. Kopiera följande skript i hello Skriptfönster hello:
 
     ```powershell
     #region - variables and constants
@@ -389,8 +389,8 @@ HiveQL-skript kommer att utföra följande:
     "@
     #endregion
 
-    #region - Connect to Azure subscription
-    Write-Host "`nConnecting to your Azure subscription ..." -ForegroundColor Green
+    #region - Connect tooAzure subscription
+    Write-Host "`nConnecting tooyour Azure subscription ..." -ForegroundColor Green
 
     Try{
         Get-AzureRmSubscription
@@ -403,8 +403,8 @@ HiveQL-skript kommer att utföra följande:
 
     #endregion
 
-    #region - Create a block blob object for writing the Hive script file
-    Write-Host "Get the default storage account name and container name based on the cluster name ..." -ForegroundColor Green
+    #region - Create a block blob object for writing hello Hive script file
+    Write-Host "Get hello default storage account name and container name based on hello cluster name ..." -ForegroundColor Green
     $myCluster = Get-AzureRmHDInsightCluster -ClusterName $clusterName
     $resourceGroupName = $myCluster.ResourceGroup
     $defaultStorageAccountName = $myCluster.DefaultStorageAccount.Replace(".blob.core.windows.net", "")
@@ -412,11 +412,11 @@ HiveQL-skript kommer att utföra följande:
     Write-Host "`tThe storage account name is $defaultStorageAccountName." -ForegroundColor Yellow
     Write-Host "`tThe blob container name is $defaultBlobContainerName." -ForegroundColor Yellow
 
-    Write-Host "Define the connection string ..." -ForegroundColor Green
+    Write-Host "Define hello connection string ..." -ForegroundColor Green
     $defaultStorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $resourceGroupName -Name $defaultStorageAccountName)[0].Value
     $storageConnectionString = "DefaultEndpointsProtocol=https;AccountName=$defaultStorageAccountName;AccountKey=$defaultStorageAccountKey"
 
-    Write-Host "Create block blob objects referencing the hql script file" -ForegroundColor Green
+    Write-Host "Create block blob objects referencing hello hql script file" -ForegroundColor Green
     $storageAccount = [Microsoft.WindowsAzure.Storage.CloudStorageAccount]::Parse($storageConnectionString)
     $storageClient = $storageAccount.CreateCloudBlobClient();
     $storageContainer = $storageClient.GetContainerReference($defaultBlobContainerName)
@@ -428,8 +428,8 @@ HiveQL-skript kommer att utföra följande:
     $writeStream.Writeline($hqlStatements)
     #endregion
 
-    #region - Write the Hive script file to Blob storage
-    Write-Host "Write to the destination blob ... " -ForegroundColor Green
+    #region - Write hello Hive script file tooBlob storage
+    Write-Host "Write toohello destination blob ... " -ForegroundColor Green
     $writeStream.Flush()
     $memStream.Seek(0, "Begin")
     $hqlScriptBlob.UploadFromStream($memStream)
@@ -438,28 +438,28 @@ HiveQL-skript kommer att utföra följande:
     Write-Host "Completed!" -ForegroundColor Green
     ```
 
-3. Ange de första två variablerna i skriptet:
+3. Ange hello först två variabler i hello skript:
 
    | Variabel | Beskrivning |
    | --- | --- |
-   |  $clusterName |Ange klusternamnet HDInsight där du vill köra programmet. |
+   |  $clusterName |Ange hello HDInsight-klustrets namn där du vill toorun hello program. |
    |  $subscriptionID |Ange ditt Azure-prenumeration-ID. |
-   |  $sourceDataPath |Azure Blob storage plats där Hive-frågor kommer att läsa data från. Du behöver inte ändra den här variabeln. |
-   |  $outputPath |Azure Blob storage plats där Hive-frågor kommer skriver resultatet. Du behöver inte ändra den här variabeln. |
-   |  $hqlScriptFile |Sökvägen och filnamnet för filen HiveQL-skript. Du behöver inte ändra den här variabeln. |
-4. Tryck **F5** för att köra skriptet. Om du stöter på problem, som en tillfällig lösning kan du markera alla rader och tryck sedan på **F8**.
-5. Du bör se ”Slutför”! i slutet av utdata. Eventuella felmeddelanden visas i rött.
+   |  $sourceDataPath |hello Azure Blob-lagringsplats där hello Hive-frågor ska läsa hello data från. Du behöver inte toochange den här variabeln. |
+   |  $outputPath |hello Azure Blob-lagringsplats där hello Hive-frågor kommer utdata hello resultat. Du behöver inte toochange den här variabeln. |
+   |  $hqlScriptFile |hello plats och filnamn för hello hello HiveQL skriptfil. Du behöver inte toochange den här variabeln. |
+4. Tryck på **F5** toorun hello skript. Om du stöter på problem, som en tillfällig lösning kan markera alla hello rader och tryck sedan på **F8**.
+5. Du bör se ”Slutför”! hello slutet av hello utdata. Eventuella felmeddelanden visas i rött.
 
-Du kan kontrollera filen, som en valideringsproceduren **/tutorials/twitter/twitter.hql**, på ditt Azure Blob storage med hjälp av en Azure Lagringsutforskaren eller Azure PowerShell. En Windows PowerShell-exempelskript för att lista filer, se [använda Blob storage med HDInsight][hdinsight-storage-powershell].
+Som en valideringsproceduren kan du hello utdatafilen **/tutorials/twitter/twitter.hql**, på ditt Azure Blob storage med hjälp av en Azure Lagringsutforskaren eller Azure PowerShell. En Windows PowerShell-exempelskript för att lista filer, se [använda Blob storage med HDInsight][hdinsight-storage-powershell].
 
 ## <a name="process-twitter-data-by-using-hive"></a>Bearbeta Twitter-data med hjälp av Hive
-Du är klar med alla förberedelse av arbetet. Nu kan du anropa Hive-skript och kontrollera resultaten.
+Du är klar med alla hello förberedelse arbete. Nu kan du anropa hello Hive-skript och kontrollera hello resultat.
 
 ### <a name="submit-a-hive-job"></a>Skicka ett Hive-jobb
-Använd följande Windows PowerShell-skript för att köra Hive-skript. Du måste ange den första variabeln.
+Använd hello följande Windows PowerShell-skript toorun hello Hive-skript. Du behöver tooset hello första variabeln.
 
 > [!NOTE]
-> Om du vill använda tweets och HiveQL-skript som du har överfört i de sista två avsnitt, tilldelas $hqlScriptFile ”/ tutorials/twitter/twitter.hql”. Om du vill använda de som har överförts till en offentlig blob du värdet $hqlScriptFile ”wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql”.
+> toouse hello tweets och HiveQL-skript som du har överfört i hello sista två avsnitt set $hqlScriptFile too"/tutorials/twitter/twitter.hql hello”. toouse hello de som har överförts tooa offentlig blob du genom att ange $hqlScriptFile för ”wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql”.
 
 ```powershell
 #region variables and constants
@@ -467,7 +467,7 @@ $clusterName = "<Existing Azure HDInsight Cluster Name>"
 $httpUserName = "admin"
 $httpUserPassword = "<HDInsight Cluster HTTP User Password>"
 
-#use one of the following
+#use one of hello following
 $hqlScriptFile = "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql"
 $hqlScriptFile = "/tutorials/twitter/twitter.hql"
 
@@ -484,31 +484,31 @@ $defaultBlobContainerName = $myCluster.DefaultStorageContainer
 #region - Invoke Hive
 Write-Host "Invoke Hive ... " -ForegroundColor Green
 
-# Create the HDInsight cluster
+# Create hello HDInsight cluster
 $pw = ConvertTo-SecureString -String $httpUserPassword -AsPlainText -Force
 $httpCredential = New-Object System.Management.Automation.PSCredential($httpUserName,$pw)
 
 Use-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -HttpCredential $httpCredential
 $response = Invoke-AzureRmHDInsightHiveJob -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -file $hqlScriptFile -StatusFolder $statusFolder #-OutVariable $outVariable
 
-Write-Host "Display the standard error log ... " -ForegroundColor Green
+Write-Host "Display hello standard error log ... " -ForegroundColor Green
 $jobID = ($response | Select-String job_ | Select-Object -First 1) -replace ‘\s*$’ -replace ‘.*\s’
 Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $jobID -DefaultContainer $defaultBlobContainerName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -HttpCredential $httpCredential
 #endregion
 ```
 
-### <a name="check-the-results"></a>Kontrollera resultaten
-Använd följande Windows PowerShell-skript för att kontrollera utdata för Hive-jobb. Du måste ställa in de första två variablerna.
+### <a name="check-hello-results"></a>Hello resultat
+Använd följande Windows PowerShell-skript toocheck hello Hive jobbutdata hello. Du behöver tooset hello först två variabler.
 
 ```powershell
 #region variables and constants
 $clusterName = "<Existing Azure HDInsight Cluster Name>"
 
-$blob = "tutorials/twitter/output/000000_0" # The name of the blob to be downloaded.
+$blob = "tutorials/twitter/output/000000_0" # hello name of hello blob toobe downloaded.
 #endregion
 
 #region - Create an Azure storage context object
-Write-Host "Get the default storage account name and container name based on the cluster name ..." -ForegroundColor Green
+Write-Host "Get hello default storage account name and container name based on hello cluster name ..." -ForegroundColor Green
 $myCluster = Get-AzureRmHDInsightCluster -ClusterName $clusterName
 $resourceGroupName = $myCluster.ResourceGroup
 $defaultStorageAccountName = $myCluster.DefaultStorageAccount.Replace(".blob.core.windows.net", "")
@@ -523,11 +523,11 @@ $storageContext = New-AzureStorageContext -StorageAccountName $defaultStorageAcc
 #endregion
 
 #region - Download blob and display blob
-Write-Host "Download the blob ..." -ForegroundColor Green
+Write-Host "Download hello blob ..." -ForegroundColor Green
 cd $HOME
 Get-AzureStorageBlobContent -Container $defaultBlobContainerName -Blob $blob -Context $storageContext -Force
 
-Write-Host "Display the output ..." -ForegroundColor Green
+Write-Host "Display hello output ..." -ForegroundColor Green
 Write-Host "==================================" -ForegroundColor Green
 cat "./$blob"
 Write-Host "==================================" -ForegroundColor Green
@@ -535,18 +535,18 @@ Write-Host "==================================" -ForegroundColor Green
 ```
 
 > [!NOTE]
-> Hive-tabell använder \001 som fältavgränsaren. Avgränsaren visas inte i utdata.
+> hello Hive-tabell använder \001 hello fältavgränsaren. hello avgränsare visas inte i hello utdata.
 
-När de har placerats i Azure Blob storage, kan du exportera data till en Azure SQL-databas/SQL server, exportera data till Excel med hjälp av Power Query eller ansluta programmet till data med hjälp av Hive ODBC-drivrutinen. Mer information finns i [använda Sqoop med HDInsight][hdinsight-use-sqoop], [analysera svarta fördröjning data med HDInsight][hdinsight-analyze-flight-delay-data], [ Anslut Excel till HDInsight med Power Query][hdinsight-power-query], och [ansluter Excel till HDInsight med Microsoft Hive ODBC-drivrutinen][hdinsight-hive-odbc].
+När hello analysresultat har placerats i Azure Blob storage, kan du exportera hello data tooan Azure SQL-databas/SQL server, exportera hello data tooExcel med Power Query eller ansluta dina programdata toohello med hjälp av hello Hive ODBC-drivrutinen. Mer information finns i [använda Sqoop med HDInsight][hdinsight-use-sqoop], [analysera svarta fördröjning data med HDInsight][hdinsight-analyze-flight-delay-data], [ Ansluta Excel tooHDInsight med Power Query][hdinsight-power-query], och [ansluta Excel tooHDInsight med hello Microsoft Hive ODBC-drivrutinen][hdinsight-hive-odbc].
 
 ## <a name="next-steps"></a>Nästa steg
-I den här självstudiekursen har vi sett hur att omvandla en ostrukturerad datauppsättning JSON till en strukturerad Hive-tabell för att fråga, utforska och analysera data från Twitter med HDInsight på Azure. Du kan läsa mer här:
+I den här självstudiekursen har vi sett hur tootransform en ostrukturerad datauppsättning JSON till en strukturerad Hive tabell tooquery utforska och analysera data från Twitter med HDInsight på Azure. Det finns fler toolearn:
 
 * [Komma igång med HDInsight][hdinsight-get-started]
 * [Analysera realtid Twitter-åsikter med HBase i HDInsight][hdinsight-hbase-twitter-sentiment]
 * [Analysera svarta fördröjning data med HDInsight][hdinsight-analyze-flight-delay-data]
-* [Anslut Excel till HDInsight med Power Query][hdinsight-power-query]
-* [Anslut Excel till HDInsight med Microsoft Hive ODBC-drivrutin][hdinsight-hive-odbc]
+* [Ansluta Excel tooHDInsight med Power Query][hdinsight-power-query]
+* [Ansluta Excel tooHDInsight med hello Microsoft Hive ODBC-drivrutinen][hdinsight-hive-odbc]
 * [Använda Sqoop med HDInsight][hdinsight-use-sqoop]
 
 [curl]: http://curl.haxx.se

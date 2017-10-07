@@ -1,6 +1,6 @@
 ---
-title: Enheten firmware-uppdatering med Azure IoT Hub (.NET/nod) | Microsoft Docs
-description: "Hur du använder hantering av enheter på Azure IoT Hub för att initiera en firmware-uppdatering för enheten. Du kan använda Azure IoT-enhet SDK för Node.js för att implementera en simulerad enhetsapp och tjänsten Azure IoT SDK för .NET att implementera ett service-appen som utlöser firmware-uppdatering."
+title: aaaDevice firmware-uppdatering med Azure IoT Hub (.NET/nod) | Microsoft Docs
+description: "Hur uppdaterar toouse enhetshantering i Azure IoT Hub tooinitiate en enhetens inbyggda programvara. Du använder hello Azure IoT-enhet SDK för Node.js tooimplement en simulerad enhetsapp och hello Azure IoT-tjänsten SDK för .NET tooimplement service-appen som utlöser hello firmware-uppdatering."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2017
 ms.author: juanpere
-ms.openlocfilehash: c2192328a152e955d182c4a07b391c98a5960964
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d48899651bcd5d67e577c971be0f9453c8f21592
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-device-management-to-initiate-a-device-firmware-update-netnode"></a>Använd enhetshantering för att starta en enhet på en firmware-uppdatering (.NET/nod)
+# <a name="use-device-management-tooinitiate-a-device-firmware-update-netnode"></a>Använda device management tooinitiate en enhet på en firmware-uppdatering (.NET/nod)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>Introduktion
-I den [Kom igång med enhetshantering] [ lnk-dm-getstarted] självstudiekursen du sett hur du använder den [enheten dubbla] [ lnk-devtwin] och [direkt metoder] [ lnk-c2dmethod] primitiver att starta om en enhet via fjärranslutning. Den här kursen visar hur du gör en slutpunkt till slutpunkt simulerade firmware-uppdatering använder samma IoT-hubb primitiver.  Det här mönstret används i uppdatering av inbyggd hanteringsprogramvara för den [hallon Pi enheten implementering exempel][lnk-rpi-implementation].
+I hello [komma igång med hantering av enheter] [ lnk-dm-getstarted] självstudiekursen kommer du sett hur toouse hello [enheten dubbla] [ lnk-devtwin] och [direkt metoder] [ lnk-c2dmethod] primitiver tooremotely starta om en enhet. Den här självstudiekursen använder hello samma IoT-hubb primitiver och visar hur toodo en slutpunkt till slutpunkt simulerade firmware-uppdatering.  Det här mönstret används i hello uppdatering av inbyggd hanteringsprogramvara för hello [hallon Pi enheten implementering exempel][lnk-rpi-implementation].
 
 I den här självstudiekursen lär du dig att:
 
-* Skapa en .NET-konsolapp som anropar metoden firmwareUpdate direkt i appen simulerade enheten via din IoT-hubb.
-* Skapa en simulerad enhetsapp som implementerar en **firmwareUpdate** direkt metod. Den här metoden initierar en process i flera steg som väntar på att ladda ned avbildningen inbyggd programvara, laddar ned avbildningen av inbyggd programvara och slutligen använder inbyggd avbildningen. Under varje steg i uppdateringen använder enheten rapporterade egenskaperna för att rapportera förlopp.
+* Skapa en .NET-konsolapp som anropar hello firmwareUpdate direkt metod i hello simulerade enheten appen via din IoT-hubb.
+* Skapa en simulerad enhetsapp som implementerar en **firmwareUpdate** direkt metod. Den här metoden initierar en process i flera steg som väntar toodownload hello firmware bild, laddar hello firmware avbildningen och slutligen gäller hello firmware avbildningen. Under varje steg i hello update rapporterade hello enheten använder hello egenskaper tooreport på pågår.
 
-I slutet av den här kursen har du en enhet för Node.js konsolapp och en serverdel för .NET (C#) konsolapp:
+Hello slutet av den här självstudiekursen har du en enhet för Node.js konsolapp och en serverdel för .NET (C#) konsolapp:
 
-**dmpatterns_fwupdate_service.js**, som anropar en direkt metod i appen simulerade enheten visar svaret och regelbundet (varje 500ms) visar den uppdaterade rapporterade egenskaper.
+**dmpatterns_fwupdate_service.js**, som anropar en direkt metod i hello simulerade enhetsapp visar hello svar och regelbundet (varje 500ms) visar hello uppdateras rapporterade egenskaper.
 
-**TriggerFWUpdate**, som ansluter till din IoT-hubb med enhetens identitet skapade tidigare, tar emot en firmwareUpdate direkt metod, körs via en process som flera tillstånd för att simulera en firmware-uppdatering inklusive: väntar på avbildningen hämtas, hämta den nya avbildningen och slutligen avbildningen används.
+**TriggerFWUpdate**, som ansluter tooyour IoT-hubb med hello enhetsidentitet skapade tidigare, tar emot en firmwareUpdate direkt metod, körs via en flera tillstånd processen toosimulate inklusive en inbyggd uppdatering: väntar på hello avbildningen hämtas hämtar hello ny avbildning och slutligen använder hello-bild.
 
-För att kunna genomföra den här kursen behöver du följande:
+toocomplete den här kursen behöver du hello följande:
 
 * Visual Studio 2015 eller Visual Studio 2017.
-* Node.js-version 0.12.x eller senare <br/>  [Förbered din utvecklingsmiljö] [ lnk-dev-setup] beskriver hur du installerar Node.js för den här självstudiekursen på Windows- eller Linux.
+* Node.js-version 0.12.x eller senare <br/>  [Förbered din utvecklingsmiljö] [ lnk-dev-setup] beskriver hur tooinstall Node.js för den här självstudiekursen på Windows- eller Linux.
 * Ett aktivt Azure-konto. (Om du inte har något konto kan du skapa ett [kostnadsfritt konto][lnk-free-trial] på bara några minuter.)
 
-Följ den [Kom igång med enhetshantering](iot-hub-csharp-node-device-management-get-started.md) artikel för att skapa din IoT-hubb och hämta anslutningssträngen för IoT-hubb.
+Följ hello [Kom igång med enhetshantering](iot-hub-csharp-node-device-management-get-started.md) artikel toocreate din IoT-hubb och hämta anslutningssträngen för IoT-hubb.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="trigger-a-remote-firmware-update-on-the-device-using-a-direct-method"></a>Utlös en fjärransluten firmware-uppdatering på enheten med en direkt metod
-I det här avsnittet skapar du en .NET-konsolapp (med C#) som initierar en fjärransluten firmware-uppdatering på en enhet. Appen använder direkta metoden för att initiera uppdateringen och använder enheten dubbla frågor för att hämta status för aktiva firmware-uppdatering med jämna mellanrum.
+## <a name="trigger-a-remote-firmware-update-on-hello-device-using-a-direct-method"></a>Utlös en fjärransluten firmware-uppdatering på hello-enhet med en direkt metod
+I det här avsnittet skapar du en .NET-konsolapp (med C#) som initierar en fjärransluten firmware-uppdatering på en enhet. hello appen använder en direkta metoden tooinitiate hello uppdatering och använder enheten dubbla frågor tooperiodically få hello status för hello active firmware-uppdatering.
 
-1. I Visual Studio lägger du till ett Visual C# Classic Desktop-projekt i den aktuella lösningen med hjälp av projektmallen **Konsolprogram**. Namnge projektet **TriggerFWUpdate**.
+1. I Visual Studio, lägger du till en Visual C# klassiska skrivbordet projektet toohello aktuella lösning med hjälp av hello **konsolprogram** projektmall. Namnet hello projektet **TriggerFWUpdate**.
 
     ![Nytt Visual C# Windows Classic Desktop-projekt][img-createapp]
 
-1. I Solution Explorer högerklickar du på den **TriggerFWUpdate** projektet och klicka sedan på **hantera NuGet-paket...** .
-1. Välj **Bläddra** i fönstret för **NuGet-pakethanteraren**, leta upp **microsoft.azure.devices**, välj **Installera** för att installera **Microsoft.Azure.Devices**-paketet och godkänn användningsvillkoren. Denna procedur hämtar, installerar och lägger till en referens för [NuGet-paketetet SDK för Azure IoT-tjänster][lnk-nuget-service-sdk] och dess beroenden.
+1. I Solution Explorer högerklickar du på hello **TriggerFWUpdate** projektet och klicka sedan på **hantera NuGet-paket...** .
+1. I hello **NuGet Package Manager** väljer **Bläddra**, söka efter **microsoft.azure.devices**väljer **installera** tooinstall Hej **Microsoft.Azure.Devices** paketet och acceptera hello villkor för användning. Den här proceduren hämtar, installerar och lägger till en referens toohello [Azure IoT service SDK] [ lnk-nuget-service-sdk] NuGet-paketet och dess beroenden.
 
     ![Fönstret för NuGet-pakethanteraren][img-servicenuget]
-1. Lägg till följande `using`-uttryck överst i **Program.cs**-filen:
+1. Lägg till följande hello `using` instruktioner överst hello i hello **Program.cs** fil:
    
         using Microsoft.Azure.Devices;
         using Microsoft.Azure.Devices.Shared;
         
-1. Lägg till följande fält i klassen **Program**. Ersätt flera platshållarvärdena med IoT-hubb anslutningssträngen för hubben som du skapade i föregående avsnitt och Id för din enhet.
+1. Lägg till följande fält toohello hello **programmet** klass. Ersätt hello flera platshållarvärdena med hello IoT-hubb anslutningssträngen för hello-hubb som du skapade i föregående avsnitt i hello och hello-Id för din enhet.
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
@@ -73,7 +73,7 @@ I det här avsnittet skapar du en .NET-konsolapp (med C#) som initierar en fjär
         static JobClient jobClient;
         static string targetDevice = "{deviceIdForTargetDevice}";
         
-1. Lägg till följande metod i klassen **Program**:
+1. Lägg till följande metod toohello hello **programmet** klass:
    
         public static async Task QueryTwinFWUpdateReported()
         {
@@ -81,7 +81,7 @@ I det här avsnittet skapar du en .NET-konsolapp (med C#) som initierar en fjär
             Console.WriteLine(twin.Properties.Reported.ToJson());
         }
         
-1. Lägg till följande metod i klassen **Program**:
+1. Lägg till följande metod toohello hello **programmet** klass:
 
         public static async Task StartFirmwareUpdate()
         {
@@ -98,38 +98,38 @@ I det här avsnittet skapar du en .NET-konsolapp (med C#) som initierar en fjär
             Console.WriteLine("Invoked firmware update on device.");
         }
 
-1. Slutligen lägger du till följande rader till **Main**-metoden:
+1. Slutligen lägger du till följande rader toohello hello **Main** metoden:
    
         registryManager = RegistryManager.CreateFromConnectionString(connString);
         StartFirmwareUpdate().Wait();
         QueryTwinFWUpdateReported().Wait();
-        Console.WriteLine("Press ENTER to exit.");
+        Console.WriteLine("Press ENTER tooexit.");
         Console.ReadLine();
         
-1. I Solution Explorer, öppna den **ange Startprojekt...**  och kontrollera att den **åtgärd** för **TriggerFWUpdate** projektet är **starta**.
+1. Hello Solution Explorer, öppna hello **ange Startprojekt...**  och se till att hello **åtgärd** för **TriggerFWUpdate** projektet är **starta**.
 
-1. Skapa lösningen.
+1. Skapa hello lösning.
 
 [!INCLUDE [iot-hub-device-firmware-update](../../includes/iot-hub-device-firmware-update.md)]
 
-## <a name="run-the-apps"></a>Kör apparna
-Nu är det dags att köra apparna.
+## <a name="run-hello-apps"></a>Köra hello appar
+Du är nu redo toorun hello appar.
 
-1. I Kommandotolken i den **manageddevice** mapp, kör följande kommando för att börja lyssna efter omstart direkta metoden.
+1. Kommandotolken hello i hello **manageddevice** mapp, kör följande kommando toobegin lyssnar efter hello omstart direkta metoden hello.
    
     ```
     node dmpatterns_fwupdate_device.js
     ```
-2. I Visual Studio högerklickar du på den **TriggerFWUpdate** projectRun till C#-konsolen appen, Välj **felsöka** och **Starta ny instans**.
+2. I Visual Studio högerklickar du på hello **TriggerFWUpdate** projectRun toohello C#-konsolapp, Välj **felsöka** och **Starta ny instans**.
 
-3. Svaret från enheten till den direkta metoden i konsolen visas.
+3. Du ser hello enheten svar toohello direkt metod i hello-konsolen.
 
     ![Inbyggd programvara har uppdaterats][img-fwupdate]
 
 ## <a name="next-steps"></a>Nästa steg
-I den här kursen används direkt metod för att utlösa en fjärransluten firmware-uppdatering på en enhet och används egenskaperna rapporterade för att följa förloppet för firmware-uppdatering.
+I kursen får du använde en direkta metoden tootrigger en fjärransluten firmware-uppdatering på en enhet och använda hello rapporterade egenskaper toofollow hello fortskrider hello firmware-uppdatering.
 
-Information om hur du utökar din IoT-lösningen och schema metodanrop på flera enheter finns i [schema och broadcast jobb] [ lnk-tutorial-jobs] kursen.
+toolearn hur tooextend din IoT-lösningen och schema metodanrop på flera enheter, finns i hello [schema och broadcast jobb] [ lnk-tutorial-jobs] kursen.
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-firmware-update/servicesdknuget.png

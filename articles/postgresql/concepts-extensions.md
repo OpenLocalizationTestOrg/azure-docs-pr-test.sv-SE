@@ -1,6 +1,6 @@
 ---
-title: "Använder PostgreSQL-tillägg i Azure-databas för PostgreSQL | Microsoft Docs"
-description: "Beskriver möjligheten att utöka funktionerna i databasen med tillägg i Azure-databas för PostgreSQL."
+title: "aaaUsing PostgreSQL tillägg i Azure-databas för PostgreSQL | Microsoft Docs"
+description: "Beskriver hello möjlighet tooextend hello funktioner i databasen med tillägg i Azure-databas för PostgreSQL."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -9,22 +9,22 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/29/2017
-ms.openlocfilehash: 755d1cf1a921f6be8f28a4a8ae515db08d904fcd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: af2462d7a923b934bc0329153be7079ba86e8856
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>PostgreSQL-tillägg i Azure PostgreSQL-databas
-PostgreSQL ger dig möjlighet att utöka funktionerna i databasen med hjälp av tillägg. Tilläggen tillåter att flera relaterade SQL-objekt som buntas ihop i ett paket och som kan läsas in eller tas bort från databasen med ett enda kommando. Tillägg som är inlästa i databasen fungerar precis som funktioner som ingår i. Mer information om PostgreSQL-tillägg finns [paketering relaterade objekt i ett tillägg](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
+PostgreSQL innehåller hello möjlighet tooextend hello funktioner för din databas med hjälp av tillägg. Tillägg kan för flera relaterade SQL-objekt-toobe buntas ihop i ett paket och läsas in eller tas bort från databasen med ett enda kommando. Tillägg som är inlästa i hello-databasen fungerar precis som funktioner som ingår i. Mer information om PostgreSQL-tillägg finns [paketering relaterade objekt i ett tillägg](https://www.postgresql.org/docs/9.6/static/extend-extensions.html).
 
-## <a name="how-to-use-postgresql-extensions"></a>Hur du använder PostgreSQL-tillägg?
-PostgreSQL tillägg måste vara installerat för din databas innan du kan använda dem. Om du vill installera ett visst tillägg, körs det [skapa tillägg](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) från psql verktyg för att läsa in paketerade objekt i databasen.
+## <a name="how-toouse-postgresql-extensions"></a>Hur toouse PostgreSQL tillägg?
+PostgreSQL tillägg måste toobe installerad för din databas innan du kan använda dem. tooinstall ett visst tillägg, körs det [skapa tillägg](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) kommando från psql verktyget tooload hello paketerade objekt i databasen.
 
-Azure-databas för PostgreSQL stöder en delmängd av nyckeln tillägg som anges här. Utöver de som visas, stöds inte andra tillägg. Du kan skapa dina egna tillägg med Azure-databas för PostgreSQL-tjänsten.
+Azure-databas för PostgreSQL stöder en delmängd av nyckeln tillägg som anges här. Andra tillägg stöds inte för utöver hello som visas. Du kan skapa dina egna tillägg med Azure-databas för PostgreSQL-tjänsten.
 
 ## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Tillägg som stöds av Azure-databas för PostgreSQL
-I tabellerna nedan listas de standard PostgreSQL-tillägg som för närvarande stöds av Azure-databas för PostgreSQL. Du kan också hämta den här informationen genom att fråga pg\_tillgängliga\_tillägg. 
+hello följande tabeller listan hello PostgreSQL standardtillägg som för närvarande stöds av Azure-databas för PostgreSQL. Du kan också hämta den här informationen genom att fråga pg\_tillgängliga\_tillägg. 
 
 ### <a name="data-types-extensions"></a>Datatyperna tillägg
 
@@ -39,11 +39,11 @@ I tabellerna nedan listas de standard PostgreSQL-tillägg som för närvarande s
 > [!div class="mx-tableFixed"]
 | **Tillägg** | **Beskrivning** |
 |---|---|
-| [fuzzystrmatch](https://www.postgresql.org/docs/9.6/static/fuzzystrmatch.html) | Innehåller flera funktioner för att fastställa likheter och avståndet mellan strängar. |
+| [fuzzystrmatch](https://www.postgresql.org/docs/9.6/static/fuzzystrmatch.html) | Innehåller flera funktioner toodetermine likheter och avståndet mellan strängar. |
 | [intarray](https://www.postgresql.org/docs/9.6/static/intarray.html) | Ger funktioner och operatorer för att ändra null utan matriser med heltal. |
 | [pgcrypto](https://www.postgresql.org/docs/9.6/static/pgcrypto.html) | Innehåller kryptografiska funktioner |
 | [PG\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | Hanterar partitionerade tabeller genom tid eller ID |
-| [PG\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Tillhandahåller funktioner och operatorer för att fastställa liknande alfanumeriskt baserat på matchning av trigram |
+| [PG\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | Tillhandahåller funktioner och operatorer för att fastställa hello likartade alfanumeriskt baserat på matchning av trigram |
 | [UUID-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | Generera universellt unika identifierare (UUID: er) |
 
 ### <a name="full-text-search-extensions"></a>Tillägg för fulltext-sökning
@@ -73,10 +73,10 @@ I tabellerna nedan listas de standard PostgreSQL-tillägg som för närvarande s
 > [!div class="mx-tableFixed"]
 | **Tillägg** | **Beskrivning** |
 |---|---|
-| [PG\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | Ger möjlighet att undersöka vad som händer i delade buffert cachen i realtid. |
-| [PG\_prewarm](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | Ger ett sätt att läsa in relationsdata i bufferten cachen. |
+| [PG\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | Ger möjlighet att undersöka vad som händer i hello delade buffertminne i realtid. |
+| [PG\_prewarm](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | Erbjuder ett sätt tooload relationsdata i hello buffertminne. |
 | [PG\_stat\_instruktioner](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | Ger möjlighet att spåra körningen statistik för alla SQL-instruktioner som körs av en server. |
-| [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Extern data wrapper används för att komma åt data som lagras i externa PostgreSQL-servrar |
+| [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | Extern data wrapper används tooaccess data som lagras i externa PostgreSQL-servrar |
 
 ### <a name="postgis"></a>PostGIS
 
@@ -84,8 +84,8 @@ I tabellerna nedan listas de standard PostgreSQL-tillägg som för närvarande s
 | **Tillägg** | **Beskrivning** |
 |---|---|
 | [PostGIS](http://www.postgis.net/), postgis\_topologi, postgis\_tiger\_geocoder, postgis\_sfcgal | Spatial- och geografiska objekt för PostgreSQL. |
-| adress\_standardizer, adress\_standardizer\_data\_oss | Används för att parsa en adress till innehåll. Används för att stödja geokodning adress normalisering steg. |
-| [pgrouting](http://pgrouting.org/) | Utökar PostGIS / PostgreSQL geospatiala database tillhandahåller geospatiala routning funktioner. |
+| adress\_standardizer, adress\_standardizer\_data\_oss | Använda tooparse en adress i innehåll. Använda toosupport geokodning adress normalisering steg. |
+| [pgrouting](http://pgrouting.org/) | Utökar hello PostGIS / PostgreSQL geospatiala databas tooprovide geospatiala routningsfunktionen. |
 
 ## <a name="next-steps"></a>Nästa steg
-Ser ett tillägg som du vill använda? Meddela oss. Rösta på befintliga begäranden eller skapa nya feedback och dina önskemål i vår [kunden Feedbackforum](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
+Ett tillägg som du vill att toouse ser? Meddela oss. Rösta på befintliga begäranden eller skapa nya feedback och dina önskemål i vår [kunden Feedbackforum](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).

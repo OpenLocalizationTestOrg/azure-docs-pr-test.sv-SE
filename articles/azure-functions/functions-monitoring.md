@@ -1,6 +1,6 @@
 ---
-title: "Övervaka Azure Functions | Microsoft Docs"
-description: "Lär dig hur du övervakar dina Azure-funktioner."
+title: aaaMonitoring Azure Functions | Microsoft Docs
+description: "Lär dig hur toomonitor Azure Functions."
 services: functions
 documentationcenter: na
 author: wesmc7777
@@ -16,30 +16,30 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/03/2016
 ms.author: wesmc
-ms.openlocfilehash: b70214593b1417265387f42306a633bb0df2920e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 254348d1cefce925654bd9532715b6def571e0ec
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitoring-azure-functions"></a>Övervaka Azure Functions
 
 ## <a name="overview"></a>Översikt 
 
 
-Den **övervakaren** för varje funktion kan du granska varje körning av en funktion.
+Hej **övervakaren** för varje funktion kan du tooreview varje körning av en funktion.
 
 ![Azure fliken för övervakning av funktioner](./media/functions-monitoring/monitor-tab.png) 
 
-Klicka på en körning kan du granska varaktighet, indata, fel och associerade loggfilerna. Detta är användbart felsökning och prestandajustering dina funktioner.
+Om du klickar på en körning kan du tooreview hello varaktighet, indata, fel och associerade loggfilerna. Detta är användbart felsökning och prestandajustering dina funktioner.
 
 
 > [!IMPORTANT]
-> När du använder den [förbrukning som värd för planen](functions-overview.md#pricing) för Azure Functions i **övervakning** panelen i bladet Funktionsapp översikt visas inte några data. Detta beror på att plattformen dynamiskt skalar och hanterar compute-instanser för dig, så de här måtten inte meningsfull på en plan för användning. För att övervaka användningen av funktionen-appar, bör du istället använda riktlinjerna i den här artikeln.
+> När du använder hello [förbrukning som värd för planen](functions-overview.md#pricing) Azure Functions hello **övervakning** panelen i hello Funktionsapp översikt bladet visas inte några data. Detta beror på att hello plattform dynamiskt skalar och hanterar compute-instanser för dig, så de här måtten inte meningsfull på en plan för användning. toomonitor hello användning av funktionen-appar, bör du istället använda hello vägledning i den här artikeln.
 > 
-> Följande skärmbild visar ett exempel:
+> hello följande skärmbild som visar ett exempel:
 > 
-> ![Övervakning på huvudsakliga resursbladet](./media/functions-monitoring/app-service-overview-monitoring.png)
+> ![Övervakning på hello huvudsakliga resursbladet](./media/functions-monitoring/app-service-overview-monitoring.png)
 
 
 
@@ -47,24 +47,24 @@ Klicka på en körning kan du granska varaktighet, indata, fel och associerade l
 
 Realtidsövervakning är tillgänglig genom att klicka på **live händelseströmmen** enligt nedan. 
 
-![Direktsänd händelse dataströmmen alternativ för övervakning](./media/functions-monitoring/monitor-tab-live-event-stream.png)
+![Live händelse dataströmmen alternativ för hello övervakningsfliken](./media/functions-monitoring/monitor-tab-live-event-stream.png)
 
-Dataströmmen direktsänd händelse ska visas i diagram registreringen i en ny webbläsarflik enligt nedan. 
+hello direktsänd händelse dataströmmen ska visas i diagram registreringen i en ny webbläsarflik enligt nedan. 
 
 ![Direktsänd händelse stream-exempel](./media/functions-monitoring/live-event-stream.png)
 
 
 > [!NOTE]
-> Det finns ett känt problem som kan orsaka att data ska kunna fyllas i. Om du får detta kan du behöva Stäng fliken som innehåller dataströmmen direktsänd händelse och klicka sedan på **live händelseströmmen** igen för att göra det möjligt att fylla i din händelsedata dataströmmen korrekt. 
+> Det finns ett känt problem som kan medföra att dina data toofail toobe fylls i. Om du får detta kan du behöva tooclose hello webbläsare fliken som innehåller hello live händelseströmmen och klicka sedan på **live händelseströmmen** igen tooallow den tooproperly fylla din händelsedata för dataströmmen. 
 
-Live händelseströmmen kommer kurva följande statistik för din funktion:
+hello direktsänd händelse dataströmmen kommer kurva hello följande statistik för din funktion:
 
 * Körningar som startas per sekund
 * Körningar som slutförs varje sekund
 * Körningar som misslyckas per sekund
 * Genomsnittlig körningstid i millisekunder.
 
-Statistiken är realtid men den faktiska grafiska Körningsdata kanske cirka 10 sekunder svarstid.
+Statistiken är realtid men hello faktiska rita in av hello Körningsdata kanske cirka 10 sekunder svarstid.
 
 
 
@@ -74,53 +74,53 @@ Statistiken är realtid men den faktiska grafiska Körningsdata kanske cirka 10 
 ## <a name="monitoring-log-files-from-a-command-line"></a>Övervaka loggfilerna från en kommandorad
 
 
-Du kan strömma loggfiler till en session på kommandoraden på en lokal arbetsstation med Azure-kommandoradsgränssnittet (CLI) eller PowerShell.
+Du kan strömma loggen filer tooa kommandoraden session på en lokal arbetsstation med hello Azure-kommandoradsgränssnittet (CLI) eller PowerShell.
 
-### <a name="monitoring-function-app-log-files-with-the-azure-cli"></a>Övervakning av funktionen app-loggfiler med Azure CLI
+### <a name="monitoring-function-app-log-files-with-hello-azure-cli"></a>Övervakning av funktionen app-loggfiler med hello Azure CLI
 
-Du kommer igång [installerar Azure CLI](../cli-install-nodejs.md)
+tooget har startats [installera hello Azure CLI](../cli-install-nodejs.md)
 
-Logga in på ditt Azure-konto med hjälp av följande kommando, eller några av de alternativ som beskrivs i, [logga in till Azure från Azure CLI](../xplat-cli-connect.md).
+Logga in på ditt Azure-konto med hjälp av hello följande kommando, eller andra hello andra alternativ som beskrivs i, [logga in tooAzure från hello Azure CLI](../xplat-cli-connect.md).
 
     azure login
 
-Använd följande kommando för att aktivera Azure CLI Service Management (ASM) läge:.
+Använd hello följande kommando tooenable Azure CLI Service Management (ASM) läge:.
 
     azure config mode asm
 
-Om du har flera prenumerationer, använder du följande kommandon lista dina prenumerationer och ange den aktuella prenumerationen till den prenumeration som innehåller funktionsapp.
+Om du har flera prenumerationer använder du följande kommandon toolist hello dina prenumerationer och ange hello aktuell prenumeration toohello prenumeration som innehåller appen funktionen.
 
     azure account list
     azure account set <subscriptionNameOrId>
 
-Följande kommando direktuppspelas loggfilerna för funktionen appen till kommandoraden:
+hello direktuppspelas följande kommando hello loggfiler funktionen app toohello kommandoraden:
 
     azure site log tail -v <function app name>
 
 ### <a name="monitoring-function-app-log-files-with-powershell"></a>Övervakning av funktionen app-loggfiler med PowerShell
 
-Du kommer igång [installera och konfigurera Azure PowerShell](/powershell/azure/overview).
+tooget har startats [installera och konfigurera Azure PowerShell](/powershell/azure/overview).
 
-Lägg till ditt Azure-konto genom att köra följande kommando:
+Lägg till ditt Azure-konto genom att köra följande kommando hello:
 
     PS C:\> Add-AzureAccount
 
-Om du har flera prenumerationer, kan du visa dem med namn med följande kommando för att se om korrekt prenumeration är den markerade baserat på `IsCurrent` egenskapen:
+Om du har flera prenumerationer, kan du visa dem efter namn med hello efter kommandot toosee om hello rätt prenumerationen är hello markerade baserat på `IsCurrent` egenskapen:
 
     PS C:\> Get-AzureSubscription
 
-Om du behöver ange aktiv prenumeration till den som innehåller appen funktionen använder du följande kommando:
+Om du behöver tooset hello aktiv prenumeration toohello ett som innehåller appen funktionen använder du följande kommando hello:
 
     PS C:\> Get-AzureSubscription -SubscriptionName "MyFunctionAppSubscription" | Select-AzureSubscription
 
-Strömma loggar i PowerShell-sessionen med följande kommando:
+Dataströmmen hello loggar tooyour PowerShell-session med hello följande kommando:
 
     PS C:\> Get-AzureWebSiteLog -Name MyFunctionApp -Tail
 
-Mer information finns i [så här: strömma loggar för web apps](../app-service-web/web-sites-enable-diagnostic-log.md#streamlogs). 
+Mer information finns för[så här: strömma loggar för web apps](../app-service-web/web-sites-enable-diagnostic-log.md#streamlogs). 
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information finns i följande resurser:
+Mer information finns i hello följande resurser:
 
 * [Testa en funktion](functions-test-a-function.md)
 * [Skala en funktion](functions-scale.md)

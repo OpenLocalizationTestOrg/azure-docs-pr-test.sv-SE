@@ -1,6 +1,6 @@
 ---
-title: "Starta och stoppa virtuella datorer med Azure Automation - PowerShell-arbetsflöde | Microsoft Docs"
-description: "Grafiska versionen av Azure Automation-scenariot inklusive runbooks för att starta och stoppa klassiska virtuella datorer."
+title: "aaaStarting och stoppa virtuella datorer med Azure Automation - PowerShell-arbetsflöde | Microsoft Docs"
+description: Grafiska versionen av Azure Automation-scenariot inklusive runbooks toostart och stoppa klassiska virtuella datorer.
 services: automation
 documentationcenter: 
 author: mgoedtel
@@ -15,20 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 07/06/2016
 ms.author: magoedte;bwren
 redirect_url: https://docs.microsoft.com/azure/automation/automation-solution-vm-management
-redirect_document_id: FALSE
-ms.openlocfilehash: 95a7b02b0d11bf18c398daea48d16e0ead30b543
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: False
+ms.openlocfilehash: 273631c7fc5ddb989b3bbdc82b470ac3af6ee482
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-automation-scenario---starting-and-stopping-virtual-machines"></a>Azure Automation-scenario – starta och stoppa virtuella datorer
-Det här scenariot för Azure Automation innehåller runbooks för att starta och stoppa klassiska virtuella datorer.  Du kan använda det här scenariot för något av följande:  
+Det här scenariot för Azure Automation innehåller runbooks toostart och stoppa klassiska virtuella datorer.  Du kan använda det här scenariot för hello följande:  
 
-* Använda runbooks utan ändringar i din egen miljö.
-* Ändra runbooks för att utföra anpassade funktioner.  
-* Anropa runbooks från en annan runbook som en del av en övergripande lösning.
-* Använda runbooks som självstudier för att lära dig runbook authoring begrepp.
+* Använd hello runbooks utan ändringar i din egen miljö.
+* Ändra hello runbooks tooperform anpassade funktioner.  
+* Anropa hello runbooks från en annan runbook som en del av en övergripande lösning.
+* Använd hello runbooks som självstudier toolearn runbook authoring begrepp.
 
 > [!div class="op_single_selector"]
 > * [Grafisk](automation-solution-startstopvm-graphical.md)
@@ -36,76 +36,76 @@ Det här scenariot för Azure Automation innehåller runbooks för att starta oc
 > 
 > 
 
-Detta är PowerShell-arbetsflöde runbook-versionen av det här scenariot. Det är också tillgängliga använder [grafiska runbook-flöden](automation-solution-startstopvm-graphical.md).
+Detta är hello PowerShell-arbetsflöde runbook-versionen av det här scenariot. Det är också tillgängliga använder [grafiska runbook-flöden](automation-solution-startstopvm-graphical.md).
 
-## <a name="getting-the-scenario"></a>Hämta scenariot
-Det här scenariot består av två PowerShell-arbetsflöde runbooks som kan hämtas från följande länkar.  Finns det [grafiska version](automation-solution-startstopvm-graphical.md) i det här scenariot länkar till grafiska runbook-flöden.
+## <a name="getting-hello-scenario"></a>Hämta hello scenario
+Det här scenariot består av två runbooks i PowerShell-arbetsflöde som du kan hämta från hello följande länkar.  Se hello [grafiska version](automation-solution-startstopvm-graphical.md) i det här scenariot för länkar toohello grafiska runbook-flöden.
 
 | Runbook | Länk | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
 | Start-AzureVMs |[Starta klassiska virtuella Azure-datorer](https://gallery.technet.microsoft.com/Start-Azure-Classic-VMs-86ef746b) |PowerShell-arbetsflöde |Startar alla klassiska virtuella datorer i en Azure subscriptionor alla virtuella datorer med ett visst namn. |
 | Stoppa AzureVMs |[Stoppa klassiska virtuella Azure-datorer](https://gallery.technet.microsoft.com/Stop-Azure-Classic-VMs-7a4ae43e) |PowerShell-arbetsflöde |Stoppar alla virtuella datorer i ett automation-konto eller alla virtuella datorer med ett visst namn. |
 
-## <a name="installing-and-configuring-the-scenario"></a>Installera och konfigurera scenariot
-### <a name="1-install-the-runbooks"></a>1. Installera runbooks
-När du har hämtat runbooks, kan du importera dem med hjälp av proceduren i [importera en Runbook](http://msdn.microsoft.com/library/dn643637.aspx#ImportRunbook).
+## <a name="installing-and-configuring-hello-scenario"></a>Installera och konfigurera hello scenario
+### <a name="1-install-hello-runbooks"></a>1. Installera hello runbooks
+När du har hämtat hello runbooks, kan du importera dem med hjälp av proceduren hello i [importera en Runbook](http://msdn.microsoft.com/library/dn643637.aspx#ImportRunbook).
 
-### <a name="2-review-the-description-and-requirements"></a>2. Granska beskrivning och krav
-Runbooks är kommenterade hjälptext som innehåller en beskrivning och nödvändiga tillgångar.  Du kan också få samma information från den här artikeln.
+### <a name="2-review-hello-description-and-requirements"></a>2. Granska hello beskrivning och krav
+Hej runbooks är kommenterade hjälptext som innehåller en beskrivning och nödvändiga tillgångar.  Du kan också få hello samma information från den här artikeln.
 
 ### <a name="3-configure-assets"></a>3. Konfigurera tillgångar
-Runbooks kräver följande resurser som du måste skapa och fylla i med lämpliga värden.
+Hej runbooks kräver hello efter resurser som du måste skapa och fylla i med lämpliga värden.
 
 | Tillgångstypen | Tillgångsnamnet | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| Autentiseringsuppgift |AzureCredential |Innehåller autentiseringsuppgifter för ett konto som har behörighet att starta och stoppa virtuella datorer i Azure-prenumerationen.  Du kan också ange en annan autentiseringsuppgiftstillgång i den **autentiseringsuppgifter** parameter för den **Add-AzureAccount** aktivitet. |
-| Variabel |AzureSubscriptionId |Innehåller prenumerations-ID för din Azure-prenumeration. |
+| Autentiseringsuppgift |AzureCredential |Innehåller autentiseringsuppgifter för ett konto som har behörighet toostart och stoppa virtuella datorer i hello Azure-prenumeration.  Du kan också ange en annan autentiseringsuppgiftstillgång i hello **autentiseringsuppgifter** parametern för hello **Add-AzureAccount** aktivitet. |
+| Variabel |AzureSubscriptionId |Innehåller hello prenumerations-ID för din Azure-prenumeration. |
 
-## <a name="using-the-scenario"></a>Med scenario
+## <a name="using-hello-scenario"></a>Med hello scenariot
 ### <a name="parameters"></a>Parametrar
-Runbooks har följande parametrar.  Du måste ange värden för alla obligatoriska parametrar och kan du ange värden för andra parametrar beroende på dina krav.
+Hej runbooks har hello följande parametrar.  Du måste ange värden för alla obligatoriska parametrar och kan du ange värden för andra parametrar beroende på dina krav.
 
 | Parameter | Typ | Obligatorisk | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| Tjänstnamn |Sträng |Nej |Om ett värde anges, och sedan alla virtuella datorer med samma tjänstnamn startas eller stoppas.  Om inget värde anges, är sedan alla klassiska virtuella datorer i Azure-prenumerationen startas eller stoppas. |
-| AzureSubscriptionIdAssetName |Sträng |Nej |Innehåller namnet på den [variabeltillgång](#installing-and-configuring-the-scenario) som innehåller prenumerations-ID för din Azure-prenumeration.  Om du inte anger ett värde, *AzureSubscriptionId* används. |
-| AzureCredentialAssetName |Sträng |Nej |Innehåller namnet på den [autentiseringsuppgiftstillgång](#installing-and-configuring-the-scenario) som innehåller autentiseringsuppgifter för runbook ska användas.  Om du inte anger ett värde, *AzureCredential* används. |
+| Tjänstnamn |Sträng |Nej |Om ett värde anges, och sedan alla virtuella datorer med samma tjänstnamn startas eller stoppas.  Om inget värde anges, sedan alla klassiska virtuella datorer i hello Azure-prenumeration startas eller stoppas. |
+| AzureSubscriptionIdAssetName |Sträng |Nej |Innehåller hello namnet på hello [variabeltillgång](#installing-and-configuring-the-scenario) som innehåller hello prenumerations-ID för din Azure-prenumeration.  Om du inte anger ett värde, *AzureSubscriptionId* används. |
+| AzureCredentialAssetName |Sträng |Nej |Innehåller hello namnet på hello [autentiseringsuppgiftstillgång](#installing-and-configuring-the-scenario) som innehåller hello autentiseringsuppgifter för hello runbook toouse.  Om du inte anger ett värde, *AzureCredential* används. |
 
-### <a name="starting-the-runbooks"></a>Starta runbooks
-Du kan använda någon av metoderna i [starta en runbook i Azure Automation](automation-starting-a-runbook.md) starta antingen runbooks i det här scenariot.
+### <a name="starting-hello-runbooks"></a>Starta hello runbooks
+Du kan använda någon av hello metoder i [starta en runbook i Azure Automation](automation-starting-a-runbook.md) toostart antingen hello runbooks i det här scenariot.
 
-Följande exempelkommandon använder Windows PowerShell för att köra **StartAzureVMs** starta alla virtuella datorer med tjänstnamnet *MyVMService*.
+följande exempelkommandon hello använder Windows PowerShell toorun **StartAzureVMs** toostart alla virtuella datorer med hello tjänstnamnet *MyVMService*.
 
     $params = @{"ServiceName"="MyVMService"}
     Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Start-AzureVMs" –Parameters $params
 
 ### <a name="output"></a>Resultat
-Runbooks kommer [utdata meddelandet](automation-runbook-output-and-messages.md) för varje virtuell dator som anger huruvida starta eller stoppa instruktion skickades.  Du kan söka efter en specifik sträng i utdata att fastställa resultatet för varje runbook.  I följande tabell visas eventuella utdata-strängar.
+Hej runbooks kommer [utdata meddelandet](automation-runbook-output-and-messages.md) för varje virtuell dator som anger huruvida hello starta eller stoppa instruktion har skickats.  Du kan söka efter en specifik sträng i hello utgående toodetermine hello resultatet för varje runbook.  hello eventuella utdatasträngar visas i hello i den följande tabellen.
 
 | Runbook | Villkor | Meddelande |
 |:--- |:--- |:--- |
 | Start-AzureVMs |Virtuell dator körs redan |MyVM körs redan |
 | Start-AzureVMs |Start-begäran för den virtuella datorn har skickats |MyVM har startats |
-| Start-AzureVMs |Det gick inte att startbegäran för den virtuella datorn |Det gick inte att starta MyVM |
+| Start-AzureVMs |Det gick inte att startbegäran för den virtuella datorn |MyVM misslyckades toostart |
 | Stoppa AzureVMs |Virtuell dator har redan stoppats. |MyVM har redan stoppats. |
 | Stoppa AzureVMs |Stoppa begäran för den virtuella datorn har skickats |MyVM har stoppats |
-| Stoppa AzureVMs |Stop-begäran för den virtuella datorn misslyckades |Det gick inte att stoppa MyVM |
+| Stoppa AzureVMs |Stop-begäran för den virtuella datorn misslyckades |MyVM misslyckades toostop |
 
-Till exempel följande kodavsnitt från en runbook försöker starta alla virtuella datorer med tjänstnamnet *MyServiceName*.  Om någon av start-begäranden misslyckas, kan åtgärder vidtas.
+Till exempel försöker hello följande kodavsnitt från en runbook toostart alla virtuella datorer med hello tjänstnamnet *MyServiceName*.  Om någon av hello startar begäranden misslyckas, kan åtgärder vidtas.
 
     $results = Start-AzureVMs -ServiceName "MyServiceName"
     foreach ($result in $results) {
         if ($result -like "* has been started" ) {
-            # Action to take in case of success.
+            # Action tootake in case of success.
         }
         else {
-            # Action to take in case of error.
+            # Action tootake in case of error.
         }
     }
 
 
 ## <a name="detailed-breakdown"></a>Detaljerad analys
-Nedan följer en detaljerad analys av runbooks i det här scenariot.  Du kan använda den här informationen för att anpassa runbooks eller bara om du vill veta från dem för att skapa egna automatiseringsscenarier.
+Nedan följer en detaljerad analys av hello runbooks i det här scenariot.  Du kan använda den här informationen tooeither anpassa hello runbooks eller bara toolearn från dem för att skapa egna automatiseringsscenarier.
 
 ### <a name="parameters"></a>Parametrar
     param (
@@ -119,29 +119,29 @@ Nedan följer en detaljerad analys av runbooks i det här scenariot.  Du kan anv
         [String] $ServiceName
     )
 
-Arbetsflödet startar med att hämta värden för den [indataparametrar](#using-the-scenario).  Om de tillgången inte anges används standardnamn.
+hello-arbetsflöde inleds med att hämta hello värden för hello [indataparametrar](#using-the-scenario).  Standardnamn används om hello resursnamn inte har angetts.
 
 ### <a name="output"></a>Resultat
     # Returns strings with status messages
     [OutputType([String])]
 
-Den här raden deklarerar att utdata från runbooken ska vara en sträng.  Detta är inte obligatoriskt men det är bästa praxis för när runbook används som en [underordnad runbook](automation-child-runbooks.md) så att en överordnad runbook vet utdatatypen förväntar dig.
+Den här raden deklarerar att hello utdata från hello runbook ska vara en sträng.  Detta är inte obligatoriskt men det är bästa praxis för när hello runbook används som en [underordnad runbook](automation-child-runbooks.md) så att en överordnad runbook vet hello utdata skriver tooexpect.
 
 ### <a name="authentication"></a>Autentisering
-    # Connect to Azure and select the subscription to work against
+    # Connect tooAzure and select hello subscription toowork against
     $Cred = Get-AutomationPSCredential -Name $AzureCredentialAssetName
     $null = Add-AzureAccount -Credential $Cred -ErrorAction Stop
     $SubId = Get-AutomationVariable -Name $AzureSubscriptionIdAssetName
     $null = Select-AzureSubscription -SubscriptionId $SubId -ErrorAction Stop
 
-Nästa rader uppsättningen av [autentiseringsuppgifter](automation-credentials.md) och Azure-prenumeration som ska användas för resten av runbook.
-Första vi använder **Get-AutomationPSCredential** att hämta den tillgång som innehåller autentiseringsuppgifter för åtkomst till starta och stoppa virtuella datorer i Azure-prenumerationen. **Lägg till AzureAccount** använder sedan tillgången för att ange autentiseringsuppgifter.  Utdata har tilldelats en dummy variabel så att den inte ingår i runbook-utdata.  
+hello nästa rader ange hello [autentiseringsuppgifter](automation-credentials.md) och Azure-prenumeration som ska användas för hello resten av hello runbook.
+Första vi använder **Get-AutomationPSCredential** tooget hello tillgång som innehåller hello behörighet med åtkomst toostart och stoppa virtuella datorer i hello Azure-prenumeration. **Lägg till AzureAccount** använder den här tillgången tooset hello autentiseringsuppgifter.  hello utdata tilldelas tooa dummy variabeln så att den inte ingår i hello runbook-utdata.  
 
-Variabeltillgång med ID: T hämtas med prenumerationen **Get-automationvariable,** och prenumerationen med **Välj AzureSubscription**.
+Hej variabeltillgång med hello prenumerations-ID: T hämtas med **Get-automationvariable,** och hello prenumeration med **Välj AzureSubscription**.
 
 ### <a name="get-vms"></a>Hämta virtuella datorer
-    # If there is a specific cloud service, then get all VMs in the service,
-    # otherwise get all VMs in the subscription.
+    # If there is a specific cloud service, then get all VMs in hello service,
+    # otherwise get all VMs in hello subscription.
     if ($ServiceName)
     {
         $VMs = Get-AzureVM -ServiceName $ServiceName
@@ -151,38 +151,38 @@ Variabeltillgång med ID: T hämtas med prenumerationen **Get-automationvariable
         $VMs = Get-AzureVM
     }
 
-**Get-AzureVM** används för att hämta de virtuella datorerna runbook fungerar med.  Om ett värde har angetts i den **ServiceName** ange variabel, och sedan på virtuella datorer med att namn har hämtats.  Om **ServiceName** är tom, hämtas alla virtuella datorer.
+**Get-AzureVM** är används tooretrieve hello virtuella datorer hello runbook fungerar med.  Om ett värde har angetts i hello **ServiceName** ange variabel och sedan endast hello virtuella datorer med att namn har hämtats.  Om **ServiceName** är tom, hämtas alla virtuella datorer.
 
 ### <a name="startstop-virtual-machines-and-send-output"></a>Starta/stoppa virtuella datorer och skicka utdata
-    # Start each of the stopped VMs
+    # Start each of hello stopped VMs
     foreach ($VM in $VMs)
     {
         if ($VM.PowerState -eq "Started")
         {
-            # The VM is already started, so send notice
+            # hello VM is already started, so send notice
             Write-Output ($VM.InstanceName + " is already running")
         }
         else
         {
-            # The VM needs to be started
+            # hello VM needs toobe started
             $StartRtn = Start-AzureVM -Name $VM.Name -ServiceName $VM.ServiceName -ErrorAction Continue
 
             if ($StartRtn.OperationStatus -ne 'Succeeded')
             {
-                # The VM failed to start, so send notice
-                Write-Output ($VM.InstanceName + " failed to start")
+                # hello VM failed toostart, so send notice
+                Write-Output ($VM.InstanceName + " failed toostart")
             }
             else
             {
-                # The VM started, so send notice
+                # hello VM started, so send notice
                 Write-Output ($VM.InstanceName + " has been started")
             }
         }
     }
 
-På nästa rad gå igenom varje virtuell dator.  Första den **PowerState** för den virtuella datorn kontrolleras för att se om den redan är igång eller Stoppad, beroende på runbook.  Om det redan finns i måltillståndet skickas ett meddelande till utdata och runbook avslutas.  Om inte, sedan **Start AzureVM** eller **stoppa AzureVM** används för att försöka starta eller stoppa den virtuella datorn med resultatet av begäran lagras i en variabel.  Ett meddelande skickas sedan till utdata anger om begäran om att starta eller stoppa har skickats.
+hello nästa rader gå igenom varje virtuell dator.  Först hello **PowerState** av hello virtuella datorn är markerad toosee om den redan är igång eller stoppad beroende hello runbook.  Om det redan finns i hello måltillståndet skickas ett meddelande toooutput och hello runbook slutar.  Om inte, sedan **Start AzureVM** eller **stoppa AzureVM** är används tooattempt toostart eller stoppa hello virtuell dator med hello resultatet av hello begäran lagrade tooa variabeln.  Ett meddelande skickas toooutput anger om hello begäran toostart eller stoppa har skickats.
 
 ## <a name="next-steps"></a>Nästa steg
-* Mer information om hur du arbetar med underordnade runbooks finns [underordnade runbooks i Azure Automation](automation-child-runbooks.md)
-* Läs mer om utgående meddelanden under körning av runbook och loggning för att felsöka i [Runbook-utdata och meddelanden i Azure Automation](automation-runbook-output-and-messages.md)
+* toolearn mer information om hur du arbetar med underordnade runbooks finns [underordnade runbooks i Azure Automation](automation-child-runbooks.md)
+* Mer om toolearn utgående meddelanden under körning av runbook och loggning toohelp felsökning, se [Runbook-utdata och meddelanden i Azure Automation](automation-runbook-output-and-messages.md)
 

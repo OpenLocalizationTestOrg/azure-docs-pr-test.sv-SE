@@ -1,6 +1,6 @@
 ---
-title: "Skapa ett Batch-konto på Azure Portal | Microsoft Docs"
-description: "Lär dig hur du skapar ett Azure Batch-konto på Azure Portal för att köra storskaliga parallella arbetsbelastningar i molnet"
+title: aaaCreate Batch-kontot i hello Azure-portalen | Microsoft Docs
+description: "Lär dig hur toocreate ett Azure Batch konto i hello Azure portal toorun storskaliga parallella arbetsbelastningar i hello moln"
 services: batch
 documentationcenter: 
 author: tamram
@@ -15,13 +15,13 @@ ms.topic: get-started-article
 ms.date: 06/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 520d1d42d35b25db1a35d4317e9eb616cf5de565
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2176f88ba0a1a3298023de8f520d46ef28a664b7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-batch-account-with-the-azure-portal"></a>Skapa ett Batch-konto med Azure Portal
+# <a name="create-a-batch-account-with-hello-azure-portal"></a>Skapa ett batchkonto med hello Azure-portalen
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](batch-account-create-portal.md)
@@ -29,116 +29,116 @@ ms.lasthandoff: 08/29/2017
 >
 >
 
-Lär dig hur du skapar ett Azure Batch-konto på [Azure Portal][azure_portal] och välj de kontoegenskaper som passar ditt beräkningsscenario. Lär dig var du hittar viktiga kontoegenskaper som snabbtangenter och konto-URL:er.
+Lär dig hur toocreate ett Azure Batch-kontot i hello [Azure-portalen][azure_portal], och välj Egenskaper för hello som passar din situation för beräkning. Lär dig där toofind viktiga egenskaper som kontot URL: er och åtkomstnycklar.
 
-Bakgrundsinformation om Batch-konton och Batch-scenarier finns i [funktionsöversikten](batch-api-basics.md).
+Information om Batch-konton och scenarier finns hello [funktion översikt](batch-api-basics.md).
 
 
 
 ## <a name="create-a-batch-account"></a>Skapa ett Batch-konto
 
-Använd portalen för att skapa ett Batch-konto i ett av de två *poolallokeringslägena*: **Batch-tjänstläge** eller det nyare **användarprenumerationsläget**, som kräver mer konfiguration. Information om dessa två lägena finns i [funktionsöversikten](batch-api-basics.md#account). Mer information om funktioner i användarprenumerationsläget finns i det här [blogginlägget](https://blogs.technet.microsoft.com/windowshpc/2017/03/17/azure-batch-vnet-and-custom-image-support-for-virtual-machine-pools/).
+Använd hello portal toocreate ett Batch-konto i en hello två *poolens fördelning lägen*: **Batch-tjänsten** läge eller hello senare **användarens prenumeration** läge, som kräver mer konfiguration. Information om dessa två lägen finns hello [funktion översikt](batch-api-basics.md#account). Funktioner i hello användarläge prenumeration finns även hello [blogginlägget](https://blogs.technet.microsoft.com/windowshpc/2017/03/17/azure-batch-vnet-and-custom-image-support-for-virtual-machine-pools/).
 
 ## <a name="batch-service-mode"></a>Batch-tjänstläge
 
 
 
-1. Logga in på [Azure Portal][azure_portal].
+1. Logga in toohello [Azure-portalen][azure_portal].
 2. Klicka på **Ny** > **Beräkna** > **Batch-tjänst**.
 
-    ![Batch på Marketplace][marketplace_portal]
-3. Bladet **Nytt Batch-konto** visas. Se beskrivningarna nedan av varje element på bladet.
+    ![Batch i hello Marketplace][marketplace_portal]
+3. Hej **nytt Batchkonto** bladet visas. Se hello beskrivningarna nedan för varje element i bladet.
 
     ![Skapa ett Batch-konto][account_portal]
 
-    a. **Kontonamn**: Det Batch-kontonamn som du väljer måste vara unikt i den Azure-region där kontot skapas (se **Plats** nedan). Kontonamnet får bara innehålla gemener eller siffror och måste vara mellan 3 och 24 tecken långt.
+    a. **Kontonamn**: hello Batch-kontonamn du väljer måste vara unika inom hello Azure-region där hello kontot skapas (se **plats** nedan). hello-kontonamnet får innehålla endast små bokstäver eller siffror och måste bestå av 3 till 24 tecken.
 
-    b. **Prenumeration**: Prenumerationen som Batch-kontot skapas i. Om du bara har en prenumeration väljs den som standard.
+    b. **Prenumerationen**: hello prenumerationen i vilka toocreate hello Batch-kontot. Om du bara har en prenumeration väljs den som standard.
 
     c. **Poolallokeringsläge**: Välj **Batch-tjänst**.
 
     c. **Resursgrupp**: Välj en befintlig resursgrupp för ditt nya Batch-konto. Du kan också skapa en ny resursgrupp.
 
-    d. **Plats**: Azure-regionen som Batch-kontot skapas i. Endast de regioner som stöds av din prenumeration och resursgrupp visas som alternativ.
+    d. **Plats**: hello Azure-region i vilken toocreate hello Batch-kontot. Endast hello regioner som stöds av din prenumeration och resursgrupp visas som alternativ.
 
     e. **Lagringskonto** (valfritt): Ett generellt Azure Storage-konto som du associerar med ditt Batch-konto. Detta rekommenderas för de flesta Batch-konton. Mer information finns i [Länkat Azure Storage-konto](#linked-azure-storage-account) senare i den här artikeln.
 
-4. Skapa kontot genom att klicka på **Skapa**.
+4. Klicka på **skapa** toocreate hello-konto.
 
-   Portalen meddelar att distributionen pågår. När åtgärden har slutförts visas meddelandet **Distributionen är klar** i **Meddelanden**.
+   hello portal anger distribution pågår. När åtgärden har slutförts visas meddelandet **Distributionen är klar** i **Meddelanden**.
 
 ## <a name="user-subscription-mode"></a>Användarprenumerationsläge
 
-### <a name="allow-azure-batch-to-access-the-subscription-one-time-operation"></a>Tillåt att Azure Batch får åtkomst till prenumerationen (engångsåtgärd)
-När du skapar ditt första Batch-konto i användarprenumerationsläge utför du följande steg för att registrera prenumerationen med Batch. (Om du redan har gjort detta går du vidare till nästa avsnitt.)
+### <a name="allow-azure-batch-tooaccess-hello-subscription-one-time-operation"></a>Tillåt Azure Batch tooaccess hello prenumeration (engångsåtgärd)
+När du skapar din första Batch-kontot i användarläge för prenumerationen kan du utföra hello följande steg tooregister prenumerationen med Batch. (Om du tidigare har gjort det, hoppar du över toohello nästa avsnitt.)
 
-1. Logga in på [Azure Portal][azure_portal].
+1. Logga in toohello [Azure-portalen][azure_portal].
 
-2. Klicka på **Fler tjänster** > **Prenumerationer** och klicka på den prenumeration som du vill använda för Batch-kontot.
+2. Klicka på **fler tjänster** > **prenumerationer**, och klicka på hello-prenumeration som du vill använda toouse för hello Batch-kontot.
 
-3. På bladet **Prenumeration** klickar du på **Åtkomstkontroll (IAM)** > **Lägg till**.
+3. I hello **prenumeration** bladet, klickar du på **åtkomstkontroll (IAM)** > **Lägg till**.
 
     ![Åtkomstkontroll för prenumeration][subscription_access]
 
-4. På bladet **Lägg till behörigheter** väljer du rollen **Deltagare** och söker efter Batch-API:t. Sök efter var och en av de här strängarna tills du hittar API:t:
+4. På hello **lägga till behörigheter** bladet, Välj hello **deltagare** roll, söka efter hello Batch-API. Sök efter var och en av de här strängarna tills du hittar hello-API:
     1. **MicrosoftAzureBatch**.
     2. **Microsoft Azure Batch**. Nyare Azure AD-klientorganisationer kan använda det här namnet.
-    3. **ddbf3205-c6bd-46ae-8127-60eb93363864** är id:t för API:t. 
+    3. **ddbf3205-c6bd-46ae-8127-60eb93363864** är hello-ID för hello Batch-API. 
 
-5. När du har hittat Batch-API:t markerar du det och klickar på **Spara**.
+5. När du har hittat hello Batch-API och på **spara**.
 
     ![Lägg till Batch-behörigheter][add_permission]
 
 ### <a name="create-a-key-vault"></a>Skapa ett nyckelvalv
-I användarprenumerationsläge krävs ett Azure-nyckelvalv som tillhör samma resursgrupp som Batch-kontot som ska skapas. Kontrollera att resursgruppen finns i en region där Batch är [tillgängligt](https://azure.microsoft.com/regions/services/) och som din prenumeration stöder.
+I användarläge för prenumerationen, krävs en Azure key vault som tillhör toothe samma resursgrupp som hello Batch-kontot toobe skapas. Se till att hello resursgrupp i en region där Batch är [tillgängliga](https://azure.microsoft.com/regions/services/) och som har stöd för din prenumeration.
 
-1. På [Azure Portal][azure_portal] klickar du på **Nytt** > **Säkerhet + identitet** > **Nyckelvalv**.
+1. I hello [Azure-portalen][azure_portal], klickar du på **ny** > **säkerhet + identitet** > **Key Vault** .
 
-2. På bladet **Skapa nyckelvalv** anger du ett namn för nyckelvalvet och skapar en resursgrupp i den region som du vill använda för ditt Batch-konto. Lämna standardvärdena för resten av inställningarna och klicka sedan på **Skapa**.
+2. I hello **skapa Nyckelvalvet** bladet, ange ett namn för hello nyckelvalvet och skapa en resursgrupp i hello region som du vill använda för Batch-kontot. Lämna hello återstående inställningar till standardvärden och klicka sedan på **skapa**.
 
 ### <a name="create-a-batch-account"></a>Skapa ett Batch-konto
 
-1. På [Azure Portal][azure_portal] klickar du på **Nytt** > **Beräkna** > **Batch-tjänst**.
+1. I hello [Azure-portalen][azure_portal], klickar du på **ny** > **Compute** > **Batchtjänsten**.
 
-    ![Batch på Marketplace][marketplace_portal]
-3. Bladet **Nytt Batch-konto** visas. Se beskrivningarna nedan av varje element på bladet.
+    ![Batch i hello Marketplace][marketplace_portal]
+3. Hej **nytt Batchkonto** bladet visas. Se hello beskrivningarna nedan för varje element i bladet.
 
     ![Skapa ett Batch-konto][account_portal_byos]
 
-    a. **Kontonamn**: Det Batch-kontonamn som du väljer måste vara unikt i den Azure-region där kontot skapas (se **Plats** nedan). Kontonamnet får bara innehålla gemener eller siffror och måste vara mellan 3 och 24 tecken långt.
+    a. **Kontonamn**: hello Batch-kontonamn du väljer måste vara unika inom hello Azure-region där hello kontot skapas (se **plats** nedan). hello-kontonamnet får innehålla endast små bokstäver eller siffror och måste bestå av 3 till 24 tecken.
 
-    b. **Prenumeration**: Om du har mer än en prenumeration väljer du den prenumeration som du registrerade med Batch-tjänsten.
+    b. **Prenumerationen**: Om du har mer än en prenumeration väljer du hello-prenumeration som du har registrerat med hello Batch-tjänsten.
 
     c. **Poolallokeringsläge**: Välj **Användarprenumeration**.
 
-    d. **Nyckelvalv**: Välj det nyckelvalv som du skapade för Batch-kontot i föregående avsnitt. Om du vill kan du skapa ett nytt nyckelvalv. När du har valt valvet markerar du kryssrutan för att ge Azure Batch åtkomst till nyckelvalvet.
+    d. **Nyckelvalv**: Välj hello nyckelvalv som du skapade för Batch-kontot i hello föregående avsnitt. Om du vill kan du skapa ett nytt nyckelvalv. När du har valt hello valvet, Välj hello kryssrutan toogrant Azure Batch åtkomst toohello nyckelvalvet.
 
-    c. **Resursgrupp**: Välj den resursgrupp där du skapade nyckelvalvet.
+    c. **Resursgruppen**: Välj hello resursgrupp som du skapade hello nyckelvalvet.
 
-    d. **Plats**: Den Azure-region där du skapade nyckelvalvet för Batch-kontot.
+    d. **Plats**: hello Azure-region där du skapade hello nyckelvalv för hello Batch-kontot.
 
     e. **Lagringskonto** (valfritt): Ett generellt Azure Storage-konto som du associerar med ditt Batch-konto. Detta rekommenderas för de flesta Batch-konton. Mer information finns i [Länkat Azure Storage-konto](#linked-azure-storage-account) nedan.
 
-4. Skapa kontot genom att klicka på **Skapa**.
+4. Klicka på **skapa** toocreate hello-konto.
 
-   Portalen meddelar att distributionen pågår. När åtgärden har slutförts visas meddelandet **Distributionen är klar** i **Meddelanden**.
+   hello portal anger distribution pågår. När åtgärden har slutförts visas meddelandet **Distributionen är klar** i **Meddelanden**.
 
 
 
 ## <a name="view-batch-account-properties"></a>Visa egenskaper för ett Batch-konto
-När kontot har skapats kan du öppna bladet för **Batch-kontot** och komma åt kontots inställningar och egenskaper. Du kan komma åt alla kontoinställningar och kontoegenskaper från den vänstra menyn på bladet för Batch-kontot.
+När hello-konto har skapats kan du öppna hello **Batch-kontoblad** tooaccess inställningar och egenskaper. Du kan komma åt alla egenskaper och inställningar med hjälp av hello vänstra menyn hello Batch-kontot bladet.
 
 ![Bladet för Batch-kontot på Azure Portal][account_blade]
 
-* **Batch-kontots URL**: När du utvecklar ett program med [Batch-API:er](batch-apis-tools.md#azure-accounts-for-batch-development), behöver du ett konto-URL till dina Batch-resurser. URL:en för ett Batch-konto har följande format:
+* **Batch-kontots URL**: när du utvecklar ett program med hello [Batch-API: er](batch-apis-tools.md#azure-accounts-for-batch-development), behöver du ett konto URL tooaccess Batch-resurser. En URL för Batch-kontot har hello följande format:
 
     `https://<account_name>.<region>.batch.azure.com`
 
 ![Batch-kontots URL på portalen][account_url]
 
-* **Snabbtangenter** (Batch-tjänstläge): För att autentisera åtkomsten till ditt Batch-konto från programmet behöver du en snabbtangent för kontot. (Den här inställningen är inte tillgänglig i användarprenumerationsläge, där du använder Azure Active Directory-autentisering.)
+* **Åtkomstnycklar** (Batch-tjänsten-läge): tooauthenticate åtkomst tooyour Batch-kontot från ditt program behöver du en åtkomstnyckel. (Den här inställningen är inte tillgänglig i användarprenumerationsläge, där du använder Azure Active Directory-autentisering.)
 
-    Om du vill visa eller återskapa Batch-kontots åtkomstnycklar skriver du `keys` i rutan **Sök** på den vänstra menyn i bladet för Batch-kontot och väljer **Nycklar**.
+    tooview eller generera åtkomstnycklar för Batch-kontot, ange `keys` hello vänstra menyn **Sök** på bladet för hello Batch-konto och sedan markera **nycklar**.
 
     ![Batch-kontonycklar på Azure Portal][account_keys]
 
@@ -146,43 +146,43 @@ När kontot har skapats kan du öppna bladet för **Batch-kontot** och komma åt
 
 ## <a name="linked-azure-storage-account"></a>Länkat Azure Storage-konto
 
-Om du vill kan du länka ett allmänt Azure Storage-konto till ditt Batch-konto. Funktionen [programpaket](batch-application-packages.md) i Batch använder Azure Blob Storage, precis som biblioteket [Batch File Conventions .NET](batch-task-output.md) gör. Med dessa valfria funktioner kan du distribuera de program som körs av Batch-aktiviteterna och spara de data som de genererar.
+Alternativt kan du koppla en generell Azure Storage-konto tooyour Batch-kontot. Hej [programpaket](batch-application-packages.md) funktion i Batch använder Azure Blob storage hello [Batch filen konventioner .NET](batch-task-output.md) bibliotek. De här valfria funktionerna hjälpa dig distribuera hello-program som körs Batch-aktiviteter och spara hello data de producerar.
 
 Vi rekommenderar att du skapar ett nytt lagringskonto för exklusiv användning av Batch-kontot.
 
 ![Skapa ett allmänt lagringskonto][storage_account]
 
 > [!NOTE]
-> Azure Batch stöder för närvarande endast den allmänna lagringskontotypen. Den här kontotypen beskrivs i steg 5, [Skapa ett lagringskonto] (../storage/common/storage-create-storage-account.md#create-a-storage-account), i [Om Azure Storage-konton](../storage/common/storage-create-storage-account.md).
+> Azure Batch stöder för närvarande endast hello allmänna lagringskontotypen. Den här kontotypen beskrivs i steg 5, [Skapa ett lagringskonto] (../storage/common/storage-create-storage-account.md#create-a-storage-account), i [Om Azure Storage-konton](../storage/common/storage-create-storage-account.md).
 >
 >
 
 > [!WARNING]
-> Var noga när du återskapar åtkomstnycklarna för ett länkat Storage-konto. Återskapa endast en Storage-kontonyckel och klicka på **Synkronisera nycklar** på bladet för det länkade Storage-kontot. Vänta fem minuter så att nycklarna hinner distribueras till beräkningsnoderna i poolerna och återskapa och synkronisera sedan den andra nyckeln om det behövs. Om du återskapar båda nycklarna samtidigt kan dina beräkningsnoder inte synkronisera någon av nycklarna och de förlorar åtkomst till Storage-kontot.
+> Var försiktig när du återskapar hello snabbtangenter av länkade lagringskonton. Återskapa endast en lagringskontonyckel och klicka på **synkronisera nycklar** på hello länkade Storage-konto bladet. Vänta 5 minuter tooallow hello nycklar toopropagate toohello compute-noder i din pooler och sedan återskapa och synkronisera hello andra nyckeln om det behövs. Om du återskapa båda nycklarna på hello samma tid, compute-noderna inte kan toosynchronize antingen nyckel, och de kommer att förlora åtkomst toohello Storage-konto.
 >
 >
 
 ![Återskapa lagringskontonycklar][4]
 
 ## <a name="batch-service-quotas-and-limits"></a>Kvoter och begränsningar för Batch-tjänsten
-Tänk på att, precis som din Azure-prenumeration och andra Azure-tjänster, så har Batch-konton vissa [kvoter och begränsningar](batch-quota-limit.md). De aktuella kvoterna för ett Batch-konto visas på portalen i **kontoegenskaperna**.
+Du är medveten om att som med din Azure-prenumeration och andra Azure-tjänster, vissa [kvoter och gränser](batch-quota-limit.md) gäller tooBatch konton. Aktuella kvoter för Batch-kontot visas i hello-portal i hello konto **egenskaper**.
 
 ![Kvoter för Batch-konto på Azure Portal][quotas]
 
 
 
-Vidare kan du öka många av dessa kvoter genom att bara skicka en kostnadsfri begäran om produktsupport på Azure Portal. Information om hur du gör den här typen av begäran finns i [Kvoter och begränsningar för Azure Batch-tjänsten](batch-quota-limit.md).
+Dessutom att många av dessa kvoter kan ökas bara med en kostnadsfri produkten supportbegäran skickade i hello Azure-portalen. Se [kvoter och gränser för hello Azure Batch-tjänsten](batch-quota-limit.md) information om begär kvoten ökar.
 
 ## <a name="other-batch-account-management-options"></a>Andra alternativ för Batch-kontohantering
-Förutom att använda Azure Portal kan du också skapa och hantera Batch-konton med följande:
+Dessutom toousing hello Azure-portalen, du kan också skapa och hantera Batch-konton med hello följande:
 
-* [PowerShell-cmdlets för Batch](batch-powershell-cmdlets-get-started.md)
+* [PowerShell-cmdletar för Batch](batch-powershell-cmdlets-get-started.md)
 * [Azure CLI](batch-cli-get-started.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 
 ## <a name="next-steps"></a>Nästa steg
-* Mer information om begrepp och funktioner relaterade till Batch-tjänsten finns i [funktionsöversikten för Batch](batch-api-basics.md). Artikeln beskriver de viktigaste Batch-resurserna, t.ex. pooler, beräkningsnoder, jobb och aktiviteter, och innehåller en översikt över funktioner i tjänsten som stöder storskaliga arbetsbelastningar.
-* Lär dig hur du utvecklar ett enkelt Batch-aktiverat program med hjälp av [Batch .NET-klientbiblioteket](batch-dotnet-get-started.md) eller [Python](batch-python-tutorial.md). Introduktionsartikeln beskriver steg för steg ett program som använder Batch-tjänsten för att köra en arbetsbelastning på flera beräkningsnoder och förklarar hur du använder Azure Storage för mellanlagring och hämtning av filer i arbetsbelastningar.
+* Se hello [Batch funktionsöversikt](batch-api-basics.md) toolearn mer om Batch-koncept och funktioner. hello artikeln beskriver hello primära Batch resurser, till exempel pooler, compute-noder, jobb och uppgifter och ger en översikt över hello tjänstens funktioner som möjliggör körning av storskaliga beräkning arbetsbelastning.
+* Hello grundläggande information om hur utvecklingen av ett Batch-aktiverade program som använder hello [Batch .NET-klientbibliotek](batch-dotnet-get-started.md) eller [Python](batch-python-tutorial.md). De här inledande artiklarna leder dig igenom ett fungerande program som använder hello Batch-tjänsten tooexecute en arbetsbelastning på flera datornoder och användning av Azure Storage för arbetsbelastningen filen mellanlagrings- och hämtning.
 
 [api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: https://msdn.microsoft.com/library/azure/Dn820158.aspx

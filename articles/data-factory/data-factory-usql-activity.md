@@ -1,6 +1,6 @@
 ---
-title: "Transformera data med hjälp av U-SQL - skript i Azure | Microsoft Docs"
-description: "Lär dig hur du bearbetar eller Transformera data genom att köra U-SQL-skript på Azure Data Lake Analytics-tjänsten för beräkning."
+title: "aaaTransform data med hjälp av U-SQL - skript i Azure | Microsoft Docs"
+description: "Lär dig hur compute tooprocess eller Transformera data genom att köra U-SQL-skript på Azure Data Lake Analytics-tjänsten."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 49a809af92ed1bc6664fbdd3bf1aabf36afb8180
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 51fdb40334d0c131720f65c3a96b4c5045a98b24
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformera data genom att köra U-SQL-skript på Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -33,46 +33,46 @@ ms.lasthandoff: 08/18/2017
 > * [Data Lake Analytics U-SQL-aktivitet](data-factory-usql-activity.md)
 > * [Anpassad aktivitet för .NET](data-factory-use-custom-activities.md)
 
-En pipeline i ett Azure data factory bearbetar data i länkade storage-tjänster med hjälp av länkade beräknings-tjänster. Den innehåller en serie aktiviteter där varje aktivitet utför en specifik bearbetning. Den här artikeln beskriver den **Data Lake Analytics U-SQL-aktivitet** som kör en **U-SQL** skript på en **Azure Data Lake Analytics** compute länkade tjänsten. 
+En pipeline i ett Azure data factory bearbetar data i länkade storage-tjänster med hjälp av länkade beräknings-tjänster. Den innehåller en serie aktiviteter där varje aktivitet utför en specifik bearbetning. Den här artikeln beskriver hello **Data Lake Analytics U-SQL-aktivitet** som kör en **U-SQL** skript på en **Azure Data Lake Analytics** compute länkade tjänsten. 
 
 > [!NOTE]
-> Skapa ett Azure Data Lake Analytics-konto innan du skapar en pipeline med en Data Lake Analytics U-SQL-aktivitet. Mer information om Azure Data Lake Analytics, se [Kom igång med Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
+> Skapa ett Azure Data Lake Analytics-konto innan du skapar en pipeline med en Data Lake Analytics U-SQL-aktivitet. toolearn om Azure Data Lake Analytics finns [Kom igång med Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 > 
-> Granska de [skapa din första pipeline-självstudierna](data-factory-build-your-first-pipeline.md) detaljerade steg för att skapa en datafabrik länkade tjänster, datauppsättningar och en pipeline. Använda JSON kodavsnitt med Data Factory-redigeraren eller Visual Studio eller Azure PowerShell för att skapa Data Factory entiteter.
+> Granska hello [skapa din första pipeline-självstudierna](data-factory-build-your-first-pipeline.md) för detaljerade anvisningar toocreate en datafabrik länkade tjänster, datauppsättningar och en pipeline. Använd JSON kodavsnitt hos Data Factory-redigeraren eller Visual Studio eller Azure PowerShell toocreate Data Factory-enheter.
 
 ## <a name="supported-authentication-types"></a>Typer av autentiseringsmetoder som stöds
 U-SQL-aktiviteten stöder nedan autentiseringstyper mot Data Lake Analytics:
 * Autentisering av tjänstens huvudnamn
 * Användarautentisering autentiseringsuppgifter (OAuth) 
 
-Vi rekommenderar att du använder service principal autentisering, särskilt för en schemalagd U-SQL-körningen. Giltighetstid för token kan inträffa med autentiseringsuppgifter för användarautentisering. Konfigurationsinformation finns i [länkade tjänstegenskaper](#azure-data-lake-analytics-linked-service) avsnitt.
+Vi rekommenderar att du använder service principal autentisering, särskilt för en schemalagd U-SQL-körningen. Giltighetstid för token kan inträffa med autentiseringsuppgifter för användarautentisering. Konfigurationsinformation finns hello [länkade tjänstegenskaper](#azure-data-lake-analytics-linked-service) avsnitt.
 
 ## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics länkade tjänsten
-Du skapar en **Azure Data Lake Analytics** länkad tjänst för att länka ett Azure Data Lake Analytics compute-tjänst till ett Azure data factory. Data Lake Analytics U-SQL-aktivitet i pipelinen refererar till den här länkade tjänsten. 
+Du skapar en **Azure Data Lake Analytics** länkade tjänsten toolink ett Azure Data Lake Analytics beräkning service tooan Azure data factory. hello Data Lake Analytics U-SQL-aktivitet i pipelinen hello refererar toothis länkade tjänsten. 
 
-Följande tabell innehåller beskrivningar för allmänna egenskaper som används i JSON-definitionen. Du kan ytterligare välja mellan tjänstens huvudnamn och autentiseringsuppgifter för användarautentisering.
+hello innehåller följande tabell beskrivningar hello allmänna egenskaper som används i hello JSON-definitionen. Du kan ytterligare välja mellan tjänstens huvudnamn och autentiseringsuppgifter för användarautentisering.
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| **typ** |Typegenskapen bör anges till: **AzureDataLakeAnalytics**. |Ja |
+| **typ** |hello typegenskapen ska anges till: **AzureDataLakeAnalytics**. |Ja |
 | **Kontonamn** |Azure Data Lake Analytics-kontonamn. |Ja |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics-URI. |Nej |
-| **prenumerations-ID** |Azure prenumerations-id |Nej (om den inte anges data factory-prenumeration används). |
-| **resourceGroupName** |Azure resursgruppens namn |Nej (om inget annat anges, resursgruppen av datafabriken används). |
+| **prenumerations-ID** |Azure prenumerations-id |Nej (om inte anges prenumeration hello datafabriken används). |
+| **resourceGroupName** |Azure resursgruppens namn |Nej (om inte anges resursgruppen av hello datafabriken används). |
 
 ### <a name="service-principal-authentication-recommended"></a>Tjänstens huvudnamn autentisering (rekommenderas)
-Om du vill använda huvudnamn autentiseringen av tjänsten registrera en entitet för program i Azure Active Directory (AD Azure) och bevilja åtkomst till Data Lake Store. Detaljerade anvisningar finns i [tjänst-till-tjänst autentisering](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Anteckna följande värden som du använder för att definiera den länkade tjänsten:
+toouse service principal autentisering, registrera en Programenhet i Azure Active Directory (Azure AD) och bevilja den hello komma åt tooData Lake Store. Detaljerade anvisningar finns i [tjänst-till-tjänst autentisering](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Anteckna hello följande värden som du använder toodefine hello länkade tjänsten:
 * Program-ID:t
 * Nyckeln för programmet 
 * Klient-ID:t
 
-Använd service principal autentisering genom att ange följande egenskaper:
+Använd service principal autentisering genom att ange hello följande egenskaper:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | Ange programmets klient-ID. | Ja |
-| **servicePrincipalKey** | Ange programmets nyckeln. | Ja |
-| **klient** | Ange information om klient (domain name eller klient ID) under där programmet finns. Du kan hämta den hovrar muspekaren i det övre högra hörnet i Azure-portalen. | Ja |
+| **servicePrincipalId** | Ange hello programmets klient-ID. | Ja |
+| **servicePrincipalKey** | Ange hello programnyckel. | Ja |
+| **klient** | Ange hello klient information (domain name eller klient ID) under där programmet finns. Du kan hämta den med hovra hello musen i hello övre högra hörnet av hello Azure-portalen. | Ja |
 
 **Exempel: Service principal autentisering**
 ```json
@@ -94,12 +94,12 @@ Använd service principal autentisering genom att ange följande egenskaper:
 ```
 
 ### <a name="user-credential-authentication"></a>Användarautentisering för autentiseringsuppgifter
-Alternativt kan du använda användarautentisering för autentiseringsuppgifter för Data Lake Analytics genom att ange följande egenskaper:
+Alternativt kan du använda användarautentisering för autentiseringsuppgifter för Data Lake Analytics genom att ange hello följande egenskaper:
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| **auktorisering** | Klicka på den **auktorisera** i den Data Factory-redigeraren och ange dina autentiseringsuppgifter som tilldelar automatiskt genererade auktorisering URL till den här egenskapen. | Ja |
-| **sessions-ID** | OAuth sessions-ID från OAuth-auktorisering sessionen. Varje sessions-ID är unikt och kan bara användas en gång. Den här inställningen genereras automatiskt när du använder Data Factory-redigeraren. | Ja |
+| **auktorisering** | Klicka på hello **auktorisera** i hello Data Factory-redigeraren och ange dina autentiseringsuppgifter som tilldelar hello automatiskt genererade auktorisering URL toothis-egenskapen. | Ja |
+| **sessions-ID** | OAuth sessions-ID från hello OAuth-auktorisering session. Varje sessions-ID är unikt och kan bara användas en gång. Den här inställningen genereras automatiskt när du använder hello Data Factory-redigeraren. | Ja |
 
 **Exempel: Användarautentisering för autentiseringsuppgifter**
 ```json
@@ -120,14 +120,14 @@ Alternativt kan du använda användarautentisering för autentiseringsuppgifter 
 ```
 
 #### <a name="token-expiration"></a>Token upphör att gälla
-Auktoriseringskoden du genererade med hjälp av den **auktorisera** knappen upphör att gälla efter en stund. Förfallodatum tidpunkter för olika typer av användarkonton finns i följande tabell. Du kan se följande fel visas vid autentiseringen **token upphör att gälla**: autentiseringsuppgifter fel: invalid_grant - AADSTS70002: fel vid verifiering av autentiseringsuppgifter. AADSTS70008: Bevilja beviljade åtkomsten har upphört att gälla eller återkallats. Trace-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 tidsstämpel: 2015-12-15 21:09:31Z
+Hej auktoriseringskod som du genererade med hjälp av hello **auktorisera** knappen upphör att gälla efter en stund. Se hello i den följande tabellen för hello upphör att gälla tidpunkter för olika typer av användarkonton. Kan du se hello följande felmeddelande när hello autentisering **token upphör att gälla**: autentiseringsuppgifter fel: invalid_grant - AADSTS70002: fel vid verifiering av autentiseringsuppgifter. AADSTS70008: hello angetts åtkomsten har upphört att gälla eller återkallats. Trace-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 tidsstämpel: 2015-12-15 21:09:31Z
 
 | Användartyp | Upphör att gälla efter |
 |:--- |:--- |
 | Användarkonton som inte hanteras av Azure Active Directory (@hotmail.com, @live.comosv.) |12 timmar |
-| Användarkonton som hanteras av Azure Active Directory (AAD) |14 dagar efter det sista segmentet kör. <br/><br/>90 dagar, om ett segment baserat på OAuth-baserad länkade tjänst körs på minst en gång var fjortonde dag. |
+| Användarkonton som hanteras av Azure Active Directory (AAD) |14 dagar efter hello sista segmentet kör. <br/><br/>90 dagar, om ett segment baserat på OAuth-baserad länkade tjänst körs på minst en gång var fjortonde dag. |
 
-Om du vill undvika/åtgärda felet, omauktorisera med hjälp av den **auktorisera** knappen när den **token upphör att gälla** och distribuera den länkade tjänsten. Du kan också generera värdena för **sessionId** och **auktorisering** egenskaper programmässigt med hjälp av koden på följande sätt:
+tooavoid/Lös det här felet, omauktorisera med hello **auktorisera** knappen när hello **token upphör att gälla** och distribuera hello länkade tjänsten. Du kan också generera värdena för **sessionId** och **auktorisering** egenskaper programmässigt med hjälp av koden på följande sätt:
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -154,16 +154,16 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Se [AzureDataLakeStoreLinkedService klassen](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService klassen](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), och [AuthorizationSessionGetResponse klassen](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) avsnitt hittar du information om Data Factory-klasser som används i koden. Lägg till en referens till: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll för WindowsFormsWebAuthenticationDialog-klassen. 
+Se [AzureDataLakeStoreLinkedService klassen](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService klassen](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), och [AuthorizationSessionGetResponse klassen](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) avsnitt hittar du information Om hello Data Factory-klasser används i hello-koden. Lägg till en referens till: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll för hello WindowsFormsWebAuthenticationDialog klass. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Data Lake Analytics U-SQL-aktivitet
-Följande JSON-fragment definierar en pipeline med en Data Lake Analytics U-SQL-aktivitet. Aktivitetsdefinitionen har en referens till länkade Azure Data Lake Analytics-tjänsten som du skapade tidigare.   
+hello följande JSON-fragment definierar en pipeline med en Data Lake Analytics U-SQL-aktivitet. hello aktivitetsdefinitionen har en referens toohello länkade Azure Data Lake Analytics-tjänsten som du skapade tidigare.   
 
 ```json
 {
     "name": "ComputeEventsByRegionPipeline",
     "properties": {
-        "description": "This is a pipeline to compute events for en-gb locale and date less than 2012/02/19.",
+        "description": "This is a pipeline toocompute events for en-gb locale and date less than 2012/02/19.",
         "activities": 
         [
             {
@@ -210,25 +210,25 @@ Följande JSON-fragment definierar en pipeline med en Data Lake Analytics U-SQL-
 }
 ```
 
-I följande tabell beskrivs namn och beskrivningar av egenskaper som är specifika för den här aktiviteten. 
+hello följande tabell beskrivs namn och beskrivningar av egenskaper som är specifika toothis aktivitet. 
 
 | Egenskap | Beskrivning | Krävs |
 |:--- |:--- |:--- |
-| typ |Egenskapen type måste anges till **DataLakeAnalyticsU SQL**. |Ja |
-| ScriptPath |Sökvägen till mappen som innehåller U-SQL-skript. Namnet på filen är skiftlägeskänslig. |Nej (om du använder skriptet) |
-| scriptLinkedService |Länkade tjänst som länkar den lagring som innehåller skriptet till data factory |Nej (om du använder skriptet) |
+| typ |hello Typegenskapen måste anges för**DataLakeAnalyticsU SQL**. |Ja |
+| ScriptPath |Sökvägen toofolder som innehåller hello U-SQL-skriptet. Namnet på hello-filen är skiftlägeskänslig. |Nej (om du använder skriptet) |
+| scriptLinkedService |Länkade tjänst som länkar hello lagring som innehåller hello skriptet toohello data factory |Nej (om du använder skriptet) |
 | Skriptet |Ange infogat skript i stället för att ange scriptPath och scriptLinkedService. Till exempel: `"script": "CREATE DATABASE test"`. |Nej (om du använder scriptPath och scriptLinkedService) |
-| degreeOfParallelism |Maximalt antal noder samtidigt används för att köra jobbet. |Nej |
-| Prioritet |Anger vilka jobb av alla köas ska väljas att köras först. Ju lägre nummer, desto högre prioritet. |Nej |
-| Parametrar |Parametrar för U-SQL-skript |Nej |
-| runtimeVersion | Körtidsversion U-SQL-motorn att använda | Nej | 
-| compilationMode | <p>Kompileringsläge för U-SQL. Måste vara ett av följande värden:</p> <ul><li>**Semantiska:** endast utföra semantiska kontroller och nödvändiga hälsokontroller.</li><li>**Fullständig:** utföra fullständig kompilering, inklusive syntaxkontrollen, optimering, kodgenerering osv.</li><li>**SingleBox:** utföra fullständig sammanställning med TargetType inställningen till SingleBox.</li></ul><p>Om du inte anger ett värde för den här egenskapen anger servern optimala kompilering. </p>| Nej | 
+| degreeOfParallelism |hello maximalt antal noder används samtidigt toorun hello jobb. |Nej |
+| Prioritet |Anger vilka jobb av alla köas ska vara markerade toorun först. hello lägre hello nummer, hello högre hello prioritet. |Nej |
+| parameters |Parametrar för hello U-SQL-skript |Nej |
+| runtimeVersion | Runtime-versionen av hello U-SQL-motorn toouse | Nej | 
+| compilationMode | <p>Kompileringsläge för U-SQL. Måste vara ett av följande värden:</p> <ul><li>**Semantiska:** endast utföra semantiska kontroller och nödvändiga hälsokontroller.</li><li>**Fullständig:** utföra hello fullständig kompilering, inklusive syntaxkontrollen, optimering, kodgenerering osv.</li><li>**SingleBox:** utföra hello fullständig kompilering med TargetType inställningen tooSingleBox.</li></ul><p>Om du inte anger ett värde för den här egenskapen anger hello server hello optimala kompilering. </p>| Nej | 
 
-Se [SearchLogProcessing.txt skript Definition](#sample-u-sql-script) skript-definition. 
+Se [SearchLogProcessing.txt skript Definition](#sample-u-sql-script) hello skript definition. 
 
 ## <a name="sample-input-and-output-datasets"></a>Exempel på indata och utdata datauppsättningar
 ### <a name="input-dataset"></a>Indatauppsättning
-I det här exemplet finns indata i ett Azure Data Lake Store (SearchLog.tsv-fil i mappen datalake-indata). 
+I det här exemplet hello inkommande data som finns i ett Azure Data Lake Store (SearchLog.tsv-fil i mappen för hello datalake-indata). 
 
 ```json
 {
@@ -254,7 +254,7 @@ I det här exemplet finns indata i ett Azure Data Lake Store (SearchLog.tsv-fil 
 ```
 
 ### <a name="output-dataset"></a>Datamängd för utdata
-I det här exemplet lagras utdata som genereras av U-SQL-skript i ett Azure Data Lake Store (datalake-/ utdata mapp). 
+I det här exemplet lagras hello-utdata som genereras av hello U-SQL-skript i ett Azure Data Lake Store (datalake-/ utdata mapp). 
 
 ```json
 {
@@ -274,7 +274,7 @@ I det här exemplet lagras utdata som genereras av U-SQL-skript i ett Azure Data
 ```
 
 ### <a name="sample-data-lake-store-linked-service"></a>Exempel Data Lake Store länkade tjänsten
-Det här är definitionen av exemplet Azure Data Lake Store länkade tjänst som används av in-/ utdata-datauppsättningar. 
+Här är hello definition av hello exempel Azure Data Lake Store länkade tjänst som används av hello in-/ utdata-datauppsättningar. 
 
 ```json
 {
@@ -291,7 +291,7 @@ Det här är definitionen av exemplet Azure Data Lake Store länkade tjänst som
 }
 ```
 
-Se [flytta data till och från Azure Data Lake Store](data-factory-azure-datalake-connector.md) artikel beskrivningar av JSON-egenskaper. 
+Se [flytta data tooand från Azure Data Lake Store](data-factory-azure-datalake-connector.md) artikel beskrivningar av JSON-egenskaper. 
 
 ## <a name="sample-u-sql-script"></a>Exempel U-SQL-skript
 
@@ -318,16 +318,16 @@ WHERE Region == "en-gb";
     WHERE Start <= DateTime.Parse("2012/02/19");
 
 OUTPUT @rs1   
-    TO @out
+    too@out
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-Värdena för  **@in**  och  **@out**  parametrar i U-SQL-skriptet skickas dynamiskt av ADF med hjälp av avsnittet-Parametrar'. Se avsnittet-Parametrar' i pipeline-definitionen.
+Hej värden för  **@in**  och  **@out**  parametrar i hello U-SQL-skriptet skickas dynamiskt av ADF med hello-parametrar'. Avsnittet hello-parametrar' i hello pipeline-definition.
 
-Du kan ange andra egenskaper, till exempel degreeOfParallelism och prioritet samt i pipeline-definitionen för de jobb som körs på Azure Data Lake Analytics-tjänsten.
+Du kan ange andra egenskaper, till exempel degreeOfParallelism och prioritet samt i pipeline-definitionen för hello jobb som körs på hello Azure Data Lake Analytics-tjänsten.
 
 ## <a name="dynamic-parameters"></a>Dynamiska parametrar
-I exemplet pipeline-definition tilldelas in och ut parametrar med hårdkodade värden. 
+I hello exempel pipeline definition tilldelas in och ut parametrar med hårdkodade värden. 
 
 ```json
 "parameters": {
@@ -336,7 +336,7 @@ I exemplet pipeline-definition tilldelas in och ut parametrar med hårdkodade v�
 }
 ```
 
-Det är möjligt att använda dynamiska parametrar i stället. Exempel: 
+Det är möjligt toouse dynamiska parametrar i stället. Exempel: 
 
 ```json
 "parameters": {
@@ -345,5 +345,5 @@ Det är möjligt att använda dynamiska parametrar i stället. Exempel:
 }
 ```
 
-I det här fallet fortfarande tas upp inkommande filer från mappen /datalake/input och utdatafiler skapas i mappen /datalake/output. Filnamnen är dynamiska baserat på starttid sektorn.  
+I det här fallet indatafiler fortfarande tas upp från hello /datalake/input mapp och utdatafiler skapas i hello /datalake/output mapp. hello filnamn är dynamiska baserat på hello sektorn starttid.  
 

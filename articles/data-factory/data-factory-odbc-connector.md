@@ -1,6 +1,6 @@
 ---
-title: "Flytta data från ODBC datalager | Microsoft Docs"
-description: "Lär dig mer om hur du flyttar data från ODBC datalager med Azure Data Factory."
+title: "aaaMove data från ODBC datalager | Microsoft Docs"
+description: "Läs mer om hur toomove data från ODBC data lagras med Azure Data Factory."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: jingwang
-ms.openlocfilehash: 269d9802ca4a6a16dbf9021929fe21104cb431f7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bf96e71da449313b6144bb194205c572d2ca2030
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Flytta data från ODBC datalager med Azure Data Factory
-Den här artikeln förklarar hur du använder aktiviteten kopiera i Azure Data Factory för att flytta data från ett lokalt ODBC-dataarkiv. Den bygger på den [Data Movement aktiviteter](data-factory-data-movement-activities.md) artikel som presenterar en allmän översikt över dataflyttning med copy-aktivitet.
+Den här artikeln förklarar hur toouse hello Kopieringsaktiviteten i Azure Data Factory toomove data från ett lokalt ODBC lagrar. Den bygger på hello [Data Movement aktiviteter](data-factory-data-movement-activities.md) artikel som ger en allmän översikt över dataflyttning hello kopieringsaktiviteten.
 
-Du kan kopiera data från en ODBC-dataarkiv till alla stöds sink-datalagret. En lista över datakällor som stöds som sänkor av kopieringsaktiviteten, finns det [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabell. Data factory stöder för närvarande endast flytta data från en ODBC-datalager till andra databaser, men inte för att flytta data från andra datalager till en ODBC-datalagret. 
+Du kan kopiera data från ett ODBC data store tooany stöds sink dataarkiv. En lista över data lagras som stöds när egenskaperna av hello kopieringsaktiviteten Se hello [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabell. Data factory stöder för närvarande endast flytta data från ett ODBC-lagra tooother datalager, men inte för att flytta data från andra lagrar tooan ODBC data dataarkiv. 
 
 ## <a name="enabling-connectivity"></a>Aktivera anslutning
-Data Factory-tjänsten stöder anslutning till lokala ODBC källor med hjälp av Data Management Gateway. Se [flytta data mellan lokala platser och moln](data-factory-move-data-between-onprem-and-cloud.md) artikeln innehåller information om Data Management Gateway och stegvisa instruktioner om hur du konfigurerar en gateway. Använda gateway för att ansluta till en ODBC-datalagret, även om den finns i en Azure IaaS-VM.
+Data Factory-tjänsten stöder anslutande tooon lokala ODBC källor med hello Data Management Gateway. Se [flytta data mellan lokala platser och moln](data-factory-move-data-between-onprem-and-cloud.md) artikel toolearn om Data Management Gateway och stegvisa instruktioner om hur du konfigurerar hello gateway. Använda hello gateway tooconnect tooan ODBC datalagret även om den finns i en Azure IaaS-VM.
 
-Du kan installera gatewayen på samma lokala dator eller Azure VM som ODBC-datalager. Vi rekommenderar dock att du installerar gateway på en separat dator/Azure IaaS-VM för att undvika resurskonflikter och för bättre prestanda. När du installerar en gateway på en separat dator ska datorn tillgång till datorn med ODBC-datalagret.
+Du kan installera hello gateway på hello samma lokala datorn eller hello Azure VM som hello ODBC-datalager. Vi rekommenderar dock att du installerar hello gateway på en separat dator/Azure IaaS-VM tooavoid resurskonflikter och bättre prestanda. När du installerar hello gateway på en separat dator ska hello datorn kunna tooaccess hello dator med hello ODBC-datalagret.
 
-Förutom Data Management Gateway måste du också installera ODBC-drivrutinen för datalagret på gateway-datorn.
+Förutom hello Data Management Gateway måste du också tooinstall hello ODBC-drivrutinen för hello datalager på hello gateway-datorn.
 
 > [!NOTE]
 > Se [felsökning av problem med gateway](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) tips om hur du felsöker anslutning /-gateway relaterade problem.
@@ -38,32 +38,32 @@ Förutom Data Management Gateway måste du också installera ODBC-drivrutinen f�
 ## <a name="getting-started"></a>Komma igång
 Du kan skapa en pipeline med en kopia-aktivitet som flyttar data från en ODBC-datalagret med hjälp av olika verktyg/API: er.
 
-Det enklaste sättet att skapa en pipeline är att använda den **guiden Kopiera**. Finns [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genomgång om hur du skapar en pipeline med hjälp av guiden Kopiera data.
+hello enklaste sättet toocreate en pipeline är toouse hello **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genomgång om hur du skapar en pipeline med hjälp av guiden för hello kopiera data.
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Azure-portalen**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-mall**, **.NET API**, och **REST API**. Se [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) för stegvisa instruktioner för att skapa en pipeline med en Kopieringsaktivitet. 
+Du kan också använda följande verktyg toocreate en pipeline hello: **Azure-portalen**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-mall** , **.NET API**, och **REST API**. Se [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) för stegvisa instruktioner toocreate en pipeline med en Kopieringsaktivitet. 
 
-Om du använder verktyg eller API: er, kan du utföra följande steg för att skapa en pipeline som flyttar data från ett dataarkiv som källa till ett dataarkiv som mottagare: 
+Om du använder hello verktyg eller API: er kan utföra du hello följande steg toocreate en pipeline som flyttar data från en källdata lagra tooa sink-datalagret: 
 
-1. Skapa **länkade tjänster** att länka inkommande och utgående data lagras till din data factory.
-2. Skapa **datauppsättningar** att representera inkommande och utgående data för kopieringen. 
+1. Skapa **länkade tjänster** toolink indata och utdata lagrar tooyour data factory.
+2. Skapa **datauppsättningar** toorepresent indata och utdata för hello kopieringsåtgärden. 
 3. Skapa en **pipeline** med en kopia-aktivitet som tar en datamängd som indata och en dataset som utdata. 
 
-När du använder guiden skapas JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och pipelinen) automatiskt för dig. När du använder Verktyg/API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av JSON-format.  Ett exempel med JSON-definitioner för Data Factory-entiteter som används för att kopiera data från en ODBC-datalagret finns [JSON-exempel: kopieringsdata från ODBC data lagring till Azure Blob](#json-example-copy-data-from-odbc-data-store-to-azure-blob) i den här artikeln. 
+När du använder guiden hello skapas automatiskt JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och hello pipeline) för dig. När du använder Verktyg/API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av hello JSON-format.  Ett exempel med JSON-definitioner för Data Factory-entiteter som ska använda toocopy data från en ODBC-datalagret finns [JSON-exempel: kopieringsdata från ODBC data lagra tooAzure Blob](#json-example-copy-data-from-odbc-data-store-to-azure-blob) i den här artikeln. 
 
-Följande avsnitt innehåller information om JSON-egenskaper som används för att definiera Data Factory entiteter till ODBC data store:
+hello följande avsnitt innehåller information om JSON-egenskaper används toodefine Data Factory entiteter specifika tooODBC datalager:
 
 ## <a name="linked-service-properties"></a>Länkad tjänstegenskaper
-Följande tabell innehåller beskrivning för JSON-element som är specifika för ODBC länkade tjänsten.
+hello följande tabell innehåller en beskrivning för JSON-element specifika tooODBC länkad tjänst.
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| typ |Egenskapen type måste anges till: **OnPremisesOdbc** |Ja |
-| connectionString |Den icke-autentiseringsuppgifter delen av anslutningssträngen och en valfri krypterade autentiseringsuppgifter. Se exemplen i följande avsnitt. |Ja |
-| autentiseringsuppgifter |Åtkomst autentiseringsuppgifter del av den angivna anslutningssträngen i drivrutinsspecifika egenskapsvärdet format. Exempel ”: Uid =<user ID>; Pwd =<password>; RefreshToken =<secret refresh token>”;. |Nej |
-| AuthenticationType |Typ av autentisering som används för att ansluta till ODBC-datalagret. Möjliga värden är: anonyma och grundläggande. |Ja |
+| typ |hello Typegenskapen måste anges till: **OnPremisesOdbc** |Ja |
+| connectionString |hello-access credential del av hello anslutningssträngen och en valfri krypteras autentiseringsuppgifter. Se exemplen i följande avsnitt hello. |Ja |
+| autentiseringsuppgifter |hello access credential delen av hello anslutningssträngen som angetts i drivrutinsspecifika egenskapsvärdet format. Exempel ”: Uid =<user ID>; Pwd =<password>; RefreshToken =<secret refresh token>”;. |Nej |
+| AuthenticationType |Typ av autentisering används tooconnect toohello ODBC-datalagret. Möjliga värden är: anonyma och grundläggande. |Ja |
 | användarnamn |Ange användarnamnet om du använder grundläggande autentisering. |Nej |
-| lösenord |Ange lösenordet för det användarkonto som du angav för användarnamnet. |Nej |
-| gatewayName |Namnet på den gateway som Data Factory-tjänsten ska använda för att ansluta till ODBC-datalagret. |Ja |
+| lösenord |Ange lösenord för hello-användarkonto som du angav för hello användarnamn. |Nej |
+| gatewayName |Namnet på hello-gateway som hello Data Factory-tjänsten ska använda tooconnect toohello ODBC-datalagret. |Ja |
 
 ### <a name="using-basic-authentication"></a>Med grundläggande autentisering
 
@@ -85,7 +85,7 @@ Följande tabell innehåller beskrivning för JSON-element som är specifika fö
 }
 ```
 ### <a name="using-basic-authentication-with-encrypted-credentials"></a>Med grundläggande autentisering och krypterade autentiseringsuppgifter
-Du kan kryptera autentiseringsuppgifterna med den [ny AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) (version 1.0 av Azure PowerShell) cmdlet eller [ny AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 eller tidigare version av Azure PowerShell).  
+Du kan kryptera hello autentiseringsuppgifterna med hjälp av hello [ny AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) (version 1.0 av Azure PowerShell) cmdlet eller [ny AzureDataFactoryEncryptValue](https://msdn.microsoft.com/library/dn834940.aspx) (0,9 eller tidigare version av hello Azure PowerShell).  
 
 ```json
 {
@@ -124,30 +124,30 @@ Du kan kryptera autentiseringsuppgifterna med den [ny AzureRMDataFactoryEncryptV
 
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
-En fullständig lista över egenskaper som är tillgängliga för att definiera datauppsättningarna & avsnitt finns i [skapa datauppsättningar](data-factory-create-datasets.md) artikel. Avsnitt som struktur, tillgänglighet och princip på en datamängd JSON är liknande för alla typer av dataset (Azure SQL Azure blob, Azure-tabellen, osv.).
+En fullständig lista över egenskaper som är tillgängliga för att definiera datauppsättningarna & avsnitt finns hello [skapa datauppsättningar](data-factory-create-datasets.md) artikel. Avsnitt som struktur, tillgänglighet och princip på en datamängd JSON är liknande för alla typer av dataset (Azure SQL Azure blob, Azure-tabellen, osv.).
 
-Den **typeProperties** avsnitt är olika för varje typ av dataset och innehåller information om placeringen av data i datalagret. TypeProperties avsnittet för dataset av typen **RelationalTable** (som innefattar ODBC dataset) har följande egenskaper
+Hej **typeProperties** avsnitt är olika för varje typ av dataset och ger information om hello platsen för hello data i datalagret hello. Hej typeProperties avsnittet för dataset av typen **RelationalTable** (som innefattar ODBC dataset) har hello följande egenskaper
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| tableName |Namnet på tabellen i ODBC-datakällan. |Ja |
+| tableName |Namnet på hello tabell i hello ODBC-datalagret. |Ja |
 
 ## <a name="copy-activity-properties"></a>Kopiera egenskaper för aktivitet
-En fullständig lista över avsnitt & egenskaper som är tillgängliga för att definiera aktiviteter finns i [skapar Pipelines](data-factory-create-pipelines.md) artikel. Egenskaper som namn, beskrivning, ingående och utgående tabeller och principer är tillgängliga för alla typer av aktiviteter.
+En fullständig lista över avsnitt & egenskaper som är tillgängliga för att definiera aktiviteter finns hello [skapar Pipelines](data-factory-create-pipelines.md) artikel. Egenskaper som namn, beskrivning, ingående och utgående tabeller och principer är tillgängliga för alla typer av aktiviteter.
 
-Egenskaper som är tillgängliga i den **typeProperties** avsnitt i aktiviteten å andra sidan varierar med varje aktivitetstyp. För Kopieringsaktivitet kan variera de beroende på vilka typer av datakällor och sänkor.
+Egenskaper som är tillgängliga i hello **typeProperties** avsnittet hello aktivitet på hello andra sidan varierar med varje aktivitetstyp. För Kopieringsaktivitet kan varierar de beroende på hello typer av datakällor och sänkor.
 
-I en Kopieringsaktivitet när datakällan är av typen **RelationalSource** (vilket innefattar ODBC), följande egenskaper finns i avsnittet typeProperties:
+I en Kopieringsaktivitet när datakällan är av typen **RelationalSource** (vilket innefattar ODBC), hello följande egenskaper finns i avsnittet typeProperties:
 
 | Egenskap | Beskrivning | Tillåtna värden | Krävs |
 | --- | --- | --- | --- |
-| DocumentDB |Använd anpassad fråga för att läsa data. |SQL-sträng. Till exempel: Välj * från mytable prefix. |Ja |
+| DocumentDB |Använda hello anpassad fråga tooread data. |SQL-sträng. Till exempel: Välj * från mytable prefix. |Ja |
 
 
-## <a name="json-example-copy-data-from-odbc-data-store-to-azure-blob"></a>JSON-exempel: kopieringsdata från ODBC data lagring till Azure-Blob
-Det här exemplet innehåller definitioner av JSON som du kan använda för att skapa en pipeline med hjälp av [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md) eller [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Den visar hur du kopierar data från en ODBC-datakällan till ett Azure Blob Storage. Dock datan kan kopieras till någon av sänkor anges [här](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med hjälp av aktiviteten kopiera i Azure Data Factory.
+## <a name="json-example-copy-data-from-odbc-data-store-tooazure-blob"></a>JSON-exempel: kopieringsdata från ODBC data lagra tooAzure Blob
+Det här exemplet innehåller definitioner av JSON som du kan använda toocreate en pipeline med hjälp av [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md) eller [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Den visar hur toocopy från en ODBC-datakällan tooan Azure Blob Storage. Data kan dock vara kopierade tooany av hello sänkor anges [här](data-factory-data-movement-activities.md#supported-data-stores-and-formats) med hello Kopieringsaktiviteten i Azure Data Factory.
 
-Exemplet har följande data factory enheter:
+hello exemplet har hello följande data factory-enheter:
 
 1. En länkad tjänst av typen [OnPremisesOdbc](#linked-service-properties).
 2. En länkad tjänst av typen [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
@@ -155,11 +155,11 @@ Exemplet har följande data factory enheter:
 4. Utdata [dataset](data-factory-create-datasets.md) av typen [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 5. En [pipeline](data-factory-create-pipelines.md) med Kopieringsaktiviteten som använder [RelationalSource](#copy-activity-properties) och [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Exemplet kopierar data från ett frågeresultat i ett ODBC-datalager till en blobb varje timme. JSON-egenskaper som används i exemplen beskrivs i exemplen i följande avsnitt.
+hello exemplet kopierar data från ett frågeresultat i ett ODBC data store tooa blob varje timme. hello JSON egenskaper som används i exemplen beskrivs i hello-exempel i följande avsnitt.
 
-Som ett första steg bör du ställa in data management gateway. Anvisningarna är i den [flytta data mellan lokala platser och moln](data-factory-move-data-between-onprem-and-cloud.md) artikel.
+Som ett första steg bör du ställa in hello data management gateway. hello anvisningar finns i hello [flytta data mellan lokala platser och moln](data-factory-move-data-between-onprem-and-cloud.md) artikel.
 
-**ODBC länkade tjänsten** det här exemplet använder grundläggande autentisering. Se [ODBC länkade tjänsten](#linked-service-properties) avsnittet för olika typer av autentisering som du kan använda.
+**ODBC länkade tjänsten** det här exemplet använder hello grundläggande autentisering. Se [ODBC länkade tjänsten](#linked-service-properties) avsnittet för olika typer av autentisering som du kan använda.
 
 ```json
 {
@@ -195,9 +195,9 @@ Som ett första steg bör du ställa in data management gateway. Anvisningarna �
 
 **ODBC-inkommande dataset**
 
-Exemplet förutsätter att du har skapat en tabell ”mytable” som prefix i en ODBC-databas och innehåller en kolumn med namnet ”timestampcolumn” för tid series-data.
+hello exemplet förutsätter att du har skapat en tabell ”mytable” som prefix i en ODBC-databas och innehåller en kolumn med namnet ”timestampcolumn” för tid series-data.
 
-Inställningen ”externa”: ”true” informerar Data Factory-tjänsten att datamängden är extern till data factory och inte tillverkas av en aktivitet i datafabriken.
+Inställningen ”externa”: ”true” informerar hello Data Factory-tjänsten som hello dataset är externa toohello data factory och inte tillverkas av en aktivitet i hello data factory.
 
 ```json
 {
@@ -225,7 +225,7 @@ Inställningen ”externa”: ”true” informerar Data Factory-tjänsten att d
 
 **Azure Blob utdatauppsättningen**
 
-Data skrivs till en ny blob varje timme (frekvens: timme, intervall: 1). Sökvägen till mappen för blobben utvärderas dynamiskt baserat på starttiden för den sektor som bearbetas. Mappsökvägen använder år, månad, dag och timmar delar av starttiden.
+Data skrivs tooa nya blob varje timme (frekvens: timme, intervall: 1). hello mappsökväg för hello blob utvärderas dynamiskt baserat på hello starttiden för hello-segment som bearbetas. hello mappsökväg använder år, månad, dag och timmar delar av hello starttid.
 
 ```json
 {
@@ -286,7 +286,7 @@ Data skrivs till en ny blob varje timme (frekvens: timme, intervall: 1). Sökvä
 
 **Kopiera aktivitet i en pipeline med ODBC-datakällan (RelationalSource) och Blob sink (BlobSink)**
 
-Pipelinen innehåller en kopia-aktivitet som är konfigurerad för att använda dessa indata och utdata-datauppsättningar och är schemalagd att köras varje timme. I pipeline-JSON-definitionen av **källa** är inställd på **RelationalSource** och **sink** är inställd på **BlobSink**. SQL-frågan som angetts för den **frågan** egenskapen väljer vilka data under den senaste timmen att kopiera.
+hello pipelinen innehåller en kopia-aktivitet som är konfigurerade toouse dessa indata och utdata-datauppsättningar och schemalagda toorun varje timme. I hello pipeline JSON-definitionen hello **källa** typ har angetts för**RelationalSource** och **sink** typ har angetts för**BlobSink**. hello SQL-frågan som angetts för hello **frågan** egenskapen väljer hello data i hello tidigare timme toocopy.
 
 ```json
 {
@@ -334,21 +334,21 @@ Pipelinen innehåller en kopia-aktivitet som är konfigurerad för att använda 
 }
 ```
 ### <a name="type-mapping-for-odbc"></a>Mappning för ODBC
-Som anges i den [data movement aktiviteter](data-factory-data-movement-activities.md) artikeln kopieringsaktiviteten utför automatisk konverteringar från källtyper att registrera typer med följande metod i två steg:
+Som anges i hello [data movement aktiviteter](data-factory-data-movement-activities.md) artikeln kopieringsaktiviteten utför automatisk konverteringar från källan typer toosink typer med hello följande två sätt:
 
-1. Konvertera från interna källtyper till .NET-typ
-2. Konvertera från .NET-typ till interna mottagare typ.
+1. Konvertera från inbyggda typer too.NET källtypen
+2. Konvertera från .NET typen toonative Mottagartypen
 
-När du flyttar data från ODBC datalager ODBC-datatyper är mappade till .NET-typer som anges i den [ODBC mappningar av datatyper](https://msdn.microsoft.com/library/cc668763.aspx) avsnittet.
+När du flyttar data från ODBC datalager ODBC-datatyper är mappade too.NET typer som anges i hello [ODBC mappningar av datatyper](https://msdn.microsoft.com/library/cc668763.aspx) avsnittet.
 
-## <a name="map-source-to-sink-columns"></a>Karta källan till mottagare för kolumner
-Mer information om mappning kolumner i datauppsättningen källan till kolumner i datauppsättning mottagare, se [mappa dataset kolumner i Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-toosink-columns"></a>Mappa källkolumner toosink
+toolearn mappning tabellkolumner i källan dataset toocolumns i sink dataset finns [mappa dataset kolumner i Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="repeatable-read-from-relational-sources"></a>Upprepbar läsning från relationella källor
-Tänk på att undvika oväntade resultat repeterbarhet när kopiering av data från relationella data lagras. I Azure Data Factory, kan du köra en sektor manuellt. Du kan också konfigurera i principen för en dataset så att ett segment som körs när ett fel uppstår. När ett segment körs på något sätt, måste du kontrollera att samma data läses oavsett hur många gånger ett segment körs. Se [Repeatable läsa från relationella källor](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+När du kopierar data från relationella datalager, Kom ihåg tooavoid repeterbarhet oönskade resultat. I Azure Data Factory, kan du köra en sektor manuellt. Du kan också konfigurera i principen för en dataset så att ett segment som körs när ett fel uppstår. När ett segment körs på antingen sätt måste toomake att som hello samma data läses oavsett hur många gånger ett segment körs. Se [Repeatable läsa från relationella källor](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
 ## <a name="ge-historian-store"></a>GE Historian store
-Du skapar en ODBC-länkad tjänst att länka en [GE Proficy Historian (nu GE Historian)](http://www.geautomation.com/products/proficy-historian) datalager till en Azure data factory som visas i följande exempel:
+Du skapar en ODBC-länkad tjänst toolink en [GE Proficy Historian (nu GE Historian)](http://www.geautomation.com/products/proficy-historian) tooan Azure data factory datalager som visas i följande exempel hello:
 
 ```json
 {
@@ -358,7 +358,7 @@ Du skapar en ODBC-länkad tjänst att länka en [GE Proficy Historian (nu GE His
         "type": "OnPremisesOdbc",
         "typeProperties":
         {
-            "connectionString": "DSN=<name of the GE Historian store>",
+            "connectionString": "DSN=<name of hello GE Historian store>",
             "gatewayName": "<gateway name>",
             "authenticationType": "Basic",
             "userName": "<user name>",
@@ -368,24 +368,24 @@ Du skapar en ODBC-länkad tjänst att länka en [GE Proficy Historian (nu GE His
 }
 ```
 
-Installera Data Management Gateway på en lokal dator och registrera gatewayen med portalen. Gateway som har installerats på datorn lokalt använder ODBC-drivrutin för GE Historian för att ansluta till datalagret GE Historian. Därför installera drivrutinen om den redan inte är installerad på gateway-datorn. Se [aktivera anslutningen](#enabling-connectivity) information.
+Installera Data Management Gateway på en lokal dator och registrera hello gateway med hello-portalen. hello gateway som har installerats på datorn lokalt använder hello ODBC-drivrutinen för att GE Historian tooconnect toohello GE Historian datalagret. Installera drivrutinen för hello därför om det redan inte är installerad på hello gateway-datorn. Se [aktivera anslutningen](#enabling-connectivity) information.
 
-Innan du använder arkivet GE Historian i en Data Factory-lösning bör du kontrollera om gatewayen kan ansluta till datalagret med hjälp av anvisningarna i nästa avsnitt.
+Innan du använder hello GE Historian lagra i en Data Factory-lösning kan du kontrollera om hello gateway kan ansluta toohello datalagret enligt anvisningarna i nästa avsnitt av hello.
 
-Läs artikeln från början en detaljerad översikt av med hjälp av ODBC data lagras som källa för datalager i en kopieringsåtgärd.  
+Läs hello artikel från början hello en detaljerad översikt av med hjälp av ODBC data lagras som källa för datalager i en kopieringsåtgärd.  
 
 ## <a name="troubleshoot-connectivity-issues"></a>Felsökning av problem med nätverksanslutningen
-Felsökning av anslutningsproblem med använder den **diagnostik** fliken **Data Management Gateway Configuration Manager**.
+tootroubleshoot anslutningsproblem använda hello **diagnostik** fliken **Data Management Gateway Configuration Manager**.
 
-1. Starta **Data Management Gateway Configuration Manager**. Du kan antingen köra ”C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe” direkt (eller) sökning för **Gateway** att hitta en länk till **Microsoft Data Management Gateway** program som visas i följande bild.
+1. Starta **Data Management Gateway Configuration Manager**. Du kan antingen köra ”C:\Program Files\Microsoft Data Management Gateway\1.0\Shared\ConfigManager.exe” direkt (eller) sökning för **Gateway** toofind en länk för**Microsoft Data Management Gateway** program som visas i följande bild hello.
 
     ![Sök-gateway](./media/data-factory-odbc-connector/search-gateway.png)
-2. Växla till den **diagnostik** fliken.
+2. Växla toohello **diagnostik** fliken.
 
     ![Gatewaydiagnostik](./media/data-factory-odbc-connector/data-factory-gateway-diagnostics.png)
-3. Välj den **typen** av data lagras (länkade tjänst).
-4. Ange **autentisering** och ange **autentiseringsuppgifter** (eller) ange **anslutningssträngen** som används för att ansluta till datalagret.
-5. Klicka på **Anslutningstestet** att testa anslutningen till datalagret.
+3. Välj hello **typen** av data lagras (länkade tjänst).
+4. Ange **autentisering** och ange **autentiseringsuppgifter** (eller) ange **anslutningssträngen** som har använt tooconnect toohello datalagret.
+5. Klicka på **Testanslutningen** tootest hello anslutning toohello datalagret.
 
 ## <a name="performance-and-tuning"></a>Prestanda och finjustering
-Se [kopiera aktivitet prestanda och justera guiden](data-factory-copy-activity-performance.md) vill veta mer om viktiga faktorer som påverkan prestanda för flytt av data (Kopieringsaktiviteten) i Azure Data Factory och olika sätt att optimera den.
+Se [kopiera aktivitet prestanda och justera guiden](data-factory-copy-activity-performance.md) toolearn om nyckeln faktorer som påverkan prestanda för flytt av data (Kopieringsaktiviteten) i Azure Data Factory och olika sätt toooptimize den.

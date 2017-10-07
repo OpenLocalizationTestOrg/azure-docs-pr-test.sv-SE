@@ -1,5 +1,5 @@
 ---
-title: "Land/Region hierarki som används av Azure Traffic Manager geografiska Routning | Microsoft Docs"
+title: "aaaCountry/Region hierarki som används av Azure Traffic Manager geografiska Routning | Microsoft Docs"
 description: "Den här artikeln innehåller Land/Region hierarki som används av Azure Traffic Manager geografiska Routning"
 services: traffic-manager
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 93db099e9e25856e13c398c4a03a5728d178e5dd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d09fc896951fa1086822d69316468e7a98861591
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Land/Region hierarki som används av Azure Traffic Manager för geografisk trafikroutningsmetod
 
-Den här artikeln visar en lista över de länder och regioner som används av den **geografiska** trafikroutningsmetoden i Azure Traffic Manager. Du kan även hämta denna information via programmering genom att anropa den [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
+Den här artikeln innehåller hello länder och regioner som används av hello **geografiska** trafikroutningsmetoden i Azure Traffic Manager. Du kan även hämta denna information via programmering genom att anropa den [Azure Traffic Manager REST API](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
 - WORLD(World)
 
@@ -384,7 +384,7 @@ Den här artikeln visar en lista över de länder och regioner som används av d
 
             - US-WY(Wyoming)
 
-        - VC (Saint Vincent och Grenadinerna)
+        - VC (Saint Vincent och Grenadinerna för hello)
 
         - VG (Brittiska Jungfruöarna)
 

@@ -1,6 +1,6 @@
 ---
-title: "Skapa mellanlagringsmiljöer för web apps i Azure App Service | Microsoft Docs"
-description: "Lär dig använda stegvis publicering för web apps i Azure App Service."
+title: "aaaSet in mellanlagringsmiljöer för web apps i Azure App Service | Microsoft Docs"
+description: "Lär dig hur toouse mellanlagrad publicering för web apps i Azure App Service."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -15,66 +15,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ca27c55eaaceb3109b1450c550330dfc416fdf55
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 338424100a20bf823323313fb6699e439f367421
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Skapa mellanlagringsmiljöer i Azure App Service
 <a name="Overview"></a>
 
-När du distribuerar ditt webbprogram, webbprogram på Linux, mobila serverdel och API-appen [Apptjänst](http://go.microsoft.com/fwlink/?LinkId=529714), du kan distribuera till en separat distributionsplats i stället för standard produktionsplatsen när den körs i den **Standard** eller **Premium** läge för App Service-plan. Distributionsplatser är faktiskt live appar med sina egna värdnamn. Appen innehåll och konfigurationer element kan växlas mellan två distributionsplatser, inklusive produktionsplatsen. Distribuera programmet till en distributionsplats har följande fördelar:
+När du distribuerar ditt webbprogram, webbprogram på Linux, mobila serverdel och API-app för[Apptjänst](http://go.microsoft.com/fwlink/?LinkId=529714), du kan distribuera tooa separat distributionsplats i stället för hello standard produktionsplatsen vid körning i hello **Standard**eller **Premium** läge för App Service-plan. Distributionsplatser är faktiskt live appar med sina egna värdnamn. Appen innehåll och konfigurationer element kan växlas mellan två distributionsplatser, inklusive hello produktionsplatsen. Distribuera ditt program tooa distributionsplatsen har hello följande fördelar:
 
-* Du kan verifiera app-ändringar i en distribution mellanlagringsplatsen innan växling med produktionsplatsen.
-* Först distribuera en app till en plats och växla till produktion säkerställer att alla instanser av facket varmkörts innan som ska växlas över till produktion. Detta eliminerar avbrott när du distribuerar din app. Trafik för omdirigering är sömlös och inga begäranden tas bort på grund av byte åtgärder. Hela arbetsflödet kan automatiseras genom att konfigurera [automatiskt växla](#Auto-Swap) när före växlingen verifiering inte behövs.
-* Efter en växling har på plats med tidigare mellanlagrade appen nu tidigare produktionsprogrammet. Om ändringarna växlas över till produktionsplatsen är inte som du förväntade dig, kan du utföra samma växlingen direkt för att få igång ”senaste kända fungerande webbplatsen” tillbaka.
+* Du kan verifiera app-ändringar i en distribution mellanlagringsplatsen innan växling med hello produktionsplatsen.
+* Distribuera en app tooa plats först och växla till produktion säkerställer att alla instanser av hello fack varmkörts innan som ska växlas över till produktion. Detta eliminerar avbrott när du distribuerar din app. hello trafik omdirigering sker sömlös och inga begäranden tas bort på grund av byte åtgärder. Hela arbetsflödet kan automatiseras genom att konfigurera [automatiskt växla](#Auto-Swap) när före växlingen verifiering inte behövs.
+* Efter en växling har hello fack med tidigare mellanlagrade appen nu hello tidigare produktionsprogrammet. Om hello växlas över till hello produktionsplatsen ändras inte som väntat, kan du utföra hello samma Växla omedelbart tooget ”senaste kända fungerande webbplatsen” tillbaka.
 
-Varje App Service-plan läge stöder olika antal distributionsplatser. Ta reda på antalet fack appens läge stöder, se [priser för Apptjänst](https://azure.microsoft.com/pricing/details/app-service/).
+Varje App Service-plan läge stöder olika antal distributionsplatser. toofind hello antal fack appens läge stöder, se [priser för Apptjänst](https://azure.microsoft.com/pricing/details/app-service/).
 
-* När appen har flera platser, kan du inte ändra läge.
+* När appen har flera platser, kan du inte ändra hello-läge.
 * Skalning är inte tillgänglig för icke-produktoionsplats.
-* Länkade resurshantering stöds inte för icke-produktoionsplats. I den [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) , du kan undvika den här potentiella effekten på en produktionsplatsen genom att tillfälligt flytta icke-produktionsplatsen till ett annat läge för App Service-plan. Observera att icke-produktionsplatsen måste återigen delar samma läge med produktionsplatsen innan du kan byta ut de två platserna.
+* Länkade resurshantering stöds inte för icke-produktoionsplats. I hello [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) , du kan undvika den här potentiella effekten på en produktionsplatsen genom att tillfälligt flytta hello icke produktionsplatsen tooa annat App Service-plan läge. Observera att hello icke-produktionsplatsen igen måste dela hello samma läge med hello produktionsplatsen innan du kan växla hello två platser.
 
 <a name="Add"></a>
 
 ## <a name="add-a-deployment-slot"></a>Lägga till en distributionsplats
-Appen måste köras den **Standard** eller **Premium** läge för att du vill aktivera flera distributionsplatser.
+hello app måste köras i hello **Standard** eller **Premium** läge i ordning för du tooenable flera distributionsplatser.
 
-1. I den [Azure Portal](https://portal.azure.com/), öppna appens [resursbladet](../azure-resource-manager/resource-group-portal.md#manage-resources).
-2. Välj den **distributionsfack** alternativ och klicka sedan på **Lägg till plats**.
+1. I hello [Azure Portal](https://portal.azure.com/), öppna appens [resursbladet](../azure-resource-manager/resource-group-portal.md#manage-resources).
+2. Välj hello **distributionsfack** alternativ och klicka sedan på **Lägg till plats**.
    
     ![Lägg till en ny distributionsplats][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > Om appen inte redan är i den **Standard** eller **Premium** läge, visas ett meddelande som anger stöds lägen för att aktivera stegvis publicering. Nu har du möjlighet att välja **uppgradera** och navigera till den **skala** fliken i din app innan du fortsätter.
+   > Om hello app inte är redan i hello **Standard** eller **Premium** läge, visas ett meddelande som anger hello stöds lägen för att aktivera stegvis publicering. Nu har du hello alternativet tooselect **uppgradera** och navigera toohello **skala** fliken i din app innan du fortsätter.
    > 
    > 
-3. I den **lägga till en plats** bladet namnge facket och välja om du vill klona app konfigurationen från en annan befintlig distributionsplatsen. Klicka på bockmarkeringen för att fortsätta.
+3. I hello **lägga till en plats** bladet namnge hello fack och välj om tooclone appkonfiguration från en annan befintlig distributionsplatsen. Klicka på hello markerat toocontinue.
    
     ![Konfigurationskälla][ConfigurationSource1]
    
-    Första gången du lägger till en plats kan du bara har två alternativ: klona konfigurationen från standard-plats i produktion eller inte alls.
-    När du har skapat flera platser, kommer du att kunna klona konfigurationen från en annan plats än den i produktion:
+    hello första gången som du lägger till en plats du bara har två alternativ: klona konfigurationen från hello standard plats i produktion eller inte alls.
+    När du har skapat flera platser, kommer du att kunna tooclone konfigurationen från en plats än hello något i produktion:
    
     ![Konfiguration av datakällor][MultipleConfigurationSources]
-4. I resursbladet för din app, klickar du på **distributionsfack**, klicka på en distributionsplats för att öppna den platsens resursbladet med en uppsättning mått och konfiguration precis som alla andra appar. Namnet på platsen visas längst upp på bladet för att påminna dig om att du tittar på distributionsplatsen.
+4. I resursbladet för din app, klickar du på **distributionsfack**, klicka på en distribution fack tooopen som sätts resursbladet med en uppsättning mått och konfiguration precis som alla andra appar. hello hello fack visas överst hello i hello bladet tooremind du du visar hello distributionsplatsen.
    
     ![Distribution fack rubrik][StagingTitle]
-5. Klicka på app-URL i bladet för den platsen. Lägg märke till distributionsplatsen har sin egen värdnamn och är också en live-app. Om du vill begränsa offentlig åtkomst till distributionsplatsen, se [App Service Web App – blockera Webbåtkomst till icke-produktion distributionsplatser](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
+5. Klicka på hello app-URL i hello fack-bladet. Observera hello distributionsplatsen har sin egen värdnamn och är också en live-app. toolimit offentlig åtkomst toohello distributionsplatsen, se [App Service Web App – blockera web access toonon produktion distributionsplatser](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/).
 
-Det finns inget innehåll efter distributionen fack har skapats. Du kan distribuera till facket från en annan databas gren eller en helt annan databas. Du kan också ändra platsens konfiguration. Använd Publicera profil eller distribution av autentiseringsuppgifter som är kopplade till distributionsplatsen för uppdateringar av innehållet.  Du kan till exempel [publicera till den här platsen med git](app-service-deploy-local-git.md).
+Det finns inget innehåll efter distributionen fack har skapats. Du kan distribuera toohello plats från en annan databas gren eller en helt annan databas. Du kan också ändra hello platskonfigurationen. Använd hello Publicera profil eller distribution av autentiseringsuppgifterna som associeras med hello distributionsplatsen för uppdateringar av innehållet.  Du kan till exempel [publicera toothis fack med git](app-service-deploy-local-git.md).
 
 <a name="AboutConfiguration"></a>
 
 ## <a name="configuration-for-deployment-slots"></a>Konfigurationen för distributionsplatser
-När du klonar konfigurationen från en annan distributionsplats kan klonade konfigurationen redigeras. Dessutom följer vissa konfigurationselement innehållet över växlingsutrymme (inte port specifika) medan andra konfigurationselement behålls på samma plats efter en växling (specifika-port). Följande tabell visar den konfiguration som ändras när du växlar platser.
+När du klonar konfigurationen från en annan distributionsplats kan hello klonade konfiguration redigeras. Dessutom följer vissa konfigurationselement hello innehåll över växlingsutrymme (inte port specifika) medan andra konfigurationselement behålls i hello samma fack efter en växling (specifika-port). hello visar följande lista hello-konfiguration som ändras när du växlar platser.
 
 **Inställningar som bytts**:
 
 * Allmänna inställningar – till exempel framework-version, 32/64-bitars Web sockets
-* App-inställningar (kan konfigureras för att hålla dig till en plats)
-* Anslutningssträngar (kan konfigureras för att hålla dig till en plats)
+* App-inställningar (kan vara konfigurerade toostick tooa plats)
+* Anslutningssträngar (kan vara konfigurerade toostick tooa plats)
 * Hanterarmappningar
 * Inställningar för övervakning och diagnostik
 * WebJobs innehåll
@@ -87,91 +87,91 @@ När du klonar konfigurationen från en annan distributionsplats kan klonade kon
 * Skalinställningarna
 * WebJobs planeringsprogram
 
-Om du vill konfigurera en app inställningen eller anslutningssträngen fästa till en plats (inte växlas) att komma åt den **programinställningar** bladet för en viss plats, välj sedan den **fack inställningen** för konfigurationen element som ska behålla på plats. Observera att markera en konfigurationselement som fack specifika har effekten av att etablera att element som inte kan över alla distributionsplatser som är associerat med appen.
+tooconfigure en app inställning eller ett anslutningsfel sträng toostick tooa plats (inte växlas) åtkomst hello **programinställningar** bladet för en viss plats, och sedan väljer hello **fack inställningen** för hello konfigurationselement som ska behålla hello plats. Observera att markera en konfigurationselement som fack specifika påverkar hello för att fastställa att element som inte kan över alla hello-distributionsplatser som är associerade med hello app.
 
 ![Platsinställningar][SlotSettings]
 
 <a name="Swap"></a>
 
 ## <a name="swap-deployment-slots"></a>Växla distributionsplatser 
-Du kan växla distributionsplatser i den **översikt** eller **distributionsplatser** vy över resursbladet för din app.
+Du kan växla distributionsplatser i hello **översikt** eller **distributionsplatser** vy över resursbladet för din app.
 
 > [!IMPORTANT]
-> Kontrollera att alla icke-specifika platsinställningarna konfigureras exakt som du vill ha i mål-växlingen innan du byter en app från en distributionsplats i produktionen.
+> Innan du byter en app från en distributionsplats till produktion, se till att alla icke-specifika platsinställningar konfigureras precis som du vill toohave i hello växlingen mål.
 > 
 > 
 
-1. Om du vill växla distributionsplatser, klickar du på den **växlingen** i kommandofältet appen eller i kommandofältet för en distributionsplats.
+1. tooswap distributionsplatser, klicka på hello **växla** i hello kommandofältet hello appen eller i hello kommandofältet för en distributionsplats.
    
     ![Växla knapp][SwapButtonBar]
 
-2. Kontrollera att växlingen käll- och växling är korrekt inställda. Växlingen målet är vanligtvis produktionsplatsen. Klicka på **OK** att slutföra åtgärden. När åtgärden har slutförts har på distributionsplatser bytts.
+2. Kontrollera att växlingen hello riktade käll- och växling är korrekt. Hello växlingen mål är vanligtvis hello produktionsplatsen. Klicka på **OK** toocomplete hello igen. Hello distributionsplatser har bytts när hello-åtgärden har slutförts.
 
     ![Fullständig växling](./media/web-sites-staged-publishing/SwapImmediately.png)
 
-    För den **växlingen med preview** växla typ, se [växlingen med preview (flera fasen swap)](#Multi-Phase).  
+    För hello **växlingen med preview** växla typ, se [växlingen med preview (flera fasen swap)](#Multi-Phase).  
 
 <a name="Multi-Phase"></a>
 
 ## <a name="swap-with-preview-multi-phase-swap"></a>Växla med förhandsgranskning (flera fasen swap)
 
 Växlingen med Förhandsgranska eller flera fasen växlingen förenkla verifieringen av fack konfigurationselement, till exempel anslutningssträngar.
-För verksamhetskritiska arbetsbelastningar du vill validera som appen fungerar som förväntat när den produktionsplatsen konfigurationen tillämpas och du måste utföra sådana validering *innan* appen växlas till produktionen. Växlingen med preview är vad du behöver.
+För verksamhetskritiska arbetsbelastningar, som du vill toovalidate som hello appen fungerar som förväntat när hello produktion platsens konfiguration används och du måste utföra dessa verifiering *innan* hello app växlas till produktionen. Växlingen med preview är vad du behöver.
 
 > [!NOTE]
 > Växlingen med preview stöds inte i web apps i Linux.
 
-När du använder den **växla med förhandsgranskning** alternativet (se [växla distributionsplatser](#Swap)), Apptjänst innehåller följande:
+När du använder hello **växla med förhandsgranskning** alternativet (se [växla distributionsplatser](#Swap)), Apptjänst hello följande:
 
-- Behåller destinationsplatsen oförändrade så att befintliga arbetsbelastningen på platsen (t.ex. produktion) inte påverkas.
-- Gäller konfigurationselement för destinationsplatsen till källplatsen, inklusive anslutningssträngar för plats-specifika och app-inställningar.
-- Startar om arbetsprocesser på källplatsen med hjälp av dessa ovannämnda konfigurationselement.
-- När du har slutfört växlingen: flyttar Förproduktion warmed upp källplatsen till destinationsplatsen. Destinationsplatsen flyttas till källplatsen som en manuell växling.
-- När du avbryter växlingen: tillämpa konfigurationselement för källplatsen till källplatsen.
+- Behåller hello mål fack oförändrat så befintliga arbetsbelastningen på platsen (t.ex. produktion) påverkas inte.
+- Tillämpar hello konfigurationselement för hello fack toohello källa destinationsplatsen, inklusive hello fack-specifika anslutningssträngar och app-inställningar.
+- Startar om hello arbetsprocesser på hello källplatsen med hjälp av dessa ovannämnda konfigurationselement.
+- När du har slutfört hello växlingsutrymme: flyttar hello Förproduktion warmed upp källplatsen till hello destinationsplatsen. hello destinationsplatsen flyttas till hello källplatsen som en manuell växling.
+- När du avbryter hello växlingsutrymme: tillämpa hello konfigurationselement för hello fack toohello källa källplatsen.
 
-Du kan förhandsgranska exakt hur appen fungerar med konfigurationen på destinationsplatsen. När du har slutfört verifieringen slutföra växling i ett separat steg. Det här steget har lagts till fördelen med att källplatsen är redan varmkörts med önskad konfiguration och klienter får inte någon avbrottstid.  
+Du kan förhandsgranska exakt hur hello app att fungera med hello destinationsplatsens konfiguration. När du slutför verifieringen Slutför hello växling i ett separat steg. Det här steget har hello fördel att hello källplatsen är redan varmkörts med hello önskad konfiguration och klienter får inte någon avbrottstid.  
 
-Prover för Azure PowerShell-cmdlets för flera fasen växlingen ingår i Azure PowerShell-cmdlets för distribution av platser.
+Prover för hello Azure PowerShell-cmdlets som är tillgängliga för flera fasen växlingen ingår i hello Azure PowerShell-cmdlets för distribution av platser.
 
 <a name="Auto-Swap"></a>
 
 ## <a name="configure-auto-swap"></a>Konfigurera automatisk växling
-Automatisk växling förenklar DevOps-scenarier där du vill distribuera appen med noll kallstart och driftstopp kontinuerligt för slutkunder av appen. När en distributionsplats konfigureras för automatisk växling till produktion, varje gång du push-kod-uppdatering till platsen, Apptjänst automatiskt att växla som appen till produktion när det redan har varmkörts på plats.
+Automatisk växling förenklar DevOps-scenarier där du vill att toocontinuously distribuera din app med noll kallstart och driftstopp för slutanvändare och kunder hello-appen. När en distributionsplats konfigureras för automatisk växling till produktion, varje gång du överför din kod uppdatering toothat fack ska Apptjänst automatiskt växla hello app till produktion när det redan har varmkörts hello plats.
 
 > [!IMPORTANT]
-> När du aktiverar automatisk växling för en plats, kontrollera att platskonfigurationen är exakt den konfiguration som är avsedda för mål-plats (vanligtvis produktionsplatsen).
+> När du aktiverar automatisk växling för en plats, kontrollera hello platskonfigurationen exakt hello-konfiguration som är avsedd för hello mål fack (vanligtvis hello produktionsplatsen).
 > 
 > 
 
 > [!NOTE]
 > Automatisk växling stöds inte i web apps i Linux.
 
-Det är enkelt att konfigurera automatisk växling för en plats. Följ stegen nedan:
+Det är enkelt att konfigurera automatisk växling för en plats. Följ hello stegen nedan:
 
 1. I **Distributionsfack**, Välj en produktionsplatsen och välj **programinställningar** i resursbladet för den platsen.  
    
     ![][Autoswap1]
-2. Välj **på** för **automatiskt växla**, väljer önskat mål-plats i **automatiskt växla fack**, och klicka på **spara** i kommandofältet. Kontrollera konfigurationen för platsen är exakt den konfiguration som är avsedda för mål-plats.
+2. Välj **på** för **automatiskt växla**väljer hello önskat mål plats i **automatiskt växla fack**, och klicka på **spara** i hello kommandofältet. Kontrollera att har konfigurationen för hello fack exakt hello avsedd för hello mål plats.
    
-    Den **meddelanden** fliken blinkar en grön **lyckade** när åtgärden har slutförts.
+    Hej **meddelanden** fliken blinkar en grön **lyckade** när hello åtgärden är klar.
    
     ![][Autoswap2]
    
    > [!NOTE]
-   > Om du vill testa automatisk växling för din app kan du först välja en icke-produktion mål plats i **automatiskt växla fack** att bekanta dig med funktionen.  
+   > tootest automatiskt växla för din app, kan du först välja en plats för icke-produktion mål i **automatiskt växla fack** toobecome bekant med hello-funktionen.  
    > 
    > 
-3. Köra en kod push till den distributionsplatsen. Automatisk växling sker efter en kort tid och uppdateringen avspeglas på mål-platsens URL.
+3. Köra en kod push toothat distributionsplats. Automatisk växling sker efter en kort tid och hello update visas på mål-platsens URL.
 
 <a name="Rollback"></a>
 
-## <a name="to-rollback-a-production-app-after-swap"></a>Att återställa en produktionsapp efter växling
-Om eventuella fel identifieras i produktion efter en växling fack återställa uttagen deras före växlingen tillstånd genom att byta samma två platser direkt.
+## <a name="toorollback-a-production-app-after-swap"></a>toorollback en produktionsapp efter växling
+Om eventuella fel identifieras i produktion efter en växling fack återställa du hello fack tillbaka tootheir före växlingen tillstånd genom att byta hello samma två platser direkt.
 
 <a name="Warm-up"></a>
 
 ## <a name="custom-warm-up-before-swap"></a>Anpassade värmts före växlingen
-Vissa appar kan kräva anpassade värmts åtgärder. Den `applicationInitialization` konfigurationselementet i web.config kan du ange anpassade initieringen åtgärder kan utföras innan en begäran tas emot. Byte väntar på den här anpassade värmts ska slutföras. Här är ett exempel web.config-fragment.
+Vissa appar kan kräva anpassade värmts åtgärder. Hej `applicationInitialization` configuration-elementet i web.config kan du toospecify initiering av anpassade åtgärder toobe utförs innan en begäran tas emot. hello växlingen väntar på den här anpassade värmts toocomplete. Här är ett exempel web.config-fragment.
 
     <applicationInitialization>
         <add initializationPage="/" hostName="[app hostname]" />
@@ -180,8 +180,8 @@ Vissa appar kan kräva anpassade värmts åtgärder. Den `applicationInitializat
 
 <a name="Delete"></a>
 
-## <a name="to-delete-a-deployment-slot"></a>Ta bort en distributionsplats
-Öppna bladet för den distributionsplatsen i bladet för en distributionsplats, klicka på **översikt** (standardsidan) och klicka på **ta bort** i kommandofältet.  
+## <a name="toodelete-a-deployment-slot"></a>toodelete en distributionsplats
+I hello bladet för en distributionsplats, öppna hello distribution fack-bladet klickar du på **översikt** (hello standardsidan) och klicka på **ta bort** i hello kommandofältet.  
 
 ![Ta bort en distributionsplats][DeleteStagingSiteButton]
 
@@ -190,9 +190,9 @@ Vissa appar kan kräva anpassade värmts åtgärder. Den `applicationInitializat
 <a name="PowerShell"></a>
 
 ## <a name="azure-powershell-cmdlets-for-deployment-slots"></a>Azure PowerShell-cmdlets för distributionsplatser
-Azure PowerShell är en modul som tillhandahåller cmdletar för att hantera Azure via Windows PowerShell, bland annat stöd för att hantera distributionsplatser i Azure App Service.
+Azure PowerShell är en modul som tillhandahåller cmdlets toomanage Azure via Windows PowerShell, bland annat stöd för att hantera distributionsplatser i Azure App Service.
 
-* Information om att installera och konfigurera Azure PowerShell och på autentisera Azure PowerShell med Azure-prenumerationen finns [hur du installerar och konfigurerar Microsoft Azure PowerShell](/powershell/azure/overview).  
+* Information om att installera och konfigurera Azure PowerShell och på autentisera Azure PowerShell med Azure-prenumerationen finns [hur tooinstall och konfigurera Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 - - -
 ### <a name="create-a-web-app"></a>Skapa en webbapp
@@ -207,7 +207,7 @@ New-AzureRmWebAppSlot -ResourceGroupName [resource group name] -Name [app name] 
 ```
 
 - - -
-### <a name="initiate-a-swap-with-review-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>Påbörja en växling med granskning (med swap) och tillämpa mål platskonfigurationen på källplatsen
+### <a name="initiate-a-swap-with-review-multi-phase-swap-and-apply-destination-slot-configuration-toosource-slot"></a>Påbörja en växling med granskning (med swap) och tillämpa toosource destinationsplatsen fack konfiguration
 ```
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
@@ -238,39 +238,39 @@ Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Mi
 <a name="CLI"></a>
 
 ## <a name="azure-command-line-interface-azure-cli-commands-for-deployment-slots"></a>Azure-kommandoradsgränssnittet (Azure CLI)-kommandon för distributionsplatser
-Azure CLI tillhandahåller plattformsoberoende kommandon för att arbeta med Azure, inklusive stöd för att hantera App Service-distributionsplatser.
+hello Azure CLI finns plattformsoberoende kommandon för att arbeta med Azure, inklusive stöd för att hantera App Service-distributionsplatser.
 
-* Anvisningar för att installera och konfigurera Azure CLI, inklusive information om hur du ansluter Azure CLI på Azure-prenumerationen, finns [installera och konfigurera Azure CLI](../cli-install-nodejs.md).
-* Om du vill visa en lista med kommandon som är tillgängliga för Azure App Service i Azure CLI, anropa `azure site -h`.
+* För instruktioner om hur du installerar och konfigurerar hello Azure CLI, inklusive information om hur tooconnect Azure CLI tooyour Azure-prenumeration, se [installera och konfigurera hello Azure CLI](../cli-install-nodejs.md).
+* toolist hello kommandon för Azure App Service i hello Azure CLI, anropa `azure site -h`.
 
 > [!NOTE] 
 > För [Azure CLI 2.0](https://github.com/Azure/azure-cli) kommandon för distributionsplatser, se [az apptjänst web distributionsplatsen](/cli/azure/appservice/web/deployment/slot).
 
 - - -
 ### <a name="azure-site-list"></a>Azure platslista
-Information om appar i den aktuella prenumerationen anropa **azure platslista**, som i följande exempel.
+Information om hello appar i hello nuvarande prenumeration anropa **azure platslista**, som i följande exempel hello.
 
 `azure site list webappslotstest`
 
 - - -
 ### <a name="azure-site-create"></a>Skapa Azure-webbplats
-Om du vill skapa en distributionsplats, anropa **azure plats skapa** och ange namnet på en befintlig app och namnet på fack för att skapa, som i följande exempel.
+toocreate en distributionsplats anropa **azure plats skapa** och ange hello namn för en befintlig app och hello på hello fack toocreate, som i följande exempel hello.
 
 `azure site create webappslotstest --slot staging`
 
-Om du vill aktivera källkontrollen för den nya platsen använder den **--git** enligt följande exempel.
+tooenable källkontrollen för hello ny plats, Använd hello **--git** enligt följande exempel hello.
 
 `azure site create --git webappslotstest --slot staging`
 
 - - -
 ### <a name="azure-site-swap"></a>Azure site växlingsutrymme
-Använd för att göra uppdaterade distributionen fack produktionsprogrammet den **azure plats växlingen** kommando för att utföra en växlingsåtgärd, som i följande exempel. Produktionsprogrammet får inte någon stillestånd eller ska genomgå kallstart.
+toomake hello uppdaterade distribution fack hello produktionsprogrammet använder hello **azure plats växlingen** kommandot tooperform en växlingsåtgärd, som i följande exempel hello. hello produktionsprogrammet får inte någon stillestånd eller ska genomgå kallstart.
 
 `azure site swap webappslotstest`
 
 - - -
 ### <a name="azure-site-delete"></a>ta bort Azure-webbplats
-Om du vill ta bort en distributionsplats som inte längre behövs, Använd den **ta bort azure site** kommandot, som i följande exempel.
+toodelete en distributionsplats som inte längre behövs, Använd hello **ta bort azure site** kommandot, som i följande exempel hello.
 
 `azure site delete webappslotstest --slot staging`
 
@@ -281,8 +281,8 @@ Om du vill ta bort en distributionsplats som inte längre behövs, Använd den *
 > 
 
 ## <a name="next-steps"></a>Nästa steg
-[Azure App Service Web App – blockera Webbåtkomst till icke-produktion distributionsplatser](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
-[introduktion till App Service på Linux](./app-service-linux-intro.md)
+[Azure App Service Web App – blockera web access toonon produktion distributionsplatser](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
+[introduktion tooApp-tjänsten på Linux](./app-service-linux-intro.md)
 [kostnadsfri utvärderingsversion av Microsoft Azure](https://azure.microsoft.com/pricing/free-trial/)
 
 <!-- IMAGES -->

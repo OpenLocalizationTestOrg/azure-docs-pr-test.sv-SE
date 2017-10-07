@@ -1,6 +1,6 @@
 ---
-title: "Automatiskt skala upp Azure Event Hubs genomflödesenheter | Microsoft Docs"
-description: "Aktivera automatisk ökar på ett namnområde för att automatiskt skala upp enheter"
+title: "aaaAutomatically skalas upp Azure Event Hubs genomflödesenheter | Microsoft Docs"
+description: "Aktivera automatisk ökar i namnområdet tooautomatically skala upp enheter"
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: shvija;sethm
-ms.openlocfilehash: b085091ea7bfd601efb0eee84144ddd091422d6e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0f5216bcd619ccddc1fd4063a2f0131bfa36c7d4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automatiskt skala upp Azure Event Hubs genomflödesenheter
 
 ## <a name="overview"></a>Översikt
 
-Händelsehubbar i Azure är en mycket skalbar dataströmning plattform. Händelsehubbar kunder öka därför ofta sin användning efter onboarding till tjänsten. Detta ökar krävs att du ökar förbestämt genomflödesenheter (TUs) för att skala Händelsehubbar och hantera större överföringshastighet. Den *automatiskt öka* funktion i Händelsehubbar skalas automatiskt antalet TUs användning behov. Öka TUs förhindrar begränsning scenarier där:
+Händelsehubbar i Azure är en mycket skalbar dataströmning plattform. Händelsehubbar kunder ökar därför ofta sin användning efter onboarding toohello. Detta ökar kräver ökande hello förutbestämd genomströmning enheter (TUs) tooscale Händelsehubbar och hantera större överföringshastighet. Hej *automatiskt öka* funktion i Händelsehubbar skalas automatiskt hello antal TUs toomeet användarbehov. Öka TUs förhindrar begränsning scenarier där:
 
 * Data ingång priser överskrida ange TUs.
 * Begäran om data utgång priser överskrider ange TUs.
 
 ## <a name="how-auto-inflate-works"></a>Så här fungerar automatiskt öka
 
-Event Hubs trafik styrs av genomflödesenheter. En enda TU kan 1 MB per sekund på inkommande trafik och två gånger att mängden utgång. Standard Händelsehubbar kan konfigureras med 1-20 genomflödesenheter. Öka automatiskt kan du börja litet med minsta obligatoriska genomflödesenheter. Funktionen skalas sedan automatiskt till den maximala gränsen på genomflödesenheter du behöver, beroende på ökade trafiken. Automatiskt öka ger följande fördelar:
+Event Hubs trafik styrs av genomflödesenheter. En enda TU kan 1 MB per sekund på inkommande trafik och två gånger att mängden utgång. Standard Händelsehubbar kan konfigureras med 1-20 genomflödesenheter. Öka automatiskt kan du toostart liten med hello minsta nödvändiga genomflödesenheter. hello funktionen skalas sedan automatiskt toohello högsta antalet enheter du behöver, beroende på hello ökning av trafiken. Automatiskt öka innehåller hello följande fördelar:
 
-- En effektiv skalning mekanism börja litet och skala upp medan du växer.
-- Skala automatiskt till den angivna övre gränsen utan begränsning problem.
-- Mer kontroll över skalning, som du styr när och hur mycket skala.
+- En effektiv skalning mekanism toostart små och skalas upp dig växa.
+- Skala automatiskt toohello övre gränsen utan bandbreddsbegränsning problem.
+- Mer kontroll över skalning, som du styr när och hur mycket tooscale.
 
 ## <a name="enable-auto-inflate-on-a-namespace"></a>Aktivera automatisk ökar på ett namnområde
 
-Du kan aktivera eller inaktivera automatisk ökar på ett namnområde med någon av följande metoder:
+Du kan aktivera eller inaktivera automatisk ökar på ett namnområde med någon av följande metoder hello:
 
-1. Den [Azure-portalen](https://portal.azure.com).
+1. Hej [Azure-portalen](https://portal.azure.com).
 2. En Azure Resource Manager-mall.
 
-### <a name="enable-auto-inflate-through-the-portal"></a>Aktivera automatisk öka via portalen
+### <a name="enable-auto-inflate-through-hello-portal"></a>Aktivera automatisk öka hello-portalen
 
-När du skapar ett namnområde för Händelsehubbar kan du aktivera funktionen automatiskt öka på ett namnområde:
+När du skapar ett namnområde för Händelsehubbar kan du aktivera hello automatiskt öka funktion på ett namnområde:
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
-Med det här alternativet är aktiverat, kan du börja litet på dina enheter och skala upp som kräver din användning. Den övre gränsen för inflationen påverkar inte prissättning, vilken beror på antalet TUs används per timme.
+Med det här alternativet är aktiverat, kan du börja litet på dina enheter och skala upp som kräver din användning. hello påverkar övre gräns för inflationen inte prissättning, vilken beror på hello antalet TUs används per timme.
 
-Du kan också aktivera automatisk-ökar med hjälp av den **skala** alternativet på inställningsbladet i portalen:
+Du kan också aktivera automatisk ökar med hello **skala** alternativet på hello inställningsbladet i hello portal:
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Aktivera automatisk-ökar med en Azure Resource Manager-mall
 
-Du kan aktivera automatisk ökar under en Azure Resource Manager för malldistribution. Till exempel den `isAutoInflateEnabled` egenskapen **SANT** och ange `maximumThroughputUnits` till 10.
+Du kan aktivera automatisk ökar under en Azure Resource Manager för malldistribution. Till exempel ange hello `isAutoInflateEnabled` egenskapen för**SANT** och ange `maximumThroughputUnits` too10.
 
 ```json
 "resources": [
@@ -101,11 +101,11 @@ Du kan aktivera automatisk ökar under en Azure Resource Manager för malldistri
     ]
 ```
 
-Fullständig mallen finns i [skapa Händelsehubbar namnområde och aktivera ökar](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) mall på GitHub.
+Hello fullständig mallen finns hello [skapa Händelsehubbar namnområde och aktivera ökar](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) mall på GitHub.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du kan lära dig mer om Event Hubs genom att gå till följande länkar:
+Mer information om Händelsehubbar genom att besöka hello följande länkar:
 
 * [Event Hubs-översikt](event-hubs-what-is-event-hubs.md)
 * [Skapa en händelsehubb](event-hubs-create.md)

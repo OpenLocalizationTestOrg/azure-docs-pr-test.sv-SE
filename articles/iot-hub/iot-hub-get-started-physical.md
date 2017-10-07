@@ -1,6 +1,6 @@
 ---
-title: "Komma igång med att ansluta fysiska enheter till Azure IoT Hub | Microsoft Docs"
-description: "Lär dig mer om att ansluta till Azure IoT Hub fysiska enheter och -kort. Enheterna kan skicka telemetri IoT-hubb och IoT-hubb kan övervaka och hantera dina enheter."
+title: "Komma igång med att ansluta fysiska enheter tooAzure IoT-hubb | Microsoft Docs"
+description: "Lär dig hur tooconnect fysiska enheter och anslagstavlor tooAzure IoT-hubb. Enheterna kan skicka telemetri tooIoT NAV- och IoT-hubb kan övervaka och hantera dina enheter."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: dobett
-ms.openlocfilehash: f4128b6b049aa876e170c56dcf2e40720644dc3d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 47ce289c438b2f495d499d724c38ddc4b3307425
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT-hubb Kom igång med fysiska enheter självstudier
 
-Dessa självstudiekurser introduktion till Azure IoT Hub och SDK-enheten. Kursen beskriver vanliga IoT-scenarier för att demonstrera funktionerna i IoT-hubb. Självstudierna visar även hur du kombinerar IoT-hubb med andra Azure-tjänster och verktyg för att skapa mer kraftfulla IoT-lösningar. Självstudiekurser som anges i följande tabell visar hur du skapar fysiska IoT-enheter.
+Dessa självstudiekurser införa tooAzure IoT-hubb och hello enhet SDK: er. hello självstudier beskriver vanliga IoT scenarier toodemonstrate hello funktionerna i IoT-hubb. hello självstudier också illustrerar hur toocombine IoT-hubb med andra Azure-tjänster och verktyg toobuild mer kraftfulla IoT-lösningar. hello självstudier som anges i hello följande tabell visar du hur toocreate fysiska IoT-enheter.
 
 | IoT-enhet                       | Programmeringsspråk |
 |---------------------------------|----------------------|
@@ -33,7 +33,7 @@ Dessa självstudiekurser introduktion till Azure IoT Hub och SDK-enheten. Kursen
 | Sparkfun ESP8266 sak Dev      | [Arduino][Th_Ard]              |
 | Adafruit ludd M0             | [Arduino][M0_Ard]              |
 
-Dessutom kan du använda en IoT-gräns-gatewayen att enheterna ansluter till din IoT-hubb.
+Dessutom kan du använda en IoT-Edge gateway tooenable enheter tooconnect tooyour IoT-hubb.
 
 | Gateway-enhet               | Programmeringsspråk | Plattform         |
 |------------------------------|----------------------|------------------|

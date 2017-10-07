@@ -1,6 +1,6 @@
 ---
-title: "Använd Azure IoT Hub dubbla enhetsegenskaper (nod) | Microsoft Docs"
-description: "Hur du använder Azure IoT Hub-enhet twins för att konfigurera enheter. Du kan använda Azure IoT-SDK för Node.js för att implementera en simulerad enhetsapp och en service-app som ändrar en konfiguration för enheter med hjälp av en enhet dubbla."
+title: "Egenskaper för aaaUse Azure IoT Hub enhet dubbla (nod) | Microsoft Docs"
+description: "Hur toouse Azure IoT Hub-enhet twins tooconfigure enheter. Du kan använda hello Azure IoT SDK för Node.js tooimplement en simulerad enhetsapp och en service-app som ändrar en konfiguration för enheter med hjälp av en enhet dubbla."
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: elioda
-ms.openlocfilehash: 771106ce7b00a5231d9929e4b5ea34aefe693597
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7ebfe2dfa0876bf04fdbaceae55db76456523e8a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-desired-properties-to-configure-devices-node"></a>Använd önskade egenskaper för att konfigurera enheter (nod)
+# <a name="use-desired-properties-tooconfigure-devices-node"></a>Använd önskade egenskaper tooconfigure enheter (nod)
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
-I slutet av den här kursen har du två Node.js-konsolappar:
+Hello slutet av den här självstudiekursen har du två Node.js-konsolappar:
 
-* **SimulateDeviceConfiguration.js**, en simulerad enhetsapp som väntar på en uppdatering för önskad konfiguration och rapporterar status för en simulerad konfigurationsprocessen för uppdateringen.
-* **SetDesiredConfigurationAndQuery.js**, en Node.js backend-app, vilket anger du önskad konfiguration på en enhet och frågar konfigurationsprocessen för uppdateringen.
+* **SimulateDeviceConfiguration.js**, en simulerad enhetsapp som väntar på en uppdatering för önskad konfiguration och rapporterar hello status för en simulerad konfigurationsprocessen för uppdateringen.
+* **SetDesiredConfigurationAndQuery.js**, en Node.js backend-app, vilket anger hello önskad konfiguration på en enhet och frågor hello konfigurationsprocessen för uppdateringen.
 
 > [!NOTE]
-> Artikeln [Azure IoT SDK] [ lnk-hub-sdks] innehåller information om Azure IoT-SDK: er som du kan använda för att skapa både enheten och backend-appar.
+> hello artikel [Azure IoT SDK] [ lnk-hub-sdks] innehåller information om hello Azure IoT-SDK: er som du kan använda toobuild både enheten och backend-appar.
 > 
 > 
 
-Den här kursen behöver du följande:
+toocomplete den här kursen behöver du hello följande:
 
 * Node.js version 0.10.x eller senare.
 * Ett aktivt Azure-konto. (Om du inte har något konto kan du skapa ett [kostnadsfritt konto][lnk-free-trial] på bara några minuter.)
 
-Om du har följt den [Kom igång med enheten twins] [ lnk-twin-tutorial] kursen har du redan en IoT-hubb och en enhetsidentitet kallas **myDeviceId**, och du kan hoppa till [Skapa den simulerade enhetsapp] [ lnk-how-to-configure-createapp] avsnitt.
+Om du har följt hello [Kom igång med enheten twins] [ lnk-twin-tutorial] kursen har du redan en IoT-hubb och en enhetsidentitet kallas **myDeviceId**, och du kan hoppa över toohello [ Skapa hello simulerade enhetsapp] [ lnk-how-to-configure-createapp] avsnitt.
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="create-the-simulated-device-app"></a>Skapa den simulerade enhetsapp
-I det här avsnittet skapar du en Node.js-konsolprogram som ansluter till din hubb som **myDeviceId**, väntar på en uppdatering för önskad konfiguration och rapporterar uppdateringar på uppdateringsprocessen simulerade konfiguration.
+## <a name="create-hello-simulated-device-app"></a>Skapa hello simulerade enhetsapp
+I det här avsnittet skapar du en Node.js-konsolprogram som ansluter tooyour hubb som **myDeviceId**, väntar på en uppdatering för önskad konfiguration och rapporterar uppdateringar på hello simulerade konfigurationsprocessen för uppdateringen.
 
-1. Skapa en ny tom mapp som kallas **simulatedeviceconfiguration**. I den **simulatedeviceconfiguration** mapp, skapa en ny package.json-fil med följande kommando vid en kommandotolk. Acceptera alla standardvärden:
+1. Skapa en ny tom mapp som kallas **simulatedeviceconfiguration**. I hello **simulatedeviceconfiguration** mapp, skapa en ny package.json-fil med hello följande kommando vid en kommandotolk. Acceptera alla standardvärden för hello:
    
     ```
     npm init
     ```
-2. Vid en kommandotolk i den **simulatedeviceconfiguration** mapp, kör följande kommando för att installera den **azure iot-enhet**, och **azure-iot-enhet-mqtt** paket:
+2. Vid en kommandotolk i hello **simulatedeviceconfiguration** mapp, kör följande kommando tooinstall hello hello **azure iot-enhet**, och **azure-iot-enhet – mqtt**paketet:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. Med hjälp av en textredigerare, skapa en ny **SimulateDeviceConfiguration.js** filen i den **simulatedeviceconfiguration** mapp.
-4. Lägg till följande kod i den **SimulateDeviceConfiguration.js** filen och Ersätt den **{enheten anslutningssträngen}** platshållaren med den anslutningssträng för enheten som du kopierade när du skapade den **myDeviceId** enhets-ID:
+3. Med hjälp av en textredigerare, skapa en ny **SimulateDeviceConfiguration.js** filen i hello **simulatedeviceconfiguration** mapp.
+4. Lägg till följande kod toohello hello **SimulateDeviceConfiguration.js** filen och ersätta hello **{enheten anslutningssträngen}** med hello enheten anslutningssträngen som du kopierade när du Skapa hello **myDeviceId** enhets-ID:
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -92,15 +92,15 @@ I det här avsnittet skapar du en Node.js-konsolprogram som ansluter till din hu
             }
         });
    
-    Den **klienten** objektet innehåller de metoder som krävs för att interagera med enheten twins från enheten. Föregående kod när den initieras den **klienten** objekt, hämtar enheten dubbla för **myDeviceId**, och bifogar en hanterare för uppdatering på Egenskaper. Hanteraren verifierar att det är en verklig configuration ändringsbegäran genom att jämföra configIds sedan anropar en metod som startar konfigurationsändringen.
+    Hej **klienten** objektet innehåller alla hello metoder krävs toointeract med enheten twins från hello enhet. Hej föregående kod när den initierar hello **klienten** objekt, hämtar hello enheten dubbla för **myDeviceId**, och bifogar en hanterare för hello uppdatering på Egenskaper. hello hanterare verifierar att det är en verklig configuration ändringsbegäran genom att jämföra hello configIds sedan anropar en metod som startar hello konfigurationsändring.
    
-    Observera att för enkelhetens skull, föregående kod använder en hårdkodad standard för den inledande konfigurationen. En verklig app skulle förmodligen att läsa in konfigurationen från en lokal lagring.
+    Observera att för hello dig ut av enkelhet hello föregående kod använder en hårdkodad standard för hello inledande konfiguration. En verklig app skulle förmodligen att läsa in konfigurationen från en lokal lagring.
    
    > [!IMPORTANT]
-   > Önskad egenskapen Ändringshändelser släpps alltid en gång vid enhetsanslutning, se till att kontrollera att det finns en verklig ändring i egenskaperna innan du utför några åtgärder.
+   > Önskade egenskapen Ändringshändelser släpps alltid en gång vid enhetsanslutning, se till att det finns en verklig ändring i hello toocheck önskade egenskaper innan du utför några åtgärder.
    > 
    > 
-5. Lägg till följande metoder innan den `client.open()` anrop:
+5. Lägg till följande metoder innan hello hello `client.open()` anrop:
    
         var initConfigChange = function(twin) {
             var currentTelemetryConfig = twin.properties.reported.telemetryConfig;
@@ -141,35 +141,35 @@ I det här avsnittet skapar du en Node.js-konsolprogram som ansluter till din hu
             });
         };
    
-    Den **initConfigChange** metoden uppdaterar rapporterade egenskaper för lokal enhet dubbla objektet med begäran om uppdatering konfiguration och anger statusen till **väntande**, uppdaterar sedan enheten dubbla på den tjänsten. När en uppdatering av enheten dubbla, den simulerar en tidskrävande process som slutar i körningen av **completeConfigChange**. Den här metoden uppdaterar den lokala enheten dubbla rapporterade egenskaper som anger status till **lyckade** och ta bort den **pendingConfig** objekt. Sedan uppdaterar den enheten dubbla på tjänsten.
+    Hej **initConfigChange** metoden uppdateringar rapporteras egenskaper på hello lokala dubbla enhetsobjekt med hello konfigurationsbegäran för uppdatering och anger hello status för**väntande**, och sedan uppdateringar hello enhet dubbla på hello-tjänsten. När en uppdatering hello enheten dubbla är den simulerar en tidskrävande process som avslutar hello körning av **completeConfigChange**. Den här metoden uppdateringar hello lokala enhet dubbla har rapporterats egenskaper som anger hello status för**lyckade** och ta bort hello **pendingConfig** objekt. Sedan uppdateras hello enheten dubbla på hello-tjänsten.
    
-    Observera att, för att spara bandbredd, rapporteras egenskaper uppdateras genom att ange egenskaperna som ska ändras (med namnet **korrigering** i koden ovan), i stället för att ersätta hela dokumentet.
+    Observera toosave bandbredd som rapporteras egenskaper uppdateras genom att ange endast hello egenskaper toobe ändrade (med namnet **korrigering** i hello ovan kod), i stället för att ersätta hello hela dokumentet.
    
    > [!NOTE]
-   > Den här självstudiekursen simulerar inte någon funktion för samtidiga konfigurationsuppdateringar. Vissa processer för uppdatering av konfiguration kanske kan hantera förändringar av mål-konfiguration när uppdateringen körs, andra behöva placeras i kö och andra kan avvisa dem med ett feltillstånd. Se till att tänka på önskat beteende för din specifika konfigurationsprocessen och Lägg till lämpliga logiken innan du påbörjar konfigurationsändringen.
+   > Den här självstudiekursen simulerar inte någon funktion för samtidiga konfigurationsuppdateringar. Vissa processer för uppdatering av konfiguration kan vara kan tooaccommodate ändringar av konfigurationen för målet medan hello uppdateringen körs, andra kan ha tooqueue dem och andra kan avvisa dem med ett feltillstånd. Se till att tooconsider hello önskat beteende för din specifika konfigurationsprocessen och lägga till lämpliga hello-logik innan du påbörjar hello konfigurationsändring.
    > 
    > 
-6. Kör appen enhet:
+6. Kör hello enhetsapp:
    
         node SimulateDeviceConfiguration.js
    
-    Du bör se meddelandet `retrieved device twin`. Fortsätt att köra appen.
+    Du bör se hello-meddelande `retrieved device twin`. Behåll hello appen körs.
 
-## <a name="create-the-service-app"></a>Skapa service-appen
-I det här avsnittet skapar du en Node.js-konsolprogram som uppdaterar det *önskade egenskaper* på enhet-dubbla som är associerade med **myDeviceId** med ett nytt telemetri configuration-objekt. Sedan frågar enheten-twins lagras i IoT-hubb och visar skillnaden mellan önskade och rapporterade konfigurationer av enheten.
+## <a name="create-hello-service-app"></a>Skapa hello service-appen
+I det här avsnittet skapar du en Node.js-konsolprogram som uppdateringar hello *önskade egenskaper* på hello enheten dubbla som är associerade med **myDeviceId** med ett nytt telemetri configuration-objekt. Sedan frågar hello enheten twins lagras i hello IoT-hubb och visar hello skillnaden mellan hello önskad och rapporterade konfigurationer av hello enhet.
 
-1. Skapa en ny tom mapp som kallas **setdesiredandqueryapp**. I den **setdesiredandqueryapp** mapp, skapa en ny package.json-fil med följande kommando vid en kommandotolk. Acceptera alla standardvärden:
+1. Skapa en ny tom mapp som kallas **setdesiredandqueryapp**. I hello **setdesiredandqueryapp** mapp, skapa en ny package.json-fil med hello följande kommando vid en kommandotolk. Acceptera alla standardvärden för hello:
    
     ```
     npm init
     ```
-2. Vid en kommandotolk i den **setdesiredandqueryapp** mapp, kör följande kommando för att installera den **azure iothub** paketet:
+2. Vid en kommandotolk i hello **setdesiredandqueryapp** mapp, kör följande kommando tooinstall hello hello **azure iothub** paketet:
    
     ```
     npm install azure-iothub node-uuid --save
     ```
-3. Med hjälp av en textredigerare, skapa en ny **SetDesiredAndQuery.js** filen i den **addtagsandqueryapp** mapp.
-4. Lägg till följande kod i den **SetDesiredAndQuery.js** filen och Ersätt den **{anslutningssträngen för iot-hubb}** med IoT-hubb anslutningssträngen som du kopierade när du skapade din hubb:
+3. Med hjälp av en textredigerare, skapa en ny **SetDesiredAndQuery.js** filen i hello **addtagsandqueryapp** mapp.
+4. Lägg till följande kod toohello hello **SetDesiredAndQuery.js** filen och ersätta hello **{anslutningssträngen för iot-hubb}** med hello IoT-hubb anslutningssträngen som du kopierade när du skapade din hubb :
    
         'use strict';
         var iothub = require('azure-iothub');
@@ -204,20 +204,20 @@ I det här avsnittet skapar du en Node.js-konsolprogram som uppdaterar det *öns
             }
         });
 
-    Den **registret** objektet innehåller de metoder som krävs för att interagera med enheten twins från tjänsten. Föregående kod när den initieras den **registret** objekt, hämtar enheten dubbla för **myDeviceId**, och uppdaterar dess egenskaper med ett nytt telemetri configuration-objekt. Därefter anropar den **queryTwins** fungerar händelse 10 sekunder.
+    Hej **registret** objektet innehåller alla hello metoder krävs toointeract med enheten twins från hello-tjänsten. Hej föregående kod när den initierar hello **registret** objekt, hämtar hello enheten dubbla för **myDeviceId**, och uppdaterar dess egenskaper med ett nytt telemetri configuration-objekt. Därefter anropar hello **queryTwins** fungerar händelse 10 sekunder.
 
     > [!IMPORTANT]
-    > Det här programmet frågar IoT-hubb var 10: e sekund som illustration. Använda frågor för att generera användarinriktad rapporter över flera enheter och inte för att identifiera ändringar. Om din lösning kräver meddelanden i realtid av enhetshändelser, använder [dubbla meddelanden][lnk-twin-notifications].
+    > Det här programmet frågar IoT-hubb var 10: e sekund som illustration. Använd frågar toogenerate användarinriktad rapporter över flera enheter, och inte toodetect ändringar. Om din lösning kräver meddelanden i realtid av enhetshändelser, använder [dubbla meddelanden][lnk-twin-notifications].
     > 
     >.
 
-1. Lägg till följande kod behörigheten innan den `registry.getDeviceTwin()` anrop för att implementera den **queryTwins** funktionen:
+1. Lägg till följande kod precis innan hello hello `registry.getDeviceTwin()` anrop tooimplement hello **queryTwins** funktionen:
    
         var queryTwins = function() {
             var query = registry.createQuery("SELECT * FROM devices WHERE deviceId = 'myDeviceId'", 100);
             query.nextAsTwin(function(err, results) {
                 if (err) {
-                    console.error('Failed to fetch the results: ' + err.message);
+                    console.error('Failed toofetch hello results: ' + err.message);
                 } else {
                     console.log();
                     results.forEach(function(twin) {
@@ -233,26 +233,26 @@ I det här avsnittet skapar du en Node.js-konsolprogram som uppdaterar det *öns
             });
         };
    
-    Föregående kod frågorna enheten twins lagras i IoT-hubb och skriver ut önskad och rapporterade telemetri konfigurationer. Referera till den [IoT-hubb frågespråket] [ lnk-query] att lära dig hur du skapar omfattande rapporter på alla enheter.
-2. Med **SimulateDeviceConfiguration.js** körs, köra program med:
+    hello föregående kod frågor hello enheten twins lagras i hello IoT-hubb och utskrifter hello önskad och rapporterade telemetri konfigurationer. Se toohello [IoT-hubb frågespråket] [ lnk-query] toolearn hur toogenerate omfattande rapporter på alla enheter.
+2. Med **SimulateDeviceConfiguration.js** körs, kör hello program med:
    
         node SetDesiredAndQuery.js 5m
    
-    Du bör se rapporterade konfigurationsändringen från **lyckade** till **väntande** till **lyckade** igen med den nya aktivt frekvens som skickar fem minuter i stället för 24 timmar.
+    Du bör se hello rapporterade konfigurationsändring från **lyckade** för**väntande** för**lyckade** igen med hello ny aktiv frekvens som skickar fem minuter i stället för 24 timmar.
    
    > [!IMPORTANT]
-   > Det finns en fördröjning på upp till en minut mellan enheten rapporten igen och frågeresultatet. Detta är att aktivera query-infrastruktur för att arbeta med mycket hög skala. Att hämta konsekvent vyer för en enskild enhet dubbel användning av **getDeviceTwin** metod i den **registret** klass.
+   > Det finns en fördröjning på upp tooa minut mellan hello enheten rapporten igen och hello frågeresultatet. Detta är tooenable hello frågan infrastruktur toowork i hög skala. tooretrieve konsekvent vyer för en enskild enhet dubbla använda hello **getDeviceTwin** metod i hello **registret** klass.
    > 
    > 
 
 ## <a name="next-steps"></a>Nästa steg
-I kursen får du ange en önskad konfiguration som *önskade egenskaper* från en backend-app och skrev en simulerad enhetsapp för att identifiera den ändringen och simulera en flera steg uppdateringsprocess reporting statusen  *rapporterade egenskaper* till dubbla för enheten.
+I kursen får du ange en önskad konfiguration som *önskade egenskaper* från en backend-app och skrev en simulerad enhet app toodetect som ändras och simulera en flera steg uppdateringsprocess reporting statusen  *rapporterade egenskaper* toohello enheten dubbla.
 
-Använd följande resurser för att lära dig hur du:
+Använd hello följande resurser toolearn hur till:
 
-* Skicka telemetri från enheter med den [Kom igång med IoT-hubb] [ lnk-iothub-getstarted] självstudiekursen
-* schemalägga eller utföra åtgärder på stora mängder enheter finns i [schema och broadcast jobb] [ lnk-schedule-jobs] kursen.
-* Kontrollera enheter interaktivt (till exempel aktivera fläktar från en användare-kontrollerade app), med den [metoder från direkt] [ lnk-methods-tutorial] kursen.
+* Skicka telemetri från enheter med hello [Kom igång med IoT-hubb] [ lnk-iothub-getstarted] självstudiekursen
+* schemalägga eller utföra åtgärder på stora mängder enheter finns hello [schema och broadcast jobb] [ lnk-schedule-jobs] kursen.
+* Kontrollera enheter interaktivt (till exempel aktivera fläktar från en användare-kontrollerade app), med hello [metoder från direkt] [ lnk-methods-tutorial] kursen.
 
 <!-- links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md

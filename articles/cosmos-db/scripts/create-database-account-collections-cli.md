@@ -1,5 +1,5 @@
 ---
-title: Azure CLI skript-skapa ett Azure DB-API Cosmos DocumentDB-konto, databas och samling | Microsoft Docs
+title: aaaAzure CLI skript-skapa en Azure Cosmos DB DocumentDB API-kontot, databas och samling | Microsoft Docs
 description: "Azure CLI-skript exempel – skapa ett Azure Cosmos DB DocumentDB API-kontot, databas och samling"
 services: cosmos-db
 documentationcenter: cosmosdb
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/06/2017
 ms.author: mimig
-ms.openlocfilehash: 28f99d56404e47adcd375d9f3106cc234469cbfd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 53919a849e04fa69680219e51c0289b9f2affe07
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-create-an-documentdb-api-account-using-cli"></a>Azure Cosmos DB: Skapa ett DocumentDB-API-konto med hjälp av CLI
 
@@ -28,15 +28,15 @@ Det här exempelskriptet CLI skapar ett Azure Cosmos DB DocumentDB API-konto, da
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-azurecli-interactive[huvudsakliga](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "skapa ett Azure Cosmos DB DocumentDB API-kontot, databas och samling")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/create-cosmosdb-account-database/create-cosmosdb-account-database.sh?highlight=15-35 "Create an Azure Cosmos DB DocumentDB API account, database, and collection")]
 
 ## <a name="clean-up-deployment"></a>Rensa distribution
 
-Följande kommando kan användas för att ta bort resursgruppen och alla resurser som är associerade med den efter skriptexempel har körts.
+Efter hello skriptexempel har körts, kan det vara hello följande kommando används tooremove hello resursgruppen och alla resurser som är kopplade till den.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -44,7 +44,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
@@ -54,6 +54,6 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
+Mer information om hello Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
 
-Ytterligare Azure Cosmos DB CLI skriptexempel finns i den [Azure Cosmos DB CLI dokumentationen](../cli-samples.md).
+Ytterligare Azure Cosmos DB CLI skriptexempel finns i hello [Azure Cosmos DB CLI dokumentationen](../cli-samples.md).

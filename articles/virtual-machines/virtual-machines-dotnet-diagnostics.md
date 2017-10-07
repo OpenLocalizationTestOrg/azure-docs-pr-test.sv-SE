@@ -1,6 +1,6 @@
 ---
-title: "Hur du använder Azure-diagnostik i virtuella datorer | Microsoft Docs"
-description: "Med Azure-diagnostik för att samla in data från virtuella datorer i Azure för felsökning, mäta prestanda, övervakning, trafik analys och mer."
+title: aaaHow toouse Azure-diagnostik i virtuella datorer | Microsoft Docs
+description: "Använda Azure diagnostics toogather data från virtuella datorer i Azure för felsökning, mäta prestanda, övervakning, trafik analys och mer."
 services: virtual-machines
 documentationcenter: .net
 author: davidmu1
@@ -14,36 +14,36 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/16/2016
 ms.author: davidmu
-ms.openlocfilehash: 8ff6b9825212359617b748aba1c78ed789b130dd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 54cdfd30d7bbbb71af449826e90234faf5ecdf44
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enabling-diagnostics-in-azure-virtual-machines"></a>Aktivera diagnostik i virtuella Azure-datorer
 Se [översikt över Azure Diagnostics](../monitoring-and-diagnostics/azure-diagnostics.md) för en bakgrund på Azure-diagnostik.
 
-## <a name="how-to-enable-diagnostics-in-a-virtual-machine"></a>Så här aktiverar du diagnostik i en virtuell dator
-Denna genomgång beskriver hur du fjärrinstallera diagnostik till en virtuell Azure-dator från en utvecklingsdator. Du också lära dig hur du implementerar ett program som körs på den virtuella Azure-datorn och skickar telemetridata med .NET [EventSource klassen][EventSource Class]. Azure Diagnostics används för att samla in telemetrin och lagra den på ett Azure storage-konto.
+## <a name="how-tooenable-diagnostics-in-a-virtual-machine"></a>Hur tooEnable diagnostik i en virtuell dator
+Denna genomgång beskrivs hur tooremotely installera diagnostik tooan virtuell Azure-dator från en utvecklingsdator. Du också lära dig hur tooimplement ett program som körs på den virtuella Azure-datorn och skickar telemetri data med hjälp av hello .NET [EventSource klassen][EventSource Class]. Azure-diagnostik är används toocollect hello telemetri och lagrar den i ett Azure storage-konto.
 
 ### <a name="pre-requisites"></a>Förutsättningar
-Denna genomgång förutsätter att du har en Azure-prenumeration och använder Visual Studio 2017 med Azure SDK. Om du inte har en Azure-prenumeration kan du registrera dig för den [kostnadsfri utvärderingsversion][Free Trial]. Se till att [installera och konfigurera Azure PowerShell version 0.8.7 eller senare][Install and configure Azure PowerShell version 0.8.7 or later].
+Denna genomgång förutsätter att du har en Azure-prenumeration och använder Visual Studio 2017 med hello Azure SDK. Om du inte har en Azure-prenumeration kan du registrera dig för hello [kostnadsfri utvärderingsversion][Free Trial]. Kontrollera att för[installera och konfigurera Azure PowerShell version 0.8.7 eller senare][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-virtual-machine"></a>Steg 1: Skapa en virtuell dator
 1. Starta Visual Studio 2017 på utvecklingsdatorn.
-2. I Visual Studio **Server Explorer** Expandera **Azure**, högerklicka på **virtuella datorer** Välj **Skapa virtuell dator**.
-3. Välj Azure-prenumerationen i den **Välj en prenumeration** dialogrutan och klicka på **nästa**.
-4. Välj **Windows Server 2012 R2 Datacenter, juni 2017** i den **Välj en virtuell datoravbildning** dialogrutan och klicka på **nästa**.
-5. I den **grundläggande inställningar för virtuell dator**, ange namnet på virtuella datorn till ”wadexample”. Ange din administratörsanvändarnamn och lösenord och klicka på **nästa**.
-6. I den **moln tjänstinställningar** dialogrutan Skapa en ny molntjänst med namnet ”wadexampleVM”. Skapa ett nytt lagringskonto med namnet ”wadexample” och klicka på **nästa**.
+2. I hello Visual Studio **Server Explorer** Expandera **Azure**, högerklicka på **virtuella datorer** Välj **Skapa virtuell dator**.
+3. Välj din Azure-prenumeration i hello **Välj en prenumeration** dialogrutan och klicka på **nästa**.
+4. Välj **Windows Server 2012 R2 Datacenter, juni 2017** i hello **Välj en virtuell datoravbildning** dialogrutan och klicka på **nästa**.
+5. I hello **grundläggande inställningar för virtuell dator**, ange hello virtuellt datornamn för ”wadexample”. Ange din administratörsanvändarnamn och lösenord och klicka på **nästa**.
+6. I hello **moln tjänstinställningar** dialogrutan Skapa en ny molntjänst med namnet ”wadexampleVM”. Skapa ett nytt lagringskonto med namnet ”wadexample” och klicka på **nästa**.
 7. Klicka på **Skapa**.
 
 ### <a name="step-2-create-your-application"></a>Steg 2: Skapa ditt program
 1. Starta Visual Studio 2017 på utvecklingsdatorn.
-2. Skapa en ny Visual C#-Konsolapp som riktar sig till .NET Framework 4.5. Namnge projektet ”WadExampleVM”.
+2. Skapa en ny Visual C#-Konsolapp som riktar sig till .NET Framework 4.5. Namnge projektet hello ”WadExampleVM”.
 
    ![CloudServices_diag_new_project](./media/virtual-machines-dotnet-diagnostics/NewProject.png)
-3. Ersätt innehållet i Program.cs med följande kod. Klassen **SampleEventSourceWriter** implementerar fyra metoderna för loggning: **SendEnums**, **MessageMethod**, **SetOther** och  **HighFreq**. Den första parametern för metoden WriteEvent definierar ID för respektive händelsen. Metoden implementerar en oändlig loop som anropar metoderna för loggning som implementerats i den **SampleEventSourceWriter** klassen var 10: e sekund.
+3. Ersätt hello innehållet i Program.cs med följande kod hello. Hej klassen **SampleEventSourceWriter** implementerar fyra metoderna för loggning: **SendEnums**, **MessageMethod**, **SetOther** och  **HighFreq**. hello första parametern toohello metoden WriteEvent definierar hello-ID för respektive hello-händelse. hello metoden implementerar en oändlig loop som anropar varje hello loggningsmetoder som införts i hello **SampleEventSourceWriter** klassen var 10: e sekund.
 
     ```csharp
      using System;
@@ -55,7 +55,7 @@ Denna genomgång förutsätter att du har en Azure-prenumeration och använder V
      {
        sealed class SampleEventSourceWriter : EventSource {
          public static SampleEventSourceWriter Log = new SampleEventSourceWriter();
-         public void SendEnums(MyColor color, MyFlags flags) { if (IsEnabled())  WriteEvent(1, (int)color, (int)flags); } // Cast enums to int for efficient logging.
+         public void SendEnums(MyColor color, MyFlags flags) { if (IsEnabled())  WriteEvent(1, (int)color, (int)flags); } // Cast enums tooint for efficient logging.
          public void MessageMethod(string Message) { if (IsEnabled())  WriteEvent(2, Message); }
          public void SetOther(bool flag, int myInt) { if (IsEnabled())  WriteEvent(3, flag, myInt); }
          public void HighFreq(int value) { if (IsEnabled()) WriteEvent(4, value); }
@@ -85,7 +85,7 @@ Denna genomgång förutsätter att du har en Azure-prenumeration och använder V
              Thread.Sleep(10000);
              Trace.TraceInformation("Working");
 
-             // Emit several events every time we go through the loop
+             // Emit several events every time we go through hello loop
              for (int i = 0; i < 6; i++) {
                  SampleEventSourceWriter.Log.SendEnums(MyColor.Blue, MyFlags.Flag2 | MyFlags.Flag3);
              }
@@ -103,22 +103,22 @@ Denna genomgång förutsätter att du har en Azure-prenumeration och använder V
       }
      }
      ```
-4. Spara filen och välj **skapa lösning** från den **skapa** menyn för att skapa din kod.
+4. Spara hello-filen och välj **skapa lösning** från hello **skapa** menyn toobuild din kod.
 
 ### <a name="step-3-deploy-your-application"></a>Steg 3: Distribuera ditt program
-1. Högerklicka på den **WadExampleVM** projektet i **Solution Explorer** och välj **Öppna mapp i Utforskaren**.
-2. Navigera till den *bin\Debug* mappen och kopiera alla filer (WadExampleVM.*)
-3. I **Server Explorer** högerklickar du på den virtuella datorn och välj **ansluta med hjälp av fjärrskrivbord**.
-4. När du är ansluten till den virtuella datorn kan du skapa en mapp med namnet WadExampleVM och klistra in programmet filer i mappen.
-5. Starta programmet WadExampleVM.exe. Du bör se ett tomt konsolfönster.
+1. Högerklicka på hello **WadExampleVM** projektet i **Solution Explorer** och välj **Öppna mapp i Utforskaren**.
+2. Navigera toohello *bin\Debug* mappen och kopiera alla hello filer (WadExampleVM.*)
+3. I **Server Explorer** högerklickar du på hello virtuella datorn och välj **ansluta med hjälp av fjärrskrivbord**.
+4. När du är ansluten toohello VM skapa en mapp med namnet WadExampleVM och klistra in dina filer i hello mapp.
+5. Starta programmet hello WadExampleVM.exe. Du bör se ett tomt konsolfönster.
 
-### <a name="step-4-create-your-diagnostics-configuration-and-install-the-extension"></a>Steg 4: Skapa diagnostik-konfiguration och installera tillägget
-1. Hämta schemadefinitionen offentliga konfiguration filen till utvecklingsdatorn genom att köra följande PowerShell-kommando:
+### <a name="step-4-create-your-diagnostics-configuration-and-install-hello-extension"></a>Steg 4: Skapa diagnostik-konfiguration och installera hello tillägg
+1. Hämta hello offentliga konfiguration filen schema definition tooyour utvecklingsdator genom att köra följande PowerShell-kommando hello:
 
      (Get-AzureServiceAvailableExtension - Tilläggsnamn 'PaaSDiagnostics' - ProviderNamespace 'Microsoft.Azure.Diagnostics'). PublicConfigurationSchema | Out-File-kodning utf8 - FilePath 'WadConfig.xsd'
-2. Öppna en ny XML-fil i Visual Studio, antingen i ett projekt du redan har öppen eller i Visual Studio-instans med några öppna projekt. I Visual Studio väljer **Lägg till** -> **nytt objekt...** -> **Visual C# objekt** -> **Data** -> **XML-filen**. Namn på filen ”WadExample.xml”
-3. Koppla WadConfig.xsd till konfigurationsfilen. Kontrollera att WadExample.xml editor-fönstret är det aktiva fönstret. Tryck på **F4** att öppna den **egenskaper** fönster. Klicka på den **scheman** egenskap i den **egenskaper** fönster. Klicka på den **...** i den **scheman** egenskapen. Klicka på **Lägg …** och navigera till den plats där du sparade XSD-filen och välj filen WadConfig.xsd. Klicka på **OK**.
-4. Ersätt innehållet i konfigurationsfilen WadExample.xml med följande XML och spara filen. Den här konfigurationsfilen definierar några prestandaräknare för att samla in: en för CPU-användning och en för minnesanvändning. Konfigurationen definierar de fyra händelser som motsvarar metoderna i klassen SampleEventSourceWriter.
+2. Öppna en ny XML-fil i Visual Studio, antingen i ett projekt du redan har öppen eller i Visual Studio-instans med några öppna projekt. I Visual Studio väljer **Lägg till** -> **nytt objekt...** -> **Visual C# objekt** -> **Data** -> **XML-filen**. Namnet hello filen ”WadExample.xml”
+3. Associera hello WadConfig.xsd med hello konfigurationsfilen. Se till att hello WadExample.xml editor-fönstret hello aktivt fönster. Tryck på **F4** tooopen hello **egenskaper** fönster. Klicka på hello **scheman** egenskap i hello **egenskaper** fönster. Klicka på hello **...** i hello **scheman** egenskapen. Klicka på hello **Lägg till...** knappen och navigera toohello plats där du sparade hello XSD-filen och välj hello filen WadConfig.xsd. Klicka på **OK**.
+4. Ersätt hello innehållet i konfigurationsfilen för hello WadExample.xml med hello följande XML och spara hello-fil. Den här konfigurationsfilen definierar några prestandaräknare toocollect: en för CPU-användning och en för minnesanvändning. Sedan definierar hello configuration hello fyra händelser motsvarande toohello metoder i hello SampleEventSourceWriter klass.
 
 ```
         <?xml version="1.0" encoding="utf-8"?>
@@ -144,10 +144,10 @@ Denna genomgång förutsätter att du har en Azure-prenumeration och använder V
 ```
 
 ### <a name="step-5-remotely-install-diagnostics-on-your-azure-virtual-machine"></a>Steg 5: Fjärrinstallera diagnostik på ditt Azure-dator
-PowerShell-cmdletar för att hantera diagnostik på en virtuell dator finns: Set-AzureVMDiagnosticsExtension, Get-AzureVMDiagnosticsExtension och ta bort AzureVMDiagnosticsExtension.
+hello PowerShell-cmdletar för att hantera diagnostik på en virtuell dator finns: Set-AzureVMDiagnosticsExtension, Get-AzureVMDiagnosticsExtension och ta bort AzureVMDiagnosticsExtension.
 
 1. Öppna Azure PowerShell på datorn utvecklare.
-2. Kör skriptet för att fjärrinstallera diagnostik på den virtuella datorn (Ersätt `<user>` med ditt användarnamn i katalogen. Ersätt `<StorageAccountKey>` med lagringskontonyckel lagringskontots wadexamplevm):
+2. Köra hello skriptet tooremotely installera diagnostik på den virtuella datorn (Ersätt `<user>` med ditt användarnamn i katalogen. Ersätt `<StorageAccountKey>` med hello lagringskontonyckel lagringskontots wadexamplevm):
 ```
      $storage_name = "wadexamplevm"
      $key = "<StorageAccountKey>"
@@ -160,18 +160,18 @@ PowerShell-cmdletar för att hantera diagnostik på en virtuell dator finns: Set
      $VM3 = Update-AzureVM -ServiceName $service_name -Name $vm_name -VM $VM2.VM
 ```
 ### <a name="step-6-look-at-your-telemetry-data"></a>Steg 6: Visa telemetridata
-I Visual Studio **Server Explorer** navigera till wadexample storage-konto. När den virtuella datorn har körts cirka 5 minuter bör du se tabellerna **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**,  **WADPerformanceCountersTable** och **WADSetOtherTable**. Dubbelklicka på en av tabellerna att visa telemetri som har samlats in.
+I hello Visual Studio **Server Explorer** navigera toohello wadexample storage-konto. Du bör se hello tabeller när hello VM har körts cirka 5 minuter **WADEnumsTable**, **WADHighFreqTable**, **WADMessageTable**,  **WADPerformanceCountersTable** och **WADSetOtherTable**. Dubbelklicka på hello tabeller tooview hello telemetri som har samlats in.
 
 ![CloudServices_diag_wadexamplevm_tables](./media/virtual-machines-dotnet-diagnostics/WadExampleVMTables.png)
 
 ## <a name="configuration-file-schema"></a>Schemat för konfigurationsfilen
-Konfigurationsfilen diagnostik definierar värden som används för att initiera diagnostiska konfigurationsinställningar när diagnostik agenten startas. Finns det [senaste Schemareferens](https://msdn.microsoft.com/library/azure/mt634524.aspx) giltiga värden och exempel.
+hello diagnostik konfigurationsfilen definierar värden som används tooinitialize diagnostiska konfigurationsinställningar när hello diagnostik agent startas. Se hello [senaste Schemareferens](https://msdn.microsoft.com/library/azure/mt634524.aspx) giltiga värden och exempel.
 
 ## <a name="troubleshooting"></a>Felsökning
 Se [felsökning Azure Diagnostics](../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md) för mer information.
 
 ## <a name="next-steps"></a>Nästa steg
-[Se en lista över virtuella relaterade artiklar i Azure-diagnostik](../monitoring-and-diagnostics/azure-diagnostics.md#virtual-machines-using-azure-diagnostics) felsökning om du vill ändra de data du samlar in eller Läs mer om diagnostik i allmänhet.
+[Se en lista över virtuella relaterade artiklar i Azure-diagnostik](../monitoring-and-diagnostics/azure-diagnostics.md#virtual-machines-using-azure-diagnostics) toochange hello data du samlar in, felsöka problem eller Läs mer om diagnostik i allmänhet.
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

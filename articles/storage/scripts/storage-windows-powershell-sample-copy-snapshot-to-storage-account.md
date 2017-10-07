@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell skriptexempel - Export/kopiera ögonblicksbild som VHD till ett lagringskonto i annan region | Microsoft Docs"
-description: "Azure PowerShell skriptexempel - Export/kopiera ögonblicksbild som VHD till ett lagringskonto i samma annan region"
+title: "aaaAzure skriptexempel PowerShell - Export/kopiera ögonblicksbild som VHD tooa storage-konto i en annan region | Microsoft Docs"
+description: "Azure PowerShell skriptexempel - Export/kopiera ögonblicksbild som VHD tooa lagringskonto i samma annan region"
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 80f83f4b66165ddd2bdd0edca2be5d026cb11a9b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3b3e38c6b06bfa1e117f4e913dfc09443a795196
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="exportcopy-managed-snapshots-as-vhd-to-a-storage-account-in-different-region-with-powershell"></a>Exportera eller kopieras hanterad ögonblicksbilder som VHD ett lagringskonto i en annan region med PowerShell
+# <a name="exportcopy-managed-snapshots-as-vhd-tooa-storage-account-in-different-region-with-powershell"></a>Export/kopiera hanterad ögonblicksbilder som VHD tooa storage-konto i en annan region med PowerShell
 
-Det här skriptet exporterar en hanterad ögonblicksbild till ett lagringskonto i en annan region. Den första genererar ögonblicksbilden SAS-URI och sedan används för att kopiera den till ett lagringskonto i en annan region. Använd det här skriptet för att underhålla säkerhetskopiering hanterade diskar i annan region för katastrofåterställning.  
+Det här skriptet exporterar ett hanterade ögonblicksbild tooa storage-konto i annan region. Den första genererar hello hello ögonblicksbild SAS-URI och använder sedan toocopy den tooa storage-konto i en annan region. Använda skript toomaintain säkerhetskopian hanterade diskar i annan region för katastrofåterställning.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -31,18 +31,18 @@ Det här skriptet exporterar en hanterad ögonblicksbild till ett lagringskonto 
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-powershell[huvudsakliga](../../../powershell_scripts/storage/copy-snapshot-to-storage-account/copy-snapshot-to-storage-account.ps1 "kopiera ögonblicksbild")]
+[!code-powershell[main](../../../powershell_scripts/storage/copy-snapshot-to-storage-account/copy-snapshot-to-storage-account.ps1 "Copy snapshot")]
 
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon för att generera SAS URI för en hanterad ögonblicksbild och kopierar ögonblicksbilden till ett lagringskonto med hjälp av SAS-URI. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder följande kommandon toogenerate SAS-URI för en hanterad ögonblicksbilder och kopior och hello ögonblicksbild tooa lagringskonto med hjälp av SAS-URI. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
-| [Bevilja AzureRmSnapshotAccess](/powershell/module/azurerm.compute/New-AzureRmDisk) | Genererar SAS-URI för en ögonblicksbild som används för att kopiera den till ett lagringskonto. |
-| [Ny AzureStorageContext](/powershell/module/azure.storage/New-AzureStorageContext) | Skapar en kontexten för lagringskontot med kontonamnet och nyckeln. Den här kontexten kan användas för att utföra åtgärder för läsning och skrivning på lagringskontot. |
-| [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Kopierar underliggande VHD från en ögonblicksbild till ett lagringskonto |
+| [Bevilja AzureRmSnapshotAccess](/powershell/module/azurerm.compute/New-AzureRmDisk) | Genererar SAS-URI för en ögonblicksbild som är används toocopy den tooa storage-konto. |
+| [Ny AzureStorageContext](/powershell/module/azure.storage/New-AzureStorageContext) | Skapar en kontexten för lagringskontot med hello kontonamnet och nyckeln. Den här kontexten kan vara används tooperform läsning och skrivning åtgärder på hello storage-konto. |
+| [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/Start-AzureStorageBlobCopy) | Kopior hello underliggande VHD från en ögonblicksbild tooa storage-konto |
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -50,6 +50,6 @@ Det här skriptet använder följande kommandon för att generera SAS URI för e
 
 [Skapa en virtuell dator från en hanterad disk](./../../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Mer information om Azure PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
+Mer information om hello Azure PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
 
-Ytterligare virtuella PowerShell-skript-exempel finns i den [Virtuella för Windows Azure-dokumentationen](../../virtual-machines/windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ytterligare virtuella PowerShell-skript-exempel finns i hello [Virtuella för Windows Azure-dokumentationen](../../virtual-machines/windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

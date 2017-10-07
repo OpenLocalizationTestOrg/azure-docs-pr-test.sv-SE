@@ -21,8 +21,8 @@
 ## [Verifiera Traffic Manager-inställningar](traffic-manager-testing-settings.md)
 ## [Kombinera tjänster för belastningsutjämning](traffic-manager-load-balancing-azure.md)
 ## [Mät Traffic Manager-prestanda](traffic-manager-performance-considerations.md)
-## [Hantera Traffic Manager med hjälp av PowerShell](traffic-manager-powershell-arm.md)
-## [Peka din Internetdomän till Traffic Manager](traffic-manager-point-internet-domain.md)
+## [Använd PowerShell toomanage Traffic Manager](traffic-manager-powershell-arm.md)
+## [Peka din Internet-domän tooTraffic Manager](traffic-manager-point-internet-domain.md)
 ## Felsöka
 ### [Felsök degraderat tillstånd på Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md)
 

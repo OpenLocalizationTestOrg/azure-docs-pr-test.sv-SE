@@ -1,6 +1,6 @@
 ---
-title: "Uppgradera ett säkerhetskopieringsvalv till Recovery Services-valvet (förhandsversion) | Microsoft Docs"
-description: "Anvisningar och supportinformation för att uppgradera din Azure Backup-valv till Recovery Services-valvet."
+title: "aaaUpgrade ett valv tooa återställningstjänster säkerhetskopieringsvalv (förhandsversion) | Microsoft Docs"
+description: Anvisningar och support information tooupgrade valvet Azure Backup tooa Recovery Services-valvet.
 services: backup
 documentationcenter: dev-center-name
 author: markgalioto
@@ -13,148 +13,148 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/03/2017
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 46d7dadcb03f55e626b06a1c4b2ccc86cd46cd16
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 49062ca4556a009c82f143bb3a60ec71748bed01
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Uppgradera ett säkerhetskopieringsvalv till Recovery Services-valvet
+# <a name="upgrade-a-backup-vault-tooa-recovery-services-vault"></a>Uppgradera en Backup-valvet tooa Recovery Services-valvet
 
-Den här artikeln förklarar hur du uppgraderar ett säkerhetskopieringsvalv till Recovery Services-valvet. Uppgraderingen påverkar inte körs säkerhetskopieringsjobb och inga säkerhetskopierade data går förlorade. De främsta orsakerna till att uppgradera ett säkerhetskopieringsvalv till Recovery Services-valv:
+Den här artikeln förklarar hur tooupgrade ett säkerhetskopieringsvalv tooa återställningstjänster valvet. hello uppgraderingsprocessen påverkar inte körs säkerhetskopieringsjobb och inga säkerhetskopierade data går förlorade. hello primära orsakerna tooupgrade en Backup-valvet tooa Recovery Services-valvet:
 - Alla funktioner i ett säkerhetskopieringsvalv behålls i Recovery Services-valvet.
 - Recovery Services-valv har fler funktioner än säkerhetskopieringsvalv, inklusive: bättre säkerhet, integrerad övervakning, snabbare återställningar och återställning på objektnivå.
 - Hantera Säkerhetskopiera objekt från en bättre och förenklad portal.
-- Nya funktioner gäller endast för Recovery Services-valv.
+- Nya funktioner gäller endast tooRecovery Services-valv.
 
-## <a name="impact-to-operations-during-upgrade"></a>Påverkan på åtgärder under uppgradering
+## <a name="impact-toooperations-during-upgrade"></a>Påverkan toooperations under uppgradering
 
-När du uppgraderar ett säkerhetskopieringsvalv till Recovery Services-valvet, finns det ingen inverkan på din plan dataåtgärder. Alla säkerhetskopieringsjobb Fortsätt som vanligt, och alla aktiva jobb fortsätta utan avbrott. Under uppgraderingen hanteringsåtgärder innebära ett kort driftstopp och du kan inte skydda nya objekt eller skapa ad hoc säkerhetskopieringar jobb. Återställningsjobb för IaaS-VM körs inte under uppgraderingen. Uppgraderingen valvet tar en timma att slutföra. När du är klar ersätter ett Recovery Services-valv Backup-valvet.
+När du uppgraderar en Backup-valvet tooa Recovery Services-valvet, påverkas inte tooyour dataåtgärder plan. Alla säkerhetskopieringsjobb Fortsätt som vanligt, och alla aktiva jobb fortsätta utan avbrott. Under uppgraderingen hello hanteringsåtgärder innebära ett kort driftstopp och du kan inte skydda nya objekt eller skapa ad hoc säkerhetskopieringar jobb. Återställningsjobb för IaaS-VM körs inte under hello uppgraderingen. hello valvet uppgraderingen tar under en timme toocomplete. När du är klar ersätter ett Recovery Services-valv hello Backup-valvet.
 
-## <a name="changes-to-your-automation-and-tool-after-upgrading"></a>Ändringar i dina automation och verktyget efter uppgraderingen
+## <a name="changes-tooyour-automation-and-tool-after-upgrading"></a>Verktyget när du har uppgraderat och ändringar tooyour automation
 
-När du förberedde din infrastruktur för valvet uppgraderingen, måste du uppdatera din befintliga automation eller verktygsuppsättning så att den fortsätter att fungera efter uppgraderingen.
-Finns i PowerShell-cmdlets referenser för den [Service Manager-distributionsmodellen](backup-client-automation-classic.md) och [Resource Manager-distributionsmodellen](backup-client-automation.md).
+När du förberedde hello valvet uppgradera infrastrukturen måste du uppdatera din befintliga automation eller tooling tooensure som den fortfarande toowork efter hello uppgradering.
+Se hello PowerShell-cmdlets referenser för hello [Service Manager-distributionsmodellen](backup-client-automation-classic.md) och hello [Resource Manager-distributionsmodellen](backup-client-automation.md).
 
 
 ## <a name="before-you-upgrade"></a>Innan du uppgraderar
 
-Kontrollera följande innan du uppgraderar din Backup-valv till återställningstjänsten valv.
+Kontrollera hello följande problem innan du uppgraderar din Backup-valv tooRecovery Service valv.
 
-- **Minsta agentversion**: Om du vill uppgradera ditt valv, kontrollera att Microsoft Azure Recovery Services MARS-agenten är minst version 2.0.9070.0. Om MARS-agenten är äldre än 2.0.9070.0, uppdatera agenten innan du startar uppgraderingsprocessen.
-- **Instans-baserade faktureringsmodell som tillämpas**: återställningstjänsten valv stöder bara den fakturering instans-modellen. Om du har ett säkerhetskopieringsvalv som använder den äldre fakturering Storage-baserade-modellen, konvertera vilken faktureringsmodell som tillämpas under uppgraderingen.
-- **Inga åtgärder i pågående säkerhetskopieringskonfigurationen**: under uppgraderingen, åtkomst till management-plan är begränsad. Slutför alla hanteringsåtgärder plan och starta sedan uppgraderingen.
+- **Minsta agentversion**: tooupgrade ditt valv, se till att hello Microsoft Azure Recovery Services MARS-agenten är minst version 2.0.9070.0. Om hello MARS-agenten är äldre än 2.0.9070.0, uppdatera hello-agenten innan du startar uppgraderingsprocessen hello.
+- **Instans-baserade faktureringsmodell som tillämpas**: återställningstjänsten valv stöder endast hello instans-baserade faktureringsmodell som tillämpas. Om du har ett säkerhetskopieringsvalv som använder hello äldre Storage-baserade fakturering modellen konvertera hello faktureringsmodell som tillämpas under uppgraderingen.
+- **Inga åtgärder i pågående säkerhetskopieringskonfigurationen**: under uppgraderingen åtkomst toohello management plan är begränsad. Slutför alla hanteringsåtgärder plan och starta sedan hello uppgraderingen.
 
-## <a name="using-powershell-scripts-to-upgrade-your-vaults"></a>Med hjälp av PowerShell-skript för att uppgradera ditt valv
+## <a name="using-powershell-scripts-tooupgrade-your-vaults"></a>Med hjälp av PowerShell-skript tooupgrade ditt valv
 
-Du kan använda PowerShell-skript för att uppgradera din Backup-valv till Recovery Services-valv. Kontrollera att du har de nödvändiga komponenterna i PowerShell som utlöser uppgraderingen valvet. PowerShell-skript för säkerhetskopieringsvalv fungerar inte för Recovery Services-valv. Förbereda din miljö för att uppgradera valv:
+Du kan använda PowerShell-skript tooupgrade din säkerhetskopieringsvalv tooRecovery Services-valv. Kontrollera att du har hello nödvändig PowerShell komponenter tootrigger hello valvet uppgradering. PowerShell-skript för säkerhetskopieringsvalv fungerar inte för Recovery Services-valv. Förbereda din miljö tooupgrade hello valv:
 
-1. Installera eller uppgradera [Windows Management Framework (WMF) till version 5](https://www.microsoft.com/download/details.aspx?id=50395) eller senare.
+1. Installera eller uppgradera [Windows Management Framework (WMF) tooversion 5](https://www.microsoft.com/download/details.aspx?id=50395) eller senare.
 2. [Installera Azure PowerShell MSI](https://github.com/Azure/azure-powershell/releases/download/v3.8.0-April2017/azure-powershell.3.8.0.msi).
-3. Hämta den [PowerShell-skript](https://aka.ms/vaultupgradescript2) så här uppgraderar du ditt valv.
+3. Hämta hello [PowerShell-skript](https://aka.ms/vaultupgradescript2) tooupgrade ditt valv.
 
-### <a name="run-the-powershell-script"></a>Kör PowerShell-skriptet
+### <a name="run-hello-powershell-script"></a>Kör hello PowerShell-skript
 
-Du kan använda följande skript för att uppgradera ditt valv. Följande exempelskript har förklaringar av parametrar.
+Använd hello följande skript tooupgrade ditt valv. Följande exempelskript hello har förklaringar av hello parametrar.
 
 RecoveryServicesVaultUpgrade 1.0.2.ps1 **- SubscriptionID** `<subscriptionID>` **- VaultName** `<vaultname>` **-plats** `<location>` **- ResourceType** `BackupVault` **- TargetResourceGroupName**`<rgname>`
 
-**SubscriptionID** -prenumeration ID-numret för valvet som uppgraderas.<br/>
-**VaultName** -namnet på det säkerhetskopieringsvalv som uppgraderas.<br/>
-**Plats** -platsen för valvet som uppgraderas.<br/>
+**SubscriptionID** -hello prenumeration ID-numret hello valvet som uppgraderas.<br/>
+**VaultName** - hello namn på hello Backup-valvet som uppgraderas.<br/>
+**Plats** -platsen för hello valvet som uppgraderas.<br/>
 **ResourceType** -Använd BackupVault.<br/>
-**TargetResourceGroupName** - eftersom du uppgraderar valvet Resource Manager-baserade distribution, ange en resursgrupp. Du kan använda en befintlig resursgrupp eller skapa en genom att ange ett nytt namn. Om du skriver namnet på en resursgrupp kan du skapa en ny resursgrupp. Om du vill veta mer om resursgrupper kan läsa det här [översikt över resursgrupper](../azure-resource-manager/resource-group-overview.md#resource-groups).
+**TargetResourceGroupName** - eftersom du uppgraderar hello valvet tooa Resource Manager-baserade distribution, ange en resursgrupp. Du kan använda en befintlig resursgrupp eller skapa en genom att ange ett nytt namn. Om du skriver fel hello namnet på en resursgrupp kan du skapa en ny resursgrupp. toolearn mer om resursgrupper, Läs [översikt över resursgrupper](../azure-resource-manager/resource-group-overview.md#resource-groups).
 
 >[!NOTE]
-> Namn för resursgruppen har begränsningar. Se till att följa riktlinjerna; Det gick inte att göra det kan orsaka valvet uppgraderingar misslyckas.
+> Namn för resursgruppen har begränsningar. Vara säker på att toofollow hello vägledning. fel toodo så kan det orsaka valvet uppgraderingar toofail.
 >
 >
 
-Följande kodavsnitt är ett exempel på vad din PowerShell-kommandot ska se ut som:
+hello är följande kodavsnitt ett exempel på vad din PowerShell-kommandot ska se ut som:
 
 ```
 RecoveryServicesVaultUpgrade.ps1 -SubscriptionID 53a3c692-5283-4f0a-baf6-49412f5ebefe -VaultName "TestVault" -Location "Australia East" -ResourceType BackupVault -TargetResourceGroupName "ContosoRG"
 ```
 
-Du kan också köra skriptet utan några parametrar och du uppmanas att ange indata för alla obligatoriska parametrar.
+Du kan också köra skript hello utan några parametrar och du uppmanas tooprovide indata för alla obligatoriska parametrar.
 
-PowerShell-skriptet uppmanas du att ange dina autentiseringsuppgifter. Ange dina autentiseringsuppgifter två gånger: en gång för Service Manager-konto och en gång för Resource Manager-kontot.
+hello PowerShell-skript uppmanas du tooenter dina autentiseringsuppgifter. Ange dina autentiseringsuppgifter två gånger: en gång för hello Service Manager-konto och en gång för hello Resource Manager-konto.
 
 ### <a name="pre-requisites-checking"></a>Kontroll av förutsättningar
-När du har angett dina autentiseringsuppgifter för Azure, kontrollerar Azure att din miljö uppfyller följande krav:
+När du har angett dina autentiseringsuppgifter för Azure, kontrollerar Azure att din miljö uppfyller hello följande krav:
 
-- **Minsta agentversion** -säkerhetskopieringsvalv Recovery Services-valv uppgraderar MARS-agenten vara på minst version 2.0.9070. Om du har artiklar som registrerats för ett säkerhetskopieringsvalv med en agent före 2.0.9070 misslyckas förutsättningskontrollen. Om kravkontrollen misslyckas, uppdatera agenten och försök att uppgradera valvet igen. Du kan hämta den senaste versionen av agenten från [http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
-- **Pågående configuration jobb**: om någon konfigurerar jobbet för ett säkerhetskopieringsvalv som angetts som ska uppgraderas eller registrera en artikel kravkontrollen misslyckas. Slutföra konfigurationen, eller avsluta registrering av objektet och sedan startar uppgraderingsprocessen valvet.
-- **Storage-baserade faktureringsmodell som tillämpas**: Recovery Services-valv stöder instans-baserade fakturering modellen. Om du kör uppgraderingen valvet på ett säkerhetskopieringsvalv som använder Storage-baserade fakturering modellen, uppmanas du att uppgradera faktureringsmodellen tillsammans med valvet. Annars kan du uppdatera faktureringsmodellen först och sedan uppgraderar valvet.
-- Identifiera en resursgrupp för Recovery Services-valvet. Om du vill dra nytta av funktionerna för Resource Manager distribution, måste du placera ett Recovery Services-valv i en resursgrupp. Om du inte vet vilken resursgrupp genom att ange ett namn och uppgraderingsprocessen skapas resursgruppen. Uppgraderingsprocessen associerar även valvet med den nya resursgruppen.
+- **Minsta agentversion** -uppgradering valv tooRecovery Services säkerhetskopieringsvalv kräver hello MARS-agenten toobe minst version 2.0.9070. Om du har artiklar registrerade tooa Backup-valvet med en agent före 2.0.9070, hello misslyckas. Om hello kravkontrollen misslyckas, uppdatera hello-agenten och försök tooupgrade hello valvet igen. Du kan hämta hello senaste versionen av hello agent från [http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
+- **Pågående configuration jobb**: om någon konfigurerar jobbet för ett säkerhetskopieringsvalv som toobe uppgraderas eller registrera ett objekt, hello kravkontrollen misslyckas. Slutför konfiguration av hello, eller avsluta registrering hello-objektet och starta sedan hello valvet uppgraderingsprocessen.
+- **Storage-baserade faktureringsmodell som tillämpas**: återställningstjänster valv stöd hello instans-baserade faktureringsmodell som tillämpas. Om du kör hello valvet uppgraderingen på ett säkerhetskopieringsvalv som använder hello Storage-baserade faktureringsmodell som tillämpas, är du tillfrågas tooupgrade faktureringsmodellen tillsammans med hello valvet. Annars kan du uppdatera faktureringsmodellen först och sedan uppgraderar hello-valvet.
+- Identifiera en resursgrupp för hello Recovery Services-valvet. tootake nytta av Hej funktioner för distribution av Resource Manager, måste du placera ett Recovery Services-valv i en resursgrupp. Om du inte vet vilken resursgrupp toouse, ange ett namn och en hello uppgraderingsprocessen skapas hello resursgruppen. hello uppgraderingsprocessen associerar även hello valvet med hello ny resursgrupp.
 
-När uppgraderingen är klar kontrollerar du att förutsättningar uppmanas processen du att starta uppgraderingen valvet. När du har bekräftat ta uppgraderingsprocessen brukar cirka 15-20 minuter för att slutföra beroende på storleken på ditt valv. Om du har ett stort valv kan ta upp till 90 minuter.
+När hello uppgraderingen är klar kontrollerar hello förutsättningar uppmanas hello du toostart hello valvet uppgraderingen. När du har bekräftat ta hello uppgraderingsprocessen brukar runt 15 20 minuter toocomplete, beroende på hello storleken på ditt valv. Om du har ett stort valv kan uppgraderingen ta upp too90 minuter.
 
 ## <a name="managing-your-recovery-services-vaults"></a>Hantera Recovery Services-valv
 
-Följande skärmar visas ett nytt Recovery Services-valv som uppgraderats från säkerhetskopieringsvalvet i Azure-portalen. Den första skärmen visar valvet instrumentpanelen som visar viktiga entiteter för valvet.
+hello följande skärmar visas ett nytt Recovery Services-valv som uppgraderats från säkerhetskopieringsvalvet i hello Azure-portalen. hello första skärmen visar hello valvet instrumentpanelen som visar viktiga entiteter för hello-valvet.
 
 ![exempel på Recovery Services-valv som uppgraderats från ett säkerhetskopieringsvalv](./media/backup-azure-upgrade-backup-to-recovery-services/upgraded-rs-vault-in-dashboard.png)
 
-Den andra skärmen visar hjälp länkarna som är tillgängliga som hjälper dig att komma igång med Recovery Services-valvet.
+andra hello-skärmen visar hello hjälplänkar tillgängliga toohelp du komma igång med hello Recovery Services-valvet.
 
-![länkar i bladet Snabbstart](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
+![hjälplänkar i hello Snabbstart-bladet](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
 
 ## <a name="post-upgrade-steps"></a>Åtgärder efter uppgradering
-Recovery Services-ventilen har stöd för att ange Tidszonsinformationen i princip för säkerhetskopiering. När valvet har uppgraderats, gå till principer för säkerhetskopiering från valvet inställningsmenyn och uppdatera informationen om tidszonen för var och en av de principer som konfigurerats i valvet. Den här skärmen visas redan Säkerhetskopieringsschemat tiden som angetts som per lokal tidszon som används när du har skapat principen. 
+Recovery Services-ventilen har stöd för att ange Tidszonsinformationen i princip för säkerhetskopiering. När valvet har uppgraderats, gå tooBackup principer från valvet inställningsmenyn och uppdatera hello tidszonsinformation för varje hello principer som konfigurerats i hello-valvet. Den här skärmen visar redan hello Säkerhetskopieringsschemat tid som angetts som per lokal tidszon som används när du har skapat principen. 
 
 ## <a name="enhanced-security"></a>Förbättrad säkerhet
 
-När ett säkerhetskopieringsvalv uppgraderas till Recovery Services-valvet, aktiveras automatiskt säkerhetsinställningarna för det valvet. När säkerhetsinställningarna finns på vissa åtgärder, till exempel ta bort säkerhetskopior eller ändra en lösenfras kräva en [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) PIN-kod. Mer information om förbättrad säkerhet finns i artikeln [säkerhetsfunktioner för att skydda hybrid säkerhetskopieringar](backup-azure-security-feature.md). 
+När ett säkerhetskopieringsvalv uppgraderas tooa Recovery Services-valvet, hello säkerhetsinställningarna för det valvet aktiveras automatiskt. När hello säkerhetsinställningar som finns på vissa åtgärder, till exempel ta bort säkerhetskopior eller ändra en lösenfras kräva en [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) PIN-kod. Mer information om hello förbättrad säkerhet finns i hello artikel [säkerhetsfunktioner tooprotect hybrid säkerhetskopieringar](backup-azure-security-feature.md). 
 
-När Förbättrad säkerhet är aktiverad bevaras data upp till 14 dagar efter punkt återställningsinformation har tagits bort från valvet. Kunder som debiteras för lagring av den här säkerhetsdata. Säkerhet datalagring gäller återställningspunkter för Azure Backup-agenten, Azure Backup Server och System Center Data Protection Manager. 
+När hello förbättrad säkerhet är aktiverad bevaras data in too14 dagar efter hello information om återställning har tagits bort från hello-valvet. Kunder som debiteras för lagring av den här säkerhetsdata. Säkerhet datalagring gäller toorecovery punkter för hello Azure Backup-agenten, Azure Backup Server och System Center Data Protection Manager. 
 
 ## <a name="gather-data-on-your-vault"></a>Samla in data på ditt valv
 
-När du uppgraderar till Recovery Services-valvet, konfigurera rapporter för Azure Backup (för IaaS-VM och Microsoft Azure Recovery Services MARS-) och använda Power BI åtkomst till rapporter. Mer information om insamling av data finns i artikeln [konfigurera Azure Backup rapporterar](backup-azure-configure-reports.md).
+När du uppgraderar tooa Recovery Services-valvet, konfigurera rapporter för Azure Backup (för IaaS-VM och Microsoft Azure Recovery Services MARS-) och Använd Power BI tooaccess hello-rapporter. Mer information om att samla in data finns hello artikeln [konfigurera Azure Backup rapporterar](backup-azure-configure-reports.md).
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
-**Påverkar uppgraderingsplanen mina pågående säkerhetskopior?**</br>
+**Påverkar hello uppgraderingsplanen mina pågående säkerhetskopior?**</br>
 Nej. Säkerhetskopiorna pågående fortsätta utan avbrott under och efter uppgraderingen.
 
-**Vad händer med min valv om jag inte uppgradera snart kan?**</br>
-Eftersom alla nya funktioner som gäller endast för Recovery Services-valv, bör du uppgradera ditt valv. Microsoft kommer så småningom inaktualisera den klassiska portalen. Startar den 1 September 2017 börjar Microsoft automatiskt uppgradera säkerhetskopieringsvalv till Recovery Services-valv. Med den 1 November 2017 kommer Microsoft att slutföra uppgraderingen. Ditt valv kan uppgraderas automatiskt under September eller oktober. Microsoft rekommenderar att du uppgraderar ditt valv så snart som möjligt.
+**Om jag inte uppgradera snart kan händer toomy valv?**</br>
+Eftersom alla nya funktioner gäller endast tooRecovery Services-valv, bör du tooupgrade ditt valv. Microsoft kommer så småningom inaktualisera hello klassiska portalen. Startar den 1 September 2017 kommer Microsoft att börja uppgradera automatiskt säkerhetskopieringsvalv tooRecovery Services-valv. Med den 1 November 2017 kommer Microsoft att slutföra hello uppgraderingsprocessen. Ditt valv kan uppgraderas automatiskt under September eller oktober. Microsoft rekommenderar att du uppgraderar ditt valv så snart som möjligt.
 
 **Vad betyder det här uppgradering för Mina befintliga verktygsuppsättning?**</br>
-Uppdatera din verktygsuppsättning till Resource Manager-distributionsmodellen. Recovery Services-valv skapades för använder i Resource Manager-distributionsmodellen. Det är viktigt att planera för Resource Manager-distributionsmodellen och redovisning för skillnaden i ditt valv. 
+Uppdatera din verktygsuppsättning toohello Resource Manager-modellen. Recovery Services-valv skapades för använder i hello Resource Manager-distributionsmodellen. Planera för hello Resource Manager-modellen och för hello skillnad i ditt valv är viktigt. 
 
-**Under uppgraderingen, är det mycket driftavbrott?**</br>
-Det beror på antalet resurser som har uppgraderats. För mindre distributioner (några tiotal skyddade instanser), bör hela uppgraderingen ta mindre än 20 minuter. För större distributioner bör ta högst en timme.
+**Under uppgraderingen hello är det mycket driftavbrott?**</br>
+Det beror på hello antal resurser som ska uppgraderas. För mindre distributioner (några tiotal skyddade instanser), bör hello hela uppgraderingen ta mindre än 20 minuter. För större distributioner bör ta högst en timme.
 
 **Kan jag återställa efter uppgraderingen?**</br>
-Nej. Återställning stöds inte när resurserna har uppgraderats.
+Nej. Återställning stöds inte när hello resurser har uppgraderats.
 
-**Kan jag verifiera min prenumeration eller resurser för att se om de är kompatibelt med uppgraderingen?**</br>
-Ja. Det första steget i uppgraderingen validerar att resurserna för uppgraderingen. Om det inte går att valideringen av förutsättningar, kan du få meddelanden på grund av alla inte går att slutföra uppgraderingen.
+**Kan jag verifiera min prenumeration eller resurser toosee om de är kompatibelt med uppgraderingen?**</br>
+Ja. hello första steget i uppgraderingen validerar att hello resurser av uppgraderingen. Om det inte går att hello verifiering av krav, kan du få meddelanden för alla hello orsaker hello uppgraderingen inte kan slutföras.
 
-**Vilka behörigheter som ska ha till att utlösa valvet uppgraderingen?**</br>
-Om du vill uppgradera valvet, måste du läggas till som medadministratör för prenumerationen på den klassiska Azure-portalen. Detta krävs även om du redan anges som ägare i Azure-portalen. Försök att lägga till en medadministratör för prenumerationen i Azure klassiska portalen för att ta reda på om du är medadministratör för prenumerationen. Om du inte kan lägga till en medadministratör kontakta en administratör eller medadministratör för prenumerationen som kan lägga till dig som medadministratör.
+**Vilka behörigheter som ska jag har tootrigger valvet uppgraderingen?**</br>
+tooperform hello valvet uppgraderingen, du måste läggas till som medadministratör för prenumerationen hello i hello klassiska Azure-portalen. Detta krävs även om du redan anges som ägare i hello Azure-portalen. Försök tooadd en medadministratör för hello-prenumeration i Azure klassiska portal toofind ut om du är medadministratör för hello prenumeration. Om du inte kan tooadd en medadministratör kontakta en administratör eller medadministratör för hello-prenumeration som du kan lägga till dig som medadministratör.
 
 **Kan jag uppgradera min CSP-baserade Backup-valvet?**</br>
-Nej. För närvarande kan uppgradera du inte CSP-baserade säkerhetskopieringsvalv. Vi lägger till stöd för uppgradering av CSP-baserade säkerhetskopieringsvalv i nästa versioner.
+Nej. För närvarande kan uppgradera du inte CSP-baserade säkerhetskopieringsvalv. Vi lägger till stöd för uppgradering av CSP-baserade säkerhetskopieringsvalv i nästa hello-versioner.
 
 **Kan jag visa min klassiska valvet efter uppgradering?**</br>
-Nej. Du kan inte visa eller hantera din klassiska valvet efter uppgradering. Du kommer bara att kunna använda den nya Azure-portalen för alla hanteringsåtgärder på valvet.
+Nej. Du kan inte visa eller hantera din klassiska valvet efter uppgradering. Du kan bara kan toouse hello nya Azure-portalen för alla hanteringsåtgärder på hello-valvet.
 
-**Min uppgraderingen misslyckades, men den dator som lagras agenten kräver uppdatering är inte finns längre. Vad gör jag i så fall?**</br>
-Om du behöver använda arkivet säkerhetskopior av den här datorn för långsiktig kvarhållning och du inte uppgradera valvet. I kommande versioner vi lägga till stöd för uppgradering av sådana valvet.
-Om du inte behöver lagra säkerhetskopior av den här datorn längre sedan du avregistrera den här datorn från valvet och gör om uppgraderingen.
+**Min uppgraderingen misslyckades, men hello-dator som lagras hello agenten kräver uppdatering är inte finns längre. Vad gör jag i så fall?**</br>
+Om du behöver toouse hello store hello säkerhetskopior av den här datorn för långsiktig kvarhållning och sedan inte kan tooupgrade hello valvet. I kommande versioner vi lägga till stöd för uppgradering av sådana valvet.
+Om du inte behöver toostore hello säkerhetskopior av den här datorn längre och sedan kontrollera att avregistrera den här datorn från valvet hello och försök hello uppgraderingen.
 
-**Varför visas inte jobb-information för min lokala resurser efter uppgraderingen**</br>
-Övervakning för en lokal säkerhetskopiering (MARS agent DPM och Azure Backup Server) är en ny funktion som du får när du uppgraderar din Backup-valvet till Recovery Services-valvet. Övervakning information tar upp till 12 timmar att synkronisera med tjänsten.
+**Varför visas inte hello jobb information för min lokala resurser efter uppgraderingen**</br>
+Övervakning för en lokal säkerhetskopiering (MARS agent DPM och Azure Backup Server) är en ny funktion som du får när du uppgraderar din Backup-valvet tooRecovery Services-valvet. hello övervakningsinformation upptar too12 timmar toosync med hello-tjänsten.
 
 **Hur rapporterar problem?**</br>
-Observera åtgärds-ID som anges i felet om en del av valvet uppgraderingen misslyckas. Microsoft-supporten fungerar proaktivt för att lösa problemet. Du kan nå ut till Support eller skicka e-post på rsvaultupgrade@service.microsoft.com med prenumerations-ID, valvnamnet och åtgärds-ID. Vi kommer att försöka lösa problemet så snabbt som möjligt. Försök inte igen såvida inte uttryckligen uppmanas att göra det från Microsoft.
+Om någon del av hello valvet uppgradera misslyckas Obs hello åtgärds-ID som anges i hello-fel. Microsoft-supporten fungerar proaktivt tooresolve hello problemet. Du kan nå ut tooSupport eller skicka e-post på rsvaultupgrade@service.microsoft.com med prenumerations-ID, valvnamnet och åtgärds-ID. Vi försöker tooresolve hello problemet så snabbt som möjligt. Försök inte hello igen såvida inte uttryckligen har angett toodo så av Microsoft.
 
 
 ## <a name="next-steps"></a>Nästa steg
-Använd följande artikel till:</br>
+Använd följande artikel till hello:</br>
 [Säkerhetskopiera en IaaS VM](backup-azure-arm-vms-prepare.md)</br>
 [Säkerhetskopiera en Azure Backup-Server](backup-azure-microsoft-azure-backup.md)</br>
 [Säkerhetskopiera Windows Server](backup-configure-vault.md).

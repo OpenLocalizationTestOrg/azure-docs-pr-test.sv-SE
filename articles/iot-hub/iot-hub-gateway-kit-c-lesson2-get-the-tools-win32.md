@@ -1,6 +1,6 @@
 ---
 title: "SensorTag enhet & Azure IoT-Gateway - lektion 2: Hämta verktyg (Windows) | Microsoft Docs"
-description: "Installera verktygen och programvaran på din värddator som kör Windows, skapar en IoT-hubb och registrera enheten i IoT-hubben."
+description: "Installera hello verktyg och hello programvara på din värddator som kör Windows, skapar en IoT-hubb och registrera enheten i hello IoT-hubb."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,13 +17,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 0d8ba03df63d0b8657a9e275fc636e806c66b683
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3b30b60a0115413394992061a88dde4cd442ac19
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-windows-7-and-later"></a>Skaffa dig verktyg (Windows 7 och senare)
+# <a name="get-hello-tools-windows-7-and-later"></a>Hämta hello verktyg (Windows 7 och senare)
 > [!div class="op_single_selector"]
 > * [Windows 7 eller senare](iot-hub-gateway-kit-c-lesson2-get-the-tools-win32.md)
 > * [Ubuntu 16.04](iot-hub-gateway-kit-c-lesson2-get-the-tools-ubuntu.md)
@@ -32,97 +32,97 @@ ms.lasthandoff: 07/11/2017
 ## <a name="what-you-will-do"></a>Vad du ska göra
 
 - Installera Git, Node.js, Gulp, Python.
-- Installera Azure-kommandoradsgränssnittet (Azure CLI). 
+- Installera hello Azure-kommandoradsgränssnittet (Azure CLI). 
 
-Om du har några problem kan hitta lösningar på den [felsökning sidan](iot-hub-gateway-kit-c-troubleshooting.md).
+Om du har några problem med söka efter lösningar på hello [felsökning sidan](iot-hub-gateway-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
 
 I den här lektionen får du lära dig:
 
-- Så här installerar du [Git](https://git-scm.com/) och [Node.js](https://nodejs.org/en/).
-  - Git är ett system för öppen källkod distribuerade versionen. Exempelprogram för den här lektionen lagras på Git.
+- Hur tooinstall [Git](https://git-scm.com/) och [Node.js](https://nodejs.org/en/).
+  - Git är ett system för öppen källkod distribuerade versionen. hello-exempelprogram för den här lektionen lagras på Git.
   - Node.js är JavaScript-körning med ett omfattande paketet ekosystem.
-- Hur du använder [NPM](https://www.npmjs.com/) installera Node.js utvecklingsverktyg.
-  - Versionen som krävs för Node.js är 4.5 LTS.
-  - NPM är en av de paket cheferna för Node.js.
-- Så här installerar Visual Studio-koden.
+- Hur toouse [NPM](https://www.npmjs.com/) tooinstall Node.js utvecklingsverktyg.
+  - hello version som krävs av Node.js är 4.5 LTS.
+  - NPM är en av hello paketet chefer för Node.js.
+- Hur tooinstall Visual Studio Code.
   - Visual Studio-koden är plattformsoberoende redigerare för enkel men kraftfull källa för Windows, Linux och macOS. Det har bra stöd för felsökning, inbäddad Git-kontroll, syntaxmarkering, intelligent kod slutförande, kodavsnitt och koden eftersom samt.
-- Hur du installerar Python.
+- Hur tooinstall Python.
   - Python är en term som används på hög nivå, allmänna, tolkad och dynamiska programmeringsspråk.
-- Så här installerar du Azure CLI.
-  - Azure CLI tillhandahåller en flera plattformar kommandoraden för Azure. Du arbetar direkt från en kommandorad för att etablera och hantera resurser.
-- Hur du använder Azure CLI för att skapa en IoT-hubb.
+- Hur tooinstall hello Azure CLI.
+  - hello Azure CLI tillhandahåller en flera plattformar kommandoraden för Azure. Du arbetar direkt från en kommandorad tooprovision och hantera resurser.
+- Hur toouse hello Azure CLI toocreate en IoT-hubb.
 
 ## <a name="what-you-need"></a>Vad du behöver
 
-- En Internet-anslutning att hämta verktyg och program.
+- En Internet-anslutning toodownload hello verktyg och program.
 - En Windows-dator.
 
 ## <a name="install-git-and-nodejs"></a>Installera Git och Node.js
 
-Klicka på länken nedan om du vill hämta och installera Git och Node.js LTS för Windows.
+Klicka på följande länkar toodownload hello och installera Git och Node.js LTS för Windows.
 
 - [Hämta Git för Windows](https://git-scm.com/download/win/)
 - [Hämta Node.js LTS för Windows](https://nodejs.org/en/)
 
 ## <a name="install-nodejs-development-tools"></a>Installera Node.js utvecklingsverktyg
 
-Du använder [gulp.js](http://gulpjs.com/) att automatisera distribution och körning av skript.
+Du använder [gulp.js](http://gulpjs.com/) tooautomate distribution och körning av skript.
 
-Tryck på `Windows + R`, typen `cmd` och tryck på `Enter` att öppna en kommandotolk och kör sedan följande kommando:
+Tryck på `Windows + R`, typen `cmd` och tryck på `Enter` tooopen ett kommandotolksfönster och sedan kör hello följande kommando:
 
 ```cmd
 npm install -g gulp
 ```
 
-Om du får problem med installationen finns i [felsökningsguide för](iot-hub-gateway-kit-c-troubleshooting.md) efter lösningar på vanliga problem.
+Om du får problem med hello installation finns hello [felsökningsguide för](iot-hub-gateway-kit-c-troubleshooting.md) för lösningar toocommon problem.
 
 > [!Note]
-> Noden, NPM och Gulp krävs för att köra automatiserade skript som utvecklats i Node.js.
+> Noden, NPM och Gulp är obligatoriska toorun automatiseringsskript utvecklats i Node.js.
 
 ## <a name="install-python"></a>Installera Python
 
-Du kan välja mellan Python 2.7, 3.4 eller 3.5. I den här självstudiekursen kommer använder vi Python 2.7. Om du redan har installerat python, gå till nästa avsnitt.
+Du kan välja mellan Python 2.7, 3.4 eller 3.5. I den här självstudiekursen kommer använder vi Python 2.7. Om du redan har installerat python går toohello nästa avsnitt.
 
 [Hämta Python för Windows](https://www.python.org/downloads/)
 
-Du måste också lägga till sökvägen till de mappar där Python.exe och pip.exe är installerade i systemet `PATH` miljövariabeln. Som standard installeras python.exe i `C:\Python27` och pip.exe installeras i `C:\Python27\Scripts`.
+Du måste också tooadd hello sökvägen hello mappar där Python.exe och pip.exe är installerade toohello system `PATH` miljövariabeln. Som standard installeras python.exe i `C:\Python27` och pip.exe installeras i `C:\Python27\Scripts`.
 
-## <a name="install-the-azure-cli"></a>Installera Azure CLI
+## <a name="install-hello-azure-cli"></a>Installera hello Azure CLI
 
-Så här installerar du Azure CLI:
+tooinstall hello Azure CLI, Följ dessa steg:
 
 1. Öppna ett kommandotolksfönster som administratör.
 
-2. Installera Azure CLI genom att köra följande kommandon:
+2. Installera hello Azure CLI genom att köra följande kommandon hello:
 
    ```cmd
    pip install --upgrade azure-cli
    pip install --upgrade azure-cli-iot
    ```
 
-   Installationen kan ta 5 minuter.
+   hello-installationen kan ta 5 minuter.
 
-3. Verifiera installationen genom att köra följande kommando:
+3. Kontrollera hello installationen genom att köra följande kommando hello:
 
    ```cmd
    az iot -h
    ```
 
-   Du bör se följande utdata om installationen har slutförts.
+   Du bör se hello följande utdata om hello-installationen har slutförts.
 
    ![Verifiera installation av Azure CLI](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_win.png)
 
 ## <a name="install-visual-studio-code"></a>Installera Visual Studio Code
 
-Du kan använda Visual Studio Code senare under kursen för att redigera konfigurationsfiler.
+Du kan använda Visual Studio Code senare i hello självstudiekursen tooedit konfigurationsfiler.
 
 [Hämta](https://code.visualstudio.com/docs/setup/windows) och installera Visual Studio-koden.
 
 ## <a name="summary"></a>Sammanfattning
 
-Du har installerat alla verktyg som krävs och programvara på värddatorn. Nästa uppgift är att använda Azure CLI för att skapa en IoT-hubb och registrera enheten i din IoT-hubb.
+Du har installerat alla hello krävs verktyg och program på värddatorn. Nästa uppgift är toouse hello Azure CLI toocreate en IoT-hubb och registrera enheten i din IoT-hubb.
 
 ## <a name="next-steps"></a>Nästa steg
 [Skapa en IoT-hubb och registrera din enhet](iot-hub-gateway-kit-c-lesson2-register-device.md)

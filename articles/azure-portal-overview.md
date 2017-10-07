@@ -1,6 +1,6 @@
 ---
-title: "Översikt över Azure Portal | Microsoft Docs"
-description: "Lär dig hur du använder Microsoft Azure Portal."
+title: "Översikt över portal aaaAzure | Microsoft Docs"
+description: "Lär dig hur toouse hello Microsoft Azure-portalen."
 services: 
 documentationcenter: 
 author: davidwrede
@@ -14,69 +14,69 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/16/2015
 ms.author: dwrede
-ms.openlocfilehash: 71820306716c6297085a29f3ceab89b55396bfe6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: feca8b5e26e9cb373c5e8e688173d5856050bb28
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoft-azure-portal-overview"></a>Översikt över Microsoft Azure Portal
-Microsoft Azure Portal är en central plats där du kan etablera och hantera dina Azure-resurser.  I den här kursen får du bekanta dig med portalen och lära dig hur du kan använda några av dessa viktiga funktioner:
+hello Microsoft Azure portal är en central plats där du kan etablera och hantera Azure-resurser.  Den här självstudiekursen kommer bekanta dig med portalen hello och visar hur toouse några av dessa nyckeln funktioner:
 
 * En **omfattande marknadsplats** där du kan bläddra igenom tusentals objekt från Microsoft och andra leverantörer som du kan köpa eller etablera.
-* En **enhetlig och skalbar navigeringsmiljö** som gör det enkelt att hitta de resurser som du är intresserad av och att utföra olika hanteringsåtgärder.
+* En **enhetlig och skalbar navigeringsmiljö** som gör det enkelt toofind hello resurser som du är intresserad av och utföra olika hanteringsåtgärder.
 * **Enhetliga hanteringssidor** (eller blad) där du kan hantera Azures många tjänster med hjälp av enhetliga inställningar, åtgärder, faktureringsinformation, hälsoövervakning, användningsdata och mycket mer.
-* En **personlig upplevelse** som låter dig skapa en anpassad startskärm som visar den information som du vill se varje gång du loggar in.  Du kan också anpassa hanteringsbladen som innehåller paneler.
+* En **personlig upplevelse** som hjälper dig att skapa en anpassad startskärm som visar hello information som du vill toosee varje gång du loggar in.  Du kan också anpassa hello hanteringsbladen som innehåller paneler.
   
   ![Hitta rätt i användargränssnittet på Azure Portal][UIOrientation]
 
 ## <a name="before-you-get-started"></a>Innan du börjar
-Du behöver ett giltig Azure-prenumeration för att kunna följa med i den här kursen.  Om du inte har någon kan du [registrera dig för en kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/).  När du har skaffat en prenumeration kan du få åtkomst till portalen på <https://portal.azure.com>.
+Du behöver ett giltig Azure-prenumeration toogo igenom den här kursen.  Om du inte har någon kan du [registrera dig för en kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/).  När du har en prenumeration kan du komma åt hello-portalen på <https://portal.azure.com>.
 
-## <a name="how-to-create-a-resource"></a>Skapa en resurs
-Azure har en marknadsplats med tusentals objekt som du kan skapa från en och samma plats.  Anta att du vill skapa en ny virtuell dator med Windows Server 2012.  +NYTT-navet är ingången till en granskad uppsättning kategorier från marknadsplatsen.  Varje kategori har en liten uppsättning objekt samt en länk till den fullständiga marknadsplatsen där du hittar alla kategorier och en sökfunktion. Så här skapar du den nya virtuella datorn med Windows Server 2012:  
+## <a name="how-toocreate-a-resource"></a>Hur toocreate en resurs
+Azure har en marknadsplats med tusentals objekt som du kan skapa från en och samma plats.  Anta att du vill toocreate en ny Windows Server 2012 VM.  hello + nytt-navet är ingången till en granskad uppsättning kategorier från hello marketplace.  Varje kategori har en liten uppsättning objekt samt en länk toohello fullständiga marknadsplatsen där du hittar alla kategorier och Sök. toocreate att nya Windows Server 2012 VM utför hello följande åtgärder:  
 
-1. Windows Server 2012 visas på en utmärkande plats och du hittar det snabbt i kategorin Compute.  
+1. Windows Server 2012 publiceras, så du kan välja den från hello beräkning kategori.  
 2. Fyll i grundläggande information i ett formulär.
-3. Klicka på Skapa. Den virtuella datorn börjar etableras direkt.
+3. Klicka på ”Skapa” och den virtuella datorn startar tooprovision omedelbart.
 
-Meddelandenavet meddelar dig när resursen har skapats och ett hanteringsblad öppnas (du kan alltid bläddra till resurser senare).
+Hej meddelanden hubb meddelar dig när resursen har skapats och ett hanteringsblad öppnas (du kan alltid Bläddra tooresources senare).
 
 ![Portalkategorier][PortalCategories]
 
-## <a name="how-to-find-your-resources"></a>Söka efter resurser
-Du kan fästa resurser som du ofta använder på startsidan, men ibland kanske du behöver bläddra till något som du inte använder så ofta.  Du kan komma åt alla dina resurser via bläddringsnavet nedan.  Du kan filtrera efter prenumeration, välja/ändra storlek på kolumner och gå till hanteringsbladen genom att klicka på enskilda objekt.
+## <a name="how-toofind-your-resources"></a>Hur toofind dina resurser
+Du kan fästa resurser som används ofta tooyour startsidan, men du kan behöva toobrowse toosomething som du inte använder ofta.  hello via bläddringsnavet nedan är ditt sätt tooget tooall av dina resurser.  Du kan filtrera efter prenumeration, välja/Ändra storlek på kolumner och gå toohello hanteringsbladen genom att klicka på enskilda objekt.
 
 ![Bläddringsnavet][BrowseHub]
 
-## <a name="how-to-manage-and-delegate-access-to-a-resource"></a>Hantera och delegera åtkomst till en resurs
-Från det här bladet kan du ansluta till de virtuella datorerna via Fjärrskrivbord, övervaka prestandarelaterade nyckeltal, kontrollera åtkomsten till den virtuella datorn med hjälp av rollbaserad åtkomst, konfigurera den virtuella datorn och utföra andra viktiga hanteringsåtgärder.  Det är fundamentalt att kunna delegera åtkomst baserat på roller vid hantering i större skala.  Klicka [här](active-directory/role-based-access-control-configure.md) om du vill veta mer. Så här delegerar du åtkomst till en resurs:
+## <a name="how-toomanage-and-delegate-access-tooa-resource"></a>Hur toomanage och delegera åtkomst till resursen tooa
+Från det här bladet kan du ansluta toohello virtuell dator med hjälp av fjärrskrivbord, övervaka prestandarelaterade nyckeltal, styra åtkomst toothis VM med hjälp av rollbaserad åtkomst (RBAC), konfigurera hello VM och utföra andra viktiga hanteringsåtgärder.  Delegera åtkomst baserat på roller är kritiska toomanaging i större skala.  Klicka på [här](active-directory/role-based-access-control-configure.md) toolearn mer om den. toodelegate åtkomst tooa resursen, utföra hello följande åtgärder:
 
-1. Bläddra till resursen.
-2. Klicka på Alla inställningar i avsnittet Essentials.
-3. Klicka på Användare i listan med inställningar.
-4. Klicka på Lägg till i kommandofältet.
+1. Bläddra tooyour resurs.
+2. Klicka på alla inställningar i avsnittet för hello Essentials.
+3. Klicka på 'Användare' hello inställningar.
+4. Klicka på ”Lägg till' i hello kommandofältet.
 5. Välj en användare och en roll.
 
 ![Hantera en resurs][ManageResource]
 
-## <a name="how-to-get-help"></a>Få hjälp
-Om du får problem finns vi här!  Portalen innehåller en hjälp- och supportsida där du kan få hjälp.  Beroende på din [supportplan](https://azure.microsoft.com/support/plans/) kan du också skapa supportärenden direkt på portalen.  När du har skapat ett supportärende kan du hantera ärendets livscykel på portalen. Du kommer till hjälp- och supportsidan genom att gå till Bläddra -> Hjälp + support.  
+## <a name="how-tooget-help"></a>Hur tooget
+Om du får problem finns vi här!  hello-portalen har en hjälp och support-sida där du kan i hello rätt riktning.  Beroende på din [supportavtal](https://azure.microsoft.com/support/plans/), du kan också skapa supportärenden direkt i hello-portalen.  När du har skapat ett supportärende kan du hantera hello livscykeln för hello-biljett från hello-portalen. Du kan få toohello hjälp och supportsidan genom att gå tooBrowse -> hjälp + support.  
 
 ![Hjälp och support][HelpSupport]
 
 ## <a name="summary"></a>Sammanfattning
 Nu ska vi se vad du lärt dig i den här självstudiekursen:
 
-* Du har lärt dig hur du registrerar dig, skaffar en prenumeration och bläddrar till portalen
-* Du har lärt dig hur du hittar rätt i portalens användargränssnitt och hur du skapar och hittar resurser
-* Du har lärt dig hur du skapar en resurs och hur du bläddrar bland resurser
-* Du har lärt dig om strukturen eller hanteringsbladen och hur du kan hantera olika typer av resurser på ett enhetligt sätt
-* Du har lärt dig hur du anpassar portalen så att den information som du är intresserad av visas överst
-* Du har lärt dig hur du styr åtkomsten till resurser med hjälp av rollbaserad åtkomst (RBAC)
-* Du har lärt dig hur du kan få hjälp och support
+* Du har lärt dig hur toosign, kommer en prenumeration och bläddra toohello portal
+* Du har fått objektorienterad med hello portalens användargränssnitt och lärt dig hur toocreate och bläddra resurser
+* Du har lärt dig hur toocreate en resurs och bläddrar bland resurser
+* Du har lärt dig om hello strukturen eller hanteringsbladen och hur du kan hantera olika typer av resurser konsekvent
+* Du har lärt dig hur toocustomize hello portal toobring hello information du är intresserad toohello överst
+* Du har lärt dig hur toocontrol åtkomst tooresources via rollen baserade åtkomst (RBAC)
+* Du har lärt dig hur tooget hjälp och support
 
-Microsoft Azure Portal gör det betydligt enklare att bygga och hantera dina program i molnet.  Håll dig uppdaterad med [hanteringsbloggen](https://azure.microsoft.com/blog/topics/management/). Vi [lyssnar alltid på feedback](https://feedback.azure.com/forums/223579-azure-preview-portal/) och gör ständigt förbättringar.  [ScottGus blogg](http://weblogs.asp.net/scottgu) är ett annat bra ställe med information om alla Azure-uppdateringar.
+hello Microsoft Azure-portalen enklare gör det betydligt bygga och hantera dina program i hello molnet.  Ta en titt på hello [hanteringsbloggen](https://azure.microsoft.com/blog/topics/management/) tookeep in toodate som vi ständigt [lyssnande toofeedback](https://feedback.azure.com/forums/223579-azure-preview-portal/) och gör ständigt förbättringar.  [Scottgus blogg](http://weblogs.asp.net/scottgu) är ett annat bra ställe toolook för alla Azure-uppdateringar.
 
 [UIOrientation]: ./media/azure-portal-how-to-use/azure_portal_1.png
 [PortalCategories]: ./media/azure-portal-how-to-use/azure_portal_2.png

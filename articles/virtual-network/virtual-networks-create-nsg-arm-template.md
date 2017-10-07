@@ -1,6 +1,6 @@
 ---
-title: "Skapa nätverkssäkerhetsgrupper - Azure Resource Manager-mall | Microsoft Docs"
-description: "Lär dig hur du skapar och distribuerar nätverkssäkerhetsgrupper med en Azure Resource Manager-mall."
+title: "aaaCreate nätverkssäkerhetsgrupper - Azure Resource Manager-mall | Microsoft Docs"
+description: "Lär dig hur toocreate och distribuera nätverkssäkerhetsgrupper med en Azure Resource Manager-mall."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88f7e5b2144daee7bf1c8e7312ba98e6fa967899
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3750168284fea7b41c8c0f908b0d31a9da5e38ce
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-network-security-groups-using-an-azure-resource-manager-template"></a>Skapa nätverk säkerhetsgrupper med en Azure Resource Manager-mall
 
@@ -30,14 +30,14 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Den här artikeln beskriver Resource Manager-distributionsmodellen. Du kan också [skapa NSG: er i den klassiska distributionsmodellen](virtual-networks-create-nsg-classic-ps.md).
+Den här artikeln beskriver hello Resource Manager-modellen. Du kan också [skapa NSG: er i hello klassiska distributionsmodellen](virtual-networks-create-nsg-classic-ps.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
 ## <a name="nsg-resources-in-a-template-file"></a>NSG-resurser i en mallfil
-Du kan visa och ladda ned den [exempelmall](https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/NSGs.json).
+Du kan visa och hämta hello [exempelmall](https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/NSGs.json).
 
-Följande avsnitt innehåller definitionen av frontend NSG: N, baserat på scenariot.
+hello följande avsnitt visar hello definition av hello frontend NSG, baserat på hello scenario.
 
 ```json
 "apiVersion": "2015-06-15",
@@ -80,7 +80,7 @@ Följande avsnitt innehåller definitionen av frontend NSG: N, baserat på scena
   ]
 }
 ```
-Om du vill associera NSG frontend-undernät som du behöver ändra definitionen för undernätet i mallen och använda referens-id för NSG: N.
+tooassociate hello NSG toohello frontend-undernät du har toochange hello undernätsdefinition i hello mallen och Använd hello referens-id för hello NSG.
 
 ```json
 "subnets": [
@@ -95,16 +95,16 @@ Om du vill associera NSG frontend-undernät som du behöver ändra definitionen 
   }, 
 ```
 
-Lägg märke till samma som utfördes för NSG för backend- och backend-undernät i mallen.
+Observera hello samma som utfördes för hello backend-NSG och hello backend-undernät i hello mallen.
 
-## <a name="deploy-the-arm-template-by-using-click-to-deploy"></a>Distribuera ARM-mallen med klicka för att distribuera
-Exempelmallen som är tillgänglig i den offentliga databasen använder en parameterfil som innehåller standardvärdena som används för att generera scenariot som beskrivs ovan. Om du vill distribuera den här mallen genom att klicka för att distribuera följer du [den här länken](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG), klickar på **Deploy to Azure** (Distribuera till Azure), ersätter standardparametervärdena om det behövs och följer anvisningarna på portalen.
+## <a name="deploy-hello-arm-template-by-using-click-toodeploy"></a>Distribuera hello ARM-mallen med hjälp av klickar du på toodeploy
+hello exempelmall tillgängliga i hello offentliga databasen använder en parameterfil som innehåller hello standard värden som används för toogenerate hello scenario som beskrivs ovan. toodeploy den här mallen med hjälp av klickar du på toodeploy, Följ [länken](http://github.com/telmosampaio/azure-templates/tree/master/201-IaaS-WebFrontEnd-SQLBackEnd-NSG), klickar du på **distribuera tooAzure**, ersätta hello Standardparametervärden om det behövs och följ instruktionerna för hello hello-portalen.
 
-## <a name="deploy-the-arm-template-by-using-powershell"></a>Distribuera ARM-mallen med PowerShell
-Följ stegen nedan för att distribuera ARM-mallen som du hämtade med PowerShell.
+## <a name="deploy-hello-arm-template-by-using-powershell"></a>Distribuera hello ARM-mallen med hjälp av PowerShell
+toodeploy hello ARM-mallen som du hämtade med PowerShell, följ hello stegen nedan.
 
-1. Om du aldrig har använt Azure PowerShell, följ instruktionerna i den [hur installera och konfigurera Azure PowerShell](/powershell/azure/overview) att installera och konfigurera den.
-2. Kör den  **`New-AzureRmResourceGroup`**  för att skapa en resursgrupp med hjälp av mallen.
+1. Om du aldrig har använt Azure PowerShell, följer du anvisningarna för hello i hello [hur tooInstall och konfigurera Azure PowerShell](/powershell/azure/overview) tooinstall och konfigurera den.
+2. Kör hello  **`New-AzureRmResourceGroup`**  cmdlet toocreate en resurs med hello mallen.
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location uswest `
@@ -148,21 +148,21 @@ Följ stegen nedan för att distribuera ARM-mallen som du hämtade med PowerShel
    
         ResourceId        : /subscriptions/[Subscription Id]/resourceGroups/TestRG
 
-## <a name="deploy-the-arm-template-by-using-the-azure-cli"></a>Distribuera ARM-mallen med Azure CLI
-Följ stegen nedan om du vill distribuera ARM-mallen med hjälp av Azure CLI.
+## <a name="deploy-hello-arm-template-by-using-hello-azure-cli"></a>Distribuera hello ARM-mallen med hjälp av hello Azure CLI
+toodeploy hello ARM-mallen med hjälp av hello Azure CLI, följ hello stegen nedan.
 
-1. Om du aldrig har använt Azure CLI, se [installera och konfigurera Azure CLI](../cli-install-nodejs.md) och följ instruktionerna upp till den punkt där du väljer Azure-konto och prenumeration.
-2. Kör kommandot **`azure config mode`** för att byta till Resource Manager-läge enligt nedan.
+1. Om du aldrig har använt Azure CLI, se [installera och konfigurera hello Azure CLI](../cli-install-nodejs.md) och följer instruktionerna för hello in toohello punkt där du väljer Azure-konto och prenumeration.
+2. Kör hello  **`azure config mode`**  kommandot tooswitch tooResource Manager-läge enligt nedan.
 
     ```azurecli
     azure config mode arm
     ```
 
-    Följande är utdata som förväntas för kommandot:
+    hello följer hello förväntades utdata för hello-kommandot:
 
         info:    New mode is arm
 
-3. Kör cmdleten **`azure group deployment create`** för att distribuera det nya VNet med hjälp av mall- och parameterfilerna som du hämtade och ändrade ovan. Listan som visas efter alla utdata förklarar parametrarna som använts.
+3. Kör hello  **`azure group deployment create`**  cmdlet toodeploy hello nya VNet med hjälp av hello mallen och parametern filer du hämtade och ändrade ovan. hello-listan som visas efter hello utdata förklarar hello parametrar som används.
 
     ```azurecli
     azure group create -n TestRG -l westus -f 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.json' -e 'https://raw.githubusercontent.com/telmosampaio/azure-templates/master/201-IaaS-WebFrontEnd-SQLBackEnd/azuredeploy.parameters.json'
@@ -185,8 +185,8 @@ Följ stegen nedan om du vill distribuera ARM-mallen med hjälp av Azure CLI.
         data:    
         info:    group create command OK
    
-   * **-n (eller --name)**. Namnet på resursgruppen som ska skapas.
-   * **-l (eller --location)**. Azure-region där resursgruppen kommer att skapas.
-   * **-f (eller --template-file)**. Sökväg till din ARM-mallfil.
-   * **-e (eller --parameters-file)**. Sökväg till din ARM-parameterfil.
+   * **-n (eller --name)**. Namnet på hello resurs grupp toobe skapas.
+   * **-l (eller --location)**. Azure-region där resursgruppen hello kommer att skapas.
+   * **-f (eller --template-file)**. Sökvägen tooyour ARM-mallfil.
+   * **-e (eller --parameters-file)**. Sökvägen tooyour ARM-parameterfil.
 

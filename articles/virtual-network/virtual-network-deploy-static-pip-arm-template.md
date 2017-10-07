@@ -1,6 +1,6 @@
 ---
-title: Skapa en virtuell dator med en statisk offentlig IP-adress - Azure Resource Manager-mall | Microsoft Docs
-description: "Lär dig hur du skapar en virtuell dator med en statisk offentlig IP-adress med en Azure Resource Manager-mall."
+title: aaaCreate en virtuell dator med en statisk offentlig IP-adress - Azure Resource Manager-mall | Microsoft Docs
+description: "Lär dig hur toocreate en virtuell dator med en statisk offentlig IP-adress med en Azure Resource Manager-mall."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f503aa60fdd9b7cf66ef482a1041e34c88e5c01
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6a8640ed4fad06b0e09820e6114fd6789db73847
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>Skapa en virtuell dator med en statisk offentlig IP-adress med en Azure Resource Manager-mall
 
@@ -34,14 +34,14 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
 > [!NOTE]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md). Den här artikeln täcker distributionsmodell hanteraren för filserverresurser, som Microsoft rekommenderar för de flesta nya distributioner i stället för den klassiska distributionsmodellen.
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../resource-manager-deployment-model.md). Den här artikeln täcker hello Resource Manager-distributionsmodellen, som Microsoft rekommenderar för de flesta nya distributioner i stället för hello klassiska distributionsmodellen.
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
 ## <a name="public-ip-address-resources-in-a-template-file"></a>Offentliga IP-adress-resurser i en mallfil
-Du kan visa och ladda ned den [exempelmall](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json).
+Du kan visa och hämta hello [exempelmall](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json).
 
-I följande avsnitt beskrivs definitionen av den offentliga IP-resurs, baserat på scenariot ovan:
+hello visar följande avsnitt hello definition av hello offentliga IP-resurs, baserat på hello scenariot ovan:
 
 ```json
 {
@@ -58,9 +58,9 @@ I följande avsnitt beskrivs definitionen av den offentliga IP-resurs, baserat p
 },
 ```
 
-Observera den **publicIPAllocationMethod** egenskapen som har angetts till *statiska*. Den här egenskapen kan vara antingen *dynamiska* (standardvärdet) eller *statiska*. Ange värdet till statisk garanterar att den offentliga IP-adress ska aldrig ändras.
+Meddelande hello **publicIPAllocationMethod** -egenskap som har angetts för*statiska*. Den här egenskapen kan vara antingen *dynamiska* (standardvärdet) eller *statiska*. Ange värdet toostatic garanterar att hello offentliga IP-adress ska aldrig ändras.
 
-I följande avsnitt beskrivs associering av offentlig IP-adress med ett nätverksgränssnitt:
+hello visar följande avsnitt hello associering av hello offentlig IP-adress med ett nätverksgränssnitt:
 
 ```json
   {
@@ -95,9 +95,9 @@ I följande avsnitt beskrivs associering av offentlig IP-adress med ett nätverk
 },
 ```
 
-Meddelande i **publicIPAddress** egenskap som pekar på den **Id** för en resurs med namnet **variables('webVMSetting').pipName**. Det är namnet på den offentliga IP-resurs som visas ovan.
+Meddelande hello **publicIPAddress** egenskapen pekar toohello **Id** för en resurs med namnet **variables('webVMSetting').pipName**. Som är hello namn hello offentliga IP-resurs som visas ovan.
 
-Slutligen nätverksgränssnittet ovan visas i den **networkProfile** -egenskapen för den virtuella datorn skapas.
+Slutligen hello nätverksgränssnittet ovan visas i hello **networkProfile** -egenskapen för hello VM håller på att skapas.
 
 ```json
       "networkProfile": {
@@ -109,16 +109,16 @@ Slutligen nätverksgränssnittet ovan visas i den **networkProfile** -egenskapen
       }
 ```
 
-## <a name="deploy-the-template-by-using-click-to-deploy"></a>Distribuera mallen genom att klicka för att distribuera
+## <a name="deploy-hello-template-by-using-click-toodeploy"></a>Distribuera hello mallen med Klicka toodeploy
 
-Exempelmallen som är tillgänglig i den offentliga databasen använder en parameterfil som innehåller standardvärdena som används för att generera scenariot som beskrivs ovan. Om du vill distribuera den här mallen med Klicka för att distribuera, klickar du på **till Azure** i Readme.md-filen för den [virtuell dator med statiska PIP](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP) mall. Ersätt parametern standardvärden om du vill och ange värden för parametrarna tomt.  Följ instruktionerna i portalen för att skapa en virtuell dator med en statisk offentlig IP-adress.
+hello exempelmall tillgängliga i hello offentliga databasen använder en parameterfil som innehåller hello standard värden som används för toogenerate hello scenario som beskrivs ovan. toodeploy den här mallen med hjälp av klickar du på toodeploy, klickar du på **distribuera tooAzure** i hello Readme.md-filen för hello [virtuell dator med statiska PIP](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP) mall. Ersätt hello Standardparametervärden om så önskas och ange värden för hello tomt parametrar.  Följ instruktionerna för hello i hello portal toocreate en virtuell dator med en statisk offentlig IP-adress.
 
-## <a name="deploy-the-template-by-using-powershell"></a>Distribuera mallen med hjälp av PowerShell
+## <a name="deploy-hello-template-by-using-powershell"></a>Distribuera hello-mallen med hjälp av PowerShell
 
-Följ stegen nedan om du vill distribuera mallen som du hämtat med hjälp av PowerShell.
+toodeploy hello mallen som du hämtade med PowerShell, följ hello stegen nedan.
 
-1. Om du aldrig har använt Azure PowerShell kan du slutföra stegen i den [installera och konfigurera Azure PowerShell](/powershell/azure/overview) artikel.
-2. Kör i PowerShell-konsolen på `New-AzureRmResourceGroup` för att skapa en ny resursgrupp om det behövs. Om du redan har en resursgrupp som skapats går du till steg 3.
+1. Om du aldrig har använt Azure PowerShell fullständig hello stegen i hello [hur tooInstall och konfigurera Azure PowerShell](/powershell/azure/overview) artikel.
+2. I PowerShell-konsol kör hello `New-AzureRmResourceGroup` cmdlet toocreate en ny resursgrupp om det behövs. Om du redan har en resursgrupp som skapats går toostep 3.
 
     ```powershell
     New-AzureRmResourceGroup -Name PIPTEST -Location westus
@@ -132,7 +132,7 @@ Följ stegen nedan om du vill distribuera mallen som du hämtat med hjälp av Po
         Tags              :
         ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/StaticPublicIP
 
-3. Kör i PowerShell-konsolen på `New-AzureRmResourceGroupDeployment` för att distribuera mallen.
+3. I PowerShell-konsol kör hello `New-AzureRmResourceGroupDeployment` cmdlet toodeploy hello mallen.
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DeployVM -ResourceGroupName PIPTEST `
@@ -167,22 +167,22 @@ Följ stegen nedan om du vill distribuera mallen som du hämtat med hjälp av Po
    
         Outputs           :
 
-## <a name="deploy-the-template-by-using-the-azure-cli"></a>Distribuera mallen med hjälp av Azure CLI
-Om du vill distribuera mallen med hjälp av Azure CLI, gör du följande:
+## <a name="deploy-hello-template-by-using-hello-azure-cli"></a>Distribuera hello mallen med hello Azure CLI
+toodeploy hello mall med hjälp av hello Azure CLI, fullständig hello följande steg:
 
-1. Om du aldrig har använt Azure CLI, följer du stegen i den [installera och konfigurera Azure CLI](../cli-install-nodejs.md) artikel för att installera och konfigurera den.
-2. Kör den `azure config mode` kommando för att växla till Resource Manager-läge enligt nedan.
+1. Om du aldrig har använt Azure CLI åtgärderna hello i hello [installera och konfigurera hello Azure CLI](../cli-install-nodejs.md) artikel tooinstall och konfigurera den.
+2. Kör hello `azure config mode` kommandot tooswitch tooResource Manager-läge enligt nedan.
 
     ```azurecli
     azure config mode arm
     ```
 
-    Förväntad utdata för det ovanstående kommandot:
+    hello förväntas för hello kommandot ovan:
 
         info:    New mode is arm
 
-3. Öppna den [parameterfilen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json), Välj dess innehåll och spara den till en fil i datorn. I det här exemplet parametrarna sparas i en fil med namnet *parameters.json*. Ändra parametervärden i filen om du vill, men minst bör du ändra värdet för parametern adminPassword till ett unikt, komplexa lösenord.
-4. Kör den `azure group deployment create` cmd att distribuera det nya VNet med hjälp av mallen och parametern-filer du hämtade och ändrade ovan. I kommandot nedan ersätter <path> med sökvägen som du sparade filen till. 
+3. Öppna hello [parameterfilen](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json), Välj dess innehåll och spara den tooa filen på datorn. I det här exemplet hello parametrar sparas tooa fil med namnet *parameters.json*. Ändra hello parametervärden i hello-filen om du vill, men minst bör du ändra hello värde för hello adminPassword parametern tooa unika, komplexa lösenord.
+4. Kör hello `azure group deployment create` cmd toodeploy hello nya VNet med hjälp av hello mallen och parametern filer du hämtade och ändrade ovan. Ersätt i hello kommandot nedan <path> med hello sökvägen som du sparade hello-filen till. 
 
     ```azurecli
     azure group create -n PIPTEST2 -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json -e <path>\parameters.json

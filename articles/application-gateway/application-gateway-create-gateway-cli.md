@@ -1,6 +1,6 @@
 ---
-title: Skapa en Azure Programgateway - Azure CLI 2.0 | Microsoft Docs
-description: "Lär dig hur du skapar en Programgateway med hjälp av Azure CLI 2.0 i Resource Manager"
+title: aaaCreate en Programgateway Azure - Azure CLI 2.0 | Microsoft Docs
+description: "Lär dig hur toocreate en Programgateway med hjälp av hello Azure CLI 2.0 i Resource Manager"
 services: application-gateway
 documentationcenter: na
 author: georgewallace
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
-ms.openlocfilehash: 052410db8c7619c7990dc319951a55663f2c2ba1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 952065586cd87d253882438bb779b768d9fd59fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli-20"></a>Skapa en Programgateway med hjälp av Azure CLI 2.0
+# <a name="create-an-application-gateway-by-using-hello-azure-cli-20"></a>Skapa en Programgateway med hello Azure CLI 2.0
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-create-gateway-portal.md)
@@ -33,23 +33,23 @@ ms.lasthandoff: 08/18/2017
 
 Programgateway är en dedikerad virtuell installation som ger programmet leverans domänkontrollant (ADC) som en tjänst med olika layer 7 läsa in belastningsutjämning funktioner för ditt program.
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-versioner för att slutföra uppgiften
+## <a name="cli-versions-toocomplete-hello-task"></a>CLI versioner toocomplete hello aktivitet
 
-Du kan slutföra uppgiften med någon av följande CLI-versioner:
+Du kan göra hello med hjälp av något av följande versioner av CLI hello:
 
-* [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md) – vår CLI för distributionsmodellerna klassisk och resurshantering.
-* [Azure CLI 2.0](application-gateway-create-gateway-cli.md) – vår nästa generations CLI för distributionsmodellen resurshantering
+* [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md) -vår CLI för hello klassisk och resurs management distributionsmodeller.
+* [Azure CLI 2.0](application-gateway-create-gateway-cli.md) -vår nästa generations CLI för hello resursdistributionsmodell för hantering
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>Förutsättning: Installera Azure CLI 2.0
+## <a name="prerequisite-install-hello-azure-cli-20"></a>Förutsättning: Installera hello Azure CLI 2.0
 
-Om du vill utföra stegen i den här artikeln, måste du [installera Azure-kommandoradsgränssnittet för Mac, Linux och Windows (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
+tooperform hello stegen i den här artikeln, måste du för[installerar hello Azure-kommandoradsgränssnittet för Mac, Linux och Windows (Azure CLI)](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
 
 > [!NOTE]
 > Om du inte har ett Azure-konto behöver du en. Registrera dig för en [kostnadsfri utvärderingsversion här](../active-directory/sign-up-organization.md).
 
 ## <a name="scenario"></a>Scenario
 
-Lär dig hur du skapar en Programgateway med Azure-portalen i det här scenariot.
+I det här scenariot kan du lära dig hur toocreate som en gateway som använder hello Azure-portalen.
 
 Det här scenariot kommer:
 
@@ -58,46 +58,46 @@ Det här scenariot kommer:
 * Skapa undernätet Appgatewaysubnet som använder 10.0.0.0/28 som dess CIDR-block.
 
 > [!NOTE]
-> Ytterligare konfiguration för Programgateway, inklusive anpassade hälsa avsökningar, backend-adresser för poolen och ytterligare regler konfigureras när programgatewayen har konfigurerats och inte under första distributionen.
+> Ytterligare konfiguration av hello Programgateway, inklusive anpassade hälsa avsökningar, backend-adresser för poolen och ytterligare regler konfigureras när hello Programgateway har konfigurerats och inte under första distributionen.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Azure Application Gateway kräver sin egen undernät. När du skapar ett virtuellt nätverk, se till att du lämnar tillräckligt med adressutrymme för att du har flera undernät. När du distribuerar en Programgateway till ett undernät kan bara ytterligare programgatewayer läggas till undernätet.
+Azure Application Gateway kräver sin egen undernät. När du skapar ett virtuellt nätverk, se till att du lämnar tillräckligt med adressutrymme toohave flera undernät. När du distribuerar ett program gateway tooa undernät kan bara ytterligare programgatewayer läggas toohello undernät.
 
-## <a name="log-in-to-azure"></a>Logga in på Azure
+## <a name="log-in-tooazure"></a>Logga in tooAzure
 
-Öppna den **Kommandotolken för Microsoft Azure**, och logga in. 
+Öppna hello **Kommandotolken för Microsoft Azure**, och logga in. 
 
 ```azurecli-interactive
 az login -u "username"
 ```
 
 > [!NOTE]
-> Du kan också använda `az login` utan att växeln för inloggning på enheten som kräver att ange en kod i aka.ms/devicelogin.
+> Du kan också använda `az login` utan hello växeln för inloggning på enheten som kräver att ange en kod i aka.ms/devicelogin.
 
-När du skriver i föregående exempel, har en kod angetts. Navigera till https://aka.ms/devicelogin i en webbläsare för att fortsätta inloggningen.
+När du skriver hello föregående exempel, har en kod angetts. Navigera toohttps://aka.ms/devicelogin i en webbläsare toocontinue hello-inloggningen.
 
 ![cmd visar enhet inloggning][1]
 
-Ange den kod som du fick i webbläsaren. Du omdirigeras till en inloggningssida.
+Ange hello koden du fått i hello webbläsare. Du kan omdirigerade tooa inloggningssidan.
 
-![webbläsare för att ange koden][2]
+![webbläsaren tooenter kod][2]
 
-När du har angett koden du är inloggad, Stäng webbläsaren för att fortsätta scenariot.
+När hello kod har registrerats du är inloggad, Stäng hello webbläsare toocontinue med hello scenario.
 
 ![loggat in][3]
 
-## <a name="create-the-resource-group"></a>Skapa en resursgrupp
+## <a name="create-hello-resource-group"></a>Skapa hello resursgrupp
 
-Innan du skapar programgatewayen, skapas en resursgrupp för programgatewayen. Nedan visas kommandot.
+Innan du skapar hello Programgateway skapas en resursgrupp toocontain hello Programgateway. hello följande visar hello-kommando.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location "eastus"
 ```
 
-## <a name="create-the-application-gateway"></a>Skapa programgatewayen
+## <a name="create-hello-application-gateway"></a>Skapa hello Programgateway
 
-IP-adresser som används för serverdelen är IP-adresser för backend-servern. Dessa värden kan vara privata IP-adresser i det virtuella nätverket, offentliga IP-adresser eller fullständigt kvalificerat domännamn för backend-servrar. I följande exempel skapas en Programgateway med ytterligare konfigurationsinställningar för http-inställningar, portar och regler.
+hello IP-adresser som används för hello serverdel är hello IP-adresser för backend-servern. Dessa värden kan vara antingen privat IP-adresser i hello virtuellt nätverk, offentliga IP-adresser eller fullständigt kvalificerat domännamn för backend-servrar. hello följande exempel skapas en Programgateway med ytterligare konfigurationsinställningar för http-inställningar, portar och regler.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -121,7 +121,7 @@ az network application-gateway create \
 
 ```
 
-I föregående exempel visas ett antal egenskaper som inte krävs under genereringen av en Programgateway. Följande exempel skapar en Programgateway med informationen som krävs.
+hello visas föregående exempel ett antal egenskaper som inte krävs under hello skapandet av en Programgateway. Följande kodexempel hello skapar en Programgateway med hello krävs information.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -137,14 +137,14 @@ az network application-gateway create \
 ```
  
 > [!NOTE]
-> En lista över parametrar som kan tillhandahållas vid skapandet kör följande kommando: `az network application-gateway create --help`.
+> En lista över parametrar som kan anges under hello för att skapa kör följande kommando: `az network application-gateway create --help`.
 
-Det här exemplet skapar en basic-Programgateway med standardinställningarna för lyssnare, serverdelspool, serverdelens http-inställningar och regler. Du kan ändra dessa inställningar efter distributionen när etableringen har lyckats.
-Om du redan har ditt webbprogram som definierats med serverdelspoolen i föregående steg, skapas en gång, börjar belastningsutjämning.
+Det här exemplet skapar en basic-Programgateway med standardinställningarna för hello lyssnare, serverdelspool, serverdelens http-inställningar och regler. Du kan ändra dessa inställningar toosuit distributionen när hello etablering har lyckats.
+Om du redan har ditt webbprogram som definierats med hello serverdelspool i föregående steg, när skapat hello börjar belastningsutjämning.
 
 ## <a name="get-application-gateway-dns-name"></a>Hämta DNS-namn för programgatewayen
 
-När du har skapat gatewayen, är nästa steg att konfigurera klientprogrammet för kommunikation. När du använder en offentlig IP-adress krävs ett dynamiskt tilldelat DNS-namn som inte är användarvänligt. För att säkerställa att slutanvändare kan nå programgatewayen kan en CNAME-post användas för att peka på den offentliga slutpunkten för programgatewayen. [Konfigurera ett eget domännamn i Azure](../dns/dns-custom-domain.md). Hämta information om programgatewayen och dess tillhörande IP DNS-namn med PublicIPAddress-element som bifogas programgatewayen om du vill konfigurera ett alias. programgatewayens DNS-namn ska användas för att skapa en CNAME-post som leder de två webbapparna till detta DNS-namn. Användning av A-poster rekommenderas inte eftersom VIP kan ändras vid omstart av programgatewayen.
+När du har skapat hello gateway är hello nästa steg tooconfigure hello klientdelen för kommunikation. När du använder en offentlig IP-adress krävs ett dynamiskt tilldelat DNS-namn som inte är användarvänligt. tooensure slutanvändare kan träffa hello Programgateway, en CNAME-post kan vara används toopoint toohello offentlig slutpunkt för hello Programgateway. [Konfigurera ett eget domännamn i Azure](../dns/dns-custom-domain.md). tooconfigure ett alias, hämta information om hello Programgateway och dess associerade IP DNS-namn med hjälp av hello PublicIPAddress element bifogade toohello Programgateway. hello programmet gateway DNS-namn ska använda toocreate en CNAME-post som pekar hello två web program toothis DNS-namn. hello rekommenderas A-poster inte eftersom hello VIP ändras vid omstart för Programgateway.
 
 
 ```azurecli-interactive
@@ -189,7 +189,7 @@ az network public-ip show --name "pip" --resource-group "AdatumAppGatewayRG"
 
 ## <a name="delete-all-resources"></a>Ta bort alla resurser
 
-Så här tar du bort alla resurser som skapats i den här artikeln:
+toodelete alla resurser skapas i den här artikeln, fullständig hello följande steg:
 
 ```azurecli-interactive
 az group delete --name AdatumAppGatewayRG
@@ -197,9 +197,9 @@ az group delete --name AdatumAppGatewayRG
  
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du skapar anpassade hälsoavsökningar genom att besöka [skapa en anpassad hälsoavsökningen](application-gateway-create-probe-portal.md)
+Lär dig hur toocreate anpassade hälsoavsökning genom att besöka [skapa en anpassad hälsoavsökningen](application-gateway-create-probe-portal.md)
 
-Lär dig hur du konfigurerar SSL-avlastning och ta kostsamma SSL-dekryptering av webbservrar genom att besöka [Konfigurera SSL-avlastning](application-gateway-ssl-arm.md)
+Lär dig hur tooconfigure SSL-avlastning och vidta hello kostsamma SSL dekryptering av webbservrar genom att besöka [Konfigurera SSL-avlastning](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 

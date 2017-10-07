@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub-enhet till moln meddelanden (Java) | Microsoft Docs
-description: "Så här bearbeta meddelanden från IoT-hubb enhet till moln genom att använda regler för Routning och anpassade slutpunkter för att skicka meddelanden till andra backend-tjänster."
+title: "aaaProcess meddelanden för Azure IoT Hub-enhet till moln (Java) | Microsoft Docs"
+description: "Hur meddelanden tooprocess IoT-hubb meddelanden från enhet till moln med hjälp av regler för Routning och anpassade slutpunkter toodispatch tooother backend-tjänster."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -14,44 +14,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.openlocfilehash: d1aca8f39e305105d4ec9f63fbe7bee95487e294
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 084e84e721ca4297c4d7d6cb06a43b0bed9bce85
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="process-iot-hub-device-to-cloud-messages-java"></a>Bearbeta meddelanden från enhet till moln IoT-hubb (Java)
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
-Azure IoT Hub är en helt hanterad tjänst som gör tillförlitlig och säker dubbelriktad kommunikation mellan miljoner enheter och en lösning för serverdel. Andra självstudier ([Kom igång med IoT-hubb] och [meddelanden moln till enhet med IoT-hubben][lnk-c2d]) visar hur du använder grundläggande enheten till molnet och moln till enhet meddelandefunktioner för IoT-hubb.
+Azure IoT Hub är en helt hanterad tjänst som gör tillförlitlig och säker dubbelriktad kommunikation mellan miljoner enheter och en lösning för serverdel. Andra självstudier ([Kom igång med IoT-hubb] och [meddelanden moln till enhet med IoT-hubben][lnk-c2d]) visar hur toouse hello grundläggande enhet till moln och moln till enhet meddelandefunktioner för IoT-hubb.
 
-Den här kursen bygger på koden som visas i den [Kom igång med IoT-hubb] kursen, och visar hur du använder meddelanderoutning vill bearbeta meddelanden från enhet till moln i ett skalbart sätt. Kursen visar hur du kan bearbeta meddelanden som kräver omedelbara åtgärder från lösningens serverdel. En enhet kan till exempel skicka larmmeddelandet som utlöser lägga till ett ärende i ett CRM-system. Däremot feed bara datapunkt meddelanden till en analytics-motor. Temperatur telemetri från en enhet som ska lagras för senare analys är till exempel en datapunkt meddelande.
+Den här kursen bygger på hello koden som visas i hello [Kom igång med IoT-hubb] kursen, och visar hur toouse meddelande routning tooprocess enhet till moln på ett skalbart sätt. hello kursen visar hur tooprocess meddelanden som kräver omedelbar åtgärd från hello lösning serverdel. En enhet kan till exempel skicka larmmeddelandet som utlöser lägga till ett ärende i ett CRM-system. Däremot feed bara datapunkt meddelanden till en analytics-motor. Temperatur telemetri från en enhet som är toobe lagras för senare analys är till exempel en datapunkt meddelande.
 
-I slutet av den här kursen kan köra du tre Java-konsolappar:
+Hello slutet av den här självstudiekursen, kan du köra tre Java konsolappar:
 
-* **simulerade enheten**, en modifierad version av app som skapats i den [Kom igång med IoT-hubb] självstudiekursen skickar meddelanden från enhet till moln datapunkt varje sekund och interaktiva enhet till moln meddelanden var 10: e sekund . Den här appen använder AMQP-protokollet för att kommunicera med IoT-hubb.
-* **Läs-d2c-meddelanden** visar telemetri som skickats av din enhetsapp.
-* **Läs kritisk kö** tar bort viktiga meddelanden från Service Bus-kö som är kopplade till IoT-hubben.
+* **simulerade enheten**, en modifierad version av hello-app som skapats i hello [Kom igång med IoT-hubb] självstudiekursen skickar meddelanden från enhet till moln datapunkt varje sekund och interaktiva enhet till moln meddelanden var 10 sekunder. Den här appen använder hello AMQP protokollet toocommunicate med IoT-hubb.
+* **Läs-d2c-meddelanden** visar hello telemetri som skickats av din enhetsapp.
+* **Läs kritisk kö** tar bort hello kritiska meddelanden från hello Service Bus-kö kopplade toohello IoT-hubb.
 
 > [!NOTE]
-> IoT-hubben har SDK stöd för många vilka plattformar och språk, inklusive C, Java och JavaScript. Instruktioner om hur du ersätter enheten i den här självstudiekursen med en fysisk enhet och ansluta enheter till en IoT-hubb finns i [Azure IoT Developer Center].
+> IoT-hubben har SDK stöd för många vilka plattformar och språk, inklusive C, Java och JavaScript. Anvisningar för hur tooreplace hello enheten i den här självstudiekursen med en fysisk enhet och hur tooconnect enheter tooan IoT Hub, se hello [Azure IoT Developer Center].
 
-För att kunna genomföra den här kursen behöver du följande:
+toocomplete den här kursen behöver du hello följande:
 
-* En fullständig fungerande version av den [Kom igång med IoT-hubb] kursen.
-* Senaste [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* En fullständig fungerande version av hello [Kom igång med IoT-hubb] kursen.
+* Hej senaste [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Maven 3](https://maven.apache.org/install.html)
 * Ett aktivt Azure-konto. (Om du inte har ett konto kan du skapa ett [kostnadsfritt konto] [lnk-kostnadsfria-utvärderingsversion] på bara några minuter.)
 
 Du bör ha vissa grundläggande kunskaper om [Azure Storage] och [Azure Service Bus].
 
 ## <a name="send-interactive-messages-from-a-device-app"></a>Skicka interaktiva meddelanden från en enhetsapp
-I det här avsnittet kan du ändra appen för enheter som du skapade i den [Kom igång med IoT-hubb] kursen att ibland skicka meddelanden som kräver omedelbar bearbetning.
+I det här avsnittet kan du ändra hello enhetsapp som du skapade i hello [Kom igång med IoT-hubb] självstudiekursen toooccasionally skicka meddelanden som kräver omedelbar bearbetning.
 
-1. Använd en textredigerare för att öppna filen simulated-device\src\main\java\com\mycompany\app\App.java. Den här filen innehåller koden för den **simulerade enheten** app som du skapade i den [Kom igång med IoT-hubb] kursen.
+1. Använda en redigerare tooopen hello simulated-device\src\main\java\com\mycompany\app\App.java textfil. Den här filen innehåller hello kod för hello **simulerade enheten** app som du skapade i hello [Kom igång med IoT-hubb] kursen.
 
-2. Ersätt den **MessageSender** klassen med följande kod:
+2. Ersätt hello **MessageSender** klassen med följande kod hello:
 
     ```java
     private static class MessageSender implements Runnable {
@@ -99,53 +99,53 @@ I det här avsnittet kan du ändra appen för enheter som du skapade i den [Kom 
     }
     ```
    
-    Den här metoden lägger slumpmässigt till egenskapen `"level": "critical"` på meddelanden som skickas av enheten, som simulerar ett meddelande som kräver omedelbara åtgärder med programmet serverdel. Programmet Överför denna information i egenskaperna för meddelandet i stället för i meddelandetexten, så att IoT-hubb kan vidarebefordra meddelandet till rätt meddelandets mål.
+    Den här metoden lägger slumpmässigt hello egenskapen `"level": "critical"` toomessages som skickas av hello enhet som simulerar ett meddelande som kräver omedelbara åtgärder med hello programmet serverdel. hello program Överför denna information i Egenskaper för hello-meddelande, i stället för i hello meddelandetexten, så att IoT-hubb kan vidarebefordra hello meddelandets toohello rätt meddelande mål.
    
    > [!NOTE]
-   > Du kan använda meddelandeegenskaper skicka meddelanden för olika scenarier, inklusive kall sökväg bearbetning, förutom varm sökväg exemplet som visas här.
+   > Du kan använda egenskaper tooroute meddelanden för olika scenarier, inklusive kall sökväg, bearbetning, dessutom toohello varm sökväg exemplet som visas här.
 
-2. Spara och stäng filen simulated-device\src\main\java\com\mycompany\app\App.java.
+2. Spara och Stäng hello simulated-device\src\main\java\com\mycompany\app\App.java fil.
 
     > [!NOTE]
-    > För enkelhetens skull implementerar inte den här självstudiekursen princip försök igen. I produktionskod, bör du implementera en återförsöksprincip som exponentiell backoff enligt förslaget i MSDN-artikel [hantering av tillfälliga fel].
+    > Den här självstudiekursen implementerar inte några återförsöksprincip på hello ut för enkelhetens skull. I produktionskod, bör du implementera en återförsöksprincip som exponentiell backoff enligt förslaget i hello MSDN-artikel [hantering av tillfälliga fel].
 
-3. Skapa appen **simulated-device** med hjälp av Maven genom att köra följande kommando i Kommandotolken i mappen simulated-device:
+3. toobuild hello **simulerade enheten** app med Maven, kör följande kommando i Kommandotolken hello i hello simulerade enheten mappen hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
-## <a name="add-a-queue-to-your-iot-hub-and-route-messages-to-it"></a>Lägg till en kö i IoT-hubb och flöde meddelanden till den
+## <a name="add-a-queue-tooyour-iot-hub-and-route-messages-tooit"></a>Lägg till en kö tooyour IoT hub och flöde meddelanden tooit
 
-I det här avsnittet skapar du en Service Bus-kö, ansluta till din IoT-hubb och konfigurera din IoT-hubb för att skicka meddelanden till kön baserat på förekomsten av en egenskap i meddelandet. Mer information om hur du bearbeta meddelanden från Service Bus-köer finns [Kom igång med köer][lnk-sb-queues-java].
+I det här avsnittet skapar du en Service Bus-kö, Anslut den tooyour IoT-hubb och konfigurera din IoT-hubb toosend meddelanden toohello kö baserat på hello förekomsten av en egenskap på hello-meddelande. Mer information om hur tooprocess meddelanden från Service Bus-köer finns [Kom igång med köer][lnk-sb-queues-java].
 
-1. Skapa en Service Bus-kö som beskrivs i [Kom igång med köer][lnk-sb-queues-java]. Anteckna namnet på namnområdet och kön.
+1. Skapa en Service Bus-kö som beskrivs i [Kom igång med köer][lnk-sb-queues-java]. Anteckna hello namnområde och kön namn.
 
-2. Öppna din IoT-hubb i Azure-portalen och klicka på **slutpunkter**.
+2. I hello Azure-portalen, öppna din IoT-hubb och klickar på **slutpunkter**.
 
     ![Slutpunkter i IoT-hubb][30]
 
-3. I den **slutpunkter** bladet, klickar du på **Lägg till** längst upp för att lägga till kön till din IoT-hubb. Namnet på slutpunkten **CriticalQueue** och markera med hjälp av listrutorna **Service Bus-kö**, Service Bus-namnrymd som kön finns och namnet på din kö. När du är klar klickar du på **spara** längst ned.
+3. I hello **slutpunkter** bladet, klickar du på **Lägg till** på hello översta tooadd kön tooyour IoT-hubb. Namnet hello endpoint **CriticalQueue** och använda hello-listrutor tooselect **Service Bus-kö**hello Service Bus-namnrymd som kön finns och hello namnet på din kö. När du är klar klickar du på **spara** längst ned hello.
 
     ![Lägga till en slutpunkt][31]
 
-4. Klicka på **vägar** i din IoT-hubb. Klicka på **Lägg till** längst upp på bladet för att skapa en regel för vidarebefordran som skickar meddelanden till kön du just lagt till. Välj **DeviceTelemetry** som datakällan. Ange `level="critical"` som villkor och välj den kö som du just har lagt till som en anpassad slutpunkt som routning regeln slutpunkt. När du är klar klickar du på **spara** längst ned.
+4. Klicka på **vägar** i din IoT-hubb. Klicka på **Lägg till** hello överst i hello bladet toocreate en routningsregel som skickar meddelanden toohello kö du just lagt till. Välj **DeviceTelemetry** som hello datakälla. Ange `level="critical"` som hello villkor och välj hello kö som du just har lagt till som en anpassad slutpunkt som hello routning regeln slutpunkt. När du är klar klickar du på **spara** längst ned hello.
 
     ![Lägga till en väg][32]
 
-    Kontrollera återställningsplats vägen är inställd på **på**. Den här inställningen är standardkonfigurationen för en IoT-hubb.
+    Kontrollera hello återställningsplats vägen anges för**på**. Den här inställningen är hello standardkonfigurationen för en IoT-hubb.
 
     ![Fallback-väg][33]
 
-## <a name="optional-read-from-the-queue-endpoint"></a>(Valfritt) Läsa från kön slutpunkten
+## <a name="optional-read-from-hello-queue-endpoint"></a>(Valfritt) Läsa från hello kön slutpunkt
 
-Du kan du läsa meddelanden från kön slutpunkten genom att följa instruktionerna i [Kom igång med köer][lnk-sb-queues-java]. Namnge appen **Läs kritisk kö**.
+Du kan om du vill läsa hälsningsmeddelande från hello kön slutpunkten genom att följa instruktionerna hello i [Kom igång med köer][lnk-sb-queues-java]. Namnet hello app **Läs kritisk kö**.
 
-## <a name="run-the-applications"></a>Köra programmen
+## <a name="run-hello-applications"></a>Köra hello program
 
-Nu är du redo att köra tre program.
+Nu är du redo toorun hello tre program.
 
-1. Att köra den **lästa d2c meddelanden** program i en kommandotolk eller shell navigera till mappen Läs d2c och kör följande kommando:
+1. toorun hello **lästa d2c meddelanden** program i en kommandotolk eller shell navigera toohello Läs d2c mappen och kör hello följande kommando:
 
    ```cmd/sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
@@ -153,7 +153,7 @@ Nu är du redo att köra tre program.
 
    ![Kör Läs-d2c-meddelanden][readd2c]
 
-2. Att köra den **Läs kritisk kö** program i en kommandotolk eller shell navigera till mappen Läs kritiska kön och kör följande kommando:
+2. toorun hello **Läs kritisk kö** program i en kommandotolk eller shell navigera toohello Läs kritisk kö mappen och kör hello följande kommando:
 
    ```cmd/sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
@@ -161,7 +161,7 @@ Nu är du redo att köra tre program.
    
    ![Kör Läs kritiska meddelanden][readqueue]
 
-3. Att köra den **simulerade enheten** i en kommandotolk eller shell appen, navigera till mappen simulerade enheten och kör följande kommando:
+3. toorun hello **simulerade enheten** app i en kommandotolk eller shell navigera toohello simulerade enheten mappen och kör hello följande kommando:
 
    ```cmd/sh
    mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
@@ -171,15 +171,15 @@ Nu är du redo att köra tre program.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudiekursen beskrivs hur du ska skicka meddelanden från enhet till moln med hjälp av meddelandet routningsfunktionen för IoT-hubb.
+I kursen får du lärt dig hur tooreliably skicka meddelanden från enhet till moln med hjälp av hello meddelandet routningsfunktionen IoT-hubb.
 
-Den [hur du skickar meddelanden moln till enhet med IoT-hubben] [ lnk-c2d] visar hur du kan skicka meddelanden till dina enheter från din lösningens serverdel.
+Hej [hur toosend moln till enhet meddelanden med IoT-hubb] [ lnk-c2d] visar hur toosend meddelanden tooyour enheter från din lösningens serverdel.
 
-Exempel på fullständiga lösningar för slutpunkt till slutpunkt med IoT-hubb finns [Azure IoT Suite][lnk-suite].
+toosee exempel på fullständiga lösningar för slutpunkt till slutpunkt med IoT-hubb finns [Azure IoT Suite][lnk-suite].
 
-Mer information om hur du utvecklar lösningar med IoT-hubb finns i [IoT-hubb Utvecklarhandbok].
+toolearn mer information om hur du utvecklar lösningar med IoT-hubb finns hello [IoT-hubb Utvecklarhandbok].
 
-Läs mer om meddelanderoutning i IoT-hubb i [skicka och ta emot meddelanden med IoT-hubben][lnk-devguide-messaging].
+toolearn mer om meddelanderoutning i IoT Hub, se [skicka och ta emot meddelanden med IoT-hubben][lnk-devguide-messaging].
 
 <!-- Images. -->
 <!-- TODO: UPDATE PICTURES -->

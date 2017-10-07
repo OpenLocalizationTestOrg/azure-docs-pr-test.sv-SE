@@ -1,6 +1,6 @@
 ---
-title: "Skapa ett mått med en Resource Manager-mall | Microsoft Docs"
-description: "Lär dig hur du använder en Resource Manager-mall för att skapa en mått om du vill få meddelanden via e-post eller webhook."
+title: "aaaCreate en mått avisering med en Resource Manager-mall | Microsoft Docs"
+description: "Lär dig hur toouse toocreate en Resource Manager-mall för ett mått aviseringar tooreceive av e-post eller webhooken."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/21/2017
 ms.author: johnkem
-ms.openlocfilehash: ac12605636d21fd0b5c89512c454ef2d899ef6dc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dcf92b189f56a8389fff007c82197527239b96b8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Skapa en metrisk varning med en Resource Manager-mall
-Den här artikeln visar hur du kan använda en [Azure Resource Manager-mall](../azure-resource-manager/resource-group-authoring-templates.md) att konfigurera Azure mått aviseringar. På så sätt kan du ställa in aviseringar på dina resurser automatiskt när de skapas så att alla resurser övervakas på rätt sätt.
+Den här artikeln visar hur du kan använda en [Azure Resource Manager-mall](../azure-resource-manager/resource-group-authoring-templates.md) tooconfigure Azure mått aviseringar. Detta gör att du tooautomatically ställa in aviseringar på dina resurser när de skapas tooensure att alla resurser övervakas på rätt sätt.
 
-Stegen är följande:
+hello stegen är följande:
 
-1. Skapa en mall som en JSON-fil som beskriver hur du skapar en avisering.
-2. [Distribuera mallen med hjälp av en distributionsmetod](../azure-resource-manager/resource-group-template-deploy.md).
+1. Skapa en mall som en JSON-fil som beskriver hur toocreate hello avisering.
+2. [Distribuera hello mallen med hjälp av en distributionsmetod](../azure-resource-manager/resource-group-template-deploy.md).
 
-Nedan vi beskriver hur du skapar en Resource Manager-mall först för en avisering ensamt och sedan för en varning under genereringen av en annan resurs.
+Nedan beskrivs hur toocreate Resource Manager-mall först för en avisering ensamt och sedan för en varning under hello skapandet av en annan resurs.
 
 ## <a name="resource-manager-template-for-a-metric-alert"></a>Resource Manager-mall för en avisering om mått
-När du skapar en avisering med en Resource Manager-mall kan du skapa en resurs av typen `Microsoft.Insights/alertRules` och Fyll i alla relaterade egenskaper. Nedan finns en mall som skapar en aviseringsregel.
+toocreate en avisering med en Resource Manager-mall som du skapar en resurs av typen `Microsoft.Insights/alertRules` och Fyll i alla relaterade egenskaper. Nedan finns en mall som skapar en aviseringsregel.
 
 ```json
 {
@@ -62,14 +62,14 @@ När du skapar en avisering med en Resource Manager-mall kan du skapa en resurs 
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Resource ID of the resource emitting the metric that will be used for the comparison."
+                "description": "Resource ID of hello resource emitting hello metric that will be used for hello comparison."
             }
         },
         "metricName": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the metric used in the comparison to activate the alert."
+                "description": "Name of hello metric used in hello comparison tooactivate hello alert."
             }
         },
         "operator": {
@@ -82,14 +82,14 @@ När du skapar en avisering med en Resource Manager-mall kan du skapa en resurs 
                 "LessThanOrEqual"
             ],
             "metadata": {
-                "description": "Operator comparing the current value with the threshold value."
+                "description": "Operator comparing hello current value with hello threshold value."
             }
         },
         "threshold": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "The threshold value at which the alert is activated."
+                "description": "hello threshold value at which hello alert is activated."
             }
         },
         "aggregation": {
@@ -103,35 +103,35 @@ När du skapar en avisering med en Resource Manager-mall kan du skapa en resurs 
                 "Total"
             ],
             "metadata": {
-                "description": "How the data that is collected should be combined over time."
+                "description": "How hello data that is collected should be combined over time."
             }
         },
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
             "metadata": {
-                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used toomonitor alert activity based on hello threshold. Must be between five minutes and one day. ISO 8601 duration format."
             }
         },
         "sendToServiceOwners": {
             "type": "bool",
             "defaultValue": true,
             "metadata": {
-                "description": "Specifies whether alerts are sent to service owners"
+                "description": "Specifies whether alerts are sent tooservice owners"
             }
         },
         "customEmailAddresses": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Comma-delimited email addresses where the alerts are also sent"
+                "description": "Comma-delimited email addresses where hello alerts are also sent"
             }
         },
         "webhookUrl": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "URL of a webhook that will receive an HTTP POST when the alert activates."
+                "description": "URL of a webhook that will receive an HTTP POST when hello alert activates."
             }
         }
     },
@@ -178,10 +178,10 @@ När du skapar en avisering med en Resource Manager-mall kan du skapa en resurs 
 }
 ```
 
-En förklaring av schemat och egenskaperna för en aviseringsregel [finns här](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+En förklaring av hello schemat och egenskaperna för en aviseringsregel [finns här](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="resource-manager-template-for-a-resource-with-an-alert"></a>Resource Manager-mall för en resurs med en avisering
-Aviseringar i en Resource Manager-mall är mest användbart när du skapar en avisering när du skapar en resurs. Du kanske exempelvis vill se till att en ”CPU % > 80” regeln ställs in varje gång du distribuerar en virtuell dator. Om du vill göra detta måste du lägger till varningsregeln som en resurs i matrisen resurs för VM-mall och lägga till ett beroende som använder den `dependsOn` egenskapen till VM-resurs-ID. Här är ett fullständigt exempel som skapar en virtuell Windows-dator och lägger till en avisering som meddelar prenumerationsadministratörer när processoranvändningen går över 80%.
+Aviseringar i en Resource Manager-mall är mest användbart när du skapar en avisering när du skapar en resurs. Du kan exempelvis vilja tooensure som en ”CPU % > 80” regeln ställs in varje gång du distribuerar en virtuell dator. toodo kan du lägga till hello varningsregeln som en resurs i hello resurs matris för VM-mall och lägga till ett beroende som använder hello `dependsOn` egenskapen toohello VM resurs-ID. Här är ett fullständigt exempel som skapar en virtuell Windows-dator och lägger till en avisering som meddelar prenumerationsadministratörer när hello processoranvändningen går över 80%.
 
 ```json
 {
@@ -191,25 +191,25 @@ Aviseringar i en Resource Manager-mall är mest användbart när du skapar en av
         "newStorageAccountName": {
             "type": "string",
             "metadata": {
-                "Description": "The name of the storage account where the VM disk is stored."
+                "Description": "hello name of hello storage account where hello VM disk is stored."
             }
         },
         "adminUsername": {
             "type": "string",
             "metadata": {
-                "Description": "The name of the administrator account on the VM."
+                "Description": "hello name of hello administrator account on hello VM."
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "Description": "The administrator account password on the VM."
+                "Description": "hello administrator account password on hello VM."
             }
         },
         "dnsNameForPublicIP": {
             "type": "string",
             "metadata": {
-                "Description": "The name of the public IP address used to access the VM."
+                "Description": "hello name of hello public IP address used tooaccess hello VM."
             }
         }
     },
@@ -402,5 +402,5 @@ Aviseringar i en Resource Manager-mall är mest användbart när du skapar en av
 
 ## <a name="next-steps"></a>Nästa steg
 * [Läs mer om aviseringar](insights-receive-alert-notifications.md)
-* [Lägg till diagnostikinställningar](monitoring-enable-diagnostic-logs-using-template.md) till Resource Manager-mall
+* [Lägg till diagnostikinställningar](monitoring-enable-diagnostic-logs-using-template.md) tooyour Resource Manager-mall
 

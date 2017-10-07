@@ -1,5 +1,5 @@
 ---
-title: "Azure PowerShell-skript exempel – skala ett webbprogram manuellt | Microsoft Docs"
+title: aaaAzure PowerShell skriptexempel - skala ett webbprogram manuellt | Microsoft Docs
 description: "Azure PowerShell-skript exempel – skala ett webbprogram manuellt"
 services: app-service\web
 documentationcenter: 
@@ -16,25 +16,25 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: e99dfc02b6ab4123cd5f95997285dca5cb686380
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c749031fbe6c6bcbb25395387b4f32b2ba75cef4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scale-a-web-app-manually"></a>Skala ett webbprogram manuellt
 
-I det här scenariot du lär dig att skapa en resursgrupp, en app service-plan och webb-app. Du kommer sedan att skala i App Service-Plan från en enda instans till flera instanser.
+I det här scenariot får du lära dig toocreate en resursgrupp, apptjänst planerings- och webb-app. Du kommer sedan att skala hello App Service-Plan från en enda instans toomultiple instanser.
 
-Om det behövs installerar du Azure PowerShell med hjälp av anvisningarna i den [Azure PowerShell guiden](/powershell/azure/overview), och kör sedan `Login-AzureRmAccount` att skapa en anslutning med Azure.
+Om det behövs installerar du Azure PowerShell med hjälp av hello-instruktion finns i hello hello [Azure PowerShell guiden](/powershell/azure/overview), och kör sedan `Login-AzureRmAccount` toocreate en anslutning till Azure.
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-powershell[huvudsakliga](../../../powershell_scripts/app-service/scale-manual/scale-manual.ps1 "skala ett webbprogram manuellt")]
+[!code-powershell[main](../../../powershell_scripts/app-service/scale-manual/scale-manual.ps1 "Scale a web app manually")]
 
 ## <a name="clean-up-deployment"></a>Rensa distribution 
 
-Följande kommando kan användas för att ta bort resursgruppen, webbprogram och alla relaterade resurser efter skriptexempel har körts.
+Efter hello skriptexempel har körts, kan det vara hello följande kommando används tooremove hello resursgrupp, webbprogram och alla relaterade resurser.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -42,7 +42,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
@@ -53,6 +53,6 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
+Mer information om hello Azure PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
 
-Ytterligare Azure Powershell-exempel för Azure App Service Web Apps finns i den [Azure PowerShell-exempel](../app-service-powershell-samples.md).
+Ytterligare Azure Powershell-exempel för Azure App Service Web Apps finns i hello [Azure PowerShell-exempel](../app-service-powershell-samples.md).

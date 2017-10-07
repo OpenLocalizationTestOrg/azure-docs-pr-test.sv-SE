@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Five9 Plus-kort (CTI, kontakta Center-agenter) | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Five9 Plus-kort (CTI, kontakta Center-agenter)."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Five9 Plus-kort (CTI, kontakta Center-agenter)."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,104 +13,104 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: d75163ea5eb3fa811e07861f06e6c4d5c758b898
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 2e3ea8b5f2a6eaa8ad17d39e03fa490038b14561
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Självstudier: Azure Active Directory-integrering med Five9 Plus-kort (CTI, kontakta Center-agenter)
 
-I kursen får du lära dig hur du integrerar Five9 Plus nätverkskort (CTI, kontakta Center-agenter) med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate Five9 Plus nätverkskort (CTI, kontakta Center-agenter) med Azure Active Directory (AD Azure).
 
-Integrera Five9 Plus nätverkskort (CTI, kontakta Center-agenter) med Azure AD ger dig följande fördelar:
+Integrera Five9 Plus nätverkskort (CTI, kontakta Center-agenter) med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till Five9 Plus nätverkskort (CTI, kontakta Center-agenter)
-- Du kan aktivera användarna att automatiskt hämta loggat in på Five9 Plus nätverkskort (CTI, kontakta Center-agenter) (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst tooFive9 Plus nätverkskort (CTI, kontakta Center-agenter)
+- Du kan aktivera dina användare tooautomatically get inloggade tooFive9 Plus nätverkskort (CTI, kontakta Center-agenter) (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-Om du vill konfigurera Azure AD-integrering med Five9 Plus-kort (CTI, kontakta Center-agenter) behöver du följande:
+tooconfigure Azure AD-integrering med Five9 Plus kort (CTI, kontakta Center-agenter), behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Five9 Plus nätverkskort (CTI, kontakta Center-agenter) enkel inloggning aktiverad prenumeration
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad här: [utvärderingsversion erbjudande](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Lägga till Five9 Plus kort (CTI, kontakta Center-agenter) från galleriet
+1. Lägga till Five9 Plus kort (CTI, kontakta Center-agenter) från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-five9-plus-adapter-cti-contact-center-agents-from-the-gallery"></a>Lägga till Five9 Plus kort (CTI, kontakta Center-agenter) från galleriet
-För att konfigurera integrering av Five9 Plus nätverkskort (CTI, kontakta Center-agenter) till Azure AD, måste du lägga till Five9 Plus nätverkskort (CTI, kontakta Center-agenter) från galleriet i listan över hanterade SaaS-appar.
+## <a name="adding-five9-plus-adapter-cti-contact-center-agents-from-hello-gallery"></a>Lägga till Five9 Plus kort (CTI, kontakta Center-agenter) från hello-galleriet
+tooconfigure hello integrering av Five9 Plus nätverkskort (CTI, kontakta Center-agenter) i Azure AD, behöver du tooadd Five9 Plus nätverkskort (CTI, kontakta Center-agenter) hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg om du vill lägga till Five9 Plus kort (CTI, kontakta Center-agenter) från galleriet:**
+**tooadd Five9 Plus nätverkskort (CTI, kontakta Center-agenter) från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.
+3. tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)**.
+4. Skriv i sökrutan hello **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-five9-tutorial/tutorial_five9_search.png)
 
-5. Välj i resultatpanelen **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-five9-tutorial/tutorial_five9_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Five9 Plus-kort (CTI, kontakta Center-agenter) baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till motsvarande användaren i Five9 Plus nätverkskort (CTI, kontakta Center-agenter) till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk mellan en Azure AD-användare och relaterade användaren i Five9 Plus nätverkskort (CTI, kontakta Center-agenter) upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Five9 Plus nätverkskort (CTI, kontakta Center-agenter) är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användaren i Five9 Plus nätverkskort (CTI, kontakta Center-agenter) toobe upprättas.
 
-I Five9 Plus-kort (CTI, kontakta Center-agenter), tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.
+Tilldela hello värdet för hello i Five9 Plus-kort (CTI, kontakta Center-agenter) **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Five9 Plus-kort (CTI, kontakta Center-agenter), måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Five9 Plus kort (CTI, kontakta Center-agenter), behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Five9 Plus nätverkskort (CTI, kontakta Center-agenter)](#creating-a-five9-plus-adapter-cti-contact-center-agents-test-user)**  – du har en motsvarighet för Britta Simon i Five9 Plus nätverkskort (CTI, kontakta Center-agenter) som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Five9 Plus nätverkskort (CTI, kontakta Center-agenter)](#creating-a-five9-plus-adapter-cti-contact-center-agents-test-user)**  -toohave en motsvarighet för Britta Simon i Five9 Plus kort (CTI, kontakta Center-agenter) som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Five9 Plus nätverkskort (CTI, kontakta Center-agenter).
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Five9 Plus nätverkskort (CTI, kontakta Center-agenter).
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Five9 Plus-kort (CTI, kontakta Center-agenter):**
+**tooconfigure Azure AD enkel inloggning med Five9 Plus-kort (CTI, kontakta Center-agenter), utför följande steg hello:**
 
-1. I Azure-portalen på den **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-five9-tutorial/tutorial_five9_samlbase.png)
 
-3. På den **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)-domän och URL: er** avsnittet, utför följande steg:
+3. På hello **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)-domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-five9-tutorial/tutorial_five9_url.png)
     
-    a. I den **identifierare** textruta Skriv en URL med följande mönster:
+    a. I hello **identifierare** textruta, ange en Webbadress med hello följande mönster:
 
     |    Miljö      |       URL: EN      |
     | :-- | :-- |
@@ -118,7 +118,7 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
     | För ”Five9 Plus kortet för Zendesk” | `https://app.five9.com/appsvcs/saml/metadata/alias/zd` |
     | För ”Five9 Plus kortet för agenten skrivbord Toolkit” | `https://app.five9.com/appsvcs/saml/metadata/alias/adt` |
 
-    b. I den **Reply URL** textruta Skriv en URL med följande mönster:
+    b. I hello **Reply URL** textruta, ange ett URL-Adressen med hello följer mönstret:
 
     |      Miljö     |      URL: EN      |
     | :--                  | :--           |
@@ -126,7 +126,7 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
     | För ”Five9 Plus kortet för Zendesk” | `https://app.five9.com/appsvcs/saml/SSO/alias/zd` |
     | För ”Five9 Plus kortet för agenten skrivbord Toolkit” | `https://app.five9.com/appsvcs/saml/SSO/alias/adt` |
 
-4. På den **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara certifikatfilen på datorn.
+4. På hello **SAML-signeringscertifikat** klickar du på **Certificate(Base64)** och spara sedan hello certifikat på datorn.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-five9-tutorial/tutorial_five9_certificate.png) 
 
@@ -134,11 +134,11 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-five9-tutorial/tutorial_general_400.png)
 
-6. På den **Five9 Plus (CTI, kontakta Center-agenter) kortkonfiguration** klickar du på **konfigurera Five9 Plus nätverkskort (CTI, kontakta Center-agenter)** att öppna **konfigurera inloggning**fönster. Kopiera den **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**
+6. På hello **Five9 Plus (CTI, kontakta Center-agenter) kortkonfiguration** klickar du på **konfigurera Five9 Plus nätverkskort (CTI, kontakta Center-agenter)** tooopen **konfigurerainloggning** fönster. Kopiera hello **Sign-Out URL, SAML enhets-ID och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-five9-tutorial/tutorial_five9_configure.png) 
 
-7. Konfigurera enkel inloggning på **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)** sida, måste du skicka den hämtade **Certificate(Base64), Sign-Out URL, SAML enhets-ID och SAML inloggning tjänst-URL för enkel**till [Five9 Plus nätverkskort (CTI, kontakta Center-agenter) supportteamet](https://www.five9.com/about/contact). Dessutom, för att konfigurera enkel inloggning ytterligare följer du de nedanstående steg enligt nätverkskortet:
+7. tooconfigure enkel inloggning på **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)** sida, behöver du toosend hello hämtas **Certificate(Base64), Sign-Out URL, SAML enhets-ID och SAML inloggning tjänst-URL för enkel** för[Five9 Plus nätverkskort (CTI, kontakta Center-agenter) supportteamet](https://www.five9.com/about/contact). Även dessutom för att konfigurera enkel inloggning ytterligare Följ hello nedanstående steg enligt toohello nätverkskort:
 
     a. ”Five9 Plus kortet för agenten skrivbord Toolkit” Admin-Guide: [http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf](http://webapps.five9.com/assets/files/for_customers/documentation/integrations/agent-desktop-toolkit/plus-agent-desktop-toolkit-administrators-guide.pdf)
     
@@ -148,61 +148,61 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
 
 > [!TIP]
-> Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!  När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned. Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!  När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello. Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-five9-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-five9-tutorial/create_aaduser_02.png) 
 
-3. Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.
+3. tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-five9-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-five9-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**.
  
 ### <a name="creating-a-five9-plus-adapter-cti-contact-center-agents-test-user"></a>Skapa en testanvändare Five9 Plus nätverkskort (CTI, kontakta Center-agenter)
 
-I det här avsnittet skapar du en användare som kallas Britta Simon i Five9 Plus nätverkskort (CTI, kontakta Center-agenter). Arbeta med [Five9 Plus nätverkskort (CTI, kontakta Center-agenter) supportteamet](https://www.five9.com/about/contact) att lägga till användare i Five9 Plus nätverkskort (CTI, kontakta Center-agenter)-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
+I det här avsnittet skapar du en användare som kallas Britta Simon i Five9 Plus nätverkskort (CTI, kontakta Center-agenter). Arbeta med [Five9 Plus nätverkskort (CTI, kontakta Center-agenter) supportteamet](https://www.five9.com/about/contact) att lägga till hello användare i hello Five9 Plus nätverkskort (CTI, kontakta Center-agenter)-plattformen. Användare måste skapas och aktiveras innan du använder enkel inloggning.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Five9 Plus nätverkskort (CTI, kontakta Center-agenter).
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooFive9 Plus nätverkskort (CTI, kontakta Center-agenter).
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela Britta Simon Five9 Plus nätverkskortet (CTI, kontakta Center-agenter), utför du följande steg:**
+**tooassign Britta Simon tooFive9 Plus nätverkskort (CTI, kontakta Center-agenter), utför följande steg hello:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)**.
+2. Välj i listan med program hello **Five9 Plus nätverkskort (CTI, kontakta Center-agenter)**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-five9-tutorial/tutorial_five9_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -210,7 +210,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -218,14 +218,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen Five9 Plus nätverkskort (CTI, kontakta Center-agenter) på åtkomstpanelen du ska hämta automatiskt loggat in på ditt program Five9 Plus nätverkskort (CTI, kontakta Center-agenter).
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+När du klickar på hello Five9 Plus nätverkskort (CTI, kontakta Center-agenter) panelen i hello åtkomstpanelen får automatiskt inloggade tooyour Five9 Plus nätverkskort (CTI, kontakta Center-agenter) program.
+Läs mer om åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

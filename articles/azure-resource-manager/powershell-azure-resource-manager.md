@@ -1,6 +1,6 @@
 ---
-title: "Hantera Azure lösningar med PowerShell | Microsoft Docs"
-description: "Använda Azure PowerShell och Resource Manager för att hantera dina resurser."
+title: "aaaManage Azure lösningar med PowerShell | Microsoft Docs"
+description: "Använda Azure PowerShell och Resource Manager toomanage dina resurser."
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tomfitz
-ms.openlocfilehash: ff42e5cb29005c5f4b97babdae58bef9382071f0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 47a91af8d7eb59585bcfd43571ce76b90a0d7971
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="manage-resources-with-azure-powershell-and-resource-manager"></a>Hantera resurser med Azure PowerShell och Resource Manager
 > [!div class="op_single_selector"]
@@ -29,43 +29,43 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-I den här artikeln lär du dig att hantera dina lösningar med Azure PowerShell och Azure Resource Manager. Om du inte är bekant med Resource Manager finns [översikt över Resource Manager](resource-group-overview.md). Det här avsnittet fokuserar på hanteringsuppgifter. Du kommer att:
+I den här artikeln får du lära dig hur toomanage dina lösningar med Azure PowerShell och Azure Resource Manager. Om du inte är bekant med Resource Manager finns [översikt över Resource Manager](resource-group-overview.md). Det här avsnittet fokuserar på hanteringsuppgifter. Du kommer att:
 
 1. Skapa en resursgrupp
-2. Lägg till en resurs i resursgruppen.
-3. Lägga till en etikett till resursen
+2. Lägg till en resurs toohello resursgrupp
+3. Lägg till en tagg toohello resurs
 4. Fråga resurser baserat på namn eller värden
-5. Använda och ta bort ett lås på resursen
+5. Använda och ta bort ett lås på hello resurs
 6. Ta bort en resursgrupp
 
-Den här artikeln visar inte hur du distribuerar en Resource Manager-mall till din prenumeration. Den här informationen finns [distribuera resurser med Resource Manager-mallar och Azure PowerShell](resource-group-template-deploy.md).
+Den här artikeln visar inte hur toodeploy en Resource Manager mallen tooyour prenumeration. Den här informationen finns [distribuera resurser med Resource Manager-mallar och Azure PowerShell](resource-group-template-deploy.md).
 
 ## <a name="get-started-with-azure-powershell"></a>Kom igång med Azure PowerShell
 
-Om du inte har installerat Azure PowerShell, se [hur du installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview).
+Om du inte har installerat Azure PowerShell, se [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
 
-Om du har installerat Azure PowerShell tidigare men inte har uppdaterat den nyligen kan du överväga att installera den senaste versionen. Du kan uppdatera versionen via samma metod som du använde för att installera den. Om du använder Web Platform Installer, starta den igen och leta efter en uppdatering.
+Överväg att installera hello senaste versionen om du har installerat Azure PowerShell i hello tidigare men inte har uppdaterat den nyligen. Du kan uppdatera hello version via hello samma metod som du använde tooinstall den. Om du använde hello installationsprogram för webbplattform, starta den igen och leta efter en uppdatering.
 
-Om du vill kontrollera din version av Azure-resurser modulen, använder du följande cmdlet:
+toocheck din version av hello Azure-resurser modulen, använder hello följande cmdlet:
 
 ```powershell
 Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 ```
 
-Det här avsnittet har uppdaterats för version 3.3.0. Om du har en tidigare version, överensstämmer din upplevelse inte med de steg som visas i det här avsnittet. Dokumentation om cmdletar i den här versionen finns [AzureRM.Resources modulen](/powershell/module/azurerm.resources).
+Det här avsnittet har uppdaterats för version 3.3.0. Om du har en tidigare version överensstämmer hello steg som visas i det här avsnittet inte med din upplevelse. Dokumentation om hello-cmdlets i den här versionen finns [AzureRM.Resources modulen](/powershell/module/azurerm.resources).
 
-## <a name="log-in-to-your-azure-account"></a>Logga in på ditt Azure-konto
-Innan du arbetar med din lösning, måste du logga in på ditt konto.
+## <a name="log-in-tooyour-azure-account"></a>Logga in tooyour Azure-konto
+Du måste logga in tooyour konto innan du arbetar med din lösning.
 
-Om du vill logga in på ditt Azure-konto, använder den **Login-AzureRmAccount** cmdlet.
+toolog i tooyour Azure-konto, använder hello **Login-AzureRmAccount** cmdlet.
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-Den här cmdleten uppmanar dig att ange inloggningsuppgifterna för ditt Azure-konto. När du har loggat in hämtas dina kontoinställningar så att de blir tillgängliga för Azure PowerShell.
+hello cmdlet efterfrågar hello inloggningsuppgifterna för ditt Azure-konto. När du loggar in hämtar den inställningarna för ditt konto, så att de är tillgängliga tooAzure PowerShell.
 
-Cmdlet returnerar information om ditt konto och prenumeration ska användas för uppgifter.
+hello cmdlet returnerar information om ditt konto och hello prenumeration toouse för hello uppgifter.
 
 ```powershell
 Environment           : AzureCloud
@@ -77,7 +77,7 @@ CurrentStorageAccount :
 
 ```
 
-Om du har mer än en prenumeration kan växla du till en annan prenumeration. Först ska vi se alla prenumerationer för ditt konto.
+Om du har mer än en prenumeration kan växla du tooa annan prenumeration. Först ska vi se alla hello prenumerationer för ditt konto.
 
 ```powershell
 Get-AzureRmSubscription
@@ -102,22 +102,22 @@ TenantId         : {guid}
 State            : Disabled
 ```
 
-Ange om du vill växla till en annan prenumeration prenumerationsnamn med den **Set-AzureRmContext** cmdlet.
+tooswitch tooa annan prenumeration, ge hello prenumerationsnamn hello **Set-AzureRmContext** cmdlet.
 
 ```powershell
 Set-AzureRmContext -SubscriptionName "Example Subscription Two"
 ```
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
-Innan du distribuerar några resurser till din prenumeration, måste du skapa en resursgrupp som innehåller resurser.
+Innan du distribuerar någon resurser tooyour prenumeration, måste du skapa en resursgrupp som innehåller hello resurser.
 
-Du kan skapa en resursgrupp med det **New-AzureRmResourceGroup** cmdlet. Kommandot använder den **namn** parametern för att ange ett namn för resursgruppen och **plats** parametern för att ange dess plats.
+toocreate en resursgrupp, använda hello **New-AzureRmResourceGroup** cmdlet. hello kommando använder hello **namn** parametern toospecify ett namn för resursgruppen hello och hello **plats** parametern toospecify dess plats.
 
 ```powershell
 New-AzureRmResourceGroup -Name TestRG1 -Location "South Central US"
 ```
 
-Utdata är i följande format:
+hello utdata har hello följande format:
 
 ```powershell
 ResourceGroupName : TestRG1
@@ -127,30 +127,30 @@ Tags              :
 ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1
 ```
 
-Om du behöver hämta resursgruppen senare använder du följande cmdlet:
+Om du behöver tooretrieve hello resursgruppen senare, Använd hello följande cmdlet:
 
 ```powershell
 Get-AzureRmResourceGroup -ResourceGroupName TestRG1
 ```
 
-För att få alla resursgrupper i din prenumeration kan du inte ange ett namn:
+tooget alla Hej resursgrupper i din prenumeration, ange inte ett namn:
 
 ```powershell
 Get-AzureRmResourceGroup
 ```
 
-## <a name="add-resources-to-a-resource-group"></a>Lägg till resurser i en resursgrupp
-Om du vill lägga till en resurs i resursgruppen som du kan använda den **ny AzureRmResource** cmdlet eller en cmdlet som är specifik för typ av resurs som skapas (t.ex. **New-AzureRmStorageAccount**). Det kan vara enklare att använda en cmdlet som är specifika för en resurstyp eftersom den innehåller parametrar för de egenskaper som behövs för den nya resursen. Att använda **ny AzureRmResource**, måste du känna till alla egenskaperna för att ange utan som efterfrågas.
+## <a name="add-resources-tooa-resource-group"></a>Lägg till resurser tooa resursgrupp
+tooadd en resurs toohello resursgrupp som du kan använda hello **ny AzureRmResource** cmdlet eller en cmdlet som är specifika toohello typ av resurs som du skapar (t.ex. **New-AzureRmStorageAccount**). Det kan vara enklare toouse en cmdlet som är specifika tooa resurstyp eftersom den innehåller parametrar för hello egenskaper som krävs för hello ny resurs. toouse **ny AzureRmResource**, måste du känna till alla hello egenskaper tooset utan som efterfrågas.
 
-Lägga till en resurs via cmdlets kan orsaka framtida förvirring eftersom den nya resursen inte finns i en Resource Manager-mall. Microsoft rekommenderar att du definierar infrastrukturen för din Azure-lösning i en Resource Manager-mall. Mallar kan du distribuerar din lösning på ett tillförlitligt sätt och flera gånger. Du skapar ett lagringskonto med en PowerShell-cmdlet för det här avsnittet, men senare du generera en mall från resursgruppen.
+Lägga till en resurs via cmdlets kan vara förvirrande för framtida hello ny resurs finns inte i en Resource Manager-mall. Microsoft rekommenderar att definiera hello infrastrukturen för Azure lösningen i en Resource Manager-mall. Mallar kan du tooreliably och upprepade gånger distribuera din lösning. Du skapar ett lagringskonto med en PowerShell-cmdlet för det här avsnittet, men senare du generera en mall från resursgruppen.
 
-Följande cmdlet skapar ett lagringskonto. Ange ett unikt namn för storage-konto i stället för med hjälp av namnet som visas i exemplet. Namnet måste vara mellan 3 och 24 tecken långt och innehålla endast siffror och gemener. Om du använder det namn som visas i exemplet felmeddelande ett eftersom namnet redan används.
+hello följande cmdlet skapar ett lagringskonto. Ange ett unikt namn för hello storage-konto istället för att använda hello-namnet som visas i hello exempel. hello namn måste vara mellan 3 och 24 tecken långt och innehålla endast siffror och gemener. Om du använder hello-namnet som visas i hello exempel får ett felmeddelande eftersom namnet redan används.
 
 ```powershell
 New-AzureRmStorageAccount -ResourceGroupName TestRG1 -AccountName mystoragename -Type "Standard_LRS" -Location "South Central US"
 ```
 
-Om du behöver hämta den här resursen senare använder du följande cmdlet:
+Om du behöver tooretrieve resursen senare, Använd hello följande cmdlet:
 
 ```powershell
 Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
@@ -158,15 +158,15 @@ Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
 
 ## <a name="add-a-tag"></a>Lägga till en tagg
 
-Taggar kan du organisera dina resurser efter olika egenskaper. Du kan till exempel ha flera resurser i olika resursgrupper som tillhör samma avdelning. Du kan använda en avdelning taggen och ett värde till dessa resurser för att markera dem som tillhör samma kategori. Eller så kan du markera om en resurs används i en produktionsmiljö eller testmiljö. Du lägger till taggar till en resurs i det här avsnittet, men i din miljö det mest sannolika klokt att lägga till taggar för dina resurser.
+Taggar kan du tooorganize dina resurser enligt toodifferent egenskaper. Du kan till exempel har flera resurser i olika resursgrupper som tillhör toohello samma avdelning. Du kan tillämpa en avdelning taggen och värdet toothose resurser toomark dem som tillhör toohello samma kategori. Eller så kan du markera om en resurs används i en produktionsmiljö eller testmiljö. Du använder taggar tooonly en resurs i det här avsnittet, men i din miljö är det mest sannolika klokt tooapply taggar tooall dina resurser.
 
-Följande cmdlet gäller två taggar för ditt lagringskonto:
+följande cmdlet hello gäller två taggar tooyour storage-konto:
 
 ```powershell
 Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
  ```
 
-Taggar uppdateras som ett enskilt objekt. Om du vill lägga till en tagg i en resurs som redan omfattar taggar, att hämta befintliga taggar. Lägg till ny tagg i det objekt som innehåller befintliga taggar och tillämpa alla taggar till resursen.
+Taggar uppdateras som ett enskilt objekt. tooadd en tagg tooa resurs som redan omfattar taggar, först hämta hello befintliga taggar. Lägg till hello ny tagg toohello objekt som innehåller hello befintliga taggar och tillämpa alla hello taggar toohello resurs.
 
 ```powershell
 $tags = (Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1).Tags
@@ -176,27 +176,27 @@ Set-AzureRmResource -Tag $tags -ResourceName mystoragename -ResourceGroupName Te
 
 ## <a name="search-for-resources"></a>Sök efter resurser
 
-Använd den **hitta AzureRmResource** för att hämta resurser för olika sökvillkor.
+Använd hello **hitta AzureRmResource** cmdlet tooretrieve resurser för olika sökvillkor.
 
-* För att få en resurs med namnet, ange den **ResourceNameContains** parameter:
+* tooget en resurs med namnet, ange hello **ResourceNameContains** parameter:
 
   ```powershell
   Find-AzureRmResource -ResourceNameContains mystoragename
   ```
 
-* Om du vill hämta alla resurser i en resursgrupp, ange den **ResourceGroupNameContains** parameter:
+* tooget alla hello resurser i en resursgrupp, ange hello **ResourceGroupNameContains** parameter:
 
   ```powershell
   Find-AzureRmResource -ResourceGroupNameContains TestRG1
   ```
 
-* Om du vill hämta alla resurser med taggnamn och värde, ange den **TagName** och **TagValue** parametrar:
+* tooget alla hello resurser med taggnamn och värde, ange hello **TagName** och **TagValue** parametrar:
 
   ```powershell
   Find-AzureRmResource -TagName Dept -TagValue IT
   ```
 
-* Alla resurser med en viss resurstyp, ange den **ResourceType** parameter:
+* tooall hello resurser med en viss resurstyp innehåller hello **ResourceType** parameter:
 
   ```powershell
   Find-AzureRmResource -ResourceType Microsoft.Storage/storageAccounts
@@ -204,17 +204,17 @@ Använd den **hitta AzureRmResource** för att hämta resurser för olika sökvi
 
 ## <a name="lock-a-resource"></a>Låsa en resurs
 
-När du behöver se till att en kritisk resurs tas inte bort av misstag eller ändras kan tillämpa ett lås på resursen. Du kan ange antingen en **CanNotDelete** eller **ReadOnly**.
+När du behöver toomake att en kritisk resurs tas inte bort av misstag eller ändras kan tillämpa en toohello lock-resurs. Du kan ange antingen en **CanNotDelete** eller **ReadOnly**.
 
-För att skapa eller ta bort management lås, måste du ha åtkomst till `Microsoft.Authorization/*` eller `Microsoft.Authorization/locks/*` åtgärder. I de inbyggda rollerna beviljas endast ägare och administratör för användaråtkomst dessa åtgärder.
+toocreate eller ta bort lås för hantering, måste du ha tillgång för`Microsoft.Authorization/*` eller `Microsoft.Authorization/locks/*` åtgärder. I hello inbyggda roller beviljas endast ägare och administratör för användaråtkomst dessa åtgärder.
 
-Om du vill använda ett lås, använder du följande cmdlet:
+tooapply ett lås Använd hello följande cmdlet:
 
 ```powershell
 New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
 ```
 
-Låst resursen i föregående exempel kan inte tas bort förrän låset tas bort. Ta bort ett lås med:
+hello kan inte låst resurs i föregående exempel hello tas bort förrän hello låset tas bort. Använd tooremove ett lås:
 
 ```powershell
 Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
@@ -223,36 +223,36 @@ Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -Re
 Mer information om inställningen Lås finns [låsa resurser med Azure Resource Manager](resource-group-lock-resources.md).
 
 ## <a name="remove-resources-or-resource-group"></a>Ta bort resurser eller resursgrupp
-Du kan ta bort en resurs eller en resursgrupp. När du tar bort en resursgrupp kan du också ta bort alla resurser i resursgruppen.
+Du kan ta bort en resurs eller en resursgrupp. När du tar bort en resursgrupp kan du också ta bort alla hello resurser i resursgruppen.
 
-* Ta bort en resurs från resursgruppen genom att använda den **ta bort AzureRmResource** cmdlet. Den här cmdleten tar bort resursen, men tar inte bort resursgruppen.
+* toodelete en resurs från hello resursgrupp, Använd hello **ta bort AzureRmResource** cmdlet. Denna cmdlet tar bort hello resurs, men tar inte bort hello resursgruppen.
 
   ```powershell
   Remove-AzureRmResource -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
   ```
 
-* Ta bort en resursgrupp och alla dess resurser genom att använda den **Remove-AzureRmResourceGroup** cmdlet.
+* toodelete en resursgrupp och alla dess resurser använder hello **Remove-AzureRmResourceGroup** cmdlet.
 
   ```powershell
   Remove-AzureRmResourceGroup -Name TestRG1
   ```
 
-För båda cmdlets uppmanas du att bekräfta att du vill ta bort resurs eller resursgrupp. Om åtgärden har tar bort en resurs eller en resursgrupp, returnerar **SANT**.
+För båda cmdlets uppmanas tooconfirm du vill tooremove hello resurs eller resursgrupp. Om hello har tas bort hello resurs eller resursgrupp, returnerar **SANT**.
 
 ## <a name="run-resource-manager-scripts-with-azure-automation"></a>Kör skript för Resource Manager med Azure Automation
 
-Det här avsnittet visar hur du utför grundläggande åtgärder på resurser med Azure PowerShell. För mer avancerade scenarier vill du förmodligen att skapa ett skript och återanvända skriptet efter behov eller enligt ett schema. [Azure Automation](../automation/automation-intro.md) ger ett sätt att automatisera vanliga skript som hanterar dina Azure-lösningar som används.
+Det här avsnittet beskrivs hur du tooperform grundläggande åtgärder på resurser med Azure PowerShell. Mer avancerade scenarier med hantering av du vanligtvis vill toocreate ett skript och återanvända skriptet efter behov eller enligt ett schema. [Azure Automation](../automation/automation-intro.md) gör det möjligt för dig tooautomate vanliga skript som hanterar dina Azure-lösningar.
 
-De följande avsnitten visar hur du använder Azure Automation, Resource Manager och PowerShell för att effektivt utföra administrativa uppgifter:
+hello visar följande avsnitt hur toouse Azure Automation Resource Manager och PowerShell tooeffectively utföra administrativa uppgifter:
 
 - Information om hur du skapar en runbook finns [min första PowerShell-runbook](../automation/automation-first-runbook-textual-powershell.md).
 - Information om hur du arbetar med gallerier av skript finns [Azure Automation Runbook- och stänga](../automation/automation-runbook-gallery.md).
-- Runbooks som kan starta och stoppa virtuella datorer, se [Azure Automation-scenario: använda JSON-formaterad taggar om du vill skapa ett schema för Virtuella Azure-start och stopp](../automation/automation-scenario-start-stop-vm-wjson-tags.md).
+- Runbooks som kan starta och stoppa virtuella datorer, se [Azure Automation-scenario: använda JSON-formaterad taggar toocreate ett schema för Virtuella Azure-start och stopp](../automation/automation-scenario-start-stop-vm-wjson-tags.md).
 - Runbooks som kan starta och stoppa virtuella datorer låg belastning på nätverket, se [Starta/stoppa virtuella datorer vid låg belastning på nätverket lösning i Automation](../automation/automation-solution-vm-management.md).
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs om hur du skapar Resource Manager-mallar i [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
-* Läs om hur du distribuerar mallar i [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
-* Du kan flytta befintliga resurser till en ny resursgrupp. Exempel finns i [flytta resurser till ny resursgrupp eller prenumeration](resource-group-move-resources.md).
-* Vägledning för hur företag kan använda resurshanteraren för att effektivt hantera prenumerationer finns i [Azure enterprise scaffold - förebyggande prenumerationsåtgärder](resource-manager-subscription-governance.md).
+* toolearn om hur du skapar Resource Manager-mallar finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+* toolearn om hur du distribuerar mallar, se [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
+* Du kan flytta befintliga resurser tooa ny resursgrupp. Exempel finns i [flytta resurser tooNew resursgrupp eller prenumeration](resource-group-move-resources.md).
+* Anvisningar om hur företag kan använda Resource Manager tooeffectively hantera prenumerationer, se [kodskelett Azure enterprise - normativ prenumeration styrning](resource-manager-subscription-governance.md).
 

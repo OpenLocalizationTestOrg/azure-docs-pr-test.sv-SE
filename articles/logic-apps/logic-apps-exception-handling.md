@@ -1,5 +1,5 @@
 ---
-title: Fel & undantagshantering - Azure Logic Apps | Microsoft Docs
+title: aaaError & undantagshantering - Azure Logic Apps | Microsoft Docs
 description: "Mönster för fel- och undantagshantering i Azure Logic Apps"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 9af2f71b3d288cc6f4e271d0915545d43a1249bc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 326a252310c8dfb154e583f91c9421675e448d1f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hantera fel och undantag i Azure Logic Apps
 
-Med Azure Logikappar innehåller omfattande verktyg och mönster som hjälper dig att kontrollera din integreringar är stabilt och motståndskraftiga mot fel. Alla integration arkitektur utgör utmaningen i att se till att korrekt hantera driftavbrott eller problem från beroende system. Logic Apps gör felhantering en förstklassig miljö, vilket ger dig de verktyg du behöver för att fungera på undantag och fel i dina arbetsflöden.
+Med Azure Logikappar innehåller omfattande verktyg och mönster toohelp du kontrollera att din integreringar är stabilt och motståndskraftiga mot fel. Alla integration arkitektur utgör hello utmaningen i att göra att tooappropriately referensen driftstopp eller utfärdar från beroende system. Logic Apps enkelt att hantera fel hello en förstklassig miljö, vilket ger dig verktyg du behöver tooact på undantag och fel i dina arbetsflöden.
 
 ## <a name="retry-policies"></a>Försök principer
 
-En återförsöksprincip är den mest grundläggande typ av undantag och felhantering. Om en inledande begäran misslyckades eller orsakade timeout (alla förfrågningar som resulterar i en 429 eller 5xx-svar), den här principen definierar om åtgärden bör försöka. Som standard gör alla åtgärder 4 ytterligare gånger över 20 sekunders intervall. Om den första begäranden tar emot en `500 Internal Server Error` svar, arbetsflödesmotorn pausar i 20 sekunder och försöker begäran igen. Om efter alla försök det fortfarande är undantag eller fel, arbetsflödet fortsätter och markerar Åtgärdsstatus som `Failed`.
+En återförsöksprincip är hello mest grundläggande typ av undantag och felhantering. Om en inledande begäran misslyckades eller orsakade timeout (alla förfrågningar som resulterar i en 429 eller 5xx-svar), den här principen definierar om hello åtgärden bör försöka. Som standard gör alla åtgärder 4 ytterligare gånger över 20 sekunders intervall. Om hello första begäran tar emot en `500 Internal Server Error` svar, hello arbetsflödesmotorn pausar i 20 sekunder och försök hello begäran igen. Om efter alla försök hello svar är fortfarande undantag eller fel, fortsätter hello arbetsflödet och markerar hello Åtgärdsstatus som `Failed`.
 
-Du kan konfigurera principer för försök i den **indata** för en viss åtgärd. Du kan till exempel konfigurera en återförsöksprincip för upp till 4 gånger över 1 timme intervall. Fullständig information om indataparametrar finns [arbetsflödesåtgärder och utlösare][retryPolicyMSDN].
+Du kan konfigurera principer för försök i hello **indata** för en viss åtgärd. Du kan till exempel konfigurera en försök princip tootry upp till 4 gånger över 1 timme intervall. Fullständig information om indataparametrar finns [arbetsflödesåtgärder och utlösare][retryPolicyMSDN].
 
 ```json
 "retryPolicy" : {
@@ -38,7 +38,7 @@ Du kan konfigurera principer för försök i den **indata** för en viss åtgär
     }
 ```
 
-Om du vill att HTTP-åtgärd försök 4 gånger och vänta i 10 minuter mellan varje försök, använder du följande definition:
+Om du vill att din HTTP-åtgärd tooretry 4 gånger och vänta i 10 minuter mellan varje försök använder hello definitionen:
 
 ```json
 "HTTP": 
@@ -57,11 +57,11 @@ Om du vill att HTTP-åtgärd försök 4 gånger och vänta i 10 minuter mellan v
 }
 ```
 
-Mer information om syntax som stöds finns i [återförsöksprincip avsnittet i arbetsflödesåtgärder och utlösare][retryPolicyMSDN].
+Mer information om syntax som stöds finns i hello [återförsöksprincip avsnittet i arbetsflödesåtgärder och utlösare][retryPolicyMSDN].
 
-## <a name="catch-failures-with-the-runafter-property"></a>Catch-fel med egenskapen RunAfter
+## <a name="catch-failures-with-hello-runafter-property"></a>Catch-fel med hello RunAfter egenskapen
 
-Varje logik app åtgärd anger vilka åtgärder som måste slutföras innan åtgärden startar, t.ex. sortera stegen i arbetsflödet. I åtgärdsdefinitionen den här ordningen kallas den `runAfter` egenskapen. Den här egenskapen är ett objekt som beskriver vilka åtgärder och status för åtgärden att utföra åtgärden. Alla åtgärder som har lagts till via logik App Designer är som standard `runAfter` föregående steg om det förra steget `Succeeded`. Du kan anpassa värdet för att utlösa åtgärder när tidigare åtgärder har `Failed`, `Skipped`, eller en möjlig uppsättning med dessa värden. Om du vill lägga till ett objekt till en avsedda Service Bus-ämne efter en viss åtgärd `Insert_Row` misslyckas, kan du använda följande `runAfter` konfiguration:
+Varje logik app åtgärd anger vilka åtgärder som måste slutföras innan hello åtgärden startar, t.ex. sortera hello steg i arbetsflödet. Hello åtgärdsdefinition den här ordningen är känt som hello `runAfter` egenskapen. Den här egenskapen är ett objekt som beskriver vilka åtgärder och status för åtgärden köra hello-åtgärd. Alla åtgärder som har lagts till via hello logik App Designer är som standard för`runAfter` hello föregående steg om hello föregående steg `Succeeded`. Du kan dock anpassa det här värdet toofire åtgärder när tidigare åtgärder har `Failed`, `Skipped`, eller en möjlig uppsättning med dessa värden. Om du vill tooadd ett objekt tooa avses Service Bus-ämne efter en viss åtgärd `Insert_Row` misslyckas, kan du använda följande hello `runAfter` konfiguration:
 
 ```json
 "Send_message": {
@@ -89,7 +89,7 @@ Varje logik app åtgärd anger vilka åtgärder som måste slutföras innan åtg
 }
 ```
 
-Observera den `runAfter` -egenskapen anges eller om den `Insert_Row` åtgärden är `Failed`. Att köra instruktionen om Åtgärdsstatus är `Succeeded`, `Failed`, eller `Skipped`, använder du följande syntax:
+Meddelande hello `runAfter` egenskapen toofire om hello `Insert_Row` åtgärden är `Failed`. toorun hello åtgärd om hello Åtgärdsstatus är `Succeeded`, `Failed`, eller `Skipped`, använder du följande syntax:
 
 ```json
 "runAfter": {
@@ -100,21 +100,21 @@ Observera den `runAfter` -egenskapen anges eller om den `Insert_Row` åtgärden 
 ```
 
 > [!TIP]
-> Åtgärder som körs och slutföras efter en föregående åtgärd har misslyckats, markeras som `Succeeded`. Detta innebär att om du har fånga alla fel i ett arbetsflöde, kör själva har markerats som `Succeeded`.
+> Åtgärder som körs och slutföras efter en föregående åtgärd har misslyckats, markeras som `Succeeded`. Den här funktionen innebär att om du har fånga alla fel i ett arbetsflöde, hello köras automatiskt har markerats som `Succeeded`.
 
-## <a name="scopes-and-results-to-evaluate-actions"></a>Omfång och resultat för att utvärdera åtgärder
+## <a name="scopes-and-results-tooevaluate-actions"></a>Omfång och resultat tooevaluate åtgärder
 
-Liknar hur du kan köra efter enskilda åtgärder du kan också gruppera åtgärder i en [omfång](../logic-apps/logic-apps-loops-and-scopes.md), som fungerar som en logisk gruppering av åtgärder. Scope är användbara både för att organisera dina logic app åtgärder och för att utföra sammanställd utvärderingar på status för ett omfång. Området själva får status när alla åtgärder i ett scope är klar. Scope-status bestäms med samma kriterier som körs. Om sista åtgärden i en körning grenen `Failed` eller `Aborted`, status är `Failed`.
+Liknande toohow som du kan köra efter enskilda åtgärder du kan också gruppera åtgärder i en [omfång](../logic-apps/logic-apps-loops-and-scopes.md), som fungerar som en logisk gruppering av åtgärder. Scope är användbara både för att organisera dina logic app åtgärder och för att utföra sammanställd utvärderingar på hello status för ett omfång. hello scope själva får status när alla åtgärder i ett scope är klar. hello scope status bestäms med hello samma kriterier som körs. Om hello sista åtgärd i en körning grenen är `Failed` eller `Aborted`, hello status är `Failed`.
 
-Du kan använda för att utlösa specifika åtgärder efter fel som inträffade inom omfånget `runAfter` med en omfattning som är markerad `Failed`. Om *alla* det gick inte att utföra åtgärder i omfånget, kör ett scope misslyckas kan du skapa en enda åtgärd för att fånga fel.
+toofire specifika åtgärder efter fel som inträffade i hello omfång som du kan använda `runAfter` med en omfattning som är markerad `Failed`. Om *alla* åtgärder i hello omfång misslyckas, kör ett scope misslyckas kan du skapa en enda åtgärd toocatch fel.
 
-### <a name="getting-the-context-of-failures-with-results"></a>Få kontext fel med resultat
+### <a name="getting-hello-context-of-failures-with-results"></a>Få hello kontext fel med resultat
 
-Fånga fel från ett scope är användbart, men du kanske också vill kontext för att hjälpa dig att förstå exakt vilka åtgärder som misslyckades, och eventuella fel eller statuskoder som returnerades. Den `@result()` arbetsflödesfunktion ger kontext om resultatet av alla åtgärder i en omfattning.
+Även om det är användbart fånga fel från ett scope, kan du också kontexten toohelp du förstå exakt vilka åtgärder som misslyckades, och eventuella fel eller statuskoder som returnerades. Hej `@result()` arbetsflödesfunktion ger kontext om hello resultatet av alla åtgärder i en omfattning.
 
-`@result()`tar en enda parameter, scope-namn och returnerar en matris med alla åtgärd resultat från i omfattningen. Åtgärd eller skriva in samma attribut som den `@actions()` objektet, inklusive åtgärd starttid, sluttid för åtgärd, Åtgärdsstatus, åtgärden indata, åtgärden Korrelations-ID: N och åtgärden matar ut. Om du vill skicka kontexten för alla åtgärder som misslyckades i ett omfång som du lätt kan koppla en `@result()` fungerar med en `runAfter`.
+`@result()`tar en enda parameter, scope-namn och returnerar en matris med alla hello åtgärd resultat från i omfattningen. Dessa åtgärder objekt innefattar hello samma attribut som hello `@actions()` objektet, inklusive åtgärd starttid, sluttid för åtgärd, Åtgärdsstatus, åtgärden indata, åtgärden Korrelations-ID: N och åtgärden matar ut. toosend kontexten för alla åtgärder som misslyckades i ett omfång, du lätt kan koppla en `@result()` fungerar med en `runAfter`.
 
-Att köra en åtgärd *för varje* åtgärd i en omfattning som `Failed`, filtrera matris av resultaten till åtgärder som har misslyckats, kan du koppla `@result()` med en  **[Filter matris](../connectors/connectors-native-query.md)**  åtgärd och en  **[ForEach](../logic-apps/logic-apps-loops-and-scopes.md)**  loop. Du kan ta matrisen filtrerade resultat och utföra en åtgärd för varje fel med hjälp av den **ForEach** loop. Här är ett exempel, följt av en detaljerad förklaring som skickar en HTTP POST-begäran med brödtext för svar för alla åtgärder som inte omfattas `My_Scope`.
+tooexecute åtgärden *för varje* åtgärd i en omfattning som `Failed`filter hello matris med resultat tooactions som har misslyckats, kan du koppla `@result()` med en  **[Filter matris](../connectors/connectors-native-query.md)**  åtgärd och en  **[ForEach](../logic-apps/logic-apps-loops-and-scopes.md)**  loop. Du kan ta hello filtrerade resultat matris och utföra en åtgärd för varje fel med hello **ForEach** loop. Här är ett exempel, följt av en detaljerad förklaring som skickar en HTTP POST-begäran med hello svarstexten för alla åtgärder som inte omfattas hello `My_Scope`.
 
 ```json
 "Filter_array": {
@@ -155,22 +155,22 @@ Att köra en åtgärd *för varje* åtgärd i en omfattning som `Failed`, filtre
 }
 ```
 
-Här följer en detaljerad genomgång som beskriver vad som händer:
+Här följer en detaljerad genomgång toodescribe händer:
 
-1. Att hämta resultatet av alla åtgärder inom `My_Scope`, **Filter matris** åtgärdsfilter `@result('My_Scope')`.
+1. tooget hello resultatet av alla åtgärder inom `My_Scope`, hello **Filter matris** åtgärdsfilter `@result('My_Scope')`.
 
-2. Villkoret för **Filter matris** valfri `@result()` objekt som har status som är lika med `Failed`. Det här villkoret filtrerar matris med alla åtgärd resultat från `My_Scope` till en matris med endast misslyckade åtgärden resultat.
+2. Hej villkor för **Filter matris** valfri `@result()` objekt som har status som är lika för`Failed`. Det här villkoret filtrerar hello matris med alla åtgärd resultat från `My_Scope` tooan matris med endast misslyckades åtgärden resultat.
 
-3. Utföra en **för varje** åtgärd på den **filtrerade matris** matar ut. Det här steget utför en åtgärd *för varje* misslyckades åtgärden resultat som tidigare har filtrerats.
+3. Utföra en **för varje** åtgärd på hello **filtrerade matris** matar ut. Det här steget utför en åtgärd *för varje* misslyckades åtgärden resultat som tidigare har filtrerats.
 
-    Om en enda åtgärd i omfånget misslyckats åtgärder i den `foreach` bara körs en gång. 
+    Om en enda åtgärd i hello omfång misslyckades hello åtgärder i hello `foreach` bara körs en gång. 
     Många misslyckade åtgärder gör att en åtgärd per fel.
 
-4. Skicka en HTTP POST på den `foreach` objektet brödtext för svar eller `@item()['outputs']['body']`. Den `@result()` form är samma som den `@actions()` form och kan parsas på samma sätt.
+4. Skicka en HTTP POST på hello `foreach` objektet brödtext för svar eller `@item()['outputs']['body']`. Hej `@result()` form är hello samma som hello `@actions()` form och kan parsas hello samma sätt.
 
-5. Innehåller två anpassade huvuden med misslyckade åtgärdsnamn `@item()['name']` och den kör klienten spårnings-ID `@item()['clientTrackingId']`.
+5. Innehåller två anpassade huvuden med namn på hello misslyckad åtgärd `@item()['name']` och hello misslyckades kör klienten spårnings-ID `@item()['clientTrackingId']`.
 
-Här är ett exempel på en enda referens `@result()` objektet, visar den `name`, `body`, och `clientTrackingId` egenskaper som parsas i föregående exempel. Utanför en `foreach`, `@result()` returnerar en matris med de här objekten.
+Här är ett exempel på en enda referens `@result()` artikeln, visar hello `name`, `body`, och `clientTrackingId` egenskaper som parsas i hello föregående exempel. Utanför en `foreach`, `@result()` returnerar en matris med de här objekten.
 
 ```json
 {
@@ -202,18 +202,18 @@ Här är ett exempel på en enda referens `@result()` objektet, visar den `name`
 }
 ```
 
-Du kan använda uttryck som visats för att utföra olika undantagshantering mönster. Du kan välja att utföra en enda undantagshantering åtgärd utanför omfånget som accepterar hela filtrerade matrisen fel och ta bort den `foreach`. Du kan även inkludera andra användbara egenskaper från den `@result()` svar som har visats.
+Du kan använda hello uttryck såg tidigare tooperform olika undantagshantering mönster. Du kan välja tooexecute en enda undantagshantering åtgärd utanför hello omfattning som accepterar hello hela filtrerade array fel och ta bort hello `foreach`. Du kan även inkludera andra användbara egenskaper från hello `@result()` svar som har visats.
 
 ## <a name="azure-diagnostics-and-telemetry"></a>Azure-diagnostik och telemetri
 
-Tidigare mönstren är bra sätt att hantera fel och undantag inom en körning, men du kan också identifiera och svara på fel som är oberoende av körningen sig själv. 
-[Azure Diagnostics](../logic-apps/logic-apps-monitor-your-logic-apps.md) gör det enkelt att skicka alla arbetsflödeshändelser (inklusive status för alla kör och åtgärden) till ett Azure Storage-konto eller ett Azure-Händelsehubb. Om du vill utvärdera kör status, kan du övervaka loggar och mått eller publicera dem i alla övervakningsverktyg som du föredrar. En potentiell alternativ är att strömma alla händelser via Azure Event Hub i [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). Du kan skriva live frågor av alla avvikelser, medelvärden och fel från diagnostiska loggar i Stream Analytics. Stream Analytics kan enkelt utdata till andra datakällor som köer, ämnen, SQL, Azure Cosmos DB och Power BI.
+hello tidigare mönstren är bra sätt toohandle fel och undantag inom en körning, men du kan också identifiera och svara tooerrors oberoende av hello köras automatiskt. 
+[Azure Diagnostics](../logic-apps/logic-apps-monitor-your-logic-apps.md) ger ett enkelt sätt toosend alla arbetsflöde händelser (inklusive status för alla kör och åtgärden) tooan Azure Storage-konto eller ett Azure-Händelsehubb. tooevaluate kör status, kan du övervaka hello loggar och mått eller publicera dem i alla övervakningsverktyg som du föredrar. Potentiella kan toostream alla hello händelser via Azure Event Hub i [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). I Stream Analytics kan du skriva live frågor av alla avvikelser, medelvärden och fel från hello diagnostikloggar. Stream Analytics kan enkelt skapa tooother datakällor som köer, ämnen, SQL, Azure Cosmos DB och Power BI.
 
 ## <a name="next-steps"></a>Nästa steg
 
 * [Se hur en kund bygger felhantering med Azure Logikappar](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Hitta mer Logic Apps exempel och scenarier](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Lär dig hur du skapar automatiserad distribution för logic apps](../logic-apps/logic-apps-create-deploy-template.md)
+* [Lär dig hur toocreate automatiserade distributioner för logikappar](../logic-apps/logic-apps-create-deploy-template.md)
 * [Skapa och distribuera Logic Apps i Visual Studio](logic-apps-deploy-from-vs.md)
 
 <!-- References -->

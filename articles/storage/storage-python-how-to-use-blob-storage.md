@@ -1,6 +1,6 @@
 ---
-title: "Använda Azure Blob storage (objektlagring) från Python | Microsoft Docs"
-description: Lagra ostrukturerade data i molnet med Azure Blob Storage (objektlagring).
+title: "aaaHow toouse Azure Blob storage (objektlagring) från Python | Microsoft Docs"
+description: Lagra Ostrukturerade data i hello moln med Azure Blob storage (objektlagring).
 services: storage
 documentationcenter: python
 author: mmacy
@@ -14,34 +14,34 @@ ms.devlang: python
 ms.topic: article
 ms.date: 2/24/2017
 ms.author: marsma
-ms.openlocfilehash: 968814db9496fd410162d482191592c8a56101f0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6efc61aa89e6d2544b7a18c80ce3546640f90462
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-azure-blob-storage-from-python"></a>Använda Azure Blob storage från Python
+# <a name="how-toouse-azure-blob-storage-from-python"></a>Hur toouse Azure Blob storage från Python
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Översikt
-Azure Blob Storage är en tjänst som lagrar ostrukturerade data i molnet som objekt/blobbar. Blob Storage kan lagra alla slags textdata eller binära data, till exempel ett dokument, en mediefil eller ett installationsprogram. Blob Storage kallas även för objektlagring.
+Azure Blob storage är en tjänst som lagrar Ostrukturerade data i hello molnet som objekt/blobbar. Blob Storage kan lagra alla slags textdata eller binära data, till exempel ett dokument, en mediefil eller ett installationsprogram. BLOB storage är också hänvisade tooas objektlagring.
 
-Den här artikeln visar hur du utför vanliga scenarier med Blob storage. Exemplen är skrivna i Python och Använd den [Microsoft Azure Storage SDK för Python]. Scenarier som tas upp inkluderar överföringen, lista, hämtar och tar bort blobbar.
+Den här artikeln visar hur tooperform vanliga scenarier med Blob storage. hello exemplen är skrivna i Python och använder hello [Microsoft Azure Storage SDK för Python]. hello-scenarier som tas upp inkluderar överföringen, lista, hämtar och tar bort blobbar.
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-container"></a>Skapa en behållare
-Baserat på vilken typ av blob som du vill använda kan du skapa en **BlockBlobService**, **AppendBlobService**, eller **PageBlobService** objekt. I följande kod används en **BlockBlobService** objekt. Lägg till följande längst upp i en Python-fil som du vill komma åt Azure Block Blob Storage.
+Baserat på hello blob som toouse, skapa en **BlockBlobService**, **AppendBlobService**, eller **PageBlobService** objekt. hello följande kod används en **BlockBlobService** objekt. Lägg till följande hello hello övre delen av Python-fil som du vill tooprogrammatically åtkomst Azure Block Blob Storage.
 
 ```python
 from azure.storage.blob import BlockBlobService
 ```
 
-Följande kod skapar en **BlockBlobService** objekt med lagringskontots namn och åtkomstnyckel.  Ersätt ”MITTKONTO' och 'MinNyckel' med kontonamnet och nyckeln.
+hello följande kod skapar en **BlockBlobService** objekt med hello lagringskontots namn och åtkomstnyckel.  Ersätt ”MITTKONTO' och 'MinNyckel' med kontonamnet och nyckeln.
 
 ```python
 block_blob_service = BlockBlobService(account_name='myaccount', account_key='mykey')
@@ -49,33 +49,33 @@ block_blob_service = BlockBlobService(account_name='myaccount', account_key='myk
 
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-I följande kodexempel, kan du använda en **BlockBlobService** objekt att skapa behållaren om den inte finns.
+I följande kodexempel hello, kan du använda en **BlockBlobService** toocreate hello behållare om den inte finns.
 
 ```python
 block_blob_service.create_container('mycontainer')
 ```
 
-Som standard är den nya behållaren privat, så du måste ange din lagringsåtkomstnyckel (som du gjorde tidigare) för att ladda ned blobbar från den här behållaren. Du kan skapa behållaren och skicka offentliga åtkomstnivå med följande kod om du vill göra blobbar i behållaren tillgängliga för alla.
+Som standard hello ny behållare är privat, så du måste ange din lagringsåtkomstnyckel (som du gjorde tidigare) toodownload blobbar från den här behållaren. Om du vill toomake hello blobbar i hello behållaren tillgängliga tooeveryone kan du skapa hello behållare och skicka hello offentliga åtkomstnivå med hello följande kod.
 
 ```python
 from azure.storage.blob import PublicAccess
 block_blob_service.create_container('mycontainer', public_access=PublicAccess.Container)
 ```
 
-Du kan också ändra en behållare när du har skapat den med hjälp av följande kod.
+Du kan också ändra en behållare när du har skapat den med hjälp av hello följande kod.
 
 ```python
 block_blob_service.set_container_acl('mycontainer', public_access=PublicAccess.Container)
 ```
 
-När alla på Internet kan se blobbar i en offentlig behållare, men du kan bara ändra eller ta bort dem.
+När alla på hello Internet kan se blobbar i en offentlig behållare, men du kan bara ändra eller ta bort dem.
 
 ## <a name="upload-a-blob-into-a-container"></a>Ladda upp en blobb till en behållare
-Du skapar en blockblobb och ladda upp data genom att använda den **skapa\_blob\_från\_sökväg**, **skapa\_blob\_från\_dataströmmen**, **skapa\_blob\_från\_byte** eller **skapa\_blob\_från\_text** -metoderna. De är övergripande metoder som utför nödvändiga högoptimerat när storleken på data överskrider 64 MB.
+toocreate en blockblobb och överföringsdata använder hello **skapa\_blob\_från\_sökväg**, **skapa\_blob\_från\_dataströmmen**, **skapa\_blob\_från\_byte** eller **skapa\_blob\_från\_text** -metoderna. De är övergripande metoder som utför hello nödvändiga högoptimerat när hello hello överskrider data 64 MB.
 
-**Skapa\_blob\_från\_sökväg** Överför innehållet i en fil från den angivna sökvägen och **skapa\_blob\_från\_dataströmmen**Överför innehållet från en redan öppnad filström. **Skapa\_blob\_från\_byte** överför en matris med byte och **skapa\_blob\_från\_text** överför det angivna textvärde med den angivna kodningen (standardvärdet är UTF-8).
+**Skapa\_blob\_från\_sökväg** överföringar hello innehållet i en fil från hello angivna sökvägen och **skapa\_blob\_från\_dataströmmen** överföringar hello innehåll från en redan öppnad filström. **Skapa\_blob\_från\_byte** överför en matris med byte och **skapa\_blob\_från\_text** överför hello angetts textvärde med hello angetts kodning (standard tooUTF-8).
 
-I följande exempel Överför innehållet i den **sunset.png** filen till den **minblobb** blob.
+hello följande exempel överför hello innehållet i hello **sunset.png** filen till hello **minblobb** blob.
 
 ```python
 from azure.storage.blob import ContentSettings
@@ -87,8 +87,8 @@ block_blob_service.create_blob_from_path(
             )
 ```
 
-## <a name="list-the-blobs-in-a-container"></a>Visa en lista över blobbarna i en behållare
-Om du vill visa blobbar i en behållare använder den **lista\_blobbar** metod. Den här metoden returnerar en generator. I följande kod utdata i **namn** för varje blobb i en behållare i konsolen.
+## <a name="list-hello-blobs-in-a-container"></a>Lista hello blobbar i en behållare
+toolist hello blobbar i en behållare använder hello **lista\_blobbar** metod. Den här metoden returnerar en generator. hello följande kod visar hello **namn** för varje blobb i en behållare toohello konsol.
 
 ```python
 generator = block_blob_service.list_blobs('mycontainer')
@@ -97,33 +97,33 @@ for blob in generator:
 ```
 
 ## <a name="download-blobs"></a>Ladda ned blobbar
-Hämta data från en blob, **hämta\_blob\_till\_sökväg**, **hämta\_blob\_till\_dataströmmen**, **hämta\_blob\_till\_byte**, eller **hämta\_blob\_till\_text**. De är övergripande metoder som utför nödvändiga högoptimerat när storleken på data överskrider 64 MB.
+toodownload data från en blob som använder **hämta\_blob\_till\_sökväg**, **hämta\_blob\_till\_dataströmmen**, **hämta\_blob\_till\_byte**, eller **hämta\_blob\_till\_text**. De är övergripande metoder som utför hello nödvändiga högoptimerat när hello hello överskrider data 64 MB.
 
-I följande exempel visas hur du använder **hämta\_blob\_till\_sökväg** att hämta innehållet i den **minblobb** blob och lagra den till den  **out-sunset.png** fil.
+hello följande exempel visas hur du använder **hämta\_blob\_till\_sökväg** toodownload hello innehållet i hello **minblobb** blob och lagra den toohello **out sunset.png** fil.
 
 ```python
 block_blob_service.get_blob_to_path('mycontainer', 'myblockblob', 'out-sunset.png')
 ```
 
 ## <a name="delete-a-blob"></a>Ta bort en blob
-Slutligen, om du vill ta bort en blobb anropa **delete_blob**.
+Slutligen toodelete blob anropa **delete_blob**.
 
 ```python
 block_blob_service.delete_blob('mycontainer', 'myblockblob')
 ```
 
-## <a name="writing-to-an-append-blob"></a>Skriva till en tilläggsblobb
-En tilläggsblobb är optimerad för tilläggsåtgärder, t.ex loggning. Precis som en blockblobb består en tilläggsblobb av block, men när du lägger till ett nytt block till en tilläggsblobb läggs det alltid till sist i blobben. Du kan inte uppdatera eller ta bort ett befintligt block i en tilläggsblobb. En tilläggsblobbs block-ID:n exponeras inte som de gör för en blockblobb.
+## <a name="writing-tooan-append-blob"></a>Skrivning tooan lägga till blob
+En tilläggsblobb är optimerad för tilläggsåtgärder, t.ex loggning. Som en blockblobb består en tilläggsblobb av block, men när du lägger till en ny tilläggsblobb för block tooan det är alltid tillagda toohello slutet av hello-blob. Du kan inte uppdatera eller ta bort ett befintligt block i en tilläggsblobb. hello block ID för en tilläggsblobb exponeras inte eftersom de är för en blockblob.
 
-Blocken i en tilläggsblobb kan ha olika storlek, upp till högst 4 MB, och en tilläggsblobb kan innehålla högst 50 000 block. Den största storleken på en tilläggsblobb är alltså strax över 195 GB (4 MB × 50 000 block).
+Varje block i en tilläggsblobb kan ha olika storlek, upp tooa högst 4 MB och en tilläggsblobb kan innehålla högst 50 000 block. hello maximal storlek på en tilläggsblobb är därför lite över 195 GB (4 MB × 50 000 block).
 
-I exemplet nedan skapar vi en ny tilläggsblobb och lägger till vissa data i den för att simulera en enkel loggningsåtgärd.
+hello exemplet nedan skapar en ny tilläggsblobb och lägger till vissa data tooit, simulera en enkel loggningsåtgärd.
 
 ```python
 from azure.storage.blob import AppendBlobService
 append_blob_service = AppendBlobService(account_name='myaccount', account_key='mykey')
 
-# The same containers can hold all types of blobs
+# hello same containers can hold all types of blobs
 append_blob_service.create_container('mycontainer')
 
 # Append blobs must be created before they are appended to
@@ -134,7 +134,7 @@ append_blob = append_blob_service.get_blob_to_text('mycontainer', 'myappendblob'
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig grunderna om Blob Storage kan du följa dessa länkar om du vill veta mer.
+Nu när du har lärt dig grunderna hello i Blob storage följa dessa länkar toolearn mer.
 
 * [Python Developer Center](https://azure.microsoft.com/develop/python/)
 * [REST-API för Azure Storage Services](http://msdn.microsoft.com/library/azure/dd179355)

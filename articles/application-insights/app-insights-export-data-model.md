@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights datamodellen | Microsoft Docs
+title: aaaAzure Application Insights-datamodell | Microsoft Docs
 description: "Beskriver egenskaper som exporteras från löpande export i JSON och används som filter."
 services: application-insights
 documentationcenter: 
@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: bwren
-ms.openlocfilehash: a485ddd555f65473d81896effc4a3562bda71410
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 5ff3ce7953b91cc69b5d96c0ea9b6d58a6016e61
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights Export-datamodell
-Den här tabellen innehåller egenskaper för telemetri som skickats från den [Programinsikter](app-insights-overview.md) SDK: er till portalen.
+Den här tabellen visar hello egenskaper för telemetri som skickas från hello [Programinsikter](app-insights-overview.md) SDK toohello portal.
 Du ser dessa egenskaper i data från [löpande Export](app-insights-export-telemetry.md).
 De visas också egenskapsfilter i [mått Explorer](app-insights-metrics-explorer.md) och [diagnostiska Sök](app-insights-diagnostic-search.md).
 
-Pekar på Observera:
+Punkter toonote:
 
-* `[0]`i dessa tabeller anger du en punkt i sökvägen där du måste infoga ett index. men det är inte alltid 0.
+* `[0]`i dessa tabeller anger du en punkt i hello sökväg där du har tooinsert ett index. men det är inte alltid 0.
 * Tidsvaraktigheter finns i en mikrosekundnivå så 10000000 tiondels == 1 sekund.
-* Datum och tider är UTC och anges i formatet ISO`yyyy-MM-DDThh:mm:ss.sssZ`
+* Datum och tider är UTC och anges i hello ISO-format`yyyy-MM-DDThh:mm:ss.sssZ`
 
 
 ## <a name="example"></a>Exempel
@@ -41,15 +41,15 @@ Pekar på Observera:
           "base": "/",
           "hashTag": ""
         },
-        "responseCode": 200, // Sent to client
+        "responseCode": 200, // Sent tooclient
         "success": true, // Default == responseCode<400
-        // Request id becomes the operation id of child events
+        // Request id becomes hello operation id of child events
         "id": "fCOhCdCnZ9I=",  
         "name": "GET Home/Index",
         "count": 1, // 100% / sampling rate
         "durationMetric": {
           "value": 1046804.0, // 10000000 == 1 second
-          // Currently the following fields are redundant:
+          // Currently hello following fields are redundant:
           "count": 1.0,
           "min": 1046804.0,
           "max": 1046804.0,
@@ -75,14 +75,14 @@ Pekar på Observera:
       "location": { // derived from client ip
         "continent": "North America",
         "country": "United States",
-        // last octagon is anonymized to 0 at portal:
+        // last octagon is anonymized too0 at portal:
         "clientip": "168.62.177.0",
         "province": "",
         "city": ""
       },
       "data": {
         "isSynthetic": true, // we identified source as a bot
-        // percentage of generated data sent to portal:
+        // percentage of generated data sent tooportal:
         "samplingRate": 100.0,
         "eventTime": "2016-03-21T10:05:45.7334717Z" // UTC
       },
@@ -116,11 +116,11 @@ Alla typer av telemetri åtföljs av en kontext-avsnittet. Alla dessa fält skic
 
 | Sökväg | Typ | Anteckningar |
 | --- | --- | --- |
-| Context.Custom.dimensions [0] |objektet] |Nyckel / värde-strängpar som anges av parametern anpassade egenskaper. Nyckeln får innehålla högst 100, värden får innehålla högst 1024. Fler än 100 unika värden egenskapen kan sökas men kan inte användas för segmentering. Max 200 nycklar per ikey. |
+| Context.Custom.dimensions [0] |objektet] |Nyckel / värde-strängpar som anges av parametern anpassade egenskaper. Nyckeln får innehålla högst 100, värden får innehålla högst 1024. Fler än 100 unika värden hello-egenskapen kan sökas men kan inte användas för segmentering. Max 200 nycklar per ikey. |
 | Context.Custom.Metrics [0] |objektet] |Nyckel-värdepar anges av parametern anpassade mått och av TrackMetrics. Maximal nyckellängd 100, värdena kan vara numeriskt. |
 | context.data.eventTime |Sträng |UTC |
-| context.data.isSynthetic |Booleskt värde |Begäran verkar komma från en bot eller web test. |
-| context.data.samplingRate |Antal |Procentandelen telemetri som genererats av SDK som skickas till portalen. Intervallet 0,0 100,0. |
+| context.data.isSynthetic |Booleskt värde |Begäran visas toocome från en bot eller web test. |
+| context.data.samplingRate |Antal |Procentandelen telemetri som genererats av hello SDK som skickas tooportal. Intervallet 0,0 100,0. |
 | Context.Device |Objektet |Klientenheten |
 | Context.Device.Browser |Sträng |Internet Explorer, Chrome... |
 | context.device.browserVersion |Sträng |Chrome 48,0... |
@@ -136,14 +136,14 @@ Alla typer av telemetri åtföljs av en kontext-avsnittet. Alla dessa fält skic
 | Context.Device.Type |Sträng |PC webbläsare... |
 | Context.Location |Objektet |Härleds från clientip. |
 | Context.location.City |Sträng |Om den är känd som härrör från clientip, |
-| Context.location.clientip |Sträng |Senaste Åttahörning anonym till 0. |
+| Context.location.clientip |Sträng |Senaste Åttahörning är anonymiserade too0. |
 | Context.location.continent |Sträng | |
 | Context.location.Country |Sträng | |
 | Context.location.province |Sträng |Region |
-| Context.operation.ID |Sträng |Objekt som har samma åtgärds-id visas som relaterade objekt i portalen. Vanligtvis begäran-id. |
+| Context.operation.ID |Sträng |Objekt som har samma åtgärds-id visas som relaterade objekt i hello portal hello. Vanligtvis hello id för förfrågan. |
 | Context.operation.Name |Sträng |URL eller begäran |
 | context.operation.parentId |Sträng |Tillåter kapslade relaterade objekt. |
-| Context.session.ID |Sträng |ID för en grupp av åtgärder från samma källa. 30 minuter utan en åtgärd signalerar till slutet av en session. |
+| Context.session.ID |Sträng |ID för en grupp av åtgärder från hello samma källa. 30 minuter utan en åtgärd signalerar hello slutet av en session. |
 | context.session.isFirst |Booleskt värde | |
 | context.user.accountAcquisitionDate |Sträng | |
 | context.user.anonAcquisitionDate |Sträng | |
@@ -165,7 +165,7 @@ Anpassade händelser som genererats av [trackevent ()](app-insights-api-custom-e
 | händelsen [0] urlData.host |Sträng | |
 
 ## <a name="exceptions"></a>Undantag
-Rapporter [undantag](app-insights-asp-net-exceptions.md) på servern och i webbläsaren.
+Rapporter [undantag](app-insights-asp-net-exceptions.md) i hello server och hello webbläsare.
 
 | Sökväg | Typ | Anteckningar |
 | --- | --- | --- |
@@ -194,17 +194,17 @@ Rapporter [undantag](app-insights-asp-net-exceptions.md) på servern och i webbl
 | typeName basicException [0] |Sträng | |
 
 ## <a name="trace-messages"></a>Spåra meddelanden
-Skickas av [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace), och av de [loggning kort](app-insights-asp-net-trace-logs.md).
+Skickas av [TrackTrace](app-insights-api-custom-events-metrics.md#tracktrace), och av hello [loggning kort](app-insights-asp-net-trace-logs.md).
 
 | Sökväg | Typ | Anteckningar |
 | --- | --- | --- |
 | meddelandet [0] loggningsnamn |Sträng | |
 | [0] meddelandeparametrar |Sträng | |
-| meddelandet [0] rådata |Sträng |Loggmeddelande får innehålla högst 10k. |
+| meddelandet [0] rådata |Sträng |hello loggmeddelande, får innehålla högst 10k. |
 | meddelandet [0] severityLevel |Sträng | |
 
 ## <a name="remote-dependency"></a>Fjärråtkomst beroende
-Skickas av TrackDependency. Används för att rapportprestanda och användning av [anrop till beroenden](app-insights-asp-net-dependencies.md) i server och AJAX-anrop i webbläsaren.
+Skickas av TrackDependency. Används tooreport prestanda och användning av [anropar toodependencies](app-insights-asp-net-dependencies.md) i hello server och AJAX-anrop i hello webbläsare.
 
 | Sökväg | Typ | Anteckningar |
 | --- | --- | --- |
@@ -213,7 +213,7 @@ Skickas av TrackDependency. Används för att rapportprestanda och användning a
 | remoteDependency [0] commandName |Sträng |Till exempel ”home/index” |
 | Antal remoteDependency [0] |heltal |100 / ([provtagning](app-insights-sampling.md) hastighet). Till exempel 4 =&gt; 25%. |
 | remoteDependency [0] dependencyTypeName |Sträng |HTTP, SQL... |
-| remoteDependency [0] durationMetric.value |Antal |Tid vid anrop till svaret av beroende har slutförts |
+| remoteDependency [0] durationMetric.value |Antal |Tiden från anropet toocompletion svar av beroende |
 | remoteDependency [0]-id |Sträng | |
 | remoteDependency [0] namn |Sträng |URL-adressen. Maxlängd 250. |
 | remoteDependency [0] resultCode |Sträng |från HTTP-beroendet |
@@ -225,15 +225,15 @@ Skickas av TrackDependency. Används för att rapportprestanda och användning a
 | remoteDependency [0] urlData.host |Sträng |Maxlängd 200 |
 
 ## <a name="requests"></a>Begäranden
-Skickas av [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). Modulerna som standard används för att rapporter serversvarstid, mätt på servern.
+Skickas av [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest). hello standard moduler använder den här tooreports serversvarstid, mätt hello-servern.
 
 | Sökväg | Typ | Anteckningar |
 | --- | --- | --- |
 | antalet begäranden [0] |heltal |100 / ([provtagning](app-insights-sampling.md) hastighet). Till exempel: 4 =&gt; 25%. |
-| begäran [0] durationMetric.value |Antal |Tid för begäran som inkommer till svar. 1e7 == 1s |
+| begäran [0] durationMetric.value |Antal |Tiden från begäran ankommande tooresponse. 1e7 == 1s |
 | id för förfrågan [0] |Sträng |Åtgärds-id |
 | namn på förfrågan [0] |Sträng |GET/POST + bas-url.  Maxlängd 250 |
-| begäran [0] responseCode |heltal |HTTP-svar som skickats till klienten |
+| begäran [0] responseCode |heltal |HTTP-svaret tooclient |
 | begäran [0] lyckades |Booleskt värde |Standard == (responseCode &lt; 400) |
 | url-begäran [0] |Sträng |Inte inklusive värden |
 | begäran [0] urlData.base |Sträng | |
@@ -241,18 +241,18 @@ Skickas av [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest
 | begäran [0] urlData.host |Sträng | |
 
 ## <a name="page-view-performance"></a>Vyn sida prestanda
-Skickas av webbläsaren. Mäter tid att bearbeta en sida från användare initierar en begäran om att visa fullständiga (exklusive asynkrona AJAX-anrop).
+Skickas av hello webbläsare. Mått hello tid tooprocess en sida från användaren initierande hello begäran toodisplay fullständig (exklusive asynkrona AJAX-anrop).
 
 Kontexten värden visa klientens operativsystem och version på webbläsaren.
 
 | Sökväg | Typ | Anteckningar |
 | --- | --- | --- |
-| clientPerformance [0] clientProcess.value |heltal |Tiden från slutet av tar emot HTML för att visa sidan. |
+| clientPerformance [0] clientProcess.value |heltal |Tiden från slutet av tar emot hello HTML toodisplaying hello sida. |
 | clientPerformance [0] namn |Sträng | |
-| clientPerformance [0] networkConnection.value |heltal |Åtgången tid för att upprätta en nätverksanslutning. |
-| clientPerformance [0] receiveRequest.value |heltal |Tiden från slutet av begäran skickades till mottagning HTML i svar. |
-| clientPerformance [0] sendRequest.value |heltal |Tiden från att skicka HTTP-begäran. |
-| clientPerformance [0] total.value |heltal |Tiden mellan start-och skicka begäran till visar sidan. |
+| clientPerformance [0] networkConnection.value |heltal |Tidsåtgång tooestablish en nätverksanslutning. |
+| clientPerformance [0] receiveRequest.value |heltal |Tiden från slutet av skickar hello begäran tooreceiving hello HTML i svar. |
+| clientPerformance [0] sendRequest.value |heltal |Tiden från vidtas toosend hello HTTP-begäran. |
+| clientPerformance [0] total.value |heltal |Tiden från att starta toosend hello begäran toodisplaying hello sidan. |
 | clientPerformance [0] url |Sträng |URL för den här begäran |
 | clientPerformance [0] urlData.base |Sträng | |
 | clientPerformance [0] urlData.hashTag |Sträng | |
@@ -265,7 +265,7 @@ Skickas av trackPageView() eller [stopTrackPage](app-insights-api-custom-events-
 | Sökväg | Typ | Anteckningar |
 | --- | --- | --- |
 | Visa [0] antal |heltal |100 / ([provtagning](app-insights-sampling.md) hastighet). Till exempel 4 =&gt; 25%. |
-| Visa [0] durationMetric.value |heltal |Värdet som du kan också ställa in i trackPageView() eller startTrackPage() - stopTrackPage(). Inte samma som clientPerformance värden. |
+| Visa [0] durationMetric.value |heltal |Värdet som du kan också ställa in i trackPageView() eller startTrackPage() - stopTrackPage(). Hej inte samma som clientPerformance värden. |
 | vynamn [0] |Sträng |Rubrik.  Maxlängd 250 |
 | Visa [0] url |Sträng | |
 | Visa [0] urlData.base |Sträng | |
@@ -294,7 +294,7 @@ Rapporter [tillgänglighet webbtester](app-insights-monitor-web-app-availability
 ## <a name="metrics"></a>Mått
 Genereras av TrackMetric().
 
-Måttet finns i context.custom.metrics[0]
+hello värde hittades i context.custom.metrics[0]
 
 Exempel:
 
@@ -335,13 +335,13 @@ Måttvärden, både i mått rapporter och på andra platser, rapporteras med en 
         "sampledValue": 468.71603053650279
       }
 
-För närvarande - men detta kan ändras i framtiden – alla värden som rapporterats från standard SDK-moduler, `count==1` och endast de `name` och `value` fälten är användbara. Det enda fallet där de skulle vara olika skulle vara om du skriver TrackMetric anrop i som du ange andra parametrar.
+För närvarande - men detta kan ändras i framtida - alla värden som rapporterats från hello standard SDK-moduler, hello `count==1` och endast hello `name` och `value` fälten är användbara. hello enda fallet där de skulle vara olika skulle vara om du skriver TrackMetric anrop i som du anger hello andra parametrar.
 
-Syftet med de andra fälten är att mått ska aggregeras i SDK, för att minska trafiken till portalen. Du kan till exempel genomsnittlig flera efterföljande avläsningar innan du skickar varje mått rapport. Du skulle sedan beräkna min, max, standardavvikelse och samlat värde (sum eller medelvärde) och ange antal för antal värden som representeras av rapporten.
+Hej syfte hello andra fält är tooallow mått toobe samman i hello SDK, tooreduce trafik toohello portal. Du kan till exempel genomsnittlig flera efterföljande avläsningar innan du skickar varje mått rapport. Du skulle sedan beräkna hello min, max, standardavvikelse och samlat värde (sum eller medelvärde) och ange talet för antal toohello av avläsningar som representeras av hello rapporten.
 
-Vi har utelämnats används sällan fält count, min, max, stdDev och sampledValue i tabellerna ovan.
+Vi har utelämnats hello används sällan fält count, min, max, stdDev och sampledValue i hello tabellerna ovan.
 
-I stället före sammanställa statistik och, du kan använda [provtagning](app-insights-sampling.md) om du vill minska mängden telemetri.
+I stället före sammanställa statistik och, du kan använda [provtagning](app-insights-sampling.md) om du behöver tooreduce hello telemetrivolym.
 
 ### <a name="durations"></a>Varaktighet
 Förutom där annat anges, representeras varaktighet i tiondels mikrosekundnivå, så att 10000000.0 innebär 1 sekund.

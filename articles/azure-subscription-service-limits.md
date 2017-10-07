@@ -1,6 +1,6 @@
 ---
-title: "Azure-prenumerationsbegränsningar och kvoter | Microsoft Docs"
-description: "Visar en lista över vanliga Azure-prenumeration och tjänsten gränser, kvoter och begränsningar. Detta omfattar information om hur du ökar gränser tillsammans med högsta värden."
+title: "aaaAzure prenumeration gränser och kvoter | Microsoft Docs"
+description: "Visar en lista över vanliga Azure-prenumeration och tjänsten gränser, kvoter och begränsningar. Detta omfattar information om hur tooincrease begränsar tillsammans med högsta värden."
 services: 
 documentationcenter: 
 author: rothja
@@ -15,32 +15,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: byvinyal
-ms.openlocfilehash: a76acd67e9ba7822f2837b3c08e2ede389047f11
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: a754d56124520791254ab8f1729808f0750ff222
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-prenumeration och tjänstbegränsningar, kvoter och krav
-Det här dokumentet innehåller några av de vanligaste Microsoft Azure-gränser, som ibland kallas kvoter. Det här dokumentet omfattar inte för närvarande alla Azure-tjänster. Över tiden, kommer i listan att expanderas och uppdateras så att den täcker flera av plattformen.
+Det här dokumentet innehåller några av hello de vanligaste Microsoft Azure gränser, som ibland kallas kvoter. Det här dokumentet omfattar inte för närvarande alla Azure-tjänster. Över tiden, hello listan ska expanderas och uppdatera toocover mer hello plattform.
 
-Besök [översikt över priser för Azure](https://azure.microsoft.com/pricing/) för mer information om priser för Azure. Det, kan du uppskatta dina kostnader med hjälp av den [Priskalkylatorn](https://azure.microsoft.com/pricing/calculator/) eller genom att besöka sidan prisnivå information för en tjänst (till exempel [virtuella Windows-datorer](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)). Tips för att hantera dina kostnader finns [förhindrar oväntade kostnader med Azure fakturerings- och kostnaden management](billing/billing-getting-started.md).
-
-> [!NOTE]
-> Om du vill höja gränsen eller kvoten ovan den **standard gränsen**, [öppna en supportbegäran för online customer utan kostnad](azure-supportability/resource-manager-core-quotas-request.md). Ramen kan inte ökas ovanför den **maxgränsen** värdet som visas i följande tabeller. Om det finns inga **maxgränsen** kolumn, och sedan resursen saknar justerbara gränser. 
-> 
-> Kostnadsfri utvärderingsversion prenumerationer är inte berättigad till gränsen eller kvoten ökar. Om du har en kostnadsfri utvärderingsversion, du kan uppgradera till en [betala per användning](https://azure.microsoft.com/offers/ms-azr-0003p/) prenumeration. Mer information finns i [uppgradera kostnadsfri utvärderingsversion av Azure till betala per användning](billing/billing-upgrade-azure-subscription.md).
-> 
-
-## <a name="limits-and-the-azure-resource-manager"></a>Gränser och Azure Resource Manager
-Nu är det möjligt att kombinera flera Azure-resurser i en enda Azure-resursgrupp. När du använder resursgrupper hanteras gränser som en gång var globala på regional nivå med Azure Resource Manager. Läs mer om Azure-resursgrupper [översikt över Azure Resource Manager](azure-resource-manager/resource-group-overview.md).
-
-I gränserna som nedan, har en ny tabell lagts till återspeglar eventuella skillnader i begränsningar när du använder Azure Resource Manager. Det finns till exempel en **prenumerationsbegränsningar** tabell och en **prenumerationsbegränsningar - Azure Resource Manager** tabell. När det gäller en gräns för båda scenarierna, visas den bara i den första tabellen. Om inget annat anges är gränserna globala för alla regioner.
+Besök [översikt över priser för Azure](https://azure.microsoft.com/pricing/) toolearn mer om prissättningen för Azure. Det, kan du uppskatta dina kostnader med hello [Priskalkylatorn](https://azure.microsoft.com/pricing/calculator/) eller genom att besöka hello priser informationssidan för en tjänst (till exempel [virtuella Windows-datorer](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)). Hantera dina kostnader för tips toohelp, se [förhindrar oväntade kostnader med Azure fakturerings- och kostnaden management](billing/billing-getting-started.md).
 
 > [!NOTE]
-> Det är viktigt att betona att kvoter för Azure-resursgrupper är per region få åtkomst till din prenumeration och är inte per prenumeration som service management kvoter. Nu ska vi använda core kvoter som exempel. Om du måste begära en ökad kvot med stöd för kärnor, måste du bestämma hur många kärnor som du vill använda i vilka regioner och sedan göra en specifik begäran för Azure-resursgrupp core kvoter för belopp och regioner som du vill. Därför, om du behöver använda 30 kärnor i västra Europa för att köra programmet. Du bör begär 30 kärnor i västra Europa. Men du har inte en kärnkvot som ökar med en annan region – endast Västeuropa har 30 kärnor kvoten.
+> Om du vill tooraise hello gränsen eller kvoten ovan hello **standard gränsen**, [öppna en supportbegäran för online customer utan kostnad](azure-supportability/resource-manager-core-quotas-request.md). hello gränser kan inte ökas ovan hello **maxgränsen** värdet som visas i följande tabeller hello. Om det finns inga **maxgränsen** kolumn, och sedan hello-resurs inte har justerbara gränser. 
+> 
+> Kostnadsfri utvärderingsversion prenumerationer är inte berättigad till gränsen eller kvoten ökar. Om du har en kostnadsfri utvärderingsversion kan du uppgradera tooa [betala per användning](https://azure.microsoft.com/offers/ms-azr-0003p/) prenumeration. Mer information finns i [uppgradera kostnadsfri utvärderingsversion av Azure tooPay-som-du-Go](billing/billing-upgrade-azure-subscription.md).
+> 
+
+## <a name="limits-and-hello-azure-resource-manager"></a>Gränser och hello Azure Resource Manager
+Det är nu möjligt toocombine flera Azure-resurser i tooa enkel Azure-resursgrupp. När du använder resursgrupper hanteras gränser som en gång var globala på regional nivå med hello Azure Resource Manager. Läs mer om Azure-resursgrupper [översikt över Azure Resource Manager](azure-resource-manager/resource-group-overview.md).
+
+I hello gränser nedan, en ny tabell har lagts till tooreflect eventuella skillnader i begränsningar när du använder hello Azure Resource Manager. Det finns till exempel en **prenumerationsbegränsningar** tabell och en **prenumerationsbegränsningar - Azure Resource Manager** tabell. När en gräns gäller tooboth scenarier, visas den bara i hello första tabellen. Om inget annat anges är gränserna globala för alla regioner.
+
+> [!NOTE]
+> Det är viktigt tooemphasize att kvoter för Azure-resursgrupper är per region få åtkomst till din prenumeration och är inte per prenumeration eftersom hello service management kvoter. Nu ska vi använda core kvoter som exempel. Om du behöver toorequest en kvot som ökar med stöd för kärnor, måste toodecide hur många kärnor du vill använda toouse i vilka regioner, och sedan en specifik begäran för Azure-resursgrupp core kvoter för hello belopp och regioner som du vill. Därför, om du behöver toouse 30 kärnor i Västeuropa toorun programmet där. Du bör begär 30 kärnor i västra Europa. Men du har inte en kärnkvot som ökar med en annan region – endast Västeuropa har hello 30 kärnor kvoten.
 > <!-- -->
-> Du kan därför vara bra att tänka på bestämmer vad din Azure-resursgrupp kvoter måste vara för din arbetsbelastning i en en region och begära beloppet i varje region som du planerar distributionen. Se [felsöka distributionsproblem](resource-manager-common-deployment-errors.md) för mer hjälp för att identifiera din aktuella kvoter för vissa regioner.
+> Därför kan det vara användbart tooconsider bestämmer vad din Azure-resursgrupp kvoter behöver toobe för din arbetsbelastning i alla en region, och begäran som belopp i varje region som du planerar distributionen. Se [felsöka distributionsproblem](resource-manager-common-deployment-errors.md) för mer hjälp för att identifiera din aktuella kvoter för vissa regioner.
 > 
 > 
 
@@ -96,7 +96,7 @@ I gränserna som nedan, har en ny tabell lagts till återspeglar eventuella skil
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Prenumerationsbegränsningar - Azure Resource Manager
-Följande begränsningar gäller när du använder Azure Resource Manager och Azure-resursgrupper. Nedan visas inte gränser som inte har ändrats med Azure Resource Manager. Hänvisa till den föregående tabellen för dessa begränsningar.
+hello följande begränsningar gäller när du använder hello Azure Resource Manager och Azure-resursgrupper. Nedan visas inte gränser som inte har ändrats med hello Azure Resource Manager. Dessa begränsningar finns toohello föregående tabell.
 
 Information om hur du hanterar gränser för Resource Manager-begäranden finns [begränsning Resource Manager begär](resource-manager-request-limits.md).
 
@@ -110,7 +110,7 @@ Information om hur du hanterar gränser för Resource Manager-begäranden finns 
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 #### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtuella datorer gränser - Azure Resource Manager
-Följande begränsningar gäller när du använder Azure Resource Manager och Azure-resursgrupper. Nedan visas inte gränser som inte har ändrats med Azure Resource Manager. Hänvisa till den föregående tabellen för dessa begränsningar.
+hello följande begränsningar gäller när du använder hello Azure Resource Manager och Azure-resursgrupper. Nedan visas inte gränser som inte har ändrats med hello Azure Resource Manager. Dessa begränsningar finns toohello föregående tabell.
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
@@ -144,7 +144,7 @@ Ytterligare information om lagringskontogränser finns [Azure Storage skalbarhet
 #### <a name="storage-service-limits"></a>Lagringsgränser för tjänsten
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-<!-- conceptual info about disk limits -- applies to unmanaged and managed -->
+<!-- conceptual info about disk limits -- applies toounmanaged and managed -->
 #### <a name="virtual-machine-disk-limits"></a>Virtuell disk gränser 
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
@@ -167,7 +167,7 @@ Se [storlekar för virtuella datorer](virtual-machines/linux/sizes.md?toc=%2fazu
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 ### <a name="app-service-limits"></a>Gränser för Apptjänst
-Följande gränser för Apptjänst innehåller gränser för Webbappar, Mobilappar, API Apps och Logikappar.
+hello följande gränser för Apptjänst innehåller gränser för Webbappar, Mobilappar, API Apps och Logikappar.
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 
@@ -178,22 +178,22 @@ Följande gränser för Apptjänst innehåller gränser för Webbappar, Mobilapp
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
 ### <a name="biztalk-services-limits"></a>BizTalk-tjänst gränser
-Följande tabell visar gränserna för Azure Biztalk-tjänst.
+hello visar följande tabell hello gränser för Azure Biztalk-tjänst.
 
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
 ### <a name="azure-cosmos-db-limits"></a>Azure DB Cosmos-gränser
-Azure Cosmos-DB är en global skala databas där dataflöden och lagringsutrymmen kan skalas för att hantera det krävs för ditt program. Om du har frågor om Azure Cosmos DB tillhandahåller skalan skickar e-postmeddelande till askcosmosdb@microsoft.com.
+Azure Cosmos-DB är en global skala databas i vilken dataflöden och lagringsutrymmen kan skaländras toohandle oavsett krävs för ditt program. Om du har frågor om hello skala Azure Cosmos DB tillhandahåller skickar e-post tooaskcosmosdb@microsoft.com.
 
 ### <a name="mobile-engagement-limits"></a>Mobile Engagement gränser
 [!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
 
 ### <a name="search-limits"></a>Sök gränser
-Prisnivåer avgöra kapaciteten och gränserna för din söktjänst. Nivåer omfattar:
+Prisnivåer fastställa hello kapacitet och gränser för din söktjänst. Nivåer omfattar:
 
 * *Ledigt* tjänst med flera klienter, delas med andra Azure-prenumeranter avsedd för utvärdering och utveckling av små projekt.
-* *Grundläggande* ger dedikerade datorresurser för produktionsarbetsbelastningar i mindre skala med upp till tre repliker för hög tillgänglighet frågan arbetsbelastningar.
-* *Standard (S1, S2, S3, S3 hög densitet)* är för större produktionsarbetsbelastningar. Det finns flera nivåer inom standardnivån så att du kan välja en resurskonfigurationen som bäst passar din arbetsbelastning profil.
+* *Grundläggande* ger dedikerade datorresurser för produktionsarbetsbelastningar i mindre skala, toothree repliker för hög tillgänglighet frågan arbetsbelastningar.
+* *Standard (S1, S2, S3, S3 hög densitet)* är för större produktionsarbetsbelastningar. Flera nivåer finns inom hello standardnivån så att du kan välja en resurskonfigurationen som bäst passar din arbetsbelastning profil.
 
 **Gränser per prenumeration**
 
@@ -203,7 +203,7 @@ Prisnivåer avgöra kapaciteten och gränserna för din söktjänst. Nivåer omf
 
 [!INCLUDE [azure-search-limits-per-service](../includes/azure-search-limits-per-service.md)]
 
-Läs mer om gränserna för en mer detaljerad nivå, till exempel storlek, frågor per sekund, nycklar, begäranden och svar, [gränser i Azure Search](search/search-limits-quotas-capacity.md).
+toolearn mer om gränserna för en mer detaljerad nivå, till exempel storlek, frågor per sekund, nycklar, begäranden och svar, se [gränser i Azure Search](search/search-limits-quotas-capacity.md).
 
 ### <a name="media-services-limits"></a>Media Services-gränser
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]

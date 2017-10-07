@@ -1,6 +1,6 @@
 ---
-title: "Distribuera WebJobs med hjälp av Visual Studio"
-description: "Lär dig hur du distribuerar Azure WebJobs till Azure App Service Web Apps med Visual Studio."
+title: aaaDeploy WebJobs med Visual Studio
+description: "Lär dig hur toodeploy Azure WebJobs tooAzure App Service Web Apps med Visual Studio."
 services: app-service
 documentationcenter: 
 author: ggailey777
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2016
 ms.author: glenga
-ms.openlocfilehash: 5b0808afdadcf4d86a9a2d07ee6fc63b80b22993
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5fc5d9562e8836348f5ab6844fb6c23ff40a321c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-webjobs-using-visual-studio"></a>Distribuera WebJobs med hjälp av Visual Studio
 ## <a name="overview"></a>Översikt
-Det här avsnittet beskriver hur du använder Visual Studio för att distribuera ett konsolprogram projekt till en webbapp i [Apptjänst](http://go.microsoft.com/fwlink/?LinkId=529714) som en [Azure Webjobs](http://go.microsoft.com/fwlink/?LinkId=390226). Information om hur du distribuerar WebJobs med hjälp av den [Azure Portal](https://portal.azure.com), se [kör bakgrundsaktiviteter med WebJobs](web-sites-create-web-jobs.md).
+Det här avsnittet beskrivs hur toouse Visual Studio toodeploy ett konsolprogram projektet tooa webbapp i [Apptjänst](http://go.microsoft.com/fwlink/?LinkId=529714) som en [Azure Webjobs](http://go.microsoft.com/fwlink/?LinkId=390226). Information om hur toodeploy WebJobs med hjälp av hello [Azure Portal](https://portal.azure.com), se [kör bakgrundsaktiviteter med WebJobs](web-sites-create-web-jobs.md).
 
 När Visual Studio distribuerar ett WebJobs-aktiverade konsolprogram projekt, utför två aktiviteter:
 
-* Runtime filer kopieras till rätt mapp i webbapp (*App_Data/jobb/kontinuerlig* för kontinuerliga Webbjobb *App_Data/jobb/utlöst* för WebJobs schemalagda och på begäran).
-* Ställer in [Azure schemaläggare](#scheduler) för WebJobs som är schemalagda att köras vid en viss tidpunkt. (Detta behövs inte för kontinuerliga Webbjobb.)
+* Kopior runtime filer toohello lämplig mapp i hello webbapp (*App_Data/jobb/kontinuerlig* för kontinuerliga Webbjobb *App_Data/jobb/utlöst* för WebJobs schemalagda och på begäran).
+* Ställer in [Azure schemaläggare](#scheduler) för WebJobs som är schemalagda toorun vid en viss tidpunkt. (Detta behövs inte för kontinuerliga Webbjobb.)
 
-Ett WebJobs-aktiverade projekt har lagts till följande objekt:
+Ett WebJobs-aktiverade projekt har hello efter objekt som lagts till tooit:
 
-* Den [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet-paketet.
+* Hej [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet-paketet.
 * En [webbjobb publicera settings.json](#publishsettings) -fil som innehåller inställningar för distribution och Schemaläggaren. 
 
-![Diagram över vad som har lagts till i en Konsolapp för att aktivera distribution som ett Webbjobb](./media/websites-dotnet-deploy-webjobs/convert.png)
+![Diagram över vad läggs tooa konsolen tooenable appdistribution som ett Webbjobb](./media/websites-dotnet-deploy-webjobs/convert.png)
 
-Du kan lägga till dessa objekt till ett befintligt projekt konsolprogram eller Använd en mall för att skapa ett nytt projekt WebJobs-aktiverade program. 
+Du kan lägga till dessa objekt tooan befintliga konsolprogram projekt eller använda en mall toocreate ett nytt projekt WebJobs-aktiverade program. 
 
-Du kan distribuera ett projekt som ett Webbjobb ensamt eller länka det till ett webbprojekt så att den distribuerar automatiskt när du distribuerar webbprojektet. Om du vill länka projekt, Visual Studio innehåller namnet på WebJobs-aktiverade projektet i en [webjobs list.json](#webjobslist) filen i webbprojektet.
+Du kan distribuera ett projekt som ett Webbjobb ensamt eller länka det tooa webbprojekt så att den distribuerar automatiskt när du distribuerar hello webbprojekt. toolink projekt, Visual Studio innehåller hello namnet på hello WebJobs-aktiverade projekt i en [webjobs list.json](#webjobslist) filen i hello webbprojekt.
 
-![Diagram över Webbjobb projekt som länkar till webbprojekt](./media/websites-dotnet-deploy-webjobs/link.png)
+![Diagram över Webbjobb projekt länka tooweb projekt](./media/websites-dotnet-deploy-webjobs/link.png)
 
 ## <a name="prerequisites"></a>Krav
-Funktioner för distribution av WebJobs är tillgängliga i Visual Studio när du installerar Azure SDK för .NET:
+Funktioner för distribution av WebJobs är tillgängliga i Visual Studio när du installerar hello Azure SDK för .NET:
 
 * [Azure SDK för .NET (Visual Studio)](https://azure.microsoft.com/downloads/).
 
@@ -52,77 +52,77 @@ Du kan välja mellan två alternativ:
 
 * [Aktivera automatisk distribution med ett webbprojekt](#convertlink).
   
-    Konfigurera ett befintligt projekt konsolprogram så att den distribuerar automatiskt som ett Webbjobb när du distribuerar ett webbprojekt. Använd det här alternativet om du vill köra din Webbjobbet i samma webbapp som du kör relaterade webbprogrammet.
+    Konfigurera ett befintligt projekt konsolprogram så att den distribuerar automatiskt som ett Webbjobb när du distribuerar ett webbprojekt. Använd det här alternativet när du vill toorun din Webbjobb i hello samma webbprogram som du kör hello relaterade webbprogram.
 * [Aktivera distributionen utan ett webbprojekt](#convertnolink).
   
-    Konfigurera ett befintligt projekt konsolprogram att distribuera som ett Webbjobb, med någon länk till ett webbprojekt. Använd det här alternativet när du vill köra ett Webbjobb i en webbapp, med Inga webbprogram som körs i webbprogrammet. Du kanske vill göra detta för att kunna skala resurserna Webbjobb oberoende av webbtillämpningsresurser.
+    Konfigurera en befintlig konsolprogram projektet toodeploy som ett Webbjobb, med ingen länk tooa webbprojekt. Använd det här alternativet när du vill toorun ett Webbjobb i en webbapp, med Inga webbprogram som körs i hello webbapp. Du kanske vill toodo detta beställa toobe kan tooscale resurserna Webbjobb oberoende av webbtillämpningsresurser.
 
 ### <a id="convertlink"></a>Aktivera automatisk WebJobs-distribution med ett webbprojekt
-1. Högerklicka på webbprojekt i **Solution Explorer**, och klicka sedan på **Lägg till** > **befintligt projekt som Azure Webjobs**.
+1. Högerklicka på hello webbprojekt i **Solution Explorer**, och klicka sedan på **Lägg till** > **befintligt projekt som Azure Webjobs**.
    
     ![Befintligt projekt som Azure Webbjobbet](./media/websites-dotnet-deploy-webjobs/eawj.png)
    
-    Den [lägga till Azure Webjobs](#configure) dialogrutan visas.
-2. I den **projektnamn** listrutan, Välj konsolprogrammet projektet ska läggas till som ett Webbjobb.
+    Hej [lägga till Azure Webjobs](#configure) dialogrutan visas.
+2. I hello **projektnamn** listrutan, Välj hello konsolprogram projektet tooadd som ett Webbjobb.
    
     ![Att markera projekt i dialogrutan Lägg till Azure Webbjobbet](./media/websites-dotnet-deploy-webjobs/aaw1.png)
-3. Slutför den [lägga till Azure Webjobs](#configure) dialogrutan och klicka sedan på **OK**. 
+3. Fullständig hello [lägga till Azure Webjobs](#configure) dialogrutan och klicka sedan på **OK**. 
 
 ### <a id="convertnolink"></a>Aktivera WebJobs distribution utan ett webbprojekt
-1. Högerklicka på projektet konsolprogram i **Solution Explorer**, och klicka sedan på **Publicera som Azure Webjobs...** . 
+1. Högerklicka på hello konsolprogram projekt i **Solution Explorer**, och klicka sedan på **Publicera som Azure Webjobs...** . 
    
     ![Publicera som Azure Webbjobbet](./media/websites-dotnet-deploy-webjobs/paw.png)
    
-    Den [lägga till Azure Webjobs](#configure) dialogruta visas med projektet som väljs i den **projektnamn** rutan.
-2. Slutför den [lägga till Azure Webjobs](#configure) dialogrutan och klicka sedan på **OK**.
+    Hej [lägga till Azure Webjobs](#configure) dialogruta visas med hello-projektet som väljs i hello **projektnamn** rutan.
+2. Fullständig hello [lägga till Azure Webjobs](#configure) dialogrutan och klicka sedan på **OK**.
    
-   Den **Publicera webbplats** guiden visas.  Om du inte vill publicera omedelbart stänga guiden. De inställningar som du har angett sparas för när du vill [distribuera projektet](#deploy).
+   Hej **Publicera webbplats** guiden visas.  Stäng hello guiden om du inte vill toopublish omedelbart. hello-inställningar som du har angett sparas för när du vill för[distribuera hello projekt](#deploy).
 
 ## <a id="create"></a>Skapa ett nytt projekt WebJobs-aktiverad
-Om du vill skapa ett nytt projekt WebJobs-aktiverade, kan du använda projektmall konsolprogram och aktivera WebJobs distribution enligt beskrivningen i [i föregående avsnitt](#convert). Alternativt kan använda du WebJobs nytt projekt mallen:
+toocreate ett nytt WebJobs-aktiverade projekt, du kan använda hello konsolen projektet mall och aktivera WebJobs programdistribution enligt beskrivningen i [hello föregående avsnitt](#convert). Alternativt kan använda du hello WebJobs nytt projekt mallen:
 
-* [Använd WebJobs nytt projekt mall för en oberoende Webbjobbet](#createnolink)
+* [Använd hello WebJobs nytt projekt mall för en oberoende Webbjobbet](#createnolink)
   
-    Skapa ett projekt och konfigurera den för att distribuera fristående som ett Webbjobb med ingen länk till ett webbprojekt. Använd det här alternativet när du vill köra ett Webbjobb i en webbapp, med Inga webbprogram som körs i webbprogrammet. Du kanske vill göra detta för att kunna skala resurserna Webbjobb oberoende av webbtillämpningsresurser.
-* [Använd WebJobs nytt projekt mall för ett Webbjobb som är kopplad till ett webbprojekt](#createlink)
+    Skapa ett projekt och konfigurera den toodeploy ensamt som ett Webbjobb med ingen länk tooa webbprojekt. Använd det här alternativet när du vill toorun ett Webbjobb i en webbapp, med Inga webbprogram som körs i hello webbapp. Du kanske vill toodo detta beställa toobe kan tooscale resurserna Webbjobb oberoende av webbtillämpningsresurser.
+* [Använd hello WebJobs nytt projekt mall för ett Webbjobb länkade tooa webbprojekt](#createlink)
   
-    Skapa ett projekt som är konfigurerad för att distribuera automatiskt som ett Webbjobb när ett webbprojekt i samma lösning som har distribuerats. Använd det här alternativet om du vill köra din Webbjobbet i samma webbapp som du kör relaterade webbprogrammet.
+    Skapa ett projekt som är konfigurerade toodeploy automatiskt som ett Webbjobb när ett webbprojekt i hello samma lösningen har distribuerats. Använd det här alternativet när du vill toorun din Webbjobb i hello samma webbprogram som du kör hello relaterade webbprogram.
 
 > [!NOTE]
-> Mallen WebJobs nytt projekt som automatiskt installerar NuGet-paket och innehåller koden i *Program.cs* för den [WebJobs SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Om du inte vill använda WebJobs-SDK, ta bort eller ändra den `host.RunAndBlock` instruktionen i *Program.cs*.
+> Hej WebJobs nytt projekt mallen som automatiskt installerar NuGet-paket och inkluderar den kod i *Program.cs* för hello [WebJobs SDK](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Om du inte vill toouse hello WebJobs SDK, ta bort eller ändra hello `host.RunAndBlock` instruktionen i *Program.cs*.
 > 
 > 
 
-### <a id="createnolink"></a>Använd WebJobs nytt projekt mall för en oberoende Webbjobbet
-1. Klicka på **filen** > **nytt projekt**, och klicka sedan på den **nytt projekt** klickar du på **moln**  >   **Azure Webjobs (.NET Framework)**.
+### <a id="createnolink"></a>Använd hello WebJobs nytt projekt mall för en oberoende Webbjobbet
+1. Klicka på **filen** > **nytt projekt**, och klicka sedan på hello **nytt projekt** klickar du på **moln**  >   **Azure Webjobs (.NET Framework)**.
    
     ![Dialogrutan Nytt projekt som visar Webbjobb mall](./media/websites-dotnet-deploy-webjobs/np.png)
-2. Följ anvisningarna som visas tidigare till [Se konsolprogrammet projicera ett oberoende WebJobs-projekt](#convertnolink).
+2. Följ hello anvisningar som visades tidigare för[Se hello konsolprogram projektet ett oberoende WebJobs-projekt](#convertnolink).
 
-### <a id="createlink"></a>Använd WebJobs nytt projekt mall för ett Webbjobb som är kopplad till ett webbprojekt
-1. Högerklicka på webbprojekt i **Solution Explorer**, och klicka sedan på **Lägg till** > **nytt projekt för Azure Webjobs**.
+### <a id="createlink"></a>Använd hello WebJobs nytt projekt mall för ett Webbjobb länkade tooa webbprojekt
+1. Högerklicka på hello webbprojekt i **Solution Explorer**, och klicka sedan på **Lägg till** > **nytt projekt för Azure Webjobs**.
    
     ![Nya menypost för Azure Webjobs-projekt](./media/websites-dotnet-deploy-webjobs/nawj.png)
    
-    Den [lägga till Azure Webjobs](#configure) dialogrutan visas.
-2. Slutför den [lägga till Azure Webjobs](#configure) dialogrutan och klicka sedan på **OK**.
+    Hej [lägga till Azure Webjobs](#configure) dialogrutan visas.
+2. Fullständig hello [lägga till Azure Webjobs](#configure) dialogrutan och klicka sedan på **OK**.
 
-## <a id="configure"></a>Dialogrutan Lägg till Azure Webbjobbet
-Den **lägga till Azure Webjobs** dialogrutan låter dig ange webbjobbsnamnet och kör inställning för din Webbjobb. 
+## <a id="configure"></a>hello lägga till Azure Webjobs dialogrutan
+Hej **lägga till Azure Webjobs** dialogrutan låter dig ange hello webbjobbsnamnet och kör inställning för din Webbjobb. 
 
 ![Azure Webjobs dialogrutan Lägg till](./media/websites-dotnet-deploy-webjobs/aaw2.png)
 
-Fälten i den här dialogrutan motsvarar fält på den **nytt jobb** dialogrutan i Azure Portal. Mer information finns i [kör bakgrundsaktiviteter med WebJobs](web-sites-create-web-jobs.md).
+hello fält i den här dialogrutan motsvarar toofields på hello **nytt jobb** dialogrutan av hello Azure-portalen. Mer information finns i [kör bakgrundsaktiviteter med WebJobs](web-sites-create-web-jobs.md).
 
 > [!NOTE]
 > * Information om kommandoradsverktyget distribution finns [aktiverar kommandoraden eller kontinuerlig leverans Azure WebJobs](https://azure.microsoft.com/blog/2014/08/18/enabling-command-line-or-continuous-delivery-of-azure-webjobs/).
-> * Om du distribuerar ett Webbjobb och sedan bestämmer du vill ändra typen av Webbjobb och distribuera om behöver du ta bort filen webjobs publicera settings.json. Detta gör Visual Studio visa publiceringsalternativ igen, så att du kan ändra typ av Webbjobb.
-> * Om du distribuerar ett Webbjobb och senare ändrar läget Kör från kontinuerlig till icke-kontinuerliga och vice versa skapar Visual Studio ett nytt Webbjobb i Azure när du distribuerar. Om du ändrar andra schemainställningarna men lämna körningsläge samma eller växla mellan schemalagda och på begäran, Visual Studio uppdaterar befintliga jobbet i stället skapa en ny.
+> * Om du distribuerar ett Webbjobb och sedan bestämmer du vill toochange hello typ av Webbjobb och distribuera om, behöver du toodelete hello webjobs publicera settings.json fil. Detta gör Visual Studio som visar hello publiceringsalternativ igen, så att du kan ändra hello typ av Webbjobb.
+> * Om du distribuerar ett Webbjobb och senare ändrar hello körningsläge från kontinuerlig toonon kontinuerlig eller tvärtom, Visual Studio skapar ett nytt Webbjobb i Azure när du distribuerar. Om du ändrar andra schemainställningarna men lämna kör läge hello samma eller växla mellan schemalagda och på begäran, Visual Studio uppdateringar hello befintligt jobb i stället skapa en ny.
 > 
 > 
 
 ## <a id="publishsettings"></a>webbjobbet publicera settings.json
-När du konfigurerar ett konsolprogram för distribution av WebJobs Visual Studio installerar den [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet paket- och lagrar schemainformation i en *webbjobb publicera settings.json*  filen i projektet *egenskaper* mappen WebJobs-projektet. Här är ett exempel på filen:
+När du konfigurerar ett konsolprogram för distribution av WebJobs installerar Visual Studio hello [Microsoft.Web.WebJobs.Publish](http://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) NuGet paket- och lagrar schemainformation i en *webbjobb publicera settings.json*  fil i hello projekt *egenskaper* för hello WebJobs-projekt. Här är ett exempel på filen:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
@@ -134,10 +134,10 @@ När du konfigurerar ett konsolprogram för distribution av WebJobs Visual Studi
           "runMode": "Continuous"
         }
 
-Du kan redigera den här filen direkt och Visual Studio har IntelliSense. Schemat filen lagras på [http://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) och kan visa.  
+Du kan redigera den här filen direkt och Visual Studio har IntelliSense. hello filen schemat lagras på [http://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json) och kan visa.  
 
 ## <a id="webjobslist"></a>webjobs list.json
-När du länkar ett WebJobs-aktiverade projekt till ett webbprojekt Visual Studio lagrar namnet på WebJobs-projekt i en *webjobs list.json* filen i webbprojektet *egenskaper* mapp. Listan kan innehålla flera WebJobs projekt som visas i följande exempel:
+När du länkar ett WebJobs-aktiverade projektet tooa webbprojekt Visual Studio lagrar hello namnet på hello WebJobs-projekt i en *webjobs list.json* filen i hello-webbprojekt *egenskaper* mapp. hello listan kan innehålla flera WebJobs projekt som visas i följande exempel hello:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
@@ -151,17 +151,17 @@ När du länkar ett WebJobs-aktiverade projekt till ett webbprojekt Visual Studi
           ]
         }
 
-Du kan redigera den här filen direkt och Visual Studio har IntelliSense. Schemat filen lagras på [http://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) och kan visa.
+Du kan redigera den här filen direkt och Visual Studio har IntelliSense. hello filen schemat lagras på [http://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json) och kan visa.
 
 ## <a id="deploy"></a>Distribuera ett WebJobs-projekt
-Ett WebJobs-projekt som du har länkats till ett webbprojekt distribuerar automatiskt med webbprojektet. Information om web project distribution finns [hur du distribuerar till Web Apps](web-sites-deploy.md).
+Ett WebJobs-projekt som du har länkat tooa webbprojekt distribuerar automatiskt med hello webbprojekt. Information om web project distribution finns [hur toodeploy tooWeb appar](web-sites-deploy.md).
 
-Högerklicka på projektet i för att distribuera ett projekt WebJobs ensamt **Solution Explorer** och på **Publicera som Azure Webjobs...** . 
+toodeploy WebJobs-projekt, högerklicka på hello-projekt i **Solution Explorer** och på **Publicera som Azure Webjobs...** . 
 
 ![Publicera som Azure Webbjobbet](./media/websites-dotnet-deploy-webjobs/paw.png)
 
-För en oberoende Webbjobb samma **Publicera webbplats** guiden som används för webbprojekt visas, men med färre inställningar som är tillgängliga för att ändra.
+För en oberoende Webbjobb hello samma **Publicera webbplats** guiden som används för webbprojekt visas, men med färre inställningar tillgängliga toochange.
 
 ## <a id="nextsteps"></a>Nästa steg
-Den här artikeln har förklaras hur du distribuerar WebJobs med hjälp av Visual Studio. Läs mer om hur du distribuerar Azure WebJobs [Azure WebJobs - rekommenderade resurser - distribution](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/azure-webjobs-recommended-resources#deploying).
+Den här artikeln har förklaras hur toodeploy WebJobs med hjälp av Visual Studio. Mer information om hur toodeploy Azure WebJobs Se [Azure WebJobs - rekommenderade resurser - distribution](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/azure-webjobs-recommended-resources#deploying).
 

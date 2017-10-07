@@ -1,6 +1,6 @@
 ---
-title: "Med hjälp av .NET-klassbibliotek med Azure Functions | Microsoft Docs"
-description: "Lär dig hur du skapar .NET-klassbibliotek för användning med Azure Functions"
+title: aaaUsing .NET klassen bibliotek med Azure Functions | Microsoft Docs
+description: "Lär dig hur tooauthor .NET-klassbibliotek för hjälp med Azure Functions"
 services: functions
 documentationcenter: na
 author: lindydonna
@@ -16,42 +16,42 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/09/2017
 ms.author: donnam
-ms.openlocfilehash: 0613bb96d3afb85ff7e684246b128e4eef518d23
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4e0fd954b554006ba1d8ecc47403a9fb1c67c3b1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>Med hjälp av .NET-klassbibliotek med Azure Functions
 
-Azure Functions stöder publicerar en klassbiblioteket som implementeringen för en eller flera funktioner utöver skriptfiler. Vi rekommenderar att du använder den [Azure Functions Visual Studio 2017 Tools](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/).
+Dessutom stöder tooscript filer, Azure Functions publicerar en klassbiblioteket som hello implementering för en eller flera funktioner. Vi rekommenderar att du använder hello [Azure Functions Visual Studio 2017 Tools](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/).
 
 ## <a name="prerequisites"></a>Krav 
 
-Den här artikeln har följande krav:
+Den här artikeln har hello följande krav:
 
-- [Visual Studio 2017 15,3 Preview](https://www.visualstudio.com/vs/preview/). Installera arbetsbelastningarna **ASP.NET och web development** och **Azure-utveckling**.
+- [Visual Studio 2017 15,3 Preview](https://www.visualstudio.com/vs/preview/). Installera hello arbetsbelastningar **ASP.NET och web development** och **Azure-utveckling**.
 - [Azure funktionen Verktyg för Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=AndrewBHall-MSFT.AzureFunctionToolsforVisualStudio2017)
 
 ## <a name="functions-class-library-project"></a>Funktioner för klassbiblioteksprojektet
 
-Skapa ett nytt Azure Functions-projekt från Visual Studio. Den nya projektmallen för skapar filerna *host.json* och *local.settings.json*. Du kan [Anpassa inställningar för Azure Functions-runtime i host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json). 
+Skapa ett nytt Azure Functions-projekt från Visual Studio. hello ny projektmall skapar hello filer *host.json* och *local.settings.json*. Du kan [Anpassa inställningar för Azure Functions-runtime i host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json). 
 
-Filen *local.settings.json* lagrar app-inställningar, anslutningssträngar och inställningar för Azure Functions Core verktyg. Läs mer om strukturen i [koden och testa Azure functions lokalt](functions-run-local.md#local-settings).
+hello filen *local.settings.json* lagrar app-inställningar, anslutningssträngar och inställningar för Azure Functions Core verktyg. toolearn mer om dess struktur finns [koden och testa Azure functions lokalt](functions-run-local.md#local-settings).
 
 ### <a name="functionname-attribute"></a>FunctionName attribut
 
-Attributet [ `FunctionNameAttribute` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/FunctionNameAttribute.cs) markerar en metod som en startpunkt för funktionen. Den måste användas med en utlösare och 0 eller fler indata och utdata bindningar.
+hello attributet [ `FunctionNameAttribute` ](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/FunctionNameAttribute.cs) markerar en metod som en startpunkt för funktionen. Den måste användas med en utlösare och 0 eller fler indata och utdata bindningar.
 
-### <a name="conversion-to-functionjson"></a>Konvertering till function.json
+### <a name="conversion-toofunctionjson"></a>Konvertering toofunction.json
 
-När du har skapat ett Azure Functions-projekt, ger en fil `function.json` i katalogen matchar namnet på funktionen definieras av `[FunctionName]`. Det anger utlösare och bindningar och pekar på sammansättningen projektfilen.
+När du har skapat ett Azure Functions-projekt, ger en fil `function.json` i hello directory matchar hello funktionsnamn definieras av `[FunctionName]`. Det anger utlösare och bindningar och punkter toohello projektfilen sammansättningen.
 
-Den här konverteringen utförs av NuGet-paketet [Microsoft\.NET\.Sdk\.funktioner](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). Källan är tillgänglig i GitHub-repo [azure\-funktioner\-vs\-skapa\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
+Den här konverteringen utförs av hello NuGet-paketet [Microsoft\.NET\.Sdk\.funktioner](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). hello källan är tillgänglig i GitHub-repo-hello [azure\-funktioner\-vs\-skapa\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
 ## <a name="triggers-and-bindings"></a>Utlösare och bindningar
 
-I följande tabell visas utlösare och bindningar som är tillgängliga i en Azure Functions klassbiblioteksprojektet. Alla attribut som finns i namnområdet `Microsoft.Azure.WebJobs`.
+hello följande tabell visas hello utlösare och bindningar som är tillgängliga i en Azure Functions klassbiblioteksprojektet. Alla attribut är i hello namnområdet `Microsoft.Azure.WebJobs`.
 
 | Bindning | Attribut | NuGet-paketet |
 |------   | ------    | ------        |
@@ -75,7 +75,7 @@ I följande tabell visas utlösare och bindningar som är tillgängliga i en Azu
 
 Azure Functions stöder utlösaren indata och utdata bindningar för Azure Blob storage. Mer information om bindande uttryck och metadata finns [Azure Functions Blob storage bindningar](functions-bindings-storage-blob.md).
 
-En blob-utlösare har definierats med den `[BlobTrigger]` attribut. Du kan använda attributet `[StorageAccount]` definiera storage-konto som används av ett hela funktion eller en klass.
+En blob-utlösare har definierats med hello `[BlobTrigger]` attribut. Du kan använda hello attributet `[StorageAccount]` toodefine hello storage-konto som används av ett hela funktion eller en klass.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -86,7 +86,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-BLOB som indata och utdata har definierats med hjälp av den `[Blob]` attributet tillsammans med en `FileAccess` parameter som anger att läsa eller skriva. I följande exempel används en blob utlösare och blob-utdatabindning.
+BLOB som indata och utdata har definierats med hello `[Blob]` attributet tillsammans med en `FileAccess` parameter som anger att läsa eller skriva. Hej följande exempel används en blob-utlösare och blob utdata bindning.
 
 ```csharp
 [FunctionName("ResizeImage")]
@@ -122,9 +122,9 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 
 ### <a name="cosmos-db-input-and-output-bindings"></a>Cosmos DB indata och utdata bindningar
 
-Azure Functions stöder indata och utdata bindningar för Cosmos DB. Mer information om funktionerna i Cosmos-DB-bindning finns [Azure Functions Cosmos DB bindningar](functions-bindings-documentdb.md).
+Azure Functions stöder indata och utdata bindningar för Cosmos DB. toolearn mer om hello funktioner för hello Cosmos DB bindning finns [Azure Functions Cosmos DB bindningar](functions-bindings-documentdb.md).
 
-Om du vill binda till en Cosmos-DB-dokumentet använder attributet `[DocumentDB]` i NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. I följande exempel har en kö-utlösare och ett DocumentDB-API-utdatabindning:
+toobind tooa Cosmos-DB-dokumentet använder hello attributet `[DocumentDB]` i hello NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.DocumentDB]. hello följande exempel har en kö-utlösare och ett DocumentDB-API-utdatabindning:
 
 ```csharp
 [FunctionName("QueueToDocDB")]        
@@ -143,9 +143,9 @@ public static void Run(
 
 Azure Functions stöder utlösa och utgående bindningar för Händelsehubbar. Mer information finns i [Azure Functions Event Hub bindningar](functions-bindings-event-hubs.md).
 
-Typerna `[Microsoft.Azure.WebJobs.ServiceBus.EventHubTriggerAttribute]` och `[Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute]` definieras i NuGet-paketet [Microsoft.Azure.WebJobs.ServiceBus]. 
+Hej typer `[Microsoft.Azure.WebJobs.ServiceBus.EventHubTriggerAttribute]` och `[Microsoft.Azure.WebJobs.ServiceBus.EventHubAttribute]` definieras i hello NuGet-paketet [Microsoft.Azure.WebJobs.ServiceBus]. 
 
-I följande exempel används en Event Hub-utlösare:
+hello används följande exempel en Event Hub-utlösare:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -155,7 +155,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-I följande exempel har en Händelsehubb utdata, med hjälp av metoden returvärdet som utdata:
+hello har följande exempel en Händelsehubb utdata, med hjälp av hello metoden returnerade värdet som hello utdata:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -171,9 +171,9 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 ### <a name="external-file-input-and-output"></a>Den externa filen inkommande och utgående
 
-Azure Functions stöder utlösaren indata och utdata bindningar för externa filer, till exempel Google Drive, Dropbox och OneDrive. Läs mer i [Azure Functions extern fil bindningar](functions-bindings-external-file.md). Attributen `[ExternalFileTrigger]` och `[ExternalFile]` definieras i NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.ApiHub].
+Azure Functions stöder utlösaren indata och utdata bindningar för externa filer, till exempel Google Drive, Dropbox och OneDrive. Det finns fler toolearn [Azure Functions extern fil bindningar](functions-bindings-external-file.md). Hej attribut `[ExternalFileTrigger]` och `[ExternalFile]` definieras i hello NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.ApiHub].
 
-C# exemplet nedan visar en extern fil indata och utdata bindning. Koden kopieras filen till utdatafilen.
+hello följande C#-exempel visar en extern fil indata och utdata bindning. hello kod kopior hello indatafilen toohello utdatafilen.
 
 ```csharp
 [StorageAccount("MyStorageConnection")]
@@ -192,7 +192,7 @@ public static string Run([QueueTrigger("myqueue-items")] string myQueueItem,
 
 ### <a name="http-and-webhooks"></a>HTTP och webhooks
 
-Använd den `HttpTrigger` attribut för att ange en HTTP-utlösare eller webhooken. Det här attributet definieras i NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.Http]. Du kan anpassa åtkomstnivå, webhook-typ, väg och metoder. I följande exempel definieras en HTTP-utlösare med anonym autentisering och _genericJson_ webhook-typen.
+Använd hello `HttpTrigger` attributet toodefine en HTTP-utlösare eller webhooken. Det här attributet definieras i hello NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.Http]. Du kan anpassa hello åtkomstnivå, webhook-typ, väg och metoder. hello följande exempel definierar en HTTP-utlösare med anonym autentisering och _genericJson_ webhook-typen.
 
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
@@ -206,9 +206,9 @@ public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous,
 
 ### <a name="mobile-apps-input-and-output"></a>Mobile Apps inkommande och utgående
 
-Azure Functions stöder indata och utdata bindningar för Mobile Apps. Läs mer i [Azure Functions Mobile Apps bindningar](functions-bindings-mobile-apps.md). Attributet `[MobileTable]` har definierats i NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.MobileApps].
+Azure Functions stöder indata och utdata bindningar för Mobile Apps. Det finns fler toolearn [Azure Functions Mobile Apps bindningar](functions-bindings-mobile-apps.md). hello attributet `[MobileTable]` har definierats i hello NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.MobileApps].
 
-I följande exempel visas en Mobile Apps-utdatabindning:
+hello exemplet nedan visar en Mobile Apps-utdatabindning:
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -223,7 +223,7 @@ public static object Run([QueueTrigger("myqueue-items", Connection = "AzureWebJo
 
 ### <a name="notification-hubs-output"></a>Notification Hubs utdata
 
-Azure Functions stöder en output-bindning för Notification Hubs. Läs mer i [Azure Functions Notification Hub-utdatabindning](functions-bindings-notification-hubs.md). Attributet `[NotificationHub]` har definierats i NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.NotificationHubs].
+Azure Functions stöder en output-bindning för Notification Hubs. Det finns fler toolearn [Azure Functions Notification Hub-utdatabindning](functions-bindings-notification-hubs.md). hello attributet `[NotificationHub]` har definierats i hello NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.NotificationHubs].
 
 <a name="queue"></a>
 
@@ -231,7 +231,7 @@ Azure Functions stöder en output-bindning för Notification Hubs. Läs mer i [A
 
 Azure Functions stöder utlösa och utgående bindningar för Azure köer. Mer information finns i [Azure Functions Queue Storage bindningar](functions-bindings-storage-queue.md).
 
-I följande exempel visas hur du använder funktionen returtypen med en kö utdata bindning, med hjälp av `[Queue]` attribut. Om du vill definiera en utlösare för kön, använder den `[QueueTrigger]` attribut.
+hello följande exempel visas hur toouse hello funktionen returtyp med en kö utdata bindning, med hello `[Queue]` attribut. toodefine en kö-utlösare, Använd hello `[QueueTrigger]` attribut.
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -261,11 +261,11 @@ public static class QueueFunctions
 
 ### <a name="sendgrid-output"></a>SendGrid-utdata
 
-Azure Functions stöder en SendGrid utdata bindning för att skicka e-post via programmering. Läs mer i [Azure Functions SendGrid bindningar](functions-bindings-sendgrid.md).
+Azure Functions stöder en SendGrid utdata bindning för att skicka e-post via programmering. Det finns fler toolearn [Azure Functions SendGrid bindningar](functions-bindings-sendgrid.md).
 
-Attributet `[SendGrid]` har definierats i NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.SendGrid].
+hello attributet `[SendGrid]` har definierats i hello NuGet-paketet [Microsoft.Azure.WebJobs.Extensions.SendGrid].
 
-Följande är ett exempel på med en utlösare för Service Bus-kö och en SendGrid utdata bindning med `SendGridMessage`:
+hello följande är ett exempel på med en utlösare för Service Bus-kö och en SendGrid utdata bindning med `SendGridMessage`:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -282,7 +282,7 @@ public static void Run(
 
 public class OutgoingEmail
 {
-    public string To { get; set; }
+    public string too{ get; set; }
     public string From { get; set; }
     public string Subject { get; set; }
     public string Body { get; set; }
@@ -295,9 +295,9 @@ public class OutgoingEmail
 
 Azure Functions stöder utlösa och utgående bindningar för Service Bus-köer och ämnen. Mer information om hur du konfigurerar bindningar finns [Azure Functions Service Bus-bindningar](functions-bindings-service-bus.md).
 
-Attributen `[ServiceBusTrigger]` och `[ServiceBus]` definieras i NuGet-paketet [Microsoft.Azure.WebJobs.ServiceBus]. 
+Hej attribut `[ServiceBusTrigger]` och `[ServiceBus]` definieras i hello NuGet-paketet [Microsoft.Azure.WebJobs.ServiceBus]. 
 
-Följande är ett exempel på en utlösare för Service Bus-kö:
+hello följande är ett exempel på en utlösare för Service Bus-kö:
 
 ```csharp
 [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -307,7 +307,7 @@ public static void Run([ServiceBusTrigger("myqueue", AccessRights.Manage, Connec
 }
 ```
 
-Följande är ett exempel på en Service Bus-utdata bindning, med Returtypen för metoden som utdata:
+hello följande är ett exempel på en Service Bus-utdata bindning, med hello-metodens returtyp som hello utdata:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -323,9 +323,9 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, TraceWriter l
 
 ### <a name="table-storage-input-and-output"></a>Table storage inkommande och utgående
 
-Azure Functions stöder indata och utdata bindningar för Azure Table storage. Läs mer i [Azure Functions Table storage bindningar](functions-bindings-storage-table.md).
+Azure Functions stöder indata och utdata bindningar för Azure Table storage. Det finns fler toolearn [Azure Functions Table storage bindningar](functions-bindings-storage-table.md).
 
-I följande exempel är en klass med två funktioner som visar tabellen lagring utgående och inkommande bindningar. 
+hello är följande exempel en klass med två funktioner som visar tabellen lagring utgående och inkommande bindningar. 
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -346,7 +346,7 @@ public class TableStorage
         return new MyPoco { PartitionKey = "Http", RowKey = Guid.NewGuid().ToString(), Text = input.Text };
     }
 
-    // use the metadata parameter "queueTrigger" to bind the queue payload
+    // use hello metadata parameter "queueTrigger" toobind hello queue payload
     [FunctionName("TableInput")]
     public static void TableInput([QueueTrigger("table-items")] string input, [Table("MyTable", "Http", "{queueTrigger}")] MyPoco poco, TraceWriter log)
     {
@@ -360,11 +360,11 @@ public class TableStorage
 
 ### <a name="timer-trigger"></a>Timerutlösare
 
-Azure Functions har en timer utlösaren bindning som låter dig köra din funktionskod baserat på ett definierat schema. Läs mer om funktionerna i bindningen i [schemalägga kodkörning med Azure Functions](functions-bindings-timer.md).
+Azure Functions har en timer utlösaren bindning som låter dig köra din funktionskod baserat på ett definierat schema. toolearn mer om hello funktioner för hello bindning finns [schemalägga kodkörning med Azure Functions](functions-bindings-timer.md).
 
-På planen förbrukning, kan du definiera scheman med en [CRON-uttryck](http://en.wikipedia.org/wiki/Cron#CRON_expression). Om du använder en App Service-Plan kan använda du också en TimeSpan-sträng. 
+Hello förbrukning planen kan du definiera scheman med en [CRON-uttryck](http://en.wikipedia.org/wiki/Cron#CRON_expression). Om du använder en App Service-Plan kan använda du också en TimeSpan-sträng. 
 
-I följande exempel definieras en timer som utlösare som körs var femte minut:
+hello följande exempel definierar en timer som utlösare som körs var femte minut:
 
 ```csharp
 [FunctionName("TimerTriggerCSharp")]
@@ -378,11 +378,11 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 
 ### <a name="twilio-output"></a>Twilio-utdata
 
-Azure Functions stöder Twilio utdata bindningar om du vill aktivera dina funktioner att skicka SMS textmeddelanden. Läs mer i [skicka SMS-meddelanden från Azure-funktioner med hjälp av Twilio-utdatabindning](functions-bindings-twilio.md). 
+Azure Functions stöder Twilio utdata bindningar tooenable funktioner för toosend SMS textmeddelanden. Det finns fler toolearn [skicka SMS-meddelanden från Azure-funktioner med hjälp av hello Twilio-utdatabindning](functions-bindings-twilio.md). 
 
-Attributet `[TwilioSms]` har definierats i paketet [Microsoft.Azure.WebJobs.Extensions.Twilio].
+hello attributet `[TwilioSms]` har definierats i hello paketet [Microsoft.Azure.WebJobs.Extensions.Twilio].
 
-I följande C#-exempel används en kö utlösare och en Twilio-utdatabindning:
+hello följande C# exempel används en kö utlösare och en Twilio-utdatabindning:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -394,7 +394,7 @@ public static SMSMessage Run([QueueTrigger("myqueue-items", Connection = "AzureW
     var message = new SMSMessage()
     {
         Body = $"Hello {order["name"]}, thanks for your order!",
-        To = order["mobileNumber"].ToString()
+        too= order["mobileNumber"].ToString()
     };
 
     return message;
@@ -423,7 +423,7 @@ Mer information om hur du använder Azure Functions i C#-skript finns [Azure Fun
 [Microsoft.Azure.WebJobs.Extensions]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions/2.1.0-beta1
 
 
-<!-- Links to source --> 
+<!-- Links toosource --> 
 [DocumentDBAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs
 [EventHubAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs
 [EventHubTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs

@@ -1,6 +1,6 @@
 ---
-title: "Använda Emoji uttryckssymboler i Azure Mobile Engagement"
-description: "Hur du använder Emoji uttryckssymboler inom push-meddelanden"
+title: aaaUse Emoji uttryckssymboler i Azure Mobile Engagement
+description: Hur toouse Emoji uttryckssymboler inom push-meddelanden
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: bbb7ce5e95b229a7505c5e97b6866d5a302a1d27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 63bfc59ef472e9fe9aa28b5ac8761017b9250e0f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-emoji-emoticon-within-push-notifications"></a>Använd Emoji uttryckssymbol inom Push-meddelanden
 Du kan inkludera Emoji uttryckssymboler i du push-meddelanden i några enkla steg: 
 
-1. Först av allt du behöver för att hitta Emoji vill du skicka meddelandet. Kontrollera att Emoji som du väljer kommer att stödas av målenheten som enheten tillverkar ta lite tid att lägga till nya godkända Emojis plattformar för enheten. 
-2. På **Windows** -du kan navigera till den här [länk](http://apps.timwhitlock.info/emoji/tables/unicode) och kopiera ikonen ”inbyggd”.
+1. Du måste först toofind hello Emoji som du vill toosend i hello-meddelande. Se till att hello Emoji som du väljer kommer att stödas av hello målenhet som enheten tillverkar ta viss tid tooadd nyligen godkända Emojis toohello enhetsplattformar. 
+2. På **Windows** -du kan navigera toothis [länk](http://apps.timwhitlock.info/emoji/tables/unicode) och kopiera hello ”interna”-ikonen.
    
     ![][7] 
-3. På **Mac** -du kan hitta Emojis i ordlistan program under Redigera -> Emoji & symboler.
+3. På **Mac** -du kan hitta hello Emojis i ordlistan program under Redigera -> Emoji & symboler.
    
     ![][6] 
-4. Gå till den **nå** fliken på den Azure Mobile Engagement-portalen. Välj typ av push-meddelande (meddelande, avsöker osv.). Det här exemplet väljer vi ett meddelande push.
-5. Ange olika fält för meddelandet tills du når texten i meddelandet. Det är där du ska lägga till uttryckssymbolen Emoji. Du kan välja att placera den i rubriken, meddelandet eller båda. Du måste dra och släppa eller kopiera Emoji som finns på platser som ovan. 
+4. Gå toohello **nå** fliken på hello hello Azure Mobile Engagement-portalen. Ange hello push-meddelande (meddelande, avsökningar osv). Det här exemplet väljer vi ett meddelande push.
+5. Ange hello olika fält av hello-meddelande tills du når hello text av hello-meddelande. Det är där du ska lägga till uttryckssymbolen Emoji. Du kan välja tooput i hello rubrik, hello-meddelande eller båda. Du behöver toodrag och släpp eller kopiera hello Emoji som du hittar hello platser ovan. 
    
     ![][1]
-6. Fyll i fälten för meddelandet och spara den. 
-7. När du kör ett test eller aktiverar ett meddelande visas ett meddelande med uttryckssymbolen som anges.   
+6. Fullständig hello andra fält för hello-meddelande och spara den. 
+7. När du kör ett test eller aktivera hello-meddelande visas ett meddelande med hello uttryckssymbol som anges.   
    
     ![][3] ![][4] ![][5]
 

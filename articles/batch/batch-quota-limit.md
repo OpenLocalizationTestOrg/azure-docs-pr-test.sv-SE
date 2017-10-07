@@ -1,6 +1,6 @@
 ---
-title: "Tjänsten kvoter och gränser för Azure Batch | Microsoft Docs"
-description: "Lär dig mer om standard Azure Batch-kvoter, gränser och begränsningar och hur du begär kvoten ökar"
+title: "aaaService kvoter och gränser för Azure Batch | Microsoft Docs"
+description: "Lär dig mer om standard Azure Batch-kvoter gränser och begränsningar och hur toorequest kvot ökar"
 services: batch
 documentationcenter: 
 author: tamram
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3f69ed8d3a985afe07e648e7512a88b25278ced
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6035d1c7618cfe97ebca3780e02a4ee34f54e534
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvoter och begränsningar för Batch-tjänsten
 
-Som med andra Azure-tjänster, det finns begränsningar på vissa resurser som är associerade med Batch-tjänsten. Många av dessa gränser är standard kvoterna som används av Azure-prenumeration eller kontonivå. Den här artikeln beskrivs dessa standardinställningar och hur du kan begära kvoten ökar.
+Som med andra Azure-tjänster, det finns begränsningar på vissa resurser som är associerade med hello Batch-tjänsten. Många av dessa gränser är standard kvoterna som används av Azure på hello prenumeration eller konto. Den här artikeln beskrivs dessa standardinställningar och hur du kan begära kvoten ökar.
 
-Tänk på dessa kvoter när du utformar och skalar upp dina Batch-arbetsbelastningar. Till exempel om din pool inte når målet antalet compute-noder som du har angett, kanske du har nått core kvotgränsen för Batch-kontot eller en regionala Virtuella kärnor kvot för din prenumeration.
+Tänk på dessa kvoter när du utformar och skalar upp dina Batch-arbetsbelastningar. Till exempel om din pool inte når hello mål antalet compute-noder som du har angett, kanske du har nått hello core kvotgränsen för Batch-kontot eller en regionala Virtuella kärnor kvot för din prenumeration.
 
-Du kan köra flera Batch-arbetsbelastningar i samma Batch-konto eller distribuera dina arbetsbelastningar mellan Batch-konton som är i samma prenumeration, men i olika Azure-regioner.
+Du kan köra flera Batch arbetsbelastningar i en enskild Batch-kontot eller distribuera dina arbetsbelastningar bland Batch-konton som finns i hello samma prenumeration, men i olika Azure-regioner.
 
-Om du planerar att köra produktionsarbetsbelastningar i Batch kan du behöva öka en eller flera av kvoter ovan standardvärdet. Om du vill generera en kvot kan du öppna en online [kundsupport](#increase-a-quota) utan kostnad.
+Om du planerar toorun produktionsarbetsbelastningar i Batch behöva tooincrease en eller flera av hello kvoter ovan hello standard. Om du vill tooraise en kvot kan du öppna en online [kundsupport](#increase-a-quota) utan kostnad.
 
 > [!NOTE]
 > En kvot är en kreditgräns, inte en kapacitet garanti. Kontakta Azure-supporten om du har stora kapacitetsbehov.
@@ -41,9 +41,9 @@ Om du planerar att köra produktionsarbetsbelastningar i Batch kan du behöva ö
 
 ## <a name="quotas-in-user-subscription-mode"></a>Kvoter i användarläge för prenumeration
 
-För Batch-kontot med poolen allokering inställd på **användarens prenumeration**, Batch-virtuella datorer och andra resurser, till exempel storage-konton, skapas direkt i din prenumeration när poolen har skapats. Azure Batch kärnor kvoten gäller inte för ett konto som har skapats i det här läget. I stället kvoter i din prenumeration för regional compute kärnor och andra resurser används. Mer information om dessa kvoter i [Azure-prenumeration och tjänsten gränser, kvoter och begränsningar](../azure-subscription-service-limits.md).
+För Batch-kontot med poolen allokering inställd för**användarens prenumeration**, Batch-virtuella datorer och andra resurser, till exempel storage-konton, skapas direkt i din prenumeration när poolen har skapats. hello Azure Batch kärnor kvoten gäller inte tooan konto som har skapats i det här läget. I stället tillämpas hello kvoter i din prenumeration för regional beräkning kärnor och andra resurser. Mer information om dessa kvoter i [Azure-prenumeration och tjänsten gränser, kvoter och begränsningar](../azure-subscription-service-limits.md).
 
-När du planerar resursanvändningen för ett konto som har skapats i användarläge för prenumerationen kan du Observera följande Batch-resurser (förutom beräkning kärnor) krävs för varje 40 virtuella Linux-datorer eller 20 virtuella Windows-datorer:
+När du planerar resursanvändningen för ett konto som har skapats i användarläge för prenumerationen Obs hello följande Batch resurser (tillägg toocompute kärnor) krävs för varje 40 virtuella Linux-datorer eller 20 virtuella Windows-datorer:
 
 | Resurs | Kvot | Leverantör |
 | --- | ---| --- |
@@ -54,7 +54,7 @@ När du planerar resursanvändningen för ett konto som har skapats i användarl
 | En virtuella datorns skaluppsättning | Skalningsuppsättningar för Virtual Machines | Microsoft.Compute | 
 | En belastningsutjämnare | Belastningsutjämnare | Microsoft.Network | 
 
-Kärnor kvoten på regional nivå eller per VM familj ska anges enligt VM-storlek som krävs för din Batch-pool eller pooler:
+hello kärnor kvot på regional nivå eller per VM familj ska ange bl.a toohello VM-storlek krävs för Batch-pool eller pooler:
 
 | Kvot | Leverantör |
 | --- | ---- |
@@ -76,32 +76,32 @@ Kärnor kvoten på regional nivå eller per VM familj ska anges enligt VM-storle
 <sup>2</sup> innehåller resursfiler och miljövariabler
 
 ## <a name="view-batch-quotas"></a>Visa Batch-kvoter
-Visa kvoterna Batch-konto i den [Azure-portalen][portal].
+Visa dina kvoter för Batch-kontot i hello [Azure-portalen][portal].
 
-1. Välj **Batch-konton** i portalen, välj sedan Batch-kontot som du är intresserad av.
-2. Välj **egenskaper** på menyn bladet för Batch-kontot.
-3. Egenskapsbladet visar den **kvoter** för närvarande används för Batch-kontot
+1. Välj **Batch-konton** i hello portal, välj sedan hello Batch-kontot du är intresserad av.
+2. Välj **egenskaper** hello batchkonto menyn bladet.
+3. hello egenskapsbladet visar hello **kvoter** toohello Batch-kontot som för närvarande används
    
     ![Kvoter för batch-konto][account_quotas]
 
-Visa kvoter för relaterade prenumeration i Azure Portal för ett Batch-konto som skapats i användarläge för prenumerationen.
+Visa hello relaterade prenumeration kvoter i hello Azure-portalen för en Batch-kontot som skapats i användarläge för prenumerationen.
 
-1. Välj **prenumerationer**, och välj den prenumeration som du använder för Batch-kontot.
+1. Välj **prenumerationer**, och välj hello-prenumeration som du använder för hello Batch-kontot.
 
-2. På den **prenumeration** bladet väljer **användning + kvoter**.
+2. På hello **prenumeration** bladet väljer **användning + kvoter**.
 
 
 
 ## <a name="increase-a-quota"></a>Öka en kvot
-Följ dessa steg för att begära en kvot öka för Batch-kontot eller din prenumeration med hjälp av den [Azure-portalen][portal]. Typ av databaskvot beror på poolen allokering läget för Batch-kontot.
+Följ dessa steg toorequest en kvot öka för Batch-kontot eller med hjälp av hello [Azure-portalen][portal]. hello beror databaskvot på hello poolen allokering läge av Batch-kontot.
 
 ### <a name="increase-a-batch-cores-quota"></a>Öka kvoten för kärnor en Batch 
 
-Om Batch-kontot har skapats i **Batch-tjänsten** läge, Följ dessa steg för att begära en Batch kärnor kvot öka:
+Om Batch-kontot har skapats i **Batch-tjänsten** läge, Följ dessa steg toorequest databaskvot en Batch kärnor:
 
-1. Välj den **hjälp + support** panelen på instrumentpanelen i portalen eller frågetecken (**?**) i övre högra hörnet av portalen.
+1. Välj hello **hjälp + support** panelen på instrumentpanelen i portalen eller hello frågetecken (**?**) i hello övre högra hörnet av hello-portalen.
 2. Välj **ny supportbegäran** > **grunderna**.
-3. På den **grunderna** bladet:
+3. På hello **grunderna** bladet:
    
     a. **Utfärda typ** > **kvot**
    
@@ -112,22 +112,22 @@ Om Batch-kontot har skapats i **Batch-tjänsten** läge, Följ dessa steg för a
     d. **Supportplan** > **kvot support - ingår**
    
     Klicka på **Nästa**.
-4. På den **problemet** bladet:
+4. På hello **problemet** bladet:
    
-    a. Välj en **allvarlighetsgrad** enligt din [inverkan på verksamheten][support_sev].
+    a. Välj en **allvarlighetsgrad** enligt tooyour [inverkan på verksamheten][support_sev].
    
-    b. I **information**, ange varje kvot som du vill ändra, Batch-kontonamnet och den nya gränsen.
+    b. I **information**, ange varje kvot som du vill toochange hello Batch-kontonamn och hello ny gräns.
    
     Klicka på **Nästa**.
-5. På den **kontaktinformation** bladet:
+5. På hello **kontaktinformation** bladet:
    
     a. Välj en **önskad kontaktmetod**.
    
-    b. Verifiera och ange nödvändiga kontaktinformation.
+    b. Verifiera och ange hello krävs kontaktinformation.
    
-    Klicka på **skapa** för att skicka in supportbegäran.
+    Klicka på **skapa** toosubmit hello supportbegäran.
 
-När du har skickat supportförfrågan Azure-supporten kommer att kontakta dig. Observera att slutföra begäran kan ta upp till 2 arbetsdagar.
+När du har skickat supportförfrågan Azure-supporten kommer att kontakta dig. Observera att slutföra hello begäran kan ta upp too2 arbetsdagar.
 
 ### <a name="increase-a-subscription-cores-quota"></a>Öka kvoten för kärnor en prenumeration
 
@@ -136,7 +136,7 @@ Om Batch-kontot har skapats i **användarens prenumeration** läge och du behöv
 
 
 ## <a name="related-topics"></a>Relaterade ämnen
-* [Skapa ett Azure Batch-konto med Azure-portalen](batch-account-create-portal.md)
+* [Skapa ett Azure Batch-konto med hello Azure-portalen](batch-account-create-portal.md)
 * [Översikt av Azure Batch-funktion](batch-api-basics.md)
 * [Azure-prenumeration och tjänsten gränser, kvoter och begränsningar](../azure-subscription-service-limits.md)
 

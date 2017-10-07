@@ -1,6 +1,6 @@
 ---
-title: "Guide för att skapa en datatjänst för Marketplace | Microsoft Docs"
-description: "Detaljerade anvisningar för hur du skapar, certifiera och distribuera en Data-tjänst för att köpa på Azure Marketplace."
+title: "aaaGuide toocreating en datatjänst för hello Marketplace | Microsoft Docs"
+description: "Detaljerade anvisningar hur toocreate, certifiera och distribuera en Data-tjänst för att köpa på hello Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-ms.openlocfilehash: 2ab624941fc385f14b62bb5d743927f157955845
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8917a43959834d15f70866297f98d24bb83e217f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="examples-of-mapping-an-existing-web-service-to-odata-through-csdls"></a>Exempel för att matcha en befintlig webbtjänst mot OData via CSDLs
+# <a name="examples-of-mapping-an-existing-web-service-tooodata-through-csdls"></a>Exempel för att matcha en befintlig web service tooOData via CSDLs
 > [!IMPORTANT]
-> **Just nu vi inte längre onboarding några nya Data Service-utgivare. Nya dataservices kommer inte godkännas för lista.** Om du har ett SaaS-affärsprogram som du vill publicera på AppSource hittar du mer information [här](https://appsource.microsoft.com/partners). Om du har en IaaS-program eller developer-tjänsten som du vill publicera på Azure Marketplace du hittar mer information [här](https://azure.microsoft.com/marketplace/programs/certified/).
+> **Just nu vi inte längre onboarding några nya Data Service-utgivare. Nya dataservices kommer inte godkännas för lista.** Om du har ett SaaS-affärsprogram som toopublish på AppSource hittar du mer information [här](https://appsource.microsoft.com/partners). Om du har en IaaS-program eller utvecklare tjänst du skulle t.ex toopublish på Azure Marketplace hittar du mer information [här](https://azure.microsoft.com/marketplace/programs/certified/).
 > 
 > 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-post"></a>Exempel: FunctionImport för ”Raw” data som returneras med ”POST”
-Använd POST rådata för att skapa en ny underordnad och returnera sin server definierats URL(location) eller definierats URL Om du vill uppdatera en del av underordnad på servern.  Om underordnat är en stream, dvs. Ostrukturerade, t.ex. en textfil.  Tänk efter i inte idempotent utan en plats.
+Använd POST Raw data toocreate en ny underordnad och returnera sin server definierats URL(location) eller tooupdate tillhör hello underordnade hello servern definierats URL.  Där är hello underordnat stream, d.v.s. Ostrukturerade, t.ex. en textfil.  Tänk efter i inte idempotent utan en plats.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="AddUsageEvent" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri="http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -45,7 +45,7 @@ Använd POST rådata för att skapa en ny underordnad och returnera sin server d
         </FunctionImport>
 
 ## <a name="example-functionimport-using-delete"></a>Exempel: FunctionImport med ”ta bort”
-Använd ta bort för att ta bort en angiven URI.
+Använd ta bort tooremove angiven URI.
 
         <EntitySet Name="DeleteUsageFileEntitySet" EntityType="MyOffer.DeleteUsageFileEntity" />
         <FunctionImport Name="DeleteUsageFile" EntitySet="DeleteUsageFileEntitySet" ReturnType="Collection(MyOffer.DeleteUsageFileEntity)"  d:AllowedHttpMethods="DELETE" d:EncodeParameterValues="true” d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643" >
@@ -66,7 +66,7 @@ Använd ta bort för att ta bort en angiven URI.
         </EntityType>
 
 ## <a name="example-functionimport-using-post"></a>Exempel: FunctionImport med ”publicera”
-Använd POST rådata för att skapa en ny underordnad och returnera sin server definierats URL(location) eller definierats URL Om du vill uppdatera en del av underordnad på servern.  Där är underordnat en struktur. Tänk efter är inte idempotent utan en plats.
+Använd POST Raw data toocreate en ny underordnad och returnera sin server definierats URL(location) eller tooupdate tillhör hello underordnade hello servern definierats URL.  Där hello underordnat är en struktur. Tänk efter är inte idempotent utan en plats.
 
         <EntitySet Name="CreateANewModelEntitySet2" EntityType=" MyOffer.CreateANewModelEntity2" />
         <FunctionImport Name="CreateModel" EntitySet="CreateANewModelEntitySet2" ReturnType="Collection(MyOffer.CreateANewModelEntity2)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -84,7 +84,7 @@ Använd POST rådata för att skapa en ny underordnad och returnera sin server d
         </FunctionImport>
 
 ## <a name="example-functionimport-using-put"></a>Exempel: FunctionImport med ”PLACERA”
-Använd PUT för att skapa en ny underordnad eller definierat URL Om du vill uppdatera hela underordnat på en server.  Om underordnat är en struktur, PUT är idempotent så att flera förekomster resulterar i samma tillstånd engångsfaktorautentisering x = 5.  Placera ska användas med det fullständiga innehållet på den angivna resursen.
+Använda PUT toocreate en ny underordnad eller tooupdate hello hela underordnat på en server definierade URL.  Där hello underordnat är en struktur, PUT är idempotent så att flera förekomster leder hello samma tillstånd, dvs x = 5.  PUT ska användas med hello fullständig innehållet i hello angivna resursen.
 
         <EntitySet Name="UpdateAnExistingModelEntitySet" EntityType="MyOffer.UpdateAnExistingModelEntity" />
         <FunctionImport Name="UpdateModel" EntitySet="UpdateAnExistingModelEntitySet" ReturnType="Collection(MyOffer.UpdateAnExistingModelEntity)" d:EncodeParameterValues="true" d:AllowedHttpMethods="PUT" d:BaseUri=”http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -106,7 +106,7 @@ Använd PUT för att skapa en ny underordnad eller definierat URL Om du vill upp
 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-put"></a>Exempel: FunctionImport för ”Raw” data som returneras med ”PLACERA”
-Använd PUT rådata att skapa en ny underordnad eller uppdatera hela underordnat på en server som har definierats-URL.  Om underordnat är en stream, dvs. Ostrukturerade, t.ex. en textfil.  PLACERA är idempotent så att flera förekomster resulterar i samma tillstånd engångsfaktorautentisering x = 5.  Placera ska användas med det fullständiga innehållet på den angivna resursen.
+Använd PUT Raw data toocreate en ny underordnad eller tooupdate hello hela underordnat på en server som har definierats-URL.  Där är hello underordnat stream, d.v.s. Ostrukturerade, t.ex. en textfil.  PLACERA är idempotent så att flera förekomster leder hello samma tillstånd, dvs x = 5.  PUT ska användas med hello fullständig innehållet i hello angivna resursen.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="CancelBuild” ReturnType="Raw(text/plain)" d:AllowedHttpMethods="PUT" d:EncodeParameterValues="true" d:BaseUri=” http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -125,7 +125,7 @@ Använd PUT rådata att skapa en ny underordnad eller uppdatera hela underordnat
 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-get"></a>Exempel: FunctionImport för ”Raw” data som returneras med ”ta”
-Använd hämta rådata för att returnera en underordnad är Ostrukturerade, d.v.s. text.
+Använd hämta Raw data tooreturn underordnat som är Ostrukturerade, d.v.s. text.
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="GetModelUsageFile" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="GET" d:BaseUri="https://cmla.cloudapp.net/api2/model/builder/build?buildId={buildId}&amp;apiVersion={apiVersion}">
@@ -144,7 +144,7 @@ Använd hämta rådata för att returnera en underordnad är Ostrukturerade, d.v
         </FunctionImport>
 
 ## <a name="example-functionimport-for-paging-through-returned-data"></a>Exempel: FunctionImport för ”sidindelning” via returnerade data
-Använda implementera RESTful bläddring genom dina data med GET.  Standard-växling är inställd på 100 datarad per sida.
+Använda implementera RESTful bläddring genom dina data med GET.  Standard sidindelning anges too100 datarad per sida.
 
         <EntitySet Name=”CropEntitySet" EntityType="MyOffer.CropEntity" />
         <FunctionImport    Name="GetCropReport" EntitySet="CropEntitySet” ReturnType="Collection(MyOffer.CropEntity)" d:EmitSelfLink="false" d:EncodeParameterValues="true" d:Paging="SkipTake" d:MaxPageSize="100" d:BaseUri="http://api.mydata.org/Crop? report={report}&amp;series={series}&amp;start={$skip}&amp;size=100">
@@ -159,7 +159,7 @@ Använda implementera RESTful bläddring genom dina data med GET.  Standard-väx
         </FunctionImport>
 
 ## <a name="see-also"></a>Se även
-* Om du vill förstå den övergripande processen för OData-mappning och syfte, den här artikeln [mappning för OData-tjänsten](marketplace-publishing-data-service-creation-odata-mapping.md) att granska definitioner, strukturer och instruktioner.
-* Om du är intresserad av att lära sig och förstå de specifika noderna och deras parametrar kan den här artikeln [mappa Data Service OData-noder](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) definitioner och förklaringar, exempel och Använd case kontext.
-* Om du vill återgå till den föreskrivna sökvägen för att publicera en datatjänst på Azure Marketplace, den här artikeln [Data Service publiceringsguide](marketplace-publishing-data-service-creation.md).
+* Om du vill förstå hello övergripande processen för OData-mappning och ändamål, den här artikeln [mappning för OData-tjänsten](marketplace-publishing-data-service-creation-odata-mapping.md) tooreview definitioner, strukturer och instruktioner.
+* Om du är intresserad av utbildning och förstå hello specifika noder och deras parametrar kan den här artikeln [mappa Data Service OData-noder](marketplace-publishing-data-service-creation-odata-mapping-nodes.md) definitioner och förklaringar, exempel och Använd case kontext.
+* tooreturn toohello föreskrivs sökväg för att publicera en datatjänst toohello Azure Marketplace som den här artikeln [Data Service publiceringsguide](marketplace-publishing-data-service-creation.md).
 

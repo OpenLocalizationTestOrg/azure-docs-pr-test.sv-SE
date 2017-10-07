@@ -1,6 +1,6 @@
 ---
-title: "Ansluter en enhet med hjälp av C på Linux | Microsoft Docs"
-description: "Beskriver hur du ansluter en enhet till Azure IoT Suite förkonfigurerade fjärråtkomst övervakning lösningen med hjälp av ett program som skrivits i C som körs på Linux."
+title: "aaaConnect en enhet med hjälp av C på Linux | Microsoft Docs"
+description: "Beskriver hur tooconnect en enhet toohello Azure IoT Suite förkonfigurerade remote övervakningslösning som använder ett program som skrivits i C som körs på Linux."
 services: 
 suite: iot-suite
 documentationcenter: na
@@ -15,55 +15,55 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: 9adbc9cc13f0b4cafa3a3a7703c46f8085b15232
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 57393817d40d3555177956a01fa71058bc256988
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-linux"></a>Ansluta enheten till den fjärranslutna förkonfigurerade övervakningslösning (Linux)
+# <a name="connect-your-device-toohello-remote-monitoring-preconfigured-solution-linux"></a>Ansluta din enhet toohello remote förkonfigurerade övervakningslösning (Linux)
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 ## <a name="build-and-run-a-sample-c-client-linux"></a>Skapa och kör ett exempel på C-klienten Linux
-Följande steg visar hur du skapar ett klientprogram som kommunicerar med fjärråtkomst övervakning förkonfigurerade lösningen. Det här programmet har skrivits i C och bygger och kör på Ubuntu Linux.
+hello följande steg visar hur toocreate ett klientprogram som kommunicerar med hello fjärrövervaknings förkonfigurerade lösningen. Det här programmet har skrivits i C och bygger och kör på Ubuntu Linux.
 
-För att slutföra de här stegen behöver du en enhet som kör Ubuntu version 15.04 eller 15.10. Innan du fortsätter bör du installera de nödvändiga paketen på Ubuntu enheten med följande kommando:
+toocomplete som stegen nedan måste en enhet som kör Ubuntu version 15.04 eller 15.10. Innan du fortsätter att installera hello nödvändiga paket på enheten Ubuntu med hello följande kommando:
 
 ```
 sudo apt-get install cmake gcc g++
 ```
 
-## <a name="install-the-client-libraries-on-your-device"></a>Installera klientbiblioteken på din enhet
-Azure IoT Hub-klientbibliotek är tillgänglig som ett paket som du kan installera på din Ubuntu enheter med hjälp av den **lgh get** kommando. Utför följande steg för att installera det paket som innehåller IoT-hubb klienten bibliotek och huvudet filerna på din Ubuntu-dator:
+## <a name="install-hello-client-libraries-on-your-device"></a>Installera hello klientbibliotek på din enhet
+hello Azure IoT Hub-klientbibliotek är tillgänglig som ett paket som du kan installera på enheten Ubuntu med hello **lgh get** kommando. Utför följande steg tooinstall hello paket som innehåller hello klientbibliotek för IoT-hubb och rubrikfiler på datorn Ubuntu hello:
 
-1. Lägg till AzureIoT databasen till datorn i ett gränssnitt:
+1. Lägg till hello AzureIoT databasen tooyour datorn i ett gränssnitt:
    
     ```
     sudo add-apt-repository ppa:aziotsdklinux/ppa-azureiot
     sudo apt-get update
     ```
-2. Installera paketet azure iot-sdk-c-utveckling
+2. Installationspaket för hello azure iot-sdk-c-utveckling
    
     ```
     sudo apt-get install -y azure-iot-sdk-c-dev
     ```
 
-## <a name="install-the-parson-json-parser"></a>Installera Parson JSON-parser
-Klientbibliotek för IoT-hubb använda Parson JSON-parsern för att parsa meddelandet nyttolaster. Klona Parson GitHub-lagret med hjälp av följande kommando i en lämplig mapp på datorn:
+## <a name="install-hello-parson-json-parser"></a>Installera hello Parson JSON-parsern
+Hej IoT-hubb klienten bibliotek använder hello Parson JSON-parsern tooparse meddelande nyttolaster. Klona hello Parson GitHub-databas med hjälp av hello följande kommando i en lämplig mapp på datorn:
 
 ```
 git clone https://github.com/kgabis/parson.git
 ```
 
 ## <a name="prepare-your-project"></a>Förbered ditt projekt
-Skapa en mapp med namnet på datorn Ubuntu **remote\_övervakning**. I den **remote\_övervakning** mapp:
+Skapa en mapp med namnet på datorn Ubuntu **remote\_övervakning**. I hello **remote\_övervakning** mapp:
 
-- Skapa fyra filerna **main.c**, **remote\_monitoring.c**, **remote\_monitoring.h**, och **CMakeLists.txt**.
+- Skapa hello fyra filer **main.c**, **remote\_monitoring.c**, **remote\_monitoring.h**, och **CMakeLists.txt**.
 - Skapa mapp med namnet **parson**.
 
-Kopiera filerna **parson.c** och **parson.h** från den lokala kopian av Parson databasen till den **remote\_övervakning/parson** mapp.
+Kopiera filerna hello **parson.c** och **parson.h** från den lokala kopian av hello Parson databasen till hello **remote\_övervakning/parson** mapp.
 
-I en textredigerare, öppnar den **remote\_monitoring.c** fil. Lägg till följande `#include`-uttryck:
+Öppna hello i en textredigerare, **remote\_monitoring.c** fil. Lägg till följande hello `#include` instruktioner:
    
 ```
 #include "iothubtransportmqtt.h"
@@ -78,14 +78,14 @@ I en textredigerare, öppnar den **remote\_monitoring.c** fil. Lägg till följa
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
-## <a name="call-the-remotemonitoringrun-function"></a>Anropa fjärransluten\_övervakning\_köra funktionen
-I en textredigerare, öppnar den **remote_monitoring.h** fil. Lägg till följande kod:
+## <a name="call-hello-remotemonitoringrun-function"></a>Anropa hello remote\_övervakning\_köra funktionen
+Öppna hello i en textredigerare, **remote_monitoring.h** fil. Lägg till följande kod hello:
 
 ```
 void remote_monitoring_run(void);
 ```
 
-I en textredigerare, öppnar den **main.c** fil. Lägg till följande kod:
+Öppna hello i en textredigerare, **main.c** fil. Lägg till följande kod hello:
 
 ```
 #include "remote_monitoring.h"
@@ -98,12 +98,12 @@ int main(void)
 }
 ```
 
-## <a name="build-and-run-the-application"></a>Skapa och kör appen
-Följande steg beskriver hur du använder *CMake* att skapa ditt klientprogram.
+## <a name="build-and-run-hello-application"></a>Skapa och köra programmet hello
+hello följande steg beskriver hur toouse *CMake* toobuild klientprogrammet.
 
-1. I en textredigerare, öppnar den **CMakeLists.txt** filen i den **remote_monitoring** mapp.
+1. Öppna hello i en textredigerare, **CMakeLists.txt** filen i hello **remote_monitoring** mapp.
 
-1. Lägg till följande instruktioner för att definiera hur du skapar ditt klientprogram:
+1. Lägg till följande instruktioner toodefine hur hello toobuild klientprogrammet:
    
     ```
     macro(compileAsC99)
@@ -151,7 +151,7 @@ Följande steg beskriver hur du använder *CMake* att skapa ditt klientprogram.
         m
     )
     ```
-1. I den **remote_monitoring** mapp, skapa en mapp för att lagra den *Se* filer som CMake genererar och kör sedan den **cmake** och **Se** följande kommandon:
+1. I hello **remote_monitoring** mapp, skapa en mapp toostore hello *Se* filer som CMake genererar och kör sedan hello **cmake** och **Se** kommandon på följande sätt:
    
     ```
     mkdir cmake
@@ -160,7 +160,7 @@ Följande steg beskriver hur du använder *CMake* att skapa ditt klientprogram.
     make
     ```
 
-1. Kör klientprogrammet och skicka telemetri till IoT-hubb:
+1. Köra hello-klientprogram och skicka telemetri tooIoT hubb:
    
     ```
     ./sample_app

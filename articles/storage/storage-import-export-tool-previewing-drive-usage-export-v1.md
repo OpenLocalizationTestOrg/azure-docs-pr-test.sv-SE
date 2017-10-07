@@ -1,6 +1,6 @@
 ---
-title: "Förhandsgranska diskanvändning för ett Azure Import/Export-exportjobb - v1 | Microsoft Docs"
-description: "Lär dig mer om att förhandsgranska listan över blobbar som du har valt för ett exportjobb i tjänsten Azure Import/Export."
+title: "aaaPreviewing diskanvändning för ett Azure Import/Export-exportjobb - v1 | Microsoft Docs"
+description: "Lär dig hur toopreview hello lista över BLOB du har valt för ett exportjobb i hello Azure Import/Export service."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 7bf74247090f91e17f81a9bc98ebfa78334c8c10
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 88495f921371458c0451da6878fd7cc9a45d20cd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Förhandsgranska diskanvändning för ett exportjobb
-Innan du skapar ett exportjobb måste du välja en uppsättning blobbar som ska exporteras. Tjänsten Microsoft Azure Import/Export kan du använda en lista över blob-sökvägar eller blob-prefix för att representera blobbar som du har valt.  
+Innan du skapar ett exportjobb måste toochoose en uppsättning blobbar toobe exporteras. hello Microsoft Azure Import/Export service kan du toouse en lista över blob-sökvägar eller blob-prefix toorepresent hello blob som du har valt.  
   
-Därefter måste du bestämma hur många enheter som du måste skicka. Verktyget Import/Export ger den `PreviewExport` kommando för att förhandsgranska diskanvändning för blobbar som du har valt, baserat på storleken på enheterna som du ska använda.
+Sedan måste toodetermine hur många enheter du behöver toosend. hello verktyget Import/Export ger hello `PreviewExport` kommandot toopreview diskanvändning för hello blob som du har valt, baserat på hello storlek hello enheter du kommer toouse.
 
 ## <a name="command-line-parameters"></a>Kommandoradsparametrar
 
-Du kan använda följande parametrar när du använder den `PreviewExport` kommandot i verktyget Import/Export.
+Du kan använda följande parametrar när du använder hello hello `PreviewExport` kommandot av hello verktyget Import/Export.
 
 |Kommandoradsparametern|Beskrivning|  
 |--------------------------|-----------------|  
-|**/logdir:**< LogDirectory\>|Valfri. Loggkatalogen. Utförlig loggfilerna skrivs till den här katalogen. Om inga loggkatalogen anges, används den aktuella katalogen som loggkatalogen.|  
-|**/SN:**< StorageAccountName\>|Krävs. Namnet på lagringskontot för exportjobbet.|  
-|**/Sk:**< StorageAccountKey\>|Krävs endast om en behållare SAS inte har angetts. Kontonyckel för lagringskontot för exportjobbet.|  
-|**/csas:**< ContainerSas\>|Krävs endast om en lagringskontonyckel inte har angetts. Behållare SAS för att visa en lista över blobbar som ska exporteras i exportjobbet.|  
-|**/ ExportBlobListFile:**< ExportBlobListFile\>|Krävs. Sökvägen till XML-fil som innehåller listan över blob-sökvägar eller blob sökväg prefix för blob som ska exporteras. Filformat som används i den `BlobListBlobPath` element i den [placera jobbet](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) driften av tjänsten Import/Export REST API.|  
-|**/ DriveSize:**< DriveSize\>|Krävs. Storleken på enheter som ska användas för ett exportjobb *t.ex.*, 500 GB, 1,5 TB.|  
+|**/logdir:**< LogDirectory\>|Valfri. hello loggkatalogen. Utförlig loggfilerna skrivs toothis directory. Om inga loggkatalogen anges används hello katalogen som hello loggkatalogen.|  
+|**/SN:**< StorageAccountName\>|Krävs. hello namnet på hello storage-konto för hello exportera jobb.|  
+|**/Sk:**< StorageAccountKey\>|Krävs endast om en behållare SAS inte har angetts. Hej kontonyckel hello storage-konto för hello exportera jobb.|  
+|**/csas:**< ContainerSas\>|Krävs endast om en lagringskontonyckel inte har angetts. hello behållare SAS för lista hello blobbar toobe exporteras i hello exportjobb.|  
+|**/ ExportBlobListFile:**< ExportBlobListFile\>|Krävs. Sökvägen toohello XML-fil som innehåller listan över blob-sökvägar eller blob sökväg-prefix för hello blobbar toobe exporteras. hello-filformat som används i hello `BlobListBlobPath` element i hello [placera jobbet](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) driften av hello Import/Export service REST API.|  
+|**/ DriveSize:**< DriveSize\>|Krävs. Hej storleken på enheter toouse för ett exportjobb *t.ex.*, 500 GB, 1,5 TB.|  
 
 ## <a name="command-line-example"></a>Kommandoradsverktyget exempel
 
-I följande exempel visas den `PreviewExport` kommando:  
+hello exemplet nedan visar hello `PreviewExport` kommando:  
   
 ```  
 WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB    
 ```  
   
-Exportfilen blob listan kan innehålla blobbnamnen och blob-prefix, som visas här:  
+hello kan exportfilen blob listan innehålla blobbnamnen och blob-prefix, som visas här:  
   
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>  
@@ -57,9 +57,9 @@ Exportfilen blob listan kan innehålla blobbnamnen och blob-prefix, som visas h�
 </BlobList>  
 ```
 
-Verktyget Azure Import/Export listar alla BLOB som ska exporteras och beräknar så pack dem till enheter i den angivna storleken med hänsyn till alla nödvändiga kostnader och sedan beräknar antalet enheter som behövs för blobbar och användningsinformation för enheten.  
+hello Azure Import/Export-verktyget visar en lista över alla blobbar toobe exporteras och beräknar hur toopack dem till enheter i hello angiven storlek, med hänsyn till alla nödvändiga kostnader, sedan beräknar hello antalet enheter som krävs för toohold hello blobbar och diskanvändning information.  
   
-Här är ett exempel på utdata med informativt loggar utelämnas:  
+Här är ett exempel på hello utdata med informativt loggar utelämnas:  
   
 ```  
 Number of unique blob paths/prefixes:   3  

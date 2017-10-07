@@ -1,6 +1,6 @@
 ---
-title: Hantera enheter med StorSimple Snapshot Manager | Microsoft Docs
-description: "Beskriver hur du använder StorSimple Snapshot Manager MMC-snapin-modulen för att ansluta och hantera StorSimple-enheter."
+title: aaaManage enheter med StorSimple Snapshot Manager | Microsoft Docs
+description: Beskriver hur toouse hello StorSimple Snapshot Manager MMC snapin-modulen tooconnect och hantera StorSimple-enheter.
 services: storsimple
 documentationcenter: 
 author: SharS
@@ -14,38 +14,38 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: f5e3186a4271e0be781f367fa75ada195c58c960
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7a2a2ca830e4ea6eb4b01f2542958df3871c1700
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Använd StorSimple Snapshot Manager för att ansluta och hantera StorSimple-enheter
+# <a name="use-storsimple-snapshot-manager-tooconnect-and-manage-storsimple-devices"></a>Använda StorSimple Snapshot Manager tooconnect och hantera StorSimple-enheter
 ## <a name="overview"></a>Översikt
-Du kan använda noder i StorSimple Snapshot Manager **omfång** fönstret för att verifiera importerade data för StorSimple-enheten och uppdatera anslutna lagringsenheter. Dessutom, när du klickar på den **enheter** nod, kan du visa en lista över anslutna enheter och motsvarande statusinformation i den **resultat** fönstret.
+Du kan använda noder i hello StorSimple Snapshot Manager **omfång** fönstret tooverify importerat StorSimple enhetsdata och uppdatera anslutna lagringsenheter. Dessutom, när du klickar på hello **enheter** nod, du kan se en lista över anslutna enheter och motsvarande statusinformation i hello **resultat** fönstret.
 
 ![Anslutna enheter](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
 **Bild 1: StorSimple Snapshot Manager ansluten enhet** 
 
-Beroende på din **visa** val av **resultat** visar följande information om varje enhet. (Mer information om hur du konfigurerar en vy, gå till [Visa-menyn](storsimple-use-snapshot-manager.md#view-menu).
+Beroende på din **visa** val, hello **resultat** visar hello följande information om varje enhet. (Mer information om hur du konfigurerar en vy finns för[Visa-menyn](storsimple-use-snapshot-manager.md#view-menu).
 
 | Resultaten kolumn | Beskrivning |
 |:--- |:--- |
-| Namn |Namnet på enheten som konfigurerats i den klassiska Azure-portalen |
-| Modellen |Modellnumret för enheten |
-| Version |Versionen av programvaran på enheten |
-| Status |Om enheten är tillgänglig |
-| Synkroniserades senast |Datum och tid när enheten senast synkroniserades |
-| Serienr |Serienumret för enheten |
+| Namn |hello namnet på hello enhet som konfigurerats i hello klassiska Azure-portalen |
+| Modellen |hello modellnumret för hello-enhet |
+| Version |hello-versionen av hello programvaran på hello enheten |
+| Status |Om hello-enhet är tillgänglig |
+| Synkroniserades senast |Datum och tid när hello enheten senast synkroniserades |
+| Serienr |hello serienumret för hello enheten |
 
-Om du högerklickar på den **enheter** nod i den **omfång** rutan som du kan välja mellan följande åtgärder:
+Om du högerklickar på hello **enheter** nod i hello **omfång** fönstret kan du välja från hello följande åtgärder:
 
 * Lägga till eller ersätta en enhet
 * Ansluter en enhet och kontrollera import
 * Uppdatera anslutna enheter
 
-Om du klickar på den **enheter** nod och högerklicka sedan på en enhet namn i den **resultat** rutan som du kan välja mellan följande åtgärder:
+Om du klickar på hello **enheter** nod och högerklicka sedan på en enhet namn i hello **resultat** fönstret kan du välja från hello följande åtgärder:
 
 * Autentisera en enhet
 * Visa information om enhet
@@ -54,10 +54,10 @@ Om du klickar på den **enheter** nod och högerklicka sedan på en enhet namn i
 * Ändra lösenordet för enheten
 
 > [!NOTE]
-> Alla dessa åtgärder är också tillgängliga i den **åtgärder** fönstret.
+> Alla dessa åtgärder är också tillgängliga i hello **åtgärder** fönstret.
 
 
-Den här självstudiekursen beskrivs hur du använder StorSimple Snapshot Manager för att ansluta och hantera enheter och utföra följande uppgifter:
+Den här självstudiekursen beskrivs hur toouse StorSimple Snapshot Manager tooconnect och hantera enheter och utföra hello följande uppgifter:
 
 * Lägga till eller ersätta en enhet
 * Ansluter en enhet och kontrollera import
@@ -70,144 +70,144 @@ Den här självstudiekursen beskrivs hur du använder StorSimple Snapshot Manage
 * Ersätta en misslyckad enhet
 
 > [!NOTE]
-> Allmän information om StorSimple Snapshot Manager-gränssnittet går du till [StorSimple Snapshot Manager användargränssnittet](storsimple-use-snapshot-manager.md).
+> Allmän information om hello StorSimple Snapshot Manager-gränssnittet går för[StorSimple Snapshot Manager användargränssnittet](storsimple-use-snapshot-manager.md).
 
 
 ## <a name="add-or-replace-a-device"></a>Lägga till eller ersätta en enhet
-Använd följande procedur för att lägga till eller ersätta en StorSimple-enhet.
+Använd följande procedur tooadd hello eller ersätta en StorSimple-enhet.
 
-#### <a name="to-add-or-replace-a-device"></a>Lägga till eller ersätta en enhet
-1. Klicka på ikonen skrivbord för att starta StorSimple Snapshot Manager.
-2. I den **omfång** fönstret högerklickar du på den **enheter** noden och klicka sedan på **konfigurera en enhet**. Den **konfigurera en enhet** dialogrutan visas.
+#### <a name="tooadd-or-replace-a-device"></a>tooadd eller ersätta en enhet
+1. Klicka på hello skrivbordsikon toostart StorSimple Snapshot Manager.
+2. I hello **omfång** fönstret, högerklicka på hello **enheter** noden och klicka sedan på **konfigurera en enhet**. Hej **konfigurera en enhet** dialogrutan visas.
    
     ![Konfigurera en StorSimple-enhet](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
-3. I den **enhet** listrutan väljer du IP-adressen till enheten eller virtuella enheten. 
-4. I den **lösenord** text Skriv lösenordet för StorSimple Snapshot Manager som du skapade för enheten i den klassiska Azure-portalen. Klicka på **OK**. StorSimple Snapshot Manager söker efter den enhet som du har identifierats. 
+3. I hello **enhet** listrutan, Välj hello IP-adressen för hello eller virtuella enheten. 
+4. I hello **lösenord** textruta, ange hello StorSimple Snapshot Manager ett lösenord som du skapade för hello-enhet i hello klassiska Azure-portalen. Klicka på **OK**. StorSimple Snapshot Manager söker efter hello-enhet som du har identifierats. 
    
-   * Om enheten inte är tillgänglig, StorSimple Snapshot Manager lägger till en anslutning.
-   * Om enheten inte är tillgänglig av någon anledning, returnerar StorSimple Snapshot Manager ett felmeddelande. Klicka på **OK** Stäng felmeddelandet och klicka sedan på **Avbryt** att stänga den **konfigurera en enhet** dialogrutan.
+   * Om hello-enhet är tillgänglig, StorSimple Snapshot Manager lägger till en anslutning.
+   * Om hello enheten inte är tillgänglig av någon anledning, returnerar StorSimple Snapshot Manager ett felmeddelande. Klicka på **OK** tooclose hello felmeddelande och klicka sedan på **Avbryt** tooclose hello **konfigurera en enhet** dialogrutan.
 
 ## <a name="connect-a-device-and-verify-imports"></a>Ansluter en enhet och kontrollera import
-Använd följande procedur för att ansluta en StorSimple-enhet och kontrollera att alla befintliga volymen grupper som har associerade säkerhetskopior importeras.
+Använd hello följa proceduren tooconnect StorSimple-enheten och kontrollera att alla befintliga volymen grupper som har associerade säkerhetskopior importeras.
 
-#### <a name="to-connect-a-device-and-verify-imports"></a>Ansluter en enhet och kontrollera import
-1. Ansluter en enhet till StorSimple Snapshot Manager, följ instruktionerna i Lägg till eller ersätta en enhet. När den ansluter till en enhet, svarar StorSimple Snapshot Manager på följande sätt:
+#### <a name="tooconnect-a-device-and-verify-imports"></a>tooconnect en enhet och kontrollera import
+1. tooconnect en enhet tooStorSimple Snapshot Manager följer du anvisningarna hello i Lägg till eller ersätta en enhet. När den ansluter tooa enheten svarar StorSimple Snapshot Manager på följande sätt:
    
-   * Om enheten inte är tillgänglig av någon anledning, returnerar StorSimple Snapshot Manager ett felmeddelande. 
+   * Om hello enheten inte är tillgänglig av någon anledning, returnerar StorSimple Snapshot Manager ett felmeddelande. 
    
-   * Om enheten inte är tillgänglig, StorSimple Snapshot Manager lägger till en anslutning. När du väljer enheten visas den i den **resultat** rutan och statusfältet anger att enheten är **tillgänglig**. StorSimple Snapshot Manager importerar alla volym grupper som konfigurerats för enheten, förutsatt att grupperna volymen har associerade säkerhetskopior. Principer för säkerhetskopiering har inte importerats. Volymen grupper som inte har tillhörande säkerhetskopior har inte importerats.
-2. Klicka på ikonen skrivbord för att starta StorSimple Snapshot Manager.
-3. Högerklicka på den översta noden i den **omfång** rutan och klicka sedan på **växla import visa**.
+   * Om hello-enhet är tillgänglig, StorSimple Snapshot Manager lägger till en anslutning. När du väljer hello enhet visas den i hello **resultat** rutan och hello statusfältet anger hello enheten är **tillgänglig**. StorSimple Snapshot Manager importerar alla volym grupper som konfigurerats för hello-enhet, förutsatt att hello volym grupper har associerade säkerhetskopior. Principer för säkerhetskopiering har inte importerats. Volymen grupper som inte har tillhörande säkerhetskopior har inte importerats.
+2. Klicka på hello skrivbordsikon toostart StorSimple Snapshot Manager.
+3. Högerklicka på hello översta noden i hello **omfång** rutan och klicka sedan på **växla import visa**.
    
     ![Välj Växla import visning](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. Den **växla import visa** dialogruta, visar status för den importerade volymen grupper och säkerhetskopieringar. Klicka på **OK**.
+4. Hej **växla import visa** dialogrutan visar hello status för hello importeras grupper för volymen och säkerhetskopieringar. Klicka på **OK**.
 
-När grupperna för volymen och säkerhetskopieringar har importerats kan använda du StorSimple Snapshot Manager kan hantera dem, precis som du skulle hantera grupper för volymen och säkerhetskopieringar som du skapat och konfigurerat med StorSimple Snapshot Manager. 
+När hello grupper för volymen och säkerhetskopieringar har importerats kan du använda StorSimple Snapshot Manager toomanage dem, precis som du skulle hantera grupper för volymen och säkerhetskopieringar som du skapat och konfigurerat med StorSimple Snapshot Manager. 
 
 ## <a name="refresh-connected-devices"></a>Uppdatera anslutna enheter
-Använd följande procedur om du vill synkronisera anslutna StorSimple-enheter med StorSimple Snapshot Manager.
+Använd följande procedur toosynchronize hello anslutna StorSimple-enheter med StorSimple Snapshot Manager hello.
 
-#### <a name="to-refresh-connected-devices"></a>Uppdatera anslutna enheter
-1. Klicka på ikonen skrivbord för att starta StorSimple Snapshot Manager.
-2. I den **Scope** fönstret, högerklicka på **enheter**, och klicka sedan på **uppdatera enheter**. Detta synkroniserar anslutna enheter med StorSimple Snapshot Manager så att du kan visa grupper volymen och säkerhetskopieringar, inklusive eventuella nya tillägg. 
+#### <a name="toorefresh-connected-devices"></a>toorefresh anslutna enheter
+1. Klicka på hello skrivbordsikon toostart StorSimple Snapshot Manager.
+2. I hello **omfång** fönstret, högerklicka på **enheter**, och klicka sedan på **uppdatera enheter**. Detta synkroniserar hello anslutna enheter med StorSimple Snapshot Manager så att du kan visa hello volym grupper och säkerhetskopior, inklusive eventuella nya tillägg. 
    
-    ![Uppdatera StorSimple-enheter](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
+    ![Uppdatera hello StorSimple-enheter](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Refresh_devices.png)
 
-Den **uppdatera enheter** åtgärd hämtar alla nya grupper i volymen och alla tillhörande säkerhetskopior från anslutna enheter. Till skillnad från den **skanna volymer** åtgärd som är tillgängliga för den **volymer** noden **uppdatera enheter** inte återställa registernyckeln för säkerhetskopiering.
+Hej **uppdatera enheter** åtgärd hämtar alla nya grupper i volymen och alla tillhörande säkerhetskopior från anslutna enheter. Till skillnad från hello **skanna volymer** åtgärd som är tillgängliga för hello **volymer** noden **uppdatera enheter** återställer inte hello säkerhetskopiering registret.
 
 ## <a name="authenticate-a-device"></a>Autentisera en enhet
-Använd följande procedur för att autentisera en StorSimple-enhet med StorSimple Snapshot Manager.
+Använd följande procedur tooauthenticate StorSimple-enhet med StorSimple Snapshot Manager hello.
 
-#### <a name="to-authenticate-a-device"></a>För autentisering av en enhet
-1. Klicka på ikonen skrivbord för att starta StorSimple Snapshot Manager.
-2. I den **omfång** rutan klickar du på **enheter**.
-3. I den **resultat** fönstret, högerklicka på enheten och klicka sedan på **autentisera**.
-4. Den **autentisera** dialogrutan visas. Skriv lösenordet och klicka sedan på **OK**.
+#### <a name="tooauthenticate-a-device"></a>tooauthenticate en enhet
+1. Klicka på hello skrivbordsikon toostart StorSimple Snapshot Manager.
+2. I hello **omfång** rutan klickar du på **enheter**.
+3. I hello **resultat** fönstret högerklickar du på enheten hello hello namnet och klicka sedan på **autentisera**.
+4. Hej **autentisera** dialogrutan visas. Skriv hello enhetens lösenord och klicka sedan på **OK**.
    
     ![Autentisera dialogrutan](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Authenticate.png) 
 
 ## <a name="view-device-details"></a>Visa information om enhet
-Använd följande procedur för att visa information om en StorSimple-enhet och synkronisera enheten med StorSimple Snapshot Manager om det behövs.
+Använd hello följande procedur tooview hello information för en StorSimple-enhet och synkronisera om hello enhet med StorSimple Snapshot Manager om det behövs.
 
-#### <a name="to-view-and-resynchronize-device-details"></a>Visa och synkronisera information om enhet
-1. Klicka på ikonen skrivbord för att starta StorSimple Snapshot Manager.
-2. I den **omfång** rutan klickar du på **enheter**.
-3. I den **resultat** fönstret, högerklicka på enheten och klicka sedan på **information**.
+#### <a name="tooview-and-resynchronize-device-details"></a>tooview och synkronisera om enhetsinformation
+1. Klicka på hello skrivbordsikon toostart StorSimple Snapshot Manager.
+2. I hello **omfång** rutan klickar du på **enheter**.
+3. I hello **resultat** fönstret högerklickar du på enheten hello hello namnet och klicka sedan på **information**.
 
-4 det **enhetsinformation** dialogrutan visas. Den här rutan visas namn, modell, version, serienummer, status, iSCSI-målet kvalificerade namn (IQN), och senaste Synkroniseringsdatum och tid.
+4 hello **enhetsinformation** dialogrutan visas. Den här rutan visar hello namn, modell, version, serienummer, status, iSCSI-målet kvalificerade namn (IQN), och senaste Synkroniseringsdatum och tid.
 
-* Klicka på **omsynkronisering** att synkronisera enheten.
-* Klicka på **OK** eller **Avbryt** att stänga dialogrutan.
+* Klicka på **omsynkronisering** toosynchronize hello enhet.
+* Klicka på **OK** eller **Avbryt** tooclose hello dialogrutan.
   
   ![Information om enhet](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Device_details.png) 
 
 ## <a name="refresh-an-individual-device"></a>Uppdatera en enskild enhet
-Använd följande procedur för att synkronisera om en enskild StorSimple-enhet med StorSimple Snapshot Manager.
+Använd följande procedur tooresynchronize en enskild StorSimple-enhet med StorSimple Snapshot Manager hello.
 
-#### <a name="to-refresh-a-device"></a>Så här uppdaterar du en enhet
-1. Klicka på ikonen skrivbord för att starta StorSimple Snapshot Manager. 
-2. I den **omfång** rutan klickar du på **enheter**. 
-3. I den **resultat** fönstret, högerklicka på enheten och klicka sedan på **uppdatera enheten**. Detta synkroniserar enheten med StorSimple Snapshot Manager.
+#### <a name="toorefresh-a-device"></a>toorefresh en enhet
+1. Klicka på hello skrivbordsikon toostart StorSimple Snapshot Manager. 
+2. I hello **omfång** rutan klickar du på **enheter**. 
+3. I hello **resultat** fönstret högerklickar du på enheten hello hello namnet och klicka sedan på **uppdatera enheten**. Detta synkroniserar hello enhet med StorSimple Snapshot Manager.
 
 ## <a name="delete-a-device-configuration"></a>Ta bort en enhetskonfiguration
-Använd följande procedur för att ta bort en konfiguration för enskilda StorSimple-enheter från StorSimple Snapshot Manager.
+Använd följande procedur toodelete en konfiguration för enskilda StorSimple-enheter från StorSimple Snapshot Manager hello.
 
-#### <a name="to-delete-a-device-configuration"></a>Ta bort en enhetskonfiguration
-1. Klicka på ikonen skrivbord för att starta StorSimple Snapshot Manager.
-2. I den **omfång** rutan klickar du på **enheter**. 
-3. I den **resultat** fönstret, högerklicka på enheten och klicka sedan på **ta bort**. 
-4. Följande meddelande visas. Klicka på **Ja** att ta bort konfigurationen eller klicka på **nr** du avbryta borttagningen.
+#### <a name="toodelete-a-device-configuration"></a>toodelete en enhetskonfigurationen
+1. Klicka på hello skrivbordsikon toostart StorSimple Snapshot Manager.
+2. I hello **omfång** rutan klickar du på **enheter**. 
+3. I hello **resultat** fönstret högerklickar du på enheten hello hello namnet och klicka sedan på **ta bort**. 
+4. hello följande meddelande visas. Klicka på **Ja** toodelete hello konfigurationen eller klicka på **nr** toocancel hello borttagning.
    
     ![Ta bort konfiguration för enheter](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_DeleteDevice.png)
 
 ## <a name="change-an-expired-device-password"></a>Ändra ett enhetslösenord har upphört att gälla
-Du måste ange ett lösenord för att autentisera en StorSimple-enhet med StorSimple Snapshot Manager. Du kan konfigurera det här lösenordet när du använder Windows PowerShell-gränssnittet för att ställa in enheten. Lösenordet kan löpa ut. Om det händer kan använda du den klassiska Azure-portalen för att ändra lösenordet. Eftersom enheten har konfigurerats i StorSimple Snapshot Manager innan lösenordet upphör att gälla, måste du sedan nytt autentisera enhet i StorSimple Snapshot Manager.
+Du måste ange ett lösenord tooauthenticate StorSimple-enhet med StorSimple Snapshot Manager. Du kan konfigurera det här lösenordet när du använder hello Windows PowerShell-gränssnittet tooset in hello enhet. Hello lösenord kan löpa ut. Om det händer kan använda du hello Azure klassiska portal toochange hello lösenord. Eftersom hello enhet har konfigurerats i StorSimple Snapshot Manager innan hello lösenord upphör att gälla, måste du sedan nytt autentisera hello enhet i StorSimple Snapshot Manager.
 
-#### <a name="to-change-the-expired-password"></a>Ändra lösenordet har upphört att gälla
-1. Starta StorSimple Manager-tjänsten i den klassiska Azure-portalen.
-2. Klicka på **enheter** > **konfigurera** för enheten.
-3. Rulla ned till avsnittet StorSimple Snapshot Manager. Ange ett lösenord som är 14 och 15 tecken. Kontrollera att lösenordet innehåller en blandning av versaler, gemener, siffror och särskilda tecken.
-4. Ange lösenordet för att bekräfta det. igen.
-5. Klicka på **Spara** längst ned på sidan.
+#### <a name="toochange-hello-expired-password"></a>toochange hello utgånget lösenord
+1. Starta hello StorSimple Manager-tjänsten i hello klassiska Azure-portalen.
+2. Klicka på **enheter** > **konfigurera** för hello enhet.
+3. Rulla ned toohello StorSimple Snapshot Manager avsnitt. Ange ett lösenord som är 14 och 15 tecken. Kontrollera att lösenordet hello innehåller en blandning av versaler, gemener, siffror och särskilda tecken.
+4. Ange nytt hello lösenord tooconfirm den.
+5. Klicka på **spara** på hello hello sidans nederkant.
 
-#### <a name="to-re-authenticate-the-device"></a>Återautentisera på enheten
+#### <a name="toore-authenticate-hello-device"></a>toore-autentisering hello-enhet
 1. Starta StorSimple Snapshot Manager.
-2. I den **omfång** rutan klickar du på **enheter**. En lista över konfigurerade enheter visas i den **resultat** fönstret.
-3. Välj enhet, högerklicka och klicka sedan på **autentisera**.
-4. I den **autentisera** fönster, ange det nya lösenordet.
-5. Välj enhet, högerklicka och välj **uppdatera enheten**. Detta synkroniserar enheten med StorSimple Snapshot Manager.
+2. I hello **omfång** rutan klickar du på **enheter**. En lista över konfigurerade enheter visas i hello **resultat** fönstret.
+3. Välj hello enhet, högerklicka och klicka sedan på **autentisera**.
+4. I hello **autentisera** fönstret Ange hello nytt lösenord.
+5. Välj hello enhet, högerklicka och välj **uppdatera enheten**. Detta synkroniserar hello enhet med StorSimple Snapshot Manager.
 
 ## <a name="replace-a-failed-device"></a>Ersätta en misslyckad enhet
-Om en StorSimple-enhet misslyckas och ersätts med en enhet i vänteläge (failover), Använd följande steg för att ansluta till den nya enheten och visa tillhörande säkerhetskopior.
+Om en StorSimple-enhet misslyckas och hello ersättas med en enhet för vänteläge (failover), Använd hello följande steg tooconnect toohello ny enhet och visa tillhörande säkerhetskopior.
 
-#### <a name="to-connect-to-a-new-device-after-failover"></a>Ansluta till en ny enhet efter växling vid fel
-1. Konfigurera iSCSI-anslutning till den nya enheten. Anvisningar, finns i ”steg 7: montera, initiera och formatera en volym” i [distribuera din lokala StorSimple-enhet](storsimple-8000-deployment-walkthrough-u2.md).
+#### <a name="tooconnect-tooa-new-device-after-failover"></a>tooconnect tooa ny enhet efter växling vid fel
+1. Konfigurera om hello iSCSI-anslutning toohello ny enhet. Anvisningar finns för ”steg 7: montera, initiera och formatera en volym” i [distribuera din lokala StorSimple-enhet](storsimple-8000-deployment-walkthrough-u2.md).
 
 > [!NOTE]
-> Om den nya StorSimple-enheten har samma IP-adress som den gamla servern, kanske du kan ansluta den gamla konfigurationen.
+> Om hello nya StorSimple-enhet har samma IP-adress som hello hello gamla, kanske du kan tooconnect hello gammal konfiguration.
 
 
-1. Stoppa tjänsten Microsoft StorSimple Management:
+1. Stoppa hello Microsoft StorSimple Management-tjänsten:
    
    1. Starta Serverhanteraren.
-   2. På instrumentpanelen i Serverhanteraren på den **verktyg** väljer du **Services**.
-   3. På den **Services** väljer den **Management-tjänsten för Microsoft StorSimple**.
-   4. I den högra rutan under **Management-tjänsten för Microsoft StorSimple**, klickar du på **stoppa tjänsten**.
-2. Ta bort konfigurationsinformation som är relaterade till den gamla enheten:
+   2. På hello instrumentpanelen Serverhanteraren på hello **verktyg** väljer du **Services**.
+   3. På hello **Services** fönster, Välj hello **Management-tjänsten för Microsoft StorSimple**.
+   4. I hello Högerklicka rutan under **Management-tjänsten för Microsoft StorSimple**, klickar du på **stoppa hello tjänsten**.
+2. Ta bort hello configuration information relaterad toohello gamla enhet:
    
-   1. Bläddra till C:\ProgramData\Microsoft\StorSimple\BACatalog i Utforskaren.
-   2. Ta bort filer i mappen BACatalog.
-3. Starta om tjänsten Microsoft StorSimple Management:
+   1. Bläddra tooC:\ProgramData\Microsoft\StorSimple\BACatalog i Utforskaren.
+   2. Ta bort hello filer i hello BACatalog mapp.
+3. Starta om hello Microsoft StorSimple Management-tjänsten:
    
-   1. På instrumentpanelen i Serverhanteraren på den **verktyg** väljer du **Services**.
-   2. På den **Services** väljer den **Management-tjänsten för Microsoft StorSimple**.
-   3. I den högra rutan under **Management-tjänsten för Microsoft StorSimple**, klickar du på **starta om tjänsten**.
+   1. På hello instrumentpanelen Serverhanteraren på hello **verktyg** väljer du **Services**.
+   2. På hello **Services** fönster, Välj hello **Management-tjänsten för Microsoft StorSimple**.
+   3. I hello Högerklicka rutan under **Management-tjänsten för Microsoft StorSimple**, klickar du på **starta om tjänsten hello**.
 4. Starta StorSimple Snapshot Manager.
-5. Om du vill konfigurera den nya virtuella StorSimple-enheten, följ instruktionerna i steg 2: Anslut en virtuell StorSimple-enhet i [distribuera StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
-6. Högerklicka på den översta noden i den **omfång** fönstret (StorSimple Snapshot Manager i exemplet) och klicka sedan på **växla import visa**. 
-7. Ett meddelande visas när den importerade volymen grupper och säkerhetskopieringar visas i StorSimple Snapshot Manager. Klicka på **OK**.
+5. tooconfigure hello nya StorSimple-enhet, fullständig hello steg i steg 2: Anslut en virtuell StorSimple-enhet i [distribuera StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
+6. Högerklicka på hello översta noden i hello **omfång** fönstret (StorSimple Snapshot Manager i hello exempel) och klicka sedan på **växla import visa**. 
+7. Ett meddelande visas när hello importeras grupper för volymen och säkerhetskopieringar visas i StorSimple Snapshot Manager. Klicka på **OK**.
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig hur du [använda StorSimple Snapshot Manager för att administrera din StorSimple-lösning](storsimple-snapshot-manager-admin.md).
-* Lär dig hur du [använda StorSimple Snapshot Manager för att visa och hantera volymer](storsimple-snapshot-manager-manage-volumes.md).
+* Lär dig hur för[med StorSimple Snapshot Manager tooadminister din StorSimple-lösning](storsimple-snapshot-manager-admin.md).
+* Lär dig hur för[använda StorSimple Snapshot Manager tooview och hantera volymer](storsimple-snapshot-manager-manage-volumes.md).
 

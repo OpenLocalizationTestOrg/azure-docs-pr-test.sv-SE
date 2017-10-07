@@ -1,6 +1,6 @@
 ---
-title: Skapa ett Apache Spark-kluster i Azure HDInsight | Microsoft Docs
-description: HDInsight Spark-snabbstart om hur du skapar ett Apache Spark-kluster i HDInsight.
+title: aaaCreate ett Apache Spark-klustret i Azure HDInsight | Microsoft Docs
+description: "HDInsight Spark quickstart på hur toocreate ett Apache Spark-kluster i HDInsight."
 keywords: "spark-snabbstart,interaktiv spark,interaktiv fråga,hdinsight spark,azure spark"
 services: hdinsight
 documentationcenter: 
@@ -17,17 +17,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/21/2017
 ms.author: nitinme
-ms.openlocfilehash: ad4330a1fc7f8de154d9aaa8df3acc2ab59b9dc1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 002f71b3cd4fb315d4a556cebc9263026515ec4a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>Skapa ett Apache Spark-kluster i Azure HDInsight
 
-I den här artikeln får du lära dig hur du skapar ett Apache Spark-kluster i Azure HDInsight. Mer information om Spark på HDInsight finns i [Översikt: Apache Spark på Azure HDInsight](hdinsight-apache-spark-overview.md).
+I den här artikeln lär du dig hur toocreate ett Apache Spark-klustret i Azure HDInsight. Mer information om Spark på HDInsight finns i [Översikt: Apache Spark på Azure HDInsight](hdinsight-apache-spark-overview.md).
 
-   ![Snabbstartsdiagram som beskriver steg för att skapa ett Apache Spark-kluster på Azure HDInsight](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-quickstart-interactive-spark-query-flow.png "Spark-snabbstart med Apache Spark i HDInsight. Illustrerade steg: skapa ett kluster, kör interaktiv Spark-fråga")
+   ![Diagram för Snabbstart som beskriver stegen toocreate ett Apache Spark-kluster i Azure HDInsight](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-quickstart-interactive-spark-query-flow.png "Spark Snabbstart med Apache Spark i HDInsight. Illustrerade steg: skapa ett kluster, kör interaktiv Spark-fråga")
 
 ## <a name="prerequisites"></a>Krav
 
@@ -37,90 +37,90 @@ I den här artikeln får du lära dig hur du skapar ett Apache Spark-kluster i A
 
 I det här avsnittet skapar du ett Spark-kluster i HDInsight med en [Azure Resource Manager-mall](https://azure.microsoft.com/resources/templates/101-hdinsight-spark-linux/). Information om andra metoder för att skapa kluster finns i [Skapa HDInsight-kluster](hdinsight-hadoop-provision-linux-clusters.md).
 
-1. Klicka på följande bild för att öppna mallen i Azure Portal.         
+1. Klicka på hello följande bild tooopen hello mallen i hello Azure-portalen.         
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apache-spark-jupyter-spark-sql/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-spark-linux%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apache-spark-jupyter-spark-sql/deploy-to-azure.png" alt="Deploy tooAzure"></a>
 
-2. Ange följande värden:
+2. Ange hello följande värden:
 
     ![Skapa HDInsight Spark-kluster med en Azure Resource Manager-mall](./media/hdinsight-apache-spark-jupyter-spark-sql/create-spark-cluster-in-hdinsight-using-azure-resource-manager-template.png "Skapa Spark-kluster i HDInsight med en Azure Resource Manager-mall")
 
     * **Prenumeration**: Välj din Azure-prenumeration för det här klustret.
-    * **Resursgrupp**: Skapa en resursgrupp eller välj en befintlig. Resursgrupp används för att hantera Azure-resurser till dina projekt.
-    * **Plats**: Välj en plats för resursgruppen. Mallen använder den här platsen för att skapa klustret samt standardklusterlagringen.
-    * **Klusternamn**: Ange ett namn på det HDInsight-kluster som du vill skapa.
-    * **Spark-version**: Välj **2.0** som den version som ska installeras i klustret.
-    * **Klustrets inloggningsnamn och lösenord**: Inloggningsnamnet är som standard ”admin”.
+    * **Resursgrupp**: Skapa en resursgrupp eller välj en befintlig. Resursgruppen är används toomanage Azure-resurser för dina projekt.
+    * **Plats**: Välj en plats för hello resursgrupp. hello-mallen använder den här platsen för att skapa hello kluster även för hello standard klusterlagringen.
+    * **Klusternamn**: Ange ett namn för hello HDInsight-kluster som du vill toocreate.
+    * **Spark version**: Välj **2.0** som hello-version som du vill tooinstall på hello klustret.
+    * **Klustrets inloggningsnamn och lösenord**: hello standard inloggningsnamnet är administratör.
     * **SSH-användarnamn och lösenord**.
 
-   Anteckna dessa värden.  Du behöver dem senare under kursen.
+   Anteckna dessa värden.  Du behöver dem senare i självstudiekursen hello.
 
-3. Välj **Jag godkänner villkoren som anges ovan**, välj **Fäst på instrumentpanelen** och klicka sedan på **Köp**. En ny panel visas med rubriken Skicka distribution för malldistribution. Det tar cirka 20 minuter att skapa klustret.
+3. Välj **acceptera toohello villkoren ovan**väljer **PIN-kod toodashboard**, och klicka sedan på **inköp**. En ny panel visas med rubriken Skicka distribution för malldistribution. Det tar cirka 20 minuter toocreate hello klustret.
 
-Om du stöter på ett problem med att skapa HDInsight-kluster kan det bero på att du inte har rätt behörighet för att göra det. Mer information finns i [åtkomstkravkontrollen](hdinsight-administer-use-portal-linux.md#create-clusters).
+Om du stöter på ett problem med att skapa HDInsight-kluster kan bero det på att du inte har hello rätt behörigheter toodo så. Mer information finns i [åtkomstkravkontrollen](hdinsight-administer-use-portal-linux.md#create-clusters).
 
 > [!NOTE]
-> Den här artikeln skapar ett Spark-kluster som använder [Azure Storage-blobar som klusterlagring](hdinsight-hadoop-use-blob-storage.md). Du kan även skapa ett Spark-kluster som använder [Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) som standardlagringsutrymme. Instruktioner finns i [Skapa ett HDInsight-kluster med Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+> Den här artikeln skapar ett Spark-kluster som använder [Azure Storage-Blobbar som hello kluster lagring](hdinsight-hadoop-use-blob-storage.md). Du kan också skapa ett Spark-kluster som använder [Azure Data Lake Store](hdinsight-hadoop-use-data-lake-store.md) som hello standardlagring. Instruktioner finns i [Skapa ett HDInsight-kluster med Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 >
 >
 
 ## <a name="run-a-hive-query-using-spark-sql"></a>Köra en Hive-fråga med Spark SQL
 
-När du använder en Jupyter-anteckningsbok som har konfigurerats för HDInsight Spark-klustret kan det visas en förinställning `sqlContext` som du kan använda för att köra Hive-frågor med hjälp av Spark SQL. I det här avsnittet lär du dig att starta en Jupyter-anteckningsbok och sedan köra en grundläggande Hive-fråga.
+När du använder en Jupyter-anteckningsbok som konfigurerats för HDInsight Spark-kluster kan du få en förinställning `sqlContext` som du kan använda toorun Hive-frågor med Spark SQL. I det här avsnittet lär du dig hur toostart en Jupyter-anteckningsbok och kör sedan en grundläggande Hive-fråga.
 
-1. Öppna [Azure-portalen](https://portal.azure.com/).
+1. Öppna hello [Azure-portalen](https://portal.azure.com/).
 
-2. Om du har valt att fästa klustret på instrumentpanelen klickar du på klusterikonen på instrumentpanelen för att öppna klusterbladet.
+2. Om du har valt toopin hello klusterinstrumentpanel toohello Klicka hello klustret panelen från hello instrumentpanelen toolaunch hello klusterbladet.
 
-    Om du inte har fäst klustret på instrumentpanelen går du till den vänstra rutan och klickar på **HDInsight-kluster**. Klicka sedan på det kluster du har skapat.
+    Om du inte fäster hello klustret toohello instrumentpanelen från hello till vänster och klicka på **HDInsight-kluster**, och klicka sedan på hello-klustret som du skapade.
 
-3. I **Snabblänkar** klickar du på **Klusterinstrumentpaneler** och sedan på **Jupyter Notebook**. Ange administratörsautentiseringsuppgifterna för klustret om du uppmanas att göra det.
+3. I **Snabblänkar** klickar du på **Klusterinstrumentpaneler** och sedan på **Jupyter Notebook**. Om du uppmanas ange hello administratörsautentiseringsuppgifter för hello klustret.
 
-   ![Öppna Jupyter-anteckningsboken för att köra interaktiv Spark SQL-fråga](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Öppna Jupyter-anteckningsboken för att köra interaktiv Spark SQL-fråga")
+   ![Öppna Jupyter-anteckningsbok toorun interaktiva Spark SQL-frågan](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "öppna Jupyter-anteckningsbok toorun interaktiva Spark SQL-fråga")
 
    > [!NOTE]
-   > Du kan också nå Jupyter-anteckningsboken för ditt kluster genom att öppna nedanstående URL i webbläsaren. Ersätt **CLUSTERNAME** med namnet på klustret:
+   > Du kan också komma åt hello Jupyter notebook för ditt kluster genom att öppna hello följande URL i webbläsaren. Ersätt **KLUSTERNAMN** med hello namnet på klustret:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
    >
    >
 3. Skapa en anteckningsbok. Klicka på **Ny** och sedan på **PySpark**.
 
-   ![Skapa en Jupyter-anteckningsbok för att köra interaktiv Spark SQL-fråga](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-Spark-SQL-query.png "Skapa en Jupyter-anteckningsbok för att köra interaktiv Spark SQL-fråga")
+   ![Skapa en Jupyter-anteckningsbok toorun interaktiva Spark SQL-fråga](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-Spark-SQL-query.png "skapa en Jupyter-anteckningsbok toorun interaktiva Spark SQL-fråga")
 
-   En ny anteckningsbok skapas och öppnas med namnet Untitled(Untitled.pynb).
+   En ny anteckningsbok skapas och öppnas med hello namnet Untitled(Untitled.pynb).
 
-4. Klicka på anteckningsbokens namn högst upp och ange ett beskrivande namn om du vill.
+4. Klicka på hello anteckningsbokens namn högst hello upp och ange ett eget namn om du vill.
 
-    ![Ange ett namn för Jupter-anteckningsboken för att köra en interaktiv Spark-fråga från](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-jupyter-notebook-name.png "Ange ett namn för Jupter-anteckningsboken för att köra en interaktiv Spark-fråga från")
+    ![Ange ett namn för hello Jupter anteckningsboken toorun interaktiva Spark frågan från](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-jupyter-notebook-name.png "ange ett namn för hello Jupter anteckningsboken toorun interaktiva Spark frågan från")
 
-5.  Klistra in följande kod i en tom cell och tryck sedan på **SKIFT+RETUR** för att köra koden. I följande kodexempel anger `%%sql` (kallas sql magic) att Jupyter-anteckningsboken ska använda förinställningen `sqlContext` för att köra Hive-frågan. Frågan hämtar de översta 10 raderna från en Hive-tabell (**hivesampletable**) som är tillgängliga som standard i alla HDInsight-kluster.
+5.  Klistra in hello följande kod i en tom cell och tryck sedan på **SKIFT + RETUR** toorun hello kod. I hello koden nedan `%%sql` (kallas hello sql magic) anger Jupyter-anteckningsbok toouse hello förinställningen `sqlContext` toorun hello Hive-fråga. hello fråga hämtar hello översta 10 rader från en Hive-tabell (**hivesampletable**) som är tillgängligt som standard på alla HDInsight-kluster.
 
         %%sql
         SELECT * FROM hivesampletable LIMIT 10
 
     ![Hive-fråga i HDInsight Spark](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query.png "Hive-fråga i HDInsight Spark")
 
-    Mer information om `%%sql` och förinställda kontexter finns i [Jupyter-kernlar som är tillgängliga för ett HDInsight-kluster](hdinsight-apache-spark-jupyter-notebook-kernels.md).
+    Mer information om hello `%%sql` magic och hello förinställningen kontexter, se [Jupyter kernlar som är tillgängliga för ett HDInsight-kluster](hdinsight-apache-spark-jupyter-notebook-kernels.md).
 
     > [!NOTE]
-    > Varje gång du kör en fråga i Jupyter visar fönsterrubriken i webbläsaren statusen **(Upptagen)** tillsammans med anteckningsbokens titel. Du ser även en fylld cirkel bredvid **PySpark**-texten i det övre högra hörnet. När jobbet har slutförts ändras detta till en tom cirkel.
+    > Varje gång du kör en fråga i Jupyter fönsternamn din web webbläsaren visar en **(upptagen)** status tillsammans med hello anteckningsbokens titel. Du också se en fylld cirkel nästa toohello **PySpark** text i hello övre högra hörnet. När hello jobbet har slutförts ändras tooa tom cirkel.
     >
     >
     
-6. Skärmen bör uppdateras så att frågeresultatet visas.
+6. hello-skärmen bör uppdatera tooshow hello frågeresultatet.
 
     ![Hive-frågeresultatet i HDInsight Spark](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-get-started-hive-query-output.png "Hive-frågeresultatet i HDInsight Spark")
 
-7. När du har kört programmet stänger du anteckningsboken för att frigöra klusterresurserna. Du gör det genom att klicka på **Stäng och stoppa** i anteckningsbokens **Fil**-meny.
+7. Stäng hello anteckningsboken toorelease hello klusterresurser när du har kört programmet hello. toodo så från hello **filen** Klicka på menyn på hello anteckningsboken **Stäng och stoppa**.
 
-8. Om du planerar att utföra nästa steg vid ett senare tillfälle är det viktigt att du tar bort HDInsight-klustret som du skapade i den här artikeln. 
+8. Om du planerar toocomplete hello nästa steg vid ett senare tillfälle kan du kontrollera att du tar bort hello HDInsight-kluster som du skapade i den här artikeln. 
 
     [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="next-step"></a>Nästa steg 
 
-I den här artikeln beskrivs hur du skapar ett HDInsight Spark-kluster och kör en grundläggande Spark SQL-fråga. Gå vidare till nästa artikel om du vill lära dig hur du använder ett HDInsight Spark-kluster för att köra interaktiva frågor på exempeldata.
+I den här artikeln som du har lärt dig hur toocreate ett HDInsight Spark-kluster och kör en grundläggande Spark SQL-frågan. Avancera toohello nästa artikel toolearn hur toouse ett HDInsight Spark-kluster toorun interaktiva frågor på exempeldata.
 
 > [!div class="nextstepaction"]
 >[Köra interaktiva frågor på ett HDInsight Spark-kluster](hdinsight-apache-spark-load-data-run-query.md)

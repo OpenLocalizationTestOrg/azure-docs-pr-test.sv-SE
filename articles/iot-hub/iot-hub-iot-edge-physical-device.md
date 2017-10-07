@@ -1,6 +1,6 @@
 ---
-title: "Använd en fysisk enhet med Azure IoT kant | Microsoft Docs"
-description: "Hur du använder en Texas instrument SensorTag-enhet för att skicka data till en IoT-hubb via en IoT-Edge gateway körs på en hallon Pi 3-enhet. Gatewayen skapas med Azure IoT kant."
+title: aaaUse en fysisk enhet med Azure IoT kant | Microsoft Docs
+description: "Hur toouse en Texas instrument SensorTag enhet toosend data tooan IoT-hubb via en IoT-Edge gateway körs på en hallon Pi 3-enhet. hello gateway skapas med Azure IoT kant."
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -14,147 +14,147 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: andbuc
-ms.openlocfilehash: 02962a91c739a53dfcf947bcc736e5c293b9384f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2385accdbd99012ad094232653ee47d4e5c7839
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-azure-iot-edge-on-a-raspberry-pi-to-forward-device-to-cloud-messages-to-iot-hub"></a>Använda Azure IoT kanten på en hallon Pi för att vidarebefordra meddelanden från enhet till moln till IoT-hubb
+# <a name="use-azure-iot-edge-on-a-raspberry-pi-tooforward-device-to-cloud-messages-tooiot-hub"></a>Använda Azure IoT kanten på en hallon Pi tooforward meddelanden från enhet till moln tooIoT Hub
 
-Den här genomgången av den [Bluetooth låg energiförbrukning exempel] [ lnk-ble-samplecode] visar hur du använder [Azure IoT kant] [ lnk-sdk] till:
+Den här genomgången av hello [Bluetooth låg energiförbrukning exempel] [ lnk-ble-samplecode] visas hur toouse [Azure IoT kant] [ lnk-sdk] till:
 
-* Vidarebefordra enhet till moln telemetri till IoT-hubb från en fysisk enhet.
-* Väg kommandon från IoT-hubben till en fysisk enhet.
+* Vidarebefordra enhet till moln telemetri tooIoT hubb från en fysisk enhet.
+* Väg kommandon från IoT-hubb tooa fysisk enhet.
 
 Den här genomgången omfattar:
 
-* **Arkitektur för**: viktig arkitektur information om Bluetooth låg energiförbrukning exemplet.
-* **Skapa och kör**: stegen som krävs för att bygga och köra exemplet.
+* **Arkitektur för**: viktig arkitektur information om hello Bluetooth låg energiförbrukning exempel.
+* **Skapa och köra**: hello steg krävs toobuild och kör hello exempel.
 
 ## <a name="architecture"></a>Arkitektur
 
-Den här genomgången visar hur du skapar och kör en IoT-gräns-gatewayen på en hallon Pi 3 som kör Raspbian Linux. Gatewayen skapas med IoT kant. En Texas instrument SensorTag Bluetooth låg energiförbrukning (a)-enhet används för att samla in data om temperatur.
+hello genomgången visar hur toobuild och kör en IoT-gräns-gatewayen på en hallon Pi 3 som kör Raspbian Linux. hello gateway skapas med IoT kant. hello används en Texas instrument SensorTag Bluetooth låg energiförbrukning (TIVERA) enheten toocollect temperatur data.
 
-När du kör IoT gräns-gatewayen den:
+När du kör hello IoT gräns-gatewayen den:
 
-* Ansluter till en SensorTag-enhet med hjälp av Bluetooth låg energiförbrukning (a)-protokollet.
-* Ansluter till IoT-hubb med hjälp av HTTP-protokollet.
-* Vidarebefordrar telemetri från SensorTag-enhet till IoT-hubb.
-* Vägar kommandon från IoT-hubb SensorTag-enheter.
+* Ansluter tooa SensorTag-enhet med hello Bluetooth låg energiförbrukning (a)-protokollet.
+* Ansluter tooIoT hubb med hello HTTP-protokollet.
+* Vidarebefordrar telemetri från hello SensorTag enhet tooIoT hubb.
+* Dirigerar kommandon från IoT-hubb toohello SensorTag-enheter.
 
-Gatewayen innehåller följande IoT kant moduler:
+hello gateway innehåller hello följande IoT kant moduler:
 
-* En *TIVERA modulen* som gränssnitt med TIVERA enheten ska ta emot temperatur data från enheten och skicka kommandon till enheten.
-* En *TIVERA moln till enhet modulen* som omvandlar JSON-meddelanden som skickats från IoT-hubb i TIVERA instruktioner för den *TIVERA modulen*.
-* En *loggaren modulen* som loggar alla gateway-meddelanden till en lokal fil.
+* En *TIVERA modulen* som kontakt med en tabell tooreceive temperatur enhetsdata från hello enheten och skicka kommandon toohello enhet.
+* En *TIVERA molnet toodevice modulen* som omvandlar JSON-meddelanden som skickats från IoT-hubb i TIVERA instruktioner för hello *TIVERA modulen*.
+* En *loggaren modulen* som loggar alla gateway meddelanden tooa lokal fil.
 * En *identitet mappningsmodul* som omvandlar mellan TIVERA enhetens MAC-adresser och identiteter för Azure IoT Hub-enhet.
-* En *IoT-hubb modulen* som överför telemetridata till en IoT-hubb och tar emot enhetskommandon från en IoT-hubb.
-* En *TIVERA skrivare modulen* som tolkar telemetri från TIVERA enheten och skriver ut formaterade data i konsolen för att aktivera felsökning.
+* En *IoT-hubb modulen* som överför telemetri data tooan IoT-hubb och tar emot enhetskommandon från en IoT-hubb.
+* En *TIVERA skrivare modulen* som tolkar telemetri från hello TIVERA enhet och skriver ut formaterade data toohello konsolen tooenable felsökning.
 
-### <a name="how-data-flows-through-the-gateway"></a>Hur data flödar via gatewayen
+### <a name="how-data-flows-through-hello-gateway"></a>Hur data flödar via hello gateway
 
-Blockera följande diagram illustrerar flödet-pipeline telemetri överför data:
+hello följande blockdiagram visar hello telemetri överför data flödet pipeline:
 
 ![Telemetri överför gateway pipeline](media/iot-hub-iot-edge-physical-device/gateway_ble_upload_data_flow.png)
 
-De steg som ett objekt av telemetri tar reser från en tabell enhet till IoT-hubben är:
+hello stegen som ett objekt av telemetri tar reser från en tabell enheten tooIoT navet är:
 
-1. Aktivera enheten genererar ett exempel på en temperatur och skickar den via Bluetooth till modulen TIVERA i gatewayen.
-1. Modulen TIVERA tar emot exemplet och publicerar till Service broker tillsammans med MAC-adressen till enheten.
-1. Mappningsmodul identitet hämtar det här meddelandet och använder en intern tabell för att översätta MAC-adressen till enheten till en IoT-hubb enhetens identitet. En IoT-hubb enhetsidentitet består av en enhets-ID och nyckeln för enheten.
-1. Modulen för mappning identitet publicerar ett nytt meddelande som innehåller exempeldata temperatur, MAC-adressen till enheten, enhets-ID och nyckeln för enheten.
-1. IoT-hubb-modulen får ett nytt meddelande (som genererats av modulen för mappning identitet) och publicerar till IoT-hubb.
-1. Modulen loggaren loggar alla meddelanden från Service broker till en lokal fil.
+1. hello TIVERA enheten genererar ett exempel på en temperatur och skickar det via Bluetooth toohello TIVERA modul i hello gateway.
+1. hello TIVERA modulen tar emot hello exempel och publicerar den toohello broker tillsammans med hello MAC-adressen för hello enhet.
+1. hello identitet mappningsmodul hämtar det här meddelandet och använder en intern tabell tootranslate hello hello enhetens MAC-adress till en IoT-hubb enhetens identitet. En IoT-hubb enhetsidentitet består av en enhets-ID och nyckeln för enheten.
+1. hello identitet mappningsmodul publicerar ett nytt meddelande som innehåller hello temperatur exempeldata, hello MAC-adressen för hello enhet, hello enhets-ID och nyckeln för hello-enheten.
+1. Hej IoT-hubb modulen får ett nytt meddelande (som genereras av hello identitet mappningsmodul) och publicerar den tooIoT hubb.
+1. hello loggaren modulen loggar alla meddelanden från hello broker tooa lokal fil.
 
-Blockera följande diagram illustrerar enheten kommandot data flödet pipeline:
+hello följande blockdiagram visar hello enheten kommandot data flödet pipeline:
 
 ![Enheten kommandot gateway pipeline](media/iot-hub-iot-edge-physical-device/gateway_ble_command_data_flow.png)
 
-1. Modulen IoT-hubb avsöker med jämna mellanrum IoT-hubb för nya kommandomeddelanden.
-1. När modulen IoT-hubb tar emot ett nytt kommando-meddelande, publicerar den till Service broker.
-1. Modulen för mappning identitet hämtar kommandot meddelandet och använder en intern tabell för att översätta IoT-hubb enhets-ID till en enhet MAC-adress. Den publicerar sedan ett nytt meddelande som innehåller MAC-adressen för målenheten i Egenskaper för kartan i meddelandet.
-1. Modulen TIVERA moln till enhet tar upp det här meddelandet och översätter till rätt TIVERA instruktionen för modulen tabell. Den publicerar sedan ett nytt meddelande.
-1. Modulen TIVERA hämtar det här meddelandet och utför i/o-instruktion genom att kommunicera med Bell-enheter.
-1. Modulen loggaren loggar alla meddelanden från Service broker på en disk.
+1. Hej IoT-hubb modulen avsöker med jämna mellanrum hello IoT-hubb för nya kommandomeddelanden.
+1. När hello IoT-hubb modulen tar emot ett nytt kommando-meddelande, publicerar den den toohello broker.
+1. hello identitet mappningsmodul hämtar kommandot hälsningsmeddelande och använder en intern tabell tootranslate hello IoT-hubb enheten ID tooa enhetens MAC-adress. Den publicerar sedan ett nytt meddelande som innehåller hello MAC-adressen för hello målenhet i hello egenskaper karta över hello-meddelande.
+1. hello TIVERA moln till enhet modul hämtar det här meddelandet och översätter till hello rätt Bell-instruktion för hello TIVERA modulen. Den publicerar sedan ett nytt meddelande.
+1. hello TIVERA modul hämtar det här meddelandet och utför hello i/o-instruktion genom att kommunicera med hello TIVERA enhet.
+1. hello loggaren modulen loggar alla meddelanden från hello broker tooa fil.
 
 ## <a name="prerequisites"></a>Krav
 
-Du behöver en aktiv Azure-prenumeration för att kunna utföra stegen i den här självstudiekursen.
+toocomplete den här självstudiekursen kommer du behöver en aktiv Azure-prenumeration.
 
 > [!NOTE]
 > Om du inte har något konto kan du skapa ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information finns i [kostnadsfri utvärderingsversion av Azure][lnk-free-trial].
 
-Du måste SSH-klienten på den stationära datorn så att du kan fjärransluta till kommandoraden på hallon Pi.
+Du måste SSH-klienten på den stationära datorn tooenable du tooremotely access hello-kommando rad på hello hallon Pi.
 
 - Windows innehåller inte en SSH-klient. Vi rekommenderar att du använder [PuTTY](http://www.putty.org/).
-- De flesta distributioner för Linux och Mac OS inkluderar SSH-kommandoradsverktyget. Mer information finns i [SSH med Linux- eller Mac OS x](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
+- De flesta distributioner för Linux och Mac OS inkluderar hello SSH-kommandoradsverktyget. Mer information finns i [SSH med Linux- eller Mac OS x](https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md).
 
 ## <a name="prepare-your-hardware"></a>Förbered maskinvaran
 
-Den här kursen förutsätter att du använder en [Texas instrument SensorTag](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/index.html) enheten ansluten till en hallon Pi 3 kör Raspbian.
+Den här kursen förutsätter att du använder en [Texas instrument SensorTag](http://www.ti.com/ww/en/wireless_connectivity/sensortag2015/index.html) enheten ansluten tooa hallon Pi 3 kör Raspbian.
 
 ### <a name="install-raspbian"></a>Installera Raspbian
 
-Du kan använda något av följande alternativ för att installera Raspbian på enheten hallon Pi 3.
+Du kan använda något av följande alternativ tooinstall Raspbian på enheten hallon Pi 3 hello.
 
-* Du kan installera den senaste versionen av Raspbian den [NOOBS] [ lnk-noobs] grafiskt användargränssnitt.
-* Manuellt [hämta] [ lnk-raspbian] och skriva den senaste avbildningen av operativsystemet Raspbian till ett SD-kort.
+* tooinstall hello senaste versionen av Raspbian, Använd hello [NOOBS] [ lnk-noobs] grafiskt användargränssnitt.
+* Manuellt [hämta] [ lnk-raspbian] och skriva hello senaste bild av hello Raspbian operativsystemet tooan SD-kort.
 
-### <a name="sign-in-and-access-the-terminal"></a>Logga in och öppna terminalen
+### <a name="sign-in-and-access-hello-terminal"></a>Logga in och komma åt hello terminal
 
-Du har två alternativ för att komma åt en terminal miljö på din hallon Pi:
+Du har två alternativ tooaccess en miljö med terminal på din hallon Pi:
 
-* Om du har ett tangentbord och bildskärm ansluten till din hallon Pi, kan du använda det grafiska Användargränssnittet Raspbian att komma åt ett terminalfönster.
+* Om du har ett tangentbord och övervaka anslutna tooyour hallon Pi kan du använda hello Raspbian GUI tooaccess ett terminalfönster.
 
-* Åtkomst till kommandoraden på din hallon Pi använder SSH från den stationära datorn.
+* Åtkomst hello kommandoraden på din hallon Pi använder SSH från den stationära datorn.
 
-#### <a name="use-a-terminal-window-in-the-gui"></a>Använd ett terminalfönster i det grafiska Användargränssnittet
+#### <a name="use-a-terminal-window-in-hello-gui"></a>Använd ett terminalfönster i hello GUI
 
-Standardautentiseringsuppgifterna för Raspbian är användarnamn **pi** och lösenord **hallon**. I Aktivitetsfältet i det grafiska Användargränssnittet kan du starta den **Terminal** verktyget med hjälp av ikonen som ser ut som en bildskärm.
+Hej standardautentiseringsuppgifterna för Raspbian är användarnamn **pi** och lösenord **hallon**. I Aktivitetsfältet i hello GUI hello kan du starta hello **Terminal** verktyget med hello-ikonen som ser ut som en bildskärm.
 
 #### <a name="sign-in-with-ssh"></a>Logga in med SSH
 
-Du kan använda SSH för kommandoraden åtkomst till din hallon Pi. Artikeln [SSH (Secure Shell)] [ lnk-pi-ssh] beskriver hur du konfigurerar SSH på din hallon Pi och hur du ansluter från [Windows] [ lnk-ssh-windows] eller [ Linux- och Mac OS][lnk-ssh-linux].
+Du kan använda SSH för kommandoradsåtkomst tooyour hallon Pi. hello artikel [SSH (Secure Shell)] [ lnk-pi-ssh] beskriver hur tooconfigure SSH på din hallon Pi, och hur tooconnect från [Windows] [ lnk-ssh-windows] eller [Linux och Mac OS][lnk-ssh-linux].
 
 Logga in med användarnamn **pi** och lösenord **hallon**.
 
 ### <a name="install-bluez-537"></a>Installera BlueZ 5.37
 
-TIVERA moduler prata med Bluetooth maskinvaran via BlueZ stacken. Du behöver version 5.37 av BlueZ för modulerna ska fungera korrekt. Dessa anvisningar se till att rätt version av BlueZ är installerad.
+hello TIVERA moduler prata toohello Bluetooth maskinvaran via hello BlueZ stacken. Du behöver version 5.37 av BlueZ för hello moduler toowork korrekt. Dessa instruktioner Kontrollera hello rätt version av BlueZ är installerat.
 
-1. Stoppa den aktuella bluetooth-daemonen:
+1. Stoppa hello aktuella Bluetooth-daemon:
 
     ```sh
     sudo systemctl stop bluetooth
     ```
 
-1. Installera BlueZ beroenden:
+1. Installera hello BlueZ beroenden:
 
     ```sh
     sudo apt-get update
     sudo apt-get install bluetooth bluez-tools build-essential autoconf glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev
     ```
 
-1. Ladda ned källkoden BlueZ från bluez.org:
+1. Hämta hello BlueZ källkod från bluez.org:
 
     ```sh
     wget http://www.kernel.org/pub/linux/bluetooth/bluez-5.37.tar.xz
     ```
 
-1. Packa upp källkoden:
+1. Packa upp hello källkoden:
 
     ```sh
     tar -xvf bluez-5.37.tar.xz
     ```
 
-1. Ändra sökvägen till den nya mappen:
+1. Ändra kataloger toohello nyskapad mapp:
 
     ```sh
     cd bluez-5.37
     ```
 
-1. Konfigurera BlueZ koden skapas:
+1. Konfigurera hello BlueZ kod toobe inbyggda:
 
     ```sh
     ./configure --disable-udev --disable-systemd --enable-experimental
@@ -172,50 +172,50 @@ TIVERA moduler prata med Bluetooth maskinvaran via BlueZ stacken. Du behöver ve
     sudo make install
     ```
 
-1. Ändra systemd tjänstkonfigurationen för bluetooth så att den pekar på den nya bluetooth-daemonen i filen `/lib/systemd/system/bluetooth.service`. Ersätt 'ExecStart' raden med följande text:
+1. Ändra systemd tjänstkonfigurationen för bluetooth så att den pekar toohello nya Bluetooth-daemon i hello filen `/lib/systemd/system/bluetooth.service`. Ersätt hello 'ExecStart' rad med hello följande text:
 
     ```conf
     ExecStart=/usr/local/libexec/bluetooth/bluetoothd -E
     ```
 
-### <a name="enable-connectivity-to-the-sensortag-device-from-your-raspberry-pi-3-device"></a>Aktivera anslutning till SensorTag-enheter från enheten hallon Pi 3
+### <a name="enable-connectivity-toohello-sensortag-device-from-your-raspberry-pi-3-device"></a>Aktivera anslutningen toohello SensorTag enhet från enheten hallon Pi 3
 
-Du måste verifiera att din hallon Pi 3 kan ansluta till SensorTag-enheten innan du kör exemplet.
+Innan du kör hello exemplet måste tooverify att din hallon Pi 3 kan ansluta toohello SensorTag-enheter.
 
-1. Se till att den `rfkill` verktyg installeras:
+1. Se till att hello `rfkill` verktyg installeras:
 
     ```sh
     sudo apt-get install rfkill
     ```
 
-1. Tillåt bluetooth på hallon Pi 3 och kontrollera att versionsnumret är **5.37**:
+1. Tillåt bluetooth på hello hallon Pi 3 och kontrollera att hello versionsnumret är **5.37**:
 
     ```sh
     sudo rfkill unblock bluetooth
     bluetoothctl --version
     ```
 
-1. Du anger interaktiv bluetooth-gränssnittet genom att starta tjänsten bluetooth och köra den **bluetoothctl** kommando:
+1. tooenter hello interaktiva bluetooth shell starta hello Bluetooth-tjänsten och kör hello **bluetoothctl** kommando:
 
     ```sh
     sudo systemctl start bluetooth
     bluetoothctl
     ```
 
-1. Ange kommandot **effekt på** att starta bluetooth-styrenhet. Kommandot returnerar utdata som liknar följande:
+1. Ange hello kommando **effekt på** toopower in hello Bluetooth-styrenhet. hello kommando returnerar utdata liknande toohello följande:
 
     ```sh
     [NEW] Controller 98:4F:EE:04:1F:DF C3 raspberrypi [default]
     ```
 
-1. Ange kommandot i interaktiva bluetooth-shell **genomsökning på** att söka efter Bluetooth-enheter. Kommandot returnerar utdata som liknar följande:
+1. Hello interaktiva bluetooth Shell, ange hello kommando **genomsökning på** tooscan Bluetooth-enheter. hello kommando returnerar utdata liknande toohello följande:
 
     ```sh
     Discovery started
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: yes
     ```
 
-1. Att den SensorTag kan identifieras genom att trycka på knappen liten (grön Indikator bör flash). Hallon Pi 3 ska identifiera SensorTag-enheter:
+1. Gör hello SensorTag enheten kan upptäckas genom att trycka på hello liten knapp (hello grön Indikator bör flash). hello hallon Pi 3 ska identifiera hello SensorTag enhet:
 
     ```sh
     [NEW] Device A0:E6:F8:B5:F6:00 CC2650 SensorTag
@@ -223,19 +223,19 @@ Du måste verifiera att din hallon Pi 3 kan ansluta till SensorTag-enheten innan
     [CHG] Device A0:E6:F8:B5:F6:00 RSSI: -43
     ```
 
-    I det här exemplet ser du att MAC-adressen för SensorTag-enheten är **A0:E6:F8:B5:F6:00**.
+    I det här exemplet ser du att hello MAC-adressen för hello SensorTag enheten är **A0:E6:F8:B5:F6:00**.
 
-1. Inaktivera genomsökning genom att ange den **genomsökning av** kommando:
+1. Inaktivera genomsökning genom att ange hello **genomsökning av** kommando:
 
     ```sh
     [CHG] Controller 98:4F:EE:04:1F:DF Discovering: no
     Discovery stopped
     ```
 
-1. Ansluta till enheten SensorTag med dess MAC-adress genom att ange **ansluta \<MAC-adress\>**. Följande exempel på utdata förkortas för tydlighetens skull:
+1. Anslut tooyour SensorTag-enhet med hjälp av dess MAC-adress genom att ange **ansluta \<MAC-adress\>**. följande exempel på utdata hello förkortas för tydlighetens skull:
 
     ```sh
-    Attempting to connect to A0:E6:F8:B5:F6:00
+    Attempting tooconnect tooA0:E6:F8:B5:F6:00
     [CHG] Device A0:E6:F8:B5:F6:00 Connected: yes
     Connection successful
     [CHG] Device A0:E6:F8:B5:F6:00 UUIDs: 00001800-0000-1000-8000-00805f9b34fb
@@ -251,32 +251,32 @@ Du måste verifiera att din hallon Pi 3 kan ansluta till SensorTag-enheten innan
     [CHG] Device A0:E6:F8:B5:F6:00 Modalias: bluetooth:v000Dp0000d0110
     ```
 
-    > Du kan ange GATT-egenskaperna för enheten igen med den **listan attribut** kommando.
+    > Du kan ange hello GATT egenskaper hello enheten igen med hello **listan attribut** kommando.
 
-1. Du kan nu koppla från enheten med den **koppla från** kommandot och avsluta sedan från bluetooth shell använder den **avsluta** kommando:
+1. Du kan nu koppla från hello-enhet med hjälp av hello **koppla från** kommandot och avsluta hello bluetooth shell med hello **avsluta** kommando:
 
     ```sh
-    Attempting to disconnect from A0:E6:F8:B5:F6:00
+    Attempting toodisconnect from A0:E6:F8:B5:F6:00
     Successful disconnected
     [CHG] Device A0:E6:F8:B5:F6:00 Connected: no
     ```
 
-Du är nu redo att köra exemplet TIVERA IoT kanten på din hallon Pi 3.
+Nu är du redo toorun hello TIVERA IoT kant prov på din hallon Pi 3.
 
-## <a name="run-the-iot-edge-ble-sample"></a>Kör IoT kant Bell-exempel
+## <a name="run-hello-iot-edge-ble-sample"></a>Kör hello IoT kant TIVERA exempel
 
-Om du vill köra exemplet IoT kant ort, måste du utföra tre uppgifter:
+toorun hello IoT kant TIVERA exemplet behöver du toocomplete tre uppgifter:
 
 * Konfigurera två exempel enheter i din IoT-hubb.
 * Skapa IoT kanten på enheten hallon Pi 3.
-* Konfigurera och köra exemplet TIVERA på enheten hallon Pi 3.
+* Konfigurera och köra hello TIVERA exemplet på enheten hallon Pi 3.
 
-Vid tidpunkten som skrivs stöder IoT kant endast TIVERA moduler i gateways som körs på Linux.
+När hello skrivning stöder IoT kant endast TIVERA moduler i gateways som körs på Linux.
 
 ### <a name="configure-two-sample-devices-in-your-iot-hub"></a>Konfigurera två exempel enheter i din IoT-hubb
 
-* [Skapa en IoT-hubb] [ lnk-create-hub] i din Azure-prenumeration, måste namnet på din hubb för att slutföra den här genomgången. Om du inte har något konto kan du skapa ett [kostnadsfritt konto][lnk-free-trial] på bara några minuter.
-* Lägg till en enhet som kallas **SensorTag_01** till IoT-hubb och gjort en notering om dess id och enheten nyckel. Du kan använda den [enheten explorer eller iothub-explorer] [ lnk-explorer-tools] verktyg för att lägga till den här enheten i IoT-hubb som du skapade i föregående steg och hämta dess nyckel. Du kan mappa den här enheten till SensorTag-enheter när du konfigurerar en gateway.
+* [Skapa en IoT-hubb] [ lnk-create-hub] i din Azure-prenumeration behöver du hello namnet på din hubb toocomplete den här genomgången. Om du inte har något konto kan du skapa ett [kostnadsfritt konto][lnk-free-trial] på bara några minuter.
+* Lägg till en enhet som kallas **SensorTag_01** tooyour IoT-hubb och anteckna dess id och enheten nyckel. Du kan använda hello [enheten explorer eller iothub-explorer] [ lnk-explorer-tools] verktyg tooadd för den här enheten toohello IoT-hubb som du skapade i föregående steg i hello och tooretrieve dess nyckel. Du kan mappa enheten toohello SensorTag enheten när du konfigurerar hello gateway.
 
 ### <a name="build-azure-iot-edge-on-your-raspberry-pi-3"></a>Skapa Azure IoT kanten på din Raspberry Pi 3
 
@@ -286,29 +286,29 @@ Installera beroenden för Azure IoT kant:
 sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev
 ```
 
-Använd följande kommandon för att klona IoT kant och alla dess submodules till arbetskatalogen:
+Använd hello följande kommandon tooclone IoT kant och alla dess submodules tooyour-hemkataloger:
 
 ```sh
 cd ~
 git clone https://github.com/Azure/iot-edge.git
 ```
 
-När du har en fullständig kopia av databasen IoT kanten på din hallon Pi 3 kan du skapa den med hjälp av följande kommando från mappen som innehåller SDK:
+När du har en fullständig kopia av hello IoT kant databasen på din hallon Pi 3 kan du skapa den med hjälp av följande kommando från hello-mapp som innehåller hello SDK hello:
 
 ```sh
 cd ~/iot-edge
 ./tools/build.sh  --disable-native-remote-modules
 ```
 
-### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>Konfigurera och köra exemplet TIVERA på din hallon Pi 3
+### <a name="configure-and-run-hello-ble-sample-on-your-raspberry-pi-3"></a>Konfigurera och köra hello TIVERA prov på din hallon Pi 3
 
-För att starta och köra exemplet, måste du konfigurera varje IoT kant-modul som deltar i gatewayen. Den här konfigurationen finns i en JSON-fil och du måste konfigurera alla fem deltagande IoT kant moduler. Det finns ett exempel JSON-fil i databasen kallas **gateway\_sample.json** att du kan använda som utgångspunkt för att skapa egna konfigurationsfilen. Den här filen finns i den **src-exempel/ble_gateway** mapp i lokal kopia av databasen IoT kant.
+toobootstrap och kör hello exempel, måste du konfigurera varje IoT kant-modul som deltar i hello gateway. Den här konfigurationen finns i en JSON-fil och du måste konfigurera alla fem deltagande IoT kant moduler. Det finns ett exempel JSON-fil i hello databas kallas **gateway\_sample.json** som du kan använda som hello som startpunkt för att skapa egna konfigurationsfilen. Den här filen har hello **src-exempel/ble_gateway** mapp i lokal kopia av hello IoT kant-databasen.
 
-I följande avsnitt beskrivs hur du redigerar den här konfigurationsfilen för tabell och förutsätter att IoT kant-databasen finns i den **/home/pi/iot-edge /** mapp på din hallon Pi 3. Om databasen finns på en annan plats, justera sökvägarna i enlighet med detta.
+hello följande avsnitt beskrivs hur tooedit den här konfigurationen för hello TIVERA exempel och förutsätter att hello IoT kant databasen i hello **/home/pi/iot-edge /** mapp på din hallon Pi 3. Om hello databasen är någon annanstans, justera hello sökvägar i enlighet med detta.
 
 #### <a name="logger-configuration"></a>Loggaren konfiguration
 
-Under förutsättning att gateway-databasen finns i den **/home/pi/iot-edge /** mapp, konfigurera modulen loggaren på följande sätt:
+Under förutsättning att hello gateway-databasen finns i hello **/home/pi/iot-edge /** mapp, konfigurera hello loggaren modulen på följande sätt:
 
 ```json
 {
@@ -328,7 +328,7 @@ Under förutsättning att gateway-databasen finns i den **/home/pi/iot-edge /** 
 
 #### <a name="ble-module-configuration"></a>TIVERA Modulkonfiguration
 
-Exempelkonfiguration för enheten TIVERA förutsätter en Texas instrument SensorTag-enhet. Alla standard Bell-enheter som kan fungera som en kringutrustning GATT bör fungera, men du kan behöva uppdatera GATT karakteristiken-ID: N och data. Lägg till MAC-adressen för SensorTag-enheter:
+hello exempelkonfiguration för hello TIVERA enhet förutsätter en Texas instrument SensorTag-enhet. Alla standard Bell-enheter som kan fungera som en kringutrustning GATT bör fungera, men du måste kanske tooupdate hello GATT egenskaps-ID: N och data. Lägg till hello MAC-adressen för SensorTag-enheter:
 
 ```json
 {
@@ -387,11 +387,11 @@ Exempelkonfiguration för enheten TIVERA förutsätter en Texas instrument Senso
 }
 ```
 
-Om du inte använder en SensorTag-enhet, granska dokumentationen för enheten tabell för att avgöra om du behöver uppdatera GATT egenskaps-ID: N och datavärden.
+Om du inte använder en SensorTag-enhet, granska hello dokumentationen för din enhet toodetermine för tabell om du behöver tooupdate hello GATT egenskaps-ID: N och datavärden.
 
 #### <a name="iot-hub-module"></a>Modul för IoT-hubb
 
-Lägg till namnet på din IoT-hubb. Suffixvärdet för är vanligtvis **azure devices.net**:
+Lägg till hello namn för din IoT-hubb. Hej postsuffixvärdet är vanligtvis **azure devices.net**:
 
 ```json
 {
@@ -412,7 +412,7 @@ Lägg till namnet på din IoT-hubb. Suffixvärdet för är vanligtvis **azure de
 
 #### <a name="identity-mapping-module-configuration"></a>Identitet mappning konfiguration
 
-Lägg till MAC-adressen till enheten SensorTag och enhets-ID och nyckeln för den **SensorTag_01** enhet som du har lagt till din IoT-hubb:
+Lägg till hello MAC-adressen för din SensorTag enhet och hello enhets-ID och nyckeln för hello **SensorTag_01** enhet som du har lagt till tooyour IoT-hubb:
 
 ```json
 {
@@ -465,14 +465,14 @@ Lägg till MAC-adressen till enheten SensorTag och enhets-ID och nyckeln för de
 
 #### <a name="routing-configuration"></a>Routningskonfiguration
 
-Följande konfiguration ser följande routning mellan IoT kant moduler:
+hello följande konfigurationen garanterar hello följande routning mellan IoT kant moduler:
 
-* Den **loggaren** modulen tar emot och loggar alla meddelanden.
-* Den **SensorTag** modulen skickar meddelanden till både den **mappning** och **TIVERA skrivare** moduler.
-* Den **mappning** modulen skickar meddelanden till den **IoTHub** modulen skickas till din IoT-hubb.
-* Den **IoTHub** modulen skickar tillbaka till den **mappning** modul.
-* Den **mappning** modulen skickar meddelanden till den **BLEC2D** modul.
-* Den **BLEC2D** modulen skickar tillbaka till den **Sensor Tag** modul.
+* Hej **loggaren** modulen tar emot och loggar alla meddelanden.
+* Hej **SensorTag** modulen skickar meddelanden tooboth hello **mappning** och **TIVERA skrivare** moduler.
+* Hej **mappning** modulen skickar meddelanden toohello **IoTHub** modulen toobe skickas upp tooyour IoT-hubb.
+* Hej **IoTHub** modulen skickar tillbaka toohello **mappning** modul.
+* Hej **mappning** modulen skickar meddelanden toohello **BLEC2D** modul.
+* Hej **BLEC2D** modulen skickar tillbaka toohello **Sensor Tag** modul.
 
 ```json
 "links" : [
@@ -486,15 +486,15 @@ Följande konfiguration ser följande routning mellan IoT kant moduler:
  ]
 ```
 
-Om du vill köra exemplet skickar du sökvägen till JSON-konfigurationsfil som en parameter för den **tivera\_gateway** binär. Följande kommando förutsätter att du använder den **gateway_sample.json** konfigurationsfilen. Kör kommandot från den **iot-edge** mapp på hallon Pi:
+toorun hello exemplet pass hello sökvägen toohello JSON-konfigurationsfil som en parameter toohello **tivera\_gateway** binär. hello följande kommando förutsätter att du använder hello **gateway_sample.json** konfigurationsfilen. Kör kommandot från hello **iot-edge** mapp på hello hallon Pi:
 
 ```sh
 ./build/samples/ble_gateway/ble_gateway ./samples/ble_gateway/src/gateway_sample.json
 ```
 
-Du kan behöva trycka på knappen små på SensorTag-enhet för att göra den synlig innan du kör exemplet.
+Du kan behöva toopress hello små knappen på hello SensorTag enhet toomake den identifierbart innan du kör hello exempel.
 
-När du kör exemplet, kan du använda den [enheten explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) eller [iothub explorer](https://github.com/Azure/iothub-explorer) verktyg för att övervaka de meddelanden som IoT gräns-gatewayen vidarebefordrar från SensorTag-enheter. Till exempel kan Utforskaren iothub du övervaka meddelanden från enhet till moln med följande kommando:
+När du kör hello exemplet, kan du använda hello [enheten explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) eller hello [iothub explorer](https://github.com/Azure/iothub-explorer) verktyget toomonitor hello meddelanden hello IoT gräns-gatewayen vidarebefordrar från hello SensorTag enhet. Till exempel kan Utforskaren iothub du övervaka meddelanden från enhet till moln med hello följande kommando:
 
 ```sh
 iothub-explorer monitor-events --login "HostName={Your iot hub name}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={Your IoT Hub key}"
@@ -502,11 +502,11 @@ iothub-explorer monitor-events --login "HostName={Your iot hub name}.azure-devic
 
 ## <a name="send-cloud-to-device-messages"></a>Skicka meddelanden från moln till enhet
 
-Modulen TIVERA stöder också skicka kommandon från IoT-hubb till enheten. Du kan använda den [enheten explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) eller [iothub explorer](https://github.com/Azure/iothub-explorer) verktyg för att skicka JSON-meddelanden som gateway-modulen TIVERA vidarebefordrar in Bell-enheter.
+hello TIVERA modulen stöder också skicka kommandon från IoT-hubb toohello enhet. Du kan använda hello [enheten explorer](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) eller hello [iothub explorer](https://github.com/Azure/iothub-explorer) verktyget toosend JSON meddelanden hello TIVERA gateway modulen vidarebefordrar på toohello TIVERA enhet.
 
-Om du använder Texas instrument SensorTag-enheter kan aktivera du den röda Indikator, grön Indikator eller Summer genom att skicka kommandon från IoT-hubb. Innan du kan skicka kommandon från IoT-hubb, måste du först skicka följande JSON meddelanden i ordning. Du kan sedan skicka något av kommandona för att aktivera ljus eller Summer.
+Om du använder hello Texas instrument SensorTag-enheter kan aktivera du hello röd Indikator eller grön Indikator Summer genom att skicka kommandon från IoT-hubb. Innan du skickar kommandon från IoT-hubb först skicka hello följande två JSON-meddelanden i ordning. Du kan sedan skicka någon hello kommandon tooturn på hello ljus eller Summer.
 
-1. Återställa alla indikatorer och Summer (inaktivera dem):
+1. Återställ alla indikatorer och hello Summer (inaktivera dem):
 
     ```json
     {
@@ -526,9 +526,9 @@ Om du använder Texas instrument SensorTag-enheter kan aktivera du den röda Ind
     }
     ```
 
-Nu kan du skicka något av följande kommandon för att aktivera ljus eller Summer på SensorTag-enheter:
+Nu kan du skicka något av följande kommandon tooturn på hello ljus eller Summer på hello SensorTag enhet hello:
 
-* Aktivera röd Indikator:
+* Aktivera hello röd Indikator:
 
     ```json
     {
@@ -538,7 +538,7 @@ Nu kan du skicka något av följande kommandon för att aktivera ljus eller Summ
     }
     ```
 
-* Aktivera grön Indikator:
+* Aktivera hello grön Indikator:
 
     ```json
     {
@@ -548,7 +548,7 @@ Nu kan du skicka något av följande kommandon för att aktivera ljus eller Summ
     }
     ```
 
-* Aktivera Summer:
+* Aktivera hello Summer:
 
     ```json
     {
@@ -560,11 +560,11 @@ Nu kan du skicka något av följande kommandon för att aktivera ljus eller Summ
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill få större kunskap om IoT kant och experimentera med vissa kodexempel finns följande kurser för utvecklare och resurser:
+Om du vill toogain en större kunskap om IoT kant och experimentera med vissa kodexempel finns hello följande developer självstudier och resurser:
 
 * [Azure IoT kant][lnk-sdk]
 
-Om du vill utforska ytterligare funktionerna i IoT-hubb, se:
+toofurther utforska hello funktionerna i IoT Hub, se:
 
 * [Utvecklarhandbok för IoT-hubb][lnk-devguide]
 

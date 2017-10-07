@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI-skript Sample - skapa en webbapp med kontinuerlig distribution från GitHub | Microsoft Docs"
+title: "aaaAzure CLI skriptexempel - skapa en webbapp med kontinuerlig distribution från GitHub | Microsoft Docs"
 description: "Azure CLI-skript Sample - skapa en webbapp med kontinuerlig distribution från GitHub"
 services: app-service\web
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/19/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: a12085a7a8146c22d6b079381542d4fe3a8e6e87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6adb06a35ceea8ea64723c9887c25c50f046e280
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>Skapa en webbapp med kontinuerlig distribution från GitHub
 
@@ -33,17 +33,17 @@ Det här exempelskriptet skapar en webbapp i App Service med dess relaterade res
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-azurecli-interactive[huvudsakliga](../../../cli_scripts/app-service/deploy-github-continuous/deploy-github-continuous.sh?highlight=3-4 "skapa ett webbprogram med kontinuerlig distribution från GitHub")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-github-continuous/deploy-github-continuous.sh?highlight=3-4 "Create a web app with continuous deployment from GitHub")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
@@ -55,6 +55,6 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
+Mer information om hello Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
 
-Ytterligare App Service CLI skriptexempel finns i den [dokumentation för Azure App Service](../app-service-cli-samples.md).
+Ytterligare App Service CLI skriptexempel finns i hello [dokumentation för Azure App Service](../app-service-cli-samples.md).

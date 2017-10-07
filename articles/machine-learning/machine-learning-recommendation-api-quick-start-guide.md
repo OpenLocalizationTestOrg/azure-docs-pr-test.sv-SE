@@ -16,64 +16,64 @@ ms.date: 03/31/2017
 ms.author: luisca
 ROBOTS: NOINDEX
 redirect_url: machine-learning-datamarket-deprecation
-redirect_document_id: TRUE
-ms.openlocfilehash: 0a9d0b6aa1ef734a857ecc16777ba6250909b38d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+redirect_document_id: True
+ms.openlocfilehash: d8f98e85f723a1104cb169b26d797934140979f1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="quick-start-guide-for-the-machine-learning-recommendations-api-version-1"></a>Snabbstartsguide för Machine Learning rekommendationer API (version 1)
+# <a name="quick-start-guide-for-hello-machine-learning-recommendations-api-version-1"></a>Snabbstartsguide för hello Machine Learning rekommendationer API (version 1)
 
 > [!NOTE]
-> Du bör börja använda den [kognitiva rekommendationer API-tjänsten](https://www.microsoft.com/cognitive-services/recommendations-api) i stället för den här versionen. Kognitiva Rekommendationstjänsten ersätter den här tjänsten och de nya funktionerna det kommer fram. Den har nya funktioner som batchbearbetning support, bättre API Explorer, en tydligare API underlag, mer konsekvent signup/fakturerings experience och så vidare.
+> Du bör börja använda hello [kognitiva rekommendationer API-tjänsten](https://www.microsoft.com/cognitive-services/recommendations-api) i stället för den här versionen. hello kognitiva Rekommendationstjänsten ersätter den här tjänsten och alla nya funktioner för hello det kommer fram. Den har nya funktioner som batchbearbetning support, bättre API Explorer, en tydligare API underlag, mer konsekvent signup/fakturerings experience och så vidare.
 >
-> Lär dig mer om [migrera till den nya kognitiva tjänsten](http://aka.ms/recomigrate).
+> Lär dig mer om [migrera toohello nya kognitiva tjänsten](http://aka.ms/recomigrate).
 > 
 > 
 
-Det här dokumentet beskriver hur du integrerar din tjänst eller ditt program att använda Microsoft Azure Machine Learning rekommendationer. Du hittar mer information på rekommendationer API i den [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/MachineLearningAPIs/Recommendations-2).
+Det här dokumentet beskriver hur tooonboard tjänst- eller toouse Microsoft Azure Machine Learning rekommendationer. Du hittar mer information på hello rekommendationer API i hello [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/MachineLearningAPIs/Recommendations-2).
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 ## <a name="general-overview"></a>Allmän översikt
-Om du vill använda Azure Machine Learning rekommendationer, måste du vidta följande åtgärder:
+toouse Azure Machine Learning rekommendationer, behöver du tootake hello följande steg:
 
-* Skapa en modell - en modell är en behållare för användningsdata och katalogdata rekommendation modellen.
-* Importera data catalog - en katalog innehåller information om metadata på objekt. 
+* Skapa en modell - en modell är en behållare för dina användningsdata och katalogdata hello rekommendation modellen.
+* Importera data catalog - en katalog innehåller information om metadata på hello-objekt. 
 * Importera data om programvaruanvändning - användningsdata kan överföras i ett av två sätt (eller båda):
-  * Genom att överföra en fil som innehåller användningsdata.
+  * Genom att överföra en fil som innehåller hello användningsdata.
   * Genom att skicka data förvärv händelser.
-    Vanligtvis kan du överföra en fil för användning för att kunna skapa en första rekommendationen model (bootstrap) och använda den tills systemet samlar in data med hjälp av förvärv dataformatet.
-* Skapa en rekommendation modell – det här är en asynkron åtgärd där systemet rekommendation tar alla användningsdata och skapar en rekommendation modell. Den här åtgärden kan ta några minuter eller flera timmar beroende på storleken på data och skapa konfigurationsparametrar. När utlöser genereringen kan får du ett build-ID. Du kan använda den för att kontrollera när build-processen har avslutats innan du börjar använda rekommendationer.
+    Vanligtvis överför en fil för användning i ordning toobe kan toocreate en första rekommendationen model (bootstrap) och använda den förrän hello system samlar in tillräckligt med data med hjälp av hello förvärv dataformat.
+* Skapa en rekommendation modell – det här är en asynkron åtgärd i vilka hello rekommendation system tar alla hello användningsdata och skapar en rekommendation modell. Den här åtgärden kan ta flera minuter eller flera timmar beroende på hello storleken på hello data och hello bygger konfigurationsparametrar. När utlöser hello build kan får du ett build-ID. Använd detta toocheck när hello build-processen har avslutats innan du startar tooconsume rekommendationer.
 * Använda rekommendationer - Get rekommendationer för ett specifikt objekt eller en lista med objekt.
 
-Alla ovanstående görs via Azure Machine Learning rekommendationer API.  Du kan hämta ett exempelprogram som implementerar var och en av de här stegen från den [samt gallery.](http://1drv.ms/1xeO2F3)
+Alla hello stegen ovan görs via hello Azure Machine Learning rekommendationer API.  Du kan hämta ett exempelprogram som implementerar var och en av de här stegen från hello [samt gallery.](http://1drv.ms/1xeO2F3)
 
 ## <a name="limitations"></a>Begränsningar
-* Det maximala antalet modeller per prenumeration är 10.
-* Det maximala antalet objekt som kan innehålla en katalog är 100 000.
-* Det maximala antalet punkter för användning som hålls är ~ 5,000,000. Den äldsta tas bort om nya överföras eller rapporteras.
-* Den maximala storleken för data som kan skickas i POST (till exempel importera katalogdata import användningsdata) är 200MB.
-* Antal transaktioner per sekund för en rekommendation modell-version som inte är aktiv är ~ 2TPS. En rekommendation modell-version som är aktiv kan innehålla till 20TPS.
+* hello maximala antalet modeller per prenumeration är 10.
+* hello maximalt antal objekt som kan innehålla en katalog är 100 000.
+* hello maxantalet återställningspunkter för användning som hålls är ~ 5,000,000. hello äldsta tas bort om nya överföras eller rapporteras.
+* hello maximala storleken på data som kan skickas i POST (till exempel importera katalogdata import användningsdata) är 200MB.
+* hello antalet transaktioner per sekund för en rekommendation modell-version som inte är aktiv är ~ 2TPS. En rekommendation modell-version som är aktiv kan innehålla upp too20TPS.
 
 ## <a name="integration"></a>Integrering
 ### <a name="authentication"></a>Autentisering
-Microsoft Azure Marketplace stöder antingen grundläggande eller OAuth-autentiseringsmetoden. Du lätt kan hitta kontot nycklar genom att gå till nycklarna i marketplace under [dina kontoinställningar](https://datamarket.azure.com/account/keys). 
+Microsoft Azure Marketplace stöder antingen hello grundläggande eller OAuth-autentiseringsmetoden. Du lätt kan hitta hello nycklar genom att gå toohello nycklar i hello marketplace under [dina kontoinställningar](https://datamarket.azure.com/account/keys). 
 
 #### <a name="basic-authentication"></a>Grundläggande autentisering
-Lägg till Authorization-huvud:
+Lägg till hello Authorization-huvud:
 
     Authorization: Basic <creds>
 
     Where <creds> = ConvertToBase64("AccountKey:" + yourAccountKey);  
 
-Omvandla till Base64 (C#)
+Konvertera tooBase64 (C#)
 
     var bytes = Encoding.UTF8.GetBytes("AccountKey:" + yourAccountKey);
     var creds = Convert.ToBase64String(bytes);
 
-Omvandla till Base64 (JavaScript)
+Konvertera tooBase64 (JavaScript)
 
     var creds = window.btoa("AccountKey" + ":" + yourAccountKey);
 
@@ -81,15 +81,15 @@ Omvandla till Base64 (JavaScript)
 
 
 ### <a name="service-uri"></a>URI för tjänsten
-Tjänstroten URI för API: er för Azure Machine Learning rekommendationer är [här.](https://api.datamarket.azure.com/amla/recommendations/v2/)
+hello service rot URI för hello Azure Machine Learning rekommendationer API: er är [här.](https://api.datamarket.azure.com/amla/recommendations/v2/)
 
-Fullständig URI-tjänsten uttrycks med hjälp av element i OData-specifikationen.
+fullständig hello-tjänstens URI uttrycks med hjälp av element i hello OData-specifikationen.
 
 ### <a name="api-version"></a>API-version
-Varje API-anrop ska ha frågeparameter kallas apiVersion som ska vara inställd på ”1.0” i slutet.
+Varje API-anrop har, i slutet av hello frågeparameter kallas apiVersion som ska anges för ”1.0”.
 
 ### <a name="ids-are-case-sensitive"></a>ID: N är skiftlägeskänsliga
-ID: N som returneras av API: er, är skiftlägeskänsliga och kan användas som sådana när de skickas som parametrar i efterföljande API-anrop. Till exempel är modell-ID: N och katalog-ID: N skiftlägeskänsliga.
+ID: N som returneras av någon av hello API: er, är skiftlägeskänsliga och kan användas som sådana när de skickas som parametrar i efterföljande API-anrop. Till exempel är modell-ID: N och katalog-ID: N skiftlägeskänsliga.
 
 ### <a name="create-a-model"></a>Skapa en modell
 Skapa en begäran om ”skapa modellen”:
@@ -109,8 +109,8 @@ Skapa en begäran om ”skapa modellen”:
 
 HTTP-statuskod: 200
 
-* `feed/entry/content/properties/id`-Innehåller modell-ID.
-  Observera att det modell-ID är skiftlägeskänsliga.
+* `feed/entry/content/properties/id`-Innehåller hello modell-ID.
+  Observera att hello modell-ID är skiftlägeskänsliga.
 
 OData-XML
 
@@ -144,7 +144,7 @@ OData-XML
 
 
 ### <a name="import-catalog-data"></a>Importera data catalog
-Om du överför flera katalogfiler till samma modell med flera anrop infogas vi bara nya katalogobjekt. Befintliga objekt förblir med de ursprungliga värdena.
+Om du överför flera katalog filer toohello samma modell med flera anrop infogas vi bara hello nya katalogobjekt. Befintliga objekt förblir med hello ursprungliga värden.
 
 | HTTP-metoden | URI: N |
 |:--- |:--- |
@@ -152,18 +152,18 @@ Om du överför flera katalogfiler till samma modell med flera anrop infogas vi 
 
 | Parameternamn | Giltiga värden |
 |:--- |:--- |
-| %{ModelID/ |Unik identifierare för modellen (skiftlägeskänsligt) |
-| filnamn |Textrepresentation identifierare för katalogen.<br>Endast bokstäver (A-Z, a-z), siffror (0-9), bindestreck (-) och understreck (_) är tillåtna.<br>Maxlängd: 50 |
+| %{ModelID/ |Unik identifierare för hello modellen (skiftlägeskänsligt) |
+| filnamn |Textrepresentation identifierare för hello katalog.<br>Endast bokstäver (A-Z, a-z), siffror (0-9), bindestreck (-) och understreck (_) är tillåtna.<br>Maxlängd: 50 |
 | apiVersion |1.0 |
 |  | |
-| Begärandetext |Katalogen data. Format:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>Namn</th><th>Obligatorisk</th><th>Typ</th><th>Beskrivning</th></tr><tr><td>Objekt-Id</td><td>Ja</td><td>Längden på alfanumeriska, max 50</td><td>Unik identifierare för ett objekt</td></tr><tr><td>Objektnamnet</td><td>Ja</td><td>Längden på alfanumeriska, max 255</td><td>Objektnamnet</td></tr><tr><td>Objektet kategori</td><td>Ja</td><td>Längden på alfanumeriska, max 255</td><td>Kategorin som det här objektet tillhör (till exempel matlagning Books Drama...)</td></tr><tr><td>Beskrivning</td><td>Nej</td><td>Alfanumeriska, max längd 4000</td><td>Beskrivning av det här objektet</td></tr></table><br>Maximal filstorlek är 200MB.<br><br>Exempel:<br><code>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,The Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</code> |
+| Begärandetext |Katalogen data. Format:<br>`<Item Id>,<Item Name>,<Item Category>[,<description>]`<br><br><table><tr><th>Namn</th><th>Obligatorisk</th><th>Typ</th><th>Beskrivning</th></tr><tr><td>Objekt-Id</td><td>Ja</td><td>Längden på alfanumeriska, max 50</td><td>Unik identifierare för ett objekt</td></tr><tr><td>Objektnamnet</td><td>Ja</td><td>Längden på alfanumeriska, max 255</td><td>Objektnamnet</td></tr><tr><td>Objektet kategori</td><td>Ja</td><td>Längden på alfanumeriska, max 255</td><td>Kategori toowhich det här objektet tillhör (till exempel matlagning Books Drama...)</td></tr><tr><td>Beskrivning</td><td>Nej</td><td>Alfanumeriska, max längd 4000</td><td>Beskrivning av det här objektet</td></tr></table><br>Maximal filstorlek är 200MB.<br><br>Exempel:<br><code>2406e770-769c-4189-89de-1c9283f93a96,Clara Callan,Book<br>21bf8088-b6c0-4509-870c-e1c7ac78304a,hello Forgetting Room: A Fiction (Byzantium Book),Book<br>3bb5cb44-d143-4bdd-a55c-443964bf4b23,Spadework,Book<br>552a1940-21e4-4399-82bb-594b46d7ed54,Restraint of Beasts,Book</code> |
 
 **Svaret**:
 
 HTTP-statuskod: 200
 
 * `Feed\entry\content\properties\LineCount`-Antal rader som accepteras.
-* `Feed\entry\content\properties\ErrorCount`-Antal rader som inte infogades på grund av ett fel.
+* `Feed\entry\content\properties\ErrorCount`-Antal rader som inte infogades på grund av tooan fel.
 
 OData-XML
 
@@ -191,7 +191,7 @@ OData-XML
 
 ### <a name="import-usage-data"></a>Importera data om programvaruanvändning
 #### <a name="uploading-a-file"></a>Överför en fil
-Det här avsnittet visar hur du överför användningsdata med hjälp av en fil. Du kan anropa denna API flera gånger med användningsdata. Alla användningsdata sparas för alla samtal.
+Det här avsnittet visas hur tooupload användningsdata med hjälp av en fil. Du kan anropa denna API flera gånger med användningsdata. Alla användningsdata sparas för alla samtal.
 
 | HTTP-metoden | URI: N |
 |:--- |:--- |
@@ -199,18 +199,18 @@ Det här avsnittet visar hur du överför användningsdata med hjälp av en fil.
 
 | Parameternamn | Giltiga värden |
 |:--- |:--- |
-| %{ModelID/ |Unik identifierare för modellen (skiftlägeskänsligt) |
-| filnamn |Textrepresentation identifierare för katalogen.<br>Endast bokstäver (A-Z, a-z), siffror (0-9), bindestreck (-) och understreck (_) är tillåtna.<br>Maxlängd: 50 |
+| %{ModelID/ |Unik identifierare för hello modellen (skiftlägeskänsligt) |
+| filnamn |Textrepresentation identifierare för hello katalog.<br>Endast bokstäver (A-Z, a-z), siffror (0-9), bindestreck (-) och understreck (_) är tillåtna.<br>Maxlängd: 50 |
 | apiVersion |1.0 |
 |  | |
-| Begärandetext |Användningsdata. Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Namn</th><th>Obligatorisk</th><th>Typ</th><th>Beskrivning</th></tr><tr><td>Användar-Id</td><td>Ja</td><td>Alfanumeriskt</td><td>Unik identifierare för en användare</td></tr><tr><td>Objekt-Id</td><td>Ja</td><td>Längden på alfanumeriska, max 50</td><td>Unik identifierare för ett objekt</td></tr><tr><td>Tid</td><td>Nej</td><td>Datum i format: ÅÅÅÅ/MM/ddTHH (till exempel 2013/06/20T10:00:00)</td><td>Tid för data</td></tr><tr><td>Händelse</td><td>Nej, om tillhandahålls måste också sätta datum</td><td>Något av följande:<br>• Klicka på<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Köp</td><td></td></tr></table><br>Maximal filstorlek är 200MB.<br><br>Exempel:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
+| Begärandetext |Användningsdata. Format:<br>`<User Id>,<Item Id>[,<Time>,<Event>]`<br><br><table><tr><th>Namn</th><th>Obligatorisk</th><th>Typ</th><th>Beskrivning</th></tr><tr><td>Användar-Id</td><td>Ja</td><td>Alfanumeriskt</td><td>Unik identifierare för en användare</td></tr><tr><td>Objekt-Id</td><td>Ja</td><td>Längden på alfanumeriska, max 50</td><td>Unik identifierare för ett objekt</td></tr><tr><td>Tid</td><td>Nej</td><td>Datum i format: ÅÅÅÅ/MM/ddTHH (till exempel 2013/06/20T10:00:00)</td><td>Tid för data</td></tr><tr><td>Händelse</td><td>Nej, om tillhandahålls måste också sätta datum</td><td>En av hello följande:<br>• Klicka på<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Köp</td><td></td></tr></table><br>Maximal filstorlek är 200MB.<br><br>Exempel:<br><pre>149452,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>6360,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>50321,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>71285,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>224450,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>236645,1b3d95e2-84e4-414c-bb38-be9cf461c347<br>107951,1b3d95e2-84e4-414c-bb38-be9cf461c347</pre> |
 
 **Svaret**:
 
 HTTP-statuskod: 200
 
 * `Feed\entry\content\properties\LineCount`-Antal rader som accepteras.
-* `Feed\entry\content\properties\ErrorCount`-Antal rader som inte infogades på grund av ett fel.
+* `Feed\entry\content\properties\ErrorCount`-Antal rader som inte infogades på grund av tooan fel.
 * `Feed\entry\content\properties\FileId`-Filen identifierare.
 
 OData-XML
@@ -239,7 +239,7 @@ OData-XML
 
 
 #### <a name="using-data-acquisition"></a>Med hjälp av datainsamling
-Det här avsnittet visar hur du skickar händelser i realtid till Azure Machine Learning rekommendationer vanligtvis från webbplatsen.
+Det här avsnittet visar hur toosend händelser i real time tooAzure Machine Learning rekommendationer, vanligen från din webbplats.
 
 | HTTP-metoden | URI: N |
 |:--- |:--- |
@@ -249,7 +249,7 @@ Det här avsnittet visar hur du skickar händelser i realtid till Azure Machine 
 |:--- |:--- |
 | apiVersion |1.0 |
 |  | |
-| Begärandetexten |Händelsen inmatning för varje händelse som du vill skicka. Du bör skicka för samma användare eller webbläsare session samma ID i fältet sessions-ID. (Se exemplet för händelsen nedan.) |
+| Begärandetexten |Händelsen inmatning för varje händelse som du vill toosend. Du bör skicka för hello samma användare eller webbläsare session hello samma ID i hello sessions-ID-fältet. (Se exemplet för händelsen nedan.) |
 
 * Händelse 'Klickar du på ”exempel:
   
@@ -345,8 +345,8 @@ Det här avsnittet visar hur du skickar händelser i realtid till Azure Machine 
 
 | Parameternamn | Giltiga värden |
 |:--- |:--- |
-| %{ModelID/ |Unik identifierare för modellen (skiftlägeskänsligt) |
-| userDescription |Textrepresentation identifierare för katalogen. Observera att om du använder lagringsutrymmen du koda den med % 20 i stället. Finns i exemplet ovan.<br>Maxlängd: 50 |
+| %{ModelID/ |Unik identifierare för hello modellen (skiftlägeskänsligt) |
+| userDescription |Textrepresentation identifierare för hello katalog. Observera att om du använder lagringsutrymmen du koda den med % 20 i stället. Finns i exemplet ovan.<br>Maxlängd: 50 |
 | apiVersion |1.0 |
 |  | |
 | Begärandetext |INGEN |
@@ -355,9 +355,9 @@ Det här avsnittet visar hur du skickar händelser i realtid till Azure Machine 
 
 HTTP-statuskod: 200
 
-Detta är en asynkron API. Du får ett build-ID som en respons. Om du vill veta när versionen har avslutats, bör du anropa API för ”hämta bygger Status för en modell” och leta upp den här build-ID i svaret. Observera att en version kan ta från minuter till timmar, beroende på storleken på data.
+Detta är en asynkron API. Du får ett build-ID som en respons. tooknow när hello build har slutförts ska du anropa hello ”hämta bygger Status för en modell” API och leta upp det skapa ID hello svar. Observera att en version kan ta från toohours minuter beroende på hello storleken på hello data.
 
-Du kan inte använda rekommendationer till build-versionen slutar.
+Du kan inte använda rekommendationer till hello skapa avslutas.
 
 Giltig build-status:
 
@@ -369,7 +369,7 @@ Giltig build-status:
 * Annullerat – avbröts skapa.
 * Om du avbryter – Build avbryts.
 
-Observera att build-ID: T finns på följande sökväg:`Feed\entry\content\properties\Id`
+Observera att hello build ID finns under hello följande sökväg:`Feed\entry\content\properties\Id`
 
 OData-XML
 
@@ -417,29 +417,29 @@ OData-XML
 
 | Parameternamn | Giltiga värden |
 |:--- |:--- |
-| %{ModelID/ |Unik identifierare för modellen (skiftlägeskänsligt) |
-| onlyLastBuild |Anger om du vill returnera alla build-historik för modellen eller bara statusen för den senaste versionen. |
+| %{ModelID/ |Unik identifierare för hello modellen (skiftlägeskänsligt) |
+| onlyLastBuild |Anger om alla hello tooreturn skapa historik över hello modell eller endast hello status hello den senaste versionen. |
 | apiVersion |1.0 |
 
 **Svaret**:
 
 HTTP-statuskod: 200
 
-Svaret innehåller en post per version. Varje post innehåller följande information:
+hello svaret innehåller en post per version. Varje post innehåller hello följande data:
 
-* `feed/entry/content/properties/UserName`– Namnet på användaren.
-* `feed/entry/content/properties/ModelName`– Namnet på modellen.
+* `feed/entry/content/properties/UserName`– Namnet på hello användare.
+* `feed/entry/content/properties/ModelName`– Namnet på hello modell.
 * `feed/entry/content/properties/ModelId`– Modell Unik identifierare.
-* `feed/entry/content/properties/IsDeployed`– Om versionen distribueras (kallas även aktiva build).
+* `feed/entry/content/properties/IsDeployed`– Om hello build distribueras (kallas även aktiva build).
 * `feed/entry/content/properties/BuildId`– Skapa Unik identifierare.
-* `feed/entry/content/properties/BuildType`-Typen av versionen.
-* `feed/entry/content/properties/Status`– Skapa status. Kan vara något av följande: fel, skapa, i kö, Canceling, Avbruten, lyckades
-* `feed/entry/content/properties/StatusMessage`– Detaljerad statusmeddelande (gäller endast på vissa tillstånd).
+* `feed/entry/content/properties/BuildType`-Typen av hello build.
+* `feed/entry/content/properties/Status`– Skapa status. Kan vara något av följande hello: fel, skapa, i kö, Canceling, Avbruten, lyckades
+* `feed/entry/content/properties/StatusMessage`– Detaljerad statusmeddelande (gäller endast toospecific tillstånd).
 * `feed/entry/content/properties/Progress`– Skapa förlopp (%).
 * `feed/entry/content/properties/StartTime`– Skapa starttid.
 * `feed/entry/content/properties/EndTime`– Skapa sluttid.
 * `feed/entry/content/properties/ExecutionTime`– Skapa varaktighet.
-* `feed/entry/content/properties/ProgressStep`– Information om det aktuella steget som en build pågår.
+* `feed/entry/content/properties/ProgressStep`– Information om hello aktuell etapp som en build pågår.
 
 Giltig build-status:
 
@@ -453,7 +453,7 @@ Giltig build-status:
 
 Giltiga värden för build-typ:
 
-* Rangordning - skapa rang. (För rang skapa information, se dokumentet ”Machine Learning rekommendation API-dokumentation”)
+* Rangordning - skapa rang. (För rang skapa information, se toohello ”Machine Learning rekommendation API-dokumentation” dokumentet.)
 * Rekommendation - rekommendation build.
 * Fbt - köpt ofta tillsammans build.
 
@@ -500,8 +500,8 @@ OData-XML
 
 | Parameternamn | Giltiga värden |
 |:--- |:--- |
-| %{ModelID/ |Unik identifierare för modellen (skiftlägeskänsligt) |
-| ItemId |Kommaavgränsad lista över objekt att rekommenderar för.<br>Maxlängd: 1024 |
+| %{ModelID/ |Unik identifierare för hello modellen (skiftlägeskänsligt) |
+| ItemId |Kommaavgränsad lista över hello objekt toorecommend för.<br>Maxlängd: 1024 |
 | numberOfResults |Antalet nödvändiga resultat |
 | includeMetatadata |Framtida användning alltid false |
 | apiVersion |1.0 |
@@ -510,16 +510,16 @@ OData-XML
 
 HTTP-statuskod: 200
 
-Svaret innehåller en post per rekommenderade objekt. Varje post innehåller följande information:
+hello svaret innehåller en post per rekommenderade objekt. Varje post innehåller hello följande data:
 
 * `Feed\entry\content\properties\Id`-Rekommenderade objekt-ID.
-* `Feed\entry\content\properties\Name`-Namnet på objektet.
-* `Feed\entry\content\properties\Rating`-Klassificering av rekommendation. högre nummer innebär högre tillförlitlighet.
+* `Feed\entry\content\properties\Name`-Namnet på hello-objektet.
+* `Feed\entry\content\properties\Rating`-Klassificering av hello rekommendation. högre nummer innebär högre tillförlitlighet.
 * `Feed\entry\content\properties\Reasoning`-Rekommendation motivationen (till exempel rekommendation förklaringar).
 
 OData-XML
 
-Svaret exemplet nedan innehåller 10 rekommenderade objekt:
+Hej exempelsvar nedan innehåller 10 rekommenderade objekt:
 
     <feed xmlns:base="https://api.datamarket.azure.com/Data.ashx/amla/recommendations/v2/ItemRecommend" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://www.w3.org/2005/Atom">
       <title type="text" />
@@ -671,10 +671,10 @@ Svaret exemplet nedan innehåller 10 rekommenderade objekt:
     </feed>
 
 ### <a name="update-model"></a>Uppdatera modellen
-Du kan uppdatera modellbeskrivning eller aktiva build-ID.
-*Aktiva build-ID* -varje build för varje modell har ett build-ID. Aktiva build-ID är den första lyckade versionen av varje ny modell. När du har en aktiv build-ID och du göra ytterligare skapar för samma modellen måste du uttryckligen anges som standard build-ID om du vill. När du använder rekommendationer om du inte anger build-ID som du vill använda, används standardvärdet automatiskt.
+Du kan uppdatera hello beskrivning eller hello active build-ID.
+*Aktiva build-ID* -varje build för varje modell har ett build-ID. hello active build-ID är hello första lyckade version av varje ny modell. När du har en aktiv build-ID och du göra ytterligare versioner för hello samma modell som du behöver tooexplicitly ange den som hello standard skapa ID om du vill. När du använder rekommendationer om du inte anger hello build-ID som du vill toouse hello-standard som ska användas automatiskt.
 
-Den här mekanismen gör att du - när du har en rekommendation modell i produktionen – för att skapa nya modeller och testa dem innan du höjer upp dem till produktionen.
+Den här mekanismen gör att du - när du har en rekommendation modell i produktionen, nya modeller för toobuild och testa dem innan du höjer upp dem tooproduction.
 
 | HTTP-metoden | URI: N |
 |:--- |:--- |
@@ -682,10 +682,10 @@ Den här mekanismen gör att du - när du har en rekommendation modell i produkt
 
 | Parameternamn | Giltiga värden |
 |:--- |:--- |
-| id |Unik identifierare för modellen (skiftlägeskänsligt) |
+| id |Unik identifierare för hello modellen (skiftlägeskänsligt) |
 | apiVersion |1.0 |
 |  | |
-| Begärandetext |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>Observera att XML-taggarna beskrivning och ActiveBuildId är valfria. Om du inte vill ange beskrivning eller ActiveBuildId bort hela-taggen. |
+| Begärandetext |`<ModelUpdateParams xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">`<br>`   <Description>New Description</Description>`<br>`          <ActiveBuildId>-1</ActiveBuildId>`<br>`</ModelUpdateParams>`<br><br>Observera att hello XML taggar beskrivning och ActiveBuildId är valfria. Om du inte vill att tooset beskrivning eller ActiveBuildId bort hela hello-taggen. |
 
 **Svaret**:
 
@@ -703,5 +703,5 @@ OData-XML
     </feed>
 
 ## <a name="legal"></a>Juridisk information
-Detta dokument tillhandahålls ”som-är”. Information och åsikter som uttrycks i detta dokument, inklusive Webbadresser och andra webbplatsreferenser, kan ändras utan föregående meddelande. Vissa exempel som beskrivs häri tillhandahålls enbart som illustration och är fiktiva. Ingen verklig associering eller koppling är avsedd eller underförstådd. Det här dokumentet ger dig inga juridiska rättigheter till någon immateriell egendom i någon Microsoft-produkt. Du får kopiera och använda det här dokumentet som intern referens. © 2014 Microsoft. Med ensamrätt. 
+Detta dokument tillhandahålls ”som-är”. Information och åsikter som uttrycks i detta dokument, inklusive Webbadresser och andra webbplatsreferenser, kan ändras utan föregående meddelande. Vissa exempel som beskrivs häri tillhandahålls enbart som illustration och är fiktiva. Ingen verklig associering eller koppling är avsedd eller underförstådd. Det här dokumentet ger dig inga juridiska rättigheter tooany immateriell egendom i någon Microsoft-produkt. Du får kopiera och använda det här dokumentet som intern referens. © 2014 Microsoft. Med ensamrätt. 
 

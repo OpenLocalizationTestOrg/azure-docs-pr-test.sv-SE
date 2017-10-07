@@ -1,6 +1,6 @@
 ---
-title: "Använda Tez-Gränssnittet med Windows-baserade HDInsight - Azure | Microsoft Docs"
-description: "Lär dig hur du använder Tez-UI för att felsöka Tez-jobb på Windows-baserade HDInsight HDInsight."
+title: aaaUse Tez UI med Windows-baserade HDInsight - Azure | Microsoft Docs
+description: "Lär dig hur toouse hello Tez UI toodebug Tez jobb på Windows-baserade HDInsight HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,130 +15,130 @@ ms.workload: big-data
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3889fa1c3523eb0330cbe3b7640fd8590a5ceadf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7ae21242ee1f8dc34a8501bed1ca995480885540
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Använd Tez-UI för att felsöka Tez-jobb på Windows-baserade HDInsight
-Tez UI är en webbsida som kan användas för att förstå och felsöka jobb som använder Tez som motorn för körning på Windows-baserade HDInsight-kluster. Tez UI kan du visualisera jobbet som ett diagram över anslutna objekt, detaljer om varje objekt, och hämta statistik och loggningsinformation.
+# <a name="use-hello-tez-ui-toodebug-tez-jobs-on-windows-based-hdinsight"></a>Använda hello Tez UI toodebug Tez jobb på Windows-baserade HDInsight
+Hej Tez UI är en webbsida som kan använda toounderstand och felsöka jobb som använder Tez som motorn för körning av hello på Windows-baserade HDInsight-kluster. Hej Tez UI kan toovisualize hello jobb som ett diagram över anslutna objekt detaljer om varje objekt och hämta statistik och loggningsinformation.
 
 > [!IMPORTANT]
-> Stegen i det här dokumentet kräver ett HDInsight-kluster som använder Windows. Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> hello stegen i det här dokumentet kräver ett HDInsight-kluster som använder Windows. Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="prerequisites"></a>Krav
 * Ett Windows-baserade HDInsight-kluster. Anvisningar om hur du skapar ett nytt kluster finns [komma igång med Windows-baserade HDInsight](hdinsight-hadoop-tutorial-get-started-windows.md).
 
   > [!IMPORTANT]
-  > Tez UI är bara tillgänglig på Windows-baserade HDInsight-kluster som skapas efter den 8 februari 2016.
+  > Hej Tez UI är bara tillgängligt på Windows-baserade HDInsight-kluster som skapas efter den 8 februari 2016.
   >
   >
 * En Windows-baserade fjärrskrivbordsklienten.
 
 ## <a name="understanding-tez"></a>Förstå Tez
-Tez är ett utökningsbart ramverk för databearbetning i Hadoop och som ger högre hastigheter än traditionella MapReduce-bearbetning. För Windows-baserade HDInsight-kluster är det en valfri motor som du kan aktivera för Hive med hjälp av följande kommando som en del av Hive-fråga:
+Tez är ett utökningsbart ramverk för databearbetning i Hadoop och som ger högre hastigheter än traditionella MapReduce-bearbetning. För Windows-baserade HDInsight-kluster är det en valfri motor som du kan aktivera för Hive med hjälp av följande kommando som en del av Hive-fråga hello:
 
     set hive.execution.engine=tez;
 
-När arbetet skickas till Tez skapar en dirigeras acykliska diagram (DAG) som beskriver ordningen för körningen av åtgärder som krävs av jobbet. Enskilda åtgärder kallas formhörnen och köra en del av en övergripande jobbet. Faktiska körningen av det arbete som beskrivs av en nod kallas för en aktivitet och kan distribueras över flera noder i klustret.
+När arbetet är skickade tooTez, skapar en dirigeras acykliska diagram (DAG) som beskriver hello ordningen för körningen av hello-åtgärder som krävs av hello jobb. Enskilda åtgärder kallas formhörnen och köra en typ av hello övergripande jobb. hello faktiska utförande av hello beskrivs av en nod kallas för en aktivitet och kan distribueras över flera noder i klustret hello.
 
-### <a name="understanding-the-tez-ui"></a>Förstå Tez-Gränssnittet
-Tez UI är en webbsida ger information om processer som körs eller har kördes tidigare med Tez. Du kan visa den DAG som genererats av Tez, hur den distribueras till kluster, räknare, till exempel minne som används av uppgifter och formhörnen och information om felet. Den kan erbjuda användbar information i följande scenarier:
+### <a name="understanding-hello-tez-ui"></a>Förstå hello Tez UI
+Hej Tez UI är en webbsida ger information om processer som körs eller har kördes tidigare med Tez. Det gör att du tooview hello DAG som genererats av Tez, hur den distribueras till kluster, räknare, till exempel minne som används av uppgifter och formhörnen och information om felet. Den kan erbjuda användbar information i hello följande scenarier:
 
-* Övervakning tidskrävande processer, visa förloppet för kartan och minska uppgifter.
-* Analysera historiska data för lyckade eller misslyckade processer att lära dig hur bearbetning kan förbättras eller orsaken till felet.
+* Övervaka tidskrävande processer, visa hello förloppet för kartan och minska uppgifter.
+* Analysera historiska data för lyckade eller misslyckade processer toolearn hur bearbetning kan förbättras eller orsaken till felet.
 
 ## <a name="generate-a-dag"></a>Generera en DAG
-Tez UI innehåller bara data om ett jobb som använder Tez-motorn körs eller har körts tidigare. Enkel Hive-frågor kan vanligtvis lösas utan att använda Tez, men mer komplexa frågor som gör filtrering, gruppering, sortering, kopplingar, etc. kräver vanligtvis Tez.
+Hej Tez UI innehåller bara data om ett jobb som använder hello Tez motorn körs eller har varit kördes i hello tidigare. Enkel Hive-frågor kan vanligtvis lösas utan att använda Tez, men mer komplexa frågor som gör filtrering, gruppering, sortering, kopplingar, etc. kräver vanligtvis Tez.
 
-Använd följande steg för att köra en Hive-fråga som ska köras med hjälp av Tez.
+Använd följande steg toorun en Hive-fråga som ska köras med hjälp av Tez hello.
 
-1. I en webbläsare, navigerar du till https://CLUSTERNAME.azurehdinsight.net, där **KLUSTERNAMN** är namnet på ditt HDInsight-kluster.
-2. På menyn överst på sidan, Välj den **Hive-redigeraren**. En sida med följande exempelfråga visas.
+1. I en webbläsare, navigerar du toohttps://CLUSTERNAME.azurehdinsight.net, där **KLUSTERNAMN** är hello namnet på ditt HDInsight-kluster.
+2. Välj hello hello menyn hello överst på sidan hello **Hive-redigeraren**. Då visas en sida med hello följande exempelfråga.
 
         Select * from hivesampletable
 
-    Radera exempelfråga och Ersätt den med följande.
+    Radera hello exempelfråga och Ersätt den med hello följande.
 
         set hive.execution.engine=tez;
         select market, state, country from hivesampletable where deviceplatform='Android' group by market, country, state;
-3. Välj den **skicka** knappen. Den **jobbet Session** avsnittet längst ned på sidan visar statusen för frågan. När statusen ändras till **slutförd**, Välj den **visa information** länken om du vill visa resultatet. Den **Jobbutdata** bör likna följande:
+3. Välj hello **skicka** knappen. Hej **jobbet Session** avsnittet längst ned hello hello sidan visar hello status för hello fråga. En gång hello status ändras för**slutförd**väljer hello **visa information** länka tooview hello resultat. Hej **Jobbutdata** ska vara liknande toohello följande:
 
         en-GB   Hessen      Germany
         en-GB   Kingston    Jamaica
         en-GB   Nairobi Area    Kenya
 
-## <a name="use-the-tez-ui"></a>Använda Tez-Gränssnittet
+## <a name="use-hello-tez-ui"></a>Använd hello Tez UI
 > [!NOTE]
-> Tez UI är endast tillgängligt från skrivbordet head klusternoder, så du måste använda Fjärrskrivbord för att ansluta till huvudnoderna.
+> Hej Tez UI är endast tillgänglig från hello desktop head hello klusternoder, så du måste använda Fjärrskrivbord tooconnect toohello huvudnoderna.
 >
 >
 
-1. Från den [Azure-portalen](https://portal.azure.com), Välj ditt HDInsight-kluster. Upp i bladet HDInsight, Välj den **fjärrskrivbord** ikon. Detta visar bladet remote desktop
+1. Från hello [Azure-portalen](https://portal.azure.com), Välj ditt HDInsight-kluster. Hello överkant hello HDInsight bladet välj hello **fjärrskrivbord** ikon. Detta visar hello remote desktop-bladet
 
     ![Ikon för Remote desktop](./media/hdinsight-debug-tez-ui/remotedesktopicon.png)
-2. Remote Desktop-bladet välj **Anslut** att ansluta till klustrets huvudnod. Vid uppmaning används klustret Remote Desktop-användarnamn och lösenord för att autentisera anslutningen.
+2. Hello fjärrskrivbord bladet välj **Anslut** tooconnect toohello klustrets huvudnod. Vid uppmaning används hello klustret användarens namn och lösenord tooauthenticate hello fjärrskrivbordsanslutning.
 
     ![Anslutningen till fjärrskrivbord ikon](./media/hdinsight-debug-tez-ui/remotedesktopconnect.png)
 
    > [!NOTE]
-   > Om du inte har aktiverat Fjärrskrivbord-anslutningen, ange ett användarnamn, lösenord och upphör att gälla och välj sedan **aktivera** att aktivera Fjärrskrivbord. När den har aktiverats, kan du använda de här stegen för att ansluta.
+   > Om du inte har aktiverat Fjärrskrivbord-anslutningen, ange ett användarnamn, lösenord och upphör att gälla och välj sedan **aktivera** tooenable fjärrskrivbord. Använd hello föregående steg tooconnect när den har aktiverats.
    >
    >
-3. När du är ansluten, öppna Internet Explorer på fjärrskrivbordet, väljer du kugghjulsikonen i övre högra hörnet i webbläsaren och välj sedan **Kompatibilitetsvyinställningarna**.
-4. Längst ned i **Kompatibilitetsvyinställningarna**, avmarkerar du kryssrutan för **visa intranätplatser i Kompatibilitetsvy** och **Använd Microsoft kompatibilitetslista**, och välj sedan **Stäng**.
-5. I Internet Explorer, bläddra till #-http://headnodehost:8188/tezui /. Detta visar Tez UI
+3. När du är ansluten, öppna Internet Explorer på hello fjärrskrivbordet väljer hello växeln ikonen i hello övre högra hörnet på hello webbläsaren och välj sedan **Kompatibilitetsvyinställningarna**.
+4. Hello längst ned i **Kompatibilitetsvyinställningarna**avmarkerar hello kryssrutan för **visa intranätplatser i Kompatibilitetsvy** och **Använd Microsoft kompatibilitetslista**, och välj sedan **Stäng**.
+5. Bläddra i Internet Explorer, toohttp://headnodehost:8188/tezui / #/. Detta visar hello Tez UI
 
     ![Tez-Gränssnittet](./media/hdinsight-debug-tez-ui/tezui.png)
 
-    När Tez UI läses in, visas en lista över dag som för närvarande körs eller har körts på klustret. Standardvyn innehåller Dag Name, -Id, runtimenamn, Skickat, Status, starttid, sluttid, varaktighet, program-ID och kön. Fler kolumner läggas till med hjälp av växeln-ikonen längst till höger på sidan.
+    När hello Tez UI läses in, visas en lista över dag som för närvarande körs eller har körts på hello klustret. hello standardvyn innehåller hello Dag Name, -Id, runtimenamn, Skickat, Status, starttid, sluttid, varaktighet, program-ID och kön. Fler kolumner läggas med hello växeln-ikonen på hello höger i hello sidan.
 
-    Om du har en enda post blir det för den fråga som du körde i föregående avsnitt. Om du har flera poster kan du söka genom att ange sökvillkor i fälten i dag och sedan klicka på **RETUR**.
-6. Välj den **Dag Name** för den senaste DAG-posten. Information om DAG och alternativet för att hämta en zip JSON-filer som innehåller information om gruppen för Databastillgänglighet visas.
+    Om du har en enda post blir för hello-fråga som du körde hello föregående avsnitt. Om du har flera poster kan du söka genom att ange sökvillkor i hello fälten ovanför hello dag och sedan klicka på **RETUR**.
+6. Välj hello **Dag Name** för hello senaste DAG posten. Information om hello DAG, samt hello alternativet toodownload en zip JSON-filer som innehåller information om hello DAG visas.
 
     ![DAG-information](./media/hdinsight-debug-tez-ui/dagdetails.png)
-7. Ovanför den **DAG information** är flera länkar som kan användas för att visa information om DAG.
+7. Ovan hello **DAG information** är flera länkar som kan vara används toodisplay information om hello DAG.
 
    * **DAG räknare** visar informationen från prestandaräknarna för denna DAG.
    * **Grafisk vy** visar en grafisk representation av den här DAG.
-   * **Alla formhörnen** visar en lista över formhörnen i denna DAG.
-   * **Alla aktiviteter** visar en lista över aktiviteter för alla hörn i denna DAG.
-   * **Alla TaskAttempts** visar information om försöker att köra uppgifter för denna DAG.
+   * **Alla formhörnen** visar en lista över hello formhörnen i denna DAG.
+   * **Alla aktiviteter** visar en lista över hello aktiviteter för alla hörn i denna DAG.
+   * **Alla TaskAttempts** visar information om hello försöker toorun uppgifter för denna DAG.
 
      > [!NOTE]
-     > Om du bläddrar i kolumnen visa för formhörnen, uppgifter och TaskAttempts, Observera att det finns länkar för att visa **räknare** och **visa eller hämta loggar** för varje rad.
+     > Om du bläddrar hello kolumnen visas för formhörnen, uppgifter och TaskAttempts Observera att det finns länkar tooview **räknare** och **visa eller hämta loggar** för varje rad.
      >
      >
 
-     Om det uppstod ett fel med jobbet, visas DAG information statusen misslyckades, tillsammans med länkar till information om om aktiviteten. Diagnostikinformationen visas under DAG-information.
-8. Välj **grafisk vy**. Visar en grafisk representation av gruppen för Databastillgänglighet. Du kan placera muspekaren över varje nod i vyn för att visa information om den.
+     Om det uppstod ett fel med hello jobb, visas hello DAG information statusen misslyckades, tillsammans med länkar tooinformation om hello om aktiviteten. Diagnostikinformationen visas under hello DAG information.
+8. Välj **grafisk vy**. Visar en grafisk representation av hello DAG. Du kan placera hello muspekaren över varje nod i hello visa toodisplay information om den.
 
     ![Grafisk vy](./media/hdinsight-debug-tez-ui/dagdiagram.png)
-9. Klicka på en nod att läsa in den **Vertex information** för objektet. Klicka på den **kartan 1** vertex att visa detaljer för det här objektet. Välj **Bekräfta** bekräfta navigeringen.
+9. Klicka på en brytpunkt läses hello **Vertex information** för objektet. Klicka på hello **kartan 1** vertex toodisplay information för den här artikeln. Välj **Bekräfta** tooconfirm hello navigering.
 
     ![Vertex information](./media/hdinsight-debug-tez-ui/vertexdetails.png)
-10. Observera att du nu har länkarna överst på sidan som är relaterade till formhörnen och uppgifter.
+10. Observera att du nu har länkar hello överst på hello sidan som är relaterade toovertices och uppgifter.
 
     > [!NOTE]
-    > Du kan också komma fram till den här sidan genom att gå tillbaka till **DAG information**, välja **Vertex information**, och sedan välja den **kartan 1** hörn.
+    > Du kan också komma fram till den här sidan genom att gå tillbaka för**DAG information**, välja **Vertex information**, och sedan välja hello **kartan 1** hörn.
     >
     >
 
     * **Vertex räknare** visar räknarinformation för den här hörn.
     * **Uppgifter** uppgifter för den här vertex visas.
-    * **Uppgift försök** visar information om försök att köra uppgifter för den här hörn.
+    * **Uppgift försök** visar information om försök toorun uppgifter för den här hörn.
     * **Datakällor & egenskaperna** visar datakällor och egenskaperna för den här hörn.
 
       > [!NOTE]
-      > Med den föregående menyn rulla som Visa kolumnen för aktiviteter, aktivitet försök källor och Sinks__ visa länkar till mer information för varje objekt.
+      > Som med tidigare hello-menyn kan du bläddrar hello kolumnen visas för aktiviteter, länkar aktivitet försök och källor & Sinks__ toodisplay toomore information för varje artikel.
       >
       >
-11. Välj **uppgifter**, och välj sedan de objekt med namnet **00_000000**. Detta visar **aktivitetsinformation** för den här uppgiften. Du kan visa från den här skärmen **aktivitet räknare** och **aktivitet försök**.
+11. Välj **uppgifter**, och sedan väljer hello-objekt med namnet **00_000000**. Detta visar **aktivitetsinformation** för den här uppgiften. Du kan visa från den här skärmen **aktivitet räknare** och **aktivitet försök**.
 
     ![Uppgiftsinformation](./media/hdinsight-debug-tez-ui/taskdetails.png)
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig hur du använder vyn Tez, lär du dig mer om [med hjälp av Hive i HDInsight](hdinsight-use-hive.md).
+Nu när du har lärt dig hur toouse hello Tez visa, lär du dig mer om [med hjälp av Hive i HDInsight](hdinsight-use-hive.md).
 
-Mer teknisk information om Tez finns i [Tez sidan vid Hortonworks](http://hortonworks.com/hadoop/tez/).
+Mer teknisk information om Tez finns hello [Tez sidan vid Hortonworks](http://hortonworks.com/hadoop/tez/).

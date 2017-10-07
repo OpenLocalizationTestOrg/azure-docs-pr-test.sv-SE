@@ -1,6 +1,6 @@
 ---
-title: "Skapa din första Azure aktören-baserade-mikrotjänster i Java | Microsoft Docs"
-description: "Den här självstudiekursen vägleder dig genom stegen för att skapa, felsöka och distribuera en enkel aktören-baserad tjänst med hjälp av Service Fabric Reliable Actors."
+title: "aaaCreate din första aktören-baserad Azure mikrotjänster i Java | Microsoft Docs"
+description: "Den här självstudiekursen vägleder dig genom hello stegen för att skapa, felsöka och distribuera en enkel aktören-baserad tjänst med hjälp av Service Fabric Reliable Actors."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2017
 ms.author: vturecek
-ms.openlocfilehash: 288f1ed1016f50031065e66444d2562427194dc7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 24718a8d7034360c53597f139169580f1a6ce732
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Komma igång med Reliable Actors
 > [!div class="op_single_selector"]
@@ -27,37 +27,37 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-Den här artikeln beskriver grunderna i Azure Service Fabric Reliable Actors och vägleder dig genom att skapa och distribuera ett enkelt program tillförlitliga aktören i Java.
+Den här artikeln beskriver hello grunderna i Azure Service Fabric Reliable Actors och vägleder dig genom att skapa och distribuera ett enkelt program tillförlitliga aktören i Java.
 
 ## <a name="installation-and-setup"></a>Installation och konfiguration
-Innan du börjar bör du kontrollera du har Service Fabric-utvecklingsmiljö ställa in på din dator.
-Om du behöver konfigurera den går du till [komma igång på Mac](service-fabric-get-started-mac.md) eller [komma igång med Linux](service-fabric-get-started-linux.md).
+Innan du börjar kontrollera att du har hello Service Fabric-utvecklingsmiljö ställa in på din dator.
+Om du behöver tooset den, gå för[komma igång på Mac](service-fabric-get-started-mac.md) eller [komma igång med Linux](service-fabric-get-started-linux.md).
 
 ## <a name="basic-concepts"></a>Grundläggande begrepp
-Om du vill komma igång med Reliable Actors, behöver du bara förstå några grundläggande begrepp:
+tooget igång med Reliable Actors du bara behöver toounderstand några grundläggande begrepp:
 
-* **Aktören tjänsten**. Reliable Actors paketeras i Reliable Services som kan distribueras i Service Fabric-infrastruktur. Aktören instanser aktiveras på en namngiven tjänstinstans.
-* **Aktören registrering**. Som med Reliable Services måste en tillförlitlig aktören tjänst vara registrerad med Service Fabric-körning. Dessutom måste aktören-typen vara registrerad med aktören körningsmiljön.
-* **Aktören gränssnittet**. Gränssnittet aktören används för att definiera en strikt typkontroll offentliga gränssnittet för en aktör. I den tillförlitliga aktören modellen terminologin definierar aktören-gränssnittet vilka typer av meddelanden som aktören kan förstå och processen. Gränssnittet aktören används av andra aktörer och klientprogram för att ”skicka” (asynkront) meddelanden för aktören. Reliable Actors kan implementera flera gränssnitt.
-* **ActorProxy klassen**. Klassen ActorProxy används av klientprogram för att anropa metoder som exponeras via gränssnittet aktören. Klassen ActorProxy innehåller två viktiga funktioner:
+* **Aktören tjänsten**. Reliable Actors paketeras i Reliable Services som kan distribueras i hello Service Fabric-infrastruktur. Aktören instanser aktiveras på en namngiven tjänstinstans.
+* **Aktören registrering**. Som med Reliable Services en tillförlitlig aktören tjänst behöver toobe som registrerats med hello Service Fabric runtime. Hello aktörstyp måste dessutom toobe som registrerats med hello aktören körning.
+* **Aktören gränssnittet**. hello aktören gränssnittet är används toodefine ett starkt typifierad offentliga gränssnitt för en aktör. I hello tillförlitliga aktören modellen terminologi definierar hello aktören-gränssnittet hello typer av meddelanden som hello aktören kan förstå och bearbeta. hello aktören gränssnitt som används av andra aktörer och klientprogram för ”skicka” (asynkront) meddelanden toohello aktören. Reliable Actors kan implementera flera gränssnitt.
+* **ActorProxy klassen**. Hej ActorProxy klass som används av klienten program tooinvoke hello metoder som exponeras via hello aktören gränssnitt. Hej ActorProxy klassen innehåller två viktiga funktioner:
   
-  * Namnmatchning: det är att hitta aktören i klustret (hitta nod i klustret där den finns).
-  * Hantering av fel: den kan gör anrop av metoden och lösa aktören platsen igen efter, till exempel ett fel som kräver aktören att flyttas till en annan nod i klustret.
+  * Namnmatchning: det är kan toolocate hello aktören i hello kluster (Sök hello-nod i hello kluster där den finns).
+  * Hantering av fel: den gör anrop av metoden och nytt lösa hello aktören platsen efter, t.ex, ett fel som kräver hello aktören toobe flyttas tooanother nod i klustret för hello.
 
-Följande regler som hör till aktören gränssnitt är värt att nämna:
+hello enligt reglerna som gäller tooactor gränssnitt är värt att nämna:
 
 * Aktören gränssnittsmetoder kan vara överbelastad.
 * Aktören gränssnittet metoder inte får ha ut, ref eller valfria parametrar.
 * Allmänt gränssnitt stöds inte.
 
 ## <a name="create-an-actor-service"></a>Skapa en aktören service
-Börja med att skapa ett nytt Service Fabric-program. Service Fabric-SDK för Linux innehåller en Yeoman generator att tillhandahålla scaffold-teknik för ett Service Fabric-program med en tillståndslös tjänst. Starta genom att köra följande Yeoman kommando:
+Börja med att skapa ett nytt Service Fabric-program. hello Service Fabric-SDK för Linux innehåller en Yeoman generator tooprovide hello scaffold-teknik för ett Service Fabric-program med en tillståndslös tjänst. Starta genom att köra hello följande Yeoman kommando:
 
 ```bash
 $ yo azuresfjava
 ```
 
-Följ instruktionerna för att skapa en **tillförlitliga aktören tjänsten**. Namn för programmet ”HelloWorldActorApplication” för den här självstudiekursen och aktör ”HelloWorldActor”. Scaffold-teknik för följande skapas:
+Följ hello instruktioner toocreate en **tillförlitliga aktören tjänsten**. Namn för den här självstudiekursen hello programmet ”HelloWorldActorApplication” och hello aktör ”HelloWorldActor”. hello följande scaffold-teknik kommer att skapas:
 
 ```bash
 HelloWorldActorApplication/
@@ -100,10 +100,10 @@ HelloWorldActorApplication/
 ```
 
 ## <a name="reliable-actors-basic-building-blocks"></a>Tillförlitliga aktörer grundläggande byggstenarna
-Grundläggande begrepp som beskrivs ovan översätta till de grundläggande byggstenarna för en tillförlitlig aktören-tjänst.
+hello grundläggande koncept beskrivs tidigare översätta till hello grundläggande byggstenarna för en tillförlitlig aktören-tjänst.
 
 ### <a name="actor-interface"></a>Aktören gränssnitt
-Innehåller gränssnittsdefinition för aktören. Det här gränssnittet definierar aktören kontraktet som delas av aktören implementering och klienterna som anropar aktören så vanligtvis är det praktiskt att definiera den på en plats som är separat från aktören implementering och kan delas av flera tjänster eller klientprogram.
+Hello gränssnittsdefinition för hello aktören innehåller. Det här gränssnittet definierar hello aktören kontrakt som delas av hello aktören implementering och hello klienter anropar hello aktören, så gör det vanligtvis meningsfullt toodefine den på en plats som är separata från hello aktören implementering och kan delas av flera andra tjänster eller program.
 
 `HelloWorldActorInterface/src/reliableactor/HelloWorldActor.java`:
 
@@ -117,7 +117,7 @@ public interface HelloWorldActor extends Actor {
 ```
 
 ### <a name="actor-service"></a>Aktören service
-Innehåller den aktören implementeringen och aktören Registreringskod. Aktören-klassen implementerar gränssnittet aktören. Det är där din aktören sitt arbete.
+Innehåller den aktören implementeringen och aktören Registreringskod. hello aktören klassen implementerar hello aktören gränssnitt. Det är där din aktören sitt arbete.
 
 `HelloWorldActor/src/reliableactor/HelloWorldActorImpl`:
 
@@ -148,7 +148,7 @@ public class HelloWorldActorImpl extends ReliableActor implements HelloWorldActo
 ```
 
 ### <a name="actor-registration"></a>Aktören registrering
-Tjänsten aktören måste ha registrerats med en typ i Service Fabric-körningsmiljön. För att tjänsten aktören körs aktören-instanser måste aktörstyp registreras med tjänsten aktören. Den `ActorRuntime` registreringsmetod utför detta arbete för aktörer.
+hello aktören service måste ha registrerats med en typ i hello Service Fabric-körningsmiljön. I ordning för hello aktören Service toorun aktören-instanser, aktören-typen måste också vara registrerad med hello aktören Service. Hej `ActorRuntime` registreringsmetod utför detta arbete för aktörer.
 
 `HelloWorldActor/src/reliableactor/HelloWorldActorHost`:
 
@@ -171,14 +171,14 @@ public class HelloWorldActorHost {
 ```
 
 ### <a name="test-client"></a>Testklienten
-Detta är ett enkelt test-klientprogram kan du köra separat från Service Fabric-programmet för att testa aktören tjänsten. Detta är ett exempel där ActorProxy kan användas för att aktivera och kommunicera med aktören instanser. Det inte distribueras med din tjänst.
+Detta är ett enkelt test-klientprogram kan du köra separat från hello Service Fabric application tootest aktören-tjänsten. Detta är ett exempel på där hello ActorProxy kan använda tooactivate och kommunicera med aktören instanser. Det inte distribueras med din tjänst.
 
-### <a name="the-application"></a>Programmet
-Slutligen paket programmet för tjänsten aktören och andra tjänster som du kan lägga till i framtiden tillsammans för distribution. Den innehåller den *ApplicationManifest.xml* och platshållare för servicepaket aktören.
+### <a name="hello-application"></a>hello-program
+Slutligen hello hello programpaket aktören tjänsten och andra tjänster som du kan lägga till i hello framtida tillsammans för distribution. Den innehåller hello *ApplicationManifest.xml* och platshållare för hello aktören service-paketet.
 
-## <a name="run-the-application"></a>Köra programmet
+## <a name="run-hello-application"></a>Kör programmet hello
 
-Yeoman scaffold-teknik innehåller ett gradle-skript för att skapa programmet och bash-skript för att distribuera och ta bort programmet. Om du vill distribuera programmet först skapa programmet med gradle:
+Hej Yeoman scaffold-teknik som omfattar en gradle skriptet toobuild hello program och bash-skript toodeploy och ta bort programmet. toodeploy hello program, första build hello med gradle:
 
 ```bash
 $ gradle
@@ -188,8 +188,8 @@ Detta genererar ett Service Fabric-programpaket som kan distribueras med hjälp 
 
 ### <a name="deploy-service-fabric-cli"></a>Distribuera Service Fabric CLI
 
-Skriptet install.sh innehåller de nödvändiga Service Fabric CLI (sfctl)-kommandona för att distribuera programpaketet.
-Kör skriptet install.sh om du vill distribuera programmet.
+Hej install.sh skriptet innehåller hello nödvändiga Service Fabric CLI (sfctl) kommandon toodeploy hello programpaket.
+Kör hello install.sh skriptet toodeploy hello program.
 
 ```bash
 $ ./install.sh

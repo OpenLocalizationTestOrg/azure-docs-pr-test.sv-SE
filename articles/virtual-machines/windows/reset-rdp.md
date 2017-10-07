@@ -1,6 +1,6 @@
 ---
-title: "Återställ lösenordet eller fjärrskrivbord konfigurationen på en virtuell Windows-dator | Microsoft Docs"
-description: "Lär dig hur du återställer lösenordet för ett konto eller Remote Desktop services på en virtuell Windows-dator med hjälp av Azure-portalen eller Azure PowerShell."
+title: "aaaReset hello lösenord eller konfiguration av fjärrskrivbord på en virtuell Windows-dator | Microsoft Docs"
+description: "Lär dig hur tooreset lösenordet för ett konto eller Remote Desktop services på en virtuell Windows-dator med hjälp av hello Azure-portalen eller Azure PowerShell."
 services: virtual-machines-windows
 documentationcenter: 
 author: genlin
@@ -15,57 +15,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: genli
-ms.openlocfilehash: 2e002e3f336422b8fa1eceece889cd083e355a68
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5258df7196621f0adb50debd08dd248922a966de
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Så här återställer du tjänsten Remote Desktop eller dess inloggningslösenord i en Windows VM
-Om du inte kan ansluta till en Windows-dator (VM), kan du återställa det lokala administratörslösenordet eller Återställ konfigurationen för tjänsten Remote Desktop. Du kan använda Azure-portalen eller tillägget för virtuell dator åtkomst i Azure PowerShell för att återställa lösenordet. Om du använder PowerShell, se till att du har den [senaste PowerShell-modulen installerad och konfigurerad](/powershell/azure/overview) och är inloggad på Azure-prenumerationen. Du kan också [utför de här stegen för virtuella datorer som skapats med den klassiska distributionsmodellen](reset-rdp.md).
+# <a name="how-tooreset-hello-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Hur tooreset hello Fjärrskrivbordstjänsten eller dess inloggningslösenord i en Windows VM
+Om du inte kan ansluta tooa Windows virtuell dator (VM), kan du återställa hello lokala administratörslösenordet eller återställa hello Remote Desktop-tjänstkonfigurationen. Du kan använda antingen hello Azure portal eller hello åtkomst för VM-tillägget i Azure PowerShell tooreset hello lösenord. Om du använder PowerShell, se till att du har hello [senaste PowerShell-modulen installerad och konfigurerad](/powershell/azure/overview) och är inloggad tooyour Azure-prenumeration. Du kan också [utför de här stegen för virtuella datorer som skapats med hello klassiska distributionsmodellen](reset-rdp.md).
 
-## <a name="ways-to-reset-configuration-or-credentials"></a>Olika sätt att återställa konfigurationen eller autentiseringsuppgifter
+## <a name="ways-tooreset-configuration-or-credentials"></a>Sätt tooreset konfiguration eller autentiseringsuppgifter
 Du kan återställa Remote Desktop services och autentiseringsuppgifter på några olika sätt, beroende på dina behov:
 
-- [Återställa med hjälp av Azure portal](#azure-portal)
+- [Återställs via hello Azure-portalen](#azure-portal)
 - [Återställa med hjälp av Azure PowerShell](#vmaccess-extension-and-powershell)
 
 ## <a name="azure-portal"></a>Azure Portal
-Om du vill expandera portalmenyn tre staplarna i det övre vänstra hörnet och klicka sedan på **virtuella datorer**:
+tooexpand hello portal-menyn klickar du på hello tre staplar i hello övre vänstra hörnet och klicka sedan på **virtuella datorer**:
 
 ![Bläddra efter din Azure VM](./media/reset-rdp/Portal-Select-VM.png)
 
-### <a name="reset-the-local-administrator-account-password"></a>**Återställa lösenord för lokala administratörskontot**
+### <a name="reset-hello-local-administrator-account-password"></a>**Återställa hello kontolösenord för lokal administratör**
 
-Välj din Windows-dator och klicka sedan **stöd + felsökning** > **Återställ lösenord**. Bladet för återställning av lösenord visas:
+Välj din Windows-dator och klicka sedan **stöd + felsökning** > **Återställ lösenord**. hello lösenord Återställ bladet visas:
 
 ![Sidan för återställning av lösenord](./media/reset-rdp/Portal-RM-PW-Reset-Windows.png)
 
-Ange användarnamnet och lösenordet och klicka sedan på **uppdatering**. Försök att ansluta till den virtuella datorn igen.
+Ange hello användarnamn och ett nytt lösenord och klicka sedan på **uppdatering**. Försök ansluta igen tooyour VM.
 
-### <a name="reset-the-remote-desktop-service-configuration"></a>**Återställ konfigurationen för tjänsten Remote Desktop**
+### <a name="reset-hello-remote-desktop-service-configuration"></a>**Återställ hello tjänstkonfigurationen för fjärrskrivbord**
 
-Välj din Windows-dator och klicka sedan **stöd + felsökning** > **Återställ lösenord**. Bladet för återställning av lösenord visas. 
+Välj din Windows-dator och klicka sedan **stöd + felsökning** > **Återställ lösenord**. hello lösenord Återställ bladet visas. 
 
 ![Återställ RDP-konfigurationen](./media/reset-rdp/Portal-RM-RDP-Reset.png)
 
-Välj **bara återställa konfigurationen** i den nedrullningsbara menyn Klicka **uppdatering**. Försök att ansluta till den virtuella datorn igen.
+Välj **bara återställa konfigurationen** hello nedrullningsbara menyn och sedan klicka på **uppdatering**. Försök ansluta igen tooyour VM.
 
 
 ## <a name="vmaccess-extension-and-powershell"></a>VMAccess-tillägget och PowerShell
-Se till att du har den [senaste PowerShell-modulen installerad och konfigurerad](/powershell/azure/overview) och är inloggad på Azure-prenumerationen med den `Login-AzureRmAccount` cmdlet.
+Se till att du har hello [senaste PowerShell-modulen installerad och konfigurerad](/powershell/azure/overview) och är inloggad tooyour Azure-prenumeration med hello `Login-AzureRmAccount` cmdlet.
 
-### <a name="reset-the-local-administrator-account-password"></a>**Återställa lösenord för lokala administratörskontot**
-Återställ administratör lösenord eller användarnamn namn med den [Set AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell-cmdlet. Skapa dina kontouppgifter enligt följande:
+### <a name="reset-hello-local-administrator-account-password"></a>**Återställa hello kontolösenord för lokal administratör**
+Återställ Hej administratör lösenord eller användarnamn namn med hello [Set AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell-cmdlet. Skapa dina kontouppgifter enligt följande:
 
 ```powershell
 $cred=Get-Credential
 ```
 
 > [!NOTE] 
-> Om du anger ett annat namn än det aktuella lokala administratörskontot på den virtuella datorn VMAccess-tillägget byter namn på det lokala administratörskontot, tilldelar det angivna lösenordet för kontot och utfärdar en händelse för fjärrskrivbord utloggning. Om det lokala administratörskontot på den virtuella datorn inaktiveras, kan den VMAccess-tillägget.
+> Om du anger ett annat namn än hello aktuella lokalt administratörskonto på den virtuella datorn hello VMAccess-tillägget byter hello lokalt administratörskonto, tilldelar kontots lösenord toothat och utfärdar en händelse för fjärrskrivbord utloggning. Om hello lokala administratörskontot på den virtuella datorn inaktiveras, kan den hello VMAccess-tillägget.
 
-I följande exempel uppdateras den virtuella datorn med namnet `myVM` i resursgrupp med namnet `myResourceGroup` till de angivna autentiseringsuppgifterna.
+följande exempel uppdateringar hello hello virtuella datorn med namnet `myVM` i hello resursgrupp med namnet `myResourceGroup` toohello autentiseringsuppgifter som anges.
 
 ```powershell
 Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" `
@@ -73,8 +73,8 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM"
     -Password $cred.GetNetworkCredential().Password -typeHandlerVersion "2.0"
 ```
 
-### <a name="reset-the-remote-desktop-service-configuration"></a>**Återställ konfigurationen för tjänsten Remote Desktop**
-Återställ fjärråtkomst till den virtuella datorn med den [Set AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell-cmdlet. I följande exempel återställs access-tillägg med namnet `myVMAccess` på den virtuella datorn med namnet `myVM` i den `myResourceGroup` resursgrupp:
+### <a name="reset-hello-remote-desktop-service-configuration"></a>**Återställ hello tjänstkonfigurationen för fjärrskrivbord**
+Återställ fjärråtkomst tooyour VM med hello [Set AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) PowerShell-cmdlet. hello följande exempel återställs hello access-tillägg med namnet `myVMAccess` på hello virtuella datorn med namnet `myVM` i hello `myResourceGroup` resursgrupp:
 
 ```powershell
 Set-AzureRmVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" `
@@ -82,17 +82,17 @@ Set-AzureRmVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" 
 ```
 
 > [!TIP]
-> En virtuell dator kan ha endast en enskild VM åtkomst agent när som helst. Att ange den VM agentegenskaper, den `-ForceRerun` alternativet kan användas. När du använder `-ForceRerun`, se till att använda samma namn för virtuell dator åtkomst agenten som används i alla tidigare angivna kommandon.
+> En virtuell dator kan ha endast en enskild VM åtkomst agent när som helst. agentegenskaper för tooset hello VM åtkomst, hello `-ForceRerun` alternativet kan användas. När du använder `-ForceRerun`, kontrollera toouse hello samma namn för hello VM-åtkomst på agenten som används i alla tidigare angivna kommandon.
 
-Om du fortfarande inte kan ansluta via en fjärranslutning till den virtuella datorn, se fler steg försöka på [felsöka fjärrskrivbordsanslutningar till en Windows-baserad Azure virtuella](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Om du fortfarande inte kan ansluta via fjärranslutning tooyour virtuell dator, se flera steg tootry på [Felsöka fjärrskrivbord anslutningar tooa Windows-baserad virtuell Azure-dator](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 ## <a name="next-steps"></a>Nästa steg
-Om tillägget för virtuell dator i Azure åtkomst svarar inte och det inte går att återställa lösenordet, kan du [återställa det lokala Windows-lösenordet offline](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Den här metoden är en process i mer avancerade och du måste ansluta den virtuella hårddisken av problematiska VM till en annan virtuell dator. Följ stegen i den här artikeln först och endast försök offline lösenordsmetoden återställning som en sista utväg.
+Om hello access-tillägg för virtuella Azure-datorn svarar inte och är tooreset hello lösenord, kan du [Återställ hello lokala Windows-lösenord offline](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Den här metoden kräver tooconnect hello virtuell hårddisk av hello problematiska VM tooanother VM är en mer avancerad process. Följ hello stegen i den här artikeln först och endast försök hello offline lösenord reset-metoden som en sista utväg.
 
 [Azure VM-tillägg och funktioner](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[Ansluta till en virtuell Azure-dator med RDP eller SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx)
+[Ansluta tooan virtuella Azure-datorn med RDP eller SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx)
 
-[Felsöka anslutningar till fjärrskrivbord till en Windows-baserad Azure virtuell-dator](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Felsöka fjärrskrivbord anslutningar tooa Windows-baserad virtuell Azure-dator](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

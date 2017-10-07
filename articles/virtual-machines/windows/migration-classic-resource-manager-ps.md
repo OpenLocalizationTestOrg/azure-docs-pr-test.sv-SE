@@ -1,6 +1,6 @@
 ---
-title: Migrera till Resource Manager med PowerShell | Microsoft Docs
-description: "Den här artikeln innehåller stegvisa migreringen plattform som stöds av IaaS-resurser som virtuella datorer (VM), virtuella nätverk (Vnet) och storage-konton från klassiska till Azure Resource Manager (ARM) med hjälp av Azure PowerShell-kommandon"
+title: aaaMigrate tooResource Manager med PowerShell | Microsoft Docs
+description: "Den här artikeln innehåller stegvisa hello stöds av plattformen migrering av IaaS-resurser som virtuella datorer (VM), virtuella nätverk (Vnet) och storage-konton från klassiska tooAzure Resource Manager (ARM) med hjälp av Azure PowerShell-kommandon"
 services: virtual-machines-windows
 documentationcenter: 
 author: singhkays
@@ -15,90 +15,90 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 489e6cc6bd3c5b36635f5f7e398d08fed681d2e7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b5b2987da292f1c241be71a354b0c2e1a96a07c6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Migrera IaaS-resurser från klassiska till Azure Resource Manager med hjälp av Azure PowerShell
-Dessa steg visar hur du använder Azure PowerShell-kommandon för att migrera infrastruktur som en tjänst (IaaS)-resurser från den klassiska distributionsmodellen till Azure Resource Manager-distributionsmodellen.
+# <a name="migrate-iaas-resources-from-classic-tooazure-resource-manager-by-using-azure-powershell"></a>Migrera IaaS-resurser från klassiska tooAzure Resource Manager med hjälp av Azure PowerShell
+Dessa steg visar hur toouse Azure PowerShell-kommandon toomigrate infrastruktur som en tjänst (IaaS)-resurser från hello klassisk distribution modellen toohello Azure Resource Manager-distributionsmodellen.
 
-Om du vill kan du migrera resurser med hjälp av den [Azure-kommandoradsgränssnittet (Azure CLI)](../linux/migration-classic-resource-manager-cli.md).
+Om du vill kan du migrera resurser med hjälp av hello [Azure-kommandoradsgränssnittet (Azure CLI)](../linux/migration-classic-resource-manager-cli.md).
 
-* Bakgrundsinformation om migreringsscenarier som stöds finns i [plattform som stöds migrering av IaaS-resurser från klassiska till Azure Resource Manager](migration-classic-resource-manager-overview.md).
-* Detaljerad information och en genomgång för migrering finns i [tekniska ingående om plattformen stöds från klassiska till Azure Resource Manager](migration-classic-resource-manager-deep-dive.md).
+* Bakgrundsinformation om migreringsscenarier som stöds finns i [plattform som stöds migrering av IaaS-resurser från klassiska tooAzure Resource Manager](migration-classic-resource-manager-overview.md).
+* Detaljerad information och en genomgång för migrering finns i [tekniska ingående om plattformen stöds från klassiska tooAzure Resource Manager](migration-classic-resource-manager-deep-dive.md).
 * [Granska de vanligaste migreringsfelen](migration-classic-resource-manager-errors.md)
 
 <br>
-Här är ett flödesschema för att identifiera den ordning som steg måste utföras under en migreringsprocessen
+Här är en flödesschema tooidentify hello ordning där steg måste toobe körs under en migreringsprocessen
 
-![Skärmbild som visar migreringsstegen](media/migration-classic-resource-manager/migration-flow.png)
+![Skärmbild som visar hello migreringssteg](media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="step-1-plan-for-migration"></a>Steg 1: Planera för migrering
-Här följer några metodtips som vi rekommenderar medan du utvärderar migrera IaaS-resurser från klassiska till Resource Manager:
+Här följer några metodtips som vi rekommenderar medan du utvärderar migrera IaaS-resurser från klassiska tooResource Manager:
 
-* Läs igenom den [stöds inte funktioner och konfigurationer som stöds och](migration-classic-resource-manager-overview.md). Om du har virtuella datorer som använder icke-stödda konfigurationer eller funktioner, rekommenderar vi att du väntar configuration/funktionsstöd meddelas. Du kan också den passar dina behov ta bort funktionen eller flytta från den konfigurationen vill aktivera migrering.
-* Om du har automatiserat skript som distribuerar din infrastruktur och dina program idag, försök att skapa en liknande inställningar med hjälp av dessa skript för migrering. Du kan också ställa in provet miljöer med hjälp av Azure portal.
+* Läs igenom hello [stöds inte funktioner och konfigurationer som stöds och](migration-classic-resource-manager-overview.md). Om du har virtuella datorer som använder icke-stödda konfigurationer eller funktioner, rekommenderar vi att du väntar hello configuration-funktionen stöd toobe meddelats. Du kan också den passar dina behov, ta bort funktionen eller flytta från den tooenable konfigurationsmigreringen.
+* Om du har automatiserat skript som distribuerar din infrastruktur och dina program idag, försök toocreate en liknande inställningar med hjälp av dessa skript för migrering. Du kan också ställa in exempel miljöer med hjälp av hello Azure-portalen.
 
 > [!IMPORTANT]
-> Programgatewayer stöds inte för migrering från classic till Resource Manager. Ta bort gatewayen innan du kör en Förberedelseåtgärden om du vill flytta nätverket för att migrera ett klassiskt virtuellt nätverk med en Programgateway. När du har slutfört migreringen återansluta gateway i Azure Resource Manager.
+> Programgatewayer stöds inte för migrering från klassiska tooResource Manager. toomigrate ett klassiskt virtuellt nätverk med en Programgateway ta bort hello gateway innan du kör ett förbereda åtgärden toomove hello nätverk. När du har slutfört migreringen hello återansluta hello gateway i Azure Resource Manager.
 >
->ExpressRoute-gatewayer som ansluter till ExpressRoute-kretsar i en annan prenumeration som inte kan migreras automatiskt. I sådana fall kan ta bort ExpressRoute-gatewayen, migrera det virtuella nätverket och skapa gatewayen på nytt. Se [migrera ExpressRoute-kretsar och associerade virtuella nätverk från klassiskt till Resource Manager-distributionsmodellen](../../expressroute/expressroute-migration-classic-resource-manager.md) för mer information.
+>ExpressRoute-gatewayer som ansluter tooExpressRoute kretsar i en annan prenumeration som inte kan migreras automatiskt. I sådana fall kan ta bort hello ExpressRoute-gateway, migrera hello virtuella nätverk och återskapa hello gateway. Se [migrera ExpressRoute-kretsar och associerade virtuella nätverk från hello klassiska toohello Resource Manager-distributionsmodellen](../../expressroute/expressroute-migration-classic-resource-manager.md) för mer information.
 >
 >
 
-## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>Steg 2: Installera den senaste versionen av Azure PowerShell
-Det finns två huvudsakliga alternativ för att installera Azure PowerShell: [PowerShell-galleriet](https://www.powershellgallery.com/profiles/azure-sdk/) eller [installationsprogram för webbplattform (WebPI)](http://aka.ms/webpi-azps). WebPI tar emot uppdateringar varje månad. PowerShell-galleriet tar emot uppdateringar kontinuerligt. Den här artikeln är baserad på Azure PowerShell version 2.1.0.
+## <a name="step-2-install-hello-latest-version-of-azure-powershell"></a>Steg 2: Installera hello senaste versionen av Azure PowerShell
+Det finns två huvudsakliga alternativ tooinstall Azure PowerShell: [PowerShell-galleriet](https://www.powershellgallery.com/profiles/azure-sdk/) eller [installationsprogram för webbplattform (WebPI)](http://aka.ms/webpi-azps). WebPI tar emot uppdateringar varje månad. PowerShell-galleriet tar emot uppdateringar kontinuerligt. Den här artikeln är baserad på Azure PowerShell version 2.1.0.
 
-Installationsanvisningar finns i [hur du installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview).
+Installationsanvisningar finns i [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
 
 <br>
 
-## <a name="step-3-ensure-that-you-are-an-administrator-for-the-subscription-in-azure-portal"></a>Steg 3: Kontrollera att du är administratör för prenumerationen i Azure-portalen
-Om du vill utföra migreringen måste du måste läggas till som medadministratör för prenumerationen på den [Azure-portalen](https://portal.azure.com).
+## <a name="step-3-ensure-that-you-are-an-administrator-for-hello-subscription-in-azure-portal"></a>Steg 3: Kontrollera att du är administratör för hello prenumeration i Azure-portalen
+tooperform migreringen, du måste läggas till som medadministratör för prenumerationen hello i hello [Azure-portalen](https://portal.azure.com).
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. På navmenyn väljer **prenumeration**. Om du inte ser det, väljer **fler tjänster**.
-3. Hitta lämpliga prenumerationspost titta sedan på den **Mina ROLLEN** fältet. För en medadministratör. värdet bör vara _kontoadministratören_.
+1. Logga in på hello [Azure-portalen](https://portal.azure.com).
+2. På navmenyn hello väljer **prenumeration**. Om du inte ser det, väljer **fler tjänster**.
+3. Hitta hello lämpliga prenumerationspost titta sedan på hello **Mina ROLLEN** fältet. För en medadministratör hello-värdet bör vara _kontoadministratören_.
 
-Om du inte kan lägga till en medadministratör kontakta en administratör eller medadministratör för prenumerationen för att hämta själv lagts till.   
+Om du inte kan tooadd en medadministratör Kontakta sedan en tjänstadministratör eller en medadministratör för hello prenumeration tooget själv lagts till.   
 
 ## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>Steg 4: Ange din prenumeration och registrera dig för migrering
-Först, starta PowerShell-Kommandotolken. För migrering, måste du konfigurera din miljö för både klassiska och Resource Manager.
+Först, starta PowerShell-Kommandotolken. För migrering, behöver du tooset upp din miljö för både klassiska och Resource Manager.
 
-Logga in på ditt konto för Resource Manager-modellen.
+Logga in tooyour konto för hello Resource Manager-modellen.
 
 ```powershell
     Login-AzureRmAccount
 ```
 
-Hämta tillgängliga prenumerationer med hjälp av följande kommando:
+Hämta hello tillgängliga prenumerationer med hjälp av hello följande kommando:
 
 ```powershell
     Get-AzureRMSubscription | Sort Name | Select Name
 ```
 
-Ange din Azure-prenumeration för den aktuella sessionen. Det här exemplet anges prenumeration standardnamnet **min Azure-prenumeration**. Ersätt prenumerationsnamn exempel med din egen.
+Ange din Azure-prenumeration för hello aktuell session. Det här exemplet anger hello prenumeration för standardnamnet för**min Azure-prenumeration**. Ersätt hello exempel prenumerationsnamn med din egen.
 
 ```powershell
     Select-AzureRmSubscription –SubscriptionName "My Azure Subscription"
 ```
 
 > [!NOTE]
-> Registreringen är en enstaka steg, men du måste göra detta en gång innan du försöker migrera. Utan registrering visas följande felmeddelande:
+> Registreringen är en enstaka steg, men du måste göra detta en gång innan du försöker migrera. Utan registrering, kan du se hello följande felmeddelande:
 >
 > *BadRequest: Prenumerationen har inte registrerats för migrering.*
 >
 >
 
-Registrera med resursprovidern migrering med hjälp av följande kommando:
+Registrera med resursprovidern för hello migrering med hjälp av hello följande kommando:
 
 ```powershell
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
-Vänta 5 minuter att slutföra registreringen. Du kan kontrollera status för godkännande med hjälp av följande kommando:
+Vänta 5 minuter för hello registrering toofinish. Du kan kontrollera hello status för hello godkännandet med hjälp av hello följande kommando:
 
 ```powershell
     Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
@@ -106,19 +106,19 @@ Vänta 5 minuter att slutföra registreringen. Du kan kontrollera status för go
 
 Se till att RegistrationState `Registered` innan du fortsätter.
 
-Nu logga in på ditt konto för den klassiska modellen.
+Nu logga in tooyour konto för hello klassiska modellen.
 
 ```powershell
     Add-AzureAccount
 ```
 
-Hämta tillgängliga prenumerationer med hjälp av följande kommando:
+Hämta hello tillgängliga prenumerationer med hjälp av hello följande kommando:
 
 ```powershell
     Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
 ```
 
-Ange din Azure-prenumeration för den aktuella sessionen. Det här exemplet anger standard-prenumeration till **min Azure-prenumeration**. Ersätt prenumerationsnamn exempel med din egen.
+Ange din Azure-prenumeration för hello aktuell session. Det här exemplet anger hello standardabonnemang för**min Azure-prenumeration**. Ersätt hello exempel prenumerationsnamn med din egen.
 
 ```powershell
     Select-AzureSubscription –SubscriptionName "My Azure Subscription"
@@ -126,29 +126,29 @@ Ange din Azure-prenumeration för den aktuella sessionen. Det här exemplet ange
 
 <br>
 
-## <a name="step-5-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Steg 5: Kontrollera att du har tillräckligt med Azure Resource Manager-dator kärnor i Azure-regionen för din aktuella distributionen eller virtuella nätverk
-Du kan använda följande PowerShell-kommando för att kontrollera det aktuella antalet kärnor som du har i Azure Resource Manager. Mer information om core kvoter finns [gränser och Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager).
+## <a name="step-5-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-hello-azure-region-of-your-current-deployment-or-vnet"></a>Steg 5: Kontrollera att du har tillräckligt med Azure Resource Manager-dator kärnor i hello Azure-regionen för din aktuella distributionen eller virtuella nätverk
+Du kan använda hello följande PowerShell-kommandot toocheck hello aktuellt antal kärnor som du har i Azure Resource Manager. toolearn mer om grundläggande kvoter finns [gränser och hello Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager).
 
-Det här exemplet kontrollerar tillgängligheten den **västra USA** region. Ersätt region Exempelnamn med din egen.
+Det här exemplet kontrollerar hello tillgänglighet i hello **västra USA** region. Ersätt hello exempel regionnamn med din egen.
 
 ```powershell
 Get-AzureRmVMUsage -Location "West US"
 ```
 
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Steg 6: Kör kommandon för att migrera IaaS-resurser
+## <a name="step-6-run-commands-toomigrate-your-iaas-resources"></a>Steg 6: Kör kommandon toomigrate IaaS-resurser
 > [!NOTE]
-> Alla åtgärder som beskrivs här är idempotent. Om du har problem med än en funktion som inte stöds eller ett konfigurationsfel rekommenderar vi att du försöka med att förbereda, avbrytas eller genomföras igen. Plattformen försöker sedan igen.
+> Alla hello-åtgärder som beskrivs här är idempotent. Om du har problem med än en funktion som inte stöds eller ett konfigurationsfel rekommenderar vi att du gör hello förbereda, avbrytas eller genomföras igen. hello plattform försök görs hello åtgärden igen.
 >
 >
 
 ## <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Steg 6.1: Alternativ 1 – migrera virtuella datorer i en tjänst i molnet (inte i ett virtuellt nätverk)
-Med följande kommando för att hämta listan över molntjänster och välj sedan den molntjänst som du vill migrera. Om de virtuella datorerna i Molntjänsten är i ett virtuellt nätverk eller om de har webb-eller arbetsroller kommandot returnerar ett felmeddelande.
+Hämta hello lista över molntjänster med hjälp av följande kommando hello och välj hello molnbaserad tjänst som du vill toomigrate. Om hello virtuella datorer i hello Molntjänsten i ett virtuellt nätverk eller om de har webb-eller arbetsroller returnerar hello kommando ett felmeddelande.
 
 ```powershell
     Get-AzureService | ft Servicename
 ```
 
-Hämta distributionens namn för Molntjänsten. I det här exemplet tjänstnamnet är **Mina tjänsten**. Ersätt tjänstnamnet exempel med egna namn.
+Hämta hello distributionens namn för hello-Molntjänsten. I det här exemplet hello tjänstnamnet är **Mina tjänsten**. Ersätt hello exempel tjänstnamn med egna namn.
 
 ```powershell
     $serviceName = "My Service"
@@ -156,11 +156,11 @@ Hämta distributionens namn för Molntjänsten. I det här exemplet tjänstnamne
     $deploymentName = $deployment.DeploymentName
 ```
 
-Förbered de virtuella datorerna i Molntjänsten för migrering. Du har två alternativ att välja mellan.
+Förbered hello virtuella datorer i hello Molntjänsten för migrering. Du har två alternativ toochoose från.
 
-* **Alternativ 1. Migrera de virtuella datorerna till ett virtuellt nätverk skapas av plattform**
+* **Alternativ 1. Migrera hello VMs tooa plattform skapa virtuellt nätverk**
 
-    Verifiera först om du kan migrera Molntjänsten med hjälp av följande kommandon:
+    Verifiera först om du kan migrera hello Molntjänsten med hello följande kommandon:
 
     ```powershell
     $validate = Move-AzureService -Validate -ServiceName $serviceName `
@@ -168,15 +168,15 @@ Förbered de virtuella datorerna i Molntjänsten för migrering. Du har två alt
     $validate.ValidationMessages
     ```
 
-    Föregående kommando visar alla varningar och fel som blockerar migrering. Om verifieringen lyckas, så du kan gå vidare till den **Förbered** steg:
+    hello Visar föregående kommando alla varningar och fel som blockerar migrering. Om verifieringen lyckas, så du kan flytta på toohello **Förbered** steg:
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
         -DeploymentName $deploymentName -CreateNewVirtualNetwork
     ```
-* **Alternativ 2. Migrera till ett befintligt virtuellt nätverk i Resource Manager-distributionsmodellen**
+* **Alternativ 2. Migrera tooan befintligt virtuellt nätverk i hello Resource Manager-distributionsmodellen**
 
-    Det här exemplet anger resursgruppens namn till **myResourceGroup**, det virtuella nätverksnamnet till **myVirtualNetwork** och undernätsnamn till **mySubNet**. Ersätt namnen i exemplet med namnen på de egna resurser.
+    Det här exemplet anger hello resursgruppens namn för**myResourceGroup**, hello virtuella nätverksnamnet för**myVirtualNetwork** och hello undernätsnamn för**mySubNet**. Ersätt hello namn i hello exemplet med hello namnen på de egna resurser.
 
     ```powershell
     $existingVnetRGName = "myResourceGroup"
@@ -184,7 +184,7 @@ Förbered de virtuella datorerna i Molntjänsten för migrering. Du har två alt
     $subnetName = "mySubNet"
     ```
 
-    Verifiera först om du kan migrera det virtuella nätverket med hjälp av följande kommando:
+    Verifiera först om du kan migrera hello virtuellt nätverk med hello följande kommando:
 
     ```powershell
     $validate = Move-AzureService -Validate -ServiceName $serviceName `
@@ -192,7 +192,7 @@ Förbered de virtuella datorerna i Molntjänsten för migrering. Du har två alt
     $validate.ValidationMessages
     ```
 
-    Föregående kommando visar alla varningar och fel som blockerar migrering. Om verifieringen lyckas, kan du fortsätta med följande förberedelsesteget:
+    hello Visar föregående kommando alla varningar och fel som blockerar migrering. Om verifieringen lyckas, kan du fortsätta med hello följande förberedelsesteget:
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `
@@ -200,9 +200,9 @@ Förbered de virtuella datorerna i Molntjänsten för migrering. Du har två alt
         -VirtualNetworkName $vnetName -SubnetName $subnetName
     ```
 
-När Förberedelseåtgärden lyckas med något av alternativen ovan, fråga migreringstillståndet för de virtuella datorerna. Se till att de är i den `Prepared` tillstånd.
+När hello Förberedelseåtgärden lyckas med något av föregående alternativ hello, fråga hello migrering tillstånd hello virtuella datorer. Se till att de är i hello `Prepared` tillstånd.
 
-Det här exemplet anger namnet på virtuella datorn till **myVM**. Ersätt exempelnamnet med ditt eget namn på virtuell dator.
+Det här exemplet anger hello namn på virtuell dator för**myVM**. Ersätt hello Exempelnamn med ditt eget namn på virtuell dator.
 
 ```powershell
     $vmName = "myVM"
@@ -210,13 +210,13 @@ Det här exemplet anger namnet på virtuella datorn till **myVM**. Ersätt exemp
     $vm.VM.MigrationState
 ```
 
-Kontrollera konfigurationen för de förberedda resurserna med hjälp av PowerShell eller Azure-portalen. Om du inte är klar för migrering och du vill gå tillbaka till ett tidigare tillstånd, använder du följande kommando:
+Kontrollera hello-konfigurationen för hello förberedd resurser med hjälp av PowerShell eller hello Azure-portalen. Om du inte är klar för migrering och du vill toogo tillbaka toohello gamla tillstånd, använder du hello följande kommando:
 
 ```powershell
     Move-AzureService -Abort -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-Om den förberedda konfigurationen ser bra ut du gå vidare och genomför resurserna med hjälp av följande kommando:
+Om hello förberedda konfigurationen ser bra ut du gå vidare och genomför hello resurser med hjälp av hello följande kommando:
 
 ```powershell
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
@@ -224,66 +224,66 @@ Om den förberedda konfigurationen ser bra ut du gå vidare och genomför resurs
 
 ## <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Steg 6.1: Alternativ 2 – migrera virtuella datorer i ett virtuellt nätverk
 
-Om du vill migrera virtuella datorer i ett virtuellt nätverk, kan du migrera det virtuella nätverket. De virtuella datorerna migrera automatiskt med det virtuella nätverket. Välj det virtuella nätverk som du vill migrera.
+toomigrate virtuella datorer i ett virtuellt nätverk som du migrerar hello virtuellt nätverk. att migrera automatiskt hello virtuella datorer med hello virtuellt nätverk. Välj hello virtuella nätverk som du vill toomigrate.
 > [!NOTE]
-> [Migrera klassiska virtuell dator](migrate-single-classic-to-resource-manager.md) genom att skapa en ny Resource Manager virtuell dator med hanterade diskar med hjälp av VHD-(OS och data) filerna för den virtuella datorn.
+> [Migrera klassiska virtuell dator](migrate-single-classic-to-resource-manager.md) genom att skapa en ny Resource Manager virtuell dator med hanterade diskar med hjälp av hello VHD-(OS och data) filer för hello virtuell dator.
 <br>
 
 > [!NOTE]
-> Det virtuella nätverksnamnet kan skilja sig från vad som visas i den nya portalen. Den nya Azure-portalen visar namn som `[vnet-name]` men det faktiska virtuella nätverksnamnet är av typen `Group [resource-group-name] [vnet-name]`. Innan du migrerar, sökning faktiska virtuella nätverksnamn med hjälp av kommandot `Get-AzureVnetSite | Select -Property Name` eller visa i den gamla Azure-portalen. 
+> hello virtuella nätverksnamnet kan skilja sig från vad som anges i hello nya portalen. hello nya Azure-portalen visar hello namn som `[vnet-name]` men hello faktiska virtuella nätverksnamnet är av typen `Group [resource-group-name] [vnet-name]`. Innan du migrerar sökning hello faktiska virtuella nätverksnamnet hello kommandot `Get-AzureVnetSite | Select -Property Name` eller hello gamla Azure-portalen. 
 
-Det här exemplet anges det virtuella nätverksnamnet **myVnet**. Ersätt det virtuella nätverksnamnet exempel med din egen.
+Det här exemplet anger hello virtuella nätverksnamnet för**myVnet**. Ersätt hello Exempelnamn för virtuellt nätverk med din egen.
 
 ```powershell
     $vnetName = "myVnet"
 ```
 
 > [!NOTE]
-> Om det virtuella nätverket innehåller webb- eller arbetsroller eller virtuella datorer med konfigurationer som inte stöds, kan du få ett felmeddelande för verifiering.
+> Om hello virtuellt nätverk innehåller webb- eller arbetsroller eller virtuella datorer med konfigurationer som inte stöds, kan du få ett felmeddelande för verifiering.
 >
 >
 
-Verifiera först om du kan migrera det virtuella nätverket med hjälp av följande kommando:
+Verifiera först om du kan migrera hello virtuellt nätverk med hjälp av hello följande kommando:
 
 ```powershell
     Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 ```
 
-Föregående kommando visar alla varningar och fel som blockerar migrering. Om verifieringen lyckas, kan du fortsätta med följande förberedelsesteget:
+hello Visar föregående kommando alla varningar och fel som blockerar migrering. Om verifieringen lyckas, kan du fortsätta med hello följande förberedelsesteget:
 
 ```powershell
     Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
 ```
 
-Kontrollera konfigurationen för förberedda virtuella datorer med hjälp av Azure PowerShell eller Azure-portalen. Om du inte är klar för migrering och du vill gå tillbaka till ett tidigare tillstånd, använder du följande kommando:
+Kontrollera hello-konfigurationen för hello förbereda virtuella datorer med hjälp av Azure PowerShell eller hello Azure-portalen. Om du inte är klar för migrering och du vill toogo tillbaka toohello gamla tillstånd, använder du hello följande kommando:
 
 ```powershell
     Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName
 ```
 
-Om den förberedda konfigurationen ser bra ut du gå vidare och genomför resurserna med hjälp av följande kommando:
+Om hello förberedda konfigurationen ser bra ut du gå vidare och genomför hello resurser med hjälp av hello följande kommando:
 
 ```powershell
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
 ## <a name="step-62-migrate-a-storage-account"></a>Steg 6.2 Migrera ett lagringskonto
-När du är klar migrering av virtuella datorer, vi rekommenderar att du migrerar storage-konton.
+När du är klar migrera hello virtuella datorer, rekommenderar vi att du migrerar hello storage-konton.
 
-Utför föregående nödvändiga kontroller innan du migrerar storage-konto:
+Utför föregående nödvändiga kontroller innan du migrerar hello storage-konto:
 
-* **Migrera den klassiska virtuella datorer vars diskar lagras i storage-konto**
+* **Migrera den klassiska virtuella datorer vars diskar lagras i hello storage-konto**
 
-    Föregående kommando returnerar RoleName och DiskName egenskaper för alla klassiska Virtuella diskar i lagringskontot. RoleName är namnet på den virtuella datorn som en disk är ansluten. Om föregående kommando returnerar kontrollerar diskar att virtuella datorer till vilka diskarna är anslutna migreras innan du migrerar storage-konto.
+    Föregående kommando returnerar RoleName och DiskName egenskaper för alla hello klassiska Virtuella diskar i hello storage-konto. RoleName är hello namn hello virtuella toowhich en disk som är ansluten. Om föregående kommando returnerar diskar Se till att virtuella datorer toowhich diskarna är anslutna migreras innan du migrerar hello storage-konto.
     ```powershell
      $storageAccountName = 'yourStorageAccountName'
       Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
       DiskName | Format-List -Property RoleName, DiskName
 
     ```
-* **Ta bort beräkningsfunktionen klassiska Virtuella diskar som lagras i storage-konto**
+* **Ta bort beräkningsfunktionen klassiska Virtuella diskar som lagras i hello storage-konto**
 
-    Hitta beräkningsfunktionen klassiska Virtuella diskar i lagringen konto med hjälp av följande kommando:
+    Hitta beräkningsfunktionen klassiska Virtuella diskar i hello storage-konto med hjälp av följande kommando:
 
     ```powershell
         $storageAccountName = 'yourStorageAccountName'
@@ -295,56 +295,56 @@ Utför föregående nödvändiga kontroller innan du migrerar storage-konto:
     ```powershell
        Remove-AzureDisk -DiskName 'yourDiskName'
     ```
-* **Ta bort VM-avbildningar lagras i storage-konto**
+* **Ta bort VM-avbildningar lagras i hello storage-konto**
 
-    Föregående kommando returnerar alla VM-avbildningar med OS-disken som lagras i lagringskontot.
+    Föregående kommando returnerar alla hello VM-avbildningar med OS-disken som lagras i hello storage-konto.
      ```powershell
         Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
                                 } | Select-Object -Property ImageName, ImageLabel
      ```
-     Föregående kommando returnerar alla VM-avbildningar med datadiskar som lagras i lagringskontot.
+     Föregående kommando returnerar alla hello VM-avbildningar med datadiskar som lagras i hello storage-konto.
      ```powershell
 
         Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
                                          -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
                                         } | Select-Object -Property ImageName, ImageLabel
      ```
-    Ta bort alla VM-avbildningar som returneras av ovan kommandon med hjälp av föregående kommando:
+    Ta bort alla hello VM-avbildningar som returneras av ovan kommandon med hjälp av föregående kommando:
     ```powershell
     Remove-AzureVMImage -ImageName 'yourImageName'
     ```
 
-Verifiera varje lagringskonto för migrering med hjälp av följande kommando. I det här exemplet är lagringskontonamnet **Mittlagringskonto**. Ersätt namnet på exemplet med namnet på ditt eget lagringskonto.
+Verifiera varje lagringskonto för migrering med hjälp av följande kommando hello. I det här exemplet hello lagringskontonamnet är **Mittlagringskonto**. Ersätt hello Exempelnamn med hello namnet på ditt eget lagringskonto.
 
 ```powershell
     $storageAccountName = "myStorageAccount"
     Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
 ```
 
-Nästa steg är att förbereda storage-konto för migrering
+Nästa steg är tooPrepare hello lagringskonto för migrering
 
 ```powershell
     $storageAccountName = "myStorageAccount"
     Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
 ```
 
-Kontrollera konfigurationen för förberedda storage-konto med hjälp av Azure PowerShell eller Azure-portalen. Om du inte är klar för migrering och du vill gå tillbaka till ett tidigare tillstånd, använder du följande kommando:
+Kontrollera hello-konfigurationen för hello förberedd storage-konto med hjälp av Azure PowerShell eller hello Azure-portalen. Om du inte är klar för migrering och du vill toogo tillbaka toohello gamla tillstånd, använder du hello följande kommando:
 
 ```powershell
     Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
 ```
 
-Om den förberedda konfigurationen ser bra ut du gå vidare och genomför resurserna med hjälp av följande kommando:
+Om hello förberedda konfigurationen ser bra ut du gå vidare och genomför hello resurser med hjälp av hello följande kommando:
 
 ```powershell
     Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-* [Översikt över plattformar som stöds migrering av IaaS-resurser från klassiska till Azure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Tekniska ingående om plattformen stöds från klassiska till Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Planera för migrering av IaaS-resurser från klassisk till Azure Resource Manager](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Använda CLI för att migrera IaaS-resurser från klassiska till Azure Resource Manager](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Community-verktyg för att hjälpa till med migrering av IaaS-resurser från klassiska till Azure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Översikt över plattformar som stöds migrering av IaaS-resurser från klassiska tooAzure Resource Manager](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Tekniska ingående om plattformen stöds från klassiska tooAzure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Planera för migrering av IaaS-resurser från klassiska tooAzure Resource Manager](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Använd CLI toomigrate IaaS-resurser från klassiska tooAzure Resource Manager](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Community-verktyg för att hjälpa till med migrering av IaaS-resurser från klassiska tooAzure Resource Manager](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Granska de vanligaste migreringsfelen](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Granska de vanligaste frågorna om migrera IaaS-resurser från klassiska till Azure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Granska hello vanliga mest frågor om migrera IaaS-resurser från klassiska tooAzure Resource Manager](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

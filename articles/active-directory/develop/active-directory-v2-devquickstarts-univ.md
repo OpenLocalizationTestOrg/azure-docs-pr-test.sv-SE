@@ -1,6 +1,6 @@
 ---
-title: Azure AD v2.0 universell Windows-App | Microsoft Docs
-description: "Hur du skapar en universella Windows-app som loggar användarna in med både personliga Account och arbets-eller skolkonton."
+title: aaaAzure AD v2.0 universell Windows-App | Microsoft Docs
+description: "Hur toobuild en universella Windows-app som loggar användarna in med både personliga Account och arbets-eller skolkonton."
 services: active-directory
 documentationcenter: 
 author: jmprieur
@@ -15,21 +15,21 @@ ms.devlang: dotnet
 ms.date: 02/20/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 369802f1a42b8720aa730d5ac7e5576ed20eeddf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 49b26c74fa5a76664c3229256c9bd128563b830c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-sign-in-to-a-windows-universal-app-using-the-v20-endpoint"></a>Lägga till inloggning till en universell Windows-app med v2.0-slutpunkten
-  Snabbkurs i hur för universella Windows-appar inte är helt klar... Kom tillbaka snart & titta efter uppdateringar från @AzureAD på Twitter.
+# <a name="add-sign-in-tooa-windows-universal-app-using-hello-v20-endpoint"></a>Lägga till inloggning tooa universella Windows-app med hello v2.0-slutpunkten
+  hello Snabbkurs i hur för universella Windows-appar inte är helt klar... Kom tillbaka snart & titta efter uppdateringar från @AzureAD på Twitter.
 
 > [!NOTE]
-> Inte alla Azure Active Directory-scenarier och funktioner som stöds av v2.0-slutpunkten.  Läs mer om för att avgöra om du ska använda v2.0-slutpunkten [v2.0 begränsningar](active-directory-v2-limitations.md).
+> Inte alla Azure Active Directory-scenarier och funktioner som stöds av hello v2.0-slutpunkten.  toodetermine om du ska använda hello v2.0-slutpunkten Läs om [v2.0 begränsningar](active-directory-v2-limitations.md).
 > 
 > 
 
     ## Get security updates for our products
 
-Vi rekommenderar att du aktiverar aviseringar om säkerhetsincidenter genom att gå till [den här sidan](https://technet.microsoft.com/security/dd252948) och prenumerera på Microsoft Security Advisory-aviseringar.
+Vi rekommenderar att du tooget meddelanden om när säkerhetsincidenter genom att besöka [den här sidan](https://technet.microsoft.com/security/dd252948) och prenumerera tooSecurity Advisory-aviseringar.
 

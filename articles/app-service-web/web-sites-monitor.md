@@ -1,6 +1,6 @@
 ---
-title: "Övervaka appar i Azure App Service | Microsoft Docs"
-description: "Lär dig hur du övervakar appar i Azure App Service med hjälp av Azure-portalen."
+title: aaaMonitor appar i Azure App Service | Microsoft Docs
+description: "Lär dig hur toomonitor appar i Azure App Service med hjälp av hello Azure-portalen."
 services: app-service
 documentationcenter: 
 author: btardif
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: byvinyal
-ms.openlocfilehash: 25d3776920d683fffedcd8ac6ed0e84dfe875974
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 80d5a466102a894a49d04ae35aa54cc1d05a58df
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Så här: övervaka appar i Azure App Service
-[Apptjänst](http://go.microsoft.com/fwlink/?LinkId=529714) har inbyggda funktioner som övervakning för den [Azure Portal](https://portal.azure.com).
-Detta omfattar möjligheten att granska **kvoter** och **mått** för en app, samt App Service-plan, ställa in **aviseringar** och även **skalning**automatiskt baserat på de här måtten.
+[Apptjänst](http://go.microsoft.com/fwlink/?LinkId=529714) har inbyggda funktioner som övervakning för hello [Azure Portal](https://portal.azure.com).
+Detta inkluderar hello möjlighet tooreview **kvoter** och **mått** för en app, samt hello App Service-plan, ställa in **aviseringar** och även **skalning** automatiskt baserat på de här måtten.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="understanding-quotas-and-metrics"></a>Förstå kvoter och mått
 ### <a name="quotas"></a>Kvoter
-Program som finns i App Service regleras vissa *gränser* för de resurser som de kan använda. Gränserna som definieras av den **programtjänstplanen** associerat med appen.
+Program som finns i App Service är ämne toocertain *gränser* för de resurser som de kan använda. hello gränser har definierats av hello **programtjänstplanen** som är associerade med hello app.
 
-Om programmet finns i en **lediga** eller **delade** planera sedan gränser för de resurser som kan använda appen definieras av **kvoter**.
+Om programmet hello finns i en **lediga** eller **delade** planera sedan hello gränserna för hello resurser hello app kan använda definieras av **kvoter**.
 
-Om programmet finns i en **grundläggande**, **Standard** eller **Premium** planera sedan gränser för de resurser som de kan använda ställs in med den **storlek**(Small, Medium, stora) och **instansen antal** (1, 2, 3,...) av den **programtjänstplanen**.
+Om programmet hello finns i en **grundläggande**, **Standard** eller **Premium** planera sedan hello gränserna för hello resurser som de kan använda anges av hello **storlek** (Small, Medium, stora) och **instansen antal** (1, 2, 3,...) av hello **programtjänstplanen**.
 
 **Kvoter** för **lediga** eller **delade** appar är:
 
@@ -48,35 +48,35 @@ Om programmet finns i en **grundläggande**, **Standard** eller **Premium** plan
 * **Filsystem**
   * Totalt antal tillåtet lagringsutrymme.
 
-Kvoten som endast till appar som finns på **grundläggande**, **Standard** och **Premium** planer är **Filesystem**.
+Hej endast kvoten tillämpliga tooapps finns på **grundläggande**, **Standard** och **Premium** planer är **Filesystem**.
 
-Mer information om specifika kvoter, gränser och funktioner som är tillgängliga för olika App Service SKU hittar du här: [Tjänstbegränsningarna för Azure-prenumeration](../azure-subscription-service-limits.md#app-service-limits)
+Mer information om hello specifika kvoter, gränser och funktioner som är tillgängliga för hello olika App Service SKU: er hittar du här: [Tjänstbegränsningarna för Azure-prenumeration](../azure-subscription-service-limits.md#app-service-limits)
 
 #### <a name="quota-enforcement"></a>Kvoter
-Om ett program i användningen överskrider den **CPU (korta)**, **CPU (dag)**, eller **bandbredd** kvoten och programmet kommer att stoppas tills kvoten anger igen. Under denna tid kan alla förfrågningar som leder till en **HTTP 403**.
+Om ett program i användningen överskrider hello **CPU (korta)**, **CPU (dag)**, eller **bandbredd** kvot sedan hello programmet kommer att stoppas tills hello kvoten anger igen. Under denna tid kan alla förfrågningar som leder till en **HTTP 403**.
 ![][http403]
 
-Om programmet **minne** kvot har överskridits och programmet blir inte startats.
+Om programmet hello **minne** kvot har överskridits och sedan hello programmet blir startats.
 
-Om den **Filesystem** kvot har överskridits och sedan någon skriva misslyckas åtgärden, inklusive skrivs till loggarna.
+Om hello **Filesystem** kvot har överskridits och sedan någon skriva misslyckas åtgärden, inklusive skriva toologs.
 
 Kvoter kan ökas eller tas bort från din app genom att uppgradera din programtjänstplan.
 
 ### <a name="metrics"></a>Mått
-**Mått** innehåller information om appen eller App Service-plan beteende.
+**Mått** innehåller information om hello appen eller en App Service-plan beteende.
 
-För en **programmet**, tillgängliga mått är:
+För en **programmet**, hello tillgängliga mått är:
 
 * **Genomsnittlig svarstid**
-  * Genomsnittlig tid för appen att betjäna förfrågningar i ms.
+  * hello Genomsnittlig tid för hello app tooserve begäranden i ms.
 * **Genomsnittlig minne arbetsminne**
-  * Genomsnittlig mängd minne i MIB som används av appen.
+  * hello genomsnittlig mängd minne i MIB som används av hello app.
 * **CPU-tid**
-  * Mängden CPU i sekunder som används av appen. Mer information om den här mått finns: [vs CPU CPU-tid i procent](#cpu-time-vs-cpu-percentage)
+  * hello mycket Processorkraft i sekunder som används av hello app. Mer information om den här mått finns: [vs CPU CPU-tid i procent](#cpu-time-vs-cpu-percentage)
 * **Data i**
-  * Mängden inkommande bandbredd som används av appen i MIB.
+  * hello mängden inkommande bandbredd som används av hello app i MIB.
 * **Ut data**
-  * Mängden utgående bandbredd som används av appen i MIB.
+  * hello mängden utgående bandbredd som används av hello app i MIB.
 * **HTTP-2xx**
   * Antal begäranden som resulterar i en http-statuskod > = 200 men < 300.
 * **HTTP-3xx**
@@ -94,11 +94,11 @@ För en **programmet**, tillgängliga mått är:
 * **HTTP-fel**
   * Antal begäranden som resulterar i en http-statuskod > = 500, men < 600.
 * **Arbetsminnet för minne**
-  * Aktuell mängd minne som används av appen i MIB.
+  * Aktuell mängd minne som används av hello app i MIB.
 * **Begäranden**
   * Totalt antal begäranden oavsett deras resulterande HTTP-statuskod.
 
-För en **programtjänstplanen**, tillgängliga mått är:
+För en **programtjänstplanen**, hello tillgängliga mått är:
 
 > [!NOTE]
 > App Service-plan mått är bara tillgängliga för planer i **grundläggande**, **Standard** och **Premium** SKU.
@@ -106,58 +106,58 @@ För en **programtjänstplanen**, tillgängliga mått är:
 > 
 
 * **CPU-procent**
-  * Genomsnittlig CPU som används i alla instanser av planen.
+  * hello Genomsnittlig CPU-användning i alla instanser av hello plan.
 * **Minnesprocent**
-  * Det genomsnittliga minne som används i alla instanser av planen.
+  * hello genomsnittlig minne som används i alla instanser av hello plan.
 * **Data i**
-  * Genomsnittlig inkommande bandbredden som används i alla instanser av planen.
+  * hello genomsnittlig inkommande bandbredden som används i alla instanser av hello plan.
 * **Ut data**
-  * Den genomsnittliga utgående bandbredden som används i alla instanser av planen.
+  * hello medelvärdet utgående bandbredden som används i alla instanser av hello plan.
 * **Diskkölängd**
-  * Det genomsnittliga antalet både Skriv- och läsbegäranden som köade på lagring. En hög diskkölängd är en indikation på ett program som kan långsammare på grund av mycket i/o-disk.
+  * hello Genomsnittligt antal både Skriv- och läsbegäranden som köade på lagring. En hög diskkölängd är en indikation på ett program som kan långsammare på grund av i/o för tooexcessive disk.
 * **HTTP-Kölängd**
-  * Genomsnittligt antal HTTP-begäranden som hade till kön innan uppfylls. En hög eller ökande HTTP Kölängd är ett symtom på en plan vid hög belastning.
+  * hello Genomsnittligt antal HTTP-begäranden som hade toosit hello kön innan uppfylls. En hög eller ökande HTTP Kölängd är ett symtom på en plan vid hög belastning.
 
 ### <a name="cpu-time-vs-cpu-percentage"></a>Vs CPU CPU-tid i procent
-<!-- To do: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
+<!-- toodo: Fix Anchor (#CPU-time-vs.-CPU-percentage) -->
 
 Det finns 2 mått som avspeglar CPU-användning. **CPU-tid** och **CPU-procent**
 
-**CPU-tid** är användbart för appar som finns i **lediga** eller **delade** planer eftersom en av sina kvoter definieras i CPU minuter som används av appen.
+**CPU-tid** är användbart för appar som finns i **lediga** eller **delade** planer eftersom en av sina kvoter definieras i CPU minuter som används av hello app.
 
-**CPU-procent** å andra sidan är användbart för appar som finns i **grundläggande**, **standard** och **premium** planer eftersom de kan skaländras ut och det här måttet är en bra indikation på den totala användningen i alla instanser.
+**CPU-procent** på hello andra sidan är användbart för appar som finns i **grundläggande**, **standard** och **premium** planer eftersom de kan skaländras ut och mätvärdet är en bra indikation på hello totala användningen i alla instanser.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Mått granularitet och bevarandeprincip
-Mått för ett program och apptjänstplan loggas och sammanställs av tjänsten med följande granulariteter och bevarandeprinciper:
+Mått för ett program och app service-plan loggas och sammanställs efter hello tjänsten med hello efter granulariteter och bevarandeprinciper:
 
 * **Minut** granularitet mått bevaras för **48 timmarna**
 * **Timme** granularitet mått bevaras för **30 dagar**
 * **Dag** granularitet mått bevaras för **90 dagar**
 
-## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Övervakning av kvoter och mått i Azure-portalen.
-Du kan granska status för de olika **kvoter** och **mått** påverkar ett program i den [Azure Portal](https://portal.azure.com).
+## <a name="monitoring-quotas-and-metrics-in-hello-azure-portal"></a>Övervakning av kvoter och mått i hello Azure-portalen.
+Du kan granska hello status för olika hello **kvoter** och **mått** påverkar ett program i hello [Azure Portal](https://portal.azure.com).
 
 ![][quotas]
-**Kvoter** hittar du under Inställningar >**kvoter**. UX kan du granska: (1) kvoter namn, (2) intervallet för återställning, (3) den aktuella gränsen och (4) aktuella värde.
+**Kvoter** hittar du under Inställningar >**kvoter**. hello UX kan du granska: (1) hello kvoter namn, (2) intervallet för återställning, (3) den aktuella gränsen och (4) aktuella värde.
 
 ![][metrics]
-**Mått** kan vara åtkomst direkt från resursbladet. Du kan också anpassa i schemat: (1) **klickar du på** på och välj (2) **redigera diagram**.
-Härifrån kan du ändra (3) **tidsintervallet**, (4) **diagramtypen**, 5 **mått** ska visas.  
+**Mått** kan vara åtkomst direkt från hello-resursbladet. Du kan också anpassa hello diagram av: (1) **klickar du på** på och välj (2) **redigera diagram**.
+Härifrån kan du ändra hello (3) **tidsintervallet**, (4) **diagramtypen**, 5 **mått** toodisplay.  
 
 Du kan lära dig mer om här mått: [övervaka tjänsten](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md).
 
 ## <a name="alerts-and-autoscale"></a>Aviseringar och Autoskala
-Mätvärden för en App eller App Service-plan kan vara kopplad till aviseringar, mer information om det finns [få aviseringar](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
+Mätvärden för en App eller App Service-plan kan vara ansluten tooalerts toolearn mer om det finns [få aviseringar](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-Stöd för Apptjänst-appar finns i basic, standard eller premium Apptjänstplaner **Autoskala**. Detta kan du konfigurera regler som övervaka App Service-plan mått och kan öka eller minska instansantalet att ange ytterligare resurser som behövs eller sparar pengar när programmet är över etablera. Du kan lära dig mer om automatisk skalning här: [så skala](../monitoring-and-diagnostics/insights-how-to-scale.md) och här [bästa praxis för Azure-Monitor autoskalning](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
+Stöd för Apptjänst-appar finns i basic, standard eller premium Apptjänstplaner **Autoskala**. Detta ger dig tooconfigure regler som övervaka App Service-plan mått och kan öka eller minska hello instansantal för att ange ytterligare resurser som behövs eller sparar pengar när programmet hello är över etablera. Du kan lära dig mer om automatisk skalning här: [hur tooScale](../monitoring-and-diagnostics/insights-how-to-scale.md) och här [bästa praxis för Azure-Monitor autoskalning](../monitoring-and-diagnostics/insights-autoscale-best-practices.md)
 
 > [!NOTE]
-> Om du vill komma igång med Azure Apptjänst innan du registrerar dig för ett Azure-konto kan du gå till [Prova Apptjänst](https://azure.microsoft.com/try/app-service/). Där kan du direkt skapa en tillfällig startwebbapp i Apptjänst. Inget kreditkort krävs, och du gör inga åtaganden.
+> Om du vill tooget igång med Azure App Service innan du registrerar dig för ett Azure-konto går för[prova App Service](https://azure.microsoft.com/try/app-service/), där kan du direkt skapa en tillfällig startwebbapp i App Service. Inget kreditkort krävs, och du gör inga åtaganden.
 > 
 > 
 
 ## <a name="whats-changed"></a>Nyheter
-* En guide till övergången från Webbplatser till App Service finns i: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)
+* En guide toohello övergången från webbplatser tooApp tjänsten finns: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)
 
 [fzilla]:http://go.microsoft.com/fwlink/?LinkId=247914
 [vmsizes]:http://go.microsoft.com/fwlink/?LinkID=309169

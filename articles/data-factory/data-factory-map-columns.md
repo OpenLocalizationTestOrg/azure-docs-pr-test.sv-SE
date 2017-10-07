@@ -1,6 +1,6 @@
 ---
-title: Mappa dataset kolumner i Azure Data Factory | Microsoft Docs
-description: "Lär dig hur du mappar källkolumner till mål-kolumner."
+title: aaaMapping dataset kolumner i Azure Data Factory | Microsoft Docs
+description: "Lär dig hur toomap datakällan kolumner toodestination kolumner."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -13,31 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
-ms.openlocfilehash: a50661b377cfbbff3f1f762342cb275d5da82cea
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f78d4af675bec0a70e5f6e83ec1ffb511408b5a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>Mappa källkolumner dataset till mål-dataset kolumner
-Kolumnmappningen kan användas för att ange hur kolumner som anges i ”strukturen” för mappning av källan till kolumner anges i ”struktur” sink-tabellen. Den **columnMapping** egenskapen är tillgänglig i den **typeProperties** avsnittet för aktiviteten kopiera.
+# <a name="map-source-dataset-columns-toodestination-dataset-columns"></a>Mappa dataset kolumner toodestination dataset källkolumner
+Kolumnmappningen kan vara används toospecify hur kolumner som anges i hello källa tabell kartan toocolumns ”struktur” anges i hello ”struktur” sink-tabellen. Hej **columnMapping** egenskapen är tillgänglig i hello **typeProperties** avsnitt i hello kopieringsaktiviteten.
 
-Kolumnmappningen har stöd för följande scenarier:
+Kolumnmappningen stöder hello följande scenarier:
 
-* Alla kolumner i datauppsättning källstrukturen mappas till alla kolumner i datauppsättningsstrukturen mottagare.
-* En delmängd med kolumner i datauppsättningsstrukturen källan mappas till alla kolumner i datauppsättningsstrukturen mottagare.
+* Alla kolumner i datauppsättningsstrukturen för hello källa är mappade tooall kolumner i hello sink datauppsättningsstrukturen.
+* En delmängd av hello kolumner i datauppsättningsstrukturen för hello källa är mappade tooall kolumner i hello sink datauppsättningsstrukturen.
 
-Följande är felvillkor som resulterar i ett undantag:
+hello följande är felvillkor som resulterar i ett undantag:
 
-* Färre kolumner eller fler kolumner i ”struktur” sink tabell än anges i mappningen.
+* Färre kolumner eller fler kolumner i hello ”struktur” sink tabell än anges i hello mappning.
 * Duplicera mappning.
-* Resultat av SQL-fråga har inte ett kolumnnamn som anges i mappningen.
+* Resultat av SQL-fråga har inte ett kolumnnamn som anges i hello mappning.
 
 > [!NOTE]
-> Följande exempel gäller för alla datalager som har stöd för rektangulär datauppsättningar är för Azure SQL och Azure Blob. Justera dataset och länkade tjänstdefinitioner i exempel så att den pekar till data i den aktuella datakällan.
+> hello följande exempel är för Azure SQL och Azure Blob men tillämpliga tooany datalager som har stöd för rektangulär datauppsättningar. Justera dataset och länkade tjänstdefinitioner i exempel toopoint toodata i hello relevanta datakällan.
 
-## <a name="sample-1--column-mapping-from-azure-sql-to-azure-blob"></a>Exempel 1 – kolumnen mappning från Azure SQL till Azure-blob
-I det här exemplet indatatabellen har en struktur och pekar på en SQLtabell i Azure SQL-databas.
+## <a name="sample-1--column-mapping-from-azure-sql-tooazure-blob"></a>Exempel 1 – kolumnen från Azure SQL tooAzure blob
+I det här exemplet hello indatatabellen har en struktur och den tooa SQL-tabellen i en Azure SQL database.
 
 ```json
 {
@@ -70,7 +70,7 @@ I det här exemplet indatatabellen har en struktur och pekar på en SQLtabell i 
 }
 ```
 
-I det här exemplet utdatatabellen har en struktur och att den leder till en blobb i ett Azure blob storage.
+I det här exemplet hello utdatatabell har en struktur och den pekar tooa blob i ett Azure blob storage.
 
 ```json
 {
@@ -103,7 +103,7 @@ I det här exemplet utdatatabellen har en struktur och att den leder till en blo
 }
 ```
 
-Följande JSON definierar en kopia aktivitet i en pipeline. Kolumner från källan som är mappade till kolumnerna i kanalmottagare (**columnMappings**) med hjälp av den **översättare** egenskapen.
+hello följande JSON definierar en kopia aktivitet i en pipeline. hello kolumner från källan mappas toocolumns i kanalmottagare (**columnMappings**) med hjälp av hello **översättare** egenskapen.
 
 ```json
 {
@@ -137,8 +137,8 @@ Följande JSON definierar en kopia aktivitet i en pipeline. Kolumner från käll
 
 ![Kolumnen mappning flöde](./media/data-factory-map-columns/column-mapping-flow.png)
 
-## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-to-azure-blob"></a>Exempel 2 – kolumnen mappning med SQL-frågan från Azure SQL till Azure-blob
-I det här exemplet används en SQL-fråga för att extrahera data från Azure SQL i stället för att ange namnet på tabellen och kolumnnamnen i avsnittet ”struktur”. 
+## <a name="sample-2--column-mapping-with-sql-query-from-azure-sql-tooazure-blob"></a>Exempel 2 – kolumnen mappning med SQL-frågan från Azure SQL tooAzure blob
+I det här exemplet är en SQL-fråga används tooextract data från Azure SQL i stället för att ange hello tabellnamn, kolumnnamn med hello i avsnittet ”struktur”. 
 
 ```json
 {
@@ -170,13 +170,13 @@ I det här exemplet används en SQL-fråga för att extrahera data från Azure S
         }
 }
 ```
-I det här fallet mappas först resultatet av frågan till kolumner som anges i ”struktur” i datakällan. Därefter mappas kolumner från källan ”struktur” till kolumner i sink ”struktur” med regler som angetts i columnMappings.  Anta att frågan returnerar 5 kolumner, två fler kolumner än de som anges i källan ”struktur”.
+I det här fallet är hello frågeresultat första mappade toocolumns som anges i ”struktur” i datakällan. Därefter är hello kolumner från källan ”struktur” mappade toocolumns i kanalmottagare ”struktur” med regler som angetts i columnMappings.  Anta att hello frågan returnerar 5 kolumner, två fler kolumner än de som anges i hello ”struktur” i datakällan.
 
 **Kolumnen mappning flöde**
 
 ![Kolumnen mappning flödet-2](./media/data-factory-map-columns/column-mapping-flow-2.png)
 
 ## <a name="next-steps"></a>Nästa steg
-Se artikeln en genomgång om hur du använder Kopieringsaktiviteten: 
+Se hello artikeln en genomgång om hur du använder Kopieringsaktiviteten: 
 
-- [Kopiera data från Blob Storage till SQL-databas](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+- [Kopiera data från Blob Storage tooSQL databas](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)

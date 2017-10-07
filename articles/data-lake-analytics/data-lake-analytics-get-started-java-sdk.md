@@ -1,6 +1,6 @@
 ---
-title: "Använd Data Lake Analytics Java SDK för att utveckla program | Microsoft Docs"
-description: "Använd Azure Data Lake Analytics Java SDK för att utveckla program"
+title: aaaUse Data Lake Analytics Java SDK toodevelop program | Microsoft Docs
+description: "Använda Azure Data Lake Analytics Java SDK toodevelop program"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: 795d9ec0b0cac5d74673404f1d0d851393336df0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0d975812fe659ed34ee9befd37ee7c0bf50d3414
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-java-sdk"></a>Kom igång med Azure Data Lake Analytics med hjälp av Java SDK
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Lär dig hur du använder Azure Data Lake Analytics Java SDK för att skapa ett Azure Data Lake-konto och utföra grundläggande åtgärder, till exempel skapa mappar, ladda upp och hämta datafiler, ta bort ditt konto, och arbetar med jobb. Mer information om Data Lake finns [Azure Data Lake Analytics](data-lake-analytics-overview.md).
+Lär dig hur hello toouse Azure Data Lake Analytics Java SDK toocreate ett Azure Data Lake-konto och utföra grundläggande åtgärder som att skapa mappar, ladda upp och hämta datafiler, ta bort ditt konto, och arbetar med jobb. Mer information om Data Lake finns [Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
-I de här självstudierna utvecklar du ett Java-konsolprogram som innehåller exempel på vanliga administrativa uppgifter som att skapa testdata och skickar ett jobb.  Klicka på flikarna överst i det här avsnittet om du vill gå igenom samma självstudier med andra verktyg.
+I de här självstudierna utvecklar du ett Java-konsolprogram som innehåller exempel på vanliga administrativa uppgifter som att skapa testdata och skickar ett jobb.  toogo via hello stöds samma självstudier med andra verktyg, klicka på hello flikar på hello upp i det här avsnittet.
 
 ## <a name="prerequisites"></a>Krav
 * Java Development Kit (JDK) 8 (med Java version 1.8).
-* IntelliJ eller en annan lämplig Java Development Environment. Det här är valfritt men rekommenderas. Instruktionerna nedan använder IntelliJ
+* IntelliJ eller en annan lämplig Java Development Environment. Det här är valfritt men rekommenderas. hello instruktionerna nedan använder IntelliJ.
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Skapa ett program med Azure Active Directory (AAD) och hämta dess **klient-ID**, **innehavar-ID** och **nyckel**. Mer information om AAD-program och instruktioner för hur du hämtar ett klient-ID finns i [Skapa Active Directory-program och tjänstobjekt med portalen](../azure-resource-manager/resource-group-create-service-principal-portal.md). Svars-URI och nyckeln är också tillgängliga via portalen när du har skapat programmet och genererat nyckeln.
+* Skapa ett program med Azure Active Directory (AAD) och hämta dess **klient-ID**, **innehavar-ID** och **nyckel**. Mer information om AAD-program och anvisningar om hur tooget klient-ID finns [Skapa Active Directory-program och tjänstens huvudnamn med hjälp av portalen](../azure-resource-manager/resource-group-create-service-principal-portal.md). hello Reply URI och nyckel också vara tillgänglig från hello portal när du har hello program skapas och nyckeln genereras.
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Hur autentiserar jag med Azure Active Directory?
-Kodfragmentet nedan innehåller koden för **icke-interaktiv** autentisering, där programmet tillhandahåller egna autentiseringsuppgifter.
+hello kodfragmentet nedan innehåller koden för **icke-interaktiv** autentisering, där hello programmet tillhandahåller egna autentiseringsuppgifter.
 
-Du måste ge ditt program behörighet att skapa resurser i Azure för att dessa självstudier ska fungera. Det **rekommenderas starkt** att du endast ger det här programmet deltagarbehörighet till en ny, oanvänd och tom resursgrupp i din Azure-prenumeration för självstudierna.
+Du behöver toogive program behörighet toocreate resurser i Azure för den här självstudiekursen toowork. Det är **rekommenderas starkt** att du endast ger det här programmet deltagare behörigheter tooa ny, oanvänd och tom resursgrupp i Azure-prenumerationen för hello syftet med den här kursen.
 
 ## <a name="create-a-java-application"></a>Skapa ett Java-program
-1. Öppna IntelliJ och skapa ett nytt Java-projekt med mallen **Kommandoradsapp**.
-2. Högerklicka på projektet på vänster sida av skärmen och klicka på **Lägg till stöd för Framework**. Välj **Maven** och klicka på **OK**.
-3. Öppna den nyligen skapade filen **"pom.xml"** och lägg till följande fragment av text mellan taggen **\</version >** och **\</project>**:
+1. Öppna IntelliJ och skapa ett nytt Java-projekt med hello **Kommandoradsapp** mall.
+2. Högerklicka på projektet hello hello vänster på skärmen och klicka på **lägga till stöd för Framework**. Välj **Maven** och klicka på **OK**.
+3. Öppna hello nyskapad **”pom.xml”** och Lägg till följande fragment av text mellan hello hello  **\</version >** taggen och hello  **\< /project >** tagg:
 
     >[!NOTE]
-    >Det här steget är tillfällig tills Azure Data Lake Analytics-SDK är tillgänglig i Maven. Den här artikeln kommer att uppdateras när SDK är tillgänglig i Maven. Alla framtida uppdateringar till denna SDK blir tillgängliga via Maven.
+    >Det här steget är tillfällig tills hello Azure Data Lake Analytics SDK är tillgänglig i Maven. Den här artikeln kommer att uppdateras när hello SDK är tillgänglig i Maven. Alla framtida uppdateringar toothis SDK blir tillgängliga via Maven.
     >
 
         <repositories>
@@ -95,13 +95,13 @@ Du måste ge ditt program behörighet att skapa resurser i Azure för att dessa 
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
         </dependencies>
-4. Gå till **filen**, sedan **inställningar**, sedan **skapa**, **körning**, **distribution**. Välj **Byggverktygen**, **Maven**, **importera**. Kontrollera sedan **importera Maven-projekt automatiskt**.
-5. Öppna **Main.java** och Ersätt det befintliga kodblocket med följande kod. Ange dessutom värden för parametrarna som påpekas i kodfragmentet såsom **localFolderPath**, **_adlaAccountName**, **_adlsAccountName**, **_ resourceGroupName** och Ersätt platshållarna för **klient-ID**, **CLIENT-SECRET**, **klient-ID**, och  **PRENUMERATIONS-ID**.
+4. Gå för**filen**, sedan **inställningar**, sedan **skapa**, **körning**, **distribution**. Välj **Byggverktygen**, **Maven**, **importera**. Kontrollera sedan **importera Maven-projekt automatiskt**.
+5. Öppna **Main.java** och Ersätt hello befintliga kodblocket med hello följande kod. Dessutom ange hello värden för parametrarna som påpekas i kodfragmentet hello som **localFolderPath**, **_adlaAccountName**, **_adlsAccountName**, **_ resourceGroupName** och Ersätt platshållarna för **klient-ID**, **CLIENT-SECRET**, **klient-ID**, och  **PRENUMERATIONS-ID**.
 
-    Den här koden går igenom processen att skapa Data Lake Store och Data Lake Analytics-konton, skapa filer i arkivet, köra ett jobb, hämta jobbstatus, hämta jobbutdata och slutligen att ta bort kontot.
+    Den här koden går via hello processen att skapa Data Lake Store och Data Lake Analytics-konton, skapa filer i hello store kör ett jobb, hämtar jobbstatus, hämta jobbutdata och tar slutligen bort hello-konto.
 
    > [!NOTE]
-   > Det finns ett känt problem med tjänsten Azure Data Lake.  Om exempelprogrammet avbryts eller påträffar ett fel kan du behöva manuellt ta bort de Data Lake Store- och Data Lake Analytics-konton som skriptet skapar.  Om du inte känner till portalen kan du komma igång med hjälp av guiden [Hantera Azure Data Lake Analytics med hjälp av Azure Portal](data-lake-analytics-manage-use-portal.md).
+   > Det finns ett känt problem med hello Azure Data Lake-tjänsten.  Om hello exempelapp avbryts eller påträffar ett fel kan behöva toomanually delete hello Data Lake Store & Data Lake Analytics-konton som hello skriptet skapar.  Om du inte är bekant med hello Portal hello [hantera Azure Data Lake Analytics med hjälp av Azure Portal](data-lake-analytics-manage-use-portal.md) guide hjälper dig att komma igång.
    >
    >
 
@@ -149,9 +149,9 @@ Du måste ge ditt program behörighet att skapa resurser i Azure för att dessa 
                 _subId =  "<SUBSCRIPTION-ID>";
                 _clientId = "<CLIENT-ID>";
 
-                _clientSecret = "<CLIENT-SECRET>"; // TODO: For production scenarios, we recommend that you replace this line with a more secure way of acquiring the application client secret, rather than hard-coding it in the source code.
+                _clientSecret = "<CLIENT-SECRET>"; // TODO: For production scenarios, we recommend that you replace this line with a more secure way of acquiring hello application client secret, rather than hard-coding it in hello source code.
 
-                String localFolderPath = "C:\\local_path\\"; // TODO: Change this to any unused, new, empty folder on your local machine.
+                String localFolderPath = "C:\\local_path\\"; // TODO: Change this tooany unused, new, empty folder on your local machine.
 
                 // Authenticate
                 ApplicationTokenCredentials creds = new ApplicationTokenCredentials(_clientId, _tenantId, _clientSecret, null);
@@ -176,14 +176,14 @@ Du måste ge ditt program behörighet att skapa resurser i Azure för att dessa 
                 WaitForNewline("Accounts displayed.", "Creating files.");
 
                 // Create a file in Data Lake Store: input1.csv
-                // TODO: these change order in the next patch
+                // TODO: these change order in hello next patch
                 byte[] bytesContents = "123,abc".getBytes();
                 _adlsFileSystemClient.getFileSystemOperations().create(_adlsAccountName, "/input1.csv", bytesContents, true);
 
                 WaitForNewline("File created.", "Submitting a job.");
 
-                // Submit a job to Data Lake Analytics
-                UUID jobId = SubmitJobByScript("@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input TO @\"/output1.csv\" USING Outputters.Csv();", "testJob");
+                // Submit a job tooData Lake Analytics
+                UUID jobId = SubmitJobByScript("@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extractors.Csv(); OUTPUT @input too@\"/output1.csv\" USING Outputters.Csv();", "testJob");
                 WaitForNewline("Job submitted.", "Getting job status.");
 
                 // Wait for job completion and output job status
@@ -219,13 +219,13 @@ Du måste ge ditt program behörighet att skapa resurser i Azure för att dessa 
                 _adlaClient.setSubscriptionId(_subId);
             }
 
-            // Helper function to show status and wait for user input
+            // Helper function tooshow status and wait for user input
             public static void WaitForNewline(String reason, String nextAction)
             {
                 if (nextAction == null)
                     nextAction = "";
 
-                System.out.println(reason + "\r\nPress ENTER to continue...");
+                System.out.println(reason + "\r\nPress ENTER toocontinue...");
                 try{System.in.read();}
                 catch(Exception e){}
 
@@ -262,12 +262,12 @@ Du måste ge ditt program behörighet att skapa resurser i Azure för att dessa 
                 adlaParameters.setName(_adlaAccountName);
                 adlaParameters.setProperties(adlaProperties);
 
-                    /* If this line generates an error message like "The deep update for property 'DataLakeStoreAccounts' is not supported", please delete the ADLS and ADLA accounts via the portal and re-run your script. */
+                    /* If this line generates an error message like "hello deep update for property 'DataLakeStoreAccounts' is not supported", please delete hello ADLS and ADLA accounts via hello portal and re-run your script. */
 
                 _adlaClient.getAccountOperations().create(_resourceGroupName, _adlaAccountName, adlaParameters);
             }
 
-            //todo: this changes in the next version of the API
+            //todo: this changes in hello next version of hello API
             public static void CreateFile(String path, String contents, boolean force) throws IOException, CloudException {
                 byte[] bytesContents = contents.getBytes();
 
@@ -307,7 +307,7 @@ Du måste ge ditt program behörighet att skapa resurser i Azure för att dessa 
             }
 
             // Submit a U-SQL job by providing script contents.
-            // Returns the job ID
+            // Returns hello job ID
             public static UUID SubmitJobByScript(String script, String jobName) throws IOException, CloudException {
                 UUID jobId = java.util.UUID.randomUUID();
                 USqlJobProperties properties = new USqlJobProperties();
@@ -340,12 +340,12 @@ Du måste ge ditt program behörighet att skapa resurser i Azure för att dessa 
             }
         }
 
-1. Följ anvisningarna för att köra och slutföra programmet.
+1. Följ hello prompter toorun och fullständig hello program.
 
 ## <a name="see-also"></a>Se även
-* Klicka på flikväljarna överst på sidan om du vill se samma självstudier med andra verktyg.
-* Om du vill se en mer komplex fråga, se [Analysera webbplatsloggar med hjälp av Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Information om att utveckla U-SQL-program finns i [Utveckla U-SQL-skript med hjälp av Data Lake-verktyg för Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* Mer information om U-SQL finns i [Kom igång med Azure Data Lake Analytics U-SQL-språket](data-lake-analytics-u-sql-get-started.md) och [U-SQL-språkreferens](http://go.microsoft.com/fwlink/?LinkId=691348).
+* toosee hello samma självstudier med andra verktyg klickar du på hello flikväljarna överst hello hello-sidan.
+* toosee en mer komplex fråga, se [analysera webbplatsloggar med hjälp av Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
+* tooget utveckla U-SQL-program, se [utveckla U-SQL-skript med hjälp av Data Lake-verktyg för Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+* toolearn U-SQL finns [Kom igång med Azure Data Lake Analytics U-SQL-språket](data-lake-analytics-u-sql-get-started.md), och [U-SQL-Språkreferens](http://go.microsoft.com/fwlink/?LinkId=691348).
 * Information om hanteringsuppgifter finns i [Hantera Azure Data Lake Analytics med hjälp av Azure Portal](data-lake-analytics-manage-use-portal.md).
-* Om du vill få en översikt över Data Lake Analytics, se [Översikt över Azure Data Lake Analytics](data-lake-analytics-overview.md).
+* tooget en översikt över Data Lake Analytics finns [översikt över Azure Data Lake Analytics](data-lake-analytics-overview.md).

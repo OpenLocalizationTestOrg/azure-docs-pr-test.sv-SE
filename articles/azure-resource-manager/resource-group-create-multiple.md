@@ -1,6 +1,6 @@
 ---
-title: Distribuera flera instanser av Azure-resurser | Microsoft Docs
-description: "Använd kopieringen och matriser i en Azure Resource Manager-mall för att iterera flera gånger när du distribuerar resurser."
+title: aaaDeploy flera instanser av Azure-resurser | Microsoft Docs
+description: "Använda kopieringen och matriser i tooiterate en Azure Resource Manager-mall flera gånger när du distribuerar resurser."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: ed8e3081d2b2e07938d7cf3aa5f95f6dde81bc66
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a3bd42f694053317c30b639c33dc4efae41a9a9b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Distribuera flera instanser av en resurs eller en egenskap i Azure Resource Manager-mallar
-Det här avsnittet visar hur du iterera i Azure Resource Manager-mall för att skapa flera instanser av en resurs, eller flera instanser av en egenskap för en resurs.
+Det här avsnittet beskrivs hur du tooiterate i din Azure Resource Manager-mall toocreate flera instanser av en resurs eller flera instanser av en egenskap för en resurs.
 
-Om du behöver lägga till logik i mallen som du kan ange om en resurs har distribuerats, se [villkorligt distribuera resurs](#conditionally-deploy-resource).
+Om du behöver tooadd logik tooyour mall som du kan använda toospecify om en resurs har distribuerats, se [villkorligt distribuera resurs](#conditionally-deploy-resource).
 
 ## <a name="resource-iteration"></a>Resursen upprepning
-När du skapar flera instanser av en resurstyp, till en `copy` elementet för resurstypen. I elementet kopia anger du antalet upprepningar och ett namn för den här loop. Värdet för antal måste vara ett positivt heltal och får inte överskrida 800. Hanteraren för filserverresurser skapar resurserna parallellt. Den ordning som de har skapats kan därför inte garanteras. För att skapa hävdade resurser i följd, se [seriella kopiera](#serial-copy). 
+toocreate flera instanser av en resurstyp, lägga till en `copy` elementtypen toohello resurs. Ange hello antalet upprepningar och ett namn för den här loop i hello kopiera element. hello count-värdet måste vara ett positivt heltal och får inte överskrida 800. Hanteraren för filserverresurser skapar hello resurser parallellt. Därför kan inte garanteras hello ordning som de skapades. toocreate hävdade resurser i följd, se [seriella kopiera](#serial-copy). 
 
-Resursen ska skapa flera gånger tar följande format:
+hello resurs toocreate tar flera gånger hello följande format:
 
 ```json
 {
@@ -55,7 +55,7 @@ Resursen ska skapa flera gånger tar följande format:
 }
 ```
 
-Observera att varje resurs ingår i `copyIndex()` som returnerar den aktuella upprepningen i en slinga. `copyIndex()`är nollbaserade. Det, i följande exempel:
+Observera att hello varje resurs ingår hello `copyIndex()` som returnerar hello aktuella iteration i hello loop. `copyIndex()`är nollbaserade. I så fall hello följande exempel:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -67,7 +67,7 @@ Skapar dessa namn:
 * storage1
 * storage2.
 
-Om du vill förskjuta indexvärdet skickar du ett värde i funktionen copyIndex(). Antal iterationer för att utföra fortfarande har angetts i elementet kopia, men värdet för copyIndex förskjutas av det angivna värdet. Det, i följande exempel:
+indexvärdet för toooffset hello du skickar ett värde i hello copyIndex() funktion. hello antal upprepningar tooperform fortfarande anges i hello kopiera element, men hello värdet för copyIndex förskjutas av hello anges värdet. I så fall hello följande exempel:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -79,7 +79,7 @@ Skapar dessa namn:
 * storage2
 * storage3
 
-Kopieringen är användbart när du arbetar med matriser eftersom du kan söka igenom varje element i matrisen. Använd den `length` funktion på matrisen för att ange antalet för iterationer, och `copyIndex` att hämta det aktuella indexet i matrisen. Det, i följande exempel:
+hello kopieringsåtgärden är användbart när du arbetar med matriser eftersom du kan söka igenom varje element i matrisen hello. Använd hello `length` fungerar på hello matris toospecify hello-antal för iterationer, och `copyIndex` tooretrieve hello aktuellt index i hello matris. I så fall hello följande exempel:
 
 ```json
 "parameters": { 
@@ -112,9 +112,9 @@ Skapar dessa namn:
 
 ## <a name="serial-copy"></a>Seriell kopia
 
-När du använder elementet kopiera för att skapa flera instanser av en resurstyp, hanteraren för filserverresurser, som standard distribuerar dessa instanser parallellt. Du kanske vill ange att resurserna som distribueras i följd. Till exempel när du uppdaterar en produktionsmiljö måste du kanske vill sprida uppdateringar så bara ett visst antal uppdateras samtidigt.
+När du använder hello kopiera elementet toocreate flera instanser av en resurstyp, hanteraren för filserverresurser, som standard distribuerar dessa instanser parallellt. Men kanske du toospecify som hello resurser distribueras i följd. När du uppdaterar en produktionsmiljö, du kan exempelvis toostagger hello uppdateras så att bara ett visst antal uppdateras samtidigt.
 
-Resource Manager tillhandahåller egenskaper i elementet kopia som gör det möjligt att distribuera seriellt flera instanser. I elementet kopiera ange `mode` till **seriella** och `batchSize` med antalet instanser som ska distribueras i taget. Med seriella läge skapar Resource Manager ett beroende på tidigare instanser i en slinga så att den inte startar en batch tills den föregående batchen har slutförts.
+Resource Manager innehåller egenskaper för hello kopiera element som aktiverar du tooserially distribuera flera instanser. Hello kopiera element, ange `mode` för**seriella** och `batchSize` toohello antal instanser toodeploy i taget. Med seriella läge skapar Resource Manager ett beroende på tidigare instanser i hello loop så att den inte startar en batch tills hello föregående batchen har slutförts.
 
 ```json
 "copy": {
@@ -125,9 +125,9 @@ Resource Manager tillhandahåller egenskaper i elementet kopia som gör det möj
 },
 ```
 
-Egenskapen läget accepterar också **parallella**, vilket är standardvärdet.
+hello egenskap accepterar också **parallella**, vilket är standardvärdet för hello.
 
-Använd följande mall som distribuerar tom kapslade mallar för att testa seriella kopia utan att skapa verkliga resurser:
+tootest seriella kopia utan att skapa verkliga resurser används hello följande mall som distribuerar tom kapslade mallar:
 
 ```json
 {
@@ -170,11 +170,11 @@ Använd följande mall som distribuerar tom kapslade mallar för att testa serie
 }
 ```
 
-Observera att kapslade distributioner bearbetas i följd i distributionshistoriken för.
+Observera att hello kapslade distributioner bearbetas hello distributionshistoriken i följd.
 
 ![seriell distribution](./media/resource-group-create-multiple/serial-copy.png)
 
-För en mer realistisk scenario distribuerar i följande exempel två instanser samtidigt för en Linux-VM från en kapslad mall:
+För en mer realistisk scenariot distribuerar hello följande exempel två instanser samtidigt för en Linux-VM från en kapslad mall:
 
 ```json
 {
@@ -184,19 +184,19 @@ För en mer realistisk scenario distribuerar i följande exempel två instanser 
         "adminUsername": {
             "type": "string",
             "metadata": {
-                "description": "User name for the Virtual Machine."
+                "description": "User name for hello Virtual Machine."
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "Password for the Virtual Machine."
+                "description": "Password for hello Virtual Machine."
             }
         },
         "dnsLabelPrefix": {
             "type": "string",
             "metadata": {
-                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
+                "description": "Unique DNS Name for hello Public IP used tooaccess hello Virtual Machine."
             }
         },
         "ubuntuOSVersion": {
@@ -209,7 +209,7 @@ För en mer realistisk scenario distribuerar i följande exempel två instanser 
                 "16.04.0-LTS"
             ],
             "metadata": {
-                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
+                "description": "hello Ubuntu version for hello VM. This will pick a fully patched image of this given Ubuntu version."
             }
         }
     },
@@ -258,13 +258,13 @@ För en mer realistisk scenario distribuerar i följande exempel två instanser 
 
 ## <a name="property-iteration"></a>Egenskapen upprepning
 
-Om du vill skapa flera värden för en egenskap för en resurs lägger du till en `copy` matris i elementet egenskaper. Denna matris innehåller objekt och alla objekt som har följande egenskaper:
+toocreate flera värden för en egenskap för en resurs lägger du till en `copy` matris i hello egenskaper för elementet. Denna matris innehåller objekt och alla objekt har hello följande egenskaper:
 
-* namn – namnet på egenskapen för att skapa flera värden för
-* Antal - värden för att skapa
-* indata - ett objekt som innehåller värdena som att tilldela egenskapen  
+* namn - hello av hello egenskapen toocreate flera värden för
+* Antal - hello värden toocreate
+* indata - ett objekt som innehåller hello värden tooassign toohello egenskap  
 
-I följande exempel visas hur du använder `copy` dataDisks-egenskapen på en virtuell dator:
+följande exempel visar hur hello tooapply `copy` toohello dataDisks egenskapen på en virtuell dator:
 
 ```json
 {
@@ -285,9 +285,9 @@ I följande exempel visas hur du använder `copy` dataDisks-egenskapen på en vi
       ...
 ```
 
-Observera att när du använder `copyIndex` inuti en egenskapen iteration måste du ange namnet på upprepning. Du behöver inte ange namnet när det används med resurs iteration.
+Observera att när du använder `copyIndex` inuti en egenskapen iteration måste du ange hello namnet på hello iteration. Du har inte tooprovide hello namn när det används med resurs iteration.
 
-Hanteraren för filserverresurser expanderar den `copy` matris under distributionen. Namnet på matrisen blir namnet på egenskapen. Indatavärdena bli objektets egenskaper. Den distribuerade mallen blir:
+Resource Manager utökas hello `copy` matris under distributionen. hello namn för hello matrisen blir hello namnet på hello-egenskap. hello indatavärden bli hello objektets egenskaper. Det blir hello distribueras mallen:
 
 ```json
 {
@@ -316,7 +316,7 @@ Hanteraren för filserverresurser expanderar den `copy` matris under distributio
       ...
 ```
 
-Du kan använda resursen och egenskapen iteration tillsammans. Referens egenskapen iteration efter namn.
+Du kan använda resursen och egenskapen iteration tillsammans. Referens hello egenskapen iteration efter namn.
 
 ```json
 {
@@ -350,7 +350,7 @@ Du kan använda resursen och egenskapen iteration tillsammans. Referens egenskap
 }
 ```
 
-Du får bara innehålla ett kopiera element i egenskaperna för varje resurs. Definiera flera objekt i matrisen kopia om du vill ange en iteration loop för mer än en egenskap. Varje objekt är hävdade separat. Till exempel för att skapa flera instanser av både den `frontendIPConfigurations` egenskapen och `loadBalancingRules` egenskapen för en belastningsutjämnare definiera både objekt i en enda kopia-elementet: 
+Du får bara innehålla ett kopiera element i hello egenskaper för varje resurs. toospecify en iteration loop för mer än en egenskap, definiera flera objekt i hello Kopiera matris. Varje objekt är hävdade separat. Till exempel toocreate flera instanser av båda hello `frontendIPConfigurations` egenskap och hello `loadBalancingRules` egenskapen för en belastningsutjämnare definiera både objekt i en enda kopia-elementet: 
 
 ```json
 {
@@ -398,7 +398,7 @@ Du får bara innehålla ett kopiera element i egenskaperna för varje resurs. De
 ```
 
 ## <a name="depend-on-resources-in-a-loop"></a>Beroende av resurser i en loop
-Du anger att en resurs distribueras efter en annan resurs med hjälp av den `dependsOn` element. Ange namnet på kopian loop i dependsOn-elementet för att distribuera en resurs som är beroende av mängd resurser i en slinga. I följande exempel visas hur du distribuerar tre storage-konton innan du distribuerar den virtuella datorn. Fullständig definitionen för virtuell dator visas inte. Observera att kopiera elementet har name angivet till `storagecopy` och dependsOn-elementet för virtuella datorer har också `storagecopy`.
+Du anger att en resurs distribueras efter en annan resurs med hjälp av hello `dependsOn` element. toodeploy en resurs som är beroende av hello mängd resurser i en slinga ange hello namnet för hello kopiera loop i hello dependsOn-element. hello som följande exempel visar hur toodeploy tre storage-konton innan du distribuerar hello virtuell dator. hello fullständig definition av virtuell dator visas inte. Observera att kopiera hello-element har namn som angetts för`storagecopy` och hello dependsOn-element för hello virtuella datorer har också angetts för`storagecopy`.
 
 ```json
 {
@@ -434,7 +434,7 @@ Du anger att en resurs distribueras efter en annan resurs med hjälp av den `dep
 ```
 
 ## <a name="create-multiple-instances-of-a-child-resource"></a>Skapa flera instanser av en underordnad-resurs
-Du kan inte använda en kopia skapas för en underordnad resurs. Du måste i stället skapa resursen som översta resurs för att skapa flera instanser av en resurs som du vanligtvis definiera som kapslad i en annan resurs. Du definierar relationen med den överordnade resursen via egenskaperna typ och namn.
+Du kan inte använda en kopia skapas för en underordnad resurs. toocreate flera instanser av en resurs som du vanligtvis definiera som kapslas i en annan resurs, måste du i stället skapa resursen som översta resurs. Du definierar hello relation med hello överordnade resursen via egenskaper för hello typ och namn.
 
 Anta exempelvis att du definierar en datamängd vanligtvis som en underordnad resurs i en datafabrik.
 
@@ -456,11 +456,11 @@ Anta exempelvis att du definierar en datamängd vanligtvis som en underordnad re
 }]
 ```
 
-Om du vill skapa flera instanser av datauppsättningar flyttas utanför datafabriken. Dataset måste vara på samma nivå som data factory, men det är fortfarande en underordnad resurs i data factory. Du bevara relationen mellan datauppsättning och datafabriken via egenskaperna typ och namn. Eftersom typen inte kan härledas från dess position i mallen, måste du ange typen av fullständigt kvalificerat i formatet: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
+toocreate flera instanser av datauppsättningar, flyttas utanför hello data factory. hello dataset måste finnas på samma nivå som hello data factory hello, men det är fortfarande en underordnad resurs i hello data factory. Du bevara hello förhållandet mellan datauppsättning och datafabriken via egenskaper för hello typ och namn. Eftersom typen inte kan härledas från dess placering i hello mall, måste du ange hello fullständigt kvalificerade typen hello format: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
-Ange ett namn för den datamängd som innehåller namnet på överordnade resurs för att upprätta en överordnad-underordnad relation med en instans av datafabriken. Använd formatet: `{parent-resource-name}/{child-resource-name}`.  
+tooestablish en överordnad-underordnad relation med en instans av hello data factory, ange ett namn för hello datauppsättning som innehåller hello överordnade resursnamnet. Använd hello format: `{parent-resource-name}/{child-resource-name}`.  
 
-I följande exempel visas implementeringen:
+hello visar följande exempel hello implementering:
 
 ```json
 "resources": [
@@ -485,7 +485,7 @@ I följande exempel visas implementeringen:
 
 ## <a name="conditionally-deploy-resource"></a>Villkorligt distribuera resurs
 
-Anger om en resurs har distribuerats på `condition` element. Värdet för det här elementet matchar true eller false. När värdet är true, distribueras resursen. Om värdet är FALSKT har resursen inte distribuerats. Till exempel vill ange om ett nytt lagringskonto distribueras eller ett befintligt lagringskonto används, använder du:
+toospecify om en resurs har distribuerats, använda hello `condition` element. hello-värdet för det här elementet löser tootrue eller false. När hello-värdet är true, distribueras hello resurs. När hello-värdet är false har hello resursen inte distribuerats. Till exempel toospecify om ett nytt lagringskonto distribueras eller ett befintligt lagringskonto används, Använd:
 
 ```json
 {
@@ -504,9 +504,9 @@ Anger om en resurs har distribuerats på `condition` element. Värdet för det h
 
 Ett exempel på hur du använder en ny eller befintlig resurs finns [ny eller befintlig mall för villkoret](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).
 
-Ett exempel på med ett lösenord eller SSH-nyckel för att distribuera den virtuella datorn, se [användarnamn eller SSH villkoret mallen](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
+Ett exempel på med ett lösenord eller SSH-nyckel toodeploy virtuella finns [användarnamn eller SSH villkoret mallen](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
 
 ## <a name="next-steps"></a>Nästa steg
-* Om du vill veta om avsnitt i en mall finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
-* Information om hur du distribuerar mallen finns [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
+* Om du vill toolearn om hello avsnitt i en mall finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+* toolearn hur toodeploy din mall finns [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
 

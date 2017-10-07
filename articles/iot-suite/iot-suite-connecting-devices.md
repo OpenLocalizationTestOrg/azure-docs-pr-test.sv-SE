@@ -1,6 +1,6 @@
 ---
-title: "Ansluter en enhet med hjälp av C för Windows | Microsoft Docs"
-description: "Beskriver hur du ansluter en enhet till Azure IoT Suite förkonfigurerade fjärråtkomst övervakning lösningen med hjälp av ett program som skrivits i C som körs på Windows."
+title: "aaaConnect en enhet med hjälp av C för Windows | Microsoft Docs"
+description: "Beskriver hur tooconnect en enhet toohello Azure IoT Suite förkonfigurerade remote övervakningslösning som använder ett program som skrivits i C som körs på Windows."
 services: 
 suite: iot-suite
 documentationcenter: na
@@ -15,48 +15,48 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: d222bcbd64f288d4091acb0ecd2922b9ceee57e5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 51041e0cec113a5cfa006ab2276096baf928eef5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-windows"></a>Ansluta enheten till den fjärranslutna förkonfigurerade övervakningslösning (Windows)
+# <a name="connect-your-device-toohello-remote-monitoring-preconfigured-solution-windows"></a>Ansluta din enhet toohello remote förkonfigurerade övervakningslösning (Windows)
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 ## <a name="create-a-c-sample-solution-on-windows"></a>Skapa en C exempellösning i Windows
-Följande steg visar hur du skapar ett klientprogram som kommunicerar med fjärråtkomst övervakning förkonfigurerade lösningen. Det här programmet är skrivna i C och inbyggda och körs i Windows.
+hello följande steg visar hur toocreate ett klientprogram som kommunicerar med hello fjärrövervaknings förkonfigurerade lösningen. Det här programmet är skrivna i C och inbyggda och körs i Windows.
 
-Skapa ett starter-projekt i Visual Studio 2015 eller Visual Studio 2017 och Lägg till NuGet-paket IoT-hubb enheten klienten:
+Skapa ett starter-projekt i Visual Studio 2015 eller Visual Studio 2017 och Lägg till NuGet-paket för hello IoT-hubb enheten klienten:
 
-1. Skapa ett med hjälp av Visual C++ C-konsolprogram i Visual Studio **Win32-konsolprogram** mall. Namnge projektet **RMDevice**.
-2. På den **programinställningar** sidan i den **Win32 programguiden**, se till att **konsolprogrammet** är markerad och avmarkera **Precompiled huvudet** och **Security Development Lifecycle (SDL) kontrollerar**.
-3. I **Solution Explorer**, ta bort filer stdafx.h, targetver.h och stdafx.cpp.
-4. I **Solution Explorer**, Byt namn på filen RMDevice.cpp till RMDevice.c.
-5. I **Solution Explorer**, högerklicka på den **RMDevice** projektet och klicka sedan på **hantera NuGet-paket**. Klicka på **Bläddra**, och Sök efter och installera följande NuGet-paket:
+1. Skapa ett med hjälp av hello Visual C++ C-konsolprogram i Visual Studio **Win32-konsolprogram** mall. Namnet hello projektet **RMDevice**.
+2. På hello **programinställningar** sida i hello **Win32 programguiden**, se till att **konsolprogrammet** är markerad och avmarkera **Precompiled huvudet** och **Security Development Lifecycle (SDL) kontrollerar**.
+3. I **Solution Explorer**, ta bort hello filer stdafx.h, targetver.h och stdafx.cpp.
+4. I **Solution Explorer**, byta namn på hello filen RMDevice.cpp tooRMDevice.c.
+5. I **Solution Explorer**, högerklicka på hello **RMDevice** projektet och klicka sedan på **hantera NuGet-paket**. Klicka på **Bläddra**, och Sök efter och installera hello följande NuGet-paket:
    
    * Microsoft.Azure.IoTHub.Serializer
    * Microsoft.Azure.IoTHub.IoTHubClient
    * Microsoft.Azure.IoTHub.MqttTransport
-6. I **Solution Explorer**, högerklicka på den **RMDevice** projektet och klicka sedan på **egenskaper** att öppna projektets **egenskapssidor** i dialogrutan. Mer information finns i [Visual C++-projekt inställningsegenskaper][lnk-c-project-properties]. 
-7. Klicka på den **Linker** mappen, klicka sedan på den **indata** egenskapssidan.
-8. Lägg till **crypt32.lib** till den **Additional Dependencies** egenskapen. Klicka på **OK** och sedan **OK** igen för att spara projektet egenskapsvärden.
+6. I **Solution Explorer**, högerklicka på hello **RMDevice** projektet och klicka sedan på **egenskaper** tooopen hello projektet **egenskapssidor**dialogrutan. Mer information finns i [Visual C++-projekt inställningsegenskaper][lnk-c-project-properties]. 
+7. Klicka på hello **Linker** mappen, klicka på hello **indata** egenskapssidan.
+8. Lägg till **crypt32.lib** toohello **Additional Dependencies** egenskapen. Klicka på **OK** och sedan **OK** egenskapsvärden toosave igen hello-projekt.
 
-Lägg till Parson JSON-biblioteket till det **RMDevice** projekt och Lägg till de nödvändiga `#include` instruktioner:
+Lägg till hello Parson JSON biblioteket toohello **RMDevice** projekt och Lägg till hello krävs `#include` instruktioner:
 
-1. Klona Parson GitHub-lagret med hjälp av följande kommando i en lämplig mapp på datorn:
+1. Klona hello Parson GitHub-databas med hjälp av hello följande kommando i en lämplig mapp på datorn:
 
     ```
     git clone https://github.com/kgabis/parson.git
     ```
 
-1. Kopiera filerna parson.h och parson.c från den lokala kopian av databasen Parson till din **RMDevice** projektmappen.
+1. Kopiera hello parson.h och parson.c från hello lokal kopia av hello Parson databasen tooyour **RMDevice** projektmappen.
 
-1. I Visual Studio högerklickar du på den **RMDevice** projektet, klicka på **Lägg till**, och klicka sedan på **befintlig artikel**.
+1. I Visual Studio högerklickar du på hello **RMDevice** projektet, klicka på **Lägg till**, och klicka sedan på **befintlig artikel**.
 
-1. I den **Lägg till befintligt objekt** dialogrutan Välj parson.h och parson.c filer i den **RMDevice** projektmappen. Klicka på **Lägg till** att lägga till de här två filerna i projektet.
+1. I hello **Lägg till befintligt objekt** dialogrutan, Välj hello parson.h och parson.c filer i hello **RMDevice** projektmappen. Klicka på **Lägg till** tooadd dessa två filer tooyour projekt.
 
-1. Öppna filen RMDevice.c i Visual Studio. Ersätta den befintliga `#include` instruktioner med följande kod:
+1. Öppna hello RMDevice.c filen i Visual Studio. Ersätta befintliga hello `#include` instruktioner med hello följande kod:
    
     ```c
     #include "iothubtransportmqtt.h"
@@ -70,15 +70,15 @@ Lägg till Parson JSON-biblioteket till det **RMDevice** projekt och Lägg till 
     ```
 
     > [!NOTE]
-    > Nu kan du kontrollera att projektet har rätt beroenden konfigurera genom att skapa den.
+    > Nu kan du kontrollera att projektet har hello rätt beroenden konfigurera genom att skapa den.
 
 [!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
 
-## <a name="build-and-run-the-sample"></a>Skapa och köra exemplet
+## <a name="build-and-run-hello-sample"></a>Skapa och köra hello-exempel
 
-Lägg till kod för att anropa den **remote\_övervakning\_kör** fungera och sedan skapa och köra programmet för enheten.
+Lägg till kod tooinvoke hello **remote\_övervakning\_kör** fungera och sedan skapa och köra hello enhetsprogram.
 
-1. Ersätt den **huvudsakliga** funktionen med följande kod för att anropa den **remote\_övervakning\_kör** funktionen:
+1. Ersätt hello **huvudsakliga** funktionen med följande kod tooinvoke hello **remote\_övervakning\_kör** funktionen:
    
     ```c
     int main()
@@ -88,9 +88,9 @@ Lägg till kod för att anropa den **remote\_övervakning\_kör** fungera och se
     }
     ```
 
-1. Klicka på **skapa** och sedan **skapa lösning** att bygga enhetsprogram.
+1. Klicka på **skapa** och sedan **skapa lösning** toobuild hello enhetsprogram.
 
-1. I **Solution Explorer**, högerklicka på den **RMDevice** projektet, klicka på **felsöka**, och klicka sedan på **Starta ny instans** att köra exemplet. Konsolen visar meddelanden som programmet skickar exempel telemetri till den förkonfigurerade lösningen, tar emot önskade egenskapsvärden i lösningen instrumentpanelen och svarar på metoderna som anropas från instrumentpanelen lösning.
+1. I **Solution Explorer**, högerklicka på hello **RMDevice** projektet, klicka på **felsöka**, och klicka sedan på **Starta ny instans** toorun hello exempel. hello-konsolen visas meddelanden hello skickar exempel telemetri toohello förkonfigurerade lösningen, tar emot önskade egenskapsvärden i hello lösning instrumentpanelen och svarar toomethods anropas från hello lösning instrumentpanelen.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]
 

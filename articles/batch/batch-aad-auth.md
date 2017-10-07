@@ -1,6 +1,6 @@
 ---
-title: "Använda Azure Active Directory för att autentisera Azure Batch tjänstelösningar | Microsoft Docs"
-description: "Batch har stöd för Azure AD för autentisering från Batch-tjänsten."
+title: "aaaUse Azure Active Directory tooauthenticate Azure Batch-tjänstelösningar | Microsoft Docs"
+description: "Batch har stöd för Azure AD för autentisering från hello Batch-tjänsten."
 services: batch
 documentationcenter: .net
 author: tamram
@@ -15,48 +15,48 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/20/2017
 ms.author: tamram
-ms.openlocfilehash: 9c03bde919c46cd301229255c0b12ee69dda6f78
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6c825c30f1c80bb059a797a2e78367e599acd109
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Autentisera Batch tjänstelösningar med Active Directory
 
-Azure Batch stöder autentisering med [Azure Active Directory] [ aad_about] (Azure AD). Azure AD är Microsofts flera innehavare molnbaserad katalog och identity management-tjänsten. Azure själva använder Azure AD för att autentisera sina kunder, administratörer och organisationens användare.
+Azure Batch stöder autentisering med [Azure Active Directory] [ aad_about] (Azure AD). Azure AD är Microsofts flera innehavare molnbaserad katalog och identity management-tjänsten. Azure själva använder Azure AD tooauthenticate dess kunder, administratörer och användare i organisationer.
 
 När du använder Azure AD-autentisering med Azure Batch kan du autentisera i ett av två sätt:
 
-- Med hjälp av **integrerad autentisering** att autentisera en användare interagerar med programmet. Ett program med integrerad autentisering samlar in en användares autentiseringsuppgifter och använder dessa autentiseringsuppgifter för att autentisera åtkomst till Batch-resurser.
-- Med hjälp av en **tjänstens huvudnamn** att autentisera en oövervakad. Ett huvudnamn för tjänsten definierar principer och behörigheter för ett program för att kunna representera programmet vid åtkomst till resurser vid körning.
+- Med hjälp av **integrerad autentisering** tooauthenticate en användare som interagerar med programmet hello. Ett program med integrerad autentisering samlar in en användares autentiseringsuppgifter och använder dessa autentiseringsuppgifter tooauthenticate åtkomst tooBatch resurser.
+- Med hjälp av en **tjänstens huvudnamn** tooauthenticate en oövervakad. Ett huvudnamn för tjänsten definierar hello principer och behörigheter för ett program i ordning toorepresent hello program vid åtkomst till resurser vid körning.
 
-Mer information om Azure AD finns i [Azure Active Directory-dokumentationen](https://docs.microsoft.com/azure/active-directory/).
+toolearn mer om Azure AD finns hello [Azure Active Directory-dokumentationen](https://docs.microsoft.com/azure/active-directory/).
 
 ## <a name="authentication-and-pool-allocation-mode"></a>Läget för autentisering och pool allokering
 
-När du skapar ett Batch-konto kan ange du där pooler för detta konto bör tilldelas. Du kan välja att allokera pooler i standardabonnemang Batch-tjänsten eller i en prenumeration för användaren. Du väljer påverkar hur du autentiserar dig åtkomst till resurser i kontot.
+När du skapar ett Batch-konto kan ange du där pooler för detta konto bör tilldelas. Du kan välja tooallocate pooler i hello standardabonnemang Batch-tjänsten eller i en prenumeration för användaren. Du väljer påverkar hur du autentisera åtkomst tooresources på det kontot.
 
-- **Batch-tjänstprenumeration**. Som standard tilldelas Batch-pooler i en prenumeration på Batch-tjänsten. Om du väljer det här alternativet kan du kan autentisera åtkomst till resurser i kontot antingen med [delad nyckel](https://docs.microsoft.com/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service) eller med Azure AD.
-- **Användaren prenumeration.** Du kan välja att allokera Batch-pooler i en prenumeration för användare som du anger. Om du väljer det här alternativet måste du autentisera med Azure AD.
+- **Batch-tjänstprenumeration**. Som standard tilldelas Batch-pooler i en prenumeration på Batch-tjänsten. Om du väljer det här alternativet kan du kan autentisera åtkomst tooresources på det kontot antingen med [delad nyckel](https://docs.microsoft.com/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service) eller med Azure AD.
+- **Användaren prenumeration.** Du kan välja tooallocate Batch-pooler i en prenumeration för användare som du anger. Om du väljer det här alternativet måste du autentisera med Azure AD.
 
 ## <a name="endpoints-for-authentication"></a>Slutpunkter för autentisering
 
-Om du vill autentisera Batch-program med Azure AD, måste du inkludera vissa välkända slutpunkter i koden.
+tooauthenticate Batch-program med Azure AD, måste tooinclude vissa välkända slutpunkter i koden.
 
 ### <a name="azure-ad-endpoint"></a>Azure AD-slutpunkt
 
-Basen Azure AD myndighet slutpunkten är:
+grundläggande hello Azure AD myndighet slutpunkten är:
 
 `https://login.microsoftonline.com/`
 
-Om du vill autentisera med Azure AD, kan du använda den här slutpunkten tillsammans med klient-ID (katalog-ID). Klient-ID identifierar Azure AD-klienten ska användas för autentisering. Om du vill hämta klient-ID, Följ stegen som beskrivs i [hämta klient-ID för Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
+tooauthenticate med Azure AD, Använd den här slutpunkten tillsammans med hello klient-ID (katalog-ID). hello klient-ID identifierar hello Azure AD-klient toouse för autentisering. tooretrieve Hej klient-ID, Följ stegen i hello [hämta hello klient-ID för Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
 
 `https://login.microsoftonline.com/<tenant-id>`
 
 > [!NOTE] 
-> Klient-specifika slutpunkten krävs när du autentiserar med hjälp av ett huvudnamn för tjänsten. 
+> hello klient-specifika slutpunkt krävs när du autentiserar med hjälp av ett huvudnamn för tjänsten. 
 > 
-> Klient-specifika slutpunkten är valfritt när du autentiserar med integrerad autentisering, men rekommenderas. Du kan också använda den vanliga Azure AD-slutpunkten. Vanliga slutpunkten ger en allmän referens samla in gränssnittet när en viss klient inte har angetts. Vanliga slutpunkten är `https://login.microsoftonline.com/common`.
+> hello klient-specifika slutpunkt är valfritt när du autentiserar med integrerad autentisering, men rekommenderas. Du kan också använda vanliga hello Azure AD-slutpunkten. hello vanliga endpoint ger en allmän referens samla in gränssnittet när en viss klient inte har angetts. vanliga hello-slutpunkten är `https://login.microsoftonline.com/common`.
 >
 >
 
@@ -64,123 +64,123 @@ Läs mer om Azure AD-slutpunkter [Autentiseringsscenarier för Azure AD][aad_aut
 
 ### <a name="batch-resource-endpoint"></a>Slutpunkten för batch-resurs
 
-Använd den **Azure Batch resurs endpoint** att hämta en token för att autentisera förfrågningar till Batch-tjänsten:
+Använd hello **Azure Batch resurs endpoint** tooacquire en token för att autentisera begäranden toohello Batch-tjänsten:
 
 `https://batch.core.windows.net/`
 
 ## <a name="register-your-application-with-a-tenant"></a>Registrera ditt program till en klient
 
-Det första steget i att använda Azure AD för autentisering är registrera ditt program i en Azure AD-klient. Registrera ditt program kan du anropa Azure [Active Directory Authentication Library] [ aad_adal] (ADAL) från din kod. ADAL tillhandahåller ett API för att autentisera med Azure AD från ditt program. Registrera ditt program krävs om du planerar att använda integrerad autentisering eller ett huvudnamn för tjänsten.
+hello första steget i med hjälp av Azure AD tooauthenticate registrerar ditt program i en Azure AD-klient. Registrera ditt program kan du toocall hello Azure [Active Directory Authentication Library] [ aad_adal] (ADAL) från din kod. Hej ADAL tillhandahåller ett API för att autentisera med Azure AD från ditt program. Registrera ditt program krävs om du planerar toouse integrerad autentisering eller ett huvudnamn för tjänsten.
 
-När du registrerar ditt program kan ange du information om ditt program till Azure AD. Azure AD sedan innehåller ett program-ID som används för att associera ditt program med Azure AD under körning. Mer information om program-ID finns [program och tjänstens huvudnamn objekt i Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
+När du registrerar ditt program kan du ange information om ditt program tooAzure AD. Azure AD sedan innehåller ett program-ID som du använder tooassociate ditt program med Azure AD under körning. toolearn mer om hello program-ID, se [program och tjänstens huvudnamn objekt i Azure Active Directory](../active-directory/develop/active-directory-application-objects.md).
 
-Om du vill registrera din Batch-program, följer du stegen i den [lägga till ett program](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application) i avsnittet [integrera program med Azure Active Directory][aad_integrate]. Om du registrerar ditt program som det ursprungliga programmet kan du ange en giltig URI för den **omdirigerings-URI**. Det behöver inte vara en verklig slutpunkt.
+tooregister Batch programmet, följ hello stegen i hello [lägga till ett program](../active-directory/develop/active-directory-integrating-applications.md#adding-an-application) i avsnittet [integrera program med Azure Active Directory][aad_integrate]. Om du registrerar ditt program som det ursprungliga programmet kan du ange en giltig URI för hello **omdirigerings-URI**. Det behöver inte toobe en verklig slutpunkt.
 
-När du har registrerat ditt program, ser du det program-ID:
+När du har registrerat ditt program, ser du hello program-ID:
 
 ![Registrera ditt Batch-program med Azure AD](./media/batch-aad-auth/app-registration-data-plane.png)
 
 Mer information om hur du registrerar ett program med Azure AD finns [Autentiseringsscenarier för Azure AD](../active-directory/develop/active-directory-authentication-scenarios.md).
 
-## <a name="get-the-tenant-id-for-your-active-directory"></a>Hämta klient-ID för ditt Active Directory
+## <a name="get-hello-tenant-id-for-your-active-directory"></a>Hämta hello klient-ID för ditt Active Directory
 
-Klient-ID identifierar Azure AD-klient som tillhandahåller autentiseringstjänster för ditt program. Följ dessa steg för att hämta klient-ID:
+hello klient-ID identifierar hello Azure AD-klient som tillhandahåller autentisering services tooyour-programmet. tooget Hej klient-ID, gör du följande:
 
-1. Välj din Active Directory i Azure-portalen.
+1. Välj din Active Directory i hello Azure-portalen.
 2. Klicka på **Egenskaper**.
-3. Kopiera GUID-värde som angetts för directory-ID. Det här värdet kallas även för klient-ID.
+3. Kopiera hello GUID-värde för hello directory-ID. Det här värdet kallas även hello klient-ID.
 
-![Kopiera katalog-ID](./media/batch-aad-auth/aad-directory-id.png)
+![Kopiera hello katalog-ID](./media/batch-aad-auth/aad-directory-id.png)
 
 
 ## <a name="use-integrated-authentication"></a>Använda integrerad autentisering
 
-Du måste ge ditt program behörighet att ansluta till API för Batch-tjänsten för att autentisera med integrerad autentisering. Det här steget gör att programmet kan autentisera anrop till API för Batch-tjänsten med Azure AD.
+tooauthenticate med integrerad autentisering måste du toogrant ditt program behörighet tooconnect toohello API för Batch-tjänsten. Det här steget kan ditt program tooauthenticate anrop toohello Batch-tjänsten API med Azure AD.
 
-När du har [registrerade programmet](#register-your-application-with-an-azure-ad-tenant), Följ dessa steg i Azure portal för att bevilja åtkomst till Batch-tjänsten:
+När du har [registrerade programmet](#register-your-application-with-an-azure-ad-tenant), Följ dessa steg i hello Azure portal toogrant den komma åt toohello Batch-tjänsten:
 
-1. I det vänstra navigeringsfönstret i Azure portal väljer **fler tjänster**, klickar du på **App registreringar**.
-2. Sök efter namnet på programmet i listan över app registreringar:
+1. Hello vänstra navigeringsfönstret för hello Azure-portalen och väljer **fler tjänster**, klickar du på **App registreringar**.
+2. Sök efter hello namnet på ditt program i hello lista över app registreringar:
 
     ![Sök efter programnamnet](./media/batch-aad-auth/search-app-registration.png)
 
-3. Öppna den **inställningar** bladet för ditt program. I den **API-åtkomst** väljer **nödvändiga behörigheter**.
-4. I den **nödvändiga behörigheter** bladet, klickar du på den **Lägg till** knappen.
-5. I steg 1 ska söka efter Batch-API. Sök efter var och en av de här strängarna tills du hittar API:t:
+3. Öppna hello **inställningar** bladet för ditt program. I hello **API-åtkomst** väljer **nödvändiga behörigheter**.
+4. I hello **nödvändiga behörigheter** bladet, klickar du på hello **Lägg till** knappen.
+5. I steg 1 ska söka efter hello Batch-API. Sök efter var och en av de här strängarna tills du hittar hello-API:
     1. **MicrosoftAzureBatch**.
     2. **Microsoft Azure Batch**. Nyare Azure AD-klientorganisationer kan använda det här namnet.
-    3. **ddbf3205-c6bd-46ae-8127-60eb93363864** är id:t för API:t. 
-6. När du har hittat Batch-API, markerar du den och klicka på den **Välj** knappen.
-6. I steg 2, markerar du kryssrutan bredvid **Azure Batch-tjänsten för dataåtkomst** och klicka på den **Välj** knappen.
-7. Klicka på den **klar** knappen.
+    3. **ddbf3205-c6bd-46ae-8127-60eb93363864** är hello-ID för hello Batch-API. 
+6. När du har hittat hello Batch-API och på hello **Välj** knappen.
+6. I steg 2, Välj hello kryssrutan bredvid för**Azure Batch-tjänsten för dataåtkomst** och klicka på hello **Välj** knappen.
+7. Klicka på hello **klar** knappen.
 
-Den **nödvändiga behörigheter** bladet nu visar att din Azure AD-program har åtkomst till både ADAL och batchen service API. Behörigheter som ADAL automatiskt när du först registrera din app med Azure AD.
+Hej **nödvändiga behörigheter** bladet nu visas som Azure AD-program har åtkomst till tooboth ADAL och hello API för Batch-tjänsten. Behörigheter tooADAL automatiskt när du först registrera din app med Azure AD.
 
 ![Bevilja API-behörigheter](./media/batch-aad-auth/required-permissions-data-plane.png)
 
 ## <a name="use-a-service-principal"></a>Använd ett huvudnamn för tjänsten 
 
-Om du vill autentisera ett program som körs obevakad, kan du använda ett huvudnamn för tjänsten. När du har registrerat ditt program, Följ dessa steg i Azure portal för att konfigurera ett huvudnamn för tjänsten:
+tooauthenticate ett program som körs obevakad, Använd ett huvudnamn för tjänsten. När du har registrerat ditt program, gör du så här i hello Azure portal tooconfigure en tjänstens huvudnamn:
 
 1. Begär en hemlig nyckel för ditt program.
-2. Tilldela en RBAC-roll i tillämpningsprogrammet.
+2. Tilldela ett RBAC rollen tooyour program.
 
 ### <a name="request-a-secret-key-for-your-application"></a>Begär en hemlig nyckel för ditt program
 
-När programmet autentiseras med en tjänst som skickar både program-ID och en hemlig nyckel till Azure AD. Du måste skapa och kopiera den hemliga nyckeln ska användas från din kod.
+När programmet autentiseras med ett huvudnamn för tjänsten skickar den både hello program-ID och hemlig nyckel tooAzure AD. Du behöver toocreate och kopiera hello hemlig nyckel toouse från din kod.
 
-Följ dessa steg i Azure-portalen:
+Följ anvisningarna i hello Azure-portalen:
 
-1. I det vänstra navigeringsfönstret i Azure portal väljer **fler tjänster**, klickar du på **App registreringar**.
-2. Sök efter namnet på programmet i listan över app registreringar.
-3. Visa den **inställningar** bladet. I den **API-åtkomst** väljer **nycklar**.
-4. Ange en beskrivning av nyckeln för att skapa en nyckel. Välj sedan en varaktighet för nyckeln för en eller två år. 
-5. Klicka på den **spara** för att skapa och visa nyckeln. Kopiera värdet för nyckeln till en säker plats som du inte åtkomst till den igen när du lämnar bladet. 
+1. Hello vänstra navigeringsfönstret för hello Azure-portalen och väljer **fler tjänster**, klickar du på **App registreringar**.
+2. Sök efter hello namnet på ditt program i hello lista över app registreringar.
+3. Visa hello **inställningar** bladet. I hello **API-åtkomst** väljer **nycklar**.
+4. toocreate en nyckel, ange en beskrivning för hello nyckeln. Välj sedan en varaktighet för hello nyckeln för en eller två år. 
+5. Klicka på hello **spara** knappen toocreate och visa hello nyckel. Kopiera hello nyckelvärdet tooa säker plats som du inte kan tooaccess den igen när du lämnar hello-bladet. 
 
     ![Skapa en hemlig nyckel](./media/batch-aad-auth/secret-key.png)
 
-### <a name="assign-an-rbac-role-to-your-application"></a>Tilldela en RBAC roll till ditt program
+### <a name="assign-an-rbac-role-tooyour-application"></a>Tilldela ett RBAC rollen tooyour program
 
-För att autentisera med en tjänstens huvudnamn, måste du tilldela en RBAC-roll i tillämpningsprogrammet. Följ de här stegen:
+tooauthenticate med ett huvudnamn för tjänsten måste tooassign ett RBAC rollen tooyour program. Följ de här stegen:
 
-1. Navigera till Batch-kontot som används av ditt program i Azure-portalen.
-2. I den **inställningar** bladet för Batch-kontot väljer **Access Control (IAM)**.
-3. Klicka på den **Lägg till** knappen. 
-4. Från den **rollen** listrutan och välj någon av _deltagare_ eller _Reader_ roll för ditt program. Mer information om dessa roller finns [Kom igång med rollbaserad åtkomstkontroll i Azure portal](../active-directory/role-based-access-control-what-is.md).  
-5. I den **Välj** anger du namnet på ditt program. Markera programmet i listan och klickar på **spara**.
+1. Navigera toohello Batch-kontot som används av programmet hello Azure-portalen.
+2. I hello **inställningar** bladet för hello Batch-kontot, Välj **Access Control (IAM)**.
+3. Klicka på hello **Lägg till** knappen. 
+4. Från hello **rollen** listrutan, Välj antingen hello _deltagare_ eller _Reader_ roll för ditt program. Mer information om dessa roller finns [Kom igång med rollbaserad åtkomstkontroll i hello Azure-portalen](../active-directory/role-based-access-control-what-is.md).  
+5. I hello **Välj** anger hello namnet på ditt program. Välj programmet hello listan och klickar på **spara**.
 
 Ditt program bör nu visas i dina inställningar för åtkomstkontroll med en RBAC-roll som tilldelats. 
 
-![Tilldela en RBAC roll till ditt program](./media/batch-aad-auth/app-rbac-role.png)
+![Tilldela ett RBAC rollen tooyour program](./media/batch-aad-auth/app-rbac-role.png)
 
-### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>Hämta klient-ID för Azure Active Directory
+### <a name="get-hello-tenant-id-for-your-azure-active-directory"></a>Hämta hello klient-ID för Azure Active Directory
 
-Klient-ID identifierar Azure AD-klient som tillhandahåller autentiseringstjänster för ditt program. Följ dessa steg för att hämta klient-ID:
+hello klient-ID identifierar hello Azure AD-klient som tillhandahåller autentisering services tooyour-programmet. tooget Hej klient-ID, gör du följande:
 
-1. Välj din Active Directory i Azure-portalen.
+1. Välj din Active Directory i hello Azure-portalen.
 2. Klicka på **Egenskaper**.
-3. Kopiera GUID-värde som angetts för directory-ID. Det här värdet kallas även för klient-ID.
+3. Kopiera hello GUID-värde för hello directory-ID. Det här värdet kallas även hello klient-ID.
 
-![Kopiera katalog-ID](./media/batch-aad-auth/aad-directory-id.png)
+![Kopiera hello katalog-ID](./media/batch-aad-auth/aad-directory-id.png)
 
 
 ## <a name="code-examples"></a>Kodexempel
 
-Kodexemplen i det här avsnittet visar hur du autentisera med Azure AD med hjälp av integrerad autentisering och ett huvudnamn för tjänsten. Dessa kodexempel använda .NET, men begrepp som är liknande för andra språk.
+hello kodexempel i det här avsnittet visar hur tooauthenticate med hjälp av Azure AD-integrerad autentisering och med ett huvudnamn för tjänsten. Dessa kodexempel använda .NET, men hello begrepp är liknande för andra språk.
 
 > [!NOTE]
-> En Azure AD authentication token upphör att gälla efter en timme. När du använder en långlivade **BatchClient** objekt, rekommenderar vi att du hämtar en token från ADAL för varje begäran att säkerställa att du alltid har en giltig token. 
+> En Azure AD authentication token upphör att gälla efter en timme. När du använder en långlivade **BatchClient** objekt, rekommenderar vi att du hämtar en token från ADAL på varje begäran tooensure du alltid har en giltig token. 
 >
 >
-> För att uppnå i .NET skriva en metod som hämtar en token från Azure AD och överför denna metod för att en **BatchTokenCredentials** objektet som ett ombud. Delegate-metoden anropas för varje begäran att Batch-tjänsten för att säkerställa att en giltig token. Som standard cachelagrar ADAL-token så att en ny token hämtas från Azure AD bara när det behövs. Mer information om token i Azure AD finns [Autentiseringsscenarier för Azure AD][aad_auth_scenarios].
+> tooachieve detta i .NET, skriva en metod som hämtar hello-token från Azure AD och överför den metoden tooa **BatchTokenCredentials** objektet som ett ombud. hello ombud metoden anropas för varje begäran toohello Batch-tjänsten tooensure som en giltig token har angetts. Som standard cachelagrar ADAL-token så att en ny token hämtas från Azure AD bara när det behövs. Mer information om token i Azure AD finns [Autentiseringsscenarier för Azure AD][aad_auth_scenarios].
 >
 >
 
 ### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Exempel: använda Azure AD-integrerad autentisering med Batch .NET
 
-Om du vill autentisera med integrerad autentisering från Batch .NET, referera till den [Azure Batch .NET](https://www.nuget.org/packages/Azure.Batch/) paketet och [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) paketet.
+tooauthenticate med integrerad autentisering från Batch .NET referens hello [Azure Batch .NET](https://www.nuget.org/packages/Azure.Batch/) paket- och hello [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) paketet.
 
-Inkludera följande `using` instruktioner i koden:
+Inkludera hello följande `using` instruktioner i koden:
 
 ```csharp
 using Microsoft.Azure.Batch;
@@ -188,13 +188,13 @@ using Microsoft.Azure.Batch.Auth;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Referens för Azure AD-slutpunkt i din kod, inklusive klient-ID. Om du vill hämta klient-ID, Följ stegen som beskrivs i [hämta klient-ID för Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
+Referens hello Azure AD-slutpunkt i din kod, inklusive hello klient-ID. tooretrieve Hej klient-ID, Följ stegen i hello [hämta hello klient-ID för Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
 
 ```csharp
 private const string AuthorityUri = "https://login.microsoftonline.com/<tenant-id>";
 ```
 
-Resursen tjänstslutpunkten Batch-referens:
+Referera till hello Batch tjänstslutpunkten resurs:
 
 ```csharp
 private const string BatchResourceUri = "https://batch.core.windows.net/";
@@ -206,26 +206,26 @@ Referera till Batch-kontot:
 private const string BatchAccountUrl = "https://myaccount.mylocation.batch.azure.com";
 ```
 
-Ange program-ID (klient-ID) för ditt program. Program-ID är tillgänglig från din appregistrering i Azure-portalen:
+Ange hello program-ID (klient-ID) för ditt program. hello program-ID är tillgänglig från din appregistrering i hello Azure-portalen:
 
 ```csharp
 private const string ClientId = "<application-id>";
 ```
 
-Också kopiera omdirigerings-URI som du angav under registreringen. Omdirigerings-URI som angetts i din kod måste matcha omdirigerings-URI som du angav när du registrerade programmet:
+Också kopiera hello omdirigerings-URI som du angav under hello registreringsprocessen. Hej omdirigerings-URI som anges i din kod måste matcha hello omdirigerings-URI som du angav när du registrerade programmet hello:
 
 ```csharp
 private const string RedirectUri = "http://mybatchdatasample";
 ```
 
-Skriva en metod för att hämta autentiseringstoken från Azure AD. Den **GetAuthenticationTokenAsync** Återanropsmetoden som visas här anrop ADAL att autentisera en användare som interagerar med programmet. Den **AcquireTokenAsync** metod som tillhandahålls av ADAL efterfrågar sina autentiseringsuppgifter och programmet fortsätter när användaren anger dem (om det redan har cachelagrade autentiseringsuppgifter):
+Skriva ett återanrop metoden tooacquire hello autentiseringstoken från Azure AD. Hej **GetAuthenticationTokenAsync** Återanropsmetoden som visas här anropar ADAL tooauthenticate när en användare interagerar med programmet hello. Hej **AcquireTokenAsync** metoden tillhandahålls av ADAL prompter hello användaren sina autentiseringsuppgifter och hello programmet fortsätter när hello användare ger dem (om det redan har cachelagrade autentiseringsuppgifter):
 
 ```csharp
 public static async Task<string> GetAuthenticationTokenAsync()
 {
     var authContext = new AuthenticationContext(AuthorityUri);
 
-    // Acquire the authentication token from Azure AD.
+    // Acquire hello authentication token from Azure AD.
     var authResult = await authContext.AcquireTokenAsync(BatchResourceUri, 
                                                         ClientId, 
                                                         new Uri(RedirectUri), 
@@ -235,7 +235,7 @@ public static async Task<string> GetAuthenticationTokenAsync()
 }
 ```
 
-Skapa en **BatchTokenCredentials** objekt som tar ombudet som en parameter. Använd dessa autentiseringsuppgifter för att öppna en **BatchClient** objekt. Du kan använda som **BatchClient** objekt för efterföljande åtgärder mot Batch-tjänsten:
+Skapa en **BatchTokenCredentials** objekt som tar hello delegat som en parameter. Använd dessa autentiseringsuppgifter tooopen en **BatchClient** objekt. Du kan använda som **BatchClient** objekt för efterföljande åtgärder mot hello Batch-tjänsten:
 
 ```csharp
 public static async Task PerformBatchOperations()
@@ -251,9 +251,9 @@ public static async Task PerformBatchOperations()
 
 ### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Exempel: med hjälp av en Azure AD-tjänstens huvudnamn med Batch .NET
 
-Om du vill autentisera med ett huvudnamn för tjänsten från Batch .NET, referera till den [Azure Batch .NET](https://www.nuget.org/packages/Azure.Batch/) paketet och [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) paketet.
+tooauthenticate med ett huvudnamn för tjänsten från Batch .NET referens hello [Azure Batch .NET](https://www.nuget.org/packages/Azure.Batch/) paket- och hello [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) paketet.
 
-Inkludera följande `using` instruktioner i koden:
+Inkludera hello följande `using` instruktioner i koden:
 
 ```csharp
 using Microsoft.Azure.Batch;
@@ -261,13 +261,13 @@ using Microsoft.Azure.Batch.Auth;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Referens för Azure AD-slutpunkt i din kod, inklusive klient-ID. Du måste ange en slutpunkt för klienten när du använder ett huvudnamn för tjänsten. Om du vill hämta klient-ID, Följ stegen som beskrivs i [hämta klient-ID för Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
+Referens hello Azure AD-slutpunkt i din kod, inklusive hello klient-ID. Du måste ange en slutpunkt för klienten när du använder ett huvudnamn för tjänsten. tooretrieve Hej klient-ID, Följ stegen i hello [hämta hello klient-ID för Azure Active Directory](#get-the-tenant-id-for-your-active-directory):
 
 ```csharp
 private const string AuthorityUri = "https://login.microsoftonline.com/<tenant-id>";
 ```
 
-Resursen tjänstslutpunkten Batch-referens:  
+Referera till hello Batch tjänstslutpunkten resurs:  
 
 ```csharp
 private const string BatchResourceUri = "https://batch.core.windows.net/";
@@ -279,19 +279,19 @@ Referera till Batch-kontot:
 private const string BatchAccountUrl = "https://myaccount.mylocation.batch.azure.com";
 ```
 
-Ange program-ID (klient-ID) för ditt program. Program-ID är tillgänglig från din appregistrering i Azure-portalen:
+Ange hello program-ID (klient-ID) för ditt program. hello program-ID är tillgänglig från din appregistrering i hello Azure-portalen:
 
 ```csharp
 private const string ClientId = "<application-id>";
 ```
 
-Ange den hemliga nyckeln som du kopierade från Azure portal:
+Ange hello hemlig nyckel som du kopierade från hello Azure-portalen:
 
 ```csharp
 private const string ClientKey = "<secret-key>";
 ```
 
-Skriva en metod för att hämta autentiseringstoken från Azure AD. Den **GetAuthenticationTokenAsync** Återanropsmetoden som visas här anrop ADAL för obevakad autentisering:
+Skriva ett återanrop metoden tooacquire hello autentiseringstoken från Azure AD. Hej **GetAuthenticationTokenAsync** Återanropsmetoden som visas här anrop ADAL för obevakad autentisering:
 
 ```csharp
 public static async Task<string> GetAuthenticationTokenAsync()
@@ -303,7 +303,7 @@ public static async Task<string> GetAuthenticationTokenAsync()
 }
 ```
 
-Skapa en **BatchTokenCredentials** objekt som tar ombudet som en parameter. Använd dessa autentiseringsuppgifter för att öppna en **BatchClient** objekt. Du kan sedan använda **BatchClient** objekt för efterföljande åtgärder mot Batch-tjänsten:
+Skapa en **BatchTokenCredentials** objekt som tar hello delegat som en parameter. Använd dessa autentiseringsuppgifter tooopen en **BatchClient** objekt. Du kan sedan använda **BatchClient** objekt för efterföljande åtgärder mot hello Batch-tjänsten:
 
 ```csharp
 public static async Task PerformBatchOperations()
@@ -319,11 +319,11 @@ public static async Task PerformBatchOperations()
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure AD finns i [Azure Active Directory-dokumentationen](https://docs.microsoft.com/azure/active-directory/). Djupgående exempel som visar hur du använder ADAL finns i den [Azure kodexempel](https://azure.microsoft.com/resources/samples/?service=active-directory) bibliotek.
+toolearn mer om Azure AD finns hello [Azure Active Directory-dokumentationen](https://docs.microsoft.com/azure/active-directory/). Djupgående exempel som visar hur toouse ADAL är tillgängliga i hello [Azure kodexempel](https://azure.microsoft.com/resources/samples/?service=active-directory) bibliotek.
 
-Läs mer om tjänstens huvudnamn i [program och tjänstens huvudnamn objekt i Azure Active Directory](../active-directory/develop/active-directory-application-objects.md). Om du vill skapa ett huvudnamn för tjänsten med hjälp av Azure portal finns [använda portalen för att skapa Active Directory applikationen eller tjänsten säkerhetsobjekt som kan komma åt resurser](../resource-group-create-service-principal-portal.md). Du kan också skapa ett huvudnamn för tjänsten med PowerShell eller Azure CLI. 
+toolearn mer om tjänstens huvudnamn finns [program och tjänstens huvudnamn objekt i Azure Active Directory](../active-directory/develop/active-directory-application-objects.md). toocreate en tjänstens huvudnamn med hjälp av hello Azure portal, se [använda portalen toocreate Active Directory-program och tjänstens huvudnamn som kan komma åt resurser](../resource-group-create-service-principal-portal.md). Du kan också skapa ett huvudnamn för tjänsten med PowerShell eller Azure CLI. 
 
-För att autentisera Batch-hantering av program med Azure AD finns [autentiserar Batch hanteringslösningar med Active Directory](batch-aad-auth-management.md). 
+tooauthenticate Batch-hantering av program med Azure AD finns [autentiserar Batch hanteringslösningar med Active Directory](batch-aad-auth-management.md). 
 
 [aad_about]: ../active-directory/active-directory-whatis.md "Vad är Azure Active Directory?"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md

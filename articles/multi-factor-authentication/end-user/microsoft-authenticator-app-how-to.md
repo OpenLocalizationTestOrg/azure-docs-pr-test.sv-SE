@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Authenticator-appen för mobila enheter | Microsoft Docs"
-description: "Lär dig hur du uppgraderar till den senaste versionen av Azure Authenticator."
+title: "aaaMicrosoft Authenticator-appen för mobila enheter | Microsoft Docs"
+description: "Lär dig hur tooupgrade toohello senaste versionen av Azure Authenticator."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -15,95 +15,95 @@ ms.date: 08/15/2017
 ms.author: kgremban
 ms.reviewer: librown
 ms.custom: H1Hack27Feb2017, end-user
-ms.openlocfilehash: 6bcb6d9f7a1e9b241fa70690016b03d6eb5887ab
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d895d92d89613cbafd9fc09d4ff4810cbf25652e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-with-the-microsoft-authenticator-app"></a>Kom igång med Microsoft Authenticator-appen
-Ger en extra nivå av säkerhet i arbets-eller skolkonto för Microsoft Authenticator-appen (till exempel bsimon@contoso.com) eller Microsoft-konto (till exempel bsimon@outlook.com).
+# <a name="get-started-with-hello-microsoft-authenticator-app"></a>Kom igång med hello Microsoft Authenticator-appen
+hello Microsoft Authenticator-appen ger en extra nivå av säkerhet i arbets-eller skolkonto (t.ex, bsimon@contoso.com) eller Microsoft-konto (till exempel bsimon@outlook.com).
 
-Appen inte fungerar i ett av två sätt:
+hello appen fungerar på ett av två sätt:
 
-* **Meddelande**. Appen kan du förhindra obehörig åtkomst till konton och stoppa olagliga transaktioner genom att skicka ett meddelande till din smartphone eller surfplatta. Bara visa meddelandet och om det är tillförlitligt, Välj **Kontrollera**. Välj annars **neka**. 
-* **Verifieringskoden**. Appen kan användas som en programvarutoken för att generera en OAuth Verifieringskod. När du har angett ditt användarnamn och lösenord koden du från appen till skärmen för inloggning. Verifieringskoden innehåller andra formen av autentisering.
+* **Meddelande**. hello app kan du förhindra obehörig åtkomst tooaccounts och stoppa olagliga transaktioner genom att skicka en avisering tooyour smartphone eller surfplatta. Visa bara hello-meddelande och om det är tillförlitligt, Välj **Kontrollera**. Välj annars **neka**. 
+* **Verifieringskoden**. hello app kan användas som en programuppdatering token toogenerate en OAuth Verifieringskod. När du har angett ditt användarnamn och lösenord anger hello koden som tillhandahålls av hello app till hello på inloggningsskärmen. hello Verifieringskod innehåller andra formen av autentisering.
 
-Microsoft Authenticator-appen ersätter Azure Authenticator-appen. Azure Authenticator-appen fungerar fortfarande, men om du vill flytta till den nya Microsoft Authenticator-appen i den här artikeln kan hjälpa dig.  
+hello Microsoft Authenticator-appen ersätter hello Azure Authenticator-appen. hello Azure Authenticator-appen fungerar fortfarande, men om du väljer toomove toohello nya Microsoft Authenticator-appen, den här artikeln kan hjälpa dig.  
 
 ## <a name="opt-in-for-two-step-verification"></a>Välja tvåstegsverifiering
 
-Microsoft Authenticator-appen fungerar inte med sig själv. Konfigurera var och en av dina konton för att begära en andra verifieringsmetod när du loggar in med ditt användarnamn och lösenord. 
+hello Microsoft Authenticator-appen fungerar inte med sig själv. Konfigurera var och en av dina konton tooprompt du för en andra verifieringsmetod när du loggar in med ditt användarnamn och lösenord. 
 
-För ett konto för arbetet eller skolan dig inte vanligtvis att välja den här funktionen för dig själv. I stället en administratör väljer i den för din räkning och meddelar dig att registrera verifieringsmetoderna för ditt konto. Om det här scenariot gäller för dig, Läs mer i [vad Azure Multi-Factor Authentication innebär för mig](multi-factor-authentication-end-user.md).
+För ett arbets- eller skolkonto konto får du inte vanligtvis toochoose funktionen själv. I stället måste en administratör väljer i den för din räkning och meddelar dig tooregister verifieringsmetoderna för ditt konto. Om det här scenariot gäller tooyou, Läs mer i [vad Azure Multi-Factor Authentication innebär för mig](multi-factor-authentication-end-user.md).
 
-Du måste ställa in tvåstegsverifiering själv för ett personligt konto. Om du har ett Microsoft-konto kan de här stegen finns i [om tvåstegsverifiering](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification). 
+För ett personligt konto behöver du tooset tvåstegsverifiering själv. Om du har ett Microsoft-konto kan de här stegen finns i [om tvåstegsverifiering](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification). 
 
-Du kan också använda Microsoft Authenticator med icke-Microsoft konton. De kan anropa funktionen något annat än tvåstegsverifiering, men du bör kunna hitta under inloggning inställningar eller säkerhet. 
+Du kan också använda hello Microsoft Authenticator med icke-Microsoft konton. De kan anropa hello funktionen något annat än tvåstegsverifiering, men du bör vara kan toofind det under inställningar för säkerhets- eller logga in. 
 
-## <a name="install-the-app"></a>Installera appen
-Microsoft Authenticator-appen är tillgänglig för [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), och [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
+## <a name="install-hello-app"></a>Installera hello app
+hello Microsoft Authenticator-appen är tillgänglig för [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), och [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
 
-## <a name="add-accounts-to-the-app"></a>Lägga till konton till appen
-Använd någon av följande procedurer för varje konto som du vill lägga till Microsoft Authenticator-appen:
+## <a name="add-accounts-toohello-app"></a>Lägg till konton toohello app
+För varje konto som du vill tooadd toohello Microsoft Authenticator-appen, använder du något av följande procedurer hello:
 
-### <a name="add-a-personal-microsoft-account-to-the-app"></a>Lägg till ett personligt microsoftkonto i appen
+### <a name="add-a-personal-microsoft-account-toohello-app"></a>Lägg till en personlig Microsoft-konto toohello app
 
-För ett personligt microsoftkonto (en som används för att logga in på Outlook.com, Xbox, Skype, etc.), är du behöver logga in på ditt konto i Microsoft Authenticator-appen.
+För ett personligt microsoftkonto (en att du använder toosign i tooOutlook.com, Xbox, Skype, osv), du har toodo är att logga in tooyour konto i hello Microsoft Authenticator-appen.
 
-### <a name="add-a-work-or-school-account-to-the-app-using-the-qr-code-scanner"></a>Lägg till ett arbets- eller skolkonto konto i appen med skanner för QR-kod
-1. Gå till skärmen för säkerhetsinställningar verifiering.  Mer information om hur du kommer till den här skärmen finns [ändra säkerhetsinställningarna](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page).
-2. Markera kryssrutan bredvid **autentiseringsapp** Välj **konfigurera**.
+### <a name="add-a-work-or-school-account-toohello-app-using-hello-qr-code-scanner"></a>Lägga till en arbets- eller skolkonto konto toohello app hello QR-kod skanner
+1. Gå toohello skärmen inställningar för säkerhet verifiering.  Mer information om hur tooget toothis skärmen finns [ändra säkerhetsinställningarna](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page).
+2. Kryssrutan hello bredvid för**autentiseringsapp** Välj **konfigurera**.
 
-    ![Knappen Konfigurera på skärmen för säkerhetsinställningar verifiering](./media/authenticator-app-how-to/azureauthe.png)
+    ![hello Konfigureringsknappen hello skärmen inställningar för säkerhet verifiering](./media/authenticator-app-how-to/azureauthe.png)
 
     Nu visas en skärm med en QR-kod på den.
 
-    ![Skärmen som ger QR-kod](./media/authenticator-app-how-to/barcode2.png)
-3. Öppna Microsoft Authenticator-appen. På den **konton** väljer  **+** , och sedan ange att du vill lägga till ett konto för arbetet eller skolan.
-4. Använd kameran för att skanna QR-koden och välj sedan **klar** att stänga skärmen QR-kod.
+    ![Skärmen som ger hello QR-kod](./media/authenticator-app-how-to/barcode2.png)
+3. Öppna hello Microsoft Authenticator-appen. På hello **konton** väljer  **+** , och sedan ange att du vill tooadd ett arbets- eller skolkonto konto.
+4. Använda hello kamera tooscan hello QR-kod och välj sedan **klar** tooclose hello QR-kod skärmen.
 
-    Om kameran inte fungerar kan du [ange QR-koden och Webbadressen manuellt](#add-an-account-to-the-app-manually).
+    Om kameran inte fungerar kan du [ange hello QR-koden och Webbadressen manuellt](#add-an-account-to-the-app-manually).
 
-5. När appen visas namnet på ditt konto med en sexsiffrig kod under den är du klar. 
+5. När hello app visas namnet på ditt konto med en sexsiffrig kod under den är du klar. 
 
     ![Konton skärmen](./media/authenticator-app-how-to/accounts.png)
 
-### <a name="add-an-account-to-the-app-manually"></a>Lägga till ett konto i appen manuellt
-1. Gå till skärmen för säkerhetsinställningar verifiering.  Mer information om hur du kommer till den här skärmen finns [ändra säkerhetsinställningarna](multi-factor-authentication-end-user-manage-settings.md).
+### <a name="add-an-account-toohello-app-manually"></a>Lägg till ett konto toohello app manuellt
+1. Gå toohello skärmen inställningar för säkerhet verifiering.  Mer information om hur tooget toothis skärmen finns [ändra säkerhetsinställningarna](multi-factor-authentication-end-user-manage-settings.md).
 2. Välj **konfigurera**.
 
-    ![Knappen Konfigurera på skärmen för säkerhetsinställningar verifiering](./media/authenticator-app-how-to/azureauthe.png)
+    ![hello Konfigureringsknappen hello skärmen inställningar för säkerhet verifiering](./media/authenticator-app-how-to/azureauthe.png)
 
-    Nu visas en skärm med en QR-kod på den.  Observera att koden och Webbadressen.
+    Nu visas en skärm med en QR-kod på den.  Observera hello koden och Webbadressen.
 
-    ![Skärmen som ger en QR-kod och URL](./media/authenticator-app-how-to/barcode2.png)
-3. Öppna Microsoft Authenticator-appen. På den **konton** väljer  **+** , och sedan ange att du vill lägga till ett konto för arbetet eller skolan.
+    ![Skärmen som ger hello QR-koden och Webbadressen](./media/authenticator-app-how-to/barcode2.png)
+3. Öppna hello Microsoft Authenticator-appen. På hello **konton** väljer  **+** , och sedan ange att du vill tooadd ett arbets- eller skolkonto konto.
 
-4. Välj i skannern **ange koden manuellt**.
+4. Markera i hello skanner **ange koden manuellt**.
 
     ![Skärmen för att skanna QR-kod](./media/multi-factor-authentication-end-user-first-time/scan2.png)
-5. Ange koden och URL-Adressen i motsvarande rutor i appen och välj sedan **Slutför**.
+5. Ange hello kod och hello URL i hello rutorna i hello app och välj sedan **Slutför**.
 
     ![Skärmen för att ange koden och Webbadressen](./media/authenticator-app-how-to/manual.png)
 
-6. När appen visas namnet på ditt konto med en sexsiffrig kod under den är du klar.
+6. När hello app visas namnet på ditt konto med en sexsiffrig kod under den är du klar.
 
     ![Konton skärmen](./media/authenticator-app-how-to/accounts.png)
 
-### <a name="add-an-account-to-the-app-using-touch-id"></a>Lägg till ett konto i appen med Touch ID
-Microsoft Authenticator-appen på iOS stöder Touch ID.  Azure Multi-Factor Authentication gör att organisationer kan kräva en PIN-kod för enheter. Med Touch ID behöver iOS-användare inte ange en PIN-kod. De kan i stället söka igenom sitt fingeravtryck och välj **Godkänn**.
+### <a name="add-an-account-toohello-app-using-touch-id"></a>Lägg till ett konto toohello app som använder Touch ID
+hello Microsoft Authenticator-appen på iOS stöder Touch ID.  Azure Multi-Factor Authentication kan organisationer toorequire PIN-koden för enheter. Med Touch ID behöver iOS-användare tooenter en PIN-kod. De kan i stället söka igenom sitt fingeravtryck och välj **Godkänn**.
 
 Det är enkelt att ställa in Touch ID med Microsoft Authenticator. Du har slutfört en normal verifiering utmaning med en PIN-kod. Om enheten har stöd för Touch ID, konfigurerar Microsoft Authenticator den automatiskt för det kontot.
 
 ![Verifiering av installationsprogrammet för Touch ID](./media/authenticator-app-how-to/touchid1.png)
 
-Peka framåt från som, när du måste verifiera din inloggning, väljer mottagna push-meddelanden och söka igenom ditt fingeravtryck istället för att ange din PIN-kod.
+Peka framåt, som när du är krävs tooverify din inloggning, du väljer hello emot push-meddelanden och söka igenom ditt fingeravtryck istället för att ange din PIN-kod.
 
 ![Push-meddelanden](./media/authenticator-app-how-to/touchid2.png)
 
-## <a name="use-the-app-when-you-sign-in"></a>Använda appen när du loggar in
+## <a name="use-hello-app-when-you-sign-in"></a>Använda hello app när du loggar in
 
-När ditt konto har lagts till i appen, uppmanas du att göra en test-verifiering för att kontrollera att allt är korrekt konfigurerad. När är du klar! Du behöver inte göra något annat förrän nästa gång du loggar in.
+När ditt konto har lagts till toohello app, kanske ange toodo ett test verifiering toomake att allt är korrekt konfigurerad. När är du klar! Du behöver inte toodo något annat tills hello nästa gång du loggar in.
 
-Om du väljer att använda verifieringskoder i appen du vill visa dem på startsidan. De kan ändra var 30: e sekund så att du alltid har en ny kod när du behöver en. Men du behöver inte göra något med dem förrän du logga in och uppmanas att ange en Verifieringskod.  
+Om du väljer toouse verifieringskoder i hello app måste du starta toosee dem på hello startsidan. De kan ändra var 30: e sekund så att du alltid har en ny kod när du behöver en. Men du behöver inte toodo något med dem förrän du logga in och ange tooenter en Verifieringskod.  

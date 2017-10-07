@@ -1,6 +1,6 @@
 ---
-title: "Övervaka kodningsjobb med Azure-portalen"
-description: "Den här självstudiekursen vägleder dig genom stegen för att övervaka jobbförloppet med hjälp av Azure portal."
+title: "aaaMonitor kodning jobbförloppet med hello Azure-portalen"
+description: "Den här självstudiekursen vägleder dig genom hello stegen för att övervaka jobbförloppet med hjälp av hello Azure-portalen."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 571d222068e92a45b0e37bec298bab7a6825f731
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4282553d5dbed65ea6427bcd6de778795f1ff9ed
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Övervaka kodningsjobb med Azure-portalen
+# <a name="monitor-encoding-job-progress-with-hello-azure-portal"></a>Övervaka kodningsjobb med hello Azure-portalen
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -30,17 +30,17 @@ ms.lasthandoff: 08/29/2017
 
 ## <a name="overview"></a>Översikt
 > [!NOTE]
-> Du behöver ett Azure-konto för att slutföra den här självstudien. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/). 
+> toocomplete den här självstudiekursen kommer du behöver ett Azure-konto. Mer information om den [kostnadsfria utvärderingsversionen av Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-När du kör jobb behöver du ofta ett sätt att spåra jobbförloppet. 
+När du kör jobb behöver du ofta ett sätt tootrack jobb pågår. 
 
-Klicka på **Inställningar** (överst på sidan) för att övervaka förloppet för kodningsjobbet och välj sedan **Jobb**.
+toomonitor hello fortskrider hello kodning jobb, klicka på **inställningar** (överst hello på hello sidan) och välj sedan **jobb**.
 
 ![Jobb](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-Du kan klicka på jobbet om du vill se mer information.
+Du kan klicka på hello jobbet toosee mer information.
 
 ![Jobb](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 

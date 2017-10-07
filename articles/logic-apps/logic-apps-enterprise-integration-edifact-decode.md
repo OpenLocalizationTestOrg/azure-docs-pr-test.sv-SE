@@ -1,6 +1,6 @@
 ---
-title: Avkoda meddelanden med EDIFACT - Azure Logic Apps | Microsoft Docs
-description: "Validera EDI och generera bekräftelser med EDIFACT meddelandet avkodaren i Enterprise-Integrationspaket för Logikappar i Azure"
+title: aaaDecode EDIFACT-meddelanden - Azure Logic Apps | Microsoft Docs
+description: "Validera EDI och generera bekräftelser med hello EDIFACT meddelandet avkodarens i hello Enterprise-Integrationspaket för Logikappar i Azure"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: e3787b48037360bf6066ddce2bacba6842213b2d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 94faebdec4e4ffc8ad76ad1609495ddf9f002250
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="decode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Avkoda EDIFACT-meddelanden för Azure Logikappar med Enterprise-Integrationspaket
+# <a name="decode-edifact-messages-for-azure-logic-apps-with-hello-enterprise-integration-pack"></a>Avkoda EDIFACT-meddelanden för Logikappar i Azure med hello Enterprise-Integrationspaket
 
-Med meddelandet avkoda EDIFACT-anslutningen kan du verifiera EDI och partner-specifika egenskaper, dela externa utbyten i transaktioner uppsättningar eller bevara hela externa utbyten och generera bekräftelser för bearbetade transaktioner. Om du vill använda denna anslutning måste du lägga till anslutningen till en befintlig utlösare i din logikapp.
+Med hello avkoda EDIFACT-meddelande anslutningen kan du verifiera EDI och partner-specifika egenskaper, dela externa utbyten i transaktioner uppsättningar eller bevara hela externa utbyten och generera bekräftelser för bearbetade transaktioner. toouse den här kopplingen måste du lägga till hello connector tooan befintliga utlösaren i din logikapp.
 
 ## <a name="before-you-start"></a>Innan du börjar
 
-Här är de objekt som du behöver:
+Här är hello-objekt som du behöver:
 
 * Ett Azure-konto; Du kan skapa en [kostnadsfritt konto](https://azure.microsoft.com/free)
-* En [integrering konto](logic-apps-enterprise-integration-create-integration-account.md) som redan har definierat och som är associerade med din Azure-prenumeration. Du måste ha ett integration konto att använda anslutningstjänsten EDIFACT avkoda meddelandet. 
+* En [integrering konto](logic-apps-enterprise-integration-create-integration-account.md) som redan har definierat och som är associerade med din Azure-prenumeration. Du måste ha en integration konto toouse hello avkoda EDIFACT meddelande-koppling. 
 * Minst två [partners](logic-apps-enterprise-integration-partners.md) som redan har definierats i ditt konto för integrering
 * En [EDIFACT-avtal](logic-apps-enterprise-integration-edifact.md) som redan har definierats i ditt konto för integrering
 
@@ -37,13 +37,13 @@ Här är de objekt som du behöver:
 
 1. [Skapa en logikapp](logic-apps-create-a-logic-app.md).
 
-2. Avkoda EDIFACT meddelandet kopplingen har utlösare, så måste du lägga till en utlösare för att starta logikappen som en utlösare för begäran. Lägg till en utlösare i logik App Designer och sedan lägga till en åtgärd i din logikapp.
+2. hello avkoda EDIFACT meddelandet connector har utlösare, så måste du lägga till en utlösare för att starta logikappen som en utlösare för begäran. Lägg till en utlösare hello logik App Designer, och sedan lägga till en åtgärd tooyour logikapp.
 
-3. I sökrutan anger du ”EDIFACT” som filter. Välj **avkoda meddelandet EDIFACT**.
+3. Ange ”EDIFACT” i sökrutan hello som filter. Välj **avkoda meddelandet EDIFACT**.
    
     ![Sök EDIFACT](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage1.png)
 
-3. Om du inte tidigare skapade alla anslutningar till ditt konto integration, uppmanas du att skapa anslutningen nu. Namnge din anslutning och välj integration kontot som du vill ansluta till.
+3. Om du tidigare inte har skapat alla anslutningar tooyour integrering konto uppmanas du toocreate anslutningen nu. Namnge din anslutning och välj hello integration konto som du vill tooconnect.
    
     ![Skapa integration konto](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage2.png)
 
@@ -52,13 +52,13 @@ Här är de objekt som du behöver:
     | Egenskap | Information |
     | --- | --- |
     | Anslutningsnamn * |Ange ett namn för anslutningen. |
-    | Integration konto * |Ange ett namn för ditt konto för integrering. Se till att appen integration konto och logik finns i samma Azure-plats. |
+    | Integration konto * |Ange ett namn för ditt konto för integrering. Se till att appen integration konto och logik finns i hello samma Azure-plats. |
 
-4. När du är klar att anslutningen är klar, Välj **skapa**. Information om anslutningen bör likna exemplet:
+4. När du är klar att skapa anslutningen toofinish välja **skapa**. Information om anslutningen ska se liknande toothis exempel:
 
     ![Integration kontoinformation](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage3.png)  
 
-5. När anslutningen har skapats, som visas i det här exemplet, Välj EDIFACT flat fil meddelandet att avkoda.
+5. När anslutningen har skapats, som visas i det här exemplet, Välj hello EDIFACT flat fil meddelandet toodecode.
 
     ![Integration konto anslutning som skapats](./media/logic-apps-enterprise-integration-edifact-decode/edifactdecodeimage4.png)  
 
@@ -68,37 +68,37 @@ Här är de objekt som du behöver:
 
 ## <a name="edifact-decoder-details"></a>EDIFACT avkodarens information
 
-Avkoda EDIFACT-kopplingen utför dessa uppgifter: 
+hello avkoda EDIFACT connector utför dessa uppgifter: 
 
-* Verifierar kuvertet mot handel partneravtalet.
-* Löser avtalet genom att matcha avsändaren kvalificerare och identifierare och mottagaren kvalificerare och identifierare.
-* Delar en interchange i flera transaktioner när utbyte har fler än en transaktion baserat på avtalet ta emot konfigurationen av prenumerationsinställningar.
-* Disassemblerar utbyte.
+* Verifierar hello kuvert mot handel partneravtalet.
+* Löser hello avtalet genom att matcha hello avsändaren kvalificerare identifierare och mottagaren kvalificerare & identifierare.
+* Delar en interchange i flera transaktioner när hello interchange har fler än en transaktion baserat på hello avtal ta emot konfigurationen av prenumerationsinställningar.
+* Disassemblerar hello utbyte.
 * Verifierar EDI och partner-specifika egenskaper, inklusive:
-  * Validering av interchange kuvert struktur
-  * Schemavalideringen Envelope mot kontroll schemat
-  * Schemavalideringen av transaktionen set dataelement mot meddelandet schemat
+  * Validering av hello interchange kuvert struktur
+  * Schemavalideringen hello Envelope mot hello kontrollen schema
+  * Schemavalideringen av hello transaktion set dataelement mot hello Meddelandeschema
   * EDI-verifiering utförs på transaktion set dataelement
-* Verifierar att interchange, grupp och transaktionen set kontrollen talen som inte är dubbletter (om konfigurerad) 
-  * Kontrollerar antalet interchange kontroll mot tidigare mottagna externa utbyten. 
-  * Kontrollerar kontrollen gruppnumret mot andra grupp kontrollen talen i utbyte. 
-  * Kontrollerar transaktionen ange kontroll många mot andra transaktion set kontrollen talen i den gruppen.
-* Delar upp interchange i transaktionen uppsättningar eller bevarar hela interchange:
+* Verifierar att hello interchange, grupp och transaktionen set kontrollen siffror inte är dubbletter (om konfigurerad) 
+  * Kontrollerar hello interchange kontrollnummer mot tidigare mottagna externa utbyten. 
+  * Kontrollerar hello kontrollen gruppnumret mot andra grupp kontrollen talen i hello utbyte. 
+  * Kontrollerar hello transaktion ange kontroll många mot andra transaktion set kontrollen talen i den gruppen.
+* Delar upp hello interchange i transaktionen uppsättningar eller bevarar hello hela interchange:
   * Dela Interchange som transaktionen uppsättningar - inaktivera transaktion anger vid fel: delningar interchange i transaktion anger och Parsar varje transaktion uppsättning. 
-  X12 avkoda åtgärd matar ut bara dessa transaktion anger som inte kan valideras till `badMessages`, och utdata återstående transaktioner anger till `goodMessages`.
+  Hej X12 avkoda åtgärd matar ut bara de transaktion filer som inte kan valideras för`badMessages`, och anger hello återstående transaktioner anger för`goodMessages`.
   * Dela Interchange som transaktionen uppsättningar - inaktivera utbyte vid fel: delningar interchange i transaktion anger och Parsar varje transaktion uppsättning. 
-  Om en eller flera transaktion anger i utbyte inte verifiering, X12 avkoda åtgärd matar ut alla transaktionen anger i den interchange till `badMessages`.
-  * Bevara Interchange – inaktivera transaktion anger vid fel: bevara utbyte och bearbeta hela gruppbaserad utbyte. 
-  X12 avkoda åtgärd matar ut bara dessa transaktion anger som inte kan valideras till `badMessages`, och utdata återstående transaktioner anger till `goodMessages`.
-  * Bevara Interchange – inaktivera utbyte vid fel: bevara utbyte och bearbeta hela gruppbaserad utbyte. 
-  Om en eller flera transaktion anger i utbyte inte verifiering, X12 avkoda åtgärd matar ut alla transaktionen anger i den interchange till `badMessages`.
+  Om en eller flera transaktion anger i hello interchange misslyckas verifieringen, hello X12 avkoda åtgärd matar ut alla hello transaktion anger i den interchange för`badMessages`.
+  * Bevara Interchange – inaktivera transaktion anger vid fel: Preserve hello utbyte och processen hello hela gruppbaserad utbyte. 
+  Hej X12 avkoda åtgärd matar ut bara de transaktion filer som inte kan valideras för`badMessages`, och anger hello återstående transaktioner anger för`goodMessages`.
+  * Bevara Interchange – inaktivera utbyte vid fel: Preserve hello utbyte och processen hello hela gruppbaserad utbyte. 
+  Om en eller flera transaktion anger i hello interchange misslyckas verifieringen, hello X12 avkoda åtgärd matar ut alla hello transaktion anger i den interchange för`badMessages`.
 * Genererar en Technical (kontroll) och/eller funktionella bekräftelse (om konfigurerad).
-  * En teknisk bekräftelse eller CONTRL ACK rapporterar resultatet av en syntaktiska kontroll av fullständig mottagna utbyte.
+  * En teknisk bekräftelse eller hello CONTRL ACK rapporterar hello resultaten av en syntaktiska kontroll av hello fullständig emot utbyte.
   * En funktionell bekräftelse om godkänna eller avvisa en mottagna utbyte eller en grupp
 
 ## <a name="view-swagger-file"></a>Visa Swagger-fil
-Swagger-information för EDIFACT-anslutningen finns i [EDIFACT](/connectors/edifact/).
+tooview hello Swagger information för hello EDIFACT-anslutningen finns [EDIFACT](/connectors/edifact/).
 
 ## <a name="next-steps"></a>Nästa steg
-[Mer information om Enterprise-Integrationspaket](logic-apps-enterprise-integration-overview.md "Lär dig mer om Enterprise-Integrationspaket") 
+[Mer information om hello Enterprise-Integrationspaket](logic-apps-enterprise-integration-overview.md "Lär dig mer om Enterprise-Integrationspaket") 
 

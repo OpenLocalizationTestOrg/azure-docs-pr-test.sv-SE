@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med Azure IoT Hub enhetshantering (nod) | Microsoft Docs"
-description: "Hur du använder IoT-hubb enhetshantering för att initiera en omstart av fjärranslutna enheter. Du kan använda Azure IoT-SDK för Node.js för att implementera en simulerad enhetsapp som innehåller en direkt metod och en service-appen som anropar metoden direkt."
+title: "aaaGet igång med Azure IoT Hub enhetshantering (nod) | Microsoft Docs"
+description: "Hur toouse IoT-hubb device management tooinitiate fjärranslutna enheten startas om. Du kan använda hello Azure IoT-SDK för Node.js tooimplement en simulerad enhetsapp som innehåller en direkt metod och en service-appen som anropar hello direkta metoden."
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: juanpere
-ms.openlocfilehash: 332a3e62cb1ef75e2c6dd5562ee799465c401128
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 5dd1878e71231850fb95f4170b823f1e86c3ee83
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-device-management-node"></a>Komma igång med hantering av enheter (nod)
 
@@ -26,19 +26,19 @@ ms.lasthandoff: 08/29/2017
 
 I den här självstudiekursen lär du dig att:
 
-* Använda Azure portal för att skapa en IoT-hubb och skapa en enhetsidentitet i din IoT-hubb.
-* Skapa en simulerad enhetsapp som innehåller en direkt metod som startar om enheten. Direkta metoder anropas från molnet.
-* Skapa en Node.js-konsolprogram som anropar metoden omstart direkt i appen simulerade enheten via din IoT-hubb.
+* Använd hello Azure portal toocreate en IoT-hubb och skapa en enhetsidentitet i din IoT-hubb.
+* Skapa en simulerad enhetsapp som innehåller en direkt metod som startar om enheten. Direkta metoder anropas från hello molnet.
+* Skapa en Node.js-konsolprogram som anropar hello omstart direkt metod i hello simulerade enheten appen via din IoT-hubb.
 
-I slutet av den här kursen har du två Node.js-konsolappar:
+Hello slutet av den här självstudiekursen har du två Node.js-konsolappar:
 
-**dmpatterns_getstarted_device.js**, som ansluter till din IoT-hubb med enhetens identitet skapade tidigare, tar emot en direkt metod för omstart, simulerar en fysisk omstart och rapporterar tid för den senaste omstarten.
+**dmpatterns_getstarted_device.js**, som ansluter tooyour IoT-hubb med hello enhetsidentitet skapade tidigare, tar emot en direkt metod för omstart simulerar en fysisk omstart och rapporterar hello tid för hello senaste omstarten.
 
-**dmpatterns_getstarted_service.js**, som anropar en direkt metod i appen simulerade enheten visar svaret och visar den uppdaterade rapporterade egenskaper.
+**dmpatterns_getstarted_service.js**, som anropar en direkt metod i hello simulerade enhetsapp visar hello svar och visar hello uppdateras rapporterade egenskaper.
 
-För att kunna genomföra den här kursen behöver du följande:
+toocomplete den här kursen behöver du hello följande:
 
-* Node.js-version 0.12.x eller senare <br/>  [Förbered din utvecklingsmiljö] [ lnk-dev-setup] beskriver hur du installerar Node.js för den här självstudiekursen på Windows- eller Linux.
+* Node.js-version 0.12.x eller senare <br/>  [Förbered din utvecklingsmiljö] [ lnk-dev-setup] beskriver hur tooinstall Node.js för den här självstudiekursen på Windows- eller Linux.
 * Ett aktivt Azure-konto. (Om du inte har något konto kan du skapa ett [kostnadsfritt konto][lnk-free-trial] på bara några minuter.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -48,22 +48,22 @@ För att kunna genomföra den här kursen behöver du följande:
 ## <a name="create-a-simulated-device-app"></a>Skapa en simulerad enhetsapp
 I det här avsnittet kommer du att
 
-* Skapa en Node.js-konsolapp som svarar på en direkt metod som anropas via molnet
+* Skapa en Node.js-konsolprogram som svarar tooa direkta metoden anropas av hello moln
 * Utlös en simulerad enhet-omstart
-* Använda egenskaperna rapporterade för att aktivera enheten dubbla frågor för att identifiera enheter och när de senaste startas om
+* Använd hello rapporterade egenskaper tooenable enheter dubbla frågor tooidentify enheter och när de senast startas om
 
-1. Skapa en tom mapp med namnet **manageddevice**.  I mappen **manageddevice** skapar du en package.json-fil med hjälp av följande kommando i Kommandotolken.  Acceptera alla standardvärden:
+1. Skapa en tom mapp med namnet **manageddevice**.  I hello **manageddevice** mapp, skapa en package.json-fil med hello följande kommando vid en kommandotolk.  Acceptera alla standardvärden för hello:
    
     ```
     npm init
     ```
-2. Vid en kommandotolk i den **manageddevice** mapp, kör följande kommando för att installera den **azure iot-enhet** enheten SDK-paketet och **azure-iot-enhet – mqtt** paketet:
+2. Vid en kommandotolk i hello **manageddevice** mapp, kör följande kommando tooinstall hello hello **azure iot-enhet** enheten SDK-paketet och **azure-iot-enhet – mqtt**paketet:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-3. Med hjälp av en textredigerare, skapa en **dmpatterns_getstarted_device.js** filen i den **manageddevice** mapp.
-4. Lägg till följande 'krävs, instruktioner i början av den **dmpatterns_getstarted_device.js** fil:
+3. Med hjälp av en textredigerare, skapa en **dmpatterns_getstarted_device.js** filen i hello **manageddevice** mapp.
+4. Lägg till följande hello 'krävs, instruktioner hello början av hello **dmpatterns_getstarted_device.js** fil:
    
     ```
     'use strict';
@@ -71,27 +71,27 @@ I det här avsnittet kommer du att
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
-5. Lägg till en **connectionString**-variabel och använd den för att skapa en **klientinstans**.  Ersätt anslutningssträngen med anslutningssträngen enhet.  
+5. Lägg till en **connectionString** variabel och använda den toocreate en **klienten** instans.  Ersätt hello anslutningssträngen med anslutningssträngen enhet.  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
-6. Lägg till följande funktion för att implementera metoden direkt på enheten
+6. Lägg till hello följande funktion tooimplement hello direkt metod på hello-enhet
    
     ```
     var onReboot = function(request, response) {
    
-        // Respond the cloud app for the direct method
+        // Respond hello cloud app for hello direct method
         response.send(200, 'Reboot started', function(err) {
             if (!err) {
                 console.error('An error occured when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response to method \'' + request.methodName + '\' sent successfully.');
+                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.');
             }
         });
    
-        // Report the reboot before the physical restart
+        // Report hello reboot before hello physical restart
         var date = new Date();
         var patch = {
             iothubDM : {
@@ -118,7 +118,7 @@ I det här avsnittet kommer du att
         console.log('Rebooting!');
     };
     ```
-7. Öppna anslutning till din IoT-hubb och starta lyssnaren direkta metoden:
+7. Öppna hello anslutning tooyour IoT-hubb och starta hello direkta metoden lyssnare:
    
     ```
     client.open(function(err) {
@@ -130,26 +130,26 @@ I det här avsnittet kommer du att
         }
     });
     ```
-8. Spara och Stäng den **dmpatterns_getstarted_device.js** fil.
+8. Spara och Stäng hello **dmpatterns_getstarted_device.js** fil.
 
 > [!NOTE]
-> För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktionskoden bör du implementera principer för omförsök (till exempel en exponentiell backoff), vilket rekommenderas i MSDN-artikeln om [hantering av tillfälliga fel][lnk-transient-faults].
+> enkel tookeep saker, den här självstudiekursen implementerar inte några återförsöksprincip. I produktionskod, bör du implementera försök principer (till exempel en exponentiell backoff) enligt förslaget i hello MSDN-artikel [hantering av tillfälliga fel][lnk-transient-faults].
 
-## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Utlös en fjärransluten omstart på enheten med en direkt metod
-I det här avsnittet skapar du en Node.js-konsolprogram som initierar en fjärransluten omstart på en enhet med en direkt metod. Appen använder enheten dubbla frågor för att identifiera senast omstart för enheten.
+## <a name="trigger-a-remote-reboot-on-hello-device-using-a-direct-method"></a>Utlös en fjärransluten omstart på hello-enhet med en direkt metod
+I det här avsnittet skapar du en Node.js-konsolprogram som initierar en fjärransluten omstart på en enhet med en direkt metod. hello appen använder enheten dubbla frågor toodiscover hello omstart senast för enheten.
 
-1. Skapa en tom mapp som kallas **triggerrebootondevice**.  I den **triggerrebootondevice** mapp, skapa en package.json-fil med följande kommando vid en kommandotolk.  Acceptera alla standardvärden:
+1. Skapa en tom mapp som kallas **triggerrebootondevice**.  I hello **triggerrebootondevice** mapp, skapa en package.json-fil med hello följande kommando vid en kommandotolk.  Acceptera alla standardvärden för hello:
    
     ```
     npm init
     ```
-2. Vid en kommandotolk i den **triggerrebootondevice** mapp, kör följande kommando för att installera den **azure iothub** enheten SDK-paketet och **azure-iot-enhet – mqtt** paketet:
+2. Vid en kommandotolk i hello **triggerrebootondevice** mapp, kör följande kommando tooinstall hello hello **azure iothub** enheten SDK-paketet och **azure-iot-enhet-mqtt** paketet:
    
     ```
     npm install azure-iothub --save
     ```
-3. Med hjälp av en textredigerare, skapa en **dmpatterns_getstarted_service.js** filen i den **triggerrebootondevice** mapp.
-4. Lägg till följande 'krävs, instruktioner i början av den **dmpatterns_getstarted_service.js** fil:
+3. Med hjälp av en textredigerare, skapa en **dmpatterns_getstarted_service.js** filen i hello **triggerrebootondevice** mapp.
+4. Lägg till följande hello 'krävs, instruktioner hello början av hello **dmpatterns_getstarted_service.js** fil:
    
     ```
     'use strict';
@@ -157,7 +157,7 @@ I det här avsnittet skapar du en Node.js-konsolprogram som initierar en fjärra
     var Registry = require('azure-iothub').Registry;
     var Client = require('azure-iothub').Client;
     ```
-5. Lägg till följande variabeldeklarationer och ersätta platshållarvärdena:
+5. Lägg till följande variabeldeklarationer hello och ersätta platshållarvärdena hello:
    
     ```
     var connectionString = '{iothubconnectionstring}';
@@ -165,7 +165,7 @@ I det här avsnittet skapar du en Node.js-konsolprogram som initierar en fjärra
     var client = Client.fromConnectionString(connectionString);
     var deviceToReboot = 'myDeviceId';
     ```
-6. Lägg till följande funktion för att anropa metoden enheten för att starta om målenheten:
+6. Lägg till följande funktion tooinvoke hello enheten metoden tooreboot hello målenhet hello:
    
     ```
     var startRebootDevice = function(twin) {
@@ -182,12 +182,12 @@ I det här avsnittet skapar du en Node.js-konsolprogram som initierar en fjärra
             if (err) { 
                 console.error("Direct method error: "+err.message);
             } else {
-                console.log("Successfully invoked the device to reboot.");  
+                console.log("Successfully invoked hello device tooreboot.");  
             }
         });
     };
     ```
-7. Lägg till följande funktion för att fråga efter enheten och få omstart senast:
+7. Lägg till hello följande fungera tooquery för hello enhet och få hello omstart senast:
    
     ```
     var queryTwinLastReboot = function() {
@@ -203,32 +203,32 @@ I det här avsnittet skapar du en Node.js-konsolprogram som initierar en fjärra
                     console.log('Last reboot time: ' + JSON.stringify(lastRebootTime, null, 2));
                 }
             } else 
-                console.log('Waiting for device to report last reboot time.');
+                console.log('Waiting for device tooreport last reboot time.');
         });
     };
     ```
-8. Lägg till följande kod för att anropa funktionerna som utlöser direkt metod för omstart och fråga för omstart senast:
+8. Lägg till följande kod toocall hello funktioner som utlöser hello hello omstart direkta metoden och fråga efter Hej senast omstart tid:
    
     ```
     startRebootDevice();
     setInterval(queryTwinLastReboot, 2000);
     ```
-9. Spara och Stäng den **dmpatterns_getstarted_service.js** fil.
+9. Spara och Stäng hello **dmpatterns_getstarted_service.js** fil.
 
-## <a name="run-the-apps"></a>Kör apparna
-Nu är det dags att köra apparna.
+## <a name="run-hello-apps"></a>Köra hello appar
+Du är nu redo toorun hello appar.
 
-1. I Kommandotolken i den **manageddevice** mapp, kör följande kommando för att börja lyssna efter omstart direkta metoden.
+1. Kommandotolken hello i hello **manageddevice** mapp, kör följande kommando toobegin lyssnar efter hello omstart direkta metoden hello.
    
     ```
     node dmpatterns_getstarted_device.js
     ```
-2. I Kommandotolken i den **triggerrebootondevice** mapp, kör följande kommando för att utlösa remote omstart och fråga för enheten dubbla att söka efter senaste omstart tid.
+2. Kommandotolken hello i hello **triggerrebootondevice** , kör följande kommando tootrigger hello remote hello omstart och fråga för hello enheten dubbla toofind hello senast starta om tid.
    
     ```
     node dmpatterns_getstarted_service.js
     ```
-3. Svaret från enheten till den direkta metoden i konsolen visas.
+3. Du ser hello enheten svar toohello direkt metod i hello-konsolen.
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 
@@ -240,7 +240,7 @@ Nu är det dags att köra apparna.
 
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [Azure portal]: https://portal.azure.com/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
+[Using resource groups toomanage your Azure resources]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
 
 [lnk-devtwin]: iot-hub-devguide-device-twins.md

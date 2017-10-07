@@ -1,6 +1,6 @@
 ---
-title: 'Connect Raspberry PI (C) till Azure IoT - lektionen 2: Azure-verktyg (Windows) | Microsoft Docs'
-description: "Installera Python och Azure-kommandoradsgränssnittet (Azure CLI) för Windows 7 och senare versioner."
+title: 'Connect Raspberry PI (C) tooAzure IoT - lektionen 2: Azure-verktyg (Windows) | Microsoft Docs'
+description: "Installera Python och hello Azure-kommandoradsgränssnittet (Azure CLI) för Windows 7 och senare versioner."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: aa96000cb676c088a90f2b3d45c159913185a2e1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1819d61fafbee6ac42a1bea5c16437cd8bf43af9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-azure-tools-windows-7-and-later"></a>Hämta Azure-verktyg (Windows 7 och senare)
 > [!div class="op_single_selector"]
@@ -30,46 +30,46 @@ ms.lasthandoff: 07/11/2017
 > * [macOS 10.10](iot-hub-raspberry-pi-kit-c-lesson2-get-azure-tools-mac.md)
 
 ## <a name="what-you-will-do"></a>Vad du ska göra
-Installera Python och Azure-kommandoradsgränssnittet (Azure CLI). Om du har några problem kan hitta lösningar på den [felsökning sidan](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
+Installera Python och hello Azure-kommandoradsgränssnittet (Azure CLI). Om du har några problem med söka efter lösningar på hello [felsökning sidan](iot-hub-raspberry-pi-kit-c-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
 I den här artikeln får du lära dig:
-* Hur du installerar Python.
-* Så här installerar du Azure CLI.
+* Hur tooinstall Python.
+* Hur tooinstall hello Azure CLI.
 
 ## <a name="what-you-need"></a>Vad du behöver
 * En Windows-dator med en Internet-anslutning.
 * En aktiv Azure-prenumeration. Om du inte har ett Azure-konto kan du skapa en [kostnadsfria Azure utvärderingskonto](http://azure.microsoft.com/pricing/free-trial/) i bara några minuter.
 
 ## <a name="install-python"></a>Installera Python
-[Installera Python](https://www.python.org/downloads/) på din Windows-dator. Du kan installera Python 2.7, 3.4 eller 3.5. Den här kursen är baserad på Python 2.7. Om du redan har installerat Python, gå till nästa avsnitt och installera Azure CLI.
+[Installera Python](https://www.python.org/downloads/) på din Windows-dator. Du kan installera Python 2.7, 3.4 eller 3.5. Den här kursen är baserad på Python 2.7. Om du redan har installerat Python gå toohello nästa avsnitt och installera hello Azure CLI.
 
-Du måste också lägga till sökvägen till de mappar där python.exe och pip.exe är installerade i systemet `PATH` miljövariabeln. Som standard installeras python.exe i `C:\Python27` och pip.exe installeras i `C:\Python27\Scripts`.
+Du måste också tooadd hello sökvägen hello mappar där python.exe och pip.exe är installerade toohello system `PATH` miljövariabeln. Som standard installeras python.exe i `C:\Python27` och pip.exe installeras i `C:\Python27\Scripts`.
 
-## <a name="install-the-azure-cli"></a>Installera Azure CLI
-Azure CLI tillhandahåller en flera plattformar kommandoraden för Azure. Du arbetar direkt från kommandoraden för att etablera och hantera resurser.
+## <a name="install-hello-azure-cli"></a>Installera hello Azure CLI
+hello Azure CLI tillhandahåller en flera plattformar kommandoraden för Azure. Du arbetar direkt från kommandoraden-tooprovision och hantera resurser.
 
-Så här installerar du Azure CLI:
+tooinstall hello Azure CLI, Följ dessa steg:
 
 1. Öppna ett kommandotolksfönster som administratör.
-2. Kör följande kommandon:
+2. Kör följande kommandon hello:
 
    ```bash
    pip install --upgrade azure-cli
    pip install --upgrade azure-cli-iot
    ```
-3. Verifiera installationen genom att köra följande kommando:
+3. Kontrollera hello installationen genom att köra följande kommando hello:
 
    ```bash
    az iot -h
    ```
 
-Du ser i följande utdata om installationen har slutförts.
+Du kan se hello följande utdata om hello-installationen har slutförts.
 
 ![Utdata som indikerar att det lyckades](media/iot-hub-raspberry-pi-lessons/lesson2/az_iot_help_win.png)
 
 ## <a name="summary"></a>Sammanfattning
-Du har installerat Azure CLI. Nästa uppgift att skapa din Azure IoT hub- och enhetsidentitet med Azure CLI.
+Du har installerat hello Azure CLI. Nästa uppgift toocreate dina Azure IoT hub- och enhetsidentitet med hjälp av hello Azure CLI.
 
 ## <a name="next-steps"></a>Nästa steg
 [Skapa din IoT-hubb och registrera hallon Pi 3](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md)

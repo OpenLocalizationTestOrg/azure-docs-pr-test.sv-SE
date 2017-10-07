@@ -1,6 +1,6 @@
 ---
-title: "Distribuera ett Node.js-program som använder MongoDB | Microsoft Docs"
-description: "Genomgång av hur du paketerar flera gäst körbara filer ska distribueras till ett Azure Service Fabric-kluster"
+title: "aaaDeploy ett Node.js-program som använder MongoDB | Microsoft Docs"
+description: "Genomgång av hur toopackage flera körbara filer toodeploy tooan Azure Service Fabric gästkluster"
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: msfussell;mikhegn
-ms.openlocfilehash: b71723034e5f663986c49481072bfd6779d3d57b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2775080f0d9d42d6ba15cca911e23067106be26d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-multiple-guest-executables"></a>Distribuera flera körbara gäster
-Den här artikeln visar hur du paketera och distribuera flera gäst körbara filer till Azure Service Fabric. Skapa och distribuera en enda Service Fabric-paket finns att [Distribuera gäst körbara till Service Fabric](service-fabric-deploy-existing-app.md).
+Den här artikeln visar hur toopackage och distribuera flera gäst körbara filer tooAzure Service Fabric. För att skapa och distribuera en enda Service Fabric-paket läsa hur för[distribuera en gäst körbara tooService Fabric](service-fabric-deploy-existing-app.md).
 
-Den här genomgången visar hur du distribuerar ett program med en Node.js-klientdel som använder MongoDB som datalager, men du kan använda stegen för att alla program som är beroende av ett annat program.   
+När den här genomgången visar hur toodeploy ett program med en Node.js-klientdel som använder MongoDB som datalager hello, du kan använda hello steg tooany program som är beroende av ett annat program.   
 
-Du kan använda Visual Studio för att skapa programpaket som innehåller flera gäst körbara filer. Se [med hjälp av Visual Studio för att paketera ett befintligt program](service-fabric-deploy-existing-app.md). När du har lagt till den första körbara fil som gäst, högerklicka på projektet för konsolprogrammet och välj den **Lägg till -> Ny Service Fabric-tjänsten** att lägga till det andra körbara gäst-projektet i lösningen. Obs: Om du väljer att länka källa i Visual Studio-projekt skapar Visual Studio-lösning ska se till att ditt programpaket är uppdaterade med ändringar i källan. 
+Du kan använda Visual Studio tooproduce hello med programpaket som innehåller flera gäst körbara filer. Se [med hjälp av Visual Studio toopackage ett befintligt program](service-fabric-deploy-existing-app.md). När du har lagt till hello första gäst körbar fil högerklickar du på hello projektet och välj hello **Lägg till -> Ny Service Fabric-tjänsten** tooadd hello andra gäst körbara projektet toohello lösningen. Obs: Om du väljer toolink hello källa i hello Visual Studio-projekt, skapa hello Visual Studio-lösning ska kontrollera att programpaketet är upp toodate med ändringar i hello källan. 
 
 ## <a name="samples"></a>Exempel
 * [Exempel för förpackning och distribution av en gäst körbar fil](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Exempel på två gäst körbara filer (C# och nodejs) kommunicerar via Naming service med hjälp av REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Exempel på två gäst körbara filer (C# och nodejs) kommunicera via hello Naming service med hjälp av REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
 
-## <a name="manually-package-the-multiple-guest-executable-application"></a>Paketet flera gäst körbara programmet manuellt
-Alternativt kan du paketera gästen körbara manuellt. Manuell förpackningen kan den här artikeln använder verktyget Service Fabric-paket, som finns på [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool).
+## <a name="manually-package-hello-multiple-guest-executable-application"></a>Manuellt flera gäst körbara programmet hello i paketet
+Alternativt kan du paketera hello gäst körbara manuellt. Hello manuell förpackningen kan den här artikeln använder hello Service Fabric paketering verktyg som finns på [http://aka.ms/servicefabricpacktool](http://aka.ms/servicefabricpacktool).
 
-### <a name="packaging-the-nodejs-application"></a>Paketera Node.js-program
-Den här artikeln förutsätter att Node.js inte är installerat på noderna i Service Fabric-klustret. Följaktligen behöver du lägga till Node.exe i rotkatalogen för programmet nod innan paketering. Katalogstrukturen för Node.js-program (med snabb webbramverk och Jade mall engine) bör likna exemplet nedan:
+### <a name="packaging-hello-nodejs-application"></a>Paketering hello Node.js-program
+Den här artikeln förutsätter att Node.js inte är installerat på hello noder i hello Service Fabric-klustret. Följaktligen måste tooadd Node.exe toohello rotkatalogen för programmet nod innan paketering. hello katalogstrukturen på hello Node.js-program (med snabb webbramverk och Jade mall engine) bör se ut ungefär toohello en nedan:
 
 ```
 |-- NodeApplication
@@ -60,22 +60,22 @@ Den här artikeln förutsätter att Node.js inte är installerat på noderna i S
     |-- node.exe
 ```
 
-Som ett nästa steg kan skapa du ett programpaket för Node.js-program. Koden nedan skapar ett Service Fabric-programpaket som innehåller Node.js-program.
+Som ett nästa steg kan du skapa ett programpaket för hello Node.js-program. hello koden nedan skapar ett Service Fabric-programpaket som innehåller hello Node.js-program.
 
 ```
 .\ServiceFabricAppPackageUtil.exe /source:'[yourdirectory]\MyNodeApplication' /target:'[yourtargetdirectory] /appname:NodeService /exe:'node.exe' /ma:'bin/www' /AppType:NodeAppType
 ```
 
-Nedan följer en beskrivning av de parametrar som används:
+Nedan visas en beskrivning av hello-parametrar som används:
 
-* **/ source** pekar på katalogen för det program som ska paketeras.
-* **/ target** definierar den katalog där paketet ska skapas. Den här katalogen måste vara olika från källkatalogen.
-* **/ AppName** definierar namnet på programmet i det befintliga programmet. Det är viktigt att du förstår att detta innebär att tjänstnamnet i manifestet och inte namnet på Service Fabric-programmet.
-* **/exe** definierar den körbara filen som Service Fabric ska starta i det här fallet `node.exe`.
-* **/Ma** definierar argumentet som används för att starta den körbara filen. Node.js är inte installerad, Service Fabric behöver starta webbservern Node.js genom att köra `node.exe bin/www`.  `/ma:'bin/www'`Anger verktyget paketering för att använda `bin/ma` som argument för node.exe.
-* **/ AppType** definierar Service Fabric-programmets typnamn.
+* **/ source** punkter toohello katalogen för hello-program som ska paketeras.
+* **/ target** definierar hello directory i vilka hello paketet ska skapas. Den här katalogen har toobe skiljer sig från hello källkatalogen.
+* **/ AppName** definierar hello programnamn till hello befintliga program. Det är viktigt toounderstand detta innebär toohello tjänstnamn i hello manifestet och inte toohello Service Fabric programnamn.
+* **/exe** definierar hello körbara att Service Fabric ska toolaunch, i det här fallet `node.exe`.
+* **/Ma** definierar hello-argument som håller på att använda toolaunch hello körbara. Node.js är inte installerad, måste Service Fabric toolaunch hello Node.js webbservern genom att köra `node.exe bin/www`.  `/ma:'bin/www'`Visar hello paketering verktyget toouse `bin/ma` som hello argument för node.exe.
+* **/ AppType** definierar hello Service Fabric-programmets typnamn.
 
-Om du bläddrar till den katalog som angavs i parametern/Target kan du se att verktyget har skapat ett fullt fungerande Service Fabric-paket som visas nedan:
+Om du bläddrar toohello katalog som angavs i hello/Target-parametern kan du se hello verktyget har skapat ett fullt fungerande Service Fabric-paket som visas nedan:
 
 ```
 |--[yourtargetdirectory]
@@ -95,7 +95,7 @@ Om du bläddrar till den katalog som angavs i parametern/Target kan du se att ve
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-Den genererade ServiceManifest.xml har nu ett avsnitt som beskriver hur Node.js-webbserver bör startas, som visas i kodfragmentet nedan:
+hello genererade ServiceManifest.xml har nu ett avsnitt som beskriver hur hello Node.js webbserver bör startas, enligt hello kodfragmentet nedan:
 
 ```xml
 <CodePackage Name="C" Version="1.0">
@@ -108,7 +108,7 @@ Den genererade ServiceManifest.xml har nu ett avsnitt som beskriver hur Node.js-
     </EntryPoint>
 </CodePackage>
 ```
-I det här exemplet lyssnar webbservern Node.js på port 3000, så du behöver uppdatera slutpunktsinformationen i filen ServiceManifest.xml enligt nedan.   
+I det här exemplet lyssnar hello Node.js webbservern tooport 3000, så du måste tooupdate hello slutpunktsinformation i hello ServiceManifest.xml filen enligt nedan.   
 
 ```xml
 <Resources>
@@ -117,10 +117,10 @@ I det här exemplet lyssnar webbservern Node.js på port 3000, så du behöver u
       </Endpoints>
 </Resources>
 ```
-### <a name="packaging-the-mongodb-application"></a>Paketera programmet MongoDB
-Nu när du har paketerat Node.js-program, kan du gå vidare och paketet MongoDB. Som tidigare nämnts, är de steg som du går igenom nu inte specifika för Node.js och MongoDB. Faktum är gäller de för alla program som är avsedda att vara packade tillsammans som ett Service Fabric-program.  
+### <a name="packaging-hello-mongodb-application"></a>Paketering hello MongoDB-program
+Nu när du har paketerat hello Node.js-program, kan du gå vidare och paketet MongoDB. Som tidigare nämnts, hello steg som du går igenom nu är inte specifik tooNode.js och MongoDB. De gäller i själva verket tooall program som är avsedda toobe packade tillsammans som ett Service Fabric-program.  
 
-Om du vill paketera MongoDB, som du vill kontrollera att du paketerar Mongod.exe och Mongo.exe. Båda binärfiler finns i den `bin` för din MongoDB-installationskatalogen. Katalogstrukturen ser ut som nedan.
+toopackage MongoDB, vill du att du paketerar Mongod.exe och Mongo.exe toomake. Båda binärfiler finns i hello `bin` för din MongoDB-installationskatalogen. hello katalogstruktur verkar liknande toohello en nedan.
 
 ```
 |-- MongoDB
@@ -129,25 +129,25 @@ Om du vill paketera MongoDB, som du vill kontrollera att du paketerar Mongod.exe
         |-- mongo.exe
         |-- anybinary.exe
 ```
-Service Fabric måste börja MongoDB med ett kommando som liknar den nedan, så du behöver använda den `/ma` parameter när paketera MongoDB.
+Service Fabric behöver toostart MongoDB med ett kommando liknande toohello en nedan, så du behöver toouse hello `/ma` parameter när paketera MongoDB.
 
 ```
-mongod.exe --dbpath [path to data]
+mongod.exe --dbpath [path toodata]
 ```
 > [!NOTE]
-> Data som sparas inte när det gäller ett nodfel om du placerar katalogen MongoDB data på den lokala katalogen för noden. Du bör använda beständig lagring eller implementera replikuppsättning MongoDB för att förhindra dataförlust.  
+> hello bevaras inte data som ett nodfel hello gäller om du placerar hello MongoDB datakatalog på hello lokal katalog för hello-nod. Du bör använda beständig lagring eller implementera MongoDB replikuppsättning ordning tooprevent förlust av data.  
 >
 >
 
-I PowerShell eller Kommandotolken kör vi verktyget paketering med följande parametrar:
+I PowerShell eller hello-kommandogränssnittet kör vi hello paketering verktyget med hello följande parametrar:
 
 ```
-.\ServiceFabricAppPackageUtil.exe /source: [yourdirectory]\MongoDB' /target:'[yourtargetdirectory]' /appname:MongoDB /exe:'bin\mongod.exe' /ma:'--dbpath [path to data]' /AppType:NodeAppType
+.\ServiceFabricAppPackageUtil.exe /source: [yourdirectory]\MongoDB' /target:'[yourtargetdirectory]' /appname:MongoDB /exe:'bin\mongod.exe' /ma:'--dbpath [path toodata]' /AppType:NodeAppType
 ```
 
-För att lägga till MongoDB till ditt Service Fabric-programpaket måste du se till att/Target-parametern pekar på den katalog som innehåller programmet redan manifest tillsammans med Node.js-program. Du måste också se till att du använder samma ApplicationType namn.
+I programpaket för Service Fabric ordning tooadd MongoDB tooyour, behöver du toomake att hello/Target parametern pekar toohello samma katalog som innehåller redan hello programmanifestet tillsammans med hello Node.js-program. Du måste också kontrollera att du använder toomake hello samma ApplicationType namn.
 
-Nu ska vi Bläddra till mappen och undersöka vad verktyget har skapats.
+Nu ska vi Bläddra i katalog toohello och undersöka vilka hello-verktyget har skapats.
 
 ```
 |--[yourtargetdirectory]
@@ -163,7 +163,7 @@ Nu ska vi Bläddra till mappen och undersöka vad verktyget har skapats.
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-Verktyget till en ny mapp, MongoDB, i den katalog som innehåller MongoDB-binärfiler som du kan se. Om du öppnar den `ApplicationManifest.xml` filen ser du att paketet innehåller nu både Node.js-program och MongoDB. Koden nedan visar innehållet i programmanifestet.
+Som du ser hello verktyget lägga till en ny mapp, MongoDB, toohello katalog som innehåller hello MongoDB-binärfiler. Om du öppnar hello `ApplicationManifest.xml` fil, du kan se det hello-paketet innehåller nu både hello Node.js-program och MongoDB. hello koden nedan visar hello innehållet i hello programmanifestet.
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -188,8 +188,8 @@ Verktyget till en ny mapp, MongoDB, i den katalog som innehåller MongoDB-binär
 </ApplicationManifest>  
 ```
 
-### <a name="publishing-the-application"></a>Publicera programmet
-Det sista steget är att publicera program till det lokala Service Fabric-klustret med hjälp av PowerShell-skript nedan:
+### <a name="publishing-hello-application"></a>Publishing hello-program
+hello sista steget är toopublish hello programmet toohello lokala Service Fabric-kluster med hjälp av hello PowerShell-skript nedan:
 
 ```
 Connect-ServiceFabricCluster localhost:19000
@@ -203,18 +203,18 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-När programmet har publicerats till det lokala klustret kan du komma åt Node.js-program på den port som vi angav i service manifest för Node.js-program, till exempel http://localhost: 3000.
+När programmet hello har publicerade toohello lokala klustret kan du komma åt hello Node.js-program på hello-port som vi angav i hello tjänstmanifestet av hello Node.js-program, till exempel http://localhost: 3000.
 
-I den här kursen har du fått veta hur du enkelt paketera två befintliga program som en Service Fabric-program. Du har lärt dig hur du distribuerar den till Service Fabric så att den kan dra nytta av några av Service Fabric-funktioner, till exempel hög tillgänglighet och integrering med hälsotillstånd.
+I den här kursen har du sett hur tooeasily paketet två befintliga program som en Service Fabric-program. Du har också fått lära dig hur toodeploy den tooService Fabric så att den kan dra nytta av några av hello Service Fabric-funktioner, till exempel integrering med hög tillgänglighet och hälsa.
 
 
-## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Att lägga till flera gäst körbara filer i ett befintligt program med hjälp av Yeoman på Linux
+## <a name="adding-more-guest-executables-tooan-existing-application-using-yeoman-on-linux"></a>Lägga till flera gäst körbara filer tooan befintliga program med hjälp av Yeoman på Linux
 
-Om du vill lägga till en till tjänst till ett program som redan har skapats med hjälp av `yo` utför du följande steg: 
-1. Ändra katalogen till roten för det befintliga programmet.  Till exempel `cd ~/YeomanSamples/MyApplication` om `MyApplication` är programmet som skapats av Yeoman.
-2. Kör `yo azuresfguest:AddService` och ange den nödvändiga informationen.
+tooadd en annan tooan tjänstprogrammet redan skapats med hjälp av `yo`, utföra hello följande steg: 
+1. Ändra toohello rotkatalog till hello befintliga program.  Till exempel `cd ~/YeomanSamples/MyApplication`om `MyApplication` är hello-program som skapats av Yeoman.
+2. Kör `yo azuresfguest:AddService` och ange hello nödvändiga informationen.
 
 ## <a name="next-steps"></a>Nästa steg
 * Lär dig mer om hur du distribuerar behållare med [översikt över Service Fabric och behållare](service-fabric-containers-overview.md)
 * [Exempel för förpackning och distribution av en gäst körbar fil](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Exempel på två gäst körbara filer (C# och nodejs) kommunicerar via Naming service med hjälp av REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
+* [Exempel på två gäst körbara filer (C# och nodejs) kommunicera via hello Naming service med hjälp av REST](https://github.com/Azure-Samples/service-fabric-dotnet-containers)

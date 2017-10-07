@@ -1,6 +1,6 @@
 ---
-title: "Flytta data från en lokal SQL Server till SQL Azure med Azure Data Factory | Microsoft Docs"
-description: "Ställ in en ADM-pipeline som composes två data migreringsaktiviteter som tillsammans flyttar data dagligen mellan databaser på lokalt och i molnet."
+title: "aaaMove data från en lokal SQL Server-tooSQL Azure med Azure Data Factory | Microsoft Docs"
+description: "Ställ in en ADM-pipeline som composes två data migreringsaktiviteter som tillsammans flyttar data dagligen mellan databaser på lokalt och i hello molnet."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: 39fe26d3388be8b558f05063a8965889c013a41e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7f7e78c7a84a259539221d3235b76bb5a3cf9866
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Flytta data från en lokal SQLServer till SQL Azure med Azure Data Factory
-Det här avsnittet visar hur du flyttar data från en lokal SQL Server-databas till en SQL Azure Database via Azure Blob Storage med hjälp av Azure Data Factory (ADM).
+# <a name="move-data-from-an-on-premises-sql-server-toosql-azure-with-azure-data-factory"></a>Flytta data från en lokal SQL server tooSQL Azure med Azure Data Factory
+Det här avsnittet visar hur toomove data från en lokal SQL Server-databas tooa SQL Azure Database via Azure Blob Storage med hjälp av hello Azure Data Factory (ADM).
 
-En tabell som sammanfattar olika alternativ för att flytta data till en Azure SQL Database finns [flytta data till en Azure SQL Database för Azure Machine Learning](machine-learning-data-science-move-sql-azure.md).
+En tabell som sammanfattar olika alternativ för att flytta data tooan Azure SQL Database finns [flytta data tooan Azure SQL Database för Azure Machine Learning](machine-learning-data-science-move-sql-azure.md).
 
-## <a name="intro"></a>Introduktion: Vad är ADF och när den används för att migrera data?
-Azure Data Factory är en helt hanterad molnbaserade integration datatjänst som samordnar och automatiserar flytt och transformering av data. Viktiga begrepp i ADF-modellen är pipeline. En pipeline är en logisk gruppering av aktiviteter, som definierar åtgärderna som ska utföras på de data som finns i DataSet. Länkade tjänster används för att definiera den information som behövs för Data Factory för att ansluta till dataresurser.
+## <a name="intro"></a>Introduktion: Vad är ADF och när ska den vara används toomigrate data?
+Azure Data Factory är en helt hanterad molnbaserade integration datatjänst som samordnar och automatiserar hello flytt och transformering av data. hello viktiga begrepp i hello ADF modellen är pipeline. En pipeline är en logisk gruppering av aktiviteter, som definierar hello åtgärder tooperform på hello data som finns i DataSet. Länkade tjänster är används toodefine hello information som behövs för Data Factory tooconnect toohello dataresurser.
 
-Med ADF, kan befintliga databearbetning tjänster sammanställas till pipeline-data som är hög tillgänglighet och hanterad i molnet. Dessa data pipelines kan schemaläggas för att mata in, förbereda, transformera, analysera och publicera data och ADF hanterar och samordnar komplexa data och beroenden för bearbetning. Lösningar kan snabbt inbyggda och distribueras i molnet, ansluta ett växande antal lokalt och molntjänster datakällor.
+Med ADF, kan befintliga databearbetning tjänster sammanställas till pipeline-data som är hög tillgänglighet och hanterad i hello molnet. Pipelines dessa data kan vara schemalagda tooingest, förbereda, transformera, analysera och publicera data och ADF hanterar och samordnar hello komplexa data och beroenden för bearbetning. Lösningar kan hello snabbt inbyggd och distribuerade i molnet, ansluta ett växande antal lokalt och moln-datakällor.
 
 Överväg att använda ADF:
 
-* När data ska migreras kontinuerligt i ett hybridscenario som har åtkomst till både lokalt och molnresurser
-* När data är överförd eller måste ändras eller har affärslogik som lagts till när migreras.
+* När data måste toobe migreras kontinuerligt i ett hybridscenario som har åtkomst till både lokalt och molnresurser
+* När hello data överförda eller toobe måste ändras eller har affärslogik till tooit när migreras.
 
-ADF möjliggör schemaläggningen och övervakning av jobb med hjälp av enkla JSON-skript som hanterar flödet av data regelbundet. ADF har även andra funktioner som stöd för komplex. Mer information om ADF finns i dokumentationen på [Azure Data Factory (ADM)](https://azure.microsoft.com/services/data-factory/).
+ADF tillåter hello schemaläggning och övervakning av jobb med hjälp av enkla JSON-skript som hanterar hello flödet av data regelbundet. ADF har även andra funktioner som stöd för komplex. Mer information om ADF finns hello dokumentationen på [Azure Data Factory (ADM)](https://azure.microsoft.com/services/data-factory/).
 
-## <a name="scenario"></a>Scenariot
-Vi har skapat en ADM-pipeline som composes två aktiviteter för migrering av data. Tillsammans flytta data dagligen mellan en lokal SQL-databas och en Azure SQL Database i molnet. Det finns två aktiviteter:
+## <a name="scenario"></a>hello Scenario
+Vi har skapat en ADM-pipeline som composes två aktiviteter för migrering av data. Tillsammans flytta data dagligen mellan en lokal SQL-databas och en Azure SQL Database i hello molnet. hello två aktiviteter är:
 
-* Kopiera data från en lokal SQL Server-databas till ett Azure Blob Storage-konto
-* Kopiera data från Azure Blob Storage-konto till en Azure SQL Database.
+* Kopiera data från en lokal SQL Server-databasen tooan Azure Blob Storage-konto
+* Kopiera data från hello Azure Blob Storage-konto tooan Azure SQL Database.
 
 > [!NOTE]
-> Steg som visas här har anpassats från mer detaljerad genomgång som tillhandahålls av ADF-teamet: [flytta data mellan lokala källor och moln med Data Management Gateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md) referenser till de relevanta avsnitten i avsnittet Ange när det är lämpligt.
+> Hej steg som visas här har anpassats från hello mer detaljerad genomgång som tillhandahålls av hello ADF team: [flytta data mellan lokala källor och moln med Data Management Gateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md) refererar till toohello relevanta avsnitt i avsnittet anges vid behov.
 >
 >
 
@@ -52,35 +52,35 @@ Vi har skapat en ADM-pipeline som composes två aktiviteter för migrering av da
 Den här kursen förutsätter att du har:
 
 * En **Azure-prenumeration**. Om du inte har någon prenumeration kan du registrera dig för en [kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/).
-* En **Azure storage-konto**. Du kan använda ett Azure storage-konto för att lagra data i den här kursen. Om du inte har ett Azure storage-konto finns i [skapa ett lagringskonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) artikel. När du har skapat lagringskontot som du behöver hämta nyckeln konto används för åtkomst till lagringen. Se [hantera åtkomstnycklar för lagring](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
-* Åtkomst till en **Azure SQL Database**. Om du måste skapa en Azure SQL Database, tpoic [komma igång med Microsoft Azure SQL Database ](../sql-database/sql-database-get-started.md) innehåller information om hur du etablerar en ny instans av en Azure SQL Database.
-* Installerat och konfigurerat **Azure PowerShell** lokalt. Instruktioner finns i [hur du installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview).
+* En **Azure storage-konto**. Du kan använda ett Azure storage-konto för att lagra hello data i den här självstudiekursen. Om du inte har ett Azure storage-konto finns hello [skapa ett lagringskonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) artikel. När du har skapat hello storage-konto behöver du tooobtain hello konto nyckel som används för tooaccess hello lagring. Se [hantera åtkomstnycklar för lagring](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
+* Åtkomst tooan **Azure SQL Database**. Om du måste konfigurera en Azure SQL Database hello tpoic [komma igång med Microsoft Azure SQL Database ](../sql-database/sql-database-get-started.md) innehåller information om hur tooprovision en ny instans av en Azure SQL Database.
+* Installerat och konfigurerat **Azure PowerShell** lokalt. Instruktioner finns i [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
 
 > [!NOTE]
-> Den här proceduren använder den [Azure-portalen](https://portal.azure.com/).
+> Den här proceduren använder hello [Azure-portalen](https://portal.azure.com/).
 >
 >
 
-## <a name="upload-data"></a>Ladda upp data till din lokala SQL Server
-Vi använder den [NYC Taxi dataset](http://chriswhong.com/open-data/foil_nyc_taxi/) att demonstrera migreringsprocessen. NYC Taxi dataset är tillgängligt, enligt beskrivningen i det inlägget på Azure-blobblagring [NYC Taxi Data](http://www.andresmh.com/nyctaxitrips/). Data har två filer, trip_data.csv-fil som innehåller information om kommunikation, och filen trip_far.csv, som innehåller information om avgiften betalat för varje resa. Ett exempel och en beskrivning av dessa filer finns i [NYC Taxi resor Dataset beskrivning](machine-learning-data-science-process-sql-walkthrough.md#dataset).
+## <a name="upload-data"></a>Överför hello data tooyour lokala SQL Server
+Vi använder hello [NYC Taxi dataset](http://chriswhong.com/open-data/foil_nyc_taxi/) toodemonstrate hello migreringsprocessen. hello NYC Taxi dataset är tillgänglig, enligt beskrivningen i det inlägget på Azure-blobblagring [NYC Taxi Data](http://www.andresmh.com/nyctaxitrips/). hello har två filer, hello trip_data.csv filen som innehåller information om resa och hello trip_far.csv filen som innehåller information om hello avgiften betalat för varje resa. Ett exempel och en beskrivning av dessa filer finns i [NYC Taxi resor Dataset beskrivning](machine-learning-data-science-process-sql-walkthrough.md#dataset).
 
-Du kan anpassa det förfarande som anges här till en uppsättning med dina egna data eller Följ stegen som beskrivs med NYC Taxi dataset. Överför NYC Taxi dataset till din lokala SQL Server-databas genom att följa proceduren som beskrivs i [Bulk importera Data till SQL Server-databas](machine-learning-data-science-process-sql-walkthrough.md#dbload). Dessa instruktioner är för en SQL Server på en virtuell dator i Azure, men proceduren för att ladda upp till den lokala SQL Server är samma.
+Du kan anpassa hello förfarandet här tooa uppsättning dina egna data eller hello gör enligt med hjälp av hello NYC Taxi dataset. tooupload hello NYC Taxi dataset i dina lokala SQL Server-databas, följ hello proceduren som beskrivs i [Bulk importera Data till SQL Server-databas](machine-learning-data-science-process-sql-walkthrough.md#dbload). Dessa instruktioner är för en SQL Server på en virtuell dator i Azure, men hello proceduren för att ladda upp toohello på lokal SQL Server är hello samma.
 
 ## <a name="create-adf"></a>Skapa ett Azure Data Factory
-Instruktioner för att skapa en ny Azure Data Factory och en resursgrupp i den [Azure-portalen](https://portal.azure.com/) tillhandahålls [skapa ett Azure Data Factory](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#create-data-factory). Namnge den nya instansen ADF *adfdsp* och kalla resursgruppen skapade *adfdsprg*.
+Hej instruktioner för att skapa en ny Azure Data Factory och en resursgrupp i hello [Azure-portalen](https://portal.azure.com/) tillhandahålls [skapa ett Azure Data Factory](../data-factory/data-factory-build-your-first-pipeline-using-editor.md#create-data-factory). Namnet hello ny ADF instans *adfdsp* och namnet hello resursgrupp skapade *adfdsprg*.
 
-## <a name="install-and-configure-up-the-data-management-gateway"></a>Installera och konfigurera upp Data Management Gateway
-Om du vill aktivera din pipelines i ett Azure data factory för att arbeta med en lokal SQL Server som du behöver lägga till den som en länkad tjänst datafabriken. Om du vill skapa en länkad tjänst för en lokal SQL Server, måste du:
+## <a name="install-and-configure-up-hello-data-management-gateway"></a>Installera och konfigurera in hello Data Management Gateway
+tooenable din pipelines i ett Azure data factory toowork med en lokal SQL Server behöver du tooadd den som en länkad tjänst toohello data factory. toocreate en länkad tjänst för en lokal SQL Server måste du:
 
-* Hämta och installera Microsoft Data Management Gateway till den lokala datorn.
-* Konfigurera den länkade tjänsten för lokala datakällan som ska använda gatewayen.
+* Hämta och installera Microsoft Data Management Gateway till hello lokala dator.
+* Konfigurera hello länkad tjänst för hello lokala datakälla toouse hello gateway.
 
-Data Management Gateway Serialiserar och deserializes källa och mottagare data på den dator där den finns.
+hello Data Management Gateway Serialiserar och deserializes hello källa och mottagare data på hello dator där det finns.
 
 Ställa in instruktioner och information om Data Management Gateway finns [flytta data mellan lokala källor och moln med Data Management Gateway](../data-factory/data-factory-move-data-between-onprem-and-cloud.md)
 
-## <a name="adflinkedservices"></a>Skapa länkade tjänster att ansluta till dataresurser
-En länkad tjänst definierar den information som behövs för Azure Data Factory för att ansluta till en Dataresurs. Stegvisa anvisningar för att skapa länkade tjänster finns i [Skapa länkade tjänster](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services).
+## <a name="adflinkedservices"></a>Skapa länkade tjänster tooconnect toohello dataresurser
+En länkad tjänst definierar hello information som behövs för Azure Data Factory tooconnect tooa Dataresurs. hello stegvisa anvisningar för att skapa länkade tjänster finns i [Skapa länkade tjänster](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services).
 
 Vi har tre resurser i det här scenariot som krävs för länkade tjänster.
 
@@ -89,36 +89,36 @@ Vi har tre resurser i det här scenariot som krävs för länkade tjänster.
 3. [Länkad tjänst för Azure SQL-databas](#adf-linked-service-azure-sql)
 
 ### <a name="adf-linked-service-onprem-sql"></a>Länkad tjänst för lokala SQL Server-databas
-För att skapa den länkade tjänsten för lokala SQL Server:
+toocreate hello länkad tjänst för hello lokala SQL Server:
 
-* Klicka på den **datalagret** i ADF landningssida på den klassiska Azure-portalen
-* Välj **SQL** och ange den *användarnamn* och *lösenord* autentiseringsuppgifter för lokal SQL Server. Du måste ange servernamn som en **instansnamn för fullständigt kvalificerade servername omvänt snedstreck (ServerNamn\InstansNamn)**. Namnge den länkade tjänsten *adfonpremsql*.
+* Klicka på hello **datalagret** i hello ADF landningssida på den klassiska Azure-portalen
+* Välj **SQL** och ange hello *användarnamn* och *lösenord* autentiseringsuppgifter för hello lokala SQL Server. Du behöver tooenter hello servername som en **instansnamn för fullständigt kvalificerade servername omvänt snedstreck (ServerNamn\InstansNamn)**. Namnet hello länkade tjänsten *adfonpremsql*.
 
 ### <a name="adf-linked-service-blob-store"></a>Länkad tjänst för Blob
-För att skapa den länkade tjänsten för Azure Blob Storage-konto:
+toocreate hello länkad tjänst för hello Azure Blob Storage-konto:
 
-* Klicka på den **datalagret** i ADF landningssida på den klassiska Azure-portalen
+* Klicka på hello **datalagret** i hello ADF landningssida på den klassiska Azure-portalen
 * Välj **Azure Storage-konto**
-* Ange Azure Blob Storage-nyckel och en behållare kontonamnet. Namnge den länkade tjänsten *adfds*.
+* Ange hello Azure Blob Storage-konto nyckel och behållare. Namnet hello länkade tjänsten *adfds*.
 
 ### <a name="adf-linked-service-azure-sql"></a>Länkad tjänst för Azure SQL-databas
-För att skapa den länkade tjänsten för Azure SQL Database:
+toocreate hello länkad tjänst för hello Azure SQL Database:
 
-* Klicka på den **datalagret** i ADF landningssida på den klassiska Azure-portalen
-* Välj **Azure SQL** och ange den *användarnamn* och *lösenord* autentiseringsuppgifter för Azure SQL-databasen. Den *användarnamn* måste anges som  *user@servername* .   
+* Klicka på hello **datalagret** i hello ADF landningssida på den klassiska Azure-portalen
+* Välj **Azure SQL** och ange hello *användarnamn* och *lösenord* autentiseringsuppgifter för hello Azure SQL Database. Hej *användarnamn* måste anges som  *user@servername* .   
 
-## <a name="adf-tables"></a>Definiera och skapa tabeller för att ange hur du kommer åt datauppsättningar
-Skapa tabeller som anger strukturen, plats och tillgängligheten för datauppsättningar med följande skript-baserad. JSON-filer används för att definiera tabellerna. Mer information om strukturen för de här filerna finns [datauppsättningar](../data-factory/data-factory-create-datasets.md).
+## <a name="adf-tables"></a>Definiera och skapa tabeller toospecify hur tooaccess hello datauppsättningar
+Skapa tabeller som anger hello struktur, plats och tillgängligheten för hello datauppsättningar med hello följa skriptbaserade procedurer. JSON-filer finns används toodefine hello tabeller. Mer information om hello strukturen för de här filerna finns [datauppsättningar](../data-factory/data-factory-create-datasets.md).
 
 > [!NOTE]
-> Du bör köra de `Add-AzureAccount` cmdlet innan du kör den [ny AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet för att bekräfta att rätt Azure-prenumeration har valts för Kommandokörningen. Dokumentation för denna cmdlet finns [Add-AzureAccount](/powershell/module/azure/add-azureaccount?view=azuresmps-3.7.0).
+> Du bör köra hello `Add-AzureAccount` cmdlet innan du kör hello [ny AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) cmdlet tooconfirm som hello höger Azure-prenumeration har valts för hello Kommandokörning. Dokumentation för denna cmdlet finns [Add-AzureAccount](/powershell/module/azure/add-azureaccount?view=azuresmps-3.7.0).
 >
 >
 
-JSON-baserade definitionerna i tabellerna använda följande namn:
+hello JSON-baserade definitioner i hello tabeller Använd hello följande namn:
 
-* den **tabellnamn** i den lokala SQL server är *nyctaxi_data*
-* den **behållarnamn** i Azure Blob Storage-kontot är *containername*  
+* Hej **tabellnamn** i hello lokal SQLServer är *nyctaxi_data*
+* Hej **behållarnamn** i hello Azure Blob Storage-kontot är *containername*  
 
 Tre tabelldefinitionerna krävs för den här ADF-pipelinen:
 
@@ -127,12 +127,12 @@ Tre tabelldefinitionerna krävs för den här ADF-pipelinen:
 3. [SQL Azure-tabellen](#adf-table-azure-sql)
 
 > [!NOTE]
-> De här procedurerna använda Azure PowerShell för att definiera och skapa ADF-aktiviteter. Men dessa uppgifter kan också utföras med hjälp av Azure-portalen. Mer information finns i [skapa datauppsättningar](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#create-datasets).
+> De här procedurerna Använd Azure PowerShell toodefine och skapa hello ADF aktiviteter. Men dessa uppgifter kan också utföras med hjälp av hello Azure-portalen. Mer information finns i [skapa datauppsättningar](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#create-datasets).
 >
 >
 
 ### <a name="adf-table-onprem-sql"></a>Lokal SQL-tabell
-Tabelldefinitionen för lokala SQL Server har angetts för följande JSON-fil:
+hello tabelldefinitionen för hello lokala SQL Server har angetts i hello följande JSON-fil:
 
         {
             "name": "OnPremSQLTable",
@@ -159,15 +159,15 @@ Tabelldefinitionen för lokala SQL Server har angetts för följande JSON-fil:
             }
         }
 
-Kolumnnamnen ingick inte. Du kan välja på kolumnnamnen underordnad genom att inkludera dem här (information den [ADF dokumentationen](../data-factory/data-factory-data-movement-activities.md) avsnittet.
+hello kolumnnamn ingick inte. Du kan välja på hello kolumnnamn genom att inkludera dem här underordnad (information finns hello [ADF dokumentationen](../data-factory/data-factory-data-movement-activities.md) avsnittet.
 
-Kopiera JSON-definitionen av tabellen i en fil kallad *onpremtabledef.json* filen och spara den på en känd plats (här antas vara *C:\temp\onpremtabledef.json*). Skapa tabellen i ADF med följande Azure PowerShell-cmdlet:
+Kopiera hello JSON-definitionen av hello tabell till en fil med namnet *onpremtabledef.json* filen och spara den tooa känd plats (här antas toobe *C:\temp\onpremtabledef.json*). Skapa hello tabell i ADF med hello följande Azure PowerShell-cmdlet:
 
     New-AzureDataFactoryTable -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp –File C:\temp\onpremtabledef.json
 
 
 ### <a name="adf-table-blob-store"></a>BLOB-tabell
-Definitionen för tabellen för platsen blob finns i följande (det här mappar infogade data från lokalt till Azure blob):
+Definitionen för hello tabellen för hello utdata blob befinner sig i hello följande (det här mappar hello inhämtas data från lokala tooAzure blob):
 
         {
             "name": "OutputBlobTable",
@@ -192,12 +192,12 @@ Definitionen för tabellen för platsen blob finns i följande (det här mappar 
             }
         }
 
-Kopiera JSON-definitionen av tabellen i en fil kallad *bloboutputtabledef.json* filen och spara den på en känd plats (här antas vara *C:\temp\bloboutputtabledef.json*). Skapa tabellen i ADF med följande Azure PowerShell-cmdlet:
+Kopiera hello JSON-definitionen av hello tabell till en fil med namnet *bloboutputtabledef.json* filen och spara den tooa känd plats (här antas toobe *C:\temp\bloboutputtabledef.json*). Skapa hello tabell i ADF med hello följande Azure PowerShell-cmdlet:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\bloboutputtabledef.json  
 
 ### <a name="adf-table-azure-sq"></a>SQL Azure-tabellen
-Definitionen för tabellen för SQL Azure utdata finns i följande (det här schemat mappar data från blob):
+Definitionen för hello tabellen för hello SQL Azure utdata har hello följande (det här schemat mappar hello data från blob hello):
 
     {
         "name": "OutputSQLAzureTable",
@@ -222,34 +222,34 @@ Definitionen för tabellen för SQL Azure utdata finns i följande (det här sch
         }
     }
 
-Kopiera JSON-definitionen av tabellen i en fil kallad *AzureSqlTable.json* filen och spara den på en känd plats (här antas vara *C:\temp\AzureSqlTable.json*). Skapa tabellen i ADF med följande Azure PowerShell-cmdlet:
+Kopiera hello JSON-definitionen av hello tabell till en fil med namnet *AzureSqlTable.json* filen och spara den tooa känd plats (här antas toobe *C:\temp\AzureSqlTable.json*). Skapa hello tabell i ADF med hello följande Azure PowerShell-cmdlet:
 
     New-AzureDataFactoryTable -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\AzureSqlTable.json  
 
 
-## <a name="adf-pipeline"></a>Definiera och skapa pipelinen
-Ange de aktiviteter som tillhör pipelinen och skapa pipeline med följande skript-baserad. En JSON-fil används för att definiera egenskaperna pipeline.
+## <a name="adf-pipeline"></a>Definiera och skapa hello pipeline
+Ange hello aktiviteter som tillhör toohello pipeline och skapa hello pipeline med hello följa skriptbaserade procedurer. En JSON-fil är används toodefine hello pipeline egenskaper.
 
-* Skriptet förutsätter att den **pipeline namnet** är *AMLDSProcessPipeline*.
-* Observera också att vi anger periodiciteten för pipeline köras dag och använder standard körningstid för jobb (12: 00 UTC).
+* hello skript förutsätter att hello **pipeline namnet** är *AMLDSProcessPipeline*.
+* Observera också att vi anger hello periodicitet hello pipeline toobe på daglig basis och används hello standard körningstiden för hello jobb (12: 00 UTC).
 
 > [!NOTE]
-> Följande procedurer använda Azure PowerShell för att definiera och skapa ADF-pipeline. Men den här uppgiften kan också utföras med hjälp av Azure-portalen. Mer information finns i [skapa pipeline](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#create-pipeline).
+> hello följande procedurer Använd Azure PowerShell toodefine och skapa hello ADF pipeline. Men den här uppgiften kan också utföras med hjälp av Azure-portalen. Mer information finns i [skapa pipeline](../data-factory/data-factory-move-data-between-onprem-and-cloud.md#create-pipeline).
 >
 >
 
-Med tabelldefinitionerna tidigare anges pipeline-definitionen för ADF enligt följande:
+Med hjälp av hello definitioner som tidigare hello pipeline definition för hello ADF anges enligt följande:
 
         {
             "name": "AMLDSProcessPipeline",
             "properties":
             {
-                "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL to Azure blob",
+                "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL tooAzure blob",
                  "activities":
                 [
                     {
                         "name": "CopyFromSQLtoBlob",
-                        "description": "Copy data from on-premises SQL server to blob",     
+                        "description": "Copy data from on-premises SQL server tooblob",     
                         "type": "CopyActivity",
                         "inputs": [ {"name": "OnPremSQLTable"} ],
                         "outputs": [ {"name": "OutputBlobTable"} ],
@@ -278,7 +278,7 @@ Med tabelldefinitionerna tidigare anges pipeline-definitionen för ADF enligt f�
 
                     {
                         "name": "CopyFromBlobtoSQLAzure",
-                        "description": "Push data to Sql Azure",        
+                        "description": "Push data tooSql Azure",        
                         "type": "CopyActivity",
                         "inputs": [ {"name": "OutputBlobTable"} ],
                         "outputs": [ {"name": "OutputSQLAzureTable"} ],
@@ -307,21 +307,21 @@ Med tabelldefinitionerna tidigare anges pipeline-definitionen för ADF enligt f�
             }
         }
 
-Kopiera den här JSON-definitionen i pipeline till en fil kallad *pipelinedef.json* filen och spara den på en känd plats (här antas vara *C:\temp\pipelinedef.json*). Skapa pipelinen i ADF med följande Azure PowerShell-cmdlet:
+Kopiera den här JSON-definitionen för hello pipeline till en fil med namnet *pipelinedef.json* filen och spara den tooa känd plats (här antas toobe *C:\temp\pipelinedef.json*). Skapa hello pipeline i ADF med hello följande Azure PowerShell-cmdlet:
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
-Bekräfta att du kan se pipelinen på ADF i den klassiska Azure-portalen visas som följande (när du klickar på diagrammet)
+Bekräfta att du kan se hello-pipeline på hello ADF i hello Azure klassiska Portal visas som följande (när du klickar på hello diagram)
 
 ![ADF pipeline](media/machine-learning-data-science-move-sql-azure-adf/DJP1kji.png)
 
-## <a name="adf-pipeline-start"></a>Starta Pipeline
-Nu kan köra pipelinen med följande kommando:
+## <a name="adf-pipeline-start"></a>Starta hello Pipeline
+Nu kan köra hello pipeline med hello följande kommando:
 
     Set-AzureDataFactoryPipelineActivePeriod -ResourceGroupName ADFdsprg -DataFactoryName ADFdsp -StartDateTime startdateZ –EndDateTime enddateZ –Name AMLDSProcessPipeline
 
-Den *startdate* och *enddate* parametervärden måste ersättas med verkliga datum som ska köra pipelinen.
+Hej *startdate* och *enddate* parametervärden måste ersättas med hello verkliga datum som ska hello pipeline toorun toobe.
 
-När pipelinen körs, bör du kunna se data som visas i behållaren som valts för blob, en fil per dag.
+När hello pipeline utförs, bör du kunna toosee hello data visas i hello-behållaren som valts för hello blob, en fil per dag.
 
-Observera att vi inte utnyttjas funktionerna i ADF till pipe data inkrementellt. Mer information om hur du gör detta och andra funktioner som tillhandahålls av ADF finns i [ADF dokumentationen](https://azure.microsoft.com/services/data-factory/).
+Observera att vi inte utnyttjas hello funktionalitet som tillhandahålls av ADF toopipe data inkrementellt. Mer information om hur toodo detta och andra funktioner som tillhandahålls av ADF, se hello [ADF dokumentationen](https://azure.microsoft.com/services/data-factory/).

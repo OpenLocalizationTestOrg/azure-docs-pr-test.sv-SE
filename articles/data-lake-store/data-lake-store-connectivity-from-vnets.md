@@ -1,6 +1,6 @@
 ---
-title: "Ansluta till Azure Data Lake Store från Vnet | Microsoft Docs"
-description: "Ansluta till Azure Data Lake Store från Azure Vnet"
+title: "aaaConnect tooAzure Data Lake Store från Vnet | Microsoft Docs"
+description: "Ansluta tooAzure Data Lake Store från Azure Vnet"
 services: data-lake-store,data-catalog
 documentationcenter: 
 author: nitinme
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.openlocfilehash: ff7d28d7b53e872b804788647b1e672fafcf6995
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c695dcf49fe4e1a87a90729cf085a938f3b51fe3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Åtkomst till Azure Data Lake Store från virtuella datorer i ett Azure-VNET
-Azure Data Lake Store är en PaaS-tjänst som körs på offentliga Internet IP-adresser. Alla servrar som kan ansluta till Internet kan vanligtvis ansluta till Azure Data Lake Store-slutpunkter. Som standard alla virtuella datorer som finns i virtuella Azure-nätverk kan ansluta till Internet och därför kan komma åt Azure Data Lake Store. Det är dock möjligt att konfigurera virtuella datorer i ett VNET till inte har åtkomst till Internet. För sådana virtuella datorer kan är åtkomst till Azure Data Lake Store begränsad även. Blockerar tillgång till Internet för virtuella datorer i Azure Vnet kan göras med hjälp av följande metod.
+Azure Data Lake Store är en PaaS-tjänst som körs på offentliga Internet IP-adresser. Alla servrar som kan ansluta toohello offentliga Internet kan vanligtvis ansluta tooAzure Data Lake Store-och slutpunkter. Alla virtuella datorer som finns i Azure Vnet kan komma åt hello Internet som standard och därför kan komma åt Azure Data Lake Store. Det är dock möjligt tooconfigure virtuella datorer i ett VNET toonot har åtkomst toohello Internet. För sådana virtuella datorer kan är åtkomst till tooAzure Data Lake Store begränsad även. Blockerar tillgång till Internet för virtuella datorer i Azure Vnet kan göras med hjälp av hello följande metod.
 
 * Genom att konfigurera Nätverkssäkerhetsgrupp grupper (NSG)
 * Genom att konfigurera användare användardefinierade vägar (UDR)
-* Genom att utbyta vägar via BGP (dynamisk routning standardprotokoll) när ExpressRoute används som blockerar åtkomst till Internet
+* Genom att utbyta vägar via BGP (dynamisk routning standardprotokoll) när ExpressRoute används som blockerar åtkomst till toohello Internet
 
-I den här artikeln får du lära dig hur du aktiverar åtkomst till Azure Data Lake Store från Azure virtuella datorer som har begränsad åtkomst till resurser med hjälp av en av de tre metoderna ovan.
+I den här artikeln får du lära dig hur tooenable åt toohello Azure Data Lake Store från virtuella Azure-datorer som har varit begränsade tooaccess resurser med hjälp av någon av hello tre metoder som anges ovan.
 
-## <a name="enabling-connectivity-to-azure-data-lake-store-from-vms-with-restricted-connectivity"></a>Aktivera anslutningen till Azure Data Lake Store från virtuella datorer med begränsade anslutningen
-Om du vill komma åt Azure Data Lake Store från dessa virtuella datorer, måste du konfigurera dem för att få åtkomst till IP-adressen där Azure Data Lake Store-konto är tillgängligt. Du kan identifiera IP-adresserna för dina Data Lake Store-konton genom DNS-namnmatchning konton (`<account>.azuredatalakestore.net`). För det här kan du använda verktyg som **nslookup**. Öppna en kommandotolk på datorn och kör följande kommando.
+## <a name="enabling-connectivity-tooazure-data-lake-store-from-vms-with-restricted-connectivity"></a>Aktivera anslutningen tooAzure Data Lake Store från virtuella datorer med begränsade anslutningen
+tooaccess Azure Data Lake lagra från dessa virtuella datorer, måste du konfigurera dem tooaccess hello IP-adress där hello Azure Data Lake Store-konto är tillgängligt. Du kan identifiera hello IP-adresser för dina Data Lake Store-konton genom hello DNS-namnmatchning konton (`<account>.azuredatalakestore.net`). För det här kan du använda verktyg som **nslookup**. Öppna en kommandotolk på datorn och kör följande kommando hello.
 
     nslookup mydatastore.azuredatalakestore.net
 
-Utdata liknar följande. Värdet mot **adress** egenskapen är IP-adressen som är kopplad till ditt Data Lake Store-konto.
+hello följande slag hello utdata. Hej värdet mot **adress** egenskapen är hello IP-adress som är kopplad till ditt Data Lake Store-konto.
 
     Non-authoritative answer:
     Name:    1434ceb1-3a4b-4bc0-9c69-a0823fd69bba-mydatastore.projectcabostore.net
@@ -43,13 +43,13 @@ Utdata liknar följande. Värdet mot **adress** egenskapen är IP-adressen som �
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Aktivera anslutningen från virtuella datorer som har begränsats med hjälp av NSG
-När en NSG-regel för att blockera åtkomst till Internet, kan du skapa en annan NSG som ger åtkomst till Data Lake Store IP-adress. Mer information om NSG-regler finns på [vad är en Nätverkssäkerhetsgrupp?](../virtual-network/virtual-networks-nsg.md). Anvisningar om hur du skapar NSG: er finns [hantera NSG: er med hjälp av Azure portal](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
+När en NSG-regel används åt tooblock toohello Internet, kan du skapa en annan NSG som tillåter åtkomst toohello Data Lake Store IP-adress. Mer information om NSG-regler finns på [vad är en Nätverkssäkerhetsgrupp?](../virtual-network/virtual-networks-nsg.md). Anvisningar för hur toocreate NSG: er Se [hur toomanage NSG: er med hjälp av hello Azure-portalen](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Aktivera anslutningen från virtuella datorer som har begränsats med hjälp av UDR eller ExpressRoute
-När vägar udr: er eller utväxlats BGP-vägar används för att blockera åtkomst till Internet, måste en särskild väg konfigureras så att virtuella datorer i dessa undernät har åtkomst till Data Lake Store-slutpunkter. Mer information finns i [vad är användardefinierade vägar?](../virtual-network/virtual-networks-udr-overview.md). Instruktioner om hur du skapar udr: er finns i [skapa udr: er i Resource Manager](../virtual-network/virtual-network-create-udr-arm-ps.md).
+När vägar udr: er eller utväxlats BGP-vägar används tooblock åtkomst toohello Internet, måste en särskild väg toobe konfigurerats så att virtuella datorer i dessa undernät har åtkomst till Data Lake Store-slutpunkter. Mer information finns i [vad är användardefinierade vägar?](../virtual-network/virtual-networks-udr-overview.md). Instruktioner om hur du skapar udr: er finns i [skapa udr: er i Resource Manager](../virtual-network/virtual-network-create-udr-arm-ps.md).
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>Aktivera anslutningen från virtuella datorer som har begränsats med hjälp av ExpressRoute
-När en ExpressRoute-krets konfigureras lokala servrar kan komma åt Data Lake Store via offentlig peering. Mer information om hur du konfigurerar ExpressRoute för offentlig peering finns på [ExpressRoute vanliga frågor och svar](../expressroute/expressroute-faqs.md).
+När en ExpressRoute-krets konfigureras hello lokala servrar kan komma åt Data Lake Store via offentlig peering. Mer information om hur du konfigurerar ExpressRoute för offentlig peering finns på [ExpressRoute vanliga frågor och svar](../expressroute/expressroute-faqs.md).
 
 ## <a name="see-also"></a>Se även
 * [Översikt över Azure Data Lake Store](data-lake-store-overview.md)

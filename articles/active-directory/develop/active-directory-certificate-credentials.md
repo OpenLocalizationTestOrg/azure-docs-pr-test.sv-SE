@@ -1,6 +1,6 @@
 ---
-title: Certifikat autentiseringsuppgifter i Azure AD | Microsoft Docs
-description: "Den här artikeln beskrivs registrering och användning av autentiseringsuppgifter för certifikat för autentisering"
+title: aaaCertificate autentiseringsuppgifter i Azure AD | Microsoft Docs
+description: "Den här artikeln beskrivs hello registrering och användning av autentiseringsuppgifter för certifikat för autentisering"
 services: active-directory
 documentationcenter: .net
 author: navyasric
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 08bb5140bb35bbd120aaa506afeab8ad247f81e1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3508803112ac06268d553db86ab74812aa53e455
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>Autentiseringsuppgifter för certifikat för autentisering
 
-Azure Active Directory kan ett program att använda sina egna autentiseringsuppgifter för autentisering, till exempel i flödet för OAuth 2.0 klientens autentiseringsuppgifter Grant och On-Behalf-Of-flöde.
-En form av autentiseringsuppgifter som kan användas är en JSON Web Token(JWT) assertion signeras med ett certifikat som programmet äger.
+Azure Active Directory kan ett program toouse egna autentiseringsuppgifter för autentisering, till exempel i hello flödet för OAuth 2.0 klientens autentiseringsuppgifter Grant och hello på-flöde.
+En form av autentiseringsuppgifter som kan användas är en JSON Web Token(JWT) assertion signeras med ett certifikat som programmet hello äger.
 
-## <a name="format-of-the-assertion"></a>Formatet på kontrollen
-Om du vill beräkna kontrollen, vill du förmodligen använda en av många [JSON Web Token](https://jwt.io/) bibliotek på önskat språk. Informationen som token är:
+## <a name="format-of-hello-assertion"></a>Formatet på hello assertion
+toocompute hello assertion vill du förmodligen toouse en hello många [JSON Web Token](https://jwt.io/) bibliotek i hello önskat språk. hello information av hello token är:
 
 #### <a name="header"></a>Huvudet
 
@@ -35,21 +35,21 @@ Om du vill beräkna kontrollen, vill du förmodligen använda en av många [JSON
 | --- | --- | --- |
 | `alg` | Bör vara **RS256** |
 | `typ` | Bör vara **JWT** |
-| `x5t` | Ska vara tumavtrycket för X.509-certifikat SHA-1 |
+| `x5t` | Ska vara hello tumavtrycket för X.509-certifikat SHA-1 |
 
 #### <a name="claims-payload"></a>Anspråk (Payload)
 
 | Parameter |  Kommentar |
 | --- | --- | --- |
 | `aud` | Målgrupp: Bör vara  **https://login.microsoftonline.com/*tenant_Id*  /oauth2/token ** |
-| `exp` | Förfallodatum: det datum då token upphör att gälla. Tiden representeras som antalet sekunder från den 1 januari 1970 (1970-01-01T0:0:0Z) UTC tills giltigheten token upphör att gälla.|
-| `iss` | Utgivare: bör vara client_id (program-Id för klient-tjänst) |
-| `jti` | GUID: JWT ID |
-| `nbf` | Inte före: datum före vilken token inte kan användas. Tiden representeras som antalet sekunder från den 1 januari 1970 (1970-01-01T0:0:0Z) UTC tills token har utfärdats. |
-| `sub` | Ämne: som för `iss`, bör vara client_id (program-Id för klient-tjänst) |
+| `exp` | Förfallodatum: hello datum när hello-token upphör att gälla. hello tid representeras hello antal sekunder från den 1 januari 1970 (1970-01-01T0:0:0Z) UTC tills hello hello token giltighetstid upphör att gälla.|
+| `iss` | Utgivare: bör vara hello client_id (program-Id för hello-klienttjänsten) |
+| `jti` | GUID: hello JWT-ID |
+| `nbf` | Inte före: hello-datum före vilken hello token inte kan användas. hello tid representeras hello antal sekunder från den 1 januari 1970 (1970-01-01T0:0:0Z) UTC tills hello tid hello token har utfärdats. |
+| `sub` | Ämne: som för `iss`, bör vara hello client_id (program-Id för hello-klienttjänsten) |
 
 #### <a name="signature"></a>Signatur
-Signaturen beräknas tillämpa certifikatet som beskrivs i den [JSON Web Token RFC7519 specifikation](https://tools.ietf.org/html/rfc7519)
+hello signaturen beräknas tillämpa hello certifikatet enligt beskrivningen i hello [JSON Web Token RFC7519 specifikation](https://tools.ietf.org/html/rfc7519)
 
 ### <a name="example-of-a-decoded-jwt-assertion"></a>Exempel på en avkodade JWT-kontrollen
 ```
@@ -73,22 +73,22 @@ Signaturen beräknas tillämpa certifikatet som beskrivs i den [JSON Web Token R
 ```
 
 ### <a name="example-of-an-encoded-jwt-assertion"></a>Exempel på en kodad JWT-kontrollen
-Följande sträng är ett exempel på kodade kontrollen. Om du ser noggrant kan se du tre avsnitt avgränsade med punkter (.).
-Det första avsnittet kodar rubriken, den andra nyttolasten och sist är signaturen som beräknats med certifikat från innehållet i de två första avsnitten.
+hello följande sträng är ett exempel på kodade kontrollen. Om du ser noggrant kan se du tre avsnitt avgränsade med punkter (.).
+hello första avsnittet kodar hello-rubriken, hello andra hello nyttolasten och hello senast är hello signaturen som beräknats med hello certifikat från hello innehållet i hello först två avsnitt.
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
 ### <a name="register-your-certificate-with-azure-ad"></a>Registrera ditt certifikat med Azure AD
-Om du vill associera certifikat-autentiseringsuppgifter med klientprogrammet i Azure AD, måste du redigera programmanifestet.
-Med undantag för ett certifikat, måste du beräkna:
-- `$base64Thumbprint`, vilket är base64-kodning av certifikat-Hash
-- `$base64Value`, vilket är base64-kodning av certifikatets rådata
+tooassociate hello certifikat autentiseringsuppgift med hello klientprogram i Azure AD, behöver du tooedit hello programmanifestet.
+Med undantag för ett certifikat, behöver du toocompute:
+- `$base64Thumbprint`, som är hello base64-kodning av hello certifikat-Hash
+- `$base64Value`, som är hello base64-kodning av hello certifikatets rådata
 
-Du måste också ange ett GUID för att identifiera nyckeln i programmanifestet (`$keyId`)
+Du måste också tooprovide en GUID tooidentify hello nyckel i programmanifestet hello (`$keyId`)
 
-Öppna programmanifestet i Azure-app-registrering för klientprogrammet och Ersätt den *keyCredentials* egenskap med information för din nya certifikat med hjälp av följande schema:
+Öppna hello programmanifestet i hello Azure-appregistrering för hello klientprogrammet, och Ersätt hello *keyCredentials* egenskap med din nya certifikatinformation med hjälp av följande schemat hello:
 ```
 "keyCredentials": [
     {
@@ -101,4 +101,4 @@ Du måste också ange ett GUID för att identifiera nyckeln i programmanifestet 
 ]
 ```
 
-Spara ändringarna i programmanifestet och ladda upp till Azure AD. Egenskapen keyCredentials är ett flervärdesattribut, så du kan ladda upp flera certifikat bättre hantering av nycklar.
+Spara hello redigeringar toohello programmanifestet och ladda upp tooAzure AD. Hej keyCredentials egenskap har flera värden, så du kan ladda upp flera certifikat bättre hantering av nycklar.

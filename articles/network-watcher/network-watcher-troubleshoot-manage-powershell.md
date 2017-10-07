@@ -1,6 +1,6 @@
 ---
-title: "Felsöka Azure virtuell nätverksgateway och anslutningar - PowerShell | Microsoft Docs"
-description: "Den här sidan förklarar hur du använder Azure Nätverksbevakaren felsöka PowerShell-cmdlet"
+title: "aaaTroubleshoot Azure virtuell nätverksgateway och anslutningar - PowerShell | Microsoft Docs"
+description: "Den här sidan förklarar hur toouse hello Azure Nätverksbevakaren felsöka PowerShell-cmdlet"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 0bdffbac18d1d236b7674feed4dbc784e50e0ea8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b7dbe6e44e0fa1ea0481223a84098d7a57c068a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Felsöka virtuella nätverksgateway och anslutningar med hjälp av Azure Network Watcher PowerShell
 
@@ -29,21 +29,21 @@ ms.lasthandoff: 08/29/2017
 > - [CLI 2.0](network-watcher-troubleshoot-manage-cli.md)
 > - [REST-API](network-watcher-troubleshoot-manage-rest.md)
 
-Nätverksbevakaren innehåller många funktioner relateras till att förstå nätverksresurserna i Azure. En av dessa funktioner är resurs felsökning. Felsökning av resursen kan anropas via portalen, PowerShell, CLI eller REST API. När den anropas, Nätverksbevakaren kontrollerar hälsotillståndet för en virtuell nätverksgateway eller en anslutning och returnerar resultatet.
+Nätverksbevakaren innehåller många funktioner när det gäller toounderstanding nätverksresurserna i Azure. En av dessa funktioner är resurs felsökning. Felsökning av resursen kan anropas via hello portal, PowerShell, CLI eller REST API. När den anropas, Nätverksbevakaren inspektera hello hälsotillståndet för en virtuell nätverksgateway eller en anslutning och returnerar resultatet.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Det här scenariot förutsätter att du redan har följt stegen i [skapa en Nätverksbevakaren](network-watcher-create.md) att skapa en Nätverksbevakaren.
+Det här scenariot förutsätter att du redan har följt stegen hello i [skapa en Nätverksbevakaren](network-watcher-create.md) toocreate en Nätverksbevakaren.
 
 En lista över stöds gateway typer besök [stöd för Gateway-typer](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
 ## <a name="overview"></a>Översikt
 
-Felsökning av resursen ger möjlighet felsöka problem som uppstår med virtuella Nätverksgatewayer och anslutningar. När en begäran skickas till resursen felsökning, loggar som efterfrågas och kontrolleras. Resultaten returneras när kontroll har slutförts. Resursen felsökning förfrågningar är tidskrävande begäranden, vilket kan ta flera minuter att returnera ett resultat. Loggar från felsökning lagras i en behållare för ett lagringskonto som har angetts.
+Felsökning av resursen ger hello möjlighet felsöka problem som uppstår med virtuella Nätverksgatewayer och anslutningar. När en förfrågan görs tooresource felsökning, loggar som efterfrågas och kontrolleras. Hello resultat returneras när kontroll har slutförts. Resursen felsökning förfrågningar är tidskrävande begäranden, vilket kan ta flera minuter tooreturn ett resultat. hello loggar från felsökning lagras i en behållare för ett lagringskonto som har angetts.
 
 ## <a name="retrieve-network-watcher"></a>Hämta Nätverksbevakaren
 
-Det första steget är att hämta Nätverksbevakaren-instans. Den `$networkWatcher` variabel har skickats till den `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet i steg 4.
+hello första steget är tooretrieve hello Nätverksbevakaren instans. Hej `$networkWatcher` variabel har skickats toohello `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet i steg 4.
 
 ```powershell
 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -60,7 +60,7 @@ $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name "2to3" -ResourceG
 
 ## <a name="create-a-storage-account"></a>skapar ett lagringskonto
 
-Felsökning av resursen returnerar data om hälsotillståndet för resursen, sparas även loggar till ett lagringskonto som ska granskas. I det här steget ska vi skapa ett lagringskonto, om det finns ett befintligt lagringskonto kan du använda den.
+Felsökning av resursen returnerar data om hello hälsotillstånd hello resurs, sparas även loggar tooa storage-konto toobe ses över. I det här steget ska vi skapa ett lagringskonto, om det finns ett befintligt lagringskonto kan du använda den.
 
 ```powershell
 $sa = New-AzureRmStorageAccount -Name "contosoexamplesa" -SKU "Standard_LRS" -ResourceGroupName "testrg" -Location "WestCentralUS"
@@ -70,23 +70,23 @@ $sc = New-AzureStorageContainer -Name logs
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Kör Nätverksbevakaren resurs felsökning
 
-Felsökning av resurser med den `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet. Vi skickar cmdlet objektet Nätverksbevakaren, Id för anslutning eller virtuell nätverksgateway, storage-konto-id och sökvägen för att lagra resultaten.
+Felsökning av resurser med hello `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet. Vi skicka hello adfsclaimruleset hello Nätverksbevakaren, hello-Id för hello anslutning eller virtuell nätverksgateway, hello lagring konto-id och hello sökvägen toostore hello resultat.
 
 > [!NOTE]
-> Den `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet är långvariga och kan ta några minuter att slutföra.
+> Hej `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet är långvariga och kan ta några minuter toocomplete.
 
 ```powershell
 Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"
 ```
 
-När du kör cmdleten, granskar Nätverksbevakaren resurs för att kontrollera hälsotillståndet. Den returnerar resultaten till shell och lagrar loggar av resultaten i storage-konto som har angetts.
+När du kör cmdlet hello granskar Nätverksbevakaren hello resurshälsa tooverify hello. Den returnerar hello resultat toohello shell och lagrar loggar hello resultat i hello storage-konto anges.
 
-## <a name="understanding-the-results"></a>Förstå resultaten
+## <a name="understanding-hello-results"></a>Förstå hello resultat
 
-Åtgärden texten innehåller allmänna råd om hur du löser problemet. Om en åtgärd kan vidtas för utfärdande, finns en länk med mer information. I fall där det finns inga ytterligare riktlinjer, svaret innehåller URL: en för att öppna ett supportärende.  Mer information om egenskaperna för svaret och vad som ingår finns [nätverk Watcher Felsökning: översikt](network-watcher-troubleshoot-overview.md)
+hello åtgärd texten innehåller allmänna råd om hur tooresolve hello problemet. Om en åtgärd kan vidtas för hello problemet, tillhandahålls en länk med mer information. I hello fall där det finns inga ytterligare riktlinjer, hello svaret innehåller hello url tooopen ett supportärende.  Mer information om hello egenskaper för hello svar och vad som ingår finns [nätverk Watcher Felsökning: översikt](network-watcher-troubleshoot-overview.md)
 
-Anvisningar för att hämta filer från azure storage-konton, referera till [komma igång med Azure Blob storage med hjälp av .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ett annat verktyg som kan användas är Lagringsutforskaren. Mer information om Lagringsutforskaren hittar du här på följande länk: [Lagringsutforskaren](http://storageexplorer.com/)
+Anvisningar för hämtning av filer från azure storage-konton finns för[komma igång med Azure Blob storage med hjälp av .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ett annat verktyg som kan användas är Lagringsutforskaren. Mer information om Lagringsutforskaren hittar du här på hello följande länk: [Lagringsutforskaren](http://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om inställningarna har ändrats som stoppa VPN-anslutning, se [hantera Nätverkssäkerhetsgrupper](../virtual-network/virtual-network-manage-nsg-arm-portal.md) att spåra de grupp och säkerhet Nätverkssäkerhetsregler som kan vara i fråga.
+Om inställningarna har ändrats som stoppa VPN-anslutning, se [hantera Nätverkssäkerhetsgrupper](../virtual-network/virtual-network-manage-nsg-arm-portal.md) tootrack ned hello grupp och säkerhet Nätverkssäkerhetsregler som kan vara i fråga.

@@ -15,33 +15,33 @@ ms.devlang: gremlin
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: khdang
-ms.openlocfilehash: 27c4d945e418b130c68cfde845571eb93658101e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0be5c9b12cdba4a428c809d00e1e68785a9ec1ab
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cosmos-db-perform-graph-analytics-by-using-spark-and-apache-tinkerpop-gremlin"></a>Azure Cosmos DB: Utföra analyser av diagram med hjälp av Spark och Apache TinkerPop Gremlin
 
-[Azure Cosmos-DB](introduction.md) är global och flera olika modeller databastjänsten från Microsoft. Du kan skapa och fråga dokument och nyckel/värde-diagrammet databaser, som dra nytta av funktioner för global distributionsplatsen och skala horisontellt kärnan i Azure Cosmos DB. Har stöd för online transaktionsbearbetning (OLTP) diagrammet arbetsbelastningar som använder Azure Cosmos-DB [Apache TinkerPop Gremlin](graph-introduction.md).
+[Azure Cosmos-DB](introduction.md) är hello globalt distribuerad databas som flera modellen tjänst från Microsoft. Du kan skapa och fråga dokument och nyckel/värde-diagrammet databaser, som dra nytta av hello global distribution och skala horisontellt funktioner på hello kärnan i Azure Cosmos DB. Har stöd för online transaktionsbearbetning (OLTP) diagrammet arbetsbelastningar som använder Azure Cosmos-DB [Apache TinkerPop Gremlin](graph-introduction.md).
 
-[Spark](http://spark.apache.org/) är ett Apache Software Foundation-projekt som fokuserar på allmänna online analytical processing (OLAP) databearbetning. Spark tillhandahåller en hybrid i-minne/diskbaserad distribuerad datamodell som liknar Hadoop MapReduce-modellen. Du kan distribuera Apache Spark i molnet med hjälp av [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/).
+[Spark](http://spark.apache.org/) är ett Apache Software Foundation-projekt som fokuserar på allmänna online analytical processing (OLAP) databearbetning. Spark tillhandahåller en hybrid i-minne/diskbaserad distribuerad datamodell som är liknande toohello Hadoop MapReduce-modellen. Du kan distribuera Apache Spark i hello molnet med hjälp av [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/apache-spark/).
 
-Du kan utföra både OLTP och OLAP-arbetsbelastningar när du använder Gremlin genom att kombinera Azure Cosmos DB och Spark. Den här Snabbkurs artikeln visar hur du kör Gremlin frågor mot Azure Cosmos DB på ett Azure HDInsight Spark-kluster.
+Du kan utföra både OLTP och OLAP-arbetsbelastningar när du använder Gremlin genom att kombinera Azure Cosmos DB och Spark. Den här Snabbkurs artikeln visar hur toorun Gremlin frågor mot Azure Cosmos DB på ett Azure HDInsight Spark-kluster.
 
 ## <a name="prerequisites"></a>Krav
 
-Innan du kan köra det här exemplet måste du uppfylla följande krav:
+Innan du kan köra det här exemplet måste du ha hello följande krav:
 * Azure HDInsight Spark-kluster 2.0
 * JDK 1.8 + (om du inte har JDK, köra `apt-get install default-jdk`.)
 * Maven (om du inte har Maven kör `apt-get install maven`.)
 * En Azure-prenumeration ([!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)])
 
-Information om hur du ställer in ett Azure HDInsight Spark-kluster finns [etablera HDInsight-kluster](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
+Information om hur tooset upp ett Azure HDInsight Spark-kluster, se [etablera HDInsight-kluster](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="create-an-azure-cosmos-db-database-account"></a>Skapa ett databaskonto Azure Cosmos DB
 
-Skapa först ett databaskonto med Graph API genom att göra följande:
+Skapa först ett databaskonto med hello Graph API hello följande:
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -51,11 +51,11 @@ Skapa först ett databaskonto med Graph API genom att göra följande:
 
 ## <a name="get-apache-tinkerpop"></a>Hämta Apache TinkerPop
 
-Hämta Apache TinkerPop genom att göra följande:
+Hämta Apache TinkerPop hello följande:
 
-1. Fjärråtkomst till huvudnoden för HDInsight-klustret `ssh tinkerpop3-cosmosdb-demo-ssh.azurehdinsight.net`.
+1. Remote toohello huvudnoden hello HDInsight-klustret `ssh tinkerpop3-cosmosdb-demo-ssh.azurehdinsight.net`.
 
-2. Klona TinkerPop3 källkoden, skapar det lokalt och installerar Maven cacheminne.
+2. Klona hello TinkerPop3 källkoden, skapar det lokalt och installera den tooMaven cache.
 
     ```bash
     git clone https://github.com/apache/tinkerpop.git
@@ -63,11 +63,11 @@ Hämta Apache TinkerPop genom att göra följande:
     mvn clean install
     ```
 
-3. Installera Spark-Gremlin plugin-program 
+3. Installera hello Spark-Gremlin plugin-program 
 
-    a. Installationen av plugin-programmet hanteras av delvis. Fyll i informationen om databaser för delvis så att den kan hämta plugin-programmet och dess beroenden. 
+    a. hello-installation av plugin-programmet hello hanteras av delvis. Fyll i hello databaser information för delvis så att den kan hämta plugin-programmet hello och dess beroenden. 
 
-      Skapa delvis konfigurationsfil om det inte finns på `~/.groovy/grapeConfig.xml`. Använd följande inställningar:
+      Skapa hello delvis konfigurationsfil om det inte finns på `~/.groovy/grapeConfig.xml`. Använd hello följande inställningar:
 
     ```xml
     <ivysettings>
@@ -91,7 +91,7 @@ Hämta Apache TinkerPop genom att göra följande:
 
     b. Starta konsolen Gremlin `bin/gremlin.sh`.
         
-    c. Installera Spark-Gremlin plugin-program med version 3.3.0-SNAPSHOT som du skapat i föregående steg:
+    c. Installera hello Spark-Gremlin plugin-program med version 3.3.0-SNAPSHOT som du skapat i föregående steg i hello:
 
     ```bash
     $ bin/gremlin.sh
@@ -103,7 +103,7 @@ Hämta Apache TinkerPop genom att göra följande:
     plugin activated: tinkerpop.utilities
     plugin activated: tinkerpop.tinkergraph
     gremlin> :install org.apache.tinkerpop spark-gremlin 3.3.0-SNAPSHOT
-    ==>loaded: [org.apache.tinkerpop, spark-gremlin, 3.3.0-SNAPSHOT] - restart the console to use [tinkerpop.spark]
+    ==>loaded: [org.apache.tinkerpop, spark-gremlin, 3.3.0-SNAPSHOT] - restart hello console toouse [tinkerpop.spark]
     gremlin> :q
     $ bin/gremlin.sh
 
@@ -117,17 +117,17 @@ Hämta Apache TinkerPop genom att göra följande:
     ==>tinkerpop.spark activated
     ```
 
-4. Kontrollera om `Hadoop-Gremlin` aktiveras med `:plugin list`. Inaktivera det här plugin-programmet, eftersom det kan störa Spark-Gremlin plugin `:plugin unuse tinkerpop.hadoop`.
+4. Kontrollera om toosee `Hadoop-Gremlin` aktiveras med `:plugin list`. Inaktivera det här plugin-programmet, eftersom det kan störa hello Spark-Gremlin plugin `:plugin unuse tinkerpop.hadoop`.
 
 ## <a name="prepare-tinkerpop3-dependencies"></a>Förbereda TinkerPop3 beroenden
 
-När du har skapat TinkerPop3 i föregående steg hämtas i processen alla jar-beroenden även för Spark och Hadoop i målkatalogen. Använd burkar som är förinstallerade med HDI och ta emot ytterligare beroenden bara vid behov.
+När du har skapat TinkerPop3 i föregående steg i hello hämtas hello processen alla jar-beroenden även för Spark och Hadoop i hello målkatalogen. Använd hello burkar som är förinstallerade med HDI och ta emot ytterligare beroenden bara vid behov.
 
-1. Gå till Gremlin konsolen målkatalogen på `tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone`. 
+1. Gå toohello Gremlin konsolen målkatalogen på `tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone`. 
 
-2. Flytta alla burkar under `ext/` till `lib/`: `find ext/ -name '*.jar' -exec mv {} lib/ \;`.
+2. Flytta alla burkar under `ext/` för`lib/`: `find ext/ -name '*.jar' -exec mv {} lib/ \;`.
 
-3. Ta bort alla jar bibliotek under `lib/` som inte är i följande lista:
+3. Ta bort alla jar bibliotek under `lib/` att är inte i hello följande lista:
 
     ```bash
     # TinkerPop3
@@ -174,13 +174,13 @@ När du har skapat TinkerPop3 i föregående steg hämtas i processen alla jar-b
     xml-apis-1.3.04.jar                        
     ```
 
-## <a name="get-the-azure-cosmos-db-spark-connector"></a>Hämta Azure Cosmos DB Spark-koppling
+## <a name="get-hello-azure-cosmos-db-spark-connector"></a>Hämta hello Azure Cosmos DB Spark-koppling
 
-1. Hämta Azure Cosmos DB Spark kopplingen `azure-documentdb-spark-0.0.3-SNAPSHOT.jar` och Cosmos DB Java SDK `azure-documentdb-1.10.0.jar` från [Cosmos Azure DB Spark Connector på GitHub](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark-0.0.3_2.0.2_2.11).
+1. Hämta hello Azure Cosmos DB Spark connector `azure-documentdb-spark-0.0.3-SNAPSHOT.jar` och Cosmos DB Java SDK `azure-documentdb-1.10.0.jar` från [Cosmos Azure DB Spark Connector på GitHub](https://github.com/Azure/azure-cosmosdb-spark/tree/master/releases/azure-cosmosdb-spark-0.0.3_2.0.2_2.11).
 
-2. Alternativt kan du skapa den lokalt. Eftersom den senaste versionen av Spark-Gremlin har skapats med Spark 1.6.1 och är inte kompatibel med Spark punkt 2.0.2, som används för närvarande i Azure Cosmos DB Spark-koppling, kan du skapa senaste TinkerPop3 koden och installera burkar manuellt. Gör följande:
+2. Alternativt kan du skapa den lokalt. Eftersom hello senaste versionen av Spark-Gremlin har skapats med Spark 1.6.1 och är inte kompatibel med Spark punkt 2.0.2, som används för närvarande i hello Azure Cosmos DB Spark-koppling, kan du skapa hello senaste TinkerPop3 kod och installera hello burkar manuellt. Hej du följande:
 
-    a. Klona Azure Cosmos DB Spark-kopplingen.
+    a. Klona hello Azure Cosmos DB Spark-anslutningen.
 
     b. Skapa TinkerPop3 (redan har gjort i föregående steg). Installera alla TinkerPop 3.3.0-SNAPSHOT burkar lokalt.
 
@@ -193,9 +193,9 @@ När du har skapat TinkerPop3 i föregående steg hämtas i processen alla jar-b
     mvn install:install-file -Dfile="tinkergraph-gremlin-3.3.0-SNAPSHOT.jar" -DgroupId=org.apache.tinkerpop -DartifactId=tinkergraph-gremlin -Dversion=3.3.0-SNAPSHOT -Dpackaging=jar`
     ```
 
-    c. Uppdatera `tinkerpop.version` `azure-documentdb-spark/pom.xml` till `3.3.0-SNAPSHOT`.
+    c. Uppdatera `tinkerpop.version` `azure-documentdb-spark/pom.xml` för`3.3.0-SNAPSHOT`.
     
-    d. Skapa med Maven. Nödvändiga burkar placeras i `target` och `target/alternateLocation`.
+    d. Skapa med Maven. hello nödvändiga burkar placeras i `target` och `target/alternateLocation`.
 
     ```bash
     git clone https://github.com/Azure/azure-cosmosdb-spark.git
@@ -203,7 +203,7 @@ När du har skapat TinkerPop3 i föregående steg hämtas i processen alla jar-b
     mvn clean package
     ```
 
-3. Kopiera de tidigare nämnda burkar till en lokal katalog på ~ / azure-documentdb-spark:
+3. Kopiera hello tidigare nämnts burkar tooa lokal katalog på ~ / azure-documentdb-spark:
 
     ```bash
     $ azure-documentdb-spark:
@@ -212,22 +212,22 @@ När du har skapat TinkerPop3 i föregående steg hämtas i processen alla jar-b
     cp target/alternateLocation/azure-documentdb-1.10.0.jar ~/azure-documentdb-spark
     ```
 
-## <a name="distribute-the-dependencies-to-the-spark-worker-nodes"></a>Distribuera beroenden till Spark arbetsnoder 
+## <a name="distribute-hello-dependencies-toohello-spark-worker-nodes"></a>Distribuera hello beroenden toohello Spark arbetsnoder 
 
-1. Eftersom transformering av diagramdata beror på TinkerPop3, måste du distribuera relaterade beroenden för alla arbetarnoder i Spark.
+1. Eftersom hello transformering av diagramdata beror på TinkerPop3, måste du distribuera hello relaterade beroenden tooall Spark arbetsnoderna.
 
-2. Kopiera de tidigare nämnda Gremlin beroenden, CosmosDB Spark connector jar och CosmosDB Java SDK till arbetsnoderna genom att göra följande:
+2. Kopiera hello tidigare nämnts Gremlin beroenden, hello CosmosDB Spark connector jar och CosmosDB Java SDK toohello arbetarnoder hello följande:
 
-    a. Kopiera alla burkar i `~/azure-documentdb-spark`.
+    a. Kopiera alla hello burkar i `~/azure-documentdb-spark`.
 
     ```bash
     $ /home/sshuser/tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone:
     cp lib/* ~/azure-documentdb-spark
     ```
 
-    b. Hämta en lista över alla Spark arbetarnoder, som du hittar på Ambari instrumentpanelen i den `Spark2 Clients` lista i den `Spark2` avsnitt.
+    b. Hämta hello lista över alla Spark arbetarnoder, som du hittar på Ambari instrumentpanelen i hello `Spark2 Clients` listan i hello `Spark2` avsnitt.
 
-    c. Kopiera den katalogen till varje nod.
+    c. Kopiera den directory tooeach hello noder.
 
     ```bash
     scp -r ~/azure-documentdb-spark sshuser@wn0-cosmos:/home/sshuser
@@ -235,19 +235,19 @@ När du har skapat TinkerPop3 i föregående steg hämtas i processen alla jar-b
     ...
     ```
     
-## <a name="set-up-the-environment-variables"></a>Ställ in miljövariablerna
+## <a name="set-up-hello-environment-variables"></a>Ställ in hello miljövariabler
 
-1. Hitta HDP version av Spark-klustret. Det är katalognamnet under `/usr/hdp/` (till exempel 2.5.4.2-7).
+1. Hitta hello HDP version av hello Spark-kluster. Det är hello katalognamnet under `/usr/hdp/` (till exempel 2.5.4.2-7).
 
-2. Ange hdp.version för alla noder. Ambari instrumentpanel, gå till **YARN avsnittet** > **konfigurationerna** > **Avancerat**, och gör sedan följande: 
+2. Ange hdp.version för alla noder. I instrumentpanelen för Ambari gå för**YARN avsnittet** > **konfigurationerna** > **Avancerat**, och sedan hello följande: 
  
-    a. I `Custom yarn-site`, lägga till en ny egenskap `hdp.version` med värdet för HDP-versionen på huvudnoden. 
+    a. I `Custom yarn-site`, lägga till en ny egenskap `hdp.version` med hello värdet hello HDP versionen på hello huvudnod. 
      
-    b. Spara konfigurationen. Det finns varningar som du kan ignorera. 
+    b. Spara hello konfigurationer. Det finns varningar som du kan ignorera. 
      
-    c. Starta om tjänsterna YARN och Oozie som notification ikonerna anger.
+    c. Starta om tjänsterna för hello YARN och Oozie som hello notification ikoner anger.
 
-3. Ange följande miljövariabler för huvudnoden (ersätter värdena med lämpliga):
+3. Ange hello följa miljövariabler på hello huvudnod (Ersätt hello-värden efter behov):
 
     ```bash
     export HADOOP_GREMLIN_LIBS=/home/sshuser/tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone/ext/spark-gremlin/lib
@@ -256,9 +256,9 @@ När du har skapat TinkerPop3 i föregående steg hämtas i processen alla jar-b
     export HADOOP_HOME=${HADOOP_HOME:-/usr/hdp/current/hadoop-client}
     ```
 
-## <a name="prepare-the-graph-configuration"></a>Förbereda graph-konfiguration
+## <a name="prepare-hello-graph-configuration"></a>Förbereda hello graph-konfiguration
 
-1. Skapa en konfigurationsfil med Azure Cosmos DB anslutningsparametrar och Spark-inställningar och placera den på `tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone/conf/hadoop/gremlin-spark.properties`.
+1. Skapa en konfigurationsfil med hello Azure Cosmos DB anslutningsparametrar Väck inställningar och placera den på `tinkerpop/gremlin-console/target/apache-tinkerpop-gremlin-console-3.3.0-SNAPSHOT-standalone/conf/hadoop/gremlin-spark.properties`.
 
     ```
     gremlin.graph=org.apache.tinkerpop.gremlin.hadoop.structure.HadoopGraph
@@ -278,7 +278,7 @@ När du har skapat TinkerPop3 i föregående steg hämtas i processen alla jar-b
     spark.kryo.registrator=org.apache.tinkerpop.gremlin.spark.structure.io.gryo.GryoRegistrator
     gremlin.spark.persistContext=true
 
-    # Classpath for the driver and executors
+    # Classpath for hello driver and executors
     spark.driver.extraClassPath=/usr/hdp/current/spark2-client/jars/*:/home/sshuser/azure-documentdb-spark/*
     spark.executor.extraClassPath=/usr/hdp/current/spark2-client/jars/*:/home/sshuser/azure-documentdb-spark/*
     
@@ -294,9 +294,9 @@ När du har skapat TinkerPop3 i föregående steg hämtas i processen alla jar-b
     spark.documentdb.preferredRegions=FILLIN
     ```
 
-2. Uppdatering av `spark.driver.extraClassPath` och `spark.executor.extraClassPath` till inkluderingskatalogen burkar som du distribuerade i föregående steg i det här fallet `/home/sshuser/azure-documentdb-spark/*`.
+2. Uppdatera hello `spark.driver.extraClassPath` och `spark.executor.extraClassPath` tooinclude hello-katalogen för hello burkar som du distribuerat i hello föregående steg i det här fallet `/home/sshuser/azure-documentdb-spark/*`.
 
-3. Ange följande information för Azure Cosmos DB:
+3. Ange följande information för Azure Cosmos DB hello:
 
     ```
     spark.documentdb.Endpoint=https://FILLIN.documents.azure.com:443/
@@ -307,10 +307,10 @@ När du har skapat TinkerPop3 i föregående steg hämtas i processen alla jar-b
     #spark.documentdb.preferredRegions=West\ US;West\ US\ 2
     ```
    
-## <a name="load-the-tinkerpop-graph-and-save-it-to-azure-cosmos-db"></a>Läsa in diagrammet TinkerPop och spara den till Azure Cosmos DB
-För att demonstrera hur du bevara ett diagram i Azure Cosmos databas med det här exemplet fördefinierade använder TinkerPop TinkerPop moderna diagram. Diagrammet lagras i Kryo format och anges i TinkerPop-databasen.
+## <a name="load-hello-tinkerpop-graph-and-save-it-tooazure-cosmos-db"></a>Läsa in hello TinkerPop diagram och spara den tooAzure Cosmos DB
+toodemonstrate hur toopersist ett diagram i Azure Cosmos databas med det här exemplet använder hello TinkerPop fördefinierade TinkerPop moderna diagram. hello diagram lagras i Kryo format och anges i hello TinkerPop databas.
 
-1. Eftersom du kör Gremlin i YARN-läge måste du diagrammets data i Hadoop-filsystem. Använd följande kommandon för att göra en katalog och kopiera filen lokala diagram till den. 
+1. Eftersom du kör Gremlin i YARN-läge måste du hello diagramdata i hello Hadoop-filsystem. Använd hello följande kommandon toomake en katalog och kopiera hello lokala diagrammet fil till den. 
 
     ```bash
     $ tinkerpop:
@@ -318,16 +318,16 @@ För att demonstrera hur du bevara ett diagram i Azure Cosmos databas med det h�
     hadoop fs -copyFromLocal ~/tinkerpop/data/tinkerpop-modern.kryo /graphData/tinkerpop-modern.kryo
     ```
 
-2. Uppdatera tillfälligt den `gremlin-spark.properties` fil som ska användas `GryoInputFormat` att läsa i diagrammet. Ange också `inputLocation` som katalogen du skapar, enligt följande:
+2. Uppdatera tillfälligt hello `gremlin-spark.properties` filen toouse `GryoInputFormat` tooread hello diagram. Ange också `inputLocation` som hello katalog skapas som hello följande:
 
     ```
     gremlin.hadoop.graphReader=org.apache.tinkerpop.gremlin.hadoop.structure.io.gryo.GryoInputFormat
     gremlin.hadoop.inputLocation=/graphData/tinkerpop-modern.kryo
     ```
 
-3. Starta Gremlin konsolen och skapa följande för att spara data till samlingen konfigurerade Azure Cosmos DB beräkning:  
+3. Starta Gremlin konsolen och sedan skapa hello följande beräkning steg toopersist toohello konfigurerade Azure Cosmos DB datainsamling:  
 
-    a. Skapa diagrammet `graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")`.
+    a. Skapa hello diagram `graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")`.
 
     b. Använd SparkGraphComputer för skrivning `graph.compute(SparkGraphComputer.class).result(GraphComputer.ResultGraph.NEW).persist(GraphComputer.Persist.EDGES).program(TraversalVertexProgram.build().traversal(graph.traversal().withComputer(Computer.compute(SparkGraphComputer.class)),"gremlin-groovy","g.V()").create(graph)).submit().get()`.
 
@@ -346,25 +346,25 @@ För att demonstrera hur du bevara ett diagram i Azure Cosmos databas med det h�
     ==>result[hadoopgraph[documentdbinputrdd->documentdboutputrdd],memory[size:1]]
     ```
 
-4. Du kan verifiera att data har sparats i Azure Cosmos DB från Data Explorer.
+4. Du kan verifiera att data har hello beständiga tooAzure Cosmos DB från Data Explorer.
 
-## <a name="load-the-graph-from-azure-cosmos-db-and-run-gremlin-queries"></a>Läsa in diagrammet från Azure Cosmos DB och köra Gremlin frågor
+## <a name="load-hello-graph-from-azure-cosmos-db-and-run-gremlin-queries"></a>Läsa in hello diagrammet från Azure Cosmos DB och köra Gremlin frågor
 
-1. För att läsa in diagrammet redigera `gremlin-spark.properties` ange `graphReader` till `DocumentDBInputRDD`:
+1. tooload hello diagrammet redigera `gremlin-spark.properties` tooset `graphReader` för`DocumentDBInputRDD`:
 
     ```
     gremlin.hadoop.graphReader=com.microsoft.azure.documentdb.spark.gremlin.DocumentDBInputRDD
     ```
 
-2. Läsa in diagrammet passerar data och köra Gremlin frågor till den genom att göra följande:
+2. Läsa in hello diagram, gå igenom hello data och kör Gremlin frågor med den hello följande:
 
-    a. Starta konsolen Gremlin `bin/gremlin.sh`.
+    a. Starta hello Gremlin konsolen `bin/gremlin.sh`.
 
-    b. Skapa diagrammet med konfigurationen `graph = GraphFactory.open('conf/hadoop/gremlin-spark.properties')`.
+    b. Skapa hello diagram med hello configuration `graph = GraphFactory.open('conf/hadoop/gremlin-spark.properties')`.
 
     c. Skapa ett diagram traversal med SparkGraphComputer `g = graph.traversal().withComputer(SparkGraphComputer)`.
 
-    d. Kör följande Gremlin diagram frågor:
+    d. Kör hello följande Gremlin diagram frågor:
 
     ```bash
     gremlin> graph = GraphFactory.open("conf/hadoop/gremlin-spark.properties")
@@ -397,11 +397,11 @@ För att demonstrera hur du bevara ett diagram i Azure Cosmos databas med det h�
     ```
 
 > [!NOTE]
-> Om du vill se mer detaljerad loggning anger loggen i `conf/log4j-console.properties` till en mer detaljerad nivå.
+> toosee mer detaljerad loggning som hello loggningsnivån i `conf/log4j-console.properties` tooa mer detaljerad nivå.
 >
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har lärt dig hur du arbetar med diagram genom att kombinera Azure Cosmos DB och Spark i den här Snabbkurs i artikeln.
+I den här Snabbkurs artikeln har du lärt dig hur toowork med diagram genom att kombinera Azure Cosmos DB och Spark.
 
 > [!div class="nextstepaction"]

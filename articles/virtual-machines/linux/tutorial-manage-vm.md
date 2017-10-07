@@ -1,6 +1,6 @@
 ---
-title: Skapa och hantera virtuella Linux-datorer med Azure CLI | Microsoft Docs
-description: "Självstudiekurs – skapa och hantera virtuella Linux-datorer med Azure CLI"
+title: aaaCreate och hantera virtuella Linux-datorer med hello Azure CLI | Microsoft Docs
+description: "Självstudiekurs – skapa och hantera virtuella Linux-datorer med hello Azure CLI"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c163c715eb1438a0d6b0ab53cbb43816ca8dbbb4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 05f7c1cf860f809bc13f110778d3bddd619ac6f1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Skapa och hantera virtuella Linux-datorer med Azure CLI
+# <a name="create-and-manage-linux-vms-with-hello-azure-cli"></a>Skapa och hantera virtuella Linux-datorer med hello Azure CLI
 
 Virtuella datorer i Azure ger en fullständigt konfigurerbara och flexibel datormiljö. Den här kursen ingår grundläggande virtuella Azure-datorn distribution objekt, till exempel välja en VM-storlek, välja en VM-avbildning och distribuera en virtuell dator. Lär dig att:
 
 > [!div class="checklist"]
-> * Skapa och ansluta till en virtuell dator
+> * Skapa och ansluta tooa VM
 > * Välj och Använd VM-avbildningar
 > * Visa och använda specifika VM-storlekar
 > * Ändra storlek på en virtuell dator
@@ -36,23 +36,23 @@ Virtuella datorer i Azure ger en fullständigt konfigurerbara och flexibel dator
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt kursen krävs att du använder Azure CLI version 2.0.4 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kursen krävs att du kör hello Azure CLI version 2.0.4 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-resource-group"></a>Skapa resursgrupp
 
-Skapa en resursgrupp med kommandot [az group create](https://docs.microsoft.com/cli/azure/group#create). 
+Skapa en resursgrupp med hello [az gruppen skapa](https://docs.microsoft.com/cli/azure/group#create) kommando. 
 
-En Azure-resursgrupp är en logisk behållare där Azure-resurser distribueras och hanteras. En resursgrupp måste skapas innan en virtuell dator. I det här exemplet en resursgrupp med namnet *myResourceGroupVM* skapas i den *eastus* region. 
+En Azure-resursgrupp är en logisk behållare där Azure-resurser distribueras och hanteras. En resursgrupp måste skapas innan en virtuell dator. I det här exemplet en resursgrupp med namnet *myResourceGroupVM* skapas i hello *eastus* region. 
 
 ```azurecli-interactive 
 az group create --name myResourceGroupVM --location eastus
 ```
 
-Resursgruppen har angetts när du skapar eller ändrar en VM som kan ses i hela den här kursen.
+hello resursgrupp anges när du skapar eller ändrar en VM som kan ses i hela den här kursen.
 
 ## <a name="create-virtual-machine"></a>Skapa en virtuell dator
 
-Skapa en virtuell dator med den [az vm skapa](https://docs.microsoft.com/cli/azure/vm#create) kommando. 
+Skapa en virtuell dator med hello [az vm skapa](https://docs.microsoft.com/cli/azure/vm#create) kommando. 
 
 När du skapar en virtuell dator, är flera alternativ tillgängliga, till exempel operativsystemavbildningen, storlek och administrativa autentiseringsuppgifter för disken. I det här exemplet skapas en virtuell dator med namnet *myVM* kör Ubuntu Server. 
 
@@ -60,7 +60,7 @@ När du skapar en virtuell dator, är flera alternativ tillgängliga, till exemp
 az vm create --resource-group myResourceGroupVM --name myVM --image UbuntuLTS --generate-ssh-keys
 ```
 
-När den virtuella datorn har skapats, Azure CLI matar ut information om den virtuella datorn. Anteckna den `publicIpAddress`, den här adressen kan användas för åtkomst till den virtuella datorn... 
+En gång hello VM har skapats, hello Azure CLI matar ut information om hello VM. Anteckna hello `publicIpAddress`, den här adressen kan vara används tooaccess hello virtuell dator... 
 
 ```azurecli-interactive 
 {
@@ -75,15 +75,15 @@ När den virtuella datorn har skapats, Azure CLI matar ut information om den vir
 }
 ```
 
-## <a name="connect-to-vm"></a>Ansluta till en virtuell dator
+## <a name="connect-toovm"></a>Ansluta tooVM
 
-Nu kan du ansluta till den virtuella datorn via SSH. Ersätt den IP-adressen med den `publicIpAddress` anges i föregående steg.
+Nu kan du ansluta toohello VM via SSH. Ersätt hello IP-adressen med hello `publicIpAddress` anges i hello föregående steg.
 
 ```bash
 ssh 52.174.34.95
 ```
 
-Stäng SSH-session när du är klar med den virtuella datorn. 
+När du är klar med hello VM Stäng hello SSH-session. 
 
 ```bash
 exit
@@ -91,15 +91,15 @@ exit
 
 ## <a name="understand-vm-images"></a>Förstå VM-avbildningar
 
-Azure marketplace innehåller många avbildningar som kan användas för att skapa virtuella datorer. I de föregående stegen skapades en virtuell dator med en Ubuntu-bild. I det här steget används Azure CLI för att söka marketplace för en avbildning av CentOS, som sedan används för att distribuera en andra virtuell dator.  
+hello Azure marketplace innehåller många avbildningar som kan använda toocreate virtuella datorer. I föregående steg hello skapades en virtuell dator med en Ubuntu-bild. I det här steget används hello Azure CLI är används toosearch hello marketplace för en CentOS avbildningen, som sedan toodeploy en andra virtuell dator.  
 
-Om du vill se en lista över de vanligaste bilder, den [az vm bildlista](/cli/azure/vm/image#list) kommando.
+toosee en lista över hello vanligaste bilder använder hello [az vm bildlista](/cli/azure/vm/image#list) kommando.
 
 ```azurecli-interactive 
 az vm image list --output table
 ```
 
-Kommandoutdata returnerar de mest populära VM-avbildningarna i Azure.
+hello kommandoutdata returnerar hello populäraste VM-avbildningar i Azure.
 
 ```bash
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
@@ -117,7 +117,7 @@ Debian         credativ                8                   credativ:Debian:8:lat
 CoreOS         CoreOS                  Stable              CoreOS:CoreOS:Stable:latest                                     CoreOS               latest
 ```
 
-En fullständig lista kan visas genom att lägga till den `--all` argumentet. Bildlistan kan också filtreras efter `--publisher` eller `–-offer`. I det här exemplet listan filtreras för alla bilder med ett erbjudande som matchar *CentOS*. 
+En fullständig lista över kan ses genom att lägga till hello `--all` argumentet. hello bildlista kan också filtreras efter `--publisher` eller `–-offer`. I det här exemplet hello listan filtreras för alla bilder med ett erbjudande som matchar *CentOS*. 
 
 ```azurecli-interactive 
 az vm image list --offer CentOS --all --output table
@@ -136,7 +136,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309     
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-Om du vill distribuera en virtuell dator med hjälp av en viss bild, anteckna värdet i den *Urn* kolumn. När du anger bilden, kan det bild versionsnumret ersättas med ”senaste”, som väljs den senaste versionen av distributionen. I detta exempel på `--image` argument används för att ange den senaste versionen av en CentOS 6.5-bild.  
+toodeploy en virtuell dator med hjälp av en viss bild anteckna hello värdet i hello *Urn* kolumn. När du anger hello avbildningen kan versionsnumret för hello avbildningen ersättas med ”senaste”, som väljer hello senaste versionen av hello distribution. I det här exemplet hello `--image` argumentet är används toospecify hello senaste versionen av en CentOS 6.5-bild.  
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
@@ -144,17 +144,17 @@ az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:C
 
 ## <a name="understand-vm-sizes"></a>Förstå VM-storlekar
 
-Storlek på en virtuell dator bestämmer hur mycket av beräkningsresurser som Processorn och GPU-minne som är tillgängliga för den virtuella datorn. Virtuella datorer måste vara korrekt storlek för den förväntade belastningen. Om belastningen ökar, kan en befintlig virtuell dator ändras.
+Storlek på en virtuell dator bestäms hello beräkningsresurser som Processorn och GPU-minne som görs tillgängliga toohello virtuella datorn. Virtuella datorer måste toobe storlek på lämpligt sätt för hello förväntades arbetsbelastning. Om belastningen ökar, kan en befintlig virtuell dator ändras.
 
 ### <a name="vm-sizes"></a>VM-storlekar
 
-I följande tabell kategoriserar storlekar i användningsfall.  
+i den följande tabellen hello kategoriserar storlekar i användningsfall.  
 
 | Typ                     | Storlekar           |    Beskrivning       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Generellt syfte](sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0 7| Belastningsutjämnade CPU-till-minne. Idealiskt för dev / test och små till medelstora lösningar för program och data.  |
+| [Generellt syfte](sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0 7| Belastningsutjämnade CPU-till-minne. Idealiskt för dev / test och lösningar för små toomedium program och data.  |
 | [Beräkningsoptimerad](sizes-compute.md)   | FS, F             | Hög CPU-till-minne. Bra för medelhög trafik program, nätverksinstallationer och batchprocesser.        |
-| [Minnesoptimerad](../virtual-machines-windows-sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hög minne-till-core. Perfekt för relationsdatabaser, medelstora till stora cacheminnen och analyser i minnet.                 |
+| [Minnesoptimerad](../virtual-machines-windows-sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Hög minne-till-core. Perfekt för relationsdatabaser, medelhög toolarge cacheminnen och analyser i minnet.                 |
 | [Lagringsoptimerad](../virtual-machines-windows-sizes-storage.md)      | Ls                | Högt diskgenomflöde och I/O. Perfekt för stordata, SQL- och NoSQL-databaser.                                                         |
 | [GPU](sizes-gpu.md)          | NV NC            | Särskilda virtuella datorer som mål för tunga grafisk återgivning och redigering av video.       |
 | [Hög prestanda](sizes-hpc.md) | H, A8-11          | Våra mest kraftfulla CPU virtuella datorer med valfritt hög genomströmning nätverksgränssnitt (RDMA). 
@@ -162,7 +162,7 @@ I följande tabell kategoriserar storlekar i användningsfall.
 
 ### <a name="find-available-vm-sizes"></a>Hitta tillgängliga storlekar på VM
 
-Om du vill se en lista över storlekar på VM tillgängliga i en viss region, Använd den [az lista-storlekar på vm](/cli/azure/vm#list-sizes) kommando. 
+toosee en lista över Virtuella storlekar tillgängliga i en viss region, Använd hello [az lista-storlekar på vm](/cli/azure/vm#list-sizes) kommando. 
 
 ```azurecli-interactive 
 az vm list-sizes --location eastus --output table
@@ -193,7 +193,7 @@ Partiella utdata:
 
 ### <a name="create-vm-with-specific-size"></a>Skapa virtuell dator med specifika storlek
 
-I föregående VM skapa exempel har en storlek inte angetts, vilket resulterar i en standardstorlek. En VM-storlek kan väljas i Skapa en gång med hjälp av [az vm skapa](/cli/azure/vm#create) och `--size` argumentet. 
+I hello tidigare VM skapa exempelvis har en storlek inte angetts, vilket resulterar i en standardstorlek. En VM-storlek kan väljas i Skapa en gång med hjälp av [az vm skapa](/cli/azure/vm#create) och hello `--size` argumentet. 
 
 ```azurecli-interactive 
 az vm create \
@@ -206,32 +206,32 @@ az vm create \
 
 ### <a name="resize-a-vm"></a>Ändra storlek på en virtuell dator
 
-När en virtuell dator har distribuerats, kan den ändras för att öka eller minska resursallokering.
+När en virtuell dator har distribuerats kan storleksändrade tooincrease eller minska resursallokering.
 
-Kontrollera om önskad storlek är tillgängligt på den aktuella Azure klustret innan du ändrar storlek på en virtuell dator. Den [az vm-vm-storlek-alternativ för](/cli/azure/vm#list-vm-resize-options) kommando returnerar listan över storlekar. 
+Innan du ändrar storlek på en virtuell dator, kontrollera om hello önskad storlek är tillgänglig på hello aktuella Azure-klustret. Hej [az vm-vm-storlek-alternativ för](/cli/azure/vm#list-vm-resize-options) kommandot returnerar hello lista över storlekar. 
 
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
-Om önskad storlek är tillgänglig, kan den virtuella datorn ändras från ett slås på tillstånd, men den startas under åtgärden. Använd den [az vm ändra storlek på]( /cli/azure/vm#resize) kommando för att utföra storlek.
+Eventuellt hello storleken är tillgänglig hello VM storlek kan ändras från ett slås på tillstånd, men den startas under hello-åtgärd. Använd hello [az vm ändra storlek på]( /cli/azure/vm#resize) kommandot tooperform hello storlek.
 
 ```azurecli-interactive 
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
 ```
 
-Om önskad storlek inte är i det aktuella klustret måste den virtuella datorn frigörs innan åtgärden Ändra storlek kan ske. Använd den [az vm frigöra]( /cli/azure/vm#deallocate) kommando för att stoppa och ta bort den virtuella datorn. Observera, när den virtuella datorn är påslagen tillbaka, några data på disken för temporär kan tas bort. Den offentliga IP-adressen ändras även om inte en statisk IP-adress används. 
+Om hello önskad storlek är inte på hello aktuella klustret hello VM behov toobe frigjorts innan hello att ändra storlek på kan uppstå. Använd hello [az vm frigöra]( /cli/azure/vm#deallocate) kommando toostop och frigöra hello VM. Observera att när hello VM är påslagen tillbaka, några data på hello temporär disk kan tas bort. hello offentliga IP-adressen ändras även om inte en statisk IP-adress används. 
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupVM --name myVM
 ```
 
-När frigjorts, kan det uppstå storlek. 
+När frigjorts, kan det uppstå hello storlek. 
 
 ```azurecli-interactive 
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_GS1
 ```
 
-Efter storleksändringen kan du starta den virtuella datorn.
+När hello ändra storlek på kan hello VM startas.
 
 ```azurecli-interactive 
 az vm start --resource-group myResourceGroupVM --name myVM
@@ -239,23 +239,23 @@ az vm start --resource-group myResourceGroupVM --name myVM
 
 ## <a name="vm-power-states"></a>Energisparfunktioner för VM
 
-En virtuell Azure-dator kan ha en av många energisparfunktioner. Det här tillståndet representerar det aktuella tillståndet för den virtuella datorn för hypervisor-programmet. 
+En virtuell Azure-dator kan ha en av många energisparfunktioner. Det här tillståndet representerar hello aktuell status för hello VM från hello synvinkel av hello hypervisor. 
 
 ### <a name="power-states"></a>Energisparfunktioner
 
 | Energisparläge | Beskrivning
 |----|----|
-| Startar | Anger den virtuella datorn startas. |
-| Körs | Anger att den virtuella datorn körs. |
-| Stoppas | Anger att den virtuella datorn har stoppats. | 
-| Stoppad | Anger att den virtuella datorn har stoppats. Virtuella datorer i ett stoppat tillstånd fortfarande avgifter beräkning.  |
-| Det har frigjorts | Anger att den virtuella datorn har flyttats. |
-| Frigöra | Anger att den virtuella datorn tas bort från hypervisor-programmet men fortfarande tillgängliga i kontrollplan. Virtuella datorer med tillståndet Deallocated inte avgifter beräkning. |
-| - | Anger att energisparläge för den virtuella datorn är okänt. |
+| Startar | Anger hello virtuella datorn startas. |
+| Körs | Anger att hello den virtuella datorn körs. |
+| Stoppas | Anger att hello den virtuella datorn stoppas. | 
+| Stoppad | Anger att hello den virtuella datorn har stoppats. Virtuella datorer i hello stoppats tillstånd fortfarande avgifter beräkning.  |
+| Det har frigjorts | Anger att hello den virtuella datorn har flyttats. |
+| Frigöra | Anger att hello den virtuella datorn tas bort från hello hypervisor men fortfarande tillgängliga i hello kontrollplan. Virtuella datorer i hello Deallocated tillstånd inte avgifter beräkning. |
+| - | Anger att hello energisparläge för hello virtuell dator är okänt. |
 
 ### <a name="find-power-state"></a>Hitta energiläge
 
-Använd för att hämta tillståndet för en viss virtuell dator i [az vm hämta Instansvy](/cli/azure/vm#get-instance-view) kommando. Se till att ange ett giltigt namn för en virtuell dator och resursgruppen. 
+tooretrieve hello tillståndet för en viss virtuell dator, Använd hello [az vm hämta Instansvy](/cli/azure/vm#get-instance-view) kommando. Vara säker på att toospecify ett giltigt namn för en virtuell dator och resursgruppen. 
 
 ```azurecli-interactive 
 az vm get-instance-view \
@@ -274,11 +274,11 @@ PowerState/running  VM running       Info
 
 ## <a name="management-tasks"></a>Administrativa uppgifter
 
-Under livscykeln för en virtuell dator, kan du vill köra hanteringsuppgifter, till exempel starta, stoppa eller ta bort en virtuell dator. Dessutom kanske du vill skapa skript för att automatisera repetitiva och komplicerade uppgifter. Använda Azure CLI kan många vanliga administrativa uppgifter köras från kommandoraden eller i skript. 
+Under hello livscykeln för en virtuell dator, kan du toorun hanteringsuppgifter, till exempel starta, stoppa eller ta bort en virtuell dator. Dessutom kan du toocreate skript tooautomate repetitiva och komplicerade uppgifter. Använder hello Azure CLI, kan många vanliga administrativa uppgifter köras från hello kommandoraden eller i skript. 
 
 ### <a name="get-ip-address"></a>Hämta IP-adress
 
-Det här kommandot returnerar privata och offentliga IP-adresser för en virtuell dator.  
+Det här kommandot returnerar hello privata och offentliga IP-adresser för en virtuell dator.  
 
 ```azurecli-interactive 
 az vm list-ip-addresses --resource-group myResourceGroupVM --name myVM --output table
@@ -309,13 +309,13 @@ az group delete --name myResourceGroupVM --no-wait --yes
 I kursen får du lärt dig om grundläggande VM skapande och hantering, till exempel hur du:
 
 > [!div class="checklist"]
-> * Skapa och ansluta till en virtuell dator
+> * Skapa och ansluta tooa VM
 > * Välj och Använd VM-avbildningar
 > * Visa och använda specifika VM-storlekar
 > * Ändra storlek på en virtuell dator
 > * Visa och förstå tillstånd för virtuell dator
 
-Gå vidare till nästa kurs vill veta mer om Virtuella diskar.  
+Avancera toohello nästa självstudiekurs toolearn om Virtuella diskar.  
 
 > [!div class="nextstepaction"]
 > [Skapa och hantera Virtuella diskar](./tutorial-manage-disks.md)

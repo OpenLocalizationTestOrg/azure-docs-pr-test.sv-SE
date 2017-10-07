@@ -1,6 +1,6 @@
 ---
-title: "Ange egenskaper och metadata med hjälp av Azure Import/Export - v1 | Microsoft Docs"
-description: "Lär dig mer om att ange egenskaper och metadata anges på mål-blobbar när du kör verktyget Azure Import/Export till förbereda dina enheter. Detta refererar till v1 i verktyget Import/Export."
+title: "aaaSetting egenskaper och metadata med hjälp av Azure Import/Export - v1 | Microsoft Docs"
+description: "Lär dig hur toospecify egenskaper och metadata toobe anges för hello mål blobbar när du kör hello Azure Import/Export verktyget tooprepare dina enheter. Detta refererar toov1 av hello verktyget Import/Export."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 6455ce57572f9ec36d0ebae88c1ddd9f40f237bf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 66e55c2076fbcda9b78302f17b5ff2cf96bb24e7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="setting-properties-and-metadata-during-the-import-process"></a>Konfigurera egenskaper och metadata under importeringsprocessen
-När du kör verktyget Microsoft Azure Import/Export för att förbereda dina enheter, kan du ange egenskaper och metadata på mål-BLOB. Följ de här stegen:  
+# <a name="setting-properties-and-metadata-during-hello-import-process"></a>Ange egenskaper och metadata under hello import-processen
+När du kör hello verktyget Azure Import/Export tooprepare enheter måste ange du egenskaper och metadata toobe på hello mål-BLOB. Följ de här stegen:  
   
-1.  Skapa en textfil på den lokala datorn som anger egenskapsnamn och värden för att ange egenskaper för blob.  
+1.  tooset blob-egenskaper, skapa en textfil på den lokala datorn som anger egenskapsnamn och värden.  
   
-2.  Skapa blobbmetadata, skapa en textfil på den lokala datorn som anger metadata namn och värden.  
+2.  tooset blob-metadata, skapa en textfil på den lokala datorn som anger metadata namn och värden.  
   
-3.  Skicka den fullständiga sökvägen till en eller båda av dessa filer till verktyget Azure Import/Export som en del av den `PrepImport` igen.  
+3.  Skicka hello fullständig sökväg tooone eller båda av dessa filer toohello Azure Import/Export-verktyget som en del av hello `PrepImport` igen.  
   
 > [!NOTE]
->  När du anger en egenskaper eller metadata-fil som en del av en kopia session ange dessa egenskaper eller metadata för varje blob som importeras som en del av den aktuella sessionen kopia. Om du vill ange en annan uppsättning egenskaper eller metadata för några av de blobbar som importeras behöver du skapa en separat kopia-session med olika egenskaper eller metadatafiler.  
+>  När du anger en egenskaper eller metadata-fil som en del av en kopia session ange dessa egenskaper eller metadata för varje blob som importeras som en del av den aktuella sessionen kopia. Om du vill toospecify en annan uppsättning egenskaper eller metadata för några av hello blob som importeras måste toocreate som en separat kopiera session med olika egenskaper eller metadatafiler.  
   
 ## <a name="specify-blob-properties-in-a-text-file"></a>Ange Blob-egenskaper i en textfil  
-Skapa en lokal textfil för att ange blob-egenskaper, och innehåller XML som anger egenskapsnamn som element och egenskapsvärden som värden. Här är ett exempel som anger vissa egenskapsvärden:  
+toospecify blob-egenskaper, skapa en lokal textfil och innehåller XML som anger egenskapsnamn som element och egenskapsvärden som värden. Här är ett exempel som anger vissa egenskapsvärden:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -44,10 +44,10 @@ Skapa en lokal textfil för att ange blob-egenskaper, och innehåller XML som an
 </Properties>  
 ```
   
-Spara filen på en lokal plats som `C:\WAImportExport\ImportProperties.txt`.  
+Spara hello tooa lokal plats som `C:\WAImportExport\ImportProperties.txt`.  
   
 ## <a name="specify-blob-metadata-in-a-text-file"></a>Ange Blobbmetadata i en textfil  
-På samma sätt för att ange blobbmetadata, skapa en lokal textfil som anger metadatanamnen som element och metadatavärden som värden. Här är ett exempel som anger vissa metadatavärden:  
+På liknande sätt toospecify blob-metadata, skapa en lokal textfil som anger metadatanamnen som element och metadatavärden som värden. Här är ett exempel som anger vissa metadatavärden:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -58,10 +58,10 @@ På samma sätt för att ange blobbmetadata, skapa en lokal textfil som anger me
 </Metadata>  
 ```
   
-Spara filen på en lokal plats som `C:\WAImportExport\ImportMetadata.txt`.  
+Spara hello tooa lokal plats som `C:\WAImportExport\ImportMetadata.txt`.  
   
-## <a name="create-a-copy-session-including-the-properties-or-metadata-files"></a>Skapa en kopia Session inklusive egenskaper eller metadatafiler  
-När du kör verktyget Azure Import/Export för att förbereda importjobbet ange egenskaper för filen på kommandoraden med den `PropertyFile` parameter. Ange metadatafil på kommandoraden med den `/MetadataFile` parameter. Här är ett exempel som anger båda filerna:  
+## <a name="create-a-copy-session-including-hello-properties-or-metadata-files"></a>Skapa en kopia sessionen inklusive hello egenskaper eller metadatafiler  
+När du kör hello Azure Import/Export verktyget tooprepare hello importjobbet anger hello egenskapsfil på hello kommandoraden med hjälp av hello `PropertyFile` parameter. Ange hello metadatafil med hello kommandorad med hello `/MetadataFile` parameter. Här är ett exempel som anger båda filerna:  
   
 ```
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp\BlueRay.ISO /dstblob:favorite/BlueRay.ISO /MetadataFile:c:\WAImportExport\SampleMetadata.txt /PropertyFile:c:\WAImportExport\SampleProperties.txt  

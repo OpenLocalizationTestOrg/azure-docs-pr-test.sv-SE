@@ -1,5 +1,5 @@
 ---
-title: "Kom igång med Lagringsutforskaren (förhandsversion) | Microsoft Docs"
+title: "aaaGet igång med Lagringsutforskaren (förhandsversion) | Microsoft Docs"
 description: "Hantera Azure-lagringsresurser med Lagringsutforskaren (förhandsversion)"
 services: storage
 documentationcenter: na
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/17/2017
 ms.author: kraigb
-ms.openlocfilehash: 1794a86a4185d587cf184a1f61a5720e2ab65e92
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 57737b51baace92858eb07c7dbc3139bd7e041f5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>Kom igång med Lagringsutforskaren (förhandsversion)
 ## <a name="overview"></a>Översikt
-Azure Lagringsutforskaren (förhandsversion) är en fristående app som gör det enkelt att arbeta med Azure Storage-data i Windows, Mac OS och Linux. I den här artikeln lär du dig hur du kan ansluta till och hantera dina Azure Storage-konton på olika sätt.
+Azure Lagringsutforskaren (förhandsversion) är en fristående app som du kan använda tooeasily fungerar med Azure Storage-data i Windows, macOS och Linux. I den här artikeln får du lära dig hello ansluter tooand hantera Azure storage-konton på olika sätt.
 
 ![Microsoft Azure Lagringsutforskaren (förhandsversion)][15]
 
 ## <a name="prerequisites"></a>Krav
 * [Hämta och installera Lagringsutforskaren (förhandsversion)](http://www.storageexplorer.com)
 
-## <a name="connect-to-a-storage-account-or-service"></a>Ansluta till ett lagringskonto eller en tjänst
-Med Lagringsutforskaren (förhandsversion) kan du ansluta till lagringskonton på flera olika sätt. Du kan till exempel:
-* Ansluta till lagringskonton som är associerade med dina Azure-prenumerationer.
-* Ansluta till lagringskonton och tjänster som delas från andra Azure-prenumerationer.
-* Ansluta till och hantera lokal lagring med hjälp av Azure Storage-emulatorn. 
+## <a name="connect-tooa-storage-account-or-service"></a>Ansluta tooa storage-konto eller tjänst
+Lagringsutforskaren (förhandsversion) innehåller flera olika sätt tooconnect toostorage konton. Du kan till exempel:
+* Ansluta toostorage konton som är kopplade till dina Azure-prenumerationer.
+* Ansluta toostorage konton och tjänster som delas från andra Azure-prenumerationer.
+* Ansluta tooand hantera lokal lagring med hjälp av hello Azure Storage-emulatorn. 
 
 Dessutom kan du arbeta med lagringskonton i globala och nationella Azure:
 
-* [Ansluta till en Azure-prenumeration](#connect-to-an-azure-subscription): hantera lagringsresurser som hör till din Azure-prenumeration.
-* [Arbeta med lokal utvecklingslagring](#work-with-local-development-storage): hantera lokal lagring med hjälp av Azure Storage-emulatorn.
-* [Ansluta till extern lagring](#attach-or-detach-an-external-storage-account): hantera lagringsresurser som hör till en annan Azure-prenumeration eller nationella Azure-moln med hjälp av lagringskontots namn, nyckel och slutpunkter.
-* [Ansluta ett lagringskonto med hjälp av en SAS](#attach-storage-account-using-sas): hantera lagringsresurser som tillhör en annan Azure-prenumeration med hjälp av en signatur för delad åtkomst (SAS).
-* [Ansluta en tjänst med hjälp av SAS](#attach-service-using-sas): hantera en specifik lagringstjänst (blobbehållare, kö eller tabell) som hör till en annan Azure-prenumeration med hjälp av en SAS.
+* [Ansluta tooan Azure-prenumeration](#connect-to-an-azure-subscription): hantera lagringsresurser som hör tooyour Azure-prenumeration.
+* [Arbeta med lokal utveckling lagring](#work-with-local-development-storage): hantera lokal lagring med hjälp av hello Azure Storage-emulatorn.
+* [Koppla tooexternal lagring](#attach-or-detach-an-external-storage-account): hantera lagringsresurser som hör tooanother Azure-prenumeration eller som är under nationella Azure moln med hjälp av hello lagringskontots namn, nyckel och slutpunkter.
+* [Koppla ett lagringskonto med hjälp av en SAS](#attach-storage-account-using-sas): hantera lagringsresurser som hör tooanother Azure-prenumeration med hjälp av en signatur för delad åtkomst (SAS).
+* [Koppla en tjänst med hjälp av en SAS](#attach-service-using-sas): hantera en specifik lagringstjänst (blobbehållare, kö eller tabell) som tillhör tooanother Azure-prenumeration med hjälp av en SAS.
 
-## <a name="connect-to-an-azure-subscription"></a>Ansluta till en Azure-prenumeration
+## <a name="connect-tooan-azure-subscription"></a>Ansluta tooan Azure-prenumeration
 > [!NOTE]
 > Om du inte redan har ett Azure-konto kan du [registrera dig för en kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) eller [aktivera Visual Studio-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
 >
@@ -53,39 +53,39 @@ Dessutom kan du arbeta med lagringskonton i globala och nationella Azure:
 
     ![Inställningar för Azure-konto][0]
 
-2. Den vänstra rutan visar alla Microsoft-konton som du har loggat in på. Om du vill ansluta till ett annat konto väljer du **Lägg till ett konto** och följer instruktionerna för att logga in med ett Microsoft-konto som är kopplat till minst en aktiv Azure-prenumeration.
+2. hello vänster visar alla hello Microsoft-konton som du har loggat in till. tooconnect tooanother kontot som väljer **Lägg till ett konto**, och följ sedan hello instruktioner toosign in med ett Microsoft-konto som är associerad med minst en aktiv Azure-prenumeration.
 
     >[!NOTE]
-    >För närvarande går det inte att ansluta till nationella Azure (t.ex. Azure Germany, Azure Government och Azure China) via inloggning. Mer information om hur du ansluter till nationella Azure Storage-konton finns i avsnittet Ansluta eller koppla från ett externt lagringskonto.
+    >Ansluta toonational Azure (till exempel Azure Tyskland Azure Government och Azure Kina inloggning) stöds inte för närvarande. Se hello ”Anslut eller koppla från ett externt lagringskonto” avsnittet om hur tooconnect toonational Azure storage-konton.
 
-3. När du har loggat in med ett Microsoft-konto fylls den vänstra rutan i med de Azure-prenumerationer som är kopplade till kontot. Välj de Azure-prenumerationer som du vill arbeta med och välj sedan **Använd**. (Om du klickar på **Alla prenumerationer** växlar du mellan att välja alla eller inga av de Azure-prenumerationer som visas.)
+3. När du loggar in med ett Microsoft-konto, hello vänster fönsterruta fylls med hello Azure-prenumerationer som är associerade med det kontot. Välj hello Azure-prenumerationer som du vill toowork med och välj sedan **tillämpa**. (Att välja **alla prenumerationer** knapparna för att välja alla eller inga av hello visas Azure-prenumerationer.)
 
     ![Välja Azure-prenumerationer][3]  
-    I den vänstra rutan visas lagringskontona som är kopplade till de valda Azure-prenumerationerna.
+    hello vänster visar hello storage-konton som är associerade med hello valda Azure-prenumerationer.
 
     ![Valda Azure-prenumerationer][4]
 
-## <a name="connect-to-an-azure-stack-subscription"></a>Ansluta till en Azure Stack-prenumeration
+## <a name="connect-tooan-azure-stack-subscription"></a>Anslut tooan Stack för Azure-prenumeration
 
-Information om hur du ansluter till en Azure Stackprenumeration finns i [Ansluta Storage Explorer till en prenumeration på Azure Stack](azure-stack/azure-stack-storage-connect-se.md).
+Information om anslutande tooan Azure Stack-prenumerationen finns [ansluta Lagringsutforskaren tooan Azure Stack prenumeration](azure-stack/azure-stack-storage-connect-se.md).
 
 ## <a name="work-with-local-development-storage"></a>Arbeta med lokal utvecklingslagring
-Med Lagringsutforskaren (förhandsversion) kan du arbeta mot lokal lagring med hjälp av Azure Storage-emulatorn. På så sätt kan du skriva kod mot och testa lagring utan att nödvändigtvis ha distribuerat ett lagringskonto i Azure (eftersom lagringskontot emuleras av Azure Storage-emulatorn).
+Med Lagringsutforskaren (förhandsversion) kan arbeta du mot lokal lagring med hjälp av hello Azure Storage-emulatorn. Den här metoden kan du skriva kod mot och testa lagring utan att ha ett lagringskonto som har distribuerats på Azure, eftersom hello lagringskontot emuleras av hello Azure Storage-emulatorn.
 
 > [!NOTE]
-> Azure Storage-emulatorn stöds för närvarande endast för Windows.
+> hello Azure Storage-emulatorn stöds för närvarande endast för Windows.
 >
 >
 
-1. I den vänstra rutan i Lagringsutforskaren (förhandsversion) utökar du noden **(Lokala och anslutna)** > **Lagringskonton** > **(Utveckling)**.
+1. Hello vänstra rutan i Lagringsutforskaren (förhandsversion), expandera hello **(lokala och bifogad)** > **Lagringskonton** > **(utveckling)** nod.
 
     ![Noden Lokal utveckling][21]
 
-2. Om du inte har installerat Azure Storage-emulatorn än uppmanas du att göra det via ett informationsfält. Om informationsfältet visas väljer du **Hämta den senaste versionen** och installerar sedan emulatorn.
+2. Om du ännu inte har installerat hello Azure Storage-emulatorn är du tillfrågas toodo så via ett informationsfält. Om hello Informationsfältet visas väljer du **Download hello senaste versionen**, och sedan installera hello-emulatorn.
 
     ![Fråga om att hämta Azure Storage-emulatorn][22]
 
-3. När emulatorn har installerats kan du skapa och arbeta med lokala blobbar, köer och tabeller. Mer information om hur du arbetar med varje typ av lagringskonto finns i följande avsnitt:
+3. När hello emulatorn har installerats kan du skapa och arbeta med lokala blobbar, köer och tabeller. toolearn hur skriver toowork med varje lagringskonto, finns i hello följande:
 
     * [Hantera Azure-bloblagringsresurser](vs-azure-tools-storage-explorer-blobs.md)
     * Hantera Azure-filresurslagringsresurser: *kommer snart*
@@ -93,139 +93,139 @@ Med Lagringsutforskaren (förhandsversion) kan du arbeta mot lokal lagring med h
     * Hantera Azure-tabellagringsresurser: *kommer snart*
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>Ansluta eller koppla från ett externt lagringskonto
-Med Lagringsutforskaren (förhandsversion) kan du ansluta till externa lagringskonton så att du enkelt kan dela lagringskonton. Det här avsnittet beskriver hur du ansluter till (och kopplar från) externa lagringskonton.
+Du kan koppla tooexternal storage-konton så att storage-konton kan delas med Lagringsutforskaren (förhandsversion). Det här avsnittet beskrivs hur tooattach too(and detach from) externa lagringskonton.
 
-### <a name="get-the-storage-account-credentials"></a>Hämta autentiseringsuppgifterna för lagringskontot
-För att kunna dela ett externt lagringskonto måste kontoägaren först hämta autentiseringsuppgifterna (kontonamnet och nyckeln) för kontot och sedan dela den informationen med den person som ska ansluta till det (externa) kontot. Så här hämtar du autentiseringsuppgifterna för ett lagringskonto via Azure Portal:
+### <a name="get-hello-storage-account-credentials"></a>Hämta hello lagringskontouppgifter
+tooshare ett externt lagringskonto hello ägaren av det kontot måste först hämta hello autentiseringsuppgifter (kontonamnet och nyckeln) för hello-kontot och sedan dela informationen med hello person som vill tooattach toothat (externa) kontot. Du kan hämta hello lagringskontouppgifter via hello Azure-portalen genom att göra hello följande:
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).
 
 2. Välj **Bläddra**.
 
 3. Välj **Lagringskonton**.
 
-4. Välj önskat lagringskonto på bladet **Lagringskonton**.
+4. På hello **Lagringskonton** bladet, Välj hello önskad storage-konto.
 
-5. Välj **Åtkomstnycklar** på bladet **Inställningar** för det valda lagringskontot.
+5. På hello **inställningar** bladet för hello markerad storage-konto, markerar du **åtkomstnycklar**.
 
     ![Alternativ för åtkomstnycklar][5]
 
-6. På bladet **Åtkomstnycklar** kopierar du värdena för **lagringskontonnamn** och **nyckel1** som används för att ansluta till lagringskontot.
+6. På hello **åtkomstnycklar** bladet, kopiera hello **lagringskontonamnet** och **key1** värden som ska användas när du ansluter toohello storage-konto.
 
     ![Åtkomstnycklar][6]
 
-### <a name="attach-to-an-external-storage-account"></a>Ansluta till ett externt lagringskonto
-Om du vill ansluta till ett externt lagringskonto behöver du ha tillgång till kontots namn och nyckel. I avsnittet Hämta autentiseringsuppgifter för lagringskonto beskrivs hur du hämtar dessa värden från Azure Portal. Men i portalen kallas kontonyckeln **nyckel1**. Om Lagringsutforskaren (förhandsgranskning) begär en kontonyckel anger du alltså **nyckel1**-värdet.
+### <a name="attach-tooan-external-storage-account"></a>Koppla tooan externt lagringskonto
+tooattach tooan externa lagringskonto måste hello kontots namn och nyckel. Hej förklaras ”Get hello lagringskontouppgifter” hur dessa värden från tooobtain hello Azure-portalen. Men i hello portal hello kontonyckel kallas **key1**. Så där Lagringsutforskaren (förhandsversion) begär en kontonyckel, ange hello **key1** värde.
 
-1. I Lagringsutforskaren (förhandsversion) väljer du **Anslut till Azure Storage**.
+1. I Lagringsutforskaren (förhandsversion), väljer **ansluta tooAzure lagring**.
 
-    ![Alternativet Anslut till Azure Storage][23]
+    ![Ansluta tooAzure lagringsalternativ][23]
 
-2. I dialogrutan **Anslut till Azure Storage** anger du kontonyckeln (**nyckel 1**-värdet från Azure Portal) och väljer sedan **Nästa**.
+2. I hello **ansluta tooAzure lagring** dialogrutan Ange hello kontonyckel (hello **key1** värde från hello Azure-portalen), och välj sedan **nästa**.
 
     > [!NOTE]
-    > Du kan ange en anslutningssträng för lagring från ett lagringskonto på nationella Azure. Om du till exempel vill ansluta till Azure Germany-lagringskonton anger du anslutningssträngar som ser ut ungefär så här: 
+    > Du kan ange hello lagringsanslutningssträngen från ett lagringskonto på nationella Azure. Till exempel ange tooconnect tooAzure Tyskland storage-konton, anslutning strängar liknande toohello följande: 
     >
     >* DefaultEndpointsProtocol=https
     >* AccountName=cawatest03
     >* AccountKey=<storage_account_key>
     >* EndpointSuffix=core.cloudapi.de
     
-    >Du kan hämta anslutningssträngen på Azure Portal på samma sätt som beskrivs i avsnittet Hämta autentiseringsuppgifterna för lagringskontot.
+    >Du kan hämta hello anslutningssträngen från hello Azure portal i hello samma sätt som beskrivs i hello ”hämta hello lagringskontouppgifter” avsnittet.
 
-    ![Dialogrutan Anslut till Azure Storage][24]
+    ![Ansluta tooAzure lagring dialogruta][24]
 
-3. I dialogrutan **Anslut extern lagring** anger du lagringskontots namn i rutan **Kontonamn**, anger eventuella andra önskade inställningar och väljer sedan **Nästa**.
+3. I hello **Anslut extern lagring** i dialogrutan hello **kontonamn** rutan, ange hello lagringskontonamn, ange andra inställningar och välj sedan **nästa**.
 
     ![Dialogrutan Anslut extern lagring][8]
 
-4. Kontrollera uppgifterna i dialogrutan **Anslutningssammanfattning**. Om du vill ändra något väljer du **Tillbaka** och anger sedan önskade inställningar på nytt. 
+4. I hello **anslutning sammanfattning** dialogrutan Kontrollera hello information. Om du vill toochange något annat markerar **tillbaka** och ange hello önskade inställningar. 
 
 5. Välj **Anslut**.
 
-6. När det externa lagringskontot har anslutits visas det med texten **(Externt)** sist i namnet.
+6. När den har anslutits visas hello externt lagringskonto med **(externt)** läggs toohello lagringskontonamn.
 
-    ![Resultatet av att ansluta till ett externt lagringskonto][9]
+    ![Resultatet av ansluter tooan externt lagringskonto][9]
 
 ### <a name="detach-from-an-external-storage-account"></a>Ansluta från ett externt lagringskonto
-1. Högerklicka på det externa lagringskonto som du vill koppla från och välj sedan **Koppla från**.
+1. Högerklicka på hello externa lagringskonto som du vill toodetach och välj sedan **Detach**.
 
     ![Koppla bort lagringsalternativ][10]
 
-2. I bekräftelsemeddelandet väljer du **Ja** för att bekräfta att du vill koppla bort det externa lagringskontot.
+2. Markera i hello bekräftelsemeddelandet **Ja** tooconfirm hello vill koppla bort hello externa lagringskontot.
 
 ## <a name="attach-a-storage-account-by-using-an-sas"></a>Ansluta ett lagringskonto med hjälp av en SAS
-Med en [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) kan administratören för en Azure-prenumeration bevilja tillfällig åtkomst till ett lagringskonto utan att uppge autentiseringsuppgifter för Azure-prenumerationen.
+En [SAS](storage/common/storage-dotnet-shared-access-signature-part-1.md) kan Hej administratör för Azure-prenumeration bevilja tillfällig åtkomst tooa storage-konto utan att behöva tooprovide autentiseringsuppgifter för Azure-prenumeration.
 
-För att illustrera detta antar vi att Användare A är administratör för en Azure-prenumeration och vill ge Användare B åtkomst till ett lagringskonto under en begränsad tid med särskilda behörigheter:
+tooillustrate det här scenariot kan vi säga att UserA är administratör för Azure-prenumeration och UserA vill tooallow b tooaccess en storage-konto under en begränsad tid med särskilda behörigheter:
 
-1. Användare A genererar en SAS (som består av anslutningssträngen för lagringskontot) för en viss tidsperiod och med önskade behörigheter.
+1. Användare a genererar en SAS (som består av hello anslutningssträngen för hello lagringskontot) för en viss tid tidsperiod och med hello önskade behörigheter.
 
-2. Användare A delar SAS med den person (Användare B i vårt exempel) som vill ha åtkomst till lagringskontot.  
+2. Resurser för UserA hello SAS med hello person (i vårt exempel b) som vill ha åtkomst toohello storage-konto.  
 
-3. Användare B använder Lagringsutforskaren (förhandsversion) för att ansluta till kontot som hör till Användare A med hjälp av den SAS som han eller hon fått.
+3. B använder Lagringsutforskaren (förhandsversion) tooattach toohello konto som tillhör tooUserA med hjälp av hello angivna SAS.
 
-### <a name="get-an-sas-for-the-account-you-want-to-share"></a>Hämta en SAS för det konto som du vill dela
-1. I Lagringshanteraren (förhandsversion) högerklickar du på det lagringskonto som du vill dela och väljer sedan **Hämta signatur för delad åtkomst**.
+### <a name="get-an-sas-for-hello-account-you-want-tooshare"></a>Hämta en SAS för hello-konto som du vill tooshare
+1. I Lagringsutforskaren (förhandsversion) högerklickar du på hello storage-konto som du vill dela och välj sedan **hämta signatur för delad åtkomst**.
 
     ![Snabbmenyalternativet Hämta SAS][13]
 
-2. I dialogrutan **Signatur för delad åtkomst** anger du det tidsintervall och de behörigheter som du vill använda för kontot och väljer sedan **Skapa**.
+2. I hello **signatur för delad åtkomst** dialogrutan Ange hello tidsintervall och behörigheter som du vill använda för hello kontot och välj sedan **skapa**.
 
     Dialogrutan ![Hämta SAS][14]  
-    SAS visas i dialogrutan **Signatur för delad åtkomst**.
+    Hej **signatur för delad åtkomst** dialogruta öppnas och visar hello SAS.
 
-3. Välj **Kopiera** bredvid **anslutningssträngen** för att kopiera den till Urklipp och välj sedan **Stäng**.
+3. Nästa toohello **anslutningssträngen**väljer **kopiera** toocopy den toohello Urklipp och markera sedan **Stäng**.
 
-### <a name="attach-to-the-shared-account-by-using-the-sas"></a>Ansluta till det delade kontot med hjälp av SAS
-1. I Lagringsutforskaren (förhandsversion) väljer du **Anslut till Azure Storage**.
+### <a name="attach-toohello-shared-account-by-using-hello-sas"></a>Koppla toohello delade kontot med hjälp av hello SAS
+1. I Lagringsutforskaren (förhandsversion), väljer **ansluta tooAzure lagring**.
 
-    ![Alternativet Anslut till Azure Storage][23]
+    ![Ansluta tooAzure lagringsalternativ][23]
 
-2. I dialogrutan **Anslut till Azure Storage** anger du anslutningssträngen och väljer sedan **Nästa**.
+2. I hello **ansluta tooAzure lagring** dialogrutan Ange hello anslutningssträng och välj sedan **nästa**.
 
-    ![Dialogrutan Anslut till Azure Storage][24]
+    ![Ansluta tooAzure lagring dialogruta][24]
 
-3. Kontrollera uppgifterna i dialogrutan **Anslutningssammanfattning**. Om du vill göra ändringar väljer du **Bakåt** och anger sedan önskade inställningar. 
+3. I hello **anslutning sammanfattning** dialogrutan Kontrollera hello information. Välj toomake ändringar **tillbaka**, och ange sedan hello-inställningar som du vill använda. 
 
 4. Välj **Anslut**.
 
-5. När lagringskontot har anslutits visas det med texten **(SAS)** sist i kontonamnet som du angav.
+5. När den är ansluten hello storage-konto visas med **(SAS)** läggs toohello kontonamn som du har angett.
 
-    ![Resultatet av anslutning till ett konto med SAS][17]
+    ![Resultatet av anslutna tooan konto med hjälp av SAS][17]
 
 ## <a name="attach-a-service-by-using-an-sas"></a>Ansluta en tjänst med en SAS
-I avsnittet Ansluta ett lagringskonto med hjälp av SAS beskrivs hur en administratör för en Azure-prenumeration kan bevilja tillfällig åtkomst till ett lagringskonto genom att generera och dela en SAS för lagringskontot. På samma sätt kan en SAS genereras för en specifik tjänst (blobbehållare, kö eller tabell) i ett lagringskonto.  
+Hej förklaras ”koppla ett lagringskonto med hjälp av en SAS” hur administratör Azure-prenumeration kan bevilja tillfällig åtkomst tooa storage-konto genom att generera och dela en SAS för hello storage-konto. På samma sätt kan en SAS genereras för en specifik tjänst (blobbehållare, kö eller tabell) i ett lagringskonto.  
 
-### <a name="generate-an-sas-for-the-service-that-you-want-to-share"></a>Generera en SAS för den tjänst som du vill dela
-I det här scenariot kan en tjänst vara en blobbehållare, en kö eller en tabell. Om du vill generera SAS för en tjänst kan du läsa:
+### <a name="generate-an-sas-for-hello-service-that-you-want-tooshare"></a>Generera en SAS för hello-tjänsten som du vill tooshare
+I det här scenariot kan en tjänst vara en blobbehållare, en kö eller en tabell. toogenerate hello SAS för en tjänst, se:
 
-* [Hämta SAS för en blobbehållare](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
-* Hämta SAS för en filresurs: *kommer snart*
-* Hämta SAS för en kö: *kommer snart*
-* Hämta SAS för en tabell: *kommer snart*
+* [Hämta hello SAS för en blob-behållare](vs-azure-tools-storage-explorer-blobs.md#get-the-sas-for-a-blob-container)
+* Hämta hello SAS för en filresurs: *kommer snart*
+* Hämta hello SAS för en kö: *kommer snart*
+* Hämta hello SAS för en tabell: *kommer snart*
 
-### <a name="attach-to-the-shared-account-service-by-using-the-sas"></a>Ansluta till tjänsten för det delade kontot med hjälp av SAS
-1. I Lagringsutforskaren (förhandsversion) väljer du **Anslut till Azure Storage**.
+### <a name="attach-toohello-shared-account-service-by-using-hello-sas"></a>Koppla toohello delade kontot tjänsten med hjälp av hello SAS
+1. I Lagringsutforskaren (förhandsversion), väljer **ansluta tooAzure lagring**.
 
-    ![Alternativet Anslut till Azure Storage][23]
+    ![Ansluta tooAzure lagringsalternativ][23]
 
-2. I dialogrutan **Anslut till Azure Storage** anger du SAS-URI och väljer sedan **Nästa**.
+2. I hello **ansluta tooAzure lagring** dialogrutan Ange hello SAS-URI och välj sedan **nästa**.
 
-    ![Dialogrutan Anslut till Azure Storage][24]
+    ![Ansluta tooAzure lagring dialogruta][24]
 
-3. Kontrollera uppgifterna i dialogrutan **Anslutningssammanfattning**. Om du vill göra ändringar väljer du **Bakåt** och anger sedan önskade inställningar. 
+3. I hello **anslutning sammanfattning** dialogrutan Kontrollera hello information. Välj toomake ändringar **tillbaka**, och ange sedan hello-inställningar som du vill använda. 
 
 4. Välj **Anslut**.
 
-5. När tjänsten har anslutits visas den under noden **(SAS för tjänst)**.
+5. När den är ansluten hello tjänsten visas under hello **(tjänsten SAS)** nod.
 
-    ![Resultatet av att ansluta till en delad tjänst med en SAS][20]
+    ![Resultatet av koppla tooa delade tjänsten med hjälp av en SAS][20]
 
 ## <a name="search-for-storage-accounts"></a>Söka efter lagringskonton
-Om du har en lång lista med lagringskonton kan du snabbt hitta ett visst lagringskonto genom att använda sökrutan överst i den vänstra rutan.
+Om du har en lång lista med lagringskonton, är ett snabbt sätt toolocate ett visst lagringskonto toouse hello sökrutan överst hello i hello till vänster.
 
-När du skriver i sökrutan visas de lagringskonton som matchar sökvärdet som du har skrivit hittills i den vänstra rutan. På följande skärmbild visas ett exempel på en sökning efter alla lagringskonton vars namn innehåller **tarcher**:
+När du skriver i sökrutan hello vänster hello fönsterruta visar hello storage-konton som matchar hello sökvärdet som du har skrivit in toothat punkt. Till exempel en sökning för alla lagringskonton vars namn innehåller **tarcher** visas i följande skärmbild hello:
 
 ![Lagringskontosökning][11]
 

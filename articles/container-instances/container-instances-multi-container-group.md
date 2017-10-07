@@ -1,5 +1,5 @@
 ---
-title: "Azure Behållarinstanser - flera behållargruppen | Azure-dokument"
+title: "aaaAzure Behållarinstanser - flera behållargruppen | Azure-dokument"
 description: "Azure Behållarinstanser - grupp med flera behållare"
 services: container-instances
 documentationcenter: 
@@ -17,25 +17,25 @@ ms.workload: na
 ms.date: 07/26/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 140f58582645ea32f77e901eb13364ed145bbecf
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 976f578cd2a9bf7f05ab97f24662139bb72062ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="deploy-a-container-group"></a>Distribuera en behållare grupp
 
-Azure Behållarinstanser stöd för distribution av flera behållare till en enda värd med en *behållargruppen*. Detta är användbart när du skapar ett program sidovagn för loggning, övervakning eller någon annan konfiguration där en tjänst behöver en andra anslutna process. 
+Stöd för Azure Behållarinstanser hello distribution av flera behållare till en enda värd med en *behållargruppen*. Detta är användbart när du skapar ett program sidovagn för loggning, övervakning eller någon annan konfiguration där en tjänst behöver en andra anslutna process. 
 
 Det här dokumentet går igenom kör en enkel flera behållare sidovagn konfiguration med en Azure Resource Manager-mall.
 
-## <a name="configure-the-template"></a>Konfigurera mallen
+## <a name="configure-hello-template"></a>Konfigurera hello mall
 
-Skapa en fil med namnet `azuredeploy.json` och kopierar följande json till den. 
+Skapa en fil med namnet `azuredeploy.json` och kopiera hello följande json till den. 
 
-I det här exemplet definieras en behållare grupp med två behållare och en offentlig IP-adress. Första behållare för gruppen kör ett Internetriktade Internetprogram. Behållaren andra sidvagn, gör en HTTP-begäran till webbprogrammet huvudsakliga via gruppens lokala nätverk. 
+I det här exemplet definieras en behållare grupp med två behållare och en offentlig IP-adress. hello första behållare för hello grupp körs ett Internetriktade Internetprogram. hello andra behållare, hello sidovagn gör ett HTTP-begäran toohello huvudsakliga webbprogram via hello gruppen lokala nätverk. 
 
-Det här exemplet sidovagn kan expanderas för att utlösa en avisering om det tog emot en HTTP-svarskoden än 200 OK. 
+Det här exemplet sidovagn kan vara expanderade tootrigger en avisering om det tog emot en HTTP-svarskoden än 200 OK. 
 
 ```json
 {
@@ -109,7 +109,7 @@ Det här exemplet sidovagn kan expanderas för att utlösa en avisering om det t
   }
 ```
 
-Om du vill använda ett privat behållaren image register att lägga till ett objekt i json-dokumentet med följande format.
+toouse en bild registret privata behållare lägga till ett objekt toohello json-dokument med hello följande format.
 
 ```json
 "imageRegistryCredentials": [
@@ -121,15 +121,15 @@ Om du vill använda ett privat behållaren image register att lägga till ett ob
 ]
 ```
 
-## <a name="deploy-the-template"></a>Distribuera mallen
+## <a name="deploy-hello-template"></a>Distribuera hello mall
 
-Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#create).
+Skapa en resursgrupp med hello [az gruppen skapa](/cli/azure/group#create) kommando.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
 ```
 
-Distribuera mallen med den [az distribution skapa](/cli/azure/group/deployment#create) kommando.
+Distribuera hello mallen med hello [az distribution skapa](/cli/azure/group/deployment#create) kommando.
 
 ```azurecli-interactive
 az group deployment create --name myContainerGroup --resource-group myResourceGroup --template-file azuredeploy.json
@@ -139,7 +139,7 @@ Inom några sekunder får du ett första svar från Azure.
 
 ## <a name="view-deployment-state"></a>Visa status för distributionen
 
-Du kan visa statusen för distributionen av `az container show` kommando. Detta returnerar etablerade offentliga IP-adressen som programmet kan användas.
+tooview hello tillstånd hello distribution, Använd hello `az container show` kommando. Detta returnerar hello etablerats offentliga IP-adressen via vilken hello program kan nås.
 
 ```azurecli-interactive
 az container show --name myContainerGroup --resource-group myResourceGroup -o table
@@ -155,7 +155,7 @@ myContainerGroup  myResourceGrou2  Succeeded            microsoft/aci-tutorial-s
 
 ## <a name="view-logs"></a>Visa loggfiler   
 
-Visa loggutdata från en behållare med hjälp av den `az container logs` kommando. Den `--container-name` argumentet anger behållaren som hämtar loggarna. Den första behållaren har angetts i det här exemplet. 
+Visa hello loggutdata för en behållare med hello `az container logs` kommando. Hej `--container-name` argumentet anger hello behållare från vilken toopull loggar. I det här exemplet har hello första behållare angetts. 
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-app --resource-group myResourceGroup
@@ -171,7 +171,7 @@ istening on port 80
 ::1 - - [27/Jul/2017:17:35:38 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Om du vill se loggar för behållaren sida bilen köra samma kommando anger andra behållarens namn.
+toosee hello loggar för hello sida bil behållare, kör hello samma kommando anger hello andra behållarnamn.
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-sidecar --resource-group myResourceGroup
@@ -193,11 +193,11 @@ Last-Modified: Sun, 16 Jul 2017 02:08:22 GMT
 Date: Mon, 17 Jul 2017 18:27:36 GMT
 ```
 
-Som du kan se göra sidovagn regelbundet en HTTP-begäran till huvudsakliga webb-applikationen via gruppens lokala nätverk så att den körs.
+Som du ser att hello sidovagn regelbundet en HTTP-begäran toohello huvudsakliga webbprogram via hello gruppen lokala nätverket tooensure körs.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Det här dokumentet beskrivs de steg som krävs för att distribuera en instans av flera behållare Azure-behållaren. En slutpunkt till slutpunkt Azure Behållarinstanser upplevelse finns i Azure Container instanser kursen.
+Det här dokumentet beskrivs hello steg som krävs för att distribuera flera behållare instans av Azure-behållaren. En utgången tooend Azure Behållarinstanser upplevelse, finns i hello Azure Behållarinstanser kursen.
 
 > [!div class="nextstepaction"]
 > [Azure Behållarinstanser kursen]:./container-instances-tutorial-prepare-app.md

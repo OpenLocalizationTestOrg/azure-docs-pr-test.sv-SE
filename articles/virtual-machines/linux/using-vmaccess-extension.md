@@ -1,6 +1,6 @@
 ---
-title: "Återställa åtkomst till en Azure Linux-dator | Microsoft Docs"
-description: "Hantera användare och återställa åtkomst på virtuella Linux-datorer med hjälp av VMAccess-tillägget och Azure CLI 2.0"
+title: "aaaReset åtkomst tooan virtuella Azure Linux-datorer | Microsoft Docs"
+description: "Hur toomanage användare och återställa åtkomst på virtuella Linux-datorer med hjälp av hello VMAccess-tillägget och hello Azure CLI 2.0"
 services: virtual-machines-linux
 documentationcenter: 
 author: dlepow
@@ -15,28 +15,28 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: danlep
-ms.openlocfilehash: 587c73278a9a92776276a811c5c4c8d3db773de3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 2f8db01b9fac20bf547d8b1926e5c0b3c5d18280
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Hantera användare, SSH och kontrollera eller reparera diskar på virtuella Linux-datorer med hjälp av VMAccess-tillägget med Azure CLI 2.0
-Disken på Linux-VM visas fel. Du på något sätt återställa rotlösenordet för Linux-VM eller tagits bort av misstag din privata SSH-nyckel. Om detta har inträffat i dagar för datacenter, behöver du köra det och öppna sedan KVM få vid servern. Se Azure VMAccess-tillägget som den KVM-växel som gör att du kan använda konsolen för att återställa åtkomst till Linux eller genomför diskunderhåll nivå.
+# <a name="manage-users-ssh-and-check-or-repair-disks-on-linux-vms-using-hello-vmaccess-extension-with-hello-azure-cli-20"></a>Hantera användare, SSH och kontrollera eller reparera diskar på virtuella Linux-datorer med hjälp av hello VMAccess-tillägget med hello Azure CLI 2.0
+hello disk på Linux-VM visas fel. Du på något sätt återställa hello rotlösenordet för Linux-VM eller tagits bort av misstag din privata SSH-nyckel. Om detta har inträffat i hello dagarnas hello datacenter, skulle du behöver toodrive det och öppna sedan hello KVM tooget hello server-konsolen. Se hello Azure VMAccess-tillägget som den KVM-växel som gör att du tooaccess hello konsolen tooreset åtkomst tooLinux eller genomför diskunderhåll nivå.
 
-Den här artikeln visar hur du använder Azure VMAccess-tillägget för att kontrollera eller reparera en disk, återställa användaråtkomst, hantera användarkonton eller återställa SSH-konfigurationen på Linux. Du kan också utföra dessa steg med [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Den här artikeln visar hur toouse hello Azure VMAccess-tillägget toocheck eller reparera en disk, återställa användaråtkomst, hantera användarkonton och Återställ hello SSH-konfigurationen på Linux. Du kan också utföra dessa steg med hello [Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
-## <a name="ways-to-use-the-vmaccess-extension"></a>Sätt att använda VMAccess-tillägget
-Det finns två sätt som du kan använda VMAccess-tillägget på din virtuella Linux-datorer:
+## <a name="ways-toouse-hello-vmaccess-extension"></a>Sätt toouse hello VMAccess-tillägget
+Det finns två sätt som du kan använda hello VMAccess-tillägget på din virtuella Linux-datorer:
 
-* Använda Azure CLI 2.0 och de obligatoriska parametrarna.
-* [Använd raw JSON-filer som bearbetar VMAccess-tillägget](#use-json-files-and-the-vmaccess-extension) och sedan vidta åtgärder för.
+* Använd hello Azure CLI 2.0 och hello krävs parametrar.
+* [Använd rådata JSON-filer som hello VMAccess-tillägget processen](#use-json-files-and-the-vmaccess-extension) och sedan vidta åtgärder för.
 
-I följande exempel används [az vm användaren](/cli/azure/vm/user) kommandon. Om du vill utföra dessa steg behöver du senast [Azure CLI 2.0](/cli/azure/install-az-cli2) installerad och inloggad till en Azure-konto med hjälp av [az inloggningen](/cli/azure/#login).
+Hej följande exempel används [az vm användaren](/cli/azure/vm/user) kommandon. tooperform dessa steg, behöver du hello senaste [Azure CLI 2.0](/cli/azure/install-az-cli2) installerad och logga in tooan Azure-konto med [az inloggningen](/cli/azure/#login).
 
 ## <a name="reset-ssh-key"></a>Återställ SSH-nyckel
-I följande exempel återställer SSH-nyckeln för användaren `azureuser` på den virtuella datorn med namnet `myVM`:
+hello följande exempel återställs hello SSH-nyckeln för hello användare `azureuser` på hello virtuella datorn med namnet `myVM`:
 
 ```azurecli
 az vm user update \
@@ -47,7 +47,7 @@ az vm user update \
 ```
 
 ## <a name="reset-password"></a>Återställa lösenord
-I följande exempel återställer lösenordet för användaren `azureuser` på den virtuella datorn med namnet `myVM`:
+hello följande exempel återställs hello användarlösenord hello `azureuser` på hello virtuella datorn med namnet `myVM`:
 
 ```azurecli
 az vm user update \
@@ -58,7 +58,7 @@ az vm user update \
 ```
 
 ## <a name="restart-ssh"></a>Starta om SSH
-I följande exempel startar om SSH-daemon och återställer SSH-konfigurationen till standardvärdena på en virtuell dator med namnet `myVM`:
+hello följande exempel startar hello SSH-daemon och återställer hello SSH toodefault konfigurationsvärden på en virtuell dator med namnet `myVM`:
 
 ```azurecli
 az vm user reset-ssh \
@@ -67,7 +67,7 @@ az vm user reset-ssh \
 ```
 
 ## <a name="create-a-user"></a>Skapa en användare
-I följande exempel skapas en användare med namnet `myNewUser` använder en SSH-nyckel för autentisering på den virtuella datorn med namnet `myVM`:
+hello följande exempel skapas en användare med namnet `myNewUser` använder en SSH-nyckel för autentisering på hello virtuella datorn med namnet `myVM`:
 
 ```azurecli
 az vm user update \
@@ -78,7 +78,7 @@ az vm user update \
 ```
 
 ## <a name="delete-a-user"></a>Tar bort en användare
-I följande exempel tar bort en användare med namnet `myNewUser` på den virtuella datorn med namnet `myVM`:
+hello följande exempel tar bort en användare med namnet `myNewUser` på hello virtuella datorn med namnet `myVM`:
 
 ```azurecli
 az vm user delete \
@@ -88,13 +88,13 @@ az vm user delete \
 ```
 
 
-## <a name="use-json-files-and-the-vmaccess-extension"></a>Använd JSON-filer och VMAccess-tillägget
-I följande exempel används raw JSON-filer. Använd [az vm-tillägget set](/cli/azure/vm/extension#set) att anropa JSON-filer. Filerna JSON kallas även från Azure-mallar. 
+## <a name="use-json-files-and-hello-vmaccess-extension"></a>Använd JSON-filer och hello VMAccess-tillägget
+följande exempel hello använda raw JSON-filer. Använd [az vm-tillägget set](/cli/azure/vm/extension#set) toothen anropa JSON-filer. Filerna JSON kallas även från Azure-mallar. 
 
 ### <a name="reset-user-access"></a>Återställ användaråtkomst
-Om du har förlorat åtkomsten till roten på Linux-VM, kan du starta ett VMAccess-skript för att återställa SSH-nyckeln eller lösenordet för en användare.
+Om du har förlorat åtkomst tooroot på Linux-VM, kan du starta en VMAccess skriptet tooreset SSH-nyckeln eller lösenordet för en användare.
 
-Om du vill återställa den offentliga SSH-nyckeln för en användare skapar en fil med namnet `reset_ssh_key.json` och lägga till inställningarna i följande format. Ersätt värdena för den `username` och `ssh_key` parametrar:
+tooreset hello offentlig SSH-nyckel för en användare skapar en fil med namnet `reset_ssh_key.json` och lägga till inställningarna i hello följande format. Ersätt värdena för hello `username` och `ssh_key` parametrar:
 
 ```json
 {
@@ -103,7 +103,7 @@ Om du vill återställa den offentliga SSH-nyckeln för en användare skapar en 
 }
 ```
 
-Kör skriptet VMAccess med:
+Kör hello VMAccess skriptet med:
 
 ```azurecli
 az vm extension set \
@@ -115,7 +115,7 @@ az vm extension set \
   --protected-settings reset_ssh_key.json
 ```
 
-Om du vill återställa en användarlösenord, skapar du en fil med namnet `reset_user_password.json` och lägga till inställningarna i följande format. Ersätt värdena för den `username` och `password` parametrar:
+tooreset ett lösenord, skapa en fil med namnet `reset_user_password.json` och lägga till inställningarna i hello följande format. Ersätt värdena för hello `username` och `password` parametrar:
 
 ```json
 {
@@ -124,7 +124,7 @@ Om du vill återställa en användarlösenord, skapar du en fil med namnet `rese
 }
 ```
 
-Kör skriptet VMAccess med:
+Kör hello VMAccess skriptet med:
 
 ```azurecli
 az vm extension set \
@@ -137,7 +137,7 @@ az vm extension set \
 ```
 
 ### <a name="restart-ssh"></a>Starta om SSH
-Om du vill starta om SSH-daemon och återställa SSH-konfigurationen till standardvärdena, skapar du en fil med namnet `reset_sshd.json`. Lägg till följande innehåll:
+toorestart hello SSH-daemon och återställa hello SSH konfigurationsvärden toodefault, skapa en fil med namnet `reset_sshd.json`. Lägg till hello följande innehåll:
 
 ```json
 {
@@ -145,7 +145,7 @@ Om du vill starta om SSH-daemon och återställa SSH-konfigurationen till standa
 }
 ```
 
-Kör skriptet VMAccess med:
+Kör hello VMAccess skriptet med:
 
 ```azurecli
 az vm extension set \
@@ -159,7 +159,7 @@ az vm extension set \
 
 ### <a name="manage-users"></a>Hantera användare
 
-Om du vill skapa en användare som använder en SSH-nyckel för autentisering, skapar du en fil med namnet `create_new_user.json` och lägga till inställningarna i följande format. Ersätt värdena för den `username` och `ssh_key` parametrar:
+toocreate en användare som använder en SSH-nyckel för autentisering, skapa en fil med namnet `create_new_user.json` och lägga till inställningarna i hello följande format. Ersätt värdena för hello `username` och `ssh_key` parametrar:
 
 ```json
 {
@@ -169,7 +169,7 @@ Om du vill skapa en användare som använder en SSH-nyckel för autentisering, s
 }
 ```
 
-Kör skriptet VMAccess med:
+Kör hello VMAccess skriptet med:
 
 ```azurecli
 az vm extension set \
@@ -181,7 +181,7 @@ az vm extension set \
   --protected-settings create_new_user.json
 ```
 
-Ta bort en användare genom att skapa en fil med namnet `delete_user.json` och Lägg till följande innehåll. Ersätt värdet för den `remove_user` parameter:
+toodelete en användare skapar en fil med namnet `delete_user.json` och Lägg till hello följande innehåll. Ersätt värdet för hello `remove_user` parameter:
 
 ```json
 {
@@ -189,7 +189,7 @@ Ta bort en användare genom att skapa en fil med namnet `delete_user.json` och L
 }
 ```
 
-Kör skriptet VMAccess med:
+Kör hello VMAccess skriptet med:
 
 ```azurecli
 az vm extension set \
@@ -201,10 +201,10 @@ az vm extension set \
   --protected-settings delete_user.json
 ```
 
-### <a name="check-or-repair-the-disk"></a>Kontrollera eller reparera disken
-Med hjälp av VMAccess du också kontrollera och reparera en disk som du har lagt till Linux-VM.
+### <a name="check-or-repair-hello-disk"></a>Kontrollera eller reparera hello disk
+Med hjälp av VMAccess kan också kontrollera och reparera en disk som du lagt till toohello Linux VM.
 
-Om du vill kontrollera och reparera disken, skapa en fil med namnet `disk_check_repair.json` och lägga till inställningarna i följande format. Ersätt värdet för namnet på `repair_disk`:
+toocheck och reparera hello disk, skapa en fil med namnet `disk_check_repair.json` och lägga till inställningarna i hello följande format. Ersätt värdet för hello namnet på `repair_disk`:
 
 ```json
 {
@@ -213,7 +213,7 @@ Om du vill kontrollera och reparera disken, skapa en fil med namnet `disk_check_
 }
 ```
 
-Kör skriptet VMAccess med:
+Kör hello VMAccess skriptet med:
 
 ```azurecli
 az vm extension set \
@@ -226,11 +226,11 @@ az vm extension set \
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Uppdatera Linux med hjälp av Azure VMAccess-tillägget är en metod för att göra ändringar på en Linux-VM som körs. Du kan också använda verktyg som molntjänster init och Azure Resource Manager-mallar för att ändra din Linux VM på Start.
+Uppdatera Linux är med hjälp av hello Azure VMAccess-tillägget en metod toomake ändringar på en Linux-VM som körs. Du kan också använda verktyg som molntjänster init och Azure Resource Manager mallar toomodify din Linux VM på Start.
 
 [Tillägg för virtuell dator och funktioner för Linux](extensions-features.md)
 
 [Skapa Azure Resource Manager-mallar med Linux VM-tillägg](../windows/template-description.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Med hjälp av molnet init för att anpassa en Linux VM under skapandet](using-cloud-init.md)
+[Med hjälp av molnet init toocustomize en Linux VM under skapande av](using-cloud-init.md)
 

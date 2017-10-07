@@ -1,6 +1,6 @@
 ---
-title: "Flytta data till en Azure SQL Database för Azure Machine Learning | Microsoft Docs"
-description: "Skapa SQL-tabellen och Läs in data till SQL-tabell"
+title: "aaaMove data tooan Azure SQL Database för Azure Machine Learning | Microsoft Docs"
+description: "Skapa SQL-tabell och hämta data tooSQL tabell"
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,66 +14,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: dfd1649b666c3793339f8624bdf77aa92cca4e88
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: b33ef836f42c17a56794baf763281e9998b16bef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Flytta data till en Azure SQL Database för Azure Machine Learning
-Det här avsnittet beskrivs alternativen för att flytta data från flata filer (CSV eller TVS format) eller data som lagras i en lokal SQL Server till en Azure SQL-databas. Dessa uppgifter för att flytta data till molnet är en del av Team av vetenskapliga data.
+# <a name="move-data-tooan-azure-sql-database-for-azure-machine-learning"></a>Flytta data tooan Azure SQL Database för Azure Machine Learning
+Det här avsnittet beskriver hello alternativ för att flytta data från flata filer (CSV eller TVS format) eller data som lagras i en lokal SQL Server tooan Azure SQL database. Dessa uppgifter för glidande data toohello moln är en del av hello Team datavetenskap Process.
 
-Ett avsnitt som visar alternativen för att flytta data till en lokal SQL Server för Machine Learning finns [flytta data till SQL Server på en virtuell dator i Azure](machine-learning-data-science-move-sql-server-virtual-machine.md).
+Ett avsnitt som visar hello alternativ för att flytta data tooan lokal SQL Server för Machine Learning finns [flytta data tooSQL Server på en virtuell dator i Azure](machine-learning-data-science-move-sql-server-virtual-machine.md).
 
-Följande **menyn** länkar till avsnitt som beskriver hur du mata in data i mål-miljöer där data kan lagras och behandlas under Team Data vetenskap processen (TDSP).
+hello följande **menyn** länkar tootopics som beskriver hur tooingest data till mål-miljöer där hello data kan lagras och behandlas under hello Team Data vetenskap processen (TDSP).
 
 [!INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
-I följande tabell sammanfattas alternativ för att flytta data till en Azure SQL Database.
+hello sammanfattas följande tabell hello alternativ för att flytta data tooan Azure SQL Database.
 
 | <b>KÄLLA</b> | <b>MÅL: Azure SQL-databas</b> |
 | --- | --- |
 | <b>Flat-fil (CSV eller TVS formaterad)</b> |<a href="#bulk-insert-sql-query">Bulk Insert SQL-fråga |
-| <b>Lokal SQLServer</b> |1. <a href="#export-flat-file">Exportera till Flat-fil<br> 2. <a href="#insert-tables-bcp">Migreringsguiden för SQL-databas<br> 3. <a href="#db-migration">Databasen tillbaka in och återställa<br> 4. <a href="#adf">Azure Data Factory |
+| <b>Lokal SQLServer</b> |1. <a href="#export-flat-file">Exportera tooFlat fil<br> 2. <a href="#insert-tables-bcp">Migreringsguiden för SQL-databas<br> 3. <a href="#db-migration">Databasen tillbaka in och återställa<br> 4. <a href="#adf">Azure Data Factory |
 
 ## <a name="prereqs"></a>Förhandskrav
-De procedurer som beskrivs här måste du ha:
+hello-procedurer som beskrivs här måste du ha:
 
 * En **Azure-prenumeration**. Om du inte har någon prenumeration kan du registrera dig för en [kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/).
-* En **Azure storage-konto**. Du kan använda ett Azure storage-konto för att lagra data i den här kursen. Om du inte har ett Azure storage-konto finns i [skapa ett lagringskonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) artikel. När du har skapat lagringskontot som du behöver hämta nyckeln konto används för åtkomst till lagringen. Se [hantera åtkomstnycklar för lagring](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
-* Åtkomst till en **Azure SQL Database**. Om du måste ställa in en Azure SQL Database [komma igång med Microsoft Azure SQL Database](../sql-database/sql-database-get-started.md) innehåller information om hur du etablerar en ny instans av en Azure SQL Database.
-* Installerat och konfigurerat **Azure PowerShell** lokalt. Instruktioner finns i [hur du installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview).
+* En **Azure storage-konto**. Du kan använda ett Azure storage-konto för att lagra hello data i den här självstudiekursen. Om du inte har ett Azure storage-konto finns hello [skapa ett lagringskonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) artikel. När du har skapat hello storage-konto behöver du tooobtain hello konto nyckel som används för tooaccess hello lagring. Se [hantera åtkomstnycklar för lagring](../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
+* Åtkomst tooan **Azure SQL Database**. Om du måste ställa in en Azure SQL Database [komma igång med Microsoft Azure SQL Database](../sql-database/sql-database-get-started.md) innehåller information om hur tooprovision en ny instans av en Azure SQL Database.
+* Installerat och konfigurerat **Azure PowerShell** lokalt. Instruktioner finns i [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
 
-**Data**: migrering processer kan visas med hjälp av den [NYC Taxi dataset](http://chriswhong.com/open-data/foil_nyc_taxi/). NYC Taxi datamängden innehåller information om resa data och mässor och är tillgängligt på Azure-blobblagring: [NYC Taxi Data](http://www.andresmh.com/nyctaxitrips/). Ett exempel och en beskrivning av dessa filer finns i [NYC Taxi resor Dataset beskrivning](machine-learning-data-science-process-sql-walkthrough.md#dataset).
+**Data**: hello migrering processer kan visas med hjälp av hello [NYC Taxi dataset](http://chriswhong.com/open-data/foil_nyc_taxi/). hello NYC Taxi datamängden innehåller information om resa data och mässor och är tillgängligt på Azure-blobblagring: [NYC Taxi Data](http://www.andresmh.com/nyctaxitrips/). Ett exempel och en beskrivning av dessa filer finns i [NYC Taxi resor Dataset beskrivning](machine-learning-data-science-process-sql-walkthrough.md#dataset).
 
-Du kan anpassa de förfaranden som beskrivs här till en uppsättning med dina egna data eller Följ stegen som beskrivs med NYC Taxi dataset. Överför NYC Taxi dataset till din lokala SQL Server-databas genom att följa proceduren som beskrivs i [Bulk importera Data till SQL Server-databas](machine-learning-data-science-process-sql-walkthrough.md#dbload). Dessa instruktioner är för en SQL Server på en virtuell dator i Azure, men proceduren för att ladda upp till den lokala SQL Server är samma.
+Du kan anpassa hello förfaranden som beskrivs här tooa uppsättning dina egna data eller hello gör enligt med hjälp av hello NYC Taxi dataset. tooupload hello NYC Taxi dataset i dina lokala SQL Server-databas, följ hello proceduren som beskrivs i [Bulk importera Data till SQL Server-databas](machine-learning-data-science-process-sql-walkthrough.md#dbload). Dessa instruktioner är för en SQL Server på en virtuell dator i Azure, men hello proceduren för att ladda upp toohello på lokal SQL Server är hello samma.
 
-## <a name="file-to-azure-sql-database"></a>Flytta data från en flat filkälla till en Azure SQL database
-Data i flat-filer (CSV eller TVS formaterad) kan flyttas till en Azure SQL-databas med en Bulk Insert SQL-fråga.
+## <a name="file-to-azure-sql-database"></a>Flytta data från en flat fil källa tooan Azure SQL-databas
+Data i flat-filer (CSV eller TVS formaterad) kan vara flyttade tooan Azure SQL database med en Bulk Insert SQL-fråga.
 
 ### <a name="bulk-insert-sql-query"></a>Bulk Insert SQL-fråga
-Anvisningarna för proceduren med hjälp av Bulk Insert SQL-frågan är samma som beskrivs i avsnitten för att flytta data från en flat filkälla till SQL Server på en Azure VM. Mer information finns i [Bulk Insert SQL-frågan](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery).
+hello stegen för hello proceduren med hjälp av hello Bulk Insert SQL-frågan är liknande toothose upp i hello avsnitt för att flytta data från en flat fil källa tooSQL Server på en Azure VM. Mer information finns i [Bulk Insert SQL-frågan](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="sql-on-prem-to-sazure-sql-database"></a>Flytta Data från lokala SQL Server till en Azure SQL database
-Om datakällan finns i en lokal SQL Server, finns det olika möjligheter för att flytta data till en Azure SQL database:
+## <a name="sql-on-prem-to-sazure-sql-database"></a>Flytta Data från lokala SQL Server tooan Azure SQL-databas
+Om hello källdata lagras i en lokal SQL Server, finns det olika möjligheter för glidande hello data tooan Azure SQL-databas:
 
-1. [Exportera till Flat-fil](#export-flat-file)
+1. [Exportera tooFlat fil](#export-flat-file)
 2. [Migreringsguiden för SQL-databas](#insert-tables-bcp)
 3. [Databasen tillbaka in och återställa](#db-migration)
 4. [Azure Data Factory](#adf)
 
-Steg för de första tre liknar de avsnitten i [flytta data till SQL Server på en virtuell dator i Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) som omfattar samma sätt. Länkar till relevanta avsnitt i det avsnittet finns i följande instruktioner.
+hello stegen för hello först tre är mycket lik toothose avsnitt i [flytta data tooSQL Server på en virtuell dator i Azure](machine-learning-data-science-move-sql-server-virtual-machine.md) som omfattar samma sätt. Länkar toohello relevanta avsnitt i det avsnittet finns i hello följa anvisningar.
 
-### <a name="export-flat-file"></a>Exportera till Flat-fil
-Steg för den här exporten till en flat-fil är samma som beskrivs i [exportera till Flat fil](machine-learning-data-science-move-sql-server-virtual-machine.md#export-flat-file).
+### <a name="export-flat-file"></a>Exportera tooFlat fil
+hello stegen för den här exporteras tooa flat fil är liknande toothose som beskrivs i [exportera tooFlat filen](machine-learning-data-science-move-sql-server-virtual-machine.md#export-flat-file).
 
 ### <a name="insert-tables-bcp"></a>Migreringsguiden för SQL-databas
-Steg för att använda guiden SQL-databas är samma som beskrivs i [Migreringsguiden för SQL-databasen](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-migration).
+hello steg för att använda hello Migreringsguiden för SQL-databasen är liknande toothose som beskrivs i [Migreringsguiden för SQL-databasen](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-migration).
 
 ### <a name="db-migration"></a>Databasen tillbaka in och återställa
-Steg för att använda databasen säkerhetskopiera och Återställ liknar de som beskrivs i [databasen tillbaka in och återställa](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-backup).
+hello steg för att använda databasen säkerhetskopiera och Återställ är liknande toothose som beskrivs i [databasen tillbaka in och återställa](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-backup).
 
 ### <a name="adf"></a>Azure Data Factory
-Proceduren för att flytta data till en Azure SQL database med Azure Data Factory (ADM) finns i avsnittet [flytta data från en lokal SQLServer till SQL Azure med Azure Data Factory](machine-learning-data-science-move-sql-azure-adf.md). Det här avsnittet beskrivs hur du flyttar data från en lokal SQL Server-databas till en Azure SQL database via Azure Blob Storage med hjälp av ADF.
+hello proceduren för att flytta data tooan Azure SQL-databas med Azure Data Factory (ADM) finns i avsnittet hello [flytta data från en lokal SQL server tooSQL Azure med Azure Data Factory](machine-learning-data-science-move-sql-azure-adf.md). Det här avsnittet visar hur toomove data från en lokal SQL Server-databasen tooan Azure SQL database via Azure Blob Storage med hjälp av ADF.
 
-Överväg att använda ADF när data ska migreras kontinuerligt i ett hybridscenario som har åtkomst till både lokalt och molnresurser och när data är överförd eller måste ändras eller har affärslogik som lagts till när migreras. ADF möjliggör schemaläggningen och övervakning av jobb med hjälp av enkla JSON-skript som hanterar flödet av data regelbundet. ADF har även andra funktioner som stöd för komplex.
+Överväg att använda ADF när data måste toobe migreras kontinuerligt i ett hybridscenario som har åtkomst till både lokalt och molnresurser och när hello data är överförd eller måste toobe ändras eller har affärslogik läggs till tooit när migreras. ADF tillåter hello schemaläggning och övervakning av jobb med hjälp av enkla JSON-skript som hanterar hello flödet av data regelbundet. ADF har även andra funktioner som stöd för komplex.

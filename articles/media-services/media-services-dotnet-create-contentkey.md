@@ -1,6 +1,6 @@
 ---
-title: Skapa ContentKeys med .NET
-description: "Lär dig hur du skapar innehåll nycklar som ger säker åtkomst till resurser."
+title: aaaCreate ContentKeys med .NET
+description: "Lär dig hur toocreate innehåll nycklar som ger säker åtkomst till tooAssets."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 3280a6fcde59bae360da7cb9fea4bb649f984e43
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 35909c64e8393e228be75c464a034ffc40122952
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-contentkeys-with-net"></a>Skapa ContentKeys med .NET
 > [!div class="op_single_selector"]
@@ -27,28 +27,28 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-Media Services kan du skapa och leverera krypterade tillgångar. En **ContentKey** ger säker åtkomst till din **tillgången**s. 
+Media Services kan du toocreate och leverera krypterade tillgångar. En **ContentKey** ger säker åtkomst tooyour **tillgången**s. 
 
-När du skapar en ny tillgång (till exempel innan du [ladda upp filer](media-services-dotnet-upload-files.md)), kan du ange följande krypteringsalternativen: **StorageEncrypted**, **CommonEncryptionProtected**, eller **EnvelopeEncryptionProtected**. 
+När du skapar en ny tillgång (till exempel innan du [ladda upp filer](media-services-dotnet-upload-files.md)), kan du ange följande krypteringsalternativ för hello: **StorageEncrypted**, **CommonEncryptionProtected**, eller **EnvelopeEncryptionProtected**. 
 
-När du levererar tillgångar till dina klienter kan du [konfigurera för tillgångar ska vara dynamiskt krypterad](media-services-dotnet-configure-asset-delivery-policy.md) med något av följande två krypteringar: **DynamicEnvelopeEncryption** eller **DynamicCommonEncryption**.
+När du levererar tillgångar tooyour klienter kan du [konfigurera för tillgångar toobe dynamiskt krypterad](media-services-dotnet-configure-asset-delivery-policy.md) med något av följande två krypteringar hello: **DynamicEnvelopeEncryption** eller  **DynamicCommonEncryption**.
 
-Krypterade tillgångar måste associeras med **ContentKey**s. Den här artikeln beskriver hur du skapar en innehållsnyckel.
+Krypterade tillgångar ha toobe som är associerade med **ContentKey**s. Den här artikeln beskriver hur toocreate en innehållsnyckel.
 
 > [!NOTE]
-> När du skapar en ny **StorageEncrypted** tillgång med Media Services .NET SDK i **ContentKey** skapas automatiskt och länkad till tillgången.
+> När du skapar en ny **StorageEncrypted** tillgångsinformation med hjälp av hello Media Services .NET SDK hello **ContentKey** skapas automatiskt och länkade med hello tillgången.
 > 
 > 
 
 ## <a name="contentkeytype"></a>ContentKeyType
-Ett av de värden som du måste ange när du skapar en innehåll nyckeln är viktiga innehållstypen. Välj något av följande värden. 
+Ett av hello-värden som du måste ange när skapar en innehåll nyckeln är hello viktiga innehållstyp. Välj något av följande värden hello. 
 
     public enum ContentKeyType
     {
         /// <summary>
         /// Specifies a content key for common encryption.
         /// </summary>
-        /// <remarks>This is the default value.</remarks>
+        /// <remarks>This is hello default value.</remarks>
         CommonEncryption = 0,
 
         /// <summary>
@@ -68,7 +68,7 @@ Ett av de värden som du måste ange när du skapar en innehåll nyckeln är vik
     }
 
 ## <a id="envelope_contentkey"></a>Skapa kuvert typen ContentKey
-Följande kodavsnitt skapar en innehållsnyckel av typen kuvert kryptering. Sedan associerar den nyckeln med den angivna resursen.
+hello skapar nedanstående kodutdrag en innehållsnyckel av hello kuvert krypteringstyp. Sedan associerar den hello nyckeln med hello angivna tillgången.
 
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
     {
@@ -105,7 +105,7 @@ Anropa
 
 
 ## <a id="common_contentkey"></a>Skapa gemensam typ. ContentKey
-Följande kodavsnitt skapar en innehållsnyckel av den gemensamma krypteringstypen. Sedan associerar den nyckeln med den angivna resursen.
+hello skapar nedanstående kodutdrag en innehållsnyckel av hello vanliga krypteringstyp. Sedan associerar den hello nyckeln med hello angivna tillgången.
 
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)
     {
@@ -119,7 +119,7 @@ Följande kodavsnitt skapar en innehållsnyckel av den gemensamma krypteringstyp
                                 "ContentKey",
                                 ContentKeyType.CommonEncryption);
 
-        // Associate the key with the asset.
+        // Associate hello key with hello asset.
         asset.ContentKeys.Add(key);
 
         return key;

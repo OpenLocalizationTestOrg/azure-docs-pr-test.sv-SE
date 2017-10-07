@@ -1,6 +1,6 @@
 ---
-title: "Auktorisera developer konton med hjälp av Azure Active Directory - Azure API Management | Microsoft Docs"
-description: "Lär dig mer om att auktorisera användare med Azure Active Directory i API-hantering."
+title: "aaaAuthorize developer konton med hjälp av Azure Active Directory - Azure API Management | Microsoft Docs"
+description: "Lär dig hur tooauthorize användare med Azure Active Directory i API-hantering."
 services: api-management
 documentationcenter: API Management
 author: steved0x
@@ -14,177 +14,177 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 7637e6419d17a2d75904fbe63df5f27d4be4bbe3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ebf5447a509a47df35e4262138bfcf423cb1dd5c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>Så här auktoriserar developer konton med hjälp av Azure Active Directory i Azure API Management
+# <a name="how-tooauthorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>Hur tooauthorize developer användarkonton med Azure Active Directory på Azure API Management
 ## <a name="overview"></a>Översikt
-Den här guiden visar hur du aktiverar åtkomst till developer-portalen för användare från Azure Active Directory. Den här guiden visar även hur du hanterar grupper med Azure Active Directory-användare genom att lägga till externa grupper som innehåller användare av en Azure Active Directory.
+Den här guiden visar hur tooenable åt toohello developer-portalen för användare från Azure Active Directory. Den här guiden visar också hur toomanage grupper av Azure Active Directory-användare genom att lägga till externa grupper som innehåller hello användare av en Azure Active Directory.
 
-> Du måste ha en Azure Active Directory att skapa ett program för att slutföra stegen i den här guiden.
+> toocomplete hello stegen i den här guiden måste du först ha ett Azure Active Directory i vilka toocreate ett program.
 > 
 > 
 
-## <a name="how-to-authorize-developer-accounts-using-azure-active-directory"></a>Så här auktoriserar developer konton med hjälp av Azure Active Directory
-Kom igång genom att klicka på **Publisher portal** i Azure-portalen för API Management-tjänsten. När du gör det kommer du till utgivarportalen för API Management.
+## <a name="how-tooauthorize-developer-accounts-using-azure-active-directory"></a>Hur tooauthorize developer användarkonton med Azure Active Directory
+tooget har startats klickar du på **Publisher portal** i hello Azure-portalen för API Management-tjänsten. Då kommer du toohello API Management publisher portal.
 
 ![Utgivarportalen][api-management-management-console]
 
-> Om du inte har skapat en API Management-tjänstinstans än läser du [Skapa en API Management-tjänstinstans][Create an API Management service instance] i självstudiekursen [Komma igång med Azure API Management][Get started with Azure API Management].
+> Om du inte har skapat en instans för API Management-tjänsten finns [skapa en instans för API Management-tjänsten] [ Create an API Management service instance] i hello [Kom igång med Azure API Management] [ Get started with Azure API Management] kursen.
 > 
 > 
 
-Klicka på **säkerhet** från den **API Management** menyn till vänster och klicka på **externa identiteter**.
+Klicka på **säkerhet** från hello **API Management** menyn hello vänster och klicka på **externa identiteter**.
 
 ![Externa identiteter][api-management-security-external-identities]
 
-Klicka på **Azure Active Directory**. Anteckna den **omdirigerings-URL** och växla till Azure Active Directory i den klassiska Azure-portalen.
+Klicka på **Azure Active Directory**. Anteckna hello **omdirigerings-URL** och växla över tooyour Azure Active Directory i hello klassiska Azure-portalen.
 
 ![Externa identiteter][api-management-security-aad-new]
 
-Klicka på den **Lägg till** knappen om du vill skapa ett nytt program för Azure Active Directory och välj **Lägg till ett program som min organisation utvecklar**.
+Klicka på hello **Lägg till** knappen toocreate ett nytt program för Azure Active Directory och välj **Lägg till ett program som min organisation utvecklar**.
 
 ![Lägg till nytt Azure Active Directory-program][api-management-new-aad-application-menu]
 
-Ange ett namn för programmet, Välj **Web application och/eller webb-API**, och klicka på Nästa.
+Ange ett namn för hello program, Välj **Web application och/eller webb-API**, och klicka på knappen för nästa hello.
 
 ![Nya Azure Active Directory-program][api-management-new-aad-application-1]
 
-För **inloggnings-URL**, ange Webbadressen för inloggning till developer-portalen. I det här exemplet i **inloggnings-URL** är `https://aad03.portal.current.int-azure-api.net/signin`. 
+För **inloggnings-URL**, ange hello inloggnings-URL för developer-portalen. I det här exemplet hello **inloggnings-URL** är `https://aad03.portal.current.int-azure-api.net/signin`. 
 
-För den **App-ID-URL**, ange standarddomänen eller en anpassad domän för Azure Active Directory och lägga till en unik sträng till den. I det här exemplet standarddomän för **https://contoso5api.onmicrosoft.com** används med suffixet för **/api** angivna.
+För hello **App-ID-URL**, ange hello Standarddomän eller en anpassad domän för hello Azure Active Directory och lägga till en unik sträng tooit. I det här exemplet hello standarddomänen **https://contoso5api.onmicrosoft.com** används med hello suffixet **/api** angivna.
 
 ![Nya egenskaper för Azure Active Directory-program][api-management-new-aad-application-2]
 
-Klicka på knappen Kontrollera för att spara och skapa programmet och växla till den **konfigurera** att konfigurera det nya programmet.
+Klicka på hello Kontrollera knappen toosave och skapa hello program och växla toohello **konfigurera** fliken tooconfigure hello nytt program.
 
 ![Nya Azure Active Directory-program som skapats][api-management-new-aad-app-created]
 
-Om flera aktiva Azure-kataloger ska användas för det här programmet, klickar du på **Ja** för **programmet är flera innehavare**. Standardvärdet är **nr**.
+Om flera aktiva Azure-kataloger ska toobe som används för det här programmet, klickar du på **Ja** för **programmet är flera innehavare**. hello standardvärdet är **nr**.
 
 ![Programmet är flera innehavare][api-management-aad-app-multi-tenant]
 
-Kopiera den **omdirigerings-URL** från den **Azure Active Directory** avsnitt i den **externa identiteter** i portalen för utgivaren och klistrar in det i den **svar URL: en** textruta. 
+Kopiera hello **omdirigerings-URL** från hello **Azure Active Directory** avsnitt i hello **externa identiteter** i hello publisher portal och klistra in den i hello **Reply URL** textruta. 
 
 ![Reply-URL][api-management-aad-reply-url]
 
-Bläddra till längst ned på fliken Konfigurera väljer den **programbehörigheter** listrutan, och kontrollera **läsa katalogdata**.
+Rulla toohello längst ned på hello konfigurera fliken, väljer hello **programbehörigheter** listrutan, och kontrollera **läsa katalogdata**.
 
 ![Behörigheter för program][api-management-aad-app-permissions]
 
-Välj den **delegera behörigheter** listrutan, och kontrollera **aktivera inloggning och läsa användarprofiler**.
+Välj hello **delegera behörigheter** listrutan, och kontrollera **aktivera inloggning och läsa användarprofiler**.
 
 ![Delegerade behörigheter][api-management-aad-delegated-permissions]
 
-> Läs mer om programmet och delegerade behörigheter [åtkomst till Graph API][Accessing the Graph API].
+> Läs mer om programmet och delegerade behörigheter [komma åt hello Graph API][Accessing hello Graph API].
 > 
 > 
 
-Kopiera den **klient-Id** till Urklipp.
+Kopiera hello **klient-Id** toohello Urklipp.
 
 ![Klient-Id][api-management-aad-app-client-id]
 
-Växla tillbaka till publisher-portalen och klistra in i den **klient-Id** kopieras från konfigurationen av Azure Active Directory-program.
+Växla tillbaka toohello publisher portal och klistra in i hello **klient-Id** kopieras från hello Azure Active Directory tillämpningsprogrammets konfiguration.
 
 ![Klient-Id][api-management-client-id]
 
-Växla tillbaka till Azure Active Directory-konfigurationen och klicka på den **Markera varaktighet** listrutan i den **nycklar** avsnittet och ange ett intervall. I det här exemplet **1 års** används.
+Växla tillbaka toohello Azure Active Directory-konfigurationen och på hello **Markera varaktighet** listrutan i hello **nycklar** avsnittet och ange ett intervall. I det här exemplet **1 års** används.
 
 ![Nyckel][api-management-aad-key-before-save]
 
-Klicka på **spara** att spara konfigurationen och visa nyckeln. Kopiera nyckeln till Urklipp.
+Klicka på **spara** toosave hello konfiguration och visa hello nyckel. Kopiera hello viktiga toohello Urklipp.
 
-> Anteckna den här nyckeln. När du stänger fönstret Azure Active Directory-konfiguration kan nyckeln inte visas igen.
+> Anteckna den här nyckeln. När du stänger hello Azure Active Directory configuration kan inte hello nyckel visas igen.
 > 
 > 
 
 ![Nyckel][api-management-aad-key-after-save]
 
-Växla tillbaka till publisher-portalen och klistra in nyckeln till den **Klienthemlighet** textruta.
+Växla tillbaka toohello publisher portal och klistra in hello nyckeln till hello **Klienthemlighet** textruta.
 
 ![Klienthemlighet][api-management-client-secret]
 
-**Tillåtna hyresgäster** anger vilka kataloger har åtkomst till API: er för API Management service-instans. Ange domäner i Azure Active Directory-instanser som du vill bevilja åtkomst. Du kan avgränsa flera domäner med radmatningar bäddas, mellanslag eller semikolon.
+**Tillåtna hyresgäster** anger vilka kataloger har åtkomst toohello API: er för hello API Management service-instans. Ange hello domäner för hello Azure Active Directory instanser toowhich som du vill komma åt toogrant. Du kan avgränsa flera domäner med radmatningar bäddas, mellanslag eller semikolon.
 
 ![Tillåtna klienter][api-management-client-allowed-tenants]
 
 
-När du önskad konfiguration har angetts, klickar du på **spara**.
+När hello önskad konfiguration har angetts, klickar du på **spara**.
 
 ![Spara][api-management-client-allowed-tenants-save]
 
-När ändringarna sparas användare i den angivna Azure Active Directory kan logga in på Developer-portalen genom att följa stegen i [logga in på Developer-portalen med ett konto i Azure Active Directory] [ Log in to the Developer portal using an Azure Active Directory account].
+När hello ändringar sparas hello användare i hello angivna Azure Active Directory kan logga in toohello Developer-portalen genom att följa stegen hello i [logga in med ett konto i Azure Active Directory toohello Developer-portalen] [Log in toohello Developer portal using an Azure Active Directory account].
 
-Du kan ange flera domäner i den **tillåtna klienter** avsnitt. Innan en användare kan logga in från en annan domän än den ursprungliga där programmet har registrerats, bevilja en global administratör i domänen annat behörigheten för programmet att komma åt directory data. Om du vill ge behörighet, den globala administratören ska gå att `https://<URL of your developer portal>/aadadminconsent` (till exempel https://contoso.portal.azure-api.net/aadadminconsent), ange domännamnet för Active Directory-klient som de vill ge åtkomst till och klicka på Skicka. I följande exempel visas en global administratör från `miaoaad.onmicrosoft.com` försöker att ge behörighet till den här viss developer-portalen. 
+Du kan ange flera domäner i hello **tillåtna hyresgäster** avsnitt. Innan en användare kan logga in från en annan domän än hello ursprungliga där programmet hello registrerades, måste en global administratör i hello annan domän tillåta hello programmet tooaccess katalogdata. toogrant behörighet hello global administratör ska gå för`https://<URL of your developer portal>/aadadminconsent` (till exempel https://contoso.portal.azure-api.net/aadadminconsent) anger hello domännamn för hello Active Directory-klient som de vill toogive åtkomst tooand på Skicka. I hello följande exempel, en global administratör från `miaoaad.onmicrosoft.com` försöker toogive behörighet toothis viss developer-portalen. 
 
 ![Behörigheter][api-management-aad-consent]
 
-På nästa skärm uppmanas den globala administratören att bekräfta att ge behörigheten. 
+Hello nästa skärm kommer hello global administratör att tillfrågas tooconfirm ger hello tillstånd. 
 
 ![Behörigheter][api-management-permissions-form]
 
-> Om en icke-globala administratör försöker logga in innan behörigheter beviljas av en global administratör i inloggningsförsök misslyckas och ett felmeddelande visas.
+> Om en icke-globala administratör försöker toolog i innan behörigheter beviljas av en global administratör, hello inloggningsförsök misslyckas och ett felmeddelande visas.
 > 
 > 
 
-## <a name="how-to-add-an-external-azure-active-directory-group"></a>Hur du lägger till en extern Azure Active Directory-grupp
-Du kan lägga till Azure Active Directory-grupper i API-hantering för att lättare hantera associering av utvecklare i gruppen med de önskade produkterna efter att aktivera åtkomst för användare i ett Azure Active Directory.
+## <a name="how-tooadd-an-external-azure-active-directory-group"></a>Hur tooadd en extern Azure Active Directory gruppen
+När du har aktiverat åtkomst för användare i en Azure Active Directory kan du lägga till Azure Active Directory-grupper i API Management toomore enkelt hantera hello associering av hello utvecklare i hello grupp med hello önskad produkter.
 
-> Om du vill konfigurera en extern Azure Active Directory-grupp, måste Azure Active Directory först konfigureras på fliken identiteter genom att följa anvisningarna i föregående avsnitt. 
+> tooconfigure en extern Azure Active Directory-grupp, hello Azure Active Directory konfigureras först hello identiteter fliken hello sätt hello föregående avsnitt. 
 > 
 > 
 
-Externa Azure Active Directory-grupper har lagts till från den **synlighet** fliken av produkten som du vill ge åtkomst till gruppen. Klicka på **produkter**, och klicka sedan på namnet på den önskade produkten.
+Externa Azure Active Directory-grupper har lagts till från hello **synlighet** fliken hello produkt som du vill toogrant toohello åtkomstgruppen. Klicka på **produkter**, och klicka sedan på hello namnet på hello önskade produkt.
 
 ![Konfigurera produkten][api-management-configure-product]
 
-Växla till den **synlighet** och på **Lägg till grupper från Azure Active Directory**.
+Växla toohello **synlighet** och på **Lägg till grupper från Azure Active Directory**.
 
 ![Lägga till grupper][api-management-add-groups]
 
-Välj den **Azure Active Directory-klient** från nedrullningsbara listan och sedan skriver du namnet på den önskade gruppen i den **grupper** som ska läggas till textrutan.
+Välj hello **Azure Active Directory-klient** hello nedrullningsbara listan och sedan hello-typnamn för hello önskad grupp i hello **grupper** toobe lagts till textrutan.
 
 ![Välj grupp][api-management-select-group]
 
-Den här gruppnamn kan hittas i den **grupper** lista för din Azure Active Directory som visas i följande exempel.
+Den här gruppnamn kan hittas i hello **grupper** lista för din Azure Active Directory som visas i följande exempel hello.
 
 ![Listan för Azure Active Directory-grupper][api-management-aad-groups-list]
 
-Klicka på **Lägg till** Validera gruppnamnet och lägga till gruppen. I det här exemplet i **Contoso 5 utvecklare** externa gruppen har lagts till. 
+Klicka på **Lägg till** toovalidate hello gruppnamn och Lägg till hello-gruppen. I det här exemplet hello **Contoso 5 utvecklare** externa gruppen har lagts till. 
 
 ![Grupp som har lagts till][api-management-aad-group-added]
 
-Klicka på **spara** att spara den nya grupp markeringen.
+Klicka på **spara** toosave hello nya val av grupp.
 
-När en Azure Active Directory-grupp har konfigurerats från en produkt, den är tillgänglig kontrolleras den **synlighet** för andra produkter i API Management service-instans.
+När en Azure Active Directory-grupp har konfigurerats från en produkt, är det tillgängliga toobe markerad på hello **synlighet** för hello andra produkter i hello API Management service-instans.
 
-Om du vill granska och konfigurera egenskaper för externa grupper när de har lagts till, klicka på namnet på gruppen från den **grupper** fliken.
+tooreview och konfigurera hello egenskaper för externa grupper när de har lagts till, klicka hello namn hello från hello **grupper** fliken.
 
 ![Hantera grupper][api-management-groups]
 
-Härifrån kan du redigera den **namn** och **beskrivning** i gruppen.
+Härifrån kan du redigera hello **namn** och hello **beskrivning** hello-gruppen.
 
 ![Redigera grupp][api-management-edit-group]
 
-Användare från den konfigurerade Azure Active Directory kan logga in på Developer-portalen och visa och prenumerera på alla grupper som de har insyn genom att följa anvisningarna i följande avsnitt.
+Användare från hello konfigurerade Azure Active Directory kan logga in toohello Developer-portalen och visa och prenumerera tooany grupper som de har genom att följa hello instruktionerna i följande avsnitt hello synlighet.
 
-## <a name="how-to-log-in-to-the-developer-portal-using-an-azure-active-directory-account"></a>Hur du loggar in på den Developer-portalen med ett Azure Active Directory-konto
-Om du vill logga in på Developer-portalen med ett Azure Active Directory-konto som har konfigurerats i föregående avsnitt, öppnar du en ny webbläsare med den **inloggnings-URL** från Active Directory-konfigurationen för programmet och klicka på **Azure Active Directory**.
+## <a name="how-toolog-in-toohello-developer-portal-using-an-azure-active-directory-account"></a>Hur toolog toohello Developer-portalen med ett Azure Active Directory-konto
+toolog i hello Developer-portalen med ett Azure Active Directory-konto som har konfigurerats i hello föregående avsnitt, öppna ett nytt webbläsarfönster med hello **inloggnings-URL** programmet hello Active Directory-konfigurationen och klickar på **Azure Active Directory**.
 
 ![Developer-portalen][api-management-dev-portal-signin]
 
-Ange autentiseringsuppgifter för en användare i Azure Active Directory och klicka på **logga in**.
+Ange hello autentiseringsuppgifterna för en av hello användare i Azure Active Directory och klicka på **logga in**.
 
 ![Logga in][api-management-aad-signin]
 
-Du kan uppmanas med ett registreringsformulär om ytterligare information krävs. Fyll i registreringsformuläret och på **registrera**.
+Du kan uppmanas med ett registreringsformulär om ytterligare information krävs. Slutför hello registreringsformuläret och klickar på **registrera**.
 
 ![Registrering][api-management-complete-registration]
 
-Dina användare är nu inloggad i developer-portalen för din API Management service-instans.
+Dina användare är nu inloggad i hello developer-portalen för din API Management service-instans.
 
 ![Registreringen har slutförts][api-management-registration-complete]
 
@@ -220,10 +220,10 @@ Dina användare är nu inloggad i developer-portalen för din API Management ser
 [api-management-groups]: ./media/api-management-howto-aad/api-management-groups.png
 [api-management-edit-group]: ./media/api-management-howto-aad/api-management-edit-group.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to add and publish a product]: api-management-howto-add-products.md
+[How tooadd operations tooan API]: api-management-howto-add-operations.md
+[How tooadd and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
-[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: api-management-get-started.md
 [API Management policy reference]: api-management-policy-reference.md
@@ -232,13 +232,13 @@ Dina användare är nu inloggad i developer-portalen för din API Management ser
 
 [http://oauth.net/2/]: http://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
+[Accessing hello Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1
-[Configure an API to use OAuth 2.0 user authorization]: #step2
-[Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
+[Configure an API toouse OAuth 2.0 user authorization]: #step2
+[Test hello OAuth 2.0 user authorization in hello Developer Portal]: #step3
 [Next steps]: #next-steps
 
-[Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
+[Log in toohello Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 

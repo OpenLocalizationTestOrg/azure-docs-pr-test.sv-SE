@@ -1,6 +1,6 @@
 ---
-title: "Hur du använder Notification Hubs med PHP"
-description: "Lär dig hur du använder Azure Notification Hubs från PHP backend."
+title: aaaHow toouse Meddelandehubbar med PHP
+description: "Lär dig hur toouse Azure Notification Hubs från PHP backend-."
 services: notification-hubs
 documentationcenter: 
 author: ysxu
@@ -14,48 +14,48 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: yuaxu
-ms.openlocfilehash: c27b6308ff528224a0398e0ff40537db05417bb0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6cd426286a684006a07867fcf44a8ff71be7efa8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-notification-hubs-from-php"></a>Hur du använder Notification Hubs från PHP
+# <a name="how-toouse-notification-hubs-from-php"></a>Hur toouse Notification Hubs från PHP
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Du kan använda alla funktioner i Notification Hubs från en Java/PHP/Ruby serverdel med Notification Hub REST-gränssnitt som beskrivs i avsnittet MSDN [Notification Hub REST API: er](http://msdn.microsoft.com/library/dn223264.aspx).
+Du kan använda alla funktioner i Notification Hubs från Java/PHP/Ruby backend-gränssnittet hello Notification Hub REST enligt beskrivningen i avsnittet om MSDN hello [Notification Hub REST API: er](http://msdn.microsoft.com/library/dn223264.aspx).
 
 I det här avsnittet visar vi hur du:
 
 * Skapa ett REST-klient för Notification Hubs funktionerna i PHP;
-* Följ den [Get igång-kursen](notification-hubs-ios-apple-push-notification-apns-get-started.md) för din mobila plattform väljer implementera backend-delen i PHP.
+* Följ hello [Get igång-kursen](notification-hubs-ios-apple-push-notification-apns-get-started.md) för din mobila plattform väljer, implementera hello backend-delen i PHP.
 
 ## <a name="client-interface"></a>Klientgränssnitt
-Det huvudsakliga klientgränssnittet kan ge samma metoder som är tillgängliga i den [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx), detta kan du direkt översätta alla självstudier och exempel som är tillgängliga på den här platsen och tillhandahålls av gemenskapen på internet.
+hello huvudsakliga klientgränssnittet kan ge hello samma metoder som är tillgängliga i hello [.NET Notification Hubs SDK](http://msdn.microsoft.com/library/jj933431.aspx), då kan du toodirectly översätta alla hello självstudier och exempel som är tillgängliga på den här platsen och indatakanalen hello community på hello internet.
 
-Du hittar kod som är tillgängliga i den [PHP REST wrapper exempel].
+Du hittar alla hello kod som är tillgängliga i hello [PHP REST wrapper exempel].
 
-Till exempel att skapa en klient:
+Till exempel toocreate en klient:
 
     $hub = new NotificationHub("connection string", "hubname");    
 
-Att skicka en iOS interna avisering:
+toosend en intern iOS-meddelande:
 
     $notification = new Notification("apple", '{"aps":{"alert": "Hello!"}}');
     $hub->sendNotification($notification, null);
 
 ## <a name="implementation"></a>Implementering
-Om du inte redan gjort det, Följ våra [Get igång-kursen] upp till den senaste avsnitt där du måste implementera serverdel.
-Om du vill att du kan också använda koden från den [PHP REST wrapper exempel] och gå direkt till den [slutföra kursen](#complete-tutorial) avsnitt.
+Om du inte redan gjort det, Följ våra [Get igång-kursen] upp toohello sista avsnittet där du har tooimplement hello serverdel.
+Om du vill att du kan också använda hello kod från hello [PHP REST wrapper exempel] och gå direkt toohello [fullständig hello kursen](#complete-tutorial) avsnitt.
 
-All information du implementerar en fullständig REST-omslutning finns på [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). I det här avsnittet beskriver vi PHP-implementeringen av huvudsakliga steg för att komma åt Notification Hub REST-slutpunkter:
+Alla hello information tooimplement hittar en fullständig REST-omslutning på [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). I det här avsnittet beskriver vi hello PHP implementering av hello Huvudsteg krävs tooaccess Notification Hub REST-slutpunkter:
 
-1. Parsa anslutningssträngen
-2. Generera autentiseringstoken
-3. Utföra HTTP-anrop
+1. Parsa anslutningssträngen för hello
+2. Generera hello autentiseringstoken
+3. Utföra hello HTTP-anrop
 
-### <a name="parse-the-connection-string"></a>Parsa anslutningssträngen
-Här är den viktigaste klass som implementerar klienten, vars konstruktor som Parsar anslutningssträngen:
+### <a name="parse-hello-connection-string"></a>Parsa anslutningssträngen för hello
+Här är hello huvudsakliga klassen implementerar hello klienten, vars konstruktor som Parsar hello anslutningssträngen:
 
     class NotificationHub {
         const API_VERSION = "?api-version=2013-10";
@@ -91,8 +91,8 @@ Här är den viktigaste klass som implementerar klienten, vars konstruktor som P
 
 
 ### <a name="create-security-token"></a>Skapa säkerhetstoken
-Information om säkerhet token skapa finns [här](http://msdn.microsoft.com/library/dn495627.aspx).
-Följande metod måste läggas till i **NotificationHub** klassen för att skapa token baserat på URI: N för den aktuella begäranden och de autentiseringsuppgifter som har extraherats från anslutningssträngen.
+hello information hello säkerhet token skapas finns [här](http://msdn.microsoft.com/library/dn495627.aspx).
+hello följande metod har lagts till toobe toohello **NotificationHub** klasstoken toocreate hello baserat på hello URI för hello aktuell begäran hello extraheras från hello anslutningssträngen.
 
     private function generateSasToken($uri) {
         $targetUri = strtolower(rawurlencode(strtolower($uri)));
@@ -134,9 +134,9 @@ Låt oss först definiera en klass som representerar ett meddelande.
 
 Den här klassen är en behållare för en intern notification text eller en uppsättning egenskaperna i fall av ett meddelande om mallen och en uppsättning huvuden som innehåller plattformsspecifika egenskaper (till exempel Apple giltighetstid egenskap och WNS och format (intern plattform eller mall) rubriker).
 
-Mer information finns i [Notification Hub REST API: er dokumentationen](http://msdn.microsoft.com/library/dn495827.aspx) och specifika meddelanden plattformar format för alla tillgängliga alternativ.
+Se toohello [Notification Hub REST API: er dokumentationen](http://msdn.microsoft.com/library/dn495827.aspx) och hello specifika meddelanden plattformar format för alla hello alternativ som är tillgängliga.
 
-Tillsammans med den här klassen, vi kan nu skriva skicka Meddelandemetoder inuti den **NotificationHub** klass.
+Tillsammans med den här klassen, vi kan nu skriva hello skicka Meddelandemetoder inuti hello **NotificationHub** klass.
 
     public function sendNotification($notification, $tagsOrTagExpression="") {
         if (is_array($tagsOrTagExpression)) {
@@ -180,7 +180,7 @@ Tillsammans med den här klassen, vi kan nu skriva skicka Meddelandemetoder inut
             CURLOPT_POSTFIELDS => $notification->payload
         ));
 
-        // Send the request
+        // Send hello request
         $response = curl_exec($ch);
 
         // Check for errors
@@ -195,16 +195,16 @@ Tillsammans med den här klassen, vi kan nu skriva skicka Meddelandemetoder inut
         }
     } 
 
-Ovanstående metoder skicka en HTTP POST-begäran till slutpunkten /messages för meddelandehubben med rätt brödtext och rubriker för att skicka meddelandet.
+hello ovanstående metoder för att skicka en HTTP POST-begäran toohello /messages slutpunkt i din meddelandehubb med hello rätt brödtext och rubriker toosend hello-meddelande.
 
-## <a name="complete-tutorial"></a>Slutför guiden
-Du kan nu slutföra kursen Kom igång genom att skicka meddelandet från PHP backend.
+## <a name="complete-tutorial"></a>Fullständig hello självstudiekursen
+Du kan nu slutföra hello komma igång-kursen genom att skicka hello-meddelande från en PHP-backend.
 
-Initiera Notification Hubs-klienten (Ersätt strängen och hubb anslutningsnamn som finns beskrivet i den [Get igång-kursen]):
+Initiera Notification Hubs-klienten (ersätta hello anslutning sträng och hubbens namn som finns beskrivet i hello [Get igång-kursen]):
 
     $hub = new NotificationHub("connection string", "hubname");    
 
-Lägg sedan till skicka kod beroende på din mobila målplattform.
+Lägg sedan till hello skicka kod beroende på din mobila målplattform.
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Store och Windows Phone 8.1 (utan Silverlight)
     $toast = '<toast><visual><binding template="ToastText01"><text id="1">Hello from PHP!</text></binding></visual></toast>';
@@ -243,13 +243,13 @@ Lägg sedan till skicka kod beroende på din mobila målplattform.
 Köra koden PHP ska producera nu ett meddelande som visas på målenheten.
 
 ## <a name="next-steps"></a>Nästa steg
-Vi visar hur du skapar en enkel RESTEN av Java-klient för Meddelandehubbar i det här avsnittet. Härifrån kan du:
+I det här avsnittet visar hur toocreate en enkel Java REST-klienten för Notification Hubs. Härifrån kan du:
 
-* Hämta fullständigt [PHP REST wrapper exempel], som innehåller alla koden ovan.
-* Fortsätta lära dig mer om Notification Hubs taggning funktionen i [bryta nyheter självstudiekursen]
-* Lär dig mer om push-meddelanden till enskilda användare i [meddela användare självstudiekursen]
+* Hämta hello fullständig [PHP REST wrapper exempel], som innehåller alla hello koden ovan.
+* Fortsätta lära dig mer om Notification Hubs taggning funktionen i hello [bryta nyheter kursen]
+* Lär dig mer om att skicka meddelanden tooindividual användare i [meddela användare självstudiekursen]
 
-Mer information finns också i [PHP Developer Center](/develop/php/).
+Mer information finns också hello [PHP Developer Center](/develop/php/).
 
 [PHP REST wrapper exempel]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-php
 [Get igång-kursen]: http://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/

@@ -6,9 +6,9 @@
 
 # Kom igång
 ## [Prenumerationskrav](subscription-requirements.md)
-## [Kom igång i portalen](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Säkerhetsguiden](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Ge åtkomst till PIM](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Kom igång i hello-portalen](../active-directory-privileged-identity-management-getting-started.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [hello säkerhetsguiden](../active-directory-privileged-identity-management-security-wizard.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Ge åtkomst tooPIM](../active-directory-privileged-identity-management-how-to-give-access-to-pim.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
 # Gör så här för att
 ## Använda PIM
@@ -21,7 +21,7 @@
 ### [Slutför en åtkomstgranskning](../active-directory-privileged-identity-management-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ### [Konfigurera varningar](../active-directory-privileged-identity-management-how-to-configure-security-alerts.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ### [Kräv MFA](../active-directory-privileged-identity-management-how-to-require-mfa.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-### [Använda granskningsloggen](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+### [Använd hello granskningsloggen](../active-directory-privileged-identity-management-how-to-use-audit-log.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 
 # Referens
 ## [Kodexempel](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)

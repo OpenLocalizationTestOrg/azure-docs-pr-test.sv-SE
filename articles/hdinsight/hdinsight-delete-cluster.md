@@ -1,6 +1,6 @@
 ---
-title: Hur du tar bort ett HDInsight-kluster - Azure | Microsoft Docs
-description: "Information om de olika sätt att du tar bort ett HDInsight-kluster."
+title: aaaHow toodelete ett HDInsight-kluster - Azure | Microsoft Docs
+description: "Information om hello olika sätt att du tar bort ett HDInsight-kluster."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,44 +15,44 @@ ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 65dac529df15d2dd43eec17673d82a2832f7692e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 5b9d9a09eecfdcfaed7a1f5ebab440e13bd358b0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Ta bort ett HDInsight-kluster med hjälp av din webbläsare, PowerShell eller Azure CLI
+# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-hello-azure-cli"></a>Ta bort ett HDInsight-kluster med hjälp av din webbläsare, PowerShell eller hello Azure CLI
 
-HDInsight-kluster faktureringen påbörjas när ett kluster skapas och slutar när klustret har tagits bort. Fakturering är proportionerligt per minut, så du bör alltid ta bort klustret när den inte längre används. Lär dig hur du tar bort ett kluster med Azure-portalen, Azure PowerShell och Azure CLI 1.0 i det här dokumentet.
+HDInsight-kluster faktureringen påbörjas så snart ett kluster skapas och stoppas när hello kluster har tagits bort. Fakturering är proportionerligt per minut, så du bör alltid ta bort klustret när den inte längre används. I detta dokument kan du lära dig hur toodelete ett kluster som använder hello Azure-portalen, Azure PowerShell och hello Azure CLI 1.0.
 
 > [!IMPORTANT]
-> Tar bort ett HDInsight-kluster tas inte bort Azure Storage-konton eller Datasjölager som är associerade med klustret. Du kan återanvända data som lagras i dessa tjänster i framtiden.
+> Tar bort ett HDInsight-kluster tas inte bort hello Azure Storage-konton eller som är associerade med klustret hello Data Lake Store. Du kan återanvända data som lagras i dessa tjänster i hello framtida.
 
 ## <a name="azure-portal"></a>Azure Portal
 
-1. Logga in på den [Azure-portalen](https://portal.azure.com) och välj ditt HDInsight-kluster. Om ditt HDInsight-kluster inte är fäst på instrumentpanelen, kan du söka efter den av namn med hjälp av sökfältet.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com) och välj ditt HDInsight-kluster. Om ditt HDInsight-kluster inte är fäst toohello instrumentpanelen, kan du söka efter den efter namn med hello sökfältet.
    
     ![Portal-sökning](./media/hdinsight-delete-cluster/navbar.png)
 
-2. När det öppnas bladet för klustret, väljer du den **ta bort** ikon. När du uppmanas, Välj **Ja** att ta bort klustret.
+2. När hello blad öppnas för hello kluster, Välj hello **ta bort** ikon. När du uppmanas, Välj **Ja** toodelete hello klustret.
    
     ![Ikonen Ta bort](./media/hdinsight-delete-cluster/deletecluster.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Använder du följande kommando för att ta bort klustret från en PowerShell-kommandotolk:
+Använd hello efter kommandot toodelete hello kluster från en PowerShell-kommandotolk:
 
     Remove-AzureRmHDInsightCluster -ClusterName CLUSTERNAME
 
-Ersätt **KLUSTERNAMN** med namnet på ditt HDInsight-kluster.
+Ersätt **KLUSTERNAMN** med hello namnet på ditt HDInsight-kluster.
 
 ## <a name="azure-cli-10"></a>Azure CLI 1.0
 
-Använd följande från en kommandotolk för att ta bort klustret:
+Använd hello följande toodelete hello kluster från en kommandotolk:
 
     azure hdinsight cluster delete CLUSTERNAME
 
-Ersätt **KLUSTERNAMN** med namnet på ditt HDInsight-kluster.
+Ersätt **KLUSTERNAMN** med hello namnet på ditt HDInsight-kluster.
 
 > [!NOTE]
 > Azure CLI 2.0 stöder inte ta bort HDInsight-kluster just nu (31 juli 2017).

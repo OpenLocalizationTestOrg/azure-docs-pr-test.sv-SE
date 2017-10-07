@@ -1,6 +1,6 @@
 ---
-title: Kopiera data mellan Data Lake Store och Azure SQL database med Sqoop | Microsoft Docs
-description: "Använd Sqoop för att kopiera data mellan Azure SQL Database och Data Lake Store"
+title: aaaCopy data mellan Data Lake Store och Azure SQL database med Sqoop | Microsoft Docs
+description: "Använda Sqoop toocopy data mellan Azure SQL Database och Data Lake Store"
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.openlocfilehash: 53bf33f6027f1f365bd92251490d5c851fb83f8b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f58483455f0ebe9544673a1d5c5884f2721c800c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="copy-data-between-data-lake-store-and-azure-sql-database-using-sqoop"></a>Kopiera data mellan Data Lake Store och Azure SQL database med Sqoop
-Lär dig hur du använder Apache Sqoop för att importera och exportera data mellan Azure SQL Database och Data Lake Store.
+Lär dig hur toouse Apache Sqoop tooimport och exportera data mellan Azure SQL Database och Data Lake Store.
 
 ## <a name="what-is-sqoop"></a>Vad är Sqoop?
-Stordataprogram är en fysisk val för bearbetning av Ostrukturerade och halvstrukturerade data, till exempel loggar och filer. Men kan det också vara nödvändigt att bearbeta strukturerade data som lagras i relationsdatabaser.
+Stordataprogram är en fysisk val för bearbetning av Ostrukturerade och halvstrukturerade data, till exempel loggar och filer. Men kan det också vara en behovet tooprocess strukturerade data som lagras i relationsdatabaser.
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) är ett verktyg som utformats för att överföra data mellan relationsdatabaser och en lagringsplats för stordata, till exempel Data Lake Store. Du kan använda den för att importera data från ett relationella databashanteringssystem (RDBMS), till exempel Azure SQL Database till Data Lake Store. Du kan sedan transformera och analysera data med stordataarbetsbelastningar och exportera data till en RDBMS. I den här kursen använder du en Azure SQL Database som relationell databas för att importera och exportera från.
+[Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) är ett verktyg tootransfer data mellan relationsdatabaser och en lagringsplats för stordata, till exempel Data Lake Store. Du kan använda den tooimport data från ett relationella databashanteringssystem (RDBMS), till exempel Azure SQL Database i Data Lake Store. Du kan omvandla och analysera hello data med hjälp av stordataarbetsbelastningar och sedan exportera hello data tillbaka till en RDBMS. I den här kursen använder du en Azure SQL Database som relationsdatabas tooimport/exporten från.
 
 ## <a name="prerequisites"></a>Krav
-Innan du påbörjar den här artikeln måste du ha:
+Du måste ha hello följande innan du börjar den här artikeln:
 
 * **En Azure-prenumeration**. Se [Hämta en kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Ett Azure Data Lake Store-konto**. Anvisningar om hur du skapar en finns [Kom igång med Azure Data Lake Store](data-lake-store-get-started-portal.md)
-* **Azure HDInsight-kluster** med åtkomst till ett Data Lake Store-konto. Se [skapar ett HDInsight-kluster med Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Den här artikeln förutsätter att du har ett HDInsight Linux-kluster med Data Lake Store-åtkomst.
-* **Azure SQL Database**. Anvisningar om hur du skapar en finns [skapa en Azure SQL database](../sql-database/sql-database-get-started.md)
+* **Ett Azure Data Lake Store-konto**. Anvisningar för hur toocreate en, se [Kom igång med Azure Data Lake Store](data-lake-store-get-started-portal.md)
+* **Azure HDInsight-kluster** med åtkomst tooa Data Lake Store-konto. Se [skapar ett HDInsight-kluster med Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Den här artikeln förutsätter att du har ett HDInsight Linux-kluster med Data Lake Store-åtkomst.
+* **Azure SQL Database**. Anvisningar för hur toocreate en, se [skapa en Azure SQL database](../sql-database/sql-database-get-started.md)
 
 ## <a name="do-you-learn-fast-with-videos"></a>Lär du dig snabbt med videor?
-[Det här videoklippet](https://mix.office.com/watch/1butcdjxmu114) om hur du kopierar data mellan Azure Storage-Blobbar och Data Lake Store med hjälp av DistCp.
+[Det här videoklippet](https://mix.office.com/watch/1butcdjxmu114) om hur toocopy data mellan Azure Storage-Blobbar och Data Lake Store med hjälp av DistCp.
 
-## <a name="create-sample-tables-in-the-azure-sql-database"></a>Skapa Exempeltabeller i Azure SQL Database
-1. Börja med, skapa två Exempeltabeller i Azure SQL Database. Använd [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) eller Visual Studio för att ansluta till Azure SQL-databasen och kör sedan följande frågor.
+## <a name="create-sample-tables-in-hello-azure-sql-database"></a>Skapa Exempeltabeller i hello Azure SQL Database
+1. toostart med, skapa två Exempeltabeller i hello Azure SQL Database. Använd [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) eller Visual Studio tooconnect toohello Azure SQL Database och sedan kör hello följande frågor.
 
     **Skapa tabell 1**
 
@@ -67,39 +67,39 @@ Innan du påbörjar den här artikeln måste du ha:
             )
         ) ON [PRIMARY]
         GO
-2. I **tabell1**, lägga till exempeldata. Lämna **tabell2** tom. Vi kommer att importera data från **tabell1** i Data Lake Store. Vi kommer sedan att exportera data från Data Lake Store i **tabell2**. Kör följande kodavsnitt.
+2. I **tabell1**, lägga till exempeldata. Lämna **tabell2** tom. Vi kommer att importera data från **tabell1** i Data Lake Store. Vi kommer sedan att exportera data från Data Lake Store i **tabell2**. Kör hello följande kodavsnitt.
 
         INSERT INTO [dbo].[Table1] VALUES (1,'Neal','Kell'), (2,'Lila','Fulton'), (3, 'Erna','Myers'), (4,'Annette','Simpson');
 
 
-## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-to-data-lake-store"></a>Använda Sqoop från ett HDInsight-kluster med åtkomst till Data Lake Store
-Ett HDInsight-kluster har redan de Sqoop paket som är tillgängliga. Om du har konfigurerat HDInsight-klustret för att använda Data Lake Store som ett ytterligare lagringsutrymme, du kan använda Sqoop (utan några konfigurationsändringar) för att importera och exportera data mellan en relationsdatabas (i det här exemplet Azure SQL Database) och ett Data Lake Store-konto.
+## <a name="use-sqoop-from-an-hdinsight-cluster-with-access-toodata-lake-store"></a>Använd Sqoop från ett HDInsight-kluster med åtkomst till tooData Datasjölager
+Ett HDInsight-kluster har redan hello Sqoop paket som finns tillgängliga. Om du har konfigurerat hello HDInsight klustret toouse Data Lake Store som ett ytterligare lagringsutrymme, kan du använda Sqoop (utan några konfigurationsändringar) tooimport och exportera data mellan en relationsdatabas (i det här exemplet Azure SQL Database) och ett Data Lake Store konto.
 
-1. Den här självstudiekursen förutsätter vi att du har skapat ett Linux-kluster, så du bör använda SSH för att ansluta till klustret. Se [Anslut till ett Linux-baserat HDInsight-kluster](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
-2. Kontrollera om du har åtkomst till Data Lake Store-konto från klustret. Kör följande kommando från SSH-prompten:
+1. Den här självstudiekursen förutsätter vi att du har skapat ett Linux-kluster, så du bör använda SSH tooconnect toohello klustret. Se [Anslut tooa Linux-baserade HDInsight-kluster](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+2. Kontrollera om du kan komma åt hello Data Lake Store-konto från hello kluster. Kör följande kommando från hello SSH prompten hello:
 
         hdfs dfs -ls adl://<data_lake_store_account>.azuredatalakestore.net/
 
-    Detta bör ge en lista över filer/mappar i Data Lake Store-konto.
+    Detta bör ge en lista över filer/mappar i hello Data Lake Store-konto.
 
 ### <a name="import-data-from-azure-sql-database-into-data-lake-store"></a>Importera data från Azure SQL Database till Data Lake Store
-1. Gå till den katalog där Sqoop paket är tillgängliga. Vanligtvis detta kommer att vara `/usr/hdp/<version>/sqoop/bin`.
-2. Importera data från **tabell1** i Data Lake Store-konto. Använd följande syntax:
+1. Navigera toohello directory där Sqoop paket är tillgängliga. Vanligtvis detta kommer att vara `/usr/hdp/<version>/sqoop/bin`.
+2. Importera hello data från **tabell1** till hello Data Lake Store-konto. Använd hello följande syntax:
 
         sqoop-import --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table1 --target-dir adl://<data-lake-store-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-    Observera att **sql-server-databasnamn** platshållare representerar namnet på den server där Azure SQL-databasen körs. **SQL-databasnamnet** platshållare representerar det faktiska databasnamnet.
+    Observera att **sql-server-databasnamn** platshållaren hello namnet på hello servern där hello Azure SQL-databasen körs. **SQL-databasnamnet** platshållaren hello faktiska databasnamnet.
 
     Exempel:
 
 
         sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=nitinme@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
-1. Kontrollera att data har överförts till Data Lake Store-konto. Kör följande kommando:
+1. Kontrollera att hello data har överförts toohello Data Lake Store-konto. Kör följande kommando hello:
 
         hdfs dfs -ls adl://hdiadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1/
 
-    Du bör se följande utdata.
+    Du bör se hello följande utdata.
 
 
         -rwxrwxrwx   0 sshuser hdfs          0 2016-02-26 21:09 adl://hdiadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1/_SUCCESS
@@ -108,11 +108,11 @@ Ett HDInsight-kluster har redan de Sqoop paket som är tillgängliga. Om du har 
         -rwxrwxrwx   0 sshuser hdfs         13 2016-02-26 21:09 adl://hdiadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00002
         -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
 
-    Varje **del-m -*** fil motsvarar en rad i tabellen källa **tabell1**. Du kan visa innehållet i en del - m-* verifiera.
+    Varje **del-m -*** filen motsvarar tooa rad i hello källtabellen **tabell1**. Du kan visa hello innehållet i en del hello - m-* filer tooverify.
 
 
 ### <a name="export-data-from-data-lake-store-into-azure-sql-database"></a>Exportera data från Data Lake Store till Azure SQL Database
-1. Exportera data från Data Lake Store-konto till tom tabell **tabell2**, i Azure SQL Database. Använd följande syntax.
+1. Exportera hello data från Data Lake Store-konto toohello tom tabell, **tabell2**, i hello Azure SQL Database. Använd följande syntax hello.
 
         sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-store-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
@@ -121,11 +121,11 @@ Ett HDInsight-kluster har redan de Sqoop paket som är tillgängliga. Om du har 
 
         sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=nitinme@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlstore.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-1. Kontrollera att data överfördes till SQL-databastabell. Använd [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) eller Visual Studio för att ansluta till Azure SQL-databasen och kör sedan följande fråga.
+1. Kontrollera att hello var data överförs toohello SQL-databastabell. Använd [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) eller Visual Studio tooconnect toohello Azure SQL Database och sedan kör hello följande fråga.
 
         SELECT * FROM TABLE2
 
-    Detta bör ha följande utdata.
+    Den har hello följande utdata.
 
          ID  FName   LName
         ------------------
@@ -136,10 +136,10 @@ Ett HDInsight-kluster har redan de Sqoop paket som är tillgängliga. Om du har 
 
 ## <a name="performance-considerations-while-using-sqoop"></a>Prestandaöverväganden när du använder Sqoop
 
-Prestandajustering Sqoop jobbet för att kopiera data till Data Lake Store, se [Sqoop prestanda dokumentet](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/).
+Prestandajustering din Sqoop jobbet toocopy Datasjölager för tooData, finns [Sqoop prestanda dokumentet](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/).
 
 ## <a name="see-also"></a>Se även
-* [Kopiera data från Azure Storage-Blobbar till Data Lake Store](data-lake-store-copy-data-azure-storage-blob.md)
+* [Kopiera data från Azure Storage BLOB tooData Datasjölager](data-lake-store-copy-data-azure-storage-blob.md)
 * [Säkra data i Data Lake Store](data-lake-store-secure-data.md)
 * [Använd Azure Data Lake Analytics med Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Använd Azure HDInsight med Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)

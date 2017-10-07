@@ -1,6 +1,6 @@
 ---
-title: Filtrera Azure Application Insights telemetri i Java-webbappen | Microsoft Docs
-description: "Minska telemetri trafiken genom att filtrera bort händelser som du inte behöver övervaka."
+title: aaaFilter Azure Application Insights telemetri i Java-webbappen | Microsoft Docs
+description: "Minska telemetri trafiken genom att filtrera bort händelser hello behöver du inte toomonitor."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
-ms.openlocfilehash: 5f6d6d4ad590b85810c42e9f9520850024c5446a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 95713e11d5f86472777c67e4e7f3177fbf2cd0b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrera telemetri i Java-webbappen
 
-Filter ger dig ett sätt att välja telemetrin som din [Java-webbapp skickar till Application Insights](app-insights-java-get-started.md). Det finns vissa out box-filter som du kan använda och du kan också skriva egna anpassade filter.
+Filter innehåller en sätt tooselect hello telemetri som din [Java-webbapp skickar tooApplication insikter](app-insights-java-get-started.md). Det finns vissa out box-filter som du kan använda och du kan också skriva egna anpassade filter.
 
-Out box-filtren är:
+hello out box filtren är:
 
 * Spåra allvarlighetsgrad
 * Specifika URL: er, nyckelord eller svarskoder
-* Snabba svar – det vill säga begäran som din app svarat på snabbt
+* Snabba svar – det vill säga begäran toowhich appen svarade tooquickly
 * Namn på specifika händelser
 
 > [!NOTE]
-> Filter skeva mätvärden för din app. Du kan till exempel bestämma att, för att kunna diagnostisera långsamt svar du anger ett filter för att ta bort snabba svarstider. Men du måste vara medveten om att de genomsnittliga svarstider som rapporterats av Application Insights blir långsammare än true hastighet och antal begäranden som ska vara mindre än antalet verkliga.
+> Filter skeva hello mätvärden för din app. Du kan till exempel bestämma att, i ordning toodiagnose långsamt svar, som ett filter toodiscard snabba svarstider. Men du måste vara medveten om att hello genomsnittliga responstider rapporteras av Application Insights blir långsammare än hello true hastighet och hello antal begäranden ska vara mindre än hello verkliga antal.
 > Om detta är ett problem kan använda [provtagning](app-insights-sampling.md) i stället.
 
 ## <a name="setting-filters"></a>Ange filter
@@ -60,7 +60,7 @@ ApplicationInsights.xml, lägga till en `TelemetryProcessors` avsnitt som det h�
            </Processor>
 
            <Processor type="TelemetryEventFilter">
-                  <!-- Names of events we don't want to see -->
+                  <!-- Names of events we don't want toosee -->
                   <Add name="NotNeededNames" value="Start,Stop,Pause"/>
            </Processor>
 
@@ -88,7 +88,7 @@ ApplicationInsights.xml, lägga till en `TelemetryProcessors` avsnitt som det h�
 
 
 
-[Kontrollera en fullständig uppsättning inbyggda processorer](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Inspektera hello fullständig uppsättning inbyggda processorer](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
 ## <a name="built-in-filters"></a>Inbyggda filter
 
@@ -115,9 +115,9 @@ ApplicationInsights.xml, lägga till en `TelemetryProcessors` avsnitt som det h�
            </Processor>
 ```
 
-* `DurationThresholdInMS`-Varaktighet refererar till den tid det tar att läsa in sidan. Om detta anges rapporteras inte sidor som lästs in snabbare än den angivna tiden.
+* `DurationThresholdInMS`-Varaktighet refererar toohello tidsåtgång tooload hello sidan. Om detta anges rapporteras inte sidor som lästs in snabbare än den angivna tiden.
 * `NotNeededNames`– Kommaavgränsad lista över namnen.
-* `NotNeededUrls`– Kommaavgränsad lista över URL-fragment. Till exempel `"home"` filtrerar ut alla sidor som har ”hem” i Webbadressen.
+* `NotNeededUrls`– Kommaavgränsad lista över URL-fragment. Till exempel `"home"` filtrerar ut alla sidor som har ”hem” hello-URL.
 
 
 ### <a name="request-telemetry-filter"></a>Begära telemetri Filter
@@ -136,7 +136,7 @@ ApplicationInsights.xml, lägga till en `TelemetryProcessors` avsnitt som det h�
 
 ### <a name="synthetic-source-filter"></a>Syntetiska källfiltret
 
-Filtrerar ut all telemetri som värden i egenskapen SyntheticSource. Dessa inkluderar begäranden från robotar, spindlar och tillgänglighetstester.
+Filtrerar ut all telemetri som innehåller värden i hello SyntheticSource egenskapen. Dessa inkluderar begäranden från robotar, spindlar och tillgänglighetstester.
 
 Filtrera bort telemetri för syntetiska begäranden:
 
@@ -187,7 +187,7 @@ Filter logga spår (loggat med [TrackTrace()](app-insights-api-custom-events-met
 
 * `FromSeverityLevel`Giltiga värden är:
  *  INAKTIVERA - filtrera bort alla spårningar
- *  TRACE - ingen filtrering. Spårningsnivån som motsvarar
+ *  TRACE - ingen filtrering. är lika med tooTrace nivå
  *  INFO - filtrera bort spårningsnivå
  *  Varna - Filter i SPÅRNINGEN och information
  *  FEL - filtrera bort Varna, INFO, SPÅRNING
@@ -208,18 +208,18 @@ I koden, skapar du en klass som implementerar `TelemetryProcessor`:
 
     public class SuccessFilter implements TelemetryProcessor {
 
-       /* Any parameters that are required to support the filter.*/
+       /* Any parameters that are required toosupport hello filter.*/
        private final String successful;
 
-       /* Initializers for the parameters, named "setParameterName" */
+       /* Initializers for hello parameters, named "setParameterName" */
        public void setNotNeeded(String successful)
        {
           this.successful = successful;
        }
 
-       /* This method is called for each item of telemetry to be sent.
-          Return false to discard it.
-          Return true to allow other processors to inspect it. */
+       /* This method is called for each item of telemetry toobe sent.
+          Return false toodiscard it.
+          Return true tooallow other processors tooinspect it. */
        @Override
        public boolean process(Telemetry telemetry) {
         if (telemetry == null) { return true; }
@@ -235,7 +235,7 @@ I koden, skapar du en klass som implementerar `TelemetryProcessor`:
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. Anropa filtret i konfigurationsfilen
+### <a name="2-invoke-your-filter-in-hello-configuration-file"></a>2. Anropa filtret i hello-konfigurationsfil
 
 I ApplicationInsights.xml:
 
@@ -258,7 +258,7 @@ I ApplicationInsights.xml:
 
 *Mina filter fungerar inte.*
 
-* Kontrollera att du har angett giltiga parametervärden. Till exempel måste varaktighet vara heltal. Ogiltiga värden kommer att orsaka filtret som ska ignoreras. Om ditt filter genererar ett undantag från en konstruktor eller set-metod, kommer att ignoreras.
+* Kontrollera att du har angett giltiga parametervärden. Till exempel måste varaktighet vara heltal. Ogiltiga värden kommer hello filter toobe ignoreras. Om ditt filter genererar ett undantag från en konstruktor eller set-metod, kommer att ignoreras.
 
 ## <a name="next-steps"></a>Nästa steg
 

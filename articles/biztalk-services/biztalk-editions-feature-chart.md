@@ -1,6 +1,6 @@
 ---
-title: "Läs mer om funktioner i BizTalk Services-utgåvorna | Microsoft Docs"
-description: "Jämför funktionerna i BizTalk Services-utgåvorna: Free, Developer, Basic, Standard och Premium. MABS, WABS."
+title: "aaaLearn om funktionerna i BizTalk-tjänst versioner | Microsoft Docs"
+description: "Jämför hello funktioner hello BizTalk-tjänst version: Frigör utvecklare, Basic, Standard och Premium. MABS, WABS."
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,41 +14,41 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 718b57a801a9ba62a0154ae42da2ac0c0741f203
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 81626fa743a7190e7c78a0fd90b3054a08982b02
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk Services: Diagram över utgåvor
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Azure BizTalk Services erbjuder flera olika utgåvor. Läs den här artikeln för att se vilken utgåva som passar dina scenario- och affärsbehov bäst.
+Azure BizTalk Services erbjuder flera olika utgåvor. Använd den här artikeln toodetermine vilken utgåva passar dina behov scenario och företag.
 
-## <a name="compare-the-editions"></a>Jämför utgåvorna
+## <a name="compare-hello-editions"></a>Jämför hello utgåvor
 **Kostnadsfri (förhandsversion)**
 
-Kan skapa och hantera hybridanslutningar. En hybridanslutning är ett enkelt sätt att ansluta en Azure-webbplats till ett lokalt system, t.ex. SQL Server.
+Kan skapa och hantera hybridanslutningar. En Hybridanslutning är ett enkelt sätt tooconnect en Azure-webbplatsen tooan lokalt system, t.ex. SQL Server.
 
 **Developer**
 
-Innehåller hybridanslutningar, EAI- och EDI-meddelandebehandling med en lättanvänd hanteringsportal för handelspartners, samt stöd för vanliga EDI-scheman och omfattande EDI-bearbetning över X12 och AS2. Kan skapa vanliga EAI-scenarier som ansluter tjänster i molnet med valfritt HTTP/S-, REST-, FTP-, WCF- och SFTP-protokoll för att kunna läsa och skriva meddelanden.  Anslut till lokala LOB-system med färdiga SAP-, Oracle eBusiness-, Oracle DB-, Siebel- och SQL Server-nätverkskort. Använd en centrerad miljö för utvecklare med Visual Studio-verktyg för enkel utveckling och distribution. Begränsad till enbart utveckling och testning utan något serviceavtal (SLA).
+Innehåller hybridanslutningar, EAI- och EDI-meddelandebehandling med en lättanvänd hanteringsportal för handelspartners, samt stöd för vanliga EDI-scheman och omfattande EDI-bearbetning över X12 och AS2. Kan skapa vanliga EAI scenarier anslutningstjänsterna i hello moln med alla HTTP/S-, REST-, FTP-, WCF- och SFTP-protokoll tooread och skriva meddelanden.  Använda anslutningen tooon lokala LOB system med färdiga att använda SAP, Oracle eBusiness, Oracle DB, Siebel och SQL Server-kort. Använd en centrerad miljö för utvecklare med Visual Studio-verktyg för enkel utveckling och distribution. Begränsad toodevelopment och testa ändamål endast med ingen serviceavtalet (SLA).
 
 **Basic**
 
-Innehåller de flesta funktioner som utvecklare behöver med utökade hybridanslutningar, EAI-bryggor, EDI-avtal och BizTalk Adapter Pack-anslutningar. Ger också hög tillgänglighet samt alternativ för skalning med ett serviceavtal (SLA).
+Innehåller de flesta av hello Developer funktioner med ökningar i Hybridanslutningar EAI platslänkbryggor, EDI-avtal och BizTalk-kort Pack anslutningar. Erbjuder också hög tillgänglighet och hello alternativet tooscale med en serviceavtalet (SLA).
 
 **Standard**
 
-Innehåller alla Basic-funktionerna med utökade hybridanslutningar, EAI-bryggor, EDI-avtal och BizTalk Adapter Pack-anslutningar. Ger också hög tillgänglighet samt alternativ för skalning med ett serviceavtal (SLA).
+Innehåller alla grundläggande hello-funktionerna med ökningar i Hybridanslutningar EAI platslänkbryggor, EDI-avtal och BizTalk-kort Pack anslutningar. Erbjuder också hög tillgänglighet och hello alternativet tooscale med en serviceavtalet (SLA).
 
 **Premium**
 
-Innehåller alla Standard-funktionerna med utökade hybridanslutningar, EAI-bryggor, EDI-avtal och BizTalk Adapter Pack-anslutningar. Innehåller också arkivering, hög tillgänglighet samt alternativ för skalning med ett serviceavtal (SLA).
+Innehåller alla Standard hello-funktioner med ökningar i Hybridanslutningar EAI platslänkbryggor, EDI-avtal och BizTalk-kort Pack anslutningar. Även arkivering, hög tillgänglighet och hello alternativet tooscale med en serviceavtalet (SLA).
 
 ## <a name="editions-chart"></a>Diagram över utgåvor
-I nedanstående tabell visas skillnaderna.
+hello visar följande tabell hello skillnader.
 
 <table border="1">
 <tr bgcolor="FAF9F9">
@@ -84,9 +84,9 @@ I nedanstående tabell visas skillnaderna.
 <td><strong>Högsta tillåtna skalning ut</strong></td>
 <td>Ingen skalning</td>
 <td>Ingen skalning</td>
-<td>Upp till 8 enheter</td>
-<td>Upp till 8 enheter</td>
-<td>Upp till 8 enheter</td>
+<td>Too8 enheter</td>
+<td>Too8 enheter</td>
+<td>Too8 enheter</td>
 </tr>
 <tr>
 <td><strong>EAI-bryggor per enhet</strong></td>
@@ -123,7 +123,7 @@ Innefattar TPM-avtal</td>
 <td>500</td>
 </tr>
 <tr>
-<td><strong>BizTalk Adapter-tjänstanslutningar till lokala LOB-system</strong></td>
+<td><strong>BizTalk-tjänst för kortet anslutningar tooon lokala LOB-system</strong></td>
 <td>Ingår inte</td>
 <td>1 anslutning</td>
 <td>2 anslutningar</td>
@@ -210,48 +210,48 @@ Innehåller NRR (Non-Repudiation of Receipt) och hämtning av spårade meddeland
 
 ## <a name="faqs"></a>Vanliga frågor och svar
 #### <a name="what-is-a-biztalk-unit"></a>Vad är en BizTalk-enhet?
-En ”enhet” är den atomiska nivån i en distribution av Azure BizTalk Services. Varje utgåva levereras med en enhet som har annan beräkningskapacitet och minne. Till exempel har en Basic-enhet mer databearbetning än Developer, och Standard har mer databearbetning än Basic och så vidare. En BizTalk-tjänst skalas i enheter.
+”Enhet” är hello atomiska en BizTalk-tjänst för Azure-distribution. Varje utgåva levereras med en enhet som har annan beräkningskapacitet och minne. Till exempel har en Basic-enhet mer databearbetning än Developer, och Standard har mer databearbetning än Basic och så vidare. En BizTalk-tjänst skalas i enheter.
 
-#### <a name="what-is-the-difference-between-biztalk-services-and-azure-biztalk-vm"></a>Vad är skillnaden mellan BizTalk Services och virtuella Azure BizTalk-datorer?
-BizTalk Services innehåller en verklig ”plattform som en tjänst”-arkitektur (PaaS) som kan skapa integrationslösningar i molnet. Med PaaS-modellen kan du helt fokusera på programlogiken och lämna all infrastrukturhantering till Microsoft, inklusive:
+#### <a name="what-is-hello-difference-between-biztalk-services-and-azure-biztalk-vm"></a>Vad är hello skillnaden mellan BizTalk-tjänst och Azure BizTalk VM?
+BizTalk-tjänst ger en true plattform som en-tjänst (PaaS)-arkitektur för att skapa lösningar för katalogintegrering i hello molnet. Med hello PaaS modell du helt fokusera på hello programlogiken och lämna alla hello infrastruktur för hantering av tooMicrosoft, inklusive:
 
-* Inget behov av att hantera eller korrigera virtuella datorer.
+* Inga måste toomanage eller korrigering virtuella datorer.
 * Microsoft garanterar tillgängligheten.
-* Du kan styra skalningen på begäran genom att helt enkelt begära mer eller mindre kapacitet via Azure-portalen.
+* Du kan styra skala på begäran genom att helt enkelt begära mer eller mindre kapacitet via hello Azure-portalen.
 
-BizTalk Server i Azure Virtual Machines ger en ”infrastruktur som en tjänst”-arkitektur (IaaS). Du skapar virtuella datorer och konfigurerar dem likadant som din lokala miljö, vilket gör det lättare att köra befintliga program i molnet utan kodändringar. Med IaaS är du fortfarande ansvarig för att konfigurera virtuella datorer, hantera virtuella datorer (till exempel installera programvara och korrigeringsfiler för operativsystem), samt för att anpassa programmet för hög tillgänglighet.
+BizTalk Server i Azure Virtual Machines ger en ”infrastruktur som en tjänst”-arkitektur (IaaS). Du skapar virtuella datorer och konfigurera dem exakt som den lokala miljön, vilket gör det enklare toorun befintliga program i hello moln med inga kodändringar. Med IaaS är du fortfarande ansvarig för att konfigurera hello virtuella datorer, hantera hello virtuella datorer (till exempel installera programvara och operativsystemskorrigeringar) och bygga hello program för hög tillgänglighet.
 
-Om du funderar på att skapa nya integrationslösningar som minimerar din infrastrukturhantering, bör du använda BizTalk Services. Om du vill migrera dina befintliga BizTalk-lösningar snabbt, eller om du söker efter en ”på begäran”-miljö för att utveckla och testa BizTalk Server-program, använder du BizTalk Server på en virtuell Azure-dator.
+Om du funderar på att skapa nya integrationslösningar som minimerar din infrastrukturhantering, bör du använda BizTalk Services. Om du behöver tooquickly migrera dina befintliga BizTalk-lösningar eller söker efter en på-begäran miljö toodevelop och testa BizTalk Server program, Använd BizTalk Server på en virtuell dator i Azure.
 
-#### <a name="what-is-the-difference-between-biztalk-adapter-service-and-hybrid-connections"></a>Vad är skillnaden mellan BizTalk Adapter-tjänsten och hybridanslutningar?
-BizTalk Adapter-tjänsten används av en Azure BizTalk-tjänst. BizTalk Adapter-tjänsten använder BizTalk Adapter Pack för att ansluta till ett lokalt LOB-system (Line of Business). En hybridanslutning är ett enkelt och praktiskt sätt att ansluta Azure-program, som t.ex. Web Apps-funktionen i Azure Apptjänst och Azure Mobile Services, till en lokal resurs.
+#### <a name="what-is-hello-difference-between-biztalk-adapter-service-and-hybrid-connections"></a>Vad är hello skillnaden mellan nätverkskort BizTalk-tjänst och Hybridanslutningar?
+hello BizTalk-tjänst för nätverkskortet används av en Azure BizTalk-tjänst. hello BizTalk-tjänst för kortet använder hello BizTalk Adapter Pack tooconnect tooan lokalt rad Affärsappar (LOB) system. En Hybridanslutning ger ett enkelt och praktiskt sätt tooconnect Azure-program som hello Web Apps i Azure App Service och Azure Mobile Services tooan lokal resurs.
 
-#### <a name="what-does-hybrid-connection-data-transfer-gb-per-unit-mean-is-this-per-minutehourdayweekmonth-what-happens-when-the-limit-is-reached"></a>Vad innebär ”Hybridanslutningens dataöverföring (GB) per enhet”? Är detta per minut/timme/dag/vecka/månad? Vad händer när gränsen har nåtts?
-Hybridanslutningens kostnad per enhet beror på vilken BizTalk Services-utgåva du har. Kostnaderna beror helt enkelt på hur mycket data du överför. Att exempelvis överföra 10 GB data per dag kostar mindre än att överföra 100 GB per dag. Använd [Priskalkylatorn](https://azure.microsoft.com/pricing/calculator/?scenario=full) för BizTalk Services när du fastställer kostnader. Vanligtvis tillämpas gränserna per dag. Om du överskrider gränsen debiteras eventuell överanvändning med $1 per GB.
+#### <a name="what-does-hybrid-connection-data-transfer-gb-per-unit-mean-is-this-per-minutehourdayweekmonth-what-happens-when-hello-limit-is-reached"></a>Vad innebär ”Hybridanslutningens dataöverföring (GB) per enhet”? Är detta per minut/timme/dag/vecka/månad? Vad händer när hello gränsen har nåtts?
+Hej Hybridanslutning kostnaden per enhet beror på hello BizTalk Services edition. Kostnaderna beror helt enkelt på hur mycket data du överför. Att exempelvis överföra 10 GB data per dag kostar mindre än att överföra 100 GB per dag. Använd hello [Priskalkylatorn](https://azure.microsoft.com/pricing/calculator/?scenario=full) för BizTalk-tjänst toodetermine kostnader. Normalt tillämpas hello gränser dagligen. Om du överskrider hello gränsen debiteras alla överförbrukning med hello 1 USD per GB.
 
-#### <a name="when-i-create-an-agreement-in-biztalk-services-why-does-the-number-of-bridges-go-up-by-two-instead-of-just-one"></a>Varför går antalet bryggor upp med två i stället för bara en när jag skapar ett avtal i BizTalk Services?
+#### <a name="when-i-create-an-agreement-in-biztalk-services-why-does-hello-number-of-bridges-go-up-by-two-instead-of-just-one"></a>När jag skapar ett avtal i BizTalk-tjänst, varför hello antalet bryggor går av två i stället för en?
 Varje avtal består av två olika bryggor: en kommunikationsbrygga på sändningssidan och en kommunikationsbrygga på mottagningssidan.
 
-#### <a name="what-happens-when-i-hit-the-quota-limit-on-the-number-of-bridges-or-agreements"></a>Vad händer när jag uppnår kvotgränsen för antalet bryggor eller avtal?
-Du kommer inte att kunna distribuera några nya bryggor eller skapa några nya avtal. Om du vill distribuera flera måste du skala upp till fler enheter av BizTalk-tjänsten, eller uppgradera till en högre utgåva.
+#### <a name="what-happens-when-i-hit-hello-quota-limit-on-hello-number-of-bridges-or-agreements"></a>Vad händer när jag träffar hello kvotgräns för hello antalet bryggor eller avtalen?
+Du kan inte toodeploy eventuella nya bryggor eller skapa några nya avtal. toodeploy mer, behöver du tooscale toomore enheter hello BizTalk-tjänst eller uppgradera tooa högre edition.
 
-#### <a name="how-do-i-migrate-from-one-tier-of-biztalk-services-to-another"></a>Hur migrerar jag från en nivå av BizTalk Services till en annan?
-Free-utgåvan kan inte migreras eller ”skalas upp” till en annan nivå och kan inte heller säkerhetskopieras och återställas till en annan nivå. Om du behöver en annan nivå skapar du en ny BizTalk-tjänst med den nya nivån. Alla artefakter som skapats med Free-utgåvan, inklusive hybridanslutningar, måste återskapas i den nya BizTalk-tjänsten. 
+#### <a name="how-do-i-migrate-from-one-tier-of-biztalk-services-tooanother"></a>Hur migrera från en nivå i BizTalk-tjänst tooanother?
+hello Free edition kan inte migreras eller 'skalats ut' tooanother nivå och går inte att säkerhetskopiera och återställa tooanother nivå. Om du behöver ett annat skikt kan du skapa en ny BizTalk Service med hjälp av hello ny nivå. Alla artefakter som skapats med hjälp av hello Free edition, inklusive hybridanslutningar, måste toobe återskapas i hello ny BizTalk Service. 
 
-För de återstående utgåvorna använder du säkerhetskopiering och återställning för att migrera artefakterna från en nivå till en annan. Du kan till exempel säkerhetskopiera dina artefakter på Standard-nivån och återställa dem till Premium-nivån. [BizTalk Services: Säkerhetskopiering och återställning](biztalk-backup-restore.md) beskriver de migreringsvägar som stöds och visar en lista över vilka artefakter som säkerhetskopieras. Observera att hybridanslutningar inte säkerhetskopieras. När du har säkerhetskopierat och återställt till en ny nivå återskapar du sedan hybridanslutningarna.  
+För hello kvarvarande versioner, Använd hello säkerhetskopiering och återställning för att migrera din artefakter från en nivå tooanother. Till exempel säkerhetskopiera din artefakter i hello standardnivån och återställa dem toohello Premium-nivån. [BizTalk-tjänst: Säkerhetskopiera och återställa](biztalk-backup-restore.md) beskriver migreringssökvägar som hello stöds och visar vilka artefakter säkerhetskopieras. Observera att hybridanslutningar inte säkerhetskopieras. När du säkerhetskopierar och återställer tooa ny nivå, återskapa du sedan hello hybridanslutningar.  
 
-#### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>Ingår BizTalk Adapter i tjänsten? Hur får jag programvaran?
-Ja, BizTalk Adapter-tjänsten med BizTalk Adapter Pack ingår i Azure BizTalk Services SDK-[hämtning](http://www.microsoft.com/download/details.aspx?id=39087).
+#### <a name="is-hello-biztalk-adapter-service-included-in-hello-service-how-do-i-receive-hello-software"></a>Ingår hello BizTalk-tjänst för nätverkskort i hello tjänsten? Hur får jag hello programvara?
+Ja, hello BizTalk-tjänst för nätverkskortet med hello BizTalk Adapter Pack ingår i hello Azure BizTalk Services SDK [hämta](http://www.microsoft.com/download/details.aspx?id=39087).
 
 ## <a name="next-steps"></a>Nästa steg
-Om du vill skapa Azure BizTalk Services i Azure-portalen går du till [BizTalk Services: Etablering med hjälp av Azure-portalen](biztalk-provision-services.md). Om du vill börja skapa program går du till [Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
+toocreate Azure BizTalk-tjänst i hello Azure går för[BizTalk-tjänst: etablering med hjälp av hello Azure-portalen](biztalk-provision-services.md). för att skapa program, gå toostart[Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=235197).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
-* [BizTalk Services: Etablering med hjälp av Azure-portalen](biztalk-provision-services.md)<br/>
+* [BizTalk-tjänst: Etablering med hjälp av hello Azure-portalen](biztalk-provision-services.md)<br/>
 * [BizTalk Services: Etablering av statusdiagram](biztalk-service-state-chart.md)<br/>
 * [BizTalk Services: Flikarna Instrumentpanel, Övervakare och Skalning](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 * [BizTalk Services: Säkerhetskopiering och återställning](biztalk-backup-restore.md)<br/>
 * [BizTalk Services: Begränsning](biztalk-throttling-thresholds.md)<br/>
 * [BizTalk Services: Utfärdarens namn och nyckel](biztalk-issuer-name-issuer-key.md)<br/>
-* [Hur gör jag för att börja använda Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [Hur jag börja använda hello Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

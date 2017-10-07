@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: Hur man frågan med DocumentDB-API: et? | Microsoft Docs"
-description: "Lär dig att fråga med DocumentDB-API: et för Azure Cosmos DB"
+title: 'Azure Cosmos DB: Tooquery med hur hello API DocumentDB? | Microsoft Docs'
+description: "Läs tooquery med hello DocumentDB API för Azure Cosmos DB"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: feffc553a9aa931d96cec71c101674fce08a466b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e3e5a49f7510942bcfb15330e5f86c5dd8b1e5d9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: Hur man frågan med API för MongoDB?
+# <a name="azure-cosmos-db-how-tooquery-with-api-for-mongodb"></a>Azure Cosmos DB: Hur tooquery med API för MongoDB?
 
-Azure Cosmos DB [API för MongoDB](mongodb-introduction.md) stöder [MongoDB shell frågor](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+hello Azure Cosmos DB [API för MongoDB](mongodb-introduction.md) stöder [MongoDB shell frågor](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
-Den här artikeln omfattar följande aktiviteter: 
+Den här artikeln beskriver hello följande uppgifter: 
 
 > [!div class="checklist"]
 > * Datafrågor med MongoDB
 
 ## <a name="sample-document"></a>Exempel på ett dokument
 
-Frågorna i den här artikeln använder följande exempeldokumentet.
+hello frågorna i den här artikeln använder hello följande exempel-dokument.
 
 ```json
 {
@@ -64,7 +64,7 @@ Frågorna i den här artikeln använder följande exempeldokumentet.
 ```
 ## <a id="examplequery1"></a>Exempelfråga 1 
 
-Exempel family dokumentet ovan får följande fråga returnerar dokument där fältet id matchar `WakefieldFamily`.
+Angivna hello exempel family dokument ovan hello följande fråga returnerar hello dokument där hello id-fältet matchar `WakefieldFamily`.
 
 **Fråga**
     
@@ -114,7 +114,7 @@ Exempel family dokumentet ovan får följande fråga returnerar dokument där f�
 
 ## <a id="examplequery2"></a>Exempelfråga 2 
 
-Nästa fråga returnerar alla underordnade i familjen. 
+hello nästa fråga returnerar alla hello i hello-serien. 
 
 **Fråga**
     
@@ -147,7 +147,7 @@ Nästa fråga returnerar alla underordnade i familjen.
 
 ## <a id="examplequery3"></a>Exempelfråga 3 
 
-Nästa fråga returnerar familjer som är registrerad. 
+hello nästa fråga returnerar alla hello-familjer som är registrerad. 
 
 **Fråga**
     
@@ -156,7 +156,7 @@ Nästa fråga returnerar familjer som är registrerad.
 
 ## <a id="examplequery4"></a>Exempelfråga 4
 
-Nästa fråga returnerar familjer som inte är registrerad. 
+hello nästa fråga returnerar alla hello-familjer som inte är registrerad. 
 
 **Fråga**
     
@@ -200,7 +200,7 @@ Nästa fråga returnerar familjer som inte är registrerad.
 
 ## <a id="examplequery5"></a>Exempelfråga 5
 
-Nästa fråga returnerar alla serier som inte är registrerad och tillstånd är NY. 
+hello nästa fråga returnerar alla hello-familjer som inte är registrerade och tillstånd är NY. 
 
 **Fråga**
     
@@ -246,7 +246,7 @@ Nästa fråga returnerar alla serier som inte är registrerad och tillstånd är
 
 ## <a id="examplequery6"></a>Exempelfråga 6
 
-Nästa returnerar frågan alla familjer där underordnade klasser är 8.
+hello Returnerar nästa frågan alla hello familjer där underordnade klasser är 8.
 
 **Fråga**
   
@@ -291,7 +291,7 @@ Nästa returnerar frågan alla familjer där underordnade klasser är 8.
 
 ## <a id="examplequery7"></a>Exempelfråga 7
 
-Nästa returnerar frågan alla familjer där storleken på underordnade matris är 3.
+hello Returnerar nästa frågan alla hello familjer där storleken på underordnade matris är 3.
 
 **Fråga**
   
@@ -299,16 +299,16 @@ Nästa returnerar frågan alla familjer där storleken på underordnade matris �
 
 **Resultat**
 
-Inga resultat returneras som vi inte har mer än 2 underordnade. Endast när parametern är 2 kommer den här frågan lyckas och returnerar det fullständiga dokumentet.
+Inga resultat returneras som vi inte har mer än 2 underordnade. Endast när parametern är 2 kommer den här frågan lyckas och returnerar hello hela dokumentet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudiekursen kommer du har gjort följande:
+I den här kursen har du gjort hello följande:
 
 > [!div class="checklist"]
-> * Lärt dig hur man frågan med MongoDB 
+> * Lärt dig hur tooquery med MongoDB 
 
-Du kan nu fortsätta till nästa kurs att lära dig hur du distribuerar dina data globalt.
+Du kan nu fortsätta toohello nästa självstudiekurs toolearn hur toodistribute data globalt.
 
 > [!div class="nextstepaction"]
 > [Distribuera dina data globalt](tutorial-global-distribution-documentdb.md)

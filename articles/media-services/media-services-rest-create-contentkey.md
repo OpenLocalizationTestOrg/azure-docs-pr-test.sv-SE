@@ -1,6 +1,6 @@
 ---
-title: "Skapa innehåll nycklar med övriga | Microsoft Docs"
-description: "Lär dig hur du skapar innehåll nycklar som ger säker åtkomst till resurser."
+title: "aaaCreate innehåll nycklar med REST | Microsoft Docs"
+description: "Lär dig hur toocreate innehåll nycklar som ger säker åtkomst till tooAssets."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: ece09277d26fafb7c0eebf62730031c4dc01bfe0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: cb3b74bdb72c43ab5b375c0376b6704f4a93bb8b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-content-keys-with-rest"></a>Skapa innehåll nycklar med övriga
 > [!div class="op_single_selector"]
@@ -27,26 +27,26 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-Media Services kan du skapa en ny och leverera krypterade tillgångar. En **ContentKey** ger säker åtkomst till din **tillgången**s. 
+Media Services kan du nya toocreate och leverera krypterade tillgångar. En **ContentKey** ger säker åtkomst tooyour **tillgången**s. 
 
-När du skapar en ny tillgång (till exempel innan du [ladda upp filer](media-services-rest-upload-files.md)), kan du ange följande krypteringsalternativen: **StorageEncrypted**, **CommonEncryptionProtected**, eller **EnvelopeEncryptionProtected**. 
+När du skapar en ny tillgång (till exempel innan du [ladda upp filer](media-services-rest-upload-files.md)), kan du ange följande krypteringsalternativ för hello: **StorageEncrypted**, **CommonEncryptionProtected**, eller **EnvelopeEncryptionProtected**. 
 
-När du levererar tillgångar till dina klienter kan du [konfigurera för tillgångar ska vara dynamiskt krypterad](media-services-rest-configure-asset-delivery-policy.md) med något av följande två krypteringar: **DynamicEnvelopeEncryption** eller **DynamicCommonEncryption**.
+När du levererar tillgångar tooyour klienter kan du [konfigurera för tillgångar toobe dynamiskt krypterad](media-services-rest-configure-asset-delivery-policy.md) med något av följande två krypteringar hello: **DynamicEnvelopeEncryption** eller  **DynamicCommonEncryption**.
 
-Krypterade tillgångar måste associeras med **ContentKey**s. Den här artikeln beskriver hur du skapar en innehållsnyckel.
+Krypterade tillgångar ha toobe som är associerade med **ContentKey**s. Den här artikeln beskriver hur toocreate en innehållsnyckel.
 
-Följande är allmänna steg för att generera innehåll nycklar som ska associeras med resurser som du vill ska vara krypterad. 
+hello är följande allmänna steg för att generera innehåll nycklar som ska associeras med resurser som du vill toobe krypteras. 
 
 1. Generera slumpmässigt 16 byte AES-nyckel (för gemensamma och kuvert kryptering) eller en 32-byte AES-nyckel (för lagringskryptering). 
    
-    Det här är innehållsnyckeln för tillgången, vilket innebär att alla filer som hör till tillgången måste använda samma innehållsnyckeln under dekrypteringen. 
-2. Anropa den [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) och [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metoder för att få rätt X.509-certifikat som ska användas för att kryptera din innehållsnyckeln.
-3. Kryptera din innehållsnyckeln med den offentliga nyckeln för X.509-certifikatet. 
+    Detta blir hello innehållsnyckeln för tillgången, vilket innebär att alla filer som är associerade med tillgången kommer måste toouse hello samma innehållsnyckeln under dekrypteringen. 
+2. Anropa hello [GetProtectionKeyId](https://docs.microsoft.com/rest/api/media/operations/rest-api-functions#getprotectionkeyid) och [GetProtectionKey](https://msdn.microsoft.com/library/azure/jj683097.aspx#getprotectionkey) metoder tooget hello rätt X.509-certifikat som måste vara används tooencrypt din innehållsnyckeln.
+3. Kryptera din innehållsnyckeln med hello offentlig nyckel för hello X.509-certifikat. 
    
-   Media Services .NET SDK använder RSA med OAEP vid krypteringen.  Du kan se ett exempel i den [EncryptSymmetricKeyData funktionen](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
-4. Skapa ett kontrollsummevärde (baserat på algoritmen PlayReady AES kontrollsumma) beräknas med hjälp av nyckelidentifierare och innehållsnyckeln. Mer information finns i avsnittet ”PlayReady AES kontrollsumma nyckelalgoritm” i dokumentet PlayReady-objektet finns [här](http://www.microsoft.com/playready/documents/).
+   Media Services .NET SDK använder RSA med OAEP när du gör hello kryptering.  Du kan se ett exempel i hello [EncryptSymmetricKeyData funktionen](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs).
+4. Skapa ett kontrollsummevärde (baserat på hello PlayReady AES kontrollsumma algoritmen) beräknas med hjälp av hello nyckelidentifierare och innehållsnyckeln. Mer information finns i hello ”PlayReady AES kontrollsumma nyckelalgoritm” avsnittet i hello PlayReady-objektet dokumentet finns [här](http://www.microsoft.com/playready/documents/).
    
-   Följande är en .NET-exempel som beräknar kontrollsumma använder GUID-del av Nyckelidentifieraren och avmarkera innehållsnyckeln.
+   hello följande är en .NET-exempel som beräknar hello kontrollsumma använder hello GUID del av hello nyckelidentifierare och hello avmarkera innehållsnyckeln.
 
          public static string CalculateChecksum(byte[] contentKey, Guid keyId)
          {
@@ -65,24 +65,24 @@ Följande är allmänna steg för att generera innehåll nycklar som ska associe
             Array.Copy(array, array2, 8);
             return Convert.ToBase64String(array2);
          }
-5. Skapa innehållsnyckel med den **EncryptedContentKey** (konverteras till base64-kodad sträng) **ProtectionKeyId**, **ProtectionKeyType**, **ContentKeyType**, och **kontrollsumma** värden som du har fått i föregående steg.
-6. Koppla den **ContentKey** entitet med din **tillgången** via $links igen.
+5. Skapa hello innehållsnyckeln med hello **EncryptedContentKey** (konverterat toobase64-kodad sträng) **ProtectionKeyId**, **ProtectionKeyType**,  **ContentKeyType**, och **kontrollsumma** värden som du har fått i föregående steg.
+6. Associera hello **ContentKey** entitet med din **tillgången** via hello $links igen.
 
-Observera att det här avsnittet inte visar hur du skapar en AES-nyckel, kryptera nyckeln och beräkna kontrollsumman. 
+Observera att det här avsnittet inte visar hur toogenerate en AES-nyckel, kryptera hello nyckeln och beräkna hello kontrollsumma. 
 
 >[!NOTE]
 
 >Vid åtkomst till entiteter i Media Services måste du ange specifika namn på huvudfält och värden i HTTP-begäranden. Mer information finns i [installationsprogrammet för Media Services REST API-utveckling](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Ansluta till Media Services
+## <a name="connect-toomedia-services"></a>Ansluta tooMedia tjänster
 
-Information om hur du ansluter till AMS API: et finns [åtkomst till Azure Media Services-API med Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md). 
+Mer information om hur tooconnect toohello AMS API, se [åtkomst hello Azure Media Services API med Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->När du har anslutit till https://media.windows.net, får du en 301 omdirigering att ange en annan Media Services-URI. Du måste göra följande anrop till en ny URI.
+>När du har anslutit toohttps://media.windows.net, får du en 301 omdirigering att ange en annan Media Services-URI. Du måste göra följande anrop toohello ny URI.
 
-## <a name="retrieve-the-protectionkeyid"></a>Hämta ProtectionKeyId
-I följande exempel visas hur du hämtar ProtectionKeyId, en certifikat-tumavtrycket för certifikatet måste du använda när du krypterar din innehållsnyckeln. Gör detta steg för att se till att du redan har rätt certifikat på din dator.
+## <a name="retrieve-hello-protectionkeyid"></a>Hämta hello ProtectionKeyId
+hello som följande exempel visar hur tooretrieve hello ProtectionKeyId, en certifikat-tumavtrycket för hello certifikat måste du använda när du krypterar din innehållsnyckeln. Göra det här steget toomake till att du redan har hello lämpligt certifikat på din dator.
 
 Begäran:
 
@@ -113,8 +113,8 @@ Svar:
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String","value":"7D9BB04D9D0A4A24800CADBFEF232689E048F69C"}
 
-## <a name="retrieve-the-protectionkey-for-the-protectionkeyid"></a>Hämta ProtectionKey för ProtectionKeyId
-I följande exempel visas hur du hämtar X.509-certifikatet med ProtectionKeyId du fick i föregående steg.
+## <a name="retrieve-hello-protectionkey-for-hello-protectionkeyid"></a>Hämta hello ProtectionKey för hello ProtectionKeyId
+hello följande exempel visas hur tooretrieve hello X.509-certifikatet med hello ProtectionKeyId du fick i hello föregående steg.
 
 Begäran:
 
@@ -149,17 +149,17 @@ Svar:
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#Edm.String",
     "value":"MIIDSTCCAjGgAwIBAgIQqf92wku/HLJGCbMAU8GEnDANBgkqhkiG9w0BAQQFADAuMSwwKgYDVQQDEyN3YW1zYmx1cmVnMDAxZW5jcnlwdGFsbHNlY3JldHMtY2VydDAeFw0xMjA1MjkwNzAwMDBaFw0zMjA1MjkwNzAwMDBaMC4xLDAqBgNVBAMTI3dhbXNibHVyZWcwMDFlbmNyeXB0YWxsc2VjcmV0cy1jZXJ0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzR0SEbXefvUjb9wCUfkEiKtGQ5Gc328qFPrhMjSo+YHe0AVviZ9YaxPPb0m1AaaRV4dqWpST2+JtDhLOmGpWmmA60tbATJDdmRzKi2eYAyhhE76MgJgL3myCQLP42jDusWXWSMabui3/tMDQs+zfi1sJ4Ch/lm5EvksYsu6o8sCv29VRwxfDLJPBy2NlbV4GbWz5Qxp2tAmHoROnfaRhwp6WIbquk69tEtu2U50CpPN2goLAqx2PpXAqA+prxCZYGTHqfmFJEKtZHhizVBTFPGS3ncfnQC9QIEwFbPw6E5PO5yNaB68radWsp5uvDg33G1i8IT39GstMW6zaaG7cNQIDAQABo2MwYTBfBgNVHQEEWDBWgBCOGT2hPhsvQioZimw8M+jOoTAwLjEsMCoGA1UEAxMjd2Ftc2JsdXJlZzAwMWVuY3J5cHRhbGxzZWNyZXRzLWNlcnSCEKn/dsJLvxyyRgmzAFPBhJwwDQYJKoZIhvcNAQEEBQADggEBABcrQPma2ekNS3Wc5wGXL/aHyQaQRwFGymnUJ+VR8jVUZaC/U/f6lR98eTlwycjVwRL7D15BfClGEHw66QdHejaViJCjbEIJJ3p2c9fzBKhjLhzB3VVNiLIaH6RSI1bMPd2eddSCqhDIn3VBN605GcYXMzhYp+YA6g9+YMNeS1b+LxX3fqixMQIxSHOLFZ1G/H2xfNawv0VikH3djNui3EKT1w/8aRkUv/AAV0b3rYkP/jA1I0CPn0XFk7STYoiJ3gJoKq9EMXhit+Iwfz0sMkfhWG12/XO+TAWqsK1ZxEjuC9OzrY7pFnNxs4Mu4S8iinehduSpY+9mDd3dHynNwT4="}
 
-## <a name="create-the-contentkey"></a>Skapa ContentKey
-När du har hämtats X.509-certifikat och används den offentliga nyckeln för att kryptera din innehållsnyckeln, skapar du en **ContentKey** entiteten och ange egenskapen värden i enlighet med detta.
+## <a name="create-hello-contentkey"></a>Skapa hello ContentKey
+När du har hämtats hello X.509-certifikat och använda dess offentliga nyckel tooencrypt din innehållsnyckeln, skapa en **ContentKey** entiteten och ange egenskapen värden i enlighet med detta.
 
-Ett av de värden som du måste ange när skapa innehållet nyckeln är typen. Välj något av följande värden.
+Ett av hello-värden som du måste ange när skapa hello innehåll nyckeln är hello-typen. Välj något av följande värden hello.
 
     public enum ContentKeyType
     {
         /// <summary>
         /// Specifies a content key for common encryption.
         /// </summary>
-        /// <remarks>This is the default value.</remarks>
+        /// <remarks>This is hello default value.</remarks>
         CommonEncryption = 0,
 
         /// <summary>
@@ -179,7 +179,7 @@ Ett av de värden som du måste ange när skapa innehållet nyckeln är typen. V
     }
 
 
-I följande exempel visas hur du skapar en **ContentKey** med en **ContentKeyType** för lagringskryptering (”1”) och **ProtectionKeyType** värdet ”0” anger att skydd nyckeln Id är tumavtrycket för X.509-certifikatet.  
+följande exempel visar hur hello toocreate en **ContentKey** med en **ContentKeyType** för lagringskryptering (”1”) och hello **ProtectionKeyType** ange för ”0” tooindicate som hello skydd nyckeln Id är hello tumavtrycket för X.509-certifikatet.  
 
 Förfrågan
 
@@ -229,8 +229,8 @@ Svar:
     "ProtectionKeyType":0,
     "Checksum":"calculated checksum"}
 
-## <a name="associate-the-contentkey-with-an-asset"></a>Koppla ContentKey till en tillgång
-När du har skapat ContentKey, associera den med din tillgång med hjälp av $links-åtgärd som visas i följande exempel:
+## <a name="associate-hello-contentkey-with-an-asset"></a>Associera hello ContentKey med en tillgång
+När du har skapat hello ContentKey associera den med din tillgång med hjälp av hello $links åtgärd, som visas i följande exempel hello:
 
 Begäran:
 

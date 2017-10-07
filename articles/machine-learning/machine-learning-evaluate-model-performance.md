@@ -1,6 +1,6 @@
 ---
-title: "Utvärdera modellen prestanda i Machine Learning | Microsoft Docs"
-description: "Beskriver hur du utvärdera modellen prestanda i Azure Machine Learning."
+title: aaaEvaluate modellen prestanda i Machine Learning | Microsoft Docs
+description: "Förklarar hur tooevaluate modell prestanda i Azure Machine Learning."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: d9576e0059f2e77a684e518389182e713f0a4f09
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 03477368758dbb13aa6f54c5d27fb215615d1f9d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Så här utvärderar du modellens prestanda i Azure Machine Learning
-Den här artikeln visar hur du utvärderar prestanda för en modell i Azure Machine Learning Studio och ger en kort förklaring av de tillgängliga måtten för den här uppgiften. Tre vanliga scenarier för övervakad inlärning visas: 
+# <a name="how-tooevaluate-model-performance-in-azure-machine-learning"></a>Hur tooevaluate modell prestanda i Azure Machine Learning
+Den här artikeln visar hur tooevaluate hello prestanda för en modell i Azure Machine Learning Studio och ger en kort förklaring av hello tillgängliga mått för den här uppgiften. Tre vanliga scenarier för övervakad inlärning visas: 
 
 * Regression
 * binär klassificering 
@@ -29,24 +29,24 @@ Den här artikeln visar hur du utvärderar prestanda för en modell i Azure Mach
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-Utvärderar prestanda för en modell är en grundläggande steg i vetenskap av data. Anger hur lyckade resultat (förutsägelser) i en dataset har av en tränad modell. 
+Utvärdera hello prestanda för en modell är en av hello core etapper i hello datavetenskap processen. Anger hur lyckade hello bedömningen (förutsägelser) i en dataset har av en tränad modell. 
 
-Azure Machine Learning stöder modellen utvärdering via två av dess huvudsakliga moduler för maskininlärning: [utvärdera modell] [ evaluate-model] och [kontrolleras mot modellen] [ cross-validate-model]. Dessa moduler kan du se hur modellen presterar i ett antal mätvärden som är vanliga i machine learning och statistik.
+Azure Machine Learning stöder modellen utvärdering via två av dess huvudsakliga moduler för maskininlärning: [utvärdera modell] [ evaluate-model] och [kontrolleras mot modellen] [ cross-validate-model]. Dessa moduler kan du toosee hur modellen presterar i ett antal mätvärden som är vanliga i machine learning och statistik.
 
 ## <a name="evaluation-vs-cross-validation"></a>Utvärderingen vs. Mellan verifiering
-Utvärdering och mellan validering är standard sätt att mäta prestanda i din modell. De båda generera utvärdering mått som du kan kontrollera eller jämföra med de andra modeller.
+Utvärdering och mellan validering är standard sätt toomeasure hello prestandan för din modell. De båda generera utvärdering mått som du kan kontrollera eller jämföra med de andra modeller.
 
-[Utvärdera modellen] [ evaluate-model] förväntar sig en poängsatta dataset som indata (eller 2 om du vill jämföra resultat med 2 olika modeller). Det innebär att du behöver träna modellen med hjälp av den [träna modell] [ train-model] modulen och göra förutsägelser på vissa datauppsättningen med den [Poängmodell] [ score-model]modulen innan du kan utvärdera resultaten. Utvärderingen baseras på poängsatta etiketter/troliga tillsammans med true etiketter som matats ut av den [Poängmodell] [ score-model] modul.
+[Utvärdera modellen] [ evaluate-model] förväntar sig en poängsatta dataset som indata (eller 2 i fall som toocompare hello prestanda för 2 olika modeller). Det innebär att du behöver tootrain din modell med hello [Träningsmodell] [ train-model] modulen och göra förutsägelser för vissa datauppsättningen med hello [Poängmodell] [ score-model] modulen innan du kan utvärdera hello resultat. hello utvärdering baseras på hello bedömas etiketter/troliga tillsammans med hello true etiketterna, som är resultatet av hello [Poängmodell] [ score-model] modul.
 
-Du kan också kan du använda mellan verifieringen för att utföra ett antal train poäng utvärdera åtgärder (10 gånger) automatiskt på olika delar av indata. Indata är uppdelad i 10 delar, där är ett reserverat för testning, och andra 9 för utbildning. Den här processen upprepas 10 gånger och utvärdering mått är ett genomsnitt. På så sätt kan bestämma hur väl en modell skulle generalisera till nya datamängder. Den [kontrolleras mot modellen] [ cross-validate-model] modulen hämtar i ett omdöme modellen och vissa märkt datamängd och matar ut utvärderingsresultaten av 10 gånger, förutom genomsnittlig resultaten.
+Du kan också använda mellan validering tooperform ett antal train poäng utvärdera åtgärder (10 gånger) automatiskt på olika delar av hello indata. hello indata har delats 10, där en är reserverad för testning och hello andra 9 för utbildning. Den här processen upprepas 10 gånger och medelvärdet av hello utvärdering mått. På så sätt kan bestämma hur väl en modell skulle generalisera toonew datauppsättningar. Hej [kontrolleras mot modellen] [ cross-validate-model] modul hämtar i ett omdöme modellen och vissa etikett dataset- och utgångar hello utvärderingsresultaten av hello 10 gånger, dessutom toohello var i genomsnitt resultat.
 
-I följande avsnitt kommer skapa enkla regression och klassificering modeller och utvärdera deras prestanda med hjälp av både den [utvärdera modell] [ evaluate-model] och [kontrolleras mot modellen ] [ cross-validate-model] moduler.
+I följande avsnitt hello, vi bygga enkla regression och klassificering modeller och utvärdera deras prestanda med hjälp av både hello [utvärdera modell] [ evaluate-model] och hello [kontrolleras Modellen] [ cross-validate-model] moduler.
 
 ## <a name="evaluating-a-regression-model"></a>Utvärdera en regressionsmodell
-Förutsätter vi vill förutsäga priset för en bil användningen av vissa funktioner, till exempel dimensioner, hästkrafter, motorn specifikationer och så vidare. Det här är en typisk regression problem där en målvariabel (*pris*) är en kontinuerlig numeriskt värde. Vi kan passa in en enkel linjär regressionsmodell som, med funktionen värdena för en viss bil kan förutsäga priset på den bilen. Den här regressionsmodell kan användas för att samla in samma datamängd vi tränats på. När vi har beräknade priser för alla bilarna kan utvärderar vi prestanda för modellen genom att titta på hur mycket förutsägelser avvika från de faktiska priserna i genomsnitt. För att illustrera detta vi använder den *Automobile price data (Raw) dataset* tillgängliga i den **sparade datauppsättningar** avsnitt i Azure Machine Learning Studio.
+Förutsätter vi vill toopredict en bil priset genom att använda vissa funktioner, till exempel dimensioner, hästkrafter, motorn specifikationer och så vidare. Det här är en typisk regression problem, där hello målvariabel (*pris*) är en kontinuerlig numeriskt värde. Vi kan passa in en enkel linjär regressionsmodell att värdena för en viss bil angivna hello-funktionen kan förutsäga hello priset på den bilen. Du kan använda den här regressionsmodell tooscore hello samma dataset som vi tränats på. När vi har hello förväntade priser för alla hello bilar, kan vi utvärdera hello prestanda för hello modellen genom att titta på hur mycket hello förutsägelser avvika från hello faktiska priser i genomsnitt. tooillustrate kan vi använda hello *Automobile price data (Raw) dataset* tillgängliga i hello **sparade datauppsättningar** avsnitt i Azure Machine Learning Studio.
 
-### <a name="creating-the-experiment"></a>Skapa experimentet
-Lägg till följande moduler i din arbetsyta i Azure Machine Learning Studio:
+### <a name="creating-hello-experiment"></a>Skapa hello Experiment
+Lägg till följande moduler tooyour arbetsytan i Azure Machine Learning Studio hello:
 
 * Bil price data (Raw)
 * [Linjär Regression][linear-regression]
@@ -54,41 +54,41 @@ Lägg till följande moduler i din arbetsyta i Azure Machine Learning Studio:
 * [Poängsätta modell][score-model]
 * [Utvärdera modellen][evaluate-model]
 
-Ansluta portarna som visas nedan i figur 1 och ange kolumnen etiketten för den [Träningsmodell] [ train-model] modulen *pris*.
+Ansluta hello portar som visas nedan i figur 1 och ange hello etikett kolumn hello [Träningsmodell] [ train-model] modul för*pris*.
 
 ![Utvärdera en regressionsmodell](media/machine-learning-evaluate-model-performance/1.png)
 
 Bild 1. Utvärderar en regressionsmodell.
 
-### <a name="inspecting-the-evaluation-results"></a>Kontrollera utvärderingsresultaten
-När du har kört experimentet som du kan klicka på utdataporten för den [utvärdera modell] [ evaluate-model] modulen och välj *visualisera* att se utvärderingsresultaten. De utvärdering mätvärdena som är tillgänglig för regression modeller är: *medelvärdet av absoluta fel*, *rot innebär absoluta fel*, *relativa absoluta fel*,  *Relativ kvadrat fel*, och *Bestämningskoefficienten*.
+### <a name="inspecting-hello-evaluation-results"></a>Kontrollera hello utvärderingsresultat
+Efter körs hello experiment kan du klicka på hello utdataporten för hello [utvärdera modell] [ evaluate-model] modulen och välj *visualisera* toosee hello resultatet. Hej utvärdering tillgängliga mått för regression modeller är: *medelvärdet av absoluta fel*, *rot innebär absoluta fel*, *relativa absoluta fel*,  *Relativa kvadrat fel*, och hello *Bestämningskoefficient*.
 
-Termen ”error” här representerar skillnaden mellan det förväntade värdet och det verkliga värdet. Det absoluta värdet eller kvadraten av denna skillnad beräknas vanligtvis att samla in den totala storleken på fel i alla instanser som skillnaden mellan värdena förutsagda och true får vara negativt i vissa fall. Fel mått mäta förutsägbar prestanda för en regressionsmodell vad gäller avvikelse medelvärdet för dess förutsägelser från värdet true. Nedre felvärdena betyder modellen är exaktare i att göra förutsägelser. Ett övergripande fel mått 0 betyder att modellen passar data perfekt.
+hello termen ”error” här representerar hello skillnaden mellan hello förutsägelsevärdet och hello true-värde. hello absolutvärdet eller hello rektangulär skillnaden är vanligtvis beräknade toocapture hello totala storleken på fel i alla instanser som hello skillnaden mellan hello förutsade och värdet true får vara negativt i vissa fall. hello fel mått mäter hello förutsägbar prestanda för en regressionsmodell vad gäller hello medelvärdet avvikelse för dess förutsägelser från hello true värden. Nedre felvärdena betyder hello modellen är exaktare i att göra förutsägelser. Ett mått för övergripande fel 0 innebär att hello modell passar perfekt hello data.
 
-Bestämningskoefficienten, som även kallas R kvadrat är också ett standardiserat sätt att mäta hur väl modellen passar data. Det kan tolkas som del av variationen beskrivs av modellen. En högre andel är bättre i detta fall där 1 anger en perfekt passning.
+hello bestämningskoefficienten, som även kallas R kvadrat är också ett standardiserat sätt att mäta hur väl hello modell passar hello data. Det kan tolkas som hello andelen variation beskrivs av hello modellen. En högre andel är bättre i detta fall där 1 anger en perfekt passning.
 
 ![Linjär Regression utvärdering mått](media/machine-learning-evaluate-model-performance/2.png)
 
 Figur 2. Linjär Regression utvärdering mått.
 
 ### <a name="using-cross-validation"></a>Med mellan verifiering
-Som tidigare nämnts kan du utföra upprepade utbildning, poäng och utvärderingar automatiskt med hjälp av den [kontrolleras mot modellen] [ cross-validate-model] modul. Allt du behöver i det här fallet är en datamängd, ett omdöme modell och en [kontrolleras mot modellen] [ cross-validate-model] modul (se figuren nedan). Observera att du måste ange etikettkolumnen till *pris* i den [kontrolleras mot modellen] [ cross-validate-model] modulens egenskaper.
+Som tidigare nämnts kan du utföra upprepade utbildning, poäng och utvärderingar automatiskt med hello [kontrolleras mot modellen] [ cross-validate-model] modul. Allt du behöver i det här fallet är en datamängd, ett omdöme modell och en [kontrolleras mot modellen] [ cross-validate-model] modul (se figuren nedan). Observera att du tooset hello etikettkolumnen för*pris* i hello [kontrolleras mot modellen] [ cross-validate-model] modulens egenskaper.
 
 ![Validera en regressionsmodell mellan](media/machine-learning-evaluate-model-performance/3.png)
 
 Bild 3. Cross-validerar en regressionsmodell.
 
-När du har kört experimentet, du kan inspektera utvärderingsresultaten genom att klicka på den högra utdataporten för den [kontrolleras mot modellen] [ cross-validate-model] modul. Detta ger en detaljerad vy av mätvärden för varje iteration (vikt) och genomsnittlig resultatet av varje mått (bild 4).
+Efter körs hello experiment kan du granska resultatet hello genom att klicka på hello rätt utdataporten för hello [kontrolleras mot modellen] [ cross-validate-model] modul. Detta ger en detaljerad vy av hello mätvärden för varje iteration (vikt) och hello var i genomsnitt resultaten av hello mått (bild 4).
 
 ![Korsvalidering resultatet av en regressionsmodell](media/machine-learning-evaluate-model-performance/4.png)
 
 Bild 4. Korsvalidering resultaten av en regressionsmodell.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Utvärdering av en modell för binär klassificering
-I ett scenario med binär klassificering, en målvariabel har bara två möjliga resultat, till exempel: {0, 1} eller {FALSKT, SANT}, {negativt, positivt}. Anta att du får en datauppsättning för vuxna anställda med några demografisk och anställningen variabler och du uppmanas att förutsäga intäkter-nivå, en binär variabel med värdena {”< = 50K” ”, > 50K”}. Med andra ord negativt klassen representerar anställda som gör mindre än eller lika med 50K per år och positiva klassen representerar alla anställda. I scenariot regression vi tränar en modell, poängsätta vissa data och utvärdera resultaten. Den största skillnaden är valet av mått som beräknar Azure Machine Learning och utdata. För att illustrera intäkter nivån förutsägelse scenario, kommer vi att använda den [vuxna](http://archive.ics.uci.edu/ml/datasets/Adult) dataset för att skapa ett experiment i Azure Machine Learning och utvärderar prestanda för en två-klass logistic regressionsmodell, en binär som används ofta klassificerare.
+I ett scenario med binär klassificering hello målvariabel har bara två möjliga resultat, till exempel: {0, 1} eller {FALSKT, SANT}, {negativt, positivt}. Anta att du får en datauppsättning för vuxna anställda med några demografisk och anställningen variabler och att du uppmanas toopredict hello intäkter nivå, en binär variabel med hello värdena {”< = 50K” ”, > 50K”}. Med andra ord hello negativt klassen representerar hello anställda som göra mindre än eller lika med too50K per år och hello positivt klassen representerar alla anställda. Vi skulle som hello regression, tränar en modell, poängsätta vissa data och utvärdera hello resultat. hello största skillnaden här är hello val av mått som beräknar Azure Machine Learning och utdata. tooillustrate hello intäkter nivån förutsägelse scenariot kommer vi att använda hello [vuxna](http://archive.ics.uci.edu/ml/datasets/Adult) dataset toocreate en Azure Machine Learning experimentera och utvärdera hello prestanda för en två-klass logistic regressionsmodell, en binär som används ofta klassificerare.
 
-### <a name="creating-the-experiment"></a>Skapa experimentet
-Lägg till följande moduler i din arbetsyta i Azure Machine Learning Studio:
+### <a name="creating-hello-experiment"></a>Skapa hello Experiment
+Lägg till följande moduler tooyour arbetsytan i Azure Machine Learning Studio hello:
 
 * Vuxna inventering intäkter binär klassificering dataset
 * [Two-Class Logistic Regression][two-class-logistic-regression]
@@ -96,35 +96,35 @@ Lägg till följande moduler i din arbetsyta i Azure Machine Learning Studio:
 * [Poängsätta modell][score-model]
 * [Utvärdera modellen][evaluate-model]
 
-Ansluta portarna som visas nedan i figur 5 och ange kolumnen etiketten för den [Träningsmodell] [ train-model] modulen *intäkter*.
+Ansluta hello portar som visas nedan i figur 5 och ange hello etikett kolumn hello [Träningsmodell] [ train-model] modul för*intäkter*.
 
 ![Utvärdering av en modell för binär klassificering](media/machine-learning-evaluate-model-performance/5.png)
 
 Bild 5. Utvärderar en binär klassificering modell.
 
-### <a name="inspecting-the-evaluation-results"></a>Kontrollera utvärderingsresultaten
-När du har kört experimentet som du kan klicka på utdataporten för den [utvärdera modell] [ evaluate-model] modulen och välj *visualisera* att se utvärderingsresultaten (bild 7). De utvärdering mätvärdena som är tillgänglig för binär klassificering modeller är: *noggrannhet*, *Precision*, *återkalla*, *F1 poäng*, och  *AUC*. Dessutom modulen matar ut en förvirring matris som visar antalet positiva identifieringar som SANT, FALSKT negativ, falska positiva identifieringar och SANT negativ samt *ROC*, *Precision/återkalla*, och  *Lyfter* kurvor.
+### <a name="inspecting-hello-evaluation-results"></a>Kontrollera hello utvärderingsresultat
+Efter körs hello experiment kan du klicka på hello utdataporten för hello [utvärdera modell] [ evaluate-model] modulen och välj *visualisera* toosee hello utvärderingsresultaten (bild 7). Hej utvärdering tillgängliga mått för binär klassificering modeller är: *noggrannhet*, *Precision*, *återkalla*, *F1 poäng*, och *AUC*. Dessutom hello modulen matar ut en förvirring matris som visar hello antalet positiva identifieringar som SANT, FALSKT negativ, falska positiva identifieringar och SANT negativ samt *ROC*, *Precision/återkalla*, och *Lyfter* kurvor.
 
-Precisionen är helt enkelt andelen korrekt klassificerad instanser. Det är vanligtvis den första mått som du tittar på när du utvärderar en klassificerare. När testdata är dock obalanserade (där de flesta av instanserna tillhöra en av klasserna) och du är intresserad av mer prestanda på någon av klasserna inte noggrannhet verkligen avbilda en klassificerare effektivitet. I scenario intäkter nivån klassificering förutsätter att du testar på vissa data där 99% av instanserna representerar personer som får mindre än eller lika med 50K per år. Det är möjligt att uppnå en 0.99 noggrannhet genom att förutsäga klassen ”< = 50K” för alla instanser. I det här fallet visas klassificeraren att utföra en övergripande bra, men i själva verket det går inte att klassificera alla high-income enskilda användare (1%) korrekt.
+Precisionen är helt enkelt hello andelen korrekt klassificerad instanser. Det är vanligtvis hello första mått du tittar på när du utvärderar en klassificerare. När hello testdata är dock obalanserade (som de flesta av hello instanser tillhör tooone hello klasser) och du är intresserad av mer hello prestanda på någon av hello klasser, noggrannhet verkligen inte avbilda en klassificerare hello effektivitet. I hello intäkter nivån klassificering scenariot förutsätter att du testar på vissa data där 99% av hello instanser representerar personer som får mindre än eller lika med too50K per år. Det är möjligt tooachieve 0.99 noggrannhet genom att förutsäga hello klass ”< = 50K” för alla instanser. hello klassificerare visas i det här fallet toobe gör bra övergripande, men i själva verket misslyckas tooclassify någon hello high-income individer (hello 1%) korrekt.
 
-Därför är det bra att beräkna ytterligare mått som samlar in mer specifika aspekter av utvärderingen. Innan du fortsätter till information om dessa mått är det viktigt att förstå matrisen förvirring för en binär klassificering utvärderingen. Klassen etiketter i träningsmängden kan ha endast 2 möjliga värden som vi vanligtvis refererar till som positivt eller negativt. Positiva och negativa instanserna som en klassificerare beräknar korrekt kallas true positiva identifieringar (TP) och true negativ (TN). På liknande sätt kallas felaktigt klassificerad instanser falska positiva identifieringar (RP) och FALSKT negativ (FN). Matrisen förvirring är helt enkelt en tabell som visar antalet instanser som faller under följande 4 kategorier. Azure Machine Learning beslutar automatiskt som två klasser i datauppsättningen är positivt klass. Om klassen etiketter är Boolean eller heltal, har namngivna instanser 'true' eller '1' tilldelats klassen positivt. Om etiketter är strängar, som i fallet med intäkter datauppsättningen etiketterna sorteras alfabetiskt och den första nivån väljs vara negativa klassen medan den andra nivån är positivt klass.
+Därför är det bra toocompute ytterligare mått som samlar in mer specifika aspekter av hello utvärdering. Innan du fortsätter hello detaljer om mått är det viktigt toounderstand hello förvirring matris för en binär klassificering utvärderingen. hello-klass som etiketter i hello träningsmängden kan ha endast 2 möjliga värden som vi vanligtvis finns tooas positivt eller negativt. hello positiva och negativa instanser som en klassificerare beräknar korrekt kallas true positiva identifieringar (TP) och true negativ (TN). På liknande sätt kallas hello felaktigt klassificerad instanser falska positiva identifieringar (RP) och FALSKT negativ (FN). hello förvirring matrisen är helt enkelt en tabell som visar hello antalet instanser som faller under följande 4 kategorier. Azure Machine Learning beslutar automatiskt som hello två klasser i hello dataset är positivt hello-klass. Om hello klassen etiketter är Boolean eller heltal och sedan hello tilldelas 'true' eller '1' namngivna instanser hello positivt klass. Om hello etiketter är strängar som hello fallet med hello intäkter dataset, hello etiketter sorteras alfabetiskt och hello första nivån väljs toobe hello negativt klassen medan hello andra nivån är positivt hello-klass.
 
 ![Binär klassificering förvirring matris](media/machine-learning-evaluate-model-performance/6a.png)
 
 Bild 6. Binär klassificering förvirring matris.
 
-Gå tillbaka till klassificeringsproblem intäkter, vill vi be flera utvärderingsfrågor som hjälper oss att förstå prestanda för klassificeraren används. En mycket naturliga frågan är: ' utanför till personer som modellen förutsade till att tjäna > 50 K (TP + RP), hur många har klassificerats på rätt sätt (TP) ”? Den här frågan kan lösas genom att titta på den **Precision** av modellen, vilket är andelen av positiva identifieringar som klassificerats korrekt: TP/(TP+FP). En annan vanlig fråga är ”utanför alla hög med anställda med intäkter > 50 k (TP + FN), hur många klassificeraren klassificera korrekt (TP)”. Detta är den **återkalla**, eller true positiva satsen: TP/(TP+FN) för klassificeraren. Du kan se att det finns en uppenbara kompromiss mellan precision och återkalla. Till exempel ges en relativt belastningsutjämnade dataset en klassificerare som beräknar främst positivt instanser skulle ha en hög återkallning, men en snarare Låg precision så många negativt instanser skulle klassificeras som resulterar i ett stort antal falska positiva identifieringar. Om du vill se en rityta av hur dessa två mått varierar, kan du klicka på ' PRECISION/ÅTERKALLA-kurvan i utdata för utvärdering resultatsidan (övre vänstra del av bild 7).
+Gå tillbaka toohello intäkter klassificeringsproblem skulle vi vill tooask flera utvärderingsfrågor som hjälper oss att förstå hello prestanda av hello-klassificerare som används. En mycket naturliga frågan är: ' utanför hello personer som hello modellen förväntade toobe med > 50 K (TP + RP), hur många har klassificerats på rätt sätt (TP) ”? Den här frågan kan lösas genom att titta på hello **Precision** i hello modellen är hello andelen positiva identifieringar som klassificerats korrekt: TP/(TP+FP). En annan vanlig fråga är ”utanför alla hello hög inkomst anställda med intäkter > 50 k (TP + FN), hur många hello klassificerare klassificera korrekt (TP)”. Detta är faktiskt hello **återkalla**, eller true positiva hello-satsen: TP/(TP+FN) av hello klassificerare. Du kan se att det finns en uppenbara kompromiss mellan precision och återkalla. Till exempel ges en relativt belastningsutjämnade dataset en klassificerare som beräknar främst positivt instanser skulle ha en hög återkallning, men en snarare Låg precision så många hello negativt instanser skulle klassificeras som resulterar i ett stort antal falska positiva identifieringar. toosee ritning av hur dessa två mått varierar, kan du klicka på hello ' PRECISION/ÅTERKALLA-kurvan i hello utvärdering resultatsidan utdata (övre vänstra del av bild 7).
 
 ![Utvärderingsresultat av binär klassificering](media/machine-learning-evaluate-model-performance/7.png)
 
 Bild 7. Utvärderingsresultat av binär klassificering.
 
-En annan relaterade mått som används ofta är den **F1 poäng**, som tar både precision och återkalla i beräkningen. Det är det harmoniska medelvärdet av de här 2 måtten och beräknas som sådana: F1 = 2 (precision x återkalla) / (precision + återkalla). F1-resultatet är ett bra sätt att sammanfatta utvärdering i ett tal, men det är alltid en bra idé att titta på både precision och återkalla tillsammans för att bättre förstå hur en klassificerare fungerar.
+En annan relaterade mått som används ofta är hello **F1 poäng**, som tar både precision och återkalla i beräkningen. Det är hello harmoniska medelvärdet av de här 2 måtten och beräknas som sådana: F1 = 2 (precision x återkalla) / (precision + återkalla). hello F1 resultatet är en bra sätt toosummarize hello utvärdering i ett tal, men det är alltid en bra idé toolook på både precision och återkalla tillsammans toobetter förstå hur en klassificerare fungerar.
 
-Dessutom kan en inspektera true positiva satsen kontra falska positiva hastigheten i den **mottagare operativsystem egenskap (ROC)** kurva och motsvarande **område Under i kurvan (AUC)** värde. Närmare kurvan till det övre vänstra hörnet är bättre prestanda för den klassificerare (som är att maximera true positivt hastighet och minimerar den falska positiva hastigheten). Kurvor som närmar sig diagonal ut resultatet från klassificerare tenderar att göra förutsägelser som närmar sig slumpmässiga att gissa.
+Dessutom kan en inspektera hello true positiva satsen kontra hello falska positiva satsen i hello **mottagare operativsystem egenskap (ROC)** kurva och hello motsvarande **område Under hello kurvan (AUC)** värde. hello närmare kurvan toohello övre vänstra hörnet är hello bättre hello klassificerares prestanda (som maximerar hello true positivt hastighet och minimerar hello falska positiva satsen). Kurvor som är nära toohello diagonal av Hej ritytans, resultatet från klassificerare som brukar toomake förutsägelser som stänger toorandom att gissa.
 
 ### <a name="using-cross-validation"></a>Med mellan verifiering
-Som i exemplet regression utföra vi mellan verifiering för att träna, poäng och utvärdera olika delmängder av data automatiskt upprepade gånger. På liknande sätt kan vi kan använda den [kontrolleras mot modellen] [ cross-validate-model] modul, ett omdöme logistic regressionsmodell och en datamängd. Etikettkolumnen måste anges till *intäkter* i den [kontrolleras mot modellen] [ cross-validate-model] modulens egenskaper. När du kör experimentet och klicka på höger utgående porten för den [kontrolleras mot modellen] [ cross-validate-model] modulen, vi kan se måttvärden för binär klassificering för varje vikning dessutom medelvärdet och standardavvikelsen för var och en. 
+Som hello regression exempel vi utföra mellan validering toorepeatedly tåg, poängsätta och utvärdera olika delmängder av data för hello automatiskt. På liknande sätt kan vi använda hello [kontrolleras mot modellen] [ cross-validate-model] modul, ett omdöme logistic regressionsmodell och en datamängd. hello etikettkolumnen måste anges för*intäkter* i hello [kontrolleras mot modellen] [ cross-validate-model] modulens egenskaper. När du kör hello experiment och klicka på hello rätt utgående port för hello [kontrolleras mot modellen] [ cross-validate-model] modulen, kan vi se hello binär klassificering mått värden för varje vikning dessutom toohello medelvärdet och standardavvikelsen för var och en. 
 
 ![Validera en binär klassificering modell mellan](media/machine-learning-evaluate-model-performance/8.png)
 
@@ -135,10 +135,10 @@ Figur 8. Cross-validerar en binär klassificering modell.
 Bild 9. Korsvalideringsresultaten av en binär klassificerare.
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>Utvärdering av en modell för multiklass-baserad klassificering
-Vi använder den populära i experimentet [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") datauppsättning som innehåller instanser av 3 olika typer (klasser) av iris anläggningen. Det finns 4 funktionen värden (sepal längd och bredd och bladets längd och bredd) för varje instans. I de föregående försök vi tränas och testas modeller som använder samma datauppsättningar. Här kan vi använder den [dela Data] [ split] modulen skapa 2 delmängder av data, träna på först och poängsätta och utvärdera på andra. Iris dataset är allmänt tillgänglig på den [UCI Machine Learning databasen](http://archive.ics.uci.edu/ml/index.html), och kan hämtas med hjälp av en [importera Data] [ import-data] modul.
+I den här experiment kommer vi att använda hello populära [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") datauppsättning som innehåller instanser av 3 olika typer (klasser) av hello iris anläggningen. Det finns 4 funktionen värden (sepal längd och bredd och bladets längd och bredd) för varje instans. Hello tidigare försök vi tränas och testade hello modeller med hello samma datauppsättningar. Här kan vi använder hello [dela Data] [ split] modulen toocreate 2 delmängder av data för hello, träna på hello först och poängsätta och utvärdera på hello andra. hello Iris dataset är allmänt tillgänglig på hello [UCI Machine Learning databasen](http://archive.ics.uci.edu/ml/index.html), och kan hämtas med hjälp av en [importera Data] [ import-data] modul.
 
-### <a name="creating-the-experiment"></a>Skapa experimentet
-Lägg till följande moduler i din arbetsyta i Azure Machine Learning Studio:
+### <a name="creating-hello-experiment"></a>Skapa hello Experiment
+Lägg till följande moduler tooyour arbetsytan i Azure Machine Learning Studio hello:
 
 * [Importera Data][import-data]
 * [Multiclass beslut skog][multiclass-decision-forest]
@@ -147,27 +147,27 @@ Lägg till följande moduler i din arbetsyta i Azure Machine Learning Studio:
 * [Poängsätta modell][score-model]
 * [Utvärdera modellen][evaluate-model]
 
-Ansluta portarna som visas nedan i figur 10.
+Ansluta hello portar som visas nedan i figur 10.
 
-Ange etikett kolumnindex för de [Träningsmodell] [ train-model] modulen till 5. Datamängden har ingen rubrikrad men vi vet att klassen etiketter är i femte kolumnen.
+Ange hello etikett kolumnindex av hello [Träningsmodell] [ train-model] modulen too5. hello dataset har ingen rubrikrad men vi vet hello klassen etiketter är i hello femte kolumnen.
 
-Klicka på den [importera Data] [ import-data] modulen och ange den *datakällan* egenskapen *Webbadress via HTTP*, och *URL* till http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
+Klicka på hello [importera Data] [ import-data] modulen och ange hello *datakällan* egenskapen för*Webbadress via HTTP*, och hello *URL*  toohttp://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
 
-Ange del av instanser som ska användas för den [dela Data] [ split] modul (0,7 till exempel).
+Ange hello bråkdel av instanser toobe används för hello [dela Data] [ split] modul (0,7 till exempel).
 
 ![Utvärdering av en multiklass-baserad klassificerare](media/machine-learning-evaluate-model-performance/10.png)
 
 Bild 10. Utvärdering av en multiklass-baserad klassificerare
 
-### <a name="inspecting-the-evaluation-results"></a>Kontrollera utvärderingsresultaten
-Kör experimentet och klicka på utdataporten för [utvärdera modell][evaluate-model]. Utvärderingsresultaten visas i form av en förvirring matris i det här fallet. Matrisen visar det faktiska kontra förväntade instanser för alla 3 klasser.
+### <a name="inspecting-hello-evaluation-results"></a>Kontrollera hello utvärderingsresultat
+Kör experimentet hello och klicka på hello utdataporten för [utvärdera modell][evaluate-model]. utvärderingsresultat av hello presenteras i hello form av en förvirring matris i det här fallet. hello matris visar hello faktiska kontra förväntade instanser för alla 3 klasser.
 
 ![Utvärderingsresultat av multiklass-baserad klassificering](media/machine-learning-evaluate-model-performance/11.png)
 
 Figur 11. Utvärderingsresultat av multiklass-baserad klassificering.
 
 ### <a name="using-cross-validation"></a>Med mellan verifiering
-Som tidigare nämnts kan du utföra upprepade utbildning, poäng och utvärderingar automatiskt med hjälp av den [kontrolleras mot modellen] [ cross-validate-model] modul. Du behöver en datamängd, ett omdöme modell och en [kontrolleras mot modellen] [ cross-validate-model] modul (se figuren nedan). Igen måste du ange etikettkolumnen för den [kontrolleras mot modellen] [ cross-validate-model] modul (kolumnindex 5 i det här fallet). När du kör experimentet och klicka på höger utgående porten för den [kontrolleras mot modellen][cross-validate-model], du kan inspektera måttvärden för varje vikning samt avvikelse medelvärde och standard. Mått som visas här är samma som de som beskrivs i fallet binär klassificering. Observera dock att i multiklass-baserad klassificering true positiva identifieringar/negativ och falska positiva identifieringar/negativ görs genom att räkna på grundval av per klass, eftersom det finns ingen övergripande positivt eller negativt klass. Till exempel när datoranvändning precision eller återkallas av klassen 'Iris setosa', antas det att det här är klassen positiva och alla andra som negativt.
+Som tidigare nämnts kan du utföra upprepade utbildning, poäng och utvärderingar automatiskt med hello [kontrolleras mot modellen] [ cross-validate-model] modul. Du behöver en datamängd, ett omdöme modell och en [kontrolleras mot modellen] [ cross-validate-model] modul (se figuren nedan). Igen måste tooset hello etikett kolumn i hello [kontrolleras mot modellen] [ cross-validate-model] modul (kolumnindex 5 i det här fallet). När du kör hello experiment och klicka på hello höger utgående port för hello [kontrolleras mot modellen][cross-validate-model], du kan inspektera hello måttvärden för varje vika samt hello medelvärdet och standardavvikelsen. hello är visas här hello liknande toohello som beskrivs i hello binär klassificering fallet. Observera dock att i multiklass-baserad klassificering hello true positiva identifieringar/negativ och falska positiva identifieringar/negativ görs genom att räkna på grundval av per klass, eftersom det finns ingen övergripande positivt eller negativt klass. Till exempel när databehandling hello precision eller återkallar hello 'Iris setosa-klassen, förutsätts att detta är positivt hello-klassen och alla andra som negativt.
 
 ![Verifiera mellan en modell för multiklass-baserad klassificering](media/machine-learning-evaluate-model-performance/12.png)
 

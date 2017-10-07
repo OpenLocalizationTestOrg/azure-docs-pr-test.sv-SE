@@ -1,6 +1,6 @@
 ---
-title: "Publicera en dockerbehållare med hjälp av Azure-verktyget för IntelliJ | Microsoft Docs"
-description: "Lär dig hur du publicerar ett webbprogram till Microsoft Azure som en dockerbehållare med hjälp av Azure-verktyget för IntelliJ."
+title: "aaaPublish en dockerbehållare med hjälp av hello Azure Toolkit för IntelliJ | Microsoft Docs"
+description: "Lär dig hur toopublish en web app tooMicrosoft Azure som en dockerbehållare med hjälp av hello Azure Toolkit för IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,189 +14,189 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-ms.openlocfilehash: 96680319a6c4c0f0a4673cd6303a5b172f428797
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bee94cb269ea707ae7ad55232e23e915aec48c34
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="publish-a-web-app-as-a-docker-container-by-using-the-azure-toolkit-for-intellij"></a>Publicera ett webbprogram som en dockerbehållare med hjälp av Azure-verktyget för IntelliJ
+# <a name="publish-a-web-app-as-a-docker-container-by-using-hello-azure-toolkit-for-intellij"></a>Publicera ett webbprogram som en dockerbehållare med hello Azure Toolkit för IntelliJ
 
-Docker-behållare är en mycket vanlig metod för att distribuera webbprogram. Genom att använda Docker-behållare kan konsolidera utvecklare sina projektfiler och beroenden i ett enda paket för distribution till en server. Azure-verktygen för IntelliJ förenklar processen för Java-utvecklare genom att lägga till *Publicera som Dockerbehållare* funktioner för distribution till Microsoft Azure. Den här artikeln vägleder dig igenom de steg som krävs för att publicera dina program till Azure som Docker-behållare.
+Docker-behållare är en mycket vanlig metod för att distribuera webbprogram. Genom att använda Docker-behållare kan konsolidera utvecklare sina projektfiler och beroenden i ett enda paket för distribution tooa server. hello Azure Toolkit för IntelliJ förenklar processen för Java-utvecklare genom att lägga till *Publicera som Dockerbehållare* funktioner för distribution tooMicrosoft Azure. Den här artikeln vägleder dig genom hello steg krävs toopublish program-tooAzure som Docker-behållare.
 
 > [!NOTE]
 >
-> Mer information om Docker är tillgängligt på den [Docker webbplats].
+> Mer information om Docker är tillgänglig på hello [Docker webbplats].
 >
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="publish-your-web-app-to-azure-by-using-a-docker-container"></a>Publicera webbappen till Azure med hjälp av en dockerbehållare
+## <a name="publish-your-web-app-tooazure-by-using-a-docker-container"></a>Publicera din web app tooAzure med hjälp av en dockerbehållare
 
 > [!NOTE]
-> * För att publicera ditt webbprogram, måste du skapa en distribution redo artefakt. Mer information finns i [ytterligare information om hur du skapar artefakter](#artifacts) avsnitt.
+> * toopublish ditt webbprogram måste du skapa en distribution redo artefakt. toolearn finns fler hello [ytterligare information om hur du skapar artefakter](#artifacts) avsnitt.
 >
-> * När du har slutfört guiden minst en gång, är de flesta inställningarna används som standard när du kör guiden igen.
+> * När du har slutfört guiden för distribution av hello minst en gång, används de flesta av inställningarna som standard när du kör hello guiden igen.
 >
 
 1. Öppna din webbappsprojektet i IntelliJ.
 
-2. Starta den **Publicera som Dockerbehållare** guiden gör du något av följande:
+2. toostart hello **Publicera som Dockerbehållare** guiden gör du något av följande hello:
 
-   * I den **projekt** verktyg fönstret, högerklicka på ditt projekt, klickar du på **Azure**, och klicka sedan på **Publicera som Dockerbehållare**:
+   * I hello **projekt** verktyg fönstret, högerklicka på ditt projekt, klickar du på **Azure**, och klicka sedan på **Publicera som Dockerbehållare**:
 
-      ![Publicera som Dockerbehållare kommando][PUB01]
+      ![hello Publicera som Dockerbehållare kommando][PUB01]
 
-   * Klicka på verktygsfältet IntelliJ den **publicera grupp** knappen och klicka sedan på **Publicera som Dockerbehållare**:
+   * Hello på hello IntelliJ verktygsfältet **publicera grupp** knappen och klicka sedan på **Publicera som Dockerbehållare**:
 
-      ![Publicera som Dockerbehållare kommando][PUB02]  
-    Den **distribuera Dockerbehållare på Azure** öppnas guiden.
+      ![hello Publicera som Dockerbehållare kommando][PUB02]  
+    Hej **distribuera Dockerbehållare på Azure** öppnas guiden.
 
-   ![Dockerbehållare distribuera på Azure-guiden][PUB03]
+   ![hello distribuera Dockerbehållare på Azure-guiden][PUB03]
 
-3. I den **skriver du ett namn, Välj den artefakt sökväg och kontrollera en Docker-värden som ska användas** fönster, gör du följande: 
+3. I hello **skriver du ett namn, Välj hello artefakt sökväg och kontrollera en Docker värden toobe används** fönstret hello följande: 
 
-   a. I den **Docker avbildningsnamn** ange ett unikt namn för Docker-värden. (Skapar guiden automatiskt ett namn, men du kan ändra den.) 
+   a. I hello **Docker avbildningsnamn** ange ett unikt namn för Docker-värden. (hello guiden skapar automatiskt ett namn, men du kan ändra den.) 
 
-   b. Den **värdar** området visas alla Docker-värdar som du redan har skapat. Gör något av följande: 
-      * Om du har en befintlig Docker-värd kan distribuera du ditt webbprogram till den.
-      * Klicka för att skapa en Docker-värd grönt plustecken (**+**).  
-       Den **skapa Docker värden** öppnas. 
+   b. Hej **värdar** området visas alla Docker-värdar som du redan har skapat. Gör något av följande hello: 
+      * Om du har en befintlig Docker-värd kan distribuera du din web app tooit.
+      * toocreate en Docker-värd, klicka hello grönt plustecken (**+**).  
+       Hej **skapa Docker värden** öppnas. 
 
       ![Distribuera Dockerbehållare på Azure-guiden][PUB04a]
 
-4. I den **konfigurera den nya virtuella datorn** och ange följande information om Docker-värd. (Guiden genererar automatiskt de flesta av information för att du, men du kan ändra någon av dem.) 
+4. I hello **konfigurera hello ny virtuell dator** fönstret Ange hello följande information om Docker-värden. (hello guiden genererar automatiskt de flesta av hello-information, men du kan ändra någon av dem.) 
 
-   a. I den **namn** ange ett unikt namn för Docker-värden. (Det är inte samma som Docker avbildningens namn som du angav tidigare.) 
+   a. I hello **namn** ange ett unikt namn för hello Docker-värden. (Det är inte hello samma som hello Docker avbildningens namn som du angav tidigare.) 
     
-   b. I den **prenumeration** ange Azure-prenumeration som du använder för värden. 
+   b. I hello **prenumeration** ange hello Azure-prenumeration som du använder för värden. 
       
-   c. I den **Region** ange den geografiska region där värden finns.
+   c. I hello **Region** ange hello geografisk region där värden finns.
       
-   d. På den **OS- och** gör följande:      
-      * **Värd för OS**: Ange operativsystemet för den virtuella datorn som innehåller värden. 
-      * **Storlek**: Ange storleken på virtuella datorn för värden.   
+   d. På hello **OS- och** fliken, hello följande:      
+      * **Värd för OS**: Ange hello operativsystemet för hello virtuell dator som innehåller värden. 
+      * **Storlek**: Ange hello storlek för virtuell dator för värden.   
        
-   e. På den **resursgruppen** väljer du något av följande:      
+   e. På hello **resursgruppen** väljer du något av följande hello:      
       * **Ny resursgrupp**: skapa en resursgrupp för värden.
       * **Befintlig resursgrupp**: Ange en befintlig resursgrupp från ditt Azure-konto. 
        
-   f. På den **nätverk** väljer du något av följande:      
+   f. På hello **nätverk** väljer du något av följande hello:      
       * **Nytt virtuellt nätverk**: skapa ett virtuellt nätverk för värden.
       * **Befintligt virtuellt nätverk**: Ange ett befintligt virtuellt nätverk från ditt Azure-konto. 
        
-   g. På den **lagring** väljer du något av följande:      
+   g. På hello **lagring** väljer du något av följande hello:      
       * **Nytt lagringskonto**: skapa ett lagringskonto för värden.
       * **Befintligt lagringskonto**: Ange ett befintligt lagringskonto från Azure-konto.
        
 5. Klicka på **Nästa**.  
-     Den **Konfigurera logg i autentiseringsuppgifter och portinställningarna** öppnas.
+     Hej **Konfigurera logg i autentiseringsuppgifter och portinställningarna** öppnas.
 
-      ![Konfigurera loggen i autentiseringsuppgifter och port inställningar][PUB05]
+      ![hello Konfigurera logg i autentiseringsuppgifter och port inställningar][PUB05]
 
-6. Välj något av följande alternativ:
+6. Välj något av följande alternativ för hello:
 
       * **Importera autentiseringsuppgifter från Azure Key Vault**: Ange en tidigare sparad uppsättning autentiseringsuppgifter som lagras i din Azure-prenumeration.
 
           > [!NOTE]
-          > Ett Azure key vault som har skapats med ett visst konto eller tjänstens huvudnamn är inte tillgänglig automatiskt av ett annat konto eller tjänstens huvudnamn som delar prenumerationen. För att ett annat konto eller service principal att använda nyckelvalvet, måste du använda Azure-portalen för att lägga till kontot eller tjänstens huvudnamn.
+          > Ett Azure key vault som har skapats med ett visst konto eller tjänstens huvudnamn är inte tillgänglig automatiskt av ett annat konto eller tjänstens huvudnamn som delar hello prenumeration. tooallow ett annat konto eller service principal toouse hello nyckeln valvet, måste du använda hello Azure portal tooadd hello konto eller tjänstens huvudnamn.
 
-      * **Ny logg i autentiseringsuppgifter**: skapa en ny uppsättning autentiseringsuppgifter för inloggning. Om du väljer det här alternativet måste du göra följande:
+      * **Ny logg i autentiseringsuppgifter**: skapa en ny uppsättning autentiseringsuppgifter för inloggning. Om du väljer det här alternativet hello följande:
 
-        a. På den **VM autentiseringsuppgifter** och ange följande information för virtuell dator inloggningsuppgifterna för Docker-värd: * **användarnamn**: Ange användarnamnet för dina inloggningsuppgifter för virtuella datorer.
-             * **Lösenordet** och **Bekräfta**: Ange lösenordet för dina inloggningsuppgifter för virtuella datorer.
-             * **SSH**: Ange inställningar för SSH (Secure Shell) för Docker-värden. Du kan välja något av följande alternativ: * **ingen**: Anger att den virtuella datorn inte tillåter SSH-anslutningar.
-                * **Autogenerera**: skapar automatiskt de nödvändiga inställningarna för att ansluta via SSH.
-                * **Importera från directory**: kan du ange en katalog som innehåller en uppsättning tidigare sparade SSH-inställningar. Katalogen måste innehålla följande två filer:
+        a. På hello **VM autentiseringsuppgifter** och ange följande information för hello inloggningsuppgifterna för virtuella datorer i din Docker-värd hello: * **användarnamn**: Ange hello användarnamn för virtuell dator-inloggning autentiseringsuppgifter.
+             * **Lösenordet** och **Bekräfta**: Ange hello lösenord för dina inloggningsuppgifter för virtuella datorer.
+             * **SSH**: Ange inställningar för hello SSH (Secure Shell) för Docker-värden. Du kan välja något av följande alternativ för hello: * **ingen**: Anger att den virtuella datorn inte tillåter SSH-anslutningar.
+                * **Autogenerera**: skapar automatiskt hello nödvändiga inställningar för att ansluta via SSH.
+                * **Importera från directory**: tillåter toospecify en katalog som innehåller en uppsättning tidigare sparade SSH-inställningar. hello directory måste innehålla hello följande två filer:
                 
-                  * *id_rsa*: Contains the RSA identification for a user.
-                  * *id_rsa.pub*: Contains the RSA public key that is used for authentication.
+                  * *id_rsa*: Contains hello RSA identification for a user.
+                  * *id_rsa.pub*: Contains hello RSA public key that is used for authentication.
             
-        b. På den **Docker Daemon åtkomst** och ange följande information:
+        b. På hello **Docker Daemon åtkomst** fliken, ange hello följande information:
 
           ![Skapa Docker-värd][PUB06]
     
-             * **Docker Daemon port**: Enter the unique TCP port for your Docker host.
-             * **TLS Security**: Enter the Transport Layer Security settings for your Docker host. You can choose from the following options:
+             * **Docker Daemon port**: Enter hello unique TCP port for your Docker host.
+             * **TLS Security**: Enter hello Transport Layer Security settings for your Docker host. You can choose from hello following options:
                 * **None**: Specifies that your virtual machine does not allow TLS connections.
-                * **Auto-generate**: Automatically creates the requisite settings for connecting via TLS.
-                * **Import from directory**: Specifies a directory that contains a set of previously saved TLS settings. The directory must contain the following six files: 
-                   * *ca.pem* and *ca-key.pem*: Contain the certificate and public key for the TLS Certificate Authority.
+                * **Auto-generate**: Automatically creates hello requisite settings for connecting via TLS.
+                * **Import from directory**: Specifies a directory that contains a set of previously saved TLS settings. hello directory must contain hello following six files: 
+                   * *ca.pem* and *ca-key.pem*: Contain hello certificate and public key for hello TLS Certificate Authority.
                    * *cert.pem* and *key.pem*: Contain client certificate and public key which will be used for TLS authentication.
-                   * *server.pem* and *server-key.pem*: Contain the client certificate and public key that is used for TLS authentication.
+                   * *server.pem* and *server-key.pem*: Contain hello client certificate and public key that is used for TLS authentication.
 
-7. När du har angett informationen som krävs, klickar du på **Slutför**.  
-    Den **distribuera Dockerbehållare på Azure** guiden visas igen.
+7. När du har angett hello krävs information klickar du på **Slutför**.  
+    Hej **distribuera Dockerbehållare på Azure** guiden visas igen.
 
    ![Distribuera Dockerbehållare på Azure-guiden][PUB07]
 
 8. Klicka på **Nästa**.  
-    Den **konfigurera dockerbehållare skapas** öppnas.
+    Hej **konfigurera hello Docker behållare toobe skapade** öppnas.
 
-   ![Konfigurera Docker-behållare skapas fönster][PUB08]
+   ![hello konfigurera hello Docker behållare toobe skapade fönster][PUB08]
 
-9. I den **konfigurera dockerbehållare skapas** och ange följande information: 
+9. I hello **konfigurera hello Docker behållare toobe skapade** fönstret Ange hello följande information: 
 
-   a. I den **Docker behållarnamn** ange ett unikt namn för din dockerbehållare.
+   a. I hello **Docker behållarnamn** ange ett unikt namn för din dockerbehållare.
 
-   b. Välj något av följande Docker-bilder: 
+   b. Välj något av hello följande Docker bilder: 
 
       * **Fördefinierade Docker bild**: Ange en befintlig Docker-avbildning från Azure. 
 
         > [!NOTE]
-        > Listan med Docker bilder i den här rutan består av flera avbildningar som Azure-verktygen har konfigurerats för att korrigera så att din artefakt distribueras automatiskt. 
+        > hello listan med Docker bilder i den här rutan består av flera avbildningar som hello Azure Toolkit har konfigurerats toopatch så att din artefakt distribueras automatiskt. 
 
       * **Anpassade Dockerfile**: Ange en tidigare sparad Dockerfile från den lokala datorn.
 
         > [!NOTE]
-        > Detta är en avancerad funktion för utvecklare som vill distribuera sina egna Dockerfile. Men är det utvecklare som använder det här alternativet för att säkerställa att deras Dockerfile är uppbyggd. Eftersom Azure-verktyget inte validerar innehållet i en anpassad Dockerfile, kan distributionen misslyckas om Dockerfile har problem. Dessutom eftersom Azure Toolkit förväntar anpassade Dockerfile ska innehålla en web app artefakt, försöker öppna en HTTP-anslutning. Om utvecklare publicerar en annan typ av artefakt, kan de få harmlöst fel efter distributionen.
+        > Detta är en avancerad funktion för utvecklare som vill toodeploy sina egna Dockerfile. Dock är det upp toodevelopers som använder det här alternativet tooensure som deras Dockerfile är uppbyggd. Eftersom hello Azure Toolkit inte kan valideras hello innehållet i en anpassad Dockerfile, misslyckas hello distributionen om hello Dockerfile har problem. Dessutom eftersom hello Azure Toolkit förväntar hello anpassade Dockerfile toocontain en web app artefakt, försöker den tooopen en HTTP-anslutning. Om utvecklare publicerar en annan typ av artefakt, kan de få harmlöst fel efter distributionen.
 
-   c. I den **portinställningarna** ange unika TCP-portbindningen för Docker-behållare. 
+   c. I hello **portinställningarna** ange hello unik TCP-port bindning för Docker-behållare. 
 
-10. När du har slutfört föregående steg klickar du på **Slutför**. 
+10. När du har slutfört föregående steg hello, klickar du på **Slutför**. 
 
-Azure-Toolkit börjar distribuera webbappen till Azure i en dockerbehållare. Om du har konfigurerat IntelliJ som ska distribueras i bakgrunden, en **distribution till Azure** förloppsindikatorn visas. 
+hello Azure Toolkit börjar distribuera din web app tooAzure i en dockerbehållare. Om du har konfigurerat IntelliJ toobe distribuerats i hello bakgrund, en **distribuera tooAzure** förloppsindikatorn visas. 
 
-![Förloppsindikatorn för distribution][PUB09]
+![hello förloppsindikatorn för distribution][PUB09]
 
 <a name="artifacts"></a>
 ## <a name="additional-information-about-creating-artifacts"></a>Mer information om hur du skapar artefakter
 
-Om du vill skapa en artefakt distribution är redo att göra följande:
+toocreate distribution redo-artefakt hello följande:
 
 1. Öppna din webbappsprojektet i IntelliJ.
 
 2. Klicka på **filen**, och klicka sedan på **projektstruktur**.
 
-   ![Kommandot projektstruktur][ART01]
+   ![hello projektstruktur kommando][ART01]
 
-3. Lägg till en artefakt, klicka på grönt plustecken (**+**), och klicka sedan på **webbprogrammet: Arkiv**.
+3. tooadd en artefakt, klicka hello grönt plustecken (**+**), och klicka sedan på **webbprogrammet: Arkiv**.
 
-   ![Kommandot ”program: Webbarkiv”][ART02]
+   ![Hej ”program: webbarkiv” kommando][ART02]
 
-4. I den **namn** anger du ett namn för din artefakt (inkluderar inte den *.war* tillägget), och klicka sedan på **OK**.
+4. I hello **namn** anger du ett namn för din artefakt (inkluderar inte hello *.war* tillägget), och klicka sedan på **OK**.
 
-   ![Rutan artefakt][ART03]
+   ![hello artefakt namn.][ART03]
 
-Läs mer om hur du skapar artefakter i IntelliJ [konfigurera artefakter] på webbplatsen JetBrains.
+Läs mer om hur du skapar artefakter i IntelliJ [konfigurera artefakter] på hello JetBrains webbplats.
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om Azure-verktyg för Java IDEs finns i följande resurser:
+Mer information om hello Azure-verktyg för Java IDEs finns hello följande resurser:
 
 * [Azure Toolkit för Eclipse]
-  * [Vad är nytt i Azure-verktygen för Eclipse]
-  * [Installera Azure Toolkit för Eclipse]
-  * [Logga in-instruktioner för Azure-verktygen för Eclipse]
+  * [Vad är nytt i hello Azure Toolkit för Eclipse]
+  * [Installera hello Azure Toolkit för Eclipse]
+  * [Logga in anvisningar hello Azure Toolkit för Eclipse]
   * [Skapa en Hello World-webbapp för Azure i Eclipse]
 * [Azure Toolkit för IntelliJ]
-  * [Vad är nytt i Azure-verktygen för IntelliJ]
-  * [Installera Azure Toolkit för IntelliJ]
-  * [Logga in instruktioner för Azure-Toolkit för IntelliJ]
+  * [Vad är nytt i hello Azure Toolkit för IntelliJ]
+  * [Installera hello Azure Toolkit för IntelliJ]
+  * [Logga in instruktioner för hello Azure Toolkit för IntelliJ]
   * [Skapa en Hello World-webbapp för Azure i IntelliJ]
 
-Mer information om hur du använder Azure med Java finns på [Azure Java Developer Center] och i [Java Tools för Visual Studio Team Services].
+Mer information om hur du använder Azure med Java finns hello [Azure Java Developer Center] och hello [Java-verktyg för Visual Studio Team Services].
 
-Ytterligare resurser för Docker finns i officiellt [Docker webbplats].
+För ytterligare resurser för Docker Se hello officiella [Docker webbplats].
 
 <!-- URL List -->
 
@@ -204,15 +204,15 @@ Ytterligare resurser för Docker finns i officiellt [Docker webbplats].
 [Azure Toolkit för IntelliJ]: ./azure-toolkit-for-intellij.md
 [Skapa en Hello World-webbapp för Azure i Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
 [Skapa en Hello World-webbapp för Azure i IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Installera Azure Toolkit för Eclipse]: ./azure-toolkit-for-eclipse-installation.md
-[Installera Azure Toolkit för IntelliJ]: ./azure-toolkit-for-intellij-installation.md
-[Logga in-instruktioner för Azure-verktygen för Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
-[Logga in instruktioner för Azure-Toolkit för IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[Vad är nytt i Azure-verktygen för Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
-[Vad är nytt i Azure-verktygen för IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
+[Installera hello Azure Toolkit för Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Installera hello Azure Toolkit för IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Logga in anvisningar hello Azure Toolkit för Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Logga in instruktioner för hello Azure Toolkit för IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
+[Vad är nytt i hello Azure Toolkit för Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[Vad är nytt i hello Azure Toolkit för IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
 [Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[Java Tools för Visual Studio Team Services]: https://java.visualstudio.com/
+[Java-verktyg för Visual Studio Team Services]: https://java.visualstudio.com/
 
 [Docker webbplats]: https://www.docker.com/
 [konfigurera artefakter]: https://www.jetbrains.com/help/idea/2016.1/configuring-artifacts.html

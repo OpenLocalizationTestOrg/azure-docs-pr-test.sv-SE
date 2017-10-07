@@ -1,6 +1,6 @@
 ---
-title: "Säkerhetskopiera din app i Azure"
-description: "Lär dig hur du skapar säkerhetskopior av dina appar i Azure App Service."
+title: aaaBack in din app i Azure
+description: "Lär dig hur toocreate säkerhetskopior av dina appar i Azure App Service."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 77e983afaaba8e944ab1f337e1c28ced83b63205
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e41d93d322bbc48b45b28eeaa817928d83c2b9d6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="back-up-your-app-in-azure"></a>Säkerhetskopiera din app i Azure
-Baksidan upp och funktionen för återställning i [Azure App Service](../app-service/app-service-value-prop-what-is.md) kan du enkelt skapa app säkerhetskopiering manuellt eller enligt ett schema. Du kan återställa appen till en ögonblicksbild av ett tidigare tillstånd genom att skriva över den befintliga appen eller återställa till en annan app. 
+Hej säkerhetskopiera och återställa funktion i [Azure App Service](../app-service/app-service-value-prop-what-is.md) kan du enkelt skapa app säkerhetskopiering manuellt eller enligt ett schema. Du kan återställa hello app tooa ögonblicksbild av ett tidigare tillstånd genom överskrivning hello befintliga app eller återställa tooanother app. 
 
 Information om hur du återställer en app från en säkerhetskopia finns [återställa en app i Azure](web-sites-restore.md).
 
 <a name="whatsbackedup"></a>
 
 ## <a name="what-gets-backed-up"></a>Vad säkerhetskopieras
-Apptjänst kan säkerhetskopiera följande information för ett Azure storage-konto och en behållare som du har konfigurerat din app ska använda. 
+Apptjänst kan säkerhetskopiera hello följande information tooan Azure storage-konto och en behållare som du har konfigurerat din app toouse. 
 
 * Appkonfiguration
 * Filinnehåll
-* Databas som är ansluten till din app
+* Databasen anslutna tooyour app
 
-Följande databaslösningar stöds med funktionen för säkerhetskopiering: 
+hello följande databaslösningar för stöds med funktionen för säkerhetskopiering: 
    - [SQL Database](https://azure.microsoft.com/en-us/services/sql-database/)
    - [Azure-databas för MySQL (förhandsgranskning)](https://azure.microsoft.com/en-us/services/mysql)
    - [Azure-databas för PostgreSQL (förhandsgranskning)](https://azure.microsoft.com/en-us/services/postgres)
@@ -49,116 +49,116 @@ Följande databaslösningar stöds med funktionen för säkerhetskopiering:
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>Krav och begränsningar
-* Baksidan upp och återställa funktionen kräver App Service-plan i den **Standard** nivå eller **Premium** nivå. Läs mer om att skala din programtjänstplan att använda en högre nivå, [skala upp en app i Azure](web-sites-scale.md).  
+* Hej säkerhetskopiera och återställa funktionen kräver hello App Service-plan toobe i hello **Standard** nivå eller **Premium** nivå. Läs mer om att skala din App Service-plan toouse en högre nivå, [skala upp en app i Azure](web-sites-scale.md).  
   **Premium** nivå kan ett större antal daglig säkerhetskopiering än **Standard** nivå.
-* Du behöver ett Azure storage-konto och behållaren i samma prenumeration som den app som du vill säkerhetskopiera. Mer information om Azure storage-konton finns i [länkar](#moreaboutstorage) i slutet av den här artikeln.
-* Säkerhetskopieringar kan vara upp till 10 GB app- och innehåll. Om säkerhetskopians storlek överskrider denna gräns, inträffar ett fel.
+* Du behöver ett Azure storage-konto och en behållare i hello samma prenumeration som hello app som du vill toobackup. Mer information om Azure storage-konton finns hello [länkar](#moreaboutstorage) hello slutet av den här artikeln.
+* Säkerhetskopieringar kan vara upp too10 GB app- och innehåll. Hej säkerhetskopiestorlek överskrider denna gräns, får du ett fel.
 
 <a name="manualbackup"></a>
 
 ## <a name="create-a-manual-backup"></a>Skapa en manuell säkerhetskopia
-1. I den [Azure Portal](https://portal.azure.com)navigerar du till bladet för din app, Välj **säkerhetskopieringar**. Den **säkerhetskopieringar** bladet visas.
+1. I hello [Azure Portal](https://portal.azure.com)navigerar tooyour appens blad, Välj **säkerhetskopieringar**. Hej **säkerhetskopieringar** bladet visas.
    
     ![Säkerhetskopieringar sida][ChooseBackupsPage]
    
    > [!NOTE]
-   > Om meddelandet nedan visas klickar du på den för att uppgradera din programtjänstplan innan du kan fortsätta med säkerhetskopiering.
+   > Om du ser nedan hello-meddelande, klicka på den tooupgrade din programtjänstplan innan du kan fortsätta med säkerhetskopiering.
    > Se [skala upp en app i Azure](web-sites-scale.md) för mer information.  
    > ![Välj lagringskonto](./media/web-sites-backup/01UpgradePlan1.png)
    > 
    > 
 
-2. I den **säkerhetskopiering** bladet Klicka **konfigurera**
+2. I hello **säkerhetskopiering** bladet Klicka **konfigurera**
 ![Klicka på Konfigurera](./media/web-sites-backup/ClickConfigure1.png)
-3. I den **konfigurering av säkerhetskopiering** bladet, klickar du på **lagring: inte konfigurerat** så här konfigurerar du ett storage-konto.
+3. I hello **konfigurering av säkerhetskopiering** bladet, klickar du på **lagring: inte konfigurerat** tooconfigure ett lagringskonto.
    
     ![Välj lagringskonto][ChooseStorageAccount]
-4. Välj ditt mål för säkerhetskopian genom att välja en **Lagringskonto** och **behållare**. Storage-konto måste tillhöra samma prenumeration som den app du vill säkerhetskopiera. Om du vill kan du skapa ett nytt lagringskonto eller en ny behållare i respektive blad. När du är klar klickar du på **Välj**.
+4. Välj ditt mål för säkerhetskopian genom att välja en **Lagringskonto** och **behållare**. hello storage-kontot måste höra toohello samma prenumeration som hello-app som du vill att tooback. Om du vill kan skapa du ett nytt lagringskonto eller en ny behållare i respektive hello-blad. När du är klar klickar du på **Välj**.
    
     ![Välj lagringskonto](./media/web-sites-backup/02ChooseStorageAccount1-1.png)
-5. I den **konfigurering av säkerhetskopiering** bladet som lämnas fortfarande öppen kan du konfigurera **Backup Database**, sedan väljer du databaserna som du vill inkludera i säkerhetskopiering (SQL-databas eller MySQL) och sedan på **OK**.  
+5. I hello **konfigurering av säkerhetskopiering** bladet som lämnas fortfarande öppen kan du konfigurera **Backup Database**, Välj hello databaser du vill tooinclude hello säkerhetskopior (SQL-databas eller MySQL), och klicka sedan på **OK**.  
    
     ![Välj lagringskonto](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
-   > För en databas ska visas i den här listan sin anslutningssträng måste finnas i den **anslutningssträngar** avsnitt i den **programinställningar** bladet för din app.
+   > För en databas tooappear i den här listan sin anslutningssträng måste finnas i hello **anslutningssträngar** avsnitt i hello **programinställningar** bladet för din app.
    > 
    > 
-6. I den **konfigurering av säkerhetskopiering** bladet, klickar du på **spara**.    
-7. I den **säkerhetskopieringar** bladet, klickar du på **säkerhetskopiering**.
+6. I hello **konfigurering av säkerhetskopiering** bladet, klickar du på **spara**.    
+7. I hello **säkerhetskopieringar** bladet, klickar du på **säkerhetskopiering**.
    
     ![Knappen BackUpNow][BackUpNow]
    
-    Du kan se något pågående meddelande under säkerhetskopieringen.
+    Du ser något pågående meddelande under hello säkerhetskopieringsprocessen.
 
-När lagringskontot och behållaren har konfigurerats kan du initiera en manuell säkerhetskopiering när som helst.  
+När hello storage-konto och behållaren har konfigurerats kan du initiera en manuell säkerhetskopiering när som helst.  
 
 <a name="automatedbackups"></a>
 
 ## <a name="configure-automated-backups"></a>Konfigurera automatisk säkerhetskopiering
-1. I den **Säkerhetskopieringskonfigurationen** bladet ange **schemalagd säkerhetskopiering** till **på**. 
+1. I hello **Säkerhetskopieringskonfigurationen** bladet ange **schemalagd säkerhetskopiering** för**på**. 
    
     ![Välj lagringskonto](./media/web-sites-backup/05ScheduleBackup1.png)
-2. Ange schemat för säkerhetskopiering alternativ visas, **schemalagd säkerhetskopiering** till **på**, konfigurerar schemat för säkerhetskopiering enligt önskemål och klickar på **OK**.
+2. Ange schemat för säkerhetskopiering alternativ visas, **schemalagd säkerhetskopiering** för**på**, konfigurerar schemat för säkerhetskopiering av hello enligt önskemål och klickar på **OK**.
    
     ![Aktivera automatisk säkerhetskopiering][SetAutomatedBackupOn]
 
 <a name="partialbackups"></a>
 
 ## <a name="configure-partial-backups"></a>Konfigurera partiella säkerhetskopieringar
-Ibland vill du inte säkerhetskopiera allt på din app. Några exempel:
+Ibland vill du inte toobackup allt på din app. Några exempel:
 
 * Du [konfigurera veckovisa säkerhetskopior](web-sites-backup.md#configure-automated-backups) för din app med statiskt innehåll som aldrig ändras, till exempel gamla blogginlägg eller bilder.
-* Appen har över 10 GB innehåll (som är den högsta du kan säkerhetskopiera i taget).
-* Du vill inte säkerhetskopiera filerna.
+* Appen har över 10 GB innehåll (som är Hej max du kan säkerhetskopiera i taget).
+* Vill du inte toobackup hello loggfiler.
 
-Partiella säkerhetskopior kan du ange exakt vilka filer som du vill säkerhetskopiera.
+Partiella säkerhetskopior kan du ange exakt vilka filer som du vill toobackup.
 
 ### <a name="exclude-files-from-your-backup"></a>Undanta filer från säkerhetskopian
-Anta att du har en app som innehåller loggfiler och statiska bilder som har säkerhetskopiera en gång och inte kommer att ändras. I sådana fall kan du utesluta dessa mappar och filer lagras i dina framtida säkerhetskopieringar. Om du vill undanta filer och mappar från säkerhetskopiorna, skapa en `_backup.filter` filen i den `D:\home\site\wwwroot` mappen för din app. Ange en lista över filer och mappar som ska läggas till i den här filen. 
+Anta att du har en app som innehåller loggfiler och statiska bilder som har säkerhetskopiera en gång och inte kommer toochange. I sådana fall kan du utesluta dessa mappar och filer lagras i dina framtida säkerhetskopieringar. tooexclude filer och mappar från säkerhetskopiorna, skapa en `_backup.filter` filen i hello `D:\home\site\wwwroot` mappen för din app. Ange hello lista över filer och mappar som du vill tooexclude i den här filen. 
 
-Ett enkelt sätt att komma åt dina filer är att använda Kudu. Klicka på **avancerade verktyg -> Gå** för ditt webbprogram att komma åt Kudu.
+Ett enkelt sätt tooaccess dina filer är toouse Kudu. Klicka på **avancerade verktyg -> Gå** för din web app tooaccess Kudu.
 
 ![Kudu med hjälp av portalen][kudu-portal]
 
-Identifiera de mappar som du vill undanta från säkerhetskopiorna.  Till exempel att du vill filtrera bort de markerade kataloger och filer.
+Identifiera hello mappar som du vill tooexclude från säkerhetskopiorna.  Till exempel vill du toofilter ut hello markerade mappen och filer.
 
 ![Mappen avbildningar][ImagesFolder]
 
-Skapa en fil med namnet `_backup.filter` och placera listan ovan i filen, men ta bort `D:\home`. Ange en mapp eller fil per rad. Så att innehållet i filen bör vara:
+Skapa en fil med namnet `_backup.filter` och placera hello listan ovan i hello-fil, men ta bort `D:\home`. Ange en mapp eller fil per rad. Så bör hello innehållet hello filen vara:
  ```bash
     \site\wwwroot\Images\brand.png
     \site\wwwroot\Images\2014
     \site\wwwroot\Images\2013
 ```
 
-Överför `_backup.filter` filen till den `D:\home\site\wwwroot\` för din webbplats med [ftp](web-sites-deploy.md#ftp) eller någon annan metod. Om du vill kan du skapa filen direkt med Kudu `DebugConsole` och infoga det innehållet.
+Överför `_backup.filter` filen toohello `D:\home\site\wwwroot\` för din webbplats med [ftp](web-sites-deploy.md#ftp) eller någon annan metod. Om du vill kan du skapa hello-filen direkt med Kudu `DebugConsole` och infoga det hello-innehåll.
 
-Köra säkerhetskopieringar på samma sätt som du skulle göra det, [manuellt](#create-a-manual-backup) eller [automatiskt](#configure-automated-backups). Nu alla filer och mappar som anges i `_backup.filter` är exkluderad från framtida säkerhetskopieringar schemalagd eller manuell start. 
+Köra säkerhetskopieringar hello samma sätt som du skulle göra det, [manuellt](#create-a-manual-backup) eller [automatiskt](#configure-automated-backups). Nu alla filer och mappar som anges i `_backup.filter` är exkluderad från hello framtida säkerhetskopieringar schemalagd eller manuell start. 
 
 > [!NOTE]
-> Du kan återställa partiella säkerhetskopior av din webbplats på samma sätt som [återställa en säkerhetskopia av vanliga](web-sites-restore.md). Återställningen har rätta.
+> Du återställer partiella säkerhetskopior av din webbplats hello samma sätt som [återställa en säkerhetskopia av vanliga](web-sites-restore.md). hello återställningsprocessen hello rätta.
 > 
-> När en fullständig säkerhetskopia återställs ersätts allt innehåll på webbplatsen med säkerhetskopieringen. Om en fil på platsen, men inte i säkerhetskopian tas bort. Men när en partiell säkerhetskopia återställs allt innehåll som finns i en av de svartlistat katalogerna eller en svartlistat fil är kvar.
+> När en fullständig säkerhetskopia återställs ersätts allt innehåll på hello plats med hello säkerhetskopiering. Om en fil på hello plats, men inte i hello säkerhetskopiering tas bort. Men när en partiell säkerhetskopia återställs allt innehåll som finns i en av hello övriga kataloger eller en svartlistat fil är kvar.
 > 
 
 
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Hur säkerhetskopior lagras
-När du har gjort en eller flera säkerhetskopieringar för din app, säkerhetskopiorna är synliga på den **behållare** bladet för ditt lagringskonto och din app. Storage-konto varje säkerhetskopiering består av en`.zip` -fil som innehåller den säkerhetskopiera informationen och en `.xml` -fil som innehåller ett manifest för den `.zip` filinnehåll. Du kan packa och bläddra bland dessa filer om du vill komma åt dina säkerhetskopieringar utan att faktiskt utföra en app-återställning.
+När du har gjort en eller flera säkerhetskopieringar för din app, hello säkerhetskopior är synliga på hello **behållare** bladet för ditt lagringskonto och din app. I hello lagringskonto varje säkerhetskopiering består av en`.zip` -fil som innehåller hello säkerhetskopierade data och en `.xml` -fil som innehåller ett manifest för hello `.zip` filinnehåll. Du kan packa och bläddra bland dessa filer om du vill tooaccess dina säkerhetskopieringar utan att faktiskt utföra en app-återställning.
 
-Säkerhetskopieringen av databasen för appen lagras i roten av the.zip-filen. För en SQL-databas är en BACPAC-fil (utan filtillägget) och kan importeras. Om du vill skapa en SQL-databas som är baserat på BACPAC export finns [importera en BACPAC-fil för att skapa en ny databas](http://technet.microsoft.com/library/hh710052.aspx).
+hello säkerhetskopiering av databasen för hello app lagras i hello rot the.zip filen. För en SQL-databas är en BACPAC-fil (utan filtillägget) och kan importeras. toocreate en SQL-databas utifrån hello BACPAC export, se [importera en BACPAC filen tooCreate en ny databas](http://technet.microsoft.com/library/hh710052.aspx).
 
 > [!WARNING]
-> Ändra alla filer i din **websitebackups** behållare kan orsaka att säkerhetskopieringen blir ogiltigt och därför icke-återställningsbara.
+> Ändra någon av hello filer i din **websitebackups** behållare kan orsaka hello säkerhetskopiering toobecome ogiltiga och därför icke-återställningsbara.
 > 
 > 
 
 <a name="nextsteps"></a>
 
 ## <a name="next-steps"></a>Nästa steg
-Information om hur du återställer en app från en säkerhetskopia finns [återställa en app i Azure](web-sites-restore.md). Du kan också säkerhetskopiera och återställa Apptjänst-appar med hjälp av REST-API (se [Använd REST säkerhetskopiera och återställa Apptjänst-appar](websites-csm-backup.md)).
+Information om hur du återställer en app från en säkerhetskopia finns [återställa en app i Azure](web-sites-restore.md). Du kan också säkerhetskopiera och återställa Apptjänst-appar med hjälp av REST-API (se [Använd REST toobackup och återställning av Apptjänst-appar](websites-csm-backup.md)).
 
 
 <!-- IMAGES -->

@@ -1,6 +1,6 @@
 ---
-title: "Samla in loggar med hjälp av Azure-diagnostik för Linux | Microsoft Docs"
-description: "Den här artikeln beskriver hur du ställer in Azure-diagnostik för att samla in loggar från ett Service Fabric Linux-kluster som körs i Azure."
+title: "aaaCollect loggar med hjälp av Azure-diagnostik för Linux | Microsoft Docs"
+description: "Den här artikeln beskriver hur tooset in Azure-diagnostik toocollect loggar från ett Service Fabric Linux-kluster som körs i Azure."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/28/2017
 ms.author: subramar
-ms.openlocfilehash: 3e41caaeb38c55d1c6c3bfdce2f81c86b4aff4d0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f61172876e744ea3e361f9ae513254239d6ba27f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="collect-logs-by-using-azure-diagnostics"></a>Samla in loggar med Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -27,25 +27,25 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-När du kör ett Azure Service Fabric-kluster, är det en bra idé att samla in loggar från alla noder i en central plats. Med loggarna på en central plats gör det enkelt att analysera och felsöka problem, oavsett om de är i dina tjänster, programmet eller själva klustret. Ett sätt att överföra och samla in loggar är att använda Azure-diagnostik-tillägget, som överför loggar till Azure Storage, Azure Application Insights eller Händelsehubbar i Azure. Du kan också läsa händelser från lagringsenheter eller Event Hubs och placera dem i en produkt som [logganalys](../log-analytics/log-analytics-service-fabric.md) eller en annan lösning för parsning av loggen. [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) levereras med en omfattande sökning och analyser Loggtjänsten inbyggda.
+När du kör ett Azure Service Fabric-kluster, är det en bra idé toocollect hello loggar från alla hello noder på en central plats. Med hello loggar på en central plats gör det enkelt tooanalyze och felsöka problem, oavsett om de är i dina tjänster, program eller själva hello-klustret. Ett sätt tooupload och samla in loggar är toouse hello Azure-diagnostik-tillägg, vilka överföringar loggar tooAzure lagring, Azure Application Insights eller Händelsehubbar i Azure. Du kan också läsa hello händelser från lagringsenheter eller Event Hubs och placera dem i en produkt som [logganalys](../log-analytics/log-analytics-service-fabric.md) eller en annan lösning för parsning av loggen. [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) levereras med en omfattande sökning och analyser Loggtjänsten inbyggda.
 
-## <a name="log-sources-that-you-might-want-to-collect"></a>Loggen källor som du kanske vill samla in
-* **Service Fabric loggar**: orsakat från plattformen via [LTTng](http://lttng.org) och överförs till ditt lagringskonto. Loggar kan vara operativa händelser eller runtime-händelser som genererar plattformen. Dessa loggar lagras på den plats som anger klustermanifestet. (För att få information om lagringskonto, söka efter taggen **AzureTableWinFabETWQueryable** och leta efter **StoreConnectionString**.)
-* **Programhändelser**: orsakat från din tjänst kod. Du kan använda alla loggning lösningar som skriver textbaserade loggfiler – till exempel LTTng. Mer information finns i dokumentationen för LTTng på spårning i tillämpningsprogrammet.  
+## <a name="log-sources-that-you-might-want-toocollect"></a>Logga källor som du kanske vill toocollect
+* **Service Fabric loggar**: orsakat från hello plattform via [LTTng](http://lttng.org) och tooyour storage-konto som har överförts. Loggar kan vara operativa händelser eller runtime-händelser som hello plattform genererar. Dessa loggar lagras på hello plats att hello klustermanifestet anger. (tooget hello lagringskontouppgifter, söka efter hello taggen **AzureTableWinFabETWQueryable** och leta efter **StoreConnectionString**.)
+* **Programhändelser**: orsakat från din tjänst kod. Du kan använda alla loggning lösningar som skriver textbaserade loggfiler – till exempel LTTng. Mer information finns i dokumentationen för hello LTTng på spårning i tillämpningsprogrammet.  
 
-## <a name="deploy-the-diagnostics-extension"></a>Distribuera diagnostik-tillägget
-Det första steget i att samla in loggar är att distribuera diagnostik tillägg på var och en av de virtuella datorerna i Service Fabric-klustret. Diagnostik-tillägget samlar in loggar på varje virtuell dator och överför dem till lagringskontot som du anger. Stegen variera beroende på om du använder Azure-portalen eller Azure Resource Manager.
+## <a name="deploy-hello-diagnostics-extension"></a>Distribuera hello diagnostik tillägg
+hello första steget i att samla in loggar är toodeploy hello diagnostik tillägg på varje hello virtuella datorer i hello Service Fabric-klustret. hello diagnostik tillägget samlar in loggar på varje virtuell dator och överför dem toohello storage-konto som du anger. hello stegen variera beroende på om du använder hello Azure-portalen eller Azure Resource Manager.
 
-Om du vill distribuera diagnostik-tillägg till de virtuella datorerna i klustret som en del av klustret har skapats, ange **diagnostik** till **på**. När du skapar klustret kan du inte ändra den här inställningen med hjälp av portalen.
+Ange toodeploy hello diagnostik tillägget toohello virtuella datorer i hello klustret som en del av klustret skapas **diagnostik** för**på**. När du har skapat hello klustret kan du inte ändra den här inställningen genom att använda hello-portalen.
 
-Konfigurera sedan Linux Azure Diagnostics (LAD) för att samla in filer och placera dem i ditt lagringskonto. Den här processen beskrivs som scenario 3 (”överföra din egen loggfiler”) i artikeln [med LAD att övervaka och diagnostisera virtuella Linux-datorer](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json). Efter den här processen får du tillgång till spåren. Du kan överföra spåren till en visualizer du väljer.
+Konfigurera Linux Azure Diagnostics (LAD) toocollect hello filer och placera dem i ditt lagringskonto. Den här processen beskrivs som scenario 3 (”överföra din egen loggfiler”) i hello artikeln [med LAD toomonitor och diagnostisera virtuella Linux-datorer](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json). Efter den här processen hämtar du komma åt toohello spårar. Du kan överföra hello spårningar tooa visualizer du väljer.
 
-Du kan också distribuera diagnostik-tillägget med hjälp av Azure Resource Manager. Processen påminner för Windows och Linux- och dokumenteras för Windows-kluster i [hur du samlar in loggar med Azure-diagnostik](service-fabric-diagnostics-how-to-setup-wad.md).
+Du kan också distribuera hello diagnostik tillägget med hjälp av Azure Resource Manager. hello processen påminner för Windows och Linux- och dokumenteras för Windows-kluster i [hur toocollect loggar med Azure-diagnostik](service-fabric-diagnostics-how-to-setup-wad.md).
 
 Du kan också använda Operations Management Suite som beskrivs i [Operations Management Suite logganalys med Linux](https://blogs.technet.microsoft.com/hybridcloud/2016/01/28/operations-management-suite-log-analytics-with-linux/).
 
-När du är klar med den här konfigurationen övervakar LAD agenten angivna loggfilerna. När en ny rad läggs till filen, skapas en syslog-post som skickas till den lagringsenhet som du angav.
+När du är klar med den här konfigurationen hello hello LAD agenten övervakar angivna loggfiler. När en ny rad är tillagda toohello fil, skapas en syslog-transaktion som skickade toohello lagring som du angav.
 
 ## <a name="next-steps"></a>Nästa steg
-För att förstå vilka händelser som du bör undersöka vid felsökning av problem i detalj, se [LTTng dokumentationen](http://lttng.org/docs) och [med LAD](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+toounderstand i detalj vilka händelser som du bör undersöka vid felsökning av problem, se [LTTng dokumentationen](http://lttng.org/docs) och [med LAD](../virtual-machines/linux/classic/diagnostic-extension.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 

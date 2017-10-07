@@ -1,6 +1,6 @@
 ---
-title: "Skapa uppgifter för att förbereda jobb och fullständig jobb på datornoderna - Azure Batch | Microsoft Docs"
-description: "Använd jobbet nivå förberedande uppgifter för att minimera överföring av data till Azure Batch-beräkningsnoder och släpp aktiviteter för rensning av noden på jobbet har slutförts."
+title: "aaaCreate uppgifter tooprepare jobb och fullständig jobb på datornoderna - Azure Batch | Microsoft Docs"
+description: "Använd jobbet nivå förberedelse uppgifter toominimize data transfer tooAzure Batch-beräkningsnoder och släpp uppgifter för rensning av noden på jobbet har slutförts."
 services: batch
 documentationcenter: .net
 author: tamram
@@ -15,99 +15,99 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a2525c02ce7bd3969469d2e28a5fccc948f89b1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fd5fb47ae6700281e63048c49a1241f4e935baba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Kör jobbförberedelse och jobbet versionen uppgifter på Batch-beräkningsnoder
 
- En Azure Batch-jobbet kräver ofta någon form av installationsprogrammet innan dess aktiviteter utförs och jobbet efter Underhåll när dess aktiviteter är slutförda. Du kan behöva hämta vanliga uppgiften indata till compute-noder eller överföra utdata för aktiviteten till Azure Storage när jobbet har slutförts. Du kan använda **jobbet förberedelse** och **jobbet versionen** åtgärder att utföra dessa åtgärder.
+ En Azure Batch-jobbet kräver ofta någon form av installationsprogrammet innan dess aktiviteter utförs och jobbet efter Underhåll när dess aktiviteter är slutförda. Du kan behöver toodownload vanliga uppgiften indata tooyour compute-noder eller överför uppgiften utgående data tooAzure lagring när hello jobbet har slutförts. Du kan använda **jobbet förberedelse** och **jobbet versionen** uppgifter tooperform dessa åtgärder.
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>Vad är jobbförberedelseuppgiften och viktiga uppgifter?
-Innan du kör ett jobb uppgifter jobbförberedelseuppgift jobb som körs på alla compute-noder som är schemalagda att köras minst en aktivitet. När jobbet är slutfört, körs jobbet versionen aktiviteten på varje nod i den pool som körs minst en aktivitet. Du kan ange en kommandorad som ska anropas när en förberedelse eller viktig aktivitet körs precis som med normal batchaktiviteter.
+Innan du kör ett jobb uppgifter hello jobbet förberedelse aktiviteten körs på alla compute-noder schemalagda toorun åtminstone en aktivitet. När hello jobbet är slutfört, körs hello jobbet versionen aktiviteten på varje nod i hello-pool som körts minst en aktivitet. Du kan ange en toobe för kommandoraden som anropas när en jobbförberedelseuppgiften precis som med normal batchaktiviteter eller uppgiften körs.
 
 Jobbet förberedelse och version aktiviteter finns bekant Batch aktivitet funktioner, till exempel Filhämtning ([resursfiler][net_job_prep_resourcefiles]), utökade körning, anpassade miljövariabler, varaktighet för maximal körning av, försök igen antal och kvarhållningstiden för filen.
 
-I följande avsnitt du lär dig hur du använder den [JobPreparationTask] [ net_job_prep] och [JobReleaseTask] [ net_job_release] klasser hittades i [ Batch-.NET] [ api_net] bibliotek.
+I följande avsnitt hello, lär du dig hur toouse hello [JobPreparationTask] [ net_job_prep] och [JobReleaseTask] [ net_job_release] påträffades i hello [Batch .NET] [ api_net] bibliotek.
 
 > [!TIP]
 > Jobbet förberedelse och version aktiviteter är särskilt användbart i miljöer med ”delat poolen”, som en pool av datornoderna kvarstår mellan jobbkörningar och används av många jobb.
 > 
 > 
 
-## <a name="when-to-use-job-preparation-and-release-tasks"></a>När du ska använda jobbförberedelseuppgiften och släpp aktiviteter
-Jobbförberedelseuppgiften och versionen jobbuppgifter är passar bra för följande situationer:
+## <a name="when-toouse-job-preparation-and-release-tasks"></a>När toouse jobbet förberedelse och släpp aktiviteter
+Jobbförberedelseuppgiften och versionen jobbuppgifter är passar bra för hello följande situationer:
 
 **Hämta vanliga aktivitetsdata**
 
-Batchjobb kräver ofta en gemensam uppsättning data som indata för jobbets uppgifter. Till exempel i dagliga risk analys beräkningar är marknaden data projektspecifika ännu gemensamma för alla uppgifter i jobbet. Informationen marknaden ofta flera gigabyte i storlek, ska hämtas till varje compute-nod bara en gång så att alla aktiviteter som körs på noden kan använda den. Använd en **förberedelse projektaktivitet** att hämta dessa data till varje nod innan körningen av jobbet har andra aktiviteter.
+Batchjobb kräver ofta en gemensam uppsättning data som indata för hello jobbets uppgifter. Dagliga risk analys beräkningar är exempelvis marknaden data projektspecifika, men vanliga tooall uppgifter i hello-jobbet. Den här marknaden data, ofta flera gigabyte i storlek, bör vara hämtade tooeach beräkningsnod bara en gång så att alla aktiviteter som körs på hello kan använda den. Använd en **förberedelse projektaktivitet** toodownload data tooeach noden innan hello körningen av hello jobbet har andra aktiviteter.
 
 **Ta bort jobb- och utdata**
 
-I en ”delad pool” miljö, där en pool compute-noder inte är inaktiverade mellan jobb, kan du behöva ta bort jobbdata mellan körs. Du kan behöva spara diskutrymme på noderna eller uppfyller organisationens säkerhetsprinciper. Använd en **versionen projektaktivitet** att ta bort data som hämtas av en projektaktivitet förberedelse, eller genereras under körning av aktiviteten.
+I en ”delad pool” miljö, där en pool compute-noder inte är inaktiverade mellan jobb kan behöva du toodelete jobbdata mellan körs. Du kan behöva tooconserve ledigt diskutrymme på hello noder eller uppfyller organisationens säkerhetsprinciper. Använd en **versionen projektaktivitet** toodelete data som hämtas av en projektaktivitet förberedelse, eller genererats under körningen av aktiviteten.
 
 **Kvarhållning av logg**
 
-Du kanske vill behålla en kopia av loggfiler som dina aktiviteter genererar eller kanske kraschdumpfiler som genereras av misslyckade program. Använd en **versionen projektaktivitet** i sådana fall att komprimera och överföra data till en [Azure Storage] [ azure_storage] konto.
+Du kanske vill tookeep en kopia av loggfiler som dina aktiviteter genererar eller kanske kraschdumpfiler som genereras av misslyckade program. Använd en **versionen projektaktivitet** i sådana fall toocompress och överföra den här informationen tooan [Azure Storage] [ azure_storage] konto.
 
 > [!TIP]
-> Ett annat sätt att bevara loggar och andra jobb- och utdata data är att använda den [Azure Batch filen konventioner](batch-task-output.md) bibliotek.
+> Ett annat sätt toopersist loggar och andra jobb- och utdata data är toouse hello [Azure Batch filen konventioner](batch-task-output.md) bibliotek.
 > 
 > 
 
 ## <a name="job-preparation-task"></a>Förberedelse för projektaktivitet
-Innan körningen av ett jobb uppgifter utför Batch förberedelse projektaktivitet på varje beräkningsnod som kommer att köra en aktivitet. Som standard väntar Batch-tjänsten för förberedelse projektaktivitet ska slutföras innan du kör uppgifter som är schemalagda att köras på noden. Du kan dock konfigurera tjänsten som inte ska vänta. Om noden har startats om förberedelse projektaktivitet körs igen, men du kan också inaktivera det här beteendet.
+Innan körningen av ett jobb uppgifter utför Batch hello projektaktivitet förberedelse på varje beräkningsnod som är schemalagda toorun en aktivitet. Som standard väntar hello Batch-tjänsten för hello jobbet förberedelse uppgiften toobe slutförts innan du kör hello aktiviteter schemalagda tooexecute på hello-nod. Du kan dock konfigurera hello-tjänsten inte toowait. Om hello nod har startats om hello jobbet uppgiften körs igen, men du kan också inaktivera det här beteendet.
 
-Förberedelse av projektaktivitet körs bara på noder som är schemalagda att köra en aktivitet. Detta förhindrar att onödiga körningen av en jobbförberedelseuppgift om en nod inte har tilldelats en aktivitet. Detta kan inträffa när antalet aktiviteter för ett jobb är mindre än antalet noder i en pool. Det gäller även när [samtidiga uppgiftskörningen](batch-parallel-node-tasks.md) är aktiverad, vilket lämnar vissa noder inaktiv om antal uppgifter är lägre än totalt antal möjliga samtidiga uppgifter. Genom att inte köra förberedelse projektaktivitet på inaktiv noder kan lägga du mindre pengar på kostnader för överföring av data.
+hello jobbet uppgiften körs bara på noder som är schemalagda toorun en aktivitet. Detta förhindrar hello onödiga körningen av en jobbförberedelseuppgift om en nod inte har tilldelats en aktivitet. Detta kan inträffa när hello antal uppgifter för ett jobb är mindre än hello antalet noder i en pool. Det gäller även när [samtidiga uppgiftskörningen](batch-parallel-node-tasks.md) är aktiverat, vilket lämnar vissa noder inaktiv om hello uppgiften antalet är lägre än hello Totalt antal möjliga samtidiga uppgifter. Genom att köra inte hello projektaktivitet förberedelse för inaktiv noder kan lägga du mindre pengar på kostnader för överföring av data.
 
 > [!NOTE]
-> [JobPreparationTask] [ net_job_prep_cloudjob] skiljer sig från [CloudPool.StartTask] [ pool_starttask] i att JobPreparationTask körs i början av varje jobb medan startuppgift har ställts körs bara när en beräkningsnod först ansluter till en pool eller startar om.
+> [JobPreparationTask] [ net_job_prep_cloudjob] skiljer sig från [CloudPool.StartTask] [ pool_starttask] i att JobPreparationTask kör hello början av varje jobb medan startuppgift har ställts körs bara när en beräkningsnod först ansluter till en pool eller startar om.
 > 
 > 
 
 ## <a name="job-release-task"></a>Versionen för projektaktivitet
-När ett jobb har markerats som slutförd, körs jobbet viktig aktivitet på varje nod i den pool som körs minst en aktivitet. Du kan markera ett jobb som slutförd genom att utfärda en avsluta begäran. Batch-tjänsten sedan anger jobbets status till *avslutar*, avbryts alla aktiva eller köra uppgifter som är kopplad till jobbet och kör jobbet versionen aktiviteten. Jobbet flyttas sedan till den *slutförts* tillstånd.
+När ett jobb har markerats som slutförd, körs hello jobbet versionen uppgiften på varje nod i hello-pool som körts minst en aktivitet. Du kan markera ett jobb som slutförd genom att utfärda en avsluta begäran. Hej Batch-tjänsten och sedan anger hello jobbets status för*avslutar*, avbryts alla aktiva eller köra uppgifter som är kopplad till hello jobbet och kör hello projektaktivitet versionen. hello jobbet flyttar toohello *slutförts* tillstånd.
 
 > [!NOTE]
-> Borttagning av jobbet körs också viktig projektaktivitet. Men om ett jobb har redan avslutats, körs släpp uppgift inte en gång om jobbet senare tas bort.
+> Borttagning av jobbet körs även hello projektaktivitet versionen. Men om ett jobb har redan avslutats, körs hello versionen inte aktiviteten en gång om jobbet hello senare tas bort.
 > 
 > 
 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Jobbet prep och släpp aktiviteter med Batch .NET
-Om du vill använda en projektaktivitet förberedelse, tilldela en [JobPreparationTask] [ net_job_prep] objekt till ditt jobb [CloudJob.JobPreparationTask] [ net_job_prep_cloudjob] egenskapen. På liknande sätt kan initiera en [JobReleaseTask] [ net_job_release] och tilldela den till ditt jobb [CloudJob.JobReleaseTask] [ net_job_prep_cloudjob] egenskapen anges jobbet Släpp uppgiften.
+toouse en projektaktivitet förberedelse, tilldela en [JobPreparationTask] [ net_job_prep] objekt tooyour jobbet [CloudJob.JobPreparationTask] [ net_job_prep_cloudjob] egenskapen . På liknande sätt kan initiera en [JobReleaseTask] [ net_job_release] och tilldela den tooyour jobbet [CloudJob.JobReleaseTask] [ net_job_prep_cloudjob] egenskapen tooset hello Jobbets uppgiften.
 
-I det här kodstycket `myBatchClient` är en instans av [BatchClient][net_batch_client], och `myPool` är en befintlig adresspool i Batch-kontot.
+I det här kodstycket `myBatchClient` är en instans av [BatchClient][net_batch_client], och `myPool` är en befintlig adresspool inom hello Batch-kontot.
 
 ```csharp
-// Create the CloudJob for CloudPool "myPool"
+// Create hello CloudJob for CloudPool "myPool"
 CloudJob myJob =
     myBatchClient.JobOperations.CreateJob(
         "JobPrepReleaseSampleJob",
         new PoolInformation() { PoolId = "myPool" });
 
-// Specify the command lines for the job preparation and release tasks
+// Specify hello command lines for hello job preparation and release tasks
 string jobPrepCmdLine =
     "cmd /c echo %AZ_BATCH_NODE_ID% > %AZ_BATCH_NODE_SHARED_DIR%\\shared_file.txt";
 string jobReleaseCmdLine =
     "cmd /c del %AZ_BATCH_NODE_SHARED_DIR%\\shared_file.txt";
 
-// Assign the job preparation task to the job
+// Assign hello job preparation task toohello job
 myJob.JobPreparationTask =
     new JobPreparationTask { CommandLine = jobPrepCmdLine };
 
-// Assign the job release task to the job
+// Assign hello job release task toohello job
 myJob.JobReleaseTask =
     new JobPreparationTask { CommandLine = jobReleaseCmdLine };
 
 await myJob.CommitAsync();
 ```
 
-Som tidigare nämnts är körs den här uppgiften när ett jobb avslutas eller tas bort. Avsluta ett jobb med [JobOperations.TerminateJobAsync][net_job_terminate]. Ta bort ett jobb med [JobOperations.DeleteJobAsync][net_job_delete]. Du vanligtvis avsluta eller ta bort ett jobb när dess aktiviteter har slutförts eller när en tidsgräns som du har definierat har uppnåtts.
+Som tidigare nämnts körs hello versionen uppgiften när ett jobb avslutas eller tas bort. Avsluta ett jobb med [JobOperations.TerminateJobAsync][net_job_terminate]. Ta bort ett jobb med [JobOperations.DeleteJobAsync][net_job_delete]. Du vanligtvis avsluta eller ta bort ett jobb när dess aktiviteter har slutförts eller när en tidsgräns som du har definierat har uppnåtts.
 
 ```csharp
-// Terminate the job to mark it as Completed; this will initiate the
+// Terminate hello job toomark it as Completed; this will initiate the
 // Job Release Task on any node that executed job tasks. Note that the
 // Job Release Task is also executed when a job is deleted, thus you
 // need not call Terminate if you typically delete jobs after task completion.
@@ -115,21 +115,21 @@ await myBatchClient.JobOperations.TerminateJobAsy("JobPrepReleaseSampleJob");
 ```
 
 ## <a name="code-sample-on-github"></a>Kodexempel på GitHub
-Om du vill se jobbförberedelseuppgiften och viktiga uppgifter i praktiken, ta en titt på [JobPrepRelease] [ job_prep_release_sample] exempelprojektet på GitHub. Detta konsolprogram gör följande:
+toosee förberedelse och version jobbuppgifter i åtgärden, kolla hello [JobPrepRelease] [ job_prep_release_sample] exempelprojektet på GitHub. Detta konsolprogram hello följande:
 
 1. Skapar en pool med två noder som ”liten”.
 2. Skapar ett jobb med jobbförberedelseuppgiften, version och standarduppgifter.
-3. Kör jobbet förberedelse aktiviteten som först skriver nod-ID till en textfil i en nod ”delade” katalogen.
-4. Kör en aktivitet på varje nod som skriver dess aktivitets-ID till samma textfil.
-5. När alla aktiviteter har slutförts (eller tidsgränsen uppnås), skriver du innehållet på varje nod textfil till konsolen.
-6. När jobbet har slutförts körs projektaktiviteten versionen om du vill ta bort filen från noden.
-7. Skriver ut slutkoder jobbet förberedelse och version uppgifter för varje nod som de körs.
-8. Pausar körningen för att bekräfta borttagning av jobbet och/eller poolen.
+3. Kör hello förberedelse projektaktivitet som först skriver hello nod-ID tooa textfil i en nod ”delade” katalogen.
+4. Kör en aktivitet på varje nod som skriver dess aktivitet ID toohello samma textfil.
+5. När alla aktiviteter har slutförts (eller hello tidsgränsen uppnås), skriver du hello innehållet för varje nod text filen toohello konsol.
+6. När hello jobbet har slutförts körs hello viktig uppgift toodelete hello fil från hello-nod.
+7. Utskrifter hello slutkoder av hello jobbförberedelseuppgiften och släpp aktiviteter för varje nod som de körs.
+8. Pausar körningen tooallow bekräftelse av jobb och/eller pool borttagning.
 
-Utdata från exempelprogrammet som liknar följande:
+Utdata från hello exempelprogrammet är liknande toohello följande:
 
 ```
-Attempting to create pool: JobPrepReleaseSamplePool
+Attempting toocreate pool: JobPrepReleaseSamplePool
 Created pool JobPrepReleaseSamplePool with 2 small nodes
 Checking for existing job JobPrepReleaseSampleJob...
 Job JobPrepReleaseSampleJob not found, creating...
@@ -152,7 +152,7 @@ tvm-2434664350_2-20160623t173951z tasks:
   task003
   task007
 
-Waiting for job JobPrepReleaseSampleJob to reach state Completed
+Waiting for job JobPrepReleaseSampleJob tooreach state Completed
 ...
 
 tvm-2434664350_1-20160623t173951z:
@@ -168,31 +168,31 @@ yes
 Delete pool? [yes] no
 yes
 
-Sample complete, hit ENTER to exit...
+Sample complete, hit ENTER tooexit...
 ```
 
 > [!NOTE]
-> På grund av variabeln skapa och starta när noder i en ny pool (vissa noder är redo för uppgifter före andra), kan du se olika utdata. Eftersom uppgifterna slutföra snabbt, kan en av noderna i den poolen specifikt köra alla uppgifter i jobbet. Om detta händer ser du att jobbet Förbered dig och versionen uppgifter finns inte för noden som körs inga aktiviteter.
+> På grund av toohello variabeln skapa och starta tiden för noder i en ny pool (vissa noder är redo för uppgifter före andra), kan du se olika utdata. Eftersom hello slutföras snabbt, kan en av noderna hello poolen specifikt köra alla hello jobbets uppgifter. Om detta händer ser du att hello jobbet prep och släpp aktiviteter finns inte för hello-nod som körs inga aktiviteter.
 > 
 > 
 
-### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Granska jobbförberedelseuppgiften och versionen uppgifter i Azure-portalen
-När du kör exempelprogrammet som du kan använda den [Azure-portalen] [ portal] att visa egenskaperna för jobbet och dess uppgifter eller även hämta den delade textfil som ändras av jobbets uppgifter.
+### <a name="inspect-job-preparation-and-release-tasks-in-hello-azure-portal"></a>Granska jobbförberedelseuppgiften och versionen uppgifter i hello Azure-portalen
+När du kör hello exempelprogrammet, kan du använda hello [Azure-portalen] [ portal] tooview hello egenskaper för hello jobb och dess uppgifter eller även hämta hello delade textfil som ändras av hello jobbets uppgifter.
 
-Skärmbilden nedan visar den **förberedelse uppgifter bladet** i Azure portal efter en körning av exempelprogrammet. Navigera till den *JobPrepReleaseSampleJob* egenskaper när aktiviteterna har slutförts (men innan du tar bort dina jobb och poolen) och klicka på **förberedande uppgifter** eller **viktiga uppgifter**visa deras egenskaper.
+hello skärmbilden nedan visar hello **förberedelse uppgifter bladet** i hello Azure-portalen efter en körning av hello exempelprogrammet. Navigera toohello *JobPrepReleaseSampleJob* egenskaper när aktiviteterna har slutförts (men innan du tar bort dina jobb och pool) och klicka på **förberedelseuppgifter** eller **viktiga uppgifter** tooview deras egenskaper.
 
 ![Förberedelse av jobbegenskaper i Azure-portalen][1]
 
 ## <a name="next-steps"></a>Nästa steg
 ### <a name="application-packages"></a>Programpaket
-Förutom projektaktiviteten förberedelse, du kan också använda den [programpaket](batch-application-packages.md) funktion i Batch för att förbereda compute-noder för körning av aktiviteten. Den här funktionen är särskilt användbar för att distribuera program som inte kräver kör ett installationsprogram, program som innehåller många (100 +) filer eller program som kräver strikt versionskontroll.
+I tillägg toohello förberedelse projektaktivitet, kan du också använda hello [programpaket](batch-application-packages.md) funktion i Batch tooprepare compute-noder för körning av aktiviteten. Den här funktionen är särskilt användbar för att distribuera program som inte kräver kör ett installationsprogram, program som innehåller många (100 +) filer eller program som kräver strikt versionskontroll.
 
 ### <a name="installing-applications-and-staging-data"></a>Installera program och mellanlagring av data
 Den här MSDN-foruminlägg innehåller en översikt över flera metoder för att förbereda din noder för pågående aktiviteter:
 
 [Installera program och mellanlagring av data på Batch-beräkningsnoder][forum_post]
 
-Skrivs av en Azure Batch-gruppmedlemmar beskrivs den flera metoder som du kan använda för att distribuera program och data för att compute-noder.
+Skrivs av en av hello Azure Batch-gruppmedlemmar beskrivs den flera metoder som du kan använda toodeploy program och data toocompute noder.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx

@@ -1,6 +1,6 @@
 ---
-title: "Windows Universal SDK för appar innehåll"
-description: "Läs mer om innehållet i Windows Universal-appar SDK för Azure Mobile Engagement"
+title: "aaaWindows universella appar SDK innehåll"
+description: "Läs mer om hello innehållet i hello Windows Universal-appar SDK för Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,30 +14,30 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: b28d525ab16487b963772e23fdecd11f94dcabd1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a8013d2433c0be62d737c8bc6e8360ed79bbe532
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="windows-universal-apps-sdk-content"></a>Windows Universal SDK för appar innehåll
-Det här dokumentet listar och beskriver det innehåll som distribueras av SDK i ditt program.
+Det här dokumentet listar och beskriver hello innehåll som distribueras av hello SDK i ditt program.
 
-## <a name="the-resources-folder"></a>Den `/Resources` mapp
-Den här mappen innehåller alla resurser som krävs för Mobile Engagement. Du kan också anpassa dem så att de passar din app.
+## <a name="hello-resources-folder"></a>Hej `/Resources` mapp
+Den här mappen innehåller alla hello-resurser som krävs för Mobile Engagement. Du kan också anpassa dem toofit din app.
 
-* `EngagementConfiguration.xml`: Mobile Engagement konfigurationsfil, det är där du kan anpassa Mobile Engagement-inställningar (Mobile Engagement anslutningssträngen, rapporten krascher...).
+* `EngagementConfiguration.xml`: Hej Mobile Engagement konfigurationsfil, det är där du kan anpassa Mobile Engagement-inställningar (Mobile Engagement anslutningssträngen, rapporten krascher...).
 
 ### <a name="html-folder"></a>/ HTML-mappen
-* `EngagementNotification.html`: `Notification` Webbdesign visa html för sidhuvud i appen.
-* `EngagementAnnouncement.html`: `Announcement` Webbdesign visa html för app mellan enskilda muskler vyer.
+* `EngagementNotification.html`: hello `Notification` webbdesign visa html för sidhuvud i appen.
+* `EngagementAnnouncement.html`: hello `Announcement` webbdesign visa html för app mellan enskilda muskler vyer.
 
 ### <a name="images-folder"></a>/ Images mapp
-* `EngagementIconNotification.png`: Varumärken ikonen visas till vänster på ett meddelande ersätter den här med ditt varumärkesikon.
-* `EngagementIconOk.png`: `Ok` Ikon för reach innehållssidor för knappen åtgärd eller validering.
-* `EngagementIconNOK.png`: `NOK` Ikonen som används när knappen verifiering för reach innehållssidor är inaktiverad.
-* `EngagementIconClose.png`: `Close` Ikonen för reach-meddelanden och innehåll för knappen Stäng.
+* `EngagementIconNotification.png`: hello varumärkesikon som visas på hello till vänster i ett meddelande, ersätter det här objektet med varumärken-ikonen.
+* `EngagementIconOk.png`: hello `Ok` ikon för hello reach innehållssidor för hello åtgärd eller validering knapp.
+* `EngagementIconNOK.png`: hello `NOK` ikonen som används när hello verifiering för hello reach innehållssidor är inaktiverat.
+* `EngagementIconClose.png`: hello `Close` ikonen för hello nå meddelanden och innehållet för hello Ignorera knappen.
 
 ### <a name="overlay-folder"></a>/overlay mapp
-* `EngagementPageOverlay.cs`: Överlägget sidan ansvarar för att lägga till Engagement nå i appen användargränssnitt till dess underordnade.
+* `EngagementPageOverlay.cs`: hello överlägget sidan ansvarar för att lägga till hello Engagement nå i appen UI tooits underordnade.
 

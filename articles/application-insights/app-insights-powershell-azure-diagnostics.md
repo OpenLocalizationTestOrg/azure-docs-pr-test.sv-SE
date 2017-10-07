@@ -1,6 +1,6 @@
 ---
-title: "Ställa in Application Insights i en Azure med hjälp av PowerShell | Microsoft Docs"
-description: "Automatisera överföringen av Azure Diagnostics-data till Application Insights."
+title: aaaUsing PowerShell toosetup Application Insights i en Azure | Microsoft Docs
+description: Automatisera konfigurera Azure-diagnostik toopipe tooApplication insikter.
 services: application-insights
 documentationcenter: .net
 author: sbtron
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2015
 ms.author: bwren
-ms.openlocfilehash: 3b6da89cc33cda713b483a2af3cbb493a03d6bec
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c48a5d8eb23df162522860935af876063aaa6976
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Ställa in Application Insights i en Azure-webbapp med hjälp av PowerShell
-[Microsoft Azure](https://azure.com) kan [konfigureras att skicka Azure Diagnostics-data](app-insights-azure-diagnostics.md) till [Azure Application Insights](app-insights-overview.md). Diagnostiken gäller Azure Cloud Services och virtuella datorer i Azure. De kompletterar telemetrin som du skickar inifrån appen med hjälp av Application Insights SDK. Som en del av automatiseringen av processen för att skapa nya resurser i Azure kan du konfigurera diagnostik med hjälp av PowerShell.
+# <a name="using-powershell-tooset-up-application-insights-for-an-azure-web-app"></a>Med hjälp av PowerShell tooset in Programinsikter för en Azure-webbapp
+[Microsoft Azure](https://azure.com) kan vara [konfigurerats toosend Azure Diagnostics](app-insights-azure-diagnostics.md) för[Azure Application Insights](app-insights-overview.md). hello diagnostik relatera tooAzure molntjänster och virtuella Azure-datorer. De kompletterar hello telemetri som du skickar inifrån hello-app med hello Application Insights SDK. Som en del av automatiserade hello processen att skapa nya resurser i Azure, kan du konfigurera diagnostik med hjälp av PowerShell.
 
 ## <a name="azure-template"></a>Azure-mall
-Om webbappen finns i Azure och du skapar dina resurser med hjälp av en Azure Resource Manager-mall kan du konfigurera Application Insights genom att lägga till följande till resursnoden:
+Om hello-webbapp i Azure och du kan skapa dina resurser med hjälp av en Azure Resource Manager-mall, kan du konfigurera Application Insights genom att lägga till den här noden för toohello resurser:
 
     {
       resources: [
@@ -42,11 +42,11 @@ Om webbappen finns i Azure och du skapar dina resurser med hjälp av en Azure Re
        ]
      } 
 
-* `nameOfAIAppResource` – ett namn för Application Insights-resursen
-* `myWebAppName` – webbappens ID
+* `nameOfAIAppResource`-ett namn för hello Application Insights-resurs
+* `myWebAppName`-hello-id för hello webbapp
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Aktivera diagnostiktillägget som en del av distributionen av en molntjänst
-`New-AzureDeployment`-cmdleten har en parameter, `ExtensionConfiguration`, som stöder en rad diagnostikkonfigurationer. Dessa kan skapas med hjälp av cmdleten `New-AzureServiceDiagnosticsExtensionConfig`. Till exempel:
+Hej `New-AzureDeployment` cmdlet har en parameter `ExtensionConfiguration`, som tar en matris av diagnostik-konfigurationer. De kan skapas med hjälp av hello `New-AzureServiceDiagnosticsExtensionConfig` cmdlet. Exempel:
 
 ```ps
 
@@ -123,9 +123,9 @@ I en befintlig tjänst använder du `Set-AzureServiceDiagnosticsExtension`.
     Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService"
 ```
 
-Om du aktiverade diagnostiktillägget med `Set-AzureServiceDiagnosticsExtension` eller `New-AzureServiceDiagnosticsExtensionConfig` utan rollparametern så kan du ta bort tillägget med hjälp av `Remove-AzureServiceDiagnosticsExtension` utan rollparametern. Om rollparametern användes när du aktiverade tillägget måste den också användas när du tar bort tillägget.
+Om du har aktiverat hello diagnostik tillägget med hjälp av antingen `Set-AzureServiceDiagnosticsExtension` eller `New-AzureServiceDiagnosticsExtensionConfig` utan hello rollen parametern sedan kan du ta bort hello tillägget med hjälp av `Remove-AzureServiceDiagnosticsExtension` utan hello rollen parametern. Om hello rollen parametern används när du aktiverar hello tillägget måste det också används när du tar bort hello-tillägget.
 
-Så här tar du bort diagnostiktillägget från varje enskild roll:
+tooremove hello diagnostik tillägg från varje enskild roll:
 
 ```ps
 
@@ -135,6 +135,6 @@ Så här tar du bort diagnostiktillägget från varje enskild roll:
 
 ## <a name="see-also"></a>Se även
 * [Övervaka Azure Cloud Services-appar med Application Insights](app-insights-cloudservices.md)
-* [Skicka Azure Diagnostics-data till Application Insights](app-insights-azure-diagnostics.md)
+* [Skicka Azure Diagnostics tooApplication insikter](app-insights-azure-diagnostics.md)
 * [Automatisera konfigurationen av aviseringar](app-insights-powershell-alerts.md)
 

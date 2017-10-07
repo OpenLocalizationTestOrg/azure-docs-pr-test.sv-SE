@@ -1,6 +1,6 @@
 ---
-title: "Självstudiekurs: DevOps med Azure Portal | Microsoft Docs"
-description: "Lär dig om de olika DevOps-arbetsflödena i Azure Portal."
+title: "Självstudier: DevOps med hello Azure Portal | Microsoft Docs"
+description: "Läs hello olika DevOps arbetsflöden i hello Azure-portalen."
 services: azure-portal
 documentationcenter: 
 author: mlearned
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: eec7d1402bdea4e5433c473dd713eed23aa80464
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4c32dbbd4e4b1c3809ef4b01e1496e350183ebde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-devops-with-the-azure-portal"></a>Självstudiekurs: DevOps med Azure Portal
-Azure-plattformen är full av flexibla DevOps-arbetsflöden. I den här självstudiekursen lär du dig hur du utnyttjar funktionerna i Azure Portal för att utveckla, testa, distribuera, felsöka, övervaka och hantera program som körs. Den här självstudiekursen fokuserar på följande:
+# <a name="tutorial-devops-with-hello-azure-portal"></a>Självstudier: DevOps med hello Azure-portalen
+hello Azure-plattformen är full med flexibla DevOps-arbetsflöden. I den här kursen lär du dig hur tooleverage hello funktionerna i hello Azure Portal toodevelop, testa, distribuera, felsöka, övervaka och hantera program som körs. Den här självstudiekursen fokuserar på hello följande:
 
 1. Skapa en webbapp och aktivera kontinuerlig distribution
 2. Utveckla och testa en app
@@ -29,119 +29,119 @@ Azure-plattformen är full av flexibla DevOps-arbetsflöden. I den här självst
 4. Allmänna programhanteringsaktiviteter
 
 ## <a name="creating-a-web-app-and-enabling-continuous-deployment"></a>Skapa en webbapp och aktivera kontinuerlig distribution
-Skapa en webbapp med [Azure App Service](https://azure.microsoft.com/services/app-service/), som du ska använda i resten av den här kursen. Du ska börja med att aktivera kontinuerlig distribution från lagringsplatsen för din källkod till vår aktiva Azure-miljö.
+Skapa en webbapp med [Azure App Service](https://azure.microsoft.com/services/app-service/), som du ska använda i hello resten av den här kursen. Du ska börja med att aktivera kontinuerlig distribution från lagringsplatsen för din källkod till vår aktiva Azure-miljö.
 
-1. Logga in i Azure Portal
-2. Välj **Apptjänster** &gt; **ikonen Lägg till** och ange ett namn. Välj din prenumeration och skapa en ny resursgrupp som ska användas som behållare för tjänsten.
+1. Logga in på hello Azure-portalen
+2. Välj **Apptjänster** &gt; **Lägg till ikonen** och ange ett namn, väljer din prenumeration och skapa en ny resurs grupp tooserve som hello behållare för hello-tjänsten.
    
-   Du kan använda resursgrupper om du vill hantera olika aspekter av lösningen, t.ex. fakturering, distributioner och övervakning, som en grupp med hjälp av [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+   Resursgrupper kan du toomanage olika aspekter av hello lösning, till exempel fakturering, distributioner och övervakning av alla som en enda grupp via [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
    
    ![image1][image1]
-3. Din apptjänst skapas efter en liten stund. Ägna några minuter åt att utforska de olika menyalternativen för tjänsten på portalen.
+3. Din apptjänst skapas efter en liten stund. Ta ett par minuter tooexplore hello olika menyalternativen för hello-tjänsten i hello-portalen.
    
    ![image2][image2]    
-4. Klicka på URL:en. Lägg märke till de många olika tillgängliga alternativen för verktyg och lagerplatser. Du kan också använda önskade språk och ramverk, inklusive .NET, Java, Ruby.
+4. Klicka på hello-URL. Observera hello mängd tillgängliga alternativ för verktyg och databaser. Du kan också använda hello språk och ramverk önskat inklusive .NET, Java och Ruby.
    
    ![image3][image3]    
-5. Med Azure-portalen blir kontinuerlig distribution en enkel process som endast kräver några få enkla steg. På Azure-portalen väljer du inställningar från ikonen för den apptjänst som du precis skapat.
+5. hello Azure-portalen gör kontinuerlig distribution med en enkel process som inbegriper några enkla steg. I hello Azure-portalen, väljer du inställningar från hello ikonen för hello apptjänst som du nyss skapade.
    
    ![image4][image4]
    
-   Rulla ned till publiceringsavsnittet från bladet som öppnas till höger.
+   Rulla toohello publicering avsnitt från hello bladet som öppnas på höger hello.
    
    ![image5][image5]
-6. Konfigurera några inställningar för att aktivera kontinuerlig distribution för appen. Klicka på Distributionskälla och sedan på Välj källa. Lägg märke till de olika alternativ som du kan välja mellan för källans lagerplats.
+6. Konfigurera vissa inställningar tooenable kontinuerlig distribution för hello app. Klicka på Distributionskälla och sedan på Välj källa. Observera hello mängd olika alternativ som du har för databasen källor.
    
    ![image6][image6]
-7. Välj GitHub i det här exemplet. Du kan också välja valfri lagringsplats och konfigurera autentiseringsuppgifterna.
+7. Välj GitHub i det här exemplet. Du kan också välja valfri hello lagringsplats och Ställ in hello-autentiseringsuppgifter.
    
    ![image7][image7]
-8. Efter auktoriseringen till lagerplatsen kan du välja ett projekt och en gren som du vill distribuera. Det finns flera fiktiva exempel nedan.
+8. Efter tillstånd tooyour databasen kan du sedan välja ett projekt och grenen som du vill toodeploy. Det finns flera fiktiva exempel nedan.
    
    ![image8][image8]
-9. Klicka på OK när du har valt projekt och gren. Nu bör du se meddelanden om en distribution.
+9. Klicka på OK när du har valt projekt och gren. Du bör starta toosee meddelanden för en distribution.
    
    ![image9][image9]
-10. Gå tillbaka till GitHub för att se webhooken som skapades för att integrera källkontrolldatabasen med Azure. Med några få enkla steg kan du integrera Azure Portal med GitHub.
+10. Gå tillbaka tooGitHub toosee hello webhook toointegrate hello källa kontrollen lagringsplatsen har skapats med Azure. hello Azure Portal möjliggör integrering med GitHub med några enkla steg.
     
     ![image10][image10]
-11. Om du vill se den kontinuerliga distributionen kan du snabbt lägga till lite innehåll i datalagret. Som ett enkelt exempel kan du lägga till en textfil i en GitHub-databas. Du kan använda .NET, Ruby, Python eller någon annan typ av program med App Service. Lägg till en textfil eller ett ASP.NET MVC-, Java- eller Ruby-program i valfritt datalager.
+11. toodemonstrate kontinuerlig distribution, du snabbt lägga till vissa innehåll toohello databas. Lägg till ett exempel text filen tooa GitHub-repo för ett enkelt exempel. Du är ledigt toouse .NET, Ruby, Python eller någon annan typ av program med App Service. Känna sig fria tooadd en textfil ASP.NET MVC, Java eller Ruby programmet toohello lagringsplatsen önskat.
     
     ![image11][image11]
-12. När du har bekräftat lagerändringarna kan du se att en ny distribution har initierats i portalens meddelandefält. Klicka på Synkronisera om du inte ser ändringarna när du har sparat dem i lagret.
+12. Genomför ändringar tooyour databasen du se när en ny distribution initiera i hello portal meddelandefältet. Klicka på Synkronisera om snabbt inte ser ändringar efter genomför tooyour databasen.
     
     ![image12][image12]
-13. Om du i detta läge försöker läsa in sidan för apptjänsten kan fel 403 returneras. I det här exemplet beror det på att det inte finns någon typisk standarddokumentkonfiguration för sidan, t.ex. en fil som index.htm eller default.html. Du kan snabbt åtgärda detta med verktygsuppsättningen i Azure Portal.  Välj Inställningar &gt; Programinställningar i Azure Portal.
+13. Nu om du försöker och läsa hello sidan för hello apptjänst får ett 403-fel. I det här exemplet är det eftersom det inte finns några vanliga standardinställning dokument för hello-sidan, till exempel en fil som index.htm eller default.html. Snabbt lösa med hello tooling i hello Azure-portalen.  Välj inställningar i hello Azure Portal &gt; programinställningar.
     
      ![image13][image13]
-14. Ett blad öppnas för programinställningar. Ange namnet på sidan ”SamplePage.html” och klicka på Spara. Ägna några minuter åt att utforska de andra inställningarna.
+14. Ett blad öppnas för programinställningar. Ange hello hello sidan ”SamplePage.html” och klicka på Spara. Ta ett par minuter tooexplore hello andra inställningar.
     
     ![image14][image14]
-15. Du kan också uppdatera URL:en i webbläsaren så att du är säker på att ändringarna visas. I vårt exempel fylls sidan med enkel text. Varje ytterligare ändring i datalagret skulle resultera i en ny automatisk distribution.
+15. Du kan också uppdatera din webbläsare URL tooensure visas hello förväntade ändringar. Det finns i det här fallet enkel text nu fylla hello-sidan. Varje ytterligare ändra toohello databasen skulle resultera i en ny automatisk distribution.
     
     ![image15][image15]
     
-    Det är enkelt att aktivera kontinuerlig distribution med Azure Portal. Du kan också skapa mer komplexa publiceringskanaler och använda många andra tekniker med befintliga system för källkontroll och kontinuerlig integration för distribution till Azure, t.ex. genom att använda automatiska utvecklings- och versionshanteringssystem.
+    Aktiverar kontinuerlig distribution med hello Azure Portal är en enkel upplevelse. Du kan också skapa mer komplexa versionen pipelines och använda andra metoder med befintliga källkontrollen och kontinuerlig integration system toodeploy tooAzure, till exempel utnyttja automatiserade bygg- och versionen hanteringssystem.
 
 ## <a name="develop-and-test-an-app"></a>Utveckla och testa en app
-Nu ska du göra några ändringar i kodbasen och snabbt distribuera dina ändringar. Du ska också konfigurera prestandatestning för webbappen.
+Sedan gör några ändringar toohello kod grundläggande och snabbt distribuera ändringarna. Du kan också ställa in vissa prestandatestning för hello webbprogrammet.
 
-1. Välj App Services i navigeringsfönstret i Azure Portal och leta upp din apptjänst.
+1. Välj Apptjänster hello navigeringsfönstret i hello Azure-portalen och leta upp din Apptjänst.
    
    ![image16][image16]
 2. Klicka på Verktyg
    
    ![image17][image17]
-3. Lägg märke till utvecklingskategorin under Verktyg. Det finns flera användbara verktyg här som vi kan använda för att arbeta med appar utan att lämna Azure Portal. Klicka på Konsol.
+3. Observera hello utveckla kategori under Verktyg. Det finns flera användbara verktyg här vilket innebär att vi toowork med appar utan att lämna hello Azure-portalen. Klicka på Konsol.
    
    ![image18][image18]
-4. Du kan skicka kommandon live för din app i konsolfönstret. Skriv kommandot dir och tryck på Retur. Observera att kommandon som kräver utökade privilegier inte fungerar.
+4. Du kan utfärda live kommandon för din app i hello konsolfönstret. Typen hello dir kommando och trycker RETUR. Observera att kommandon som kräver utökade privilegier inte fungerar.
    
    ![image19][image19]
-5. Gå tillbaka till kategorin Utveckla och välj Visual Studio Online. Obs! Visual Studio Online heter Visual Studio Team Services nu.
+5. Flytta tillbaka toohello utveckla kategori och välj Visual Studio Online. Obs! Visual Studio Online heter Visual Studio Team Services nu.
    
    ![image20][image20]
-6. Aktivera webbläsarredigering för din app.
+6. Växla hello i webbläsaren redigera upplevelse för din App.
    
    ![image21][image21]
-7. Ett webbtillägg installerar för din app. Ett tillägg lägger snabbt och enkelt till funktioner till appar i Azure. Observera några av de andra tilläggstyperna i skärmbilden nedan.
+7. Ett webbtillägg installerar för din app. Tillägg snabbt och enkelt lägga till funktioner tooapps i Azure. Lägg märke till några av hello andra Tilläggstyper som är tillgängliga i hello skärmbilden nedan.
    
    ![image22][image22]
-8. Klicka på OK när Visual Studio Online-tillägget installeras.
+8. Klicka på Gå när hello Visual Studio Online-tillägget har installerats.
    
    ![image23][image23]
-9. En webbläsarflik öppnas där du ser IDE-utvecklingsmiljön direkt i webbläsaren. Observera att miljön nedan är från Chrome.
+9. En webbläsare fliken öppnas där du ser en utveckling IDE direkt i hello webbläsare. Meddelande hello upplevelse nedan är i Chrome.
    
    ![image24][image24]
-10. Du kan utföra flera aktiviteter, till exempel redigera filer, lägga till filer och mappar och ladda ned innehåll från live-webbplatsen. Gör en enkel ändring i filen SamplePage.html.
+10. Du kan utföra flera aktiviteter, till exempel redigera filer, lägga till filer och mappar och ladda ned innehåll från hello liveplatsen. Göra en snabb redigera toohello SamplePage.html fil.
     
     ![image25][image25]
-11. Ändringarna sparas automatiskt efter en liten stund. Om du går tillbaka till sidan kan du se ändringarna. Tänk på att live-redigeringar som dessa sällan lämpar sig för produktionsmiljöer. Dock gör verktygen det mycket enkelt att göra snabba ändringar för utvecklings- och testmiljöer.
+11. Hello ändringar sparas automatiskt i en liten stund. Om du navigerar bakåt toohello sidan kan du se hello ändringar. Tänk på att live-redigeringar som dessa sällan lämpar sig för produktionsmiljöer. Hello verktyg gör det mycket enkelt toomake snabb ändringar för utveckling och test miljöer.
     
     ![image26][image26]
     
     ![image27][image27]
-12. Gå tillbaka till verktygsbladet och klicka på Prestandatest under kategorin Utveckla.
+12. Flytta tillbaka toohello verktyg bladet och under hello utveckla kategori, klicka på prestandatest.
     
     ![image28][image28]
-13. Du måste ange ett Team Services-konto. Mer information finns här: [Skapa ett Team Services-konto](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
-14. Klicka på Nytt för att skapa ett prestandatest.
+13. Du måste tooset ett team services-konto. Mer information finns här: [Skapa ett Team Services-konto](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+14. Klicka på ny toocreate en prestandatest.
     
     ![image29][image29]
     
-    Konfigurera de olika värdena och klicka på Kör test längst ned i dialogrutan för att initiera ett prestandatest.
+    Konfigurera hello olika värden och klicka på Kör Test längst hello hello dialog tooinitiate en prestandatest.
     
     ![image30][image30]
     
     ![image31][image31]
-15. Du kan övervaka statusen när testet körs.
+15. Du kan övervaka hello tillstånd när hello test startar körs.
     
     ![image32][image32]
     
-    När testet är klart kan du visa mer information genom att klicka på resultatet.
+    När hello test har slutförts visas mer information om du klickar på hello resultat.
     
     ![image33][image33]
-16. I det här exemplet skapade du en liten testkörning, vilket innebär att mängden data som ska analyseras är begränsad, men du kan se olika mått och köra om testet från den här vyn. Med Azure Portal är det enkelt att skapa, köra och analysera webbprestandatester. Skärmbilderna nedan visar prestandadata.
+16. I det här exemplet skapas en liten testkörning, så det finns data är begränsad tooanalyze, men du kan se olika mått samt kör testet från den här vyn. hello Azure Portal gör att skapa, köra och analysera web prestandatesterna en enkel process. hello skärmbilderna nedan visar hello prestandadata.
     
     ![image34][image34]
     
@@ -152,13 +152,13 @@ Nu ska du göra några ändringar i kodbasen och snabbt distribuera dina ändrin
 ## <a name="monitoring-and-troubleshooting-an-app"></a>Övervaka och felsöka en app
 Azure tillhandahåller många funktioner för övervakning och felsökning av program som körs.
 
-1. Välj Verktyg för vår webbapp i Azure Portal.
+1. Välj Verktyg i hello Azure-portalen för våra webbprogrammet.
    
    ![image37][image37]
-2. Observera de olika verktygsalternativen för att felsöka potentiella problem med en aktiv app under kategorin Felsök. Du kan till exempel övervaka Live HTTP-trafik, aktivera självåterställning, visa loggar osv.
+2. Observera hello olika alternativ för att använda verktyg tootroubleshoot potentiella problem med en app som körs under hello felsöka kategori. Du kan till exempel övervaka Live HTTP-trafik, aktivera självåterställning, visa loggar osv.
    
    ![image38][image38]
-3. Välj Platsmått för att snabbt få en överblick över vissa HTTP-koder.
+3. Välj plats mått tooquickly get en vy av vissa HTTP-koder.
    
    ![image39][image39]
 4. Välj Diagnostik som tjänst. Välj din programtyp och välj Kör.
@@ -168,102 +168,102 @@ Azure tillhandahåller många funktioner för övervakning och felsökning av pr
    En insamling börjar.
    
    ![image41][image41]
-5. Välj relevant logg för att diagnostisera möjliga problem. Du måste aktivera loggning för att se alla tillgängliga dataalternativ, till exempel HTTP-loggar.
+5. Du kan välja hello relevant logg toodiagnose potentiella problem. Du måste tooenable loggning toosee alla tillgängliga data för hello alternativ, till exempel http-loggar.
    
    ![image42][image42]
    
-   Genom att klicka på minnesdumpfilen kan du ladda ned och analysera en DebugDiag-analysrapport för att identifiera möjliga fel.
+   Genom att klicka på hello minnesdump filen du kan ladda ned och analysera en DebugDiag analys rapporten toohelp hitta potentiella problem.
    
    ![image43][image43]
-6. Om du vill visa mer data måste du aktivera ytterligare loggning. Navigera till webbappen och välj Inställningar i Azure Portal.
+6. tooview mer data du behöver tooenable ytterligare loggning. Navigera toohello webbprogram i hello Azure-portalen, och välja inställningar.
    
    ![image44][image44]
-7. Bläddra ned till funktionskategorin och välj Diagnostikloggar.
+7. Bläddra nedåt toohello funktioner kategori och välj diagnostikloggar.
    
       ![image45][image45]
-8. Lägg märke till de olika loggningsalternativen. Aktivera webbserverloggning och klicka på Spara.
+8. Observera hello olika alternativ för loggning. Aktivera webbserverloggning och klicka på Spara.
    
    ![image46][image46]
-9. Gå tillbaka till verktygsområdet för appen och välj Diagnostik som tjänst och klicka på Kör om du vill köra datainsamlingen igen.
+9. Flytta tillbaka toohello verktyg område för hello app väljer du diagnostik som tjänst och klicka på Kör toorerun hello datainsamling.
    
    ![image47][image47]
-10. När inställningen för HTTP-loggning är aktiverad ser du data som samlats in för HTTP-loggar.
+10. Data som samlas in för HTTP-loggar visas nu hello HTTP-loggning inställningen är aktiverad.
     
     ![image48][image48]
-11. Genom att klicka på HTML-filloggen kan du skapa en detaljerad webbläsarbaserad rapport för vidare utredning.
+11. Genom att klicka på logg för hello HTML-fil, kan du skapa en omfattande webbläsarbaserad rapport för ytterligare undersökning.
     
     ![image49][image49]
-12. Gå tillbaka till verktygsavsnittet i Azure Portal för appen. Bläddra ned till verktygsavsnittet och välj Processutforskaren.
+12. Flytta tillbaka toohello tools-avsnittet i hello Azure-portalen för hello app. Rulla toohello verktyg avsnittet och välja Processutforskaren.
     
     ![image50][image50]
-13. Genom att välja Processutforskaren kan du visa information om processer som körs. Observera nedan att du kan visa mer detaljer om processer och även avsluta processer från Azure Portal.
+13. Genom att välja Processutforskaren kan du visa information om processer som körs. Meddelande nedan du kan detaljerat processer och även avsluta processer från hello Azure-portalen.
     
     ![image51][image51]
     
     ![image52][image52]
-14. Gå tillbaka till bladet Inställningar till vänster. Klicka på Ny supportförfrågan.
+14. Flytta tillbaka toohello inställningsbladet hello vänster. Klicka på Ny supportförfrågan.
     
     ![image53][image53]
-15. Från bladet till höger kan du fylla i information om problemen, ange kontaktinformation och ladda upp diagnostikdata. Med Azure Portal är det enkelt att arbeta med Microsofts support.
+15. Från hello bladet på hello rätt du fyller i information om hello problem, ange kontaktinformation och även överföra diagnostikdata. hello Azure-portalen kan arbeta med Microsoft-supporten smidigt.
     
     ![image54][image54]
     
     ![image55][image55]
     
-    Azure Portal ger åtkomst till kraftfulla och välbekanta verktygsmiljöer som gör det enkelt att övervaka och felsöka program som körs. Du kan också snabbt vidta åtgärder och till exempel återanvända processer, aktivera och inaktivera olika datasamlingar eller integrera med Microsofts support.
+    hello Azure Portal tillhandahåller kraftfulla och välbekanta tooling upplevelser toohelp övervaka och felsöka våra program som körs. Du kan också kan tootake åtgärd snabbt genom att utföra uppgifter som återvinning processer, aktivera och inaktivera olika datasamlingar och även integrera med Microsoft professionell support.
 
 ## <a name="general-application-management"></a>Allmän programhantering
-När du hanterar program behöver du ofta utföra många olika slags aktiviteter, till exempel konfigurera säkerhetskopieringsstrategier, implementera och hantera identitetsproviders och konfigurera rollbaserad åtkomstkontroll. Precis som med de andra DevOps-miljöerna integrerar Azure-plattformen dessa uppgifter direkt på portalen.
+När du hanterar program behöver ofta tooperform ett stort antal aktiviteter, till exempel konfigurera säkerhetskopieringsstrategier, implementera och hantera identitetsleverantörer och konfigurera rollbaserad åtkomstkontroll. Som med hello andra DevOps-upplevelser, integrerar hello Azure-plattformen dessa uppgifter direkt i hello-portalen.
 
-1. För att vara säker på att webbappen är skyddad mot dataförlust måste du konfigurera säkerhetskopieringar. Navigera till området Inställningar för webbappen.
+1. tooensure du hålla hello webbprogrammet från förlust av data du behöver tooconfigure säkerhetskopior. Navigera toohello inställningar för din webbapp.
    
    ![image56][image56]
-2. Rulla ned till kategorin Funktioner på bladet till höger.
+2. Rulla ned toohello funktioner kategori i hello bladet på hello rätt.
    
     ![image57][image57]
-3. Välj Säkerhetskopior. Ett blad öppnas till höger.
+3. Välj säkerhetskopiering. Då öppnas ett blad på hello rätt.
    
    ![image58][image58]
-4. Klicka på Konfigurera, välj ett lagringskonto från bladet till höger.
+4. Klicka på Konfigurera, Välj ett lagringskonto från hello bladet på hello rätt.
    
    ![image59][image59]
-5. Skapa och välj en lagringsbehållare för säkerhetskopiorna. Klicka på Skapa längst ned på bladet. Välj behållaren.
+5. Nu skapa och välja en lagring behållaren toohold säkerhetskopiorna. Klicka på Skapa längst hello hello-bladet. Välj sedan hello-behållare.
    
    ![image60][image60]
-6. När du har valt behållaren kan du konfigurera scheman och säkerhetskopieringar för dina databaser. I det här scenariot klickar du på ikonen Spara.
+6. När du har valt hello behållare, kan du konfigurera scheman, samt installationsprogrammet säkerhetskopieringar för dina databaser. Klicka på hello spara ikon för det här scenariot.
    
     ![image61][image61]
-7. När du har sparat bläddrar du tillbaka till bladet till vänster för Säkerhetskopieringar. Säkerhetskopiera programmet genom att klicka på Säkerhetskopiera nu.
+7. När du har sparat Rulla tillbaka toohello bladet hello vänster för säkerhetskopiering. Klicka på Säkerhetskopiera nu tooback hello-program.
    
     ![image62][image62]
-8. En säkerhetskopia skapas efter en liten stund. Observera alternativet Återställ nu i skärmbilden nedan.
+8. En säkerhetskopia skapas efter en liten stund. Meddelande hello Återställ nu alternativet på hello skärmbilden nedan.
    
     ![image63][image63]
-9. Klicka på Återställ nu och gå igenom alternativen på bladet till höger. Du kan välja lämplig säkerhetskopia och enkelt återställa till ett tidigare tillstånd om det behövs. Med hjälp av Azure-portalen har vi snabbt skapat en enkel haveriberedskapsstrategi för appen.
+9. Klicka på Återställ nu och undersöka hello alternativ toohello bladet på hello rätt. Du kan välja en lämplig säkerhetskopierings- och lätt återställning tooan tidigare tillstånd som krävs. hello Azure-portalen har hjälpt oss enkelt aktivera en enkel haveriberedskapsstrategi för hello app.
    
     ![image64][image64]
-10. Gå tillbaka till bladet Inställningar till vänster och välj Autentisering/auktorisering under Funktioner.
+10. Flytta tillbaka toohello inställningsbladet hello vänster och under funktioner och välj autentisering/auktorisering.
     
      ![image65][image65]
-11. Välj App Service-autentisering till höger på bladet. Lägg märke till de olika alternativ som du kan konfigurera med populära providers.
+11. Välj App Service-autentisering i hello bladet på hello rätt. Observera hello mängd olika alternativ som du kan konfigurera med populära providers.
     
      ![image66][image66]
-12. Välj önskat provideralternativ och observera alternativen för omfånget. Du kan ange ett app-ID och en apphemlighet och snabbt aktivera Facebook-autentisering för appen. Azure Portal erbjuder autentisering som en nyckelfärdig lösning för appar.
+12. Välj önskat hello-providern och Lägg märke hello alternativ för hello omfång. Du kan ange App-ID och App hemlighet och snabbt aktivera Facebook-autentisering för hello app. hello Azure-portalen aktiverar autentisering som en helhetslösning för appar.
     
      ![image67][image67]
-13. Gå tillbaka till bladet Inställningar och välj Användare under kategorin Resurshantering.
+13. Flytta tillbaka toohello inställningsbladet och Välj användare under hello resurshantering kategori.
     
      ![image68][image68]
-14. Utforska de olika alternativen för att lägga till roller och användare på bladet till höger. På Azure Portal kan du enkelt styra programmets rollbaserade åtkomst.
+14. Hello-bladet på hello rätt undersöka hello olika alternativ för att lägga till roller och användare. hello Azure-portalen kan du enkelt styra RBAC (rollbaserad åtkomstkontroll) för hello program.
     
      ![image69][image69]
 
 ## <a name="summary"></a>Sammanfattning
-I den här självstudiekursen demonstrerade vi en del av kraften i Azure-plattformen genom att snabbt aktivera kontinuerlig distribution för en webbapp, utföra olika utvecklings- och testningsaktiviteter, övervaka och felsöka en live-app och slutligen hantera nyckelstrategier som haveriberedskap, identiteter och rollbaserad åtkomstkontroll. Dessa DevOps-arbetsflöden kan enkelt integreras med Azure-plattformen, och du kan arbeta effektivt i kontexten för den aktuella aktiviteten.
+Den här självstudiekursen visas några hello ström med hello Azure-plattformen genom att snabbt aktivera kontinuerlig distribution för en webbapp, utför olika utveckling och testning aktiviteter, övervaka och felsöka en live-app och slutligen hantera nyckel strategier som katastrofåterställning, identitet och rollbaserad åtkomstkontroll. hello Azure-plattformen gör det möjligt för en integrerad upplevelse för dessa DevOps-arbetsflöden och du kan arbeta effektivt genom att hålla sig i kontexten för hello uppgiften.
 
 ## <a name="next-steps"></a>Nästa steg
-* Azure Resource Manager är viktigt för att aktivera DevOps på Azure-plattformen.  Mer information finns i [Översikt över Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-* Mer information om Azure App Service-distributioner finns i [Distribuera en app till Azure App Service](../app-service-web/web-sites-deploy.md)
+* Azure Resource Manager är viktigt för att aktivera DevOps på hello Azure-plattformen.  toolearn finns mer [översikt över Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+* Mer om Azure App Service-distributionen finns toolearn [distribuera din app tooAzure Apptjänst](../app-service-web/web-sites-deploy.md)
 
 [image1]: ./media/tutorial-azureportal-devops/image1.png
 [image2]: ./media/tutorial-azureportal-devops/image2.png

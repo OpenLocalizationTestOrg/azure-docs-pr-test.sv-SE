@@ -1,5 +1,5 @@
 ---
-title: "Översikt över Azure Event Hubs autentisering och säkerhetsmodell | Microsoft Docs"
+title: "aaaOverview av Händelsehubbar i Azure-autentisering och säkerhetsmodell | Microsoft Docs"
 description: "Autentisering och säkerhet modellen översikt över Event Hubs."
 services: event-hubs
 documentationcenter: na
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: sethm;clemensv
-ms.openlocfilehash: 5abdbf70d4fdb2c7feb0f3537ecc0f2abf0775a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e57ccda33e5ee20e635487cf91d9e8af594d3bd7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Autentisering och säkerhet modellen översikt över Event Hubs
-Händelsehubbar i Azure-säkerhetsmodellen uppfyller följande krav:
+säkerhetsmodell för hello Azure Event Hubs uppfyller hello följande krav:
 
-* Endast klienter som presenterar giltiga autentiseringsuppgifter kan skicka data till en händelsehubb.
+* Endast klienter som presenterar giltiga autentiseringsuppgifter kan skicka data tooan händelsehubb.
 * En klient kan personifiera en annan klient.
-* En falsk klient blockeras från att skicka data till en händelsehubb.
+* En falsk klient blockeras från att skicka data tooan händelsehubb.
 
 ## <a name="client-authentication"></a>Klientautentisering
-Händelsehubbar-säkerhetsmodellen bygger på en kombination av [delade signatur åtkomst (SAS)](../service-bus-messaging/service-bus-sas.md) token och *händelseutfärdare*. En händelseutfärdare definierar en virtuell slutpunkt för en händelsehubb. Utgivaren kan bara användas för att skicka meddelanden till en händelsehubb. Det går inte att ta emot meddelanden från en utgivare.
+Hej Händelsehubbar säkerhetsmodellen bygger på en kombination av [delade signatur åtkomst (SAS)](../service-bus-messaging/service-bus-sas.md) token och *händelseutfärdare*. En händelseutfärdare definierar en virtuell slutpunkt för en händelsehubb. hello publisher går bara att använda toosend meddelanden tooan händelsehubb. Det är inte möjligt tooreceive meddelanden från en utgivare.
 
-En händelsehubb använder normalt en utgivare per klient. Alla meddelanden som skickas till någon av utgivare i en händelsehubb är köas inom den händelsehubben. Utgivare Aktivera detaljerad åtkomstkontroll och begränsning.
+En händelsehubb använder normalt en utgivare per klient. Alla meddelanden som skickas tooany över hello utgivare i en händelsehubb är köas inom den händelsehubben. Utgivare Aktivera detaljerad åtkomstkontroll och begränsning.
 
-Varje händelsehubbklient tilldelas ett unikt token som överförs till klienten. Token som tillverkas så att varje unik token ger tillgång till en annan unik utgivare. En klient som har en token kan bara skicka till en utgivare, men inga andra utgivare. Om flera klienter delar samma token, delar dem en utgivare.
+Varje händelsehubbklient tilldelas ett unikt token som är överförda toohello klient. hello token produceras så att varje unik token beviljar åtkomst tooa olika unika utgivare. En klient som har en token kan bara skicka tooone publisher, men inga andra utgivare. Om flera klienter resursen hello samma token och sedan var och en av dem delar en utgivare.
 
-Det är möjligt att förse enheter med token som ger direktåtkomst till en händelsehubb rekommenderas inte. Alla enheter som innehåller detta token kan skicka meddelanden direkt till den händelsehubben. Dessa enheter inte omfattas begränsning. Dessutom kan du övriga enheten från att skicka till den event hub.
+Rekommenderas inte är möjligt tooequip enheter med token som ger direktåtkomst tooan händelsehubb. Alla enheter som innehåller detta token kan skicka meddelanden direkt till den händelsehubben. Dessa enheter inte ämne toothrottling. Hello-enhet kan dessutom övriga från att skicka toothat händelsehubb.
 
-Alla token är signerade med en SAS-nyckel. Alla token är vanligtvis signerade med samma nyckel. Klienter är inte medvetna om nyckeln. Detta förhindrar att andra klienter tillverkar token.
+Alla token är signerade med en SAS-nyckel. Normalt alla token är signerade med hello samma nyckel. Klienter är inte medvetna om hello nyckeln. Detta förhindrar att andra klienter tillverkar token.
 
-### <a name="create-the-sas-key"></a>Skapa SAS-nyckeln
+### <a name="create-hello-sas-key"></a>Skapa hello SAS-nyckel
 
-När du skapar ett namnområde för Händelsehubbar tjänsten genererar en 256-bitars SAS-nyckel som heter **RootManageSharedAccessKey**. Den här nyckeln ger skicka lyssna och hantera rättigheter till i namnområdet. Du kan också skapa ytterligare nycklar. Vi rekommenderar att du ger en nyckel som ger skickar behörigheter till specifika händelsehubben. Under resten av det här avsnittet förutsätts att den här nyckeln med namnet **EventHubSendKey**.
+När du skapar ett namnområde för Händelsehubbar hello tjänsten genererar en 256-bitars SAS-nyckel som heter **RootManageSharedAccessKey**. Den här nyckeln ger skicka lyssna och hantera rights toohello namnområde. Du kan också skapa ytterligare nycklar. Vi rekommenderar att du ger en nyckel som ger skickar behörigheter toohello specifik händelsehubb. För hello resten av det här avsnittet, förutsätts att den här nyckeln med namnet **EventHubSendKey**.
 
-I följande exempel skapas en endast send-nyckel när du skapar händelsehubben:
+hello följande exempel skapar en bara skicka nyckel när du skapar hello händelsehubb:
 
 ```csharp
 // Create namespace manager.
@@ -53,7 +53,7 @@ Uri uri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, string.
 TokenProvider td = TokenProvider.CreateSharedAccessSignatureTokenProvider(namespaceManageKeyName, namespaceManageKey);
 NamespaceManager nm = new NamespaceManager(namespaceUri, namespaceManageTokenProvider);
 
-// Create event hub with a SAS rule that enables sending to that event hub
+// Create event hub with a SAS rule that enables sending toothat event hub
 EventHubDescription ed = new EventHubDescription("MY_EVENT_HUB") { PartitionCount = 32 };
 string eventHubSendKeyName = "EventHubSendKey";
 string eventHubSendKey = SharedAccessAuthorizationRule.GenerateRandomKey();
@@ -64,46 +64,46 @@ nm.CreateEventHub(ed);
 
 ### <a name="generate-tokens"></a>Generera token
 
-Du kan generera token med SAS-nyckeln. Du måste skapa en enda token per klient. Token kan sedan produceras med följande metod. Alla token genereras med hjälp av den **EventHubSendKey** nyckel. Varje token tilldelas ett unikt URI.
+Du kan generera token med hello SAS-nyckel. Du måste skapa en enda token per klient. Token kan sedan produceras med hello följande metod. Alla token genereras med hjälp av hello **EventHubSendKey** nyckel. Varje token tilldelas ett unikt URI.
 
 ```csharp
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
 ```
 
-När du anropar den här metoden URI: N måste anges som `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. För alla token URI är identiska, med undantag av `PUBLISHER_NAME`, som ska vara olika för varje token. Vi rekommenderar `PUBLISHER_NAME` representerar ID för klienten som tar emot säkerhetstoken.
+När du anropar den här metoden hello URI måste anges som `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. För alla token hello URI är identisk med hello undantag av `PUBLISHER_NAME`, som ska vara olika för varje token. Vi rekommenderar `PUBLISHER_NAME` representerar hello-ID för hello-klient som tar emot säkerhetstoken.
 
-Den här metoden skapar en token med följande struktur:
+Den här metoden skapar en token med hello följande struktur:
 
 ```csharp
 SharedAccessSignature sr={URI}&sig={HMAC_SHA256_SIGNATURE}&se={EXPIRATION_TIME}&skn={KEY_NAME}
 ```
 
-Förfallotid för token har angetts i sekunder från den 1 januari 1970. Följande är ett exempel på en token:
+hello token förfallotid har angetts i sekunder från den 1 januari 1970. hello följande är ett exempel på en token:
 
 ```csharp
 SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFmBHG77A%3d&se=1403130337&skn=RootManageSharedAccessKey
 ```
 
-Token har vanligtvis en livslängd som liknar eller överskrider livslängden på klienten. Om klienten har möjlighet att få en ny token, kan token med en kortare livslängd användas.
+Normalt har hello token en livslängd som liknar eller överskrider hello livslängd av hello-klienten. Om hello-klienten har hello kapaciteten tooobtain en ny token, kan token med en kortare livslängd användas.
 
 ### <a name="sending-data"></a>Skicka data
-När token har skapats kan etableras varje klient med sin egen unika token.
+När du har skapat hello token etableras varje klient med sin egen unika token.
 
-När klienten skickar data till en händelsehubb, taggar skicka begäran till token. Kommunikationen mellan klienten och händelsehubben måste ske över en krypterad kanal för att hindra en angripare från avlyssning och stjäla token.
+När hello klienten skickar data till en händelsehubb, taggar skicka begäran med hello-token. tooprevent en angripare från avlyssning och stjäla hello token, hello kommunikation mellan hello-klienten och hello händelsehubb måste ske över en krypterad kanal.
 
 ### <a name="blacklisting-clients"></a>Godkänna klienter
-Om en token blir stulen av en angripare kan angripare imitera klienten vars token stulna. Godkänna en klient återger den klienten inte kan användas tills det mottar en ny token som använder en annan utgivare.
+Om en token blir stulen av en angripare kan hello angripare personifiera hello klienten vars token stulna. Godkänna en klient återger den klienten inte kan användas tills det mottar en ny token som använder en annan utgivare.
 
 ## <a name="authentication-of-back-end-applications"></a>Autentisering av backend-program
 
-Händelsehubbar använder en säkerhetsmodell som liknar den modell som används för Service Bus-ämnen för att autentisera backend-program som använder data som genereras av Händelsehubbar klienter. En konsumentgrupp Händelsehubbar motsvarar en prenumeration på en Service Bus-ämne. En klient kan skapa en konsumentgrupp om begäran att skapa konsumentgruppen åtföljs av en token som beviljar hanterar behörighet för händelsehubben eller för det namnområde där händelsehubben tillhör. En klient är tillåtet att använda data från en konsumentgrupp receive-begäran åtföljs av en token som ger receive rättigheter på just den konsumentgruppen, händelsehubben eller det namnområde där händelsehubben tillhör.
+tooauthenticate backend-program som använder hello data som genereras av Händelsehubbar klienter, Event Hubs använder en säkerhetsmodell som är liknande toohello modell som används för Service Bus-ämnen. En konsumentgrupp för Händelsehubbar är likvärdiga tooa prenumeration tooa Service Bus-ämne. En klient kan skapa en konsumentgrupp hello begäran toocreate hello konsumentgrupp åtföljs av en token som beviljar hantera behörigheter för hello händelsehubb, eller för hello namnområde toowhich hello händelsehubb tillhör. En klient är tillåten tooconsume data från en konsumentgrupp om hello får begäran åtföljs av en token som beviljar får behörighet på just den konsumentgruppen, hello händelsehubb eller händelsehubb för hello namnområde toowhich hello tillhör.
 
-Den aktuella versionen av Service Bus stöder inte SAS regler för enskilda prenumerationer. Detsamma gäller för Händelsehubbar konsumentgrupper. Stöd för SAS läggs för båda funktionerna i framtiden.
+hello nuvarande version av Service Bus stöder inte SAS regler för enskilda prenumerationer. Detsamma gäller för Händelsehubbar konsumentgrupper hello. Stöd för SAS läggs för båda funktionerna i hello framtida.
 
-SAS-autentisering för enskilda konsumentgrupper saknas, kan du använda SAS-nycklar för att skydda alla konsumentgrupper med en gemensam nyckel. Den här metoden kan program använda data från någon av konsumentgrupper för en händelsehubb.
+Hello saknas SAS-autentisering för enskilda konsumentgrupper, kan du använda SAS nycklar toosecure alla konsumentgrupper med en gemensam nyckel. På så sätt kan en tooconsume programdata från någon av hello konsumentgrupper för en händelsehubb.
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om Händelsehubbar finns i följande avsnitt:
+toolearn mer information om Händelsehubbar, finns hello följande avsnitt:
 
 * [Event Hubs-översikt]
 * [Översikt över signaturer för delad åtkomst]

@@ -1,6 +1,6 @@
 ---
-title: "Använda beräkningsintensiva virtuella Azure-datorer med Batch | Microsoft Docs"
-description: Hur du drar nytta av RDMA-kompatibla eller GPU-aktiverade Virtuella datorstorlekar i Azure Batch-pooler
+title: "aaaUse beräkningsintensiva virtuella Azure-datorer med Batch | Microsoft Docs"
+description: Hur tootake nytta av RDMA-kompatibla eller GPU-aktiverade VM storlekar i Azure Batch-pooler
 services: batch
 documentationcenter: 
 author: dlepow
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: danlep
-ms.openlocfilehash: c52a054e4fc8f61f871acd9f35b9a3e6247e48ef
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: 6a462a5f2a44ddcec8bf4e5c200d444cac8fafe6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Använda RDMA-kompatibla eller GPU-aktiverade instanser i Batch-pooler
 
-Om du vill köra vissa batchjobb kanske du vill dra nytta av Azure VM-storlekar som utformats för storskaliga beräkning. Till exempel för att köra flera instanser [arbetsbelastningar MPI](batch-mpi.md), kan du välja A8 A9, eller H-serien storlekar som har ett nätverk gränssnitt för Remote Direct Memory Access (RDMA). Dessa storlekar ansluta till en InfiniBand-nätverk för kommunikationen mellan noder som kan påskynda MPI-program. Eller CUDA program du N-serien storlekar som innehåller NVIDIA Tesla grafikprocessorer (GPU) unit-kort.
+toorun vissa batchjobb, kanske du vill tootake utnyttja Azure VM-storlekar som utformats för storskaliga beräkning. Till exempel toorun flerinstans [arbetsbelastningar MPI](batch-mpi.md), kan du välja A8 A9, eller H-serien storlekar som har ett nätverk gränssnitt för Remote Direct Memory Access (RDMA). Dessa storlekar ansluta tooan InfiniBand-nätverk för kommunikationen mellan noder som kan påskynda MPI-program. Eller CUDA program du N-serien storlekar som innehåller NVIDIA Tesla grafikprocessorer (GPU) unit-kort.
 
-Den här artikeln innehåller anvisningar och exempel för att använda vissa av Azures specialiserade i Batch-pooler. Specifikationer och bakgrunden finns:
+Den här artikeln innehåller anvisningar och exempel toouse vissa av särskilda Azures i Batch-pooler. Specifikationer och bakgrunden finns:
 
 * Högpresterande compute VM-storlekar ([Linux](../virtual-machines/linux/sizes-hpc.md), [Windows](../virtual-machines/windows/sizes-hpc.md)) 
 
@@ -33,20 +33,20 @@ Den här artikeln innehåller anvisningar och exempel för att använda vissa av
 
 ## <a name="subscription-and-account-limits"></a>Prenumerationen och gränser
 
-* **Kvoter** -en eller flera Azure-kvoter kan begränsa antalet eller typen av noder som du kan lägga till en Batch-pool. Det är mer sannolikt att begränsas när du väljer RDMA-kompatibla GPU-aktiverade eller andra flera kärnor VM-storlekar. Beroende på vilken typ av Batch-kontot som du skapade kunde kvoter tillämpas på kontot i sig eller till din prenumeration.
+* **Kvoter** -en eller flera Azure-kvoter kan begränsa antalet hello eller typen av noder kan du lägga till tooa Batch-pool. Du är mer troligt toobe begränsad när du väljer RDMA-kompatibel GPU-aktiverad, eller andra flera kärnor VM-storlekar. Beroende på hello typ av Batch-kontot som du har skapat, kan du använda toohello konto sig själv eller tooyour prenumeration hello kvoter.
 
-    * Om du har skapat Batch-kontot i den **Batch-tjänsten** konfiguration, begränsas av den [dedikerade kärnor kvot per Batch-kontot](batch-quota-limit.md#resource-quotas). Som standard är den här kvoten 20 kärnor. En separat kvot gäller [VM med låg prioritet](batch-low-pri-vms.md), om du använder dem. 
+    * Om du har skapat Batch-kontot i hello **Batch-tjänsten** konfiguration, är du begränsad hello [dedikerade kärnor kvot per Batch-kontot](batch-quota-limit.md#resource-quotas). Som standard är den här kvoten 20 kärnor. En separat kvot gäller för[VM med låg prioritet](batch-low-pri-vms.md), om du använder dem. 
 
-    * Om du har skapat kontot i den **användarens prenumeration** konfiguration, din prenumerationsbegränsningar VM antalet kärnor per region. Se [Azure-prenumeration och tjänsten gränser, kvoter och begränsningar](../azure-subscription-service-limits.md). Prenumerationen gäller även en regionala kvot för vissa VM-storlekar, inklusive HPC och GPU-instanser. Inga ytterligare kvoter tillämpas på Batch-kontot i prenumerationen Användarkonfiguration. 
+    * Om du har skapat hello konto i hello **användarens prenumeration** konfiguration, din prenumeration begränsar hello antal VM kärnor per region. Se [Azure-prenumeration och tjänsten gränser, kvoter och begränsningar](../azure-subscription-service-limits.md). Prenumerationen gäller även en regionala kvoten toocertain VM-storlekar, inklusive HPC och GPU-instanser. Inga ytterligare kvoter tillämpas i konfiguration för hello prenumeration toohello Batch-kontot. 
 
-  Du kan behöva öka kvoter för en eller flera när du använder en särskild VM-storlek i batchen. Om du vill begära en ökning av kvoten kan du öppna ett [kundsupportärende online](../azure-supportability/how-to-create-azure-support-request.md) utan kostnad.
+  Du kan behöva tooincrease kvoter för en eller flera när du använder en särskild VM-storlek i batchen. toorequest ökad kvot, öppna ett [online kundsupport](../azure-supportability/how-to-create-azure-support-request.md) utan kostnad.
 
-* **Regional tillgänglighet** - beräkningsintensiva virtuella datorer kanske inte är tillgänglig i regioner där du skapar Batch-konton. Du kan kontrollera att det finns en storlek [produkter som är tillgängliga efter region](https://azure.microsoft.com/regions/services/).
+* **Regional tillgänglighet** - beräkningsintensiva virtuella datorer kanske inte är tillgänglig i hello regioner där du skapar Batch-konton. toocheck att en storlek är tillgänglig finns [produkter som är tillgängliga efter region](https://azure.microsoft.com/regions/services/).
 
 
 ## <a name="dependencies"></a>Beroenden
 
-Beräkningsintensiva storlekar RDMA och GPU funktioner stöds endast i vissa operativsystem. Beroende på operativsystem kan behöva du installera eller konfigurera ytterligare drivrutin eller annan programvara. Följande tabeller sammanfattar dessa beroenden. Se länkade artiklar för ytterligare information. Alternativ att konfigurera Batch pooler finns senare i den här artikeln.
+Hej RDMA och GPU-funktionerna i beräkningsintensiva storlekar stöds endast i vissa operativsystem. Beroende på operativsystemet, kanske du behöver tooinstall eller konfigurera ytterligare drivrutin eller annan programvara. hello följande tabellerna sammanfattas dessa beroenden. Se länkade artiklar för ytterligare information. Alternativ tooconfigure Batch pooler finns senare i den här artikeln.
 
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Pooler för Linux - konfiguration av virtuell dator
@@ -74,7 +74,7 @@ Beräkningsintensiva storlekar RDMA och GPU funktioner stöds endast i vissa ope
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows - pooler i Cloud services-konfiguration
 
 > [!NOTE]
-> N-serien storlekar stöds inte i Batch-pooler med cloud services-konfiguration.
+> N-serien storlekar stöds inte i Batch-pooler med hello cloud services-konfiguration.
 >
 
 | Storlek | Funktion | Operativsystem | Programvara som krävs | Inställningar för programpool |
@@ -87,17 +87,17 @@ Beräkningsintensiva storlekar RDMA och GPU funktioner stöds endast i vissa ope
 
 ## <a name="pool-configuration-options"></a>Konfigurationsalternativ för poolen
 
-Om du vill konfigurera en särskild VM-storlek för Batch-pool tillhandahåller Batch-API: er och verktyg en flera alternativ för att installera nödvändig programvara eller drivrutiner, inklusive:
+tooconfigure en specialiserad VM-storlek för Batch-pool, hello Batch-API: er och verktyg tillhandahåller flera alternativ tooinstall krävs programvara eller drivrutiner, inklusive:
 
-* [Aktiviteten starta](batch-api-basics.md#start-task) -överföra ett installationspaket som en resurs till ett Azure storage-konto i samma region som Batch-kontot. Skapa en starta uppgiften kommandorad för att installera resursfilen tyst när poolen startar. Mer information finns i [REST API-dokumentation](/rest/api/batchservice/add-a-pool-to-an-account#bk_starttask).
+* [Aktiviteten starta](batch-api-basics.md#start-task) -ladda upp ett installationspaket som en resurs filen tooan Azure storage-konto i hello samma region som hello Batch-kontot. Skapa resursfilen starta uppgiften kommandoraden tooinstall hello tyst när hello pool startas. Mer information finns i hello [REST API-dokumentation](/rest/api/batchservice/add-a-pool-to-an-account#bk_starttask).
 
   > [!NOTE] 
-  > Startuppgiften måste köras med behörighet för utökade (admin) och den måste vänta på att lyckas.
+  > hello startuppgift måste köras med behörighet för utökade (admin) och den måste vänta på att lyckas.
   >
 
-* [Programpaketet](batch-application-packages.md) – Lägg till ett komprimerade installationspaket till Batch-kontot och konfigurera en paket-referens i poolen. Den här inställningen laddar upp och därefter paketet på alla noder i poolen. Om paketet är ett installationsprogram, skapa en start uppgiften kommandoraden för att installera appen på alla noder i poolen. Du kan också installera paketet när en aktivitet är schemalagd att köras på en nod.
+* [Programpaketet](batch-application-packages.md) – Lägg till en installation av komprimerade paketet tooyour Batch-kontot och konfigurera en paket-referens i hello pool. Den här inställningen laddar upp och därefter hello paketet på alla noder i hello pool. Om hello-paket är ett installationsprogram, skapar du en starta uppgiften kommandoraden toosilently installera hello app på alla noder i poolen. Du kan också installera hello-paket när en aktivitet är schemalagd toorun på en nod.
 
-* [Anpassade poolen avbildningen](batch-api-basics.md#pool) – skapa en anpassad Windows eller Linux VM-avbildning som innehåller drivrutiner, program, eller andra inställningar som krävs för VM-storlek. Om du har skapat Batch-kontot i Användarkonfiguration för prenumerationen kan du ange den anpassade avbildningen för Batch-pool. (Anpassade avbildningar stöds inte i konton i konfigurationen av Batch-tjänsten.) Anpassade avbildningar kan endast användas med pooler i konfigurationen av virtuella datorn.
+* [Anpassade poolen avbildningen](batch-api-basics.md#pool) – skapa en anpassad Windows eller Linux VM-avbildning som innehåller drivrutiner, programvara eller andra inställningar som krävs för hello VM-storlek. Om du har skapat Batch-kontot i hello Användarkonfiguration prenumerationen ange hello anpassad avbildning för Batch-pool. (Anpassade avbildningar stöds inte i konton i hello Batch-tjänstkonfigurationen.) Anpassade avbildningar kan endast användas med pooler i hello konfiguration av virtuell dator.
 
   > [!IMPORTANT]
   > Du kan inte använder en anpassad avbildning som skapats med hanterade diskar eller med Premium-lagring i Batch-pooler.
@@ -105,17 +105,17 @@ Om du vill konfigurera en särskild VM-storlek för Batch-pool tillhandahåller 
 
 
 
-* [Batch-skeppsvarv](https://github.com/Azure/batch-shipyard) konfigurerar automatiskt GPU och RDMA fungerar tillsammans med av arbetsbelastningar i Azure Batch. Batch skeppsvarv drivs helt med konfigurationsfiler. Det finns många exempel recept tillgängliga konfigurationer som möjliggör GPU och RDMA arbetsbelastningar, till exempel den [CNTK GPU recept](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI) som förkonfigurerar GPU drivrutiner på N-serien virtuella datorer och läser in kognitiva Toolkit för Microsoft-programvara som en Docker-bild.
+* [Batch-skeppsvarv](https://github.com/Azure/batch-shipyard) konfigurerar automatiskt hello GPU och RDMA toowork transparent med av arbetsbelastningar i Azure Batch. Batch skeppsvarv drivs helt med konfigurationsfiler. Det finns många exempel recept tillgängliga konfigurationer som möjliggör GPU och RDMA arbetsbelastningar som till exempel hello [CNTK GPU recept](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI) som förkonfigurerar GPU drivrutiner på N-serien virtuella datorer och läser in kognitiva Toolkit för Microsoft-programvara som en Docker-bild.
 
 
 ## <a name="example-microsoft-mpi-on-an-a8-vm-pool"></a>Exempel: Microsoft MPI i en A8 VM-adresspool
 
-Om du vill köra Windows MPI program på en pool med Azure A8 noder som du behöver installera en stöds MPI-implementering. Här följer exempel steg för att installera [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) på en Windows-poolen med hjälp av ett Batch-programpaket.
+toorun Windows MPI program på en pool med Azure A8 noder, behöver du tooinstall en stöds MPI-implementering. Här följer exempel steg tooinstall [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) på en Windows-poolen med hjälp av ett Batch-programpaket.
 
-1. Hämta den [installationspaketet](http://go.microsoft.com/FWLink/p/?LinkID=389556) (MSMpiSetup.exe) för den senaste versionen av Microsoft MPI.
-2. Skapa en zip-filen i paketet.
-3. Ladda upp paketet till Batch-kontot. Anvisningar finns i [programpaket](batch-application-packages.md) vägledning. Ange ett program-id som *MSMPI*, och en version som *8.1*. 
-4. Skapa en pool i cloud services-konfiguration med önskat antal noder och skala med Batch-API: er eller Azure-portalen. I följande tabell visas exempel på inställningar att konfigurera MPI i obevakat läge med Startuppgiften:
+1. Hämta hello [installationspaketet](http://go.microsoft.com/FWLink/p/?LinkID=389556) (MSMpiSetup.exe) för hello senaste versionen av Microsoft MPI.
+2. Skapa en zip-fil för hello-paketet.
+3. Överför hello paketet tooyour Batch-kontot. Anvisningar finns i hello [programpaket](batch-application-packages.md) vägledning. Ange ett program-id som *MSMPI*, och en version som *8.1*. 
+4. Skapa en pool i hello cloud services-konfiguration med hello önskat antal noder och skala med hello Batch-API: er eller Azure-portalen. hello följande tabell visas exempel inställningarna tooset in MPI i obevakat läge med Startuppgiften:
 
 | Inställning | Värde |
 | ---- | ----- | 
@@ -129,21 +129,21 @@ Om du vill köra Windows MPI program på en pool med Azure A8 noder som du behö
 
 ## <a name="example-nvidia-tesla-drivers-on-nc-vm-pool"></a>Exempel: NVIDIA Tesla drivrutiner på NC-VM-pool
 
-Om du vill köra CUDA program på en pool med Linux NC-noder som du behöver installera CUDA Toolkit 8.0 på noderna. Verktyget installerar nödvändiga NVIDIA Tesla GPU-drivrutiner. Här följer exempel steg för att distribuera en anpassad avbildning Ubuntu 16.04 LTS med GPU-drivrutiner:
+toorun CUDA program på en pool med Linux NC-noder, behöver du tooinstall CUDA Toolkit 8.0 på hello noder. hello Toolkit installerar drivrutiner som behövs hello NVIDIA Tesla GPU. Här följer exempel steg toodeploy en anpassad avbildning Ubuntu 16.04 LTS med hello GPU drivrutiner:
 
-1. Distribuera ett Azure NC6 virtuell dator som kör Ubuntu 16.04 LTS. Till exempel skapa den virtuella datorn i oss södra centrala region. Se till att du skapar den virtuella datorn med standardlagring, och *utan* hanterade diskar.
-2. Följ stegen för att ansluta till den virtuella datorn och [CUDA drivrutinsinstallation](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms).
-3. Ta bort etableringen av Linux-agenten och sedan avbilda Linux VM-avbildning med hjälp av Azure CLI 1.0-kommandon. Anvisningar finns [avbilda en Linux-dator som körs på Azure](../virtual-machines/linux/capture-image-nodejs.md). Anteckna avbildningen URI.
+1. Distribuera ett Azure NC6 virtuell dator som kör Ubuntu 16.04 LTS. Till exempel skapa hello VM i hello oss södra centrala region. Se till att du skapar hello VM med standardlagring, och *utan* hanterade diskar.
+2. Följ hello steg tooconnect toohello VM och [CUDA drivrutinsinstallation](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms).
+3. Ta bort etableringen hello Linux-agenten och sedan avbilda Linux VM-avbildning med hjälp av hello Azure CLI 1.0-kommandon. Anvisningar finns [avbilda en Linux-dator som körs på Azure](../virtual-machines/linux/capture-image-nodejs.md). Anteckna hello avbildningen URI.
   > [!IMPORTANT]
-  > Använd inte Azure CLI 2.0-kommandon för att avbilda för Azure Batch. Kommandona CLI 2.0 avbilda för närvarande endast virtuella datorer som skapades med hjälp av hanterade diskar.
+  > Använd inte Azure CLI 2.0 kommandon toocapture hello avbildning för Azure Batch. Hello CLI 2.0 kommandon avbilda för närvarande endast virtuella datorer som skapades med hjälp av hanterade diskar.
   >
-4. Skapa ett Batch-konto med prenumerationen Användarkonfiguration, i en region som stöder NC virtuella datorer.
-5. Med hjälp av Batch-API: er eller Azure portal, skapa en pool med den anpassade avbildningen och med önskat antal noder och skala. I följande tabell visas exempel processpool-inställningar för avbildningen:
+4. Skapa ett Batch-konto med hello prenumeration Användarkonfiguration i en region som stöder NC virtuella datorer.
+5. Använder hello Batch-API: er eller Azure portal, skapa en pool med hello anpassad avbildning och med hello önskat antal noder och skala. hello visas följande tabell exempel processpool-inställningar för hello avbildningen:
 
 | Inställning | Värde |
 | ---- | ---- |
 | **Bildtyp** | Anpassad avbildning |
-| **Anpassad avbildning** | Bild URI i formuläret`https://yourstorageaccountdisks.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` |
+| **Anpassad avbildning** | Bild-URI för hello formuläret`https://yourstorageaccountdisks.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` |
 | **Noden agent SKU** | batch.node.Ubuntu 16.04 |
 | **Nodstorlek** | NC6 Standard |
 
@@ -151,6 +151,6 @@ Om du vill köra CUDA program på en pool med Linux NC-noder som du behöver ins
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Om du vill köra MPI-jobb på Azure Batch-pool finns på [Windows](batch-mpi.md) eller [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) exempel.
+* toorun MPI-jobb på Azure Batch-pool finns hello [Windows](batch-mpi.md) eller [Linux](https://blogs.technet.microsoft.com/windowshpc/2016/07/20/introducing-mpi-support-for-linux-on-azure-batch/) exempel.
 
-* Exempel på GPU arbetsbelastningar på Batch finns i [Batch skeppsvarv](https://github.com/Azure/batch-shipyard/) recept.
+* Exempel på GPU arbetsbelastningar på Batch finns hello [Batch skeppsvarv](https://github.com/Azure/batch-shipyard/) recept.

@@ -1,6 +1,6 @@
 ---
-title: "Exportera en Azure-baserad API till PowerApps och Microsoft flödar | Microsoft Docs"
-description: "Översikt över hur du exponera en värdbaserad API i Apptjänst PowerApps och Microsoft Flow"
+title: aaaExporting en Azure-baserad API tooPowerApps och Microsoft Flow | Microsoft Docs
+description: "Översikt över hur tooexpose API finns i Apptjänst tooPowerApps och Microsoft Flow"
 services: app-service
 documentationcenter: 
 author: mattchenderson
@@ -14,21 +14,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: mahender
-ms.openlocfilehash: 0d166a2e5b60c3b9f911f9fc3ad49ad7f252abb4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 285b6efa3af5b0feac1ee2f617c0dc56dc3fd198
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportera en Azure-baserad API till PowerApps och Microsoft-flöde
+# <a name="exporting-an-azure-hosted-api-toopowerapps-and-microsoft-flow"></a>Exportera en Azure-baserad API tooPowerApps och Microsoft Flow
 
 ## <a name="creating-custom-connectors-for-powerapps-and-microsoft-flow"></a>Skapa egna kopplingar för PowerApps och Microsoft Flow
 
-[PowerApps](https://powerapps.com) är en tjänst för att skapa och använda anpassade appar som ansluter till dina data och fungera mellan olika plattformar. [Microsoft Flow](https://flow.microsoft.com) gör det enkelt att automatisera arbetsflöden och affärsprocesser mellan din favorit appar och tjänster. Både PowerApps och Microsoft Flow har ett antal inbyggda anslutningar till datakällor, till exempel Office 365, Dynamics 365, Salesforce och mycket mer. Användare behöver dock också för att kunna utnyttja datakällor och API: er som skapas av organisationen.
+[PowerApps](https://powerapps.com) är en tjänst för att skapa och använda anpassade appar som ansluter tooyour data och fungera mellan olika plattformar. [Microsoft Flow](https://flow.microsoft.com) gör det enkelt tooautomate arbetsflöden och affärsprocesser mellan din favorit appar och tjänster. Både PowerApps och Microsoft Flow levereras med en mängd olika inbyggda kopplingar toodata källor, till exempel Office 365, Dynamics 365, Salesforce och mycket mer. Användare behöver dock också toobe kan tooleverage datakällor och API: er som skapas av organisationen.
 
-På liknande sätt kan utvecklare som vill använda sina API: er mer brett inom organisationen kanske vill göra deras API: er som är tillgängliga för PowerApps och Microsoft Flow användarna. Det här avsnittet visas hur du exponera en API som byggts med Azure App Service eller Azure Functions PowerApps och Microsoft Flow. [Azure Apptjänst](https://azure.microsoft.com/services/app-service/) är ett erbjudande för plattform som en tjänst som gör att utvecklare att snabbt och enkelt skapa företagsklass webb-, mobil- och API-program. [Azure Functions](https://azure.microsoft.com/services/functions/) är en händelsebaserat serverlösa beräknings-lösning som gör att du kan snabbt författare kod som kan ta hänsyn till andra delar av systemet och skala baserat på begäran.
+På liknande sätt kan utvecklare som vill tooexpose sina mer brett inom hello organisation kanske vill toomake sina tillgängliga tooPowerApps för API: er och Microsoft Flow användare API: er. Det här avsnittet visar hur tooexpose en API som byggts med Azure App Service eller Azure Functions tooPowerApps och Microsoft Flow. [Azure Apptjänst](https://azure.microsoft.com/services/app-service/) är ett erbjudande för plattform som en tjänst som gör att utvecklare tooquickly och enkelt skapa företagsklass webb-, mobil och API-program. [Azure Functions](https://azure.microsoft.com/services/functions/) är en händelsebaserat serverlösa beräknings-lösning som gör att du tooquickly författare kod som kan reagera tooother delar av systemet och skala baserat på begäran.
 
-Mer information om dessa tjänster finns:
+toolearn mer om dessa tjänster finns i:
 - [PowerApps interaktiv utbildning](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) 
 - [Microsoft flödet interaktiv utbildning](https://flow.microsoft.com/guided-learning/learning-introducing-flow/)
 - [Vad är App Service?](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)
@@ -36,80 +36,80 @@ Mer information om dessa tjänster finns:
 
 ## <a name="sharing-an-api-definition"></a>Dela en API-definition
 
-API: er beskrivs ofta med hjälp av en [OpenAPI dokument](https://www.openapis.org/) (kallas ibland ”Swagger”-dokument). Innehåller all information om vilka åtgärder är tillgängliga och hur data ska vara strukturerad. PowerApps och Microsoft Flow kan skapa egna kopplingar för OpenAPI 2.0 dokument. När en anpassad koppling har skapats kan användas på exakt samma sätt som en av de inbyggda kopplingarna och snabbt kan integreras i ett program.
+API: er beskrivs ofta med hjälp av en [OpenAPI dokument](https://www.openapis.org/) (kallas ibland tooas ”Swagger”-dokument). Det innehåller alla hello information om vilka åtgärder är tillgängliga och hur data hello strukturerad. PowerApps och Microsoft Flow kan skapa egna kopplingar för OpenAPI 2.0 dokument. När en anpassad koppling har skapats kan den användas i hello exakt samma sätt som en hello inbyggda kopplingar och snabbt kan integreras i ett program.
 
-Azure Apptjänst och Azure Functions har [inbyggt stöd](https://docs.microsoft.com/azure/app-service-api/app-service-api-metadata) för att skapa, värd och hantera ett OpenAPI dokument. För att skapa en anpassad koppling för en webb-, mobil, API eller funktionsapp, PowerApps och flödet måste ges en kopia av definitionen.
+Azure Apptjänst och Azure Functions har [inbyggt stöd](https://docs.microsoft.com/azure/app-service-api/app-service-api-metadata) för att skapa, värd och hantera ett OpenAPI dokument. I ordning toocreate en anpassad koppling för en webb-, mobil, API eller funktionsapp måste PowerApps och flödar toobe en kopia av hello definition.
 
 > [!NOTE]
-> Eftersom en kopia av API-definitionen används vet PowerApps och Microsoft Flow inte omedelbart om uppdateringar eller viktiga förändringar till programmet. Om en ny version av API: et är tillgängligt, ska dessa steg upprepas för den nya versionen. 
+> Eftersom en kopia av hello API-definition används vet PowerApps och Microsoft Flow inte omedelbart om uppdateringar eller bryta ändringar toohello program. Om en ny version av hello API är tillgängligt, ska dessa steg upprepas för hello nya versionen. 
 
-Följ dessa steg för att ge PowerApps och Microsoft Flow värdbaserade API-definitionen för din app måste:
+Så här tooprovide PowerApps och Microsoft Flow med hello värdbaserade API-definition för din app:
 
-1. Öppna den [Azure Portal](https://portal.azure.com) och navigera till ditt program med App Service eller Azure Functions.
+1. Öppna hello [Azure Portal](https://portal.azure.com) och navigera tooyour Apptjänst eller Azure Functions.
 
-    Om du använder Azure App Service, Välj **API-definition** från inställningslistan över. 
+    Om du använder Azure App Service, Välj **API-definition** hello inställningar för listan. 
     
-    Om du använder Azure Functions, Välj appen funktionen och välj sedan **plattformsfunktioner**, och sedan **API-definition**. Du kan också välja att öppna den **API-definition (förhandsgranskning)** fliken i stället.
+    Om du använder Azure Functions, Välj appen funktionen och välj sedan **plattformsfunktioner**, och sedan **API-definition**. Du kan också välja tooopen hello **API-definition (förhandsgranskning)** fliken i stället.
 
-2. Om en API-definition har angetts, visas en **exportera till PowerApps + Microsoft Flow** knappen. Klicka här om du vill påbörja exporten.
+2. Om en API-definition har angetts, visas en **exportera tooPowerApps + Microsoft Flow** knappen. Klicka på knappen toobegin hello detta.
 
-3. Välj den **exportläge**. Detta avgör steg som du måste följa för att skapa en koppling. Apptjänst erbjuder två alternativ för att tillhandahålla PowerApps och Microsoft Flow med din API-definition:
+3. Välj hello **exportläge**. Detta avgör hello steg som du måste toofollow toocreate en koppling. Apptjänst erbjuder två alternativ för att tillhandahålla PowerApps och Microsoft Flow med din API-definition:
 
-    **Express** kan du skapa den anpassade-kopplingen från Azure-portalen. Det kräver att den nuvarande inloggade användaren har behörighet att skapa kopplingar i målmiljön. Detta är den rekommenderade metoden om detta krav kan uppfyllas. Om du använder det här läget, följer du de [Express export](#express) anvisningarna nedan.
+    **Express** kan du skapa hello anpassad koppling från inom hello Azure-portalen. Det krävs hello nuvarande inloggade användaren har behörighet toocreate kopplingar i hello målmiljön. Detta är hello rekommendationer om detta krav kan uppfyllas. Om du använder det här läget följer hello [Express export](#express) anvisningarna nedan.
 
-    **Manuell** kan du exportera en kopia av API-ingår som kan importeras med PowerApps eller Microsoft Flow portaler. Detta är den rekommenderade metoden om Azure användare och användare med behörighet att skapa kopplingar är olika personer eller om anslutningen måste skapas i en annan klient. Om du använder det här läget, följer du de [manuell export och import](#manual) anvisningarna nedan.
+    **Manuell** kan du exportera en kopia av hello API ingår som kan importeras med hello PowerApps eller Microsoft Flow portaler. Detta är hello rekommendationer om hello Azure användar- och hello användare med behörighet toocreate kopplingar är olika personer eller om hello connector måste toobe som skapats i en annan klient. Om du använder det här läget följer hello [manuell export och import](#manual) anvisningarna nedan.
 
 <a name="express"></a>
 ## <a name="express-export"></a>Express export
 
-I det här avsnittet skapar du en ny anpassad koppling från i Azure-portalen. Du måste vara inloggad på klienten som du vill exportera och du måste ha behörighet att skapa en anpassad koppling i målmiljön.
+I det här avsnittet skapar du en ny anpassad koppling från inom hello Azure-portalen. Du måste vara inloggad i hello klient toowhich gärna tooexport och du måste ha behörigheten toocreate en anpassad koppling i hello målmiljön.
 
-1. Välj miljön där du vill skapa kopplingen. Ange sedan ett namn för din anpassade connector.
+1. Välj hello miljö där du vill att toocreate hello-anslutningen. Ange sedan ett namn för din anpassade connector.
 
-2. Om din API-definition innehåller alla definitioner för säkerhet, kommer dessa som beskrivs i steg #2. Om det behövs, tillhandahålla säkerhet konfigurationsinformation som behövs för att bevilja användare åtkomst till ditt API. Mer information finns i [autentisering](#auth) nedan. 
+2. Om din API-definition innehåller alla definitioner för säkerhet, kommer dessa som beskrivs i steg #2. Om det behövs, skydda hello konfigurationsinformation behövs toogrant användare komma åt tooyour API. Mer information finns i [autentisering](#auth) nedan. 
 
-3. Klicka på **OK** att skapa en anpassad koppling.
+3. Klicka på **OK** toocreate din anpassad koppling.
 
 
 <a name="manual"></a>
 ## <a name="manual-export-and-import"></a>Manuell export och import
 
-Två steg krävs för att skapa en anpassad koppling för en webb-, mobil, API eller funktionsapp:
+I ordning toocreate en anpassad koppling för en webb-, mobil, API eller funktionsapp, två steg som behövs:
 
-1. [Hämta API-definitionen från Apptjänst eller Azure Functions](#export)
-2. [Importerar en API-definition i PowerApps och Microsoft Flow](#import)
+1. [Hämta API-definitions-hello från Apptjänst eller Azure Functions](#export)
+2. [Importera hello API-definition i PowerApps och Microsoft Flow](#import)
 
-Det är möjligt att dessa två steg måste utföras av separata enskilda användare i en organisation som en viss användare inte kanske har behörighet att utföra både åtgärder. I detta fall kan måste en utvecklare som har deltagare åtkomst till programmet Apptjänst eller Azure Functions du hämta API-definition (en enda JSON-fil) eller en länk till den. De måste sedan att tillhandahålla den definitionen för en PowerApps eller Microsoft Flow ägare. Som ägare kan använda metadata för att skapa anpassade kopplingen.
+Det är möjligt att dessa två steg måste toobe som utförs av olika personer i en organisation som en viss användare inte kanske har behörighet tooperform båda åtgärderna. I så fall måste en utvecklare som har deltagare åtkomst toohello Apptjänst eller Azure Functions tooobtain hello API-definition (en enda JSON-fil) eller en länk tooit. De måste sedan tooprovide att definition tooa PowerApps eller Microsoft Flow ägare. Som ägare kan använda hello metadata toocreate hello anpassad koppling.
 
 <a name="export"></a>
-### <a name="retrieving-the-api-definition-from-app-service-or-azure-functions"></a>Hämta API-definitionen från Apptjänst eller Azure Functions
+### <a name="retrieving-hello-api-definition-from-app-service-or-azure-functions"></a>Hämta API-definitions-hello från Apptjänst eller Azure Functions
 
-I det här avsnittet ska du exportera API-definitionen för din App Service-API, som ska användas senare i PowerApps eller Microsoft Flow-portalen.
+I det här avsnittet ska du exportera hello API-definition för din App Service API, toobe används senare i hello PowerApps eller Microsoft Flow portalen.
 
-1. Du kan välja att antingen **hämta API-definition** eller **hämta en länk**. Beroende på vilket som du använder, resultatet anges i nästa avsnitt. Välj något av följande alternativ och följ instruktionerna.
+1. Du kan välja tooeither **hämta hello API-definition** eller **hämta en länk**. Beroende på vilket som du använder, hello resultatet ska anges i hello nästa avsnitt. Välj något av följande alternativ och följ anvisningarna för hello.
  
-2. Om din API-definition innehåller alla definitioner för säkerhet, kommer dessa som beskrivs i steg #2. Under importen, PowerApps och Microsoft Flow identifierar dessa och uppmanar säkerhetsinformation. Samla in de autentiseringsuppgifter som rör varje definition för användning i nästa avsnitt. Mer information finns i [autentisering](#auth) nedan. 
+2. Om din API-definition innehåller alla definitioner för säkerhet, kommer dessa som beskrivs i steg #2. Under importen, PowerApps och Microsoft Flow identifierar dessa och uppmanar säkerhetsinformation. Samla in hello autentiseringsuppgifter relaterade tooeach definition för användning i nästa avsnitt om hello. Mer information finns i [autentisering](#auth) nedan. 
 
 <a name="import"></a>
-### <a name="importing-the-api-definition-into-powerapps-and-microsoft-flow"></a>Importerar en API-definition i PowerApps och Microsoft Flow
+### <a name="importing-hello-api-definition-into-powerapps-and-microsoft-flow"></a>Importera hello API-definition i PowerApps och Microsoft Flow
 
-I det här avsnittet skapar du en anpassad koppling i PowerApps och Microsoft Flow använder tidigare hämtade API-definitionen. Anpassade kopplingar delas mellan de två tjänsterna, så du behöver bara importera definition en gång. Mer information om anpassade kopplingar finns [registrera och använda anpassade kopplingar i PowerApps] och [registrera och använda anpassade kopplingar i Microsoft Flow].
+I det här avsnittet skapar du en anpassad koppling i PowerApps och Microsoft Flow med hello API-definition fick tidigare. Anpassade kopplingar delas mellan hello två tjänster, så behöver du bara en gång tooimport hello-definition. Mer information om anpassade kopplingar finns [registrera och använda anpassade kopplingar i PowerApps] och [registrera och använda anpassade kopplingar i Microsoft Flow].
 
-1. Öppna den [Powerapps webbportalen](https://web.powerapps.com) eller [Microsoft Flow webbportalen](https://flow.microsoft.com/), och logga in. 
+1. Öppna hello [Powerapps webbportalen](https://web.powerapps.com) eller hello [Microsoft Flow webbportalen](https://flow.microsoft.com/), och logga in. 
 
-2. Klicka på den **inställningar** knappen (kugghjulsikonen) längst upp till höger på sidan och välj **anpassade kopplingar**. 
+2. Klicka på hello **inställningar** (hello växeln ikonen) längst hello övre högra hörnet av hello sida och välj **anpassade kopplingar**. 
 
 3. Klicka på **Skapa anpassad koppling**.
 
-4. På den **allmänna** fliken, ange ett namn för din API och sedan ladda upp OpenAPI definition eller klistra in i metadata-URL. Klicka på **fortsätta**.
+4. På hello **allmänna** fliken, ange ett namn för din API och sedan överföra hello OpenAPI definition eller klistra in i hello metadata-URL. Klicka på **fortsätta**.
 
-4. På den **säkerhet** om du uppmanas att ange information om autentisering, anger du värden som hämtades i föregående avsnitt. Om inte, gå vidare till nästa steg.
+4. På hello **säkerhet** fliken om du tillfrågas tooprovide autentisering information ange hello värden som erhölls i hello föregående avsnitt. Annars fortsätter toohello nästa steg.
 
-5. På den **definitioner** fliken alla åtgärder som definierats i filen OpenAPI är fylls i automatiskt. Om alla nödvändiga åtgärder har definierats kan gå du till nästa steg. Om inte, kan du lägga till och ändra operations här.
+5. På hello **definitioner** fliken alla hello-åtgärder som definierats i filen OpenAPI är fylls i automatiskt. Om alla nödvändiga åtgärder har definierats kan gå du toohello nästa steg. Om inte, kan du lägga till och ändra operations här.
 
-6. Klicka på **skapa koppling**. Om du vill testa API-anrop, går du till nästa steg.
+6. Klicka på **skapa koppling**. Om du vill tootest API-anrop, gå toohello nästa steg.
 
-7. På den **testa** fliken, skapa en anslutning, Välj en åtgärd för att testa och ange några data som krävs för åtgärden.
+7. På hello **Test** fliken, skapa en anslutning, Välj en åtgärd tootest och ange några data som krävs av hello-åtgärd.
 
 8. Klicka på **testa åtgärden**.
 
@@ -117,40 +117,40 @@ I det här avsnittet skapar du en anpassad koppling i PowerApps och Microsoft Fl
 <a name="auth"></a>
 ## <a name="authentication"></a>Autentisering
 
-PowerApps och Microsoft Flow stöd inbyggt för en samling identitetsleverantörer som kan användas för att logga in användare av en anpassad koppling. Om din API kräver autentisering, kontrollera att den avbildas som en _säkerhet definition_ i dokumentet OpenAPI. Under exporten behöver du ange konfigurationsvärden som tillåter PowerApps ett Microsoft-Flow att utföra åtgärder för inloggning.
+PowerApps och Microsoft Flow stöd inbyggt för en samling identitetsleverantörer som kan vara används toolog användare av din anpassade connector. Om din API kräver autentisering, kontrollera att den avbildas som en _säkerhet definition_ i dokumentet OpenAPI. Under exporten måste tooprovide konfigurationsvärden som tillåter PowerApps en Microsoft Flow tooperform inloggningen åtgärder.
 
-Det här avsnittet beskriver de autentiseringstyper som stöds av express flödet: API-nyckel, Azure Active Directory och allmänna OAuth 2.0. En fullständig lista över leverantörer och autentiseringsuppgifterna varje kräver finns [registrera och använda anpassade kopplingar i PowerApps] och [registrera och använda anpassade kopplingar i Microsoft Flow].
+Det här avsnittet beskriver hello autentiseringstyper som stöds av hello express flöde: API-nyckel, Azure Active Directory och allmänna OAuth 2.0. En fullständig lista över leverantörer och hello autentiseringsuppgifter kräver finns [registrera och använda anpassade kopplingar i PowerApps] och [registrera och använda anpassade kopplingar i Microsoft Flow].
 
 ### <a name="api-key"></a>API-nyckel
-När detta säkerhetsprogram används uppmanas användare anslutningstjänsten att ange nyckeln när de skapar en anslutning. Du kan ange en API-nyckelnamn så att de vet vilken nyckel krävs. För Azure Functions, kommer det vanligtvis vara något av värdnycklar, som omfattar flera funktioner i appen funktionen.
+När detta säkerhetsprogram används kommer hello användare anslutningstjänsten att tillfrågas tooprovide hello nyckel när de skapar en anslutning. Du kan ange en API nyckelnamn toohelp de vet vilken nyckel krävs. För Azure Functions, vanligtvis blir en hello-värdnycklar, som omfattar flera funktioner i hello funktionsapp.
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
-När du konfigurerar en anpassad koppling som kräver AAD inloggning krävs två registreringar för AAD-program: en att modellera serverdelen API och en modellera kopplingen i PowerApps och flöde.
+När du konfigurerar en anpassad koppling som kräver AAD inloggning krävs två registreringar för AAD-program: en toomodel hello backend-API och en toomodel hello koppling i PowerApps och flöde.
 
-Din API ska konfigureras för att fungera med den första registreringen och detta kommer redan typen om du har använt den [autentisering/auktorisering i Apptjänst](https://docs.microsoft.com/azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication) funktion.
+Din API ska vara konfigurerade toowork med hello första registreringen och detta kommer redan typen om du använde hello [autentisering/auktorisering i Apptjänst](https://docs.microsoft.com/azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication) funktion.
 
-Du måste manuellt skapa andra registreringen för anslutningstjänsten, med hjälp av stegen som beskrivs i [lägga till ett AAD-program](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application). Registreringen måste ha delegerad åtkomst till ditt API och svars-URL: en `https://msmanaged-na.consent.azure-apim.net/redirect`. Se [det här exemplet](
-https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) ersätta ditt API för Azure Resource Manager för mer information.
+Du måste toomanually skapa hello andra registrering för hello connector med hello steg som beskrivs i [lägga till ett AAD-program](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#adding-an-application). hello registrering måste toohave delegerad åtkomst tooyour API och svars-URL: en `https://msmanaged-na.consent.azure-apim.net/redirect`. Se [det här exemplet](
+https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) ersätta ditt API för hello Azure Resource Manager för mer information.
 
-Följande konfigurationsvärden krävs:
-- **Klient-ID** -klient-ID anslutningstjänsten AAD-registrering
-- **Klienthemlighet** -klienthemlighet anslutningstjänsten AAD-registrering
-- **Inloggnings-URL** -bas-URL för AAD. I offentliga Azure detta vanligtvis blir `https://login.windows.net`.
-- **Klient-ID** -ID för innehavaren som ska användas för inloggningen. Detta bör vara ”vanliga” eller ID för innehavaren som anslutningen skapas.
-- **Resurs-URL** -resurs-URL för API-serverdel AAD registreringen
+hello följande konfigurationsvärden krävs:
+- **Klient-ID** -hello klient-ID anslutningstjänsten AAD-registrering
+- **Klienthemlighet** -hello klienthemlighet anslutningstjänsten AAD-registrering
+- **Inloggnings-URL** - hello bas-URL för AAD. I offentliga Azure detta vanligtvis blir `https://login.windows.net`.
+- **Klient-ID** -hello-ID för hello klient toobe används för hello inloggningen. Det bör vara ”gemensamma” eller hello-ID för hello klient i vilka hello anslutningen skapas.
+- **Resurs-URL** -hello resurs-URL för API-serverdel AAD registreringen
 
 > [!IMPORTANT]
-> Om en annan person importerar API-definition i PowerApps och Microsoft Flow som en del av manuell flödet, behöver du förser dem med klient-ID och klienthemlighet **av registreringen av anslutningsverktyget**, samt resurs-URL för ditt API. Se till att dessa hemligheter hanteras på ett säkert sätt. **Dela inte säkerhetsreferenser för API: et sig själv.**
+> Om en annan person importerar hello API-definition i PowerApps och Microsoft Flow som en del av hello manuell flödet, behöver du tooprovide dem med hello-ID och klienten klienthemlighet **av registreringen av anslutningsverktyget hello**, samt som hello resurs-URL för ditt API. Se till att dessa hemligheter hanteras på ett säkert sätt. **Dela inte hello säkerhetsreferenser för hello API sig själv.**
 
 ### <a name="generic-oauth-20"></a>Allmän OAuth 2.0
-Allmänna OAuth 2.0-stöd kan du integrera med valfri OAuth 2.0-provider. På så sätt kan du se till att i en anpassad provider som inte stöds internt.
+hello allmänna OAuth 2.0-stöd kan toointegrate med valfri OAuth 2.0-provider. Detta ger dig toobring eventuella anpassade providern som inte stöds internt.
 
-Följande konfigurationsvärden krävs:
-- **Klient-ID** -OAuth 2.0-klient-ID
-- **Klienthemlighet** -klienthemlighet OAuth 2.0
-- **Webbadress för auktorisering** -Webbadress för OAuth 2.0-auktorisering
-- **Token URL** -URL för OAuth 2.0-token
-- **Uppdatera URL** -URL för OAuth 2.0-uppdatering
+hello följande konfigurationsvärden krävs:
+- **Klient-ID** -hello OAuth 2.0 klient-ID
+- **Klienthemlighet** -hello OAuth 2.0-klienthemlighet
+- **Webbadress för auktorisering** -hello Webbadress för OAuth 2.0-auktorisering
+- **Token URL** -hello OAuth 2.0-token URL
+- **Uppdatera URL** -hello URL: en för OAuth 2.0-uppdatering
 
 
 

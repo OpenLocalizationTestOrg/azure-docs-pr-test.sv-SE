@@ -1,6 +1,6 @@
 ---
-title: "Använda Managed Disks med skalningsuppsättningar för virtuella Azure-datorer | Microsoft Docs"
-description: "Lär dig varför och hur du använder hanterade diskar med skalningsuppsättningar för virtuella datorer"
+title: "aaaUsing hanterade diskar med Azure Virtual Machine Skaluppsättningar | Microsoft Docs"
+description: "Lär dig hur och varför toouse hanterade diskar med virtuella datorer"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
@@ -15,41 +15,41 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
-ms.openlocfilehash: 3ab1d432a2f90db57b99f0e7d419d85e2958c308
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0e2a21e9f8b114ae1c8b81e1e6124621366f5643
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Skalningsuppsättningar för virtuella Azure-datorer och hanterade diskar
 
 [Skalningsuppsättningar för virtuella Azure-datorer](/azure/virtual-machine-scale-sets/) stöder nu virtuella datorer med hanterade diskar. Det finns många fördelar med att använda hanterade diskar med skalningsuppsättningar, däribland:
 
-* Du behöver inte längre skapa och hantera lagringskonton för att lagra OS-diskar för de virtuella datorerna med skalningsuppsättningarna.
+* Du behöver inte längre toopre-skapa och hantera konton toostore hello OS diskar med lagringsutrymme för hello skaluppsättning för virtuella datorer.
 
-* Du kan koppla hanterade diskar till skalningsuppsättningen.
+* Du kan koppla hanterade diskar toohello skala datauppsättning.
 
 * En skalningsuppsättning med en hanterad disk kan ha en kapacitet så hög som 1 000 virtuella datorer om den är baserad på en plattformsavbildning eller 100 virtuella datorer om den är baserad på en anpassad avbildning.
 
 ## <a name="get-started"></a>Kom igång
 
-Ett enkelt sätt att komma igång med skalningsuppsättningar med hanterade diskar är att distribuera en från Azure Portal. Mer information finns i [den här artikeln](./virtual-machine-scale-sets-portal-create.md). Ett annat enkelt sätt att komma igång är att använda [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) för att distribuera en skalningsuppsättning. Följande exempel visar hur du skapar en Ubuntu-baserad skalningsuppsättning med 10 virtuella datorer, där var och en har en datadisk på 50 och 100 GB:
+Ett enkelt sätt tooget igång med skaluppsättningar för hanterade diskar är toodeploy en från hello Azure-portalen. Mer information finns i [den här artikeln](./virtual-machine-scale-sets-portal-create.md). Ett annat enkelt sätt igång tooget är toouse [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) toodeploy en skaluppsättning. hello följande exempel visas hur toocreate en Ubuntu baserade skaluppsättningen med 10 virtuella datorer, var och en med en datadisk på 50 GB och 100 GB:
 
 ```azurecli
 az group create -l southcentralus -n dsktest
 az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
 ```
 
-Alternativt kan du titta i [GitHub-databasen för Azure-snabbstartsmallar](https://github.com/Azure/azure-quickstart-templates) och leta efter mappar som innehåller `vmss` för att se fördefinierade exempel på mallar som distribuerar skalningsuppsättningar. Om du vill se vilka mallar som redan använder hanterade diskar kan du referera till [den här listan](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md).
+Alternativt kan du titta i hello [Azure Quickstart mallar GitHub-repo](https://github.com/Azure/azure-quickstart-templates) för mappar som innehåller `vmss` toosee exempel på mallar som distribuerar skaluppsättningar som fördefinierade. tootell vilka mallar redan använder hanterade diskar, kan du läsa för[listan](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
 Du hittar mer information om hanterade diskar i allmänhet i [den här artikeln](../virtual-machines/windows/managed-disks-overview.md).
 
-Se [den här artikeln](./virtual-machine-scale-sets-convert-template-to-md.md) för information om hur du konverterar Resource Manager-mall för att etablera skalningsuppsättningar med hanterade diskar. Ändringarna till Resource Manager-mallar tillämpas även på Azure REST API.
+toosee hur tooconvert som en Resource Manager mallen tooprovision skala uppsättningar med hanterade diskar, finns i [i den här artikeln](./virtual-machine-scale-sets-convert-template-to-md.md). hello gäller samma ändringar toohello Resource Manager-mallar även toohello Azure REST API.
 
-Mer information om hur du använder hanterade datadiskar med skalningsuppsättningar finns i [den här artikeln](./virtual-machine-scale-sets-attached-disks.md).
+toolearn mer information om hur du använder hanterade datadiskar med skalningsuppsättningar, se [i den här artikeln](./virtual-machine-scale-sets-attached-disks.md).
 
-Referera till [den här artikeln](./virtual-machine-scale-sets-placement-groups.md) för att börja arbeta med stora skalningsuppsättningar.
+toobegin arbetar med stor skala anger finns för[i den här artikeln](./virtual-machine-scale-sets-placement-groups.md).
 
 

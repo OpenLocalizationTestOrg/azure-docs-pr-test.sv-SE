@@ -1,6 +1,6 @@
 ---
-title: "Felsöka HDFS med Azure HDinsight | Microsoft Docs"
-description: "Få svar på vanliga frågor om hur du arbetar med HDFS och Azure HDInsight."
+title: "aaaTroubleshoot HDFS med hjälp av Azure HDinsight | Microsoft Docs"
+description: "Få svar toocommon frågor om hur du arbetar med HDFS och Azure HDInsight."
 keywords: "Azure HDInsight, HDFS, vanliga frågor och svar, felsökningsguide för vanliga frågor"
 services: Azure HDInsight
 documentationcenter: na
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: arijitt
-ms.openlocfilehash: 58f3d160c1f2a32025b706f10863e0055d67bfcd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: f5adec6879c947fcff82112e95d9d0303592c834
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Felsöka HDFS med Azure HDInsight
 
-Läs mer om de vanligaste problemen och sina lösningar när du arbetar med Hadoop Distributed File System (HDFS) nyttolaster i Apache Ambari.
+Läs mer om hello de främsta problemen och sina lösningar när du arbetar med Hadoop Distributed File System (HDFS) nyttolaster i Apache Ambari.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Hur kommer jag åt ditt lokala HDFS från i ett kluster
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Hur kommer jag åt hello lokala HDFS från i ett kluster
 
 ### <a name="issue"></a>Problem
 
-Åtkomst till ditt lokala HDFS från kommandoraden och programkod i stället för med hjälp av Azure Blob storage eller Azure Data Lake Store från i HDInsight-klustret.   
+Åtkomst hello lokala HDFS från hello kommandot rad- och koden i stället för med hjälp av Azure Blob storage eller Azure Data Lake Store från inuti hello HDInsight-kluster.   
 
 ### <a name="resolution-steps"></a>Lösningssteg
 
-1. I Kommandotolken, Använd `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` litteralt, som i följande kommando:
+1. Kommandotolken hello använda `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` litteralt, som i hello följande kommando:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -43,7 +43,7 @@ Läs mer om de vanligaste problemen och sina lösningar när du arbetar med Hado
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Använd URI: N från källkoden `hdfs://mycluster/` litteralt, som i följande exempelprogram:
+2. Använd hello URI från källkoden `hdfs://mycluster/` litteralt, som i följande exempelprogrammet hello:
 
     ```csharp
     import java.io.IOException;
@@ -68,7 +68,7 @@ Läs mer om de vanligaste problemen och sina lösningar när du arbetar med Hado
     }
     ```
 
-3. Köra kompilerade .jar-fil (till exempel en fil med namnet `java-unit-tests-1.0.jar`) på HDInsight-kluster med följande kommando:
+3. Kör hello kompilerad .jar-fil (till exempel en fil med namnet `java-unit-tests-1.0.jar`) på hello HDInsight-kluster med hello följande kommando:
 
     ```apache
     hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -83,23 +83,23 @@ Läs mer om de vanligaste problemen och sina lösningar när du arbetar med Hado
 
 ### <a name="issue"></a>Problem
 
-Ditt lokala HDFS sitter fast i felsäkert läge i HDInsight-klustret.   
+hello lokala HDFS sitter fast i felsäkert läge på hello HDInsight-kluster.   
 
 ### <a name="detailed-description"></a>Detaljerad beskrivning
 
-Felet uppstår när du kör följande kommando för HDFS:
+Felet uppstår när du kör följande kommando för HDFS hello:
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-Följande fel visas när du kör kommandot:
+Du ser följande fel när du kör kommandot hello hello:
 
 ```apache
 hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 17/04/05 16:20:52 WARN retry.RetryInvocationHandler: Exception while invoking ClientNamenodeProtocolTranslatorPB.mkdirs over hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net/10.0.0.22:8020. Not retrying because try once and fail.
 org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.hdfs.server.namenode.SafeModeException): Cannot create directory /temp. Name node is in safe mode.
-It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode off.
+It was turned on manually. Use "hdfs dfsadmin -safemode leave" tooturn safe mode off.
         at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.checkNameNodeSafeMode(FSNamesystem.java:1359)
         at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.mkdirs(FSNamesystem.java:4010)
         at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.mkdirs(NameNodeRpcServer.java:1102)
@@ -149,11 +149,11 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 ### <a name="probable-cause"></a>Möjlig orsak
 
-HDInsight-klustret har minskats till ett mycket få noder. Antalet noder som är mindre än eller nära HDFS replikering faktorn.
+Hej HDInsight-kluster har skalats ned tooa mycket få noder. hello antalet noder är nedan eller stänga toohello HDFS replikering faktor.
 
 ### <a name="resolution-steps"></a>Lösningssteg 
 
-1. Hämta status för HDFS på HDInsight-kluster med hjälp av följande kommandon:
+1. Hämta hello status för HDFS på hello HDInsight-kluster med hjälp av hello följande kommandon:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
@@ -194,14 +194,14 @@ HDInsight-klustret har minskats till ett mycket få noder. Antalet noder som är
     ...
     ```
 
-2. Kontrollera integriteten i HDFS på HDInsight-kluster med hjälp av följande kommandon:
+2. Kontrollera hello integriteten för HDFS på hello HDInsight-kluster med hjälp av hello följande kommandon:
 
     ```apache
     hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
     ```
 
     ```apache
-    Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
+    Connecting toonamenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
     FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
     ....................................................................................................
 
@@ -224,10 +224,10 @@ HDInsight-klustret har minskats till ett mycket få noder. Antalet noder som är
     Number of racks:               1
     FSCK ended at Wed Apr 05 16:40:28 UTC 2017 in 187 milliseconds
 
-    The filesystem under path '/' is HEALTHY
+    hello filesystem under path '/' is HEALTHY
     ```
 
-3. Om du anser att det finns ingen saknas, skadad, eller under-replikerade block eller att dessa block kan ignoreras, kör följande kommando för att ta namn ur noden ur felsäkert läge:
+3. Om du anser att det inte finns några saknas, är skadad eller under-replikerade block eller att dessa block kan ignoreras Kör hello efter kommandot tootake hello namn noden ur felsäkert läge:
 
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave

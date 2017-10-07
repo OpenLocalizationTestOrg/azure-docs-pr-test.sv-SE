@@ -1,6 +1,6 @@
 ---
-title: "Skapa en virtuell Windows-dator från en mall i Azure | Microsoft Docs"
-description: "Använd Resource Manager-mall och PowerShell för att skapa en ny Windows virtuell dator."
+title: "aaaCreate en virtuell Windows-dator från en mall i Azure | Microsoft Docs"
+description: "Använd en mall för Resource Manager och PowerShell tooeasily skapa en ny Windows virtuell dator."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddab80262fe27c1f5995858ec7de75d7c46df081
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 630111482c7dc046091632e2ed458ac143325d59
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Skapa en virtuell Windows-dator från en Resource Manager-mall
 
-Den här artikeln visar hur du distribuerar en Azure Resource Manager-mallen med hjälp av PowerShell. Den mall som du skapar distribuerar en enskild virtuell dator som kör Windows Server i ett nytt virtuellt nätverk med ett enda undernät.
+Den här artikeln beskrivs hur du toodeploy en Azure Resource Manager mallen med hjälp av PowerShell. hello-mall som du skapar distribuerar en enskild virtuell dator som kör Windows Server i ett nytt virtuellt nätverk med ett enda undernät.
 
-En detaljerad beskrivning av den virtuella datorresursen finns [virtuella datorer i en Azure Resource Manager-mall](template-description.md). Mer information om alla resurser i en mall finns [genomgång av Azure Resource Manager-mall](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+En detaljerad beskrivning av hello virtuell datorresurs finns [virtuella datorer i en Azure Resource Manager-mall](template-description.md). Mer information om alla hello resurser i en mall finns [genomgång av Azure Resource Manager-mall](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Det bör ta ungefär fem minuter för att utföra stegen i den här artikeln.
+Det bör ta ungefär fem minuter toodo hello stegen i den här artikeln.
 
 ## <a name="install-azure-powershell"></a>Installera Azure PowerShell
 
-Se [Installera och konfigurera Azure PowerShell](../../powershell-install-configure.md) för information om hur du installerar den senaste versionen av Azure PowerShell, väljer din prenumeration och loggar in på ditt konto.
+Se [hur tooinstall och konfigurera Azure PowerShell](../../powershell-install-configure.md) information om installation hello senaste versionen av Azure PowerShell, välja din prenumeration och loggar in tooyour konto.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -44,17 +44,17 @@ Alla resurser måste distribueras i en [resursgruppen](../../azure-resource-mana
     Get-AzureRmLocation | sort DisplayName | Select DisplayName
     ```
 
-2. Skapa resursgruppen på den plats som du väljer. Det här exemplet visar skapandet av en resursgrupp med namnet **myResourceGroup** i den **västra USA** plats:
+2. Skapa hello resursgrupp hello-plats som du väljer. Det här exemplet visar hello skapandet av en resursgrupp med namnet **myResourceGroup** i hello **västra USA** plats:
 
     ```powershell   
     New-AzureRmResourceGroup -Name "myResourceGroup" -Location "West US"
     ```
 
-## <a name="create-the-files"></a>Skapa filer
+## <a name="create-hello-files"></a>Skapa hello-filer
 
-I det här steget skapar du en mallfil som distribuerar resurser och en fil med parametrar som tillhandahåller parametervärden för mallen. Du kan också skapa en auktoriseringsfil som används för att utföra åtgärder på Azure Resource Manager.
+I det här steget skapar du en mallfil som distribuerar hello resurser och en fil med parametrar som tillhandahåller parametern värden toohello mall. Du kan också skapa en auktoriseringsfil som har använt tooperform Azure Resource Manager-åtgärder.
 
-1. Skapa en fil med namnet *CreateVMTemplate.json* och lägga till den här JSON-kod:
+1. Skapa en fil med namnet *CreateVMTemplate.json* och Lägg till den här tooit för JSON-kod:
 
     ```json
     {
@@ -159,7 +159,7 @@ I det här steget skapar du en mallfil som distribuerar resurser och en fil med 
     }
     ```
 
-2. Skapa en fil med namnet *Parameters.json* och lägga till den här JSON-kod:
+2. Skapa en fil med namnet *Parameters.json* och Lägg till den här tooit för JSON-kod:
 
     ```json
     {
@@ -182,18 +182,18 @@ I det här steget skapar du en mallfil som distribuerar resurser och en fil med 
     New-AzureStorageContainer -Name "templates" -Context $context -Permission Container
     ```
 
-4. Ladda upp filer till lagringskontot:
+4. Överför hello filer toohello storage-konto:
 
     ```powershell
     Set-AzureStorageBlobContent -File "C:\templates\CreateVMTemplate.json" -Context $context -Container "templates"
     Set-AzureStorageBlobContent -File "C:\templates\Parameters.json" -Context $context -Container templates
     ```
 
-    Ändra - sökvägarna till den plats där du lagrade filerna.
+    Ändra hello - sökvägar toohello plats där du sparade hello-filer.
 
-## <a name="create-the-resources"></a>Skapa resurser
+## <a name="create-hello-resources"></a>Skapa hello resurser
 
-Distribuera mallen med hjälp av parametrar:
+Distribuera hello mallen med hjälp av hello parametrar:
 
 ```powershell
 $templatePath = "https://" + $storageName + ".blob.core.windows.net/templates/CreateVMTemplate.json"
@@ -202,10 +202,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Name "m
 ```
 
 > [!NOTE]
-> Du kan också distribuera parametrarna från lokala filer och mallar. Läs mer i [med hjälp av Azure PowerShell med Azure Storage](../../storage/common/storage-powershell-guide-full.md).
+> Du kan också distribuera parametrarna från lokala filer och mallar. Det finns fler toolearn [med hjälp av Azure PowerShell med Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om det fanns problem med distributionen, kan du ta en titt på [felsöka vanliga Azure-distribution med Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
-- Lär dig att skapa och hantera en virtuell dator i [skapa och hantera virtuella Windows-datorer med Azure PowerShell-modulen](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Om det fanns problem med hello distribution, kan du ta en titt på [felsöka vanliga Azure-distribution med Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+- Lär dig hur toocreate och hantera en virtuell dator i [skapa och hantera virtuella Windows-datorer med hello Azure PowerShell-modulen](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

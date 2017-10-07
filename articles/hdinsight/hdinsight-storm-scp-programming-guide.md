@@ -1,6 +1,6 @@
 ---
-title: "Programmeringsguide för SCP.NET | Microsoft Docs"
-description: "Lär dig hur du skapar med hjälp av SCP.NET. NET-baserade Storm-topologier för att använda med Storm på HDInsight."
+title: "Programmeringsguide för aaaSCP.NET | Microsoft Docs"
+description: "Lär dig hur toouse SCP.NET toocreate. NET-baserade Storm-topologier för att använda med Storm på HDInsight."
 services: hdinsight
 documentationcenter: 
 author: raviperi
@@ -15,42 +15,42 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: raviperi
-ms.openlocfilehash: 3d76aebd2a1fd729c8e0639e6afcbde4c3fb752b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a57f4217b07e0e82a3f36650308695fbb45d9128
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scp-programming-guide"></a>Programmeringsguide för SCP
-SCP är en plattform för att skapa realtid, tillförlitliga och konsekventa hög prestanda databearbetning program. Det är byggt ovanpå [Apache Storm](http://storm.incubator.apache.org/) – en dataström som bearbetar system utformas av OSS communities. Storm är utformad med Nathan Marz och öppen källkod med Twitter. Den använder [Apache ZooKeeper](http://zookeeper.apache.org/), ett annat Apache-projekt att aktivera hög tillförlitliga distribuerade samordning och tillstånd. 
+SCP är en plattform toobuild realtid, tillförlitliga och konsekventa hög prestanda databearbetning program. Det är byggt ovanpå [Apache Storm](http://storm.incubator.apache.org/) – en dataström som bearbetar system utformas av hello OSS communities. Storm är utformad med Nathan Marz och öppen källkod med Twitter. Den använder [Apache ZooKeeper](http://zookeeper.apache.org/), en annan Apache projektet tooenable mycket pålitlig distribuerade samordning och tillståndshantering. 
 
-Inte bara SCP-projektet portar Storm på Windows, utan också projektet till tillägg och anpassning av Windows-ekosystemet. Tilläggen innehåller .NET-utvecklare upplevelse och bibliotek, anpassning av innehåller Windows-baserad distribution. 
+Inte bara hello SCP projektet portar Storm på Windows utan också hello-projektet till tillägg och anpassning av hello Windows-ekosystemet. hello tillägg inkluderar .NET developer upplevelse och bibliotek, hello anpassning innehåller Windows-baserad distribution. 
 
-Tillägget och anpassning görs så att vi inte behöver duplicera projekt för OSS och vi kan utnyttja härledda ekosystem byggda på Storm.
+hello-tillägget och anpassning görs så att vi behöver inte toofork hello OSS projekt och vi kan utnyttja härledda ekosystem byggda på Storm.
 
 ## <a name="processing-model"></a>Processmodell
-Data i SCP modelleras som kontinuerliga strömmar av tupplar. Vanligtvis trafikflödet tuppeln i vissa kö först, sedan tas upp och transformeras av affärslogik som finns inuti en Storm-topologi slutligen utdata kan skickas som tupplar till ett annat SCP-system eller allokeras till butiker som distribuerat filsystem eller databaser som SQL Server.
+hello data i SCP modelleras som kontinuerliga strömmar av tupplar. Vanligtvis hello tupplar flöda till vissa kö först och sedan tas upp och transformeras av affärslogik som finns inuti en Storm-topologi, slutligen hello utdata kan skickas som tupplar tooanother SCP system eller vara allokerat toostores som distribuerat filsystem eller databaser som SQL Server.
 
-![Ett diagram av en kö mata data för bearbetning, som ett datalager-flöden](media/hdinsight-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+![Ett diagram av en kö mata data tooprocessing som ett datalager-flöden](media/hdinsight-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
 
-I Storm definierar en Programtopologi ett diagram över beräkning. Varje nod i en topologi innehåller logik för bearbetning och länkar mellan noder ange dataflöde. Noder att mata in indata i topologin kallas kanaler, som kan användas för att ordna data. Indata kan finnas i filen loggar, transaktionella databas, system-prestandaräknaren osv. Noder med både inkommande och utgående dataflöden kallas bultar, vilket gör det faktiska data filtrering och val och aggregering.
+I Storm definierar en Programtopologi ett diagram över beräkning. Varje nod i en topologi innehåller logik för bearbetning och länkar mellan noder ange dataflöde. hello noder tooinject indata till hello topologi kallas kanaler, vilket kan vara används toosequence hello data. hello indata kan finnas i filen loggar, transaktionella databas, system-prestandaräknaren etc. hello noder med både inkommande och utgående dataflöden kallas bultar, vilket hello faktiska data filtrering och val och aggregering.
 
-Tjänstanslutningspunkten stöder bästa för på-minst en gång och exakt-behandling av data en gång. I ett distribuerat strömmande bearbetning-program kan olika fel inträffa under bearbetning av data, till exempel nätverksavbrott, maskinvarufel eller användarfel kod osv. På-minst en gång process säkerställer att alla data bearbetas minst en gång genom att spela upp automatiskt samma data när fel inträffar. På-minst en gång bearbetning är enkel och tillförlitlig och passar bra i många program. När programmet kräver exakt inventering, till exempel är på-minst en gång bearbetning dock inte tillräckligt eftersom samma data kan vara att spela upp i Programtopologi. I så fall, exakt-när bearbetningen är utformat för att kontrollera att resultatet är korrekt även när data kan spelas och behandlas flera gånger.
+Tjänstanslutningspunkten stöder bästa för på-minst en gång och exakt-behandling av data en gång. I ett distribuerat strömmande bearbetning-program kan olika fel inträffa under bearbetning av data, till exempel nätverksavbrott, maskinvarufel eller användarfel kod osv. På-minst en gång process säkerställer att alla data bearbetas minst en gång genom att spela upp automatiskt hello samma data när fel inträffar. På-minst en gång bearbetning är enkel och tillförlitlig och passar bra i många program. Men när programmet hello kräver exakt inventering, räcker till exempel på-minst en gång bearbetning inte eftersom hello samma data kan potentiellt spelas upp i hello programmet topologi. I så fall, exakt-när bearbetningen är utformat toomake att hello resultatet är korrekt när hello data kan spelas och behandlas flera gånger.
 
-SCP gör att .NET-utvecklare kan utveckla program i realtid data processen medan utnyttjar Java Virtual Machine (JVM) baserat Storm under skyddet. .NET och JVM kommunicera via TCP lokal socket. I praktiken är varje kanal/bult paret .net/Java processen där användaren-logik körs i .net-process som ett plugin-program.
+SCP ger .NET-utvecklare toodevelop realtid processen program utnyttjar hello Java Virtual Machine (JVM) baserat Storm under hello skydd. hello .NET och JVM kommunicerar via TCP lokal socket. I praktiken är varje kanal/bult paret .net/Java processen där hello användaren logik körs i .net-process som ett plugin-program.
 
-Flera steg krävs för att skapa ett program för databearbetning ovanpå SCP:
+toobuild en databearbetningen program ovanpå SCP, flera steg behövs:
 
-* Utforma och implementera kanaler att dra in data från kön.
-* Utforma och implementera bultar för att behandla indata och spara data till externa butiker som databas.
-* Utforma topologi, skicka och kör topologin. Topologin definierar brytpunkter och data som flödar mellan dess noder. SCP tar specifikationen topologi och distribuera den på ett Storm-kluster där varje vertex körs på en logisk nod. Redundans och skalning kommer typen av Schemaläggaren Storm.
+* Utforma och implementera hello kanaler toopull i data från kön.
+* Utforma och implementera bultar tooprocess hello indata och spara tooexternal datalager, till exempel databasen.
+* Utforma hello topologi, skicka och kör hello-topologi. hello topologi definierar brytpunkter och hello data flödar mellan hello noder. SCP tar hello topologi-specifikationen och distribuera den på ett Storm-kluster där varje vertex körs på en logisk nod. hello redundans och skalning kommer typen av hello Storm-Schemaläggaren.
 
-Det här dokumentet använder några enkla exempel för att gå igenom hur du skapar program för databearbetning med SCP.
+Det här dokumentet kommer att använda några enkla exempel toowalk igenom hur toobuild databearbetning program med SCP.
 
 ## <a name="scp-plugin-interface"></a>SCP-Plugin-gränssnittet
-SCP-plugin-program (eller program) är fristående EXEs som kan både körs i Visual Studio under utvecklingsfasen och anslutas till Storm-pipeline efter distributionen i produktion. Skriva SCP plugin-programmet är på samma sätt som att skriva andra standard Windows konsolprogram. SCP.NET plattform deklarerar vissa gränssnitt för kanal-/ bult och användarkod för plugin-programmet ska implementera dessa gränssnitt. Det huvudsakliga syftet med den här designen är att användaren kan fokusera på sina egna business logics och låta andra saker som ska hanteras av SCP.NET plattform.
+SCP-plugin-program (eller program) är fristående EXEs som kan både körs i Visual Studio under hello utvecklingsfasen och anslutas till hello Storm pipeline efter distributionen i produktion. Skriva hello SCP-plugin-programmet är bara hello samma som att skriva andra standard Windows konsolprogram. SCP.NET plattform deklarerar vissa gränssnitt för kanal-/ bult och hello användarkod plugin-programmet ska implementera dessa gränssnitt. hello Huvudsyftet med den här designen är hello användaren kan fokusera på sina egna business logics och låta andra saker toobe som hanteras av SCP.NET plattform.
 
-Plugin-programmet användarkod ska implementera ett av följande gränssnitt, beror på om topologin är transaktionell eller icke-transaktionell och om komponenten är kanal eller en bult.
+hello användarkod plugin-programmet ska implementera ett av hello följande gränssnitt, beror på om hello topologin är transaktionell eller icke-transaktionell och om hello komponenten är kanal eller en bult.
 
 * ISCPSpout
 * ISCPBolt
@@ -58,14 +58,14 @@ Plugin-programmet användarkod ska implementera ett av följande gränssnitt, be
 * ISCPBatchBolt
 
 ### <a name="iscpplugin"></a>ISCPPlugin
-ISCPPlugin är gemensamt gränssnitt för alla typer av plugin-program. Det är för närvarande ett dummy gränssnitt.
+ISCPPlugin är hello gemensamt gränssnitt för alla typer av plugin-program. Det är för närvarande ett dummy gränssnitt.
 
     public interface ISCPPlugin 
     {
     }
 
 ### <a name="iscpspout"></a>ISCPSpout
-ISCPSpout är gränssnittet för icke-transaktionell kanal.
+ISCPSpout är hello gränssnitt för icke-transaktionell kanal.
 
      public interface ISCPSpout : ISCPPlugin                    
      {
@@ -74,28 +74,28 @@ ISCPSpout är gränssnittet för icke-transaktionell kanal.
          void Fail(long seqId, Dictionary<string, Object> parms);  
      }
 
-När `NextTuple()` anropas, C\# användarkod kan generera en eller flera tupplar. Om det finns inget att generera ska den här metoden returnera utan avger något. Det bör noteras som `NextTuple()`, `Ack()`, och `Fail()` kallas i en tät loop i en enskild tråd i C\# process. När det finns inga tupplar att generera, är det Välkommen företagspolicy ha NextTuple strömsparläge under en kort tidsperiod (till exempel 10 millisekunder) utan att avfallshantering för mycket CPU.
+När `NextTuple()` anropas, hello C\# användarkod kan generera en eller flera tupplar. Om det inte finns något tooemit, som den här metoden ska returnera utan avger något. Det bör noteras som `NextTuple()`, `Ack()`, och `Fail()` kallas i en tät loop i en enskild tråd i C\# process. När det finns inga tupplar tooemit, är Välkommen företagspolicy toohave NextTuple strömsparläge för kort tid (till exempel 10 millisekunder) som inte toowaste för mycket CPU.
 
-`Ack()`och `Fail()` ska bara anropas om ack mekanism är aktiverat i spec filen. Den `seqId` används för att identifiera den tuppel som ADE eller misslyckades. Så om ack är aktiverad i icke-transaktionell topologi, bör följande begär funktion användas i kanal:
+`Ack()`och `Fail()` ska bara anropas om ack mekanism är aktiverat i spec filen. Hej `seqId` är används tooidentify hello tuppel som ADE eller misslyckades. Så om ack är aktiverad i icke-transaktionell topologi ska hello följande begär funktionen användas i kanal:
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
-Om ack inte stöds i icke-transaktionell topologi, den `Ack()` och `Fail()` kan lämnas tomt funktion.
+Om ack inte stöds i icke-transaktionell topologi, hello `Ack()` och `Fail()` kan lämnas tomt funktion.
 
-Den `parms` indataparametrar i dessa funktioner är bara tom ordlista, de är reserverad för framtida användning.
+Hej `parms` indataparametrar i dessa funktioner är bara tom ordlista, de är reserverad för framtida användning.
 
 ### <a name="iscpbolt"></a>ISCPBolt
-ISCPBolt är gränssnittet för icke-transaktionell bulten.
+ISCPBolt är hello gränssnitt för icke-transaktionell bulten.
 
     public interface ISCPBolt : ISCPPlugin 
     {
     void Execute(SCPTuple tuple);           
     }
 
-När nya tuppel är tillgänglig, den `Execute()` funktionen anropas för att bearbeta den.
+När det finns nya tuppel hello `Execute()` funktionen anropas tooprocess den.
 
 ### <a name="iscptxspout"></a>ISCPTxSpout
-ISCPTxSpout är gränssnittet för transaktionell kanal.
+ISCPTxSpout är hello gränssnitt för transaktionell kanal.
 
     public interface ISCPTxSpout : ISCPPlugin
     {
@@ -104,16 +104,16 @@ ISCPTxSpout är gränssnittet för transaktionell kanal.
         void Fail(long seqId, Dictionary<string, Object> parms);        
     }
 
-Precis som i sin icke-transaktionell motparterna del `NextTx()`, `Ack()`, och `Fail()` kallas i en tät loop i en enskild tråd i C\# process. När det finns inga data att generera, är det Välkommen företagspolicy ha `NextTx` strömsparläge under en kort tidsperiod (10 millisekunder) utan att avfallshantering för mycket CPU.
+Precis som i sin icke-transaktionell motparterna del `NextTx()`, `Ack()`, och `Fail()` kallas i en tät loop i en enskild tråd i C\# process. När det finns inga data tooemit, är det Välkommen företagspolicy toohave `NextTx` viloläge under en kort tidsperiod (10 millisekunder) som inte toowaste för mycket CPU.
 
-`NextTx()`för att starta en ny transaktion Utdataparametern `seqId` används för att identifiera den transaktion som också används i `Ack()` och `Fail()`. I `NextTx()`, användare som kan sända data till Java-sida. Data lagras i ZooKeeper att stödja repetitionsattacker. Eftersom kapaciteten för ZooKeeper är mycket begränsad användare genererar endast metadata, inte masskopiera data i transaktionella kanal.
+`NextTx()`kallas toostart en ny transaktion hello out-parameter `seqId` är används tooidentify hello transaktion, som också används i `Ack()` och `Fail()`. I `NextTx()`, användaren kan generera data tooJava sida. hello data lagras i ZooKeeper toosupport repetitionsattacker. Eftersom hello kapacitet ZooKeeper är mycket begränsad bör endast användare genererar metadata, inte stora mängder data i transaktionella kanal.
 
-Storm ska spelas upp en transaktion automatiskt om den misslyckas så `Fail()` ska inte anropas i vanliga fall. Men om SCP kan kontrollera metadata som sänds av transaktionella kanal, kan det anropa `Fail()` när metadata är ogiltiga.
+Storm ska spelas upp en transaktion automatiskt om den misslyckas så `Fail()` ska inte anropas i vanliga fall. Men om SCP kan kontrollera hello metadata som sänds av transaktionella kanal, kan det anropa `Fail()` när hello metadata är ogiltiga.
 
-Den `parms` indataparametrar i dessa funktioner är bara tom ordlista, de är reserverad för framtida användning.
+Hej `parms` indataparametrar i dessa funktioner är bara tom ordlista, de är reserverad för framtida användning.
 
 ### <a name="iscpbatchbolt"></a>ISCPBatchBolt
-ISCPBatchBolt är gränssnittet för transaktionell bulten.
+ISCPBatchBolt är hello gränssnitt för transaktionell bulten.
 
     public interface ISCPBatchBolt : ISCPPlugin           
     {
@@ -121,15 +121,15 @@ ISCPBatchBolt är gränssnittet för transaktionell bulten.
         void FinishBatch(Dictionary<string, Object> parms);  
     }
 
-`Execute()`anropas när det finns nya tuppel anländer till bulten. `FinishBatch()`anropas när transaktionen avslutas. Den `parms` indataparameter är reserverad för framtida användning.
+`Execute()`anropas när det finns nya tuppel anländer till hello bulten. `FinishBatch()`anropas när transaktionen avslutas. Hej `parms` indataparameter är reserverad för framtida användning.
 
-För transaktionell topologi, är ett viktigt begrepp – `StormTxAttempt`. Den har två fält `TxId` och `AttemptId`. `TxId`används för att identifiera en viss transaktion och för en given transaktion, det kan finnas flera försök om transaktionen misslyckas och spelas. SCP.NET nya kommer ett annat ISCPBatchBolt objekt från varje `StormTxAttempt`, precis som vilken vill Storm Java-sida. Syftet med den här designen är att stödja parallella transaktioner bearbetning. Användaren bör ha det i åtanke att om transaktionen försök är slutförd, motsvarande ISCPBatchBolt objektet ska förstöras och skräpinsamlats.
+För transaktionell topologi, är ett viktigt begrepp – `StormTxAttempt`. Den har två fält `TxId` och `AttemptId`. `TxId`är används tooidentify en särskild transaktion och för en given transaktion, det kan finnas flera försök om hello transaktionen misslyckas och spelas. SCP.NET kommer nya en annan ISCPBatchBolt objektet tooprocess varje `StormTxAttempt`, precis som vilken vill Storm Java-sida. hello syftet med den här designen är toosupport parallella transaktioner bearbetning. Användaren bör Tänk det som om transaktionen försök är klar, kommer att raderas hello motsvarande ISCPBatchBolt objekt och skräpinsamlats.
 
 ## <a name="object-model"></a>Objektmodell
-SCP.NET innehåller också en enkel uppsättning objekt för utvecklare att programmera med nycklar. De är **kontexten**, **StateStore**, och **SCPRuntime**. De kommer att diskuteras i rest-delen av det här avsnittet.
+SCP.NET innehåller också en enkel uppsättning objekt nycklar för utvecklare tooprogram med. De är **kontexten**, **StateStore**, och **SCPRuntime**. De kommer att diskuteras i hello rest-delen av det här avsnittet.
 
 ### <a name="context"></a>Kontext
-Kontexten är en aktiv miljö till programmet. Varje ISCPPlugin-instans (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) har en motsvarande kontext-instans. Funktionerna i kontexten kan delas in i två delar: (1) menyns statiska del som är tillgängliga i hela C\# bearbeta, (2) den dynamiska delen som endast är tillgänglig för den specifika instansen i kontexten.
+Kontexten innehåller ett program som körs miljö toohello. Varje ISCPPlugin-instans (ISCPSpout/ISCPBolt/ISCPTxSpout/ISCPBatchBolt) har en motsvarande kontext-instans. hello-funktionalitet som tillhandahålls av sammanhanget kan delas in i två delar: (1) hello statiska del som är tillgängliga i hello hela C\# bearbeta, (2) hello dynamiska del som endast är tillgänglig för hello specifika kontexten instans.
 
 ### <a name="static-part"></a>Statiska del
     public static ILogger Logger = null;
@@ -139,7 +139,7 @@ Kontexten är en aktiv miljö till programmet. Varje ISCPPlugin-instans (ISCPSpo
 
 `Logger`finns i loggen syfte.
 
-`pluginType`används för att ange plugin-typ av C\# process. Om C\# processen körs i lokala testläge (utan Java), plugin-typen är `SCP_NET_LOCAL`.
+`pluginType`är används tooindicate hello plugin-programmet för typ av hello C\# process. Om hello C\# processen körs i lokala testläge (utan Java), hello plugin-programmet är `SCP_NET_LOCAL`.
 
     public enum SCPPluginType 
     {
@@ -150,12 +150,12 @@ Kontexten är en aktiv miljö till programmet. Varje ISCPPlugin-instans (ISCPSpo
         SCP_NET_BATCH_BOLT = 4  
     }
 
-`Config`finns för att hämta konfigurationsparametrar från Java-sida. Parametrarna som skickas från Java sida när C\# plugin-programmet har initierats. Den `Config` parametrar är uppdelat i två delar: `stormConf` och `pluginConf`.
+`Config`tillhandahålls tooget konfigurationsparametrar från Java-sida. hello parametrarna som skickas från Java sida när C\# plugin-programmet har initierats. Hej `Config` parametrar är uppdelat i två delar: `stormConf` och `pluginConf`.
 
     public Dictionary<string, Object> stormConf { get; set; }  
     public Dictionary<string, Object> pluginConf { get; set; }  
 
-`stormConf`är parametrar som definierats av Storm och `pluginConf` är de parametrar som definierats av SCP. Exempel:
+`stormConf`är parametrar som definierats av Storm och `pluginConf` är hello parametrar som definierats av SCP. Exempel:
 
     public class Constants
     {
@@ -169,9 +169,9 @@ Kontexten är en aktiv miljö till programmet. Varje ISCPPlugin-instans (ISCPSpo
         public static readonly String STORM_ZOOKEEPER_PORT = "storm.zookeeper.port";                 
     }
 
-`TopologyContext`har angetts för att få kontexten topologi, är det mest användbar för komponenter med flera parallellitet. Här är ett exempel:
+`TopologyContext`tillhandahålls tooget hello topologi kontext är den mest användbart för komponenter med flera parallellitet. Här är ett exempel:
 
-    //demo how to get TopologyContext info
+    //demo how tooget TopologyContext info
     if (Context.pluginType != SCPPluginType.SCP_NET_LOCAL)                      
     {
         Context.Logger.Info("TopologyContext info:");
@@ -186,24 +186,24 @@ Kontexten är en aktiv miljö till programmet. Varje ISCPPlugin-instans (ISCPSpo
     }
 
 ### <a name="dynamic-part"></a>Dynamiska del
-Följande gränssnitt är relevant för en viss instans i kontexten. Kontexten instans skapas av SCP.NET plattform och skickas till användarkoden:
+Hej följande gränssnitt är relevanta tooa vissa kontextinstansen. Hej kontextinstansen skapas av SCP.NET plattform och skickades toohello användarkod:
 
-    // Declare the Output and Input Stream Schemas
+    // Declare hello Output and Input Stream Schemas
 
     public void DeclareComponentSchema(ComponentStreamSchema schema);   
 
-    // Emit tuple to default stream.
+    // Emit tuple toodefault stream.
     public abstract void Emit(List<object> values);                   
 
-    // Emit tuple to the specific stream.
+    // Emit tuple toohello specific stream.
     public abstract void Emit(string streamId, List<object> values);  
 
-För icke-transaktionell kanal stöder ack, finns följande metod:
+För icke-transaktionell kanal som stöder ack tillhandahålls hello följande metod:
 
     // for non-transactional Spout which supports ack
     public abstract void Emit(string streamId, List<object> values, long seqId);  
 
-För icke-transaktionell bult stöder ack, bör det explicit `Ack()` eller `Fail()` tuppeln togs emot. Och när sändning nya tuppel, det måste även ange ankare nya parets. Följande metoder tillhandahålls.
+För icke-transaktionell bult stöder ack, bör det explicit `Ack()` eller `Fail()` hello tuppel togs emot. Och när sändning nya tuppel, det måste även ange hello ankare för hello nya tuppel. hello följande metoder som tillhandahålls.
 
     public abstract void Emit(string streamId, IEnumerable<SCPTuple> anchors, List<object> values); 
     public abstract void Ack(SCPTuple tuple);
@@ -212,12 +212,12 @@ För icke-transaktionell bult stöder ack, bör det explicit `Ack()` eller `Fail
 ### <a name="statestore"></a>StateStore
 `StateStore`innehåller metadatatjänster, monotonisk sekvensgenerering och vänta utan samordning. Abstraktioner på högre nivåer distribuerade samtidighet kan baseras på `StateStore`, inklusive distribuerade lås, distribuerade köer, barriärer och Transaktionstjänster.
 
-SCP-program kan använda den `State` objekt att spara information i ZooKeeper, särskilt för transaktionell topologi. Om du gör det transaktionella kanal kraschar och startar om, den kan hämta nödvändig information från ZooKeeper och starta om pipeline.
+SCP-program kan använda hello `State` objekt toopersist information i ZooKeeper, särskilt för transaktionell topologi. Om du gör det transaktionella kanal kraschar och startar om, kan den hämta hello nödvändig information från ZooKeeper och starta om hello pipeline.
 
-Den `StateStore` -objektet har huvudsakligen dessa metoder:
+Hej `StateStore` -objektet har huvudsakligen dessa metoder:
 
     /// <summary>
-    /// Static method to retrieve a state store of the given path and connStr 
+    /// Static method tooretrieve a state store of hello given path and connStr 
     /// </summary>
     /// <param name="storePath">StateStore Path</param>
     /// <param name="connStr">StateStore Address</param>
@@ -237,9 +237,9 @@ Den `StateStore` -objektet har huvudsakligen dessa metoder:
     public IEnumerable<State> GetUnCommitted();
 
     /// <summary>
-    /// Get all the States in the StateStore
+    /// Get all hello States in hello StateStore
     /// </summary>
-    /// <returns>All the States</returns>
+    /// <returns>All hello States</returns>
     public IEnumerable<State> States();
 
     /// <summary>
@@ -251,70 +251,70 @@ Den `StateStore` -objektet har huvudsakligen dessa metoder:
     public T Get<T>(string info = null);
 
     /// <summary>
-    /// List all the committed states
+    /// List all hello committed states
     /// </summary>
-    /// <returns>Registries contain the Committed State </returns> 
+    /// <returns>Registries contain hello Committed State </returns> 
     public IEnumerable<Registry> Commited();
 
     /// <summary>
-    /// List all the Aborted State in the StateStore
+    /// List all hello Aborted State in hello StateStore
     /// </summary>
-    /// <returns>Registries contain the Aborted State</returns>
+    /// <returns>Registries contain hello Aborted State</returns>
     public IEnumerable<Registry> Aborted();
 
     /// <summary>
     /// Retrieve an existing state object from this state store instance 
     /// </summary>
     /// <returns>State from StateStore</returns>
-    /// <typeparam name="T">stateId, id of the State</typeparam>
+    /// <typeparam name="T">stateId, id of hello State</typeparam>
     public State GetState(long stateId)
 
-Den `State` -objektet har huvudsakligen dessa metoder:
+Hej `State` -objektet har huvudsakligen dessa metoder:
 
     /// <summary>
-    /// Set the status of the state object to commit 
+    /// Set hello status of hello state object toocommit 
     /// </summary>
     public void Commit(bool simpleMode = true); 
 
     /// <summary>
-    /// Set the status of the state object to abort 
+    /// Set hello status of hello state object tooabort 
     /// </summary>
     public void Abort();
 
     /// <summary>
-    /// Put an attribute value under the give key 
+    /// Put an attribute value under hello give key 
     /// </summary>
     /// <param name="key">Key</param> 
     /// <param name="attribute">State Attribute</param> 
     public void PutAttribute<T>(string key, T attribute); 
 
     /// <summary>
-    /// Get the attribute value associated with the given key 
+    /// Get hello attribute value associated with hello given key 
     /// </summary>
     /// <param name="key">Key</param> 
     /// <returns>State Attribute</returns>               
     public T GetAttribute<T>(string key);                    
 
-För den `Commit()` metoden när simpleMode har angetts till true, helt enkelt bort motsvarande ZNode i ZooKeeper. I annat fall tas bort aktuella ZNode och lägga till en ny nod i GENOMFÖRD\_sökväg.
+För hello `Commit()` metod när simpleMode anges tootrue, helt enkelt bort hello motsvarande ZNode i ZooKeeper. I annat fall raderas hello aktuella ZNode och lägga till en ny nod i hello GENOMFÖRD\_sökväg.
 
 ### <a name="scpruntime"></a>SCPRuntime
-SCPRuntime innehåller följande två metoder.
+SCPRuntime ger hello följande två metoder.
 
     public static void Initialize();
 
     public static void LaunchPlugin(newSCPPlugin createDelegate);  
 
-`Initialize()`används för att initiera SCP-körningsmiljön. Den här metoden C\# processen ska ansluta till Java-sida, och hämtar konfigurationsparametrar och topologi-kontexten.
+`Initialize()`är används tooinitialize hello SCP-körningsmiljön. I den här metoden hello C\# processen ansluter toohello Java-sida, och hämtar konfigurationsparametrar och topologi-kontexten.
 
-`LaunchPlugin()`används för att startar bearbetning meddelandeloop. I den här loop C\# plugin-program får meddelanden formuläret Java-sida (inklusive tupplar och kontroll signaler) och sedan bearbeta meddelanden, kanske anropar gränssnittsmetoden ange av användarkoden. Indataparametern för metoden `LaunchPlugin()` är en delegat som kan returnera ett objekt som implementerar ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt-gränssnittet.
+`LaunchPlugin()`använda tookick av hello-meddelande bearbetar loop. I den här loop hello C\# plugin-program får meddelanden formuläret Java-sida (inklusive tupplar och kontroll signaler) och sedan processen hälsningsmeddelande kanske anropar hello gränssnittsmetod ge genom en användarkod hello. hello Indataparametern för metoden `LaunchPlugin()` är en delegat som kan returnera ett objekt som implementerar ISCPSpout/IScpBolt/ISCPTxSpout/ISCPBatchBolt-gränssnittet.
 
     public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary\<string, Object\> parms); 
 
-För ISCPBatchBolt, kan vi hämta `StormTxAttempt` från `parms`, och använda den för att bedöma om det är ett uppspelat försök. Detta görs vanligtvis på bulten genomförande och det visas i den `HelloWorldTx` exempel.
+För ISCPBatchBolt, kan vi hämta `StormTxAttempt` från `parms`, och använda den toojudge om det är ett uppspelat försök. Detta görs vanligtvis på hello commit bult och det visas i hello `HelloWorldTx` exempel.
 
-Generellt sett kan SCP-plugin-program köras i två lägen här:
+Generellt sett kan hello SCP-plugin-program köras i två lägen här:
 
-1. Lokala testläge: I det här läget SCP-plugin-program (C\# användarkod) körs i Visual Studio under utvecklingsfasen. `LocalContext`kan användas i det här läget, vilket ger en metod för att serialisera skickade tupplar lokala filer och läsa dem tillbaka till minne.
+1. Lokala testläge: I det här läget hello SCP-plugin-program (hello C\# användarkod) körs i Visual Studio under hello utvecklingsfasen. `LocalContext`kan användas i det här läget, vilket ger metoden tooserialize hello orsakat tupplar toolocal filer och läsa dem tillbaka toomemory.
    
         public interface ILocalContext
         {
@@ -322,7 +322,7 @@ Generellt sett kan SCP-plugin-program köras i två lägen här:
             void WriteMsgQueueToFile(string filepath, bool append = false);  
             void ReadFromFileToMsgQueue(string filepath);                    
         }
-2. Standardläget: I det här läget SCP-plugin-program startas av storm java-process.
+2. Standardläget: I det här läget hello SCP-plugin-program startas av storm java-process.
    
     Här är ett exempel på Starta SCP-plugin-programmet:
    
@@ -341,7 +341,7 @@ Generellt sett kan SCP-plugin-program köras i två lägen här:
         {
             static void Main(string[] args)
             {
-            /* Setting the environment variable here can change the log file name */
+            /* Setting hello environment variable here can change hello log file name */
             System.Environment.SetEnvironmentVariable("microsoft.scp.logPrefix", "HelloWorld");
    
             SCPRuntime.Initialize();
@@ -353,56 +353,56 @@ Generellt sett kan SCP-plugin-program köras i två lägen här:
 ## <a name="topology-specification-language"></a>Topologi specifikationsspråk
 SCP är-topologi ett specifikt språk domän för att beskriva och konfigurera SCP topologier. Den är baserad på Storm's Clojure DSL (<http://storm.incubator.apache.org/documentation/Clojure-DSL.html>) och utökas med SCP.
 
-Topologi specifikationer kan skickas direkt till storm-kluster för körning via den ***runspec*** kommando.
+Topologi specifikationer som kan skickas direkt toostorm kluster för körning via hello ***runspec*** kommando.
 
-SCP.NET har Lägg till följande funktioner att definiera den transaktionella topologin:
+SCP.NET har Lägg till följande funktioner toodefine hello transaktionella topologi:
 
 | **Nya funktioner** | **Parametrar** | **Beskrivning** |
 | --- | --- | --- |
-| **TX topolopy** |topologi namn<br />kanal-karta<br />bult-karta |Definiera en transaktionell topologi med namnet topologi &nbsp;spouts definitionen mappning och bultar definitionen mappning |
-| **SCP-tx-kanal** |Exec-namn<br />argument<br />Fält |Definiera en transaktionell kanal. Den kommer att köra programmet med ***exec-name*** med ***argument***.<br /><br />Den ***fält*** är utdatafält för kanal |
-| **SCP-tx-batch-bult** |Exec-namn<br />argument<br />Fält |Definiera en transaktionell Batch bulten. Den kommer att köra programmet med ***exec-name*** med ***argument.***<br /><br />Fälten är utdatafält för bulten. |
-| **SCP-tx-commit-bult** |Exec-namn<br />argument<br />Fält |Definiera en transaktionell Committer bulten. Den kommer att köra programmet med ***exec-name*** med ***argument***.<br /><br />Den ***fält*** är utdatafält för bult |
-| **nontx topolopy** |topologi namn<br />kanal-karta<br />bult-karta |Definiera en icke-transaktionell topologi med namnet topologi&nbsp; spouts definitionen mappning och bultar definitionen mappning |
-| **SCP-kanal** |Exec-namn<br />argument<br />Fält<br />Parametrar |Definiera en icke-transaktionell kanal. Den kommer att köra programmet med ***exec-name*** med ***argument***.<br /><br />Den ***fält*** är utdatafält för kanal<br /><br />Den ***parametrar*** är valfritt, använder den för att ange vissa parametrar, till exempel ”nontransactional.ack.enabled”. |
-| **SCP-bult** |Exec-namn<br />argument<br />Fält<br />Parametrar |Definiera en icke-transaktionell bulten. Den kommer att köra programmet med ***exec-name*** med ***argument***.<br /><br />Den ***fält*** är utdatafält för bult<br /><br />Den ***parametrar*** är valfritt, använder den för att ange vissa parametrar, till exempel ”nontransactional.ack.enabled”. |
+| **TX topolopy** |topologi namn<br />kanal-karta<br />bult-karta |Definiera en transaktionell topologi med hello topologi namnet &nbsp;spouts definitionen mappning och hello bultar definitionen mappning |
+| **SCP-tx-kanal** |Exec-namn<br />argument<br />Fält |Definiera en transaktionell kanal. Det körs programmet hello med ***exec-name*** med ***argument***.<br /><br />Hej ***fält*** är hello utdatafält för kanal |
+| **SCP-tx-batch-bult** |Exec-namn<br />argument<br />Fält |Definiera en transaktionell Batch bulten. Det körs programmet hello med ***exec-name*** med ***argument.***<br /><br />hello är fält hello utdatafält för bulten. |
+| **SCP-tx-commit-bult** |Exec-namn<br />argument<br />Fält |Definiera en transaktionell Committer bulten. Det körs programmet hello med ***exec-name*** med ***argument***.<br /><br />Hej ***fält*** är hello utdatafält för bult |
+| **nontx topolopy** |topologi namn<br />kanal-karta<br />bult-karta |Definiera en icke-transaktionell topologi med hello topologi namnet&nbsp; spouts definitionen mappning och hello bultar definitionen mappning |
+| **SCP-kanal** |Exec-namn<br />argument<br />Fält<br />parameters |Definiera en icke-transaktionell kanal. Det körs programmet hello med ***exec-name*** med ***argument***.<br /><br />Hej ***fält*** är hello utdatafält för kanal<br /><br />Hej ***parametrar*** är valfritt, använder den toospecify vissa parametrar, till exempel ”nontransactional.ack.enabled”. |
+| **SCP-bult** |Exec-namn<br />argument<br />Fält<br />parameters |Definiera en icke-transaktionell bulten. Det körs programmet hello med ***exec-name*** med ***argument***.<br /><br />Hej ***fält*** är hello utdatafält för bult<br /><br />Hej ***parametrar*** är valfritt, använder den toospecify vissa parametrar, till exempel ”nontransactional.ack.enabled”. |
 
 SCP.NET har Följ nycklar ord som definierats:
 
 | **Nyckelord** | **Beskrivning** |
 | --- | --- |
-| **: namn** |Definiera namnet topologi |
-| **: topologi** |Definiera topologin med hjälp av dessa funktioner och skapa i viktiga. |
-| **: p** |Definiera parallellitet-tips för varje kanal eller en bult. |
-| **: config** |Definiera konfigurera parameter eller uppdatera befintliga |
-| **: schemat** |Definiera schemat för dataströmmen. |
+| **: namn** |Definiera hello topologi namn |
+| **: topologi** |Definiera hello topologi med hello ovan funktioner och skapa i viktiga. |
+| **: p** |Definiera hello parallellitet tips för varje kanal eller en bult. |
+| **: config** |Definiera konfigurera parametern eller uppdatera hello befintliga |
+| **: schemat** |Definiera hello schemat för dataströmmen. |
 
 Och vanliga parametrar:
 
 | **Parametern** | **Beskrivning** |
 | --- | --- |
-| **”plugin.name”** |namnet på C# plugin-programmet exe-filen |
+| **”plugin.name”** |namnet på hello C#-plugin-programmet exe-filen |
 | **”plugin.args”** |plugin-argument |
 | **”output.schema”** |Utdataschemat |
 | **”nontransactional.ack.enabled”** |Om ack har aktiverats för icke-transaktionell topologi |
 
-Kommandot runspec kommer att distribueras tillsammans med bits, användningen är t.ex.:
+hello runspec kommandot kommer att distribueras tillsammans med hello bits, hello användning är t.ex.:
 
     .\bin\runSpec.cmd
     usage: runSpec [spec-file target-dir [resource-dir] [-cp classpath]]
     ex: runSpec examples\HelloWorld\HelloWorld.spec specs examples\HelloWorld\Target
 
-Den ***resurs dir*** -parametern är valfri, måste du ange den när du vill ansluta en C\# programmet och den här katalogen ska innehålla programmet, beroenden och konfigurationer.
+Hej ***resurs dir*** parametern är valfri, måste du toospecify den när du vill tooplug en C\# programmet och den här katalogen innehåller hello programmet hello beroenden och konfigurationer.
 
-Den ***klassökvägen*** parametern också är valfri. Den används för att ange klassökväg Java om spec filen innehåller Java-kanal eller en bult.
+Hej ***klassökvägen*** parametern också är valfri. Det är används toospecify hello Java klassökvägen om spec hello-filen innehåller Java-kanal eller en bult.
 
 ## <a name="miscellaneous-features"></a>Diverse funktioner
 ### <a name="input-and-output-schema-declaration"></a>Indata och utdata Schema-deklaration
-Användaren kan generera tuppel i C\# process, plattformen måste serialisera tuppeln till byte [], överföring till Java-sida och Storm överför det här tuppeln till mål. Under tiden i underordnade komponent C\# processen kommer ta emot tuppel tillbaka från java sida och konvertera den till de ursprungliga typerna av plattform, dessa åtgärder är dolda av plattformen.
+hello användaren kan generera tuppel i C\# bearbeta, hello plattform måste tooserialize hello tuppel i byte [], överföring tooJava sida och Storm överför det här tuppeln toohello mål. Under tiden hello C i underordnade komponent\# processen kommer ta emot tuppel tillbaka från java sida och konvertera toohello ursprungliga typerna av plattform, dessa åtgärder är dolt enligt hello plattform.
 
-Användarkod måste deklarera schemat för indata och utdata för att stödja serialisering och deserialisering.
+toosupport hello serialisering och deserialisering måste användarkod toodeclare hello schemat för hello indata och utdata.
 
-Schemat för i/o-dataströmmen har definierats som en ordlista, nyckeln är StreamId och värdet är typerna av kolumnerna. Komponenten kan ha flera strömmar som deklarerats.
+hello i/o-dataströmmen schemat är definierad som en ordlista hello nyckeln är hello StreamId och hello är hello typer av hello kolumner. hello komponent kan ha flera strömmar som deklarerats.
 
     public class ComponentStreamSchema
     {
@@ -416,29 +416,29 @@ Schemat för i/o-dataströmmen har definierats som en ordlista, nyckeln är Stre
     }
 
 
-Vi har lagt till följande API i Context-objektet:
+Vi har hello följande API lagts till i Context-objektet:
 
     public void DeclareComponentSchema(ComponentStreamSchema schema)
 
-Användarkod måste kontrollera att tupplar som orsakat följa det schema som definierats för dataströmmen eller systemet genereras ett undantagsfel för körning.
+Användarkod måste kontrollera hello tupplar som orsakat lyder under hello-schema som definierats för dataströmmen eller hello system genereras ett undantagsfel för körning.
 
 ### <a name="multi-stream-support"></a>Stöd för flera dataström
-Tjänstanslutningspunkten stöder användarkod för att generera eller ta emot från flera olika dataströmmar på samma gång. Stödet visar i Context-objektet som begär metoden tar en valfri dataströmmen ID-parametern.
+SCP stöder användaren code tooemit eller ta emot från flera olika dataströmmar på hello samma tid. stöd för hello återspeglar i hello Context-objektet som hello begär metoden tar en valfri dataströmmen ID-parametern.
 
-Två metoder i SCP.NET Context-objektet har lagts till. De används för att generera tuppeln eller Tupplar om du vill ange StreamId. StreamId är en sträng och den måste vara konsekvent i båda C\# och topologi Definition-specifikationen.
+Två metoder i hello SCP.NET Context-objektet har lagts till. De är används tooemit tuppeln eller Tupplar toospecify StreamId. Hej StreamId är en sträng och den måste toobe konsekvent i båda C\# och hello topologi Definition-specifikationen.
 
-        /* Emit tuple to the specific stream. */
+        /* Emit tuple toohello specific stream. */
         public abstract void Emit(string streamId, List<object> values);
 
         /* for non-transactional Spout only */
         public abstract void Emit(string streamId, List<object> values, long seqId);
 
-Sändning till en dataström som inte finns kommer att orsaka körningsfel undantag.
+hello ljusavgivande tooa obefintligt dataströmmen kommer runtime-undantag.
 
 ### <a name="fields-grouping"></a>Fält gruppering
-Den inbyggda fält gruppering i Strom fungerar inte korrekt i SCP.NET. Alla fält datatyper är faktiskt byte [] på Java-Proxy-sida och fälten Gruppera använder byte [] objekt hash-kod för att utföra grupperingen. Byte [] objekt hash-koden är adressen till det här objektet i minnet. Grupperingen kommer därför att fel för två byte [] objekt som delar samma innehåll, men inte samma adress.
+hello fungerar inbyggda fält gruppering i Strom inte korrekt i SCP.NET. Hello fält gruppering används hello byte [] objekt hash-kod tooperform hello gruppering i hello Java Proxy sida, alla datatyper i hello-fält är faktiskt byte []. hello byte [] hash-kod är hello-adressen för det här objektet i minnet. Så hello gruppering är fel för två byte objekt [] hello att dela samma innehåll men inte hello samma adress.
 
-SCP.NET lägger till en metod för anpassad gruppering och innehållet i byte [] används för att göra grupperingen. I **SPEC** filen syntax är t.ex.:
+SCP.NET lägger till en metod för anpassad gruppering och använder hello innehållet i hello byte [] toodo hello gruppering. I **SPEC** filen hello syntax är t.ex.:
 
     (bolt-spec
         {
@@ -451,36 +451,36 @@ SCP.NET lägger till en metod för anpassad gruppering och innehållet i byte []
 Här
 
 1. ”scp-fältet-grupp”: ”anpassad fältet gruppering implementeras av SCP”.
-2. ”: tx” eller ”: icke-tx” innebär att om det är transaktionell topologi. Vi behöver informationen eftersom startindexet skiljer sig åt i tx kontra-tx topologier.
+2. ”: tx” eller ”: icke-tx” innebär att om det är transaktionell topologi. Vi behöver informationen eftersom hello startar index skiljer sig åt i tx kontra-tx topologier.
 3. [0,1] innebär en hashset av fältet ID, början på 0.
 
 ### <a name="hybrid-topology"></a>Hybrid-topologi
-Den interna Storm är skriven i Java. Och SCP.Net har förbättrad den, så att våra tull att skriva C\# kod för att hantera sina affärslogik. Men vi stöder också hybridtopologier, som innehåller inte bara C\# kanaler/bultar men Java kanal/bultar.
+hello intern Storm är skriven i Java. Och SCP.Net har förbättrad den tooenable våra tull toowrite C\# code toohandle sina affärslogik. Men vi stöder också hybridtopologier, som innehåller inte bara C\# kanaler/bultar men Java kanal/bultar.
 
 ### <a name="specify-java-spoutbolt-in-spec-file"></a>Ange kanal/bult för Java i spec fil
-”Scp-kanal” och ”scp-bult” kan också användas för att ange Java Spouts och bultar i spec fil, här är ett exempel:
+”Scp-kanal” och ”scp-bult” kan också vara används toospecify Java Spouts och bultar i spec fil, här är ett exempel:
 
     (spout-spec 
       (microsoft.scp.example.HybridTopology.Generator.)           
       :p 1)
 
-Här `microsoft.scp.example.HybridTopology.Generator` är namnet på klassen Java-kanalen.
+Här `microsoft.scp.example.HybridTopology.Generator` är hello namnet på hello prata Java-klass.
 
 ### <a name="specify-java-classpath-in-runspec-command"></a>Ange Java-klassökvägen i runSpec kommando
-Om du vill skicka topologi som innehåller Java Spouts eller bultar måste du först kompilera Java Spouts eller bultar och hämta Jar-filerna. Du bör ange java-klassökvägen som innehåller Jar-filer när du skickar in topologin. Här är ett exempel:
+Om du vill toosubmit topologi som innehåller Java Spouts eller bultar behöver toofirst kompilera hello Java Spouts eller bultar och hämta hello Jar-filer. Du bör ange hello java-klassökvägen som innehåller hello Jar-filer när du skickar in topologin. Här är ett exempel:
 
     bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
 
-Här **exempel\\HybridTopology\\java\\mål\\**  är den mapp som innehåller Java kanal/bult Jar-filen.
+Här **exempel\\HybridTopology\\java\\mål\\**  är hello mappen som innehåller hello Java kanal/bult Jar-fil.
 
 ### <a name="serialization-and-deserialization-between-java-and-c"></a>Serialisering och deserialisering mellan Java och C\
-Vår SCP-komponenten innehåller Java sida och C\# sida. För att kunna interagera med inbyggda Java kanaler/bultar serialisering/deserialisering utföras mellan Java sida och C\# sida, enligt beskrivningen i följande diagram.
+Vår SCP-komponenten innehåller Java sida och C\# sida. I ordning toointeract med inbyggda Java kanaler/bultar serialisering/deserialisering utföras mellan Java sida och C\# sida, enligt beskrivningen i följande diagram hello.
 
-![diagram över java-komponent som skickas till SCP-komponent som skickas till Java-komponent](media/hdinsight-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+![diagram över java-komponent som skickar tooSCP komponenten skickar tooJava komponent](media/hdinsight-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
 
 1. **Serialisering i Java-sida och deserialisering i C\# sida**
    
-   Första vi tillhandahåller standardimplementering för serialisering i Java-sida och deserialisering i C\# sida. Serialiseringsmetod i Java-sida kan anges i SPEC filen:
+   Första vi tillhandahåller standardimplementering för serialisering i Java-sida och deserialisering i C\# sida. Hej serialiseringsmetod i Java-sida kan anges i SPEC filen:
    
        (scp-bolt
            {
@@ -490,23 +490,23 @@ Vår SCP-komponenten innehåller Java sida och C\# sida. För att kunna interage
                "customized.java.serializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer"]
            })
    
-   Metoden deserialisering i C\# sida måste anges i C\# användarkod:
+   Hej deserialisering metod i C\# sida måste anges i C\# användarkod:
    
        Dictionary<string, List<Type>> inputSchema = new Dictionary<string, List<Type>>();
        inputSchema.Add("default", new List<Type>() { typeof(Person) });
        this.ctx.DeclareComponentSchema(new ComponentStreamSchema(inputSchema, null));
        this.ctx.DeclareCustomizedDeserializer(new CustomizedInteropJSONDeserializer());            
    
-   Den här standardimplementering ska hantera de flesta fall om datatypen inte är för komplex. För vissa fall, eftersom användaren datatyp är för komplex eller eftersom prestanda för våra standardimplementering inte uppfyller kraven för användarens, användaren kan plugin-programmet sina egna implementering.
+   Den här standardimplementering ska hantera de flesta fall om hello datatypen inte är för komplex. I vissa fall, antingen eftersom hello användardatatypen är för komplex eller för att hello prestanda för våra standardimplementering inte uppfyller hello användarens kravet användaren kan plugin-programmet sina egna implementering.
    
-   Serialisera gränssnittet i java-sida definieras som:
+   hello serialisera gränssnittet i java sida definieras som:
    
        public interface ICustomizedInteropJavaSerializer {
            public void prepare(String[] args);
            public List<ByteBuffer> serialize(List<Object> objectList);
        }
    
-   Gränssnittet deserialize i C\# sida definieras som:
+   hello deserialisera gränssnitt i C\# sida definieras som:
    
    offentliga gränssnittet ICustomizedInteropCSharpDeserializer
    
@@ -516,11 +516,11 @@ Vår SCP-komponenten innehåller Java sida och C\# sida. För att kunna interage
        }
 2. **Serialisering i C\# sida och deserialisering i Java sida sida**
    
-   Serialiseringsmetod i C\# sida måste anges i C\# användarkod:
+   Hej serialiseringsmetod i C\# sida måste anges i C\# användarkod:
    
        this.ctx.DeclareCustomizedSerializer(new CustomizedInteropJSONSerializer()); 
    
-   Metoden deserialisering i Java-sida måste anges i SPEC fil:
+   hello deserialisering metod i Java-sida måste anges i SPEC fil:
    
      (scp-kanal
    
@@ -531,16 +531,16 @@ Vår SCP-komponenten innehåller Java sida och C\# sida. För att kunna interage
          "customized.java.deserializer" ["microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer" "microsoft.scp.example.HybridTopology.Person"]
        })
    
-   ”Microsoft.scp.example.HybridTopology.Person” är målklassen data avserialiseras till ”microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer” är här namnet på funktionen för avserialisering.
+   Är här ”microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer” hello namnet på funktionen för avserialisering och ”microsoft.scp.example.HybridTopology.Person” är hello måldata klassen hello avserialiseras till.
    
-   Användaren kan också plugin-programmet sina egna implementering av C\# serialiseraren och Java funktionen för avserialisering. Det här är gränssnittet för C\# serialiseraren:
+   Användaren kan också plugin-programmet sina egna implementering av C\# serialiseraren och Java funktionen för avserialisering. Detta är hello gränssnitt för C\# serialiseraren:
    
        public interface ICustomizedInteropCSharpSerializer
        {
            List<byte[]> Serialize(List<object> dataList);
        }
    
-   Det här är gränssnittet för Java funktionen för avserialisering:
+   Detta är hello gränssnitt för Java funktionen för avserialisering:
    
        public interface ICustomizedInteropJavaDeserializer {
            public void prepare(String[] targetClassNames);
@@ -548,7 +548,7 @@ Vår SCP-komponenten innehåller Java sida och C\# sida. För att kunna interage
        }
 
 ## <a name="scp-host-mode"></a>Värden för SCP-läge
-I det här läget kan användaren kompilera koderna till DLL-filen och använda SCPHost.exe som tillhandahålls av SCP för att skicka topologi. Klientfilsspecifik filen ser ut så här:
+I det här läget kan användaren kompilera sina koder tooDLL och använda SCPHost.exe som tillhandahålls av SCP toosubmit topologi. hello spec filen ser ut så här:
 
     (scp-spout
       {
@@ -559,36 +559,36 @@ I det här läget kan användaren kompilera koderna till DLL-filen och använda 
 
 Här, `plugin.name` har angetts som `SCPHost.exe` som tillhandahålls av SCP SDK. SCPHost.exe som accepterar exakt tre parametrar:
 
-1. Den första är DLL-namn, som är `"HelloWorld.dll"` i det här exemplet.
-2. Den andra är klassnamnet, som är `"Scp.App.HelloWorld.Generator"` i det här exemplet.
-3. Det tredje är namnet på en offentlig statisk metod som kan anropas för att hämta en instans av ISCPPlugin.
+1. hello först en är hello DLL-namn som är `"HelloWorld.dll"` i det här exemplet.
+2. hello andra är hello klassnamnet, som är `"Scp.App.HelloWorld.Generator"` i det här exemplet.
+3. hello tredje är en hello namnet på en offentlig statisk metod som kan vara anropade tooget en instans av ISCPPlugin.
 
-Användarkod i värden läge är kompilerad som DLL-filen och anropas av SCP-plattformen. SCP-plattformen kan så få fullständig kontroll över hela standardbearbetningslogiken. Så rekommenderar vi våra kunder att skicka topologi i SCP värden läge eftersom den kan förenkla utvecklingen och sätta oss större flexibilitet och bättre bakåtkompatibilitet för samt senare version.
+Användarkod i värden läge är kompilerad som DLL-filen och anropas av SCP-plattformen. SCP-plattformen kan så få fullständig kontroll över hello hela standardbearbetningslogiken. Så vi rekommenderar våra kunder toosubmit topologi i SCP värden läge eftersom den kan förenkla hello utveckling och sätta oss större flexibilitet och bättre bakåtkompatibilitet för samt senare version.
 
 ## <a name="scp-programming-examples"></a>Exempel för SCP-programmering
 ### <a name="helloworld"></a>HelloWorld
-**HelloWorld** är ett väldigt enkelt exempel för att visa uppleva SCP.Net. Den använder en icke-transaktionell topologi med en kanal som kallas **generator**, och två bultar kallas **delningslisten** och **räknaren**. Kanal **generator** att slumpmässigt generera vissa meningar och genererar meningar för att **delningslisten**. Bulten **delningslisten** ska dela meningar ord och generera dessa ord att **räknaren** bulten. Bult ”räknaren” använder en ordlista för att registrera förekomsten av varje ord.
+**HelloWorld** är ett väldigt enkelt exempel tooshow uppleva SCP.Net. Den använder en icke-transaktionell topologi med en kanal som kallas **generator**, och två bultar kallas **delningslisten** och **räknaren**. hello kanal **generator** att slumpmässigt generera vissa meningar och generera dessa meningar för**delningslisten**. hello bult **delningslisten** ska dela hello meningar toowords och generera dessa ord för**räknaren** bulten. räknaren ”hello bult” används en ordlista toorecord hello förekomstantal varje ord.
 
-Det finns två spec filer **HelloWorld.spec** och **HelloWorld\_EnableAck.spec** för det här exemplet. I C\# kod, det kan ta reda på om ack aktiveras genom att hämta pluginConf från Java-sida.
+Det finns två spec filer **HelloWorld.spec** och **HelloWorld\_EnableAck.spec** för det här exemplet. I hello C\# kod, det kan ta reda på om ack aktiveras genom att hämta hello pluginConf från Java-sida.
 
-    /* demo how to get pluginConf info */
+    /* demo how tooget pluginConf info */
     if (Context.Config.pluginConf.ContainsKey(Constants.NONTRANSACTIONAL_ENABLE_ACK))
     {
         enableAck = (bool)(Context.Config.pluginConf[Constants.NONTRANSACTIONAL_ENABLE_ACK]);
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-I kanal om ack aktiveras används en ordlista till att cachelagra tupplar som inte är ADE. Om Fail() anropas, kommer misslyckade tuppeln återupprepas:
+I hello kanal är en ordlista används toocache hello tupplar som inte är ADE om ack är aktiverad. Om Fail() anropas ska hello misslyckade tuppel återupprepas:
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {
         Context.Logger.Info("Fail, seqId: {0}", seqId);
         if (cachedTuples.ContainsKey(seqId))
         {
-            /* get the cached tuple */
+            /* get hello cached tuple */
             string sentence = cachedTuples[seqId];
 
-            /* replay the failed tuple */
+            /* replay hello failed tuple */
             Context.Logger.Info("Re-Emit: {0}, seqId: {1}", sentence, seqId);
             this.ctx.Emit(Constants.DEFAULT_STREAM_ID, new Values(sentence), seqId);
         }
@@ -599,19 +599,19 @@ I kanal om ack aktiveras används en ordlista till att cachelagra tupplar som in
     }
 
 ### <a name="helloworldtx"></a>HelloWorldTx
-Den **HelloWorldTx** exemplet visar hur du implementerar transaktionella topologi. Den har en kanal som kallas **generator**en batch bultar kallas **partiell antal**, och en bult commit anropas **summan antal**. Det finns tre förskapade txt-filer: **DataSource0.txt**, **DataSource1.txt** och **DataSource2.txt**.
+Hej **HelloWorldTx** exemplet visar hur tooimplement transaktionella topologi. Den har en kanal som kallas **generator**en batch bultar kallas **partiell antal**, och en bult commit anropas **summan antal**. Det finns tre förskapade txt-filer: **DataSource0.txt**, **DataSource1.txt** och **DataSource2.txt**.
 
-I varje transaktion, kanal **generator** kommer slumpmässigt väljer två filer i förväg skapade tre filer och generera två filnamnen till den **partiell antal** bulten. Bulten **partiell antal** kommer först hämta filnamnet från mottagna tuppeln och sedan öppna filen räkna antalet ord i den här filen och slutligen genererar word numret till den **antal summan** bulten. Den **antal summan** bult sammanfattas det totala antalet.
+I varje transaktion, hello kanal **generator** slumpmässigt väljer två filer från hello förskapade tre filer, och genererar hello två filen namn toohello **partiell antal** bulten. hello bult **partiell antal** först hämta hello filnamnet från hello emot tuppel och sedan öppna hello fil- och antal hello antalet ord i den här filen och slutligen genererar hello word nummer toohello **count-summan**bulten. Hej **antal summan** bult sammanfattas hello totala antalet.
 
-Att uppnå **exakt en gång** semantik, commit bulten **summan antal** behöver för att bedöma om det är en upprepat transaktion. I det här exemplet har den en statisk medlemsvariabel:
+tooachieve **exakt en gång** semantik, hello commit bult **summan antal** behöver toojudge oavsett om det är en upprepat transaktion. I det här exemplet har den en statisk medlemsvariabel:
 
     public static long lastCommittedTxId = -1; 
 
-När en instans av ISCPBatchBolt skapas, får den `txAttempt` från indataparametrar:
+När en instans av ISCPBatchBolt skapas får hello `txAttempt` från indataparametrar:
 
     public static CountSum Get(Context ctx, Dictionary<string, Object> parms)
     {
-        /* for transactional topology, we can get txAttempt from the input parms */
+        /* for transactional topology, we can get txAttempt from hello input parms */
         if (parms.ContainsKey(Constants.STORM_TX_ATTEMPT))
         {
             StormTxAttempt txAttempt = (StormTxAttempt)parms[Constants.STORM_TX_ATTEMPT];
@@ -623,7 +623,7 @@ När en instans av ISCPBatchBolt skapas, får den `txAttempt` från indataparame
         }
     }
 
-När `FinishBatch()` anropas, den `lastCommittedTxId` kommer att uppdateringen om den inte är en upprepat transaktion.
+När `FinishBatch()` anropas, hello `lastCommittedTxId` kommer att uppdateringen om den inte är en upprepat transaktion.
 
     public void FinishBatch(Dictionary<string, Object> parms)
     {
@@ -632,7 +632,7 @@ När `FinishBatch()` anropas, den `lastCommittedTxId` kommer att uppdateringen o
 
         if (!replay)
         {
-            /* If it is not replayed, update the toalCount and lastCommittedTxId vaule */
+            /* If it is not replayed, update hello toalCount and lastCommittedTxId vaule */
             totalCount = totalCount + this.count;
             lastCommittedTxId = this.txAttempt.TxId;
         }
@@ -641,19 +641,19 @@ När `FinishBatch()` anropas, den `lastCommittedTxId` kommer att uppdateringen o
 
 
 ### <a name="hybridtopology"></a>HybridTopology
-Den här topologin innehåller en Java-kanalen och en C\# bulten. Den använder serialisering och deserialisering standardimplementering tillhandahålls av SCP-plattformen. Ange ref den **HybridTopology.spec** i **exempel\\HybridTopology** mapp för spec Filinformation och **SubmitTopology.bat** för hur du anger klassökvägen Java.
+Den här topologin innehåller en Java-kanalen och en C\# bulten. Den använder hello serialisering och deserialisering standardimplementering tillhandahålls av SCP-plattformen. Ange ref hello **HybridTopology.spec** i **exempel\\HybridTopology** mapp för hello spec filinformation, och **SubmitTopology.bat** för toospecify Java-klassökvägen.
 
 ### <a name="scphostdemo"></a>SCPHostDemo
-Det här exemplet är samma som HelloWorld i princip. Den enda skillnaden är att användarkod kompileras som DLL-filen och topologin skickas med hjälp av SCPHost.exe. Ta ref i avsnittet ”SCP värden läget” mer detaljerad förklaring.
+Det här exemplet är i princip hello samma som HelloWorld. hello endast skillnaden är att hello användarkod har kompilerats som DLL-filen och hello topologi skickas med hjälp av SCPHost.exe. Ta ref hello avsnittet ”SCP värden läget” mer detaljerad förklaring.
 
 ## <a name="next-steps"></a>Nästa steg
-Exempel på Storm-topologier som skapats med SCP finns i följande avsnitt:
+Exempel på Storm-topologier som skapats med SCP finns hello följande:
 
 * [Utveckla C#-topologier för Apache Storm på HDInsight med Visual Studio](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 * [Bearbeta händelser från Azure Event Hubs med Storm på HDInsight](hdinsight-storm-develop-csharp-event-hub-topology.md)
 * [Skapa flera dataströmmar i en C# Storm-topologi](hdinsight-storm-twitter-trending.md)
-* [Använd Power Bi för att visualisera data från en Storm-topologi](hdinsight-storm-power-bi-topology.md)
+* [Använd Power Bi toovisualize data från en Storm-topologi](hdinsight-storm-power-bi-topology.md)
 * [Bearbeta vehicle sensordata från Händelsehubbar med Storm på HDInsight](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
-* [Extrahera, transformering och laddning (ETL) från Azure Event Hubs till HBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
+* [Extrahering, transformering och inläsning (ETL) från Azure Event Hubs tooHBase](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
 * [Samordna händelser med Storm och HBase på HDInsight](hdinsight-storm-correlation-topology.md)
 

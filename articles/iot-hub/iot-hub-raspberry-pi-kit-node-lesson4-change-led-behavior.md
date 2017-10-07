@@ -1,6 +1,6 @@
 ---
-title: "Ansluta Raspberry Pi (nod) till Azure IoT - lektionen 4: ändra app | Microsoft Docs"
-description: "Anpassa meddelandena som du vill ändra Indikatorns och inaktivera beteende."
+title: "Ansluta hallon Pi (nod) tooAzure IoT - lektionen 4: ändra app | Microsoft Docs"
+description: "Anpassa hello meddelanden toochange hello Indikator är på och av beteende."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,30 +17,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: b2ae23ac9cc1723936c4b4e1900b95cdcde744df
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 99b542fcb8639add0f5a0f7a49dd8abd0e224a51
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="change-the-on-and-off-behavior-of-the-led"></a>Ändra på och av beteendet för Indikatorn
+# <a name="change-hello-on-and-off-behavior-of-hello-led"></a>Ändra hello och inaktivera beteendet för hello Indikator
 ## <a name="what-you-will-do"></a>Vad du ska göra
-Anpassa meddelandena som du vill ändra Indikatorns och inaktivera beteende. Om du har några problem, söka efter lösningar på den [felsökning sidan](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
+Anpassa hello meddelanden toochange hello Indikator är på och av beteende. Om du har några problem med sökning lösningar på hello [felsökning sidan](iot-hub-raspberry-pi-kit-node-troubleshooting.md).
 
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
-Använd ytterligare Node.js-funktioner för att ändra Indikatorns och inaktivera beteende.
+Använd funktioner toochange av ytterligare Node.js-hello som Indikator är på och av beteende.
 
 ## <a name="what-you-need"></a>Vad du behöver
-Du måste ha slutfört [kör ett exempelprogram på hallon Pi ta emot meddelanden moln till enhet](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md).
+Du måste ha slutfört [kör ett exempelprogram på hallon Pi tooreceive moln till enhet meddelanden](iot-hub-raspberry-pi-kit-node-lesson4-send-cloud-to-device-messages.md).
 
 ## <a name="add-nodejs-functions"></a>Lägga till funktioner för Node.js
-1. Öppna exempelprogrammet i Visual Studio-koden genom att köra följande kommandon:
+1. Öppna hello exempelprogrammet i Visual Studio-koden genom att köra följande kommandon hello:
    
    ```bash
    cd Lesson4
    code .
    ```
-2. Öppna den `app.js` filen och Lägg sedan till följande funktioner i slutet:
+2. Öppna hello `app.js` filen och Lägg sedan till följande funktioner i slutet av hello hello:
    
    ```javascript
    function turnOnLED() {
@@ -53,7 +53,7 @@ Du måste ha slutfört [kör ett exempelprogram på hallon Pi ta emot meddelande
    ```
    
    ![filen App.js med tillagda funktioner](media/iot-hub-raspberry-pi-lessons/lesson4/updated_app_js.png)
-3. Lägg till följande villkor innan standardversionen i blocket switch-fall av den `receiveMessageCallback` funktionen:
+3. Lägg till följande villkor innan hello standardversionen i hello switch-fall block i hello hello `receiveMessageCallback` funktionen:
    
    ```javascript
    case 'on':
@@ -64,8 +64,8 @@ Du måste ha slutfört [kör ett exempelprogram på hallon Pi ta emot meddelande
      break;
    ```
    
-   Du har nu konfigurerat exempelprogrammet att svara på flera instruktioner via meddelanden. ”On”-instruktion, aktiveras Indikatorn och instruktionen ”off” stänger av Indikatorn.
-4. Öppna filen gulpfile.js och Lägg sedan till en ny funktion innan funktionen `sendMessage`:
+   Du har nu konfigurerat hello exempel programmet toorespond toomore instruktioner via meddelanden. Hej ”on” instruktion aktiverar hello Indikator och hello ”off” instruktion inaktiverar hello Indikator.
+4. Öppna hello gulpfile.js filen och Lägg sedan till en ny funktion innan hello funktionen `sendMessage`:
    
    ```javascript
    var buildCustomMessage = function (messageId) {
@@ -80,26 +80,26 @@ Du måste ha slutfört [kör ett exempelprogram på hallon Pi ta emot meddelande
    ```
    
    ![Gulpfile.js fil med tillagda funktion](media/iot-hub-raspberry-pi-lessons/lesson4/updated_gulpfile.png)
-5. I den `sendMessage` fungerar genom att ersätta raden `var message = buildMessage(sentMessageCount);` med den nya raden som visas i följande utdrag:
+5. I hello `sendMessage` fungerar genom att ersätta hello rad `var message = buildMessage(sentMessageCount);` med hello ny rad som visas i följande fragment hello:
    
    ```javascript
    var message = buildCustomMessage(sentMessageCount);
    ```
-6. Spara alla ändringar.
+6. Spara alla ändringar som hello.
 
-### <a name="deploy-and-run-the-sample-application"></a>Distribuera och köra exempelprogrammet
-Distribuera och köra exempelprogrammet på Pi genom att köra följande kommando:
+### <a name="deploy-and-run-hello-sample-application"></a>Distribuera och köra hello exempelprogrammet
+Distribuera och köra hello exempelprogrammet på Pi genom att köra följande kommando hello:
 
 ```bash
 gulp deploy && gulp run
 ```
 
-Du bör se Indikator aktivera i två sekunder och sedan stänga av en annan två sekunder. Det sista meddelandet ”stoppa” stoppar exempelprogrammet från att köras.
+Du bör se hello Indikator aktivera i två sekunder och sedan stänga av en annan två sekunder. senaste ”stoppa” hälsningsmeddelande stoppar hello exempelprogrammet från att köras.
 
 ![Exempelprogrammet med och inaktivera meddelanden](media/iot-hub-raspberry-pi-lessons/lesson4/gulp_on_and_off.png)
 
-Grattis! Meddelanden som skickas till Pi från IoT-hubben har anpassats.
+Grattis! Du har har anpassat hello-meddelanden som skickas tooPi från IoT-hubb.
 
 ### <a name="summary"></a>Sammanfattning
-Det här valfria avsnittet visar hur du anpassar meddelanden så att exempelprogrammet kan styra den på och av beteendet för Indikatorn på olika sätt.
+Det här valfria avsnittet visar hur toocustomize meddelanden så att hello exempelprogrammet kan styra hello och inaktivera beteendet för hello Indikator på olika sätt.
 

@@ -1,5 +1,5 @@
 ---
-title: "Skriptexempel Azure CLI - skala en webbapp över hela världen med en hög availabilty-arkitektur | Microsoft Docs"
+title: "aaaAzure CLI skriptexempel - skala ett webbprogram över hela världen med en hög availabilty-arkitektur | Microsoft Docs"
 description: "Skriptexempel Azure CLI - skala en webbapp över hela världen med en hög availabilty-arkitektur"
 services: appservice
 documentationcenter: appservice
@@ -16,32 +16,32 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: c368bdc48f197ff5b491d1796d85abfd339051a6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b72fbccd7f2aaab58e4b4721e14dca14146c7c72
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>Skala ett webbprogram över hela världen med en arkitektur med hög tillgänglighet
 
-I det här scenariot skapar du en resursgrupp, två apptjänstplaner, två webbappar, en traffic manager-profil och två traffic manager-slutpunkter. När den här övningen är klar har du en hög tillgänglighet arkitektur som gör att tillhandahåller globala tillgängligheten hos ditt webbprogram baserat på den lägsta Nätverksfördröjningen.
+I det här scenariot skapar du en resursgrupp, två apptjänstplaner, två webbappar, en traffic manager-profil och två traffic manager-slutpunkter. När hello övningen är klar har du en hög tillgänglighet arkitektur som gör att tillhandahåller globala tillgängligheten hos ditt webbprogram baserat på hello lägsta Nätverksfördröjningen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-azurecli-interactive[huvudsakliga](../../../cli_scripts/app-service/scale-geographic/scale-geographic.sh "geografiska skala")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/scale-geographic/scale-geographic.sh "Geographic Scale")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon för att skapa en resursgrupp, webbprogram, trafikhanterarprofilen och alla relaterade resurser. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder följande kommandon toocreate en resursgrupp, webbprogram, trafikhanterarprofilen hello och alla relaterade resurser. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
@@ -49,10 +49,10 @@ Det här skriptet använder följande kommandon för att skapa en resursgrupp, w
 | [Skapa AZ programtjänstplan](https://docs.microsoft.com/cli/azure/appservice/plan#create) | Skapar en App Service-plan. Detta påminner om en servergrupp för din Azure webbapp. |
 | [Skapa AZ webapp](https://docs.microsoft.com/cli/azure/webapp#create) | Skapar ett Azure-webbapp. |
 | [Skapa AZ network traffic manager-profilen](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#create) | Skapar en Azure Traffic Manager-profil. |
-| [Skapa AZ network traffic manager-slutpunkt](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#create) | Lägger till en slutpunkt för en Azure Traffic Manager-profilen. |
+| [Skapa AZ network traffic manager-slutpunkt](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#create) | Lägger till en slutpunkt tooan Azure Traffic Manager-profilen. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
+Mer information om hello Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
 
-Ytterligare App Service CLI skriptexempel finns i den [dokumentation för Azure App Service](../app-service-cli-samples.md).
+Ytterligare App Service CLI skriptexempel finns i hello [dokumentation för Azure App Service](../app-service-cli-samples.md).

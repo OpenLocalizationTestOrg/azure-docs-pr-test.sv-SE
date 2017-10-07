@@ -1,6 +1,6 @@
 ---
-title: Replikera virtuella Hyper-V-datorer till Azure | Microsoft Docs
-description: "Beskriver hur du samordnar replikering, redundans och återställning av lokala Hyper-V virtuella datorer till Azure"
+title: aaaReplicate Hyper-V VMs tooAzure | Microsoft Docs
+description: "Beskriver hur tooorchestrate replikering, redundans och återställning av lokala Hyper-V VMs tooAzure"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -16,13 +16,13 @@ ms.date: 04/05/2017
 ms.author: raynew
 ROBOTS: NOINDEX, NOFOLLOW
 redirect_url: hyper-v-site-walkthrough-overview
-ms.openlocfilehash: 8a2ea92759a777b1178fbfe8084a97eec931f709
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6fba41e43823fc57511d51ea2e09691159693982
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="replicate-hyper-v-virtual-machines-without-vmm-to-azure-using-azure-site-recovery-with-the-azure-portal"></a>Replikera virtuella Hyper-V-datorer (utan VMM) till Azure med Azure Site Recovery i Azure Portal
+# <a name="replicate-hyper-v-virtual-machines-without-vmm-tooazure-using-azure-site-recovery-with-hello-azure-portal"></a>Replikera Hyper-V virtuella datorer (utan VMM) tooAzure med hjälp av Azure Site Recovery med hello Azure-portalen
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](site-recovery-hyper-v-site-to-azure.md)
@@ -31,27 +31,27 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Den här artikeln beskriver hur du replikera lokala Hyper-V virtuella datorer till Azure med hjälp av [Azure Site Recovery](site-recovery-overview.md) i Azure-portalen. I den här distributionen Hyper-V virtuella datorer hanteras inte av System Center Virtual Machine Manager (VMM).
+Den här artikeln beskriver hur tooreplicate lokala Hyper-V virtuella datorer tooAzure med [Azure Site Recovery](site-recovery-overview.md) i hello Azure-portalen. I den här distributionen Hyper-V virtuella datorer hanteras inte av System Center Virtual Machine Manager (VMM).
 
-När du har läst den här artikeln efter eventuella kommentarer längst ned eller tekniska frågor om den [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+När du har läst den här artikeln efter eventuella kommentarer längst ned hello eller tekniska frågor om hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
-Läs mer i [den här artikeln](site-recovery-migrate-to-azure.md) om att migrera datorer till Azure (utan återställning).
+Om du vill toomigrate datorer tooAzure (utan återställning), Läs mer i [i den här artikeln](site-recovery-migrate-to-azure.md).
 
 
 
 ## <a name="deployment-steps"></a>Distributionssteg
 
-Följ den här artikeln för att slutföra de här distributionsstegen:
+Hello artikel toocomplete gör så här distribution:
 
-1. [Lär dig mer](site-recovery-components.md#hyper-v-to-azure) om arkitekturen för den här distributionen. Dessutom kan du [lära dig mer om](site-recovery-hyper-v-azure-architecture.md) hur Hyper-V-replikering fungerar i Site Recovery.
+1. [Lär dig mer](site-recovery-components.md#hyper-v-to-azure) om hello-arkitekturen för den här distributionen. Dessutom kan du [lära dig mer om](site-recovery-hyper-v-azure-architecture.md) hur Hyper-V-replikering fungerar i Site Recovery.
 2. Kontrollera krav och begränsningar.
 3. Ställa in Azure-nätverk och lagringskonton.
 4. Förbered Hyper-V-värdar.
-5. Skapa ett Recovery Services-valv. Valvet innehåller konfigurationsinställningar och styr replikeringen.
-6. Ange inställningar för datakällan. Skapa en Hyper-V-plats som innehåller Hyper-V-värdar och registrera platsen i valvet. Installera Azure Site Recovery-providern och Microsoft Recovery Services-agenten på Hyper-V-värdar.
+5. Skapa ett Recovery Services-valv. hello valvet innehåller konfigurationsinställningar och styr replikeringen.
+6. Ange inställningar för datakällan. Skapa en Hyper-V-plats som innehåller hello Hyper-V-värdar och registrera hello plats i hello-valvet. Installera hello Azure Site Recovery-providern och hello Microsoft Recovery Services-agenten på hello Hyper-V-värdar.
 7. Konfigurera inställningar för mål och replikering.
-8. Aktivera replikering för virtuella Hyper-V-datorer.
-9. Kör ett redundanstest för att kontrollera att allt fungerar som förväntat.
+8. Aktivera replikering för hello virtuella datorer.
+9. Kör ett test redundans toomake att allt fungerar som förväntat.
 
 
 
@@ -61,131 +61,131 @@ Följ den här artikeln för att slutföra de här distributionsstegen:
 **Krav** | **Detaljer** |
 --- | --- |
 **Azure** | Lär dig om [Azure-krav](site-recovery-prereq.md#azure-requirements).
-**Lokala servrar** | [Lär dig mer](site-recovery-prereq.md#disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager) om krav för lokal Hyper-V-värdar.
-**Lokala virtuella Hyper-V-datorer** | Virtuella datorer du vill replikera bör köra ett[operativsystem som stöds](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) och överensstämma med [krav för Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
-**Azure-URL: er** | Hyper-V-värdar behöver åtkomst till dessa webbadresser:<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]<br/><br/> Om du har IP-adressbaserade brandväggsregler ontrollerar du att de tillåter kommunikation till Azure.<br/></br> Tillåt [Azure Datacenter IP Ranges](https://www.microsoft.com/download/confirmation.aspx?id=41653) (IP-intervall för Azures datacenter) och HTTPS-port 443.<br/></br> Tillåt IP-adressintervall för Azure-regionen för din prenumeration och för USA, västra (används för åtkomstkontroll och identitetshantering).
+**Lokala servrar** | [Lär dig mer](site-recovery-prereq.md#disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager) om kraven för hello lokala Hyper-V-värdar.
+**Lokala virtuella Hyper-V-datorer** | Virtuella datorer du vill ska köra tooreplicate en [operativsystem som stöds](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions), och överensstämma med [krav för Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+**Azure-URL: er** | Hyper-V-värdar behöver komma åt toothese URL: er:<br/><br/> [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]<br/><br/> Om du har IP-adressbaserade brandväggsregler, se till att de tillåter kommunikation tooAzure.<br/></br> Tillåt hello [IP-intervall för Azure-Datacenter](https://www.microsoft.com/download/confirmation.aspx?id=41653), och hello HTTPS (443)-port.<br/></br> Tillåt IP-adressintervall för hello Azure-regionen för din prenumeration och för USA, västra (används för åtkomstkontroll och Identity Management).
 
 
 
 ## <a name="prepare-for-deployment"></a>Förbereda för distribution
 
-När du förbereder distributionen måste du:
+tooprepare för distribution måste du:
 
 1. [Skapa ett Azure nätverk](#set-up-an-azure-network) i som virtuella Azure-datorer kommer att finnas när de skapas efter växling vid fel.
 2. [Skapa ett Azure-lagringskonto](#set-up-an-azure-storage-account) för replikerade data.
-3. [Förbereda Hyper-V-värdar](#prepare-the-hyper-v-hosts) så de kan komma åt de nödvändiga URL: er.
+3. [Förbereda hello Hyper-V-värdar](#prepare-the-hyper-v-hosts) tooensure som de kan komma åt hello krävs URL: er.
 
 ### <a name="set-up-an-azure-network"></a>Skapa ett Azure-nätverk
 
-Skapa ett Azure-nätverk. Du behöver detta så att den virtuella Azure-datorer skapas efter växling vid fel är ansluten till ett nätverk.
+Skapa ett Azure-nätverk. Du behöver detta så att hello Azure virtuella datorer skapas efter växling vid fel är anslutna tooa nätverk.
 
-* Nätverket måste finnas på samma region som Recovery Services-valvet.
-* Beroende på vilken resursmodell som du vill använda för redundansväxlade virtuella Azure-datorer kan du ställa in Azure-nätverket i [Resource Manager-läget](../virtual-network/virtual-networks-create-vnet-arm-pportal.md), eller [klassiskt läge](../virtual-network/virtual-networks-create-vnet-classic-pportal.md).
-* Vi rekommenderar att du konfigurerar ett nätverk innan du börjar. Om du inte gör det måste du göra det under distributionen av Site Recovery.
-- Storage-konton som används av Site Recovery kan inte vara [flyttas](../azure-resource-manager/resource-group-move-resources.md) inom samma eller mellan olika, prenumerationer.
+* hello nätverket bör finnas i hello samma region som hello Recovery Services-valvet.
+* Beroende på hello resursmodell du vill att toouse för redundansväxlade virtuella Azure-datorer kan du ställa in hello Azure-nätverk i [Resource Manager-läget](../virtual-network/virtual-networks-create-vnet-arm-pportal.md), eller [klassiskt läge](../virtual-network/virtual-networks-create-vnet-classic-pportal.md).
+* Vi rekommenderar att du konfigurerar ett nätverk innan du börjar. Om du inte behöver du toodo under distributionen av Site Recovery.
+- Storage-konton som används av Site Recovery kan inte vara [flyttas](../azure-resource-manager/resource-group-move-resources.md) inom hello samma, eller mellan olika, prenumerationer.
 
 
 ### <a name="set-up-an-azure-storage-account"></a>Skapa ett Azure-lagringskonto
 
-- Du behöver en standard/premium Azure storage-konto för att lagra data som replikeras till Azure. [Premiumlagring](../storage/storage-premium-storage.md) används vanligtvis för virtuella datorer som behöver en konsekvent höga i/o-prestanda och låg fördröjning till värd-i/o-intensiv arbetsbelastning.
-- Om du vill använda ett Premium Storage-konto för replikerade data konfigurerar du ytterligare ett standardlagringskonto för att lagra replikeringsloggar som samlar in löpande ändringar i lokala data.
-- Beroende på vilken resursmodell som du vill använda för redundansväxlade virtuella Azure-datorer kan du konfigurera ett konto i [Resource Manager-läget](../storage/storage-create-storage-account.md), eller [klassiskt läge](../storage/storage-create-storage-account-classic-portal.md).
-- Vi rekommenderar att du ställer in ett storage-konto innan du börjar. Om du inte behöver göra det under distributionen av Site Recovery. Konton måste vara i samma region som Recovery Services-valvet.
-- Du kan inte flytta storage-konton som används av Site Recovery i resursgrupper inom samma prenumeration, eller olika prenumerationer.
+- Du behöver en standard/premium toohold data replikeras tooAzure Azure storage-konto. [Premiumlagring](../storage/storage-premium-storage.md) används vanligtvis för virtuella datorer som behöver en konsekvent höga i/o-prestanda och låg latens toohost-i/o-intensiv arbetsbelastning.
+- Om du vill toouse en premium konto toostore replikerade data måste du även en standardlagring konto toostore replikeringsloggar som avbilda pågående ändringar tooon lokala data.
+- Beroende på hello resursmodell du vill att toouse för redundansväxlade virtuella Azure-datorer kan du konfigurera ett konto i [Resource Manager-läget](../storage/storage-create-storage-account.md), eller [klassiskt läge](../storage/storage-create-storage-account-classic-portal.md).
+- Vi rekommenderar att du ställer in ett storage-konto innan du börjar. Om du inte behöver toodo under distributionen av Site Recovery. hello konton måste finnas i hello samma region som hello Recovery Services-valvet.
+- Du kan inte flytta storage-konton används av Site Recovery över resursgrupper i hello samma prenumeration, eller mellan olika prenumerationer.
 
 
-### <a name="prepare-the-hyper-v-hosts"></a>Förbereda Hyper-V-värdar
+### <a name="prepare-hello-hyper-v-hosts"></a>Förbereda hello Hyper-V-värdar
 
-* Kontrollera att Hyper-V-värdar uppfyller de [krav](site-recovery-prereq.md#disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager).
-- Kontrollera att värdarna kan komma åt de nödvändiga URL: er.
+* Kontrollera att hello Hyper-V-värdar uppfyller hello [krav](site-recovery-prereq.md#disaster-recovery-of-hyper-v-virtual-machines-to-azure-no-virtual-machine-manager).
+- Kontrollera att hello värdarna kan komma åt hello krävs URL: er.
 
 
 ## <a name="create-a-recovery-services-vault"></a>Skapa ett Recovery Services-valv
-1. Logga in på [Azure Portal](https://portal.azure.com).
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).
 2. Klicka på **New** > **Monitoring + Management** > **Backup and Site Recovery (OMS)**.  
 
     ![Nytt valv](./media/site-recovery-hyper-v-site-to-azure/new-vault.png)
 
-3. I **Namn** anger du ett eget namn som identifierar valvet. Om du har mer än en prenumeration väljer du en av dem.
+3. I **namn**, ange ett eget namn tooidentify hello valv. Om du har mer än en prenumeration väljer du en av dem.
 
-4. [Skapa en ny resursgrupp](../azure-resource-manager/resource-group-template-deploy-portal.md) eller välj en befintlig och ange en Azure-region. Datorer replikeras till den här regionen. Regioner som stöds finns i geografisk tillgänglighet i [Azure Site Recovery-prisinformation](https://azure.microsoft.com/pricing/details/site-recovery/).
+4. [Skapa en ny resursgrupp](../azure-resource-manager/resource-group-template-deploy-portal.md) eller välj en befintlig och ange en Azure-region. Datorer blir replikerade toothis region. toocheck stöds regioner, se geografisk tillgänglighet i [Azure Site Recovery-prisinformation](https://azure.microsoft.com/pricing/details/site-recovery/).
 
-5. Om du vill att snabbt komma åt valvet från instrumentpanelen, klickar du på **fäst på instrumentpanelen**, och klicka sedan på **skapa**.
+5. Om du vill tooquickly åtkomst hello valvet från hello instrumentpanelen, klickar du på **PIN-kod toodashboard**, och klicka sedan på **skapa**.
 
     ![Nytt valv](./media/site-recovery-hyper-v-site-to-azure/new-vault-settings.png)
 
-Det nya valvet visas i den **instrumentpanelen** > **alla resurser** lista, och på primära **Recovery Services-valv** bladet.
+hello nya valvet visas i hello **instrumentpanelen** > **alla resurser** listan, och på hello huvudsakliga **Recovery Services-valv** bladet.
 
 
 
-## <a name="select-the-protection-goal"></a>Välj skyddsmål
+## <a name="select-hello-protection-goal"></a>Välj hello skyddsmål
 
-Välj vad och vart du vill replikera.
+Vad kan du välja tooreplicate, och där du vill tooreplicate till.
 
-1. I den **Recovery Services-valv**, Välj valvet.
+1. I hello **Recovery Services-valv**väljer hello-valvet.
 2. Under **Komma igång** klickar du på **Webbplatsåterställning** > **Förbereda infrastrukturen** > **Skyddsmål**.
 
     ![Välja mål](./media/site-recovery-hyper-v-site-to-azure/choose-goals.png)
-3. I **skyddsmål**väljer **till Azure**, och välj **Ja, med Hyper-V**. Välj **nr** att bekräfta att du inte använder VMM. Klicka sedan på **OK**.
+3. I **skyddsmål**väljer **tooAzure**, och välj **Ja, med Hyper-V**. Välj **nr** tooconfirm som du inte använder VMM. Klicka sedan på **OK**.
 
     ![Välja mål](./media/site-recovery-hyper-v-site-to-azure/choose-goals2.png)
 
-## <a name="set-up-the-source-environment"></a>Konfigurera källmiljön
+## <a name="set-up-hello-source-environment"></a>Ställ in hello källmiljön
 
-Konfigurera Hyper-V-platsen, installera Azure Site Recovery-providern och Azure Recovery Services-agenten på Hyper-V-värdar och registrera platsen i valvet.
+Ställ in hello Hyper-V-platsen, installera hello Azure Site Recovery-providern och hello Azure Recovery Services-agenten på Hyper-V-värdar och registrera hello-webbplats i hello-valvet.
 
-1. I **Förbered infrastrukturen**, klickar du på **källa**. Om du vill lägga till en ny Hyper-V-plats som en behållare för Hyper-V-värdar eller kluster, klickar du på **+ Hyper-V-platsen**.
+1. I **Förbered infrastrukturen**, klickar du på **källa**. tooadd en ny Hyper-V-plats som en behållare för dina Hyper-V-värdar eller kluster, klicka på **+ Hyper-V-platsen**.
 
     ![Konfigurera källan](./media/site-recovery-hyper-v-site-to-azure/set-source1.png)
-2. I **skapa Hyper-V-platsen**, ange ett namn för platsen. Klicka sedan på **OK**. Nu väljer du den plats du har skapat och klicka på **+ Hyper-V Server** lägga till en server till platsen.
+2. I **skapa Hyper-V-platsen**, ange ett namn för hello-platsen. Klicka sedan på **OK**. Nu väljer hello plats du har skapat och klicka på **+ Hyper-V Server** tooadd en server toohello plats.
 
     ![Konfigurera källan](./media/site-recovery-hyper-v-site-to-azure/set-source2.png)
 
 3. I **Lägg till Server** > **servertyp**, kontrollera att **Hyper-V server** visas.
 
-    - Kontrollera att Hyper-V-server som du vill lägga till som uppfyller den [krav](#on-premises-prerequisites), och komma åt de angivna URL: er.
-    - Ladda ned installationsfilen för Azure Site Recovery-providern. Du kan köra den här filen för att installera providern och Recovery Services-agenten på varje Hyper-V-värd.
+    - Kontrollera att hello Hyper-V-server som du vill tooadd uppfyller hello [krav](#on-premises-prerequisites), och är kan tooaccess hello angivna URL: er.
+    - Hämta installationsfilen för hello Azure Site Recovery-providern. Du kör den här filen tooinstall hello providern och hello Recovery Services-agenten på varje Hyper-V-värd.
 
     ![Konfigurera källan](./media/site-recovery-hyper-v-site-to-azure/set-source3.png)
 
 
-## <a name="install-the-provider-and-agent"></a>Installera providern och agenten
+## <a name="install-hello-provider-and-agent"></a>Installera hello Provider och agent
 
-1. Kör installationsfilen på varje värd som du lagt till Hyper-V-platsen för providern. Om du installerar på en Hyper-V-kluster, kan du köra installationsprogrammet på varje nod i klustret. Installera och registrera varje klusternod för Hyper-V säkerställer att virtuella datorer är skyddade, även om de migrera mellan noder.
+1. Kör installationsfilen för hello-providern på varje värd du lagt till toohello Hyper-V-platsen. Om du installerar på en Hyper-V-kluster, kan du köra installationsprogrammet på varje nod i klustret. Installera och registrera varje klusternod för Hyper-V säkerställer att virtuella datorer är skyddade, även om de migrera mellan noder.
 2. I **Microsoft Update** kan du välja uppdateringar så att provideruppdateringarna installeras i enlighet med din Microsoft Update-princip.
-3. I **Installation** accepterar du eller ändrar standardinstallationsplatsen för providern och klickar på **Installera**.
-4. I **Valvinställningar**, klickar du på **Bläddra** att välja valvnyckelfilen som du hämtat. Ange Azure Site Recovery-prenumerationen och valvnamnet Hyper-V-platsen som Hyper-V-servern tillhör.
+3. I **Installation**, acceptera eller ändra hello standardinstallationsplatsen för providern och klickar på **installera**.
+4. I **Valvinställningar**, klickar du på **Bläddra** tooselect hello valvnyckelfilen som du hämtat. Ange hello Azure Site Recovery-prenumerationen, hello valvnamnet och hello Hyper-V platsservern toowhich hello Hyper-V tillhör.
 
     ![Serverregistrering](./media/site-recovery-hyper-v-site-to-azure/provider3.png)
 
-5. I **proxyinställningar**, ange hur providern som körs på Hyper-V-värdar som ansluter till Azure Site Recovery via internet.
+5. I **proxyinställningar**, ange hur providern som körs på Hyper-V-värdar som ansluter tooAzure Site Recovery via hello hello internet.
 
-    * Om du vill att providern ska ansluta direkt väljer du **Anslut direkt till Azure Site Recovery utan proxyserver**.
-    * Om den befintliga proxyservern kräver autentisering eller om du vill använda en anpassad proxyserver för Provider-anslutning väljer **Anslut till Azure Site Recovery via en proxyserver**.
+    * Om du vill att hello providern tooconnect direkt väljer **ansluter direkt tooAzure Site Recovery utan en proxy**.
+    * Om den befintliga proxyservern kräver autentisering eller om du vill använda toouse en anpassad proxyserver för hello leverantörsanslutning väljer **ansluta tooAzure Platsåterställningen genom att använda en proxyserver**.
     * Om du använder en proxyserver:
-        - Ange adress, port och autentiseringsuppgifter
-        - Kontrollera att URL: er som beskrivs i den [krav](#prerequisites) tillåts via proxy.
+        - Ange hello-adress, port och autentiseringsuppgifter
+        - Kontrollera att hello webbadresser som beskrivs i hello [krav](#prerequisites) tillåts via hello proxy.
 
     ![Internet](./media/site-recovery-hyper-v-site-to-azure/provider7.PNG)
 
-6. När installationen är klar klickar du på **registrera** att registrera servern i valvet.
+6. När installationen är klar klickar du på **registrera** tooregister hello server i hello-valvet.
 
     ![Installationsplats](./media/site-recovery-hyper-v-site-to-azure/provider2.png)
 
-7. När registreringen är klar, hämtas metadata från Hyper-V-servern av Azure Site Recovery och servern visas i **Site Recovery-infrastruktur** > **Hyper-V-värdar**.
+7. När registreringen är klar, hämtas metadata från hello Hyper-V-servern av Azure Site Recovery och hello server visas i **Site Recovery-infrastruktur** > **Hyper-V-värdar**.
 
 
-## <a name="set-up-the-target-environment"></a>Konfigurera målmiljön
+## <a name="set-up-hello-target-environment"></a>Ställ in hello målmiljön
 
-Ange Azure storage-konto för replikering och Azure-nätverk som virtuella Azure-datorer ska ansluta till efter redundansväxlingen.
+Ange hello Azure storage-konto för replikering och ansluter hello Azure-nätverk toowhich virtuella Azure-datorer efter redundans.
 
 1. Klicka på **Förbered infrastruktur** > **mål**.
-2. Välj prenumerationen och resursgrupp som du vill skapa den virtuella Azure-datorer efter redundans. Välj distributionsmodell som du vill använda i Azure (klassiska eller resource management) för de virtuella datorerna.
+2. Välj hello prenumeration och hello resursgrupp som du vill toocreate hello virtuella Azure-datorer efter redundans. Välj hello distribution modell som du vill toouse i Azure (klassiska eller resource management) för hello virtuella datorer.
 
 3. Site Recovery kontrollerar att du har ett eller flera kompatibla Azure-lagringskonton och Azure-nätverk.
 
-    - Om du inte har ett lagringskonto, klickar du på **+ lagring** att skapa en infogad Resource Manager-baserade konto. Läs mer om [lagringskraven](site-recovery-prereq.md#azure-requirements).
-    - Om du inte har ett Azure-nätverk, klickar du på **+ nätverk** att skapa en infogad Resource Manager-baserat nätverk.
+    - Om du inte har ett lagringskonto, klickar du på **+ lagring** toocreate en Resource Manager-baserade konto infogad. Läs mer om [lagringskraven](site-recovery-prereq.md#azure-requirements).
+    - Om du inte har ett Azure-nätverk, klickar du på **+ nätverk** toocreate en infogad Resource Manager-baserat nätverk.
 
     ![Lagring](./media/site-recovery-vmware-to-azure/enable-rep3.png)
 
@@ -194,39 +194,39 @@ Ange Azure storage-konto för replikering och Azure-nätverk som virtuella Azure
 
 ## <a name="configure-replication-settings"></a>Konfigurera replikeringsinställningar
 
-1. Skapa en ny replikeringsprincip genom att klicka på **Förbered infrastruktur** > **Replikeringsinställningar** > **+Skapa och koppla**.
+1. Klicka på toocreate en ny replikeringsprincip **Förbered infrastruktur** > **replikeringsinställningarna** > **+ skapa och koppla**.
 
     ![Nätverk](./media/site-recovery-hyper-v-site-to-azure/gs-replication.png)
 2. I **Princip för att skapa och koppla** anger du ett principnamn.
-3. I **Kopieringsfrekvens** anger du hur ofta du vill replikera förändringsdata (delta) efter den första replikeringen (med 30 sekunders mellanrum, var femte minut eller varje kvart).
+3. I **Kopieringsfrekvens**, ange hur ofta du vill tooreplicate deltadata efter hello första replikeringen (med 30 sekunders mellanrum, 5 eller 15 minuter).
 
     > [!NOTE]
-    > En frekvens på 30 sekunder stöds inte när du replikerar till premiumlagring. Begränsningen bestäms av antalet ögonblicksbilder per blob (100) som stöds av premium-lagring. [Läs mer](../storage/storage-premium-storage.md#snapshots-and-copy-blob).
+    > En 30 andra frekvens stöds inte vid replikering av toopremium lagring. hello begränsning bestäms av hello antalet ögonblicksbilder per blob (100) stöds av premium-lagring. [Läs mer](../storage/storage-premium-storage.md#snapshots-and-copy-blob).
 
-4. I **kvarhållningstid för återställningspunkten**, ange i timmar hur lång kvarhållningsperiod är för varje återställningspunkt. Virtuella datorer kan återställas till valfri punkt inom ett fönster.
+4. I **kvarhållningstid för återställningspunkten**, ange i hur länge timmar hello kvarhållningsperiod är för varje återställningspunkt. Virtuella datorer kan återställas tooany punkt inom en period.
 5. I **frekvens av programkonsekventa ögonblicksbilder**, ange hur ofta (1 – 12 timmar) återställningspunkter som innehåller programkonsekventa ögonblicksbilder skapas.
 
-    - Hyper-V använder två typer av ögonblicksbilder: en standardögonblicksbild som tillhandahåller en inkrementell ögonblicksbild av hela den virtuella datorn och en programkonsekvent ögonblicksbild som tar en ögonblicksbild vid en viss tidpunkt av programdata på den virtuella datorn.
-    - Programkonsekventa ögonblicksbilder använda VSS (Volume Shadow Copy Service) för att säkerställa att programmen är i ett konsekvent tillstånd när ögonblicksbilden tas.
-    - Om du aktiverar programkonsekventa ögonblicksbilder så påverkar prestanda för program som körs på virtuella källdatorer. Kontrollera att värdet som du anger är mindre än antalet ytterligare återställningspunkter som du konfigurerar.
+    - Hyper-V använder två typer av ögonblicksbilder, en standardögonblicksbild som tillhandahåller en inkrementell ögonblicksbild av hello hela den virtuella datorn och en programkonsekvent ögonblicksbild som tar en tidpunkt i ögonblicksbild av hello programdata i hello virtuella datorn.
+    - Programkonsekventa ögonblicksbilder använda Volume Shadow Copy Service (VSS) tooensure som programmen är i ett konsekvent tillstånd när hello ögonblicksbilden tas.
+    - Om du aktiverar programkonsekventa ögonblicksbilder så påverkar hello prestanda för program som körs på virtuella källdatorer. Kontrollera att hello-värdet som du angett är mindre än hello antalet ytterligare återställningspunkter som du konfigurerar.
 
-6. I **starttid för inledande replikering**, ange när börjar den inledande replikeringen. Replikeringen sker via Internetbandbredden så du kanske vill schemalägga den utanför kontorstid. Klicka sedan på **OK**.
+6. I **starttid för inledande replikering**, ange när toostart hello inledande replikering. hello replikeringen sker via internetbandbredden så du kanske vill tooschedule den utanför kontorstid. Klicka sedan på **OK**.
 
     ![Replikeringsprincip](./media/site-recovery-hyper-v-site-to-azure/gs-replication2.png)
 
-När du skapar en ny princip associeras den automatiskt med Hyper-V-platsen. Du kan associera en Hyper-V-plats (och de virtuella datorerna i den) med flera replikeringsprinciper i **replikering** > principnamn > **associera Hyper-V-platsen**.
+När du skapar en ny princip associeras den automatiskt med hello Hyper-V-platsen. Du kan associera en Hyper-V-platsen (och hello virtuella datorer i den) med flera replikeringsprinciper i **replikering** > principnamn > **associera Hyper-V-platsen**.
 
 ## <a name="capacity-planning"></a>Kapacitetsplanering
 
 Nu när du har grundläggande infrastrukturen konfigurerar du tycker om kapacitetsplanering och ta reda på om du behöver ytterligare resurser.
 
-Site Recovery tillhandahåller ett kapacitetsplaneringsverktyg som hjälper dig att allokera rätt resurser för beräkning, nätverk och lagring. Du kan köra planeringsverktyget i snabbläge för att få uppskattningar baserat på ett medelvärde för antalet virtuella datorer, diskar och lagring eller i detaljerat läge med anpassade siffrorna på arbetsbelastningsnivå. Innan du börjar måste du:
+Site Recovery tillhandahåller en kapacitet planner toohelp du allokera hello rätt resurser för beräkning, nätverk och lagring. Du kan köra hello planner i snabbläge för att få uppskattningar baserat på ett medelvärde för antalet virtuella datorer, diskar och lagring eller i detaljerat läge med anpassade nummer på hello arbetsbelastningsnivå. Innan du börjar måste du:
 
 * Samla in information om replikeringsmiljön, inklusive virtuella datorer, diskar per virtuell dator och lagringsutrymme per disk.
-* Beräkna den dagliga (omsättningen) förändringstakten för dina replikerade data. Du kan använda den [Capacity Planner för Hyper-V-replikering](https://www.microsoft.com/download/details.aspx?id=39057) som hjälper dig att göra detta.
+* Beräkna hello dagliga (omsättningen) förändringstakten för dina replikerade data. Du kan använda hello [Capacity Planner för Hyper-V-replikering](https://www.microsoft.com/download/details.aspx?id=39057) toohelp du göra detta.
 
-1. Klicka på **hämta** att ladda ned verktyget och sedan köra den. [Läs artikeln](site-recovery-capacity-planner.md) som medföljer verktyget.
-2. När du är klar väljer du **Ja** i **Har du kört Capacity Planner**?
+1. Klicka på **hämta** toodownload hello verktyget och sedan köra den. [Läs hello artikel](site-recovery-capacity-planner.md) som medföljer hello-verktyget.
+2. När du är klar väljer du **Ja** i **har du kört hello Capacity Planner**?
 
    ![Kapacitetsplanering](./media/site-recovery-hyper-v-site-to-azure/gs-capacity-planning.png)
 
@@ -236,166 +236,166 @@ Lär dig mer om att [kontrollera nätverkets bandbredd](#network-bandwidth-consi
 
 ## <a name="enable-replication"></a>Aktivera replikering
 
-Innan du börjar bör du kontrollera att ditt Azure-konto har de nödvändiga [behörigheterna](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) för att aktivera replikering för en ny virtuell dator till Azure.
+Innan du börjar bör du kontrollera att ditt Azure-konto har hello krävs [behörigheter](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) tooenable replikering av en ny virtuell dator tooAzure.
 
 Aktivera replikering för virtuella datorer på följande sätt:          
 
-1. Klicka på **replikera program** > **källa**. När du har konfigurerat replikering för första gången, kan du klicka på **+ replikera** att aktivera replikering för ytterligare datorer.
+1. Klicka på **replikera program** > **källa**. När du har konfigurerat replikering för hello första gången du klickar på **+ replikera** tooenable replikering för ytterligare datorer.
 
     ![Aktivera replikering](./media/site-recovery-hyper-v-site-to-azure/enable-replication.png)
-2. I **källa**, välj platsen för Hyper-V. Klicka sedan på **OK**.
-3. I **mål**, Välj prenumerationen som valvet och växling vid fel modell du vill använda i Azure (klassiska eller resource management) efter växling vid fel.
-4. Välj lagringskontot som du vill använda. Om du inte har ett konto som du vill använda, kan du [skapar du en](#set-up-an-azure-storage-account). Klicka sedan på **OK**.
-5. Välj Azure-nätverk och undernät som virtuella Azure-datorer ska ansluta till när de skapas växling vid fel.
+2. I **källa**väljer hello Hyper-V-platsen. Klicka sedan på **OK**.
+3. I **mål**hello valvet prenumerationen och välj hello failover-modell som du vill ha toouse i Azure (klassiska eller resource management) efter växling vid fel.
+4. Välj hello storage-konto som du vill toouse. Om du inte har ett konto som du vill toouse, kan du [skapar du en](#set-up-an-azure-storage-account). Klicka sedan på **OK**.
+5. Välj hello Azure nätverk och undernät toowhich virtuella Azure-datorer ansluter när de skapas växling vid fel.
 
-    - Markera för att tillämpa nätverksinställningarna på alla datorer som du aktiverar för replikering **konfigurera nu för valda datorer**.
-    - Välj **Konfigurera senare** om du vill välja Azure-nätverket för varje dator.
-    - Om du inte har ett nätverk som du vill använda, kan du [skapar du en](#set-up-an-azure-network). Välj ett undernät om det behövs. Klicka sedan på **OK**.
+    - tooapply hello inställningar tooall datorer aktiveras för replikering, Välj **konfigurera nu för valda datorer**.
+    - Välj **konfigurera senare** tooselect hello Azure-nätverk per dator.
+    - Om du inte har ett nätverk som du vill toouse, kan du [skapar du en](#set-up-an-azure-network). Välj ett undernät om det behövs. Klicka sedan på **OK**.
 
    ![Aktivera replikering](./media/site-recovery-hyper-v-site-to-azure/enable-replication11.png)
 
-6. I **Virtual Machines** > **Välj virtuella datorer** klickar du på och väljer de datorer som du vill replikera. Du kan bara välja datorer som stöder replikering. Klicka sedan på **OK**.
+6. I **virtuella datorer** > **Välj virtuella datorer**och på varje dator som du vill tooreplicate. Du kan bara välja datorer som stöder replikering. Klicka sedan på **OK**.
 
     ![Aktivera replikering](./media/site-recovery-hyper-v-site-to-azure/enable-replication5-for-exclude-disk.png)
 
-7. I **Egenskaper** > **Konfigurera egenskaper** väljer du operativsystemet för de valda virtuella datorerna och operativsystemdisken.
-8. Kontrollera att namnet på den virtuella datorn i Azure (målnamnet) uppfyller [kraven för virtuella datorer i Azure](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
-9. Som standard markeras alla diskar på den virtuella datorn för replikering men du kan rensa diskar för att exkludera dem.
-    - Du kanske vill utesluta diskar för att minska bandbredden för replikering. Till exempel kanske du inte vill replikera diskar med tillfälliga data eller data som uppdateras varje gång en dator eller ett program startar om (till exempel pagefile.sys eller tempdb för Microsoft SQL Server). Du kan undanta en disk från replikering genom att avmarkera den.
+7. I **egenskaper** > **konfigurera egenskaper**hello operativsystemet för hello valda virtuella datorer och välj hello OS-disken.
+8. Kontrollera att hello Azure VM namn (mål) uppfyller [Azure virtuella datorns krav](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements).
+9. Som standard markeras alla hello diskar på hello VM för replikering, men du kan rensa diskar tooexclude dem.
+    - Du kanske vill tooexclude diskar tooreduce replikering bandbredd. Exempelvis kan du inte vill tooreplicate diskar med tillfälliga data eller data som har uppdateras varje gång en dator eller appar startas om (till exempel pagefile.sys eller Microsoft SQL Server tempdb). Du kan utesluta hello disk från replikering av unselecting hello-disk.
     - Endast standarddiskar kan undantas. Du kan inte undanta OS-diskar.
-    - Vi rekommenderar att du inte undantar dynamiska diskar. Site Recovery kan inte identifiera om en virtuell hårddisk är en standarddisk eller dynamisk disk på den virtuella gästdatorn. Om alla beroende dynamiska volymdiskar inte undantas identifieras skyddade dynamiska diskar som felaktiga på den virtuella datorn vid redundansväxling, och data på disken kan inte nås.
-        - När replikering har aktiverats kan du inte lägga till eller ta bort diskar för replikering. Om du vill lägga till eller undanta en disk måste du inaktivera skyddet för den virtuella datorn och sedan aktivera det igen.
-        - Diskar som du skapar manuellt i Azure växlas inte tillbaka igen. Om du till exempel växlar över tre diskar och skapar två direkt på den virtuella datorn i Azure så kommer endast de tre diskarna som växlades över att växlas tillbaka från Azure till Hyper-V. Du kan inte ta med diskar som har skapats manuellt i redundansväxlingar eller omvända replikeringar från Hyper-V till Azure.
-        - Om du undantar en disk som behövs för att ett program ska fungera efter redundansväxlingen till Azure måste du skapa den manuellt i Azure så att det replikerade programmet kan köras. Du kan också integrera Azure Automation i en återställningsplan för att skapa disken under en redundansväxling av datorn.
+    - Vi rekommenderar att du inte undantar dynamiska diskar. Site Recovery kan inte identifiera om en virtuell hårddisk är en standarddisk eller dynamisk disk på den virtuella gästdatorn. Om alla diskar för beroende dynamisk volym inte uteslutas visar hello skyddade dynamisk disk som en disk som misslyckats när hello Virtuella växlar och hello data på disken inte är tillgängliga.
+        - När replikering har aktiverats kan du inte lägga till eller ta bort diskar för replikering. Om du vill tooadd eller utesluta en disk, du behöver toodisable skydd för hello VM och aktivera det igen.
+        - Diskar som du skapar manuellt i Azure växlas inte tillbaka igen. Om du misslyckas under tre diskar och skapa två direkt i Azure VM misslyckades exempelvis endast tre diskar för hello som har redundansväxling tillbaka från Azure tooHyper-V. Du kan inte innehålla diskar som skapats manuellt i återställning efter fel, eller i omvända replikeringen från Hyper-V tooAzure.
+        - Om du undantar en disk som behövs för ett program toooperate efter redundans tooAzure måste toocreate det manuellt i Azure, så att hello replikeras program kan köras. Alternativt kan du integrera Azure automation i en återställningsplan, toocreate hello disken under växling vid fel för hello-datorn.
 
-10. Spara ändringarna genom att klicka på **OK**. Du kan ange ytterligare egenskaper senare.
+10. Klicka på **OK** toosave ändringar. Du kan ange ytterligare egenskaper senare.
 
     ![Aktivera replikering](./media/site-recovery-hyper-v-site-to-azure/enable-replication6-with-exclude-disk.png)
 
-11. I **Replikeringsinställningar** > **Konfigurera replikeringsinställningar** väljer du den replikeringsprincip som du vill använda för de skyddade virtuella datorerna. Klicka sedan på **OK**. Du kan ändra replikeringsprincipen i **replikeringsprinciper** > principnamn > **redigera inställningar för**. De ändringar du gör används både för datorer som redan replikeras och för nya datorer.
+11. I **replikeringsinställningarna** > **konfigurerar replikeringsinställningar**, Välj hello replikeringsprincip som du vill tooapply för hello skyddade virtuella datorer. Klicka sedan på **OK**. Du kan ändra hello replikeringsprincip i **replikeringsprinciper** > principnamn > **redigera inställningar för**. De ändringar du gör används både för datorer som redan replikeras och för nya datorer.
 
 
    ![Aktivera replikering](./media/site-recovery-hyper-v-site-to-azure/enable-replication7.png)
 
-Du kan följa förloppet för jobbet **Aktivera skydd** under **Jobb** > **Site Recovery-jobb**. När jobbet **Slutför skydd** har körts är datorn redo för redundans.
+Du kan följa förloppet för hello **Aktivera skydd** jobb **jobb** > **Site Recovery-jobb**. Efter hello **Slutför skydd** jobbet körs hello datorn är redo för redundans.
 
 ### <a name="view-and-manage-vm-properties"></a>Visa och hantera egenskaper för virtuella datorer
 
-Vi rekommenderar att du kontrollerar egenskaperna för källdatorn.
+Vi rekommenderar att du kontrollerar hello egenskaper för hello källdatorn.
 
-1. I **skyddade objekt**, klickar du på **replikerade objekt**, och välj datorn.
+1. I **skyddade objekt**, klickar du på **replikerade objekt**, och välj hello-datorn.
 
     ![Aktivera replikering](./media/site-recovery-hyper-v-site-to-azure/test-failover1.png)
-2. I **Egenskaper** kan du visa information om replikering och redundans för den virtuella datorn.
+2. I **egenskaper**, kan du visa replikering och information om växling vid fel för hello VM.
 
     ![Aktivera replikering](./media/site-recovery-hyper-v-site-to-azure/test-failover2.png)
-3. I **Beräkning och nätverk** > **Beräkna egenskaper** kan du ange namnet och storleken på den virtuella Azure-datorn. Ändra namnet som ska uppfylla kraven för Azure om du behöver. Du kan också visa och ändra information om målnätverket, undernätet och IP-adressen som ska tilldelas den virtuella Azure-datorn. Tänk på följande:
+3. I **beräknings- och nätverksinställningar** > **beräkna egenskaper**, kan du ange hello Azure VM-namn och mål för storlek. Ändra hello namnet toocomply med krav för Azure om du behöver. Du kan också visa och ändra information om hello målnätverket, undernätet och IP-adress som ska tilldelas toohello Azure VM. Observera följande hello:
 
-   * Du kan ange IP-måladressen. Om du inte anger någon adress använder den redundansväxlade datorn DHCP. Om du anger en adress som inte är tillgänglig under redundansväxlingen, misslyckas växlingen. Samma mål-IP-adress kan användas för att testa redundans om adressen är tillgänglig i nätverket för redundanstestet.
-   * Antalet nätverkskort beror på storleken som du anger för den virtuella måldatorn enligt följande:
+   * Du kan ange IP-adressen för hello mål. Om du inte anger någon adress använder hello redundansväxlade datorn DHCP. Om du anger en adress som inte är tillgänglig under redundansväxlingen, misslyckas hello växling vid fel. hello samma mål-IP-adress kan användas för att testa redundans om adressen hello är tillgänglig i nätverket hello.
+   * hello antalet nätverkskort beror hello storleken du anger för hello för den virtuella måldatorn enligt följande:
 
-     * Om antalet nätverkskort på källdatorn är mindre än eller lika med antalet nätverkskort som tillåts för måldatorns storlek så kommer målet att ha samma antal kort som källan.
-     * Om antalet nätverkskort för den virtuella källdatorn överskrider det tillåtna antalet för målstorleken så används den högsta målstorleken.
-     * Om en källdator exempelvis har två nätverkskort och måldatorn stöder fyra så kommer måldatorn att ha två kort. Om källdatorn har två nätverkskort men målstorleken endast stöder ett så kommer måldatorn bara att ha ett kort.     
-     * Om den virtuella datorn har flera nätverkskort ansluts alla till samma nätverk.
-     * Om den virtuella datorn har flera nätverkskort så att den första som visas i listan blir den *standard* nätverkskort i den virtuella Azure-datorn.
+     * Om hello antalet nätverkskort på hello källdatorn är mindre än eller lika med toohello antal nätverkskort som tillåts för hello måldatorn och sedan hello målet att ha hello samma antal kort som hello källa.
+     * Om hello antalet nätverkskort för hello virtuella källdatorn överskrider hello tillåtna antal för hello målstorleken så hello högsta kommer att användas.
+     * Till exempel om en källdator har två nätverkskort och hello måldatorn stöder fyra hello måldatorn att ha två kort. Om hello källdatorn har två nätverkskort men hello målstorleken endast stöder ett att hello måldatorn ha en enda nätverkskort.     
+     * Om hello VM har flera nätverkskort ansluts alla toohello samma nätverk.
+     * Om hello virtuella datorn har flera nätverkskort hello först visas i listan hello blir hello *standard* hello Azure virtuella nätverkskort.
 
      ![Aktivera replikering](./media/site-recovery-hyper-v-site-to-azure/test-failover4.png)
 
-4. I **diskar**, du kan se operativsystemet och datadiskar på den virtuella datorn som kommer att replikeras.
+4. I **diskar**kan du visa hello operativsystem och datadiskar på hello virtuell dator som kommer att replikeras.
 
 #### <a name="managed-disks"></a>Hanterade diskar
 
-I **beräknings- och nätverksinställningar** > **beräkna egenskaper**, du kan ange inställningen ”Använd hanterade diskar” till ”Ja” för den virtuella datorn om du vill bifoga hanterade diskar till din dator i samband med migrering till Azure. Hanterade diskar förenklar diskhantering för virtuella Azure IaaS-datorer genom att hantera de lagringskonton som är associerade med de virtuella diskarna. [Mer information om hanterade diskar](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview).
+I **beräknings- och nätverksinställningar** > **beräkna egenskaper**, du kan ange ”Använd hanterade diskar” inställningen för ”Ja” för hello VM om du vill tooattach hanterade diskar tooyour datorn på tooAzure för migrering. Hanterade diskar förenklar Diskhantering för virtuella Azure IaaS-datorer genom att hantera hello storage-konton som är associerade med hello Virtuella diskar. [Mer information om hanterade diskar](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview).
 
-   - Hanterade diskar skapas och kopplas endast till den virtuella datorn vid en redundansväxling till Azure. När du aktiverar skydd fortsätter data från lokala datorer att replikeras till lagringskonton.
-   Hanterade diskar kan endast skapas för virtuella datorer som distribueras med Resource manager-distributionsmodellen.
-
-  > [!NOTE]
-  > Återställning från Azure till lokala Hyper-V-miljön stöds inte för datorer med hanterade diskar. Ange endast ”Använd hanterade diskar” som ”Ja” om du planerar att migrera den här datorn till Azure.
-
-   - När du anger ”Använd hanterade diskar” till ”Ja” kommer endast tillgänglighetsuppsättningar i resursgruppen med ”Använd hanterade diskar” inställd på ”Ja” vara tillgänglig för urvalet. Det beror på att virtuella datorer med hanterade diskar endast kan vara en del av tillgänglighetsuppsättningar med värdet ”Ja” som egenskap för ”Använd hanterade diskar”. Se till att du skapar tillgänglighetsuppsättningar med egenskapen ”Använd hanterade diskar” inställd i enlighet med hur du avser använda hanterade diskar vid redundansväxling. När du anger ”Använd hanterade diskar” som ”Nej” kommer endast tillgänglighetsuppsättningar i resursgruppen med ”Använd hanterade diskar” inställd på ”Nej” vara tillgänglig för urvalet. [Mer information om hanterade diskar och tillgänglighetsuppsättningar](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set).
+   - Hanterade diskar kan skapas och anslutna toohello virtuell dator endast på en tooAzure för växling vid fel. Om du aktiverar skydd fortsätter data från lokala datorer tooreplicate toostorage konton.
+   Hanterade diskar kan endast skapas för virtuella datorer som distribueras med hello Resource manager-distributionsmodellen.
 
   > [!NOTE]
-  > Om lagringskontot som används för replikering har krypterats med Storage Service-kryptering vid någon tidpunkt misslyckas skapandet av hanterade diskar vid redundansväxling. Du kan antingen ange ”Använd hanterade diskar” som ”Nej” och försöka upprepa redundansväxlingen eller inaktivera skyddet för den virtuella datorn och skydda det till ett lagringskonto som inte har krypterats av lagringstjänstens vid någon tidpunkt.
+  > Återställning från Azure tooon lokala Hyper-V-miljön stöds inte för datorer med hanterade diskar. Ange ”Använd hanterade diskar” för ”Ja” bara om du tänker toomigrate tooAzure för den här datorn.
+
+   - När du anger ”Använd hanterade diskar” för ”Ja” kan skulle endast tillgänglighetsuppsättningar i resursgruppen hello med ”Använd hanterade diskar” för ”Ja” vara tillgänglig för urvalet. Det beror på att virtuella datorer med hanterade diskar kan bara ingå i tillgänglighetsuppsättningar med ”Använd hanterade diskar” egenskapsuppsättning för ”Ja”. Se till att du skapar tillgänglighetsuppsättningar med ”Använd hanterade diskar” egenskapsuppsättning baserat på avsiktshantering toouse hanteras diskarna på redundanskluster. På samma sätt när du anger ”Använd hanterade diskar” för ”Nej” kan skulle endast tillgänglighetsuppsättningar i resursgruppen för hello med ”Använd hanterade diskar” värdet för egenskapen för ”Nej” vara tillgänglig för urvalet. [Mer information om hanterade diskar och tillgänglighetsuppsättningar](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set).
+
+  > [!NOTE]
+  > Om hello storage-konto som används för replikering har krypterats med Storage Service-kryptering när som helst i tid, misslyckas skapandet av hanterade diskar under växling vid fel. Du kan antingen ange ”Använd hanterade diskar” för ”Nej” och försök växling vid fel eller inaktivera skyddet för hello virtuella datorn och skydda den tooa storage-konto som inte var lagringstjänstens kryptering aktiverat när som helst i tid.
   > [Lär dig mer om Storage Service Encryption och hanterade diskar](https://docs.microsoft.com/en-us/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption).
 
 
-## <a name="test-the-deployment"></a>Testa distributionen
+## <a name="test-hello-deployment"></a>Testa hello-distribution
 
-Du kan testa distributionen genom att köra ett redundanstest för en enskild virtuell dator eller genom att köra en återställningsplan som innehåller en eller flera virtuella datorer.
+Du kan köra ett redundanstest för en enskild virtuell dator eller en återställningsplan som innehåller en eller flera virtuella datorer tootest hello-distribution.
 
 ### <a name="before-you-start"></a>Innan du börjar
 
- - Om du vill ansluta till virtuella Azure-datorer med RDP efter en redundansväxling kan du hitta mer information om att [förbereda en anslutning](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
- - Om du vill testa fullständigt behöver du kopiera Active Directory och DNS i din testmiljö. [Läs mer](site-recovery-active-directory.md#test-failover-considerations).
+ - Om du vill tooconnect tooAzure virtuella datorer med RDP efter en växling vid fel, Lär dig mer om [förbereder tooconnect](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+ - toofully test som du behöver toocopy Active Directory och DNS i din testmiljö. [Läs mer](site-recovery-active-directory.md#test-failover-considerations).
 
 ### <a name="run-a-test-failover"></a>Köra ett redundanstest
 
-1. Att växla över en enskild dator i **replikerade objekt**, klicka på den virtuella datorn > **+ testa redundans** ikon.
-2. Om du vill redundansväxla en återställningsplan går du till **Återställningsplaner**, högerklickar på planen > **Testa redundans**. Om du vill skapa en återställningsplan [följer du dessa instruktioner](site-recovery-create-recovery-plans.md).
-3. I **Redundanstest**, Välj Azure-nätverk till vilka virtuella Azure-datorer ska ansluta till efter redundansväxlingen.
-4. Starta redundansväxlingen genom att klicka på **OK**. Du kan följa förloppet genom att klicka på den virtuella datorn för att öppna dess egenskaper eller på den **Redundanstest** jobb i valvnamnet > **jobb** > **Site Recovery-jobb**.
-5. När redundansväxlingen är klar bör du även kunna se Azure-replikdatorn på Azure-portalen > **Virtual Machines**. Kontrollera att den virtuella datorn har rätt storlek, att den är ansluten till rätt nätverk och att den körs.
-6. Om du förberedde för anslutning efter redundansväxlingen bör du kunna ansluta till den virtuella Azure-datorn.
-7. När du är klar klickar du på **Rensa redundanstest** i återställningsplanen. I **Kommentarer** skriver du och sparar eventuella observationer från redundanstestningen. När du gör det tas de virtuella datorerna som skapades under redundanstestningen bort.
+1. toofail över en enskild dator i **replikerade objekt**, klicka på hello VM > **+ testa redundans** ikon.
+2. toofail över en återställning planera i **Återställningsplaner**, högerklicka på hello plan > **Redundanstest**. toocreate en återställningsplan [följer du dessa instruktioner](site-recovery-create-recovery-plans.md).
+3. I **Redundanstest**väljer hello Azure-nätverk toowhich virtuella Azure-datorer ska ansluta till efter redundansväxlingen.
+4. Klicka på **OK** toobegin hello redundans. Du kan följa förloppet genom att klicka på hello VM tooopen dess egenskaper eller på hello **Redundanstest** jobb i valvnamnet > **jobb** > **Site Recovery-jobb**.
+5. När hello växling vid fel har slutförts kan du bör även kunna toosee hello replik Azure datorn visas i hello Azure-portalen > **virtuella datorer**. Kontrollera att hello VM är hello lämplig storlek som den är ansluten toohello lämpligt nätverk och att den körs.
+6. Om du har förberett för anslutningar efter växling vid fel, bör du kunna tooconnect toohello Azure VM.
+7. När du är klar klickar du på **Rensa redundanstestet** på hello återställningsplan. I **anteckningar** spela in och spara observationer från redundanstestningen hello. Detta tar bort hello virtuella datorer som har skapats under redundanstestningen.
 
-Mer information finns i artikeln [Test failover to Azure](site-recovery-test-failover-to-azure.md) (Testa redundans till Azure).
+Mer information finns i hello [testa redundans tooAzure](site-recovery-test-failover-to-azure.md) artikel.
 
 
 
-## <a name="monitor-the-deployment"></a>Övervaka distributionen
+## <a name="monitor-hello-deployment"></a>Övervakaren hello distribution
 
-Övervaka konfigurationsinställningarna, statusen och hälsan för distributionen av Site Recovery:
+Övervaka hello konfigurationsinställningarna, statusen och hälsan för distributionen av Site Recovery:
 
-1. Klicka på valvnamnet för att få åtkomst till **Essentials**-instrumentpanelen. I den här instrumentpanelen kan du spåra Site Recovery jobb, replikeringsstatusen, återställningsplaner, Servertillstånd och händelser.  
+1. Klicka på hello valvet namn tooaccess hello **Essentials** instrumentpanelen. I den här instrumentpanelen kan du spåra Site Recovery jobb, replikeringsstatusen, återställningsplaner, Servertillstånd och händelser.  
 
     ![Essentials](./media/site-recovery-hyper-v-site-to-azure/essentials.png)
-2. I den **hälsa** kan du övervaka Platsservrar som upplever problem och händelser som skapats av Site Recovery under de senaste 24 timmarna. Du kan anpassa Essentials och visa de paneler och layouter som är mest användbara för dig, inklusive status för andra Site Recovery- och Backup-valv.
-3. Du kan hantera och övervaka replikeringen på panelerna **Replikerade objekt**, **Återställningsplaner** och **Site Recovery-jobb**. Detaljer om jobb för mer information finns i **jobb** > **Site Recovery-jobb**.
+2. I hello **hälsa** kan du övervaka Platsservrar som har problem och hello händelser som skapats av Site Recovery i hello senaste 24 timmarna. Du kan anpassa Essentials tooshow hello paneler och layouter som är mest användbara tooyou, inklusive hello status för andra Site Recovery och säkerhetskopieringsvalv.
+3. Du kan hantera och övervaka replikeringen på hello **replikerade objekt**, **Återställningsplaner**, och **Site Recovery-jobb** paneler. Detaljer om jobb för mer information finns i **jobb** > **Site Recovery-jobb**.
 
 ## <a name="command-line-provider-and-agent-installation"></a>Providern och agenten kommandoradsinstallation
 
-Azure Site Recovery-providern och agenten kan också installeras med följande kommandorad. Den här metoden kan användas för att installera providern på Server Core för Windows Server 2012 R2.
+hello Azure Site Recovery-providern och agenten kan också installeras med följande kommandorad hello. Den här metoden kan vara används tooinstall hello-providern på en Server Core för Windows Server 2012 R2.
 
-1. Ladda ned installationsfilen och registreringsnyckeln för providern till en mapp. Till exempel C:\ASR.
-2. Extrahera installationsprogrammet för providern genom att köra dessa kommandon från en upphöjd kommandotolk:
+1. Hämta hello providern fil- och registrera viktiga tooa installationsmappen. Till exempel C:\ASR.
+2. Kör installationsprogrammet för dessa kommandon tooextract hello-providern från en upphöjd kommandotolk:
 
             C:\Windows\System32> CD C:\ASR
             C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
-3. Installera komponenterna genom att köra detta kommando:
+3. Kör det här kommandot tooinstall hello komponenter:
 
             C:\ASR> setupdr.exe /i
-4. Kör sedan följande kommandon för att registrera servern i valvet:
+4. Kör dessa kommandon tooregister hello servern i valvet hello:
 
             CD C:\Program Files\Microsoft Azure Site Recovery Provider\
-            C:\Program Files\Microsoft Azure Site Recovery Provider\> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file>
+            C:\Program Files\Microsoft Azure Site Recovery Provider\> DRConfigurator.exe /r  /Friendlyname <friendly name of hello server> /Credentials <path of hello credentials file>
 
 <br/>
 Där:
 
-* **/ Credentials**: obligatorisk parameter som anger den plats där registreringsnyckelfilen finns  
-* **/FriendlyName**: Obligatorisk parameter för namnet på Hyper-V-värdservern som visas på Azure Site Recovery-portalen.
-* **/proxyAddress**: Valfri parameter som anger adressen till proxyservern.
-* **/proxyport**: Valfri parameter som anger porten för proxyservern.
-* **/ proxyusername**: valfri parameter som anger användarnamnet för proxyservern (Om proxyservern kräver autentisering).
-* **/ proxypassword**: valfri parameter som anger lösenordet för att autentisera med proxyservern (Om proxyservern kräver autentisering).
+* **/ Credentials**: obligatorisk parameter som anger hello var i vilka hello registreringsnyckelfilen finns  
+* **/ FriendlyName**: obligatorisk parameter för hello namnet på hello Hyper-V-värdservern som visas i hello Azure Site Recovery-portalen.
+* **/ proxyaddress**: valfri parameter som anger hello proxyserver hello-adress.
+* **/ Proxyport** : valfri parameter som anger hello port hello proxyserver.
+* **/ proxyusername**: valfri parameter som anger hello proxyserverns användarnamn (Om proxyservern kräver autentisering).
+* **/ proxypassword**: valfri parameter som anger hello lösenord för att autentisera med proxyservern hello (Om proxyservern kräver autentisering).
 
 
 ## <a name="network-bandwidth-considerations"></a>Att tänka på när det gäller nätverksbandbredden
-Du kan använda den [kapacitetsplaneringsverktyget för Hyper-V](site-recovery-capacity-planner.md) för att beräkna bandbredden som du behöver för replikering (inledande replikering och sedan delta). Om du vill styra bandbreddsanvändningen för en replikering kan du välja mellan några olika alternativ:
+Du kan använda hello [kapacitetsplaneringsverktyget för Hyper-V](site-recovery-capacity-planner.md) toocalculate hello bandbredd som du behöver för replikering (inledande replikering och sedan delta). toocontrol hello belopp av användningen av nätverksbandbredd för replikering har du några alternativ:
 
-* **Begränsa bandbredden**: Hyper-V-trafik som replikeras till Azure går igenom en specifik Hyper-V-värd. Du kan begränsa bandbredden på värdservern.
-* **Justera bandbredden**: Du kan påverka den bandbredd som används för replikering med hjälp av några registernycklar.
+* **Begränsa bandbredden**: Hyper-V-trafik som replikeras tooAzure går igenom en specifik Hyper-V-värd. Du kan begränsa bandbredden på värdservern för hello.
+* **Justera bandbredden**: du kan påverka hello bandbredd som används för replikering med hjälp av några registernycklar.
 
 ### <a name="throttle-bandwidth"></a>Begränsa bandbredden
-1. Öppna snapin-modulen Microsoft Azure Backup MMC på Hyper-V-värdservern. Som standard finns det en genväg till Microsoft Azure Backup på skrivbordet eller i C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.
-2. Klicka på **Ändra egenskaper** i snapin-modulen.
-3. På fliken **Begränsning** väljer du **Aktivera användningsbegränsning för Internetbandbredd för säkerhetskopieringsåtgärder** och ange begränsningarna för arbetstid och övrig tid. Giltiga intervall är från 512 kbit/s till 102 Mbit/s.
+1. Öppna hello Microsoft Azure Backup MMC snapin-modulen på hello Hyper-V-värdservern. Som standard är en genväg till Microsoft Azure Backup finns på hello skrivbordet eller i C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.
+2. I snapin-modulen hello klickar du på **ändra egenskaper för**.
+3. På hello **begränsning** väljer **aktivera Användningsbegränsning för internetbandbredd för säkerhetskopieringsåtgärder**, och ange hello gränserna för arbete och fritid timmar. Giltigt intervall är från 512 kbit/s too102 Mbit/s per sekund.
 
     ![Begränsa bandbredden](./media/site-recovery-hyper-v-site-to-azure/throttle2.png)
 
-Du kan också ange begränsningar med hjälp av cmdleten [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx). Här är ett exempel:
+Du kan också använda hello [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409.aspx) cmdlet tooset begränsning. Här är ett exempel:
 
     $mon = [System.DayOfWeek]::Monday
     $tue = [System.DayOfWeek]::Tuesday
@@ -404,11 +404,11 @@ Du kan också ange begränsningar med hjälp av cmdleten [Set-OBMachineSetting](
 **Set-OBMachineSetting -NoThrottle** anger att ingen begränsning krävs.
 
 ### <a name="influence-network-bandwidth"></a>Påverka nätverkets bandbredd
-1. Gå till **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication** i registret.
-   * Om du vill påverka bandbredd trafiken på en replikering disk ändrar du värdet i **UploadThreadsPerVM**, eller skapa nyckeln om den inte finns.
-   * Ändra värdet för att påverka bandbredden för redundanstrafik från Azure **DownloadThreadsPerVM**.
-2. Standardvärdet är 4. I ett ”överetablerat” nätverk bör du ändra registernycklarnas standardvärden. Det högsta antalet är 32. Övervaka trafiken för att optimera värdet.
+1. I registret hello navigera för**HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**.
+   * tooinfluence hello bandbredd trafik på en replikering disk, ändra hello värdet hello **UploadThreadsPerVM**, eller skapa hello nyckeln om den inte finns.
+   * tooinfluence hello bandbredd för redundanstrafik från Azure, ändra värdet för hello **DownloadThreadsPerVM**.
+2. hello standardvärdet är 4. I ett ”överetablerat” nätverk bör registernycklarna ändras från hello standardvärden. hello maximala är 32. Övervaka trafik toooptimize hello värde.
 
 ## <a name="next-steps"></a>Nästa steg
 
-När den inledande replikeringen är klar och du har testat distributionen kan du starta redundansväxlingar vid behov. [Lär dig mer](site-recovery-failover.md) om olika typer av redundansväxlingar och hur du kör dem.
+När den inledande replikeringen är klar och du har testat hello distribution, kan du anropa redundans som hello behov. [Lär dig mer](site-recovery-failover.md) om olika typer av redundansväxlingar och hur toorun dem.

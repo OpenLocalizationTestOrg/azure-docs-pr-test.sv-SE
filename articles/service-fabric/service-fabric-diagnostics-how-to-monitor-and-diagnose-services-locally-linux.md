@@ -1,6 +1,6 @@
 ---
-title: "Felsöka Azure mikrotjänster i Linux | Microsoft Docs"
-description: "Lär dig mer om att övervaka och diagnostisera dina tjänster som skrivits med Microsoft Azure Service Fabric på en dator för lokal utveckling."
+title: "aaaDebug Azure mikrotjänster i Linux | Microsoft Docs"
+description: "Lär dig hur toomonitor och diagnostisera dina tjänster som skrivits med Microsoft Azure Service Fabric på en dator för lokal utveckling."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 4bc73f581f4855ebc724df19dd56fab8bf103854
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: bee47bbabcf6b84ff2da14079e026529e36a198b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Övervaka och diagnostisera tjänster i en inställning för utveckling av lokal dator
 
@@ -29,16 +29,16 @@ ms.lasthandoff: 08/18/2017
 >
 >
 
-Övervaka, identifiera, diagnostisera och felsöka Tillåt för tjänster att fortsätta med minimala störningar för användarupplevelsen. Övervaknings- och diagnostikfunktionerna är viktiga i en verklig distribuerade produktionsmiljö. Införandet av en liknande modell under utvecklingen av tjänster garanterar att diagnostiska pipeline fungerar när du flyttar till en produktionsmiljö. Service Fabric gör det enkelt för tjänstutvecklare att implementera diagnostik fungerar sömlöst över både inställningar för enskild dator lokal utveckling och produktion verkliga klustret installationsprogram.
+Övervaka, identifiera, diagnostisera och felsöka tillåta tjänster toocontinue med minimala störningar toohello användarupplevelsen. Övervaknings- och diagnostikfunktionerna är viktiga i en verklig distribuerade produktionsmiljö. Införandet av en liknande modell under utvecklingen av tjänster garanterar att hello diagnostiska pipeline fungerar när du flyttar tooa produktionsmiljön. Service Fabric gör det enkelt för tjänsten utvecklare tooimplement diagnostik fungerar sömlöst över både inställningar för enskild dator lokal utveckling och produktion verkliga klustret installationsprogram.
 
 
 ## <a name="debugging-service-fabric-java-applications"></a>Felsökning av Service Fabric Java-program
 
-För Java-program, [flera loggning ramverk](http://en.wikipedia.org/wiki/Java_logging_framework) är tillgängliga. Eftersom `java.util.logging` är standardalternativet med JRE, det används också för de [kodexempel i github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  I följande avsnittet beskriver hur du konfigurerar den `java.util.logging` framework.
+För Java-program, [flera loggning ramverk](http://en.wikipedia.org/wiki/Java_logging_framework) är tillgängliga. Eftersom `java.util.logging` är standardalternativet hello med hello JRE, det används också för hello [kodexempel i github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  hello följande diskussion förklarar hur tooconfigure hello `java.util.logging` framework.
 
-Med hjälp av java.util.logging dirigera du dina programloggar till minne utdataströmmar, console-filer eller sockets. Det finns standard hanterare som redan tillhandahålls inom ramen för var och en av dessa alternativ. Du kan skapa en `app.properties` fil att konfigurera Filhanteraren för programmet att omdirigera alla loggar till en lokal fil.
+Med hjälp av java.util.logging som du kan dirigera om ditt program loggar toomemory utdataströmmar, console-filer eller sockets. För var och en av dessa alternativ finns standard hanterare som redan tillhandahålls i hello framework. Du kan skapa en `app.properties` tooconfigure hello filen Filhanteraren för ditt program tooredirect alla loggar tooa lokal fil.
 
-Följande kodavsnitt innehåller en exempelkonfiguration:
+följande kodstycke hello innehåller en exempelkonfiguration:
 
 ```java
 handlers = java.util.logging.FileHandler
@@ -50,34 +50,34 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
 ```
 
-Mappen som pekar på den `app.properties` filen måste finnas. Efter den `app.properties` filen har skapats, måste du också ändra skriptet post punkt `entrypoint.sh` i den `<applicationfolder>/<servicePkg>/Code/` mapp för att ange egenskapen `java.util.logging.config.file` till `app.propertes` filen. Posten bör se ut som följande utdrag:
+hello mappen pekar tooby hello `app.properties` filen måste finnas. Efter hello `app.properties` filen har skapats måste du tooalso ändra skriptet post punkt `entrypoint.sh` i hello `<applicationfolder>/<servicePkg>/Code/` mappen tooset hello egenskapen `java.util.logging.config.file` för`app.propertes` fil. hello post bör se ut som följande fragment hello:
 
 ```sh
-java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
+java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path tooapp.properties> -jar <service name>.jar
 ```
 
 
-Den här konfigurationen leder loggar som samlas in i ett roterar sätt på `/tmp/servicefabric/logs/`. Loggfilen i det här fallet heter mysfapp%u.%g.log där:
-* **%u** är ett unikt nummer för att lösa konflikter mellan samtidiga Java processer.
-* **%g** är antalet generation att skilja mellan rotera loggar.
+Den här konfigurationen leder loggar som samlas in i ett roterar sätt på `/tmp/servicefabric/logs/`. hello loggfilen i det här fallet heter mysfapp%u.%g.log där:
+* **%u** är ett unikt nummer tooresolve konflikter mellan samtidiga Java processer.
+* **%g** är hello generation nummer toodistinguish mellan rotera loggar.
 
-Som standard om ingen hanterare uttryckligen har konfigurerats i konsolen hanteraren är registrerad. En kan visa loggarna i syslog under /var/log/syslog.
+Som standard om ingen hanterare uttryckligen har konfigurerats hello konsolen hanteraren är registrerad. En kan visa hello loggar i syslog under /var/log/syslog.
 
-Mer information finns i [kodexempel i github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
+Mer information finns i hello [kodexempel i github](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Felsöka Service Fabric C#-program
 
 
-Flera ramverk är tillgängliga för att spåra CoreCLR program på Linux. Mer information finns i [GitHub: loggning](http:/github.com/aspnet/logging).  Eftersom EventSource är bekant för C# utvecklare, som den här artikeln använder EventSource för spårning i CoreCLR prov på Linux.
+Flera ramverk är tillgängliga för att spåra CoreCLR program på Linux. Mer information finns i [GitHub: loggning](http:/github.com/aspnet/logging).  Eftersom EventSource är bekant tooC # utvecklare, som den här artikeln använder EventSource för spårning i CoreCLR prov på Linux.
 
-Det första steget är att inkludera System.Diagnostics.Tracing så att du kan skriva dina loggar till minne, utdataströmmar eller console-filer.  Lägg till följande projektet din project.json för loggning med hjälp av EventSource är:
+hello första steget är tooinclude System.Diagnostics.Tracing så att du kan skriva ditt loggar toomemory, utdataströmmar eller konsolfiler.  Lägg till hello följande projekt tooyour project.json för loggning med hjälp av EventSource är:
 
 ```
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-Du kan använda en anpassad EventListener att lyssna efter händelsen tjänsten och sedan på lämpligt sätt dirigera dem till spårningsfiler. Följande kodavsnitt visar ett exempel på implementering av loggning med hjälp av EventSource och anpassade EventListener:
+Du kan använda en anpassad EventListener toolisten för hello service händelsen och sedan korrekt dirigera dem tootrace filer. hello visar följande kodavsnitt ett exempel på implementering av loggning med hjälp av EventSource och anpassade EventListener:
 
 
 ```csharp
@@ -96,7 +96,7 @@ Du kan använda en anpassad EventListener att lyssna efter händelsen tjänsten 
             }
         }
 
-        // TBD: Need to add method for sample event.
+        // TBD: Need tooadd method for sample event.
 
 }
 
@@ -130,16 +130,16 @@ Du kan använda en anpassad EventListener att lyssna efter händelsen tjänsten 
 ```
 
 
-Föregående kodfragment matar ut loggar till en fil i `/tmp/MyServiceLog.txt`. Det här namnet måste uppdateras korrekt. Om du vill omdirigera loggar till konsolen använder du följande kodavsnitt i din anpassade EventListener-klass:
+hello föregående kodfragment matar ut hello loggar tooa filen i `/tmp/MyServiceLog.txt`. Det här namnet måste toobe uppdateras korrekt. Om du vill tooredirect hello loggar tooconsole Använd hello följande kodavsnitt i din anpassade EventListener-klass:
 
 ```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-Exempel på [C#-exempel](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) använda EventSource och anpassade EventListener för att logga händelser till en fil.
+Hej prov på [C#-exempel](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) använder EventSource och en anpassad EventListener toolog händelser tooa-fil.
 
 
 
 ## <a name="next-steps"></a>Nästa steg
-Samma spårning koden som lagts till i ditt program fungerar även med diagnostik för programmet på ett Azure-kluster. Gå igenom dessa artiklar som beskrivs de olika alternativen för verktyg och beskriver hur du ställer in.
-* [Hur du samlar in loggar med Azure-diagnostik](service-fabric-diagnostics-how-to-setup-lad.md)
+Hej samma spårning kod läggs tooyour program fungerar även med hello diagnostik för programmet på ett Azure-kluster. Checka ut dessa artiklar som hello olika användningsalternativ för hello verktyg och beskriver hur tooset dem upp.
+* [Hur toocollect loggar med Azure-diagnostik](service-fabric-diagnostics-how-to-setup-lad.md)

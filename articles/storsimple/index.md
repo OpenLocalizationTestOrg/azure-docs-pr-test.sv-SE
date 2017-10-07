@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om Azure StorSimple – Självstudier | Microsoft Docs"
-description: "Lär dig hur du använder Azure StorSimple, en integrerad lagringslösning som hanterar lagringsaktiviteter mellan lokala enheter på plats och lagring i Azure-molnet."
+title: "aaaAzure StorSimple-dokumentation – självstudier | Microsoft Docs"
+description: "Lär dig hur toouse Azure StorSimple, en integrerad lagringslösning som hanterar lagring uppgifter mellan lokala enheter och lagring i Azure-molnet."
 services: storsimple
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 21f24f387e96ac763419c37eeb16c75eab0bc452
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c9768c17118e8d5eecbd6791ef1be42afb1286c9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="storsimple-documentation"></a>Dokumentation om StorSimple
 
-Lär dig hur du använder Azure StorSimple, en integrerad lagringslösning som hanterar lagringsaktiviteter mellan lokala enheter på plats och lagring i Azure-molnet. Självstudier och annan dokumentationen visar hur du konfigurerar lagringshantering, platsoberoende säkerhetskopiering och katastrofåterställning.
+Lär dig hur toouse Azure StorSimple, en integrerad lagringslösning som hanterar lagring uppgifter mellan lokala enheter och lagring i Azure-molnet. Självstudier och annan dokumentationen visar hur du konfigurerar lagringshantering, platsoberoende säkerhetskopiering och katastrofåterställning.
 
 <ul class="panelContent cardsFTitle">
      <li>

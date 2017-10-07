@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med Azure AD i Visual Studio MVC projekt | Microsoft Docs"
-description: "Hur du kommer igång med Azure Active Directory i MVC projekt efter anslutning till eller skapa en Azure AD med hjälp av Visual Studio anslutna tjänster"
+title: "aaaGet igång med Azure AD i Visual Studio MVC projekt | Microsoft Docs"
+description: "Hur tooget igång med Azure Active Directory i MVC-projekt efter anslutning tooor skapa en Azure AD med hjälp av Visual Studio anslutna tjänster"
 services: active-directory
 documentationcenter: 
 author: kraigb
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/01/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: c4d49cfc9887e422b3eaed2b96348c99eca48881
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 807824dd6e4e57e443f8a7322cf2e5326384316d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-azure-active-directory-and-visual-studio-connected-services-mvc-projects"></a>Komma igång med Azure Active Directory och Visual Studio anslutna tjänster (MVC-projekt)
 > [!div class="op_single_selector"]
@@ -28,11 +28,11 @@ ms.lasthandoff: 08/29/2017
 > 
 > 
 
-## <a name="requiring-authentication-to-access-controllers"></a>Kräva autentisering till access-domänkontrollanter
-Alla domänkontrollanter i ditt projekt har adorned med den **auktorisera** attribut. Det här attributet kräver att användaren autentiseras innan du använder dessa domänkontrollanter. Ta bort skrivskyddsattributet från styrenheten för att tillåta att kontrollanten kan användas anonymt. Om du vill ange behörigheter på en mer detaljerad nivå gäller attributet för varje metod som kräver tillstånd i stället för att tillämpas på klassen domänkontrollant.
+## <a name="requiring-authentication-tooaccess-controllers"></a>Kräver autentisering tooaccess domänkontrollanter
+Alla domänkontrollanter i ditt projekt har adorned med hello **auktorisera** attribut. Det här attributet kräver hello användaren toobe autentiseras innan du använder dessa domänkontrollanter. tooallow hello controller toobe ansluta anonymt, ta bort skrivskyddsattributet från hello domänkontrollant. Om du vill tooset hello behörigheter på en mer detaljerad nivå gäller hello attributet tooeach metoden som kräver tillstånd i stället för att tillämpa den toohello kontrollantklassen.
 
 ## <a name="adding-signin--signout-controls"></a>Lägga till inloggning / utloggning styr
-Om du vill lägga till inloggning/utloggning kontroller i vyn kan du använda den **_LoginPartial.cshtml** partiella vyn för att lägga till funktionen i en av dina vyer. Här är ett exempel på funktioner som lagts till i vanlig **_Layout.cshtml** vyn. (Observera det sista elementet i div med klassen navigeringsfält för komprimera):
+tooadd hello inloggning/utloggning styr tooyour vy, kan du använda hello **_LoginPartial.cshtml** partiella visa tooadd hello funktioner tooone av dina vyer. Här är ett exempel på hello funktioner lagts till toohello standard **_Layout.cshtml** vyn. (Observera hello sista elementet i hello div med klassen navigeringsfält för komprimera):
 
 <pre>
     &lt;!DOCTYPE html&gt; 

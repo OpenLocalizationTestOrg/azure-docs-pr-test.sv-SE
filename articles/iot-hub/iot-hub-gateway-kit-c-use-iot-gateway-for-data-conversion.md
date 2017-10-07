@@ -1,6 +1,6 @@
 ---
-title: "Datakonvertering på IoT-gateway med Azure IoT kant | Microsoft Docs"
-description: "Använd IoT-gateway för att konvertera formatet sensordata via en anpassad modul från Azure IoT kant."
+title: "aaaData konvertering på IoT-gateway med Azure IoT kant | Microsoft Docs"
+description: "Använd IoT gateway tooconvert hello format för sensordata via en anpassad modul från Azure IoT kant."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,88 +15,88 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/25/2017
 ms.author: xshi
-ms.openlocfilehash: d5c735a4adbc59e9526ec4fd40720c5ec136d63d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ae94b1f96f36dfcb4f77fadc0ece3cff3d0bba91
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-iot-gateway-for-sensor-data-transformation-with-azure-iot-edge"></a>Använd IoT-gateway för omvandling av sensor data med Azure IoT kant
 
 > [!NOTE]
-> Innan du börjar den här självstudiekursen, kontrollera att du har slutfört följande erfarenheter i följd:
+> Innan du börjar den här självstudiekursen, se har till att du slutfört hello följande erfarenheter i ordning:
 > * [Konfigurera Intel NUC som en IoT-gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-> * [Använd IoT-gateway för att ansluta saker till molnet - SensorTag till Azure IoT-hubb](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+> * [Använd IoT gateway tooconnect saker toohello cloud - SensorTag tooAzure IoT-hubb](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 
-En syftar Iot-gateway till att bearbeta insamlade data innan du skickar den till molnet. Azure IoT-Edge introducerar moduler som kan skapas och monteras så att arbetsflödet för databearbetning. En modul tar emot ett meddelande, utför en åtgärd på den och flytta den på för andra moduler för att bearbeta.
+En syftet med en Iot-gateway är tooprocess insamlade data innan du skickar den toohello moln. Azure IoT-Edge introducerar moduler som skapats och monterade tooform hello databehandling i arbetsflöden. En modul tar emot ett meddelande, utför en åtgärd på den och flytta den på för andra moduler tooprocess.
 
 ## <a name="what-you-learn"></a>Detta får du får lära dig
 
-Du lär dig hur du skapar en modul för att konvertera meddelanden från SensorTag till ett annat format.
+Du lär dig hur toocreate en modul tooconvert meddelanden från hello SensorTag till ett annat format.
 
 ## <a name="what-you-do"></a>Vad du gör
 
-* Skapa en modul för att konvertera ett mottaget meddelande till JSON-format.
-* Kompilera modulen.
-* Lägg till modulen exempelprogrammet tabell från Azure IoT kant.
-* Kör exempelprogrammet.
+* Skapa en modul tooconvert ett mottaget meddelande till hello JSON-format.
+* Kompilera hello-modulen.
+* Lägg till hello modulen toohello TIVERA exempelprogrammet från Azure IoT kant.
+* Köra hello exempelprogrammet.
 
 ## <a name="what-you-need"></a>Vad du behöver
 
-* Följande kurser slutförts i ordning:
+* följande kurser som slutförts i sekvens hello:
   * [Konfigurera Intel NUC som en IoT-gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-  * [Använd IoT-gateway för att ansluta saker till molnet - SensorTag till Azure IoT-hubb](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+  * [Använd IoT gateway tooconnect saker toohello cloud - SensorTag tooAzure IoT-hubb](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
 * En SSH-klient som körs på värddatorn. PuTTY rekommenderas i Windows. Linux- och macOS har redan en SSH-klient.
-* IP-adressen och användarnamn och lösenord för åtkomst till gatewayen från SSH-klienten.
+* hello IP-adress och hello användarnamn och lösenord tooaccess hello gateway från hello SSH-klienten.
 * En Internetanslutning.
 
 ## <a name="create-a-module"></a>Skapa en modul
 
-1. Kör SSH-klienten på värddatorn och ansluta till IoT-gateway.
-1. Klona källfiler för modulen konvertering från GitHub till arbetskatalogen för IoT-gateway genom att köra följande kommandon:
+1. Kör hello SSH-klienten på värddatorn för hello och ansluta toohello IoT gateway.
+1. Klona hello källfiler för hello konvertering modul från GitHub toohello-hemkataloger hello IoT gateway genom att köra följande kommandon hello:
 
    ```bash
    cd ~
    git clone https://github.com/Azure-Samples/iot-hub-c-intel-nuc-gateway-customized-module.git
    ```
 
-   Det här är en inbyggd Azure Edge-modul som skrivits i programmeringsspråket C. Modulen konverterar formatet för mottagna meddelanden till följande:
+   Det här är en inbyggd Azure Edge-modul som skrivits i hello programmeringsspråket C. hello modulen konverterar hello format för mottagna meddelanden till hello efter:
 
    ```json
    {"deviceId": "Intel NUC Gateway", "messageId": 0, "temperature": 0.0}
    ```
 
-## <a name="compile-the-module"></a>Kompilera modulen
+## <a name="compile-hello-module"></a>Kompilera hello-modul
 
-Kompilera modulen genom att köra följande kommandon:
+toocompile hello modul kör hello följande kommandon:
 
 ```bash
 cd iot-hub-c-intel-nuc-gateway-customized-module/my_module
-# change the build script runnable
+# change hello build script runnable
 chmod 777 build.sh
-# remove the invalid windows character
+# remove hello invalid windows character
 sed -i -e "s/\r$//" build.sh
-# run the build shell script
+# run hello build shell script
 ./build.sh
 ```
 
-Du får en `libmy_module.so` filen när kompileringen har slutförts. Anteckna den absoluta sökvägen till den här filen.
+Du får en `libmy_module.so` filen när hello kompilera har slutförts. Anteckna hello absoluta sökvägen till den här filen.
 
-## <a name="add-the-module-to-the-ble-sample-application"></a>Lägga till modulen TIVERA exempelprogrammet
+## <a name="add-hello-module-toohello-ble-sample-application"></a>Lägg till hello modulen toohello TIVERA exempelprogrammet
 
-1. Gå till mappen exempel genom att köra följande kommando:
+1. Gå toohello exempelmapp genom att köra följande kommando hello:
 
    ```bash
    cd /usr/share/azureiotgatewaysdk/samples
    ```
 
-1. Öppna konfigurationsfilen genom att köra följande kommando:
+1. Öppna hello konfigurationsfilen genom att köra följande kommando hello:
 
    ```bash
    vi ble_gateway.json
    ```
 
-1. Lägga till en modul genom att lägga till följande kod i `modules` avsnitt.
+1. Lägga till en modul genom att lägga till följande kod toohello hello `modules` avsnitt.
 
    ```json
    {
@@ -111,8 +111,8 @@ Du får en `libmy_module.so` filen när kompileringen har slutförts. Anteckna d
     },
     ```
 
-1. Ersätt `[Your libmy_module.so path]` i koden med den absoluta sökvägen till libmy_module.so-fil.
-1. Ersätt Koden i den `links` avsnitt med följande:
+1. Ersätt `[Your libmy_module.so path]` i hello kod med hello absoluta sökvägen till hello libmy_module.so-filen.
+1. Ersätt hello koden i hello `links` avsnitt med hello efter:
 
    ```json
    {
@@ -125,18 +125,18 @@ Du får en `libmy_module.so` filen när kompileringen har slutförts. Anteckna d
    }
    ```
 
-1. Tryck på `ESC`, och skriv sedan `:wq` att spara filen.
+1. Tryck på `ESC`, och skriv sedan `:wq` toosave hello-filen.
 
-## <a name="run-the-sample-application"></a>Kör exempelprogrammet
+## <a name="run-hello-sample-application"></a>Köra hello exempelprogrammet
 
-1. Starta SensorTag.
-1. Ange miljövariabeln SSL_CERT_FILE genom att köra följande kommando:
+1. Starta hello SensorTag.
+1. Ange hello SSL_CERT_FILE miljövariabeln genom att köra följande kommando hello:
 
    ```bash
    export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
    ```
 
-1. Kör exempelprogrammet med modulen lagts till genom att köra följande kommando:
+1. Kör exempelprogrammet hello med hello tillagda modulen genom att köra följande kommando hello:
 
    ```bash
    ./ble_gateway ble_gateway.json
@@ -144,6 +144,6 @@ Du får en `libmy_module.so` filen när kompileringen har slutförts. Anteckna d
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har kunna använda IoT-gateway för att konvertera meddelandet från SensorTag till JSON-format.
+Nu har du Använd hello IoT gateway tooconvert hello-meddelande från SensorTag till hello JSON-format.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

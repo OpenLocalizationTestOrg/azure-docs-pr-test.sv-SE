@@ -1,5 +1,5 @@
 ---
-title: "VM bevarar Underhåll för virtuella Windows-datorer i Azure | Microsoft Docs"
+title: "aaa VM bevara Underhåll för virtuella Windows-datorer i Azure | Microsoft Docs"
 description: "Direktmigrering VM för minne bevarar uppdateringar."
 services: virtual-machines-windows
 documentationcenter: 
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: zivr
-ms.openlocfilehash: 8888bafbc3aba24168312b611a9b4fbde25f376d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b798f0afd9d8dc60ca8a78f7cc77435a0ddc76fe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="vm-preserving-maintenance-with-in-place-vm-migration"></a>VM bevarar Underhåll med lokalt VM-migrering
 
-Även om majoriteten av uppdateringarna har ingen inverkan på värdbaserade virtuella datorer, finns det fall där uppdateringar av komponenter och tjänster resultera i minimala störningar att köra virtuella datorer (utan en fullständig omstart av den virtuella datorn).
+Hello majoriteten av uppdateringarna har ingen effekt toohosted virtuella datorer, finns det fall där uppdateringar toocomponents eller tjänster resultera i minimala störningar toorunning virtuella datorer (utan en fullständig omstart av hello virtuell dator).
 
-Dessa uppdateringar sker med teknik som gör att live migrering på plats, även kallat ”minne bevara uppdateringen”. När du uppdaterar värden, placera den virtuella datorn är i tillståndet ”Pausad” bevaring minnet i RAM, medan värdmiljön (t.ex. det underliggande operativsystemet) gäller nödvändiga uppdateringar och korrigeringar.
-Den virtuella datorn sedan återupptas inom 30 sekunder från paus.
-När den virtuella datorn har återupptagits synkroniseras klockan automatiskt.
+Dessa uppdateringar sker med teknik som gör att live migrering på plats, även kallat ”minne bevara uppdateringen”. När du uppdaterar hello värden, hello virtuella datorn placeras i tillståndet ”Pausad” bevaring hello minne i RAM, medan hello värdmiljön (t.ex. det underliggande operativsystemet) gäller hello nödvändiga uppdateringar och korrigeringar.
+hello virtuella sedan återupptas inom 30 sekunder från paus.
+Efter återställning, synkroniseras automatiskt hello klocka hello virtuell dator.
 
-Alla uppdateringar kan inte distribueras med den här mekanismen, men med tanke på den korta pausperioden minskar distributionen av uppdateringar på det här sättet avsevärt inverkan på virtuella datorer.
+Inte alla uppdateringar som kan distribueras med hjälp av den här mekanismen, men den angivna perioden kort paus distribuera uppdateringar i den här vägen avsevärt minskar inverkan toovirtual datorer.
 
 Flera instanser uppdateringar (virtuella datorer i en tillgänglighetsuppsättning) är tillämpade en uppdateringsdomän i taget.
 
-Vissa program kan påverkas av de här uppdateringarna som är mer än andra. Program som utför händelsebearbetning i realtid, direktuppspelning eller omkodning eller hög genomströmning nätverk scenarier, till exempel kan inte vara utformade klarar en paus på 30 sekund. Program som körs på en virtuell dator kan läsa mer om kommande uppdateringar genom att anropa den [schemalagda händelser](../virtual-machines-scheduled-events.md) API för den [Azure Metadata Service](../virtual-machines-instancemetadataservice-overview.md).
+Vissa program kan påverkas av de här uppdateringarna som är mer än andra. Program som utför händelsebearbetning i realtid, direktuppspelning eller omkodning eller hög genomströmning nätverk scenarier, till exempel inte utformad tootolerate en paus på 30 sekund. Program som körs på en virtuell dator kan läsa mer om kommande uppdateringar genom att anropa hello [schemalagda händelser](../virtual-machines-scheduled-events.md) API hello [Azure Metadata Service](../virtual-machines-instancemetadataservice-overview.md).

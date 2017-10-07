@@ -1,6 +1,6 @@
 ---
 title: 'Steg 3: Skapa ett nytt experiment i Machine Learning | Microsoft Docs'
-description: "Steg 3 i utveckla en förutsägelselösning genomgång: skapa ett nytt utbildning experiment i Azure Machine Learning Studio."
+description: "Steg 3 i hello utveckla en förutsägelselösning genomgång: skapa ett nytt utbildning experiment i Azure Machine Learning Studio."
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,123 +14,123 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: cd410316910bce76f5c915c06e83b24c034481b7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4697d461a205c50c8d2aa6a3bd56697840cb30f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>Genomgång steg 3: Skapa ett nytt Azure Machine Learning-experiment
-Detta är det tredje steget i den här genomgången [utveckla en förutsägelseanalys i Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
+Detta är hello tredje steget i hello genomgången [utveckla en förutsägelseanalys i Azure Machine Learning](machine-learning-walkthrough-develop-predictive-solution.md)
 
 1. [Skapa en Machine Learning-arbetsyta](machine-learning-walkthrough-1-create-ml-workspace.md)
 2. [Överför befintliga data](machine-learning-walkthrough-2-upload-data.md)
 3. **Skapa ett nytt experiment**
-4. [Träna och utvärdera modellerna](machine-learning-walkthrough-4-train-and-evaluate-models.md)
-5. [Distribuera webbtjänsten](machine-learning-walkthrough-5-publish-web-service.md)
-6. [Få åtkomst till webbtjänsten](machine-learning-walkthrough-6-access-web-service.md)
+4. [Träna och utvärdera hello modeller](machine-learning-walkthrough-4-train-and-evaluate-models.md)
+5. [Distribuera hello-webbtjänst](machine-learning-walkthrough-5-publish-web-service.md)
+6. [Få åtkomst till hello-webbtjänsten](machine-learning-walkthrough-6-access-web-service.md)
 
 - - -
-Nästa steg i den här genomgången är att skapa ett experiment i Machine Learning Studio som använder datauppsättningen som vi har överförts.  
+hello nästa steg i den här genomgången är toocreate ett experiment i Machine Learning Studio som använder hello datauppsättningen som vi har överförts.  
 
-1. Klicka på Studio **+ ny** längst ned i fönstret.
+1. I Studio klickar du på **+ ny** längst hello hello-fönstret.
 2. Välj **EXPERIMENT**, och välj sedan ”tomt Experiment”. 
 
     ![Skapa ett nytt experiment][0]
 
-2. Välj experiment för standardnamnet överst på arbetsytan och Byt till ett beskrivande.
+2. Välj hello standard experimentera namn hello överst i hello arbetsytan och Byt toosomething beskrivande.
 
     ![Byt namn på experimentet][5]
    
    > [!TIP]
-   > Är det en bra idé att fylla i **sammanfattning** och **beskrivning** för experiment i den **egenskaper** fönstret. De här egenskaperna ger dig möjlighet att dokumentera experimentet så att alla som tittar på det senare kan förstå dina mål och metoder.
+   > Det är en bra idé toofill **sammanfattning** och **beskrivning** för hello experiment i hello **egenskaper** fönstret. Dessa egenskaper ger du hello chansen toodocument hello experiment så att alla som tittar på det senare kan förstå dina mål och metoder.
    > 
    > ![Experiment egenskaper][6]
    > 
-3. Expandera i modulpaletten till vänster om arbetsytan för experimentet **sparade datauppsättningar**.
-4. Hitta datamängden som du skapade under **Mina datauppsättningar** och drar den till arbetsytan. Du kan också hitta datauppsättningen genom att ange namnet i den **Sök** rutan ovanför paletten.  
+3. Hello modulen paletten toohello till vänster i hello experimentet, expandera **sparade datauppsättningar**.
+4. Hitta hello dataset som du skapade under **Mina datauppsättningar** och drar den till hello arbetsytan. Du kan också hitta hello datauppsättningen genom att ange hello namn i hello **Sök** rutan ovanför hello palett.  
 
-    ![Lägg till dataset i experimentet][7]
+    ![Lägg till hello dataset toohello experiment][7]
 
-## <a name="prepare-the-data"></a>Förbered data
-Du kan visa de första 100 dataraderna och del statistisk information för hela datauppsättningen: Klicka på utdataporten för datauppsättningen (liten cirkel längst ned) och välj **visualisera**.  
+## <a name="prepare-hello-data"></a>Förbereda hello data
+Du kan visa hello första 100 datarader hello och del statistisk information för hello hela datauppsättningen: Klicka på hello utdataporten för hello datauppsättningen (hello liten cirkel längst ned hello) och välj **visualisera**.  
 
-Eftersom filen inte levererades med kolumnrubriker Studio tillhandahåller allmänna rubriker (Kol1, Col2, *etc.*). Bra rubriker är inte nödvändigt att skapa en modell, men de gör det enklare att arbeta med data i experimentet. Dessutom när vi publicerar slutligen den här modellen i en webbtjänst, så att rubrikerna identifiera kolumner till användaren i tjänsten.  
+Eftersom hello datafilen inte levererades med kolumnrubriker Studio tillhandahåller allmänna rubriker (Kol1, Col2, *etc.*). Bra rubriker är inte viktigt toocreating en modell, men det blir enklare toowork med hello data i hello experiment. Dessutom när vi publicerar slutligen den här modellen i en webbtjänst, så att hello rubriker identifiera hello kolumner toohello användare av hello-tjänsten.  
 
-Vi kan lägga till kolumnrubriker använder de [redigera Metadata] [ edit-metadata] modul.
-Du använder den [redigera Metadata] [ edit-metadata] modul för att ändra metadata som associeras med en datamängd. I det här fallet använda vi den för att ge mer vänliga namn för kolumnrubrikerna. 
+Vi kan lägga till kolumnrubriker använder hello [redigera Metadata] [ edit-metadata] modul.
+Du använder hello [redigera Metadata] [ edit-metadata] modulen toochange metadata som associeras med en datamängd. I detta fall kan använda vi det tooprovide mer eget namn för kolumnrubrikerna. 
 
-Att använda [redigera Metadata][edit-metadata], du först ange vilka kolumner som ska ändras (i det här fallet för alla.) Därefter måste ange du åtgärden som ska utföras på dessa kolumner (i det här fallet, ändra kolumnrubrikerna.)
+toouse [redigera Metadata][edit-metadata], du först ange vilka kolumner toomodify (i det här fallet för alla.) Därefter måste du ange hello åtgärd toobe utförs på dessa kolumner (i det här fallet, ändra kolumnrubrikerna.)
 
-1. På modulpaletten, skriver du ”metadata” i den **Sök** rutan. Den [redigera Metadata] [ edit-metadata] visas i modullistan.
+1. Skriv ”metadata” i hello i hello modulpaletten **Sök** rutan. Hej [redigera Metadata] [ edit-metadata] visas i listan för hello-modulen.
 
-2. Klicka och dra den [redigera Metadata] [ edit-metadata] modulen till arbetsytan och släpp nedan datauppsättningen som vi har lagt till tidigare.
+2. Klicka och dra hello [redigera Metadata] [ edit-metadata] modulen till hello arbetsytan och släpp det nedan hello datauppsättningen som vi har lagt till tidigare.
 
-3. Dataset för att ansluta den [redigera Metadata][edit-metadata]: Klicka på utdataporten för datauppsättningen (liten cirkel längst ned i datauppsättningen) genom att dra till indataport av [redigera Metadata] [ edit-metadata] (små cirkeln längst upp i modulen), släpper musknappen. Modulen och dataset vara ansluten även om du flyttar antingen på arbetsytan.
+3. Ansluta hello dataset toohello [redigera Metadata][edit-metadata]: Klicka på hello utdataporten för hello datauppsättningen (hello liten cirkel längst hello hello dataset) genom att dra toohello indataport av [redigera Metadata ] [ edit-metadata] (hello liten cirkel hello överst i hello module), släpper musknappen hello. hello dataset och modulen vara ansluten även om du flyttar antingen på hello arbetsytan.
    
-   Experimentet bör nu se ut ungefär så här:  
+   hello experimentet bör nu se ut ungefär så här:  
    
    ![Lägga till redigera Metadata][1]
    
-   Rött utropstecken visar att vi inte har ställts in egenskaperna för den här modulen ännu. Vi ska göra nästa avsnitt.
+   hello rött utropstecken visar att vi inte har ställts in hello egenskaper för den här modulen ännu. Vi ska göra nästa avsnitt.
    
    > [!TIP]
-   > Du kan lägga till en kommentar till en modul genom att dubbelklicka på modulen och skriva text. På så sätt kan du snabbt se vad modulen gör i experimentet. I det här fallet dubbelklickar du på den [redigera Metadata] [ edit-metadata] modulen och Skriv kommentaren ”Lägg till kolumnrubrikerna”. Klicka på någon annanstans på arbetsytan för att stänga dialogrutan. Om du vill visa kommentaren klickar du på nedpilen i modulen.
+   > Du kan lägga till en kommentar tooa modul genom att dubbelklicka på hello-modulen och skriva in text. Detta kan hjälpa dig en överblick över vilka hello-modulen gör i experimentet. I det här fallet dubbelklickar du på hello [redigera Metadata] [ edit-metadata] modulen och Skriv hello kommentar ”Lägg till kolumnrubrikerna”. Klicka på någon annanstans på hello arbetsytan tooclose hello textruta. toodisplay hello kommentar och klickar på hello nedåtpilen för hello-modulen.
    > 
    > ![Redigera Metadatamodul med kommentar har lagts till][8]
    > 
-4. Välj [redigera Metadata][edit-metadata], och i den **egenskaper** till höger om arbetsytan klickar du på **starta kolumnväljaren**.
+4. Välj [redigera Metadata][edit-metadata], och i hello **egenskaper** fönstret toohello höger i hello arbetsytan och klicka på **starta kolumnväljaren**.
 
-5. I den **Markera kolumner** dialogrutan Välj alla rader i **tillgängliga kolumner** och klicka på > att flytta dem till **valda kolumner**.
-   Dialogrutan bör se ut så här:
+5. I hello **Markera kolumner** dialogrutan, Välj alla hello rader i **tillgängliga kolumner** och klicka på > toomove dem för**valda kolumner**.
+   hello dialogrutan bör se ut så här:
 
    ![Kolumnväljaren med alla kolumner har valts][2]
 
-6. Klicka på den **OK** är markerat.
+6. Klicka på hello **OK** är markerat.
 
-7. I den **egenskaper** rutan Sök efter den **nya kolumnnamn** parameter. Ange en lista över namn för de 21 kolumnerna i datauppsättning, avgränsade med kommatecken och kolumnordning i det här fältet. Du kan hämta kolumner namnen i dataset-dokumentationen på webbplatsen UCI eller av praktiska skäl kan du kopiera och klistra in i följande lista:  
+7. Tillbaka i hello **egenskaper** rutan Sök efter hello **nya kolumnnamn** parameter. Ange en lista över namn för hello 21 kolumner i datauppsättning för hello, avgränsade med kommatecken och kolumnordning i det här fältet. Du kan hämta hello kolumner namn hello dataset-dokumentationen på hello UCI webbplats eller i informationssyfte kan du kopiera och klistra in hello följande lista:  
    
        Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
    
-   Egenskapsrutan ser ut så här:
+   hello egenskapsrutan ser ut så här:
    
    ![Egenskaper för redigera-Metadata][3]
 
 > [!TIP]
-> Om du vill kontrollera kolumnrubrikerna kör experimentet (klicka på **kör** under arbetsytan för experimentet). När körningen (en grön bock på [redigera Metadata][edit-metadata]), klicka på utdataporten för den [redigera Metadata] [ edit-metadata] modulen och välj **visualisera**. Du kan visa resultatet av alla moduler på samma sätt att visa förloppet för data via experimentet.
+> Om du vill tooverify hello kolumnrubriker, köra experimentet hello (klicka på **kör** nedan hello experimentet). När körningen (en grön bock på [redigera Metadata][edit-metadata]), klicka på hello utdataporten för hello [redigera Metadata] [ edit-metadata] modulen och välj **visualisera**. Du kan visa hello utdata från alla moduler i hello samma sätt tooview hello fortskrider hello data via hello experiment.
 > 
 > 
 
 ## <a name="create-training-and-test-datasets"></a>Skapa utbildning och testa datauppsättningar
-Vi måste vissa data att träna modellen och vissa att testa den.
-Så i nästa steg i experimentet vi dela datauppsättningen i två separata datauppsättningar: en för vår modell och en för att testa den.
+Vi behöver vissa datamodellen tootrain hello och vissa tootest den.
+Så i hello nästa steg i hello experiment kan vi dela hello dataset i två separata datauppsättningar: en för vår modell och en för att testa den.
 
-Detta gör vi använder den [dela Data] [ split] modul.  
+toodo kan vi använda hello [dela Data] [ split] modul.  
 
-1. Hitta de [dela Data] [ split] , drar den till arbetsytan, och koppla den till den [redigera Metadata] [ edit-metadata] modul.
+1. Hitta hello [dela Data] [ split] , drar den till hello arbetsytan, och koppla den toohello [redigera Metadata] [ edit-metadata] modul.
 
-2. Som standard är delade förhållandet mellan 0,5 och **Randomized dela** parameter har angetts. Det innebär att en slumpmässig halvan av data utdata via en port för den [dela Data] [ split] modulen och hälften via den andra. Du kan justera parametrarna, samt de **slumptal** parameter, ändra delningen av träning och testning av data. I det här exemplet vi lämna dem som-är.
+2. Som standard är hello dela förhållandet 0,5 och hello **Randomized dela** parameter har angetts. Det innebär att en slumpmässig halvan av hello data utdata via en port för hello [dela Data] [ split] modulen och halva via hello som andra. Du kan justera parametrarna, samt hello **slumptal** parametern toochange hello delas upp mellan träning och testning av data. I det här exemplet vi lämna dem som-är.
    
    > [!TIP]
-   > Egenskapen **andel av rader i den första utdatauppsättningen** avgör hur mycket data som utdata med den *vänstra* utgående port. Till exempel om du anger förhållandet till 0,7 är 70% av data utdata genom vänstra porten och 30% via rätt port.  
+   > Hej egenskapen **andel av rader i hello första utdatauppsättningen** avgör hur mycket av hello data är utdata via hello *vänstra* utgående port. Till exempel om du ställer in hello förhållandet too0.7 är sedan 70% av hello data utdata via hello vänster port och 30% via hello rätt port.  
    > 
    > 
 
-3. Dubbelklicka på den [dela Data] [ split] modulen och Skriv kommentaren, ”utbildning/testning data dela 50%”. 
+3. Dubbelklicka på hello [dela Data] [ split] modulen och ange hello kommentar, ”utbildning/testning data dela 50%”. 
 
-Vi kan använda utdata för den [dela Data] [ split] modulen men vi vill, men vi väljer att använda vänstra utdata som träningsdata och rätt utdata som tester.  
+Vi kan använda hello utdata för hello [dela Data] [ split] modulen men vi vill, men vi välja toouse hello vänstra utdata som träningsdata och hello höger utdata som tester.  
 
-Som anges i den [föregående steg](machine-learning-walkthrough-2-upload-data.md), kostnaden för misclassifying en hög kreditrisk som låg är fem gånger högre än kostnaden för misclassifying en låg kreditrisk som hög. Kontot för den här vi för att generera en ny datamängd som visar den här kostnaden-funktionen. I den nya datamängden replikeras varje hög risk exempel fem gånger medan varje låg risk exempel inte replikeras.   
+Som anges i hello [föregående steg](machine-learning-walkthrough-2-upload-data.md), hello kostnaden för misclassifying en hög kreditrisk som låg är fem gånger högre än hello kostnaden för misclassifying en låg kreditrisk som hög. tooaccount för den här vi skapa en ny datamängd som visar den här kostnaden-funktionen. I hello nya datamängden replikeras varje hög risk exempel fem gånger medan varje låg risk exempel inte replikeras.   
 
 Vi kan göra replikeringen med hjälp av R-koden:  
 
-1. Leta upp och dra den [köra R-skriptet] [ execute-r-script] modul på arbetsytan för experimentet. 
+1. Leta upp och dra hello [köra R-skriptet] [ execute-r-script] modulen till hello experimentet. 
 
-2. Anslut den vänstra utdataporten för den [dela Data] [ split] modul till den första indataporten (”Dataset1”) för den [köra R-skriptet] [ execute-r-script] modul.
+2. Ansluta hello kvar utdataporten för hello [dela Data] [ split] modulen toohello första indata port (”Dataset1”) av hello [köra R-skriptet] [ execute-r-script] modul.
 
-3. Dubbelklicka på den [köra R-skriptet] [ execute-r-script] modulen och Skriv kommentaren ”ange kostnaden justering”.
+3. Dubbelklicka på hello [köra R-skriptet] [ execute-r-script] modulen och ange hello kommentar ”ange kostnaden justering”.
 
-4. I den **egenskaper** fönstret Ta bort standardtexten i den **R-skriptet** parametern och ange det här skriptet:
+4. I hello **egenskaper** fönstret Ta bort hello standardtexten i hello **R-skriptet** parametern och ange det här skriptet:
    
        dataset1 <- maml.mapInputPort(1)
        data.set<-dataset1[dataset1[,21]==1,]
@@ -138,20 +138,20 @@ Vi kan göra replikeringen med hjälp av R-koden:
        for (i in 1:5) data.set<-rbind(data.set,pos)
        maml.mapOutputPort("data.set")
 
-    ![R-skriptet i modulen köra R-skriptet][9]
+    ![R-skriptet i hello köra R-skriptet modul][9]
 
-Vi behöver göra den här samma replikeringsåtgärden för varje utdata från den [dela Data] [ split] modulen så att data utbildning och tester har samma kostnadsjustering. Det enklaste sättet att göra detta är genom att duplicera den [köra R-skriptet] [ execute-r-script] modul som vi har gjort och ansluta det till ett annat utgående porten för den [dela Data] [ split] modul.
+Vi behöver toodo samma replikeringsåtgärden för varje utdata av hello [dela Data] [ split] modulen så att hello träning och testning data har hello samma kostnad justering. Hej enklaste sättet toodo genom att duplicera hello [köra R-skriptet] [ execute-r-script] modulen vi gjorde och ansluta det toohello andra utdata porten för hello [dela Data] [ split] modul.
 
-1. Högerklicka på den [köra R-skriptet] [ execute-r-script] modulen och välj **kopiera**.
+1. Högerklicka på hello [köra R-skriptet] [ execute-r-script] modulen och välj **kopiera**.
 
-2. Högerklicka på arbetsytan för experimentet och välj **klistra in**.
+2. Högerklicka på hello experimentet och välj **klistra in**.
 
-3. Dra modulen nya på plats och ansluter sedan den högra utdataporten för den [dela Data] [ split] modul till den första indataporten på detta nya [köra R-skriptet] [ execute-r-script] modul. 
+3. Dra hello ny modul på plats och ansluter sedan hello rätt utdataporten för hello [dela Data] [ split] modulen toohello första indata-port för det nya [köra R-skriptet] [ execute-r-script] modul. 
 
-4. Längst ned på arbetsytan klickar du på **kör**. 
+4. Klicka hello botten hello arbetsytans **kör**. 
 
 > [!TIP]
-> Kopia av modulen köra R-skriptet innehåller samma skript som den ursprungliga modulen. När du kopierar och klistrar in en modul på arbetsytan behåller alla egenskaper för ursprungligt kopian.  
+> hello kopia av hello köra R-skriptet modulen innehåller hello samma skript som hello ursprunglig modul. När du kopierar och klistrar in en modul på arbetsytan hello behåller hello kopiera alla hello egenskaper för hello ursprungliga.  
 > 
 > 
 
@@ -161,7 +161,7 @@ Vårt experiment nu ser ut ungefär så här:
 
 Mer information om hur du använder R-skript i experimenten finns [Utöka ditt experiment med R](machine-learning-extend-your-experiment-with-r.md).
 
-**Nästa: [tåg och utvärdera modellerna](machine-learning-walkthrough-4-train-and-evaluate-models.md)**
+**Nästa: [tåg och utvärdera hello modeller](machine-learning-walkthrough-4-train-and-evaluate-models.md)**
 
 [0]: ./media/machine-learning-walkthrough-3-create-new-experiment/create-new-experiment.png
 [5]: ./media/machine-learning-walkthrough-3-create-new-experiment/rename-experiment.png

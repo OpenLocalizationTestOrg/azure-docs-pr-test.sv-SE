@@ -1,63 +1,46 @@
 ---
-title: "Kompletterande lektion i Azure Analysis Services-självstudiekurs: Detaljrader | Microsoft Docs"
-description: "Beskriver hur du skapar uttryck för rader med detaljerad information i Azure Analysis Services-självstudiekursen."
-services: analysis-services
-documentationcenter: 
-author: minewiskan
-manager: erikre
-editor: 
-tags: 
-ms.assetid: 
-ms.service: analysis-services
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: na
-ms.date: 05/26/2017
-ms.author: owend
-ms.openlocfilehash: fde5cd9a9efc3a13e731a91962ced5c086a72355
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
-ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+Rubrik: aaa ”Azure Analysis Services självstudiekursen kompletterande lektionen: detaljrader | Microsoft Docs ”beskrivning: Beskriver hur toocreate en detalj rader uttryck i hello Azure Analysis Services-kursen.
+tjänster: analysis services dokumentationcenter: '' författare: minewiskan manager: erikre editor: '' taggar: ''
+
+MS.AssetID: ms.service: analysis services ms.devlang: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 2017-05/26 ms.author: owend
 ---
 # <a name="supplemental-lesson---detail-rows"></a>Kompletterande lektion – Detaljrader
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-I den här kompletterande lektionen använder du DAX-redigeraren för att definiera ett anpassad uttryck för rader med detaljerad information. Ett uttryck för rader med detaljerad information är en egenskap för ett mått som ger slutanvändarna mer information om det aggregerade resultatet av ett mått. 
+Kompletterande nu bör använda du hello DAX Editor toodefine ett uttryck i detalj rader. Ett uttryck för information om rader är en egenskap på ett mått och ger slutanvändare mer information om hello visar det sammanlagda resultatet för ett mått. 
   
-Uppskattad tidsåtgång för den här lektionen: **10 minuter**  
+Uppskattad tid toocomplete lektionen: **10 minuter**  
   
 ## <a name="prerequisites"></a>Krav  
-Den här kompletterande lektionen ingår i en självstudiekurs om tabellmodeller. Innan du utför uppgifterna i den här kompletterande lektionen måste du ha slutfört alla föregående lektioner eller ha ett slutfört Adventure Works Internet Sales-exempelmodellprojekt.  
+Den här kompletterande lektionen ingår i en självstudiekurs om tabellmodeller. Innan du utför hello uppgifter i den här kompletterande lektionen bör du slutfört alla tidigare erfarenheter eller har en slutförd Adventure Works Internet försäljning modellen exempelprojektet.  
   
-## <a name="what-do-we-need-to-solve"></a>Vad behöver vi lösa?
-Låt oss titta på informationen för vårt InternetTotalSales-mått innan vi lägger till ett uttryck för rader med detaljerad information.
+## <a name="what-do-we-need-toosolve"></a>Vad gör vi behöver toosolve?
+Nu ska vi titta hello information för våra InternetTotalSales mått innan du lägger till ett uttryck för information om rader.
 
-1.  Klicka på menyn **Modell** > **Analysera i Excel** i SSDT för att öppna Excel och skapa en tom pivottabell.
+1.  Klicka på hello i SSDT, **modellen** menyn > **analysera i Excel** tooopen Excel och skapa en tom pivottabell.
   
-2.  I **Pivottabellfält** lägger du till måttet **InternetTotalSales** från tabellen FactInternetSales till **Values**, **CalendarYear** från tabellen DimDate till **Columns** och **EnglishCountryRegionName** till **Rows**. Pivottabellen ger oss nu aggregerade resultat från måttet InternetTotalSales per region och år. 
+2.  I **PivotTable-Fields**, lägga till hello **InternetTotalSales** för att mäta från hello FactInternetSales tabell**värden**, **CalendarYear**från hello DimDate tabell för**kolumner**, och **EnglishCountryRegionName** för**rader**. Vår pivottabell kan nu oss sammanlagda resultat från hello InternetTotalSales mått av regioner och år. 
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-pivottable.png)
 
-3. Dubbelklicka på ett aggregerat värde för ett år och ett regionnamn i pivottabellen. Här dubbelklickade vi på värdet för Australien år 2014. Ett nytt blad öppnas som innehåller data, men inte användbara data.
+3. Dubbelklicka på ett insamlat värde för ett år och ett regionnamn i hello pivottabellen. Här dubbelklickar vi hello värde för Australien och hello år 2014. Ett nytt blad öppnas som innehåller data, men inte användbara data.
 
     ![aas-lesson-detail-rows-pivottable](../tutorials/media/aas-lesson-detail-rows-sheet.png)
   
-Det vi vill se här är en tabell med kolumner och rader med data som bidrar till det aggregerade resultatet av vårt InternetTotalSales-mått. Det ordnar vi genom att lägga till ett uttryck för rader med detaljerad information som en egenskap för måttet.
+Vad vi vill toosee här är en tabell som innehåller kolumner och rader med data som bidrar toohello visar det sammanlagda resultatet för våra InternetTotalSales mått. toodo att vi kan lägga till ett uttryck för information om rader som en egenskap för hello mått.
 
 ## <a name="add-a-detail-rows-expression"></a>Lägga till ett uttryck för rader med detaljerad information
 
-#### <a name="to-create-a-detail-rows-expression"></a>Så här skapar du ett uttryck för rader med detaljerad information 
+#### <a name="toocreate-a-detail-rows-expression"></a>toocreate ett detaljerat rader uttryck 
   
-1. Klicka på måttet **InternetTotalSales** i FactInternetSales-tabellens rutnät för mått i SSDT. 
+1. Klicka på hello i hello FactInternetSales tabell mått rutnät i SSDT, **InternetTotalSales** mått. 
 
-2. I **Egenskaper** > **Uttryck för rader med detaljerad information** klickar du på knappen för redigeraren för att öppna DAX-redigeraren.
+2. I **egenskaper** > **detalj rader uttryck**, klicka på hello editor knappen tooopen hello DAX-redigeraren.
 
     ![aas-lesson-detail-rows-ellipse](../tutorials/media/aas-lesson-detail-rows-ellipse.png)
 
-3. Ange följande uttryck i DAX-redigeraren:
+3. DAX-redigeraren, ange hello följande uttryck:
 
     ```
     SELECTCOLUMNS(
@@ -72,9 +55,9 @@ Det vi vill se här är en tabell med kolumner och rader med data som bidrar til
 
     ```
 
-    Det här uttrycket anger namn, kolumner och måttresultat från tabellen FactInternetSales och relaterade tabeller returneras om en användare dubbelklickar på ett aggregerat resultat i en pivottabell eller rapport.
+    Det här uttrycket anger namn, kolumner och mått från hello FactInternetSales tabell och relaterade tabeller returneras när en användare dubbelklickar på ett aggregerade resultat i en pivottabell eller rapporten.
 
-4. Gå tillbaka till Excel, ta bort bladet som du skapade i steg 3 och dubbelklicka på ett aggregerat värde. Nu när en egenskap för uttryck för rader med detaljerad information har definierats för måttet öppnas ett nytt blad med mer användbara data.
+4. Ta bort hello blad skapade i steg3 i Excel, och dubbelklicka på ett insamlat värde. Den här gången med en detalj rader uttryck-egenskap som definierats för hello mått, ett nytt blad öppnas med mycket mer användbar data.
 
     ![aas-lesson-detail-rows-detailsheet](../tutorials/media/aas-lesson-detail-rows-detailsheet.png)
 

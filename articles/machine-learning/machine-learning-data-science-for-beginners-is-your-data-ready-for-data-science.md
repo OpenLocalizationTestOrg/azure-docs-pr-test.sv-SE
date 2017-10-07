@@ -1,6 +1,6 @@
 ---
-title: "Är dina data klara för datavetenskap? -Utvärdering av Azure Machine Learning | Microsoft Docs"
-description: "Lär dig 4 kriterier för data ska vara klar för datavetenskap. Datavetenskap för nybörjare video 2 har konkreta exempel för att hjälpa dig med grundläggande data utvärdering."
+title: "aaaIs dina data är klara för datavetenskap? -Utvärdering av Azure Machine Learning | Microsoft Docs"
+description: "Lär dig hello 4 kriterier för data toobe redo för datavetenskap. Datavetenskap för nybörjare video 2 har konkreta exempel toohelp med grundläggande data utvärderingsversionen."
 keywords: "relevanta data utvärdera data, förbereder data, Datakriterier, data som är redo"
 services: machine-learning
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: cgronlun
-ms.openlocfilehash: c4a8bc11aec2f71796f589c0af54cc92253e5180
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: ef6bb680ace771537157dbdd50a4ccce0a3eb7ed
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Är dina data klara för datavetenskap?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Datavetenskap för nybörjare serien
-Lär dig att utvärdera dina data att kontrollera att den uppfyller grundläggande kriterier för att vara klar för datavetenskap.
+Lär dig hur tooevaluate dina data toomake att den uppfyller grundläggande kriterier toobe redo för datavetenskap.
 
-Titta på alla för att få ut mesta möjliga av serien. [Gå till listan över videor](#other-videos-in-this-series)
+tooget hello mesta av hello-serien, titta på alla. [Gå toohello lista över videor](#other-videos-in-this-series)
 <br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/SupervisionNotRequired/9/player]
@@ -33,81 +33,81 @@ Titta på alla för att få ut mesta möjliga av serien. [Gå till listan över 
 >
 
 ## <a name="other-videos-in-this-series"></a>Andra videor i den här serien
-*Datavetenskap för nybörjare* är en snabb introduktion till datavetenskap i fem kort video.
+*Datavetenskap för nybörjare* är en snabb introduktion toodata vetenskap i fem kort video.
 
-* Video 1: [5 frågor datavetenskap svar](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min. 14 sek)*
+* Video 1: [hello 5 frågor datavetenskap svar](machine-learning-data-science-for-beginners-the-5-questions-data-science-answers.md) *(5 min. 14 sek)*
 * Video 2: Är redo för datavetenskap dina data?
 * Video 3: [Ställ en fråga som du kan svara med data](machine-learning-data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) *(4 min 17 sek)*
 * Video 4: [förutsäga ett svar med en enkel modell](machine-learning-data-science-for-beginners-predict-an-answer-with-a-simple-model.md) *(7 min. 42 sek)*
-* Video 5: [kopiera andras arbete för att göra datavetenskap](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
+* Video 5: [kopiera andras arbete toodo datavetenskap](machine-learning-data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) *(3 min 18 sek)*
 
 ## <a name="transcript-is-your-data-ready-for-data-science"></a>Betyg: Är redo för datavetenskap dina data?
-Välkommen till ”är dina data redo för datavetenskap”? andra videon i serien *datavetenskap för nybörjare*.  
+Välkommen för ”är dina data redo för datavetenskap”? Hej andra video i hello serien *datavetenskap för nybörjare*.  
 
-Innan datavetenskap kan ge dig svaren som du vill ha så att det vissa hög kvalitet raw material att arbeta med. Precis som upprättar en pizza, desto bättre beståndsdelarna du börjar med bättre färdiga produkten. 
+Innan datavetenskap kan ge hello av svar som du vill kan du toogive den vissa hög kvalitet raw material toowork med. Precis som gör en pizza hello hello bättre hello-komponenter du börjar med, bättre hello färdiga produkten. 
 
 ## <a name="criteria-for-data"></a>Kriterier för data
-Så om datavetenskap finns det vissa komponenter som behövs för att ihop.
+Så hello gäller datavetenskap finns det vissa komponenter att vi behöver toopull tillsammans.
 
 Vi behöver data som är:
 
 * Relevanta
 * Ansluten
 * Korrekt
-* Tillräckligt för att arbeta med
+* Tillräckligt med toowork med
 
 ## <a name="is-your-data-relevant"></a>Gäller dina data?
-Den första komponenten - måste data som är relevanta.
+Hello första beståndsdel - måste data som är relevanta.
 
 ![Relevanta data kontra irrelevanta data - utvärdera data](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/relevant-and-irrelevant-data.png)
 
-Titta på tabellen till vänster. Vi uppfyllda sju personer utanför Boston staplar, mätt blod alkohol nivån, Red Sox batting medelvärdet för de senaste spelet och pris av i arkivet närmaste bekvämlighet.
+Titta på tabellen hello hello vänster. Vi uppfyllda sju personer utanför Boston staplar, mätt sina blod alkohol nivå, hello Red Sox batting medelvärdet för de senaste spelet och hello pris av i hello närmsta bekvämlighet store.
 
-Det här är alla perfekt legitima data. Endast fel är att den inte är relevanta. Det finns ingen uppenbara relation mellan dessa siffror. Om jag gav mjölk och rött Sox batting medelvärdet aktuella pris, går det inte kunde du tror min blod alkoholhalt.
+Det här är alla perfekt legitima data. Endast fel är att den inte är relevanta. Det finns ingen uppenbara relation mellan dessa siffror. Om jag gav du hello aktuella pris mjölk och hello Red Sox batting medelvärde, det finns inget sätt som du kan gissa blod alkohol innehållet.
 
-Nu vill titta på tabellen till höger. Den här tiden mäts vi varje person body massa och räknas antalet drycker som de har haft.  Talen i varje rad är nu relevanta till varandra. Om jag gav min brödtext massa och antalet Margaritas som jag har haft du göra en uppskattning av min blod alkohol innehåll.
+Titta på hello tabellen nu på hello rätt. Den här gången vi mätt varje person brödtext masslagring och inventerade hello antalet drycker som de har haft.  hello talen i varje rad är nu andra relevanta tooeach. Om jag gav min brödtext massa och hello antal Margaritas som jag har haft, kan du en uppskattning av min blod alkohol innehåll.
 
 ## <a name="do-you-have-connected-data"></a>Du har anslutit data?
-Nästa komponenten är anslutna data.
+hello nästa komponent är anslutna data.
 
 ![Ansluten data kontra frånkopplade data - Datakriterier data är klar](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/connected-vs-disconnected-data.png)
 
-Här är några relevanta data för hamburgers kvalitet: grill temperatur, patty vikt och betyg i den lokala mat magazine. Men hittar luckor i tabellen till vänster.
+Här är några relevanta data på hello kvalitet hamburgers: grill temperatur, patty vikt och betyg i hello lokala mat magazine. Men Observera hello luckor i hello tabellen hello vänster.
 
-De flesta datauppsättningar saknas vissa värden. Det är vanligt att ha hål så här och det finns olika sätt att komma runt dem. Men om det finns för mycket saknas, dina data börjar likna ost och Schweiz.
+De flesta datauppsättningar saknas vissa värden. Det är den vanliga toohave hål så här och det finns sätt toowork runtom. Men om det finns för mycket saknas, dina data börjar toolook som ost och Schweiz.
 
-Om du tittar på tabellen till vänster, finns det så mycket data som saknas, är det svårt att få fram alla typer av relationen mellan galler temperatur- och patty vikt. Detta är ett exempel på frånkopplade data.
+Om du tittar på hello tabell hello vänster finns så mycket data som saknas, är det svårt toocome in med någon typ av relation mellan grill temperatur- och patty vikt. Detta är ett exempel på frånkopplade data.
 
-I högra tabellen men är full och slutföra – ett exempel på anslutna data.
+hello tabellen på hello höger, men är full och slutföra – ett exempel på anslutna data.
 
 ## <a name="is-your-data-accurate"></a>Stämmer din data?
-Nästa komponenten vi behöver är korrekta. Här är fyra mål som vi vill att träffa med pilarna.
+hello är nästa beståndsdel vi behöver korrekta. Här är fyra mål som vi vill att toohit med pilarna.
 
 ![Korrekta data kontra felaktiga data - data villkor](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/inaccurate-vs-accurate-data.png)
 
-Titta på målet i det övre högra hörnet. Vi har en nära gruppering höger runt piltavla. Naturligtvis är korrekt. Oväntat, datavetenskap språk, vår prestanda till målet höger under det anses också vara korrekt.
+Titta på hello mål i hello övre högra hörnet. Vi har en nära gruppering höger runt hello piltavla. Naturligtvis är korrekt. Oväntat, på hello språk datavetenskap, våra prestanda hello mål höger under det anses också vara korrekt.
 
-Om du har att kartlägga mittpunkt pilarna visas att det är mycket nära piltavla. Pilarna sprids ut alla runt mål, så att de ska anses vara inexakt, men de är uppbyggd kring piltavla, så att de ska anses vara korrekt.
+Om du toomap ut hello mittpunkt pilarna, skulle du se att det är mycket nära toohello piltavla. hello pilarna sprids ut alla runt hello mål, så att de ska anses vara inexakt, men de är uppbyggd kring hello piltavla så att de ska anses vara korrekt.
 
-Nu titta på det övre vänstra målet. Vår pilarna nådde här mycket nära varandra en nära gruppering. De är exakt, men de är felaktigt eftersom mitt går ut piltavla. Och naturligtvis pilarna i det nedre vänstra målet är både stämmer och inexakt. Den här archer måste flera praxis.
+Nu titta på hello övre vänstra mål. Vår pilarna nådde här mycket nära varandra en nära gruppering. De är exakt, men de är felaktigt eftersom hello center går ut hello piltavla. Och naturligtvis hello pilarna i hello nedre vänstra mål är både stämmer och inexakt. Den här archer måste flera praxis.
 
-## <a name="do-you-have-enough-data-to-work-with"></a>Har du tillräckligt med data att arbeta med?
-Slutligen beståndsdel #4 – vi måste ha tillräckligt med data.
+## <a name="do-you-have-enough-data-toowork-with"></a>Har du tillräckligt med data toowork med?
+Slutligen beståndsdel #4 – vi behöver toohave tillräckligt med data.
 
 ![Har du tillräckligt med data för analys? Utvärdering av](./media/machine-learning-data-science-for-beginners-is-your-data-ready-for-data-science/barely-enough-data.png)
 
-Tänk på att varje datapunkt i tabellen som en pensellinje i en återgivningen. Om du har några av dem återgivningen kan vara ganska fuzzy - det är svårt att se vad det är.
+Tänk på att varje datapunkt i tabellen som en pensellinje i en återgivningen. Om du har några av dem, hello återgivningen kan vara ganska fuzzy - det är svårt tootell vad det är.
 
-Om du lägger till vissa mer penseldrag startar din återgivnings lite frågesporten.
+Om du lägger till vissa mer penseldrag startar din återgivnings tooget lite skarpare.
 
-När du har knappt tillräckligt med linjer, ser du att se vissa bred beslut. Är det någon plats kanske du vill besöka? Det ser ut klara, som ser ut som ren vattenstämplar – Ja, som är där vi på semester.
+När du har knappt tillräckligt med linjer visas bara tillräckligt med toomake bred beslut. Är någonstans I kanske vill toovisit? Det ser ut klara, som ser ut som ren vattenstämplar – Ja, som är där vi på semester.
 
-När du lägger till mer data bilden blir tydligare och du kan göra mer detaljerad beslut. Nu kan jag tittar på tre hotell på den vänstra banken. Du vet jag gillar funktionerna arkitekturen för den i förgrunden. Jag kommer förblir det, på den tredje våningen.
+När du lägger till mer data hello bild blir tydligare och du kan göra mer detaljerad beslut. Nu kan jag se hello tre hotell på hello vänstra bank. Du vet jag gillar hello arkitektur funktioner i hello något i hello förgrunden. Jag kommer det, stanna kvar på hello tredje våning.
 
-Data som är relevanta, ansluten, korrekt, och inte tillräckligt har alla komponenter som vi behöver göra vissa högkvalitativ datavetenskap.
+Med data som är relevanta, ansluten, korrekt, och tillräckligt, har vi alla hello komponenter toodo måste vissa datavetenskap med hög kvalitet.
 
-Se till att checka ut de fyra videor som i *datavetenskap för nybörjare* från Microsoft Azure Machine Learning.
+Vara säker på att toocheck ut hello andra fyra videor i *datavetenskap för nybörjare* från Microsoft Azure Machine Learning.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Försök med ett första datavetenskap experiment i Machine Learning Studio](machine-learning-create-experiment.md)
-* [Få en introduktion till Maskininlärning på Microsoft Azure](machine-learning-what-is-machine-learning.md)
+* [Få en introduktion tooMachine utbildning i Microsoft Azure](machine-learning-what-is-machine-learning.md)

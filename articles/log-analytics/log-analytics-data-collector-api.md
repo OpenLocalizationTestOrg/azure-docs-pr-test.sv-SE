@@ -1,6 +1,6 @@
 ---
-title: Logga Analytics HTTP datainsamlaren API | Microsoft Docs
-description: "Du kan använda Log Analytics HTTP Data Collector API för att lägga till POST JSON-data i logganalys-databasen från klienter som kan anropa REST-API. Den här artikeln beskriver hur du använder API: et och har exempel på hur du publicerar data med hjälp av olika programmeringsspråk."
+title: aaaLog Analytics HTTP Data Collector API | Microsoft Docs
+description: "Du kan använda hello Log Analytics HTTP Data Collector API tooadd POST JSON toohello logganalys lagringsplats för data från alla klienter som kan anropa hello REST API. Den här artikeln beskriver hur toouse hello API och exempel på hur har toopublish data med hjälp av olika programmeringsspråk."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: bwren
-ms.openlocfilehash: b0c45ff8c1d4c9d35fbb3c8839b38a20df277055
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c2921082831c49da764d946ac9c4fab975a38185
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api"></a>Skicka data till logganalys med HTTP-Data Collector API
-Den här artikeln visar hur du använder HTTP-Data Collector API för att skicka data till logganalys från en REST API-klient.  Det beskriver hur du formatera data som samlas in av skript eller program, inkludera den i en begäran och har den begäran som auktoriserad genom logganalys.  Exempel för för PowerShell, C# och Python.
+# <a name="send-data-toolog-analytics-with-hello-http-data-collector-api"></a>Skicka data tooLog Analytics med hello HTTP Data Collector API: et
+Den här artikeln visar hur toouse hello HTTP Data Collector API: et toosend data tooLog Analytics från en REST API-klient.  Det beskrivs hur tooformat data som samlas in av skript eller program, inkludera den i en begäran och har den begäran som auktoriserad genom logganalys.  Exempel för för PowerShell, C# och Python.
 
 ## <a name="concepts"></a>Koncept
-Du kan använda HTTP Data Collector-API: et för att skicka data till logganalys från klienter som kan anropa REST-API.  Detta kan bero på en runbook i Azure Automation som samlar in hantering av data från Azure eller ett annat moln, eller så kan vara ett alternativ-system som använder Log Analytics för att sammanställa och analysera data.
+Du kan använda hello HTTP Data Collector API: et toosend data tooLog Analytics från klienter som kan anropa REST-API.  Detta kan bero på en runbook i Azure Automation som samlar in hantering av data från Azure eller ett annat moln, eller så kan vara ett alternativ-system som använder logganalys tooconsolidate och analysera data.
 
-Alla data i logganalys-databasen lagras som en post med en viss posttyp.  Du kan formatera dina data ska skickas till http-Data Collector API som flera poster i JSON.  När du skickar data, skapas en enskild post i databasen för varje post i nyttolasten i begäran.
+Alla data i hello logganalys databasen lagras som en post med en viss posttyp.  Du kan formatera dina data toosend toohello HTTP Data Collector API som flera poster i JSON.  När du skickar hello data, skapas en enskild post i hello databas för varje post i hello nyttolasten i begäran.
 
 
 ![Översikt över HTTP-datainsamlare](media/log-analytics-data-collector-api/overview.png)
@@ -34,7 +34,7 @@ Alla data i logganalys-databasen lagras som en post med en viss posttyp.  Du kan
 
 
 ## <a name="create-a-request"></a>Skapa en förfrågan
-Om du vill använda HTTP Data Collector-API: et kan du skapa en POST-begäran som innehåller data som ska skickas i JavaScript Object Notation (JSON).  I följande tre tabeller anges de attribut som krävs för varje begäran. Vi beskriver varje attribut i detalj senare i artikeln.
+toouse hello HTTP datainsamlaren API, skapa en POST-begäran som innehåller hello data toosend i JavaScript Object Notation (JSON).  Hej följande tre tabeller listan hello attribut som krävs för varje begäran. Vi beskriver varje attribut i detalj senare i hello artikeln.
 
 ### <a name="request-uri"></a>URI-begäran
 | Attribut | Egenskap |
@@ -46,30 +46,30 @@ Om du vill använda HTTP Data Collector-API: et kan du skapa en POST-begäran so
 ### <a name="request-uri-parameters"></a>URI-parametrar för begäran
 | Parameter | Beskrivning |
 |:--- |:--- |
-| CustomerID |Den unika identifieraren för Microsoft Operations Management Suite-arbetsyta. |
-| Resurs |Resursnamnet API: / api/logs. |
-| API-Version |Versionen av API: et för användning med denna begäran. Det är för närvarande 2016-04-01. |
+| CustomerID |hello Unik identifierare för hello Microsoft Operations Management Suite-arbetsyta. |
+| Resurs |hello API resursnamn: / api/logs. |
+| API-Version |hello version av hello API toouse med den här begäran. Det är för närvarande 2016-04-01. |
 
 ### <a name="request-headers"></a>Huvuden för begäran
 | Huvudet | Beskrivning |
 |:--- |:--- |
-| Auktorisering |Signaturen för auktorisering. Senare i artikeln kan du läsa om hur du skapar ett HMAC SHA256-huvud. |
-| Typ |Ange posttyp för de data som skickas. Loggtyp stöder för närvarande endast alfanumeriska tecken. Stöder inte siffror eller specialtecken. |
-| x-ms-date |Det datum då begäran bearbetades i RFC 1123 format. |
-| tid genererade fält |Namnet på ett fält i de data som innehåller dataobjektet tidsstämpel. Om du anger ett fält och dess innehåll används för **TimeGenerated**. Om det här fältet har inte angetts, standard för **TimeGenerated** är den tid som meddelandet inhämtas. Innehållet i fältet meddelande bör följa ISO 8601-formatet ÅÅÅÅ-MM-ddTHH. |
+| Auktorisering |hello auktorisering signatur. Senare i hello artikeln kan du läsa om hur toocreate en HMAC SHA256-huvud. |
+| Typ |Ange hello posttyp hello data som skickas. Typ av hello stöder för närvarande endast alfanumeriska tecken. Stöder inte siffror eller specialtecken. |
+| x-ms-date |hello datum hello begäran bearbetades i RFC 1123 format. |
+| tid genererade fält |hello namnet på ett fält i hello data som innehåller hello tidsstämpel för hello dataobjektet. Om du anger ett fält och dess innehåll används för **TimeGenerated**. Om det här fältet har inte angetts, hello standard för **TimeGenerated** är hello tid att hello meddelandet inhämtas. hello innehållet i fältet för hello-meddelande bör följa hello ISO 8601-formatet ÅÅÅÅ-MM-ddTHH. |
 
 ## <a name="authorization"></a>Auktorisering
-Alla förfrågningar till Log Analytics HTTP Data Collector API måste innehålla ett authorization-huvud. För att autentisera en begäran, måste du registrera begäran med primärt eller den sekundära nyckeln för den arbetsyta som begäran kommer ifrån. Sedan överföra signaturen som en del av begäran.   
+Alla begäran toohello Log Analytics HTTP Data Collector API måste innehålla ett authorization-huvud. tooauthenticate en begäran, måste du registrera hello begäran med hello primära eller hello sekundärnyckeln för hello-arbetsyta som gör hello-begäran. Sen skicka signaturen i hello-begäran.   
 
-Här är formatet för authorization-huvud:
+Här är hello format för hello authorization-huvud:
 
 ```
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* är den unika identifieraren för Operations Management Suite-arbetsyta. *Signaturen* är en [hashbaserad meddelandeautentiseringskod (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) som skapas från begäran och sedan beräknas med hjälp av den [SHA256-algoritmen](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Sedan, koda den med hjälp av Base64-kodning.
+*WorkspaceID* är hello Unik identifierare för hello Operations Management Suite-arbetsyta. *Signaturen* är en [hashbaserad meddelandeautentiseringskod (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) som skapas från hello begäran och sedan beräknas med hjälp av hello [SHA256-algoritmen](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx). Sedan, koda den med hjälp av Base64-kodning.
 
-Använd följande format för att koda den **SharedKey** signatur sträng:
+Använd det här formatet tooencode hello **SharedKey** signatur sträng:
 
 ```
 StringToSign = VERB + "\n" +
@@ -85,16 +85,16 @@ Här är ett exempel på en signatur-sträng:
 POST\n1024\napplication/json\nx-ms-date:Mon, 04 Apr 2016 08:00:00 GMT\n/api/logs
 ```
 
-När du har en signatur-sträng, koda med hjälp av HMAC SHA256-algoritmen på UTF-8-kodad sträng och koda resultatet som Base64. Använd följande format:
+När du har hello signatur sträng, koda med hjälp av hello HMAC SHA256-algoritmen på hello UTF-8-kodad sträng och koda hello resultat som Base64. Använd följande format:
 
 ```
 Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 ```
 
-Exemplen i nästa avsnitt har exempelkod för att skapa ett authorization-huvud.
+hello prover i nästa avsnitt av hello ha exempel kod toohelp du skapar ett authorization-huvud.
 
 ## <a name="request-body"></a>Begärandetexten
-Innehållet i meddelandet måste vara i JSON. Det måste innehålla en eller flera poster med egenskapen namn och värdepar i det här formatet:
+hello innehållet i hello-meddelande måste vara i JSON. Det måste innehålla en eller flera poster med hello egenskapen namn och värdepar i det här formatet:
 
 ```
 {
@@ -105,7 +105,7 @@ Innehållet i meddelandet måste vara i JSON. Det måste innehålla en eller fle
 }
 ```
 
-Du kan batch flera poster tillsammans i en enskild begäran med hjälp av följande format. Alla poster måste vara samma posttyp.
+Du kan batch flera poster tillsammans i en enskild begäran med hjälp av hello följande format. Alla hello-poster måste vara hello samma posttyp.
 
 ```
 {
@@ -123,11 +123,11 @@ Du kan batch flera poster tillsammans i en enskild begäran med hjälp av följa
 ```
 
 ## <a name="record-type-and-properties"></a>Posttyp och egenskaper
-Du kan definiera en anpassad posttyp när du skickar data via Log Analytics HTTP Data Collector API. För närvarande skrivning inte av data till befintliga-posttyper som har skapats av andra typer av data och lösningar. Logganalys läser inkommande data och skapar sedan egenskaper som matchar datatyper med värden som du anger.
+Du kan definiera en anpassad posttyp när du skickar data via hello Log Analytics HTTP Data Collector API. Du kan inte för närvarande kan skriva data tooexisting posttyper som har skapats av andra typer av data och lösningar. Logganalys läser hello inkommande data och skapar sedan egenskaper som matchar hello datatyperna hello-värden som du anger.
 
-Varje begäran Log Analytics-API: et måste innehålla en **loggtyp** huvud med namnet för typ av post. Suffixet **_CL** läggs automatiskt till namnet du anger för att skilja den från andra typer av loggen som en anpassad logg. Om du anger namnet till exempel **MyNewRecordType**, logganalys skapas en post med typen **MyNewRecordType_CL**. Detta säkerställer att det inte finns några konflikter mellan användarskapade typnamn och de levereras i aktuellt eller framtida Microsoft solutions.
+Varje begäran toohello Log Analytics API måste innehålla en **loggtyp** huvud med hello namn för hello posttyp. hello suffix **_CL** är automatiskt tillagda toohello namn som du anger toodistinguish den från andra logga svarstyperna som en anpassad logg. Om du anger hello namn exempelvis **MyNewRecordType**, logganalys skapas en post med hello typen **MyNewRecordType_CL**. Detta säkerställer att det inte finns några konflikter mellan användarskapade typnamn och de levereras i aktuellt eller framtida Microsoft solutions.
 
-Lägger till ett suffix till egenskapsnamnet för att identifiera en egenskapens datatyp logganalys. Om en egenskap innehåller ett null-värde, ingår inte egenskapen i posten. Den här tabellen innehåller egenskapsdatatyp och motsvarande suffix:
+datatypen för tooidentify en egenskap, logganalys lägger till ett suffix toohello egenskapsnamn. Om en egenskap innehåller ett null-värde, ingår inte hello-egenskapen i posten. Den här tabellen innehåller hello egenskapsdatatyp och motsvarande suffix:
 
 | Datatypen för egenskapen | Suffix |
 |:--- |:--- |
@@ -137,75 +137,75 @@ Lägger till ett suffix till egenskapsnamnet för att identifiera en egenskapens
 | Datum/tid |_Tätt |
 | GUID |_g |
 
-Datatypen som Log Analytics använder för varje egenskap beror på om posttypen för den nya posten redan finns.
+hello-datatyp som Log Analytics använder för varje egenskap beror på om hello posttypen för hello nya posten redan finns.
 
-* Om typ av post inte finns, skapar en ny logganalys. Log Analytics använder JSON-typhärledning för att fastställa datatypen för varje egenskap för den nya posten.
-* Om typ av post finns försöker logganalys skapa en ny post baserat på befintliga egenskaper. Om datatypen för en egenskap i den nya posten matchar inte och kan inte konverteras till den befintliga typen, eller om posten innehåller en egenskap som inte finns, Log Analytics skapar en ny egenskap som har suffixet relevanta.
+* Om hello posttypen inte finns, skapar en ny logganalys. Log Analytics använder hello JSON typen härledning toodetermine hello datatyp för varje egenskap för hello nya posten.
+* Om hello posttyp finns försöker logganalys toocreate en ny post baserat på befintliga egenskaper. Om hello datatypen för en egenskap i hello nya posten inte matchar och inte går att konvertera toohello befintlig typ eller om hello post innehåller en egenskap som inte finns, Log Analytics skapar en ny egenskap har som relevanta hello-suffix.
 
 Skicka posten skulle till exempel skapa en post med tre egenskaper **number_d**, **boolean_b**, och **string_s**:
 
 ![Exempelpost 1](media/log-analytics-data-collector-api/record-01.png)
 
-Om du sedan skickat den här nästa post med alla värden som är formaterade som strängar, skulle det inte att ändra egenskaperna. Dessa värden kan konverteras till befintliga datatyper:
+Om du sedan skickat den här nästa post med alla värden som är formaterade som strängar, ändrar inte hello egenskaper. Dessa värden kan vara konverterade tooexisting datatyper:
 
 ![Exempelpost 2](media/log-analytics-data-collector-api/record-02.png)
 
-Men om du har gjort den här nästa skickas sedan Log Analytics skapar nya egenskaper **boolean_d** och **string_d**. Dessa värden kan inte konverteras:
+Men om du har gjort den här nästa skickas sedan Log Analytics skapar hello egenskaper för ny **boolean_d** och **string_d**. Dessa värden kan inte konverteras:
 
 ![Exempelpost 3](media/log-analytics-data-collector-api/record-03.png)
 
-Om du sedan skickat följande post innan typ av post skapades logganalys skulle skapa en post med tre egenskaper **antal_l**, **boolean_s**, och **string_s**. I den här posten formateras var och en av de initiala värdena som en sträng:
+Om du sedan skickat hello följande post, innan hello posttyp skapades logganalys skulle skapa en post med tre egenskaper **antal_l**, **boolean_s**, och **string_s**. I den här posten formateras hello inledande värden som en sträng:
 
 ![Exempelpost 4](media/log-analytics-data-collector-api/record-04.png)
 
 ## <a name="data-limits"></a>Databegränsningar
-Det finns vissa begränsningar runt data som skickats till samlingen Log Analytics-Data API.
+Det finns vissa begränsningar runt hello-data som skickats toohello API för Log Analytics datainsamling.
 
-* Högst 30 MB per post till Log Analytics Data Collector API: et. Det här är en storleksgräns för en enskild post. Om data från en enda bokför som överskrider 30 MB, bör du dela upp data till mindre storlek segment och skicka dem samtidigt.
-* Högst 32 KB-gränsen för fältvärden. Om värdet är större än 32 KB, kommer data att trunkeras.
+* Högst 30 MB per post tooLog Analytics Data Collector API: et. Det här är en storleksgräns för en enskild post. Om hello data från en enda post som är större än 30 MB, du ska dela hello data in toosmaller storlek blocken och skicka dem samtidigt.
+* Högst 32 KB-gränsen för fältvärden. Om hello fältvärdet är större än 32 KB trunkeras hello data.
 * Rekommenderade maximala antalet fält för en viss typ är 50. Det här är en praktisk gräns från en användbarhet och Sök upplevelse perspektiv.  
 
 ## <a name="return-codes"></a>Returkoder
-HTTP-statuskod 200 innebär att begäran har tagits emot för bearbetning. Detta anger att åtgärden har slutförts.
+hello HTTP-statuskod 200 innebär att hello-begäran har tagits emot för bearbetning. Detta anger att hello-åtgärden har slutförts.
 
-Den här tabellen innehåller en fullständig uppsättning statuskoder som tjänsten kan returnera:
+Den här tabellen innehåller hello fullständig uppsättning statuskoder som kan returnera hello-tjänsten:
 
 | Kod | Status | Felkod | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| 200 |OKEJ | |Begäran har accepterats. |
-| 400 |Felaktig begäran |InactiveCustomer |Arbetsytan har stängts. |
-| 400 |Felaktig begäran |InvalidApiVersion |API-version som du angett kunde inte identifieras av tjänsten. |
-| 400 |Felaktig begäran |InvalidCustomerId |Arbetsyte-ID som angetts är ogiltigt. |
-| 400 |Felaktig begäran |InvalidDataFormat |Ogiltigt JSON har skickats. Svarstexten kan innehålla mer information om hur du åtgärdar felet. |
-| 400 |Felaktig begäran |InvalidLogType |Loggtypen som angetts innehåller specialtecken eller siffror. |
-| 400 |Felaktig begäran |MissingApiVersion |API-versionen har inte angetts. |
-| 400 |Felaktig begäran |MissingContentType |Content-type har inte angetts. |
-| 400 |Felaktig begäran |MissingLogType |Loggtyp obligatoriskt värde har angetts. |
-| 400 |Felaktig begäran |UnsupportedContentType |Content-type har inte angetts **application/json**. |
-| 403 |Tillåts inte |InvalidAuthorization |Det gick inte att autentisera begäran. Kontrollera att arbetsytans ID och anslutningen är giltig. |
-| 404 |Det gick inte att hitta | | Antingen den URL som är felaktig eller begäran är för stor. |
-| 429 |För många begäranden | | En stor mängd data från ditt konto har uppstått med tjänsten. Försök begäran senare. |
-| 500 |Internt serverfel |UnspecifiedError |Tjänsten påträffade ett internt fel. Försök att utföra begäran. |
-| 503 |Tjänsten är inte tillgänglig |ServiceUnavailable |Tjänsten är för närvarande inte ta emot begäranden. Försök att utföra din begäran. |
+| 200 |OKEJ | |hello-begäran har accepterats. |
+| 400 |Felaktig begäran |InactiveCustomer |hello-arbetsytan har stängts. |
+| 400 |Felaktig begäran |InvalidApiVersion |hello API-version som du angett kunde inte identifieras av hello-tjänsten. |
+| 400 |Felaktig begäran |InvalidCustomerId |hello arbetsyte-ID som angetts är ogiltigt. |
+| 400 |Felaktig begäran |InvalidDataFormat |Ogiltigt JSON har skickats. hello svarstexten kan innehålla mer information om hur tooresolve hello fel. |
+| 400 |Felaktig begäran |InvalidLogType |typ av hello angav innehåller specialtecken eller siffror. |
+| 400 |Felaktig begäran |MissingApiVersion |hello API-versionen har inte angetts. |
+| 400 |Felaktig begäran |MissingContentType |hello content-type har inte angetts. |
+| 400 |Felaktig begäran |MissingLogType |hello krävs värdetyp har inte angetts. |
+| 400 |Felaktig begäran |UnsupportedContentType |hello content-type har inte angetts för**application/json**. |
+| 403 |Tillåts inte |InvalidAuthorization |Det gick inte att tooauthenticate hello begäran hello-tjänsten. Kontrollera att hello arbetsytenyckel ID och anslutningen är giltiga. |
+| 404 |Det gick inte att hitta | | Antingen hello URL: en är felaktig eller hello-begäran är för stor. |
+| 429 |För många begäranden | | hello-tjänsten har en stor mängd data från ditt konto. Försök hello begäran senare. |
+| 500 |Internt serverfel |UnspecifiedError |hello tjänsten påträffade ett internt fel. Försök hello-begäran. |
+| 503 |Tjänsten är inte tillgänglig |ServiceUnavailable |hello-tjänsten är för tillfället otillgänglig tooreceive begäranden. Försök att utföra din begäran. |
 
 ## <a name="query-data"></a>Frågedata
-Att fråga efter data skickas av Log Analytics HTTP Data Collector API, söka efter poster med **typen** som är lika med den **LogType** värde som du angav läggas till med **_CL**. Om du använde exempelvis **MyCustomLog**, och du vill returnera alla poster med **typ = MyCustomLog_CL**.
+tooquery data som skickats av hello Log Analytics HTTP Data Collector API, söka efter poster med **typen** som är lika toohello **LogType** värde som du angav läggas till med **_CL**. Om du använde exempelvis **MyCustomLog**, och du vill returnera alla poster med **typ = MyCustomLog_CL**.
 
 >[!NOTE]
-> Om ditt arbetsområde har uppgraderats till den [nya Log Analytics-frågespråket](log-analytics-log-search-upgrade.md), sedan frågan ovan skulle ändra till följande.
+> Om ditt arbetsområde har uppgraderade toohello [nya Log Analytics-frågespråket](log-analytics-log-search-upgrade.md), hello ovan frågan skulle ändra toohello följande.
 
 > `MyCustomLog_CL`
 
 ## <a name="sample-requests"></a>Exempel begäranden
-I följande avsnitt hittar du exempel på hur du skickar data till Log Analytics HTTP Data Collector API med hjälp av olika programmeringsspråk.
+I nästa avsnitt hello hittar du exempel på hur toosubmit data toohello Log Analytics HTTP Data Collector API med hjälp av olika programmeringsspråk.
 
-För varje prov gör du dessa steg för att ange variabler för authorization-huvud:
+För varje prov gör dessa tooset hello variabler för hello authorization-huvud:
 
-1. I Operations Management Suite-portal, väljer du den **inställningar** panelen och välj sedan den **anslutna källor** fliken.
-2. Till höger om **arbetsyte-ID**kopiera-ikonen och välj sedan klistra in ID som värde för den **kund-ID** variabeln.
-3. Till höger om **primärnyckel**kopiera-ikonen och välj sedan klistra in ID som värde för den **delad nyckel** variabeln.
+1. Välj hello i hello Operations Management Suite-portalen **inställningar** panelen och välj sedan hello **anslutna källor** fliken.
+2. toohello höger i **arbetsyte-ID**hello kopiera-ikonen och välj sedan klistra in hello-ID som hello värde för hello **kund-ID** variabeln.
+3. toohello höger i **primärnyckel**hello kopiera-ikonen och välj sedan klistra in hello-ID som hello värde för hello **delad nyckel** variabeln.
 
-Du kan också ändra variablerna för den typ av och JSON-data.
+Du kan också ändra hello variabler för hello loggtyp och JSON-data.
 
 ### <a name="powershell-sample"></a>PowerShell-exempel
 ```
@@ -215,14 +215,14 @@ $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 # Replace with your Primary Key
 $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-# Specify the name of the record type that you'll be creating
+# Specify hello name of hello record type that you'll be creating
 $LogType = "MyRecordType"
 
-# Specify a field with the created time for the records
+# Specify a field with hello created time for hello records
 $TimeStampField = "DateValue"
 
 
-# Create two records with the same set of properties to create
+# Create two records with hello same set of properties toocreate
 $json = @"
 [{  "StringValue": "MyString1",
     "NumberValue": 42,
@@ -238,7 +238,7 @@ $json = @"
 }]
 "@
 
-# Create the function to create the authorization signature
+# Create hello function toocreate hello authorization signature
 Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $method, $contentType, $resource)
 {
     $xHeaders = "x-ms-date:" + $date
@@ -256,7 +256,7 @@ Function Build-Signature ($customerId, $sharedKey, $date, $contentLength, $metho
 }
 
 
-# Create the function to create and post the request
+# Create hello function toocreate and post hello request
 Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 {
     $method = "POST"
@@ -287,7 +287,7 @@ Function Post-OMSData($customerId, $sharedKey, $body, $logType)
 
 }
 
-# Submit the data to the API endpoint
+# Submit hello data toohello API endpoint
 Post-OMSData -customerId $customerId -sharedKey $sharedKey -body ([System.Text.Encoding]::UTF8.GetBytes($json)) -logType $logType  
 ```
 
@@ -308,21 +308,21 @@ namespace OIAPIExample
         // An example JSON object, with key/value pairs
         static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField3"":""DemoValue3"",""DemoField4"":""DemoValue4""}]";
 
-        // Update customerId to your Operations Management Suite workspace ID
+        // Update customerId tooyour Operations Management Suite workspace ID
         static string customerId = "xxxxxxxx-xxx-xxx-xxx-xxxxxxxxxxxx";
 
-        // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
+        // For sharedKey, use either hello primary or hello secondary Connected Sources client authentication key   
         static string sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-        // LogName is name of the event type that is being submitted to Log Analytics
+        // LogName is name of hello event type that is being submitted tooLog Analytics
         static string LogName = "DemoExample";
 
-        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+        // You can use an optional field toospecify hello timestamp from hello data. If hello time field is not specified, Log Analytics assumes hello time is hello message ingestion time
         static string TimeStampField = "";
 
         static void Main()
         {
-            // Create a hash for the API signature
+            // Create a hash for hello API signature
             var datestring = DateTime.UtcNow.ToString("r");
             string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
@@ -331,7 +331,7 @@ namespace OIAPIExample
             PostData(signature, datestring, json);
         }
 
-        // Build the API signature
+        // Build hello API signature
         public static string BuildSignature(string message, string secret)
         {
             var encoding = new System.Text.ASCIIEncoding();
@@ -344,7 +344,7 @@ namespace OIAPIExample
             }
         }
 
-        // Send a request to the POST API endpoint
+        // Send a request toohello POST API endpoint
         public static void PostData(string signature, string date, string json)
         {
             try
@@ -385,13 +385,13 @@ import hashlib
 import hmac
 import base64
 
-# Update the customer ID to your Operations Management Suite workspace ID
+# Update hello customer ID tooyour Operations Management Suite workspace ID
 customer_id = 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
-# For the shared key, use either the primary or the secondary Connected Sources client authentication key   
+# For hello shared key, use either hello primary or hello secondary Connected Sources client authentication key   
 shared_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-# The log type is the name of the event that is being submitted
+# hello log type is hello name of hello event that is being submitted
 log_type = 'WebMonitorTest'
 
 # An example JSON web monitor object
@@ -423,7 +423,7 @@ body = json.dumps(json_data)
 ######Functions######  
 #####################
 
-# Build the API signature
+# Build hello API signature
 def build_signature(customer_id, shared_key, date, content_length, method, content_type, resource):
     x_headers = 'x-ms-date:' + date
     string_to_hash = method + "\n" + str(content_length) + "\n" + content_type + "\n" + x_headers + "\n" + resource
@@ -433,7 +433,7 @@ def build_signature(customer_id, shared_key, date, content_length, method, conte
     authorization = "SharedKey {}:{}".format(customer_id,encoded_hash)
     return authorization
 
-# Build and send a request to the POST API
+# Build and send a request toohello POST API
 def post_data(customer_id, shared_key, body, log_type):
     method = 'POST'
     content_type = 'application/json'
@@ -460,4 +460,4 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-- Använd den [loggen Sök API](log-analytics-log-search-api.md) att hämta data från logganalys-databasen.
+- Använd hello [loggen Sök API](log-analytics-log-search-api.md) tooretrieve data från hello logganalys-databasen.

@@ -1,6 +1,6 @@
 ---
-title: Azure Functions HTTP och webhook bindningar | Microsoft Docs
-description: "Förstå hur du använder HTTP och webhook utlösare och bindningar i Azure Functions."
+title: aaaAzure http-funktioner och webhook bindningar | Microsoft Docs
+description: "Förstå hur toouse HTTP och webhook utlösare och bindningar i Azure Functions."
 services: functions
 documentationcenter: na
 author: mattchenderson
@@ -16,21 +16,21 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
-ms.openlocfilehash: 71c0d22c4b1824078982b9d1cc76645f947ae603
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: c23b7a1443d492ed78c595e97d1d778a7ab12416
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions HTTP och webhook bindningar
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Den här artikeln beskriver hur du konfigurerar och arbetar med HTTP-utlösare och bindningar i Azure Functions.
-Med dessa kan använda du Azure Functions för att bygga serverlösa API: er och svara på webhooks.
+Den här artikeln förklarar hur tooconfigure och arbeta med HTTP-utlösare och bindningar i Azure Functions.
+Med dessa kan använda du Azure Functions toobuild serverlösa API: er och svara toowebhooks.
 
-Azure Functions erbjuder följande Bindningar:
-- En [HTTP-utlösaren](#httptrigger) kan du anropa en funktion med en HTTP-begäran. Detta kan anpassas för att svara på [webhooks](#hooktrigger).
-- En [HTTP-utdatabindning](#output) kan du svara på begäran.
+Azure Functions erbjuder följande bindningar hello:
+- En [HTTP-utlösaren](#httptrigger) kan du anropa en funktion med en HTTP-begäran. Detta kan vara anpassade toorespond för[webhooks](#hooktrigger).
+- En [HTTP-utdatabindning](#output) kan du toorespond toohello begäran.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -39,14 +39,14 @@ Azure Functions erbjuder följande Bindningar:
 <a name="httptrigger"></a>
 
 ## <a name="http-trigger"></a>HTTP-utlösare
-HTTP-utlösaren körs din funktion som svar på en HTTP-begäran. Du kan anpassa den för att svara på en viss URL eller uppsättning HTTP-metoderna. En HTTP-utlösare kan också konfigureras för att svara på webhooks. 
+hello HTTP-utlösaren körs din funktion i svaret tooan HTTP-begäran. Du kan anpassa den toorespond tooa viss URL eller uppsättning HTTP-metoderna. En HTTP-utlösare kan också vara konfigurerade toorespond toowebhooks. 
 
-Om du använder Functions-portalen kan du också sätta igång direkt med en fördefinierad mall. Välj **nya funktionen** och välj ”API och Webhooks” den **scenariot** listrutan. Välj en av mallar och klicka på **skapa**.
+Om du använder hello Functions-portalen kan du också sätta igång direkt med en fördefinierad mall. Välj **nya funktionen** och välj ”API och Webhooks” Hej **scenariot** listrutan. Välj en av hello mallar och klicka på **skapa**.
 
-Som standard svarar ett HTTP-utlösaren på begäran med ett 200 OK HTTP-statuskoden och en brödtext. Om du vill ändra svarstypen, konfigurera en [HTTP-utdatabindning](#output)
+Som standard svarar ett HTTP-utlösaren toohello begäran med ett 200 OK HTTP-statuskoden och en brödtext. toomodify Hej svar, konfigurera en [HTTP-utdatabindning](#output)
 
 ### <a name="configuring-an-http-trigger"></a>Konfigurera en HTTP-utlösare
-En HTTP-utlösare definieras genom att inkludera en JSON-objekt som liknar följande i den `bindings` matris med function.json:
+En HTTP-utlösare definieras genom att inkludera en JSON-objekt liknande toohello efter i hello `bindings` matris med function.json:
 
 ```json
 {
@@ -58,37 +58,37 @@ En HTTP-utlösare definieras genom att inkludera en JSON-objekt som liknar följ
     "route": "values/{id}"
 },
 ```
-Bindningen stöder följande egenskaper:
+hello bindningen stöder hello följande egenskaper:
 
-* **namnet** : krävs – variabelnamnet som används i Funktionskoden för begäran eller begärandetexten. Se [arbetar med en HTTP-utlösare från kod](#httptriggerusage).
-* **typen** : krävs – måste vara inställd på ”httpTrigger”.
-* **riktning** : krävs – måste vara inställd på ”i”.
-* _authLevel_ : Detta avgör vad nycklar, eventuella måste finnas på begäran för att anropa funktionen. Se [arbeta med nycklar](#keys) nedan. Värdet kan vara något av följande:
+* **namnet** : krävs – hello variabelnamn som används i Funktionskoden för hello begäran eller begärandetexten. Se [arbetar med en HTTP-utlösare från kod](#httptriggerusage).
+* **typen** : krävs – måste anges för ”httpTrigger”.
+* **riktning** : krävs – måste anges för ”i”.
+* _authLevel_ : Detta avgör vilka nycklar, eventuella måste toobe finns på hello begäran i ordning tooinvoke hello-funktionen. Se [arbeta med nycklar](#keys) nedan. hello-värdet kan vara något av följande hello:
     * _anonym_: Nej API-nyckeln är obligatorisk.
-    * _funktionen_: en funktionsspecifika API-nyckel krävs. Detta är standardvärdet om ingen anges.
-    * _Admin_ : huvudnyckeln krävs.
-* **metoder** : Detta är en matris med HTTP-metoderna som funktionen kommer att svara. Om den inte anges kommer funktionen besvara alla HTTP-metoderna. Se [anpassa HTTP-slutpunkten](#url).
-* **väg** : Detta definierar flödesmallen, kontrollera begära webbadresserna som funktionen kommer att svara. Standardvärdet om ingen anges är `<functionname>`. Se [anpassa HTTP-slutpunkten](#url).
-* **webHookType** : Detta konfigurerar HTTP-trigger för att fungera som en webhook reciever för den angivna providern. Den _metoder_ egenskapen ska inte anges om detta är valt. Se [svarar på webhooks](#hooktrigger). Värdet kan vara något av följande:
+    * _funktionen_: en funktionsspecifika API-nyckel krävs. Detta är standardvärdet för hello om ingen anges.
+    * _Admin_ : hello huvudnyckel krävs.
+* **metoder** : Detta är en matris med hello HTTP-metoderna toowhich hello funktionen kommer att svara. Om inget anges svarar hello funktionen tooall HTTP-metoder. Se [anpassa hello HTTP-slutpunkt](#url).
+* **väg** : Detta definierar hello flödesmallen styra toowhich begära webbadresserna funktionen kommer att svara. hello standardvärdet om ingen anges är `<functionname>`. Se [anpassa hello HTTP-slutpunkt](#url).
+* **webHookType** : Detta konfigurerar hello HTTP utlösaren tooact som en webhook reciever för hello angivna providern. Hej _metoder_ egenskapen ska inte anges om detta är valt. Se [svarar toowebhooks](#hooktrigger). hello-värdet kan vara något av följande hello:
     * _genericJson_ : en generella webhook slutpunkt utan logik för en specifik provider.
-    * _github_ : funktionen ska svara på GitHub webhooks. Den _authLevel_ egenskapen ska inte anges om detta är valt.
-    * _slack_ : funktionen ska svara på Slack webhooks. Den _authLevel_ egenskapen ska inte anges om detta är valt.
+    * _github_ : hello funktionen svarar tooGitHub webhooks. Hej _authLevel_ egenskapen ska inte anges om detta är valt.
+    * _slack_ : hello funktionen svarar tooSlack webhooks. Hej _authLevel_ egenskapen ska inte anges om detta är valt.
 
 <a name="httptriggerusage"></a>
 ### <a name="working-with-an-http-trigger-from-code"></a>Arbeta med en HTTP-utlösare från kod
-För C# och F #, kan du deklarera typen av din utlösare som indata till antingen `HttpRequestMessage` eller en anpassad typ. Om du väljer `HttpRequestMessage`, och du får fullständig åtkomst till request-objektet. För en anpassad typ (till exempel en POCO) försöker funktioner parsa begärandetexten som JSON att fylla i objektets egenskaper.
+För C# och F #, kan du deklarera hello typ av din utlösaren inkommande toobe antingen `HttpRequestMessage` eller en anpassad typ. Om du väljer `HttpRequestMessage`, och du får fullständig åtkomst toohello request-objektet. För en anpassad typ (till exempel en POCO) försöker funktioner tooparse hello begärantext som JSON toopopulate hello objektets egenskaper.
 
-För Node.js-funktion ger Functions-runtime begärandetexten i stället för request-objektet.
+För Node.js-funktion ger hello Functions-runtime hello begärandetexten i stället för hello request-objektet.
 
 Se [http-utlösaren exempel](#httptriggersample) till exempel användningsområden.
 
 
 <a name="output"></a>
 ## <a name="http-response-output-binding"></a>HTTP-svar utdatabindning
-Använd HTTP-utdata bindning svarar på http-begäran avsändaren. Den här bindningen kräver en HTTP-utlösare och kan du anpassa svaret som är associerade med utlösarens begäran. Om en HTTP-utdatabindning anges inte är en HTTP-utlösare returneras HTTP 200 OK utan en brödtext. 
+Använd hello HTTP utdata bindning toorespond toohello HTTP-begäran avsändare. Den här bindningen kräver en HTTP-utlösare och låter dig toocustomize hello svar som är associerade med hello utlösarbegäran. Om en HTTP-utdatabindning anges inte är en HTTP-utlösare returneras HTTP 200 OK utan en brödtext. 
 
 ### <a name="configuring-an-http-output-binding"></a>Konfigurera en HTTP-utdatabindning
-HTTP utdata bindning definieras genom att inkludera en JSON-objekt som liknar följande i den `bindings` matris med function.json:
+hello HTTP utdata bindning definieras genom att inkludera en JSON-objekt liknande toohello efter i hello `bindings` matris med function.json:
 
 ```json
 {
@@ -97,38 +97,38 @@ HTTP utdata bindning definieras genom att inkludera en JSON-objekt som liknar f�
     "direction": "out"
 }
 ```
-Bindningen innehåller följande egenskaper:
+hello bindningen innehåller hello följande egenskaper:
 
-* **namnet** : krävs – variabelnamnet som används i Funktionskoden för svaret. Se [arbetar med en HTTP-utdatabindning från kod](#outputusage).
-* **typen** : krävs – måste vara inställd på ”http”.
-* **riktning** : krävs – måste vara inställd på ”out”.
+* **namnet** : krävs – hello variabelnamn som används i Funktionskoden för hello svar. Se [arbetar med en HTTP-utdatabindning från kod](#outputusage).
+* **typen** : krävs – måste anges för ”http”.
+* **riktning** : krävs – måste anges för ”out”.
 
 <a name="outputusage"></a>
 ### <a name="working-with-an-http-output-binding-from-code"></a>Arbeta med en HTTP-utdatabindning från kod
-Du kan använda output-parameter (t.ex. ”res”) svarar på http- eller webhook anroparen. Du kan också använda standarden `Request.CreateResponse()` (C#) eller `context.res` (Node.JS) mönster för att returnera ditt svar. Exempel på hur du använder den andra metoden finns i [http-utlösaren prover](#httptriggersample) och [Webhook utlösaren exempel](#hooktriggersample).
+Du kan använda hello utdata parameter (t.ex. ”res”) toorespond toohello HTTP- eller webhook anroparen. Du kan också använda standarden `Request.CreateResponse()` (C#) eller `context.res` (Node.JS) mönster tooreturn ditt svar. Exempel på hur toouse hello senare finns [http-utlösaren prover](#httptriggersample) och [Webhook utlösaren exempel](#hooktriggersample).
 
 
 <a name="hooktrigger"></a>
-## <a name="responding-to-webhooks"></a>Svara på webhooks
-En HTTP-utlösare med den _webHookType_ egenskapen kommer att konfigureras för att svara på [webhooks](https://en.wikipedia.org/wiki/Webhook). Den grundläggande konfigurationen använder inställningen ”genericJson”. Detta begränsar begäranden till endast de som använder HTTP POST och med den `application/json` innehållstyp.
+## <a name="responding-toowebhooks"></a>Svara toowebhooks
+En HTTP-utlösare med hello _webHookType_ egenskapen vara konfigurerade toorespond för[webhooks](https://en.wikipedia.org/wiki/Webhook). hello grundläggande konfiguration använder hello ”genericJson” inställningen. Detta begränsar begäranden tooonly de använder HTTP POST och hello `application/json` innehållstyp.
 
-Utlösaren skräddarsys dessutom till en specifik webhook-provider (t.ex. [GitHub](https://developer.github.com/webhooks/) och [Slack](https://api.slack.com/outgoing-webhooks)). Om en provider anges kan Functions-runtime ta hand om leverantörens valideringslogik åt dig.  
+hello utlösare kan dessutom vara skräddarsydda tooa specifika webhook-providern (t.ex. [GitHub](https://developer.github.com/webhooks/) och [Slack](https://api.slack.com/outgoing-webhooks)). Om en provider anges kan hello Functions-runtime ta hand om hello providern valideringslogik för dig.  
 
 ### <a name="configuring-github-as-a-webhook-provider"></a>Konfigurera GitHub som en webhook-provider
-För att svara på GitHub webhooks, först skapa din funktion med en HTTP-utlösare och ange den _webHookType_ egenskapen till ”github”. Kopiera sedan dess [URL](#url) och [API-nyckel](#keys) till dina GitHub-lagringsplatsen **lägga till webhook** sidan. Se Githubs [skapar Webhooks](http://go.microsoft.com/fwlink/?LinkID=761099&clcid=0x409) dokumentationen för mer information.
+toorespond tooGitHub webhooks, först skapa din funktion med en HTTP-utlösare och ange hello _webHookType_ egenskapen för ”github”. Kopiera sedan dess [URL](#url) och [API-nyckel](#keys) till dina GitHub-lagringsplatsen **lägga till webhook** sidan. Se Githubs [skapar Webhooks](http://go.microsoft.com/fwlink/?LinkID=761099&clcid=0x409) dokumentationen för mer information.
 
 ![](./media/functions-bindings-http-webhook/github-add-webhook.png)
 
 ### <a name="configuring-slack-as-a-webhook-provider"></a>Konfigurera Slack som en webhook-provider
-Slack webhooken genererar en token för du i stället för där du kan ange den, så måste du konfigurera en funktionsspecifika nyckel med token från Slack. Se [arbeta med nycklar](#keys).
+hello Slack webhook genererar en token för du i stället för där du kan ange den, så måste du konfigurera en funktionsspecifika nyckel med hello-token från Slack. Se [arbeta med nycklar](#keys).
 
 <a name="url"></a>
-## <a name="customizing-the-http-endpoint"></a>Anpassa HTTP-slutpunkten
-Som standard när du skapar en funktion för ett HTTP-utlösare eller WebHook, är funktionen adresserbara med en väg i formatet:
+## <a name="customizing-hello-http-endpoint"></a>Anpassa hello HTTP-slutpunkt
+Som standard när du skapar en funktion för ett HTTP-utlösare eller WebHook, hello funktionen är adresserbara med en väg hello formuläret:
 
     http://<yourapp>.azurewebsites.net/api/<funcname> 
 
-Du kan anpassa den här vägen med det valfria `route` egenskapen för HTTP-utlösaren input bindning. Följande exempel *function.json* filen definierar en `route` för en HTTP-utlösare:
+Du kan anpassa den här vägen med hello valfria `route` egenskapen hello HTTP-utlösaren input bindning. Hej exempelvis följande *function.json* filen definierar en `route` för en HTTP-utlösare:
 
 ```json
     {
@@ -149,11 +149,11 @@ Du kan anpassa den här vägen med det valfria `route` egenskapen för HTTP-utl�
     }
 ```
 
-Med den här konfigurationen kan är funktionen nu adresserbara med följande vägen i stället för det ursprungliga flödet.
+Med den här konfigurationen är hello funktion nu adresserbara med hello efter vägen i stället för hello ursprungliga flödet.
 
     http://<yourapp>.azurewebsites.net/api/products/electronics/357
 
-Detta gör att Funktionskoden stöder två parametrar i adress, ”kategorier” och ”id”. Du kan använda någon [Web API-väg begränsningen](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) med parametrarna. Följande C# Funktionskoden använder båda parametrarna.
+Detta gör hello Funktionskoden toosupport två parametrar i hello-adress, ”kategorier” och ”id”. Du kan använda någon [Web API-väg begränsningen](https://www.asp.net/web-api/overview/web-api-routing-and-actions/attribute-routing-in-web-api-2#constraints) med parametrarna. Hej följande C#-Funktionskoden använder båda parametrarna.
 
 ```csharp
     public static Task<HttpResponseMessage> Run(HttpRequestMessage req, string category, int? id, 
@@ -166,7 +166,7 @@ Detta gör att Funktionskoden stöder två parametrar i adress, ”kategorier”
     }
 ```
 
-Här är Node.js funktionskod för att använda samma vägparametrar.
+Här är Node.js funktionen kod toouse hello samma vägparametrar.
 
 ```javascript
     module.exports = function (context, req) {
@@ -176,13 +176,13 @@ Här är Node.js funktionskod för att använda samma vägparametrar.
 
         if (!id) {
             context.res = {
-                // status: 200, /* Defaults to 200 */
+                // status: 200, /* Defaults too200 */
                 body: "All " + category + " items were requested."
             };
         }
         else {
             context.res = {
-                // status: 200, /* Defaults to 200 */
+                // status: 200, /* Defaults too200 */
                 body: category + " item with id = " + id + " was requested."
             };
         }
@@ -191,7 +191,7 @@ Här är Node.js funktionskod för att använda samma vägparametrar.
     } 
 ```
 
-Som standard alla funktionen vägar föregås *api*. Du kan också anpassa eller ta bort prefix med hjälp av den `http.routePrefix` egenskap i din *host.json* fil. I följande exempel tar bort den *api* väg prefix genom att använda en tom sträng för prefix i den *host.json* fil.
+Som standard alla funktionen vägar föregås *api*. Du kan också anpassa eller ta bort hello-adressprefix med hello `http.routePrefix` egenskap i din *host.json* fil. hello följande exempel tar bort hello *api* väg prefix genom att använda en tom sträng för hello prefix i hello *host.json* fil.
 
 ```json
     {
@@ -201,52 +201,52 @@ Som standard alla funktionen vägar föregås *api*. Du kan också anpassa eller
     }
 ```
 
-Detaljerad information om hur du uppdaterar den *host.json* filen för din funktion finns [hur du uppdaterar funktionen programfilerna](functions-reference.md#fileupdate). 
+Detaljerad information om hur tooupdate hello *host.json* filen för din funktion finns [hur tooupdate fungerar programfilerna](functions-reference.md#fileupdate). 
 
 Mer information om andra egenskaper som du kan konfigurera i din *host.json* fil, se [host.json referens](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
 
 
 <a name="keys"></a>
 ## <a name="working-with-keys"></a>Arbeta med nycklar
-HttpTriggers kan utnyttja nycklar för extra säkerhet. Standard HttpTrigger kan använda dem som en API-nyckel som kräver nyckeln måste finnas på begäran. Webhooks kan använda för att godkänna begäranden i en mängd olika sätt beroende på vad providern stöder.
+HttpTriggers kan utnyttja nycklar för extra säkerhet. Standard HttpTrigger kan använda dem som en API-nyckel som kräver hello viktiga toobe finns på hello-begäran. Webhooks kan använda nycklar tooauthorize begäranden i en mängd olika sätt beroende på vilken hello-leverantör har stöd för.
 
-Nycklar lagras som en del av din funktionsapp i Azure och krypterat i vila. Om du vill visa dina nycklar, skapa nya eller återställa nycklar till nya värden, navigera till en av dina funktioner i portalen och välj ”hantera”. 
+Nycklar lagras som en del av din funktionsapp i Azure och krypterat i vila. tooview dina nycklar, skapa nya eller sammanslagning nycklar toonew värden går tooone av dina funktioner i hello-portalen och väljer ”hantera”. 
 
 Det finns två typer av nycklar:
-- **Värdnycklar**: nycklarna delas av alla funktioner i appen funktion. När det används som en API-nyckel, Tillåt dessa åtkomst till en funktion i funktionen appen.
-- **Funktionstangenter**: nycklarna gäller endast för specifika funktioner som de har definierats. När det används som en API-nyckel, tillåta dessa endast åtkomst till den funktionen.
+- **Värdnycklar**: nycklarna delas av alla funktioner i hello funktionsapp. När det används som en API-nyckel, kan dessa åtkomst tooany funktion inom hello funktionsapp.
+- **Funktionstangenter**: nycklarna gäller endast toohello funktioner som de har definierats. När det används som en API-nyckel, kan dessa endast toothat funktion för åtkomst till.
 
-Varje nyckel som heter referens och det finns en standard-nyckel (med namnet ”standard”) på funktionen och värden. Den **huvudnyckeln** är en standard värd-nyckel med namnet ”_master” som har definierats för varje funktionsapp och det går inte att återkallas. Det ger administrativ åtkomst till runtime API: er. Med hjälp av `"authLevel": "admin"` i bindningen JSON kräver den här nyckeln som ska visas i begäran; andra nyckeln resulterar i ett autentiseringsfel.
+Varje nyckel som heter referens och det finns en standard-nyckel (med namnet ”standard”) på hello funktionen och värden. Hej **huvudnyckeln** är en standard värd-nyckel med namnet ”_master” som har definierats för varje funktionsapp och det går inte att återkallas. Det ger en administrativ åtkomst toohello runtime API: er. Med hjälp av `"authLevel": "admin"` i hello bindning JSON kräver den här nyckeln toobe visas på hello begäran; andra nyckeln resulterar i ett autentiseringsfel.
 
 > [!NOTE]
-> På grund av de utökade behörigheter som tilldelats av huvudnyckeln, bör du inte dela den här nyckeln med tredje part eller distribuera den i native client-program. Var försiktig när du väljer admin åtkomstnivå.
+> På grund av toohello utökade behörigheter med hello huvudnyckeln ska dela den här nyckeln med tredje part eller distribuera den i native client-program. Var försiktig när du väljer hello admin åtkomstnivå.
 > 
 > 
 
 ### <a name="api-key-authorization"></a>Auktorisering av innehållsnyckel API
-Som standard kräver en HttpTrigger en API-nyckel i HTTP-begäran. HTTP-begäran ser så normalt ut så här:
+Som standard kräver en HttpTrigger en API-nyckel i hello HTTP-begäran. HTTP-begäran ser så normalt ut så här:
 
     https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
 
-Nyckeln kan ingå i en fråga string-variabel med namnet `code`, enligt ovan, eller det kan ingå i en `x-functions-key` HTTP-huvud. Värdet för nyckeln kan vara valfri Funktionstangent för som definierats för funktionen eller valfri tangent för värden.
+hello nyckel kan ingå i en fråga string-variabel med namnet `code`, enligt ovan, eller det kan ingå i en `x-functions-key` HTTP-huvudet. hello-värdet för hello nyckeln kan vara valfri Funktionstangent för som definierats för hello funktion eller valfri tangent för värden.
 
-Du kan välja att tillåta begäranden utan nycklar eller ange att huvudnyckeln måste användas genom att ändra den `authLevel` egenskap i bindningen JSON (se [HTTP-utlösaren](#httptrigger)).
+Du kan välja tooallow begäranden utan nycklar eller ange att hello huvudnyckel måste användas genom att ändra hello `authLevel` egenskap i hello bindning JSON (se [HTTP-utlösaren](#httptrigger)).
 
 ### <a name="keys-and-webhooks"></a>Nycklar och webhooks
-Webhook-auktorisering hanteras av webhook reciever komponent, en del av HttpTrigger och mekanismen varierar beroende på vilken webhooken. Varje mekanism matchar, men förlitar sig på en nyckel. Funktionen nyckeln med namnet ”default” som standard kommer att användas. Om du vill använda en annan nyckel måste konfigurera webhook-providern för att skicka nyckelnamnet med förfrågan i något av följande sätt:
+Webhook-auktorisering hanteras av hello webhook reciever komponent, en del av hello HttpTrigger och hello mekanism varierar beroende på hello webhook-typen. Varje mekanism matchar, men förlitar sig på en nyckel. Som standard används hello funktionen nyckel med namnet ”standard”. Om du vill toouse en annan nyckel måste tooconfigure hello webhook provider toosend hello nyckelnamn med hello begäran i något av följande sätt hello:
 
-- **Frågesträng**: providern skickar nyckelnamnet i den `clientid` frågesträngparametern (t.ex. `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`).
-- **Förfrågningshuvudet**: providern skickar nyckelnamnet i den `x-functions-clientid` rubrik.
+- **Frågesträng**: hello providern skickar hello nyckelnamn i hello `clientid` frågesträngparametern (t.ex. `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`).
+- **Förfrågningshuvudet**: hello providern skickar hello nyckelnamn i hello `x-functions-clientid` huvud.
 
 > [!NOTE]
-> Funktionstangenter företräde framför värdnycklar. Om två nycklar har definierats med samma namn används funktionen nyckeln.
+> Funktionstangenter företräde framför värdnycklar. Om två nycklar har definierats med samma namn, hello hello funktionen nyckeln kommer att användas.
 > 
 > 
 
 
 <a name="httptriggersample"></a>
 ## <a name="http-trigger-samples"></a>HTTP-utlösaren prover
-Anta att du har följande HTTP-utlösaren den `bindings` matris med function.json:
+Anta att du har följande HTTP-utlösaren i hello hello `bindings` matris med function.json:
 
 ```json
 {
@@ -257,7 +257,7 @@ Anta att du har följande HTTP-utlösaren den `bindings` matris med function.jso
 },
 ```
 
-I avsnittet språkspecifika exempel som söker efter en `name` parameter i frågesträngen eller brödtext för HTTP-begäran.
+Se hello språkspecifika prov som söker efter en `name` parameter i hello frågesträng eller hello brödtext hello HTTP-begäran.
 
 * [C#](#httptriggercsharp)
 * [F#](#httptriggerfsharp)
@@ -282,16 +282,16 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     // Get request body
     dynamic data = await req.Content.ReadAsAsync<object>();
 
-    // Set name to query string or body data
+    // Set name tooquery string or body data
     name = name ?? data?.name;
 
     return name == null
-        ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
+        ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on hello query string or in hello request body")
         : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
 }
 ```
 
-Du kan också binda till en POCO i stället för `HttpRequestMessage`. Detta kommer ur från brödtexten i begäran parsade som JSON. På samma sätt kan en typ som kan skickas till http-svarsutdata bindning och detta returneras som svarstexten med statuskod 200.
+Du kan också binda tooa POCO i stället för `HttpRequestMessage`. Detta kommer ur från hello brödtexten i begäran hello parsade som JSON. På liknande sätt toohello HTTP-svarsutdata bindning kan skickas till en typ och detta returneras som hello svarstexten med statuskod 200.
 ```csharp
 using System.Net;
 using System.Threading.Tasks;
@@ -327,11 +327,11 @@ let Run(req: HttpRequestMessage) =
             try
                 return req.CreateResponse(HttpStatusCode.OK, "Hello " + data?name)
             with e ->
-                return req.CreateErrorResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
+                return req.CreateErrorResponse(HttpStatusCode.BadRequest, "Please pass a name on hello query string or in hello request body")
     } |> Async.StartAsTask
 ```
 
-Du behöver en `project.json` fil som använder NuGet för att referera till den `FSharp.Interop.Dynamic` och `Dynamitey` sammansättningar, så här:
+Du behöver en `project.json` fil som använder NuGet tooreference hello `FSharp.Interop.Dynamic` och `Dynamitey` sammansättningar, så här:
 
 ```json
 {
@@ -346,7 +346,7 @@ Du behöver en `project.json` fil som använder NuGet för att referera till den
 }
 ```
 
-Detta använder NuGet för att hämta dina beroenden och hänvisa dem i skriptet.
+Detta kommer att använda NuGet toofetch dina beroenden och hänvisa dem i skriptet.
 
 <a name="httptriggernodejs"></a>
 ### <a name="http-trigger-sample-in-nodejs"></a>HTTP-utlösaren exemplet i Node.JS
@@ -356,14 +356,14 @@ module.exports = function(context, req) {
 
     if (req.query.name || (req.body && req.body.name)) {
         context.res = {
-            // status: 200, /* Defaults to 200 */
+            // status: 200, /* Defaults too200 */
             body: "Hello " + (req.query.name || req.body.name)
         };
     }
     else {
         context.res = {
             status: 400,
-            body: "Please pass a name on the query string or in the request body"
+            body: "Please pass a name on hello query string or in hello request body"
         };
     }
     context.done();
@@ -374,7 +374,7 @@ module.exports = function(context, req) {
 
 <a name="hooktriggersample"></a>
 ## <a name="webhook-samples"></a>Webhook-exempel
-Anta att du har följande webhook-utlösaren den `bindings` matris med function.json:
+Anta att du har följande webhook utlösaren i hello hello `bindings` matris med function.json:
 
 ```json
 {
@@ -385,7 +385,7 @@ Anta att du har följande webhook-utlösaren den `bindings` matris med function.
 },
 ```
 
-Se exemplet språkspecifika loggar GitHub problemet kommentarer.
+Se hello språkspecifika exempel loggar GitHub problemet kommentarer.
 
 * [C#](#hooktriggercsharp)
 * [F#](#hooktriggerfsharp)

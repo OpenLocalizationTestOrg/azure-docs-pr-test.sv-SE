@@ -1,5 +1,5 @@
 ---
-title: "Stordataprogram som är kompatibel med Data Lake Store | Microsoft Docs"
+title: "aaaBig data-program som är kompatibla med Data Lake Store | Microsoft Docs"
 description: "Lista över program med öppen källkod som fungerar med Azure Data Lake Store"
 services: data-lake-store
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: nitinme
-ms.openlocfilehash: 0570e86c16ff3bc647040c202ab46df535bb2ba1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ad4afd6437412c596c77d6b001478b82ddccf276
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-store"></a>Öppna ett stort källdata program som fungerar med Azure Data Lake Store
-Den här artikeln visar öppen källkod stordataprogram som fungerar med Azure Data Lake Store. Endast versionerna som är tillgängliga med den angivna distributionsplatsen stöd för program i tabellen nedan. Information om vilka versioner av dessa program är tillgängliga med HDInsight finns [HDInsight component-versioning](../hdinsight/hdinsight-component-versioning.md).
+Den här artikeln visar hello öppen källkod stordataprogram som fungerar med Azure Data Lake Store. För hello program i hello tabellen nedan endast hello stöds versioner som är tillgängliga med hello visas distribution. Information om vilka versioner av dessa program är tillgängliga med HDInsight finns [HDInsight component-versioning](../hdinsight/hdinsight-component-versioning.md).
 
 | Programvara med öppen källkod | Distribution |
 | --- | --- |

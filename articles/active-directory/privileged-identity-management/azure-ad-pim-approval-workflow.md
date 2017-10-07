@@ -1,5 +1,5 @@
 ---
-title: "Azure Privileged Identity Management godkännande arbetsflöden | Microsoft Docs"
+title: "aaaAzure Privileged Identity Management godkännande arbetsflöden | Microsoft Docs"
 description: "Lär dig mer om godkännandearbetsflöden i Privileged Identity Management (PIM)"
 services: active-directory
 documentationcenter: 
@@ -14,37 +14,37 @@ ms.workload: identity
 ms.date: 04/28/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: cf6a9213fa0a1cba8725aabb42abe51b805ece7a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4afaf5c138798a803eb3d3b7905b9361d65792cd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="approvals-preview"></a>Godkännanden (förhandsgranskning)
 
 ## <a name="overview"></a>Översikt
 
-Med godkännanden för Privileged Identity Management kan du konfigurera roller för att kräva godkännande för aktivering och välja en eller flera användare eller grupper som delegerad godkännare. Vill du fortsätta läsa information om hur du konfigurerar roller och välj godkännare.
+Med godkännanden för Privileged Identity Management kan du konfigurera roller toorequire godkännande för aktivering och välja en eller flera användare eller grupper som delegerad godkännare. Att läsa toolearn hur tooconfigure roller och välj godkännare.
 
 >[!NOTE]
-Kom ihåg den här funktionen är fortfarande under utveckling och du kan stöta på buggar. Funktioner, inklusive text namngivningskonventioner komma att ändras och ska inte betraktas som sista.
+Kom ihåg den här funktionen är fortfarande under utveckling och du kan stöta på buggar. hello-funktioner, inklusive text namngivningskonventioner komma att ändras och ska inte betraktas som sista.
 
 
 ## <a name="key-terminology"></a>Viktiga termer
 
-*Behörig användare i rollen* – en användare med berättigade roll är en användare inom din organisation som har tilldelats till en Azure AD-roll som kvalificerade (rollen kräver aktivering).
+*Behörig användare i rollen* – en användare med berättigade roll är en användare inom din organisation som har tilldelats rollen tooan Azure AD som kvalificerade (rollen kräver aktivering).
 
 *Delegerad godkännare* – en delegerad godkännare är en eller flera personer eller grupper i din Azure AD som ansvarar för att godkänna begäranden om rollaktivering.
 
 ## <a name="scenarios"></a>Scenarier
 
-Privata förhandsgranskningen stöder följande scenarion:
+hello privat förhandsversion stöder hello följande scenarier:
 
 **Som en privilegierade rollen Administratör (PRA) kan du:**
 
 -   [aktivera godkännande för specifika roller](#enable-approval-for-specific-roles)
 
--   [Ange godkännare användare och/eller grupper för att godkänna begäranden](#specify-approver-users-and/or-groups-to-approve-requests)
+-   [Ange godkännare användare och/eller grupper tooapprove begäranden](#specify-approver-users-and/or-groups-to-approve-requests)
 
 -   [Visa historiken för begäran och godkännande för alla Privilegierade roller](#view-request-and-approval-history-for-all-privileged-roles)
 
@@ -60,31 +60,31 @@ Privata förhandsgranskningen stöder följande scenarion:
 
 -   [begära aktivering av en roll som kräver godkännande](#request-activation-of-a-role-that-requires-approval)
 
--   [Visa status för din begäran om att aktivera](#view-the-status-of-your-request-to-activate)
+-   [Visa hello statusen för din begäran tooactivate](#view-the-status-of-your-request-to-activate)
 
 -   [slutföra uppgiften i Azure AD om aktivering har godkänts](#complete-your-task-in-azure-ad-if-activation-was-approved)
 
 ### <a name="navigation"></a>Navigering
 
-Vi har uppdaterat navigering för att stödja godkännanden
+Vi har uppdaterat hello navigering toosupport godkännanden
 
 ![](media/azure-ad-pim-approval-workflow/image001.png)
 
-Standard landningssida ger åtkomst till information om PIM och den nya godkännande-dokumentationen.
+hello standardsida ger åtkomst tooinformation om PIM och hello nya godkännanden-dokumentationen.
 
 ![](media/azure-ad-pim-approval-workflow/image002.png)
 
-Vi har lagt till ett nytt avsnitt för alla användare av PIM Mina granskningshistorik. Här hittar du alla uppgifter som är relevanta för din identitet. Här ingår alla väntande och slutförda begäranden, alla beslut som du har gjort om begäranden som du har löst och alla dina senaste roll-aktiveringar i en och samma plats.
+Vi har lagt till ett nytt avsnitt för alla användare av PIM Mina granskningshistorik. Här hittar du alla hello information relevanta tooyour identitet. Här ingår alla väntande och slutförda begäranden, alla beslut som du har gjort om hello förfrågningar om du har löst och alla dina senaste roll-aktiveringar i en och samma plats.
 
 ![](media/azure-ad-pim-approval-workflow/image003.png)
 
 ### <a name="enable-approval-for-specific-roles"></a>Aktivera godkännande för specifika roller
 
-Om du vill aktivera godkännande för en viss roll, Välj Directory roller från det vänstra navigeringsfönstret.
+tooenable godkännande för en specifik roll, väljer först Directory roller hello vänstra navigeringsfönstret.
 
 ![](media/azure-ad-pim-approval-workflow/image004.png)
 
-Sök efter och välj inställningar i det vänstra navigeringsfönstret i katalogen
+Hitta och välja inställningar i hello navigeringen till vänster i katalogen
 
 ![](media/azure-ad-pim-approval-workflow/image006.png)
 
@@ -92,49 +92,49 @@ Välj Privilegierade roller:
 
 ![](media/azure-ad-pim-approval-workflow/image009.png)
 
-Välj ”Aktivera” i den kräver godkännande av:
+Välj ”Aktivera” i hello kräver godkännande av:
 
 ![](media/azure-ad-pim-approval-workflow/image011.png)
 
-När du har aktiverat, expanderar bladet för att visa följande information:
+När du har aktiverat, kommer hello bladet Expandera tooshow hello följande information:
 
 ![](media/azure-ad-pim-approval-workflow/image013.png)
 
 >[!NOTE]
-Om du inte anger någon godkännare blir PRA(s) standard godkännare. PRA(s) krävs för att godkänna alla aktiveringsbegäranden för den här rollen.
+Om du inte anger någon godkännare bli hello PRA(s) hello standard godkännare. PRA(s) skulle vara nödvändiga tooapprove alla aktivering begäranden för den här rollen.
 
-### <a name="specify-approver-users-andor-groups-to-approve-requests"></a>Ange godkännare användare och/eller grupper för att godkänna begäranden
+### <a name="specify-approver-users-andor-groups-tooapprove-requests"></a>Ange godkännare användare och/eller grupper tooapprove begäranden
 
-Klicka på alternativet för ”Välj godkännare” om du vill delegera godkännande:
+toodelegate godkännande på hello alternativ för ”Välj godkännare”:
 
 ![](media/azure-ad-pim-approval-workflow/image015.png)
 
-När bladet välj godkännare läses in, kan du söka efter en specifik användare eller grupp med sökfältet längst upp och att välja i listan i förväg och klicka på ”Välj” när du är klar:
+När hello väljer godkännare bladet läses in, kan du söka efter en viss användare eller grupp med hello sökfältet vid hello top eller välja hello förifyllda listan och klicka på ”Välj” när du är klar:
 
 ![](media/azure-ad-pim-approval-workflow/image017.png)
 
 Obs: Du kan välja flera användare eller grupper i taget.
 
-Valet visas i listan över valda godkännare som visas nedan:
+Valet visas i valda hello listan som visas nedan:
 
 ![](media/azure-ad-pim-approval-workflow/image019.png)
 
-Om du vill ta bort en granskare, klickar du på knappen Ta bort bredvid användarens namn.
+tooremove godkännare, klicka bara på hello ta bort knappen Nästa tootheir namn.
 
-Upprepa proceduren för att lägga till ytterligare godkännare.
+tooadd ytterligare godkännare, upprepa hello-processen.
 
 ## <a name="view-request-and-approval-history-for-all-privileged-roles"></a>Visa historiken för begäran och godkännande för alla Privilegierade roller
 
-Om du vill visa historik för begäran och godkännande för alla Privilegierade roller, Välj granskningshistorik från instrumentpanelen:
+Historik för tooview begäran och godkännande för alla Privilegierade roller, Välj granskningshistorik hello instrumentpanelen:
 
 ![](media/azure-ad-pim-approval-workflow/image021.png)
 
 >[!NOTE]
-Du kan sortera data av åtgärden och leta efter ”aktivering godkända”
+Du kan sortera hello data av åtgärden och leta efter ”aktivering godkända”
 
 ### <a name="view-pending-approvals-requests"></a>Visa väntande godkännanden (antal begäranden)
 
-Som en delegerad godkännare får du e-postaviseringar när en begäran väntar på ditt godkännande. Välj fliken ”väntande godkännandebegäranden” i det vänstra navigeringsfältet från instrumentpanelen (i det nya navigeringsfältet) om du vill visa dessa begäranden i PIM-portalen.
+Som en delegerad godkännare får du e-postaviseringar när en begäran väntar på ditt godkännande. tooview dessa begäranden i hello PIM-portalen från fliken instrumentpanelen (i hello nya navigering) Välj hello ”väntande godkännandebegäranden” i hello navigeringsfältet till vänster.
 
 ![](media/azure-ad-pim-approval-workflow/image023.png)
 
@@ -144,23 +144,23 @@ Därifrån visas en lista med begäranden som väntar på godkännande:
 
 ### <a name="approve-or-reject-requests-for-role-elevation-single-andor-bulk"></a>Godkänna eller Avvisa begäran för rollen höjning (enkel och/eller)
 
-Välj de begäranden som du vill godkänna eller neka och klicka på knappen i Åtgärdsfältet som motsvarar ditt beslut:
+Välj hello begäranden om du vill tooapprove eller neka och klicka hello i Åtgärdsfältet som motsvarar ditt beslut:
 
 ![](media/azure-ad-pim-approval-workflow/image025.png)
 
 ### <a name="provide-justification-for-my-approvalrejection"></a>Ange en motivering till min godkännande/nekande
 
-Då öppnas ett nytt blad om du vill godkänna eller neka flera begäranden samtidigt. Ange en motivering för ditt beslut och klicka på Godkänn (eller neka) längst ned eller bladet:
+Det här öppna ett nytt blad tooapprove eller neka flera begäranden samtidigt. Ange en motivering för ditt beslut och klicka på Godkänn (eller neka) på hello ned eller hello blad:
 
 ![](media/azure-ad-pim-approval-workflow/image029.png)
 
-När processen för begäran är klar Statussymbolen återspeglas beslut som du gjort (i det här exemplet beslutet är godkänna):
+När hello begäran processen är klar hello Statussymbolen återspeglas beslut som du gjort (i det här exemplet hello beslut är godkänna):
 
 ![](media/azure-ad-pim-approval-workflow/image031.png)
 
 ### <a name="request-activation-of-a-role-that-requires-approval"></a>Begära aktivering av en roll som kräver godkännande
 
-Begär aktivering av en roll som kräver godkännande kan initieras från den gamla PIM-navigeringen eller nya navigering som processen för rollaktivering är densamma. Välj bara en roll i listan över roller för att aktivera:
+Begär aktivering av en roll som kräver godkännande kan initieras från hello gamla PIM navigering eller hello nya navigering hello process rollen aktivering fortfarande hello samma. Välj bara en roll hello listan över roller för att aktivera:
 
 ![](media/azure-ad-pim-approval-workflow/image033.png)
 
@@ -172,24 +172,24 @@ Slutföra en gång, klicka på Aktivera och ange en motivering (vid behov):
 
 ![](media/azure-ad-pim-approval-workflow/image037.png)
 
-Begäranden visas ett meddelande om att begäran väntar på godkännande:
+hello begärande visas ett meddelande om att hello begäran väntar på godkännande:
 
 ![](media/azure-ad-pim-approval-workflow/image039.png)
 
-### <a name="view-the-status-of-your-request-to-activate"></a>Visa status för din begäran om att aktivera
+### <a name="view-hello-status-of-your-request-tooactivate"></a>Visa hello status för din begäran tooactivate
 
-Visa status för en väntande begäran om att aktivera måste kunna nås från den nya navigeringen. Välj fliken ”Mina förfrågningar” i det vänstra navigeringsfältet:
+Visa hello status för en väntande begäran tooactivate måste kunna nås från den nya navigeringen. Välj hello ”Mina förfrågningar” fliken hello vänstra navigeringsfältet:
 
 ![](media/azure-ad-pim-approval-workflow/image041.png)
 
-Tillstånd för begäran som standard ”väntande”, men du kan växla mellan för att se alla eller nekade begäranden.
+tillstånd för begäran om hello standardvärden för ”väntande”, men du kan växla toosee alla eller nekas begäranden.
 
 ### <a name="complete-your-task-in-azure-ad-if-activation-was-approved"></a>Slutföra uppgiften i Azure AD om aktivering har godkänts
 
-När begäran har godkänts rollen är aktiv och du kan fortsätta med allt arbete som kräver den här rollen.
+När hello begäran har godkänts, hello roll är aktiv och du kan fortsätta med allt arbete som kräver den här rollen.
 
 ![](media/azure-ad-pim-approval-workflow/image043.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Din feedback är viktig för oss. Gärna att dela kommentarer och feedback med oss här!
+Din feedback är viktig toous. Välkommen ledigt tooshare kommentarer och feedback med oss här!

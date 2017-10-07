@@ -1,6 +1,6 @@
 ---
-title: "Komma igång med IoT Hub (Java) | Microsoft Docs"
-description: "Läs hur man skickar meddelanden från enheten till molnet i Azure IoT Hub med hjälp av IoT SDK:er för Java. Skapa appar för simulerade enheter och tjänster för att registrera din enhet, skicka meddelanden och läsa meddelanden från IoT Hub."
+title: "aaaGet igång med Azure IoT Hub (Java) | Microsoft Docs"
+description: "Lär dig hur toosend enhet till moln meddelanden tooAzure IoT-hubb med IoT-SDK för Java. Skapa simulerade enheten och tjänsten appar tooregister enheten, skicka meddelanden och läsa meddelanden från IoT-hubb."
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -15,50 +15,50 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 707356a49970bcd76a55ee1b8a6fbddf6a6ba390
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ac954f0522b46ed2a5b4a819bc611c13be0b9a9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-your-device-to-your-iot-hub-using-java"></a>Anslut din enhet till IoT Hub med hjälp av Java
+# <a name="connect-your-device-tooyour-iot-hub-using-java"></a>Ansluta din enhet tooyour IoT-hubb som använder Java
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
-I slutet av den här självstudiekursen har du tre Java-konsolappar:
+Hello slutet av den här självstudiekursen har du tre Java konsolappar:
 
-* **create-device-identity**, som skapar en enhetsidentitet och en associerad säkerhetsnyckel för att ansluta din enhetsapp.
-* **read-d2c-messages**, som visar telemetri som skickas av din enhetsapp.
-* **simulated-device**, som ansluter till din IoT Hub med enhetsidentiteten som skapades tidigare och som skickar ett telemetrimeddelande varje sekund med hjälp av MQTT-protokollet.
+* **Skapa enhetsidentitet**, vilket skapar en enhetsidentitet och tillhörande nyckeln tooconnect din enhetsapp.
+* **Läs-d2c-meddelanden**, som visar hello telemetri som skickats av din enhetsapp.
+* **simulerade enheten**, som ansluter tooyour IoT-hubb med hello enhetsidentitet skapade tidigare och skickar meddelandet telemetri som alla andra med hello MQTT-protokollet.
 
 > [!NOTE]
-> Artikeln om [Azure IoT SDK:er][lnk-hub-sdks] innehåller information om Azure IoT SDK:er som du kan använda för att skapa båda apparna så att de kan köras på enheter och på lösningens backend-servrar.
+> hello artikel [Azure IoT SDK] [ lnk-hub-sdks] innehåller information om hello Azure IoT-SDK: er som du kan använda toobuild båda toorun för appar på enheter och din lösningens serverdel.
 
-För att kunna genomföra den här kursen behöver du följande:
+toocomplete den här kursen behöver du hello följande:
 
-* Senaste [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
+* Hej senaste [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
 * [Maven 3](https://maven.apache.org/install.html) 
 * Ett aktivt Azure-konto. (Om du inte har något konto kan du skapa ett [kostnadsfritt konto][lnk-free-trial] på bara några minuter.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-Som ett sista steg antecknar du **primärnyckelvärdet**. Klicka sedan på **Slutpunkter** och den inbyggda slutpunkten **Händelser**. På bladet **Egenskaper** noterar du **Händelsehubb-kompatibelt namn** och adressen i **Händelsehubb-kompatibel slutpunkt**. Du behöver dessa tre värden när du skapar appen **read-d2c-messages**.
+Som ett sista steg anteckna hello **primärnyckel** värde. Klicka på **slutpunkter** och hello **händelser** inbyggd slutpunkt. På hello **egenskaper** bladet antecknar hello **Event Hub-kompatibelt namn** och hello **Event Hub-kompatibel endpoint** adress. Du behöver dessa tre värden när du skapar appen **read-d2c-messages**.
 
 ![Aviseringsblad, Azure-portal, IoT Hub][6]
 
-Nu har du skapat din IoT Hub. Du har IoT Hub-värdnamnet, IoT Hub-anslutningssträngen, den primära IoT Hub-nyckeln, det Händelsehubb-kompatibla namnet och den Händelsehubb-kompatibla slutpunkten som du behöver för att slutföra resten av kursen.
+Nu har du skapat din IoT Hub. Du har hello IoT Hub-värdnamnet, IoT-hubb anslutningssträngen, IoT-hubb primärnyckel, Event Hub-kompatibelt namn och Event Hub-kompatibel endpoint toocomplete måste den här kursen.
 
 ## <a name="create-a-device-identity"></a>Skapa en enhetsidentitet
-I det här avsnittet ska du skapa en Java-konsolapp som skapar en enhetsidentitet i identitetsregistret i IoT Hub. En enhet kan inte ansluta till IoT Hub om den inte har en post i identitetsregistret. Mer information finns i avsnittet om **identitetsregistret** i [utvecklarhandboken för IoT Hub][lnk-devguide-identity]. När du kör den här konsolappen genererar det ett unikt enhets-ID och en nyckel som din enhet kan använda för att identifiera sig själv när den skickar ”enhet-till-molnet”-meddelanden till IoT Hub.
+I det här avsnittet skapar du en Java-konsolapp som skapar en enhetsidentitet i hello identitetsregistret i din IoT-hubb. En enhet kan inte ansluta tooIoT hubb om den inte har en post i registret för hello identitet. Mer information finns i hello **Identitetsregistret** avsnitt i hello [IoT-hubb Utvecklarhandbok][lnk-devguide-identity]. När du kör den här konsolen appen genereras ett unikt enhets-ID och nyckel att enheten kan använda tooidentify själva när den skickar enhet till moln meddelanden tooIoT hubb.
 
-1. Skapa en tom mapp med namnet iot-java-get-started. Skapa ett Maven-projekt i mappen iot-java-get-started med namnet **create-device-identity** med hjälp av följande kommando i Kommandotolken. Observera att detta är ett enda långt kommando:
+1. Skapa en tom mapp med namnet iot-java-get-started. Skapa ett Maven-projekt som kallas i hello iot-java-get-started mappen **skapa enhetsidentitet** med hello följande kommando vid en kommandotolk. Observera att detta är ett enda långt kommando:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=create-device-identity -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Gå till mappen create-device-identity i Kommandotolken.
+2. Navigera toohello skapa enhetsidentitet mapp i en kommandotolk.
 
-3. Använd en textredigerare och öppna filen pom.xml i mappen create-device-identity och lägg till följande beroende till noden **dependencies**. Det här beroendet gör att du kan använda paketet iot-service-client i din app:
+3. Med en textredigerare, öppna hello pom.xml filen hello skapa enhetsidentitet mapp och lägga till följande beroende toohello hello **beroenden** nod. Det här beroendet kan du toouse hello iot-service-klient paketet i din app:
 
     ```xml
     <dependency>
@@ -69,13 +69,13 @@ I det här avsnittet ska du skapa en Java-konsolapp som skapar en enhetsidentite
     ```
 
     > [!NOTE]
-    > Du kan söka efter den senaste versionen av **iot-service-client** med [Maven-sökning][lnk-maven-service-search].
+    > Du kan söka efter hello senaste versionen av **iot tjänstklienten** med [Maven Sök][lnk-maven-service-search].
 
-4. Spara och stäng filen pom.xml.
+4. Spara och Stäng hello pom.xml fil.
 
-5. Använd en textredigerare och öppna filen create-device-identity\src\main\java\com\mycompany\app\App.java.
+5. Använd en textredigerare och öppna hello create-device-identity\src\main\java\com\mycompany\app\App.java filen.
 
-6. Lägg till följande **Import**-instruktioner i filen:
+6. Lägg till följande hello **importera** instruktioner toohello fil:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.exceptions.IotHubException;
@@ -86,7 +86,7 @@ I det här avsnittet ska du skapa en Java-konsolapp som skapar en enhetsidentite
     import java.net.URISyntaxException;
     ```
 
-7. Lägg till följande variabler på klassnivå till klassen **App** och ersätt **{yourhubconnectionstring}** med värdena som du noterade och skrev ned tidigare:
+7. Lägg till följande variabler klassen på toohello hello **App** class, ersätter **{yourhubconnectionstring}** med hello värde din anges tidigare:
 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -94,13 +94,13 @@ I det här avsnittet ska du skapa en Java-konsolapp som skapar en enhetsidentite
     ```
 [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
-8. Ändra signaturen för **main**-metoden och ta med undantagen som visas nedan:
+8. Ändra hello signaturen för hello **huvudsakliga** metoden tooinclude hello undantag på följande sätt:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException, Exception
     ```
 
-9. Lägg till följande kod som huvudstycket i **main**-metoden. Den här koden skapar en enhet med namnet *javadevice* i ditt IoT Hub-identitetsregister om den inte redan finns. Den visar sedan enhets-ID:t och enhetsnyckeln som du behöver senare:
+9. Lägg till hello efter koden som hello brödtext hello **huvudsakliga** metod. Den här koden skapar en enhet med namnet *javadevice* i ditt IoT Hub-identitetsregister om den inte redan finns. Den visar hello enhets-ID och nyckel som du behöver senare:
 
     ```java
     RegistryManager registryManager = RegistryManager.createFromConnectionString(connectionString);
@@ -112,7 +112,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
-      // If the device already exists.
+      // If hello device already exists.
       try {
         device = registryManager.getDevice(deviceId);
       } catch (IotHubException iotf) {
@@ -130,7 +130,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     try {
       device = registryManager.addDevice(device);
     } catch (IotHubException iote) {
-      // If the device already exists.
+      // If hello device already exists.
       try {
         device = registryManager.getDevice(deviceId);
       } catch (IotHubException iotf) {
@@ -144,41 +144,41 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     System.out.println("Device key: " + device.getPrimaryKey());
     ```
 
-10. Spara och stäng filen App.java.
+10. Spara och Stäng hello App.java fil.
 
-11. Skapa appen **create-device-identity** med hjälp av Maven genom att köra följande kommando i Kommandotolken i mappen create-device-identity:
+11. toobuild hello **skapa enhetsidentitet** app med Maven, kör följande kommando i Kommandotolken hello i hello skapa enhetsidentitet mapp hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
-12. Kör appen **create-device-identity** med hjälp av Maven genom att köra följande kommando i Kommandotolken i mappen create-device-identity:
+12. toorun hello **skapa enhetsidentitet** app med Maven, kör följande kommando i Kommandotolken hello i hello skapa enhetsidentitet mapp hello:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-13. Skriv ner **Enhets-ID** och **Enhetsnyckel**. Du behöver dessa värden senare när du skapar en app som ansluter till IoT Hub som en enhet.
+13. Anteckna hello **enhets-ID** och **enhetsnyckel**. Du måste dessa värden senare när du skapar en app som ansluter tooIoT hubb som en enhet.
 
 > [!NOTE]
-> IoT Hub-identitetsregistret lagrar bara enhetsidentiteter för att skydda åtkomsten till IoT Hub. Registret lagrar enhets-ID:n och enhetsnycklar som ska användas som säkerhetsreferenser och en aktiverad/inaktiverad-flagga som du kan använda för att inaktivera åtkomst för en enskild enhet. Om din app behöver lagra andra enhetsspecifika metadata bör den använda en appspecifik butik. Mer information finns i [utvecklarhandboken för IoT Hub][lnk-devguide-identity].
+> Hej IoT-hubb identitetsregistret lagrar bara enheten identiteter tooenable säker åtkomst toohello IoT-hubb. Enheten ID och nycklar toouse lagras som säkerhetsreferenser och en aktiverat/inaktiverat flagga som du kan använda toodisable åtkomst för en enskild enhet. Om din app måste toostore andra enhetsspecifika metadata, ska det använda en app-specifik butik. Mer information finns i hello [IoT-hubb Utvecklarhandbok][lnk-devguide-identity].
 
 ## <a name="receive-device-to-cloud-messages"></a>Ta emot meddelanden från enheten till molnet
 
-I det här avsnittet ska du skapa en Java-konsolapp som läser ”enhet till molnet”-meddelanden från IoT Hub. En IoT Hub exponerar en [Event Hubs][lnk-event-hubs-overview]-kompatibel slutpunkt så att du kan läsa meddelanden från enheter till molnet. För att göra det så enkelt som möjligt skapar vi en grundläggande läsare i den härs självstudiekursen som inte passar för distributioner med hög genomströmning. Självstudiekursen [Bearbeta meddelanden från enhet till moln][lnk-process-d2c-tutorial] beskriver hur du bearbetar ”enhet till molnet”-meddelanden i hög skala. Självstudiekursen [Komma igång med Event Hubs][lnk-eventhubs-tutorial] innehåller ytterligare information om hur du bearbetar meddelanden från Event Hubs och gäller för de Event Hubs-kompatibla slutpunkterna i IoT Hub.
+I det här avsnittet ska du skapa en Java-konsolapp som läser ”enhet till molnet”-meddelanden från IoT Hub. En IoT-hubb Exponerar en [Händelsehubb][lnk-event-hubs-overview]-kompatibel endpoint tooenable du tooread meddelanden från enhet till moln. enkel tookeep saker, den här guiden skapar en grundläggande läsare som inte lämpar sig för en distribution med hög genomströmning. Hej [bearbeta meddelanden från enhet till moln] [ lnk-process-d2c-tutorial] kursen visar hur tooprocess enhet till moln meddelanden i större skala. Hej [Kom igång med Händelsehubbar] [ lnk-eventhubs-tutorial] självstudier innehåller ytterligare information om hur tooprocess meddelanden från Event Hubs och är tillämplig toohello IoT-hubb Event Hub-kompatibel slutpunkter.
 
 > [!NOTE]
-> Event Hub-kompatibla slutpunkter för läsning av meddelanden från enheter till molnet använder alltid AMQP-protokollet.
+> hello använder Event Hub-kompatibel slutpunkt för att läsa meddelanden från enhet till moln alltid hello AMQP-protokollet.
 
-1. I mappen iot-java-get-started som du skapade i avsnittet *Skapa en enhetsidentitet* skapar du ett Maven-projekt med namnet **read-d2c-messages** genom att köra följande kommando i Kommandotolken. Observera att detta är ett enda långt kommando:
+1. I hello iot-java-get-started mappen du skapade i hello *skapa en enhetsidentitet* avsnittet, skapa ett Maven-projekt som kallas **lästa d2c meddelanden** med hello följande kommando vid en kommandotolk. Observera att detta är ett enda långt kommando:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=read-d2c-messages -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Gå till mappen read-d2c-messages i Kommandotolken.
+2. Navigera toohello lästa d2c meddelanden mapp i en kommandotolk.
 
-3. Använd en textredigerare och öppna filen pom.xml i mappen read-d2c-messages och lägg till följande beroende till noden **dependencies**. Det här beroendet gör att du kan använda eventhubs-client-paketet i din app för att läsa från den Event Hubs-kompatibla slutpunkten:
+3. Med en textredigerare, öppna hello pom.xml filen hello lästa d2c meddelanden mapp och lägga till följande beroende toohello hello **beroenden** nod. Det här beroendet kan du toouse eventhubs hello-klientpaketet i din app tooread från hello Event Hub-kompatibel slutpunkten:
 
     ```xml
     <dependency> 
@@ -188,11 +188,11 @@ I det här avsnittet ska du skapa en Java-konsolapp som läser ”enhet till mol
     </dependency>
     ```
 
-4. Spara och stäng filen pom.xml.
+4. Spara och Stäng hello pom.xml fil.
 
-5. Öppna filen read-d2c-messages\src\main\java\com\mycompany\app\App.java i en textredigerare.
+5. Använd en textredigerare och öppna hello read-d2c-messages\src\main\java\com\mycompany\app\App.java filen.
 
-6. Lägg till följande **Import**-instruktioner i filen:
+6. Lägg till följande hello **importera** instruktioner toohello fil:
 
     ```java
     import java.io.IOException;
@@ -204,13 +204,13 @@ I det här avsnittet ska du skapa en Java-konsolapp som läser ”enhet till mol
     import java.util.function.*;
     ```
 
-7. Lägg till följande klassnivåvariabler i klassen **App**. Ersätt **{youriothubkey}**, **{youreventhubcompatibleendpoint}** och **{youreventhubcompatiblename}** med de värden som du skrev ner tidigare:
+7. Lägg till följande klassnivå variabeln toohello hello **App** klass. Ersätt **{youriothubkey}**, **{youreventhubcompatibleendpoint}**, och **{youreventhubcompatiblename}** med hello-värden som du antecknade tidigare:
 
     ```java
     private static String connStr = "Endpoint={youreventhubcompatibleendpoint};EntityPath={youreventhubcompatiblename};SharedAccessKeyName=iothubowner;SharedAccessKey={youriothubkey}";
     ```
 
-8. Lägg till följande **receiveMessages**-metod till klassen **App**. Den här metoden skapar en **EventHubClient**-instans för att ansluta till den Event Hubs-kompatibla slutpunkten och skapar sedan en **PartitionReceiver**-instans asynkront för att läsa från Event Hubs-partitionen. Den loopar kontinuerligt och skriver ut meddelandeinformationen tills appen avslutas.
+8. Lägg till följande hello **receiveMessages** metoden toohello **App** klass. Den här metoden skapar en **EventHubClient** tooconnect toohello Event Hub-kompatibel endpoint-instans och asynkront skapar en **PartitionReceiver** instans tooread från en Händelsehubb partition. Den slinga kontinuerligt och skriver ut hello meddelandet visas tills hello app slutar.
 
     ```java
     // Create a receiver on a partition.
@@ -219,7 +219,7 @@ I det här avsnittet ska du skapa en Java-konsolapp som läser ”enhet till mol
       try {
         client = EventHubClient.createFromConnectionStringSync(connStr);
       } catch (Exception e) {
-        System.out.println("Failed to create client: " + e.getMessage());
+        System.out.println("Failed toocreate client: " + e.getMessage());
         System.exit(1);
       }
       try {
@@ -251,33 +251,33 @@ I det här avsnittet ska du skapa en Java-konsolapp som läser ”enhet till mol
                   System.out.println(String.format("Partition: %s, ReceivedBatch Size: %s", partitionId, batchSize));
                 }
               } catch (Exception e) {
-                System.out.println("Failed to receive messages: " + e.getMessage());
+                System.out.println("Failed tooreceive messages: " + e.getMessage());
               }
             }
           });
         } catch (Exception e) {
-          System.out.println("Failed to create receiver: " + e.getMessage());
+          System.out.println("Failed toocreate receiver: " + e.getMessage());
       }
       return client;
     }
     ```
 
    > [!NOTE]
-   > Den här metoden använder ett filter när den skapar mottagaren så att mottagaren endast läser meddelanden som skickas till IoT Hub efter att mottagaren har börjat köra. Den här tekniken är användbar i en testmiljö så att du kan se den aktuella uppsättningen meddelanden. I en produktionsmiljö bör koden se till att alla meddelanden bearbetas. Mer information finns i självstudiekursen [How to process IoT Hub device-to-cloud messages][lnk-process-d2c-tutorial] (Bearbeta meddelanden från enheten till molnet i IoT Hub).
+   > Den här metoden använder ett filter när den skapar hello mottagare så att hello mottagaren läser endast meddelanden som skickas tooIoT hubb när hello mottagaren börjar köras. Den här metoden är användbar i en testmiljö så att du kan se hello aktuella uppsättning av meddelanden. I en produktionsmiljö bör koden se till att den bearbetar alla meddelanden för hello - mer information, se hello [hur tooprocess IoT-hubb meddelanden från enhet till moln] [ lnk-process-d2c-tutorial] kursen.
 
-9. Ändra signaturen för **main**-metoden och ta med undantaget som visas nedan:
+9. Ändra hello signaturen för hello **huvudsakliga** metoden tooinclude hello undantag på följande sätt:
 
     ```java
     public static void main( String[] args ) throws IOException
     ```
 
-10. Lägg till följande kod i metoden **main** i klassen **App**. Den här koden skapar två **EventHubClient**- och **PartitionReceiver**-instanser och gör att du kan stänga appen när du har bearbetat meddelandena:
+10. Lägg till följande kod toohello hello **huvudsakliga** metod i hello **App** klass. Den här koden skapar hello två **EventHubClient** och **PartitionReceiver** instanser och gör att du tooclose hello app när du är klar behandlar meddelanden:
 
     ```java
     // Create receivers for partitions 0 and 1.
     EventHubClient client0 = receiveMessages("0");
     EventHubClient client1 = receiveMessages("1");
-    System.out.println("Press ENTER to exit.");
+    System.out.println("Press ENTER tooexit.");
     System.in.read();
     try {
       client0.closeSync();
@@ -289,28 +289,28 @@ I det här avsnittet ska du skapa en Java-konsolapp som läser ”enhet till mol
     ```
 
     > [!NOTE]
-    > Den här koden förutsätter att du skapade IoT Hub på F1-nivån (kostnadsfri). En kostnadsfri IoT Hub har två partitioner med namnen ”0” och ”1”.
+    > Den här koden förutsätter att du skapade din IoT-hubb i (kostnadsfritt) hello F1-nivån. En kostnadsfri IoT Hub har två partitioner med namnen ”0” och ”1”.
 
-11. Spara och stäng filen App.java.
+11. Spara och Stäng hello App.java fil.
 
-12. Skapa appen **read-d2c-messages** med hjälp av Maven genom att köra följande kommando i Kommandotolken i mappen read-d2c-messages:
+12. toobuild hello **lästa d2c meddelanden** app med Maven, kör följande kommando i Kommandotolken hello i hello lästa d2c meddelanden mappen hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
 ## <a name="create-a-device-app"></a>Skapa en enhetsapp
-I det här avsnittet ska du skapa en Java-konsolapp som simulerar en enhet som skickar ”enhet till molnet”-meddelanden till en IoT Hub.
+I det här avsnittet skapar du en Java-konsolapp som simulerar en enhet som skickar meddelanden från enhet till moln tooan IoT-hubb.
 
-1. I mappen iot-java-get-started som du skapade i avsnittet *Skapa en enhetsidentitet* skapar du ett Maven-projekt med namnet **simulated-device** genom att köra följande kommando i Kommandotolken. Observera att detta är ett enda långt kommando:
+1. Hej iot-java-get-started mappen du skapade i hello *skapa en enhetsidentitet* avsnittet, skapa ett Maven-projekt som kallas **simulerade enheten** med hello följande kommando vid en kommandotolk. Observera att detta är ett enda långt kommando:
 
     ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. Gå till mappen simulated-device i Kommandotolken.
+2. Navigera toohello simulerade enheten mapp i en kommandotolk.
 
-3. Använd en textredigerare och öppna filen pom.xml i mappen simulated-device och lägg till följande beroenden till noden **dependencies**. Det här beroendet gör att du kan använda iothub-java-client-paketet i din app för att kommunicera med IoT Hub och för att serialisera Java-objekt till JSON:
+3. Med en textredigerare, öppna hello pom.xml filen hello simulerade enheten mapp och lägga till följande beroenden toohello hello **beroenden** nod. Det här beroendet kan du toouse hello iothub-java-klient paketet i din app toocommunicate med IoT-hubb och tooserialize tooJSON för Java-objekt:
 
     ```xml
     <dependency>
@@ -326,13 +326,13 @@ I det här avsnittet ska du skapa en Java-konsolapp som simulerar en enhet som s
     ```
 
     > [!NOTE]
-    > Du kan söka efter den senaste versionen av **iot-device-client** med [Maven-sökning][lnk-maven-device-search].
+    > Du kan söka efter hello senaste versionen av **iot enhetsklienten** med [Maven Sök][lnk-maven-device-search].
 
-4. Spara och stäng filen pom.xml.
+4. Spara och Stäng hello pom.xml fil.
 
-5. Öppna filen simulated-device\src\main\java\com\mycompany\app\App.java i en textredigerare.
+5. Använd en textredigerare och öppna hello simulated-device\src\main\java\com\mycompany\app\App.java filen.
 
-6. Lägg till följande **Import**-instruktioner i filen:
+6. Lägg till följande hello **importera** instruktioner toohello fil:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -345,7 +345,7 @@ I det här avsnittet ska du skapa en Java-konsolapp som simulerar en enhet som s
     import java.util.concurrent.ExecutorService;
     ```
 
-7. Lägg till följande variabler på klassnivå till klassen **App**. Ersätt **{youriothubname}** med namnet på din IoT Hub och **{yourdevicekey}** med enhetsnyckelvärdet som du genererade i avsnittet *Skapa en enhetsidentitet*:
+7. Lägg till följande variabler klassen på toohello hello **App** klass. Ersätta **{youriothubname}** med din IoT-hubbnamnet och **{yourdevicekey}** hello enheten nyckelvärdet du genererade i hello *skapa en enhetsidentitet* avsnitt:
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myFirstJavaDevice;SharedAccessKey={yourdevicekey}";
@@ -354,9 +354,9 @@ I det här avsnittet ska du skapa en Java-konsolapp som simulerar en enhet som s
     private static DeviceClient client;
     ```
    
-    Den här exempelappen använder variabeln **protocol** när den instantierar ett **DeviceClient**-objekt. Du kan använda antingen MQTT-, AMQP- eller HTTP-protokollet för att kommunicera med IoT Hub.
+    Den här exempelappen använder hello **protokollet** variabeln när den instantierar en **DeviceClient** objekt. Du kan använda toocommunicate för protokollet av MQTT, AMQP och HTTP-antingen hello med IoT-hubben.
 
-8. Lägg till följande kapslade **TelemetryDataPoint**-klass inuti klassen **App** för att ange de telemetridata som enheten skickar till IoT Hub:
+8. Lägg till hello följande kapslade **TelemetryDataPoint** klass i hello **App** klassen toospecify hello telemetridata enheten skickar tooyour IoT-hubb:
 
     ```java
     private static class TelemetryDataPoint {
@@ -370,12 +370,12 @@ I det här avsnittet ska du skapa en Java-konsolapp som simulerar en enhet som s
       }
     }
     ```
-9. Lägg till följande kapslade **EventCallback**-klass inuti klassen **App** för att visa bekräftelsestatusen som IoT Hub returnerar när den bearbetar ett meddelande från enhetsappen. Den här metoden meddelar även huvudtråden i appen när meddelandet har bearbetats:
+9. Lägg till hello följande kapslade **EventCallback** klass i hello **App** klassen toodisplay hello bekräftelse status som hello IoT-hubb returnerar när den bearbetar ett meddelande från hello enhetsapp. Den här metoden meddelar även hello huvudtråden i hello app när har bearbetats hello-meddelande:
    
     ```java
     private static class EventCallback implements IotHubEventCallback {
       public void execute(IotHubStatusCode status, Object context) {
-        System.out.println("IoT Hub responded to message with status: " + status.name());
+        System.out.println("IoT Hub responded toomessage with status: " + status.name());
    
         if (context != null) {
           synchronized (context) {
@@ -386,7 +386,7 @@ I det här avsnittet ska du skapa en Java-konsolapp som simulerar en enhet som s
     }
     ```
 
-10. Lägg till följande kapslade **MessageSender**-klass inuti klassen **App**. Metoden **Kör** i den här klassen genererar exempeltelemetridata som skickas till IoT Hub och väntar på en bekräftelse innan nästa meddelande skickas:
+10. Lägg till hello följande kapslade **MessageSender** klass i hello **App** klass. Hej **kör** metod i den här klassen genererar exempel telemetri data toosend tooyour IoT-hubb och väntar på en bekräftelse innan du skickar nästa hello-meddelande:
 
     ```java
     private static class MessageSender implements Runnable {
@@ -426,9 +426,9 @@ I det här avsnittet ska du skapa en Java-konsolapp som simulerar en enhet som s
     }
     ```
 
-    Den här metoden skickar ett nytt ”enhet till molnet”-meddelande en sekund efter att IoT Hub bekräftar det föregående meddelandet. Meddelandet innehåller ett JSON-serialiserat objekt med enhets-ID:t och ett slumpmässigt genererat nummer för att simulera en temperatursensor och en fuktighetssensor.
+    Den här metoden skickar meddelandet ny enhet till moln en sekund efter hello IoT-hubb bekräftat tidigare hello-meddelande. hello-meddelande innehåller en JSON-serialiserade objekt med hello deviceId och slumpmässigt genererade siffror toosimulate en temperatursensor och en fuktighet sensor.
 
-11. Ersätt metoden **main** med följande kod som skapar en tråd för att skicka ”enhet till molnet”-meddelanden till din IoT Hub:
+11. Ersätt hello **huvudsakliga** metod med följande kod som skapar en tråd toosend meddelanden från enhet till moln tooyour IoT-hubb hello:
 
     ```java
     public static void main( String[] args ) throws IOException, URISyntaxException {
@@ -440,58 +440,58 @@ I det här avsnittet ska du skapa en Java-konsolapp som simulerar en enhet som s
       ExecutorService executor = Executors.newFixedThreadPool(1);
       executor.execute(sender);
     
-      System.out.println("Press ENTER to exit.");
+      System.out.println("Press ENTER tooexit.");
       System.in.read();
       executor.shutdownNow();
       client.closeNow();
     }
     ```
 
-12. Spara och stäng filen App.java.
+12. Spara och Stäng hello App.java fil.
 
-13. Skapa appen **simulated-device** med hjälp av Maven genom att köra följande kommando i Kommandotolken i mappen simulated-device:
+13. toobuild hello **simulerade enheten** app med Maven, kör följande kommando i Kommandotolken hello i hello simulerade enheten mappen hello:
 
     ```cmd/sh
     mvn clean package -DskipTests
     ```
 
 > [!NOTE]
-> För att göra det så enkelt som möjligt implementerar vi ingen princip för omförsök i den här självstudiekursen. I produktionskoden bör du implementera principer för omförsök (till exempel en exponentiell backoff), vilket rekommenderas i MSDN-artikeln om [hantering av tillfälliga fel][lnk-transient-faults].
+> enkel tookeep saker, den här självstudiekursen implementerar inte några återförsöksprincip. I produktionskod, bör du implementera försök principer (till exempel en exponentiell backoff) enligt förslaget i hello MSDN-artikel [hantering av tillfälliga fel][lnk-transient-faults].
 
-## <a name="run-the-apps"></a>Kör apparna
+## <a name="run-hello-apps"></a>Köra hello appar
 
-Nu är det dags att köra apparna.
+Du är nu redo toorun hello appar.
 
-1. Kör följande kommando i Kommandotolken i mappen read-d2c för att börja övervaka den första partitionen i din IoT Hub:
+1. Kör hello efter kommandot toobegin övervakning hello första partitionen i din IoT-hubb i en kommandotolk i hello Läs d2c mapp:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
-    ![Java IoT Hub-tjänstapp för att övervaka meddelanden från enheten till molnet][7]
+    ![Meddelanden från Java IoT-hubb service app toomonitor enhet till moln][7]
 
-2. Kör följande kommando i Kommandotolken i mappen simulated-device för att börja skicka telemetridata till din IoT Hub:
+2. Kör hello efter kommandot toobegin skicka telemetri data tooyour IoT-hubb i en kommandotolk i hello simulerade enheten mapp:
 
     ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App" 
     ```
 
-    ![Java IoT Hub-enhetsapp för att skicka meddelanden från enheten till molnet][8]
+    ![Meddelanden från Java IoT-hubb enheten app toosend enhet till moln][8]
 
-3. På panelen **Användning** på [Azure Portal][lnk-portal] kan du se hur många meddelanden som har skickats till IoT Hub:
+3. Hej **användning** panelen i hello [Azure-portalen] [ lnk-portal] visar hello antalet meddelanden som skickas toohello IoT-hubb:
 
-    ![Azure-portal Användningspanel som visar antalet meddelanden som har skickats till IoT Hub][43]
+    ![Azure portal användning panelen visar antalet meddelanden som skickas tooIoT Hub][43]
 
 ## <a name="next-steps"></a>Nästa steg
-I den här självstudiekursen konfigurerade du en ny IoT Hub på Azure Portal och skapade sedan en enhetsidentitet i IoT-hubbens identitetsregister. Du använde den här enhetsidentiteten så att enhetsappen kunde skicka ”enhet till molnet”-meddelanden till IoT Hub. Du skapade också en app som visar meddelandena som tagits emot av IoT Hub.
+I den här självstudiekursen konfigurerade en ny IoT-hubb i hello Azure-portalen och sedan skapa en enhetsidentitet i hello IoT hub identitetsregistret. Du har använt den här enhetens identitet tooenable hello enheten app toosend meddelanden från enhet till moln toohello IoT-hubb. Du kan också skapat en app som visar hello som tagits emot av hello IoT-hubb.
 
-Mer information om hur du kan komma igång med IoT Hub och utforska andra IoT-scenarier finns här:
+toocontinue komma igång med IoT-hubb och tooexplore finns i andra IoT-scenarier:
 
 * [Connecting your device][lnk-connect-device] (Ansluta din enhet)
 * [Connecting your device][lnk-device-management] (Komma igång med enhetshantering)
 * [Komma igång med Azure IoT Edge][lnk-iot-edge]
 
-Självstudiekursen [Bearbeta meddelanden från enhet till moln][lnk-process-d2c-tutorial] beskriver hur du utökar din IoT-lösning och bearbetar ”enhet till molnet”-meddelanden i hög skala.
+toolearn hur tooextend IoT-lösningen och processen enhet till moln meddelandena i skala, se hello [bearbeta meddelanden från enhet till moln] [ lnk-process-d2c-tutorial] kursen.
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 
 <!-- Images. -->

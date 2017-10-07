@@ -1,5 +1,5 @@
 ---
-title: "Azure Media Services översikt för communityn | Microsoft Docs"
+title: "aaaAzure Media Services översikt för communityn | Microsoft Docs"
 description: "Den här Azure Media Services (AMS) community-sidan beskrivs olika sätt som du kan hämta uppdateringar om AMS, se nya videoklipp och poddsändningar, frågor och ge feedback. "
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: ef77ed3a4efee7ebcdd716376be78db38ce46f8f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 97329ef099752506af6ec6947a88a00c35d141a3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-community
 Den här Azure Media Services (AMS) community-sidan beskrivs olika sätt som du kan hämta uppdateringar om AMS, visa nya videoklipp och poddsändningar, frågor och ge feedback.   
@@ -37,10 +37,10 @@ Den här Azure Media Services (AMS) community-sidan beskrivs olika sätt som du 
 
 ## <a name="discussion"></a>Beskrivning
 ### <a name="twitter"></a>Twitter
-Använd den [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter referensen till Följ AMS nyheter och uppdateringar på Twitter. Du kan använda den [ @AzureSupport ](https://twitter.com/azuresupport) twitter-referens för att begära support på Twitter.  
+Använd hello [ @MSFTAzureMedia ](https://twitter.com/MSFTAzureMedia) twitter referensen toofollow hello AMS nyheterna och uppdateringarna på Twitter. Du kan använda hello [ @AzureSupport ](https://twitter.com/azuresupport) twitter referensen toorequest stöd på Twitter.  
 
 ### <a name="online-forums"></a>Onlineforum
-Följande forum kan användas för att ställa frågor om aktuella produkter och funktioner.
+hello kan följande forum användas för att ställa frågor om aktuella produkter och funktioner.
 
 MSDN är för närvarande AMS primära forum.
 
@@ -48,10 +48,10 @@ MSDN är för närvarande AMS primära forum.
 
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](http://stackoverflow.com/questions/tagged/azure-media-services) 
 
-## <a name="contact-the-team"></a>Kontakta-teamet
+## <a name="contact-hello-team"></a>Kontakta hello-teamet
 Azure Media Services primära e-post är:  **mediaservices@microsoft.com** .
 
-I följande tabell visas e-postadressen till funktionen sub team:
+hello i den följande tabellen listas e-post med funktionen sub team:
 
 | Funktion | E-post |
 | --- | --- |

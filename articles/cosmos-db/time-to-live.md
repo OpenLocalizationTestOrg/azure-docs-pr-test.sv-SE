@@ -1,9 +1,9 @@
 ---
-title: Ut data i Azure Cosmos DB med time to live | Microsoft Docs
-description: "Med TTL tillhandahåller Microsoft Azure Cosmos DB möjligheten att låta dokument automatiskt bort från systemet efter en viss tidsperiod."
+title: aaaExpire data i Azure Cosmos DB med tiden toolive | Microsoft Docs
+description: "Med TTL tillhandahåller Microsoft Azure Cosmos DB hello möjlighet toohave dokument automatiskt rensas bort från hello systemet efter en viss tidsperiod."
 services: cosmos-db
 documentationcenter: 
-keywords: Time to live-
+keywords: tid toolive
 author: arramac
 manager: jhubbard
 editor: 
@@ -15,47 +15,47 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: arramac
-ms.openlocfilehash: 6f1c43ca0113dc7579b0fc3743d3314c16ce78a4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 51d8ec46add72c9624457316a4ccd1e23fb83ad0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Data i Azure Cosmos DB samlingar automatiskt med time to live-att gälla
-Program kan skapa och lagra stora mängder data. Vissa av dessa data, t.ex. datorn genereras data, loggar och användaren händelsesessionen information är bara användbara för en bestämd tidsperiod. När data blir överflödiga enligt behov av programmet som det är säkert att rensa data och minska lagringsbehov för ett program.
+# <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-toolive"></a>Data i Azure Cosmos DB samlingar automatiskt med tiden toolive att gälla
+Program kan skapa och lagra stora mängder data. Vissa av dessa data, t.ex. datorn genereras data, loggar och användaren händelsesessionen information är bara användbara för en bestämd tidsperiod. När hello data blir överflödiga toohello behov av programmet hello är säker toopurge dessa data och minska hello lagringsbehov för ett program.
 
-Med ”time to live” eller TTL, tillhandahåller Microsoft Azure Cosmos DB möjligheten att låta dokument automatiskt rensas bort från databasen efter en viss tidsperiod. Standard time to live kan ställas på samlingsnivå och åsidosätts på grundval av per dokument. När TTL-värde har angetts som standard samlingen eller på en dokumentnivå bort Cosmos DB automatiskt dokument som finns efter den tid i sekunder, eftersom de senast ändrades.
+Med ”time toolive” eller TTL tillhandahåller Microsoft Azure Cosmos DB hello möjlighet toohave dokument automatiskt bort från hello databasen efter en viss tidsperiod. hello standardtid toolive kan ange på samlingsnivå hello och åsidosätts på grundval av per dokument. När TTL-värde har angetts som standard samlingen eller på en dokumentnivå bort Cosmos DB automatiskt dokument som finns efter den tid i sekunder, eftersom de senast ändrades.
 
-Time to live i Cosmos-DB-använder en förskjutning mot när dokumentet senast ändrades. Om du vill används den `_ts` fält som finns på alla dokument. Fältet _ts är en unix-format epok tidsstämpel som representerar datumet och tiden. Den `_ts` varje gång ett dokument ändras uppdateras fältet. 
+Tid toolive i Cosmos-databasen använder en förskjutning mot när hello dokumentet senast ändrades. toodo den här den använder hello `_ts` fält som finns på alla dokument. Hej _ts fältet är en unix-format epok tidsstämpel som representerar hello datum och tid. Hej `_ts` varje gång ett dokument ändras uppdateras fältet. 
 
 ## <a name="ttl-behavior"></a>TTL-beteende
-TTL-funktionen styrs av TTL-egenskaper på två nivåer - samlingsnivå och dokumentnivå. Värdena anges i sekunder och behandlas som ett dokument från den `_ts` dokumentet senast ändrad.
+hello TTL-funktionen styrs av TTL-egenskaper på två nivåer - hello samlingsnivå och hello för dokumentet. hello värden anges i sekunder och behandlas som en lista från hello `_ts` hello dokumentet har ändrades senast.
 
-1. DefaultTTL för samlingen
+1. DefaultTTL för hello samling
    
-   * Om de saknas (eller inställt på null) dokument tas inte bort automatiskt.
-   * Om finns, och värdet är ”-” 1 = oändlig – dokument inte ut som standard
-   * Om finns, och värdet är ett nummer (”n”) – dokument gälla sekunder ”n” efter senaste ändring
-2. TTL-värde för dokument: 
+   * Om saknas (eller uppsättning toonull) dokument tas inte bort automatiskt.
+   * Om den finns och är-hello värdet ”1” = oändlig – dokument inte ut som standard
+   * Om den finns och hello värde är ett nummer (”n”) – dokument gälla ”n” sekunder efter senast ändrades
+2. TTL-värde för hello dokument: 
    
-   * Egenskapen gäller endast om DefaultTTL finns för den överordnade samlingen.
-   * Åsidosätter DefaultTTL för den överordnade samlingen.
+   * Egenskapen gäller endast om DefaultTTL finns för hello överordnade samlingen.
+   * Åsidosätter hello DefaultTTL för hello överordnade samlingen.
 
-När dokumentet har upphört att gälla (`ttl`  +  `_ts` > = aktuella servertiden), dokumentet har markerats som ”upphört att gälla”. Ingen åtgärd ska tillåtas på dessa dokument efter den tidpunkten och de kommer att uteslutas från resultatet av alla frågor som utförs. Dokumenten bort fysiskt i systemet och tas bort i bakgrunden tillfälligt vid ett senare tillfälle. Detta inte tar upp någon [begära enheter (RUs)](request-units.md) från samlingen budget.
+Så snart hello dokumentet har upphört att gälla (`ttl`  +  `_ts` > = aktuella servertiden), hello dokumentet har markerats som ”upphört att gälla”. Ingen åtgärd ska tillåtas på dessa dokument efter den tidpunkten och de kommer att uteslutas från hello resultatet av alla frågor som utförs. hello dokument fysiskt tas bort i hello system och tas bort i bakgrunden hello tillfälligt vid ett senare tillfälle. Detta inte tar upp någon [begära enheter (RUs)](request-units.md) från hello samling budget.
 
-Ovanstående logiken kan visas i matrisen följande:
+hello ovan logik kan visas i följande matris hello:
 
-|  | DefaultTTL saknas ej på samlingen | DefaultTTL = -1 på en samling | DefaultTTL = ”n” på en samling |
+|  | DefaultTTL saknas ej på hello samling | DefaultTTL = -1 på en samling | DefaultTTL = ”n” på en samling |
 | --- |:--- |:--- |:--- |
-| TTL-värde saknas i dokumentet |Inget att åsidosätta på dokumentnivå eftersom både dokumentet och samling har något begrepp om TTL-värde. |Inga dokument i den här samlingen upphör att gälla. |Dokument i den här samlingen upphör att gälla efter intervall n tiden. |
-| TTL = -1 i dokumentet |Inget att åsidosätta på dokumentnivå eftersom samlingen inte definierar egenskapen DefaultTTL som ett dokument kan åsidosätta. TTL-värde i ett dokument är icke tolkad av systemet. |Inga dokument i den här samlingen upphör att gälla. |Dokumentet med TTL =-1 i den här samlingen upphör aldrig att gälla. Alla dokument upphör att gälla efter ”n” intervall. |
-| TTL = n i dokumentet |Inget att åsidosätta på dokumentnivå. TTL-värde på ett dokument i icke tolkad av systemet. |Dokumentet har TTL = n upphör att gälla efter intervall n, i sekunder. Andra dokument kommer att ärva intervallet-1 och aldrig går ut. |Dokumentet har TTL = n upphör att gälla efter intervall n, i sekunder. Andra dokument ärver ”n” intervall från samlingen. |
+| TTL-värde saknas i dokumentet |Inget toooverride på dokumentnivå eftersom både hello dokumentet och samling har något begrepp om TTL-värde. |Inga dokument i den här samlingen upphör att gälla. |hello dokument i den här samlingen upphör att gälla efter intervall n tiden. |
+| TTL = -1 i dokumentet |Inget toooverride nivån hello dokument eftersom hello samlingen inte definierar hello DefaultTTL egenskap som ett dokument kan åsidosätta. TTL-värde i ett dokument är icke tolkad hello-systemet. |Inga dokument i den här samlingen upphör att gälla. |upphör aldrig att gälla hello dokument med TTL =-1 i den här samlingen. Alla dokument upphör att gälla efter ”n” intervall. |
+| TTL = n i dokumentet |Inget toooverride på hello dokumentnivå. TTL-värde på ett dokument i icke tolkad hello-systemet. |hello dokument med TTL = n upphör att gälla efter intervall n, i sekunder. Andra dokument kommer att ärva intervallet-1 och aldrig går ut. |hello dokument med TTL = n upphör att gälla efter intervall n, i sekunder. Andra dokument ärver ”n” intervall från hello samling. |
 
 ## <a name="configuring-ttl"></a>Konfigurera TTL-värde
-Time to live-är inaktiverat som standard i alla Cosmos DB samlingar och på alla dokument som standard.
+Tid toolive är inaktiverad som standard i alla Cosmos DB samlingar och på alla dokument som standard.
 
 ## <a name="enabling-ttl"></a>Aktivera TTL-värde
-Om du vill aktivera TTL-värde på en samling eller dokument i en samling som du behöver ange egenskapen DefaultTTL i en samling till -1 eller ett positivt tal som inte är noll. Inställningen av DefaultTTL-1 innebär som som standard alla dokument i samlingen ska alltid live men Cosmos-DB-tjänsten bör du övervaka den här samlingen för dokument som har åsidosatt den här standardinställningen.
+tooenable TTL-värde på en samling eller hello dokument i en samling behöver du tooset hello DefaultTTL egenskap för en samling tooeither -1 eller ett positivt tal som inte är noll. Ange hello DefaultTTL för-1 innebär att som standard alla dokument i hello samlingen kommer live alltid men hello Cosmos-DB-tjänsten bör du övervaka den här samlingen för dokument som har åsidosatt den här standardinställningen.
 
     DocumentCollection collectionDefinition = new DocumentCollection();
     collectionDefinition.Id = "orders";
@@ -68,7 +68,7 @@ Om du vill aktivera TTL-värde på en samling eller dokument i en samling som du
         new RequestOptions { OfferThroughput = 20000 });
 
 ## <a name="configuring-default-ttl-on-a-collection"></a>Konfigurera standard TTL-värde på en samling
-Du kan konfigurera en standardtid för live på en samlingsnivå. Om du vill ange TTL-värdet för en samling, måste du ange ett positivt tal som är noll som anger tiden, i sekunder att gälla alla dokument i samlingen när senast ändrade tidsstämpeln för dokumentet (`_ts`). Alternativt kan du ange standardvärdet-1, vilket innebär att alla dokument som infogas i samlingen kommer live på obestämd tid som standard.
+Du kan kan tooconfigure en toolive standardtid på en samlingsnivå. tooset hello TTL-värde på en samling måste tooprovide ett positivt tal som är noll som visar hello period i sekunder, tooexpire alla dokument i hello samlingen när hello senast ändrad tidsstämpeln för hello dokumentet (`_ts`). Alternativt kan du ange hello standard för-1, vilket innebär att alla dokument som infogas i toohello samlingen kommer live på obestämd tid som standard.
 
     DocumentCollection collectionDefinition = new DocumentCollection();
     collectionDefinition.Id = "orders";
@@ -82,15 +82,15 @@ Du kan konfigurera en standardtid för live på en samlingsnivå. Om du vill ang
 
 
 ## <a name="setting-ttl-on-a-document"></a>Inställningen TTL-värde på ett dokument
-Du kan ange specifika TTL-värde på dokumentnivå utöver att ställa in en standard-TTL för en samling. Detta åsidosätter standardvärdet i mängden.
+Dessutom toosetting standard TTL-värde för en samling du kan ange specifika TTL-värde på dokumentnivå. Detta åsidosätter hello standard hello mängden.
 
-* Om du vill ange TTL-värdet för ett dokument, måste du ange ett positivt tal som är noll som anger tiden, i sekunder att gå ut dokumentet när senast ändrade tidsstämpeln för dokumentet (`_ts`).
-* Om ett dokument har inget fält med TTL-värde, gäller standard i mängden.
-* Om TTL-värdet är inaktiverat på samlingsnivå ignoreras TTL-fältet på dokumentet förrän TTL aktiveras igen på samlingen.
+* tooset hello TTL-värde på ett dokument, behöver du tooprovide ett positivt tal som är noll vilket betyder hello period i sekunder, tooexpire hello dokument när hello senast ändrad tidsstämpeln för hello dokumentet (`_ts`).
+* Om ett dokument har inget TTL-fält hello standardvärdet hello samling gäller.
+* Om TTL-värdet är inaktiverat på samlingsnivå hello ignoreras hello TTL-fältet för hello dokument tills TTL aktiveras igen på hello samling.
 
-Här är ett kodfragment som visar hur du ställer in TTL upphör att gälla på ett dokument:
+Här är ett kodfragment som visar hur tooset hello TTL upphör att gälla på ett dokument:
 
-    // Include a property that serializes to "ttl" in JSON
+    // Include a property that serializes too"ttl" in JSON
     public class SalesOrder
     {
         [JsonProperty(PropertyName = "id")]
@@ -99,14 +99,14 @@ Här är ett kodfragment som visar hur du ställer in TTL upphör att gälla på
         [JsonProperty(PropertyName="cid")]
         public string CustomerId { get; set; }
         
-        // used to set expiration policy
+        // used tooset expiration policy
         [JsonProperty(PropertyName = "ttl", NullValueHandling = NullValueHandling.Ignore)]
         public int? TimeToLive { get; set; }
         
         //...
     }
     
-    // Set the value to the expiration in seconds
+    // Set hello value toohello expiration in seconds
     SalesOrder salesOrder = new SalesOrder
     {
         Id = "SO05",
@@ -116,31 +116,31 @@ Här är ett kodfragment som visar hur du ställer in TTL upphör att gälla på
 
 
 ## <a name="extending-ttl-on-an-existing-document"></a>Utöka TTL-värde på ett befintligt dokument
-Du kan återställa TTL för ett dokument genom att göra någon skrivåtgärd i dokumentet. Om du gör detta anger den `_ts` till aktuell tid och nedräkningen till dokumentet upphör att gälla, som angetts av den `ttl`, påbörjas igen. Om du vill ändra den `ttl` i ett dokument, du kan uppdatera fältet som du kan göra med något annat går fält.
+Du kan återställa hello TTL-värde i ett dokument genom att göra någon skrivåtgärd i hello dokumentet. Detta kommer att ange hello `_ts` toohello aktuell tid och hello nedräkning toohello dokumentet upphör att gälla, som angetts av hello `ttl`, påbörjas igen. Om du inte vill toochange hello `ttl` i ett dokument, kan du uppdatera hello fält som du kan göra med något annat går fält.
 
     response = await client.ReadDocumentAsync(
         "/dbs/salesdb/colls/orders/docs/SO05"), 
         new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
     
     Document readDocument = response.Resource;
-    readDocument.TimeToLive = 60 * 30 * 30; // update time to live
+    readDocument.TimeToLive = 60 * 30 * 30; // update time toolive
     
     response = await client.ReplaceDocumentAsync(salesOrder);
 
 ## <a name="removing-ttl-from-a-document"></a>Ta bort TTL-värde från ett dokument
-Om ett TTL-värde har angetts för ett dokument och du inte längre vill att dokumentet ska upphöra att gälla, kan sedan du hämta dokumentet, ta bort fältet TTL-värde och ersätter dokumentet på servern. När TTL-fältet tas bort från dokumentet, används standardvärdet i mängden. Om du vill stoppa ett dokument upphör att gälla och inte ärver från en samling måste du ange TTL-värdet-1.
+Om ett TTL-värde har angetts för ett dokument och du inte längre vill att dokumentet tooexpire, sedan du kan hämta hello dokument, ta bort hello TTL-fältet och ersätta hello dokument på hello-servern. När hello TTL-fältet tas bort från hello dokument kommer hello standardvärdet hello samlingen att tillämpas. toostop ett dokument upphör att gälla och inte ärver från hello samling måste tooset hello TTL-värdet för-1.
 
     response = await client.ReadDocumentAsync(
         "/dbs/salesdb/colls/orders/docs/SO05"), 
         new RequestOptions { PartitionKey = new PartitionKey("CO18009186470") });
     
     Document readDocument = response.Resource;
-    readDocument.TimeToLive = null; // inherit the default TTL of the collection
+    readDocument.TimeToLive = null; // inherit hello default TTL of hello collection
     
     response = await client.ReplaceDocumentAsync(salesOrder);
 
 ## <a name="disabling-ttl"></a>Inaktivera TTL-värde
-Om du vill inaktivera TTL helt på en samling och stoppa bakgrunden från söker efter utgångna dokument egenskapen DefaultTTL i samlingen ska tas bort. Ta bort den här egenskapen skiljer sig från att ange-1. Inställningen för att 1 innebär nya dokument läggas till i samlingen ska alltid live men du kan åsidosätta detta på specifika dokument i samlingen. Ta bort den här egenskapen helt från samlingen innebär att inga dokument upphör att gälla, även om det finns dokument som tidigare har uttryckligen åsidosätts.
+toodisable TTL helt på en samling och stoppa hello bakgrund bearbeta från söker efter utgångna dokument hello DefaultTTL egenskapen på hello samling ska tas bort. Ta bort den här egenskapen skiljer sig från att ange värdet 1 för. Inställningen för-1 innebär nya dokument lägga toohello samlingen kommer alltid live men du kan åsidosätta detta på specifika dokument i hello samling. Ta bort den här egenskapen helt från hello samling innebär att inga dokument upphör att gälla, även om det finns dokument som tidigare har uttryckligen åsidosätts.
 
     DocumentCollection collection = await client.ReadDocumentCollectionAsync("/dbs/salesdb/colls/orders");
     
@@ -153,24 +153,24 @@ Om du vill inaktivera TTL helt på en samling och stoppa bakgrunden från söker
 ## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 **Vad TTL kostar mig?**
 
-Det finns utan extra kostnad för att ange ett TTL-värde i ett dokument.
+Det finns inga extra kostnad toosetting ett TTL-värde i ett dokument.
 
-**Hur lång tid tar det att ta bort dokumentet när TTL-värdet är igång?**
+**Hur lång tid tar det toodelete dokumentet när hello TTL-värde som är igång?**
 
-Dokument som har upphört att gälla omedelbart när TTL-värdet är igång och kan inte nås via CRUD eller fråga API: er. 
+hello dokument har upphört att gälla omedelbart när hello TTL-värde som är igång och kan inte nås via CRUD eller fråga API: er. 
 
 **TTL-värde i ett dokument har någon effekt på RU avgifter?**
 
 Nej, det är ingen inverkan på RU kostnader för borttagningar av utgångna dokument via TTL-värde i Cosmos-databasen.
 
-**Funktionen TTL endast gäller för hela dokument eller kan jag upphöra att gälla egenskapsvärden för enskilda dokument?**
+**Hello TTL-funktionen endast gäller tooentire dokument eller kan jag upphöra att gälla egenskapsvärden för enskilda dokument?**
 
-TTL-värde gäller för hela dokumentet. Om du vill att gälla bara en del av ett dokument, sedan rekommenderas det att du extrahera delen från det huvudsakliga dokumentet till ett separat ”länkade” dokument och sedan använda TTL-värde med det extraherade dokumentet.
+TTL-värde gäller toohello hela dokumentet. Om du vill att tooexpire rekommenderas bara en del av ett dokument, då du extrahera hello del från hello dokument i tooa separat ”länkade” dokument och sedan använda TTL-värde med det extraherade dokumentet.
 
-**Har funktionen TTL eventuella särskilda krav för fulltextindexering?**
+**Har hello TTL-funktionen eventuella särskilda krav för fulltextindexering?**
 
-Ja. Samlingen måste ha [indexering principen](indexing-policies.md) konsekvent eller Lazy. Försök att ange DefaultTTL på en samling med indexering inställd på None resulterar i ett fel som kommer försök att inaktivera indexering på en samling som har en DefaultTTL som redan angetts.
+Ja. hello samlingen måste innehålla [indexering principen](indexing-policies.md) tooeither konsekvent eller Lazy. Försök tooset DefaultTTL på en samling med indexering set tooNone resulterar i ett fel som kommer försök tooturn av indexering på en samling som har en DefaultTTL som redan angetts.
 
 ## <a name="next-steps"></a>Nästa steg
-Om du vill veta mer om Azure Cosmos DB kan referera till tjänsten [ *dokumentationen* ](https://azure.microsoft.com/documentation/services/cosmos-db/) sidan.
+toolearn mer om Azure Cosmos DB finns toohello service [ *dokumentationen* ](https://azure.microsoft.com/documentation/services/cosmos-db/) sidan.
 

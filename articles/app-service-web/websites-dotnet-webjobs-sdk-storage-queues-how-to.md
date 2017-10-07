@@ -1,6 +1,6 @@
 ---
-title: "Använd Azure-kölagring med WebJobs SDK:n"
-description: "Lär dig mer om att använda Azure queue storage med WebJobs SDK. Skapa och ta bort köer. Infoga, granska, hämta och ta bort Kömeddelanden och mycket mer."
+title: aaaHow toouse Azure queue storage med hello WebJobs SDK
+description: "Lär dig hur toouse Azure kö lagring med hello WebJobs-SDK. Skapa och ta bort köer. Infoga, granska, hämta och ta bort Kömeddelanden och mycket mer."
 services: app-service\web, storage
 documentationcenter: .net
 author: ggailey777
@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: glenga
-ms.openlocfilehash: 63b987a2c9471f2929b8d2dd605323910d2ad43b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 49f844436b0453489800b2762a5c7dc30b9db805
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-azure-queue-storage-with-the-webjobs-sdk"></a>Använd Azure-kölagring med WebJobs SDK:n
+# <a name="how-toouse-azure-queue-storage-with-hello-webjobs-sdk"></a>Hur toouse Azure kö lagring med hello WebJobs SDK
 ## <a name="overview"></a>Översikt
-Den här guiden innehåller C#-kodexempel som visar hur du använder Azure WebJobs SDK version 1.x med tjänsten Azure queue storage.
+Den här guiden innehåller C#-kodexempel som visar hur toouse hello Azure WebJobs SDK version 1.x med hello Azure queue storage-tjänst.
 
-Handboken förutsätter att du vet [hur du skapar ett Webbjobb-projekt i Visual Studio med anslutning strängar som pekar på ditt lagringskonto](websites-dotnet-webjobs-sdk-get-started.md) eller [flera lagringskonton](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs).
+hello handboken förutsätts att du vet [hur toocreate ett Webbjobb projekt i Visual Studio med anslutning strängar som punkt tooyour lagringskonto](websites-dotnet-webjobs-sdk-get-started.md) eller för[flera lagringskonton](https://github.com/Azure/azure-webjobs-sdk/blob/master/test/Microsoft.Azure.WebJobs.Host.EndToEndTests/MultipleStorageAccountsEndToEndTests.cs).
 
-De flesta av kodavsnitten Visa endast funktioner, inte koden som skapar den `JobHost` objekt som i följande exempel:
+De flesta av hello kodstycken Visa endast funktioner, inte hello kod som skapar hello `JobHost` objekt som i följande exempel:
 
         static void Main(string[] args)
         {
@@ -34,76 +34,76 @@ De flesta av kodavsnitten Visa endast funktioner, inte koden som skapar den `Job
             host.RunAndBlock();
         }
 
-Guiden innehåller följande ämnen:
+hello guide innehåller hello följande avsnitt:
 
-* [Hur du utlöser en funktion när ett kömeddelande tas emot](#trigger)
+* [Hur tootrigger en funktion när ett kömeddelande tas emot](#trigger)
   * Sträng Kömeddelanden
   * POCO Kömeddelanden
   * Async-funktion
-  * Attributet QueueTrigger fungerar med typer
+  * Typer hello QueueTrigger attributet fungerar med
   * Avsökningen algoritm
   * Flera instanser
   * Parallell körning
   * Hämta kön eller kön meddelandet metadata
   * Korrekt avslutning
-* [Så här skapar du ett kömeddelande under bearbetning av ett meddelande i kön](#createqueue)
+* [Hur toocreate en kö meddelande vid bearbetning av ett meddelande i kön](#createqueue)
   * Sträng Kömeddelanden
   * POCO Kömeddelanden
   * Skapa flera meddelanden eller i async-funktioner
-  * Attributet kön fungerar med typer
-  * Använda WebJobs-SDK-attribut i brödtexten för en funktion
-* [Hur kan läsa och skriva BLOB under bearbetning av ett meddelande i kön](#blobs)
+  * Typer hello kön attributet fungerar med
+  * Använda WebJobs-SDK-attribut i hello brödtext
+* [Hur tooread och skriva BLOB-objekt vid bearbetning av ett meddelande i kön](#blobs)
   * Sträng Kömeddelanden
   * POCO Kömeddelanden
-  * Blob-attributet som fungerar med typer
-* [Hur du hanterar förgiftade meddelanden](#poison)
+  * Typer hello Blob attributet fungerar med
+* [Hur toohandle förgiftade meddelanden](#poison)
   * Hantering av automatisk skadligt meddelande
   * Hantering av manuell skadligt meddelande
-* [Hur du ställer in konfigurationsalternativ](#config)
+* [Hur tooset konfigurationsalternativ](#config)
   * Ange SDK anslutningssträngar i kod
   * Konfigurera inställningar för QueueTrigger
   * Ange värden för WebJobs SDK konstruktorparametrarna i koden
-* [Hur du utlöser en funktion manuellt](#manual)
-* [Hur du skriver loggar](#logs)
-* [Hantera fel och konfigurera tidsgränser](#errors)
+* [Hur tootrigger en funktion manuellt](#manual)
+* [Hur toowrite loggar](#logs)
+* [Hur toohandle fel och konfigurera tidsgränser](#errors)
 * [Nästa steg](#nextsteps)
 
-## <a id="trigger"></a>Hur du utlöser en funktion när ett kömeddelande tas emot
-Om du vill skriva en funktion som WebJobs SDK anropar när ett kömeddelande tas emot, använder den `QueueTrigger` attribut. Attributkonstruktorn använder en strängparameter som anger namnet på kön avsöker. Du kan också [ange könamnet dynamiskt](#config).
+## <a id="trigger"></a>Hur tootrigger en funktion när ett kömeddelande tas emot
+toowrite anropar en funktion som hello WebJobs SDK när ett kömeddelande tas emot använder hello `QueueTrigger` attribut. hello Attributkonstruktorn använder en strängparameter som anger hello kön toopoll hello namn. Du kan också [ange hello könamnet dynamiskt](#config).
 
 ### <a name="string-queue-messages"></a>Sträng Kömeddelanden
-I följande exempel kön innehåller ett strängmeddelande, så `QueueTrigger` tillämpas på en som strängparameter med namnet `logMessage` som innehåller innehållet i kön meddelandet. Funktionen [skriver ett loggmeddelande till instrumentpanelen](#logs).
+I följande exempel hello, hello kön innehåller ett strängmeddelande, så `QueueTrigger` är tillämpade tooa strängparameter med namnet `logMessage` som innehåller hello innehållet hello kön meddelandet. Hej funktionen [skriver en logg meddelandet toohello instrumentpanelen](#logs).
 
         public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
         {
             logger.WriteLine(logMessage);
         }
 
-Förutom `string`, parametern kan vara en bytematris en `CloudQueueMessage` objekt eller en POCO som du definierar.
+Förutom `string`, hello kan vara en bytematris en `CloudQueueMessage` objekt eller en POCO som du definierar.
 
 ### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(vanlig gamla CLR-objekt](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) meddelanden i kö
-I följande exempel innehåller kömeddelandet JSON för en `BlobInformation` objekt som innehåller en `BlobName` egenskap. SDK deserializes automatiskt objektet.
+I följande exempel hello, hello kön meddelandet innehåller JSON för en `BlobInformation` objekt som innehåller en `BlobName` egenskap. hello SDK deserializes automatiskt hello-objektet.
 
         public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobInfo, TextWriter logger)
         {
-            logger.WriteLine("Queue message refers to blob: " + blobInfo.BlobName);
+            logger.WriteLine("Queue message refers tooblob: " + blobInfo.BlobName);
         }
 
-SDK använder den [Newtonsoft.Json NuGet-paketet](http://www.nuget.org/packages/Newtonsoft.Json) serialisera och deserialisera meddelanden. Om du skapar meddelanden i kö i ett program som inte använder WebJobs SDK kan du skriva kod som i följande exempel för att skapa ett kömeddelande för POCO som SDK kan parsa.
+hello SDK använder hello [Newtonsoft.Json NuGet-paketet](http://www.nuget.org/packages/Newtonsoft.Json) tooserialize och avbryta serialiseringen för meddelanden. Om du skapar meddelanden i kö i ett program som inte använder hello WebJobs SDK skriva du kod som hello följande exempel toocreate en POCO kömeddelande som hello SDK kan parsa.
 
         BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
         var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
         logQueue.AddMessage(queueMessage);
 
 ### <a name="async-functions"></a>Async-funktion
-Följande async-funktion [skriver en logg till instrumentpanelen](#logs).
+hello följande async-funktionen [skriver en logg toohello instrumentpanelen](#logs).
 
         public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] string logMessage, TextWriter logger)
         {
             await logger.WriteLineAsync(logMessage);
         }
 
-Asynkrona funktioner kan ta en [annullering token](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)som visas i följande exempel som kopierar en blob. (En förklaring av den `queueTrigger` platshållare, finns det [Blobbar](#blobs) avsnitt.)
+Asynkrona funktioner kan ta en [annullering token](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)som visas i följande exempel som kopierar en blobb hello. (En förklaring av hello `queueTrigger` platshållare finns hello [Blobbar](#blobs) avsnitt.)
 
         public async static Task ProcessQueueMessageAsyncCancellationToken(
             [QueueTrigger("blobcopyqueue")] string blobName,
@@ -114,8 +114,8 @@ Asynkrona funktioner kan ta en [annullering token](http://www.asp.net/mvc/overvi
             await blobInput.CopyToAsync(blobOutput, 4096, token);
         }
 
-### <a id="qtattributetypes"></a>Attributet QueueTrigger fungerar med typer
-Du kan använda `QueueTrigger` med följande typer:
+### <a id="qtattributetypes"></a>Typer hello QueueTrigger attributet fungerar med
+Du kan använda `QueueTrigger` med hello följande typer:
 
 * `string`
 * En POCO-typen som serialiseras som JSON
@@ -123,20 +123,20 @@ Du kan använda `QueueTrigger` med följande typer:
 * `CloudQueueMessage`
 
 ### <a id="polling"></a>Avsökningen algoritm
-SDK implementerar en exponentiell tillbaka av algoritmen för att minska effekten av inaktiv-kön avsökning på transaktion lagringskostnader.  När ett meddelande hittas SDK väntar två sekunder och söker efter en annan message; När det finns inget meddelande väntar på fyra sekunder innan du försöker igen. Väntetiden fortsätter att öka tills väntetiden, där standardinställningen är en minut efter efterföljande misslyckade försök att få ett meddelande i kön. [Väntetiden kan konfigureras](#config).
+hello SDK implementerar en exponentiell tillbaka av algoritmen tooreduce hello effekten av inaktiv-kön avsökning på transaktion lagringskostnader.  När ett meddelande hittas hello SDK väntar två sekunder och söker efter en annan message; När det finns inget meddelande väntar på fyra sekunder innan du försöker igen. När efterföljande misslyckade försök tooget ett kömeddelande hello väntetiden fortsätter tooincrease tills den når maximal väntetid för hello, vilka standardvärden tooone minut. [hello väntetiden konfigureras](#config).
 
 ### <a id="instances"></a>Flera instanser
-Om ditt webbprogram som körs på flera instanser är ett kontinuerligt Webbjobb som körs på varje dator och varje dator ska vänta tills utlösare och försök att köra funktioner. WebJobs SDK kö utlösaren förhindrar automatiskt en funktion från att bearbeta ett kömeddelande flera gånger. funktioner har inte att skrivas till vara idempotent. Men om du vill se till att endast en instans av en funktion körs även när det finns flera instanser av värden webbprogram, kan du använda den `Singleton` attribut.
+Om ditt webbprogram som körs på flera instanser är ett kontinuerligt Webbjobb som körs på varje dator och varje dator ska vänta för utlösare och försök toorun funktioner. Hej WebJobs SDK kö utlösaren förhindrar automatiskt en funktion från att bearbeta ett kömeddelande flera gånger. funktioner har inte skrivits toobe idempotent toobe. Men om du vill att tooensure att endast en instans av en funktion körs även när det finns flera instanser av hello värden webbprogram, kan du använda hello `Singleton` attribut.
 
 ### <a id="parallel"></a>Parallell körning
-Om du har flera funktioner som lyssnar på olika köer anropar SDK dem parallellt när meddelanden tas emot samtidigt.
+Om du har flera funktioner som lyssnar på olika köer anropar hello SDK dem parallellt när meddelanden tas emot samtidigt.
 
-Samma sak gäller när flera meddelanden tas emot för en enskild kö. Som standard SDK hämtar en batch med 16 Kömeddelanden i taget och kör den funktion som behandlar dem parallellt. [Batchstorleken konfigureras](#config). När antalet bearbetas hämtar till hälften av batchstorleken, hämtar en annan batch SDK och påbörjar bearbetningen av dessa meddelanden. Därför är det maximala antalet samtidiga meddelanden som bearbetas per funktion en och en halv gånger batchstorlek. Den här begränsningen gäller separat för varje funktion som har en `QueueTrigger` attribut.
+hello sak samma gäller när flera meddelanden tas emot för en enskild kö. Som standard hello SDK hämtar en batch med 16 Kömeddelanden i taget och utför hello-funktion som behandlar dem parallellt. [hello storlek är konfigurerbar](#config). När hello nummer bearbetas hämtar ned toohalf av hello batchstorlek, hämtar en annan batch hello SDK och påbörjar bearbetningen av dessa meddelanden. Hello maximalt antal samtidiga meddelanden som bearbetas per funktion är därför en och en halv gånger hello batchstorlek. Den här begränsningen gäller separat tooeach funktion som har en `QueueTrigger` attribut.
 
-Om du inte vill parallell körning för meddelanden som tas emot i en kö kan ange du batchstorleken till 1. Se även **mer kontroll över kön bearbetning** i [Azure WebJobs SDK 1.1.0 RTM](https://azure.microsoft.com/blog/azure-webjobs-sdk-1-1-0-rtm/).
+Om du inte vill parallell körning för meddelanden som tas emot i en kö kan ange du hello batch storlek too1. Se även **mer kontroll över kön bearbetning** i [Azure WebJobs SDK 1.1.0 RTM](https://azure.microsoft.com/blog/azure-webjobs-sdk-1-1-0-rtm/).
 
 ### <a id="queuemetadata"></a>Hämta kön eller kön meddelandet metadata
-Du kan få följande meddelandeegenskaper genom att lägga till parametrar Metodsignaturen:
+Du kan få följande meddelandeegenskaper genom att lägga till parametrar toohello Metodsignaturen hello:
 
 * `DateTimeOffset`expirationTime
 * `DateTimeOffset`insertionTime
@@ -146,9 +146,9 @@ Du kan få följande meddelandeegenskaper genom att lägga till parametrar Metod
 * `string`popReceipt
 * `int`dequeueCount
 
-Om du vill arbeta direkt med Azure storage API, du kan också lägga till en `CloudStorageAccount` parameter.
+Om du vill toowork direkt med hello Azure storage-API, du kan också lägga till en `CloudStorageAccount` parameter.
 
-I följande exempel skriver alla dessa metadata till en INFO programloggen. Både logMessage och queueTrigger innehåller innehållet i kön meddelandet i det här exemplet.
+hello skriver följande exempel alla denna metadata tooan INFO programloggen. I exemplet hello innehåll både logMessage och queueTrigger hello av hälsningsmeddelande för kön.
 
         public static void WriteLog([QueueTrigger("logqueue")] string logMessage,
             DateTimeOffset expirationTime,
@@ -175,7 +175,7 @@ I följande exempel skriver alla dessa metadata till en INFO programloggen. Båd
                 queueTrigger);
         }
 
-Här är en exempellogg som skrivits av exempelkoden:
+Här är en exempellogg som skrivits av hello exempelkod:
 
         logMessage=Hello world!
         expirationTime=10/14/2014 10:31:04 PM +00:00
@@ -188,9 +188,9 @@ Här är en exempellogg som skrivits av exempelkoden:
         queueTrigger=Hello world!
 
 ### <a id="graceful"></a>Korrekt avslutning
-En funktion som körs i ett kontinuerligt Webbjobb kan acceptera en `CancellationToken` parameter som gör operativsystemet för att meddela funktionen när Webbjobbet håller på att avslutas. Du kan använda det här meddelandet för att kontrollera att funktionen inte avslutas oväntat på ett sätt som lämnar data i ett inkonsekvent tillstånd.
+En funktion som körs i ett kontinuerligt Webbjobb kan acceptera en `CancellationToken` parameter som aktiverar hello operativsystemet toonotify hello fungerar när hello Webbjobb kommer toobe avslutades. Du kan använda det här meddelandet toomake att hello funktionen inte avslutas oväntat på ett sätt som lämnar data i ett inkonsekvent tillstånd.
 
-I följande exempel visas hur du kontrollerar för nära förestående Webbjobb avslutning i en funktion.
+följande exempel visar hur hello toocheck för nära förestående Webbjobb avslutning i en funktion.
 
     public static void GracefulShutdownDemo(
                 [QueueTrigger("inputqueue")] string inputText,
@@ -209,15 +209,15 @@ I följande exempel visas hur du kontrollerar för nära förestående Webbjobb 
         }
     }
 
-**Obs:** instrumentpanelen kanske inte korrekt visar status och utdata för funktioner som har stängts av.
+**Obs:** hello instrumentpanelen kanske inte korrekt visar hello status och utdata för funktioner som har stängts av.
 
 Mer information finns i [WebJobs korrekt avslutning](http://blog.amitapple.com/post/2014/05/webjobs-graceful-shutdown/#.VCt1GXl0wpR).   
 
-## <a id="createqueue"></a>Så här skapar du ett kömeddelande under bearbetning av ett meddelande i kön
-Om du vill skriva en funktion som skapar ett nytt meddelande i kön, använder den `Queue` attribut. Som `QueueTrigger`kan du skicka in könamnet som en sträng eller [ange könamnet dynamiskt](#config).
+## <a id="createqueue"></a>Hur toocreate en kö meddelande vid bearbetning av ett meddelande i kön
+toowrite en funktion som skapar ett nytt meddelande i kön, Använd hello `Queue` attribut. Som `QueueTrigger`kan du skicka in hello könamnet som en sträng eller [ange hello könamnet dynamiskt](#config).
 
 ### <a name="string-queue-messages"></a>Sträng Kömeddelanden
-Följande kodexempel icke asynkron skapar ett nytt meddelande i kön i kön med namnet ”outputqueue” med samma innehåll som kön meddelandet som togs emot i kön med namnet ”inputqueue”. (För asynkrona funktioner använder `IAsyncCollector<T>` enligt senare i det här avsnittet.)
+hello följande kodexempel icke asynkron skapar ett nytt meddelande i kön i hello kö med namnet ”outputqueue” med hello samma innehåll som kön hello-meddelande togs emot i hello kö med namnet ”inputqueue”. (För asynkrona funktioner använder `IAsyncCollector<T>` enligt senare i det här avsnittet.)
 
         public static void CreateQueueMessage(
             [QueueTrigger("inputqueue")] string queueMessage,
@@ -227,7 +227,7 @@ Följande kodexempel icke asynkron skapar ett nytt meddelande i kön i kön med 
         }
 
 ### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO [(vanlig gamla CLR-objekt](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) meddelanden i kö
-Skicka POCO-typ för att skapa ett meddelande i kön som innehåller en POCO i stället för en sträng som en utdataparameter till den `Queue` Attributkonstruktorn.
+toocreate ett kömeddelande som innehåller en POCO i stället för en sträng, pass hello POCO skriver som en output-parameter toohello `Queue` Attributkonstruktorn.
 
         public static void CreateQueueMessage(
             [QueueTrigger("inputqueue")] BlobInformation blobInfoInput,
@@ -236,10 +236,10 @@ Skicka POCO-typ för att skapa ett meddelande i kön som innehåller en POCO i s
             blobInfoOutput = blobInfoInput;
         }
 
-SDK Serialiserar automatiskt objektet till JSON. Ett kömeddelande skapas alltid, även om objektet är null.
+hello SDK Serialiserar automatiskt hello objektet tooJSON. Ett kömeddelande skapas alltid, även om hello-objektet är null.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Skapa flera meddelanden eller i async-funktioner
-Om du vill skapa flera meddelanden gör parametertypen för utgående kö `ICollector<T>` eller `IAsyncCollector<T>`som visas i följande exempel.
+toocreate flera meddelanden gör hello parametertypen för hello utgående kö `ICollector<T>` eller `IAsyncCollector<T>`som visas i följande exempel hello.
 
         public static void CreateQueueMessages(
             [QueueTrigger("inputqueue")] string queueMessage,
@@ -251,23 +251,23 @@ Om du vill skapa flera meddelanden gör parametertypen för utgående kö `IColl
             outputQueueMessage.Add(queueMessage + "2");
         }
 
-Varje meddelande i kön skapas omedelbart när den `Add` metoden anropas.
+Varje meddelande i kön skapas omedelbart när hello `Add` metoden anropas.
 
-### <a name="types-that-the-queue-attribute-works-with"></a>Typer som attributet kön fungerar med
-Du kan använda den `Queue` -attributet på följande parameter:
+### <a name="types-that-hello-queue-attribute-works-with"></a>Typer hello kön attributet fungerar med
+Du kan använda hello `Queue` attributet på hello följande parametertyper:
 
-* `out string`(skapar kömeddelande om parametervärdet är icke-null när funktionen avslutas)
+* `out string`(skapar kömeddelande om parametervärdet är icke-null när hello funktionen avslutas)
 * `out byte[]`(fungerar som `string`)
 * `out CloudQueueMessage`(fungerar som `string`)
-* `out POCO`(en serialiserbar typ. skapar ett meddelande med ett null-objekt om parametern är null när funktionen avslutas)
+* `out POCO`(en serialiserbar typ. skapar ett meddelande med ett null-objekt om hello parameter är null när hello funktionen avslutas)
 * `ICollector`
 * `IAsyncCollector`
-* `CloudQueue`(för att skapa meddelanden manuellt med hjälp av Azure Storage-API direkt)
+* `CloudQueue`(för att skapa meddelanden manuellt direkt med hello Azure Storage-API)
 
-### <a id="ibinder"></a>Använda WebJobs-SDK-attribut i brödtexten för en funktion
-Om du behöver göra några resurser i din funktion innan du använder ett WebJobs-SDK-attribut som `Queue`, `Blob`, eller `Table`, du kan använda den `IBinder` gränssnitt.
+### <a id="ibinder"></a>Använda WebJobs-SDK-attribut i hello brödtext
+Om du behöver toodo vissa fungerar i din funktion innan du använder ett WebJobs-SDK-attribut som `Queue`, `Blob`, eller `Table`, du kan använda hello `IBinder` gränssnitt.
 
-I följande exempel tar ett inkommande kö-meddelande och skapar ett nytt meddelande med samma innehåll i en utgående kö. Könamnet utdata anges av koden i själva funktionen.
+hello följande exempel tar ett inkommande kö-meddelande och skapar ett nytt meddelande med hello samma innehåll i en utgående kö. hello utgående kö namn anges av koden i hello brödtexten i hello-funktion.
 
         public static void CreateQueueMessage(
             [QueueTrigger("inputqueue")] string queueMessage,
@@ -279,15 +279,15 @@ I följande exempel tar ett inkommande kö-meddelande och skapar ett nytt meddel
             outputQueue.AddMessage(new CloudQueueMessage(queueMessage));
         }
 
-Den `IBinder` gränssnitt kan även användas med den `Table` och `Blob` attribut.
+Hej `IBinder` gränssnitt kan även användas med hello `Table` och `Blob` attribut.
 
-## <a id="blobs"></a>Hur kan läsa och skriva BLOB och tabeller under bearbetning av ett meddelande i kön
-Den `Blob` och `Table` attribut kan du läsa och skriva BLOB och tabeller. Exemplen i det här avsnittet gäller för blobbar. Kodexempel som visar hur du utlöser processer när blobbar har skapats eller uppdaterats, se [använda Azure blob storage med WebJobs SDK](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md), och kodexempel som läsa och skriva tabeller, se [hur du använder Azure-tabellen Storage med WebJobs SDK](websites-dotnet-webjobs-sdk-storage-tables-how-to.md).
+## <a id="blobs"></a>Hur tooread och skriva BLOB-objekt och tabeller under bearbetning av ett meddelande i kön
+Hej `Blob` och `Table` attribut aktivera tooread och skriva BLOB och tabeller. hello prover i det här avsnittet gäller tooblobs. Kodexempel som visar hur tootrigger bearbetar när blobbar har skapats eller uppdaterats, se [hur toouse Azure blob storage med hello WebJobs SDK](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md), och kodexempel som läsa och skriva tabeller, se [hur toouse Azure-tabellen lagring med hello WebJobs SDK](websites-dotnet-webjobs-sdk-storage-tables-how-to.md).
 
 ### <a name="string-queue-messages-triggering-blob-operations"></a>Sträng Kömeddelanden utlösa blob-åtgärder
-För ett meddelande i kön som innehåller en sträng, `queueTrigger` är en platshållare som du kan använda i den `Blob` attributets `blobPath` parametrar som innehåller innehållet i meddelandet.
+För ett meddelande i kön som innehåller en sträng, `queueTrigger` är en platshållare som du kan använda i hello `Blob` attributets `blobPath` parametrar som innehåller hello innehållet i hello-meddelande.
 
-I följande exempel används `Stream` objekt att läsa och skriva BLOB. Kömeddelandet är namnet på en blob som finns i behållaren textblobs. En kopia av blobben med ”-nya” läggs till namnet skapas i samma behållare.
+hello följande exempel används `Stream` tooread och skriva BLOB-objekt. hälsningsmeddelande för kön är en blob som finns i hello textblobs behållare hello namn. En kopia av hello blob med ”-nya” tillagda toohello namnet skapas i hello samma behållare.
 
         public static void ProcessQueueMessage(
             [QueueTrigger("blobcopyqueue")] string blobName,
@@ -297,11 +297,11 @@ I följande exempel används `Stream` objekt att läsa och skriva BLOB. Kömedde
             blobInput.CopyTo(blobOutput, 4096);
         }
 
-Den `Blob` attributet konstruktorn tar en `blobPath` parameter som anger namnet på behållaren och blob. Mer information om den här platshållaren finns [använda Azure blob storage med WebJobs SDK](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md),
+Hej `Blob` attributet konstruktorn tar en `blobPath` parameter som anger hello-behållaren och blobbnamnet. Mer information om den här platshållaren finns [hur toouse Azure blob storage med hello WebJobs SDK](websites-dotnet-webjobs-sdk-storage-blobs-how-to.md),
 
-När attributet decorates en `Stream` objekt, en annan konstruktorparametern anger det `FileAccess` läge som Läs-, Skriv- eller läsning och skrivning.
+När attributet hello decorates en `Stream` objekt, en annan konstruktorparametern anger hello `FileAccess` läge som Läs-, Skriv- eller läsning och skrivning.
 
-I följande exempel används en `CloudBlockBlob` objekt att ta bort en blob. Kömeddelandet är namnet på blob.
+hello följande exempel används en `CloudBlockBlob` objekt toodelete en blob. Hej kömeddelande är hello namn hello-blob.
 
         public static void DeleteBlob(
             [QueueTrigger("deleteblobqueue")] string blobName,
@@ -311,9 +311,9 @@ I följande exempel används en `CloudBlockBlob` objekt att ta bort en blob. Kö
         }
 
 ### <a id="pocoblobs"></a>POCO [(vanlig gamla CLR-objekt](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)) meddelanden i kö
-För en POCO lagras som JSON i kön meddelandet, kan du använda platshållare som namn egenskaperna för objektet i den `Queue` attributets `blobPath` parameter. Du kan också använda [kö metadata egenskapsnamn](#queuemetadata) som platshållare.
+Du kan använda platshållare att egenskaperna för hello objekt i hello-namnet för en POCO som lagras som JSON i kön hälsningsmeddelande `Queue` attributets `blobPath` parameter. Du kan också använda [kö metadata egenskapsnamn](#queuemetadata) som platshållare.
 
-I följande exempel kopierar en blobb till en ny blob med ett annat tillägg. Kön meddelandet är ett `BlobInformation` -objekt som innehåller `BlobName` och `BlobNameWithoutExtension` egenskaper. Egenskapsnamnen används som platshållare i blobbsökvägen för den `Blob` attribut.
+hello kopieras följande exempel en blob tooa nya blob med ett annat tillägg. hälsningsmeddelande för kön är en `BlobInformation` -objekt som innehåller `BlobName` och `BlobNameWithoutExtension` egenskaper. hello egenskapsnamn används som platshållare i hello blob sökväg för hello `Blob` attribut.
 
         public static void CopyBlobPOCO(
             [QueueTrigger("copyblobqueue")] BlobInformation blobInfo,
@@ -323,38 +323,38 @@ I följande exempel kopierar en blobb till en ny blob med ett annat tillägg. K�
             blobInput.CopyTo(blobOutput, 4096);
         }
 
-SDK använder den [Newtonsoft.Json NuGet-paketet](http://www.nuget.org/packages/Newtonsoft.Json) serialisera och deserialisera meddelanden. Om du skapar meddelanden i kö i ett program som inte använder WebJobs SDK kan du skriva kod som i följande exempel för att skapa ett kömeddelande för POCO som SDK kan parsa.
+hello SDK använder hello [Newtonsoft.Json NuGet-paketet](http://www.nuget.org/packages/Newtonsoft.Json) tooserialize och avbryta serialiseringen för meddelanden. Om du skapar meddelanden i kö i ett program som inte använder hello WebJobs SDK skriva du kod som hello följande exempel toocreate en POCO kömeddelande som hello SDK kan parsa.
 
         BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };
         var queueMessage = new CloudQueueMessage(JsonConvert.SerializeObject(blobInfo));
         logQueue.AddMessage(queueMessage);
 
-Om du behöver göra vissa arbetet i din funktion innan du binder en blobb till ett objekt kan du använda attributet i brödtexten i funktion, [enligt tidigare för attributet kön](#ibinder).
+Om du behöver toodo vissa fungerar i din funktion innan du binder en tooan blob-objektet, du kan använda hello-attributet i hello brödtext hello funktionen [enligt tidigare för hello kön attributet](#ibinder).
 
-### <a id="blobattributetypes"></a>Du kan använda Blob-attribut med
-Den `Blob` attributet kan användas med följande typer:
+### <a id="blobattributetypes"></a>Du kan använda hello Blob-attribut med
+Hej `Blob` attributet kan användas med hello följande typer:
 
-* `Stream`(läsa eller skriva anges med hjälp av parametern FileAccess konstruktor)
+* `Stream`(läsa eller skriva som anges av parametern hello FileAccess konstruktor)
 * `TextReader`
 * `TextWriter`
 * `string`(Läs)
-* `out string`(skriva; skapar en blob endast om strängparametern är icke-null när returnerar funktionen)
+* `out string`(skriva; skapar en blob endast om hello strängparameter är icke-null om hello funktionen returnerar)
 * POCO (läsa)
-* ut POCO (skriva; alltid skapar en blob, skapar som null-objekt om POCO-parametern är null när returnerar funktionen)
+* ut POCO (skriva; alltid skapar en blob, skapar som null-objekt om POCO-parametern är null när hello funktionen returnerar)
 * `CloudBlobStream`(skriva)
 * `ICloudBlob`(läsa eller skriva)
 * `CloudBlockBlob`(läsa eller skriva)
 * `CloudPageBlob`(läsa eller skriva)
 
-## <a id="poison"></a>Hur du hanterar förgiftade meddelanden
-Meddelanden vars innehåll gör en funktionen misslyckas kallas *förgiftade meddelanden*. När funktionen misslyckas, tas inte bort kömeddelandet och slutligen hämtas igen och orsakar cykeln ska upprepas. SDK kan avbryta cykeln efter ett begränsat antal upprepningar eller så kan du göra det manuellt.
+## <a id="poison"></a>Hur toohandle förgiftade meddelanden
+Meddelanden vars innehåll orsakar en funktionen toofail kallas *förgiftade meddelanden*. När hello funktionen misslyckas hello kön meddelandet tas inte bort och slutligen hämtas igen, vilket ledde hello cykel toobe upprepas. hello SDK kan avbryta hello cykel efter ett begränsat antal upprepningar eller så kan du göra det manuellt.
 
 ### <a name="automatic-poison-message-handling"></a>Hantering av automatisk skadligt meddelande
-SDK: N ska anropa en funktion upp till 5 gånger för att bearbeta ett meddelande i kön. Om den femte försök misslyckas, flyttas meddelandet till en skadligt kö. [Det maximala antalet nya försök kan konfigureras](#config).
+hello SDK ska anropa en funktion in too5 gånger tooprocess ett kömeddelande. Om hello femte försök misslyckas är hello-meddelande har flyttats tooa skadligt kö. [hello maximalt antal försök konfigureras](#config).
 
-Skadligt kön heter *{originalqueuename}*-skadligt. Du kan skriva en funktion för att bearbeta meddelanden från skadligt kön av loggning av dem eller skicka ett meddelande till den manuella åtgärder krävs.
+hello skadligt kön heter *{originalqueuename}*-skadligt. Du kan skriva en funktion tooprocess meddelanden från hello skadligt kö med loggning av dem eller skicka ett meddelande om att manuella åtgärder krävs.
 
-I följande exempel på `CopyBlob` funktionen kommer att misslyckas när ett kömeddelande innehåller namnet på en blob som inte finns. När det händer kan flyttas meddelandet från kön copyblobqueue till copyblobqueue poison kön. Den `ProcessPoisonMessage` loggar skadligt meddelande.
+I följande exempel hello hello `CopyBlob` funktionen kommer att misslyckas när ett kömeddelande innehåller hello namnet på en blob som inte finns. När det händer kan flyttas hello-meddelande från hello copyblobqueue kön toohello copyblobqueue poison kö. Hej `ProcessPoisonMessage` och sedan loggar hello skadligt meddelande.
 
         public static void CopyBlob(
             [QueueTrigger("copyblobqueue")] string blobName,
@@ -367,15 +367,15 @@ I följande exempel på `CopyBlob` funktionen kommer att misslyckas när ett kö
         public static void ProcessPoisonMessage(
             [QueueTrigger("copyblobqueue-poison")] string blobName, TextWriter logger)
         {
-            logger.WriteLine("Failed to copy blob, name=" + blobName);
+            logger.WriteLine("Failed toocopy blob, name=" + blobName);
         }
 
-Följande bild visar konsolens utdata från de här funktionerna när ett skadligt meddelande bearbetas.
+hello följande bild visar konsolens utdata från de här funktionerna när ett skadligt meddelande bearbetas.
 
 ![Konsolens utdata för hantering av skadligt meddelande](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/poison.png)
 
 ### <a name="manual-poison-message-handling"></a>Hantering av manuell skadligt meddelande
-Du kan hämta antalet gånger som ett meddelande har plockats för bearbetning genom att lägga till en `int` parameter med namnet `dequeueCount` till funktionen. Du kan kontrollera antalet dequeue i Funktionskoden och utföra egna skadligt meddelandehantering när antalet överskrider ett tröskelvärde som visas i följande exempel.
+Du kan hämta hello många gånger meddelandet har plockats för bearbetning genom att lägga till en `int` parameter med namnet `dequeueCount` tooyour funktion. Därefter kan du kontrollera hello status Created antalet i Funktionskoden och utföra egna skadligt meddelandehantering när hello antalet överskrider ett tröskelvärde som visas i följande exempel hello.
 
         public static void CopyBlob(
             [QueueTrigger("copyblobqueue")] string blobName, int dequeueCount,
@@ -385,7 +385,7 @@ Du kan hämta antalet gånger som ett meddelande har plockats för bearbetning g
         {
             if (dequeueCount > 3)
             {
-                logger.WriteLine("Failed to copy blob, name=" + blobName);
+                logger.WriteLine("Failed toocopy blob, name=" + blobName);
             }
             else
             {
@@ -393,15 +393,15 @@ Du kan hämta antalet gånger som ett meddelande har plockats för bearbetning g
             }
         }
 
-## <a id="config"></a>Hur du ställer in konfigurationsalternativ
-Du kan använda den `JobHostConfiguration` typen för att ange följande konfigurationsalternativ:
+## <a id="config"></a>Hur tooset konfigurationsalternativ
+Du kan använda hello `JobHostConfiguration` typen tooset hello följande konfigurationsalternativ:
 
-* Ange anslutningssträngar SDK i koden.
+* Ange hello SDK-anslutningssträngar i koden.
 * Konfigurera `QueueTrigger` inställningar, till exempel maximalt antal har status Created.
 * Hämta könamn från konfigurationen.
 
 ### <a id="setconnstr"></a>Ange SDK anslutningssträngar i kod
-Ställa in anslutningssträngar SDK i koden kan du använda din egen anslutning sträng namn i konfigurationsfiler eller miljövariabler som visas i följande exempel.
+Hello SDK-anslutningssträngar kan i koden du toouse egna namn på anslutning sträng i configuration-filer eller miljövariabler som visas i följande exempel hello.
 
         static void Main(string[] args)
         {
@@ -423,13 +423,13 @@ Ställa in anslutningssträngar SDK i koden kan du använda din egen anslutning 
         }
 
 ### <a id="configqueue"></a>Konfigurera inställningar för QueueTrigger
-Du kan konfigurera följande inställningar som gäller för meddelandebehandling kö:
+Du kan konfigurera följande inställningar som gäller toohello kön meddelandebehandling hello:
 
-* Det maximala antalet Kömeddelanden som fångas upp samtidigt kan köras parallellt (standard är 16).
-* Det maximala antalet försök innan ett kömeddelande skickas till ett skadligt kö (standardvärdet är 5).
-* Maximal väntetid innan avsökning igen när en kö är tomt (standard är 1 minut).
+* Maximalt antal meddelanden i kö som tas upp samtidigt toobe utförs parallellt hello (standard är 16).
+* Hej maximalt antal försök innan ett kömeddelande skickas tooa skadligt kön (standardvärdet är 5).
+* hello väntetiden innan avsökning igen när en kö är tomt (standard är 1 minut).
 
-I följande exempel visas hur du konfigurerar dessa inställningar:
+följande exempel visar hur hello tooconfigure dessa inställningar:
 
         static void Main(string[] args)
         {
@@ -442,18 +442,18 @@ I följande exempel visas hur du konfigurerar dessa inställningar:
         }
 
 ### <a id="setnamesincode"></a>Ange värden för WebJobs SDK konstruktorparametrarna i koden
-Du vill ibland ange en ny kö, ett blob-namn eller en behållare eller en tabell i stället för att hårdkoda ge den namnet. Du kan till exempel vill ange namnet på kön för `QueueTrigger` i en konfiguration av fil- eller miljö variabel.
+Vill ibland du toospecify en kö, ett blob-namn eller en behållare eller en tabell i stället för att hårdkoda ge den namnet. Du kan exempelvis toospecify hello könamnet för `QueueTrigger` i en konfiguration av fil- eller miljö variabel.
 
-Du kan göra det genom att passera i en `NameResolver` objekt till den `JobHostConfiguration` typen. Du inkludera särskilda platshållare omges av procenttecken (%) i WebJobs SDK attributet konstruktorn parametrar och dina `NameResolver` koden anger de faktiska värdena som ska användas i stället för dessa platshållare.
+Du kan göra det genom att passera i en `NameResolver` objekt toohello `JobHostConfiguration` typen. Du inkludera särskilda platshållare omges av procenttecken (%) i WebJobs SDK attributet konstruktorn parametrar och dina `NameResolver` koden anger hello faktiska värden toobe används i stället för dessa platshållare.
 
-Anta att du vill använda en kö med namnet logqueuetest i testmiljön och en namngiven logqueueprod i produktion. I stället för en hårdkodad kö du vill ange namnet på en post i den `appSettings` samling som skulle ha faktiska könamnet. Om den `appSettings` nyckeln är logqueue, din funktion kan se ut som följande exempel.
+Till exempel anta att du vill toouse en kö med namnet logqueuetest i hello testmiljö och en namngiven logqueueprod i produktion. I stället för en hårdkodad könamnet önskade toospecify hello namnet på en post i hello `appSettings` samling som skulle ha hello faktiska könamnet. Om hello `appSettings` nyckeln är logqueue, din funktion kan se ut så hello följande exempel.
 
         public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
         {
             Console.WriteLine(logMessage);
         }
 
-Din `NameResolver` klassen kan sedan hämta könamnet från `appSettings` som visas i följande exempel:
+Din `NameResolver` klassen kan sedan hämta hello könamnet från `appSettings` som visas i följande exempel hello:
 
         public class QueueNameResolver : INameResolver
         {
@@ -463,7 +463,7 @@ Din `NameResolver` klassen kan sedan hämta könamnet från `appSettings` som vi
             }
         }
 
-Du skickar den `NameResolver` klassen i att den `JobHost` objekt som visas i följande exempel.
+Du skickar hello `NameResolver` klassen i toohello `JobHost` objekt som visas i följande exempel hello.
 
         static void Main(string[] args)
         {
@@ -473,10 +473,10 @@ Du skickar den `NameResolver` klassen i att den `JobHost` objekt som visas i fö
             host.RunAndBlock();
         }
 
-**Obs:** kön tabell och blobbnamnen är löst varje gång som en funktion kallas men blob-behållaren namnmatchning bara när programmet startas. Du kan inte ändra namnet för blob-behållare medan jobbet körs.
+**Obs:** kön tabell och blobbnamnen är löst varje gång som en funktion kallas, men blob-behållaren namnmatchning bara när hello programmet startas. Du kan inte ändra namnet för blob-behållare medan hello jobbet körs.
 
-## <a id="manual"></a>Hur du utlöser en funktion manuellt
-Utlös en funktion manuellt genom att använda den `Call` eller `CallAsync` -metoden i den `JobHost` objekt och `NoAutomaticTrigger` attributet för funktionen, som visas i följande exempel.
+## <a id="manual"></a>Hur tootrigger en funktion manuellt
+tootrigger en funktion manuellt, använda hello `Call` eller `CallAsync` metod på hello `JobHost` objektet och hello `NoAutomaticTrigger` attributet för hello funktion, som visas i följande exempel hello.
 
         public class Program
         {
@@ -497,29 +497,29 @@ Utlös en funktion manuellt genom att använda den `Call` eller `CallAsync` -met
             }
         }
 
-## <a id="logs"></a>Hur du skriver loggar
-Instrumentpanelen visar loggar på två platser: sidan för Webbjobbet, och på sidan för ett särskilt Webbjobb-anrop.
+## <a id="logs"></a>Hur toowrite loggar
+hello instrumentpanelen visar loggar på två platser: hello sidan för hello Webbjobb och hello-sidan för ett särskilt Webbjobb-anrop.
 
 ![Loggar Webbjobb på sidan](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardapplogs.png)
 
 ![Loggar i funktionen anrops-sida](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardlogs.png)
 
-Utdata från konsolen metoder som anropas i en funktion eller i den `Main()` metoden visas på sidan instrumentpanelen för Webbjobbet, inte på sidan för en viss metodanropet. Utdata från TextWriter-objekt som du får från en parameter i Metodsignaturen visas på sidan instrumentpanelen för ett metodanrop.
+Utdata från konsolen metoderna i en funktion eller hello `Main()` metoden visas i hello instrumentpanelssidan för hello Webbjobb, inte i hello-sida för en viss metodanropet. Utdata från hello TextWriter-objekt som du får från en parameter i Metodsignaturen visas i hello instrumentpanelssidan för ett metodanrop.
 
-Konsolens utdata kan inte länkas till en viss metodanropet eftersom konsolen är enkeltrådad, men många jobbfunktioner kan köras samtidigt. Det är därför SDK innehåller varje funktionsanrop med sin egen unika loggen skrivarobjekt.
+Konsolens utdata kan inte länkade tooa viss metodanropet eftersom hello konsolen är enkeltrådad, medan många jobbfunktioner hello kan köras samtidigt. Det är därför hello SDK innehåller varje funktionsanrop med sin egen unika loggen skrivarobjekt.
 
-Att skriva [spårning programloggarna](web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), använda `Console.Out` (skapar loggar som är märkta som INFO) och `Console.Error` (skapar loggar som är märkta som fel). Ett alternativ är att använda [spårningen eller TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), som innehåller utförlig, varning, och kritiska nivåer utöver Info och fel. Spårningsloggar för programmet visas i web app loggfilerna Azure-tabeller eller Azure BLOB-objekt beroende på hur du konfigurerar din Azure-webbapp. Som gäller för alla konsolens utdata, visas senaste 100 programloggarna även på sidan instrumentpanelen för Webbjobb, inte sidan för ett funktionsanrop.
+toowrite [spårning programloggarna](web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview), använda `Console.Out` (skapar loggar som är märkta som INFO) och `Console.Error` (skapar loggar som är märkta som fel). Ett alternativ är toouse [spårningen eller TraceSource](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx), vilket möjliggör utförlig, varning, och kritiska nivåer i tillägget tooInfo och fel. Spårningsloggar för programmet visas i hello web app-loggfiler, Azure-tabeller eller Azure BLOB-objekt beroende på hur du konfigurerar din Azure-webbapp. Som gäller för alla konsolens utdata visas också hello senaste 100 programloggarna i hello instrumentpanelssidan för hello Webbjobb, inte hello sidan för ett funktionsanrop.
 
-Konsolens utdata visas i instrumentpanelen bara om programmet körs i en Azure-Webbjobb inte om programmet körs lokalt eller i en annan miljö.
+Konsolens utdata visas i hello instrumentpanelen endast om hello programmet körs i en Azure-Webbjobb inte om hello program körs lokalt eller i en annan miljö.
 
-Inaktivera loggning för instrumentpanelen för scenarier med hög genomströmning. Som standard SDK skriver loggar till lagring och den här aktiviteten kan försämra prestanda vid bearbetning av många meddelanden. Om du vill inaktivera loggning, ange anslutningssträngen instrumentpanelen null som visas i följande exempel.
+Inaktivera loggning för instrumentpanelen för scenarier med hög genomströmning. Som standard hello SDK skriver loggar toostorage och den här aktiviteten kan försämra prestanda vid bearbetning av många meddelanden. toodisable loggning, ange hello instrumentpanelen anslutning sträng toonull som visas i följande exempel hello.
 
         JobHostConfiguration config = new JobHostConfiguration();       
         config.DashboardConnectionString = "";        
         JobHost host = new JobHost(config);
         host.RunAndBlock();
 
-I följande exempel visar flera olika sätt att skriva loggar:
+hello följande exempel visar flera olika sätt toowrite loggar:
 
         public static void WriteLog(
             [QueueTrigger("logqueue")] string logMessage,
@@ -531,50 +531,50 @@ I följande exempel visar flera olika sätt att skriva loggar:
             logger.WriteLine("TextWriter - " + logMessage);
         }
 
-I WebJobs SDK instrumentpanelen för utdata från den `TextWriter` objekt ser ut när du gå till sidan för en viss fungera anrop och klicka på **växla utdata**:
+I hello WebJobs SDK-instrumentpanelen, hello utdata från hello `TextWriter` objekt visar upp går toohello sida för en viss fungera anrop och klicka på **växla utdata**:
 
 ![Klicka på länken för anrop av funktionen](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardinvocations.png)
 
 ![Loggar i funktionen anrops-sida](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardlogs.png)
 
-I instrumentpanelen för WebJobs SDK senaste 100 raderna i konsolen utdata visar dig när du gå till sidan för Webbjobb (inte för funktionsanrop) och klicka på **växla utdata**.
+I hello WebJobs SDK-instrumentpanelen, hello senaste 100 rader i konsolen utdata visar dig när du gå toohello sidan för hello Webbjobb (inte för hello funktionsanrop) och klicka på **växla utdata**.
 
 ![Klicka på Visa/Dölj utdata](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/dashboardapplogs.png)
 
-I ett kontinuerligt Webbjobb programloggarna visas i/data/jobb/kontinuerlig/*{webjobname}*/job_log.txt i filsystemet web app.
+I ett kontinuerligt Webbjobb programloggarna visas i/data/jobb/kontinuerlig/*{webjobname}*/job_log.txt i filsystemet för hello web app.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Out - Hello world!
 
-I ett Azure blob-program loggar ser ut så här: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!, 2014-09-26T21:01:13, fel, contosoadsnew, 491e54, 635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
+I ett Azure blob hello program loggar ut så här: 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738373502,0,17404,17,Console.Write - Hello world!, 2014-09-26T21:01:13, fel, contosoadsnew, 491e54, 635473620738373502,0,17404,19,Console.Error - Hello world!, 2014-09-26T21:01:13,Information,contosoadsnew,491e54,635473620738529920,0,17404,17,Console.Out - Hello world!,
 
-Och i en Azure-tabellen i `Console.Out` och `Console.Error` loggar ut så här:
+Och i en Azure-tabellen hello `Console.Out` och `Console.Error` loggar ut så här:
 
 ![Loggen för information i tabellen](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/tableinfo.png)
 
 ![Felloggen i tabellen](./media/websites-dotnet-webjobs-sdk-storage-queues-how-to/tableerror.png)
 
-Om du vill ansluta din egen loggaren finns [det här exemplet](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Program.cs).
+Om du vill tooplug i din egen loggaren finns [det här exemplet](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Program.cs).
 
-## <a id="errors"></a>Hantera fel och konfigurera tidsgränser
-WebJobs SDK innehåller också en [Timeout](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs) attribut som du kan använda för att en funktion som ska avbrytas om inte slutföra inom en angiven tidsperiod. Och om du vill aktivera en varning när för många fel som inträffar inom en angiven tidsperiod, kan du använda den `ErrorTrigger` attribut. Här är en [ErrorTrigger exempel](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Error-Monitoring).
+## <a id="errors"></a>Hur toohandle fel och konfigurera tidsgränser
+Hej WebJobs SDK innehåller också en [Timeout](http://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs) attribut som du kan använda toocause som en funktion toobe avbrytas om inte slutföras inom en angiven tidsperiod. Och om du vill tooraise en avisering när för många fel som inträffar inom en angiven tidsperiod, kan du använda hello `ErrorTrigger` attribut. Här är en [ErrorTrigger exempel](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Error-Monitoring).
 
 ```
 public static void ErrorMonitor(
 [ErrorTrigger("00:01:00", 1)] TraceFilter filter, TextWriter log,
 [SendGrid(
-    To = "admin@emailaddress.com",
+    too= "admin@emailaddress.com",
     Subject = "Error!")]
  SendGridMessage message)
 {
-    // log last 5 detailed errors to the Dashboard
+    // log last 5 detailed errors toohello Dashboard
    log.WriteLine(filter.GetDetailedMessage(5));
    message.Text = filter.GetDetailedMessage(1);
 }
 ```
 
-Du kan också dynamiskt inaktiverar och aktiverar funktioner för att kontrollera om de kan utlösas, med hjälp av en konfigurationsväxel som kan vara en appinställning eller Miljövariabelns namn. Exempelkod finns i `Disable` attribut i [WebJobs SDK exempel databasen](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs).
+Du kan också dynamiskt inaktiverar och aktiverar funktioner toocontrol om de kan utlösas, med hjälp av en konfigurationsväxel som kan vara en appinställning eller Miljövariabelns namn. Exempelkod finns hello `Disable` attribut i [hello WebJobs SDK exempel databasen](https://github.com/Azure/azure-webjobs-sdk-samples/blob/master/BasicSamples/MiscOperations/Functions.cs).
 
 ## <a id="nextsteps"></a>Nästa steg
-Den här guiden tillhandahåller kodexempel som visar hur du hanterar vanliga scenarier för att arbeta med Azure köer. Mer information om hur du använder Azure WebJobs och WebJobs-SDK finns [Azure WebJobs rekommenderas resurser](http://go.microsoft.com/fwlink/?linkid=390226).
+Den här guiden har angett koden exempel som visar hur toohandle vanliga scenarier för att arbeta med Azure köer. Mer information om hur toouse Azure WebJobs och hello WebJobs SDK, se [Azure WebJobs rekommenderas resurser](http://go.microsoft.com/fwlink/?linkid=390226).

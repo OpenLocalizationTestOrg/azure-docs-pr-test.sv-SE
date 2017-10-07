@@ -1,6 +1,6 @@
 ---
-title: "Vad hände med min 5 för ASP.NET-projekt (Visual Studio ansluten tjänster) | Microsoft Docs"
-description: "Beskriver vad som händer när du ansluter till ett Azure storage-konto i Visual Studio ASP.NET 5-projekt med Visual Studio anslutna tjänster"
+title: "aaaWhat har hänt toomy 5 för ASP.NET-projekt (Visual Studio ansluten tjänster) | Microsoft Docs"
+description: "Beskriver vad som händer när du ansluter tooan Azure storage-konto i Visual Studio ASP.NET 5-projekt med Visual Studio anslutna tjänster"
 services: storage
 documentationcenter: 
 author: TomArcher
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: tarcher
-ms.openlocfilehash: 4390993772eaf35516e48ad7adcdcec5f1df8d71
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9323bc5317fa2ba0cd42aecd01982f8c2b23d20a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Vad hände med min 5 för ASP.NET-projekt (Visual Studio Azure Storage ansluten services)?
+# <a name="what-happened-toomy-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>Vad hände toomy ASP.NET 5-projektet (Visual Studio Azure Storage ansluten services)?
 ## <a name="references-added"></a>Referenser som lagts till
-Azure Storage NuGet-paketet har lagts till Visual Studio-projekt.  
-Det här paketet lägger du till följande .NET referenser:
+hello Azure Storage NuGet-paketet har lagts till tooyour Visual Studio-projekt.  
+Det här paketet lägger till hello efter .NET referenser:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -34,10 +34,10 @@ Det här paketet lägger du till följande .NET referenser:
 * **System.Data**
 * **System.Spatial**
 
-Dessutom NuGet-paketet **Microsoft.Framework.Configuration.Json** har lagts till.
+Dessutom hello NuGet-paketet **Microsoft.Framework.Configuration.Json** har lagts till.
 
 ## <a name="connection-string-for-azure-storage-added"></a>Anslutningssträngen för Azure Storage som lagts till
-Ett element har skapats med det valda lagringskontot anslutningssträngen och nyckel i filen config.json för ditt projekt.
+Ett element har skapats med hello valt lagringskontots anslutningssträngen och nyckel i hello config.json-filen i projektet.
 
 Mer information finns i [ASP.NET 5](http://www.asp.net/vnext).
 

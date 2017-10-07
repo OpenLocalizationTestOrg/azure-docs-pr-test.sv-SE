@@ -1,5 +1,5 @@
 ---
-title: Cortana Intelligence Gallery samlingar | Microsoft Docs
+title: aaaCortana Intelligence Gallery samlingar | Microsoft Docs
 description: Identifiera och dela samlingar i Cortana Intelligence Gallery.
 services: machine-learning
 documentationcenter: 
@@ -14,88 +14,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 03f423fff9f4105bdb3a53b245514bde506b9743
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7252edd8973c90b25f79cb903b00d2f26853bdd7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="discover-and-share-collections-in-cortana-intelligence-gallery"></a>Identifiera och dela samlingar i Cortana Intelligence Gallery
 [!INCLUDE [machine-learning-gallery-item-selector](../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="collections"></a>Samlingar
-Du kan använda en [samling](https://gallery.cortanaintelligence.com/collections) att gruppera experiment, API: er och andra Galleriobjekt som du använder för en viss lösning eller begrepp. Du kan gruppera dem att använda, spara för senare referens eller dela.
+Du kan använda en [samling](https://gallery.cortanaintelligence.com/collections) toogroup experiment, API: er och andra Galleriobjekt som du använder för en viss lösning eller begrepp. Du kan gruppera dem toouse toosave för senare referens eller tooshare.
 
 ## <a name="discover"></a>Utforska
-Att söka i samlingar [i galleriet](http://gallery.cortanaintelligence.com)under **mer**väljer **samlingar**.
+toobrowse samlingar [i hello galleriet](http://gallery.cortanaintelligence.com)under **mer**väljer **samlingar**.
 
-![Välj samlingar på startsidan galleri](media/machine-learning-gallery-collections/select-collections-in-gallery.png)
+![Välj samlingar på startsidan för hello-galleriet](media/machine-learning-gallery-collections/select-collections-in-gallery.png)
 
-Den  **[samlingar](https://gallery.cortanaintelligence.com/collections)**  sidan visas en lista över nyligen tillagda och populära samlingar. Om du vill visa alla samlingar, Välj **se alla**. Om du vill söka efter en specifik samling, Välj **se alla**, och välj sedan filtreringsvillkor. Du kan även ange sökorden i den **Sök** rutan längst upp på sidan Gallery.
+Hej  **[samlingar](https://gallery.cortanaintelligence.com/collections)**  sidan visas en lista över nyligen tillagda och populära samlingar. tooview alla samlingar, Välj **se alla**. Välj toosearch för en specifik samling **se alla**, och välj sedan filtreringsvillkor. Du kan också ange sökvillkor i hello **Sök** rutan hello överst på sidan för hello galleri.
 
-Du kan få mer information om en mängd på informationssidan för samlingen. Markera samlingen för att öppna en samling informationssida. På en samling information sidan den **kommentarer** avsnitt, du kan kommentera, ge feedback eller ställa frågor om samlingen. Du kan också dela samlingen med vänner och kollegor på Twitter och LinkedIn. Du kan också e-en länk till sidan samling information att bjuda in andra användare att visa sidan.
+Du kan få mer information om en samling på informationssidan för hello samling. tooopen en samling information på sidan Välj hello samling. På en samling sidan information i hello **kommentarer** avsnitt, du kan kommentera, ge feedback eller ställa frågor om hello samling. Du kan också dela hello samling med vänner och kollegor på Twitter och LinkedIn. Du också kan e-länk toohello samling informationssidan, tooinvite andra användare tooview hello-sidan.
 
 ![Dela objektet med vänner](media/machine-learning-gallery-how-to-use-contribute-publish/share-links.png)
 
 ![Lägga till egna kommentarer](media/machine-learning-gallery-how-to-use-contribute-publish/comments.png)
 
 ## <a name="contribute"></a>Bidra
-Du kan skapa en samling som innehåller objekt som du äger eller objekt som bidrog av communityn. Ett objekt i en samling kan vara någon Galleriobjekt som åtgärdar en viss lösning eller begrepp.
+Du kan skapa en samling som innehåller objekt som du äger eller objekt som bidrog av hello community. Ett objekt i en samling kan vara någon Galleriobjekt som åtgärdar en viss lösning eller begrepp.
 
-T.ex, du kan använda en samling för att gruppera objekt i ett visst ämne eller du kan gruppera ett experiment i flera steg som löser komplicerat. De inledande samlingar som har bidragit med Microsoft består av flera steg maskininlärning experiment mallar. Du kan använda mallarna för att lösa verkliga problem, till exempel att upptäcka bedrägerier online text klassificering, retail prognoser eller förutsägande underhåll.
+T.ex, du kan använda en toogroup samlingsobjekt på ett visst ämne eller du kan gruppera ett experiment i flera steg som löser komplicerat. hello inledande samlingar av Microsoft består av flera steg maskininlärning experiment mallar. Du kan använda hello mallar toohelp lösa verkliga problem, till exempel att upptäcka bedrägerier online, text klassificering, retail prognoser eller förutsägande underhåll.
 
 ### <a name="create-a-collection"></a>Skapa en samling
 
-1. Logga in i galleriet med ditt Microsoft-konto.
+1. Logga in toohello galleriet med ditt Microsoft-konto.
 
-2.  Markera bilden överst på sidan och välj sedan ditt namn.
+2.  Markera bilden hello överst på hello sidan och välj sedan ditt namn.
   
     ![Välj namnet på ditt konto](media/machine-learning-gallery-collections/click-account-name.png)
 
 3. Välj **nytt objekt**.
    
     ![Välj ”nytt objekt”](media/machine-learning-gallery-collections/click-new-item.png)
-4. På den **beskrivning** sidan för **OBJEKTTYPEN**väljer **samling**. Ange ett namn för samlingen, en kort sammanfattning, en detaljerad beskrivning och alla taggar som kan hjälpa andra användare att hitta din samling.
+4. På hello **beskrivning** sidan för **OBJEKTTYPEN**väljer **samling**. Ange ett namn för samlingen, en kort sammanfattning, en detaljerad beskrivning och alla taggar som kan hjälpa andra användare att hitta din samling.
    
     ![Ange information för en ny samling](media/machine-learning-gallery-collections/create-collection-page-1.png)
-5. På den **valet** markerar du en bild som visas med samlingen. Du kan ladda upp en egen avbildningsfil eller välj en bild. Välj en bild som kan hjälpa användare identifiera innehåll och syftet med samlingen.
+5. På hello **valet** markerar du en bild som visas med hello-samlingen. Du kan ladda upp en egen avbildningsfil eller välj en bild. Välj en bild som kan hjälpa användare identifiera hello innehåll och syftet med hello samlingen.
    
     ![Ange information för en ny samling](media/machine-learning-gallery-collections/create-collection-page-2.png)
-6. På den **inställningar** sidan för **synlighet**väljer du om samlingen **offentliga** (alla kan se samlingen) eller **nya** (endast personer med en direktlänk till samlingen kan se det).
+6. På hello **inställningar** sidan för **synlighet**väljer du om hello samlingen är **offentliga** (alla kan visa hello samling) eller **nya**(endast personer med en direktlänk toohello samling kan visa den).
    
    > [!IMPORTANT]
-   > När du ställer in en samling till **offentliga** och välj sedan **skapa**, du inte senare ändra mängden **nya**.
+   > När du ställer in en samling för**offentliga** och välj sedan **skapa**, du inte senare ändra hello samling för**nya**.
    > 
    > 
    
     ![Välj ”offentliga” eller ”olistade”](media/machine-learning-gallery-collections/create-collection-page-3.png)
 7. Välj **Skapa**.
 
-Samlingen är nu i Cortana Intelligence Gallery. Samlingar visas på sidan för konto på den **samling** fliken.
+Samlingen är nu i Cortana Intelligence Gallery. Samlingar visas på sidan konto i hello **samling** fliken.
 
-### <a name="add-items-to-a-collection"></a>Lägg till objekt i en samling
-Om du vill lägga till objekt i samlingen, öppna insamling, Välj **redigera**, och välj sedan **Lägg till objekt**.
+### <a name="add-items-tooa-collection"></a>Lägga till objekt tooa samlingen
+tooadd tooyour artikelsamlingen öppna hello samling, Välj **redigera**, och välj sedan **Lägg till objekt**.
 
-![Lägg till objekt i en samling från sidan](media/machine-learning-gallery-collections/add-to-collection-from-details-page.png)
+![Lägga till artikelsamlingen tooa från hello informationssidan](media/machine-learning-gallery-collections/add-to-collection-from-details-page.png)
 
-En lista med objekt som du har bidragit till galleriet visas på sidan för ditt konto. Du kan också söka i galleriet för artiklar för att lägga till. Välj de objekt som du vill lägga till. Varje objekt som du väljer ingår i en uppsättning objekt att lägga till. Den **Lägg till** knapp anger hur många objekt som du har valt.
+En lista med objekt du har bidragit toohello galleriet visas på sidan för ditt konto. Du kan också söka hello Galleri för artiklar tooadd. Välj hello-objekt som du vill tooadd. Varje objekt som du väljer ingår i hello uppsättning objekt tooadd. Hej **Lägg till** knapp anger hur många objekt som du har valt.
 
-![Lägg till samlingen](media/machine-learning-gallery-collections/add-to-collection.png)
+![Lägg till toocollection](media/machine-learning-gallery-collections/add-to-collection.png)
 
-Om du hittar ett objekt som du vill lägga till när du bläddrar galleriet för att öppna objektet, Välj **lägga till samlingen**. Välj den samling som du vill lägga till objektet till.
+Om du hittar ett objekt som du vill använda tooadd när du bläddrar hello galleriet tooopen hello objektet, Välj **lägga till toocollection**. Välj hello-samling som du vill tooadd hello objektet om du vill.
 
-![Lägg till objekt i en samling från sidan](media/machine-learning-gallery-collections/add-to-collection-from-item-details.png)
+![Lägga till artikelsamlingen tooa från hello informationssidan](media/machine-learning-gallery-collections/add-to-collection-from-item-details.png)
 
-Om du vill ändra sammanfattning, beskrivning eller taggar för samlingen, öppna insamling och välj sedan **redigera**. 
+toochange hello sammanfattning, beskrivning eller taggar för samlingen, öppna hello samling och välj sedan **redigera**. 
 
-Du kan ändra ordningen på objekten i samlingen när du redigerar din samling. Använd pilknapparna bredvid ett objekt om du vill flytta uppåt eller nedåt i listan order. 
+Du kan ändra hello ordningen hello i hello samlingen när du redigerar din samling. Använd hello pilen knappar nästa tooan objektet toomove den uppåt eller nedåt i hello ordning. 
 
-Välj övre högra hörnet av ett objekt om du vill lägga till anteckningar till objekt i samlingen, och välj sedan **Lägg till/redigera anteckning**. 
+tooadd anteckningar toohello objekt i samlingen, Välj hello övre högra hörnet av ett objekt och välj sedan **Lägg till/redigera anteckning**. 
 
-Om du vill ta bort ett objekt från samlingen, Välj **ta bort**.
+tooremove ett objekt från samlingen, Välj **ta bort**.
 
 ![Ändra uppgifter för en samling](media/machine-learning-gallery-collections/change-collection-details.png)
 
-**[Gå till galleriet](http://gallery.cortanaintelligence.com)**
+**[Gå toohello-galleriet](http://gallery.cortanaintelligence.com)**
 
 [!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]

@@ -11,7 +11,7 @@
 ## [Skapa din första virtuella dator](devtest-lab-create-first-vm.md)
 ## [Ange startprinciper](devtest-lab-get-started-with-lab-policies.md)
 
-# Instruktionsguider
+# Hur tooguides
 ## Använd virtuella datorer i ett labb
 ### [Skapa virtuella datorer](devtest-lab-add-vm.md)
 ### [Skapa virtuell dator som kan hämtas](devtest-lab-add-claimable-vm.md)
@@ -20,7 +20,7 @@
 ## Använd miljöer i ett labb
 ### [Skapa en miljö](devtest-lab-create-environment-from-arm.md)
 
-## Säker åtkomst till labb
+## Säker åtkomst tooLabs
 ### [Lägga till labbägare och användare](devtest-lab-add-devtest-user.md)
 ### [Anpassa behörigheter med anpassade roller](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)
 
@@ -33,7 +33,7 @@
 
 ## Hantera anpassade avbildningar
 ### [Skapa en anpassad avbildning från en virtuell dator](devtest-lab-create-custom-image-from-vm-using-portal.md)
-### [Skapa en anpassad avbildning från en virtuell hårddisk med Azure Portal](devtest-lab-create-template.md)
+### [Skapa den anpassade bilden från en virtuell Hårddisk med hello Azure-portalen](devtest-lab-create-template.md)
 ### [Skapa en anpassad avbildning från en virtuell hårddisk med PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 ### [Överför VHD-filen med AzCopy](devtest-lab-upload-vhd-using-azcopy.md)
 ### [Överför VHD-filen med PowerShell](devtest-lab-upload-vhd-using-powershell.md)

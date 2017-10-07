@@ -1,6 +1,6 @@
 ---
-title: "Felsökning av problem med cloud service-distribution | Microsoft Docs"
-description: "Det finns några vanliga problem som kan uppstå när du distribuerar en tjänst i molnet till Azure. Den här artikeln innehåller lösningar på några av dem."
+title: problem med aaaTroubleshoot cloud service-distribution | Microsoft Docs
+description: "Det finns några vanliga problem som kan uppstå när du distribuerar en cloud service tooAzure. Den här artikeln innehåller lösningar toosome av dem."
 services: cloud-services
 documentationcenter: 
 author: simonxjx
@@ -15,42 +15,42 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/26/2017
 ms.author: v-six
-ms.openlocfilehash: 60e06ba292ff1e43d00cd69c1a422f9237d5e5a4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 15aea4f2b2913d95f3378b2e9762b232531f3c25
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Felsökning av problem med cloud service-distribution
-När du distribuerar ett cloud service-programpaket till Azure kan du få information om hur du distribuerar från den **egenskaper** rutan i Azure-portalen. Du kan använda informationen i det här fönstret för att felsöka problem med Molntjänsten och du kan ange den här informationen för stöd för Azure när du öppnar en ny supportförfrågan.
+När du distribuerar en cloud service programmet paketet tooAzure får du information om distributionen av hello från hello **egenskaper** rutan i hello Azure-portalen. Du kan använda hello information i det här fönstret toohelp felsökning av problem med hello-Molntjänsten och du kan ange den här informationen tooAzure stöd när du öppnar en ny supportförfrågan.
 
-Du hittar den **egenskaper** rutan på följande sätt:
+Du kan hitta hello **egenskaper** rutan på följande sätt:
 
-* Klicka på distributionen av Molntjänsten i Azure-portalen, **alla inställningar**, och klicka sedan på **egenskaper**.
-* Klicka på distributionen av Molntjänsten i den klassiska Azure-portalen, **INSTRUMENTPANELEN**, som finns i det nedre högra hörnet på sidan (under **snabböversikten**). Tänk på att det finns ingen ”egenskaper” etikett på det här fönstret.
+* I hello Azure-portalen, klicka på hello distribution av Molntjänsten, **alla inställningar**, och klicka sedan på **egenskaper**.
+* I hello klassiska Azure-portalen, klicka på hello distribution av Molntjänsten, **INSTRUMENTPANELEN**på hello nedre högra hörnet på sidan hello (under **snabböversikten**). Tänk på att det finns ingen ”egenskaper” etikett på det här fönstret.
 
 > [!NOTE]
-> Du kan kopiera innehållet i den **egenskaper** fönstret till Urklipp genom att klicka på ikonen i det övre högra hörnet i fönstret.
+> Du kan kopiera hello innehållet i hello **egenskaper** fönstret toohello Urklipp genom att klicka på hello-ikonen i hello övre högra hörnet i hello-fönstret.
 >
 >
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="problem-i-cannot-access-my-website-but-my-deployment-is-started-and-all-role-instances-are-ready"></a>Problem: Jag kan inte komma åt min webbplats, men installationen startas och alla rollinstanser är klara
-Webbplats-URL-länk som visas i portalen innehåller inte porten. Standardporten för webbplatser är 80. Om programmet är konfigurerat för att köras i en annan port måste du lägga till rätt portnummer Webbadressen vid åtkomst till webbplatsen.
+hello webbplats URL-länk som visas i hello portal innehåller inte hello port. hello-standardporten för webbplatser är 80. Om ditt program är konfigurerade toorun i en annan port, måste du lägga till hello rätt port number toohello URL vid åtkomst till hello webbplats.
 
-1. Klicka på distributionen av Molntjänsten i Azure-portalen.
-2. I den **egenskaper** rutan i Azure-portalen Kontrollera portar för rollinstanserna (under **indata slutpunkter**).
-3. Om porten inte är 80, lägger du till rätt port-värdet till URL när du har åtkomst till programmet. Om du vill ange en annan port än standardporten, skriver du URL-Adressen, följt av ett kolon (:) följt av portnummer, utan blanksteg.
+1. Klicka på hello distribution av Molntjänsten i hello Azure-portalen.
+2. I hello **egenskaper** rutan hello Azure-portalen, kontrollera hello portar för hello rollinstanser (under **indata slutpunkter**).
+3. Lägg till hello rätt port Värdet toohello URL när du har åtkomst till programmet hello om inte hello port 80 till. toospecify en annan port än standardporten, Skriv hello URL, följt av ett kolon (:) följt av hello portnummer, utan blanksteg.
 
 ## <a name="problem-my-role-instances-recycled-without-me-doing-anything"></a>Problem: Min rollinstanser återvinns utan mig gör någonting
-Tjänsten återställning sker automatiskt när Azure identifierar problemet noder och därför flyttar rollinstanser till nya noder. När detta inträffar kan du se dina rollinstanser återvinning automatiskt. Ta reda på om tjänsten återställning uppstod:
+Tjänsten återställning sker automatiskt när Azure identifierar problemet noder och därför flyttar rollen instanser toonew noder. När detta inträffar kan du se dina rollinstanser återvinning automatiskt. toofind reda på om tjänsten återställning uppstod:
 
-1. Klicka på distributionen av Molntjänsten i Azure-portalen.
-2. I den **egenskaper** rutan i Azure-portalen granska informationen och avgöra om tjänsten återställning uppstod under den tid som observeras av rollerna återvinning.
+1. Klicka på hello distribution av Molntjänsten i hello Azure-portalen.
+2. I hello **egenskaper** rutan hello Azure-portalen, granska hello information och kontrollera om tjänsten återställning uppstod under hello tid som observeras av hello roller återvinning.
 
 Roller kommer också att återanvändas ungefär en gång i månaden under värd-OS och Gäst-OS-uppdateringar.  
-Mer information finns i bloggposten [roll-instansen startas om på grund av OS-uppgraderingar](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)
+Mer information finns i blogginlägget hello [roll-instansen startas om på grund av tooOS uppgraderingar](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)
 
 ## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>Problem: Det går inte att jag göra en VIP-växling och får ett felmeddelande
 En VIP-växling är inte tillåten om en av distributionsuppdatering pågår. Distribution av uppdateringar kan ske automatiskt när:
@@ -58,31 +58,31 @@ En VIP-växling är inte tillåten om en av distributionsuppdatering pågår. Di
 * En ny gästoperativsystemet är tillgänglig och du har konfigurerats för automatiska uppdateringar.
 * Tjänsten återställning inträffar.
 
-Ta reda på om en automatisk uppdatering hindrar dig från att utföra en VIP-växling:
+toofind ut hindrar om en automatisk uppdatering dig från att utföra en VIP-växling:
 
-1. Klicka på distributionen av Molntjänsten i Azure-portalen.
-2. I den **egenskaper** rutan på Azure-portalen titta på värdet för **Status**. Om det är **klar**, kontrollera **senaste åtgärden** att se om en nyligen har hänt som kan förhindra att VIP-växling.
-3. Upprepa steg 1 och 2 för produktionsdistributionen.
-4. Om en automatisk uppdatering pågår, vänta tills den är klar innan du försöker göra VIP-växling.
+1. Klicka på hello distribution av Molntjänsten i hello Azure-portalen.
+2. I hello **egenskaper** rutan hello Azure-portalen, titta på hello värdet för **Status**. Om det är **klar**, kontrollera **senaste åtgärden** toosee om en nyligen uppstått som kan förhindra att hello VIP-växlingen.
+3. Upprepa steg 1 och 2 för hello Produktionsdistribution.
+4. Om en automatisk uppdatering pågår, vänta tills den toofinish innan du försöker toodo hello VIP-växlingen.
 
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>Problem: En rollinstans slingor mellan igång, initierar, upptagen och Stoppad
-Det här tillståndet kan tyda på ett problem med programkoden, paketet eller konfigurationsfilen. I så fall kan du ska kunna se status för ändra några minuters mellanrum och Azure-portalen kan stå ungefär **återvinning**, **upptagen**, eller **initierar**. Detta anger att det är något fel med det program som hindrar instansen körs.
+Det här tillståndet kan tyda på ett problem med programkoden, paketet eller konfigurationsfilen. I så fall bör du kunna toosee hello status ändra några minuters mellanrum och hello Azure-portalen kan stå ungefär **återvinning**, **upptagen**, eller **initierar**. Detta anger att det är något fel med hello-program som hindrar hälsningspaket rollinstansen från att köras.
 
-Mer information om hur du felsöker problemet finns i blogginlägget [Compute diagnostikdata i Azure PaaS](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx) och [vanliga problem som orsakar återanvändning av roller](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
+Mer information om hur tootroubleshoot för det här problemet finns i blogginlägget hello [Compute diagnostikdata i Azure PaaS](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx) och [vanliga problem som orsakar roller toorecycle](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 ## <a name="problem-my-application-stopped-working"></a>Problem: Mitt program stoppats
-1. Klicka på instansen i Azure-portalen.
-2. I den **egenskaper** rutan i Azure-portalen ta hänsyn till följande för att lösa problemet:
-   * Om instansen nyligen har stoppats (du kan kontrollera värdet för **antal avbrott**), distributionen kunde uppdateras. Vänta på att se om instansen återupptas fungerar på sin egen.
-   * Om instansen är **upptagen**, kontrollera din programkod för att se om den [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) händelsen hanterats. Du kan behöva lägga till eller åtgärda kod som hanterar den här händelsen.
-   * Gå igenom diagnostikdata och felsökning i blogginlägget [Compute diagnostikdata i Azure PaaS](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+1. Klicka på hello rollinstans i hello Azure-portalen.
+2. I hello **egenskaper** rutan hello Azure-portalen, Överväg hello följande villkor tooresolve problemet:
+   * Om hälsningspaket rollinstansen nyligen har stoppats (du kan kontrollera hello värdet för **antal avbrott**), hello distribution kunde uppdateras. Vänta toosee om hello rollinstans återställs fungerar på sin egen.
+   * Om hälsningspaket rollinstansen **upptagen**, kontrollera din kod toosee för programmet hello [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) händelsen hanterats. Du kanske behöver tooadd eller åtgärda kod som hanterar den här händelsen.
+   * Gå igenom hello diagnostikdata och felsökning i hello blogginlägget [Compute diagnostikdata i Azure PaaS](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
 
 > [!WARNING]
-> Om du återanvänder Molntjänsten återställa du egenskaperna för distributionen, effektivt raderar information för det ursprungliga problemet.
+> Om du återanvänder Molntjänsten återställa du hello egenskaper för distribution av hello effektivt raderar hello information för hello ursprungliga problem.
 >
 >
 
 ## <a name="next-steps"></a>Nästa steg
 Visa mer [felsökning artiklar](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) för molntjänster.
 
-Information om hur du felsöker cloud service rollen problem med hjälp av Azure PaaS datorn diagnostikdata finns [Kevin Williamson bloggserie](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+toolearn hur tootroubleshoot moln rolltjänst problem med hjälp av Azure PaaS diagnostikdata för datorn, se [Kevin Williamson bloggserie](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

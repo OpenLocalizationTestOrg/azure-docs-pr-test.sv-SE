@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Integrera Azure Active Directory med vxMaintain | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och vxMaintain."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och vxMaintain."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: ad87534af448356b8cc80d8ddd278bfb8a9165e7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 937ea276d898986fc5a953c96fddabdc8940309f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-vxmaintain"></a>Självstudier: Integrera Azure Active Directory med vxMaintain
 
-I kursen får lära du att integrera vxMaintain med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate vxMaintain med Azure Active Directory (AD Azure).
 
 Den här integreringen ger flera viktiga fördelar. Du kan:
 
-- Kontrollera i Azure AD som har åtkomst till vxMaintain.
-- Ge användarna logga in automatiskt vxMaintain med enkel inloggning (SSO) med hjälp av sina Azure AD-konton.
-- Hantera dina konton i en central plats: Azure-portalen.
+- Kontrollen i Azure AD som har åtkomst till toovxMaintain.
+- Aktivera användare tooautomatically-inloggning toovxMaintain med enkel inloggning (SSO) med hjälp av sina Azure AD-konton.
+- Hantera dina konton i en central plats: hello Azure-portalen.
 
-Mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+toolearn mer om SaaS appintegrering med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med vxMaintain, behöver du följande:
+tooconfigure Azure AD-integrering med vxMaintain, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - VxMaintain SSO-aktiverade prenumeration
 
 > [!NOTE]
-> När du testar stegen i den här självstudiekursen, rekommenderar vi att du inte använder en produktionsmiljö.
+> När du testar hello stegen i den här självstudiekursen, rekommenderar vi att du inte använder en produktionsmiljö.
 
-Följ dessa rekommendationer för att testa stegen i den här självstudiekursen:
+tootest hello stegen i den här självstudiekursen, Följ dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du [hämta en utvärderingsversion för en månad](https://azure.microsoft.com/pricing/free-trial/).
@@ -49,151 +49,151 @@ Följ dessa rekommendationer för att testa stegen i den här självstudiekursen
 ## <a name="scenario-description"></a>Scenariobeskrivning
 I kursen får testa du Azure AD enkel inloggning i en testmiljö. 
 
-Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-* Att lägga till vxMaintain från galleriet
+* Att lägga till vxMaintain från hello-galleriet
 * Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="add-vxmaintain-from-the-gallery"></a>Lägg till vxMaintain från galleriet
-Du måste lägga till vxMaintain från galleriet i listan över hanterade SaaS-appar för att konfigurera vxMaintain-integrering med Azure AD.
+## <a name="add-vxmaintain-from-hello-gallery"></a>Lägg till vxMaintain från hello-galleriet
+tooconfigure hello integrering av vxMaintain med Azure AD, behöver du tooadd vxMaintain hello galleriet tooyour listan över hanterade SaaS-appar.
 
-Lägg till vxMaintain från galleriet genom att göra följande:
+tooadd vxMaintain från galleriet hello hello följande:
 
-1. I den [Azure-portalen](https://portal.azure.com), i den vänstra rutan, Välj den **Azure Active Directory** knappen. 
+1. I hello [Azure-portalen](https://portal.azure.com), i hello vänstra rutan, Välj hello **Azure Active Directory** knappen. 
 
-    ![Azure Active Directory-knappen][1]
+    ![hello Azure Active Directory-knappen][1]
 
 2. Välj **företagsprogram** > **alla program**.
 
-    ![Fönstret ”företagsprogram”][2]
+    ![Hej ”företagsprogram” fönstret][2]
     
-3. Att lägga till ett program i den **alla program** dialogrutan **nytt program**.
+3. tooadd ett program i hello **alla program** dialogrutan **nytt program**.
 
-    ![”Det nya programmet” knappen][3]
+    ![Hej ”nya program” knappen][3]
 
-4. I sökrutan skriver **vxMaintain**.
+4. Skriv i sökrutan hello **vxMaintain**.
 
-    ![Listrutan ”enkel inloggning läge”](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_search.png)
+    ![Hej ”enkel inloggning läget” listrutan](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_search.png)
 
-5. Välj i resultatlistan **vxMaintain**, och välj sedan **Lägg till**.
+5. Markera i hello resultat **vxMaintain**, och välj sedan **Lägg till**.
 
-    ![Länken vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
+    ![Hej vxMaintain länk](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD SSO med hjälp av vxMaintain, baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning ska fungera, Azure AD som behöver veta vxMaintain motsvarighet till Azure AD-användare. Det vill säga måste du upprätta en länk relation mellan Azure AD-användare och motsvarande vxMaintain användaren.
+För enkel inloggning toowork måste Azure AD tooknow hello vxMaintain motsvarighet toohello Azure AD-användare. Det vill säga måste du upprätta en länk relation mellan hello Azure AD-användare och hello motsvarande vxMaintain användare.
 
-Om du vill upprätta en länk relation, tilldela vxMaintain **användarnamn** värde som Azure AD **användarnamn** värde.
+tooestablish hello länken relationen, tilldela hello vxMaintain **användarnamn** värde som hello Azure AD **användarnamn** värde.
 
-Slutför följande byggblock för att konfigurera och testa Azure AD SSO med vxMaintain.
+tooconfigure och testa Azure AD enkel inloggning med hjälp av vxMaintain fullständig hello följande byggblock.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurera Azure AD för enkel inloggning
 
-I det här avsnittet kan du både aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet vxMaintain genom att göra följande:
+I det här avsnittet kan du både aktivera Azure AD SSO i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet vxMaintain hello följande:
 
-1. I Azure-portalen på den **vxMaintain** programmet integration anger **enkel inloggning**.
+1. I hello Azure-portalen på hello **vxMaintain** programmet integration anger **enkel inloggning**.
 
-    ![Kommandot ”enkel inloggning”][4]
+    ![Hej ”enkel inloggning” kommando][4]
 
-2. Att aktivera enkel inloggning, i den **läget för enkel inloggning** listrutan, Välj **SAML-baserade inloggning**.
+2. tooenable SSO i hello **läget för enkel inloggning** listrutan, Välj **SAML-baserade inloggning**.
  
-    ![Kommandot ”SAML-baserade inloggning”](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
+    ![Hej ”SAML-baserade inloggning” kommando](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
 
-3. Under **vxMaintain domän och URL: er**, gör du följande:
+3. Under **vxMaintain domän och URL: er**, hello följande:
 
-    ![VxMaintain domän och URL: er](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
+    ![Hej vxMaintain domän och URL: er](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
-    a. I den **identifierare** skriver en URL som har följande syntax:`https://<company name>.verisae.com`
+    a. I hello **identifierare** Skriv en URL som har hello följande syntax:`https://<company name>.verisae.com`
 
-    b. I den **Reply URL** skriver en URL som har följande syntax:`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
+    b. I hello **Reply URL** Skriv en URL som har hello följande syntax:`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
-    > Föregående värden är inte verkliga. Uppdatera dem med den faktiska identifieraren och reply URL. För att få värdena kan kontakta den [vxMaintain supportteamet](http://www.verisae.com/contact-us).
+    > hello föregående värden är inte verkliga. Uppdatera dem med hello faktiska identifierare och reply URL. tooobtain hello värden, kontakta hello [vxMaintain supportteamet](http://www.verisae.com/contact-us).
  
-4. Under **SAML-signeringscertifikat**väljer **XML-Metadata för**, och spara sedan metadatafilen till datorn.
+4. Under **SAML-signeringscertifikat**väljer **XML-Metadata för**, och sedan spara hello metadata filen tooyour dator.
 
-    ![Avsnittet ”SAML signeringscertifikat”](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
+    ![Hej ”SAML signeringscertifikat” avsnittet](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
 5. Välj **Spara**.
 
-    ![Knappen Spara](./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_400.png)
+    ![knappen Spara för hello](./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Så här konfigurerar du **vxMaintain** SSO skicka den hämtade **XML-Metadata för** filen till den [vxMaintain supportteamet](http://www.verisae.com/contact-us).
+6. tooconfigure **vxMaintain** SSO, skicka hello hämtas **XML-Metadata för** filen toohello [vxMaintain supportteamet](http://www.verisae.com/contact-us).
 
 > [!TIP]
-> När du skapar appen kan du läsa en kortare version av föregående anvisningarna i den [Azure-portalen](https://portal.azure.com). När du har lagt till appen från den **Active Directory** > **företagsprogram** väljer den **enkel inloggning** fliken och sedan använda den inbäddade dokumentation från den **Configuration** avsnitt. 
+> När du ställer in hello app kan du läsa en kortare version av hello före instruktioner i hello [Azure-portalen](https://portal.azure.com). När du har lagt till hello appen från hello **Active Directory** > **företagsprogram** avsnitt, Välj hello **enkel inloggning** fliken och åtkomst hello inbäddade dokumentation från hello **Configuration** avsnitt. 
 >
->Mer information om funktionen inbäddade dokumentation finns [hantera enkel inloggning för företagsappar](https://go.microsoft.com/fwlink/?linkid=845985).
+>toolearn mer om hello inbäddade dokumentationen funktionen finns [hantera enkel inloggning för företagsappar](https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-I det här avsnittet skapar du testanvändare Britta Simon i Azure-portalen genom att göra följande:
+I det här avsnittet skapar du testanvändare Britta Simon i hello Azure-portalen hello följande:
 
-![Azure AD-testanvändare][100]
+![hello Azure AD-testanvändare][100]
 
-1. I den **Azure-portalen**, i den vänstra rutan, Välj den **Azure Active Directory** knappen.
+1. I hello **Azure-portalen**, i hello vänstra rutan, Välj hello **Azure Active Directory** knappen.
 
-    ![Knappen ”Azure Active Directory”](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_01.png) 
+    ![Hej ”Azure Active Directory”-knappen](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare, gå till **användare och grupper** > **alla användare**.
+2. toodisplay en lista över användare, gå för**användare och grupper** > **alla användare**.
     
-    ![Länken ”alla användare”](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_02.png)  
-    Den **alla användare** öppnas. 
+    ![Hej ”alla användare” länk](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_02.png)  
+    Hej **alla användare** öppnas. 
 
-3. Öppna den **användare** dialogrutan **Lägg till**.
+3. tooopen hello **användare** dialogrutan **Lägg till**.
  
-    ![Knappen Lägg till](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_03.png) 
+    ![hello webbinställningar](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. I den **användaren** dialogrutan Gör följande:
+4. I hello **användaren** dialogrutan rutan, hello följande:
  
-    ![Dialogrutan användare](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
+    ![hello användardialogrutan](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** skriver **BrittaSimon**.
+    a. I hello **namn** skriver **BrittaSimon**.
 
-    b. I den **användarnamn** skriver testanvändare Britta Simon e-postadress.
+    b. I hello **användarnamn** rutan typen hello användarens e-postadress test Britta Simon.
 
-    c. Välj den **visa lösenordet** och anteckna värdet som har genererats i den **lösenord** rutan.
+    c. Välj hello **visa lösenordet** kryssrutan och Observera hello värdet som har genererats i hello **lösenord** rutan.
 
     d. Välj **Skapa**.
  
 ### <a name="create-a-vxmaintain-test-user"></a>Skapa en testanvändare vxMaintain
 
-I det här avsnittet skapar du testanvändare Britta Simon i vxMaintain. Om du vill lägga till användare i plattformen vxMaintain arbeta med den [vxMaintain supportteamet](http://www.verisae.com/contact-us). Innan du använder SSO, skapa och aktivera användarna.
+I det här avsnittet skapar du testanvändare Britta Simon i vxMaintain. tooadd i hello vxMaintain platform arbeta med den [vxMaintain supportteamet](http://www.verisae.com/contact-us). Innan du använder SSO, skapa och aktivera hello användare.
 
-### <a name="assign-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assign-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera testanvändare Britta Simon att använda Azure SSO genom att bevilja åtkomst till vxMaintain. Det gör du genom att göra följande:
+I det här avsnittet kan aktivera du testanvändare Britta Simon toouse Azure SSO genom att bevilja åtkomst toovxMaintain. toodo så hello följande:
 
-![Testanvändare i listan visningsnamn][200] 
+![Testanvändare i hello visningsnamn lista][200] 
 
-1. I Azure portal **program** visa, gå till **Directory** Visa > **företagsprogram** > **alla program**.
+1. I hello Azure-portalen **program** visa finns för**Directory** Visa > **företagsprogram** > **alla program**.
 
-    ![Länken ”alla program”][201] 
+    ![Hej ”alla program” länk][201] 
 
-2. I den **program** väljer **vxMaintain**.
+2. I hello **program** väljer **vxMaintain**.
 
-    ![Länken vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
+    ![Hej vxMaintain länk](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
 
-3. I den vänstra rutan, Välj **användare och grupper**.
+3. I hello vänster och välj **användare och grupper**.
 
-    ![Länken ”användare och grupper”][202] 
+    ![Hej ”användare och grupper” länk][202] 
 
-4. Välj **Lägg till** och sedan, i den **Lägg uppdrag** väljer **användare och grupper**.
+4. Välj **Lägg till** och sedan, i hello **Lägg uppdrag** väljer **användare och grupper**.
 
-    ![Länken ”användare och grupper”][203]
+    ![Hej ”användare och grupper” länk][203]
 
-5. I den **användare och grupper** i dialogrutan den **användare** väljer **Britta Simon**, och välj sedan den **Välj** knappen.
+5. I hello **användare och grupper** i dialogrutan hello **användare** väljer **Britta Simon**, och välj sedan hello **Välj** knappen.
 
-7. I den **Lägg uppdrag** dialogrutan **tilldela**.
+7. I hello **Lägg uppdrag** dialogrutan **tilldela**.
     
 ### <a name="test-your-azure-ad-single-sign-on"></a>Testa din Azure AD enkel inloggning
 
-I det här avsnittet testa du konfigurationen av Azure AD SSO med hjälp av åtkomstpanelen.
+I det här avsnittet testa du konfigurationen av Azure AD SSO med hjälp av hello åtkomstpanelen.
 
-Att välja den **vxMaintain** panelen på åtkomstpanelen ska logga in i tillämpningsprogrammet vxMaintain automatiskt.
+Du väljer hello **vxMaintain** panelen i hello åtkomstpanelen ska logga in dig på tooyour vxMaintain program automatiskt.
 
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Läs mer om åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="next-steps"></a>Nästa steg
 

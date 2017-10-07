@@ -1,6 +1,6 @@
 ---
-title: "Skapa anpassade DNS-poster för en webbapp | Microsoft Docs"
-description: "Så här skapar du anpassade domäner DNS-poster för webbapp med Azure DNS."
+title: "aaaCreate anpassade DNS-poster för en webbapp | Microsoft Docs"
+description: "Hur toocreate domänen DNS-poster för webbapp med Azure DNS."
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,39 +13,39 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-ms.openlocfilehash: b054a41ecd69ee1c802d8403fe4b25128f016e3c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 070c808a55bab922eb624d99ae5c275d8eaa5aaa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>Skapa DNS-poster för ett webbprogram i en anpassad domän
 
-Du kan använda DNS för Azure som värd för en anpassad domän för ditt webbprogram. Till exempel du skapar en Azure webbapp och du vill att användarna ska komma åt den genom att antingen använda contoso.com eller www.contoso.com som ett fullständigt domännamn.
+Du kan använda Azure DNS toohost en anpassad domän för ditt webbprogram. Till exempel du skapar en Azure webbapp och du vill att dina användare tooaccess den genom att antingen använda contoso.com eller www.contoso.com som ett fullständigt domännamn.
 
-Om du vill göra detta måste du skapa två poster:
+toodo, toocreate två poster:
 
-* En rot ”A”-post som pekar på contoso.com
-* En ”CNAME” för www-namn som pekar på A-post
+* En rot ”A” poster peka toocontoso.com
+* ”CNAME”-posten för hello www namn som pekar toohello en post
 
-Kom ihåg att om du skapar en A-post för en webbapp i Azure, A-posten måste vara manuellt uppdateras om den underliggande IP-adressen för web app-ändringar.
+Tänk på att om du skapar en A-post för en webbapp i Azure hello en post måste uppdateras manuellt om hello underliggande IP-adress för hello web app-ändringar.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Innan du börjar måste du först skapa en DNS-zon i Azure DNS och delegera zonen i Registratorn till Azure DNS.
+Innan du börjar måste du först skapa en DNS-zon i Azure DNS och delegera hello zonen i din registrator tooAzure DNS.
 
-1. Om du vill skapa en DNS-zon, följer du stegen i [skapa en DNS-zon](dns-getstarted-create-dnszone.md).
-2. Om du vill delegera din DNS-server till Azure DNS, följer du stegen i [DNS-delegering i domänen](dns-domain-delegation.md).
+1. toocreate en DNS-zon gör hello i [skapa en DNS-zon](dns-getstarted-create-dnszone.md).
+2. toodelegate din DNS-tooAzure DNS, så hello i [DNS-delegering i domänen](dns-domain-delegation.md).
 
-När du skapar en zon och delegera till Azure DNS kan skapar du sedan poster för domänen.
+När du skapar en zon och delegera den tooAzure DNS kan skapar du sedan poster för domänen.
 
 ## <a name="1-create-an-a-record-for-your-custom-domain"></a>1. Skapa en A-post för den anpassade domänen
 
-En A-post används för att mappa ett namn till dess IP-adress. I följande exempel kommer vi tilldela som en A-post till en IPv4-adress:
+En A-post är används toomap namn tooits IP-adress. I följande exempel hello tilldelas vi som en A-post tooan IPv4-adress:
 
 ### <a name="step-1"></a>Steg 1
 
-Skapa en A-post och tilldela en variabel $rs
+Skapa en A-post och tilldela tooa variabeln $rs
 
 ```powershell
 $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -ResourceGroupName "MyAzureResourceGroup" -Ttl 600
@@ -53,9 +53,9 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>Steg 2
 
-Lägg till IPv4-värde i den tidigare skapade postuppsättningen ”@” med hjälp av variabeln $rs tilldelas. IPv4-värdet som tilldelas kommer att IP-adressen för ditt webbprogram.
+Lägg till hello IPv4 toohello tidigare skapade poster värdet ”@” Hej $rs används som tilldelats. hello IPv4-värdet som tilldelas blir hello IP-adressen för din webbapp.
 
-För att hitta IP-adressen för en webbapp, följer du stegen i [konfigurera ett anpassat domännamn i Azure App Service](../app-service-web/app-service-web-tutorial-custom-domain.md).
+toofind hello IP-adressen för en webbapp gör hello i [konfigurera ett anpassat domännamn i Azure App Service](../app-service-web/app-service-web-tutorial-custom-domain.md).
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address>"
@@ -63,7 +63,7 @@ Add-AzureRMDnsRecordConfig -RecordSet $rs -Ipv4Address "<your web app IP address
 
 ### <a name="step-3"></a>Steg 3
 
-Ändringarna i uppsättningen av poster. Använd `Set-AzureRMDnsRecordSet` så att ändringarna till posten till Azure DNS:
+Genomför ändringar hello toohello postuppsättning. Använd `Set-AzureRMDnsRecordSet` tooupload hello ändras toohello postuppsättning tooAzure DNS:
 
 ```powershell
 Set-AzureRMDnsRecordSet -RecordSet $rs
@@ -71,17 +71,17 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 ## <a name="2-create-a-cname-record-for-your-custom-domain"></a>2. Skapa en CNAME-post för den anpassade domänen
 
-Om din domän hanteras redan av Azure DNS (se [DNS-delegering i domänen](dns-domain-delegation.md), så kan du använda följande exempel för att skapa en CNAME-post för contoso.azurewebsites.net.
+Om din domän hanteras redan av Azure DNS (se [DNS-delegering i domänen](dns-domain-delegation.md), kan du använda följande hello exempel toocreate en CNAME-post för contoso.azurewebsites.net hello.
 
 ### <a name="step-1"></a>Steg 1
 
-Öppna PowerShell och skapa en ny CNAME-postuppsättning och tilldela en variabel $rs. Det här exemplet skapas en postuppsättning typen CNAME med en ”time to live” 600 sekunder i DNS-zonen med namnet ”contoso.com”.
+Öppna PowerShell och skapa en ny CNAME-postuppsättning och tilldelar tooa variabeln $rs. Det här exemplet skapar en postuppsättning typen CNAME med en ”toolive” 600 sekunder i DNS-zonen med namnet ”contoso.com”.
 
 ```powershell
 $rs = New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName myresourcegroup -Name "www" -RecordType "CNAME" -Ttl 600
 ```
 
-Följande exempel är svaret.
+följande exempel hello är hello svar.
 
 ```
 Name              : www
@@ -96,15 +96,15 @@ Tags              : {}
 
 ### <a name="step-2"></a>Steg 2
 
-När du har skapat CNAME-postuppsättning måste du skapa ett Aliasvärde som pekar på webbprogrammet.
+När du har skapat hello CNAME-postuppsättning måste toocreate ett Aliasvärde som pekar toohello webbprogram.
 
-Med hjälp av variabeln tidigare tilldelade ”$rs” använda du PowerShell-kommandot nedan för att skapa alias för web app contoso.azurewebsites.net.
+Med hjälp av hello som tidigare tilldelats variabeln ”$rs” kan du använda hello PowerShell-kommandot nedan toocreate hello-alias för hello web app contoso.azurewebsites.net.
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "contoso.azurewebsites.net"
 ```
 
-Följande exempel är svaret.
+följande exempel hello är hello svar.
 
 ```
     Name              : www
@@ -119,13 +119,13 @@ Följande exempel är svaret.
 
 ### <a name="step-3"></a>Steg 3
 
-Genomför ändringarna med det `Set-AzureRMDnsRecordSet` cmdlet:
+Genomför hello ändringar med hjälp av hello `Set-AzureRMDnsRecordSet` cmdlet:
 
 ```powershell
 Set-AzureRMDnsRecordSet -RecordSet $rs
 ```
 
-Du kan verifiera posten skapades korrekt genom att fråga den ”www.contoso.com” med nslookup, enligt nedan:
+Du kan validera hello posten skapades korrekt genom att fråga hello ”www.contoso.com” med nslookup, enligt nedan:
 
 ```
 PS C:\> nslookup
@@ -146,17 +146,17 @@ contoso.azurewebsites.net
 
 ## <a name="create-an-awverify-record-for-web-apps"></a>Skapa en ”awverify” post för webbprogram
 
-Om du vill använda en A-post för ditt webbprogram måste du gå igenom en verifieringsprocessen för att säkerställa att du äger den anpassade domänen. Den här kontrollen görs genom att skapa en särskild CNAME-post med namnet ”awverify”. Det här avsnittet gäller enbart poster.
+Om du väljer toouse en A-post för ditt webbprogram, måste du gå via en verifiering processen tooensure du egna hello anpassade domäner. Den här kontrollen görs genom att skapa en särskild CNAME-post med namnet ”awverify”. Det här avsnittet gäller enbart tooA poster.
 
 ### <a name="step-1"></a>Steg 1
 
-Skapa posten ”awverify”. I exemplet nedan skapar vi ”aweverify” post för contoso.com verifiera ägarskapet för den anpassade domänen.
+Skapa hello ”awverify” post. I hello exemplet nedan skapar vi hello ”aweverify” post för contoso.com tooverify ägarskap för hello anpassade domäner.
 
 ```powershell
 $rs = New-AzureRMDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "myresourcegroup" -Name "awverify" -RecordType "CNAME" -Ttl 600
 ```
 
-Följande exempel är svaret.
+följande exempel hello är hello svar.
 
 ```
 Name              : awverify
@@ -171,13 +171,13 @@ Tags              : {}
 
 ### <a name="step-2"></a>Steg 2
 
-Tilldela den CNAME-postuppsättning alias när postuppsättning ”awverify” har skapats. I exemplet nedan tilldelas vi ange alias till awverify.contoso.azurewebsites.net CNAMe-posten.
+När hello postuppsättning ”awverify” har skapats kan du tilldela hello CNAME-postuppsättning alias. I hello exemplet nedan, kommer vi tilldela hello CNAMe postuppsättning alias tooawverify.contoso.azurewebsites.net.
 
 ```powershell
 Add-AzureRMDnsRecordConfig -RecordSet $rs -Cname "awverify.contoso.azurewebsites.net"
 ```
 
-Följande exempel är svaret.
+följande exempel hello är hello svar.
 
 ```
     Name              : awverify
@@ -192,7 +192,7 @@ Följande exempel är svaret.
 
 ### <a name="step-3"></a>Steg 3
 
-Genomför ändringarna med det `Set-AzureRMDnsRecordSet cmdlet`som visas i kommandot nedan.
+Genomför hello ändringar med hjälp av hello `Set-AzureRMDnsRecordSet cmdlet`som visas i hello kommandot nedan.
 
 ```powershell
 Set-AzureRMDnsRecordSet -RecordSet $rs
@@ -200,4 +200,4 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 
 ## <a name="next-steps"></a>Nästa steg
 
-Följ stegen i [konfigurera ett anpassat domännamn för Apptjänst](../app-service-web/web-sites-custom-domain-name.md) att konfigurera ditt webbprogram om du vill använda en anpassad domän.
+Gör så hello i [konfigurera ett anpassat domännamn för Apptjänst](../app-service-web/web-sites-custom-domain-name.md) tooconfigure din web app toouse anpassade domäner.

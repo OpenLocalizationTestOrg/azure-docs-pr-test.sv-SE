@@ -1,5 +1,5 @@
 ---
-title: "Azure Mobile Engagement iOS SDK innehåll"
+title: "aaaAzure Mobile Engagement iOS SDK innehåll"
 description: "Senaste uppdateringarna och procedurer för iOS SDK för Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,19 +14,19 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: bdc96cd47ece6054184d167192ebec4cd4bd081c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9f735226b98431cf0a68d0cbe8f9112f4c8df019
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sdk-content"></a>SDK-innehållet
-Det här dokumentet listar och beskriver innehållet i SDK-arkivet.
+Det här dokumentet listar och beskriver hello innehåll för hello SDK-arkivet.
 
 ## <a name="engagement-sdk"></a>Engagement SDK
 `EngagementSDK`
 
-> Core Engagement SDK som innehåller huvuden, bibliotek och en extra klass som angetts som en källkod för att aktivera/inaktivera IDFA-insamling.
+> Hej core Engagement SDK som innehåller huvuden, bibliotek och en extra klass som angetts som en källa kod tooenable/inaktivera IDFA-insamling.
 > 
 > 
 
@@ -46,7 +46,7 @@ Det här dokumentet listar och beskriver innehållet i SDK-arkivet.
 
 `src`mappen
 
-> Engagement visa domänkontrollanter och nå SDK-källkod (för användare som vill anpassa Engagement klasser till deras behov).
+> Engagement visa domänkontrollanter och nå SDK-källkod (för användare som vill tooadapt Engagement klasser tootheir behov).
 > 
 > 
 

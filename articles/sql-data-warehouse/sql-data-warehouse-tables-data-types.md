@@ -1,6 +1,6 @@
 ---
-title: "Datatyperna vägledning - Azure SQL Data Warehouse | Microsoft Docs"
-description: "Rekommendationer för att definiera datatyper som är kompatibla med SQL Data Warehouse."
+title: "aaaData typer vägledning - Azure SQL Data Warehouse | Microsoft Docs"
+description: "Rekommendationer toodefine datatyper som är kompatibla med SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: shivaniguptamsft
@@ -15,29 +15,29 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 06/02/2017
 ms.author: shigu;barbkess
-ms.openlocfilehash: 5c24c71af16bd9851d9caf15fecfa4bb76f5f77e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a2f7a394feb73d273b25101735b00eb12db2b292
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>Riktlinjer för att definiera datatyper för tabeller i SQL Data Warehouse
-Använd de här rekommendationerna för att definiera tabellen datatyper som är kompatibla med SQL Data Warehouse. Förutom kompatibilitet förbättrar minimera storlek på datatyper för prestanda för frågor.
+Använd dessa rekommendationer toodefine tabell datatyper som är kompatibla med SQL Data Warehouse. Dessutom förbättrar toocompatibility, minimera hello storlek på datatyper för frågeprestanda.
 
-SQL Data Warehouse stöder vanligaste de datatyper. En lista över datatyperna som stöds, se [datatyper](/sql/docs/t-sql/statements/create-table-azure-sql-data-warehouse.md#datatypes) i CREATE TABLE-instruktion. 
+SQL Data Warehouse stöder de vanligaste hello-datatyper. En lista över hello stöds datatyper finns [datatyper](/sql/docs/t-sql/statements/create-table-azure-sql-data-warehouse.md#datatypes) i hello CREATE TABLE-instruktion. 
 
 
 ## <a name="minimize-row-length"></a>Minimera radlängden
-Minimera storlek på datatyper för förkortar radlängden, vilket resulterar i bättre prestanda. Använd den minsta datatypen som fungerar för dina data. 
+Minimera hello storlek på datatyper för förkortar hello radlängden, vilket leder toobetter frågeprestanda. Använd hello minsta datatypen som fungerar för dina data. 
 
-- Undvik att definiera teckenkolumner med en stor standardlängden. Till exempel om det längsta värdet är 25 tecken, definiera kolumnen som VARCHAR(25). 
+- Undvik att definiera teckenkolumner med en stor standardlängden. Till exempel om hello längsta värde är 25 tecken, definiera kolumnen som VARCHAR(25). 
 - Undvik att använda [NVARCHAR] [ NVARCHAR] när du behöver bara VARCHAR.
 - När det är möjligt använda NVARCHAR(4000) eller VARCHAR(8000) i stället för NVARCHAR(MAX) eller VARCHAR(MAX).
 
-Om du använder Polybase för att läsa in tabellerna får inte tabellraden definierade längd överstiga 1 MB. När en rad med variabel längd överskrider 1 MB, kan du läsa in raden med BCP, men inte med PolyBase.
+Om du använder Polybase tooload tabellerna hello definierats hello tabellrad kan inte vara längre än 1 MB. När en rad med variabel längd överskrider 1 MB, kan du läsa in hello raden med BCP, men inte med PolyBase.
 
 ## <a name="identify-unsupported-data-types"></a>Identifiera datatyper
-Om du migrerar databasen från en annan SQL-databas, kan det uppstå datatyper som inte stöds i SQL Data Warehouse. Använd den här frågan för att identifiera datatyper i din befintliga SQL-schemat.
+Om du migrerar databasen från en annan SQL-databas, kan det uppstå datatyper som inte stöds i SQL Data Warehouse. Använd den här frågan toodiscover stöds inte datatyper i din befintliga SQL-schemat.
 
 ```sql
 SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
@@ -51,7 +51,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="unsupported-data-types"></a>Använda lösningar för datatyper
 
-I följande lista visas datatyperna som SQL Data Warehouse stöder inte och ger alternativ som du kan använda i stället för typerna av data som inte stöds.
+hello följande lista visar hello datatyper som inte har stöd för SQL Data Warehouse och ger alternativ som du kan använda i stället för hello datatyper.
 
 | Datatyp | Lösning |
 | --- | --- |
@@ -62,15 +62,15 @@ I följande lista visas datatyperna som SQL Data Warehouse stöder inte och ger 
 | [text][ntext,text,image] |[varchar][varchar] |
 | [ntext][ntext,text,image] |[nvarchar][nvarchar] |
 | [sql_variant][sql_variant] |Dela upp kolumn i flera strikt typkontroll kolumner. |
-| [tabell][table] |Konvertera till temporära tabeller. |
-| [tidsstämpel][timestamp] |Omarbeta kod för att använda [datetime2] [ datetime2] och `CURRENT_TIMESTAMP` funktion.  Endast konstanter stöds som standard, därför current_timestamp kan inte definieras som en default-begränsning. Om du behöver migrera version radvärden från en tidsstämpelkolumn skrivna använder [binära][BINARY](8) eller [VARBINARY][BINARY](8) för NOT NULL eller NULL version radvärden. |
+| [tabell][table] |Konvertera tootemporary tabeller. |
+| [tidsstämpel][timestamp] |Omarbeta kod toouse [datetime2] [ datetime2] och `CURRENT_TIMESTAMP` funktion.  Endast konstanter stöds som standard, därför current_timestamp kan inte definieras som en default-begränsning. Om du behöver toomigrate version radvärden från en tidsstämpelkolumn skrivna kan sedan använda [binära][BINARY](8) eller [VARBINARY][BINARY](8) för NOT NULL eller NULL version radvärden. |
 | [XML][xml] |[varchar][varchar] |
-| [användardefinierad typ][user defined types] |Konvertera tillbaka till den ursprungliga datatypen när det är möjligt. |
+| [användardefinierad typ][user defined types] |Omvandla tillbaka toohello inbyggda datatyper när det är möjligt. |
 | standardvärden | Standardvärden stöder literaler och endast konstanter.  Icke-deterministiska uttryck eller funktioner, t.ex `GETDATE()` eller `CURRENT_TIMESTAMP`, stöds inte. |
 
 
 ## <a name="next-steps"></a>Nästa steg
-Du kan läsa mer här:
+Det finns fler toolearn:
 
 - [Metodtips för SQL Data Warehouse][SQL Data Warehouse Best Practices]
 - [Översikt över tabell][Overview]

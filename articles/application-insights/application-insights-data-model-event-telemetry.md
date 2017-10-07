@@ -1,5 +1,5 @@
 ---
-title: "Datamodell för Azure-program insikter telemetri - händelse telemetri | Microsoft Docs"
+title: "aaaAzure Application Insights telemetri datamodellen - händelse telemetri | Microsoft Docs"
 description: "Application Insights datamodellen för händelsen telemetri"
 services: application-insights
 documentationcenter: .net
@@ -12,21 +12,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.openlocfilehash: 422e193ae10938954602a6ef8c49fd47f473bc01
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: cd7dc3c5f4f3df22b7a52ee79fcad566a27a9f4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>Händelsen telemetri: Application Insights-datamodell
 
-Du kan skapa händelse telemetri objekt (i [Programinsikter](app-insights-overview.md)) som representerar en händelse som påträffats i programmet. Vanligtvis är en användarinteraktion, såsom knappen Klicka eller ordna utcheckningen. Det kan också vara livscykel händelse som initiering eller konfiguration uppdatera. 
+Du kan skapa händelse telemetri objekt (i [Programinsikter](app-insights-overview.md)) toorepresent en händelse som påträffats i programmet. Vanligtvis är en användarinteraktion, såsom knappen Klicka eller ordna utcheckningen. Det kan också vara livscykel händelse som initiering eller konfiguration uppdatera. 
 
-Semantiskt, händelser kan eller inte kan korreleras till begäranden. Men om korrekt, är händelse telemetri viktigare än förfrågningar eller spår. Händelser som representerar företag telemetri och bör vara ett ämne att separera, mindre aggressiv [provtagning](app-insights-api-filtering-sampling.md).
+Händelser kan semantiskt, eller kanske inte korrelerade toorequests. Men om korrekt, är händelse telemetri viktigare än förfrågningar eller spår. Händelser som representerar företag telemetri och ska vara ett ämne tooseparate mindre aggressiv [provtagning](app-insights-api-filtering-sampling.md).
 
 ## <a name="name"></a>Namn
 
-Händelsenamn. Begränsa ditt program för att tillåta korrekt gruppering och användbara mätvärden, så att den genererar ett litet antal separat händelsenamn. Till exempel inte använda ett separat namn för varje genererade instans av en händelse.
+Händelsenamn. tooallow rätt gruppering och användbara mätvärden, begränsa ditt program så att den genererar ett litet antal separat händelsenamn. Till exempel inte använda ett separat namn för varje genererade instans av en händelse.
 
 Maxlängd: 512 tecken
 

@@ -1,5 +1,5 @@
 ---
-title: "Tillgänglighet och skala i Azure Resource Manager-mallar | Microsoft Docs"
+title: aaaAvailability och skala i Azure Resource Manager-mallar | Microsoft Docs
 description: "Virtuella Azure-datorn DotNet grundläggande självstudierna"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,22 +16,22 @@ ms.workload: infrastructure
 ms.date: 05/12/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c0250b8152ed31b9a5d8b42ae139c9b38da0984
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6f830ca0a64e6b65859312bdf31dc0af59e2b978
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="availability-and-scale-in-azure-resource-manager-templates-for-linux-vms"></a>Tillgänglighet och skala i Azure Resource Manager-mallar för virtuella Linux-datorer
 
-Tillgänglighet och skala finns drifttid och möjligheten att uppfylla begäran. Om ett program måste vara in 99,9% av tiden, måste den ha en arkitektur som gör det möjligt för flera samtidiga beräkningsresurser. I stället för med en webbplats, innehåller en konfiguration med en högre säkerhetsnivå för tillgänglighet till exempel flera instanser av samma plats, med belastningsutjämning teknik framför dem. I den här konfigurationen är kan en instans av programmet stängas av för underhåll, medan de återstående fortsätter att fungera. Skala refererar å andra sidan till ett program möjlighet att hantera begäran. Med belastning kan belastningsutjämnade program, lägga till eller ta bort instanser från poolen programmet att skala för att uppfylla begäran.
+Tillgänglighet och skala finns toouptime och hello möjlighet toomeet efterfrågan. Om ett program måste vara in 99,9% av hello tid, måste det toohave en arkitektur som gör det möjligt för flera samtidiga beräkningsresurser. I stället för med en webbplats, innehåller en konfiguration med en högre säkerhetsnivå för tillgänglighet till exempel flera instanser av samma plats, med belastningsutjämning teknik framför dem hello. I den här konfigurationen är kan en instans av programmet hello stängas av för underhåll, medan hello återstående fortsätter toofunction. Skala på hello andra sidan refererar tooan program möjlighet tooserve begäran. Med belastning kan belastningsutjämnade program, lägga till eller ta bort instanser från hello pool ett program tooscale toomeet begäran.
 
-Det här dokumentet beskriver hur exempeldistribution musik Store har konfigurerats för tillgänglighet och skala. Alla beroenden och unika konfigurationer är markerade. Distribuera en instans av lösningen till din Azure-prenumeration och fungerar tillsammans med Azure Resource Manager-mall för bästa resultat. Fullständig mallen hittar du här – [musik Store distributionen på Ubuntu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
+Det här dokumentet beskriver hur hello musik Store exempeldistribution har konfigurerats för tillgänglighet och skala. Alla beroenden och unika konfigurationer är markerade. Distribuera en instans av hello lösning tooyour Azure-prenumeration och fungerar tillsammans med hello Azure Resource Manager-mall för hello bästa möjliga resultat. hello fullständig mallen hittar du här – [musik Store distributionen på Ubuntu](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
 
 ## <a name="availability-set"></a>Tillgänglighetsuppsättning
-En Tillgänglighetsuppsättning täcker logiskt Azure Virtual Machines fysiska värdar och andra infrastrukturella komponenter, till exempel strömkällor och maskinvara för fysiska nätverk. Tillgänglighetsuppsättningar se till att inte alla virtuella datorer sker under underhåll, enhet eller annan stillestånd. En Tillgänglighetsuppsättning kan läggas till en Azure Resource Manager-mall med hjälp av Visual Studio guiden Lägg till ny resurs eller infoga giltig JSON i en mall.
+En Tillgänglighetsuppsättning täcker logiskt Azure Virtual Machines fysiska värdar och andra infrastrukturella komponenter, till exempel strömkällor och maskinvara för fysiska nätverk. Tillgänglighetsuppsättningar se till att inte alla virtuella datorer sker under underhåll, enhet eller annan stillestånd. En Tillgänglighetsuppsättning kan läggas tooan Azure Resource Manager-mallen använder hello Visual Studio guiden Lägg till ny resurs, eller lägga till giltig JSON i en mall.
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Tillgänglighetsuppsättning](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L387).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [Tillgänglighetsuppsättning](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L387).
 
 ```json
 {
@@ -52,7 +52,7 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Tillgäng
 
 En Tillgänglighetsuppsättning har deklarerats som en egenskap för en virtuell datorresurs. 
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Tillgänglighetsuppsättning association med den virtuella datorn](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L313).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [Tillgänglighetsuppsättning association med den virtuella datorn](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L313).
 
 ```json
 "properties": {
@@ -60,16 +60,16 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Tillgäng
     "id": "[resourceId('Microsoft.Compute/availabilitySets', variables('availabilitySetName'))]"
   }
 ```
-Tillgänglighetsuppsättning sett från Azure-portalen. Varje virtuell dator och information om konfigurationen beskrivs här.
+Hej tillgänglighetsuppsättning sett från hello Azure-portalen. Varje virtuell dator och information om hello konfiguration beskrivs här.
 
 ![Tillgänglighetsuppsättning](./media/dotnet-core-4-availability-scale/aset.png)
 
 Detaljerad information om Tillgänglighetsuppsättningar finns [hantera tillgängligheten för virtuella datorer](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
 ## <a name="network-load-balancer"></a>Utjämning av nätverksbelastning
-Medan en tillgänglighetsuppsättning ger programmet feltolerans, tillgängliggör belastningsutjämning många instanser av programmet på en enda nätverksadress. Flera instanser av ett program kan finnas på många virtuella datorer, var och en ansluten till en belastningsutjämnare. Eftersom programmet används dirigerar inkommande begäran över de anslutna medlemmarna i belastningsutjämnaren. En belastningsutjämnare kan läggas till med hjälp av Visual Studio guiden Lägg till ny resurs, eller genom att infoga korrekt formaterad JSON-resursen till Azure Resource Manager-mall.
+Medan en tillgänglighetsuppsättning ger programmet feltolerans, gör belastningsutjämning många instanser av programmet hello tillgängliga i en enda nätverksadress. Flera instanser av ett program kan finnas på många virtuella datorer, var och en ansluten tooa belastningsutjämnaren. Eftersom programmet hello används hello hello belastningen belastningsutjämnaren vägar inkommande begäran över hello kopplade medlemmar. En belastningsutjämnare kan läggas till med hello Visual Studio guiden Lägg till ny resurs, eller genom att infoga korrekt formaterad JSON-resurs i hello Azure Resource Manager-mall.
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Utjämning av nätverksbelastning](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L208).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [Utjämning av nätverksbelastning](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L208).
 
 ```json
 {
@@ -84,9 +84,9 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Utjämnin
 }
 ```
 
-Eftersom exempelprogrammet exponeras mot internet med en offentlig IP-adress och är den här adressen kopplad till belastningsutjämnaren. 
+Eftersom hello exempelprogrammet är utsatta toohello internet med en offentlig IP-adress, den här adressen är kopplad till hello belastningsutjämnaren. 
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Utjämning av nätverksbelastning kopplingen till offentliga IP-adressen](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L221).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [Utjämning av nätverksbelastning kopplingen till offentliga IP-adressen](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L221).
 
 ```json
 "frontendIPConfigurations": [
@@ -101,14 +101,14 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Utjämnin
 ]
 ```
 
-I belastningsutjämnaren översikt över Utjämning visar kopplingen till den offentliga IP-adressen från Azure-portalen.
+Från hello Azure-portalen visar hello översikt över Utjämning belastningsutjämnaren hello association med hello offentlig IP-adress.
 
 ![Utjämning av nätverksbelastning](./media/dotnet-core-4-availability-scale/nlb.png)
 
 ## <a name="load-balancer-rule"></a>Regel för belastningsutjämnare
-När du använder en belastningsutjämnare, konfigureras regler som styr hur trafik fördelas över de avsedda resurserna. Med musik Store exempelprogrammet trafik anländer på port 80 på den offentliga IP-adressen och distribueras till port 80 på alla virtuella datorer. 
+När du använder en belastningsutjämnare, konfigureras regler som styr hur trafik fördelas över hello avsedda resurserna. Med hello för musik Store exempelprogrammet trafik anländer på port 80 på hello offentlig IP-adress och distribueras till port 80 på alla virtuella datorer. 
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Belastningsutjämningsregeln](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L270).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [Belastningsutjämningsregeln](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L270).
 
 ```json
 "loadBalancingRules": [
@@ -134,14 +134,14 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Belastnin
 ]
 ```
 
-En vy över nätverket belastningsutjämningsregeln från portalen.
+En vy över nätverket hello belastningsutjämningsregeln från hello-portalen.
 
 ![Nätverk-regel för belastningsutjämnare](./media/dotnet-core-4-availability-scale/lbrule.png)
 
 ## <a name="load-balancer-probe"></a>Belastningsutjämningsavsökning
-Belastningsutjämnaren måste också övervaka varje virtuell dator så att begäranden skickas endast till kör. Denna övervakning sker genom konstant sökning i en fördefinierad port. Musik Store-distribution är konfigurerad för att avsökning port 80 på alla virtuella datorer som ingår. 
+hello belastningsutjämnaren måste också toomonitor varje virtuell dator så att begäranden hanteras endast toorunning system. Denna övervakning sker genom konstant sökning i en fördefinierad port. hello är musik Store konfigurerade tooprobe port 80 på alla med virtuella datorer. 
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [belastningen belastningsutjämnaren avsökning](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L257).
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [belastningen belastningsutjämnaren avsökning](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L257).
 
 ```json
 "probes": [
@@ -157,16 +157,16 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [belastnin
 ]
 ```
 
-Belastningsutjämningsavsökning sett från Azure-portalen.
+Hej belastningsutjämningsavsökning sett från hello Azure-portalen.
 
 ![Nätverk Belastningsutjämningsavsökning](./media/dotnet-core-4-availability-scale/lbprobe.png)
 
 ## <a name="inbound-nat-rules"></a>Regler för ingående NAT
-När du använder en belastningsutjämnare måste regler införas som ger icke belastningen belastningsutjämnade åtkomst till varje virtuell dator. Exempelvis när du skapar en SSH-anslutning med varje virtuell dator kan den här trafiken inte bör vara belastningsutjämnad, snarare en förbestämd sökväg ska konfigureras. förinställt sökvägar konfigureras med hjälp av en resurs för inkommande NAT-regeln. Med den här resursen mappas inkommande kommunikation till enskilda virtuella datorer. 
+När du använder en belastningsutjämnare regler måste toobe inrätta som tillhandahåller icke belastningen belastningsutjämnade åtkomst tooeach virtuella datorn. Exempelvis när du skapar en SSH-anslutning med varje virtuell dator kan den här trafiken inte bör vara belastningsutjämnad, snarare en förbestämd sökväg ska konfigureras. förinställt sökvägar konfigureras med hjälp av en resurs för inkommande NAT-regeln. Med den här resursen vara inkommande kommunikation mappade tooindividual virtuella datorer. 
 
-En port som börjar vid 5000 är mappad till port 22 på varje virtuell dator för SSH-åtkomst till musik Store-programmet. Den `copyindex()` funktionen används för att öka den inkommande porten, så att den andra virtuella datorn tar emot ett inkommande port 5001, tredje 5002 och så vidare. 
+Med hello musik Store-programmet är en port som börjar vid 5000 mappade tooport 22 på varje virtuell dator för SSH-åtkomst. Hej `copyindex()` funktionen är används tooincrement Hej inkommande port, så att hello andra virtuell dator tar emot ett inkommande port 5001 hello tredje 5002 och så vidare. 
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [inkommande NAT-regler](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L270). 
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [inkommande NAT-regler](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L270). 
 
 ```json
 {
@@ -196,16 +196,16 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [inkommand
 }
 ```
 
-Ett exempel inkommande NAT-regel som visas i Azure-portalen. En SSH NAT-regel skapas för varje virtuell dator i distributionen.
+Ett exempel inkommande NAT-regel som visas i hello Azure-portalen. En SSH NAT-regel skapas för varje virtuell dator i hello-distribution.
 
 ![Inkommande NAT-regel](./media/dotnet-core-4-availability-scale/natrule.png)
 
-Detaljerad information om belastningsutjämning för Azure-nätverk finns i [belastningsutjämning för Azure infrastrukturtjänster](../virtual-machines-linux-load-balance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Detaljerad information om hello Azure Utjämning av nätverksbelastning finns [belastningsutjämning för Azure infrastrukturtjänster](../virtual-machines-linux-load-balance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="deploy-multiple-vms"></a>Distribuera flera virtuella datorer
-Slutligen för en Tillgänglighetsuppsättning eller belastningsutjämnare ska fungera effektivt kan krävs flera virtuella datorer. Flera virtuella datorer kan distribueras med hjälp av Azure Resource Manager-mall för kopieringsfunktionen. Använda kopieringsfunktionen behöver inte definiera ett begränsat antal virtuella datorer, i stället det här värdet kan erbjudas dynamiskt vid tidpunkten för distribution. Kopieringsfunktionen förbrukar antalet instanser som skapats och referenser som distribuerar rätt antal virtuella datorer och associerade resurser.
+Slutligen för en Tillgänglighetsuppsättning eller belastningsutjämnare tooeffectively funktion krävs flera virtuella datorer. Flera virtuella datorer kan distribueras med hjälp av hello Azure Resource Manager-mall för kopieringsfunktionen. Använder hello kopieringsfunktionen, är det inte nödvändigt toodefine ett begränsat antal virtuella datorer, i stället det här värdet kan erbjudas dynamiskt vid hello tiden för distributionen. hello kopieringsfunktionen förbrukar hello antal instanser toocreated och referenser som distribuerar hello rätt antal virtuella datorer och associerade resurser.
 
-I mallen musik Store exempel definieras en parameter i ett instansantal som tar. Numret används i mallen när du skapar virtuella datorer och relaterade resurser.
+I hello musik Store exempelmall definieras en parameter som tar i instansantal. Numret används i hela hello mallen när du skapar virtuella datorer och relaterade resurser.
 
 ```json
 "numberOfInstances": {
@@ -213,14 +213,14 @@ I mallen musik Store exempel definieras en parameter i ett instansantal som tar.
   "minValue": 1,
   "defaultValue": 1,
   "metadata": {
-    "description": "Number of VM instances to be created behind load balancer."
+    "description": "Number of VM instances toobe created behind load balancer."
   }
 }
 ```
 
-På den virtuella datorresursen ges kopiera loop ett namn och antalet instanser parameter som används för att styra hur många resulterande kopior.
+Hello kopiera loop ges ett namn på hello virtuell datorresurs, och hello antal instanser parametern används toocontrol hello antal resulterande kopior.
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [virtuella kopieringsfunktionen](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L300). 
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [virtuella kopieringsfunktionen](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L300). 
 
 ```json
 "apiVersion": "2015-06-15",
@@ -233,9 +233,9 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [virtuella
 }
 ```
 
-Den aktuella iterationen av kopieringsfunktionen kan användas med den `copyIndex()` funktion. Värdet för kopieringsfunktionen för index kan användas för att namnge virtuella datorer och andra resurser. Till exempel måste två instanser av en virtuell dator distribueras, de olika namn. Den `copyIndex()` funktionen kan användas som en del av namnet på virtuella datorn för att skapa ett unikt namn. Ett exempel på den `copyindex()` funktion som används för namngivning kan ses i den virtuella datorresursen. Här är namnet på datorn är en sammansättning av den `vmName` parameter, och `copyIndex()` funktion. 
+hello aktuella iteration av hello kopieringsfunktionen kan nås med hello `copyIndex()` funktion. hello-värdet för hello kopieringsfunktionen indexet kan vara används tooname virtuella datorer och andra resurser. Till exempel måste två instanser av en virtuell dator distribueras, de olika namn. Hej `copyIndex()` funktionen kan användas som en del av hello virtuella namn toocreate ett unikt namn. Ett exempel på hello `copyindex()` funktion som används för namngivning kan ses i hello virtuella datorresurser. Här hello datornamnet är en sammansättning av hello `vmName` parametern och hello `copyIndex()` funktion. 
 
-Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Index kopieringsfunktionen](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L319). 
+Följ den här länken toosee hello JSON-exemplet i hello Resource Manager-mallen – [Index kopieringsfunktionen](https://github.com/Microsoft/dotnet-core-sample-templates/blob/master/dotnet-core-music-linux/azuredeploy.json#L319). 
 
 ```json
 "osProfile": {
@@ -255,9 +255,9 @@ Följ länken för att se JSON-exemplet i Resource Manager-mallen – [Index kop
 }
 ```
 
-Den `copyIndex` funktionen används flera gånger i exempelmall musik Store. Resurser och funktioner som använder `copyIndex` innehåller allt som en enda instans av den virtuella datorn till exempel nätverksgränssnitt, regler för inläsning av belastningsutjämning, och alla beroende funktioner. 
+Hej `copyIndex` funktionen används flera gånger i hello musik Store exempelmall. Resurser och funktioner som använder `copyIndex` omfattar allt annat specifika tooa instans av hello virtuell dator till exempel nätverksgränssnitt, regler för inläsning av belastningsutjämning, och alla beroende funktioner. 
 
-Mer information om kopieringsfunktionen finns [skapa flera instanser av resurser i Azure Resource Manager](../../resource-group-create-multiple.md).
+Mer information om hello kopieringsfunktionen finns [skapa flera instanser av resurser i Azure Resource Manager](../../resource-group-create-multiple.md).
 
 ## <a name="next-step"></a>Nästa steg
 <hr>

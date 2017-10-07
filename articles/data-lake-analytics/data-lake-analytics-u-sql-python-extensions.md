@@ -1,6 +1,6 @@
 ---
-title: "Utöka U-SQL-skript med Python i Azure Data Lake Analytics | Microsoft Docs"
-description: "Lär dig hur du kör Python-kod i U-SQL-skript"
+title: aaaExtend U-SQL-skript med Python i Azure Data Lake Analytics | Microsoft Docs
+description: "Lär dig hur toorun Python code i U-SQL-skript"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
-ms.openlocfilehash: d18ef1f747aee2fa01cef9891432d0461031ee4c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: f051f56f67522d4f2b8e6e54fd21a5c95ce3ba92
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-get-started-with-extending-u-sql-with-python"></a>Självstudier: Kom igång med att utöka U-SQL med Python
 
-Python-tillägg för U-SQL ger utvecklare möjligheten att utföra massivt parallell körning av Python-kod. I följande exempel visas de grundläggande steg:
+Python-tilläggen för U-SQL kan utvecklare tooperform massivt parallell körning av Python-kod. hello som följande exempel visar hello grundläggande steg:
 
-* Använd den `REFERENCE ASSEMBLY` -instruktionen för att aktivera Python-tillägg för U-SQL-skript
-* Med den `REDUCE` åtgärden att partitionera indata för en nyckel
-* Python-tillägg för U-SQL är en inbyggd reducer (`Extension.Python.Reducer`) som kör Python-kod på varje nod som tilldelats reducer
-* U-SQL-skriptet innehåller en inbäddad Python-kod som har en funktion som kallas `usqlml_main` som accepterar pandas DataFrame som indata och returnerar pandas DataFrame som utdata.
+* Använd hello `REFERENCE ASSEMBLY` instruktionen tooenable Python-tillägg för hello U-SQL-skript
+* Med hjälp av hello `REDUCE` åtgärden toopartition hello mata in data på en nyckel
+* hello Python-tillägg för U-SQL är en inbyggd reducer (`Extension.Python.Reducer`) som kör Python-kod på varje nod som tilldelats toohello reducer
+* hello U-SQL-skript som innehåller inbäddade hello Python-kod som har en funktion som kallas `usqlml_main` som accepterar pandas DataFrame som indata och returnerar pandas DataFrame som utdata.
 
 --
 
@@ -59,7 +59,7 @@ Python-tillägg för U-SQL ger utvecklare möjligheten att utföra massivt paral
         USING new Extension.Python.Reducer(pyScript:@myScript);
 
     OUTPUT @m
-        TO "/tweetmentions.csv"
+        too"/tweetmentions.csv"
         USING Outputters.Csv();
 
 ## <a name="how-python-integrates-with-u-sql"></a>Hur Python kan integreras med U-SQL
@@ -67,11 +67,11 @@ Python-tillägg för U-SQL ger utvecklare möjligheten att utföra massivt paral
 ### <a name="datatypes"></a>Datatyper
 
 * Konverteras som sträng och numeriska kolumner från U-SQL-mellan Pandas och U-SQL
-* U-SQL null-värden konverteras till och från Pandas `NA` värden
+* U-SQL null-värden är konverterade tooand från Pandas `NA` värden
 
 ### <a name="schemas"></a>Scheman
 
-* Index angreppsmetoderna i Pandas stöds inte i U-SQL. Alla indata ramar i Python-funktionen har alltid ett numeriskt index för 64-bitars mellan 0 och antalet rader minus 1. 
+* Index angreppsmetoderna i Pandas stöds inte i U-SQL. Alla indata ramar i hello Python-funktionen har alltid ett numeriskt index för 64-bitars från 0 till hello antalet rader minus 1. 
 * U-SQL-datauppsättningar kan inte ha dubbletter av kolumnnamn
 * U-SQL datauppsättningar kolumnnamn som inte är strängar. 
 
@@ -79,20 +79,20 @@ Python-tillägg för U-SQL ger utvecklare möjligheten att utföra massivt paral
 Endast Python 3.5.1 (sammanställd för Windows) stöds. 
 
 ### <a name="standard-python-modules"></a>Standard Python-moduler
-Alla Python-moduler som standard ingår.
+Alla hello standard Python-moduler ingår.
 
 ### <a name="additional-python-modules"></a>Ytterligare Python-moduler
-Förutom standardbibliotek Python ingår flera vanliga python-bibliotek:
+Utöver hello Python-standardbibliotek ingår flera vanliga python-bibliotek:
 
     pandas
     numpy
     numexpr
 
 ### <a name="exception-messages"></a>Undantag meddelanden
-För närvarande visas ett undantag i Python-kod som ett allmänt vertex fel. U-SQL-jobbet felmeddelanden visas i framtiden, Undantagsmeddelande Python.
+För närvarande visas ett undantag i Python-kod som ett allmänt vertex fel. I framtida hello visar hello U-SQL-jobbet felmeddelanden hello Python Undantagsmeddelande.
 
 ### <a name="input-and-output-size-limitations"></a>Indata och utdata storleksbegränsningar
-Varje nod har en begränsad mängd minne som tilldelats den. Denna gräns är för närvarande 6 GB för en AU. Eftersom inkommande och utgående DataFrames måste finnas i minnet i Python-kod, får inte den totala storleken för ingående och utgående överskrida 6 GB.
+Varje nod har en begränsad mängd minne som tilldelats tooit. Denna gräns är för närvarande 6 GB för en AU. Eftersom hello inkommande och utgående DataFrames måste finnas i minnet i hello Python-kod, får inte hello total storlek för hello indata och utdata överskrida 6 GB.
 
 ## <a name="see-also"></a>Se även
 * [Översikt över Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

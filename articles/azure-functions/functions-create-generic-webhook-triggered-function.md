@@ -1,6 +1,6 @@
 ---
-title: "Skapa en funktion i Azure som utlöses av en allmän webhook | Microsoft Docs"
-description: "Använd Azure Functions för att skapa en serverlösa funktion som anropas av en webhook i Azure."
+title: "aaaCreate en funktion i Azure som utlöses av en allmän webhook | Microsoft Docs"
+description: "Använd Azure Functions toocreate en serverlösa funktion som anropas av en webhook i Azure."
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -16,21 +16,21 @@ ms.workload: na
 ms.date: 08/12/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f283f8d79c5ae5fb6a72c84c9e9edb7bb8de4a83
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 0a4868da91d216c8d20930ce7ec82eaa059c75ff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>Skapa en funktion som utlöses av en allmän webhook
 
-Med Azure Functions kan du köra kod i en serverfri miljö utan att först behöva skapa en virtuell dator eller publicera en webbapp. Du kan till exempel konfigurera en funktion som utlöses av en avisering som skapats av Azure-Monitor. Det här avsnittet visar hur du kör C#-kod när en resursgrupp läggs till din prenumeration.   
+Azure Functions kan du köra din kod i en miljö med serverlösa utan toofirst skapa en virtuell dator eller publicera ett webbprogram. Du kan till exempel konfigurera en funktion toobe som utlöses av en avisering som skapats av Azure-Monitor. Det här avsnittet visar hur tooexecute C#-kod när en resursgrupp är läggs tooyour prenumeration.   
 
-![Allmän webhook aktiveras funktionen i Azure-portalen](./media/functions-create-generic-webhook-triggered-function/function-completed.png)
+![Allmän webhook aktiveras funktionen i hello Azure-portalen](./media/functions-create-generic-webhook-triggered-function/function-completed.png)
 
 ## <a name="prerequisites"></a>Krav 
 
-För att slutföra den här självstudien behöver du:
+toocomplete den här kursen:
 
 + Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
@@ -40,68 +40,68 @@ För att slutföra den här självstudien behöver du:
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-Därefter skapar du en funktion i den nya funktionsappen.
+Därefter skapar du en funktion i hello ny funktionsapp.
 
 ## <a name="create-function"></a>Skapa en allmän webhook utlöses-funktion
 
-1. Expandera funktionsappen och klicka på knappen **+** bredvid **Funktioner**. Om den här funktionen är den första i funktionen appen, Välj **anpassad funktionen**. Detta visar en fullständig uppsättning med funktionsmallar.
+1. Expandera funktionen appen och klicka på hello  **+**  knappen för nästa**funktioner**. Om den här funktionen är hello förstnämnda i funktionen appen, Välj **anpassad funktionen**. Detta visar hello fullständig uppsättning funktionen mallar.
 
-    ![Sidan snabbstart för funktioner i Azure Portal](./media/functions-create-generic-webhook-triggered-function/add-first-function.png)
+    ![Funktioner quickstart sida i hello Azure-portalen](./media/functions-create-generic-webhook-triggered-function/add-first-function.png)
 
-2. Välj den **allmän WebHook - C#** mall. Skriv ett namn för ditt C#-funktionen och sedan välja **skapa**.
+2. Välj hello **allmän WebHook - C#** mall. Skriv ett namn för ditt C#-funktionen och sedan välja **skapa**.
 
-     ![Skapa en allmän webhook utlöses funktion i Azure-portalen](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png) 
+     ![Skapa en allmän webhook utlöses funktion i hello Azure-portalen](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png) 
 
-2. Klicka på den nya funktionen **<> / Get funktions-URL**, kopiera och spara värdet. Du kan använda det här värdet för att konfigurera webhooken. 
+2. Klicka på den nya funktionen **<> / Get funktions-URL**, kopiera och spara hello värde. Du kan använda det här värdet tooconfigure hello webhooken. 
 
-    ![Granska funktionskoden](./media/functions-create-generic-webhook-triggered-function/functions-copy-function-url.png)
+    ![Granska hello Funktionskoden](./media/functions-create-generic-webhook-triggered-function/functions-copy-function-url.png)
          
 Därefter skapar du en webhook-slutpunkt i en aktivitet loggen avisering i Azure-Monitor. 
 
 ## <a name="create-an-activity-log-alert"></a>Skapa en aktivitet loggen avisering
 
-1. I Azure portal, navigerar du till den **övervakaren** tjänsten, Välj **aviseringar**, och klicka på **Lägg till aktivitet loggen avisering**.   
+1. I hello Azure portal, navigerar toohello **övervakaren** tjänsten, Välj **aviseringar**, och klicka på **Lägg till aktivitet loggen avisering**.   
 
     ![Övervaka](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert.png)
 
-2. Använd inställningarna på det sätt som beskrivs i tabellen:
+2. Använda hello inställningar som anges i hello tabell:
 
     ![Skapa en aktivitet loggen avisering](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert-settings.png)
 
     | Inställning      |  Föreslaget värde   | Beskrivning                              |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Aktiviteten loggnamn för avisering** | resurs-grupp-skapa-avisering | Namnet på aktiviteten loggen aviseringen. |
-    | **Prenumeration** | Din prenumeration | Den prenumeration som du använder för den här kursen. | 
-    |  **Resursgrupp** | myResourceGroup | Den resursgrupp som aviseringen resurser har distribuerats till. Med hjälp av samma resursgrupp som din funktionsapp gör det enklare att rensa när du har slutfört guiden. |
-    | **Händelsekategori** | Administrativa | Den här kategorin innehåller ändringar som gjorts i Azure-resurser.  |
-    | **Resurstyp** | Resursgrupper | Filtrerar aviseringar till resursen gruppaktiviteter. |
+    | **Aktiviteten loggnamn för avisering** | resurs-grupp-skapa-avisering | Namnet på loggen varning hello. |
+    | **Prenumeration** | Din prenumeration | hello-prenumeration som du använder för den här kursen. | 
+    |  **Resursgrupp** | myResourceGroup | hello resursgrupp som hello avisering resurser har distribuerats till. Med hjälp av hello samma resursgrupp som appen funktionen gör det enklare tooclean när du har slutfört hello kursen. |
+    | **Händelsekategori** | Administrativa | Den här kategorin innehåller ändringar som gjorts tooAzure resurser.  |
+    | **Resurstyp** | Resursgrupper | Filtrerar aviseringar tooresource gruppaktiviteter. |
     | **Resursgrupp**<br/>och **resurs** | Alla | Övervaka alla resurser. |
-    | **Åtgärdsnamn** | Skapa resursgrupp | Filtrerar aviseringar för att skapa åtgärder. |
+    | **Åtgärdsnamn** | Skapa resursgrupp | Filtrerar aviseringar toocreate åtgärder. |
     | **Nivå** | Information | Omfatta nivå informationsaviseringar. | 
-    | **Status** | Lyckades | Filtrerar aviseringar till åtgärder som har slutförts. |
-    | **Grupp** | Ny | Skapa en ny åtgärdsgrupp, som definierar åtgärden tar när en avisering utlöses. |
-    | **Åtgärden gruppnamn** | funktionen webhooken | Ett namn som identifierar åtgärdsgruppen.  | 
-    | **Kort namn** | funcwebhook | Ett kort namn för åtgärdsgruppen. |  
+    | **Status** | Lyckades | Filtrerar tooactions för aviseringar som har slutförts. |
+    | **Grupp** | Ny | Skapa en ny åtgärdsgrupp, som definierar hello åtgärden tar när en avisering utlöses. |
+    | **Åtgärden gruppnamn** | funktionen webhooken | En tooidentify hello åtgärd gruppnamnet.  | 
+    | **Kort namn** | funcwebhook | Ett kort namn för hello grupp. |  
 
-3. I **åtgärder**, lägga till en åtgärd med inställningar som anges i tabellen: 
+3. I **åtgärder**, lägga till en åtgärd med hello inställningar som anges i hello tabell: 
 
     ![Lägg till en grupp](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert-settings-2.png)
 
     | Inställning      |  Föreslaget värde   | Beskrivning                              |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Namn** | CallFunctionWebhook | Ett namn för åtgärden. |
-    | **Åtgärdstyp** | Webhook | Svaret på aviseringen är att en Webhooksadressen anropas. |
-    | **Detaljer** | Funktions-URL | Klistra in i Webhooksadressen för den funktion som du kopierade tidigare. |v
+    | **Namn** | CallFunctionWebhook | Ett namn för hello åtgärden. |
+    | **Åtgärdstyp** | Webhook | hello svar toohello aviseringen är att en Webhooksadressen anropas. |
+    | **Detaljer** | Funktions-URL | Klistra in i hello Webhooksadressen för hello-funktion som du kopierade tidigare. |v
 
-4. Klicka på **OK** att skapa gruppen aviseringen och åtgärden.  
+4. Klicka på **OK** toocreate hello aviseringen och åtgärden grupp.  
 
-Webhooken kallas nu när gruppen skapas i din prenumeration. Därefter uppdaterar du koden i din funktion för att hantera loggdata JSON i brödtexten i begäran.   
+Hej webhook kallas nu när gruppen skapas i din prenumeration. Därefter uppdaterar du hello kod i din funktion toohandle hello JSON loggdata i hello brödtext hello-begäran.   
 
-## <a name="update-the-function-code"></a>Uppdatera funktionskoden
+## <a name="update-hello-function-code"></a>Uppdatera Funktionskoden hello
 
-1. Gå tillbaka till din funktionsapp i portalen och expandera din funktion. 
+1. Gå tillbaka tooyour funktionsapp hello-portalen och expandera din funktion. 
 
-2. Ersätt skriptkod C# i funktionen i portalen med följande kod:
+2. Ersätt hello C# skriptkod i hello-funktionen i hello portal med hello följande kod:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -115,12 +115,12 @@ Webhooken kallas nu när gruppen skapas i din prenumeration. Därefter uppdatera
     {
         log.Info($"Webhook was triggered!");
     
-        // Get the activityLog object from the JSON in the message body.
+        // Get hello activityLog object from hello JSON in hello message body.
         string jsonContent = await req.Content.ReadAsStringAsync();
         JToken activityLog = JObject.Parse(jsonContent.ToString())
             .SelectToken("data.context.activityLog");
     
-        // Return an error if the resource in the activity log isn't a resource group. 
+        // Return an error if hello resource in hello activity log isn't a resource group. 
         if (activityLog == null || !string.Equals((string)activityLog["resourceType"], 
             "Microsoft.Resources/subscriptions/resourcegroups"))
         {
@@ -131,7 +131,7 @@ Webhooken kallas nu när gruppen skapas i din prenumeration. Därefter uppdatera
             });
         }
     
-        // Write information about the created resource group to the streaming log.
+        // Write information about hello created resource group toohello streaming log.
         log.Info(string.Format("Resource group '{0}' was {1} on {2}.",
             (string)activityLog["resourceGroupName"],
             ((string)activityLog["subStatus"]).ToLower(), 
@@ -141,19 +141,19 @@ Webhooken kallas nu när gruppen skapas i din prenumeration. Därefter uppdatera
     }
     ```
 
-Nu kan du testa funktionen genom att skapa en ny resursgrupp i din prenumeration.
+Nu kan du testa hello funktionen genom att skapa en ny resursgrupp i din prenumeration.
 
-## <a name="test-the-function"></a>Testa funktionen
+## <a name="test-hello-function"></a>Testa hello-funktionen
 
-1. Klicka på ikonen resurs grupp till vänster i Azure portal, Välj **+ Lägg till**, ange ett **resursgruppens namn**, och välj **skapa** att skapa en tom resursgrupp.
+1. Klickar du på ikonen hello resurs grupp hello till vänster i hello Azure portal, Välj **+ Lägg till**, ange ett **resursgruppnamn**, och välj **skapa** toocreate en tom resursgrupp.
     
     ![Skapa en resursgrupp.](./media/functions-create-generic-webhook-triggered-function/functions-create-resource-group.png)
 
-2. Gå tillbaka till din funktion och expandera den **loggar** fönster. När du har skapat resursgruppen aktivitet loggen aviseringen utlöser webhooken och funktionen körs. Du kan se namnet på den nya resursgruppen som skrivs till loggarna.  
+2. Gå tillbaka tooyour och expandera hello **loggar** fönster. När du har skapat hello resursgruppen hello aktivitet loggen avisering utlösare hello webhook och hello funktionen körs. Du kan se hello namn hello ny resursgrupp skrivs toohello loggar.  
 
     ![Lägga till en programinställning för testet.](./media/functions-create-generic-webhook-triggered-function/function-view-logs.png)
 
-3. (Valfritt) Gå tillbaka och ta bort resursgruppen som du skapade. Observera att den här aktiviteten inte utlöses funktionen. Detta beror på att ta bort operations filtreras bort av aviseringen. 
+3. (Valfritt) Gå tillbaka och ta bort hello resursgruppen som du skapade. Observera att den här aktiviteten inte utlöses hello-funktionen. Detta beror på att ta bort operations filtreras bort av hello aviseringen. 
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -165,5 +165,5 @@ Du har skapat en funktion som körs när en begäran tas emot från en allmän w
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
-Mer information om webhook-utlösare finns i [Azure Functions HTTP och webhook-bindningar](functions-bindings-http-webhook.md). Mer information om hur du utvecklar funktioner i C# finns [Azure Functions C# skript för utvecklare](functions-reference-csharp.md).
+Mer information om webhook-utlösare finns i [Azure Functions HTTP och webhook-bindningar](functions-bindings-http-webhook.md). toolearn mer information om hur du utvecklar funktioner i C#, se [Azure Functions C# skript för utvecklare](functions-reference-csharp.md).
 

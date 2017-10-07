@@ -1,5 +1,5 @@
 ---
-title: "Konfigurera webbappsanalyser för ASP.NET med Application Insights | Microsoft Docs"
+title: "aaaSet in web app analytics för ASP.NET med Azure Application Insights | Microsoft Docs"
 description: "Konfigurera prestanda-, tillgänglighets- och användningsanalyser för din lokala eller Azure-baserade ASP.NET-webbplats."
 services: application-insights
 documentationcenter: .net
@@ -13,125 +13,125 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/15/2017
 ms.author: bwren
-ms.openlocfilehash: cb247ee68da88265f7c51258644064463d44f8b5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 61a3cdce68da48bfb9450b1d296acc1535f50a38
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Konfigurera Application Insights för din ASP.NET-webbplats
 
-Den här proceduren konfigurerar din ASP.NET-webbapp för att skicka telemetri till tjänsten [Azure Application Insights](app-insights-overview.md). Den fungerar för ASP.NET-appar som finns i din IIS-server eller i molnet. Du får tillgång till diagram och ett kraftfullt frågespråket som hjälper dig att förstå hur din app presterar och hur människor använder den, plus automatiska aviseringar om fel eller prestandaproblem. Många utvecklare tycker att de här funktionerna är mycket bra som de är, men du kan också utöka och anpassa telemetrin om du behöver.
+Den här proceduren konfigurerar din ASP.NET web app toosend telemetri toohello [Azure Application Insights](app-insights-overview.md) service. Den fungerar för ASP.NET-program som finns i din egen IIS-server eller i hello molnet. Du får diagram och en kraftfull frågespråk som hjälper dig förstå hello prestanda för din app och hur personer använder plus automatiska meddelanden på fel eller prestandaproblem. Många utvecklare hitta funktionerna stor som de är, men du kan också utöka och anpassa hello telemetri om du behöver.
 
-Installationen kräver bara några klick i Visual Studio. Du har möjlighet att undvika kostnader genom att begränsa mängden telemetri. På så sätt kan du experimentera och felsöka eller övervaka en plats som har få användare. Om du sedan vill gå vidare och övervaka din produktionsplats, är det lätt att höja gränsen vid ett senare tillfälle.
+Installationen kräver bara några klick i Visual Studio. Du har hello alternativet tooavoid kostnader genom att begränsa hello telemetrivolym. Detta ger dig tooexperiment och felsökning eller toomonitor en plats med inte många användare. När du bestämmer toogo vidare och om du vill övervaka din produktionsplatsen är enkelt tooraise hello gränsen senare.
 
 ## <a name="before-you-start"></a>Innan du börjar
 Du behöver:
 
 * Visual Studio 2013 Update 3 eller senare. Senare versioner är att föredra.
-* En prenumeration på [Microsoft Azure](http://azure.com). Om ditt team eller din organisation har en Azure-prenumeration kan ägaren lägga till dig med hjälp av ditt [Microsoft-konto](http://live.com).
+* En prenumeration för[Microsoft Azure](http://azure.com). Om din grupp eller organisation har en Azure-prenumeration, hello ägare kan lägga till dig tooit, med hjälp av din [Microsoft-konto](http://live.com).
 
-Det finns andra artiklar som du kan läsa om du är intresserad av följande:
+Det finns alternativ avsnitt toolook på om du är intresserad av:
 
 * [Instrumentering av en webbapp under körning](app-insights-monitor-performance-live-website-now.md)
 * [Azure Cloud Services](app-insights-cloudservices.md)
 
-## <a name="ide"></a> Steg 1: Lägg till Application Insights SDK
+## <a name="ide"></a>Steg 1: Lägg till hello Application Insights SDK
 
 Högerklicka på ditt webbappsprojekt i Solution Explorer och välj **Lägg till** > **Application Insights Telemetry...** eller **Konfigurera Application Insights**.
 
 ![Skärmbild av Solution Explorer med Lägg till Application Insights Telemetry markerat](./media/app-insights-asp-net/appinsights-03-addExisting.png)
 
-(I Visual Studio 2015 finns det också ett alternativ för att lägga till Application Insights i dialogrutan Nytt projekt.)
+(I Visual Studio 2015 finns också alternativet-tooadd Application Insights i dialogrutan för hello nytt projekt.)
 
-Fortsätt till konfigurationssidan för Application Insights:
+Fortsätt toohello konfigurationssidan för Application Insights:
 
 ![Skärmbild av sidan Register your app with Application Insights (Registrera din app med Application Insights)](./media/app-insights-asp-net/visual-studio-register-dialog.png)
 
-**a.** Välj det konto och din prenumeration som du använder för att få åtkomst till Azure.
+**a.** Välj hello-konto och att du använder tooaccess Azure-prenumeration.
 
-**b.** Markera resursen i Azure där du vill visa data från din app. Vanligtvis:
+**b.** Välj hello resurs i Azure där du vill toosee hello data från din app. Vanligtvis:
 
 * Använd en [enkel resurs för olika komponenter](app-insights-monitor-multi-role-apps.md) i ett enda program. 
 * Skapa separata resurser för orelaterade program.
  
-Om du vill ange resursgruppen eller den plats där dina data är lagrade klickar du på **Konfigurera inställningar**. Resursgrupper används för att styra dataåtkomst. Om du exempelvis har flera appar som ingår i samma system kan du placera deras Application Insights-data i samma resursgrupp.
+Om du vill tooset hello grupp eller hello resursplats där dina data lagras **konfigurera inställningar för**. Resursgrupper är används toocontrol åtkomst toodata. Till exempel om du har flera program som ingår i hello samma system, kan du placera sina Application Insights-data i hello samma resursgrupp.
 
-**c.** Ange en begränsning för den fria datavolymen för att undvika avgifter. Application Insights är kostnadsfritt upp till en viss telemetrinivå. När resursen har skapats kan du ändra ditt val i portalen genom att öppna **Funktioner och prissättning**,  > **Datavolymhantering** > **Dagligt volymtak**.
+**c.** Ange ett tak på hello lediga volymen begränsningen, tooavoid avgifter. Application Insights är Frigör tooa vissa telemetrivolym. När hello resursen har skapats kan du ändra ditt val i hello portal genom att öppna **funktioner + pris** > **volym datahantering** > **dagliga volymen cap**.
 
-**d.** Klicka på **Registrera** för att fortsätta att konfigurera Application Insights för din webbapp. Telemetri kommer att skickas till [Azure Portal](https://portal.azure.com), både under felsökningen och när du har publicerat din app.
+**d.** Klicka på **registrera** toogo vidare och konfigurera Application Insights för ditt webbprogram. Telemetri skickas toohello [Azure-portalen](https://portal.azure.com), både under felsökning och när du har publicerat din app.
 
-**e.** Om du inte vill skicka telemetri till portalen medan du felsöker, lägger du bara till Application Insights SDK i din app men konfigurerar inte en resurs i portalen. Du kommer att kunna visa telemetri i Visual Studio när du felsöker. Du kan senare återvända till den här konfigurationssidan eller vänta tills du har distribuerat appen och [aktivera telemetri vid körtid](app-insights-monitor-performance-live-website-now.md).
+**e.** Om du inte vill toosend telemetri toohello portal när du felsöker kan bara lägga till hello Application Insights SDK tooyour app men inte konfigurera en resurs i hello-portalen. När du felsöker kommer du att kunna toosee telemetri i Visual Studio. Senare, du kan gå tillbaka till sidan för konfiguration av toothis eller du kan vänta tills du har distribuerat din app och [växla telemetri vid körning](app-insights-monitor-performance-live-website-now.md).
 
 
 ## <a name="run"></a> Steg 2: Kör appen
-Kör din app med F5. Öppna olika sidor för att skapa viss telemetri.
+Kör din app med F5. Öppna olika sidor toogenerate vissa telemetri.
 
-Du ser hur många händelser som har loggats i Visual Studio.
+I Visual Studio kan du se antalet hello-händelser som har loggats.
 
-![Skärmbild av Visual Studio. Knappen Application Insights visas under felsökning.](./media/app-insights-asp-net/54.png)
+![Skärmbild av Visual Studio. hello Application Insights knappen visas under felsökning.](./media/app-insights-asp-net/54.png)
 
 ## <a name="step-3-see-your-telemetry"></a>Steg 3: Visa din telemetri
-Du kan se din telemetri antingen i Visual Studio eller i Application Insights-webbportalen. Sök telemetri i Visual Studio för att felsöka din app. Övervaka prestanda och användning i webbportalen när systemet är aktivt. 
+Du kan se din telemetri i Visual Studio eller i hello Application Insights web-portalen. Sök telemetri i Visual Studio toohelp du felsöka din app. Övervaka prestanda och användning i hello webbportalen när datorn är aktiv. 
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Visa din telemetri i Visual Studio
 
-Öppna fönstret Application Insights i Visual Studio. Klicka antingen på **Application Insights** eller högerklicka på projektet i Solution Explorer, välj **Application Insights** och klicka sedan på alternativet för att **söka i realtidstelemetri**.
+I Visual Studio öppnas hello Application Insights. Antingen på hello **Programinsikter** knappen eller högerklicka på projektet i Solution Explorer, Välj **Programinsikter**, och klicka sedan på **Sök Live telemetri**.
 
-I Visual Studio Application Insights-sökfönstret visas vyn **Data från felsökningssessionen** för telemetri som genereras i din app på serversidan. Experimentera med filtren och klicka på en händelse om du vill visa mer information.
+Hello Visual Studio Application Insights Sök i fönstret visas hello **Data från felsökningssessionen** vy för telemetri som har genererats i hello på serversidan för din app. Experimentera med hello filter och på varje händelse toosee detalj.
 
-![Skärmbild av data från felsökningssessionsvyn i fönstret Application Insights.](./media/app-insights-asp-net/55.png)
+![Skärmbild av hello visa Data från felsökningssessionen i hello Application Insights-fönstret.](./media/app-insights-asp-net/55.png)
 
 > [!NOTE]
-> Om du inte ser några data kontrollerar du att tidsintervallet är korrekt och klickar på sökikonen.
+> Om du inte ser några data, kontrollera hello tidsintervallet är korrekt och klicka på sökikonen hello.
 
 [Lär dig mer om Application Insights-verktygen i Visual Studio](app-insights-visual-studio.md).
 
 <a name="monitor"></a>
 ### <a name="see-telemetry-in-web-portal"></a>Visa telemetri i webbportalen
 
-Du kan även visa telemetrin i Application Insights-webbportalen (såvida du inte väljer att installera enbart SDK:n). Portalen innehåller fler diagram, analysverktyg och komponentöverskridande vyer än Visual Studio. Portalen visar även aviseringar.
+Du kan också se telemetri i hello Application Insights web-portalen (om du har angett tooinstall endast hello SDK). hello-portalen har flera diagram analytiska verktyg vyer, och mellan olika komponenter än Visual Studio. hello portal visar även varningar.
 
-Öppna Application Insights-resursen. Logga antingen in på [Azure Portal](https://portal.azure.com/) och hitta den där, eller högerklicka på projektet i Visual Studio så kommer du dit.
+Öppna Application Insights-resursen. Antingen logga in toohello [Azure-portalen](https://portal.azure.com/) och hitta den där eller högerklicka på hello-projekt i Visual Studio och låta den får du det.
 
-![Skärmbild av Visual Studio som visar hur du öppnar Application Insights-portalen](./media/app-insights-asp-net/appinsights-04-openPortal.png)
+![Skärmbild av Visual Studio, visar hur tooopen hello Application Insights-portalen](./media/app-insights-asp-net/appinsights-04-openPortal.png)
 
 > [!NOTE]
-> Om ett åtkomstfel visas kan det bero på att du har fler än en uppsättning Microsoft-autentiseringsuppgifter och att du kanske är inloggad med fel uppsättning. Logga ut och logga in igen i portalen.
+> Om du får ett fel: har du fler än en uppsättning autentiseringsuppgifter för Microsoft och du är inloggad med hello fel set? Logga ut och logga in igen i hello-portalen.
 
-Portalen öppnas i en vy över telemetrin från appen.
+hello portalen öppnas på en vy över hello telemetri från din app.
 
 ![Skärmbild av Application Insights-översiktssidan](./media/app-insights-asp-net/66.png)
 
-Klicka på valfri ikon eller valfritt diagram i portalen för att visa mer information.
+Klicka på någon sida vid sida eller diagram toosee detalj i hello-portalen.
 
-[Läs mer om hur du använder Application Insights på Azure Portal](app-insights-dashboards.md).
+[Lär dig mer om hur du använder Application Insights i hello Azure-portalen](app-insights-dashboards.md).
 
 ## <a name="step-4-publish-your-app"></a>Steg 4: Publicera appen
-Publicera din app på din IIS-server eller i Azure. Bevaka [Live Metrics Stream](app-insights-metrics-explorer.md#live-metrics-stream) och se om allt fungerar som det ska.
+Publicera din app tooyour IIS-servern eller tooAzure. Titta på [direktsänd dataström med mått](app-insights-metrics-explorer.md#live-metrics-stream) toomake att allt fungerar.
 
-Du ser din telemetri byggas upp i Application Insights-portalen, där du kan övervaka mått, söka i telemetrin och konfigurera [instrumentpaneler](app-insights-dashboards.md). Du kan också använda det kraftfulla [Log Analytics-frågespråket](https://docs.loganalytics.io/) för att analysera användning och prestanda eller söka efter specifika händelser.
+Din telemetri bygger upp i hello Application Insights-portalen där du kan övervaka, söka din telemetri och ställa in [instrumentpaneler](app-insights-dashboards.md). Du kan också använda hello kraftfulla [Log Analytics-frågespråket](https://docs.loganalytics.io/) tooanalyze användnings- och prestanda- eller toofind specifika händelser.
 
-Du kan också fortsätta att analysera din telemetri i [Visual Studio](app-insights-visual-studio.md) med verktyg som diagnossökning och [trender](app-insights-visual-studio-trends.md).
+Du kan också fortsätta tooanalyze din telemetri i [Visual Studio](app-insights-visual-studio.md), med verktyg som diagnostiska Sök och [trender](app-insights-visual-studio-trends.md).
 
 > [!NOTE]
-> Om din app skickar så mycket telemetri att det närmar sig [begränsningsgränserna](app-insights-pricing.md#limits-summary) aktiveras [sampling](app-insights-sampling.md) automatiskt. Sampling minskar mängden telemetri som skickas från din app, samtidigt som korrelerade informationen bevaras i diagnossyfte.
+> Om din app skickar tillräckligt med telemetri tooapproach hello [throttling-begränsning](app-insights-pricing.md#limits-summary), automatisk [provtagning](app-insights-sampling.md) växlar. Samplingsfrekvensen minskar hello antalet telemetri som skickats från din app samtidigt som korrelerade för att ställa diagnoser.
 >
 >
 
 ## <a name="land"></a> Då var allt klart
 
-Grattis! Du har installerat Application Insights-paketet i din app och konfigurerat det för att skicka telemetri till Application Insights-tjänsten på Azure.
+Grattis! Du installerade hello Application Insights paketet i din app och konfigurerats toosend telemetri toohello Application Insights-tjänsten på Azure.
 
 ![Diagram över flödet av telemetri](./media/app-insights-asp-net/01-scheme.png)
 
-Azure-resursen som tar emot din apps telemetri identifieras med en *instrumenteringsnyckel*. Du hittar den här nyckeln i filen ApplicationInsights.config.config.
+hello Azure-resurs som tar emot telemetri för din app har identifierats av en *instrumentation nyckeln*. Den här nyckeln hittar du i hello ApplicationInsights.config-filen.
 
 
-## <a name="upgrade-to-future-sdk-versions"></a>Uppgradera till framtida SDK-versioner
-Om du vill uppgradera till en [ny SDK-version](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases) öppnar du **NuGet-pakethanteraren** igen och filtrerar på installerade paket. Markera **Microsoft.ApplicationInsights.Web** och välj **Uppgradera**.
+## <a name="upgrade-toofuture-sdk-versions"></a>Uppgradera toofuture SDK-versioner
+tooupgrade tooa [nya versionen av hello SDK](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)öppnar hello **NuGet-Pakethanteraren** igen, och filtret på installerade paket. Markera **Microsoft.ApplicationInsights.Web** och välj **Uppgradera**.
 
-Om du har gjort anpassningar i ApplicationInsights.config sparar du en kopia av den innan du uppgraderar. Sammanfogar sedan dina ändringar i den nya versionen.
+Om du har gjort alla anpassningar tooApplicationInsights.config spara en kopia av den innan du uppgraderar. Sedan sammanfoga ändringarna i hello ny version.
 
 ## <a name="video"></a>Video
 
@@ -143,20 +143,20 @@ Om du har gjort anpassningar i ApplicationInsights.config sparar du en kopia av 
 
 * **[Webbläsare och webbsidesinläsning](app-insights-javascript.md)**  – Infoga ett kodfragment på dina webbsidor.
 * **[Få mer detaljerad beroende- och undantagsövervakning](app-insights-monitor-performance-live-website-now.md)**  – Installera Status Monitor på servern.
-* **[Koda anpassade händelser](app-insights-api-custom-events-metrics.md)** för att räkna, ta tid på eller mäta användaråtgärder.
+* **[Anpassade händelser Code](app-insights-api-custom-events-metrics.md)**  toocount, tid, eller ett mått användaråtgärder.
 * **[Hämta loggdata](app-insights-asp-net-trace-logs.md)**  – Korrelera loggdata med din telemetri.
 
 ### <a name="analysis"></a>Analys
 
-* **[Arbeta med Application Insights i Visual Studio](app-insights-visual-studio.md)**<br/>Innehåller information om att felsöka med telemetri, köra diagnostiksökningar och gå igenom koden.
-* **[Arbeta med Application Insights-portalen](app-insights-dashboards.md)**<br/> Innehåller information om instrumentpaneler, kraftfulla verktyg för diagnostik och analys, aviseringar, realtidsmappning av beroenden för din app och telemetriexport.
-* **[Analytics](app-insights-analytics-tour.md)** – Kraftfullt frågespråk.
+* **[Arbeta med Application Insights i Visual Studio](app-insights-visual-studio.md)**<br/>Innehåller information om felsökning med telemetri diagnostiska sökningen och detaljerad toocode.
+* **[Arbeta med hello Application Insights-portalen](app-insights-dashboards.md)**<br/> Innehåller information om instrumentpaneler, kraftfulla verktyg för diagnostik och analys, aviseringar, realtidsmappning av beroenden för din app och telemetriexport.
+* **[Analytics](app-insights-analytics-tour.md)**  -hello kraftfulla frågespråk.
 
 ### <a name="alerts"></a>Aviseringar
 
-* [Tillgänglighetstester](app-insights-monitor-web-app-availability.md): Skapa tester som kan användas för att kontrollera att webbplatsen visas på webben.
-* [Smart diagnostik](app-insights-proactive-diagnostics.md): De här testerna körs automatiskt, så du behöver inte göra något för att konfigurera dem. De berättar om din app har ett ovanligt antal misslyckade begäranden.
-* [Måttaviseringar](app-insights-alerts.md): Används för att varna dig om ett mått överskrider ett tröskelvärde. Du kan ställa in dem för anpassade mätningar som du kodar i din app.
+* [Tillgänglighetstester](app-insights-monitor-web-app-availability.md): skapa tester toomake till webbplatsen visas på hello-webbplatsen.
+* [Diagnostik för smartkort](app-insights-proactive-diagnostics.md): dessa tester körs automatiskt, så du inte behöver toodo något annat tooset dem upp. De berättar om din app har ett ovanligt antal misslyckade begäranden.
+* [Mått aviseringar](app-insights-alerts.md): ange dessa toowarn om måttet överskrider ett tröskelvärde. Du kan ställa in dem för anpassade mätningar som du kodar i din app.
 
 ### <a name="automation"></a>Automation
 

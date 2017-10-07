@@ -1,6 +1,6 @@
 ---
-title: "Översikt över ExpressRoute: Utöka ditt lokala nätverk till Azure över en privat anslutning | Microsoft Docs"
-description: "Den här tekniska översikten över ExpressRoute förklarar hur du kan använda en ExpressRoute-anslutning för att utöka ditt lokala nätverk till Azure över en privat anslutning."
+title: "Översikt för ExpressRoute: Utöka ditt lokala nätverk tooAzure över en privat anslutning | Microsoft Docs"
+description: "Den här tekniska översikten ExpressRoute beskriver hur en ExpressRoute-anslutning fungerar tooextend ditt lokala nätverk tooAzure över en privat anslutning."
 documentationcenter: na
 services: expressroute
 author: cherylmc
@@ -14,66 +14,66 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: cherylmc
-ms.openlocfilehash: 7390462d79506e63989baadac2b2cee00eef325d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 01301e1205c12ecdab34dc9d9b92bc7489e7826c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="expressroute-overview"></a>Översikt över ExpressRoute
-Microsoft Azure ExpressRoute låter dig utöka ditt lokala nätverk till Microsoft-molnet över en privat anslutning med hjälp av en anslutningsprovider. Med ExpressRoute kan du upprätta anslutningar till Microsofts molntjänster, till exempel Microsoft Azure, Office 365 och Dynamics 365.
+Microsoft Azure ExpressRoute kan du utöka ditt lokala nätverk till hello Microsoft cloud över en privat anslutning underlättas av en provider för anslutningen. Du kan upprätta anslutningar molntjänster tooMicrosoft, till exempel Microsoft Azure och Office 365 Dynamics 365 med ExpressRoute.
 
-Anslutningen kan vara från ett ”any-to-any”-nätverk (IP VPN), ett ”point-to-point”-nätverk med Ethernet eller en virtuell korsanslutning via en anslutningsleverantör på en samlokaliseringsanläggning. ExpressRoute-anslutningar går inte via offentligt Internet. Det innebär att ExpressRoute-anslutningar är tillförlitligare, snabbare, har kortare svarstider och högre säkerhet än vanliga anslutningar över Internet. Mer information om hur du ansluter nätverket till Microsoft med ExpressRoute finns [ExpressRoute-anslutningsmodeller](expressroute-connectivity-models.md).
+Anslutningen kan vara från ett ”any-to-any”-nätverk (IP VPN), ett ”point-to-point”-nätverk med Ethernet eller en virtuell korsanslutning via en anslutningsleverantör på en samlokaliseringsanläggning. ExpressRoute-anslutningar inte överskrider hello offentliga Internet. Detta tillåter ExpressRoute anslutningar toooffer mer tillförlitlighet, högre hastighet, lägre latens och högre säkerhet än vanliga anslutningar via hello Internet. Mer information om hur tooconnect ditt nätverk tooMicrosoft med ExpressRoute finns [ExpressRoute anslutning modeller](expressroute-connectivity-models.md).
 
 ![](./media/expressroute-introduction/expressroute-connection-overview.png)
 
 ## <a name="key-benefits"></a>Viktiga fördelar
 
-* Layer 3-anslutningen mellan ditt lokala nätverk och Microsoft Cloud via en anslutningsleverantör. Anslutningen kan vara från ett ”any-to-any”-nätverk (IPVPN), en ”point-to-point”-anslutning med Ethernet, eller med en virtuell korsanslutning via ett Ethernet-utbyte.
-* Anslutning till Microsofts molntjänster i alla regioner i den geopolitiska regionen.
-* Global anslutning till Microsofts tjänster i alla regioner med ExpressRoutes premiumtillägg.
+* Layer 3-anslutningen mellan ditt lokala nätverk och hello Microsoft Cloud med en anslutning. Anslutningen kan vara från ett ”any-to-any”-nätverk (IPVPN), en ”point-to-point”-anslutning med Ethernet, eller med en virtuell korsanslutning via ett Ethernet-utbyte.
+* Anslutningen tooMicrosoft molntjänster över alla regioner i hello geopolitiska region.
+* Globala tooMicrosoft tjänster över alla regioner med ExpressRoute premium-tillägg.
 * Dynamisk routning mellan ditt nätverk och Microsoft med branschens standardprotokoll (BGP).
 * Inbyggd redundans i varje peeringplats för högre tillförlitlighet.
 * Anslutningens drifttids-[SLA](https://azure.microsoft.com/support/legal/sla/).
 * QoS-stöd för Skype för företag.
 
-Mer information finns i [Vanliga frågor och svar om ExpressRoute](expressroute-faqs.md).
+Mer information finns i hello [ExpressRoute vanliga frågor och svar](expressroute-faqs.md).
 
 ## <a name="features"></a>Funktioner
 
 ### <a name="layer-3-connectivity"></a>Layer 3-anslutning
-Microsoft använder branschens standardprotokoll för dynamisk routning (BGP) för att utbyta routning mellan det lokala nätverket, dina instanser i Azure och Microsofts offentliga adresser.  Vi upprättar flera BGP-sessioner med ditt nätverk för olika trafikprofiler. Mer information finns i artikeln [ExpressRoute-krets och routningsdomäner](expressroute-circuit-peerings.md).
+Microsoft använder industry standard dynamisk routing protocol (BGP) tooexchange dirigerar mellan ditt lokala nätverk, dina instanser i Azure och Microsoft offentliga adresser.  Vi upprättar flera BGP-sessioner med ditt nätverk för olika trafikprofiler. Mer information finns i hello [ExpressRoute-krets och routningsdomäner](expressroute-circuit-peerings.md) artikel.
 
 ### <a name="redundancy"></a>Redundans
-Varje ExpressRoute-krets består av två anslutningar till två Microsoft Enterprise-gränsroutrar (MSEE) från anslutningsleverantören/din nätverksgräns. Microsoft kräver en dubbel BGP-anslutning från anslutningsleverantören/din sida – en för varje MSEE. Du kan välja att inte distribuera redundanta enheter/Ethernet-kretsar. Dock använder anslutningsleverantörer redundanta enheter för att dina projekt ska lämnas över till Microsoft på ett redundant sätt. En redundant Layer 3-anslutningskonfiguration är ett krav för att vår [SLA](https://azure.microsoft.com/support/legal/sla/) ska vara giltig.
+Varje ExpressRoute-krets består av två anslutningar tootwo Microsoft Enterprise routrar i utkanten (MSEEs) från hello anslutningen providern / ditt nätverk kant. Microsoft kräver dubbla BGP-anslutning från hello anslutningen providern / din sida – en tooeach MSEE. Du kan välja inte toodeploy redundant enheter / Ethernet kretsar din slutet. Anslutningen providers använder dock redundant enheter tooensure som anslutningarna är levererat tooMicrosoft i ett redundant sätt. En redundant Layer 3 anslutningsmöjligheter konfiguration är ett krav för våra [SLA](https://azure.microsoft.com/support/legal/sla/) toobe som är giltig.
 
-### <a name="connectivity-to-microsoft-cloud-services"></a>Anslutning till Microsofts molntjänster
+### <a name="connectivity-toomicrosoft-cloud-services"></a>Anslutningen tooMicrosoft molntjänster
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-ExpressRoute-anslutningar ger åtkomst till följande tjänster:
+ExpressRoute anslutningar Aktivera åtkomst toohello följande tjänster:
 
 * Microsoft Azure-tjänster
 * Microsoft Office 365-tjänster
 * Microsoft Dynamics 365
 
-Du kan gå till sidan [Vanliga frågor och svar om ExpressRoute](expressroute-faqs.md) för att se en detaljerad lista över de tjänster som stöds via ExpressRoute.
+Du kan besöka hello [ExpressRoute vanliga frågor och svar](expressroute-faqs.md) sida för en detaljerad lista över tjänster som stöds via ExpressRoute.
 
-### <a name="connectivity-to-all-regions-within-a-geopolitical-region"></a>Anslutning till alla regioner inom en geopolitisk region
-Du kan ansluta till Microsoft på någon av våra [peeringplatser](expressroute-locations.md) och få åtkomst till alla regioner inom den geopolitiska regionen. 
+### <a name="connectivity-tooall-regions-within-a-geopolitical-region"></a>Anslutningen tooall regioner inom en geopolitiska region
+Du kan ansluta tooMicrosoft i ett av våra [peering platser](expressroute-locations.md) och har åtkomst tooall områden inom hello geopolitiska region. 
 
-Om du exempelvis har anslutit till Microsoft i Amsterdam via ExpressRoute, kommer du ha åtkomst till alla Microsoft-molntjänster som finns i norra Europa och västra Europa. Se artikeln [ExpressRoute-partners och peeringplatser](expressroute-locations.md) för en översikt över geopolitiska regioner, tillhörande Microsoft-molnområden och motsvarande ExpressRoute-peeringplatser.
+Om du har anslutit tooMicrosoft i Amsterdam via ExpressRoute har till exempel åtkomst tooall Microsoft-molntjänster finns i Norra Europa och västra Europa. Se hello [ExpressRoute partners och peering platser](expressroute-locations.md) artikel för en översikt över hello geopolitiska regioner, associerade Microsoft molnområdena och motsvarande platser för ExpressRoute-peering.
 
 ### <a name="global-connectivity-with-expressroute-premium-add-on"></a>Global anslutning med ExpressRoutes premiumtillägg
-Du kan aktivera ExpressRoutes premiumtillägg om du vill utöka anslutningen över geopolitiska gränser. Om du till exempel är ansluten till Microsoft i Amsterdam via ExpressRoute, får du åtkomst till alla Microsoft-molntjänster som finns i alla regioner över hela världen (med undantag för nationella moln). Du kan komma åt tjänster som distribueras i Sydamerika eller Australien på samma sätt som du har åtkomst till de norra och västra Europaregionerna.
+Du kan aktivera hello ExpressRoute premium tillägg funktionen tooextend anslutning över geopolitiska gränser. Om du är ansluten tooMicrosoft i Amsterdam via ExpressRoute kan du exempelvis har åtkomst tooall Microsoft molntjänster i alla regioner över hello world (national moln undantas). Du kan komma åt tjänster som distribueras i Sydamerika eller Australien hello samma sätt som du har åtkomst till hello Nord och Västeuropa regioner.
 
 ### <a name="rich-connectivity-partner-ecosystem"></a>Utförligt ekosystem med anslutningspartner
-ExpressRoute har ett ständigt växande ekosystem med anslutningsleverantörer och SI-partners. Läs artikeln [ExpressRoute-leverantörer och platser](expressroute-locations.md) för den senaste informationen.
+ExpressRoute har ett ständigt växande ekosystem med anslutningsleverantörer och SI-partners. Du kan se toohello [ExpressRoute-providers och platser](expressroute-locations.md) artikel hello senaste informationen.
 
-### <a name="connectivity-to-national-clouds"></a>Anslutning till nationella moln
-Microsoft använder isolerade molnmiljöer för särskilda geopolitiska regioner och kundsegment. Se artikeln [ExpressRoute-leverantörer och platser](expressroute-locations.md) för en lista med nationella moln och leverantörer.
+### <a name="connectivity-toonational-clouds"></a>Anslutningen toonational moln
+Microsoft använder isolerade molnmiljöer för särskilda geopolitiska regioner och kundsegment. Se toohello [ExpressRoute-providers och platser](expressroute-locations.md) sida för en lista över providers och nationella moln.
 
 ### <a name="bandwidth-options"></a>Bandbreddsalternativ
-Du kan köpa ExpressRoute-kretsar för en mängd olika bandbredder. Listan med bandbredder som stöds finns nedan. Kontrollera med din anslutningsleverantör vilken bandbreddslista de erbjuder.
+Du kan köpa ExpressRoute-kretsar för en mängd olika bandbredder. Listan med bandbredder som stöds finns nedan. Vara säker på att toocheck med din anslutning toodetermine hello providerlistan stöds bandbredder ger.
 
 * 50 Mbit/s
 * 100 Mbit/s
@@ -85,21 +85,21 @@ Du kan köpa ExpressRoute-kretsar för en mängd olika bandbredder. Listan med b
 * 10 Gbit/s
 
 ### <a name="dynamic-scaling-of-bandwidth"></a>Dynamisk skalning av bandbredd
-Du kan öka ExpressRoute-kretsens bandbredd (baserat på bästa prestanda) utan att behöva avbryta dina anslutningar. 
+Du kan öka hello ExpressRoute-kretsen bandbredd (för bästa prestanda) utan att behöva tootear ned dina anslutningar. 
 
 ### <a name="flexible-billing-models"></a>Flexibla faktureringsmodeller
-Du kan välja den faktureringsmodell som passar dig bäst. Välj mellan faktureringsmodellerna nedan. Mer information finns i [Vanliga frågor och svar om ExpressRoute](expressroute-faqs.md).
+Du kan välja den faktureringsmodell som passar dig bäst. Välj mellan hello fakturering modeller som anges nedan. Mer information finns i hello [ExpressRoute vanliga frågor och svar](expressroute-faqs.md).
 
-* **Obegränsad data**. ExpressRoute-kretsen debiteras baserat på en månatlig avgift och all inkommande och utgående dataöverföring är kostnadsfri. 
-* **Avgiftsbelagda data**. ExpressRoute-kretsens debitering baseras på en månatlig avgift. All inkommande dataöverföring är kostnadsfri. Utgående dataöverföring debiteras per GB data som överförs. Dataöverföringskostnader varierar beroende på region.
-* **ExpressRoutes premiumtillägg**. ExpressRoutes premium är ett tillägg till ExpressRoute-kretsen. ExpressRoutes premiumtillägg innehåller följande funktioner: 
-  * Ökade väggränser för Azures offentliga och privata peering från 4 000 vägar till 10 000 vägar.
-  * Global anslutning för tjänster. En ExpressRoute-krets som skapats i en region (exklusive nationella moln) har åtkomst till resurser i alla andra regioner i världen. Till exempel kan ett virtuellt nätverk som skapats i västra Europa nås via en ExpressRoute-krets som etablerats i Silicon Valley.
-  * Ökat antal VNet-länkar per ExpressRoute-krets från 10 till en högre gräns, beroende på kretsens bandbredd.
+* **Obegränsad data**. Hej ExpressRoute-krets debiteras baserat på en månadsavgift och alla inkommande och utgående dataöverföring är med gratis. 
+* **Avgiftsbelagda data**. Hej ExpressRoute-krets debiteras baserat på en månadsavgift. All inkommande dataöverföring är kostnadsfri. Utgående dataöverföring debiteras per GB data som överförs. Dataöverföringskostnader varierar beroende på region.
+* **ExpressRoutes premiumtillägg**. Hej ExpressRoute premium är ett tillägg över hello ExpressRoute-kretsen. Hej ExpressRoute premium-tillägg ger hello följande funktioner: 
+  * Ökad väg gränser för offentliga och Azure privat Azure-peering från too10 4 000 vägar, 000 vägar.
+  * Global anslutning för tjänster. En ExpressRoute-krets som skapats i en region (exklusive nationella moln) har åtkomst tooresources över en annan region i hälsningsmeddelande. Till exempel kan ett virtuellt nätverk som skapats i västra Europa nås via en ExpressRoute-krets som etablerats i Silicon Valley.
+  * Ökat antal VNet länkar per ExpressRoute-krets från 10 tooa större gränsen, beroende på hello bandbredden för hello krets.
 
 ## <a name="faq"></a>VANLIGA FRÅGOR OCH SVAR
 
-Vanliga frågor om ExpressRoute finns i [Vanliga frågor och svar om ExpressRoute](expressroute-faqs.md).
+Vanliga frågor om ExpressRoute finns hello [ExpressRoute vanliga frågor och svar](expressroute-faqs.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -107,9 +107,9 @@ Vanliga frågor om ExpressRoute finns i [Vanliga frågor och svar om ExpressRout
 * Läs mer om ExpressRoute-anslutningar och routningsdomäner. Se [ExpressRoute-anslutningar och routningsdomäner](expressroute-circuit-peerings.md).
 * Hitta en tjänstleverantör. Se [ExpressRoute-partners och peeringplatser](expressroute-locations.md).
 * Kontrollera att alla krav är uppfyllda. Se [ExpressRoute-krav](expressroute-prerequisites.md).
-* Se kraven för [routning](expressroute-routing.md), [NAT](expressroute-nat.md) och [QoS](expressroute-qos.md).
+* Se toohello krav för [routning](expressroute-routing.md), [NAT](expressroute-nat.md), och [QoS](expressroute-qos.md).
 * Konfigurera ExpressRoute-anslutningen.
   * [Skapa en ExpressRoute-krets](expressroute-howto-circuit-portal-resource-manager.md)
   * [Konfigurera peering för en ExpressRoute-krets](expressroute-howto-routing-portal-resource-manager.md)
-  * [Koppla ett virtuellt nätverk till en ExpressRoute-krets](expressroute-howto-linkvnet-portal-resource-manager.md)
-* Lär dig mer om de andra viktiga [nätverksfunktionerna](../networking/networking-overview.md) i Azure.
+  * [Ansluta ett virtuellt nätverk tooan ExpressRoute-krets](expressroute-howto-linkvnet-portal-resource-manager.md)
+* Lär dig mer om hello andra nyckeln [nätverk](../networking/networking-overview.md) Azure.

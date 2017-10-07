@@ -1,6 +1,6 @@
 ---
-title: "Ändra sidinnehåll på utvecklarportalen i Azure API Management | Microsoft Docs"
-description: "Lär dig hur du redigerar sidinnehåll på utvecklarportalen i Azure API Management."
+title: "aaaModify sidinnehållet i hello developer-portalen i Azure API Management | Microsoft Docs"
+description: "Lär dig hur tooedit sidinnehåll på hello developer-portalen i Azure API Management."
 services: api-management
 documentationcenter: 
 author: antonba
@@ -14,68 +14,68 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-ms.openlocfilehash: 708c803c36c182ed90e04731b12d4ade00ae7ffb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: fd5a854e900d9512518643e593b1b59a0952621f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Ändra innehåll och layout för sidorna på utvecklarportalen i Azure API Managment
-Det finns tre grundläggande metoder för att anpassa utvecklarportalen i Azure API Management:
+# <a name="modify-hello-content-and-layout-of-pages-on-hello-developer-portal-in-azure-api-management"></a>Ändra hello innehåll och layout av sidorna på hello developer-portalen i Azure API Management
+Det finns tre huvudsakliga sätt toocustomize hello developer-portalen i Azure API Management:
 
-* [Redigera innehållet på statiska sidor och sidlayoutelement][modify-content-layout] (beskrivs i den här guiden)
-* [Uppdatera formaten som används för sidelement i utvecklingsportalen][customize-styles]
-* [Ändra mallarna som används för sidor som genereras av portalen][portal-templates] (t.ex. API-dokumentation, produkter, användarautentisering osv.)
+* [Redigera hello innehållet i statiska sidor och layout sidelement] [ modify-content-layout] (beskrivs i den här guiden)
+* [Uppdatera hello formatmallar som används för sidelement över hello developer-portalen][customize-styles]
+* [Ändra hello-mallar som används för sidor som genereras av hello portal] [ portal-templates] (t.ex. API-dokumentation, produkter, autentisering av användare, etc.)
 
 ## <a name="page-structure"> </a>Sidstruktur för utvecklarportalen
 
-Utvecklarportalen baseras på ett innehållshanteringssystem. Sidlayouten bygger på en uppsättning mindre sidelement som kallas widgetar:
+hello developer-portalen är baserad på ett system för innehållshantering. hello layout på varje sida bygger baserat på mängd av små sidelement kallas widgetar:
 
 ![Sidstruktur för utvecklarportalen][api-management-customization-widget-structure]
 
 Alla widgetar kan redigeras. 
-* Huvudinnehållet för varje specifik sida finns i innehållswidgeten. När du redigerar en sida redigerar du alltså innehållet i widgeten.
-* Alla övriga layoutelement på sidan finns även de som widgetar. Om du gör en ändring i en sådan widget slår detta igenom på samtliga sidor. De kallas därför layoutwidgetar.
+* hello core specifika tooeach enskilda innehållssidan finnas i hello ”innehållet” widget. Redigera en sida innebär redigering hello innehållet i den här widget.
+* Alla element på layout finns med hello återstående widgetar. Ändringar som gjorts toothese widgetar gäller tooall sidor. De kommer att anges tooas ”layout widgetar”.
 
-Under vardagligt redigeringsarbete gör man normalt sett bara ändringar i innehållswidgeten, som har olika innehåll för varje enskild sida.
+Dagliga sidan ändras Redigera en vanligtvis endast hello innehåll widget som har olika innehåll för varje enskild sida.
 
-## <a name="modify-layout-widget"> </a>Ändra innehållet i en layoutwidget
+## <a name="modify-layout-widget"></a>Ändra hello innehållet i en layout widget
 
-Du ändrar innehållet på utvecklarportalen från utgivarportalen, som du kommer åt via Azure Portal. För att nå den, klickar du på **utgivarportalen** i API Management-verktygsfältet.
+Innehållet i hello developer-portalen ändras via hello publisher portal som kan nås från hello Azure-portalen. tooreach, klickar du på **Publisher portal** hello service verktygsfältet för API Management-instansen.
 
 ![Utgivarportalen][api-management-management-console]
 
-Om du vill redigera innehållet i widgeten klickar du på **Widgetar** i menyn **Utvecklarportal** till vänster. I det här exemplet ska vi ändra innehållet i en widget för sidhuvud. Välj widgeten **Sidhuvud** i listan.
+tooedit hello innehållet i den widgeten, klickar du på **widgetar** från hello **Utvecklarportalen** menyn hello vänster. För det här exemplet kan du ändra hello innehållet i hello sidhuvud widget. Välj hello **huvud** widget hello-listan.
 
 ![Widgeten Sidhuvud][api-management-widgets-header]
 
-Du kan redigera innehållet i sidhuvudet i fältet **Brödtext**. Ändra till önskad text och klicka sedan på **Spara** längst ned på sidan.
+hello innehållet i hello sidhuvud redigeras från hello **brödtext** fältet. Ändra hello text efter behov och klicka sedan på **spara** på hello hello sidans nederkant.
 
-Nu visas det nya sidhuvudet på varje sida på utvecklarportalen.
+Nu bör du kunna toosee hello nytt huvud på varje sida i hello developer-portalen.
 
-> Om du vill öppna utvecklarportalen från utgivarportalen klickar du på **Utvecklarportal** på den översta raden.
+> tooopen hello developer-portalen i hello publisher-portalen klickar du på **utvecklarportalen** i hello översta raden.
 > 
 > 
 
-## <a name="edit-page-contents"> </a>Redigera innehållet på en sida
+## <a name="edit-page-contents"></a>Redigera hello innehållet på en sida
 
-Om du vill visa en lista över alla befintliga innehållssidor klickar du på **Innehåll** på menyn **Utvecklarportal** på utgivarportalen.
+toosee hello lista över alla befintliga innehållssidor, klicka på **innehåll** från hello **utvecklarportalen** -menyn i hello publisher portal.
 
 ![Hantera innehåll][api-management-customization-manage-content]
 
-Klicka på **välkomstsidan** om du vill ändra vad som visas på utvecklarportalens startsida. Gör önskade ändringar, förhandsgranska dem om det behövs och klicka sedan på **Publicera nu** så att de visas för alla.
+Klicka på hello **Välkommen** sidan tooedit vad som visas på hello startsida hello developer-portalen. Ändra hello, förhandsgranska dem om det behövs och klicka sedan på **publicera nu** toomake dem synliga tooeveryone.
 
-> Startsidan har en särskild layout och har plats för en banderoll längst upp. Det går inte att ändra banderollen från avsnittet **Innehåll**. Om du vill redigera banderollen klickar du på **Widgetar** på menyn **Utvecklarportal**, väljer **Startsida** i listrutan **Aktuellt skikt** och öppnar sedan objektet **Banderoll** under avsnittet **Aktuellt**. Du kan redigera innehållet i den här widgeten på samma sätt som andra sidor.
+> startsidan för hello använder en särskild layout som tillåter toodisplay en banderoll överst hello. Det här sidhuvudet kan inte ändras från hello **innehåll** avsnitt. tooedit detta banderoll, klicka på **widgetar** från hello **utvecklarportalen** väljer du **startsidan** från hello **aktuella lagret** listrutan listan, och sedan öppna hello **banderoll** objekt under hello **aktuella avsnittet**. hello innehållet i den här widget kan redigeras precis som andra sidan.
 > 
 > 
 
 ## <a name="next-steps"> </a>Nästa steg
-* [Uppdatera formaten som används för sidelement i utvecklingsportalen][customize-styles]
-* [Ändra mallarna som används för sidor som genereras av portalen][portal-templates] (t.ex. API-dokumentation, produkter, användarautentisering osv.)
+* [Uppdatera hello formatmallar som används för sidelement över hello developer-portalen][customize-styles]
+* [Ändra hello-mallar som används för sidor som genereras av hello portal] [ portal-templates] (t.ex. API-dokumentation, produkter, autentisering av användare, etc.)
 
 [Structure of developer portal pages]: #page-structure
-[Modifying the contents of a layout widget]: #modify-layout-widget
-[Edit the contents of a page]: #edit-page-contents
+[Modifying hello contents of a layout widget]: #modify-layout-widget
+[Edit hello contents of a page]: #edit-page-contents
 [Next steps]: #next-steps
 
 [modify-content-layout]: api-management-modify-content-layout.md

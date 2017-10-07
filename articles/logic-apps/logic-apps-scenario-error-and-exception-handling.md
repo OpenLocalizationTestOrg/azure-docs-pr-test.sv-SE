@@ -1,5 +1,5 @@
 ---
-title: "Undantagshantering & fel loggning scenario – Azure Logic Apps | Microsoft Docs"
+title: "aaaException hantering & fel loggning scenario – Azure Logic Apps | Microsoft Docs"
 description: "Beskriver en verklig användningsfall om avancerad undantagshantering och felloggning för Logikappar i Azure"
 keywords: 
 services: logic-apps
@@ -16,51 +16,51 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: 044de27c75da93c95609110d2b73336c42f746fe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e893a7b652254dca7b8a82398e8afd571f6ccd25
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenario: Undantagshantering och felloggning för logic apps
 
-Det här scenariot beskriver hur du kan utöka en logikapp för att bättre kunna stödja undantagshantering. Vi har använt en verklig användningsfall för att besvara frågan: ”Azure Logikappar stöder undantag och felhantering”?
+Det här scenariot beskriver hur du kan utöka en logik app toobetter stöd undantagshantering. Vi har använt en verklig användning case tooanswer hello-fråga: ”Azure Logikappar stöder undantag och felhantering”?
 
 > [!NOTE]
-> Det aktuella schemat för Logikappar i Azure tillhandahåller en standardmall för åtgärden svar. Den här mallen innehåller både interna validering och felsvar som returneras från en API-app.
+> hello aktuella Logikappar i Azure-schemat innehåller en standardmall för åtgärden svar. Den här mallen innehåller både interna validering och felsvar som returneras från en API-app.
 
 ## <a name="scenario-and-use-case-overview"></a>Scenariot och Använd case-översikt
 
-Här är artikeln användningsfall för det här scenariot: 
+Här är hello artikeln hello användningsfall för det här scenariot: 
 
-Välkända sjukvårdsorganisation arbetar oss att utveckla en lösning för Azure som skulle skapa en patient portal genom att använda Microsoft Dynamics CRM Online. De behövs för att skicka möte poster mellan patient Dynamics CRM Online-portalen och Salesforce. Vi har ombedd att använda den [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) standard för alla patientjournaler.
+Välkända sjukvårdsorganisation arbetar oss toodevelop en Azure-lösning som skapar en patient portal genom att använda Microsoft Dynamics CRM Online. De behövs toosend möte poster mellan hello Dynamics CRM Online patient portal och Salesforce. Har vi frågade toouse hello [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) standard för alla patientjournaler.
 
-Projektet har två viktiga krav:  
+hello projektet hade två viktiga krav:  
 
-* En metod för att logga poster som skickas från Dynamics CRM Online-portalen
-* Ett sätt att visa alla fel som uppstått i arbetsflödet
+* En metod toolog poster som skickas från hello Dynamics CRM Online-portalen
+* Ett sätt tooview eventuella fel som uppstått i hello-arbetsflöde
 
 > [!TIP]
-> Se en övergripande video om det här projektet [integrering användargrupp](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group").
+> Se en övergripande video om det här projektet [integrering användargrupp](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "integrering användargrupp").
 
-## <a name="how-we-solved-the-problem"></a>Hur vi löste problemet
+## <a name="how-we-solved-hello-problem"></a>Hur vi har löst problemet hello
 
-Vi valde [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") som databas för logg- och fel-poster (Cosmos DB refererar till poster som dokument). Eftersom Azure Logikappar har en standardmall för alla svar kan vi inte att skapa ett anpassat schema. Kan vi skapa en API-app på **infoga** och **frågan** för både fel och loggfiler poster. Vi kan också definiera ett schema för varje API-App.  
+Vi valde [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") som en lagringsplats för hello loggen och fel poster (Cosmos DB refererar toorecords som dokument). Eftersom Azure Logikappar har en standardmall för alla svar kan vi inte toocreate ett anpassat schema. Kan vi skapa en API-app för**infoga** och **frågan** för både fel och loggfiler poster. Vi kan också definiera ett schema för varje inom hello API-app.  
 
-Ett annat krav är att rensa poster efter ett visst datum. Cosmos DB har en egenskap som kallas [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL) som tillåts att vi kan ange en **Time to Live** värde för varje post eller en samling. Den här funktionen elimineras behovet av att manuellt ta bort poster i Cosmos-databasen.
+Ett annat krav var toopurge poster efter ett visst datum. Cosmos DB har en egenskap som kallas [tid tooLive](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "tid tooLive") (TTL) som tillåts oss tooset en **tid tooLive** värde för varje post eller en samling. Den här funktionen elimineras hello måste toomanually ta bort poster i Cosmos-databasen.
 
 > [!IMPORTANT]
-> Den här kursen måste du skapa en Cosmos-DB-databas och två samlingar (loggning och -fel).
+> toocomplete den här kursen behöver du toocreate en Cosmos-DB-databas och två samlingar (loggning och -fel).
 
-## <a name="create-the-logic-app"></a>Skapa logikappen
+## <a name="create-hello-logic-app"></a>Skapa hello logikapp
 
-Det första steget är att skapa logikappen och öppna appen i logik App Designer. I det här exemplet använder vi överordnad-underordnad logikappar. Vi förutsätter att det redan har skapat överordnat och kommer att skapa en logikapp för underordnade.
+hello första steget är toocreate hello logikapp och öppna hello app i logik App Designer. I det här exemplet använder vi överordnad-underordnad logikappar. Vi förutsätter att vi har redan skapat hello överordnade och ska toocreate en underordnad logikapp.
 
-Eftersom vi ska logga posten från Dynamics CRM Online, låt oss börja längst upp. Vi måste använda en **begära** utlösare, eftersom logikappen överordnade utlöser underordnad.
+Eftersom vi toolog hello post från Dynamics CRM Online, låt oss börja hello överst. Vi måste använda en **begära** utlösare, eftersom hello överordnade logikapp utlöser underordnad.
 
 ### <a name="logic-app-trigger"></a>Logik apputlösare
 
-Vi använder en **begära** utlösa som visas i följande exempel:
+Vi använder en **begära** utlösa som visas i följande exempel hello:
 
 ```` json
 "triggers": {
@@ -100,14 +100,14 @@ Vi använder en **begära** utlösa som visas i följande exempel:
 
 ## <a name="steps"></a>Steg
 
-Vi måste logga källan (request) för patient posten från Dynamics CRM Online-portalen.
+Vi måste logga hello källan (request) för hello patient post från hello Dynamics CRM Online-portalen.
 
 1. Vi måste få en ny post för möte från Dynamics CRM Online.
 
-   Utlösaren kommer från CRM ger oss med den **CRM PatentId**, **posttyp**, **ny eller uppdaterad post** (ny eller uppdatera booleskt värde), och  **SalesforceId**. Den **SalesforceId** kan vara null eftersom den används endast för en uppdatering.
-   Vi få CRM-post med hjälp av CRM **PatientID** och **posttyp**.
+   hello-utlösare som kommer från CRM ger oss hello **CRM PatentId**, **posttyp**, **ny eller uppdaterad post** (ny eller uppdatera booleskt värde), och  **SalesforceId**. Hej **SalesforceId** kan vara null eftersom den används endast för en uppdatering.
+   Vi få hello CRM-post med hjälp av hello CRM **PatientID** och hello **posttyp**.
 
-2. Nu ska vi måste du lägga till våra DocumentDB API-app **InsertLogEntry** åtgärden som visas här i logik App Designer.
+2. Nu ska vi behöver tooadd vår DocumentDB API-app **InsertLogEntry** åtgärden som visas här i logik App Designer.
 
    **Infoga loggpost**
 
@@ -124,15 +124,15 @@ Vi måste logga källan (request) för patient posten från Dynamics CRM Online-
 ## <a name="logic-app-source-code"></a>Källkoden för logik app
 
 > [!NOTE]
-> Följande exempel är bara exempel. Eftersom den här kursen är baserad på en implementering nu i produktion, värdet för en **Källnoden** kan inte visa egenskaper som är relaterade till att schemalägga ett möte. > 
+> hello följande exempel är bara exempel. Eftersom den här kursen är baserad på en implementering nu i produktion, hello värdet för en **Källnoden** kanske inte visar egenskaper som är relaterade tooscheduling ett möte. > 
 
 ### <a name="logging"></a>Loggning
 
-Följande logik app kodexempel visar hur du hanterar loggning.
+hello följande logik Appkod exempel visar hur toohandle loggning.
 
 #### <a name="log-entry"></a>Loggpost
 
-Här är källkoden logik app för att lägga till en loggpost.
+Här är hello logik app källkod för att infoga en loggpost.
 
 ``` json
 "InsertLogEntry": {
@@ -160,7 +160,7 @@ Här är källkoden logik app för att lägga till en loggpost.
 
 #### <a name="log-request"></a>Log-begäran
 
-Här är begäran loggmeddelande anslås API-app.
+Här är hello begäran loggmeddelande bokförd toohello API-app.
 
 ``` json
     {
@@ -180,7 +180,7 @@ Här är begäran loggmeddelande anslås API-app.
 
 #### <a name="log-response"></a>Loggsvar
 
-Här är svar loggmeddelande från API-app.
+Här är hello loggen svar från hello API-app.
 
 ``` json
 {
@@ -214,15 +214,15 @@ Här är svar loggmeddelande från API-app.
 
 ```
 
-Nu ska vi titta på felhantering steg.
+Nu ska vi titta på hello felhantering steg.
 
 ### <a name="error-handling"></a>Felhantering
 
-Följande logik app kodexempel visar hur du kan implementera felhantering.
+hello visar följande logik app-kodexempel hur du kan implementera felhantering.
 
 #### <a name="create-error-record"></a>Skapa Felpost
 
-Här är källkoden för att skapa en Felpost logik app.
+Här är hello logik app källkod för att skapa en Felpost.
 
 ``` json
 "actions": {
@@ -269,7 +269,7 @@ Här är källkoden för att skapa en Felpost logik app.
         "isError": true,
         "crmId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
         "patientId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
-        "message": "Salesforce failed to complete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
+        "message": "Salesforce failed toocomplete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
         "providerId": "",
         "severity": 4,
         "salesforceId": "",
@@ -307,7 +307,7 @@ Här är källkoden för att skapa en Felpost logik app.
         "action": "New_Patient",
         "salesforceId": "",
         "update": false,
-        "body": "CRM failed to complete task: Message: duplicate value found: CRM_HUB_ID__c duplicates value on record with id: 001U000001c83gK",
+        "body": "CRM failed toocomplete task: Message: duplicate value found: CRM_HUB_ID__c duplicates value on record with id: 001U000001c83gK",
         "source": "{/"Account_Class_vod__c/":/"PRAC/",/"Account_Status_MED__c/":/"I/",/"CRM_HUB_ID__c/":/"6b115f6d-a7ee-e511-80f5-3863bb2eb2d0/",/"Credentials_vod__c/":/"DO - Degree level is DO/",/"DTC_ID_MED__c/":/"/",/"Fax/":/"/",/"FirstName/":/"A/",/"Gender_vod__c/":/"/",/"IMS_ID__c/":/"/",/"LastName/":/"BAILEY/",/"MterID_mp__c/":/"/",/"Medicis_ID_MED__c/":/"851588/",/"Middle_vod__c/":/"/",/"NPI_vod__c/":/"/",/"PDRP_MED__c/":false,/"PersonDoNotCall/":false,/"PersonEmail/":/"/",/"PersonHasOptedOutOfEmail/":false,/"PersonHasOptedOutOfFax/":false,/"PersonMobilePhone/":/"/",/"Phone/":/"/",/"Practicing_Specialty__c/":/"FM - FAMILY MEDICINE/",/"Primary_City__c/":/"/",/"Primary_State__c/":/"/",/"Primary_Street_Line2__c/":/"/",/"Primary_Street__c/":/"/",/"Primary_Zip__c/":/"/",/"RecordTypeId/":/"012U0000000JaPWIA0/",/"Request_Date__c/":/"2016-06-10T22:31:55.9647467Z/",/"XXXXXXX/":/"/",/"Specialty_1_vod__c/":/"/",/"Suffix_vod__c/":/"/",/"Website/":/"/"}",
         "code": 400,
         "errors": null,
@@ -340,7 +340,7 @@ Här är källkoden för att skapa en Felpost logik app.
     },
     "body": {
         "status": 400,
-        "message": "Salesforce failed to complete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
+        "message": "Salesforce failed toocomplete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
         "source": "Salesforce.Common",
         "errors": []
     }
@@ -348,11 +348,11 @@ Här är källkoden för att skapa en Felpost logik app.
 
 ```
 
-### <a name="return-the-response-back-to-parent-logic-app"></a>Returnera svar tillbaka till överordnad logikapp
+### <a name="return-hello-response-back-tooparent-logic-app"></a>Returnera hello svar tillbaka tooparent logikapp
 
-När du får svar kan överföra du svaret tillbaka till överordnad logikappen.
+När du får svar hello kan du överföra hello svar tillbaka toohello överordnade logikapp.
 
-#### <a name="return-success-response-to-parent-logic-app"></a>Returnera lyckat svar till överordnade logikapp
+#### <a name="return-success-response-tooparent-logic-app"></a>Returnera lyckade svar tooparent logikapp
 
 ``` json
 "SuccessResponse": {
@@ -374,7 +374,7 @@ När du får svar kan överföra du svaret tillbaka till överordnad logikappen.
 }
 ```
 
-#### <a name="return-error-response-to-parent-logic-app"></a>Returnera felsvar på överordnade logikapp
+#### <a name="return-error-response-tooparent-logic-app"></a>Returnera fel svar tooparent logikapp
 
 ``` json
 "ErrorResponse": {
@@ -404,12 +404,12 @@ Vår lösning tillagda funktioner med [Cosmos DB](https://azure.microsoft.com/se
 
 ### <a name="error-management-portal"></a>Fel-hanteringsportalen
 
-Du kan skapa en MVC-webbapp för att visa felposter från Cosmos DB om du vill visa felen. Den **lista**, **information**, **redigera**, och **ta bort** operations ingår i den aktuella versionen.
+tooview hello fel, du kan skapa en MVC web app toodisplay hello felposter från Cosmos-databasen. Hej **lista**, **information**, **redigera**, och **ta bort** operations ingår i hello aktuell version.
 
 > [!NOTE]
-> Redigera åtgärd: Cosmos DB ersätter hela dokumentet. Poster som visas i den **lista** och **detaljer** vyer är bara exempel. De är inte faktiska patient möte poster.
+> Redigera åtgärd: Cosmos DB ersätter hello hela dokumentet. Hej poster visas i hello **lista** och **detaljer** vyer är bara exempel. De är inte faktiska patient möte poster.
 
-Här följer exempel på vår MVC-appinformation som skapats med metoden som beskrivits tidigare.
+Här följer exempel på vår MVC-app information som skapats tidigare med hello beskrivs metod.
 
 #### <a name="error-management-list"></a>Fel vid hantering av lista
 ![Fel vid lista](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
@@ -419,7 +419,7 @@ Här följer exempel på vår MVC-appinformation som skapats med metoden som bes
 
 ### <a name="log-management-portal"></a>Log-hanteringsportalen
 
-Om du vill visa loggfilerna kan skapat vi också en MVC-webbapp. Här följer exempel på vår MVC-appinformation som skapats med metoden som beskrivits tidigare.
+tooview hello loggar vi också skapat en MVC-webbapp. Här följer exempel på vår MVC-app information som skapats tidigare med hello beskrivs metod.
 
 #### <a name="sample-log-detail-view"></a>Exempel loggen detaljvy
 ![Loggen detaljvy](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
@@ -434,14 +434,14 @@ Vår öppen källkod Azure Logikappar undantag hanterings-API-app innehåller fu
 * **LogController** infogar en loggpost (dokument) i en DocumentDB-samling.
 
 > [!TIP]
-> Både domänkontrollanter använder `async Task<dynamic>` åtgärder, så att åtgärder att lösa vid körning, så att vi kan skapa DocumentDB-schemat i brödtexten för åtgärden. 
+> Både domänkontrollanter använder `async Task<dynamic>` åtgärder, så att operations tooresolve vid körning, så att vi kan skapa hello DocumentDB schemat i hello brödtext hello igen. 
 > 
 
-Alla dokument i DocumentDB måste ha ett unikt ID. Vi använder `PatientId` och lägga till en tidsstämpel som konverteras till ett tidsstämpelvärde Unix (double). Vi trunkera värdet för att ta bort värdet bråkdelar.
+Alla dokument i DocumentDB måste ha ett unikt ID. Vi använder `PatientId` och lägga till en tidsstämpel som är konverterade tooa Unix tidsstämpelvärde (double). Vi trunkera hello värde tooremove hello bråkdelar värde.
 
-Du kan visa källkoden för fel styrningen API [från GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
+Du kan visa hello källkod i fel styrningen API [från GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
 
-Vi kallar API: et från en logikapp genom att använda följande syntax:
+Vi kallar hello API från en logikapp genom att använda hello följande syntax:
 
 ``` json
  "actions": {
@@ -474,17 +474,17 @@ Vi kallar API: et från en logikapp genom att använda följande syntax:
  }
 ```
 
-Uttrycket i föregående kodexemplet söker efter den *Create_NewPatientRecord* status för **misslyckades**.
+Hej uttryck i hello föregående kod exempel söker efter hello *Create_NewPatientRecord* status för **misslyckades**.
 
 ## <a name="summary"></a>Sammanfattning
 
 * Du kan enkelt implementera loggning och hantera fel i en logikapp.
-* Du kan använda DocumentDB som en lagringsplats för logg- och fel-poster (dokument).
-* Du kan använda MVC för att skapa en portal för att visa loggen och fel poster.
+* Du kan använda DocumentDB som hello lagringsplats för logg- och fel-poster (dokument).
+* Du kan använda MVC toocreate en portal toodisplay logg och felposter.
 
 ### <a name="source-code"></a>Källkod
 
-Källkoden för Logic Apps undantag management API-program finns i det här [GitHub-lagringsplatsen](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "logik App undantag Management API").
+hello källkoden för hello Logic Apps undantag management API-program finns i det här [GitHub-lagringsplatsen](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "logik App undantag Management API").
 
 ## <a name="next-steps"></a>Nästa steg
 

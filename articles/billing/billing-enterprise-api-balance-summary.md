@@ -1,6 +1,6 @@
 ---
-title: "Azure Billing Enterprise API - saldot och översikt | Microsoft Docs"
-description: "Läs mer om Azure Billing-användning och RateCard APIs som används för att ge insikter om Azure resursförbrukning och trender."
+title: "aaaAzure fakturering Enterprise API - saldot och översikt | Microsoft Docs"
+description: "Läs mer om Azure Billing användnings- och RateCard APIs som används tooprovide insikter om Azure resursförbrukning och trender."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: f6b149f0e656d2263705048aa5b644f5bb4a5712
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: b031de2c347e5abeacd11743cc96024434518918
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---balance-and-summary"></a>Reporting API: er för företagskunder - saldot och sammanfattning
 
-Ger information om saldon, nya inköp, Azure Marketplace serviceavgifter, justeringar och överförbrukning avgifter månatligen saldo och översikt över API.
+ger information om saldon, nya inköp, Azure Marketplace serviceavgifter, justeringar och överförbrukning avgifter månatligen hello saldo och översikt över API.
 
 
 ##<a name="request"></a>Förfrågan 
-Allmänna rubrikegenskaper för som ska läggas till anges [här](billing-enterprise-api.md). Om en faktureringsperiod anges returnerade data för den aktuella faktureringsperioden.
+Allmänna sidhuvudegenskaper för som behöver toobe läggs anges [här](billing-enterprise-api.md). Om en faktureringsperiod anges sedan returneras data för hello aktuella fakturering tidsperiod.
 
 |Metod | URI-begäran|
 |-|-|
@@ -35,7 +35,7 @@ Allmänna rubrikegenskaper för som ska läggas till anges [här](billing-enterp
 |HÄMTA| https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} /billingPeriods/ {billingPeriod} / balancesummary|
 
 > [!Note]
-> Ersätt v2 med v1 i URL: en ovan om du vill använda förhandsversionen av API.
+> toouse hello förhandsversionen av API, Ersätt v2 med v1 hello ovan URL.
 >
 
 ## <a name="response"></a>Svar
@@ -77,11 +77,11 @@ Allmänna rubrikegenskaper för som ska läggas till anges [här](billing-enterp
 
 |Egenskapsnamn| Typ| Beskrivning
 |-|-|-|
-|id|Sträng|Unikt Id för en specifik faktureringsperiod och registrering|
-|billingPeriodId|Sträng |Faktureringsperiod Id|
-|currencyCode|Sträng |Koden|
-|beginningBalance|Decimal| Det ingående saldot för faktureringsperioden|
-|endingBalance|Decimal| Den utgående balansen för faktureringsperioden (för öppna perioder detta uppdateras dagligen)|
+|id|Sträng|hello unikt Id för en specifik faktureringsperiod och registrering|
+|billingPeriodId|Sträng |hello fakturering period-Id|
+|currencyCode|Sträng |hello valutakoden|
+|beginningBalance|Decimal| hello ingående saldo för hello faktureringsperioden|
+|endingBalance|Decimal| hello utgående balans för hello faktureringsperioden (för öppna perioder detta uppdateras dagligen)|
 |newPurchases|Decimal| Nya inköp Totalmängd|
 |justering av|Decimal| Total justeringsbelopp|
 |utnyttjade|Decimal| Total användning för åtagande|

@@ -1,6 +1,6 @@
 ---
 title: "Säkerhet för Service Fabric-kluster: klienten roller | Microsoft Docs"
-description: "Den här artikeln beskrivs två klienten roller och behörigheter till rollerna."
+description: "Den här artikeln beskriver hello två klienten roller och hello behörigheter anges toohello roller."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 85935e60bba4b27972282700e2e9c9a22b403bdb
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4a4a9f93e91ea816005b730bebbcb317f8bab255
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>Rollbaserad åtkomstkontroll för Service Fabric-klienter
-Azure Service Fabric stöder två typer av olika åtkomstkontroll för klienter som är anslutna till ett Service Fabric-kluster: administratörs- och. Åtkomstkontroll kan Klusteradministratören att begränsa åtkomsten till vissa klusteråtgärder för olika grupper av användare, vilket gör att klustret säkrare.  
+Azure Service Fabric stöder två typer av olika åtkomstkontroll för klienter som är anslutna tooa Service Fabric-kluster: administratörs- och. Åtkomstkontroll kan Hej administratör toolimit åtkomst toocertain klustret klusteråtgärder för olika grupper av användare, göra hello klustret säkrare.  
 
-**Administratörer** ha fullständig åtkomst till funktioner för hantering (inklusive funktioner för läsning och skrivning). Som standard **användare** bara har läsbehörighet till funktioner för hantering (till exempel frågefunktioner) och möjligheten att lösa program och tjänster.
+**Administratörer** har fullständig åtkomst toomanagement funktioner (inklusive funktioner för läsning och skrivning). Som standard **användare** bara har läsbehörighet toomanagement funktioner (till exempel frågefunktioner) och hello möjlighet tooresolve program och tjänster.
 
-Du kan ange två klienten roller (administratör och klient) när klustret skapas genom att tillhandahålla olika certifikat för varje. Se [Service Fabric-Klustersäkerhet](service-fabric-cluster-security.md) mer information om hur du konfigurerar en säker Service Fabric-klustret.
+Du kan ange hello två klienten roller (administratör och klient) när hello klustret har skapats genom att tillhandahålla olika certifikat för varje. Se [Service Fabric-Klustersäkerhet](service-fabric-cluster-security.md) mer information om hur du konfigurerar en säker Service Fabric-klustret.
 
 ## <a name="default-access-control-settings"></a>Inställningar för åtkomstkontroll som standard
-Kontroller av typen administratör åtkomst har fullständig åtkomst till alla FabricClient APIs. Den kan utföra alla läsning och skrivning på Service Fabric-klustret, inklusive följande åtgärder:
+Hej administratör åtkomst kontrolltypen har fullständig åtkomst tooall hello FabricClient APIs. Den kan utföra alla läsning och skrivning på hello Service Fabric-klustret, inklusive hello följande åtgärder:
 
 ### <a name="application-and-service-operations"></a>Program- och tjänståtgärder
 * **CreateService**: skapar en tjänst                             
@@ -41,7 +41,7 @@ Kontroller av typen administratör åtkomst har fullständig åtkomst till alla 
 * **UpgradeApplication**: startar eller störa programuppgraderingar                             
 * **UnprovisionApplicationType**: programmet typen avetablering                             
 * **MoveNextUpgradeDomain**: återupptar programuppgraderingar med en explicit uppdateringsdomän                             
-* **ReportUpgradeHealth**: återupptar programuppgraderingar med den aktuella Uppgraderingsförlopp                             
+* **ReportUpgradeHealth**: återupptar programuppgraderingar med hello aktuella Uppgraderingsförlopp                             
 * **ReportHealth**: reporting hälsa                             
 * **PredeployPackageToNode**: hjälp av noggrann API                            
 * **CodePackageControl**: starta om koden paket                             
@@ -55,7 +55,7 @@ Kontroller av typen administratör åtkomst har fullständig åtkomst till alla 
 * **UpgradeFabric**: starta klusteruppgradering                             
 * **UnprovisionFabric**: MSI och/eller klusternamnresursen manifest avetablering                         
 * **MoveNextFabricUpgradeDomain**: återupptar klusteruppgradering med en explicit uppdateringsdomän                             
-* **ReportFabricUpgradeHealth**: återupptar klusteruppgradering med den aktuella Uppgraderingsförlopp                             
+* **ReportFabricUpgradeHealth**: återupptar klusteruppgradering med hello aktuella Uppgraderingsförlopp                             
 * **StartInfrastructureTask**: från infrastrukturen                             
 * **FinishInfrastructureTask**: Slutför infrastrukturen                             
 * **InvokeInfrastructureCommand**: kommandon för hantering av infrastruktur-aktivitet                              
@@ -66,20 +66,20 @@ Kontroller av typen administratör åtkomst har fullständig åtkomst till alla 
 * **GetNodeDeactivationStatus**: Kontrollera status för inaktivering                             
 * **NodeStateRemoved**: reporting nodens tillstånd tas bort                             
 * **ReportFault**: fault-rapportering                             
-* **FileContent**: image store-klienten filöverföring (extern till kluster)                             
-* **FileDownload**: image store klienten filen download inledande (extern till kluster)                             
+* **FileContent**: image store-klienten filöverföring (extern toocluster)                             
+* **FileDownload**: image store-klienten filen download inledande (extern toocluster)                             
 * **InternalList**: image store-klienten listan filåtgärd (internt)                             
 * **Ta bort**: image store ta bort klientåtgärden                              
 * **Överför**: image store Överföringsåtgärden för klienten                             
 * **NodeControl**: starta, stoppa och starta om noder                             
-* **MoveReplicaControl**: flytta repliker från en nod till en annan                             
+* **MoveReplicaControl**: flytta repliker från en nod tooanother                             
 
 ### <a name="miscellaneous-operations"></a>Diverse åtgärder
 * **Ping**: klienten ping                             
 * **Frågan**: alla frågor som tillåts
 * **NameExists**: namnge URI finns kontroller                             
 
-Typ av användaren åtkomstkontroll är som standard begränsad till följande åtgärder: 
+hello användaren åtkomst kontrolltypen är som standard begränsad toohello följande åtgärder: 
 
 * **EnumerateSubnames**: namnge URI uppräkning                             
 * **EnumerateProperties**: namnge egenskapen uppräkning                             
@@ -96,10 +96,10 @@ Typ av användaren åtkomstkontroll är som standard begränsad till följande �
 * **ResetPartitionLoad**: återställa belastningen för en enhet för växling vid fel                             
 * **ToggleVerboseServicePlacementHealthReporting**: växla utförlig service placering hälsa reporting                             
 
-Åtkomstkontroll admin har också åtkomst till föregående operationer.
+Hej administratör åtkomstkontroll har också åtkomst toohello föregående åtgärder.
 
 ## <a name="changing-default-settings-for-client-roles"></a>Ändra standardinställningarna för klienten roller
-I manifestfilen klustret, kan du ange admin funktioner till klienten om det behövs. Du kan ändra standardvärdena genom att gå till den **Infrastrukturinställningarna** alternativ under [Skapa kluster](service-fabric-cluster-creation-via-portal.md), och ge föregående inställningarna i den **namn**,  **Admin**, **användare**, och **värdet** fält.
+I hello manifestfilen för klustret, kan du ange admin funktioner toohello klienten om det behövs. Du kan ändra standardinställningarna för hello genom att gå toohello **Infrastrukturinställningarna** alternativ under [Skapa kluster](service-fabric-cluster-creation-via-portal.md), och ge hello före inställningar i hello **namn**, **admin**, **användare**, och **värdet** fält.
 
 ## <a name="next-steps"></a>Nästa steg
 [Säkerhet för Service Fabric-kluster](service-fabric-cluster-security.md)

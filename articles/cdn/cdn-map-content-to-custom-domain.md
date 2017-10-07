@@ -1,6 +1,6 @@
 ---
-title: "Mappa Azure CDN innehåll till en anpassad domän | Microsoft Docs"
-description: "Lär dig hur Azure CDN innehållet till en anpassad domän."
+title: "Azure CDN aaaMap innehåll tooa domänen | Microsoft Docs"
+description: "Lär dig hur toomap Azure CDN innehåll tooa anpassade domäner."
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,70 +14,70 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: cd6db44f7776859d1e6a893543cf0666182ca41a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3ee77297f1dd7dbf31a9391191cc2910fbd2cee
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="map-azure-cdn-content-to-a-custom-domain"></a>Mappa Azure CDN innehåll till en anpassad domän
-Du kan mappa en anpassad domän till en CDN-slutpunkt för att kunna använda ditt eget domännamn i URL: er till cachelagrat innehåll i stället för en underdomän till azureedge.net.
+# <a name="map-azure-cdn-content-tooa-custom-domain"></a>Mappa Azure CDN innehåll tooa anpassad domän
+Du kan mappa en anpassad domän tooa CDN-slutpunkt i ordning toouse ditt eget domännamn i URL: er toocached innehåll i stället för att en underdomän till azureedge.net.
 
-Det finns två sätt att mappa en anpassad domän till en CDN-slutpunkten:
+Det finns två sätt toomap domänen tooa CDN-slutpunkten:
 
-1. [Skapa en CNAME-post hos din domänregistrator och mappa dina anpassade domäner och underdomäner till CDN-slutpunkten](#register-a-custom-domain-for-an-azure-cdn-endpoint).
+1. [Skapa en CNAME-post hos din domänregistrator och mappa anpassade domäner och underdomäner toohello CDN-slutpunkten](#register-a-custom-domain-for-an-azure-cdn-endpoint).
    
-    En CNAME-post är en DNS-funktion som mappar en källdomän, som `www.contosocdn.com` eller `cdn.contoso.com`, till en måldomän. I det här fallet källdomänen är dina anpassade domäner och underdomäner (en underdomän, till exempel **www** eller **cdn** krävs alltid). Måldomänen är CDN-slutpunkten.  
+    En CNAME-post är en DNS-funktion som mappar ett källdomänen som `www.contosocdn.com` eller `cdn.contoso.com`, tooa måldomänen. I det här fallet hello källdomänen är dina anpassade domäner och underdomäner (en underdomän, till exempel **www** eller **cdn** krävs alltid). hello måldomänen är CDN-slutpunkten.  
    
-    Processen för att mappa den anpassade domänen till CDN-slutpunkten kan dock leda till en kort period driftstopp för domänen medan du registrerar domänen i Azure Portal.
+    hello processen för mappning av anpassad domän tooyour CDN-slutpunkten kan dock leda till en kort period driftstopp för hello domänen medan du registrerar hello domän i hello Azure-portalen.
 2. [Lägg till ett mellanliggande registreringssteget med **cdnverify**](#register-a-custom-domain-for-an-azure-cdn-endpoint-using-the-intermediary-cdnverify-subdomain)
    
-    Om den anpassade domänen för närvarande stöder ett program med ett servicenivåavtal (SLA) som måste det finnas utan avbrott, så du kan använda Azure **cdnverify** underdomän att tillhandahålla en mellanliggande registrering så att användare kommer att kunna komma åt din domän när DNS-mappning äger rum.  
+    Om den anpassade domänen för närvarande stöder ett program med ett servicenivåavtal (SLA) som måste det finnas utan avbrott, så du kan använda hello Azure **cdnverify** underdomän tooprovide en mellanliggande registrering steg så att användare ska kunna tooaccess din domän när hello DNS mappning äger rum.  
 
-När du har registrerat med någon av ovanstående metoder domänen kommer du vilja [Kontrollera att den anpassa underdomänen refererar CDN-slutpunkten](#verify-that-the-custom-subdomain-references-your-cdn-endpoint).
+När du har registrerat din anpassade domän med någon av hello ovan procedurer ska för[verifiera den anpassa underdomänen hello refererar till CDN-slutpunkten](#verify-that-the-custom-subdomain-references-your-cdn-endpoint).
 
 > [!NOTE]
-> Du måste skapa en CNAME-post hos din domänregistrator för att mappa din domän till CDN-slutpunkten. CNAME-poster mappa specifika underdomäner som `www.contoso.com` eller `cdn.contoso.com`. Det går inte att mappa en CNAME-post till en rotdomän som `contoso.com`.
+> Du måste skapa en CNAME-post med din domän registrator toomap domän toohello CDN-slutpunkten. CNAME-poster mappa specifika underdomäner som `www.contoso.com` eller `cdn.contoso.com`. Det är inte möjligt toomap rotdomänen en CNAME-post tooa som `contoso.com`.
 > 
-> En underdomän kan bara vara kopplad till en CDN-slutpunkten. CNAME-posten som du skapar kommer att vidarebefordra all trafik till en underdomän till den angivna slutpunkten.  Om du kopplar till exempel `www.contoso.com` med din CDN-slutpunkten sedan du kan associera den med andra Azure-slutpunkter, till exempel en slutpunkt för storage-konto eller ett moln tjänstslutpunkten. Du kan dock använda olika underdomäner från samma domän för olika slutpunkter. Du kan också mappa olika underdomäner till samma CDN-slutpunkten.
+> En underdomän kan bara vara kopplad till en CDN-slutpunkten. hello CNAME-post som du skapar dirigerar all trafik adresserad toohello underdomän toohello anges slutpunkt.  Om du kopplar till exempel `www.contoso.com` med din CDN-slutpunkten sedan du kan associera den med andra Azure-slutpunkter, till exempel en slutpunkt för storage-konto eller ett moln tjänstslutpunkten. Du kan dock använda olika underdomäner från hello samma domän för olika slutpunkter. Du kan även mappa olika underdomäner toohello samma CDN-slutpunkten.
 > 
-> För **Azure CDN från Verizon** (Standard och Premium) slutpunkter, Observera att det tar upp till **90 minuter** kant noder för anpassade domänändringar sprids till CDN.
+> För **Azure CDN från Verizon** (Standard och Premium) slutpunkter, Observera att det tar för**90 minuter** för anpassade domäner ändras toopropagate tooCDN kant noder.
 > 
 > 
 
 ## <a name="register-a-custom-domain-for-an-azure-cdn-endpoint"></a>Registrera en anpassad domän för en Azure CDN-slutpunkt
-1. Logga in på den [Azure-portalen](https://portal.azure.com/).
-2. Klicka på **Bläddra**, sedan **CDN profiler**, sedan CDN-profilen med slutpunkten som du vill mappa till en anpassad domän.  
-3. I den **CDN-profilen** bladet, klickar du på CDN-slutpunkt som du vill associera underdomänen.
-4. Överst på bladet för slutpunkten klickar du på den **Lägg till anpassad domän** knappen.  I den **lägga till en anpassad domän** bladet visas värdnamnet slutpunkt har härletts från din CDN-slutpunkten ska användas för att skapa en ny CNAME-post. Format för namn och adress på värden visas som  **&lt;EndpointName >. azureedge.net**.  Du kan kopiera värdnamn att använda skapa CNAME-post.  
-5. Gå till din domänregistrators webbplats och leta upp avsnittet för att skapa DNS-poster. Du kan hitta det här i ett avsnitt som till exempel **Domännamn**, **DNS**, eller **hantering av namnhantering**.
-6. Leta reda på avsnittet för att hantera CNAME. Du kan behöva gå till en sida med avancerade inställningar och leta efter orden CNAME, Alias eller Underdomäner.
-7. Skapa en ny CNAME-post som mappar dina valda underdomänen (till exempel **www** eller **cdn**) till värdnamnet i den **lägga till en anpassad domän** bladet. 
-8. Gå tillbaka till den **lägga till en anpassad domän** bladet och ange din domän, inklusive underdomänen, i dialogrutan. Till exempel ange domännamnet i formatet `www.contoso.com` eller `cdn.contoso.com`.   
+1. Logga in på hello [Azure Portal](https://portal.azure.com/).
+2. Klicka på **Bläddra**, sedan **CDN profiler**, hello CDN-profilen med hello slutpunkt som du vill toomap tooa anpassade domäner.  
+3. I hello **CDN-profilen** bladet, klickar du på hello CDN-slutpunkt som du vill använda tooassociate hello underdomänen.
+4. Hello överkant hello endpoint-bladet, klickar du på hello **Lägg till anpassad domän** knappen.  I hello **lägga till en anpassad domän** bladet visas hello endpoint värdnamn som härletts från din CDN-slutpunkten toouse att skapa en ny CNAME-post. hello format hello värdadress namnet visas som  **&lt;EndpointName >. azureedge.net**.  Du kan kopiera den här värden namnet toouse skapar hello CNAME-post.  
+5. Navigera tooyour domän register-webbplats och leta upp hello-avsnittet för att skapa DNS-poster. Du kan hitta det här i ett avsnitt som till exempel **Domännamn**, **DNS**, eller **hantering av namnhantering**.
+6. Hitta hello avsnitt för att hantera skapa CNAME-poster. Du kan ha toogo tooan avancerade Inställningssida och leta efter hello ord CNAME, Alias eller underdomäner.
+7. Skapa en ny CNAME-post som mappar dina valda underdomänen (till exempel **www** eller **cdn**) toohello värdnamn i hello **lägga till en anpassad domän** bladet. 
+8. Returnera toohello **lägga till en anpassad domän** bladet och ange din domän, inklusive hello underdomän hello i dialogrutan. Ange till exempel hello domännamn i hello format `www.contoso.com` eller `cdn.contoso.com`.   
    
-   Azure verifierar att det finns en CNAME-posten för domännamnet som du har angett. Om CNAME är korrekt verifieras din anpassade domän.  För **Azure CDN från Verizon** slutpunkter (Standard och Premium), kan det ta upp till 90 minuter för anpassad domäninställningarna att spridas till alla noder för CDN-edge, men.  
+   Azure ska kontrollera att det finns hello CNAME-post för hello domännamn som du har angett. Om hello CNAME stämmer har din anpassade domän verifierats.  För **Azure CDN från Verizon** (Standard och Premium) slutpunkter, det kan ta upp too90 minuter för anpassade domäner inställningar toopropagate tooall CDN edge noder, men.  
    
-   Observera att det i vissa fall kan ta tid för CNAME-posten ska spridas till namnservrar på Internet. Om din domän inte har verifierats omedelbart och du tror CNAME-post är korrekt, vänta en stund och försök igen.
+   Observera att i vissa fall det kan ta tid för hello CNAME post toopropagate tooname servrar på hello Internet. Om din domän inte har verifierats omedelbart och du tror hello CNAME-post är korrekt, vänta en stund och försök igen.
 
-## <a name="register-a-custom-domain-for-an-azure-cdn-endpoint-using-the-intermediary-cdnverify-subdomain"></a>Registrera en anpassad domän för ett Azure CDN-slutpunkten med hjälp av underdomänen mellanliggande cdnverify
-1. Logga in på den [Azure-portalen](https://portal.azure.com/).
-2. Klicka på **Bläddra**, sedan **CDN profiler**, sedan CDN-profilen med slutpunkten som du vill mappa till en anpassad domän.  
-3. I den **CDN-profilen** bladet, klickar du på CDN-slutpunkt som du vill associera underdomänen.
-4. Överst på bladet för slutpunkten klickar du på den **Lägg till anpassad domän** knappen.  I den **lägga till en anpassad domän** bladet visas värdnamnet slutpunkt har härletts från din CDN-slutpunkten ska användas för att skapa en ny CNAME-post. Format för namn och adress på värden visas som  **&lt;EndpointName >. azureedge.net**.  Du kan kopiera värdnamn att använda skapa CNAME-post.
-5. Gå till din domänregistrators webbplats och leta upp avsnittet för att skapa DNS-poster. Du kan hitta det här i ett avsnitt som till exempel **Domännamn**, **DNS**, eller **hantering av namnhantering**.
-6. Leta reda på avsnittet för att hantera CNAME. Du kan behöva gå till en sida med avancerade inställningar och leta efter orden **CNAME**, **Alias**, eller **underdomäner**.
-7. Skapa en ny CNAME-post och ange en underdomän alias som innehåller den **cdnverify** underdomänen. Till exempel underdomänen som du anger ska vara i formatet **cdnverify.www** eller **cdnverify.cdn**. Ange värdnamnet, vilket är din CDN-slutpunkten i formatet **cdnverify.&lt; EndpointName >. azureedge.net**. DNS-mappning bör se ut som:`cdnverify.www.consoto.com   CNAME   cdnverify.consoto.azureedge.net`  
-8. Gå tillbaka till den **lägga till en anpassad domän** bladet och ange din domän, inklusive underdomänen, i dialogrutan. Till exempel ange domännamnet i formatet `www.contoso.com` eller `cdn.contoso.com`. Observera att i det här steget kan du inte behöver inleder underdomänen med **cdnverify**.  
+## <a name="register-a-custom-domain-for-an-azure-cdn-endpoint-using-hello-intermediary-cdnverify-subdomain"></a>Registrera en anpassad domän för ett Azure CDN-slutpunkten med hjälp av hello mellanliggande cdnverify underdomän
+1. Logga in på hello [Azure Portal](https://portal.azure.com/).
+2. Klicka på **Bläddra**, sedan **CDN profiler**, hello CDN-profilen med hello slutpunkt som du vill toomap tooa anpassade domäner.  
+3. I hello **CDN-profilen** bladet, klickar du på hello CDN-slutpunkt som du vill använda tooassociate hello underdomänen.
+4. Hello överkant hello endpoint-bladet, klickar du på hello **Lägg till anpassad domän** knappen.  I hello **lägga till en anpassad domän** bladet visas hello endpoint värdnamn som härletts från din CDN-slutpunkten toouse att skapa en ny CNAME-post. hello format hello värdadress namnet visas som  **&lt;EndpointName >. azureedge.net**.  Du kan kopiera den här värden namnet toouse skapar hello CNAME-post.
+5. Navigera tooyour domän register-webbplats och leta upp hello-avsnittet för att skapa DNS-poster. Du kan hitta det här i ett avsnitt som till exempel **Domännamn**, **DNS**, eller **hantering av namnhantering**.
+6. Hitta hello avsnitt för att hantera skapa CNAME-poster. Du kan ha toogo tooan avancerade Inställningssida och leta efter hello ord **CNAME**, **Alias**, eller **underdomäner**.
+7. Skapa en ny CNAME-post och ange en underdomän alias som innehåller hello **cdnverify** underdomänen. Till exempel hello underdomän som du anger ska ha formatet hello **cdnverify.www** eller **cdnverify.cdn**. Ange hello värdnamnet, vilket är din CDN-slutpunkten i hello format **cdnverify.&lt; EndpointName >. azureedge.net**. DNS-mappning bör se ut som:`cdnverify.www.consoto.com   CNAME   cdnverify.consoto.azureedge.net`  
+8. Returnera toohello **lägga till en anpassad domän** bladet och ange din domän, inklusive hello underdomän hello i dialogrutan. Ange till exempel hello domännamn i hello format `www.contoso.com` eller `cdn.contoso.com`. Observera att i det här steget kan du inte behöver toopreface hello underdomän med **cdnverify**.  
    
-    Azure verifierar att det finns en CNAME-post för cdnverify domännamn som du har angett.
-9. Nu är din anpassade domän har verifierats av Azure, men trafik till din domän är ännu inte dirigeras till CDN-slutpunkten. Efter att ha väntat tillräckligt länge för att tillåta anpassad domän-inställningarna att spridas till CDN kant noder (90 minuter för **Azure CDN från Verizon**, 1 till 2 minuter för **Azure CDN från Akamai**), gå tillbaka till din DNS registrators webbplats och skapa en annan CNAME-post som mappar en underdomän till CDN-slutpunkten. Till exempel ange underdomänen som **www** eller **cdn**, och värdnamn som  **&lt;EndpointName >. azureedge.net**. Registreringen av den anpassade domänen är klar med det här steget.
-10. Slutligen kan du ta bort CNAME-post som du skapade med **cdnverify**eftersom det var nödvändigt endast som en mellanliggande steg.  
+    Azure ska kontrollera att det finns hello CNAME-post för hello cdnverify domännamn som du har angett.
+9. Nu är din anpassade domän har verifierats av Azure, men trafik tooyour domän används inte ännu routade tooyour CDN-slutpunkten. Efter att ha väntat tillräckligt lång tooallow hello domänen inställningar toopropagate toohello CDN kant noder (90 minuter för **Azure CDN från Verizon**, 1 till 2 minuter för **Azure CDN från Akamai**), returnera tooyour DNS registrators webbplats och skapa en annan CNAME-post som mappar underdomän tooyour CDN-slutpunkten. Till exempel ange hello underdomän som **www** eller **cdn**, och hello värdnamn som  **&lt;EndpointName >. azureedge.net**. Hello registreringen av den anpassade domänen är klar med det här steget.
+10. Slutligen kan du ta bort hello CNAME-post som du skapade med **cdnverify**eftersom det var nödvändigt endast som en mellanliggande steg.  
 
-## <a name="verify-that-the-custom-subdomain-references-your-cdn-endpoint"></a>Kontrollera att den anpassa underdomänen refererar CDN-slutpunkten
-* När du har slutfört registreringen av den anpassade domänen, kan du komma åt innehåll som cachelagras på CDN-slutpunkten med den anpassa domänen.
-  Kontrollera först att du har offentligt innehåll som cachelagras på slutpunkten. Om din CDN-slutpunkten är kopplat till ett lagringskonto cachelagrar i CDN innehållet i offentlig blob-behållare. Se till att din behållare har angetts att tillåta offentlig åtkomst och att den innehåller minst en blob för att testa den anpassade domänen.
-* Navigera till adressen till blob med den anpassa domänen i din webbläsare. Om din anpassade domän är till exempel `cdn.contoso.com`, URL-Adressen till en cachelagrade blob kommer att likna följande URL: http://cdn.contoso.com/mypubliccontainer/acachedblob.jpg
+## <a name="verify-that-hello-custom-subdomain-references-your-cdn-endpoint"></a>Kontrollera att anpassade underdomän hello refererar till CDN-slutpunkten
+* När du har slutfört hello registreringen av den anpassade domänen kan du komma åt innehåll som cachelagras på CDN-slutpunkten med hello anpassade domäner.
+  Kontrollera först att du har offentligt innehåll som cachelagras på hello slutpunkt. Om din CDN-slutpunkten är associerad med ett lagringskonto, cachelagrar hello CDN innehållet i offentlig blob-behållare. tootest hello anpassad domän, se till att din behållare är tooallow offentlig åtkomst och att den innehåller minst en blob.
+* Navigera toohello adress hello blob med hello anpassade domäner i webbläsaren. Om din anpassade domän är till exempel `cdn.contoso.com`, hello URL tooa cachelagrade blob blir liknande toohello följande URL: http://cdn.contoso.com/mypubliccontainer/acachedblob.jpg
 
 ## <a name="see-also"></a>Se även
-[Så här aktiverar du innehållsleveransnätverk (CDN) för Azure](cdn-create-new-endpoint.md)  
+[Hur tooEnable hello innehåll innehållsleveransnätverk (CDN) för Azure](cdn-create-new-endpoint.md)  
 

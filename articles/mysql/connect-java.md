@@ -1,6 +1,6 @@
 ---
-title: "Ansluta till Azure Database för MySQL med Java | Microsoft Docs"
-description: "I den här snabbstarten finns ett kodexempel i Java som du kan använda för att ansluta till och fråga efter data från en Azure Database för MySQL."
+title: "Ansluta tooAzure databas för MySQL använder Java | Microsoft Docs"
+description: "Denna Snabbstart innehåller en Java-kodexempel som du kan använda tooconnect och fråga efter data från en Azure-databas för MySQL-databas."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,39 +11,39 @@ ms.custom: mvc
 ms.topic: hero-article
 ms.devlang: java
 ms.date: 06/20/2017
-ms.openlocfilehash: 6ffcf3b38a3d868dfa10ea2e2a9d097441387d4f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d584b5491d29700b36fae26800c59d93ceb3e265
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure-databas för MySQL: Använd Java för att ansluta och fråga efter data
-Den här snabbstarten visar hur du ansluter till en Azure Database för MySQL med hjälp av ett Java-program. Den visar hur du använder SQL-instruktioner för att fråga, infoga, uppdatera och ta bort data i databasen. I den här artikeln förutsätter vi att du har kunskaper om Java och att du inte har arbetat med Azure Database för MySQL tidigare.
+# <a name="azure-database-for-mysql-use-java-tooconnect-and-query-data"></a>Azure-databas för MySQL: Använd Java tooconnect och fråga data
+Den här snabbstarten visar hur tooconnect tooan Azure-databas för MySQL med hjälp av ett Java-program. Den visar hur toouse SQL-instruktioner tooquery infoga, uppdatera och ta bort data i hello-databas. hello förutsätter stegen i den här artikeln att du är bekant med att utveckla med Java och att du är ny tooworking med Azure-databas för MySQL.
 
 ## <a name="prerequisites"></a>Krav
-I den här snabbstarten används de resurser som skapades i någon av följande guider som utgångspunkt:
+Denna Snabbstart använder hello resurser som skapades i någon av dessa guider som utgångspunkt:
 - [Skapa en Azure Database för MySQL med Azure Portal](./quickstart-create-mysql-server-database-using-azure-portal.md)
 - [Skapa en Azure Database för MySQL-server med Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Du måste också:
-- Hämta JDBC-drivrutinen [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/)
-- Ta med JDBC jar-filen (till exempel mysql-connector-java-5.1.42-bin.jar) i klassökvägen i programmet. Om du har problem med detta kan du läsa dokumentationen för miljön för information om klassens sökväg, som [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) eller [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)
-- Se till att säkerhetsinställningarna för Azure Database för MySQL-anslutning konfigureras med brandväggen öppen och att SSL-inställningarna justeras så att programmet kan ansluta.
+- Hämta hello JDBC-drivrutinen [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/)
+- Inkludera hello JDBC jar-filen (till exempel mysql-connector-java-5.1.42-bin.jar) i program-klassökvägen. Om du har problem med detta kan du läsa dokumentationen för miljön för information om klassens sökväg, som [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) eller [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)
+- Kontrollera din Azure-databas för MySQL anslutningssäkerhet har konfigurerats med hello brandväggen har öppnats och SSL-inställningar justerad för ditt program tooconnect har.
 
 ## <a name="get-connection-information"></a>Hämta anslutningsinformation
-Skaffa den information som du behöver för att ansluta till Azure Database för MySQL. Du behöver det fullständiga servernamnet och inloggningsuppgifter.
+Hämta hello anslutning information som behövs för tooconnect toohello Azure-databas för MySQL. Du måste hello server fullständigt kvalificerade namnet och autentiseringsuppgifterna för inloggning.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. I den vänstra rutan klickar du på **alla resurser** och söker sedan efter servern som du skapade (till exempel **myserver4demo**).
-3. Klicka på servernamnet.
-4. Välj sidan **Egenskaper** för servern. Anteckna **servernamn** och **inloggningsnamnet för serveradministratören**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com/).
+2. Hello vänster klickar du på **alla resurser**, och sök sedan efter hello-server som du har skapat (till exempel **myserver4demo**).
+3. Klicka på hello servernamn.
+4. Välj hello server **egenskaper** sidan. Anteckna hello **servernamn** och **serverinloggningsnamnet för admin**.
  ![Azure Database för MySQL-servernamn](./media/connect-java/1_server-properties-name-login.png)
-5. Om du glömmer inloggningsinformationen för servern öppnar du sidan **Översikt** för att se inloggningsnamnet för serveradministratören. Om det behövs kan du återställa lösenordet.
+5. Om du glömmer bort inloggningsinformationen server navigera toohello **översikt** sidan tooview hello admin serverinloggningsnamnet och, om nödvändigt återställa hello lösenord.
 
 ## <a name="connect-create-table-and-insert-data"></a>Ansluta, skapa tabell och infoga data
-Använd följande kod för att ansluta och läsa in data med hjälp av en funktion med en **INSERT**-SQL-instruktion. Metoden [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) används för att ansluta till MySQL. Metoderna [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) och execute() används för att släppa och skapa tabellen. Objektet prepareStatement används för att skapa infogningskommandon och setString() och setInt() används för att binda parametervärdena. Metoden executeUpdate() infogar värdena genom att kommandot körs för varje uppsättning parametrar. 
+Använd hello följande kod tooconnect och Läs in hello data med hjälp av hello funktion med en **infoga** SQL-instruktionen. Hej [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) metod är att använda tooconnect tooMySQL. Metoder [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) och execute() används toodrop och skapa hello tabell. Hej prepareStatement objektet är används toobuild hello insert-kommandon, med setString() och setInt() toobind hello parametervärden. Metoden executeUpdate() kör hello-kommando för varje uppsättning parametrar tooinsert hello värden. 
 
-Ersätt parametrarna host, database, user och password med de värden som du angav när du skapade din server och databas.
+Ersätt hello värden, databas, användare och lösenordsparametrar med hello-värden som du angav när du skapade din egen server och databas.
 
 ```java
 import java.sql.*;
@@ -59,7 +59,7 @@ public class CreateTableInsertRows {
         String user = "myadmin@myserver4demo";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
@@ -91,13 +91,13 @@ public class CreateTableInsertRows {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database.", e);
+            throw new SQLException("Failed toocreate connection toodatabase.", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
                 // Drop previous table of same name if one exists.
@@ -125,7 +125,7 @@ public class CreateTableInsertRows {
                 nRowsInserted += preparedStatement.executeUpdate();
                 System.out.println(String.format("Inserted %d row(s) of data.", nRowsInserted));
     
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
+                // NOTE No need toocommit all changes toodatabase, as auto-commit is enabled by default.
     
             }
             catch (SQLException e)
@@ -134,7 +134,7 @@ public class CreateTableInsertRows {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database.");
+            System.out.println("Failed toocreate connection toodatabase.");
         }
         System.out.println("Execution finished.");
     }
@@ -143,9 +143,9 @@ public class CreateTableInsertRows {
 ```
 
 ## <a name="read-data"></a>Läsa data
-Använd följande kod för att läsa in data med en **SELECT**-SQL-instruktion. Metoden [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) används för att ansluta till MySQL. Metoderna [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) och executeQuery() används för att ansluta och köra select-instruktionen. Resultaten bearbetas med ett [ResultSet](https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html)-objekt. 
+Använd hello följande kod tooread hello data med en **Välj** SQL-instruktionen. Hej [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) metod är att använda tooconnect tooMySQL. Hej metoder [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) och executeQuery() används tooconnect och kör hello select-instruktion. hello resultat bearbetas med en [ResultSet](https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html) objekt. 
 
-Ersätt parametrarna host, database, user och password med de värden som du angav när du skapade din server och databas.
+Ersätt hello värden, databas, användare och lösenordsparametrar med hello-värden som du angav när du skapade din egen server och databas.
 
 ```java
 import java.sql.*;
@@ -161,7 +161,7 @@ public class ReadTable {
         String user = "myadmin@myserver4demo";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
@@ -193,13 +193,13 @@ public class ReadTable {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database", e);
+            throw new SQLException("Failed toocreate connection toodatabase", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
     
@@ -222,7 +222,7 @@ public class ReadTable {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database."); 
+            System.out.println("Failed toocreate connection toodatabase."); 
         }
         System.out.println("Execution finished.");
     }
@@ -230,9 +230,9 @@ public class ReadTable {
 ```
 
 ## <a name="update-data"></a>Uppdatera data
-Använd följande kod för att ändra data med en **UPDATE**-SQL-instruktion. Metoden [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) används för att ansluta till MySQL. Metoderna [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) och executeUpdate() används för att förbereda och köra update-instruktionen. 
+Använd hello följande kod toochange hello data med en **uppdatering** SQL-instruktionen. Hej [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) metod är att använda tooconnect tooMySQL. Hej metoder [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) och executeUpdate() används tooprepare och kör hello update-instruktion. 
 
-Ersätt parametrarna host, database, user och password med de värden som du angav när du skapade din server och databas.
+Ersätt hello värden, databas, användare och lösenordsparametrar med hello-värden som du angav när du skapade din egen server och databas.
 
 ```java
 import java.sql.*;
@@ -247,7 +247,7 @@ public class UpdateTable {
         String user = "myadmin@myserver4demo";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
@@ -265,7 +265,7 @@ public class UpdateTable {
         {
             String url = String.format("jdbc:mysql://%s/%s", host, database);
             
-            // set up the connection properties
+            // set up hello connection properties
             Properties properties = new Properties();
             properties.setProperty("user", user);
             properties.setProperty("password", password);
@@ -278,13 +278,13 @@ public class UpdateTable {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database.", e);
+            throw new SQLException("Failed toocreate connection toodatabase.", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
                 // Modify some data in table.
@@ -295,7 +295,7 @@ public class UpdateTable {
                 nRowsUpdated += preparedStatement.executeUpdate();
                 System.out.println(String.format("Updated %d row(s) of data.", nRowsUpdated));
     
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
+                // NOTE No need toocommit all changes toodatabase, as auto-commit is enabled by default.
             }
             catch (SQLException e)
             {
@@ -303,7 +303,7 @@ public class UpdateTable {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database.");
+            System.out.println("Failed toocreate connection toodatabase.");
         }
         System.out.println("Execution finished.");
     }
@@ -311,9 +311,9 @@ public class UpdateTable {
 ```
 
 ## <a name="delete-data"></a>Ta bort data
-Använd följande kod för att ta bort data med en **DELETE**-SQL-instruktion. Metoden [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) används för att ansluta till MySQL.  Metoderna [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) och executeUpdate() används för att förbereda och köra update-instruktionen. 
+Använd hello följande kod tooremove data med en **ta bort** SQL-instruktionen. Hej [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) metod är att använda tooconnect tooMySQL.  Hej metoder [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) och executeUpdate() används tooprepare och kör hello update-instruktion. 
 
-Ersätt parametrarna host, database, user och password med de värden som du angav när du skapade din server och databas.
+Ersätt hello värden, databas, användare och lösenordsparametrar med hello-värden som du angav när du skapade din egen server och databas.
 
 ```java
 import java.sql.*;
@@ -328,7 +328,7 @@ public class DeleteTable {
         String user = "myadmin@myserver4demo";
         String password = "<server_admin_password>";
         
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
@@ -347,7 +347,7 @@ public class DeleteTable {
         {
             String url = String.format("jdbc:mysql://%s/%s", host, database);
             
-            // set up the connection properties
+            // set up hello connection properties
             Properties properties = new Properties();
             properties.setProperty("user", user);
             properties.setProperty("password", password);
@@ -360,13 +360,13 @@ public class DeleteTable {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database", e);
+            throw new SQLException("Failed toocreate connection toodatabase", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
                 // Delete some data from table.
@@ -376,7 +376,7 @@ public class DeleteTable {
                 nRowsDeleted += preparedStatement.executeUpdate();
                 System.out.println(String.format("Deleted %d row(s) of data.", nRowsDeleted));
     
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
+                // NOTE No need toocommit all changes toodatabase, as auto-commit is enabled by default.
             }
             catch (SQLException e)
             {
@@ -384,7 +384,7 @@ public class DeleteTable {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database.");
+            System.out.println("Failed toocreate connection toodatabase.");
         }
         System.out.println("Execution finished.");
     }
@@ -393,4 +393,4 @@ public class DeleteTable {
 
 ## <a name="next-steps"></a>Nästa steg
 > [!div class="nextstepaction"]
-> [Migrera MySQL-databasen till Azure Database för MySQL med säkerhetskopiering och återställning](concepts-migrate-dump-restore.md)
+> [Migrera din MySQL-databas tooAzure databas för MySQL med dump och återställning](concepts-migrate-dump-restore.md)

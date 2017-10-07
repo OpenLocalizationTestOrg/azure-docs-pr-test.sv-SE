@@ -1,6 +1,6 @@
 ---
-title: "Använda Azure IoT Hub direkt metoder (Java) | Microsoft Docs"
-description: "Hur du använder Azure IoT Hub direkt metoder. Azure IoT-enhet SDK för Java används för att implementera en simulerad enhetsapp som innehåller en direkt metod och Azure IoT SDK för Java att implementera ett service-appen som anropar metoden direkt."
+title: aaaUse Azure IoT Hub direkt metoder (Java) | Microsoft Docs
+description: "Hur toouse Azure IoT Hub direkt metoder. Du kan använda hello Azure IoT-enhet SDK för Java tooimplement en simulerad enhetsapp som innehåller en direkt metod och hello Azure IoT-tjänsten SDK för Java tooimplement service-appen som anropar hello direkta metoden."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 6243a1a8cc971c53c797182b2beb6f594d2ac5f7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b6f2f4a64535ab649a3965cd9c5a19bebaf88eef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-direct-methods-java"></a>Använda direkt metoder (Java)
 
@@ -26,16 +26,16 @@ ms.lasthandoff: 08/18/2017
 
 I kursen får skapa du två Java-konsolappar:
 
-* **anropa-direct-method**, en backend-Java-app som anropar en metod i appen simulerade enheten och visar svaret.
-* **simulerade enheten**, en Java-app som simulerar en enhet som ansluter till din IoT-hubb med enhetens identitet som du skapar. Den här appen svarar direkt anropas från serverdelen.
+* **anropa-direct-method**, en backend-Java-app som anropar en metod i hello simulerade enhetsapp och visar hello svar.
+* **simulerade enheten**, en Java-app som simulerar en enhet som ansluter tooyour IoT-hubb med hello enhets-ID som du skapar. Den här appen svarar toohello anropas direkt från hello serverdel.
 
 > [!NOTE]
-> Information om SDK: er som du kan använda för att bygga program ska köras på enheter och din lösningens serverdel finns [Azure IoT SDK][lnk-hub-sdks].
+> Information om hello SDK: er som du kan använda toobuild program toorun på enheter och din lösningens serverdel finns [Azure IoT SDK][lnk-hub-sdks].
 
-För att slutföra den här kursen behöver du:
+toocomplete den här kursen behöver du:
 
-* Java SE 8. <br/> [Förbereda utvecklingsmiljön][lnk-dev-setup] beskriver hur du installerar Java för den här självstudiekursen i Windows eller Linux.
-* Maven 3.  <br/> [Förbereda utvecklingsmiljön][lnk-dev-setup] beskriver hur du installerar [Maven][lnk-maven] för den här självstudiekursen i Windows eller Linux.
+* Java SE 8. <br/> [Förbered din utvecklingsmiljö] [ lnk-dev-setup] beskriver hur tooinstall Java för den här självstudiekursen på Windows- eller Linux.
+* Maven 3.  <br/> [Förbered din utvecklingsmiljö] [ lnk-dev-setup] beskriver hur tooinstall [Maven] [ lnk-maven] för den här självstudiekursen på Windows- eller Linux.
 * [Node.js-version 0.10.0 eller senare](http://nodejs.org).
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -44,17 +44,17 @@ För att slutföra den här kursen behöver du:
 
 ## <a name="create-a-simulated-device-app"></a>Skapa en simulerad enhetsapp
 
-I det här avsnittet skapar du en Java-konsolapp som svarar på en metod som anropas av lösningen tillbaka slutet.
+I det här avsnittet skapar du en Java-konsolapp som svarar tooa metoden anropas av hello-lösningen slutet.
 
 1. Skapa en tom mapp som kallas iot-java-direct-metoden.
 
-1. I mappen iot-java-direct-metoden skapar du ett Maven-projekt som kallas **simulerade enheten** med följande kommando vid en kommandotolk. Följande kommando är ett långt kommando:
+1. Skapa ett Maven-projekt som kallas i hello iot-java-direct-method mappen **simulerade enheten** med hello följande kommando vid en kommandotolk. hello följande kommando är ett långt kommando:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. Gå till mappen simulated-device i Kommandotolken.
+1. Navigera toohello simulerade enheten mapp i en kommandotolk.
 
-1. Använd en textredigerare och öppna filen pom.xml i mappen simulated-device och lägg till följande beroenden till noden **dependencies**. Det här beroendet kan du använda iot-enhet-klientpaketet i appen kommunicerar med IoT-hubben:
+1. Med en textredigerare, öppna hello pom.xml filen hello simulerade enheten mapp och lägga till följande beroenden toohello hello **beroenden** nod. Det här beroendet kan du toouse hello iot enhetsklienten paketet i din app toocommunicate med IoT-hubben:
 
     ```xml
     <dependency>
@@ -65,9 +65,9 @@ I det här avsnittet skapar du en Java-konsolapp som svarar på en metod som anr
     ```
 
     > [!NOTE]
-    > Du kan söka efter den senaste versionen av **iot-device-client** med [Maven-sökning][lnk-maven-device-search].
+    > Du kan söka efter hello senaste versionen av **iot enhetsklienten** med [Maven Sök][lnk-maven-device-search].
 
-1. Lägg till följande **skapa** noden efter den **beroenden** nod. Den här konfigurationen instruerar Maven använda Java 1.8 för att skapa appen:
+1. Lägg till följande hello **skapa** nod efter hello **beroenden** nod. Den här konfigurationen instruerar Maven toouse Java 1,8 toobuild hello app:
 
     ```xml
     <build>
@@ -85,11 +85,11 @@ I det här avsnittet skapar du en Java-konsolapp som svarar på en metod som anr
     </build>
     ```
 
-1. Spara och stäng filen pom.xml.
+1. Spara och Stäng hello pom.xml fil.
 
-1. Öppna filen simulated-device\src\main\java\com\mycompany\app\App.java i en textredigerare.
+1. Använd en textredigerare och öppna hello simulated-device\src\main\java\com\mycompany\app\App.java filen.
 
-1. Lägg till följande **Import**-instruktioner i filen:
+1. Lägg till följande hello **importera** instruktioner toohello fil:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -100,7 +100,7 @@ I det här avsnittet skapar du en Java-konsolapp som svarar på en metod som anr
     import java.util.Scanner;
     ```
 
-1. Lägg till följande variabler på klassnivå till klassen **App**. Ersätta `{youriothubname}` med din IoT-hubbnamnet och `{yourdevicekey}` med nyckeln för enheten värde som du genererade i den *skapa en enhetsidentitet* avsnitt:
+1. Lägg till följande variabler klassen på toohello hello **App** klass. Ersätta `{youriothubname}` med din IoT-hubbnamnet och `{yourdevicekey}` hello enheten nyckelvärdet du genererade i hello *skapa en enhetsidentitet* avsnitt:
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myDeviceID;SharedAccessKey={yourdevicekey}";
@@ -110,21 +110,21 @@ I det här avsnittet skapar du en Java-konsolapp som svarar på en metod som anr
     private static final int METHOD_NOT_DEFINED = 404;
     ```
 
-    Den här exempelappen använder variabeln **protocol** när den instantierar ett **DeviceClient**-objekt. För närvarande för att använda direct-metoder måste du använda MQTT-protokollet.
+    Den här exempelappen använder hello **protokollet** variabeln när den instantierar en **DeviceClient** objekt. För närvarande direkt toouse metoder som du måste använda hello MQTT-protokollet.
 
-1. Lägg till följande kapslade klassen för att returnera en statuskod för din IoT-hubb i **App** klass:
+1. tooreturn en status kod tooyour IoT-hubb, Lägg till följande hello kapslad klass toohello **App** klass:
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
     {
       public void execute(IotHubStatusCode status, Object context)
       {
-        System.out.println("IoT Hub responded to device method operation with status " + status.name());
+        System.out.println("IoT Hub responded toodevice method operation with status " + status.name());
       }
     }
     ```
 
-1. Lägg till följande kapslade klassen för att hantera direkta metoden anrop från lösningens serverdel den **App** klass:
+1. toohandle hello direkta metoden anrop från hello lösningens serverdel, Lägg till följande hello kapslad klass toohello **App** klass:
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -153,7 +153,7 @@ I det här avsnittet skapar du en Java-konsolapp som svarar på en metod som anr
     }
     ```
 
-1. Så här skapar du en **DeviceClient** och lyssna efter direkta metoden anrop, lägga till en **huvudsakliga** metod för att den **App** klass:
+1. toocreate en **DeviceClient** och lyssna efter direkta metoden anrop, lägga till en **huvudsakliga** metoden toohello **App** klass:
 
     ```java
     public static void main(String[] args)
@@ -167,7 +167,7 @@ I det här avsnittet skapar du en Java-konsolapp som svarar på en metod som anr
       {
         client.open();
         client.subscribeToDeviceMethod(new DirectMethodCallback(), null, new DirectMethodStatusCallback(), null);
-        System.out.println("Subscribed to direct methods. Waiting...");
+        System.out.println("Subscribed toodirect methods. Waiting...");
       }
       catch (Exception e)
       {
@@ -176,7 +176,7 @@ I det här avsnittet skapar du en Java-konsolapp som svarar på en metod som anr
         System.out.println("Shutting down...");
       }
 
-      System.out.println("Press any key to exit...");
+      System.out.println("Press any key tooexit...");
       Scanner scanner = new Scanner(System.in);
       scanner.nextLine();
       scanner.close();
@@ -185,23 +185,23 @@ I det här avsnittet skapar du en Java-konsolapp som svarar på en metod som anr
     }
     ```
 
-1. Spara och stäng filen simulated-device\src\main\java\com\mycompany\app\App.java
+1. Spara och Stäng hello simulated-device\src\main\java\com\mycompany\app\App.java fil
 
-1. Skapa den **simulerade enheten** app och korrigera eventuella fel. Navigera till mappen simulerade enheten och kör följande kommando vid en kommandotolk:
+1. Skapa hello **simulerade enheten** app och korrigera eventuella fel. Navigera toohello simulerade enheten mappen och kör hello följande kommando vid en kommandotolk:
 
     `mvn clean package -DskipTests`
 
 ## <a name="call-a-direct-method-on-a-device"></a>Anropa en metod som direkt på en enhet
 
-I det här avsnittet skapar du en Java-konsolapp som anropar en direkt metod och visar sedan svaret. Den här konsolen appen ansluter till din IoT-hubb för att anropa metoden direkt.
+I det här avsnittet skapar du en Java-konsolapp som anropar en direkt metod och sedan visar hello svar. Den här appen konsolen ansluter tooyour IoT-hubb tooinvoke hello direkta metoden.
 
-1. I mappen iot-java-direct-metoden skapar du ett Maven-projekt som kallas **invoke-direct-metoden** med följande kommando vid en kommandotolk. Följande kommando är ett långt kommando:
+1. Skapa ett Maven-projekt som kallas i hello iot-java-direct-method mappen **invoke-direct-metoden** med hello följande kommando vid en kommandotolk. hello följande kommando är ett långt kommando:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=invoke-direct-method -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. Navigera till mappen invoke-direct-metod i en kommandotolk.
+1. Navigera toohello invoke-direct-method mapp i en kommandotolk.
 
-1. Med en textredigerare, öppna filen pom.xml i mappen invoke-direct-metoden och Lägg till följande beroende på den **beroenden** nod. Detta beroende kan du använda iot-service-klient-paketet i appen kommunicerar med IoT-hubben:
+1. Med en textredigerare, öppna hello pom.xml filen hello invoke-direct-method mapp och lägga till följande beroende toohello hello **beroenden** nod. Det här beroendet kan du toouse hello iot-service-klient paketet i din app toocommunicate med IoT-hubben:
 
     ```xml
     <dependency>
@@ -213,9 +213,9 @@ I det här avsnittet skapar du en Java-konsolapp som anropar en direkt metod och
     ```
 
     > [!NOTE]
-    > Du kan söka efter den senaste versionen av **iot-service-client** med [Maven-sökning][lnk-maven-service-search].
+    > Du kan söka efter hello senaste versionen av **iot tjänstklienten** med [Maven Sök][lnk-maven-service-search].
 
-1. Lägg till följande **skapa** noden efter den **beroenden** nod. Den här konfigurationen instruerar Maven använda Java 1.8 för att skapa appen:
+1. Lägg till följande hello **skapa** nod efter hello **beroenden** nod. Den här konfigurationen instruerar Maven toouse Java 1,8 toobuild hello app:
 
     ```xml
     <build>
@@ -233,11 +233,11 @@ I det här avsnittet skapar du en Java-konsolapp som anropar en direkt metod och
     </build>
     ```
 
-1. Spara och stäng filen pom.xml.
+1. Spara och Stäng hello pom.xml fil.
 
-1. Använd en textredigerare och öppna filen invoke-direct-method\src\main\java\com\mycompany\app\App.java.
+1. Använd en textredigerare och öppna hello invoke-direct-method\src\main\java\com\mycompany\app\App.java filen.
 
-1. Lägg till följande **Import**-instruktioner i filen:
+1. Lägg till följande hello **importera** instruktioner toohello fil:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.DeviceMethod;
@@ -248,7 +248,7 @@ I det här avsnittet skapar du en Java-konsolapp som anropar en direkt metod och
     import java.util.concurrent.TimeUnit;
     ```
 
-1. Lägg till följande variabler på klassnivå till klassen **App**. Ersätt `{youriothubconnectionstring}` med din IoT-hubb-anslutningssträng som du antecknade i den *skapar en IoT-hubb* avsnitt:
+1. Lägg till följande variabler klassen på toohello hello **App** klass. Ersätt `{youriothubconnectionstring}` med din IoT-hubb-anslutningssträng som du antecknade i hello *skapar en IoT-hubb* avsnitt:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -257,10 +257,10 @@ I det här avsnittet skapar du en Java-konsolapp som anropar en direkt metod och
     public static final String methodName = "writeLine";
     public static final Long responseTimeout = TimeUnit.SECONDS.toSeconds(30);
     public static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
-    public static final String payload = "a line to be written";
+    public static final String payload = "a line toobe written";
     ```
 
-1. Lägg till följande kod för att anropa metoden på den simulerade enheten den **huvudsakliga** metoden:
+1. tooinvoke hello metod på hello simulerade enheten, Lägg till följande kod toohello hello **huvudsakliga** metoden:
 
     ```java
     System.out.println("Starting sample...");
@@ -286,39 +286,39 @@ I det här avsnittet skapar du en Java-konsolapp som anropar en direkt metod och
     System.out.println("Shutting down sample...");
     ```
 
-1. Spara och stäng filen invoke-direct-method\src\main\java\com\mycompany\app\App.java
+1. Spara och Stäng hello invoke-direct-method\src\main\java\com\mycompany\app\App.java fil
 
-1. Skapa den **invoke-direct-method** app och korrigera eventuella fel. Navigera till mappen invoke-direct-metod i en kommandotolk och kör följande kommando:
+1. Skapa hello **invoke-direct-method** app och korrigera eventuella fel. Navigera toohello invoke-direct-method mappen och kör hello följande kommando vid en kommandotolk:
 
     `mvn clean package -DskipTests`
 
-## <a name="run-the-apps"></a>Kör apparna
+## <a name="run-hello-apps"></a>Köra hello appar
 
-Du är nu redo att köra konsolappar.
+Du är nu redo toorun hello konsolappar.
 
-1. Kör följande kommando för att börja lyssna efter metodanrop från din IoT-hubb i en kommandotolk i mappen simulerade enhet:
-
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
-
-    ![Java IoT-hubb simulerade enhetsapp att lyssna efter direkt metodanrop][8]
-
-1. Kör följande kommando för att anropa en metod för den simulerade enheten från din IoT-hubb i en kommandotolk i mappen invoke-direct-metoden:
+1. Kör hello efter kommandot toobegin lyssnar efter metodanrop från din IoT-hubb i en kommandotolk i hello simulerade enheten mapp:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![Java IoT-hubb service-appen för att anropa en direkt metod][7]
+    ![Java IoT-hubb simulerade enheten app toolisten för direkta metodanrop][8]
 
-1. Den simulerade enheten svarar på metodanropet direkt:
+1. Vid en kommandotolk i hello invoke-direct-method mappen kör hello efter kommandot toocall en metod på den simulerade enheten från din IoT-hubb:
 
-    ![Java IoT-hubb simulerade enhetsapp besvarar metodanropet direkt][9]
+    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+
+    ![Java IoT-hubb service app toocall direkt metod][7]
+
+1. hello simulerade enheten svarar toohello direkt metodanrop:
+
+    ![Java IoT-hubb simulerade enhetsapp svarar toohello direkt metodanrop][9]
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudiekursen konfigurerade du en ny IoT Hub på Azure Portal och skapade sedan en enhetsidentitet i IoT-hubbens identitetsregister. Denna enhetsidentitet använde för att aktivera appen simulerade enheten att ta hänsyn till metoder som anropas av molnet. Du kan också skapat en app som anropar metoder på enheten och visar svaret från enheten.
+I den här självstudiekursen konfigurerade en ny IoT-hubb i hello Azure-portalen och sedan skapa en enhetsidentitet i hello IoT hub identitetsregistret. Du har använt den här enheten identitet tooenable hello simulerade enheten app tooreact toomethods anropas av hello molnet. Skapade du även en app som anropar metoder på hello enhet och visar hello svar från hello enhet.
 
-Om du vill utforska andra IoT-scenarier finns [schemalägga jobb på flera enheter][lnk-devguide-jobs].
+tooexplore andra IoT-scenarier finns [schemalägga jobb på flera enheter][lnk-devguide-jobs].
 
-Information om hur du utökar din IoT-lösningen och schema metodanrop på flera enheter finns i [schema och broadcast jobb] [ lnk-tutorial-jobs] kursen.
+toolearn hur tooextend din IoT-lösningen och schema metodanrop på flera enheter, finns i hello [schema och broadcast jobb] [ lnk-tutorial-jobs] kursen.
 
 <!-- Images. -->
 [7]: ./media/iot-hub-java-java-direct-methods/invoke-method.png

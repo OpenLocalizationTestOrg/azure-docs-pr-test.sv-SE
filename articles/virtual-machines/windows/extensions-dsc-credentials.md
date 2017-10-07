@@ -1,6 +1,6 @@
 ---
-title: Autentiseringsuppgifter skickas till Azure med DSC | Microsoft Docs
-description: "Översikt över autentiseringsuppgifter skickas på ett säkert sätt till Azure virtuella datorer med hjälp av PowerShell Desired State Configuration"
+title: "aaaPassing autentiseringsuppgifter tooAzure använder DSC | Microsoft Docs"
+description: "Översikt för säker överföring av autentiseringsuppgifter tooAzure virtuella datorer med hjälp av PowerShell Desired State Configuration"
 services: virtual-machines-windows
 documentationcenter: 
 author: zjalexander
@@ -16,23 +16,23 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 09/15/2016
 ms.author: zachal
-ms.openlocfilehash: acd768c0219ec23c0453a65c575faf5213d9c616
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 306ecd3fd481f49a0beca5052fc7531a52999330
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="passing-credentials-to-the-azure-dsc-extension-handler"></a>Autentiseringsuppgifter skickas till Azure DSC-tillägg-hanterare
+# <a name="passing-credentials-toohello-azure-dsc-extension-handler"></a>Skicka autentiseringsuppgifter toohello Azure DSC-tillägg-hanterare
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-Den här artikeln beskriver Desired State Configuration-tillägget för Azure. En översikt över hanteraren för DSC-tillägg finns på [introduktion till Azure Desired State Configuration-tillägget hanteraren](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Den här artikeln beskriver hello Desired State Configuration-tillägg för Azure. En översikt över hanteraren för hello DSC-tillägg finns på [introduktion toohello Azure Desired State Configuration-tillägget hanteraren](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 ## <a name="passing-in-credentials"></a>Skicka i autentiseringsuppgifter
-Som en del av konfigurationsprocessen om du behöver konfigurera användarkonton, åtkomst till tjänster, eller installera ett program i en användarkontext. Om du vill göra detta måste du ange autentiseringsuppgifter. 
+Du kanske måste tooset som en del av konfigurationsprocessen för hello användarkonton, åtkomst till tjänster, eller installera ett program i en användarkontext. toodo detta, behöver du tooprovide autentiseringsuppgifter. 
 
-DSC tillåter parametriserade konfigurationer där autentiseringsuppgifterna skickades till konfigurationen och lagras på ett säkert sätt i MOF-filer. Azure-tillägget hanteraren förenklar hanteringen av autentiseringsuppgifter genom att tillhandahålla automatisk hantering av certifikat. 
+DSC tillåter parametriserade konfigurationer där autentiseringsuppgifterna skickades till hello konfiguration och lagras på ett säkert sätt i MOF-filer. hello Azure tillägget hanteraren förenklar hanteringen av autentiseringsuppgifter genom att tillhandahålla automatisk hantering av certifikat. 
 
-Tänk på följande DSC-konfigurationsskript som skapar ett lokalt konto med det angivna lösenordet:
+Tänk hello följande DSC-konfigurationsskript som skapar ett lokalt användarkonto med hello angivna lösenordet:
 
 *user_configuration.ps1*
 
@@ -60,13 +60,13 @@ configuration Main
 } 
 ```
 
-Det är viktigt att ha *nod localhost* som en del av konfigurationen. Om den här instruktionen saknas, fungerar inte följande steg som hanteraren tillägg specifikt söker efter nod localhost-instruktion. Det är också viktigt att inkludera den typecast *[PsCredential]*eftersom den här specifika typen utlöser tillägget för att kryptera autentiseringsuppgifterna. 
+Det är viktigt tooinclude *nod localhost* som en del av hello konfiguration. Om den här instruktionen saknas fungerar hello följande inte som hello tillägget hanterare specifikt söker efter hello nod localhost-instruktion. Det är också viktigt tooinclude hello typtilldelning av *[PsCredential]*eftersom den här specifika typen utlöser hello tillägget tooencrypt hello autentiseringsuppgifter. 
 
-Publicera det här skriptet till blob storage:
+Publicera det här skriptet tooblob lagring:
 
 `Publish-AzureVMDscConfiguration -ConfigurationPath .\user_configuration.ps1`
 
-Ange Azure DSC-tillägg och ange autentiseringsuppgifterna:
+Ange hello Azure DSC-tillägg och ange hello autentiseringsuppgifter:
 
 ```
 $configurationName = "Main"
@@ -80,16 +80,16 @@ $vm = Set-AzureVMDSCExtension -VM $vm -ConfigurationArchive $configurationArchiv
 $vm | Update-AzureVM
 ```
 ## <a name="how-credentials-are-secured"></a>Hur autentiseringsuppgifter skyddas
-Kör den här koden efterfrågar autentiseringsuppgifter. När det tillhandahålls lagras i minnet kort. När den publiceras med `Set-AzureVmDscExtension` cmdlet, den överförs via HTTPS till den virtuella datorn, där Azure lagrar den krypterade på disk, med det lokala VM-certifikatet. Det är sedan kort dekrypteras i minnet och krypteras igen om du vill skicka till DSC.
+Kör den här koden efterfrågar autentiseringsuppgifter. När det tillhandahålls lagras i minnet kort. När den publiceras med `Set-AzureVmDscExtension` cmdlet, den skickas över HTTPS toohello VM, där Azure lagrar den krypterade på disk som använder hello lokala VM-certifikat. Är en kort dekrypterade i minnet och omkrypterade toopass den tooDSC.
 
-Det här beteendet skiljer sig [använder säker konfigurationer utan tillägget hanteraren](https://msdn.microsoft.com/powershell/dsc/securemof). Azure-miljön gör att överföra konfigurationsdata på ett säkert sätt via certifikat. När du använder Hanteraren för DSC-tillägg, det finns ingen anledning att tillhandahålla $CertificatePath eller en $CertificateID / $Thumbprint post i ConfigurationData.
+Det här beteendet skiljer sig [använder säker konfigurationer utan hello tillägget hanterare](https://msdn.microsoft.com/powershell/dsc/securemof). hello Azure-miljön ger ett sätt tootransmit konfigurationsdata på ett säkert sätt via certifikat. När du använder Hanteraren för hello DSC-tillägg, det finns inget behov av tooprovide $CertificatePath eller en $CertificateID / $Thumbprint post i ConfigurationData.
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om Azure DSC-tillägg-hanteraren finns [introduktion till Azure Desired State Configuration-tillägget hanteraren](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Mer information om hello Azure DSC-tillägg-hanteraren finns [introduktion toohello Azure Desired State Configuration-tillägget hanteraren](extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
-Granska de [Azure Resource Manager-mall för DSC-tillägg](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Granska hello [Azure Resource Manager-mall för hello DSC-tillägg](extensions-dsc-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Mer information om PowerShell DSC [finns på PowerShell documentation center](https://msdn.microsoft.com/powershell/dsc/overview). 
+Mer information om PowerShell DSC [finns hello PowerShell Dokumentationscenter](https://msdn.microsoft.com/powershell/dsc/overview). 
 
-Du hittar ytterligare funktioner som du kan hantera med PowerShell DSC [Bläddra PowerShell-galleriet](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) mer DSC-resurser.
+toofind ytterligare funktioner som du kan hantera med PowerShell DSC [Bläddra hello PowerShell-galleriet](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) mer DSC-resurser.
 

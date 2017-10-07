@@ -1,5 +1,5 @@
 ---
-title: Azure CDN POP platser | Microsoft Docs
+title: "aaaAzure platser för CDN POP | Microsoft Docs"
 description: "Det här avsnittet visar Azure CDN punkt för förekomst-platserna."
 services: cdn
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7c13931aa6d17036e59674cdd917e3ca221ac57f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8f10afb12c168aa610f996f1e49b0ef133f2236a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-cdn-pop-locations"></a>Azure CDN POP-platser
 Det här avsnittet listar aktuell POP-platser för **Azure CDN från Verizon** och **Azure CDN från Akamai**.
@@ -26,7 +26,7 @@ Det här avsnittet listar aktuell POP-platser för **Azure CDN från Verizon** o
 > [!IMPORTANT]
 > \***Azure CDN från Akamai** POP platser inte ut individuellt.  
 > 
-> Båda providers har olika sätt för att skapa sina CDN-infrastrukturer.  Vi rekommenderar inte använder POP platser för att bestämma vilka Azure CDN produkt och i stället Överväg funktioner och prestanda för slutanvändaren.  Testa prestanda med både leverantörer att välja rätt Azure CDN-produkt för dina användare. 
+> Båda providers har olika sätt för att skapa sina CDN-infrastrukturer.  Vi rekommenderar mot att använda POP platser toodecide vilka Azure CDN produkten toouse och i stället Överväg funktioner och prestanda för slutanvändaren.  Testa hello prestanda med båda providers toochoose hello rätt Azure CDN produkt för dina användare. 
 > 
 > 
 
@@ -44,5 +44,5 @@ Det här avsnittet listar aktuell POP-platser för **Azure CDN från Verizon** o
 | Australien och Nya Zeeland |Melbourne, Australien<br />Sydney, Australien |**& #x 2713;**\* |
 
 ## <a name="see-also"></a>Se även
-* [Azure CDN Edge noder API för att hämta den senaste IP-adresser för vitlistning](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
+* [Azure CDN Edge noder API tooget senaste IP-adresser för vitlistning](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
 

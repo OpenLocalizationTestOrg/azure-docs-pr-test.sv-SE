@@ -1,6 +1,6 @@
 ---
-title: "Använda Batch-API:er och verktyg i Azure för att utveckla lösningar för storskalig parallellbearbetning | Microsoft Docs"
-description: "Läs mer om API:er och verktyg som är tillgängliga för utveckling av lösningar med Azure Batch-tjänsten."
+title: "aaaUse Azure Batch-API: er och verktyg toodevelop storskaliga parallellbearbetning lösningar | Microsoft Docs"
+description: "Läs mer om hello API: er och verktyg som finns tillgängliga för utveckling av lösningar med hello Azure Batch-tjänsten."
 services: batch
 author: tamram
 manager: timlt
@@ -8,33 +8,33 @@ ms.service: batch
 ms.topic: get-started-article
 ms.date: 03/08/2017
 ms.author: tamram
-ms.openlocfilehash: c8c76944f4a95d3c8181454a7103ea0a3022189a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ca75a1a63b3e7e6b0805e79a63685bc49aaaca8f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Översikt över Batch-API:er och verktyg
 
-Bearbetning av parallella arbetsbelastningar med Azure Batch görs normalt programmässigt med någon av [Batch-API:erna](#batch-development-apis). Ditt klientprogram eller -tjänst kan använda Batch-API:erna för att kommunicera med Batch-tjänsten. Med Batch-API:erna kan du skapa och hantera pooler för beräkningsnoder, antingen virtuella datorer eller molntjänster. Sedan kan du schemalägga jobb och uppgifter som ska köras på dessa noder. 
+Bearbetning av parallell arbetsbelastningar med Azure Batch normalt görs via programmering genom att använda en hello [Batch-API: er](#batch-development-apis). Klientprogrammet eller tjänsten kan använda hello Batch-API: er toocommunicate med hello Batch-tjänsten. Med hello Batch-API: er, kan du skapa och hantera pooler för compute-noder virtuella datorer eller molntjänster. Du kan sedan schemalägga jobb och aktiviteter toorun på noderna. 
 
-Du kan effektivt bearbeta storskaliga arbetsbelastningar för din organisation eller tillhandahålla en tjänstportal för dina kunder så att de kan köra jobb och aktiviteter (på begäran eller enligt ett schema) på en eller flera hundra tusen noder. Du kan också använda Azure Batch som en del av ett större arbetsflöde, med verktyg som [Azure Data Factory](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json).
+Du kan effektivt bearbeta stora arbetsbelastningar för din organisation, eller ange en service klientdel tooyour kunder så att de kan köra jobb och uppgifter – på begäran eller enligt ett schema--på ett, hundratals eller till och med tusentals noder. Du kan också använda Azure Batch som en del av ett större arbetsflöde, med verktyg som [Azure Data Factory](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json).
 
 > [!TIP]
-> När du är redo att fördjupa dig i Batch-API:et rekommenderar vi att du börjar med [Batch-funktionsöversikten för utvecklare](batch-api-basics.md).
+> När du är klar toodig i toohello Batch-API ha en djupare förståelse för hello funktioner den erbjuder, kolla hello [Batch funktionsöversikt för utvecklare](batch-api-basics.md).
 > 
 > 
 
 ## <a name="azure-accounts-for-batch-development"></a>Azure-konton för Batch-utveckling
-När du utvecklar Batch-lösningar använder du följande konton i Microsoft Azure.
+När du utvecklar Batch-lösningar använder du hello följande konton i Microsoft Azure.
 
 * **Azure-konto och Azure-prenumeration** – Om du inte redan har en Azure-prenumeration kan du aktivera din [MSDN-prenumerantförmån][msdn_benefits] eller registrera dig för ett [kostnadsfritt Azure-konto][free_account]. När du skapar ett konto skapas en standardprenumeration åt dig.
-* **Batch-konto** – Azure Batch-resurser, inklusive pooler, beräkningsnoder, jobb och aktiviteter, är associerade med ett Azure Batch-konto. Om programmet frågar mot batchtjänsten, autentiserar det begäran med hjälp av Azure Batch-kontonamnet, URL-adressen för kontot och en åtkomstnyckel. Du kan [skapa ett Batch-konto](batch-account-create-portal.md) i Azure Portal.
-* **Storage-konto** – Batch innehåller inbyggt stöd för att arbeta med filer i [Azure Storage][azure_storage]. Nästan alla Batch-scenarier använder Azure Blob Storage, dels för att mellanlagra programmen som dina aktiviteter kör och de data som de bearbetar, dels för att lagra de utdata som de genererar. Om du vill skapa ett Storage-konto läser du [Om Azure Storage-konton](../storage/common/storage-create-storage-account.md).
+* **Batch-konto** – Azure Batch-resurser, inklusive pooler, beräkningsnoder, jobb och aktiviteter, är associerade med ett Azure Batch-konto. När programmet gör en begäran mot hello Batch-tjänsten, autentiserar hello-begäran med hello Azure Batch-kontonamn, hello Webbadressen för hello-konto och en snabbtangent. Du kan [skapa Batch-konto](batch-account-create-portal.md) i hello Azure-portalen.
+* **Storage-konto** – Batch innehåller inbyggt stöd för att arbeta med filer i [Azure Storage][azure_storage]. Nästan alla Batch-scenario används Azure Blob storage för mellanlagring hello-program som körs i dina aktiviteter och hello data som de bearbeta och hello lagring av utdata som har skapats. toocreate ett lagringskonto finns [om Azure storage-konton](../storage/common/storage-create-storage-account.md).
 
 ## <a name="batch-service-apis"></a>API:er för Batch-tjänst
 
-Dina program och tjänster kan skicka direkta REST-API-anrop eller använda ett eller flera av följande klientbibliotek för att köra och hantera dina Azure Batch-arbetsbelastningar.
+Dina program och tjänster kan utfärda direkt REST API-anrop eller använda en eller flera av följande klienten bibliotek toorun hello och hantera Azure Batch-arbetsbelastningar.
 
 | API | API-referens | Ladda ned | Självstudier | Kodexempel | Mer information |
 | --- | --- | --- | --- | --- | --- |
@@ -46,7 +46,7 @@ Dina program och tjänster kan skicka direkta REST-API-anrop eller använda ett 
 
 ## <a name="batch-management-apis"></a>API:er för Batch Management
 
-Azure Resource Manager-API:erna för Batch ger programmatisk åtkomst till Batch-konton. Med hjälp av dessa API:er kan du programmatiskt hantera Batch-konton, kvoter och programpaket.  
+hello Azure Resource Manager API: erna för Batch ger Programmeringsåtkomst tooBatch konton. Med hjälp av dessa API:er kan du programmatiskt hantera Batch-konton, kvoter och programpaket.  
 
 | API | API-referens | Ladda ned | Självstudier | Kodexempel |
 | --- | --- | --- | --- | --- |
@@ -55,30 +55,30 @@ Azure Resource Manager-API:erna för Batch ger programmatisk åtkomst till Batch
 
 ## <a name="batch-command-line-tools"></a>Batch kommandoradsverktyg
 
-Dessa kommandoradsverktyg innehåller samma funktioner som Batch-tjänsten och API:erna för Batch Management: 
+Dessa verktyg ger hello samma funktioner som hello Batch-tjänsten och Batch Management API: er: 
 
-* [PowerShell-cmdlets för Batch ][batch_ps]: Du kan använda Azure Batch-cmdlets i [Azure PowerShell](/powershell/azure/overview)-modulen om du vill hantera Batch-resurser med PowerShell.
-* [Azure CLI](/cli/azure/overview): Azure-kommandoradsgränssnittet (Azure CLI) är en plattformsoberoende verktygsuppsättning som tillhandahåller shell-kommandon för interaktion med många Azure-tjänster, inklusive Batch-tjänsten och Batch Management-tjänsten. Mer information om hur du använder Azure CLI med Batch finns i [Hantera Batch-resurser med Azure CLI](batch-cli-get-started.md).
+* [Batch-PowerShell-cmdlets][batch_ps]: hello Azure Batch-cmdletar i hello [Azure PowerShell](/powershell/azure/overview) modulen aktivera toomanage Batch resurser med PowerShell.
+* [Azure CLI](/cli/azure/overview): hello Azure-kommandoradsgränssnittet (Azure CLI) är en plattformsoberoende verktyg som ger shell-kommandon för att interagera med många Azure-tjänster, inklusive hello Batch-tjänsten och Batch Management-tjänsten. Se [hantera Batch-resurser med Azure CLI](batch-cli-get-started.md) för mer information om hur du använder hello Azure CLI med Batch.
 
 ## <a name="other-tools-for-application-development"></a>Andra verktyg för programutveckling
 
 Här är några fler användbara verktyg för att skapa och felsöka Batch-program och tjänster:
 
-* [Azure Portal][portal]: Du kan skapa, övervaka och ta bort Batch-pooler, jobb och aktiviteter på Batch-bladet på Azure Portal. Du kan visa statusinformation för dessa och andra resurser när du kör dina jobb, och även ladda ned filer från beräkningsnoderna i dina pooler. Du kan till exempel ladda ned en misslyckad uppgifts `stderr.txt` vid felsökning. Du kan också hämta fjärrskrivbordsfiler (RDP) som du kan använda för att logga in till beräkningsnoder.
-* [Azure Batch Explorer][batch_explorer]: Batch Explorer tillhandahåller Batch-resurshanteringsfunktioner som liknar dem som Azure Portal tillhandahåller, men i ett fristående WPF-klientprogram (Windows Presentation Foundation). Ett av de Batch .NET-exempelprogram som är tillgängliga på [GitHub][github_samples] kan du skapa med Visual Studio 2015 eller senare och använda för att söka efter och hantera resurserna i ditt Batch-konto när du utvecklar och felsöker dina Batch-lösningar. Visa information om jobb, pooler och uppgifter från beräkningsnoder, och fjärranslut till noder med fjärrskrivbordsfiler (RDP) som du kan ladda ned med Batch Explorer.
-* [Microsoft Azure Storage Explorer][storage_explorer]: Även om det strikt sett inte är ett Azure Batch-verktyg är Storage Explorer ett annat värdefullt verktyg som du kan använda när du utvecklar och felsöker dina Batch-lösningar.
+* [Azure-portalen][portal]: du kan skapa, övervaka och ta bort Batch pooler, jobb och aktiviteter i hello Azure portalens Batch blad. Du kan visa hello statusinformation för dessa och andra resurser när du kör dina jobb och även hämta filer från hello compute-noder i din pooler. Du kan till exempel ladda ned en misslyckad uppgifts `stderr.txt` vid felsökning. Du kan också hämta RDP (Remote Desktop) filer som du kan använda toolog toocompute noder.
+* [Azure Batch Explorer][batch_explorer]: Batch Explorer ger liknande funktionalitet för Batch-resurs som hello Azure-portalen, men i en fristående klientprogrammet för Windows Presentation Foundation (WPF). En av hello Batch .NET exempelprogram finns på [GitHub][github_samples], kan du skapa den med Visual Studio 2015 eller nyare och använda den toobrowse och hantera hello resurser i Batch-kontot när du utvecklar och felsöka Batch-lösningar. Visa jobb, pool och aktivitetsinformation, hämta filer från datornoder och fjärranslutning toonodes med hjälp av fjärrskrivbord (RDP)-filer som du kan hämta med Batch Explorer.
+* [Microsoft Azure Lagringsutforskaren][storage_explorer]: men inte enbart ett Azure Batch-verktyg, hello Lagringsutforskaren är en annan ovärderligt verktyg toohave när du utvecklar och felsökning av Batch-lösningar.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-- Mer information om loggning av händelser från Batch-programmet finns i [Log events for diagnostic evaluation and monitoring of Batch solutions](batch-diagnostics.md) (Logga händelser för diagnostisk utvärdering och övervakning av Batch-lösningar). Information om händelser som utlöses av Batch-tjänsten finns i [Batchanalys](batch-analytics.md).
+- toolearn om loggning av händelser från Batch-program finns [loggar händelser för diagnostiska utvärdering och övervakning av Batch-lösningar](batch-diagnostics.md). En referens för händelser som skapats av hello Batch-tjänsten finns [Batchanalyser](batch-analytics.md).
 - Information om miljövariabler för beräkningsnoder finns i [Miljövariabler för Azure Batch-beräkningsnod](batch-compute-node-environment-variables.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Läs [Översikt över Batch-funktioner för utvecklare](batch-api-basics.md). Här finns viktig information för alla som tänker använda Batch. Artikeln innehåller mer detaljerad information om Batch-tjänstresurser som pooler, noder, jobb och uppgifter, och de många API-funktioner som du kan använda när du skapar ett Batch-program.
-* [Komma igång med Azure Batch-biblioteket för .NET](batch-dotnet-get-started.md) innehåller information om hur du använder C# och Batch .NET-biblioteket för att köra en enkel arbetsbelastning med ett vanligt Batch-arbetsflöde. Den här artikeln bör vara en av dina självklara utgångspunkter när du lär dig hur man använder Batch-tjänsten. Det finns även en [Python-version](batch-python-tutorial.md) av självstudien.
-* Hämta [kodexemplet på GitHub][github_samples] om du vill se hur både C# och Python kan användas med Batch för att schemalägga och bearbeta exempelarbetsbelastningar.
-* Ta en titt på [utbildningsvägen för Batch][learning_path] om du vill veta mer om de tillgängliga resurserna när du lär dig hur du arbetar med Batch.
+* Läs hello [Batch funktionsöversikt för utvecklare](batch-api-basics.md), viktig information för alla förbereder toouse Batch. hello artikeln innehåller mer detaljerad information om Batch-tjänsten resurser som pooler, noder, jobb och uppgifter och hello många API-funktioner som du kan använda när du skapar Batch-program.
+* [Kom igång med hello Azure Batch-biblioteket för .NET](batch-dotnet-get-started.md) toolearn hur toouse C# och hello Batch .NET-biblioteket tooexecute en enkel arbetsbelastning med hjälp av en gemensam Batch-arbetsflöde. Den här artikeln ska vara någon av dina första stopp då du lär dig hur toouse hello Batch-tjänsten. Det finns också en [Python-versionen](batch-python-tutorial.md) hello kursen.
+* Hämta hello [kodexempel på GitHub] [ github_samples] toosee hur både C# och Python kan samverka med Batch tooschedule och processen exempel arbetsbelastningar.
+* Kolla in hello [Batch Utbildningsväg] [ learning_path] tooget en uppfattning om hello resurser tillgängliga tooyou som du lär dig toowork med Batch.
 
 
 [azure_storage]: https://azure.microsoft.com/services/storage/

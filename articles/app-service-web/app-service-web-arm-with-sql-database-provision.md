@@ -1,6 +1,6 @@
 ---
-title: "Etablera ett webbprogram som använder en SQL-databas"
-description: "Använd en mall för Azure Resource Manager för att distribuera en webbapp som innehåller en SQL-databas."
+title: "aaaProvision ett webbprogram som använder en SQL-databas"
+description: "Använda en Azure Resource Manager mallen toodeploy en webbapp som innehåller en SQL-databas."
 services: app-service
 documentationcenter: 
 author: cephalin
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: cephalin
-ms.openlocfilehash: cc34f684f8c50e95a62cb7b04fd2ddce5deb68d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 189c0122d201e88f15013bf241d66652ef23df4e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="provision-a-web-app-with-a-sql-database"></a>Etablera ett webbprogram med en SQL-databas
-I det här avsnittet får du lära dig hur du skapar en Azure Resource Manager-mall som distribuerar en webbapp och SQL-databas. Du kommer lära dig hur du definierar vilka resurser har distribuerats och hur du definierar parametrar som anges när distributionen körs. Du kan använda den här mallen för dina egna distributioner eller anpassa den så att den uppfyller dina krav.
+I det här avsnittet får du lära dig hur toocreate en Azure Resource Manager-mall som distribuerar en webbapp och SQL-databas. Du får lära dig hur toodefine vilka resurser har distribuerats och hur toodefine parametrar som anges när hello distributionen körs. Du kan använda den här mallen för din egen distribution eller anpassa den toomeet dina krav.
 
 Mer information om hur du skapar mallar finns [redigera Azure Resource Manager-mallar](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Mer information om hur du distribuerar appar finns [distribuerar ett komplexa program förutsägbart i Azure](app-service-deploy-complex-application-predictably.md).
 
-Den fullständiga mallen finns [Web App med SQL Database mallen](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).
+Hello fullständig mall, se [Web App med SQL Database mallen](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -41,29 +41,29 @@ I den här mallen kan du distribuera:
 * Aviseringsregler
 * App Insights
 
-Klicka på följande knapp för att köra distributionen automatiskt:
+toorun Hej distributionen automatiskt, klickar du på följande knapp hello:
 
-[![Distribuera till Azure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
+[![Distribuera tooAzure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
 
-## <a name="parameters-to-specify"></a>Parametrar för att ange
+## <a name="parameters-toospecify"></a>Parametrarna toospecify
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 ### <a name="administratorlogin"></a>administratorLogin
-Namnet på kontot ska användas för server-databasadministratören.
+hello konto namnet toouse för hello databasadministratören för servern.
 
     "administratorLogin": {
       "type": "string"
     }
 
 ### <a name="administratorloginpassword"></a>administratorLoginPassword
-Lösenord för serveradministratören databasen.
+hello lösenord toouse för hello databasadministratören för servern.
 
     "administratorLoginPassword": {
       "type": "securestring"
     }
 
 ### <a name="databasename"></a>DatabaseName
-Namnet på den nya databasen att skapa.
+hello namnet på hello nya toocreate i databasen.
 
     "databaseName": {
       "type": "string",
@@ -71,7 +71,7 @@ Namnet på den nya databasen att skapa.
     }
 
 ### <a name="collation"></a>Sortering
-Databassorteringen för för rätt användning av tecken.
+hello databasen sorteringen toouse för styrande hello rätt användning av tecken.
 
     "collation": {
       "type": "string",
@@ -79,7 +79,7 @@ Databassorteringen för för rätt användning av tecken.
     }
 
 ### <a name="edition"></a>Edition
-Typ av databas för att skapa.
+hello typ av databas toocreate.
 
     "edition": {
       "type": "string",
@@ -90,12 +90,12 @@ Typ av databas för att skapa.
         "Premium"
       ],
       "metadata": {
-        "description": "The type of database to create."
+        "description": "hello type of database toocreate."
       }
     }
 
 ### <a name="maxsizebytes"></a>maxSizeBytes
-Den maximala storleken i byte för databasen.
+hello maximala storleken i byte för hello-databasen.
 
     "maxSizeBytes": {
       "type": "string",
@@ -103,7 +103,7 @@ Den maximala storleken i byte för databasen.
     }
 
 ### <a name="requestedserviceobjectivename"></a>requestedServiceObjectiveName
-Namnet som motsvarar prestandanivån för edition. 
+hello namn motsvarande toohello prestandanivån för edition. 
 
     "requestedServiceObjectiveName": {
       "type": "string",
@@ -118,12 +118,12 @@ Namnet som motsvarar prestandanivån för edition.
         "P3"
       ],
       "metadata": {
-        "description": "Describes the performance level for Edition"
+        "description": "Describes hello performance level for Edition"
       }
     }
 
 ## <a name="variables-for-names"></a>Variabler för namn
-Den här mallen innehåller variabler som skapar namn som används i mallen. Variabeln värden används den **uniqueString** funktion för att generera ett namn från resurs-id för gruppen.
+Den här mallen innehåller variabler som skapar namn som används i hello mallen. hello variabelvärden använda hello **uniqueString** fungerar toogenerate ett namn från hello grupp-ID: t.
 
     "variables": {
         "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -132,9 +132,9 @@ Den här mallen innehåller variabler som skapar namn som används i mallen. Var
     },
 
 
-## <a name="resources-to-deploy"></a>Resurser som ska distribueras
+## <a name="resources-toodeploy"></a>Resurser toodeploy
 ### <a name="sql-server-and-database"></a>SQLServer och databas
-Skapar en ny SQL Server och databas. Namnet på servern som har angetts i den **serverName** parameter och den plats som anges i den **serverLocation** parameter. När du skapar den nya servern, måste du ange ett inloggningsnamn och lösenord för serveradministratören databasen. 
+Skapar en ny SQL Server och databas. hello namn hello Server har angetts i hello **serverName** parametern och hello plats som anges i hello **serverLocation** parameter. När du skapar nya hello-servern, måste du ange ett inloggningsnamn och lösenord för server-databasadministratören hello. 
 
     {
       "name": "[variables('sqlserverName')]",
@@ -373,7 +373,7 @@ Skapar en ny SQL Server och databas. Namnet på servern som har angetts i den **
       },
       "properties": {
         "name": "[concat('CPUHigh ', variables('hostingPlanName'))]",
-        "description": "[concat('The average CPU is high across all the instances of ', variables('hostingPlanName'))]",
+        "description": "[concat('hello average CPU is high across all hello instances of ', variables('hostingPlanName'))]",
         "isEnabled": false,
         "condition": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
@@ -407,7 +407,7 @@ Skapar en ny SQL Server och databas. Namnet på servern som har angetts i den **
       },
       "properties": {
         "name": "[concat('LongHttpQueue ', variables('hostingPlanName'))]",
-        "description": "[concat('The HTTP queue for the instances of ', variables('hostingPlanName'), ' has a large number of pending requests.')]",
+        "description": "[concat('hello HTTP queue for hello instances of ', variables('hostingPlanName'), ' has a large number of pending requests.')]",
         "isEnabled": false,
         "condition": {
           "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
@@ -446,7 +446,7 @@ Skapar en ny SQL Server och databas. Namnet på servern som har angetts i den **
       }
     }
 
-## <a name="commands-to-run-deployment"></a>Kommandon för att köra distributionen
+## <a name="commands-toorun-deployment"></a>Kommandon toorun distribution
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
@@ -462,6 +462,6 @@ Skapar en ny SQL Server och databas. Namnet på servern som har angetts i den **
     az resource deployment create -g {resource-group-name} --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json --parameters '@azuredeploy.parameters.json'
 
 > [!NOTE]
-> Innehållet i JSON-fil med parametrar finns [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).
+> Innehållet i JSON-fil för hello parametrar finns [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.parameters.json).
 >
 >

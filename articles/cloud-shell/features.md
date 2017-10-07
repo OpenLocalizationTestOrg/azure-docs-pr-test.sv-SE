@@ -1,5 +1,5 @@
 ---
-title: "Funktioner för Azure Cloud Shell (förhandsversion) | Microsoft Docs"
+title: "funktioner för aaaAzure moln Shell (förhandsversion) | Microsoft Docs"
 description: "Översikt över funktioner i Azure Cloud Shell"
 services: 
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: juluk
-ms.openlocfilehash: 67f03d5857e37b253ac57536e289b5468d69e9b5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 65482ca6caeac01dda18a6b12eabe943e3d68a96
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="features-and-tools-for-azure-cloud-shell"></a>Funktioner och verktyg för Azure-molnet Shell
-Azure Cloud-gränssnittet är en webbläsarbaserad shell-upplevelse för att hantera och utveckla Azure-resurser.
+Azure Cloud-gränssnittet är ett webbaserat gränssnitt upplevelse toomanage och utveckla Azure-resurser.
 
-Molnet Shell erbjuder en webbläsare tillgänglig, förkonfigurerade shell-upplevelse för att hantera Azure-resurser utan att behöva installera, versionshantering, och underhålla en dator själv.
+Molnet Shell erbjuder en webbläsare tillgängligt, förkonfigurerade shell-upplevelse för att hantera Azure-resurser utan hello arbetet med att installera, versionshantering, och underhålla en dator själv.
 
 Molnet Shell etablerar datorer på grundval av per begäran och därför datortillståndet kommer inte att spara mellan sessioner. Eftersom moln-gränssnittet är utformat för interaktiva sessioner, avsluta tankar automatiskt efter 20 minuters inaktivitet shell.
 
@@ -50,14 +50,14 @@ Molnet Shell etablerar datorer på grundval av per begäran och därför datorti
 |Python     |2.7 och 3.5 (standard)|
 
 ## <a name="secure-automatic-authentication"></a>Säker automatisk autentisering
-Moln-gränssnittet autentiserar på ett säkert sätt och automatiskt kontoåtkomst för Azure CLI 2.0.
+Moln-gränssnittet autentiserar på ett säkert sätt och automatiskt kontoåtkomst för hello Azure CLI 2.0.
 
 ## <a name="azure-files-persistence"></a>Azure filer beständiga
 Eftersom molnet Shell fördelas på grundval av per begäran med hjälp av en temporär dator är filer utanför din $Home och datorn tillstånd inte beständiga mellan sessioner.
-För att bevara filer mellan sessioner vägleder dig genom att koppla en Azure-filresursen startas för första i molnet Shell.
+toopersist filer mellan sessioner, molnet Shell får du genom att bifoga en fil som Azure dela startas för första.
 När du är klar molnet Shell koppla automatiskt lagringen för alla framtida sessioner.
 
-[Mer information om hur du kopplar Azure-filresurser till molnet Shell.](persisting-shell-storage.md)
+[Mer information om hur du kopplar Azure file resurser tooCloud Shell.](persisting-shell-storage.md)
 
 ## <a name="next-steps"></a>Nästa steg
 [Molnet Shell Snabbstart](quickstart.md) <br>

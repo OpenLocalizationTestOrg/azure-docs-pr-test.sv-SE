@@ -1,6 +1,6 @@
 ---
-title: "Publicera en app för vår start som en dockerbehållare med hjälp av Azure-verktygen för Eclipse | Microsoft Docs"
-description: "Lär dig hur du publicerar ett webbprogram till Microsoft Azure som en dockerbehållare med hjälp av Azure-verktygen för Eclipse."
+title: "aaaPublish en start av vår app som en dockerbehållare med hjälp av hello Azure Toolkit för Eclipse | Microsoft Docs"
+description: "Lär dig hur toopublish en web app tooMicrosoft Azure som en dockerbehållare med hjälp av hello Azure Toolkit för Eclipse."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,27 +14,27 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: robmcm
-ms.openlocfilehash: fcb60fcfbda26f5f37bfb0edcb01f8737188b6bc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 29390c49c339a1ebb87cb3951b21cea01c0da15f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="publish-a-spring-boot-app-as-a-docker-container-by-using-the-azure-toolkit-for-eclipse"></a>Publicera en app för vår start som en dockerbehållare med hjälp av Azure-verktygen för Eclipse
+# <a name="publish-a-spring-boot-app-as-a-docker-container-by-using-hello-azure-toolkit-for-eclipse"></a>Publicera en start av vår app som en dockerbehållare med hello Azure Toolkit för Eclipse
 
-Den [Vårversionen Framework] är en öppen källkod som hjälper till att Java-utvecklare som skapar program på företagsnivå. En av de mer populära projekt som bygger som plattform är [Vårversionen Start], vilket ger en förenklad metod för att skapa fristående Java-program.
+Hej [Vårversionen Framework] är en öppen källkod som hjälper till att Java-utvecklare som skapar program på företagsnivå. En mer populära hello-projekt som är inbyggd som plattform är [Vårversionen Start], vilket ger en förenklad metod för att skapa fristående Java-program.
 
-[Docker] är en lösning för öppen källkod som gör att utvecklare kan automatisera distribution, skalning och hanteringen av sina program som körs i behållare.
+[Docker] är en lösning för öppen källkod som gör att utvecklare kan automatisera hello distribution, skalning och hanteringen av sina program som körs i behållare.
 
-Den här självstudiekursen vägleder dig genom stegen för att distribuera en källan startprogrammet som en dockerbehållare till Microsoft Azure med hjälp av Azure-verktygen för Eclipse.
+Den här självstudiekursen vägleder dig genom hello steg toodeploy en källan startprogrammet som en Docker-behållare tooMicrosoft Azure med hjälp av hello Azure Toolkit för Eclipse.
 
 [!INCLUDE [azure-toolkit-for-eclipse-prerequisites](../includes/azure-toolkit-for-eclipse-prerequisites.md)]
 
-## <a name="clone-the-default-spring-boot-docker-repository"></a>Klona lagringsplatsen standard källan Start Docker
+## <a name="clone-hello-default-spring-boot-docker-repository"></a>Klona hello standarddatabas källan Start Docker
 
-### <a name="import-the-public-repository"></a>Importera den offentliga lagringsplatsen
+### <a name="import-hello-public-repository"></a>Importera hello offentliga lagringsplats
 
-Följande steg vägleder dig genom kloning källan Start Docker-databasen till den lokala datorn med hjälp av IntelliJ. Om du vill använda en kommandorad Se [distribuerar ett källan Start-program på Linux i Azure Container Service][Deploy Spring Boot on Linux in ACS].
+hello vägleder följande steg dig genom kloning hello källan Start Docker databasen tooyour lokala datorn med hjälp av IntelliJ. Om du vill toouse kommandoraden finns [distribuerar ett källan Start-program på Linux i Azure Container Service][Deploy Spring Boot on Linux in ACS].
 
 1. Öppna Eclipse.
 
@@ -42,7 +42,7 @@ Följande steg vägleder dig genom kloning källan Start Docker-databasen till d
 
    ![Importera Arkivmenyn][CL01]
 
-1. När den **importera** öppnas:
+1. När hello **importera** öppnas:
 
    a. Expandera **Git**.
 
@@ -52,7 +52,7 @@ Följande steg vägleder dig genom kloning källan Start Docker-databasen till d
 
    ![Dialogrutan Importera][CL02]
 
-1. På den **Välj Lagerkälla** sidan:
+1. På hello **Välj Lagerkälla** sidan:
 
    a. Välj **klona URI**.
    
@@ -60,37 +60,37 @@ Följande steg vägleder dig genom kloning källan Start Docker-databasen till d
 
    ![Välj Lagerkälla sida][CL03]
 
-1. På den **Git-Lagerkälla** sidan:
+1. På hello **Git-Lagerkälla** sidan:
 
-   a. För **URI**, ange `https://github.com/spring-guides/gs-spring-boot-docker.git`. Det här steget ska automatiskt fylla i den **värden** och **databassökvägen** fält med rätt värden.
+   a. För **URI**, ange `https://github.com/spring-guides/gs-spring-boot-docker.git`. Det här steget ska automatiskt fylla i hello **värden** och **databassökvägen** fält med hello korrigera värden.
    
-   b. Källan Start-databasen är offentliga så bör du inte ange Git-användarnamn och lösenord.
+   b. hello källan Start databas är offentliga så du inte bör ha tooenter Git användarnamn och lösenord.
    
    c. Klicka på **Nästa**.
 
    ![Datakälla på sidan för Git-lagringsplats][CL04]
 
-1. På den **val av gren** klickar du på **nästa**.
+1. På hello **val av gren** klickar du på **nästa**.
 
    ![Sidan för val av gren][CL05]
 
-1. På den **lokal Destination** sidan:
+1. På hello **lokal Destination** sidan:
 
-   a. Ange den lokala mappen där du vill att din lokala lagringsplatsen.
+   a. Ange hello lokala mappen där du vill att din lokala lagringsplatsen.
    
    b. Klicka på **Nästa**.
 
    ![Lokala målsida][CL06]
 
-1. På den **Välj en guide för importprojekt** sidan:
+1. På hello **väljer en toouse guide för importprojekt** sidan:
 
    a. Välj **Import som ett allmänt projekt**.
    
    b. Klicka på **Nästa**.
 
-   ![På sidan ”Välj en guide för importprojekt”][CL07]
+   ![På sidan ”Välj ett toouse guide för importprojekt”][CL07]
 
-1. På den **Importera projekt** sidan:
+1. På hello **Importera projekt** sidan:
 
    a. Ange ditt projektnamn.
    
@@ -98,19 +98,19 @@ Följande steg vägleder dig genom kloning källan Start Docker-databasen till d
 
    ![Importera projekt sida][CL08]
 
-1. När databasen är klonad lyckas, ser du alla filer i Eclipse.
+1. När hello databasen är klonad lyckas, ser du alla hello filer i Eclipse.
 
    ![Lokal databas][CL09]
 
 ### <a name="create-a-maven-project-from-your-local-repository"></a>Skapa ett Maven-projekt från din lokala databas
 
-Källan Start Docker-databasen innehåller en slutförd Maven-projekt som du ska använda för den här självstudiekursen. 
+hello källan Start Docker-databasen innehåller en slutförd Maven-projekt som du ska använda för den här självstudiekursen. 
 
 1. Klicka på **filen** > **importera**.
 
-   ![Importkommandot på Arkiv-menyn][CL01]
+   ![Importkommando hello Arkiv-menyn][CL01]
 
-1. När den **importera** öppnas:
+1. När hello **importera** öppnas:
 
    a. Expandera **Maven**.
    
@@ -120,83 +120,83 @@ Källan Start Docker-databasen innehåller en slutförd Maven-projekt som du ska
 
    ![Dialogrutan Importera][MV01]
 
-1. På den **Maven-projekt** sidan:
+1. På hello **Maven-projekt** sidan:
 
-   a. För **rotkatalog**, ange den **fullständig** mappen i lokala databasen.
+   a. För **rotkatalog**, ange hello **fullständig** mappen i lokala databasen.
    
-   b. Expandera den **Avancerat** , och ange ett eget namn för **mall**.
+   b. Expandera hello **Avancerat** , och ange ett eget namn för **mall**.
    
-   c. Markera kryssrutan för den **pom.xml** filen i projektet.
+   c. Välj hello rutan för hello **pom.xml** fil i hello-projekt.
    
    d. Klicka på **Slutför**.
 
    ![Sidan för maven-projekt][MV02]
 
-1. När Maven-projekt öppnas har, kan du se ett andra projekt i Eclipse.
+1. När hello Maven-projekt öppnas har, kan du se ett andra projekt i Eclipse.
 
    ![Lokala Maven-projekt][MV03]
 
 ## <a name="build-your-spring-boot-app-by-using-maven"></a>Skapa din app för vår start med hjälp av Maven
 
-1. Välj Maven-projekt i Projektutforskaren Eclipse.
+1. Välj hello Maven-projekt i hello Eclipse Projektutforskaren.
 
 1. Klicka på **kör** > **kör som** > **Maven build**.
 
-   ![Skapa kommandon som ska köras som Maven][BU01]
+   ![Kommandon toorun som Maven build][BU01]
 
-1. När programmet har har skapat, visas statusen i konsolfönstret.
+1. När programmet är skapat visar hello konsolfönstret hello status.
 
    ![Lyckad Maven-version][BU02]
 
-## <a name="publish-your-web-app-to-azure-by-using-a-docker-container"></a>Publicera webbappen till Azure med hjälp av en dockerbehållare
+## <a name="publish-your-web-app-tooazure-by-using-a-docker-container"></a>Publicera din web app tooAzure med hjälp av en dockerbehållare
 
-1. Välj Maven-projekt i Projektutforskaren Eclipse.
+1. Välj hello Maven-projekt i hello Eclipse Projektutforskaren.
 
-1. Klicka på Azure **publicera** -menyn och klicka sedan på **Publicera som Dockerbehållare**.
+1. Klicka på hello Azure **publicera** -menyn och klicka sedan på **Publicera som Dockerbehållare**.
 
    ![Publicera som Dockerbehållare kommando][PU01]
 
-1. När den **distribuera Dockerbehållare på Azure** dialogrutan visas:
+1. När hello **distribuera Dockerbehållare på Azure** dialogrutan visas:
 
    a. Ange ett eget namn för Docker-bild.
    
-   b. För **artefakt att distribuera**, ange sökvägen till den **gs-källan-Start-docker-0.1.0.jar** filen som du precis har skapat.
+   b. För **artefakt toodeploy**, ange hello sökvägen toohello **gs-källan-Start-docker-0.1.0.jar** filen som du precis har skapat.
 
    ![Ange alternativ för Docker][PU02]
 
    Alla befintliga Docker-värdar visas. 
 
-1. Om du vill distribuera till en befintlig värd kan du gå vidare till steg 5. Annars använder du följande steg för att skapa en värd:
+1. Om du väljer toodeploy tooan befintliga värden kan du hoppa över toostep 5. Annars Använd hello följande steg toocreate en värd:
 
    a. Klicka på **Lägg till**.
 
       ![Lägga till en ny Docker-värd][PU03]
 
-   b. När den **skapa Docker värden** dialogrutan visas, kan du acceptera standardinställningarna och du kan ange anpassade inställningar för din nya Docker-värden. (Detaljerade beskrivningar av olika inställningar finns i [publicera ett webbprogram som en dockerbehållare med hjälp av Azure-verktyget för IntelliJ][Publish Container with Azure Toolkit].) Klicka på **nästa** när du har angett vilka inställningar som ska användas.
+   b. När hello **skapa Docker värden** dialogrutan visas, kan du välja tooaccept hello standardinställningar eller du kan ange anpassade inställningar för din nya Docker-värden. (Detaljerade beskrivningar av hello olika inställningar, finns i [publicera ett webbprogram som en dockerbehållare med hello Azure Toolkit för IntelliJ][Publish Container with Azure Toolkit].) Klicka på **nästa** när du har angett vilka inställningar toouse.
 
       ![Ange alternativ för Docker-värden][PU04]
 
-   c. Du kan välja att använda befintliga autentiseringsuppgifter för inloggning från en Azure key vault eller du kan välja att ange nya autentiseringsuppgifter för Docker. Klicka på **Slutför** när du har angett dina alternativ.
+   c. Du kan välja toouse befintliga autentiseringsuppgifter för inloggning från en Azure key vault eller du tooenter nya Docker-inloggningsuppgifter. Klicka på **Slutför** när du har angett dina alternativ.
 
       ![Ange autentiseringsuppgifter för Docker-värden][PU05]
 
 1. Välj Docker-värd och klicka sedan på **nästa**.
 
-   ![Välj Docker-värden ska använda][PU06]
+   ![Välj Docker värden toouse][PU06]
 
-1. På den sista sidan i den **distribuera Dockerbehållare på Azure** dialogrutan anger du följande alternativ:
+1. På hello sista sidan i hello **distribuera Dockerbehållare på Azure** dialogrutan Ange hello följande alternativ:
 
-   a. Du kan välja att ange ett eget namn för den behållare som är värd för din dockerbehållare eller du kan acceptera standardinställningarna.
+   a. Du kan välja toospecify ett eget namn för hello-behållare som är värd för din dockerbehållare eller du kan acceptera hello standard.
 
-   b. Ange TCP-portar för docker-värden med följande syntax: *[extern port]*:*[Intern port]*. Till exempel **80:8080** anger en extern port 80 och interna källan Start standardporten 8080.
+   b. Ange hello TCP-portar för docker-värden med hjälp av hello följande syntax: *[extern port]*:*[Intern port]*. Till exempel **80:8080** anger ett extern port 80 och hello interna källan Start standardporten 8080.
    
-      Om du har anpassat en intern port (t.ex, genom att redigera filen application.yml), måste du ange portnumret för rätt routning i Azure.
+      Om du har anpassat en intern port (t.ex, genom att redigera hello application.yml filen), behöver du toospecify hello-portnumret för hello rätt routning toooccur i Azure.
 
    c. När du konfigurerar dessa alternativ klickar du på **Slutför**.
 
    ![Distribuera en dockerbehållare på Azure][PU07]
 
-1. När Azure Toolkit har publicerats visas Azure-aktivitetsloggen **publicerade** status.
+1. När hello Azure Toolkit har publicerats hello Azure-aktivitetsloggen visar **publicerade** hello status.
 
    ![Distribuera Docker-värden][PU08]
 

@@ -1,6 +1,6 @@
 ---
-title: "PowerShell exempel-restore-säkerhetskopiering – Azure SQL database | Microsoft Docs"
-description: "Azure PowerShell-exempelskript för att återställa en Azure SQL database från geo-redundant säkerhetskopieringar"
+title: "aaaPowerShell exempel-restore-säkerhetskopiering – Azure SQL database | Microsoft Docs"
+description: "Azure PowerShell exempel skriptet toorestore en Azure SQL database från säkerhetskopior geo-redundant"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -16,25 +16,25 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.openlocfilehash: ae1d0c828ae1e7e1e7e07dcc7d6157187a3859d3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 68becb89e8a8680aa2efc3de8ad947e674c5fc35
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-powershell-to-restore-an-azure-sql-database-from-backups"></a>Använd PowerShell för att återställa en Azure SQL database från säkerhetskopior
+# <a name="use-powershell-toorestore-an-azure-sql-database-from-backups"></a>Använd PowerShell toorestore en Azure SQL database från säkerhetskopior
 
-Exempel på detta PowerShell-skript återställer en Azure SQL-databas från en geo-redundant säkerhetskopia, återställer en borttagen Azure SQL-databas till den senaste säkerhetskopian och återställer en Azure SQL database till en specifik tidpunkt.  
+Exempel på detta PowerShell-skript återställer en Azure SQL-databas från en geo-redundant säkerhetskopia, återställer en borttagen Azure SQL database tooits senaste säkerhetskopiering och återställer en viss punkt för Azure SQL database tooa i tid.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-powershell[huvudsakliga](../../../powershell_scripts/sql-database/restore-database/restore-database.ps1?highlight=17-18 "skapa SQL-databas")]
+[!code-powershell[main](../../../powershell_scripts/sql-database/restore-database/restore-database.ps1?highlight=17-18 "Create SQL Database")]
 
 ## <a name="clean-up-deployment"></a>Rensa distribution
 
-Följande kommando kan användas för att ta bort resursgruppen och alla resurser som är associerade med den efter skriptexempel har körts.
+Efter hello skriptexempel har körts, kan det vara hello följande kommando används tooremove hello resursgruppen och alla resurser som är kopplade till den.
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
@@ -42,7 +42,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
@@ -56,6 +56,6 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure PowerShell finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
+Mer information om hello Azure PowerShell finns [Azure PowerShell dokumentationen](/powershell/azure/overview).
 
-Ytterligare exempel för SQL Database PowerShell-skript finns i den [Azure SQL Database PowerShell-skript](../sql-database-powershell-samples.md).
+Ytterligare exempel för SQL Database PowerShell-skript finns i hello [Azure SQL Database PowerShell-skript](../sql-database-powershell-samples.md).

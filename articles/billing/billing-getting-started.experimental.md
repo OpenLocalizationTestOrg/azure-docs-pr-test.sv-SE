@@ -1,6 +1,6 @@
 ---
-title: "Förhindra att oväntade kostnader, hantera fakturerings - Azure | Microsoft Docs"
-description: "Lär dig att undvika oväntade debiteringar på fakturan Azure. Använda funktionerna för hantering och uppföljning av kostnaden för en Microsoft Azure-prenumeration."
+title: "aaaPrevent oväntat kostnader, hantera fakturerings - Azure | Microsoft Docs"
+description: "Lär dig hur tooavoid oväntat avgifter på fakturan Azure. Använda funktionerna för hantering och uppföljning av kostnaden för en Microsoft Azure-prenumeration."
 services: 
 documentationcenter: 
 author: tonguyen10
@@ -15,116 +15,116 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/10/2017
 ms.author: tonguyen
-ms.openlocfilehash: c1185063880fa58da9487bc98977c0acae8f403d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d380f27861531351ac8e570469c59a84b9ca99e8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Förhindra oväntat avgifter med Azure fakturerings- och kostnaden management
 
-När du registrerar dig för Azure finns det flera saker du kan göra för att få en bättre uppfattning av dina utgifter. Den [prisnivå Kalkylatorn](https://azure.microsoft.com/pricing/calculator/) kan ge en uppskattning av kostnaderna innan du skapar en Azure-resurs. Den [Azure-portalen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ger du den aktuella kostnadsuppdelning och prognos för din prenumeration. Om du vill gruppera och förstå kostnaderna för olika projekt eller team titta på [resurs taggning](../azure-resource-manager/resource-group-using-tags.md). Om din organisation har ett rapporteringssystem som du föredrar att använda, ta en titt på [fakturering API: er](billing-usage-rate-card-overview.md). 
+När du registrerar dig för Azure finns det flera saker du kan göra tooget en bättre uppfattning av dina utgifter. Hej [prisnivå Kalkylatorn](https://azure.microsoft.com/pricing/calculator/) kan ge en uppskattning av kostnaderna innan du skapar en Azure-resurs. Hej [Azure-portalen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ger dig hello aktuella kostnadsuppdelning och prognos för din prenumeration. Om du vill toogroup och förstå kostnaderna för olika projekt eller team titta på [resurs taggning](../azure-resource-manager/resource-group-using-tags.md). Om din organisation har ett rapporteringssystem som du föredrar toouse, kolla hello [fakturering API: er](billing-usage-rate-card-overview.md). 
 
-Du kan också [hämta gamla fakturor och användningsfiler i detalj](billing-download-azure-invoice-daily-usage-date.md) att se till att du har korrekt debiteras. Mer information om att jämföra det dagliga arbetet med fakturan finns [förstå fakturan för Microsoft Azure](billing-understand-your-bill.md).
+Du kan också [hämta gamla fakturor och användningsfiler i detalj](billing-download-azure-invoice-daily-usage-date.md) toomake att du har korrekt debiteras. Mer information om att jämföra det dagliga arbetet med fakturan finns [förstå fakturan för Microsoft Azure](billing-understand-your-bill.md).
 
-Om din prenumeration via en Enterprise-avtal (EA), Cloud Solution Providers (CSP) eller Azure sponsring gäller inte många funktioner i den här artikeln för dig. I stället har vi en annan uppsättning av verktyg som du kan använda för hantering av kostnaden. Se [ytterligare resurser för EA och CSP sponsring](#other-offers).
+Om din prenumeration via en Enterprise-avtal (EA), Cloud Solution Providers (CSP) eller Azure sponsring gäller inte många funktioner i den här artikeln tooyou. I stället har vi en annan uppsättning av verktyg som du kan använda för hantering av kostnaden. Se [ytterligare resurser för EA och CSP sponsring](#other-offers).
 
-Om din prenumeration är en kostnadsfri utvärderingsversion [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure i Open (AIO) eller BizSpark, din prenumeration inaktiveras automatiskt när din kredit används. Lär dig mer om [utgiftsgränser](#spending-limit) för att undvika att din prenumeration unexpectantly inaktiverad. 
+Om din prenumeration är en kostnadsfri utvärderingsversion [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure i Open (AIO) eller BizSpark, din prenumeration inaktiveras automatiskt när din kredit används. Lär dig mer om [utgiftsgränser](#spending-limit) tooavoid med din prenumeration unexpectantly inaktiverad. 
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Hämta uppskattade kostnaderna innan du lägger till Azure-tjänster
 
-### <a name="estimate-cost-online-using-the-pricing-calculator"></a>Beräkna kostnaden med hjälp av prisnivå Kalkylatorn
+### <a name="estimate-cost-online-using-hello-pricing-calculator"></a>Uppskattade kostnaden online med hello prisnivå Kalkylatorn
 
-Kolla in den [prisnivå Kalkylatorn](https://azure.microsoft.com/pricing/calculator/) att hämta en månatlig uppskattade kostnaden för tjänsten som du är intresserad av. Du kan lägga till en första part Azure-resurs för att få en uppskattning kostnad.
+Kolla in hello [prisnivå Kalkylatorn](https://azure.microsoft.com/pricing/calculator/) tooget en månatlig uppskattade kostnaden för hello-tjänsten som du är intresserad av. Du kan lägga till alla första part Azure-resurs tooget en uppskattning kostnad.
 
-![Skärmbild av menyn prisnivå Kalkylatorn](./media/billing-getting-started/pricing-calc.png)
+![Skärmbild av hello priser Kalkylatorn menyn](./media/billing-getting-started/pricing-calc.png)
 
-Till exempel uppskattas A1 Windows virtuell dator (VM) kostnaden $66.96 USD per månad i beräkningstimmar om du låter rutan vara igång hela tiden:
+A1 Windows virtuell dator (VM) är till exempel uppskattade toocost $66.96 USD per månad i compute timmar om du låter rutan vara igång hela tiden för hello:
 
-![Skärmbild av prisnivå Kalkylatorn visar att en A1 Windows VM bedöms kostnad $66.96 USD per månad](./media/billing-getting-started/pricing-calcVM.png)
+![Skärmbild av hello prisnivå Kalkylatorn visar att en A1 Windows VM är uppskattade toocost $66.96 USD per månad](./media/billing-getting-started/pricing-calcVM.png)
 
-Mer information om priser finns [vanliga frågor och svar](https://azure.microsoft.com/pricing/faq/). Eller om du vill kommunicera med en Azure säljare kontakta 1-800-867-1389.
+Mer information om priser finns [vanliga frågor och svar](https://azure.microsoft.com/pricing/faq/). Eller om du vill tootalk tooan Azure säljare, kontakta 1-800-867-1389.
 
-### <a name="review-the-estimated-cost-in-the-azure-portal"></a>Granska den beräknade kostnaden i Azure-portalen
+### <a name="review-hello-estimated-cost-in-hello-azure-portal"></a>Granska hello uppskattade kostnaden i hello Azure-portalen
 
-När du lägger till en tjänst i Azure-portalen, är det vanligtvis en vy som visar en liknande uppskattade kostnaden per månad. Till exempel när du väljer storleken på din Windows-VM visas månatliga uppskattade kostnaden för beräkningstimmar:
+När du lägger till en tjänst i hello Azure-portalen, är det vanligtvis en vy som visar en liknande uppskattade kostnaden per månad. Till exempel när du väljer hello storleken på din Windows-VM visas hello beräknade månadskostnaden för hello beräkningstimmar:
 
-![Exempel: en A1 Windows VM bedöms kostnad $66.96 USD per månad](./media/billing-getting-started/vm-size-cost.PNG)
+![Exempel: en A1 Windows VM är uppskattade toocost $66.96 USD per månad](./media/billing-getting-started/vm-size-cost.PNG)
 
 ### <a name="set-up-billing-alerts"></a>Ställa in faktureringsvarningar
 
-Konfigurera fakturaaviseringar för att få e-postmeddelanden när förbrukningskostnader överskrider ett belopp som du anger. Om du har månatliga krediter ställa in aviseringar för när du använder upp en angiven mängd. Mer information finns i [konfigurera fakturering aviseringar för Microsoft Azure-prenumerationer](billing-set-up-alerts.md).
+Ställ in fakturaaviseringar tooget e-postmeddelanden när förbrukningskostnader överskrider ett belopp som du anger. Om du har månatliga krediter ställa in aviseringar för när du använder upp en angiven mängd. Mer information finns i [konfigurera fakturering aviseringar för Microsoft Azure-prenumerationer](billing-set-up-alerts.md).
 
 ![Skärmbild av e-post för fakturering avisering](./media/billing-getting-started/billing-alert.png)
 
 > [!NOTE]
 > Den här funktionen är fortfarande under förhandsgranskning så du bör regelbundet kontrollera din användning.
 
-Du kanske vill använda kostnadsuppskattning från prisnivå Kalkylatorn som en riktlinje för din första aviseringen.
+Du kanske vill toouse hello kostnadsuppskattning från hello priskalkylator som riktlinje för din första aviseringen.
 
 ### <a name="spending-limit"></a>Kontrollera att du har en utgiftsgräns
 
-Om du har en prenumeration som använder krediter sedan aktiveras utgiftsgränsen du som standard. Det här sättet när du lägger till alla dina krediter ditt kreditkort inte hämta debiteras. Finns det [fullständig lista över Azure erbjudanden och tillgängligheten för utgiftsgräns](https://azure.microsoft.com/support/legal/offer-details/).
+Om du har en prenumeration som använder krediter sedan aktiveras hello utgiftsgräns du som standard. Det här sättet när du lägger till alla dina krediter ditt kreditkort inte hämta debiteras. Se hello [fullständig lista över Azure erbjudanden och hello tillgängligheten för utgiftsgräns](https://azure.microsoft.com/support/legal/offer-details/).
 
-Om du har nått din utgiftsgräns inaktiveras dock dina tjänster. Det innebär att dina virtuella datorer har frigjorts. Om du vill undvika avbrott i tjänsten måste du inaktivera utgiftsgränsen. Alla överförbrukning hämtar debiteras till kreditkortet på filen. 
+Om du har nått din utgiftsgräns inaktiveras dock dina tjänster. Det innebär att dina virtuella datorer har frigjorts. tooavoid stilleståndstiden, måste du inaktivera hello utgiftsgräns. Alla överförbrukning hämtar debiteras till kreditkortet på filen. 
 
-Om du har stött på utgiftsgräns på, gå till den [prenumerationer Visa mitt konto](https://account.windowsazure.com/Subscriptions). En banderoll visas om din utgiftsgräns finns på:
+toosee om du har stött på utgiftsgräns, gå toohello [prenumerationer visa i hello Kontocenter](https://account.windowsazure.com/Subscriptions). En banderoll visas om din utgiftsgräns finns på:
 
-![Skärmbild som visar en varning om utgifter gränsen som på mitt konto](./media/billing-getting-started/spending-limit-banner.PNG)
+![Skärmbild som visar en varning om utgifter gränsen som på i hello Account Center](./media/billing-getting-started/spending-limit-banner.PNG)
 
-Klicka på listen och följ anvisningarna för att ta bort utgiftsgränsen. Om du inte ange kreditkortsinformation när du registrerade dig, måste du ange det för att ta bort utgiftsgränsen. Mer information finns i [Azure utgiftsgränsen – hur den fungerar och hur du aktiverar eller ta bort den](https://azure.microsoft.com/pricing/spending-limits/).
+Klicka på hello banderoll och följ anvisningarna för tooremove hello utgiftsgräns. Om du inte ange kreditkortsinformation när du registrerade dig, måste du ange den tooremove hello utgiftsgräns. Mer information finns i [Azure utgiftsgränsen – hur det fungerar och hur tooenable eller ta bort den](https://azure.microsoft.com/pricing/spending-limits/).
 
-## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Sätt att övervaka dina kostnader när du använder Azure-tjänster
+## <a name="ways-toomonitor-your-costs-when-using-azure-services"></a>Sätt toomonitor kostnaderna när du använder Azure-tjänster
 
-### <a name="tags"></a>Lägga till taggar i dina resurser för att gruppera dina faktureringsuppgifter
+### <a name="tags"></a>Lägga till taggar tooyour resurser toogroup din faktureringsinformation
 
-Du kan använda taggar om du vill gruppera faktureringsinformation för tjänster som stöds. Till exempel om du kör flera virtuella datorer för olika team, kan du använda taggar för att kategorisera kostnader per kostnadsställe (HR, marknadsföring, ekonomi) eller miljö (produktion, Förproduktion, test). 
+Du kan använda taggar toogroup faktureringsinformation för tjänster som stöds. Till exempel om du kör flera virtuella datorer för olika grupper kan du använda taggar toocategorize kostnader per kostnadsställe (HR, marknadsföring, ekonomi) eller miljö (produktion, Förproduktion, test). 
 
-![Skärmbild som visar hur du konfigurerar taggar i portalen](./media/billing-getting-started/tags.PNG)
+![Skärmbild som visar hur du konfigurerar taggar i hello-portalen](./media/billing-getting-started/tags.PNG)
 
-Taggar visas i olika kostnaden reporting vyer. Till exempel de som är synliga i din [kostnad analysen](#costs) direkt och [innehåller information om användning .csv](#invoice-and-usage) efter din första faktureringsperioden.
+hello taggar visas i olika kostnaden reporting vyer. Till exempel de som är synliga i din [kostnad analysen](#costs) direkt och [innehåller information om användning .csv](#invoice-and-usage) efter din första faktureringsperioden.
 
-Mer information finns i [med taggar för att organisera dina Azure-resurser](../azure-resource-manager/resource-group-using-tags.md).
+Mer information finns i [med hjälp av taggar tooorganize resurserna i Azure](../azure-resource-manager/resource-group-using-tags.md).
 
-### <a name="costs"></a>Regelbundet kontrollera portal för kostnadsuppdelning och bränna hastighet
+### <a name="costs"></a>Regelbundet kontrollera hello portal för kostnadsuppdelning och bränna hastighet
 
-När du har hämtat dina tjänster som körs regelbundet kontrollera hur mycket de kostnadshantering du. Du kan se de aktuella utgifter och bränna hastighet på Azure-portalen. 
+När du har hämtat dina tjänster som körs regelbundet kontrollera hur mycket de kostnadshantering du. Du kan se hello aktuella tillbringar och bränna hastighet på Azure-portalen. 
 
-1. Besök den [prenumerationer bladet i Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) och välja en prenumeration.
+1. Besök hello [prenumerationer bladet i Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) och välja en prenumeration.
 
-2. Du bör se kostnaden nedbrytning och bränna hastighet i popup-bladet. Den stöds inte för erbjudandet (en varning visas längst upp).
+2. Du bör se hello kostnaden nedbrytning och bränna hastighet hello popup-bladet. Den stöds inte för erbjudandet (en varning visas hello övre delen).
 
-    ![Skärmbild av bränna hastighet och analys på detaljnivå i Azure-portalen](./media/billing-getting-started/burn-rate.PNG)
+    ![Skärmbild av bränna hastighet och analys på detaljnivå i hello Azure-portalen](./media/billing-getting-started/burn-rate.PNG)
 
-3. Klicka på **kostnad analysis** i listan till vänster för att se kostnadsuppdelning av resursen. Vänta 24 timmar efter att du lägger till en tjänst att fylla i data.
+3. Klicka på **kostnad analysis** i hello listan toohello vänstra toosee hello kostnadsuppdelning av resursen. Vänta 24 timmar efter att du lägger till en tjänst för hello data toopopulate.
 
-    ![Skärmbild av vyn kostnaden för analys i Azure-portalen](./media/billing-getting-started/cost-analysis.PNG)
+    ![Skärmbild av hello kostnaden analys i Azure-portalen](./media/billing-getting-started/cost-analysis.PNG)
 
-4. Du kan filtrera efter andra egenskaper som [taggar](#tags), resursgrupp och timespan. Klicka på **tillämpa** bekräfta filter och **hämta** om du vill exportera vyn till en Comma-Separated fil (.csv).
+4. Du kan filtrera efter andra egenskaper som [taggar](#tags), resursgrupp och timespan. Klicka på **tillämpa** tooconfirm hello filter och **hämta** om du vill tooexport hello visa tooa Comma-Separated fil (.csv).
 
-5. Dessutom kan du klicka på en resurs för att se tillbringar historik och hur mycket resurskostnader varje dag.
+5. Dessutom kan du klicka på en resurs toosee tillbringar historik och hur mycket hello resurskostnader varje dag.
 
-    ![Skärmbild av historikvyn utgifter i Azure-portalen](./media/billing-getting-started/costhistory.PNG)
+    ![Skärmbild av hello tillbringar historikvyn i Azure-portalen](./media/billing-getting-started/costhistory.PNG)
 
-Vi rekommenderar att du kontrollerar kostnaderna visas med beräknar du såg när du har valt tjänsterna. Om kostnaderna wildly skiljer sig från beräknar dubbelkolla prisavtal (A1 vs A0 VM, till exempel) som du har valt för dina resurser. 
+Vi rekommenderar att du kontrollerar hello kostnader visas med hello beräknar du såg när du har valt hello-tjänster. Om hello kostnader wildly skiljer sig från beräknar, hello dubbelkolla prisavtal (A1 vs A0 VM, till exempel) som du har valt för dina resurser. 
 
 ### <a name="consider-enabling-cost-cutting-features-like-auto-shutdown-for-vms"></a>Överväg att aktivera kostnaden skärande funktioner som automatisk avstängning för virtuella datorer
 
-Beroende på ditt scenario kan du konfigurera automatisk avstängning för dina virtuella datorer i Azure-portalen. Mer information finns i [automatisk avstängning för virtuella datorer med Azure Resource Manager](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
+Beroende på ditt scenario kan du konfigurera automatisk avstängning för dina virtuella datorer i hello Azure-portalen. Mer information finns i [automatisk avstängning för virtuella datorer med Azure Resource Manager](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
 
-![Skärmbild av automatisk avstängning alternativet i portalen](./media/billing-getting-started/auto-shutdown.PNG)
+![Skärmbild av automatisk avstängning alternativet hello-portalen](./media/billing-getting-started/auto-shutdown.PNG)
 
-Automatisk avstängning är inte densamma som när du stänger av den virtuella datorn med Energialternativ. Automatisk avstängning stoppar och tar bort dina virtuella datorer om du vill stoppa extra kostnader. Mer information finns i frågor och svar om prissättning [virtuella Linux-datorer](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) och [virtuella Windows-datorer](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) om VM-tillstånd.
+Automatisk avstängning hello inte samtidigt som när du avslutar inom hello VM med Energialternativ. Automatisk avstängning stoppar och tar bort VMs-toostop extra kostnader. Mer information finns i frågor och svar om prissättning [virtuella Linux-datorer](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) och [virtuella Windows-datorer](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) om VM-tillstånd.
 
 För mer kostnaden skärande funktioner för utvecklings- och testmiljöer, kolla [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab/).
 
 ### <a name="turn-on-and-check-out-azure-advisor-recommendations"></a>Aktivera och checka ut Azure Advisor-rekommendationer
 
-[Azure Advisor](../advisor/advisor-overview.md) är en förhandsvisningsfunktion som hjälper dig att minska kostnaderna genom att identifiera resurser med låg belastning. Aktivera den i Azure-portalen:
+[Azure Advisor](../advisor/advisor-overview.md) är en förhandsvisningsfunktion som hjälper dig att minska kostnaderna genom att identifiera resurser med låg belastning. Aktivera den i hello Azure-portalen:
 
 ![Skärmbild av Azure Advisor-knappen i Azure-portalen](./media/billing-getting-started/advisor-button.PNG)
 
-Sedan kan du hämta rekommenderade åtgärder i den **kostnaden** fliken i Advisor instrumentpanelen:
+Sedan kan du hämta rekommenderade åtgärder i hello **kostnaden** fliken hello Advisor instrumentpanelen:
 
 ![Skärmbild av Advisor kostnaden rekommendation exempel](./media/billing-getting-started/advisor-action.PNG)
 
@@ -132,32 +132,32 @@ Mer information finns i [kostnaden för Advisor-rekommendationer](../advisor/adv
 
 ### <a name="billing-api"></a>Fakturerings-API
 
-Använda vår fakturering API för att genom programmering få användningsdata. Använda RateCard-API och API: et för användning tillsammans för att hämta fakturerade förbrukningen. Mer information finns i [få insikter om dina Microsoft Azure-resursförbrukning](billing-usage-rate-card-overview.md).
+Använd våra API tooprogrammatically get användning faktureringsinformation. Använd hello RateCard API och hello API för användning tillsammans tooget fakturerade förbrukningen. Mer information finns i [få insikter om dina Microsoft Azure-resursförbrukning](billing-usage-rate-card-overview.md).
 
 ## <a name="other-offers"></a>Ytterligare resurser och specialfall
 
 ### <a name="ea-csp-and-sponsorship-customers"></a>Kunder EA, CSP och sponsring
-Kontakta din Kontoansvariga eller Azure partner att komma igång.
+Prata tooyour Kontoansvariga eller Azure partner tooget igång.
 
 | Erbjudande | Resurser |
 |-------------------------------|-----------------------------------------------------------------------------------|
 | Enterprise-avtal (EA) | [EA portal](https://ea.azure.com/), [hjälp docs](https://ea.azure.com/helpdocs), och [Power BI-rapport](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-enterprise/) |
-| Cloud Solution Provider (CSP) | Tala med din leverantör |
+| Cloud Solution Provider (CSP) | Kontakta tooyour provider |
 | Sponsring av Azure | [Sponsring portal](https://www.microsoftazuresponsorships.com/) |
 
-Om du hanterar IT för stora organisationer rekommenderar vi att läsa [Azure enterprise kodskelett](../azure-resource-manager/resource-manager-subscription-governance.md) och [enterprise IT vitboken](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (PDF hämtning endast på engelska).
+Om du hanterar IT för stora organisationer rekommenderar vi att läsa [Azure enterprise kodskelett](../azure-resource-manager/resource-manager-subscription-governance.md) och hello [enterprise IT vitboken](http://download.microsoft.com/download/F/F/F/FFF60E6C-DBA1-4214-BEFD-3130C340B138/Azure_Onboarding_Guide_for_IT_Organizations_EN_US.pdf) (PDF hämtning endast på engelska).
 
 ### <a name="check-your-subscription-and-access"></a>Kontrollera din prenumeration och åtkomst
 
-Visa kostnaderna kräver [prenumerationer behörighet till faktureringsinformationen](billing-manage-access.md), men bara kontoadministratören kan komma åt den [Kontocenter](https://account.windowsazure.com/Home/Index), ändra faktureringsinformationen och hantera prenumerationer. Kontoadministratören är den person som har gått igenom registreringsprocessen. Mer information finns i [lägga till eller ändra Azure-administratörsroller som hanterar prenumerationen eller tjänster](billing-add-change-azure-subscription-administrator.md).
+Visa kostnaderna kräver [prenumerationer behörighet toobilling information](billing-manage-access.md), men endast hello kontoadministratören kan komma åt hello [Kontocenter](https://account.windowsazure.com/Home/Index), ändra faktureringsinformationen och hantera prenumerationer. hello kontoadministratören är hello person som har gått igenom hello registreringsprocessen. Mer information finns i [lägga till eller ändra Azure-administratörsroller som hanterar hello prenumeration eller tjänster](billing-add-change-azure-subscription-administrator.md).
 
-Om du är kontoadministratören, gå till den [prenumerationer bladet i Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) och titta på listan över prenumerationer som du har åtkomst till. Tittar du under **min roll**. Om det står *kontoadministratören*, och du är ok. Om det står något annat som *ägare*, och du inte har fullständig behörighet.
+toosee om du använder hello kontoadministratören, gå toohello [prenumerationer bladet i hello Azure-portalen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) och titta på hello listan över prenumerationer som du har åtkomst till. Tittar du under **min roll**. Om det står *kontoadministratören*, och du är ok. Om det står något annat som *ägare*, och du inte har fullständig behörighet.
 
-![Skärmbild av din roll i vyn prenumerationer i Azure-portalen](./media/billing-getting-started/sub-blade-view.PNG)
+![Skärmbild av din roll i hello Prenumerationsvy i hello Azure-portalen](./media/billing-getting-started/sub-blade-view.PNG)
 
-Om du inte kontoadministratören och sedan någon förmodligen gav dig delvis åtkomst via [Azure Active Directory-rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-configure.md) (RBAC). Hantera prenumerationer och ändra fakturering info, [hitta kontoadministratören](billing-subscription-transfer.md#whoisaa) och be dem att utföra uppgifter eller [överföra prenumerationen till dig](billing-subscription-transfer.md).
+Om du inte är hello kontoadministratören och sedan någon förmodligen gav dig delvis åtkomst via [Azure Active Directory-rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-configure.md) (RBAC). toomanage prenumerationer och ändrar fakturering info, [hitta hello kontoadministratören](billing-subscription-transfer.md#whoisaa) och be dem tooperform hello uppgifter eller [överför hello prenumeration tooyou](billing-subscription-transfer.md).
 
-Om din kontoadministratör är inte längre med din organisation och du behöver hantera fakturering, [supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
+Om din kontoadministratör är inte längre med din organisation och du behöver toomanage fakturering [supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). 
 ## <a name="need-help-contact-support"></a>Behöver du hjälp? Kontakta supporten
 
-Om du behöver hjälp, [supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) få snabbt lösa problemet.
+Om du behöver hjälp, [supporten](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget problemet lösas snabbt.

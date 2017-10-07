@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 926f52ef64eb79205dbfb344edc7d9bece2a6947
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fbe0df856ca2efda965650fb85c7e831a0be32c2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-synkronisering: funktioner referens
-I Azure AD Connect för funktioner att ändra ett attributvärde under synkroniseringen.  
-Syntaxen för funktionerna som uttrycks i följande format:  
+I Azure AD Connect är funktioner används toomanipulate ett attributvärde under synkroniseringen.  
+Hej för hello uttrycks med hello följande format:  
 `<output type> FunctionName(<input type> <position name>, ..)`
 
 Om en funktion är överbelastad och accepterar flera syntax, visas alla giltig syntax.  
-Funktionerna är starkt typbestämd och de bekräftar att typ som skickades matchar den dokumenterade typen.  
-Ett fel genereras om typen inte matchar.
+hello funktioner är starkt typbestämd och de bekräftar att hello typ som skickades matchar hello dokumenterade typen.  
+Ett fel returneras om hello typ inte matchar.
 
-Typerna uttrycks med följande syntax:
+hello typer uttrycks med hello följande syntax:
 
 * **bin** – binära
 * **bool** – booleskt
 * **DT** – UTC-datum/tid
 * **uppräkningen** – uppräkning av kända konstanter
-* **EXP** – uttryck som utvärderas till ett booleskt värde förväntades
+* **EXP** – uttryck, vilket är förväntat tooevaluate tooa booleskt värde
 * **mvbin** – multivärdes binära
 * **mvstr** – multivärdes sträng
 * **mvref** – multivärdes-referens
@@ -45,7 +45,7 @@ Typerna uttrycks med följande syntax:
 * **var** – en variant av (nästan) en annan typ
 * **void** – returnerar inte ett värde
 
-Funktioner med typer **mvbin**, **mvstr**, och **mvref** fungerar bara på flera värden attribut. Fungerar med **bin**, **str**, och **ref** fungerar på både enstaka och flera värden.
+Hej funktioner med hello typer **mvbin**, **mvstr**, och **mvref** fungerar bara på flera värden attribut. Fungerar med **bin**, **str**, och **ref** fungerar på både enstaka och flera värden.
 
 ## <a name="functions-reference"></a>Referens för funktioner
 | Lista över funktioner |  |  |  |  |
@@ -88,7 +88,7 @@ Funktioner med typer **mvbin**, **mvstr**, och **mvref** fungerar bara på flera
 - - -
 ### <a name="bitand"></a>BitAnd
 **Beskrivning:**  
-Funktionen BitAnd anger angivna bits på ett värde.
+Hej BitAnd-funktion anger angivna bits på ett värde.
 
 **Syntax:**  
 `num BitAnd(num value1, num value2)`
@@ -96,21 +96,21 @@ Funktionen BitAnd anger angivna bits på ett värde.
 * value1, value2: numeriska värden som ska vara AND'ed tillsammans
 
 **Anmärkning:**  
-Den här funktionen konverteras båda parametrarna till binär representation och anger lite till:
+Den här funktionen konverteras binär representation av båda parametrarna toohello och anger lite till:
 
-* 0 – om en eller båda av motsvarande bitar i *mask* och *flaggan* är 0
-* 1 – om båda motsvarande bitar är 1.
+* 0 – om något eller båda av hello motsvarande bitar i *mask* och *flaggan* är 0
+* 1 – om båda hello motsvarande bits är 1.
 
-Med andra ord returneras 0, utom när de motsvarande bitarna i båda parametrarna är 1.
+Med andra ord returneras 0, utom när hello motsvarande bitarna i båda parametrarna är 1.
 
 **Exempel:**  
 `BitAnd(&HF, &HF7)`  
-Returnerar 7 eftersom hexadecimala ”F” och ”F7” utvärderas till det här värdet.
+Returnerar 7 eftersom hexadecimala ”F” och ”F7” utvärdera toothis värde.
 
 - - -
 ### <a name="bitor"></a>BitOr
 **Beskrivning:**  
-BITOR-funktion anger angivna bits på ett värde.
+Hej BITOR-funktion anger angivna bits på ett värde.
 
 **Syntax:**  
 `num BitOr(num value1, num value2)`
@@ -118,28 +118,28 @@ BITOR-funktion anger angivna bits på ett värde.
 * value1, value2: numeriska värden som ska vara sammansatta med or tillsammans
 
 **Anmärkning:**  
-Den här funktionen konverteras båda parametrarna till binär representation och anger en bit 1 om en eller båda motsvarande bitar i mask och flaggan är mellan 1 och 0 om båda motsvarande bits är 0. Med andra ord returnerar 1, utom där motsvarande bitarna av båda parametrarna är 0.
+Den här funktionen konverteras binär representation av båda parametrarna toohello och anger en bit too1 om något eller båda av hello motsvarande bitar i mask och flaggan är 1 och too0 om båda hello motsvarande bits är 0. Med andra ord returnerar 1, utom där hello motsvarande bitarna av båda parametrarna är 0.
 
 - - -
 ### <a name="cbool"></a>CBool
 **Beskrivning:**  
-Funktionen CBool returnerar ett booleskt värde baserat på det utvärderade uttrycket
+hello CBool funktionen returnerar ett booleskt värde baserat på hello utvärderas uttryck
 
 **Syntax:**  
 `bool CBool(exp Expression)`
 
 **Anmärkning:**  
-Om uttrycket utvärderas till ett annat värde CBool returnerar True, annars returneras False.
+Om hello uttrycket utvärderas tooa noll, och sedan CBool returnerar True, annars returneras False.
 
 **Exempel:**  
 `CBool([attrib1] = [attrib2])`  
 
-Returnerar True om båda attribut har samma värde.
+Returnerar True om båda attribut har hello samma värde.
 
 - - -
 ### <a name="cdate"></a>CDate
 **Beskrivning:**  
-Funktionen CDate returnerar UTC DateTime från en sträng. DateTime är inte en inbyggd attributtyp synkroniserade men används av vissa funktioner.
+hello CDate funktionen returnerar UTC DateTime från en sträng. DateTime är inte en inbyggd attributtyp synkroniserade men används av vissa funktioner.
 
 **Syntax:**  
 `dt CDate(str value)`
@@ -147,11 +147,11 @@ Funktionen CDate returnerar UTC DateTime från en sträng. DateTime är inte en 
 * Värde: En sträng med ett datum, tid och du kan också tidszon
 
 **Anmärkning:**  
-Den returnerade strängen är alltid i UTC.
+hello returnerade strängen är alltid i UTC.
 
 **Exempel:**  
 `CDate([employeeStartTime])`  
-Returnerar ett datetime-värde baserat på medarbetarens starttid
+Returnerar ett datetime-värde baserat på hello medarbetarens starttid
 
 `CDate("2013-01-10 4:00 PM -8")`  
 Returnerar en DateTime som representerar ”2013-01-11 12:00:00”
@@ -166,198 +166,198 @@ Returnerar en DateTime som representerar ”2013-01-11 12:00:00”
 - - -
 ### <a name="certextensionoids"></a>CertExtensionOids
 **Beskrivning:**  
-Returnerar Oid-värden för alla kritiska tillägg av ett certifikatobjekt.
+Returnerar hello Oid-värden för alla kritiska hello-tillägg för ett certifikatobjekt.
 
 **Syntax:**  
 `mvstr CertExtensionOids(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certformat"></a>CertFormat
 **Beskrivning:**  
-Returnerar namnet på formatet för den här X.509v3-certifikat.
+Returnerar hello namnet på hello format för den här X.509v3-certifikat.
 
 **Syntax:**  
 `str CertFormat(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certfriendlyname"></a>CertFriendlyName
 **Beskrivning:**  
-Returnerar det associera aliaset för ett certifikat.
+Returnerar hello associerade alias för ett certifikat.
 
 **Syntax:**  
 `str CertFriendlyName(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certhashstring"></a>CertHashString
 **Beskrivning:**  
-Returnerar SHA1-hash-värdet för X.509v3-certifikat som en hexadecimal sträng.
+Returnerar hello SHA1-hash-värdet för hello X.509v3-certifikat som en hexadecimal sträng.
 
 **Syntax:**  
 `str CertHashString(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certissuer"></a>CertIssuer
 **Beskrivning:**  
-Returnerar namnet på den certifikatutfärdare som utfärdade X.509v3-certifikat.
+Returnerar hello namnet på hello certifikatutfärdaren som utfärdade hello X.509v3-certifikat.
 
 **Syntax:**  
 `str CertIssuer(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certissuerdn"></a>CertIssuerDN
 **Beskrivning:**  
-Returnerar det unika namnet på certifikatutfärdaren.
+Returnerar hello huvudnamnet på hello certifikatutfärdare.
 
 **Syntax:**  
 `str CertIssuerDN(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certissueroid"></a>CertIssuerOid
 **Beskrivning:**  
-Returnerar Oid för certifikatutfärdaren.
+Returnerar hello Oid för hello certifikatutfärdare.
 
 **Syntax:**  
 `str CertIssuerOid(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
 **Beskrivning:**  
-Returnerar nyckelalgoritm informationen för den här X.509v3-certifikat som en sträng.
+Returnerar information om hello nyckelalgoritm för den här X.509v3-certifikat som en sträng.
 
 **Syntax:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
 **Beskrivning:**  
-Returnerar nyckelalgoritm parametrar för X.509v3-certifikat som en hexadecimal sträng.
+Returnerar hello nyckelalgoritm parametrar för hello X.509v3-certifikat som en hexadecimal sträng.
 
 **Syntax:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certnameinfo"></a>CertNameInfo
 **Beskrivning:**  
-Returnerar ämne och Utfärdarens namn från ett certifikat.
+Returnerar hello ämne och Utfärdarens namn från ett certifikat.
 
 **Syntax:**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
-*   X509NameType: X509NameType värdet för ämnet.
-*   includesIssuerName: true för att inkludera utfärdarnamnet; Annars, FALSKT.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   X509NameType: hello X509NameType värde för hello ämnet.
+*   includesIssuerName: true tooinclude hello Utfärdarens namn; Annars, FALSKT.
 
 - - -
 ### <a name="certnotafter"></a>CertNotAfter
 **Beskrivning:**  
-Returnerar datumet i lokal tid som ett certifikat är inte längre giltig.
+Returnerar hello datum i lokal tid som ett certifikat är inte längre giltig.
 
 **Syntax:**  
 `dt CertNotAfter(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certnotbefore"></a>CertNotBefore
 **Beskrivning:**  
-Returnerar datumet i lokal tid som ett certifikat börjar gälla.
+Returnerar hello datum i lokal tid som ett certifikat börjar gälla.
 
 **Syntax:**  
 `dt CertNotBefore(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
 **Beskrivning:**  
-Returnerar Oid för den offentliga nyckeln för X.509v3-certifikat.
+Returnerar hello Oid för hello offentlig nyckel för hello X.509v3-certifikat.
 
 **Syntax:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
 **Beskrivning:**  
-Returnerar Oid för parametrarna för offentlig nyckel för X.509v3-certifikat.
+Returnerar hello Oid för hello offentliga nyckelparametrar för hello X.509v3-certifikat.
 
 **Syntax:**  
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certserialnumber"></a>CertSerialNumber
 **Beskrivning:**  
-Returnerar serienumret för X.509v3-certifikat.
+Returnerar hello serienumret för hello X.509v3-certifikat.
 
 **Syntax:**  
 `str CertSerialNumber(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
 **Beskrivning:**  
-Returnerar Oid av algoritmen som används för att skapa signaturen på ett certifikat.
+Returnerar hello Oid för hello algoritmen används toocreate hello signaturen för ett certifikat.
 
 **Syntax:**  
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certsubject"></a>CertSubject
 **Beskrivning:**  
-Hämtar det unika ämnesnamnet från ett certifikat.
+Hämtar hello unika ämnesnamnet från ett certifikat.
 
 **Syntax:**  
 `str CertSubject(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
 **Beskrivning:**  
-Returnerar det unika ämnesnamnet från ett certifikat.
+Returnerar hello unika ämnesnamnet från ett certifikat.
 
 **Syntax:**  
 `str CertSubjectNameDN(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certsubjectnameoid"></a>CertSubjectNameOid
 **Beskrivning:**  
-Returnerar Oid för ämnesnamnet från ett certifikat.
+Returnerar hello Oid för hello ämnesnamnet från ett certifikat.
 
 **Syntax:**  
 `str CertSubjectNameOid(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certthumbprint"></a>certThumbprint
 **Beskrivning:**  
-Returnerar tumavtrycket för ett certifikat.
+Returnerar hello tumavtrycket för ett certifikat.
 
 **Syntax:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="certversion"></a>CertVersion
 **Beskrivning:**  
-Returnerar X.509-Formatversion för ett certifikat.
+Returnerar hello X.509-Formatversion för ett certifikat.
 
 **Syntax:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 
 - - -
 ### <a name="cguid"></a>CGuid
 **Beskrivning:**  
-Funktionen CGuid konverterar strängrepresentation av en GUID till dess binär representation.
+Hej CGuid funktionen konverterar hello strängrepresentation av en a binär representation tooits för GUID.
 
 **Syntax:**  
 `bin CGuid(str GUID)`
@@ -367,31 +367,31 @@ Funktionen CGuid konverterar strängrepresentation av en GUID till dess binär r
 - - -
 ### <a name="contains"></a>Contains
 **Beskrivning:**  
-Innehåller funktionen söker efter en sträng i ett flervärdesattribut
+hello innehåller funktionen returnerar en sträng i ett flervärdesattribut
 
 **Syntax:**  
 `num Contains (mvstring attribute, str search)`-skiftlägeskänsligt  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
 `num Contains (mvref attribute, str search)`-skiftlägeskänsligt
 
-* attributet: flervärdesattribut att söka.
-* Sök: sträng att söka efter i attributet.
+* attributet: hello flervärdesattribut toosearch.
+* Sök: string toofind i hello-attribut.
 * Casetype: CaseInsensitive- eller CaseSensitive.
 
-Returnerar index i attributet med flera värden där strängen hittades. 0 returneras om strängen inte hittas.
+Returnerar index i hello flervärdesattribut där hello strängen hittades. 0 returneras om hello strängen inte hittas.
 
 **Anmärkning:**  
-Söker efter delsträngar i värdena för flera värden strängattribut sökningen.  
-Den sökta strängen måste exakt matcha värdet för att anses vara en matchning för referensattribut.
+För flera värden strängattribut hello sökningen hitta delsträngar hello värden.  
+För referensattribut måste hello eftersökt sträng exakt matcha hello värdet toobe en matchning.
 
 **Exempel:**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
-Om attributet proxyAddresses har en primär e-postadress (anges med versaler ”SMTP”:), returneras attributet proxyAddress, annars returneras ett fel.
+Om hello proxyAddresses attribut har en primär e-postadress (anges med versaler ”SMTP”:), returnera hello proxyAddress attribut, annars returneras ett fel.
 
 - - -
 ### <a name="convertfrombase64"></a>ConvertFromBase64
 **Beskrivning:**  
-Funktionen ConvertFromBase64 konverterar angivna base64-kodade värdet till en vanlig sträng.
+Hej ConvertFromBase64 funktionen konverterar hello angetts base64-kodad värdet tooa vanlig sträng.
 
 **Syntax:**  
 `str ConvertFromBase64(str source)`-förutsätter Unicode för kodning  
@@ -409,7 +409,7 @@ Båda exempel returnera ”*Hello world!*”
 - - -
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **Beskrivning:**  
-Funktionen ConvertFromUTF8Hex konverterar det angivna Hex UTF8-kodade värdet till en sträng.
+Hej ConvertFromUTF8Hex funktionen konverterar hello angett Hex UTF8-kodade värdet tooa sträng.
 
 **Syntax:**  
 `str ConvertFromUTF8Hex(str source)`
@@ -417,7 +417,7 @@ Funktionen ConvertFromUTF8Hex konverterar det angivna Hex UTF8-kodade värdet ti
 * källa: UTF8 2 byte kodade förekomster av textsträngen
 
 **Anmärkning:**  
-Skillnaden mellan den här funktionen och ConvertFromBase64([],UTF8) i som resultatet är eget för DN-attributet.  
+hello skillnaden mellan den här funktionen och ConvertFromBase64([],UTF8) i resultatmängden hello är eget för hello DN-attribut.  
 Det här formatet används av Azure Active Directory som unikt namn.
 
 **Exempel:**  
@@ -427,8 +427,8 @@ Returnerar ”*Hello world!*”
 - - -
 ### <a name="converttobase64"></a>ConvertToBase64
 **Beskrivning:**  
-Funktionen ConvertToBase64 konverterar en sträng till en Unicode-base64-sträng.  
-Konverterar värdet för en heltalsmatris till dess motsvarande strängrepresentation som kodats med Base64-siffror.
+Hej ConvertToBase64 funktionen konverterar en sträng tooa Unicode base64-sträng.  
+Konverterar hello-värdet för en matris med heltal tooits motsvarande strängrepresentation som kodats med Base64-siffror.
 
 **Syntax:**  
 `str ConvertToBase64(str source)`
@@ -440,13 +440,13 @@ Returnerar ”SABlAGwAbABvACAAdwBvAHIAbABkACEA”
 - - -
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **Beskrivning:**  
-Funktionen ConvertToUTF8Hex konverterar en sträng till ett värde för Hex UTF8-kodade.
+Hej ConvertToUTF8Hex funktionen konverterar en sträng tooa Hex UTF8-kodade värde.
 
 **Syntax:**  
 `str ConvertToUTF8Hex(str source)`
 
 **Anmärkning:**  
-Utdataformatet för den här funktionen används av Azure Active Directory som DN attribute-format.
+hello utdataformatet för den här funktionen används av Azure Active Directory som DN attribute-format.
 
 **Exempel:**  
 `ConvertToUTF8Hex("Hello world!")`  
@@ -455,7 +455,7 @@ Returnerar 48656C6C6F20776F726C6421
 - - -
 ### <a name="count"></a>Antal
 **Beskrivning:**  
-Count-funktionen returnerar antalet element i ett flervärdesattribut
+hello Count-funktionen returnerar hello antalet element i ett flervärdesattribut
 
 **Syntax:**  
 `num Count(mvstr attribute)`
@@ -463,7 +463,7 @@ Count-funktionen returnerar antalet element i ett flervärdesattribut
 - - -
 ### <a name="cnum"></a>CNum
 **Beskrivning:**  
-Funktionen CNum tar en sträng och returnerar en numerisk datatyp.
+Hej CNum funktionen en sträng och returnerar en numerisk datatyp.
 
 **Syntax:**  
 `num CNum(str value)`
@@ -471,7 +471,7 @@ Funktionen CNum tar en sträng och returnerar en numerisk datatyp.
 - - -
 ### <a name="cref"></a>CRef
 **Beskrivning:**  
-Konverterar en sträng till ett referensattribut
+Konverterar en sträng tooa referensattribut
 
 **Syntax:**  
 `ref CRef(str value)`
@@ -482,7 +482,7 @@ Konverterar en sträng till ett referensattribut
 - - -
 ### <a name="cstr"></a>CStr
 **Beskrivning:**  
-Funktionen CStr konverteras till datatypen string.
+hello CStr funktionen konverterar tooa strängdatatypen.
 
 **Syntax:**  
 `str CStr(num value)`  
@@ -498,12 +498,12 @@ Kan returnera ”cn = Johan, dc = contoso, dc = com”
 - - -
 ### <a name="dateadd"></a>DateAdd
 **Beskrivning:**  
-Returnerar ett datum som innehåller ett datum som ett angivet tidsintervall har lagts till.
+Returnerar ett datum som innehåller ett datum toowhich ett angivet tidsintervall har lagts till.
 
 **Syntax:**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* intervall: stränguttryck som är tidsintervall du vill lägga till. Strängen måste ha något av följande värden:
+* intervall: stränguttryck som är hello tidsintervall du vill tooadd. hello sträng måste ha något av följande värden hello:
   * åååå år
   * q kvartal
   * m månad
@@ -514,8 +514,8 @@ Returnerar ett datum som innehåller ett datum som ett angivet tidsintervall har
   * h timme
   * n minut
   * s andra
-* värde: antalet enheter som du vill lägga till. Det kan vara positivt (för att hämta framtida datum) eller negativt (för att hämta tidigare datum).
-* datum: DateTime som representerar som intervallet ska läggas till.
+* värde: hello antalet enheter som du vill tooadd. Det kan vara positivt (tooget datum i hello framtida) eller negativt (tooget datum i hello tidigare).
+* datum: DateTime som representerar toowhich hello datumintervall har lagts till.
 
 **Exempel:**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
@@ -524,7 +524,7 @@ Lägger till tre månader och returnerar ett datetime-värde som representerar �
 - - -
 ### <a name="datefromnum"></a>DateFromNum
 **Beskrivning:**  
-Funktionen DateFromNum konverterar ett värde i Annonsens datum-format till ett DateTime-typen.
+Hej DateFromNum funktionen konverterar ett värde i Annonsens datum format tooa datum och tid.
 
 **Syntax:**  
 `dt DateFromNum(num value)`
@@ -537,13 +537,13 @@ Returnerar ett datetime-värde som representerar 2012-01-01 23:00:00
 - - -
 ### <a name="dncomponent"></a>DNComponent
 **Beskrivning:**  
-Funktionen DNComponent returnerar värdet för en angiven DN-komponent från vänster.
+Hej DNComponent funktionen returnerar hello värdet för en angiven DN-komponent från vänster.
 
 **Syntax:**  
 `str DNComponent(ref dn, num ComponentNumber)`
 
-* DN: referensattribut att tolka
-* ComponentNumber: Komponenten i DN ska returneras
+* DN: hello referens attributet toointerpret
+* ComponentNumber: hello-komponenten i hello DN tooreturn
 
 **Exempel:**  
 `DNComponent([dn],1)`  
@@ -552,14 +552,14 @@ Om dn är ”cn = Johan, ou =...”, returneras Joe
 - - -
 ### <a name="dncomponentrev"></a>DNComponentRev
 **Beskrivning:**  
-Funktionen DNComponentRev returnerar värdet för en angiven DN-komponent från höger (end).
+Hej DNComponentRev funktionen returnerar hello värdet för en angiven DN-komponent från höger (hello end).
 
 **Syntax:**  
 `str DNComponentRev(ref dn, num ComponentNumber)`  
 `str DNComponentRev(ref dn, num ComponentNumber, enum Options)`
 
-* DN: referensattribut att tolka
-* ComponentNumber - komponenten i DN ska returneras
+* DN: hello referens attributet toointerpret
+* ComponentNumber - hello-komponenten i hello DN tooreturn
 * Alternativ: DC – Ignorera alla komponenter med ”dc =”
 
 **Exempel:**  
@@ -571,40 +571,40 @@ Returnerar båda oss.
 - - -
 ### <a name="error"></a>Fel
 **Beskrivning:**  
-Fel-funktionen används för att returnera ett anpassat fel.
+hello fel funktion är används tooreturn ett anpassat fel.
 
 **Syntax:**  
 `void Error(str ErrorMessage)`
 
 **Exempel:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
-Om attributet accountName inte finns genereras ett fel i objektet.
+Om hello attributet accountName inte finns genereras ett fel på hello-objekt.
 
 - - -
 ### <a name="escapedncomponent"></a>EscapeDNComponent
 **Beskrivning:**  
-Funktionen EscapeDNComponent tar en komponent i ett unikt namn och hoppas det så att den kan representeras i LDAP.
+Hej EscapeDNComponent funktionen tar en komponent i ett unikt namn och hoppas det så att den kan representeras i LDAP.
 
 **Syntax:**  
 `str EscapeDNComponent(str value)`
 
 **Exempel:**  
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
-Ser till att objektet kan skapas i en LDAP-katalog, även om attributet visningsnamn innehåller tecken som måste hoppas i LDAP.
+Säkerställer hello-objekt kan skapas i en LDAP-katalog även om hello displayName attributet innehåller tecken som måste hoppas i LDAP.
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
 **Beskrivning:**  
-Funktionen FormatDateTime används för att formatera ett datetime-värde till en sträng med ett bestämt format
+funktionen för hello FormatDateTime är används tooformat en DateTime tooa sträng med ett bestämt format
 
 **Syntax:**  
 `str FormatDateTime(dt value, str format)`
 
-* värde: ett värde i DateTime-format
-* format: en sträng som representerar det format som ska konverteras till.
+* värde: ett värde i hello DateTime-format
+* format: en sträng som representerar hello format tooconvert till.
 
 **Anmärkning:**  
-De möjliga värdena för formatet finns här: [User-defined datum/tid-format (Format-funktionen)](http://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
+Hej möjliga värden för hello-format finns här: [User-defined datum/tid-format (Format-funktionen)](http://msdn2.microsoft.com/library/73ctwf33\(VS.90\).aspx)
 
 **Exempel:**  
 
@@ -617,7 +617,7 @@ Kan medföra ”20140905081453.0Z”
 - - -
 ### <a name="guid"></a>GUID
 **Beskrivning:**  
-Funktionen GUID genererar en ny, slumpmässig GUID
+hello funktionen GUID genererar en ny, slumpmässig GUID
 
 **Syntax:**  
 `str GUID()`
@@ -625,23 +625,23 @@ Funktionen GUID genererar en ny, slumpmässig GUID
 - - -
 ### <a name="iif"></a>IIF
 **Beskrivning:**  
-Funktionen IIF returnerar ett av en uppsättning möjliga värden baserat på ett angivet villkor.
+hello OOM returnerar ett av en uppsättning möjliga värden baserat på ett angivet villkor.
 
 **Syntax:**  
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
-* villkor: ett värde eller uttryck som kan utvärderas till true eller false.
-* värde_om_sant: om villkoret utvärderas till SANT, det returnerade värdet.
-* värde_om_falskt: om villkoret utvärderas till false, värdet som returneras.
+* villkor: ett värde eller uttryck som kan utvärderas tootrue eller false.
+* värde_om_sant: om hello villkoret utvärderas tootrue, hello returneras värdet.
+* värde_om_falskt: om hello villkoret utvärderas toofalse, hello returneras värdet.
 
 **Exempel:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
- Om användaren är en intern, returnerar alias för en användare med ”t-” läggs till i början av det, annars returnerar användarens alias som är.
+ Om hello användare är en intern, returnerar hello-alias för en användare med ”t-” läggs toohello början av det, annars returnerar hello användarens alias som är.
 
 - - -
 ### <a name="instr"></a>InStr
 **Beskrivning:**  
-Funktionen InStr söker efter den första förekomsten av en understräng i en sträng
+hello funktionen InStr hittar hello första förekomsten av en understräng i en sträng
 
 **Syntax:**  
 
@@ -649,38 +649,38 @@ Funktionen InStr söker efter den första förekomsten av en understräng i en s
 `num InStr(str stringcheck, str stringmatch, num start)`  
 `num InStr(str stringcheck, str stringmatch, num start , enum compare)`
 
-* stringcheck: strängen som ska genomsökas
-* stringmatch: strängen som ska returneras
-* Starta: startposition för att hitta delsträngen
+* stringcheck: string toobe genomsöks
+* stringmatch: string toobe hittades
+* Starta: starta position toofind hello delsträngen
 * Jämför: i vbTextCompare eller i vbBinaryCompare
 
 **Anmärkning:**  
-Returnerar positionen där delsträngen hittades eller 0 om inte hittas.
+Returnerar hello positionen där delsträngen hello hittades eller 0 om inte hittas.
 
 **Exempel:**  
-`InStr("The quick brown fox","quick")`  
-Evalues till 5
+`InStr("hello quick brown fox","quick")`  
+Evalues too5
 
 `InStr("repEated","e",3,vbBinaryCompare)`  
-Utvärderar till 7
+Utvärderar too7
 
 - - -
 ### <a name="instrrev"></a>InStrRev
 **Beskrivning:**  
-Funktionen InStrRev söker efter den sista förekomsten av en understräng i en sträng
+hello funktionen InStrRev hittar hello sista förekomsten av en understräng i en sträng
 
 **Syntax:**  
 `num InstrRev(str stringcheck, str stringmatch)`  
 `num InstrRev(str stringcheck, str stringmatch, num start)`  
 `num InstrRev(str stringcheck, str stringmatch, num start, enum compare)`
 
-* stringcheck: strängen som ska genomsökas
-* stringmatch: strängen som ska returneras
-* Starta: startposition för att hitta delsträngen
+* stringcheck: string toobe genomsöks
+* stringmatch: string toobe hittades
+* Starta: starta position toofind hello delsträngen
 * Jämför: i vbTextCompare eller i vbBinaryCompare
 
 **Anmärkning:**  
-Returnerar positionen där delsträngen hittades eller 0 om inte hittas.
+Returnerar hello positionen där delsträngen hello hittades eller 0 om inte hittas.
 
 **Exempel:**  
 `InStrRev("abbcdbbbef","bb")`  
@@ -689,40 +689,40 @@ Returnerar 7
 - - -
 ### <a name="isbitset"></a>IsBitSet
 **Beskrivning:**  
-Funktionen IsBitSet nätverkstester om en stund anges eller inte
+hello funktionen IsBitSet tester om lite är eller inte
 
 **Syntax:**  
 `bool IsBitSet(num value, num flag)`
 
-* värde: ett numeriskt värde som är evaluated.flag: ett numeriskt värde som har bitars som ska utvärderas
+* värde: ett numeriskt värde som är evaluated.flag: ett numeriskt värde som har hello bit toobe utvärderas
 
 **Exempel:**  
 `IsBitSet(&HF,4)`  
-Returnerar SANT eftersom ”4”-biten är aktiverad i det hexadecimala värdet ”F”
+Returnerar SANT eftersom ”4”-biten är aktiverad i hello hexadecimalt värde ”F”
 
 - - -
 ### <a name="isdate"></a>IsDate
 **Beskrivning:**  
-Om uttrycket kan vara utvärderas som en DateTime-typ, och sedan funktionen IsDate utvärderas till SANT.
+Om hello uttryck kan utvärderas som en DateTime-typ. sedan hello funktionen IsDate utvärderar tooTrue.
 
 **Syntax:**  
 `bool IsDate(var Expression)`
 
 **Anmärkning:**  
-Används för att avgöra om CDate() kan genomföras.
+Använda toodetermine om CDate() kan genomföras.
 
 - - -
 ### <a name="iscert"></a>IsCert
 **Beskrivning:**  
-Returnerar true om rådata kan serialiseras till .NET X509Certificate2 certifikatobjekt.
+Returnerar true om hello rådata kan serialiseras till .NET X509Certificate2 certifikatobjekt.
 
 **Syntax:**  
 `bool CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: Byte-matris representation av ett X.509-certifikat. Bytematrisen kan vara kodad binär (DER) eller Base64-kodad X.509-data.
+*   certificateRawData: Byte-matris representation av ett X.509-certifikat. hello byte-matris kan vara kodad binär (DER) eller Base64-kodad X.509-data.
 - - -
 ### <a name="isempty"></a>IsEmpty
 **Beskrivning:**  
-Om attributet finns i CS eller MV men evalueras till en tom sträng, utvärderar funktionen IsEmpty till True.
+Om hello attribut finns i hello CS eller MV men utvärderar tooan tom sträng, utvärderar hello IsEmpty funktionen tooTrue.
 
 **Syntax:**  
 `bool IsEmpty(var Expression)`
@@ -730,7 +730,7 @@ Om attributet finns i CS eller MV men evalueras till en tom sträng, utvärderar
 - - -
 ### <a name="isguid"></a>IsGuid
 **Beskrivning:**  
-Om strängen kan konverteras till ett GUID, utvärderas funktionen IsGuid till true.
+Om hello strängen kan vara konverterade tooa GUID, utvärderas hello IsGuid funktionen tootrue.
 
 **Syntax:**  
 `bool IsGuid(str GUID)`
@@ -738,75 +738,75 @@ Om strängen kan konverteras till ett GUID, utvärderas funktionen IsGuid till t
 **Anmärkning:**  
 Ett GUID som har definierats som en sträng som följer någon av dessa mönster: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx eller {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
-Används för att avgöra om CGuid() kan genomföras.
+Använda toodetermine om CGuid() kan genomföras.
 
 **Exempel:**  
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
-Om StrAttribute har en GUID-format, returnera en a binär representation, annars returnerar Null.
+Om hello StrAttribute har en GUID-format, returnera en a binär representation, annars returnerar Null.
 
 - - -
 ### <a name="isnull"></a>IsNull
 **Beskrivning:**  
-Om uttrycket utvärderas till Null, returnerar funktionen IsNull true.
+Om hello uttrycket utvärderas tooNull, returnerar hello IsNull funktionen SANT.
 
 **Syntax:**  
 `bool IsNull(var Expression)`
 
 **Anmärkning:**  
-Ett null-värde anges för ett attribut av attributet saknas.
+Ett null-värde uttrycks för ett attribut av hello hello-attributet saknas.
 
 **Exempel:**  
 `IsNull([displayName])`  
-Returnerar True om attributet inte finns i CS eller MV.
+Returnerar True om hello attributet inte finns i hello CS eller MV.
 
 - - -
 ### <a name="isnullorempty"></a>IsNullOrEmpty
 **Beskrivning:**  
-Om uttrycket är null eller en tom sträng, returnerar funktionen IsNullOrEmpty SANT.
+Om hello uttryck är null eller en tom sträng, returnerar hello IsNullOrEmpty funktionen SANT.
 
 **Syntax:**  
 `bool IsNullOrEmpty(var Expression)`
 
 **Anmärkning:**  
-För ett attribut, skulle detta utvärderas till True om attributet saknas eller finns men är en tom sträng.  
-Inversen till den här funktionen kallas IsPresent.
+För ett attribut utvärderar detta tooTrue om hello-attribut saknas eller finns men är en tom sträng.  
+hello inversen till den här funktionen kallas IsPresent.
 
 **Exempel:**  
 `IsNullOrEmpty([displayName])`  
-Returnerar True om attributet finns inte eller är en tom sträng i CS eller MV.
+Returnerar True om hello attributet finns inte eller är en tom sträng i hello CS eller MV.
 
 - - -
 ### <a name="isnumeric"></a>IsNumeric
 **Beskrivning:**  
-Funktionen IsNumeric returnerar ett booleskt värde som anger om ett uttryck kan utvärderas som tal av typen.
+hello funktionen IsNumeric returnerar ett booleskt värde som anger om ett uttryck kan utvärderas som tal av typen.
 
 **Syntax:**  
 `bool IsNumeric(var Expression)`
 
 **Anmärkning:**  
-Används för att avgöra om CNum() kan vara lyckade att parsa uttrycket.
+Använda toodetermine om CNum() kan vara lyckade tooparse hello uttryck.
 
 - - -
 ### <a name="isstring"></a>IsString
 **Beskrivning:**  
-Om uttrycket kan utvärderas till en strängtyp, utvärderar funktionen IsString till True.
+Om hello uttrycket kan vara utvärderade tooa strängen typ, och sedan hello IsString evaluerar tooTrue.
 
 **Syntax:**  
 `bool IsString(var expression)`
 
 **Anmärkning:**  
-Används för att avgöra om CStr() kan vara lyckade att parsa uttrycket.
+Använda toodetermine om CStr() kan vara lyckade tooparse hello uttryck.
 
 - - -
 ### <a name="ispresent"></a>IsPresent
 **Beskrivning:**  
-Om uttrycket utvärderas till en sträng som inte är Null och inte är tom, returnerar funktionen IsPresent SANT.
+Om hello uttrycket utvärderas tooa sträng som inte är Null och inte är tom, hello du IsPresent funktionen returnerar true.
 
 **Syntax:**  
 `bool IsPresent(var expression)`
 
 **Anmärkning:**  
-Inversen till den här funktionen kallas IsNullOrEmpty.
+hello inversen till den här funktionen kallas IsNullOrEmpty.
 
 **Exempel:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -814,53 +814,53 @@ Inversen till den här funktionen kallas IsNullOrEmpty.
 - - -
 ### <a name="item"></a>Objekt
 **Beskrivning:**  
-Funktionen Item returnerar ett objekt från ett med flera värden strängattribut.
+hello funktionen Item returnerar ett objekt från ett med flera värden strängattribut.
 
 **Syntax:**  
 `var Item(mvstr attribute, num index)`
 
 * attributet: flervärdesattribut
-* index: index till ett objekt i strängen med flera värden.
+* index: indexet tooan objekt i flera värden hello-sträng.
 
 **Anmärkning:**  
-Funktionen Item används tillsammans med funktionen innehåller eftersom funktionen senare returnerar index till ett objekt i attributet med flera värden.
+hello funktionen Item används tillsammans med hello innehåller funktionen eftersom hello senare funktionen returnerar hello index tooan objektet i hello flervärdesattribut.
 
 Genererar ett fel om index är utanför intervallet.
 
 **Exempel:**  
 `Mid(Item([proxyAddress],Contains([proxyAddress], "SMTP:")),6)`  
-Returnerar den primära e-postadressen.
+Returnerar hello primära e-postadress.
 
 - - -
 ### <a name="itemornull"></a>ItemOrNull
 **Beskrivning:**  
-Funktionen ItemOrNull returnerar ett objekt från ett med flera värden strängattribut.
+Hej ItemOrNull funktionen returnerar ett objekt från ett med flera värden strängattribut.
 
 **Syntax:**  
 `var ItemOrNull(mvstr attribute, num index)`
 
 * attributet: flervärdesattribut
-* index: index till ett objekt i strängen med flera värden.
+* index: indexet tooan objekt i flera värden hello-sträng.
 
 **Anmärkning:**  
-Funktionen ItemOrNull används tillsammans med funktionen innehåller eftersom funktionen senare returnerar index till ett objekt i attributet med flera värden.
+Hej ItemOrNull funktionen är användbart tillsammans med hello innehåller funktionen eftersom hello senare funktionen returnerar hello index tooan objektet i hello flervärdesattribut.
 
 Om index är utanför intervallet, returnerar du värdet Null.
 
 - - -
 ### <a name="join"></a>Slå ihop
 **Beskrivning:**  
-Funktionen Anslut till en sträng med flera värden och returnerar en enstaka sträng med angiven avgränsare infogas mellan varje element.
+hello koppling funktionen en sträng med flera värden och returnerar en enstaka sträng med angiven avgränsare infogas mellan varje element.
 
 **Syntax:**  
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* attributet: flervärdesattribut som innehåller strängar som ska sammanfogas.
-* en avgränsare: alla strängar som används för att avgränsa delsträngar i den returnerade strängen. Om det utelämnas används blanksteg (””) används. Om en avgränsare för en tom sträng (””) eller något, sammanfogas alla objekt i listan med ingen avgränsare.
+* attributet: flervärdesattribut som innehåller strängar toobe ansluten.
+* en avgränsare: någon sträng, används tooseparate hello delsträngar i hello returnerade sträng. Om det utelämnas används hello blanksteg (””) används. Om en avgränsare för en tom sträng (””) eller något, alla objekt i listan hello sammanfogas med ingen avgränsare.
 
 **Kommentarer**  
-Det finns paritet mellan koppling och dela funktioner. Funktionen Anslut till en matris med strängar och slår ihop dem med hjälp av en sträng som avgränsare, för att returnera en sträng. Funktionen Dela tar en sträng och skiljer den på avgränsaren, som returnerar en matris med strängar. Viktigaste skillnaden är dock att kopplingen kan sammanfoga strängar med valfri avgränsare sträng, dela kan endast separata strängar som använder en avgränsare för en enstaka tecken.
+Det finns paritet mellan hello koppling och dela funktioner. hello funktionen Join tar en matris med strängar och slår ihop dem med hjälp av en avgränsare sträng, tooreturn en enskild textsträng. hello dela funktionen en sträng och skiljer den på hello avgränsaren, tooreturn en matris med strängar. Viktigaste skillnaden är dock att kopplingen kan sammanfoga strängar med valfri avgränsare sträng, dela kan endast separata strängar som använder en avgränsare för en enstaka tecken.
 
 **Exempel:**  
 `Join([proxyAddresses],",")`  
@@ -869,7 +869,7 @@ Kan returnera ”:SMTP:john.doe@contoso.com,smtp:jd@contoso.com”
 - - -
 ### <a name="lcase"></a>LCase
 **Beskrivning:**  
-Funktionen LCase konverterar alla tecken i en textsträng till gemener.
+hello funktionen LCase konverterar alla tecken i strängen toolower fall.
 
 **Syntax:**  
 `str LCase(str value)`
@@ -881,22 +881,22 @@ Returnerar ”test”.
 - - -
 ### <a name="left"></a>vänster
 **Beskrivning:**  
-Funktionen vänster returnerar ett angivet antal tecken från vänster i en sträng.
+hello vänstra funktionen returnerar ett angivet antal tecken från hello till vänster i en sträng.
 
 **Syntax:**  
 `str Left(str string, num NumChars)`
 
-* sträng: strängen som ska returnera tecken från
-* NumChars: ett tal som identifierar antalet tecken ska returneras från början (vänster) av sträng
+* sträng: hello sträng tooreturn tecken från
+* NumChars: ett tal som identifierar hello antal tecken tooreturn från hello början (vänster) av sträng
 
 **Anmärkning:**  
-En sträng som innehåller de första numChars tecken i strängen:
+En sträng som innehåller hello första numChars tecken i strängen:
 
 * Om numChars = 0, returneras en tom sträng.
 * Om numChars < 0, returnerar Indatasträngen.
 * Om strängen är null returnera tom sträng.
 
-Om strängen innehåller färre tecken än antalet angivna i numChars, returneras en sträng som är identisk med sträng (som är, som innehåller alla tecken i parameter 1).
+Om strängen innehåller färre tecken än hello antal som anges i numChars, returneras en sträng identiska toostring (som är, som innehåller alla tecken i parameter 1).
 
 **Exempel:**  
 `Left("John Doe", 3)`  
@@ -905,7 +905,7 @@ Returnerar ”Joh”.
 - - -
 ### <a name="len"></a>Len
 **Beskrivning:**  
-Funktionen längd returnerar antalet tecken i en sträng.
+hello funktionen längd returnerar antalet tecken i en sträng.
 
 **Syntax:**  
 `num Len(str value)`
@@ -917,7 +917,7 @@ Returnerar 8
 - - -
 ### <a name="ltrim"></a>LTrim
 **Beskrivning:**  
-Funktionen LTrim tar bort inledande blanksteg från en sträng.
+hello LTrim funktionen tar bort inledande blanksteg från en sträng.
 
 **Syntax:**  
 `str LTrim(str value)`
@@ -929,14 +929,14 @@ Returnerar ”Test”
 - - -
 ### <a name="mid"></a>Mid
 **Beskrivning:**  
-Funktionen Mid returnerar ett angivet antal tecken från en angiven position i en sträng.
+Hej Mid funktionen returnerar ett angivet antal tecken från en angiven position i en sträng.
 
 **Syntax:**  
 `str Mid(str string, num start, num NumChars)`
 
-* sträng: strängen som ska returnera tecken från
-* Starta: ett tal som identifierar Start position i strängen att returnera tecken från
-* NumChars: ett tal som identifierar antalet tecken ska returneras från position i strängen
+* sträng: hello sträng tooreturn tecken från
+* Starta: ett tal som identifierar hello startposition i strängen tooreturn tecken från
+* NumChars: ett tal som identifierar hello antalet tooreturn tecken från position i strängen
 
 **Anmärkning:**  
 Returnera numChars tecken med början från början position i strängen.  
@@ -944,7 +944,7 @@ En sträng som innehåller numChars tecken från början position i strängen:
 
 * Om numChars = 0, returneras en tom sträng.
 * Om numChars < 0, returnerar Indatasträngen.
-* Om start > längden på strängen, returnera Indatasträngen.
+* Om start > Hej strängens längd, returnera Indatasträngen.
 * Om starta < = 0, returnera Indatasträngen.
 * Om strängen är null returnera tom sträng.
 
@@ -960,7 +960,7 @@ Returnerar ”Berg”
 - - -
 ### <a name="now"></a>Nu
 **Beskrivning:**  
-Funktionen nu returnerar ett datetime-värde som anger aktuellt datum och tid, enligt systemets datum och klockslag för på datorn.
+hello nu returnerar funktionen DateTime anger hello aktuellt datum och tid, enligt tooyour datorns datum och klockslag.
 
 **Syntax:**  
 `dt Now()`
@@ -968,7 +968,7 @@ Funktionen nu returnerar ett datetime-värde som anger aktuellt datum och tid, e
 - - -
 ### <a name="numfromdate"></a>NumFromDate
 **Beskrivning:**  
-Funktionen NumFromDate returnerar ett datum i Annonsens datumformat.
+Hej NumFromDate funktionen returnerar ett datum i Annonsens datumformat.
 
 **Syntax:**  
 `num NumFromDate(dt value)`
@@ -980,23 +980,23 @@ Returnerar 129699324000000000
 - - -
 ### <a name="padleft"></a>padLeft
 **Beskrivning:**  
-De PadLeft funktionen vänster-Pad en sträng till en angiven längd med hjälp av angivna utfyllnadstecknet.
+Hej PadLeft fungerar vänster Pad en sträng tooa som angetts med hjälp av angivna utfyllnadstecknet längd.
 
 **Syntax:**  
 `str PadLeft(str string, num length, str padCharacter)`
 
-* sträng: strängen utfyllnad.
-* längd: ett heltal som representerar den önskade längden på strängen.
-* padCharacter: en sträng som består av ett enskilt tecken som ska användas som pad tecken
+* sträng: hello sträng toopad.
+* längd: ett heltal som representerar hello önskad strängens längd.
+* padCharacter: en sträng som består av ett enskilt tecken toouse som hello pad tecken
 
 **Anmärkning:**
 
-* Om längden på strängen är mindre än längden, läggs padCharacter flera gånger i början (vänster) strängens förrän den har en längd lika med längden.
+* Om hello längden på strängen är mindre än längden, är padCharacter upprepade gånger tillagda toohello början (vänster) av strängen förrän den har en lika lång toolength.
 * padCharacter kan vara ett blanksteg, men den kan inte vara ett null-värde.
-* Om längden på strängen är lika med eller större än längden, returneras strängen oförändrat.
-* Om strängen har en längd som är större än eller lika med längden, returneras en sträng som är identiska till sträng.
-* Om längden på strängen är mindre än längden, returnerade en ny sträng med längden som innehåller strängen fylls ut med en padCharacter.
-* Om strängen är null returneras en tom sträng.
+* Om hello längden på strängen är lika tooor som är större än längden, returneras strängen oförändrat.
+* Om strängen har en längd som är större än eller lika toolength, returneras en identisk toostring sträng.
+* Om hello längden på strängen är mindre än längden, önskade en ny sträng av hello för längd returneras som innehåller strängen fylls ut med en padCharacter.
+* Om strängen är null, returneras hello en tom sträng.
 
 **Exempel:**  
 `PadLeft("User", 10, "0")`  
@@ -1005,23 +1005,23 @@ Returnerar ”000000User”.
 - - -
 ### <a name="padright"></a>PadRight
 **Beskrivning:**  
-De PadRight funktionen höger-Pad en sträng till en angiven längd med hjälp av angivna utfyllnadstecknet.
+Hej PadRight fungerar höger Pad en sträng tooa som angetts med hjälp av angivna utfyllnadstecknet längd.
 
 **Syntax:**  
 `str PadRight(str string, num length, str padCharacter)`
 
-* sträng: strängen utfyllnad.
-* längd: ett heltal som representerar den önskade längden på strängen.
-* padCharacter: en sträng som består av ett enskilt tecken som ska användas som pad tecken
+* sträng: hello sträng toopad.
+* längd: ett heltal som representerar hello önskad strängens längd.
+* padCharacter: en sträng som består av ett enskilt tecken toouse som hello pad tecken
 
 **Anmärkning:**
 
-* Om längden på strängen är mindre än längden, sedan läggs padCharacter upprepade gånger till (höger) slutet av strängen förrän den har en längd som är lika med längden.
+* Om hello längden på strängen är mindre än längden, är padCharacter upprepade gånger tillagda toohello slutet (höger) av strängen förrän den har en lika lång toolength.
 * padCharacter kan vara ett blanksteg, men den kan inte vara ett null-värde.
-* Om längden på strängen är lika med eller större än längden, returneras strängen oförändrat.
-* Om strängen har en längd som är större än eller lika med längden, returneras en sträng som är identiska till sträng.
-* Om längden på strängen är mindre än längden, returnerade en ny sträng med längden som innehåller strängen fylls ut med en padCharacter.
-* Om strängen är null returneras en tom sträng.
+* Om hello längden på strängen är lika tooor som är större än längden, returneras strängen oförändrat.
+* Om strängen har en längd som är större än eller lika toolength, returneras en identisk toostring sträng.
+* Om hello längden på strängen är mindre än längden, önskade en ny sträng av hello för längd returneras som innehåller strängen fylls ut med en padCharacter.
+* Om strängen är null, returneras hello en tom sträng.
 
 **Exempel:**  
 `PadRight("User", 10, "0")`  
@@ -1030,14 +1030,14 @@ Returnerar ”User000000”.
 - - -
 ### <a name="pcase"></a>PCase
 **Beskrivning:**  
-Funktionen PCase konverterar det första tecknet i varje blankstegsavgränsad ord i en sträng till versaler och alla andra tecken har konverterats till gemener.
+Hej PCase funktionen konverterar hello första tecknet i varje blankstegsavgränsad ord i strängen tooupper fall och alla andra tecken konverteras toolower fallet.
 
 **Syntax:**  
 `String PCase(string)`
 
 **Anmärkning:**
 
-* Den här funktionen ger inte rätt skiftläge om du vill konvertera ett ord som är helt versaler, till exempel en förkortning för närvarande.
+* Den här funktionen innehåller för närvarande inte rätt skiftläge tooconvert ett ord som är helt versaler, till exempel en förkortning.
 
 **Exempel:**  
 `PCase("TEsT")`  
@@ -1049,13 +1049,13 @@ Returnerar ”Test”
 - - -
 ### <a name="randomnum"></a>RandomNum
 **Beskrivning:**  
-Funktionen RandomNum returnerar ett slumptal mellan ett visst intervall.
+Hej RandomNum funktionen returnerar ett slumptal mellan ett visst intervall.
 
 **Syntax:**  
 `num RandomNum(num start, num end)`
 
-* Starta: ett tal som identifierar den nedre gränsen för slumpmässigt värde att generera
-* End: ett tal som identifierar den övre gränsen för slumpmässigt värde att generera
+* Starta: antalet identifierande hello nedre gräns hello slumpmässigt värde toogenerate
+* End: ett tal identifierande hello övre gränsen för hello slumpmässigt värde toogenerate
 
 **Exempel:**  
 `Random(100,999)`  
@@ -1064,7 +1064,7 @@ Returnera 734.
 - - -
 ### <a name="removeduplicates"></a>RemoveDuplicates
 **Beskrivning:**  
-Funktionen RemoveDuplicates tar en sträng med flera värden och kontrollera att varje värdet är unikt.
+Hej RemoveDuplicates funktionen en sträng med flera värden och kontrollera att varje värde är unikt.
 
 **Syntax:**  
 `mvstr RemoveDuplicates(mvstr attribute)`
@@ -1076,17 +1076,17 @@ Returnerar ett språkoberoende proxyAddress attribut där alla dubblettvärden h
 - - -
 ### <a name="replace"></a>Ersätt
 **Beskrivning:**  
-Funktionen Ersätt ersätter alla förekomster av en textsträng med en annan sträng.
+hello Ersätt funktionen ersätter alla förekomster av en sträng tooanother sträng.
 
 **Syntax:**  
 `str Replace(str string, str OldValue, str NewValue)`
 
-* sträng: Ersätt värden i en sträng.
-* OldValue: En sträng att söka efter och ersätta.
-* NewValue: Strängen som ska ersätta.
+* sträng: en sträng tooreplace som värden i.
+* OldValue: hello sträng toosearch för och tooreplace.
+* NewValue: hello sträng tooreplace till.
 
 **Anmärkning:**  
-Funktionen godtar följande särskilda monikrar:
+hello funktionen identifierar hello följa särskilda monikrar:
 
 * \n – ny rad
 * \r – vagnretur
@@ -1094,31 +1094,31 @@ Funktionen godtar följande särskilda monikrar:
 
 **Exempel:**  
 `Replace([address],"\r\n",", ")`  
-Ersätter CRLF med ett kommatecken och blanksteg och kan leda till ”en Microsoft sätt, Redmond, WA, USA”
+Ersätter CRLF med ett kommatecken och ett blanksteg och leda för ”en Microsoft sätt, Redmond, WA, USA”
 
 - - -
 ### <a name="replacechars"></a>ReplaceChars
 **Beskrivning:**  
-Funktionen ReplaceChars ersätter alla förekomster av tecken hittades i ReplacePattern-sträng.
+Hej ReplaceChars funktionen ersätter alla förekomster av tecken hittades i hello ReplacePattern sträng.
 
 **Syntax:**  
 `str ReplaceChars(str string, str ReplacePattern)`
 
-* sträng: en sträng som ska ersätta tecken i.
-* ReplacePattern: en sträng som innehåller en ordlista med tecken som ska ersätta.
+* sträng: en sträng tooreplace tecken.
+* ReplacePattern: en sträng som innehåller en ordlista med tooreplace tecken.
 
-Formatet är {källa1}: {target1}, {källa2}: {target2}, {källan}, {targetN} där källan är tecknet för att hitta och rikta den sträng som ska ersättas med.
+hello-formatet är {källa1}: {target1}, {källa2}: {target2}, {källan}, {targetN} där källan är hello tecken och mål för toofind hello sträng tooreplace med.
 
 **Anmärkning:**
 
-* Funktionen tar varje förekomst av definierade källor och ersätter dem med mål.
-* Källan måste vara exakt ett tecken för (unicode).
-* Källan kan inte vara tomt eller längre än ett tecken (tolkningsfel).
-* Målet kan ha flera tecken, till exempel ö:oe, β:ss.
-* Målet kan vara tom som anger tecknet som ska tas bort.
-* Källan är skiftlägeskänsligt och måste vara en exakt matchning.
-* I (semikolonavgränsad) och: (kolon) är reserverade tecken som inte kan ersättas med den här funktionen.
-* Blanksteg och andra vit tecken i strängen ReplacePattern ignoreras.
+* hello funktionen tar för varje förekomst av definierade källor och ersätter dem med hello mål.
+* hello källan måste vara exakt ett tecken för (unicode).
+* hello källa vara inte tomt eller längre än ett tecken (tolkningsfel).
+* hello mål kan ha flera tecken, till exempel ö:oe, β:ss.
+* hello mål kan vara tomt som anger att hello tecken ska tas bort.
+* hello-källa är skiftlägeskänsligt och måste vara en exakt matchning.
+* hello, (semikolonavgränsad) och: (kolon) är reserverade tecken som inte kan ersättas med den här funktionen.
+* Blanksteg och andra vit tecken i hello ReplacePattern strängen ignoreras.
 
 **Exempel:**  
 `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
@@ -1127,29 +1127,29 @@ Formatet är {källa1}: {target1}, {källa2}: {target2}, {källan}, {targetN} d�
 Returnerar Raksmorgas
 
 `ReplaceChars("O’Neil",%ReplaceString%)`  
-Returnerar ”ONeil”, enskild skalstreck definieras till att tas bort.
+Returnerar ”ONeil”, hello markering är definierad toobe tas bort.
 
 - - -
 ### <a name="right"></a>Höger
 **Beskrivning:**  
-Funktionen höger returnerar ett angivet antal tecken från höger (end) i en sträng.
+hello rätt funktion returnerar ett angivet antal tecken från hello rätt (end) i en sträng.
 
 **Syntax:**  
 `str Right(str string, num NumChars)`
 
-* sträng: strängen som ska returnera tecken från
-* NumChars: ett tal som identifierar antalet tecken ska returneras från (höger) slutet av strängen
+* sträng: hello sträng tooreturn tecken från
+* NumChars: ett tal som identifierar hello antal tecken tooreturn från hello slutpunkt (höger) av sträng
 
 **Anmärkning:**  
-NumChars tecken som ska returneras från den senaste positionen i strängen.
+NumChars tecken som ska returneras från hello senaste position i strängen.
 
-En sträng som innehåller de senaste numChars tecken i strängen:
+En sträng som innehåller hello senaste numChars tecken i strängen:
 
 * Om numChars = 0, returneras en tom sträng.
 * Om numChars < 0, returnerar Indatasträngen.
 * Om strängen är null returnera tom sträng.
 
-Om strängen innehåller färre tecken än antalet angivna i NumChars, returneras en sträng som är identiska till sträng.
+Om strängen innehåller färre tecken än hello nummer anges i NumChars, returneras en identisk toostring sträng.
 
 **Exempel:**  
 `Right("John Doe", 3)`  
@@ -1158,7 +1158,7 @@ Returnerar ”Berg”.
 - - -
 ### <a name="rtrim"></a>RTrim
 **Beskrivning:**  
-RTrim funktionen tar bort avslutande blanksteg från en sträng.
+hello RTrim funktionen tar bort avslutande blanksteg från en sträng.
 
 **Syntax:**  
 `str RTrim(str value)`
@@ -1176,36 +1176,36 @@ Processen för alla värden i en flervärdesfält attribut (eller utdata för et
 `mvattr Select(variable item, mvattr attribute, func function)`  
 `mvattr Select(variable item, exp expression, func function)`
 
-* objektet: representerar ett element i attributet med flera värden
-* attributet: attributet med flera värden
+* objektet: representerar ett element i hello flervärdesattribut
+* attributet: hello flervärdesattribut
 * uttryck: ett uttryck som returnerar en mängd med värden
-* villkor: en funktion som kan bearbeta ett objekt i attributet
+* villkor: en funktion som kan bearbeta ett objekt i hello attribut
 
 **Exempel:**  
 `Select($item,[otherPhone],Replace($item,“-”,“”))`  
-Returnera alla värden i flervärdesattribut Annantelefon när bindestreck (-) har tagits bort.
+Returnera alla hello-värden i hello flervärdesattribut Annantelefon när bindestreck (-) har tagits bort.
 
 - - -
 ### <a name="split"></a>Dela
 **Beskrivning:**  
-Funktionen Dela en sträng som avgränsas med en avgränsare och det är en sträng med flera värden.
+hello dela funktionen en sträng som avgränsas med en avgränsare och gör det en sträng med flera värden.
 
 **Syntax:**  
 `mvstr Split(str value, str delimiter)`  
 `mvstr Split(str value, str delimiter, num limit)`
 
-* värde: sträng med ett avgränsningstecken för att avgränsa.
-* en avgränsare: valfritt tecken som ska användas som avgränsare.
+* värde: sträng med en avgränsare tecken tooseparate hello.
+* en avgränsare: enkel tecken toobe används som hello avgränsare.
 * gränsen: maximala antalet värden som kan returnera.
 
 **Exempel:**  
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
-Returnerar en sträng som har flera värden med 2 element användbart för attributet proxyAddress.
+Returnerar en sträng som har flera värden med 2 element användbart för hello proxyAddress attribut.
 
 - - -
 ### <a name="stringfromguid"></a>GUIDFromString
 **Beskrivning:**  
-Funktionen GUIDFromString tar en binär GUID och konverterar den till en sträng
+hello GUIDFromString funktionen tar ett binärt GUID och konverterar den tooa sträng
 
 **Syntax:**  
 `str StringFromGuid(bin GUID)`
@@ -1213,7 +1213,7 @@ Funktionen GUIDFromString tar en binär GUID och konverterar den till en sträng
 - - -
 ### <a name="stringfromsid"></a>StringFromSid
 **Beskrivning:**  
-Funktionen StringFromSid konverterar en bytematris som innehåller en säkerhetsidentifierare till en sträng.
+Hej StringFromSid funktionen konverterar en bytematris som innehåller en security identifier tooa sträng.
 
 **Syntax:**  
 `str StringFromSid(bin ObjectSID)`  
@@ -1221,36 +1221,36 @@ Funktionen StringFromSid konverterar en bytematris som innehåller en säkerhets
 - - -
 ### <a name="switch"></a>Växel
 **Beskrivning:**  
-Växeln-funktionen används för att returnera ett enstaka värde baserat på utvärderade villkoren.
+hello växelfunktionen är tooreturn används ett värde baserat på utvärderade villkoren.
 
 **Syntax:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* uttryck: Variant-uttryck som du vill utvärdera.
-* värde: värde som ska returneras om motsvarande uttryck är True.
+* uttryck: Variant-uttryck som du vill använda tooevaluate.
+* värde: värdet toobe returneras om hello motsvarande uttryck är True.
 
 **Anmärkning:**  
-Växeln-funktionen argumentlistan består av par med uttryck och värden. Uttryck som utvärderas från vänster till höger och returneras värdet som associeras med det första uttrycket ska utvärderas till SANT. Om delarna inte är korrekt paras ihop, inträffar ett fel under körning.
+hello växeln funktionsargument listan består av par med uttryck och värden. hello uttryck utvärderas från vänster tooright och hello-värde som är associerade med hello första uttryck tooevaluate tooTrue returneras. Om hello delar inte är korrekt paras ihop, inträffar ett fel under körning.
 
 Om Uttr1 är SANT returnerar växeln value1. Om uttryck-1 är False, men uttryck-2 är sant, returnerar växeln värdet 2 och så vidare.
 
 Växeln returnerar en ingenting om:
 
-* Ingen av uttrycken är sant.
-* Det första värdet är SANT uttrycket har ett motsvarande värde som är Null.
+* Ingen hälsningspaket uttryck är True.
+* hello första SANT uttrycket har ett motsvarande värde som är Null.
 
-Växeln utvärderar alla uttryck, även om den returnerar endast en av dem. Därför bör du titta på för oönskade sidoeffekter. Utvärderingen av ett uttryck som resulterar i en division med noll-fel, inträffar ett fel.
+Växeln utvärderar alla uttryck, även om den returnerar endast en av dem. Därför bör du titta på för oönskade sidoeffekter. Hello utvärderingen av ett uttryck som resulterar i en division med noll-fel, inträffar ett fel.
 
-Värdet kan också vara funktionen fel som returnerar en anpassad sträng.
+Värdet kan också vara hello fel funktion som returnerar en anpassad sträng.
 
 **Exempel:**  
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
-Returnerar det språk som talas i vissa större städer, annars returneras ett fel.
+Returnerar hello-språk som talas i vissa större orter, annars returneras ett fel.
 
 - - -
 ### <a name="trim"></a>Rensa
 **Beskrivning:**  
-Funktionen Rensa tar bort inledande och avslutande blanksteg från en sträng.
+Rensa hello-funktionen tar bort inledande och avslutande blanksteg från en sträng.
 
 **Syntax:**  
 `str Trim(str value)`  
@@ -1260,12 +1260,12 @@ Funktionen Rensa tar bort inledande och avslutande blanksteg från en sträng.
 Returnerar ”Test”.
 
 `Trim([proxyAddresses])`  
-Tar bort inledande och avslutande blanksteg för varje värde i attributet proxyAddress.
+Tar bort inledande och avslutande blanksteg för varje värde i hello proxyAddress attribut.
 
 - - -
 ### <a name="ucase"></a>UCase
 **Beskrivning:**  
-Funktionen UCase konverterar alla tecken i en textsträng till versaler.
+hello funktionen UCase konverterar alla tecken i strängen tooupper fall.
 
 **Syntax:**  
 `str UCase(str string)`
@@ -1283,23 +1283,23 @@ Returnerar en delmängd av värden från ett med flera värden attribut (eller u
 **Syntax:**  
 `mvattr Where(variable item, mvattr attribute, exp condition)`  
 `mvattr Where(variable item, exp expression, exp condition)`  
-* objektet: representerar ett element i attributet med flera värden
-* attributet: attributet med flera värden
-* villkor: ett uttryck som kan utvärderas till true eller false
+* objektet: representerar ett element i hello flervärdesattribut
+* attributet: hello flervärdesattribut
+* villkor: ett uttryck som kan utvärderas tootrue eller false
 * uttryck: ett uttryck som returnerar en mängd med värden
 
 **Exempel:**  
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
-Returvärden certifikatet i den flervärdesattribut userCertificate som inte har upphört att gälla.
+Returvärden hello certifikat i hello flervärdesattribut userCertificate som inte har upphört att gälla.
 
 - - -
 ### <a name="with"></a>med
 **Beskrivning:**  
-Med funktionen är ett sätt att förenkla ett komplext uttryck med hjälp av en variabel som representerar ett deluttryck som visas en eller flera gånger i ett komplext uttryck.
+hello med funktionen ger ett sätt toosimplify ett komplext uttryck med hjälp av en variabel toorepresent ett deluttryck som visas en eller flera gånger i hello komplext uttryck.
 
 **Syntax:**
 `With(var variable, exp subExpression, exp complexExpression)`  
-* variabel: representerar underuttryck.
+* variabel: representerar hello underuttryck.
 * underuttryck: deluttryck som representeras av variabeln.
 * complexExpression: ett komplext uttryck.
 
@@ -1307,23 +1307,23 @@ Med funktionen är ett sätt att förenkla ett komplext uttryck med hjälp av en
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
 Har samma funktioner som:  
 `IIF (Count(Where($item,[userCertificate],CertNotAfter($item)>Now()))>0, Where($item,[userCertificate],CertNotAfter($item)>Now()),NULL)`  
-Som returnerar endast återstående certifikat värden i attributet userCertificate.
+Som returnerar endast återstående certifikat värden i hello userCertificate attribut.
 
 
 - - -
 ### <a name="word"></a>Word
 **Beskrivning:**  
-Funktionen Word returnerar ett ord som ingår i en sträng, baserat på parametrarna som beskriver avgränsare ska användas och word-nummer för att returnera.
+hello funktion returnerar ett ord som ingår i en sträng, baserat på parametrarna som beskriver hello avgränsare toouse och hello word nummer tooreturn.
 
 **Syntax:**  
 `str Word(str string, num WordNumber, str delimiters)`
 
-* sträng: strängen som ska returnera ett ord från.
+* sträng: hello sträng tooreturn ett ord från.
 * WordNumber: ett tal som identifierar vilka word-numret ska returnera.
-* avgränsare: en sträng som representerar delimiter(s) som ska användas för att identifiera ord
+* avgränsare: en sträng som representerar hello delimiter(s) som ska använda tooidentify ord
 
 **Anmärkning:**  
-Varje sträng med tecken i strängen avgränsade med något av tecknen i avgränsare identifieras som ord:
+Varje sträng med tecken i strängen avgränsade med hello hello tecken i avgränsare identifieras som ord:
 
 * Om number < 1, returnerar tom sträng.
 * Om strängen är null returnerar tom sträng.
@@ -1331,7 +1331,7 @@ Varje sträng med tecken i strängen avgränsade med något av tecknen i avgrän
 Om strängen innehåller mindre än antalet ord eller strängen innehåller inte några ord som identifieras av avgränsare, returneras en tom sträng.
 
 **Exempel:**  
-`Word("The quick brown fox",3," ")`  
+`Word("hello quick brown fox",3," ")`  
 Returnerar ”Jansson”
 
 `Word("This,string!has&many separators",3,",!&#")`  

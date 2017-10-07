@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI-skript exempel – ansluta en webbapp till ett lagringskonto | Microsoft Docs"
-description: "Azure CLI-skript exempel – ansluta en webbapp till ett lagringskonto"
+title: "aaaAzure CLI skriptexempel - ansluta ett lagringskonto för web app tooa | Microsoft Docs"
+description: Azure CLI-skript Sample - Anslut en web app tooa storage-konto
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,44 +16,44 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 2520eecf54b77b88d6aa1ba2e538d05e3407f3d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: affee2d39ef3f98c6043010850e08b67fb9ce54d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-a-web-app-to-a-storage-account"></a>Ansluta en webbapp till ett lagringskonto
+# <a name="connect-a-web-app-tooa-storage-account"></a>Ansluta en web app tooa storage-konto
 
-I det här scenariot du lära dig hur du skapar ett Azure storage-konto och ett Azure-webbapp. Sedan kommer du länka storage-konto till det webbprogram som använder app-inställningar.
+I det här scenariot du lära dig hur toocreate ett Azure storage-konto och ett Azure web app. Du kan länka hello storage-konto toohello webbapp med app-inställningar.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-azurecli-interactive[huvudsakliga](../../../cli_scripts/app-service/connect-to-storage/connect-to-storage.sh "Azure Storage")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/connect-to-storage/connect-to-storage.sh "Azure Storage")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon för att skapa en resursgrupp, webbprogram, storage-konto och alla relaterade resurser. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon toocreate en resursgrupp, webbprogram, storage-konto och alla relaterade resurser. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
 | [Skapa AZ grupp](https://docs.microsoft.com/cli/azure/group#create) | Skapar en resursgrupp som är lagrade i alla resurser. |
 | [Skapa AZ programtjänstplan](https://docs.microsoft.com/cli/azure/appservice/plan#create) | Skapar en App Service-plan. Detta påminner om en servergrupp för din Azure webbapp. |
 | [Skapa AZ webapp](https://docs.microsoft.com/cli/azure/webapp#create) | Skapar ett Azure-webbapp. |
-| [Skapa AZ storage-konto](https://docs.microsoft.com/cli/azure/storage/account#create) | Skapar ett lagringskonto. Detta är där statiska tillgångar lagras. |
+| [Skapa AZ storage-konto](https://docs.microsoft.com/cli/azure/storage/account#create) | Skapar ett lagringskonto. Detta är där hello statiska tillgångar lagras. |
 | [AZ konto visa--anslutningssträngen för lagring](https://docs.microsoft.com/cli/azure/storage/account#show-connection-string) | |
 | [AZ webapp appsettings konfigurationsuppsättning](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#set) | Skapar eller uppdaterar en appinställning för ett Azure-webbapp. App-inställningar visas som miljövariabler för din app. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
+Mer information om hello Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
 
-Ytterligare App Service CLI skriptexempel finns i den [dokumentation för Azure App Service](../app-service-cli-samples.md).
+Ytterligare App Service CLI skriptexempel finns i hello [dokumentation för Azure App Service](../app-service-cli-samples.md).

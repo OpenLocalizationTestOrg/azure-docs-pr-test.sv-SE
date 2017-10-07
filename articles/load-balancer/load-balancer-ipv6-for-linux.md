@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera DHCPv6 för virtuella Linux-datorer | Microsoft Docs"
-description: "Hur du konfigurerar DHCPv6 för virtuella Linux-datorer."
+title: "aaaConfiguring DHCPv6 för virtuella Linux-datorer | Microsoft Docs"
+description: "Hur tooconfigure DHCPv6 för Linux virtuella datorer."
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,34 +15,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: kumud
-ms.openlocfilehash: 5c591e7f1838c86ca74caea9dd3a5e8f874fd8a7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: abd5a98c3496b189946f59bab1d9c20dcd0aa2c0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-dhcpv6-for-linux-vms"></a>Konfigurera DHCPv6 för virtuella Linux-datorer
 
-Vissa av Linux virtuella avbildningar i Azure Marketplace har inte DHCPv6 konfigureras som standard. För att stödja IPv6 konfigureras DHCPv6 i inom den Linux OS-distribution som du använder. Olika Linux-distributioner har olika sätt att konfigurera DHCPv6 eftersom de använder olika paket.
+Vissa av hello Linux virtuella bilder i hello Azure Marketplace har inte DHCPv6 konfigureras som standard. toosupport IPv6, DHCPv6 måste vara konfigurerad i hello Linux OS-distribution som du använder. Olika Linux-distributioner har olika sätt att konfigurera DHCPv6 eftersom de använder olika paket.
 
 > [!NOTE]
-> Senaste SUSE Linux och virtuell CoreOS-avbildningar i Azure Marketplace har redan konfigurerats med DHCPv6. Inga ytterligare ändringar krävs när du använder dessa bilder.
+> Senaste SUSE Linux och virtuell CoreOS-avbildningar i hello Azure Marketplace har redan konfigurerats med DHCPv6. Inga ytterligare ändringar krävs när du använder dessa bilder.
 
-Det här dokumentet beskriver hur du aktiverar DHCPv6 så att den virtuella Linux-datorn hämtar en IPv6-adress.
+Det här dokumentet beskriver hur tooenable DHCPv6 så att den virtuella Linux-datorn hämtar en IPv6-adress.
 
 > [!WARNING]
-> Felaktigt redigera konfigurationsfiler för nätverket kan medföra att du förlorar åtkomst till nätverket till den virtuella datorn. Vi rekommenderar att du testar din konfigurationsändringar på datorer i icke-produktionsmiljö. Anvisningarna i den här artikeln har testats på de senaste versionerna av Linux-avbildningar i Azure Marketplace. I dokumentationen för din specifika version av Linux mer detaljerad information.
+> Felaktigt redigering network configuration-filer kan det leda till att du toolose network access tooyour VM. Vi rekommenderar att du testar din konfigurationsändringar på datorer i icke-produktionsmiljö. hello instruktionerna i den här artikeln har testats på hello senaste versionerna av hello Linux bilder i hello Azure Marketplace. Hello dokumentationen för din specifika version av Linux mer detaljerad information.
 
 ## <a name="ubuntu"></a>Ubuntu
 
-1. Redigera filen `/etc/dhcp/dhclient6.conf` och Lägg till följande rad:
+1. Redigera filen hello `/etc/dhcp/dhclient6.conf` och Lägg till följande rad hello:
 
         timeout 10;
 
-2. Redigera nätverkskonfigurationen för eth0-gränssnittet med följande konfiguration:
+2. Redigera hello nätverkskonfigurationen för hello eth0 gränssnitt med hello följande konfiguration:
 
-   * På **Ubuntu 12.04 och 14.04**, redigerar du filen`/etc/network/interfaces.d/eth0.cfg`
-   * På **Ubuntu 16.04**, redigerar du filen`/etc/network/interfaces.d/50-cloud-init.cfg`
+   * På **Ubuntu 12.04 och 14.04**, redigera hello-filen`/etc/network/interfaces.d/eth0.cfg`
+   * På **Ubuntu 16.04**, redigera hello-filen`/etc/network/interfaces.d/50-cloud-init.cfg`
 
          iface eth0 inet6 auto
              up sleep 5
@@ -56,11 +56,11 @@ Det här dokumentet beskriver hur du aktiverar DHCPv6 så att den virtuella Linu
 
 ## <a name="debian"></a>Debian
 
-1. Redigera filen `/etc/dhcp/dhclient6.conf` och Lägg till följande rad:
+1. Redigera filen hello `/etc/dhcp/dhclient6.conf` och Lägg till följande rad hello:
 
         timeout 10;
 
-2. Redigera filen `/etc/network/interfaces` och Lägg till följande konfiguration:
+2. Redigera filen hello `/etc/network/interfaces` och Lägg till hello följande konfiguration:
 
         iface eth0 inet6 auto
             up sleep 5
@@ -74,11 +74,11 @@ Det här dokumentet beskriver hur du aktiverar DHCPv6 så att den virtuella Linu
 
 ## <a name="rhel--centos--oracle-linux"></a>RHEL / CentOS / Oracle Linux
 
-1. Redigera filen `/etc/sysconfig/network` och Lägg till följande parameter:
+1. Redigera filen hello `/etc/sysconfig/network` och Lägg till hello följande parameter:
 
         NETWORKING_IPV6=yes
 
-2. Redigera filen `/etc/sysconfig/network-scripts/ifcfg-eth0` och Lägg till följande två parametrar:
+2. Redigera filen hello `/etc/sysconfig/network-scripts/ifcfg-eth0` och Lägg till hello följande två parametrar:
 
         IPV6INIT=yes
         DHCPV6C=yes
@@ -91,19 +91,19 @@ Det här dokumentet beskriver hur du aktiverar DHCPv6 så att den virtuella Linu
 
 ## <a name="sles-11--opensuse-13"></a>SLES 11 & openSUSE 13
 
-Senaste SLES och openSUSE avbildningar i Azure har redan konfigurerats med DHCPv6. Inga ytterligare ändringar krävs när du använder dessa bilder. Om du har en virtuell dator baserat på en äldre eller anpassade SUSE avbildning, använder du följande steg:
+Senaste SLES och openSUSE avbildningar i Azure har redan konfigurerats med DHCPv6. Inga ytterligare ändringar krävs när du använder dessa bilder. Om du har en virtuell dator baserat på en äldre eller anpassade SUSE avbildning, använder du hello följande steg:
 
-1. Installera den `dhcp-client` paketet, om det behövs:
+1. Installera hello `dhcp-client` paketet, om det behövs:
 
     ```bash
     sudo zypper install dhcp-client
     ```
 
-2. Redigera filen `/etc/sysconfig/network/ifcfg-eth0` och Lägg till följande parameter:
+2. Redigera filen hello `/etc/sysconfig/network/ifcfg-eth0` och Lägg till hello följande parameter:
 
         DHCLIENT6_MODE='managed'
 
-3. Förnya IPv6-adress:
+3. Förnya hello IPv6-adress:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -111,21 +111,21 @@ Senaste SLES och openSUSE avbildningar i Azure har redan konfigurerats med DHCPv
 
 ## <a name="sles-12-and-opensuse-leap"></a>SLES 12 och openSUSE Leap
 
-Senaste SLES och openSUSE avbildningar i Azure har redan konfigurerats med DHCPv6. Inga ytterligare ändringar krävs när du använder dessa bilder. Om du har en virtuell dator baserat på en äldre eller anpassade SUSE avbildning, använder du följande steg:
+Senaste SLES och openSUSE avbildningar i Azure har redan konfigurerats med DHCPv6. Inga ytterligare ändringar krävs när du använder dessa bilder. Om du har en virtuell dator baserat på en äldre eller anpassade SUSE avbildning, använder du hello följande steg:
 
-1. Redigera filen `/etc/sysconfig/network/ifcfg-eth0` och ersätter den här parametern
+1. Redigera filen hello `/etc/sysconfig/network/ifcfg-eth0` och ersätter den här parametern
 
         #BOOTPROTO='dhcp4'
 
-    med följande värde:
+    med hello följande värde:
 
         BOOTPROTO='dhcp'
 
-2. Lägg till följande parameter till `/etc/sysconfig/network/ifcfg-eth0`:
+2. Lägg till följande parameter för hello`/etc/sysconfig/network/ifcfg-eth0`:
 
         DHCLIENT6_MODE='managed'
 
-3. Förnya IPv6-adress:
+3. Förnya hello IPv6-adress:
 
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
@@ -133,9 +133,9 @@ Senaste SLES och openSUSE avbildningar i Azure har redan konfigurerats med DHCPv
 
 ## <a name="coreos"></a>CoreOS
 
-Senaste virtuell CoreOS-avbildningar i Azure har redan konfigurerats med DHCPv6. Inga ytterligare ändringar krävs när du använder dessa bilder. Om du har en virtuell dator baserat på en äldre eller anpassade virtuell CoreOS-avbildning, använder du följande steg:
+Senaste virtuell CoreOS-avbildningar i Azure har redan konfigurerats med DHCPv6. Inga ytterligare ändringar krävs när du använder dessa bilder. Om du har en virtuell dator baserat på en äldre eller anpassade virtuell CoreOS-avbildning, använder du hello följande steg:
 
-1. Redigera filen`/etc/systemd/network/10_dhcp.network`
+1. Redigera hello-filen`/etc/systemd/network/10_dhcp.network`
 
         [Match]
         eth0
@@ -143,7 +143,7 @@ Senaste virtuell CoreOS-avbildningar i Azure har redan konfigurerats med DHCPv6.
         [Network]
         DHCP=ipv6
 
-2. Förnya IPv6-adress:
+2. Förnya hello IPv6-adress:
 
     ```bash
     sudo systemctl restart systemd-networkd

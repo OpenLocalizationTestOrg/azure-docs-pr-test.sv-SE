@@ -1,6 +1,6 @@
 ---
-title: "Använda DevOps miljöer effektivt för webbappen | Microsoft Docs"
-description: "Lär dig hur du använder distributionsplatser för att konfigurera och hantera flera utvecklingsmiljöer för ditt program"
+title: "aaaUse DevOps miljöer effektivt för ditt webbprogram | Microsoft Docs"
+description: "Lär dig hur toouse distribution fack tooset in och hantera flera utvecklingsmiljöer för ditt program"
 services: app-service\web
 documentationcenter: 
 author: sunbuild
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 10/24/2016
 ms.author: sumuth
-ms.openlocfilehash: 25248411659f6c7b2e386e310428c365c44ea2e0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 61a552e735a4ad9769b661d7c988744074ba2962
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-devops-environments-effectively-for-your-web-apps"></a>Använda DevOps miljöer effektivt för ditt webbprogram
-Den här artikeln visar hur du ställer in och hantera web application-distributioner om flera versioner av programmet finns i olika miljöer, till exempel utveckling, mellanlagring, quality assurance (QA) och produktion. Varje version av programmet kan betraktas som en utvecklingsmiljö syfte av distributionsprocessen. Utvecklare kan använda QA-miljö för att testa kvaliteten på programmet innan de genomför ändringarna i produktion.
-Flera utvecklingsmiljöer kan vara en utmaning eftersom du behöver spåra kod, hantera resurser (beräkning, webbprogram, databas, cache o.s.v.) och distribuera kod mellan miljöer.
+Den här artikeln beskrivs hur du tooset och hantera web application-distributioner när flera versioner av programmet finns i olika miljöer, till exempel utveckling, mellanlagring, quality assurance (QA) och produktion. Varje version av programmet kan betraktas som en utvecklingsmiljö för hello specifikt syfte av distributionsprocessen. Utvecklare kan använda hello QA miljö tootest hello kvaliteten på hello program innan de push hello ändringar tooproduction.
+Flera utvecklingsmiljöer kan vara en utmaning eftersom du behöver tootrack kod, hantera resurser (beräkning, webbprogram, databas, cache o.s.v.) och distribuera kod mellan miljöer.
 
 ## <a name="set-up-a-non-production-environment-stage-dev-qa"></a>Konfigurera en icke-produktionsmiljö (steg, utveckling, QA)
-När ett webbprogram för produktion är igång, är nästa steg att skapa en icke-produktionsmiljö. Kontrollera att du kör i läget Standard eller Premium Azure App Service-plan för att använda distributionsplatser. Distributionsplatser är live-webb-appar som har sina egna värdnamn. Web app innehåll och konfiguration element kan växlas mellan två distributionsplatser, inklusive produktionsplatsen. När du distribuerar ditt program till en distributionsplats kan få du följande fördelar:
+När ett webbprogram för produktion är igång, är hello nästa steg toocreate en icke-produktionsmiljö. toouse distributionsplatser, se till att du kör i läget för hello Standard eller Premium Azure App Service-plan. Distributionsplatser är live-webb-appar som har sina egna värdnamn. Web app innehåll och konfiguration element kan växlas mellan två distributionsplatser, inklusive hello produktionsplatsen. När du distribuerar distributionsplatsen för tooa ditt program kan få du hello följande fördelar:
 
-- Du kan validera ändringar av en webbapp i en distribution mellanlagringsplatsen innan du byter appen med produktionsplatsen.
-- När du först distribuera en webbapp till en plats och växla till produktion, är alla instanser av plats varmkörts innan som ska växlas över till produktion. Den här processen eliminerar avbrott när du distribuerar ditt webbprogram. Trafik för omdirigering är sömlös och inga begäranden tas bort på grund av byte åtgärder. Om du vill automatisera hela arbetsflödet, konfigurera [automatiskt växla](web-sites-staged-publishing.md#configure-auto-swap) när före växlingen verifiering inte behövs.
-- Efter en växling har det fack som har tidigare mellanlagrade webbprogrammet nu tidigare webbprogrammet för produktion. Om ändringarna växlas över till produktionsplatsen är inte som du förväntade dig, kan du utföra samma växlingen direkt för att få din ”senast fungerande konfiguration” web app igen.
+- Du kan validera ändringar tooa webbprogram i en distribution mellanlagringsplatsen innan du byter hello app med hello produktionsplatsen.
+- När du distribuerar en tooa webbprogramplats först och växla till produktion, är alla instanser av hello plats varmkörts innan som ska växlas över till produktion. Den här processen eliminerar avbrott när du distribuerar ditt webbprogram. hello trafik omdirigering sker sömlös och inga begäranden tas bort på grund av tooswap åtgärder. tooautomate hela arbetsflödet, konfigurera [automatiskt växla](web-sites-staged-publishing.md#configure-auto-swap) när före växlingen verifiering inte behövs.
+- Efter en växling har hello fack som har hello tidigare mellanlagrad webbprogrammet nu hello tidigare produktion webbprogrammet. Om hello växlas över till hello produktionsplatsen ändras inte som väntat, kan du utföra hello samma Växla omedelbart tooget din ”fungerande” web app igen.
 
-Om du vill konfigurera en distribution mellanlagringsplatsen finns [skapa mellanlagringsmiljöer för web apps i Azure App Service](web-sites-staged-publishing.md). Alla miljöer bör innehålla en egen uppsättning resurser. Till exempel om ditt program använder en databas, ska sedan produktion och mellanlagring webbprogram använda olika databaser. Lägga till fristående development miljö resurser som databasen, lagring eller cacheminnet för att ange din fristående utvecklingsmiljö.
+tooset upp en mellanlagringsplatsen för distribution finns [skapa mellanlagringsmiljöer för web apps i Azure App Service](web-sites-staged-publishing.md). Alla miljöer bör innehålla en egen uppsättning resurser. Till exempel om ditt program använder en databas, ska sedan produktion och mellanlagring webbprogram använda olika databaser. Lägga till fristående development miljö resurser, till exempel databasen, lagring och cache tooset utvecklingsmiljön fristående.
 
 ## <a name="examples-of-using-multiple-development-environments"></a>Exempel på användning av flera utvecklingsmiljöer
-Alla projekt bör följa källa Kodhantering med minst två miljöer: utveckling och produktion. Om du använder innehållshanteringssystem (CMSs), ramverk för programmet, etc., kan programmet inte stöd för det här scenariot utan anpassning. Denna situation är true för några av populära ramverk som beskrivs i följande avsnitt. Många frågor kommer att tänka på när du arbetar med CMS/ramverk, som:
+Alla projekt bör följa källa Kodhantering med minst två miljöer: utveckling och produktion. Om du använder innehållshanteringssystem (CMSs), ramverk för programmet, etc. kan hello program inte stöder det här scenariot utan anpassning. Denna situation är true för några av hello populära ramverk som beskrivs i följande avsnitt hello. Många frågor kommer toomind när du arbetar med CMS/ramverk, som:
 
-- Hur du bryter innehållet till olika miljöer?
+- Hur du bryter hello innehåll till olika miljöer?
 - Vilka filer kan du ändra utan att påverka framework versionuppdateringar?
 - Hur hanterar du konfigurationer per miljön?
-- Hur hanterar du versionuppdateringar för moduler, plugin-program och centralt ramverk?
+- Hur hanterar du versionuppdateringar för moduler, plugin-program och hello centralt ramverk?
 
-Det finns många sätt att konfigurera flera miljöer för projektet. I följande exempel visas en metod för varje respektive program.
+Det finns många sätt tooset in flera miljöer för projektet. hello visar följande exempel en metod för varje respektive program.
 
 ### <a name="wordpress"></a>WordPress
-I det här avsnittet får du lära dig hur du ställer in ett arbetsflöde för distribution med platser för WordPress. WordPress, stöder som de flesta CMS-lösningar, inte flera utvecklingsmiljöer utan anpassning. Funktionen Web Apps i Azure App Service har några funktioner som gör det enkelt att spara konfigurationsinställningarna utanför din kod.
+I det här avsnittet får du lära dig hur tooset upp ett arbetsflöde för distribution med hjälp av platser för WordPress. WordPress, stöder som de flesta CMS-lösningar, inte flera utvecklingsmiljöer utan anpassning. funktionen för hello Web Apps i Azure App Service har några funktioner som gör det enkelt toostore konfigurationsinställningar utanför din kod.
 
-1. Innan du skapar en mellanlagringsplatsen kan du ställa in din programkod för att stödja flera miljöer. För att stödja flera miljöer i WordPress, måste du redigera `wp-config.php` på din lokala development web app och Lägg till följande kod i början av filen. Den här processen kan ditt program att välja rätt konfiguration baserat på den valda miljön.
+1. Innan du skapar en mellanlagringsplatsen konfigurera ditt program kod toosupport miljöer med flera. toosupport miljöer med flera i WordPress, behöver du tooedit `wp-config.php` på din lokala development web app och lägga till hello följande kod hello början av hello-filen. Den här processen kan toopick hello rätt konfigurationen av programmet baserat på valda hello-miljön.
 
     ```
     // Support multiple environments
-    // set the config file based on current environment
+    // set hello config file based on current environment
     if (strpos($_SERVER['HTTP_HOST'],'localhost') !== false) {
     // local development
      $config_file = 'config/wp-config.local.php';
@@ -61,18 +61,18 @@ I det här avsnittet får du lära dig hur du ställer in ett arbetsflöde för 
     }
     $path = dirname(__FILE__). '/';
     if (file_exists($path. $config_file)) {
-    // include the config file if it exists, otherwise WP is going to fail
+    // include hello config file if it exists, otherwise WP is going toofail
     require_once $path. $config_file;
     ```
 
-2. Skapa en mapp under web app rot kallas `config`, och Lägg till den `wp-config.azure.php` och `wp-config.local.php` filer som representerar dina Azure-miljön och den lokala miljön respektive.
+2. Skapa en mapp under web app rot kallas `config`, och Lägg till hello `wp-config.azure.php` och `wp-config.local.php` filer som representerar dina Azure-miljön och den lokala miljön respektive.
 
-3. Kopiera följande i `wp-config.local.php`:
+3. Kopiera följande hello i `wp-config.local.php`:
 
     ```
     <?php
     // MySQL settings
-    /** The name of the database for WordPress */
+    /** hello name of hello database for WordPress */
 
     define('DB_NAME', 'yourdatabasename');
 
@@ -86,7 +86,7 @@ I det här avsnittet får du lära dig hur du ställer in ett arbetsflöde för 
     define('DB_HOST', 'localhost');
     /**
      * For developers: WordPress debugging mode.
-     * * Change this to true to enable the display of notices during development.
+     * * Change this tootrue tooenable hello display of notices during development.
      * It is strongly recommended that plugin and theme developers use WP_DEBUG
      * in their development environments.
      */
@@ -111,14 +111,14 @@ I det här avsnittet får du lära dig hur du ställer in ett arbetsflöde för 
     $table_prefix = 'wp_';
     ```
 
-    Inställningen säkerheten nycklar enligt beskrivningen i föregående kod kan hjälpa för att förhindra att ditt webbprogram som över, så Använd unika värden. Om du behöver skapa en sträng för säkerhetsnycklar anges i koden, kan du [gå till automatisk generator](https://api.wordpress.org/secret-key/1.1/salt) att skapa ny nyckel/värde-par.
+    Ange hello säkerhetsnycklar enligt beskrivningen i föregående hello-kod kan hjälpa tooprevent ditt webbprogram från som över, så unika värden. Om du behöver toogenerate hello sträng för säkerhetsnycklar som nämns i hello kod kan du [gå toohello automatisk generator](https://api.wordpress.org/secret-key/1.1/salt) toocreate nytt nyckel/värde-par.
 
-4. Kopiera följande kod i `wp-config.azure.php`:
+4. Kopiera hello följande kod i `wp-config.azure.php`:
 
     ```    
     <?php
     // MySQL settings
-    /** The name of the database for WordPress */
+    /** hello name of hello database for WordPress */
 
     define('DB_NAME', getenv('DB_NAME'));
 
@@ -134,12 +134,12 @@ I det här avsnittet får du lära dig hur du ställer in ett arbetsflöde för 
     /**
     * For developers: WordPress debugging mode.
     *
-    * Change this to true to enable the display of notices during development.
+    * Change this tootrue tooenable hello display of notices during development.
     * It is strongly recommended that plugin and theme developers use WP_DEBUG
     * in their development environments.
-    * Turn on debug logging to investigate issues without displaying to end user. For WP_DEBUG_LOG to
+    * Turn on debug logging tooinvestigate issues without displaying tooend user. For WP_DEBUG_LOG to
     * do anything, WP_DEBUG must be enabled (true). WP_DEBUG_DISPLAY should be used in conjunction
-    * with WP_DEBUG_LOG so that errors are not displayed on the page */
+    * with WP_DEBUG_LOG so that errors are not displayed on hello page */
 
     */
     define('WP_DEBUG', getenv('WP_DEBUG'));
@@ -147,7 +147,7 @@ I det här avsnittet får du lära dig hur du ställer in ett arbetsflöde för 
     define('WP_DEBUG_DISPLAY',false);
 
     //Security key settings
-    /** If you need to generate the string for security keys mentioned above, you can go the automatic generator to create new keys/values: https://api.wordpress.org/secret-key/1.1/salt **/
+    /** If you need toogenerate hello string for security keys mentioned above, you can go hello automatic generator toocreate new keys/values: https://api.wordpress.org/secret-key/1.1/salt **/
     define('AUTH_KEY',getenv('DB_AUTH_KEY'));
     define('SECURE_AUTH_KEY', getenv('DB_SECURE_AUTH_KEY'));
     define('LOGGED_IN_KEY', getenv('DB_LOGGED_IN_KEY'));
@@ -167,9 +167,9 @@ I det här avsnittet får du lära dig hur du ställer in ett arbetsflöde för 
     ```
 
 #### <a name="use-relative-paths"></a>Använda relativa sökvägar
-En sista åtgärd för att konfigurera i WordPress-appen är relativa sökvägar. WordPress lagrar URL-information i databasen. Den här lagringsmedia kan flytta innehåll från en miljö till en annan svårare. Du måste uppdatera databasen för varje gång du flyttar från lokal till steget eller mellanlagra till produktionsmiljöer. Om du vill minska risken för problem som kan uppstå när du distribuerar en databas varje gång du distribuerar från en miljö till en annan, använder den [rot relativa länkar plugin-programmet](https://wordpress.org/plugins/root-relative-urls/), som du kan installera med hjälp av instrumentpanelen för WordPress-administratör.
+En sista sak tooconfigure i hello WordPress-appen är relativa sökvägar. WordPress lagrar URL-information i hello-databas. Den här gör det svårare att flytta innehåll från en miljö tooanother. Du måste tooupdate hello databasen varje gång du flyttar från lokala toostage eller steget tooproduction miljöer. tooreduce hello risken för problem som kan uppstå när du distribuerar en databas varje gång du distribuerar från en miljö tooanother, Använd hello [rot relativa länkar plugin-programmet](https://wordpress.org/plugins/root-relative-urls/), som du kan installera med hjälp av hello WordPress-administratör instrumentpanelen.
 
-Lägga till följande poster i din `wp-config.php` filen innan den `That's all, stop editing!` kommentar:
+Lägg till följande poster tooyour hello `wp-config.php` filen innan hello `That's all, stop editing!` kommentar:
 
 ```
 
@@ -179,30 +179,30 @@ Lägga till följande poster i din `wp-config.php` filen innan den `That's all, 
     define('DOMAIN_CURRENT_SITE', filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
 ```
 
-Aktivera plugin-programmet via den `Plugins` -menyn i instrumentpanelen i WordPress-administratören. Spara inställningarna webbadress för WordPress-appen.
+Aktivera hello plugin-programmet via hello `Plugins` -menyn i instrumentpanelen i WordPress-administratören. Spara inställningarna webbadress för WordPress-appen.
 
-#### <a name="the-final-wp-configphp-file"></a>Slutliga `wp-config.php` fil
-Alla viktiga uppdateringar av WordPress påverkar inte din `wp-config.php`, `wp-config.azure.php`, och `wp-config.local.php` filer. Här är en slutlig version av den `wp-config.php` filen:
+#### <a name="hello-final-wp-configphp-file"></a>hello slutliga `wp-config.php` fil
+Alla viktiga uppdateringar av WordPress påverkar inte din `wp-config.php`, `wp-config.azure.php`, och `wp-config.local.php` filer. Här är en slutlig version av hello `wp-config.php` fil:
 
 ```
 <?php
 /**
- * The base configurations of the WordPress.
+ * hello base configurations of hello WordPress.
  *
- * This file has the following configurations: MySQL settings, Table Prefix,
+ * This file has hello following configurations: MySQL settings, Table Prefix,
  * Secret Keys, and ABSPATH. You can find more information by visiting
  *
- * Codex page. You can get the MySQL settings from your web host.
+ * Codex page. You can get hello MySQL settings from your web host.
  *
- * This file is used by the wp-config.php creation script during the
- * installation. You don't have to use the web web app, you can just copy this file
- * to "wp-config.php" and fill in the values.
+ * This file is used by hello wp-config.php creation script during the
+ * installation. You don't have toouse hello web web app, you can just copy this file
+ * too"wp-config.php" and fill in hello values.
  *
  * @package WordPress
  */
 
 // Support multiple environments
-// set the config file based on current environment
+// set hello config file based on current environment
 if (strpos($_SERVER['HTTP_HOST'],'localhost') !== false) { // local development
   $config_file = 'config/wp-config.local.php';
 }
@@ -213,14 +213,14 @@ elseif ((strpos(getenv('WP_ENV'),'stage') !== false) ||(strpos(getenv('WP_ENV'),
 
 $path = dirname(__FILE__). '/';
 if (file_exists($path. $config_file)) {
-  // include the config file if it exists, otherwise WP is going to fail
+  // include hello config file if it exists, otherwise WP is going toofail
   require_once $path. $config_file;
 }
 
-/** Database Charset to use in creating database tables. */
+/** Database Charset toouse in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
-/** The Database Collate type. Don't change this if in doubt. */
+/** hello Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
 
@@ -231,7 +231,7 @@ define('WP_SITEURL', 'http://'. $_SERVER['HTTP_HOST']);
 define('WP_CONTENT_URL', '/wp-content');
 define('DOMAIN_CURRENT_SITE', $_SERVER['HTTP_HOST']);
 
-/** Absolute path to the WordPress directory. */
+/** Absolute path toohello WordPress directory. */
 if ( !defined('ABSPATH') )
     define('ABSPATH', dirname(__FILE__). '/');
 
@@ -240,21 +240,21 @@ require_once(ABSPATH. 'wp-settings.php');
 ```
 
 #### <a name="set-up-a-staging-environment"></a>Konfigurera en mellanlagringsmiljön
-1. Om du redan har en WordPress-webbapp som körs på Azure-prenumerationen, logga in på den [Azure-portalen](http://portal.azure.com), och gå sedan till din WordPress-webbapp. Om du inte har en WordPress-webbappen kan skapa du en från Azure Marketplace. Läs mer i [skapa en WordPress-webbapp i Azure App Service](web-sites-php-web-site-gallery.md).
-Klicka på **inställningar** > **distributionsfack** > **Lägg till** att skapa en distributionsplats med namnet *steget*. En distributionsplats är ett annat webbprogram som delar samma resurser som den primära webbapp som du skapade tidigare.
+1. Om du redan har en WordPress-webbapp som körs på din Azure-prenumeration kan du logga in toohello [Azure-portalen](http://portal.azure.com), och sedan gå tooyour WordPress-webbapp. Om du inte har en WordPress-webbappen kan skapa du en från hello Azure Marketplace. Det finns fler toolearn [skapa en WordPress-webbapp i Azure App Service](web-sites-php-web-site-gallery.md).
+Klicka på **inställningar** > **distributionsfack** > **Lägg till** toocreate en distributionsplats med hello namn *steget*. En distributionsplats är ett annat webbprogram som resurser hello samma resurser som hello primära webbprogram som du skapade tidigare.
 
     ![Skapa steget distributionsplats](./media/app-service-web-staged-publishing-realworld-scenarios/1setupstage.png)
 
-2. Lägg till en annan MySQL-databas, säg `wordpress-stage-db`, till en resursgrupp, `wordpressapp-group`.
+2. Lägg till en annan MySQL-databas, säg `wordpress-stage-db`, tooyour resursgrupp, `wordpressapp-group`.
 
-    ![Lägga till MySQL-databas i resursgrupp](./media/app-service-web-staged-publishing-realworld-scenarios/2addmysql.png)
+    ![Lägg till MySQL-databas tooresource grupp](./media/app-service-web-staged-publishing-realworld-scenarios/2addmysql.png)
 
-3. Uppdatera anslutningssträngarna för din steget distributionsplatsen så att den pekar till den nya databasen `wordpress-stage-db`. Webbappen produktion `wordpressprodapp`, och organisering webbapp `wordpressprodapp-stage`, måste peka på olika databaser.
+3. Uppdatera hello anslutningssträngar för steget distribution fack toopoint toohello nya databasen, `wordpress-stage-db`. Webbappen produktion `wordpressprodapp`, och organisering webbapp `wordpressprodapp-stage`, måste punkt toodifferent databaser.
 
 #### <a name="configure-environment-specific-app-settings"></a>Konfigurera appinställningar för miljö-specifik
-Utvecklare kan lagra nyckel/värde-par för sträng i Azure som en del av den konfigurationsinformation som kallas **Appinställningar**, som är kopplad till ett webbprogram. Vid körning, webbprogram automatiskt hämtar dessa värden och göra dem tillgängliga för kod som körs i ditt webbprogram. Från ett säkerhetsperspektiv som är en bra sida fördel eftersom känslig information, till exempel databasanslutningssträngar som innehåller lösenord, aldrig visas i klartext i en fil som `wp-config.php`.
+Utvecklare kan lagra nyckel/värde-par för sträng i Azure som en del av hello konfigurationsinformation, kallas **Appinställningar**, som är kopplad till ett webbprogram. Vid körning, webbprogram automatiskt hämtar dessa värden och gör dem tillgängliga toocode som körs i ditt webbprogram. Från ett säkerhetsperspektiv som är en bra sida fördel eftersom känslig information, till exempel databasanslutningssträngar som innehåller lösenord, aldrig visas i klartext i en fil som `wp-config.php`.
 
-Den här processen som beskrivs i följande stycken är användbar eftersom den innehåller både ändras och ändringar i databasen för WordPress-appen:
+Den här processen, vilket förklaras i följande stycken hello, är användbar eftersom den innehåller både ändras och ändringar i databasen för hello WordPress-appen:
 
 * WordPress versionsuppgradering
 * Lägga till nya eller redigera eller uppgradera plugin-program
@@ -268,99 +268,99 @@ Konfigurera appinställningar för:
 
 ![App-inställningar för Wordpress-webbapp](./media/app-service-web-staged-publishing-realworld-scenarios/3configure.png)
 
-Kontrollera att du lägger till följande appinställningar för din web app och fas produktionsplatsen. Observera att produktion webbapp och fristående webbprogrammet använda olika databaser.
+Kontrollera att du lägger till hello följande app-inställningar för din web app och fas produktionsplatsen. Observera att hello produktion webbapp och fristående webbprogrammet använda olika databaser.
 
-1. Avmarkera den **fack inställningen** kryssrutan för alla inställningar parametrar utom WP_ENV. Den här processen kommer växla konfigurationen för din webbapp, innehåll och databasen. Om **fack inställningen** är markerat, måste webbappen app-inställningar och anslutningssträng konfiguration *inte* flytta mellan miljöer när du gör en **växla** igen. Alla ändringar i databasen som finns bryter inte ditt webbprogram för produktion.
+1. Rensa hello **fack inställningen** kryssrutan för alla hello inställningar parametrar utom WP_ENV. Den här processen kommer växla hello konfiguration för webbprogram, innehåll och databasen. Om **fack inställningen** är markerat hello webbapp app-inställningar och anslutningskonfiguration sträng kommer *inte* flytta mellan miljöer när du gör en **växla** igen. Alla ändringar i databasen som finns bryter inte ditt webbprogram för produktion.
 
-2. Distribuera webbprogram för lokal utveckling miljö till steget webbapp och databasen med hjälp av WebMatrix eller -verktyg, till exempel FTP, Git eller PhpMyAdmin.
+2. Distribuera hello lokal utveckling miljö web app toohello steget webbappen och databasen med WebMatrix eller -verktyg, till exempel FTP, Git eller PhpMyAdmin.
 
     ![Web Matrix publicera dialogrutan för WordPress-webbapp](./media/app-service-web-staged-publishing-realworld-scenarios/4wmpublish.png)
 
-3. Bläddra och testa din fristående webbapp. Med tanke på ett scenario där tema för webbappen är uppdateras är det här fristående webbprogrammet.
+3. Bläddra och testa din fristående webbapp. Med tanke på ett scenario där hello tema av hello webbprogram är toobe uppdateras är det här hello mellanlagring webbprogrammet.
 
     ![Bläddra mellanlagring webbprogrammet innan du byter fack](./media/app-service-web-staged-publishing-realworld-scenarios/5wpstage.png)
 
-4. Om alla ser bra ut klickar du på den **växla** knappen på din fristående webbprogram för att flytta innehållet till produktionsmiljön. I så fall måste du växla webbappen och databasen i miljöer under varje **växlingen** igen.
+4. Om alla ser bra ut klickar du på hello **växla** knappen på din fristående web app toomove produktionsmiljön innehåll toohello. I så fall måste du växla hello webbapp och hello databasen mellan miljöer under varje **växlingen** igen.
 
     ![Växla förhandsgranskningen ändras för WordPress](./media/app-service-web-staged-publishing-realworld-scenarios/6swaps1.png)
 
     > [!NOTE]
-    > Om ditt scenario behöver endast push-filer (ingen databasuppdateringar), kontrollera **fack inställningen** för alla de Databasrelaterade *appinställningar* och *anslutning strängar inställningar* i den **Webbprograminställningarna** bladet i Azure-portalen innan du gör den **växla**. I det här fallet %{db_name/, DB_HOST, DB_PASSWORD, DB_USER och inställningar för standardanslutning sträng ska inte visas i förhandsgranskningen ändras när du gör en **växla**. Just nu, när du har slutfört den **växla** åtgärd WordPress-webbapp har endast uppdateringar filer.
+    > Om ditt scenario måste tooonly push-filer (ingen databasuppdateringar), kontrollera **fack inställningen** för alla hello Databasrelaterade *appinställningar* och *anslutning strängar inställningar*i hello **Webbprograminställningarna** bladet inom hello Azure-portalen innan du gör hello **växla**. I det här fallet %{db_name/, DB_HOST, DB_PASSWORD, DB_USER och inställningar för standardanslutning sträng ska inte visas i förhandsgranskningen ändras när du gör en **växla**. Just nu, när du har slutfört hello **växla** åtgärden, hello WordPress-webbapp ska ha hello uppdaterar endast filer.
     >
     >
 
-    Innan du gör en **växla**, här är produktion WordPress-webbapp.
+    Innan du gör en **växla**, här är hello produktion WordPress-webbapp.
     ![Produktion webbprogrammet innan du byter fack](./media/app-service-web-staged-publishing-realworld-scenarios/7bfswap.png)
 
-    Efter den **växla** åtgärden temat har uppdaterats på ditt webbprogram för produktion.
+    Efter hello **växla** åtgärden hello tema har uppdaterats på ditt webbprogram för produktion.
 
     ![Webbprogram i produktion efter växling fack](./media/app-service-web-staged-publishing-realworld-scenarios/8afswap.png)
 
-5. När du behöver återställa går du till produktion web **Appinställningar**, och klicka på den **växlingen** knappen för att växla webbappen och databasen från produktionen till mellanlagringsplatsen. Tänk på att om ändringar i databasen ingår i en **växla** igen nästa gång du distribuerar till ditt fristående webbprogram som du behöver distribuera databasändringar på den aktuella databasen för din fristående webbprogrammet. Den aktuella databasen kanske tidigare produktionsdatabasen eller fas-databasen.
+5. När du behöver tooroll tillbaka går du toohello produktion web **Appinställningar**, och klicka på hello **växla** knappen tooswap hello webbappen och databasen från toostaging produktionsplatsen. Tänk på att om ändringar i databasen ingår i en **växla** igen och sedan hello nästa gång du distribuerar tooyour mellanlagring webbapp behöver du toodeploy hello ändringar toohello aktuella databasen för din fristående webbprogrammet. hello-databasen kan vara hello tidigare produktionsdatabasen eller hello databas.
 
 #### <a name="summary"></a>Sammanfattning
 Följande är en generaliserad process för alla program som har en databas:
 
-1. Installera programmet på din lokala miljö.
+1. Installera hello programmet på din lokala miljö.
 2. Inkludera miljö-specifika konfigurationer (lokala och Azure Web Apps).
 3. Konfigurera dina mellanlagring och produktion miljöer för Web Apps.
-4. Om du har ett produktionsprogram som redan körs på Azure, synkronisera produktion innehållet (filer/kod och databasen) till lokala och fristående miljöer.
+4. Om du har ett produktionsprogram som redan körs på Azure kan synkronisera din innehåll (filer/kod och databasen) toolocal och organisering produktionsmiljöer.
 5. Utveckla ditt program på din lokala miljö.
-6. Placera ditt webbprogram för produktion under underhåll eller låst läge och synkronisera databasen innehåll från produktionen för mellanlagrings- och dev miljöer.
-7. Distribuera till mellanlagringsmiljön och testning.
-8. Distribuera till produktionsmiljön.
+6. Placera ditt webbprogram för produktion under underhåll eller låst läge och synkronisera databasen innehåll från toostaging och dev produktionsmiljöer.
+7. Distribuera toohello mellanlagring miljö och testning.
+8. Distribuera tooproduction miljö.
 9. Upprepa steg 4 till 6.
 
 ### <a name="umbraco"></a>Umbraco
-I det här avsnittet får du lära dig hur Umbraco CMS använder en anpassad modul för att distribuera i miljöer med flera DevOps. Det här exemplet innehåller en annan metod för att hantera flera utvecklingsmiljöer.
+I det här avsnittet får du lära dig hur hello Umbraco CMS använder en anpassad modul toodeploy över flera DevOps-miljöer. Det här exemplet innehåller en annan metod toomanaging flera utvecklingsmiljöer.
 
-[Umbraco CMS](http://umbraco.com/) är en populär .NET CMS-lösning som används av många utvecklare. Det ger den [Courier2](http://umbraco.com/products/more-add-ons/courier-2) modul för distribution från utvecklingsmiljö till Förproduktion till produktionsmiljön. Du kan enkelt skapa en lokal utvecklingsmiljö för en Umbraco CMS-webbapp med hjälp av Visual Studio eller WebMatrix.
+[Umbraco CMS](http://umbraco.com/) är en populär .NET CMS-lösning som används av många utvecklare. Det ger hello [Courier2](http://umbraco.com/products/more-add-ons/courier-2) modulen toodeploy från utvecklingsmiljöer toostaging tooproduction. Du kan enkelt skapa en lokal utvecklingsmiljö för en Umbraco CMS-webbapp med hjälp av Visual Studio eller WebMatrix.
 
 - [Skapa en Umbraco webbprogram med Visual Studio](https://our.umbraco.org/documentation/Installation/install-umbraco-with-nuget)
 - [Skapa en Umbraco webbapp med WebMatrix](http://umbraco.tv/videos/umbraco-v7/implementor/fundamentals/installation/creating-umbraco-site-from-webmatrix-web-gallery/)
 
-Komma ihåg att ta bort den `install` mapp under ditt program och aldrig ladda upp det steg eller produktion webbprogram. Den här kursen använder WebMatrix.
+Komma ihåg tooremove hello `install` mapp under programmet, och överföra den aldrig toostage eller produktion webbprogram. Den här kursen använder WebMatrix.
 
 #### <a name="set-up-a-staging-environment"></a>Konfigurera en mellanlagringsmiljön
-1. Skapa en distributionsplats som tidigare nämnts för webbprogrammet Umbraco CMS, förutsatt att du redan har en Umbraco CMS-webbapp och körs. Om du inte vill skapa du en från Marketplace.
-2. Uppdatera anslutningssträngen för din steget distributionsplatsen så att den pekar till den nya **umbraco-steg-db** databas. Ditt webbprogram för produktion (umbraositecms-1) och fristående webbapp (umbracositecms-1-delen) *måste* pekar på olika databaser.
+1. Skapa en distributionsplats som tidigare nämnts för hello Umbraco CMS-webbprogram, förutsatt att du redan har en Umbraco CMS-webbapp och körs. Om du inte vill skapa du en från hello Marketplace.
+2. Uppdatera hello anslutningssträngen för din steget distribution fack toopoint toohello nya **umbraco-steg-db** databas. Ditt webbprogram för produktion (umbraositecms-1) och fristående webbapp (umbracositecms-1-delen) *måste* punkt toodifferent databaser.
 
     ![Uppdatera anslutningssträngen för mellanlagring webbprogram med nya tillfälliga databasen](./media/app-service-web-staged-publishing-realworld-scenarios/9umbconnstr.png)
 
-3. Klicka på **hämta Publiceringsinställningar** för distributionsplatsen **steget**. Den här processen hämtar ett publicera-inställningsfilen som lagrar all information som Visual Studio eller WebMatrix kräver för att publicera programmet från lokal utveckling webbapp till Azure webbapp.
+3. Klicka på **hämta Publiceringsinställningar** för hello distributionsplatsen **steget**. Den här processen hämtar ett publicera-inställningsfilen som lagrar alla hello information att Visual Studio eller WebMatrix kräver toopublish programmet från hello lokal utveckling web app toohello Azure webbapp.
 
-    ![Hämta publicera för mellanlagring webbprogram](./media/app-service-web-staged-publishing-realworld-scenarios/10getpsetting.png)
-4. Öppna ditt webbprogram för lokal utveckling i WebMatrix eller Visual Studio. Den här kursen använder WebMatrix. Först måste du importera filen publicera för fristående webbappen.
+    ![Hämta publicera för hello mellanlagring av webbprogram](./media/app-service-web-staged-publishing-realworld-scenarios/10getpsetting.png)
+4. Öppna ditt webbprogram för lokal utveckling i WebMatrix eller Visual Studio. Den här kursen använder WebMatrix. Du måste först tooimport hello inställningsfilen för webbappen mellanlagring för publicering.
 
     ![Importera publiceringsinställningarna för Umbraco med hjälp av Web Matrix](./media/app-service-web-staged-publishing-realworld-scenarios/11import.png)
 
-5. Granska ändringar i dialogrutan och distribuera webbappen lokalt till din Azure webbapp *umbracositecms 1 steg*. När du distribuerar filer direkt till webbappen fristående du utelämnar filer i den `~/app_data/TEMP/` mappen eftersom filerna återskapas när steget webbprogrammet startade. Du bör också hoppa över den `~/app_data/umbraco.config` -fil, som också kommer att genereras om.
+5. Granska ändringar i dialogrutan för hello och distribuera din lokala web app tooyour Azure webbapp *umbracositecms 1 steg*. När du distribuerar filer direkt tooyour mellanlagring webbapp du utelämnar filer i hello `~/app_data/TEMP/` mappen eftersom filerna återskapas när hello steget webbprogrammet startade. Du bör också hoppa över hello `~/app_data/umbraco.config` -fil, som också kommer att genereras om.
 
     ![Granska publicera ändringar i web matris](./media/app-service-web-staged-publishing-realworld-scenarios/12umbpublish.png)
 
-6. När du har publicerat Umbraco lokala webbappen till mellanlagring webbappen Bläddra till ditt fristående webbprogram och köra några tester för att utesluta eventuella problem.
+6. När du har publicerat hello Umbraco lokala web app toohello fristående webbprogrammet Bläddra tooyour fristående webbprogram och köra några tester toorule eventuella problem.
 
-#### <a name="set-up-the-courier2-deployment-module"></a>Ställa in modulen Courier2 distribution
-Med den [Courier2](http://umbraco.com/products/more-add-ons/courier-2) modulen, högerklickar du bara på att push-innehåll, formatmallar och utveckling moduler från en fristående webbapp till en webbapp i produktion. Den här processen minskar risken för att dela ditt webbprogram för produktion när du distribuerar en uppdatering.
-Köp en licens för Courier2 för den `*.azurewebsites.net` domän och den anpassade domänen (Säg http://abc.com). När du har köpt licensen placera hämtade licensen (. LIC-fil) i den `bin` mapp.
+#### <a name="set-up-hello-courier2-deployment-module"></a>Ställ in hello Courier2 distribution
+Med hello [Courier2](http://umbraco.com/products/more-add-ons/courier-2) modulen, högerklickar du bara på toopush innehåll, formatmallar och utveckling moduler från en fristående webbapp för web app tooa produktion. Den här processen minskar hello risken för att dela ditt webbprogram för produktion när du distribuerar en uppdatering.
+Köp en licens för Courier2 för hello `*.azurewebsites.net` domän och den anpassade domänen (Säg http://abc.com). När du har köpt hello licens plats hello hämtas licens (. LIC-fil) i hello `bin` mapp.
 
 ![Släpp licensfil under bin-mappen](./media/app-service-web-staged-publishing-realworld-scenarios/13droplic.png)
 
-1. [Hämta Courier2](https://our.umbraco.org/projects/umbraco-pro/umbraco-courier-2/). Logga in på ditt steget webbprogram Säg http://umbracocms-site-stage.azurewebsites.net/umbraco klickar du på den **Developer** -menyn och klicka sedan på **paket** > **installationspaket för lokala**.
+1. [Hämta hello Courier2](https://our.umbraco.org/projects/umbraco-pro/umbraco-courier-2/). Logga in tooyour steget webbapp Säg http://umbracocms-site-stage.azurewebsites.net/umbraco klickar du på hello **Developer** -menyn och klicka sedan på **paket** > **installera lokala paketet**.
 
     ![Umbraco installationspaketet](./media/app-service-web-staged-publishing-realworld-scenarios/14umbpkg.png)
 
-2. Överför Courier2 paketet med hjälp av installationsprogrammet.
+2. Överför hello Courier2 paketet med hjälp av hello installer.
 
     ![Överföra courier modul-paket](./media/app-service-web-staged-publishing-realworld-scenarios/15umbloadpkg.png)
 
-3. Om du vill konfigurera paketet, måste du uppdatera filen courier.config under den **Config** för ditt webbprogram.
+3. tooconfigure hello-paket, du behöver tooupdate hello courier.config fil under hello **Config** för ditt webbprogram.
 
     ```xml
     <!-- Repository connection settings -->
-     <!-- For each site, a custom repository must be configured, so Courier knows how to connect and authenticate-->
+     <!-- For each site, a custom repository must be configured, so Courier knows how tooconnect and authenticate-->
      <repositories>
-        <!-- If a custom Umbraco Membership provider is used, specify login & password + set the passwordEncoding to clear: -->
+        <!-- If a custom Umbraco Membership provider is used, specify login & password + set hello passwordEncoding tooclear: -->
         <repository name="production web app" alias="stage" type="CourierWebserviceRepositoryProvider" visible="true">
           <url>http://umbracositecms-1.azurewebsites.net</url>
           <user>0</user>
@@ -371,18 +371,18 @@ Köp en licens för Courier2 för den `*.azurewebsites.net` domän och den anpas
      </repositories>
      ```
 
-4. Under `<repositories>`, ange den produktion plats URL och användare.
-    Om du använder Umbraco standardprovider för medlemskap, Lägg sedan till ID: T för Administration av användare i den &lt;användaren&gt; avsnitt.
-    Om du använder en anpassad Umbraco medlemskapsprovider använda `<login>`,`<password>` i modulen Courier2 att ansluta till produktionsplatsen.
-    Mer information [Läs dokumentationen om modulen Courier2](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation).
+4. Under `<repositories>`, ange hello produktion URL och användaren platsinformation.
+    Om du använder hello Umbraco standardprovider för medlemskap, Lägg sedan till hello-ID för hello Administration användare i hello &lt;användaren&gt; avsnitt.
+    Om du använder en anpassad Umbraco medlemskapsprovider använda `<login>`,`<password>` i hello Courier2 modulen tooconnect toohello produktionsplatsen.
+    Mer information [hello i dokumentationen för hello Courier2 modulen](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation).
 
-5. På motsvarande sätt installera modulen Courier2 på webbplatsen produktion och konfigurera den att peka till webbappen steg i dess respektive courier.config-fil som visas här.
+5. På motsvarande sätt installera hello Courier2 modulen på webbplatsen produktion och konfigurera den toopoint toohello steget webbprogram i dess respektive courier.config-fil som visas här.
 
     ```xml
      <!-- Repository connection settings -->
-     <!-- For each site, a custom repository must be configured, so Courier knows how to connect and authenticate-->
+     <!-- For each site, a custom repository must be configured, so Courier knows how tooconnect and authenticate-->
      <repositories>
-        <!-- If a custom Umbraco Membership provider is used, specify login & password + set the passwordEncoding to clear: -->
+        <!-- If a custom Umbraco Membership provider is used, specify login & password + set hello passwordEncoding tooclear: -->
         <repository name="Stage web app" alias="stage" type="CourierWebserviceRepositoryProvider" visible="true">
           <url>http://umbracositecms-1-stage.azurewebsites.net</url>
           <user>0</user>
@@ -390,55 +390,55 @@ Köp en licens för Courier2 för den `*.azurewebsites.net` domän och den anpas
      </repositories>
     ```
 
-6. Klicka på den **Courier2** i infopanelen Umbraco CMS web app och klicka sedan på **platser**. Du bör se databasnamnet som anges i `courier.config`. Gör den här processen på din produktion och ett fristående webbprogram.
+6. Klicka på hello **Courier2** i hello Umbraco CMS web appinstrumentpanelen och klicka sedan på **platser**. Du bör se hello databasnamn som anges i `courier.config`. Gör den här processen på din produktion och ett fristående webbprogram.
 
     ![Visa måldatabasen web app](./media/app-service-web-staged-publishing-realworld-scenarios/16courierloc.png)
 
-7. För att distribuera innehåll från webbplatsen mellanlagringsplatsen till produktionsplatsen, gå till **innehåll**, och välj en befintlig sida eller skapa en ny sida. Att välja en befintlig sida från webbappen där titeln på sidan är **komma igång – nya**, och klicka sedan på **spara och publicera**.
+7. toodeploy innehåll från hello mellanlagring toohello produktion platser, gå för**innehåll**, och välj en befintlig sida eller skapa en ny sida. Att välja en befintlig sida från webbappen där hello rubriken för hello sida är **komma igång – nya**, och klicka sedan på **spara och publicera**.
 
     ![Ändra rubriken på sidan och publicera](./media/app-service-web-staged-publishing-realworld-scenarios/17changepg.png)
 
-8. Högerklicka på den aktuella sidan om du vill visa alla alternativ. Klicka på **Courier** att öppna den **distribution** dialogrutan. Klicka på **distribuera** att initiera distributionen.
+8. Högerklicka på hello ändrade sidan tooview alla hello-alternativ. Klicka på **Courier** tooopen hello **distribution** dialogrutan. Klicka på **distribuera** tooinitiate distribution.
 
     ![Courier modulen distribution dialogrutan](./media/app-service-web-staged-publishing-realworld-scenarios/18dialog1.png)
 
-9. Granska ändringar och klicka sedan på **Fortsätt**.
+9. Granska hello ändringar och klicka sedan på **Fortsätt**.
 
     ![Courier modulen distribution dialogrutan Granska ändringar](./media/app-service-web-staged-publishing-realworld-scenarios/19dialog2.png)
 
-    Distributionsloggen visar om distributionen lyckades.
+    Hej distributionsloggen visar om hello distributionen lyckades.
 
      ![Visa distributionsloggar Courier-modul](./media/app-service-web-staged-publishing-realworld-scenarios/20successdlg.png)
 
-10. Bläddra i ditt webbprogram för produktion för att se om ändringarna visas.
+10. Bläddra i produktion web app toosee om hello ändringarna visas.
 
      ![Bläddra webbprogrammet för produktion](./media/app-service-web-staged-publishing-realworld-scenarios/21umbpg.png)
 
-Läs dokumentationen för mer information om hur du använder Courier.
+Mer information om hur toouse Courier, granska hello dokumentationen toolearn.
 
-#### <a name="how-to-upgrade-the-umbraco-cms-version"></a>Så här uppgraderar du Umbraco CMS-version
-Courier kommer inte hjälper dig att uppgradera från en version av Umbraco CMS till en annan. När du uppgraderar en Umbraco CMS-version, måste du kontrollera med din anpassade moduler eller moduler från partners och Umbraco Core-bibliotek. Här är bästa praxis:
+#### <a name="how-tooupgrade-hello-umbraco-cms-version"></a>Hur tooupgrade hello Umbraco CMS-version
+Courier kommer inte hjälper dig att uppgradera från en version av Umbraco CMS tooanother. När du uppgraderar en Umbraco CMS-version, måste du kontrollera med din anpassade moduler eller moduler från partner och hello Umbraco Core bibliotek. Här är bästa praxis:
 
-* Säkerhetskopiera alltid din webbappen och databasen innan du uppgraderar. På web apps i Azure kan du ställa in automatiska säkerhetskopieringar för dina webbplatser med hjälp av funktionen för säkerhetskopiering och återställa platsen om det behövs med hjälp av funktionen för återställning. Mer information finns i [säkerhetskopiering av ditt webbprogram](web-sites-backup.md) och [återställa ditt webbprogram](web-sites-restore.md).
-* Kontrollera om paket från partner är kompatibel med den version som du uppgraderar till. På paketet hämtningssidan, granska projektet kompatibilitet med Umbraco CMS-version.
+* Säkerhetskopiera alltid din webbappen och databasen innan du uppgraderar. Du kan ställa in automatiska säkerhetskopieringar för dina webbplatser med hjälp av funktionen för säkerhetskopiering av hello och återställa webbplatsen om det behövs med hjälp av funktionen för återställning av hello på web apps i Azure. Mer information finns i [hur tooback upp ditt webbprogram](web-sites-backup.md) och [hur toorestore webbappen](web-sites-restore.md).
+* Kontrollera om paket från partner är kompatibel med hello-versionen som du uppgraderar till. Hämtningssidan för hello paketet, granska hello projektet kompatibilitet med Umbraco CMS-version.
 
-Mer information om hur du uppgraderar ditt webbprogram lokalt, [finns allmänna uppgradera](https://our.umbraco.org/documentation/getting-started/setup/upgrading/general).
+Mer information om hur tooupgrade webbappen lokalt, [finns hello allmän uppgradera vägledning](https://our.umbraco.org/documentation/getting-started/setup/upgrading/general).
 
-Publicera ändringarna till den tillfälliga webbappen när lokal utvecklingsplatsen har uppgraderats. Testa ditt program. Om alla ser bra ut använder den **växlingen** för att byta ut din fristående plats till produktion webbapp. När du använder den **växla** igen, du kan visa ändringarna som kommer att påverkas i ditt webbprogram konfiguration. Detta **växla** åtgärden växlingar webbappar och databaser. Efter den **växla**web produktionsprogrammet peka mot umbraco-steg-db-databasen och fristående webbappen att peka umbraco-produktprenumeration-db-databas.
+När lokal utvecklingsplatsen har uppgraderats kan du publicera hello ändringar toohello mellanlagring webbprogrammet. Testa ditt program. Om alla ser bra ut använda hello **växla** knappen tooswap fristående plats toohello produktion webbappen. När du använder hello **växla** igen, du kan visa hello ändringar som kommer att påverkas i ditt webbprogram konfiguration. Detta **växla** åtgärden växlingar hello webbappar och databaser. Efter hello **växla**hello web app kommer punkt toohello umbraco-steg-db produktionsdatabasen och hello tillfälliga web app kommer punkt tooumbraco-produktprenumeration-db-databasen.
 
 ![Växla förhandsgranskning för att distribuera Umbraco CMS](./media/app-service-web-staged-publishing-realworld-scenarios/22umbswap.png)
 
-Här är fördelarna med att byta både webbappen och databasen:
+Här är fördelarna med att byta både hello webbapp och hello databasen:
 
-* Du kan återställa till den tidigare versionen av ditt webbprogram med en annan **växla** om det uppstår några problem med programmet.
-* Du måste distribuera filer och databaser från fristående webbappen till produktion webbappen och databasen för en uppgradering. Många saker går fel när du distribuerar filer och databaser. Med hjälp av den **växla** funktionen fack, kan vi minska avbrottstiden vid en uppgradering och minska risken för fel som kan uppstå när du distribuerar ändringar.
-* Du kan göra **A / B-testning** med hjälp av den [test i produktion](https://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/) funktion.
+* Du kan återställa toohello tidigare version av ditt webbprogram med en annan **växla** om det uppstår några problem med programmet.
+* Du måste toodeploy filer och databaser från hello mellanlagring web app toohello produktion webbappen och databasen för en uppgradering. Många saker går fel när du distribuerar filer och databaser. Med hjälp av hello **växla** funktionen fack, kan vi minska avbrottstiden vid en uppgradering och hello risken för fel som kan uppstå när du distribuerar ändringar.
+* Du kan göra **A / B-testning** med hjälp av hello [test i produktion](https://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/) funktion.
 
-Det här exemplet visar flexibilitet i plattformen där du kan skapa anpassade moduler som liknar Umbraco Courier modul som ska hantera distribution mellan miljöer.
+Detta exempel visar du hello flexibilitet hello plattform där du kan skapa anpassade moduler liknande tooUmbraco Courier toomanage distribution mellan miljöer.
 
 ## <a name="references"></a>Referenser
 [Flexibel programvaruutveckling med Azure App Service](app-service-agile-software-development.md)
 
 [Skapa mellanlagringsmiljöer för web apps i Azure App Service](web-sites-staged-publishing.md)
 
-[Blockera Webbåtkomst till icke-produktion distributionsplatser](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
+[Hur tooblock web åt toonon produktion distributionsplatser](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)

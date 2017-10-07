@@ -1,6 +1,6 @@
 ---
-title: "Ansluta program till Azure-databas för MySQL | Microsoft Docs"
-description: "Det här dokumentet innehåller för närvarande stöds anslutningssträngar att ansluta till Azure-databas för MySQL, inklusive ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python eller Ruby-program."
+title: "aaaConnect program tooAzure för MySQL-databas | Microsoft Docs"
+description: "Det här dokumentet innehåller hello stöds för närvarande anslutningssträngar för tooconnect program med Azure-databas för MySQL, inklusive ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python eller Ruby."
 services: mysql
 author: mswutao
 ms.author: wuta
@@ -9,25 +9,25 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 06/12/2017
-ms.openlocfilehash: 2f40da41bcfda7e35f6fc63ead5d055246ab390c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bbcb2c0ddb4f8e5c225ebef53781e073f5c7b1a8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Så här ansluter du program till Azure-databas för MySQL
-Det här dokumentet innehåller strängen anslutningstyper som stöds av Azure-databas för MySQL, tillsammans med mallar och exempel. Du kan ha olika parametrar och andra inställningar i anslutningssträngen.
+# <a name="how-tooconnect-applications-tooazure-database-for-mysql"></a>Hur tooconnect program tooAzure databas för MySQL
+Det här dokumentet innehåller hello sträng anslutningstyper som stöds av Azure-databas för MySQL, tillsammans med mallar och exempel. Du kan ha olika parametrar och andra inställningar i anslutningssträngen.
 
-- Certifikatet finns på [hur du konfigurerar SSL](./howto-configure-ssl.md).
+- tooobtain hello certifikat, se [hur tooconfigure SSL](./howto-configure-ssl.md).
 - {your_host} = <servername>. mysql.database.azure.com
-- {your_user}@{servername} = användar-ID-format för autentisering korrekt.  Med bara userID kommer autentiseringen misslyckas.
+- {your_user}@{servername} = användar-ID-format för autentisering korrekt.  Hello autentisering toofail genereras om du använder bara hello användar-ID.
 
 ## <a name="adonet"></a>ADO.NET
 ```ado.net
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-I det här exemplet servernamnet är `myserver4demo`, databasnamnet är `wpdb`, användarnamnet är `WPAdmin`, och lösenordet är `mypassword!2`. Sedan bör anslutningssträngen vara:
+I det här exemplet hello servernamnet är `myserver4demo`, databasnamnet är `wpdb`, användarnamnet är `WPAdmin`, och lösenordet är `mypassword!2`. Sedan ska hello anslutningssträngen vara:
 
 ```ado.net
 Server= "myserver4demo.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@myserver4demo"; Pwd="mypassword!2"; SslMode=Required;
@@ -63,10 +63,10 @@ cnx = mysql.connector.connect(user={username@servername}, password={your_passwor
 client = Mysql2::Client.new(username: {username@servername}, password: {your_password}, database: {your_database}, host: {your_host}, port: {your_port}[, sslca:{ca-cert filename}, sslverify:false, sslcipher:'AES256-SHA'])
 ```
 
-## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Hämta information om anslutningssträngen från Azure-portalen
-I den [Azure-portalen](https://portal.azure.com), gå till din Azure-databas för MySQL-server och klicka sedan på **anslutningssträngar** att hämta en lista med strängar för din instans: ![Connection strings rutan i Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+## <a name="get-hello-connection-string-details-from-hello-azure-portal"></a>Hämta hello anslutning sträng från hello Azure-portalen
+I hello [Azure-portalen](https://portal.azure.com)gå tooyour Azure-databas för MySQL-server och klicka sedan på **anslutningssträngar** tooget i strängen lista för din instans: ![hello anslutning strängar rutan i hello Azure-portalen](./media/howto-connection-strings/connection-strings-on-portal.png)
 
-Strängen innehåller information som drivrutinen, server och andra databasen anslutningsparametrar. Ändra de här exemplen med dina egna parametrar, till exempel databasens namn, lösenord och så vidare. Du kan sedan använda den här strängen för att ansluta till servern från din kod och program.
+hello-sträng innehåller information som hello drivrutin, server och andra parametrar för anslutningen. Ändra de här exemplen med dina egna parametrar, till exempel databasens namn, lösenord och så vidare. Du kan sedan använda den här strängen tooconnect toohello servern från din kod och program.
 
 ## <a name="next-steps"></a>Nästa steg
 - Läs mer om anslutningsbibliotek [begrepp - anslutningsbibliotek](./concepts-connection-libraries.md).

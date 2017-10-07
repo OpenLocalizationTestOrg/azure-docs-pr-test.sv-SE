@@ -1,6 +1,6 @@
 ---
-title: "Realtidsdata visualisering av sensordata från din Azure IoT-hubb – Web Apps | Microsoft Docs"
-description: "Använd funktionen Web Apps i Microsoft Azure App Service visualisera temperatur- och fuktighetskonsekvens data som samlas in från sensorn och skickas till din Iot-hubb."
+title: "aaaReal tidsdata visualisering av sensordata från din Azure IoT-hubb – Web Apps | Microsoft Docs"
+description: "Med funktionen hello webbprogram med Microsoft Azure App Service toovisualize temperatur- och fuktighetskonsekvens data som samlas in från hello sensor och skickas tooyour Iot-hubb."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2017
 ms.author: xshi
-ms.openlocfilehash: e037f5c29cabf8e5d0d3e7ded187280a0652d5c3
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 72f2dffee1c2f975948820eee9f2e287c3f77255
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Visualisera sensordata i realtid från Azure IoT-hubben med hjälp av funktionen Web Apps i Azure App Service
+# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-hello-web-apps-feature-of-azure-app-service"></a>Visualisera sensordata i realtid från Azure IoT-hubben med hjälp av funktionen för hello Web Apps i Azure App Service
 
 ![Diagram för slutpunkt till slutpunkt](media/iot-hub-get-started-e2e-diagram/5.png)
 
@@ -29,68 +29,68 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="what-you-learn"></a>Detta får du får lära dig
 
-I kursen får lära du att visualisera sensordata i realtid som din IoT-hubb som tar emot genom att köra ett program som finns på en webbapp. Om du vill försöka visualisera data i din IoT-hubb med hjälp av Power BI, se [Använd Power BI att visualisera sensordata i realtid från Azure IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
+I kursen får du lära dig hur toovisualize sensordata i realtid som din IoT-hubb som tar emot genom att köra ett webbprogram som är värd för ett webbprogram. Om du vill tootry toovisualize hello data i din IoT-hubb med hjälp av Power BI, se [Använd Power BI toovisualize realtid sensordata från Azure IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
 
 ## <a name="what-you-do"></a>Vad du gör
 
-- Skapa en webbapp i Azure-portalen.
+- Skapa en webbapp i hello Azure-portalen.
 - Förbereda din IoT-hubb för åtkomst till data genom att lägga till en konsumentgrupp.
-- Konfigurera webbappen för att läsa sensordata från IoT-hubb.
-- Ladda upp ett webbprogram kan hanteras på webbprogrammet.
-- Öppna webbapp om du vill se temperatur- och fuktighetskonsekvens realtidsdata från din IoT-hubb.
+- Konfigurera hello web app tooread sensordata från IoT-hubb.
+- Överför en web application toobe hello webbprogram som värd.
+- Öppna hello web app toosee temperatur- och fuktighetskonsekvens realtidsdata från din IoT-hubb.
 
 ## <a name="what-you-need"></a>Vad du behöver
 
-- [Konfigurera din enhet](iot-hub-raspberry-pi-kit-node-get-started.md), som omfattar följande krav:
+- [Konfigurera din enhet](iot-hub-raspberry-pi-kit-node-get-started.md), som omfattar hello följande krav:
   - En aktiv Azure-prenumeration
   - En Iot-hubb i din prenumeration
-  - Ett klientprogram som skickar meddelanden till din Iot-hubb
+  - Ett klientprogram som skickar meddelanden tooyour Iot-hubb
 - [Hämta Git](https://www.git-scm.com/downloads)
 
 ## <a name="create-a-web-app"></a>Skapa en webbapp
 
-1. I den [Azure-portalen](https://ms.portal.azure.com/), klickar du på **ny** > **webb + mobilt** > **Web App**.
-2. Ange ett unikt jobbnamn, kontrollera prenumerationen, ange en resursgrupp och en plats, väljer **fäst på instrumentpanelen**, och klicka sedan på **skapa**.
+1. I hello [Azure-portalen](https://ms.portal.azure.com/), klickar du på **ny** > **webb + mobilt** > **Web App**.
+2. Ange ett unikt jobbnamn verifierar hello prenumeration, ange en resursgrupp och en plats, väljer **PIN-kod toodashboard**, och klicka sedan på **skapa**.
 
-   Vi rekommenderar att du väljer på samma plats som resursgruppen. Gör detta hjälper till med bearbetningshastigheten och minskar kostnaden för dataöverföring.
+   Vi rekommenderar att du väljer hello samma plats som resursgruppen. Detta hjälper till med bearbetningshastigheten och minskar hello kostnaden för dataöverföring.
 
    ![Skapa en webbapp](media/iot-hub-live-data-visualization-in-web-apps/2_create-web-app-azure.png)
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
 
-## <a name="configure-the-web-app-to-read-data-from-your-iot-hub"></a>Konfigurera webbappen för att läsa data från IoT-hubb
+## <a name="configure-hello-web-app-tooread-data-from-your-iot-hub"></a>Konfigurera hello web app tooread data från IoT-hubb
 
-1. Öppna webbapp som du precis har etablerats.
-2. Klicka på **programinställningar**, och under **appinställningar**, Lägg till följande nyckel/värde-par:
+1. Öppna hello webbapp som du precis har etablerats.
+2. Klicka på **programinställningar**, och under **appinställningar**, Lägg till följande nyckel/värde-par hello:
 
    | Nyckel                                   | Värde                                                        |
    |---------------------------------------|--------------------------------------------------------------|
    | Azure.IoT.IoTHub.ConnectionString     | Hämtas från iothub explorer                                |
-   | Azure.IoT.IoTHub.ConsumerGroup        | Namnet på konsumentgrupp som du lägger till din IoT-hubb  |
+   | Azure.IoT.IoTHub.ConsumerGroup        | hello namnet på hello konsumentgrupp som du lägger till tooyour IoT-hubb  |
 
-   ![Lägger till inställningarna i ditt webbprogram med nyckel/värde-par](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)
+   ![Lägga till inställningarna tooyour webbprogrammet med nyckel/värde-par](media/iot-hub-live-data-visualization-in-web-apps/4_web-app-settings-key-value-azure.png)
 
-3. Klicka på **programinställningar**under **allmänna inställningar**, växla den **Web sockets** alternativ och klickar sedan på **spara**.
+3. Klicka på **programinställningar**under **allmänna inställningar**, växla hello **Web sockets** alternativ och klickar sedan på **spara**.
 
-   ![Växla alternativet sockets](media/iot-hub-live-data-visualization-in-web-apps/10_toggle_web_sockets.png)
+   ![Växla hello sockets webbinställningar](media/iot-hub-live-data-visualization-in-web-apps/10_toggle_web_sockets.png)
 
-## <a name="upload-a-web-application-to-be-hosted-by-the-web-app"></a>Ladda upp ett webbprogram kan hanteras på webbprogrammet
+## <a name="upload-a-web-application-toobe-hosted-by-hello-web-app"></a>Överför en web application toobe hos hello-webbprogram
 
-På GitHub, har vi gjort tillgängliga ett webbprogram som visar sensordata i realtid från din IoT-hubb. Allt du behöver göra är att konfigurera webbprogram för att arbeta med Git-lagringsplatsen, hämta webbprogrammet från GitHub och överföra det till Azure för webbprogrammet till värden.
+På GitHub, har vi gjort tillgängliga ett webbprogram som visar sensordata i realtid från din IoT-hubb. Allt du behöver toodo är konfigurera hello web app toowork med en Git-lagringsplats, hämta hello webbprogrammet från GitHub och sedan ladda upp den tooAzure för hello web app toohost.
 
-1. I webbappen, klickar du på **distributionsalternativ** > **Välj källa** > **lokal Git-lagringsplats**, och klicka sedan på **OK**.
+1. I hello webbapp klickar du på **distributionsalternativ** > **Välj källa** > **lokal Git-lagringsplats**, och klicka sedan på **OK**.
 
-   ![Konfigurera web app-distribution för att använda lokal Git-lagringsplats](media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
+   ![Konfigurera din web app distribution toouse hello lokal Git-lagringsplats](media/iot-hub-live-data-visualization-in-web-apps/5_configure-web-app-deployment-local-git-repository-azure.png)
 
-2. Klicka på **Distributionsbehörigheterna**, skapa ett användarnamn och lösenord som ska användas för att ansluta till Git-lagringsplats i Azure och klicka sedan på **spara**.
+2. Klicka på **Distributionsbehörigheterna**, skapa en användare och lösenord toouse tooconnect toohello Git-lagringsplats i Azure och klicka sedan på **spara**.
 
-3. Klicka på **översikt**, och anteckna värdet för **url för Git-klon**.
+3. Klicka på **översikt**, och anteckna värdet för hello av **url för Git-klon**.
 
-   ![Hämta URL för Git-klon av ditt webbprogram](media/iot-hub-live-data-visualization-in-web-apps/7_web-app-git-clone-url-azure.png)
+   ![Hämta hello Git klon-URL för ditt webbprogram](media/iot-hub-live-data-visualization-in-web-apps/7_web-app-git-clone-url-azure.png)
 
 4. Öppna ett kommando eller ett terminalfönster på den lokala datorn.
 
-5. Hämta webbprogrammet från GitHub och överföra det till Azure för webbprogrammet till värden. Det gör du genom att köra följande kommandon:
+5. Hämta hello webbprogrammet från GitHub och överför den tooAzure för hello web app toohost. toodo kör så hello följande kommandon:
 
    ```bash
    git clone https://github.com/Azure-Samples/web-apps-node-iot-hub-data-visualization.git
@@ -100,24 +100,24 @@ På GitHub, har vi gjort tillgängliga ett webbprogram som visar sensordata i re
    ```
 
    > [!NOTE]
-   > \<URL för Git-klon\> är URL för Git-lagringsplats som hittades på den **översikt** sidan i webbprogrammet.
+   > \<URL för Git-klon\> är hello URL för hello Git-lagringsplatsen finns på hello **översikt** sidan av hello webbprogram.
 
-## <a name="open-the-web-app-to-see-real-time-temperature-and-humidity-data-from-your-iot-hub"></a>Öppna webbapp om du vill se temperatur- och fuktighetskonsekvens realtidsdata från din IoT-hubb
+## <a name="open-hello-web-app-toosee-real-time-temperature-and-humidity-data-from-your-iot-hub"></a>Öppna hello web app toosee temperatur- och fuktighetskonsekvens realtidsdata från din IoT-hubb
 
-På den **översikt** sidan av ditt webbprogram, klicka på Webbadressen för att öppna webbapp.
+På hello **översikt** sidan av ditt webbprogram, klickar du på hello URL tooopen hello webbprogrammet.
 
-![Hämta URL för ditt webbprogram](media/iot-hub-live-data-visualization-in-web-apps/8_web-app-url-azure.png)
+![Hämta hello URL för ditt webbprogram](media/iot-hub-live-data-visualization-in-web-apps/8_web-app-url-azure.png)
 
-Du bör se temperatur- och fuktighetskonsekvens realtidsdata från din IoT-hubb.
+Du bör se hello realtid temperatur- och fuktighetskonsekvens data från IoT-hubb.
 
 ![Appen webbsidan visar realtid temperatur- och fuktighetskonsekvens](media/iot-hub-live-data-visualization-in-web-apps/9_web-app-page-show-real-time-temperature-humidity-azure.png)
 
 > [!NOTE]
-> Kontrollera exempelprogrammet som körs på enheten. Om inte, får du ett tomt diagram, kan du referera till självstudier under [konfigurera enheten](iot-hub-raspberry-pi-kit-node-get-started.md).
+> Kontrollera hello exempelprogrammet körs på enheten. Om inte, får du ett tomt diagram, kan du läsa toohello självstudier under [konfigurera enheten](iot-hub-raspberry-pi-kit-node-get-started.md).
 
 ## <a name="next-steps"></a>Nästa steg
-Du har har använt ditt webbprogram för att visualisera sensordata i realtid från din IoT-hubb.
+Du har använt sensordata i realtid din web app toovisualize från IoT-hubb.
 
-Ett annat sätt att visualisera data från Azure IoT Hub, se [Använd Power BI att visualisera sensordata i realtid från din IoT-hubb](iot-hub-live-data-visualization-in-power-bi.md).
+Ett annat sätt toovisualize data från Azure IoT Hub, se [Använd Power BI toovisualize realtid sensordata från IoT-hubb](iot-hub-live-data-visualization-in-power-bi.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

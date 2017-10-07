@@ -1,6 +1,6 @@
 ---
-title: Virtuella datorer i en Azure Resource Manager-mall | Microsoft Azure
-description: "Läs mer om hur den virtuella datorresursen har definierats i en Azure Resource Manager-mall."
+title: aaaVirtual datorer i en Azure Resource Manager-mall | Microsoft Azure
+description: "Läs mer om hur hello virtuell datorresurs har definierats i en Azure Resource Manager-mall."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.openlocfilehash: d9b9121bc5e38396ba4def6c17f9b373c2b48056
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 94adcbe5bf44be72ffc1b920461aed15c4fc025f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuella datorer i en Azure Resource Manager-mall
 
-Den här artikeln beskriver aspekter av en Azure Resource Manager-mall som gäller för virtuella datorer. Den här artikeln beskriver inte en fullständig mall för att skapa en virtuell dator; för att du behöver resursdefinitionerna för storage-konton, nätverksgränssnitt, offentliga IP-adresser och virtuella nätverk. Mer information om hur dessa resurser kan definieras tillsammans finns i [genomgång av Resource Manager-mall](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Den här artikeln beskriver aspekter av en Azure Resource Manager-mall som gäller toovirtual datorer. Den här artikeln beskriver inte en fullständig mall för att skapa en virtuell dator; för att du behöver resursdefinitionerna för storage-konton, nätverksgränssnitt, offentliga IP-adresser och virtuella nätverk. Mer information om hur dessa resurser kan definieras tillsammans finns hello [genomgång av Resource Manager-mall](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Det finns många [mallar i galleriet](https://azure.microsoft.com/documentation/templates/?term=VM) som innehåller den Virtuella datorresursen. Här beskrivs inte alla element som kan ingå i en mall.
+Det finns många [mallar i hello galleriet](https://azure.microsoft.com/documentation/templates/?term=VM) som inkluderar hello Virtuella datorresursen. Här beskrivs inte alla element som kan ingå i en mall.
 
 Det här exemplet illustrerar en typisk resursavsnitt i en mall för att skapa ett angivet antal virtuella datorer:
 
@@ -145,21 +145,21 @@ Det här exemplet illustrerar en typisk resursavsnitt i en mall för att skapa e
 ``` 
 
 > [!NOTE] 
->Det här exemplet bygger på ett lagringskonto som skapades tidigare. Du kan skapa lagringskontot genom att distribuera den från mallen. Exemplet använder också ett nätverksgränssnitt och dess beroende resurser som skulle definieras i mallen. Dessa resurser visas inte i exemplet.
+>Det här exemplet bygger på ett lagringskonto som skapades tidigare. Du kan skapa hello storage-konto genom att distribuera den från hello mall. hello exempel använder också ett nätverksgränssnitt och dess beroende resurser som skulle definieras i hello mallen. Dessa resurser visas inte i hello exempel.
 >
 >
 
 ## <a name="api-version"></a>API-Version
 
-Du måste ange en version av API för att använda när du distribuerar resurser med hjälp av en mall. Exemplet visar den virtuella datorresursen med den här apiVersion-element:
+När du distribuerar resurser med hjälp av en mall har toospecify en version av hello API toouse. hello exempel visar hello virtuell datorresurs med den här apiVersion-element:
 
 ```
 "apiVersion": "2016-04-30-preview",
 ```
 
-Versionen av API: N som du anger i mallen påverkar vilka egenskaper som du kan definiera i mallen. I allmänhet bör du välja den senaste API-versionen när du skapar mallar. Du kan bestämma om du vill fortsätta med en tidigare API-version eller uppdatera mallen för den senaste versionen dra nytta av nya funktioner för befintliga mallar.
+hello-versionen av hello API som du anger i mallen påverkar vilka egenskaper som du kan definiera i hello mallen. I allmänhet bör du välja hello senaste API-versionen när du skapar mallar. För befintliga mallar, kan du bestämma om du vill toocontinue med en tidigare API-version eller uppdatera mallen för hello senaste version tootake nytta av nya funktioner.
 
-Använd dessa möjligheter för att hämta de senaste API-versionerna:
+Använd dessa möjligheter för att hämta hello senaste API-versioner:
 
 - REST API - [lista över alla resursproviders](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
@@ -167,7 +167,7 @@ Använd dessa möjligheter för att hämta de senaste API-versionerna:
 
 ## <a name="parameters-and-variables"></a>Parametrar och variabler
 
-[Parametrarna](../../resource-group-authoring-templates.md) gör det lättare för dig att ange värden för mallen när den körs. Det här avsnittet parametrar används i exemplet:
+[Parametrarna](../../resource-group-authoring-templates.md) gör det lättare för dig toospecify värden för hello mallen när den körs. Det här avsnittet parametrar används i hello exemplet:
 
 ```        
 "parameters": {
@@ -177,9 +177,9 @@ Använd dessa möjligheter för att hämta de senaste API-versionerna:
 },
 ```
 
-När du distribuerar mallen exempel kan ange du värden för namn och lösenord för administratörskontot för varje virtuell dator och antalet virtuella datorer för att skapa. Du har möjlighet att ange parametervärden i en separat fil som hanteras med hjälp av mallen eller tillhandahåller värden när du uppmanas.
+När du distribuerar hello exempelmall ange värden för hello namn och lösenord för administratörskontot för hello på varje virtuell dator och hello antal virtuella datorer toocreate. Du har hello alternativet för att ange parametervärden i en separat fil som hanteras med hello mall eller tillhandahåller värden när du uppmanas.
 
-[Variabler](../../resource-group-authoring-templates.md) gör det lättare för dig att ange värden i mallen som används flera gånger i den eller som kan ändras med tiden. Det här avsnittet för variabler som används i exemplet:
+[Variabler](../../resource-group-authoring-templates.md) gör det lättare för dig tooset värden i hello mallen som används flera gånger i den eller som kan ändras med tiden. Det här avsnittet för variabler som används i hello exemplet:
 
 ```
 "variables": { 
@@ -212,11 +212,11 @@ När du distribuerar mallen exempel kan ange du värden för namn och lösenord 
 }, 
 ```
 
-När du distribuerar mallen exempel används variabelvärden för namn och ID: t för det tidigare skapade lagringskontot. Variabler används också för att ange inställningar för diagnostik tillägget. Använd den [bästa praxis för att skapa mallar för Azure Resource Manager](../../resource-manager-template-best-practices.md) som hjälper dig att bestämma hur du vill att strukturera parametrar och variabler i mallen.
+När du distribuerar hello exempelmall används variabelvärden för hello namn och en identifierare för hello tidigare skapade lagringskontot. Variabler är också används tooprovide hello inställningar för diagnostik hello-tillägg. Använd hello [bästa praxis för att skapa mallar för Azure Resource Manager](../../resource-manager-template-best-practices.md) toohelp du bestämma hur du vill toostructure hello parametrar och variabler i mallen.
 
 ## <a name="resource-loops"></a>Resursen slingor
 
-När du behöver mer än en virtuell dator för programmet, kan du använda en kopia-element i en mall. Det här valfria elementet loop genom att skapa antal virtuella datorer som du angav som en parameter:
+När du behöver mer än en virtuell dator för programmet, kan du använda en kopia-element i en mall. Det här valfria elementet loop genom att skapa hello antal virtuella datorer som du angav som en parameter:
 
 ```
 "copy": {
@@ -225,7 +225,7 @@ När du behöver mer än en virtuell dator för programmet, kan du använda en k
 },
 ```
 
-Observera också i exempel loopindexet används när du anger en del av värden för resursen. Om du har angett ett instansantal på tre är till exempel namnen på operativsystemet diskar myOSDisk1, myOSDisk2 och myOSDisk3:
+I hello-exemplet som hello loopindexet används också när du anger några av hello värden för hello resurs. Till exempel är om du har angett ett instansantal på tre, hello namnen på hello operativsystemet diskar myOSDisk1, myOSDisk2 och myOSDisk3:
 
 ```
 "osDisk": { 
@@ -236,11 +236,11 @@ Observera också i exempel loopindexet används när du anger en del av värden 
 ```
 
 > [!NOTE] 
->Det här exemplet använder hanterade diskar för virtuella datorer.
+>Det här exemplet använder hanterade diskar för hello virtuella datorer.
 >
 >
 
-Tänk på att skapa en loop för en resurs i mallen kan kräva att använda loop när du skapar eller få åtkomst till andra resurser. Flera virtuella datorer kan inte använda samma nätverksgränssnitt, så om din mall loop genom att skapa tre virtuella datorer måste den också gå igenom skapa tre nätverksgränssnitt. När du tilldelar en virtuell dator ett nätverksgränssnitt används loopindexet för att identifiera den:
+Tänk på att skapa en loop för en resurs i mallen för hello kan kräva att du toouse hello loop när du skapar eller få åtkomst till andra resurser. Flera virtuella datorer kan till exempel inte använda hello samma nätverksgränssnittet, så om din mall loop genom att skapa tre virtuella datorer det måste också gå igenom hur du skapar tre nätverksgränssnitt. När du tilldelar en network interface tooa VM hello loopindexet är används tooidentify den:
 
 ```
 "networkInterfaces": [ { 
@@ -251,7 +251,7 @@ Tänk på att skapa en loop för en resurs i mallen kan kräva att använda loop
 
 ## <a name="dependencies"></a>Beroenden
 
-De flesta resurser är beroende av andra resurser ska fungera korrekt. Virtuella datorer måste vara associerad med ett virtuellt nätverk och gör att den behöver ett nätverksgränssnitt. Den [dependsOn](../../resource-group-define-dependencies.md) element som används för att kontrollera att nätverkskortet är redo att användas innan de virtuella datorerna har skapats:
+De flesta resurser beroende av andra resurser toowork korrekt. Virtuella datorer måste vara kopplad till ett virtuellt nätverk och toodo måste ett nätverksgränssnitt. Hej [dependsOn](../../resource-group-define-dependencies.md) elementet har använt toomake att hello nätverksgränssnittet är klar toobe används innan hello virtuella datorer skapas:
 
 ```
 "dependsOn": [
@@ -259,9 +259,9 @@ De flesta resurser är beroende av andra resurser ska fungera korrekt. Virtuella
 ],
 ```
 
-Hanteraren för filserverresurser distribuerar parallellt alla resurser som inte är beroende av en annan resurs som ska distribueras. Var försiktig när du ställer in beroenden eftersom du kan oavsiktligt göra distributionen genom att ange onödiga beroenden. Beroenden kan kedja genom flera resurser. Till exempel beror nätverksgränssnittet på den offentliga IP-adressen och nätverksresurser på virtuella datorer.
+Hanteraren för filserverresurser distribuerar parallellt alla resurser som inte är beroende av en annan resurs som ska distribueras. Var försiktig när du ställer in beroenden eftersom du kan oavsiktligt göra distributionen genom att ange onödiga beroenden. Beroenden kan kedja genom flera resurser. Till exempel beroende hello nätverksgränssnittet hello offentlig IP-adress och nätverksresurser på virtuella datorer.
 
-Hur vet du om det krävs ett beroende? Titta på de värden som du anger i mallen. Om ett element i den virtuella resource definition pekar på en annan resurs som distribueras i samma mall måste ett beroende. Till exempel definierar den virtuella datorn exempel en nätverksprofil:
+Hur vet du om det krävs ett beroende? Titta på hello värdena som du angett i hello mallen. Om ett element i hello virtuella resursdefinitionen pekar tooanother resurs som har distribuerats i hello samma mall du behöver ett beroende. Till exempel definierar den virtuella datorn exempel en nätverksprofil:
 
 ```
 "networkProfile": { 
@@ -272,11 +272,11 @@ Hur vet du om det krävs ett beroende? Titta på de värden som du anger i malle
 },
 ```
 
-Nätverksgränssnittet måste finnas för att ange den här egenskapen. Därför måste ett beroende. Du måste ange ett beroende när en resurs (en underordnad) definieras inom en annan resurs (överordnad). Till exempel är diagnostikinställningar och tillägg för anpassat skript definierade som underordnade resurser till den virtuella datorn. De kan inte skapas förrän den virtuella datorn finns. Därför markeras båda resurserna som är beroende av den virtuella datorn.
+tooset den här egenskapen hello nätverksgränssnitt måste finnas. Därför måste ett beroende. Du måste också tooset ett beroende när en resurs (en underordnad) definieras inom en annan resurs (överordnad). Till exempel definieras hello diagnostikinställningarna-tillägg för anpassat skript för både som underordnade resurser till hello virtuell dator. De kan inte skapas förrän hello virtuella datorn finns. Därför är båda resurserna markerad som en beroende hello virtuell dator.
 
 ## <a name="profiles"></a>Profiler
 
-Flera profil element används när du definierar en virtuell datorresurs. Vissa är obligatoriska och vissa är valfria. Till exempel hardwareProfile, osProfile, storageProfile och networkProfile-element krävs, men diagnosticsProfile är valfritt. De här profilerna definiera inställningar som:
+Flera profil element används när du definierar en virtuell datorresurs. Vissa är obligatoriska och vissa är valfria. Till exempel hello hardwareProfile, osProfile, storageProfile och networkProfile-element krävs, men hello diagnosticsProfile är valfritt. De här profilerna definiera inställningar som:
    
 - [storlek](sizes.md)
 - [namnet](/architecture/best-practices/naming-conventions) och autentiseringsuppgifter
@@ -286,11 +286,11 @@ Flera profil element används när du definierar en virtuell datorresurs. Vissa 
 
 ## <a name="disks-and-images"></a>Diskar och bilder
    
-I Azure, vhd-filer kan representera [diskar eller bilder](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). När operativsystemet i en vhd-fil är specialanpassat ska vara en specifik VM, kallas det en disk. När operativsystemet i en vhd-fil är generaliserad som används för att skapa många virtuella datorer, kallas det en bild.   
+I Azure, vhd-filer kan representera [diskar eller bilder](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). När hello operativsystem i en vhd-fil är särskilda toobe en specifik VM, är det hänvisade tooas en disk. När hello operativsystem i en vhd-fil är generaliserad toobe används toocreate många virtuella datorer, är det hänvisade tooas en bild.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Skapa nya virtuella datorer och nya diskar från en plattformsavbildning
 
-När du skapar en virtuell dator, måste du bestämma vilket operativsystem du använder. Elementet imageReference används för att definiera operativsystemet på en ny virtuell dator. Exemplet visar en definition för ett Windows Server-operativsystem:
+När du skapar en virtuell dator, måste du bestämma vilka operativsystem toouse. Hej imageReference elementet har använt toodefine hello operativsystemet på en ny virtuell dator. hello exempel visas en definition för ett Windows Server-operativsystem:
 
 ```
 "imageReference": { 
@@ -301,7 +301,7 @@ När du skapar en virtuell dator, måste du bestämma vilket operativsystem du a
 },
 ```
 
-Du kan använda den här definitionen om du vill skapa ett Linux-operativsystem:
+Om du vill toocreate en Linux-operativsystem, kan du använda den här definitionen:
 
 ```
 "imageReference": {
@@ -312,7 +312,7 @@ Du kan använda den här definitionen om du vill skapa ett Linux-operativsystem:
 },
 ```
 
-Konfigurationsinställningar för operativsystemets disk tilldelas med elementet osDisk. I exempel definierar en ny hanterade disk med cachelagring inställd på **ReadWrite** och att disken skapas från en [plattformsavbildning](cli-ps-findimage.md):
+Konfigurationsinställningar för hello operativsystemdisken tilldelas med hello osDisk element. hello exempel definierar en ny hanterade disk med hello cachelagring läge har angetts för**ReadWrite** och hello disken skapas från en [plattformsavbildning](cli-ps-findimage.md):
 
 ```
 "osDisk": { 
@@ -324,7 +324,7 @@ Konfigurationsinställningar för operativsystemets disk tilldelas med elementet
 
 ### <a name="create-new-virtual-machines-from-existing-managed-disks"></a>Skapa nya virtuella datorer från befintliga hanterade diskar
 
-Om du vill skapa virtuella datorer från befintliga diskar, ta bort imageReference och osProfile-element och definiera diskinställningarna:
+Om du vill toocreate virtuella datorer från befintliga diskar, ta bort hello imageReference och hello osProfile element och definiera diskinställningarna:
 
 ```
 "osDisk": { 
@@ -339,7 +339,7 @@ Om du vill skapa virtuella datorer från befintliga diskar, ta bort imageReferen
 
 ### <a name="create-new-virtual-machines-from-a-managed-image"></a>Skapa nya virtuella datorer från en hanterad avbildning
 
-Om du vill skapa en virtuell dator från en hanterad avbildning ändra elementet imageReference och definiera diskinställningarna:
+Om du vill toocreate en virtuell dator från en hanterad avbildning, ändra hello imageReference element och definiera diskinställningarna:
 
 ```
 "storageProfile": { 
@@ -357,7 +357,7 @@ Om du vill skapa en virtuell dator från en hanterad avbildning ändra elementet
 
 ### <a name="attach-data-disks"></a>Bifoga datadiskar
 
-Du kan lägga till datadiskar till de virtuella datorerna. Den [antal diskar](sizes.md) beror på storleken på disken för operativsystemet som du använder. Med storleken på de virtuella datorerna som angetts till Standard_DS1_v2 är maximala antalet datadiskar som kan läggas till dem två. I exemplet är läggs en hanterad datadisk till varje virtuell dator:
+Du kan lägga till data diskar toohello virtuella datorer. Hej [antal diskar](sizes.md) beror på hello storleken på operativsystemdisken som du använder. Med hello ange storleken på virtuella datorer hello tooStandard_DS1_v2 hello maximala antalet datadiskar som kunde läggas till toohello dem är två. I exemplet hello läggs en hanterad datadisk tooeach VM:
 
 ```
 "dataDisks": [
@@ -373,7 +373,7 @@ Du kan lägga till datadiskar till de virtuella datorerna. Den [antal diskar](si
 
 ## <a name="extensions"></a>Tillägg
 
-Även om [tillägg](extensions-features.md) är en separat resurs, de är beroende av virtuella datorer. Tillägg kan läggas till som en underordnad resurs för den virtuella datorn eller som en separat resurs. Exempel visar den [diagnostik tillägget](extensions-diagnostics-template.md) läggs till i de virtuella datorerna:
+Även om [tillägg](extensions-features.md) är en separat resurs, de är nära bundet tooVMs. Tillägg kan läggas till som en underordnad resurs av hello VM eller som en separat resurs. hello exemplet visar hello [diagnostik tillägget](extensions-diagnostics-template.md) läggs toohello virtuella datorer:
 
 ```
 { 
@@ -406,9 +406,9 @@ Du kan lägga till datadiskar till de virtuella datorerna. Den [antal diskar](si
 },
 ```
 
-Tillägget resursen använder variabeln storageName och variablerna diagnostik för att ge värden. Om du vill ändra de data som samlas in med det här tillägget kan du lägga till flera prestandaräknare wadperfcounters variabeln. Du kan också välja att placera diagnostikdata i ett annat lagringskonto än där VM-diskarna lagras.
+Tillägget resursen använder hello storageName variabeln och hello diagnostiska tooprovide variabelvärden. Om du vill toochange hello data som samlas in med det här tillägget kan du lägga till flera prestandaräknare toohello wadperfcounters variabeln. Du kan också välja tooput hello diagnostikdata till ett annat lagringskonto än där hello Virtuella diskar lagras.
 
-Det finns många tillägg som du kan installera på en virtuell dator, men den mest användbara är antagligen det [tillägget för anpassat skript](extensions-customscript.md). I det här exemplet körs ett PowerShell.skript som heter start.ps1 på varje virtuell dator när den startas:
+Det finns många tillägg som du kan installera på en virtuell dator, men hello mest användbara är förmodligen hello [tillägget för anpassat skript](extensions-customscript.md). Hello exempelvis körs ett PowerShell.skript som heter start.ps1 på varje virtuell dator när den startas:
 
 ```
 {
@@ -435,26 +435,26 @@ Det finns många tillägg som du kan installera på en virtuell dator, men den m
 }
 ```
 
-Skriptet start.ps1 kan utföra många konfigurationsåtgärder. Till exempel har datadiskar som läggs till de virtuella datorerna i exemplet inte initierats; Du kan använda ett anpassat skript till initiering. Om du har flera Start uppgifter om du vill kan använda du filen start.ps1 för att anropa andra PowerShell-skript i Azure-lagring. I exemplet används PowerShell, men du kan använda valfri metod för skript som är tillgänglig på det operativsystem som du använder.
+Hej start.ps1 skriptet kan utföra många konfigurationsåtgärder. Till exempel har hello datadiskar som läggs toohello virtuella datorer i hello exempel inte initierats; Du kan använda ett anpassat skript tooinitialize dem. Om du har flera Start uppgifter toodo kan använda du hello start.ps1 filen toocall andra PowerShell-skript i Azure-lagring. hello exempel använder PowerShell, men du kan använda valfri metod för skript som är tillgänglig på hello-operativsystemet som du använder.
 
-Du kan se status för de installerade tilläggen från tillägg-inställningarna i portalen:
+Du kan se status för hello av hello installerat tillägg från hello tillägg inställningar i hello-portalen:
 
 ![Hämta Åtgärdsstatus för tillägg](./media/template-description/virtual-machines-show-extensions.png)
 
-Du kan också få tillägget information med hjälp av den **Get-AzureRmVMExtension** PowerShell-kommando på **vm-tillägget get** Azure CLI 2.0 kommando eller **hämta information om tillägg** REST-API.
+Du kan också få tillägget information med hjälp av hello **Get-AzureRmVMExtension** PowerShell kommandot hello **vm-tillägget get** Azure CLI 2.0 kommando eller hello **hämta information om tillägg**  REST API.
 
 ## <a name="deployments"></a>Distributioner
 
-När du distribuerar en mall spårar resurser som du distribuerat som en grupp och tilldelar automatiskt ett namn för den här distribuerad grupp i Azure. Namnet på distributionen är samma som namnet på mallen.
+När du distribuerar en mall, Azure spårar hello resurser som du har distribuerat som en grupp och automatiskt tilldelas en gruppnamnet toothis distribueras. hello namnet på hello distribution är hello samma som hello hello mallens namn.
 
-Om du är nyfiken på status för resurser i distributionen kan använda du resursgrupp-bladet i Azure-portalen:
+Om du är nyfiken hello status för resurser i hello distribution kan använda du hello resursgrupp-bladet i hello Azure-portalen:
 
 ![Hämta information om distribution](./media/template-description/virtual-machines-deployment-info.png)
     
-Det är inte ett problem ska använda samma mall att skapa resurser eller uppdaterar befintliga resurser. När du distribuera mallar med hjälp av kommandon har möjlighet att säga som [läge](../../resource-group-template-deploy.md) du vill använda. Läget kan vara inställd på antingen **Slutför** eller **stegvis**. Standardvärdet är att göra inkrementella uppdateringar. Var försiktig när du använder den **Slutför** läge eftersom av misstag kan du ta bort resurser. När du anger läget till **Slutför**, Resource Manager tar du bort alla resurser i resursgruppen som inte ingår i mallen.
+Det är inte ett problem toouse hello samma mall toocreate eller tooupdate befintliga resurser. När du använder kommandona toodeploy mallar du har hello möjlighet toosay som [läge](../../resource-group-template-deploy.md) du vill toouse. hello-läge kan anges tooeither **Slutför** eller **stegvis**. hello standardvärdet är toodo inkrementella uppdateringar. Var försiktig när du använder hello **Slutför** läge eftersom av misstag kan du ta bort resurser. När du anger hello läge för**Slutför**, Resource Manager tar du bort alla resurser i hello resursgrupp som inte ingår i hello mallen.
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Skapa en egen mall med hjälp av [redigera Azure Resource Manager-mallar](../../resource-group-authoring-templates.md).
-- Distribuera mallen som du skapat med [skapa en Windows-dator med en Resource Manager-mall](ps-template.md).
-- Lär dig hur du hanterar de virtuella datorerna som du skapade genom att granska [skapa och hantera virtuella Windows-datorer med Azure PowerShell-modulen](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Distribuera hello-mallen som du skapat med [skapa en Windows-dator med en Resource Manager-mall](ps-template.md).
+- Lär dig hur toomanage hello virtuella datorer som du skapade genom att granska [skapa och hantera virtuella Windows-datorer med hello Azure PowerShell-modulen](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

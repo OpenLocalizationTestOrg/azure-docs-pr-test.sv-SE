@@ -1,6 +1,6 @@
 ---
-title: "Azure DocumentDB .NET ändra Feed Processor SDK & resurser | Microsoft Docs"
-description: "Läs mer om ändringen Feed Processor-API och SDK inklusive frisläppningsdatum, tillbakadragning datum och ändringar mellan varje version av .NET DocumentDB ändra Feed Processor SDK."
+title: "aaaAzure DocumentDB .NET SDK ändra Feed Processor & resurser | Microsoft Docs"
+description: "Läs mer om hello ändra Feed Processor API och SDK inklusive frisläppningsdatum, tillbakadragning datum och ändringar mellan varje version av hello DocumentDB .NET SDK ändra Feed Processor."
 services: cosmos-db
 documentationcenter: .net
 author: ealsur
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: maquaran
-ms.openlocfilehash: 40c796bc5af1220c46950a6fac062ffdd243e59f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 7c001cc77f41c01445fb53328e9d99fd3d312c58
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="documentdb-net-change-feed-processor-sdk-download-and-release-notes"></a>DocumentDB .NET ändra Feed Processor SDK: Hämta och viktig information
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/18/2017
 
 <tr><td>**API-dokumentationen**</td><td>[Ändra Feed Processor biblioteket API-referensdokumentation](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)</td></tr>
 
-<tr><td>**Kom igång**</td><td>[Kom igång med ändringen Feed Processor .NET DocumentDB SDK](change-feed.md)</td></tr>
+<tr><td>**Kom igång**</td><td>[Kom igång med hello ändra Feed Processor .NET DocumentDB SDK](change-feed.md)</td></tr>
 
 <tr><td>**Aktuella framework som stöds**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
 </table></br>
@@ -48,7 +48,7 @@ ms.lasthandoff: 08/18/2017
 ## <a name="release-notes"></a>Viktig information
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Lägga till en metod för att få en uppskattning av återstående arbete som ska bearbetas i ändra Feed.
+* Lägga till en metod tooobtain en uppskattning av återstående arbete toobe behandlas i hello ändra Feed.
 * Kompatibel med [.NET DocumentDB SDK](documentdb-sdk-dotnet.md) versioner 1.13.2 och högre.
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
@@ -56,11 +56,11 @@ ms.lasthandoff: 08/18/2017
 * Kompatibel med [.NET DocumentDB SDK](documentdb-sdk-dotnet.md) versioner 1.14.1 och nedan.
 
 ## <a name="release--retirement-dates"></a>Versionen & pensionering datum
-Microsoft meddelar notification minst **12 månader** innan du tar bort en SDK för att utjämna övergången till en nyare/stöds version.
+Microsoft meddelar notification minst **12 månader** innan du tar bort en SDK i ordning toosmooth hello övergången tooa nyare/stöds version.
 
-Nya funktioner och funktionalitet och optimeringar bara lägga till den aktuella SDK, som vi rekommenderar att du alltid uppgraderar till den senaste SDK-versionen så snart som möjligt. 
+Nya funktioner och funktionalitet och optimeringar läggs endast toohello aktuella SDK, som vi rekommenderar att du alltid uppgradera toohello senaste SDK version så snart som möjligt. 
 
-Alla förfrågningar till Cosmos-databasen med en pensionerad SDK avvisas av tjänsten.
+Alla begäran tooCosmos databasen med en pensionerad SDK avvisas av hello-tjänsten.
 
 <br/>
 
@@ -74,5 +74,5 @@ Alla förfrågningar till Cosmos-databasen med en pensionerad SDK avvisas av tj�
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Se även
-Läs mer om Cosmos-DB i [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) sida. 
+toolearn mer om Cosmos DB finns [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) sida. 
 
