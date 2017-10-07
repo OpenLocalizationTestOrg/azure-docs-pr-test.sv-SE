@@ -1,6 +1,6 @@
 ---
-title: SQL Data Warehouse systemvyer | Microsoft Docs
-description: "Länkar till system visar innehåll för SQL Data Warehouse."
+title: aaaSQL datalagret systemvyer | Microsoft Docs
+description: "Länkar toosystem vyer innehåll för SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 07/12/2017
 ms.author: kevin;barbkess
-ms.openlocfilehash: a9327388f8789e548610a7d4f140c492afd88fef
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: bd4d7184f6c95b37fe16b897c44c46000bbb2746
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="system-views"></a>Systemvyer
 ## <a name="sql-data-warehouse-catalog-views"></a>SQL Data Warehouse katalogvyer
@@ -61,8 +61,8 @@ ms.lasthandoff: 08/03/2017
 * [sys.dm_pdw_wait_stats](http://msdn.microsoft.com/library/mt203909.aspx)
 * [sys.dm_pdw_waits](http://msdn.microsoft.com/library/mt203909.aspx)
 
-## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>SQL Server av DMV: er gäller för SQL Data Warehouse
-Följande av DMV: er som gäller för SQL Data Warehouse, men måste köras genom att ansluta till den **master** databas.
+## <a name="sql-server-dmvs-applicable-toosql-data-warehouse"></a>SQL Server av DMV: er tillämpliga tooSQL Data Warehouse
+hello följande av DMV: er som är tillämpliga tooSQL Data Warehouse, men måste köras genom att ansluta toohello **master** databas.
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
@@ -135,18 +135,18 @@ Följande av DMV: er som gäller för SQL Data Warehouse, men måste köras geno
 * [sys.Views](http://msdn.microsoft.com/library/ms190334.aspx)
 
 ## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL Server av DMV: er finns i SQL Data Warehouse
-SQL Data Warehouse exponerar många av de dynamiska hanteringsvyer (av DMV: er) för SQL Server. Dessa vyer när en förfrågan i SQL Data Warehouse rapporterar tillståndet för SQL-databaser som körs på distributioner.
+SQL Data Warehouse exponerar många av dynamiska hanteringsvyer för hello SQL Server (av DMV: er). Dessa vyer när en förfrågan i SQL Data Warehouse rapporterar hello tillstånd för SQL-databaser som körs på hello-distributioner.
 
-Använd samma systemvyer eftersom SQL Data Warehouse bygger på Microsofts MPP-teknik, både SQL Data Warehouse och Analytics Platform System Parallel Data Warehouse (PDW).
+Eftersom SQL Data Warehouse bygger på Microsofts MPP-teknik hello både SQL Data Warehouse och Analytics Platform System Parallel Data Warehouse PDW ()-Använd samma systemvyer.
 
-Det är därför var och en av dessa DMV har specifika kolumnen pdw_node_id. Det här är den identifierare för Compute-nod. Noden är en starkare koncept i arkitekturen i PDW beräkningen. I SQL Data Warehouse bygger arkitekturen virtuellt på distributioner.
+Det är därför var och en av dessa DMV har specifika kolumnen pdw_node_id. Detta är hello hello identifierare för hello Compute-nod. I PDW är hello Compute-nod en starkare begrepp för hello arkitektur. I SQL Data Warehouse använder hello arkitektur virtuellt hello-distributioner.
 
 > [!NOTE]
-> Om du vill använda dessa visa Infoga 'pdw_nodes_' i namnet som visas i följande tabell.
+> toouse dessa visas Infoga 'pdw_nodes_' i hello namnet som visas i följande tabell hello.
 > 
 > 
 
-| DMV namn i SQL Data Warehouse | Länka till SQL Server Transact-SQL-avsnittet på MSDN |
+| DMV namn i SQL Data Warehouse | Länken tooSQL Server Transact-SQL-avsnittet på MSDN |
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 

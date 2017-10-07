@@ -1,6 +1,6 @@
 ---
-title: "Förstå Azure IoT-SDK | Microsoft Docs"
-description: "Utvecklarhandbok - information om och länkar till olika Azure IoT-enheten och tjänsten SDK: erna som du kan använda för att skapa enhetsappar och backend-appar."
+title: aaaUnderstand hello Azure IoT SDK | Microsoft Docs
+description: "Utvecklarhandbok - information om och länkar toohello olika Azure IoT-enheten och tjänsten SDK: er som du kan använda toobuild enhetsappar och backend-appar."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -15,50 +15,50 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bcbf4b9633f58293edb19aeb33dec6602ac4ec8f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e319451ca97876666e1c011ee0e1a73d0a0f1ed1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-and-use-azure-iot-sdks"></a>Förstå och använda Azure IoT-SDK
 
 Det finns tre kategorier av SDK för att arbeta med IoT-hubb:
 
-* **Enheten SDK** gör att du kan skapa appar som körs på din IoT-enheter. De här apparna skicka telemetri för din IoT-hubb och du kan också ta emot meddelanden från din IoT-hubb.
+* **Enheten SDK** aktivera toobuild appar som körs på din IoT-enheter. De här apparna skicka telemetri tooyour IoT-hubb och du kan också ta emot meddelanden från din IoT-hubb.
 
-* **SDK-tjänsten** kan du hantera din IoT-hubb och (valfritt) skicka meddelanden till din IoT-enheter.
+* **SDK-tjänsten** aktiverar du toomanage din IoT-hubb och (valfritt) skicka meddelanden tooyour IoT-enheter.
 
-* **Azure IoT-Edge** låter dig skapa gateways för att aktivera enheter som inte använder något av protokoll som stöds eller när du behöver bearbeta meddelanden på kanten.
+* **Azure IoT-Edge** kan du toobuild gateways tooenable enheter som inte använder ett av hello stöds protokoll eller när du behöver tooprocess meddelanden på hello kant.
 
-SDK: er som stöder flera programmeringsspråk.
+SDK: er angivna toosupport flera programmeringsspråk.
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT-enhet SDK
 
-Microsoft Azure IoT-enhet SDK innehåller kod som underlättar skapande av enheter och program som ansluter till och hanteras av Azure IoT Hub-tjänster.
+hello Microsoft Azure IoT-enhet SDK innehåller kod som underlättar skapande av enheter och program som ansluter tooand hanteras av Azure IoT Hub-tjänster.
 
-Följande Azure IoT-enhet SDK: er kan hämtas från GitHub:
+hello är följande SDK för Azure IoT-enhet tillgänglig toodownload från GitHub:
 
-* [Azure IoT-enhet SDK för C] [ lnk-c-device-sdk] skrivs i ANSI C (C99) för överföring och bred plattformskompatibilitet. Det finns två enhet-klientbibliotek för C, på låg nivå **iothub_client** och **serialiseraren**.
+* [Azure IoT-enhet SDK för C] [ lnk-c-device-sdk] skrivs i ANSI C (C99) för överföring och bred plattformskompatibilitet. Det finns två enhet-klientbibliotek för C, hello låg nivå **iothub_client** och hello **serialiseraren**.
 * [Azure IoT-enhet SDK för .NET][lnk-dotnet-device-sdk]
 * [Azure IoT-enhet SDK för Java][lnk-java-device-sdk]
 * [Azure IoT-enhet SDK för Node.js][lnk-node-device-sdk]
 * [Azure IoT-enhet SDK för Python][lnk-python-device-sdk]
 
 > [!NOTE]
-> Se Viktigt-filerna i GitHub-lagringsplatser för information om språk och plattformsspecifika paketet chefer för att installera binärfiler och beroenden på utvecklingsdatorn.
+> Avsnittet hello viktigt-filer i hello GitHub-lagringsplatser för information om hur du använder språket och plattformsspecifika paketet chefer tooinstall binärfiler och beroenden på utvecklingsdatorn.
 > 
 > 
 
 ### <a name="os-platform-and-hardware-compatibility"></a>OS-plattformen och maskinvarukompatibilitet
 
-Mer information om SDK-kompatibilitet med specifika maskinvaruenheter finns i [Azure certifierad för IoT-enhet katalogen][lnk-certified].
+Mer information om SDK-kompatibilitet med specifika maskinvaruenheter finns hello [Azure certifierad för IoT-enhet katalogen][lnk-certified].
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT service SDK
 
-Azure IoT service SDK innehåller kod för att underlätta skapa program som kommunicerar direkt med IoT-hubb att hantera enheter och säkerhet.
+hello Azure IoT service SDK innehåller koden toofacilitate bygga program som interagerar direkt med IoT-hubb toomanage enheter och säkerhet.
 
-Följande Azure IoT-tjänst SDK: er kan hämtas från GitHub:
+hello är följande SDK för Azure IoT-tjänsten tillgänglig toodownload från GitHub:
 
 * [Azure IoT-tjänsten SDK för .NET][lnk-dotnet-service-sdk]
 * [Azure IoT-tjänsten SDK för Node.js][lnk-node-service-sdk]
@@ -67,17 +67,17 @@ Följande Azure IoT-tjänst SDK: er kan hämtas från GitHub:
 * [Azure IoT-tjänsten SDK för C][lnk-c-service-sdk]
 
 > [!NOTE]
-> Se Viktigt-filerna i GitHub-lagringsplatser för information om språk och plattformsspecifika paketet chefer för att installera binärfiler och beroenden på utvecklingsdatorn.
+> Avsnittet hello viktigt-filer i hello GitHub-lagringsplatser för information om hur du använder språket och plattformsspecifika paketet chefer tooinstall binärfiler och beroenden på utvecklingsdatorn.
 
 ## <a name="azure-iot-edge"></a>Azure IoT Edge
 
-Azure IoT-Edge innehåller infrastruktur och moduler för att skapa lösningar för IoT-gateway. Du kan utöka IoT kant om du vill skapa gateways som är skräddarsydda för slutpunkt till slutpunkt scenarier.
+Azure IoT-Edge innehåller hello infrastruktur och moduler toocreate IoT gateway-lösningar. Du kan utöka IoT kant toocreate gateways skräddarsydd tooany slutpunkt till slutpunkt scenario.
 
 Du kan hämta [Azure IoT kant] [ lnk-iot-edge] från GitHub.
 
 ## <a name="online-api-reference-documentation"></a>Onlinedokumentation för API-referens
 
-Följande lista innehåller länkar till online API-referensdokumentationen för Azure IoT-enhet, tjänst och gateway-bibliotek:
+hello innehåller följande lista länkar tooonline API-referensdokumentationen för Azure IoT-enhet, tjänst och gateway-bibliotek:
 
 * [Sakernas (IoT) .NET Internet][lnk-dotnet-ref]
 * [IoT-hubb REST][lnk-rest-ref]

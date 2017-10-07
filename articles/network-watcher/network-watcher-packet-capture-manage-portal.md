@@ -1,6 +1,6 @@
 ---
-title: "Hantera paket insamlingar med Nätverksbevakaren Azure - Azure-portalen | Microsoft Docs"
-description: "Den här sidan förklarar hur du hanterar funktionen paket avbildning i Nätverksbevakaren med hjälp av Azure portal"
+title: "aaaManage paket som samlar in med Azure Nätverksbevakaren - Azure-portalen | Microsoft Docs"
+description: "Den här sidan förklarar hur toomanage hello paket avbilda funktion i Nätverksbevakaren med hjälp av Azure portal"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 33390532cc4fc1129a4f960d589f41bc95e5a1ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 431b145ee215b8d9421fb2aacdce08a0de90b35e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Hantera paket insamlingar med Azure Nätverksbevakaren med hjälp av portalen
+# <a name="manage-packet-captures-with-azure-network-watcher-using-hello-portal"></a>Hantera paket insamlingar med Azure Nätverksbevakaren med hello-portalen
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
@@ -29,9 +29,9 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST-API](network-watcher-packet-capture-manage-rest.md)
 
-Nätverket Watcher paketinsamling kan du skapa avbildning sessioner för att spåra trafik till och från en virtuell dator. Filter har angetts för hämtningens så du fångar upp trafiken som du vill använda. Det hjälper dig för att diagnostisera nätverk avvikelser reaktivt och proaktivt paketinsamling. Andra användningsområden omfattar att samla in nätverksstatistik får information om nätverket intrång felsöka klient-/ serverkommunikation och mycket mer. Genom att via fjärranslutning utlösa paket insamlingar, underlättar den här funktionen för att köra en paketinsamling manuellt och på den önskade datorn, vilket sparar värdefull tid.
+Nätverket Watcher paketinsamling kan toocreate avbilda sessioner tootrack trafik tooand från en virtuell dator. Filter har angetts för hello avbilda session tooensure du fånga in endast hello trafik som du vill använda. Paketinsamling hjälper toodiagnose nätverk avvikelser reaktivt och proaktivt. Andra användningsområden omfattar att samla in nätverksstatistik får information om nätverket intrång, toodebug klient / server-kommunikation och mycket mer. Den här funktionen underlättar genom kan tooremotely utlösaren paket insamlingar, hello belastningen körs en paketinsamling manuellt och på hello önskade dator som sparar värdefull tid.
 
-Den här artikeln tar dig igenom de olika administrativa uppgifter som är tillgängliga för paketinsamling.
+Den här artikeln tar dig igenom hello olika administrativa uppgifter som är tillgängliga för paketinsamling.
 
 - [**Starta en paketinsamling**](#start-a-packet-capture)
 - [**Stoppa en paketinsamling**](#stop-a-packet-capture)
@@ -40,103 +40,103 @@ Den här artikeln tar dig igenom de olika administrativa uppgifter som är tillg
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Den här artikeln förutsätter att du har följande resurser:
+Den här artikeln förutsätter att du har hello följande resurser:
 
-- En instans av Nätverksbevakaren i den region som du vill skapa en paketinsamling
-- En virtuell dator med filnamnstillägget paket avbilda aktiverad.
+- En instans Nätverksbevakaren i hello region som du vill toocreate en paketinsamling
+- En virtuell dator med hello paket avbilda tillägget aktiverat.
 
 > [!IMPORTANT]
-> Paketinsamling kräver ett tillägg för virtuell dator `AzureNetworkWatcherExtension`. Installera tillägget på en Windows VM finns [tillägg för virtuell dator i Azure Network Watcher Agent för Windows](../virtual-machines/windows/extensions-nwa.md) och för Linux VM besöka [tillägg för virtuell dator i Azure Network Watcher Agent för Linux](../virtual-machines/linux/extensions-nwa.md).
+> Paketinsamling kräver ett tillägg för virtuell dator `AzureNetworkWatcherExtension`. Installera hello tillägg på en Windows VM finns [tillägg för virtuell dator i Azure Network Watcher Agent för Windows](../virtual-machines/windows/extensions-nwa.md) och för Linux VM besöka [tillägg för virtuell dator i Azure Network Watcher Agent för Linux](../virtual-machines/linux/extensions-nwa.md).
 
-### <a name="packet-capture-agent-extension-through-the-portal"></a>Tillägget av paketet avbilda agent via portalen
+### <a name="packet-capture-agent-extension-through-hello-portal"></a>Tillägget av paketet avbilda agent hello-portalen
 
-För att installera paketet avbilda VM-agenten via portalen, navigerar du till den virtuella datorn, klickar du på **tillägg** > **Lägg till** och Sök efter **nätverk Watcher agenten för Windows**
+tooinstall hello paketinsamling VM-agenten via hello portal, navigerar tooyour virtuella datorn, klickar på **tillägg** > **Lägg till** och Sök efter **Network Watcher Agent för Windows**
 
 ![Visa Agent][agent]
 
 ## <a name="packet-capture-overview"></a>Översikt över avbildning av paket
 
-Navigera till den [Azure-portalen](https://portal.azure.com) och på **nätverk** > **Nätverksbevakaren** > **paket avbilda**
+Navigera toohello [Azure-portalen](https://portal.azure.com) och på **nätverk** > **Nätverksbevakaren** > **paket avbilda**
 
-Översiktssidan visas en lista över alla paket fångar som finns oavsett tillståndet.
+hello översiktssidan visar en lista över alla paket fångar som finns oavsett hello tillstånd.
 
 > [!NOTE]
-> Paketinsamling kräver anslutning till lagringskontot via port 443.
+> Paketinsamling kräver anslutning toohello storage-konto via port 443.
 
 ![paketet avbilda översiktsskärm][1]
 
 ## <a name="start-a-packet-capture"></a>Starta en paketinsamling
 
-Klicka på **Lägg till** att skapa en paketinsamling.
+Klicka på **Lägg till** toocreate en paketinsamling.
 
-De egenskaper som kan definieras på en paketinsamling är:
+hello-egenskaper som kan definieras på en paketinsamling är:
 
 **Huvudinställningarna**
 
-- **Prenumerationen** -värdet är den prenumeration som används, krävs en instans av nätverksbevakaren i varje prenumeration.
-- **Resursgruppen** -resursgruppen för den virtuella datorn som bearbetas.
-- **Rikta virtuella** -den virtuella datorn som kör paketinsamling
-- **Avbilda paketnamn** -värdet är namnet på paketinsamling.
+- **Prenumerationen** -värdet är hello-prenumeration som används, krävs en instans av nätverksbevakaren i varje prenumeration.
+- **Resursgruppen** -hello resursgruppen av hello virtuell dator som bearbetas.
+- **Rikta virtuella** -hello virtuell dator som kör hello paketinsamling
+- **Avbilda paketnamn** -värdet är hello paketinsamling hello namn.
 
 **Samla in konfiguration**
 
 - **Lagringskontot** -anger om paketinsamling sparas i ett lagringskonto.
-- **Filen** -avgör om en paketinsamling sparas lokalt på den virtuella datorn.
-- **Storage-konton** – markerat lagringskonto för att spara paketinsamling i. Standardplatsen är name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription https://{storage konto-id} /resourcegroups/ {resursgruppens name}/providers/microsoft.compute/virtualmachines/{virtual datornamn} / {åå} / {MM} / {DD} / packetcapture_ {HH}_{MM}_{SS} _ {XXX} CAP. (Endast aktiverad om **lagring** har valts)
-- **Lokal filsökväg** -lokal sökväg på en virtuell dator för att spara paketinsamling. (Endast aktiverad om **filen** har valts). En giltig sökväg måste anges
-- **Maximalt antal byte per paket** - antalet byte från varje paket som har hämtats avbildas alla byte om värdet är tomt.
-- **Maximalt antal byte per session** – Totalt antal byte som har hämtats när värdet är nådd paket avbilda stoppas.
-- **Tidsgräns (sekunder)** -anger en tidsgräns för paketinsamling att stoppa. Standardvärdet är 18000 sekunder.
+- **Filen** -avgör om en paketinsamling sparas lokalt på hello virtuella datorn.
+- **Storage-konton** -hello valt paketinsamling för storage-konto toosave hello i. Standardplatsen är name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription https://{storage konto-id} /resourcegroups/ {resursgruppens name}/providers/microsoft.compute/virtualmachines/{virtual datornamn} / {åå} / {MM} / {DD} / packetcapture_ {HH}_{MM}_{SS} _ {XXX} CAP. (Endast aktiverad om **lagring** har valts)
+- **Lokal filsökväg** -hello lokal sökväg på en virtuell dator toosave hello paketinsamling. (Endast aktiverad om **filen** har valts). En giltig sökväg måste anges
+- **Maximalt antal byte per paket** -hello antalet byte från varje paket som har hämtats avbildas alla byte om värdet är tomt.
+- **Maximalt antal byte per session** – Totalt antal byte som har hämtats när hello-värdet har nåtts hello paket avbilda stoppas.
+- **Tidsgräns (sekunder)** -anger en tidsgräns för hello paket avbilda toostop. Standardvärdet är 18000 sekunder.
 
 > [!NOTE]
 > Premium-lagringskonton stöds inte för närvarande för lagring av paket avbildas.
 
 **Filtrering (valfritt)**
 
-- **Protokollet** -protokollet för att filtrera för paket-avbildning. Tillgängliga värden är TCP, UDP och alla.
-- **Lokal IP-adress** -värdet filtrerar paketinsamling att paket där den lokala IP-adressen matchar den här filtervärdet.
-- **Lokal port** -värdet filtrerar paketinsamling att paket där den lokala porten matchar filtret värdet.
-- **IP-Fjärradress** -värdet filtrerar paketinsamling att paket där fjärranslutna IP-Adressen matchar den här filtervärdet.
-- **Fjärrport** -värdet filtrerar paketinsamling att paket där fjärrporten matchar filtret värdet.
+- **Protokollet** -hello protokollet toofilter för hello paketinsamling. hello tillgängliga värden är TCP, UDP och alla.
+- **Lokal IP-adress** -värdet filtrerar hello paket avbilda toopackets där hello lokala IP-adressen matchar den här filtervärdet.
+- **Lokal port** -värdet filtrerar hello paket avbilda toopackets där hello lokal port matchar filtret värdet.
+- **IP-Fjärradress** -värdet filtrerar hello paket avbilda toopackets där hello fjärr-IP-matchar filtret värdet.
+- **Fjärrport** -värdet filtrerar hello paket avbilda toopackets där hello Fjärrport matchar filtret värdet.
 
 > [!NOTE]
 > Värden för porten och IP-adress kan vara ett värde, värdeintervallet eller en uppsättning. (det vill säga 80 1024 för port) Du kan definiera så många filter som du vill.
 
-När värdena fylls, klickar du på **OK** att skapa paketinsamling.
+När hello värdena fylls, klickar du på **OK** toocreate hello paketinsamling.
 
 ![Skapa en paketinsamling][2]
 
-När tidsgränsen på paketinsamling har upphört att gälla paketinsamling stoppas och kan granskas. Du kan också manuellt stoppa paket insamlingar sessionerna.
+När tidsgränsen för hello har angett för hello paketinsamling har upphört att gälla, hello paketinsamling stoppas och kan granskas. Du kan också manuellt stoppa hello paket insamlingar sessionerna.
 
 ## <a name="delete-a-packet-capture"></a>Ta bort en paketinsamling
 
-I vyn paket avbildning, klickar du på den **snabbmenyn** (...) eller högerklicka och klicka på **ta bort** att stoppa paketinsamling
+Samla in vyn i hello-paket, klickar du på hello **snabbmenyn** (...) eller högerklicka och klicka på **ta bort** toostop hello paketinsamling
 
 ![Ta bort en paketinsamling][3]
 
 > [!NOTE]
-> Om du tar bort en paketinsamling tar inte bort filen i lagringskontot.
+> Om du tar bort en paketinsamling tar inte bort hello-filen i hello storage-konto.
 
-Du uppmanas att bekräfta att du vill ta bort paketinsamling, klickar du på **Ja**
+Du uppmanas tooconfirm som du vill toodelete hello paketinsamling, klicka på **Ja**
 
 ![Bekräftelse][4]
 
 ## <a name="stop-a-packet-capture"></a>Stoppa en paketinsamling
 
-I vyn paket avbildning, klickar du på den **snabbmenyn** (...) eller högerklicka och klicka på **stoppa** att stoppa paketinsamling
+Samla in vyn i hello-paket, klickar du på hello **snabbmenyn** (...) eller högerklicka och klicka på **stoppa** toostop hello paketinsamling
 
 ## <a name="download-a-packet-capture"></a>Hämta en paketinsamling
 
-När paketet avbildningssessionen är klar överförs filen avbildning till blob-lagring eller till en lokal fil på den virtuella datorn. Lagringsplatsen för paketinsamling har definierats vid skapandet av sessionen. Ett enkelt verktyg för att komma åt dessa avbilda filer som sparats till ett lagringskonto är Microsoft Azure Lagringsutforskaren, som kan hämtas här: http://storageexplorer.com/
+När paketet avbildningssessionen är klar hello avbilda filen är överförda tooblob lagring eller tooa lokala på hello VM. hello lagringsplats för hello paketinsamling har definierats vid skapande av hello. En lämplig verktyget tooaccess dessa avbilda filer sparade tooa storage-konto är Microsoft Azure Lagringsutforskaren, som kan hämtas här: http://storageexplorer.com/
 
-Om ett storage-konto anges sparas paket avbilda filer till ett lagringskonto på följande plats:
+Om ett lagringskonto har angetts sparas paket avbilda filer tooa storage-konto på hello följande plats:
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig att automatisera insamlingar paket med virtuella aviseringar genom att visa [skapar en avisering utlösta paketinsamling](network-watcher-alert-triggered-packet-capture.md)
+Lär dig hur fångar tooautomate paket med virtuella aviseringar genom att visa [skapar en avisering utlösta paketinsamling](network-watcher-alert-triggered-packet-capture.md)
 
 Hitta om vissa trafik tillåts i eller utanför den virtuella datorn genom att besöka [Kontrollera Kontrollera IP-flöde](network-watcher-check-ip-flow-verify-portal.md)
 

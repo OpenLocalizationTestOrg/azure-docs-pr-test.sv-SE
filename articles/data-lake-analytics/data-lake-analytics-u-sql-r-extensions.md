@@ -1,6 +1,6 @@
 ---
-title: "Utöka U-SQL-skript med R i Azure Data Lake Analytics | Microsoft Docs"
-description: "Lär dig hur du kör R-koden i U-SQL-skript"
+title: aaaExtend U-SQL-skript med R i Azure Data Lake Analytics | Microsoft Docs
+description: "Lär dig hur toorun R code i U-SQL-skript"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
-ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 24affd4963a08d30a7111b49af388e9c1268430e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-get-started-with-extending-u-sql-with-r"></a>Självstudier: Kom igång med att utöka U-SQL med R
 
-I följande exempel visas de grundläggande stegen för att distribuera R-koden:
-* Använd den `REFERENCE ASSEMBLY` -instruktionen för att aktivera R-tillägg för U-SQL-skript.
-* Använd den` REDUCE` åtgärden att partitionera indata för en nyckel.
-* R-tillägg för U-SQL är en inbyggd reducer (`Extension.R.Reducer`) R-koden körs på varje nod som tilldelats reducer. 
-* Användning av dedikerade med namnet ramar kallas `inputFromUSQL` och `outputToUSQL `respektive att skicka data mellan U-SQL och R. indata och utdata DataFrame identifierarnamn korrigeras (det vill säga användare kan inte ändra dessa fördefinierade namn på indata och utdata DataFrame identifierare).
+hello som följande exempel visar hello grundläggande steg för att distribuera R-koden:
+* Använd hello `REFERENCE ASSEMBLY` instruktionen tooenable R-tillägg för hello U-SQL-skript.
+* Använd den` REDUCE` åtgärden toopartition hello mata in data på en nyckel.
+* hello R-tillägg för U-SQL är en inbyggd reducer (`Extension.R.Reducer`) R-koden körs på varje nod som tilldelats toohello reducer. 
+* Användning av dedikerade med namnet ramar kallas `inputFromUSQL` och `outputToUSQL `respektive toopass data mellan U-SQL och R. indata och utdata DataFrame identifierarnamn korrigeras (det vill säga användare kan inte ändra dessa fördefinierade namn på indata och utdata DataFrame identifierare).
 
-## <a name="embedding-r-code-in-the-u-sql-script"></a>Bädda in R-koden i U-SQL-skript
+## <a name="embedding-r-code-in-hello-u-sql-script"></a>Bädda in R-koden i hello U-SQL-skript
 
-Du kan infogade R code U-SQL-skript med hjälp av Kommandoparametern för den `Extension.R.Reducer`. Du kan exempelvis deklarera R-skriptet som en string-variabel och skickar den som en parameter till Reducer.
+Du kan infogad hello R kod U-SQL-skript med hello Kommandoparametern av hello `Extension.R.Reducer`. Du kan exempelvis deklarera hello R-skriptet som en string-variabel och skicka den som en parameter toohello Reducer.
 
 
     REFERENCE ASSEMBLY [ExtR];
@@ -38,7 +38,7 @@ Du kan infogade R code U-SQL-skript med hjälp av Kommandoparametern för den `E
     DECLARE @myRScript = @"
     inputFromUSQL$Species = as.factor(inputFromUSQL$Species)
     lm.fit=lm(unclass(Species)~.-Par, data=inputFromUSQL)
-    #do not return readonly columns and make sure that the column names are the same in usql and r scripts,
+    #do not return readonly columns and make sure that hello column names are hello same in usql and r scripts,
     outputToUSQL=data.frame(summary(lm.fit)$coefficients)
     colnames(outputToUSQL) <- c(""Estimate"", ""StdError"", ""tValue"", ""Pr"")
     outputToUSQL
@@ -46,16 +46,16 @@ Du kan infogade R code U-SQL-skript med hjälp av Kommandoparametern för den `E
     
     @RScriptOutput = REDUCE … USING new Extension.R.Reducer(command:@myRScript, rReturnType:"dataframe");
 
-## <a name="keep-the-r-code-in-a-separate-file-and-reference-it--the-u-sql-script"></a>Behåll R-koden i en separat fil och hänvisar det U-SQL-skript
+## <a name="keep-hello-r-code-in-a-separate-file-and-reference-it--hello-u-sql-script"></a>Behåll hello R-koden i en separat fil och hänvisar det hello U-SQL-skript
 
-Följande exempel illustrerar användning av en mer komplex. I det här fallet distribueras R-koden som en resurs som U-SQL-skript.
+hello följande exempel illustrerar användning av en mer komplex. I det här fallet distribueras hello R kod som en resurs som hello U-SQL-skript.
 
 Spara den här R-koden som en separat fil.
 
     load("my_model_LM_Iris.rda")
     outputToUSQL=data.frame(predict(lm.fit, inputFromUSQL, interval="confidence")) 
 
-Använd ett U-SQL-skript för att distribuera det R-skriptet med instruktionen DISTRIBUERA resurs.
+Använda toodeploy ett U-SQL-skript som R-skriptet med hello DISTRIBUERA resurs-instruktion.
 
     REFERENCE ASSEMBLY [ExtR];
 
@@ -90,25 +90,25 @@ Använd ett U-SQL-skript för att distribuera det R-skriptet med instruktionen D
         PRODUCE Par, fit double, lwr double, upr double
         READONLY Par
         USING new Extension.R.Reducer(scriptFile:"RinUSQL_PredictUsingLinearModelasDF.R", rReturnType:"dataframe", stringsAsFactors:false);
-        OUTPUT @RScriptOutput TO @OutputFilePredictions USING Outputters.Tsv();
+        OUTPUT @RScriptOutput too@OutputFilePredictions USING Outputters.Tsv();
 
 ## <a name="how-r-integrates-with-u-sql"></a>Hur R kan integreras med U-SQL
 
 ### <a name="datatypes"></a>Datatyper
 * Konverteras som sträng och numeriska kolumner från U-SQL-mellan R DataFrame och U-SQL [typer som stöds: `double`, `string`, `bool`, `integer`, `byte`].
-* Den `Factor` stöds inte i U-SQL.
+* Hej `Factor` stöds inte i U-SQL.
 * `byte[]`måste serialiseras som en base64-kodad `string`.
-* U-SQL-strängar kan konverteras till faktorer i R-koden när U-SQL skapar R inkommande dataframe eller genom att ange parametern reducer `stringsAsFactors: true`.
+* U-SQL-strängar kan vara konverterade toofactors i R-koden när U-SQL skapar R inkommande dataframe eller genom att ange hello reducer parametern `stringsAsFactors: true`.
 
 ### <a name="schemas"></a>Scheman
 * U-SQL-datauppsättningar kan inte ha dubbletter av kolumnnamn.
 * U-SQL datauppsättningar kolumnnamn måste vara strängar.
-* Kolumnnamnen måste vara samma i U-SQL och R-skript.
-* ReadOnly-kolumn kan inte ingå i utdata dataframe. Eftersom readonly kolumner automatiskt matas in tillbaka i U-SQL-tabell om det är en del av utdataschemat för UDO.
+* Kolumnnamnen måste hello samma i U-SQL och R-skript.
+* ReadOnly-kolumn kan inte ingå i hello utdata dataframe. Eftersom readonly kolumner automatiskt matas in tillbaka i hello U-SQL-tabell om det är en del av utdataschemat för UDO.
 
 ### <a name="functional-limitations"></a>Funktionella begränsningar
-* R-motorn kan inte initieras två gånger i samma process. 
-* U-SQL stöder för närvarande inte Combiner UDO för förutsägelse partitionerade modeller som skapats med Reducer UDO. Användare kan deklarera partitionerade modeller som resurs och använda dem i sina R-skript (se exempelkod `ExtR_PredictUsingLMRawStringReducer.usql`)
+* hello R-motorn kan inte initieras två gånger i hello samma process. 
+* U-SQL stöder för närvarande inte Combiner UDO för förutsägelse partitionerade modeller som skapats med Reducer UDO. Användare kan deklarera hello partitionerad modeller som resurs och använda dem i sina R-skript (se exempelkod `ExtR_PredictUsingLMRawStringReducer.usql`)
 
 ### <a name="r-versions"></a>R-versioner
 Endast R 3.2.2 stöds.
@@ -164,14 +164,14 @@ Endast R 3.2.2 stöds.
     XML
 
 ### <a name="input-and-output-size-limitations"></a>Indata och utdata storleksbegränsningar
-Varje nod har en begränsad mängd minne som tilldelats den. Eftersom inkommande och utgående DataFrames måste finnas i minnet i R-koden, får inte den totala storleken för ingående och utgående överskrida 500 MB.
+Varje nod har en begränsad mängd minne som tilldelats tooit. Eftersom hello inkommande och utgående DataFrames måste finnas i minnet i hello R-koden, får inte hello total storlek för hello indata och utdata överskrida 500 MB.
 
 ### <a name="sample-code"></a>Exempelkod
-Flera exempelkod är tillgänglig i ditt Data Lake Store-konto när du har installerat U-SQL Advanced Analytics extensions. Sökvägen för flera exempelkod är: `<your_account_address>/usqlext/samples/R`. 
+Flera exempelkod är tillgänglig i ditt Data Lake Store-konto när du har installerat hello U-SQL Advanced Analytics extensions. hello-sökvägen för flera exempelkod är: `<your_account_address>/usqlext/samples/R`. 
 
 ## <a name="deploying-custom-r-modules-with-u-sql"></a>Distribuera anpassade R-moduler med U-SQL
 
-Först skapar en anpassad R-modul och zip den och sedan ladda upp den komprimerade anpassa R-modulfilen ADL-arkivet. I det här exemplet kommer vi att överföra magittr_1.5.zip till roten i ADLS standardkontot för kontot ADLA vi använder. När du överför modulen till ADL store deklarera den som använder DISTRIBUERA RESURSEN för att göra den tillgänglig i U-SQL-skriptet och anropet `install.packages` att installera den.
+Först skapar en anpassad R-modul och zip den och överför hello zippade R anpassad modul tooyour ADL-lagring. I exemplet hello kommer vi att överföra magittr_1.5.zip toohello rot hello ADLS standardkontot för hello ADLA konto vi använder. När du överför hello modulen tooADL store deklarera den som använder DISTRIBUERA resurs toomake den tillgänglig i U-SQL-skriptet och anropet `install.packages` tooinstall den.
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";
@@ -179,13 +179,13 @@ Först skapar en anpassad R-modul och zip den och sedan ladda upp den komprimera
     DECLARE @IrisData string =  @"/usqlext/samples/R/iris.csv";
     DECLARE @OutputFileModelSummary string = @"/R/Output/CustomePackages.txt";
 
-    // R script to run
+    // R script toorun
     DECLARE @myRScript = @"
-    # install the magrittr package,
+    # install hello magrittr package,
     install.packages('magrittr_1.5.zip', repos = NULL),
-    # load the magrittr package,
+    # load hello magrittr package,
     require(magrittr),
-    # demonstrate use of the magrittr package,
+    # demonstrate use of hello magrittr package,
     2 %>% sqrt
     ";
 
@@ -208,7 +208,7 @@ Först skapar en anpassad R-modul och zip den och sedan ladda upp den komprimera
     READONLY Par
     USING new Extension.R.Reducer(command:@myRScript, rReturnType:"charactermatrix");
 
-    OUTPUT @RScriptOutput TO @OutputFileModelSummary USING Outputters.Tsv();
+    OUTPUT @RScriptOutput too@OutputFileModelSummary USING Outputters.Tsv();
 
 ## <a name="next-steps"></a>Nästa steg
 * [Översikt över Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

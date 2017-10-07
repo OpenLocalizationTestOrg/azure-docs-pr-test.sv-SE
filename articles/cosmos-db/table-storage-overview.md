@@ -1,6 +1,6 @@
 ---
-title: "Översikt över Azure Table Storage | Microsoft Docs"
-description: "Lagra strukturerade data i molnet med hjälp av Azure Table Storage, en NoSQL-databas."
+title: aaaOverview av Azure Table storage | Microsoft Docs
+description: Lagra strukturerade data i hello molnet med Azure Table storage, en NoSQL-databas.
 services: cosmos-db
 documentationcenter: .net
 author: mimig1
@@ -14,29 +14,29 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/23/2017
 ms.author: mimig
-ms.openlocfilehash: 9099e90c402185b371495379db943d64fb82cdb8
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8643cc666f000e078644981381a086e1ccc44067
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-table-storage-overview"></a>Översikt över Azure Table Storage
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Azure Table Storage är en tjänst som lagrar strukturerade NoSQL-data i molnet och som ger tillgång till ett nyckel-/attributlager med en schemalös design. Eftersom Table Storage är schemalös är det enkelt att anpassa dina data i takt med att programmets behov förändras. Åtkomsten till data i Table Storage är snabb och kostnadseffektiv för många typer av program, och medför normalt lägre kostnad än traditionell SQL för liknande datavolymer.
+Azure Table storage är en tjänst som lagrar strukturerade NoSQL i hello moln, vilket ger ett nyckelattribut datalager med en schemalös design. Eftersom Table storage är schemalös är det enkelt tooadapt dina data efter hello behov utvecklas. Åtkomst till tooTable storage data är snabb och kostnadseffektiv för många typer av program och är vanligtvis lägre kostnad än traditionella SQL för motsvarande volymer med data.
 
-Du kan använda Table Storage för att lagra flexibla datauppsättningar som användardata för webbprogram, adressböcker, enhetsinformation eller andra typer av metadata som din tjänst kräver. Du kan lagra valfritt antal enheter i en tabell, och ett lagringskonto kan innehålla valfritt antal tabeller, upp till lagringskontots kapacitetsgräns.
+Du kan använda Table storage toostore flexibla datauppsättningar som användardata för webbprogram, adressböcker, enhetsinformation och andra typer av metadata som din tjänst kräver. Du kan lagra valfritt antal enheter i en tabell och ett lagringskonto kan innehålla valfritt antal tabeller, upp toohello kapacitetsgränsen för hello storage-konto.
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) är en kostnadsfri, fristående app från Microsoft som gör det möjligt att arbeta visuellt med Azure Storage-data i Windows, macOS och Linux.
+* [Microsoft Azure Lagringsutforskaren](../vs-azure-tools-storage-manage-with-storage-explorer.md) är en gratis, fristående app från Microsoft som möjliggör toowork visuellt med Azure Storage-data i Windows, macOS och Linux.
 
 * [Komma igång med Azure Table Storage i .NET](table-storage-how-to-use-dotnet.md)
 
-* Fullständig information om tillgängliga API:er finns i referensdokumentationen för tabelltjänsten:
+* Visa hello tabell referensdokumentationen för kötjänsten fullständig information om tillgängliga API: er:
 
     * [Storage-klientbibliotek för .NET-referens](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 

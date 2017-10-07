@@ -1,6 +1,6 @@
 ---
 title: 'Always Encrypted: SQL Database - Azure Key Vault | Microsoft Docs'
-description: "Den här artikeln visar hur du skyddar känsliga data i en SQL-databas med datakryptering guiden alltid krypterade i SQL Server Management Studio. Den innehåller också anvisningar som visar hur du lagrar varje krypteringsnyckel i Azure Key Vault."
+description: "Den här artikeln visar hur toosecure känsliga data i en SQL-databas med data kryptering hello alltid krypteras guiden i SQL Server Management Studio. Den innehåller också anvisningar som visar hur toostore varje krypteringsnyckeln i Azure Key Vault."
 keywords: datakryptering krypteringsnyckeln molnet kryptering
 services: sql-database
 documentationcenter: 
@@ -16,58 +16,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.openlocfilehash: 61bfd420425b4740f6d4ebc01a403a88ff351382
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8226bfef584e979643f5bb0747d4df16569f8204
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Skydda känsliga data i SQL-databasen och lagra krypteringsnycklar i Azure Key Vault
 
-Den här artikeln visar hur du skyddar känsliga data i en SQL-databas med data kryptering med hjälp av den [krypteras alltid guiden](https://msdn.microsoft.com/library/mt459280.aspx) i [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). Den innehåller också anvisningar som visar hur du lagrar varje krypteringsnyckel i Azure Key Vault.
+Den här artikeln visar hur toosecure känsliga data i en SQL-databas med kryptering av data med hjälp av hello [krypteras alltid guiden](https://msdn.microsoft.com/library/mt459280.aspx) i [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). Den innehåller också anvisningar som visar hur toostore varje krypteringsnyckeln i Azure Key Vault.
 
-Krypterad är alltid en teknik för kryptering av nya data i Azure SQL Database och SQL Server som skyddar känsliga data i vila på servern, under flytt mellan klienten och servern, och när data används. Krypterad garanterar alltid att känsliga data aldrig visas i klartext i databassystemet. När du har konfigurerat datakryptering endast klientprogram eller appservrar som har tillgång till nycklarna kan komma åt data i klartext. Detaljerad information finns i [Always Encrypted (Database Engine)](https://msdn.microsoft.com/library/mt163865.aspx).
+Alltid krypterat är en teknik för kryptering av nya data i Azure SQL Database och SQL Server som hjälper till att skydda känsliga data i vila på hello-servern under flytt mellan klienten och servern och medan hello data används. Krypterad garanterar alltid att känsliga data aldrig visas i klartext i hello databassystem. När du har konfigurerat datakryptering endast klientprogram eller appservrar som har toohello snabbtangenter kan komma åt data i klartext. Detaljerad information finns i [Always Encrypted (Database Engine)](https://msdn.microsoft.com/library/mt163865.aspx).
 
-När du har konfigurerat databasen om du vill använda Always Encrypted skapar du ett klientprogram i C# med Visual Studio för att arbeta med krypterade data.
+När du har konfigurerat hello databasen toouse Always Encrypted skapar du ett klientprogram i C# med Visual Studio toowork med hello krypterade data.
 
-Följ stegen i den här artikeln och lär dig hur du ställer in Always Encrypted för en Azure SQL database. I den här artikeln får du lära dig hur du utför följande uppgifter:
+Följ hello stegen i den här artikeln och lära dig hur tooset in Always Encrypted för en Azure SQL database. I den här artikeln du lära dig hur tooperform hello följande uppgifter:
 
-* Använd guiden Always Encrypted i SSMS för att skapa [Always Encrypted nycklar](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3).
+* Använd hello Always Encrypted guiden i SSMS toocreate [Always Encrypted nycklar](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3).
   * Skapa en [kolumnhuvudnyckeln (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
   * Skapa en [kolumnkrypteringsnyckeln (CEK)](https://msdn.microsoft.com/library/mt146372.aspx).
 * Skapa en databastabell och kryptera kolumner.
-* Skapa ett program som infogar, väljer och visar data från de krypterade kolumnerna.
+* Skapa ett program som infogar, väljer och visar data från hello krypterade kolumner.
 
 ## <a name="prerequisites"></a>Krav
 Den här kursen behöver du:
 
 * Ett Azure-konto och prenumeration. Om du inte har någon registrera dig för en [kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/).
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) version 13.0.700.242 eller senare.
-* [.NET framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) eller senare (på klientdatorn).
+* [.NET framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) eller senare (på klientdatorn hello).
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
-* [Azure PowerShell](/powershell/azure/overview), version 1.0 eller senare. Typen **(Get-Module azure - ListAvailable). Version** att se vilken version av PowerShell som du kör.
+* [Azure PowerShell](/powershell/azure/overview), version 1.0 eller senare. Typen **(Get-Module azure - ListAvailable). Version** toosee vilken version av PowerShell som du kör.
 
-## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Aktivera ditt klientprogram att komma åt SQL Database-tjänsten
-Du måste aktivera ditt klientprogram att komma åt SQL Database-tjänsten genom att ställa in nödvändig autentisering och hämtning av den *ClientId* och *hemlighet* som du behöver att autentisera din program i följande kod.
+## <a name="enable-your-client-application-tooaccess-hello-sql-database-service"></a>Aktivera klienten programmet tooaccess hello SQL-databas
+Du måste aktivera din klient programmet tooaccess hello SQL Database-tjänsten genom att ställa in hello krävs autentisering och förvärv hello *ClientId* och *hemlighet* att du måste tooauthenticate ditt program i hello följande kod.
 
-1. Öppna den [klassiska Azure-portalen](http://manage.windowsazure.com).
-2. Välj **Active Directory** och klicka på Active Directory-instans som programmet ska använda.
+1. Öppna hello [klassiska Azure-portalen](http://manage.windowsazure.com).
+2. Välj **Active Directory** och klicka på hello Active Directory-instans som programmet ska använda.
 3. Klicka på **program**, och klicka sedan på **lägga till**.
-4. Skriv ett namn för ditt program (till exempel: *myClientApp*), Välj **WEBBPROGRAM**, och klicka på pilen för att fortsätta.
-5. För den **SIGN-ON-URL** och **APP-ID URI** du kan ange en giltig URL (t.ex, *http://myClientApp*) och fortsätta.
+4. Skriv ett namn för ditt program (till exempel: *myClientApp*), Välj **WEBBPROGRAM**, och klicka på hello pilen toocontinue.
+5. För hello **SIGN-ON-URL** och **APP-ID URI** du kan ange en giltig URL (t.ex, *http://myClientApp*) och fortsätta.
 6. Klicka på **konfigurera**.
 7. Kopiera ditt **klient-ID**. (Du behöver det här värdet i koden senare.)
-8. I den **nycklar** väljer **1 års** från den **Markera varaktighet** listrutan. (Du kommer att kopiera nyckeln när du har sparat i steg 13.)
+8. I hello **nycklar** väljer **1 års** från hello **Markera varaktighet** listrutan. (Du kommer att kopiera hello nyckel när du har sparat i steg 13.)
 9. Bläddra nedåt och klicka **lägga till program**.
-10. Lämna **visa** inställd på **Microsoft Apps** och välj **Microsoft Azure Service Management API**. Klicka på bockmarkeringen för att fortsätta.
-11. Välj **åtkomsthantering för Azure-tjänst...**  från den **delegerade behörigheter** listrutan.
+10. Lämna **visa** ställa in också**Microsoft Apps** och välj **Microsoft Azure Service Management API**. Klicka på hello markering toocontinue.
+11. Välj **åtkomsthantering för Azure-tjänst...**  från hello **delegerade behörigheter** listrutan.
 12. Klicka på **SPARA**.
-13. När det är klar att spara, kopiera nyckelvärdet i den **nycklar** avsnitt. (Du behöver det här värdet i koden senare.)
+13. Efter hello spara har avslutats, kopiera hello nyckelvärdet i hello **nycklar** avsnitt. (Du behöver det här värdet i koden senare.)
 
-## <a name="create-a-key-vault-to-store-your-keys"></a>Skapa ett nyckelvalv för att lagra dina nycklar
-Nu när du har klient-ID och din klientapp konfigureras är det dags att skapa en nyckelvalvet och konfigurera dess åtkomstprincip så att du och ditt program kan komma åt på valvet hemligheter (Always Encrypted nycklarna). Den *skapa*, *hämta*, *lista*, *logga*, *Kontrollera*, *wrapKey*, och *unwrapKey* behörigheter som krävs för att skapa en ny kolumnhuvudnyckel och konfigurera kryptering med SQL Server Management Studio.
+## <a name="create-a-key-vault-toostore-your-keys"></a>Skapa ett nyckelvalv toostore dina nycklar
+Nu när du har klient-ID och din klientapp konfigureras är tid toocreate ett nyckelvalv och konfigurera dess åtkomstprincip så att du och ditt program kan komma åt hello valvet hemligheter (hello Always Encrypted nycklar). Hej *skapa*, *hämta*, *lista*, *logga*, *Kontrollera*, *wrapKey*, och *unwrapKey* behörigheter som krävs för att skapa en ny kolumnhuvudnyckel och konfigurera kryptering med SQL Server Management Studio.
 
-Du kan snabbt skapa en nyckelvalv genom att köra följande skript. En detaljerad förklaring av dessa cmdletar och mer information om hur du skapar och konfigurerar ett nyckelvalv finns [Kom igång med Azure Key Vault](../key-vault/key-vault-get-started.md).
+Du kan snabbt skapa en nyckelvalv genom att köra hello följande skript. En detaljerad förklaring av dessa cmdletar och mer information om hur du skapar och konfigurerar ett nyckelvalv finns [Kom igång med Azure Key Vault](../key-vault/key-vault-get-started.md).
 
     $subscriptionName = '<your Azure subscription name>'
     $userPrincipalName = '<username@domain.com>'
@@ -91,35 +91,35 @@ Du kan snabbt skapa en nyckelvalv genom att köra följande skript. En detaljera
 
 
 ## <a name="create-a-blank-sql-database"></a>Skapa en tom SQL-databas
-1. Logga in på [Azure Portal](https://portal.azure.com/).
-2. Gå till **nya** > **Data + lagring** > **SQL-databas**.
-3. Skapa en **tom** databas med namnet **kurs** på en ny eller befintlig server. Detaljerade anvisningar om hur du skapar en databas i Azure portal finns [första Azure SQL database](sql-database-get-started-portal.md).
+1. Logga in toohello [Azure-portalen](https://portal.azure.com/).
+2. Gå för**ny** > **Data + lagring** > **SQL-databas**.
+3. Skapa en **tom** databas med namnet **kurs** på en ny eller befintlig server. För detaljerade instruktioner om hur du toocreate en databas i hello Azure-portalen finns [första Azure SQL database](sql-database-get-started-portal.md).
    
     ![Skapa en tom databas](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
-Du behöver anslutningen sträng senare under kursen, så när du har skapat databasen, bläddra till den nya e-kurs databasen och kopiera anslutningssträngen. Du kan hämta anslutningssträngen när som helst, men det är lätt att kopiera den i Azure-portalen.
+Du behöver hello anslutningssträngen senare i självstudiekursen hello, så när du har skapat databasen hello Bläddra toohello nya kurs databasen och kopiera hello anslutningssträngen. Du kan hämta hello anslutningssträngen när som helst, men det är enkelt toocopy i hello Azure-portalen.
 
-1. Gå till **SQL-databaser** > **kurs** > **visa databasanslutningssträngar**.
-2. Kopiera anslutningssträngen för **ADO.NET**.
+1. Gå för**SQL-databaser** > **kurs** > **visa databasanslutningssträngar**.
+2. Kopiera hello anslutningssträng för **ADO.NET**.
    
-    ![Kopiera anslutningssträngen](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
+    ![Kopiera hello anslutningssträng](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
 
-## <a name="connect-to-the-database-with-ssms"></a>Ansluta till databasen med SSMS
-Öppna SSMS och ansluta till servern med kurs-databasen.
+## <a name="connect-toohello-database-with-ssms"></a>Ansluta toohello databas med SSMS
+Öppna SSMS och Anslut toohello server med hello kurs databas.
 
-1. Öppna SSMS. (Gå till **Anslut** > **databasmotorn** att öppna den **Anslut till Server** om den inte är öppen.)
-2. Ange servernamn och autentiseringsuppgifter. Namnet på servern kan hittas på bladet SQL-databasen och i anslutningssträngen du kopierade tidigare. Fullständiga servernamnet, inklusive *database.windows.net*.
+1. Öppna SSMS. (Gå för**Anslut** > **databasmotorn** tooopen hello **ansluta tooServer** om den inte är öppen.)
+2. Ange servernamn och autentiseringsuppgifter. hello servernamn kan hittas på bladet för hello SQL-databasen och i anslutningssträngen för hello du kopierade tidigare. Typen hello fullständiga servernamnet, inklusive *database.windows.net*.
    
-    ![Kopiera anslutningssträngen](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
+    ![Kopiera hello anslutningssträng](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
 
-Om den **ny brandväggsregel** öppnas, logga in på Azure och låter SSMS skapa en ny brandväggsregel för dig.
+Om hello **ny brandväggsregel** öppnas, logga in tooAzure och låter SSMS skapa en ny brandväggsregel för dig.
 
 ## <a name="create-a-table"></a>Skapa en tabell
-I det här avsnittet skapar du en tabell för att lagra Patientdata. Det är inte ursprungligen krypterade--du vill konfigurera kryptering i nästa avsnitt.
+I det här avsnittet skapar du en toohold patient tabelldata. Det är inte ursprungligen krypterade--du vill konfigurera kryptering i hello nästa avsnitt.
 
 1. Expandera **databaser**.
-2. Högerklicka på den **kurs** databasen och klicka på **ny fråga**.
-3. Klistra in följande Transact-SQL (T-SQL) i nytt frågefönster och **Execute** den.
+2. Högerklicka på hello **kurs** databasen och klicka på **ny fråga**.
+3. Klistra in hello följande Transact-SQL (T-SQL) i hello nytt frågefönster och **Execute** den.
 
         CREATE TABLE [dbo].[Patients](
          [PatientId] [int] IDENTITY(1,1),
@@ -137,86 +137,86 @@ I det här avsnittet skapar du en tabell för att lagra Patientdata. Det är int
 
 
 ## <a name="encrypt-columns-configure-always-encrypted"></a>Kryptera kolumner (Konfigurera Always Encrypted)
-SSMS innehåller en guide som hjälper dig att enkelt konfigurera Always Encrypted genom att ställa in kolumnhuvudnyckeln, kolumnkrypteringsnyckeln och krypterade kolumner för dig.
+SSMS innehåller en guide som hjälper dig att enkelt konfigurera Always Encrypted genom att ställa in hello kolumnhuvudnyckeln kolumnkrypteringsnyckeln och krypterade kolumner för dig.
 
 1. Expandera **databaser** > **kurs** > **tabeller**.
-2. Högerklicka på den **patienter** tabell och välj **kryptera kolumner** att öppna guiden Always Encrypted:
+2. Högerklicka på hello **patienter** tabell och välj **kryptera kolumner** tooopen hello Always Encrypted guiden:
    
     ![Kryptera kolumner](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
-Guiden Always Encrypted innehåller följande avsnitt: **kolumnen**, **huvudnyckeln Configuration**, **validering**, och **sammanfattning**.
+hello Always Encrypted guiden innehåller följande avsnitt hello: **kolumnen**, **huvudnyckeln Configuration**, **validering**, och **sammanfattning** .
 
 ### <a name="column-selection"></a>Kolumnen
-Klicka på **nästa** på den **introduktion** kan du öppna den **kolumnen** sidan. På den här sidan väljer du vilka kolumner som du vill kryptera, [typen av kryptering, och vilka kolumnkrypteringsnyckeln (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) ska användas.
+Klicka på **nästa** på hello **introduktion** sidan tooopen hello **kolumnen** sidan. På den här sidan väljer du vilka kolumner du vill tooencrypt, [hello krypteringstyp, och vilka kolumnkrypteringsnyckeln (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) toouse.
 
-Kryptera **SSN** och **födelsedatum** information för varje tålamod. Kolumnen SSN använder deterministiska kryptering, som stöder likheten sökningar, kopplingar och gruppera efter. Kolumnen födelsedatum använder slumpmässig kryptering, som inte stöder åtgärder.
+Kryptera **SSN** och **födelsedatum** information för varje tålamod. hello SSN kolumn använder deterministiska kryptering, som stöder likheten sökningar, kopplingar och gruppera efter. hello födelsedatumet kolumn använder slumpmässig kryptering, som inte stöder åtgärder.
 
-Ange den **krypteringstyp** för SSN kolumnen som **Deterministic** och födelsedatum kolumnen till **Randomized**. Klicka på **Nästa**.
+Ange hello **krypteringstyp** för hello SSN kolumnen för**Deterministic** och hello födelsedatumet kolumnen för**Randomized**. Klicka på **Nästa**.
 
 ![Kryptera kolumner](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
 ### <a name="master-key-configuration"></a>Huvudnyckeln konfiguration
-Den **huvudnyckeln Configuration** är där du ställer in din CMK och välj KeyStore-providern där CMK ska lagras. För närvarande kan du lagra en CMK i Windows certifikatarkiv, Azure Key Vault eller en maskinvarusäkerhetsmodul (HSM).
+Hej **huvudnyckeln Configuration** är där du har skapat din CMK och välj hello KeyStore-providern där hello CMK ska lagras. För närvarande kan du lagra en CMK i certifikatarkivet för hello Windows Azure Key Vault eller en maskinvarusäkerhetsmodul (HSM).
 
-Den här kursen visar hur du lagrar dina nycklar i Azure Key Vault.
+Den här kursen visar hur toostore dina nycklar i Azure Key Vault.
 
 1. Välj **Azure Key Vault**.
-2. Välj önskad nyckelvalvet från den nedrullningsbara listan.
+2. Välj hello önskade nyckelvalv hello nedrullningsbara listan.
 3. Klicka på **Nästa**.
 
 ![Huvudnyckeln konfiguration](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
 ### <a name="validation"></a>Validering
-Du kan kryptera kolumnerna nu eller sparar ett PowerShell-skript och köra den senare. Den här kursen väljer **fortsätta att avsluta nu** och på **nästa**.
+Du kan kryptera hello kolumner nu eller spara en PowerShell-skriptet toorun senare. Den här kursen väljer **fortsätta toofinish nu** och på **nästa**.
 
 ### <a name="summary"></a>Sammanfattning
-Kontrollera att inställningarna är korrekta och klicka på **Slutför** att slutföra installationen för Always Encrypted.
+Kontrollera att hello-inställningarna är korrekta och klickar på **Slutför** toocomplete hello installationsprogrammet för Always Encrypted.
 
 ![Sammanfattning](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
-### <a name="verify-the-wizards-actions"></a>Kontrollera i guiden åtgärder
-När guiden har slutförts kan har databasen konfigurerats för Always Encrypted. Guiden utförs följande åtgärder:
+### <a name="verify-hello-wizards-actions"></a>Kontrollera hello guiden åtgärder
+När hello-guiden har slutförts kan har databasen konfigurerats för Always Encrypted. hello hello på guiden utförs följande åtgärder:
 
 * Skapa en huvudnyckel i kolumnen och lagras i Azure Key Vault.
 * Skapa en kolumnkrypteringsnyckel och lagras i Azure Key Vault.
-* Konfigurera de markerade kolumnerna för kryptering. Tabellen patienter har för närvarande inga data, men alla befintliga data i de markerade kolumnerna är krypterad.
+* Konfigurerade hello markerade kolumner för kryptering. hello patienter tabellen har för närvarande inga data, men alla befintliga data i hello valda kolumner är krypterad.
 
-Du kan verifiera att skapa nycklar i SSMS genom att expandera **kurs** > **säkerhet** > **alltid krypterade nycklar**.
+Du kan verifiera hello skapandet av hello nycklar i SSMS genom att expandera **kurs** > **säkerhet** > **alltid krypterade nycklar**.
 
-## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Skapa ett klientprogram som fungerar med krypterade data
-Nu när Always Encrypted har konfigurerats, kan du skapa ett program som utför *infogar* och *väljer* för krypterade kolumner.  
+## <a name="create-a-client-application-that-works-with-hello-encrypted-data"></a>Skapa ett klientprogram som fungerar med hello krypterade data
+Nu när Always Encrypted har konfigurerats, kan du skapa ett program som utför *infogar* och *väljer* på hello krypterade kolumner.  
 
 > [!IMPORTANT]
-> Programmet måste använda [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) objekt när skickas i klartext data till servern med Always Encrypted kolumner. Skicka litterala värden utan att använda SqlParameter objekt resulterar i ett undantag.
+> Programmet måste använda [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) objekt när skickas i klartext data toohello server med Always Encrypted kolumner. Skicka litterala värden utan att använda SqlParameter objekt resulterar i ett undantag.
 > 
 > 
 
-1. Öppna Visual Studio och skapa en ny C# **konsolprogram** (Visual Studio 2015 och tidigare) eller **Konsolapp (.NET Framework)** (Visual Studio 2017 och senare). Kontrollera att projektet har angetts till **.NET Framework 4.6** eller senare.
-2. Namnge projektet **AlwaysEncryptedConsoleAKVApp** och på **OK**.
-3. Installera följande NuGet-paket genom att gå till **verktyg** > **NuGet Package Manager** > **Pakethanterarkonsolen**.
+1. Öppna Visual Studio och skapa en ny C# **konsolprogram** (Visual Studio 2015 och tidigare) eller **Konsolapp (.NET Framework)** (Visual Studio 2017 och senare). Kontrollera att projektet är inställd för**.NET Framework 4.6** eller senare.
+2. Namnet hello projektet **AlwaysEncryptedConsoleAKVApp** och på **OK**.
+3. Installera följande NuGet-paket genom att gå för hello**verktyg** > **NuGet Package Manager** > **Pakethanterarkonsolen**.
 
-Kör dessa två rader med kod i Package Manager-konsolen.
+Kör dessa två rader med kod i hello Package Manager-konsolen.
 
     Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
 
 
-## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Ändra anslutningssträngen för att aktivera Always Encrypted
-Det här avsnittet beskrivs hur du aktiverar Always Encrypted i anslutningssträngen för databasen.
+## <a name="modify-your-connection-string-tooenable-always-encrypted"></a>Ändra din anslutning sträng tooenable Always Encrypted
+Det här avsnittet beskrivs hur tooenable alltid krypterade i anslutningssträngen för databasen.
 
-Om du vill aktivera Always Encrypted, måste du lägga till den **Kolumnkrypteringsinställningen** nyckelord i anslutningen sträng och värdet **aktiverad**.
+tooenable Always Encrypted, behöver du tooadd hello **Kolumnkrypteringsinställningen** nyckelordet tooyour anslutning sträng och ställa in också**aktiverad**.
 
-Du kan ange detta direkt i anslutningssträngen eller kan du ändra det med hjälp av [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). Exempelprogrammet i nästa avsnitt visar hur du använder **SqlConnectionStringBuilder**.
+Du kan ange detta direkt i hello anslutningssträngen eller kan du ändra det med hjälp av [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). hello exempelprogrammet i hello nästa avsnitt visar hur toouse **SqlConnectionStringBuilder**.
 
-### <a name="enable-always-encrypted-in-the-connection-string"></a>Aktivera Always Encrypted i anslutningssträngen
-Lägg till följande nyckelord i anslutningssträngen.
+### <a name="enable-always-encrypted-in-hello-connection-string"></a>Aktivera Always Encrypted i hello anslutningssträng
+Lägg till hello efter nyckelordet tooyour anslutningssträngen.
 
     Column Encryption Setting=Enabled
 
 
 ### <a name="enable-always-encrypted-with-sqlconnectionstringbuilder"></a>Aktivera Always Encrypted med SqlConnectionStringBuilder
-Följande kod visar hur du aktiverar Always Encrypted genom att ange [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) till [aktiverad](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
+Hej följande kod visar hur tooenable Always Encrypted genom att ange [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) för[aktiverad](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
 
     // Instantiate a SqlConnectionStringBuilder.
     SqlConnectionStringBuilder connStringBuilder =
@@ -226,8 +226,8 @@ Följande kod visar hur du aktiverar Always Encrypted genom att ange [SqlConnect
     connStringBuilder.ColumnEncryptionSetting =
        SqlConnectionColumnEncryptionSetting.Enabled;
 
-## <a name="register-the-azure-key-vault-provider"></a>Registrera Azure Key Vault-providern
-Följande kod visar hur du registrerar Azure Key Vault-providern med ADO.NET-drivrutinen.
+## <a name="register-hello-azure-key-vault-provider"></a>Registrera hello Azure Key Vault-providern
+hello följande kod visar hur tooregister hello Azure Key Vault-provider med hello ADO.NET-drivrutinen.
 
     private static ClientCredential _clientCredential;
 
@@ -250,14 +250,14 @@ Följande kod visar hur du registrerar Azure Key Vault-providern med ADO.NET-dri
 ## <a name="always-encrypted-sample-console-application"></a>Alltid krypterat exempelkonsol-program
 Det här exemplet visar hur du:
 
-* Ändra anslutningssträngen för att aktivera Always Encrypted.
-* Registrera Azure Key Vault som programmets KeyStore-providern.  
-* Infoga data i de krypterade kolumnerna.
+* Ändra din anslutning sträng tooenable Always Encrypted.
+* Registrera Azure Key Vault som hello programmets KeyStore-providern.  
+* Infoga data i hello krypterade kolumner.
 * Markera en post genom att filtrera efter ett visst värde i en krypterad kolumn.
 
-Ersätt innehållet i **Program.cs** med följande kod. Ersätt anslutningssträngen för globala connectionString variabeln i rad som föregår direkt Main-metod med en giltig anslutningssträng från Azure-portalen. Det här är den enda förändringen som du behöver göra i den här koden.
+Ersätt hello innehållet i **Program.cs** med hello följande kod. Ersätt hello anslutningssträngen för hello globala connectionString variabel i hello rad direkt före hello Main-metod med en giltig anslutningssträng från hello Azure-portalen. Detta är endast förändring i hello måste toomake toothis kod.
 
-Kör appen att se Always Encrypted fungerar.
+Kör hello app toosee Always Encrypted i åtgärden.
 
     using System;
     using System.Collections.Generic;
@@ -273,8 +273,8 @@ Kör appen att se Always Encrypted fungerar.
     {
     class Program
     {
-        // Update this line with your Clinic database connection string from the Azure portal.
-        static string connectionString = @"<connection string from the portal>";
+        // Update this line with your Clinic database connection string from hello Azure portal.
+        static string connectionString = @"<connection string from hello portal>";
         static string clientId = @"<client id from step 7 above>";
         static string clientSecret = "<key from step 13 above>";
 
@@ -285,35 +285,35 @@ Kör appen att se Always Encrypted fungerar.
 
             Console.WriteLine("Signed in as: " + _clientCredential.ClientId);
 
-            Console.WriteLine("Original connection string copied from the Azure portal:");
+            Console.WriteLine("Original connection string copied from hello Azure portal:");
             Console.WriteLine(connectionString);
 
             // Create a SqlConnectionStringBuilder.
             SqlConnectionStringBuilder connStringBuilder =
                 new SqlConnectionStringBuilder(connectionString);
 
-            // Enable Always Encrypted for the connection.
-            // This is the only change specific to Always Encrypted
+            // Enable Always Encrypted for hello connection.
+            // This is hello only change specific tooAlways Encrypted
             connStringBuilder.ColumnEncryptionSetting =
                 SqlConnectionColumnEncryptionSetting.Enabled;
 
             Console.WriteLine(Environment.NewLine + "Updated connection string with Always Encrypted enabled:");
             Console.WriteLine(connStringBuilder.ConnectionString);
 
-            // Update the connection string with a password supplied at runtime.
+            // Update hello connection string with a password supplied at runtime.
             Console.WriteLine(Environment.NewLine + "Enter server password:");
             connStringBuilder.Password = Console.ReadLine();
 
 
-            // Assign the updated connection string to our global variable.
+            // Assign hello updated connection string tooour global variable.
             connectionString = connStringBuilder.ConnectionString;
 
 
-            // Delete all records to restart this demo app.
+            // Delete all records toorestart this demo app.
             ResetPatientsTable();
 
-            // Add sample data to the Patients table.
-            Console.Write(Environment.NewLine + "Adding sample patient data to the database...");
+            // Add sample data toohello Patients table.
+            Console.Write(Environment.NewLine + "Adding sample patient data toohello database...");
 
             InsertPatient(new Patient()
             {
@@ -353,7 +353,7 @@ Kör appen att se Always Encrypted fungerar.
 
 
             // Fetch and display all patients.
-            Console.WriteLine(Environment.NewLine + "All the records currently in the Patients table:");
+            Console.WriteLine(Environment.NewLine + "All hello records currently in hello Patients table:");
 
             foreach (Patient patient in SelectAllPatients())
             {
@@ -361,20 +361,20 @@ Kör appen att se Always Encrypted fungerar.
             }
 
             // Get patients by SSN.
-            Console.WriteLine(Environment.NewLine + "Now lets locate records by searching the encrypted SSN column.");
+            Console.WriteLine(Environment.NewLine + "Now lets locate records by searching hello encrypted SSN column.");
 
             string ssn;
 
-            // This very simple validation only checks that the user entered 11 characters.
-            // In production be sure to check all user input and use the best validation for your specific application.
+            // This very simple validation only checks that hello user entered 11 characters.
+            // In production be sure toocheck all user input and use hello best validation for your specific application.
             do
             {
                 Console.WriteLine("Please enter a valid SSN (ex. 999-99-0003):");
                 ssn = Console.ReadLine();
             } while (ssn.Length != 11);
 
-            // The example allows duplicate SSN entries so we will return all records
-            // that match the provided value and store the results in selectedPatients.
+            // hello example allows duplicate SSN entries so we will return all records
+            // that match hello provided value and store hello results in selectedPatients.
             Patient selectedPatient = SelectPatientBySSN(ssn);
 
             // Check if any records were returned and display our query results.
@@ -389,7 +389,7 @@ Kör appen att se Always Encrypted fungerar.
                 Console.WriteLine("No patients found with SSN = " + ssn);
             }
 
-            Console.WriteLine("Press Enter to exit...");
+            Console.WriteLine("Press Enter tooexit...");
             Console.ReadLine();
         }
 
@@ -417,7 +417,7 @@ Kör appen att se Always Encrypted fungerar.
             AuthenticationResult result = await authContext.AcquireTokenAsync(resource, _clientCredential);
 
             if (result == null)
-                throw new InvalidOperationException("Failed to obtain the access token");
+                throw new InvalidOperationException("Failed tooobtain hello access token");
             return result.AccessToken;
         }
 
@@ -463,9 +463,9 @@ Kör appen att se Always Encrypted fungerar.
                 catch (Exception ex)
                 {
                     returnValue = 1;
-                    Console.WriteLine("The following error was encountered: ");
+                    Console.WriteLine("hello following error was encountered: ");
                     Console.WriteLine(ex.Message);
-                    Console.WriteLine(Environment.NewLine + "Press Enter key to exit");
+                    Console.WriteLine(Environment.NewLine + "Press Enter key tooexit");
                     Console.ReadLine();
                     Environment.Exit(0);
                 }
@@ -567,7 +567,7 @@ Kör appen att se Always Encrypted fungerar.
         }
 
 
-        // This method simply deletes all records in the Patients table to reset our demo.
+        // This method simply deletes all records in hello Patients table tooreset our demo.
         static int ResetPatientsTable()
         {
             int returnValue = 0;
@@ -601,35 +601,35 @@ Kör appen att se Always Encrypted fungerar.
 
 
 
-## <a name="verify-that-the-data-is-encrypted"></a>Kontrollera att informationen är krypterad.
-Du kan snabbt kontrollera att den faktiska data på servern krypteras med datafrågor patienter med SSMS (med hjälp av den aktuella anslutningen där **Kolumnkrypteringsinställningen** har inte aktiverats).
+## <a name="verify-that-hello-data-is-encrypted"></a>Kontrollera att hello data krypteras
+Du kan snabbt kontrollera att hello faktiska data på hello servern krypteras med datafrågor hello patienter med SSMS (med hjälp av den aktuella anslutningen där **Kolumnkrypteringsinställningen** har inte aktiverats).
 
-Kör följande fråga på kurs-databasen.
+Kör följande fråga på hello kurs databasen hello.
 
     SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
-Du kan se att krypterade kolumner inte innehåller några data i klartext.
+Du kan se att hello krypterade kolumner inte innehåller några data i klartext.
 
    ![Nytt konsolprogram](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-Om du vill använda SSMS för att komma åt data i klartext, kan du lägga till den *Kolumnkrypteringsinställningen = aktiverat* parameter för anslutningen.
+toouse SSMS tooaccess Hej klartext data, kan du lägga till hello *Kolumnkrypteringsinställningen = aktiverat* parametern toohello anslutning.
 
 1. Högerklicka på din server i i SSMS, **Object Explorer** och välj **frånkoppling**.
-2. Klicka på **Anslut** > **databasmotorn** att öppna den **Anslut till Server** och klicka på **alternativ**.
+2. Klicka på **Anslut** > **databasmotorn** tooopen hello **ansluta tooServer** och klicka på **alternativ**.
 3. Klicka på **ytterligare anslutningsparametrar** och skriv **Kolumnkrypteringsinställningen = aktiverat**.
    
     ![Nytt konsolprogram](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
-4. Kör följande fråga på kurs-databasen.
+4. Kör följande fråga på hello kurs databasen hello.
    
         SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    
-     Du kan nu se data i klartext i krypterade kolumner.
+     Du kan nu se hello klartext data i hello krypterade kolumner.
 
     ![Nytt konsolprogram](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 
 ## <a name="next-steps"></a>Nästa steg
-När du har skapat en databas som använder Always Encrypted kanske du vill göra följande:
+När du har skapat en databas som använder Always Encrypted behöva toodo hello följande:
 
 * [Rotera och rensa dina nycklar](https://msdn.microsoft.com/library/mt607048.aspx).
 * [Migrera data som redan har krypterats med Always Encrypted](https://msdn.microsoft.com/library/mt621539.aspx).

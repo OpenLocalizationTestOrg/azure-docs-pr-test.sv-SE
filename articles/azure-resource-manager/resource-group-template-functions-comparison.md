@@ -1,6 +1,6 @@
 ---
-title: "Mallfunktioner Azure Resource Manager - jämförelse | Microsoft Docs"
-description: "Beskriver funktionerna du använder i en Azure Resource Manager-mall för att jämföra värden."
+title: "aaaAzure Resource Manager Mallfunktioner - jämförelse | Microsoft Docs"
+description: "Beskriver hello funktioner toouse i en Azure Resource Manager mallen toocompare värden."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 521e5ed06c138bcd374913588f06a2e6c1e99963
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: ebcfc9ed6c93f8b540ec4c066e9457c621800b7b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Jämförelse funktioner för Azure Resource Manager-mallar
 
@@ -39,16 +39,16 @@ Kontrollerar om två värden är lika med varandra.
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int, string, matris eller objekt |Det första värdet att söka efter likhet. |
-| arg2 |Ja |int, string, matris eller objekt |Det andra värdet att söka efter likhet. |
+| arg1 |Ja |int, string, matris eller objekt |hello första värde toocheck sinsemellan. |
+| arg2 |Ja |int, string, matris eller objekt |hello andra värdet toocheck sinsemellan. |
 
 ### <a name="return-value"></a>Returvärde
 
-Returnerar **SANT** om värdena är lika, annars **FALSKT**.
+Returnerar **SANT** om hello värdena är lika, annars **FALSKT**.
 
 ### <a name="remarks"></a>Kommentarer
 
-Funktionen är lika med används ofta med den `condition` element för att testa om en resurs har distribuerats.
+hello är lika med funktionen används ofta med hello `condition` elementet tootest om en resurs har distribuerats.
 
 ```json
 {
@@ -67,7 +67,7 @@ Funktionen är lika med används ofta med den `condition` element för att testa
 
 ### <a name="example"></a>Exempel
 
-Exempel mallen kontrollerar olika typer av värden sinsemellan. Alla standardvärden returnera True.
+hello exempelmall kontrollerar olika typer av värden sinsemellan. Alla standardvärden för hello returnera True.
 
 ```json
 {
@@ -130,7 +130,7 @@ Exempel mallen kontrollerar olika typer av värden sinsemellan. Alla standardvä
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -140,7 +140,7 @@ Utdata från det föregående exemplet med standardvärdena är:
 | checkObjects | bool | True |
 
 
-I följande exempel används [inte](resource-group-template-functions-logical.md#not) med **är lika med**.
+hello följande exempel används [inte](resource-group-template-functions-logical.md#not) med **är lika med**.
 
 ```json
 {
@@ -156,7 +156,7 @@ I följande exempel används [inte](resource-group-template-functions-logical.md
     }
 ```
 
-Utdata från föregående exempel är:
+hello utdata från hello föregående exempel är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -166,22 +166,22 @@ Utdata från föregående exempel är:
 ## <a name="greater"></a>större
 `greater(arg1, arg2)`
 
-Kontrollerar om det första värdet är större än det andra värdet.
+Kontrollerar om hello första värde är större än andra hello-värdet.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int eller string |Det första värdet för större jämförelsen. |
-| arg2 |Ja |int eller string |Det andra värdet för större jämförelsen. |
+| arg1 |Ja |int eller string |hello första värde för hello större jämförelse. |
+| arg2 |Ja |int eller string |hello sekundvärdet hello större jämförelse. |
 
 ### <a name="return-value"></a>Returvärde
 
-Returnerar **SANT** om det första värdet är större än det andra värdet, annars **FALSKT**.
+Returnerar **SANT** om hello första värdet är större än hello sekundvärdet, annars **FALSKT**.
 
 ### <a name="example"></a>Exempel
 
-Exempel mallen kontrollerar om ett värde är större än den andra.
+hello exempelmall kontrollerar om ett värde för hello är större än hello andra.
 
 ```json
 {
@@ -220,7 +220,7 @@ Exempel mallen kontrollerar om ett värde är större än den andra.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -231,22 +231,22 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="greaterorequals"></a>greaterOrEquals
 `greaterOrEquals(arg1, arg2)`
 
-Kontrollerar om det första värdet är större än eller lika med det andra värdet.
+Kontrollerar om hello första värde är större än eller lika toohello andra värdet.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int eller string |Det första värdet för jämförelse större eller lika med. |
-| arg2 |Ja |int eller string |Det andra värdet för jämförelse större eller lika med. |
+| arg1 |Ja |int eller string |hello första värde för hello större eller lika jämförelse. |
+| arg2 |Ja |int eller string |hello sekundvärdet hello större eller lika jämförelse. |
 
 ### <a name="return-value"></a>Returvärde
 
-Returnerar **SANT** om det första värdet är större än eller lika med det andra värdet, annars **FALSKT**.
+Returnerar **SANT** om hello första värdet är större än eller lika toohello sekundvärdet; annars **FALSKT**.
 
 ### <a name="example"></a>Exempel
 
-Exempel mallen kontrollerar om ett värde är större än eller lika med den andra.
+hello exempelmall kontrollerar om ett värde för hello är större än eller lika med toohello andra.
 
 ```json
 {
@@ -285,7 +285,7 @@ Exempel mallen kontrollerar om ett värde är större än eller lika med den and
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -297,22 +297,22 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="less"></a>mindre
 `less(arg1, arg2)`
 
-Kontrollerar om det första värdet är mindre än det andra värdet.
+Kontrollerar om hello första värdet är mindre än hello andra värdet.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int eller string |Det första värdet för mindre jämförelsen. |
-| arg2 |Ja |int eller string |Det andra värdet för mindre jämförelsen. |
+| arg1 |Ja |int eller string |hello första värde för hello mindre jämförelse. |
+| arg2 |Ja |int eller string |hello sekundvärdet för hello mindre jämförelse. |
 
 ### <a name="return-value"></a>Returvärde
 
-Returnerar **SANT** om det första värdet är mindre än det andra värdet, annars **FALSKT**.
+Returnerar **SANT** om hello första värdet är mindre än hello value andra; annars **FALSKT**.
 
 ### <a name="example"></a>Exempel
 
-Exempel mallen kontrollerar om ett värde är mindre än den andra.
+hello exempelmall kontrollerar om ett värde för hello är mindre än hello andra.
 
 ```json
 {
@@ -351,7 +351,7 @@ Exempel mallen kontrollerar om ett värde är mindre än den andra.
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -362,22 +362,22 @@ Utdata från det föregående exemplet med standardvärdena är:
 ## <a name="lessorequals"></a>lessOrEquals
 `lessOrEquals(arg1, arg2)`
 
-Kontrollerar om det första värdet är mindre än eller lika med det andra värdet.
+Kontrollerar om hello första värde är mindre än eller lika med andra toohello-värdet.
 
 ### <a name="parameters"></a>Parametrar
 
 | Parameter | Krävs | Typ | Beskrivning |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |int eller string |Den första värde för mindre eller lika med jämförelse. |
-| arg2 |Ja |int eller string |Andra värdet för mindre eller lika med jämförelse. |
+| arg1 |Ja |int eller string |Hej första värde för hello mindre eller lika med jämförelse. |
+| arg2 |Ja |int eller string |Hej sekundvärdet för hello mindre eller lika med jämförelse. |
 
 ### <a name="return-value"></a>Returvärde
 
-Returnerar **SANT** om det första värdet är mindre än eller lika med det andra värdet, annars **FALSKT**.
+Returnerar **SANT** om hello första värdet är mindre än eller lika toohello sekundvärdet, annars **FALSKT**.
 
 ### <a name="example"></a>Exempel
 
-Exempel mallen kontrollerar om ett värde är mindre än eller lika med den andra.
+hello exempelmall kontrollerar om ett värde för hello är mindre än eller lika toohello andra.
 
 ```json
 {
@@ -416,7 +416,7 @@ Exempel mallen kontrollerar om ett värde är mindre än eller lika med den andr
 }
 ```
 
-Utdata från det föregående exemplet med standardvärdena är:
+hello utdata från hello föregående exempel med hello standardvärden är:
 
 | Namn | Typ | Värde |
 | ---- | ---- | ----- |
@@ -426,8 +426,8 @@ Utdata från det föregående exemplet med standardvärdena är:
 
 
 ## <a name="next-steps"></a>Nästa steg
-* En beskrivning av avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
-* Om du vill slå samman flera mallar, se [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md).
-* Iterera ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
-* Information om hur du distribuerar mallen som du har skapat finns [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
+* En beskrivning av hello avsnitt i en Azure Resource Manager-mallen finns [redigera Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+* flera mallar finns i toomerge [använda länkade mallar med Azure Resource Manager](resource-group-linked-templates.md).
+* tooiterate ett angivet antal gånger när du skapar en typ av resurs finns [skapa flera instanser av resurser i Azure Resource Manager](resource-group-create-multiple.md).
+* toosee hur toodeploy hello mallen som du har skapat, finns i [distribuera ett program med Azure Resource Manager-mall](resource-group-template-deploy.md).
 

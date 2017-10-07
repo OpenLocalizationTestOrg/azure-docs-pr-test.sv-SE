@@ -1,6 +1,6 @@
 ---
-title: Skapa ett program med Application Proxy | Microsoft Docs
-description: "Så här felsöker du problem med att skapa programproxy program i Azure AD Admin portal"
+title: aaaProblem skapar ett program med Application Proxy | Microsoft Docs
+description: "Hur tootroubleshoot utfärdar skapar programproxyn program i hello Azure AD Admin portal"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,39 +13,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: fe56f56162ba7186f1b660a5b44fcef38f1dee9d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 24fab83c38a49a9e5754854acf2f9711e374e559
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>Skapa ett program med Application Proxy 
 
-Nedan visas några vanliga problem personer står inför när du skapar ett nytt program för application proxy.
+Nedan visas några vanliga problem med hello personer står inför när du skapar ett nytt program för application proxy.
 
 ## <a name="recommended-documents"></a>Rekommenderade dokument 
 
-Mer information om hur du skapar ett program för Application Proxy via Admin Portal finns [publicera program med Azure AD Application Proxy](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
+toolearn mer om hur du skapar ett program för Application Proxy via hello Admin Portal finns [publicera program med Azure AD Application Proxy](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
 
-Om du följer stegen i dokumentet och får ett fel när programmet finns i felinformationen och förslag om hur du löser programmet. De vanligaste felmeddelanden som innehåller en föreslagen åtgärd. 
+Om du följande hello i detta dokument och får ett fel när programmet hello finns hello felinformationen och förslag på hur toofix hello program. De vanligaste felmeddelanden som innehåller en föreslagen åtgärd. 
 
-## <a name="specific-things-to-check"></a>Vissa saker att kontrollera
+## <a name="specific-things-toocheck"></a>Vissa saker toocheck
 
-Kontrollera följande för att undvika vanliga fel:
+tooavoid vanliga fel, kontrollera:
 
--   Du är administratör med behörighet att skapa ett program med Application Proxy
+-   Du är administratör med behörigheten toocreate ett program med Application Proxy
 
--   Intern URL är unikt
+-   hello Intern URL är unikt
 
--   Den externa URL: en är unikt
+-   hello externa URL: en är unikt
 
--   URL: er börja med http eller https och sluta med en ”/”
+-   Hej URL: er starta med http eller https och sluta med en ”/”
 
--   URL-Adressen ska vara ett domännamn och inte en IP-adress
+-   hello Webbadress måste vara ett domännamn och inte en IP-adress
 
-Felmeddelandet ska visas i det övre högra hörnet när du skapar i program. Du kan också välja meddelandeikonen att se felmeddelanden.
+hello felmeddelande ska visas i hello övre högra hörnet när du skapar hello program. Du kan också välja hello ikonen toosee hello felmeddelanden.
 
    ![Meddelande-fråga](./media/application-proxy-config-problem/error-message.png)
 
 ## <a name="next-steps"></a>Nästa steg
-[Aktivera Application Proxy på Azure-portalen](active-directory-application-proxy-enable.md)
+[Aktivera Application Proxy i hello Azure-portalen](active-directory-application-proxy-enable.md)

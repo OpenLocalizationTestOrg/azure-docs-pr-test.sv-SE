@@ -1,12 +1,12 @@
 ---
-title: "Säkerhetskopiera Windows-filer och -mappar till Azure (Resource Manager) | Microsoft Docs"
-description: "Lär dig att säkerhetskopiera Windows-filer och -mappar till Azure i en distribution av resurshanteraren."
+title: aaaBack in Windows filer och mappar tooAzure (Resource Manager) | Microsoft Docs
+description: "Lär dig tooback in Windows-filer och mappar tooAzure i en Resource Manager distribution."
 services: backup
 documentationcenter: 
 author: markgalioto
 manager: carmonm
 editor: 
-keywords: "hur du säkerhetskopierar; säkerhetskopiera; säkerhetskopiera filer och mappar"
+keywords: "hur toobackup; hur tooback. Säkerhetskopiera filer och mappar"
 ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,157 +15,157 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 8/15/2017
 ms.author: markgal;
-ms.openlocfilehash: b21edb70eca3ec9552dc157ee3bb658d243b8fcd
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 07d6580a84d5092ed2c61bf86ff5fcb148423ef2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>En första titt: Säkerhetskopiera filer och mappar med Resource Manager-distributions
-Den här artikeln förklarar hur du säkerhetskopierar filer och mappar i Windows Server (eller en Windows-dator) till Azure med hjälp av Resource Manager-distribution. I den här självstudiekursen går vi igenom grunderna. Om du vill komma igång med Azure Backup är du på rätt ställe.
+Den här artikeln förklarar hur tooback in Windows Server (eller Windows-dator) filer och mappar tooAzure med hjälp av en Resource Manager distribution. Det är en självstudiekurs avsedda toowalk du via hello grunderna. Om du vill tooget igång med Azure Backup är hello rätt plats.
 
-Om du vill veta mer om Azure Backup läser du den här [översikten](backup-introduction-to-azure-backup.md).
+Om du vill tooknow mer om Azure Backup kan läsa det här [översikt](backup-introduction-to-azure-backup.md).
 
 Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) som ger dig åtkomst till Azure-tjänsten.
 
 ## <a name="create-a-recovery-services-vault"></a>Skapa ett Recovery Services-valv
-Innan du kan säkerhetskopiera filer och mappar måste du skapa ett Recovery Services-valv i den region som du vill lagra informationen i. Du måste också bestämma hur du vill att lagringen ska replikeras.
+tooback upp filer och mappar måste toocreate Recovery Services-valvet i hello region där du vill toostore hello data. Du måste också toodetermine du hur replikerade lagringen.
 
-### <a name="to-create-a-recovery-services-vault"></a>Så här skapar du ett Recovery Services-valv
-1. Om du inte redan gjort det loggar du in på [Azure-portalen](https://portal.azure.com/) med din Azure-prenumeration.
-2. På navigeringsmenyn klickar du på **Fler tjänster** och skriver **Recovery Services** i listan över resurser och klickar sedan på **Recovery Services-valv**.
+### <a name="toocreate-a-recovery-services-vault"></a>toocreate Recovery Services-valvet
+1. Om du inte redan har gjort det loggar du in toohello [Azure Portal](https://portal.azure.com/) med din Azure-prenumeration.
+2. Hej hubbmenyn, klicka på **fler tjänster** och Skriv i hello lista över resurser, **återställningstjänster** och på **Recovery Services-valv**.
 
     ![Skapa Recovery Services-valv (steg 1)](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
-    Om det finns Recovery Services-valv i prenumerationen visas valven.
-3. På menyn **Recovery Services-valv** klickar du på **Lägg till**.
+    Om det finns recovery services-valv i hello prenumeration, visas hello valv.
+3. På hello **Recovery Services-valv** -menyn klickar du på **Lägg till**.
 
     ![Skapa Recovery Services-valv (steg 2)](./media/backup-try-azure-backup-in-10-mins/rs-vault-menu.png)
 
-    Bladet Recovery Services-valv öppnas och du uppmanas att ange **namn**, **prenumeration**, **resursgrupp** och **plats**.
+    hello återställningstjänster valvet blad öppnas, där du uppmanas tooprovide en **namn**, **prenumeration**, **resursgruppen**, och **plats**.
 
     ![Skapa Recovery Services-valv (steg 3)](./media/backup-try-azure-backup-in-10-mins/rs-vault-step-3.png)
 
-4. I **Namn** anger du ett eget namn som identifierar valvet. Namnet måste vara unikt för Azure-prenumerationen. Skriv ett namn som innehåller mellan 2 och 50 tecken. Det måste börja med en bokstav och får endast innehålla bokstäver, siffror och bindestreck.
+4. För **namn**, ange ett eget namn tooidentify hello valv. hello namn måste toobe unika för hello Azure-prenumeration. Skriv ett namn som innehåller mellan 2 och 50 tecken. Det måste börja med en bokstav och får endast innehålla bokstäver, siffror och bindestreck.
 
-5. I avsnittet **Prenumeration** använder du listrutan för att välja Azure-prenumerationen. Om du bara använder en prenumeration visas den och du kan gå vidare till nästa steg. Om du inte är säker på vilken prenumeration du ska använda använder du standardprenumerationen (eller den föreslagna). Du kan bara välja mellan flera alternativ om ditt organisationskonto är associerat med flera Azure-prenumerationer.
+5. I hello **prenumeration** Använd hello nedrullningsbara menyn toochoose hello Azure-prenumeration. Om du använder bara en prenumeration som prenumeration visas och du kan hoppa över toohello nästa steg. Om du inte är säker på vilken prenumeration toouse använder standard-hello (eller förslag) prenumerationen. Du kan bara välja mellan flera alternativ om ditt organisationskonto är associerat med flera Azure-prenumerationer.
 
-6. Gör följande i avsnittet **Resursgrupp**:
+6. I hello **resursgruppen** avsnitt:
 
-    * Välj **Skapa nytt** om du vill skapa en ny resursgrupp.
+    * Välj **Skapa nytt** om du vill toocreate en ny resursgrupp.
     Eller
-    * Välj **Använd befintlig** och klicka på listrutan om du vill se listan över tillgängliga resursgrupper.
+    * Välj **använda befintliga** och klicka på hello nedrullningsbara menyn toosee hello tillgängliga listan över resursgrupper.
 
-  Fullständig information om resursgrupper finns i [Översikt över Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+  Mer information om resursgrupper finns i hello [översikt över Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
-7. Klicka på **Plats** för att välja en geografisk region för valvet. Det här alternativet anger den geografiska region som dina säkerhetskopierade data skickas till.
+7. Klicka på **plats** tooselect hello geografiskt område för hello-valvet. Det här alternativet anger hello geografiska region där dina säkerhetskopierade data skickas.
 
-8. Längst ned på bladet för Recovery Services-valvet klickar du på **Skapa**.
+8. Hello längst ned på bladet för hello Recovery Services-valvet, klickar du på **skapa**.
 
-    Det kan ta flera minuter innan Recovery Services-valvet har skapats. Övervaka statusmeddelandena uppe till höger i portalen. När valvet har skapats visas det i listan över Recovery Services-valv. Om du inte ser ditt valv efter ett par minuter klickar du på **Uppdatera**.
+    Det kan ta flera minuter för hello Recovery Services-valvet toobe skapas. Övervaka hello statusmeddelanden i hello övre högra delen av hello-portalen. När din valvet har skapats visas den i hello lista över Recovery Services-valv. Om du inte ser ditt valv efter ett par minuter klickar du på **Uppdatera**.
 
     ![Klicka på Uppdatera](./media/backup-try-azure-backup-in-10-mins/refresh-button.png)</br>
 
-    När du ser valvet i listan över Recovery Services-valv kan du ange lagringsredundansen.
+    När du ser ditt valv i hello lista över Recovery Services-valv, är du redo tooset hello lagring redundans.
 
-### <a name="set-storage-redundancy-for-the-vault"></a>Ange lagringsredundans för valvet
-När du skapar ett Recovery Services-valv ska du alltid kontrollera att lagringsredundansen är konfigurerad på det sätt som du vill.
+### <a name="set-storage-redundancy-for-hello-vault"></a>Ange lagringsredundans för hello valvet
+När du skapar ett Recovery Services-valv, kontrollera att lagring redundans är konfigurerade hello som du vill.
 
-1. På bladet **Recovery Services-valv** klickar du på det nya valvet.
+1. Från hello **Recovery Services-valv** bladet Klicka hello nya valvet.
 
-    ![Välj det nya valvet i listan över Recovery Services-valv](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
+    ![Välj hello nytt valv hello listan över Recovery Services-valvet](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    Om du väljer valvet minimeras bladet **Recovery Services-valv** och bladet Inställningar (*som har namnet på valvet överst*) och bladet med valvinformation öppnas.
+    När du väljer hello valvet hello **Recovery Services-valvet** bladet begränsar och hello inställningsbladet (*som har hello namnet på valvet hello överst hello*) och hello valvet informationsbladet öppna.
 
-    ![Visa lagringskonfigurationen för det nya valvet](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
-2. På det nya valvets inställningsblad använder du det lodräta reglaget och bläddrar ned till avsnittet Hantera. Där klickar du på **Infrastruktur för säkerhetskopiering**.
-    Bladet Infrastruktur för säkerhetskopiering öppnas.
-3. På bladet Infrastruktur för säkerhetskopiering klickar du på **Konfiguration av säkerhetskopiering** för att öppna bladet **Konfiguration av säkerhetskopiering**.
+    ![Visa hello lagringskonfigurationen för nytt valv](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
+2. Använda hello lodräta bilden tooscroll ned toohello hantera avsnitt i hello nytt valv inställningar-bladet och klickar på **säkerhetskopiering infrastruktur**.
+    hello säkerhetskopiering infrastruktur blad öppnas.
+3. I hello säkerhetskopiering infrastruktur-bladet, klickar du på **konfigurering av säkerhetskopiering** tooopen hello **konfigurering av säkerhetskopiering** bladet.
 
-    ![Ange lagringskonfigurationen för det nya valvet](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
-4. Välj lämpligt alternativ för lagringsreplikering för valvet.
+    ![Ange hello lagringskonfigurationen för nytt valv](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
+4. Välj hello lämpliga replikering lagringsalternativ för ditt valv.
 
     ![alternativ för lagringskonfiguration](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    Valvet använder geo-redundant lagring som standard. Om du använder Azure som primär slutpunkt för lagring av säkerhetskopior fortsätter du att använda **geo-redundant** lagring. Om du inte använder Azure som en slutpunkt för primär lagring av säkerhetskopior väljer du **Lokalt redundant**, vilket minskar kostnaderna för Azure-lagring. Läs mer om alternativen för [geo-redundant](../storage/common/storage-redundancy.md#geo-redundant-storage) och [lokalt redundant](../storage/common/storage-redundancy.md#locally-redundant-storage) i denna [översikt av lagringsredundans](../storage/common/storage-redundancy.md).
+    Valvet använder geo-redundant lagring som standard. Om du använder Azure som en primär säkerhetskopieringslagring slutpunkt fortsätta toouse **Geo-redundant**. Om du inte använder Azure som en primär säkerhetskopieringslagring slutpunkt, Välj **lokalt redundant**, vilket minskar hello Azure lagringskostnader. Läs mer om alternativen för [geo-redundant](../storage/common/storage-redundancy.md#geo-redundant-storage) och [lokalt redundant](../storage/common/storage-redundancy.md#locally-redundant-storage) i denna [översikt av lagringsredundans](../storage/common/storage-redundancy.md).
 
 Nu när du har skapat ett valv konfigurerar du det för säkerhetskopiering av filer och mappar.
 
-## <a name="configure-the-vault"></a>Konfigurera valvet
-1. På bladet Recovery Services-valv (för valvet som du precis har skapat) klickar du på **Säkerhetskopiering** i avsnittet Komma igång och väljer sedan **Säkerhetskopieringsmål** på bladet **Kom igång med säkerhetskopiering**.
+## <a name="configure-hello-vault"></a>Konfigurera hello valvet
+1. Hej Recovery Services-valvet bladet (för hello valvet du just skapade), i hello komma igång-avsnittet, klickar du på **säkerhetskopiering**, sedan på hello **Kom igång med säkerhetskopiering** bladet väljer  **Säkerhetskopiering målet**.
 
     ![Öppna bladet för säkerhetskopieringsmål](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-    Bladet **Säkerhetskopieringsmål** öppnas.
+    Hej **säkerhetskopiering målet** blad öppnas.
 
     ![Öppna bladet för säkerhetskopieringsmål](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
-2. Från listrutan **Var körs din arbetsbelastning?** väljer du **Lokalt**.
+2. Från hello **var körs din arbetsbelastning?** nedrullningsbara menyn och väljer **lokalt**.
 
     Du väljer **Lokalt** eftersom din Windows Server- eller Windows-dator är en fysisk dator som inte finns i Azure.
 
-3. Från menyn **Vad vill du säkerhetskopiera?** väljer du **Filer och mappar** och klickar på **OK**.
+3. Från hello **vad vill du vill toobackup?** väljer du **filer och mappar**, och klicka på **OK**.
 
     ![Konfigurera filer och mappar](./media/backup-try-azure-backup-in-10-mins/set-file-folder.png)
 
-    När du klickar på OK visas en markering bredvid **Säkerhetskopieringsmål** och bladet **Förbered infrastruktur** öppnas.
+    När du klickar på OK, visas en markering nästa för**säkerhetskopiering målet**, och hello **Förbered infrastruktur** blad öppnas.
 
     ![När säkerhetskopieringsmålet har konfigurerats går du vidare och förbereder infrastrukturen](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
-4. På bladet **Förbered infrastruktur** klickar du på **Ladda ned agent för Windows Server eller Windows Client**.
+4. På hello **Förbered infrastruktur** bladet, klickar du på **ladda ned Agent för Windows Server och Windows-klient**.
 
     ![förbereda infrastrukturen](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
-    Om du använder Windows Server Essential väljer du att hämta agenten för Windows Server Essential. En popup-meny visas och du uppmanas att köra eller spara MARSAgentInstaller.exe.
+    Om du använder Windows Server viktigt, och välj sedan toodownload hello agent för Windows Server viktigt. Ett popup-menyn efterfrågar toorun eller spara MARSAgentInstaller.exe.
 
     ![Dialogrutan MARSAgentInstaller](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
 
-5. På snabbmenyn för hämtningen klickar du på **Spara**.
+5. I hello hämta popup-menyn, klickar du på **spara**.
 
-    Som standard sparas filen **MARSagentinstaller.exe** i mappen för nedladdningar. När installationsprogrammet har slutförts visas ett popup-fönster och du tillfrågas om du vill köra installationsprogrammet eller öppna mappen.
+    Som standard hello **MARSagentinstaller.exe** tooyour hämtningsmapp sparas i filen. När hello installer är klar visas ett popup-fönster som frågar om du vill toorun hello installer eller öppna hello mapp.
 
     ![förbereda infrastrukturen](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
-    Du behöver inte installera agenten än. Du kan installera agenten när du har hämtat valvautentiseringsuppgifterna.
+    Du behöver inte tooinstall hello agenten ännu. Du kan installera hello agenten när du har hämtat hello valvautentiseringsuppgifter.
 
-6. Klicka på **Ladda ned** på bladet **Förbered infrastruktur**.
+6. På hello **Förbered infrastruktur** bladet, klickar du på **hämta**.
 
     ![hämta autentiseringsuppgifter för valvet](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    Autentiseringsuppgifterna för valvet hämtas till mappen Hämtningsbara filer. När autentiseringsuppgifterna för valvet har hämtats visas ett popup-fönster och du tillfrågas om du vill öppna eller spara autentiseringsuppgifterna. Klicka på **Save** (Spara). Om du råkar klicka på **Öppna** av misstag väntar du tills dialogrutan som försöker öppna autentiseringsuppgifterna för valvet misslyckas. Du kan inte öppna valvautentiseringsuppgifterna. Gå vidare till nästa steg. Valvautentiseringsuppgifterna finns i mappen Hämtade filer.   
+    Hej valvautentiseringsuppgifter hämta tooyour hämtningsmapp. När hello valvautentiseringsuppgifter nedladdning, visas ett popup-fönster som frågar om du vill tooopen eller spara hello autentiseringsuppgifter. Klicka på **Spara**. Om du råkar klicka på **öppna**, låta hello dialogruta som försöker tooopen hello valvautentiseringsuppgifter, misslyckas. Du kan inte öppna hello valvautentiseringsuppgifter. Fortsätt toohello nästa steg. Hej valvautentiseringsuppgifter finns i hello hämtningsmapp.   
 
     ![valvautentiseringsuppgifterna har hämtats](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
 
-## <a name="install-and-register-the-agent"></a>Installera och registrera agenten
+## <a name="install-and-register-hello-agent"></a>Installera och registrera hello-agent
 
 > [!NOTE]
-> Aktivering av säkerhetskopiering via Azure Portal är inte tillgängligt ännu. Använd Microsoft Azure Recovery Services-agenten för att säkerhetskopiera filer och mappar.
+> Aktivera säkerhetskopiering via hello Azure-portalen är inte tillgängligt ännu. Använd hello Microsoft Azure Recovery Services-agenten tooback upp filer och mappar.
 >
 
-1. Leta upp och dubbelklicka på **MARSagentinstaller.exe** från mappen för nedladdade filer (eller en annan lagringsplats).
+1. Leta upp och dubbelklicka på hello **MARSagentinstaller.exe** från hello hämtningar mappen (eller andra lagringsplatsen).
 
-    Installationsprogrammet visar ett antal meddelanden när Recovery Services-agenten extraheras, installeras och registreras.
+    hello installer innehåller ett antal meddelanden som extraheras, installerar och registrerar hello Recovery Services-agenten.
 
     ![Autentiseringsuppgifter för att köra Recovery Services-agentinstallationsprogrammet](./media/backup-try-azure-backup-in-10-mins/mars-installer-registration.png)
 
-2. Slutför installationsguiden för Microsoft Azure Recovery Services Agent. För att slutföra guiden måste du:
+2. Slutför hello installationsguiden för Microsoft Azure Recovery Services-agenten. toocomplete hello guiden måste du:
 
-   * Välja en plats för installationen och cachelagringsmappen.
-   * Ange information om proxyservern om du använder en proxyserver för att ansluta till Internet.
+   * Välj en plats för hello installation och cache-mappen.
+   * Ange proxyserveradressen serverinformation om du använder en proxy server tooconnect toohello internet.
    * Ange ditt användarnamn och lösenord om du använder en autentiserad proxyserver.
-   * Ange autentiseringsuppgifterna som du hämtat för valvet.
-   * Spara krypteringslösenfrasen på en säker plats.
+   * Ange hello ned valvautentiseringsuppgifter
+   * Spara hello krypteringslösenfrasen på en säker plats.
 
      > [!NOTE]
-     > Om du tappar bort eller glömmer lösenfrasen kan Microsoft inte hjälpa dig att återställa dina säkerhetskopierade data. Spara filen på en säker plats. Det krävs för att återställa en säkerhetskopia.
+     > Om du förlorar eller glömmer hello lösenfras går inte Microsoft att återställa hello säkerhetskopierade data. Spara hello-filen på en säker plats. Det är obligatoriskt toorestore en säkerhetskopia.
      >
      >
 
-Nu installeras agenten och datorn registreras i valvet. Nu kan du konfigurera och schemalägga säkerhetskopieringen.
+hello-agent har installerats och datorn är registrerade toohello valvet. Du är klar tooconfigure och schemalägger säkerhetskopieringen.
 
 ## <a name="network-and-connectivity-requirements"></a>Nätverks- och anslutningskrav
 
-Om din dator/proxy har begränsad tillgång till Internet måste du se till att brandväggsinställningarna på mcahine/proxy har konfigurerats för att tillåta följande URL:er: <br>
+Om din dator/proxy har begränsad tillgång till internet, kan du kontrollera att brandväggen på hello mcahine/proxy är konfigurerade tooallow hello följande URL: er: <br>
     1. www.msftncsi.com
     2. *.Microsoft.com
     3. *.WindowsAzure.com
@@ -173,58 +173,58 @@ Om din dator/proxy har begränsad tillgång till Internet måste du se till att 
     5. *.windows.ne
 
 ## <a name="back-up-your-files-and-folders"></a>Säkerhetskopiera dina filer och mappar
-Den första säkerhetskopieringen omfattar två viktiga uppgifter:
+hello första säkerhetskopian innehåller två viktiga uppgifter:
 
-* Schemalägg säkerhetskopieringen
-* Säkerhetskopiera filer och mappar för första gången
+* Schemalägga hello säkerhetskopiering
+* Säkerhetskopiera filer och mappar för hello första gången
 
-För att slutföra den första säkerhetskopieringen använder du Microsoft Azure Recovery Services-agenten.
+toocomplete hello första säkerhetskopiering, Använd hello Microsoft Azure Recovery Services-agenten.
 
-### <a name="to-schedule-the-backup-job"></a>Så här schemalägger du säkerhetskopieringsjobbet
-1. Öppna Microsoft Azure Recovery Services-agenten. Du hittar den genom att söka efter **Microsoft Azure Backup** på datorn.
+### <a name="tooschedule-hello-backup-job"></a>tooschedule hello säkerhetskopieringsjobb
+1. Öppna hello Microsoft Azure Recovery Services-agenten. Du hittar den genom att söka efter **Microsoft Azure Backup** på datorn.
 
-    ![Starta Azure Recovery Services-agenten](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
-2. Klicka på Recovery Services-agenten och sedan på **Schemalägg säkerhetskopiering**.
+    ![Starta hello Azure Recovery Services-agenten](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
+2. Klicka på hello Recovery Services-agenten **schemalägga säkerhetskopiering**.
 
     ![Schemalägga en Windows Server-säkerhetskopiering](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
-3. Klicka på **Nästa** på sidan Komma igång i guiden Schemalägg säkerhetskopiering.
-4. På sidan Välj objekt som ska säkerhetskopieras klickar du på **Lägg till objekt**.
-5. Markera de filer och mappar som du vill säkerhetskopiera och klicka på **OK**.
+3. På hello komma igång-sidan hello guiden för Schemalägg säkerhetskopiering klickar du på **nästa**.
+4. På hello Välj objekt tooBackup klickar du på **Lägg till objekt**.
+5. Välj hello filer och mappar som du vill att tooback och klicka sedan på **okej**.
 6. Klicka på **Nästa**.
-7. På sidan **Ange schema för säkerhetskopiering** anger du **säkerhetskopieringsschemat** och klickar på **Nästa**.
+7. På hello **ange schemat för säkerhetskopiering** anger hello **Säkerhetskopieringsschemat** och på **nästa**.
 
     Du kan schemalägga säkerhetskopieringar varje dag (högst tre gånger om dagen) eller varje vecka.
 
     ![Objekt för Windows Server-säkerhetskopiering](./media/backup-try-azure-backup-in-10-mins/specify-backup-schedule-close.png)
 
    > [!NOTE]
-   > Mer information om hur du anger säkerhetskopieringsschemat finns i artikeln [Använda Azure Backup för att ersätta en bandbaserad infrastruktur](backup-azure-backup-cloud-as-tape.md).
+   > Mer information om hur toospecify hello schemat för säkerhetskopiering finns hello artikel [Använd Azure Backup tooreplace infrastrukturen band](backup-azure-backup-cloud-as-tape.md).
    >
 
-8. På sidan **Välj bevarandeprincip** väljer du **bevarandeprincipen** för säkerhetskopian.
+8. På hello **Välj bevarandeprincip** sidan, Välj hello **bevarandeprincip** hello säkerhetskopian.
 
-    Bevarandeprincipen anger hur länge säkerhetskopierade data lagras. I stället för att bara ange en ”platt princip” för alla säkerhetskopieringspunkter kan du ange olika bevarandeprinciper baserat på när säkerhetskopieringen utförs. Du kan ändra de dagliga, veckovisa, månatliga och årliga bevarandeprinciperna för att uppfylla dina behov.
-9. Välj den första säkerhetskopieringstypen på sidan Välj inledande säkerhetskopieringstyp. Lämna alternativet **Automatiskt över nätverket** markerat och klicka på **Nästa**.
+    hello bevarandeprincip anger hur länge hello säkerhetskopierade data lagras. Du kan ange olika bevarandeprinciper baserat på när hello säkerhetskopia i stället för att ange en ”platt policy” för alla säkerhetskopiering punkterna. Du kan ändra hello dagliga, veckovisa, månatliga och årliga Kvarhållningsintervall principer toomeet dina behov.
+9. Välj hello inledande säkerhetskopieringstyp hello på sidan Välj typ av inledande säkerhetskopiering. Lämna alternativet hello **automatiskt över hello nätverk** markerad och klicka sedan på **nästa**.
 
-    Du kan säkerhetskopiera automatiskt över nätverket, eller så kan du säkerhetskopiera offline. Resten av den här artikeln beskriver hur du säkerhetskopierar automatiskt. Om du föredrar att säkerhetskopiera offline läser du artikeln [Arbetsflöde för säkerhetskopiering offline i Azure Backup](backup-azure-backup-import-export.md) för ytterligare information.
-10. Läs informationen på sidan Bekräftelse och klicka sedan på **Slutför**.
-11. När guiden har skapat säkerhetskopieringsschemat klickar du på **Stäng**.
+    Du kan säkerhetskopiera automatiskt över hello nätverk eller du kan säkerhetskopiera offline. hello resten av den här artikeln beskrivs hello säkerhetskopiera automatiskt. Om du föredrar toodo en offlinesäkerhetskopiering granska hello artikel [Offline säkerhetskopiering arbetsflödet i Azure Backup](backup-azure-backup-import-export.md) för ytterligare information.
+10. På sidan Bekräfta hello granska hello information och klicka sedan på **Slutför**.
+11. När hello guiden är färdig med hello schemat för säkerhetskopiering, klickar du på **Stäng**.
 
-### <a name="to-back-up-files-and-folders-for-the-first-time"></a>Så här säkerhetskopierar du filer och mappar för första gången
-1. I Recovery Services-agenten klickar du på **Säkerhetskopiera nu** för att slutföra en inledande seeding över nätverket.
+### <a name="tooback-up-files-and-folders-for-hello-first-time"></a>tooback av filer och mappar för hello första gången
+1. Klicka på hello Recovery Services-agenten **Säkerhetskopiera nu** toocomplete hello inledande seeding hello nätverket.
 
     ![Säkerhetskopiera Windows Server nu](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
-2. Gå igenom inställningarna på sidan Bekräftelse som guiden Säkerhetskopiera nu ska använda för att säkerhetskopiera datorn. Klicka på **Säkerhetskopiera**.
-3. Stäng guiden genom att klicka på **Stäng**. Om du stänger guiden innan säkerhetskopieringen är klar fortsätter guiden att köras i bakgrunden.
+2. På sidan Bekräfta hello använder hello granskningsinställningar som hello tillbaka nu guiden Installera tooback upp hello-datorn. Klicka på **Säkerhetskopiera**.
+3. Klicka på **Stäng** tooclose hello guiden. Om du stänger guiden hello innan hello säkerhetskopieringen är klar fortsätter hello guiden toorun i hello bakgrund.
 
-När den första säkerhetskopieringen har slutförts visas statusen **Jobbet har slutförts** i säkerhetskopieringskonsolen.
+När hello första säkerhetskopieringen har slutförts hello **jobbet slutfört** status visas i konsolen för hello-säkerhetskopiering.
 
 ![IR slutfört](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## <a name="questions"></a>Har du några frågor?
-Om du har frågor eller om du saknar en funktion är du välkommen att [lämna feedback](http://aka.ms/azurebackup_feedback).
+## <a name="questions"></a>Frågor?
+Om du har frågor eller om det inte finns någon funktion som du vill att toosee ingår, [skicka feedback](http://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Nästa steg
 * Få mer information om hur du [säkerhetskopierar Windows-datorer](backup-configure-vault.md).
 * Nu när du har säkerhetskopierat dina filer och mappar kan du [hantera dina valv och servrar](backup-azure-manage-windows-server.md).
-* Om du behöver återställa en säkerhetskopia använder du den här artikeln för att [återställa filer till en Windows-dator](backup-azure-restore-windows-server.md).
+* Om du behöver toorestore en säkerhetskopia kan använda den här artikeln för[återställa filer tooa Windows datorn](backup-azure-restore-windows-server.md).

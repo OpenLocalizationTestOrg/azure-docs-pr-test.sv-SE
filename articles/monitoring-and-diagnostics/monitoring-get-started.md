@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med Azure-Monitor | Microsoft Docs"
-description: "Kom igång med Azure Monitor och få insyn i dina resursers användning och vidta åtgärder som är baserade på data."
+title: "aaaGet igång med Azure-Monitor | Microsoft Docs"
+description: "Komma igång med Azure-Monitor toogain inblick i hello driften av dina resurser och vidta åtgärder som är baserade på data."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: johnkem
-ms.openlocfilehash: a4871cdee882fae8e43f84ce4f2fa0b4c0a8e1de
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 49e7105621a9e60c9fa14c4911c4fe45e0d197a6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-monitor"></a>Kom igång med Azure Monitor
-Azure Monitor är plattformstjänst som tillhandahåller en enda källa för övervakning av Azure-resurser. Med Azure Monitor kan du visualisera, fråga, vidarebefordra, aktivera och vidta åtgärder för mått och loggar från resurser i Azure.  Du kan arbeta med dessa data med Monitor-portalbladet, [Monitor PowerShell Cmdlets](insights-powershell-samples.md), [plattformsoberoende CLI](insights-cli-samples.md) eller [REST API:er för Azure Monitor](https://msdn.microsoft.com/library/dn931943.aspx). I den här artikeln går vi igenom några av de viktigaste komponenterna i Azure Monitor, med portalen för demonstration.
+Azure övervakaren är hello platform-tjänst som tillhandahåller en enda källa för övervakning av Azure-resurser. Med Azure-Monitor kan du visualisera, fråga, vidarebefordra, arkivera och vidta åtgärder för hello mått och loggar som kommer från resurser i Azure. Du kan arbeta med dessa data med hello övervakaren portalbladet och [övervakaren PowerShell-Cmdlets](insights-powershell-samples.md), [plattformsoberoende CLI](insights-cli-samples.md), eller [Azure övervakaren REST API: er](https://msdn.microsoft.com/library/dn931943.aspx). I den här artikeln vi att gå igenom några av hello huvudkomponenterna i Azure-Monitor med hello portal för att demonstrera.
 
-1. I portalen navigerar du till **More services** (Fler tjänster) och letar rätt på alternativet **Monitor**. Klicka på stjärnikonen för att lägga till det här alternativet i favoritlistan så att det alltid är lättillgängligt från det vänstra navigeringsfältet.
+1. I hello portal, navigerar för**fler tjänster** och hitta hello **övervakaren** alternativet. Klicka på hello stjärnikonen tooadd alternativet tooyour favoritlistan så att det alltid är lättillgängligt från hello vänstra navigeringsfältet.
    
-    ![Monitor i listan över tjänster](./media/monitoring-get-started/monitor-more-services.png)
-2. Klicka på alternativet **Monitor** för att öppna bladet **Monitor**. På det här bladet sammanförs alla dina övervakningsinställningar och -data till en sammanslagen vy. Först öppnas den i avsnittet **Aktivitetslogg**.
+    ![Övervaka i hello Tjänstlista](./media/monitoring-get-started/monitor-more-services.png)
+2. Klicka på hello **övervakaren** alternativet tooopen in hello **övervakaren** bladet. På det här bladet sammanförs alla dina övervakningsinställningar och -data till en sammanslagen vy. Öppnas toohello **aktivitetsloggen** avsnitt.
    
     ![Navigera i Monitor-bladet](./media/monitoring-get-started/monitor-blade-nav.png)
    
-    Azure Monitor har tre grundläggande kategorier av övervakningsdata: **aktivitetsloggen**, **mätvärden** och **diagnostikloggar**.
-3. Klicka på **Aktivitetslogg** så att avsnittet för aktivitetslogg visas.
+    Azure övervakaren har tre grundläggande kategorier av övervakningsdata: hello **aktivitetsloggen**, **mått**, och **diagnostikloggar**.
+3. Klicka på **aktivitetsloggen** tooensure som hello aktivitet loggen avsnitt visas.
    
     ![Bladet Aktivitetslogg](./media/monitoring-get-started/monitor-act-log-blade.png)
    
-    I [**aktivitetsloggen**](monitoring-overview-activity-logs.md) beskrivs alla åtgärder som utförts på resurser i din prenumeration. Med aktivitetsloggen kan du bestämma ”vad, vem och när” för att skapa, uppdatera eller ta bort resurser i din prenumeration. Aktivitetsloggen anger exempelvis när en webbapp har stoppats och vem som stoppade den. Händelser i aktivitetsloggen finns lagrade i plattformen och kan frågas i 90 dagar.
+    Hej [ **aktivitetsloggen** ](monitoring-overview-activity-logs.md) beskriver alla åtgärder som utförts på resurser i din prenumeration. Använder hello aktivitetsloggen, kan du bestämma hello ' vad som, och när ' för alla skapa, uppdatera eller ta bort åtgärder på resurser i din prenumeration. Hello aktivitetsloggen anger du när ett webbprogram har stoppats och som hindrade den. Aktiviteten logghändelser lagras i hello plattform och tillgängliga tooquery i 90 dagar.
    
-    Du kan skapa och spara frågor för vanliga filter och fästa de viktigaste frågorna till en instrumentpanel i portalen så att du alltid vet om det har inträffat några händelser som uppfyller dina kriterier.
-4. Filtrera vyn till en viss resursgrupp under den senaste veckan, och klicka sedan på knappen **Spara**.
+    Du kan skapa och spara frågor för vanliga filter och PIN-kod hello viktigaste frågor tooa portalens instrumentpanel så att du vet alltid om händelser som uppfyller dina kriterier har inträffat.
+4. Filtrera hello visa tooa just den resursgruppen över hello föregående vecka och klicka sedan på hello **spara** knappen.
    
     ![Spara aktivitetsloggfråga](./media/monitoring-get-started/monitor-act-log-save.png)
-5. Klicka nu på knappen **Fäst**.
+5. Klicka på hello **PIN-kod** knappen.
    
     ![Klicka på Fäst för aktivitetslogg](./media/monitoring-get-started/monitor-act-log-pin.png)
    
-    De flesta vyer i den här genomgången kan vara fästa på en instrumentpanel. På så sätt kan du skapa en enskild informationskälla för användningsdata i dina tjänster. 
-6. Gå tillbaka till instrumentpanelen. Du kan nu se att frågan (och antal resultat) visas på instrumentpanelen. Detta är användbart om du t.ex. snabbt vill kunna se viktiga åtgärder som har inträffat nyligen i din prenumeration. att en ny roll tilldelades eller att en virtuell dator raderades.
+    De flesta hello vyerna i den här genomgången kan vara Fäst tooa instrumentpanelen. På så sätt kan du skapa en enskild informationskälla för användningsdata i dina tjänster. 
+6. Returnera tooyour instrumentpanelen. Du kan nu se att hello-fråga (och antalet resultat) visas i instrumentpanelen. Detta är användbart om du vill se tooquickly några åtgärder för hög-profil som har genomförts nyligen i din prenumeration, t.ex. att en ny roll tilldelades eller att en virtuell dator raderades.
    
-    ![Aktivitetsloggen fäst på instrumentpanelen](./media/monitoring-get-started/monitor-act-log-db.png)
-7. Återgå till panelen **Monitor** och klicka på avsnittet **Mått**. Du måste först välja en resurs genom att filtrera och markera med hjälp av de nedrullningsbara alternativen överst på bladet.
+    ![Aktiviteten loggen Fäst toodashboard](./media/monitoring-get-started/monitor-act-log-db.png)
+7. Returnera toohello **övervakaren** panelen och klickar på hello **mått** avsnitt. Du måste först tooselect en resurs genom filtrering och välja med hello nedrullningsbara alternativ hello överst i hello-bladet.
    
     ![Filtrera resurs för mått](./media/monitoring-get-started/monitor-met-filter.png)
    
     Alla Azure-resurser genererar [**mätvärden**](monitoring-overview-metrics.md). I den här vyn samlas alla mått på en och samma plats så att du lätt kan förstå hur dina resurser arbetar.
-8. När du har valt en resurs visas alla tillgängliga mått på vänster sida av bladet. Du kan göra diagram över flera mått samtidigt genom att välja mått och ändra intervallet för diagrammets typ och tid. Du kan också visa alla måttaviseringar på den här resursen.
+8. När du har valt en resurs, visas alla tillgängliga mått på hello vänster sida av hello-bladet. Du kan skapa diagram över flera mått på en gång genom att välja mått och ändra hello diagrammet typ och ett tidsintervall. Du kan också visa alla måttaviseringar på den här resursen.
    
     ![Bladet Mått](./media/monitoring-get-started/monitor-metric-blade.png)
    
@@ -62,40 +62,40 @@ Azure Monitor är plattformstjänst som tillhandahåller en enda källa för öv
    > Vissa mått är bara tillgängliga om du aktiverar [Application Insights](../application-insights/app-insights-overview.md) och/eller Windows eller Linux Azure-diagnostik på din resurs.
    > 
    > 
-9. När du är nöjd med diagrammet kan du använda knappen **Fäst** för att fästa den på instrumentpanelen.
-10. Återgå till bladet **Monitor** och klicka på **Diagnostikloggar**.
+9. När du är nöjd med ditt diagram, kan du använda hello **PIN-kod** knappen toopin den tooyour instrumentpanelen.
+10. Returnera toohello **övervakaren** bladet och klicka på **diagnostikloggar**.
     
     ![Bladet Diagnostikloggar](./media/monitoring-get-started/monitor-diaglogs-blade.png)
     
-    [**Diagnostikloggar**](monitoring-overview-of-diagnostic-logs.md) är loggar som genereras *av* en källa som tillhandahåller data om användningen av just den resursen. Till exempel är loggarna Network Security Group Rule Counters (regelräknare för nätverkssäkerhetsgrupp) och logikappsarbetsflöde båda typer av diagnostikloggar. Du kan lagra loggarna på ett lagringskonto, strömma till en händelsehubb och/eller skicka till [Log Analytics](../log-analytics/log-analytics-overview.md). Log Analytics är Microsofts produkt för driftsinformation för avancerad sökning och avisering.
+    [**Diagnostikloggar** ](monitoring-overview-of-diagnostic-logs.md) är loggar som orsakat *av* en resurs som innehåller data om hello driften av just den resursen. Till exempel är loggarna Network Security Group Rule Counters (regelräknare för nätverkssäkerhetsgrupp) och logikappsarbetsflöde båda typer av diagnostikloggar. Dessa loggar kan lagras i ett lagringskonto, direktuppspelat tooan Event Hub eller skickas för[logganalys](../log-analytics/log-analytics-overview.md). Log Analytics är Microsofts produkt för driftsinformation för avancerad sökning och avisering.
     
-    I portalen kan du visa och filtrera en lista över alla resurser i din prenumeration för att identifiera om de har aktiverat diagnostikloggar.
-11. Klicka på en resurs på bladet Diagnostikloggar. Om diagnostikloggar lagras på ett lagringskonto visas en lista med timloggar som du kan ladda ned direkt.
+    Du kan visa och filtrera en lista över alla resurser i din prenumeration tooidentify om de har diagnostikloggar aktiverad i hello-portalen.
+11. Klicka på en resurs i hello diagnostikloggar bladet. Om diagnostikloggar lagras på ett lagringskonto visas en lista med timloggar som du kan ladda ned direkt.
     
     ![Diagnostikloggar för en resurs](./media/monitoring-get-started/monitor-diaglogs-detail.png)
     
-    Du kan också klicka på **Diagnostikinställningar**. Då kan du konfigurera eller ändra inställningarna för arkivering till ett lagringskonto, strömma till Event Hubs eller skicka till en Log Analytics-arbetsyta.
+    Du kan också klicka på **diagnostikinställningar**, vilket kan du tooset in eller ändra inställningar för arkivering tooa lagringskontot strömning tooEvent nav eller för att skicka tooa logganalys-arbetsytan.
     
     ![Aktivera diagnostikloggar](./media/monitoring-get-started/monitor-diaglogs-enable.png)
     
-    Om du har registrerat diagnostikloggar till Log Analytics kan du sedan söka efter den i avsnittet **Loggsökning** i portalen.
-12. Navigera till avsnittet **Aviseringar** på Monitor-bladet.
+    Om du har ställt in diagnostikloggar tooLog Analytics, kan du söka dem i hello **loggen Sök** på hello portal.
+12. Navigera toohello **aviseringar** avsnitt i hello övervakaren bladet.
     
     ![offentligt aviseringsblad](./media/monitoring-get-started/monitor-alerts-nopp.png)
     
-    Här kan du hantera alla [**aviseringar**](monitoring-overview-alerts.md) på dina Azure-resurser. Detta inkluderar aviseringar på mått, aktivitet logghändelser, webbtester med Application Insights (platser) och proaktiv diagnostik i Application Insights. Aviseringar kan utlösa e-postmeddelanden eller en HTTP POST till en webhook-webbadress.
-13. Klicka på **Add metric alert** (Lägg till måttavisering) för att skapa en avisering.
+    Här kan du hantera alla [**aviseringar**](monitoring-overview-alerts.md) på dina Azure-resurser. Detta inkluderar aviseringar på mått, aktivitet logghändelser, webbtester med Application Insights (platser) och proaktiv diagnostik i Application Insights. Aviseringar kan utlösa en e-toobe skickas eller en HTTP POST tooa Webhooksadressen.
+13. Klicka på **Lägg till mått avisering** toocreate en avisering.
     
     ![lägg till måttavisering](./media/monitoring-get-started/monitor-alerts-add.png)
     
-    Du kan sedan fästa en avisering i din instrumentpanel och enkelt se dess tillstånd när som helst.
-14. I avsnittet Monitor finns också länkar till [Application Insights](../application-insights/app-insights-overview.md)-program och [Log Analytics](../log-analytics/log-analytics-overview.md)-hanteringslösningar. Dessa andra Microsoft-produkter har djupgående integrering med Azure Monitor.
-15. Om du inte använder Application Insights eller Log Analytics finns en risk för att Azure Monitor har ett samarbete med dina aktuella produkter för övervakning, loggning och aviseringar. På vår [partnersida](monitoring-partners.md) finns en fullständig lista och instruktioner för hur du integrerar.
+    Du kan sedan PIN-kod en avisering tooyour instrumentpanelen tooeasily finns tillståndet när som helst.
+14. hello övervakaren avsnittet innehåller också länkar för[Programinsikter](../application-insights/app-insights-overview.md) program och [logganalys](../log-analytics/log-analytics-overview.md) lösningar för hantering. Dessa andra Microsoft-produkter har djupgående integrering med Azure Monitor.
+15. Om du inte använder Application Insights eller Log Analytics finns en risk för att Azure Monitor har ett samarbete med dina aktuella produkter för övervakning, loggning och aviseringar. Se vår [partners sidan](monitoring-partners.md) för en fullständig lista över och instruktioner för hur toointegrate.
 
-Genom att följa de här stegen och fästa alla relevanta paneler vid en instrumentpanel kan du skapa omfattande vyer över programmet och infrastrukturen som den här:
+Genom att följa dessa steg och fästa alla relevanta paneler tooa instrumentpanelen kan skapa du omfattande vyer för programmet och infrastruktur som det här:
 
 ![Azure Monitor-instrumentpanel](./media/monitoring-get-started/monitor-final-dash.png)
 
 ## <a name="next-steps"></a>Nästa steg
-* Läs [Översikt över Azure Monitor](monitoring-overview.md)
+* Läs hello [översikt av Azure-Monitor](monitoring-overview.md)
 

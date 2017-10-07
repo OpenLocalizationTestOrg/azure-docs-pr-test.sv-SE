@@ -1,6 +1,6 @@
 ---
-title: "Microsoft-tjänster i Cybersecurity | Microsoft Docs"
-description: "Artikeln ger en introduktion om Microsoft-tjänster som rör cybersecurity och skaffa mer information om dessa tjänster."
+title: "aaaMicrosoft tjänster i Cybersecurity | Microsoft Docs"
+description: "hello artikeln ger en introduktion om relaterade toocybersecurity för Microsoft-tjänster och hur tooobtain mer information om dessa tjänster."
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
-ms.openlocfilehash: 1560ea8b224be0f6bc723f64d8f154805b2771e5
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d29832f0ffa10020ab44ff69306971e55d393b97
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Microsoft-tjänster i Cybersecurity
-Microsoft Services ger en omfattande metod för säkerhet, identitet och cybersecurity. Microsoft Services innehåller en matris av säkerhet och identitet tjänster över strategi, planering, implementering och pågående stöd som kan kunderna Enterprise Implementera heltäckande säkerhetslösningar som överensstämmer med deras strategiska mål.
+Microsoft Services ger en omfattande metod toosecurity, identitet och cybersecurity. Microsoft Services innehåller en matris av säkerhet och identitet tjänster över strategi, planering, implementering och pågående stöd som kan kunderna Enterprise Implementera heltäckande säkerhetslösningar som överensstämmer med deras strategiska mål.
 
-Direkt åtkomst till Produktutvecklingsgrupper vi skapa lösningar som integrerar och förbättra de senaste identitetsfunktionerna för säkerhet och av våra produkter för att skydda våra kundens företag och driva utvecklingsprojekt.
+Med direktåtkomst tooproduct utvecklingsgrupper, vi kan skapa lösningar som integrerar och förbättra hello senaste säkerheten och identitetsfunktionerna i våra produkter toohelp skydda våra kundens företag och driva utvecklingsprojekt.
 
-Ansvarar för att bidra till att skydda och organisationerna världens största, består våra olika tekniker-grupp av hög utbildade experter som erbjuder en mängd säkerhet och identitet upplevelse.
+Ansvarar för att bidra till att skydda och organisationerna hello world största, består våra olika tekniker-grupp av hög utbildade experter som erbjuder en mängd säkerhet och identitet upplevelse.
 
 Mer information om tjänster som tillhandahålls av Microsoft Services:
 

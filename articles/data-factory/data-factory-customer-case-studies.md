@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory - kundfallstudier | Microsoft Docs
+title: aaaAzure Data Factory - kundfallstudier | Microsoft Docs
 description: "Läs mer om hur några av våra kunder har använt Azure Data Factory."
 services: data-factory
 documentationcenter: 
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
-ms.openlocfilehash: c5620a2c02ec4d2abfef40ab5c41bf6ad393a3d9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 8787a27c10cb9509d8f0d811b4fed3100595e480
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory - kundfallstudier
-Data Factory är en molnbaserad information management-tjänst som automatiserar rörelser och transformering av data. Kunder mellan många branscher använder Data Factory och andra Azure-tjänster för att skapa deras analytics pipelines och lösa sina affärsproblem.  Lär dig direkt från våra kunder hur och varför de använder Data Factory.
+Data Factory är en molnbaserad information management-tjänst som automatiserar hello rörelser och transformering av data. Kunder mellan många branscher använder Data Factory och andra Azure-tjänster toobuild sina analytics pipelines och lösa sina affärsproblem.  Lär dig direkt från våra kunder hur och varför de använder Data Factory.
 
 ## <a name="milliman"></a>Milliman
-[Övre Actuarial fast omvandlar insurance bransch](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
+[De främsta Actuarial fast transformeringar hello insurance branschen](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20096)
 
 ## <a name="rockwell-automation"></a>Rockwell Automation
-[Industriell Automation fast minskar kostnaderna för upp till 90 procent med stordata lösningar](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)
+[Industriell Automation fast minskar kostnaderna too90 procent med stordata lösningar](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18356)
 
 ## <a name="ziosk"></a>Ziosk
-[Vilka spel du vill gå med den burger? Ziosk kanske redan vet.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
+[Vad spel du vill toogo med den burger? Ziosk kanske redan vet.](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18294)
 
 ## <a name="alaska-airlines"></a>Alaska flygbolagen
-[Flygbolag använder surfplattor molntjänster kan erbjuda mer intressant relä underhållning](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
+[Flygbolag använder surfplattor, Cloud Services tooOffer mer intressant In-Flight underhållning](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=19357)
 
 ## <a name="tacoma-public-schools"></a>Tacoma offentliga skolorna
 [Förutsäga student annullerad risker, öka vilket priser med molnet analytics](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20703)
 
 ## <a name="real-madrid-fc"></a>Verklig Madrid FC
-[Verklig Madrid ger stadium närmare till 450 miljoner fläktar i världen, med Microsoft Cloud](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
+[Verklig Madrid ger hello stadium närmare too450 miljoner fläktar kring hello jordglob med hello Microsoft Cloud](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=20522)
 
 ## <a name="pier-1-imports"></a>Pier 1 Imports
 [Söka efter en bättre anslutning med kunder via molnet Machine Learning](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11257)

@@ -1,5 +1,5 @@
 ---
-title: "Notification Hubs – Enterprise Push-arkitektur"
+title: aaaNotification NAV - Enterprise Push-arkitektur
 description: "Anvisningar om hur du använder Azure Notification Hubs i en företagsmiljö"
 services: notification-hubs
 documentationcenter: 
@@ -14,26 +14,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c3afb83de1ba0882bf99e10f38cca40cb42d07a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Push-arkitekturvägledning för företag
-Företag befordras idag gradvis mot skapa mobila program för slutanvändarna (externa) eller för anställda (intern). De har befintliga serverdelssystem på plats vara den stordatorer eller vissa LoB-program som integreras i arkitektur för mobila program. Den här guiden kommer talar om hur bäst att göra den här integreringen rekommenderar möjlig lösning till vanliga scenarier.
+Företag befordras idag gradvis mot skapa mobila program för slutanvändarna (externa) eller för hello anställda (intern). De har befintliga serverdelssystem för att den stordatorer eller vissa LoB-program som integreras i hello mobilprogram arkitektur. Den här guiden kommer att tala om bästa toodo integrationen rekommenderar möjlig lösning toocommon scenarier.
 
-En ofta krävs för att skicka push-meddelanden till användare via sina mobila program när en händelse av intresse inträffar i backend-system. T.ex. en bankkund som har den bank bank appen på sin iPhone vill meddelas när en debitering görs över en viss mängd från sitt konto eller ett intranätscenario där en medarbetare från ekonomiavdelningen som har en budget godkännande appen på sin Windows Phone inte vill givna när han hämtar en begäran om godkännande.
+En ofta krävs för att skicka push notification toohello användare via sina mobila program när en händelse av intresse uppstår i hello serverdelssystem. T.ex. en bank som har hello bank bank appen på sin iPhone kunden toobe meddelas när en debitering görs över en viss mängd från sitt konto eller ett intranätscenario där en medarbetare från ekonomiavdelningen som har en budget godkännande appen på sin Windows Phone vill toobe ett meddelande när han hämtar en begäran om godkännande.
 
-Konto eller godkännande bearbetning kommer troligen att göras i vissa backend-system som måste initiera en sändning till användaren. Det kan finnas flera sådana backend-system som skapa samma typ av logik för att implementera push när en händelse utlöser ett meddelande. Komplexitet här ligger i integrera flera serverdelssystem tillsammans med ett enda push-system där slutanvändarna kan prenumererar på olika meddelanden och det kan även finnas flera mobila program som t.ex. intranät-Appar där en mobilprogram kanske vill ta emot meddelanden från flera sådana backend-system. Backend-system inte känner till eller behöver veta för push-semantik/teknik så att en vanlig lösning har traditionellt att införa en komponent som genomsöker serverdelssystem för alla händelser och ansvarar för att skicka push-meddelanden till den klienten.
-Här kommer vi om en ännu bättre lösning med hjälp av Azure Service Bus - ämne /-prenumeration modellen som minskar komplexiteten när lösningen skalbara.
+hello konto eller godkännande bearbetning är sannolikt toobe göras i vissa backend-system som måste initiera en push-toohello användare. Det kan finnas flera backend som måste alla bygga hello samma typ av logik tooimplement push när en händelse utlöser ett meddelande. hello komplexitet här ligger i integrera flera serverdelssystem tillsammans med ett enda push-system där hello slutanvändare kan prenumererar toodifferent meddelanden och det kan även vara flera mobila program, t.ex. i hello skiftläget för intranät-Appar ett mobilt program kanske där tooreceive meddelanden från flera sådana backend-system. Hej serverdelssystem inte känner till eller behöver tooknow för push-semantik/teknik för en vanlig lösning har traditionellt toointroduce en komponent som genomsöker hello serverdelssystem för alla händelser och ansvarar för att skicka hello push-meddelanden toohello klient.
+Här kommer vi om en ännu bättre lösning med hjälp av Azure Service Bus - ämne /-prenumeration modellen som minskar komplexiteten hello när hello lösning skalbar.
 
-Här är lösningen allmänna arkitektur (generaliserad med flera mobila appar men lika tillämpliga när det finns endast en mobil app)
+Här är hello allmänna arkitektur hello-lösning (generaliserad med flera mobila appar men lika tillämpliga när det finns endast en mobil app)
 
 ## <a name="architecture"></a>Arkitektur
 ![][1]
 
-Den nyckel i den här Arkitekturdiagram är Azure Service Bus som ger en prenumerationer eller det avsnitt programmeringsmodellen (mer om den på [Service Bus Pub/Sub programmering]). Mottagaren som i det här fallet är mobila serverdel (vanligtvis [Azure-Mobiltjänst], som initierar en push för mobila appar) inte ta emot meddelanden direkt från backend-system, men i stället har vi ett mellanliggande Abstraktionslager som tillhandahålls av [Azure Service Bus] som gör det möjligt för mobila serverdel ta emot meddelanden från en eller flera serverdelssystem. Ett Service Bus-ämne måste skapas för varje serverdelssystem t.ex. konto HR, ekonomi som i princip ”intresseområden” som initierar meddelanden ska skickas som push-meddelande. Backend-system ska skicka meddelanden till det här avsnittet. En mobila serverdel kan prenumerera på en eller flera ämnen genom att skapa en Service Bus-prenumeration. Detta ger mobilserverdel tar emot ett meddelande från motsvarande backend-systemet. Mobilserverdel fortsätter att lyssnar efter meddelanden på sina prenumerationer och när ett meddelande tas emot den stängs tillbaka och skickar det som meddelande till dess meddelandehubben. Meddelandehubbar sedan slutligen levereras till mobilappen. Om du vill sammanfatta nyckelkomponenterna har vi:
+hello nyckel i den här Arkitekturdiagram är Azure Service Bus som ger en prenumerationer eller det avsnitt programmeringsmodellen (mer om den på [Service Bus Pub/Sub programmering]). hello mottagare, som i det här fallet är hello mobila serverdel (vanligtvis [Azure-Mobiltjänst], som initierar en push-toohello mobila appar) inte ta emot meddelanden direkt från hello serverdelssystem men i stället har vi ett mellanliggande Abstraktionslager som tillhandahålls av [Azure Service Bus] som gör det möjligt för mobilserverdel tooreceive meddelanden från en eller flera serverdelssystem. Ett Service Bus-ämne måste toobe skapas för varje hello serverdelssystem t.ex. konto HR, ekonomi som i princip ”intresseområden” som initierar meddelanden toobe skickas som push-meddelande. Hej serverdelssystem skickar meddelanden toothese avsnitt. En mobila serverdel kan prenumerera på tooone eller flera sådana avsnitt genom att skapa en Service Bus-prenumeration. Detta ger hello mobilserverdel tooreceive ett meddelande från hello motsvarande backend-systemet. Mobilserverdel fortsätter toolisten för meddelanden på sina prenumerationer och när ett meddelande tas emot den stängs tillbaka och skickar som meddelandehubben tooits meddelande. Notification hubs ger sedan slutligen hello meddelandet toohello mobila appar. Toosummarize hello viktiga komponenter, har vi:
 
 1. Serverdelssystem (LoB/äldre system)
    * Skapar Service Bus-ämne
@@ -41,47 +41,47 @@ Den nyckel i den här Arkitekturdiagram är Azure Service Bus som ger en prenume
 2. Mobil serverdel
    * Skapar en prenumeration på tjänsten
    * Tar emot meddelandet (från Backend-system)
-   * Skickar meddelandet till klienter (via Azure Notification Hub)
+   * Skickar meddelandet tooclients (via Azure Notification Hub)
 3. Mobila program
    * Tar emot och visa meddelandet
 
 ### <a name="benefits"></a>Fördelar:
-1. Frikoppling mellan mottagaren (app/Mobiltjänst via Notification Hub) och avsändaren (serverdelssystem) gör att ytterligare serverdelssystem integreras med minimal förändring.
-2. Det gör även scenariot för att kunna ta emot händelser från en eller flera serverdelssystem för flera mobila appar.  
+1. hello sambandet mellan hello mottagare (app/Mobiltjänst via Notification Hub) och avsändaren (serverdelssystem) gör att ytterligare serverdelssystem integreras med minimal förändring.
+2. Det gör även hello scenario där flera mobila appar som kan tooreceive händelser från en eller flera serverdelssystem.  
 
 ## <a name="sample"></a>Exempel:
 ### <a name="prerequisites"></a>Krav
-Du bör genomföra följande kurser att bekanta med begrepp som vanliga Skapa & konfigurationssteg:
+Du bör utföra hello följande kurser toofamiliarize hello koncept samt vanliga åtgärder för skapande och konfiguration:
 
-1. [Service Bus Pub/Sub programmering] -detta beskriver hur du arbetar med Service Bus avsnitt/prenumerationer, hur du skapar ett namnområde för att innehålla avsnitt/prenumerationer, så skicka och ta emot meddelanden från dem.
-2. [Notification Hubs – självstudiekurs för Windows Universal] -här beskrivs hur du ställer in en app för Windows Store och använda Notification Hubs för att registrera och ta emot meddelanden.
+1. [Service Bus Pub/Sub programmering] -det förklarar hello detaljer att arbeta med prenumerationer/Service Bus avsnitt, hur toocreate ett namnområde toocontain avsnitt/prenumerationer, hur toosend & ta emot meddelanden från dem.
+2. [Notification Hubs – självstudiekurs för Windows Universal] -det förklarar hur tooset upp en Windows Store-app och använda Notification Hubs tooregister och ta emot meddelanden.
 
 ### <a name="sample-code"></a>Exempelkod
-Fullständig exempelkod finns på [Notification Hub exempel]. Den är uppdelad i tre komponenter:
+hello fullständig exempelkod finns på [Notification Hub exempel]. Den är uppdelad i tre komponenter:
 
 1. **EnterprisePushBackendSystem**
    
-    a. Det här projektet använder den *WindowsAzure.ServiceBus* Nuget-paketet och baseras på [Service Bus Pub/Sub programmering].
+    a. Det här projektet använder hello *WindowsAzure.ServiceBus* Nuget-paketet och baseras på [Service Bus Pub/Sub programmering].
    
-    b. Det här är en enkel C#-konsolapp att simulera en LoB-systemet som startar meddelandet som ska levereras till mobilappen.
+    b. Det här är en enkel C#-konsolen app toosimulate LoB-systemet som startar hello meddelandet toobe levereras toohello mobila appar.
    
         static void Main(string[] args)
         {
             string connectionString =
                 CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
    
-            // Create the topic where we will send notifications
+            // Create hello topic where we will send notifications
             CreateTopic(connectionString);
    
             // Send message
             SendMessage(connectionString);
         }
    
-    c. `CreateTopic`används för att skapa Service Bus-ämne där vi ska skicka meddelanden.
+    c. `CreateTopic`är används toocreate hello Service Bus-ämne där vi ska skicka meddelanden.
    
         public static void CreateTopic(string connectionString)
         {
-            // Create the topic if it does not exist already
+            // Create hello topic if it does not exist already
    
             var namespaceManager =
                 NamespaceManager.CreateFromConnectionString(connectionString);
@@ -92,19 +92,19 @@ Fullständig exempelkod finns på [Notification Hub exempel]. Den är uppdelad i
             }
         }
    
-    d. `SendMessage`används för att skicka meddelanden till den här Service Bus-ämne. Här skickar vi bara slumpmässiga meddelanden till avsnittet regelbundet i exemplet. Normalt kan det finnas en backend-system som ska skicka meddelanden när en händelse inträffar.
+    d. `SendMessage`är används toosend hello meddelanden toothis Service Bus-ämne. Här skickar vi helt enkelt en uppsättning slumpmässiga meddelanden toohello avsnittet med jämna mellanrum för hello syftet hello exempel. Normalt kan det finnas en backend-system som ska skicka meddelanden när en händelse inträffar.
    
         public static void SendMessage(string connectionString)
         {
             TopicClient client =
                 TopicClient.CreateFromConnectionString(connectionString, sampleTopic);
    
-            // Sends random messages every 10 seconds to the topic
+            // Sends random messages every 10 seconds toohello topic
             string[] messages =
             {
                 "Employee Id '{0}' has joined.",
                 "Employee Id '{0}' has left.",
-                "Employee Id '{0}' has switched to a different team."
+                "Employee Id '{0}' has switched tooa different team."
             };
    
             while (true)
@@ -124,27 +124,27 @@ Fullständig exempelkod finns på [Notification Hub exempel]. Den är uppdelad i
         }
 2. **ReceiveAndSendNotification**
    
-    a. Det här projektet använder den *WindowsAzure.ServiceBus* och *Microsoft.Web.WebJobs.Publish* Nuget-paket och baseras på [Service Bus Pub/Sub programmering].
+    a. Det här projektet använder hello *WindowsAzure.ServiceBus* och *Microsoft.Web.WebJobs.Publish* Nuget-paket och baseras på [Service Bus Pub/Sub programmering].
    
-    b. Det här är ett annat C#-konsolapp som vi ska köras som en [Azure Webjobs] eftersom den har ska köras för att lyssna efter meddelanden från LoB-/ serverdelssystem. Det här är en del av din mobila serverdel.
+    b. Det här är ett annat C#-konsolapp som vi ska köras som en [Azure Webjobs] eftersom den har toorun kontinuerligt toolisten för meddelanden från hello LoB/serverdelssystem. Det här är en del av din mobila serverdel.
    
         static void Main(string[] args)
         {
             string connectionString =
                      CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
    
-            // Create the subscription which will receive messages
+            // Create hello subscription which will receive messages
             CreateSubscription(connectionString);
    
             // Receive message
             ReceiveMessageAndSendNotification(connectionString);
         }
    
-    c. `CreateSubscription`används för att skapa en Service Bus-prenumeration för avsnittet där backend-systemet ska skicka meddelanden. Den här komponenten kommer beroende på affärsscenario skapa en eller flera prenumerationer till motsvarande avsnitt (t.ex. vissa kan få meddelanden från HR-system, vissa från ekonomi system och så vidare)
+    c. `CreateSubscription`är används toocreate en Service Bus-prenumeration för hello avsnittet där hello backend-systemet ska skicka meddelanden. Beroende på hello affärsscenario skapar den här komponenten en eller flera prenumerationer toocorresponding avsnitt (t.ex. vissa kan få meddelanden från HR-system, vissa från ekonomi system och så vidare)
    
         static void CreateSubscription(string connectionString)
         {
-            // Create the subscription if it does not exist already
+            // Create hello subscription if it does not exist already
             var namespaceManager =
                 NamespaceManager.CreateFromConnectionString(connectionString);
    
@@ -154,11 +154,11 @@ Fullständig exempelkod finns på [Notification Hub exempel]. Den är uppdelad i
             }
         }
    
-    d. ReceiveMessageAndSendNotification används för att läsa meddelandet från avsnittet med hjälp av prenumerationen och om Läs lyckas skapa en avisering (i Exempelscenario ett Windows interna popup-meddelande) för att skickas till den mobila program med hjälp av Azure Notification Hubs.
+    d. ReceiveMessageAndSendNotification är används tooread hello-meddelande från hello avsnitt med prenumerationen och hello läsa har lyckats sedan skapa ett meddelande (i hello är ett exempel på ett Windows interna popup-meddelande) toobe skickas toohello mobila programmet som använder Azure Notification Hubs.
    
         static void ReceiveMessageAndSendNotification(string connectionString)
         {
-            // Initialize the Notification Hub
+            // Initialize hello Notification Hub
             string hubConnectionString = CloudConfigurationManager.GetSetting
                     ("Microsoft.NotificationHub.ConnectionString");
             hub = NotificationHubClient.CreateClientFromConnectionString
@@ -170,7 +170,7 @@ Fullständig exempelkod finns på [Notification Hub exempel]. Den är uppdelad i
    
             Client.Receive();
    
-            // Continuously process messages received from the subscription
+            // Continuously process messages received from hello subscription
             while (true)
             {
                 BrokeredMessage message = Client.Receive();
@@ -204,24 +204,24 @@ Fullständig exempelkod finns på [Notification Hub exempel]. Den är uppdelad i
             await hub.SendWindowsNativeNotificationAsync(message);
         }
    
-    e. För att publicera som en **Webbjobb**, högerklicka på lösningen i Visual Studio och välj **Publicera som Webbjobbet**
+    e. För att publicera som en **Webbjobb**, högerklicka på hello lösningen i Visual Studio och välj **Publicera som Webbjobbet**
    
     ![][2]
    
-    f. Välj din publiceringsprofil och skapa en ny Azure-webbplats om den inte finns redan som ska vara värd för den här Webbjobb och när du har webbplatsen sedan **publicera**.
+    f. Välj din publiceringsprofil och skapa en ny Azure-webbplats om den inte finns redan som ska vara värd för den här Webbjobb och när du har hello webbplats sedan **publicera**.
    
     ![][3]
    
-    g. Konfigurera jobbet för att vara ”kör kontinuerligt” så att när du loggar in på den [klassiska Azure-portalen] bör du se något som liknar följande:
+    g. Konfigurera hello jobbet toobe ”kör kontinuerligt” så att när du loggar in i toohello [klassiska Azure-portalen] du bör se något liknande hello följande:
    
     ![][4]
 3. **EnterprisePushMobileApp**
    
-    a. Det här är en Windows Store-programmet som ska ta emot popup-meddelanden från Webbjobb som körs som en del av din mobila serverdel och visa den. Detta baseras på [Notification Hubs – självstudiekurs för Windows Universal].  
+    a. Det här är en Windows Store-programmet som ska ta emot popup-meddelanden från hello Webbjobbet körs som en del av din mobila serverdel och visa den. Detta baseras på [Notification Hubs – självstudiekurs för Windows Universal].  
    
-    b. Kontrollera att programmet är aktiverat för att ta emot popup-meddelanden.
+    b. Kontrollera att programmet är aktiverat tooreceive popup-meddelanden.
    
-    c. Se till att följande Notification Hubs registration kod kallas vid appen startar (när du ersätter den *HubName* och *DefaultListenSharedAccessSignature*:
+    c. Se till att hello följande Notification Hubs registration kod anropas vid hello appen startar (när du ersätter hello *HubName* och *DefaultListenSharedAccessSignature*:
    
         private async void InitNotificationsAsync()
         {
@@ -230,7 +230,7 @@ Fullständig exempelkod finns på [Notification Hub exempel]. Den är uppdelad i
             var hub = new NotificationHub("[HubName]", "[DefaultListenSharedAccessSignature]");
             var result = await hub.RegisterNativeAsync(channel.Uri);
    
-            // Displays the registration ID so you know it was successful
+            // Displays hello registration ID so you know it was successful
             if (result.RegistrationId != null)
             {
                 var dialog = new MessageDialog("Registration successful: " + result.RegistrationId);
@@ -240,12 +240,12 @@ Fullständig exempelkod finns på [Notification Hub exempel]. Den är uppdelad i
         }
 
 ### <a name="running-sample"></a>Köra exemplet:
-1. Kontrollera att din Webbjobbet har körts och schemalagd att ”kör kontinuerligt”.
-2. Kör den **EnterprisePushMobileApp** som startar Windows Store-app.
-3. Kör den **EnterprisePushBackendSystem** konsolprogram som simulerar LoB-serverdelen och kommer att börja skicka meddelanden och du bör se popup-meddelanden som visas på följande:
+1. Kontrollera att din Webbjobbet har körts och schemalagda för ”kör kontinuerligt”.
+2. Kör hello **EnterprisePushMobileApp** som startar hello Windows Store-app.
+3. Kör hello **EnterprisePushBackendSystem** konsolprogram som simulerar hello LoB serverdelen och kommer att börja skicka meddelanden och du bör se popup-meddelanden som visas som hello nedan:
    
     ![][5]
-4. Meddelandena som har ursprungligen skickats till Service Bus-ämnen som övervakades med Service Bus prenumerationer i ditt webb-jobb. När ett meddelande togs emot ett meddelande skapades och skickas till mobilappen. Du kan titta igenom Webbjobb loggfilerna för att bekräfta bearbetningen när du går till länken loggar i [klassiska Azure-portalen] för Web-jobb:
+4. hälsningsmeddelande skickades ursprungligen tooService Bus-ämnen som övervakades med Service Bus prenumerationer i ditt webb-jobb. När ett meddelande togs emot ett meddelande skapades och skickas toohello mobila appar. Du kan titta igenom hello Webbjobb loggar tooconfirm hello bearbetning när du går toohello loggar länken i [klassiska Azure-portalen] för Web-jobb:
    
     ![][6]
 

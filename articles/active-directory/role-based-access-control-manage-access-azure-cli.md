@@ -1,6 +1,6 @@
 ---
-title: "Hantera rollbaserad åtkomstkontroll (RBAC) med Azure CLI | Microsoft Docs"
-description: "Lär dig mer om att hantera rollbaserad åtkomstkontroll (RBAC) med kommandoradsgränssnittet i Azure genom att ange roller och rollen åtgärder och genom att tilldela roller till prenumeration och application-scope."
+title: "aaaManage rollbaserad åtkomstkontroll (RBAC) med Azure CLI | Microsoft Docs"
+description: "Lär dig hur toomanage rollbaserad åtkomstkontroll (RBAC) med hello Azure kommandoradsverktyget gränssnitt av lista över roller och rollen åtgärder och genom att tilldela roller toohello prenumeration och application-scope."
 services: active-directory
 documentationcenter: 
 author: andredm7
@@ -14,33 +14,33 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: andredm
 ms.reviewer: rqureshi
-ms.openlocfilehash: ad644de6d23950e699d99042d27381336626caab
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 438418e5f6ee9b98908c9c264d516eb722a4e26d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Hantera rollbaserad åtkomstkontroll med kommandoradsgränssnittet i Azure
+# <a name="manage-role-based-access-control-with-hello-azure-command-line-interface"></a>Hantera rollbaserad åtkomstkontroll med hello Azure-kommandoradsgränssnittet
 > [!div class="op_single_selector"]
 > * [PowerShell](role-based-access-control-manage-access-powershell.md)
 > * [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 > * [REST-API](role-based-access-control-manage-access-rest.md)
 
 
-Du kan använda rollbaserad åtkomstkontroll (RBAC) i Azure-portalen och Azure Resource Manager API för att hantera åtkomst till din prenumeration och resurser på en detaljerad nivå. Med den här funktionen kan du bevilja åtkomst för Active Directory-användare, grupper eller tjänstens huvudnamn genom att tilldela vissa roller till dem för ett visst område.
+Du kan använda rollbaserad åtkomstkontroll (RBAC) i hello Azure-portalen och Azure Resource Manager API toomanage åtkomst tooyour prenumeration och resurser på en detaljerad nivå. Med den här funktionen kan du bevilja åtkomst för användare, grupper eller tjänstens huvudnamn i Active Directory genom att tilldela vissa roller toothem för ett visst område.
 
-Innan du kan använda Azure-kommandoradsgränssnittet (CLI) för att hantera RBAC, måste du ha följande krav:
+Innan du kan använda hello Azure-kommandoradsgränssnittet (CLI) toomanage RBAC, måste du ha hello följande krav:
 
-* Azure CLI version 0.8.8 eller senare. Om du vill installera den senaste versionen och koppla den till din Azure-prenumeration, se [installera och konfigurera Azure CLI](../cli-install-nodejs.md).
-* Azure Resource Manager i Azure CLI. Gå till [med hjälp av Azure CLI med Resource Manager](../xplat-cli-azure-resource-manager.md) för mer information.
+* Azure CLI version 0.8.8 eller senare. tooinstall hello senaste versionen och koppla den med din Azure-prenumeration finns [installera och konfigurera hello Azure CLI](../cli-install-nodejs.md).
+* Azure Resource Manager i Azure CLI. Gå för[Using hello Azure CLI med hello Resource Manager](../xplat-cli-azure-resource-manager.md) för mer information.
 
 ## <a name="list-roles"></a>Lista roller
 ### <a name="list-all-available-roles"></a>Visa en lista över alla tillgängliga roller
-Om du vill visa en lista över alla tillgängliga roller, använder du:
+toolist använder alla tillgängliga roller:
 
         azure role list
 
-I följande exempel visar en lista över *alla tillgängliga roller*.
+hello följande exempel visar hello lista över *alla tillgängliga roller*.
 
 ```
 azure role list --json | jq '.[] | {"roleName":.properties.roleName, "description":.properties.description}'
@@ -49,11 +49,11 @@ azure role list --json | jq '.[] | {"roleName":.properties.roleName, "descriptio
 ![Azure RBAC kommandoraden - azure rollen list - skärmbild](./media/role-based-access-control-manage-access-azure-cli/1-azure-role-list.png)
 
 ### <a name="list-actions-of-a-role"></a>Lista över åtgärder för en roll
-Om du vill visa en lista med åtgärder för en roll, använder du:
+toolist hello åtgärder för en roll, Använd:
 
     azure role show "<role name>"
 
-I följande exempel visas åtgärder för den *deltagare* och *Virtual Machine-deltagare* roller.
+hello följande exempel visar hello åtgärder av hello *deltagare* och *Virtual Machine-deltagare* roller.
 
 ```
 azure role show "contributor" --json | jq '.[] | {"Actions":.properties.permissions[0].actions,"NotActions":properties.permissions[0].notActions}'
@@ -65,11 +65,11 @@ azure role show "virtual machine contributor" --json | jq '.[] | .properties.per
 
 ## <a name="list-access"></a>Listan åtkomst
 ### <a name="list-role-assignments-effective-on-a-resource-group"></a>Lista rolltilldelningar gälla för en resursgrupp
-Om du vill visa rolltilldelningar som finns i en resursgrupp, använder du:
+toolist hello rolltilldelningar som finns i en resursgrupp, Använd:
 
     azure role assignment list --resource-group <resource group name>
 
-I följande exempel visas rolltilldelningar i den *pharma-försäljning-projecforcast* grupp.
+hello följande exempel visar hello rolltilldelningar i hello *pharma-försäljning-projecforcast* grupp.
 
 ```
 azure role assignment list --resource-group pharma-sales-projecforcast --json | jq '.[] | {"DisplayName":.properties.aADObject.displayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
@@ -78,15 +78,15 @@ azure role assignment list --resource-group pharma-sales-projecforcast --json | 
 ![Skärmbild av Azure RBAC kommandoraden - azure rollen tilldelningslista av grupp-](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-1.png)
 
 ### <a name="list-role-assignments-for-a-user"></a>Lista rolltilldelningar för en användare
-Om du vill visa rolltilldelningar för en specifik användare och tilldelningar som är tilldelade till en användare, grupper, använder du:
+toolist hello rolltilldelningar för en specifik användare och hello tilldelningar som är tilldelade tooa användargrupper, Använd:
 
     azure role assignment list --signInName <user email>
 
-Du kan också se rolltilldelningar som ärvs från grupper genom att ändra kommandot:
+Du kan också se rolltilldelningar som ärvs från grupper genom att ändra hello-kommando:
 
     azure role assignment list --expandPrincipalGroups --signInName <user email>
 
-I följande exempel visas rolltilldelningar som tilldelats den  *sameert@aaddemo.com*  användare. Detta inkluderar roller som tilldelas direkt till användare och roller som ärvs från grupper.
+hello följande exempel visar hello rolltilldelningar som beviljas toohello  *sameert@aaddemo.com*  användare. Detta inkluderar roller som tilldelas direkt toohello användare och roller som ärvs från grupper.
 
 ```
 azure role assignment list --signInName sameert@aaddemo.com --json | jq '.[] | {"DisplayName":.properties.aADObject.DisplayName,"RoleDefinitionName":.properties.roleName,"Scope":.properties.scope}'
@@ -97,89 +97,89 @@ azure role assignment list --expandPrincipalGroups --signInName sameert@aaddemo.
 ![Azure RBAC kommandoraden - azure rollen tilldelningslista av användare – skärmbild](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-assignment-list-2.png)
 
 ## <a name="grant-access"></a>Bevilja åtkomst
-Använd om du vill bevilja åtkomst när du har identifierat den roll som du vill tilldela:
+toogrant åtkomst när du har identifierat hello roll som du vill tooassign kan använda:
 
     azure role assignment create
 
-### <a name="assign-a-role-to-group-at-the-subscription-scope"></a>Tilldela en roll till gruppen prenumerationsomfattningen
-Om du vill tilldela en roll till en grupp i omfånget för prenumerationen, använder du:
+### <a name="assign-a-role-toogroup-at-hello-subscription-scope"></a>Tilldela en roll toogroup hello prenumeration definitionsområdet
+tooassign en roll tooa grupp definitionsområdet hello prenumeration, Använd:
 
     azure role assignment create --objectId  <group object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
 
-I följande exempel tilldelas den *Reader* roll *Christine Koch Team* på den *prenumeration* omfång.
+hello följande exempel tilldelas hello *Reader* roll för*Christine Koch Team* på hello *prenumeration* omfång.
 
 ![RBAC Azure kommandoraden - azure rolltilldelning Skapa grupp – skärmbild](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-1.png)
 
-### <a name="assign-a-role-to-an-application-at-the-subscription-scope"></a>Tilldela en roll till ett program i omfånget för prenumeration
-Om du vill tilldela en roll till ett program i omfånget för prenumerationen, använder du:
+### <a name="assign-a-role-tooan-application-at-hello-subscription-scope"></a>Tilldela en roll tooan programmet hello prenumeration definitionsområdet
+tooassign ett program med rollen tooan definitionsområdet hello prenumeration, Använd:
 
     azure role assignment create --objectId  <applications object id> --roleName <name of role> --subscription <subscription> --scope <subscription/subscription id>
 
-I följande exempel beviljas den *deltagare* rollen till en *Azure AD* på den valda prenumerationen.
+hello följande exempel beviljas hello *deltagare* rollen tooan *Azure AD* programmet på hello valda prenumerationen.
 
  ![Kommandoraden för RBAC Azure - azure rolltilldelning skapa av program](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-2.png)
 
-### <a name="assign-a-role-to-a-user-at-the-resource-group-scope"></a>Tilldela en roll till en användare på Gruppomfång resurs
-Om du vill tilldela en roll till en användare på Gruppomfång resurs, använder du:
+### <a name="assign-a-role-tooa-user-at-hello-resource-group-scope"></a>Tilldela en användare med rollen tooa på hello resurs Gruppomfång
+tooassign en användare med rollen tooa på hello resurs Gruppomfång, Använd:
 
     azure role assignment create --signInName  <user email address> --roleName "<name of role>" --resourceGroup <resource group name>
 
-I följande exempel beviljas den *Virtual Machine-deltagare* roll  *samert@aaddemo.com*  användare på den *Pharma-försäljning-ProjectForcast* resurs Gruppomfång.
+hello följande exempel beviljas hello *Virtual Machine-deltagare* roll för *samert@aaddemo.com*  användaren vid hello *Pharma-försäljning-ProjectForcast* resurs Gruppomfång.
 
 ![Kommandoraden för RBAC Azure - azure rolltilldelning skapa av användare – skärmbild](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-3.png)
 
-### <a name="assign-a-role-to-a-group-at-the-resource-scope"></a>Tilldela en roll till en grupp i omfånget för resurs
-Om du vill tilldela en roll till en grupp definitionsområdet resurs, använder du:
+### <a name="assign-a-role-tooa-group-at-hello-resource-scope"></a>Tilldela en roll tooa grupp hello resurs definitionsområdet
+tooassign en roll tooa grupp definitionsområdet hello resurs, Använd:
 
     azure role assignment create --objectId <group id> --role "<name of role>" --resource-name <resource group name> --resource-type <resource group type> --parent <resource group parent> --resource-group <resource group>
 
-I följande exempel beviljas den *Virtual Machine-deltagare* rollen till en *Azure AD* på en *undernät*.
+hello följande exempel beviljas hello *Virtual Machine-deltagare* rollen tooan *Azure AD* på en *undernät*.
 
 ![RBAC Azure kommandoraden - azure rolltilldelning Skapa grupp – skärmbild](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-assignment-create-4.png)
 
 ## <a name="remove-access"></a>Ta bort åtkomst
-Ta bort en rolltilldelning med:
+Använd tooremove en rolltilldelning:
 
-    azure role assignment delete --objectId <object id to from which to remove role> --roleName "<role name>"
+    azure role assignment delete --objectId <object id toofrom which tooremove role> --roleName "<role name>"
 
-I följande exempel tar bort den *Virtual Machine-deltagare* rolltilldelningen från den  *sammert@aaddemo.com*  användare på den *Pharma-försäljning-ProjectForcast* resurs grupp.
-I exemplet tar bort rolltilldelningen från en grupp i prenumerationen.
+hello följande exempel tar bort hello *Virtual Machine-deltagare* rolltilldelningen från hello  *sammert@aaddemo.com*  användare på hello *Pharma-försäljning-ProjectForcast* resursgrupp.
+tar bort hello exempel hello rolltilldelning från en grupp i hello prenumeration.
 
 ![Azure RBAC kommandoraden - azure tilldelning Rollborttagning – skärmbild](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-assignment-delete.png)
 
 ## <a name="create-a-custom-role"></a>Skapa en anpassad roll
-Använd för att skapa en anpassad roll:
+Använd toocreate en anpassad roll:
 
     azure role create --inputfile <file path>
 
-I följande exempel skapas en anpassad roll som kallas *virtuella operatorn*. Den här anpassade rollen ger åtkomst till alla läsåtgärder av *Microsoft.Compute*, *Microsoft.Storage*, och *Microsoft.Network* resursproviders och ger åtkomst till Starta, starta om och övervaka virtuella datorer. Den här anpassade rollen kan användas i två prenumerationer. Det här exemplet används en JSON-fil som indata.
+hello följande exempel skapar en anpassad roll som kallas *virtuella operatorn*. Den här anpassade rollen ger åtkomst tooall läsåtgärder av *Microsoft.Compute*, *Microsoft.Storage*, och *Microsoft.Network* resurs providers och beviljar åtkomst toostart, starta om och övervaka virtuella datorer. Den här anpassade rollen kan användas i två prenumerationer. Det här exemplet används en JSON-fil som indata.
 
 ![JSON - anpassad rolldefinition – skärmbild](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-1.png)
 
 ![RBAC Azure kommandoraden - azure rollen skapa – skärmbild](./media/role-based-access-control-manage-access-azure-cli/2-azure-role-create-2.png)
 
 ## <a name="modify-a-custom-role"></a>Ändra en anpassad roll
-Om du vill ändra en anpassad roll först använda den `azure role show` kommando för att hämta rolldefinitionen. Andra, gör ändringarna till definitionsfilen för rollen. Använd slutligen `azure role set` att spara ändrade rolldefinitionen.
+toomodify en anpassad roll först använda hello `azure role show` kommandot tooretrieve rolldefinitionen. Därefter kontrollera definitionsfilen för hello ändringarna toohello roll. Använd slutligen `azure role set` toosave hello ändrade rolldefinitionen.
 
     azure role set --inputfile <file path>
 
-I följande exempel läggs den *Microsoft.Insights/diagnosticSettings/* åtgärden den **åtgärder**, och en Azure-prenumeration i **AssignableScopes** av den Virtual Machine anpassade operatörsrollen.
+hello följande exempel läggs hello *Microsoft.Insights/diagnosticSettings/* åtgärden toohello **åtgärder**, och en Azure-prenumeration toohello **AssignableScopes**av hello virtuella anpassade operatörsrollen.
 
 ![JSON - ändra anpassad rolldefinition – skärmbild](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set-1.png)
 
 ![Azure RBAC kommandoraden - azure rollen set - skärmbild](./media/role-based-access-control-manage-access-azure-cli/3-azure-role-set2.png)
 
 ## <a name="delete-a-custom-role"></a>Ta bort en anpassad roll
-Ta bort en anpassad roll genom att först använda den `azure role show` kommando för att fastställa den **ID** av rollen. Använd sedan den `azure role delete` kommando för att ta bort rollen genom att ange den **ID**.
+toodelete en anpassad roll först använda hello `azure role show` kommandot toodetermine hello **ID** hello-rollen. Använd sedan hello `azure role delete` kommandot toodelete hello roll genom att ange hello **ID**.
 
-I följande exempel tar bort den *virtuella operatorn* anpassad roll.
+hello följande exempel tar bort hello *virtuella operatorn* anpassad roll.
 
 ![Azure RBAC kommandoraden - azure Rollborttagning – skärmbild](./media/role-based-access-control-manage-access-azure-cli/4-azure-role-delete.png)
 
 ## <a name="list-custom-roles"></a>Lista över anpassade roller
-Om du vill visa de roller som är tillgängliga för tilldelning på scopenivå, använder den `azure role list` kommando.
+toolist hello roller som är tillgängliga för tilldelning på scopenivå, använder hello `azure role list` kommando.
 
-Följande kommando visar alla roller som är tillgängliga för tilldelning i den valda prenumerationen.
+hello följande kommando visar alla roller som är tillgängliga för tilldelning i hello valda prenumerationen.
 
 ```
 azure role list --json | jq '.[] | {"name":.properties.roleName, type:.properties.type}'
@@ -187,7 +187,7 @@ azure role list --json | jq '.[] | {"name":.properties.roleName, type:.propertie
 
 ![Azure RBAC kommandoraden - azure rollen list - skärmbild](./media/role-based-access-control-manage-access-azure-cli/5-azure-role-list1.png)
 
-I följande exempel visas den *virtuella operatorn* anpassad roll är inte tillgänglig i den *Production4* prenumeration eftersom den prenumerationen finns inte i den **AssignableScopes** av rollen.
+I följande exempel hello, hello *virtuella operatorn* anpassad roll är inte tillgänglig i hello *Production4* prenumerationen eftersom den prenumerationen finns inte i hello  **AssignableScopes** hello-rollen.
 
 ```
 azure role list --json | jq '.[] | if .properties.type == "CustomRole" then .properties.roleName else empty end'

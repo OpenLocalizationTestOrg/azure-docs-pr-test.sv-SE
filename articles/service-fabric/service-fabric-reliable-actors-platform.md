@@ -1,6 +1,6 @@
 ---
-title: "Reliable Actors på Service Fabric | Microsoft Docs"
-description: "Beskriver hur Reliable Actors ovanpå Reliable Services och använda funktioner i Service Fabric-plattformen."
+title: "aaaReliable aktörer på Service Fabric | Microsoft Docs"
+description: "Beskriver hur Reliable Actors ovanpå Reliable Services och använda hello funktioner för hello Service Fabric-plattformen."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: vturecek
-ms.openlocfilehash: 0a12da52b6e74c721cd25f89e7cde3c07153a396
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ecffb54139f1171c7839b77fed0be60950881198
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Hur Reliable Actors använder Service Fabric-plattformen
-Den här artikeln förklarar hur Reliable Actors fungerar på Azure Service Fabric-plattformen. Reliable Actors som körs i ett ramverk som är värd för en implementering av en tillståndskänslig tillförlitlig tjänst kallas den *aktören tjänsten*. Tjänsten aktören innehåller alla komponenter som krävs för att hantera livscykeln och meddelandet sändning för din aktörer:
+# <a name="how-reliable-actors-use-hello-service-fabric-platform"></a>Hur Reliable Actors använda hello Service Fabric-plattformen
+Den här artikeln förklarar hur Reliable Actors fungerar på hello Azure Service Fabric-plattformen. Reliable Actors köras i ett ramverk som är värd för en implementering av en tillståndskänslig tillförlitlig tjänst som kallas hello *aktören tjänsten*. hello aktören tjänsten innehåller alla hello komponenter nödvändiga toomanage hello livscykel och meddelandet sändning för din aktörer:
 
-* Aktören Runtime hanterar livscykeln skräpinsamling, och tillämpar Enkeltrådig åtkomst.
-* En aktören service fjärrkommunikation lyssnare accepterar fjärråtkomst anrop till aktörer och skickar dem till en dispatcher att dirigera till lämplig aktören-instans.
-* Aktören Tillståndsprovidern radbryts tillståndsprovidrar (till exempel tillståndsprovidern tillförlitliga samlingar) och ger ett nätverkskort för hantering av aktören tillstånd.
+* hello aktören Runtime hanterar livscykeln skräpinsamling, och tillämpar Enkeltrådig åtkomst.
+* En aktören service fjärrkommunikation lyssnare accepterar fjärråtkomst anrop tooactors och skickar dem tooa dispatcher tooroute toohello lämplig aktören instans.
+* hello aktören Tillståndsprovidern radbryts tillståndsprovidrar (till exempel hello tillförlitliga samlingar tillståndsprovidern) och ger ett nätverkskort för hantering av aktören tillstånd.
 
-De här komponenterna utgör tillsammans tillförlitliga aktören ramen.
+Dessa komponenter som tillsammans bildar hello tillförlitliga aktören framework.
 
 ## <a name="service-layering"></a>Tjänsten lager
-Eftersom tjänsten aktören är en tillförlitlig tjänst alla de [programmodell](service-fabric-application-model.md), livscykel, [paketering](service-fabric-package-apps.md), [distribution](service-fabric-deploy-remove-applications.md), uppgradera och skalning begreppet Reliable Services tillämpas på samma sätt i aktörstjänster. 
+Eftersom hello aktören själva tjänsten är en tillförlitlig tjänst, alla hello [programmodell](service-fabric-application-model.md), livscykel, [paketering](service-fabric-package-apps.md), [distribution](service-fabric-deploy-remove-applications.md), uppgradera och skalning begreppet Reliable Services gäller hello samma sätt tooactor tjänster. 
 
 ![Aktören service lager][1]
 
-Föregående diagram visar relationen mellan Service Fabric-programramverk och användarkod. Blå element representerar Reliable Services application framework, orange representerar tillförlitliga aktören framework och grönt representerar användarkod.
+hello Visar föregående diagram hello förhållandet mellan hello Service Fabric-programramverk och användarkod. Blå element representerar hello Reliable Services application framework, orange representerar hello tillförlitliga aktören framework och grönt representerar användarkod.
 
-I Reliable Services tjänsten ärver den `StatefulService` klass. Den här klassen är härledd från `StatefulServiceBase` (eller `StatelessService` för tillståndslösa tjänster). I Reliable Actors använder du tjänsten aktören. Aktören-tjänsten är en annan implementering av den `StatefulServiceBase` klassen som implementerar aktören mönstret där din aktörer kör. Eftersom tjänsten aktören är bara en implementering av `StatefulServiceBase`, du kan skriva en egen tjänst som härleds från `ActorService` och implementera servicenivå funktioner på samma sätt som vid arv `StatefulService`, som:
+I Reliable Services tjänsten ärver hello `StatefulService` klass. Den här klassen är härledd från `StatefulServiceBase` (eller `StatelessService` för tillståndslösa tjänster). I Reliable Actors använder du hello aktören service. hello aktören service är en annan implementering av hello `StatefulServiceBase` klassen implementerar hello aktören mönstret där din aktörer kör. Eftersom hello aktören själva tjänsten är bara en implementering av `StatefulServiceBase`, du kan skriva en egen tjänst som härleds från `ActorService` och implementera servicenivåer funktioner hello samma sätt som när arv `StatefulService`, som:
 
 * Tjänsten säkerhetskopiering och återställning.
 * Delade funktioner för alla aktörer, till exempel strömbrytare.
-* RPC-anrop på tjänsten aktören och på varje enskild aktören.
+* RPC-anrop på hello aktören själva tjänsten och på varje enskild aktören.
 
 > [!NOTE]
 > Tillståndskänsliga tjänster stöds inte i Java-/ Linux.
 
-### <a name="using-the-actor-service"></a>Med hjälp av tjänsten aktören
-Aktören instanser har åtkomst till tjänsten aktören de körs. Via tjänsten aktören hämta aktören instanser programmässigt kontext för tjänster. Tjänsten kontexten har partitions-ID, namn, programnamn och andra plattformsspecifika Service Fabric-information:
+### <a name="using-hello-actor-service"></a>Hello aktören-tjänsten
+Aktören instanser har åtkomst toohello aktören de körs. Via hello aktören service hämta aktören instanser programmässigt kontext för hello-tjänster. hello service kontexten har hello partitions-ID, namn, programnamn och andra plattformsspecifika Service Fabric-information:
 
 ```csharp
 Task MyActorMethod()
@@ -68,7 +68,7 @@ CompletableFuture<?> MyActorMethod()
 ```
 
 
-Precis som alla Reliable Services måste tjänsten aktören registreras med en typ i Service Fabric-körningsmiljön. För tjänsten aktören att köra aktören-instanser måste aktören-typen registreras med tjänsten aktören. Den `ActorRuntime` registreringsmetod utför detta arbete för aktörer. Du kan registrera aktörstyp i det enklaste fallet och aktören tjänsten med standardinställningarna används implicit:
+Hello aktören service måste ha registrerats med en typ i hello Service Fabric runtime som alla Reliable Services. För hello aktören tjänsten toorun aktören-instanser måste också aktören-typen registreras med hello aktören tjänsten. Hej `ActorRuntime` registreringsmetod utför detta arbete för aktörer. Du kan registrera aktörstyp i hello enklaste fallet och hello aktören tjänsten med standardinställningarna används implicit:
 
 ```csharp
 static class Program
@@ -82,7 +82,7 @@ static class Program
 }
 ```
 
-Du kan också använda ett lambda-uttryck som tillhandahålls av metoden för registrering för att konstruera tjänsten aktören själv. Du kan konfigurera tjänsten aktören och uttryckligen skapa dina aktören instanser, där du kan mata in beroenden din aktören via sin konstruktor:
+Du kan också använda ett lambda-uttryck som tillhandahålls av hello metoden tooconstruct hello aktören Registreringstjänst för dig själv. Du kan konfigurera hello aktören service och uttryckligen skapa dina aktören instanser, där du kan mata in beroenden tooyour aktören via sin konstruktor:
 
 ```csharp
 static class Program
@@ -113,10 +113,10 @@ static class Program
 ```
 
 ### <a name="actor-service-methods"></a>Aktören Webbtjänstmetoder
-Aktören tjänsten implementerar `IActorService` (C#) eller `ActorService` (Java), som i sin tur implementerar `IService` (C#) eller `Service` (Java). Detta är det gränssnitt som används av Reliable Services fjärrkommunikation, vilket gör att RPC-anrop på Webbtjänstmetoder. Den innehåller servicenivå metoder som kan anropas via fjärranslutning via tjänsten fjärrkommunikation.
+Hej aktören tjänsten implementerar `IActorService` (C#) eller `ActorService` (Java), som i sin tur implementerar `IService` (C#) eller `Service` (Java). Det är hello-gränssnitt som används av Reliable Services fjärrkommunikation, vilket gör att RPC-anrop på Webbtjänstmetoder. Den innehåller servicenivå metoder som kan anropas via fjärranslutning via tjänsten fjärrkommunikation.
 
 #### <a name="enumerating-actors"></a>Räknar upp aktörer
-Tjänsten aktören kan en klient att räkna upp metadata om aktörer som är värd för tjänsten. Eftersom tjänsten aktören är en partitionerad tillståndskänslig service, utförs uppräkningen per partition. Eftersom varje partition kan innehålla många aktörer, returneras uppräkningen som en uppsättning växlingsbara resultat. Sidorna upprepas över tills alla sidor är skrivskyddade. I följande exempel visas hur du skapar en lista över alla aktiva aktörer i en partition av aktören tjänster:
+hello kan aktören en klient tooenumerate metadata om hello aktörer som är värd för hello-tjänsten. Eftersom hello aktören service är en partitionerad tillståndskänslig service, utförs uppräkningen per partition. Eftersom varje partition kan innehålla många aktörer, returneras hello uppräkning som en uppsättning växlingsbara resultat. hello sidor upprepas över tills alla sidor är skrivskyddade. följande exempel visar hur hello toocreate en lista över alla aktiva aktörer i en partition av en aktören-tjänst:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -160,7 +160,7 @@ while (continuationToken != null);
 ```
 
 #### <a name="deleting-actors"></a>Om du tar bort aktörer
-Tjänsten aktören innehåller också en funktion för att ta bort aktörer:
+hello aktören tjänsten innehåller också en funktion för att ta bort aktörer:
 
 ```csharp
 ActorId actorToDelete = new ActorId(id);
@@ -179,10 +179,10 @@ ActorService myActorServiceProxy = ActorServiceProxy.create(
 myActorServiceProxy.deleteActorAsync(actorToDelete);
 ```
 
-Mer information om att radera aktörer och deras tillstånd finns det [aktören livscykel dokumentationen](service-fabric-reliable-actors-lifecycle.md).
+Mer information om att radera aktörer och deras tillstånd finns hello [aktören livscykel dokumentationen](service-fabric-reliable-actors-lifecycle.md).
 
 ### <a name="custom-actor-service"></a>Anpassade aktören service
-Du kan registrera dina egna anpassade aktören-tjänst som härleds från med hjälp av aktören registrering lambda `ActorService` (C#) och `FabricActorService` (Java). I den här anpassade aktören-tjänsten du kan implementera din egen servicenivå funktioner genom att skriva en service-klass som ärver `ActorService` (C#) eller `FabricActorService` (Java). En anpassad aktören tjänst ärver alla aktören runtime funktioner från `ActorService` (C#) eller `FabricActorService` (Java) och kan användas för att implementera din egen Webbtjänstmetoder.
+Med hjälp av hello aktören registrering lambda, kan du registrera dina egna anpassade aktören-tjänst som härleds från `ActorService` (C#) och `FabricActorService` (Java). I den här anpassade aktören-tjänsten du kan implementera din egen servicenivå funktioner genom att skriva en service-klass som ärver `ActorService` (C#) eller `FabricActorService` (Java). En anpassad aktören tjänst ärver alla hello aktören runtime funktioner från `ActorService` (C#) eller `FabricActorService` (Java) och kan vara används tooimplement egna Webbtjänstmetoder.
 
 ```csharp
 class MyActorService : ActorService
@@ -230,7 +230,7 @@ public class Program
 ```
 
 #### <a name="implementing-actor-backup-and-restore"></a>Implementera aktören säkerhetskopiering och återställning
- I följande exempel anpassade aktören tjänsten Exponerar en metod för att säkerhetskopiera aktören data genom att utnyttja fjärrkommunikation lyssnaren finns redan i `ActorService`:
+ I följande exempel hello, hello anpassade aktören service Exponerar en metod tooback aktören data genom att utnyttja hello fjärrkommunikation lyssnare finns redan i `ActorService`:
 
 ```csharp
 public interface IMyActorService : IService
@@ -253,7 +253,7 @@ class MyActorService : ActorService, IMyActorService
     {
         try
         {
-           // store the contents of backupInfo.Directory
+           // store hello contents of backupInfo.Directory
            return true;
         }
         finally
@@ -285,7 +285,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
     {
         try
         {
-           // store the contents of backupInfo.Directory
+           // store hello contents of backupInfo.Directory
            return true;
         }
         finally
@@ -307,7 +307,7 @@ class MyActorServiceImpl extends ActorService implements MyActorService
 ```
 
 
-I det här exemplet `IMyActorService` är ett kontrakt för fjärrkommunikation som implementerar `IService` (C#) och `Service` (Java) och sedan implementeras av `MyActorService`. Genom att lägga till avtalet remoting, metoder på `IMyActorService` är nu också tillgängliga för en klient genom att skapa en fjärrproxy via `ActorServiceProxy`:
+I det här exemplet `IMyActorService` är ett kontrakt för fjärrkommunikation som implementerar `IService` (C#) och `Service` (Java) och sedan implementeras av `MyActorService`. Genom att lägga till avtalet remoting, metoder på `IMyActorService` är också tillgängliga tooa klienten genom att skapa en proxy för fjärrkommunikation via `ActorServiceProxy`:
 
 ```csharp
 IMyActorService myActorServiceProxy = ActorServiceProxy.Create<IMyActorService>(
@@ -323,31 +323,31 @@ myActorServiceProxy.backupActorsAsync();
 ```
 
 ## <a name="application-model"></a>Programmodell
-Aktören tjänsterna är tillförlitliga, så att programmet modellen är samma. Dock generera aktören framework build-verktyg några av modellen programfilerna för dig.
+Aktören tjänsterna är tillförlitliga, så hello programmodell är hello samma. Dock generera hello aktören framework verktyg några hello programfiler modell du.
 
 ### <a name="service-manifest"></a>Tjänstmanifestet
-Aktören framework build-verktyg generera automatiskt innehållet i aktören tjänstens ServiceManifest.xml fil. Den här filen innehåller:
+hello aktören framework verktyg generera automatiskt hello innehållet i aktören tjänstens ServiceManifest.xml fil. Den här filen innehåller:
 
-* Aktören tjänsttyp. Typnamnet genereras baserat på din aktören projektnamn. Baserat på attributet beständiga på din aktören ställs flaggan HasPersistedState också in därefter.
+* Aktören tjänsttyp. namn på hello genereras baserat på din aktören projektnamn. Baserat på hello beständiga attribut i din aktören anges hello HasPersistedState flaggan också i enlighet med detta.
 * Kodpaketet.
 * Konfigurationspaketet.
 * Resurser och slutpunkter.
 
 ### <a name="application-manifest"></a>Applikationsmanifestet
-Aktören framework build-verktyg skapa automatiskt en standard service definition för aktören tjänsten. Build-verktyg fylla standardegenskaperna för tjänsten:
+hello aktören framework verktyg skapa automatiskt en standard service definition för aktören tjänsten. hello verktyg fylla hello standardegenskaperna för tjänsten:
 
-* Ange replikantalet bestäms av beständiga attribut i din aktören. Varje gång beständiga attribut i din aktören ändras återställs uppsättningen replikantalet i tjänstdefinitionen standard därför.
-* Partitionsschemat och intervallet är inställda Uniform Int64 med fullständig viktiga Int64-intervall.
+* Ange replikantalet bestäms av hello beständiga attribut i din aktören. Varje gång hello beständiga attribut på din aktören ändras, hello set replikantalet i tjänstdefinitionen för hello standard återställs därför.
+* Partitionsschemat och intervallet ställs tooUniform Int64 med hello fullständig Int64 viktiga intervall.
 
 ## <a name="service-fabric-partition-concepts-for-actors"></a>Service Fabric-partition begrepp för aktörer
 Aktörstjänster är partitionerad tillståndskänsliga tjänster. Varje partition för en tjänst aktören innehåller en uppsättning aktörer. Tjänsten partitioner distribueras automatiskt över flera noder i Service Fabric. Aktören instanser distribueras som ett resultat.
 
 ![Aktören partitionering och distribution][5]
 
-Reliable Services kan skapas med annan partitionsscheman och partition nyckelintervall. Tjänsten aktören använder Int64 partitioneringsschema med fullständig viktiga Int64-intervall för att mappa aktörer till partitioner.
+Reliable Services kan skapas med annan partitionsscheman och partition nyckelintervall. hello aktören tjänsten använder hello Int64 partitioneringsschema med hello fullständig Int64 viktiga intervallet toomap aktörer toopartitions.
 
 ### <a name="actor-id"></a>Aktörs-ID
-Varje aktören som skapas i tjänsten har ett unikt ID som är associerade med den representeras av den `ActorId` klass. `ActorId`är ett täckande ID-värde som kan användas för jämn fördelning av aktörer över partitioner för tjänsten genom att generera slumpmässigt ID: N:
+Varje aktören som skapas i hello-tjänsten har ett unikt ID som är associerade med den representeras av hello `ActorId` klass. `ActorId`är ett täckande ID-värde som kan användas för jämn fördelning av aktörer över hello service partitioner genom att generera slumpmässigt ID: N:
 
 ```csharp
 ActorProxy.Create<IMyActor>(ActorId.CreateRandom());
@@ -357,7 +357,7 @@ ActorProxyBase.create<MyActor>(MyActor.class, ActorId.newId());
 ```
 
 
-Varje `ActorId` hash-kodas till en Int64. Det är därför aktören tjänsten måste använda ett Int64 partitioneringsschema med fullständig viktiga Int64-intervall. Dock anpassade ID-värden kan användas för en `ActorID`, inklusive GUID/UUID: er, strängar och Int64s.
+Varje `ActorId` är hashformaterats tooan Int64. Det är därför hello aktören tjänsten måste använda ett Int64 partitioneringsschema med hello fullständig Int64 viktiga intervall. Dock anpassade ID-värden kan användas för en `ActorID`, inklusive GUID/UUID: er, strängar och Int64s.
 
 ```csharp
 ActorProxy.Create<IMyActor>(new ActorId(Guid.NewGuid()));
@@ -370,7 +370,7 @@ ActorProxyBase.create(MyActor.class, new ActorId("myActorId"));
 ActorProxyBase.create(MyActor.class, new ActorId(1234));
 ```
 
-När du använder GUID/UUID: er och strängar värdena-kodas till en Int64. Men när du uttryckligen ger Int64 till en `ActorId`, Int64 mappas direkt till en partition utan ytterligare hash. Du kan använda den här tekniken för att styra vilka partition aktörer placeras i.
+När du använder GUID/UUID: er och strängar värdena hello hashformaterats tooan Int64. Men när du uttryckligen ger ett Int64 tooan `ActorId`, hello Int64 mappas direkt tooa partition utan ytterligare hash. Du kan använda den här tekniken toocontrol som partition hello aktörer är placerade i.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Aktören tillståndshantering](service-fabric-reliable-actors-state-management.md)

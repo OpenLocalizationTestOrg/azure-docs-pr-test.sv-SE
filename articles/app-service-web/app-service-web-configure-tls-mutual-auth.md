@@ -1,6 +1,6 @@
 ---
-title: "Så här konfigurerar du ömsesidig TSL-autentisering för webbapp"
-description: "Lär dig hur du konfigurerar ditt webbprogram om du vill använda klientcertifikatautentisering på TLS."
+title: "aaaHow tooConfigure TLS ömsesidig autentisering för webbprogram"
+description: "Lär dig hur tooconfigure web app toouse klienten certifikatautentisering på TLS."
 services: app-service
 documentationcenter: 
 author: naziml
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2016
 ms.author: naziml
-ms.openlocfilehash: db69852cffd1ff331ac4a640b04ea4360d00bf75
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8aeb9b35058fac50b8b38f6428207ad4a82d8637
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Så här konfigurerar du ömsesidig TSL-autentisering för webbapp
+# <a name="how-tooconfigure-tls-mutual-authentication-for-web-app"></a>Hur tooConfigure TLS ömsesidig autentisering för webbprogram
 ## <a name="overview"></a>Översikt
-Du kan begränsa åtkomsten till din Azure-webbapp genom att aktivera olika typer av autentisering för den. Ett sätt att göra detta är att autentisera med ett klientcertifikat när begäran är över TLS/SSL. Den här mekanismen kallas TLS ömsesidig autentisering eller autentisering och den här artikeln kommer innehåller information om hur du ställer in ditt webbprogram om du vill använda klientcertifikatautentisering klientcertifikat.
+Du kan begränsa åtkomst tooyour Azure webbapp genom att aktivera olika typer av autentisering för den. Enkelriktade toodo är därför tooauthenticate använder ett klientcertifikat när hello-begäran är över TLS/SSL. Den här mekanismen kallas TLS ömsesidig autentisering eller autentisering av klientcertifikat och den här artikeln beskriver detaljerat hur toosetup din web app toouse förautentisering av klientcertifikat.
 
-> **Obs:** om du har åtkomst till webbplatsen via HTTP och HTTPS inte visas inte alla klientcertifikat. Så om ditt program kräver klientcertifikat bör du inte tillåta begäranden till ditt program via HTTP.
+> **Obs:** om du har åtkomst till webbplatsen via HTTP och HTTPS inte visas inte alla klientcertifikat. Så om ditt program kräver klientcertifikat bör du inte tillåta begäranden tooyour program via HTTP.
 > 
 > 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="configure-web-app-for-client-certificate-authentication"></a>Konfigurera Webbappen för autentisering av klientcertifikat
-Om du vill konfigurera ditt webbprogram för att kräva klientcertifikat måste du lägga till clientCertEnabled-platsinställningen för ditt webbprogram och angetts till true. Den här inställningen är inte tillgänglig via hanteringen av portalen och REST-API behöver för att åstadkomma detta.
+toosetup din web app toorequire klientcertifikat behöver du tooadd hello clientCertEnabled plats för ditt webbprogram och ange den tootrue. Den här inställningen är inte tillgänglig via hello hanteringen i hello Portal och hello REST API behöver toobe används tooaccomplish detta.
 
-Du kan använda den [ARMClient verktyget](https://github.com/projectkudu/ARMClient) att göra det enkelt att skapa REST API-anrop. När du har loggat in med verktyget måste du följande kommando:
+Du kan använda hello [ARMClient verktyget](https://github.com/projectkudu/ARMClient) toomake den enkelt toocraft hello REST API-anrop. När du har loggat in med hello verktyget måste tooissue hello följande kommando:
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
 
-Ersätt allt i {} med information för ditt webbprogram och skapa en fil med namnet enableclientcert.json med följande JSON innehåll:
+Ersätt allt i {} med information för ditt webbprogram och skapa en fil med namnet enableclientcert.json med hello följande JSON innehåll:
 
     {
         "location": "My Web App Location",
@@ -46,19 +46,19 @@ Ersätt allt i {} med information för ditt webbprogram och skapa en fil med nam
         }
     }
 
-Se till att ändra värdet för ”plats” till var ditt webbprogram finns t.ex. norra centrala USA eller västra USA osv.
+Kontrollera att toochange hello värdet för ”plats” toowherever ditt webbprogram är finns t.ex. norra centrala USA eller västra USA osv.
 
-Du kan också använda https://resources.azure.com för att vända de `clientCertEnabled` egenskapen `true`.
+Du kan också använda https://resources.azure.com tooflip hello `clientCertEnabled` egenskapen för`true`.
 
-> **Obs:** om du kör ARMClient från Powershell, behöver du undanta den @-tecknet för JSON-fil med en bakre skalstreck '.
+> **Obs:** om du kör ARMClient från Powershell, behöver du tooescape hello @-tecknet för hello JSON-fil med en bakre skalstreck '.
 > 
 > 
 
-## <a name="accessing-the-client-certificate-from-your-web-app"></a>Åtkomst till klientens certifikat från ditt webbprogram
-Om du använder ASP.NET och konfigurera din app om du vill använda klientcertifikatautentisering certifikatet blir tillgängliga via den **HttpRequest.ClientCertificate** egenskapen. Andra program stackar ska cert klienten vara tillgänglig i appen genom en base64-kodad värdet i resurshuvudet ”X-ARR-ClientCert”. Ditt program kan skapa ett certifikat från det här värdet och sedan använda datorn för autentisering och auktorisering ändamål i ditt program.
+## <a name="accessing-hello-client-certificate-from-your-web-app"></a>Åtkomst till hello klienten certifikat från ditt webbprogram
+Om du använder ASP.NET och konfigurera din app toouse autentisering av klientcertifikat hello certifikat kommer att vara tillgängliga via hello **HttpRequest.ClientCertificate** egenskapen. Andra program-stackar ska hello klienten certifikat vara tillgänglig i appen genom en base64-kodad värdet i huvudet i begäran är hello ”X-ARR-ClientCert”. Ditt program kan skapa ett certifikat från det här värdet och sedan använda datorn för autentisering och auktorisering ändamål i ditt program.
 
 ## <a name="special-considerations-for-certificate-validation"></a>Speciella överväganden vid valideringen av servercertifikatet
-Det klientcertifikat som skickas till programmet går inte via en verifiering av Azure Web Apps-plattformen. Verifiera det här certifikatet ansvarar för webbappen. Här är exempelkod för ASP.NET som validerar egenskaper för certifikat för autentisering.
+hello-klientcertifikat som skickas toohello program går inte via en verifiering av hello Azure Web Apps-plattformen. Verifiera det här certifikatet är hello ansvar hello webbprogrammet. Här är exempelkod för ASP.NET som validerar egenskaper för certifikat för autentisering.
 
     using System;
     using System.Collections.Specialized;
@@ -81,8 +81,8 @@ Det klientcertifikat som skickas till programmet går inte via en verifiering av
             public bool isValidCert = false;
 
             //
-            // Read the certificate from the header into an X509Certificate2 object
-            // Display properties of the certificate on the page
+            // Read hello certificate from hello header into an X509Certificate2 object
+            // Display properties of hello certificate on hello page
             //
             protected void Page_Load(object sender, EventArgs e)
             {
@@ -124,13 +124,13 @@ Det klientcertifikat som skickas till programmet går inte via en verifiering av
             //
             private bool IsValidClientCertificate()
             {
-                // In this example we will only accept the certificate as a valid certificate if all the conditions below are met:
-                // 1. The certificate is not expired and is active for the current time on server.
-                // 2. The subject name of the certificate has the common name nildevecc
-                // 3. The issuer name of the certificate has the common name nildevecc and organization name Microsoft Corp
-                // 4. The thumbprint of the certificate is 30757A2E831977D8BD9C8496E4C99AB26CB9622B
+                // In this example we will only accept hello certificate as a valid certificate if all hello conditions below are met:
+                // 1. hello certificate is not expired and is active for hello current time on server.
+                // 2. hello subject name of hello certificate has hello common name nildevecc
+                // 3. hello issuer name of hello certificate has hello common name nildevecc and organization name Microsoft Corp
+                // 4. hello thumbprint of hello certificate is 30757A2E831977D8BD9C8496E4C99AB26CB9622B
                 //
-                // This example does NOT test that this certificate is chained to a Trusted Root Authority (or revoked) on the server 
+                // This example does NOT test that this certificate is chained tooa Trusted Root Authority (or revoked) on hello server 
                 // and it allows for self signed certificates
                 //
 
@@ -175,7 +175,7 @@ Det klientcertifikat som skickas till programmet går inte via en verifiering av
                 // 4. Check thumprint of certificate
                 if (String.Compare(certificate.Thumbprint.Trim().ToUpper(), "30757A2E831977D8BD9C8496E4C99AB26CB9622B") != 0) return false;
 
-                // If you also want to test if the certificate chains to a Trusted Root Authority you can uncomment the code below
+                // If you also want tootest if hello certificate chains tooa Trusted Root Authority you can uncomment hello code below
                 //
                 //X509Chain certChain = new X509Chain();
                 //certChain.Build(certificate);

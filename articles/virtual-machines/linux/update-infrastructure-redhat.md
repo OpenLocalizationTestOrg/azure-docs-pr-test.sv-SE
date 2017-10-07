@@ -1,5 +1,5 @@
 ---
-title: Red Hat infrastrukturen (RHUI) | Microsoft Docs
+title: aaaRed Hat Update infrastruktur (RHUI) | Microsoft Docs
 description: "Lär dig mer om Red Hat Update infrastruktur (RHUI) för på begäran Red Hat Enterprise Linux-instanser i Microsoft Azure"
 services: virtual-machines-linux
 documentationcenter: 
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/13/2017
 ms.author: borisb
-ms.openlocfilehash: 07815d691ffe57f0349f7a90ced4a2fcc1ab834f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: cc244857104b25e4e61862c518db77e915e137ef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="red-hat-update-infrastructure-rhui-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update infrastruktur (RHUI) för att på begäran Red Hat Enterprise Linux virtuella datorer i Azure
-Virtuella datorer skapas från de på begäran Red Hat Enterprise Linux (RHEL) bilderna som finns i Azure Marketplace är registrerade för att komma åt den Red Hat Update infrastruktur (RHUI) distribuerade i Azure.  RHEL-instanser på begäran har åtkomst till en databas för regional yum och kan ta emot inkrementella uppdateringar.
+Virtuella datorer skapas från hello på begäran Red Hat Enterprise Linux (RHEL) bilder som finns i Azure Marketplace är registrerade tooaccess hello Red Hat Update infrastruktur (RHUI) distribuerade i Azure.  hello på begäran RHEL instanser ha åtkomst tooa regionala yum databasen och kan tooreceive inkrementella uppdateringar.
 
-Yum listan som hanteras av RHUI har konfigurerats i din instans av RHEL under etableringen. Du behöver inte göra någon ytterligare konfiguration – kör `yum update` när RHEL-instans är redo att få de senaste uppdateringarna.
+Hej yum listan som hanteras av RHUI har konfigurerats i din instans av RHEL under etableringen. Du behöver inte toodo någon ytterligare konfiguration – kör `yum update` när RHEL-instans är klar tooget hello senaste uppdateringarna.
 
 > [!NOTE]
-> I September 2016 distribuerade vi en uppdaterad Azure RHUI och i januari 2017 vi igång stegvis avstängning av den äldre RHUI i Azure. Om du har använt RHEL-bilder (eller deras ögonblicksbilder) från September 2016 eller senare - troligen krävs ingen åtgärd. Om du har dock äldre ögonblicksbilder/virtuella datorer, måste deras konfiguration uppdateras för oavbruten tillgång till Azure-RHUI.
+> I September 2016 distribuerade vi en uppdaterad Azure RHUI och i januari 2017 startade vi stegvis avstängning av hello äldre Azure RHUI. Om du har använt hello RHEL bilder (eller deras ögonblicksbilder) från September 2016 eller senare - troligen krävs ingen åtgärd. Om du har dock äldre ögonblicksbilder/virtuella datorer, måste deras konfiguration uppdateras för oavbruten tillgång toohello Azure RHUI toobe.
 > 
 
 ## <a name="rhui-azure-infrastructure-update"></a>Uppdatering av RHUI Azure-infrastrukturen
-Från och med September 2016 har Azure en ny uppsättning Red Hat Update infrastruktur (RHUI) servrar. Dessa servrar distribueras med [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) så att en enda slutpunkt (rhui 1.microsoft.com) kan användas av alla VM oavsett region. Nya RHEL betala per användning (PAYG) avbildningar i Azure Marketplace (versioner datum September 2016 eller senare) pekar på de nya Azure RHUI servrarna och kräver inte någon ytterligare åtgärd.
+Från och med September 2016 har Azure en ny uppsättning Red Hat Update infrastruktur (RHUI) servrar. Dessa servrar distribueras med [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) så att en enda slutpunkt (rhui 1.microsoft.com) kan användas av alla VM oavsett region. Hej nya RHEL betala per användning (PAYG) bilder i hello Azure Marketplace (versioner datum September 2016 eller senare) punkt toohello nya Azure RHUI servrar och inte kräver någon ytterligare åtgärd.
 
 ### <a name="determine-if-action-is-required"></a>Avgöra om åtgärd krävs
-Följ anvisningarna nedan om du har problem med att ansluta till Azure RHUI från din Azure RHEL PAYG VM
+Följ anvisningarna nedan om du har problem med att ansluta tooAzure RHUI från din Azure RHEL PAYG VM
 1. Kontrollera konfigurationen för virtuell dator för Azure RHUI slutpunkt
 
-    Kontrollera om `/etc/yum.repos.d/rh-cloud.repo` filen innehåller en referens till `rhui-[1-3].microsoft.com` i baseurl av `[rhui-microsoft-azure-rhel*]` i filen. Om det är – använder du den nya Azure-RHUI.
+    Kontrollera om `/etc/yum.repos.d/rh-cloud.repo` filen innehåller referens för`rhui-[1-3].microsoft.com` i baseurl av `[rhui-microsoft-azure-rhel*]` i hello-filen. Om det är – du använder hello nya Azure RHUI.
 
-    Om den pekar på en plats med följande mönster `mirrorlist.*cds[1-4].cloudapp.net` -konfiguration uppdatering krävs.
+    Om den peka tooa plats med hello enligt `mirrorlist.*cds[1-4].cloudapp.net` -hello konfiguration måste uppdateras.
 
-    Om du använder den nya konfigurationen och fortfarande inte kan ansluta till Azure RHUI - filen som ett supportärende med Microsoft eller Red Hat.
+    Om du använder hello ny konfiguration och fortfarande inte kan ansluta tooAzure RHUI - filen som ett supportärende med Microsoft eller Red Hat.
 
     > [!NOTE]
-    > Åtkomst till Azure-baserad RHUI är begränsad till de virtuella datorerna inom [Microsoft Azure Datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653).
+    > Åtkomst tooAzure värd RHUI är begränsad toohello VM: ar inom [Microsoft Azure Datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653).
     > 
 
-2. Om den gamla Azure RHUI fortfarande är tillgänglig när du gör den här kontrollen och du vill att automatiskt uppdatera konfigurationen, kör du följande kommando:
+2. Om hello gamla Azure RHUI fortfarande är tillgänglig när du gör den här kontrollen och du vill att tooautomatically uppdateringskonfiguration hello, kör du följande kommando hello:
 
-    `sudo yum update RHEL6`eller `sudo yum update RHEL7` beroende på RHEL-versionen.
+    `sudo yum update RHEL6`eller `sudo yum update RHEL7` beroende på hello RHEL-versionen.
 
-3. Om du inte längre kan ansluta till den gamla Azure RHUI, följer du de manuella stegen som beskrivs i nästa avsnitt.
+3. Om du inte längre kan ansluta toohello gamla Azure RHUI, följ hello manuella stegen som beskrivs i nästa avsnitt om hello.
 
-4. Se till att uppdatera konfigurationen på källan/ögonblicksbilden påverkas VM har etablerats från.
+4. Kontrollera att tooupdate hello konfiguration på hello källan/ögonblicksbilden påverkas VM har etablerats från.
 
-### <a name="phased-shutdown-of-the-old-azure-rhui"></a>Stegvis avstängning av den gamla Azure RHUI
-Vid avstängningen av den gamla Azure RHUI begränsa vi åtkomsten till den på följande sätt:
+### <a name="phased-shutdown-of-hello-old-azure-rhui"></a>Stegvis avstängning av hello gamla Azure RHUI
+Under hello avstängning av hello gamla Azure RHUI vi begränsa åtkomst till tooit på följande sätt:
 
-1. Ytterligare begränsa åtkomsten (ACL) för att ange IP-adresser som redan ansluter till den. Möjliga sidoeffekter: Om du fortsätter med den gamla Azure RHUI – din nya virtuella datorer kanske inte kan ansluta till den. RHEL virtuella datorer med dynamiska IP-adresser som avstängning/frigöra/starta rad kan få nya IP och därför också startade inte lyckades ansluta till den gamla Azure RHUI
+1. Ytterligare begränsa åtkomst (ACL) tooset IP-adresser som redan ansluter tooit. Möjliga sidoeffekter: Om du fortsätter med hello gamla Azure RHUI – din nya virtuella datorer kanske inte kan tooconnect tooit. RHEL virtuella datorer med dynamiska IP-adresser som avstängning/frigöra/starta rad kan få nya IP och därför också kunde starta misslyckas tooconnect toohello gamla Azure RHUI
 
-2. Stäng av spegling innehållsleverans servrar. Möjliga sidoeffekter: som vi Stäng mer CDSes kan du se längre `yum update` servicing tid, mer tidsgränser fram till när du inte längre kan ansluta till den gamla RHUI i Azure.
+2. Stäng av spegling innehållsleverans servrar. Möjliga sidoeffekter: som vi Stäng mer CDSes kan du se längre `yum update` behandlingen tid mer tidsgränser fram till hello peka när du inte längre kan ansluta toohello gamla Azure RHUI.
 
-### <a name="the-ips-for-the-new-rhui-content-delivery-servers-are"></a>IP-adresserna för de nya RHUI innehållsleverans servrarna är
-Om du använder nätverkskonfigurationen för att begränsa åtkomsten ytterligare från RHEL PAYG virtuella datorer, se till att följande IP-adresser tillåts för `yum update` ska fungera beroende på miljön i. 
+### <a name="hello-ips-for-hello-new-rhui-content-delivery-servers-are"></a>hello IP-adresser för hello nya RHUI innehållsleverans servrar är
+Om du använder network configuration toofurther begränsa åtkomst från RHEL PAYG virtuella datorer, se till att hello efter IP-adresser tillåts för `yum update` toowork beroende på hello-miljö i. 
 
 ```
 # Azure Global
@@ -79,20 +79,20 @@ Om du använder nätverkskonfigurationen för att begränsa åtkomsten ytterliga
 51.4.228.145
 ```
 
-### <a name="manual-update-procedure-to-use-the-new-azure-rhui-servers"></a>Manuell uppdatering procedur du ska använda de nya servrarna som Azure RHUI
-Hämta den offentliga nyckel signaturen (via curl)
+### <a name="manual-update-procedure-toouse-hello-new-azure-rhui-servers"></a>Manuell uppdatering proceduren toouse hello nya Azure RHUI servrar
+Hämta (via curl) hello offentliga nyckel signatur
 
 ```bash
 curl -o RPM-GPG-KEY-microsoft-azure-release https://download.microsoft.com/download/9/D/9/9d945f05-541d-494f-9977-289b3ce8e774/microsoft-sign-public.asc 
 ```
 
-Verifiera hämtade nyckeln
+Verifiera hello ned nyckeln
 
 ```bash
 gpg --list-packets --verbose < RPM-GPG-KEY-microsoft-azure-release
 ```
 
-Kontrollera utdata, kontrollera `keyid` och `user ID packet`:
+Kontrollera hello utdata, kontrollera `keyid` och `user ID packet`:
 
 ```bash
 Version: GnuPG v1.4.7 (GNU/Linux)
@@ -116,7 +116,7 @@ Version: GnuPG v1.4.7 (GNU/Linux)
         data: [2047 bits]
 ```
 
-Installera den offentliga nyckeln
+Installera hello offentlig nyckel
 
 ```bash
 sudo install -o root -g root -m 644 RPM-GPG-KEY-microsoft-azure-release /etc/pki/rpm-gpg
@@ -143,7 +143,7 @@ Kontrollera:
 rpm -Kv azureclient.rpm
 ```
 
-Kontrollera i utdata signaturen i paketet är OK
+Kontrollera i utdata signaturen för hello paketet är OK
 
 ```bash
 azureclient.rpm:
@@ -153,16 +153,16 @@ azureclient.rpm:
     MD5 digest: OK (c04ff605f82f4be8c96020bf5c23b86c)
 ```
 
-Installera RPM
+Installera hello RPM
 
 ```bash
 sudo rpm -U azureclient.rpm
 ```
 
-Kontrollera att du har åtkomst till Azure RHUI formuläret den virtuella datorn när åtgärden har slutförts
+Kontrollera att du har åtkomst till Azure RHUI formuläret hello VM när åtgärden har slutförts
 
-### <a name="all-in-one-script-for-automating-the-preceding-task"></a>Allt i ett skript för att automatisera den föregående aktiviteten
-Använd följande skript som krävs för att automatisera arbetet med att uppdatera påverkas virtuella datorer till de nya Azure RHUI-servrarna.
+### <a name="all-in-one-script-for-automating-hello-preceding-task"></a>Allt i ett skript för att automatisera hello föregående aktivitet
+Använd följande skript som behövs tooautomate hello aktivitet för att uppdatera berörda VMs toohello nya Azure RHUI servrar hello.
 
 ```sh
 # Download key
@@ -202,36 +202,36 @@ sudo rpm -U azureclient.rpm
 ```
 
 ## <a name="rhui-overview"></a>Översikt över RHUI
-[Infrastrukturen för Red Hat](https://access.redhat.com/products/red-hat-update-infrastructure) ger en mycket skalbar lösning för att hantera yum databasinnehåll för Red Hat Enterprise Linux moln-instanser som hanteras av Red Hat-certifierad molntjänstleverantörer. Baserat på överordnad massa projektet gör RHUI att molntjänstleverantörer att lokalt spegling Red Hat-värdbaserad databasen innehåll, skapa anpassade databaser med sitt eget innehåll och göra de databaserna som är tillgängliga för en stor grupp med användare via ett belastningsutjämnade content delivery-system.
+[Infrastrukturen för Red Hat](https://access.redhat.com/products/red-hat-update-infrastructure) erbjuder en mycket skalbar lösning toomanage yum databasinnehåll för Red Hat Enterprise Linux moln-instanser som hanteras av Red Hat-certifierad molntjänstleverantörer. Baserat på hello överordnade massa projektet RHUI gör att molntjänstleverantörer toolocally spegling Red Hat-värdbaserad databasinnehåll, skapa anpassade databaser med sitt eget innehåll och gör dessa databaser tillgängliga tooa stor grupp med användare via en Utjämning av nätverksbelastning Content delivery system.
 
 ## <a name="regions-where-rhui-is-available"></a>Regioner där RHUI är tillgängligt
-RHUI är tillgänglig i alla regioner där RHEL på begäran bilder är tillgängliga. För närvarande innehåller alla offentliga områden som anges på den [Azure status instrumentpanelen](https://azure.microsoft.com/status/) sidan Azure som tillhör amerikanska myndigheter och Azure Tyskland regioner. RHUI åtkomst för virtuella datorer som etablerats från RHEL på begäran avbildningar finns i deras pris. Ytterligare regionala/nationella molnet tillgänglighet kommer att uppdateras när vi Expandera RHEL på begäran tillgänglighet i framtiden.
+RHUI är tillgänglig i alla regioner där RHEL på begäran bilder är tillgängliga. För närvarande innehåller alla offentliga områden på hello [Azure status instrumentpanelen](https://azure.microsoft.com/status/) sidan Azure som tillhör amerikanska myndigheter och Azure Tyskland regioner. RHUI åtkomst för virtuella datorer som etablerats från RHEL på begäran avbildningar finns i deras pris. Ytterligare regionala/nationella molnet tillgänglighet kommer att uppdateras när vi Expandera RHEL på begäran tillgänglighet i hello framtida.
 
 > [!NOTE]
-> Åtkomst till Azure-baserad RHUI är begränsad till de virtuella datorerna inom [Microsoft Azure Datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653).
+> Åtkomst tooAzure värd RHUI är begränsad toohello VM: ar inom [Microsoft Azure Datacenter IP-intervall](https://www.microsoft.com/download/details.aspx?id=41653).
 > 
 > 
 
 ## <a name="get-updates-from-another-update-repository"></a>Hämta uppdateringar från en annan uppdatering databas
-Om du behöver hämta uppdateringar från en annan uppdatering databas (i stället för Azure-baserad RHUI) måste du först avregistrera dina instanser från RHUI. Måste du registrera dem igen med önskade update-infrastruktur (till exempel Red Hat satellit eller Red Hat kundens Portal CDN). Du behöver lämpliga Red Hat prenumerationer för dessa tjänster och registrering för [Red Hat Molnåtkomst i Azure](https://access.redhat.com/ecosystem/partners/ccsp/microsoft-azure).
+Om du behöver tooget uppdateringar från en annan uppdatering databas (i stället för Azure-baserad RHUI), måste du först toounregister dina instanser från RHUI. Du måste registrera toore dem med hello önskade infrastrukturen (till exempel Red Hat satellit eller Red Hat kundens Portal CDN). Du behöver lämpliga Red Hat prenumerationer för dessa tjänster och registrering för [Red Hat Molnåtkomst i Azure](https://access.redhat.com/ecosystem/partners/ccsp/microsoft-azure).
 
-Följ dessa steg om du vill avregistrera RHUI och registrera till din infrastruktur för uppdateringen:
+Så här toounregister RHUI och registrera om tooyour uppdatering infrastruktur:
 
-1. Redigera /etc/yum.repos.d/rh-cloud.repo och ändra alla `enabled=1` till `enabled=0`. Exempel:
+1. Redigera /etc/yum.repos.d/rh-cloud.repo och ändra alla `enabled=1` för`enabled=0`. Exempel:
    
    ```bash
    sed -i 's/enabled=1/enabled=0/g' /etc/yum.repos.d/rh-cloud.repo
    ```
    
-2. Redigera /etc/yum/pluginconf.d/rhnplugin.conf och ändra `enabled=0` till `enabled=1`.
-3. Registrera sedan med den önskade infrastrukturen, till exempel Red Hat-kundportalen. Följ Red Hat solution guide på [hur du registrerar och prenumerera på ett system för Red Hat-kundportalen](https://access.redhat.com/solutions/253273).
+2. Redigera /etc/yum/pluginconf.d/rhnplugin.conf och ändra `enabled=0` för`enabled=1`.
+3. Registrera sedan med hello önskade infrastrukturen, till exempel Red Hat-kundportalen. Följ Red Hat solution guide på [hur tooregister och prenumerera på system-toohello Red Hat-kundportalen](https://access.redhat.com/solutions/253273).
 
 > [!NOTE]
-> Åtkomst till Azure-baserad RHUI ingår i avbildningen priset RHEL betala per användning (PAYG). Avregistrerar en virtuell dator RHEL PAYG från Azure-baserad RHUI konverterar inte den virtuella datorn till Bring-Your-äger-licens (BYOL) typ VM. Om du registrerar dig av samma virtuella dator med en annan källa för uppdateringar du får medför dubbla avgifter: första gången för Azure RHEL programvara avgift och den andra gången för Red Hat-abonnemang. 
+> Åtkomst toohello Azure-baserad RHUI ingår i hello RHEL betala per användning (PAYG) avbildningen pris. Avregistrerar en virtuell dator RHEL PAYG från hello Azure-baserad RHUI konverterar inte hello virtuella datorn till Bring-Your-äger-licens (BYOL) typ VM. Om du registrerar hello samma virtuella dator med en annan källa för uppdateringar kan du drabbas dubbla avgifter: första gången för Azure RHEL programvara avgift och hello gång för Red Hat-abonnemang. 
 > 
-> Om konsekvent måste du använda en annan infrastruktur än Azure-baserad RHUI bör du skapa och distribuera dina egna avbildningar (BYOL-typ) enligt beskrivningen i [skapa och ladda upp Red Hat-baserad virtuell dator för Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) artikel.
+> Om du behöver konsekvent toouse en annan infrastruktur än Azure-baserad RHUI du skapa och distribuera dina egna avbildningar (BYOL-typ) enligt beskrivningen i [skapa och ladda upp Red Hat-baserad virtuell dator för Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) artikel.
 > 
 
 ## <a name="next-steps"></a>Nästa steg
-Skapa en Red Hat Enterprise Linux virtuell dator från betala per användning för Azure Marketplace-avbildning och utnyttjar Azure-baserad RHUI går du till [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/). Du kommer att kunna använda `yum update` i din RHEL instans utan några ytterligare inställningar.
+toocreate en Red Hat Enterprise Linux virtuell dator från Azure Marketplace betala per användning avbildningen och utnyttjar Azure-baserad RHUI gå för[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/). Du kommer att kunna toouse `yum update` i din RHEL instans utan några ytterligare inställningar.
 

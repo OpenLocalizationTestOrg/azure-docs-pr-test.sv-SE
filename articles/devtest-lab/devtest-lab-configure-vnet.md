@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera ett virtuellt nätverk i Azure DevTest Labs | Microsoft Docs"
-description: "Lär dig hur du konfigurerar ett befintligt virtuellt nätverk och undernät och använda dem i en virtuell dator med Azure DevTest Labs"
+title: "aaaConfigure ett virtuellt nätverk i Azure DevTest Labs | Microsoft Docs"
+description: "Lär dig hur tooconfigure ett befintligt virtuellt nätverk och undernät, och Använd dem i en virtuell dator med Azure DevTest Labs"
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: tarcher
-ms.openlocfilehash: 848752085729df7d98a3a4b7be36d894c12cd033
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a11ce8315e3c540e44aeacc9c5ee3dde014d4621
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Konfigurera ett virtuellt nätverk i Azure DevTest Labs
-Enligt beskrivningen i artikeln [lägga till en virtuell dator med artefakter i ett labb](devtest-lab-add-vm-with-artifacts.md)när du skapar en virtuell dator i labbet, du kan ange ett konfigurerat virtuellt nätverk. Ett scenario för att göra detta är om du behöver åtkomst till corpnet resurser från dina virtuella datorer med hjälp av det virtuella nätverket som har konfigurerats med ExpressRoute eller plats-till-plats-VPN. Följande avsnitt visar hur du lägger till ett befintligt virtuellt nätverk i inställningarna för virtuella nätverk i ett labb så att den ska kunna välja när du skapar virtuella datorer.
+Enligt beskrivningen i artikeln hello [lägga till en virtuell dator med artefakter tooa lab](devtest-lab-add-vm-with-artifacts.md)när du skapar en virtuell dator i ett labb du kan ange ett konfigurerat virtuellt nätverk. Ett scenario för att göra detta är om du behöver tooaccess corpnet resurserna från dina virtuella datorer med hjälp av hello virtuella nätverk som har konfigurerats med ExpressRoute eller plats-till-plats-VPN. hello följande avsnitt visar hur tooadd ditt befintliga virtuella nätverk i ett labb inställningarna för virtuella nätverk så att den är tillgänglig toochoose när du skapar virtuella datorer.
 
-## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Konfigurera ett virtuellt nätverk för ett labb i Azure Portal
-Följande steg beskriver hur du lägger till ett befintligt virtuellt nätverk (och undernät) i ett labb så att den kan användas när du skapar en virtuell dator i samma labbet. 
+## <a name="configure-a-virtual-network-for-a-lab-using-hello-azure-portal"></a>Konfigurera ett virtuellt nätverk för ett testlabb med hello Azure-portalen
+hello följande steg beskriver hur du lägger till ett befintligt virtuellt nätverk (och undernät) tooa labb så att den kan användas när du skapar en virtuell dator i hello samma labbet. 
 
-1. Logga in på [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Välj **fler tjänster**, och välj sedan **DevTest Labs** från listan.
-3. Lista över labs, Välj önskade labbet. 
-4. På den testmiljön bladet välj **Configuration**.
-5. På testmiljön **Configuration** bladet väljer **virtuella nätverken**.
-6. På den **virtuella nätverken** bladet visas en lista över virtuella nätverk som konfigurerats för det aktuella labbet som standard virtuella nätverket som skapas för ditt labb. 
+1. Logga in toohello [Azure-portalen](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+2. Välj **fler tjänster**, och välj sedan **DevTest Labs** hello-listan.
+3. Välj önskad hello-labb hello listan övningar. 
+4. På bladet hello lab väljer **Configuration**.
+5. På hello lab **Configuration** bladet väljer **virtuella nätverken**.
+6. På hello **virtuella nätverken** bladet visas en lista över virtuella nätverk som konfigurerats för hello aktuella labbet samt hello standard virtuella nätverk som har skapats för ditt labb. 
 7. Välj **+ Lägg till**.
    
-    ![Lägg till ett befintligt virtuellt nätverk i ditt labb](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
-8. På den **för virtuella nätverk** bladet väljer **[väljer virtuellt nätverk]**.
+    ![Lägg till ett befintligt virtuellt nätverk tooyour labb](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
+8. På hello **för virtuella nätverk** bladet väljer **[väljer virtuellt nätverk]**.
    
     ![Välj ett befintligt virtuellt nätverk](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
-9. På den **Välj virtuellt nätverk** bladet välj önskade virtuella nätverket. Bladet visar de virtuella nätverk som finns under samma region i prenumerationen som labbet.  
-10. När du har valt ett virtuellt nätverk, är du tillbaka till den **för virtuella nätverk** på undernät i listan längst ned på bladet.
+9. På hello **Välj virtuellt nätverk** bladet, Välj hello önskade virtuella nätverket. hello bladet visar alla hello virtuella nätverk som är under hello samma region i hello prenumeration som hello labbet.  
+10. När du har valt ett virtuellt nätverk, returneras toohello **för virtuella nätverk** på hello undernät i hello lista längst hello hello-bladet.
 
     ![Lista över undernät](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
     
-    Lab undernät-bladet visas.
+    hello Lab undernät-bladet visas.
 
     ![Blad för labbet undernät](./media/devtest-lab-configure-vnet/lab-subnet.png)
 
 11. Ange en **labbundernätsnamn**.
-12. Om ett undernät som ska användas i testmiljön skapa Virtuella väljer **användning i virtuell dator skapas**.
-13. Så här aktiverar du en [delad offentlig IP-adress](devtest-lab-shared-ip.md)väljer **aktivera delad offentlig IP**.
-14. Om du vill tillåta offentliga IP-adresser i ett undernät, Välj **kan skapa en offentlig IP-**.
-15. I den **maximalt virtuella datorer per användare** anger de maximala virtuella datorerna per användare för varje undernät. Lämna fältet tomt om du vill att ett obegränsat antal virtuella datorer.
-16. Välj **OK** att stänga bladet Lab undernät.
-17. Välj **spara** att stänga bladet virtuella nätverk.
-18. Det virtuella nätverket är konfigurerat, kan du välja den när du skapar en virtuell dator. 
-    Att se hur du skapar en virtuell dator och ange ett virtuellt nätverk finns i artikel [lägga till en virtuell dator med artefakter i ett labb](devtest-lab-add-vm-with-artifacts.md). 
+12. tooallow ett undernät toobe som använts i labbet skapa en virtuell dator, Välj **användning i virtuell dator skapas**.
+13. tooenable en [delad offentlig IP-adress](devtest-lab-shared-ip.md)väljer **aktivera delad offentlig IP**.
+14. tooallow offentliga IP-adresser i ett undernät, Välj **kan skapa en offentlig IP-**.
+15. I hello **maximalt virtuella datorer per användare** anger hello maximala virtuella datorer per användare för varje undernät. Lämna fältet tomt om du vill att ett obegränsat antal virtuella datorer.
+16. Välj **OK** tooclose hello Lab undernät-bladet.
+17. Välj **spara** tooclose hello virtuella nätverk-bladet.
+18. Hello virtuellt nätverk är konfigurerat, kan du välja den när du skapar en virtuell dator. 
+    toosee hur toocreate en virtuell dator och ange ett virtuellt nätverk finns i artikeln toohello [lägga till en virtuell dator med artefakter tooa lab](devtest-lab-add-vm-with-artifacts.md). 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Nästa steg
-När du har lagt till det önskade virtuella nätverket till ditt labb, nästa steg är att [lägga till en virtuell dator i labbet](devtest-lab-add-vm-with-artifacts.md).
+När du har lagt till hello önskade virtuella nätverket tooyour lab, hello nästa steg är för[lägga till ett labb för VM-tooyour](devtest-lab-add-vm-with-artifacts.md).
 

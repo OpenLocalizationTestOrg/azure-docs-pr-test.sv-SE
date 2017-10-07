@@ -1,6 +1,6 @@
 ---
-title: "Node.js API-app i Azure Apptjänst | Microsoft Docs"
-description: "Lär dig hur du skapar en Node.js RESTful-API och distribuera det till en API-app i Azure Apptjänst."
+title: aaaNode.js API-app i Azure App Service | Microsoft Docs
+description: "Lär dig hur toocreate en Node.js RESTful-API och distribuera den tooan API-app i Azure App Service."
 services: app-service\api
 documentationcenter: node
 author: bradygaster
@@ -14,16 +14,16 @@ ms.devlang: nodejs
 ms.topic: get-started-article
 ms.date: 06/13/2017
 ms.author: rachelap
-ms.openlocfilehash: 806585edd43b9d2d678bfa41523e4d9d40af8cba
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 3b3229c1453b6ca4d06bef26f476e92afda4e244
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Skapa en Node.js RESTful-API och distribuera den till en API-app i Azure
+# <a name="build-a-nodejs-restful-api-and-deploy-it-tooan-api-app-in-azure"></a>Skapa en Node.js RESTful-API och distribuera den tooan API-app i Azure
 [!INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
-I den här snabbstarten visas hur du skapar ett [Express](http://expressjs.com/)-ramverk med REST API för Node.js från en [Swagger](http://swagger.io/)-definition och distribuerar det som en [API-app](app-service-api-apps-why-best-platform.md) på Azure. Du skapar appen med hjälp av kommandoradsverktyg, konfigurerar resurser med [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) och distribuerar appen med Git.  När du är klar har du ett fungerande exempel-REST-API som körs på Azure.
+Den här snabbstarten visar hur toocreate REST-API med Node.js [Express](http://expressjs.com/)med hjälp av en [Swagger](http://swagger.io/) definition och distribuera den som en [API-app](app-service-api-apps-why-best-platform.md) på Azure. Du kan skapa hello appen med hjälp av kommandoradsverktyg, konfigurera resurser med hello [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli), och distribuera hello app med Git.  När du är klar har du ett fungerande exempel-REST-API som körs på Azure.
 
 ## <a name="prerequisites"></a>Krav
 
@@ -34,17 +34,17 @@ I den här snabbstarten visas hur du skapar ett [Express](http://expressjs.com/)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="prepare-your-environment"></a>Förbered din miljö
 
-1. Kör följande kommando i ett terminalfönster för att klona exemplet till den lokala datorn.
+1. Kör hello efter kommandot tooclone hello exempel tooyour lokala datorn i ett terminalfönster.
 
     ```bash
     git clone https://github.com/Azure-Samples/app-service-api-node-contact-list
     ```
 
-2. Ändra till den katalog som innehåller exempelkoden.
+2. Ändra toohello katalog som innehåller hello exempelkod.
 
     ```bash
     cd app-service-api-node-contact-list
@@ -59,9 +59,9 @@ Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI v
 
 ## <a name="generate-nodejs-code"></a>Generera Node.js-kod 
 
-Det här avsnittet av kursen visar ett arbetsflöde för API-utveckling där du först skapar Swagger-metadata och använder dem för att autogenerera en serverkod för API:et. 
+Det här avsnittet av kursen hello modeller ett arbetsflöde för API-utveckling där du först skapar Swagger-metadata och använder den tooscaffold (Autogenerera) serverkod för hello API. 
 
-Gå till katalogen för mappen *Start* och kör `yo swaggerize`. Swaggerize skapar ett Node.js-projekt för ditt API från Swagger-definitionen i *api.json*.
+Ändra katalogen toohello *starta* mapp, kör `yo swaggerize`. Swaggerize skapar en Node.js-projekt för din API från hello Swagger-definition i *api.json*.
 
 ```bash
 cd start
@@ -73,28 +73,28 @@ Använd *ContactList* när du uppmanas ange projektnamn.
    ```bash
    Swaggerize Generator
    Tell us a bit about your application
-   ? What would you like to call this project: ContactList
+   ? What would you like toocall this project: ContactList
    ? Your name: Francis Totten
    ? Your github user name: fabfrank
    ? Your email: frank@fabrikam.net
    ```
    
-## <a name="customize-the-project-code"></a>Anpassa projektkoden
+## <a name="customize-hello-project-code"></a>Anpassa hello Projektkod
 
-1. Kopiera mappen *lib* till mappen *Kontaktlista* som skapats av `yo swaggerize` och ändra sedan katalogen till *Kontaktlista*.
+1. Kopiera hello *lib* till hello mappen *kontaktlista* mapp som skapats av `yo swaggerize`, ändra katalogen till *kontaktlista*.
 
     ```bash
     cp -r lib/ ContactList/
     cd ContactList
     ```
 
-2. Installera NPM-modulerna `jsonpath` och `swaggerize-ui`. 
+2. Installera hello `jsonpath` och `swaggerize-ui` NPM-modulerna. 
 
     ```bash
     npm install --save jsonpath swaggerize-ui
     ```
 
-3. Ersätt koden i *handlers/contacts.js* med följande kod: 
+3. Ersätt hello koden i hello *handlers/contacts.js* med hello följande kod: 
     ```javascript
     'use strict';
 
@@ -106,9 +106,9 @@ Använd *ContactList* när du uppmanas ange projektnamn.
         }
     };
     ```
-    Den här koden använder JSON-data som lagras i *lib/contacts.json* som hanteras av *lib/contactRepository.js*. Den nya *contacts.js*-koden returnerar alla kontakter i lagringsplatsen som en JSON-nyttolast. 
+    Den här koden använder hello JSON-data som lagras i *lib/contacts.json* hanteras av *lib/contactRepository.js*. hello nya *contacts.js* koden returnerar alla kontakter i hello databasen som en JSON-nyttolast. 
 
-4. Ersätt koden i filen **handlers/contacts/{id}.js** med följande kod:
+4. Ersätt hello koden i hello **handlers/contacts/{id}.js** fil med hello följande kod:
 
     ```javascript
     'use strict';
@@ -122,9 +122,9 @@ Använd *ContactList* när du uppmanas ange projektnamn.
     };
     ```
 
-    Med den här koden kan du använda en sökvägsvariabel för att endast returnera kontakten med det angivna ID:t.
+    Den här koden kan du använda en sökväg variabeln tooreturn endast hello kontakt med angivet ID.
 
-5. Ersätt koden i **server.js** med följande kod:
+5. Ersätt hello koden i **server.js** med hello följande kod:
 
     ```javascript
     'use strict';
@@ -162,16 +162,16 @@ Använd *ContactList* när du uppmanas ange projektnamn.
     });
     ```   
 
-    Den här koden gör några små ändringar så att den fungerar med Azure App Service och gör ett interaktivt webbgränssnitt tillgängligt för ditt API.
+    Den här koden gör vissa små ändringar toolet den fungerar med Azure App Service och visar en interaktiv webbgränssnittet för ditt API.
 
-### <a name="test-the-api-locally"></a>Testa API lokalt
+### <a name="test-hello-api-locally"></a>Testa hello API lokalt
 
-1. Starta Node.js-appen
+1. Starta hello Node.js-app
     ```bash
     npm start
     ```
     
-2. Bläddra till http://localhost:8000/contacts för att se JSON för hela kontaktlistan.
+2. Bläddra toohttp://localhost:8000 / kontaktar tooview hello JSON för hello hela kontaktlista.
    
    ```json
     {
@@ -191,7 +191,7 @@ Använd *ContactList* när du uppmanas ange projektnamn.
     }
    ```
 
-3. Bläddra till http://localhost:8000/contacts/2 för att se kontakten med en `id` för två.
+3. Bläddra toohttp://localhost:8000/kontakter/2 tooview hello kontakt med en `id` två.
    
     ```json
     { 
@@ -201,21 +201,21 @@ Använd *ContactList* när du uppmanas ange projektnamn.
     }
     ```
 
-4. Testa API:et med Swagger-webbgränssnittet på http://localhost:8000/docs.
+4. Testa hello API: et med hello Swagger webbgränssnitt på http://localhost: 8000/docs.
    
     ![Swagger-webbgränssnitt](media/app-service-api-nodejs-api-app/swagger-ui.png)
 
 ## <a id="createapiapp"></a> Skapa en API-app
 
-I det här avsnittet använder du Azure CLI 2.0 för att skapa de resurser som behövs när Azure App Service ska vara värd för ditt API. 
+I det här avsnittet använder du hello Azure CLI 2.0 toocreate hello resurser toohost hello API på Azure App Service. 
 
-1.  Logga in på Azure-prenumerationen med kommandot [az login](/cli/azure/#login) och följ anvisningarna på skärmen.
+1.  Logga in tooyour Azure-prenumeration med hello [az inloggningen](/cli/azure/#login) kommando och följ hello på skärmen riktningar.
 
     ```azurecli-interactive
     az login
     ```
 
-2. Om du har flera Azure-prenumerationer kan du ändra standardprenumerationen till den du vill använda.
+2. Om du har flera Azure-prenumerationer kan önskade ändra hello standard prenumeration toohello en.
 
     ````azurecli-interactive
     az account set --subscription <name or id>
@@ -228,36 +228,36 @@ I det här avsnittet använder du Azure CLI 2.0 för att skapa de resurser som b
 5. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
 
 
-## <a name="deploy-the-api-with-git"></a>Distribuera API med Git
+## <a name="deploy-hello-api-with-git"></a>Distribuera hello-API med Git
 
-Distribuera din kod till API-appen genom att skicka incheckningar från din lokala Git-lagringsplats till Azure App Service.
+Distribuera din kod toohello API-app genom att skicka incheckningar från din lokala Git-lagringsplatsen tooAzure Apptjänst.
 
 1. [!INCLUDE [Configure your deployment credentials](../../includes/configure-deployment-user-no-h.md)] 
 
-2. Initiera en ny lagringsplats i katalogen *Kontaktlista*. 
+2. Initiera en ny lagringsplatsen i hello *kontaktlista* directory. 
 
     ```bash
     git init .
     ```
 
-3. Exkludera katalogen *node_modules* som skapats av npm tidigare i självstudien från Git. Skapa en ny `.gitignore`-fil i den aktuella katalogen och lägg till följande text på en ny rad var som helst i filen.
+3. Exkludera hello *node_modules* directory som skapats av npm tidigare i kursen hello från Git. Skapa en ny `.gitignore` i hello katalogen och Lägg till hello efter texten på en ny rad var som helst i hello-filen.
 
     ```
     node_modules/
     ```
-    Bekräfta att mappen `node_modules` ignoreras med `git status`.
+    Bekräfta hello `node_modules` mappen ignoreras med `git status`.
 
-4. Checka in ändringarna till lagringsplatsen.
+4. Bekräfta hello ändringar toohello lagringsplatsen.
     ```bash
     git add .
     git commit -m "initial version"
     ```
 
-5. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
+5. [!INCLUDE [Push tooAzure](../../includes/app-service-api-git-push-to-azure.md)]  
  
-## <a name="test-the-api--in-azure"></a>Testa API:et i Azure
+## <a name="test-hello-api--in-azure"></a>Testa hello API i Azure
 
-1. Öppna en webbläsare och gå till http://app_name.azurewebsites.net/contacts. Samma JSON returneras som när du gjorde begäran lokalt tidigare i självstudien.
+1. Öppna en webbläsare toohttp://app_name.azurewebsites.net/contacts. Du kan se hello samma JSON returneras som när du har gjort hello begäran lokalt tidigare i kursen hello.
 
    ```json
    {
@@ -277,15 +277,15 @@ Distribuera din kod till API-appen genom att skicka incheckningar från din loka
    }
    ```
 
-2. Gå till `http://app_name.azurewebsites.net/docs`-slutpunkten i en webbläsare för att testa Swagger-användargränssnittet som körs i Azure.
+2. I en webbläsare går du toohello `http://app_name.azurewebsites.net/docs` endpoint tootry ut hello Swagger-användargränssnitt som körs på Azure.
 
     ![Swagger Ii](media/app-service-api-nodejs-api-app/swagger-azure-ui.png)
 
-    Du kan nu distribuera uppdateringar till exempel-API:et till Azure genom att helt enkelt push-överföra incheckningar till Azure Git-lagringsplatsen.
+    Du kan nu distribuera uppdateringar toohello exempel API tooAzure genom att trycka på incheckningar toohello Azure Git-lagringsplatsen.
 
 ## <a name="clean-up"></a>Rensa
 
-Kör följande Azure CLI-kommando för att rensa resurserna som skapades av den här snabbstarten:
+tooclean hello resurser som skapats i denna Snabbstart kör hello följande Azure CLI-kommando:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

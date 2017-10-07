@@ -1,6 +1,6 @@
 ---
-title: "Förkonfigurerad lösning för förebyggande underhåll | Microsoft Docs"
-description: "En beskrivning av den förkonfigurerade lösningen för förebyggande underhåll i Azure IoT Suite."
+title: "aaaPredictive Underhåll förkonfigurerade lösningen | Microsoft Docs"
+description: "En beskrivning av hello Azure IoT Suite förutsägande Underhåll förkonfigurerade lösningen."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,125 +15,125 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: 8bad198488c4940a83eb32ec02122a91d47ca86c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2d09801467d33db6b7d6333fa071aea2bf573f20
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="predictive-maintenance-preconfigured-solution-overview"></a>Översikt över förkonfigurerad lösning för förebyggande underhåll
 
-Den [förkonfigurerade lösningen][lnk_preconfigured_solutions] för *förebyggande underhåll* är en av de förkonfigurerade lösningarna i [Microsoft Azure IoT Suite][lnk_iot_suite]. Den här lösningen integrerar realtidsinsamling av enhetstelemetri med en förebyggande modell skapad med [Azure Machine Learning][lnk-machine-learning].
+Hej *förutsägande Underhåll* [förkonfigurerade lösningen] [ lnk_preconfigured_solutions] är en av hello [Microsoft Azure IoT Suite] [ lnk_iot_suite] förkonfigurerade lösningar. Den här lösningen integrerar realtidsinsamling av enhetstelemetri med en förebyggande modell skapad med [Azure Machine Learning][lnk-machine-learning].
 
-Med Azure IoT Suite kan du snabbt och enkelt ansluta till och övervaka tillgångar och analysera telemetri i realtid på instrumentpaneler och i visualiseringar. I lösningen för förutsägande underhåll ger instrumentpanelerna och visualiseringarna nya insikter som kan öka effektiviteten och förbättra intäktsströmmarna.
+Med Azure IoT Suite du snabbt och enkelt ansluta tooand övervakaren tillgångar och analysera telemetri i realtid i instrumentpaneler och visualiseringar. I hello förutsägande underhållslösningen ger hello instrumentpaneler och visualiseringar nya intelligence som kan enheten effektivitet och förbättra intäkter dataströmmar.
 
-## <a name="the-scenario"></a>Scenariot
+## <a name="hello-scenario"></a>hello Scenario
 
-Fabrikam är ett regionalt flygbolag som fokuserar på bra kundupplevelser till konkurrenskraftiga priser. En orsak till flygförseningar är underhållsproblem, och flygplansmotorernas underhåll är särskilt krävande. Fabrikam måste till vilket pris som helst förhindra motorfel under flygningar och inspekterar därför regelbundet sina motorer och schemalägger underhåll med utgångspunkt i en plan. Flygplansmotorer slits dock inte alltid likadant. En del onödigt underhåll utförs på motorerna. Dessutom kan det uppstå problem som gör att planet blir stående tills underhåll har utförts. Om ett flygplan finns på en plats där rätt tekniker eller reservdelar inte är tillgängliga kan dessa problem bli extra kostsamma.
+Fabrikam är ett regionalt flygbolag som fokuserar på bra kundupplevelser till konkurrenskraftiga priser. En orsak till flygförseningar är underhållsproblem, och flygplansmotorernas underhåll är särskilt krävande. Fabrikam måste undvika motorn fel under svarta på alla vis så att den regelbundet kontrollerar dess motorer och schemalägger underhåll enligt tooa plan. Dock hello flygplan motorer inte bär alltid densamma. En del onödigt underhåll utförs på motorerna. Dessutom kan det uppstå problem som gör att planet blir stående tills underhåll har utförts. Om ett flygplan är på en plats hello där rätt tekniker eller delar är inte tillgänglig, dessa problem kan vara särskilt kostsamma.
 
-Motorerna i Fabrikams flygplan är utrustade med sensorer som övervakar motortillståndet under flygning. Fabrikam använder lösningen för förutsägande underhåll för att samla in de sensordata som inhämtats under flygresan. Fabrikams dataspecialister har under flera år samlat in data om motorernas drift och eventuella fel och har tagit fram en modell som kan förutse flygplansmotorernas återstående livslängd. Modellen använder en korrelation mellan data från fyra av motorsensorerna och motorförslitningar som med tiden leder till motorfel. Fabrikam fortsätter att utföra regelbundna inspektioner för att säkerställa säkerheten, men nu kan man använda modeller för att beräkna varje motors återstående livslängd efter varje flygning. Modellen använder telemetrin som samlats in från motorerna under flygresan. Fabrikam kan nu förutsäga framtida tidpunkter för potentiella fel och planera för underhåll och reparation i förväg.
+hello motorer i Fabrikams flygplan instrumenterats med sensorer som övervakar motorn villkor under svarta. Fabrikam använder hello förutsägande Underhåll lösningen toocollect hello sensordata som samlas in under hello svarta. När kan sparas års motorn operativa och fel data har Fabrikams datavetare modelleras en sätt toopredict hello återstående livslängd (RUL) ett flygplan-motorn. hello modellen använder en korrelation mellan data från fyra hello motorn sensorer och motorn förslitning som leder tooeventual fel. Medan Fabrikam fortsätter tooperform regelbundna kontroller tooensure säkerhet, kan nu använda hello modeller toocompute hello RUL för varje motor efter varje svarta. hello modellen använder hello telemetri som samlats in från hello motorer under hello svarta. Fabrikam kan nu förutsäga framtida tidpunkter för potentiella fel och planera för underhåll och reparation i förväg.
 
 > [!NOTE]
-> Lösningsmodellen använder faktiska data om motorernas slitage.
+> hello lösning modellen använder motorns verkliga förslitning data.
 
-Genom att förutsäga när underhåll krävs kan Fabrikam optimera verksamheten och minska kostnaderna.
+Fabrikam kan optimera sina åtgärder tooreduce kostnader genom att förutsäga hello punkt när Underhåll krävs.
 
 Underhållskoordinatorer arbetar tillsammans med schemaläggare för att:
 
-- Planera underhållet så att det sammanträffar med tidpunkten då ett flygplan stannar på en viss plats.
-- Se till att det finns tillräckligt med tid för flygplanet att vara ur funktion utan att orsaka avbrott i schemat.
-- För att schemalägga tekniker så att flygplanen servas effektivt utan väntetid.
+- Planera Underhåll toocoincide med ett flygplan stoppas på en viss plats.
+- Se till att tillräckligt med tid är tillgänglig för hello flygplan toobe ur funktion utan att orsaka avbrott i schemat.
+- tooschedule tekniker tooensure att flygplan går effektivt utan väntetid.
 
 Inventeringskontrollchefer får underhållsplaner så att de kan optimera beställningsprocessen och reservdelslagret.
 
-Dessa aktiviteter gör att Fabrikam kan minimera flygplanens marktid och minska driftkostnaderna samtidigt som man säkerställer passagerarnas och flygplansbesättningens säkerhet.
+Dessa aktiviteter aktivera Fabrikam toominimize flygplan grunden tid och minska kostnaderna samtidigt hello passagerare och säkerhet teamet.
 
-Mer information om hur [Azure IoT Suite][lnk_iot_suite] tillhandahåller de funktioner som kunder behöver för att förverkliga potentialen i förebyggande underhåll finns [här][lnk_infographic].
+toounderstand hur [Azure IoT Suite] [ lnk_iot_suite] ger hello funktioner kunder måste toorealize hello potentiella förutsägande Underhåll igenom detta [infographic] [lnk_infographic].
 
-## <a name="how-the-predictive-maintenance-solution-is-built"></a>Så här är lösningen för förebyggande underhåll uppbyggd
+## <a name="how-hello-predictive-maintenance-solution-is-built"></a>Hur hello förutsägande underhållslösningen byggs
 
-Lösningen utnyttjar en befintlig Azure Machine Learning-modell som är tillgänglig som en mall för att demonstrera hur dessa funktioner arbetar med enhetstelemetri som samlas in via IoT Suite-tjänster. Microsoft har byggt en [regressionsmodell][lnk_regression_model] av en flygplansmotor baserat på offentligt tillgängliga data<sup>\[1\]</sup> och stegvisa anvisningar för hur du använder modellen.
+hello lösningen använder en befintlig Azure Machine Learning-modell tillgänglig som en mall tooshow dessa funktioner fungerar från enheten telemetri som samlats in via IoT Suite-tjänster. Microsoft har skapat en [regressionsmodell] [ lnk_regression_model] av flygplan motor baserat på offentligt tillgängliga data<sup>\[1\]</sup>, och stegvisa information om hur toouse hello modellen.
 
-Azure IoT:s lösning för förutsägande underhåll använder regressionsmodellen som skapats från den här mallen. Modellen distribueras i din Azure-prenumeration och exponeras via en automatiskt genererad API. Lösningen innehåller en delmängd av testdata som representerar 4 (av totalt 100) motorer och 4 (av totalt 21) dataströmmar. Dessa data är tillräckliga för att tillhandahålla ett korrekt resultat från Trained Model.
+hello Azure IoT förutsägande underhållslösningen används hello regressionsmodell som skapas utifrån mallen. hello-modellen har distribuerats till din Azure-prenumeration och exponeras via en automatiskt genererad API. hello lösningen innehåller en delmängd av hello testa data som representerar 4 (i 100 totala) motorer och hello 4 (av totalt 21) sensor dataströmmar. Dessa data är tillräckligt tooprovide en korrekt resultat från hello tränad modell.
 
 *\[1\] A. Saxena och K. Goebel (2008). "Turbofan Engine Degradation Simulation Data Set", NASA Ames Prognostics Data Repository (http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/), NASA Ames Research Center, Moffett Field, CA*
 
 ## <a name="get-started-with-predictive-maintenance"></a>Kom igång med förebyggande underhåll
 
-I den här självstudien får du se hur du kan etablera lösningen för förebyggande underhåll. Du lär dig också om de grundläggande funktionerna i lösningen för förebyggande underhåll. Du kan komma åt många av dessa funktioner via instrumentpanelen för lösningen som distribueras tillsammans med den förkonfigurerade lösningen.
+Den här kursen visar hur tooprovision hello förutsägande Underhåll lösning. Även vägleder dig genom hello grundläggande funktioner i hello förutsägande Underhåll lösning. Du kan komma åt många av dessa funktioner via hello lösning instrumentpanelen som distribuerar tillsammans med hello förkonfigurerade lösningen.
 
-Du behöver en aktiv Azure-prenumeration för att kunna utföra stegen i den här självstudiekursen.
+toocomplete den här självstudiekursen kommer du behöver en aktiv Azure-prenumeration.
 
 > [!NOTE]
 > Om du inte har något konto kan du skapa ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information finns i [kostnadsfri utvärderingsversion av Azure][lnk_free_trial].
 
-1. Logga in på [azureiotsuite.com][lnk-azureiotsuite] med din Azure-kontoinformation och skapa en lösning genom att klicka på **+**.
-1. Klicka på **Välj** på ikonen **Förebyggande underhåll**.
+1. Logga in för[azureiotsuite.com] [ lnk-azureiotsuite] med din Azure kontoautentiseringsuppgifter och klicka på ** + ** toocreate en lösning.
+1. Klicka på **Välj** hello **förutsägande Underhåll** panelen.
 1. Ange ett **lösningsnamn** för din förkonfigurerade lösning för förebyggande underhåll.
-1. Välj den **region** och **prenumeration** som du vill använda för att etablera lösningen.
-1. Klicka på **Skapa lösning** för att påbörja etableringen. Den här processen tar normalt flera minuter.
+1. Välj hello **Region** och **prenumeration** du vill toouse tooprovision hello-lösningen.
+1. Klicka på **skapa lösningen** toobegin hello etableringsprocessen. Denna process brukar ta flera minuter toorun.
 
-### <a name="wait-for-the-provisioning-process-to-complete"></a>Vänta tills etableringsprocessen har slutförts
+### <a name="wait-for-hello-provisioning-process-toocomplete"></a>Vänta tills hello etablering processen toocomplete
 
-1. Klicka på ikonen för din lösning med statusen **Etablerar**.
-1. Observera **etableringsstatusen** när Azure-tjänsterna distribueras i din Azure-prenumeration.
-1. När etableringen har slutförts ändras statusen till **Klar**.
-1. Klicka på ikonen så ser du informationen om din lösning i den högra rutan. Från det här fönstret kan du starta lösningens instrumentpanel och få åtkomst till Machine Learning-arbetsytan.
+1. Klicka på hello panelen för din lösning med **etablering** status.
+1. Meddelande hello **etablering tillstånd** som Azure-tjänster har distribuerats i din Azure-prenumeration.
+1. När etableringen är klar hello status ändras för**klar**.
+1. Klicka på panelen hello toosee hello information i lösningen i hello högra rutan. Från det här fönstret kan du starta hello lösning instrumentpanel och åtkomst hello Machine Learning-arbetsytan.
 
 > [!NOTE]
-> Om det uppstår några problem när du distribuerar den förkonfigurerade lösningen kan du läsa [Behörigheter på webbplatsen azureiotsuite.com][lnk-permissions] och [Vanliga frågor och svar][lnk-faq]. Om problemen kvarstår så skapa en tjänstbiljett på [portalen][lnk-portal].
+> Om du får problem som distribuerar hello förkonfigurerade lösningen granska [behörigheter på hello azureiotsuite.com platsen] [ lnk-permissions] och hello [vanliga frågor och svar] [ lnk-faq]. Om hello problem kvarstår, skapa en tjänstbiljett på hello [portal][lnk-portal].
 
-Finns det något som du förväntar dig att se men som inte visas för din lösning? Lämna förslag på funktioner i [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
+Finns det information som du förväntar dig toosee som inte visas för lösningen? Lämna förslag på funktioner i [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
 
-## <a name="view-the-solution"></a>Visa lösningen
+## <a name="view-hello-solution"></a>Visa hello lösning
 
-I det här avsnittet vägleds du genom lösningens användargränssnitt.
+Det här avsnittet hjälper dig att hello lösning Användargränssnittet.
 
 ### <a name="predictive-maintenance-dashboard"></a>Instrumentpanel för förebyggande underhåll
 
-Den här sidan i webbappen använder PowerBI JavaScript-kontroller (finns i [PowerBI-visuals-databasen][lnk-powerbi]) för att visualisera:
+Den här sidan i hello webbprogram använder PowerBI JavaScript-kontroller (se hello [PowerBI-visuell information databasen][lnk-powerbi]) toovisualize:
 
-* Utdata från Stream Analytics-jobben i Blob Storage.
-* Den återstående användbara livslängden och antalet cykler per flygplansmotor.
+* hello utdata från hello Stream Analytics-jobb i blob storage.
+* Hej RUL och cykel antal per flygplan motorn.
 
-### <a name="observing-the-behavior-of-the-cloud-solution"></a>Observera molnlösningens beteende
+### <a name="observing-hello-behavior-of-hello-cloud-solution"></a>Sett hello funktionssätt hello molnlösning
 
-I Azure Portal navigerar du till resursgruppen med det lösningsnamn som du har valt för att visa dina etablerade resurser.
+I hello Azure portal, navigerar toohello resursgrupp med hello lösningens namn du har valt tooview etablerade resurserna.
 
 ![][img-resource-group]
 
-När du etablerar den förkonfigurerade lösningen kan du få ett e-postmeddelande med en länk till Machine Learning-arbetsytan. Du kan också navigera till Machine Learning-arbetsytan från sidan [azureiotsuite.com][lnk-azureiotsuite] för din etablerade lösning. En panel är tillgänglig på den här sidan när lösningen har statusen **Redo**.
+När du etablerar hello förkonfigurerade lösningen kan du få ett e-postmeddelande med en länk toohello Machine Learning-arbetsytan. Du kan också navigera toohello Machine Learning-arbetsytan från hello [azureiotsuite.com] [ lnk-azureiotsuite] sidan för etablerade lösningen. En panel är tillgänglig på den här sidan när hello lösningen är i hello **klar** tillstånd.
 
 ![][img-machine-learning]
 
-På lösningsportalen kan du se att exemplet etableras med fyra simulerade enheter som representerar två flygplan med två motorer per plan, var och en med fyra sensorer. När du navigerar till lösningsportalen stoppas simuleringen.
+Du kan se hello urvalet har etablerats med fyra simulerade enheter toorepresent två flygplan med två motorer per flygplan, var och en med fyra sensorer i hello lösning-portalen. När du först navigerar toohello lösning portal har hello simulering stoppats.
 
 ![][img-simulation-stopped]
 
-Starta simuleringen genom att klicka på **Starta simulering**. Instrumentpanelen fylls med sensorhistorik, RUL-värden, cykler och RUL-historik.
+Klicka på **starta simuleringen** toobegin hello simuleringen. Hej sensor historik, RUL, cykler och RUL historik fylla hello instrumentpanelen.
 
 ![][img-simulation-running]
 
-Om RUL-värdet är mindre än 160 (ett godtyckligt tröskelvärde som valts som exempel) visas en varningssymbol på lösningsportalen bredvid RUL-värdet. Dessutom markeras flygplansmotorn i gult på lösningsportalen. Lägg märke till att RUL-värdena har en nedåtgående trend generellt, men med många upp- och nedgångar. Detta mönster beror på de olika cykellängderna och modellens precision.
+När RUL är mindre än 160 (en godtycklig tröskel valt), visas hello lösning en varning symbolen nästa toohello RUL visas. hello lösning portal visar också hello flygplan motorn i gult. Observera hur hello RUL värden ha en allmän nedåtgående trend övergripande men tenderar toobounce uppåt och nedåt. Det här beteendet fås hello varierande cykel längder och hello modellen noggrannhet.
 
 ![][img-simulation-warning]
 
-Den fullständiga simuleringen tar 35 minuter för att slutföra 148 cykler. RUL-tröskelvärdet på 160 nås för första gången vid cirka 5 minuter och båda motorerna når tröskelvärdet ungefär vid 8 minuter.
+hello fullständig simuleringen tar cirka 35 minuter toocomplete 148 cykler. hello 160 RUL tröskelvärdet har uppnåtts för hello första gången vid cirka 5 minuter och båda motorer träffar hello tröskelvärdet cirka åtta minuter.
 
-Simuleringen kör igenom den fullständiga datauppsättningen i 148 cykler och bestämmer den slutliga återstående användbara livslängden och cykelvärdena.
+hello simuleringen körs via hello fullständiga datauppsättningen för 148 cykler och reglerar på slutvärdena RUL och cykel.
 
-Du kan stoppa simuleringen när du vill, men om du klickar på **Starta simulering** spelas simuleringen upp igen från början av datauppsättningen.
+Du kan stoppa hello simuleringen vid någon plats, men att klicka på **starta simuleringen** repetitioner hello simulering från hello start av hello dataset.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hur Azure IoT möjliggör scenarier för förebyggande underhåll finns i artikeln [Få ut värde av Internet of Things][lnk_capture_value].
+Mer information om hur Azure IoT möjliggör scenarier med förutsägande Underhåll läsa toolearn [avbilda värde från hello Sakernas Internet][lnk_capture_value].
 
-Gå en [genomgång][lnk-predictive-walkthrough] av lösningen för förutsägande underhåll.
+Ta en [genomgången] [ lnk-predictive-walkthrough] hello förutsägande Underhåll lösning.
 
-Du kan även utforska några andra funktioner och möjligheter i de förkonfigurerade lösningarna i IoT Suite:
+Du kan även utforska några av hello andra funktioner och förmågor i hello IoT Suite förkonfigurerade lösningar:
 
 * [Vanliga frågor och svar om IoT Suite][lnk-faq]
-* [IoT-säkerhet från grunden][lnk-security-groundup]
+* [IoT-säkerhet från hello bakgrund][lnk-security-groundup]
 
 [img-resource-group]: media/iot-suite-predictive-overview/resource-group.png
 [img-simulation-stopped]: media/iot-suite-predictive-overview/simulation-stopped.png

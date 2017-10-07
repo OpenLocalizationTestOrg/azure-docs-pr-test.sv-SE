@@ -1,6 +1,6 @@
 ---
-title: Flytta Web App resurser till en annan resursgrupp
-description: "Beskriver scenarier där du kan flytta webbprogram och Apptjänster från en resursgrupp till en annan."
+title: aaaMove App webbresurser tooanother resursgruppen.
+description: "Beskriver hello scenarier där du kan flytta webbprogram och Apptjänster från en resursgrupp tooanother."
 services: app-service
 documentationcenter: 
 author: ZainRizvi
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: zarizvi
-ms.openlocfilehash: 1b5059dc052005b6079f70ecf6771a3771df8d87
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 931012fee656b7f8a4b2c225c38739a9171d3b2e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="supported-move-configurations"></a>Konfigurationer som stöds flytta
-Du kan flytta Azure Web App resurser med hjälp av den [Resource Manager flytta resurser API](../azure-resource-manager/resource-group-move-resources.md).
+Du kan flytta Azure Web App resurser med hjälp av hello [Resource Manager flytta resurser API](../azure-resource-manager/resource-group-move-resources.md).
 
-Azure Web Apps stöder för närvarande följande move-scenarier:
+Azure Web Apps stöder för närvarande hello efter flytten scenarier:
 
-* Flytta hela innehållet i en resursgrupp (webbappar, apptjänstplaner och certifikat) till en annan resursgrupp. 
+* Flytta hello hela innehållet i en resursgrupp (webbappar, apptjänstplaner och certifikat) tooanother resursgruppen. 
    > [!Note]
-   > Mål resursgruppens namn får inte innehålla några Microsoft.Web resurser i det här scenariot.
+   > hello mål resursgruppens namn får inte innehålla några Microsoft.Web resurser i det här scenariot.
 
-* Flytta enskilda webbprogram till en annan resursgrupp fortfarande värd dem i deras aktuella apptjänstplan (apptjänstplan förblir i den gamla resursgruppen).
+* Flytta enskilda web apps tooa annan resursgrupp, medan du fortfarande värd dem i deras aktuella apptjänstplan (hello app service-plan förblir i hello gamla resursgrupp).
 
 

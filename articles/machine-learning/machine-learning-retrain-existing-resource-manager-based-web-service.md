@@ -1,6 +1,6 @@
 ---
-title: "Träna om en befintlig förutsägande webbtjänst | Microsoft Docs"
-description: "Lär dig mer om att träna om en modell och uppdatera webbtjänsten för att använda den nya tränade modellen i Azure Machine Learning."
+title: "en befintlig förutsägande aaaRetrain webbtjänsten | Microsoft Docs"
+description: "Lär dig hur tooretrain en modell och uppdatera hello web service toouse hello nyligen tränade modellen i Azure Machine Learning."
 services: machine-learning
 documentationcenter: 
 author: vDonGlover
@@ -14,100 +14,100 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-donglo
-ms.openlocfilehash: bdc994daf441d397157f8e6cbcf84d72584927f0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: fb0760d0a2adc34fc5f3df1ae41bdac075f91bf4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Träna om en befintlig förutsägande webbtjänst
-Det här dokumentet beskriver omtränings för följande scenario:
+Det här dokumentet beskriver hello omtränings-process för hello följande scenario:
 
 * Du har en träningsexperiment och en prediktivt experiment som du har distribuerat som en operationalized webbtjänst.
-* Du har nya data som du vill förutsägande webbtjänsten att utföra den bedömningen.
+* Du har nya data som du vill att din förutsägande web service toouse tooperform dess bedömningen.
 
 > [!NOTE] 
-> Om du vill distribuera en ny webbtjänst måste du ha tillräckliga behörigheter i prenumerationen som du distribuerar webbtjänsten. Mer information finns i [hantera en webbtjänst med hjälp av Azure Machine Learning-webbtjänster portal](machine-learning-manage-new-webservice.md). 
+> toodeploy en ny webbtjänst som du måste ha tillräckliga behörigheter i hello prenumeration toowhich du distribuerar hello-webbtjänsten. Mer information finns i [hantera en webbtjänst med hjälp av hello Azure Machine Learning-webbtjänster portal](machine-learning-manage-new-webservice.md). 
 
-Från och med din befintliga webbtjänsten och experiment, måste du följa dessa steg:
+Från och med din befintliga webbtjänsten och experiment, behöver du toofollow de här stegen:
 
-1. Uppdatera modellen.
-   1. Ändra experimentet utbildning för tjänsten indata och utdata.
-   2. Distribuera utbildning experiment som en omtränings-webbtjänst.
-   3. Använd den träningsexperiment Batch Execution Service BES-för att träna om modellen.
-2. Använda Azure Machine Learning PowerShell-cmdlets för att uppdatera prediktivt experiment.
-   1. Logga in på ditt konto i Azure Resource Manager.
-   2. Hämta web service definition.
-   3. Exportera web service definition som JSON.
-   4. Uppdatera referens till ilearner-blob i JSON.
-   5. Importera JSON till en web service definition.
-   6. Uppdatera webbtjänsten med en ny web service definition.
+1. Uppdatera hello modellen.
+   1. Ändra din utbildning experiment tooallow för web service in- och utdataenheter.
+   2. Distribuera hello träningsexperiment som en omtränings-webbtjänst.
+   3. Använda hello utbildning experiment Batch Execution Service BES-tooretrain hello modellen.
+2. Använd hello Azure Machine Learning PowerShell-cmdlets tooupdate hello prediktivt experiment.
+   1. Logga in tooyour Azure Resource Manager-konto.
+   2. Hämta hello web service definition.
+   3. Exportera hello web service definition som JSON.
+   4. Uppdatera hello toohello ilearner referensblobben i hello JSON.
+   5. Importera hello JSON till en web service definition.
+   6. Uppdatera hello-webbtjänsten med en ny web service definition.
 
-## <a name="deploy-the-training-experiment"></a>Distribuera utbildning experimentet
-Om du vill distribuera träningsexperiment som en omtränings webbtjänst, måste du lägga till web service in- och utdataenheter modellen. Genom att ansluta en *Web Service utdata* modulen till arbetsytan för experimentet  *[Träningsmodell] [ train-model]*  modulen, aktivera utbildning experimentet Skapa en ny tränad modell som du kan använda i experimentet förutsägbara. Om du har en *utvärdera modell* modulen, du kan även bifoga web service-utdata för att få utvärderingsresultaten som utdata.
+## <a name="deploy-hello-training-experiment"></a>Distribuera hello träningsexperiment
+toodeploy hello träningsexperiment som en omtränings webbtjänst, måste du lägga till web service in- och utdataenheter toohello modell. Genom att ansluta en *Web Service utdata* modulen toohello experiment  *[Träningsmodell] [ train-model]*  modulen, aktivera hello utbildning experiment tooproduce en tränad modell som du kan använda i experimentet förutsägbara. Om du har en *utvärdera modell* modulen, du kan även bifoga web service utdata tooget hello utvärderingsresultaten som utdata.
 
-Så här uppdaterar experimentet utbildning:
+tooupdate experimentet utbildning:
 
-1. Ansluta en *Web Service inkommande* modulen till data-indata (till exempel en *Rensa Data som saknas* module). Vanligtvis vill du se till att dina indata behandlas på samma sätt som den ursprungliga informationen för utbildning.
-2. Ansluta en *Web Service utdata* modulen till utdataporten för din *Träningsmodell* modul.
-3. Om du har en *utvärdera modell* modul och du vill att utdata utvärderingsresultaten, ansluta en *Web Service utdata* modulen till utdataporten för din *utvärdera modell* modul.
+1. Ansluta en *Web Service inkommande* modulen tooyour indata (till exempel en *Rensa Data som saknas* module). Vanligtvis vill du tooensure som bearbetas i dina indata hello samma sätt som den ursprungliga informationen för utbildning.
+2. Ansluta en *Web Service utdata* modulen toohello utdata från din *Träningsmodell* modul.
+3. Om du har en *utvärdera modell* modul och du vill att toooutput hello utvärderingsresultaten kan ansluta en *Web Service utdata* modulen toohello utdata från din *utvärdera modell* modul.
 
 Kör experimentet.
 
-Därefter måste du distribuera utbildning experiment som en webbtjänst som producerar en tränad modell och utvärderingsresultat av modellen.  
+Därefter måste du distribuera hello träningsexperiment som en webbtjänst som producerar en tränad modell och utvärderingsresultat av modellen.  
 
-Längst ned i arbetsytan för experimentet klickar du på **konfigurera Web Service**, och välj sedan **distribuera webbtjänsten [ny]**. Azure Machine Learning-webbtjänster portal öppnar den **distribuera webbtjänsten** sidan. Ange ett namn för webbtjänsten, väljer en betalningsplan och klicka sedan på **distribuera**. Du kan bara använda Batch Execution-metoden för att skapa tränade modeller.
+Hello längst ned på hello experimentet klickar du på **konfigurera Web Service**, och välj sedan **distribuera webbtjänsten [ny]**. hello Azure Machine Learning-webbtjänster portalen öppnar toohello **distribuera webbtjänsten** sidan. Ange ett namn för webbtjänsten, väljer en betalningsplan och klicka sedan på **distribuera**. Du kan bara använda hello Batch Execution metod för att skapa tränade modeller.
 
-## <a name="retrain-the-model-with-new-data-by-using-bes"></a>Träna om modellen med nya data med hjälp av BES
-I det här exemplet använder vi C# skapa omtränings programmet. Du kan också använda Python eller R exempelkod för att utföra den här uppgiften.
+## <a name="retrain-hello-model-with-new-data-by-using-bes"></a>Träna om hello modellen med nya data med hjälp av BES
+I det här exemplet använder vi C# toocreate hello omtränings program. Du kan också använda Python eller R exempel kod tooaccomplish den här uppgiften.
 
-Att anropa omtränings-API: erna:
+toocall hello omtränings-API: er:
 
 1. Skapa ett C#-konsolprogram i Visual Studio: **ny** > **projekt** > **Visual C#** > **Windows Klassiska Desktop** > **konsolen App (.NET Framework)**.
-2. Logga in på portalen Machine Learning-webbtjänster.
-3. Klicka på den webbtjänst som du arbetar med.
+2. Logga in toohello Machine Learning-webbtjänster portal.
+3. Klicka på hello-webbtjänst som du arbetar med.
 4. Klicka på **använda**.
-5. Längst ned i den **förbruka** sidan den **exempelkod** klickar du på **Batch**.
-6. Kopiera C# exempelkod för batchkörning och klistra in den i filen Program.cs. Kontrollera att namnområdet intakt.
+5. Längst ned hello hello **förbruka** i hello sidan **exempelkod** klickar du på **Batch**.
+6. Kopiera hello C# exempelkod för batchkörning och klistra in den i hello Program.cs-filen. Kontrollera att hello namnutrymmet intakt.
 
-Lägg till NuGet-paketet Microsoft.AspNet.WebApi.Client, som anges i kommentarerna. Om du vill lägga till en referens till Microsoft.WindowsAzure.Storage.dll måste du kanske måste först installera den [klientbiblioteket för Azure Storage-tjänster](https://www.nuget.org/packages/WindowsAzure.Storage).
+Lägg till hello NuGet-paketet Microsoft.AspNet.WebApi.Client, som anges i hello kommentarer. tooadd hello referens tooMicrosoft.WindowsAzure.Storage.dll måste du eventuellt tooinstall hello [klientbiblioteket för Azure Storage-tjänster](https://www.nuget.org/packages/WindowsAzure.Storage).
 
-I följande skärmbild visas den **förbruka** sida i Azure Machine Learning-webbtjänster-portalen.
+hello följande skärmbild visar hello **förbruka** sida i portalen för hello Azure Machine Learning-webbtjänster.
 
 ![Använda sidan][1]
 
-### <a name="update-the-apikey-declaration"></a>Uppdatera apikey deklarationen
-Leta upp den **apikey** deklaration:
+### <a name="update-hello-apikey-declaration"></a>Uppdatera hello apikey förklaring
+Leta upp hello **apikey** deklaration:
 
-    const string apiKey = "abc123"; // Replace this with the API key for the web service
+    const string apiKey = "abc123"; // Replace this with hello API key for hello web service
 
-I den **grundläggande förbrukning info** avsnitt i den **förbruka** , leta upp den primära nyckeln och kopiera den till den **apikey** deklaration.
+I hello **grundläggande förbrukning info** avsnitt i hello **förbruka** , leta upp hello primärnyckel och kopiera den toohello **apikey** deklaration.
 
-### <a name="update-the-azure-storage-information"></a>Uppdatera Azure Storage-informationen
-Exempelkoden BES överför en fil från en lokal enhet (till exempel ”C:\temp\CensusIpnput.csv”) till Azure Storage, bearbetar den och skriver resultatet till Azure Storage.  
+### <a name="update-hello-azure-storage-information"></a>Uppdatera hello Azure Storage-informationen
+Överför en fil från en lokal enhet (till exempel ”C:\temp\CensusIpnput.csv”) tooAzure lagring hello BES exempelkod, bearbetar den och skriver hello resultaten tillbaka tooAzure lagring.  
 
-Om du vill uppdatera Azure Storage-informationen måste du hämta lagringskontonamnet, behållare information och nyckeln för ditt lagringskonto från den klassiska Azure-portalen och sedan uppdatera correspondi när du har kört experimentet resulterande arbetsflödet bör likna följande:
+tooupdate hello Azure Storage-informationen måste du hämta namn och nyckel behållaren information för ditt lagringskonto från hello klassiska Azure-portalen och sedan uppdatera hello correspondi när du har kört experimentet, hello resulterande hello storage-konto arbetsflödet ska vara liknande toohello följande:
 
-![Resulterande arbetsflödet när kör][4]NG värden i koden.
+![Resulterande arbetsflödet när kör][4]NG värden i hello kod.
 
-1. Logga in på den klassiska Azure-portalen.
-2. Klicka på den vänstra navigeringsfönstret i kolumnen **lagring**.
-3. Välj en för att lagra retrained modellen från listan över storage-konton.
-4. Längst ned på sidan klickar du på **hantera åtkomstnycklar**.
-5. Kopiera och spara den **primära åtkomstnyckeln** och Stäng dialogrutan.
-6. Överst på sidan, klickar du på **behållare**.
-7. Välj en befintlig behållare eller skapa en ny och spara namnet.
+1. Logga in toohello klassiska Azure-portalen.
+2. Klicka på hello navigeringen till vänster i kolumnen **lagring**.
+3. Välj en toostore hello retrained hello listan över storage-konton och modell.
+4. Hello längst hello-sidan, klickar du på **hantera åtkomstnycklar**.
+5. Kopiera och spara hello **primära åtkomstnyckeln** och Stäng hello dialogrutan.
+6. Hello överst på hello-sidan, klickar du på **behållare**.
+7. Välj en befintlig behållare eller skapa en ny och spara hello namn.
 
-Leta upp den *StorageAccountName*, *StorageAccountKey*, och *StorageContainerName* deklarationer, och uppdatera värden som du sparade från den klassiska portalen.
+Leta upp hello *StorageAccountName*, *StorageAccountKey*, och *StorageContainerName* deklarationer och uppdatera hello värden som du sparade från hello klassiska portalen .
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
     const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage container name
 
-Du måste också kontrollera att filen finns på den plats som du anger i koden.
+Du måste också kontrollera att hello indatafilen är tillgänglig på hello-plats som du anger i hello kod.
 
-### <a name="specify-the-output-location"></a>Ange platsen för utdata
-När du anger platsen i begäran nyttolasten tillägget på den fil som har angetts i *RelativeLocation* måste anges som `ilearner`. Se följande exempel:
+### <a name="specify-hello-output-location"></a>Ange hello platsen
+När du anger hello platsen i hello begära nyttolast hello-tillägget för hello-filen som anges i *RelativeLocation* måste anges som `ilearner`. Se följande exempel hello:
 
     Outputs = new Dictionary<string, AzureBlobDataReference>() {
         {
@@ -115,33 +115,33 @@ När du anger platsen i begäran nyttolasten tillägget på den fil som har ange
             new AzureBlobDataReference()
             {
                 ConnectionString = storageConnectionString,
-                RelativeLocation = string.Format("{0}/output1results.ilearner", StorageContainerName) /*Replace this with the location you want to use for your output file and a valid file extension (usually .csv for scoring results or .ilearner for trained models)*/
+                RelativeLocation = string.Format("{0}/output1results.ilearner", StorageContainerName) /*Replace this with hello location you want toouse for your output file and a valid file extension (usually .csv for scoring results or .ilearner for trained models)*/
             }
         },
 
-Följande är ett exempel på omtränings utdata: ![Omtränings utdata][6]
+hello följande är ett exempel på omtränings utdata: ![Omtränings utdata][6]
 
-## <a name="evaluate-the-retraining-results"></a>Utvärdera omtränings resultaten
-När du kör programmet innehåller utdata URL och delade signaturer åtkomsttoken som är nödvändiga för att komma åt utvärderingsresultaten.
+## <a name="evaluate-hello-retraining-results"></a>Utvärdera hello omtränings resultat
+När du kör programmet hello innehåller hello utdata hello URL och delade signaturer åtkomsttoken som är nödvändiga tooaccess hello resultatet.
 
-Du kan se prestandaresultat retrained modellen genom att kombinera den *BaseLocation*, *RelativeLocation*, och *SasBlobToken* från resultatet för *output2* (som visas i föregående omtränings utdata avbildningen) och klistra in den fullständiga URL: en i webbläsarens adressfält.  
+Du kan se hello prestandaresultat hello retrained modellen genom att kombinera hello *BaseLocation*, *RelativeLocation*, och *SasBlobToken* hello utdata resultaten för *output2* (som visas i föregående omtränings utdata avbildningen hello) och klistra in hello fullständiga URL: en i hello webbläsarens adressfält.  
 
-Granska resultaten för att avgöra om den nyligen tränade modellen utför bra för att ersätta den befintliga versionen.
+Undersöka hello resultat toodetermine om hello nyligen utbildade modellen presterar bra tillräckligt med tooreplace hello befintliga en.
 
-Kopiera den *BaseLocation*, *RelativeLocation*, och *SasBlobToken* från resultatet.
+Kopiera hello *BaseLocation*, *RelativeLocation*, och *SasBlobToken* hello utdata resultaten.
 
-## <a name="retrain-the-web-service"></a>Träna om webbtjänsten
-När du träna om en ny webbtjänst uppdatera förutsägande web service definition för att referera till den nya tränade modellen. Web service definition är en intern representation av den tränade modellen för webbtjänsten och kan inte ändras direkt. Kontrollera att du hämtar web service definition för experimentet förutsägbara och inte experimentet utbildning.
+## <a name="retrain-hello-web-service"></a>Träna om hello-webbtjänst
+När du träna om en ny webbtjänst uppdatera hello förutsägande web service definition tooreference hello ny tränad modell. hello web service definition är en intern representation av hello tränad modell för hello webbtjänsten och kan inte ändras direkt. Kontrollera att du hämtar hello web service definition för experimentet förutsägbara och inte experimentet utbildning.
 
-## <a name="sign-in-to-azure-resource-manager"></a>Logga in till Azure Resource Manager
-Du måste först logga in på ditt Azure-konto från PowerShell-miljö med hjälp av den [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet.
+## <a name="sign-in-tooazure-resource-manager"></a>Logga in tooAzure Resource Manager
+Du måste först loggar in tooyour Azure-konto från inom hello PowerShell-miljö med hjälp av hello [Add-AzureRmAccount](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet.
 
-## <a name="get-the-web-service-definition-object"></a>Hämta Web Service Definition objektet
-Hämta sedan Web Service Definition objektet genom att anropa den [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet.
+## <a name="get-hello-web-service-definition-object"></a>Hämta hello Web Service Definition objekt
+Hämta sedan hello Web Service Definition objekt genom att anropa hello [Get-AzureRmMlWebService](https://msdn.microsoft.com/library/mt619267.aspx) cmdlet.
 
     $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-För att fastställa resursgruppens namn för en befintlig webbtjänst, kör du cmdleten Get-AzureRmMlWebService utan några parametrar för att visa webbtjänsterna i din prenumeration. Leta upp webbtjänsten och titta på dess web service-ID. Namnet på resursgruppen är det fjärde elementet med ID precis efter den *resursgrupper* element. I följande exempel är resursgruppens namn standard-MachineLearning-SouthCentralUS.
+toodetermine hello resursgruppens namn för en befintlig webbtjänst kör hello Get-AzureRmMlWebService cmdlet utan några parametrar toodisplay hello web-tjänster i din prenumeration. Leta upp hello webbtjänsten och titta på dess web service-ID. hello hello resursgruppen heter hello fjärde elementet i hello ID precis efter hello *resursgrupper* element. I följande exempel hello, används hello resursgruppens namn standard-MachineLearning-SouthCentralUS.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -150,18 +150,18 @@ För att fastställa resursgruppens namn för en befintlig webbtjänst, kör du 
     Type : Microsoft.MachineLearning/webServices
     Tags : {}
 
-Du kan också för att fastställa resursgruppens namn för en befintlig webbtjänst inloggning på portalen Azure Machine Learning-webbtjänster. Välj webbtjänsten. Resursgruppens namn är den femte del av URL för webbtjänsten precis efter den *resursgrupper* element. I följande exempel är resursgruppens namn standard-MachineLearning-SouthCentralUS.
+Du kan också toodetermine hello resursgruppens namn för en befintlig webbtjänst, logga in toohello Azure Machine Learning-webbtjänster portal. Välj hello-webbtjänst. hello resursgruppens namn används hello femte element av hello URL för webbtjänsten för hello, bara efter hello *resursgrupper* element. I följande exempel hello, används hello resursgruppens namn standard-MachineLearning-SouthCentralUS.
 
     https://services.azureml.net/subscriptions/<subcription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
 
-## <a name="export-the-web-service-definition-object-as-json"></a>Exportera Web Service Definition-objektet som JSON
-Om du vill ändra definitionen av den tränade modellen att använda den nya tränade modellen måste du först använda den [Export AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767935.aspx) för att exportera den till en JSON-fil.
+## <a name="export-hello-web-service-definition-object-as-json"></a>Exportera hello Web Service Definition objekt som JSON
+toomodify hello definition av hello tränade modellen toouse hello nyligen tränat modellen måste du först använda hello [Export AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767935.aspx) cmdlet tooexport den filen tooa JSON-format.
 
     Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
-## <a name="update-the-reference-to-the-ilearner-blob"></a>Uppdatera referens till ilearner-blob
-Leta upp [tränad modell] i tillgångarna, uppdatera den *uri* värde i den *locationInfo* nod med ilearner-blob-URI. URI: N skapas genom att kombinera den *BaseLocation* och *RelativeLocation* från utdata från BES omtränings anrop.
+## <a name="update-hello-reference-toohello-ilearner-blob"></a>Uppdatera hello referensblobben toohello ilearner
+Leta upp hello [tränad modell], uppdatering hello i hello tillgångar *uri* värdet i hello *locationInfo* nod med hello hello ilearner blob-URI. hello URI genereras genom att kombinera hello *BaseLocation* och hello *RelativeLocation* från hello utdata från hello BES omtränings-anrop.
 
      "asset3": {
         "name": "Retrain Sample [trained model]",
@@ -176,14 +176,14 @@ Leta upp [tränad modell] i tillgångarna, uppdatera den *uri* värde i den *loc
         }
       },
 
-## <a name="import-the-json-into-a-web-service-definition-object"></a>Importera JSON till ett objekt för Web Service Definition
-Du måste använda den [importera AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) för att omvandla den ändrade JSON-filen tillbaka till Web Service Definition-objekt som du kan använda för att uppdatera predicative experimentet.
+## <a name="import-hello-json-into-a-web-service-definition-object"></a>Importera hello JSON till ett objekt för Web Service Definition
+Du måste använda hello [importera AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767925.aspx) cmdlet tooconvert hello ändrade JSON-fil i ett Web Service Definition-objekt som du kan använda tooupdate hello predicative experiment.
 
     $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 
-## <a name="update-the-web-service"></a>Uppdatera webbtjänsten
-Använd slutligen den [uppdatering AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) att uppdatera prediktivt experiment.
+## <a name="update-hello-web-service"></a>Uppdatera hello-webbtjänst
+Använd slutligen hello [uppdatering AzureRmMlWebService](https://msdn.microsoft.com/library/azure/mt767922.aspx) cmdlet tooupdate hello prediktivt experiment.
 
     Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 

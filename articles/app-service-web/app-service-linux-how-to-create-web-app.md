@@ -1,5 +1,5 @@
 ---
-title: "Skapa en Azure-webbapp som körs på Linux | Microsoft Docs"
+title: "aaaCreate en Azure web app som körs på Linux | Microsoft Docs"
 description: "Web app skapa arbetsflöde för Azure Web App på Linux."
 keywords: "Azure apptjänst, webbprogram, linux, oss"
 services: app-service
@@ -15,39 +15,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-ms.openlocfilehash: 49091d4a85bed23927850f9c0bbc5ea8b6e8c9e1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: de1bd030345d5e2a8024012067b5bcaa2cca09dc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-azure-web-app-running-on-linux"></a>Skapa en Azure-webbapp som körs på Linux
 
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
 
-## <a name="use-the-azure-portal-to-create-your-web-app"></a>Använda Azure portal för att skapa ditt webbprogram
-Du kan börja skapa ditt webbprogram på Linux från den [Azure-portalen](https://portal.azure.com) som visas i följande bild:
+## <a name="use-hello-azure-portal-toocreate-your-web-app"></a>Använd hello Azure portal toocreate ditt webbprogram
+Du kan börja skapa ditt webbprogram på Linux från hello [Azure-portalen](https://portal.azure.com) som visas i följande bild hello:
 
-![Skapa en webbapp på Azure portal][1]
+![Skapa en webbapp på hello Azure-portalen][1]
 
-Sedan den **skapa-bladet** öppnas som visas i följande bild:
+Därefter hello **skapa-bladet** öppnas som visas i följande bild hello:
 
-![Skapa-bladet][2]
+![hello skapa-bladet][2]
 
 1. Namnge ditt webbprogram.
-2. Välj en befintlig resursgrupp eller skapa en ny. (Se tillgängliga regioner i den [avsnittet](app-service-linux-intro.md).)
-3. Välj en befintlig Azure App Service-plan eller skapa en ny. (Se App Service-plan kommentarer i den [avsnittet](app-service-linux-intro.md).)
-4. Välj programstack som du tänker använda. Du kan välja mellan flera versioner av Node.js, PHP, .net kärn och Ruby.
+2. Välj en befintlig resursgrupp eller skapa en ny. (Se tillgängliga regioner i hello [avsnittet](app-service-linux-intro.md).)
+3. Välj en befintlig Azure App Service-plan eller skapa en ny. (Se App Service-plan kommentarer i hello [avsnittet](app-service-linux-intro.md).)
+4. Välj programmet hello stack som du avser toouse. Du kan välja mellan flera versioner av Node.js, PHP, .net kärn och Ruby.
 
-När du har skapat appen, kan du ändra programstack från programinställningarna enligt följande bild:
+När du har skapat hello app, kan du ändra hello programstack från hello programinställningar som visas i följande bild hello:
 
 ![Programinställningar][3]
 
 ## <a name="deploy-your-web-app"></a>Distribuera ditt webbprogram
-Om du väljer **distributionsalternativ** från management portal kan du välja att använda lokal Git eller GitHub-lagringsplats för att distribuera ditt program. Resten av instruktionerna är samma som för en icke-Linux-webbprogrammet. Du kan följa anvisningarna i [lokal Git-distribution](app-service-deploy-local-git.md) eller [kontinuerlig distribution](app-service-continuous-deployment.md) att distribuera din app.
+Om du väljer **distributionsalternativ** från hello management portal ger du hello alternativet toouse lokala Git eller GitHub-lagringsplatsen toodeploy ditt program. hello resten av hello instruktioner är liknande toothose för en icke-Linux-webbprogrammet. Du kan följa hello instruktionerna i [lokal Git-distribution](app-service-deploy-local-git.md) eller [kontinuerlig distribution](app-service-continuous-deployment.md) toodeploy din app.
 
-Du kan också använda FTP för att överföra ditt program på webbplatsen. Du kan hämta FTP-slutpunkten för din webbapp från avsnittet diagnostics loggar som visas i följande bild:
+Du kan också använda FTP tooupload webbplatsen tooyour program. Du kan hämta hello FTP-slutpunkten för ditt webbprogram från hello diagnostik loggar avsnittet som visas i följande bild hello:
 
 ![Diagnostik-loggar][4]
 

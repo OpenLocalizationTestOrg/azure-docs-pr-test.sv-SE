@@ -1,6 +1,6 @@
 ---
 title: "Referera till en anpassad avbildning i en mall för Azure skala | Microsoft Docs"
-description: "Lär dig hur du lägger till en anpassad avbildning i en befintlig mall för Azure Virtual Machine Scale Set"
+description: "Lär dig hur tooadd en anpassad avbildning tooan befintlig Skaluppsättning för virtuell Azure-mall"
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/10/2017
 ms.author: negat
-ms.openlocfilehash: cf52fc9e95267c4bc5c0106aadf626685ddd5c24
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6a17d989e44d241b460238c0106350c3ef038e56
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Lägg till en anpassad avbildning i en mall för Azure skala
+# <a name="add-a-custom-image-tooan-azure-scale-set-template"></a>Lägga till en anpassad avbildning tooan Azure skala mall
 
-Den här artikeln visar hur du ändrar den [lägsta lönsam skala ange mall](./virtual-machine-scale-sets-mvss-start.md) ska distribueras från anpassad avbildning.
+Den här artikeln visar hur toomodify hello [lägsta lönsam skala ange mall](./virtual-machine-scale-sets-mvss-start.md) toodeploy från anpassad avbildning.
 
-## <a name="change-the-template-definition"></a>Ändra malldefinitionen
+## <a name="change-hello-template-definition"></a>Ändra hello malldefinitionen
 
-Mall för våra lägsta lönsam skala kan ses [här](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), och våra mall för distribution av skalan som från en anpassad avbildning kan ses [här](https://raw.githubusercontent.com/gatneil/mvss/custom-image/azuredeploy.json). Låt oss nu undersöka diff som används för att skapa den här mallen (`git diff minimum-viable-scale-set custom-image`) bit för bit:
+Mall för våra lägsta lönsam skala kan ses [här](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), och våra mallen för distribution av hello skala från en anpassad avbildning kan ses [här](https://raw.githubusercontent.com/gatneil/mvss/custom-image/azuredeploy.json). Låt oss nu undersöka hello diff används toocreate mallen (`git diff minimum-viable-scale-set custom-image`) bit för bit:
 
 ### <a name="creating-a-managed-disk-image"></a>Skapa en hanterad avbildning
 
 Om du redan har en anpassad hanterad diskavbildning (en resurs av typen `Microsoft.Compute/images`), och du kan hoppa över det här avsnittet.
 
-Först måste vi lägga till en `sourceImageVhdUri` parametern, som är URI: N till generaliserad blobb i Azure Storage som innehåller den anpassade avbildningen ska distribueras från.
+Först måste vi lägga till en `sourceImageVhdUri` parameter som hello URI toohello generaliserad blob i Azure Storage som innehåller hello anpassad avbildning toodeploy från.
 
 
 ```diff
@@ -44,14 +44,14 @@ Först måste vi lägga till en `sourceImageVhdUri` parametern, som är URI: N t
 +    "sourceImageVhdUri": {
 +      "type": "string",
 +      "metadata": {
-+        "description": "The source of the generalized blob containing the custom image"
++        "description": "hello source of hello generalized blob containing hello custom image"
 +      }
      }
    },
    "variables": {},
 ```
 
-Nu ska vi lägga till en resurs av typen `Microsoft.Compute/images`, vilket är den hanterade diskavbildning baserat på generaliserad blob finns på URI `sourceImageVhdUri`. Den här bilden måste vara i samma region som den skaluppsättning som använder den. I egenskaperna för avbildningen kan vi ange OS-typen platsen för blob (från den `sourceImageVhdUri` parametern), och lagringskontotypen:
+Nu ska vi lägga till en resurs av typen `Microsoft.Compute/images`, vilket är hello hanterade diskavbildning baserat på hello generaliserad blob finns på URI `sourceImageVhdUri`. Den här bilden måste vara i hello samma region som hello skaluppsättning som använder den. I hello egenskaper hello avbildningen kan vi ange hello OS-typ, hello platsen för hello blob (från hello `sourceImageVhdUri` parametern), och hello lagringskontotypen:
 
 ```diff
    "resources": [
@@ -78,7 +78,7 @@ Nu ska vi lägga till en resurs av typen `Microsoft.Compute/images`, vilket är 
 
 ```
 
-Skalan ange resurs, vi lägga till en `dependsOn` instruktion refererar till den anpassade avbildningen för att kontrollera avbildningen skapas innan du försöker distribuera från den avbildningen skaluppsättning:
+I hello skaluppsättning resurs, vi lägga till en `dependsOn` satsen hänvisar toohello anpassad avbildning toomake att hello avbildningen skapas innan hello skaluppsättning försöker toodeploy från den avbildningen:
 
 ```diff
        "location": "[resourceGroup().location]",
@@ -93,9 +93,9 @@ Skalan ange resurs, vi lägga till en `dependsOn` instruktion refererar till den
 
 ```
 
-### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Ändra skala ange egenskaper för att använda den hanterade diskavbildning
+### <a name="changing-scale-set-properties-toouse-hello-managed-disk-image"></a>Ändra skala ange egenskaperna toouse hello hanterad avbildning
 
-I den `imageReference` skalans ange `storageProfile`, istället för att ange utgivare, erbjudande, sku och version av en plattformsavbildning anger vi den `id` av den `Microsoft.Compute/images` resursen:
+I hello `imageReference` hello skalan ange `storageProfile`, i stället för att ange hello utgivare, erbjudande, sku och version av en plattformsavbildning kan vi ange hello `id` av hello `Microsoft.Compute/images` resurs:
 
 ```diff
          "virtualMachineProfile": {
@@ -111,7 +111,7 @@ I den `imageReference` skalans ange `storageProfile`, istället för att ange ut
            "osProfile": {
 ```
 
-I det här exemplet använder vi den `resourceId` funktion för att hämta resurs-ID för den avbildning som har skapats i samma mall. Om du har skapat den hanterade diskavbildning i förväg, ska du i stället ange id för avbildningen. Detta id måste vara i formatet: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
+I det här exemplet använder vi hello `resourceId` funktionen tooget hello resurs-ID för hello avbildningen skapas i hello samma mall. Om du har skapat hello hanterade diskavbildning i förväg, ska du ange hello-id för den bilden i stället. Detta id måste ha formatet hello: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
 
 
 ## <a name="next-steps"></a>Nästa steg

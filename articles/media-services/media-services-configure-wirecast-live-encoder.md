@@ -1,6 +1,6 @@
 ---
-title: "Konfigurera Telestream Wirecast-kodaren om du vill skicka en direktsänd dataström med enkel bithastighet | Microsoft Docs"
-description: "Det här avsnittet visar hur du konfigurerar Wirecast livekodaren för att skicka en dataström med enkel bithastighet till AMS-kanaler som är aktiverade för live encoding. "
+title: "aaaConfigure hello Telestream Wirecast-kodaren toosend en direktsänd dataström med enkel bithastighet | Microsoft Docs"
+description: "Det här avsnittet visar hur live tooconfigure hello Wirecast kodare toosend en enkel bithastighet dataströmmen tooAMS kanaler som är aktiverade för live encoding. "
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,13 +14,13 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: c4df14f24650ce431dfb31cc774cab6d3cf3aef0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: e373f6c08232c652e65db584ded409c405d8cffe
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Använda Wirecast-kodaren för att skicka en direktsänd dataström med enkel bithastighet
+# <a name="use-hello-wirecast-encoder-toosend-a-single-bitrate-live-stream"></a>Använd hello Wirecast-kodaren toosend en direktsänd dataström med enkel bithastighet
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Elemental Live](media-services-configure-elemental-live-encoder.md)
@@ -29,48 +29,48 @@ ms.lasthandoff: 08/29/2017
 >
 >
 
-Det här avsnittet visar hur du konfigurerar den [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) livekodare för att skicka en dataström med enkel bithastighet till AMS kanaler som är aktiverade för live encoding.  Mer information finns i [Arbeta med kanaler som är aktiverade för att utföra Live Encoding med Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+Det här avsnittet visar hur tooconfigure hello [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) live kodare toosend en enkel bithastighet dataströmmen tooAMS kanaler som är aktiverade för live encoding.  Mer information finns i [arbeta med kanaler som är aktiverad tooPerform Live Encoding med Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
-Den här kursen visar hur du hanterar Azure Media Services (AMS) med Azure Media Services Explorer (AMSE)-verktyget. Det här verktyget körs bara på Windows-dator. Om du är på Mac- eller Linux använder Azure-portalen för att skapa [kanaler](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) och [program](media-services-portal-creating-live-encoder-enabled-channel.md).
+Den här kursen visar hur toomanage Azure Media Services (AMS) med Azure Media Services Explorer (AMSE)-verktyget. Det här verktyget körs bara på Windows-dator. Om du är på Mac- eller Linux använda hello Azure portal toocreate [kanaler](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) och [program](media-services-portal-creating-live-encoder-enabled-channel.md).
 
 ## <a name="prerequisites"></a>Krav
 * [Skapa ett Azure Media Services-konto](media-services-portal-create-account.md)
 * Se till att det finns en Strömningsslutpunkt som körs. Mer information finns i [hanterar Strömningsslutpunkter i ett Media Services-konto](media-services-portal-manage-streaming-endpoints.md)
-* Installera den senaste versionen av den [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) verktyget.
-* Starta verktyget och Anslut till AMS-kontot.
+* Installera hello senaste versionen av hello [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) verktyget.
+* Starta verktyget hello och ansluta tooyour AMS-konto.
 
 ## <a name="tips"></a>Tips
 * När det är möjligt använda ett inbyggt internet-anslutning.
-* En bra tumregel samband med fastställandet av krav på bandbredd är att dubbla strömmande bithastighet. Även om detta inte är en nödvändighet hjälper minimera effekten av överbelastning.
+* En bra tumregel samband med fastställandet av krav på bandbredd är toodouble hello strömning bithastighet. Detta är inte ett obligatoriskt krav, som det kan minska hello effekten av överbelastning.
 * När du använder programvara baserat kodare, Stäng alla onödiga program.
 
 ## <a name="create-a-channel"></a>Skapa en kanal
-1. I verktyget AMSE navigerar du till den **Live** fliken och högerklicka i området för kanal. Välj **skapa kanal...** från menyn.
+1. Navigera i hello AMSE-verktyget toohello **Live** och högerklicka på inom området för hello-kanal. Välj **skapa kanal...** hello-menyn.
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast1.png)
 
-2. Ange ett Kanalnamn beskrivningsfältet är valfritt. Markera under inställningar för kanal **Standard** för alternativet Live Encoding med protokollet indata som angetts till **RTMP**. Du kan lämna alla andra inställningar som är.
+2. Ange ett Kanalnamn hello beskrivningsfältet är valfritt. Markera under inställningar för kanal **Standard** för hello Live Encoding alternativet med hello indata protokollet värdet för**RTMP**. Du kan lämna alla andra inställningar som är.
 
-    Kontrollera att den **starta den nya kanalen nu** är markerad.
+    Se till att hello **Start hello ny kanal nu** är markerad.
 
 3. Klicka på **skapa kanal**.
 
    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast2.png)
 
 > [!NOTE]
-> Kanalen kan ta upp till 20 minuter för att starta.
+> hello kanal kan ta upp till 20 minuter toostart.
 >
 >
 
-När kanalen startar kan du [konfigurera kodaren](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp).
+Medan hello kanal startar kan du [konfigurera hello kodare](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp).
 
 > [!IMPORTANT]
 > Observera att faktureringen påbörjas så snart kanal blir klar att användas. Mer information finns i [kanalens tillstånd](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-## <a id=configure_wirecast_rtmp></a>Konfigurera Telestream Wirecast-kodaren
-I den här kursen används följande inställningar för utdata. Resten av det här avsnittet beskriver konfigurationssteg i detalj.
+## <a id=configure_wirecast_rtmp></a>Konfigurera hello Telestream Wirecast-kodaren
+I den här självstudiekursen hello används följande inställningar för utdata. hello resten av det här avsnittet beskriver konfigurationssteg i detalj.
 
 **Video**:
 
@@ -87,19 +87,19 @@ I den här kursen används följande inställningar för utdata. Resten av det h
 * Samplingsfrekvens: 44.1 kHz
 
 ### <a name="configuration-steps"></a>Konfigurationssteg
-1. Öppna Telestream Wirecast-programmet på datorn som används och konfigurera för RTMP strömning.
-2. Konfigurera utdata genom att navigera till den **utdata** fliken och markera **utdata inställningar...** .
+1. Öppna hello Telestream Wirecast programmet hello datorn som används och konfigurera för RTMP strömning.
+2. Konfigurera hello utdata genom att gå toohello **utdata** fliken och markera **utdata inställningar...** .
 
-    Kontrollera att den **utdata mål** är inställd på **RTMP-Server**.
+    Se till att hello **utdata mål** har angetts för**RTMP-Server**.
 3. Klicka på **OK**.
-4. På sidan Ange den **mål** fältet ska vara **Azure Media Services**.
+4. Ange hello hello på sidan Inställningar **mål** fältet toobe **Azure Media Services**.
 
-    Kodning profilen är förvald till **Azure H.264 720 p 16:9 (minst 1 280 x 720)**. Om du vill anpassa dessa inställningar väljer du växeln ikonen till höger om nedrullningsbara ned och välj sedan **nya förinställningen**.
+    hello kodning profil är markerat för**Azure H.264 720 p 16:9 (minst 1 280 x 720)**. toocustomize dessa inställningar väljer hello växeln ikonen toohello höger i hello listrutan och välj sedan **nya förinställningen**.
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast3.png)
 5. Konfigurera kodare förinställningar.
 
-    Namn för förinställningen och Sök efter följande rekommenderade inställningar:
+    Namnet hello förinställningen och söka efter hello följande rekommenderade inställningar:
 
     **Video**
 
@@ -117,59 +117,59 @@ I den här kursen används följande inställningar för utdata. Resten av det h
      ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast4.png)
 6. Tryck på **spara**.
 
-    Fältet avkodning har nu den nya profilen kan väljas.
+    fältet för avkodning av hello har nu hello nyskapad profil kan väljas.
 
-    Kontrollera att den nya profilen är markerad.
-7. Hämta kanalen input URL: en för att tilldela Wirecast **RTMP Endpoint**.
+    Kontrollera att hello ny profil är markerad.
+7. Hämta hello kanalens inkommande URL i ordning tooassign den toohello Wirecast **RTMP Endpoint**.
 
-    Gå tillbaka till verktyget AMSE och kontrollera status för slutförande kanal. När läget har ändrats från **Start** till **kör**, du kan hämta indata-URL.
+    Gå tillbaka toohello AMSE-verktyget och kontrollera status för slutförande av hello-kanal. När hello tillstånd har ändrats från **Start** för**kör**, du kan hämta hello indata-URL.
 
-    När kanalen körs, högerklickar du på dess namn, navigera till hovra över **kopiera indata-URL till Urklipp** och välj sedan **primära indata-URL**.  
+    När du kör hello kanal högerklickar du på hello Kanalnamn, Navigera ned toohover över **kopiera indata URL tooclipboard** och välj sedan **primära indata-URL**.  
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast6.png)
-8. I Wirecast **inställningar för utdata** och klistra in den här informationen i den **adress** i utdata och tilldela ett namn på dataströmmen.
+8. I hello Wirecast **inställningar utdata** och klistra in informationen i hello **adress** i hello utdataavsnitt och tilldela ett namn på dataströmmen.
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
 1. Välj **OK**.
-2. På primära **Wirecast** skärmen, bekräfta indatakällor för video och ljud är klar och tryck sedan på **dataströmmen** i det övre vänstra hörnet.
+2. På hello huvudsakliga **Wirecast** skärmen, bekräfta indatakällor för video och ljud är klar och tryck sedan på **dataströmmen** i hello övre vänstra hörnet.
 
    ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)
 
 > [!IMPORTANT]
-> Innan du klickar på **dataströmmen**, du **måste** se till att kanalen är klar.
-> Kontrollera också att kanalen klar utan ett inkommande bidrag feed för > 15 minuter.
+> Innan du klickar på **dataströmmen**, du **måste** se till att hello kanalen är klar.
+> Kontrollera också att inte tooleave hello kanal med tillståndet klart utan ett inkommande bidrag feed för > 15 minuter.
 >
 >
 
 ## <a name="test-playback"></a>Testa uppspelning
 
-Navigera till verktyget AMSE och högerklicka på kanalen som ska testas. Från menyn hovra över **uppspelning förhandsgranskningen** och välj **med Azure Media Player**.  
+Navigera toohello AMSE-verktyget och högerklicka på hello kanal toobe testas. Hovra över hello-menyn **uppspelning hello Preview** och välj **med Azure Media Player**.  
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast8.png)
 
-Om strömmen visas i media player, har sedan kodaren konfigurerats korrekt för att ansluta till AMS.
+Om hello dataströmmen visas i hello player har hello kodare varit korrekt konfigurerade tooconnect tooAMS.
 
-Om ett fel tas emot kanalen kommer att behöva återställas och anpassa inställningar för kodare. Finns det [felsökning](media-services-troubleshooting-live-streaming.md) avsnittet som vägledning.  
+Om ett fel tas emot måste hello kanal toobe Återställ kodare inställningar och justeras. Se hello [felsökning](media-services-troubleshooting-live-streaming.md) avsnittet som vägledning.  
 
 ## <a name="create-a-program"></a>Skapa ett program
-1. När kanalen uppspelning bekräftas, skapa ett program. Under den **Live** i verktyget AMSE, högerklicka i området för programmet och välj **Skapa nytt Program**.  
+1. När kanalen uppspelning bekräftas, skapa ett program. Under hello **Live** i hello AMSE-verktyget, högerklickar du i området för hello-programmet och välj **Skapa nytt Program**.  
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast9.png)
-2. Namnge programmet och, om det behövs, justera det **längd** (som standard 4 timmar). Du kan också ange en lagringsplats eller lämna som standard.  
-3. Kontrollera den **starta programmet nu** rutan.
+2. Namnge programmet hello och, om det behövs, justera hello **längd** (som standard too4 timmar). Du kan också ange en lagringsplats eller lämna som hello standard.  
+3. Kontrollera hello **Start hello programmet nu** rutan.
 4. Klicka på **skapa Program**.  
 
    >[!NOTE]
    >Skapa en program tar mindre tid än att skapa en kanal.
        
-5. När programmet körs kan bekräfta uppspelning genom att högerklicka på programmet och gå till **uppspelning av program** och sedan välja **med Azure Media Player**.  
-6. När bekräftat, högerklicka på programmet och välj **kopiera den URL som utdata till Urklipp** (eller hämta den här informationen från den **programmet information och inställningar** alternativ på menyn).
+5. När hello programmet körs kan bekräfta uppspelning genom att högerklicka på programmet hello och navigera för**uppspelning hello program** och sedan välja **med Azure Media Player**.  
+6. När bekräftat, högerklicka på programmet hello igen och välj **kopiera hello utdata URL tooClipboard** (eller hämta den här informationen från hello **programmet information och inställningar** alternativet hello-menyn).
 
-Dataströmmen är nu redo att vara inbäddat i ett player eller distribuerats till en målgrupp för live visning.  
+hello är nu redo toobe inbäddat i en spelare eller distribuerade tooan målgruppen för live visning.  
 
 ## <a name="troubleshooting"></a>Felsökning
-Finns det [felsökning](media-services-troubleshooting-live-streaming.md) avsnittet som vägledning.
+Se hello [felsökning](media-services-troubleshooting-live-streaming.md) avsnittet som vägledning.
 
 ## <a name="media-services-learning-paths"></a>Sökvägar för Media Services-utbildning
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

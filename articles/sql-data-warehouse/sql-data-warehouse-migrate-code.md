@@ -1,6 +1,6 @@
 ---
-title: Migrera dina SQL-kod till SQL Data Warehouse | Microsoft Docs
-description: "Tips för att migrera SQL-kod till Azure SQL Data Warehouse för utveckling av lösningar."
+title: aaaMigrate din SQL-kod tooSQL Data Warehouse | Microsoft Docs
+description: "Tips för att migrera dina SQL-kod tooAzure SQL Data Warehouse för utveckling av lösningar."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,17 +15,17 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/23/2017
 ms.author: joeyong;barbkess
-ms.openlocfilehash: c6e6b890f5e2d0e31b10bbb6803adad02bf60248
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7a16d579d068e9df9aba3dc61e4a09bcaa551588
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrera dina SQL-kod till SQL Data Warehouse
-Den här artikeln förklarar kodändringar behöver du antagligen se när du migrerar din kod från en annan databas till SQL Data Warehouse. Vissa funktioner i SQL Data Warehouse förbättrar prestanda eftersom de är avsedda att fungera i ett distribuerat sätt. För att upprätthålla prestanda och skalning så är vissa funktioner dock också inte tillgänglig.
+# <a name="migrate-your-sql-code-toosql-data-warehouse"></a>Migrera dina SQL-kod tooSQL Data Warehouse
+Den här artikeln förklarar kodändringar du förmodligen ha toomake när du migrerar din kod från en annan databas tooSQL Data Warehouse. Vissa funktioner i SQL Data Warehouse förbättrar prestandan som de är utformad toowork distribuerade överskrids. Toomaintain prestanda och skalning, vissa funktioner är dock också inte tillgänglig.
 
 ## <a name="common-t-sql-limitations"></a>Vanliga T-SQL-begränsningar
-I följande lista sammanfattas de vanligaste funktionerna som inte har stöd för SQL Data Warehouse. Länkarna om du vill lösningar för funktionerna som inte stöds:
+hello följande lista sammanfattas de vanligaste hello-funktioner som inte har stöd för SQL Data Warehouse. hello länkar om tooworkarounds för hello stöds inte funktioner:
 
 * [ANSI kopplingar uppdateringar][ANSI joins on updates]
 * [ANSI-kopplingar på borttagningar][ANSI joins on deletes]
@@ -52,10 +52,10 @@ I följande lista sammanfattas de vanligaste funktionerna som inte har stöd fö
 * [användning av väljer för variabeltilldelning][use of select for variable assignment]
 * [Ingen MAX datatyp för dynamisk SQL-strängar][no MAX data type for dynamic SQL strings]
 
-De flesta av dessa begränsningar kan Lyckligtvis arbetat runt. Förklaringar finns i de relevanta development artiklar som anges ovan.
+De flesta av dessa begränsningar kan Lyckligtvis arbetat runt. Förklaringar finns i hello relevanta development artiklar som anges ovan.
 
 ## <a name="supported-cte-features"></a>CTE-funktioner som stöds
-Cte (cte-referenser) stöds delvis i SQL Data Warehouse.  Följande CTE-funktioner stöds:
+Cte (cte-referenser) stöds delvis i SQL Data Warehouse.  hello följande CTE funktioner stöds:
 
 * En CTE kan anges i en SELECT-instruktion.
 * En CTE kan anges i instruktionen CREATE VIEW.
@@ -70,17 +70,17 @@ Cte (cte-referenser) stöds delvis i SQL Data Warehouse.  Följande CTE-funktion
 Vanliga tabelluttryck har vissa begränsningar i SQL Data Warehouse, inklusive:
 
 * En CTE måste följas av en enstaka SELECT-instruktion. INSERT-, UPDATE-, DELETE och MERGE-instruktioner stöds inte.
-* Ett vanligt tabelluttryck som innehåller referenser till sig själv (ett rekursivt vanligt tabelluttryck) stöds inte (se nedan avsnitt).
+* Ett vanligt tabelluttryck som innehåller referenser tooitself (ett rekursivt vanligt tabelluttryck) stöds inte (se nedan avsnitt).
 * Ange fler än en med-satsen i en CTE är inte tillåtet. Om en CTE_query_definition innehåller en underfråga, kan till exempel denna underfråga innehåller en kapslad med-sats som definierar en annan CTE.
-* En ORDER BY-sats kan inte användas i CTE_query_definition, utom när en TOP-instruktion har angetts.
-* När en CTE används i en instruktion som är en del av en batch måste instruktionen innan den följas av ett semikolon.
-* När de används i rapporter med sp_prepare fungerar cte-referenser på samma sätt som andra SELECT-satser i PDW. Men om cte-referenser används som en del av CETAS förberedda av sp_prepare beteendet kan skjuta upp från SQL Server och andra PDW-instruktioner på grund av hur bindning har implementerats för sp_prepare. Om väljer att refererar till CTE använder en fel kolumn som inte finns i CTE, sp_prepare skickas utan att identifiera felet, men felet uppstod under sp_execute i stället.
+* En ORDER BY-sats kan inte användas i hello CTE_query_definition, utom när en TOP-instruktion har angetts.
+* När en CTE används i en instruktion som är en del av en batch måste hello instruktionen innan den följas av ett semikolon.
+* När de används i rapporter med sp_prepare cte-referenser fungerar hello samma sätt som andra SELECT-satser i PDW. Men om cte-referenser används som en del av CETAS förberedda av sp_prepare hello beteende kan skjuta upp från SQL Server och andra PDW-instruktioner på grund av hello sätt bindning har implementerats för sp_prepare. Om väljer att refererar till CTE använder en fel kolumn som inte finns i CTE hello sp_prepare skickas utan att identifiera hello fel, men hello-fel inträffade under sp_execute i stället.
 
 ## <a name="recursive-ctes"></a>Rekursiva cte-referenser
-Rekursiva cte-referenser stöds inte i SQL Data Warehouse.  Migrering av rekursiva CTE kan vara ganska komplicerat och på bästa sätt är att dela upp det i flera steg. Du kan normalt använda en loop och fylla i en tillfällig tabell som du iterera över rekursiva tillfälliga frågor. Du kan sedan returnera data som en enda resultatmängd när den temporära tabellen fylls i. Ett liknande sätt har använts för att lösa `GROUP BY WITH CUBE` i den [group by-satser med Samlad / kub / grupperingsalternativ anger] [ group by clause with rollup / cube / grouping sets options] artikel.
+Rekursiva cte-referenser stöds inte i SQL Data Warehouse.  hello migrering av rekursiva CTE kan vara ganska komplicerat och hello bästa processen är toobreak det i flera steg. Du kan normalt använda en loop och fylla i en tillfällig tabell som du iterera över hello rekursiva tillfälliga frågor. Du kan sedan återvända hello data som en enda resultatmängd när hello tillfällig tabell fylls i. Ett liknande sätt har använt toosolve `GROUP BY WITH CUBE` i hello [group by-satser med Samlad / kub / grupperingsalternativ anger] [ group by clause with rollup / cube / grouping sets options] artikel.
 
 ## <a name="unsupported-system-functions"></a>Systemfunktioner som inte stöds
-Det finns även vissa systemfunktioner som inte stöds. Några av de huvudsakliga som kanske vanligtvis används i informationslager är:
+Det finns även vissa systemfunktioner som inte stöds. Några av hello huvudsakliga de kanske vanligtvis används i informationslager är:
 
 * NEWSEQUENTIALID()
 * @@NESTLEVEL()
@@ -92,7 +92,7 @@ Det finns även vissa systemfunktioner som inte stöds. Några av de huvudsaklig
 Vissa av dessa problem kan du arbetade runt.
 
 ## <a name="rowcount-workaround"></a>@@ROWCOUNT lösning
-Undvika bristande stöd för @@ROWCOUNT, skapa en lagrad procedur som hämtar det senaste antalet rader från sys.dm_pdw_request_steps och sedan köra `EXEC LastRowCount` efter en DML-instruktionen.
+toowork runt bristande stöd för @@ROWCOUNT, skapa en lagrad procedur som hämtar hello senaste radantal från sys.dm_pdw_request_steps och sedan köra `EXEC LastRowCount` efter en DML-instruktionen.
 
 ```sql
 CREATE PROCEDURE LastRowCount AS

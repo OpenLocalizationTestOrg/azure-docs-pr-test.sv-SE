@@ -1,6 +1,6 @@
 ---
 title: "Simulerade enhet & Azure IoT Gateway - lektionen 2: Hämta verktyg (Ubuntu) | Microsoft Docs"
-description: "Installera verktygen och programvaran på din värddator som kör Ubuntu, skapar en IoT-hubb och registrera enheten i IoT-hubben."
+description: "Installera hello verktyg och hello programvara på din värddator som kör Ubuntu, skapar en IoT-hubb och registrera enheten i hello IoT-hubb."
 services: iot-hub
 documentationcenter: 
 author: shizn
@@ -17,13 +17,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: 349daf5c3206f7fc20662beebd16928624142a56
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 38c4d5d9cceec47758f0641cc26b631a7b19d37e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-the-tools-ubuntu-1604"></a>Hämta verktygen (Ubuntu 16.04)
+# <a name="get-hello-tools-ubuntu-1604"></a>Hämta hello verktyg (Ubuntu 16.04)
 > [!div class="op_single_selector"]
 > * [Windows 7 eller senare](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-win32.md)
 > * [Ubuntu 16.04](iot-hub-gateway-kit-c-sim-lesson2-get-the-tools-ubuntu.md)
@@ -32,36 +32,36 @@ ms.lasthandoff: 07/11/2017
 ## <a name="what-you-will-do"></a>Vad du ska göra
 
 - Installera Git, Node.js, Gulp, Python.
-- Installera Azure-kommandoradsgränssnittet (Azure CLI). 
+- Installera hello Azure-kommandoradsgränssnittet (Azure CLI). 
 
-Om du har några problem kan hitta lösningar på den [felsökning sidan](iot-hub-gateway-kit-c-sim-troubleshooting.md).
+Om du har några problem med söka efter lösningar på hello [felsökning sidan](iot-hub-gateway-kit-c-sim-troubleshooting.md).
 ## <a name="what-you-will-learn"></a>Vad får du lära dig
 
 I den här lektionen får du lära dig:
 
-- Hur du installerar Git och Node.js.
-  - Git är ett system för öppen källkod distribuerade versionen. Exempelprogram för den här lektionen lagras på Git.
+- Hur tooinstall Git och Node.js.
+  - Git är ett system för öppen källkod distribuerade versionen. hello-exempelprogram för den här lektionen lagras på Git.
   - Node.js är JavaScript-körning med ett omfattande paketet ekosystem.
-- Hur du använder NPM installera Node.js utvecklingsverktyg.
-  - Versionen som krävs för Node.js är 4.5 LTS.
-  - NPM är en av de paket cheferna för Node.js.
-- Så här installerar Visual Studio-koden.
+- Hur toouse NPM tooinstall Node.js utvecklingsverktyg.
+  - hello version som krävs av Node.js är 4.5 LTS.
+  - NPM är en av hello paketet chefer för Node.js.
+- Hur tooinstall Visual Studio Code.
   - Visual Studio-koden är plattformsoberoende redigerare för enkel men kraftfull källa för Windows, Linux och macOS. Det har bra stöd för felsökning, inbäddad Git-kontroll, syntaxmarkering, intelligent kod slutförande, kodavsnitt och koden eftersom samt.
-- Så här installerar du Azure CLI
-  - Azure CLI tillhandahåller en flera plattformar kommandoraden för Azure. Du arbetar direkt från en kommandorad för att etablera och hantera resurser.
-- Hur du använder Azure CLI för att skapa en IoT-hubb.
+- Hur tooinstall hello Azure CLI
+  - hello Azure CLI tillhandahåller en flera plattformar kommandoraden för Azure. Du arbetar direkt från en kommandorad tooprovision och hantera resurser.
+- Hur toouse hello Azure CLI toocreate en IoT-hubb.
 
 ## <a name="what-you-need"></a>Vad du behöver
 
-- En Internet-anslutning att hämta verktyg och program.
+- En Internet-anslutning toodownload hello verktyg och program.
 - En dator som kör Ubuntu 16.04 eller senare.
 
 ## <a name="install-git-and-nodejs"></a>Installera Git och Node.js
 
-Följ dessa steg om du vill installera Git och Node.js:
+tooinstall Git och Node.js, gör du följande:
 
-1. Tryck på `Ctrl + Alt + T` att öppna en terminal.
-2. Kör följande kommandon:
+1. Tryck på `Ctrl + Alt + T` tooopen en terminal.
+2. Kör följande kommandon hello:
 
    ```bash
    sudo apt-get update
@@ -72,24 +72,24 @@ Följ dessa steg om du vill installera Git och Node.js:
 
 ## <a name="install-nodejs-development-tools"></a>Installera Node.js utvecklingsverktyg
 
-Du använder [gulp.js](http://gulpjs.com/) att automatisera distribution och körning av skript.
+Du använder [gulp.js](http://gulpjs.com/) tooautomate distribution och körning av skript.
 
-Om du vill installera gulp, kör du följande kommando i en terminal:
+tooinstall gulp kör följande kommando i hello terminal hello:
 
 ```bash
 sudo npm install -g gulp
 ```
 
-Om du får problem med installationen finns i [felsökningsguide för](iot-hub-gateway-kit-c-sim-troubleshooting.md) efter lösningar på vanliga problem.
+Om du får problem med hello installation finns hello [felsökningsguide för](iot-hub-gateway-kit-c-sim-troubleshooting.md) för lösningar toocommon problem.
 
 > [!Note]
-> Noden, NPM och Gulp krävs för att köra automatiserade skript som utvecklats i Node.js.
+> Noden, NPM och Gulp är obligatoriska toorun automatiseringsskript utvecklats i Node.js.
 
-## <a name="install-the-azure-cli"></a>Installera Azure CLI
+## <a name="install-hello-azure-cli"></a>Installera hello Azure CLI
 
-Så här installerar du Azure CLI:
+tooinstall hello Azure CLI, Följ dessa steg:
 
-1. Kör följande kommandon i terminalen:
+1. Kör följande kommandon i hello terminal hello:
 
    ```bash
    sudo apt-get update
@@ -101,25 +101,25 @@ Så här installerar du Azure CLI:
    sudo pip install --upgrade azure-cli-iot
    ```
 
-   Installationen kan ta 5 minuter.
+   hello-installationen kan ta 5 minuter.
 
-2. Verifiera installationen genom att köra följande kommando:
+2. Kontrollera hello installationen genom att köra följande kommando hello:
 
    ```bash
    az iot -h
    ```
-Du bör se följande utdata om installationen har slutförts.
+Du bör se hello följande utdata om hello-installationen har slutförts.
 ![Verifiera installation av Azure CLI](media/iot-hub-gateway-kit-lessons/lesson2/az_iot_help_ubuntu.png)
 
 ### <a name="install-visual-studio-code"></a>Installera Visual Studio Code
 
-Du kan använda Visual Studio Code senare under kursen för att redigera konfigurationsfiler.
+Du kan använda Visual Studio Code senare i hello självstudiekursen tooedit konfigurationsfiler.
 
 [Hämta](https://code.visualstudio.com/docs/setup/linux) och installera Visual Studio-koden.
 
 ## <a name="summary"></a>Sammanfattning
 
-Du har installerat alla verktyg som krävs och programvara på värddatorn. Nästa uppgift är att använda Azure CLI för att skapa en IoT-hubb och registrera enheten i din IoT-hubb.
+Du har installerat alla hello krävs verktyg och program på värddatorn. Nästa uppgift är toouse hello Azure CLI toocreate en IoT-hubb och registrera enheten i din IoT-hubb.
 
 ## <a name="next-steps"></a>Nästa steg
 [Skapa en IoT-hubb och registrera din enhet](iot-hub-gateway-kit-c-sim-lesson2-register-device.md)

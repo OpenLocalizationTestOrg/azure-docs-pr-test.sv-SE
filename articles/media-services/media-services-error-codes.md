@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services-felkoder | Microsoft Docs
-description: "Avsnittet ger en översikt över Azure Media Services-felkoder."
+title: "felkoder för aaaAzure Media Services | Microsoft Docs"
+description: "hello avsnittet ger en översikt över Azure Media Services-felkoder."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,91 +14,91 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako
-ms.openlocfilehash: 39886a955124429302609dd9d5a7c20ae7f498d9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: de1ffd6dee8901a3051eb5032536c3669482d6b3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services-felkoder
-När du använder Microsoft Azure Media Services kan du få HTTP felkoder från beroende på problem som till exempel autentiseringstoken ut till åtgärder som inte stöds i Media Services-tjänsten. Följande är en lista över **HTTP felkoder** som kan returneras av Media Services och möjliga orsaker för dessa.  
+När du använder Microsoft Azure Media Services kan du få HTTP felkoder från hello tjänsten beroende på problem som till exempel autentiseringstoken ut tooactions som inte stöds i Media Services. hello följer en lista över **HTTP felkoder** som kan returneras av Media Services och hello möjliga orsakerna till dem.  
 
 ## <a name="400-bad-request"></a>400 Felaktig förfrågan
-Begäran innehåller ogiltig information och avvisas på grund av följande orsaker:
+hello-begäran innehåller ogiltig information och nekas på grund av tooone av hello följande orsaker:
 
-* En API-version som inte stöds har angetts. Den senaste versionen finns [installationsprogrammet för Media Services REST API-utveckling](media-services-rest-how-to-use.md).
-* API-versionen av Media Services har inte angetts. Information om hur du anger den API-versionen finns i [Media Services Operations REST API-referens](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
+* En API-version som inte stöds har angetts. Senaste version hello finns [installationsprogrammet för Media Services REST API-utveckling](media-services-rest-how-to-use.md).
+* hello API-version av Media Services har inte angetts. Mer information om hur toospecify hello API-versionen finns [Media Services Operations REST API-referens](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
   
   > [!NOTE]
-  > Om du använder .NET eller Java SDK för att ansluta till Media Services har API-versionen angetts för dig när du försöker och utföra vissa åtgärder mot Media Services.
+  > Om du använder hello .NET eller Java SDK tooconnect tooMedia tjänster, hello API-version har angetts för dig när du försöker och utföra vissa åtgärder mot Media Services.
   > 
   > 
-* En odefinierad egenskap har angetts. Egenskapsnamnet är i felmeddelandet. Endast de egenskaper som är medlemmar i en given entitet kan anges. Se [Azure Media Services REST API-referens](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) för en lista över enheter och deras egenskaper.
-* Ett ogiltigt egenskapsvärde har angetts. Egenskapsnamnet är i felmeddelandet. Se föregående länk för giltig egenskapstyperna och deras värden.
+* En odefinierad egenskap har angetts. hello egenskapsnamnet är i hello felmeddelande. Endast de egenskaper som är medlemmar i en given entitet kan anges. Se [Azure Media Services REST API-referens](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference) för en lista över enheter och deras egenskaper.
+* Ett ogiltigt egenskapsvärde har angetts. hello egenskapsnamnet är i hello felmeddelande. Se hello föregående länk för giltig egenskapstyper och deras värden.
 * Ett värde för egenskapen saknas och måste anges.
-* En del av Webbadressen som angetts innehåller ett felaktigt värde.
-* Ett försök gjordes att uppdatera en WriteOnce-egenskap.
-* Ett försök gjordes att skapa ett jobb som har en inkommande tillgång med en primär AssetFile som angavs inte eller kunde inte fastställas.
-* Ett försök gjordes att uppdatera en SAS-lokaliserare. SAS-positionerare kan endast skapas eller tas bort. Strömning positionerare kan uppdateras. Mer information finns i [lokaliserare](https://docs.microsoft.com/rest/api/media/operations/locator).
+* En del av hello angivna URL: en innehåller ett felaktigt värde.
+* Ett försök har gjorts tooupdate en WriteOnce-egenskap.
+* Ett försök har gjorts toocreate ett jobb som har en inkommande tillgång med en primär AssetFile som angavs inte eller kunde inte fastställas.
+* Ett försök har gjorts tooupdate en SAS-lokaliserare. SAS-positionerare kan endast skapas eller tas bort. Strömning positionerare kan uppdateras. Mer information finns i [lokaliserare](https://docs.microsoft.com/rest/api/media/operations/locator).
 * En åtgärd som inte stöds eller en fråga skickades.
 
 ## <a name="401-unauthorized"></a>401 obehörig
-Begäran kunde inte autentiseras (innan den kan godkännas) på grund av följande orsaker:
+hello begäran kunde inte autentiseras (innan den kan godkännas) på grund av tooone av hello följande orsaker:
 
 * Autentiseringshuvud saknas.
 * Felaktig autentisering huvudvärde.
-  * Token har upphört att gälla. 
-  * Token som innehåller en ogiltig signatur.
+  * hello-token har upphört att gälla. 
+  * hello token innehåller en ogiltig signatur.
 
 ## <a name="403-forbidden"></a>403 Nekad
-Begäran tillåts inte på grund av följande orsaker:
+hello-begäran är inte tillåtet på grund av tooone av hello följande orsaker:
 
-* Media Services-konto kan inte hittas eller har tagits bort.
-* Media Services-kontot är inaktiverat och typ av begäran är inte HTTP GET. Tjänståtgärder returneras ett 403 svar.
-* Autentiseringstoken innehåller inte information om användarens autentiseringsuppgifter: AccountName och/eller prenumerations-ID. Du hittar den här informationen i Användargränssnittet för Media Services-tillägget för ditt Media Services-konto i Azure-hanteringsportalen.
-* Resursen kan inte nås.
+* hello Media Services-konto kan inte hittas eller har tagits bort.
+* hello Media Services-konto har inaktiverats och hello Begärandetypen är inte HTTP GET. Tjänståtgärder returneras ett 403 svar.
+* hello autentiseringstoken innehåller inte information om hello användarens autentiseringsuppgifter: AccountName och/eller prenumerations-ID. Du hittar den här informationen i hello Media Services UI-tillägg för ditt Media Services-konto i hello Azure-hanteringsportalen.
+* hello resursen kan inte nås.
   
-  * Ett försök gjordes att använda en MediaProcessor som inte är tillgängligt för Media Services-kontot.
-  * Ett försök gjordes att uppdatera en jobbmall som definierats av Media Services.
-  * Ett försök gjordes att skriva över vissa andra Media Services kontots lokaliserare.
-  * Ett försök gjordes att skriva över vissa andra Media Services kontots ContentKey.
-* Det gick inte att skapa resursen på grund av en tjänst-kvot har uppnåtts för Media Services-kontot. Mer information om tjänsten kvoter finns [kvoter och begränsningar](media-services-quotas-and-limitations.md).
+  * Ett försök har gjorts toouse en MediaProcessor som inte är tillgängligt för Media Services-kontot.
+  * Ett försök gjordes tooupdate en jobbmall definieras av Media Services.
+  * Ett försök har gjorts toooverwrite vissa andra Media Services kontots lokaliserare.
+  * Ett försök har gjorts toooverwrite vissa andra Media Services kontots ContentKey.
+* hello resurs kunde inte skapas på grund av tooa service kvot som har uppnåtts för hello Media Services-konto. Mer information om hello service kvoter finns [kvoter och begränsningar](media-services-quotas-and-limitations.md).
 
 ## <a name="404-not-found"></a>404 Hittades inte
-Begäran är inte tillåten på en resurs på grund av följande orsaker:
+hello-begäran är inte tillåten på en resurs på grund av tooone av hello följande orsaker:
 
-* Ett försök gjordes att uppdatera en entitet som inte finns.
-* Ett försök gjordes att ta bort en entitet som inte finns.
-* Ett försök gjordes att skapa en entitet som länkar till en entitet som inte finns.
-* Ett försök gjordes att hämta en entitet som inte finns.
-* Ett försök gjordes att ange ett lagringskonto som inte är associerad med Media Services-kontot.  
+* Ett försök har gjorts tooupdate en entitet som inte finns.
+* Ett försök har gjorts toodelete en entitet som inte finns.
+* Ett försök har gjorts toocreate en entitet som länkar tooan entitet som inte finns.
+* Ett försök har gjorts tooGET en entitet som inte finns.
+* Ett försök har gjorts toospecify ett lagringskonto som inte är associerad med hello Media Services-konto.  
 
 ## <a name="409-conflict"></a>409 konflikt
-Begäran tillåts inte på grund av följande orsaker:
+hello-begäran är inte tillåtet på grund av tooone av hello följande orsaker:
 
-* Mer än en AssetFile har det angivna namnet i tillgången.
-* Ett försök gjordes att skapa en andra primära AssetFile i tillgången.
-* Ett försök gjordes att skapa en ContentKey med angivet Id används redan.
-* Ett försök gjordes att skapa en lokaliserare med angivet Id används redan.
-* Mer än en IngestManifestFile har det angivna namnet i IngestManifest.
-* Ett försök gjordes att länka en andra lagringskryptering ContentKey till tillgången lagring krypteras.
-* Ett försök gjordes att länka samma ContentKey till tillgången.
-* Ett försök gjordes att skapa en positionerare till en tillgång vars lagringsbehållaren saknas eller är inte längre kopplade till tillgången.
-* Ett försök gjordes att skapa en positionerare till en tillgång som redan har 5 lokaliserare används. (Azure Storage tillämpar högst fem principer för delad åtkomst på en lagringsbehållare.)
-* Länka storage-konto för en tillgång till en IngestManifestAsset är inte samma som det lagringskontot som används av överordnat IngestManifest.  
+* Mer än en AssetFile har hello angivet namn inom hello tillgången.
+* Ett försök gjordes toocreate en andra primära AssetFile inom hello tillgången.
+* Ett försök gjordes toocreate en ContentKey med hello angivna ID: T används redan.
+* Ett försök gjordes toocreate en lokaliserare med hello angivna ID: T används redan.
+* Mer än en IngestManifestFile har hello angivet namn inom hello IngestManifest.
+* Ett försök har gjorts toolink en andra storage kryptering ContentKey toohello lagring krypteras tillgången.
+* Ett försök gjordes toolink hello samma ContentKey toohello tillgången.
+* Ett försök gjordes toocreate en positionerare tooan tillgången vars lagringsbehållaren saknas eller är inte längre som är associerade med hello tillgången.
+* Ett försök har gjorts toocreate en positionerare tooan tillgång som redan har 5 lokaliserare används. (Azure Storage tillämpar hello gräns på fem principer för delad åtkomst på en lagringsbehållare.)
+* Länka lagringskontot för en tillgång tooan IngestManifestAsset är inte hello samma som hello storage-konto används av hello överordnade IngestManifest.  
 
 ## <a name="500-internal-server-error"></a>500 Internt serverfel
-Media Services påträffar ett fel som förhindrar bearbetningen fortsätter under bearbetning av begäran. Detta kan bero på något av följande:
+Under hello bearbetningen av hello begäran påträffar Media Services ett fel som förhindrar hello bearbetningen fortsätter. Detta kan bero på grund av tooone av hello följande orsaker:
 
-* Skapa en tillgång eller jobb misslyckas eftersom Media Services-kontot service-kvotinformation är otillgänglig.
-* Skapa en tillgång eller IngestManifest blobblagringsbehållare misslyckas eftersom kontots information om lagringskontot är inte tillgänglig för tillfället.
+* Skapa en tillgång eller jobb misslyckas eftersom hello Media Services konto service-kvotinformation är otillgänglig.
+* Skapa en tillgång eller IngestManifest blobblagringsbehållare misslyckas eftersom hello konto information om lagringskontot är inte tillgänglig för tillfället.
 * Ett oväntat fel.
 
 ## <a name="503-service-unavailable"></a>503 inte tillgänglig
-Servern är för närvarande inte att ta emot begäranden. Det här felet kan orsakas av långa förfrågningar till tjänsten. Media Services begränsning mekanism begränsar resursanvändningen för program som gör överdriven begäran för tjänsten.
+hello-servern är för närvarande inte tooreceive begäranden. Det här felet kan orsakas av hög begäranden toohello service. Media Services begränsning mekanism begränsar hello resursanvändningen för program som gör överdriven begäran toohello service.
 
 > [!NOTE]
-> Kontrollera felmeddelandet och felsträng kod för att få mer detaljerad information om orsaken till att du har fått 503-felet. Det här felet innebär alltid inte begränsning.
+> Kontrollera hello fel meddelande och fel kod sträng tooget mer detaljerad information om hello orsak som du fick hello 503-fel. Det här felet innebär alltid inte begränsning.
 > 
 > 
 
@@ -108,10 +108,10 @@ Möjliga status är:
 * ”Servern är upptagen. Mer än {0}-begäranden per sekund kan vara begränsas ”.
 * ”Servern är upptagen. Fler än {0}-förfrågningar inom {1} sekunder kan begränsas ”.
 
-Om du vill hantera det här felet, bör du använda exponentiell inte logik. Som innebär att progressivt längre väntar mellan två på varandra följande felsvar försök.  Mer information finns i [tillfälliga fel hanterar programmet Block](https://msdn.microsoft.com/library/hh680905.aspx).
+toohandle felet, bör du använda exponentiell inte logik. Som innebär att progressivt längre väntar mellan två på varandra följande felsvar försök.  Mer information finns i [tillfälliga fel hanterar programmet Block](https://msdn.microsoft.com/library/hh680905.aspx).
 
 > [!NOTE]
-> Om du använder [Azure Media Services SDK för .net](https://github.com/Azure/azure-sdk-for-media-services/tree/master), logik för omprövning för 503-fel har implementerats av SDK.  
+> Om du använder [Azure Media Services SDK för .net](https://github.com/Azure/azure-sdk-for-media-services/tree/master), hello logik för hello 503-fel har implementerats av hello SDK.  
 > 
 > 
 

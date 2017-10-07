@@ -1,5 +1,5 @@
 ---
-title: "Vad är nytt i Azure Machine Learning | Microsoft Docs"
+title: "aaaWhat är ny i Azure Machine Learning | Microsoft Docs"
 description: "Nya funktioner som är tillgängliga i Azure Machine Learning."
 services: machine-learning
 documentationcenter: 
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 551b977b90612ddbfa1514a9c2358ebf8179c385
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 6532aabcff023d6c81f79f21d501335c234c55fa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Vad är nytt i Azure Machine Learning?
 
-### <a name="the-march-2017-release-of-microsoft-azure-machine-learning-updates-provides-the-following-feature"></a>Mars 2017-versionen av Microsoft Azure Machine Learning uppdateringar innehåller följande funktioner:
+### <a name="hello-march-2017-release-of-microsoft-azure-machine-learning-updates-provides-hello-following-feature"></a>hello mars 2017 versionen av Microsoft Azure Machine Learning uppdateringar innehåller hello följande funktion:
 
 
 
 * Dedikerade kapacitet för Azure Machine Learning BES-jobb
 
-    Datorn Learning Batch-Pool bearbetning använder den [Azure Batch](../batch/batch-technical-overview.md) ska hanteras av kunden skalan för Azure Machine Learning Batch Execution Service. Poolen batchbearbetning kan du skapa Azure Batch-pooler som du kan skicka batchjobb och ha dem köra förutsägbart.
+    Machine Learning Batch-Pool bearbetning använder hello [Azure Batch](../batch/batch-technical-overview.md) tooprovide kundhanterad skala för hello Azure Machine Learning Batch Execution Service-tjänsten. Poolen batchbearbetning kan toocreate Azure Batch-pooler som du kan skicka batchjobb och ha dem köra förutsägbart.
 
     Mer information finns i [Azure Batch-tjänsten för Machine Learning jobb](machine-learning-dedicated-capacity-for-bes-jobs.md).
 
 
-### <a name="the-august-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Augusti 2016-versionen av Microsoft Azure Machine Learning uppdateringar innehåller följande funktioner:
-* Klassiska webbtjänster kan hanteras i den nya [Microsoft Azure Machine Learning-webbtjänster](https://services.azureml.net/) portal som ger dig en plats för att hantera alla aspekter av webbtjänsten.    
+### <a name="hello-august-2016-release-of-microsoft-azure-machine-learning-updates-provide-hello-following-features"></a>hello augusti 2016-versionen av Microsoft Azure Machine Learning uppdateringar innehåller hello följande funktioner:
+* Klassiska webbtjänster kan hanteras i hello nya [Microsoft Azure Machine Learning-webbtjänster](https://services.azureml.net/) portal som tillhandahåller en plats toomanage alla aspekter av webbtjänsten.    
   * Som innehåller webbtjänsten [användningsstatistik](machine-learning-manage-new-webservice.md).
   * Förenklar testning av Azure Machine Learning fjärr-begäran-anrop med exempeldata.
   * Ger en ny Batch Execution Service testsida exempel data och jobbet skicka historik.
   * Tillhandahåller enklare hantering av slutpunkten.
 
-### <a name="the-july-2016-release-of-microsoft-azure-machine-learning-updates-provide-the-following-features"></a>Juli 2016-versionen av Microsoft Azure Machine Learning uppdateringar innehåller följande funktioner:
-* Webbtjänster som nu hanteras som Azure-resurser som hanteras via [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) gränssnitt, vilket ger följande förbättringar:
-  * Det finns nya [REST API: er](https://msdn.microsoft.com/library/azure/Dn950030.aspx) att distribuera och hantera Resource Manager baserat webbtjänsterna.
-  * Det finns en ny [Microsoft Azure Machine Learning-webbtjänster](https://services.azureml.net/) portal som ger dig en plats för att hantera alla aspekter av webbtjänsten.
-* Innehåller en ny prenumeration-baserade, flera regioner web service distributionsmodell med Resource Manager baserade API: er som utnyttjar Resource Manager Resource Provider för webbtjänster.
-* Inför nya [prissättningar](https://azure.microsoft.com/pricing/details/machine-learning/) och planera hanteringsmöjligheter med nya Resource Manager RP för fakturering.
-  * Du kan nu [distribuera webbtjänsten till flera regioner](machine-learning-how-to-deploy-to-multiple-regions.md) utan att behöva skapa en prenumeration i varje region.
+### <a name="hello-july-2016-release-of-microsoft-azure-machine-learning-updates-provide-hello-following-features"></a>hello juli 2016-versionen av Microsoft Azure Machine Learning uppdateringar innehåller hello följande funktioner:
+* Webbtjänster som nu hanteras som Azure-resurser som hanteras via [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) gränssnitt, vilket ger hello följande förbättringar:
+  * Det finns nya [REST API: er](https://msdn.microsoft.com/library/azure/Dn950030.aspx) toodeploy och hantera Resource Manager baserat webbtjänsterna.
+  * Det finns en ny [Microsoft Azure Machine Learning-webbtjänster](https://services.azureml.net/) portal som tillhandahåller en plats toomanage alla aspekter av webbtjänsten.
+* Innehåller en ny prenumeration-baserade, flera regioner web service distributionsmodell med Resource Manager baserade API: er som utnyttjar hello Resource Manager Resource Provider för webbtjänster.
+* Inför nya [prissättningar](https://azure.microsoft.com/pricing/details/machine-learning/) och planera hanteringsmöjligheter med hello nya Resource Manager RP för fakturering.
+  * Du kan nu [distribuera din web service toomultiple regioner](machine-learning-how-to-deploy-to-multiple-regions.md) utan att behöva toocreate en prenumeration i varje region.
 * Innehåller webbtjänsten [användningsstatistik](machine-learning-manage-new-webservice.md).
 * Förenklar testning av Azure Machine Learning fjärr-begäran-anrop med exempeldata.
 * Ger en ny Batch Execution Service testsida exempel data och jobbet skicka historik.
 
-Dessutom har uppdaterats så att du kan distribuera till den nya Web service modellen Machine Learning Studio eller fortsätta att distribuera till den klassiska modellen för Web service. 
+Dessutom hello Machine Learning Studio har uppdaterats tooallow du toodeploy toohello ny webbtjänst modell eller fortsätta toodeploy toohello klassiska Web service modellen. 
 

@@ -1,6 +1,6 @@
 ---
-title: "Skapa funktioner för Azure blob storage-data med hjälp av Panda | Microsoft Docs"
-description: "Så här skapar du funktioner för data som lagras i Azure blob-behållaren med Panda Python-paketet."
+title: "aaaCreate funktioner för Azure blob storage-data med hjälp av Panda | Microsoft Docs"
+description: "Hur toocreate funktioner för data som lagras i Azure blob-behållare med hello Panda Python-paketet."
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: 2ef2acfea2372ac7fd52d099a2b4203ee2242d81
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 8594046c5d76a36ad87fc77e407752489d30afcc
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Skapa funktioner för Azure Blob Storage-data med Panda
-Det här dokumentet beskrivs hur du skapar funktioner för data som lagras i Azure blob-behållaren med den [Pandas](http://pandas.pydata.org/) Python-paketet. Efter beskriver hur du läser in data i ett Panda data visas hur du skapar kategoriska funktioner med hjälp av Python-skript med indikatorn värden och diskretisering funktioner.
+Det här dokumentet beskrivs hur toocreate funktioner för data som lagras i Azure blob-behållaren med hjälp av hello [Pandas](http://pandas.pydata.org/) Python-paketet. Efter beskriver hur tooload hello data till en Panda data ram, den visar hur toogenerate kategoriska funktioner med hjälp av Python-skript med indikatorn värden och diskretisering funktioner.
 
 [!INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
 
-Detta **menyn** länkar till avsnitt som beskriver hur du skapar funktioner för data i olika miljöer. Den här uppgiften är ett steg i den [Team Data vetenskap processen (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+Detta **menyn** länkar tootopics som beskriver hur toocreate funktioner för data i olika miljöer. Den här uppgiften är ett steg i hello [Team Data vetenskap processen (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
 
 ## <a name="prerequisites"></a>Krav
-Den här artikeln förutsätter att du har skapat ett Azure blob storage-konto och har sparat dina data. Om du behöver anvisningar för att konfigurera ett konto, se [skapa ett Azure Storage-konto](../storage/common/storage-create-storage-account.md#create-a-storage-account)
+Den här artikeln förutsätter att du har skapat ett Azure blob storage-konto och har sparat dina data. Om du behöver instruktioner tooset ett konto, se [skapa ett Azure Storage-konto](../storage/common/storage-create-storage-account.md#create-a-storage-account)
 
-## <a name="load-the-data-into-a-pandas-data-frame"></a>Läsa in data i ett Pandas data
-För att kunna utforska och ändra en datamängd, måste den hämtas från blob-källan till en lokal fil som sedan kan läsas in i en Pandas data ram. Här följer de steg för den här proceduren:
+## <a name="load-hello-data-into-a-pandas-data-frame"></a>Läs in hello data till en Pandas data ram
+Utforska i ordning toodo och ändra en datamängd, den måste hämtas från hello blob tooa lokala källfil som sedan kan läsas in i en Pandas data ram. Här följer hello steg toofollow för den här proceduren:
 
-1. Hämta data från Azure blob med följande Python exempelkod med blob-tjänsten. Ersätt variabeln i koden nedan med dina specifika värden:
+1. Ladda ned hello data från Azure blob med hello följande Python exempelkod med blob-tjänsten. Ersätt hello variabel i hello koden nedan med dina specifika värden:
    
         from azure.storage.blob import BlobService
         import tables
@@ -49,57 +49,57 @@ För att kunna utforska och ändra en datamängd, måste den hämtas från blob-
         blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
-        print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Läsa data i en Pandas data-ram från den hämta filen.
+        print(("It takes %s seconds toodownload "+blobname) % (t2 - t1))
+2. Läs hello data till en Pandas data-ram från hello ned filen.
    
-        #LOCALFILE is the file path
+        #LOCALFILE is hello file path
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-Du är nu redo att utforska data och generera funktioner på denna dataset.
+Nu är klar tooexplore hello data och generera funktioner på denna dataset.
 
 ## <a name="blob-featuregen"></a>Funktionen Generation
-I följande två avsnitt visar hur du skapar kategoriska funktioner med indikatorn värden och diskretisering funktioner med hjälp av Python-skript.
+hello följande två avsnitt visar hur toogenerate kategoriska funktioner med indikatorvärdena och diskretisering funktioner med hjälp av Python-skript.
 
 ### <a name="blob-countfeature"></a>Indikatorvärdet baserat funktionen Generation
 Kategoriska funktioner kan skapas på följande sätt:
 
-1. Kontrollera distributionen av kolumnen kategoriska:
+1. Inspektera hello distribution av hello kategoriska kolumn:
    
         dataframe_blobdata['<categorical_column>'].value_counts()
-2. Generera indikator värden för varje kolumnvärdena
+2. Generera indikator värden för varje hello kolumnvärdena
    
-        #generate the indicator column
+        #generate hello indicator column
         dataframe_blobdata_identity = pd.get_dummies(dataframe_blobdata['<categorical_column>'], prefix='<categorical_column>_identity')
-3. Ansluta till kolumnen indikator med den ursprungliga dataramen
+3. Anslut hello indikator kolumn med hello ursprungliga dataramen
    
-            #Join the dummy variables back to the original data frame
+            #Join hello dummy variables back toohello original data frame
             dataframe_blobdata_with_identity = dataframe_blobdata.join(dataframe_blobdata_identity)
-4. Ta bort själva ursprungliga variabeln:
+4. Ta bort hello ursprungliga själva variabeln:
    
-        #Remove the original column rate_code in df1_with_dummy
+        #Remove hello original column rate_code in df1_with_dummy
         dataframe_blobdata_with_identity.drop('<categorical_column>', axis=1, inplace=True)
 
 ### <a name="blob-binningfeature"></a>Diskretisering funktionen Generation
 För att generera binned funktioner fortsätta enligt följande:
 
-1. Lägga till en sekvens av kolumner till bin en numerisk kolumn
+1. Lägga till en sekvens av kolumner toobin en numerisk kolumn
    
         bins = [0, 1, 2, 4, 10, 40]
         dataframe_blobdata_bin_id = pd.cut(dataframe_blobdata['<numeric_column>'], bins)
-2. Konvertera diskretisering till en sekvens med booleska variabler
+2. Konvertera diskretisering tooa sekvens med booleska variabler
    
         dataframe_blobdata_bin_bool = pd.get_dummies(dataframe_blobdata_bin_id, prefix='<numeric_column>')
-3. Slutligen ansluta variablerna dummy tillbaka till den ursprungliga dataramen
+3. Slutligen tillbaka koppling hello dummy variabler toohello ursprungliga dataramen
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)
 
-## <a name="sql-featuregen"></a>Data skrivs tillbaka till Azure blob och använda i Azure Machine Learning
-När du har gjort data och skapa nödvändiga funktioner, kan du överföra data (provtagning eller featurized) till ett Azure blob- och använda den i Azure Machine Learning med följande steg: Observera att du kan skapa ytterligare funktioner i Azure Machine Learning Studio samt.
+## <a name="sql-featuregen"></a>När data skrevs tillbaka tooAzure blob och använda i Azure Machine Learning
+När du har arbetat hello data och skapa hello nödvändiga funktioner, kan du överföra hello data (provtagning eller featurized) tooan Azure blob- och använda den i Azure Machine Learning med hjälp av följande hello: Observera att du kan skapa ytterligare funktioner i hello Azure Machine Learning Studio samt.
 
-1. Skriva dataramen till en lokal fil
+1. Skriva hello datafilen ram toolocal
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
-2. Överför data till Azure blob på följande sätt:
+2. Överför hello data tooAzure blob på följande sätt:
    
         from azure.storage.blob import BlobService
         import tables
@@ -120,7 +120,7 @@ När du har gjort data och skapa nödvändiga funktioner, kan du överföra data
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Nu går att läsa data från blob med hjälp av Azure Machine Learning [importera Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modulen som visas på skärmen nedan:
+3. Nu hello data kan läsas från hello blob med hello Azure Machine Learning [importera Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modulen som visas i hello-skärmen nedan:
 
 ![läsaren blob](./media/machine-learning-data-science-process-data-blob/reader_blob.png)
 

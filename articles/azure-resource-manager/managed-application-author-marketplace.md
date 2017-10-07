@@ -1,6 +1,6 @@
 ---
-title: Azure hanterade program i Marketplace | Microsoft Docs
-description: "Beskriver Azure hanterade program som är tillgängliga via Marketplace."
+title: aaaAzure hanterade program i hello Marketplace | Microsoft Docs
+description: "Beskriver Azure hanterade program som är tillgängliga via hello Marketplace."
 services: azure-resource-manager
 author: ravbhatnagar
 manager: rjmax
@@ -10,69 +10,69 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/09/2017
 ms.author: gauravbh; tomfitz
-ms.openlocfilehash: 58ac7665abf7e75a43bb0b92bdf6f41005c3efe8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b3cdf3f1fccdd47db699e4892ae8bce35118bfd8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-managed-applications-in-the-marketplace"></a>Azure hanterade program i Marketplace
+# <a name="azure-managed-applications-in-hello-marketplace"></a>Azure hanterade program i hello Marketplace
 
- MSPs ISV: er och systemintegrerare (SIs) kan använda Azure hanterade program att erbjuda sina lösningar för alla Azure Marketplace-kunder. Sådana lösningar minska underhållet och underhåll kostnader för kunder. Utgivare kan sälja infrastruktur- och programvara på marknadsplatsen. De kan koppla tjänster och operativa stöd till hanterade program. Mer information finns i [hanteras Programöversikt](managed-application-overview.md).
+ MSPs ISV: er och systemintegrerare (SIs) kan använda Azure hanterade program toooffer kunderna lösningar tooall Azure Marketplace. Sådana lösningar minska hello Service och underhåll kostnader för kunder. Utgivare kan sälja infrastruktur- och programvara via hello Marketplace. De kan koppla tjänster och operativa stöd toomanaged program. Mer information finns i [hanteras Programöversikt](managed-application-overview.md).
 
-Den här artikeln beskrivs hur en MSP, ISV eller SI kan publicera ett program till Marketplace och göra den tillgänglig för kunder.
+Den här artikeln beskrivs hur en MSP, ISV eller SI kan publicera ett program toohello Marketplace och gör den tillgänglig toocustomers.
 
 ## <a name="prerequisites-for-publishing-a-managed-application"></a>Krav för att publicera ett hanterat program
 
-Förutsättningar för att lista i Marketplace:
+Krav för toolisting i hello Marketplace:
 
 * Tekniska
 
-    *  Information om grundläggande struktur och syntaxen för Azure Resource Manager-mallar finns [Azure Resource Manager-mallar](resource-group-authoring-templates.md).
-    *  Om du vill visa fullständig mallen lösningar finns [Azure Quickstart mallar](https://azure.microsoft.com/en-us/documentation/templates/) eller [Quickstart mallen databasen](https://github.com/azure/azure-quickstart-templates).
-    *  Information om hur du skapar gränssnittet för kunder som distribuerar ditt program via Marketplace finns [skapa en fil för användaren gränssnittsdefinition](managed-application-createuidefinition-overview.md).
+    *  Information om hello grundläggande struktur och syntaxen för Azure Resource Manager-mallar finns [Azure Resource Manager-mallar](resource-group-authoring-templates.md).
+    *  tooview fullständig mallen lösningar finns [Azure-snabbstartsmallar](https://azure.microsoft.com/en-us/documentation/templates/) eller hello [Quickstart mallen databasen](https://github.com/azure/azure-quickstart-templates).
+    *  Information om hur toocreate hello gränssnitt för kunder som distribuerar ditt program via hello Marketplace finns [skapa en fil för användaren gränssnittsdefinition](managed-application-createuidefinition-overview.md).
 
 * Sökassistent (affärsbehov)
 
-    *   Ditt företag eller dess dotterbolag måste finnas i ett land där försäljning stöds av Marketplace.
-    *   Produkten måste ha licens på ett sätt som är kompatibel med fakturering modeller som stöds av Marketplace.
-    *   Du är ansvarig för teknisk support för kunder på ett kommersiellt rimliga sätt. Stöd kan vara fria, betald, eller via community stöd.
+    *   Ditt företag eller dess dotterbolag måste finnas i ett land där försäljning stöds av hello Marketplace.
+    *   Produkten måste ha licens på ett sätt som är kompatibel med fakturering modeller som stöds av hello Marketplace.
+    *   Du är ansvarig för att teknisk support tillgängliga toocustomers på ett kommersiellt rimliga sätt. hello stöd kan vara fria, betald, eller via community stöder.
     *   Du är ansvarig för att licensiera programmet och eventuella beroenden för programvara från tredje part.
-    *   Du måste ange innehåll som uppfyller villkoren för ditt erbjudande ska visas i Marketplace och i Azure-portalen.
-    *   Du måste acceptera villkoren i avtalet för utgivaren och Azure Marketplace deltagande principer.
-    *   Du måste acceptera att följa den användningsvillkoren och sekretesspolicyn för Microsoft certifierade programavtalet för Microsoft Azure.
+    *   Du måste ange innehåll som uppfyller villkoren för ditt erbjudande toobe som visas i hello Marketplace och hello Azure-portalen.
+    *   Du måste acceptera toohello villkoren i hello Azure Marketplace deltagande principer eller utgivare avtal.
+    *   Du måste acceptera toocomply med hello användningsvillkoren och sekretesspolicyn för Microsoft certifierad programmet avtalet för Microsoft Azure.
 
 ## <a name="create-a-new-azure-application-offer"></a>Skapa ett nytt erbjudande för Azure-program
 
-Efter att du uppfyller kraven som är du redo att skapa erbjudandet hanterade program. Låt oss ta en snabb överblick över ett erbjudande och en SKU.
+Efter att du uppfyller hello förutsättningar du är klar toocreate erbjudandet hanterade program. Låt oss ta en snabb överblick över ett erbjudande och en SKU.
 
 ### <a name="offer"></a>Erbjudande
 
-Erbjudande för ett hanterat program motsvarar en klass av produkten erbjudande från en utgivare. Om du har en ny typ av lösning/program som du vill ska vara tillgängliga i Marketplace kan konfigurera du den som ett nytt erbjudande. Ett erbjudande är en samling av SKU: er. Varje erbjudande visas som sin egen enhet i Marketplace.
+hello-erbjudande för ett hanterat program motsvarar tooa klass av produkten erbjudande från en utgivare. Om du har en ny typ av lösningen-program som du vill toomake som är tillgängliga i hello Marketplace kan konfigurera du den som ett nytt erbjudande. Ett erbjudande är en samling av SKU: er. Varje erbjudande visas som sin egen enhet i hello Marketplace.
 
 ### <a name="sku"></a>SKU
 
-En SKU är den minsta köpbara enheten ett erbjudande. Du kan använda en SKU inom samma produkten klass (erbjudandet) för att skilja mellan:
+En SKU är hello minsta köpbara ett erbjudande. Du kan använda en SKU inom hello samma produkten klass (erbjudandet) toodifferentiate mellan:
 
 * Olika funktioner som stöds.
-* Om erbjudandet är hanterad eller ohanterad.
+* Om hello erbjudandet är hanterad eller ohanterad.
 * Fakturering modeller som stöds.
 
-En SKU visas under överordnade erbjudandet på Marketplace. Det verkar som sin egen köpbara enhet i Azure-portalen.
+En SKU visas under hello överordnade erbjudandet i hello Marketplace. Det verkar som sin egen köpbara entitet i hello Azure-portalen.
 
 ### <a name="set-up-an-offer"></a>Konfigurera ett erbjudande
 
-1. Logga in på den [molnpartnerportalen](https://cloudpartner.azure.com/).
+1. Logga in toohello [molnpartnerportalen](https://cloudpartner.azure.com/).
 
-2. I navigeringsfönstret till vänster, Välj **+ nytt erbjudande** > **Azure program**.
+2. Hello navigeringsfönstret hello vänster och välj **+ nytt erbjudande** > **Azure program**.
 
     ![Nytt erbjudande](./media/managed-application-author-marketplace/newOffer.png)
 
-3. Fylla i formulär som visas till vänster i den **Editor** vyn. Obligatoriska fält är markerade med en röd asterisk (*).
+3. Fylla i hello formulär som visas på hello kvar i hello **Editor** vyn. Obligatoriska fält är markerade med en röd asterisk (*).
 
     ![Inställningar för erbjudande](./media/managed-application-author-marketplace/newOffer_OfferSettings.png)
 
-    Fyra huvudsakliga formulär används för att skapa ett hanterat program:
+    Fyra huvudsakliga formulär är används toocreate ett hanterat program:
 
     a. Inställningar för erbjudande
 
@@ -82,74 +82,74 @@ En SKU visas under överordnade erbjudandet på Marketplace. Det verkar som sin 
 
     d. Support
 
-Formulären beskrivs mer detaljerat i följande avsnitt.
+Formulären beskrivs mer detaljerat i följande avsnitt hello.
 
 ## <a name="offer-settings-form"></a>Erbjudande inställningar för formulär
-Använd den här grundläggande formuläret för att ange inställningar för erbjudande.
+Använd den här grundformat toospecify hello erbjudande inställningarna.
 
-1. Fyll i den **erbjuder inställningar** formuläret. Olika områden är:
+1. Fyll i hello **erbjuder inställningar** formuläret. hello olika fält är:
 
-    a. **Erbjudande-ID**: den unika identifieraren identifierar erbjudandet i en profil för utgivaren. Detta ID visas i produkten URL: er, Resource Manager-mallar och fakturering rapporter. Det kan bara består av gemena alfanumeriska tecken och bindestreck (-). ID: T får inte sluta med ett streck. Det är begränsat till högst 50 tecken. När ett erbjudande lanseras är i det här fältet låst.
+    a. **Erbjudande-ID**: den unika identifieraren identifierar hello erbjudandet i en profil för utgivaren. Detta ID visas i produkten URL: er, Resource Manager-mallar och fakturering rapporter. Det kan bara består av gemena alfanumeriska tecken och bindestreck (-). hello-ID får inte sluta med ett streck. Det är begränsad tooa högst 50 tecken. När ett erbjudande lanseras är i det här fältet låst.
 
-    b. **Publicerings-ID**: Använd den här listrutan för att välja publisher-profil som du vill publicera det här erbjudandet under. När ett erbjudande lanseras är i det här fältet låst.
+    b. **Publicerings-ID**: Använd den här listrutan toochoose hello publisher profilen du vill toopublish erbjudandet under. När ett erbjudande lanseras är i det här fältet låst.
 
-    c. **Namnet**: det här visningsnamnet för ditt erbjudande visas i Marketplace och i portalen. Det kan ha högst 50 tecken. Innehåller ett okänt varumärke för produkten. Inkludera inte ditt företagsnamn, om det inte är hur släpps. Om du marknadsföring erbjudandet på din egen webbplats, måste du kontrollera att namnet är exakt hur den visas på webbplatsen.
+    c. **Namnet**: det här visningsnamnet för ditt erbjudande visas i hello Marketplace och hello portal. Det kan ha högst 50 tecken. Innehåller ett okänt varumärke för produkten. Inkludera inte ditt företagsnamn, om det inte är hur släpps. Om du marknadsföring erbjudandet på din egen webbplats, kan du kontrollera att hello-namn är exakt hur den visas på webbplatsen.
 
-2. Välj **spara** att spara ditt arbete. 
+2. Välj **spara** toosave ditt arbete. 
 
 ## <a name="skus-form"></a>SKU: er formulär
-Nästa steg är att lägga till SKU: er för ditt erbjudande.
+hello nästa steg är tooadd SKU: er för ditt erbjudande.
 
 1. Välj **SKU: er** > **nya SKU**. 
 
     ![Välj ny SKU](./media/managed-application-author-marketplace/newOffer_skus.png)
 
-2. Ange en **SKU ID**. En SKU-ID är en unik identifierare för SKU: N i ett erbjudande. Detta ID visas i produkten URL: er, Resource Manager-mallar och fakturering rapporter. Det kan bara består av gemena alfanumeriska tecken och bindestreck (-). ID: T får inte sluta med ett streck och är begränsat till högst 50 tecken. När ett erbjudande lanseras är i det här fältet låst. Du kan ha flera SKU: er i ett erbjudande. Du behöver en SKU för varje avbildning som du planerar att publicera.
+2. Ange en **SKU ID**. En SKU-ID är en unik identifierare för hello SKU inom ett erbjudande. Detta ID visas i produkten URL: er, Resource Manager-mallar och fakturering rapporter. Det kan bara består av gemena alfanumeriska tecken och bindestreck (-). hello-ID får inte sluta med ett streck och är begränsat tooa högst 50 tecken. När ett erbjudande lanseras är i det här fältet låst. Du kan ha flera SKU: er i ett erbjudande. En SKU måste du planera toopublish för varje avbildning.
 
-3. Fyll i den **SKU information** avsnitt i följande format:
+3. Fylla hello **SKU information** avsnittet hello följande format:
 
     ![Ange nya SKU](./media/managed-application-author-marketplace/newOffer_newsku.png)
 
-    Fylla i följande fält:
+    Fyll ut hello följande fält:
     
-    a. **Rubrik**: Ange en rubrik för denna SKU. Den här rubriken visas i galleriet för det här objektet.
+    a. **Rubrik**: Ange en rubrik för denna SKU. Den här rubriken visas i hello-galleriet för det här objektet.
 
-    b. **Översikt över**: Ange en kort sammanfattning för denna SKU. Den här texten visas under rubriken.
+    b. **Översikt över**: Ange en kort sammanfattning för denna SKU. Den här texten visas under hello rubrik.
 
-    c. **Beskrivning**: Ange en detaljerad beskrivning av SKU: N.
+    c. **Beskrivning**: Ange en detaljerad beskrivning om hello SKU.
 
-    d. **SKU-typen**: de tillåtna värdena är **hanterat program** och **Lösningsmallar**. Det här fallet markerar **hanterat program**.
+    d. **SKU-typen**: hello tillåtna värden är **hanterat program** och **Lösningsmallar**. Det här fallet markerar **hanterat program**.
 
-4. Fyll i den **Paketinformation** avsnitt i följande format:
+4. Fylla hello **Paketinformation** avsnittet hello följande format:
 
     ![Paket](./media/managed-application-author-marketplace/newOffer_newsku_package.png)
 
-    Fylla i följande fält:
+    Fyll ut hello följande fält:
 
-    a. **Aktuell Version**: Ange en version för det paket som du överför. Det bör vara i formatet `{number}.{number}.{number}{number}`.
+    a. **Aktuell Version**: Ange en version för hello-paketet som du överför. Det måste vara i formatet för hello `{number}.{number}.{number}{number}`.
 
-    b. **Välj en paketfil**: det här paketet innehåller följande filer som är komprimerade till en ZIP-fil:
-    * **applianceMainTemplate.json**: distribution mallfilen som används för att distribuera lösningen/application. Information om hur du skapar distributionen mallfilerna finns [skapa din första Azure Resource Manager-mallen](resource-manager-create-first-template.md).
-    * **appliancecreateUIDefinition.json**: den här filen används av Azure-portalen för att generera användargränssnittet som används för att etablera den här lösningen/application. Mer information finns i [Kom igång med CreateUiDefinition](managed-application-createuidefinition-overview.md).
-    * **mainTemplate.json**: den här mallen innehåller Microsoft.Solution/appliances resursen. Filen mainTemplate innehåller följande egenskaper:
+    b. **Välj en paketfil**: det här paketet innehåller hello följande filer som är komprimerade till en ZIP-fil:
+    * **applianceMainTemplate.json**: hello distribution mallfilen som har använt toodeploy hello lösning/application. Information om hur toocreate mallfilerna för distribution, se [skapa din första Azure Resource Manager-mallen](resource-manager-create-first-template.md).
+    * **appliancecreateUIDefinition.json**: den här filen används av hello Azure portal toogenerate hello-användargränssnittet som har använt tooprovision lösning/programmet. Mer information finns i [Kom igång med CreateUiDefinition](managed-application-createuidefinition-overview.md).
+    * **mainTemplate.json**: den här mallen innehåller endast hello Microsoft.Solution/appliances resurs. Hej mainTemplate filen innehåller hello följande egenskaper:
 
-        *  **typ**: Använd **Marketplace** för hanterade program på Marketplace.
-        *  **ManagedResourceGroupId**: den här resursgruppen i kundens prenumeration är där alla resurser som definierats i applianceMainTemplate.json har distribuerats.
-        *  **PublisherPackageId**: denna sträng som unikt identifierar paketet. Ange ett värde i formatet `{publisherId}.{OfferId}.{SKUID}.{PackageVersion}`.
+        *  **typ**: Använd **Marketplace** för hanterade program i hello Marketplace.
+        *  **ManagedResourceGroupId**: den här resursgruppen i hello kundens prenumeration är där alla hello-resurser som definierats i applianceMainTemplate.json har distribuerats.
+        *  **PublisherPackageId**: denna sträng som unikt identifierar hello-paketet. Ange hello värde i hello-format för `{publisherId}.{OfferId}.{SKUID}.{PackageVersion}`.
 
-Hämta den **erbjuder ID** och **Publicerings-ID** från publishing portal som visas i följande bild:
+Hämta hello **erbjuder ID** och **Publicerings-ID** från hello publicering portal, enligt följande bild hello:
 
 ![Erbjudande-ID](./media/managed-application-author-marketplace/UniqueString_pubid_offerid.png)
         
-Hämta den **SKU ID**, enligt följande bild:
+Hämta hello **SKU ID**som visas i följande bild hello:
 
 ![SKU-ID](./media/managed-application-author-marketplace/UniqueString_skuid.png)
         
-Hämta paketet **Version**, enligt följande bild:
+Hämtar hello paketet **Version**som visas i följande bild hello:
 
 ![Paketversion](./media/managed-application-author-marketplace/UniqueString_packageversion.png)
     
-  Baserat på i föregående exempel kan värdet för **PublisherPackageId** är `azureappliance-test.ravmanagedapptest.ravpreviewmanagedsku.1.0.0`.
+  Baserat på hello föregående exempel hello värdet för **PublisherPackageId** är `azureappliance-test.ravmanagedapptest.ravpreviewmanagedsku.1.0.0`.
 
   Exempel på mainTemplate.json:
 
@@ -161,7 +161,7 @@ Hämta paketet **Version**, enligt följande bild:
       "storageAccountNamePrefix": {
         "type": "string",
         "metadata": {
-          "description": "Specify the name of the storage account"
+          "description": "Specify hello name of hello storage account"
         }
       },
       "storageAccountType": {
@@ -196,84 +196,84 @@ Hämta paketet **Version**, enligt följande bild:
   }
   ```
 
-Det här paketet innehåller alla andra kapslade mallar eller skript som krävs för att kunna etablera det här programmet. MainTemplate.json, applianceMainTemplate.json och applianceCreateUIDefinition.json filer måste finnas i rotmappen.
+Det här paketet innehåller kapslade mallar eller skript som är nödvändiga toosuccessfully etablera det här programmet. Hej måste mainTemplate.json, applianceMainTemplate.json och applianceCreateUIDefinition.json filer finnas hello rotmappen.
 
-* **Tillstånd**: den här egenskapen definierar vilka som får åtkomst och vilken åtkomstnivå till resurserna i kundernas prenumerationer. Utgivaren kan använda den för att hantera program för kundens räkning.
-* **PrincipalId**: den här egenskapen är Azure Active Directory (Azure AD)-ID för en användare, grupp eller ett program som har beviljats vissa behörigheter för resurser i kundens prenumeration. Rolldefinitionen beskriver behörigheten. 
-* **Rolldefinitionen**: den här egenskapen är en lista med alla inbyggda rollbaserad åtkomstkontroll (RBAC) roller tillhandahålls av Azure AD. Du kan välja den roll som är mest lämpligt att använda för att hantera resurserna för kundens räkning.
+* **Tillstånd**: den här egenskapen definierar vilka som får åtkomst och hello åtkomstnivå toohello resurser i kundernas prenumerationer. hello publisher kan använda den toomanage hello program för hello kunds räkning.
+* **PrincipalId**: den här egenskapen är hello Azure Active Directory (AD Azure) identifierare för en användare, grupp eller ett program som har beviljats vissa behörigheter för hello resurser i hello kundens prenumeration. hello rolldefinitionen beskriver hello behörigheter. 
+* **Rolldefinitionen**: den här egenskapen är en lista över alla hello inbyggda rollbaserad åtkomstkontroll (RBAC) roller tillhandahålls av Azure AD. Du kan välja hello roll som är mest lämpliga toouse toomanage hello resurser för hello kunds räkning.
 
-Du kan lägga till flera tillstånd. Vi rekommenderar att du skapar en grupp i AD-användare och ange dess ID i **PrincipalId**. På så sätt kan du lägga till fler användare i användargruppen utan att behöva uppdatera SKU: N.
+Du kan lägga till flera tillstånd. Vi rekommenderar att du skapar en grupp i AD-användare och ange dess ID i **PrincipalId**. På så sätt kan du kan lägga till fler användare toohello användargrupp utan hello måste tooupdate hello SKU.
 
-Läs mer om hur RBAC [komma igång med RBAC på Azure portal](../active-directory/role-based-access-control-what-is.md).
+Läs mer om hur RBAC [komma igång med RBAC på hello Azure-portalen](../active-directory/role-based-access-control-what-is.md).
 
 ## <a name="marketplace-form"></a>Marketplace-formulär
 
-Marketplace-formulär uppmanar för fält som visas på den [Azure Marketplace](https://azuremarketplace.microsoft.com) och på den [Azure-portalen](https://portal.azure.com/).
+hello Marketplace formuläret begär fält som visas på hello [Azure Marketplace](https://azuremarketplace.microsoft.com) och på hello [Azure-portalen](https://portal.azure.com/).
 
 ### <a name="preview-subscription-ids"></a>Prenumerations-ID: N för förhandsgranskning
 
-Ange en lista över Azure-prenumeration ID: N som kan komma åt erbjudandet när den har publicerats. Du kan använda dessa vitt visas prenumerationer för att testa förhandsgranskade erbjudandet innan du gör den live. Du kan sammanställa en lista för tillåten av upp till 100 prenumerationer i partnerportalen.
+Ange en lista över Azure-prenumeration ID: N som kan komma åt hello erbjudande när den har publicerats. Du kan använda dessa vitt visas prenumerationer tootest hello förhandsgranskas erbjudande innan du gör den live. Du kan sammanställa en lista för tillåten för in too100 prenumerationer i hello partnerportalen.
 
 ### <a name="suggested-categories"></a>Föreslagna kategorier
 
-Välj upp till fem kategorier i listan som erbjudandet bäst kan associeras med. Dessa kategorier som används för att mappa erbjudandet till produktkategorier som är tillgängliga i den [Azure Marketplace](https://azuremarketplace.microsoft.com) och [Azure-portalen](https://portal.azure.com/).
+Välj toofive kategorier hello listan som erbjudandet bäst kan associeras med. Dessa kategorier är används toomap ditt erbjudande toohello produktkategorier som är tillgängliga i hello [Azure Marketplace](https://azuremarketplace.microsoft.com) och hello [Azure-portalen](https://portal.azure.com/).
 
 #### <a name="azure-marketplace"></a>Azure Marketplace
 
-Sammanfattning av det hanterade programmet visar följande fält:
+hello sammanfattning av det hanterade programmet visar hello följande fält:
 
 ![Marketplace-sammanfattning](./media/managed-application-author-marketplace/publishvm10.png)
 
-Den **översikt över** för det hanterade programmet visar följande fält:
+Hej **översikt över** för det hanterade programmet visar hello följande fält:
 
 ![Marketplace-översikt](./media/managed-application-author-marketplace/publishvm11.png)
 
-Den **planer + priser** för det hanterade programmet visar följande fält:
+Hej **planer + priser** för det hanterade programmet visar hello följande fält:
 
 ![Marketplace-planer](./media/managed-application-author-marketplace/publishvm15.png)
 
 #### <a name="azure-portal"></a>Azure Portal
 
-Sammanfattning av det hanterade programmet visar följande fält:
+hello sammanfattning av det hanterade programmet visar hello följande fält:
 
 ![Översikt över Portal](./media/managed-application-author-marketplace/publishvm12.png)
 
-Översikt för det hanterade programmet visar följande fält:
+hello översikt för det hanterade programmet visar hello följande fält:
 
 ![Portalen översikt](./media/managed-application-author-marketplace/publishvm13.png)
 
 #### <a name="logo-guidelines"></a>Logotypen riktlinjer
 
-Följ dessa riktlinjer för en logotyp som du överför i molnpartnerportalen:
+Följ dessa riktlinjer för en logotyp som du överför i hello molnpartnerportalen:
 
-*   Azure designen har en enkel färgpalett. Begränsa antalet primära och sekundära färger i din logotyp.
-*   Färger med portalen är vit och svart. Använd inte färgerna som bakgrundsfärg för din logotyp. Använd en färg som gör din logotyp framträdande i portalen. Vi rekommenderar enkla primära färger. *Om du använder en genomskinlig bakgrund, se till att logotyp och texten inte vitt, svart eller blå.*
-*   Använd inte en toning bakgrund på logotypen.
-*   Placera inte text på logotypen, inte ens företaget eller varumärke. Utseendet och känslan logotypens bör platt och undvika toningar.
-*   Kontrollera att logotypen inte har sträckts ut.
+*   hello Azure design har en enkel färgpalett. Begränsa hello antalet primära och sekundära färger i din logotyp.
+*   hello temafärger hello portalen är vit och svart. Använd inte färgerna som hello bakgrundsfärg för din logotyp. Använd en färg som gör din logotyp framträdande hello-portalen. Vi rekommenderar enkla primära färger. *Om du använder en genomskinlig bakgrund, kontrollera att hello logotyp och texten inte vitt, svart eller blå.*
+*   Använd inte en toning bakgrund på hello-logotypen.
+*   Placera inte text på hello logotyp, inte ens företaget eller varumärke. hello utseende och känslan av din logotyp ska vara platt och undvika toningar.
+*   Kontrollera att hello logotypen inte har sträckts ut.
 
 #### <a name="hero-logo"></a>Hjälte-logotyp
 
-Logotypen hjälte är valfritt. Utgivaren kan du inte överföra en hjälte logotyp. När ikonen hjälte har överförts kan inte tas bort. Partnern måste följa Marketplace riktlinjer för hjälte ikoner som helst.
+hello hjälte logotypen är valfritt. hello publisher kan välja inte tooupload en hjälte logotyp. När hello hjälte ikonen har överförts kan inte tas bort. Hello partner måste följa hello Marketplace riktlinjer för hjälte ikoner som helst.
 
-Följ dessa riktlinjer för ikonen hjälte logotyp:
+Följ dessa riktlinjer för hello hjälte logotypen ikon:
 
-*   Visningsnamn för utgivaren, plan rubrik och erbjudandet lång sammanfattning visas i vitt. Därför inte använda en ljusare ikonen hjälte bakgrunden. En svart, vit eller genomskinlig bakgrund är inte tillåten för hjälte ikoner.
-*   När erbjudandet visas utgivaren visar namn, planera rubrik, erbjudandet lång sammanfattning och **skapa** knappen inbäddad programmässigt i hjälte logotypen. Därför inte ange valfri text när du utformar hjälte logotypen. Lämna tomt utrymme till höger eftersom texten programmässigt ingår i detta utrymme. Det tomma utrymmet för texten som ska vara 415 x 100 bildpunkter till höger. Det är förskjutning med 370 bildpunkter från vänster.
+*   hello utgivarens namn, hello plan rubrik och hello erbjudande lång sammanfattning visas i vitt. Därför inte använda en ljusare hello bakgrunden hello hjälte ikon. En svart, vit eller genomskinlig bakgrund är inte tillåten för hjälte ikoner.
+*   När hello erbjudande visas hello publisher visningsnamn, hello plan rubrik, hello erbjudande lång sammanfattning och hello **skapa** knappen inbäddad programmässigt i hello hjälte logotyp. Därför inte ange valfri text när du utformar hello hjälte logotyp. Lämna tomt utrymme på hello rätt eftersom hello text programmässigt ingår i detta utrymme. hello tomt utrymme för hello text ska 415 x 100 bildpunkter på hello rätt. Det är förskjutning med 370 bildpunkter från hello vänster.
 
     ![Hjälte logotypen exempel](./media/managed-application-author-marketplace/publishvm14.png)
 
 ## <a name="support-form"></a>Stöd för formulär
 
-Fyll i den **stöder** formuläret med stöd för kontakter från ditt företag. Den här informationen kan vara engineering customer support kontakter.
+Fyll i hello **stöder** formuläret med stöd för kontakter från ditt företag. Den här informationen kan vara engineering customer support kontakter.
 
 ## <a name="publish-an-offer"></a>Publicera ett erbjudande
 
-När du fyller i alla avsnitt markerar **publicera** att starta processen som gör erbjudandet tillgängliga för kunder.
+När du fyller i alla hello avsnitt markerar **publicera** toostart hello process som gör att din tillgängliga toocustomers erbjudandet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* En introduktion till hanterade program, se [hanteras Programöversikt](managed-application-overview.md).
-* Information om hur du använder ett hanterat program från Marketplace finns [använda Azure hanterade program i Marketplace](managed-application-consume-marketplace.md).
+* En introduktion toomanaged program, se [hanteras Programöversikt](managed-application-overview.md).
+* Information om hur du använder ett hanterat program från hello Marketplace finns [använda Azure hanterade program i hello Marketplace](managed-application-consume-marketplace.md).
 * Information om hur du publicerar ett program för Tjänstkatalog hanteras finns [skapa och publicera en applikation för Tjänstkatalog hanteras](managed-application-publishing.md).
 * Information om att använda ett Tjänstkatalogen hanterade program, se [använder ett Tjänstkatalogen hanterade program](managed-application-consumption.md).

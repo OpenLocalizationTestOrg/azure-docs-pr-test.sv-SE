@@ -1,6 +1,6 @@
 ---
-title: "Skapa en intern belastningsutjämnare – klassiska Azure CLI | Microsoft Docs"
-description: "Lär dig hur du skapar en intern belastningsutjämnare med hjälp av Azure CLI i den klassiska distributionsmodellen"
+title: "aaaCreate en intern belastningsutjämnare - Azure CLI klassiska | Microsoft Docs"
+description: "Lär dig hur toocreate med en intern belastningsutjämnare hello Azure CLI i hello klassiska distributionsmodellen"
 services: load-balancer
 documentationcenter: na
 author: kumudd
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-ms.openlocfilehash: d24b95f75b5ffd1116b07cf9f8bac33767a9c835
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ef29dfda5f7a75a411bbabe8b688a31c6bf81113
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Komma igång med att skapa en intern belastningsutjämnare (klassisk) med hjälp av Azure CLI
+# <a name="get-started-creating-an-internal-load-balancer-classic-using-hello-azure-cli"></a>Komma igång med en intern belastningsutjämnare (klassiskt) med hjälp av hello Azure CLI
 
 > [!div class="op_single_selector"]
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
@@ -31,24 +31,24 @@ ms.lasthandoff: 07/11/2017
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md).  Den här artikeln beskriver den klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder Resource Manager-modellen. Lär dig hur du [utför dessa steg med hjälp av Resource Manager-modellen](load-balancer-get-started-ilb-arm-cli.md).
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../azure-resource-manager/resource-manager-deployment-model.md).  Den här artikeln täcker hello klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen. Lär dig hur för[utföra dessa steg med hello Resource Manager-modellen](load-balancer-get-started-ilb-arm-cli.md).
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
-## <a name="to-create-an-internal-load-balancer-set-for-virtual-machines"></a>Så här skapar du en intern belastningsutjämningsuppsättning för virtuella datorer
+## <a name="toocreate-an-internal-load-balancer-set-for-virtual-machines"></a>toocreate en intern belastningsutjämningsuppsättning för virtuella datorer
 
-Följ dessa steg för att skapa en intern belastningsutjämningsuppsättning och de servrar som ska skicka sin trafik till den:
+toocreate en intern belastningsutjämnare ange och hello servrar som skickar sina trafik tooit, måste du göra hello följande:
 
-1. Skapa en instans för intern belastningsutjämning som ska vara slutpunkten för inkommande trafik som ska belastningsutjämnas mellan servrarna i en belastningsutjämnad uppsättning.
-2. Lägg till slutpunkter som motsvarar de virtuella datorerna som ska ta emot den inkommande trafiken.
-3. Konfigurera servrarna som ska skicka trafiken som ska belastningsutjämnas så att de skickar trafiken till den virtuella IP-adressen för instansen för intern belastningsutjämning.
+1. Skapa en instans av intern belastningsutjämning som kommer att vara hello-slutpunkten för inkommande trafik toobe belastningsutjämnas mellan hello en belastningsutjämnad uppsättning servrar.
+2. Lägga till slutpunkter motsvarande toohello virtuella datorer som tar emot hello inkommande trafik.
+3. Konfigurera hello-servrar som kommer att skicka hello trafik toobe belastningsutjämnade toosend sina trafik toohello virtuella IP-adresser (VIP)-adressen för hello interna nätverksbelastning instans.
 
 ## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>Stegvisa anvisningar som beskriver hur du skapar en intern belastningsutjämnare med hjälp av CLI
 
-Den här guiden beskriver hur du skapar en intern belastningsutjämnare baserat på scenariot ovan.
+Den här guiden visar hur toocreate en intern belastningsutjämnare baserat på hello scenariot ovan.
 
-1. Om du aldrig har använt Azure CLI, se [installera och konfigurera Azure CLI](../cli-install-nodejs.md) och följ instruktionerna upp till den punkt där du väljer Azure-konto och prenumeration.
-2. Kör kommandot **azure config mode** för att växla till klassiskt läge, som du ser nedan.
+1. Om du aldrig har använt Azure CLI, se [installera och konfigurera hello Azure CLI](../cli-install-nodejs.md) och följer instruktionerna för hello in toohello punkt där du väljer Azure-konto och prenumeration.
+2. Kör hello **azure config mode** kommandot tooswitch tooclassic läge, som visas nedan.
 
     ```azurecli
     azure config mode asm
@@ -60,11 +60,11 @@ Den här guiden beskriver hur du skapar en intern belastningsutjämnare baserat 
 
 ## <a name="create-endpoint-and-load-balancer-set"></a>Skapa slutpunkt och belastningsutjämningsuppsättning
 
-I det här scenariot förutsätter vi att de virtuella datorerna ”DB1” och ”DB2” i en molntjänst med namnet ”mytestcloud” redan finns. Båda de virtuella datorerna använder ett virtuellt nätverk med namnet ”testvnet” med undernätet ”subnet-1”.
+hello scenariot förutsätter hello virtuella datorer ”DB1” och ”DB2” i en molntjänst som kallas ”mytestcloud”. Båda de virtuella datorerna använder ett virtuellt nätverk med namnet ”testvnet” med undernätet ”subnet-1”.
 
 I den här guiden skapar vi en intern belastningsutjämningsuppsättning som använder port 1433 som privat port och 1433 som lokal port.
 
-Det här är ett vanligt scenario där du har virtuella SQL-datorer på backend-servern som använder en intern belastningsutjämnare för att säkerställa att databasservrarna inte exponeras direkt genom användningen av en offentlig IP-adress.
+Det här är ett vanligt scenario där du har SQL virtuella datorer på hello serverdelen med hjälp av en intern belastningsutjämnare tooguarantee hello databasservrar inte visas direkt med en offentlig IP-adress.
 
 ### <a name="step-1"></a>Steg 1
 
@@ -76,9 +76,9 @@ azure service internal-load-balancer add --serviceName mytestcloud --internalLBN
 
 Mer information finns i `azure service internal-load-balancer --help`.
 
-Du kan kontrollera egenskaperna för den interna belastningsutjämnaren med hjälp av kommandot `azure service internal-load-balancer list` *molntjänstens namn*.
+Du kan kontrollera hello interna belastningsutjämnarens egenskaper hello kommandot `azure service internal-load-balancer list` *molntjänstnamnet*.
 
-Här är ett exempel på utdata som kan returneras:
+Här följer ett exempel på utdata hello:
 
     azure service internal-load-balancer list my-testcloud
     info:    Executing command service internal-load-balancer list
@@ -91,7 +91,7 @@ Här är ett exempel på utdata som kan returneras:
 
 ### <a name="step-2"></a>Steg 2
 
-Du konfigurerar den interna belastningsutjämningsuppsättningen när du lägger till den första slutpunkten. Du associerar slutpunkten, den virtuella datorn och avsökningsporten till den intern belastningsutjämningsuppsättningen i det här steget.
+Du kan konfigurera hello intern belastningsutjämningsuppsättning när du lägger till hello första slutpunkten. Du kopplar hello slutpunkt, virtuell dator och avsökning port toohello intern belastningsutjämningsuppsättning i det här steget.
 
 ```azurecli
 azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 1433 --probe-protocol tcp --probe-interval 300 --probe-timeout 600 --internal-load-balancer-name ilbset
@@ -99,13 +99,13 @@ azure vm endpoint create db1 1433 --local-port 1433 --protocol tcp --probe-port 
 
 ### <a name="step-3"></a>Steg 3
 
-Kontrollera belastningsutjämnarens konfiguration med hjälp av `azure vm show` *namn på virtuell dator*
+Kontrollera hello belastningen belastningsutjämnaren konfiguration av `azure vm show` *namn på virtuell dator*
 
 ```azurecli
 azure vm show DB1
 ```
 
-Följande utdata returneras:
+hello utdata blir:
 
     azure vm show DB1
     info:    Executing command vm show
@@ -156,7 +156,7 @@ Följande utdata returneras:
 
 ## <a name="create-a-remote-desktop-endpoint-for-a-virtual-machine"></a>Skapa en fjärrskrivbordsslutpunkt för en virtuell dator
 
-Du kan skapa en fjärrskrivbordsslutpunkt för att vidarebefordra nätverkstrafik från en offentlig port till en lokal port för en specifik virtuell dator med hjälp av `azure vm endpoint create`.
+Du kan skapa en stationär fjärrslutpunkten tooforward nätverkstrafik från en offentlig port tooa lokal port för en specifik virtuell dator med hjälp av `azure vm endpoint create`.
 
 ```azurecli
 azure vm endpoint create web1 54580 -k 3389
@@ -164,9 +164,9 @@ azure vm endpoint create web1 54580 -k 3389
 
 ## <a name="remove-virtual-machine-from-load-balancer"></a>Ta bort en virtuell dator från belastningsutjämnaren
 
-Du kan ta bort en virtuell dator från en intern belastningsutjämningsuppsättning genom att ta bort den associerade slutpunkten. När slutpunkten har tagits bort tillhör inte den virtuella datorn belastningsutjämningsuppsättningen längre.
+Du kan ta bort en virtuell dator från en intern belastningsutjämningsuppsättning genom att ta bort hello associerade slutpunkt. När hello slutpunkt har tagits bort, tillhör inte hello virtuella datorn toohello belastningsutjämningsuppsättning längre.
 
-Om du följer exemplet ovan kan du ta bort slutpunkten som skapats för den virtuella datorn ”DB1” från den intern belastningsutjämningsuppsättningen ”ilbset” med hjälp av kommandot `azure vm endpoint delete`.
+Använder hello-exemplet ovan, du kan ta bort hello-slutpunkt skapas för den virtuella datorn ”DB1” från interna belastningsutjämnaren ”ilbset” med kommandot hello `azure vm endpoint delete`.
 
 ```azurecli
 azure vm endpoint delete DB1 tcp-1433-1433

@@ -1,6 +1,6 @@
 ---
-title: "Visa Azure Nätverksbevakaren topologi - REST API | Microsoft Docs"
-description: "Den här artikeln beskrivs hur du använder REST API för att fråga nätverkets topologi."
+title: "aaaView Azure Nätverksbevakaren topologi - REST API | Microsoft Docs"
+description: "Den här artikeln beskriver hur toouse REST-API tooquery nätverkets topologi."
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 568f3060da372f4a08cec342e04359172522cb69
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 39292025bcd561f007c9e31271b1389be48ea79f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="view-network-watcher-topology-with-rest-api"></a>Visa Nätverksbevakaren topologi med REST API
 
@@ -28,37 +28,37 @@ ms.lasthandoff: 07/11/2017
 > - [CLI 2.0](network-watcher-topology-cli.md)
 > - [REST-API](network-watcher-topology-rest.md)
 
-Funktionen topologi i Nätverksbevakaren ger en bild av nätverksresurser i en prenumeration. I portalen visas den här visualiseringen för dig automatiskt. Informationen bakom vyn topologi i portalen kan hämtas via PowerShell.
-Den här funktionen gör topologiinformationen mer flexibla data kan användas av andra verktyg för att bygga ut visualiseringen.
+hello topologi funktion i Nätverksbevakaren ger en bild av hello nätverksresurser i en prenumeration. Hello-portalen visas den här visualiseringen tooyou automatiskt. hello informationen bakom hello topologiska vyn i hello portal kan hämtas via PowerShell.
+Den här funktionen gör hello topologiinformation mer flexibla hello data kan användas av andra verktyg toobuild ut hello visualiseringen.
 
-Sambandet modelleras under två relationer.
+hello sammankoppling modelleras under två relationer.
 
 - **Inneslutning** -exempel: innehåller ett undernät för virtuellt nätverk innehåller ett nätverkskort
 - **Associerade** -exempel: NIC som är kopplad till en virtuell dator
 
-I följande lista finns egenskaper som returneras när du frågar topologi REST API.
+hello finns följande lista egenskaper som returneras när du frågar hello topologi REST API.
 
-* **namnet** -namnet på resursen
-* **ID** -uri för resursen.
-* **plats** -plats där resurserna finns.
-* **kopplingarna** -en lista över kopplingar till det refererade objektet.
-    * **namnet** -namnet på den refererade resursen.
-    * **resourceId** -resourceId är URI: n för den resurs som refereras i kopplingen.
-    * **associationType** -relationen mellan det underordnade objektet och överordnat refererar till det här värdet. Giltiga värden är **innehåller** eller **associerade**.
+* **namnet** - hello namn på hello resurs
+* **ID** -hello hello resurs-uri.
+* **plats** -hello plats där hello resurserna finns.
+* **kopplingarna** -en lista över kopplingar toohello refererar till objektet.
+    * **namnet** -hello namnet på hello refererar till resursen.
+    * **resourceId** -hello resourceId är hello uri hello-resurs som refereras i hello association.
+    * **associationType** -hello förhållandet mellan hello underordnat objekt och hello överordnade refererar till det här värdet. Giltiga värden är **innehåller** eller **associerade**.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-I det här scenariot kan du hämta topologiinformationen. ARMclient används för att anropa REST-API med hjälp av PowerShell. ARMClient hittas på chocolatey på [ARMClient på Chocolatey](https://chocolatey.org/packages/ARMClient)
+I det här scenariot kan du hämta hello topologiinformation. ARMclient är används toocall hello REST-API med hjälp av PowerShell. ARMClient hittas på chocolatey på [ARMClient på Chocolatey](https://chocolatey.org/packages/ARMClient)
 
-Det här scenariot förutsätter att du redan har följt stegen i [skapa en Nätverksbevakaren](network-watcher-create.md) att skapa en Nätverksbevakaren.
+Det här scenariot förutsätter att du redan har följt stegen hello i [skapa en Nätverksbevakaren](network-watcher-create.md) toocreate en Nätverksbevakaren.
 
 ## <a name="scenario"></a>Scenario
 
-Det scenario som beskrivs i den här artikeln hämtar topologi-svar för en viss resursgrupp.
+hello-scenario som beskrivs i den här artikeln hämtar hello topologi svar för en viss resursgrupp.
 
 ## <a name="log-in-with-armclient"></a>Logga in med ARMClient
 
-Logga in på armclient med dina autentiseringsuppgifter för Azure.
+Logga in tooarmclient med dina autentiseringsuppgifter för Azure.
 
 ```PowerShell
 armclient login
@@ -66,11 +66,11 @@ armclient login
 
 ## <a name="retrieve-topology"></a>Hämta topologi
 
-I följande exempel begär topologin från REST API.  Exemplet parametriserade för att möjliggöra flexibilitet för att skapa ett exempel.  Ersätter alla värden med \< \> omgivande.
+följande exempel hello begär hello topologi från hello REST API.  hello exempel är parametriserade tooallow flexibilitet att skapa ett exempel.  Ersätter alla värden med \< \> omgivande.
 
 ```powershell
 $subscriptionId = "<subscription id>"
-$resourceGroupName = "<resource group name>" # Resource group name to run topology on
+$resourceGroupName = "<resource group name>" # Resource group name toorun topology on
 $NWresourceGroupName = "<resource group name>" # Network Watcher resource group name
 $networkWatcherName = "<network watcher name>"
 $requestBody = @"
@@ -82,7 +82,7 @@ $requestBody = @"
 armclient POST "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${NWresourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/topology?api-version=2016-07-01" $requestBody
 ```
 
-Följande svar är ett exempel på ett kortare svar som returneras när hämta topologin för en resursgrupp:
+hello efter svar är ett exempel på ett kortare svar som returneras när hämta topologin för en resursgrupp:
 
 ```json
 {
@@ -116,5 +116,5 @@ s65qcto",
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du visualisera dina NSG flödet loggar med Power BI genom att besöka [visualisera NSG flödar loggar med Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+Lär dig hur toovisualize NSG-flöde loggar med Power BI genom att besöka [visualisera NSG flödar loggar med Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 

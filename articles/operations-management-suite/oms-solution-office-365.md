@@ -1,6 +1,6 @@
 ---
-title: "Office 365-lösningen i Operations Management Suite (OMS) | Microsoft Docs"
-description: "Den här artikeln innehåller information om konfiguration och användning av Office 365-lösningen i OMS.  Den innehåller en detaljerad beskrivning av Office 365-poster som skapats i logganalys."
+title: "aaaOffice 365 lösning i Operations Management Suite (OMS) | Microsoft Docs"
+description: "Den här artikeln innehåller information om konfiguration och användning av hello Office 365-lösning i OMS.  Den innehåller en detaljerad beskrivning av hello Office 365-poster som skapats i logganalys."
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -13,30 +13,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
-ms.openlocfilehash: dcc44986acbb76eafc3cfacb79acf237802de021
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: a1507745251ff015abb785bae8352fea7cea0734
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="office-365-solution-in-operations-management-suite-oms"></a>Office 365-lösningen i Operations Management Suite (OMS)
 
 ![Office 365-logotyp](media/oms-solution-office-365/icon.png)
 
-Office 365-lösningen för Operations Management Suite (OMS) kan du övervaka din Office 365-miljö i logganalys.  
+hello Office 365-lösningen för Operations Management Suite (OMS) kan du toomonitor din Office 365-miljö i logganalys.  
 
-- Övervaka användaraktiviteter på Office 365-konton för att analysera användningsmönster samt identifiera beteendebaserade trender. Du kan exempelvis extrahera av specifika Användningsscenarier, till exempel filer som delas utanför din organisation eller populäraste SharePoint-webbplatser.
-- Övervaka aktiviteter för administratören att spåra konfigurationsändringar eller Privilegierade åtgärder.
+- Övervaka användaraktiviteter på Office 365 för konton tooanalyze användningsmönster samt identifiera beteendebaserade trender. Du kan exempelvis extrahera av specifika Användningsscenarier, till exempel filer som delas utanför din organisation eller hello populäraste SharePoint-webbplatser.
+- Övervaka konfigurationsändringar för administratören aktiviteter tootrack eller Privilegierade åtgärder.
 - Identifiera och undersöka oönskade användarbeteende som kan anpassas efter organisationens behov.
-- Visa granskning och kompatibilitet. Exempelvis kan du övervaka åtkomståtgärder på konfidentiella filer som kan hjälpa dig med processen gransknings- och efterlevnad.
+- Visa granskning och kompatibilitet. Exempelvis kan du övervaka åtkomståtgärder på konfidentiella filer som kan hjälpa dig med hello gransknings- och efterlevnad processen.
 - Utföra operativa felsökning med hjälp av OMS-sökning på Office 365 aktivitetsdata i din organisation.
 
 ## <a name="prerequisites"></a>Krav
-Följande krävs innan den här lösningen som ska installeras och konfigureras.
+hello följande är obligatoriska tidigare toothis lösning som ska installeras och konfigureras.
 
 - Organisationens prenumeration på Office 365.
 - Autentiseringsuppgifterna för ett konto som är en Global administratör.
-- För att ta emot granskningsdata, måste du [konfigurera granskning](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) i Office 365-prenumeration.  Observera att [postlåda granskning](https://technet.microsoft.com/library/dn879651.aspx) konfigureras separat.  Du kan fortfarande installera lösningen och samla in andra data om granskning inte har konfigurerats.
+- tooreceive granskningsdata måste du [konfigurera granskning](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin) i Office 365-prenumeration.  Observera att [postlåda granskning](https://technet.microsoft.com/library/dn879651.aspx) konfigureras separat.  Du kan fortfarande installera hello lösning och samla in andra data om granskning inte har konfigurerats.
  
 
 
@@ -45,103 +45,103 @@ Den här lösningen installerar inte några management packs i anslutna hanterin
   
 
 ## <a name="configuration"></a>Konfiguration
-När du [lägga till Office 365-lösningen till din prenumeration](../log-analytics/log-analytics-add-solutions.md), måste du ansluta till Office 365-prenumeration.
+När du [lägga till hello Office 365-lösningen tooyour prenumeration](../log-analytics/log-analytics-add-solutions.md), du har tooconnect den tooyour Office 365-prenumeration.
 
-1. Lägg till avisering hanteringslösningen i OMS-arbetsytan med processen som beskrivs i [lägga till lösningar](../log-analytics/log-analytics-add-solutions.md).
-2. Gå till **inställningar** i OMS-portalen.
+1. Lägg till hello Alert Management lösning tooyour OMS-arbetsyta med hjälp av hello process beskrivs i [lägga till lösningar](../log-analytics/log-analytics-add-solutions.md).
+2. Gå för**inställningar** i hello OMS-portalen.
 3. Under **anslutna källor**väljer **Office 365**.
 4. Klicka på **ansluta Office 365**.<br>![Koppla de olika processtegen Office 365](media/oms-solution-office-365/configure.png)
-5. Logga in på Office 365 med ett konto som är en Global administratör för din prenumeration. 
-6. Prenumerationen visas med arbetsbelastningar som övervakar lösningen.<br>![Koppla de olika processtegen Office 365](media/oms-solution-office-365/connected.png) 
+5. Logga in tooOffice 365 med ett konto som är en Global administratör för din prenumeration. 
+6. hello prenumeration visas med hello arbetsbelastningar som övervakar hello lösning.<br>![Koppla de olika processtegen Office 365](media/oms-solution-office-365/connected.png) 
 
 
 ## <a name="data-collection"></a>Datainsamling
 ### <a name="supported-agents"></a>Agenter som stöds
-Office 365-lösningen inte hämta data från någon av de [OMS agenter](../log-analytics/log-analytics-data-sources.md).  Den hämtar data direkt från Office 365.
+hello Office 365-lösningen inte hämta data från någon av hello [OMS agenter](../log-analytics/log-analytics-data-sources.md).  Den hämtar data direkt från Office 365.
 
 ### <a name="collection-frequency"></a>Insamlingsfrekvens
-Office 365 skickar en [webhook meddelande](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) med detaljerad information till logganalys varje gång en post har skapats.
+Office 365 skickar en [webhook meddelande](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) med detaljerade uppgifter tooLog Analytics varje gång en post har skapats.
 
-## <a name="using-the-solution"></a>Använda lösningen
-När du lägger till Office 365-lösningen till OMS-arbetsyta i **Office 365** panelen kommer att läggas till OMS-instrumentpanelen. Den här panelen visar antal och en grafisk representation av antalet datorer i din miljö och deras uppdateringskompatibilitet.<br><br>
+## <a name="using-hello-solution"></a>Med hello-lösning
+När du lägger till hello Office 365-lösningen tooyour OMS-arbetsytan hello **Office 365** panelen läggs tooyour OMS-instrumentpanelen. Den här panelen visar antal och grafisk representation av hello antalet datorer i din miljö och deras kompatibilitet.<br><br>
 ![Panelen för Office 365-sammanfattning](media/oms-solution-office-365/tile.png)  
 
-Klicka på den **Office 365** öppna den **Office 365** instrumentpanelen.
+Klicka på hello **Office 365** panelen tooopen hello **Office 365** instrumentpanelen.
 
 ![Office 365-instrumentpanelen](media/oms-solution-office-365/dashboard.png)  
 
-Instrumentpanelen innehåller kolumnerna i följande tabell. Varje kolumnen visar de tio översta aviseringarna efter antal som matchar den kolumnen villkoren för angivet omfång och tidsintervall. Du kan köra en sökning i logg som innehåller hela listan genom att klicka på se alla längst ned i kolumnen eller genom att klicka på kolumnrubriken.
+hello instrumentpanelen innehåller hello kolumner i hello i den följande tabellen. Varje kolumnen visar hello översta tio aviseringar efter antal matchande att kolumnens sökvillkor för hello angivna scope och ett tidsintervall. Du kan köra en sökning i loggen som ger hello hela listan genom att klicka på se alla längst hello hello kolumnen eller genom att klicka på kolumnrubriken hello.
 
 | Kolumn | Beskrivning |
 |:--|:--|
-| Åtgärder | Innehåller information om de aktiva användarna från alla övervakade Office 365-prenumerationer. Du kan också se antalet aktiviteter som sker över tid.
-| Exchange | Visar fördelningen av Exchange Server-aktiviteter, till exempel Lägg till postlåda behörighet eller Set-postlåda. |
-| SharePoint | Visar de översta aktiviteterna att användare utför på SharePoint-dokument. När du går nedåt från den här panelen visar sidan Sök efter information om dessa aktiviteter, till exempel måldokumentet och platsen för den här aktiviteten. Till exempel en komma åt filen händelse du kommer att kunna se dokumentet som används, associerade kontonamn och IP-adress. |
-| Azure Active Directory | Innehåller översta användaraktiviteter, t.ex återställa användarlösenord och inloggningsförsök. När du går nedåt kommer du att kunna se detaljer för dessa aktiviteter som resultat. Detta är mest användbart om du vill övervaka misstänkta aktiviteter på Azure Active Directory. |
+| Åtgärder | Innehåller information om hello aktiva användare från alla övervakade Office 365-prenumerationer. Du kan också kan toosee hello antalet aktiviteter som sker över tid.
+| Exchange | Visar hello uppdelning av Exchange Server-aktiviteter, till exempel Lägg till postlåda behörighet eller Set-postlåda. |
+| SharePoint | Visar hello översta aktiviteter att användare utför på SharePoint-dokument. När du går nedåt från den här panelen visar hello söksidan hello detaljerad information om dessa aktiviteter, till exempel hello måldokumentet och hello platsen för den här aktiviteten. Till exempel en komma åt filen händelse du blir kan toosee hello dokument som används, associerade kontonamn och IP-adress. |
+| Azure Active Directory | Innehåller översta användaraktiviteter, t.ex återställa användarlösenord och inloggningsförsök. Du kommer att kunna toosee hello information om aktiviteterna som hello resultat när du går nedåt. Detta är mest användbart om du vill toomonitor misstänkta aktiviteter i Azure Active Directory. |
 
 
 
 
 ## <a name="log-analytics-records"></a>Log Analytics-poster
 
-Alla poster som skapats i logganalys-arbetsytan med Office 365-lösningen har en **typen** av **OfficeActivity**.  Den **OfficeWorkload** egenskapen avgör vilken Office 365-tjänst som posten refererar till - Exchange, AzureActiveDirectory, SharePoint eller OneDrive.  Den **RecordType** egenskapen anger typ av åtgärd.  Egenskaperna varierar för varje åtgärdstyp av och visas i tabellerna nedan.
+Alla poster som skapats i hello logganalys-arbetsytan av hello Office 365-lösningen har en **typen** av **OfficeActivity**.  Hej **OfficeWorkload** egenskapen avgör vilken Office 365-tjänsten hello post refererar för Exchange, AzureActiveDirectory, SharePoint eller OneDrive.  Hej **RecordType** egenskapen anger hello typ av åtgärd.  hello egenskaper varierar för varje åtgärdstyp av och visas i hello tabellerna nedan.
 
 ### <a name="common-properties"></a>Gemensamma egenskaper
-Följande egenskaper är gemensamma för alla Office 365-poster.
+hello följande egenskaper är gemensamma tooall Office 365-poster.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
 | Typ | *OfficeActivity* |
-| ClientIP | IP-adressen på den enhet som användes när aktiviteten har loggats. IP-adressen visas i en IPv4- eller IPv6-adress-format. |
-| OfficeWorkload | Office 365-tjänst som posten refererar till.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| Åtgärd | Namnet på användaren eller administratören aktiviteten.  |
-| Organisations-ID | GUID för Office 365-klient för din organisation. Det här värdet kommer alltid att samma för din organisation, oavsett tjänsten Office 365 den uppstår. |
+| ClientIP | hello IP-adress hello-enhet som användes när hello aktiviteten har loggats. hello IP-adressen visas i en IPv4- eller IPv6-adress-format. |
+| OfficeWorkload | Office 365-tjänst som hello post refererar till.<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
+| Åtgärd | hello namnet på hello användare eller administratör aktiviteten.  |
+| Organisations-ID | hello GUID för Office 365-klient för din organisation. Det här värdet kommer alltid att hello samma för din organisation, oavsett hello Office 365-tjänst där den inträffar. |
 | RecordType | Typ av av åtgärd utförs. |
-| ResultStatus | Anger om åtgärden (anges i egenskapen åtgärden) lyckades eller inte. Möjliga värden är slutfört, PartiallySucceded eller misslyckades. Värdet är för Exchange-administratörsaktivitet, antingen SANT eller FALSKT. |
-| Användar-ID | UPN (User Principal Name) för användaren som utförde åtgärden resulterade i posten loggas; till exempel my_name@my_domain_name. Observera att posterna för aktivitet som utförs av Systemkonton (till exempel SHAREPOINT\system eller NTAUTHORITY\SYSTEM) ingår också. | 
-| UserKey | Ett alternativt ID för den användare som identifieras i användar-ID-egenskapen.  Den här egenskapen är fylls i med passport unikt ID (PUID) för händelser som utförs av användare i SharePoint, OneDrive för företag och Exchange. Den här egenskapen kan också ange samma värde som egenskapen användar-ID för händelser i andra tjänster och händelser som utförs av systemkonton|
-| UserType | Typ av användaren som utförde åtgärden.<br><br>Admin<br>Program<br>DcAdmin<br>Vanliga<br>Reserverad<br>ServicePrincipal<br>System |
+| ResultStatus | Anger om hello-åtgärd (anges i hello Åtgärdsegenskap) lyckades eller inte. Möjliga värden är slutfört, PartiallySucceded eller misslyckades. För Exchange-administratören aktiviteten hello-värdet är antingen True eller False. |
+| Användar-ID | hello UPN (User Principal Name) för hello-användaren som utförde hello-åtgärd som resulterade i hello post loggas; till exempel my_name@my_domain_name. Observera att posterna för aktivitet som utförs av Systemkonton (till exempel SHAREPOINT\system eller NTAUTHORITY\SYSTEM) ingår också. | 
+| UserKey | Ett alternativt ID för hello användare som identifieras i hello användar-ID-egenskapen.  Till exempel fylls den här egenskapen med hello passport unikt ID (PUID) för händelser som utförs av användare i SharePoint, OneDrive för företag och Exchange. Den här egenskapen kan också ange samma värde som hello användar-ID-egenskapen för händelser i andra tjänster och händelser som utförs av systemkonton hello|
+| UserType | användaren som utförde åtgärden hello hello typ.<br><br>Admin<br>Program<br>DcAdmin<br>Vanliga<br>Reserverad<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory-bas
-Följande egenskaper är gemensamma för alla poster i Azure Active Directory.
+hello följande egenskaper är gemensamma tooall Azure Active Directory-poster.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
-| AzureActiveDirectory_EventType | Typ av Azure AD-händelse. |
-| extendedProperties | De utökade egenskaperna för Azure AD-händelse. |
+| AzureActiveDirectory_EventType | hello typ av Azure AD-händelse. |
+| extendedProperties | hello utökade egenskaper för hello Azure AD-händelse. |
 
 
 ### <a name="azure-active-directory-account-logon"></a>Inloggning med Azure Active Directory-konto
-Dessa poster skapas när Active Directory-användare försöker logga in.
+Dessa poster skapas när Active Directory-användare försöker toolog på.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectoryAccountLogon |
-| Program | Programmet som utlöser händelsen konto inloggning, till exempel Office 15. |
-| Client | Information om klienten enhet, enhetens operativsystem och enhetens webbläsare som användes för den i händelsen konto inloggningen. |
-| loginStatus | Den här egenskapen är direkt från OrgIdLogon.LoginStatus. Mappningen av olika intressanta inloggningsfel kan göras av aviseringar algoritmer. |
-| UserDomain | Identitetsinformation klient (TII). | 
+| Program | hello-program som utlöser hello konto inloggningen händelsen, till exempel Office 15. |
+| Client | Information om klientens hello enhet, enhetens operativsystem och enhetens webbläsare som användes för hello hello konto inloggningen händelse. |
+| loginStatus | Den här egenskapen är direkt från OrgIdLogon.LoginStatus. hello mappningen av olika intressanta inloggningsfel kan göras av aviseringar algoritmer. |
+| UserDomain | hello klient identitet Information (TII). | 
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
-Dessa poster skapas när ändringen eller tillägg görs i Azure Active Directory-objekt.
+Dessa poster skapas när ändringen eller tillägg görs tooAzure Active Directory-objekt.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
-| AADTarget | Användaren som åtgärden (som identifieras av egenskapen åtgärden) utfördes på. |
-| aktören | Användaren eller tjänstens huvudnamn som utförde åtgärden. |
-| ActorContextId | GUID för den organisation som aktören tillhör. |
-| ActorIpAddress | Skådespelare, IP-adress i IPV4- eller IPV6-adress-format. |
-| InterSystemsId | GUID som spårar åtgärder mellan komponenter i tjänsten Office 365. |
-| IntraSystemId |   GUID som genereras av Azure Active Directory för att spåra åtgärden. |
-| SupportTicketId | Biljett-ID kundsupport för åtgärden i ”act-on-behalf-of” situationer. |
-| TargetContextId | GUID för den organisation som den aktuella användaren tillhör. |
+| AADTarget | hello-användaren som hello-åtgärd (identifieras av hello Åtgärdsegenskap) utfördes på. |
+| aktören | hello användare eller tjänstens huvudnamn som utförts hello-åtgärd. |
+| ActorContextId | hello GUID för hello organisation som hello aktören tillhör. |
+| ActorIpAddress | Hej skådespelare, IP-adress i IPV4- eller IPV6-adress-format. |
+| InterSystemsId | hello GUID som spårar hello-åtgärder mellan komponenter i hello Office 365-tjänsten. |
+| IntraSystemId |   hello GUID som genereras av Azure Active Directory tootrack hello åtgärd. |
+| SupportTicketId | hello kundsupport biljett-ID för hello-åtgärden i ”act-on-behalf-of” situationer. |
+| TargetContextId | hello GUID för hello organisation som hello målanvändare tillhör. |
 
 
 ### <a name="data-center-security"></a>Datacenter-säkerhet
@@ -149,50 +149,50 @@ Dessa poster har skapats från granskningsdata Center datasäkerhet.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
-| EffectiveOrganization | Namnet på den klient som höjning/cmdlet är riktad mot. |
-| ElevationApprovedTime | Tidsstämpel för när höjningen har godkänts. |
-| ElevationApprover | Namnet på en Microsoft-hanterare. |
-| ElevationDuration | Varaktigheten höjningen var aktiv. |
-| ElevationRequestId |  En unik identifierare för höjning begäran. |
-| ElevationRole | Rollen höjningen mottog en begäran för. |
-| ElevationTime | Starttid för höjningen. |
-| Starttid | Starttiden för den cmdlet som körs. |
+| EffectiveOrganization | hello namnet på hello-klient som hello höjning-cmdlet är riktad mot. |
+| ElevationApprovedTime | hello tidsstämpel för när hello höjning har godkänts. |
+| ElevationApprover | hello namnet på en Microsoft-hanterare. |
+| ElevationDuration | hello varaktighet för vilka hello höjning var aktiv. |
+| ElevationRequestId |  En unik identifierare för hello höjning begäran. |
+| ElevationRole | hello rollen hello höjning har begärts för. |
+| ElevationTime | hello starttid för hello höjning. |
+| Starttid | hello starttid för hello cmdlet som körs. |
 
 
 ### <a name="exchange-admin"></a>Exchange-administratören
-Dessa poster skapas när ändringar görs i Exchange-konfiguration.
+Dessa poster skapas när ändringar görs tooExchange konfiguration.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
-| ExternalAccess |  Anger om cmdleten kördes av en användare i din organisation, av Microsoft datacenter-personal eller ett tjänstkonto för datacenter eller av en delegerad administratör. Värdet falskt anger att cmdleten kördes av någon i din organisation. Värdet True anger att cmdleten kördes av datacenter personal, ett tjänstkonto för datacenter eller en delegerad administratör. |
-| ModifiedObjectResolvedName |  Detta är egna namnet på det objekt som har ändrats av cmdlet. Detta loggas endast om cmdlet ändrar objektet. |
-| Organisationsnamn | Namn för innehavaren. |
-| OriginatingServer | Namnet på den server där cmdleten kördes. |
-| Parametrar | Namn och värde för alla parametrar som användes med den cmdlet som identifieras i Operations-egenskapen. |
+| ExternalAccess |  Anger om hello cmdlet köras av en användare i din organisation, av Microsoft datacenter-personal eller ett tjänstkonto för datacenter eller av en delegerad administratör. hello värdet False anger hello cmdleten kördes av någon i din organisation. hello värdet True anger hello cmdleten kördes av datacenter personal, ett tjänstkonto för datacenter eller en delegerad administratör. |
+| ModifiedObjectResolvedName |  Detta är hello eget namn på hello-objekt som har ändrats av hello cmdlet. Detta loggas endast om hello cmdlet ändrar hello-objektet. |
+| Organisationsnamn | hello namnet på hello-klient. |
+| OriginatingServer | hello namnet på hello server från vilken hello cmdleten kördes. |
+| Parametrar | hello namn och värde för alla parametrar som användes med hello-cmdlet som identifieras i hello Operations-egenskapen. |
 
 
 ### <a name="exchange-mailbox"></a>Exchange-postlåda
-Dessa poster skapas när ändringar eller tillägg som görs till Exchange-postlådor.
+Dessa poster skapas när ändringar eller tillägg görs tooExchange postlådor.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| ClientInfoString | Information om e-postklienten som användes för att utföra åtgärden, till exempel en webbläsarversion, Outlook-versionen och information för mobila enheter. |
-| Client_IPAddress | IP-adressen på den enhet som användes när åtgärden har loggats. IP-adressen visas i en IPv4- eller IPv6-adress-format. |
-| ClientMachineName | Namnet på den dator som är värd för Outlook-klienten. |
-| ClientProcessName | E-postklienten som användes för att komma åt postlådan. |
-| ClientVersion | Versionen av e-postklienten. |
+| ClientInfoString | Information om hello e-postklient som var används tooperform hello åtgärden, till exempel en webbläsarversion, Outlook-versionen och information för mobila enheter. |
+| Client_IPAddress | hello IP-adress hello-enhet som användes när hello åtgärden loggades. hello IP-adressen visas i en IPv4- eller IPv6-adress-format. |
+| ClientMachineName | hello datornamn som är värd för hello Outlook-klienten. |
+| ClientProcessName | hello e-postklient som har använt tooaccess hello postlåda. |
+| ClientVersion | hello version av hello e-postklient. |
 | InternalLogonType | Reserverat för intern användning. |
-| Logon_Type | Anger vilken typ av användare som nås postlådan och utföra åtgärden som loggades. |
-| LogonUserDisplayName |    Användarvänligt namn för användaren som utförde åtgärden. |
-| LogonUserSid | SID för användaren som utförde åtgärden. |
-| MailboxGuid | Exchange-GUID för postlådan som öppnade. |
+| Logon_Type | Anger hello typ av användare som nås hello postlåda och utfört hello-åtgärd som loggades. |
+| LogonUserDisplayName |    hello användarvänligt namn på hello användare som utförde åtgärden hello. |
+| LogonUserSid | hello hello användarens SID som utförde åtgärden hello. |
+| MailboxGuid | hello Exchange GUID för hello-postlåda som användes. |
 | MailboxOwnerMasterAccountSid | Postlåda ägare konto master kontots SID. |
-| MailboxOwnerSid | SID för postlådans ägare. |
-| MailboxOwnerUPN | Den person som äger den postlåda som har åtkomst till e-postadress. |
+| MailboxOwnerSid | hello SID för hello postlådans ägare. |
+| MailboxOwnerUPN | hello e-postadress hello personen som äger hello-postlåda som användes. |
 
 
 ### <a name="exchange-mailbox-audit"></a>Exchange-postlåda granskning
@@ -202,49 +202,49 @@ Dessa poster skapas när en postlåda granskningspost skapas.
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| Objekt | Representerar det objektet som åtgärden utfördes | 
-| SendAsUserMailboxGuid | GUID för postlådan som användes för att skicka e-postmeddelande som Exchange. |
-| SendAsUserSmtp | SMTP-adress för den användare som har personifierats. |
-| SendonBehalfOfUserMailboxGuid | GUID för den postlåda som användes för att skicka e-post för Exchange. |
-| SendOnBehalfOfUserSmtp | SMTP-adress för den användare som e-postmeddelandet skickas. |
+| Objekt | Representerar hello-objektet vid vilka hello åtgärden utfördes | 
+| SendAsUserMailboxGuid | hello Exchange GUID för hello-postlåda som har åtkomst till toosend e-post som. |
+| SendAsUserSmtp | SMTP-adress för hello-användare som har personifierats. |
+| SendonBehalfOfUserMailboxGuid | hello Exchange GUID för hello-postlåda som har åtkomst till toosend e-post för. |
+| SendOnBehalfOfUserSmtp | SMTP-adress för hello användare på vars räkning hello e-post skickas. |
 
 
 ### <a name="exchange-mailbox-audit-group"></a>Exchange-postlåda Audit grupp
-Dessa poster skapas när ändringar eller tillägg som görs till Exchange-grupper.
+Dessa poster skapas när ändringar eller tillägg görs tooExchange grupper.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
-| AffectedItems | Information om varje objekt i gruppen. |
-| CrossMailboxOperations | Anger om åtgärden involverad mer än en postlåda. |
-| DestMailboxId | Ange endast om parametern CrossMailboxOperations är True. Anger målet postlådan GUID. |
-| DestMailboxOwnerMasterAccountSid | Ange endast om parametern CrossMailboxOperations är True. Anger SID för master kontots SID för målet postlådans ägare. |
-| DestMailboxOwnerSid | Ange endast om parametern CrossMailboxOperations är True. Anger SID för mål-postlådan. |
-| DestMailboxOwnerUPN | Ange endast om parametern CrossMailboxOperations är True. Anger UPN för ägaren av mål-postlåda. |
-| DestFolder | Målmapp för åtgärder som till exempel flytta. |
-| Mapp | Den mapp där det finns en grupp med objekt. |
-| Mappar |     Information om mapparna källa ingår i en funktion. Om exempelvis mappar valts och sedan ta bort. |
+| AffectedItems | Information om varje objekt i hello grupp. |
+| CrossMailboxOperations | Anger om hello åtgärden involverad mer än en postlåda. |
+| DestMailboxId | Ange endast om hello CrossMailboxOperations parametern är True. Anger hello mål postlåda GUID. |
+| DestMailboxOwnerMasterAccountSid | Ange endast om hello CrossMailboxOperations parametern är True. Anger hello SID för hello master kontots SID av hello mål postlådans ägare. |
+| DestMailboxOwnerSid | Ange endast om hello CrossMailboxOperations parametern är True. Anger hello SID av hello mål postlåda. |
+| DestMailboxOwnerUPN | Ange endast om hello CrossMailboxOperations parametern är True. Anger hello UPN för hello ägare av hello mål postlåda. |
+| DestFolder | hello målmappen för till exempel flytta. |
+| Mapp | hello mapp som innehåller en grupp med objekt. |
+| Mappar |     Information om hello källa mappar ingår i en funktion. Om exempelvis mappar valts och sedan ta bort. |
 
 
 ### <a name="sharepoint-base"></a>SharePoint-bas
-Dessa egenskaper är gemensamma för alla SharePoint-poster.
+Dessa egenskaper är gemensamma tooall SharePoint-poster.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
 | eventSource | Identifierar att en händelse har inträffat i SharePoint. Möjliga värden är SharePoint eller ObjectModel. |
-| itemType | Typ av objekt som har åtkomst till eller ändrats. Se tabellen ItemType mer information om vilka typer av objekt. |
-| MachineDomainInfo | Information om enheten synkroniseringsåtgärder. Denna information rapporteras endast om den finns i begäran. |
-| MachineId |   Information om enheten synkroniseringsåtgärder. Denna information rapporteras endast om den finns i begäran. |
-| Site_ | GUID för den plats där filen eller mappen som används av användaren finns. |
-| Source_Name | Den enhet som utlöste åtgärden granskad. Möjliga värden är SharePoint eller ObjectModel. |
-| UserAgent | Information om användarens klienten eller webbläsare. Denna information tillhandahålls av klienten eller webbläsare. |
+| itemType | hello typ av objekt som har åtkomst till eller ändrats. Se hello ItemType tabell för information om hello typer av objekt. |
+| MachineDomainInfo | Information om enheten synkroniseringsåtgärder. Denna information rapporteras endast om den finns i hello-begäran. |
+| MachineId |   Information om enheten synkroniseringsåtgärder. Denna information rapporteras endast om den finns i hello-begäran. |
+| Site_ | hello GUID för hello plats där hello fil eller mapp som kan nås av hello användaren finns. |
+| Source_Name | hello entitet som utlöste hello granskas igen. Möjliga värden är SharePoint eller ObjectModel. |
+| UserAgent | Information om hello användarens klienten eller webbläsare. Denna information tillhandahålls av hello klient eller webbläsare. |
 
 
 ### <a name="sharepoint-schema"></a>SharePoint-Schema
-Dessa poster skapas när konfigurationsändringar görs i SharePoint.
+Dessa poster skapas när konfigurationsändringar görs tooSharePoint.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
@@ -252,35 +252,35 @@ Dessa poster skapas när konfigurationsändringar görs i SharePoint.
 | OfficeWorkload | SharePoint |
 | CustomEvent | Valfri sträng för anpassade händelser. |
 | Event_Data |  Valfria nyttolasten för anpassade händelser. |
-| ModifiedProperties | Egenskapen ingår för admin-händelser, till exempel lägga till en användare som en medlem av en webbplats eller en samling administratörsgrupp. Egenskapen innehåller namnet på egenskapen som har ändrats (t.ex, platsen administratörsgruppen), det nya värdet för egenskapen ändrade (sådana den användare som har lagts till som en plats-administratör) och det tidigare värdet för det ändrade objektet. |
+| ModifiedProperties | hello egenskapen ingår för admin-händelser, till exempel lägga till en användare som en medlem av en webbplats eller en samling administratörsgrupp. hello-egenskapen innehåller hello namnet på hello-egenskap som har ändrats (till exempel, hello webbplatsadministratör ge gruppen) hello nya värdet för hello ändrade egenskapen (sådana hello användare har lagts till som en plats-administratör) och hello tidigare värde för hello ändrade objektet. |
 
 
 ### <a name="sharepoint-file-operations"></a>SharePoint-filåtgärder
-Dessa poster skapas som svar på filåtgärder i SharePoint.
+Dessa poster skapas i svaret toofile åtgärder i SharePoint.
 
 | Egenskap | Beskrivning |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
-| DestinationFileExtension | Filnamnstillägget för en fil som kopieras eller flyttas. Den här egenskapen visas endast för FileCopied och FileMoved händelser. |
-| DestinationFileName | Namnet på den fil som kopieras eller flyttas. Den här egenskapen visas endast för FileCopied och FileMoved händelser. |
-| DestinationRelativeUrl | URL till målmappen där en fil kopieras eller flyttas. Kombinationen av värden för parametrarna SiteURL, DestinationRelativeURL och DestinationFileName är detsamma som värdet för egenskapen ObjectID som är den fullständiga sökvägen för filen som har kopierats. Den här egenskapen visas endast för FileCopied och FileMoved händelser. |
-| SharingType | Typ av behörighet som har tilldelats som resursen har delat med användaren. Den här användaren identifieras med parametern UserSharedWith. |
-| Site_Url | URL till den plats där filen eller mappen som används av användaren finns. |
-| SourceFileExtension | Filnamnstillägget för den fil som användes av användaren. Den här egenskapen är tom om det objekt som användes är en mapp. |
-| SourceFileName |  Namnet på filen eller mappen som används av användaren. |
-| SourceRelativeUrl | URL till den mapp som innehåller filen som används av användaren. Kombinationen av värden för parametrarna SiteURL, SourceRelativeURL och SourceFileName är detsamma som värdet för egenskapen ObjectID som är den fullständiga sökvägen för filen som används av användaren. |
-| UserSharedWith |  Användaren som en resurs har delat med. |
+| DestinationFileExtension | hello filnamnstillägget för en fil som kopieras eller flyttas. Den här egenskapen visas endast för FileCopied och FileMoved händelser. |
+| DestinationFileName | hello namnet på hello-fil som kopieras eller flyttas. Den här egenskapen visas endast för FileCopied och FileMoved händelser. |
+| DestinationRelativeUrl | hello-URL för hello målmappen där en fil kopieras eller flyttas. hello kombinationer av hello värden för parametrarna SiteURL, DestinationRelativeURL och DestinationFileName är hello samma som hello värde för hello objekt-ID-egenskap som är hello fullständig sökväg för hello-fil som har kopierats. Den här egenskapen visas endast för FileCopied och FileMoved händelser. |
+| SharingType | hello typ av behörighet som tilldelats toohello användaren som hello resurs delades med. Den här användaren identifieras av hello UserSharedWith parameter. |
+| Site_Url | hello-URL för hello-webbplatsen där hello fil eller mapp som kan nås av hello användaren finns. |
+| SourceFileExtension | hello filnamnstillägget hello-fil som användes av hello användare. Den här egenskapen är tom om hello-objektet som öppnade är en mapp. |
+| SourceFileName |  hello namnet på hello fil eller mapp som kan nås av hello användaren. |
+| SourceRelativeUrl | hello-URL för hello-mappen som innehåller hello-fil som kan nås av hello användaren. hello kombinationer av hello värden för parametrarna för hello SiteURL, SourceRelativeURL och SourceFileName är hello samma som hello värde för hello objekt-ID-egenskap som är hello fullständig sökväg för hello-fil som kan nås av hello användaren. |
+| UserSharedWith |  hello-användaren som en resurs har delat med. |
 
 
 
 
 ## <a name="sample-log-searches"></a>Exempel på loggsökningar
-Följande tabell innehåller exempel på sökningar i loggen för uppdateringsposter som har samlats in av den här lösningen.
+hello följande tabell innehåller exempel loggen söker efter uppdateringen innehåller information som samlas in av den här lösningen.
 
 | Fråga | Beskrivning |
 | --- | --- |
-|Antalet för alla åtgärder på Office 365-prenumeration |' Type = OfficeActivity | mäter count() för åtgärden ' |
+|Antal alla hello åtgärder på Office 365-prenumeration |' Type = OfficeActivity | mäter count() för åtgärden ' |
 |Användning av SharePoint-webbplatser|' Type = OfficeActivity OfficeWorkload = sharepoint | måttet count() som antal av SiteUrl | Sortera antal asc'|
 |Filåtgärder för åtkomst av typ|' Type = OfficeActivity OfficeWorkload = sharepoint åtgärden = FileAccessed | mäter count() av UserType'|
 |Söka med ett specifikt nyckelord|`Type=OfficeActivity OfficeWorkload=azureactivedirectory "MyTest"`|
@@ -290,17 +290,17 @@ Följande tabell innehåller exempel på sökningar i loggen för uppdateringspo
 
 ## <a name="troubleshooting"></a>Felsökning
 
-Om din Office 365-lösningen inte samlar in data som förväntat, kontrollera statusen i OMS-portalen på **inställningar** -> **anslutna källor** -> **Office 365**. I följande tabell beskrivs varje status.
+Om din Office 365-lösningen inte samlar in data som förväntat, kontrollera statusen på hello OMS-portalen på **inställningar** -> **anslutna källor** -> **Office 365** . hello i den följande tabellen beskrivs varje status.
 
 | Status | Beskrivning |
 |:--|:--|
-| Active | Office 365-prenumeration är aktiv och arbetsbelastningen är ansluten till din OMS-arbetsyta. |
-| Väntande åtgärder | Office 365-prenumeration är aktiv men arbetsbelastningen är ännu inte ansluten till OMS-arbetsytan har. Första gången du ansluter till Office 365-prenumeration är alla arbetsbelastningar inte på den här statusen förrän de har anslutits. Vänta 24 timmar för alla arbetsbelastningar för att växla till aktiv. |
-| Inaktiva | Office 365-prenumeration är i ett inaktivt tillstånd. Kontrollera din Office 365 Admin information på sidan. När du har aktiverat din Office 365-prenumeration Avlänka från din OMS-arbetsyta och länka det igen för att börja ta emot data. |
+| Active | hello Office 365-prenumeration är aktiv och hello arbetsbelastningen är ansluten tooyour OMS-arbetsyta. |
+| Väntande åtgärder | hello Office 365-prenumeration är aktiv men hello arbetsbelastning ännu inte är ansluten tooyour OMS-arbetsyta. hello första gången du ansluter hello Office 365-prenumeration, alla hello arbetsbelastningar kommer att vara den här statusen tills de har anslutits. Vänta 24 timmar för alla hello arbetsbelastningar tooswitch tooActive. |
+| Inaktiva | hello Office 365-prenumeration är i ett inaktivt tillstånd. Kontrollera din Office 365 Admin information på sidan. När du har aktiverat din Office 365-prenumeration Avlänka från din OMS-arbetsyta och länka det igen toostart som tar emot data. |
 
 
 
 ## <a name="next-steps"></a>Nästa steg
-* Använd loggsökningar i [Log Analytics](../log-analytics/log-analytics-log-searches.md) för att visa detaljerad uppdateringsinformation.
-* [Skapa dina egna instrumentpaneler](../log-analytics/log-analytics-dashboards.md) att visa dina Favoriter Office 365-sökningar.
-* [Skapa aviseringar](../log-analytics/log-analytics-alerts.md) ska meddelas proaktivt om viktiga Office 365-aktiviteter.  
+* Använd loggen söker i [logganalys](../log-analytics/log-analytics-log-searches.md) tooview detaljerad data för uppdateringen.
+* [Skapa dina egna instrumentpaneler](../log-analytics/log-analytics-dashboards.md) toodisplay din favorit sökfrågor för Office 365.
+* [Skapa aviseringar](../log-analytics/log-analytics-alerts.md) toobe proaktivt meddelande om viktiga Office 365-aktiviteter.  

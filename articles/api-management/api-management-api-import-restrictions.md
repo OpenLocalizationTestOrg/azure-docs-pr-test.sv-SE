@@ -1,6 +1,6 @@
 ---
-title: "Begränsningar och kända problem i Azure API Management API import | Microsoft Docs"
-description: "Information om kända problem och begränsningar för import till Azure API Management med hjälp av de öppna API, WSDL eller WADL format."
+title: "Importera aaaRestrictions och kända problem i Azure API Management API | Microsoft Docs"
+description: "Information om kända problem och begränsningar för import till Azure API Management med hjälp av hello öppna API, WSDL eller WADL format."
 services: api-management
 documentationcenter: 
 author: mattfarm
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: apipm
-ms.openlocfilehash: ac799d66b5038c207413086b0fa71239ff2a332f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0bed5ace47de6ccbfbecba25ea6b69c5329de089
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-begränsningar för import och kända problem
 ## <a name="about-this-list"></a>Om den här listan
-Medan görs allt för att säkerställa att importera din API i Azure API Management är som sömlös och problemfri som möjligt, vi göra ibland införa begränsningar eller identifiera problem som måste åtgärdas innan du kan importera. Den här artikeln beskrivs dessa organiseras av importformatet API.
+När alla ansträngningar görs tooensure som importerar din API i Azure API Management som sömlös och utan problem som möjligt, vi göra ibland införa begränsningar eller identifiera problem som måste åtgärdas innan du kan importera toobe. Den här artikeln beskrivs dessa organiseras av hello importera format hello API.
 
 ## <a name="open-api"></a>Öppna API/Swagger
-I allmänhet om felmeddelanden importerar öppna API-dokument, kontrollera du har validerat den - antingen med hjälp av designern i den nya Azure-portalen (Design - frontend - öppna API specifikation-redigeraren), eller med en 3 part verktyget som <a href="http://www.swagger.io">Swagger Redigeraren</a>.
+I allmänhet om felmeddelanden importerar öppna API-dokument, kontrollera att du har validerat-antingen med hjälp av hello designer i hello nya Azure-portalen (Design - frontend - öppna API specifikation Editor) eller med en 3 parts verktyget som <a href="http://www.swagger.io"> Swagger-redigeraren</a>.
 
 * **Värdnamn** vi kräver ett host name-attribut.
 * **Basera sökvägen** vi kräver att attributet bassökväg.
 * **Scheman** vi kräver en matris för schemat. 
 
 ## <a name="wsdl"></a>WSDL
-WSDL-filer används för att generera API: er för SOAP-direkt eller fungera som serverdelen av ett SOAP-REST-API.
+WSDL-filer är används toogenerate API: er för SOAP-direkt eller fungera som hello serverdelen av ett SOAP-REST-API.
 
-* **WSDL: import** vi för närvarande stöder inte API: er med det här attributet. Kunder bör samman importerade element till ett dokument.
+* **WSDL: import** vi för närvarande stöder inte API: er med det här attributet. Kunder bör samman hello importeras element till ett dokument.
 * **Meddelanden med flera delar** stöds inte för närvarande.
 * **WCF-wsHttpBinding** SOAP-tjänster som skapats med Windows Communication Foundation ska använda basicHttpBinding - wsHttpBinding stöds inte.
 * **MTOM** tjänster som använder MTOM <em>kan</em> fungerar. Officiell stöd erbjuds inte just nu.
-* **Rekursion** typer som är definierade rekursivt (t.ex. finns i en matris med själva) stöds inte.
+* **Rekursion** typer som är definierade rekursivt (t.ex. se tooan matris med själva) stöds inte.
 
 ## <a name="wadl"></a>WADL
 Det finns inga kända problem i WADL import.
@@ -77,6 +77,6 @@ Det finns inga kända problem i WADL import.
 [Get started with Azure API Management]: api-management-get-started.md
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to create and publish a product]: api-management-howto-add-products.md
-[How to cache operation results in Azure API Management]: api-management-howto-cache.md
+[How tooadd operations tooan API]: api-management-howto-add-operations.md
+[How toocreate and publish a product]: api-management-howto-add-products.md
+[How toocache operation results in Azure API Management]: api-management-howto-cache.md

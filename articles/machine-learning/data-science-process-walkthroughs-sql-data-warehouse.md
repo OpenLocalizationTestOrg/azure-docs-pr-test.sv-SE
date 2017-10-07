@@ -1,6 +1,6 @@
 ---
-title: "Med hjälp av T-SQL och Python på Azure SQL Data Warehouse datavetenskap genomgång | Microsoft Docs"
-description: "Exempel som beskriver genom att använda SQL Data Warehouse att göra förutsägelseanalyser."
+title: "aaaSQL datalagret datavetenskap genomgång med T-SQL och Python på Azure | Microsoft Docs"
+description: "Exempel på att gå igenom hello användning av SQL Data Warehouse toodo förutsägelseanalys."
 services: machine-learning
 documentationcenter: 
 author: bradsev
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: bradsev
-ms.openlocfilehash: 66eccbc038c704ba046ce1d24659dff067008102
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: ca9e8db0b68459236e2859935b8240c671418e08
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Med hjälp av T-SQL och Python på Azure SQL Data Warehouse datavetenskap genomgång
 
-Dessa genomgångar av användning av SQL Data Warehouse för att göra förutsägelseanalyser. De följer stegen som beskrivs i Team av vetenskapliga data. En översikt över Team av vetenskapliga data, se [datavetenskap Process](data-science-process-overview.md). En introduktion till SQL Data Warehouse finns [vad är Azure SQL Data Warehouse?](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Dessa genomgångar av användning av SQL Data Warehouse toodo förutsägelseanalys. De följer hello steg som beskrivs i hello Team datavetenskap Process. En översikt över hello Team datavetenskap Process, se [datavetenskap Process](data-science-process-overview.md). En introduktion tooSQL datalagret finns [vad är Azure SQL Data Warehouse?](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-Ytterligare datavetenskap genomgångar som kör Team datavetenskap Process grupperas efter den **plattform** som de använder: 
+Ytterligare datavetenskap genomgångar som kör hello Team av vetenskapliga data är grupperade efter hello **plattform** som de använder: 
 
 [!INCLUDE [tdsp-walkthroughs-by-platform](../../includes/tdsp-walkthroughs-by-platform.md)]
 
 
 ## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>Förutsäga taxi tips med T-SQL och IPython bärbara datorer med SQL Data Warehouse
 
-Den [Använd SQL Data Warehouse genomgången](machine-learning-data-science-process-sqldw-walkthrough.md) visar hur du skapar och distribuerar maskininlärning klassificering och regression modeller med SQL Data Warehouse (SQL DW) för ett offentligt tillgängliga NYC Taxitransport resa och avgiften dataset.
+Hej [Använd SQL Data Warehouse genomgången](machine-learning-data-science-process-sqldw-walkthrough.md) visas hur toobuild och distribuera machine learning klassificering och regression modeller med SQL Data Warehouse (SQL DW) för ett offentligt tillgängliga NYC Taxitransport resa och avgiften dataset.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-En beskrivning av de viktiga komponenter som utgör teamet datavetenskap Process finns [Team datavetenskap processöversikt](data-science-process-overview.md).
+En beskrivning av hello viktiga komponenter som utgör hello Team datavetenskap Process finns [Team datavetenskap processöversikt](data-science-process-overview.md).
 
-En beskrivning av livscykeln Team av vetenskapliga data som du kan använda för att strukturera datavetenskap projekt finns [Team datavetenskap Process livscykel](data-science-process-lifecycle.md). Livscykeln beskrivs stegen från början till slut att projekt vanligtvis följer när de utförs. 
+En beskrivning av hello Team datavetenskap Process livscykel som du kan använda toostructure datavetenskap projekt, se [Team datavetenskap Process livscykel](data-science-process-lifecycle.md). hello livscykel beskrivs hello steg från start toofinish som projekt följer vanligtvis när de utförs. 

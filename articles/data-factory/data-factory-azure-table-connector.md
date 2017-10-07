@@ -1,6 +1,6 @@
 ---
-title: "Flytta data till/från Azure Table | Microsoft Docs"
-description: "Lär dig mer om att flytta data till och från Azure Table Storage med hjälp av Azure Data Factory."
+title: "aaaMove data till/från Azure Table | Microsoft Docs"
+description: "Lär dig hur toomove data till/från Azure Table Storage med hjälp av Azure Data Factory."
 services: data-factory
 documentationcenter: 
 author: linda33wj
@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jingwang
-ms.openlocfilehash: 792a551ae3dae46c503e5f0dda74cd0ac3a69c3a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3dc3da6d88854674a9108b600534bc5d07575f15
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Flytta data till och från Azure-tabellen med hjälp av Azure Data Factory
-Den här artikeln förklarar hur du använder aktiviteten kopiera i Azure Data Factory för att flytta data till och från Azure Table Storage. Den bygger på den [Data Movement aktiviteter](data-factory-data-movement-activities.md) artikel som presenterar en allmän översikt över dataflyttning med copy-aktivitet. 
+# <a name="move-data-tooand-from-azure-table-using-azure-data-factory"></a>Flytta data tooand från Azure-tabellen med hjälp av Azure Data Factory
+Den här artikeln förklarar hur toouse hello Kopieringsaktiviteten i Azure Data Factory toomove data till och från Azure Table Storage. Den bygger på hello [Data Movement aktiviteter](data-factory-data-movement-activities.md) artikel som ger en allmän översikt över dataflyttning hello kopieringsaktiviteten. 
 
-Du kan kopiera data från alla datalager för stöds källan till Azure Table Storage eller Azure Table Storage till alla stöds sink-datalagret. En lista över datakällor som stöds som datakällor eller sänkor av kopieringsaktiviteten, finns det [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabell. 
+Du kan kopiera data från en stöds källa data tooAzure tabellagring eller från Azure Table Storage tooany stöds sink data. En lista över datakällor som stöds som datakällor eller sänkor av hello kopieringsaktiviteten finns hello [stöds datalager](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabell. 
 
 ## <a name="getting-started"></a>Komma igång
 Du kan skapa en pipeline med en kopia-aktivitet som flyttar data till och från en Azure Table Storage med hjälp av olika verktyg/API: er.
 
-Det enklaste sättet att skapa en pipeline är att använda den **guiden Kopiera**. Finns [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genomgång om hur du skapar en pipeline med hjälp av guiden Kopiera data.
+hello enklaste sättet toocreate en pipeline är toouse hello **guiden Kopiera**. Se [Självstudier: skapa en pipeline med hjälp av guiden Kopiera](data-factory-copy-data-wizard-tutorial.md) för en snabb genomgång om hur du skapar en pipeline med hjälp av guiden för hello kopiera data.
 
-Du kan också använda följande verktyg för att skapa en pipeline: **Azure-portalen**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-mall**, **.NET API**, och **REST API**. Se [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) för stegvisa instruktioner för att skapa en pipeline med en Kopieringsaktivitet. 
+Du kan också använda följande verktyg toocreate en pipeline hello: **Azure-portalen**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-mall** , **.NET API**, och **REST API**. Se [kopiera aktivitet kursen](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) för stegvisa instruktioner toocreate en pipeline med en Kopieringsaktivitet. 
 
-Om du använder verktyg eller API: er, kan du utföra följande steg för att skapa en pipeline som flyttar data från ett dataarkiv som källa till ett dataarkiv som mottagare: 
+Om du använder hello verktyg eller API: er kan utföra du hello följande steg toocreate en pipeline som flyttar data från en källdata lagra tooa sink-datalagret: 
 
-1. Skapa **länkade tjänster** att länka inkommande och utgående data lagras till din data factory.
-2. Skapa **datauppsättningar** att representera inkommande och utgående data för kopieringen. 
+1. Skapa **länkade tjänster** toolink indata och utdata lagrar tooyour data factory.
+2. Skapa **datauppsättningar** toorepresent indata och utdata för hello kopieringsåtgärden. 
 3. Skapa en **pipeline** med en kopia-aktivitet som tar en datamängd som indata och en dataset som utdata. 
 
-När du använder guiden skapas JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och pipelinen) automatiskt för dig. När du använder Verktyg/API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av JSON-format.  Exempel med JSON-definitioner för Data Factory-entiteter som används för att kopiera data till/från en Azure-tabellagring finns [JSON-exempel](#json-examples) i den här artikeln. 
+När du använder guiden hello skapas automatiskt JSON definitioner för dessa Data Factory-enheter (länkade tjänster, datauppsättningar och hello pipeline) för dig. När du använder Verktyg/API: er (utom .NET API), kan du definiera dessa Data Factory-enheter med hjälp av hello JSON-format.  Exempel med JSON-definitioner för Data Factory-entiteter som har använt toocopy data till/från en Azure-tabellagring finns [JSON-exempel](#json-examples) i den här artikeln. 
 
-Följande avsnitt innehåller information om JSON-egenskaper som används för att definiera Data Factory entiteter till Azure Table Storage: 
+hello följande avsnitt innehåller information om JSON-egenskaper används toodefine Data Factory entiteter specifika tooAzure Table Storage: 
 
 ## <a name="linked-service-properties"></a>Länkad tjänstegenskaper
-Det finns två typer av länkade tjänster som du kan använda för att länka en Azure-blobblagring till ett Azure data factory. De är: **AzureStorage** länkade tjänsten och **AzureStorageSas** länkade tjänsten. Länkad Azure Storage-tjänsten tillhandahåller data factory med global åtkomst till Azure Storage. Medan det Azure Storage SAS (signatur för delad åtkomst) länkade ger tjänsten data factory med begränsad/Tidsbundna åtkomst till Azure Storage. Det finns några skillnader mellan dessa två länkade tjänster. Välj den länkade tjänst som passar dina behov. Följande avsnitt innehåller mer information om dessa två länkade tjänster.
+Det finns två typer av länkade tjänster kan du använda toolink ett Azure blob storage tooan Azure data factory. De är: **AzureStorage** länkade tjänsten och **AzureStorageSas** länkade tjänsten. hello länkad Azure Storage-tjänst ger hello data factory med global åtkomst toohello Azure Storage. Medan hello Azure Storage SAS (signatur för delad åtkomst) länkad ger tjänst hello data factory med begränsad/Tidsbundna åtkomst toohello Azure Storage. Det finns några skillnader mellan dessa två länkade tjänster. Välj hello länkade tjänst som passar dina behov. hello följande avsnitt innehåller mer information om dessa två länkade tjänster.
 
 [!INCLUDE [data-factory-azure-storage-linked-services](../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="dataset-properties"></a>Egenskaper för datamängd
-En fullständig lista över egenskaper som är tillgängliga för att definiera datauppsättningarna & avsnitt finns i [skapa datauppsättningar](data-factory-create-datasets.md) artikel. Avsnitt som struktur, tillgänglighet och princip på en datamängd JSON är liknande för alla typer av dataset (Azure SQL Azure blob, Azure-tabellen, osv.).
+En fullständig lista över egenskaper som är tillgängliga för att definiera datauppsättningarna & avsnitt finns hello [skapa datauppsättningar](data-factory-create-datasets.md) artikel. Avsnitt som struktur, tillgänglighet och princip på en datamängd JSON är liknande för alla typer av dataset (Azure SQL Azure blob, Azure-tabellen, osv.).
 
-Avsnittet typeProperties är olika för varje typ av dataset och ger information om placeringen av data i datalagret. Den **typeProperties** avsnittet för datauppsättningen av typen **AzureTable** har följande egenskaper.
+hello typeProperties avsnittet är olika för varje typ av dataset och ger information om hello platsen för hello data i datalagret hello. Hej **typeProperties** avsnittet för hello dataset av typen **AzureTable** har hello följande egenskaper.
 
 | Egenskap | Beskrivning | Krävs |
 | --- | --- | --- |
-| tableName |Namnet på tabellen i Azure Table databasinstansen som den länkade tjänsten refererar till. |Ja. När ett tabellnamn har angetts utan ett azureTableSourceQuery, kopieras alla poster från tabellen till målet. Om en azureTableSourceQuery också anges kopieras poster från tabellen som uppfyller frågan till målet. |
+| tableName |Namnet på hello tabell i hello Azure Table-databasinstansen som den länkade tjänsten refererar till. |Ja. När ett tabellnamn har angetts utan ett azureTableSourceQuery, är alla poster från hello tabell kopierade toohello mål. Om en azureTableSourceQuery också anges är poster från hello-tabell som uppfyller frågan hello kopierade toohello mål. |
 
 ### <a name="schema-by-data-factory"></a>Schema som Data Factory
-För schemafria data butiker, till exempel Azure Table härleder Data Factory-tjänsten schemat på något av följande sätt:
+För schemafria data lagras till exempel Azure Table skapar hello Data Factory-tjänsten hello schema i något av följande sätt hello:
 
-1. Om du anger strukturen för data med hjälp av den **struktur** egenskap i datauppsättningsdefinitionen Data Factory-tjänsten godkänner den här strukturen som schema. I det här fallet ges en rad inte innehåller ett värde för en kolumn, ett null-värde för den.
-2. Om du inte anger strukturen för data med hjälp av den **struktur** egenskap i datauppsättningsdefinitionen Data Factory härleder schemat med hjälp av den första raden i data. Om den första raden inte innehåller fullständig schemat missas i det här fallet vissa kolumner i resultatet av kopieringsåtgärden.
+1. Om du anger hello strukturen för data med hjälp av hello **struktur** egenskap i hello Data Factory-tjänsten i datauppsättningsdefinitionen hello godkänner den här strukturen som hello schema. I det här fallet ges en rad inte innehåller ett värde för en kolumn, ett null-värde för den.
+2. Om du inte anger hello strukturen för data med hjälp av hello **struktur** egenskap i hello datauppsättningsdefinitionen, Data Factory skapar hello schema med hjälp av hello första raden i hello data. I det här fallet missas hello första raden inte innehåller hello fullständig schemat, vissa kolumner i hello resultatet av kopieringsåtgärden.
 
-Därför för schemafria datakällor, det bästa sättet är att ange hur dina data med hjälp av den **struktur** egenskapen.
+Därför är hello bästa praxis för schemafria datakällor toospecify hello struktur data med hjälp av hello **struktur** egenskapen.
 
 ## <a name="copy-activity-properties"></a>Kopiera egenskaper för aktivitet
-En fullständig lista över avsnitt & egenskaper som är tillgängliga för att definiera aktiviteter finns i [skapar Pipelines](data-factory-create-pipelines.md) artikel. Egenskaper som namn, beskrivning, indata och utdata-datauppsättningar och -principer är tillgängliga för alla typer av aktiviteter.
+En fullständig lista över avsnitt & egenskaper som är tillgängliga för att definiera aktiviteter finns hello [skapar Pipelines](data-factory-create-pipelines.md) artikel. Egenskaper som namn, beskrivning, indata och utdata-datauppsättningar och -principer är tillgängliga för alla typer av aktiviteter.
 
-Egenskaper som är tillgängliga i avsnittet typeProperties i aktiviteten varierar å andra sidan beroende på varje aktivitetstyp. För Kopieringsaktivitet kan variera de beroende på vilka typer av datakällor och sänkor.
+Egenskaper i hello typeProperties avsnittet hello aktivitet på hello andra sidan varierar med varje aktivitetstyp. För Kopieringsaktivitet kan varierar de beroende på hello typer av datakällor och sänkor.
 
-**AzureTableSource** stöder följande egenskaper i typeProperties avsnitt:
+**AzureTableSource** stöder hello följande egenskaper i typeProperties avsnitt:
 
 | Egenskap | Beskrivning | Tillåtna värden | Krävs |
 | --- | --- | --- | --- |
-| azureTableSourceQuery |Använd anpassad fråga för att läsa data. |Azure-tabellen frågesträngen. Se exemplen i nästa avsnitt. |Nej. När ett tabellnamn har angetts utan ett azureTableSourceQuery, kopieras alla poster från tabellen till målet. Om en azureTableSourceQuery också anges kopieras poster från tabellen som uppfyller frågan till målet. |
-| azureTableSourceIgnoreTableNotFound |Ange om swallow undantag av tabellen inte finns. |SANT<br/>FALSKT |Nej |
+| azureTableSourceQuery |Använda hello anpassad fråga tooread data. |Azure-tabellen frågesträngen. Se exemplen i hello nästa avsnitt. |Nej. När ett tabellnamn har angetts utan ett azureTableSourceQuery, är alla poster från hello tabell kopierade toohello mål. Om en azureTableSourceQuery också anges är poster från hello-tabell som uppfyller frågan hello kopierade toohello mål. |
+| azureTableSourceIgnoreTableNotFound |Ange om swallow hello undantag av tabellen inte finns. |SANT<br/>FALSKT |Nej |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-exempel
 Om Azure Table kolumnen är av strängtypen:
@@ -89,21 +89,21 @@ Om Azure Table kolumnen är av typen datetime:
 "azureTableSourceQuery": "$$Text.Format('DeploymentEndTime gt datetime\\'{0:yyyy-MM-ddTHH:mm:ssZ}\\' and DeploymentEndTime le datetime\\'{1:yyyy-MM-ddTHH:mm:ssZ}\\'', SliceStart, SliceEnd)"
 ```
 
-**AzureTableSink** stöder följande egenskaper i typeProperties avsnitt:
+**AzureTableSink** stöder hello följande egenskaper i typeProperties avsnitt:
 
 | Egenskap | Beskrivning | Tillåtna värden | Krävs |
 | --- | --- | --- | --- |
-| azureTableDefaultPartitionKeyValue |Standard partitionsnyckelvärde som kan användas av sink. |Ett strängvärde. |Nej |
-| azureTablePartitionKeyName |Ange namnet på den kolumn som används som partitionsnycklar. Om inget anges används AzureTableDefaultPartitionKeyValue som partitionsnyckel. |Ett kolumnnamn. |Nej |
-| azureTableRowKeyName |Ange namnet på den kolumn vars kolumnvärdena används som radnyckel. Om inget annat anges, kan du använda ett GUID för varje rad. |Ett kolumnnamn. |Nej |
-| azureTableInsertType |Läget att infoga data i Azure-tabellen.<br/><br/>Den här egenskapen anger om befintliga rader i utdatatabellen med matchande partition och radnycklar få sina värden bytas ut eller samman. <br/><br/>Läs om hur dessa inställningar (dokument och Ersätt) fungerar i [Insert- eller Merge-entiteten](https://msdn.microsoft.com/library/azure/hh452241.aspx) och [infoga eller ersätta entiteten](https://msdn.microsoft.com/library/azure/hh452242.aspx) avsnitt. <br/><br> Den här inställningen gäller på radnivå inte tabellnivån, varken alternativet tar bort rader i utdatatabellen som inte finns i indata. |sammanfoga (standard)<br/>Ersätt |Nej |
-| writeBatchSize |Infogar data i Azure-tabellen när writeBatchSize eller writeBatchTimeout namn. |Heltal (antalet rader) |Nej (standard: 10000) |
-| writeBatchTimeout |Infogar data i Azure-tabellen när writeBatchSize eller writeBatchTimeout namn |TimeSpan<br/><br/>Exempel ”: 00: 20:00” (20 minuter) |Nej (för lagring klienten standardtimeout standardvärdet 90 sek) |
+| azureTableDefaultPartitionKeyValue |Standard partitionsnyckelvärde som kan användas av hello mottagare. |Ett strängvärde. |Nej |
+| azureTablePartitionKeyName |Ange namnet på hello kolumn vars värden används som partitionsnycklar. Om inget anges används AzureTableDefaultPartitionKeyValue som hello partitionsnyckel. |Ett kolumnnamn. |Nej |
+| azureTableRowKeyName |Ange namnet på hello kolumn vars kolumnvärdena används som radnyckel. Om inget annat anges, kan du använda ett GUID för varje rad. |Ett kolumnnamn. |Nej |
+| azureTableInsertType |hello läge tooinsert data till Azure-tabellen.<br/><br/>Den här egenskapen anger om befintliga rader i hello utdatatabell med matchande partition och radnycklar få sina värden bytas ut eller samman. <br/><br/>toolearn om hur dessa inställningar (dokument och Ersätt) fungerar, se [Insert- eller Merge-entiteten](https://msdn.microsoft.com/library/azure/hh452241.aspx) och [infoga eller ersätta entiteten](https://msdn.microsoft.com/library/azure/hh452242.aspx) avsnitt. <br/><br> Den här inställningen gäller vid hello raden nivån, inte hello tabell nivån, varken alternativet tar bort rader i hello utdatatabell som inte finns i hello indata. |sammanfoga (standard)<br/>Ersätt |Nej |
+| writeBatchSize |Infogar data i hello Azure-tabellen när hello writeBatchSize eller writeBatchTimeout namn. |Heltal (antalet rader) |Nej (standard: 10000) |
+| writeBatchTimeout |Infogar data i hello Azure-tabellen när hello writeBatchSize eller writeBatchTimeout namn |TimeSpan<br/><br/>Exempel ”: 00: 20:00” (20 minuter) |Nej (standard toostorage klienten standardtimeout-värdet 90 sek) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
-Mappa en källkolumn till en målkolumn med översättare JSON-egenskapen innan du kan använda målkolumnen som azureTablePartitionKeyName.
+Mappa en kolumn tooa mål källkolumn använda hello översättare JSON-egenskapen innan du kan använda hello målkolumnen som hello azureTablePartitionKeyName.
 
-I följande exempel källkolumnen DivisionID mappas till målkolumnen: DivisionID.  
+I följande exempel hello, källkolumnen DivisionID är mappade toohello målkolumnen: DivisionID.  
 
 ```JSON
 "translator": {
@@ -111,7 +111,7 @@ I följande exempel källkolumnen DivisionID mappas till målkolumnen: DivisionI
     "columnMappings": "DivisionID: DivisionID, FirstName: FirstName, LastName: LastName"
 }
 ```
-DivisionID har angetts som partitionsnyckel.
+Hej DivisionID har angetts som hello partitionsnyckel.
 
 ```JSON
 "sink": {
@@ -122,17 +122,17 @@ DivisionID har angetts som partitionsnyckel.
 }
 ```
 ## <a name="json-examples"></a>JSON-exempel
-Följande exempel ger exempel JSON definitioner som du kan använda för att skapa en pipeline med hjälp av [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md) eller [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De visar hur du kopierar data till och från Azure Table Storage och Azure Blob-databas. Dock datan kan kopieras **direkt** från någon av källorna till någon av de stöds egenskaperna. Mer information finns i avsnittet ”stöds datalager och format” i [flytta data med hjälp av Kopieringsaktiviteten](data-factory-data-movement-activities.md).
+hello följande exempel ger exempel JSON definitioner som du kan använda toocreate en pipeline med hjälp av [Azure-portalen](data-factory-copy-activity-tutorial-using-azure-portal.md) eller [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) eller [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). De visar hur toocopy data tooand från Azure Table Storage och Azure Blob-databas. Dock datan kan kopieras **direkt** från någon av hello källor tooany av sänkor hello stöds. Mer information finns i avsnittet hello ”stöds datalager och format” i [flytta data med hjälp av Kopieringsaktiviteten](data-factory-data-movement-activities.md).
 
-## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>Exempel: Kopiera data från Azure Table till Azure-Blob
-I följande exempel visas:
+## <a name="example-copy-data-from-azure-table-tooazure-blob"></a>Exempel: Kopiera data från Azure Table tooAzure Blob
+följande exempel visar hello:
 
 1. En länkad tjänst av typen [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) (används för blob & tabell).
 2. Indata [dataset](data-factory-create-datasets.md) av typen [AzureTable](#dataset-properties).
 3. Utdata [dataset](data-factory-create-datasets.md) av typen [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-4. Den [pipeline](data-factory-create-pipelines.md) med kopieringsaktiviteten som använder [AzureTableSource](#activity-properties) och [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+4. Hej [pipeline](data-factory-create-pipelines.md) med kopieringsaktiviteten som använder [AzureTableSource](#activity-properties) och [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Exemplet kopierar data som hör till standardpartition i en Azure-tabell till en blobb varje timme. JSON-egenskaper som används i exemplen beskrivs i exemplen i följande avsnitt.
+hello exemplet kopierar data som tillhör toohello standardpartition i en Azure Table tooa blob varje timme. hello JSON egenskaper som används i exemplen beskrivs i hello-exempel i följande avsnitt.
 
 **Länkad Azure storage-tjänst:**
 
@@ -147,13 +147,13 @@ Exemplet kopierar data som hör till standardpartition i en Azure-tabell till en
   }
 }
 ```
-Azure Data Factory stöder två typer av länkad Azure Storage services: **AzureStorage** och **AzureStorageSas**. För den första, anger du den anslutningssträng som innehåller nyckeln konto och du ska ange Uri för delad åtkomst signatur (SAS) för det senare. Se [länkade tjänster](#linked-service-properties) information.  
+Azure Data Factory stöder två typer av länkad Azure Storage services: **AzureStorage** och **AzureStorageSas**. För hello första, anger du hello anslutningssträng som innehåller hello kontonyckel och för hello senare, anger du hello delade signatur åtkomst (SAS)-Uri. Se [länkade tjänster](#linked-service-properties) information.  
 
 **Azure Table inkommande datamängd:**
 
-Exemplet förutsätter att du har skapat en tabell ”mytable” som prefix i Azure Table.
+hello exemplet förutsätter att du har skapat en tabell ”mytable” som prefix i Azure Table.
 
-Inställningen ”externa”: ”true” informerar Data Factory-tjänsten att datamängden är extern till data factory och inte tillverkas av en aktivitet i datafabriken.
+Inställningen ”externa”: ”true” informerar hello Data Factory-tjänsten som hello dataset är externa toohello data factory och inte tillverkas av en aktivitet i hello data factory.
 
 ```JSON
 {
@@ -182,7 +182,7 @@ Inställningen ”externa”: ”true” informerar Data Factory-tjänsten att d
 
 **Azure Blob utdatauppsättningen:**
 
-Data skrivs till en ny blob varje timme (frekvens: timme, intervall: 1). Sökvägen till mappen för blobben utvärderas dynamiskt baserat på starttiden för den sektor som bearbetas. Mappsökvägen använder år, månad, dag och timmar delar av starttiden.
+Data skrivs tooa nya blob varje timme (frekvens: timme, intervall: 1). hello mappsökväg för hello blob utvärderas dynamiskt baserat på hello starttiden för hello-segment som bearbetas. hello mappsökväg använder år, månad, dag och timmar delar av hello starttid.
 
 ```JSON
 {
@@ -242,7 +242,7 @@ Data skrivs till en ny blob varje timme (frekvens: timme, intervall: 1). Sökvä
 
 **Kopiera aktivitet i en pipeline med AzureTableSource och BlobSink:**
 
-Pipelinen innehåller en kopia-aktivitet som är konfigurerad för att använda indata och utdata-datauppsättningar och är schemalagd att köras varje timme. I pipeline-JSON-definitionen av **källa** är inställd på **AzureTableSource** och **sink** är inställd på **BlobSink**. SQL-frågan som anges med **AzureTableSourceQuery** egenskapen väljer vilka data från standardpartition varje timme för att kopiera.
+hello pipelinen innehåller en kopia-aktivitet som är konfigurerade toouse hello inkommande och utgående datauppsättningar och är schemalagda toorun varje timme. I hello pipeline JSON-definitionen hello **källa** typ har angetts för**AzureTableSource** och **sink** typ har angetts för**BlobSink**. hello SQL-frågan som anges med **AzureTableSourceQuery** egenskapen väljer hello data från hello standardpartition toocopy varje timme.
 
 ```JSON
 {  
@@ -291,15 +291,15 @@ Pipelinen innehåller en kopia-aktivitet som är konfigurerad för att använda 
 }
 ```
 
-## <a name="example-copy-data-from-azure-blob-to-azure-table"></a>Exempel: Kopiera data från Azure Blob till Azure Table
-I följande exempel visas:
+## <a name="example-copy-data-from-azure-blob-tooazure-table"></a>Exempel: Kopiera data från Azure Blob tooAzure tabell
+följande exempel visar hello:
 
 1. En länkad tjänst av typen [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties) (används för blob & tabell)
 2. Indata [dataset](data-factory-create-datasets.md) av typen [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
 3. Utdata [dataset](data-factory-create-datasets.md) av typen [AzureTable](#dataset-properties).
-4. Den [pipeline](data-factory-create-pipelines.md) med kopieringsaktiviteten som använder [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) och [AzureTableSink](#copy-activity-properties).
+4. Hej [pipeline](data-factory-create-pipelines.md) med kopieringsaktiviteten som använder [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) och [AzureTableSink](#copy-activity-properties).
 
-Exempel kopiorna tidsserier data från ett Azure blob till en Azure tabellen varje timme. JSON-egenskaper som används i exemplen beskrivs i exemplen i följande avsnitt.
+hello exemplet kopierar time series-data från ett Azure blob-tooan Azure-tabellen varje timme. hello JSON egenskaper som används i exemplen beskrivs i hello-exempel i följande avsnitt.
 
 **Länkad Azure storage (för både Azure Table & Blob)-tjänst:**
 
@@ -315,11 +315,11 @@ Exempel kopiorna tidsserier data från ett Azure blob till en Azure tabellen var
 }
 ```
 
-Azure Data Factory stöder två typer av länkad Azure Storage services: **AzureStorage** och **AzureStorageSas**. För den första, anger du den anslutningssträng som innehåller nyckeln konto och du ska ange Uri för delad åtkomst signatur (SAS) för det senare. Se [länkade tjänster](#linked-service-properties) information.
+Azure Data Factory stöder två typer av länkad Azure Storage services: **AzureStorage** och **AzureStorageSas**. För hello första, anger du hello anslutningssträng som innehåller hello kontonyckel och för hello senare, anger du hello delade signatur åtkomst (SAS)-Uri. Se [länkade tjänster](#linked-service-properties) information.
 
 **Azure Blob inkommande datamängd:**
 
-Data hämtas från en ny blob varje timme (frekvens: timme, intervall: 1). Mappen sökvägen och filnamnet för blobben utvärderas dynamiskt baserat på starttiden för den sektor som bearbetas. Mappsökvägen använder år, månad och som en dagdel av starttiden filnamn används i timmen som en del av starttiden. ”externa”: ”true” inställningen informerar Data Factory-tjänsten att datamängden är extern till data factory och inte tillverkas av en aktivitet i datafabriken.
+Data hämtas från en ny blob varje timme (frekvens: timme, intervall: 1). hello mappen sökvägen och filnamnet för hello blob utvärderas dynamiskt baserat på hello starttiden för hello-segment som bearbetas. hello mappsökväg använder år, månad och som en dagdel av hello starttid och filnamn använder hello timme tillhör hello starttid. ”externa”: ”true” inställningen informerar hello Data Factory-tjänsten som hello dataset är externa toohello data factory och inte tillverkas av en aktivitet i hello data factory.
 
 ```JSON
 {
@@ -388,7 +388,7 @@ Data hämtas från en ny blob varje timme (frekvens: timme, intervall: 1). Mappe
 
 **Azure-tabellen utdatauppsättningen:**
 
-Exemplet kopierar data till en tabell med namnet ”mytable” som prefix i Azure Table. Skapa en Azure-tabellen med samma antal kolumner som du förväntar dig att Blob CSV-filen ska innehålla. Nya rader läggs till i tabell varje timme.
+hello exemplet kopierar data tooa tabell med namnet ”mytable” som prefix i Azure Table. Skapa en Azure-tabell med hello samma antal kolumner som du förväntar dig hello Blob CSV-filen toocontain. Nya rader läggs toohello tabell varje timme.
 
 ```JSON
 {
@@ -409,7 +409,7 @@ Exemplet kopierar data till en tabell med namnet ”mytable” som prefix i Azur
 
 **Kopiera aktivitet i en pipeline med BlobSource och AzureTableSink:**
 
-Pipelinen innehåller en kopia-aktivitet som är konfigurerad för att använda indata och utdata-datauppsättningar och är schemalagd att köras varje timme. I pipeline-JSON-definitionen av **källa** är inställd på **BlobSource** och **sink** är inställd på **AzureTableSink**.
+hello pipelinen innehåller en kopia-aktivitet som är konfigurerade toouse hello inkommande och utgående datauppsättningar och är schemalagda toorun varje timme. I hello pipeline JSON-definitionen hello **källa** typ har angetts för**BlobSource** och **sink** typ har angetts för**AzureTableSink**.
 
 ```JSON
 {  
@@ -459,30 +459,30 @@ Pipelinen innehåller en kopia-aktivitet som är konfigurerad för att använda 
 }
 ```
 ## <a name="type-mapping-for-azure-table"></a>Mappning för Azure-tabellen
-Som anges i den [data movement aktiviteter](data-factory-data-movement-activities.md) artikeln kopieringsaktiviteten utför automatisk konverteringar från källtyper att registrera typer med följande metod i två steg.
+Som anges i hello [data movement aktiviteter](data-factory-data-movement-activities.md) artikeln kopieringsaktiviteten utför automatisk konverteringar från källan typer toosink typer med hello följande metod i två steg.
 
-1. Konvertera från interna källtyper till .NET-typ
-2. Konvertera från .NET-typ till interna mottagare typ.
+1. Konvertera från inbyggda typer too.NET källtypen
+2. Konvertera från .NET typen toonative Mottagartypen
 
-När du flyttar data till och från Azure Table följande [mappningar som definierats av Azure Table-tjänsten](https://msdn.microsoft.com/library/azure/dd179338.aspx) som används från Azure Table OData-typer till .NET-typ och vice versa.
+När du flyttar data & från Azure Table, hello följande [mappningar som definierats av Azure Table-tjänsten](https://msdn.microsoft.com/library/azure/dd179338.aspx) används från Azure Table OData typer too.NET typ och vice versa.
 
 | OData-datatyp | .NET-typ | Information |
 | --- | --- | --- |
-| Edm.Binary |byte] |En matris med byte upp till 64 KB. |
+| Edm.Binary |byte] |En matris med byte in too64 KB. |
 | Edm.Boolean |bool |Ett booleskt värde. |
-| Edm.DateTime |Datum och tid |En 64-bitars värdet uttrycks som Coordinated Universal Time (UTC). Det intervall som stöds för den DateTime som börjar från midnatt, 1 januari, 1601 e. kr. (C.E.) UTC. Intervallet slutar vid den 31 December 9999. |
+| Edm.DateTime |Datum och tid |En 64-bitars värdet uttrycks som Coordinated Universal Time (UTC). hello stöds DateTime intervallet börjar från midnatt, 1 januari, 1601 e. kr. (C.E.) UTC. hello intervallet slutar vid den 31 December 9999. |
 | Edm.Double |dubbla |En 64-bitars flytande punktvärdet. |
 | Edm.Guid |GUID |En 128-bitars globalt unik identifierare. |
 | Edm.Int32 |Int32 |En 32-bitars heltal. |
 | Edm.Int64 |Int64 |En 64-bitars heltal. |
-| Edm.String |Sträng |Ett värde för UTF-16-kodad. Strängvärden kan vara upp till 64 KB. |
+| Edm.String |Sträng |Ett värde för UTF-16-kodad. Strängvärden kanske in too64 KB. |
 
 ### <a name="type-conversion-sample"></a>Exempel konvertering
-I följande exempel är för att kopiera data från en Azure-Blob till Azure Table med typkonverteringar.
+följande exempel hello är för att kopiera data från Azure Blob-tooAzure tabell med typkonverteringar.
 
-Anta att Blob-dataset i CSV-format och innehåller tre kolumner. En av dem är ett datetime-kolumn med en anpassad datetime-format med hjälp av förkortade franska namn för dag i veckan.
+Anta att hello-blobbdatauppsättning är CSV-format och innehåller tre kolumner. En av dem är ett datetime-kolumn med en anpassad datetime-format med hjälp av förkortade franska namn för hello veckodag.
 
-Definiera datauppsättningen Blob källa på följande sätt tillsammans med typdefinitioner för kolumner.
+Definiera hello Blob källa dataset enligt följande tillsammans med typdefinitioner för hello kolumner.
 
 ```JSON
 {
@@ -522,7 +522,7 @@ Definiera datauppsättningen Blob källa på följande sätt tillsammans med typ
     }
 }
 ```
-Få typmappningen från Azure Table OData-typ till .NET-typ, definierar du tabellen i Azure-tabellen med följande schema.
+Hello mappning från Azure Table OData too.NET typ får definierar du hello tabell i Azure-tabellen med hello följer schemat.
 
 **Azure tabellschemat:**
 
@@ -532,7 +532,7 @@ Få typmappningen från Azure Table OData-typ till .NET-typ, definierar du tabel
 | namn |Edm.String |
 | lastlogindate |Edm.DateTime |
 
-Därefter definiera Azure Table-datauppsättningen. Du behöver inte ange ”struktur” avsnittet med informationen eftersom informationen redan har angetts i den underliggande datalagringen.
+Därefter definiera hello Azure Table dataset. Du behöver inte toospecify ”struktur” avsnitt med information om hello eftersom hello typinformation har redan angetts i hello underliggande datalagret.
 
 ```JSON
 {
@@ -551,10 +551,10 @@ Därefter definiera Azure Table-datauppsättningen. Du behöver inte ange ”str
 }
 ```
 
-I det här fallet Data Factory Skriv automatiskt konverteringar inklusive Datetime-fält med anpassade datetime-format med hjälp av ”fr-fr”-kulturen vid flytt av data från Blob till Azure Table.
+I det här fallet Data Factory Skriv automatiskt konverteringar inklusive hello Datetime-fält med hello anpassade datetime-format med hjälp av hello ”fr-fr” kulturen när du flyttar data från Blob tooAzure tabell.
 
 > [!NOTE]
-> Om du vill mappa kolumner från källan dataset till kolumner från sink dataset finns [mappa dataset kolumner i Azure Data Factory](data-factory-map-columns.md).
+> toomap kolumner från källan dataset toocolumns från sink dataset finns [mappa dataset kolumner i Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Prestanda och finjustering
-Mer information om viktiga faktorer som påverkan prestanda för flytt av data (Kopieringsaktiviteten) i Azure Data Factory och olika sätt att optimera det finns [kopiera aktivitet prestanda och justera guiden](data-factory-copy-activity-performance.md).
+toolearn om nyckeln faktorer som påverkan prestanda för flytt av data (Kopieringsaktiviteten) i Azure Data Factory och olika sätt toooptimize, se [kopiera aktivitet prestanda och justera guiden](data-factory-copy-activity-performance.md).

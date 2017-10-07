@@ -1,6 +1,6 @@
 ---
-title: Cloud Services-rollen config XPath fusklapp | Microsoft Docs
-description: "Olika XPath-inställningar du kan använda i cloud service rollen config för att exponera inställningar som en miljövariabel."
+title: aaaCloud Services-rollen config XPath fusklapp | Microsoft Docs
+description: "Hej olika XPath-inställningar som du kan använda i hello cloud service config tooexpose rollinställningar som en miljövariabel."
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: fd6efac829d3fd9e2840362b8d2ff423add566d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 27f98f956a1c790c9bb30f9fefe1ab1736b2b150
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Exponera konfigurationsinställningar för rollen som en miljövariabel med XPath
-I cloud service worker eller web rollen tjänstdefinitionsfilen exponera du runtime konfigurationsvärden som miljövariabler. Följande XPath-värden stöds (som motsvarar API värden).
+I hello cloud service worker eller web rollen tjänstdefinitionsfilen kan exponera du runtime konfigurationsvärden som miljövariabler. hello följande XPath värden stöds (som motsvarar tooAPI värden).
 
-Värdena XPath finns också tillgängliga via den [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) bibliotek. 
+Värdena XPath finns också tillgängliga via hello [Microsoft.WindowsAzure.ServiceRuntime](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.aspx) bibliotek. 
 
 ## <a name="app-running-in-emulator"></a>Appen körs i emulatorn
-Anger att programmet körs i emulatorn.
+Anger hello appen körs i hello-emulatorn.
 
 | Typ | Exempel |
 | --- | --- |
@@ -34,7 +34,7 @@ Anger att programmet körs i emulatorn.
 | Kod |var x = RoleEnvironment.IsEmulated; |
 
 ## <a name="deployment-id"></a>Distributions-ID
-Hämtar distributions-ID för instansen.
+Hämtar hello distributions-ID för hello-instansen.
 
 | Typ | Exempel |
 | --- | --- |
@@ -42,7 +42,7 @@ Hämtar distributions-ID för instansen.
 | Kod |var deploymentId = RoleEnvironment.DeploymentId; |
 
 ## <a name="role-id"></a>Roll-ID
-Hämtar den aktuella roll-ID för instansen.
+Hämtar hello aktuella roll-ID för hello-instansen.
 
 | Typ | Exempel |
 | --- | --- |
@@ -50,7 +50,7 @@ Hämtar den aktuella roll-ID för instansen.
 | Kod |var id = RoleEnvironment.CurrentRoleInstance.Id; |
 
 ## <a name="update-domain"></a>Uppdatera domänen
-Hämtar uppdateringsdomän för instansen.
+Hämtar hello uppdateringsdomän av hello-instansen.
 
 | Typ | Exempel |
 | --- | --- |
@@ -58,7 +58,7 @@ Hämtar uppdateringsdomän för instansen.
 | Kod |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
 
 ## <a name="fault-domain"></a>feldomän
-Hämtar feldomänen för instansen.
+Hämtar hello feldomän av hello-instansen.
 
 | Typ | Exempel |
 | --- | --- |
@@ -66,7 +66,7 @@ Hämtar feldomänen för instansen.
 | Kod |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
 
 ## <a name="role-name"></a>Rollnamn
-Hämtar rollnamnet av instanserna.
+Hämtar hello rollnamn hello instanser.
 
 | Typ | Exempel |
 | --- | --- |
@@ -74,7 +74,7 @@ Hämtar rollnamnet av instanserna.
 | Kod |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
 
 ## <a name="config-setting"></a>Konfigurationsinställningen
-Hämtar värdet för den angivna Konfigurationsinställningen.
+Hämtar hello värdet för hello angetts konfigurationsinställning.
 
 | Typ | Exempel |
 | --- | --- |
@@ -82,7 +82,7 @@ Hämtar värdet för den angivna Konfigurationsinställningen.
 | Kod |var inställningen = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
 
 ## <a name="local-storage-path"></a>Sökvägen till lokal lagring
-Hämtar lokal lagringssökvägen för instansen.
+Hämtar hello lokal lagringssökväg för hello-instansen.
 
 | Typ | Exempel |
 | --- | --- |
@@ -90,7 +90,7 @@ Hämtar lokal lagringssökvägen för instansen.
 | Kod |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1"). RootPath; |
 
 ## <a name="local-storage-size"></a>Lokal lagringsstorlek
-Hämtar storleken på den lokala lagringen för instansen.
+Hämtar hello storleken på hello lokal lagring för hello-instansen.
 
 | Typ | Exempel |
 | --- | --- |
@@ -98,7 +98,7 @@ Hämtar storleken på den lokala lagringen för instansen.
 | Kod |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1"). MaximumSizeInMegabytes; |
 
 ## <a name="endpoint-protocol"></a>Protokoll för slutpunkten
-Hämtar endpoint-protokollet för instansen.
+Hämtar hello endpoint-protokollet för hello-instans.
 
 | Typ | Exempel |
 | --- | --- |
@@ -106,7 +106,7 @@ Hämtar endpoint-protokollet för instansen.
 | Kod |var skydd = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1”]. Protokollet. |
 
 ## <a name="endpoint-ip"></a>Slutpunkten IP
-Hämtar den angivna slutpunkten IP-adress.
+Hämtar hello angetts slutpunktens IP-adress.
 
 | Typ | Exempel |
 | --- | --- |
@@ -114,7 +114,7 @@ Hämtar den angivna slutpunkten IP-adress.
 | Kod |var adress = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1”]. IPEndpoint.Address |
 
 ## <a name="endpoint-port"></a>port för slutpunkt
-Hämtar endpoint-port för instansen.
+Hämtar hello endpoint port för hello-instans.
 
 | Typ | Exempel |
 | --- | --- |
@@ -122,7 +122,7 @@ Hämtar endpoint-port för instansen.
 | Kod |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1”]. IPEndpoint.Port; |
 
 ## <a name="example"></a>Exempel
-Här är ett exempel på en arbetsroll som skapar en startåtgärd med miljövariabeln `TestIsEmulated` inställd på den [ @emulated xpath-värdet](#app-running-in-emulator). 
+Här är ett exempel på en arbetsroll som skapar en startåtgärd med miljövariabeln `TestIsEmulated` ange toohello [ @emulated xpath-värdet](#app-running-in-emulator). 
 
 ```xml
 <WorkerRole name="Role1">
@@ -162,7 +162,7 @@ Här är ett exempel på en arbetsroll som skapar en startåtgärd med miljövar
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Lär dig mer om den [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) fil.
+Mer information om hello [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) fil.
 
 Skapa en [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) paketet.
 

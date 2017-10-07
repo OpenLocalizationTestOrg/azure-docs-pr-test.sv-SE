@@ -1,6 +1,6 @@
 ---
-title: "Skapa nätverkssäkerhetsgrupper - Azure CLI 2.0 | Microsoft Docs"
-description: "Lär dig hur du skapar och distribuerar nätverkssäkerhetsgrupper som använder Azure CLI 2.0."
+title: "aaaCreate nätverkssäkerhetsgrupper - Azure CLI 2.0 | Microsoft Docs"
+description: "Lär dig hur toocreate och distribuera nätverkssäkerhetsgrupper med hello Azure CLI 2.0."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,36 +16,36 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8efb3ab66d07875b51f723fed5594bcb477ed025
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 30b1d60676331bf5e2bbbb046c747477be9d3338
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-network-security-groups-using-the-azure-cli-20"></a>Skapa nätverk med Azure CLI 2.0-säkerhetsgrupper
+# <a name="create-network-security-groups-using-hello-azure-cli-20"></a>Skapa nätverk med hjälp av hello Azure CLI 2.0-säkerhetsgrupper
 
 [!INCLUDE [virtual-networks-create-nsg-selectors-arm-include](../../includes/virtual-networks-create-nsg-selectors-arm-include.md)]
 
-## <a name="cli-versions-to-complete-the-task"></a>CLI-versioner för att slutföra uppgiften 
+## <a name="cli-versions-toocomplete-hello-task"></a>CLI versioner toocomplete hello aktivitet 
 
-Du kan slutföra uppgiften med någon av följande CLI-versioner: 
+Du kan göra hello med hjälp av något av följande versioner av CLI hello: 
 
-- [Azure CLI 1.0](virtual-networks-create-nsg-cli-nodejs.md) – vår CLI för distributionsmodellerna klassisk och resurshantering 
-- [Azure CLI 2.0](#Create-the-nsg-for-the-front-end-subnet) -vår nästa generations CLI för hantering av resursdistributionsmodell (den här artikeln)
+- [Azure CLI 1.0](virtual-networks-create-nsg-cli-nodejs.md) – våra CLI för hello klassisk och resurs management distributionsmodeller 
+- [Azure CLI 2.0](#Create-the-nsg-for-the-front-end-subnet) -vår nästa generations CLI för hello management resursdistributionsmodell (den här artikeln)
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-Exemplet Azure CLI 2.0 kommandon förväntar sig en enkel miljö som redan har skapats baserat på scenariot ovan. 
+hello exempel Azure CLI 2.0 kommandon följande förväntar sig en enkel miljö som redan har skapats utifrån hello scenariot ovan. 
 
-## <a name="create-the-nsg-for-the-frontend-subnet"></a>Skapa NSG för den `FrontEnd` undernät
+## <a name="create-hello-nsg-for-hello-frontend-subnet"></a>Skapa hello NSG för hello `FrontEnd` undernät
 
-Så här skapar du en NSG som heter *NSG-klientdel* baserat på scenariot ovan, Följ stegen nedan.
+toocreate en NSG som heter *NSG-klientdel* baserat på hello scenariot ovan, följ hello stegen nedan.
 
-1. Om du inte har gjort det ännu, installerar och konfigurerar senast [Azure CLI 2.0](/cli/azure/install-az-cli2) och logga in till en Azure med hjälp av [az inloggningen](/cli/azure/#login). 
+1. Om du inte har gjort det ännu, installerar och konfigurerar hello senaste [Azure CLI 2.0](/cli/azure/install-az-cli2) och logga in tooan Azure-konto med [az inloggningen](/cli/azure/#login). 
 
-2. Skapa en NSG med hjälp av den [az nätverket nsg skapa](/cli/azure/network/nsg#create) kommando. 
+2. Skapa en NSG med hello [az nätverket nsg skapa](/cli/azure/network/nsg#create) kommando. 
 
     ```azurecli
     az network nsg create \
@@ -56,11 +56,11 @@ Så här skapar du en NSG som heter *NSG-klientdel* baserat på scenariot ovan, 
 
     Parametrar:
    
-   * `--resource-group`: Namnet på resursgruppen där NSG: N har skapats. I vårt exempel, *TestRG*.
-   * `--location`: Azure-region där den nya NSG skapas. I vårt scenario, *westus*.
-   * `--name`: Namn på ny NSG: N. I vårt scenario, *NSG-klientdel*.
+   * `--resource-group`: Namnet på hello resursgruppen där hello NSG skapas. I vårt exempel, *TestRG*.
+   * `--location`: Azure-region där hello ny NSG skapas. I vårt scenario, *westus*.
+   * `--name`: Namn hello ny NSG. I vårt scenario, *NSG-klientdel*.
 
-    Förväntad utdata är ganska lite information, inklusive en lista över alla standardregler. I följande exempel visas de standardregler som använder en JMESPATH frågefilter med den `table` utdataformat:
+    hello förväntade utdata är ganska lite information, inklusive en lista över alla hello standardregler. hello följande exempel visar hello standardregler med hello en JMESPATH frågefilter `table` utdataformat:
 
     ```azurecli
     az network nsg show \
@@ -77,16 +77,16 @@ Så här skapar du en NSG som heter *NSG-klientdel* baserat på scenariot ovan, 
         Allow     Allow inbound traffic from all VMs in VNET              *                Inbound           65000
         Allow     Allow inbound traffic from azure load balancer          *                Inbound           65001
         Deny      Deny all inbound traffic                                *                Inbound           65500
-        Allow     Allow outbound traffic from all VMs to all VMs in VNET  *                Outbound          65000
-        Allow     Allow outbound traffic from all VMs to Internet         *                Outbound          65001
+        Allow     Allow outbound traffic from all VMs tooall VMs in VNET  *                Outbound          65000
+        Allow     Allow outbound traffic from all VMs tooInternet         *                Outbound          65001
         Deny      Deny all outbound traffic                               *                Outbound          65500
 
 
 
-3. Skapa en regel som tillåter åtkomst till port 3389 (RDP) från Internet med de [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create) kommando.
+3. Skapa en regel som tillåter åtkomst tooport 3389 (RDP) från hello Internet med hello [az nätverket nsg regeln skapa](/cli/azure/network/nsg/rule#create) kommando.
 
     > [!NOTE]
-    > Beroende på gränssnittet som du använder kan du behöva ändra den `*` tecken i argumenten efter för att expandera argument före körning.
+    > Beroende på hello skal som du använder, kanske du måste toomodify hello `*` tecken i hello argument efter det inte tooexpand hello argument innan körningen.
    
     ```azurecli
     az network nsg rule create \
@@ -126,21 +126,21 @@ Så här skapar du en NSG som heter *NSG-klientdel* baserat på scenariot ovan, 
 
     Parametrar:
 
-    * `--resource-group testrg`: Resursgruppen som ska användas. Observera att den är skiftlägeskänsliga.
-    * `--nsg-name NSG-FrontEnd`: Namnet på NSG: N som regeln skapades.
-    * `--name rdp-rule`: Namnet på den nya regeln.
-    * `--access Allow`: Åtkomstnivå för regeln (Tillåt eller neka).
+    * `--resource-group testrg`: hello resurs grupp toouse. Observera att den är skiftlägeskänsliga.
+    * `--nsg-name NSG-FrontEnd`: Namnet på hello NSG i vilka hello regeln har skapats.
+    * `--name rdp-rule`: Namnet på hello nya regeln.
+    * `--access Allow`: Åtkomstnivå för hello regel (Tillåt eller neka).
     * `--protocol Tcp`: Protokoll (Tcp, Udp eller *).
-    * `--direction Inbound`: Riktning anslutningen (inkommande eller utgående).
-    * `--priority 100`: Prioritet för regeln.
+    * `--direction Inbound`: Riktning hello-anslutning (inkommande eller utgående).
+    * `--priority 100`: Prioritet för hello regeln.
     * `--source-address-prefix Internet`: Källadress-prefix i CIDR- eller använda standardtaggar.
-    * `--source-port-range "*"`: Datakällan port eller ett intervall. Porten som öppnade anslutningen.
+    * `--source-port-range "*"`: Datakällan port eller ett intervall. Porten som öppnats hello-anslutning.
     * `--destination-address-prefix "*"`: Måladress-prefix i CIDR- eller använda standardtaggar.
-    * `--destination-port-range 3389`: Mål port eller ett intervall. Porten som tar emot anslutningsbegäran.
+    * `--destination-port-range 3389`: Mål port eller ett intervall. Porten som tar emot hello anslutningsbegäran.
 
 
 
-4. Skapa en regel som tillåter åtkomst till port 80 (HTTP) från Internet **az nätverket nsg regeln skapa** kommando.
+4. Skapa en regel som tillåter åtkomst tooport 80 (HTTP) från hello Internet **az nätverket nsg regeln skapa** kommando.
    
     ```azurecli
     az network nsg rule create \
@@ -178,7 +178,7 @@ Så här skapar du en NSG som heter *NSG-klientdel* baserat på scenariot ovan, 
     }
     ```
 
-5. Binda NSG till den **klientdel** undernät med den [az network vnet undernät uppdatering](/cli/azure/network/vnet/subnet#update) kommando.
+5. Binda hello NSG toohello **klientdel** undernät med hello [az network vnet undernät uppdatering](/cli/azure/network/vnet/subnet#update) kommando.
         
     ```azurecli
     az network vnet subnet update \
@@ -231,10 +231,10 @@ Så här skapar du en NSG som heter *NSG-klientdel* baserat på scenariot ovan, 
     }
     ```
 
-## <a name="create-the-nsg-for-the-backend-subnet"></a>Skapa NSG för den `BackEnd` undernät
-Så här skapar du en NSG som heter *NSG BackEnd* baserat på scenariot ovan, Följ stegen nedan.
+## <a name="create-hello-nsg-for-hello-backend-subnet"></a>Skapa hello NSG för hello `BackEnd` undernät
+toocreate en NSG som heter *NSG BackEnd* baserat på hello scenariot ovan, följ hello stegen nedan.
 
-1. Skapa den `NSG-BackEnd` NSG med **az nätverket nsg skapa**.
+1. Skapa hello `NSG-BackEnd` NSG med **az nätverket nsg skapa**.
    
     ```azurecli
     az network nsg create \
@@ -243,9 +243,9 @@ Så här skapar du en NSG som heter *NSG BackEnd* baserat på scenariot ovan, F�
     --location centralus
     ```
    
-    Som i steg 2, föregående, är förväntade utdata väldigt stora, inklusive standardregler.
+    Som i steg 2, föregående, förväntade hello utdata är väldigt stora, inklusive standardregler.
    
-2. Skapa en regel som tillåter åtkomst till port 1433 (SQL) från den `FrontEnd` undernät med den **az nätverket nsg regeln skapa** kommando.
+2. Skapa en regel som tillåter åtkomst tooport 1433 (SQL) från hello `FrontEnd` undernät med hello **az nätverket nsg regeln skapa** kommando.
    
     ```azurecli
     az network nsg rule create \
@@ -283,7 +283,7 @@ Så här skapar du en NSG som heter *NSG BackEnd* baserat på scenariot ovan, F�
     }
     ```
 
-3. Skapa en regel som nekar åtkomst till Internet med de **az nätverket nsg regeln skapa** kommando.
+3. Skapa en regel som nekar åtkomst toohello Internet med hello **az nätverket nsg regeln skapa** kommando.
    
     ```azurecli
     az network nsg rule create \
@@ -321,7 +321,7 @@ Så här skapar du en NSG som heter *NSG BackEnd* baserat på scenariot ovan, F�
     }
     ```
 
-4. Binda NSG till den `BackEnd` undernätet med hjälp av den **az network vnet subnet set** kommando.
+4. Binda hello NSG toohello `BackEnd` undernätet med hello **az network vnet subnet set** kommando.
    
     ```azurecli
     az network vnet subnet update \

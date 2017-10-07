@@ -1,8 +1,8 @@
 ---
 title: "VS Code: Ansluta och läsa data i Azure SQL Database | Microsoft Docs"
-description: "Lär dig hur du ansluter till SQL Database på Azure med hjälp av Visual Studio Code. Kör sedan Transact-SQL-uttryck (T-SQL) för att skicka frågor och redigera data."
+description: "Lär dig hur tooconnect tooSQL databas på Azure med hjälp av Visual Studio-koden. Kör sedan Transact-SQL (T-SQL)-uttryck tooquery och redigera data."
 metacanonical: 
-keywords: ansluta till sql database
+keywords: ansluta toosql databas
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -17,30 +17,30 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/20/2017
 ms.author: carlrab
-ms.openlocfilehash: 4076b1e7ab3a70009217a1deff72da4bff0dc871
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ed8bdbfc3271b463a21cde5ff6b5f05fd0ff51d1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL Database: Använd Visual Studio Code för att ansluta och skicka frågor till data
+# <a name="azure-sql-database-use-visual-studio-code-tooconnect-and-query-data"></a>Azure SQL Database: Använd Visual Studio Code tooconnect och fråga data
 
-[Visual Studio Code](https://code.visualstudio.com/docs) är en grafisk kodredigerare för Linux, macOS och Windows som stöder tillägg, inklusive [mssql-tillägget](https://aka.ms/mssql-marketplace) för frågor till Microsoft SQL Server, Azure SQL Database och SQL Data Warehouse. Den här snabbstarten visar hur du använder Visual Studio Code för att ansluta till en Azure SQL-databas och sedan använda Transact-SQL-uttryck för att fråga, infoga, uppdatera och ta bort data i databasen.
+[Visual Studio Code](https://code.visualstudio.com/docs) är en grafiska redigerare för macOS, Linux och Windows som stöder tillägg, inklusive hello [mssql tillägget](https://aka.ms/mssql-marketplace) för frågor till Microsoft SQL Server, Azure SQL Database och SQL Data Warehouse. Den här snabbstartsguide visar hur toouse Visual Studio Code tooconnect tooan Azure SQL database och sedan använda Transact-SQL-instruktioner tooquery infoga, uppdatera och ta bort data i hello-databas.
 
 ## <a name="prerequisites"></a>Krav
 
-Den här snabbstarten använder resurser som har skapats i någon av dessa snabbstarter som utgångspunkt:
+Den här snabbstartsguide används som första plats hello resurserna skapas i ett av dessa snabbstarter:
 
 - [Skapa DB – Portal](sql-database-get-started-portal.md)
 - [Skapa DB – CLI](sql-database-get-started-cli.md)
 - [Skapa DB – PowerShell](sql-database-get-started-powershell.md)
 
-Innan du börjar bör du kontrollera att du har installerat den senaste versionen av [Visual Studio Code](https://code.visualstudio.com/Download) och har läst in [mssql-tillägget](https://aka.ms/mssql-marketplace). Installationsanvisningar finns i [Installera VS Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code) för mssql-tillägget och [mssql för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql). 
+Innan du börjar, kontrollera att du har installerat hello senaste versionen av [Visual Studio Code](https://code.visualstudio.com/Download) och läsa in hello [mssql tillägget](https://aka.ms/mssql-marketplace). Installationen vägledning för hello mssql tillägg finns [installera VS kod](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-vs-code) och se [mssql för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql). 
 
 ## <a name="configure-vs-code"></a>Konfigurera VS-kod 
 
 ### <a name="mac-os"></a>**Mac OS**
-För macOS måste du installera OpenSSL, som är ett förhandskrav för den DotNet Core som används i mssql-tillägget. Ange följande kommandon för att installera **brew** och **OpenSSL**. 
+För macOS behöver du tooinstall OpenSSL som är en prerequiste för DotNet Core som mssql-tillägget används. Öppna terminalen och ange följande kommandon tooinstall hello **brew** och **OpenSSL**. 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -61,64 +61,64 @@ Ingen särskild konfiguration behövs.
 
 ## <a name="sql-server-connection-information"></a>Anslutningsinformation för en SQL-server
 
-Skaffa den anslutningsinformation du behöver för att ansluta till Azure SQL Database. Du behöver det fullständiga servernamnet, databasnamnet och inloggningsinformationen i nästa procedurer.
+Hämta hello anslutning information som behövs för tooconnect toohello Azure SQL-databas. Du behöver hello fullständigt kvalificerade servernamnet, databasnamnet och inloggningsinformation i hello nästkommande procedurer.
 
-1. Logga in på [Azure-portalen](https://portal.azure.com/).
-2. Välj **SQL-databaser** på den vänstra menyn och klicka på databasen på sidan **SQL-databaser**. 
-3. Granska serverns fullständiga namn på sidan **Översikt** för databasen, se bilden nedan. Om du hovrar över servernamnet visas alternativet **Kopiera genom att klicka**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com/).
+2. Välj **SQL-databaser** vänstra hello-menyn och klicka på din databas på hello **SQL-databaser** sidan. 
+3. På hello **översikt** för databasen, granska hello fullständigt kvalificerade servernamnet som visas i följande bild hello. Du kan hovrar över hello server name toobring in hello **klickar du på toocopy** alternativet.
 
    ![anslutningsinformation](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Om du har glömt inloggningsinformationen för Azure SQL Database-server öppnar du serversidan i SQL Database. Där ser du administratörsnamnet för servern och kan återställa lösenordet vid behov. 
+4. Om du har glömt hello inloggningsinformation för din Azure SQL Database-server, navigera toohello SQL server sidan tooview hello admin Databasservernamnet och, om nödvändigt återställa hello lösenord. 
 
-## <a name="set-language-mode-to-sql"></a>Ange språkläge till SQL
+## <a name="set-language-mode-toosql"></a>Ange språk läge tooSQL
 
-Ställ in språkläget på **SQL** i Visual Studio Code för att aktivera mssql-kommandon och T-SQL IntelliSense.
+Ange hello språk läge har angetts för**SQL** i Visual Studio Code tooenable mssql kommandon och T-SQL IntelliSense.
 
 1. Öppna ett Visual Studio Code-fönster. 
 
-2. Klicka på **Oformaterad text** nere till höger i statusfältet.
-3. Listrutan **Select language mode** (Välj språkläge) öppnas. Skriv **SQL**, tryck på **ENTER** och ange språkläge för SQL. 
+2. Klicka på **oformaterad Text** i hello nedre högra hörnet i statusfältet för hello.
+3. I hello **språk läge** nedrullningsbara menyn som öppnas, skriver **SQL**, och tryck sedan på **RETUR** tooset hello språk läge tooSQL. 
 
    ![Språkläge för SQL](./media/sql-database-connect-query-vscode/vscode-language-mode.png)
 
-## <a name="connect-to-your-database"></a>Ansluta till databasen
+## <a name="connect-tooyour-database"></a>Ansluta tooyour databas
 
-Använd Visual Studio Code för att upprätta en anslutning till Azure SQL Database-servern.
+Använd Visual Studio Code tooestablish en anslutning tooyour Azure SQL Database-server.
 
 > [!IMPORTANT]
-> Kontrollera att du har din server, databas och inloggningsinformation redo innan du fortsätter. Om du ändrar fokus från Visual Studio-koden när du har börjat ange information om anslutningsprofilen måste du börja om med att skapa anslutningsprofilen.
+> Kontrollera att du har din server, databas och inloggningsinformation redo innan du fortsätter. När du börjar att ange hello anslutningsinformation till profilen, om du ändrar ditt fokus från Visual Studio Code, har toorestart skapar hello-anslutningsprofilen.
 >
 
-1. I VS Code trycker du på **CTRL+SHIFT+P** (eller **F1**) för att öppna kommandopaletten.
+1. VS-koden trycker du på **CTRL + SKIFT + P** (eller **F1**) tooopen hello kommandot palett.
 
 2. Skriv in **sqlcon** och tryck på **RETUR**.
 
-3. Tryck på **RETUR** för att välja **Create Connection Profile** (Skapa anslutningsprofil). Detta skapar en anslutningsprofil för SQL Server-instansen.
+3. Tryck på **RETUR** tooselect **skapa anslutningsprofilen**. Detta skapar en anslutningsprofil för SQL Server-instansen.
 
-4. Följ anvisningarna för att ange anslutningsegenskaper för den nya anslutningsprofilen. När du har angett ett värde trycker du på **RETUR** för att fortsätta. 
+4. Följ anslutningsegenskaper för hello prompter toospecify hello för nya hello-anslutningsprofilen. När du har angett varje värde trycker du på **RETUR** toocontinue. 
 
    | Inställning       | Föreslaget värde | Beskrivning |
    | ------------ | ------------------ | ------------------------------------------------- | 
-   | **Servernamn | Fullständigt kvalificerat servernamn | Namnet ska vara ungefär så här: **mynewserver20170313.database.windows.net**. |
-   | **Databasnamn** | mySampleDatabase | Namnet på databasen som användaren ska ansluta till. |
-   | **Autentisering** | SQL-inloggning| SQL-autentisering är den enda autentiseringstypen som vi har konfigurerat i den här kursen. |
-   | **Användarnamn** | Serveradministratörskontot | Detta är det konto som du angav när du skapade servern. |
-   | **Lösenord (SQL-inloggning)** | Lösenordet för serveradministratörskontot | Detta är det lösenord som du angav när du skapade servern. |
-   | **Spara lösenordet?** | Ja eller nej | Välj Ja om du inte vill ange lösenordet varje gång. |
+   | **Servernamn | hello fullständigt kvalificerade servernamnet | hello namnet ska vara ungefär så här: **mynewserver20170313.database.windows.net**. |
+   | **Databasnamn** | mySampleDatabase | hello namnet på hello databasen toowhich tooconnect. |
+   | **Autentisering** | SQL-inloggning| SQL-autentisering är hello endast autentiseringstyp som vi har konfigurerat i den här kursen. |
+   | **Användarnamn** | Hej server-administratörskontot | Detta är hello-konto som du angav när du skapade hello-server. |
+   | **Lösenord (SQL-inloggning)** | hello lösenord för administratörskontot server | Detta är hello lösenord som du angav när du skapade hello-server. |
+   | **Spara lösenordet?** | Ja eller nej | Välj Ja om du inte vill att tooenter hello lösenord varje gång. |
    | **Ange ett namn för den här profilen** | Ett anslutningsprofilnamn, t.ex. **mySampleDatabase** | Ett sparat profilnamn förbättrar anslutningen på efterföljande inloggningar. | 
 
-5. Tryck på tangenten **ESC** för att stänga meddelandet som informerar om att profilen har skapats och anslutits.
+5. Tryck på hello **ESC** viktiga tooclose info hälsningsmeddelande som informerar dig om att hello profil skapas och ansluten.
 
-6. Kontrollera anslutningen i statusfältet.
+6. Kontrollera din anslutning i hello statusfältet.
 
    ![Anslutningsstatus](./media/sql-database-connect-query-vscode/vscode-connection-status.png)
 
 ## <a name="query-data"></a>Frågedata
 
-Använd följande kod för att söka efter de 20 främsta produkterna med Transact-SQL-instruktionen [SELECT](https://msdn.microsoft.com/library/ms189499.aspx).
+Använd hello följande kod tooquery för hello de 20 största produkter efter kategori med hello [Välj](https://msdn.microsoft.com/library/ms189499.aspx) Transact-SQL-instruktionen.
 
-1. I fönstret **Editor** anger du följande fråga i frågefönstret:
+1. I hello **Editor** fönstret Ange hello följande fråga i hello tom frågefönstret:
 
    ```sql
    SELECT pc.Name as CategoryName, p.name as ProductName
@@ -127,15 +127,15 @@ Använd följande kod för att söka efter de 20 främsta produkterna med Transa
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-2. Tryck på **CTRL+SKIFT+E** att hämta data från Product- och ProductCategory-tabeller.
+2. Tryck på **CTRL + SKIFT + E** tooretrieve data från hello produkt och produktkategori.
 
     ![Fråga](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Infoga data
 
-Använd följande kod för att infoga en ny produkt i tabellen SalesLT.Product med Transact-SQL-instruktionen [INSERT](https://msdn.microsoft.com/library/ms174335.aspx).
+Använd hello följande kod tooinsert en ny produkt i hello SalesLT.Product tabellen med hjälp av hello [infoga](https://msdn.microsoft.com/library/ms174335.aspx) Transact-SQL-instruktionen.
 
-1. I fönstret **Editor** tar du bort föregående fråga och skriver in följande fråga:
+1. I hello **Editor** , ta bort hello föregående fråga och ange hello följande fråga:
 
    ```sql
    INSERT INTO [SalesLT].[Product]
@@ -157,13 +157,13 @@ Använd följande kod för att infoga en ny produkt i tabellen SalesLT.Product m
            ,GETDATE() );
    ```
 
-2. Tryck på **CTRL+SKIFT+E** för att infoga en ny rad i Product-tabellen.
+2. Tryck på **CTRL + SKIFT + E** tooinsert en ny rad i tabellen för hello-produkten.
 
 ## <a name="update-data"></a>Uppdatera data
 
-Med följande kod uppdaterar du den nya produkt du tidigare lade till med Transact-SQL-instruktionen [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx).
+Använd hello följande kod tooupdate hello ny produkt som du tidigare har lagts till med hello [uppdatering](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL-instruktionen.
 
-1.  I fönstret **Editor** tar du bort föregående fråga och skriver in följande fråga:
+1.  I hello **Editor** , ta bort hello föregående fråga och ange hello följande fråga:
 
    ```sql
    UPDATE [SalesLT].[Product]
@@ -171,22 +171,22 @@ Med följande kod uppdaterar du den nya produkt du tidigare lade till med Transa
    WHERE Name = 'myNewProduct';
    ```
 
-2. Tryck på **CTRL+SKIFT+E** för att uppdatera angiven rad i Product-tabellen.
+2. Tryck på **CTRL + SKIFT + E** tooupdate hello angivna raden i tabellen för hello-produkten.
 
 ## <a name="delete-data"></a>Ta bort data
 
-Med följande kod tar du bort den nya produkt du tidigare lade till med Transact-SQL-instruktionen [DELETE](https://msdn.microsoft.com/library/ms189835.aspx).
+Använd hello följande kod toodelete hello ny produkt som du tidigare har lagts till med hello [ta bort](https://msdn.microsoft.com/library/ms189835.aspx) Transact-SQL-instruktionen.
 
-1. I fönstret **Editor** tar du bort föregående fråga och skriver in följande fråga:
+1. I hello **Editor** , ta bort hello föregående fråga och ange hello följande fråga:
 
    ```sql
    DELETE FROM [SalesLT].[Product]
    WHERE Name = 'myNewProduct';
    ```
 
-2. Tryck på **CTRL+SHIFT+E** för att ta bort angiven rad i Product-tabellen.
+2. Tryck på **CTRL + SKIFT + E** toodelete hello angivna raden i tabellen för hello-produkten.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om du vill ansluta och fråga med SQL Server Management Studio kan du läsa [Anslut och fråga med SSMS](sql-database-connect-query-ssms.md).
+- tooconnect och fråga med SQL Server Management Studio finns [Anslut och fråga med SSMS](sql-database-connect-query-ssms.md).
 - En artikel från MSDN-magazine om hur du använder Visual Studio Code finns i [Skapa en IDE-databas med MSSQL-tillägget blogginlägg](https://msdn.microsoft.com/magazine/mt809115).

@@ -1,6 +1,6 @@
 ---
-title: "Använda Blob storage (objektlagring) från Ruby | Microsoft Docs"
-description: Lagra ostrukturerade data i molnet med Azure Blob Storage (objektlagring).
+title: "aaaHow toouse Blob storage (objektlagring) från Ruby | Microsoft Docs"
+description: Lagra Ostrukturerade data i hello moln med Azure Blob storage (objektlagring).
 services: storage
 documentationcenter: ruby
 author: mmacy
@@ -14,21 +14,21 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-ms.openlocfilehash: 7f7d0c52b2b50a360711477e8e0eafc07ddcf374
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 638826777f5a7ae8330fd67cdbb51d5eee1736a5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-blob-storage-from-ruby"></a>Använda Blob Storage från Ruby
+# <a name="how-toouse-blob-storage-from-ruby"></a>Hur toouse Blob storage från Ruby
 [!INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Översikt
-Azure Blob Storage är en tjänst som lagrar ostrukturerade data i molnet som objekt/blobbar. Blob Storage kan lagra alla slags textdata eller binära data, till exempel ett dokument, en mediefil eller ett installationsprogram. Blob Storage kallas även för objektlagring.
+Azure Blob storage är en tjänst som lagrar Ostrukturerade data i hello molnet som objekt/blobbar. Blob Storage kan lagra alla slags textdata eller binära data, till exempel ett dokument, en mediefil eller ett installationsprogram. BLOB storage är också hänvisade tooas objektlagring.
 
-Den här guiden visar hur du utför vanliga scenarier med Blob storage. Exemplen är skrivna med hjälp av Ruby-API. Scenarier som tas upp inkluderar **överför, lista, hämtar** och **bort** blobbar.
+Den här guiden visar hur tooperform vanliga scenarier med Blob storage. hello exempel skrivs med hello Ruby API. hello beskrivs scenarier där **överför, lista, hämtar** och **bort** blobbar.
 
 [!INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
 
@@ -37,50 +37,50 @@ Den här guiden visar hur du utför vanliga scenarier med Blob storage. Exemplen
 ## <a name="create-a-ruby-application"></a>Skapa ett Ruby-program
 Skapa ett Ruby program. Instruktioner finns i [Ruby på spår webbprogram på en Azure VM](../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)
 
-## <a name="configure-your-application-to-access-storage"></a>Konfigurera ditt program åtkomst till lagring
-Om du vill använda Azure Storage, måste du hämtar och använder Ruby azure-paketet, som innehåller en uppsättning bekvämlighet bibliotek som kommunicerar med storage REST-tjänster.
+## <a name="configure-your-application-tooaccess-storage"></a>Konfigurera ditt program tooaccess lagring
+toouse Azure Storage, behöver du toodownload och Använd hello Ruby azure-paketet som innehåller en uppsättning bekvämlighet bibliotek som kommunicerar med hello storage REST-tjänster.
 
-### <a name="use-rubygems-to-obtain-the-package"></a>Använda RubyGems för att hämta paketet
+### <a name="use-rubygems-tooobtain-hello-package"></a>Använd RubyGems tooobtain hello-paket
 1. Använd ett kommandoradsgränssnitt som **PowerShell** (Windows), **Terminal** (Mac), eller **Bash** (Unix).
-2. Skriv ”symbolen installera azure” i kommandofönstret att installera symbolen och beroenden.
+2. Skriv ”symbolen installera azure” i hello kommandot fönstret tooinstall hello symbolen och beroenden.
 
-### <a name="import-the-package"></a>Importera paketet
-Med hjälp av valfri textredigerare, lägger du till följande upp i filen Ruby där du tänker använda lagring:
+### <a name="import-hello-package"></a>Importera hello-paket
+Med hjälp av valfri textredigerare, Lägg till hello följande toohello överkant hello Ruby filen där du ska toouse lagring:
 
 ```ruby
 require "azure"
 ```
 
 ## <a name="set-up-an-azure-storage-connection"></a>Skapa en Azure Storage-anslutning
-Azure-modulen läses miljövariablerna **AZURE\_lagring\_konto** och **AZURE\_lagring\_ACCESS_KEY** information som krävs för att ansluta till Azure storage-konto. Om de här miljövariablerna inte har angetts måste du ange kontoinformation innan du använder **Azure::Blob::BlobService** med följande kod:
+hello azure modulen läser hello miljövariabler **AZURE\_lagring\_konto** och **AZURE\_lagring\_ACCESS_KEY** för information krävs tooconnect tooyour Azure storage-konto. Om de här miljövariablerna inte har angetts måste du ange hello kontoinformation innan du använder **Azure::Blob::BlobService** med hello följande kod:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
 Azure.config.storage_access_key = "<your azure storage access key>"
 ```
 
-Du kan hämta dessa värden från en klassiska eller Resource Manager storage-konto i Azure-portalen:
+tooobtain dessa värden från en klassiska eller Resource Manager lagring konto i hello Azure-portalen:
 
-1. Logga in på [Azure-portalen](https://portal.azure.com).
-2. Navigera till storage-konto som du vill använda.
-3. I bladet inställningar till höger klickar du på **åtkomstnycklar**.
-4. I åtkomst bladet nycklar som visas, visas den åtkomstnyckel 1 och åtkomstnyckel 2. Du kan använda någon av dessa.
-5. Klicka på Kopiera-ikonen för att kopiera nyckeln till Urklipp.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).
+2. Navigera toohello storage-konto som du vill toouse.
+3. I hello inställningsbladet på hello höger klickar du på **åtkomstnycklar**.
+4. I hello åtkomst bladet nycklar som visas, visas hello åtkomstnyckel 1 och åtkomstnyckel 2. Du kan använda någon av dessa.
+5. Klicka på hello kopiera ikonen toocopy hello viktiga toohello Urklipp.
 
-Du kan hämta dessa värden från ett klassiska storage-konto i den klassiska Azure-portalen:
+tooobtain värdena från klassiska lagring konto i hello klassiska Azure-portalen:
 
-1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com).
-2. Navigera till storage-konto som du vill använda.
-3. Klicka på **hantera ÅTKOMSTNYCKLAR** längst ned i navigeringsfönstret.
-4. I popup-fönstret visas lagringskontonamn, primärnyckeln och sekundära åtkomstnyckeln. Du kan använda antingen den primära eller sekundära en för åtkomst till nyckeln.
-5. Klicka på Kopiera-ikonen för att kopiera nyckeln till Urklipp.
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com).
+2. Navigera toohello storage-konto som du vill toouse.
+3. Klicka på **hantera ÅTKOMSTNYCKLAR** längst hello hello navigeringsfönstret.
+4. I hello popup-fönstret visas hello lagringskontonamn, primärnyckeln och sekundära åtkomstnyckeln. Du kan använda hello primära eller hello sekundära för åtkomst till nyckeln.
+5. Klicka på hello kopiera ikonen toocopy hello viktiga toohello Urklipp.
 
 ## <a name="create-a-container"></a>Skapa en behållare
 [!INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-Den **Azure::Blob::BlobService** objekt kan du arbeta med behållare och blobbar. Du kan skapa en behållare med den **skapa\_container()** metod.
+Hej **Azure::Blob::BlobService** objekt kan du arbeta med behållare och blobbar. toocreate en behållare använder hello **skapa\_container()** metod.
 
-Följande exempel skapar en behållare eller skriver ut felet om sådana finns.
+hello följande exempel skapar en behållare eller skriver ut hello fel om sådana finns.
 
 ```ruby
 azure_blob_service = Azure::Blob::BlobService.new
@@ -91,32 +91,32 @@ rescue
 end
 ```
 
-Om du vill göra filerna i behållaren offentliga kan du ange behållarens behörigheter.
+Om du vill toomake hello filer i hello behållaren offentliga kan ange du hello behållaren behörigheter.
 
-Du kan bara ändra det <strong>skapa\_container()</strong> anrop för att skicka den **: offentliga\_åtkomst\_nivå** alternativ:
+Du kan bara ändra hello <strong>skapa\_container()</strong> anropet toopass hello **: offentliga\_åtkomst\_nivå** alternativ:
 
 ```ruby
 container = azure_blob_service.create_container("test-container",
     :public_access_level => "<public access level>")
 ```
 
-Giltiga värden för den **: offentliga\_åtkomst\_nivå** alternativ är:
+Giltiga värden för hello **: offentliga\_åtkomst\_nivå** alternativ är:
 
-* **BLOB:** anger offentlig läsbehörighet för blobbar. BLOB-data i den här behållaren kan läsas via anonym begäran, men behållardata är inte tillgänglig. Klienter kan inte räkna upp blobbar i behållaren via anonym begäran.
-* **behållare:** anger fullständig offentlig läsbehörighet för behållaren och blob-data. Klienter kan räkna upp blobbar i behållaren via anonym begäran, men det går inte att räkna upp behållare i lagringskontot.
+* **BLOB:** anger offentlig läsbehörighet för blobbar. BLOB-data i den här behållaren kan läsas via anonym begäran, men behållardata är inte tillgänglig. Klienter kan inte räkna upp blobbar i behållaren hello via anonym begäran.
+* **behållare:** anger fullständig offentlig läsbehörighet för behållaren och blob-data. Klienter kan räkna upp blobbar i behållaren hello via anonym begäran, men det går inte att räkna upp behållare i hello storage-konto.
 
-Du kan också ändra offentliga åtkomstnivån för en behållare med hjälp av **ange\_behållare\_acl()** metod för att ange nivån offentlig åtkomst.
+Alternativt, du kan ändra hello offentliga åtkomstnivån för en behållare med hjälp av **ange\_behållare\_acl()** åtkomstnivå för metoden toospecify hello offentliga.
 
-Följande exempel ändras offentliga åtkomstnivå till **behållare**:
+Hej följande kodexempel ändringar hello offentliga åtkomstnivå för**behållare**:
 
 ```ruby
 azure_blob_service.set_container_acl('test-container', "container")
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Ladda upp en blobb till en behållare
-Om du vill överföra innehåll till en blobb, använder den **skapa\_block\_blob()** metoden för att skapa blob, använder en fil eller en sträng som innehåll i blob.
+tooupload innehåll tooa blob, Använd hello **skapa\_block\_blob()** metoden toocreate hello blob, använda en fil eller en sträng som hello innehållet i hello blob.
 
-Följande kod överför filen **test.png** som en ny blob med namnet ”-avbildningsbloben” i behållaren.
+hello följande kod överför hello fil **test.png** som en ny blob med namnet ”-avbildningsbloben” i hello behållaren.
 
 ```ruby
 content = File.open("test.png", "rb") { |file| file.read }
@@ -125,11 +125,11 @@ blob = azure_blob_service.create_block_blob(container.name,
 puts blob.name
 ```
 
-## <a name="list-the-blobs-in-a-container"></a>Visa en lista över blobbarna i en behållare
-Om du vill visa behållarna som använder **list_containers()** metod.
-Om du vill visa blobbar i en behållare använder **lista\_blobs()** metod.
+## <a name="list-hello-blobs-in-a-container"></a>Lista hello blobbar i en behållare
+toolist hello behållare använder **list_containers()** metod.
+toolist hello blobbar i en behållare använder **lista\_blobs()** metod.
 
-Detta anger URL: er för alla blobbar i alla behållare för kontot.
+Detta matar ut hello URL: er för alla hello BLOB i alla hello-behållare för hello-kontot.
 
 ```ruby
 containers = azure_blob_service.list_containers()
@@ -142,9 +142,9 @@ end
 ```
 
 ## <a name="download-blobs"></a>Ladda ned blobbar
-Om du vill ladda ned blobbar använda av **hämta\_blob()** metod för att hämta innehållet.
+toodownload blobbar använda hello **hämta\_blob()** metoden tooretrieve hello innehållet.
 
-I följande kodexempel visas hur du använder **hämta\_blob()** att hämta innehållet i ”avbildningsbloben” och skriver den till en lokal fil.
+hello följande kodexempel visas hur du använder **hämta\_blob()** toodownload hello innehållet i ”avbildningsbloben” och skriver den tooa lokal fil.
 
 ```ruby
 blob, content = azure_blob_service.get_blob(container.name,"image-blob")
@@ -152,16 +152,16 @@ File.open("download.png","wb") {|f| f.write(content)}
 ```
 
 ## <a name="delete-a-blob"></a>Ta bort en Blobb
-Slutligen, om du vill ta bort en blobb, använda den **ta bort\_blob()** metod. Följande kodexempel visar hur du tar bort en blob.
+Slutligen toodelete blob använda hello **ta bort\_blob()** metod. hello följande kodexempel visar hur toodelete en blob.
 
 ```ruby
 azure_blob_service.delete_blob(container.name, "image-blob")
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om mer komplexa lagringsuppgifter, kan du följa dessa länkar:
+toolearn om mer komplexa lagringsuppgifter följa dessa länkar:
 
 * [Azure Storage Teamblogg](http://blogs.msdn.com/b/windowsazurestorage/)
 * [Azure SDK för Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) databasen på GitHub
-* [Överföra data med kommandoradsverktyget AzCopy](storage-use-azcopy.md)
+* [Överföra data med kommandoradsverktyget Azcopy hello](storage-use-azcopy.md)
 

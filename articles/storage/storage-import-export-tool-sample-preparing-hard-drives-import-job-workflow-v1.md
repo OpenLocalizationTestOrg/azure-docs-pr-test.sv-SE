@@ -1,6 +1,6 @@
 ---
-title: "Exempelarbetsflöde till Förbered dig hårddiskar för ett Azure Import/Export-importjobb - v1 | Microsoft Docs"
-description: "Se en genomgång för fullständig processen med att förbereda enheter för ett importjobb i tjänsten Azure Import/Export."
+title: "aaaSample arbetsflöde tooprep hårddiskar för Azure Import/Export-importjobb - v1 | Microsoft Docs"
+description: "Se en genomgång för hello Slutför process förbereder enheter för ett importjobb i hello Azure Import/Export service."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 313f8c1f3962a943b4c98c530c324ff28aa84c10
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f836fc6104d8b4ad5660cb110a62f61b40b0b7ff
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Exempelarbetsflöde för att förbereda hårddiskar för ett importjobb
-Det här avsnittet vägleder dig genom processen förbereder enheter för importen.  
+# <a name="sample-workflow-tooprepare-hard-drives-for-an-import-job"></a>Exempel arbetsflödet tooprepare hårddiskar för ett importjobb
+Det här avsnittet vägleder dig genom hello Slutför process förbereder enheter för importen.  
   
-Det här exemplet importerar följande data till en Windows Azure-lagringskonto med namnet `mystorageaccount`:  
+Det här exemplet importerar hello följande data till en Windows Azure storage-konto med namnet `mystorageaccount`:  
   
 |Plats|Beskrivning|  
 |--------------|-----------------|  
@@ -32,7 +32,7 @@ Det här exemplet importerar följande data till en Windows Azure-lagringskonto 
 |K:\Temp\FavoriteMovie.ISO|A Blu-ray™ diskavbildning, 25 GB.|  
 |\\\bigshare\john\music|En samling av musik på en nätverksresurs, 10 GB totalt.|  
   
-Importjobbet importerar data till med följande mål i storage-konto:  
+hello importjobbet importeras dessa data till hello följande mål i hello storage-konto:  
   
 |Källa|Mål virtuell katalog eller blob|  
 |------------|-------------------------------------------|  
@@ -41,13 +41,13 @@ Importjobbet importerar data till med följande mål i storage-konto:
 |K:\Temp\FavoriteMovie.ISO|https://mystorageaccount.BLOB.Core.Windows.NET/favorite/FavoriteMovies.ISO|  
 |\\\bigshare\john\music|https://mystorageaccount.BLOB.Core.Windows.NET/Music|  
   
-Med den här mappningen filen `H:\Video\Drama\GreatMovie.mov` ska importeras till blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
+Med den här mappningen hello filen `H:\Video\Drama\GreatMovie.mov` blir importerade toohello blob `https://mystorageaccount.blob.core.windows.net/video/Drama/GreatMovie.mov`.  
   
-Sedan beräkna storleken på data för att avgöra hur många hårddiskar behövs:  
+Nästa toodetermine hur många hårddiskar krävs beräkning hello storleken på hello data:  
   
 `5TB + 30GB + 25GB + 10GB = 5TB + 65GB`  
   
-I det här exemplet är två 3TB-hårddiskar tillräckliga. Eftersom källkatalogen `H:\Video` har 5TB data och den enda hårddisken kapacitet är 3TB, är det nödvändigt att bryta `H:\Video` i två mindre kataloger innan du kör verktyget Microsoft Azure Import/Export: `H:\Video1` och `H:\Video2`. Det här steget ger följande källa kataloger:  
+I det här exemplet är två 3TB-hårddiskar tillräckliga. Eftersom hello källkatalog `H:\Video` har 5TB data och den enda hårddisken kapacitet är 3TB, är det nödvändigt toobreak `H:\Video` hello i två mindre kataloger innan du kör verktyget Azure Import/Export: `H:\Video1` och `H:\Video2`. Det här steget ger hello efter källan:  
   
 |Plats|Storlek|Mål virtuell katalog eller blob|  
 |--------------|----------|-------------------------------------------|  
@@ -57,9 +57,9 @@ I det här exemplet är två 3TB-hårddiskar tillräckliga. Eftersom källkatalo
 |K:\Temp\FavoriteMovies.ISO|25 GB|https://mystorageaccount.BLOB.Core.Windows.NET/favorite/FavoriteMovies.ISO|  
 |\\\bigshare\john\music|10GB|https://mystorageaccount.BLOB.Core.Windows.NET/Music|  
   
- Observera att även om den `H:\Video`directory har delats till två kataloger som de pekar på samma virtuella målkatalogen i storage-konto. På så sätt kan alla videofiler bevaras under en enda `video` behållare i lagringskontot.  
+ Observera att även om hello `H:\Video`directory har delats tootwo kataloger, de peka toohello samma mål virtuell katalog på hello storage-konto. På så sätt kan alla videofiler bevaras under en enda `video` behållare i hello storage-konto.  
   
- Därefter fördelas ovan källa kataloger jämnt till två hårddiskar:  
+ Därefter distribuerade hello ovan källa kataloger är jämnt toohello två hårddiskar:  
   
 ||||  
 |-|-|-|  
@@ -70,7 +70,7 @@ I det här exemplet är två 3TB-hårddiskar tillräckliga. Eftersom källkatalo
 ||K:\Temp\BlueRay.ISO||  
 ||\\\bigshare\john\music||  
   
-Dessutom kan du ange följande metadata för alla filer:  
+Du kan dessutom ange hello efter metadata för alla filer:  
   
 -   **UploadMethod:** Windows Azure Import/Export service  
   
@@ -78,7 +78,7 @@ Dessutom kan du ange följande metadata för alla filer:
   
 -   **CreationDate:** 10/1/2013  
   
-Skapa en textfil, om du vill ange metadata för de importerade filerna `c:\WAImportExport\SampleMetadata.txt`, med följande innehåll:  
+tooset metadata för hello importeras filer, skapa en textfil `c:\WAImportExport\SampleMetadata.txt`, med hello följande innehåll:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -89,7 +89,7 @@ Skapa en textfil, om du vill ange metadata för de importerade filerna `c:\WAImp
 </Metadata>  
 ```
   
-Du kan också ange vissa egenskaper för den `FavoriteMovie.ISO` blob:  
+Du kan också ange vissa egenskaper för hello `FavoriteMovie.ISO` blob:  
   
 -   **Content-Type:** program/oktett-ström  
   
@@ -97,7 +97,7 @@ Du kan också ange vissa egenskaper för den `FavoriteMovie.ISO` blob:
   
 -   **Cache-Control:** no-cache  
   
-Att ange dessa egenskaper, skapa en textfil `c:\WAImportExport\SampleProperties.txt`:  
+tooset dessa egenskaper, skapa en textfil `c:\WAImportExport\SampleProperties.txt`:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -108,30 +108,30 @@ Att ange dessa egenskaper, skapa en textfil `c:\WAImportExport\SampleProperties.
 </Properties>  
 ```
   
-Nu är du redo att köra verktyget Azure Import/Export för att förbereda två hårddiskar. Tänk på följande:  
+Nu är du redo toorun hello Azure Import/Export verktyget tooprepare hello två hårddiskar. Tänk på följande:  
   
--   Den första enheten är monterad enhet X.  
+-   hello första enheten är monterad enhet X.  
   
--   Den andra enheten är monterad enhet Y.  
+-   andra hello-enhet är monterad enhet Y.  
   
--   Nyckeln för lagringskontot `mystorageaccount` är `8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg==`.  
+-   hello nyckel för hello lagringskonto `mystorageaccount` är `8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg==`.  
 
 ## <a name="preparing-disk-for-import-when-data-is-pre-loaded"></a>Förbereda disk för import när data har redan lästs in
  
- Om data som ska importeras finns redan på disken, använder du flaggan /skipwrite. Värdet för /t och /srcdir både måste peka på den disk som förbereds för import. Om inte alla data på disken gå till samma virtuella målkatalogen eller roten för storage-konto måste köra samma kommando för varje katalog separat som värdet för /id samma över alla körs.
+ Om det redan finns på disken hello hello data toobe importeras, Använd hello flaggan /skipwrite. Värdet för /t och /srcdir ska peka toohello disk förbereds för import. Om inte alla hello data på hello disken måste toogo toohello samma mål virtuell katalog eller roten för hello storage-konto, kör hello samma kommando för varje katalog separat hålla hello värdet för /id samma över alla körs.
 
 >[!NOTE] 
->Ange inte/format som den kommer att radera data på disken. Du kan ange / kryptera eller /bk beroende på om disken redan är krypterad eller inte. 
+>Ange inte/format som den kommer att radera hello data på hello disk. Du kan ange / kryptera eller /bk beroende på om hello disken redan är krypterad eller inte. 
 >
 
 ```
-    When data is already present on the disk for each drive run the following command.
+    When data is already present on hello disk for each drive run hello following command.
     WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Video1 /logdir:c:\logs /sk:8ImTigJhIwvL9VEIQKB/zbqcXbxrIHbBjLIfOt0tyR98TxtFvUM/7T0KVNR6KRkJrh26u5I8hTxTLM2O1aDVqg== /t:x /format /encrypt /srcdir:x:\Video1 /dstdir:video/ /MetadataFile:c:\WAImportExport\SampleMetadata.txt /skipwrite
 ```
 
 ## <a name="copy-sessions---first-drive"></a>Kopiera sessioner - enheten först
 
-Kör verktyget Azure Import/Export två gånger för att kopiera kataloger för två källa för den första enheten:  
+Första hello-enheten kör hello Azure Import/Export-verktyget datakällan två gånger toocopy hello två kataloger:  
 
 **Först kopiera session**
   
@@ -147,7 +147,7 @@ WAImportExport.exe PrepImport /j:FirstDrive.jrn /id:Photo /srcdir:H:\Photo /dstd
 
 ## <a name="copy-sessions---second-drive"></a>Kopiera sessioner - andra enhet
  
-Den andra enheten kör du verktyget Azure Import/Export tre gånger, en gång var och en för käll-kataloger och en gång för avbildningsfilen fristående Blu-Ray™):  
+För hello andra enhet som kör hello Azure Import/Export verktyget tre gånger när varje hello datakälla kataloger och en gång för hello fristående Blu-Ray™ bildfilen):  
   
 **Först kopiera session** 
 
@@ -169,7 +169,7 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 
 ## <a name="copy-session-completion"></a>Kopiera session slutförande
 
-När kopiera sessioner har slutfört du koppla de två enheterna från datorn som kopia och skicka dem till lämpliga Windows Azure-datacentret. Du måste ladda upp två journalfiler `FirstDrive.jrn` och `SecondDrive.jrn`när du skapar importjobbet i den [Windows Azure Management Portal](https://manage.windowsazure.com/).  
+När hello kopiera sessioner har slutfört kan du koppla hello två enheter från hello kopiera dator och leverera dem toohello lämplig Windows Azure-datacenter. Du måste överföra hello två journalfiler `FirstDrive.jrn` och `SecondDrive.jrn`, när du skapar hello importjobb i hello [Windows Azure Management Portal](https://manage.windowsazure.com/).  
   
 ## <a name="next-steps"></a>Nästa steg
 

@@ -6,12 +6,12 @@
 ## [Viktiga begrepp](azure-operations-guide.md#azure-key-concepts)
 ### [Översikt över Microsoft Azure Portal](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) 
 ### [Hantera Azure-resurser via portalen](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)
-### [Installera och konfigurera Azure PowerShell](/powershell/azure/install-azurerm-ps)
-### [Installera Azure CLI](/cli/azure/install-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/install-azurerm-ps)
+### [Installera hello Azure CLI](/cli/azure/install-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Referens för Azures REST-SDK](https://docs.microsoft.com/rest/api/index)
 
 ## [Prenumerationer](azure-operations-guide.md#azure-subscriptions)
-### [Ladda ned din Azure-faktura och information om den dagliga användningen](../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Hur toodownload Azure faktureringen faktura och dagliga användningsdata](../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Få insikter om din resursförbrukning](../../billing/billing-usage-rate-card-overview.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Webbaserad priskalkylator](http://azure.microsoft.com/pricing/calculator)
 ### [Ställa in faktureringsvarningar](../../billing/billing-set-up-alerts.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -19,12 +19,12 @@
 ## [Azure Resource Manager](azure-operations-guide.md#azure-resource-manager)
 
 ### [Skapa Azure Resource Manager-mallar](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Distribuera mallar med hjälp av Azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+###[Distribuera mallar med hjälp av hello Azure-portalen](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ###[Distribuera mallar med hjälp av Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Distribuera mallar med hjälp av Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+###[Distribuera mallar med hjälp av hello Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Säkerhet (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[Hantera resurser med hjälp av rolltilldelningar](../../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+###[Använda rollen tilldelningar toomanage resurser](../../active-directory/role-based-access-control-configure.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Virtuella datorer](azure-operations-guide.md#azure-virtual-machines)
 ### [VM-storlekar för Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
@@ -32,8 +32,8 @@
 
 
 ### Skapa en virtuell Windows-dator snabbt
-#### [Använda Azure CLI](../../virtual-machines/windows/quick-create-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [Använda portalen](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Med hjälp av hello Azure CLI](../../virtual-machines/windows/quick-create-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Med hjälp av hello portal](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Använda PowerShell](../../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Självstudier för virtuella datorer för Windows
 #### [Skapa/hantera en virtuell dator](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -50,8 +50,8 @@
 #### [Team Services CI/CD](../../virtual-machines/windows/tutorial-vsts-iis-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ### Skapa en virtuell Linux-dator snabbt
-#### [Använda Azure CLI](../../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [Använda portalen](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Med hjälp av hello Azure CLI](../../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Med hjälp av hello portal](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Använda PowerShell](../../virtual-machines/linux/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Självstudier för virtuella datorer för Linux
 #### [Skapa/hantera virtuella datorer](../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -68,19 +68,19 @@
 #### [Jenkins CI/CD](../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ### [IP-adresser i Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Öppna portar till en virtuell dator i Azure med hjälp av Azure Portal](../../virtual-machines/windows/nsg-quickstart-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Öppna portar tooa VM i Azure med hjälp av hello Azure-portalen](../../virtual-machines/windows/nsg-quickstart-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Storage](azure-operations-guide.md#azure-storage)
 
 ### [Azure Blob Storage](../../storage/blobs/storage-blob-storage-tiers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Komma igång med Azure Blob Storage med hjälp av .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Komma igång med Azure File Storage i Windows](../../storage/files/storage-how-to-use-files-windows.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
-### [Använd Azure File Storage med Linux](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Hur toouse Azure File storage med Linux](../../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Komma igång med Azure Table Storage](../../cosmos-db/table-storage-how-to-use-dotnet.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Komma igång med Azure Queue Storage](../../storage/queues/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Skapa ett lagringskonto](../../storage/common/storage-create-storage-account.md#create-a-storage-account)
 ### [Använd Azure PowerShell med Azure Storage](../../storage/common/storage-powershell-guide-full.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Använda Azure CLI med Azure Storage](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Använda hello Azure CLI med Azure Storage.](../../storage/common/storage-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Storage-klientverktyg](../../storage/common/storage-explorers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [REST API-referens för Azure Storage-tjänster](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference)
 ### [Använda signaturer för delad åtkomst](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -88,13 +88,13 @@
 
 
 ## [Virtuella nätverk](azure-operations-guide.md#azure-virtual-network)
-### [Skapa ett virtuellt nätverk med Azure Portal](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Skapa ett virtuellt nätverk med hello Azure-portalen](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Skapa ett virtuellt nätverk med hjälp av PowerShell](../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Skapa ett virtuellt nätverk med hjälp av Azure CLI](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Skapa ett virtuellt nätverk med hjälp av hello Azure CLI](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Filtrera nätverkstrafik med nätverkssäkerhetsgrupper](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### Självstudier för virtuella nätverk
 #### [Belastningsutjämna virtuella datorer](../../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [Anslut en dator till ett virtuellt nätverk](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Ansluta ett virtuellt nätverk för dator-tooa](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Nästa steg](azure-operations-guide.md#next-steps)
 # Resurser

@@ -1,6 +1,6 @@
 ---
-title: "Azure AD-Java-kommandoraden komma igång | Microsoft Docs"
-description: "Hur du skapar en Java-kommandoradsapp som loggar användarna in för att få åtkomst till en API."
+title: "aaaAzure AD Java-kommandoraden komma igång | Microsoft Docs"
+description: "Hur kommandot toobuild en Java rad app som signerar användare i tooaccess en API."
 services: active-directory
 documentationcenter: java
 author: navyasric
@@ -15,51 +15,51 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 91e4a7b2ac454465d5cce4948a4d5f0b542d2b55
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9ba1d1e794928a39ca1f091bd0e6eba57ce3d6aa
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>Använder appen för Java-kommandoraden för att komma åt ett API med Azure AD
+# <a name="using-java-command-line-app-tooaccess-an-api-with-azure-ad"></a>Med Java Kommandoradsapp tooAccess en API med Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Azure AD gör det lätt att flytta ut ditt webbprogram för Identitetshantering, att tillhandahålla enkel inloggning och utloggning med bara några få rader med kod.  I Java-webbappar, kan du göra detta med hjälp av Microsofts implementering av community-driven ADAL4J.
+Azure AD gör det lätt toooutsource ditt webbprogram Identitetshantering att tillhandahålla enkel inloggning och utloggning med bara några få rader med kod.  I Java-webbappar, kan du göra detta med hjälp av Microsofts implementering av hello community-driven ADAL4J.
 
   Vi använder här ADAL4J till:
 
-* Logga in användaren till appen med Azure AD som identitetsleverantören.
-* Visa information om användaren.
-* Logga ut från appen användaren.
+* Logga hello användare in hello app med Azure AD som hello identitetsleverantör.
+* Visa information om hello användare.
+* Logga hello användare utanför hello appen.
 
-För att kunna göra detta måste du:
+I order toodo detta, måste du:
 
 1. Registrera ett program med Azure AD
-2. Konfigurera din app att använda ADAL4J-biblioteket.
-3. Använd ADAL4J-biblioteket för att utfärda inloggnings- och utloggningsförfrågningar till Azure AD.
-4. Skriva ut data om användaren.
+2. Konfigurera biblioteket app toouse hello ADAL4J.
+3. Använd hello ADAL4J biblioteket tooissue inloggning och utloggning begäranden tooAzure AD.
+4. Skriva ut data om hello användare.
 
-Du kommer igång [ladda ned stommen app](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) eller [hämta det slutförda exemplet](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).  Du måste också en Azure AD-klient att registrera ditt program.  Om du inte redan har en [Lär dig hur du skaffa en](active-directory-howto-tenant.md).
+tooget har startats [hämta hello app stommen](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/skeleton.zip) eller [hämta hello slutförts exempel](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect\\/archive/complete.zip).  Du måste också en Azure AD-klient i vilka tooregister ditt program.  Om du inte redan har en [Lär dig hur tooget en](active-directory-howto-tenant.md).
 
 ## <a name="1--register-an-application-with-azure-ad"></a>1.  Registrera ett program med Azure AD
-Om du vill aktivera din app för att autentisera användare, behöver du först registrera ett nytt program i din klient.
+tooenable tooauthenticate användare för din app behöver du tooregister ett nytt program i din klient.
 
-1. Logga in på [Azure Portal](https://portal.azure.com).
-2. Klicka på den översta raden på ditt konto och under den **Directory** Välj Active Directory-klient som du vill registrera ditt program.
-3. Klicka på **fler tjänster** i den vänstra nav och välj **Azure Active Directory**.
+1. Logga in toohello [Azure-portalen](https://portal.azure.com).
+2. Hello översta, klicka på fältet för ditt konto och på hello **Directory** Välj plats tooregister programmet hello Active Directory-klient.
+3. Klicka på **fler tjänster** i hello vänstra nav och välj **Azure Active Directory**.
 4. Klicka på **App registreringar** och välj **Lägg till**.
-5. Följ anvisningarna och skapa en ny **webbprogram och/eller WebAPI**.
-  * Den **namn** av programmet beskriva programmet till slutanvändare
-  * Den **inloggnings-URL** är den grundläggande Webbadressen för din app.  Den stommen standardvärdet är `http://localhost:8080/adal4jsample/`.
-6. När du har slutfört registreringen tilldelas AAD appen ett unikt program-ID.  Du behöver det här värdet i nästa avsnitt så kopiera den från programfliken.
-7. Från den **inställningar** -> **egenskaper** för programmet, uppdatera App-ID-URI. Den **App-ID URI** är en unik identifierare för programmet.  Konventionen är att använda `https://<tenant-domain>/<app-name>`, t.ex. `http://localhost:8080/adal4jsample/`.
+5. Följ anvisningarna för hello och skapa en ny **webbprogram och/eller WebAPI**.
+  * Hej **namn** av hello programmet beskriver dina program tooend-användare
+  * Hej **inloggnings-URL** är hello bas-URL för din app.  hello stommen standardvärdet är `http://localhost:8080/adal4jsample/`.
+6. När du har slutfört registreringen tilldelas AAD appen ett unikt program-ID.  Du behöver det här värdet i nästa avsnitt hello så kopiera den från hello programfliken.
+7. Från hello **inställningar** -> **egenskaper** för programmet, uppdatera hello App-ID-URI. Hej **App-ID URI** är en unik identifierare för programmet.  hello konventionen är toouse `https://<tenant-domain>/<app-name>`, t.ex. `http://localhost:8080/adal4jsample/`.
 
-Skapa en gång för din app i portalen en **nyckeln** från den **inställningar** för programmet och kopiera ned.  Du behöver den snart.
+En gång i hello portal för din app skapar en **nyckeln** från hello **inställningar** för programmet och kopiera ned.  Du behöver den snart.
 
-## <a name="2-set-up-your-app-to-use-adal4j-library-and-prerequisites-using-maven"></a>2. Konfigurera din app att använda ADAL4J bibliotek och förutsättningar med Maven
-Här kan konfigurerar vi ADAL4J för att använda autentiseringsprotokollet OpenID Connect.  ADAL4J används för att utfärda inloggnings- och utloggningsförfrågningar, hantera användarens session och få information om användare, bland annat.
+## <a name="2-set-up-your-app-toouse-adal4j-library-and-prerequisites-using-maven"></a>2. Konfigurera din app toouse ADAL4J bibliotek och förutsättningar med Maven
+Här kan konfigurerar vi ADAL4J toouse hello autentiseringsprotokollet OpenID Connect.  ADAL4J kommer att använda tooissue inloggning och utloggningsförfrågningar, hantera hello användarens session och få information om hello användare, bland annat.
 
-* I rotkatalogen för ditt projekt, öppna/skapa `pom.xml` och leta upp den `// TODO: provide dependencies for Maven` och Ersätt med följande:
+* I hello rotkatalogen för ditt projekt, öppna/skapa `pom.xml` och leta upp hello `// TODO: provide dependencies for Maven` och Ersätt med hello följande:
 
 ```Java
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -181,10 +181,10 @@ Här kan konfigurerar vi ADAL4J för att använda autentiseringsprotokollet Open
 
 
 
-## <a name="3-create-the-java-publicclient-file"></a>3. Skapa filen Java PublicClient
-Enligt ovan, kommer vi att använda Graph-API och hämta data om den inloggade användaren. För att det ska vara enkelt för att vi ska vi skapa både en fil som representerar en **katalogobjekt** och en enskild fil som representerar den **användaren** så att OO mönstret för Java kan användas.
+## <a name="3-create-hello-java-publicclient-file"></a>3. Skapa hello Java PublicClient fil
+Enligt ovan, kommer vi att använda hello Graph API tooget data om hello inloggad användare. För den här enkelt för oss toobe ska vi skapa både en fil toorepresent en **katalogobjekt** och en enskild fil toorepresent hello **användaren** så att hello OO mönstret för Java kan användas.
 
-* Skapa en fil med namnet `DirectoryObject.java` som ska användas för att lagra grundläggande information om alla DirectoryObject (du kan passa på att använda detta senare för andra diagrammet frågor kan du göra). Du kan klipp ut och klistra in det här nedan:
+* Skapa en fil med namnet `DirectoryObject.java` som ska användas för toostore grundläggande information om alla DirectoryObject (du ledigt toouse detta senare för andra diagrammet frågor kan du göra). Du kan klipp ut och klistra in det här nedan:
 
 ```Java
 import java.io.BufferedReader;
@@ -248,24 +248,24 @@ public class PublicClient {
 ```
 
 
-## <a name="compile-and-run-the-sample"></a>Kompilera och köra exemplet
-Ändra tillbaka till din rotkatalog och kör följande kommando för att bygga exemplet du fört in tillsammans med `maven`. Det här använder den `pom.xml` filen som du skrev för beroenden.
+## <a name="compile-and-run-hello-sample"></a>Kompilera och köra hello-exempel
+Ändra tillbaka ut tooyour rotkatalog och kör hello efter kommandot toobuild hello exempel du fört in tillsammans med `maven`. Det här använder hello `pom.xml` fil som du skrev för beroenden.
 
 `$ mvn package`
 
-Du bör nu ha en `adal4jsample.war` filen i din `/targets` directory. Du kan distribuera som i Tomcat-behållaren och besöker Webbadressen 
+Du bör nu ha en `adal4jsample.war` filen i din `/targets` directory. Du kan distribuera som i Tomcat-behållaren och besök hello URL 
 
 `http://localhost:8080/adal4jsample/`
 
 > [!NOTE]
-> Det är mycket enkelt att distribuera en WAR-fil med de senaste Tomcat-servrarna. Helt enkelt navigera till `http://localhost:8080/manager/` och följ instruktionerna på Överför din '' adal4jsample.war-filen. Det kommer autodeploy du med korrekt slutpunkt.
+> Det är mycket enkelt toodeploy en WAR-fil med hello senaste Tomcat-servrar. Helt enkelt navigera för`http://localhost:8080/manager/` och följer instruktionerna för hello på Överför din '' adal4jsample.war-filen. Det kommer autodeploy du med hello korrekt slutpunkt.
 > 
 > 
 
 ## <a name="next-steps"></a>Nästa steg
-Grattis! Nu har du en fungerande Java-program som har möjlighet att autentisera användare på ett säkert sätt anropa webb-API: er med hjälp av OAuth 2.0 och få grundläggande information om användaren.  Om du inte redan gjort nu är det dags att fylla i din klient med vissa användare.
+Grattis! Du nu ha en fungerande Java-program som har hello möjlighet tooauthenticate användare på ett säkert sätt anropa webb-API: er med hjälp av OAuth 2.0 och hämta grundläggande information om hello användare.  Om du inte redan gjort nu är hello tid toopopulate din klient med vissa användare.
 
-För referens anger det slutförda exemplet (utan dina konfigurationsvärden) [har angetts som en .zip här](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip), eller kan du klona den från GitHub:
+För referens anger hello slutförts exemplet (utan dina konfigurationsvärden) [har angetts som en .zip här](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip), eller kan du klona den från GitHub:
 
 ```git clone --branch complete https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect.git```
 

@@ -1,6 +1,6 @@
 ---
-title: "Förstå Azure IoT Hub-enhet twins | Microsoft Docs"
-description: "Utvecklarhandbok - Använd enhet twins att synkronisera och konfigurationsändringar data mellan IoT-hubb och dina enheter"
+title: aaaUnderstand Azure IoT Hub-enhet twins | Microsoft Docs
+description: "Utvecklarhandbok - Använd enheten twins toosynchronize tillstånd och konfiguration av data mellan IoT-hubb och dina enheter"
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -15,54 +15,54 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b316aa419d558547f90a914a22fb29935076de21
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7dade18665108ed352ff3d18e864dc34f451bbf6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Förstå och använda enheten twins i IoT-hubb
 ## <a name="overview"></a>Översikt
-*Enheten twins* är JSON-dokument som lagrar tillstånd enhetsinformation (metadata, konfigurationer och villkor). IoT Hub lagrar en enhetstvilling för varje enhet som du ansluter till IoT Hub. Den här artikeln beskrivs:
+*Enheten twins* är JSON-dokument som lagrar tillstånd enhetsinformation (metadata, konfigurationer och villkor). IoT-hubb kvarstår en enhet dubbla för varje enhet som du ansluter tooIoT hubb. Den här artikeln beskrivs:
 
-* Strukturen för enheten dubbla: *taggar*, *önskade* och *rapporterade egenskaper*, och
-* De åtgärder som appar för enheter och -servrar kan utföra på enheten twins.
+* Hej strukturen för hello enheten dubbla: *taggar*, *önskade* och *rapporterade egenskaper*, och
+* hello-åtgärder som appar för enheter och -servrar kan utföra på enheten twins.
 
 > [!NOTE]
-> Enheten twins för närvarande enbart tillgänglig från enheter som ansluter till IoT-hubb med MQTT-protokollet. Referera till den [MQTT stöd] [ lnk-devguide-mqtt] artikel för instruktioner om hur du konverterar en befintlig enhetsapp att använda MQTT.
+> Enheten twins är för närvarande enbart tillgänglig från enheter som ansluter tooIoT hubb med hello MQTT-protokollet. Se toohello [MQTT stöd] [ lnk-devguide-mqtt] artikel anvisningar för hur tooconvert befintliga enheten app toouse MQTT.
 > 
 > 
 
-### <a name="when-to-use"></a>När du ska använda detta
+### <a name="when-toouse"></a>När toouse
 Använd enhet twins till:
 
-* Lagra enhetsspecifika metadata i molnet. Till exempel distributionsplatsen för en Varuautomat.
-* Rapportera aktuell statusinformation, till exempel tillgängliga funktioner och villkor från din enhet. Till exempel en enhet är ansluten till din IoT-hubb över mobil- eller WiFi.
-* Synkronisera tillståndet för tidskrävande arbetsflöden mellan enhetsapp och backend-app. Till exempel när lösningen tillbaka slutet anger den nya versionen på inbyggd programvara ska installeras och appen enheter rapporterar de olika stegen för uppdateringsprocessen.
+* Lagra enhetsspecifika metadata i hello molnet. Till exempel hello distribution platsen för en Varuautomat.
+* Rapportera aktuell statusinformation, till exempel tillgängliga funktioner och villkor från din enhet. Till exempel en enhet är ansluten tooyour IoT-hubb över mobil- eller WiFi.
+* Synkronisera hello tillståndet för tidskrävande arbetsflöden mellan enhetsapp och backend-app. När hello lösning tillbaka anger slutet exempelvis hello ny inbyggd programvara version tooinstall och hello enheten apprapporter hello olika stegen i hello uppdateringsprocessen.
 * Fråga din enhetsmetadata, konfiguration eller tillstånd.
 
-Referera till [enhet till moln kommunikation vägledning] [ lnk-d2c-guidance] anvisningar om hur du använder rapporterade egenskaper, meddelanden från enhet till moln eller ladda upp filen.
-Referera till [moln till enhet kommunikation vägledning] [ lnk-c2d-guidance] anvisningar om hur du använder egenskaper, direkt metoder eller moln till enhet meddelanden.
+Se för[enhet till moln kommunikation vägledning] [ lnk-d2c-guidance] anvisningar om hur du använder rapporterade egenskaper, meddelanden från enhet till moln eller ladda upp filen.
+Se för[moln till enhet kommunikation vägledning] [ lnk-c2d-guidance] anvisningar om hur du använder egenskaper, direkt metoder eller moln till enhet meddelanden.
 
 ## <a name="device-twins"></a>Enheten twins
 Enheten twins lagra enhetsrelaterade information som:
 
-* Enhet och tillbaka slutar använda för att synkronisera enheten villkor och konfiguration.
-* Lösningens serverdel kan använda för att fråga och mål långvariga åtgärder.
+* Enhet och tillbaka slutar använda toosynchronize enheten villkor och konfiguration.
+* hello lösningens serverdel kan använda tooquery och rikta långvariga åtgärder.
 
-Livscykeln för en enhet dubbla är kopplad till motsvarande [enhetsidentitet][lnk-identity]. Enheten twins implicit skapas och tas bort när en ny enhetsidentitet skapas eller tas bort i IoT-hubb.
+hello livscykeln för en enhet dubbla länkas toohello motsvarande [enhetsidentitet][lnk-identity]. Enheten twins implicit skapas och tas bort när en ny enhetsidentitet skapas eller tas bort i IoT-hubb.
 
 En enhet dubbla är en JSON-dokument som innehåller:
 
-* **Taggar**. En del av JSON-dokumentet som lösningens serverdel kan läsa från och skriva till. Taggar visas inte för appar för enheter.
-* **Egenskaper för Desired**. Används tillsammans med rapporterade egenskaper för att synkronisera enhetskonfigurationen eller villkor. Egenskaper kan endast anges av lösningen tillbaka slutet och kan läsas av appen enhet. Appen enheten kan också få meddelanden i realtid om ändringar i egenskaperna.
-* **Rapporterade egenskaper**. Används tillsammans med egenskaper för att synkronisera enhetskonfigurationen eller villkor. Rapporterat egenskaper kan kan endast ställas in via appen för enheter och läsa och efterfrågas av lösningens serverdel.
+* **Taggar**. En del av hello JSON-dokument som hello lösningens serverdel kan läsa från och skriva till. Taggar är inte synliga toodevice appar.
+* **Egenskaper för Desired**. Används tillsammans med rapporterade egenskaper toosynchronize enhetskonfigurationen eller villkor. Egenskaper kan endast anges av hello lösning tillbaka slutet och kan läsas av hello enhetsapp. Hej enhetsapp kan också få meddelanden i realtid om ändringar i hello önskade egenskaper.
+* **Rapporterade egenskaper**. Används tillsammans med egenskaper toosynchronize enhetskonfigurationen eller villkor. Rapporterat egenskaper kan kan endast anges av hello enhetsapp och läsa och efterfrågas av hello lösningens serverdel.
 
-Dessutom roten på enhet dubbla JSON-dokumentet innehåller skrivskyddade egenskaper från motsvarande enhetens identitet lagras i den [identitetsregistret][lnk-identity].
+Dessutom hello roten för hello enheten dubbla JSON-dokumentet innehåller hello skrivskyddade egenskaper från hello motsvarande enhetsidentitet lagras i hello [identitetsregistret][lnk-identity].
 
 ![][img-twin]
 
-I följande exempel visas en enhet dubbla JSON-dokumentet:
+hello som följande exempel visar en enhet dubbla JSON-dokumentet:
 
         {
             "deviceId": "devA",
@@ -100,18 +100,18 @@ I följande exempel visas en enhet dubbla JSON-dokumentet:
             }
         }
 
-I rotobjektet Systemegenskaper, och behållarobjekt för `tags` och båda `reported` och `desired` egenskaper. Den `properties` behållaren innehåller vissa skrivskyddad element (`$metadata`, `$etag`, och `$version`) beskrivs i den [enhetens dubbla metadata] [ lnk-twin-metadata] och [Optimistisk samtidighet] [ lnk-concurrency] avsnitt.
+I hello rotobjektet hello Systemegenskaper och behållarobjekt för `tags` och båda `reported` och `desired` egenskaper. Hej `properties` behållaren innehåller vissa skrivskyddad element (`$metadata`, `$etag`, och `$version`) beskrivs i hello [enhetens dubbla metadata] [ lnk-twin-metadata] och [ Optimistisk samtidighet] [ lnk-concurrency] avsnitt.
 
 ### <a name="reported-property-example"></a>Rapporterat egenskapen exempel
-I det förra exemplet, enhet dubbla innehåller en `batteryLevel` egenskap som rapporteras av appen enhet. Den här egenskapen gör det möjligt att fråga efter och fungerar på enheter utifrån den senaste rapporterade batterinivån. Andra exempel är enheten app reporting enhetsfunktioner eller alternativ för nätverksanslutning.
+I föregående exempel hello hello enheten dubbla innehåller en `batteryLevel` egenskap som rapporteras av hello enhetsapp. Den här egenskapen gör det möjligt tooquery och fungerar på enheter utifrån hello senaste rapporterade nivå. Andra exempel är hello app reporting enheten enhetsfunktioner eller alternativ för nätverksanslutning.
 
 > [!NOTE]
-> Rapporterat egenskaper förenkla scenarier där lösningens serverdel är intresserad av det senaste kända värdet för en egenskap. Använd [meddelanden från enhet till moln] [ lnk-d2c] om lösningens serverdel behöver för att bearbeta enhetstelemetrin i form av tidsstämplad händelser, till exempel tidsserier.
+> Rapporterat egenskaper förenkla scenarier där hello lösningens serverdel är intresserad av hello senast kända värdet för en egenskap. Använd [meddelanden från enhet till moln] [ lnk-d2c] om hello lösningens serverdel måste tooprocess enhetstelemetrin i hello form av tidsstämplad händelser, till exempel tidsserier.
 
 ### <a name="desired-property-example"></a>Exempel på önskade egenskapen
-I föregående exempel är den `telemetryConfig` enheten dubbla önskad och rapporterade egenskaper används av lösningens serverdel och enheter appen synkronisera telemetri konfigurationen för den här enheten. Exempel:
+I föregående exempel hello hello `telemetryConfig` enheten dubbla önskad och rapporterade egenskaper används av hello lösningens serverdel och hello app toosynchronize hello telemetri enhetskonfiguration för den här enheten. Exempel:
 
-1. Lösningens serverdel egenskapen önskade med önskad konfiguration-värde. Här är del av dokumentet med de önskade egenskapen:
+1. hello lösningens serverdel egenskapen hello önskad med hello desired configuration värde. Här är hello-delen av hello dokument med hello önskad egenskapsuppsättning:
    
         ...
         "desired": {
@@ -121,7 +121,7 @@ I föregående exempel är den `telemetryConfig` enheten dubbla önskad och rapp
             ...
         },
         ...
-2. Enheten appen meddelas ändra omedelbart om ansluten, eller vid första återanslutning. Appen enheten rapporterar den uppdaterade konfigurationen (eller ett fel villkor med hjälp av den `status` egenskap). Här är del av rapporterade egenskaper:
+2. Hej enhetsapp meddelas hello ändra omedelbart om ansluten eller vid hello först återansluta. Hej enhetsapp rapporterar hello uppdateras konfigurationen (eller ett feltillstånd med hello `status` egenskap). Här är hello-delen av hello rapporterade egenskaper:
    
         ...
         "reported": {
@@ -132,20 +132,20 @@ I föregående exempel är den `telemetryConfig` enheten dubbla önskad och rapp
             ...
         }
         ...
-3. Lösningens serverdel kan spåra resultatet av åtgärden configuration mellan många olika enheter, av [frågar] [ lnk-query] twins för enheten.
+3. hello lösningens serverdel kan spåra hello resultaten av hello konfigurationsbegäran mellan många olika enheter, av [frågar] [ lnk-query] twins för enheten.
 
 > [!NOTE]
-> Föregående kodfragment är exempel, optimerade för läsbarhet på ett sätt att koda en enhetskonfiguration och dess status. IoT-hubb medför inte ett visst schema för enheten dubbla önskad och rapporterade egenskaper i twins för enheten.
+> hello föregående kodfragment är exempel, optimerade för läsbarhet enkelriktade tooencode en enhetskonfiguration och dess status. IoT-hubb medför inte ett visst schema för hello enheten dubbla önskad och rapporterade egenskaper i hello enheten twins.
 > 
 > 
 
-Du kan använda twins för att synkronisera långvariga åtgärder, t.ex uppdateringar av inbyggd programvara. Mer information om hur du använder egenskaper för att synkronisera och spåra långvarig åtgärd mellan enheter finns [Använd önskad egenskaper att konfigurera enheter][lnk-twin-properties].
+Du kan använda twins toosynchronize långvariga åtgärder, t.ex uppdateringar av inbyggd programvara. Mer information om hur toouse egenskaper toosynchronize och spåra långvarig åtgärd på enheter, se [Använd önskad egenskaper tooconfigure enheter][lnk-twin-properties].
 
 ## <a name="back-end-operations"></a>Backend-åtgärder
-Lösningens serverdel körs på den enheten dubbla med hjälp av följande atomiska åtgärder exponeras via HTTP:
+hello lösningens serverdel fungerar på hello enheten dubbla med hello följande atomiska åtgärder som exponeras via HTTP:
 
-1. **Hämta enheten dubbla med id**. Den här åtgärden Returnerar enheten dubbla dokument, inklusive taggar och du kan rapporteras och Systemegenskaper.
-2. **Delvis uppdatera enheten dubbla**. Den här åtgärden kan lösningens serverdel delvis uppdaterar taggar eller önskade egenskaper i en delad enhet. Delvis uppdatering uttrycks som ett JSON-dokument som läggs till eller uppdaterar en egenskap. Ange egenskaper `null` tas bort. I följande exempel skapas en ny önskad egenskap med värdet `{"newProperty": "newValue"}`, skriver över det befintliga värdet av `existingProperty` med `"otherNewValue"`, och tar bort `otherOldProperty`. Några andra ändringar har gjorts i befintliga egenskaper eller taggar:
+1. **Hämta enheten dubbla med id**. Den här åtgärden returnerar hello enheten dubbla dokument, inklusive taggar och önskas, rapporteras och Systemegenskaper.
+2. **Delvis uppdatera enheten dubbla**. Den här åtgärden kan hello taggar för hello lösning serverdel toopartially eller önskade egenskaper i en delad enhet. hello deluppdatering uttrycks som ett JSON-dokument som läggs till eller uppdaterar en egenskap. Egenskaper som angetts för`null` tas bort. hello följande exempel skapas en ny önskad egenskap med värdet `{"newProperty": "newValue"}`, skriver över befintliga hello-värdet för `existingProperty` med `"otherNewValue"`, och tar bort `otherOldProperty`. Några andra ändringar görs tooexisting önskad egenskaperna eller taggarna:
    
         {
             "properties": {
@@ -158,29 +158,29 @@ Lösningens serverdel körs på den enheten dubbla med hjälp av följande atomi
                 }
             }
         }
-3. **Ersätt egenskaper**. Den här åtgärden aktiverar lösningens serverdel att skriva över alla befintliga egenskaper och ersätta ett nytt JSON-dokument för `properties/desired`.
-4. **Ersätt taggar**. Den här åtgärden aktiverar lösningens serverdel att skriva över alla befintliga taggar och ersätta ett nytt JSON-dokument för `tags`.
-5. **Ta emot meddelanden med dubbla**. Den här åtgärden kan lösningens serverdel ska meddelas när dubbla ändras. Om du vill göra det, IoT-lösningen behöver skapa en väg och datakällan ska vara lika med *twinChangeEvents*. Inga dubbla meddelanden skickas som standard, som är det inför finns ingen sådan vägar. Om ändringshastigheten är för hög eller av andra orsaker, till exempel internt fel IoT-hubben kan skicka endast ett meddelande som innehåller alla ändringar. Så om ditt program måste tillförlitliga granskning och loggning av alla mellanliggande tillstånd, sedan fortfarande rekommenderas att du använder D2C meddelanden. Dubbla meddelandet innehåller egenskaperna och innehållet.
+3. **Ersätt egenskaper**. Den här åtgärden aktiverar hello lösning serverdel toocompletely skriva över alla befintliga önskade egenskaper och ersätta ett nytt JSON-dokument för `properties/desired`.
+4. **Ersätt taggar**. Den här åtgärden aktiverar hello lösning serverdel toocompletely skriva över alla befintliga taggar och ersätta ett nytt JSON-dokument för `tags`.
+5. **Ta emot meddelanden med dubbla**. Den här åtgärden tillåter hello lösning serverdel toobe meddelad när hello dubbla ändras. toodo så IoT-lösningen behöver toocreate en väg och tooset hello datakällan lika för*twinChangeEvents*. Inga dubbla meddelanden skickas som standard, som är det inför finns ingen sådan vägar. Om ändringshastigheten hello är för hög eller av andra orsaker, till exempel internt fel hello IoT-hubb kan skicka endast ett meddelande som innehåller alla ändringar. Så om ditt program måste tillförlitliga granskning och loggning av alla mellanliggande tillstånd, sedan fortfarande rekommenderas att du använder D2C meddelanden. hello dubbla meddelandet innehåller egenskaperna och innehållet.
 
     - Egenskaper
 
     | Namn | Värde |
     | --- | --- |
     $content-typ | application/json |
-    $iothub-enqueuedtime |  Tidpunkt som meddelandet skickades |
+    $iothub-enqueuedtime |  Tid när hello-meddelande skickades |
     $iothub-meddelande-källa | twinChangeEvents |
     $content-kodning | UTF-8 |
-    deviceId | ID för enheten |
+    deviceId | ID för hello-enhet |
     hubName | Namnet på IoT-hubb |
     operationTimestamp | [ISO8601] tidsstämpeln för åtgärden |
     iothub-meddelande-schema | deviceLifecycleNotification |
     opType | ”replaceTwin” eller ”updateTwin” |
 
-    Meddelandet Systemegenskaper föregås av `'$'` symbolen.
+    Meddelandet Systemegenskaper föregås hello `'$'` symbolen.
 
     - Innehåll
         
-    Det här avsnittet innehåller dubbla ändringarna i en JSON-format. Samma format används som en korrigering, med skillnaden att den kan innehålla alla två avsnitt: taggar, properties.reported, properties.desired och att den innehåller ”$metadata”-element. Exempel:
+    Det här avsnittet innehåller alla hello dubbla ändringar i en JSON-format. Hello samma format används som en korrigering, med skillnaden hello som den kan innehålla alla dubbla avsnitt: taggar, properties.reported, properties.desired och att den innehåller hello ”$metadata” element. Exempel:
     ```
     {
         "properties": {
@@ -200,38 +200,38 @@ Lösningens serverdel körs på den enheten dubbla med hjälp av följande atomi
     }
     ``` 
 
-Stöd för alla föregående operationer [Optimistisk samtidighet] [ lnk-concurrency] och kräver den **ServiceConnect** behörighet, som definieras i den [säkerhet] [ lnk-security] artikel.
+Alla hello stöd för föregående [Optimistisk samtidighet] [ lnk-concurrency] och kräver hello **ServiceConnect** behörighet, som definierats i hello [säkerhet ] [ lnk-security] artikel.
 
-Förutom dessa åtgärder kan lösningens serverdel
+Dessutom tillbaka toothese åtgärder, hello lösning slutet kan:
 
-* Fråga enhet-twins med hjälp av SQL-liknande [IoT-hubb frågespråket][lnk-query].
+* Fråga hello enheten twins med hello SQL-liknande [IoT-hubb frågespråket][lnk-query].
 * Utföra åtgärder på stora mängder enheten twins med [jobb][lnk-jobs].
 
 ## <a name="device-operations"></a>Åtgärder för enhet
-Enheten appen körs på den enheten dubbla med hjälp av följande atomiska åtgärder:
+hello enhetsapp fungerar på hello enheten dubbla med hello följande atomiska åtgärder:
 
-1. **Hämta enheten dubbla**. Den här åtgärden Returnerar enheten dubbla dokumentet (inklusive taggar och önskas, rapporteras och Systemegenskaper) för den anslutna enheten.
-2. **Uppdatera delvis rapporterade egenskaper**. Den här åtgärden aktiverar deluppdatering rapporterade egenskaper för den anslutna enheten. Den här åtgärden används samma JSON update format-att lösningen tillbaka för en deluppdatering av egenskaper.
-3. **Se egenskaper**. Den anslutna enheten kan välja att aviseras om uppdateringar av egenskaperna när de inträffar. Enheten tar emot uppdateringen (eller delvis ersättning) som körs av lösningens serverdel samma formulär.
+1. **Hämta enheten dubbla**. Den här åtgärden returnerar hello enheten dubbla dokumentet (inklusive taggar och önskas, rapporteras och Systemegenskaper) för hello ansluten enhet.
+2. **Uppdatera delvis rapporterade egenskaper**. Den här åtgärden aktiverar hello deluppdatering av hello rapporterade hello anslutna enhetens egenskaper. Den här åtgärden använder hello uppdatera samma JSON-format som hello lösning tillbaka användningsområden för en deluppdatering av egenskaper.
+3. **Se egenskaper**. hello anslutna enheter kan välja toobe meddelanden om uppdateringar toohello önskade egenskaper innan de inträffar. hello enheten tar emot hello samma form av uppdatering (eller delvis ersättning) som körs av hello lösningens serverdel.
 
-Alla föregående operationer kräver den **DeviceConnect** behörighet, som definieras i den [säkerhet] [ lnk-security] artikel.
+Alla hello föregående operationer kräver hello **DeviceConnect** behörighet, som definierats i hello [säkerhet] [ lnk-security] artikel.
 
-Den [Azure IoT-enhet SDK] [ lnk-sdks] gör det lättare att använda föregående åtgärder från många språk och plattformar. Mer information om information om IoT-hubb primitiver för synkronisering av egenskaper finns i [enheten återanslutning flödet][lnk-reconnection].
+Hej [Azure IoT-enhet SDK] [ lnk-sdks] gör det enkelt toouse hello föregående åtgärder från många språk och plattformar. Mer information om hello detaljer för IoT-hubb primitiver för synkronisering av egenskaper finns i [enheten återanslutning flödet][lnk-reconnection].
 
 > [!NOTE]
-> Enheten twins för närvarande enbart tillgänglig från enheter som ansluter till IoT-hubb med MQTT-protokollet.
+> Enheten twins är för närvarande enbart tillgänglig från enheter som ansluter tooIoT hubb med hello MQTT-protokollet.
 > 
 > 
 
 ## <a name="reference-topics"></a>Referensinformation:
-Följande referensavsnitt ge mer information om hur du styr åtkomst till din IoT-hubb.
+hello ger följande Referensinformation dig mer om styra åtkomst tooyour IoT-hubb.
 
 ## <a name="tags-and-properties-format"></a>Taggar och egenskaper format
-Taggar, önskade och rapporterade egenskaper är JSON-objekt med följande begränsningar:
+Taggar, önskade och rapporterade egenskaper är JSON-objekt med hello följande begränsningar:
 
 * Alla nycklar i JSON-objekt är skiftlägeskänsliga 64 byte UTF-8, UNICODE-strängar. Tillåtna tecken undanta Unicode-kontrolltecken (segment C0 och C1) och `'.'`, `' '`, och `'$'`.
-* Alla värden i JSON-objekt kan vara följande typer av JSON: boolean, nummer, sträng, objekt. Matriser är inte tillåtna.
-* JSON-objekt i taggar, önskade och rapporterade egenskaper kan ha högst 5. Följande objekt är till exempel giltig:
+* Alla värden i JSON-objekt kan vara av följande typer av JSON hello: boolean, nummer, sträng, objekt. Matriser är inte tillåtna.
+* JSON-objekt i taggar, önskade och rapporterade egenskaper kan ha högst 5. Exempelvis är hello följande objekt giltiga:
 
         {
             ...
@@ -254,12 +254,12 @@ Taggar, önskade och rapporterade egenskaper är JSON-objekt med följande begr�
 * Alla strängvärden kan innehålla högst 512 byte i längd.
 
 ## <a name="device-twin-size"></a>Enheten dubbla storlek
-IoT-hubb tillämpar en begränsning på 8KB storleken på värdena i `tags`, `properties/desired`, och `properties/reported`, exklusive skrivskyddade element.
-Storleken beräknas genom att räkna alla tecken utom UNICODE styra tecken (segment C0 och C1) och blanksteg `' '` när den visas utanför en strängkonstant.
-IoT-hubb avvisar alla åtgärder som kan öka storleken på dessa dokument än gränsen med ett fel.
+IoT-hubb tillämpar en begränsning på 8KB storleken på hello värden för `tags`, `properties/desired`, och `properties/reported`, exklusive skrivskyddade element.
+hello storlek beräknas genom att räkna alla tecken utom UNICODE styra tecken (segment C0 och C1) och blanksteg `' '` när den visas utanför en strängkonstant.
+IoT-hubb avvisar alla åtgärder som skulle öka hello storleken på dessa dokument över hello gräns med ett fel.
 
 ## <a name="device-twin-metadata"></a>Enhetens dubbla metadata
-IoT-hubb underhåller tidsstämpel för den senaste uppdateringen för varje JSON-objekt i enheten dubbla önskad och rapporterade egenskaper. Tidsstämplar i UTC och kodats i den [ISO8601] format `YYYY-MM-DDTHH:MM:SS.mmmZ`.
+IoT-hubb underhåller hello tidsstämpel hello senaste uppdateringen för varje JSON-objekt i enheten dubbla önskad och rapporterade egenskaper. hello tidsstämplar i UTC och kodats i hello [ISO8601] format `YYYY-MM-DDTHH:MM:SS.mmmZ`.
 Exempel:
 
         {
@@ -305,49 +305,49 @@ Exempel:
             ...
         }
 
-Denna information lagras på varje nivå (inte bara löv i JSON-strukturen) för att spara uppdateringar som tar bort objektnycklar.
+Den här informationen sparas på varje nivå (inte bara hello löv av hello JSON-strukturen) toopreserve uppdateringar som tar bort objektnycklar.
 
 ## <a name="optimistic-concurrency"></a>Optimistisk samtidighet
 Taggar, önskad och rapporterade egenskaper alla stöd för Optimistisk samtidighet.
-Taggar har en ETag enligt [RFC7232], som representerar den tagg JSON-representation. Du kan använda ETags i villkorlig uppdateringsåtgärder från lösningens serverdel för att säkerställa konsekvens.
+Taggar har en ETag enligt [RFC7232], som representerar hello taggen JSON-representation. Du kan använda ETags i villkorlig uppdateringsåtgärder från hello lösning serverdel tooensure konsekvenskontroll.
 
-Enheten dubbla önskad och rapporterade egenskaper har inte ETags, men har en `$version` värde som garanterat inkrementell. På liknande sätt till en ETag kan versionen användas av uppdatering part vill använda konsekvent av uppdateringar. Till exempel en enhetsapp för en rapporterade egenskap eller lösningens serverdel för en önskad egenskap.
+Enheten dubbla önskad och rapporterade egenskaper har inte ETags, men har en `$version` värdet som garanterat toobe inkrementell. På liknande sätt kan tooan ETag hello version användas av hello uppdaterar part tooenforce konsekvenskontroll av uppdateringar. Till exempel en enhetsapp för en rapporterade egenskap eller hello lösningens serverdel för en önskad egenskap.
 
-Versioner är också användbart när en observing agent (till exempel appen enhet observerar du egenskaperna) måste stämma lopp mellan resultatet av en hämta och ett uppdateringsmeddelande. Avsnittet [enheten återanslutning flödet] [ lnk-reconnection] innehåller mer information.
+Versioner är också användbart när en observing agent (till exempel hello enhetsapp sett hello önskade egenskaper) måste stämma lopp mellan hello resultatet av en hämtningen och ett uppdateringsmeddelande. Hej avsnittet [enheten återanslutning flödet] [ lnk-reconnection] innehåller mer information.
 
 ## <a name="device-reconnection-flow"></a>Enheten återanslutning flöde
-IoT-hubb bevaras inte egenskaper uppdateringsmeddelanden för frånkopplade enheter. Följer att en enhet som ansluter måste hämta dokumentet med fullständig önskade egenskaper, utöver att prenumerera på meddelanden om uppdateringar. Möjlighet lopp mellan uppdateringsmeddelanden och fullständig hämtning, måste följande flöde säkerställas:
+IoT-hubb bevaras inte egenskaper uppdateringsmeddelanden för frånkopplade enheter. Följer att en enhet som ansluter måste hämta hello fullständig egenskaper dokument i tillägget toosubscribing för meddelanden om uppdateringar. Angivna hello möjligheten att lopp mellan uppdateringsmeddelanden och fullständig hämtning säkerställas hello följande flödet:
 
-1. Enheten appen ansluter till en IoT-hubb.
+1. Enhetsapp ansluter tooan IoT-hubb.
 2. Enhetsapp prenumererar för önskade egenskaper meddelanden om uppdateringar.
-3. Enhetsapp hämtar det fullständiga dokumentet för egenskaper.
+3. Enheten appen hämtar hello hela dokumentet för egenskaper.
 
-Appen enheten kan ignorera alla meddelanden med `$version` mindre än eller lika med versionen av det fullständiga hämtade dokumentet. Den här metoden är möjligt eftersom IoT-hubb garanterar att det alltid öka versioner.
+Hej enhetsapp kan ignorera alla meddelanden med `$version` mindre än eller lika med hello version av hello fullständig hämtade dokumentet. Den här metoden är möjligt eftersom IoT-hubb garanterar att det alltid öka versioner.
 
 > [!NOTE]
-> Den här logiken har redan implementerats i den [Azure IoT-enhet SDK][lnk-sdks]. Den här beskrivningen är användbart om enheten appen kan inte använda någon av Azure IoT-enhet SDK: er och programmet måste gränssnittet MQTT direkt.
+> Den här logiken har redan implementerats i hello [Azure IoT-enhet SDK][lnk-sdks]. Den här beskrivningen är användbart om hello enheten appen kan inte använda någon av Azure IoT-enhet SDK: er och måste programmet hello MQTT gränssnittet direkt.
 > 
 > 
 
 ## <a name="additional-reference-material"></a>Ytterligare referensmaterialet
-Andra referensavsnitten i utvecklarhandboken för IoT-hubben är:
+Andra referensavsnitten i hello IoT-hubb Utvecklarhandbok inkluderar:
 
-* Den [IoT-hubbslutpunkter] [ lnk-endpoints] artikeln beskriver de olika slutpunkter som varje IoT-hubb visar för körning och hanteringsåtgärder.
-* Den [begränsning och kvoter] [ lnk-quotas] artikeln kvoterna som gäller för IoT-hubb-tjänsten och bandbreddsbegränsning beteende som händer när du använder tjänsten.
-* Den [Azure IoT-enheten och tjänsten SDK] [ lnk-sdks] artikeln innehåller olika språk SDK: er som du kan använda när du utvecklar appar för både enheten och tjänsten som interagerar med IoT-hubben.
-* Den [IoT-hubb frågespråk för enheten twins, jobb och meddelanderoutning] [ lnk-query] IoT-hubb frågespråk som du kan använda för att hämta information från IoT-hubb om enheten twins och jobb för artikeln.
-* Den [IoT-hubb MQTT stöd] [ lnk-devguide-mqtt] artikeln innehåller mer information om IoT-hubb stöd för protokollet MQTT.
+* Hej [IoT-hubbslutpunkter] [ lnk-endpoints] artikeln hello olika slutpunkter som varje IoT-hubb visar för körning och hanteringsåtgärder.
+* Hej [begränsning och kvoter] [ lnk-quotas] artikeln hello kvoter som gäller toohello IoT-hubb-tjänsten och hello bandbreddsbegränsning beteende tooexpect när du använder hello-tjänsten.
+* Hej [Azure IoT-enheten och tjänsten SDK] [ lnk-sdks] artikeln visar hello olika språk SDK: du kan använda när du utvecklar appar för både enheten och tjänsten som interagerar med IoT-hubben.
+* Hej [IoT-hubb frågespråk för enheten twins, jobb och meddelanderoutning] [ lnk-query] artikeln hello IoT-hubb frågespråk som du kan använda tooretrieve information från IoT-hubb om enheten twins och jobb .
+* Hej [IoT-hubb MQTT stöd] [ lnk-devguide-mqtt] artikeln innehåller mer information om stöd för IoT-hubb för hello MQTT protokoll.
 
 ## <a name="next-steps"></a>Nästa steg
-Nu har du fått veta om enheten twins du vill ha i följande IoT-hubb developer guide avsnitt:
+Nu du har lärt dig om enheten twins, kanske du är intresserad av i följande avsnitt i IoT-hubb developer hello:
 
 * [Anropa en metod som är direkt på en enhet][lnk-methods]
 * [Schema-jobb på flera enheter][lnk-jobs]
 
-Om du vill testa vissa av de begrepp som beskrivs i den här artikeln får du är intresserad av IoT-hubb följande kurser:
+Om du vill tootry titt på hello begrepp som beskrivs i den här artikeln får du är intresserad av hello följande IoT-hubb Självstudier:
 
-* [Hur du använder enheten dubbla][lnk-twin-tutorial]
-* [Hur du använder identiska enhetsegenskaper][lnk-twin-properties]
+* [Hur toouse hello enheten dubbla][lnk-twin-tutorial]
+* [Hur toouse enheten dubbla egenskaper][lnk-twin-properties]
 
 <!-- links and images -->
 

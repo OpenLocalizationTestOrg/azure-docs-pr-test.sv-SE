@@ -1,6 +1,6 @@
 ---
-title: "Avancerad konfiguration för Azure Mobile Engagement Android SDK"
-description: Beskriver de avancerade konfigurationsalternativ inklusive Android Manifest med Azure Mobile Engagement Android SDK
+title: "aaaAdvanced konfigurationen för Azure Mobile Engagement Android SDK"
+description: Beskriver hello avancerade konfigurationsalternativ inklusive hello Android Manifest med Azure Mobile Engagement Android SDK
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 0301f71c76872714aa1bf727a6c21dd7a63db036
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 757abf362021fd018f444cae6305524623e77062
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="advanced-configuration-for-azure-mobile-engagement-android-sdk"></a>Avancerad konfiguration för Azure Mobile Engagement Android SDK
 > [!div class="op_single_selector"]
@@ -29,15 +29,15 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-Den här proceduren beskriver hur du konfigurerar olika konfigurationsalternativ för Azure Mobile Engagement Android-appar.
+Den här proceduren beskriver hur tooconfigure olika konfigurationsalternativ för Azure Mobile Engagement Android-appar.
 
 ## <a name="prerequisites"></a>Krav
 [!INCLUDE [Prereqs](../../includes/mobile-engagement-android-prereqs.md)]
 
 ## <a name="permission-requirements"></a>Behörighet som krävs
-Vissa alternativ kräver särskilda behörigheter, som anges här referens- och rad i den specifika funktionen. Lägg till följande behörigheter AndroidManifest.xml i ditt projekt omedelbart före eller efter den `<application>` tagg.
+Vissa alternativ kräver särskilda behörigheter, som anges här referens- och raden i hello specifika funktioner. Lägg till dessa behörigheter toohello AndroidManifest.xml i ditt projekt omedelbart före eller efter hello `<application>` tagg.
 
-Behörighet-koden måste ska se ut som följande, där du fyller i behörighet från tabellen som följer.
+hello behörighet kod måste toolook som hello följande, där du fyller i hello behörighet från hello i tabellen nedan.
 
     <uses-permission android:name="android.permission.[specific permission]"/>
 
@@ -46,7 +46,7 @@ Behörighet-koden måste ska se ut som följande, där du fyller i behörighet f
 | --- | --- |
 | INTERNET |Krävs. För grundläggande rapportering |
 | ACCESS_NETWORK_STATE |Krävs. För grundläggande rapportering |
-| RECEIVE_BOOT_COMPLETED |Krävs. Meddelanden center visas efter omstart av enheten |
+| RECEIVE_BOOT_COMPLETED |Krävs. tooshow in hello meddelanden center efter omstart av enheten |
 | WAKE_LOCK |Rekommenderas. Gör det möjligt att samla in data när du använder Wi-Fi eller när skärmen är inaktiverat |
 | VIBRERAR |Valfri. Aktiverar vibration när meddelanden tas emot |
 | DOWNLOAD_WITHOUT_NOTIFICATION |Valfri. Aktiverar Android helheten meddelanden |
@@ -56,49 +56,49 @@ Behörighet-koden måste ska se ut som följande, där du fyller i behörighet f
 
 Från och med Android M [vissa behörigheter hanteras vid körning](mobile-engagement-android-location-reporting.md#android-m-permissions).
 
-Om du redan använder ``ACCESS_FINE_LOCATION``, inte måste du också använda ``ACCESS_COARSE_LOCATION``.
+Om du redan använder ``ACCESS_FINE_LOCATION``, och du inte behöver tooalso använder ``ACCESS_COARSE_LOCATION``.
 
 ## <a name="android-manifest-configuration-options"></a>Android Manifest konfigurationsalternativ
 ### <a name="crash-report"></a>Kraschrapport
-Om du vill inaktivera kraschrapporter, lägger du till den här koden mellan den `<application>` och `</application>` taggar:
+toodisable kraschrapporter, Lägg till denna kod mellan hello `<application>` och `</application>` taggar:
 
     <meta-data android:name="engagement:reportCrash" android:value="false"/>
 
 ### <a name="burst-threshold"></a>Burst tröskelvärde
-Som standard loggas Engagement service-rapporter i realtid. Om din rapport programloggarna ofta varierar, är det bättre att buffra loggarna och rapportera dem på en gång i en grundläggande reguljära tid (kallas ”burst läge”). Gör du genom att lägga till den här koden mellan den `<application>` och `</application>` taggar:
+Som standard loggas hello Engagement service-rapporter i realtid. Om din rapport programloggarna ofta varierar, är det bättre toobuffer hello loggar och tooreport dem på en gång på vanlig taget base (kallas ”burst läge”). toodo Lägg därför till den här koden mellan hello `<application>` och `</application>` taggar:
 
     <meta-data android:name="engagement:burstThreshold" android:value="{interval between too bursts (in milliseconds)}"/>
 
-Burst läge något ökar för batterilivslängd men påverkar Engagement-Övervakare: alla sessioner och jobb varaktighet avrundas till burst tröskelvärdet (alltså sessioner och jobb som är kortare än tröskelvärdet burst inte kanske visas). Burst-tröskelvärde ska vara längre än 30000 (30s).
+Burst läge något ökar hello batterilivslängd men påverkar hello Engagement-Övervakare: alla sessioner och jobb varaktighet är avrundade toohello burst tröskelvärdet (alltså sessioner och jobb som är kortare än hello burst tröskelvärdet inte kanske visas). Burst-tröskelvärde ska vara längre än 30000 (30s).
 
 ### <a name="session-timeout"></a>Tidsgräns för session
- Du kan avsluta en aktivitet genom att trycka på **Start** eller **tillbaka** nyckel genom att ange telefonnummer som inaktiv eller genom att hoppa över i ett annat program. Som standard avslutas session tio sekunder efter den senaste aktiviteten. Detta förhindrar en session delning varje gång användaren avslutar och återgår till programmet snabbt, vilket kan hända när användaren tar upp en bild, kontrollerar en avisering, osv. Du kanske vill ändra den här parametern. Gör du genom att lägga till den här koden mellan den `<application>` och `</application>` taggar:
+ Du kan avsluta en aktivitet genom att trycka på hello **Start** eller **tillbaka** nyckel genom att ange hello phone inaktiv eller genom att hoppa över i ett annat program. Som standard avslutas session tio sekunder efter den senaste aktiviteten hello slut. Detta förhindrar en session-delning varje gång hello användare avslutas och returnerar toohello program snabbt, vilket kan hända när hello användare hämtar en avbildning, kontrollerar en avisering, osv. Du kanske vill toomodify den här parametern. toodo Lägg därför till den här koden mellan hello `<application>` och `</application>` taggar:
 
     <meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
 
 ## <a name="disable-log-reporting"></a>Inaktivera rapportering av logg
 ### <a name="using-a-method-call"></a>Med hjälp av ett metodanrop
-Om du vill Engagement slutar skicka loggar, kan du anropa:
+Om du vill Engagement toostop skicka loggar, kan du anropa:
 
     EngagementAgent.getInstance(context).setEnabled(false);
 
 Det här anropet är beständiga: filen delade inställningar används.
 
-Det kan ta en minut att stoppa tjänsten om Engagement är aktiv när du anropar den här funktionen. Men det inte kommer starta tjänsten alls nästa gång startar du programmet.
+Det kan ta en minut för hello service toostop om Engagement är aktiv när du anropar den här funktionen. Men det kommer inte att starta hello-tjänsten på alla hello nästa gång du startar programmet hello.
 
-Du kan aktivera loggen reporting igen genom att anropa funktionen samma med `true`.
+Du kan aktivera loggen reporting igen genom att anropa hello samma fungerar med `true`.
 
 ### <a name="integration-in-your-own-preferenceactivity"></a>Integrering i din egen`PreferenceActivity`
 I stället för att anropa den här funktionen kan du också integrera inställningen direkt i din befintliga `PreferenceActivity`.
 
-Du kan konfigurera Engagement att använda inställningar-fil (med läge) i den `AndroidManifest.xml` filen med `application meta-data`:
+Du kan konfigurera Engagement toouse inställningarna filen (med hello läge) i hello `AndroidManifest.xml` filen med `application meta-data`:
 
-* Den `engagement:agent:settings:name` nyckel används för att ange namnet på filen med delade inställningar.
-* Den `engagement:agent:settings:mode` nyckel används för att definiera läget för filen delade inställningar. Använd samma läge som i din `PreferenceActivity`. Läget måste skickas som ett tal: Om du använder en kombination av konstant flaggor i koden, kontrollera det totala värdet.
+* Hej `engagement:agent:settings:name` nyckeln är används toodefine hello namnet på hello delade inställningsfilen.
+* Hej `engagement:agent:settings:mode` nyckeln är används toodefine hello läge hello delade inställningsfilen. Använd hello samma läge som i din `PreferenceActivity`. hello-läge måste skickas som ett tal: Om du använder en kombination av konstant flaggor i koden, kontrollera hello totala värdet.
 
-Engagement alltid använder den `engagement:key` booleskt nyckel i filen med inställningar för att hantera den här inställningen.
+Engagement alltid använder hello `engagement:key` booleskt nyckel i hello inställningsfilen för att hantera den här inställningen.
 
-Följande exempel visar `AndroidManifest.xml` visar standardvärden:
+Hej följande exempel på `AndroidManifest.xml` visar hello standardvärden:
 
     <application>
         [...]
@@ -109,7 +109,7 @@ Följande exempel visar `AndroidManifest.xml` visar standardvärden:
           android:name="engagement:agent:settings:mode"
           android:value="0" />
 
-Du kan lägga till en `CheckBoxPreference` i layouten inställningar som den följande:
+Du kan lägga till en `CheckBoxPreference` i layouten inställningar som hello efter:
 
     <CheckBoxPreference
       android:key="engagement:enabled"

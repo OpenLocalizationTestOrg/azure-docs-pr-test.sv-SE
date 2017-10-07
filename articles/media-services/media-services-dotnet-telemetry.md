@@ -1,6 +1,6 @@
 ---
-title: Konfigurera Azure Media Services telemetri med .NET | Microsoft Docs
-description: "Den här artikeln visar hur du använder Azure Media Services-telemetri med .NET SDK."
+title: "aaaConfiguring telemetri för Azure Media Services med .NET | Microsoft Docs"
+description: "Den här artikeln visar hur toouse hello Azure Media Services telemetri med .NET SDK."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 1d857f3d062d8d1b15c64fa4b8c3e27ad6c2247e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 4019fa7d080ca3f8a8709bd1e666f7062b883954
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurera Azure Media Services telemetri med .NET
 
-Det här avsnittet beskriver allmänna steg som du kan utföra när du konfigurerar Azure Media Services (AMS)-telemetri med .NET SDK. 
+Det här avsnittet beskriver allmänna steg som du kan utföra när du konfigurerar hello Azure Media Services (AMS) telemetri med .NET SDK. 
 
 >[!NOTE]
->En detaljerad förklaring av vad är AMS telemetri och hur du använder det., finns det [översikt](media-services-telemetry-overview.md) avsnittet.
+>För hello detaljerad förklaring av vad är AMS telemetri och hur tooconsume, se hello [översikt](media-services-telemetry-overview.md) avsnittet.
 
-Du kan använda telemetridata på något av följande sätt:
+Du kan använda telemetridata i något av följande sätt hello:
 
-- Läsa data direkt från Azure Table Storage (t.ex. med Storage SDK: N). Beskrivning av telemetri storage-tabeller, finns det **förbrukar telemetri information** i [detta](https://msdn.microsoft.com/library/mt742089.aspx) avsnittet.
+- Läsa data direkt från Azure Table Storage (t.ex. med hello Storage SDK: N). Hello beskrivning av telemetri storage-tabeller finns hello **förbrukar telemetri information** i [detta](https://msdn.microsoft.com/library/mt742089.aspx) avsnittet.
 
 Eller
 
-- Använd stöd i Media Services .NET SDK för att läsa storage-data. Det här avsnittet beskrivs hur du aktiverar telemetri för det angivna AMS-kontot och hur man frågar mått med Azure Media Services .NET SDK.  
+- Använd hello stöd i hello Media Services .NET SDK för att läsa storage-data. Det här avsnittet visar hur tooenable telemetri för hello angetts AMS-kontot och hur tooquery hello mått med hello Azure Media Services .NET SDK.  
 
 ## <a name="configuring-telemetry-for-a-media-services-account"></a>Konfigurera telemetri för Media Services-konto
 
-Följande steg krävs för att aktivera telemetri:
+hello är följande steg nödvändiga tooenable telemetri:
 
-- Hämta autentiseringsuppgifter för det lagringskonto som är kopplade till Media Services-kontot. 
-- Skapa en Aviseringsslutpunkten med **EndPointType** inställd på **AzureTable** och endPointAddress som pekar på lagringstabellen.
+- Hämta hello autentiseringsuppgifterna för hello storage-konto toohello Media Services-konto. 
+- Skapa en Aviseringsslutpunkten med **EndPointType** ställa in också**AzureTable** och endPointAddress pekar toohello lagringstabellen.
 
         INotificationEndPoint notificationEndPoint = 
                       _context.NotificationEndPoints.Create("monitoring", 
                       NotificationEndPointType.AzureTable,
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
 
-- Skapa en övervakningskonfiguration inställningar för de tjänster som du vill övervaka. Fler än en övervakning konfigurationsinställningar är tillåtet. 
+- Skapa en övervakningskonfiguration inställningar för hello tjänster du vill toomonitor. Fler än en övervakning konfigurationsinställningar är tillåtet. 
   
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
             new List<ComponentMonitoringSetting>()
@@ -62,15 +62,15 @@ Information om den konsumerande telemetri information, se [detta](media-services
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Skapa och konfigurera ett Visual Studio-projekt
 
-1. Konfigurera utvecklingsmiljön och fyll i filen app.config med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
+1. Konfigurera utvecklingsmiljön och fylla hello app.config-fil med anslutningsinformation, enligt beskrivningen i [Media Services-utveckling med .NET](media-services-dotnet-how-to-use.md). 
 
-2. Lägga till följande element för **appSettings** definieras i filen app.config:
+2. Lägg till följande element för hello**appSettings** definieras i filen app.config:
 
     <add key="StorageAccountName" value="storage_name" />
  
 ## <a name="example"></a>Exempel  
     
-I följande exempel visas hur du aktiverar telemetri för det angivna AMS-kontot och hur man frågar mått med Azure Media Services .NET SDK.  
+hello som följande exempel visar hur tooenable telemetri för hello angetts AMS-kontot och hur tooquery hello mått med hello Azure Media Services .NET SDK.  
 
     using System;
     using System.Collections.Generic;
@@ -192,7 +192,7 @@ I följande exempel visas hur du aktiverar telemetri för det angivna AMS-kontot
 
             var channelMetrics = telemetry.GetChannelHeartbeats(timerangeStart, timerangeEnd);
 
-            // Print the channel metrics.
+            // Print hello channel metrics.
             Console.WriteLine("Channel metrics:");
 
             foreach (var channelHeartbeat in channelMetrics.OrderBy(x => x.ObservedTime))

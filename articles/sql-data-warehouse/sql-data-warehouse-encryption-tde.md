@@ -1,5 +1,5 @@
 ---
-title: Transparent datakryptering i SQL Data Warehouse (Portal) | Microsoft Docs
+title: aaaTransparent kryptering av Data i SQL Data Warehouse (Portal) | Microsoft Docs
 description: Transparent datakryptering (TDE) i SQL Data Warehouse
 services: sql-data-warehouse
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.openlocfilehash: b1db3bdfdfb54bda325c9b971cfcb4dd5efa333a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8233886ecf170844104e0d1459e2a829cafa9b8d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Kom igång med Transparent Data kryptering (TDE) i SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -31,30 +31,30 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="required-permssions"></a>Nödvändig behörighet
-Om du vill aktivera Transparent Data kryptering (TDE) måste du vara administratör eller medlem i rollen dbmanager.
+tooenable Transparent Data kryptering (TDE), du måste vara administratör eller medlem i hello dbmanager roll.
 
 ## <a name="enabling-encryption"></a>Aktivera kryptering
-Följ stegen nedan om du vill aktivera TDE för ett SQL Data Warehouse:
+tooenable TDE för ett SQL Data Warehouse gör hello nedan:
 
-1. Öppna databasen i den [Azure-portalen](https://portal.azure.com)
-2. I databasbladet klickar du på den **inställningar** knappen
-3. Välj den **Transparent datakryptering** alternativet![][1]
-4. Välj den **på** inställning![][2]
+1. Öppna hello databasen i hello [Azure-portalen](https://portal.azure.com)
+2. Klicka på hello i hello databasbladet **inställningar** knappen
+3. Välj hello **Transparent datakryptering** alternativet![][1]
+4. Välj hello **på** inställning![][2]
 5. Välj **spara**
    ![][3]  
 
 ## <a name="disabling-encryption"></a>Om du inaktiverar kryptering
-Följ stegen nedan om du vill inaktivera TDE för ett SQL Data Warehouse:
+toodisable TDE för ett SQL Data Warehouse gör hello nedan:
 
-1. Öppna databasen i den [Azure-portalen](https://portal.azure.com)
-2. I databasbladet klickar du på den **inställningar** knappen
-3. Välj den **Transparent datakryptering** alternativet![][1]
-4. Välj den **av** inställning![][4]
+1. Öppna hello databasen i hello [Azure-portalen](https://portal.azure.com)
+2. Klicka på hello i hello databasbladet **inställningar** knappen
+3. Välj hello **Transparent datakryptering** alternativet![][1]
+4. Välj hello **av** inställning![][4]
 5. Välj **spara**
    ![][5]  
 
 ## <a name="encryption-dmvs"></a>Kryptering av DMV: er
-Kryptering kan bekräftas med följande av DMV: er:
+Kryptering kan bekräftas med hello följande av DMV: er:
 
 * [sys.Databases]
 * [sys.dm_pdw_nodes_database_encryption_keys]

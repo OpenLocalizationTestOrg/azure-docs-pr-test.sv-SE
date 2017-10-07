@@ -1,6 +1,6 @@
 ---
-title: Migrera en klassisk virtuell dator till en hanterad ARM-Disk VM | Microsoft Docs
-description: "Migrera en enda Azure-VM från den klassiska distributionsmodellen till hanterade diskar i Resource Manager-distributionsmodellen."
+title: aaaMigrate klassiska VM-tooan ARM hanteras Disk VM | Microsoft Docs
+description: "Migrera en enda Azure-VM från hello klassisk distribution modellen tooManaged diskar i hello Resource Manager-distributionsmodellen."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 82389834d85981c0ed71bdcc891fbfdbe1377654
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: d8c4b9431f5dd8a071fcbc2ee36581a33f76ba62
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>Migrera manuellt en klassisk virtuell dator till en ny ARM hanteras Disk virtuell dator från den virtuella Hårddisken 
+# <a name="manually-migrate-a-classic-vm-tooa-new-arm-managed-disk-vm-from-hello-vhd"></a>Migrera en klassiska Virtuella tooa manuellt ny ARM hanteras Disk virtuell dator från hello VHD 
 
 
-Det här avsnittet hjälper dig att migrera dina befintliga virtuella Azure-datorer från den klassiska distributionsmodellen till [hanterade diskar](managed-disks-overview.md) i Resource Manager-distributionsmodellen.
+Det här avsnittet hjälper du toomigrate dina befintliga virtuella Azure-datorer från hello klassiska distributionsmodellen för[hanterade diskar](managed-disks-overview.md) i hello Resource Manager-distributionsmodellen.
 
 
-## <a name="plan-for-the-migration-to-managed-disks"></a>Planera för migrering till hanterade diskar
+## <a name="plan-for-hello-migration-toomanaged-disks"></a>Planera för migrering av hello tooManaged diskar
 
-Det här avsnittet hjälper dig att göra det bästa på VM- och diskresurser typer.
+Det här avsnittet hjälper dig att toomake hello bästa beslut på VM- och diskresurser typer.
 
 
 ### <a name="location"></a>Plats
 
-Välj en plats där Azure hanterade diskar är tillgängliga. Om du migrerar till hanterade Premiumdiskar också se till att Premium-lagring är tillgänglig i den region där du planerar att migrera till. Se [Azure Services byRegion](https://azure.microsoft.com/regions/#services) uppdaterad information om tillgängliga platser.
+Välj en plats där Azure hanterade diskar är tillgängliga. Om du migrerar tooPremium hanterade diskar kan också se till att Premium-lagring finns i hello region där du planerar toomigrate till. Se [Azure Services byRegion](https://azure.microsoft.com/regions/#services) uppdaterad information om tillgängliga platser.
 
 ### <a name="vm-sizes"></a>VM-storlekar
 
-Om du migrerar till Premium hanterade diskar som du behöver uppdatera storleken på den virtuella datorn till Premium-lagring kan storlek i den region där VM finns. Granska storlek på Virtuella datorer som är Premium-lagring som är kompatibla. Specifikationer för Azure VM-storleken anges i [storlekar för virtuella datorer](sizes.md).
-Granska prestandaegenskaper för virtuella datorer som fungerar med Premium-lagring och välja den lämpligaste VM-storlek som bäst passar din arbetsbelastning. Kontrollera att det finns tillräckligt med bandbredd på den virtuella datorn för att ge disk-trafik.
+Om du migrerar tooPremium hanterade diskar har tooupdate hello storleken på hello VM tooPremium kompatibla lagringsstorlek tillgängliga i hello-regionen där VM finns. Granska hello VM-storlekar som är Premium-lagring som är kompatibla. hello Azure VM storlek specifikationer listas i [storlekar för virtuella datorer](sizes.md).
+Granska hello prestandaegenskaper för virtuella datorer som fungerar med Premium-lagring och välj hello lämpligaste VM-storlek som bäst passar din arbetsbelastning. Kontrollera att det finns tillräckligt med bandbredd på VM toodrive hello disk trafiken.
 
 ### <a name="disk-sizes"></a>Diskstorlekar
 
 **Premium hanterade diskar**
 
-Det finns sju typer av premium hanterade diskar som kan användas med den virtuella datorn var och en har särskilda IOPs och genomströmning gränser. Överväg att dessa begränsningar när du väljer Premium disktyp för den virtuella datorn baserat på dina behov av ditt program vad gäller kapacitet, prestanda, skalbarhet och belastning läses in.
+Det finns sju typer av premium hanterade diskar som kan användas med den virtuella datorn var och en har särskilda IOPs och genomströmning gränser. Överväg att dessa begränsningar när du väljer hello Premium disktyp för den virtuella datorn baserat på hello behoven för ditt program vad gäller kapacitet, prestanda, skalbarhet och belastning läses in.
 
 | Premium diskar typ  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
@@ -55,7 +55,7 @@ Det finns sju typer av premium hanterade diskar som kan användas med den virtue
 
 **Hanterade standarddiskar**
 
-Det finns sju typer av Standard hanterade diskar som kan användas med den virtuella datorn. Var och en av dem har olika kapacitet men samma IOPS och genomströmning gränser. Välj typ av Standard hanterade diskar baserat på kapacitetsbehov för programmet.
+Det finns sju typer av Standard hanterade diskar som kan användas med den virtuella datorn. Var och en av dem har olika kapacitet men samma IOPS och genomströmning gränser. Välj hello typ av Standard hanterade diskar baserat på hello kapacitetsbehov för programmet.
 
 | Disk av standardtyp  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
@@ -68,32 +68,32 @@ Det finns sju typer av Standard hanterade diskar som kan användas med den virtu
 
 **Premium hanterade diskar**
 
-Princip för cachelagring av disk är som standard *skrivskyddad* för alla Premium datadiskar, och *Read-Write* för Premium operativsystemets disk som är kopplade till den virtuella datorn. Den här inställningen rekommenderas för att uppnå optimal prestanda för ditt program IOs. Inaktivera cachelagring på disk så att du kan få bättre prestanda för programmet för skrivintensiv eller lässkyddad datadiskar (till exempel loggfiler för SQL Server).
+Princip för cachelagring av disk är som standard *skrivskyddad* för alla hello Premium datadiskar och *Read-Write* för hello Premium operativsystemdisken kopplade toohello VM. Den här konfigurationen rekommenderas tooachieve hello optimala prestanda för ditt program IOs. Inaktivera cachelagring på disk så att du kan få bättre prestanda för programmet för skrivintensiv eller lässkyddad datadiskar (till exempel loggfiler för SQL Server).
 
 ### <a name="pricing"></a>Prissättning
 
-Granska de [priser för hanterade diskar](https://azure.microsoft.com/en-us/pricing/details/managed-disks/). Priser för hanterade Premiumdiskar är samma som ohanterad Premiumdiskar. Men priser för hanterade standarddiskar skiljer sig från ohanterade standarddiskar.
+Granska hello [priser för hanterade diskar](https://azure.microsoft.com/en-us/pricing/details/managed-disks/). Priser för hanterade Premiumdiskar är samma som hello ohanterade Premiumdiskar. Men priser för hanterade standarddiskar skiljer sig från ohanterade standarddiskar.
 
 
 ## <a name="checklist"></a>Checklista
 
-1.  Om du migrerar till hanterade Premiumdiskar, kontrollera att den är tillgänglig i den region du migrerar till.
+1.  Om du migrerar tooPremium hanterade diskar, kontrollera att den är tillgänglig i hello region du migrerar till.
 
-2.  Bestäm den nya VM-serien som du kommer att använda. Om du migrerar till hanterade Premiumdiskar bör det vara en Premium-lagring som är kompatibla.
+2.  Bestäm hello ny virtuell dator-serie du kommer att använda. Det bör vara en Premium-lagring kan om du migrerar tooPremium hanterade diskar.
 
-3.  Bestäm den exakta VM-storlek du vill använda som är tillgängliga i den region du migrerar till. VM-storlek måste vara tillräckligt stor för att stödja antalet datadiskar som du har. Om du har fyra datadiskar, måste den virtuella datorn ha minst två kärnor. Du kan också processorkraft, minne och nätverksbandbredd måste.
+3.  Bestäm hello exakt VM-storlek du vill använda som är tillgängliga i hello region du migrerar till. VM-storlek måste toobe tillräckligt stor toosupport hello antalet datadiskar som du har. Om du har fyra datadiskar måste hello VM ha två eller flera kärnor. Du kan också processorkraft, minne och nätverksbandbredd måste.
 
-4.  Har den aktuella informationen för VM praktisk, inklusive en lista över diskar och motsvarande VHD-blobbar.
+4.  Ha hello aktuella VM information praktisk, inklusive hello lista över diskar och motsvarande VHD-blobbar.
 
-Förbered ditt program för driftstopp. För att göra en ren migrering, måste du stoppa all bearbetning i det aktuella systemet. Först då kan du få till konsekvent tillstånd som du kan migrera till den nya plattformen. Varaktighet för stilleståndstid beror på mängden data på diskarna att migrera.
-
-
-## <a name="migrate-the-vm"></a>Migrera den virtuella datorn
-
-Förbered ditt program för driftstopp. För att göra en ren migrering, måste du stoppa all bearbetning i det aktuella systemet. Först då kan du få till konsekvent tillstånd som du kan migrera till den nya plattformen. Varaktighet för stilleståndstid beror mängden data på diskarna att migrera.
+Förbered ditt program för driftstopp. toodo en ren migrering, har du toostop all hello bearbetning i hello nuvarande systemet. Först då kan du få tooconsistent tillstånd som du kan migrera nya toohello-plattformen. Varaktighet för stilleståndstid är beroende av hello mängden data i hello diskar toomigrate.
 
 
-1.  Innan du kan definiera de gemensamma parametrarna:
+## <a name="migrate-hello-vm"></a>Migrera hello VM
+
+Förbered ditt program för driftstopp. toodo en ren migrering, har du toostop all hello bearbetning i hello nuvarande systemet. Först då kan du få tooconsistent tillstånd som du kan migrera nya toohello-plattformen. Varaktighet för stilleståndstid beror hello mängden data i hello diskar toomigrate.
+
+
+1.  Ange först hello gemensamma parametrar:
 
     ```powershell
     $resourceGroupName = 'yourResourceGroupName'
@@ -119,9 +119,9 @@ Förbered ditt program för driftstopp. För att göra en ren migrering, måste 
     $dataDiskName = 'dataDisk1'
     ```
 
-2.  Skapa en hanterad OS-disk med hjälp av den virtuella Hårddisken från den klassiska virtuella datorn.
+2.  Skapa en hanterad OS-disk hello VHD från hello klassiska VM.
 
-    Se till att du har angett fullständiga URI för OS-VHD i parametern $osVhdUri. Ange dessutom **- AccountType** som **PremiumLRS** eller **StandardLRS** baserat på typ av diskar (Standard eller Premium) du migrerar till.
+    Se till att du har tillhandahållit hello slutföra hello OS VHD toohello $osVhdUri parameter-URI. Ange dessutom **- AccountType** som **PremiumLRS** eller **StandardLRS** baserat på typ av diskar (Standard eller Premium) du migrerar till.
 
     ```powershell
     $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk (New-AzureRmDiskConfig '
@@ -129,7 +129,7 @@ Förbered ditt program för driftstopp. För att göra en ren migrering, måste 
     -ResourceGroupName $resourceGroupName
     ```
 
-3.  Koppla OS-disken till den nya virtuella datorn.
+3.  Koppla hello OS disk toohello ny virtuell dator.
 
     ```powershell
     $VirtualMachine = New-AzureRmVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
@@ -137,7 +137,7 @@ Förbered ditt program för driftstopp. För att göra en ren migrering, måste 
     -StorageAccountType PremiumLRS -DiskSizeInGB 128 -CreateOption Attach -Windows
     ```
 
-4.  Skapa en hanterad datadisk från VHD-datafilen och Lägg till den nya virtuella datorn.
+4.  Skapa en hanterad datadisk från hello data VHD-filen och Lägg till den toohello ny virtuell dator.
 
     ```powershell
     $dataDisk1 = New-AzureRmDisk -DiskName $dataDiskName -Disk (New-AzureRmDiskConfig '
@@ -148,7 +148,7 @@ Förbered ditt program för driftstopp. För att göra en ren migrering, måste 
     -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
     ```
 
-5.  Skapa den nya virtuella datorn genom att ange offentlig IP, virtuella nätverk och nätverkskort.
+5.  Skapa hello ny virtuell dator genom att ange offentlig IP, virtuella nätverk och nätverkskort.
 
     ```powershell
     $publicIp = New-AzureRmPublicIpAddress -Name ($VirtualMachineName.ToLower()+'_ip') '
@@ -166,11 +166,11 @@ Förbered ditt program för driftstopp. För att göra en ren migrering, måste 
     ```
 
 > [!NOTE]
->Det kan finnas ytterligare steg behövs för ditt program som inte omfattas av den här guiden.
+>Det kan finnas ytterligare steg krävs toosupport ditt program som inte omfattas av den här guiden.
 >
 >
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Ansluta till den virtuella datorn. Instruktioner finns i [ansluta och logga in på en virtuell Azure-dator kör Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Ansluta toohello virtuella datorn. Instruktioner finns i [hur tooconnect och logga in tooan Azure virtuella datorn kör Windows](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

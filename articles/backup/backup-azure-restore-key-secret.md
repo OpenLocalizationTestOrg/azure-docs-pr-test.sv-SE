@@ -1,6 +1,6 @@
 ---
-title: "Återställa Key Vault-nyckel och Hemlig för krypterade virtuella datorer med Azure Backup | Microsoft Docs"
-description: "Lär dig hur du återställer Key Vault-nyckel och hemlig i Azure Backup med hjälp av PowerShell"
+title: "kryptera aaaRestore Key Vault nyckel och hemligheten för virtuella datorer med Azure Backup | Microsoft Docs"
+description: "Lär dig hur toorestore nyckel valvet nyckel och hemlig i Azure Backup med hjälp av PowerShell"
 services: backup
 documentationcenter: 
 author: JPallavi
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2db3449187d655248b13198b268841052570626
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 659b2f647493ffcc9494caee111c8bd584ef9c7f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Återställa Key Vault-nyckel och Hemlig för krypterade virtuella datorer med Azure Backup
-Den här artikeln handlar om att använda Azure VM säkerhetskopiering för att utföra återställning av krypterade virtuella Azure-datorer om din nyckel och Hemlig inte finns i nyckelvalvet. De här stegen kan också användas om du vill upprätthålla en separat kopia av nyckel (nyckel krypteringsnyckeln) och hemlighet (BitLocker-krypteringsnyckeln) för den återställda virtuella datorn.
+Den här artikeln handlar om med hjälp av Azure VM Backup tooperform återställning av krypterade virtuella Azure-datorer om din nyckel och Hemlig inte finns i hello nyckelvalvet. De här stegen kan också användas om du vill toomaintain en separat kopia av nyckel (nyckel krypteringsnyckeln) och hemlighet (BitLocker-krypteringsnyckeln) för hello återställts VM.
 
 ## <a name="prerequisites"></a>Krav
-* **Säkerhetskopiering krypterade VMs** - krypterade virtuella Azure-datorer har säkerhetskopierats med Azure Backup. Läs artikeln [hantera säkerhetskopiering och återställning av virtuella Azure-datorer med hjälp av PowerShell](backup-azure-vms-automation.md) mer information om hur du säkerhetskopierar krypterade virtuella Azure-datorer.
-* **Konfigurera Azure Key Vault** – Kontrollera att nyckelvalvet som nycklar och hemligheter ska återställas finns redan. Läs artikeln [Kom igång med Azure Key Vault](../key-vault/key-vault-get-started.md) mer information om hantering av nyckelvalvet.
-* **Återställa disk** -Kontrollera att du har utlösts återställningsjobbet för återställning av diskar där krypterade VM [PowerShell steg](backup-azure-vms-automation.md#restore-an-azure-vm). Det beror på att jobbet genererar en JSON-fil i ditt lagringskonto som innehåller nycklar och hemligheter för den kryptera virtuella datorn ska återställas.
+* **Säkerhetskopiering krypterade VMs** - krypterade virtuella Azure-datorer har säkerhetskopierats med Azure Backup. Se hello artikel [hantera säkerhetskopiering och återställning av virtuella Azure-datorer med hjälp av PowerShell](backup-azure-vms-automation.md) mer information om hur toobackup krypterade virtuella Azure-datorer.
+* **Konfigurera Azure Key Vault** – se till att nyckelvalvet toowhich nycklar och hemligheter måste toobe återställas finns redan. Se hello artikel [Kom igång med Azure Key Vault](../key-vault/key-vault-get-started.md) mer information om hantering av nyckelvalvet.
+* **Återställa disk** -Kontrollera att du har utlösts återställningsjobbet för återställning av diskar där krypterade VM [PowerShell steg](backup-azure-vms-automation.md#restore-an-azure-vm). Det beror på att jobbet genererar en JSON-fil i ditt lagringskonto som innehåller nycklar och hemligheter för hello krypterade VM toobe återställs.
 
 ## <a name="get-key-and-secret-from-azure-backup"></a>Hämta nyckel och Hemlig från Azure Backup
 
 > [!NOTE]
-> När disken har återställts av krypterade VM, kan du se till att:
-> 1. $details fylls med jobbinformation för återställning disk som anges i [PowerShell steg för återställning avsnittet diskar](backup-azure-vms-automation.md#restore-an-azure-vm)
-> 2. VM ska skapas från återställda diskar **när nyckel och Hemlig har återställts i nyckelvalvet**.
+> När disken har återställts för hello krypterad VM, kan du se till att:
+> 1. $details fylls med jobbinformation för återställning disk som anges i [PowerShell steg under återställning hello diskar](backup-azure-vms-automation.md#restore-an-azure-vm)
+> 2. VM ska skapas från återställda diskar **när nyckel och Hemlig är återställda tookey valvet**.
 >
 >
 
-Fråga om återställda disk egenskaperna för Jobbinformationen.
+Frågan hello återställt diskegenskaper för hello jobbinformation.
 
 ```
 PS C:\> $properties = $details.properties
@@ -47,7 +47,7 @@ PS C:\> $containerName = $properties["Config Blob Container Name"]
 PS C:\> $encryptedBlobName = $properties["Encryption Info Blob Name"]
 ```
 
-Konfigurera Azure storage-kontexten och återställa JSON-konfigurationsfil som innehåller nyckel och Hemlig information för krypterade VM.
+Ange hello Azure storage-kontexten och återställa JSON-konfigurationsfil som innehåller nyckel och Hemlig information för krypterade VM.
 
 ```
 PS C:\> Set-AzureRmCurrentStorageAccount -Name $storageaccountname -ResourceGroupName '<rg-name>'
@@ -57,7 +57,7 @@ PS C:\> $encryptionObject = Get-Content -Path $destination_path  | ConvertFrom-J
 ```
 
 ## <a name="restore-key"></a>Återställa nyckeln
-När JSON-filen har genererats i målsökväg som nämns ovan, generera nyckel blob-fil från JSON och feed det för att återställa nyckeln cmdlet för att placera nyckel (KEK) tillbaka i nyckelvalvet.
+När hello JSON-filen har genererats i hello målsökväg som nämns ovan, generera nyckel blob-fil från hello JSON och feed toorestore viktiga cmdlet tooput hello nyckel (KEK) tillbaka i hello nyckelvalvet.
 
 ```
 PS C:\> $keyDestination = 'C:\keyDetails.blob'
@@ -66,7 +66,7 @@ PS C:\> Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile
 ```
 
 ## <a name="restore-secret"></a>Återställa hemlighet
-Använd JSON-filen som skapas ovan för att hämta det hemliga namnet och värdet och feed det om du vill ange hemliga för att placera hemligheten (BEK) tillbaka i nyckelvalvet. **Använda dessa cmdletar om den virtuella datorn är krypterad med BEK och KEK.**
+Använd hello JSON-fil skapas ovan tooget hemliga namn och värde och feed tooset hemliga cmdlet tooput hello hemligheten (BEK) tillbaka i hello nyckelvalvet. **Använda dessa cmdletar om den virtuella datorn är krypterad med BEK och KEK.**
 
 ```
 PS C:\> $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -76,7 +76,7 @@ PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncry
 PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-Om den virtuella datorn är **krypteras med BEK endast**, generera hemliga blob-fil från JSON och feed återställs hemliga cmdlet för att placera hemligheten (BEK) i nyckelvalvet.
+Om den virtuella datorn är **krypteras med BEK endast**, generera hemliga blob-fil från hello JSON och feed toorestore hemliga cmdlet tooput hello hemligheten (BEK) tillbaka i hello nyckelvalvet.
 
 ```
 PS C:\> $secretDestination = 'C:\secret.blob'
@@ -85,19 +85,19 @@ PS C:\> Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputF
 ```
 
 > [!NOTE]
-> 1. Värdet för $secretname kan hämtas genom att referera till utdataporten för $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl och text efter hemligheter / t.ex. utdata hemliga URL är https://keyvaultname.vault.azure.net/secrets/ B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 och hemliga namnet är B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
-> 2. Värdet för taggen DiskEncryptionKeyFileName är samma som det hemliga namnet.
+> 1. Värdet för $secretname kan erhållas genom hänvisar toohello utdata från $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl och via SMS efter hemligheter / t.ex. utdata hemliga URL är https://keyvaultname.vault.azure.net/secrets/ B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 och hemliga namnet är B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> 2. Värdet för hello taggen DiskEncryptionKeyFileName är samma som hemliga namnet.
 >
 >
 
 ## <a name="create-virtual-machine-from-restored-disk"></a>Skapa virtuell dator från återställda disk
-Om du har säkerhetskopierat krypterade VM som använder Azure VM säkerhetskopiering av PowerShell-cmdlets som nämns ovan hjälp du återställa nyckel och hemliga tillbaka till nyckelvalvet. När du återställer dem finns i artikeln [hantera säkerhetskopiering och återställning av virtuella Azure-datorer med hjälp av PowerShell](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) skapa krypterade virtuella datorer från återställda disk, nyckel och hemlig.
+Om du har säkerhetskopierat krypterade VM som använder Azure VM Backup hello PowerShell-cmdlets som nämns ovan hjälp du återställer nyckel och hemliga tillbaka toohello nyckelvalvet. När du återställer dem finns hello artikel [hantera säkerhetskopiering och återställning av virtuella Azure-datorer med hjälp av PowerShell](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) toocreate krypterats virtuella datorer från återställda disk, nyckel och hemlig.
 
 ## <a name="legacy-approach"></a>Äldre metod
-Den metod som nämns ovan fungerar för alla återställningspunkter. Dock är äldre metod för att få nyckel och Hemlig information från återställningspunkten giltig för återställningspunkter som är äldre än 11 juli 2017 för virtuella datorer som har krypterats med BEK och KEK. När disken Återställningsjobbet har slutförts för krypterade VM med hjälp av [PowerShell steg](backup-azure-vms-automation.md#restore-an-azure-vm), se till att $rp fylls med ett giltigt värde.
+hello-metod som nämns ovan fungerar för alla återställningspunkter för hello. Dock är hello äldre metod för att få nyckel och Hemlig information från återställningspunkten giltig för återställningspunkter som är äldre än 11 juli 2017 för virtuella datorer som har krypterats med BEK och KEK. När disken Återställningsjobbet har slutförts för krypterade VM med hjälp av [PowerShell steg](backup-azure-vms-automation.md#restore-an-azure-vm), se till att $rp fylls med ett giltigt värde.
 
 ### <a name="restore-key"></a>Återställa nyckeln
-Använda följande cmdletar för att hämta information om nyckel (KEK) från återställningspunkten och feed det för att återställa nyckeln cmdlet för att placera den i nyckelvalvet.
+Använd hello följande cmdlets tooget nyckel (KEK) information från återställningspunkten och feed det toorestore viktiga cmdlet tooput tillbaka i hello nyckelvalvet.
 
 ```
 PS C:\> $rp1 = Get-AzureRmRecoveryServicesBackupRecoveryPoint -RecoveryPointId $rp[0].RecoveryPointId -Item $backupItem -KeyFileDownloadLocation 'C:\Users\downloads'
@@ -105,7 +105,7 @@ PS C:\> Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile
 ```
 
 ### <a name="restore-secret"></a>Återställa hemlighet
-Använda följande cmdletar för att hämta information om hemliga (BEK) från återställningspunkten och feed det om du vill ange hemliga för att placera den i nyckelvalvet.
+Använd hello följande information för cmdlets tooget secret (BEK) från återställningspunkten och feed det tooset hemliga cmdlet tooput tillbaka i hello nyckelvalvet.
 
 ```
 PS C:\> $secretname = 'B3284AAA-DAAA-4AAA-B393-60CAA848AAAA'
@@ -116,11 +116,11 @@ PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secr
 ```
 
 > [!NOTE]
-> 1. Värdet för $secretname kan erhållas genom att referera till utdata för $rp1. KeyAndSecretDetails.SecretUrl och via SMS efter hemligheter / t.ex. utdata hemliga URL är https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 och hemliga namnet är B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
-> 2. Värdet för taggen DiskEncryptionKeyFileName är samma som det hemliga namnet.
-> 3. Värdet för DiskEncryptionKeyEncryptionKeyURL kan hämtas från nyckelvalvet efter återställning av nycklar tillbaka och använder [Get-AzureKeyVaultKey](https://msdn.microsoft.com/library/dn868053.aspx) cmdlet
+> 1. Värdet för $secretname kan erhållas genom att referera toohello utdata för $rp1. KeyAndSecretDetails.SecretUrl och via SMS efter hemligheter / t.ex. utdata hemliga URL är https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 och hemliga namnet är B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> 2. Värdet för hello taggen DiskEncryptionKeyFileName är samma som hemliga namnet.
+> 3. Värdet för DiskEncryptionKeyEncryptionKeyURL kan hämtas från nyckelvalvet efter återställning hello nycklar tillbaka och använder [Get-AzureKeyVaultKey](https://msdn.microsoft.com/library/dn868053.aspx) cmdlet
 >
 >
 
 ## <a name="next-steps"></a>Nästa steg
-När du återställer nyckel och hemliga tillbaka till nyckelvalvet, finns i artikeln [hantera säkerhetskopiering och återställning av virtuella Azure-datorer med hjälp av PowerShell](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) skapa krypterade virtuella datorer från återställda disk, nyckel och hemlig.
+När du återställer nyckel och hemliga tillbaka tookey valvet finns hello artikel [hantera säkerhetskopiering och återställning av virtuella Azure-datorer med hjälp av PowerShell](backup-azure-vms-automation.md#create-a-vm-from-restored-disks) toocreate krypterats virtuella datorer från återställda disk, nyckel och hemlig.

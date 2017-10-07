@@ -1,6 +1,6 @@
 ---
-title: "Hantera katalogen för säkerhetskopieringar StorSimple | Microsoft Docs"
-description: "Beskriver hur du använda sidan StorSimple Enhetshanteraren säkerhetskopieringskatalogen listan, Välj och ta bort säkerhetskopior."
+title: "aaaManage StorSimple säkerhetskopiering katalogen | Microsoft Docs"
+description: "Förklarar hur toouse hello StorSimple Enhetshanteraren service säkerhetskopieringskatalogen sidan toolist markerar och tar bort säkerhetskopior."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,101 +14,101 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: ac2577c6cd350d6d437d55e61ec73d954cb24893
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e464609e74409a06a198790719abd82ed03c03d9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Använda Enhetshanteraren för StorSimple-tjänsten för att hantera katalogen för säkerhetskopieringar
+# <a name="use-hello-storsimple-device-manager-service-toomanage-your-backup-catalog"></a>Använd hello StorSimple Enhetshanteraren service toomanage katalogen för säkerhetskopieringar
 ## <a name="overview"></a>Översikt
-Tjänsten StorSimple Enhetshanteraren **säkerhetskopieringskatalogen** bladet visar alla säkerhetskopior som skapas vid manuell eller schemalagda säkerhetskopieringar. Du kan använda den här sidan för att visa alla säkerhetskopior för en princip för säkerhetskopiering eller en volym, Välj eller ta bort säkerhetskopior eller använda en säkerhetskopia att återställa eller klona en volym.
+Hej StorSimple Enhetshanteraren service **säkerhetskopieringskatalogen** bladet visar alla hello säkerhetskopior som skapas vid manuell eller schemalagda säkerhetskopieringar. Du kan använda den här sidan toolist alla hello säkerhetskopior för en princip för säkerhetskopiering eller en volym, Välj eller ta bort eller använda en säkerhetskopiering toorestore eller klona en volym.
 
-Den här självstudiekursen beskrivs hur du väljer, och ta bort en säkerhetskopia. Mer information om hur du återställer din enhet från säkerhetskopia, gå till [återställa enheten från en säkerhetskopia](storsimple-8000-restore-from-backup-set-u2.md). Information om hur du klona en volym, gå till [klona en StorSimple-volym](storsimple-8000-clone-volume-u2.md).
+Den här självstudiekursen beskrivs hur toolist markerar och ta bort en säkerhetskopia. toolearn hur toorestore enheten från en säkerhetskopia, gå för[återställa enheten från en säkerhetskopia](storsimple-8000-restore-from-backup-set-u2.md). hur tooclone en volym, gå för toolearn[klona en StorSimple-volym](storsimple-8000-clone-volume-u2.md).
 
 ![Säkerhetskopieringskatalogen](./media/storsimple-8000-manage-backup-catalog/bucatalog.png) 
 
-Den **säkerhetskopieringskatalogen** bladet innehåller en fråga för att begränsa säkerhetskopian uppsättning val. Du kan filtrera de säkerhetskopior som hämtas, baserat på följande parametrar:
+Hej **säkerhetskopieringskatalogen** bladet innehåller en fråga toonarrow valet av säkerhetskopian. Du kan filtrera hello säkerhetskopior som hämtas, baserat på hello följande parametrar:
 
-* **Enheten** – enheten där säkerhetskopian skapades.
-* **Princip för säkerhetskopiering eller volym** – den princip för säkerhetskopiering eller en volym som är associerade med den här säkerhetskopian.
-* **Från och till** – intervallet datum och tid när säkerhetskopian skapades.
+* **Enheten** – hello enhet på vilken hello säkerhetskopian skapades.
+* **Princip för säkerhetskopiering eller volym** – hello säkerhetskopieringsprincip eller volym som är associerade med den här säkerhetskopian.
+* **Från och till** – hello intervallet för datum och tid när hello säkerhetskopian skapades.
 
-Filtrerade säkerhetskopiorna visas sedan som en tabell baserat på följande attribut:
+hello filtrerade säkerhetskopior visas sedan som en tabell baserad på hello följande attribut:
 
-* **Namnet** – namnet på den princip för säkerhetskopiering eller en volym som är associerade med säkerhetskopian.
-* **Storlek** – den verkliga storleken för säkerhetskopian.
-* **Skapad den** – datum och tid då säkerhetskopieringarna skapades. 
-* **Typen** – säkerhetskopior kan lokala ögonblicksbilder eller molnbaserade ögonblicksbilder. En lokal ögonblicksbild är en säkerhetskopia av din volymdata som lagras lokalt på enheten, medan en ögonblicksbild i molnet som refererar till säkerhetskopian av volymens data som finns i molnet. Lokala ögonblicksbilder ger snabbare åtkomst medan molnögonblicksbilder väljs för dataåterhämtning.
-* **Initierades av** – säkerhetskopieringar kan initieras automatiskt av ett schema eller manuellt av en användare. Du kan använda en princip för säkerhetskopiering för att schemalägga säkerhetskopieringar. Du kan också använda den **ta säkerhetskopia** kan ta en manuell säkerhetskopiering.
+* **Namnet** – hello namn på hello säkerhetskopieringsprincip eller volym som är associerade med hello säkerhetskopia.
+* **Storlek** – hello verkliga storleken hos hello säkerhetskopia.
+* **Skapad den** – hello datum och tid då hello säkerhetskopior skapades. 
+* **Typen** – säkerhetskopior kan lokala ögonblicksbilder eller molnbaserade ögonblicksbilder. En lokal ögonblicksbild är en säkerhetskopia av din volymdata som lagras lokalt på hello enhet, medan en ögonblicksbild i molnet refererar toohello säkerhetskopiering av volymdata som finns i molnet hello. Lokala ögonblicksbilder ger snabbare åtkomst medan molnögonblicksbilder väljs för dataåterhämtning.
+* **Initierades av** – hello säkerhetskopieringar kan initieras automatiskt av ett schema eller manuellt av en användare. Du kan använda en princip för säkerhetskopiering tooschedule säkerhetskopior. Du kan också använda hello **ta säkerhetskopia** alternativet tootake en manuell säkerhetskopiering.
 
 ## <a name="list-backup-sets-for-a-backup-policy"></a>Lista över säkerhetskopior för en princip för säkerhetskopiering
-Utför följande steg om du vill visa alla säkerhetskopior för en princip för säkerhetskopiering.
+Slutför följande steg toolist hello alla hello säkerhetskopieringar för en princip för säkerhetskopiering.
 
-#### <a name="to-list-backup-sets"></a>Att lista säkerhetskopior
-1. Gå till Enhetshanteraren din StorSimple-tjänsten och klicka på **säkerhetskopieringskatalog**.
+#### <a name="toolist-backup-sets"></a>toolist säkerhetskopior
+1. Gå tooyour StorSimple enheten Manager-tjänsten och klicka på **säkerhetskopieringskatalog**.
 
-2. Filtrera valen på följande sätt:
+2. Filtrera hello val på följande sätt:
    
-   1. Ange tidsintervall.
-   2. Välj lämplig enhet.
-   3. Filtrera efter **säkerhetskopiera princip** att visa motsvarande säkerhetskopieringar.
-   3. I listrutan säkerhetskopieringsprincip, Välj **alla** visa alla säkerhetskopior på den valda enheten.
-   4. Klicka på **tillämpa** att köra frågan.
+   1. Ange hello tidsintervall.
+   2. Välj lämplig hello-enhet.
+   3. Filtrera efter **säkerhetskopiera princip** tooview hello motsvarande hello säkerhetskopieringar.
+   3. Hello säkerhetskopieringsprincip listrutan, Välj **alla** tooview alla hello säkerhetskopieringar på hello valda enheten.
+   4. Klicka på **tillämpa** tooexecute den här frågan.
       
-      De säkerhetskopior som är associerade med den valda säkerhetskopieringsprincipen ska visas i listan över säkerhetskopieringsuppsättningar.
+      hello säkerhetskopior som är associerade med hello valt säkerhetskopieringsprincip ska visas i hello lista över säkerhetskopior.
 
-      ![Gå till katalogen för säkerhetskopiering](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Gå toobackup katalog](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
 ## <a name="select-a-backup-set"></a>Välj en säkerhetskopia
-Utför följande steg för att välja en säkerhetskopia för en volym eller en princip för säkerhetskopiering.
+Slutför hello följande steg tooselect en säkerhetskopia av en princip för volym eller säkerhetskopiering.
 
-#### <a name="to-select-a-backup-set"></a>Att välja en säkerhetskopia
-1. Gå till Enhetshanteraren din StorSimple-tjänsten och klicka på **säkerhetskopieringskatalog**.
-2. Filtrera valen på följande sätt:
+#### <a name="tooselect-a-backup-set"></a>tooselect en säkerhetskopia
+1. Gå tooyour StorSimple enheten Manager-tjänsten och klicka på **säkerhetskopieringskatalog**.
+2. Filtrera hello val på följande sätt:
    
-   1. Ange tidsintervall. 
-   2. Välj lämplig enhet. 
-   3. Filtrera efter volym eller säkerhetskopiering princip för säkerhetskopiering som du vill välja.
-   4. Klicka på **tillämpa** att köra frågan.
+   1. Ange hello tidsintervall. 
+   2. Välj lämplig hello-enhet. 
+   3. Filtrera efter volym eller säkerhetskopiering princip för hello säkerhetskopiering tooselect gärna.
+   4. Klicka på **tillämpa** tooexecute den här frågan.
       
-      Säkerhetskopiorna som är associerade med den valda volymen eller princip för säkerhetskopiering ska visas i listan över säkerhetskopieringsuppsättningar.
+      hello ska säkerhetskopior som är associerade med principen för hello markerad volym eller säkerhetskopiering visas i hello lista över säkerhetskopior.
 
-      ![Gå till katalogen för säkerhetskopiering](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Gå toobackup katalog](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
-3. Markera och utöka en säkerhetskopia. Du kan nu se de säkerhetskopior som är fördelade på de volymer som den innehåller. Den **återställa** och **ta bort** alternativ är tillgängliga via snabbmenyn (högerklicka) för säkerhetskopian. Du kan utföra någon av dessa åtgärder på den säkerhetskopia som du har valt.
+3. Markera och utöka en säkerhetskopia. Du kan nu se hello säkerhetskopior uppdelat efter hello volymer som den innehåller. Hej **återställa** och **ta bort** alternativ är tillgängliga via hello snabbmeny (högerklicka) för hello säkerhetskopian. Du kan utföra någon av dessa åtgärder på hello säkerhetskopia som du har valt.
 
-    ![Gå till katalogen för säkerhetskopiering](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
+    ![Gå toobackup katalog](./media/storsimple-8000-manage-backup-catalog/bucatalog2.png)
 
 ## <a name="delete-a-backup-set"></a>Ta bort en säkerhetskopia
-Ta bort en säkerhetskopiering när du inte längre vill behålla data som är associerade med den. Utför följande steg för att ta bort en säkerhetskopia.
+Ta bort en säkerhetskopiering när du inte längre vill tooretain hello data som är associerade med den. Utföra hello följande steg toodelete en säkerhetskopia.
 
-#### <a name="to-delete-a-backup-set"></a>Ta bort en säkerhetskopia
- Gå till Enhetshanteraren din StorSimple-tjänsten och klicka på **säkerhetskopieringskatalog**.
-2. Filtrera valen på följande sätt:
+#### <a name="toodelete-a-backup-set"></a>toodelete en säkerhetskopia
+ Gå tooyour StorSimple enheten Manager-tjänsten och klicka på **säkerhetskopieringskatalog**.
+2. Filtrera hello val på följande sätt:
    
-   1. Ange tidsintervall. 
-   2. Välj lämplig enhet. 
-   3. Filtrera efter volym eller säkerhetskopiering princip för säkerhetskopiering som du vill välja.
-   4. Klicka på **tillämpa** att köra frågan.
+   1. Ange hello tidsintervall. 
+   2. Välj lämplig hello-enhet. 
+   3. Filtrera efter volym eller säkerhetskopiering princip för hello säkerhetskopiering tooselect gärna.
+   4. Klicka på **tillämpa** tooexecute den här frågan.
       
-      Säkerhetskopiorna som är associerade med den valda volymen eller princip för säkerhetskopiering ska visas i listan över säkerhetskopieringsuppsättningar.
+      hello ska säkerhetskopior som är associerade med principen för hello markerad volym eller säkerhetskopiering visas i hello lista över säkerhetskopior.
 
-      ![Gå till katalogen för säkerhetskopiering](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
+      ![Gå toobackup katalog](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
-3. Markera och utöka en säkerhetskopia. Du kan nu se de säkerhetskopior som är fördelade på de volymer som den innehåller. Den **återställa** och **ta bort** alternativ är tillgängliga via snabbmenyn (högerklicka) för säkerhetskopian. Högerklicka på den valda säkerhetskopian och på snabbmenyn Välj **ta bort**.
+3. Markera och utöka en säkerhetskopia. Du kan nu se hello säkerhetskopior uppdelat efter hello volymer som den innehåller. Hej **återställa** och **ta bort** alternativ är tillgängliga via hello snabbmeny (högerklicka) för hello säkerhetskopian. Högerklicka på hello valda säkerhetskopian och hello snabbmenyn, Välj **ta bort**.
 
-    ![Gå till katalogen för säkerhetskopiering](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
+    ![Gå toobackup katalog](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
-4. När du uppmanas att bekräfta, granska informationen som visas och klicka på **ta bort**. Den valda säkerhetskopian tas bort permanent.
+4. När du uppmanas att bekräfta granskar hello visas information och klickar på **ta bort**. hello valda säkerhetskopian tas bort permanent.
 
-    ![Gå till katalogen för säkerhetskopiering](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
+    ![Gå toobackup katalog](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
-5. Du meddelas när borttagningen är pågående och när den har slutförts. Uppdatera frågan på den här sidan när borttagningen är klar. Borttagna säkerhetskopian visas inte längre i listan över säkerhetskopior.
+5. Du meddelas när hello borttagning pågår och när den har slutförts. Uppdatera hello frågan på den här sidan när hello borttagningen är klar. hello bort säkerhetskopia visas inte längre i hello lista över säkerhetskopior.
 
-    ![Gå till katalogen för säkerhetskopiering](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
+    ![Gå toobackup katalog](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig hur du [använder Säkerhetskopiering katalogen för att återställa enheten från en säkerhetskopia](storsimple-8000-restore-from-backup-set-u2.md).
-* Lär dig hur du [använda Enhetshanteraren för StorSimple-tjänsten för att administrera din StorSimple-enhet](storsimple-8000-manager-service-administration.md).
+* Lär dig hur för[Använd hello säkerhetskopieringskatalogen toorestore enheten från en säkerhetskopia](storsimple-8000-restore-from-backup-set-u2.md).
+* Lär dig hur för[Använd hello StorSimple Enhetshanteraren service tooadminister StorSimple-enheten](storsimple-8000-manager-service-administration.md).
 

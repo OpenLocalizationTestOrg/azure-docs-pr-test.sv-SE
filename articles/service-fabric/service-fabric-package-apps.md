@@ -1,6 +1,6 @@
 ---
-title: Paketet en Azure Service Fabric-app | Microsoft Docs
-description: Hur du paketerar ett Service Fabric-program innan du distribuerar till ett kluster.
+title: aaaPackage en Azure Service Fabric-app | Microsoft Docs
+description: Hur toopackage ett Service Fabric-program innan du distribuerar tooa klustret.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: ryanwi
-ms.openlocfilehash: 486a27d7ca576c8fe1552c02eb24ece6b8bb2ba8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b3918e1e25e532acdc9440855213e1fa364ea000
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="package-an-application"></a>Paketera ett program
-Den här artikeln beskriver hur du paketerar ett Service Fabric-program och förbereda för distribution.
+Den här artikeln beskriver hur toopackage ett Service Fabric-program och förbereda för distribution.
 
 ## <a name="package-layout"></a>Paketet layout
-Applikationsmanifestet, en eller flera service manifest och andra nödvändiga paketfilerna måste ordnas i en viss layout för distribution i ett Service Fabric-kluster. I exemplet manifesten i den här artikeln måste du ordnas i följande katalogstruktur:
+hello programmanifestet, en eller flera service manifest och andra nödvändiga paketet filer måste ordnas i en viss layout för distribution i ett Service Fabric-kluster. hello exempel manifesten i den här artikeln måste toobe ordnade i hello följande katalogstruktur:
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
@@ -45,47 +45,47 @@ D:\TEMP\MYAPPLICATIONTYPE
             init.dat
 ```
 
-Mapparna namn att matcha den **namn** attribut för varje motsvarande element. Om exempelvis service manifest finns två kod paket med namnen **MyCodeA** och **MyCodeB**, två mappar med samma namn ska innehålla de nödvändiga binärfilerna för varje kodpaketet.
+hello mappar namnges toomatch hello **namn** attribut för varje motsvarande element. Till exempel om hello tjänstmanifestet finns två kod paket med hello namn **MyCodeA** och **MyCodeB**, och sedan två mappar med samma namn innehåller hello hello-binärfiler som krävs för varje kod paketet.
 
 ## <a name="use-setupentrypoint"></a>Använd SetupEntryPoint
-Vanliga scenarier där **SetupEntryPoint** när du behöver köra en körbar fil innan du startar tjänsten eller som du behöver utföra en åtgärd med förhöjda privilegier. Exempel:
+Vanliga scenarier där **SetupEntryPoint** är när du behöver toorun en körbar fil innan hello-tjänsten startar eller måste tooperform en åtgärd med förhöjda privilegier. Exempel:
 
-* Ställa in och initierar miljövariabler som behöver körbar fil. Det är inte begränsad till endast körbara filer skrivs via Service Fabric programmeringsmodeller. Exempelvis måste npm.exe miljövariabler som konfigurerats för att distribuera ett node.js-program.
+* Ställa in och initierar miljövariabler som hello körbara behöver. Det är inte begränsad tooonly körbara filer skrivs via hello Service Fabric programmeringsmodeller. Exempelvis måste npm.exe miljövariabler som konfigurerats för att distribuera ett node.js-program.
 * Konfigurera åtkomstkontroll genom att installera security-certifikat.
 
-Mer information om hur du konfigurerar den **SetupEntryPoint**, se [konfigurera principen för en startpunkt för installationen av tjänsten](service-fabric-application-runas-security.md)
+Mer information om hur tooconfigure hello **SetupEntryPoint**, se [konfigurera hello princip för en startpunkt för installationen av tjänsten](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 ## <a name="configure"></a>Konfigurera
 ### <a name="build-a-package-by-using-visual-studio"></a>Skapa ett paket med hjälp av Visual Studio
-Om du använder Visual Studio 2015 för att skapa programmet kan använda du kommandot paketet för att automatiskt skapa ett paket som matchar layout som beskrivs ovan.
+Om du använder Visual Studio 2015 toocreate ditt program kan använda du hello paketet kommandot tooautomatically skapa ett paket som matchar hello layout som beskrivs ovan.
 
-Om du vill skapa ett paket, högerklicka på programmet projektet i Solution Explorer och välj kommandot paketera enligt nedan:
+toocreate ett paket, högerklicka på projektet i Solution Explorer hello och välj hello paketkommando, enligt nedan:
 
 ![Ett program med Visual Studio-paket][vs-package-command]
 
-När paketering är klar, kan du hitta platsen för paketets i den **utdata** fönster. Steget paketering sker automatiskt när du distribuerar eller felsöker programmet i Visual Studio.
+När paketering är klar hittar du hello platsen för hello i hello **utdata** fönster. hello paketering steg sker automatiskt när du distribuerar eller felsöker programmet i Visual Studio.
 
 ### <a name="build-a-package-by-command-line"></a>Skapa ett paket av kommandoraden
-Det är också möjligt att programmässigt packa upp appen med `msbuild.exe`. Under huven körs Visual Studio den så att utdata är samma.
+Det är också möjligt tooprogrammatically paketet upp appen med `msbuild.exe`. Hello huven körs Visual Studio under det så hello utdata är samma.
 
 ```shell
 D:\Temp> msbuild HelloWorld.sfproj /t:Package
 ```
 
-## <a name="test-the-package"></a>Testa paketet
-Du kan verifiera paketet strukturen lokalt via PowerShell med hjälp av den [Test ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) kommando.
-Detta kommando kontrollerar manifestet parsning problem och kontrollera alla referenser. Detta kommando kontrollerar endast strukturella riktighet kataloger och filer i paketet.
-Går det inte verifiera några paketinnehållet kod eller data utöver att kontrollera att alla nödvändiga filer finns.
+## <a name="test-hello-package"></a>Hello testpaket
+Du kan verifiera hello paketet struktur lokalt via PowerShell genom att använda hello [Test ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) kommando.
+Detta kommando kontrollerar manifestet parsning problem och kontrollera alla referenser. Detta kommando kontrollerar endast hello strukturella är korrekt hello kataloger och filer i hello-paketet.
+Går det inte verifiera några hello kod eller data paketinnehållet utöver att kontrollera att alla nödvändiga filer finns.
 
 ```
 PS D:\temp> Test-ServiceFabricApplicationPackage .\MyApplicationType
 False
-Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
+Test-ServiceFabricApplicationPackage : hello EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ```
 
-Det här felet visas som den *MySetup.bat* fil som refereras i service manifest **SetupEntryPoint** kodpaketet saknas. När filen saknas läggs skickar programmet-verifiering:
+Det här felet visas den hello *MySetup.bat* fil som refereras i hello tjänstmanifestet **SetupEntryPoint** saknas hello kodpaketet. När hello saknad fil har lagts till, skickar hello programmet verifiering:
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
@@ -113,22 +113,22 @@ PS D:\temp>
 
 Om programmet har [applikationsparametrarna](service-fabric-manage-multiple-environment-app-configuration.md) definierats kan du skicka dem i [Test ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) för rätt validering.
 
-Om du vet klustret där programmet ska distribueras, bör du skicka in den `ImageStoreConnectionString` parameter. I det här fallet kontrolleras också paketet gentemot tidigare versioner av programmet som körs i klustret. Till exempel valideringen kan känna av om ett paket med samma version men olika innehåll har redan distribuerats.  
+Om du vet hello kluster där hello programmet ska distribueras, bör du skicka in hello `ImageStoreConnectionString` parameter. I det här fallet verifieras hello paketet också mot tidigare versioner av programmet hello som redan körs i hello klustret. Till exempel hello verifiering kan känna av om ett paket med hello samma version men olika innehåll har redan distribuerats.  
 
-När programmet levereras på rätt sätt och har klarat valideringen kan utvärdera baserat på storleken och antalet filer som eventuellt komprimering.
+När programmet hello paketeras på rätt sätt och har klarat valideringen kan utvärdera baserat på hello storlek och hello antalet filer som eventuellt komprimering.
 
 ## <a name="compress-a-package"></a>Komprimera ett paket
-Om ett paket är stora eller många filer, kan du komprimera den för snabbare distribution. Komprimeringen minskar antalet filer och paketstorleken.
-För en komprimerad programpaket [ladda upp programpaketet](service-fabric-deploy-remove-applications.md#upload-the-application-package) kan ta längre tid jämfört med överför okomprimerade paketet (särskilt om komprimering tid är inberäknade), men [registrerar](service-fabric-deploy-remove-applications.md#register-the-application-package) och [avregistrerades programtypen](service-fabric-deploy-remove-applications.md#unregister-an-application-type) är snabbare för ett komprimerade programpaket.
+Om ett paket är stora eller många filer, kan du komprimera den för snabbare distribution. Komprimeringen minskar hello antal filer och hello paketstorleken.
+För en komprimerad programpaket [Uploading hello programpaket](service-fabric-deploy-remove-applications.md#upload-the-application-package) kan ta längre jämfört med toouploading hello okomprimerade paketet (särskilt om komprimering tid är inberäknade), men [registrera](service-fabric-deploy-remove-applications.md#register-the-application-package) och [avregistrerades hello programtyp](service-fabric-deploy-remove-applications.md#unregister-an-application-type) är snabbare för ett komprimerade programpaket.
 
-Mekanism för distribution är samma för komprimerade och okomprimerade paket. Om paketet har komprimerats, lagras som sådana i klustret image store och den är okomprimerade på noden innan programmet körs.
-Komprimeringen ersätter giltigt Service Fabric-paket med den komprimerade versionen. Mappen måste tillåta skrivbehörighet. Kör komprimering på en redan komprimerade paketet ger inga ändringar.
+mekanism för hello-distribution är samma för komprimerade och okomprimerade paket. Om hello paketet har komprimerats, lagras som sådana i hello avbildningsarkivet för klustret och den är okomprimerade på hello nod innan hello program körs.
+hello komprimering ersätter hello giltigt Service Fabric-paket med hello komprimerad version. hello mapp måste tillåta skrivbehörighet. Kör komprimering på en redan komprimerade paketet ger inga ändringar.
 
-Du kan komprimera ett paket genom att köra Powershell-kommando [kopiera ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) med `CompressPackage` växla. Du kan expandera paketet med samma kommando med `UncompressPackage` växla.
+Du kan komprimera ett paket genom att köra Powershell-kommando för hello [kopiera ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) med `CompressPackage` växla. Du kan expandera hello paketet med hello samma kommando med `UncompressPackage` växla.
 
-Följande kommando komprimerar paketet utan att kopiera den till image store. Du kan kopiera komprimerade paketet till en eller flera Service Fabric-kluster, efter behov, med [kopiera ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) utan den `SkipCopy` flaggan.
-Paketet innehåller nu komprimerade filer för den `code`, `config`, och `data` paket. Applikationsmanifestet och service manifest är inte zippade, eftersom de behövs för många interna åtgärder (t.ex. paketet fildelning, program namn och version Extraheringen av anslutningstyp för vissa verifieringar).
-Komprimerar manifesten gör dessa åtgärder ineffektiv.
+hello komprimerar följande kommando hello-paket utan att kopiera den toohello bildarkivet. Du kan kopiera en komprimerade paketet tooone eller flera Service Fabric-kluster efter behov med [kopiera ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) utan hello `SkipCopy` flaggan.
+hello paketet innehåller nu komprimerade filer för hello `code`, `config`, och `data` paket. hello programmanifestet och hello service manifest är inte zippade, eftersom de behövs för många interna åtgärder (till exempel dela program namn och version Extraheringen av anslutningstyp för vissa verifieringar-paket).
+Komprimerar hello manifesten skulle göra att dessa åtgärder ineffektiv.
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
@@ -163,21 +163,21 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ```
 
-Du kan komprimera och kopiera paketet med [kopiera ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) i ett steg.
-Om paketet är stort, ange en tillräckligt hög tidsgräns för både paketet komprimering och överför till klustret.
+Du kan komprimera och kopiera hello paket med [kopiera ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) i ett steg.
+Om hello paketet är stort, ange en tillräckligt hög tidsgränsen tooallow för både hello paketet komprimering och hello överför toohello klustret.
 ```
 PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
 ```
 
-Internt, beräknar Service Fabric kontrollsummor för programpaket för verifiering. När du använder komprimering beräknas av kontrollsummor i komprimerade versioner av varje paket.
-Om du kopierade en okomprimerad version av ditt programpaket och du vill använda komprimering för samma paket, måste du ändra versionerna av den `code`, `config`, och `data` paket för att undvika felaktig matchning av kontrollsumma. Om paketen är desamma, istället för att ändra versionen, kan du använda [diff etablering](service-fabric-application-upgrade-advanced.md). Med det här alternativet inte är oförändrad paketet i stället referera till den från service manifest.
+Internt, beräknar Service Fabric kontrollsummor för hello programpaket för verifiering. När du använder komprimering beräknas hello kontrollsummor på hello zippade versioner av varje paket.
+Om du kopierade en okomprimerad version av ditt programpaket och du vill toouse komprimering för hello samma paket, måste du ändra hello versioner av hello `code`, `config`, och `data` paket tooavoid kontrollsummorna överensstämmer inte. Om hello-paket är oförändrat, istället för att ändra hello version, kan du använda [diff etablering](service-fabric-application-upgrade-advanced.md). Med det här alternativet inte innehåller hello oförändrat paketet i stället referera till den från hello service manifest.
 
-Om du har överfört en komprimerad version av paketet och du vill använda en okomprimerad paketet, på samma sätt måste du uppdatera versioner för att undvika den felaktig matchning av kontrollsumma.
+Om du har överfört en komprimerad version av hello paketet och du vill toouse en okomprimerad paketet, på samma sätt måste du uppdatera hello versioner tooavoid hello felaktig matchning av kontrollsumma.
 
-Paketet är nu paketeras korrekt verifieras och komprimerade (vid behov), så att den är klar för [distribution](service-fabric-deploy-remove-applications.md) till en eller flera Service Fabric-kluster.
+hello paketet är nu paketeras korrekt, verifiera och komprimerade (vid behov), så att den är klar för [distribution](service-fabric-deploy-remove-applications.md) tooone eller flera Service Fabric-kluster.
 
 ### <a name="compress-packages-when-deploying-using-visual-studio"></a>Komprimera paket när du distribuerar med Visual Studio
-Du kan instruera Visual Studio för att komprimera paket för distribution, genom att lägga till den `CopyPackageParameters` elementet så att din profil och ange den `CompressPackage` attributet `true`.
+Du kan instruera Visual Studio toocompress paket för distribution, genom att lägga till hello `CopyPackageParameters` elementet tooyour Publicera profil och ange hello `CompressPackage` attribut för`true`.
 
 ``` xml
     <PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">
@@ -188,16 +188,16 @@ Du kan instruera Visual Studio för att komprimera paket för distribution, geno
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-[Distribuera och ta bort program] [ 10] beskriver hur du använder PowerShell för att hantera programinstanser
+[Distribuera och ta bort program] [ 10] beskriver hur toouse PowerShell toomanage programinstanser
 
-[Hantera programparametrar för miljöer med flera] [ 11] beskriver hur du konfigurerar parametrar och miljövariabler för olika programinstanser.
+[Hantera programparametrar för miljöer med flera] [ 11] beskriver hur tooconfigure parametrar och miljövariabler för olika programinstanser.
 
-[Konfigurera säkerhetsprinciper för ditt program] [ 12] beskriver hur du kör tjänster under säkerhetsprinciper för att begränsa åtkomsten.
+[Konfigurera säkerhetsprinciper för ditt program] [ 12] beskriver hur toorun services under principer toorestrict åtkomst.
 
 <!--Image references-->
 [vs-package-command]: ./media/service-fabric-package-apps/vs-package-command.png
 
-<!--Link references--In actual articles, you only need a single period before the slash-->
+<!--Link references--In actual articles, you only need a single period before hello slash-->
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-manage-multiple-environment-app-configuration.md
 [12]: service-fabric-application-runas-security.md

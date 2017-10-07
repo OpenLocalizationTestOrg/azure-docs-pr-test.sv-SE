@@ -1,6 +1,6 @@
 ---
-title: Med U-SQL kognitiva funktioner i Azure Data Lake Analytics | Microsoft Docs
-description: "Lär dig hur du använder intelligence kognitiva funktioner i U-SQL"
+title: aaaUsing U-SQL kognitiva funktioner i Azure Data Lake Analytics | Microsoft Docs
+description: "Lär dig hur toouse hello intelligence kognitiva funktioner i U-SQL"
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.openlocfilehash: f77329f9838d6e824afa7234de90f62257a004de
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2c9ac71f490e929070fa0e72b93c3ffdb1ab243b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>Självstudier: Kom igång med U-SQL kognitiva funktioner
+# <a name="tutorial-get-started-with-hello-cognitive-capabilities-of-u-sql"></a>Självstudier: Kom igång med hello kognitiva funktionerna i U-SQL
 
-Kognitiva funktioner för U-SQL ger utvecklare möjligheten att använda put intelligence i sina program för stordata. Den övergripande processen i enkel:
+Kognitiva kan för U-SQL en utvecklare toouse placera intelligence i sina program för stordata. Hej övergripande processen i enkel:
 
-* Använd instruktionen REFERENSSAMMANSÄTTNING för att aktivera funktionerna kognitiva för U-SQL-skript
-* Anropa processen igen om du vill använda funktionerna för kognitiva 
+* Använd hello REFERENSSAMMANSÄTTNING instruktionen tooenable hello kognitiva funktionerna för hello U-SQL-skript
+* Anropa hello processen åtgärden toouse hello kognitiva funktioner 
 
 ## <a name="imaging-scenarios"></a>Scenarier för avbildning
 
 ### <a name="example-image-tagging"></a>Exempel: Avbildningen taggning
 
-I följande exempel visas en slutpunkt till slutpunkt användning av avbildning funktioner för att identifiera objekt i bilder.
+hello som följande exempel visar en slutpunkt till slutpunkt använder hello imaging funktioner toodetect objekt i bilder.
 
     REFERENCE ASSEMBLY ImageCommon;
     REFERENCE ASSEMBLY FaceSdk;
@@ -44,7 +44,7 @@ I följande exempel visas en slutpunkt till slutpunkt användning av avbildning 
         FROM @"/images/{FileName:*}.jpg"
         USING new Cognition.Vision.ImageExtractor();
 
-    // Extract the number of objects on each image and tag them 
+    // Extract hello number of objects on each image and tag them 
     @objects =
         PROCESS @imgs 
         PRODUCE FileName,
@@ -120,7 +120,7 @@ Anta att vi har indata som består av ”War fred” av Leo Tolstoy.
                 Text
         USING new Cognition.Text.KeyPhraseExtractor();
 
-    // Tokenize the key phrases.
+    // Tokenize hello key phrases.
     @kpsplits =
         SELECT No,
             Year,

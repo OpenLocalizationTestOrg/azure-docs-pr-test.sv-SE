@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell-skript exempel – distribuera program till ett kluster | Microsoft Docs"
-description: "Azure PowerShell-skript exempel – distribuerar ett program till ett Service Fabric-kluster."
+title: aaaAzure PowerShell skriptexempel - distribuera programmet tooa kluster | Microsoft Docs
+description: "Azure PowerShell-skript exempel – distribuera programmet tooa Service Fabric-klustret."
 services: service-fabric
 documentationcenter: 
 author: rwike77
@@ -15,38 +15,38 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2863823205dbd70f63948ecd4af8898220fe1ff8
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.openlocfilehash: b417c9908c72f016e930c43ff2d13e0cc5451f46
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-an-application-to-a-service-fabric-cluster"></a>Distribuera ett program till ett Service Fabric-kluster
+# <a name="deploy-an-application-tooa-service-fabric-cluster"></a>Distribuera ett program tooa Service Fabric-kluster
 
-Det här exempelskriptet kopierar ett programpaket till ett kluster avbildningsarkivet registrerar programtypen i klustret och skapar en instans av programmet från programtypen.  Om alla standardtjänster definierades i programmanifestet av programmet måltypen skapas tjänsterna just nu. Anpassa parametrarna efter behov. 
+Det här exempelskriptet kopierar ett paket tooa klustret avbildningen programarkiv registrerar hello programtyp i hello kluster och skapar en instans av programmet från hello programtyp.  Om alla standardtjänster definierades i hello programmanifestet av hello Målprogramstyp skapas tjänsterna just nu. Anpassa hello parametrarna efter behov. 
 
-Om det behövs installerar du Service Fabric PowerShell-modulen med den [Service Fabric SDK](../service-fabric-get-started.md). 
+Om det behövs installerar du hello Service Fabric PowerShell-modulen med hello [Service Fabric SDK](../service-fabric-get-started.md). 
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-powershell[huvudsakliga](../../../powershell_scripts/service-fabric/deploy-application/deploy-application.ps1 "distribuerar ett program till ett kluster")]
+[!code-powershell[main](../../../powershell_scripts/service-fabric/deploy-application/deploy-application.ps1 "Deploy an application tooa cluster")]
 
 ## <a name="clean-up-deployment"></a>Rensa distribution 
 
-Efter skriptexempel har körts, skriptet [tar bort ett program](service-fabric-powershell-remove-application.md) kan användas för att ta bort programinstansen, avregistrera programtypen och ta bort programmet paketet från avbildningsarkivet.
+Efter hello skriptexempel har körts hello skriptet i [tar bort ett program](service-fabric-powershell-remove-application.md) kan använda tooremove hello programinstansen, avregistrering av programtyp hello och ta bort hello programpaketet från avbildningsarkivet hello.
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon. Varje kommando i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
-| [Kopiera ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Kopiera ett programpaket till klustret image store.  |
-|[Registrera ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Registrerar ett programtypen och versionen på klustret. |
+| [Kopiera ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) | Kopiera ett paket toohello klustret avbildningen programarkiv.  |
+|[Registrera ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps)| Registrerar ett programtypen och versionen på hello klustret. |
 |[Ny ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps)| Skapar ett program från en typ som registrerade programmet. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Service Fabric PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/service-fabric/?view=azureservicefabricps).
+Mer information om hello Service Fabric PowerShell-modulen finns [Azure PowerShell dokumentationen](/powershell/azure/service-fabric/?view=azureservicefabricps).
 
-Ytterligare Powershell-exempel för Azure Service Fabric kan hittas i den [Azure PowerShell-exempel](../service-fabric-powershell-samples.md).
+Ytterligare Powershell-exempel för Azure Service Fabric kan hittas i hello [Azure PowerShell-exempel](../service-fabric-powershell-samples.md).

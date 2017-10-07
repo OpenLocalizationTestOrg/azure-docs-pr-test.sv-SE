@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med SQL Data Warehouse Hotidentifiering"
-description: "Hur du kommer igång med Hotidentifiering"
+title: "aaaGet igång med SQL Data Warehouse Hotidentifiering"
+description: "Hur tooget igång med Hotidentifiering"
 services: sql-data-warehouse
 documentationcenter: 
 author: ronortloff
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.openlocfilehash: f4a2376fe4fb710d031c35ca7fdbf4c7bb0f3caa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: dec0b734849e7f52434e099db0b38fbf0bf6ad53
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-threat-detection"></a>Kom igång med hotidentifiering
 > [!div class="op_single_selector"]
@@ -29,49 +29,49 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="overview"></a>Översikt
-Hotidentifiering identifierar avvikande databasaktiviteter som indikerar potentiella säkerhetshot mot databasen. Hotidentifiering är en förhandsversion och stöds för SQL Data Warehouse.
+Hotidentifiering identifierar avvikande databasaktiviteter som indikerar potentiella hot toohello databasen. Hotidentifiering är en förhandsversion och stöds för SQL Data Warehouse.
 
-Hotidentifiering innehåller ett nytt lager av säkerhet som ger kunder möjlighet att identifiera och svara på potentiella hot allteftersom de sker genom att tillhandahålla säkerhetsaviseringar på avvikande aktiviteter. Användare kan utforska misstänkta händelser med hjälp av [Azure SQL Data Warehouse-granskning](sql-data-warehouse-auditing-overview.md) att avgöra om de härrör från ett försök att komma åt, bryta mot eller utnyttja data i datalagret.
-Hotidentifiering gör det enkelt att adressen potentiella hot till datalagret utan att behöva vara en expert säkerhet eller hantera avancerade säkerhetsövervakning system.
+Hotidentifiering innehåller ett nytt lager av säkerhet som gör att kunder toodetect och svarar toopotential hot som de sker genom att tillhandahålla säkerhetsaviseringar på avvikande aktiviteter. Användare kan utforska hello misstänkta händelser med hjälp av [Azure SQL Data Warehouse-granskning](sql-data-warehouse-auditing-overview.md) toodetermine om de kommer från en försök tooaccess bryta mot eller utnyttja data i hello-datalagret.
+Hotidentifiering gör det enkelt tooaddress potentiella hot toohello data warehouse utan hello måste toobe en säkerhetsexpert på eller hantera avancerade säkerhetsövervakning system.
 
-Hotidentifiering identifierar till exempel vissa avvikande databasaktiviteter som indikerar potentiella försök med SQL injection. SQL injection är en av säkerhetsproblem för vanliga Web program på Internet, används till att attackera datadrivna program. Angripare kan utnyttja säkerhetsproblem för programmet att mata in skadlig SQL-instruktioner i programmet post fält för brott mot eller ändra data i databasen.
+Hotidentifiering identifierar till exempel vissa avvikande databasaktiviteter som indikerar potentiella försök med SQL injection. SQL injection är en av hello vanliga Web application säkerhetsproblem på hello Internet, används tooattack datadrivna program. Angripare dra nytta av programmet säkerhetsrisker tooinject skadliga SQL-instruktioner i programmet post fält för brott mot eller ändra data i hello-databas.
 
 ## <a name="set-up-threat-detection-for-your-database"></a>Ställ in hotidentifiering för din databas
-1. Starta Azure-portalen på [https://portal.azure.com](https://portal.azure.com).
-2. Navigera till bladet för konfiguration av SQL Data Warehouse som du vill övervaka. I bladet inställningar väljer **granskning och Hotidentifiering**.
+1. Starta hello Azure-portalen på [https://portal.azure.com](https://portal.azure.com).
+2. Navigera toohello configuration bladet för hello SQL Data Warehouse som du vill toomonitor. Välj i hello inställningsbladet **granskning och Hotidentifiering**.
    
     ![Navigeringsfönstret][1]
-3. I den **granskning och Hotidentifiering** configuration bladet Stäng **ON** granskning, som visar inställningarna för identifiering av hot.
+3. I hello **granskning och Hotidentifiering** configuration bladet Stäng **ON** granskning, som visar hello Threat detection inställningar.
    
     ![Navigeringsfönstret][2]
 4. Aktivera **på** Hotidentifiering.
-5. Konfigurera en lista över e-postmeddelanden som ska ta emot säkerhetsaviseringar vid identifiering av avvikande data warehouse aktiviteter.
-6. Klicka på **spara** i den **Auditing & Threat detection** configuration bladet för att spara den nya eller uppdaterade granskning och hot princip.
+5. Konfigurera hello lista med e-postmeddelanden som ska ta emot säkerhetsaviseringar vid identifiering av avvikande data warehouse aktiviteter.
+6. Klicka på **spara** i hello **Auditing & Threat detection** configuration bladet toosave hello nya eller uppdaterade granskning och hotidentifiering princip.
    
     ![Navigeringsfönstret][3]
 
 ## <a name="explore-anomalous-data-warehouse-activities-upon-detection-of-a-suspicious-event"></a>Utforska data avvikande aktiviteter vid identifiering av en misstänkt aktivitet
 1. Du får ett e-postmeddelande vid identifiering av avvikande databasaktiviteter. <br/>
-   E-postmeddelandet ger information om händelsen misstänkta säkerhet inklusive avvikande aktiviteter, databasens namn, servernamn och tidpunkt för händelsen. Dessutom ger information om möjliga orsaker och rekommenderade åtgärder för att undersöka och minska den potentiella risken till databasen.<br/>
+   hello e-post ger information om hello misstänkta säkerhetshändelse inklusive hello uppbyggnad hello avvikande aktiviteter, databasnamn, namn och hello händelse servertid. Dessutom den ger information om möjliga orsaker och rekommenderade åtgärder tooinvestigate och minska hello potentiella hot toohello databas.<br/>
    
     ![Navigeringsfönstret][4]
-2. I e-post, klickar du på den **Azure SQL-granskning logg** länk som startar den klassiska Azure-portalen och visa de granskning register vid ungefär samma tidpunkt misstänkta händelsen.
+2. I hello e-post, klickar du på hello **Azure SQL-granskning logg** länk som startar hello klassiska Azure-portalen och visa hello relevanta granskning poster runt hello tidpunkt hello misstänkta händelsen.
    
     ![Navigeringsfönstret][5]
-3. Klicka på granskningsposter om du vill visa mer information om misstänkt databasaktiviteter, till exempel SQL-instruktionen, fel orsak och klient-IP.
+3. Klicka på hello audit poster tooview mer information om hello misstänkt databasaktiviteter, till exempel SQL-instruktionen, fel orsak och klient-IP.
    
     ![Navigeringsfönstret][6]
-4. I bladet granskning poster klickar du på **öppna i Excel** för att öppna en förkonfigurerad excel-mall som du vill importera och kör djupare analys av granskningsloggen vid ungefär samma tidpunkt misstänkta händelsen.<br/>
-   **Obs:** i Excel 2010 eller senare, Power Query och **snabb kombinera** inställningen är obligatorisk
+4. I hello granskning poster bladet, klickar du på **öppna i Excel** tooopen förkonfigurerad excel mallen tooimport och kör djupare analys av hello granskningsloggen runt hello tidpunkt hello misstänkta händelsen.<br/>
+   **Obs:** i Excel 2010 eller senare, Power Query och hello **snabb kombinera** inställningen är obligatorisk
    
     ![Navigeringsfönstret][7]
-5. Så här konfigurerar du den **snabb kombinera** - inställningen i den **POWER QUERY** menyfliksområdet fliken **alternativ** att visa dialogrutan Alternativ. Välj avsnittet sekretess och väljer det andra alternativet - ”Ignorera sekretessnivåerna och förbättra prestanda”:
+5. tooconfigure hello **snabb kombinera** inställningen - i hello **POWER QUERY** menyfliksområdet fliken **alternativ** toodisplay hello dialogrutan. Välj hello sekretess avsnitt och välj hello andra alternativet - ”Ignorera hello sekretessnivåerna och förbättra prestanda”:
    
     ![Navigeringsfönstret][8]
-6. Kontrollera att parametrarna i inställningar på fliken är korrekt och välj ”uppgifter” menyfliksområdet och klicka på knappen 'Uppdatera alla' för att läsa in SQL-granskningsloggar.
+6. tooload granskningsloggarna för SQL, kontrollera att hello parametrar på fliken Inställningar för hello är korrekt inställda Välj hello ”uppgifter” menyfliksområdet och klickar på ”Uppdatera alla' hello-knappen.
    
     ![Navigeringsfönstret][9]
-7. Resultatet visas i den **SQL granskningsloggar** blad som gör det möjligt att köra djupare analys av avvikande aktiviteter som upptäckts och minimera effekten av säkerhetshändelse i ditt program.
+7. hello resultat visas i hello **SQL granskningsloggar** blad som gör att du toorun djupare analys av hello avvikande aktiviteter som har upptäckts och minska hello effekten av hello säkerhetshändelse i ditt program.
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-security-threat-detection/1_td_click_on_settings.png

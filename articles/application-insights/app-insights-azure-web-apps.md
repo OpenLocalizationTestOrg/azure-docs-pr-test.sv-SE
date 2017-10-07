@@ -1,5 +1,5 @@
 ---
-title: "Övervaka prestanda för Azure-webbappar | Microsoft Docs"
+title: aaaMonitor Azure web app prestanda | Microsoft Docs
 description: "Övervakning av programprestanda för Azure-webbappar. Skapa diagram över inläsnings- och svarstider och beroendeinformation och ställ in aviseringar för prestanda."
 services: application-insights
 documentationcenter: .net
@@ -13,29 +13,29 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: bwren
-ms.openlocfilehash: f2bbadfbcb93873ed910aeff050bd6896e2e8fec
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: d1083254e5c504b18f2ac5ae2368610dc2790436
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="monitor-azure-web-app-performance"></a>Övervaka prestanda för Azure-webbappar
-På [Azure Portal](https://portal.azure.com) kan du konfigurera övervakning av programprestanda för dina [Azure-webbappar](../app-service-web/app-service-web-overview.md). [Azure Application Insights](app-insights-overview.md) instrumenterar din app så att den skickar telemetri om sina aktiviteter till Application Insights-tjänsten, där informationen lagras och analyseras. Där kan du använda diagram med mätvärden och sökverktyg för att diagnostisera problem, förbättra prestanda och utvärdera användningen.
+I hello [Azure Portal](https://portal.azure.com) du kan konfigurera övervakning av programprestanda för din [Azure-webbappar](../app-service-web/app-service-web-overview.md). [Azure Application Insights](app-insights-overview.md) instruments din app toosend telemetri om dess aktiviteter toohello Application Insights-tjänsten, där den lagras och analyseras. Det, mått diagram och sökverktyg kan användas för toohelp diagnostisera problem, förbättra prestanda och utvärdera användning.
 
 ## <a name="run-time-or-build-time"></a>Vid körning eller utveckling
-Du kan konfigurera övervakning genom att instrumentera appen på något av två sätt:
+Du kan konfigurera övervakning av instrumentering hello app på två sätt:
 
-* **Vid körning** – Du kan välja ett tillägg för prestandaövervakning när din webbapp redan är live. Du behöver inte återskapa eller installera om appen. Du får en standarduppsättning med paket som övervakar svarstider, framgångsfrekvens, undantag, beroenden och så vidare. 
-* **Vid utveckling** – Du kan installera ett paket i din app i samband med utvecklingen. Det här alternativet är mer flexibelt. Förutom motsvarande standardpaket kan du skriva kod för att anpassa telemetrin eller skicka din egen telemetri. Du kan logga specifika aktiviteter eller registrera händelser baserat på semantiken för din appdomän. 
+* **Vid körning** – Du kan välja ett tillägg för prestandaövervakning när din webbapp redan är live. Det är inte nödvändigt toorebuild eller installera om appen. Du får en standarduppsättning med paket som övervakar svarstider, framgångsfrekvens, undantag, beroenden och så vidare. 
+* **Vid utveckling** – Du kan installera ett paket i din app i samband med utvecklingen. Det här alternativet är mer flexibelt. I tillägg toohello samma standard paket, du kan skriva kod toocustomize hello telemetri eller toosend egna telemetri. Du kan logga specifika aktiviteter eller post händelser enligt toohello semantiken för din app-domän. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Instrumentering i samband med körning med Application Insights
-Om du redan kör en webbapp i Azure har du redan tillgång till viss övervakning: begärande- och felfrekvens. Lägg till Application Insights om du vill få tillgång till mer, till exempel svarstider, övervakning av anrop till beroenden, smart identifiering och det kraftfulla Log Analytics-frågespråket. 
+Om du redan kör en webbapp i Azure har du redan tillgång till viss övervakning: begärande- och felfrekvens. Lägg till Application Insights tooget mer, till exempel svarstider, övervakning anrop toodependencies, smart identifiering och hello kraftfulla Log Analytics-frågespråket. 
 
-1. **Välj Application Insights** på Azure-kontrollpanelen för din webbapp.
+1. **Välj Application Insights** hello Azure på Kontrollpanelen för ditt webbprogram.
    
     ![Välj Application Insights under Övervakning](./media/app-insights-azure-web-apps/05-extend.png)
    
-   * Välj att skapa en ny resurs, såvida du inte redan har angett en Application Insights-resurs för den här appen på ett annat sätt.
+   * Välj toocreate en ny resurs, såvida du inte redan angett Application Insights-resurs för den här appen med en annan väg.
 2. **Instrumentera din webbapp** när Application Insights har installerats. 
    
     ![Instrumentera din webbapp](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
@@ -49,59 +49,59 @@ Om du redan kör en webbapp i Azure har du redan tillgång till viss övervaknin
     
     Värde:`true`
 
-   * **Spara** inställningarna och **starta om** din app.
-3. **Övervaka din app**.  [Utforska data](#explore-the-data).
+   * **Spara** hello inställningar och **starta om** din app.
+3. **Övervaka din app**.  [Expore hello data](#explore-the-data).
 
-Senare kan du skapa appen med Application Insights om du vill.
+Senare kan skapa du hello app med Application Insights om du vill.
 
-*Hur tar jag bort Application Insights eller växlar till att skicka telemetri till en annan resurs?*
+*Hur jag ta bort Application Insights eller växla toosending tooanother resurs?*
 
-* Öppna kontrollbladet för webbappen i Azure och öppna **Tillägg** under Utvecklingsverktyg. Ta bort Application Insights-tillägget. Välj Application Insights och skapa eller välj önskad resurs under Övervakning.
+* I Azure, öppna hello web app kontroll bladet och under utvecklingsverktyg, öppna **tillägg**. Ta bort hello Application Insights-tillägget. Sedan under övervakning, Välj Application Insights och skapa eller välj hello-resurs som du vill.
 
-## <a name="build-the-app-with-application-insights"></a>Skapa appen med Application Insights
+## <a name="build-hello-app-with-application-insights"></a>Skapa hello program med Application Insights
 Application Insights kan tillhandahålla mer detaljerad telemetri genom installationen av ett SDK i din app. Mer specifikt kan du samla in spårningsloggar, [skriva anpassad telemetri](app-insights-api-custom-events-metrics.md) och få mer detaljerade undantagsrapporter.
 
 1. **I Visual Studio** (2013 uppdatering 2 eller senare) konfigurerar du Application Insights för ditt projekt.
 
-    Högerklicka på webbprojektet och välj **Lägg till > Application Insights** eller **Konfigurera Application Insights**.
+    Högerklicka på hello-projektet och välj **Lägg till > Application Insights** eller **konfigurera Application Insights**.
    
-    ![Högerklicka på webbprojektet och välj Lägg till Application Insights eller Konfigurera Application Insights](./media/app-insights-azure-web-apps/03-add.png)
+    ![Högerklicka på hello-projektet och välj Lägg till eller konfigurera Application Insights](./media/app-insights-azure-web-apps/03-add.png)
    
-    Om du uppmanas att logga in använder du autentiseringsuppgifterna för ditt Azure-konto.
+    Om du tillfrågas toosign i Använd hello-autentiseringsuppgifter för Azure-konto.
    
-    Åtgärden har två effekter:
+    hello-åtgärden har två effekter:
    
    1. Skapar en Application Insights-resurs i Azure, där telemetri lagras, analyseras och visas.
-   2. Lägger till NuGet-paketet för Application Insights i din kod (om det inte redan finns där) och konfigurerar det att skicka telemetri till Azure-resursen.
-2. **Testa telemetrin** genom att köra appen på utvecklingsdatorn (F5).
-3. **Publicera appen** till Azure som vanligt. 
+   2. Lägger till hello Application Insights NuGet-paketet tooyour kod (om det inte fanns redan), samt konfigurerar den toosend telemetri toohello Azure-resurs.
+2. **Testa hello telemetri** av hello-app som körs på utvecklingsdatorn (F5).
+3. **Publicera hello app** tooAzure i hello vanligt. 
 
-*Hur växlar jag till att skicka telemetri till en annan Application Insights-resurs?*
+*Hur växlar toosending tooa olika Application Insights-resurs?*
 
-* I Visual Studio högerklickar du på projektet, väljer **Konfigurera Application Insights** och väljer önskad resurs. Du får möjlighet att skapa en ny resurs. Återskapa och distribuera igen.
+* I Visual Studio, högerklicka på hello projekt, väljer **konfigurera Application Insights** och välj hello-resurs som du vill. Du får hello alternativet toocreate en ny resurs. Återskapa och distribuera igen.
 
-## <a name="explore-the-data"></a>Utforska data
-1. På bladet Application Insights på kontrollpanelen för webbappen ser du Live Metrics, som visar begäranden och fel inom en sekund eller två efter att de inträffat. Detta är praktiskt när du publicera om din app, så att du genast ser eventuella problem.
-2. Klicka dig framåt till den fullständiga Application Insights-resursen.
+## <a name="explore-hello-data"></a>Utforska hello data
+1. Hello Application Insights bladet av Kontrollpanelen web app visas Live statistik, som visar begäranden och misslyckade inom en andra eller två av dem sker. Detta är praktiskt när du publicera om din app, så att du genast ser eventuella problem.
+2. Klicka dig igenom toohello fullständig Application Insights-resurs.
 
     ![Klicka dig framåt](./media/app-insights-azure-web-apps/view-in-application-insights.png)
 
     Du kan också gå dit direkt från Azure-resursnavigeringen.
 
-1. Klicka dig igenom valfritt diagram om du vill visa mer information:
+1. Klicka dig igenom några diagram tooget detalj:
    
-    ![Klicka på ett diagram på översiktsbladet för Application Insights](./media/app-insights-azure-web-apps/07-dependency.png)
+    ![Klicka på ett diagram på hello Application Insights översikt blad](./media/app-insights-azure-web-apps/07-dependency.png)
    
     Du kan [anpassa bladen med mätvärden](app-insights-metrics-explorer.md).
-2. Klicka dig vidare om du vill visa enskilda händelser och deras egenskaper:
+2. Klicka dig igenom ytterligare toosee enskilda händelser och deras egenskaper:
    
-    ![Klicka på en händelsetyp för att öppna en sökning som filtrerats baserat på den typen](./media/app-insights-azure-web-apps/08-requests.png)
+    ![Klicka på en händelse typen tooopen en sökning filtrerade i denna typ.](./media/app-insights-azure-web-apps/08-requests.png)
    
-    Observera länken ”...” för att öppna alla egenskaper.
+    Observera hello ”...” länken tooopen alla egenskaper.
    
     Du kan [anpassa sökningar](app-insights-diagnostic-search.md).
 
-För mer kraftfulla sökningar över din telemetri kan du använda [Log Analytics-frågespråket](app-insights-analytics-tour.md).
+För mer avancerade sökningar över din telemetri använder hello [Log Analytics-frågespråket](app-insights-analytics-tour.md).
 
 ## <a name="more-telemetry"></a>Mer telemetri
 
@@ -113,11 +113,11 @@ För mer kraftfulla sökningar över din telemetri kan du använda [Log Analytic
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>Nästa steg
-* [Kör profileraren för din live-app](app-insights-profiler.md).
+* [Kör hello profiler på appen live](app-insights-profiler.md).
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) – övervaka Azure Functions med Application Insights
-* [Aktivera Azure-diagnostik](app-insights-azure-diagnostics.md) så att den skickas till Application Insights.
-* [Övervaka mätvärden för tjänstens hälsotillstånd](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) för att se till att tjänsten är tillgänglig och svarar.
+* [Aktivera Azure diagnostics](app-insights-azure-diagnostics.md) toobe skickas tooApplication insikter.
+* [Övervaka tjänsten hälsa](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) toomake att tjänsten är tillgänglig och svarstid.
 * [Få aviseringar](../monitoring-and-diagnostics/insights-receive-alert-notifications.md) när drifthändelser inträffar eller när mätvärden överskrider ett tröskelvärde.
-* Använd [Application Insights för JavaScript-appar och webbsidor](app-insights-javascript.md) för att hämta klienttelemetri från webbläsare som besöker en webbsida.
-* [Konfigurera tillgänglighetswebbtester](app-insights-monitor-web-app-availability.md) så att du aviseras om webbplatsen inte fungerar.
+* Använd [Programinsikter för JavaScript-appar och webbsidor](app-insights-javascript.md) tooget klienten telemetri från hello webbläsare som besöker en webbsida.
+* [Ställ in tillgänglighet webbtester](app-insights-monitor-web-app-availability.md) toobe aviserad om webbplatsen är igång.
 

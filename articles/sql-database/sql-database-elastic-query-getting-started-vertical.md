@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med flera databaser frågor (vertikal partitionering) | Microsoft Docs"
-description: "hur du använder elastisk databasfrågan med lodrätt partitionerade databaser"
+title: "aaaGet igång med flera databaser frågor (vertikal partitionering) | Microsoft Docs"
+description: "hur toouse elastisk databasfrågan med lodrätt partitionerad databaser"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: torsteng
-ms.openlocfilehash: 17158c4960e9ba9251524659c90af9aec1316774
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9e6183268e8bf87e3ac28f502711fcc05a7a3f52
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Kom igång med flera databaser frågor (vertikal partitionering) (förhandsgranskning)
-Elastisk databasfrågan (förhandsversion) för Azure SQL Database låter dig köra T-SQL-frågor som sträcker sig över flera databaser med hjälp av en enda anslutningspunkt. Det här avsnittet gäller [lodrätt partitionerad databaser](sql-database-elastic-query-vertical-partitioning.md).  
+Elastisk databasfrågan (förhandsversion) för Azure SQL Database kan toorun T-SQL-frågor som sträcker sig över flera databaser med hjälp av en enda anslutningspunkt. Det här avsnittet gäller för[lodrätt partitionerad databaser](sql-database-elastic-query-vertical-partitioning.md).  
 
-När du är klar, kommer: Lär dig att konfigurera och köra frågor som sträcker sig över flera relaterade databaser med en Azure SQL Database. 
+När du är klar, kommer: Lär dig hur tooconfigure och använda en Azure SQL Database-tooperform frågar den span flera relaterade databaser. 
 
-Mer information om funktionen för elastisk databas frågan finns [översikt över Azure SQL Database elastisk databas frågan](sql-database-elastic-query-overview.md). 
+Mer information om hello elastisk databas fråga funktionen finns [översikt över Azure SQL Database elastisk databas frågan](sql-database-elastic-query-overview.md). 
 
 ## <a name="prerequisites"></a>Krav
 
-Du måste ha behörigheten ALTER ANY extern DATAKÄLLA. Den här behörigheten har behörigheten ALTER DATABASE. ALTER ANY extern DATAKÄLLA behörighet att referera till den underliggande datakällan.
+Du måste ha behörigheten ALTER ANY extern DATAKÄLLA. Den här behörigheten ingår i hello ALTER DATABASE-behörighet. ALTER ANY extern DATAKÄLLA behörigheter är nödvändiga toorefer toohello underliggande datakällan.
 
-## <a name="create-the-sample-databases"></a>Skapa exempeldatabasen
-Börja med, måste vi skapa två databaserna, **kunder** och **order**, antingen i samma eller andra logiska servrar.   
+## <a name="create-hello-sample-databases"></a>Skapa hello exempeldatabas
+toostart med vi behöver toocreate två databaserna, **kunder** och **order**, antingen i hello samma eller andra logiska servrar.   
 
-Kör följande frågor på den **order** databas för att skapa den **OrderInformation** tabell och ange exempeldata. 
+Kör följande frågor på hello hello **order** databasen toocreate hello **OrderInformation** tabell och indata hello exempeldata. 
 
     CREATE TABLE [dbo].[OrderInformation]( 
         [OrderID] [int] NOT NULL, 
@@ -46,7 +46,7 @@ Kör följande frågor på den **order** databas för att skapa den **OrderInfor
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1) 
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8) 
 
-Nu kan köra följande fråga på den **kunder** databas för att skapa den **CustomerInformation** tabell och ange exempeldata. 
+Nu kan köra följande fråga på hello **kunder** databasen toocreate hello **CustomerInformation** tabell och indata hello exempeldata. 
 
     CREATE TABLE [dbo].[CustomerInformation]( 
         [CustomerID] [int] NOT NULL, 
@@ -61,18 +61,18 @@ Nu kan köra följande fråga på den **kunder** databas för att skapa den **Cu
 ## <a name="create-database-objects"></a>Skapa databasobjekt
 ### <a name="database-scoped-master-key-and-credentials"></a>Databasbegränsade huvudnyckel och autentiseringsuppgifter
 1. Öppna SQL Server Management Studio eller SQL Server Data Tools i Visual Studio.
-2. Ansluta till order-databasen och kör följande T-SQL-kommandon:
+2. Ansluta toohello order databas och kör följande T-SQL-kommandon hello:
    
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'; 
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred 
         WITH IDENTITY = '<username>', 
         SECRET = '<password>';  
    
-    ”Användarnamn” och ”password” ska vara användarnamn och lösenord som används för att logga in i databasen kunder.
+    hello ”användarnamn” och ”password” måste vara hello användarnamnet och lösenordet som används för toologin till hello kunder databas.
     Autentisering med hjälp av Azure Active Directory med elastisk frågor stöds inte för närvarande.
 
 ### <a name="external-data-sources"></a>Externa datakällor
-Om du vill skapa en extern datakälla, kör du följande kommando i order-databasen: 
+toocreate en extern datakälla, kör följande kommando på hello order databasen hello: 
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH 
         (TYPE = RDBMS, 
@@ -82,7 +82,7 @@ Om du vill skapa en extern datakälla, kör du följande kommando i order-databa
     ) ;
 
 ### <a name="external-tables"></a>Externa tabeller
-Skapa en extern tabell på order-databasen, som matchar definitionen av tabellen CustomerInformation:
+Skapa en extern tabell på hello order databasen som matchar hello definition av hello CustomerInformation tabell:
 
     CREATE EXTERNAL TABLE [dbo].[CustomerInformation] 
     ( [CustomerID] [int] NOT NULL, 
@@ -92,7 +92,7 @@ Skapa en extern tabell på order-databasen, som matchar definitionen av tabellen
     ( DATA_SOURCE = MyElasticDBQueryDataSrc) 
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Köra en exempelfråga för elastisk databas T-SQL
-När du har definierat den externa datakällan och externa tabeller kan du nu använda T-SQL fråga din externa tabeller. Kör frågan på order-databasen: 
+När du har definierat den externa datakällan och externa tabeller kan du nu använda T-SQL tooquery externa tabeller. Kör frågan på hello order databasen: 
 
     SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company 
     FROM OrderInformation 
@@ -100,7 +100,7 @@ När du har definierat den externa datakällan och externa tabeller kan du nu an
     ON CustomerInformation.CustomerID = OrderInformation.CustomerID 
 
 ## <a name="cost"></a>Kostnad
-Funktionen elastisk databas frågan är för närvarande inkluderas i kostnaden för Azure SQL Database.  
+För närvarande ingår hello elastisk databas frågan i hello kostnaden för din Azure SQL-databas.  
 
 Mer information om priser finns [priser för SQL Database](https://azure.microsoft.com/pricing/details/sql-database). 
 

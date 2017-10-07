@@ -1,6 +1,6 @@
 ---
-title: "Bevilja användarbehörighet att principer för specifika labbet | Microsoft Docs"
-description: "Lär dig att ge användarbehörigheter principer för specifika labb i DevTest Labs baserat på varje användares behov"
+title: "aaaGrant behörigheter toospecific lab användarprinciper | Microsoft Docs"
+description: "Lär dig hur toogrant behörigheter toospecific lab användarprinciper i DevTest Labs baserat på varje användares behov"
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: tomarcher
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.openlocfilehash: 0bd9f83257834d9681479ba9117c48ffd6d6e166
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 35647ab837243188f06566cdf365b67fe33a3865
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="grant-user-permissions-to-specific-lab-policies"></a>Bevilja användarbehörighet att principer för specifika labbet
+# <a name="grant-user-permissions-toospecific-lab-policies"></a>Bevilja användarbehörighet toospecific principer för labbet
 ## <a name="overview"></a>Översikt
-Den här artikeln visar hur du använder PowerShell för att ge användare behörighet till en viss labb-princip. På så sätt kan kan behörigheter användas beroende på varje användares behov. Du kanske vill ge en viss användare möjlighet att ändra principinställningarna VM, men inte kostnaden principer.
+Den här artikeln beskrivs hur toouse PowerShell toogrant användare behörighet tooa viss lab princip. På så sätt kan kan behörigheter användas beroende på varje användares behov. Till exempel du kanske vill toogrant en viss hello möjlighet toochange hello VM principinställningar för användaren, men inte hello kostnad principer.
 
 ## <a name="policies-as-resources"></a>Principer som resurser
-Enligt beskrivningen i den [Azure rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-configure.md) artikeln RBAC Aktivera detaljerad åtkomsthantering av resurser för Azure. Med RBAC kan du särskilja uppgifter inom DevOps-teamet och ge bara mängden åtkomst till användare som de behöver för att utföra sitt arbete.
+Enligt beskrivningen i hello [Azure rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-configure.md) artikeln RBAC Aktivera detaljerad åtkomsthantering av resurser för Azure. Med RBAC kan du särskilja uppgifter inom DevOps-teamet och ge endast hello mängden åtkomst toousers de behöver tooperform sitt arbete.
 
-I DevTest Labs är en princip för en resurstyp som aktiverar åtgärden RBAC **Microsoft.DevTestLab/labs/policySets/policies/**. Varje princip för labbet är en resurs i princip resurstypen och kan tilldelas som ett scope till ett RBAC-roll.
+I DevTest Labs är en princip för en resurstyp som möjliggör hello RBAC åtgärd **Microsoft.DevTestLab/labs/policySets/policies/**. Varje princip för labbet är en resurs i hello princip resurstyp och kan tilldelas som en omfattning tooan RBAC roll.
 
-Till exempel för att ge användare läs/skrivbehörighet till den **tillåtna storlekar på VM** princip, skulle du skapa en anpassad roll som fungerar med den **Microsoft.DevTestLab/labs/policySets/policies/*** åtgärd, och sedan tilldela rätt användare till den här anpassade rollen i omfånget för **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
+Till exempel i ordning toogrant användare läsning och skrivning behörighet toohello **tillåtna storlekar på VM** princip, skulle du skapa en anpassad roll som fungerar med hello **Microsoft.DevTestLab/labs/policySets/policies/** * åtgärd och tilldela hello lämpliga användare toothis anpassad roll i hello omfattning **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
 
-Mer information om anpassade roller i RBAC finns det [anpassade roller åtkomstkontroll](../active-directory/role-based-access-control-custom-roles.md).
+toolearn mer om anpassade roller i RBAC, se hello [anpassade roller åtkomstkontroll](../active-directory/role-based-access-control-custom-roles.md).
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>Skapa en anpassad labb-roll med hjälp av PowerShell
-Du behöver läsa följande artikel som förklarar hur du installerar och konfigurerar du Azure PowerShell-cmdlets för att komma igång: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
+I ordning tooget igång, behöver du tooread hello följande artikel som förklarar hur tooinstall och konfigurera hello Azure PowerShell-cmdlets: [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre).
 
-När du har konfigurerat Azure PowerShell-cmdlets kan du utföra följande uppgifter:
+När du har skapat hello Azure PowerShell-cmdlets kan du utföra följande uppgifter hello:
 
-* Visa en lista med alla operations/åtgärder för en resursprovider
+* Visa en lista med alla hello operations åtgärder för en resursprovider
 * Lista över åtgärder i en viss roll:
 * Skapa en anpassad roll
 
-Följande PowerShell-skript visar exempel på hur du utför dessa uppgifter:
+hello följande PowerShell-skriptet visar exempel på hur tooperform dessa uppgifter:
 
-    ‘List all the operations/actions for a resource provider.
+    ‘List all hello operations/actions for a resource provider.
     Get-AzureRmProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
 
     ‘List actions in a particular role.
@@ -60,10 +60,10 @@ Följande PowerShell-skript visar exempel på hur du utför dessa uppgifter:
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
     $policyRoleDef = (New-AzureRmRoleDefinition -Role $policyRoleDef)
 
-## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Tilldela behörigheter till en användare för en specifik princip som använder anpassade roller
-När du har definierat din anpassade roller, kan du tilldela dem till användare. För att tilldela en anpassad roll till en användare, måste du först skaffa den **ObjectId** som representerar den aktuella användaren. Göra genom att använda den **Get-AzureRmADUser** cmdlet.
+## <a name="assigning-permissions-tooa-user-for-a-specific-policy-using-custom-roles"></a>Tilldela behörigheter tooa användare för en specifik princip som använder anpassade roller
+När du har definierat din anpassade roller, kan du tilldela dem toousers. I ordning tooassign en anpassad roll tooa användare, måste du först skaffa hello **ObjectId** som representerar den aktuella användaren. toodo som använder hello **Get-AzureRmADUser** cmdlet.
 
-I följande exempel visas den **ObjectId** av den *SomeUser* användaren är 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3.
+I följande exempel hello, hello **ObjectId** av hello *SomeUser* användaren är 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3.
 
     PS C:\>Get-AzureRmADUser -SearchString "SomeUser"
 
@@ -71,11 +71,11 @@ I följande exempel visas den **ObjectId** av den *SomeUser* användaren är 05D
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-När du har den **ObjectId** för användaren och ett namn på anpassad roll kan du tilldela rollen användare med den **ny AzureRmRoleAssignment** cmdlet:
+När du har hello **ObjectId** för hello användare och en anpassad rollnamn, du kan tilldela användaren rollen toohello med hello **ny AzureRmRoleAssignment** cmdlet:
 
     PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/policies/AllowedVmSizesInLab
 
-I föregående exempel är den **AllowedVmSizesInLab** principen används. Du kan använda någon av följande principer:
+I föregående exempel hello hello **AllowedVmSizesInLab** principen används. Du kan använda någon av följande principer hello:
 
 * MaxVmsAllowedPerUser
 * MaxVmsAllowedPerLab
@@ -85,11 +85,11 @@ I föregående exempel är den **AllowedVmSizesInLab** principen används. Du ka
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Nästa steg
-När du har behörighet användaren att principer för specifika labbet här är att tänka på följande steg:
+När du beviljat behörigheter toospecific lab användarprinciper, här är några tooconsider för nästa steg:
 
-* [Säker åtkomst till ett labb](devtest-lab-add-devtest-user.md).
+* [Säker åtkomst tooa lab](devtest-lab-add-devtest-user.md).
 * [Ange principer för labbet](devtest-lab-set-lab-policy.md).
 * [Skapa en labbmall](devtest-lab-create-template.md).
 * [Skapa anpassade artefakter för dina virtuella datorer](devtest-lab-artifact-author.md).
-* [Lägga till en virtuell dator med artefakter i ett labb](devtest-lab-add-vm-with-artifacts.md).
+* [Lägg till en virtuell dator med artefakter tooa lab](devtest-lab-add-vm-with-artifacts.md).
 

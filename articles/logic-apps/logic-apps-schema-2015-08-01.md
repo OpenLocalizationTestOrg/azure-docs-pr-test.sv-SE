@@ -1,5 +1,5 @@
 ---
-title: Schemat uppdateras augusti 1 2015 preview - Azure Logic Apps | Microsoft Docs
+title: aaaSchema uppdaterar augusti 1 2015 preview - Azure Logic Apps | Microsoft Docs
 description: "Skapa JSON-definitioner för Logic Apps i Azure med schemaversionen 2015-08-01-preview"
 author: stepsic-microsoft-com
 manager: anneta
@@ -15,38 +15,38 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 05/31/2016
 ms.author: LADocs; stepsic
-ms.openlocfilehash: 35d7a56d5607dcc18a4407c65b92962d3d0dcd1d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 950cd18a27aa1859c4f0b6116de3fb8699d746c4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Schema-uppdateringar för Logic Apps i Azure - preview 1 augusti 2015
 
-Den här nya schemat och API-version för Logikappar i Azure innehåller viktiga förbättringar som gör logikappar mer tillförlitlig och enklare att använda:
+Den här nya schemat och API-version för Logikappar i Azure innehåller viktiga förbättringar som gör logikappar mer tillförlitlig och enklare toouse:
 
-*   Den **APIApp** åtgärdstyp uppdateras till en ny [ **APIConnection** ](#api-connections) åtgärdstyp.
-*   **Upprepa** ändras till [ **Foreach**](#foreach).
-*   Den [ **HTTP-lyssnaren** API-App](#http-listener) krävs inte längre.
+*   Hej **APIApp** åtgärdstypen är uppdaterade tooa nya [ **APIConnection** ](#api-connections) åtgärdstyp.
+*   **Upprepa** har bytt namn för[**Foreach**](#foreach).
+*   Hej [ **HTTP-lyssnaren** API-App](#http-listener) krävs inte längre.
 *   Anropar underordnade arbetsflöden använder en [nya schemat](#child-workflows).
 
 <a name="api-connections"></a>
-## <a name="move-to-api-connections"></a>Flytta till API-anslutningar
+## <a name="move-tooapi-connections"></a>Flytta tooAPI anslutningar
 
-Den största förändringen är att du inte längre behöver distribuera API Apps i Azure-prenumerationen så att du kan använda API: er. Här är det sätt som du kan använda API: er:
+hello största förändringen är att du inte längre har toodeploy API Apps i Azure-prenumerationen så att du kan använda API: er. Här följer hello sätt som du kan använda API: er:
 
 * Hanterade API: er
 * Dina anpassade webb-API: er
 
-Varje sätt hanteras lite annorlunda eftersom deras hantering och värd modeller är olika. En fördel med den här modellen är du inte längre är begränsad till resurser som har distribuerats i din Azure-resursgrupp. 
+Varje sätt hanteras lite annorlunda eftersom deras hantering och värd modeller är olika. En fördel med den här modellen är att du inte längre är begränsad tooresources som har distribuerats i din Azure-resursgrupp. 
 
 ### <a name="managed-apis"></a>Hanterade API: er
 
 Microsoft hanterar vissa API: er för din räkning, till exempel Office 365, Salesforce, Twitter och FTP. Du kan använda vissa hanterade API: er som-är, till exempel Bing översätta, medan andra kräver konfiguration. Den här konfigurationen kallas en *anslutning*.
 
-När du använder Office 365, måste du skapa en anslutning som innehåller din Office 365-inloggning token. Denna token lagras på ett säkert sätt och uppdateras så att din logikapp alltid kan anropa API för Office 365. Om du vill ansluta till SQL- eller FTP-server måste du skapa en anslutning med anslutningssträngen. 
+När du använder Office 365, måste du skapa en anslutning som innehåller din Office 365-inloggning token. Denna token lagras på ett säkert sätt och uppdateras så att din logikapp alltid kan anropa hello API för Office 365. Om du vill tooconnect tooyour SQL- eller FTP-server, måste du skapa en anslutning med hello anslutningssträngen. 
 
-I den här definitionen åtgärderna kallas `APIConnection`. Här är ett exempel på en anslutning som anropar Office 365 om du vill skicka ett e-postmeddelande:
+I den här definitionen åtgärderna kallas `APIConnection`. Här är ett exempel på en anslutning som anropar Office 365 toosend ett e-postmeddelande:
 
 ```
 {
@@ -75,17 +75,17 @@ I den här definitionen åtgärderna kallas `APIConnection`. Här är ett exempe
 }
 ```
 
-Den `host` objekt som är del av indata som är unik för API-anslutningar och innehåller dra delar: `api` och `connection`.
+Hej `host` objekt är del av indata som är unikt tooAPI anslutningar och innehåller dra delar: `api` och `connection`.
 
-Den `api` har körningsmiljön URL där som hanterad API finns. Du kan se alla tillgängliga hanterade API: er genom att anropa `GET https://management.azure.com/subscriptions/{subid}/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview`.
+Hej `api` har hello runtime URL där som hanterad API finns. Du kan se alla tillgängliga hello hanterade API: er genom att anropa `GET https://management.azure.com/subscriptions/{subid}/providers/Microsoft.Web/managedApis/?api-version=2015-08-01-preview`.
 
-När du använder ett API API: et kanske eller kanske inte har någon *anslutningsparametrar* definieras. Om API: T inte är ingen *anslutning* krävs. Om API: et matchar, måste du skapa en anslutning. Den skapade anslutningen har namn som du väljer. Sedan kan du referera namn i den `connection` objekt i den `host` objekt. Anropa för att skapa en anslutning i en resursgrupp:
+När du använder ett API hello API kanske eller kanske inte har någon *anslutningsparametrar* definieras. Om hello API inte några *anslutning* krävs. Om hello API matchar, måste du skapa en anslutning. hello skapade anslutningen har hello-namn som du väljer. Sedan kan du referera hello namn i hello `connection` objekt i hello `host` objekt. toocreate en anslutning i en resursgrupp, anropet:
 
 ```
 PUT https://management.azure.com/subscriptions/{subid}/resourceGroups/{rgname}/providers/Microsoft.Web/connections/{name}?api-version=2015-08-01-preview
 ```
 
-Med följande text:
+Med hello följande text:
 
 ```
 {
@@ -94,7 +94,7 @@ Med följande text:
       "id": "/subscriptions/{subid}/providers/Microsoft.Web/managedApis/azureblob"
     },
     "parameterValues": {
-        "accountName": "{The name of the storage account -- the set of parameters is different for each API}"
+        "accountName": "{hello name of hello storage account -- hello set of parameters is different for each API}"
     }
   },
   "location": "{Logic app's location}"
@@ -104,7 +104,7 @@ Med följande text:
 ### <a name="deploy-managed-apis-in-an-azure-resource-manager-template"></a>Distribuera hanterade API: er i en Azure Resource Manager-mall
 
 Du kan skapa en fullständig program i en Azure Resource Manager-mall så länge interaktiv inloggning krävs inte.
-Om inloggning krävs, kan du ställa in allt med hjälp av Azure Resource Manager-mallen, men du fortfarande behöver Besök portalen för att godkänna anslutningar. 
+Om inloggning krävs, kan du ställa in allt med hello Azure Resource Manager-mall, men du fortfarande har toovisit hello portal tooauthorize hello anslutningar. 
 
 ```
     "resources": [{
@@ -194,13 +194,13 @@ Om inloggning krävs, kan du ställa in allt med hjälp av Azure Resource Manage
     }]
 ```
 
-Du kan se i det här exemplet att anslutningarna är bara resurser som bor i resursgruppen. De refererar till den hanterade API: er finns i din prenumeration.
+Du kan se i det här exemplet att hello anslutningar är bara resurser som bor i resursgruppen. De refererar till hello hanterade API: er tillgängliga tooyou i din prenumeration.
 
 ### <a name="your-custom-web-apis"></a>Dina anpassade webb-API: er
 
-Om du använder egna API: er, inte Microsoft-hanterad de använda inbyggt **HTTP** åtgärder för att anropa dem. För en perfekt upplevelse bör du exponera en Swagger-slutpunkt för din API. Den här slutpunkten aktiverar logiken App Designer ska renderas indata och utdata för din API. Swagger, kan designern bara visa in- och utgångar som täckande JSON-objekt.
+Om du använder egna API: er, inte Microsoft-hanterad de använda inbyggda hello **HTTP** åtgärd toocall dem. För en perfekt upplevelse bör du exponera en Swagger-slutpunkt för din API. Den här slutpunkten kan hello logik App Designer toorender hello indata och utdata för din API. Swagger, kan hello designer bara visa hello in- och utgångar som täckande JSON-objekt.
 
-Här är ett exempel som visar den nya `metadata.apiDefinitionUrl` egenskapen:
+Här är ett exempel som visar hello nya `metadata.apiDefinitionUrl` egenskapen:
 
 ```
 {
@@ -219,13 +219,13 @@ Här är ett exempel som visar den nya `metadata.apiDefinitionUrl` egenskapen:
 }
 ```
 
-Om du är värd för webb-API på Azure App Service, visas Web API automatiskt i listan över åtgärder som är tillgängliga i designern. Om inte, måste du klistra in i URL-Adressen direkt. Swagger-slutpunkten måste vara oautentiserade kan användas i logik App Designer, men du kan skydda API sig själv med de metoder som har stöd för Swagger.
+Om du är värd för webb-API på Azure App Service, visas automatiskt webb-API i hello lista över åtgärder som är tillgängliga i hello designer. Om inte du har toopaste i hello URL direkt. Hej Swagger slutpunkten måste vara oautentiserad toobe kan användas i hello logik App Designer, men du kan skydda hello API sig själv med de metoder som har stöd för Swagger.
 
 ### <a name="call-deployed-api-apps-with-2015-08-01-preview"></a>Anropa distribuerade API-appar med 2015-08-01-preview
 
-Om du tidigare har distribuerat en API-App kan du anropa appen med den **HTTP** åtgärd.
+Om du tidigare har distribuerat en API-App kan du anropa hello app med hello **HTTP** åtgärd.
 
-Om du använder Dropbox att lista filer, till exempel din **2014-12-01-preview** version schemadefinition kan ha något som liknar:
+Om du använder Dropbox toolist filer, till exempel din **2014-12-01-preview** version schemadefinition kan ha något som liknar:
 
 ```
 {
@@ -266,7 +266,7 @@ Om du använder Dropbox att lista filer, till exempel din **2014-12-01-preview**
 }
 ```
 
-Du kan skapa motsvarande HTTP-åtgärden som exempel, när avsnittet parametrar av logik app definition förblir oförändrad:
+Du kan skapa hello motsvarande HTTP-åtgärd som exempel, medan hello parametrar avsnitt i hello logik app definition förblir oförändrad:
 
 ```
 {
@@ -298,18 +298,18 @@ Gå igenom de här egenskaperna i taget:
 | Åtgärdsegenskap | Beskrivning |
 | --- | --- |
 | `type` |`Http`Istället för`APIapp` |
-| `metadata.apiDefinitionUrl` |Om du vill använda den här åtgärden i logik App Designer är metadataslutpunkten som har skapats från:`{api app host.gateway}/api/service/apidef/{last segment of the api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
-| `inputs.uri` |Konstrueras från:`{api app host.gateway}/api/service/invoke/{last segment of the api app host.id}/{api app operation}?api-version=2015-01-14` |
+| `metadata.apiDefinitionUrl` |toouse åtgärden i hello logik App Designer är hello metadata slutpunkt som konstrueras utifrån:`{api app host.gateway}/api/service/apidef/{last segment of hello api app host.id}/?api-version=2015-01-14&format=swagger-2.0-standard` |
+| `inputs.uri` |Konstrueras från:`{api app host.gateway}/api/service/invoke/{last segment of hello api app host.id}/{api app operation}?api-version=2015-01-14` |
 | `inputs.method` |Alltid`POST` |
-| `inputs.body` |Identiskt med parametrarna API-App |
-| `inputs.authentication` |Identisk med autentiseringen för API-App |
+| `inputs.body` |Parametrar för identiska toohello API-App |
+| `inputs.authentication` |Identiska toohello API-App-autentisering |
 
-Den här metoden ska fungera för alla åtgärder i API-App. Tänk dock på att dessa tidigare API Apps stöds inte längre. Därför bör du övergå till en av de två andra föregående alternativen, hanterade API eller värd för ditt anpassade webb-API.
+Den här metoden ska fungera för alla åtgärder i API-App. Tänk dock på att dessa tidigare API Apps stöds inte längre. Därför bör du flytta tooone av hello två andra föregående alternativ, en hanterade API: et eller värd för ditt anpassade webb-API.
 
 <a name="foreach"></a>
-## <a name="renamed-repeat-to-foreach"></a>Byta namn på 'repeat' till 'foreach'
+## <a name="renamed-repeat-tooforeach"></a>Byta namn på Upprepa too'foreach'
 
-För den föregående schemaversionen vi har tagit emot mycket kundfeedback som **Upprepa** var förvirrande och inte korrekt avbilda som **Upprepa** verkligen är en för varje slinga. Därför har vi bytt namn `repeat` till `foreach`. Till exempel tidigare du skulle kunna skriva:
+Hello tidigare schemaversionen vi emot mycket kundfeedback som **Upprepa** var förvirrande och inte korrekt avbilda som **Upprepa** verkligen är en för varje slinga. Därför har vi bytt namn `repeat` för`foreach`. Till exempel tidigare du skulle kunna skriva:
 
 ```
 {
@@ -343,11 +343,11 @@ Nu skulle du skriva:
 }
 ```
 
-Funktionen `@repeatItem()` användes tidigare för att referera till det aktuella objektet som hävdade över. Den här funktionen förenklas nu till `@item()`. 
+Hej funktionen `@repeatItem()` har använts tidigare tooreference hello aktuella objekt som hävdade över. Den här funktionen är nu förenklad för`@item()`. 
 
 ### <a name="reference-outputs-from-foreach"></a>Referens för utdata från 'foreach'
 
-För enkelhetens skull utdata från `foreach` åtgärder som inte är omslutna i ett objekt som kallas `repeatItems`. När utdata från den tidigare `repeat` exempel var:
+För enkelhetens skull hello matar ut från `foreach` åtgärder som inte är omslutna i ett objekt som kallas `repeatItems`. Medan hello matar ut från hello tidigare `repeat` exempel var:
 
 ```
 {
@@ -387,7 +387,7 @@ Nu är dessa utdata:
 ]
 ```
 
-Tidigare få till i brödtexten för åtgärden när du refererar till dessa utdata:
+Tidigare tooget toohello brödtext hello åtgärd när du refererar till dessa utdata:
 
 ```
 {
@@ -423,19 +423,19 @@ Nu kan du göra i stället:
 }
 ```
 
-Med de här ändringarna, funktionerna `@repeatItem()`, `@repeatBody()`, och `@repeatOutputs()` tas bort.
+Med de här ändringarna hello funktioner `@repeatItem()`, `@repeatBody()`, och `@repeatOutputs()` tas bort.
 
 <a name="http-listener"></a>
 ## <a name="native-http-listener"></a>Inbyggda HTTP-lyssnare
 
-HTTP-lyssnaren funktioner är nu inbyggda i. Så behöver du inte längre distribuera en http-lyssnare API-App. Se [fullständig information om hur du gör logik app slutpunkten callable här](../logic-apps/logic-apps-http-endpoint.md). 
+hello funktioner är nu inbyggda i HTTP-lyssnare. Så behöver du inte längre toodeploy en http-lyssnare API-App. Se [hello fullständig information om hur toomake din logik app endpoint callable här](../logic-apps/logic-apps-http-endpoint.md). 
 
-Med de här ändringarna vi tagit bort den `@accessKeys()` funktion, som vi har ersatts med den `@listCallbackURL()` funktionen för att hämta slutpunkten vid behov. Du måste också definiera minst en utlösare i din logikapp nu. Om du vill `/run` arbetsflödet, måste du ha något av dessa utlösare: `manual`, `apiConnectionWebhook`, eller `httpWebhook`.
+Med de här ändringarna vi tagit bort hello `@accessKeys()` funktion, vilket vi ersätts med hello `@listCallbackURL()` funktion för att hämta hello slutpunkt vid behov. Du måste också definiera minst en utlösare i din logikapp nu. Om du vill använda för`/run` Hej arbetsflödet, måste du ha något av dessa utlösare: `manual`, `apiConnectionWebhook`, eller `httpWebhook`.
 
 <a name="child-workflows"></a>
 ## <a name="call-child-workflows"></a>Anropa underordnade arbetsflöden
 
-Tidigare måste anropar underordnade arbetsflöden gå till arbetsflödet, få åtkomst-token och klistra in token i logik app definitionen där du vill anropa det underordnade arbetsflödet. Med det nya schemat genererar Logic Apps motorn automatiskt en SAS vid körning för det underordnade arbetsflödet så att du inte klistra in alla hemligheter i definitionen. Här är ett exempel:
+Anropar underordnade arbetsflöden krävs tidigare, kommer toohello arbetsflöde kan få hello åtkomst-token och klistra in hello-token i hello logik app definition där du vill att toocall det underordnade arbetsflödet. Med nya hello-schemat hello hello Logic Apps motorn genererar automatiskt en SAS vid körning för underordnade arbetsflödet så att du inte har för Klistra in alla hemligheter i hello definition. Här är ett exempel:
 
 ```
 "mynestedwf": {
@@ -461,20 +461,20 @@ Tidigare måste anropar underordnade arbetsflöden gå till arbetsflödet, få �
 }
 ```
 
-En andra förbättringar är vi ger underordnade arbetsflöden fullständig åtkomst till den inkommande begäranden. Det innebär att du kan skicka parametrar i den *frågor* avsnittet och i den *huvuden* objektet och att du helt kan definiera hela texten.
+En andra förbättringar är vi ger hello underordnade arbetsflöden fullständig åtkomst toohello inkommande begäran. Det innebär att du kan skicka parametrar i hello *frågor* avsnittet och i hello *huvuden* objektet och att du kan definiera fullständigt hello hela brödtext.
 
-Slutligen finns arbetsflöden som ändringar som krävs. När du tidigare kan anropa ett underordnat arbetsflöde direkt, måste nu du definiera en slutpunkt för utlösaren i arbetsflödet för överordnat att anropa. I allmänhet kan du lägga till en utlösare som har `manual` skriver och använder sedan den utlösaren i definitionen för överordnade. Observera den `host` egenskapen specifikt har en `triggerName` eftersom du måste alltid ange vars utlösare du anropar.
+Slutligen finns nödvändiga ändringar toohello underordnat arbetsflöde. När du gick tidigare anropar ett underordnat arbetsflöde direkt, måste nu du definiera en slutpunkt för utlösaren i hello arbetsflöde för hello överordnade toocall. I allmänhet kan du lägga till en utlösare som har `manual` skriver och använder sedan den utlösaren i hello överordnade definition. Obs hello `host` egenskapen specifikt har en `triggerName` eftersom du måste alltid ange vars utlösare du anropar.
 
 ## <a name="other-changes"></a>Andra ändringar
 
 ### <a name="new-queries-property"></a>Ny 'frågor-egenskap
 
-Alla åtgärdstyper stöder nu en ny inmatning kallas `queries`. Den här indata kan vara en strukturerad objekt, snarare än du behöver samla strängen manuellt.
+Alla åtgärdstyper stöder nu en ny inmatning kallas `queries`. Den här indata kan vara en strukturerad objekt, snarare än du har tooassemble hello sträng manuellt.
 
-### <a name="renamed-parse-function-to-json"></a>Har bytt namn till parse() av funktionen 'json()'
+### <a name="renamed-parse-function-toojson"></a>Byta namn på 'parse()' funktionen too'json()'
 
-Vi lägger till mer innehåll av typen snart, så vi har fått nytt namn i `parse()` för `json()`.
+Vi lägger till mer innehåll av typen snart, så vi har fått nytt namn hello `parse()` fungerar för`json()`.
 
 ## <a name="coming-soon-enterprise-integration-apis"></a>Kommer snart: Enterprise Integration-API: er
 
-Vi har inte hanterade versioner än av Enterprise Integration API: erna, t.ex. AS2. Under tiden kan du använda din befintliga distribuerade BizTalk-APIs via HTTP-åtgärden. Mer information, se ”med redan distribuerade API apps” i den [översikt över integrering](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 
+Vi har inte hanterade-versioner än hello Enterprise Integration-API: er, som AS2. Under tiden kan du använda din befintliga distribuerade BizTalk-APIs via hello HTTP-åtgärd. Mer information, se ”med redan distribuerade API apps” i hello [översikt över integrering](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/). 

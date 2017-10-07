@@ -1,6 +1,6 @@
 ---
-title: Skydda appar och resurser i Azure RemoteApp | Microsoft Docs
-description: "Lär dig hur du spärra appar och resurser i Azure RemoteApp"
+title: aaaSecure appar och resurser i Azure RemoteApp | Microsoft Docs
+description: "Lär dig hur toolock ned appar och resurser i Azure RemoteApp"
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,39 +13,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 1c052906788f0f4fe4ca9fd6d3af63336245174a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 26325826e92855a12a0087f19a3e32cbe1116449
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="secure-apps-and-resources-in-azure-remoteapp"></a>Skydda appar och resurser i Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
-Azure RemoteApp ger användare åtkomst till centralt hanterade Windows-appar som kan du styra vad användarna kan och inte kan göra.  Detta är särskilt användbart när användaren ansluter från en ohanterad enhet (till exempel sina personliga Macbook) och du vill styra användaråtkomst eller upplevelse.
+Azure RemoteApp ger användarna åtkomst toocentrally-hanterade Windows-appar, vilket gör att du kan styra vad användarna kan och inte kan göra.  Detta är särskilt användbart när hello användare ansluter från en ohanterad enhet (till exempel sina personliga Macbook) och du vill toocontrol hello användaråtkomst eller upplevelse.
 
-Om du använder Active Directory för autentisering av användare och du vill att användarna inte att kopiera data från en app, kan du till exempel konfigurera en Remote Desktop-Grupprincip att blockera användare från att kopiera data.
+Om du använder Active Directory för autentisering av användare och du vill att tooprevent användarna från att kopiera data från en app, kan du konfigurera en grupprincip för Remote Desktop tooblock användarna att kopiera data.
 
-Ett annat exempel är om du vill blockera internet-åtkomst för en viss app i samlingen. Du kan skapa en regel för Windows-brandväggen som blockerar åtkomst när du skapar avbildningen för samlingen.
+Ett annat exempel är om du vill tooblock internet-åtkomst för en viss app i samlingen. Du kan skapa en regel för Windows-brandväggen att block hello åtkomst när du skapar hello avbildning för samlingen.
 
 ## <a name="implementation-options"></a>Implementeringsalternativ för
-  Här är implementeringsalternativen viktiga som kan användas enskilt eller tillsammans efter behov:
+  Här följer hello viktiga implementeringsalternativ som kan användas enskilt eller tillsammans efter behov:
 
-1. Om RemoteApp-samlingen är ansluten till en domän kan du använda någon [Grupprincip](https://technet.microsoft.com/library/cc725828.aspx) (med undantag för inaktivt och koppla från timeout principerna beskrivs [här](../azure-subscription-service-limits.md)).
-2. Som ett alternativ till Grupprincip (om samlingen är inte ansluten till en domän eller om du inte har rätt privilegier i AD) kan du konfigurera [lokala principer](https://technet.microsoft.com/library/cc775702.aspx) i mallavbildningen.  Observera att gruppen principer trumf lokala principer när det finns en konflikt.
-3. Vissa inställningar för OS-appen kan inte konfigureras via Grupprincip, men kan vara via registret med den [RegEdit verktyget](remoteapp-hybridtrouble.md) vid konfiguration av mallavbildningen.
-4. Du kan använda [Windows-brandväggen](http://windows.microsoft.com/en-US/windows-8/Windows-Firewall-from-start-to-finish) nätverket att styra åtkomsten till och från den dator där programmet körs. Kontrollera att du inte blockerar URL: er och portar som anges här.
-5. Du kan använda [AppLocker](https://technet.microsoft.com/library/hh831440.aspx) att styra vilka program och filer användare kan köra. Smarta användare kan till exempel ta reda på hur att köra program att du inte har publicerats men som är tillgängliga i bilden som du använde för att skapa samlingen - AppLocker kan blockera detta.
+1. Om RemoteApp-samlingen är ansluten till en domän kan du använda någon [Grupprincip](https://technet.microsoft.com/library/cc725828.aspx) (med undantag för hello av hello inaktivt och koppla från timeout principer beskrivs [här](../azure-subscription-service-limits.md)).
+2. Som ett alternativt tooGroup principen (om samlingen är inte ansluten till en domän eller om du inte har rätt behörighet för hello i AD) kan du konfigurera [lokala principer](https://technet.microsoft.com/library/cc775702.aspx) i mallavbildningen.  Observera att gruppen principer trumf lokala principer när det finns en konflikt.
+3. Vissa inställningar för OS-appen kan inte konfigureras via Grupprincip, men kan vara via registernyckeln hello [RegEdit verktyget](remoteapp-hybridtrouble.md) vid konfiguration av mallavbildningen.
+4. Du kan använda [Windows-brandväggen](http://windows.microsoft.com/en-US/windows-8/Windows-Firewall-from-start-to-finish) toocontrol network access tooand från hello datorn där hello appen körs. Kontrollera att du inte blockerar hello URL: er och portar som anges här.
+5. Du kan använda [AppLocker](https://technet.microsoft.com/library/hh831440.aspx) toocontrol vilka program och filer användare kan köra. Till exempel smarta användare kan ta reda på hur toorun program som du inte har publicerats men som är tillgängliga i hello avbildning som du använde toocreate hello samling - AppLocker kan blockera detta.
 
 ## <a name="detailed-information"></a>Detaljerad information
-* Följande RDS-principer är troligt att det mest användbara:
+* hello följande RDS principer är sannolikt toobe som är mest användbara:
   * [Enhet och resurs](https://technet.microsoft.com/library/ee791794.aspx)
   * [Omdirigering av skrivare](https://technet.microsoft.com/library/ee791784.aspx)
   * [Profiler](https://technet.microsoft.com/library/ee791865.aspx).
-* Observera att konfigurera omdirigeringar via RemoteApp PowerShell-modul (som visas [här](remoteapp-redirection.md)) förlitar sig på klientdatorn att genomdriva principer, så om säkerhet är det primära målet ska du tillämpa principen via mallavbildningen lokal policy eller via en Grupprincip.
+* Observera att konfigurera omdirigeringar via hello RemoteApp PowerShell-modulen (som visas [här](remoteapp-redirection.md)) förlitar sig på hello datorn tooenforce hello klientprinciper, så om säkerheten är hello primära mål ska du tooenforce hello principen via Hej mallen bild lokala principen eller via en Grupprincip.
 * [Principer för Windows Server 2012 R2](https://technet.microsoft.com/library/hh831791.aspx).
-* [Office 2013 principerna](https://technet.microsoft.com/library/cc178969.aspx) (inklusive [hur du anpassar Office-verktygsfältet](https://technet.microsoft.com/library/cc179143.aspx)).
+* [Office 2013 principerna](https://technet.microsoft.com/library/cc178969.aspx) (inklusive [hur toocustomize hello Office-verktygsfältet](https://technet.microsoft.com/library/cc179143.aspx)).
 

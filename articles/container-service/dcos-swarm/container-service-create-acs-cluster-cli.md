@@ -1,0 +1,146 @@
+---
+title: "aaaDeploy en Docker-behållare kluster - Azure CLI | Microsoft Docs"
+description: "Distribuera en Kubernetes-, DC/OS- eller Docker Swarm-lösning i Azure Container Service med hjälp av Azure CLI 2.0"
+services: container-service
+documentationcenter: 
+author: sauryadas
+manager: timlt
+editor: 
+tags: acs, azure-container-service
+keywords: 
+ms.assetid: 8da267e8-2aeb-4c24-9a7a-65bdca3a82d6
+ms.service: container-service
+ms.devlang: azurecli
+ms.topic: quickstart
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 03/01/2017
+ms.author: saudas
+ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: cdfa4ce69de343dcc7070bc2c58b5132c4062084
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="deploy-a-docker-container-hosting-solution-using-hello-azure-cli-20"></a>Distribuera en dockerbehållare som värd-lösning med hjälp av hello Azure CLI 2.0
+
+Använd hello `az acs` kommandon i hello Azure CLI 2.0 toocreate och hantera kluster i Azure Container Service. Du kan också distribuera ett Azure Container Service-kluster med hjälp av hello [Azure-portalen](container-service-deployment.md) eller hello Azure Container Service API: er.
+
+Hjälp om `az acs` kommandon, skicka hello `-h` parametern tooany kommando. Till exempel: `az acs create -h`.
+
+
+
+## <a name="prerequisites"></a>Krav
+ett Azure Container Service-kluster med toocreate hello Azure CLI 2.0 måste du:
+* ha ett Azure-konto ([hämta en kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial/))
+* har installerat och konfigurerat hello [Azure CLI 2.0](/cli/azure/install-az-cli2)
+
+## <a name="get-started"></a>Kom igång 
+### <a name="log-in-tooyour-account"></a>Logga in tooyour konto
+```azurecli
+az login 
+```
+
+Följ hello prompter toolog i interaktivt. Andra metoder toolog i finns [Kom igång med Azure CLI 2.0](/cli/azure/get-started-with-az-cli2).
+
+### <a name="set-your-azure-subscription"></a>Ange din Azure-prenumeration
+
+Om du har mer än en Azure-prenumeration kan du ange hello standard prenumeration. Exempel:
+
+```
+az account set --subscription "f66xxxxx-xxxx-xxxx-xxx-zgxxxx33cha5"
+```
+
+
+### <a name="create-a-resource-group"></a>Skapa en resursgrupp
+Vi rekommenderar att du skapar en resursgrupp för varje kluster. Ange en Azure-region där Azure Container Service är [tillgänglig](https://azure.microsoft.com/en-us/regions/services/). Exempel:
+
+```azurecli
+az group create -n acsrg1 -l "westus"
+```
+Utdata är liknande toohello följande:
+
+![Skapa en resursgrupp](./media/container-service-create-acs-cluster-cli/rg-create.png)
+
+
+## <a name="create-an-azure-container-service-cluster"></a>Skapa ett Azure Container Service-kluster
+
+toocreate ett kluster, använda `az acs create`.
+Ett namn för hello kluster och hello på hello resursgruppen som skapades i föregående steg i hello är obligatoriska parametrar. 
+
+Andra indata är toodefault värden (se följande skärm hello) om inte skrivas över med hjälp av sina respektive växlar. Hej orchestrator är som standard tooDC/OS. Och om du inte anger ett DNS-namnprefix skapas baserat på hello klusternamnet.
+
+![Användning av az acs create](./media/container-service-create-acs-cluster-cli/create-help.png)
+
+
+### <a name="quick-acs-create-using-defaults"></a>Snabbt använda `acs create` med standardinställningarna
+Om du har en offentlig nyckelfil SSH RSA `id_rsa.pub` hello standardplatsen (eller skapa en för [OS X- och Linux](../../virtual-machines/linux/mac-create-ssh-keys.md) eller [Windows](../../virtual-machines/linux/ssh-from-windows.md)), använder du ett kommando som hello nedan:
+
+```azurecli
+az acs create -n acs-cluster -g acsrg1 -d applink789
+```
+Använd det här andra kommandot om du inte har en offentlig SSH-nyckel. Det här kommandot med hello `--generate-ssh-keys` växel skapas en åt dig.
+
+```azurecli
+az acs create -n acs-cluster -g acsrg1 -d applink789 --generate-ssh-keys
+```
+
+När du anger kommandot hello väntar du cirka 10 minuter för hello klustret toobe skapas. hello kommandoutdata inkluderar fullständigt kvalificerat domännamn (FQDN) för hello master och agent noder och en SSH-kommandot tooconnect toohello första huvudservern. Här är en sammanfattning över utdata:
+
+![Bild av acs create](./media/container-service-create-acs-cluster-cli/cluster-create.png)
+
+> [!TIP]
+> Hej [Kubernetes genomgången](../kubernetes/container-service-kubernetes-walkthrough.md) visar hur toouse `az acs create` med standard värden toocreate en Kubernetes kluster.
+>
+
+## <a name="manage-acs-clusters"></a>Hantera ACS-kluster
+
+Använd ytterligare `az acs` kommandon toomanage klustret. Här följer några exempel.
+
+### <a name="list-clusters-under-a-subscription"></a>Visa en lista över kluster under en prenumeration
+
+```azurecli
+az acs list --output table
+```
+
+### <a name="list-clusters-in-a-resource-group"></a>Visa en lista över kluster i en resursgrupp
+
+```azurecli
+az acs list -g acsrg1 --output table
+```
+
+![ACS-lista](./media/container-service-create-acs-cluster-cli/acs-list.png)
+
+
+### <a name="display-details-of-a-container-service-cluster"></a>Visa detaljer för ett behållartjänstkluster
+
+```azurecli
+az acs show -g acsrg1 -n acs-cluster --output list
+```
+
+![Visa ACS](./media/container-service-create-acs-cluster-cli/acs-show.png)
+
+
+### <a name="scale-hello-cluster"></a>Hello kluster
+Du kan både skala in och ut en agentnod. Hej parametern `new-agent-count` är hello nya antalet agenter i hello ACS-kluster.
+
+```azurecli
+az acs scale -g acsrg1 -n acs-cluster --new-agent-count 4
+```
+
+![ACS-skala](./media/container-service-create-acs-cluster-cli/acs-scale.png)
+
+## <a name="delete-a-container-service-cluster"></a>Ta bort ett behållartjänstkluster
+```azurecli
+az acs delete -g acsrg1 -n acs-cluster 
+```
+Det här kommandot tar inte bort alla resurser (nätverk och lagring) som skapas när du skapar hello behållartjänsten. toodelete alla resurser enkelt, bör du distribuera varje kluster i en distinkta resursgrupp. Ta sedan bort hello resursgrupp när hello klustret inte längre behövs.
+
+## <a name="next-steps"></a>Nästa steg
+Nu när du har ett fungerande kluster kan du visa dessa dokument för anslutnings- och hanteringsinformation:
+
+* [Ansluta tooan Azure Container Service-kluster](../container-service-connect.md)
+* [Arbeta med Azure Container Service och DC/OS](container-service-mesos-marathon-rest.md)
+* [Arbeta med Azure Container Service och Docker Swarm](container-service-docker-swarm.md)
+* [Arbeta med Azure Container Service och Kubernetes](../kubernetes/container-service-kubernetes-walkthrough.md)

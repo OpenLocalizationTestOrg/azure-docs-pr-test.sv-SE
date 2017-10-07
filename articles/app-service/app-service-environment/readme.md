@@ -1,6 +1,6 @@
 ---
-title: "Azure Apptjänst-miljö viktigt"
-description: "Visar en lista över dokumentationen som beskriver Azure Apptjänst-miljö"
+title: "aaaAzure Apptjänstmiljö viktigt"
+description: "Visar hello-dokumentationen som beskriver Azure Apptjänst-miljö"
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 5b1362854dbc3b0098718bd2ea3cffb06366000c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 6edc74804ded7497e70c31c9e08252257add4415
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="app-service-environment-documentation"></a>Dokumentation för Apptjänst-miljö
  Azure Apptjänst-miljö är en funktion i Azure App Service som tillhandahåller en helt isolerad och dedikerad miljö för säker körning av Apptjänst-appar i hög skala. Den här funktionen kan vara värd för din [webbappar][webapps], [mobilappar][mobileapps], [API apps][APIApps], och [funktioner][Functions].
@@ -29,20 +29,20 @@ Apptjänstmiljöer (ASEs) är perfekt för programarbetsbelastningar som kräver
 
 Kunder kan skapa flera ASEs inom ett enda Azure-region och över flera Azure-regioner. Den här flexibilitet gör ASEs idealiskt för vågrätt skalning tillståndslös programnivåerna stöd för hög RPS arbetsbelastningar.
 
-ASEs är isolerad för att endast en enskild kund program som körs och alltid har distribuerats till Azure-nätverk. Kunder har detaljerad kontroll över inkommande och utgående nätverkstrafik genom att använda [Nätverkssäkerhetsgrupper][NSGs]. Program kan också etablera snabb säkra anslutningar över virtuella nätverk till lokala företagsresurser.
+ASEs är isolerad toorunning de program som en enskild kund och alltid har distribuerats till Azure-nätverk. Kunder har detaljerad kontroll över inkommande och utgående nätverkstrafik genom att använda [Nätverkssäkerhetsgrupper][NSGs]. Program kan också etablera snabb säkra anslutningar över virtuella nätverk tooon lokala företagets resurser.
 
-Appar behöver ofta åtkomst till företagets resurser, till exempel interna databaser och webbtjänster. Appar som körs på ASEs kan komma åt resurser via [plats-till-plats] [ SiteToSite] VPN och [Azure ExpressRoute] [ ExpressRoute] anslutningar.
+Appar måste ofta tooaccess företagsresurser, t.ex interna databaser och webbtjänster. Appar som körs på ASEs kan komma åt resurser via [plats-till-plats] [ SiteToSite] VPN och [Azure ExpressRoute] [ ExpressRoute] anslutningar.
 
 * [Vad är en Apptjänst-miljö?][Intro]
 * [Skapa en Apptjänst-miljö][MakeExternalASE]
 * [Skapa en intern belastningsutjämnare Apptjänst-miljö][MakeILBASE]
 * [Använd en Apptjänst-miljö][UsingASE]
-* [Överväganden för nätverk och Apptjänst-miljö][ASENetwork]
+* [Överväganden för nätverk och hello Apptjänst-miljö][ASENetwork]
 * [Skapa en Apptjänst-miljö från en mall][MakeASEfromTemplate]
 
 
 ## <a name="videos"></a>Videoklipp
-Hantera modern PaaS för företaget med Azure App Service
+Master Modern PaaS för hello för företag med Azure App Service
 >[!VIDEO https://channel9.msdn.com/Events/Ignite/2016/BRK3205/player]
 
 Distribuera säkra appar med hög skalbarhet

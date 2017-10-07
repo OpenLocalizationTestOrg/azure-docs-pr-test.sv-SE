@@ -1,5 +1,5 @@
 ---
-title: Konfigurera Python med Azure App Service Web Apps
+title: aaaConfiguring Python med Azure App Service Web Apps
 description: "Den här självstudiekursen beskrivs alternativ för redigering och konfigurerar en enkel webbserver Gateway Interface (WSGI) kompatibla Python-program i Azure App Service Web Apps."
 services: app-service
 documentationcenter: python
@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: 9683a1af13eeff364d3c4714f0b791324fd82659
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 00d49fb01491e9adb4b6fededfb95669a8dbd485
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Konfigurera Python med Azure App Service Web Apps
 Den här självstudiekursen beskrivs alternativ för redigering och konfigurera en grundläggande Web Server Gateway Interface (WSGI) kompatibla Python-program på [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -27,24 +27,24 @@ Den här självstudiekursen beskrivs alternativ för redigering och konfigurera 
 Beskriver ytterligare funktioner för Git-distribution, till exempel virtuell miljö och installationen med hjälp av requirements.txt.
 
 ## <a name="bottle-django-or-flask"></a>Bottle, Django eller Flask?
-Azure Marketplace innehåller mallar för Bottle, Django och Flask ramverk. Om du utvecklar din första webbapp i Azure App Service eller om du inte är bekant med Git, rekommenderar vi att du följer någon av dessa självstudier med stegvisa instruktioner för att skapa ett fungerande program från galleriet med Git-distribution från Windows- eller Mac:
+hello Azure Marketplace innehåller mallar för hello Bottle, Django och Flask ramverk. Om du utvecklar din första webbapp i Azure App Service eller om du inte är bekant med Git, rekommenderar vi att du följer någon av dessa självstudier med stegvisa instruktioner för att skapa ett fungerande program från hello galleriet med Git-distribution från Windows- eller Mac:
 
 * [Skapa webbappar med Bottle](web-sites-python-create-deploy-bottle-app.md)
 * [Skapa webbappar med Django](web-sites-python-create-deploy-django-app.md)
 * [Skapa webbappar med Flask](web-sites-python-create-deploy-flask-app.md)
 
 ## <a name="web-app-creation-on-azure-portal"></a>Skapa en webbapp i Azure Portal
-Den här kursen förutsätter att en befintlig Azure-prenumeration och åtkomst till Azure-portalen.
+Den här kursen förutsätter att en befintlig Azure-prenumeration och åtkomst toohello Azure-portalen.
 
-Om du inte har en befintlig webbapp, kan du skapa en från den [Azure Portal](https://portal.azure.com).  Klicka på knappen Nytt i det övre vänstra hörnet och klicka sedan på **webb + mobilt** > **webbapp**.
+Om du inte har en befintlig webbapp, kan du skapa en från hello [Azure Portal](https://portal.azure.com).  Klicka hello nya i hello övre vänstra hörnet och klicka sedan på **webb + mobilt** > **webbapp**.
 
 ## <a name="git-publishing"></a>Git-publicering
-Konfigurera Git-publicering för den nya webbappen genom att följa anvisningarna i [Lokal Git-distribution till Azure App Service](app-service-deploy-local-git.md). Den här kursen använder Git för att skapa, hantera och publicera våra Python-webbapp till Azure App Service.
+Konfigurera Git-publicering för nyskapade webbappen genom att följa anvisningarna hello på [lokal Git-distribution tooAzure Apptjänst](app-service-deploy-local-git.md). Den här kursen använder Git toocreate, hantera och publicera våra Python web app tooAzure Apptjänst.
 
-När Git-publicering har ställts in, skapas en Git-lagringsplats och som är kopplad till ditt webbprogram. Databasens URL visas och hädanefter kan användas för att skicka data från den lokala utvecklingsmiljön till molnet. Kontrollera att en Git-klient installeras även för att publicera program via Git och använda anvisningarna för att push-webbinnehållet app till Azure App Service.
+När Git-publicering har ställts in, skapas en Git-lagringsplats och som är kopplad till ditt webbprogram. hello databasen URL visas och kan hädanefter används toopush data från hello lokal utveckling miljö toohello molnet. toopublish program via Git, kontrollera att en Git-klient installeras även och Använd hello instruktioner som toopush din web app innehåll tooAzure Apptjänst.
 
 ## <a name="application-overview"></a>Programöversikt
-Följande filer skapas i nästa avsnitt. De ska placeras i roten på Git-lagringsplats.
+I nästa avsnitt hello skapas hello följande filer. De ska placeras i hello rot hello Git-lagringsplats.
 
     app.py
     requirements.txt
@@ -54,7 +54,7 @@ Följande filer skapas i nästa avsnitt. De ska placeras i roten på Git-lagring
 
 
 ## <a name="wsgi-handler"></a>WSGI hanterare
-WSGI är en Python-standard som beskrivs av [program 3333](http://www.python.org/dev/peps/pep-3333/) definierar ett gränssnitt mellan webbservern och Python. Det ger en standardiserad gränssnitt för att skriva olika webbaserade program och ramverk som använder Python. Populära Python web ramverk använder dag WSGI. Azure App Service Web Apps får du stöd för ramverk; Dessutom kan avancerade användare även skapa egna så länge anpassade hanteraren följer riktlinjer för WSGI-specifikationen.
+WSGI är en Python-standard som beskrivs av [program 3333](http://www.python.org/dev/peps/pep-3333/) definierar ett gränssnitt mellan hello webbserver och Python. Det ger en standardiserad gränssnitt för att skriva olika webbaserade program och ramverk som använder Python. Populära Python web ramverk använder dag WSGI. Azure App Service Web Apps får du stöd för ramverk; Dessutom kan avancerade användare även skapa egna så länge hello anpassad hanterare följer riktlinjer för hello WSGI-specifikationen.
 
 Här är ett exempel på en `app.py` som definierar en anpassad hanterare:
 
@@ -71,19 +71,19 @@ Här är ett exempel på en `app.py` som definierar en anpassad hanterare:
         httpd = make_server('localhost', 5555, wsgi_app)
         httpd.serve_forever()
 
-Du kan köra programmet lokalt med `python app.py`, bläddra sedan till `http://localhost:5555` i webbläsaren.
+Du kan köra programmet lokalt med `python app.py`, bläddrar sedan för`http://localhost:5555` i webbläsaren.
 
 ## <a name="virtual-environment"></a>Virtuell miljö
-Även om appen exempel inte kräver några externa paket, är det troligt att programmet kommer att kräva några.
+Även om hello exempelapp ovan inte kräver några externa paket, är det troligt att programmet kommer att kräva några.
 
-För att hantera externa paketberoenden, stöder Azure Git-distribution skapandet av virtuella miljöer.
+toohelp hantera externa paketberoenden, Azure Git-distribution stöder hello skapandet av virtuella miljöer.
 
-När Azure upptäcker en requirements.txt i Lagringsplatsens rot, skapas automatiskt en virtuell miljö som heter `env`. Det här inträffar bara på den första distributionen eller under en distribution när den valda Python runtime har ändrats.
+När Azure identifierar en requirements.txt i hello rot hello-databasen, skapas automatiskt en virtuell miljö som heter `env`. Det här inträffar bara på hello första distributionen eller under en distribution när hello valda Python-körning har ändrats.
 
-Du vill förmodligen skapa en virtuell miljö lokalt för utveckling, men inkludera inte den i Git-lagringsplatsen.
+Du vill förmodligen toocreate en virtuell miljö lokalt för utveckling, men inkludera inte den i Git-lagringsplatsen.
 
 ## <a name="package-management"></a>Pakethantering
-Paket som anges i requirements.txt installeras automatiskt i den virtuella miljön med hjälp av pip. Detta sker vid varje distribution, men pip hoppar över installationen om ett paket har redan installerats.
+Paket som anges i requirements.txt installeras automatiskt i hello virtuell miljö med hjälp av pip. Detta sker vid varje distribution, men pip hoppar över installationen om ett paket har redan installerats.
 
 Exempel `requirements.txt`:
 
@@ -99,11 +99,11 @@ Exempel `runtime.txt`:
 
 
 ## <a name="webconfig"></a>Web.config
-Du behöver skapa en web.config-fil om du vill ange hur servern ska hantera begäranden.
+Du behöver toocreate en web.config-filen toospecify hur hello server ska hantera begäranden.
 
-Observera att om du har en web.x.y.config-fil i databasen, där x.y matchar den valda Python-körningen och Azure kommer automatiskt att kopiera filen Web.config.
+Observera att om du har en web.x.y.config-fil i databasen, där x.y matchar hello valda Python-körning och sedan Azure kommer automatiskt att kopiera hello filen Web.config.
 
-I följande exempel web.config förlitar sig på en virtuell miljö proxyskript som beskrivs i nästa avsnitt.  De fungerar med WSGI hanteraren används i exemplet `app.py` ovan.
+hello web.config i exemplen förlitar sig på en virtuell miljö proxyskript som beskrivs i nästa avsnitt om hello.  De fungerar med hello WSGI hanteraren i hello exempel används `app.py` ovan.
 
 Exempel `web.config` för Python 2.7:
 
@@ -203,16 +203,16 @@ Exempel `web.config` för Python 3.4:
     </configuration>
 
 
-Statiska filer hanteras av webbservern direkt, utan att gå via Python-kod för bättre prestanda.
+Statiska filer ska hanteras av webbservern hello direkt, utan att gå via Python-kod för bättre prestanda.
 
-I ovanstående exempel ska platsen för de statiska filerna på disk matcha plats i URL: en. Detta innebär att en begäran om `http://pythonapp.azurewebsites.net/static/site.css` fungerar filen på disken på `\static\site.css`.
+Hello platsen för hello statiska filer på disk ska matcha hello plats i hello URL i hello exemplen ovan. Detta innebär att en begäran om `http://pythonapp.azurewebsites.net/static/site.css` fungerar hello-filen på disken på `\static\site.css`.
 
-`WSGI_ALT_VIRTUALENV_HANDLER`är där du anger WSGI-hanteraren. I ovanstående exempel har `app.wsgi_app` eftersom hanteraren är en funktion som heter `wsgi_app` i `app.py` i rotmappen.
+`WSGI_ALT_VIRTUALENV_HANDLER`är där du kan ange hello WSGI hanterare. I hello exemplen, ovan har `app.wsgi_app` eftersom hello hanterare är en funktion som heter `wsgi_app` i `app.py` i hello rotmapp.
 
-`PYTHONPATH`kan anpassas, men om du installerar alla beroenden i den virtuella miljön genom att ange dem i requirements.txt, du får inte ändra den.
+`PYTHONPATH`kan anpassas, men om du installerar alla beroenden i hello virtuell miljö genom att ange dem i requirements.txt du bör inte toochange den.
 
 ## <a name="virtual-environment-proxy"></a>Virtuell miljö Proxy
-Följande skript för att hämta WSGI-hanteraren, aktivera de virtuella miljön och logga fel. Den är avsedd att vara generisk och används utan ändringar.
+hello följande skript används tooretrieve hello WSGI hanterare, aktivera hello virtuella miljö och logga fel. Det är utformad toobe generisk och används utan ändringar.
 
 Innehållet i `ptvs_virtualenv_proxy.py`:
 
@@ -220,11 +220,11 @@ Innehållet i `ptvs_virtualenv_proxy.py`:
      #
      # Copyright (c) Microsoft Corporation. 
      #
-     # This source code is subject to terms and conditions of the Apache License, Version 2.0. A 
-     # copy of the license can be found in the License.html file at the root of this distribution. If 
-     # you cannot locate the Apache License, Version 2.0, please send an email to 
-     # vspython@microsoft.com. By using this source code in any fashion, you are agreeing to be bound 
-     # by the terms of the Apache License, Version 2.0.
+     # This source code is subject tooterms and conditions of hello Apache License, Version 2.0. A 
+     # copy of hello license can be found in hello License.html file at hello root of this distribution. If 
+     # you cannot locate hello Apache License, Version 2.0, please send an email too
+     # vspython@microsoft.com. By using this source code in any fashion, you are agreeing toobe bound 
+     # by hello terms of hello Apache License, Version 2.0.
      #
      # You must not remove this notice, or any other, from this software.
      #
@@ -250,7 +250,7 @@ Innehållet i `ptvs_virtualenv_proxy.py`:
             return value.encode(sys.getfilesystemencoding())
 
     def log(txt):
-        """Logs fatal errors to a log file if WSGI_LOG env var is defined"""
+        """Logs fatal errors tooa log file if WSGI_LOG env var is defined"""
         log_file = os.environ.get('WSGI_LOG')
         if log_file:
             f = open(log_file, 'a+')
@@ -350,13 +350,13 @@ Innehållet i `ptvs_virtualenv_proxy.py`:
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information finns i [Python Developer Center](/develop/python/).
+Mer information finns i hello [Python Developer Center](/develop/python/).
 
 > [!NOTE]
-> Om du vill komma igång med Azure Apptjänst innan du registrerar dig för ett Azure-konto kan du gå till [Prova Apptjänst](https://azure.microsoft.com/try/app-service/). Där kan du direkt skapa en tillfällig startwebbapp i Apptjänst. Inget kreditkort krävs, och du gör inga åtaganden.
+> Om du vill tooget igång med Azure App Service innan du registrerar dig för ett Azure-konto går för[prova App Service](https://azure.microsoft.com/try/app-service/), där kan du direkt skapa en tillfällig startwebbapp i App Service. Inget kreditkort krävs, och du gör inga åtaganden.
 > 
 > 
 
 ## <a name="whats-changed"></a>Nyheter
-* En guide till övergången från Webbplatser till App Service finns i: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)
+* En guide toohello övergången från webbplatser tooApp tjänsten finns: [Azure App Service och dess påverkan på befintliga Azure-tjänster](http://go.microsoft.com/fwlink/?LinkId=529714)
 

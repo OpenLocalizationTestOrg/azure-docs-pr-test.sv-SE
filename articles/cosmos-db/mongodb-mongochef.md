@@ -1,6 +1,6 @@
 ---
-title: "Använd MongoChef för Azure Cosmos DB | Microsoft Docs"
-description: "Lär dig hur du använder MongoChef med en Azure-Cosmos-DB: API för MongoDB-konto"
+title: "aaaUse MongoChef för Azure Cosmos DB | Microsoft Docs"
+description: "Lär dig hur toouse MongoChef med en Azure-Cosmos-DB: API för MongoDB-konto"
 keywords: mongochef
 services: cosmos-db
 author: AndrewHoh
@@ -15,57 +15,57 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anhoh
-ms.openlocfilehash: 54c9799bd646b827f602e2ea2f9a15a4fc853f00
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4b047797b231c34ccc6f2ed02416525c6228d596
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-mongochef-with-an-azure-cosmos-db-api-for-mongodb-account"></a>Använda MongoChef med en Azure-Cosmos-DB: API för MongoDB-konto
 
-Att ansluta till en Azure-Cosmos-DB: API för MongoDB-konto, måste du:
+tooconnect tooan Azure Cosmos DB: API för MongoDB-konto, måste du:
 
 * Hämta och installera [MongoChef](http://3t.io/mongochef)
 * Har Azure Cosmos-DB: API för MongoDB konto [anslutningssträngen](connect-mongodb-account.md) information
 
-## <a name="create-the-connection-in-mongochef"></a>Skapa anslutningen i MongoChef
-Att lägga till Azure Cosmos-DB: API MongoDB-kontot Anslutningshanteraren MongoChef utför följande steg.
+## <a name="create-hello-connection-in-mongochef"></a>Skapa hello anslutning i MongoChef
+tooadd Azure Cosmos-DB: API för MongoDB konto toohello MongoChef Anslutningshanteraren, utföra hello följande steg.
 
-1. Hämta Azure Cosmos-DB: API: et för MongoDB anslutningsinformationen med instruktioner [här](connect-mongodb-account.md).
+1. Hämta Azure Cosmos-DB: API: et för MongoDB anslutningsinformationen använder hello instruktioner [här](connect-mongodb-account.md).
 
-    ![Skärmbild av bladet anslutning sträng](./media/mongodb-mongochef/ConnectionStringBlade.png)
-2. Klicka på **Anslut** öppna Connection Manager och sedan klicka på **ny anslutning**
+    ![Skärmbild av bladet för hello anslutning sträng](./media/mongodb-mongochef/ConnectionStringBlade.png)
+2. Klicka på **Anslut** tooopen hello Connection Manager och klicka sedan på **ny anslutning**
 
-    ![Skärmbild av MongoChef Anslutningshanteraren](./media/mongodb-mongochef/ConnectionManager.png)
-3. I den **ny anslutning** fönstret på den **Server** ange värden (FQDN) på Azure Cosmos DB: API för MongoDB-kontot och PORT.
+    ![Skärmbild som visar hello MongoChef Anslutningshanteraren](./media/mongodb-mongochef/ConnectionManager.png)
+3. I hello **ny anslutning** fönstret på hello **Server** ange hello värden (FQDN) på hello Azure Cosmos DB: API för MongoDB-konto och hello PORT.
 
-    ![Skärmbild av fliken MongoChef anslutning manager server](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
-4. I den **ny anslutning** fönstret på den **autentisering** väljer autentiseringsläge **Standard (CR MONGODB eller SCARM-SHA-1)** och ange användarnamn och lösenord.  Acceptera standardvärdet autentisering db (admin) eller ange ett eget värde.
+    ![Skärmbild som visar hello MongoChef manager-servern på fliken anslutning](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
+4. I hello **ny anslutning** fönstret på hello **autentisering** väljer autentiseringsläge **Standard (CR MONGODB eller SCARM-SHA-1)** och ange hello användarnamn och LÖSENORDET.  Acceptera hello standard autentisering db (admin) eller ange ett eget värde.
 
-    ![Skärmbild av fliken MongoChef connection manager autentisering](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
-5. I den **ny anslutning** fönstret på den **SSL** markerar den **Använd SSL-protokollet för att ansluta** kryssrutan och **accepterar server självsignerade SSL-certifikat** knappen.
+    ![Skärmbild som visar hello MongoChef manager autentisering på fliken anslutning](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
+5. I hello **ny anslutning** fönstret på hello **SSL** kontrollerar hello **Använd SSL-protokollet tooconnect** kryssrutan och hello **acceptera server självsignerat SSL certifikat** knappen.
 
-    ![Skärmbild av fliken MongoChef connection manager SSL](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
-6. Klicka på den **Testa anslutning** för att verifiera informationen klickar du på **OK** återgå till fönstret Ny anslutning och klicka sedan på **spara**.
+    ![Skärmbild som visar hello MongoChef manager SSL på fliken anslutning](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
+6. Klicka på hello **Testanslutningen** toovalidate hello anslutningsinformation, klicka på **OK** tooreturn toohello nya fönstret anslutning och klicka sedan på **spara**.
 
-    ![Skärmdump av fönstret MongoChef Testa anslutning](./media/mongodb-mongochef/TestConnectionResults.png)
+    ![Skärmbild som visar fönstret för hello MongoChef Testa anslutning](./media/mongodb-mongochef/TestConnectionResults.png)
 
-## <a name="use-mongochef-to-create-a-database-collection-and-documents"></a>Använd MongoChef för att skapa en databas, samling och dokument
-Utför följande steg för att skapa en databas, samling och dokument med hjälp av MongoChef.
+## <a name="use-mongochef-toocreate-a-database-collection-and-documents"></a>Använd MongoChef toocreate en databas, samling och dokument
+toocreate en databas, samling och dokument med hjälp av MongoChef, utföra hello följande steg.
 
-1. I **Connection Manager**, markera anslutningen och klicka på **Anslut**.
+1. I **Connection Manager**, markera hello anslutningen och klicka på **Anslut**.
 
-    ![Skärmbild av MongoChef Anslutningshanteraren](./media/mongodb-mongochef/ConnectToAccount.png)
-2. Högerklicka på värden och välj **lägga till databas**.  Ange ett namn och klicka på **OK**.
+    ![Skärmbild som visar hello MongoChef Anslutningshanteraren](./media/mongodb-mongochef/ConnectToAccount.png)
+2. Högerklicka på hello värden och välj **lägga till databas**.  Ange ett namn och klicka på **OK**.
 
-    ![Skärmdump av alternativet MongoChef lägga till databas](./media/mongodb-mongochef/AddDatabase1.png)
-3. Högerklicka på databasen och välj **lägga till samlingen**.  Ange ett samlingsnamn och klicka på **skapa**.
+    ![Skärmbild som visar hello databasalternativet MongoChef Lägg till](./media/mongodb-mongochef/AddDatabase1.png)
+3. Högerklicka på hello databas och välj **lägga till samlingen**.  Ange ett samlingsnamn och klicka på **skapa**.
 
-    ![Skärmdump av alternativet MongoChef lägga till samlingen](./media/mongodb-mongochef/AddCollection.png)
-4. Klicka på den **samling** menyn, klicka på **Lägg till dokument**.
+    ![Skärmbild som visar hello MongoChef lägga till samlingen alternativet](./media/mongodb-mongochef/AddCollection.png)
+4. Klicka på hello **samling** menyn, klicka på **Lägg till dokument**.
 
-    ![Skärmbild som visar menyalternativet MongoChef Lägg till dokument](./media/mongodb-mongochef/AddDocument1.png)
-5. Klistra in följande i dialogrutan Lägg till dokument och klicka sedan på **Lägg till dokument**.
+    ![Skärmbild som visar hello MongoChef Lägg till dokument menyobjekt](./media/mongodb-mongochef/AddDocument1.png)
+5. Klistra in hello följande i dialogrutan Lägg till dokument hello och klicka sedan på **Lägg till dokument**.
 
         {
         "_id": "AndersenFamily",
@@ -83,7 +83,7 @@ Utför följande steg för att skapa en databas, samling och dokument med hjälp
         "address": { "state": "WA", "county": "King", "city": "seattle" },
         "isRegistered": true
         }
-6. Lägg till ett annat dokument nu med följande innehåll.
+6. Lägg till ett annat dokument med hello följande innehåll.
 
         {
         "_id": "WakefieldFamily",
@@ -110,7 +110,7 @@ Utför följande steg för att skapa en databas, samling och dokument med hjälp
         "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
         "isRegistered": false
         }
-7. Köra en exempelfråga. Till exempel söka efter familjer med efternamn 'Andersen' och returnerar det överordnade och tillstånd.
+7. Köra en exempelfråga. Till exempel söka efter familjer med hello efternamn 'Andersen' och returnera hello överordnade och tillstånd.
 
     ![Skärmbild av Mongo Chef frågeresultat](./media/mongodb-mongochef/QueryDocument1.png)
 

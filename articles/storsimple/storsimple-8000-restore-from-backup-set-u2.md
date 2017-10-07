@@ -1,6 +1,6 @@
 ---
-title: "Återställa en volym från en säkerhetskopia på en StorSimple 8000-serien | Microsoft Docs"
-description: "Beskriver hur du använder tjänsten StorSimple Enhetshanteraren säkerhetskopieringskatalogen för att återställa en StorSimple-volym från en säkerhetskopia."
+title: "aaaRestore en volym från en säkerhetskopia på en StorSimple 8000-serien | Microsoft Docs"
+description: "Förklarar hur hello toouse StorSimple Enhetshanteraren service säkerhetskopieringskatalogen toorestore en StorSimple-volym från en säkerhetskopia."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,132 +14,132 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: aff0710ead4f76bb80c38e2d88fe9cd3ce6a7b48
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0fe2e4c23a23c75ce4058a8531356c94c973c6f1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Återställa en StorSimple-volym från en säkerhetskopia
 
 ## <a name="overview"></a>Översikt
 
-Den här självstudiekursen beskriver återställningen utförs på en StorSimple 8000 series-enhet med en befintlig säkerhetskopia. Använd den **säkerhetskopieringskatalog** bladet för att återställa en volym från en lokal eller säkerhetskopiering i molnet. Den **säkerhetskopieringskatalog** bladet visar alla säkerhetskopior som skapas när manuell eller automatisk säkerhetskopiering utförs. Återställningen från en säkerhetskopia ger volymen online direkt medan data hämtas i bakgrunden.
+Den här självstudiekursen beskriver hello återställningsåtgärden utförs på en StorSimple 8000 series-enhet med en befintlig säkerhetskopia. Använd hello **säkerhetskopieringskatalog** bladet toorestore en volym från en lokal eller säkerhetskopiering i molnet. Hej **säkerhetskopieringskatalog** bladet visar alla hello säkerhetskopior som skapas när manuell eller automatisk säkerhetskopiering utförs. hello återställningen från en säkerhetskopia ger hello volymen online direkt medan data hämtas i hello bakgrund.
 
-En alternativ metod för att starta återställningen är att gå till **enheter > [enheten] > volymer**. I den **volymer** bladet Välj en volym, högerklicka om du vill anropa snabbmenyn och välj sedan **återställa**.
+En alternativ metod toostart återställning är toogo för**enheter > [enheten] > volymer**. I hello **volymer** bladet Välj en volym, högerklicka på tooinvoke hello snabbmenyn och välj sedan **återställa**.
 
 ## <a name="before-you-restore"></a>Innan du återställer
 
-Innan du startar en återställning kan du granska följande varningar:
+Innan du startar en återställning, granska hello följande varningar:
 
-* **Du måste koppla från volymen** – ta volymen offline på både värden och enheten innan du startar återställningen. Även om återställningen öppnar automatiskt volymen online på enheten, måste du manuellt ta enheten online på värden. Du kan aktivera volymen online på värden som volymen är online på enheten. (Du behöver inte vänta tills återställningen har slutförts.) Mer information om procedurer går du till [kopplar från en volym](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline).
+* **Du måste koppla från hello volym** – ta hello volymen offline på båda hello-värden och hello enheten innan du startar hello återställningen igen. Även om hello återställningen öppnar automatiskt hello-volym på hello enhet, måste du manuellt ta hello-enhet på hello värden. Du kan hämta hello volymen online på hello värden som hello volymen är online på hello enhet. (Du behöver inte toowait tills hello återställningen är klar.) Procedurer finns för[kopplar från en volym](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline).
 
-* **Volymtyp efter återställning** – borttagna volymer återställs baserat på typen i ögonblicksbilden; som är lokalt fasta volymer återställs som lokalt fästa volymer och volymer som har nivåer återställs som nivåindelade volymer.
+* **Volymtyp efter återställning** – borttagna volymer återställs utifrån hello typ i hello ögonblicksbild; som är lokalt fasta volymer återställs som lokalt fästa volymer och volymer som har nivåer återställs som nivåindelade volymer.
 
-    För befintliga volymer åsidosätter aktuella användningstyp volymens den typ som är lagrad i ögonblicksbilden. Till exempel om du återställer en volym från en ögonblicksbild som vidtogs när volymtypen har nivåer och volymtyp nu lokalt Fäst (på grund av en konvertering som utfördes) kommer sedan volymen att återställas som en lokalt Fäst volym. Om en befintlig lokalt Fäst volym har utökats och därefter återställts från en tidigare ögonblicksbild vidtas när volymen var mindre, behåller återställda volymen på samma sätt, den aktuella utökade storleken.
+    För befintliga volymer åsidosätter hello aktuella användningstyp för hello volym hello-typ som är lagrad i hello ögonblicksbild. Till exempel om du återställer en volym från en ögonblicksbild som vidtogs när hello volymtyp har nivåer och att volymen är nu lokalt Fäst (förfaller tooa konvertering som utfördes), återställs sedan hello volym som en lokalt Fäst volym. På liknande sätt, om en befintlig lokalt Fäst volym har utökats och därefter återställts från en äldre ögonblicksbild vidtas när hello var mindre, hello återställda volym behåller hello aktuella utökade storleken.
 
-    Du kan inte konvertera en volym från en nivåindelad volym till en lokalt Fäst volym eller en lokalt Fäst volym till en nivåindelad volym när volymen återställs. Vänta tills återställningen har slutförts och sedan kan du konvertera volymen till en annan typ. Information om hur du konverterar en volym, gå till [ändra volymtypen av](storsimple-8000-manage-volumes-u2.md#change-the-volume-type). 
+    Du kan inte konvertera en volym från en nivåindelad volym tooa lokalt Fäst volym eller från en lokalt Fäst volym tooa nivåer volym medan hello volym återställs. Vänta tills hello återställningen är klar och sedan kan du konvertera hello tooanother volymtyp. Information om hur du konverterar en volym finns för[ändra hello volymtyp](storsimple-8000-manage-volumes-u2.md#change-the-volume-type). 
 
-* **Volymens storlek avspeglas i den återställda volymen** – detta är viktigt om du återställer en lokalt Fäst volym som har tagits bort (eftersom lokalt fästa volymer är helt etablerad). Kontrollera att du har tillräckligt med utrymme innan du försöker återställa en lokalt Fäst volym som har tagits bort.
+* **hello volymstorleken avspeglas i hello återställts volym** – detta är viktigt om du återställer en lokalt Fäst volym som har tagits bort (eftersom lokalt fästa volymer är helt etablerad). Kontrollera att du har tillräckligt med utrymme innan du försöker toorestore en lokalt Fäst volym som har tagits bort.
 
-* **Du kan inte utöka en volym när den återställs** – vänta tills återställningen har slutförts innan du försöker att utöka volymen. Information om hur du utökar en volym, gå till [ändra en volym](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
+* **Du kan inte utöka en volym när den återställs** – vänta tills hello återställningen är klar innan du försöker tooexpand hello volym. Information om hur du utökar en volym finns för[ändra en volym](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
 
-* **Du kan utföra en säkerhetskopiering när du återställer en lokal volym** – procedurer finns på [använda Enhetshanteraren för StorSimple-tjänsten för att hantera principer för säkerhetskopiering](storsimple-8000-manage-backup-policies-u2.md).
+* **Du kan utföra en säkerhetskopiering när du återställer en lokal volym** – procedurer finns för[använda hello StorSimple Enhetshanteraren service toomanage säkerhetskopieringsprinciper](storsimple-8000-manage-backup-policies-u2.md).
 
-* **Du kan avbryta en återställningsåtgärd** – om du avbryter återställningsjobbet, och sedan på volymen kommer att återställas till tillståndet innan du påbörjade återställningen. Mer information om procedurer går du till [avbryta ett jobb](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
+* **Du kan avbryta en återställningsåtgärd** – om du avbryter hello återställningsjobbet sedan hello volym återställs toohello tillstånd som innan du påbörjade hello återställningen igen. Procedurer finns för[avbryta ett jobb](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
 
 ## <a name="how-does-restore-work"></a>Hur återställer arbete
 
-För enheter som kör uppdatering 4 eller senare, implementeras en heatmap-baserad återställning. Som värden begär att få åtkomst till data nå enheten, dessa begäranden spåras och en heatmap skapas. Hög begärandehastighet resulterar i datasegment med högre termiska medan lägre begärandehastighet översätts till segment med lägre värme. Du måste ha åtkomst till data minst två gånger för att markeras som _varm_. En fil som ändras också har markerats som _varm_. När du startar återställningen sker proaktiv hydrering av data baserat på heatmap. För versioner ned före uppdatering 4 data under återställning baserat på enbart åtkomst.
+För enheter som kör uppdatering 4 eller senare, implementeras en heatmap-baserad återställning. Hello värd begäranden tooaccess data når hello enhet, dessa begäranden spåras och en heatmap skapas. Hög begärandehastighet resulterar i datasegment med högre termiska medan lägre begärandehastighet översätter toochunks med lägre värme. Du måste ansluta till hello data minst två gånger toobe markerad som _varm_. En fil som ändras också har markerats som _varm_. När du startar hello återställning inträffar proaktiv hydrering av data baserat på hello heatmap. För versioner ned före uppdatering 4 hello data under återställning baserat på enbart åtkomst.
 
-Följande villkor gäller heatmap-baserad återställning:
+hello följande villkor gäller tooheatmap-baserad återställning:
 
 * Heatmap spårning aktiveras endast för nivåindelade volymer och lokalt fästa volymer stöds inte.
 
-* Heatmap-baserad återställning stöds inte när du klonar en volym till en annan enhet. 
+* Heatmap-baserad återställning stöds inte när du klonar en volym tooanother enhet. 
 
-* Om det finns en återställning på plats och en lokal ögonblicksbild för volymen som ska återställas finns på enheten och sedan vi inte rehydrate (eftersom data är redan tillgänglig lokalt). 
+* Om det finns en återställning på plats och en lokal ögonblicksbild för hello volym toobe återställas finns på hello enhet vi inte rehydrate (eftersom data är redan tillgänglig lokalt). 
 
-* Som standard när du återställer initieras rehydration jobb som proaktivt rehydrate data baserat på heatmap. 
+* Som standard när du återställer initieras hello rehydration jobb som proaktivt rehydrate data baserat på hello heatmap. 
 
-Windows PowerShell-cmdlets kan användas till fråga rehydration jobb som körs, avbryts rehydration och hämta status för jobbet rehydration i uppdatering 4.
+I uppdatering 4, kan Windows PowerShell-cmdlets använda tooquery rehydration jobb som körs, avbryts rehydration och hämta hello hello rehydration jobbets status.
 
-* `Get-HcsRehydrationJob`-Denna cmdlet hämtar rehydration jobbets status. Ett enda rehydration jobb utlöses för en volym.
+* `Get-HcsRehydrationJob`-Denna cmdlet hämtar hello hello rehydration jobbets status. Ett enda rehydration jobb utlöses för en volym.
 
-* `Set-HcsRehydrationJob`-Denna cmdlet kan du pausa, stoppa, återuppta jobbet rehydration när rehydration pågår.
+* `Set-HcsRehydrationJob`-Denna cmdlet kan du toopause, stoppa, återuppta hello rehydration jobbet när hello rehydration pågår.
 
-Mer information om rehydration cmdlets, gå till [Windows PowerShell-cmdlet-referens för StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+Mer information om rehydration cmdlets gå för[Windows PowerShell-cmdlet-referens för StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
-Med automatisk rehdyration vanligtvis förväntas högre tillfälligt läsprestanda. Den faktiska magniutde förbättringarna beror på olika faktorer som mönster för dataåtkomst, dataomsättningen och -datatypen. 
+Med automatisk rehdyration vanligtvis förväntas högre tillfälligt läsprestanda. hello faktiska magniutde förbättringarna beror på faktorer som mönster för dataåtkomst, dataomsättningen och -datatypen. 
 
-Du kan använda PowerShell-cmdlet om du vill avbryta ett jobb för rehydration. Om du vill inaktivera permanent rehydration jobb för alla framtida återställningar [kontaktar Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+Du kan använda hello PowerShell-cmdleten toocancel ett rehydration-jobb. Om du inte vill toopermanently inaktivera rehydration jobb för alla hello framtida återställningar [kontaktar Microsoft Support](storsimple-8000-contact-microsoft-support.md).
 
-## <a name="how-to-use-the-backup-catalog"></a>Hur du använder den säkerhetskopiera katalogen
+## <a name="how-toouse-hello-backup-catalog"></a>Hur toouse hello säkerhetskopieringskatalogen
 
-Den **säkerhetskopieringskatalogen** bladet innehåller en fråga som hjälper dig att begränsa säkerhetskopian uppsättning val. Du kan filtrera de säkerhetskopior som hämtas baserat på följande parametrar:
+Hej **säkerhetskopieringskatalogen** bladet innehåller en fråga som hjälper dig att toonarrow valet av säkerhetskopian. Du kan filtrera hello säkerhetskopior som hämtas baserat på hello följande parametrar:
 
-* **Tidsintervallet** – intervallet datum och tid när säkerhetskopian skapades.
-* **Enheten** – enheten där säkerhetskopian skapades.
-* **Säkerhetskopiera princip** eller **volym** – den princip för säkerhetskopiering eller en volym som är associerade med den här säkerhetskopian.
+* **Tidsintervallet** – hello intervallet för datum och tid när hello säkerhetskopian skapades.
+* **Enheten** – hello enhet på vilken hello säkerhetskopian skapades.
+* **Säkerhetskopiera princip** eller **volym** – hello säkerhetskopieringsprincip eller volym som är associerade med den här säkerhetskopian.
 
-Filtrerade säkerhetskopiorna visas sedan som en tabell baserat på följande attribut:
+hello filtrerade säkerhetskopior visas sedan som en tabell baserad på hello följande attribut:
 
-* **Namnet** – namnet på den princip för säkerhetskopiering eller en volym som är associerade med säkerhetskopian.
-* **Typen** – säkerhetskopior kan lokala ögonblicksbilder eller molnbaserade ögonblicksbilder. En lokal ögonblicksbild är en säkerhetskopia av din volymdata som lagras lokalt på enheten, medan en ögonblicksbild i molnet som refererar till säkerhetskopian av volymens data som finns i molnet. Lokala ögonblicksbilder ger snabbare åtkomst medan molnögonblicksbilder väljs för dataåterhämtning.
-* **Storlek** – den verkliga storleken för säkerhetskopian.
-* **Skapas på** – datum och tid då säkerhetskopieringarna skapades. 
-* **Volymer** -antalet volymer som är associerade med säkerhetskopian.
-* **Initierade** – säkerhetskopieringar kan initieras automatiskt enligt ett schema eller manuellt av en användare. (Du kan använda en princip för säkerhetskopiering för att schemalägga säkerhetskopieringar. Du kan också använda den **ta säkerhetskopia** kan ta en interaktiv eller på begäran-säkerhetskopia.)
+* **Namnet** – hello namn på hello säkerhetskopieringsprincip eller volym som är associerade med hello säkerhetskopia.
+* **Typen** – säkerhetskopior kan lokala ögonblicksbilder eller molnbaserade ögonblicksbilder. En lokal ögonblicksbild är en säkerhetskopia av din volymdata som lagras lokalt på hello enhet, medan en ögonblicksbild i molnet refererar toohello säkerhetskopiering av volymdata som finns i molnet hello. Lokala ögonblicksbilder ger snabbare åtkomst medan molnögonblicksbilder väljs för dataåterhämtning.
+* **Storlek** – hello verkliga storleken hos hello säkerhetskopia.
+* **Skapas på** – hello datum och tid då hello säkerhetskopior skapades. 
+* **Volymer** -hello antalet volymer som är associerade med hello säkerhetskopia.
+* **Initierade** – hello säkerhetskopieringar kan initieras automatiskt enligt tooa schema eller manuellt av en användare. (Du kan använda en princip för säkerhetskopiering tooschedule säkerhetskopior. Du kan också använda hello **ta säkerhetskopia** alternativet tootake en interaktiv eller på begäran-säkerhetskopia.)
 
-## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>Hur du återställer din StorSimple-volym från en säkerhetskopia
+## <a name="how-toorestore-your-storsimple-volume-from-a-backup"></a>Hur toorestore StorSimple-volym från en säkerhetskopia
 
-Du kan använda den **säkerhetskopieringskatalogen** bladet för att återställa din StorSimple-volym från en specifik säkerhetskopia. Men kom ihåg att återställa en volym återställs volymen till tillståndet den var i när säkerhetskopian skapades. Alla data som lagts till efter säkerhetskopieringen går förlorade.
+Du kan använda hello **säkerhetskopieringskatalogen** bladet toorestore StorSimple-volym från en specifik säkerhetskopia. Tänk dock att återställa en volym återställs hello volym toohello tillstånd den hade när hello säkerhetskopian skapades. Alla data som lagts till efter hello säkerhetskopieringen går förlorade.
 
 > [!WARNING]
-> Återställa från en säkerhetskopia ersätter de befintliga volymerna från säkerhetskopian. Detta kan orsaka förlust av data som har skrivits när säkerhetskopian skapades.
+> Återställa från en säkerhetskopia ersätter hello befintliga volymer från hello säkerhetskopia. Detta kan orsaka hello förlust av alla data som har skrivits när hello säkerhetskopian skapades.
 
 
-### <a name="to-restore-your-volume"></a>Att återställa din volym
-1. Gå till Enhetshanteraren för StorSimple-tjänsten och klicka sedan på **säkerhetskopieringskatalog**.
+### <a name="toorestore-your-volume"></a>toorestore volymen
+1. Gå tooyour StorSimple enheten Manager-tjänsten och klicka sedan på **säkerhetskopieringskatalog**.
 
 2. Välj en säkerhetskopia på följande sätt:
    
-   1. Ange tidsintervall.
-   2. Välj lämplig enhet.
-   3. Välj den volym eller säkerhetskopiering principen för säkerhetskopiering som du vill välja i den nedrullningsbara listan.
-   4. Klicka på **tillämpa** att köra frågan.
+   1. Ange hello tidsintervall.
+   2. Välj lämplig hello-enhet.
+   3. Välj hello volym eller säkerhetskopiering princip för säkerhetskopiering hello tooselect gärna i hello nedrullningsbara listan.
+   4. Klicka på **tillämpa** tooexecute den här frågan.
 
-    Säkerhetskopiorna som är associerade med den valda volymen eller princip för säkerhetskopiering ska visas i listan över säkerhetskopieringsuppsättningar.
+    hello ska säkerhetskopior som är associerade med principen för hello markerad volym eller säkerhetskopiering visas i hello lista över säkerhetskopior.
    
     ![Säkerhetskopian lista](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
-3. Expandera den säkerhetskopia du vill visa associerade volymer. Dessa volymer måste vara offline på värden och enheten innan du kan återställa dem. Åtkomst till volymerna på den **volymer** bladet för din enhet och följ stegen i [kopplar från en volym](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) ta offline.
+3. Expandera hello säkerhetskopia tooview hello associerade volymer. Dessa volymer måste vara offline på hello värd och enheten innan du kan återställa dem. Komma åt hello volymer på hello **volymer** bladet för din enhet och hello Följ stegen i [kopplar från en volym](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) tootake dem offline.
    
    > [!IMPORTANT]
-   > Kontrollera att du har vidtagit volymer offline på värden först innan du utför volymerna som är offline på enheten. Om du inte vidtar volymerna som är offline på värden, leda det potentiellt till att data skadas.
+   > Kontrollera att du har vidtagit hello volymer offline på värden för hello först innan du utför hello volymer på hello enhet. Om du inte vidtar hello volymer offline på värden för hello leda potentiellt toodata skadas.
    
-4. Gå tillbaka till den **säkerhetskopieringskatalogen** fliken och markera en säkerhetskopia. Högerklicka och klicka sedan på snabbmenyn **återställa**.
+4. Gå tillbaka toohello **säkerhetskopieringskatalogen** fliken och markera en säkerhetskopia. Högerklicka och välj sedan hello snabbmenyn **återställa**.
 
     ![Säkerhetskopian lista](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
-5. Du uppmanas att bekräfta. Granska informationen om återställning och markera sedan kryssrutan bekräftelse.
+5. Du uppmanas att bekräfta. Granska hello Återställ information och markera sedan kryssrutan för hello bekräftelse.
    
     ![Bekräftelsesida](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7.  Klicka på **återställa**. Detta startar ett jobb för återställning som du kan visa genom att öppna den **jobb** sidan.
+7.  Klicka på **återställa**. Detta startar ett jobb för återställning som du kan visa genom att öppna hello **jobb** sidan.
 
     ![Bekräftelsesida](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
-8. När återställningen är klar kan du kontrollera att innehållet i volymerna som ersätts av volymer från säkerhetskopian.
+8. När hello återställningen är klar kontrollerar du att hello innehållet i volymerna som ersätts av volymer från hello säkerhetskopia.
 
 
-## <a name="if-the-restore-fails"></a>Om återställningen misslyckas
+## <a name="if-hello-restore-fails"></a>Om hello återställa misslyckas
 
-Du får en avisering om återställningen misslyckas av någon anledning. Om detta inträffar kan du uppdatera listan säkerhetskopiering för att kontrollera att säkerhetskopian är fortfarande giltig. Om säkerhetskopian är giltig och att du återställer från molnet, kan sedan anslutningsproblem vara orsaken till problemet.
+Du får en avisering om hello återställer åtgärden misslyckas av någon anledning. Om detta inträffar kan är uppdatera hello säkerhetskopia av listan tooverify hello säkerhetskopiering fortfarande giltig. Om hello säkerhetskopierade är giltig och att du återställer från hello molnet, sedan bero anslutningsproblem hello problem.
 
-För att slutföra återställningen åtgärda volymen offline på värden och försök utföra återställningen. Observera att alla ändringar som utfördes under återställningsprocessen volymens data går förlorade.
+toocomplete hello återställningsåtgärden, ta hello volymen offline på hello värden och försök hello återställningen igen. Observera att alla ändringar toohello volymdata som utfördes under hello återställningen kommer att förloras.
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig hur du [hantera StorSimple-volymer](storsimple-8000-manage-volumes-u2.md).
-* Lär dig hur du [använda Enhetshanteraren för StorSimple-tjänsten för att administrera din StorSimple-enhet](storsimple-8000-manager-service-administration.md).
+* Lär dig hur för[hantera StorSimple-volymer](storsimple-8000-manage-volumes-u2.md).
+* Lär dig hur för[Använd hello StorSimple Enhetshanteraren service tooadminister StorSimple-enheten](storsimple-8000-manager-service-administration.md).
 

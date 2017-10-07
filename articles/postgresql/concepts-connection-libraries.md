@@ -1,6 +1,6 @@
 ---
 title: "Anslutningsbibliotek för Azure-databas för PostgreSQL | Microsoft Docs"
-description: "Den här artikeln beskriver flera bibliotek och drivrutiner som utvecklare kan använda när kodning Anslut och fråga Azure-databas för PostgreSQL-program."
+description: "Den här artikeln beskriver flera bibliotek och drivrutiner som utvecklare kan använda när du kodar program tooconnect och fråga Azure-databas för PostgreSQL."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -9,17 +9,17 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/15/2017
-ms.openlocfilehash: 1f99ef7fefb1ff9d35f564a1f0ad77c8dd64659e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 1f7234499d8abe37f8de9008e3158765b1fb0bde
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Anslutningsbibliotek för Azure-databas för PostgreSQL
-Det här avsnittet listar bibliotek och drivrutiner som ska användas av utvecklare för programmering ansluta och fråga Azure-databas för PostgreSQL.
+Det här avsnittet listar bibliotek och drivrutiner som ska användas av utvecklare för programmering program tooconnect och fråga Azure-databas för PostgreSQL.
 
 ## <a name="client-interfaces"></a>Klient-gränssnitt
-De flesta språk-klientbibliotek för att ansluta till PostgreSQL-servern är externa projekt och distribueras separat. Dessa stöds på Windows, Linux och Mac-plattformar. Vissa av populära klientdrivrutiner visas:
+De flesta språk klient bibliotek tooconnect tooPostgreSQL server är externa projekt och distribueras separat. Dessa stöds på Windows, Linux och Mac-plattformar. Vissa av hello populära klientdrivrutiner visas:
 
 | **Språk** | **Klientgränssnitt** | **Ytterligare information** | **Ladda ned** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
@@ -35,6 +35,6 @@ De flesta språk-klientbibliotek för att ansluta till PostgreSQL-servern är ex
 | C++ | [libpqxx](http://pqxx.org/) | Ny formatmall C++-gränssnittet | [Ladda ned](http://pqxx.org/download/software/) |
 
 ## <a name="next-steps"></a>Nästa steg
-Läs dessa Snabbstart på hur du ansluter och frågar Azure-databas för PostgreSQL med hjälp av ditt språk:
+Läsa dessa Snabbstart på hur tooconnect och fråga Azure-databas för PostgreSQL med hjälp av ditt språk:
 
 [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [.NET (C#)](./connect-csharp.md)

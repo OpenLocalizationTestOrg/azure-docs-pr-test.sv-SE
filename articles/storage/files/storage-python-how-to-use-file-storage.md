@@ -1,6 +1,6 @@
 ---
-title: "Utveckla för Azure File storage med Python | Microsoft Docs"
-description: "Lär dig hur du utvecklar Python-program och tjänster som använder Azure File storage för att lagra fildata."
+title: "aaaDevelop för Azure File storage med Python | Microsoft Docs"
+description: "Lär dig hur toodevelop Python program och tjänster som använder Azure File storage toostore fildata."
 services: storage
 documentationcenter: python
 author: robinsh
@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-ms.openlocfilehash: 3dd14e8d3ea7d1e50f41633a7920a6d36becf789
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2adc5aac2765b98a8022ab1f706c1fcdbca1b43c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="develop-for-azure-file-storage-with-python"></a>Utveckla för Azure File storage med Python
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/29/2017
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>Om den här självstudiekursen
-Den här kursen visar grunderna i Python för att utveckla program eller tjänster som använder Azure File storage för att lagra fildata. I den här kursen ska vi skapa ett enkelt konsolprogram och visar hur du utför grundläggande åtgärder med Python och Azure File storage:
+Den här kursen visar hello grunderna i Python toodevelop program eller tjänster som använder Azure File storage toostore fildata. I den här kursen ska vi skapa ett enkelt konsolprogram och visa hur tooperform grundläggande åtgärder med Python och Azure File storage:
 
 * Skapa Azure-filresurser
 * Skapa kataloger
@@ -34,38 +34,38 @@ Den här kursen visar grunderna i Python för att utveckla program eller tjänst
 * Ladda upp, hämta och ta bort en fil
 
 > [!Note]  
-> Eftersom Azure File storage kan nås över SMB, är det möjligt att skriva enkla program som har åtkomst till Azure filresursen med standard Python-i/o-klasser och funktioner. Den här artikeln beskriver hur du skriver program som använder Azure Storage Python SDK, som använder den [Azure File storage REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/file-service-rest-api) tala med Azure File storage.
+> Eftersom Azure File storage kan nås över SMB, är det möjligt toowrite enkla program som har åtkomst till hello Azure filresurs med hjälp av hello standard Python-i/o-klasser och -funktioner. Den här artikeln beskriver hur toowrite program som använder hello Azure Storage Python SDK, som använder hello [Azure File storage REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/file-service-rest-api) tootalk tooAzure File storage.
 
-### <a name="set-up-your-application-to-use-azure-file-storage"></a>Konfigurera din app att använda Azure File storage
-Lägg till följande längst upp i alla Python-källfilen som du vill komma åt Azure Storage.
+### <a name="set-up-your-application-toouse-azure-file-storage"></a>Konfigurera ditt program toouse Azure File storage
+Lägg till följande hello hello övre delen av alla Python-källfilen som du vill tooprogrammatically åtkomst till Azure Storage.
 
 ```python
 from azure.storage.file import FileService
 ```
 
-### <a name="set-up-a-connection-to-azure-file-storage"></a>Konfigurera en anslutning till Azure File storage 
-Den `FileService` objektet kan du arbeta med resurser, kataloger och filer. Följande kod skapar en `FileService` objekt med lagringskontots namn och åtkomstnyckel. Ersätt `<myaccount>` och `<mykey>` med kontonamnet och nyckeln.
+### <a name="set-up-a-connection-tooazure-file-storage"></a>Konfigurera en anslutning tooAzure File storage 
+Hej `FileService` objektet kan du arbeta med resurser, kataloger och filer. hello följande kod skapar en `FileService` objektet med hello lagringskontots namn och åtkomstnyckel. Ersätt `<myaccount>` och `<mykey>` med kontonamnet och nyckeln.
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
 ### <a name="create-an-azure-file-share"></a>Skapa en filresurs på Azure
-I följande kodexempel, kan du använda en `FileService` objekt att skapa resursen om den inte finns.
+I följande kodexempel hello, kan du använda en `FileService` objektet toocreate hello resursen om den inte finns.
 
 ```python
 file_service.create_share('myshare')
 ```
 
 ### <a name="create-a-directory"></a>Skapa en katalog
-Du kan även sortera lagring genom att lägga till filer i underkataloger i stället för att alla i rotkatalogen. Azure File storage kan du skapa så många kataloger som ditt konto tillåter. Koden nedan för att skapa en underkatalog med namnet **sampledir** under rotkatalogen.
+Du kan även sortera lagring genom att lägga till filer i underkataloger i stället för att alla i hello rotkatalog. Azure File storage kan toocreate som många kataloger som ditt konto kommer tillåta. hello koden nedan skapar en underkatalog med namnet **sampledir** under hello rotkatalog.
 
 ```python
 file_service.create_directory('myshare', 'sampledir')
 ```
 
 ### <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Räkna upp filer och kataloger i en filresurs på Azure
-Om du vill visa en lista över filer och kataloger på en resurs, Använd den **lista\_kataloger\_och\_filer** metod. Den här metoden returnerar en generator. I följande kod utdata i **namn** av varje fil- och på en resurs i konsolen.
+toolist hello filer och kataloger i en resurs, använda hello **lista\_kataloger\_och\_filer** metod. Den här metoden returnerar en generator. hello följande kod visar hello **namn** av varje fil- och i en resurs toohello konsol.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -74,42 +74,42 @@ for file_or_dir in generator:
 ```
 
 ### <a name="upload-a-file"></a>Överför en fil 
-Azure File resursen innehåller minst, en rotkatalog där filer kan finnas. I det här avsnittet lär du dig hur du överför en fil från lokal lagring till rotkatalogen för en resurs.
+Azure File share innehåller vid hello mycket minst, en rotkatalog där filer kan finnas. I det här avsnittet lär du dig hur tooupload en fil från lokal lagring på hello rotkatalogen för en resurs.
 
-Om du vill skapa en fil och överför data använder den `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` eller `create_file_from_text` metoder. De är övergripande metoder som utför nödvändiga högoptimerat när storleken på data överskrider 64 MB.
+toocreate en fil och överföringsdata använder hello `create_file_from_path`, `create_file_from_stream`, `create_file_from_bytes` eller `create_file_from_text` metoder. De är övergripande metoder som utför hello nödvändiga högoptimerat när hello hello överskrider data 64 MB.
 
-`create_file_from_path`Överför innehållet i en fil från den angivna sökvägen och `create_file_from_stream` Överför innehållet från en redan öppnad filström. `create_file_from_bytes`Överför en matris med byte och `create_file_from_text` överför det angivna textvärdet med den angivna kodningen (standardvärdet är UTF-8).
+`create_file_from_path`överföringar hello innehållet i en fil från hello angivna sökvägen och `create_file_from_stream` överföringar hello innehåll från en redan öppnad filström. `create_file_from_bytes`Överför en matris med byte och `create_file_from_text` överföringar hello anges textvärdet med hello angetts kodning (standard tooUTF-8).
 
-I följande exempel Överför innehållet i den **sunset.png** filen till den **minfil** fil.
+hello följande exempel överför hello innehållet i hello **sunset.png** filen till hello **minfil** fil.
 
 ```python
 from azure.storage.file import ContentSettings
 file_service.create_file_from_path(
     'myshare',
-    None, # We want to create this blob in the root directory, so we specify None for the directory_name
+    None, # We want toocreate this blob in hello root directory, so we specify None for hello directory_name
     'myfile',
     'sunset.png',
     content_settings=ContentSettings(content_type='image/png'))
 ```
 
 ### <a name="download-a-file"></a>Hämta en fil
-Hämta data från en fil, `get_file_to_path`, `get_file_to_stream`, `get_file_to_bytes`, eller `get_file_to_text`. De är övergripande metoder som utför nödvändiga högoptimerat när storleken på data överskrider 64 MB.
+toodownload data från en fil, använder `get_file_to_path`, `get_file_to_stream`, `get_file_to_bytes`, eller `get_file_to_text`. De är övergripande metoder som utför hello nödvändiga högoptimerat när hello hello överskrider data 64 MB.
 
-I följande exempel visas hur du använder `get_file_to_path` att hämta innehållet i den **minfil** filen och spara den till den **out sunset.png** fil.
+hello följande exempel visas hur du använder `get_file_to_path` toodownload hello innehållet i hello **minfil** filen och spara den toohello **out sunset.png** fil.
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
 ```
 
 ### <a name="delete-a-file"></a>Ta bort en fil
-Slutligen, om du vill ta bort en fil, anropa `delete_file`.
+Slutligen toodelete en fil, anropa `delete_file`.
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig hur du hanterar Azure File storage med Python, kan du följa dessa länkar om du vill veta mer.
+Nu när du har lärt dig hur toomanipulate Azure File storage med Python, följa dessa länkar toolearn mer.
 
 * [Python Developer Center](/develop/python/)
 * [REST-API för Azure Storage Services](http://msdn.microsoft.com/library/azure/dd179355)

@@ -1,5 +1,5 @@
 ---
-title: "Azure CLI-skript Sample - skapa en Funktionsapp i en apptjänstplan | Microsoft Docs"
+title: "aaaAzure CLI skriptexempel - skapa en Funktionsapp i en apptjänstplan | Microsoft Docs"
 description: "Azure CLI-skript Sample - skapa en Funktionsapp i en apptjänstplan"
 services: functions
 documentationcenter: functions
@@ -16,33 +16,33 @@ ms.workload: web
 ms.date: 04/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 40c3fa6fa6c07d59e4bf55531e116ba50aa92b91
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c0ffbbbf022e5680e5ae3141e784e7c7bced0bc0
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Skapa en Funktionsapp i en apptjänstplan
 
-Det här exempelskriptet skapar en Azure-Funktionsapp, vilket är en behållare för dina funktioner. Funktionen appen skapas med hjälp av en dedikerad programtjänstplan, vilket innebär att serverresurserna alltid är aktiva.
+Det här exempelskriptet skapar en Azure-Funktionsapp, vilket är en behållare för dina funktioner. Hej Funktionsapp skapas med hjälp av en dedikerad programtjänstplan, vilket innebär att serverresurserna alltid är aktiva.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kräver i det här avsnittet att du kör hello Azure CLI version 2.0 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Exempelskript
 
 Det här skriptet skapar en Azure-funktion app med en dedikerad [programtjänstplanen](../functions-scale.md#app-service-plan).
 
-[!code-azurecli-interactive[huvudsakliga](../../../cli_scripts/azure-functions/create-function-app-app-service-plan/create-function-app-app-service-plan.sh "skapa en Azure-funktion på en apptjänstplan")]
+[!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-app-service-plan/create-function-app-app-service-plan.sh "Create an Azure Function on an App Service plan")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Varje kommando i tabellen länkar till kommandot viss dokumentation. Det här skriptet använder följande kommandon:
+Varje kommando i hello tabellen länkar toocommand viss dokumentation. Det här skriptet använder hello följande kommandon:
 
 | Kommando | Anteckningar |
 |---|---|
@@ -53,6 +53,6 @@ Varje kommando i tabellen länkar till kommandot viss dokumentation. Det här sk
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
+Mer information om hello Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
 
-Ytterligare Azure Functions CLI skriptexempel finns i den [Azure Functions dokumentationen](../functions-cli-samples.md).
+Ytterligare Azure Functions CLI skriptexempel finns i hello [Azure Functions dokumentationen](../functions-cli-samples.md).

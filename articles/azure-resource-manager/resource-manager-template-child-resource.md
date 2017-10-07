@@ -1,6 +1,6 @@
 ---
-title: Definiera underordnade resursen i Azure-mall | Microsoft Docs
-description: "Visar hur du ställer resurstyp och namn för underordnade resursen i en Azure Resource Manager-mall"
+title: aaaDefine underordnade resurs i Azure-mall | Microsoft Docs
+description: "Visar hur tooset hello resurstyp och namn för underordnade resursen i en Azure Resource Manager-mall"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5b6ce5526f354008eb4a697deec737876f22391f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c502c589100d7ae864d7fb01b5ba10ddfaf92592
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="set-name-and-type-for-child-resource-in-resource-manager-template"></a>Ange namn och typ för underordnade resursen i Resource Manager-mall
-När du skapar en mall kan behöver du ofta innehåller en underordnad resurs som är relaterad till en överordnad resurs. Mallen kan exempelvis omfatta en SQLServer och en databas. SQLServer är den överordnade resursen och databasen är den underordnade resursen. 
+När du skapar en mall måste du ofta tooinclude en underordnad resurs som är relaterade tooa överordnade resurs. Mallen kan exempelvis omfatta en SQLServer och en databas. hello SQLServer är hello överordnade resursen och hello databasen är hello underordnade resursen. 
 
-Formatet för resurstypen underordnade är:`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+Resurstyp för hello underordnade hello format är:`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
-Formatet på underordnade resursnamnet är:`{parent-resource-name}/{child-resource-name}`
+hello format hello underordnade resursnamnet är:`{parent-resource-name}/{child-resource-name}`
 
-Du dock ange typ och namn i en mall på olika sätt beroende på om den finns under den överordnade resursen, eller på sin egen på den översta nivån. Det här avsnittet visar hur du hanterar båda metoderna.
+Du dock ange hello typ och namn i en mall på olika sätt beroende på om den finns under hello överordnade resursen, eller på sin egen på hello översta nivån. Det här avsnittet visar hur toohandle båda närmar sig.
 
-När man skapar en fullständiga referens till en resurs, är ordningen att kombinera segment från typ och namn inte bara en sammanfogning av två.  Använd i stället efter namnområde, en sekvens med *typnamn/* par från minst specifika mest specifika:
+När man skapar en fullständiga referens tooa resurs hello ordning toocombine segment från hello typ och namn är inte bara en sammansättning av hello två.  Använd i stället en sekvens med efter hello namnområde *typnamn/* par från minst specifika toomost specifika:
 
 ```json
 {resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
@@ -40,7 +40,7 @@ Exempel:
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`stämmer `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` är inte korrekt
 
 ## <a name="nested-child-resource"></a>Kapslad underordnad resurs
-Det enklaste sättet att definiera en underordnad resurs är att kapsla i den överordnade resursen. I följande exempel visas en SQL-databas som har kapslats i i en SQL Server.
+hello enklaste sättet toodefine en underordnad resurs är toonest det i hello överordnade resursen. hello visas följande exempel en SQL-databas som har kapslats i i en SQL Server.
 
 ```json
 {
@@ -59,10 +59,10 @@ Det enklaste sättet att definiera en underordnad resurs är att kapsla i den ö
 }
 ```
 
-För den underordnade resursen typ har angetts till `databases` men dess fullständiga resurstypen är `Microsoft.Sql/servers/databases`. Du inte anger `Microsoft.Sql/servers/` eftersom det antas från den överordnade resurstypen. Namnet på underordnade resursen har angetts till `exampledatabase` men det fullständiga namnet innehåller namnet på överordnade. Du inte anger `exampleserver` eftersom det antas från den överordnade resursen.
+För hello underordnade resursen hello-typ har angetts för`databases` men dess fullständiga resurstypen är `Microsoft.Sql/servers/databases`. Du inte anger `Microsoft.Sql/servers/` eftersom det antas från hello överordnade resurstypen. hello underordnade resursnamnet har angetts för`exampledatabase` men hello fullständiga namn innehåller hello överordnade namn. Du inte anger `exampleserver` eftersom det antas från hello överordnade resursen.
 
 ## <a name="top-level-child-resource"></a>Översta underordnade resursen
-Du kan definiera den underordnade resursen på den översta nivån. Du kan använda den här metoden om den överordnade resursen inte är distribuerat i samma mall, eller om vill använda `copy` att skapa flera underordnade resurser. Med den här metoden måste du ange fullständig resurstypen och inkludera namnet på överordnade resursen i namnet på underordnade resursen.
+Du kan definiera hello underordnade resursen på hello översta nivån. Du kan använda den här metoden om hello överordnade resursen inte är distribuerat i hello samma mall eller om vill toouse `copy` toocreate flera underordnade resurser. Med den här metoden måste du ange hello fullständig resurstyp och inkludera hello överordnade resursnamn i hello underordnade resursnamnet.
 
 ```json
 {
@@ -81,8 +81,8 @@ Du kan definiera den underordnade resursen på den översta nivån. Du kan anvä
 }
 ```
 
-Databasen är en underordnad resurs till servern även om de är definierade på samma nivå i mallen.
+hello-databasen är underordnade toohello resursservern även om de är definierade på samma nivå i hello mallen hello.
 
 ## <a name="next-steps"></a>Nästa steg
-* Rekommendationer om hur du skapar mallar finns i [bästa praxis för att skapa mallar för Azure Resource Manager](resource-manager-template-best-practices.md).
+* Rekommendationer om hur toocreate mallar, se [bästa praxis för att skapa mallar för Azure Resource Manager](resource-manager-template-best-practices.md).
 * Ett exempel på hur du skapar flera underordnade resurser, se [distribuera flera instanser av resurser i Azure Resource Manager-mallar](resource-group-create-multiple.md).

@@ -1,5 +1,5 @@
 ---
-title: ALM i Azure Machine Learning | Microsoft Docs
+title: aaaALM i Azure Machine Learning | Microsoft Docs
 description: "Tillämpa Metodtips för programhantering livscykel i Azure Machine Learning Studio"
 keywords: ALM AML, Azure ML, programhanteringen livscykel versionskontroll
 services: machine-learning
@@ -15,88 +15,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: haining
-ms.openlocfilehash: 7dc337c5aa03a9a609b4ca5d811442c99c75878f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 99470ff72fea7ab59d9d44f3fded7b9dd49a38c1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Livscykel för programhantering i Azure Machine Learning Studio
-Azure Machine Learning Studio är ett verktyg för utveckling av machine learning-experiment som operationalized i plattformen Azure-molnet. Den kopplas som Visual Studio IDE och skalbar Molntjänsten till en enda plattform. Du kan införliva standard programmet livscykeln för hantering (ALM) praxis från versionshantering olika tillgångar för automatisk körning och distribution, i Azure Machine Learning Studio. Den här artikeln beskrivs några av alternativen och metoder.
+Azure Machine Learning Studio är ett verktyg för utveckling av machine learning-experiment som operationalized i hello Azure cloud platform. Det är som hello Visual Studio IDE och skalbar Molntjänsten samman i en enda plattform. Du kan införliva standard programmet livscykeln för hantering (ALM) praxis från versionshantering olika tillgångar tooautomated körning och distribution i Azure Machine Learning Studio. Den här artikeln beskrivs några av hello alternativ och metoder.
 
 ## <a name="versioning-experiment"></a>Versionshantering experiment
-Det finns två rekommenderade sätt att version experimenten. Du kan antingen förlitar sig på inbyggda körningshistorik eller exportera experiment i JavaScript Object Notation (JSON)-format och hantera den externt. Tillvägagångssätten levereras med dess- och nackdelar.
+Det finns två sätt tooversion experimenten. Du kan antingen förlitar sig på inbyggda körningshistorik eller exportera hello experiment i JavaScript Object Notation (JSON)-format och hantera den externt. Tillvägagångssätten levereras med dess- och nackdelar.
 
 ### <a name="experiment-snapshots-using-run-history"></a>Experiment ögonblicksbilder med Körningshistorik
-I modellen för körning av den Azure Machine Learning Studio learning experiment, varje gång du klickar på den **kör** knappen i experimentet redigeraren, en oföränderlig ögonblicksbild av experimentet skickas till jobbschemaläggaren. Du kan visa den här listan över ögonblicksbilder genom att klicka på den **Körningshistorik** knappen i kommandofältet i vyn experiment editor.
+I hello körningsmodell för hello Azure Machine Learning Studio learning experiment, varje gång du klickar på hello **kör** knappen i Redigeraren för hello experiment, en oföränderlig ögonblicksbild av hello experiment är skickade toohello jobbschemaläggaren. Du kan visa den här listan över ögonblicksbilder genom att klicka på hello **Körningshistorik** hello kommandofältet i hello experiment editor vy-knappen.
 
 ![Kör tidigare](media/machine-learning-version-control/runhistory.png)
 
-Därefter kan du öppna ögonblicksbild i låst läge genom att klicka på namnet på experimentet när experimentet angavs för att köra och ögonblicksbilden togs. Observera att det första objektet i listan som representerar det aktuella experimentet, är i ett redigerbart tillstånd. Observera att varje ögonblicksbild kan ha olika Status inklusive klar (delvis kör), misslyckades, tillstånd, misslyckades (delvis kör), eller också utkast.
+Du kan sedan öppna hello ögonblicksbild i låst läge genom att klicka på hello namnet på hello experiment på hello tid hello experimentet har skickats toorun och hello ögonblicksbilden togs. Observera att endast hello första objektet i listan hello som representerar hello aktuella experiment, är i ett redigerbart tillstånd. Observera att varje ögonblicksbild kan ha olika Status inklusive klar (delvis kör), misslyckades, tillstånd, misslyckades (delvis kör), eller också utkast.
 
 ![Kör listan tidigare](media/machine-learning-version-control/runhistorylist.png)
 
-När det öppnas, kan du spara ögonblicksbild experiment som ett nytt experiment och sedan ändra den. Om din experiment ögonblicksbild innehåller resurser, t.ex en tränad modell-, omvandlings- eller datamängd som har uppdaterat versioner, behåller ögonblicksbilden referenser till den ursprungliga versionen när ögonblicksbilden togs. Om du sparar den låsta ögonblicksbilden som ett nytt experiment Azure Machine Learning Studio identifierar förekomsten av en nyare version av dessa tillgångar och uppdateras automatiskt i nya försöket.
+När den har öppnats kan du spara hello ögonblicksbild experiment som ett nytt experiment och sedan ändra den. Om din experiment ögonblicksbild innehåller resurser, t.ex en tränad modell-, omvandlings- eller datamängd som har uppdaterat versioner, behåller hello ögonblicksbild hello referenser toohello originalversionen när hello ögonblicksbilden togs. Om du sparar hello låst ögonblicksbild som ett nytt experiment Azure Machine Learning Studio identifierar hello förekomsten av en nyare version av dessa tillgångar och uppdateras automatiskt i hello nytt experiment.
 
-Om du tar bort experimentet bort alla ögonblicksbilder av försöket.
+Om du tar bort hello experiment bort alla ögonblicksbilder av försöket.
 
 ### <a name="exportimport-experiment-in-json-format"></a>Export/import experiment i JSON-format
-Kör rapporthistorik behålla en oföränderlig version av experimentet i Azure Machine Learning Studio varje gång det har skickats för att köra. Du kan också spara en lokal kopia av experimentet och checka in din favorit källkontrollsystem, till exempel Team Foundation Server och skapa senare på ett experiment från den lokala filen igen. Du kan använda den [Azure Machine Learning PowerShell](http://aka.ms/amlps) kommandon [ *Export AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) och [ *importera AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) att göra det.
+ögonblicksbilder av rapporthistorik hello kör behålla en oföränderlig version av hello experiment i Azure Machine Learning Studio när så är skickade toorun. Du kan också spara en lokal kopia av hello experiment och kontrollera i tooyour favorit källkontrollsystem, till exempel Team Foundation Server och skapa senare på ett experiment från den lokala filen igen. Du kan använda hello [Azure Machine Learning PowerShell](http://aka.ms/amlps) kommandon [ *Export AmlExperimentGraph* ](https://github.com/hning86/azuremlps#export-amlexperimentgraph) och [ * Importera AmlExperimentGraph* ](https://github.com/hning86/azuremlps#import-amlexperimentgraph) tooaccomplish som.
 
-JSON-filen är en textrepresentation av experimentet diagram, vilket kan innebära en referens till tillgångar på arbetsytan, till exempel ett dataset eller en tränad modell. Den innehåller inte en serialiserad version av tillgången. Om du försöker importera JSON-dokumentet tillbaka till arbetsytan måste refererade tillgångar finnas med samma tillgång ID: N som refereras i experimentet. Annars kommer du inte att komma åt importerade experimentet.
+hello JSON-fil är en textrepresentation av hello experimentera diagram, vilket kan innebära en referens tooassets hello arbetsytan, till exempel ett dataset eller en tränad modell. Den innehåller inte en serialiserad version av hello tillgång. Om du försöker tooimport hello JSON-dokumentet tillbaka till hello arbetsytan tillgångar hello refererar till måste redan finnas med hello samma tillgång ID: N som refereras i hello experiment. Annars kommer du inte att kunna tooaccess hello importeras experiment.
 
 ## <a name="versioning-trained-model"></a>Versionshantering tränade modellen
-En tränad modell i Azure Machine Learning serialiseras till ett format som kallas en .iLearner-fil och lagras i Azure Blob storage-konto som är kopplade till arbetsytan. Ett sätt att hämta en kopia av filen .iLearner är via omtränings-API: et. [Den här artikeln](machine-learning-retrain-models-programmatically.md) beskriver hur omtränings-API: et fungerar. Anvisningar:
+En tränad modell i Azure Machine Learning serialiseras till ett format som kallas en .iLearner-fil och lagras i hello Azure Blob storage-konto som är associerade med hello arbetsytan. Enkelriktade tooget en kopia av hello .iLearner filen är via hello omtränings-API. [Den här artikeln](machine-learning-retrain-models-programmatically.md) beskriver hur hello omtränings API fungerar. hello anvisningar:
 
 1. Ställ in experimentet utbildning.
-2. Lägger till en web service utgående port träningsmodellmodulen eller modulen som producerar tränad modell, till exempel finjustera modellen Hyperparameter eller skapa R-modell.
+2. Lägga till en web service utgående port toohello träningsmodellmodulen eller hello-modul som ger hello tränad modell, till exempel finjustera modellen Hyperparameter eller skapa R-modell.
 3. Kör experimentet utbildning och distribuera det som en webbtjänst för utbildning av modellen.
-4. Anropa BES-slutpunkten för webbtjänsten utbildning och ange önskade .iLearner filnamnet och Blob lagringskontoplatsen där den lagras.
-5. Inhämta filen producerade .iLearner när BES-anropet har slutförts.
+4. Anropa hello BES-slutpunkten för webbtjänsten för hello utbildning och ange filnamnet för hello önskade .iLearner och Blob lagringskontoplatsen där den lagras.
+5. Skörd hello producerade .iLearner filen när hello BES anropa har slutförts.
 
-Ett annat sätt att hämta filen .iLearner är via PowerShell-kommandot [ *Download AmlExperimentNodeOutput*](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput). Det blir enklare om du vill hämta en kopia av filen .iLearner utan att behöva träna om modellen programmässigt.
+Ett annat sätt tooretrieve hello .iLearner filen är via hello PowerShell-kommandot [ *Download AmlExperimentNodeOutput*](https://github.com/hning86/azuremlps#download-amlexperimentnodeoutput). Det blir enklare om du bara vill tooget en kopia av hello .iLearner filen utan hello måste tooretrain hello modellen programmässigt.
 
-När du har den .iLearner-fil som innehåller den tränade modellen, kan du använda en egen strategi för versionshantering. Strategin kan vara så enkelt som tillämpa pre/username@Domain som en namngivningskonvention bara lämnar .iLearner-fil i Blob storage och kopiera/importerar den till din systemet för versionskontroll.
+När du har hello .iLearner-fil som innehåller hello tränad modell, kan du använda en egen strategi för versionshantering. hello strategi kan vara så enkelt som tillämpa pre/username@Domain som en namngivningskonvention bara lämnar hello .iLearner fil i Blob storage och kopiera/importerar den till din systemet för versionskontroll.
 
-Filen sparade .iLearner kan sedan användas för poäng genom distribuerade webbtjänster.
+hello sparade .iLearner filen kan sedan användas för poäng genom distribuerade webbtjänster.
 
 ## <a name="versioning-web-service"></a>Webbtjänst för versionshantering
-Du kan distribuera två typer av webbtjänster från ett Azure Machine Learning-experiment. Klassiska webbtjänsten är direkt kopplade till experimentet samt arbetsytan. Den nya webbtjänsten använder Azure Resource Manager-ramverk och det inte längre används tillsammans med det ursprungliga experimentet eller på arbetsytan.
+Du kan distribuera två typer av webbtjänster från ett Azure Machine Learning-experiment. hello klassiska webbtjänsten är direkt kopplade till hello experiment samt hello arbetsytan. hello nya webbtjänsten använder hello Azure Resource Manager framework och det inte längre används tillsammans med hello ursprungliga experiment eller hello arbetsyta.
 
 ### <a name="classic-web-service"></a>Klassiska webbtjänst
-Du kan dra nytta av web service endpoint konstruktion till version klassiska webbtjänsten. Här är en typisk flöde:
+Du kan dra nytta av hello web service endpoint konstruktion tooversion klassiska webbtjänsten. Här är en typisk flöde:
 
 1. Från din prediktivt experiment kan du distribuera en ny klassiska webbtjänst, som innehåller en standardslutpunkt.
-2. Du kan skapa en ny slutpunkt med namnet ep2 som visar den aktuella versionen av modellen experiment/tränats.
+2. Du kan skapa en ny slutpunkt med namnet ep2 som visar hello nuvarande version av hello experiment/tränat modellen.
 3. Du kan gå tillbaka och uppdatera din prediktivt experiment och tränad modell.
-4. Du distribuerar prediktivt experiment, som sedan uppdaterar standardslutpunkten. Men det kommer inte att ändra ep2.
-5. Du kan skapa en ytterligare slutpunkt med namnet ep3 som visar den nya versionen av experimentet och tränad modell.
-6. Gå tillbaka till steg 3 om det behövs.
+4. Du distribuerar hello prediktivt experiment, som sedan uppdaterar hello standardslutpunkten. Men det kommer inte att ändra ep2.
+5. Du kan skapa en ytterligare slutpunkt med namnet ep3 som visar hello ny version av hello experiment och tränad modell.
+6. Gå tillbaka toostep 3 om det behövs.
 
-Du kan ha många slutpunkter har skapats i samma webbtjänsten med tiden. Varje slutpunkt representerar en tidpunkt i kopia av experimentet som innehåller point-in-time-versionen av den tränade modellen. Du kan sedan använda externa logik för att avgöra vilken slutpunkt att anropa, vilket effektivt innebär att välja en version av den tränade modellen för bedömningsprofil kör.
+Över tiden, kanske du har många slutpunkter har skapats i hello samma webbtjänsten. Varje slutpunkt representerar en tidpunkt i kopia av hello experiment som innehåller hello tidpunkts-versionen av hello tränade modellen. Du kan sedan använda externa logiska toodetermine vilka endpoint toocall vilket effektivt innebär att välja en version av hello tränats modellen för hello poäng kör.
 
-Du kan också skapa slutpunkter för många identiska webbtjänster och korrigering olika versioner av filen .iLearner till slutpunkten för att uppnå samma effekt. [Den här artikeln](machine-learning-create-models-and-endpoints-with-powershell.md) förklarar i detalj hur du utför som.
+Du kan också skapa slutpunkter för många identiska webbtjänster och korrigering olika versioner av hello .iLearner filen toohello endpoint tooachieve liknande effekt. [Den här artikeln](machine-learning-create-models-and-endpoints-with-powershell.md) beskrivs i detalj hur tooaccomplish som.
 
 ### <a name="new-web-service"></a>Ny webbtjänst
-Om du skapar en ny Azure Resource Manager-baserad webbtjänst, endpoint-konstruktion inte längre tillgängligt. Du kan i stället generera web service definition (WSD)-filer i JSON-format från din prediktivt experiment med hjälp av den [Export AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell-kommandot eller genom att använda den [ *Export AzureRmMlWebservice* ](https://msdn.microsoft.com/library/azure/mt767935.aspx) PowerShell-kommandot från en distribuerad Resource Manager-baserad webbtjänst.
+Om du skapar en ny Azure Resource Manager-baserad webbtjänst hello endpoint konstruktion inte längre tillgängligt. Du kan i stället generera web service definition (WSD)-filer i JSON-format från din prediktivt experiment med hjälp av hello [Export AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) PowerShell-kommandot, eller genom att använda hello [ *Export AzureRmMlWebservice* ](https://msdn.microsoft.com/library/azure/mt767935.aspx) PowerShell-kommandot från en distribuerad Resource Manager-baserad webbtjänst.
 
-När du har den exporterade WSD filen och kontroll över den kan distribuera du också WSD som en ny webbtjänst i en annan web service-plan i en annan Azure-region. Kontrollera att du anger rätt konto lagringskonfigurationen samt nya web service-plan-ID. Om du vill korrigera i olika .iLearner filer du ändra WSD-filen och uppdatera platsreferensen av den tränade modellen och distribuera det som en ny webbtjänst.
+När du har exporterat hello WSD-filen och kontroll över den, du kan också distribuera hello WSD som en ny webbtjänst i en annan web service-plan i en annan Azure-region. Kontrollera att du anger rätt hello lagringskonto som även hello nya web service-plan-ID. toopatch i olika .iLearner filer som du kan ändra hello WSD-filen och uppdatera hello platsreferensen av hello tränats modell och distribuera det som en ny webbtjänst.
 
 ## <a name="automate-experiment-execution-and-deployment"></a>Automatisera distribution och körning av experimentet
-En viktig del av ALM ska kunna automatisera körningen och processen för distribution av programmet. I Azure Machine Learning, du kan göra detta med hjälp av den [PowerShell-modulen](http://aka.ms/amlps). Här är ett exempel på en slutpunkt till slutpunkt steg som är relevanta för en standard ALM automatisk körning/distributionsprocessen genom att använda den [Azure Machine Learning Studio PowerShell-modulen](http://aka.ms/amlps). Varje steg är kopplad till en eller flera PowerShell-kommandon som du kan använda för att utföra steget.
+En viktig del av ALM är toobe kan tooautomate hello körning och processen för distribution av programmet hello. I Azure Machine Learning du åstadkommer detta genom att använda hello [PowerShell-modulen](http://aka.ms/amlps). Här är ett exempel på en slutpunkt till slutpunkt steg som är relevanta tooa standard ALM automatisk körning/distributionsprocessen genom att använda hello [Azure Machine Learning Studio PowerShell-modulen](http://aka.ms/amlps). Varje steg är länkade tooone eller flera PowerShell-kommandon som du kan använda tooaccomplish steg.
 
 1. [Överför en datamängd](https://github.com/hning86/azuremlps#upload-amldataset).
-2. Kopiera en träningsexperiment till arbetsytan från en [arbetsytan](https://github.com/hning86/azuremlps#copy-amlexperiment) eller från [galleriet](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), eller [importera](https://github.com/hning86/azuremlps#import-amlexperimentgraph) en [exporteras](https://github.com/hning86/azuremlps#export-amlexperimentgraph) experiment från lokal disk.
-3. [Uppdatera datauppsättningen](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) i utbildning försöket.
-4. [Kör experimentet utbildning](https://github.com/hning86/azuremlps#start-amlexperiment).
-5. [Flytta upp den tränade modellen](https://github.com/hning86/azuremlps#promote-amltrainedmodel).
-6. [Kopiera en prediktivt experiment](https://github.com/hning86/azuremlps#copy-amlexperiment) till arbetsytan.
-7. [Uppdatera den tränade modellen](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) i prediktivt experiment.
-8. [Kör prediktivt experiment](https://github.com/hning86/azuremlps#start-amlexperiment).
-9. [Distribuera en webbtjänst](https://github.com/hning86/azuremlps#new-amlwebservice) från prediktivt experiment.
-10. Testa webbtjänsten [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) eller [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) slutpunkt.
+2. Kopiera en träningsexperiment till hello arbetsyta från en [arbetsytan](https://github.com/hning86/azuremlps#copy-amlexperiment) eller från [galleriet](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), eller [importera](https://github.com/hning86/azuremlps#import-amlexperimentgraph) en [exporteras](https://github.com/hning86/azuremlps#export-amlexperimentgraph) experiment från lokal disk.
+3. [Uppdatera hello dataset](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) i hello utbildning experiment.
+4. [Kör hello träningsexperiment](https://github.com/hning86/azuremlps#start-amlexperiment).
+5. [Befordra hello tränade modellen](https://github.com/hning86/azuremlps#promote-amltrainedmodel).
+6. [Kopiera en prediktivt experiment](https://github.com/hning86/azuremlps#copy-amlexperiment) till hello arbetsytan.
+7. [Uppdatera hello tränade modellen](https://github.com/hning86/azuremlps#update-amlexperimentuserasset) i hello prediktivt experiment.
+8. [Kör hello prediktivt experiment](https://github.com/hning86/azuremlps#start-amlexperiment).
+9. [Distribuera en webbtjänst](https://github.com/hning86/azuremlps#new-amlwebservice) från hello prediktivt experiment.
+10. Testa hello webbtjänsten [RRS](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) eller [BES](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint) slutpunkt.
 
 ## <a name="next-steps"></a>Nästa steg
-* Hämta den [Azure Machine Learning Studio PowerShell](http://aka.ms/amlps) modulen och starta för att automatisera ALM-uppgifter.
-* Lär dig hur du [skapa och hantera stort antal ML modeller med bara ett enda experiment](machine-learning-create-models-and-endpoints-with-powershell.md) via PowerShell och omtränings-API.
+* Hämta hello [Azure Machine Learning Studio PowerShell](http://aka.ms/amlps) modulen och starta tooautomate ALM-uppgifter.
+* Lär dig hur för[skapa och hantera stort antal ML modeller med bara ett enda experiment](machine-learning-create-models-and-endpoints-with-powershell.md) via PowerShell och omtränings-API.
 * Lär dig mer om [distribuerar Azure Machine Learning-webbtjänster](machine-learning-publish-a-machine-learning-web-service.md).

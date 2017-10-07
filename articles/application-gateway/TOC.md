@@ -6,7 +6,7 @@
 ## [Hälsoövervakning](application-gateway-probe-overview.md)
 ## [URL-routning](application-gateway-url-route-overview.md)
 ## [Flera platser](application-gateway-multi-site-overview.md)
-## [Slutpunkt till slutpunkt för SSL](application-gateway-backend-ssl.md)
+## [Avsluta tooend SSL](application-gateway-backend-ssl.md)
 ## [SSL-princip](application-gateway-ssl-policy-overview.md)
 ## [Omdirigering](application-gateway-redirect-overview.md)
 ## [Stöd för flera klienter](application-gateway-web-app-overview.md)
@@ -37,7 +37,7 @@
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (klassisk)](application-gateway-ssl.md)
 ### [Azure CLI 2.0](application-gateway-ssl.md)
-### [Slutpunkt till slutpunkt](application-gateway-end-to-end-ssl-powershell.md)
+### [End tooend](application-gateway-end-to-end-ssl-powershell.md)
 ### [SSL-princip](application-gateway-configure-ssl-policy-powershell.md)
 ## Konfigurera URL-baserad sökvägsroutning
 ### [Portal](application-gateway-create-url-route-portal.md)

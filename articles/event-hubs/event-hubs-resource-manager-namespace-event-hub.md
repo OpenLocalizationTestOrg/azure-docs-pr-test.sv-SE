@@ -1,5 +1,5 @@
 ---
-title: "Skapa en Azure Event Hubs namnområde och konsumenter med hjälp av en mall | Microsoft Docs"
+title: "aaaCreate en Händelsehubbar i Azure-namnområde och konsumenten-grupp med en mall | Microsoft Docs"
 description: "Skapa ett namnområde för Händelsehubbar med en händelsehubb och en konsumentgrupp med hjälp av Azure Resource Manager-mallar"
 services: event-hubs
 documentationcenter: .net
@@ -14,41 +14,41 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: eb9a80eec0326aaa605cb8b21aecbaeec94ff212
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 74b0d6b3fbe848705e2c20e628aa4e5269b53edb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-event-hubs-namespace-with-event-hub-and-consumer-group-using-an-azure-resource-manager-template"></a>Skapa ett namnområde för Händelsehubbar med nav- och konsumenten händelsegruppen med en Azure Resource Manager-mall
 
-Den här artikeln visar hur du använder en Azure Resource Manager-mall som skapar ett namnområde av typen Event Hubs, med en händelsehubb och en konsumentgrupp. Artikeln visar hur du definierar vilka resurser har distribuerats och hur du definierar parametrar som anges när distributionen körs. Du kan använda den här mallen för dina egna distributioner eller anpassa den så att den uppfyller dina krav
+Den här artikeln visar hur toouse en Azure Resource Manager-mall som skapar ett namnområde av typen Event Hubs med en händelsehubb och en konsumentgrupp. hello artikeln visar hur toodefine vilka resurser har distribuerats och hur toodefine parametrar som anges när hello distributionen körs. Du kan använda den här mallen för din egen distribution eller anpassa den toomeet dina krav
 
 Mer information om att skapa mallar finns i [Redigera Azure Resource Manager-mallar][Authoring Azure Resource Manager templates].
 
-Den fullständiga mallen finns i [NAV- och konsumenten grupp händelsemallen] [ Event Hub and consumer group template] på GitHub.
+Hello fullständig mallen finns hello [NAV- och konsumenten grupp händelsemallen] [ Event Hub and consumer group template] på GitHub.
 
 > [!NOTE]
-> Om du vill söka efter de senaste mallarna kan du gå till galleriet [Azure-snabbstartsmallar][Azure Quickstart Templates] och söka efter Event Hubs.
+> toocheck för hello senaste mallar, besök hello [Azure-Snabbstartsmallar] [ Azure Quickstart Templates] galleriet och Sök efter Händelsehubbar.
 > 
 > 
 
 ## <a name="what-will-you-deploy"></a>Vad vill du distribuera?
 Med den här mallen distribuerar du ett Händelsehubbar namnområde med en händelsehubb och en konsumentgrupp.
 
-[Event Hubs](event-hubs-what-is-event-hubs.md) är en tjänst för händelsebearbetning som används för att tillhandahålla en händelse- och telemetriingång till Azure i massiv skala med kort svarstid och hög tillförlitlighet.
+[Händelsehubbar](event-hubs-what-is-event-hubs.md) är en händelsebearbetning tjänsten används tooprovide händelse- och ingångsanspråk tooAzure i massiv skala med kort svarstid och hög tillförlitlighet.
 
-Klicka på följande knapp för att köra distributionen automatiskt:
+toorun Hej distributionen automatiskt, klickar du på följande knapp hello:
 
-[![Distribuera till Azure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+[![Distribuera tooAzure](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parametrar
-Med Azure Resource Manager kan du definiera parametrar för värden som du vill ange när mallen distribueras. Mallen innehåller ett avsnitt som heter `Parameters` och som innehåller alla parametervärden. Du bör definiera en parameter för de värden som varierar baserat på projektet som du distribuerar eller baserat på miljön som du distribuerar. Definiera inte parametrar för värden som aldrig ändras. Varje parametervärdet i mallen definierar de resurser som har distribuerats.
+Med Azure Resource Manager kan du definiera parametrar för värden som du vill toospecify när hello mallen distribueras. hello mallen innehåller ett avsnitt som heter `Parameters` som innehåller alla hello parametervärden. Du bör definiera en parameter för de värden som varierar baserat på hello-projekt som du distribuerar eller på hello miljö toowhich som du distribuerar. Definiera inte parametrar för värden som alltid hello samma. Varje parametervärdet i hello mallen definierar hello resurser som distribueras.
 
-Mallen definierar följande parametrar:
+hello mallen definierar hello följande parametrar:
 
 ### <a name="eventhubnamespacename"></a>eventHubNamespaceName
-Namnet på namnområdet för Event Hubs som ska skapas.
+hello namnet på hello Händelsehubbar namnområde toocreate.
 
 ```json
 "eventHubNamespaceName": {
@@ -57,7 +57,7 @@ Namnet på namnområdet för Event Hubs som ska skapas.
 ```
 
 ### <a name="eventhubname"></a>eventHubName
-Namnet på händelsehubben som skapats i namnområdet för Event Hubs.
+hello namnet på hello händelsehubb skapas i hello Händelsehubbar namnområde.
 
 ```json
 "eventHubName": {
@@ -66,7 +66,7 @@ Namnet på händelsehubben som skapats i namnområdet för Event Hubs.
 ```
 
 ### <a name="eventhubconsumergroupname"></a>eventHubConsumerGroupName
-Namnet på konsumentgrupp som skapats för händelsehubben.
+hello namnet på hello konsumentgrupp som skapats för hello händelsehubb.
 
 ```json
 "eventHubConsumerGroupName": {
@@ -75,7 +75,7 @@ Namnet på konsumentgrupp som skapats för händelsehubben.
 ```
 
 ### <a name="apiversion"></a>apiVersion
-API-versionen av mallen.
+hello API-version av hello mallen.
 
 ```json
 "apiVersion": {
@@ -83,7 +83,7 @@ API-versionen av mallen.
 }
 ```
 
-## <a name="resources-to-deploy"></a>Resurser som ska distribueras
+## <a name="resources-toodeploy"></a>Resurser toodeploy
 Skapar ett namnområde av typen **EventHubs**, med en händelsehubb och en konsumentgrupp.
 
 ```json
@@ -127,7 +127,7 @@ Skapar ett namnområde av typen **EventHubs**, med en händelsehubb och en konsu
    ],
 ```
 
-## <a name="commands-to-run-deployment"></a>Kommandon för att köra distributionen
+## <a name="commands-toorun-deployment"></a>Kommandon toorun distribution
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
@@ -143,7 +143,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Du kan lära dig mer om Event Hubs genom att gå till följande länkar:
+Mer information om Händelsehubbar genom att besöka hello följande länkar:
 
 * [Event Hubs-översikt](event-hubs-what-is-event-hubs.md)
 * [Skapa en Event Hub](event-hubs-create.md)
@@ -152,5 +152,5 @@ Du kan lära dig mer om Event Hubs genom att gå till följande länkar:
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
-[Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
+[Using hello Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md
 [Event hub and consumer group template]: https://github.com/Azure/azure-quickstart-templates/blob/master/201-event-hubs-create-event-hub-and-consumer-group/

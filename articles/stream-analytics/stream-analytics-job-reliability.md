@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.openlocfilehash: 8dc19e1b37082c87d2990ad910d1af786f8b9280
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3ac65c93ecb47e93e963dd9869a7af70f73b19c7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>Garantera Stream Analytics-jobbet tillförlitlighet under uppdateringar av tjänsten
 
-En del av en helt hanterad tjänst som är möjligheten att införa den nya tjänsten funktioner och förbättringar i en snabb takt. Stream Analytics kan därför ha en tjänstuppdatering distribuera varje vecka (eller oftare). Oavsett hur mycket testning finns fortfarande en risk för att en befintlig, körs jobbet avbryts på grund av ett programfel. För kunder som kör kritiska strömmande bearbetning jobb behöver dessa risker undvikas. En funktion som kunder kan använda för att minska denna risk är Azures  **[parad region](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)**  modell. 
+En del av en helt hanterad tjänst som är hello kapaciteten toointroduce nya service funktioner och förbättringar i en snabb takt. Stream Analytics kan därför ha en tjänstuppdatering distribuera varje vecka (eller oftare). Oavsett hur mycket testning finns fortfarande en risk för att en befintlig, körs jobbet avbryts på grund av toohello införandet av ett programfel. För kunder som kör kritiska strömmande bearbetning jobb måste riskerna toobe undvikas. En mekanism för kunder kan använda tooreduce risken är Azures  **[parad region](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)**  modell. 
 
 ## <a name="how-do-azure-paired-regions-address-this-concern"></a>Hur parad Azure-regioner adressera detta?
 
-Stream Analytics garanterar jobb i parad regioner har uppdaterats i separata grupper. Det finns därför en tillräcklig lucka mellan uppdateringar att identifiera potentiella bryta buggar och åtgärda dem.
+Stream Analytics garanterar jobb i parad regioner har uppdaterats i separata grupper. Det finns därför en tillräcklig lucka mellan hello uppdateringar tooidentify potentiella bryta buggar och åtgärda dem.
 
-_Med undantag för centrala Indien_ (vars parad region, södra Indien och inte har Stream Analytics förekomst), distribution av en uppdatering till Stream Analytics inte skulle uppstå samtidigt i en parad regioner. Distribution i flera områden **i samma grupp** kan uppstå **samtidigt**.
+_Med undantag för hello av centrala Indien_ (vars parad region, södra Indien och inte har Stream Analytics förekomst), hello distribution av en uppdatering tooStream Analytics inte skulle inträffar vid hello samma tid i en parad regioner. Distribution i flera områden **i hello samma grupp** kan uppstå **på hello samtidigt**.
 
-Artikel om  **[tillgänglighet och parad regioner](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)**  har den senaste informationen som regioner har parats ihop.
+hello artikel på  **[tillgänglighet och parad regioner](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)**  har hello allra senaste informationen som regioner har parats ihop.
 
-Kunder bör distribuera identiska jobb till båda parad regioner. Förutom Stream Analytics interna övervakningsfunktionerna kunder bör också övervaka jobb som om **både** produktion jobb. Om ett avbrott identifieras som ett resultat av tjänstuppdatering Stream Analytics eskalera på rätt sätt och över några underordnade konsumenter till Felfri jobbutdata. Eskalering till stöd för kommer att förhindra att parad region påverkas av den nya distributionen och underhålla integriteten hos parad jobb.
+Kunder är uppmanade toodeploy identiska jobb tooboth länkas regioner. Dessutom tooStream Analytics interna övervakningsfunktionerna kunder är också bäst toomonitor hello jobb som om **både** produktion jobb. Om ett avbrott identifierade toobe ett resultat av hello Stream Analytics tjänstuppdatering eskalera på rätt sätt och över alla underordnade konsumenter toohello felfri jobbutdata. Eskalering toosupport kommer att förhindra att hello parad region påverkas av hello ny distribution och underhålla hello integriteten hos hello länkas jobb.

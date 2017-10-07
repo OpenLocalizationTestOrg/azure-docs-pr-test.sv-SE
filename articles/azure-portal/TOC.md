@@ -1,22 +1,22 @@
 # Översikt
-## [Om Azure Portal](../azure-portal-overview.md)
+## [Om hello Azure-portalen](../azure-portal-overview.md)
 # Självstudier
-## [DevOps med Azure Portal](tutorial-azureportal-devops.md)
+## [DevOps med hello Azure-portalen](tutorial-azureportal-devops.md)
 # Koncept
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [Kortkommandon](azure-portal-keyboard-shortcuts.md)
 ## [Webbläsare och enheter som stöds](../azure-preview-portal-supported-browsers-devices.md)
-# Instruktionsguider
+# Hur tooguides
 ## Distribuera
 ### [Skapa Azure Resource Manager-mallar](../azure-resource-manager/resource-group-authoring-templates.md)
 ### [Distribuera med Resource Manager-mall](../azure-resource-manager/resource-group-template-deploy.md)
 ### [Skapa och dela Azure-instrumentpaneler](azure-portal-dashboards.md)
 ## Hantera
 ### [Aktivera hög kontrast eller ändra tema](azure-portal-change-theme-high-contrast.md)
-### [Använd portalen för att hantera resurser](../azure-resource-manager/resource-group-portal.md)
+### [Använda portalen toomanage resurser](../azure-resource-manager/resource-group-portal.md)
 ### [Hantera åtkomst med rollbaserad åtkomstkontroll](../active-directory/role-based-access-control-configure.md)
 ### [Dela instrumentpaneler med rollbaserad åtkomstkontroll](azure-portal-dashboard-share-access.md)
-### [Använd taggar för att organisera resurser](../azure-resource-manager/resource-group-using-tags.md)
+### [Använd taggar tooorganize resurser](../azure-resource-manager/resource-group-using-tags.md)
 ### [Skala dina resurser](../monitoring-and-diagnostics/insights-how-to-scale.md)
 ### [Skapa den nya Azure-tjänstens huvudnamn](../azure-resource-manager/resource-group-create-service-principal-portal.md)
 ## Övervaka

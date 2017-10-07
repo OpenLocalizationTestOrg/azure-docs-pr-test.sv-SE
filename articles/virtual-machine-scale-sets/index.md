@@ -1,6 +1,6 @@
 ---
-title: "Dokumentation om skalningsuppsättningar för virtuella Azure-datorer – Självstudier, API-referens | Microsoft Docs"
-description: "Lär dig hur du använder VM-skalningsuppsättningar för att skapa virtuella Windows- eller Linux-datorer med automatisk skalning för stora beräkningar, stordata och container-lösningar."
+title: "aaaAzure virtuella skala anger dokumentationen - självstudier, API-referens | Microsoft Docs"
+description: "Lär dig hur toouse Skalningsuppsättningar i virtuella toocreate automatisk skalning Windows eller Linux-datorer för stora beräkning och stordata av lösningar."
 services: virtual-machine-scale-sets
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c03fc321082b8be9044faf0e57e2f26ddc22c243
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7f4a4812e2ba44cabfd54bc25fa3b66a04c5bbe8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 #<a name="virtual-machine-scale-sets-documentation"></a>Dokumentation för skalningsuppsättningar för virtuella datorer
 
-Lär dig hur du använder VM-skalningsuppsättningar för att distribuera och hantera en uppsättning identiska, virtuella Windows- eller Linux-datorer med automatisk skalning. Dokumentationen visar hur du använder skalningsuppsättningar som stöder tjänster som riktas till stora beräkningar, stordata och container-lösningar.
+Lär dig hur toouse virtuella skala anger toodeploy och hantera en uppsättning identiska, automatisk skalning Windows eller Linux-datorer. Dokumentationen visar hur toouse Skaluppsättningar toosupport services som mål stort beräkning och stordata av lösningar.
 
 <ul class="panelContent cardsFTitle">
     <li>

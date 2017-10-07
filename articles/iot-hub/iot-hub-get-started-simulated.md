@@ -1,6 +1,6 @@
 ---
-title: "Komma igång med att ansluta simulerade enheter till Azure IoT Hub | Microsoft Docs"
-description: "Lär dig hur du skapar simulerade IoT-enheter och Anslut dem till Azure IoT Hub. Enheterna kan skicka telemetri IoT-hubb och Iot-hubb kan övervaka och hantera dina enheter."
+title: "Kom igång ansluter simulerade enheterna tooAzure IoT-hubb | Microsoft Docs"
+description: "Lär dig hur toocreate simulerade IoT-enheter och ansluter dem tooAzure IoT-hubb. Enheterna kan skicka telemetri tooIoT NAV- och Iot-hubb kan övervaka och hantera dina enheter."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2017
 ms.author: dobett
-ms.openlocfilehash: 436b3057509a831837159e814490959a2d7455a4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2c9b76477d12c853abd93aa96043417a013daaef
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-iot-hub-get-started-with-simulated-devices-tutorials"></a>Azure IoT-hubb Kom igång med simulerade enheterna självstudier
 
-Dessa självstudiekurser introduktion till Azure IoT Hub och SDK-enheten. Kursen beskriver vanliga IoT-scenarier för att demonstrera funktionerna i IoT-hubb. Självstudierna visar även hur du kombinerar IoT-hubb med andra Azure-tjänster och verktyg för att skapa mer kraftfulla IoT-lösningar. Självstudiekurser som anges i följande tabell visar hur du skapar simulerade IoT-enheter.
+Dessa självstudiekurser införa tooAzure IoT-hubb och hello enhet SDK: er. hello självstudier beskriver vanliga IoT scenarier toodemonstrate hello funktionerna i IoT-hubb. hello självstudier också illustrerar hur toocombine IoT-hubb med andra Azure-tjänster och verktyg toobuild mer kraftfulla IoT-lösningar. hello självstudiekurser i hello följande tabell visar hur toocreate simulerade IoT-enheter.
 
 | Programmeringsspråk |
 |----------------------|
@@ -31,7 +31,7 @@ Dessa självstudiekurser introduktion till Azure IoT Hub och SDK-enheten. Kursen
 | [Node.js][Sim_Nd]    |
 | [Python][Sim_Pyth]   |
 
-Dessutom kan du använda en IoT-gräns-gatewayen för att aktivera simulerade enheter ansluter till din IoT-hubb.
+Dessutom kan du använda en IoT-Edge gateway tooenable simulerade enheter tooconnect tooyour IoT-hubb.
 
 | Programmeringsspråk | Plattform           |
 |----------------------|------------------- |

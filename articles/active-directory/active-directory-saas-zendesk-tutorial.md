@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Zendesk | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Zendesk."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Zendesk."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,140 +13,140 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 51c06d838c5ed6286dfb99ea25faaaf33bad5f3c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 46ccd57a4adeb810af459caaa1e592cf2b62cb8c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Självstudier: Azure Active Directory-integrering med Zendesk
 
-I kursen får lära du att integrera Zendesk med Azure Active Directory (AD Azure).
+I kursen får du lära dig hur toointegrate Zendesk med Azure Active Directory (AD Azure).
 
-Integrera Zendesk med Azure AD ger dig följande fördelar:
+Integrera Zendesk med Azure AD ger dig hello följande fördelar:
 
-- Du kan styra i Azure AD som har åtkomst till Zendesk
-- Du kan aktivera användarna att automatiskt hämta loggat in på Zendesk (Single Sign-On) med sina Azure AD-konton
-- Du kan hantera dina konton i en central plats - Azure-portalen
+- Du kan styra i Azure AD som har åtkomst till tooZendesk
+- Du kan aktivera din användare tooautomatically get inloggade tooZendesk (Single Sign-On) med sina Azure AD-konton
+- Du kan hantera dina konton i en central plats - hello Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
 
-För att konfigurera Azure AD-integrering med Zendesk, behöver du följande:
+tooconfigure Azure AD-integrering med Zendesk, behöver du hello följande objekt:
 
 - En Azure AD-prenumeration
 - En Zendesk enkel inloggning aktiverad prenumeration
 
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 - Använd inte i produktionsmiljön, om det är nödvändigt.
 - Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-I kursen får testa du Azure AD enkel inloggning i en testmiljö. Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+I kursen får testa du Azure AD enkel inloggning i en testmiljö. hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till Zendesk från galleriet
+1. Att lägga till Zendesk från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
 
-## <a name="adding-zendesk-from-the-gallery"></a>Att lägga till Zendesk från galleriet
-Du måste lägga till Zendesk från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Zendesk i Azure AD.
+## <a name="adding-zendesk-from-hello-gallery"></a>Att lägga till Zendesk från hello-galleriet
+tooconfigure hello integrering av Zendesk i Azure AD, behöver du tooadd Zendesk hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till Zendesk från galleriet:**
+**tooadd Zendesk från galleriet hello utför hello följande steg:**
 
-1. I den  **[Azure Portal](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon. 
+1. I hello ** [Azure Portal](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon. 
 
     ![Active Directory][1]
 
-2. Gå till **företagsprogram**. Gå till **alla program**.
+2. Navigera för**företagsprogram**. Gå sedan för**alla program**.
 
     ![Program][2]
     
-3. Klicka på **nytt program** knappen överst i dialogrutan.
+3. Klicka på **nytt program** hello längst upp i hello dialogrutan.
 
     ![Program][3]
 
-4. I sökrutan skriver **Zendesk**.
+4. Skriv i sökrutan hello **Zendesk**.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zendesk-tutorial/tutorial_zendesk_search.png)
 
-5. Välj i resultatpanelen **Zendesk**, och klicka sedan på **Lägg till** för att lägga till programmet.
+5. Markera hello resultat på panelen **Zendesk**, och klicka sedan på **Lägg till** knappen tooadd hello program.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zendesk-tutorial/tutorial_zendesk_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
 I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Zendesk baserat på en testanvändare som kallas ”Britta Simon”.
 
-Azure AD måste du känna till användaren i Zendesk motsvarighet till en användare i Azure AD för enkel inloggning ska fungera. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Zendesk upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Zendesk är tooa i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i Zendesk toobe upprättas.
 
-Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i Zendesk.
+Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i Zendesk.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med Zendesk, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med Zendesk, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare Zendesk](#creating-a-zendesk-test-user)**  – du har en motsvarighet för Britta Simon i Zendesk som är kopplad till Azure AD-representation av användaren.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on) ** -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user) ** -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare Zendesk](#creating-a-zendesk-test-user) ** -toohave en motsvarighet för Britta Simon i Zendesk som är länkade toohello Azure AD-representation av användaren.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on) ** -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
 
-I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt Zendesk-program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt Zendesk-program.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med Zendesk:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Zendesk:**
 
-1. I Azure-portalen på den **Zendesk** integreringssidan för programmet, klickar du på **enkel inloggning**.
+1. I hello Azure-portalen på hello **Zendesk** integreringssidan för programmet, klickar du på **enkel inloggning**.
 
     ![Konfigurera enkel inloggning][4]
 
-2. På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.
+2. På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zendesk-tutorial/tutorial_zendesk_samlbase.png)
 
-3. På den **Zendesk domän och URL: er** avsnittet, utför följande steg:
+3. På hello **Zendesk domän och URL: er** avsnittet, utföra hello följande steg:
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zendesk-tutorial/tutorial_zendesk_url.png)
 
-    a. I den **inloggnings-URL** textruta Skriv det värde som använder följande mönster:`https://<subdomain>.zendesk.com`
+    a. I hello **inloggnings-URL** textruta hello TYPVÄRDE med hello följande mönster:`https://<subdomain>.zendesk.com`
 
-    b. I den **identifierare** textruta Skriv det värde som använder följande mönster:`https://<subdomain>.zendesk.com`
+    b. I hello **identifierare** textruta hello TYPVÄRDE med hello följande mönster:`https://<subdomain>.zendesk.com`
 
     > [!NOTE] 
-    > Dessa värden är inte verkliga. Uppdatera dessa värden med den faktiska inloggnings-URL och Identifierare. Kontakta [Zendesk supportteamet](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) att hämta dessa värden. 
+    > Dessa värden är inte verkliga. Uppdatera dessa värden med hello faktiska inloggnings-URL och Identifierare. Kontakta [Zendesk supportteamet](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise) tooget dessa värden. 
 
-4. Zendesk förväntar SAML-intyg i ett specifikt format. Det finns inga obligatoriska SAML-attribut men om du vill kan du lägga till ett attribut från **användarattribut** avsnittet genom att följa de nedanstående steg: 
+4. Zendesk förväntar hello SAML intyg i ett specifikt format. Det finns inga obligatoriska SAML-attribut men om du vill kan du lägga till ett attribut från **användarattribut** avsnitt genom följande hello nedanstående steg: 
 
      ![Konfigurera enkel inloggning](./media/active-directory-saas-zendesk-tutorial/tutorial_zendesk_attributes1.png)
 
-    a. Klicka på den **visa och redigera alla andra attribut** kryssrutan.
+    a. Klicka på hello **visa och redigera alla hello andra attribut** kryssrutan.
      
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zendesk-tutorial/tutorial_zendesk_attributes2.png)
    
-    b. Klicka på den **lägga till attributet** att öppna **Lägg till attributet** dialogrutan.
+    b. Klicka på hello **lägga till attributet** tooopen **Lägg till attributet** dialogrutan.
     
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zendesk-tutorial/tutorial_attribute_05.png)
 
-    c. I den **namn** textruta ange attributets namn (till exempel **e-postadress**).
+    c. I hello **namn** textruta typen hello attributets namn (till exempel **e-postadress**).
     
-    d. Från den **värdet** väljer attribut-värde (som **user.mail**).
+    d. Från hello **värdet** listan, Välj hello attributvärde (som **user.mail**).
     
     e. Klicka på **Ok**
  
     > [!NOTE] 
-    > Du kan använda Tilläggsattribut för att lägga till attribut som inte ingår i Azure AD som standard. Klicka på [användarattribut som kan anges i SAML](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-) för att hämta den fullständiga listan med SAML attribut som **Zendesk** accepterar. 
+    > Du kan använda attribut tooadd tilläggsattribut som inte ingår i Azure AD som standard. Klicka på [användarattribut som kan anges i SAML](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-) tooget hello fullständig lista över SAML attribut som **Zendesk** accepterar. 
 
-5. På den **SAML-signeringscertifikat** avsnittet, kopiera den **TUMAVTRYCKET** värdet för certifikatet.
+5. På hello **SAML-signeringscertifikat** avsnitt, kopiera hello **TUMAVTRYCKET** värdet för certifikatet.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zendesk-tutorial/tutorial_zendesk_certificate.png) 
 
-6. På den **Zendesk Configuration** klickar du på **konfigurera Zendesk** att öppna **konfigurera inloggning** fönster. Kopiera den **Sign-Out Webbadressen och SAML enkel inloggning Service** från den **Snabbreferens avsnitt.**
+6. På hello **Zendesk Configuration** klickar du på **konfigurera Zendesk** tooopen **konfigurera inloggning** fönster. Kopiera hello **Sign-Out Webbadressen och SAML enkel inloggning Service** från hello **Snabbreferens avsnitt.**
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zendesk-tutorial/tutorial_zendesk_configure.png) 
 
@@ -154,99 +154,99 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och kon
 
 8. Klicka på **Admin**.
 
-9. I det vänstra navigeringsfönstret klickar du på **inställningar**, och klicka sedan på **säkerhet**.
+9. Hello vänstra navigeringsfönstret, klicka på **inställningar**, och klicka sedan på **säkerhet**.
 
-10. På den **säkerhet** utför följande steg: 
+10. På hello **säkerhet** utför hello följande steg: 
    
      ![Säkerhet](./media/active-directory-saas-zendesk-tutorial/ic773089.png "säkerhet")
 
     ![Enkel inloggning](./media/active-directory-saas-zendesk-tutorial/ic773090.png "enkel inloggning")
 
-     a. Klicka på den **Admin & agenter** fliken.
+     a. Klicka på hello **Admin & agenter** fliken.
 
      b. Välj **enkel inloggning (SSO) och SAML**, och välj sedan **SAML**.
 
-     c. I **SAML SSO URL** textruta klistra in värdet för **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen. 
+     c. I **SAML SSO URL** textruta klistra in hello värdet för **SAML inloggning tjänst-URL för enkel** som du har kopierat från Azure-portalen. 
 
-     d. I **Remote logga ut URL** textruta klistra in värdet för **Sign-Out URL** som du har kopierat från Azure-portalen.
+     d. I **Remote logga ut URL** textruta klistra in hello värdet för **Sign-Out URL** som du har kopierat från Azure-portalen.
         
-     e. I **certifikat fingeravtryck** textruta klistra in den **tumavtrycket** värdet för certifikat som du har kopierat från Azure-portalen.
+     e. I **certifikat fingeravtryck** textruta klistra in hello **tumavtrycket** värdet för certifikat som du har kopierat från Azure-portalen.
      
      f. Klicka på **Spara**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][100]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.
+1. I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zendesk-tutorial/create_aaduser_01.png) 
 
-2. Om du vill visa en lista över användare går du till **användare och grupper** och på **alla användare**.
+2. toodisplay hello lista över användare gå för**användare och grupper** och på **alla användare**.
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zendesk-tutorial/create_aaduser_02.png) 
 
-3. Klicka på överst i dialogrutan **Lägg till** att öppna den **användaren** dialogrutan.
+3. Hello överkant hello dialogrutan, klickar du på **Lägg till** tooopen hello **användaren** dialogrutan.
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zendesk-tutorial/create_aaduser_03.png) 
 
-4. På den **användaren** dialogrutan utför följande steg:
+4. På hello **användaren** dialogrutan utför hello följande steg:
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-zendesk-tutorial/create_aaduser_04.png) 
 
-    a. I den **namn** textruta typen **BrittaSimon**.
+    a. I hello **namn** textruta typen **BrittaSimon**.
 
-    b. I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.
+    b. I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.
 
-    c. Välj **visa lösenordet** och anteckna värdet för den **lösenord**.
+    c. Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.
 
     d. Klicka på **Skapa**. 
 
 ### <a name="creating-a-zendesk-test-user"></a>Skapa en testanvändare Zendesk
 
-Aktivera Azure AD-användare att logga in på **Zendesk**, de måste etableras i **Zendesk**.  
-Beroende på vilken roll som tilldelats i apparna, är det förväntat beteende:
+tooenable Azure AD-användare toolog till **Zendesk**, de måste etableras i **Zendesk**.  
+Beroende på hello roll som tilldelats i hello appar, är dess hello förväntat:
 
  1. **Slutanvändarens** konton tillhandahålls automatiskt när du loggar in.
- 2. **Agenten** och **Admin** konton måste tillhandahållas manuellt i **Zendesk** innan du loggar in.
+ 2. **Agenten** och **Admin** konton måste toobe manuellt etableras i **Zendesk** innan du loggar in.
  
-**Utför följande steg om du vill konfigurera ett användarkonto:**
+**tooprovision ett användarkonto, utför följande steg hello:**
 
-1. Logga in på ditt **Zendesk** klient.
+1. Logga in tooyour **Zendesk** klient.
 
-2. Välj den **lista över kunder** fliken.
+2. Välj hello **lista över kunder** fliken.
 
-3. Välj den **användare** och på **Lägg till**.
+3. Välj hello **användare** och på **Lägg till**.
    
     ![Lägg till användare](./media/active-directory-saas-zendesk-tutorial/ic773632.png "Lägg till användare")
-4. Skriv e-postadress för ett befintligt Azure AD-konto du vill etablera och klicka sedan på **spara**.
+4. Skriv hello e-postadress för ett befintligt Azure AD-konto du vill tooprovision och klicka sedan på **spara**.
    
     ![Ny användare](./media/active-directory-saas-zendesk-tutorial/ic773633.png "ny användare")
 
 > [!NOTE]
-> Du kan använda något annat Zendesk användarens konto skapas verktyg eller API: er fås från Zendesk till etablera AAD-användarkonton.
+> Du kan använda något annat Zendesk användarens konto skapas verktyg eller API: er som tillhandahålls av Zendesk tooprovision AAD-användarkonton.
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
 
-I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Zendesk.
+I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooZendesk.
 
 ![Tilldela användare][200] 
 
-**Om du vill tilldela Zendesk Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooZendesk utför hello följande steg:**
 
-1. Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.
+1. I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.
 
     ![Tilldela användare][201] 
 
-2. Välj i listan med program **Zendesk**.
+2. Välj i listan med program hello **Zendesk**.
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-zendesk-tutorial/tutorial_zendesk_app.png) 
 
-3. Klicka på menyn till vänster **användare och grupper**.
+3. Hello-menyn hello vänster **användare och grupper**.
 
     ![Tilldela användare][202] 
 
@@ -254,7 +254,7 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
 
     ![Tilldela användare][203]
 
-5. På **användare och grupper** markerar **Britta Simon** på listan användare.
+5. På **användare och grupper** markerar **Britta Simon** i hello användarlistan.
 
 6. Klicka på **Välj** knappen på **användare och grupper** dialogrutan.
 
@@ -262,14 +262,14 @@ I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inlog
     
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
 
-I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.
 
-När du klickar på panelen Zendesk på åtkomstpanelen du bör få automatiskt loggat in på ditt Zendesk-program.
-Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
+Du bör få automatiskt inloggade tooyour Zendesk programmet när du klickar på hello Zendesk-panelen i hello åtkomstpanelen.
+Läs mer om hello åtkomstpanelen [introduktion toohello åtkomstpanelen](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

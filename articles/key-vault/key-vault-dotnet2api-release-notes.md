@@ -1,6 +1,6 @@
 ---
-title: Nyckeln valvet .NET-API 2.x viktig information | Microsoft Docs
-description: ".NET-utvecklare använder detta API till kod för Azure Key Vault"
+title: aaaKey valvet .NET 2.x API viktig information | Microsoft Docs
+description: ".NET-utvecklare ska använda den här API-toocode för Azure Key Vault"
 services: key-vault
 author: BrucePerlerMS
 manager: mbaldwin
@@ -13,63 +13,63 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/02/2017
 ms.author: bruceper
-ms.openlocfilehash: c5b5fd7f16faf17d16ecc82269fb1264adf4dd06
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d95b84cf73c155f117f37e93893f27b02a75855c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 - viktig information och Migreringsguide
-Följande information och vägledning är för utvecklare som arbetar med Azure Key Vault .NET / C#-biblioteket. I övergången från version 1.0 till version 2.0 kan ett antal uppdateringar har gjorts som kräver migrering arbete i koden för att du kan dra nytta av de funktionella förbättringarna och funktion som tillägg kommer **Key Vault-certifikat**  stöder.
+hello följande information och vägledning är för utvecklare som arbetar med Azure Key Vault .NET / C#-biblioteket. I hello övergång från hello 1.0 version toohello 2.0 version, ett antal uppdateringar har gjorts så kräver migrering arbete i koden för toobenefit från hello funktionella förbättringarna och funktionen tillägg som **Key Vault certifikat** stöd.
 
 ## <a name="key-vault-certificates"></a>Key Vault-certifikat
 
-Stöd för Key Vault-certifikat ger hantering av din x509 certifikat och följande:  
+Stöd för Key Vault-certifikat ger hantering av din x509 certifikat och hello följande funktioner:  
 
-* Gör en certifikat-ägare att skapa ett certifikat via en process för att skapa Nyckelvalvet eller importera ett befintligt certifikat. Detta inkluderar både självsignerat och certifikatutfärdare genereras certifikat.
-* Gör en Key Vault certifikat ägare att implementera säker lagring och hantering av X509 certifikat utan interaktion med material för privat nyckel.  
-* Gör en certifikat-ägare att skapa en princip som leder Key Vault för att hantera livscykeln för ett certifikat.  
-* Gör att certifikatet ägare att tillhandahålla kontaktinformation för meddelande om livscykeln händelser för förfallodatum och förnyelse av certifikat.  
+* Tillåter att ett certifikat ägare toocreate ett certifikat via en process för att skapa Nyckelvalvet eller hello import av ett befintligt certifikat. Detta inkluderar både självsignerat och certifikatutfärdare genereras certifikat.
+* Ger en Key Vault certifikat ägaren tooimplement säker lagring och hantering av X509 certifikat utan interaktion med material för privat nyckel.  
+* Tillåter ett certifikat ägare toocreate en princip som leder Key Vault toomanage hello livscykeln för ett certifikat.  
+* Tillåter certifikat ägare tooprovide kontaktinformation för meddelande om livscykeln händelser för förfallodatum och förnyelse av certifikat.  
 * Stöder automatisk förnyelse med valda utfärdare - Key Vault partner X509 certifikat providers / certifikatutfärdare.
   
-  * Observera - ej tillsammans providers/myndigheter kan också, men stöder inte automatisk förnyelse av funktionen.
+  * Observera - ej tillsammans providers/myndigheter kan också, men stöder inte hello automatisk förnyelse av funktionen.
 
 ## <a name="net-support"></a>Stöd för .NET
 
-* **.NET 4.0** stöds inte av version 2.0 av Azure Key Vault .NET / C#-biblioteket
-* **.NET core** stöds av version 2.0 av Azure Key Vault .NET / C#-biblioteket
+* **.NET 4.0** stöds inte av hello 2.0-versionen av hello Azure Key Vault .NET / C#-biblioteket
+* **.NET core** stöds av hello 2.0-versionen av hello Azure Key Vault .NET / C#-biblioteket
 
 ## <a name="namespaces"></a>namnområden
 
-* Namnområdet för **modeller** ändras från **Microsoft.Azure.KeyVault** till **Microsoft.Azure.KeyVault.Models**.
-* Den **Microsoft.Azure.KeyVault.Internal** namnområde har släppts.
-* Azure SDK beroenden namnområdet ändras från **Hyak.Common** och **Hyak.Common.Internals** till **Microsoft.Rest** och  **Microsoft.Rest.Serialization**
+* Hej namnområdet för **modeller** ändras från **Microsoft.Azure.KeyVault** för**Microsoft.Azure.KeyVault.Models**.
+* Hej **Microsoft.Azure.KeyVault.Internal** namnområde har släppts.
+* hello Azure SDK beroenden namnområde ändras från **Hyak.Common** och **Hyak.Common.Internals** för**Microsoft.Rest** och  **Microsoft.Rest.Serialization**
 
 ## <a name="type-changes"></a>Ändringar av typen
 
-* *Hemligt* ändras till *SecretBundle*
-* *Ordlistan* ändras till *IDictionary*
-* *Lista<T>, string []* ändras till *IList<T>*
-* *NextList* ändras till *NextPageLink*
+* *Hemligt* ändras för*SecretBundle*
+* *Ordlistan* ändras för*IDictionary*
+* *Lista<T>, string []* ändras för*IList<T>*
+* *NextList* ändras för *NextPageLink*
 
 ## <a name="return-types"></a>Returtyper
 
 * **KeyList** och **SecretList** returnerar *IPage<T>*  i stället för *ListKeysResponseMessage*
-* Den genererade **BackupKeyAsync** returnerar *BackupKeyResult* som innehåller *värdet* (säkerhetskopiera blob). Innan metoden har omslutna och returnerar värdet.
+* hello genereras **BackupKeyAsync** returnerar *BackupKeyResult* som innehåller *värdet* (säkerhetskopiera blob). Före hello var metoden omsluten och returnerar bara hello-värde.
 
 ## <a name="exceptions"></a>Undantag
 
-* *KeyVaultClientException* ändras till *KeyVaultErrorException*
-* Fel i tjänsten har ändrats från *undantag. Fel* till *undantag. Body.Error.Message*.
-* Ytterligare information bort från felmeddelandet för **[JsonExtensionData]**.
+* *KeyVaultClientException* ändras för*KeyVaultErrorException*
+* fel i tjänsten hello ändras från *undantag. Fel* för*undantag. Body.Error.Message*.
+* Ytterligare information bort från hello felmeddelande för **[JsonExtensionData]**.
 
 ## <a name="constructors"></a>Konstruktorer
 
-* I stället för att acceptera ett *HttpClient* som ett konstruktorargument konstruktorn accepterar bara *HttpClientHandler* eller *DelegatingHandler []*.
+* I stället för att acceptera ett *HttpClient* som ett konstruktorargument hello konstruktorn godkänner enbart *HttpClientHandler* eller *DelegatingHandler []*.
 
 ## <a name="downloaded-packages"></a>Hämtade paket
 
-När en klient beroende av Key Vault hämtades följande
+När en klient bearbetar ett beroende på har Key Vault hello följande hämtats
 
 ### <a name="previous-package-list"></a>Tidigare paketlistan
 
@@ -91,19 +91,19 @@ När en klient beroende av Key Vault hämtades följande
 ## <a name="class-changes"></a>Klassen ändringar
 
 * **UnixEpoch** klass har tagits bort
-* **Base64UrlConverter** klass har bytt namn till **Base64UrlJsonConverter**
+* **Base64UrlConverter** klass har bytt namn för**Base64UrlJsonConverter**
 
 ## <a name="other-changes"></a>Andra ändringar
 
-* Stöd för konfigurationen av KV åtgärden återförsöksprincip på tillfälliga fel har lagts till den här versionen av API: et.
+* Stöd för hello konfigurationen av KV åtgärden återförsöksprincip på tillfälliga fel har lagts toothis hello API-version.
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
 
-* För de åtgärder som returnerade en *valvet*, Returtypen har en klass som innehåller en egenskap för valvet. Returtypen är nu *valvet*.
+* För hello-åtgärder som returnerade en *valvet*, hello returtyp har en klass som innehåller en egenskap för valvet. hello returtyp är nu *valvet*.
 * *PermissionsToKeys* och *PermissionsToSecrets* är nu *Permissions.Keys* och *Permissions.Secrets*
-* Några av de returtyper ändringarna gäller för kontrollen-plan samt.
+* Vissa av hello returnera typer ändringarna toohello-kontroll-plan samt.
 
 ## <a name="microsoftazurekeyvaultextensions-nuget"></a>Microsoft.Azure.KeyVault.Extensions NuGet
 
-* Paketet har brutits till **Microsoft.Azure.KeyVault.Extensions** och **Microsoft.Azure.KeyVault.Cryptography** för kryptografiska åtgärder.
+* hello-paketet har delats upp för**Microsoft.Azure.KeyVault.Extensions** och **Microsoft.Azure.KeyVault.Cryptography** för hello kryptografiska åtgärder.
 

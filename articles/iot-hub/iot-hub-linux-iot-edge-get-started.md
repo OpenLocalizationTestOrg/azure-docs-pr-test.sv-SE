@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med Azure IoT kant (Linux) | Microsoft Docs"
-description: "Så här bygger du en gateway på en Linux-dator och lär dig om viktiga begrepp i Azure IoT Edge, som moduler och JSON-konfigurationsfiler."
+title: "aaaGet igång med Azure IoT kant (Linux) | Microsoft Docs"
+description: "Hur toobuild en gateway på en Linux datorn och lär dig mer om nyckelbegrepp i Azure IoT kant som JSON-konfigurationsfiler och moduler."
 services: iot-hub
 documentationcenter: 
 author: chipalost
@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/07/2017
 ms.author: andbuc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b02d79fcd9cd2a2ef0041aac4e85528263c8d58a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 40aa9c8ddca6a974c361cbb0b453c7d0ddc71b8d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="explore-azure-iot-edge-architecture-on-linux"></a>Utforska Azure IoT Edge-arkitektur på Linux
 
@@ -27,16 +27,16 @@ ms.lasthandoff: 07/11/2017
 
 [!INCLUDE [iot-hub-iot-edge-install-build-linux](../../includes/iot-hub-iot-edge-install-build-linux.md)]
 
-## <a name="how-to-run-the-sample"></a>Köra exemplet
+## <a name="how-toorun-hello-sample"></a>Hur toorun hello exempel
 
-Skriptet **build.sh** genererar sina utdata i mappen **build** i din lokala kopia av databasen **iot-edge**. Här ingår två IoT kant moduler som används i det här exemplet.
+Hej **build.sh** skriptet genererar utdata i hello **skapa** mapp i den lokala kopian av hello **iot-edge** databasen. Här ingår hello två IoT kant moduler som används i det här exemplet.
 
-Build-skriptet placerar **liblogger.so** i mappen **build/modules/logger/** och **libhello\_world.so** i mappen **build/modules/hello_world/**. Använd dessa sökvägar för den **modulen sökvägen** värden som visas i följande exempel JSON filen.
+Hej build skript platser **liblogger.so** i hello **build-moduler-logg/** mapp och **libhello\_world.so** i hello **skapa / moduler/hello_world/** mapp. Använd dessa sökvägar för hello **modulen sökvägen** värden som visas i hello följande exempelfil JSON-inställningar.
 
-Hello\_world\_sample-processen använder sökvägen till en JSON-konfigurationsfil som ett argument på kommandoraden. I följande exempel anges JSON-filen i SDK-databasen under **samples/hello\_world/src/hello\_world\_lin.json**. Den här konfigurationsfilen fungerar som om du inte ändrar build-skript för att placera IoT kant moduler eller exempel körbara filer i icke-standardplatser.
+hello hello\_world\_exempel processen tar hello sökvägen tooa JSON-konfigurationsfil ett kommandoradsargument. hello följande exempel JSON-fil har angetts i hello SDK lagringsplats på **exempel/hello\_world/src/hello\_world\_lin.json**. Den här konfigurationen filen fungerar som om du inte ändrar hello skapa skript tooplace hello IoT kant moduler eller exempel körbara filer i icke-standardplatser.
 
 > [!NOTE]
-> Modulernas sökvägar är relativa till den aktuella arbetskatalog som den körbara hello\_world\_sample-filen startas från, inte katalogen som den körbara filen finns i. JSON-exempelkonfigurationsfilen skriver som standard ”log.txt” i din aktuella arbetskatalog.
+> hello modulen sökvägar är relativ toohello aktuella arbetskatalogen varifrån hello hello\_world\_exempel körbar fil startas, hello katalogen där hello körbara finns inte. hello exempel JSON configuration file standardvärden toowriting 'log.txt' i den aktuella arbetskatalogen.
 
 ```json
 {
@@ -73,9 +73,9 @@ Hello\_world\_sample-processen använder sökvägen till en JSON-konfigurationsf
 }
 ```
 
-1. Navigera till den **skapa** mapp i roten av den lokala kopian av den **iot-edge** databasen.
+1. Navigera toohello **skapa** mapp i hello roten för den lokala kopian av hello **iot-edge** databasen.
 
-1. Kör följande kommando:
+1. Kör följande kommando hello:
 
     ```sh
     ./samples/hello_world/hello_world_sample ../samples/hello_world/src/hello_world_lin.json`

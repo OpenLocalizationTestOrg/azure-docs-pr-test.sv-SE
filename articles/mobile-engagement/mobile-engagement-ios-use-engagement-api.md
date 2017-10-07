@@ -1,6 +1,6 @@
 ---
-title: "Hur du använder Engagement API på iOS"
-description: "Senaste iOS SDK - använda Engagement API på iOS"
+title: "aaaHow tooUse hello Engagement API på iOS"
+description: "Senaste iOS SDK - hur tooUse hello Engagement API på iOS"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,48 +14,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7fb9b95ad319cf3b1e2de81b5d6aee5b30266069
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-the-engagement-api-on-ios"></a>Hur du använder Engagement API på iOS
-Det här dokumentet är ett tillägg till dokumentet hur du integrerar Engagement för iOS: ger i djup information om hur du använder Engagement API för att rapportera programmet-statistik.
+# <a name="how-toouse-hello-engagement-api-on-ios"></a>Hur tooUse hello Engagement API på iOS
+Det här dokumentet är ett tillägg toohello hur tooIntegrate Engagement för iOS: ger i djup information om hur hello toouse Engagement API tooreport programstatistik.
 
-Kom ihåg att om du bara vill Engagement att rapportera programmets sessioner, aktiviteter, krascher och teknisk information sedan det enklaste sättet är att se alla dina anpassade `UIViewController` objekt ärver från motsvarande `EngagementViewController` klass.
+Tänk på att om du bara vill Engagement tooreport programmets sessioner, aktiviteter, krascher och teknisk information, sedan hello enklaste vägen är toomake dina anpassade `UIViewController` objekt ärver från hello motsvarande `EngagementViewController` klass .
 
-Om du vill göra mer, till exempel om du behöver rapportera programmet specifika händelser, fel och jobb, eller om du vill rapportera ditt programs aktiviteter i ett annat sätt än den som implementerats i den `EngagementViewController` klasser, måste du använda Engagement-API.
+Om du vill toodo mer, till exempel om du behöver tooreport programmet specifika händelser, fel och jobb, eller om du har tooreport ditt programs aktiviteter i ett annat sätt än hello en implementeras i hello `EngagementViewController` klasser måste toouse hello Engagement API.
 
-Engagement-API som tillhandahålls av den `EngagementAgent` klass. En instans av den här klassen kan hämtas genom att anropa den `[EngagementAgent shared]` statisk metod (Observera att den `EngagementAgent` objektet som returnerades är en singleton).
+Hej Engagement API tillhandahålls av hello `EngagementAgent` klass. En instans av den här klassen kan hämtas genom att anropa hello `[EngagementAgent shared]` statisk metod (Observera att hello `EngagementAgent` objektet som returnerades är en singleton).
 
-Innan API-anrop i `EngagementAgent` objektet måste initieras genom att anropa metoden`[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
+Innan alla API-anrop, hello `EngagementAgent` objektet måste initieras genom att anropa metoden hello`[EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];`
 
 ## <a name="engagement-concepts"></a>Koncept i engagement
-Följande delar förfina vanliga [koncept i Mobile Engagement](mobile-engagement-concepts.md) för iOS-plattformen.
+hello följande delar förfina hello vanliga [koncept i Mobile Engagement](mobile-engagement-concepts.md) för hello iOS-plattformen.
 
 ### <a name="session-and-activity"></a>`Session` och `Activity`
-En *aktiviteten* är ofta kopplade till en skärm för programmet, det vill säga den *aktiviteten* när skärmen visas och stoppas när skärmen stängs: så är fallet när Engagement-SDK är integrerad med hjälp av den `EngagementViewController` klasser.
+En *aktiviteten* är ofta kopplade till en skärm på hello-program som är toosay hello *aktiviteten* när hello-skärmen visas och stoppas när hello-skärmen stängs: Detta är hello fall när Hej Engagement SDK är integrerad med hjälp av hello `EngagementViewController` klasser.
 
-Men *aktiviteter* kan också kontrolleras manuellt med hjälp av Engagement-API. Detta gör för att dela en viss skärm i flera sub delar för att få mer information om användning av den här skärmen (till exempel hur ofta kända och hur länge dialogrutor används i den här skärmen).
+Men *aktiviteter* kan också kontrolleras manuellt med hjälp av hello Engagement API. Detta gör toosplit en viss skärm i flera sub delar tooget mer information om hello användning av den här skärmen (till exempel hur ofta tooknown och hur länge dialogrutor används i den här skärmen).
 
 ## <a name="reporting-activities"></a>Rapportering
 ### <a name="user-starts-a-new-activity"></a>Användaren startar en ny aktivitet
             [[EngagementAgent shared] startActivity:@"MyUserActivity" extras:nil];
 
-Du måste anropa `startActivity()` varje gång aktiviteten användarändringar. Det första anropet till funktionen startar en ny session.
+Du behöver toocall `startActivity()` varje gång hello användaraktivitet ändras. hello första anropet toothis funktionen startar en ny session.
 
 ### <a name="user-ends-his-current-activity"></a>Användaren avslutar sin aktuella aktiviteten
             [[EngagementAgent shared] endActivity];
 
 > [!WARNING]
-> Du bör **aldrig** anropa den här funktionen själv, utom om du vill dela en användning av programmet till flera sessioner: ett anrop till den här funktionen skulle avslutas den aktuella sessionen omedelbart, så ett efterföljande anrop till `startActivity()` börjar en ny session. Den här funktionen kallas automatiskt av SDK när programmet stängs.
+> Du bör **aldrig** anropa den här funktionen själv, utom om du vill toosplit den användning av programmet till flera sessioner: ett anrop toothis funktionen skulle avslutas hello aktuell session omedelbart, så ett efterföljande anrop för`startActivity()`kan starta en ny session. Den här funktionen anropas automatiskt av hello SDK när programmet stängs.
 > 
 > 
 
 ## <a name="reporting-events"></a>Rapporteringshändelser
 ### <a name="session-events"></a>Sessionshändelser
-Sessionshändelser används vanligtvis för att rapportera åtgärder som utförs av en användare under sin session.
+Sessionshändelser är oftast används tooreport hello åtgärder som utförs av en användare under sin session.
 
 **Exempel utan extra data:**
 
@@ -89,7 +89,7 @@ Sessionshändelser används vanligtvis för att rapportera åtgärder som utför
     }
 
 ### <a name="standalone-events"></a>Fristående händelser
-Strider mot Sessionshändelser, kan fristående händelser användas för en session.
+Motstridiga toosession händelser, fristående händelser kan användas utanför hello kontexten för en session.
 
 **Exempel:**
 
@@ -97,16 +97,16 @@ Strider mot Sessionshändelser, kan fristående händelser användas för en ses
 
 ## <a name="reporting-errors"></a>Rapporterat fel
 ### <a name="session-errors"></a>Sessionen fel
-Sessionen fel används vanligtvis för att rapportera fel som påverkar användaren under sin session.
+Sessionen felen är oftast används tooreport hello fel påverkar hello användaren under sin session.
 
 **Exempel:**
 
-    /** The user has entered invalid data in a form */
+    /** hello user has entered invalid data in a form */
     @implementation MyViewController {
       [...]
       -(void)onMyFormSubmitted:(MyForm*)form {
         [...]
-        /* The user has entered an invalid email address */
+        /* hello user has entered an invalid email address */
         [[EngagementAgent shared] sendSessionError:@"sign_up_email" extras:nil]
         [...]
       }
@@ -114,7 +114,7 @@ Sessionen fel används vanligtvis för att rapportera fel som påverkar använda
     }
 
 ### <a name="standalone-errors"></a>Fristående fel
-Strider mot session fel, kan fristående fel användas för en session.
+Motstridiga toosession fel, fristående fel kan användas utanför hello kontexten för en session.
 
 **Exempel:**
 
@@ -123,7 +123,7 @@ Strider mot session fel, kan fristående fel användas för en session.
 ## <a name="reporting-jobs"></a>Rapportering av jobb
 **Exempel:**
 
-Anta att du vill rapportera varaktighet logga in:
+Anta att du vill tooreport hello varaktighet logga in:
 
     [...]
     -(void)signIn
@@ -139,11 +139,11 @@ Anta att du vill rapportera varaktighet logga in:
     [...]
 
 ### <a name="report-errors-during-a-job"></a>Rapportera fel under ett jobb
-Fel kan vara relaterad till ett jobb som körs i stället för som rör den aktuella användarsessionen.
+Fel kan vara relaterade tooa köra jobb i stället för som relaterade toohello aktuella användarsessionen.
 
 **Exempel:**
 
-Anta att du vill rapportera ett fel under din inloggningen:
+Anta att du vill ha tooreport ett fel under din inloggningen:
 
     [...]
     -(void)signin
@@ -153,7 +153,7 @@ Anta att du vill rapportera ett fel under din inloggningen:
 
       BOOL success = NO;
       while (!success) {
-        /* Try to sign in */
+        /* Try toosign in */
         NSError* error = nil;
         [self trySigin:&error];
         success = error == nil;
@@ -176,11 +176,11 @@ Anta att du vill rapportera ett fel under din inloggningen:
     [...]
 
 ### <a name="events-during-a-job"></a>Händelser under ett jobb
-Händelser kan vara relaterad till ett jobb som körs i stället för som rör den aktuella användarsessionen.
+Händelser kan vara relaterade tooa köra jobb i stället för som relaterade toohello aktuella användarsessionen.
 
 **Exempel:**
 
-Anta att vi har ett sociala nätverk och vi använder ett jobb att rapportera den totala tiden under vilken användaren är ansluten till servern. Användaren kan ta emot meddelanden från sina vänner, detta är en jobbhändelse.
+Anta att vi har ett sociala nätverk och vi använder en jobbet tooreport hello total tid under vilken hello användare är anslutna toohello server. hello användare kan ta emot meddelanden från sina vänner, detta är en jobbhändelse.
 
     [...]
     - (void) signin
@@ -203,18 +203,18 @@ Anta att vi har ett sociala nätverk och vi använder ett jobb att rapportera de
     [...]
 
 ## <a name="extra-parameters"></a>Extra parametrar
-Diverse uppgifter kan kopplas till händelser, fel, aktiviteter och jobb.
+Godtycklig data kan vara anslutna tooevents, fel, aktiviteter och jobb.
 
 Dessa data kan vara strukturerad, används Ios's NSDictionary klass.
 
 Observera att tillägg kan innehålla `arrays(NSArray, NSMutableArray)`, `numbers(NSNumber class)`, `strings(NSString, NSMutableString)`, `urls(NSURL)`, `data(NSData, NSMutableData)` eller andra `NSDictionary` instanser.
 
 > [!NOTE]
-> Extraparametern serialiseras i JSON. Om du vill skicka olika objekt än de som beskrivs ovan, måste du implementera följande metod i klassen:
+> Hej serialiseras extraparametern i JSON. Om du vill toopass olika objekt än hello som beskrivs ovan, måste du implementera hello följande metod i klassen:
 > 
 > -(NSString*) JSONRepresentation;
 > 
-> Metoden måste returnera en JSON-representation av objektet.
+> hello-metoden ska returnera en JSON-representation av objektet.
 > 
 > 
 
@@ -226,25 +226,25 @@ Observera att tillägg kan innehålla `arrays(NSArray, NSMutableArray)`, `number
 
 ### <a name="limits"></a>Begränsningar
 #### <a name="keys"></a>Nycklar
-Varje nyckel i den `NSDictionary` måste överensstämma med följande reguljära uttryck:
+Varje nyckel i hello `NSDictionary` måste matcha hello följande reguljära uttryck:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
 Det innebär att nycklar måste börja med minst en bokstav, följt av bokstäver, siffror eller understreck (\_).
 
 #### <a name="size"></a>Storlek
-Tillägg är begränsade till **1024** tecken per anrop (efter kodning i JSON av Engagement agenten).
+Tillägg är begränsad för**1024** tecken per anrop (efter kodning i JSON av hello Engagement agent).
 
-I exemplet ovan är JSON som skickas till servern 58 tecken:
+I hello är 58 tecken i föregående exempel hello JSON skickas toohello server:
 
     {"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
 
 ## <a name="reporting-application-information"></a>Rapportering programinformation
-Du kan manuellt rapportera spåra information (eller andra program specifik information) med hjälp av den `sendAppInfo:` funktion.
+Du kan manuellt rapportera spåra information (eller andra program specifik information) med hjälp av hello `sendAppInfo:` funktion.
 
-Observera att denna information kan skickas inkrementellt: endast det senaste värdet för en viss nyckel sparas för en viss enhet.
+Observera att denna information kan skickas inkrementellt: endast hello senaste värdet för en viss nyckel sparas för en viss enhet.
 
-Som extra händelse, den `NSDictionary` klassen används för att abstrahera information om programmet, Observera att matriser eller underordnade ordlistor behandlas som flat strängar (med JSON-serialisering).
+Som extra händelse, hello `NSDictionary` klass är används tooabstract programinformationen, Observera att matriser eller underordnade ordböcker behandlas som flat strängar (med JSON-serialisering).
 
 **Exempel:**
 
@@ -255,15 +255,15 @@ Som extra händelse, den `NSDictionary` klassen används för att abstrahera inf
 
 ### <a name="limits"></a>Begränsningar
 #### <a name="keys"></a>Nycklar
-Varje nyckel i den `NSDictionary` måste överensstämma med följande reguljära uttryck:
+Varje nyckel i hello `NSDictionary` måste matcha hello följande reguljära uttryck:
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
 Det innebär att nycklar måste börja med minst en bokstav, följt av bokstäver, siffror eller understreck (\_).
 
 #### <a name="size"></a>Storlek
-Information om programmet är begränsade till **1024** tecken per anrop (efter kodning i JSON av Engagement agenten).
+Information om programmet är begränsad för**1024** tecken per anrop (efter kodning i JSON av hello Engagement agent).
 
-I exemplet ovan är JSON som skickas till servern 44 tecken:
+I hello är 44 tecken i föregående exempel hello JSON skickas toohello server:
 
     {"birthdate":"1983-12-07","gender":"female"}

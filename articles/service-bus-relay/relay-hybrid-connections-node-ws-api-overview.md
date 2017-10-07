@@ -1,5 +1,5 @@
 ---
-title: "Översikt över Azure Relay nod-API: er | Microsoft Docs"
+title: 'aaaOverview av hello Azure Relay nod API: erna | Microsoft Docs'
 description: "Vidarebefordra nod API-översikt"
 services: service-bus-relay
 documentationcenter: na
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: sethm
-ms.openlocfilehash: 28526c05c7f364f0fcaaa362fc97857f850040ee
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d231acc854be0eaa965dec0229cf63b08ff27067
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>Översikt över Hybrid anslutningar nod API-relä
 
 ## <a name="overview"></a>Översikt
 
-Den [ `hyco-ws` ](https://www.npmjs.com/package/hyco-ws) nod paketet för Azure Relay Hybridanslutningar bygger på och utökar den ['ws'](https://www.npmjs.com/package/ws) NPM-paketet. Det här paketet igen exporterar alla export av det grundläggande paketet och lägger till nya export som möjliggör integrering med funktionen Azure vidarebefordrande tjänsten Hybridanslutningar. 
+Hej [ `hyco-ws` ](https://www.npmjs.com/package/hyco-ws) nod paketet för Azure Relay Hybridanslutningar bygger på och utökar hello ['ws'](https://www.npmjs.com/package/ws) NPM-paketet. Det här paketet igen exporterar alla export av det grundläggande paketet och lägger till nya export som möjliggör integrering med hello Azure vidarebefordrande tjänsten Hybridanslutningar funktion. 
 
-Befintliga program som `require('ws')` kan använda det här paketet med `require('hyco-ws')` i stället som kan också hybridscenarier där ett program kan lyssna efter WebSocket-anslutningar från ”innanför brandväggen” lokalt och via Hybridanslutningar, på samma gång.
+Befintliga program som `require('ws')` kan använda det här paketet med `require('hyco-ws')` i stället som kan också hybridscenarier där ett program kan lyssna efter WebSocket-anslutningar från lokalt ”innanför hello brandvägg” och via Hybridanslutningar, allt på Hej samma tid.
   
 ## <a name="documentation"></a>Dokumentation
 
-API: erna är [dokumenterade i paketets huvudsakliga ws](https://github.com/websockets/ws/blob/master/doc/ws.md). Den här artikeln beskriver hur det här paketet skiljer sig från den baslinjen. 
+hello API: er är [dokumenterade i hello huvudsakliga ws paketet](https://github.com/websockets/ws/blob/master/doc/ws.md). Den här artikeln beskriver hur det här paketet skiljer sig från den baslinjen. 
 
-De viktigaste skillnaderna mellan grundläggande paketet och den här 'hyco-ws' är det lägger till en ny serverklass som exporteras via `require('hyco-ws').RelayedServer`, och några hjälpmetoder.
+hello viktiga skillnader mellan grundläggande hello-paket och den här 'hyco-ws' är det lägger till en ny serverklass som exporteras via `require('hyco-ws').RelayedServer`, och några hjälpmetoder.
 
 ### <a name="package-helper-methods"></a>Paketet hjälpmetoder
 
-Det finns flera metoder för export paketet som du kan referera till enligt följande:
+Det finns flera metoder för hello paketet som du kan referera till enligt följande:
 
 ```JavaScript
 const WebSocket = require('hyco-ws');
@@ -47,7 +47,7 @@ listenUri = WebSocket.appendRelayToken(listenUri, 'ruleName', '...key...')
 
 ```
 
-Helper-metoder för användning med det här paketet, men kan också användas av en nod-server för att aktivera webb- eller klienter att skapa lyssnare eller avsändare. Servern använder dessa metoder genom att skicka dem till URI: er som bädda in tillfällig token. Dessa URI: er kan också användas med vanliga WebSocket-stackar som inte stöder inställningen HTTP-huvuden för WebSocket-handskakning. Bädda in auktorisering token i URI: N stöds i första hand för dessa bibliotek externa Användningsscenarier. 
+Hej hjälpmetoder inte kan användas med det här paketet, men kan även användas av en nod-server för att aktivera webb- eller klienter toocreate lyssnare eller avsändare. hello-servern använder dessa metoder genom att skicka dem till URI: er som bädda in tillfällig token. Dessa URI: er kan också användas med vanliga WebSocket-stackar som inte stöder inställningen HTTP-huvuden för hello WebSocket-handskakning. Bädda in auktorisering token i hello URI stöds för dessa bibliotek externa Användningsscenarier. 
 
 #### <a name="createrelaylistenuri"></a>createRelayListenUri
 
@@ -55,14 +55,14 @@ Helper-metoder för användning med det här paketet, men kan också användas a
 var uri = createRelayListenUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Skapar en giltig Azure Relay Hybridanslutning-lyssnare URI för det angivna namnområdet och sökvägen. Den här URI kan sedan användas med klassen WebSocketServer relay-versionen.
+Skapar en giltig Azure Relay Hybridanslutning-lyssnare URI för hello namnområdet och sökvägen. Den här URI kan sedan användas med hello relay-versionen av hello WebSocketServer klass.
 
-- `namespaceName`(obligatoriskt) - domän kvalificerade namnet på Azure Relay-namnområde som ska användas.
-- `path`(obligatoriskt) - namnet på en befintlig Azure Relay Hybrid-anslutning i detta namnområde.
-- `token`(valfritt) – en Relay-åtkomst som tidigare utfärdade token som är inbäddad i lyssnaren URI (se följande exempel).
+- `namespaceName`(krävs) - hello domän kvalificerade namnet på hello Azure Relay namnområdet toouse.
+- `path`namnet på en befintlig Azure Relay Hybrid-anslutning i detta namnområde (krävs) - hello.
+- `token`(valfritt) – en Relay-åtkomst som tidigare utfärdade token som är inbäddad i hello-lyssnaren URI (se följande exempel hello).
 - `id`(valfritt) – ett spårnings-ID som möjliggör slutpunkt till slutpunkt diagnostik uppföljning av begäranden.
 
-Den `token` värdet är valfritt och bör endast användas när det inte går att skicka HTTP-huvuden tillsammans med WebSocket-handskakning som är fallet med W3C WebSocket-stacken.                  
+Hej `token` värdet är valfritt och bör endast användas när det inte är möjligt toosend HTTP-huvuden tillsammans med hello WebSocket-handskakningen eftersom hello fallet med hello W3C WebSocket-stacken.                  
 
 
 #### <a name="createrelaysenduri"></a>createRelaySendUri
@@ -71,14 +71,14 @@ Den `token` värdet är valfritt och bör endast användas när det inte går at
 var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Skapar en giltig Azure Relay Hybridanslutning-skicka URI för det angivna namnområdet och sökvägen. Den här URI kan användas med WebSocket-klienten.
+Skapar en giltig Azure Relay Hybridanslutning-skicka URI för hello namnområdet och sökvägen. Den här URI kan användas med WebSocket-klienten.
 
-- `namespaceName`(obligatoriskt) - domän kvalificerade namnet på Azure Relay-namnområde som ska användas.
-- `path`(obligatoriskt) - namnet på en befintlig Azure Relay Hybrid-anslutning i detta namnområde.
-- `token`(valfritt) – en Relay-åtkomst som tidigare utfärdade token som är inbäddad i Skicka URI (se följande exempel).
+- `namespaceName`(krävs) - hello domän kvalificerade namnet på hello Azure Relay namnområdet toouse.
+- `path`namnet på en befintlig Azure Relay Hybrid-anslutning i detta namnområde (krävs) - hello.
+- `token`(valfritt) – skicka ett tidigare utfärdade Relay åtkomst-token som är inbäddad i hello URI (se följande exempel hello).
 - `id`(valfritt) – ett spårnings-ID som möjliggör slutpunkt till slutpunkt diagnostik uppföljning av begäranden.
 
-Den `token` värdet är valfritt och bör endast användas när det inte går att skicka HTTP-huvuden tillsammans med WebSocket-handskakning som är fallet med W3C WebSocket-stacken.                   
+Hej `token` värdet är valfritt och bör endast användas när det inte är möjligt toosend HTTP-huvuden tillsammans med hello WebSocket-handskakningen eftersom hello fallet med hello W3C WebSocket-stacken.                   
 
 
 #### <a name="createrelaytoken"></a>createRelayToken 
@@ -87,14 +87,14 @@ Den `token` värdet är valfritt och bör endast användas när det inte går at
 var token = createRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Skapar ett Azure Relay delade signatur åtkomst (SAS)-token för angivna mål-URI, SAS-regeln och SAS regeln nyckel som är giltig för det angivna antalet sekunder eller en timme från aktuell om detta utelämnas används argumentet upphör att gälla.
+Skapar en Azure Relay delade signatur åtkomst (SAS)-token för hello givet mål-URI, SAS-regeln och SAS regeln nyckel som är giltig för hello får antal sekunder eller en timme från hello aktuella snabbmeddelanden om hello utgången argument utelämnas.
 
-- `uri`(obligatoriskt) - URI: N som är token utfärdas. URI: N är normaliserat om du vill använda HTTP-schemat och läsa sträng information tas bort.
-- `ruleName`(krävs) - Regelnamn SAS för antingen det entitet som representeras av den angivna URI: N eller för det namnområde som representeras av värddelen URI.
-- `key`(krävs) - giltig nyckel för SAS-regeln. 
-- `expirationSeconds`(valfritt) – antal sekunder innan den genererade token ska upphöra att gälla. Om den inte anges är standardvärdet 1 timme (3600).
+- `uri`(krävs) - hello URI för vilka hello token är toobe utfärdas. hello URI är normaliserat toouse hello HTTP-schemat och läsa sträng information tas bort.
+- `ruleName`(krävs) - SAS Regelnamn för antingen hello entitet som representeras av hello angivna URI: N, eller för hello namnområde åt hello värddelen URI.
+- `key`(krävs) - giltig nyckel för hello SAS-regel. 
+- `expirationSeconds`(valfritt) – hello antalet sekunder tills hello genererats token ska upphöra att gälla. Om inget anges är hello standardvärdet 1 timme (3600).
 
-Utfärdad token ger de rättigheter som associeras med den angivna regeln för SAS för den angivna varaktigheten.
+hello utfärdade token ger hello rättigheter som är associerade med hello angetts SAS-regel för hello angivna varaktighet.
 
 #### <a name="appendrelaytoken"></a>appendRelayToken
 
@@ -102,13 +102,13 @@ Utfärdad token ger de rättigheter som associeras med den angivna regeln för S
 var uri = appendRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Den här metoden fungerar som den `createRelayToken` returnerar metoden som beskrivs tidigare, men den token som ska läggas till för indata-URI.
+Den här metoden är funktionellt motsvarande toohello `createRelayToken` metoden beskrivs tidigare, men returnerar hello token korrekt tillagda toohello indata-URI.
 
 ### <a name="class-wsrelayedserver"></a>Klassen ws. RelayedServer
 
-Den `hycows.RelayedServer` klass är ett alternativ till att den `ws.Server` klass som inte lyssnar på nätverket, men delegater som lyssnar på den Azure vidarebefordrande tjänsten.
+Hej `hycows.RelayedServer` klassen är en alternativ toohello `ws.Server` klass som inte avlyssna hello lokala nätverk, men delegerar lyssnande toohello Azure vidarebefordrande tjänsten.
 
-Två klasser är främst kontraktet som är kompatibla, vilket innebär att en befintlig programmet med den `ws.Server` klassen kan enkelt ändras för att använda den vidarebefordrande versionen. De viktigaste skillnaderna är i konstruktorn och de tillgängliga alternativen.
+hello två klasser är främst kontraktet som är kompatibla, vilket innebär att ett befintligt program med hjälp av hello `ws.Server` klassen enkelt kan ändrade toouse hello vidarebefordrande version. hello viktigaste skillnaderna är i hello konstruktorn och hello tillgängliga alternativ.
 
 #### <a name="constructor"></a>Konstruktorn  
 
@@ -123,16 +123,16 @@ var wss = new server(
     });
 ```
 
-Den `RelayedServer` konstruktorn stöder en annan uppsättning argument än den `Server`, eftersom den inte är en fristående lyssnare eller kan vara inbäddat i ett befintligt http-lyssnaren ramverk. Det finns också färre alternativ eftersom WebSocket-management är i stort sett delegerat till den vidarebefordrande tjänsten.
+Hej `RelayedServer` konstruktorn stöder en annan uppsättning argument än hello `Server`eftersom det inte är en fristående lyssnare eller kan toobe bädda in i en befintlig http-lyssnaren framework. Det finns också färre alternativ eftersom hello WebSocket-management är i stort sett delegerad toohello vidarebefordrande tjänsten.
 
 Konstruktorargument:
 
-- `server`(krävs) - konstruerade fullständigt kvalificerade URI för en Hybridanslutning namn som ska övervakas, vanligtvis med hjälpmetoden WebSocket.createRelayListenUri().
-- `token`(krävs) - innehåller det här argumentet en tidigare utfärdade token sträng eller en motringning funktion som kan användas för att hämta en token sträng. Alternativet är att föredra, eftersom det token förnyelse.
+- `server`(krävs) - kvalificerade hello fullständigt URI för en Hybridanslutning på vilka toolisten vanligtvis konstruerade med hello WebSocket.createRelayListenUri() hjälpmetod.
+- `token`(krävs) - innehåller det här argumentet en tidigare utfärdade token sträng eller en callback-funktion som kan anropas tooobtain en token sträng. hello återanrop alternativ rekommenderas eftersom det token förnyelse.
 
 #### <a name="events"></a>Händelser
 
-`RelayedServer`instanser genererar tre händelser som hjälper dig att hantera inkommande begäranden, upprätta anslutningar och identifiera felvillkor. Måste du prenumerera på `connect` händelsen för att hantera meddelanden. 
+`RelayedServer`instanser genererar tre händelser som aktiverar du toohandle inkommande begäranden, upprätta anslutningar och identifiera felvillkor. Du måste prenumerera toohello `connect` toohandle händelsemeddelanden. 
 
 ##### <a name="headers"></a>Rubriker
 
@@ -140,7 +140,7 @@ Konstruktorargument:
 function(headers)
 ```
 
-Den `headers` händelse utlöses innan en inkommande anslutning är godkända att aktivera ändringen av huvuden som skickas till klienten. 
+Hej `headers` händelse utlöses innan en inkommande anslutning är godkända att aktivera ändringen av hello huvuden toosend toohello klienten. 
 
 ##### <a name="connection"></a>anslutning
 
@@ -148,7 +148,7 @@ Den `headers` händelse utlöses innan en inkommande anslutning är godkända at
 function(socket)
 ```
 
-Orsakat när en ny WebSocket-anslutning accepteras. Objektet är av typen `ws.WebSocket`, samma som med grundläggande paketet.
+Orsakat när en ny WebSocket-anslutning accepteras. hello-objektet är av typen `ws.WebSocket`, samma som med grundläggande hello-paket.
 
 
 ##### <a name="error"></a>fel
@@ -157,11 +157,11 @@ Orsakat när en ny WebSocket-anslutning accepteras. Objektet är av typen `ws.We
 function(error)
 ```
 
-Om den underliggande servern genererar ett fel, skickas den här.  
+Om hello underliggande server genererar ett fel, skickas den här.  
 
 #### <a name="helpers"></a>Hjälpprogram
 
-För att förenkla vidarebefordrande server startas och omedelbart prenumerera på inkommande anslutningar, visar paketet en enkel hjälpfunktion som också används i exemplen, enligt följande:
+toosimplify startar en vidarebefordrande server och omedelbart prenumerera tooincoming anslutningar hello paketet visar en enkel hjälpfunktion som också används i hello exempel på följande sätt:
 
 ##### <a name="createrelayedlistener"></a>createRelayedListener
 
@@ -190,11 +190,11 @@ var wss = WebSocket.createRelayedServer(
 var server = createRelayedServer([options], [connectCallback] )
 ```
 
-Den här metoden anropar konstruktorn för att skapa en ny instans av RelayedServer och prenumererar på angivna återanropet på händelsen 'anslutningen'.
+Den här metoden anropar hello konstruktorn toocreate en ny instans av hello RelayedServer och prenumererar hello angivna återanropet toohello anslutning händelse.
  
 ##### <a name="relayedconnect"></a>relayedConnect
 
-Spegling bara den `createRelayedServer` helper i funktionen `relayedConnect` skapar en klientanslutning och prenumererar på händelsen 'öppen' på den resulterande socketen.
+Bara spegling hello `createRelayedServer` helper i funktionen `relayedConnect` skapar en klientanslutning och prenumererar toohello 'öppen' händelse på hello resulterande socket.
 
 ```JavaScript
 var uri = WebSocket.createRelaySendUri(ns, path);
@@ -208,6 +208,6 @@ WebSocket.relayedConnect(
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information om Azure Relay finns i följande länkar:
+toolearn mer om Azure Relay finns i följande länkar:
 * [Vad är Azure Relay?](relay-what-is-it.md)
 * [Tillgängliga Relay-API: er](relay-api-overview.md)

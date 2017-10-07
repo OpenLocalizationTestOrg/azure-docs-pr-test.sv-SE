@@ -1,6 +1,6 @@
 ---
-title: "Fråga ett index (REST-API – Azure Search)| Microsoft Docs"
-description: "Skapa en sökfråga i Azure Search och använd sökparametrar för att filtrera och sortera sökresultat."
+title: "aaa ”fråga ett index (REST API - Azure Search) | Microsoft Docs ”"
+description: "Skapa en sökfråga i Azure search och använda Sök parametrar toofilter och sortera sökresultaten."
 services: search
 documentationcenter: 
 manager: jhubbard
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 01/12/2017
 ms.author: ashmaka
-ms.openlocfilehash: 49062bec233ad35cd457f9665fa94c1855343582
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 2f12238b8f4b045f536489cfc8766fb68307bbe2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="query-your-azure-search-index-using-the-rest-api"></a>Skicka frågor mot ditt Azure Search-index med hjälp av REST-API:et
+# <a name="query-your-azure-search-index-using-hello-rest-api"></a>Fråga ditt Azure Search-index med hello REST API
 > [!div class="op_single_selector"]
 >
 > * [Översikt](search-query-overview.md)
@@ -29,37 +29,37 @@ ms.lasthandoff: 08/03/2017
 >
 >
 
-Den här artikeln beskriver hur du kör frågor mot ett index med hjälp av [REST-API:et för Azure Search](https://docs.microsoft.com/rest/api/searchservice/).
+Den här artikeln visar hur tooquery ett index med hjälp av hello [Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice/).
 
 Innan du påbörjar den här genomgången bör du redan ha [skapat ett Azure Search-index](search-what-is-an-index.md) och [fyllt det med data](search-what-is-data-import.md). Mer bakgrundsinformation finns i [Hur fullständig textsökning fungerar i Azure Search](search-lucene-query-architecture.md).
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Identifiera API-frågenyckeln för Azure Search-tjänsten
-En viktig del av varje sökåtgärd mot REST-API:et för Azure Search är *API-nyckeln* som genererades för tjänsten som du etablerat. En giltig nyckel upprättar förtroende, i varje begäran, mellan programmet som skickar begäran och tjänsten som hanterar den.
+En viktig del av varje search-åtgärd mot hello Azure Search REST API är hello *api-nyckel* som genererades för hello-tjänsten som du har etablerats. Med en giltig nyckel upprättar förtroende mellan hello programmet skickar hello begäran och hello-tjänsten som hanterar den fall per begäran.
 
-1. Om du vill hitta din tjänsts API-nycklar kan du logga in på [Azure Portal](https://portal.azure.com/)
-2. Gå till Azure Search-tjänstens blad
-3. Klicka på ikonen ”Nycklar”
+1. toofind din tjänst api-nycklar, du kan logga in toohello [Azure-portalen](https://portal.azure.com/)
+2. Gå tooyour Azure Search service-bladet
+3. Klicka på ikonen för hello ”nycklar”
 
 Tjänsten har *administratörsnycklar* och *frågenycklar*.
 
-* Dina primära och sekundära *administratörsnycklar* ger fullständig behörighet för alla åtgärder, inklusive möjligheten att hantera tjänsten, skapa och ta bort index, indexerare och datakällor. Det finns två nycklar så att du kan fortsätta att använda den sekundära nyckeln om du bestämmer dig för att återskapa den primära nyckeln och tvärtom.
-* Dina *frågenycklar* beviljar läsbehörighet till index och dokument och distribueras vanligen till klientprogram som skickar sökförfrågningar.
+* Din primära och sekundära *admin nycklar* bevilja fullständiga rättigheter tooall åtgärder, inklusive hello möjlighet toomanage hello service, skapa och ta bort index, indexerare och datakällor. Det finns två nycklar så att du kan fortsätta toouse hello sekundärnyckeln om du väljer tooregenerate hello primärnyckel och vice versa.
+* Din *fråga nycklar* bevilja läsbehörighet tooindexes och dokument och är vanligtvis distribuerade tooclient program som utfärdar search-begäranden.
 
-Du kan använda en av din frågenycklar för att skicka frågor till ett index. Administratörsnycklarna kan även användas för frågor, men du bör använda en frågenyckel i programkoden eftersom detta bättre överensstämmer med [principen om lägsta behörighet](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
+Du kan använda en av din fråga nycklar för hello frågor till ett index är. Admin-nycklar kan också användas för frågor, men du bör använda en fråga nyckel i din programkod eftersom det bättre följer hello [principen om minsta behörighet](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
 
 ## <a name="formulate-your-query"></a>Formulera frågan
-Du kan [söka i ditt index med hjälp av REST-API:et](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) på två sätt. Ett sätt är att skicka en HTTP POST-begäran där dina frågeparametrar definieras i ett JSON-objekt i begärandetexten. Det andra sättet är att skicka en HTTP GET-begäran där dina frågeparametrar definieras i URL:en för begäran. POST har mindre [restriktiva gränser](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) vad gäller frågeparametrarnas storlek än GET. Av den anledningen rekommenderar vi att du använder POST såvida det inte finns särskilda omständigheter som gör att GET är lämpligare.
+Det finns två sätt för[söka ditt index med hello REST API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Ett sätt är tooissue en HTTP POST-begäran där din frågeparametrar definieras i ett JSON-objekt i hello begärandetexten. hello annat sätt är tooissue en HTTP GET-begäran där din frågeparametrar definieras inom hello URL-begäran. POST har flera [mjukas upp gränser](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) på Frågeparametrar än GET hello storlek. Av den anledningen rekommenderar vi att du använder POST såvida det inte finns särskilda omständigheter som gör att GET är lämpligare.
 
-För både POST och GET måste du ange *tjänstnamnet*, *indexnamnet* och *API-versionen* (den aktuella API-versionen är `2016-09-01` vid tidpunkten för publiceringen av det här dokumentet) i URL:en för begäran. För GET anger du frågeparametrarna i *frågesträngen* i slutet av URL:en. Se URL-formatet nedan:
+För både POST och GET måste tooprovide din *tjänstnamnet*, *Indexnamnet*, och hello rätt *API-versionen* (hello aktuella API-versionen är `2016-09-01` hello tidpunkt publicera det här dokumentet) i hello URL-begäran. GET, hello *frågesträng* på hello slutet av hello URL kan du ge frågeparametrar Hej. Nedan följer hello URL-format:
 
     https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2016-09-01
 
-Formatet för POST är samma, men med endast ”api-version” i frågesträngsparametrarna.
+hello-format för POST är hello samma, men med endast api-version i hello frågan string-parametrar.
 
 #### <a name="example-queries"></a>Exempelfrågor
 Här är några exempelfrågor för ett index med namnet ”hotels”. Frågorna visas i både GET- och POST-format.
 
-Sök igenom hela indexet efter termen ”budget” och returnera bara `hotelName`-fältet:
+Sökas hello termen ”budget' hello hela indexet och returnerar bara hello `hotelName` fält:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=budget&$select=hotelName&api-version=2016-09-01
@@ -71,7 +71,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-Använd ett filter för indexet för att hitta hotell som är billigare än 150 USD per natt och returnera `hotelId` och `description`:
+Tillämpa ett filter toohello index toofind hotell billigare än 150 USD per natt och returnera hello `hotelId` och `description`:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2016-09-01
@@ -84,7 +84,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 }
 ```
 
-Sök igenom hela indexet, ordna efter ett visst fält (`lastRenovationDate`) i fallande ordning och visa endast `hotelName` och `lastRenovationDate`:
+Sök hello hela index, efter ett visst fält (`lastRenovationDate`) i fallande ordning, ta hello två översta resultat och visa endast `hotelName` och `lastRenovationDate`:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$top=2&$orderby=lastRenovationDate desc&$select=hotelName,lastRenovationDate&api-version=2016-09-01
@@ -104,11 +104,11 @@ Nu när du har formulerat frågan som en del av HTTP-begärans URL (för GET) el
 #### <a name="request-and-request-headers"></a>Begäran och begärandehuvuden
 Du måste definiera två begärandehuvuden för GET, eller tre för POST:
 
-1. `api-key`-huvudet måste anges till frågenyckeln som du identifierade i steg I ovan. Du kan även använda en administratörsnyckel som `api-key`-huvud, men vi rekommenderar att du använder en frågenyckel eftersom den ger exklusiv läsbehörighet till index och dokument.
-2. `Accept`-huvudet måste anges till `application/json`.
-3. För POST måste `Content-Type`-huvudet också anges till `application/json`.
+1. Hej `api-key` huvud måste anges toohello Frågenyckeln du hittade i steg I ovan. Du kan också använda en administrationsnyckel som hello `api-key` huvud, men det rekommenderas att du använder en nyckel för frågan som uteslutande beviljas läsbehörighet tooindexes och dokument.
+2. Hej `Accept` huvud måste anges för`application/json`.
+3. POST, hello `Content-Type` huvud också ställas in för`application/json`.
 
-Nedan illustreras en HTTP GET-begäran för en sökning i ”hotels”-indexet med hjälp av REST-API:et för Azure Search, med en enkel fråga som söker efter termen ”motel”:
+Nedan finns en HTTP GET-begäran toosearch hello ”hotell” index med hello Azure Search REST-API, med hjälp av en enkel fråga som söker efter hello termen ”översikt”:
 
 ```
 GET https://[service name].search.windows.net/indexes/hotels/docs?search=motel&api-version=2016-09-01
@@ -116,7 +116,7 @@ Accept: application/json
 api-key: [query key]
 ```
 
-Här är samma exempelfråga men med HTTP POST:
+Här är hello samma exempelfråga nu med hjälp av HTTP POST:
 
 ```
 POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2016-09-01
@@ -129,7 +129,7 @@ api-key: [query key]
 }
 ```
 
-Ett lyckat frågeresultat returnerar statuskoden `200 OK` och sökresultaten returneras som JSON i svarstexten. Så här ser resultatet ut för ovanstående fråga, förutsatt att indexet ”hotels” fyllts med exempeldata från [Dataimport i Azure Search med hjälp av REST-API:et](search-import-data-rest-api.md). (Observera att JSON har formaterats för tydlighetens skull.)
+En lyckad fråga resulterar i en statuskod för `200 OK` och hello sökresultaten visas som JSON i hello svarstexten. Här är vad hello resultat för hello ovan frågan ser ut som, förutsatt att hello ”hotell” index fylls med hello exempeldata i [Import av Data i Azure Search med hello REST API](search-import-data-rest-api.md) (Observera att hello JSON har formaterats för tydlighetens skull).
 
 ```JSON
 {
@@ -162,4 +162,4 @@ Ett lyckat frågeresultat returnerar statuskoden `200 OK` och sökresultaten ret
 }
 ```
 
-Om du vill veta mer går du till avsnittet ”Svar” i [Söka efter dokument](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Mer information om andra HTTP-statuskoder som kan returneras om det uppstår fel finns i [HTTP-statuskoder (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+toolearn fler besök hello ”” avsnittet av [Sök dokument](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Mer information om andra HTTP-statuskoder som kan returneras om det uppstår fel finns i [HTTP-statuskoder (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).

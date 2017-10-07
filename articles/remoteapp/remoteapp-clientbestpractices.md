@@ -1,6 +1,6 @@
 ---
-title: "Bästa praxis för klienter för Azure RemoteApp | Microsoft Docs"
-description: "Lär dig mer om metodtips för RemoteApp-klienter"
+title: "aaaBest praxis för klienter för Azure RemoteApp | Microsoft Docs"
+description: "Lär dig mer om metodtips för hello RemoteApp-klienter"
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 416cd37a907010176fe331ddb908a35b6fd6b253
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: aa0ccb2f51d381462b78d60e966b87a67d8c247e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="best-practices-for-azure-remoteapp-clients"></a>Metodtips för Azure RemoteApp-klienter
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
-Följande information kan hjälpa dig att använda Azure RemoteApp-klienter:
+hello följande information kan hjälpa dig att använda Azure RemoteApp-klienter:
 
-* Använd alltid den senaste klienten. Detta säkerställer att den klientversion som du använder har de senaste korrigeringarna, förbättringar och funktioner. Du kan behöva registrera dig för att automatiskt ta emot uppdateringar för klienten i rätt Arkiv.
-* RemoteApp loggar automatiskt du om du har varit inaktiva under en viss tidsperiod. För att förhindra dataförlust, rekommenderar vi att stänga ditt program när du är klar med hjälp av tjänsten.
+* Använd alltid senaste hello-klienten. Detta säkerställer att hello klientversionen som du använder har hello senaste felkorrigeringar, förbättringar och funktioner. Du kan behöva toosign in tooautomatically får uppdateringar för hello-klienten på hello butiken.
+* RemoteApp loggar automatiskt du om du har varit inaktiva under en viss tidsperiod. I ordning tooprevent dataförlust rekommenderar vi att stänga ditt program när du är klar med hello-tjänsten.
 

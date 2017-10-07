@@ -1,6 +1,6 @@
 ---
-title: "Med intern belastningsutjämnare Azure Programgateway | Microsoft Docs"
-description: "Den här sidan innehåller instruktioner för att konfigurera en Gateway för Azure-program med en intern belastningsutjämnade slutpunkt"
+title: "aaaUsing Azure Programgateway med interna belastningsutjämnare | Microsoft Docs"
+description: "Den här sidan finns instruktioner tooconfigure en Programgateway i Azure med en intern belastningsutjämnade slutpunkt"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-ms.openlocfilehash: d6f3af61934c8c645be1f2c6b4c056fc7ee2e3aa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 272ef84a02f92a8521c35aad6f1d9f9bf1675718
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Skapa en Application Gateway med en intern belastningsutjämnare (ILB)
 
@@ -26,25 +26,25 @@ ms.lasthandoff: 07/11/2017
 > * [PowerShell och den klassiska Azure-portalen](application-gateway-ilb.md)
 > * [PowerShell och Azure Resource Manager](application-gateway-ilb-arm.md)
 
-Programgateway kan konfigureras med en internetuppkopplad virtuell IP-adress eller en intern slutpunkt exponeras inte till internet, även kallat inre belastningen belastningsutjämnare (ILB) slutpunkt. Konfigurera gateway med en ILB är användbart för interna av branschspecifika program inte utsätts för internet. Det är också användbart för servicenivåerna inom en flernivåapp som placeras i en säkerhetsgräns inte utsätts för internet, men kräver fortfarande resursallokering belastningsdistribution, varaktighet för sessionen eller SSL-avslutning. Den här artikeln beskriver steg för steg hur du konfigurerar en programgateway med en ILB.
+Programgateway kan konfigureras med en internetuppkopplad virtuell IP-adress eller med en intern slutpunkt exponeras inte toohello internet, även kallat inre belastningen belastningsutjämnare (ILB) slutpunkt. Konfigurera hello gateway med en ILB är användbart för toointernet interna line-of-business-program som inte visas. Det är också användbart för servicenivåerna inom en flernivåapp som placeras i en gräns som exponeras inte toointernet för säkerhet, men kräver fortfarande resursallokering belastningsdistribution, varaktighet för sessionen eller SSL-avslutning. Den här artikeln vägleder dig genom hello steg tooconfigure en Programgateway med en ILB.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-1. Installera senaste versionen av Azure PowerShell-cmdlets med hjälp av Web Platform Installer. Du kan hämta och installera den senaste versionen från den **Windows PowerShell** avsnitt i den [hämtningssidan](https://azure.microsoft.com/downloads/).
+1. Installera senaste versionen av hello Azure PowerShell-cmdlets med hello installationsprogram för webbplattform. Du kan hämta och installera hello senaste versionen från hello **Windows PowerShell** avsnitt i hello [hämtningssidan](https://azure.microsoft.com/downloads/).
 2. Kontrollera att du har ett virtuellt nätverk fungerar med giltig nätmask.
-3. Kontrollera att du har backend-servrar i det virtuella nätverket eller med en offentlig IP-adress/VIP tilldelad.
+3. Kontrollera att du har backend-servrar i hello virtuellt nätverk eller med en offentlig IP-adress/VIP tilldelad.
 
-Utför följande steg för att skapa en Programgateway i angiven ordning. 
+toocreate en Programgateway utföra hello följa stegen i ordning hello. 
 
 1. [Skapa en Programgateway](#create-a-new-application-gateway)
-2. [Konfigurera gatewayen](#configure-the-gateway)
-3. [Ange gateway-konfiguration](#set-the-gateway-configuration)
-4. [Starta gatewayen](#start-the-gateway)
-5. [Kontrollera gatewayen](#verify-the-gateway-status)
+2. [Konfigurera hello-gateway](#configure-the-gateway)
+3. [Ange hello gateway-konfiguration](#set-the-gateway-configuration)
+4. [Starta hello gateway](#start-the-gateway)
+5. [Kontrollera hello gateway](#verify-the-gateway-status)
 
 ## <a name="create-an-application-gateway"></a>Skapa en Programgateway:
 
-**Att skapa gatewayen**, använda den `New-AzureApplicationGateway` cmdlet, där du ersätter värdena med dina egna. Observera att faktureringen för gatewayen inte startar i det här läget. Faktureringen börjar i ett senare skede när gatewayen har startats.
+**toocreate hello gateway**, använda hello `New-AzureApplicationGateway` cmdlet, ersätter hello värden med dina egna. Observera att faktureringen för hello gatewayen inte startar nu. Fakturering börjar i ett senare steg när hello gateway har startat.
 
 ```powershell
 New-AzureApplicationGateway -Name AppGwTest -VnetName testvnet1 -Subnets @("Subnet-1")
@@ -58,9 +58,9 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   55ef0460-825d-2981-ad20-b9a8af41b399
 ```
 
-**Validera** att gatewayen har skapats kan du använda den `Get-AzureApplicationGateway` cmdlet. 
+**toovalidate** att hello gateway har skapats kan du använda hello `Get-AzureApplicationGateway` cmdlet. 
 
-I det här exemplet *beskrivning*, *InstanceCount*, och *GatewaySize* är valfria parametrar. Standardvärdet för *InstanceCount* är 2, och det högsta värdet är 10. Standardvärdet för *GatewaySize* är Medium. Små och stora är andra tillgängliga värden. *VIP* och *DnsName* visas som tomt eftersom gatewayen inte har startat ännu. De skapas när gatewayen är i körläge. 
+I exemplet hello *beskrivning*, *InstanceCount*, och *GatewaySize* är valfria parametrar. Hej standardvärdet för *InstanceCount* är 2, med ett maximalt värde 10. Hej standardvärdet för *GatewaySize* är Medium. Små och stora är andra tillgängliga värden. *VIP* och *DnsName* visas som tomt eftersom hello gateway inte har startat ännu. Dessa skapas när hello gateway är i hello körs. 
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest
@@ -81,25 +81,25 @@ VirtualIPs:
 DnsName:
 ```
 
-## <a name="configure-the-gateway"></a>Konfigurera gatewayen
-En gateway programkonfigurationen består av flera värden. Värdena kan knytas samman för att konstruera konfigurationen.
+## <a name="configure-hello-gateway"></a>Konfigurera hello-gateway
+En gateway programkonfigurationen består av flera värden. hello-värden kan knytas samman tooconstruct hello konfiguration.
 
-Värdena är:
+hello-värden är:
 
-* **Backend-serverpoolen:** listan över IP-adresser på backend-servrarna. IP-adresser som anges antingen ska tillhöra VNet subnet eller ska vara en offentlig IP-adress/VIP. 
-* **Inställningar för backend-serverpool:** Varje pool har inställningar som port, protokoll och cookie-baserad tillhörighet. Dessa inställningar är knutna till en pool och tillämpas på alla servrar i poolen.
-* **Klientdelsport:** den här porten är den offentliga öppnas på programgatewayen. Trafiken kommer till den här porten och omdirigeras till en av backend-servrarna.
-* **Lyssnare:** lyssnaren har en klientdelsport, ett protokoll (Http eller Https, dessa är skiftlägeskänsligt), och namnet på SSL (om hur du konfigurerar SSL-avlastning). 
-* **Regel:** regeln Binder lyssnaren och backend-serverpoolen och definierar vilka backend-serverpoolen trafiken ska dirigeras till när den når en viss lyssnare. För närvarande stöds endast regeln *basic*. Regeln *basic* använder belastningsutjämning med resursallokering.
+* **Backend-serverpoolen:** hello lista över IP-adresser på hello backend-servrar. hello IP-adresser som anges antingen ska tillhöra toohello VNet subnet eller ska vara en offentlig IP-adress/VIP. 
+* **Inställningar för backend-serverpool:** Varje pool har inställningar som port, protokoll och cookie-baserad tillhörighet. De här inställningarna är bundet tooa poolen och tillämpade tooall servrar inom hello poolen.
+* **Klientdelsport:** den här porten är hello offentliga öppnas på hello Programgateway. Trafik träffar den här porten och hämtar omdirigerade tooone på hello backend-servrar.
+* **Lyssnare:** hello-lyssnare har en klientdelsport, ett protokoll (Http eller Https, dessa är skiftlägeskänsligt), och hello SSL-certifikatnamn (om hur du konfigurerar SSL-avlastning). 
+* **Regel:** hello regeln Binder hello-lyssnare och hello backend-serverpoolen och definierar vilken backend-servern poolen hello trafik ska vara riktad toowhen den når en viss lyssnare. För närvarande endast hello *grundläggande* regeln stöds. Hej *grundläggande* regeln är resursallokering belastningsdistribution.
 
-Du kan skapa din konfiguration genom att skapa ett konfigurationsobjekt eller genom att använda en XML-konfigurationsfilen. Använd exemplet nedan för att skapa konfigurationen med hjälp av en XML-konfigurationsfilen.
+Du kan skapa din konfiguration genom att skapa ett konfigurationsobjekt eller genom att använda en XML-konfigurationsfilen. tooconstruct konfigurationen med hjälp av en XML-konfigurationsfilen, Använd hello exempel nedan.
 
-Observera följande:
+Observera följande hello:
 
-* Den *FrontendIPConfigurations* element beskriver vad ILB som är relevanta för att konfigurera Application Gateway med en ILB. 
-* Frontend IP *typen* ska anges till ”privat”
-* Den *StaticIPAddress* ska anges till den önskade intern IP-adress som gatewayen tar emot trafik. Observera att den *StaticIPAddress* element är valfria. Om du inte kan en tillgänglig intern IP-adress från undernätet som är distribuerade väljs. 
-* Värdet för den *namn* element som anges i *FrontendIPConfiguration* ska användas i HTTPListener *FrontendIP* element att referera till FrontendIPConfiguration.
+* Hej *FrontendIPConfigurations* element beskriver hello ILB uppgifter för att konfigurera Application Gateway med en ILB. 
+* hello klientdel IP *typen* ska anges too'Private'
+* Hej *StaticIPAddress* ska anges toohello önskad intern IP-adress på vilken hello gateway tar emot trafik. Observera att hello *StaticIPAddress* element är valfria. Om du inte kan en tillgänglig intern IP-adress från hello distribueras undernät väljs. 
+* Hej värdet för hello *namn* element som anges i *FrontendIPConfiguration* ska användas i hello HTTPListener *FrontendIP* elementet toorefer toohello FrontendIPConfiguration.
   
   **Konfiguration av XML-exempel**
 ```xml
@@ -156,8 +156,8 @@ Observera följande:
 ```
 
 
-## <a name="set-the-gateway-configuration"></a>Ange gateway-konfiguration
-Sedan ställer du programgatewayen. Du kan använda den `Set-AzureApplicationGatewayConfig` cmdlet med ett konfigurationsobjekt eller med en XML-konfigurationsfilen. 
+## <a name="set-hello-gateway-configuration"></a>Ange hello gateway-konfiguration
+Sedan ställer du hello Programgateway. Du kan använda hello `Set-AzureApplicationGatewayConfig` cmdlet med ett konfigurationsobjekt eller med en XML-konfigurationsfilen. 
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name AppGwTest -ConfigFile D:\config.xml
@@ -171,12 +171,12 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   9b995a09-66fe-2944-8b67-9bb04fcccb9d
 ```
 
-## <a name="start-the-gateway"></a>Starta gatewayen
+## <a name="start-hello-gateway"></a>Starta hello gateway
 
-När gatewayen har konfigurerats kan du använda cmdleten `Start-AzureApplicationGateway` för att starta gatewayen. Faktureringen för en programgateway börjar när gatewayen har startats. 
+När hello gateway har konfigurerats kan du använda hello `Start-AzureApplicationGateway` cmdlet toostart hello gateway. Fakturering för en Programgateway startar när hello gatewayen har startats. 
 
 > [!NOTE]
-> Den `Start-AzureApplicationGateway` cmdlet kan ta upp till 15-20 minuter att slutföra. 
+> Hej `Start-AzureApplicationGateway` cmdlet kan ta upp toocomplete too15 20 minuter. 
 > 
 > 
 
@@ -192,12 +192,12 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   fc592db8-4c58-2c8e-9a1d-1c97880f0b9b
 ```
 
-## <a name="verify-the-gateway-status"></a>Kontrollera statusen för gatewayen
+## <a name="verify-hello-gateway-status"></a>Verifiera hello gatewayens status
 
-Använd den `Get-AzureApplicationGateway` för att kontrollera status för gateway. Om `Start-AzureApplicationGateway` lyckades i föregående steg, tillståndet ska vara *kör*, och Vip och DNS-namn ska ha giltiga poster. Det här exemplet visar cmdleten på den första raden, följt av utdata. I det här exemplet gatewayen körs och är redo att ta trafik. 
+Använd hello `Get-AzureApplicationGateway` cmdlet toocheck hello statusen för gateway. Om `Start-AzureApplicationGateway` lyckades hello föregående steg, hello-tillståndet ska vara *kör*, hello Vip och DNS-namn ska ha giltiga poster. Det här exemplet visar hello-cmdleten på hello första rad, följt av hello utdata. I det här exemplet hello gateway körs och är redo tootake trafik. 
 
 > [!NOTE]
-> Programgatewayen är konfigurerad att ta emot trafik på den konfigurerade ILB-slutpunkten för 10.0.0.10 i det här exemplet.
+> hello Programgateway konfigureras tooaccept trafik i hello konfigurerad ILB-slutpunkten för 10.0.0.10 i det här exemplet.
 
 ```powershell
 Get-AzureApplicationGateway AppGwTest 

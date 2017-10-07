@@ -1,6 +1,6 @@
 ---
-title: "Introduktion till flödet loggning för Nätverkssäkerhetsgrupper med Azure Nätverksbevakaren | Microsoft Docs"
-description: "Den här sidan förklarar hur du använder NSG flödet loggar en funktion i Azure Nätverksbevakaren"
+title: "aaaIntroduction tooflow loggning för Nätverkssäkerhetsgrupper med Azure Nätverksbevakaren | Microsoft Docs"
+description: "Den här sidan förklarar hur toouse NSG flödet loggar en funktion i Azure Nätverksbevakaren"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,56 +14,56 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: b7a9162d6c6219b6b1c51a49cd34b9616e9d3e8f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: da85e946147b14717144cb47d1c742057c6dfa24
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="introduction-to-flow-logging-for-network-security-groups"></a>Introduktion till flödet loggning för Nätverkssäkerhetsgrupper
+# <a name="introduction-tooflow-logging-for-network-security-groups"></a>Introduktion tooflow loggning för Nätverkssäkerhetsgrupper
 
-Nätverkssäkerhetsgruppen flöde loggarna är en funktion i Nätverksbevakaren där du kan visa information om ingående och utgående IP-trafik via en Nätverkssäkerhetsgrupp. Loggarna flödet skrivs i json-format och visa utgående och inkommande flöden på grundval av per regel, NIC flödet gäller för 5-tuppel information om flödet (källan/målet IP-källan/målet Port Protocol), och om trafiken tillåts eller nekas.
+Nätverkssäkerhetsgruppen flöde loggarna är en funktion i Nätverksbevakaren som gör att du tooview information om ingående och utgående IP-trafik via en Nätverkssäkerhetsgrupp. Loggarna flödet skrivs i json-format och visa utgående och inkommande flöden på grundval av per regel hello NIC hello flödet gäller för 5-tuppel information om hello flödet (källan/målet IP-källan/målet Port Protocol) och om hello trafik tilläts eller nekad.
 
 ![Översikt över flödet-loggar][1]
 
-Medan flödet loggar mål Nätverkssäkerhetsgrupper, som inte visas samma som de andra loggarna. Flödet loggfilerna lagras i ett lagringskonto och följa Loggningssökvägen som visas i följande exempel:
+Medan flödet loggar mål Nätverkssäkerhetsgrupper, de visas inte hello samma som hello andra loggar. Flödet loggfilerna lagras i ett lagringskonto och följande hello Loggningssökvägen som visas i följande exempel hello:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId%3D/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.network/networksecuritygroups/{nsgName}/{year}/{month}/{day}/PT1H.json
 ```
 
-Samma bevarandeprinciper som visas på andra loggar gäller flödet loggar. Loggar har en bevarandeprincip som kan anges från dag 1 och 365 dagar. Om en bevarandeprincip inte är inställd bevaras loggarna för evigt.
+Hej samma bevarandeprinciper som det visas på andra loggar tillämpa tooflow loggar. Loggar har en bevarandeprincip som kan anges från 1 dag too365 dagar. Om en bevarandeprincip inte har angetts bibehålls hello loggar alltid.
 
 ## <a name="log-file"></a>Loggfil
 
-Flödet loggar har flera egenskaper. Nedan följer en lista över de egenskaper som returneras i loggen för NSG-flöde:
+Flödet loggar har flera egenskaper. hello finns följande lista en lista över hello egenskaperna som returneras i hello NSG flödet loggen:
 
-* **tid** - tid när händelsen loggades.
+* **tid** - tid när hello händelsen loggades
 * **system-ID** -Nätverkssäkerhetsgruppen resurs-ID.
-* **kategori** -kategorin av händelsen, är det alltid vara NetworkSecurityGroupFlowEvent
-* **ResourceId** -resurs-Id för NSG: N
+* **kategori** -hello kategori för hello händelse, är det alltid vara NetworkSecurityGroupFlowEvent
+* **ResourceId** -hello resurs-Id för hello NSG
 * **operationName** -alltid NetworkSecurityGroupFlowEvents
-* **Egenskaper för** – en samling av egenskaper i flöde
-    * **Version** -versionsnumret för Händelseschema flöda logg
+* **Egenskaper för** – en samling av egenskaper i hello-flöde
+    * **Version** -versionsnumret för hello logga Flow Händelseschema
     * **flöden** – en samling av flöden. Den här egenskapen har flera poster för olika regler
-        * **regeln** -regel för flöden är listade
+        * **regeln** -regel för vilka hello flöden visas
             * **flöden** – en samling av flöden
-                * **Mac** -MAC-adressen för nätverkskortet för den virtuella datorn där flödet har hämtats
-                * **flowTuples** -en sträng som innehåller flera egenskaper för flöde tuppel i CSV-format
-                    * **Tidsstämpel** -värdet är tidsstämpeln för när flödet uppstod i UNIX EPOK format
-                    * **Käll-IP** -käll-IP
-                    * **Mål IP** -mål-IP
-                    * **Källport** -källport
-                    * **Målport** -målet Port
-                    * **Protokollet** -protokollet för flödet. Giltiga värden är **T** för TCP och **U** för UDP
-                    * **Infrastrukturtrafiken rör** -riktningen för trafikflödet. Giltiga värden är **jag** för inkommande och **O** för utgående.
+                * **Mac** -hello MAC-adressen för hello NIC för hello VM där hello flödet har hämtats
+                * **flowTuples** -en sträng som innehåller flera egenskaper för hello flödet tuppel i CSV-format
+                    * **Tidsstämpel** -värdet är hello tidsstämpeln för när hello flödet uppstod i UNIX EPOK format
+                    * **Käll-IP** - hello käll-IP
+                    * **Mål IP** -hello mål-IP
+                    * **Källport** - hello källport
+                    * **Målport** -hello målport
+                    * **Protokollet** -hello protokollet för hello flödet. Giltiga värden är **T** för TCP och **U** för UDP
+                    * **Infrastrukturtrafiken rör** -hello flödesriktning hello trafik. Giltiga värden är **jag** för inkommande och **O** för utgående.
                     * **Trafik** – oavsett om trafik tillåts eller nekas. Giltiga värden är **A** för tillåtna och **D** för nekad.
 
 
-Följande är ett exempel på en logg i flödet. Som du kan se att det finns flera poster som följer egenskapslistan som beskrivs i föregående avsnitt. 
+hello följande är ett exempel på en logg i flödet. Som du kan se att det finns flera poster som följer beskrivs i föregående avsnitt hello hello-egenskapslistan. 
 
 > [!NOTE]
-> Värden i egenskapen flowTuples är en kommaavgränsad lista.
+> Värdena i hello flowTuples egenskapen är en kommaavgränsad lista.
  
 ```json
 {
@@ -102,7 +102,7 @@ Följande är ett exempel på en logg i flödet. Som du kan se att det finns fle
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du aktiverar flödet loggarna genom att besöka [aktiverar flöda loggning](network-watcher-nsg-flow-logging-portal.md).
+Lär dig hur tooenable flöde loggar genom att besöka [aktiverar flöda loggning](network-watcher-nsg-flow-logging-portal.md).
 
 Lär dig mer om NSG loggning genom att besöka [logga analytics för nätverkssäkerhetsgrupper (NSG: er)](../virtual-network/virtual-network-nsg-manage-log.md).
 

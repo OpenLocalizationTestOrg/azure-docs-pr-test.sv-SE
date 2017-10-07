@@ -1,6 +1,6 @@
 ---
-title: "Med hjälp av omdirigering i Azure RemoteApp | Microsoft Docs"
-description: "Lär dig hur du konfigurerar och använder omdirigering i RemoteApp"
+title: aaaUsing omdirigering i Azure RemoteApp | Microsoft Docs
+description: "Lär dig hur tooconfigure och använda omdirigering i RemoteApp"
 services: remoteapp
 documentationcenter: 
 author: msmbaldwin
@@ -13,106 +13,106 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-ms.openlocfilehash: b5a65d129225fde46e3b090bc3cd9427989005ee
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d5739a75cf606bd971268da67b2c5ff0fe5fe19b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="using-redirection-in-azure-remoteapp"></a>Med hjälp av omdirigering i Azure RemoteApp
 > [!IMPORTANT]
-> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs [meddelandet](https://go.microsoft.com/fwlink/?linkid=821148) för mer information.
+> Azure RemoteApp upphör att gälla den 31 augusti 2017. Läs hello [meddelande](https://go.microsoft.com/fwlink/?linkid=821148) mer information.
 > 
 > 
 
-Omdirigering av enheter gör att användare kan interagera med fjärråtkomst appar som använder enheter som är anslutna till deras lokala datorn, telefon eller surfplatta. Om du har angett Skype via Azure RemoteApp, måste användaren kameran installerad på en dator att arbeta med Skype. Detta gäller även för skrivare, högtalare, Övervakare och ett intervall av USB-anslutna kringutrustning.
+Omdirigering av enheter gör att användare kan interagera med fjärråtkomst appar som använder hello enheter anslutna tootheir lokala datorn, telefon eller surfplatta. Om du har angett Skype via Azure RemoteApp, måste användaren hello kamera installerad på sin dator toowork med Skype. Detta gäller även för skrivare, högtalare, Övervakare och ett intervall av USB-anslutna kringutrustning.
 
-RemoteApp utnyttjar Remote Desktop Protocol (RDP) och RemoteFX för omdirigering.
+RemoteApp utnyttjar hello Remote Desktop Protocol (RDP) och RemoteFX tooprovide omdirigering.
 
 ## <a name="what-redirection-is-enabled-by-default"></a>Vilka omdirigering är aktiverat som standard?
-När du använder RemoteApp är följande omdirigeringar aktiverade som standard. Informationen i parenteser visa RDP-inställningen.
+När du använder RemoteApp är hello följande omdirigeringar aktiverade som standard. hello information inom parentes visar hello RDP-inställningen.
 
-* Spela upp ljud på den lokala datorn (**spela upp på den här datorn**). (audiomode:i:0)
-* Fånga ljud från den lokala datorn och skickas till fjärrdatorn (**poster från den här datorn**). (audiocapturemode:i:1)
-* Skriva ut till lokala skrivare (redirectprinters:i:1)
+* Spela upp ljud på hello lokal dator (**spela upp på den här datorn**). (audiomode:i:0)
+* Spela in ljud från hello lokala datorn och skicka toohello fjärrdatorn (**poster från den här datorn**). (audiocapturemode:i:1)
+* Skriva ut toolocal skrivare (redirectprinters:i:1)
 * COM-portar (redirectcomports:i:1)
 * Smartkortenhet (redirectsmartcards:i:1)
-* Urklipp (möjligheten att kopiera och klistra in) (redirectclipboard:i:1)
+* Urklipp (möjlighet toocopy och klistra in) (redirectclipboard:i:1)
 * Avmarkera typen kantutjämning (Tillåt kantutjämning: i:1)
 * Dirigera alla kompatibla Plug and Play-enheter. (devicestoredirect:s: *)
 
 ## <a name="what-other-redirection-is-available"></a>Vilka andra omdirigering är tillgängligt?
 Två alternativ för mappomdirigering är inaktiverade som standard:
 
-* Omdirigering (enhetsmappning): den lokala datorn enheter bli mappade enheter i fjärrsessionen. Detta kan du spara eller öppna filer från de lokala enheterna när du arbetar i fjärrsessionen.
-* USB-omdirigering: du kan använda USB-enheter som är anslutna till den lokala datorn i fjärrsessionen.
+* Omdirigering (enhetsmappning): den lokala datorn enheter bli mappade enheter i hello fjärrsession. Detta kan du spara eller öppna filer från de lokala enheterna när du arbetar i hello fjärrsessionen.
+* USB-omdirigering: du kan använda hello USB-enheter anslutna tooyour lokal dator inom hello fjärrsessionen.
 
 ## <a name="change-your-redirection-settings-in-remoteapp"></a>Ändra inställningarna för omdirigering i RemoteApp
-Du kan ändra enhetens omdirigeringsinställningar för en samling med hjälp av Microsoft Azure PowerShell med SDK. När du har installerat den nya PowerShell och SDK först konfigurera det för att hantera din prenumeration enligt beskrivningen i [hur du installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview).
+Du kan ändra hello enhetens omdirigeringsinställningar för en samling med hello Microsoft Azure PowerShell med SDK. När du har installerat Hej nya PowerShell och SDK, först konfigurera din prenumeration som beskrivs i toomanage [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview).
 
-Använd sedan ett kommando som liknar följande för att ange anpassade RDP-egenskaper:
+Använd sedan en liknande toohello för kommandot efter tooset hello anpassade RDP egenskaper:
 
     Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:*"
 
 (Observera att  *`n*  används som avgränsare mellan enskilda egenskaper.)
 
-Om du vill hämta en lista över vilka anpassade RDP-egenskaper har konfigurerats, kör du följande cmdlet. Observera att endast anpassade egenskaper visas som utdataresultat och inte standardegenskaperna:  
+tooget en lista över vilka anpassade RDP-egenskaper har konfigurerats, kör hello följande cmdlet. Observera att endast anpassade egenskaper visas som utdataresultat och inte hello standardegenskaperna:  
 
     Get-AzureRemoteAppCollection -CollectionName <collection name>
 
-När du ställer in egenskaperna måste du ange alla anpassade egenskaper varje gång; Annars återgår inställningen till inaktiverat.   
+När du ställer in egenskaperna måste du ange alla anpassade egenskaper varje gång; Annars återställs hello inställningen toodisabled.   
 
 ### <a name="common-examples"></a>Vanliga exempel
-Använd följande cmdlet för att aktivera omdirigering:  
+Använd följande cmdlet tooenable omdirigering hello:  
 
     Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*"
 
-Använd denna cmdlet för att aktivera både USB- och enheten omdirigering:
+Använd den här cmdlet-tooenable omdirigering av såväl USB-enhet:
 
     Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:*"
 
-Använd denna cmdlet för att inaktivera delning av Urklipp:  
+Använd denna cmdlet toodisable delning av Urklipp:  
 
     Set-AzureRemoteAppCollection -CollectionName <collection name>  -CustomRdpProperty "redirectclipboard:i:0"
 
 > [!IMPORTANT]
-> Se till att helt logga ut alla användare i samlingen (och inte bara koppla från dem) innan du testar ändringen. För att säkerställa att användarna är utloggade helt, gå till den **sessioner** i samlingen i Azure-portalen och logga ut alla användare som har kopplats från eller loggat in. Ibland kan det ta flera sekunder för lokala enheter ska visas i Utforskaren i sessionen.
+> Vara att toocompletely logga ut alla användare i samlingen hello (och inte bara koppla från dem) innan du testar hello ändringen. tooensure användare har helt loggat ut gå toohello **sessioner** i hello-samlingen i hello Azure-portalen och logga ut alla användare som har kopplats från eller loggat in. Ibland kan det ta flera sekunder innan hello lokala enheter tooshow i Explorer hello-sessionen.
 > 
 > 
 
 ## <a name="change-usb-redirection-settings-on-your-windows-client"></a>Ändra inställningar för USB-omdirigering på Windows-klienter
-Om du vill använda USB-omdirigering på en dator som ansluter till RemoteApp finns 2 åtgärder som måste utföras. 1 - administratören måste aktivera USB-omdirigering på samlingsnivå med hjälp av Azure PowerShell. 2 - du måste aktivera en grupprincip som tillåter det på varje enhet där du vill använda USB-omdirigering. Det här steget måste göras för varje användare som vill använda USB-omdirigering.
+Om du vill toouse USB-omdirigering på en dator som ansluter tooRemoteApp finns 2 åtgärder som behöver toohappen. 1 - administratören måste tooenable USB-omdirigering på hello samlingsnivå med hjälp av Azure PowerShell. 2 - på varje enhet där du vill att toouse USB-omdirigering, behöver du tooenable en grupprincip som tillåter den. Det här steget behöver toobe för varje användare som vill toouse USB-omdirigering.
 
 > [!NOTE]
 > USB-omdirigering med Azure RemoteApp stöds endast för Windows-datorer.
 > 
 > 
 
-### <a name="enable-usb-redirection-for-the-remoteapp-collection"></a>Aktivera USB-omdirigering för RemoteApp-samling
-Använd följande cmdlet för att aktivera USB-omdirigering på samlingsnivå:
+### <a name="enable-usb-redirection-for-hello-remoteapp-collection"></a>Aktivera USB-omdirigering för hello RemoteApp-samling
+Använd följande cmdlet tooenable USB-omdirigering på samlingsnivå hello hello:
 
     Set-AzureRemoteAppCollection -CollectionName <collection_name> -CustomRdpProperty "nusbdevicestoredirect:s:*"
 
-### <a name="enable-usb-redirection-for-the-client-computer"></a>Aktivera USB-omdirigering för klientdatorn
-Konfigurera inställningar för USB-omdirigering på datorn:
+### <a name="enable-usb-redirection-for-hello-client-computer"></a>Aktivera USB-omdirigering för hello klientdator
+tooconfigure USB-inställningar för mappomdirigering på datorn:
 
-1. Öppna i Redigeraren för lokala grupprinciper (GPEDIT. MSC). (Kör gpedit.msc från en kommandotolk.)
+1. Öppna hello Redigeraren för lokala grupprinciper (GPEDIT. MSC). (Kör gpedit.msc från en kommandotolk.)
 2. Öppna **datorn Datorkonfiguration\Principer\Administrativa mallar\Windows-komponenter\Fjärrskrivbordstjänster\Värdserver för anslutning till fjärrskrivbord Client\RemoteFX USB-enhetsomdirigering**.
 3. Dubbelklicka på **Tillåt RDP-omdirigering av andra stöds RemoteFX USB-enheter från den här datorn**.
-4. Välj **aktiverad**, och välj sedan **administratörer och användare i åtkomstbehörigheter för RemoteFX USB-omdirigering**.
-5. Öppna en kommandotolk med administrativ behörighet och kör följande kommando:
+4. Välj **aktiverad**, och välj sedan **administratörer och användare i hello RemoteFX USB-omdirigering åtkomsträttigheter**.
+5. Öppna en kommandotolk med administrativ behörighet och kör följande kommando hello:
    
         gpupdate /force
-6. Starta om datorn.
+6. Starta om datorn hello.
 
-Du kan också använda verktyget hantering av Grupprincip för att skapa och använda USB-omdirigering av principen för alla datorer i domänen:
+Du kan också använda hello Grupprinciphantering verktyget toocreate och tillämpa hello USB-omdirigering av principen för alla datorer i domänen:
 
-1. Logga in på domänkontrollanten som domänadministratör.
-2. Öppna hanteringskonsolen för Grupprincip. (Klicka på **Start > administrativa verktyg > hantering av Grupprincip**.)
-3. Navigera till den domän eller organisationsenhet som du vill skapa principen.
+1. Logga in på hello-domänkontrollant som domänadministratör för hello.
+2. Öppna hello konsolen Grupprinciphantering. (Klicka på **Start > administrativa verktyg > hantering av Grupprincip**.)
+3. Navigera toohello domän eller organisationsenhet som du vill toocreate hello princip.
 4. Högerklicka på **Standarddomänprincip**, och klicka sedan på **redigera**.
 5. Öppna **datorn Datorkonfiguration\Principer\Administrativa mallar\Windows-komponenter\Fjärrskrivbordstjänster\Värdserver för anslutning till fjärrskrivbord Client\RemoteFX USB-enhetsomdirigering**.
 6. Dubbelklicka på **Tillåt RDP-omdirigering av andra stöds RemoteFX USB-enheter från den här datorn**.
-7. Välj **aktiverad**, och välj sedan **administratörer och användare i åtkomstbehörigheter för RemoteFX USB-omdirigering**.
+7. Välj **aktiverad**, och välj sedan **administratörer och användare i hello RemoteFX USB-omdirigering åtkomsträttigheter**.
 8. Klicka på **OK**.  
 

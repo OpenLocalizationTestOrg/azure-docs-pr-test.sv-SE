@@ -1,6 +1,6 @@
 ---
-title: "Hur du konfigurerar Geo-replikering för Azure Redis-Cache | Microsoft Docs"
-description: "Lär dig mer om Azure Redis-Cache-instanser replikeras geografiska regioner."
+title: "aaaHow tooconfigure Geo-replikering för Azure Redis-Cache | Microsoft Docs"
+description: "Lär dig hur tooreplicate din Azure Redis-Cache instanser över geografiska regioner."
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -14,107 +14,107 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: sdanie
-ms.openlocfilehash: 71b0d4add7e642487f6d67cda692c500ee78b0e6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: edcd6f202b51055d1a4e47ecaf11f9977d50aa81
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-configure-geo-replication-for-azure-redis-cache"></a>Hur du konfigurerar Geo-replikering för Azure Redis-Cache
+# <a name="how-tooconfigure-geo-replication-for-azure-redis-cache"></a>Hur tooconfigure Geo-replikering för Azure Redis-Cache
 
-GEO-replikering tillhandahåller en mekanism för att länka två instanser i Premium-nivån Azure Redis-Cache. En cache betecknas som primär länkade cacheminnet och andra som sekundär länkade cache. Sekundär länkade cachen skrivskyddas och data som skrivs till den primära cachen replikeras till sekundär länkade cachen. Den här funktionen kan användas för att replikera en cache över Azure-regioner. Den här artikeln beskrivs hur du konfigurerar Geo-replikering för din Premium-nivån Azure Redis-Cache-instanser.
+GEO-replikering tillhandahåller en mekanism för att länka två instanser i Premium-nivån Azure Redis-Cache. En cache utses hello primära länkade cache och hello andra som sekundär länkade hello-cache. hello sekundär länkade cache skrivskyddas och data som skrivits toohello primära cache är replikeras toohello sekundära länkade cache. Den här funktionen kan vara används tooreplicate en cache i Azure-regioner. Den här artikeln innehåller en guide tooconfiguring Geo-replikering för din Premium-nivån Azure Redis-Cache-instanser.
 
 ## <a name="geo-replication-prerequisites"></a>Krav för GEO-replikering
 
-Om du vill konfigurera Geo-replikering mellan två cacheminnen måste följande krav uppfyllas:
+tooconfigure Geo-replikering mellan två cacheminnen och hello följande krav måste uppfyllas:
 
 - Båda cacheminnen måste vara [premiumnivån](cache-premium-tier-intro.md) cachelagrar.
-- Båda cacheminnen måste finnas i samma Azure-prenumerationen.
-- Sekundär länkade cachen måste vara samma prisnivån eller en större prisnivå än den primära länka cachen.
-- Om den primära länka cachen har aktiverad klustring, måste sekundära länkade cachen ha aktiverad med samma antal delar som primär länkade cachen klustring.
+- Båda cacheminnen måste vara i hello samma Azure-prenumeration.
+- hello sekundär länkade cache måste vara antingen hello samma priser nivån eller en större prisnivå än hello primära länkade cache.
+- Om hello primära länkade cache har aktiverad klustring, hello sekundär länkade cache måste ha aktiverad med hello klustring samma antal delar som hello primära länkade cache.
 - Båda cache måste skapas och körs.
 - Beständiga måste inte aktiveras på antingen cachen.
-- GEO-replikering mellan Cacheminnena i samma virtuella nätverk stöds. GEO-replikering mellan Cacheminnena i olika Vnet stöds också, förutsatt att två virtuella nätverk konfigureras så att resurser i Vnet ska kunna nå varandra via TCP-anslutningar.
+- GEO-replikering mellan Cacheminnena i hello stöds samma virtuella nätverk. GEO-replikering mellan Cacheminnena i olika Vnet stöds också, förutsatt att hello två Vnet har konfigurerats så att resurser i hello Vnet är kan tooreach varandra via TCP-anslutningar.
 
-När Geo-replikering har konfigurerats, gäller följande begränsningar för länkade cache-par:
+När Geo-replikering konfigureras hello följande begränsningar gäller tooyour länkade cache par:
 
-- Sekundär länkade cacheminnet är skrivskyddade. Du kan läsa från den, men du kan inte skriva data till den. 
-- Alla data som var i sekundära länkade cachen innan länken lades till tas bort. Om Geo-replikering tas därefter bort men förblir replikerade data i sekundära länkade cachen.
-- Du kan inte påbörja en [skalning åtgärden](cache-how-to-scale.md) på antingen cachen eller [ändra antalet shards](cache-how-to-premium-clustering.md) om cacheminnet innehåller aktiverad klustring.
+- hello sekundära länkade cache är skrivskyddade. Du kan läsa från den, men du kan inte skriva alla data tooit. 
+- Alla data som var i hello sekundära länkade cachen innan hello länken lades till tas bort. Om hello Geo-replikering tas därefter bort men replikeras hello data blir kvar hello sekundär länkade cache.
+- Du kan inte påbörja en [skalning åtgärden](cache-how-to-scale.md) på antingen cachen eller [ändra hello antal shards](cache-how-to-premium-clustering.md) om hello cache har aktiverad klustring.
 - Du kan inte aktivera persistence på antingen cachen.
-- Du kan använda [exportera](cache-how-to-import-export-data.md#export) med antingen cache, men du kan bara [importera](cache-how-to-import-export-data.md#import) till primära länkade cachen.
-- Du kan inte ta bort länkade cache eller resursgruppen som innehåller dem, tills du tar bort länken Geo-replikering. Mer information finns i [varför åtgärden misslyckas när jag försökte ta bort min länkade cache?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
-- Om två Cacheminnena i olika regioner, gäller kostnader för nätverksegress för data som replikeras över regioner till sekundär länkade cachen. Mer information finns i [hur mycket kostar det för att replikera data mellan Azure-regioner?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
-- Det finns ingen automatisk redundans till sekundär länkade cachen om den primära cachen (och dess replik) kraschar. Du skulle behöva manuellt ta bort länken Geo-replikering och peka klientprogram i cacheminnet som tidigare var sekundär länkade cacheminnet i ordning för failover-klientprogram. Mer information finns i [hur fungerar inte körs i sekundära länkade cacheminne?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- Du kan använda [exportera](cache-how-to-import-export-data.md#export) med antingen cache, men du kan bara [importera](cache-how-to-import-export-data.md#import) till hello primära länkade cache.
+- Du kan inte ta bort länkade cache eller hello resursgruppen som innehåller dem, tills du tar bort hello Geo-replikering länk. Mer information finns i [varför hello misslyckas när jag försökte toodelete min länkade cache?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
+- Om hello två cacheminnen finns i olika regioner, gäller kostnader för nätverksegress toohello data replikeras mellan regioner toohello sekundära länkade cache. Mer information finns i [hur mycket finns det kosta tooreplicate Mina data i Azure-regioner?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
+- Det finns ingen automatisk redundans toohello sekundära länkade cache om hello primära cache (och dess replik) kraschar. I ordning toofailover klientprogram, behöver du toomanually ta bort hello Geo-replikering länk och punkt hello klienten program toohello cachelagra som tidigare var hello sekundär länkade cache. Mer information finns i [hur fungerar inte körs toohello sekundära länkade cache?](#how-does-failing-over-to-the-secondary-linked-cache-work)
 
 ## <a name="add-a-geo-replication-link"></a>Lägga till en länk för Geo-replikering
 
-1. Om du vill länka samman två premium cacheminnen för geo-replikering, klickar du på **Geo-replikering** resurs-menyn i cacheminnet som den primära länkade cachelagra och klicka sedan på **Lägg till cache replikeringslänk** från den **georeplikering** bladet.
+1. toolink två premium cachelagrar tillsammans för geo-replikering, klickar du på **Geo-replikering** hello resurs menyn hello-cache är avsedda som hello primära länkade cachelagra och klicka sedan på **Lägg till cache replikeringslänk**från hello **georeplikering** bladet.
 
     ![Lägga till en länk](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. Klicka på namnet på önskat cacheminne om sekundära från den **kompatibel cacheminnen** lista. Om din önskade cache inte visas i listan, kontrollera att den [Geo-replikering krav](#geo-replication-prerequisites) för önskad sekundära cachen är uppfyllda. Om du vill filtrera cacheminnen efter region, klickar du på önskad region på kartan för att visa endast dessa cacheminnen i den **kompatibel cacheminnen** lista.
+2. Klicka på hello önskad Sekundär cache från hello hello namn **kompatibel cacheminnen** lista. Om din önskade cache inte visas i listan hello, kontrollera att hello [Geo-replikering krav](#geo-replication-prerequisites) för hello önskad Sekundär cache är uppfyllda. toofilter hello cacheminnen efter region, klickar du på hello önskad region i hello kartan toodisplay endast de cachelagrar i hello **kompatibel cacheminnen** lista.
 
     ![GEO-replikering kompatibel cacheminnen](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
     
-    Du kan också initiera länkningen eller visa information om den sekundära cachen med hjälp av snabbmenyn.
+    Du kan också starta hello länkning process eller visa information om sekundära hello-cachen genom att använda hello snabbmenyn.
 
     ![Snabbmenyn för GEO-replikering](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. Klicka på **länk** att länka samman två cacheminnen och börja replikeringen.
+3. Klicka på **länk** toolink hello två cacheminnen tillsammans och börja hello replikeringen.
 
     ![Länken cachelagrar](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
-4. Du kan visa förloppet för replikeringen på den **georeplikering** bladet.
+4. Du kan visa hello fortskrider hello replikeringen på hello **georeplikering** bladet.
 
     ![Länka status](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
 
-    Du kan också visa länkande status på den **översikt** bladet för både de primära och sekundära cacheminnen.
+    Du kan också visa hello länka status på hello **översikt** bladet för båda hello primära och sekundära cacheminnen.
 
     ![Cachestatus](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    När replikeringen är klar, den **länka status** ändras till **lyckades**.
+    När hello replikeringen är klar hello **länka status** ändras för**lyckades**.
 
     ![Cachestatus](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
-    Primär länkade cachen fortfarande är tillgänglig för användning under länkningen, men sekundära länkade cache är inte tillgängligt förrän länkningen.
+    Hello primära länkade cache fortfarande är tillgänglig för användning under hello länka process, men hello sekundär länkade cache är inte tillgängligt förrän hello länka processen har slutförts.
 
 ## <a name="remove-a-geo-replication-link"></a>Ta bort en länk för Geo-replikering
 
-1. Om du vill ta bort länken mellan två cacheminnen och stoppa Geo-replikering, klickar du på **Avlänka cacheminnen** från den **georeplikering** bladet.
+1. tooremove hello länken mellan två cacheminnen och stoppa Geo-replikering, klickar du på **Avlänka cacheminnen** från hello **georeplikering** bladet.
     
     ![Avlänka cacheminnen](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 
-    När bryta länkar till processen är klar är sekundära cacheminnet tillgängliga för både läsningar och skrivningar.
+    När hello bryta länkar är klart hello Sekundär cache är tillgänglig för både läsningar och skriver.
 
 >[!NOTE]
->När länken Geo-replikering har tagits bort, förblir replikerade data från den primära länka cachen i sekundära cache.
+>När hello Geo-replikering länken tas bort replikerade hello data från hello primära länkade cache blir kvar i hello Sekundär cache.
 >
 >
 
 ## <a name="geo-replication-faq"></a>Vanliga frågor om GEO-replikering
 
 - [Kan jag använda Geo-replikering med en Standard- eller Basic-nivån cache?](#can-i-use-geo-replication-with-a-standard-or-basic-tier-cache)
-- [Är Mina cacheminne tillgängliga för användning under länkade eller bryta länkar?](#is-my-cache-available-for-use-during-the-linking-or-unlinking-process)
+- [Är Mina cacheminne tillgängliga för användning under hello länka eller bryta länkade processen?](#is-my-cache-available-for-use-during-the-linking-or-unlinking-process)
 - [Kan jag koppla fler än två cacheminnen tillsammans?](#can-i-link-more-than-two-caches-together)
 - [Kan jag koppla två cacheminnen från andra Azure-prenumerationer?](#can-i-link-two-caches-from-different-azure-subscriptions)
 - [Kan jag koppla två cacheminnen med olika storlekar?](#can-i-link-two-caches-with-different-sizes)
 - [Kan jag använda Geo-replikering med aktiverad klustring?](#can-i-use-geo-replication-with-clustering-enabled)
 - [Kan jag använda Geo-replikering med min Cacheminnena i ett virtuellt nätverk?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
-- [Kan jag använda PowerShell eller Azure CLI för att hantera Geo-replikering?](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
-- [Hur mycket kostar det för att replikera data mellan Azure-regioner?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
-- [Varför åtgärden misslyckas när jag försökte ta bort min länkade cache?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
+- [Kan jag använda PowerShell eller Azure CLI toomanage Geo-replikering?](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
+- [Hur mycket kostar det tooreplicate Mina data i Azure-regioner?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
+- [Varför hello misslyckas när jag försökte toodelete min länkade cache?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [Vilken region ska använda för min sekundära länkade cache?](#what-region-should-i-use-for-my-secondary-linked-cache)
-- [Hur fungerar inte körs i sekundära länkade cacheminne?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [Hur fungerar inte körs toohello sekundära länkade cache?](#how-does-failing-over-to-the-secondary-linked-cache-work)
 
 ### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Kan jag använda Geo-replikering med en Standard- eller Basic-nivån cache?
 
 Nej, Geo-replikering är endast tillgängligt för Premium-nivån.
 
-### <a name="is-my-cache-available-for-use-during-the-linking-or-unlinking-process"></a>Är Mina cacheminne tillgängliga för användning under länkade eller bryta länkar?
+### <a name="is-my-cache-available-for-use-during-hello-linking-or-unlinking-process"></a>Är Mina cacheminne tillgängliga för användning under hello länka eller bryta länkade processen?
 
-- När koppla ihop två cacheminnen för Geo-replikering, primära länkade cachen fortfarande är tillgänglig för användning men sekundära länkade cache är inte tillgängligt förrän länkningen.
-- När du tar bort länken mellan två cacheminnen Geo-replikering, är både cacheminnen tillgängliga för användning.
+- När koppla ihop två cacheminnen för Geo-replikering, hello primära länkade cache fortfarande är tillgänglig för användning men hello sekundär länkade cache är inte tillgängligt förrän hello länka processen har slutförts.
+- När du tar bort länken hello Geo-replikering mellan två cacheminnen är båda cacheminnen tillgängliga för användning.
 
 ### <a name="can-i-link-more-than-two-caches-together"></a>Kan jag koppla fler än två cacheminnen tillsammans?
 
@@ -122,47 +122,47 @@ Nej, när du använder Geo-replikering kan du bara länka två cacheminnen tills
 
 ### <a name="can-i-link-two-caches-from-different-azure-subscriptions"></a>Kan jag koppla två cacheminnen från andra Azure-prenumerationer?
 
-Ingen, både cacheminnen måste finnas i samma Azure-prenumerationen.
+Ingen, både cacheminnen måste vara i hello samma Azure-prenumeration.
 
 ### <a name="can-i-link-two-caches-with-different-sizes"></a>Kan jag koppla två cacheminnen med olika storlekar?
 
-Ja, så länge som sekundärt länkade cache är större än den primära länka cachen.
+Ja, så länge hello sekundär länkade cache är större än hello primära länkade cache.
 
 ### <a name="can-i-use-geo-replication-with-clustering-enabled"></a>Kan jag använda Geo-replikering med aktiverad klustring?
 
-Ja, så länge båda cacheminnen har samma antal delar.
+Ja, så länge båda cacheminnen har hello samma antal delar.
 
 ### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>Kan jag använda Geo-replikering med min Cacheminnena i ett virtuellt nätverk?
 
 Ja, Geo-replikering av Cacheminnena i Vnet stöds. 
 
-- GEO-replikering mellan Cacheminnena i samma virtuella nätverk stöds.
-- GEO-replikering mellan Cacheminnena i olika Vnet stöds också, förutsatt att två virtuella nätverk konfigureras så att resurser i Vnet ska kunna nå varandra via TCP-anslutningar.
+- GEO-replikering mellan Cacheminnena i hello stöds samma virtuella nätverk.
+- GEO-replikering mellan Cacheminnena i olika Vnet stöds också, förutsatt att hello två Vnet har konfigurerats så att resurser i hello Vnet är kan tooreach varandra via TCP-anslutningar.
 
-### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Kan jag använda PowerShell eller Azure CLI för att hantera Geo-replikering?
+### <a name="can-i-use-powershell-or-azure-cli-toomanage-geo-replication"></a>Kan jag använda PowerShell eller Azure CLI toomanage Geo-replikering?
 
-Du kan endast hantera Geo-replikering med Azure-portalen just nu.
+Just nu kan endast hantera hello Geo-replikering med hjälp av Azure-portalen.
 
-### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Hur mycket kostar det för att replikera data mellan Azure-regioner?
+### <a name="how-much-does-it-cost-tooreplicate-my-data-across-azure-regions"></a>Hur mycket kostar det tooreplicate Mina data i Azure-regioner?
 
-När du använder Geo-replikering replikeras data från primär länkade cachen till sekundär länkade cachen. Om det finns två länkade Cacheminnena i samma Azure-region är gratis för att överföra data. Om det finns två länkade Cacheminnena i olika Azure-regioner, är Geo-replikering data transfer tillägget bandbredd kostnaden för att replikera data till andra Azure-regionen. Mer information finns i [bandbredd prisinformation](https://azure.microsoft.com/pricing/details/bandwidth/).
+När du använder Geo-replikering är data från hello primära länkade cache replikerade toohello sekundära länkade cache. Om hello två länkade cacheminnen finns i hello samma Azure-regionen är gratis för hello dataöverföring. Om hello två länkad cacheminnen är i olika Azure-regioner är hello Geo-replikering data transfer kostnad hello bandbredd kostnaden för att replikera den data toohello andra Azure-region. Mer information finns i [bandbredd prisinformation](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-### <a name="why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache"></a>Varför åtgärden misslyckas när jag försökte ta bort min länkade cache?
+### <a name="why-did-hello-operation-fail-when-i-tried-toodelete-my-linked-cache"></a>Varför hello misslyckas när jag försökte toodelete min länkade cache?
 
-När två cacheminnen är länkade till varandra, kan du ta bort cache eller resursgruppen som innehåller dem förrän du tar bort länken Geo-replikering. Om du försöker ta bort resursgruppen som innehåller en eller båda av länkade resurserna i resursgruppen tas bort, men resursgruppen förblir i det `deleting` tillstånd och eventuella länkade Cacheminnena i resursgruppen finns kvar i `running`tillstånd. För att slutföra borttagningen av resursgruppen och länkade Cacheminnena i den bryta länken Geo-replikering som beskrivs i [ta bort en länk för Geo-replikering](#remove-a-geo-replication-link).
+När två cacheminnen är länkade till varandra, kan du ta bort cache eller hello resursgruppen som innehåller dem förrän du tagit bort hello Geo-replikering länk. Om du försöker toodelete hello resursgruppen som innehåller en eller båda av hello länkade cacheminnen, hello andra resurser i resursgruppen hello tas bort, men hello resursgruppen förblir i hello `deleting` tillstånd och länkad Cacheminnena i hello resursgruppen. finns kvar i hello `running` tillstånd. toocomplete hello borttagning av hello resursgrupp och hello länkade cacheminnen inom den, ta bort hello Geo-replikering länk som beskrivs i [ta bort en länk för Geo-replikering](#remove-a-geo-replication-link).
 
 ### <a name="what-region-should-i-use-for-my-secondary-linked-cache"></a>Vilken region ska använda för min sekundära länkade cache?
 
-I allmänhet rekommenderas för ditt cacheminne ska finnas i samma Azure-region som det program som har åtkomst till den. Om programmet har en primär och en återställningsplats region, ska din primära och sekundära cacheminnen finnas i samma regioner. Mer information om parad regioner finns [metodtips – parad Azure-regioner](../best-practices-availability-paired-regions.md).
+I allmänhet det rekommenderas för din cache tooexist i hello samma Azure-region som hello-program som har åtkomst till den. Om programmet har en primär och en återställningsplats region, ska din primära och sekundära cacheminnen finnas i samma regioner. Mer information om parad regioner finns [metodtips – parad Azure-regioner](../best-practices-availability-paired-regions.md).
 
-### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Hur fungerar inte körs i sekundära länkade cacheminne?
+### <a name="how-does-failing-over-toohello-secondary-linked-cache-work"></a>Hur fungerar inte körs toohello sekundära länkade cache?
 
-I den första versionen av Geo-replikering stöder Azure Redis-Cache inte automatisk redundans över Azure-regioner. GEO-replikering används framför allt för en katastrofåterställning. I en distater återställningsscenario bör kunder visa hel programstack i en säkerhetskopiering region i ett samordnat sätt i stället för att låta enskilda programkomponenter bestämma när du vill växla till deras säkerhetskopior på egen hand. Detta är särskilt relevanta till Redis. En av de främsta fördelarna med Redis är att det är en mycket låg latens store. Om Redis som används av ett program som växlar över till en annan Azure-region men inte i beräknings-nivån, skulle tillagda tur och RETUR-tid ha en märkbar effekt på prestanda. Därför vill vi undvika Redis misslyckas över automatiskt på grund av problem med tillfälliga tillgänglighet.
+I hello första versionen av Geo-replikering stöder Azure Redis-Cache inte automatisk redundans över Azure-regioner. GEO-replikering används framför allt för en katastrofåterställning. I en distater återställningsscenario ska kunder få upp hello hel programstack i en säkerhetskopiering region i ett samordnat sätt i stället för att låta enskilda programkomponenter bestämma när tooswitch tootheir säkerhetskopieringar på egen hand. Detta är särskilt relevanta tooRedis. En av hello viktiga fördelar med Redis är att det är en mycket låg latens store. Om Redis används av ett program inte över tooa olika Azure-region men hello beräkning nivå inte, hello läggs avrunda resa tid skulle ha en märkbar effekt på prestanda. Därför vill vi tooavoid Redis misslyckas över automatiskt på grund av problem med tootransient tillgänglighet.
 
-För närvarande för att påbörja redundans måste du ta bort länken Geo-replikering i Azure-portalen och sedan ändra anslutning slutpunkt i Redis-klient från primära länkade cachen (tidigare länkade) sekundär cacheminne. När två cacheminnen är koppla bort, blir en vanlig skrivskyddad cache igen repliken och accepterar begäranden direkt från Redis-klienter.
+För närvarande tooinitiate hello redundans måste tooremove hello Geo-replikering länken i hello Azure-portalen och ändra sedan hello anslutning slutpunkt i hello Redis-klient från hello primära länkade cache toohello (tidigare länkad) Sekundär cache. När två cacheminnen är koppla bort, hello hello replik blir en vanlig skrivskyddad cache igen och accepterar begäranden direkt från Redis-klienter.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om den [Azure Redis Cache Premium-nivån](cache-premium-tier-intro.md).
+Mer information om hello [Azure Redis Cache Premium-nivån](cache-premium-tier-intro.md).
 

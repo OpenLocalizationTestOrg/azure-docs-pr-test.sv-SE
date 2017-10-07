@@ -1,5 +1,5 @@
 ---
-title: "Metodtips för Azure App Service"
+title: "aaaBest praxis för Azure App Service"
 description: "Läs om bästa praxis och felsöka problem med Azure App Service."
 services: app-service
 documentationcenter: 
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: fd94f5b17f69dec91c78c8acfbac2eaf5787c010
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a1d3127f5a746aa43f7b56b45f17c45df9087bee
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="best-practices-for-azure-app-service"></a>Metodtips för Azure App Service
 Den här artikeln sammanfattar Metodtips för [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). 
 
 ## <a name="colocation"></a>Samordning
-När Azure-resurser genom att skriva en lösning, till exempel ett webbprogram och en databas finns i olika regioner kan effekterna innefatta följande:
+När Azure-resurser genom att skriva en lösning, till exempel ett webbprogram och en databas finns i olika regioner hello effekter kan inkludera hello följande:
 
 * Ökad latens kommunikationen mellan resurser
-* Monetära kostnader för utgående data transfer cross-region som anges på den [Azure sida med priser](https://azure.microsoft.com/pricing/details/data-transfers).
+* Monetära kostnader för utgående data transfer cross-region som anges på hello [Azure sida med priser](https://azure.microsoft.com/pricing/details/data-transfers).
 
-Det är bäst för Azure-resurser genom att skriva en lösning, till exempel ett webbprogram och en databas eller lagring kontot som används för att lagra innehåll eller samordning i samma region. När du skapar resurser bör du kontrollera att är de i samma Azure-region om du inte har särskilda business eller utforma orsaken till dem ska inte. Du kan flytta en Apptjänst-app till samma region som din databas genom att utnyttja den [Apptjänst funktionen kloning](app-service-web-app-cloning-portal.md) tillgängliga för Premium Apptjänstplan appar.   
+Samordning i hello samma region som är bäst för Azure-resurser genom att skriva en lösning, till exempel ett webbprogram och en databas eller storage-konto används toohold innehåll eller. När hello skapar resurser bör du kontrollera de finns i samma Azure-region om du inte har särskilda business eller utforma orsaken till dem inte toobe. Du kan flytta en Apptjänst-app toohello samma region som din databas genom att utnyttja hello [Apptjänst funktionen kloning](app-service-web-app-cloning-portal.md) tillgängliga för Premium Apptjänstplan appar.   
 
 ## <a name="memoryresources"></a>När appar förbruka mer minne än väntat
-När du ser en app förbrukar mer minne än förväntat som anges via övervakning eller tjänsterekommendationer Tänk den [App Service automatisk återställning funktionen](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites). Något av alternativen för funktionen för automatisk återställning tar anpassade åtgärder baserat på ett tröskelvärde för minne. Åtgärder span spektrumet från e-postmeddelanden till undersökningen via minnesdump till på platsen minskning av återvinning för arbetsprocessen. Automatisk återställning kan konfigureras via web.config och via ett eget användargränssnitt enligt beskrivningen i i det här blogginlägget för den [App webbtjänsttillägget Support webbplats](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
+När du ser en app förbrukar mer minne än förväntat som anges via övervakning eller tjänsterekommendationer Tänk hello [App Service automatisk återställning funktionen](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites). Ett av hello alternativ för automatisk återställning hello-funktionen tar anpassade åtgärder baserat på ett tröskelvärde för minne. Åtgärder span hello spektrumet från e-postaviseringar tooinvestigation via minne dump tooon plats minskning av återvinning hello arbetsprocessen. Automatisk återställning kan konfigureras via web.config och via ett eget användargränssnitt enligt beskrivningen i i det här blogginlägget för hello [App webbtjänsttillägget Support webbplats](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps).   
 
 ## <a name="CPUresources"></a>När appar konsumera mycket mer Processorkraft än väntat
-När du upptäcker att en app förbrukar mer CPU än förväntat eller inträffar upprepas processoranvändning som anges via övervakning eller tjänsterekommendationer Överväg att skala upp eller skala ut App Service-plan. Om ditt program är statefull, är skala upp det enda alternativet medan om ditt program är tillståndslös, skala ut får du större flexibilitet och högre risk för skalan. 
+När du upptäcker att en app förbrukar mer CPU än förväntat eller inträffar upprepas processoranvändning som anges via övervakning eller tjänsterekommendationer Överväg att skala upp eller skala ut hello App Service-plan. Om ditt program är statefull, är skala upp hello endast alternativet, även om ditt program är tillståndslös, skala ut får du större flexibilitet och högre risk för skalan. 
 
 Mer information om ”statefull” eller ”tillståndslösa” program kan du titta på den här videon: [planera en skalbar slutpunkt till slutpunkt Flernivåapp på Microsoft Azure Web App](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid). Mer information om alternativ för skalning och autoskalning i Apptjänst: [skala en Webbapp i Azure App Service](web-sites-scale.md).  
 
 ## <a name="socketresources"></a>När socketen resurserna är uttömda
-En vanlig orsak till lång körningstid förbrukar utgående TCP-anslutningar är användningen av klientbibliotek som inte implementeras återanvända TCP-anslutningar eller om ett högre nivå protokoll, till exempel HTTP - Keep-Alive inte utnyttjas. Granska dokumentationen för varje bibliotek som refereras av appar i din App Service-Plan så konfigureras eller komma åt i koden för effektiv användning av utgående anslutningar. Du kan även följa biblioteket dokumentationen vägledning för rätt skapas och versionen eller rensning för att undvika läcka anslutningar. När sådana klientbibliotek de pågår påverkas kan undvikas genom att skala ut till flera instanser.  
+En vanlig orsak till lång körningstid förbrukar utgående TCP-anslutningar är hello användningen av klientbibliotek som inte är implementerade tooreuse TCP-anslutningar eller i hello fallet protokoll på en högre nivå, till exempel HTTP - Keep-Alive inte utnyttjas. Granska hello dokumentationen för varje hello bibliotek som refereras av hello appar i din App Service-Plan tooensure konfigureras eller komma åt i koden för effektiv användning av utgående anslutningar. Du kan även följa hello biblioteket dokumentationen vägledning för rätt skapandet och versionen eller rensa tooavoid läcka anslutningar. Medan sådana klienten bibliotek utredningar kan förlopp påverkan undvikas genom att skala ut toomultiple instanser.  
 
 ## <a name="appbackup"></a>När en app Säkerhetskopiera startar misslyckas
-De två vanligaste orsakerna varför app säkerhetskopieringen misslyckas är: Ogiltig lagringsinställningarna och konfiguration av ogiltig databas. Dessa fel inträffa vanligtvis när det finns ändringar till lagring eller databasen resurser eller ändringar att få åtkomst till dessa resurser (t.ex. autentiseringsuppgifter som uppdateras med den valda i inställningarna för säkerhetskopiering databasen). Säkerhetskopieringar normalt körs enligt ett schema och kräver åtkomst till lagring (för att mata ut de säkerhetskopierade filer) och databaser (för kopiera och läsning av innehållet som ska ingå i säkerhetskopian). Resultat för att komma åt någon av dessa resurser inte är konsekvent säkerhetskopieringen har misslyckats. 
+Hej två vanligaste orsakerna till varför app säkerhetskopieringen misslyckas är: Ogiltig lagringsinställningarna och konfiguration av ogiltig databas. Dessa fel inträffa vanligtvis när det finns ändringar toostorage eller databasresurser eller ändringar i hur tooaccess dessa resurser (t.ex. autentiseringsuppgifter som uppdateras för markerade i hello säkerhetskopieringsinställningar hello-databasen). Säkerhetskopieringar normalt körs enligt ett schema och kräver åtkomst toostorage (för att mata ut hello säkerhetskopierade filer) och databaser (för kopiera och läsa innehållet toobe ingår i hello säkerhetskopiering). Hej resultatet inte tooaccess någon av dessa resurser skulle vara konsekvent säkerhetskopieringen har misslyckats. 
 
-Granska senaste resultat för att förstå vilken typ av fel som händer när Säkerhetskopieringsfel uppstår. Vid åtkomst av lagringsfel, granska och uppdatera lagringsinställningarna som används i konfigurationen för säkerhetskopiering. När det gäller databasfel åtkomst, granska och uppdatera din anslutningar strängar som en del av appinställningar. Fortsätt sedan att uppdatera konfigurationen för säkerhetskopieringen korrekt med databaserna som krävs. Mer information om app-säkerhetskopiering finns i [säkerhetskopiera en webbapp i Azure App Service](web-sites-backup.md) dokumentation.
+Granska den senaste resultat toounderstand vilken typ av fel som händer när Säkerhetskopieringsfel uppstår. Hello gäller lagringsfel åtkomst, granska och uppdatera hello Lagringsinställningar som används i konfigurationen för säkerhetskopiering av hello. Hello gäller databasfel åtkomst, granska och uppdatera din anslutningar strängar som en del av appinställningar. Gå sedan vidare tooupdate konfigurationen för säkerhetskopiering-tooproperly inkluderar hello krävs databaser. Mer information om app-säkerhetskopiering finns hello [säkerhetskopiera en webbapp i Azure App Service](web-sites-backup.md) dokumentation.
 
-## <a name="nodejs"></a>När nya Node.js-appar distribueras till Azure App Service
-Azure Apptjänst standardkonfigurationen för Node.js-appar är avsedd som bäst passar behoven hos de vanligaste appar. Om konfigurationen för Node.js-appen skulle utnyttja anpassade inställning för att förbättra prestanda eller Optimera resursanvändningen för CPU/minne/nätverksresurser, kan du granska våra metodtips och felsökning. Den här dokumentationen artikeln beskriver iisnode inställningar du kan behöva konfigurera för din Node.js-app, beskriver de olika scenarierna eller problem att din app kan hantera och visar hur du kan lösa dessa problem: [metodtips och felsökningsguiden för noden program i Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md).   
+## <a name="nodejs"></a>När nya Node.js-appar är distribuerade tooAzure Apptjänst
+Azure Apptjänst standardkonfigurationen för Node.js-appar är avsedda toobest färg hello behoven hos de vanligaste appar. Om konfigurationen för Node.js-appen skulle dra nytta av anpassade prestandajustering tooimprove prestanda eller Optimera resursanvändningen för CPU/minne/nätverksresurser, kan du granska våra metodtips och felsökning. Dokumentationen beskrivs hello iisnode-inställningar som du kan behöva tooconfigure för din Node.js-app beskriver hello olika scenarier eller problem som kan hantera din app och visar hur tooaddress problemen: [bästa praxis och felsökningsguide för noden program för Azure App Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md).   
 

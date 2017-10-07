@@ -1,6 +1,6 @@
 ---
-title: "Skapa data pipelines med hjälp av Azure .NET SDK | Microsoft Docs"
-description: "Lär dig mer om att skapa, övervaka och hantera Azure datafabriker med hjälp av Data Factory SDK."
+title: "aaaCreate data pipelines med hjälp av Azure .NET SDK | Microsoft Docs"
+description: "Lär dig hur tooprogrammatically skapa, övervaka och hantera Azure datafabriker med hjälp av Data Factory SDK."
 services: data-factory
 documentationcenter: 
 author: spelluru
@@ -14,109 +14,109 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 9d9dac75321c5d4e079f49320d9b7c6f56e48754
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 190b5f99edbb3c27e1e8efb8990b9e601b22458f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Skapa, övervaka och hantera Azure datafabriker med Azure Data Factory .NET SDK
 ## <a name="overview"></a>Översikt
-Du kan skapa, övervaka och hantera Azure datafabriker genom programmering med Data Factory .NET SDK. Den här artikeln innehåller en genomgång som du kan följa om du vill skapa ett exempelkonsol .NET-program som skapar och övervakar en datafabrik. 
+Du kan skapa, övervaka och hantera Azure datafabriker genom programmering med Data Factory .NET SDK. Den här artikeln innehåller en genomgång som du kan följa toocreate ett exempelkonsol .NET-program som skapar och övervakar en datafabrik. 
 
 > [!NOTE]
-> Den här artikeln beskriver inte hela .NET-API:et för Data Factory. Se [Data Factory .NET API-referens](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) omfattande dokumentation för .NET-API för Data Factory. 
+> Den här artikeln täcker inte alla hello Data Factory .NET API: et. Se [Data Factory .NET API-referens](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) omfattande dokumentation för .NET-API för Data Factory. 
 
 ## <a name="prerequisites"></a>Krav
 * Visual Studio 2012, 2013 eller 2015
 * Hämta och installera [Azure .NET SDK](http://azure.microsoft.com/downloads/).
-* Azure PowerShell. Följ instruktionerna i artikeln [Så här installerar och konfigurerar du Azure PowerShell](/powershell/azure/overview) för att installera Azure PowerShell på datorn. Du kan använda Azure PowerShell för att skapa ett Azure Active Directory-program.
+* Azure PowerShell. Följ instruktionerna i [hur tooinstall och konfigurera Azure PowerShell](/powershell/azure/overview) artikel tooinstall Azure PowerShell på datorn. Du kan använda Azure PowerShell toocreate ett Azure Active Directory-program.
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Skapa ett program i Azure Active Directory
-Skapa ett Azure Active Directory-program, skapa ett tjänstobjektnamn för programmet och tilldela det rollen som **Data Factory-deltagare**.
+Skapa ett Azure Active Directory-program, skapa ett huvudnamn för tjänsten för hello program och tilldela den toohello **Data Factory deltagare** roll.
 
 1. Starta **PowerShell**.
-2. Kör följande kommando och ange användarnamnet och lösenordet som du använder för att logga in på Azure-portalen.
+2. Kör följande kommando hello och ange hello användarnamn och lösenord som du använder toosign i toohello Azure-portalen.
 
     ```PowerShell
     Login-AzureRmAccount
     ```
-3. Kör följande kommando för att visa alla prenumerationer för det här kontot.
+3. Kör följande kommando tooview hello alla hello prenumerationer för det här kontot.
 
     ```PowerShell
     Get-AzureRmSubscription
     ```
-4. Kör följande kommando för att välja den prenumeration som du vill arbeta med. Ersätt **&lt;NameOfAzureSubscription**&gt; med namnet på din Azure-prenumeration.
+4. Hello kör följande kommando tooselect hello prenumeration som du vill toowork med. Ersätt  **&lt;NameOfAzureSubscription** &gt; med hello namnet på din Azure-prenumeration.
 
     ```PowerShell
     Get-AzureRmSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzureRmContext
     ```
 
    > [!IMPORTANT]
-   > Anteckna **ID** och **TenantId** i kommandots utdata.
+   > Notera **SubscriptionId** och **TenantId** från hello utdata från kommandot.
 
-5. Skapa en Azure-resursgrupp med namnet **ADFTutorialResourceGroup** genom att köra följande kommando i PowerShell.
+5. Skapa en Azure-resursgrupp med namnet **ADFTutorialResourceGroup** genom att köra följande kommando i hello PowerShell hello.
 
     ```PowerShell
     New-AzureRmResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
-    Om resursgruppen redan finns anger du om du vill uppdatera den (Y) eller lämna den som den är (N).
+    Om hello resursgruppen finns redan, anger du om tooupdate den (Y) eller låta (n).
 
-    Om du använder en annan resursgrupp måste du använda namnet på din resursgrupp i stället för ADFTutorialResourceGroup i den här självstudiekursen.
+    Om du använder en annan resursgrupp måste toouse hello namnet på resursgruppen i stället för ADFTutorialResourceGroup i den här kursen.
 6. Skapa ett Azure Active Directory-program.
 
     ```PowerShell
     $azureAdApplication = New-AzureRmADApplication -DisplayName "ADFDotNetWalkthroughApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfdotnetwalkthroughapp.org/example" -Password "Pass@word1"
     ```
 
-    Om följande fel returneras anger du en annan URL och kör kommandot igen.
+    Om du får följande fel hello kan ange en annan URL och kör hello kommandot igen.
     
     ```PowerShell
-    Another object with the same value for property identifierUris already exists.
+    Another object with hello same value for property identifierUris already exists.
     ```
-7. Skapa AD-tjänstobjektet.
+7. Skapa hello AD tjänstens huvudnamn.
 
     ```PowerShell
     New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
-8. Lägg till tjänstobjektet till rollen som **Data Factory-deltagare**.
+8. Lägga till tjänstens huvudnamn toohello **Data Factory deltagare** roll.
 
     ```PowerShell
     New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
-9. Hämta program-ID:t.
+9. Hämta hello program-ID.
 
     ```PowerShell
     $azureAdApplication 
     ```
-    Anteckna program-ID:t (applicationID) från utdata.
+    Notera hello program-ID (applicationID) från hello-utdata.
 
 Du bör nu ha tillgång till följande fyra värden efter de här stegen:
 
 * Klient-ID:t
 * Prenumerations-ID:t
 * Program-ID:t
-* Lösenord (anges i det första kommandot)
+* Lösenord (anges i hello första kommandot)
 
 ## <a name="walkthrough"></a>Genomgång
-I den här genomgången skapa en datafabrik med en rörledning som innehåller en kopia-aktivitet. Kopieringsaktiviteten kopierar data från en mapp i din Azure blob storage till en annan mapp i samma blob storage. 
+I hello genomgång skapar du en datafabrik med en rörledning som innehåller en kopia-aktivitet. Hej kopieringsaktiviteten kopierar data från en mapp i Azure blob storage tooanother-mappen i hello samma blob storage. 
 
-Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten drivs av en globalt tillgänglig tjänst som kan kopiera data mellan olika datalager på ett säkert, tillförlitligt och skalbart sätt. Se artikeln [Dataförflyttningsaktiviteter](data-factory-data-movement-activities.md) för information om kopieringsaktiviteten.
+Hej Kopieringsaktiviteten utför hello dataflyttning i Azure Data Factory. hello aktiviteten drivs av en globalt tillgänglig tjänst som kan kopiera data mellan olika datalager på ett säkert, tillförlitligt och skalbar sätt. Se [Data Movement aktiviteter](data-factory-data-movement-activities.md) artikeln för information om hello Kopieringsaktiviteten.
 
 1. Skapa ett C# .NET-konsolprogram med hjälp av Visual Studio 2012/2013/2015.
    1. Starta **Visual Studio** 2012/2013/2015.
-   2. Klicka på **Arkiv**, peka på **Nytt** och klicka på **Projekt**.
+   2. Klicka på **filen**, peka för**ny**, och klicka på **projekt**.
    3. Expandera **Mallar** och välj **Visual C#**. I den här genomgången ska du använda C#, men du kan använda valfritt .NET-språk.
-   4. Välj **Konsolprogram** i listan över projekttyper till höger.
-   5. Ange **DataFactoryAPITestApp** som namn.
-   6. Välj **C:\ADFGetStarted** som plats.
-   7. Klicka på **OK** för att skapa projektet.
-2. Klicka på **Verktyg**, peka på **NuGet Package Manager** och klicka på **Package Manager Console**.
-3. I **Package Manager Console** gör du följande steg:
-   1. Kör följande kommando för att installera Data Factory-paketet: `Install-Package Microsoft.Azure.Management.DataFactories`
-   2. Kör följande kommando för att installera Azure Active Directory-paketet (du använder Active Directory-API i koden): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Ersätt innehållet i **App.config** filen i projektet med följande innehåll: 
+   4. Välj **konsolprogram** hello listan över projekttyper på hello rätt.
+   5. Ange **DataFactoryAPITestApp** för hello namn.
+   6. Välj **C:\ADFGetStarted** för hello plats.
+   7. Klicka på **OK** toocreate hello projektet.
+2. Klicka på **verktyg**, peka för**NuGet Package Manager**, och klicka på **Pakethanterarkonsolen**.
+3. I hello **Pakethanterarkonsolen**, hello följande steg:
+   1. Kör hello efter kommandot tooinstall Data Factory paketet:`Install-Package Microsoft.Azure.Management.DataFactories`
+   2. Kör hello efter kommandot tooinstall Azure Active Directory-paket (använder Active Directory API hello kod):`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
+4. Ersätt hello innehållet i **App.config** fil i hello-projekt med hello följande innehåll: 
     
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -127,14 +127,14 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
             <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 
             <add key="ApplicationId" value="your application ID" />
-            <add key="Password" value="Password you used while creating the AAD application" />
+            <add key="Password" value="Password you used while creating hello AAD application" />
             <add key="SubscriptionId" value= "Subscription ID" />
             <add key="ActiveDirectoryTenantId" value="Tenant ID" />
         </appSettings>
     </configuration>
     ```
-5. I filen App.Config uppdaterar du värden för  **&lt;program-ID&gt;**,  **&lt;lösenord&gt;**,  **&lt;prenumerations-ID&gt;**, och  **&lt;klient-ID&gt;**  med egna värden.
-6. Lägg till följande **med** instruktioner till den **Program.cs** filen i projektet.
+5. Uppdatera värden för i hello App.Config-filen  **&lt;program-ID&gt;**,  **&lt;lösenord&gt;**,  **&lt; Prenumerations-ID&gt;**, och  **&lt;klient-ID&gt;**  med egna värden.
+6. Lägg till följande hello **med** instruktioner toohello **Program.cs** fil i hello-projekt.
 
     ```csharp
     using System.Configuration;
@@ -150,15 +150,15 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
     ```
-6. Lägg till följande kod som skapar en instans av **DataPipelineManagementClient**-klassen till **Main**-metoden. Du kan använda det här objektet för att skapa en datafabrik, en länkad tjänst, in- och utdatauppsättningar och en pipeline. Du kan också använda det här objektet om du vill övervaka sektorer för en datauppsättning vid körningstillfället.
+6. Lägg till följande kod som skapar en instans av hello **DataPipelineManagementClient** klassen toohello **Main** metod. Du kan använda det här objektet toocreate en datafabrik, en länkad tjänst, inkommande och utgående datauppsättningar och en pipeline. Du kan också använda det här objektet toomonitor segment i en dataset vid körning.
 
     ```csharp
     // create data factory management client
 
-    //IMPORTANT: specify the name of Azure resource group here
+    //IMPORTANT: specify hello name of Azure resource group here
     string resourceGroupName = "ADFTutorialResourceGroup";
 
-    //IMPORTANT: the name of the data factory must be globally unique.
+    //IMPORTANT: hello name of hello data factory must be globally unique.
     // Therefore, update this value. For example:APITutorialFactory05122017
     string dataFactoryName = "APITutorialFactory";
 
@@ -172,10 +172,10 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
     ```
 
    > [!IMPORTANT]
-   > Ersätt värdet för **resourceGroupName** med namnet på Azure-resursgruppen. Du kan skapa en resurs med det [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) cmdlet.
+   > Ersätt hello värdet för **resourceGroupName** med hello namnet på ditt Azure-resursgrupp. Du kan skapa en resursgrupp med hello [New-AzureResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) cmdlet.
    >
-   > Uppdatera namnet på datafabriken (dataFactoryName) så att det är unikt. Namnet på datafabriken måste vara unikt globalt. Se artikeln [Data Factory – namnregler](data-factory-naming-rules.md) för namnregler för Data Factory-artefakter.
-7. Lägg till följande kod som skapar en **datafabrik** till **Main**-metoden.
+   > Uppdatera hello data factory (dataFactoryName) toobe unika namn. Namnet på hello data factory måste vara globalt unika. Se artikeln [Data Factory – namnregler](data-factory-naming-rules.md) för namnregler för Data Factory-artefakter.
+7. Lägg till följande kod som skapar hello en **datafabriken** toohello **Main** metod.
 
     ```csharp
     // create a data factory
@@ -192,7 +192,7 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
         }
     );
     ```
-8. Lägg till följande kod som skapar en **länkad Azure Storage-tjänst** till **Main**-metoden.
+8. Lägg till följande kod som skapar hello en **Azure länkade lagringstjänsten** toohello **Main** metod.
 
    > [!IMPORTANT]
    > Ersätt **storageaccountname** och **accountkey** med namnet och nyckeln för ditt Azure Storage-konto.
@@ -214,11 +214,11 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
         }
     );
     ```
-9. Lägg till följande kod som skapar **in- och utdatauppsättningar** till **Main**-metoden.
+9. Lägg till följande kod som skapar hello **inkommande och utgående datauppsättningar** toohello **Main** metod.
 
-    Den **FolderPath** för inkommande blob har värdet **adftutorial /** där **adftutorial** är namnet på behållaren i blob storage. Om den här behållaren inte finns i din Azure blob storage, skapa en behållare med namnet: **adftutorial** och ladda upp en textfil till behållaren.
+    Hej **FolderPath** för inkommande hello-blob har angetts för**adftutorial /** där **adftutorial** är hello namnet på behållaren hello i blob storage. Om den här behållaren inte finns i din Azure blob storage, skapa en behållare med namnet: **adftutorial** och ladda upp toohello textbehållaren.
 
-    Mappsökväg för utdata-blob har angetts till: **adftutorial/apifactoryoutput / {segmentera}** där **sektorn** beräknas dynamiskt baserat på värdet för **SliceStart** (starta datum och tid för varje segment.)
+    hello FolderPath för hello utdata blob har angetts till: **adftutorial/apifactoryoutput / {segmentera}** där **sektorn** är dynamiskt beräknat utifrån hello värdet för **SliceStart**(starta datum och tid för varje segment.)
 
     ```csharp
     // create input and output datasets
@@ -294,9 +294,9 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
         }
     });
     ```
-10. Lägg till följande kod som **skapar och aktiverar en pipeline** till **Main**-metoden. Den här pipelinen har en **CopyActivity** som använder **BlobSource** som källa och **BlobSink** som mottagare.
+10. Lägg till hello följande kod som **skapar och aktiverar en pipeline** toohello **Main** metod. Den här pipelinen har en **CopyActivity** som använder **BlobSource** som källa och **BlobSink** som mottagare.
 
-    Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten drivs av en globalt tillgänglig tjänst som kan kopiera data mellan olika datalager på ett säkert, tillförlitligt och skalbart sätt. Se artikeln [Dataförflyttningsaktiviteter](data-factory-data-movement-activities.md) för information om kopieringsaktiviteten.
+    Hej Kopieringsaktiviteten utför hello dataflyttning i Azure Data Factory. hello aktiviteten drivs av en globalt tillgänglig tjänst som kan kopiera data mellan olika datalager på ett säkert, tillförlitligt och skalbar sätt. Se [Data Movement aktiviteter](data-factory-data-movement-activities.md) artikeln för information om hello Kopieringsaktiviteten.
 
     ```csharp
     // create a pipeline
@@ -315,7 +315,7 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
             {
                 Description = "Demo Pipeline for data transfer between blobs",
     
-                // Initial value for pipeline's active period. With this, you won't need to set slice status
+                // Initial value for pipeline's active period. With this, you won't need tooset slice status
                 Start = PipelineActivePeriodStartTime,
                 End = PipelineActivePeriodEndTime,
     
@@ -354,7 +354,7 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
         }
     });
     ```
-12. Lägg till följande kod till **Main**-metoden för att hämta statusen för en datasektor i utdatauppsättningen. Det finns endast en sektor som förväntas i det här exemplet.
+12. Lägg till följande kod toohello hello **Main** metoden tooget hello status för en datasektorn av hello utdatauppsättningen. Det finns endast en sektor som förväntas i det här exemplet.
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -363,8 +363,8 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
     
     while (DateTime.Now - start < TimeSpan.FromMinutes(5) && !done)
     {
-        Console.WriteLine("Pulling the slice status");
-        // wait before the next status check
+        Console.WriteLine("Pulling hello slice status");
+        // wait before hello next status check
         Thread.Sleep(1000 * 12);
     
         var datalistResponse = client.DataSlices.List(resourceGroupName, dataFactoryName, Dataset_Destination,
@@ -389,13 +389,13 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
         }
     }
     ```
-13. **(valfritt)**  Lägg till följande kod för att få köra information för en datasektor som den **Main** metod.
+13. **(valfritt)**  Lägg till hello följande kod tooget kör information för en data-segmentet toohello **Main** metod.
 
     ```csharp
     Console.WriteLine("Getting run details of a data slice");
     
-    // give it a few minutes for the output slice to be ready
-    Console.WriteLine("\nGive it a few minutes for the output slice to be ready and press any key.");
+    // give it a few minutes for hello output slice toobe ready
+    Console.WriteLine("\nGive it a few minutes for hello output slice toobe ready and press any key.");
     Console.ReadKey();
     
     var datasliceRunListResponse = client.DataSliceRuns.List(
@@ -418,10 +418,10 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
         Console.WriteLine("ErrorMessage: \t{0}", run.ErrorMessage);
     }
     
-    Console.WriteLine("\nPress any key to exit.");
+    Console.WriteLine("\nPress any key tooexit.");
     Console.ReadKey();
     ```
-14. Lägg till följande helper-metod som används av **Main**-metoden i **Program**-klassen. Den här metoden visas en dialogruta som låter dig ange **användarnamn** och **lösenord** som används för att logga in på Azure-portalen.
+14. Lägg till följande helper-metod som används av hello hello **Main** metoden toohello **programmet** klass. Den här metoden visas en dialogruta som låter dig ange **användarnamn** och **lösenord** att du använder toolog i tooAzure portal.
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -437,29 +437,29 @@ Kopieringsaktiviteten utför dataflyttningen i Azure Data Factory. Aktiviteten d
         if (result != null)
             return result.AccessToken;
 
-        throw new InvalidOperationException("Failed to acquire token");
+        throw new InvalidOperationException("Failed tooacquire token");
     }
     ```
 
-15. Expandera projektet i Solution Explorer: **DataFactoryAPITestApp**, högerklicka på **referenser**, och klicka på **Lägg till referens**. Markera kryssrutan för `System.Configuration` sammansättningen och klicka på **OK**.
-15. Skapa konsolprogrammet. Klicka på **Skapa** på menyn och klicka sedan på **Build Solution** (Skapa lösning).
-16. Bekräfta att det finns minst en fil i behållaren adftutorial i Azure blob-lagring. Om inte, skapa Emp.txt fil i anteckningar med följande innehåll och överför den till behållaren adftutorial.
+15. Hello Solution Explorer, expandera hello projekt: **DataFactoryAPITestApp**, högerklicka på **referenser**, och klicka på **Lägg till referens**. Markera kryssrutan för `System.Configuration` sammansättningen och klicka på **OK**.
+15. Skapa hello konsolprogram. Klicka på **skapa** på hello-menyn och klicka på **skapa lösning**.
+16. Bekräfta att det finns minst en fil i hello adftutorial behållare i Azure blob-lagring. Om inte, skapa Emp.txt fil i anteckningar med hello efter innehåll och överför den toohello adftutorial behållare.
 
     ```
     John, Doe
     Jane, Doe
     ```
-17. Kör exemplet genom att klicka på **Felsök** -> **Börja felsöka** på menyn. När du ser **Getting run details of a data slice** (Hämta körningsdata för en datorsektor) väntar du några minuter och trycker sedan på **Retur**.
-18. Använd Azure-portalen och kontrollera att datafabriken **APITutorialFactory** har skapats med följande artefakter:
+17. Kör hello exempel genom att klicka på **felsöka** -> **Start Debugging** på hello-menyn. När du ser hello **komma kör information om en datasektorn**, Vänta några minuter och tryck på **RETUR**.
+18. Använd hello Azure portal tooverify hello data factory **APITutorialFactory** skapas med följande artefakter hello:
     * Länkade tjänsten: **AzureStorageLinkedService**
     * Datauppsättning: **DatasetBlobSource** och **DatasetBlobDestination**.
     * Pipeline: **PipelineBlobSample**
-19. Kontrollera att en utdatafil skapas i den **apifactoryoutput** mapp i den **adftutorial** behållare.
+19. Kontrollera att en utdatafil skapas i hello **apifactoryoutput** mapp i hello **adftutorial** behållare.
 
 ## <a name="get-a-list-of-failed-data-slices"></a>Hämta en lista över misslyckade datasektorer 
 
 ```csharp
-// Parse the resource path
+// Parse hello resource path
 var ResourceGroupName = "ADFTutorialResourceGroup";
 var DataFactoryName = "DataFactoryAPITestApp";
 
@@ -496,6 +496,6 @@ while (response != null);
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Se följande exempel för att skapa en pipeline med .NET SDK som kopierar data från ett Azure blob storage till en Azure SQL database: 
+Se följande exempel för att skapa en pipeline med .NET SDK som kopierar data från en Azure blob storage tooan Azure SQL database hello: 
 
-- [Skapa en pipeline för att kopiera data från Blob Storage till SQL-databas](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Skapa en pipeline toocopy data från Blob Storage tooSQL databas](data-factory-copy-activity-tutorial-using-dotnet-api.md)

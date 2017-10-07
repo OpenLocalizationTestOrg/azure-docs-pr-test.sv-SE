@@ -1,6 +1,6 @@
 ---
-title: StorSimple redundans och disaster recovery | Microsoft Docs
-description: "Lär dig mer om att växla över din StorSimple-enhet till sig själv, en annan fysisk enhet eller en virtuell enhet."
+title: aaaStorSimple redundans och disaster recovery | Microsoft Docs
+description: "Lär dig hur toofail över tooitself din StorSimple-enhet, en annan fysisk enhet eller en virtuell enhet."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,168 +14,168 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2016
 ms.author: alkohli
-ms.openlocfilehash: bf92ffdb16b86c4033cc96ae2abb060d90f9505e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 00ce365f8a9095d1f0292e665d7f9eaa844b44ae
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-device"></a>Redundans och disaster recovery för din StorSimple-enhet
 ## <a name="overview"></a>Översikt
-Den här självstudiekursen beskriver de steg som krävs för att växla en StorSimple-enhet vid en katastrof. En redundansväxling kan du migrera data från en källenhet i datacenter till ett annat fysiskt eller även en virtuell enhet som finns i samma eller en annan geografisk plats. 
+Den här självstudiekursen beskriver hello steg krävs toofail via en StorSimple-enhet i en katastrof hello-händelse. En redundansväxling kan du toomigrate dina data från en källenhet i hello datacenter tooanother fysiska eller även en virtuell enhet finns i hello samma eller en annan geografisk plats. 
 
-Katastrofåterställning (DR) styrd via funktionen med redundans i enheten och initieras från den **enheter** sidan. Den här sidan tabulates alla StorSimple-enheter som är anslutna till din StorSimple Manager-tjänst. Eget namn, status, etablerad och maximal kapacitet, typ och modell visas för varje enhet.
+Katastrofåterställning (DR) styrd via funktionen för hello enheten växling vid fel och initieras från hello **enheter** sidan. Den här sidan tabulates alla hello StorSimple-enheter anslutna tooyour StorSimple Manager-tjänsten. För varje enhet, hello eget namn, status, etablerad och maximal kapacitet visas typ och modell.
 
 ![Enheter-sidan](./media/storsimple-device-failover-disaster-recovery/IC740972.png)
 
-Riktlinjerna i den här kursen gäller StorSimple fysiska och virtuella enheter över alla programvaruversioner.
+hello anvisningarna i den här kursen gäller tooStorSimple fysiska och virtuella enheter över alla programvaruversioner.
 
 ## <a name="disaster-recovery-dr-and-device-failover"></a>Katastrofåterställning (DR) och växling vid fel för enheten
-I en (DR) katastrofåterställning, den primära enheten slutar fungera. I så fall kan du flytta molndata som är associerade med misslyckade enheten till en annan enhet med hjälp av användarens primära enhet som den *källa* och ange en annan enhet som den *mål*. Du kan välja en eller flera volymbehållare att migrera till målenheten. Den här processen kallas den *redundans*. 
+I en (DR) katastrofåterställning, hello primära enhet slutar fungera. I så fall kan du flytta hello molndata som associeras med hello misslyckad enhet tooanother enhet genom att använda hello primära enhet som hello *källa* och ange en annan enhet som hello *mål*. Du kan välja en eller flera volym behållare toomigrate toohello målenhet. Den här processen är refererad tooas hello *redundans*. 
 
-Under växling vid fel, volymbehållarna från källan ändra ägarskap och överförs till målenheten. När volymbehållarna ändra ägarskap, bort dessa från källan. När borttagningen är klar misslyckades kan sedan målenheten tillbaka.
+Under hello redundans hello volymbehållarna från hello källenheten ändra ägarskap och är överförda toohello målenhet. När hello volymbehållare ändra ägarskap, tas dessa bort från hello källenheten. När hello borttagningen är klar misslyckades kan sedan hello målenhet tillbaka.
 
-Vanligtvis följande DR, den senaste säkerhetskopian används för att återställa data till målenheten. Om det finns flera principer för säkerhetskopiering för samma volym, sedan säkerhetskopieringsprincip med det största antalet volymer hämtar plockats och den senaste säkerhetskopian från principen används för att återställa data på målenheten.
+Vanligtvis är en Katastrofåterställning, hello senaste säkerhetskopian används toorestore hello data toohello målenhet. Men om det finns flera principer för säkerhetskopiering för hello samma volym, sedan hello säkerhetskopieringsprincip med hello största antal volymer hämtar plockats och hello senaste säkerhetskopian från principen är används toorestore hello data på hello målenhet.
 
-Som exempel, om det finns två säkerhetskopieringsprinciper (en standard och en anpassad) *defaultPol*, *customPol* med följande information:
+Som exempel, om det finns två säkerhetskopieringsprinciper (en standard och en anpassad) *defaultPol*, *customPol* med hello följande information:
 
 * *defaultPol* : en volym *vol1*, kör daglig början på 10:30 PM.
 * *customPol* : fyra volymer *vol1*, *vol2*, *vol3*, *vol4*, kör daglig början på 10:00 PM.
 
-I det här fallet *customPol* kommer att användas som innehåller flera volymer och vi prioriterar för kraschkonsekvens. Den senaste säkerhetskopian från den här principen används för att återställa data.
+I det här fallet *customPol* kommer att användas som innehåller flera volymer och vi prioriterar för kraschkonsekvens. hello senaste säkerhetskopian från den här principen är används toorestore data.
 
 ## <a name="considerations-for-device-failover"></a>Överväganden för växling vid fel för enheten
-Vid en katastrof kan du välja att växla över din StorSimple-enhet:
+I en katastrof hello-händelse, kan du välja toofail över din StorSimple-enhet:
 
-* Till en fysisk enhet 
-* Till sig själv
-* Till en virtuell enhet
+* tooa fysisk enhet 
+* tooitself
+* tooa virtuell enhet
 
-För varje enhet redundans, Tänk på följande:
+Kom ihåg hello följande för varje enhet redundans:
 
-* Kraven för Katastrofåterställning är att alla volymer i volymbehållarna är offline och volymbehållarna har en associerad ögonblicksbild i molnet. 
-* De tillgängliga målenheterna för Katastrofåterställning är enheter som har tillräckligt med utrymme för de valda volymbehållarna. 
-* De enheter som är anslutna till din tjänst men inte uppfyller villkoren för tillräckligt med utrymme är inte tillgänglig som målenheter.
-* Efter en DR för en begränsad tid data access-prestanda kan påverkas avsevärt som enheten måste du komma åt data från molnet och lagras lokalt.
+* hello kraven för Katastrofåterställning är att alla hello volymer inom hello volymbehållare är offline och hello volymbehållare har en associerad ögonblicksbild i molnet. 
+* hello tillgängliga målenheterna för Katastrofåterställning är enheter som har tillräckligt diskutrymme tooaccommodate hello valda volymbehållare. 
+* hello enheter som är anslutna tooyour tjänsten men inte uppfyller villkoren för hello tillräckligt utrymme är inte tillgänglig som målenheter.
+* Efter en DR för en begränsad tid hello data access prestanda kan påverkas avsevärt, som hello enhet kommer måste tooaccess hello data från molnet hello och lagras lokalt.
 
 #### <a name="device-failover-across-software-versions"></a>Enheten redundans över programvaruversioner
-En StorSimple Manager-tjänsten i en distribution kan ha flera enheter, både fysiska och virtuella, alla kör olika versioner. Beroende på programvaruversionen kan volymtyper på enheterna också vara olika. Till exempel en enheten som kör uppdatering 2 eller högre skulle ha lokalt Fäst och nivåindelade volymer (med arkivering som en del av skikt). Å andra sidan kan ha nivåer en före uppdatering 2-enhet och arkivering volymer. 
+En StorSimple Manager-tjänsten i en distribution kan ha flera enheter, både fysiska och virtuella, alla kör olika versioner. Beroende på hello programvaruversionen kan hello volymtyper på hello enheter också vara olika. Till exempel en enheten som kör uppdatering 2 eller högre skulle ha lokalt Fäst och nivåindelade volymer (med arkivering som en del av skikt). En enhet före uppdatering 2 på hello andra sidan kan ha nivåer och arkivering volymer. 
 
-Använd följande tabell för att avgöra om kan du växla över till en annan enhet som kör en annan programvara och beteendet för volymtyper under Katastrofåterställning.
+Använd hello efter tabellen toodetermine om kan du växla över tooanother enhet som kör en annan programvara version och hello beteendet för volymtyper under Katastrofåterställning.
 
 | Växla över från | Tillåten för den fysiska enheten | Tillåtna för virtuella enheten |
 | --- | --- | --- |
-| Uppdatering 2 för att före uppdatering 1 (version 0.1, 0,2, 0.3) |Nej |Nej |
-| Uppdatering 2 för att uppdatera 1 (1, 1.1, 1.2) |Ja <br></br>Om du använder lokalt Fäst eller nivåer volymer eller en blandning av två, misslyckades volymerna alltid över eftersom nivåer. |Ja<br></br>Om du använder lokalt Fäst volymer, kunde dessa över nivåer. |
-| Uppdatering 2 för uppdatering 2 (senare version) |Ja<br></br>Om du använder lokalt fästa eller nivåindelade volymer eller en blandning av två har volymer alltid redundansväxlats som den första volymtypen; nivåer som nivåindelade och lokalt Fäst lokalt Fäst. |Ja<br></br>Om du använder lokalt Fäst volymer, kunde dessa över nivåer. |
+| Uppdatering 2 toopre-uppdatering 1 (version 0.1, 0,2, 0.3) |Nej |Nej |
+| Uppdatering 2 tooUpdate 1 (1, 1.1, 1.2) |Ja <br></br>Om använder lokalt Fäst eller nivåindelade volymer eller en blandning av två, hello alltid misslyckades över volymer som nivåer. |Ja<br></br>Om du använder lokalt Fäst volymer, kunde dessa över nivåer. |
+| Uppdatering 2 tooUpdate 2 (senare version) |Ja<br></br>Om du använder lokalt fästa eller nivåindelade volymer eller en blandning av två har hello volymer alltid redundansväxlats som hello startar volymtyp; nivåer som nivåindelade och lokalt Fäst lokalt Fäst. |Ja<br></br>Om du använder lokalt Fäst volymer, kunde dessa över nivåer. |
 
 #### <a name="partial-failover-across-software-versions"></a>Partiell redundans över programvaruversioner
-Följ dessa riktlinjer om du vill utföra en partiell redundans med en StorSimple-källenheten körs före uppdatering 1 för ett mål som kör uppdatering 1 eller senare. 
+Följ dessa riktlinjer om du avser tooperform en partiell redundans med en StorSimple-källenheten körs före uppdateringen 1 tooa mål som kör uppdatering 1 eller senare. 
 
 | Partiell växling från | Tillåten för den fysiska enheten | Tillåtna för virtuella enheten |
 | --- | --- | --- |
-| Före uppdatering 1 (version 0.1, 0,2, 0.3) Update 1 eller senare |Ja, se nedan för bästa praxis-tips. |Ja, se nedan för bästa praxis-tips. |
+| Före uppdatering 1 (version 0.1, 0,2, 0.3) tooUpdate 1 eller senare |Ja, se nedan för hello bästa praxis tips. |Ja, se nedan för hello bästa praxis tips. |
 
 > [!TIP]
-> Det uppstod molnet metadata och data format ändras uppdatering 1 och senare versioner. Vi rekommenderar därför inte en partiell växling från före uppdatering 1 till uppdatering 1 eller senare versioner. Om du behöver utföra en partiell redundans rekommenderar vi att du först installera uppdatering 1 eller senare på båda enheterna (källan och målet) och fortsätt sedan med växling vid fel. 
+> Det uppstod molnet metadata och data format ändras uppdatering 1 och senare versioner. Därför kan rekommenderar vi inte en partiell växling från före uppdateringen 1 tooUpdate 1 eller senare versioner. Om du behöver tooperform en partiell växling vid fel, rekommenderar vi att du först installera uppdatering 1 eller senare på båda hello enheter (källa och mål) och fortsätt sedan med hello växling vid fel. 
 > 
 > 
 
-## <a name="fail-over-to-another-physical-device"></a>Växla över till en annan fysisk enhet
-Utför följande steg för att återställa enheten till en fysisk enhet som mål.
+## <a name="fail-over-tooanother-physical-device"></a>Växla över tooanother fysisk enhet
+Utför följande steg toorestore hello din enhet tooa fysiska målenhet.
 
-1. Kontrollera att volymbehållaren som du vill växla över associeras molnögonblicksbilder.
-2. På den **enheter** klickar du på den **Volymbehållare** fliken.
-3. Välj en volymbehållare som du vill växla över till en annan enhet. Klicka på volymbehållare om du vill visa en lista över volymer i den här behållaren. Välj en volym och klicka på **ta Offline** att kopplas ifrån volymen. Upprepa proceduren för alla volymer i volymbehållaren.
-4. Upprepa det föregående steget för alla volymbehållare som du vill växla över till en annan enhet.
-5. På den **enheter** klickar du på **redundans**.
-6. I guiden som öppnas, under **Välj volymbehållare att växla över**:
+1. Kontrollera att hello volymbehållare som du vill ha toofail över har associerade molnögonblicksbilder.
+2. På hello **enheter** klickar du på hello **Volymbehållare** fliken.
+3. Välj en volymbehållare som du vill att toofail över tooanother enhet. Klicka på hello volym behållaren toodisplay hello lista över volymer i den här behållaren. Välj en volym och klicka på **ta Offline** tootake hello volymen offline. Upprepa proceduren för alla hello volymer i hello volymbehållare.
+4. Hello Upprepa föregående steg för alla hello volymbehållare som toofail över tooanother enhet.
+5. På hello **enheter** klickar du på **redundans**.
+6. I guiden för hello som öppnas, under **välja volym behållaren toofail över**:
    
-   1. Välj volymbehållarna som du vill växla över i listan över volymbehållare.
-      **Volymbehållare med associerade molnögonblicksbilder och offline volymer visas.**
-   2. Under **välja en målenhet** för volymer i de valda behållarna, väljer du en målenhet från listan över tillgängliga enheter. Endast de enheter som har tillgänglig kapacitet visas i den nedrullningsbara listan.
-   3. Slutligen granska alla inställningar för växling vid fel under **bekräfta redundans**. Klicka på kryssikonen ![kryssikonen](./media/storsimple-device-failover-disaster-recovery/IC740895.png).
-7. Skapas ett jobb för växling vid fel som kan övervakas den **jobb** sidan. Om volymbehållaren som du redundansväxlade har lokala volymer, kommer du se enskilda återställningsjobb för varje lokal volym (inte för nivåindelade volymer) i behållaren. Dessa jobb kan ta tid för att slutföra återställningen. Det är troligt att beställningsjobbet kan slutföra tidigare. Observera att dessa volymer måste lokala garantier endast när återställningsjobb har slutförts. När redundansväxlingen är klar går du till den **enheter** sidan.                                            
+   1. Välj hello volymbehållare som toofail över i hello lista över volymbehållare.
+      **Endast hello volymbehållare med associerade molnögonblicksbilder och offline volymer visas.**
+   2. Under **välja en målenhet** för hello volymer i hello valt behållare, väljer du en målenhet hello nedrullningsbara listan över tillgängliga enheter. Endast hello-enheter som har tillgänglig kapacitet för hello visas i listrutan hello.
+   3. Slutligen granska alla hello växling vid fel inställningar under **bekräfta redundans**. Klicka på kryssikonen hello ![kryssikonen](./media/storsimple-device-failover-disaster-recovery/IC740895.png).
+7. Skapas ett jobb för växling vid fel som kan övervakas via hello **jobb** sidan. Om hello volymbehållare som du redundansväxlade har lokala volymer, kommer du se enskilda återställningsjobb för varje lokal volym (inte för nivåindelade volymer) i hello behållaren. Dessa återställningspunkter jobb kan ta ganska tid toocomplete. Det är troligt att hello beställningsjobbet kan slutföra tidigare. Observera att dessa volymer måste lokala garantier endast när hello återställningsjobb har slutförts. När hello växling vid fel har slutförts går toohello **enheter** sidan.                                            
    
-   1. Välj den enhet som användes som målenhet för failover-processen.
-   2. Gå till den **Volymbehållare** sidan. Alla volymbehållare tillsammans med volymer från den gamla enheten ska visas.
+   1. Välj hello-enhet som har använts som hello målenhet för hello failover-processen.
+   2. Gå toohello **Volymbehållare** sidan. Alla hello volymbehållare, tillsammans med hello volymer från hello gamla enhet, ska visas.
 
 ## <a name="failover-using-a-single-device"></a>Redundans med en enskild enhet
-Utför följande steg om du bara har en enda enhet och behöver utföra en växling vid fel.
+Utföra hello följande steg om du bara har en enda enhet och behov tooperform en växling vid fel.
 
-1. Skapa molnögonblicksbilder av alla volymer på din enhet.
-2. Återställa enheten till fabriksinställningarna. Följ de detaljerade anvisningarna i [hur du återställer en StorSimple-enhet till fabriksinställningarna](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings).
+1. Skapa molnögonblicksbilder av alla hello volymer i enheten.
+2. Återställa din enhet toofactory standardvärden. Följ hello detaljerade instruktioner i [hur tooreset toofactory en StorSimple-enheten standardinställningar](storsimple-manage-device-controller.md#reset-the-device-to-factory-default-settings).
 3. Konfigurera din enhet och registrera den igen med din StorSimple Manager-tjänst.
-4. På den **enheter** sidan gamla enheten ska visa **Offline**. Nyligen registrerade enheten ska visa **Online**.
-5. Slutför den lägsta konfigurationen av enheten först för den nya enheten. 
+4. På hello **enheter** sidan hello gamla enheten ska visa **Offline**. hello nyregistrerade enheten ska visa **Online**.
+5. Slutför hello minimikraven för konfiguration av hello enhet först för nya hello-enhet. 
    
    > [!IMPORTANT]
-   > **Om den lägsta konfigurationen inte har slutförts först misslyckas din DR på grund av ett fel i den aktuella implementeringen. Problemet korrigeras i en senare version.**
+   > **Din DR misslyckas på grund av ett fel i hello aktuella implementeringen om hello lägsta konfigurationen inte har slutförts först. Problemet korrigeras i en senare version.**
    > 
    > 
-6. Välj den gamla enheten (offline status) och klicka på **redundans**. Växla över den här enheten i guiden som visas och ange målenheten som nyligen registrerad enhet. Detaljerade anvisningar finns i [växla över till en annan fysisk enhet](#fail-over-to-another-physical-device).
-7. En enhet återställningsjobbet skapas att du kan övervaka från den **jobb** sidan.
-8. När jobbet har slutförts, åtkomst till den nya enheten och navigera till den **Volymbehållare** sidan. Alla volymbehållarna från den gamla enheten ska nu migreras till den nya enheten.
+6. Välj hello gamla enhet (offline status) och klicka på **redundans**. Växla över den här enheten och ange hello målenhet som hello nyregistrerade enheten hello i guiden som visas. Detaljerade anvisningar finns för[växla över tooanother fysisk enhet](#fail-over-to-another-physical-device).
+7. En enhet återställningsjobbet skapas att du kan övervaka från hello **jobb** sidan.
+8. När hello jobbet har slutförts, komma åt hello ny enhet och gå toohello **Volymbehållare** sidan. Alla hello volymbehållarna från hello gamla enheten nu bör migrerade toohello ny enhet.
 
-## <a name="fail-over-to-a-storsimple-virtual-device"></a>Växla över till en virtuell StorSimple-enhet
-Du måste ha en StorSimple virtuell enhet skapas och konfigureras innan du kör den här proceduren. Om du kör uppdatering 2, Överväg att använda en den virtuella enheten 8020 för Katastrofåterställning som har 64 TB och använder Premium-lagring. 
+## <a name="fail-over-tooa-storsimple-virtual-device"></a>Växla över tooa virtuell StorSimple-enhet
+Du måste ha en StorSimple virtuell enhet som har skapats och konfigurerats tidigare toorunning den här proceduren. Om Kör uppdatering 2, Överväg att använda en virtuell enhet för 8020 för hello DR som har 64 TB och använder Premium-lagring. 
 
-Utför följande steg för att återställa enheten till en mål virtuella StorSimple-enheten.
+Utföra hello följande steg toorestore hello enheten tooa mål virtuella StorSimple-enheten.
 
-1. Kontrollera att volymbehållaren som du vill växla över associeras molnögonblicksbilder.
-2. På den **enheter** klickar du på den **Volymbehållare** fliken.
-3. Välj en volymbehållare som du vill växla över till en annan enhet. Klicka på volymbehållare om du vill visa en lista över volymer i den här behållaren. Välj en volym och klicka på **ta Offline** att kopplas ifrån volymen. Upprepa proceduren för alla volymer i volymbehållaren.
-4. Upprepa det föregående steget för alla volymbehållare som du vill växla över till en annan enhet.
-5. På den **enheter** klickar du på **redundans**.
-6. I guiden som öppnas, under **Välj volymbehållare till redundans**, enligt följande:
+1. Kontrollera att hello volymbehållare som du vill ha toofail över har associerade molnögonblicksbilder.
+2. På hello **enheter** klickar du på hello **Volymbehållare** fliken.
+3. Välj en volymbehållare som du vill att toofail över tooanother enhet. Klicka på hello volym behållaren toodisplay hello lista över volymer i den här behållaren. Välj en volym och klicka på **ta Offline** tootake hello volymen offline. Upprepa proceduren för alla hello volymer i hello volymbehållare.
+4. Hello Upprepa föregående steg för alla hello volymbehållare som toofail över tooanother enhet.
+5. På hello **enheter** klickar du på **redundans**.
+6. I guiden för hello som öppnas, under **välja volym behållaren toofailover**, Slutför hello följande:
    
-    a. Välj volymbehållarna som du vill växla över i listan över volymbehållare.
+    a. Välj hello volymbehållare som toofail över i hello lista över volymbehållare.
    
-    **Volymbehållare med associerade molnögonblicksbilder och offline volymer visas.**
+    **Endast hello volymbehållare med associerade molnögonblicksbilder och offline volymer visas.**
    
-    b. Under **välja en målenhet för volymer i de valda behållarna**, Välj den virtuella StorSimple-enheten från listan över tillgängliga enheter. **Endast de enheter som har tillräcklig kapacitet för visas i den nedrullningsbara listan.**  
-7. Slutligen granska alla inställningar för växling vid fel under **bekräfta redundans**. Klicka på kryssikonen ![kryssikonen](./media/storsimple-device-failover-disaster-recovery/IC740895.png).
-8. När redundansväxlingen är klar går du till den **enheter** sidan.
+    b. Under **välja en målenhet för hello volymer i hello valt behållare**, Välj hello virtuella StorSimple-enheten från hello nedrullningsbara listan över tillgängliga enheter. **Endast hello-enheter som har tillräckligt med kapacitet visas i listrutan hello.**  
+7. Slutligen granska alla hello växling vid fel inställningar under **bekräfta redundans**. Klicka på kryssikonen hello ![kryssikonen](./media/storsimple-device-failover-disaster-recovery/IC740895.png).
+8. När hello växling vid fel har slutförts går toohello **enheter** sidan.
    
-    a. Välj den virtuella enheten StorSimple som användes som målenhet för failover-processen.
+    a. Välj hello virtuella StorSimple-enheten som användes som hello målenhet för hello failover-processen.
    
-    b. Gå till den **Volymbehållare** sidan. Alla volymbehållare tillsammans med volymer från den gamla enheten bör nu visas.
+    b. Gå toohello **Volymbehållare** sidan. Alla hello volymbehållare, tillsammans med hello volymer från hello gamla enheten bör nu visas.
 
 ![Video tillgänglig](./media/storsimple-device-failover-disaster-recovery/Video_icon.png) **Video tillgänglig**
 
-Om du vill se en video som visar hur du kan återställa en misslyckad över fysiska enheten till en virtuell enhet i molnet, klickar du på [här](https://azure.microsoft.com/documentation/videos/storsimple-and-disaster-recovery/).
+toowatch en video som visar hur du kan återställa en misslyckad över fysiska enheten tooa-enhet i hello moln, klickar du på [här](https://azure.microsoft.com/documentation/videos/storsimple-and-disaster-recovery/).
 
 ## <a name="failback"></a>Återställning efter fel
-För uppdatering 3 och senare versioner stöd StorSimple också för återställning efter fel. När redundansväxlingen är klar, utförs följande åtgärder:
+För uppdatering 3 och senare versioner stöd StorSimple också för återställning efter fel. När hello redundansväxlingen är klar, utförs hello följande åtgärder:
 
-* Volymbehållarna har redundansväxlats rensas från källan.
-* Ett bakgrundsjobb per volymbehållare (redundansväxlats) initieras på källan. Om du försöker återställning efter fel medan jobbet pågår, visas ett meddelande om detta. Du måste vänta tills jobbet är klart att starta återställningen. 
+* hello volymbehållare som har redundansväxlats rensas från hello källenheten.
+* Ett bakgrundsjobb per volymbehållare (redundansväxlats) initieras på hello källenheten. Om du försöker toofailback medan hello jobb pågår, får du en avisering toothat effekt. Du behöver toowait tills hello jobbet har slutförts toostart hello återställning efter fel. 
   
-    Tid att slutföra borttagningen av volymbehållare är beroende av olika faktorer som mängden data, åldern på data, antal säkerhetskopior och den tillgängliga bandbredden för åtgärden. Om du planerar att testa redundans/återställning efter fel, rekommenderar vi att du testar volymbehållare med mindre data (GB). I de flesta fall kan du starta återställningen 24 timmar efter växling vid fel är klar. 
+    hello tid toocomplete hello borttagning av volymbehållare är beroende av olika faktorer som mängden data, ålder hello data, antal säkerhetskopior och hello nätverksbandbredden som finns tillgänglig för hello åtgärden. Om du planerar att testa redundans/återställning efter fel, rekommenderar vi att du testar volymbehållare med mindre data (GB). I de flesta fall kan du starta hello återställning 24 timmar efter hello redundansväxlingen är klar. 
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
-FRÅGOR. **Vad händer om DR misslyckas eller har lyckats delvis?**
+FRÅGOR. **Vad händer om hello DR misslyckas eller har lyckats delvis?**
 
-A. Om DR misslyckas, rekommenderar vi att du försöker igen. Den andra gången, DR vet vad alla gjordes och när processen har stoppats första gången. DR-processen startar från den tidpunkten och framåt. 
+A. Om hello DR misslyckas, rekommenderar vi att du försöker igen. hello gång runt DR vet vad alla gjordes och när stoppats hello processen hello första gången. hello DR-processen startar från den tidpunkten och framåt. 
 
-FRÅGOR. **Kan jag ta bort en enhet när enheten för växling vid fel pågår?**
+FRÅGOR. **Kan jag ta bort en enhet när hello enheten redundans pågår?**
 
-A. Du kan inte ta bort en enhet medan en DR pågår. Du kan bara ta bort din enhet när ar har slutförts.
+A. Du kan inte ta bort en enhet medan en DR pågår. Du kan bara ta bort din enhet när hello DR är klar.
 
-FRÅGOR.    **När startar skräpinsamling på källenheten så att den lokala data på källenheten har tagits bort?**
+FRÅGOR.    **När startar hello skräpinsamling på hello källenheten så att hello lokala data på källenheten har tagits bort?**
 
-A. Skräpinsamling aktiveras på källenheten endast när enheten har rensats helt. Rensningen innehåller Rensa objekt som har redundansväxlats från källan till exempel volymer, säkerhetskopieobjekt (inte data), volymbehållare och principer.
+A. Skräpinsamling aktiveras på hello källenheten förrän hello enheten rensas helt. rensning av hello innehåller Rensa objekt som har växlats över från hello källenheten, till exempel volymer, säkerhetskopieobjekt (inte data), volymbehållare och principer.
 
-FRÅGOR. **Vad händer om det inte går att ta bort jobbet som är associerade med volymbehållare i källan?**
+FRÅGOR. **Vad händer om hello ta bort jobb som är associerade med hello volymbehållare i hello källenheten misslyckas?**
 
-A.  Om jobbet Ta bort misslyckas måste du manuellt starta borttagningen av volymbehållarna. I den **enheter** väljer enheten källa och klicka på **volymbehållare**. Välj volymbehållarna som du inte över och längst ned på sidan, klicka på **ta bort**. När du har tagit bort alla de över volymbehållare på källenhet, kan du starta återställningen.
+A.  Om hello tar bort jobbet misslyckas, behöver du toomanually utlösaren hello borttagning av hello volymbehållare. I hello **enheter** väljer enheten källa och klicka på **volymbehållare**. Välj hello volymbehållare som du inte över och hello längst ned på sidan för hello, klickar du på **ta bort**. När du har tagit bort alla hello redundansväxlats volymbehållare på hello källenheten kan du starta hello återställning efter fel.
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>Katastrofåterställning för verksamhetskontinuitet (BCDR)
-En business continuity (BCDR) katastrofåterställning inträffar när hela Azure-datacentret slutar att fungera. Detta kan påverka din StorSimple Manager-tjänsten och de associera StorSimple-enheterna.
+En business continuity (BCDR) katastrofåterställning inträffar när hello hela Azure-datacenter slutar att fungera. Detta kan påverka din StorSimple Manager-tjänsten och hello associerad StorSimple-enheter.
 
-Om det finns StorSimple-enheter som registrerats precis innan en katastrof inträffade, kan dessa StorSimple-enheter måste genomgå en fabriksåterställning. Efter katastrofåterställning visas StorSimple-enhet som offline. StorSimple-enheten måste tas bort från portalen och en fabriksåterställning ska göras, följt av en ny registrering.
+Om StorSimple-enheter som registrerats precis innan en katastrof inträffade måste dessa StorSimple-enheter tooundergo en fabriksåterställa. Efter hello katastrofåterställning visas hello StorSimple-enhet som offline. Hej StorSimple-enhet måste tas bort från hello-portalen och en fabriksåterställning ska göras, följt av en ny registrering.
 
 ## <a name="next-steps"></a>Nästa steg
-* När du har utfört en växling vid fel, kan du behöva [inaktivera eller ta bort din StorSimple-enhet](storsimple-deactivate-and-delete-device.md).
-* Information om hur du använder StorSimple Manager-tjänsten finns på [använda StorSimple Manager-tjänsten för att administrera din StorSimple-enhet](storsimple-manager-service-administration.md).
+* När du har utfört en växling vid fel, kanske du måste för[inaktivera eller ta bort din StorSimple-enhet](storsimple-deactivate-and-delete-device.md).
+* Information om hur toouse hello StorSimple Manager-tjänsten finns för[Använd hello StorSimple Manager service tooadminister StorSimple-enheten](storsimple-manager-service-administration.md).
 

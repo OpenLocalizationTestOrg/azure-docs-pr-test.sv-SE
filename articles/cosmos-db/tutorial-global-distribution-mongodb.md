@@ -1,6 +1,6 @@
 ---
-title: "Azure DB Cosmos global distributionsplatsen självstudier för MongoDB API | Microsoft Docs"
-description: "Lär dig hur du ställer in Azure Cosmos DB global distributionsplatsen med hjälp av MongoDB-API."
+title: "aaaAzure Cosmos DB global distributionsplatsen självstudier för MongoDB API | Microsoft Docs"
+description: "Lär dig hur toosetup Azure Cosmos DB global distributionsplatsen med hello MongoDB-API."
 services: cosmos-db
 keywords: Global distributionsplatsen, MongoDB
 documentationcenter: 
@@ -15,26 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: a2747102f4d8cac412b67abc3fd07cfa3661bcee
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 0fc2d670bb4e21ac5f813f9586b407ba06ccf354
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-mongodb-api"></a>Hur du konfigurerar Azure Cosmos DB global distributionsplatsen med hjälp av MongoDB-API
+# <a name="how-toosetup-azure-cosmos-db-global-distribution-using-hello-mongodb-api"></a>Hur toosetup Azure Cosmos DB global distributionsplatsen med hello MongoDB-API
 
-I den här artikeln visar vi hur du använder Azure-portalen för att konfigurera Azure Cosmos DB global distributionsplatsen och ansluter sedan med hjälp av MongoDB-API.
+I den här artikeln visar vi hur toouse hello Azure portal toosetup Azure Cosmos DB global distributionsplatsen och sedan ansluta med hello MongoDB-API.
 
-Den här artikeln omfattar följande aktiviteter: 
+Den här artikeln beskriver hello följande uppgifter: 
 
 > [!div class="checklist"]
-> * Konfigurera distributionslistor med Azure-portalen
-> * Konfigurera distributionslistor med hjälp av den [MongoDB-API](mongodb-introduction.md)
+> * Konfigurera distributionslistor med hello Azure-portalen
+> * Konfigurera distributionslistor med hello [MongoDB-API](mongodb-introduction.md)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="verifying-your-regional-setup-using-the-mongodb-api"></a>Verifiera dina nationella inställningar med hjälp av MongoDB-API
-Det enklaste sättet för double globala konfigurationen inom API kontrolleras för MongoDB är att köra den *isMaster()* från Mongo-gränssnittet.
+## <a name="verifying-your-regional-setup-using-hello-mongodb-api"></a>Verifiera din regionala installationen med hjälp av hello MongoDB-API
+hello enklaste sättet för double globala konfigurationen inom API kontrolleras för MongoDB är toorun hello *isMaster()* från hello Mongo-gränssnittet.
 
 Från din Mongo Shell:
 
@@ -68,23 +68,23 @@ Exempel resultat:
       }
    ```
 
-## <a name="connecting-to-a-preferred-region-using-the-mongodb-api"></a>Ansluter till en önskad region med MongoDB-API
+## <a name="connecting-tooa-preferred-region-using-hello-mongodb-api"></a>Ansluta tooa önskad region med hello MongoDB-API
 
-MongoDB-API kan du ange din samling Läs inställningar för ett globalt distribuerad databas. För både låg latens läsningar och globala hög tillgänglighet rekommenderar vi att ställa in din samling skrivskyddade inställningar till *närmaste*. Läs inställningen för *närmaste* har konfigurerats för att läsa från den närmaste regionen.
+Hej MongoDB-API kan du toospecify din samling Läs inställningar för ett globalt distribuerad databas. För både låg latens läsningar och globala hög tillgänglighet rekommenderar vi att ange din samling läsa inställning för*närmaste*. Läs inställningen för *närmaste* är konfigurerade tooread från hello närmaste region.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Nearest));
 ```
 
-För program med en primär läsning/skrivning och en sekundär region för katastrofåterställning (DR) scenarier, rekommenderar vi att ställa in din samling skrivskyddade inställningar till *sekundära önskad*. Läs inställningen för *sekundära önskade* har konfigurerats för att läsa från den sekundära regionen när den primära regionen är inte tillgänglig.
+För program med en primär läsning/skrivning och en sekundär region för katastrofåterställning (DR) scenarier, rekommenderar vi att ange din samling läsa inställning för*sekundära önskad*. Läs inställningen för *sekundära önskade* är konfigurerade tooread från hello sekundär region när hello primära regionen är inte tillgänglig.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.SecondaryPreferred));
 ```
 
-Slutligen, om du vill att manuellt ange din skrivskyddade regioner. Du kan ange region taggen inom önskemål skrivskyddade.
+Slutligen, om du skulle t.ex toomanually anger din skrivskyddade regioner. Du kan ange hello region taggen inom önskemål skrivskyddade.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);
@@ -92,17 +92,17 @@ var tag = new Tag("region", "Southeast Asia");
 collection = collection.WithReadPreference(new ReadPreference(ReadPreferenceMode.Secondary, new[] { new TagSet(new[] { tag }) }));
 ```
 
-Det är den som Slutför den här kursen. Du kan lära dig hur du hanterar konsekvensen för globalt replikerade kontot genom att läsa [konsekvensnivåer i Azure Cosmos DB](consistency-levels.md). Och för mer information om hur globala databasreplikering fungerar i Azure Cosmos DB, se [distribuera data globalt med Azure Cosmos DB](distribute-data-globally.md).
+Det är den som Slutför den här kursen. Du kan lära dig hur toomanage hello konsekvenskontroll av globalt replikerade kontot genom att läsa [konsekvensnivåer i Azure Cosmos DB](consistency-levels.md). Och för mer information om hur globala databasreplikering fungerar i Azure Cosmos DB, se [distribuera data globalt med Azure Cosmos DB](distribute-data-globally.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudiekursen kommer du har gjort följande:
+I den här kursen har du gjort hello följande:
 
 > [!div class="checklist"]
-> * Konfigurera distributionslistor med Azure-portalen
-> * Konfigurera globala distribution via DocumentDB APIs
+> * Konfigurera distributionslistor med hello Azure-portalen
+> * Konfigurera distributionslistor med hello DocumentDB APIs
 
-Du kan nu fortsätta till nästa kurs att lära dig hur du utvecklar lokalt med hjälp av lokala Azure DB som Cosmos-emulatorn.
+Du kan nu fortsätta toohello nästa självstudiekurs toolearn hur toodevelop lokalt med hjälp av hello Azure Cosmos DB lokala emulatorn.
 
 > [!div class="nextstepaction"]
-> [Utveckla lokalt med emulatorn](local-emulator.md)
+> [Utveckla lokalt med hello-emulatorn](local-emulator.md)

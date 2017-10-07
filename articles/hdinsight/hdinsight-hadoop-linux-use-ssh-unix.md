@@ -1,6 +1,6 @@
 ---
-title: "Använda SSH med Hadoop - Azure HDInsight | Microsoft Docs"
-description: "Du kan komma åt HDInsight med hjälp av SSH (Secure Shell). Det här dokumentet innehåller information om hur du ansluter till HDInsight med hjälp av ssh- och scp-kommandon från Windows, Linux, Unix eller macOS klienter."
+title: aaaUse SSH med Hadoop - Azure HDInsight | Microsoft Docs
+description: "Du kan komma åt HDInsight med hjälp av SSH (Secure Shell). Det här dokumentet innehåller information om hur du ansluter tooHDInsight med hello ssh och scp-kommandon från Windows, Linux, Unix eller macOS klienter."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -17,17 +17,17 @@ ms.workload: big-data
 ms.date: 08/03/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: df0feb51469333bac42c779d860192d46f24ac62
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: ac9e70ce3c70693c1b81c9514ba4fd47686070ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Ansluta till HDInsight (Hadoop) med hjälp av SSH
+# <a name="connect-toohdinsight-hadoop-using-ssh"></a>Ansluta tooHDInsight (Hadoop) via SSH
 
-Lär dig hur du använder [SSH (Secure Shell)](https://en.wikipedia.org/wiki/Secure_Shell) för att ansluta till Hadoop på Azure HD Insight på ett säkert sätt. 
+Lär dig hur toouse [SSH (Secure Shell)](https://en.wikipedia.org/wiki/Secure_Shell) toosecurely ansluta tooHadoop på Azure HDInsight. 
 
-HDInsight kan använda Linux (Ubuntu) som operativsystem för noder i Hadoop-klustret. Följande tabell innehåller adress- och portinformationen som behövs för att ansluta till Linux-baserad HDInsight med hjälp av en SSH-klient:
+HDInsight kan använda Linux (Ubuntu) som hello operativsystem för noder i hello Hadoop-kluster. hello innehåller följande tabell hello-adressen och porten information som krävs när du ansluter tooLinux-baserade HDInsight med hjälp av en SSH-klient:
 
 | Adress | Port | Ansluter till ... |
 | ----- | ----- | ----- |
@@ -37,205 +37,205 @@ HDInsight kan använda Linux (Ubuntu) som operativsystem för noder i Hadoop-klu
 | `<clustername>-ssh.azurehdinsight.net` | 23 | Den sekundära huvudnoden |
 
 > [!NOTE]
-> Ersätt `<edgenodename>` med namnet på kantnoden.
+> Ersätt `<edgenodename>` med hello kantnod hello namn.
 >
-> Ersätt `<clustername>` med namnet på klustret.
+> Ersätt `<clustername>` med hello namnet på klustret.
 >
-> Om klustret innehåller en kantnod, rekommenderar vi att du __alltid ansluter till kantnoden__ via SSH. Värdtjänster för huvudnoder är viktiga för Hadoops hälsotillstånd. Kantnoden kör bara det som du placerar på den.
+> Om klustret innehåller en kantnod, rekommenderar vi att du __ansluter alltid toohello kantnod__ via SSH. Hej huvudnoderna värd för tjänster som är kritiska toohello hälsotillståndet för Hadoop. hello kantnod körs bara vad som ska visas på den.
 >
 > Mer information om hur du använder kantnoder finns i [Använda kantnoder i HDInsight](hdinsight-apps-use-edge-node.md#access-an-edge-node).
 
 ## <a name="ssh-clients"></a>SSH-klienter
 
-Linux, Unix- och macOS system ger kommandon `ssh` och `scp`. Klienten `ssh` används ofta för att skapa en fjärrsession med kommandoradsverktyget med Linux eller Unix-baserade system. Klienten `scp` används för att kopiera filer mellan klienten och fjärrdatorn på ett säkert sätt.
+Linux, Unix- och macOS system ger hello `ssh` och `scp` kommandon. Hej `ssh` klienten är vanliga toocreate en kommandorad fjärrsessionen med Linux eller Unix-baserade system. Hej `scp` klienten är används toosecurely kopiera filer mellan klienten och hello fjärrsystemet.
 
-Microsoft Windows tillhandahåller ingen SSH-klient som standard. Klienterna `ssh` och `scp` är tillgängliga för Windows via följande paket:
+Microsoft Windows tillhandahåller ingen SSH-klient som standard. Hej `ssh` och `scp` klienter som är tillgängliga för Windows via hello följande paket:
 
-* [Azure Cloud Shell](../cloud-shell/quickstart.md): Cloud Shell tillhandahåller en Bash-miljö i webbläsaren och tillhandahåller `ssh`, `scp`, och andra vanliga Linux-kommandon.
+* [Azure Cloud Shell](../cloud-shell/quickstart.md): hello molnet Shell innehåller en Bash-miljö i webbläsaren, samt hello `ssh`, `scp`, och andra vanliga Linux-kommandon.
 
-* [Bash i Ubuntu för Windows 10](https://msdn.microsoft.com/commandline/wsl/about): `ssh`- och `scp`-kommandot är tillgängligt via Bash för Windows-kommandoraden.
+* [Bash på Ubuntu på Windows 10](https://msdn.microsoft.com/commandline/wsl/about): hello `ssh` och `scp` kommandon är tillgängliga via hello Bash på kommandoraden i Windows.
 
-* [Git (https://git-scm.com/)](https://git-scm.com/): `ssh` och `scp`-kommandot är tillgängligt via GitBash-kommandoraden.
+* [Git (https://git-scm.com/)](https://git-scm.com/): hello `ssh` och `scp` kommandon är tillgängliga via hello Bash-kommandoraden.
 
-* [GitHub Desktop (https://desktop.github.com/)](https://desktop.github.com/) `ssh` och `scp`-kommandot är tillgängligt via GitHub Shell-kommandoraden. GitHub Desktop kan konfigureras att använda Bash, Windows-kommandotolken eller PowerShell som kommandorad för Git Shell.
+* [GitHub skrivbordet (https://desktop.github.com/)](https://desktop.github.com/) hello `ssh` och `scp` kommandon är tillgängliga via hello GitHub Shell-kommandoraden. GitHub Desktop kan vara konfigurerade toouse Bash hello Windows kommandotolk eller PowerShell hello kommandoraden för hello Git-gränssnittet.
 
-* [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH): PowerShell-teamet porterar OpenSSH till Windows och tillhandahåller testutgåvor.
+* [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH): hello PowerShell team portera OpenSSH tooWindows och ger test-versioner.
 
     > [!WARNING]
-    > OpenSSH-paketet innehåller SSH-serverkomponenten, `sshd`. Den här komponenten startar en SSH-server på din dator så att andra kan ansluta till den. Konfigurera inte den här komponenten och öppna inte port 22 om du inte vill ha en SSH-server på din dator. Det krävs inte för att kommunicera med HDInsight.
+    > Hej OpenSSH paket innehåller hello SSH serverkomponent, `sshd`. Den här komponenten startar en SSH-server i systemet, så att andra tooconnect tooit. Konfigurera den här komponenten eller inte öppna port 22 såvida du inte vill toohost en SSH-server på datorn. Det är inte obligatoriska toocommunicate med HDInsight.
 
-Det finns också flera grafiska SSH-klienter, till exempel [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) och [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Dessa klienter kan användas för att ansluta till HDInsight, men processen för att ansluta skiljer sig från anslutningsprocessen med `ssh`-verktyget. Mer information finns i dokumentationen för den grafiska klient som du använder.
+Det finns också flera grafiska SSH-klienter, till exempel [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) och [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Dessa klienter kan vara används tooconnect tooHDInsight, hello anslutningsprocessen skiljer sig med hjälp av hello `ssh` verktyget. Mer information finns i hello dokumentationen för hello grafiska klient du använder.
 
 ## <a id="sshkey"></a>Autentisering: SSH-nycklar
 
-SSH-nycklar använder [kryptografik med offentliga nycklar](https://en.wikipedia.org/wiki/Public-key_cryptography) för att autentisera SSH-sessioner. SSH-nycklar är säkrare än lösenord och är ett enkelt sätt att skydda Hadoop-klustret.
+SSH-nycklar använda [offentliga nycklar](https://en.wikipedia.org/wiki/Public-key_cryptography) tooauthenticate SSH-sessioner. SSH-nycklar är säkrare än och ger ett enkelt sätt toosecure åtkomst tooyour Hadoop-kluster.
 
-Om ditt SSH-konto skyddas med en nyckel måste klienten tillhandahålla den matchande privata nyckeln när du ansluter:
+Om SSH-konto är skyddad med en nyckel, måste hello klienten tillhandahålla hello matchar privata nyckel när du ansluter:
 
-* De flesta klienter kan konfigureras att använda en __standardnyckel__. Exempelvis söker `ssh`-klienten efter en privat nyckel i `~/.ssh/id_rsa` i Linux- och Unix-miljöer.
+* De flesta klienter kan vara konfigurerade toouse en __standardnyckeln__. Till exempel hello `ssh` klienten söker efter en privat nyckel vid `~/.ssh/id_rsa` på Linux och Unix-miljöer.
 
-* Du kan ange __sökvägen till en privat nyckel__. Med `ssh`-klienten används `-i`-parametern för att ange sökvägen till den privata nyckeln. Till exempel `ssh -i ~/.ssh/id_rsa sshuser@myedge.mycluster-ssh.azurehdinsight.net`.
+* Du kan ange hello __sökväg tooa privata nyckeln__. Med hello `ssh` klient, hello `-i` parameter är används toospecify hello sökvägen tooprivate nyckel. Till exempel `ssh -i ~/.ssh/id_rsa sshuser@myedge.mycluster-ssh.azurehdinsight.net`.
 
-* Om du har __flera privata nycklar__ för användning med olika servrar kan verktyg som [ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) användas. Verktyget `ssh-agent` kan användas för att automatiskt välja nyckeln som ska användas när en SSH-session etableras.
+* Om du har __flera privata nycklar__ för användning med olika servrar kan verktyg som [ssh-agent (https://en.wikipedia.org/wiki/Ssh-agent)](https://en.wikipedia.org/wiki/Ssh-agent) användas. Hej `ssh-agent` verktyg kan vara används tooautomatically väljer hello viktiga toouse när en SSH-session.
 
 > [!IMPORTANT]
 >
-> Om du skyddar den privata nyckeln med en lösenfras måste du ange lösenfrasen när du använder nyckeln. Verktyg som `ssh-agent` kan underlätta för dig genom att cachelagra lösenordet.
+> Om du skyddar din privata nyckel med en lösenfras måste du ange hello lösenfrasen när du använder hello nyckel. Verktyg som `ssh-agent` kan cachelagra hello lösenord för din bekvämlighet.
 
 ### <a name="create-an-ssh-key-pair"></a>Skapa ett SSH-nyckelpar
 
-Använd `ssh-keygen`-kommandot för att skapa filer för offentliga och privata nycklar. Följande kommando genererar ett 2048-bitars RSA-nyckelpar som kan användas med HDInsight:
+Använd hello `ssh-keygen` kommandot toocreate offentliga och privata nyckelfiler. hello skapar följande kommando en 2048-bitars RSA-nyckelpar som kan användas med HDInsight:
 
     ssh-keygen -t rsa -b 2048
 
-Du uppmanas att ange information när nyckeln skapas. Till exempel var nycklarna lagras eller om du vill använda en lösenfras. När processen har slutförts har två filer skapats: en offentlig nyckel och en privat nyckel.
+Du uppmanas information under hello viktiga skapandeprocessen. Till exempel där hello nycklar lagras eller om toouse en lösenfras. När hello processen har slutförts, skapas två filer; en offentlig nyckel och en privat nyckel.
 
-* Den __offentliga nyckeln__ används för att skapa ett HDInsight-kluster. Den offentliga nyckeln har filnamnstillägget `.pub`.
+* Hej __offentliga nyckel__ är används toocreate ett HDInsight-kluster. hello offentliga nyckel har filnamnstillägget `.pub`.
 
-* Den __privata nyckeln__ används för att autentisera din klient mot HDInsight-klustret.
+* Hej __privata nyckel__ är används tooauthenticate klienten toohello HDInsight-kluster.
 
 > [!IMPORTANT]
-> Du kan skydda dina nycklar med hjälp av en lösenfras. Detta är ett lösenord för den privata nyckeln. Även om någon får tag på din privata nyckel behöver de lösenfrasen för att kunna använda nyckeln.
+> Du kan skydda dina nycklar med hjälp av en lösenfras. Detta är ett lösenord för den privata nyckeln. Även om någon hämtar din privata nyckel, måste de ha hello lösenfras toouse hello nyckel.
 
-### <a name="create-hdinsight-using-the-public-key"></a>Skapa HDInsight med hjälp av den offentliga nyckeln
+### <a name="create-hdinsight-using-hello-public-key"></a>Skapa HDInsight med hjälp av hello offentlig nyckel
 
-| Genereringsmetod | Så här använder du den offentliga nyckeln |
+| Genereringsmetod | Hur toouse hello offentlig nyckel |
 | ------- | ------- |
-| **Azure Portal** | Avmarkera __Använd samma lösenord som klusterinloggning__ och välj sedan __Offentlig nyckel__ som SSH-autentiseringstyp. Välj slutligen filen för den offentliga nyckeln eller klistra in textinnehållet från filen i fältet __Offentlig SSH-nyckel__.</br>![Dialogrutan Offentlig SSH-nyckel vid generering av HDInsight-kluster](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
-| **Azure PowerShell** | Använd `-SshPublicKey`-parametern för cmdleten `New-AzureRmHdinsightCluster` och skicka innehållet i den offentliga nyckeln som en sträng.|
-| **Azure CLI 1.0** | Använd `--sshPublicKey`-parametern för kommandot `azure hdinsight cluster create` och skicka innehållet i den offentliga nyckeln som en sträng. |
-| **Resource Manager-mall** | Ett exempel på hur du använder SSH-nycklar med en mall finns i avsnittet [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/) (Distribuera HDInsight i Linux med en SSH-nyckel). `publicKeys`-elementet i filen [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) används för att skicka nycklarna till Azure när klustret skapas. |
+| **Azure Portal** | Avmarkera __använda samma lösenord som klusterinloggning__, och välj sedan __offentliga nyckel__ som hello SSH autentiseringstyp. Slutligen, Välj hello offentlig nyckelfil eller klistra in hello textinnehållet i hello-filen i hello __offentliga SSH-nyckeln__ fältet.</br>![Dialogrutan Offentlig SSH-nyckel vid generering av HDInsight-kluster](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
+| **Azure PowerShell** | Använd hello `-SshPublicKey` parametern för hello `New-AzureRmHdinsightCluster` cmdlet- och pass hello innehållet i hello offentlig nyckel som en sträng.|
+| **Azure CLI 1.0** | Använd hello `--sshPublicKey` parametern för hello `azure hdinsight cluster create` kommandot och skicka hello innehållet i hello offentlig nyckel som en sträng. |
+| **Resource Manager-mall** | Ett exempel på hur du använder SSH-nycklar med en mall finns i avsnittet [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/) (Distribuera HDInsight i Linux med en SSH-nyckel). Hej `publicKeys` element i hello [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) filen har använt toopass hello nycklar tooAzure när du skapar hello kluster. |
 
 ## <a id="sshpassword"></a>Autentisering: lösenord
 
-SSH-konton kan skyddas med ett lösenord. När du ansluter till HDInsight med hjälp av SSH uppmanas du att ange lösenordet.
+SSH-konton kan skyddas med ett lösenord. Ange tooenter hello lösenord anges när du ansluter tooHDInsight via SSH.
 
 > [!WARNING]
-> Vi rekommenderar inte att du använder lösenordsautentisering för SSH. Lösenord kan gissas och är sårbara för råstyrkeattacker. I stället rekommenderar vi att du använder [SSH-nycklar för autentisering](#sshkey).
+> Vi rekommenderar inte att du använder lösenordsautentisering för SSH. Lösenord kan knäckas och är sårbara toobrute force-attacker. I stället rekommenderar vi att du använder [SSH-nycklar för autentisering](#sshkey).
 
 ### <a name="create-hdinsight-using-a-password"></a>Skapa HDInsight med ett lösenord
 
-| Genereringsmetod | Så här anger du lösenordet |
+| Genereringsmetod | Hur toospecify hello lösenord |
 | --------------- | ---------------- |
-| **Azure Portal** | SSH-användarkontot har som standard samma lösenord som kontot för klusterinloggning. Om du vill använda ett annat lösenord avmarkerar du __Använd samma lösenord som klusterinloggning__ och anger sedan lösenordet i fältet __SSH-lösenord__.</br>![Dialogrutan SSH-lösenord när ett HDInsight-kluster skapas](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
-| **Azure PowerShell** | Använd `--SshCredential`-parametern för cmdleten `New-AzureRmHdinsightCluster` och skicka ett `PSCredential`-objekt som innehåller SSH-användarkontonamnet och SSH-lösenordet. |
-| **Azure CLI 1.0** | Använd `--sshPassword`-parametern för `azure hdinsight cluster create`-kommandot och ange lösenordsvärdet. |
-| **Resource Manager-mall** | Ett exempel på hur du använder ett lösenord med en mall finns i [Deploy HDInsight on Linux with SSH password](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/) (Distribuera HDInsight i Linux med SSH-lösenord). `linuxOperatingSystemProfile`-elementet i filen [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) används för att skicka SSH-kontonamnet och SSH-lösenordet till Azure när klustret skapas.|
+| **Azure Portal** | Hello SSH-användarkontot har som standard hello samma lösenord som hello inloggningskonto för klustret. Avmarkera toouse ett annat lösenord __använda samma lösenord som klusterinloggning__, och sedan ange hello lösenord i hello __SSH-lösenordet__ fältet.</br>![Dialogrutan SSH-lösenord när ett HDInsight-kluster skapas](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
+| **Azure PowerShell** | Använd hello `--SshCredential` parametern för hello `New-AzureRmHdinsightCluster` cmdlet och skicka en `PSCredential` objekt som innehåller hello SSH användarens kontonamn och lösenord. |
+| **Azure CLI 1.0** | Använd hello `--sshPassword` parametern för hello `azure hdinsight cluster create` kommando och ange värdet för hello lösenord. |
+| **Resource Manager-mall** | Ett exempel på hur du använder ett lösenord med en mall finns i [Deploy HDInsight on Linux with SSH password](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/) (Distribuera HDInsight i Linux med SSH-lösenord). Hej `linuxOperatingSystemProfile` element i hello [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) filen har använt toopass hello SSH-konto och lösenord tooAzure när du skapar hello kluster.|
 
-### <a name="change-the-ssh-password"></a>Ändra SSH-lösenordet
+### <a name="change-hello-ssh-password"></a>Ändra hello SSH-lösenord
 
-Information om hur du ändrar lösenordet för SSH-användarkontot finns i avsnittet __Change passwords__ (Ändra lösenord) i dokumentet [Manage HDInsight](hdinsight-administer-use-portal-linux.md#change-passwords) (Hantera HDInsight).
+Information om hur du ändrar hello SSH lösenord finns hello __ändra lösenord__ avsnitt i hello [hantera HDInsight](hdinsight-administer-use-portal-linux.md#change-passwords) dokumentet.
 
 ## <a id="domainjoined"></a>Autentisering: Domänanslutet HDInsight-kluster
 
-Om du använder ett __domänanslutet HDInsight-kluster__ måste du använda `kinit`-kommandot efter anslutning med SSH. Det här kommandot frågar efter en domänanvändare och ett lösenord och autentiserar din session med Azure Active Directory-domänen som är associerad med klustret.
+Om du använder en __domänanslutna HDInsight-kluster__, måste du använda hello `kinit` kommandot efter anslutning med SSH. Det här kommandot uppmanar dig domänanvändare och lösenord och autentiserar sessionen med hello Azure Active Directory-domänen som är associerade med hello-kluster.
 
 Mer information finns i avsnittet [Configure domain-joined HDInsight](hdinsight-domain-joined-configure.md) (Konfigurera domänanslutna HDInsight-kluster).
 
-## <a name="connect-to-nodes"></a>Anslut till noder
+## <a name="connect-toonodes"></a>Ansluta toonodes
 
-Huvudnoderna och kantnoden (om sådan finns) kan nås via Internet på port 22 och 23.
+Hej huvudnoderna och kantnod (om sådan finns) kan nås över hello internet på port 22 och 23.
 
-* När du ansluter till __huvudnoder__ använder du __22__ för att ansluta till den primära huvudnoden, och port __23__ för att ansluta till den sekundära huvudnoden. Det fullständiga domännamnet som ska användas är `clustername-ssh.azurehdinsight.net`, där `clustername` är namnet på klustret.
+* När du ansluter toohello __huvudnoder__, använda port __22__ tooconnect toohello primära head nod och port __23__ tooconnect toohello andra huvudnod. hello fullständigt kvalificerade namnet toouse är `clustername-ssh.azurehdinsight.net`, där `clustername` är hello namnet på klustret.
 
     ```bash
-    # Connect to primary head node
-    # port not specified since 22 is the default
+    # Connect tooprimary head node
+    # port not specified since 22 is hello default
     ssh sshuser@clustername-ssh.azurehdinsight.net
 
-    # Connect to secondary head node
+    # Connect toosecondary head node
     ssh -p 23 sshuser@clustername-ssh.azurehdinsight.net
     ```
     
-* När du ansluter till __kantnoden__ använder du port 22. Det fullständiga domännamnet är `edgenodename.clustername-ssh.azurehdinsight.net`, där `edgenodename` är det namn du angav när du skapade kantnoden. `clustername` är namnet på klustret.
+* När connectiung toohello __kantnoden__, använder port 22. hello fullständigt kvalificerade domännamnet är `edgenodename.clustername-ssh.azurehdinsight.net`, där `edgenodename` är ett namn som du angav när du skapar hello kantnod. `clustername`är hello hello klustrets namn.
 
     ```bash
-    # Connect to edge node
+    # Connect tooedge node
     ssh sshuser@edgnodename.clustername-ssh.azurehdinsight.net
     ```
 
 > [!IMPORTANT]
-> I föregående exempel förutsätts att du använder lösenordsautentisering eller att certifikatautentisering sker automatiskt. Om du använder ett SSH-nyckelpar för autentisering och certifikatet inte används automatiskt, anger du den privata nyckeln med parametern `-i`. Till exempel `ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net`.
+> hello föregående exempel förutsätter att du använder en lösenordsautentisering eller att certifikatautentisering är utförs automatiskt. Om du använder en SSH-nyckel för autentisering och används inte hello certifikatet automatiskt, använder hello `-i` parametern toospecify hello privat nyckel. Till exempel `ssh -i ~/.ssh/mykey sshuser@clustername-ssh.azurehdinsight.net`.
 
-När du är ansluten ändras fönstret till att visa SSH-användarnamnet och den nod du är ansluten till. När du exempelvis är ansluten till den primära huvudnoden som `sshuser` visar fönstret `sshuser@hn0-clustername:~$`.
+När du är ansluten, ändras hello Kommandotolken tooindicate hello SSH användaren namnet hello noden och du är ansluten till. Till exempel när ansluten toohello primära huvudnod som `sshuser`, hello frågan är `sshuser@hn0-clustername:~$`.
 
-### <a name="connect-to-worker-and-zookeeper-nodes"></a>Ansluta till arbetarnoder och Zookeeper-noder
+### <a name="connect-tooworker-and-zookeeper-nodes"></a>Ansluta tooworker och Zookeeper-noder
 
-Arbetarnoder och Zookeeper-noder är inte tillgängliga direkt från internet. De kan nås från klustrets huvudnoder eller kantnoder. Här är de allmänna steg som du följer för att ansluta till andra noder:
+Hej arbetarnoder och Zookeeper noder inte är direkt åtkomliga från hello internet. De kan nås från hello-klustrets huvudnoder eller edge-noder. hello följande är hello allmänna steg tooconnect tooother noder:
 
-1. Använd SSH för att ansluta till en huvud- eller kantnod:
+1. Använd SSH tooconnect tooa head eller edge nod:
 
         ssh sshuser@myedge.mycluster-ssh.azurehdinsight.net
 
-2. Från SSH-anslutningen till huvud- eller kantnoden använder du `ssh`-kommandot för att ansluta till en arbetarnod i klustret:
+2. Använd hello från hello SSH-anslutning toohello head eller kantnod `ssh` kommandot tooconnect tooa arbetsnoden hello klustret:
 
         ssh sshuser@wn0-myhdi
 
-    Om du vill hämta en lista över domännamnen för noderna i klustret tittar du på [Manage HDInsight by using the Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) (Hantera HDInsight med hjälp av Ambari REST-API:et).
+    tooretrieve en lista över hello domännamn för hello noder i klustret hello finns hello [hantera HDInsight med hjälp av hello Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes) dokumentet.
 
-Om SSH-kontot är skyddat med ett __lösenord__ anger du lösenordet när du ansluter.
+Om hello SSH-konto är skyddad med en __lösenord__, ange hello lösenord när du ansluter.
 
-Om SSH-kontot är säkrad med __SSH-nycklar__ kontrollerar du att SSH-vidarebefordran är aktiverad på klienten.
+Om hello SSH-konto är säkrad via __SSH-nycklar__, se till att SSH-vidarebefordran är aktiverad på hello-klienten.
 
 > [!NOTE]
-> Ett annat sätt att direkt komma åt alla noder i klustret är att installera HDInsight i ett virtuellt Azure-nätverk. Därefter kan du ansluta till din fjärrdatorn i samma virtuella nätverk och direkt komma åt alla noder i klustret.
+> Ett annat sätt toodirectly åtkomst till alla noder i klustret hello är tooinstall HDInsight i ett virtuellt Azure-nätverk. Du kan sedan ansluta till fjärrdatorn-toohello samma virtuella nätverk och få åtkomst till alla noder i klustret hello direkt.
 >
 > Mer information finns i [Use a virtual network with HDInsight](hdinsight-extend-hadoop-virtual-network.md) (Använda ett virtuellt nätverk med HDInsight).
 
 ### <a name="configure-ssh-agent-forwarding"></a>Konfigurera vidarebefordran med SSH-agenten
 
 > [!IMPORTANT]
-> I följande steg förutsätter vi att du har ett Linux- eller UNIX-baserat system och att du arbetar med Bash i Windows 10. Om de här stegen inte fungerar på din dator kan du behöva läsa dokumentationen för SSH-klienten.
+> hello följande steg förutsätter en Linux eller UNIX-baserat system och arbeta med Bash på Windows 10. Om de här stegen inte fungerar för ditt system, eventuellt tooconsult hello dokumentationen för SSH-klienten.
 
 1. Använd en textredigerare och öppna `~/.ssh/config`. Om den här filen inte finns kan du skapa den genom att ange `touch ~/.ssh/config` på en kommandorad.
 
-2. Lägg till följande text i `config`-filen.
+2. Lägg till följande text toohello hello `config` fil.
 
         Host <edgenodename>.<clustername>-ssh.azurehdinsight.net
           ForwardAgent yes
 
-    Ersätt informationen för __Host__ med adressen för den nod som du ansluter till med hjälp av SSH. I föregående exempel används kantnoden. Den här posten konfigurerar vidarebefordran med SSH-agenten för den angivna noden.
+    Ersätt hello __värden__ information med hello adressen hello nod du ansluta toousing SSH. hello föregående exemplet används hello kantnod. Den här posten konfigurerar SSH-agentvidarebefordran för hello angivna noden.
 
-3. Testa SSH-agentvidarebefordran med hjälp av följande kommando från terminalen:
+3. Testa SSH-agentvidarebefordran med hjälp av följande kommando från hello terminal hello:
 
         echo "$SSH_AUTH_SOCK"
 
-    Det här kommandot returnerar information liknande följande text:
+    Det här kommandot returnerar informationen liknande toohello följande text:
 
         /tmp/ssh-rfSUL1ldCldQ/agent.1792
 
-    Om inget returneras så körs inte `ssh-agent`. Läs informationen om skripten för agentstart i [Using ssh-agent with ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) (Använda ssh-agent med ssh) eller läs dokumentationen för din SSH-klient för mer information.
+    Om inget returneras så körs inte `ssh-agent`. Mer information finns i hello agent startinformation skript på [med hjälp av ssh-agenten med ssh (http://mah.everybody.org/docs/ssh)](http://mah.everybody.org/docs/ssh) eller Läs dokumentationen för SSH-klienten.
 
-4. När du har verifierat att **ssh-agent** körs använder du följande för att lägga till din privata SSH-nyckel till agenten:
+4. När du har verifierat att **ssh-agent** körs, Använd hello följande tooadd SSH privat nyckel toohello agent:
 
         ssh-add ~/.ssh/id_rsa
 
-    Om din privata nyckel finns i en annan fil ersätter du `~/.ssh/id_rsa` med sökvägen till filen.
+    Om din privata nyckel lagras i en annan fil ersätter `~/.ssh/id_rsa` med hello sökväg toohello fil.
 
-5. Anslut till kant- eller huvudnoder i klustret med hjälp av SSH. Använd sedan SSH-kommandot för att ansluta till en arbetar- eller Zookeeper-nod. Anslutningen upprättas med hjälp av den vidarebefordrade nyckeln.
+5. Anslut toohello klusternod kant eller huvudnoderna via SSH. Använd sedan hello SSH-kommandot tooconnect tooa worker eller zookeeper-nod. hello-anslutning upprättas med hjälp av hello vidarebefordras nyckel.
 
 ## <a name="copy-files"></a>Kopiera filer
 
-Verktyget `scp` kan användas för att kopiera filer till och från enskilda noder i ett kluster. Med följande kommando kopieras till exempel katalogen `test.txt` från det lokala systemet till den primära huvudnoden:
+Hej `scp` verktyg kan vara används toocopy filer tooand från enskilda noder i klustret hello. Till exempel hello efter kommandot kopior hello `test.txt` katalog från hello lokalt system toohello primära huvudnod:
 
 ```bash
 scp test.txt sshuser@clustername-ssh.azurehdinsight.net:
 ```
 
-Eftersom ingen sökväg har angetts efter `:` placeras filen i hemkatalogen `sshuser`.
+Eftersom ingen sökväg anges efter hello `:`, hello filen placeras i hello `sshuser` -hemkataloger.
 
-I följande exempel kopieras filen `test.txt` från hemkatalogen `sshuser` på den primära huvudnoden till det lokala systemet:
+följande exempel kopierar hello hello `test.txt` filen från hello `sshuser` arbetskatalog på hello primära huvudnod toohello lokalt system:
 
 ```bash
 scp sshuser@clustername-ssh.azurehdinsight.net:test.txt .
 ```
 
 > [!IMPORTANT]
-> `scp` har bara åtkomst tull filsystemet för enskilda noder i klustret. Det kan inte användas för att få åtkomst till data i det HDFS-kompatibla lagringsutrymmet för klustret.
+> `scp`bara åt hello filsystemet på enskilda noder i hello kluster. Inte kan använda tooaccess data i hello HDFS-kompatibla lagringen för hello klustret.
 >
-> Använd `scp` när du behöver ladda upp en resurs för en SSH-session. Ladda exempelvis upp ett Python-skript och kör det sedan från en SSH-session.
+> Använd `scp` när du behöver tooupload en resurs för användning från en SSH-session. Till exempel överföra en Python-skriptet och kör sedan hello skript från en SSH-session.
 >
-> I följande dokument hittar du information om att läsa in data direkt till det HDFS-kompatibla lagringsutrymmet:
+> Information om att läsa in data direkt till hello HDFS-kompatibla lagring finns i hello följande dokument:
 >
 > * [HDInsight med Azure Storage](hdinsight-hadoop-use-blob-storage.md).
 >

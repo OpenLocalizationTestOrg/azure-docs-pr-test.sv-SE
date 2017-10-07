@@ -1,5 +1,5 @@
 ---
-title: "Översikt över tabeller i SQL Data Warehouse | Microsoft Docs"
+title: aaaOverview tabeller i SQL Data Warehouse | Microsoft Docs
 description: "Komma igång med Azure SQL Data Warehouse-tabeller."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 06/29/2016
 ms.author: shigu;jrj
-ms.openlocfilehash: c16fef2f302dbc56f257eaf2f0d2b68b6a3c1852
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 4edabcb4b0754bf6c99c2b6b3f0c077749051d9e
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>Översikt över tabeller i SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -33,37 +33,37 @@ ms.lasthandoff: 08/03/2017
 > 
 > 
 
-Det är enkelt att komma igång med att skapa tabeller i SQL Data Warehouse.  Grundläggande [CREATE TABLE] [ CREATE TABLE] syntaxen följer samma syntax som du är mest sannolika redan bekant med från att arbeta med andra databaser.  Om du vill skapa en tabell, behöver du bara namnge din tabell, namnge din kolumner och definiera datatyper för varje kolumn.  Om du har skapar tabeller i andra databaser, detta ska se ut mycket känner till.
+Det är enkelt att komma igång med att skapa tabeller i SQL Data Warehouse.  grundläggande hello [CREATE TABLE] [ CREATE TABLE] syntaxen följer hello samma syntax som du är mest sannolika redan bekant med från att arbeta med andra databaser.  toocreate en tabell, du behöver tooname din tabell namnge din kolumner och definiera datatyper för varje kolumn.  Om du har skapar tabeller i andra databaser, bör det se ut insatt tooyou.
 
 ```sql  
 CREATE TABLE Customers (FirstName VARCHAR(25), LastName VARCHAR(25))
  ``` 
 
-I exemplet ovan skapar en tabell med namnet kunder med två kolumner, Förnamn och efternamn.  Varje kolumn har definierats med datatypen VARCHAR(25) som begränsar data till 25 tecken.  Attributen grundläggande för en tabell, samt andra, är främst samma som andra databaser.  Datatyper definieras för varje kolumn och säkerställer integriteten hos dina data.  Index kan läggas till att förbättra prestanda genom att i/o.  Partitionering kan läggas till att förbättra prestanda när du behöver ändra data.
+hello ovanstående exempel skapar en tabell med namnet kunder med två kolumner, Förnamn och efternamn.  Varje kolumn har definierats med datatypen VARCHAR(25) som begränsar hello data too25 tecken.  Attributen grundläggande för en tabell, samt andra, är främst hello samma som andra databaser.  Datatyper har definierats för varje kolumn och kontrollera hello integriteten hos dina data.  Index kan läggas tooimprove prestanda genom att minska i/o.  Partitionering kan läggas till tooimprove prestanda när du behöver toomodify data.
 
 [Byta namn på] [ RENAME] en tabell i SQL Data Warehouse ser ut så här:
 
 ```sql  
-RENAME OBJECT Customer TO CustomerOrig; 
+RENAME OBJECT Customer tooCustomerOrig; 
  ```
 
 ## <a name="distributed-tables"></a>Distribuerade tabeller
-Ett nytt grundläggande attribut som introducerades av distribuerade system som SQL Data Warehouse är den **distribution kolumnen**.  Kolumnen distribution är mycket vad det låter som.  Det är den kolumn som avgör hur du distribuerar eller dela dina data i bakgrunden.  När du skapar en tabell utan att ange kolumnen distribution tabellen distribueras automatiskt med hjälp av **resursallokering**.  Resursallokering tabeller kan vara tillräckligt i vissa scenarier, kan definiera distributionskolumner avsevärt minska dataflytt under frågor, vilket optimerar prestanda.  I situationer där det finns en liten mängd data i en tabell, välja att skapa tabellen med de **replikera** distributionstypen kopierar data till varje compute-nod och sparar flytt av data vid körning i frågan. Se [distribuerar en tabell] [ Distribute] att lära dig mer om hur du väljer en kolumn för distribution.
+Ett nytt grundläggande attribut som introducerades av distribuerade system som SQL Data Warehouse är hello **distribution kolumnen**.  hello distribution kolumnen är mycket vad det låter som.  Det är hello-kolumn som avgör hur toodistribute, eller division data hello bakgrunden.  När du skapar en tabell utan att ange hello distribution kolumn hello tabell distribueras automatiskt med hjälp av **resursallokering**.  Resursallokering tabeller kan vara tillräckligt i vissa scenarier, kan definiera distributionskolumner avsevärt minska dataflytt under frågor, vilket optimerar prestanda.  I situationer där det finns en liten mängd data i en tabell, väljer toocreate hello tabell med hello **replikera** distributionstypen kopierar data tooeach compute-nod och sparar flytt av data vid körning i frågan. Se [distribuerar en tabell] [ Distribute] toolearn mer om hur tooselect en kolumn för distribution.
 
 ## <a name="indexing-and-partitioning-tables"></a>Indexering och partitionerar register
-När du blir mer avancerade med SQL Data Warehouse och vill optimera prestanda vill du veta mer om tabelldesign.  Mer information finns i artiklar på [Data tabelltyper][Data Types], [distribuerar en tabell][Distribute], [indexering tabell] [ Index] och [partitionering en tabell][Partition].
+När du blir mer avancerade med SQL Data Warehouse och vill toooptimize prestanda bör du toolearn mer om tabelldesign.  toolearn finns fler hello artiklar på [Data tabelltyper][Data Types], [distribuerar en tabell][Distribute], [indexering tabellen] [ Index] och [partitionering en tabell][Partition].
 
 ## <a name="table-statistics"></a>Tabellstatistik
-Statistik är ett mycket viktigt att få bästa möjliga prestanda utanför ditt SQL Data Warehouse.  Eftersom SQL Data Warehouse ännu inte automatiskt skapa och uppdatera statistik, som du har kanske du kan förvänta dig i Azure SQL Database, läsa vår artikel [statistik] [ Statistics] kan vara en av mest viktiga artiklar du läsa för att säkerställa att du får bästa möjliga prestanda från dina frågor.
+Statistik är ett mycket viktigt toogetting hello bästa prestanda utanför ditt SQL Data Warehouse.  Eftersom SQL Data Warehouse ännu inte automatiskt skapa och uppdatera statistik, som du har kanske tooexpect i Azure SQL Database, läsa vår artikel [statistik] [ Statistics] kan vara en av hello de viktigaste artiklar som du kan läsa tooensure som du får hello bästa prestanda från dina frågor.
 
 ## <a name="temporary-tables"></a>Temporära tabeller
-Temporära tabeller är tabeller som endast finns under din inloggning och inte kan ses av andra användare.  Temporära tabeller kan vara ett bra sätt att förhindra att andra ser tillfälliga resultat och också minska behovet av att rensa.  Eftersom temporära tabeller kan du också använda lokal lagring, ger de snabbare prestanda för vissa åtgärder.  Finns det [tillfällig tabell] [ Temporary] artiklar för mer information om temporära tabeller.
+Temporära tabeller är tabeller som endast finns hello länge din inloggning och inte kan ses av andra användare.  Temporära tabeller kan vara ett bra sätt tooprevent andra från tillfälliga resultat och också minska hello behovet av att rensa.  Eftersom temporära tabeller kan du också använda lokal lagring, ger de snabbare prestanda för vissa åtgärder.  Se hello [tillfällig tabell] [ Temporary] artiklar för mer information om temporära tabeller.
 
 ## <a name="external-tables"></a>Externa tabeller
-Externa tabeller, även kallat Polybase tabeller är tabeller som kan efterfrågas från SQL Data Warehouse men punkt till externa data från SQL Data Warehouse.  Du kan till exempel skapa en extern tabell som pekar till filer på Azure Blob Storage.  Mer information om hur du skapar och fråga en extern tabell, se [Läs in data med Polybase][Load data with Polybase].  
+Externa tabeller, även kallat Polybase tabeller är tabeller som kan efterfrågas från SQL Data Warehouse men punkt toodata externa från SQL Data Warehouse.  Du kan till exempel skapa en extern tabell toofiles som pekar på Azure Blob Storage.  Mer information om hur toocreate och fråga en extern tabell Se [Läs in data med Polybase][Load data with Polybase].  
 
 ## <a name="unsupported-table-features"></a>Funktioner som inte stöds tabell
-SQL Data Warehouse innehåller många av samma tabell funktionerna som erbjuds av andra databaser, finns men det vissa funktioner som ännu inte stöds.  Nedan visas en lista över några av de funktionerna i tabellen som ännu inte stöds.
+SQL Data Warehouse innehåller många hello samma tabell funktioner som erbjuds av andra databaser, finns men det vissa funktioner som ännu inte stöds.  Nedan visas en lista över några hello table-funktioner som ännu inte stöds.
 
 | Funktioner som inte stöds |
 | --- |
@@ -78,13 +78,13 @@ SQL Data Warehouse innehåller många av samma tabell funktionerna som erbjuds a
 | [Synonymer][Synonyms] |
 
 ## <a name="table-size-queries"></a>Tabell storlek frågor
-Ett enkelt sätt att identifiera utrymme och rader som används av en tabell i var och en av de 60-distributioner är att använda [DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED].
+Ett enkelt sätt tooidentify utrymme och rader som används av en tabell i var och en av hello 60 distributioner är toouse [DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED].
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Men kan med hjälp av DBCC-kommandon ganska begränsa.  Dynamiska hanteringsvyer (av DMV: er) kan du se mycket mer detaljer som ger dig mycket större kontroll över resultatet av frågan.  Börja med att skapa den här vyn, kommer att anges av många av våra exempel i den här och andra artiklar.
+Men kan med hjälp av DBCC-kommandon ganska begränsa.  Dynamiska hanteringsvyer (av DMV: er) kan du toosee mycket mer detaljerad information som ger dig mycket större kontroll över hello frågeresultat.  Börja med att skapa den här vyn, blir refererad tooby många av våra exempel i den här och andra artiklar.
 
 ```sql
 CREATE VIEW dbo.vTableSizes
@@ -199,7 +199,7 @@ FROM size
 ```
 
 ### <a name="table-space-summary"></a>Översikt över tabellutrymme
-Den här frågan returnerar rader och utrymme för tabellen.  Det är en bra fråga för att se vilka tabeller som är dina största tabeller och om de är resursallokering replikerade eller distribuerade hash.  För distribuerade hash-tabeller visar även kolumnen distribution.  I de flesta fall ska största tabellerna hash som distribueras med ett grupperat columnstore-index.
+Den här frågan returnerar hello rader och utrymme genom att tabellen.  Det är en bra fråga toosee vilka tabeller som är dina största tabeller och om de är resursallokering replikerade eller distribuerade hash.  För distribuerade hash-tabeller visar även hello distribution kolumn.  I de flesta fall ska största tabellerna hash som distribueras med ett grupperat columnstore-index.
 
 ```sql
 SELECT 
@@ -273,7 +273,7 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information finns i artiklar på [Data tabelltyper][Data Types], [distribuerar en tabell][Distribute], [indexering tabell] [ Index], [Partitionering en tabell][Partition], [underhålla tabellstatistik] [ Statistics] och [Temporära tabeller][Temporary].  Mer information om metodtips finns [Metodtips för SQL Data Warehouse][SQL Data Warehouse Best Practices].
+toolearn finns fler hello artiklar på [Data tabelltyper][Data Types], [distribuerar en tabell][Distribute], [indexering tabellen] [ Index], [Partitionering en tabell][Partition], [underhålla tabellstatistik] [ Statistics] och [ Temporära tabeller][Temporary].  Mer information om metodtips finns [Metodtips för SQL Data Warehouse][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: "Aktivera Fjärrskrivbord i en Azure-molntjänst | Microsoft Docs"
-description: "Hur du konfigurerar ditt tjänstprogram för azure-molnet för att tillåta anslutningar till fjärrskrivbord"
+title: "aaaEnable fjärrskrivbord i en Azure-molntjänst | Microsoft Docs"
+description: "Hur tooconfigure din azure cloud service programmet tooallow anslutningar till fjärrskrivbord"
 services: cloud-services
 documentationcenter: 
 author: thraka
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: 413e72e9a39fcde84f56bfc61a6bc72dbadf1c97
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: b3c0180bf5ad29cb77e5303ccbd6f9ccc44b7b0a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Aktivera anslutning till fjärrskrivbord för en roll i Azure-molntjänster
 
@@ -28,66 +28,66 @@ ms.lasthandoff: 08/18/2017
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
 
-Du kan aktivera anslutning till fjärrskrivbord i din roll under utvecklingen genom att inkludera Remote Desktop-moduler i tjänstedefinitionsfilen eller kan du aktivera fjärrskrivbord via Remote Desktop-tillägget. Det bästa sättet är att använda Remote Desktop-tillägget som du kan aktivera fjärrskrivbord även när programmet distribueras utan att behöva distribuera programmet.
+Du kan aktivera anslutning till fjärrskrivbord i din roll under utvecklingen av inklusive hello fjärrskrivbord moduler i tjänstedefinitionsfilen eller välja tooenable fjärrskrivbord via hello Remote Desktop-tillägget. hello är föredragen metod toouse hello Remote Desktop-tillägg som du kan aktivera fjärrskrivbord även efter hello programmet distribueras utan att behöva tooredeploy ditt program.
 
-## <a name="configure-remote-desktop-from-the-azure-classic-portal"></a>Konfigurera anslutning till fjärrskrivbord från den klassiska Azure-portalen
-Den klassiska Azure-portalen använder metoden Remote Desktop-tillägget så att du kan aktivera fjärrskrivbord även när programmet distribueras. Den **konfigurera** på sidan för din molntjänst kan du ändra det lokala administratörskontot som används för att ansluta till virtuella datorer om du vill aktivera Fjärrskrivbord, certifikatet används i autentisering och ange förfallodatum.
+## <a name="configure-remote-desktop-from-hello-azure-classic-portal"></a>Konfigurera anslutning till fjärrskrivbord från hello klassiska Azure-portalen
+hello klassiska Azure-portalen använder hello Remote Desktop-tillägget metoden så att du kan aktivera fjärrskrivbord även efter hello programmet distribueras. Hej **konfigurera** på sidan för din molntjänst kan tooenable fjärrskrivbord, ändra hello lokala administratörskontot används tooconnect toohello virtuella datorer, hello certifikat används för autentisering och ange hello utgångsdatum.
 
-1. Klicka på **molntjänster**, klicka på namnet på Molntjänsten och klicka sedan på **konfigurera**.
-2. Klicka på den **Remote** längst ned.
+1. Klicka på **molntjänster**hello namnet på hello-Molntjänsten och klicka sedan på **konfigurera**.
+2. Klicka på hello **Remote** knappen längst ned hello.
 
     ![Fjärråtkomst-molntjänster](./media/cloud-services-role-enable-remote-desktop/CloudServices_Remote.png)
 
    > [!WARNING]
-   > Alla rollinstanser kommer att startas om när du först aktivera Fjärrskrivbord och klicka på OK (markering). Certifikatet som används för att kryptera lösenordet måste installeras på vilken roll för att förhindra att en omstart. För att förhindra en omstart [överföra ett certifikat för Molntjänsten](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate) och återgå sedan till den här dialogrutan.
+   > Alla rollinstanser kommer att startas om när du först aktivera Fjärrskrivbord och klicka på OK (markering). tooprevent en omstart, hello certifikatlösenord används tooencrypt hello måste installeras på hello roll. tooprevent en omstart [överföra ett certifikat för hello Molntjänsten](cloud-services-configure-ssl-certificate.md#step-3-upload-a-certificate) och returnerar sedan toothis dialogrutan.
 
-3. I **roller**, väljer du den roll som du vill uppdatera eller välj **alla** för alla roller.
-4. Gör något av följande ändringar:
+3. I **roller**väljer hello rollen tooupdate eller välj **alla** för alla roller.
+4. Göra hello följande ändringar:
 
-   * Välj för att aktivera Fjärrskrivbord på **aktivera Fjärrskrivbord** kryssrutan. Avmarkera kryssrutan om du vill inaktivera Fjärrskrivbord.
-   * Skapa ett konto som ska användas i anslutning till fjärrskrivbord till rollinstanserna.
-   * Uppdatera lösenordet för det befintliga kontot.
-   * Välj en överförda certifikat ska användas för autentisering (Överför certifikat med hjälp av **överför** på den **certifikat** sidan) eller skapa ett nytt certifikat.
-   * Ändra utgångsdatumet för Remote Desktop-konfigurationen.
+   * tooenable fjärrskrivbord, Välj hello **aktivera Fjärrskrivbord** kryssrutan. toodisable Rensa hello kryssrutan Fjärrskrivbord.
+   * Skapa ett konto toouse i anslutning till fjärrskrivbord toohello rollinstanser.
+   * Uppdatera hello lösenord för hello befintliga konto.
+   * Välj en toouse överförda certifikat för autentisering (Överför hello certifikat med **överför** på hello **certifikat** sidan) eller skapa ett nytt certifikat.
+   * Ändra hello utgångsdatum hello konfigurationen av fjärrskrivbordet.
 
 5. När du är klar configuration-uppdateringar, klickar du på **OK** (markering).
 
 ## <a name="remote-into-role-instances"></a>Remote i rollinstanser
-När fjärrskrivbord är aktiverat på rollerna kan du fjärråtkomst till en rollinstans via olika verktyg.
+När fjärrskrivbord är aktiverat på hello roller kan du fjärråtkomst till en rollinstans via olika verktyg.
 
-Att ansluta till en rollinstans från den klassiska Azure-portalen:
+tooconnect tooa rollinstansen från hello klassiska Azure-portalen:
 
-1. Klicka på **instanser** att öppna den **instanser** sidan.
+1. Klicka på **instanser** tooopen hello **instanser** sidan.
 2. Välj en rollinstans som har konfigurerats för fjärrskrivbord.
-3. Klicka på **Anslut**, och följ instruktionerna för att öppna skrivbordet.
-4. Klicka på **öppna** och sedan **Anslut** fjärrskrivbord-anslutningen ska upprättas.
+3. Klicka på **Anslut**, och följ hello instruktioner tooopen hello skrivbordet.
+4. Klicka på **öppna** och sedan **Anslut** toostart hello fjärrskrivbordsanslutning.
 
-### <a name="use-visual-studio-to-remote-into-a-role-instance"></a>Använd Visual Studio för att till en rollinstans
+### <a name="use-visual-studio-tooremote-into-a-role-instance"></a>Använd Visual Studio tooremote till en rollinstans
 I Visual Studio Server Explorer:
 
-1. Expandera den **Azure** > **molntjänster** > **[molntjänstnamnet]** nod.
+1. Expandera hello **Azure** > **molntjänster** > **[molntjänstnamnet]** nod.
 2. Expandera antingen **mellanlagring** eller **produktion**.
-3. Expandera enskilda rollen.
-4. Högerklicka på en av rollinstanserna klickar du på **ansluta med hjälp av fjärrskrivbord...** , och ange användarnamn och lösenord.
+3. Expandera hello enskilda roll.
+4. Högerklicka på en av hello rollinstanser, klickar du på **ansluta med hjälp av fjärrskrivbord...** , och ange sedan hello användarnamn och lösenord.
 
 ![Fjärrskrivbord i Server explorer](./media/cloud-services-role-enable-remote-desktop/ServerExplorer_RemoteDesktop.png)
 
-### <a name="use-powershell-to-get-the-rdp-file"></a>Använd PowerShell för att hämta RDP-filen
-Du kan använda den [Get-AzureRemoteDesktopFile](https://msdn.microsoft.com/library/azure/dn495261.aspx) för att hämta RDP-filen. Du kan sedan använda RDP-filen med anslutning till fjärrskrivbord för att få åtkomst till Molntjänsten.
+### <a name="use-powershell-tooget-hello-rdp-file"></a>Använd PowerShell tooget hello RDP-filen
+Du kan använda hello [Get-AzureRemoteDesktopFile](https://msdn.microsoft.com/library/azure/dn495261.aspx) cmdlet tooretrieve hello RDP-filen. Du kan sedan använda hello RDP-filen med anslutning till fjärrskrivbord tooaccess hello-Molntjänsten.
 
-### <a name="programmatically-download-the-rdp-file-through-the-service-management-rest-api"></a>Hämta programmässigt RDP-filen via Service Management REST API
-Du kan använda den [ladda ned RDP-filen](https://msdn.microsoft.com/library/jj157183.aspx) REST-åtgärden för att ladda ned RDP-filen.
+### <a name="programmatically-download-hello-rdp-file-through-hello-service-management-rest-api"></a>Hämta programmässigt hello RDP-fil med hello Service Management REST API
+Du kan använda hello [ladda ned RDP-filen](https://msdn.microsoft.com/library/jj157183.aspx) REST åtgärden toodownload hello RDP-filen.
 
-## <a name="to-configure-remote-desktop-in-the-service-definition-file"></a>Konfigurera fjärrskrivbord i tjänstdefinitionsfilen
-Den här metoden kan du aktivera Fjärrskrivbord för program under utveckling. Den här metoden kräver krypterade lösenord lagras i tjänstkonfigurationen av fil- och eventuella uppdateringar till konfigurationen av fjärrskrivbord kräver en omdistribution av programmet. Om du vill undvika dessa downsides bör du använda remote desktop tillägget baserat-metod som beskrivs ovan.  
+## <a name="tooconfigure-remote-desktop-in-hello-service-definition-file"></a>tooconfigure fjärrskrivbord i hello tjänstdefinitionsfilen
+Den här metoden kan du tooenable Remote Desktop för hello program under utveckling. Den här metoden kräver krypterade lösenord lagras i tjänstkonfigurationen av fil- och eventuella uppdateringar toohello konfiguration av fjärrskrivbord kräver en omdistribution av programmet hello. Om du vill tooavoid baserat dessa downsides bör du använda hello remote desktop tillägget metod som beskrivs ovan.  
 
-Du kan använda Visual Studio för att [aktivera en fjärrskrivbordsanslutning](../vs-azure-tools-remote-desktop-roles.md) med service definition file-metoden.  
-Stegen nedan beskriver de ändringar som krävs för service model-filer till aktivera Fjärrskrivbord. Visual Studio gör automatiskt dessa ändringar när du publicerar.
+Du kan använda Visual Studio för[aktivera en fjärrskrivbordsanslutning](../vs-azure-tools-remote-desktop-roles.md) med hello service definition filen metoden.  
+hello stegen nedan beskriver hello ändringar behövs toohello service model filer tooenable fjärrskrivbord. Visual Studio gör automatiskt dessa ändringar när du publicerar.
 
-### <a name="set-up-the-connection-in-the-service-model"></a>Upprätta anslutningen i tjänstemodellen
-Använd den **import** element att importera den **RemoteAccess** modulen och **RemoteForwarder** modulen till den [ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) filen.
+### <a name="set-up-hello-connection-in-hello-service-model"></a>Konfigurera hello anslutning i hello tjänstmodell
+Använd hello **import** elementet tooimport hello **RemoteAccess** modulen och hello **RemoteForwarder** modulen toohello [ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) fil.
 
-Tjänstdefinitionsfilen bör likna exemplet nedan med den `<Imports>` element som har lagts till.
+Hej tjänstdefinitionsfilen ska vara liknande toohello följande exempel med hello `<Imports>` element som har lagts till.
 
 ```xml
 <ServiceDefinition name="<name-of-cloud-service>" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2013-03.2.0">
@@ -110,7 +110,7 @@ Tjänstdefinitionsfilen bör likna exemplet nedan med den `<Imports>` element so
     </WebRole>
 </ServiceDefinition>
 ```
-Den [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) fil bör likna följande exempel, notera den `<ConfigurationSettings>` och `<Certificates>` element. Det angivna certifikatet måste vara [har överförts till Molntjänsten](cloud-services-how-to-create-deploy.md#how-to-upload-a-certificate-for-a-cloud-service).
+Hej [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) filen bör vara liknande toohello som följande exempel, Observera hello `<ConfigurationSettings>` och `<Certificates>` element. hello certifikatet som anges måste vara [upp toohello Molntjänsten](cloud-services-how-to-create-deploy.md#how-to-upload-a-certificate-for-a-cloud-service).
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -133,5 +133,5 @@ Den [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) fil 
 
 
 ## <a name="additional-resources"></a>Ytterligare resurser
-[Hur du konfigurerar molntjänster](cloud-services-how-to-configure.md)
+[Hur tooConfigure molntjänster](cloud-services-how-to-configure.md)
 [Cloud services vanliga frågor och svar - fjärrskrivbord](cloud-services-faq.md)

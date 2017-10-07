@@ -17,14 +17,14 @@
 ### [Push-arkitekturvägledning för företag](notification-hubs-enterprise-push-notification-architecture.md)
 
 ## Utveckla
-### [Skicka push-meddelanden till Android med GCM](notification-hubs-android-push-notification-google-gcm-get-started.md)
+### [Skicka push-meddelanden tooAndroid med GCM](notification-hubs-android-push-notification-google-gcm-get-started.md)
 ### [Push-meddelanden med rumsliga data från Bing](notification-hubs-push-bing-spartial-data-geofencing-notification.md)
-### Push till specifika användare
+### Push toospecific användare
 #### [Android](notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md)
 #### [iOS](notification-hubs-aspnet-backend-ios-apple-apns-notification.md)
 #### [Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)
 
-#### [Registrera den aktuella användaren med ASP.NET](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
+#### [Registrera hello aktuella användare med ASP.NET](notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md)
 ### [Skicka meddelanden mellan olika plattformar](notification-hubs-aspnet-cross-platform-notification.md)
 ### Arbeta med server-SDK:er
 #### [.NET](https://msdn.microsoft.com/library/mt414893.aspx)

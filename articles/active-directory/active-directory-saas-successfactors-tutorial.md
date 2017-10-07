@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med SuccessFactors | Microsoft Docs"
-description: "Lär dig hur du använder SuccessFactors med Azure Active Directory för att aktivera enkel inloggning, Automatisk etablering och mycket mer!"
+description: "Lär dig hur toouse SuccessFactors med Azure Active Directory tooenable enkel inloggning, Automatisk etablering och mycket mer!"
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -14,103 +14,103 @@ ms.workload: identity
 ms.date: 07/21/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: e85a38ccbe25263ac42bc76351416b023fb77c87
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 3f7895d7d5e26fda27f555ae2f14a1645b50dcba
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Självstudier: Azure Active Directory-integrering med SuccessFactors
-Syftet med den här kursen är att visa dig hur du integrerar SuccessFactors med Azure Active Directory (AD Azure).
+hello syftet med den här kursen är tooshow du hur toointegrate SuccessFactors med Azure Active Directory (AD Azure).
 
-Integrera SuccessFactors med Azure AD ger dig följande fördelar:
+Integrera SuccessFactors med Azure AD ger dig hello följande fördelar:
 
-* Du kan styra i Azure AD som har åtkomst till SuccessFactors
-* Du kan aktivera användarna att automatiskt hämta loggat in på SuccessFactors (Single Sign-On) med sina Azure AD-konton
-* Du kan hantera dina konton i en central plats – den klassiska Azure-portalen
+* Du kan styra i Azure AD som har åtkomst till tooSuccessFactors
+* Du kan aktivera din användare tooautomatically get inloggade tooSuccessFactors (Single Sign-On) med sina Azure AD-konton
+* Du kan hantera dina konton i en central plats - hello klassiska Azure-portalen
 
-Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Krav
-För att konfigurera Azure AD-integrering med SuccessFactors, behöver du följande:
+tooconfigure Azure AD-integrering med SuccessFactors, behöver du hello följande objekt:
 
 * En giltig Azure-prenumeration
 * En klient i SuccessFactors
 
 > [!NOTE]
-> Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.
+> tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.
 > 
 > 
 
-Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:
+tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:
 
 * Du bör inte använda produktionsmiljön, om det inte är nödvändigt.
 * Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Scenariobeskrivning
-Syftet med den här kursen är att du ska testa Azure AD enkel inloggning i en testmiljö.
+hello syftet med den här kursen är tooenable du tootest Azure AD enkel inloggning i en testmiljö.
 
-Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
+hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:
 
-1. Att lägga till SuccessFactors från galleriet
+1. Att lägga till SuccessFactors från hello-galleriet
 2. Konfigurera och testa Azure AD enkel inloggning
 
-## <a name="adding-successfactors-from-the-gallery"></a>Att lägga till SuccessFactors från galleriet
-Du måste lägga till SuccessFactors från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av SuccessFactors i Azure AD.
+## <a name="adding-successfactors-from-hello-gallery"></a>Att lägga till SuccessFactors från hello-galleriet
+tooconfigure hello integrering av SuccessFactors i Azure AD, behöver du tooadd SuccessFactors hello galleriet tooyour listan över hanterade SaaS-appar.
 
-**Utför följande steg för att lägga till SuccessFactors från galleriet:**
+**tooadd SuccessFactors från galleriet hello utför hello följande steg:**
 
-1. I den klassiska Azure-portalen på panelen vänstra navigeringsfönstret klickar du på **Active Directory**.
+1. I hello klassiska Azure-portalen på hello vänstra navigeringsfönstret klickar du på **Active Directory**.
    
     ![Konfigurera enkel inloggning][1]
-2. Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.
-3. Klicka för att öppna vyn program i vyn directory **program** på huvudmenyn.
+2. Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.
+3. tooopen hello program i vyn hello directory vyn klickar du på **program** i hello huvudmenyn.
    
     ![Konfigurera enkel inloggning][2]
-4. Klicka på **Lägg till** längst ned på sidan.
+4. Klicka på **Lägg till** på hello hello sidans nederkant.
    
     ![Program][3]
-5. På den **vad vill du göra** dialogrutan klickar du på **lägga till ett program från galleriet**.
+5. På hello **vad vill du vill toodo** dialogrutan klickar du på **lägga till ett program från galleriet hello**.
    
     ![Konfigurera enkel inloggning][4]
-6. I den **sökrutan**, typen **SuccessFactors**.
+6. I hello **sökrutan**, typen **SuccessFactors**.
    
     ![Konfigurera enkel inloggning][5]
-7. Välj i resultatpanelen **SuccessFactors**, och klicka sedan på **Slutför** lägga till programmet.
+7. Markera hello resultat på panelen **SuccessFactors**, och klicka sedan på **Slutför** tooadd hello program.
    
     ![Konfigurera enkel inloggning][6]
 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurera och testa Azure AD enkel inloggning
-Syftet med det här avsnittet är att visa dig hur du konfigurerar och testa Azure AD enkel inloggning med SuccessFactors baserat på en testanvändare som kallas ”Britta Simon”.
+hello syftet med det här avsnittet är tooshow hur tooconfigure och testa Azure AD enkel inloggning med SuccessFactors baserat på en testanvändare som kallas ”Britta Simon”.
 
-För enkel inloggning ska fungera, måste Azure AD motsvarighet användaren i SuccessFactors till en användare i Azure AD är okänt. Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i SuccessFactors upprättas.
+För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i SuccessFactors tooan användare i Azure AD. Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i SuccessFactors toobe upprättas.
 
-Den här länken relationen upprättas genom att tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** i SuccessFactors.
+Den här länken relationen upprättas genom att tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** i SuccessFactors.
 
-Om du vill konfigurera och testa Azure AD enkel inloggning med SuccessFactors, måste du utföra följande byggblock:
+tooconfigure och testa Azure AD enkel inloggning med SuccessFactors, behöver du toocomplete hello följande byggblock:
 
-1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.
-2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.
-3. **[Skapa en testanvändare SuccessFactors](#creating-a-successfactors-test-user)**  – du har en motsvarighet för Britta Simon i SuccessFactors som är kopplad till Azure AD-representation av henne.
-4. **[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.
-5. **[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.
+1. **[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-single-sign-on) ** -tooenable användare-toouse den här funktionen.
+2. **[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user) ** -tootest Azure AD enkel inloggning med Britta Simon.
+3. **[Skapa en testanvändare SuccessFactors](#creating-a-successfactors-test-user) ** -toohave en motsvarighet för Britta Simon i SuccessFactors som är länkade toohello Azure AD-representation av henne.
+4. **[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD enkel inloggning.
+5. **[Testa enkel inloggning](#testing-single-sign-on) ** -tooverify hello om konfigurationen fungerar.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurera Azure AD enkel inloggning
-I det här avsnittet Aktivera Azure AD enkel inloggning i den klassiska portalen och konfigurera enkel inloggning i ditt SuccessFactors program.
+I det här avsnittet Aktivera Azure AD enkel inloggning i hello klassiska portalen och konfigurera enkel inloggning i ditt SuccessFactors program.
 
-**Utför följande steg för att konfigurera Azure AD enkel inloggning med SuccessFactors:**
+**Utför följande steg hello tooconfigure Azure AD enkel inloggning med SuccessFactors:**
 
-1. I den klassiska Azure-portalen på den **SuccessFactors** integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** att öppna den **Konfigurera enkel inloggning** dialogrutan.
+1. I hello klassiska Azure-portalen på hello **SuccessFactors** integreringssidan för programmet, klickar du på **Konfigurera enkel inloggning** tooopen hello **Konfigurera enkel inloggning** dialogrutan.
    
     ![Konfigurera enkel inloggning][7]
-2. På den **hur vill du att användarna kan logga in på SuccessFactors** väljer **Microsoft Azure AD enkel inloggning**, och klicka sedan på **nästa**.
+2. På hello **hur skulle du som användare toosign på tooSuccessFactors** väljer **Microsoft Azure AD enkel inloggning**, och klicka sedan på **nästa**.
    
     ![Konfigurera enkel inloggning][8]
-3. På den **konfigurera App-URL** , utför följande steg, och klickar sedan på **nästa**.
+3. På hello **konfigurera App-URL** , utför följande steg hello, och klickar sedan på **nästa**.
    
     ![Konfigurera enkel inloggning][9]
    
-    a. I den **logga URL** textruta, ange ett URL-Adressen med något av följande mönster: 
+    a. I hello **logga URL** textruta, ange ett URL-Adressen med något av följande mönster hello: 
    
     |  |
     | --- |
@@ -119,7 +119,7 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i den klassiska portalen
     | `https://<company name>.successfactors.eu/<company name>` |
     | `https://<company name>.sapsf.eu` |
    
-    b. I den **Reply URL** textruta, ange ett URL-Adressen med något av följande mönster: 
+    b. I hello **Reply URL** textruta, ange ett URL-Adressen med något av följande mönster hello: 
    
     |  |
     | --- |
@@ -132,32 +132,32 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i den klassiska portalen
     c. Klicka på **Nästa**. 
 
     > [!NOTE]
-    > Observera att detta inte är verkliga värden. Du måste uppdatera dessa värden med de faktiska logga URL och Reply-URL. För att få dessa värden kan kontakta [SuccessFactors supportteam](https://www.successfactors.com/en_us/support.html).
+    > Observera att detta inte är hello verkliga värden. Du har tooupdate dessa värden med hello faktiska logga URL och svars-URL. tooget dessa värden, kontakta [SuccessFactors supportteam](https://www.successfactors.com/en_us/support.html).
 
-1. På den **Konfigurera enkel inloggning på SuccessFactors** klickar du på **hämta certifikat**, och sedan spara certifikatfilen lokalt på datorn.
+1. På hello **Konfigurera enkel inloggning på SuccessFactors** klickar du på **hämta certifikat**, och sedan spara hello certifikatfilen lokalt på datorn.
    
     ![Konfigurera enkel inloggning][10]
 
 2. Logga in i ett annat webbläsarfönster din **SuccessFactors administrationsportalen** som administratör.
 
-3. Besök **programsäkerhet** och inbyggd **enkel inloggning på funktionen**. 
+3. Besök **programsäkerhet** och egna för**enkel inloggning på funktionen**. 
 
-4. Placera alla värden i den **återställa Token** och på **spara Token** att aktivera SAML SSO.
+4. Placera alla värden i hello **återställa Token** och på **spara Token** tooenable SAML SSO.
    
     ![Konfigurera enkel inloggning på app-sida][11]
 
     > [!NOTE] 
-    > Det här värdet används bara som växeln på/av. Om inget värde har sparats är SAML SSO Aktiverat. Om ett tomt värde har sparats är SAML SSO OFF.
+    > Det här värdet används bara som hello strömbrytare. Om inget värde har sparats är hello SAML SSO Aktiverat. Om ett tomt värde har sparats är hello SAML SSO OFF.
 
-1. Inbyggd nedan skärmbild och utför följande åtgärder.
+1. Skärmbild av interna toobelow och utför följande åtgärder hello.
    
     ![Konfigurera enkel inloggning på app-sida][12]
    
-    a. Välj den **SAML v2 SSO** alternativknapp
+    a. Välj hello **SAML v2 SSO** alternativknapp
    
-    b. Ange SAML garanterar part Name(e.g. SAml issuer + company name).
+    b. Ange hello SAML garanterar part Name(e.g. SAml issuer + company name).
    
-    c. I den **SAML utfärdaren** textruta ange värdet för **utfärdar-URL** från guiden Konfigurera program för Azure AD.
+    c. I hello **SAML utfärdaren** textruta placera hello värdet för **utfärdar-URL** från guiden Konfigurera program för Azure AD.
    
     d. Välj **svar (kunden genereras/IdP/AP)** som **kräver obligatorisk signatur**.
    
@@ -169,18 +169,18 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i den klassiska portalen
    
     h. Välj **nr** som **genomdriva giltighetsperioden för certifikatet**.
    
-    Jag. Kopiera innehållet i filen hämtat certifikat och klistrar in det i den **SAML verifiera certifikatet** textruta.
+    Jag. Kopiera hello innehållet hello hämtat certifikatfilen och klistra in den i hello **SAML verifiera certifikatet** textruta.
 
     > [!NOTE] 
-    > Certifikatets innehåll måste börja certifikat och certifikat sluttaggar.
+    > Hej certifikatinnehåll måste börja certifikat och certifikat sluttaggar.
 
-1. Gå till SAML V2 och utför följande steg:
+1. Navigera tooSAML V2 och utför sedan hello följande steg:
    
     ![Konfigurera enkel inloggning på app-sida][13]
    
     a. Välj **Ja** som **stöder SP-initierad globala logga ut**.
    
-    b. I den **globala logga ut tjänst-URL (LogoutRequest mål)** textruta ange värdet för **Remote logga ut URL** från guiden Konfigurera program för Azure AD.
+    b. I hello **globala logga ut tjänst-URL (LogoutRequest mål)** textruta placera hello värdet för **Remote logga ut URL** från guiden Konfigurera program för Azure AD.
    
     c. Välj **nr** som **kräver sp måste kryptera alla NameID elementet**.
    
@@ -188,10 +188,10 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i den klassiska portalen
    
     e. Välj **Ja** som **aktivera sp initierade inloggning (AuthnRequest)**.
    
-    f. I den **begäran om att skicka som företagsomfattande utgivaren** textruta ange värdet för **Remote inloggnings-URL** från guiden Konfigurera program för Azure AD.
-2. Utför de här stegen om du vill göra inloggningen användarnamn inte skiftlägeskänsligt.
+    f. I hello **begäran om att skicka som företagsomfattande utgivaren** textruta placera hello värdet för **Remote inloggnings-URL** från guiden Konfigurera program för Azure AD.
+2. Utför de här stegen om du vill toomake hello inloggning användarnamn inte skiftlägeskänsligt.
    
-    a. Besök **Företagsinställningar**(nästan längst ned).
+    a. Besök **Företagsinställningar**(nära hello längst ned).
    
     b. Markera kryssrutan bredvid **aktivera icke skiftlägeskänslig användarnamn**.
    
@@ -200,99 +200,99 @@ I det här avsnittet Aktivera Azure AD enkel inloggning i den klassiska portalen
     ![Konfigurera enkel inloggning][29]
 
     > [!NOTE] 
-    > Om du försöker göra detta kontrollerar systemet om det skapar en dubblett SAML-inloggningsnamn. Till exempel om kunden har användarnamn Användare1 och Användare1. Tar bort skiftlägeskänslighet gör dessa dubbletter. Systemet får du ett felmeddelande och kommer inte att aktivera funktionen. Kunden måste ändra något av användarnamnet så att det är faktiskt stavat olika. 
+    > Om du försöker tooenable detta, kontrolleras Hej om det skapar en dubblett SAML-inloggningsnamn. Om exempelvis hello kunden har användarnamn Användare1 och Användare1. Tar bort skiftlägeskänslighet gör dessa dubbletter. hello system får du ett felmeddelande och kommer inte att aktivera hello-funktionen. hello kunden behöver toochange en hello användarnamn så att det verkligen är stavat olika. 
 
-1. Välj bekräftelsen konfiguration för enkel inloggning på den klassiska Azure-portalen och klicka sedan på **Slutför** att stänga den **Konfigurera enkel inloggning** dialogrutan.
+1. Välj hello konfiguration för enkel inloggning bekräftelse på hello klassiska Azure-portalen, och klicka sedan på **Slutför** tooclose hello **Konfigurera enkel inloggning** dialogrutan.
    
     ![Program][14]
-2. På den **enkel inloggning bekräftelse** klickar du på **Slutför**.
+2. På hello **enkel inloggning bekräftelse** klickar du på **Slutför**.
    
     ![Program][15]
 
 ### <a name="creating-an-azure-ad-test-user"></a>Skapa en testanvändare i Azure AD
-Syftet med det här avsnittet är att skapa en testanvändare i den klassiska portalen kallas Britta Simon.
+hello syftet med det här avsnittet är toocreate en testanvändare i hello klassiska portalen kallas Britta Simon.
 
 ![Skapa Azure AD-användare][16]
 
-**Utför följande steg för att skapa en testanvändare i Azure AD:**
+**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**
 
-1. I den **klassiska Azure-portalen**, klicka på det vänstra navigeringsfönstret **Active Directory**.
+1. I hello **klassiska Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Active Directory**.
    
     ![Skapa en testanvändare i Azure AD][17]
-2. Från den **Directory** listan, Välj den katalog som du vill aktivera katalogintegrering.
-3. Klicka för att visa en lista över användare, på menyn upp **användare**.
+2. Från hello **Directory** listan, Välj hello katalog som du vill tooenable katalogintegrering.
+3. toodisplay hello lista över användare i hello menyn hello överst, klickar du på **användare**.
    
     ![Skapa en testanvändare i Azure AD][18]
-4. Öppna den **Lägg till användare** i verktygsfältet längst ned i dialogrutan klickar du på **Lägg till användare**.
+4. tooopen hello **Lägg till användare** i hello verktygsfältet på hello längst ned i dialogrutan klickar du på **Lägg till användare**.
    
     ![Skapa en testanvändare i Azure AD][19]
-5. På den **berätta om den här användaren** dialogrutan utför följande steg:
+5. På hello **berätta om den här användaren** dialogrutan utför hello följande steg:
    
     ![Skapa en testanvändare i Azure AD][20]
    
     a. Välj ny användare i din organisation som typ av användare.
    
-    b. I användarnamnet **textruta**, typen **BrittaSimon**.
+    b. I hello användarnamn **textruta**, typen **BrittaSimon**.
    
     c. Klicka på **Nästa**.
-6. På den **användarprofil** dialogrutan utför följande steg:
+6. På hello **användarprofil** dialogrutan utför hello följande steg:
    
     ![Skapa en testanvändare i Azure AD][21]
    
-    a. I den **Förnamn** textruta typen **Britta**.  
+    a. I hello **Förnamn** textruta typen **Britta**.  
    
-    b. I den **efternamn** textruta typ, **Simon**.
+    b. I hello **efternamn** textruta typ, **Simon**.
    
-    c. I den **visningsnamn** textruta typen **Britta Simon**.
+    c. I hello **visningsnamn** textruta typen **Britta Simon**.
    
-    d. I den **rollen** väljer **användaren**.
+    d. I hello **rollen** väljer **användaren**.
    
     e. Klicka på **Nästa**.
-7. På den **skaffa tillfälligt lösenord** dialogrutan sidan, klickar du på **skapa**.
+7. På hello **skaffa tillfälligt lösenord** dialogrutan sidan, klickar du på **skapa**.
    
     ![Skapa en testanvändare i Azure AD][22]
-8. På den **skaffa tillfälligt lösenord** dialogrutan utför följande steg:
+8. På hello **skaffa tillfälligt lösenord** dialogrutan utför hello följande steg:
    
     ![Skapa en testanvändare i Azure AD][23]
    
-    a. Anteckna värdet för den **nytt lösenord**.
+    a. Skriv ned hello värdet för hello **nytt lösenord**.
    
     b. Klicka på **Complete** (Slutför).  
 
 ### <a name="creating-a-successfactors-test-user"></a>Skapa en testanvändare SuccessFactors
-För att aktivera Azure AD-användare att logga in på SuccessFactors etableras de i SuccessFactors.  
-När det gäller SuccessFactors är etablering en manuell aktivitet.
+I ordning tooenable Azure AD-användare toolog i SuccessFactors, måste de etableras i SuccessFactors.  
+Hello gäller SuccessFactors är etablering en manuell aktivitet.
 
-För att få användare som skapats i SuccessFactors, måste du kontakta den [SuccessFactors supportteam](https://www.successfactors.com/en_us/support.html).
+tooget-användare som har skapats i SuccessFactors måste toocontact hello [SuccessFactors supportteam](https://www.successfactors.com/en_us/support.html).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Tilldela Azure AD-testanvändare
-Syftet med det här avsnittet är att aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja sin åtkomst till SuccessFactors.
+### <a name="assigning-hello-azure-ad-test-user"></a>Tilldela användare hello Azure AD
+hello syftet med det här avsnittet är tooenabling Britta Simon toouse Azure enkel inloggning genom att tilldela tooSuccessFactors sin åtkomst.
 
 ![Tilldela användare][24]
 
-**Om du vill tilldela SuccessFactors Britta Simon utför du följande steg:**
+**tooassign Britta Simon tooSuccessFactors utför hello följande steg:**
 
-1. På den klassiska portalen för att öppna vyn program i katalogen vyn klickar du på **program** på huvudmenyn.
+1. På hello klassiska portalen tooopen hello program i vyn hello directory vyn klickar du på **program** i hello huvudmenyn.
    
     ![Tilldela användare][25]
-2. Välj i listan med program **SuccessFactors**.
+2. Välj i listan med program hello **SuccessFactors**.
    
     ![Konfigurera enkel inloggning][26]
-3. Klicka på menyn högst upp **användare**.
+3. Hello-menyn överst hello **användare**.
    
     ![Tilldela användare][27]
-4. Välj i listan användare **Britta Simon**.
-5. Klicka på i verktygsfältet längst ned i **tilldela**.
+4. Markera i hello användare **Britta Simon**.
+5. Klicka i hello verktygsfältet hello längst ned **tilldela**.
    
     ![Tilldela användare][28]
 
 ### <a name="testing-single-sign-on"></a>Testa enkel inloggning
-Syftet med det här avsnittet är att testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.
+hello syftet med det här avsnittet är tootest din Azure AD-konfiguration för enkel inloggning med hello åtkomstpanelen.
 
-När du klickar på panelen SuccessFactors på åtkomstpanelen du bör få automatiskt loggat in på ditt SuccessFactors program.
+Du bör få automatiskt inloggade tooyour SuccessFactors programmet när du klickar på hello SuccessFactors panelen i hello åtkomstpanelen.
 
 ## <a name="additional-resources"></a>Ytterligare resurser
-* [Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Vad är programåtkomst och enkel inloggning med Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

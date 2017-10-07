@@ -1,6 +1,6 @@
 ---
-title: "Java användardefinierad funktion (UDF) med Hive i HDInsight - Azure | Microsoft Docs"
-description: "Lär dig hur du skapar en Java-baserad användardefinierad funktion (UDF) som fungerar med Hive. Det här exemplet UDF konverterar en tabell med textsträngar till gemener."
+title: "aaaJava användardefinierad funktion (UDF) med Hive i HDInsight - Azure | Microsoft Docs"
+description: "Lär dig hur toocreate en Java-baserad användardefinierad funktion (UDF) som fungerar med Hive. Det här exemplet UDF konverterar en tabell med text strängar toolowercase."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.openlocfilehash: 481d234eaf88bdb210821084ee4154159470eda0
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 392b4cfb73299d2f6c1e8e825a4201b48d501388
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>Använda en Java UDF med Hive i HDInsight
 
-Lär dig hur du skapar en Java-baserad användardefinierad funktion (UDF) som fungerar med Hive. Java-UDF i det här exemplet konverterar en tabell med textsträngar till alla gemena tecken.
+Lär dig hur toocreate en Java-baserad användardefinierad funktion (UDF) som fungerar med Hive. i det här exemplet Hello Java UDF konverterar en tabell på strängar tooall gemena tecken.
 
 ## <a name="requirements"></a>Krav
 
 * Ett HDInsight-kluster 
 
     > [!IMPORTANT]
-    > Linux är det enda operativsystemet som används med HDInsight version 3.4 och senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+    > Linux är hello endast operativsystem på HDInsight version 3.4 eller senare. Mer information finns i [HDInsight-avveckling på Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-    De flesta stegen i det här dokumentet fungerar för både Windows - och Linux-baserade kluster. Dock är de steg som används för att överföra den kompilerade UDF till klustret och köra den specifika för Linux-baserade kluster. Länkar finns information som kan användas med Windows-baserade kluster.
+    De flesta stegen i det här dokumentet fungerar för både Windows - och Linux-baserade kluster. Dock kompileras hello steg som används för tooupload hello UDF toohello kluster och kör det finns specifika tooLinux-baserade kluster. Länkar finns tooinformation som kan användas med Windows-baserade kluster.
 
 * [Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/) 8 eller senare (eller en motsvarande, till exempel OpenJDK)
 
@@ -41,24 +41,24 @@ Lär dig hur du skapar en Java-baserad användardefinierad funktion (UDF) som fu
 * En textredigerare eller IDE för Java
 
     > [!IMPORTANT]
-    > Om du skapar Python-filer på en Windows-klient, måste du använda ett redigeringsprogram som använder LF som en rad avslutades. Om du inte är säker på om redigeringsprogram använder LF eller CRLF finns i [felsökning](#troubleshooting) avsnittet stegvisa instruktioner för att ta bort CR-tecken.
+    > Om du skapar hello Python-filer på en Windows-klient, måste du använda ett redigeringsprogram som använder LF som en rad avslutades. Om du inte är säker på om redigeringsprogram använder LF eller CRLF finns hello [felsökning](#troubleshooting) avsnittet för instruktioner för att ta bort hello CR-tecken.
 
 ## <a name="create-an-example-java-udf"></a>Skapa ett exempel Java UDF 
 
-1. Använd följande för att skapa ett nytt Maven-projekt från en kommandorad:
+1. Använd hello följande toocreate ett nytt Maven-projekt från en kommandorad:
 
     ```bash
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
    > [!NOTE]
-   > Om du använder PowerShell, måste du placera citattecken runt parametrarna. Till exempel `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.
+   > Om du använder PowerShell, måste du placera citattecken runt hello parametrar. Till exempel `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`.
 
-    Det här kommandot skapar en katalog med namnet **exampleudf**, som innehåller Maven-projekt.
+    Det här kommandot skapar en katalog med namnet **exampleudf**, som innehåller hello Maven-projekt.
 
-2. När projektet har skapats kan du ta bort den **exampleudf/src/test** katalogen som har skapats som en del av projektet.
+2. När hello projektet har skapats kan du ta bort hello **exampleudf/src/test** katalogen som har skapats som en del av hello-projekt.
 
-3. Öppna den **exampleudf/pom.xml**, och Ersätt den befintliga `<dependencies>` post med följande XML-filen:
+3. Öppna hello **exampleudf/pom.xml**, och ersätta befintliga hello `<dependencies>` post med följande XML hello:
 
     ```xml
     <dependencies>
@@ -77,9 +77,9 @@ Lär dig hur du skapar en Java-baserad användardefinierad funktion (UDF) som fu
     </dependencies>
     ```
 
-    De här posterna ange version för Hadoop och Hive som ingår i HDInsight 3.5. Du kan hitta information om versioner av Hadoop och Hive med HDInsight från den [HDInsight component-versioning](hdinsight-component-versioning.md) dokumentet.
+    De här posterna ange hello version av Hadoop och Hive som ingår i HDInsight 3.5. Du kan hitta information om hello versioner av Hadoop och Hive som tillhandahålls med HDInsight från hello [HDInsight component-versioning](hdinsight-component-versioning.md) dokumentet.
 
-    Lägg till en `<build>` avsnittet före den `</project>` rad i slutet av filen. Det här avsnittet bör innehålla följande XML-filen:
+    Lägg till en `<build>` avsnittet före hello `</project>` rad hello slutet av hello-filen. Det här avsnittet bör innehålla följande XML hello:
 
     ```xml
     <build>
@@ -133,13 +133,13 @@ Lär dig hur du skapar en Java-baserad användardefinierad funktion (UDF) som fu
     </build>
     ```
 
-    Dessa poster definierar hur att skapa projektet. Mer specifikt versionen av Java som projektet använder och hur du skapar en uberjar för distribution till klustret.
+    Dessa poster definierar hur toobuild hello projektet. Mer specifikt hello version av Java som hello projektet använder och hur toobuild en uberjar för distribution toohello kluster.
 
-    Spara filen när de har ändrats.
+    Spara hello när hello ändringar har gjorts.
 
-4. Byt namn på **exampleudf/src/main/java/com/microsoft/examples/App.java** till **ExampleUDF.java**, och sedan öppna filen i redigeringsprogrammet.
+4. Byt namn på **exampleudf/src/main/java/com/microsoft/examples/App.java** för**ExampleUDF.java**, och sedan öppna hello-filen i redigeringsprogrammet.
 
-5. Ersätt innehållet i den **ExampleUDF.java** med följande och spara filen.
+5. Ersätt hello innehållet i hello **ExampleUDF.java** med följande hello och spara hello-filen.
 
     ```java
     package com.microsoft.examples;
@@ -148,45 +148,45 @@ Lär dig hur du skapar en Java-baserad användardefinierad funktion (UDF) som fu
     import org.apache.hadoop.hive.ql.exec.UDF;
     import org.apache.hadoop.io.*;
 
-    // Description of the UDF
+    // Description of hello UDF
     @Description(
         name="ExampleUDF",
-        value="returns a lower case version of the input string.",
+        value="returns a lower case version of hello input string.",
         extended="select ExampleUDF(deviceplatform) from hivesampletable limit 10;"
     )
     public class ExampleUDF extends UDF {
         // Accept a string input
         public String evaluate(String input) {
-            // If the value is null, return a null
+            // If hello value is null, return a null
             if(input == null)
                 return null;
-            // Lowercase the input string and return it
+            // Lowercase hello input string and return it
             return input.toLowerCase();
         }
     }
     ```
 
-    Den här koden implementerar en UDF som accepterar ett strängvärde och returnerar en gemen version av strängen.
+    Den här koden implementerar en UDF som accepterar ett strängvärde och returnerar en gemen version av hello-sträng.
 
-## <a name="build-and-install-the-udf"></a>Skapa och installera en användardefinierad funktion
+## <a name="build-and-install-hello-udf"></a>Skapa och installera hello UDF
 
-1. Använd följande kommando för att kompilera och paketera UDF-filen:
+1. Använd följande kommando toocompile hello och paketet hello UDF:
 
     ```bash
     mvn compile package
     ```
 
-    Det här kommandot skapar och paketerar UDF till den `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` filen.
+    Det här kommandot skapar och paket hello UDF i hello `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` fil.
 
-2. Använd den `scp` kommando för att kopiera filen till HDInsight-klustret.
+2. Använd hello `scp` kommandot toocopy hello filen toohello HDInsight-kluster.
 
     ```bash
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar myuser@mycluster-ssh.azurehdinsight
     ```
 
-    Ersätt `myuser` med SSH-användarkonto för klustret. Ersätt `mycluster` med klustrets namn. Om du har använt ett lösenord för att skydda det SSH-kontot uppmanas du att ange lösenordet. Om du använder ett certifikat, kan du behöva använda de `-i` parametern för att ange fil för privat nyckel.
+    Ersätt `myuser` med hello SSH-användarkontot för klustret. Ersätt `mycluster` med hello klusternamnet. Om du har använt ett lösenord toosecure hello SSH-konto kan du ange tooenter hello lösenord. Om du använder ett certifikat, måste du kanske toouse hello `-i` parametern toospecify hello fil för privat nyckel.
 
-3. Ansluta till klustret med SSH.
+3. Ansluta toohello kluster med SSH.
 
     ```bash
     ssh myuser@mycluster-ssh.azurehdinsight.net
@@ -194,23 +194,23 @@ Lär dig hur du skapar en Java-baserad användardefinierad funktion (UDF) som fu
 
     Mer information finns i [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) (Använda SSH med HDInsight).
 
-4. Kopiera jar-filen i HDInsight-lagringen från SSH-session.
+4. Kopiera hello jar fillagring tooHDInsight från hello SSH-sessionen.
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
     ```
 
-## <a name="use-the-udf-from-hive"></a>Använda en användardefinierad funktion från Hive
+## <a name="use-hello-udf-from-hive"></a>Använda hello UDF från Hive
 
-1. Använd följande för att starta klienten Beeline från SSH-session.
+1. Använd hello följande toostart hello Beeline klienten från hello SSH-session.
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -n admin
     ```
 
-    Det här kommandot förutsätter att du använde standardvärdet **admin** för inloggningskontot för klustret.
+    Det här kommandot förutsätter att du använde hello standardvärdet **admin** för hello inloggningskonto för klustret.
 
-2. När du kommer till den `jdbc:hive2://localhost:10001/>` uppmanar, ange följande om du vill lägga till en användardefinierad funktion Hive och exponera som en funktion.
+2. När du kommer till hello `jdbc:hive2://localhost:10001/>` fråga, ange hello följande tooadd hello UDF tooHive och exponera som en funktion.
 
     ```hiveql
     ADD JAR wasb:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
@@ -218,15 +218,15 @@ Lär dig hur du skapar en Java-baserad användardefinierad funktion (UDF) som fu
     ```
 
     > [!NOTE]
-    > Det här exemplet förutsätter att lagringen Azure standardlagring för klustret. Om klustret använder Data Lake Store i stället ändrar den `wasb:///` värde till `adl:///`.
+    > Det här exemplet förutsätter att lagringen Azure standardlagring för hello-kluster. Om klustret använder Data Lake Store i stället ändrar hello `wasb:///` värdet för`adl:///`.
 
-3. Använda en användardefinierad funktion för att konvertera värden som hämtats från en tabell till gemen strängar.
+3. Använd hello UDF tooconvert värdena som hämtas från en tabell toolower case strängar.
 
     ```hiveql
     SELECT tolower(deviceplatform) FROM hivesampletable LIMIT 10;
     ```
 
-    Den här frågan väljer plattform för enheter (Android, Windows, iOS, etc.) från tabellen, konvertera strängen till lägre fall och visa dem sedan. Utdata liknar följande:
+    Den här frågan väljer hello plattform för enheter (Android, Windows, iOS, etc.) från hello tabell, konvertera hello sträng toolower fallet och visa dem sedan. hello utdata visas liknande toohello följande text:
 
         +----------+--+
         |   _c0    |
@@ -245,6 +245,6 @@ Lär dig hur du skapar en Java-baserad användardefinierad funktion (UDF) som fu
 
 ## <a name="next-steps"></a>Nästa steg
 
-Andra sätt att arbeta med Hive finns [använda Hive med HDInsight](hdinsight-use-hive.md).
+Andra sätt toowork med Hive finns [använda Hive med HDInsight](hdinsight-use-hive.md).
 
-Mer information om Hive User-Defined funktioner finns [Hive operatorer och användardefinierade funktioner](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) avsnitt i Hive-wiki på apache.org.
+Mer information om Hive User-Defined funktioner finns [Hive operatorer och användardefinierade funktioner](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF) avsnitt i hello Hive wiki på apache.org.

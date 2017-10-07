@@ -1,6 +1,6 @@
 ---
-title: "Paketinspektion med Azure Nätverksbevakaren | Microsoft Docs"
-description: "Den här artikeln beskriver hur du använder Nätverksbevakaren för att utföra djup paketinspektion samlas in från en virtuell dator"
+title: "aaaPacket kontroll och Azure Nätverksbevakaren | Microsoft Docs"
+description: "Den här artikeln beskriver hur toouse Nätverksbevakaren tooperform djup paketinspektion samlas in från en virtuell dator"
 services: network-watcher
 documentationcenter: na
 author: georgewallace
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.openlocfilehash: 91c47bb8922a9be21dff72e7cf64b29b14a36e9e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4aeddcd482edc4df3d63e87b5c4b0788c540850b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Paketinspektion med Azure Nätverksbevakaren
 
-Funktionen paket avbildning av Nätverksbevakaren kan du starta och hantera insamlingar sessionerna på din virtuella Azure-datorer från portalen, PowerShell, CLI och programmässigt via SDK och REST-API. Du kan adressen scenarier som kräver nivån paketdata genom att tillhandahålla information i ett format som är användbara i paketinsamling. Utnyttja gratisverktyg för att granska data du undersöka kommunikation till och från dina virtuella datorer och få insyn i nätverkstrafiken. Vissa exempel användningsområden för avbildning paketdata är: undersöker problem med nätverket eller ett program, identifiera nätverket missbruk och intrångsidentifiering försök eller upprätthålla regelefterlevnad. I den här artikeln visar vi hur du öppnar en fil för avbildning av paket som tillhandahålls av Nätverksbevakaren verktyget populära öppen källkod. Vi ger även exempel som visar hur du beräkna en fördröjning för anslutning, identifiera onormalt trafik och undersöka nätverk statistik.
+Funktionen hello paket avbildning av Nätverksbevakaren kan du starta och hantera insamlingar sessionerna på din virtuella Azure-datorer från hello-portalen, PowerShell, CLI, och genom programmering via hello SDK och REST-API. Paketinsamling kan tooaddress scenarier som kräver nivån paketdata genom att ange hello information i ett format som enkelt kan användas. Utnyttja gratisverktyg tooinspect hello data du undersöka tooand för kommunikation från dina virtuella datorer och få insyn i nätverkstrafiken. Vissa exempel användningsområden för avbildning paketdata är: undersöker problem med nätverket eller ett program, identifiera nätverket missbruk och intrångsidentifiering försök eller upprätthålla regelefterlevnad. I den här artikeln visar vi hur tooopen filen ett paket som tillhandahålls av Nätverksbevakaren verktyget populära öppen källkod. Vi ger även exempel som visar hur toocalculate en fördröjning för anslutning, identifiera onormalt trafik och undersöka nätverk statistik.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Den här artikeln går igenom några förkonfigurerade scenarier på paketinsamling som kördes tidigare. Dessa scenarier visar funktioner som kan nås genom att granska en paketinsamling. Det här scenariot använder [WireShark](https://www.wireshark.org/) att inspektera paketinsamling.
+Den här artikeln går igenom några förkonfigurerade scenarier på paketinsamling som kördes tidigare. Dessa scenarier visar funktioner som kan nås genom att granska en paketinsamling. Det här scenariot använder [WireShark](https://www.wireshark.org/) tooinspect hello paketinsamling.
 
-Det här scenariot förutsätter att du körde en paketinsamling på en virtuell dator. Mer information om hur du skapar ett paket avbilda besök [hantera paket som samlar in med portalen](network-watcher-packet-capture-manage-portal.md) eller med övriga genom att besöka [hantera paket som avbildar med REST API](network-watcher-packet-capture-manage-rest.md).
+Det här scenariot förutsätter att du körde en paketinsamling på en virtuell dator. toolearn hur toocreate en paketinsamling finns [hantera paket som samlar in med hello portal](network-watcher-packet-capture-manage-portal.md) eller med övriga genom att besöka [hantera paket som avbildar med REST API](network-watcher-packet-capture-manage-rest.md).
 
 ## <a name="scenario"></a>Scenario
 
@@ -38,9 +38,9 @@ I det här scenariot kan du:
 
 ## <a name="calculate-network-latency"></a>Beräkna nätverks-svarstid
 
-I det här scenariot visar vi hur du visar inledande förfluten tid (RTT) i en konversation för Transmission Control Protocol (TCP) som sker mellan två slutpunkter.
+I det här scenariot visar vi hur tooview hello inledande förfluten tid (RTT) i en konversation för Transmission Control Protocol (TCP) som sker mellan två slutpunkter.
 
-När en TCP-anslutning har upprättats följer de första tre paket som skickats under anslutningen ett mönster som benämns trevägs-handskakningen. Genom att undersöka först två paket som skickats under den här handskakningen första begäran från klienten och ett svar från servern, kan vi beräkna svarstiden när anslutningen upprättades. Den här fördröjningen kallas som förfluten tid (RTT). Mer information om TCP-protokollet och trevägs handskakningen finns i följande resurs. https://support.microsoft.com/en-US/Help/172983/EXPLANATION-of-the-Three-Way-Handshake-via-TCP-IP
+När en TCP-anslutning har upprättats Följ hello först tre paket som skickas i hello-anslutning en mönstret kallas tooas hello trevägs handskakning. Genom att undersöka först två hälsningspaket skickas i den här handskakningen, första begäran hello-klient och ett svar från hello server beräkna vi hello fördröjning när den här anslutningen har upprättats. Den här fördröjningen är refererad tooas hello förfluten tid (RTT). Mer information om hello TCP-protokollet och hello trevägs handskakning finns toohello efter resurs. https://support.microsoft.com/en-US/Help/172983/EXPLANATION-of-the-Three-Way-Handshake-via-TCP-IP
 
 ### <a name="step-1"></a>Steg 1
 
@@ -48,83 +48,83 @@ Starta WireShark
 
 ### <a name="step-2"></a>Steg 2
 
-Läs in den **CAP** fil från din paketinsamling. Den här filen finns i blob som den har sparats i vårt lokalt på den virtuella datorn, beroende på hur du har konfigurerat.
+Läs in hello **CAP** fil från din paketinsamling. Den här filen finns i hello blob som den har sparats i vårt lokalt på hello virtuell dator, beroende på hur du har konfigurerat.
 
 ### <a name="step-3"></a>Steg 3
 
-Om du vill visa inledande förfluten tid (RTT) i TCP konversationer kommer vi bara att titta på de första två paket som ingår i TCP-handskakningen. Vi kommer att använda två första paketen i 3-vägs-handskakning som är [SYN], [SYN, ACK] paket. De har namngetts för flaggor i TCP-huvudet. Senaste paketet i handskakningen [ACK]-paketet används inte i det här scenariot. [SYN]-paket har skickats av klienten. När den tas emot skickar servern [ACK]-paketet som en bekräftelse för att ta emot SYN från klienten. Utnyttja det faktum att serverns svar kräver mycket lite belastning vi beräkna RTT genom att subtrahera tiden [SYN, ACK] paketet togs emot av klienten när [SYN] paket skickades av klienten.
+tooview Hej inledande förfluten tid (RTT) i TCP konversationer, vi kommer bara att titta på två första hälsningspaket ingår i hello TCP-handskakningen. Vi kommer att använda två första hälsningspaket i hello trevägs handskakning som är hello [SYN], [SYN, ACK] paket. De har namngetts för flaggor i hello TCP-huvudet. senaste hello-paket i hello-handskakningen hello [ACK] paketet används inte i det här scenariot. Hej [SYN] paket skickas av hello-klienten. När den tas emot skickar hello server hello [ACK] paket som en bekräftelse för att ta emot hello SYN hello-klient. Utnyttja hello faktum att hello serversvar kräver mycket lite belastning beräkna vi hello RTT genom att subtrahera hello tid hello [SYN, ACK] paketet togs emot av klienten hello av hello tid [SYN] paket har skickats av hello-klienten.
 
 Med WireShark beräknas detta värde för oss.
 
-Om du vill visa de första två paket enklare i TCP trevägs handskakningen, ska vi använda filtrering funktioner av WireShark.
+toomore Se enkelt två första hälsningspaket i hello TCP trevägs handskakning, vi ska använda hello filtrering kapaciteten som tillhandahålls av WireShark.
 
-Om du vill använda filter i WireShark, expandera ”Transmission Control Protocol”-Segment i ett paket [SYN] i din avbildning och undersöka flaggor i TCP-huvudet.
+tooapply hello filter i WireShark, expandera hello ”Transmission Control Protocol” segmentet i ett paket [SYN] i din avbildning och undersöka hello flaggor i hello TCP-huvudet.
 
-Eftersom vi vill filtrera på alla [SYN] och [SYN ACK] paket under flaggor cofirm att Syn biten anges till 1 och sedan högerklickar du på Syn-bitars -> Använd som Filter -> valda.
+Eftersom vi söker toofilter på alla [SYN] och [SYN ACK] paket under flaggor cofirm att hello Syn-biten är aktiverad too1 sedan högerklickar du på hello Syn bitar -> Använd som Filter -> valda.
 
 ![Bild 7][7]
 
 ### <a name="step-4"></a>Steg 4
 
-Du kan enkelt välja konversationer som du är intresserad av att visa inledande RTT nu när du har filtrerat fönstret om du vill endast visa paket med bitars [SYN]. Ett enkelt sätt att visa RTT i WireShark klickar du på listrutan markerad ”SEQ-ACK” analys. Sedan visas RTT visas. I det här fallet har RTT 0.0022114 sekunder eller 2.211 ms.
+Nu när du har filtrerat fönstret tooonly Se hälsningspaket med hello [SYN] set-bitars kan du enkelt välja konversationer som du är intresserad av tooview hello inledande RTT. Ett enkelt sätt tooview hello RTT i WireShark Klicka bara på hello dropdown markerad ”SEQ-ACK” analys. Sedan visas hello RTT visas. I det här fallet kunde hello RTT 0.0022114 sekunder eller 2.211 ms.
 
 ![bild 8][8]
 
 ## <a name="unwanted-protocols"></a>Oönskade protokoll
 
-Du kan ha många program som körs på en virtuell dator-instans som du har distribuerat i Azure. Många av dessa program kommunicera över nätverket, kanske utan uttryckligt tillstånd. Använder paketinsamling för att lagra nätverkskommunikation, kan vi undersöka hur programmet pratar i nätverket och leta efter eventuella problem.
+Du kan ha många program som körs på en virtuell dator-instans som du har distribuerat i Azure. Många av dessa program kommunicerar via hello-nätverket kanske utan uttryckligt tillstånd. Undersök med hjälp av paket avbilda toostore nätverkskommunikation, vi kan hur programmet pratar hello nätverket och leta efter eventuella problem.
 
 I det här exemplet vi går igenom ett tidigare körde paketinsamling för oönskade protokoll som kan indikera obehörig kommunikation från ett program som körs på datorn.
 
 ### <a name="step-1"></a>Steg 1
 
-Använda samma avbildning i scenariot ovan klickar du på **statistik** > **protokollet hierarki**
+Med hjälp av hello samma avbildning i hello föregående scenario klickar du på **statistik** > **protokollet hierarki**
 
 ![protokollet hierarki-menyn][2]
 
-Fönstret protokollet hierarki visas. Den här vyn visar en lista över protokoll som har använts under avbildningssessionen och antalet paket som skickas och tas emot med hjälp av protokollen. Den här vyn kan vara användbart för att hitta oönskad trafik på virtuella datorer eller i nätverket.
+hello visas protokollet hierarki. Den här vyn visar en lista över alla hello-protokoll som har använts under hello avbildningssessionen och hello antalet paket som skickas och tas emot med hello-protokoll. Den här vyn kan vara användbart för att hitta oönskad trafik på virtuella datorer eller i nätverket.
 
 ![protokollet hierachy öppnas][3]
 
-Som du ser i följande skärmbild uppstod trafik via BitTorrent-protokollet som används för peer-to-peer-fildelning. Som administratör du inte räknar med att se BitTorrent trafik på denna specifika virtuella datorer. Nu kan du känner till den här trafiken, du kan ta bort peer-to-peer-program som installerats på den virtuella datorn eller blockera trafik med hjälp av Nätverkssäkerhetsgrupper eller en brandvägg. Dessutom kan du välja att köra paket insamlingar enligt ett schema så att du kan granska protokollet används på de virtuella datorerna regelbundet. Ett exempel på hur du automatiserar Nätverksaktiviteter i azure finns [övervaka nätverksresurser med azure automation](network-watcher-monitor-with-azure-automation.md)
+Som du ser i följande skärmbild hello uppstod trafik med hjälp av hello BitTorrent protokoll som används för peer-toopeer fildelning. Som administratör räknar du inte toosee BitTorrent trafik på denna specifika virtuella datorer. Nu du känner till den här trafiken, du kan ta bort hello peer toopeer programvara som installeras på den här virtuella datorn eller blockera hello trafik med hjälp av Nätverkssäkerhetsgrupper eller en brandvägg. Du kan dessutom välja toorun paket insamlingar enligt ett schema så att du kan granska hello-protokollet används på de virtuella datorerna regelbundet. Ett exempel på hur tooautomate nätverk uppgifter i azure besök [övervaka nätverksresurser med azure automation](network-watcher-monitor-with-azure-automation.md)
 
 ## <a name="finding-top-destinations-and-ports"></a>Söka efter vanliga mål och portar
 
-Förstå vilka typer av trafik, slutpunkterna och portar som kommunicerades via är en viktig vid övervakning eller felsöka program och resurser i nätverket. Använda filen ett paket från ovan kan vi snabbt lära vanliga mål våra VM kommunicerar med och portar som används.
+Förstå hello typer av trafik, hello slutpunkter och hello-portar som kommunicerades via är en viktig vid övervakning eller felsöka program och resurser i nätverket. Använda filen ett paket från ovan kan vi snabbt lära hello vanliga mål våra VM kommunicerar med och hello portar som används.
 
 ### <a name="step-1"></a>Steg 1
 
-Använda samma avbildning i scenariot ovan klickar du på **statistik** > **IPv4-statistik** > **mål och portar**
+Med hjälp av hello samma avbildning i hello föregående scenario klickar du på **statistik** > **IPv4-statistik** > **mål och portar**
 
 ![paketet insamlings-fönstret][4]
 
 ### <a name="step-2"></a>Steg 2
 
-Som vi titta igenom de resultat som en rad framhävs fanns det flera anslutningar på port 111. Var används mest port 3389, som är Fjärrskrivbord och de återstående är dynamiska RPC-portar.
+Vi ser hello resultat via en rad framhävs, det fanns flera anslutningar på port 111. var hello används oftast port 3389, vilket är Fjärrskrivbord och hello återstående är dynamiska RPC-portar.
 
-När den här trafiken kan innebära att ingenting, är en port som användes för många anslutningar och är okänt för administratören.
+När den här trafiken kan innebära att ingenting, är en port som användes för många anslutningar och är okänd toohello administratör.
 
 ![Bild 5][5]
 
 ### <a name="step-3"></a>Steg 3
 
-Nu när vi har fastställt att en out-of plats port filtrera vi våra avbildning baserat på porten.
+Nu när vi har fastställt att en out-of plats port filtrera vi våra avbildning baserat på hello port.
 
-Filter i det här scenariot är:
+hello filter i det här scenariot är:
 
 ```
 tcp.port == 111
 ```
 
-Vi ange filtertext ovan i textrutan filter och träffar.
+Vi ange hello filtertext ovan hello filter-textrutan med och träffar.
 
 ![Bild 6][6]
 
-Vi kan se all trafik kommer från en lokal virtuell dator i samma undernät från sökresultaten. Om vi inte fortfarande förstår varför den här trafiken uppstår, kan vi ytterligare inspektera paket för att avgöra varför den anropar dessa på port 111. Med den här informationen kan vi vidta lämplig åtgärd.
+Hello resultaten kan vi se alla hello trafiken kommer från en lokal virtuell dator på hello samma undernät. Om vi inte fortfarande förstår varför den här trafiken uppstår, kan vi ytterligare inspektera hello paket toodetermine varför den anropar dessa på port 111. Med den här informationen kan vi ta hello lämplig åtgärd.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om andra diagnostiska funktioner i Nätverksbevakaren genom att besöka [Azure översikt för nätverksövervakning](network-watcher-monitoring-overview.md)
+Lär dig mer om hello andra diagnostiska funktioner i Nätverksbevakaren genom att besöka [Azure översikt för nätverksövervakning](network-watcher-monitoring-overview.md)
 
 [1]: ./media/network-watcher-deep-packet-inspection/figure1.png
 [2]: ./media/network-watcher-deep-packet-inspection/figure2.png

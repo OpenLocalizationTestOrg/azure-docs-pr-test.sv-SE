@@ -1,6 +1,6 @@
 ---
-title: "Hur fungerar lokal datorreplikering till en sekundär lokal plats i Azure Site Recovery? | Microsoft Docs"
-description: "Den här artikeln innehåller en översikt över komponenter och arkitektur som används för att replikera lokala virtuella datorer och fysiska servrar till en sekundär plats med tjänsten Azure Site Recovery."
+title: "aaaHow utför lokal dator replikering tooa sekundär lokal plats arbetet i Azure Site Recovery? | Microsoft Docs"
+description: "Den här artikeln innehåller en översikt över komponenter och arkitektur som används när replikera lokala virtuella datorer och fysiska servrar tooa sekundär plats med hello Azure Site Recovery-tjänsten."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,93 +14,93 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/29/2017
 ms.author: raynew
-ms.openlocfilehash: fca95c63964b955db7ddfbe53250702cc8af122e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 097a3f43446fec69ed7f9e0b7f11e8d11f41cc6a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-does-on-premises-machine-replication-to-a-secondary-site-work-in-site-recovery"></a>Hur fungerar lokal datorreplikering till en sekundär plats i Site Recovery?
+# <a name="how-does-on-premises-machine-replication-tooa-secondary-site-work-in-site-recovery"></a>Hur datorn replikering tooa sekundär plats fungerar i Site Recovery i lokalt?
 
-Den här artikeln beskriver de komponenter och processer som är inblandade vid replikering av lokala virtuella datorer och fysiska servrar till Azure med hjälp av tjänsten [Azure Site Recovery](site-recovery-overview.md).
+Den här artikeln beskriver hello komponenter och processer som är inblandade vid replikering av lokala virtuella datorer och fysiska servrar tooAzure, med hjälp av hello [Azure Site Recovery](site-recovery-overview.md) service.
 
-Du kan replikera följande till din sekundära lokala plats:
+Du kan replikera hello följande tooa sekundär lokal plats:
 - Lokala virtuella Hyper-V-datorer, virtuella Hyper-V-datorer på Hyper-V-kluster och fristående värdar som hanteras i System Center Virtual Machine Manager (VMM)-moln.
 - Lokala virtuella VMware-datorer och fysiska Windows- och Linux-servrar. I det här scenariot hanteras replikeringen av Scout.
 
-Skriv dina kommentarer längst ned i den här artikeln eller i [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Bokför eventuella kommentarer längst ned hello av den här artikeln eller i hello [Azure Recovery Services-forumet](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
-## <a name="replicate-hyper-v-vms-to-a-secondary-on-premises-site"></a>Replikera virtuella Hyper-V-datorer till en sekundär lokal plats
+## <a name="replicate-hyper-v-vms-tooa-secondary-on-premises-site"></a>Replikera virtuella Hyper-V-datorer tooa sekundär lokal plats
 
 
 ### <a name="architectural-components"></a>Arkitekturkomponenter
 
-Följande behöver du för att replikera virtuella Hyper-V-datorer till en sekundär plats.
+Det här är vad du behöver för att replikera virtuella Hyper-V-datorer tooa sekundär plats.
 
 **Komponent** | **Plats** | **Detaljer**
 --- | --- | ---
 **Azure** | Du behöver ett konto hos Microsoft. |
-**VMM-server** | Vi rekommenderar att det finns en VMM-server på den primära platsen och en på den sekundära platsen | Varje VMM-server ska vara ansluten till internet.<br/><br/> Varje server bör ha minst ett VMM-privat moln, med Hyper-V-funktionsprofilen inställld.<br/><br/> Du installerar Azure Site Recovery-providern på VMM-servern. Providern samordnar och styr replikeringen med Site Recovery-tjänsten via Internet. Kommunikationen mellan providern och Azure är säker och krypterad.
-**Hyper-V-server** |  En eller flera Hyper-V-värdservrar i de primära och sekundära VMM-molnen.<br/><br/> Servrarna ska vara anslutna till internet.<br/><br/> Data replikeras mellan de primära och sekundära Hyper-V-värdservrarna via LAN eller VPN med hjälp av Kerberos eller certifikatautentisering.  
-**Virtuella Hyper-V-datorer** | Finns på Hyper-V-värdgästservern. | Källvärdservern måste ha minst en virtuell dator som du vill replikera.
+**VMM-server** | Vi rekommenderar en VMM-servern i hello primär plats och en i hello sekundär plats | Varje VMM-servern ska vara anslutna toohello internet.<br/><br/> Varje server bör ha minst ett privat VMM-moln, med hello Hyper-V kapaciteten för profilen.<br/><br/> Du installerar hello Azure Site Recovery Provider på hello VMM-servern. hello providern samordnar och styr replikeringen med hello Site Recovery-tjänsten via hello internet. Kommunikation mellan hello providern och Azure är säker och krypterad.
+**Hyper-V-server** |  En eller flera Hyper-V-värdservrar i hello primära och sekundära VMM-moln.<br/><br/> Servrar som ska vara anslutna toohello internet.<br/><br/> Data replikeras mellan hello primära och sekundära Hyper-V-värdservrarna via hello LAN eller VPN med hjälp av Kerberos eller certifikatautentisering.  
+**Virtuella Hyper-V-datorer** | Finns på hello källservern Hyper-V-värd. | hello källa värdservern bör ha minst en virtuell dator som du vill tooreplicate.
 
 ### <a name="replication-process"></a>Replikeringsprocessen
 
-1. Du ställer in Azure-kontot.
+1. Du kan konfigurera hello Azure-konto.
 2. Du skapar ett Replication Services-valv för Site Recovery och konfigurerar valvinställningar, inklusive:
 
-    - Replikeringskällan och -målet (primära och sekundära platser).
-    - Installation av Azure Site Recovery-Provider och Microsoft Azure Recovery Services-agenten. Providern är installerad på VMM-servrar och agenten på varje Hyper-V-värd.
-    - Du skapar en replikeringsprincip för VMM-källmolnet. Principen tillämpas på alla virtuella datorer som befinner sig på värdar i molnet.
-    - Du aktiverar replikering för virtuella Hyper-V-datorer. Inledande replikering sker i enlighet med inställningarna för replikeringsprincipen.
-4. Dataändringar spåras och replikering av deltaändringar till Azure påbörjas efter att den inledande replikeringen har slutförts. Spårade ändringar för ett objekt lagras i en .hrl-fil.
-5. Du kör ett redundanstest för att kontrollera att allt fungerar.
+    - hello replikeringskälla och mål (primära och sekundära platser).
+    - Installation av hello Azure Site Recovery-providern och hello Microsoft Azure Recovery Services-agenten. hello providern är installerad på VMM-servrar och hello-agenten på varje Hyper-V-värd.
+    - Du skapar en replikeringsprincip för VMM-källmolnet. hello principen är tillämpade tooall virtuella datorer på värdar i hello molnet.
+    - Du aktiverar replikering för virtuella Hyper-V-datorer. Den inledande replikeringen sker i enlighet med hello replikeringsprincipens inställningar.
+4. Dataändringar spåras och replikering av delta ändrar toobegins när hello replikeringen har slutförts. Spårade ändringar för ett objekt lagras i en .hrl-fil.
+5. Du kör ett test redundans toomake att allt fungerar.
 
-**Bild 1: VMM till VMM-replikering**
+**Bild 1: VMM tooVMM replikering**
 
-![Lokal till lokal](./media/site-recovery-components/arch-onprem-onprem.png)
+![Lokala tooon lokala](./media/site-recovery-components/arch-onprem-onprem.png)
 
 ### <a name="failover-and-failback-process"></a>Processen för redundans och återställning efter fel
 
-1. Du kan köra en planerad eller oplanerad [redundansväxling](site-recovery-failover.md) mellan lokala platser. Om du kör en planerad redundansväxling stängs de virtuella källdatorerna av för att säkerställa att inga data går förlorade.
-2. Du kan redundansväxla en enskild dator eller skapa [återställningsplaner](site-recovery-create-recovery-plans.md) för att samordna redundans för flera datorer.
-4. Om du utför en oplanerad redundansväxling till en sekundär plats efter att redundansdatorerna på den sekundära platsen inte aktiverats för skydd eller replikering. Om du utför en planerad redundans skyddas datorerna på den sekundära platsen efter redundansen.
-5. Sedan kan du etablera redundansen för att få åtkomst till arbetsbelastningen från den virtuella replikdatorn.
-6. När din primära plats är tillgänglig igen, kan du initiera omvänd replikering för att replikera från den sekundära platsen till den primära. Omvänd replikering skyddar de virtuella datorerna, men det sekundära datacentret är fortfarande den aktiva platsen.
-7. För att göra den primära platsen till den aktiva platsen igen, initierar du en planerad redundans från sekundär till primär, följt av en till omvänd replikering.
+1. Du kan köra en planerad eller oplanerad [redundansväxling](site-recovery-failover.md) mellan lokala platser. Om du kör en planerad redundans och virtuella källdatorer stängs tooensure inga data går förlorade.
+2. Du kan växla över en enskild dator eller skapa [återställningsplaner](site-recovery-create-recovery-plans.md) tooorchestrate växling vid fel på flera datorer.
+4. Om du vill utföra en oplanerad växling tooa sekundär plats, efter hello redundans datorer hello sekundär plats har inte aktiverats för skydd eller replikering. Om du körde en planerad redundans, efter hello redundans skydda datorer i hello sekundär plats.
+5. Sedan kan du spara hello redundans toostart använder hello arbetsbelastning från hello replikerade virtuella datorn.
+6. När den primära platsen är tillgänglig igen kan initiera du omvänd replikering tooreplicate från hello sekundär plats toohello primära. Omvänd replikering ger hello virtuella datorer i ett skyddat läge, men hello sekundärt datacenter är fortfarande aktiva hello-plats.
+7. toomake hello primära platsen till aktiv plats för hello igen, kan du starta en planerad redundansväxling från sekundär tooprimary, följt av en annan omvänd replikering.
 
 
 
 
-## <a name="replicate-vmware-vmsphysical-servers-to-a-secondary-site"></a>Replikera virtuella VMware-datorer/fysiska servrar till en sekundär plats
+## <a name="replicate-vmware-vmsphysical-servers-tooa-secondary-site"></a>Replikera VMware virtuella datorer/fysiska servrar tooa sekundär plats
 
-Du replikerar virtuella VMware-datorer eller fysiska servrar till en sekundär plats med InMage Scout, med hjälp av dessa arkitekturkomponenter:
+Du kan replikera virtuella VMware-datorer eller fysiska servrar tooa sekundär plats med InMage Scout med hjälp av komponenterna arkitektur:
 
 
 ### <a name="architectural-components"></a>Arkitekturkomponenter
 
 **Komponent** | **Plats** | **Detaljer**
 --- | --- | ---
-**Azure** | InMage Scout. | För att hämta InMage Scout behöver du en Azure-prenumeration.<br/><br/> När du har skapat ett Recovery Services-valv laddar du ned InMage Scout och installerar de senaste uppdateringarna för att konfigurera distributionen.
-**Processervern** | Finns på primär plats | Du distribuerar processervern för att hantera cachelagring, komprimering och dataoptimering.<br/><br/> Den hanterar också push-installationen av Unified Agent till de datorer som du vill skydda.
-**Konfigurationsserver** | Finns på sekundär plats | Konfigurationsservern hanterar, konfigurerar och övervakar distributionen, antingen med hjälp av hanteringswebbplatsen eller vContinuum-konsolen.
-**vContinuum-server** | Valfri. Installeras på samma plats som konfigurationsservern. | Den innehåller en konsol för att hantera och övervaka din skyddade miljö.
-**Huvudmålservern** | Finns på den sekundära platsen | Huvudmålservern innehåller replikerade data. Den tar emot data från processervern, skapar en replikdator på den sekundära platsen och innehåller datakvarhållningspunkterna.<br/><br/> Hur många huvudmålservrar du behöver beror på hur många datorer du skyddar.<br/><br/> Om du vill växla tillbaka till den primära platsen behöver du en huvudmålserver även där. Unified-agenten är installerad på den här servern.
-**VMware ESX/ESXi och vCenter-server** |  Virtuella datorer finns på ESX-/ESXi-värdar. Värdar hanteras med en vCenter-server | Du behöver en VMware-infrastruktur för att replikera virtuella VMware-datorer.
-**Virtuella datorer/fysiska servrar** |  Unified Agent installeras på virtuella VMware-datorer eller fysiska servrar som du vill replikera. | Agenten fungerar som en kommunikationsprovider mellan alla komponenter.
+**Azure** | InMage Scout. | tooobtain InMage Scout som du behöver en Azure-prenumeration.<br/><br/> När du har skapat ett Recovery Services-valv du ned InMage Scout och installerar hello senaste uppdateringar tooset upp hello-distribution.
+**Processervern** | Finns på primär plats | Du kan distribuera hello processen server toohandle cachelagring, komprimering och dataoptimering.<br/><br/> Den hanterar också push-installation av hello Unified Agent toomachines som du vill tooprotect.
+**Konfigurationsserver** | Finns på sekundär plats | hello konfigurationsservern hanterar, konfigurera och övervaka distributionen, antingen med hjälp av hanteringswebbplatsen hello eller hello vContinuum-konsolen.
+**vContinuum-server** | Valfri. Installerad i hello samma plats som hello konfigurationsservern. | Den innehåller en konsol för att hantera och övervaka din skyddade miljö.
+**Huvudmålservern** | Finns i hello sekundär plats | Hej huvudmålservern innehåller replikerade data. Den tar emot data från hello processervern, skapar en replikdator på hello sekundär plats, och innehåller hello datakvarhållningspunkterna.<br/><br/> hello många huvudmålservrar du behöver beror på hello antalet datorer som du skyddar.<br/><br/> Om du vill toofail tillbaka toohello primär plats, måste en huvudmålserver det för. hello installeras Unified Agent på den här servern.
+**VMware ESX/ESXi och vCenter-server** |  Virtuella datorer finns på ESX-/ESXi-värdar. Värdar hanteras med en vCenter-server | Du behöver en VMware infrastructure tooreplicate virtuella VMware-datorer.
+**Virtuella datorer/fysiska servrar** |  Unified Agent installeras på virtuella VMware-datorer och fysiska servrar som du vill tooreplicate. | hello agenten fungerar som en kommunikationsprovider mellan alla hello-komponenter.
 
 
 ### <a name="replication-process"></a>Replikeringsprocessen
 
-1. Du konfigurerar komponentservrarna på varje plats (konfiguration, process, huvudmålserver) och installerar Unified Agent på de datorer som du vill replikera.
-2. Efter den första replikeringen skickar agenten på varje dator förändringsreplikeringar till processervern.
-3. Processervern optimerar data och överför dem till huvudmålservern på den sekundära platsen. Konfigurationsservern hanterar replikeringen.
+1. Du ställer in hello komponentservrarna på varje plats (konfiguration, process, huvudmålserver) och installera hello Unified Agent på datorer som du vill tooreplicate.
+2. Efter den första replikeringen skickar hello-agenten på varje dator delta replikering ändringar toohello processervern.
+3. Hej processervern optimerar hello data och överför toohello huvudmålservern på hello sekundär plats. hello konfigurationsservern hanterar replikeringen hello.
 
-**Bild 2: VMware till VMware-replikering**
+**Bild 2: VMware tooVMware-replikering**
 
-![VMware till VMware](./media/site-recovery-components/vmware-to-vmware.png)
+![VMware tooVMware](./media/site-recovery-components/vmware-to-vmware.png)
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Granska [supportmatrisen](site-recovery-support-matrix-to-sec-site.md)
+Granska hello [supportmatrisen](site-recovery-support-matrix-to-sec-site.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory-Autentiseringsbibliotek | Microsoft Docs
-description: "Azure AD Authentication Library (ADAL) kan klienten programvaruutvecklare autentisera enkelt användare till molnet eller lokala Active Directory (AD) och sedan hämta åtkomsttoken för att skydda API-anrop."
+title: aaaAzure Active Directory-Autentiseringsbibliotek | Microsoft Docs
+description: "hello Azure AD Authentication Library (ADAL) kan klienten programvaruutvecklare tooeasily autentisera användare toocloud eller lokala Active Directory (AD) och sedan hämta åtkomsttoken för att skydda API-anrop."
 services: active-directory
 documentationcenter: 
 author: bryanla
@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 08/02/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 9cf8ca88c9df4082590b18acd5c4a87a91bb1afd
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 20fae18807ef03463ab1bc218e5f3548b5bd5717
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory-Autentiseringsbibliotek
-Azure Active Directory Authentication Library (ADAL) kan klienten programutvecklare att autentisera enkelt användare till molnet eller lokala Active Directory (AD) och erhålla åtkomsttoken för att skydda API-anrop. ADAL underlättar autentisering för utvecklare med hjälp av funktioner som:
+hello Azure Active Directory Authentication Library (ADAL) aktiverar klienten programmet utvecklare tooeasily autentisera användare toocloud eller lokala Active Directory (AD) och få åtkomst-token för att skydda API-anrop. ADAL underlättar autentisering för utvecklare med hjälp av funktioner som:
  - stöd för asynkrona metodanrop
  - en konfigurerbar token-cache att komma åt token och uppdatera token
  - automatisk token uppdatering när en åtkomst-token upphör att gälla och en uppdateringstoken är tillgänglig
  - och mycket mer
  
-Genom att hantera de flesta av komplexitet ADAL hjälper utvecklare att fokusera på affärslogiken och skydda enkelt resurser, utan att vara expert på säkerhet.
+Genom att hantera de flesta av hello komplexitet ADAL hjälper utvecklare att fokusera på affärslogiken och skydda enkelt resurser, utan att vara expert på säkerhet.
 
 ADAL är tillgängligt på en mängd olika plattformar.
 
@@ -44,7 +44,7 @@ ADAL är tillgängligt på en mängd olika plattformar.
 | .NET-klient Windows Store, Windows Phone 8.1 |ADAL .NET v2 |[NuGet](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.4) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.4) | [Skrivbordsapp](https://github.com/AzureADQuickStarts/NativeClient-DotNet/releases/tag/v2.X) | | 
 | JavaScript |ADAL.js |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-js) |[Den enda sidan App](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) | |
 | iOS macOS |ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc/releases) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-objc) |[iOS-app](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-ios) | [Referens](https://cocoapods.org/pods/ADAL)|
-| Android |ADAL |[Den centrala databasen](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Android-app](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](http://javadoc.io/doc/com.microsoft.aad/adal/)|
+| Android |ADAL |[hello centrallager](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Android-app](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](http://javadoc.io/doc/com.microsoft.aad/adal/)|
 | Node.js |ADAL |[npm](https://www.npmjs.com/package/adal-node) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | | |
 | Java |ADAL4J |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[Java-webbapp](https://docs.microsoft.com/azure/active-directory/active-directory-devquickstarts-webapp-java) | |
 | Python |ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) | | |
@@ -67,20 +67,20 @@ Här följer tre vanliga scenarier där ADAL kan användas för att autentisera 
 
 ### <a name="authenticating-users-of-a-native-client-application-running-on-a-device"></a>Autentisering av användare av en native client-program som körs på en enhet 
 
-I detta scenario har en utvecklare ett WPF-klientprogram som behöver åtkomst till en fjärresurs som skyddas av Azure AD, till exempel ett webb-API. Han har en Azure-prenumeration, vet hur att anropa underordnat webb-API och vet Azure AD-klient som använder webb-API. Han kan därmed använder ADAL för att underlätta autentisering med Azure AD, antingen genom att delegera fullt ut autentiseringsupplevelse till ADAL eller genom att uttryckligen hantera autentiseringsuppgifter. ADAL gör det enkelt att autentisera användaren får en åtkomst-token och uppdateringstoken från Azure AD och använda den åtkomst-token för att göra begäranden i webb-API.
+I detta scenario har en utvecklare ett WPF-klientprogram som behöver tooaccess en fjärresurs som skyddas av Azure AD, till exempel ett webb-API. Han har en Azure-prenumeration, vet hur tooinvoke hello underordnat webb-API och vet hello Azure AD-klient som hello använder webb-API. Därför kan han använda ADAL toofacilitate autentisering med Azure AD, genom att helt delegera hello autentisering upplevelse tooADAL eller genom att uttryckligen hantera autentiseringsuppgifter. ADAL gör det enkelt tooauthenticate hello användaren, får en åtkomst-token och uppdateringstoken från Azure AD och använder hello åtkomst-token toomake begäranden toohello webb-API.
 
-Kodexempel som visar det här scenariot använder autentisering till Azure AD, se [intern WPF klientprogrammet Web API](https://github.com/azureadsamples/nativeclient-dotnet).
+Kodexempel som visar det här scenariot med autentisering tooAzure AD, se [internt klientprogram WPF tooWeb API](https://github.com/azureadsamples/nativeclient-dotnet).
 
 ### <a name="authenticating-a-confidential-client-application-running-on-a-web-server"></a>Autentisering av ett konfidentiellt klientprogram som körs på en webbserver
 
-I det här scenariot kan har en utvecklare ett program som körs på en server som behöver åtkomst till en fjärresurs som skyddas av Azure AD, till exempel ett webb-API. Han har en Azure-prenumeration, vet hur att anropa tjänsten underordnade och vet använder Azure AD-klient webb-API. Han kan därmed använder ADAL för att underlätta autentisering med Azure AD genom att uttryckligen hantera programmets autentiseringsuppgifter. ADAL gör det enkelt att hämta en token från Azure AD med hjälp av autentiseringsuppgifter för programmets klienten och sedan använda denna token så att begäranden till webb-API. ADAL hanterar också hantera livslängden för åtkomst-token med cachelagringen och förnya efter behov. Kodexempel som visar det här scenariot, se [Daemon konsolen programmet till webb-API](https://github.com/AzureADSamples/Daemon-DotNet).
+I det här scenariot kan har en utvecklare ett program som körs på en server som måste tooaccess en fjärresurs som skyddas av Azure AD, till exempel ett webb-API. Han har en Azure-prenumeration, vet hur tooinvoke hello underordnade tjänsten och vet använder hello Azure AD-klient hello webb-API. Därför kan han använda ADAL toofacilitate autentisering med Azure AD genom att uttryckligen hantera hello programs autentiseringsuppgifter. ADAL gör det enkelt tooretrieve en token från Azure AD med hjälp av hello programmets klientreferensen och sedan använda denna token toomake begäranden toohello webb-API. ADAL också handtag hantera hello livstid hello åtkomst-token av cachelagringen och förnya efter behov. Kodexempel som visar det här scenariot, se [Daemon konsolen programmet tooWeb API](https://github.com/AzureADSamples/Daemon-DotNet).
 
 ### <a name="authenticating-a-confidential-client-application-running-on-a-server-on-behalf-of-a-user"></a>Autentisering av ett konfidentiellt klientprogram som körs på en server för en användares räkning 
 
-I det här scenariot kan har en utvecklare ett program som körs på en server som behöver åtkomst till en fjärresurs som skyddas av Azure AD, till exempel ett webb-API. Begäran måste också göras för ett Azure AD-användares räkning. Han har en Azure-prenumeration, vet hur att anropa underordnat webb-API och vet Azure AD-klient tjänsten använder. När användaren har autentiserats till webbprogrammet kan programmet hämta ett auktoriseringskod för användaren från Azure AD. Webbprogrammet kan sedan använda ADAL för att få en åtkomst-token och uppdatera token för en användare som använder de kod och klient-autentiseringsuppgifter som är kopplade till programmet från Azure AD. När webbprogrammet åtkomsttoken tillgång kan anropa det webb-API förrän token upphör att gälla. När token upphör att gälla kan webbprogrammet använda ADAL för att få en ny åtkomsttoken med hjälp av uppdateringen token som tidigare togs emot. Kodexempel som visar det här scenariot, se [Native client webb-API: et för Web API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
+I det här scenariot kan har en utvecklare ett program som körs på en server som måste tooaccess en fjärresurs som skyddas av Azure AD, till exempel ett webb-API. hello begäran måste också toobe gjort åt en Azure AD-användare. Han har en Azure-prenumeration, vet hur tooinvoke hello underordnat webb-API och vet hello Azure AD-klient hello-tjänsten använder. När hello användare är autentiserade toohello webbprogram, kan hello programmet hämta ett auktoriseringskod för hello användare från Azure AD. hello webbprogrammet kan sedan använda ADAL tooobtain en åtkomst-token och uppdateringstoken för en användare som använder hello kod och klient-autentiseringsuppgifter som är associerade med programmet hello från Azure AD. När hello webbprogram som har tillgång till hello åtkomst-token kan anropa det hello web API förrän hello-token upphör att gälla. När hello-token upphör att gälla kan hello webbprogram använda ADAL tooget en ny åtkomsttoken med hjälp av hello uppdateringstoken som tidigare har tagits emot. Kodexempel som visar det här scenariot, se [Native client tooWeb API tooWeb API](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof).
 
 ## <a name="see-also"></a>Se även
 
-- [Utvecklarhandbok för Azure Active Directory](active-directory-developers-guide.md)
+- [hello Azure Active Directory-guide för utvecklare](active-directory-developers-guide.md)
 - [Autentiseringsscenarier för Azure Active directory](active-directory-authentication-scenarios.md)
 - [Azure Active Directory-kodexempel](active-directory-code-samples.md)

@@ -1,6 +1,6 @@
 ---
-title: "Lägga till inloggning i en .NET MVC-webb-API med hjälp av Azure AD v2.0-slutpunkten | Microsoft Docs"
-description: "Hur du skapar en .NET MVC webb-Api som accepterar token från både personliga Account och arbets-eller skolkonton."
+title: "aaaAdd inloggning tooa .NET MVC webb-API med hjälp av hello Azure AD v2.0-slutpunkten | Microsoft Docs"
+description: "Hur toobuild en .NET MVC webb-Api som accepterar token från både personliga Account och arbets-eller skolkonton."
 services: active-directory
 documentationcenter: .net
 author: dstrockis
@@ -15,30 +15,30 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b2d7bbfcd9218698f71e9dfdb1ad5d9ff8740f5e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 4e517145422bb6e9368e82a7eef4a5c57cce530a
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="secure-an-mvc-web-api"></a>Skydda en MVC-webb-API
-Med Azure Active Directory v2.0-slutpunkten kan du skydda ett webb-API med hjälp av [OAuth 2.0](active-directory-v2-protocols.md) åtkomst-token så att användarna med både personliga Microsoft-konto och arbets- eller skolkonto konton för säker åtkomst webb-API.
+Med Azure Active Directory hello v2.0-slutpunkten kan du skydda ett webb-API med hjälp av [OAuth 2.0](active-directory-v2-protocols.md) åtkomsttoken, aktivera användare med både personliga Microsoft-konto och arbets- eller skolkonto konton toosecurely åtkomst till webb-API.
 
 > [!NOTE]
-> Inte alla Azure Active Directory-scenarier och funktioner som stöds av v2.0-slutpunkten.  Läs mer om för att avgöra om du ska använda v2.0-slutpunkten [v2.0 begränsningar](active-directory-v2-limitations.md).
+> Inte alla Azure Active Directory-scenarier och funktioner som stöds av hello v2.0-slutpunkten.  toodetermine om du ska använda hello v2.0-slutpunkten Läs om [v2.0 begränsningar](active-directory-v2-limitations.md).
 >
 >
 
-I ASP.NET webb-API: er, kan du göra detta med hjälp av Microsofts OWIN mellanprogram som ingår i .NET Framework 4.5.  Vi använder här OWIN för att skapa en ”att göra-lista” MVC webb-API som tillåter klienter att skapa och läsa uppgifter från en användares att göra-lista.  Webb-API verifierar att inkommande begäranden innehåller en giltig åtkomst-token och avvisa alla begäranden som inte klarar valideringen på en skyddad väg.  Det här exemplet har skapats med Visual Studio 2015.
+I ASP.NET webb-API: er, kan du göra detta med hjälp av Microsofts OWIN mellanprogram som ingår i .NET Framework 4.5.  Vi använder här OWIN toobuild en ”tooDo listan” MVC webb-API som gör att klienter toocreate och läsa uppgifter från en användares att göra-lista.  hello webb-API verifierar att inkommande begäranden innehåller en giltig åtkomst-token och avvisa alla begäranden som inte klarar valideringen på en skyddad väg.  Det här exemplet har skapats med Visual Studio 2015.
 
 ## <a name="download"></a>Ladda ned
-Koden för den här självstudiekursen [finns på GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet).  Om du vill följa med kan du [ladda ned appens stomme som en .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) eller klona stommen:
+hello-koden för den här självstudiekursen upprätthålls [på GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet).  toofollow längs kan du [hämta hello appens stomme som en .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) eller klona hello stommen:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 ```
 
-Appen stommen innehåller formaterad exempelkod för ett enkelt API, men saknar alla identitetsrelaterade bitar. Om du inte vill att följa instruktionerna du i stället klona eller [hämta det slutförda exemplet](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip).
+hello stommen app innehåller alla hello formaterad exempelkod för ett enkelt API, men saknar de över hello identity-relaterade objekt. Om du inte vill toofollow längs, kan du i stället klona eller [hämta hello slutförts exempel](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip).
 
 ```
 git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
@@ -47,16 +47,16 @@ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 ## <a name="register-an-app"></a>Registrera en app
 Skapa en ny app på [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), eller följa dessa [detaljerade steg](active-directory-v2-app-registration.md).  Se till att:
 
-* Kopiera den **program-Id** tilldelats din app måste den snart.
+* Kopiera hello **program-Id** tilldelade tooyour app måste den snart.
 
-Visual studio-lösning innehåller också en ”TodoListClient”, vilket är en enkel WPF-program.  TodoListClient används för att demonstrera hur en användare loggar in och hur en klient kan skicka begäranden till ditt webb-API.  I det här fallet representeras både TodoListClient och TodoListService av samma app.  Om du vill konfigurera TodoListClient, bör du också:
+Visual studio-lösning innehåller också en ”TodoListClient”, vilket är en enkel WPF-program.  Hej TodoListClient är används toodemonstrate hur en användare loggar in och hur en klient kan skicka begäranden tooyour Web API.  I det här fallet både hello TodoListClient och hello TodoListService representeras av hello samma app.  tooconfigure Hej TodoListClient, bör du även:
 
-* Lägg till den **Mobile** plattform för din app.
+* Lägg till hello **Mobile** plattform för din app.
 
 ## <a name="install-owin"></a>Installera OWIN
-Nu när du har registrerat en app som du behöver konfigurera din app att kommunicera med v2.0-slutpunkten för att kunna verifiera inkommande förfrågningar och token.
+Nu när du har registrerat en app, behöver tooset upp din app toocommunicate med hello v2.0-slutpunkten i ordning toovalidate inkommande begäranden och token.
 
-* För att börja, öppna lösningen och Lägg till NuGet-paket OWIN mellanprogram TodoListService projektet med Package Manager-konsolen.
+* toobegin, öppna hello lösningen och Lägg till hello OWIN mellanprogram NuGet-paket toohello TodoListService projektet med hello Package Manager-konsolen.
 
 ```
 PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TodoListService
@@ -66,8 +66,8 @@ PM> Install-Package Microsoft.IdentityModel.Protocol.Extensions -ProjectName Tod
 ```
 
 ## <a name="configure-oauth-authentication"></a>Konfigurera OAuth-autentisering
-* Lägg till en OWIN-startklass i TodoListService-projektet som kallas `Startup.cs`.  Högerklicka på projektet--> **Lägg till** --> **nytt objekt** --> Sök efter ”OWIN”.  OWIN-mellanprogrammet anropar `Configuration(…)`-metoden när appen startas.
-* Ändra klassdeklarationen till `public partial class Startup` -vi har implementerat en del av den här klassen som du redan i en annan fil.  I den `Configuration(…)` metod, gör ett anrop till ConfgureAuth(...) du konfigurerar autentisering för ditt webbprogram.
+* Lägg till en OWIN klassen toohello TodoListService Startprojekt kallas `Startup.cs`.  Högerklicka på projektet hello--> **Lägg till** --> **nytt objekt** --> Sök efter ”OWIN”.  Hej OWIN mellanprogram ska anropa hello `Configuration(…)` metod när appen startar.
+* Ändra hello klassdeklarationen för`public partial class Startup` -vi har implementerat en del av den här klassen som du redan i en annan fil.  I hello `Configuration(…)` metod, gör ett anrop tooConfgureAuth(...) tooset in verifiering för ditt webbprogram.
 
 ```C#
 public partial class Startup
@@ -79,34 +79,34 @@ public partial class Startup
 }
 ```
 
-* Öppna filen `App_Start\Startup.Auth.cs` och genomföra den `ConfigureAuth(…)` metod som ställer in webb-API för att acceptera token från v2.0-slutpunkten.
+* Öppna hello filen `App_Start\Startup.Auth.cs` och implementera hello `ConfigureAuth(…)` metod som ställer in hello Web API tooaccept token från hello v2.0-slutpunkten.
 
 ```C#
 public void ConfigureAuth(IAppBuilder app)
 {
         var tvps = new TokenValidationParameters
         {
-                // In this app, the TodoListClient and TodoListService
-                // are represented using the same Application Id - we use
-                // the Application Id to represent the audience, or the
+                // In this app, hello TodoListClient and TodoListService
+                // are represented using hello same Application Id - we use
+                // hello Application Id toorepresent hello audience, or the
                 // intended recipient of tokens.
 
                 ValidAudience = clientId,
 
                 // In a real applicaiton, you might use issuer validation to
-                // verify that the user's organization (if applicable) has
-                // signed up for the app.  Here, we'll just turn it off.
+                // verify that hello user's organization (if applicable) has
+                // signed up for hello app.  Here, we'll just turn it off.
 
                 ValidateIssuer = false,
         };
 
-        // Set up the OWIN pipeline to use OAuth 2.0 Bearer authentication.
-        // The options provided here tell the middleware about the type of tokens
-        // that will be recieved, which are JWTs for the v2.0 endpoint.
+        // Set up hello OWIN pipeline toouse OAuth 2.0 Bearer authentication.
+        // hello options provided here tell hello middleware about hello type of tokens
+        // that will be recieved, which are JWTs for hello v2.0 endpoint.
 
-        // NOTE: The usual WindowsAzureActiveDirectoryBearerAuthenticaitonMiddleware uses a
-        // metadata endpoint which is not supported by the v2.0 endpoint.  Instead, this
-        // OpenIdConenctCachingSecurityTokenProvider can be used to fetch & use the OpenIdConnect
+        // NOTE: hello usual WindowsAzureActiveDirectoryBearerAuthenticaitonMiddleware uses a
+        // metadata endpoint which is not supported by hello v2.0 endpoint.  Instead, this
+        // OpenIdConenctCachingSecurityTokenProvider can be used toofetch & use hello OpenIdConnect
         // metadata document.
 
         app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
@@ -116,7 +116,7 @@ public void ConfigureAuth(IAppBuilder app)
 }
 ```
 
-* Nu kan du använda `[Authorize]` attribut för att skydda dina domänkontrollanter och åtgärder med OAuth 2.0-ägar-autentisering.  Skapa snygga den `Controllers\TodoListController.cs` klass med en auktorisera-tagg.  Detta tvingar användaren att logga in innan sidan.
+* Nu kan du använda `[Authorize]` attribut tooprotect dina domänkontrollanter och åtgärder med OAuth 2.0-ägar-autentisering.  Skapa snygga hello `Controllers\TodoListController.cs` klass med en auktorisera-tagg.  Detta tvingar hello användaren toosign i innan sidan.
 
 ```C#
 [Authorize]
@@ -124,14 +124,14 @@ public class TodoListController : ApiController
 {
 ```
 
-* När en auktoriserad anroparen har anropar någon av de `TodoListController` API: er, åtgärden kanske behöver åtkomst till information om anroparen.  OWIN ger tillgång till anspråk i ägartoken via den `ClaimsPrincpal` objekt.  
+* När en auktoriserad anroparen har anropar en hello `TodoListController` API: er, hello åtgärden kanske behöver komma åt tooinformation om hello anroparen.  OWIN tillhandahåller åtkomst toohello anspråk i hello ägar-token via hello `ClaimsPrincpal` objekt.  
 
 ```C#
 public IEnumerable<TodoItem> Get()
 {
-    // You can use the ClaimsPrincipal to access information about the
-    // user making the call.  In this case, we use the 'sub' or
-    // NameIdentifier claim to serve as a key for the tasks in the data store.
+    // You can use hello ClaimsPrincipal tooaccess information about the
+    // user making hello call.  In this case, we use hello 'sub' or
+    // NameIdentifier claim tooserve as a key for hello tasks in hello data store.
 
     Claim subject = ClaimsPrincipal.Current.FindFirst(ClaimTypes.NameIdentifier);
 
@@ -141,30 +141,30 @@ public IEnumerable<TodoItem> Get()
 }
 ```
 
-* Slutligen, öppna den `web.config` filen i roten av projektet TodoListService och ange dina konfigurationsvärden i den `<appSettings>` avsnitt.
-  * Din `ida:Audience` är den **program-Id** för den app som du angav på portalen.
+* Slutligen öppna hello `web.config` filen i hello roten för hello TodoListService projekt och ange dina konfigurationsvärden i hello `<appSettings>` avsnitt.
+  * Din `ida:Audience` är hello **program-Id** hello-appen som du angav i hello-portalen.
 
-## <a name="configure-the-client-app"></a>Konfigurera klientappen
-Innan du kan se tjänsten Todo i åtgärden måste du konfigurera klienten för Todo-listan så att den kan hämta token från v2.0-slutpunkten och anrop till tjänsten.
+## <a name="configure-hello-client-app"></a>Konfigurera hello-klientappen
+Innan du kan se hello Todo tjänsten i åtgärden måste tooconfigure hello Todo listan klienten så att den kan hämta token från hello v2.0-slutpunkten och att anrop toohello tjänst.
 
-* Öppna i projektet TodoListClient `App.config` och ange dina konfigurationsvärden i den `<appSettings>` avsnitt.
-  * Din `ida:ClientId` program-Id som du kopierade från portalen.
+* Öppna i hello TodoListClient project `App.config` och ange dina konfigurationsvärden i hello `<appSettings>` avsnitt.
+  * Din `ida:ClientId` program-Id som du kopierade från hello-portalen.
 
-Slutligen, rensa, skapa och köra varje projekt!  Nu har du en .NET MVC webb-API som accepterar token från både personliga Microsoft-konton och arbets-eller skolkonton.  Logga in på TodoListClient och anropa dina webb-api för att lägga till aktiviteter i användarens att göra-lista.
+Slutligen, rensa, skapa och köra varje projekt!  Nu har du en .NET MVC webb-API som accepterar token från både personliga Microsoft-konton och arbets-eller skolkonton.  Logga in på hello TodoListClient och anropa web api tooadd uppgifter toohello användarens att göra-lista.
 
-För referens anger det slutförda exemplet (utan dina konfigurationsvärden) [har angetts som en .zip här](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip), eller kan du klona den från GitHub:
+För referens anger hello slutförts exemplet (utan dina konfigurationsvärden) [har angetts som en .zip här](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip), eller kan du klona den från GitHub:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git```
 
 ## <a name="next-steps"></a>Nästa steg
-Du kan nu gå vidare till ytterligare information.  Du kanske vill prova:
+Du kan nu gå vidare till ytterligare information.  Du kanske vill tootry:
 
 [Anropa ett webb-API från ett webbprogram >>](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 
 För ytterligare resurser, kolla:
 
-* [Utvecklarhandbok v2.0 >>](active-directory-appmodel-v2-overview.md)
+* [Utvecklarhandbok för hello v2.0 >>](active-directory-appmodel-v2-overview.md)
 * [StackOverflow ”azure-active-directory” taggen >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="get-security-updates-for-our-products"></a>Hämta säkerhetsuppdateringar för våra produkter
-Vi rekommenderar att du aktiverar aviseringar om säkerhetsincidenter genom att gå till [den här sidan](https://technet.microsoft.com/security/dd252948) och prenumerera på Microsoft Security Advisory-aviseringar.
+Vi rekommenderar att du tooget meddelanden om när säkerhetsincidenter genom att besöka [den här sidan](https://technet.microsoft.com/security/dd252948) och prenumerera tooSecurity Advisory-aviseringar.

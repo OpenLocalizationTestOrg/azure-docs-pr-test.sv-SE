@@ -1,6 +1,6 @@
 ---
-title: Med verktyget Azure Import/Export - v1 | Microsoft Docs
-description: "Lär dig hur du använder verktyget Import/Export för att förbereda hårddiskar för ett importjobb, reparera ett importjobb eller reparera ett exportjobb."
+title: aaaUsing hello Azure Import/Export-verktyget - v1 | Microsoft Docs
+description: "Lär dig hur toouse hello verktyget Import/Export tooprepare hårddiskar för ett importjobb reparera ett importjobb eller reparera ett exportjobb."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 4ce2273cc0dcc456c2edc8c5dd2fc22496f20380
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 030dbad403cae76799c9ddf3cb8d2ced7cd41911
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Med verktyget Azure Import/Export (klassiska distributionsmodellen)
+# <a name="using-hello-azure-importexport-tool-classic-deployment-model"></a>Med hjälp av hello Azure Import/Export-verktyget (klassiska distributionsmodellen)
 
-Verktyget Azure Import/Export (WAImportExport.exe) används för att skapa och hantera jobb för tjänsten Azure Import/Export så att du kan överföra stora mängder data till eller från Azure Blob Storage.
+hello Azure Import/Export-verktyget (WAImportExport.exe) är används toocreate och hantera jobb för hello Azure Import/Export-tjänsten, vilket gör att du tootransfer stora mängder data till eller från Azure Blob Storage.
 
-Den här dokumentationen avser den klassiska distributionsmodellen i verktyget Azure Import/Export. Information om hur du använder den senaste versionen av verktyget finns i [med verktyget Azure Import/Export](../storage-import-export-tool-how-to.md).
+Den här dokumentationen avser hello klassiska distributionsmodellen av hello Azure Import/Export-verktyget. Information om hur du använder hello senaste versionen av verktyget hello finns [Using hello Azure Import/Export verktyget](../storage-import-export-tool-how-to.md).
 
-I följande artiklar visar hur till:
+hello följande artiklar visar hur till:
 
-- Installera och konfigurera verktyget Import/Export.
-- Förbered din hårddiskar för ett jobb när du importerar data från dina enheter till Azure Blob Storage.
-- Granska statusen för ett jobb med kopiera loggfiler. 
+- Installera och konfigurera hello verktyget Import/Export.
+- Förbered din hårddiskar för ett projekt där du kan importera data från dina enheter tooAzure Blob Storage.
+- Granska hello status för ett jobb med kopiera loggfiler. 
 - Reparera importen. 
 - Reparera ett exportjobb. 
-- Felsöka Azure Import/Export-verktyget om du hade problem under processen. 
+- Felsöka hello Azure Import/Export-verktyget om du hade problem under processen. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Konfigurera verktyget WAImportExport](../storage-import-export-tool-how-to.md)
+* [Konfigurera hello WAImportExport verktyget](../storage-import-export-tool-how-to.md)

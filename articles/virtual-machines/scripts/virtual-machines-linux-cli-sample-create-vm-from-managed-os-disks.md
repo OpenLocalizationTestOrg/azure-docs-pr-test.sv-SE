@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-skript Sample - skapa en virtuell dator genom att koppla en hanterade diskar som OS-disk | Microsoft Docs
+title: aaaAzure CLI skriptexempel - skapa en virtuell dator genom att koppla en hanterade diskar som OS-disk | Microsoft Docs
 description: Azure CLI-skript Sample - skapa en virtuell dator genom att koppla en hanterade diskar som OS-disk
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 18eefee869b243b35d4426c226eff5f48cd490a0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 71fc5c6a577c64b913cfa35e99b2b9b75dea0c31
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Skapa en virtuell dator med en befintlig OS-disk hanterade med CLI
 
@@ -35,11 +35,11 @@ Det här skriptet skapar en virtuell dator genom att koppla en befintlig hantera
 
 ## <a name="sample-script"></a>Exempelskript
 
-[!code-azurecli-interactive[huvudsakliga](../../../cli_scripts/virtual-machine/create-vm-attach-existing-managed-os-disk/create-vm-attach-existing-managed-os-disk.sh "Skapa virtuell dator från en hanterad disk")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-attach-existing-managed-os-disk/create-vm-attach-existing-managed-os-disk.sh "Create VM from a managed disk")]
 
 ## <a name="clean-up-deployment"></a>Rensa distribution 
 
-Kör följande kommando för att ta bort resursgruppen, virtuell dator och alla relaterade resurser.
+Kör följande kommando tooremove hello resursgrupp, VM och alla relaterade resurser hello.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
@@ -47,14 +47,14 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Skriptet förklaring
 
-Det här skriptet använder följande kommandon för att hämta egenskaper för hanterade diskar, ansluter hanterade diskar till en ny virtuell dator och skapa en virtuell dator. Varje objekt i tabellen länkar till kommandot viss dokumentation.
+Det här skriptet använder hello följande kommandon tooget hanteras diskegenskaper, bifoga en hanterade diskar tooa ny virtuell dator och skapa en virtuell dator. Varje objekt i hello tabellen länkar toocommand viss dokumentation.
 
 | Kommando | Anteckningar |
 |---|---|
-| [AZ disk visa](https://docs.microsoft.com/cli/azure/disk#show) | Hämtar egenskaper för hanterade diskar med hjälp av diskens namn och resursgruppens namn. ID-egenskapen används för att koppla en hanterade diskar till en ny virtuell dator |
+| [AZ disk visa](https://docs.microsoft.com/cli/azure/disk#show) | Hämtar egenskaper för hanterade diskar med hjälp av diskens namn och resursgruppens namn. ID-egenskap är används tooattach en hanterade diskar tooa ny virtuell dator |
 | [Skapa AZ vm](https://docs.microsoft.com/cli/azure/vm#create) | Skapar en virtuell dator med hjälp av en hanterad OS-disk |
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
+Mer information om hello Azure CLI finns [Azure CLI dokumentationen](https://docs.microsoft.com/cli/azure/overview).
 
-Ytterligare virtuella CLI skriptexempel finns i den [virtuella Azure Linux-datorn dokumentationen](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Ytterligare virtuella CLI skriptexempel finns i hello [virtuella Azure Linux-datorn dokumentationen](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

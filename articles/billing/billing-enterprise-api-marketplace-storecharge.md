@@ -1,6 +1,6 @@
 ---
-title: Azure Billing Enterprise API - Marketplace-debiteringar | Microsoft Docs
-description: "Läs mer om Reporting API: erna som gör att företag Azure-kunder att dra förbrukningsdata programmässigt."
+title: aaaAzure fakturering Enterprise API - Marketplace-debiteringar | Microsoft Docs
+description: "Läs mer om hello Reporting-API: er som gör att Azure Enterprise-kunder toopull förbrukningsdata programmässigt."
 services: 
 documentationcenter: 
 author: aedwin
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 5539623f7ae35e14b6dafe6fdf9efe4bcaba4fd3
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: cdf2836b52df06a4bf5ed71a476fe33662c5363c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="reporting-apis-for-enterprise-customers---marketplace-store-charge"></a>Reporting API: er för företagskunder - Marketplace Store kostnad
 
-Marketplace Store kostnad API returnerar användningsbaserad marketplace avgifter sammanställning per dag för fakturering tidsperioden eller start- och slutdatum (en gång avgifter inte ingår).
+hello Marketplace Store kostnad API returnerar hello användningsbaserad marketplace avgifter sammanställning per dag för hello angivna fakturering Period eller start- och slutdatum (en gång avgifter inte ingår).
 
 ##<a name="request"></a>Förfrågan 
-Allmänna rubrikegenskaper för som ska läggas till anges [här](billing-enterprise-api.md). Om en faktureringsperiod anges returnerade data för den aktuella faktureringsperioden. Anpassade tidsintervall kan anges med början och slutar datumparametrar som är i formatet ÅÅÅÅ-MM-dd, högsta tidsintervallet som stöds är 36 månader.  
+Allmänna sidhuvudegenskaper för som behöver toobe läggs anges [här](billing-enterprise-api.md). Om en faktureringsperiod anges sedan returneras data för hello aktuella fakturering tidsperiod. Anpassade tidsintervall kan anges med hello start och sluta datum parametrarna i hello formatet ÅÅÅÅ-MM-dd hello maximala stöds tid intervallet är 36 månader.  
 
 |Metod | URI-begäran|
 |-|-|
@@ -35,7 +35,7 @@ Allmänna rubrikegenskaper för som ska läggas till anges [här](billing-enterp
 |HÄMTA|https://consumption.Azure.com/v2/enrollments/ {enrollmentNumber} / marketplacechargesbycustomdate? startTime = 2017-01-01 & endTime = 10-01-2017|
 
 > [!Note]
-> Ersätt v2 med v1 i URL: en ovan om du vill använda förhandsversionen av API.
+> toouse hello förhandsversionen av API, Ersätt v2 med v1 hello ovan URL.
 >
 
 ## <a name="response"></a>Svar
@@ -76,29 +76,29 @@ Allmänna rubrikegenskaper för som ska läggas till anges [här](billing-enterp
 
 |Egenskapsnamn| Typ| Beskrivning
 |-|-|-|
-|id|Sträng|Unikt Id för kostnad marketplace-objektet|
-|subscriptionGuid|GUID|Guid för prenumeration|
-|SubscriptionName|Sträng|Prenumerationsnamnet|
-|meterId|Sträng|ID för den angivna mätaren|
-|usageStartDate|Datum och tid|Starttid för posten i användning|
-|usageEndDate|Datum och tid|Sluttid för posten användning|
-|offerName|Sträng|Namnet på erbjudande|
-|resourceGroup|Sträng|Resursen grupp|
+|id|Sträng|Unikt Id för kostnad hello marketplace-objektet|
+|subscriptionGuid|GUID|hello prenumeration Guid|
+|SubscriptionName|Sträng|hello prenumerationsnamn|
+|meterId|Sträng|ID för hello orsakat mätare|
+|usageStartDate|Datum och tid|Starttid för hello användning post|
+|usageEndDate|Datum och tid|Sluttid för hello användning post|
+|offerName|Sträng|Hej erbjudandenamn|
+|resourceGroup|Sträng|hello resurs grupp|
 |InstanceId|Sträng|Instans-Id|
 |additionalInfo|Sträng|Ytterligare information JSON-strängen|
 |tags|Sträng|Taggen JSON-strängen|
-|orderNumber|Sträng|Ordningstalet|
-|unitOfMeasure|Sträng|Enheten för mätaren|
-|CostCenter|Sträng|Kostnadsställe|
-|accountId|int|Konto-Id|
-|Kontonamn|Sträng |Namnet på kontot|
-|accountOwnerId|Sträng|Ägar-Id för kontot|
-|departmentId|int|Avdelning Id|
-|DepartmentName|Sträng|Ett avdelningsnamn|
-|publisherName|Sträng|Utgivarens namn|
-|planName|Sträng|Namn för energischema|
+|orderNumber|Sträng|hello ordningsnummer|
+|unitOfMeasure|Sträng|Enheten för hello mätare|
+|CostCenter|Sträng|hello kostnad center|
+|accountId|int|hello konto-Id|
+|Kontonamn|Sträng |hello kontonamn|
+|accountOwnerId|Sträng|hello konto ägar-Id|
+|departmentId|int|hello avdelning Id|
+|DepartmentName|Sträng|hello avdelningsnamn|
+|publisherName|Sträng|hello utgivarens namn|
+|planName|Sträng|hello namn|
 |consumedQuantity|Decimal|Förbrukade antal under den här tiden|
-|resourceRate|Decimal|Enhetspriset för mätaren|
+|resourceRate|Decimal|Enhetspriset för hello mätare|
 |extendedCost|Decimal|Beräknad kostnad som baseras på Förbrukat antal och utökad kostnad|
 <br/>
 ## <a name="see-also"></a>Se även

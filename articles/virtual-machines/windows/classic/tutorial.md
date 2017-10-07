@@ -1,6 +1,6 @@
 ---
-title: Skapa en virtuell dator i Azure portal | Microsoft Docs
-description: Skapa en virtuell Windows-dator i Azure-portalen.
+title: aaaCreate en virtuell dator i hello Azure-portalen | Microsoft Docs
+description: Skapa en virtuell Windows-dator i hello Azure-portalen.
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 0981872ff819fdf49a9cc97afce3c212013ce76b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 3848a3d06a7ce377633db78ea385826ed40f94fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-virtual-machine-running-windows-in-the-azure-portal"></a>Skapa en virtuell dator som kör Windows i Azure-portalen
+# <a name="create-a-virtual-machine-running-windows-in-hello-azure-portal"></a>Skapa en virtuell dator som kör Windows i hello Azure-portalen
 > [!div class="op_single_selector"]
 > * [Azure Portal](tutorial.md)
 > * [PowerShell: Klassisk distribution](create-powershell.md)
@@ -31,20 +31,20 @@ ms.lasthandoff: 07/11/2017
 <br>
 
 > [!IMPORTANT]
-> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../resource-manager-deployment-model.md). Den här artikeln täcker den klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder Resource Manager-modellen. Lär dig hur du [utföra dessa steg med Resource Manager-distributionsmodellen](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) med hjälp av den **Azure-portalen**.
+> Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../resource-manager-deployment-model.md). Den här artikeln täcker hello klassiska distributionsmodellen. Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen. Lär dig hur för[utföra dessa steg med hello Resource Manager-distributionsmodellen](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) med hello **Azure-portalen**.
 
-Den här kursen visar hur du skapar en Azure virtuell dator (VM) med Windows Azure-portalen. Vi använder en Windows Server-avbildning som exempel, men det är bara en av de många avbildningar som Azure erbjuder. Observera att avbildningsalternativ beror på din prenumeration. Till exempel vara Windows desktop-avbildningar tillgängliga för MSDN-prenumeranter.
+De här självstudierna visar hur toocreate en Azure virtuell dator (VM) som kör Windows i hello Azure-portalen. Vi använder en Windows Server-avbildning som exempel, men det är bara en av hello många bilder Azure erbjuder. Observera att avbildningsalternativ beror på din prenumeration. Windows desktop-avbildningar kan exempelvis vara tillgängliga tooMSDN prenumeranter.
 
-Det här avsnittet visar hur du använder den **instrumentpanelen** i Azure portal för att välja och skapa den virtuella datorn.
+Det här avsnittet beskrivs hur du toouse hello **instrumentpanelen** i hello Azure portal tooselect och sedan skapa hello virtuell dator.
 
-Du kan också skapa virtuella datorer med [egna avbildningar](createupload-vhd.md). Läs om denna och andra metoder i [olika sätt att skapa en virtuell dator för Windows](../../virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Du kan också skapa virtuella datorer med [egna avbildningar](createupload-vhd.md). toolearn om denna och andra metoder, se [olika sätt toocreate Windows-dator](../../virtual-machines-windows-creation-choices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-<!-- 02/27/2017 Video removed as it was based on the classic portal. -->
+<!-- 02/27/2017 Video removed as it was based on hello classic portal. -->
 
-## <a id="createvirtualmachine"></a>Skapa den virtuella datorn
+## <a id="createvirtualmachine"></a>Skapa hello virtuell dator
 [!INCLUDE [virtual-machines-create-WindowsVM](../../../../includes/virtual-machines-create-windowsvm.md)]
 
 ## <a name="next-steps"></a>Nästa steg
-* Lär dig hur du [skapa en virtuell dator med hjälp av Resource Manager-distributionsmodellen](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) i Azure-portalen.
-* Logga in på den virtuella datorn. Instruktioner finns i [logga in på en virtuell dator som kör Windows Server](connect-logon.md).
-* Ansluta en disk för att lagra data. Du kan koppla både tom och diskar som innehåller data. Mer information finns i [ansluta en datadisk till en Windows-dator som skapats med den klassiska distributionsmodellen](attach-disk.md).
+* Lär dig hur för[skapa en virtuell dator med hjälp av Resource Manager-modellen hello](../../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) i hello Azure-portalen.
+* Logga in toohello virtuella datorn. Instruktioner finns i [inloggning tooa virtuell dator som kör Windows Server](connect-logon.md).
+* Koppla en toostore diskdata. Du kan koppla både tom och diskar som innehåller data. Instruktioner finns i hello [bifoga en data disk tooa Windows virtuell dator som skapats med hello klassiska distributionsmodellen](attach-disk.md).

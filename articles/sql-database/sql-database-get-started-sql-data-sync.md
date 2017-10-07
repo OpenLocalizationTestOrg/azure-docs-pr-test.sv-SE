@@ -1,5 +1,5 @@
 ---
-title: "Komma igång med datasynkronisering för Azure SQL (förhandsversion) | Microsoft Docs"
+title: "aaaGetting igång med datasynkronisering för Azure SQL (förhandsversion) | Microsoft Docs"
 description: "Den här kursen hjälper dig att komma igång med datasynkronisering för Azure SQL (förhandsversion)."
 services: sql-database
 documentationcenter: 
@@ -15,192 +15,192 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: douglasl
-ms.openlocfilehash: 2d0f9d7f32ad79f49d58165d734b9df4af862835
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 666d09237e42acc23ae3c8c81e60734a413f5949
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="getting-started-with-azure-sql-data-sync-preview"></a>Komma igång med datasynkronisering för Azure SQL (förhandsgranskning)
-Lär dig hur du ställer in Azure SQL Data Sync genom att skapa en hybrid sync-grupp som innehåller både Azure SQL Database och SQL Server-instanser i den här självstudiekursen. Den nya gruppen sync helt har konfigurerats och synkroniserar enligt det schema du anger.
+I kursen får du lära dig hur tooset upp Azure SQL Data Sync genom att skapa en hybrid sync-grupp som innehåller både Azure SQL Database och SQL Server-instanser. hello ny synkronisering grupp helt har konfigurerats och synkroniserar på hello schema du anger.
 
 Den här kursen förutsätter att du har minst tidigare erfarenhet med SQL Database och SQL Server. 
 
 En översikt över SQL datasynkronisering finns [data synkroniseras](sql-database-sync-data.md).
 
-Fullständig PowerShell-exempel som visar hur du konfigurerar SQL datasynkronisering, finns i följande artiklar:
--   [Använd PowerShell för att synkronisera mellan flera Azure SQL-databaser](scripts/sql-database-sync-data-between-sql-databases.md)
--   [Använd PowerShell för att synkronisera mellan en Azure SQL Database och en lokal SQL Server-databas](scripts/sql-database-sync-data-between-azure-onprem.md)
+Fullständig PowerShell-exempel som visar hur tooconfigure SQL datasynkronisering Se hello följande artiklar:
+-   [Använd PowerShell toosync mellan flera Azure SQL-databaser](scripts/sql-database-sync-data-between-sql-databases.md)
+-   [Använd PowerShell toosync mellan en Azure SQL Database och en lokal SQL Server-databas](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 > [!NOTE]
-> Den omfattande teknisk dokumentation för Azure SQL datasynkronisering som tidigare fanns på MSDN, är tillgänglig som en. PDF-dokument. Hämta den [här](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true).
+> hello omfattande teknisk dokumentation för Azure SQL datasynkronisering som tidigare fanns på MSDN, är tillgänglig som en. PDF-dokument. Hämta den [här](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true).
 
 ## <a name="step-1---create-sync-group"></a>Steg 1 – Skapa sync-grupp
 
-### <a name="locate-the-data-sync-settings"></a>Hitta inställningarna för datasynkronisering
+### <a name="locate-hello-data-sync-settings"></a>Hitta inställningarna för hello datasynkronisering
 
-1.  Gå till Azure-portalen i webbläsaren.
+1.  Navigera toohello Azure-portalen i webbläsaren.
 
-2.  Leta upp din SQL-databaser från instrumentpanelen eller ikonen SQL-databaser i verktygsfältet i portalen.
+2.  Leta upp din SQL-databaser från instrumentpanelen eller hello SQL-databaser ikon hello verktygsfältet i hello-portalen.
 
     ![Lista över Azure SQL-databaser](media/sql-database-get-started-sql-data-sync/datasync-preview-sqldbs.png)
 
-3.  På den **SQL-databaser** bladet Välj den befintliga SQL-databasen som du vill använda som databasen hubb för datasynkronisering. Då öppnas bladet SQL-databasen.
+3.  På hello **SQL-databaser** bladet, Välj hello befintliga SQL-databas som du vill toouse som hello hubb databasen för Data Sync. hello SQL-databasbladet öppnas.
 
-4.  På bladet för SQL-databasen för den valda databasen väljer **synkronisering till andra databaser**. Datasynkronisering blad öppnas.
+4.  Välj på hello SQL-databasbladet för hello valda databasen **synkronisera tooother databaser**. hello datasynkronisering blad öppnas.
 
-    ![Synkronisera till andra databaser alternativ](media/sql-database-get-started-sql-data-sync/datasync-preview-newsyncgroup.png)
+    ![Synkroniseringsalternativet tooother databaser](media/sql-database-get-started-sql-data-sync/datasync-preview-newsyncgroup.png)
 
 ### <a name="create-a-new-sync-group"></a>Skapa en ny grupp för synkronisering
 
-1.  På bladet datasynkronisering väljer **ny synkronisering grupp**. Den **ny synkronisering grupp** blad öppnas med steg 1, **skapa sync grupp**, markerade. Den **skapa Sync datagruppen** också öppnas i blad.
+1.  Hello datasynkronisering bladet välj **ny synkronisering grupp**. Hej **ny synkronisering grupp** blad öppnas med steg 1, **skapa sync grupp**, markerade. Hej **skapa Sync datagruppen** också öppnas i blad.
 
-2.  På den **skapa Sync datagruppen** bladet göra följande:
+2.  På hello **skapa Sync datagruppen** bladet hello följande saker:
 
-    1.  I den **Sync gruppnamn** , ange ett namn för den nya gruppen för synkronisering.
+    1.  I hello **Sync gruppnamn** , ange ett namn för hello nya sync-gruppen.
 
-    2.  I den **synkronisera Metadata-databasen** väljer du om du vill skapa en ny databas (rekommenderas) eller använda en befintlig databas.
+    2.  I hello **synkronisera Metadata-databasen** väljer du om toocreate en ny databas (rekommenderas) eller toouse en befintlig databas.
 
         > [!NOTE]
-        > Microsoft rekommenderar att du skapar en ny, tom databas som ska användas som synkronisera Metadata-databasen. Datasynkronisering skapar tabeller i databasen och kör en frekventa arbetsbelastning. Den här databasen delas automatiskt som synkronisera Metadata-databasen för alla dina synkroniseringsgrupper i den valda regionen. Du kan inte ändra synkronisera Metadata-databasen, namnet eller dess servicenivå utan att släppa den.
+        > Microsoft rekommenderar att du skapar en ny, tom databas toouse som hello synkronisera Metadata-databasen. Datasynkronisering skapar tabeller i databasen och kör en frekventa arbetsbelastning. Den här databasen delas automatiskt som hello synkronisera Metadata-databasen för alla dina synkroniseringsgrupper i hello valda regionen. Du kan inte ändra hello synkronisera Metadata-databasen, namnet eller dess servicenivå utan att släppa den.
 
-        Om du väljer **ny databas**väljer **Skapa ny databas.** Den **SQL-databas** blad öppnas. På den **SQL-databas** bladet namn och konfigurera den nya databasen. Välj sedan **OK**.
+        Om du väljer **ny databas**väljer **Skapa ny databas.** Hej **SQL-databas** blad öppnas. På hello **SQL-databas** bladet namn och konfigurera hello ny databas. Välj sedan **OK**.
 
-        Om du väljer **Använd befintlig databas**, markera databasen i listan.
+        Om du väljer **Använd befintlig databas**väljer hello databasen hello-listan.
 
-    3.  I den **automatisk synkronisering** väljer du först **på** eller **av**.
+    3.  I hello **automatisk synkronisering** väljer du först **på** eller **av**.
 
-        Om du väljer **på**i den **Synkroniseringsfrekvensen** , ange ett tal och välj sekunder, minuter, timmar eller dagar.
+        Om du väljer **på**, i hello **Synkroniseringsfrekvensen** , ange ett tal och välj sekunder, minuter, timmar eller dagar.
 
         ![Ange frekvens för synkronisering](media/sql-database-get-started-sql-data-sync/datasync-preview-syncfreq.png)
 
-    4.  I den **konfliktlösning** väljer du ”hubb wins” eller ”medlem wins”.
+    4.  I hello **konfliktlösning** väljer du ”hubb wins” eller ”medlem wins”.
 
         ![Ange hur konflikter löses](media/sql-database-get-started-sql-data-sync/datasync-preview-conflictres.png)
 
-    5.  Välj **OK** och vänta tills den nya gruppen synkronisering kan skapas och distribueras.
+    5.  Välj **OK** och vänta tills hello nya sync grupp toobe skapas och distribueras.
 
 ## <a name="step-2---add-sync-members"></a>Steg 2 – lägga till sync-medlemmar
 
-När den nya gruppen sync skapas och distribueras, steg 2, **lägga till medlemmar i synkronisering**, är markerad i den **ny synkronisering grupp** bladet.
+När hello ny synkronisering grupp skapas och distribueras, steg 2, **lägga till medlemmar i synkronisering**, markeras i hello **ny synkronisering grupp** bladet.
 
-I den **hubb databasen** ange befintliga autentiseringsuppgifter för SQL Database-server där NAV-databasen finns. Ange inte *nya* autentiseringsuppgifter i det här avsnittet.
+I hello **hubb databasen** ange hello befintliga autentiseringsuppgifter för hello SQL Database-server som hello hubb databasen finns. Ange inte *nya* autentiseringsuppgifter i det här avsnittet.
 
-![NAV-databasen har lagts till synkronisera grupp](media/sql-database-get-started-sql-data-sync/datasync-preview-hubadded.png)
+![NAV-databasen har lagts till toosync grupp](media/sql-database-get-started-sql-data-sync/datasync-preview-hubadded.png)
 
 ## <a name="add-an-azure-sql-database"></a>Lägg till en Azure SQL-databas
 
-I den **medlem databasen** avsnittet om du vill lägga till en Azure SQL Database i gruppen synkronisering genom att välja **lägga till en Azure-databas**. Den **konfigurera Azure Database** blad öppnas.
+I hello **medlem databasen** avsnittet om du vill lägga till en Azure SQL Database toohello sync-grupp genom att välja **lägga till en Azure-databas**. Hej **konfigurera Azure Database** blad öppnas.
 
-På den **konfigurera Azure Database** bladet göra följande:
+På hello **konfigurera Azure Database** bladet hello följande saker:
 
-1.  I den **Sync medlemsnamn** anger ett namn för den nya medlemmen synkronisering. Det här namnet skiljer sig från namnet på själva databasen.
+1.  I hello **Sync medlemsnamn** anger ett namn för hello nya sync medlemmen. Det här namnet skiljer sig från hello namnet på själva hello-databasen.
 
-2.  I den **prenumeration** , markera den tillhörande Azure-prenumerationen för fakturering.
+2.  I hello **prenumeration** , markera hello som är associerade med Azure-prenumeration för fakturering.
 
-3.  I den **Azure SQL Server** väljer du den befintliga SQL-databasservern.
+3.  I hello **Azure SQL Server** , markera hello befintliga SQL-databasservern.
 
-4.  I den **Azure SQL Database** väljer du den befintliga SQL-databasen.
+4.  I hello **Azure SQL Database** , markera hello befintliga SQL-databas.
 
-5.  I den **Sync anvisningarna** fält, Välj dubbelriktad synkronisering, till hubben eller från hubb.
+5.  I hello **Sync anvisningarna** väljer dubbelriktad synkronisering toohello hubben, eller från hello hubb.
 
     ![Lägga till en ny SQL-databas sync medlem](media/sql-database-get-started-sql-data-sync/datasync-preview-memberadding.png)
 
-6.  I den **användarnamn** och **lösenord** ange befintliga autentiseringsuppgifter för SQL Database-servern som medlem databasen finns. Ange inte *nya* autentiseringsuppgifter i det här avsnittet.
+6.  I hello **användarnamn** och **lösenord** ange hello befintliga autentiseringsuppgifter för hello SQL Database-server på vilken hello medlem databasen är placerad. Ange inte *nya* autentiseringsuppgifter i det här avsnittet.
 
-7.  Välj **OK** och vänta tills den nya medlemmen synkronisering kan skapas och distribueras.
+7.  Välj **OK** och vänta tills hello nya sync medlem toobe skapas och distribueras.
 
     ![Ny SQL-databas sync medlem har lagts till](media/sql-database-get-started-sql-data-sync/datasync-preview-memberadded.png)
 
 ## <a name="add-an-on-premises-sql-server-database"></a>Lägg till en lokal SQL Server-databas
 
-I den **medlem databasen** avsnittet om du vill lägga till en lokal SQL Server i gruppen synkronisering genom att välja **lägga till en lokal databas**. Den **konfigurera lokalt** blad öppnas.
+I hello **medlem databasen** avsnittet om du vill lägga till en lokal SQL Server toohello sync-grupp genom att välja **lägga till en lokal databas**. Hej **konfigurera lokalt** blad öppnas.
 
-På den **konfigurera lokalt** bladet göra följande:
+På hello **konfigurera lokalt** bladet hello följande saker:
 
-1.  Välj **Välj Sync Agent Gateway**. Den **Välj Agent för Sync** blad öppnas.
+1.  Välj **Välj hello Sync Agent Gateway**. Hej **Välj Agent för Sync** blad öppnas.
 
-    ![Välj sync agent gateway](media/sql-database-get-started-sql-data-sync/datasync-preview-choosegateway.png)
+    ![Välj hello sync agent gateway](media/sql-database-get-started-sql-data-sync/datasync-preview-choosegateway.png)
 
-2.  På den **Välj Sync Agent Gateway** bladet Välj om du vill använda en befintlig agent eller skapa en ny agent.
+2.  På hello **Välj hello Sync Agent Gateway** bladet Välj om toouse en befintlig agent eller skapa en ny agent.
 
-    Om du väljer **befintliga agenter**, Välj den befintliga agenten i listan.
+    Om du väljer **befintliga agenter**, Välj hello befintliga agenten hello-listan.
 
-    Om du väljer **skapa en ny agent**, göra följande:
+    Om du väljer **skapa en ny agent**, hello följande saker:
 
-    1.  Hämta klientprogrammet för sync-agenten från länken och installera den på den dator där SQL Server.
+    1.  Hämta hello klientprogrammet sync-agenten från hello länken och installera den på hello datorn där hello SQL Server finns.
  
         > [!IMPORTANT]
-        > Du måste öppna utgående TCP-port 1433 i brandväggen för att låta klientagenten kommunicera med servern.
+        > Du har tooopen utgående TCP-port 1433 i hello brandväggen toolet hello klientagenten kommunicera med hello-servern.
 
 
-    2.  Ange ett namn för agenten.
+    2.  Ange ett namn för hello agent.
 
     3.  Välj **skapa och generera nyckel**.
 
-    4.  Kopiera agentnyckeln till Urklipp.
+    4.  Kopiera hello agent viktiga toohello Urklipp.
         
         ![Skapa en ny agent för synkronisering](media/sql-database-get-started-sql-data-sync/datasync-preview-selectsyncagent.png)
 
-    5.  Välj **OK** att stänga den **Välj Agent för Sync** bladet.
+    5.  Välj **OK** tooclose hello **Välj Agent för Sync** bladet.
 
-    6.  Leta upp på SQL Server-datorn och kör appen Sync-Klientagenten.
+    6.  Leta reda på hello SQL Server-datorn och kör hello Sync-Klientagenten app.
 
-        ![Data synkroniseras agent-klientappen](media/sql-database-get-started-sql-data-sync/datasync-preview-clientagent.png)
+        ![hello data synkroniseras agent-klientappen](media/sql-database-get-started-sql-data-sync/datasync-preview-clientagent.png)
 
-    7.  I appen sync agent väljer **skicka Agentnyckeln**. Den **synkronisera Metadata databaskonfiguration** öppnas.
+    7.  I hello sync agent app väljer **skicka Agentnyckeln**. Hej **synkronisera Metadata databaskonfiguration** öppnas.
 
-    8.  I den **synkronisera Metadata databaskonfiguration** dialogrutan Klistra in agentnyckeln kopieras från Azure-portalen. Dessutom befintliga autentiseringsuppgifter för Azure SQL Database-server som metadata-databasen finns. (Om du har skapat en ny databas för metadata är den här databasen på samma server som NAV-databasen.) Välj **OK** och vänta på att slutföra konfigurationen.
+    8.  I hello **synkronisera Metadata databaskonfiguration** dialogrutan Klistra in hello agentnyckeln kopieras från hello Azure-portalen. Dessutom hello befintliga autentiseringsuppgifter för hello Azure SQL Database-server på vilken hello metadata-databasen finns. (Om du har skapat en ny databas för metadata för databasen finns i hello samma server som hello hubb databasen.) Välj **OK** och vänta tills hello configuration toofinish.
 
-        ![Ange autentiseringsuppgifter för agenten nyckel och server](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
+        ![Ange hello och autentiseringsuppgifter för agenten](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 
         >   [!NOTE] 
-        >   Om du får ett Brandväggsfel nu kan måste du skapa en brandväggsregel i Azure för att tillåta inkommande trafik från SQL Server-datorn. Du kan skapa regeln manuellt i portalen, men det kan vara lättare att skapa den i SQL Server Management Studio (SSMS). I SSMS, försök ansluta till NAV-databas på Azure. Ange namnet som \<hub_database_name\>. database.windows.net. Följ stegen i dialogrutan för att konfigurera Azure brandväggsregeln. Återgå sedan till appen Sync-Klientagenten.
+        >   Om du får ett Brandväggsfel nu har du toocreate en brandväggsregel på Azure tooallow inkommande trafik från hello SQL Server-datorn. Du kan skapa hello regel manuellt i hello-portalen, men kan det vara lättare toocreate den i SQL Server Management Studio (SSMS). Försök i SSMS, tooconnect toohello NAV-databas på Azure. Ange namnet som \<hub_database_name\>. database.windows.net. Hello åtgärderna i hello dialogrutan rutan tooconfigure hello Azure brandväggsregel. Returnera toohello Sync-Klientagenten app.
 
-    9.  Klicka på appen Sync-Klientagenten **registrera** att registrera en SQL Server-databas med agenten. Den **SQL Server-konfigurationsfilen** öppnas.
+    9.  Klicka i hello Sync-Klientagenten app **registrera** tooregister en SQL Server-databas med hello agent. Hej **SQL Server-konfigurationsfilen** öppnas.
 
         ![Lägga till och konfigurera en SQL Server-databas](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-adddb.png)
 
-    10. I den **SQL Server-konfigurationsfilen** dialogrutan Välj om du vill ansluta med hjälp av SQL Server-autentisering eller Windows-autentisering. Om du väljer SQL Server-autentisering anger du de befintliga autentiseringsuppgifterna. Ange namnet på SQL Server och namnet på databasen som du vill synkronisera. Välj **Anslutningstestet** testa inställningarna. Välj sedan **spara**. Registrerade databasen visas i listan.
+    10. I hello **SQL Server-konfigurationsfilen** dialogrutan Välj om tooconnect med hjälp av SQL Server-autentisering eller Windows-autentisering. Om du väljer SQL Server-autentisering måste du ange hello befintliga autentiseringsuppgifter. Ange hello SQL Server-namn och hello namnet på hello-databasen som du vill toosync. Välj **Testanslutningen** tootest dina inställningar. Välj sedan **spara**. hello registrerade databasen visas i hello.
 
         ![SQL Server-databasen är nu registrerad](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-dbadded.png)
 
-    11. Nu kan du stänga appen Sync-Klientagenten.
+    11. Nu kan du stänga hello Sync-Klientagenten app.
 
-    12. I portalen på den **konfigurera lokalt** bladet väljer **Markera databasen.** Den **Välj databas** blad öppnas.
+    12. I hello-portalen på hello **konfigurera lokalt** bladet väljer **Välj hello databasen.** Hej **Välj databas** blad öppnas.
 
-    13. På den **Välj databas** blad i den **Sync medlemsnamn** anger ett namn för den nya medlemmen synkronisering. Det här namnet skiljer sig från namnet på själva databasen. Välj databasen i listan. I den **Sync anvisningarna** fält, Välj dubbelriktad synkronisering, till hubben eller från hubb.
+    13. På hello **Välj databas** bladet i hello **Sync medlemsnamn** anger ett namn för hello nya sync medlemmen. Det här namnet skiljer sig från hello namnet på själva hello-databasen. Välj hello databasen hello-listan. I hello **Sync anvisningarna** väljer dubbelriktad synkronisering toohello hubben, eller från hello hubb.
 
-        ![Välj den på lokal databasen](media/sql-database-get-started-sql-data-sync/datasync-preview-selectdb.png)
+        ![Välj hello på lokal databas](media/sql-database-get-started-sql-data-sync/datasync-preview-selectdb.png)
 
-    14. Välj **OK** att stänga den **Välj databas** bladet. Välj sedan **OK** att stänga den **konfigurera lokalt** bladet och vänta tills den nya medlemmen synkronisering kan skapas och distribueras. Klicka slutligen på **OK** att stänga den **Välj sync medlemmar** bladet.
+    14. Välj **OK** tooclose hello **Välj databas** bladet. Välj sedan **OK** tooclose hello **konfigurera lokalt** bladet och vänta tills hello nya synkroniseras medlem toobe skapas och distribueras. Klicka slutligen på **OK** tooclose hello **Välj sync medlemmar** bladet.
 
-        ![På lokal databas sync-grupp](media/sql-database-get-started-sql-data-sync/datasync-preview-onpremadded.png)
+        ![På en lokal databas som lagts till toosync grupp](media/sql-database-get-started-sql-data-sync/datasync-preview-onpremadded.png)
 
-3.  Om du vill ansluta till SQL-datasynkronisering och lokal agent, Lägg till ditt användarnamn i rollen `DataSync_Executor`. Datasynkronisering skapar den här rollen på SQL Server-instansen.
+3.  tooconnect tooSQL datasynkronisering och hello lokal agent, lägger du till din användarroll namn toohello `DataSync_Executor`. Datasynkronisering skapar den här rollen på hello SQL Server-instansen.
 
 ## <a name="step-3---configure-sync-group"></a>Steg 3 – Konfigurera synkronisering grupp
 
-När de nya sync gruppmedlemmarna skapas och distribueras, steg3 **Konfigurera synkronisering grupp**, är markerat i den **ny synkronisering grupp** bladet.
+När gruppmedlemmar hello nya sync skapas och distribueras, steg3 **Konfigurera synkronisering grupp**, markeras i hello **ny synkronisering grupp** bladet.
 
-1.  På den **tabeller** bladet Välj en databas i listan över medlemmar och välj sedan **Uppdatera schema**.
+1.  På hello **tabeller** bladet Välj en databas från hello lista över medlemmar och välj sedan **Uppdatera schema**.
 
-2.  Välj de tabeller som du vill synkronisera från listan över tillgängliga tabeller.
+2.  Välj hello tabeller som du vill toosync hello listan över tillgängliga tabeller.
 
-    ![Välj tabeller ska synkroniseras](media/sql-database-get-started-sql-data-sync/datasync-preview-tables.png)
+    ![Välj tabeller toosync](media/sql-database-get-started-sql-data-sync/datasync-preview-tables.png)
 
-3.  Alla kolumner i tabellen är markerad som standard. Om du inte vill synkronisera alla kolumner, inaktivera kryssrutan för de kolumner som du inte vill synkronisera. Se till att lämna primärnyckelkolumnen har valts.
+3.  Alla kolumner i tabellen hello är markerade som standard. Om du inte vill toosync alla hello kolumner, inaktivera hello kryssrutan för hello kolumner som du inte vill toosync. Kontrollera att väljas tooleave hello primärnyckelkolumnen.
 
-    ![Välj fält som ska synkroniseras](media/sql-database-get-started-sql-data-sync/datasync-preview-tables2.png)
+    ![Välj fält toosync](media/sql-database-get-started-sql-data-sync/datasync-preview-tables2.png)
 
 4.  Välj slutligen **spara**.
 
 ## <a name="next-steps"></a>Nästa steg
-Grattis. Du har skapat en sync-grupp som innehåller både en instans av SQL Database och SQL Server-databasen.
+Grattis! Du har skapat en sync-grupp som innehåller både en instans av SQL Database och SQL Server-databasen.
 
 För mer information om SQL Database och SQL-datasynkronisering, se:
 
--   [Hämta den fullständiga SQL datasynkronisering teknisk dokumentationen](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)
--   [Hämta SQL Data Sync REST API-dokumentation](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Hämta hello Fullständig datasynkronisering SQL teknisk dokumentation](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)
+-   [Hämta hello SQL Data Sync REST API-dokumentation](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 -   [Översikt över SQL-databas](sql-database-technical-overview.md)
 -   [Livscykelhantering för databasen](https://msdn.microsoft.com/library/jj907294.aspx)

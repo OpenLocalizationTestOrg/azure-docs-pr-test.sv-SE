@@ -1,6 +1,6 @@
 ---
-title: "Azure Toolkit för IntelliJ | Microsoft Docs"
-description: "Lär dig mer om Azure Toolkit för IntelliJ."
+title: "aaaAzure Toolkit för IntelliJ | Microsoft Docs"
+description: "Läs mer om hello Azure Toolkit för IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,36 +14,36 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: robmcm;asirveda
-ms.openlocfilehash: 75a8880f3d28c290236b87677648fdd915effea2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 59daba34200b4e5efcba9af9eba71b648a0bfa98
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="azure-toolkit-for-intellij"></a>Azure Toolkit för IntelliJ
-Azure-verktygen för IntelliJ innehåller mallar och funktioner som du kan använda för att enkelt skapa, utveckla, testa och distribuera Azure-program med hjälp av IntelliJ integrerad utvecklingsmiljö (IDE). Det är en öppen källkod projekt vars källkoden är tillgängliga under den [MIT-licens från projektets plats](https://github.com/microsoft/azure-tools-for-java).
+hello Azure Toolkit för IntelliJ innehåller mallar och funktioner som du kan använda tooeasily skapa, utveckla, testa och distribuera Azure-program med hjälp av hello IntelliJ integrerad utvecklingsmiljö (IDE). Det är en öppen källkod projekt vars källkoden finns under hello [MIT-licens från hello projektets plats](https://github.com/microsoft/azure-tools-for-java).
 
 > [!NOTE]
-> Det finns också en Azure-verktygen för Eclipse IDE. Mer information finns i [Azure Toolkit för Eclipse](azure-toolkit-for-eclipse.md).
+> Det finns också en Azure-verktygen för hello Eclipse IDE. Mer information finns i [Azure Toolkit för Eclipse](azure-toolkit-for-eclipse.md).
 > 
 > 
 
-## <a name="get-started-with-the-azure-toolkit-for-intellij"></a>Komma igång med Azure-verktyget för IntelliJ
-I följande artiklar hjälper dig att börja använda Azure Toolkit för IntelliJ:
+## <a name="get-started-with-hello-azure-toolkit-for-intellij"></a>Komma igång med hello Azure Toolkit för IntelliJ
+hello följande artiklar hjälper dig att börja använda hello Azure Toolkit för IntelliJ:
 
-* [Vad är nytt i Azure-verktygen för IntelliJ](azure-toolkit-for-intellij-whats-new.md)
-* [Installera Azure Toolkit för IntelliJ](azure-toolkit-for-intellij-installation.md)
-* [Logga in instruktioner för Azure-Toolkit för IntelliJ](azure-toolkit-for-intellij-sign-in-instructions.md)
+* [Vad är nytt i hello Azure Toolkit för IntelliJ](azure-toolkit-for-intellij-whats-new.md)
+* [Installera hello Azure Toolkit för IntelliJ](azure-toolkit-for-intellij-installation.md)
+* [Logga in instruktioner för hello Azure Toolkit för IntelliJ](azure-toolkit-for-intellij-sign-in-instructions.md)
 * [Skapa en Hello World-webbapp för Azure i IntelliJ](app-service-web/app-service-web-intellij-create-hello-world-web-app.md)
 
-## <a name="use-the-azure-toolkit-for-intellij"></a>Använd Azure Toolkit för IntelliJ
-I följande artiklar visa hur man använder Azure-verktygen för IntelliJ kan lägga till Azure funktioner i dina Java-projekt:
+## <a name="use-hello-azure-toolkit-for-intellij"></a>Använd hello Azure Toolkit för IntelliJ
+hello följande artiklar visa hur man använder hello Azure Toolkit för IntelliJ tooadd Azure funktioner tooyour Java-projekt:
 
-* [Hantera virtuella datorer med hjälp av Azure-Explorer för IntelliJ](azure-toolkit-for-intellij-managing-storage-accounts-using-azure-explorer.md)
-* [Hantera storage-konton med hjälp av Azure-Explorer för IntelliJ](azure-toolkit-for-intellij-managing-virtual-machines-using-azure-explorer.md)
-* [Publicera en app för vår start som en dockerbehållare med hjälp av Azure-verktyget för IntelliJ](azure-toolkit-for-intellij-publish-spring-boot-docker-app.md)
-* [Publicera ett webbprogram som en dockerbehållare med hjälp av Azure-verktyget för IntelliJ](azure-toolkit-for-intellij-publish-as-docker-container.md)
-* [Använda HDInsight Tools-Plugin för IntelliJ IDEA till att skapa Spark-program för ett HDInsight Spark Linux-kluster](hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Hantera virtuella datorer med hjälp av hello Azure Explorer för IntelliJ](azure-toolkit-for-intellij-managing-storage-accounts-using-azure-explorer.md)
+* [Hantera storage-konton med hjälp av hello Azure Explorer för IntelliJ](azure-toolkit-for-intellij-managing-virtual-machines-using-azure-explorer.md)
+* [Publicera en start av vår app som en dockerbehållare med hello Azure Toolkit för IntelliJ](azure-toolkit-for-intellij-publish-spring-boot-docker-app.md)
+* [Publicera ett webbprogram som en dockerbehållare med hello Azure Toolkit för IntelliJ](azure-toolkit-for-intellij-publish-as-docker-container.md)
+* [Använda HDInsight Tools-Plugin för IntelliJ IDEA toocreate Spark-program för ett HDInsight Spark Linux-kluster](hdinsight/hdinsight-apache-spark-intellij-tool-plugin.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

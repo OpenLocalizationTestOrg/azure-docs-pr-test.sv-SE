@@ -1,6 +1,6 @@
 ---
-title: "Komma igång med Notification Hubs för Xamarin.Android-appar | Microsoft Docs"
-description: "I den här självstudiekursen beskrivs hur du använder Azure Notification Hubs för att skicka push-meddelanden till en Xamarin-Android-app."
+title: "aaaGet igång med Notification Hubs för Xamarin.Android-appar | Microsoft Docs"
+description: "I kursen får du lära dig hur toouse Azure Notification Hubs toosend push-meddelanden tooa Xamarin Android-program."
 author: ysxu
 manager: erikre
 editor: 
@@ -14,28 +14,28 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: e0ef1b006a2b202c08a71caaff4ef4d763d50d0a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c5c7ead9a9381ab9fb6bbe86e930a8a9254813d5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-notification-hubs-with-xamarin-for-android"></a>Komma igång med Notification Hubs med Xamarin för Android
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Översikt
-I den här självstudiekursen beskrivs hur du använder Azure Notification Hubs för att skicka push-meddelanden till en Xamarin.Android-app.
-Du skapar en tom Xamarin.Android-app som tar emot push-meddelanden genom att använda Google Cloud Messaging (GCM). När du är klar kan du använda meddelandehubben för att sända push-meddelanden till alla enheter som kör appen. Den färdiga koden finns tillgänglig i exemplet [NotificationHubs-app][GitHub].
+Den här kursen visar hur toouse Azure Notification Hubs toosend push-meddelanden tooa Xamarin.Android-program.
+Du skapar en tom Xamarin.Android-app som tar emot push-meddelanden genom att använda Google Cloud Messaging (GCM). När du är klar, kommer du att kunna toouse din notification hub toobroadcast push-meddelanden tooall hello enheter som kör appen. hello färdiga koden finns i hello [NotificationHubs app] [ GitHub] exempel.
 
-I den här självstudiekursen visas ett enkelt scenario för sändning med Notification Hubs.
+Den här kursen visar hello enkelt scenario för sändning med Notification Hubs.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 [!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
 
-Den färdiga koden för den här självstudiekursen hittar du på GitHub [här](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid).
+hello slutförts koden för den här kursen finns på GitHub [här](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid).
 
 ## <a name="prerequisites"></a>Krav
-För den här kursen behöver du följande:
+Den här kursen kräver hello följande:
 
 * Visual Studio med Xamarin i Windows eller Xamarin Studio i Mac OS X. Fullständiga installationsanvisningar finns i avsnittet [Konfiguration och installation av Visual Studio och Xamarin](https://msdn.microsoft.com/library/mt613162.aspx).
 * Aktivt Google-konto
@@ -45,7 +45,7 @@ För den här kursen behöver du följande:
 Du måste slutföra den här självstudiekursen innan du påbörjar någon annan kurs om Notification Hubs för Xamarin.Android-appar.
 
 > [!IMPORTANT]
-> Du måste ha ett aktivt Azure-konto för att slutföra den här kursen. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information om den kostnadsfria utvärderingsversionen av Azure finns [Kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F).
+> toocomplete den här självstudiekursen kommer du måste ha ett aktivt Azure-konto. Om du inte har något konto kan skapa du ett kostnadsfritt utvärderingskonto på bara några minuter. Mer information om den kostnadsfria utvärderingsversionen av Azure finns [Kostnadsfri utvärderingsversion av Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A9C9624B5&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fpartner-xamarin-notification-hubs-android-get-started%2F).
 > 
 > 
 
@@ -57,55 +57,55 @@ Du måste slutföra den här självstudiekursen innan du påbörjar någon annan
 
 <ol start="7">
 
-<li><p>Klicka på fliken <b>Konfigurera</b> högst upp, ange <b>API-nyckelvärdet</b> som du fick i det förra avsnittet och klicka sedan på <b>Spara</b>.</p>
+<li><p>Klicka på hello <b>konfigurera</b> hello överst och anger hello <b>API-nyckel</b> du fick i hello föregående avsnitt och klickar sedan på <b>spara</b>.</p>
 </li>
 </ol>
 &emsp;&emsp;![](./media/notification-hubs-android-get-started/notification-hub-configure-android.png)
 
-Meddelandehubben har nu konfigurerats för att fungera med GCM och du har anslutningssträngar för att registrera din app för att både ta emot meddelanden och skicka push-meddelanden.
+Din meddelandehubb har nu konfigurerat toowork med GCM och du har hello anslutning strängar tooboth registrera din app tooreceive meddelanden och toosend push-meddelanden.
 
-## <a name="connect-your-app-to-the-notification-hub"></a>Anslut appen till meddelandehubben
+## <a name="connect-your-app-toohello-notification-hub"></a>Ansluta din app toohello notification hub
 ### <a name="create-a-new-project"></a>Skapa ett nytt projekt
 1. I Xamarin Studio klickar du på **Ny lösning**, sedan på **Android-app** och till sist på **Nästa**.
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
 
-2. Ange **appens namn** och **ID**. Klicka på de **målplattformar** du vill stödja och klicka sedan på **Nästa** och **Skapa**.
+2. Ange **appens namn** och **ID**. Klicka på hello **målplattformar** du toosupport och klickar sedan på **nästa** och **skapa**.
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
 
     På så sätt skapas ett nytt Android-projekt.
 
-1. Öppna projektegenskaperna genom att högerklicka på det nya projektet i vyn Lösning och välj **Alternativ**. Välj objektet för **Android-appen** i avsnittet **Skapa**.
+1. Öppna hello projektegenskaperna genom att högerklicka på det nya projektet i hello lösning visa och välja **alternativ**. Välj hello **Android-program** objekt i hello **skapa** avsnitt.
    
-    Kontrollera att den första bokstaven i **paketnamnet** är en gemen.
+    Se till att den första bokstaven hello i din **paketnamnet** gemena.
    
    > [!IMPORTANT]
-   > Den första bokstaven i paketnamnet måste vara en gemen. Annars visas appmanifestfel när du registrerar **BroadcastReceiver** och **IntentFilter** för push-meddelanden nedan.
+   > hello första bokstaven i paketnamnet hello måste vara gemener. Annars visas appmanifestfel när du registrerar **BroadcastReceiver** och **IntentFilter** för push-meddelanden nedan.
    > 
    > 
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
-2. Du kan också ställa in den **äldsta tillåtna Android-versionen** till en annan API-nivå.
-3. Du kan också ställa in **målversionen av Android** till en annan API-version som du vill ha som mål (måste vara API-nivå 8 eller senare).
+2. Du kan också ange hello **lägsta Android-versionen** tooanother API-nivå.
+3. Du kan också ange hello **Målversionen av Android** toohello en annan API-versionen som du vill tootarget (måste vara API-nivå 8 eller senare).
 
-Klicka på **OK** och stäng dialogrutan Projektalternativ.
+Klicka på **OK** och Stäng hello Projektalternativ.
 
-### <a name="add-the-required-components-to-your-project"></a>Lägg till de nödvändiga komponenterna i projektet
-Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att ge stöd för push-meddelanden i Xamarin.Android.
+### <a name="add-hello-required-components-tooyour-project"></a>Lägga till hello nödvändiga komponenter tooyour projekt
+hello Google Cloud Messaging-klienten på hello Xamarin-Komponentlagret gör hello enklare att stödja push-meddelanden i Xamarin.Android.
 
-1. Högerklicka på mappen Komponenter i Xamarin.Android-appen och välj **Get more Components** (Få fler komponenter).
-2. Sök efter **Azure Messaging**-komponenten och lägg till den i projektet.
-3. Sök efter **Google Cloud Messaging-klienten** och lägg till den i projektet.
+1. Högerklicka på mappen för hello komponenter i Xamarin.Android-appen och välj **få fler komponenter**.
+2. Sök efter hello **Azure Messaging** komponenten och Lägg till den toohello projekt.
+3. Sök efter hello **Google Cloud Messaging-klienten** komponenten och Lägg till den toohello projekt.
 
 ### <a name="set-up-notification-hubs-in-your-project"></a>Konfigurera meddelandehubbar i projektet
-1. Samla in följande information för Android-appen och meddelandehubben:
+1. Samla in följande information för din Android-appen och meddelandehubben hello:
    
-   * **Google-projektnummer**: Hämta värdet för det här projektnumret från översikten över appen på Google Developer-portalen. Du antecknade värdet tidigare när du skapade appen på portalen.
-   * **Lyssna anslutningssträng**: På instrumentpanelen på den [Klassisk Azure-portal] klickar du på **Visa anslutningssträngar**. Kopiera anslutningssträngen *DefaultListenSharedAccessSignature* för det här värdet.
-   * **Hubbnamn**: Det här är namnet på hubben från den [Klassisk Azure-portal]. Till exempel *mynotificationhub2*.
+   * **Google-projektnummer**: hämta värdet för den här projektnumret från hello översikten över appen på hello Google Developer-portalen. Du antecknade värdet tidigare när du skapade hello app på hello-portalen.
+   * **Lyssna anslutningssträng**: på hello instrumentpanelen i hello [klassiska Azure-portalen], klickar du på **visa anslutningssträngar**. Kopiera hello *DefaultListenSharedAccessSignature* anslutningssträngen för det här värdet.
+   * **Hubbnamn**: är hello namnet på hubben från hello [klassiska Azure-portalen]. Till exempel *mynotificationhub2*.
      
-     Skapa en **Constants.cs**-klass för Xamarin-projektet och definiera följande konstanta värden i klassen. Ersätt platshållarna med värdena.
+     Skapa en **Constants.cs** klass för Xamarin-projektet och definiera följande konstanta värden i hello klass hello. Ersätt hello platshållarna med värdena.
      
        offentlig statisk klass Konstanter   {
      
@@ -113,18 +113,18 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
            public const string ListenConnectionString = "<Listen connection string>";
            public const string NotificationHubName = "<hub name>";
        }
-2. Lägg till följande using-instruktioner till **MainActivity.cs** :
+2. Lägg till hello följande using-instruktioner för**MainActivity.cs**:
    
         using Android.Util;
         using Gcm.Client;
-3. Lägg till en variabelinstans till den `MainActivity`-klass som ska användas för att visa en varningsruta när appen körs:
+3. Lägg till en variabel toohello instans `MainActivity` klass som ska använda tooshow en varningsruta när hello appen körs:
    
         public static MainActivity instance;
-4. Skapa följande metod i klassen **MainActivity**:
+4. Skapa följande metod i hello hello **MainActivity** klass:
    
         private void RegisterWithGCM()
         {
-            // Check to ensure everything's set up right
+            // Check tooensure everything's set up right
             GcmClient.CheckDevice(this);
             GcmClient.CheckManifest(this);
    
@@ -132,7 +132,7 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
             Log.Info("MainActivity", "Registering...");
             GcmClient.Register(this, Constants.SenderID);
         }
-5. I `OnCreate`-metoden för **MainActivity.cs** initierar du `instance`-variabeln och lägger till ett anrop till `RegisterWithGCM`:
+5. I hello `OnCreate` metod för **MainActivity.cs**, initiera hello `instance` variabeln och Lägg till ett anrop för`RegisterWithGCM`:
    
         protected override void OnCreate (Bundle bundle)
         {
@@ -140,11 +140,11 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
    
             base.OnCreate (bundle);
    
-            // Set your view from the "main" layout resource
+            // Set your view from hello "main" layout resource
             SetContentView (Resource.Layout.Main);
    
-            // Get your button from the layout resource,
-            // and attach an event to it
+            // Get your button from hello layout resource,
+            // and attach an event tooit
             Button button = FindViewById<Button> (Resource.Id.myButton);
    
             RegisterWithGCM();
@@ -152,10 +152,10 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
 6. Skapa en ny klass, **MyBroadcastReceiver**.
    
    > [!NOTE]
-   > Nedan går vi igenom hur du skapar en **BroadcastReceiver**-klass från grunden. Ett snabbt alternativ till att skapa **MyBroadcastReceiver.cs** manuellt är att referera till filen **GcmService.cs** som finns i Xamarin.Android-exempelprojektet som ingår i [NotificationHubs-exemplen][GitHub]. Att duplicera **GcmService.cs** och ändra klassnamn kan också vara en bra start.
+   > Nedan går vi igenom hur du skapar en **BroadcastReceiver**-klass från grunden. Dock skapa en snabb alternativa toomanually **MyBroadcastReceiver.cs** är toorefer toohello **GcmService.cs** filen i hello Xamarin.Android exempelprojektet medföljer hello [NotificationHubs exempel][GitHub]. Duplicera **GcmService.cs** och ändra klassnamn kan vara en bra toostart samt.
    > 
    > 
-7. Lägg till följande using-instruktioner till **MyBroadcastReceiver.cs** (hänvisa till komponenten och sammansättningen som du lagt till tidigare):
+7. Lägg till hello följande using-instruktioner för**MyBroadcastReceiver.cs** (hänvisar toohello komponenten och sammansättningen som du lade till tidigare):
    
         using System.Collections.Generic;
         using System.Text;
@@ -164,7 +164,7 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
         using Android.Util;
         using Gcm.Client;
         using WindowsAzure.Messaging;
-8. I **MyBroadcastReceiver.cs** lägger du till följande behörighetsbegäranden mellan **using**-instruktionen och deklarationen för **namnområdet**:
+8. I **MyBroadcastReceiver.cs**, Lägg till följande behörighetsbegäranden mellan hello hello **med** -satser och hello **namnområde** deklaration:
    
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -174,7 +174,7 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
         [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-9. I **MyBroadcastReceiver.cs** ändrar du **MyBroadcastReceiver**-klassen så att den stämmer överens med följande:
+9. I **MyBroadcastReceiver.cs**, ändra hello **MyBroadcastReceiver** klassen toomatch hello följande:
    
         [BroadcastReceiver(Permission=Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE },
@@ -189,9 +189,9 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
    
             public const string TAG = "MyBroadcastReceiver-GCM";
         }
-10. Lägg till ytterligare en klass i **MyBroadcastReceiver.cs** med namnet **PushHandlerService**, som kommer från **GcmServiceBase**. Tillämpa attributet för **tjänsten** på klassen:
+10. Lägg till ytterligare en klass i **MyBroadcastReceiver.cs** med namnet **PushHandlerService**, som kommer från **GcmServiceBase**. Se till att tooapply hello **Service** attributet toohello klass:
     
-         [Service] // Must use the service tag
+         [Service] // Must use hello service tag
          public class PushHandlerService : GcmServiceBase
          {
              public static string RegistrationID { get; private set; }
@@ -202,8 +202,8 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
                  Log.Info(MyBroadcastReceiver.TAG, "PushHandlerService() constructor");
              }
          }
-11. **GcmServiceBase** implementerar metoderna **OnRegistered()**, **OnUnRegistered()**, **OnMessage()**, **OnRecoverableError()** och **OnError()**. Vår implementeringsklass **PushHandlerService** måste åsidosätta de här metoderna, vilka utlöses som svar på interaktionen med meddelandehubben.
-12. Åsidosätt metoden **OnRegistered()** i **PushHandlerService** med följande kod:
+11. **GcmServiceBase** implementerar metoderna **OnRegistered()**, **OnUnRegistered()**, **OnMessage()**, **OnRecoverableError()** och **OnError()**. Vår **PushHandlerService** implementeringsklass måste åsidosätta de här metoderna och metoderna utlöses som svar toointeracting hello meddelandehubben.
+12. Åsidosätt hello **OnRegistered()** metod i **PushHandlerService** med hjälp av hello följande kod:
     
          protected override void OnRegistered(Context context, string registrationId)
          {
@@ -211,7 +211,7 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
              RegistrationID = registrationId;
     
              createNotification("PushHandlerService-GCM Registered...",
-                                 "The device has been Registered!");
+                                 "hello device has been Registered!");
     
              Hub = new NotificationHub(Constants.NotificationHubName, Constants.ListenConnectionString,
                                          context);
@@ -238,10 +238,10 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
          }
     
     > [!NOTE]
-    > Observera möjligheten att specificera taggar för registrering för vissa meddelandekanaler i koden för **OnRegistered()**.
+    > I hello **OnRegistered()** code ovan, Observera hello möjlighet toospecify taggar tooregister för vissa meddelandekanaler.
     > 
     > 
-13. Åsidosätt metoden **OnMessage** i **PushHandlerService** med följande kod:
+13. Åsidosätt hello **OnMessage** metod i **PushHandlerService** med hjälp av hello följande kod:
     
         protected override void OnMessage(Context context, Intent intent)
         {
@@ -265,10 +265,10 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
                 createNotification ("Unknown message details", msg.ToString ());
             }
         }
-14. Lägg till följande **createNotification**- och **dialogNotify**-metoder till **PushHandlerService** för att meddela användarna när ett meddelande tas emot.
+14. Lägg till följande hello **createNotification** och **dialogNotify** metoder för**PushHandlerService** för att meddela användaren när ett meddelande tas emot.
     
     > [!NOTE]
-    > Meddelandedesign i Android-versionen 5.0 eller senare skiljer sig avsevärt från tidigare versioner. Om du testar detta i Android 5.0 eller senare måste appen köras för att ta emot meddelandet. Mer information om Android-meddelanden finns [här](http://go.microsoft.com/fwlink/?LinkId=615880).
+    > Meddelandedesign i Android-versionen 5.0 eller senare skiljer sig avsevärt från tidigare versioner. Om du testar detta i Android 5.0 eller senare, behöver hello app toobe kör tooreceive hello-meddelande. Mer information om Android-meddelanden finns [här](http://go.microsoft.com/fwlink/?LinkId=615880).
     > 
     > 
     
@@ -277,21 +277,21 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
             //Create notification
             var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
     
-            //Create an intent to show UI
+            //Create an intent tooshow UI
             var uiIntent = new Intent(this, typeof(MainActivity));
     
-            //Create the notification
+            //Create hello notification
             var notification = new Notification(Android.Resource.Drawable.SymActionEmail, title);
     
-            //Auto-cancel will remove the notification once the user touches it
+            //Auto-cancel will remove hello notification once hello user touches it
             notification.Flags = NotificationFlags.AutoCancel;
     
-            //Set the notification info
-            //we use the pending intent, passing our ui intent over, which will get called
-            //when the notification is tapped.
+            //Set hello notification info
+            //we use hello pending intent, passing our ui intent over, which will get called
+            //when hello notification is tapped.
             notification.SetLatestEventInfo(this, title, desc, PendingIntent.GetActivity(this, 0, uiIntent, 0));
     
-            //Show the notification
+            //Show hello notification
             notificationManager.Notify(1, notification);
             dialogNotify (title, desc);
         }
@@ -316,7 +316,7 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
         {
             Log.Verbose(MyBroadcastReceiver.TAG, "GCM Unregistered: " + registrationId);
     
-            createNotification("GCM Unregistered...", "The device has been unregistered!");
+            createNotification("GCM Unregistered...", "hello device has been unregistered!");
         }
     
         protected override bool OnRecoverableError(Context context, string errorId)
@@ -331,11 +331,11 @@ Google Cloud Messaging-klienten i Xamarin-komponentlagret gör det enklare att g
             Log.Error(MyBroadcastReceiver.TAG, "GCM Error: " + errorId);
         }
 
-## <a name="run-your-app-in-the-emulator"></a>Kör appen i emulatorn
-Se till att använda en virtuell Android-enhet (AVD) som har stöd för Google-API:er om du kör den här appen i emulatorn.
+## <a name="run-your-app-in-hello-emulator"></a>Kör appen i emulatorn hello
+Om du kör den här appen i emulatorn hello, se till att du använder en Android Virtual Device (AVD) som har stöd för Google APIs.
 
 > [!IMPORTANT]
-> Om du vill kunna ta emot push-meddelanden måste du skapa ett Google-konto på din virtuella Android-enhet. (I emulatorn navigerar du till **Inställningar** och klickar på **Lägg till konto**.) Se också till att emulatorn är ansluten till Internet.
+> I ordning tooreceive push-meddelanden, måste du ställa in ett Google-konto på din Android-enhet. (I hello emulatorn navigerar för**inställningar** och på **Lägg till konto**.) Kontrollera också att hello-emulatorn är anslutna toohello Internet.
 > 
 > [!NOTE]
 > Meddelandedesign i Android-versionen 5.0 eller senare skiljer sig avsevärt från tidigare versioner. Mer information om Android-meddelanden finns [här](http://go.microsoft.com/fwlink/?LinkId=615880).
@@ -348,24 +348,24 @@ Se till att använda en virtuell Android-enhet (AVD) som har stöd för Google-A
 2. Välj **Google APIs** (API:er för Google) i **Mål** och klicka på **OK**.
    
       ![][19]
-3. Klicka på **Kör** i det översta verktygsfältet och välj appen. Då startas emulatorn och kör appen.
+3. På hello översta verktygsfältet **kör**, och välj sedan din app. Detta startar hello-emulatorn och kör hello-app.
    
-   Appen hämtar *registrerings-ID:t* från GCM och registreras med meddelandehubben.
+   hello appen hämtar hello *registrationId* från GCM och registreras med hello notification hub.
 
 ## <a name="send-notifications-from-your-backend"></a>Skicka meddelanden från serverdelen
-Du testar att ta emot meddelanden i appen genom att skicka meddelanden i den [Klassisk Azure-portal] via felsökningsfliken i meddelandehubben, så som visas på skärmen nedan.
+Du kan testa att ta emot meddelanden i appen genom att skicka meddelanden i hello [klassiska Azure-portalen] via hello debug fliken på hello meddelandehubb som visas i hello-skärmen nedan.
 
 ![][30]
 
-Push-meddelanden skickas vanligtvis via en serverdelstjänst som Mobile Services eller ASP.NET med hjälp av ett kompatibelt bibliotek. Du kan också använda REST-API:et direkt för att skicka meddelanden om ett bibliotek inte är tillgängligt för din serverdel.
+Push-meddelanden skickas vanligtvis via en serverdelstjänst som Mobile Services eller ASP.NET med hjälp av ett kompatibelt bibliotek. Du kan också använda hello REST API direkt toosend meddelande meddelanden om ett bibliotek inte är tillgänglig för din serverdel.
 
-Här är en lista med andra självstudiekurser du kan gå igenom som handlar om att skicka meddelanden:
+Här följer en lista med andra självstudiekurser som du kan ha tooreview för att skicka meddelanden:
 
-* ASP.NET: Se [Använda Notification Hubs för att skicka push-meddelanden till användare].
-* Azure Notification Hubs Java SDK: Se [Använda Notification Hubs från Java](notification-hubs-java-push-notification-tutorial.md) för att skicka meddelanden från Java. Det här har testats i Eclipse för Android-utveckling.
-* PHP: Se [Använda Notification Hubs från PHP](notification-hubs-php-push-notification-tutorial.md).
+* ASP.NET: Se [använda Notification Hubs toopush meddelanden toousers].
+* Azure Notification Hubs Java SDK: se [hur toouse Notification Hubs från Java](notification-hubs-java-push-notification-tutorial.md) för att skicka meddelanden från Java. Det här har testats i Eclipse för Android-utveckling.
+* PHP: Se [hur toouse Notification Hubs från PHP](notification-hubs-php-push-notification-tutorial.md).
 
-I nästa underavsnitt i självstudiekursen skickar du meddelanden med hjälp av en app för .NET-konsolen och genom att använda en mobiltjänst via ett nod-skript.
+I hello nästa underavsnitt i självstudiekursen hello skickar du meddelanden med hjälp av en .NET-konsolapp och genom att använda en Mobiltjänst via ett nod-skript.
 
 #### <a name="optional-send-notifications-by-using-a-net-app"></a>(Valfritt) Skicka meddelanden med hjälp av en .NET-app
 I det här avsnittet skickar du meddelanden med hjälp av en .NET-konsolapp
@@ -375,43 +375,43 @@ I det här avsnittet skickar du meddelanden med hjälp av en .NET-konsolapp
       ![][20]
 2. I Visual Studio klickar du på **Verktyg**, **NuGet Package Manager** och sedan på **Package Manager-konsolen**.
    
-    Då visas Package Manager-konsolen i Visual Studio.
-3. I fönstret Package Manager-konsol ställer du in **standardprojektet** till det nya projektet för konsolprogrammet. Sedan kör du följande kommando i konsolfönstret:
+    Detta visar hello Package Manager-konsolen i Visual Studio.
+3. Hello fönstret Package Manager-konsolen, ange hello **standardprojektet** tooyour nya konsolen projektet och sedan köra hello följande kommando i konsolfönstret hello:
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-    Då läggs en referens till i Azure Notification Hubs SDK med hjälp av <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs-NuGet-paketet</a>.
+    Detta lägger till en referens toohello Azure Notification Hubs SDK med hjälp av hello <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet-paketet</a>.
    
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
-4. Öppna Program.cs-filen och lägg till följande `using`-instruktion:
+4. Öppna hello Program.cs-filen och Lägg till följande hello `using` instruktionen:
    
         using Microsoft.Azure.NotificationHubs;
-5. Lägg till följande metod i `Program`-klassen. Uppdatera platshållartexten med anslutningssträngen *DefaultFullSharedAccessSignature* och hubbens namn från den [Klassisk Azure-portal].
+5. I din `Program` klassen, lägga till hello följande metod. Uppdatera hello platshållartexten med din *DefaultFullSharedAccessSignature* anslutning sträng och hubbens namn från hello [klassiska Azure-portalen].
    
         private static async void SendNotificationAsync()
         {
             NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
             await hub.SendGcmNativeNotificationAsync("{ \"data\" : {\"message\":\"Hello from Azure!\"}}");
         }
-6. Lägg till följande rader i **Main**-metoden:
+6. Lägg till följande rader i hello din **Main** metoden:
    
          SendNotificationAsync();
          Console.ReadLine();
-7. Kör appen genom att trycka på F5. Du bör få ett meddelande i appen.
+7. Tryck på hello F5 viktiga toorun hello app. Du bör få ett meddelande i hello app.
    
       ![][21]
 
 #### <a name="optional-send-notifications-by-using-a-mobile-service"></a>(Valfritt) Skicka meddelanden med hjälp av en mobiltjänst
 1. Följ [Komma igång med Mobile Services].
-2. Logga in på den [Klassisk Azure-portal] och välj mobiltjänst.
-3. Välj fliken **Schemaläggaren** högst upp.
+2. Logga in toohello [klassiska Azure-portalen], och välj mobiltjänst.
+3. Välj hello **Scheduler** fliken hello längst upp.
    
       ![][22]
 4. Skapa ett nytt schemalagt jobb, infoga ett namn och välj **På begäran**.
    
       ![][23]
-5. Klicka på jobbnamnet när jobbet skapats. Klicka på fliken **Skript** i det översta fältet.
-6. Infoga följande skript i schemaläggarfunktionen. Ersätt platshållarna med namnet på din meddelandehubb och anslutningssträngen för *DefaultFullSharedAccessSignature* som du fick tidigare. Klicka på **Spara**.
+5. Klicka på hello Jobbnamnet när hello jobb skapas. Klicka på hello **skriptet** fliken på hello översta raden.
+6. Infoga följande skript i schemaläggarfunktionen hello. Se till att tooreplace hello-platshållare med notification hub namn och hello anslutningssträngen för *DefaultFullSharedAccessSignature* som du fick tidigare. Klicka på **Spara**.
    
         var azure = require('azure');
         var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string>');
@@ -427,16 +427,16 @@ I det här avsnittet skickar du meddelanden med hjälp av en .NET-konsolapp
             }
           }
         );
-7. Klicka på **Kör en gång** i det nedre fältet. Du bör få ett popup-meddelande.
+7. Klicka på **kör en gång** på hello nedre fältet. Du bör få ett popup-meddelande.
 
 ## <a name="next-steps"></a>Nästa steg
-I det här enkla exemplet skickade du meddelanden till alla dina Android-enheter. Mer information om hur du riktar in dig på specifika användare finns i självstudiekursen [Använda Notification Hubs för att skicka push-meddelanden till användare]. Om du vill dela in användarna efter intressegrupper läser du [Använda Notification Hubs för att skicka de senaste nyheterna]. Mer information om hur du använder Notification Hubs finns i [Riktlinjer för Notification Hubs] och [Notification Hubs-instruktioner för Android].
+I det här enkla exemplet skickade du meddelanden tooall dina Android-enheter. I ordning tootarget specifika användare finns i självstudiekursen toohello [använda Notification Hubs toopush meddelanden toousers]. Om du vill att toosegment användarna efter intressegrupper, kan du läsa [använda Notification Hubs toosend senaste nytt]. Läs mer om hur toouse Meddelandehubbar i [riktlinjer om Notification Hubs] och i hello [Meddelandehubbar hur toofor Android].
 
 <!-- Anchors. -->
 [Enable Google Cloud Messaging]: #register
 [Configure your Notification Hub]: #configure-hub
-[Connecting your app to the Notification Hub]: #connecting-app
-[Run your app with the emulator]: #run-app
+[Connecting your app toohello Notification Hub]: #connecting-app
+[Run your app with hello emulator]: #run-app
 [Send notifications from your back-end]: #send
 [Next steps]:#next-steps
 
@@ -465,13 +465,13 @@ I det här enkla exemplet skickade du meddelanden till alla dina Android-enheter
 [Komma igång med Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 
-[Klassisk Azure-portal]: https://manage.windowsazure.com/
+[klassiska Azure-portalen]: https://manage.windowsazure.com/
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-[Riktlinjer för Notification Hubs]: http://msdn.microsoft.com/library/jj927170.aspx
-[Notification Hubs-instruktioner för Android]: http://msdn.microsoft.com/library/dn282661.aspx
+[riktlinjer om Notification Hubs]: http://msdn.microsoft.com/library/jj927170.aspx
+[Meddelandehubbar hur toofor Android]: http://msdn.microsoft.com/library/dn282661.aspx
 
-[Använda Notification Hubs för att skicka push-meddelanden till användare]: /manage/services/notification-hubs/notify-users-aspnet
-[Använda Notification Hubs för att skicka de senaste nyheterna]: /manage/services/notification-hubs/breaking-news-dotnet
+[använda Notification Hubs toopush meddelanden toousers]: /manage/services/notification-hubs/notify-users-aspnet
+[använda Notification Hubs toosend senaste nytt]: /manage/services/notification-hubs/breaking-news-dotnet
 [GCMClient Component page]: http://components.xamarin.com/view/GCMClient
 [Xamarin.NotificationHub GitHub page]: https://github.com/SaschaDittmann/Xamarin.NotificationHub
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329

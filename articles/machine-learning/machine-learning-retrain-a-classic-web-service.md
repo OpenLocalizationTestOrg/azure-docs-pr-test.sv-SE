@@ -1,6 +1,6 @@
 ---
-title: "Träna om en klassisk webbtjänst | Microsoft Docs"
-description: "Lär dig mer om att träna om en modell och uppdatera webbtjänsten för att använda den nya tränade modellen i Azure Machine Learning programmässigt."
+title: "aaaRetrain en klassisk webbtjänst | Microsoft Docs"
+description: "Lär dig hur tooprogrammatically träna om en modell och uppdatera hello web service toouse hello nyligen trained model i Azure Machine Learning."
 services: machine-learning
 documentationcenter: 
 author: vDonGlover
@@ -14,74 +14,74 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 3f9f4cd5ed36262845f7a3139073ccd4e49f472a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d3ba21ed75f02868535cb2fcac607643303a9554
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="retrain-a-classic-web-service"></a>Omtrimma en klassisk webbtjänst
-Förutsägande webbtjänsten som du har distribuerat är standard bedömningsslutpunkten. Slutpunkter hålls synkroniserade med den ursprungliga utbildningen och bedömningen experiment och därför den tränade modellen för standardslutpunkten kan inte ersättas. För att träna om webbtjänsten måste du lägga till en ny slutpunkt till webbtjänsten. 
+hello förutsägande webbtjänst som du har distribuerat är hello standard bedömningsslutpunkten. Slutpunkter hålls synkroniserade med hello ursprungliga träning och bedömningen experiment, och därför hello tränad modell för hello standardslutpunkten kan inte ersättas. webbtjänst för tooretrain hello, måste du lägga till en ny slutpunkt toohello-webbtjänst. 
 
 ## <a name="prerequisites"></a>Krav
 Du måste ha konfigurerat en träningsexperiment och prediktivt experiment som visas i [träna om Machine Learning-modeller via programmering](machine-learning-retrain-models-programmatically.md). 
 
 > [!IMPORTANT]
-> Prediktivt experiment måste distribueras som klassisk machine learning-webbtjänst. 
+> Hej prediktivt experiment måste distribueras som klassisk machine learning-webbtjänst. 
 > 
 > 
 
 Ytterligare information om distribuera webbtjänster finns [distribuera en Azure Machine Learning-webbtjänst](machine-learning-publish-a-machine-learning-web-service.md).
 
 ## <a name="add-a-new-endpoint"></a>Lägg till en ny slutpunkt
-Den förutsägande webbtjänst som du har distribuerat innehåller en bedömningsslutpunkten som hålls synkroniserade med den ursprungliga utbildningen och bedömningen experiment tränade modellen. Om du vill uppdatera webbtjänsten till med en ny tränad modell, måste du skapa en ny bedömningsprofil slutpunkt. 
+hello förutsägande webbtjänst som du har distribuerat innehåller en bedömningsslutpunkten som hålls synkroniserade med hello ursprungliga utbildning och bedömningsprofil experiment tränad modell. tooupdate din web service toowith en ny tränad modell, måste du skapa en ny bedömningsprofil slutpunkt. 
 
-Skapa en ny bedömningsprofil slutpunkt på den förutsägande webbtjänst som kan uppdateras med den tränade modellen:
+toocreate en ny bedömningsprofil slutpunkt på hello förutsägande webbtjänst som kan uppdateras med hello tränade modellen:
 
 > [!NOTE]
-> Var noga med att du lägger till slutpunkten förutsägande webbtjänsten inte utbildning-webbtjänsten. Om du har distribuerat en utbildnings- och en förutsägbar webbtjänst korrekt, bör du se två separata webbtjänster som anges. Förutsägande webbtjänsten ska avslutas med ”[förutsägande exp.]”.
+> Var noga med att du lägger till hello endpoint toohello förutsägande webbtjänst, inte hello utbildning webbtjänsten. Om du har distribuerat en utbildnings- och en förutsägbar webbtjänst korrekt, bör du se två separata webbtjänster som anges. hello förutsägande webbtjänsten ska avslutas med ”[förutsägande exp.]”.
 > 
 > 
 
-Det finns tre sätt som du kan lägga till en ny slutpunkt till en webbtjänst:
+Det finns tre sätt som du kan lägga till en ny slutpunkt tooa webbtjänst:
 
 1. Programmässigt
-2. Webbtjänster för Microsoft Azure-portalen
-3. Använd den klassiska Azure-portalen
+2. Använd hello webbtjänster för Microsoft Azure-portalen
+3. Använd hello klassiska Azure-portalen
 
 ### <a name="programmatically-add-an-endpoint"></a>Lägga till en slutpunkt
-Du kan lägga till bedömningsprofil slutpunkter som använder exempelkoden i den här [github-lagringsplatsen](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs).
+Du kan lägga till bedömningsprofil slutpunkter som använder hello exempelkoden i detta [github-lagringsplatsen](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs).
 
-### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Använda webbtjänster för Microsoft Azure-portalen för att lägga till en slutpunkt
-1. Klicka på webbtjänster på kolumnen navigeringen till vänster i Machine Learning Studio.
-2. Längst ned i web service instrumentpanelen klickar du på **hantera slutpunkter preview**.
+### <a name="use-hello-microsoft-azure-web-services-portal-tooadd-an-endpoint"></a>Använd hello webbtjänster för Microsoft Azure portal tooadd en slutpunkt
+1. Klicka på webbtjänster på hello navigeringen till vänster kolumn i Machine Learning Studio.
+2. Hello längst ned på hello web service instrumentpanelen, klickar du på **hantera slutpunkter preview**.
 3. Klicka på **Lägg till**.
-4. Skriv ett namn och beskrivning för den nya slutpunkten. Välj loggningsnivån och om exempeldata är aktiverad. Mer information om loggning finns [aktivera loggning för Machine Learning-webbtjänster](machine-learning-web-services-logging.md).
+4. Skriv ett namn och beskrivning för hello ny slutpunkt. Välj hello loggningsnivån och om exempeldata är aktiverad. Mer information om loggning finns [aktivera loggning för Machine Learning-webbtjänster](machine-learning-web-services-logging.md).
 
-### <a name="use-the-azure-classic-portal-to-add-an-endpoint"></a>Använd den klassiska Azure-portalen för att lägga till en slutpunkt
-1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com).
-2. I den vänstra menyn klickar du på **Maskininlärning**.
+### <a name="use-hello-azure-classic-portal-tooadd-an-endpoint"></a>Använd hello Azure klassiska portal tooadd en slutpunkt
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com).
+2. Hello vänstra menyn klickar du på **Maskininlärning**.
 3. Klicka på arbetsytan under namn och klicka sedan på **Web Services**.
 4. Under namn, klickar du på **inventering modellen [förutsägande exp].** .
-5. Längst ned på sidan klickar du på **Lägg till slutpunkt**. Mer information om att lägga till slutpunkter finns [skapar slutpunkter](machine-learning-create-endpoint.md). 
+5. Hello längst hello-sidan, klickar du på **Lägg till slutpunkt**. Mer information om att lägga till slutpunkter finns [skapar slutpunkter](machine-learning-create-endpoint.md). 
 
-## <a name="update-the-added-endpoints-trained-model"></a>Uppdatera tillagda slutpunkten Trained Model
-Om du vill slutföra omtränings, måste du uppdatera den tränade modellen för den nya slutpunkt som du har lagt till.
+## <a name="update-hello-added-endpoints-trained-model"></a>Uppdatera hello läggs slutpunktens Trained Model
+toocomplete hello omtränings-processen, måste du uppdatera hello tränad modell för hello ny slutpunkt som du har lagt till.
 
-* Om du har lagt till nya slutpunkten med den klassiska Azure-portalen, du kan klicka på namnet på den nya slutpunkten i portalen kommer **UpdateResource** länken för att hämta Webbadress måste du uppdatera slutpunkten modellen.
-* Om du har lagt till slutpunkten med exempelkoden inkluderar plats för hjälp-URL som identifieras av den *HelpLocationURL* värdet i utdata.
+* Om du har lagt till hello ny slutpunkt med hello klassiska Azure-portalen kan du klicka på hello ny slutpunkt i hello-portalen och sedan hello **UpdateResource** länka tooget hello URL måste tooupdate hello endpoint modellen.
+* Om du har lagt till hello slutpunkten med hjälp av hello exempelkod inkluderar platsen för hello Hjälpsidans URL som identifieras av hello *HelpLocationURL* värdet i hello utdata.
 
-Att hämta sökvägen-URL:
+URL till tooretrieve hello-sökväg:
 
-1. Kopiera och klistra in Webbadressen i webbläsaren.
-2. Klicka på länken Update resurs.
-3. Kopiera URL-Adressen för POST till PATCH-begäran. Exempel:
+1. Kopiera och klistra in hello URL i webbläsaren.
+2. Klicka på länken för hello Update resurs.
+3. Kopiera hello POST URL för hello PATCH-begäran. Exempel:
    
      KORRIGERING AV URL: HTTPS://MANAGEMENT.AZUREML.NET/WORKSPACES/00BF70534500B34REBFA1843D6/WEBSERVICES/AF3ER32AD393852F9B30AC9A35B/ENDPOINTS/NEWENDPOINT2
 
-Du kan nu använda den tränade modellen för att uppdatera bedömningsprofil slutpunkten som du skapade tidigare.
+Du kan nu använda hello tränade modellen tooupdate hello bedömningsslutpunkten som du skapade tidigare.
 
-Följande exempelkod visar hur du använder den *BaseLocation*, *RelativeLocation*, *SasBlobToken*, och KORRIGERA URL för att uppdatera slutpunkten.
+hello följande exempelkod visar hur toouse hello *BaseLocation*, *RelativeLocation*, *SasBlobToken*, och KORRIGERA URL tooupdate hello slutpunkt.
 
     private async Task OverwriteModel()
     {
@@ -95,8 +95,8 @@ Följande exempelkod visar hur du använder den *BaseLocation*, *RelativeLocatio
                     Location = new AzureBlobDataReference()
                     {
                         BaseLocation = "https://esintussouthsus.blob.core.windows.net/",
-                        RelativeLocation = "your endpoint relative location", //from the output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
-                        SasBlobToken = "your endpoint SAS blob token" //from the output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
+                        RelativeLocation = "your endpoint relative location", //from hello output, for example: “experimentoutput/8946abfd-79d6-4438-89a9-3e5d109183/8946abfd-79d6-4438-89a9-3e5d109183.ilearner”
+                        SasBlobToken = "your endpoint SAS blob token" //from hello output, for example: “?sv=2013-08-15&sr=c&sig=37lTTfngRwxCcf94%3D&st=2015-01-30T22%3A53%3A06Z&se=2015-01-31T22%3A58%3A06Z&sp=rl”
                     }
                 }
             }
@@ -121,28 +121,28 @@ Följande exempelkod visar hur du använder den *BaseLocation*, *RelativeLocatio
         }
     }
 
-Den *apiKey* och *endpointUrl* för anropet kan hämtas från slutpunkten instrumentpanelen.
+Hej *apiKey* och hello *endpointUrl* för hello-anropet kan hämtas från slutpunkten instrumentpanelen.
 
-Värdet för den *namn* parameter i *resurser* ska matcha namnet på den sparade tränade modellen i prediktivt experiment resurs. Hämta resursnamnet:
+Hej värdet för hello *namn* parameter i *resurser* bör matcha hello resursnamn av hello sparas Trained Model i hello prediktivt experiment. tooget hello resursnamn:
 
-1. Logga in på den [klassiska Azure-portalen](https://manage.windowsazure.com).
-2. I den vänstra menyn klickar du på **Maskininlärning**.
+1. Logga in toohello [klassiska Azure-portalen](https://manage.windowsazure.com).
+2. Hello vänstra menyn klickar du på **Maskininlärning**.
 3. Klicka på arbetsytan under namn och klicka sedan på **Web Services**.
 4. Under namn, klickar du på **inventering modellen [förutsägande exp].** .
-5. Klicka på ny slutpunkt som du har lagt till.
-6. Klicka på infopanelen endpoint **uppdatering resurs**.
-7. På sidan uppdatera resurs API-dokumentationen för webbtjänsten hittar du den **resursnamnet** under **uppdateras resurser**.
+5. Klicka på ny hello slutpunkt som du har lagt till.
+6. Hello endpoint instrumentpanelen, klicka på **uppdatering resurs**.
+7. Hello Update resurs API-dokumentationen sidan för hello webbtjänsten hittar hello **resursnamnet** under **uppdateras resurser**.
 
-Om din SAS-token upphör att gälla innan du har uppdaterat slutpunkten, måste du utföra GET med jobb-Id för att få en ny token.
+Om din SAS-token upphör att gälla innan du har uppdaterat hello slutpunkt, måste du utföra GET med hello jobb-Id tooobtain en ny token.
 
-När koden har körts, ska ny slutpunkt börja använda retrained modellen cirka 30 sekunder.
+När hello koden har körts ska hello ny slutpunkt börja använda hello retrained modellen i cirka 30 sekunder.
 
 ## <a name="summary"></a>Sammanfattning
-Du kan använda Omtränings-API för att uppdatera den tränade modellen av en förutsägbar webbtjänsten för att aktivera scenarier som:
+Med hjälp av Hej Omtränings-API: er, kan du uppdatera hello tränad modell för en förutsägbar webbtjänst som aktiverar scenarier:
 
 * Periodiska modell via programmering med nya data.
-* Distribution av en modell för kunder med målet att låta dem träna om modellen med sina egna data.
+* Distribution av en modell toocustomers med hello målet för att låta dem träna om hello modellen med sina egna data.
 
 ## <a name="next-steps"></a>Nästa steg
-[Felsökning av omtränings av en klassisk Azure Machine Learning-webbtjänst](machine-learning-troubleshooting-retraining-models.md)
+[Felsöka hello omtränings av en klassisk Azure Machine Learning-webbtjänst](machine-learning-troubleshooting-retraining-models.md)
 

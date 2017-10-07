@@ -1,6 +1,6 @@
 ---
-title: "Implementera en lösning för fördelade Azure SQL Database | Microsoft Docs"
-description: "Lär dig att konfigurera din Azure SQL Database och program för växling vid fel till en replikerad databas och testa redundans."
+title: "aaaImplement en fördelade Azure SQL Database-lösning | Microsoft Docs"
+description: "Lär dig tooconfigure din Azure SQL Database och program för växling vid fel tooa replikerade databasen och testa redundans."
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -16,21 +16,21 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/26/2017
 ms.author: carlrab
-ms.openlocfilehash: 9f53f318e20dac9248906bdbe898ba4dacb286ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9295d33c669405108a1a64ef1e7cb77f582773a1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="implement-a-geo-distributed-database"></a>Implementera en geodistribuerad databas
 
-I den här självstudiekursen, konfigurera en Azure SQL database och program för växling vid fel till en fjärransluten region och testa din plan för växling vid fel. Lär dig att: 
+I den här självstudiekursen, konfigurera en Azure SQL database och program för växling vid fel tooa remote region och testa din plan för växling vid fel. Lär dig att: 
 
 > [!div class="checklist"]
 > * Skapa databasanvändare och ge dem behörigheter
 > * Konfigurera en brandväggsregel på databasnivå
 > * Skapa en [redundansväxlingsgrupp geo-replikering](sql-database-geo-replication-overview.md)
-> * Skapa och kompilera ett Java-program att fråga en Azure SQL database
+> * Skapa och kompilera tooquery en Java-program en Azure SQL database
 > * Utför en katastrofåterställning återställningsgranskning
 
 Om du inte har en Azure-prenumeration [skapa ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
@@ -38,47 +38,47 @@ Om du inte har en Azure-prenumeration [skapa ett kostnadsfritt konto](https://az
 
 ## <a name="prerequisites"></a>Krav
 
-Följande krav måste uppfyllas för att kunna köra den här självstudiekursen:
+den här självstudiekursen, se till att hello följande krav är slutförda toocomplete:
 
-- Senast installerad [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs). 
-- Installera en Azure SQL database. Den här självstudiekursen används exempeldatabasen AdventureWorksLT med namnet **mySampleDatabase** från någon av dessa snabbstarter:
+- Senaste installerade hello [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs). 
+- Installera en Azure SQL database. Den här självstudiekursen används exempeldatabasen för hello AdventureWorksLT med namnet **mySampleDatabase** från någon av dessa snabbstarter:
 
    - [Skapa DB – Portal](sql-database-get-started-portal.md)
    - [Skapa DB – CLI](sql-database-get-started-cli.md)
    - [Skapa DB – PowerShell](sql-database-get-started-powershell.md)
 
-- Har identifierat en metod för att köra SQL-skript mot databasen, du kan använda något av följande verktyg i frågan:
-   - Frågeredigeraren i den [Azure-portalen](https://portal.azure.com). Mer information om hur du använder frågeredigeraren i Azure portal finns [Anslut och fråga med frågeredigeraren](sql-database-get-started-portal.md#query-the-sql-database).
-   - Den senaste versionen av [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), vilket är en integrerad miljö för att hantera alla SQL-infrastruktur från SQL Server till SQL-databas för Microsoft Windows.
-   - Den senaste versionen av [Visual Studio Code](https://code.visualstudio.com/docs), vilket är en grafiska redigerare för macOS, Linux och Windows som stöder tillägg, inklusive den [mssql tillägget](https://aka.ms/mssql-marketplace) för frågor till Microsoft SQL Server Azure SQL Database och SQL Data Warehouse. Mer information om hur du använder det här verktyget med Azure SQL Database finns [ansluter och frågar med VS kod](sql-database-connect-query-vscode.md). 
+- Har identifierat en metod tooexecute SQL-skript mot databasen du använder hello följande fråga verktyg:
+   - Hej frågeredigeraren i hello [Azure-portalen](https://portal.azure.com). Mer information om hur du använder hello frågeredigeraren i hello Azure-portalen finns [Anslut och fråga med frågeredigeraren](sql-database-get-started-portal.md#query-the-sql-database).
+   - hello senaste versionen av [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), vilket är en integrerad miljö för att hantera alla SQL-infrastruktur från SQL Server-tooSQL för Microsoft Windows-databas.
+   - hello senaste versionen av [Visual Studio Code](https://code.visualstudio.com/docs), vilket är en grafiska redigerare för macOS, Linux och Windows som stöder tillägg, inklusive hello [mssql tillägget](https://aka.ms/mssql-marketplace) för frågor till Microsoft SQL Server , Azure SQL Database och SQL Data Warehouse. Mer information om hur du använder det här verktyget med Azure SQL Database finns [ansluter och frågar med VS kod](sql-database-connect-query-vscode.md). 
 
 ## <a name="create-database-users-and-grant-permissions"></a>Skapa databasanvändare och bevilja behörigheter
 
-Ansluta till din databas och skapa användarkonton med något av följande verktyg i frågan:
+Anslut tooyour databas och skapa användarkonton med något av följande fråga verktyg hello:
 
-- Frågeredigeraren i Azure-portalen
+- Hej frågeredigeraren i hello Azure-portalen
 - SQL Server Management Studio
 - Visual Studio-koden
 
-Dessa användarkonton replikeras automatiskt till den sekundära servern (och hållas synkroniserade). Om du vill använda SQL Server Management Studio eller Visual Studio Code, kan du behöva konfigurera en brandväggsregel om du ansluter från en klient på en IP-adress som du ännu inte har konfigurerat en brandvägg. Detaljerade anvisningar finns i [skapa en brandväggsregel på servernivå](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
+Dessa användarkonton replikera automatiskt tooyour sekundär server (och hållas synkroniserade). toouse SQL Server Management Studio eller Visual Studio Code kan du behöva tooconfigure en brandväggsregel om du ansluter från en klient på en IP-adress som du ännu inte har konfigurerat en brandvägg. Detaljerade anvisningar finns i [skapa en brandväggsregel på servernivå](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
 
-- I frågefönstret och kör följande fråga för att skapa två användarkonton i din databas. Skriptet ger **db_owner** behörigheter till den **app_admin** konto och ger **Välj** och **uppdatering** behörigheter till **app_user** konto. 
+- I frågefönstret och kör hello följande fråga toocreate två användarkonton i din databas. Det här skriptet ger **db_owner** behörigheter toohello **app_admin** konto och ger **Välj** och **uppdatering** behörigheter toohello **app_user** konto. 
 
    ```sql
    CREATE USER app_admin WITH PASSWORD = 'ChangeYourPassword1';
-   --Add SQL user to db_owner role
+   --Add SQL user toodb_owner role
    ALTER ROLE db_owner ADD MEMBER app_admin; 
    --Create additional SQL user
    CREATE USER app_user WITH PASSWORD = 'ChangeYourPassword1';
-   --grant permission to SalesLT schema
-   GRANT SELECT, INSERT, DELETE, UPDATE ON SalesLT.Product TO app_user;
+   --grant permission tooSalesLT schema
+   GRANT SELECT, INSERT, DELETE, UPDATE ON SalesLT.Product tooapp_user;
    ```
 
 ## <a name="create-database-level-firewall"></a>Skapa databasnivå brandväggen
 
-Skapa en [databasnivå brandväggsregel](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) för SQL-databas. Den här databasnivå brandväggsregeln replikerar automatiskt till den sekundära servern som du skapar i den här kursen. Använd den offentliga IP-adressen på den dator där du utför stegen i den här självstudiekursen för enkelhet (i den här självstudiekursen). Information om IP-adress som används för servernivå brandväggsregeln för den aktuella datorn finns [skapar en brandvägg på servernivå](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
+Skapa en [databasnivå brandväggsregel](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) för SQL-databas. Den här databasnivå brandväggsregeln replikerar automatiskt toohello sekundär server som du skapar i den här kursen. För enkelhetens skull (i den här självstudiekursen) stegen Använd hello offentliga IP-adressen hello datorn där du utför hello i den här kursen. toodetermine hello IP-adress som används för hello servernivå brandväggsregel för den aktuella datorn, se [skapar en brandvägg på servernivå](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
 
-- Ersätt den föregående frågan i din öppna frågefönstret med följande fråga ersätta IP-adresser med lämplig IP-adresser för din miljö.  
+- Ersätt hello föregående fråga i din öppna frågefönstret med hello följande fråga, ersätta hello IP-adresser med hello lämplig IP-adresser för din miljö.  
 
    ```sql
    -- Create database-level firewall setting for your public IP address
@@ -87,13 +87,13 @@ Skapa en [databasnivå brandväggsregel](https://docs.microsoft.com/sql/relation
 
 ## <a name="create-an-active-geo-replication-auto-failover-group"></a>Skapa en aktiv geo-replikering automatiskt failover-grupp 
 
-Med hjälp av Azure PowerShell, skapa en [aktiv geo-replikering automatisk redundansväxlingsgrupp](sql-database-geo-replication-overview.md) mellan den befintliga Azure SQL-servern och den nya tomma Azure SQL-server i en Azure-region och sedan lägga till din exempeldatabas gruppen växling vid fel.
+Med hjälp av Azure PowerShell, skapa en [aktiv geo-replikering automatisk redundansväxlingsgrupp](sql-database-geo-replication-overview.md) mellan din befintliga Azure SQL server och hello ny tom Azure SQL-server i en Azure-region och Lägg sedan till exempel databasen toohello redundans gruppen.
 
 > [!IMPORTANT]
 > Dessa cmdletar kräver Azure PowerShell 4.0. [!INCLUDE [sample-powershell-install](../../includes/sample-powershell-install-no-ssh.md)]
 >
 
-1. Fylla i variabler för din PowerShell-skript med hjälp av värdena för din befintliga server och exempeldatabasen, och ange ett globalt unikt värde för redundans gruppnamn.
+1. Fylla i variabler för din PowerShell-skript med hello värden för din befintliga server och exempeldatabasen, och ange ett globalt unikt värde för redundans gruppnamn.
 
    ```powershell
    $adminlogin = "ServerAdmin"
@@ -117,7 +117,7 @@ Med hjälp av Azure PowerShell, skapa en [aktiv geo-replikering automatisk redun
    $mydrserver   
    ```
 
-3. Skapa en grupp för växling vid fel mellan de två servrarna.
+3. Skapa en grupp för växling vid fel mellan hello två servrar.
 
    ```powershell
    $myfailovergroup = New-AzureRMSqlDatabaseFailoverGroup `
@@ -130,7 +130,7 @@ Med hjälp av Azure PowerShell, skapa en [aktiv geo-replikering automatisk redun
    $myfailovergroup   
    ```
 
-4. Lägg till din databas i gruppen växling vid fel.
+4. Lägg till din databas toohello failover-grupp.
 
    ```powershell
    $myfailovergroup = Get-AzureRmSqlDatabase `
@@ -146,10 +146,10 @@ Med hjälp av Azure PowerShell, skapa en [aktiv geo-replikering automatisk redun
 
 ## <a name="install-java-software"></a>Installera Java-program
 
-Stegen i det här avsnittet förutsätter att du är bekant med att utveckla med Java och att du är nybörjare när det gäller att arbeta med Azure SQL Database. 
+hello stegen i det här avsnittet förutsätter att du är bekant med att utveckla med Java och nya tooworking med Azure SQL Database. 
 
 ### <a name="mac-os"></a>**Mac OS**
-Öppna terminalen och navigera till den katalog där du vill skapa Java-projektet. Installera **brew** och **Maven** genom att ange följande kommandon: 
+Öppna terminalen och navigera tooa katalog där du planerar att skapa Java-projekt. Installera **brew** och **Maven** genom att ange hello följande kommandon: 
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -157,23 +157,23 @@ brew update
 brew install maven
 ```
 
-Detaljerad information om installation och konfiguration av Java- och Maven-miljö finns i [skapa en app med SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)väljer **Java**väljer **MacOS**, och följ sedan de detaljerade anvisningar för att konfigurera Java och Maven i steg 1.2 och 1.3.
+Detaljerad information om installation och konfiguration Java och Maven miljö gå hello [skapa en app med SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)väljer **Java**väljer **MacOS**, och följ sedan hello detaljerade instruktioner för att konfigurera Java och Maven i steg 1.2 och 1.3.
 
 ### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
-Öppna terminalen och navigera till den katalog där du vill skapa Java-projektet. Installera **Maven** genom att ange följande kommandon:
+Öppna terminalen och navigera tooa katalog där du planerar att skapa Java-projekt. Installera **Maven** genom att ange hello följande kommandon:
 
 ```bash
 sudo apt-get install maven
 ```
 
-Detaljerad information om installation och konfiguration av Java- och Maven-miljö finns i [skapa en app med SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)väljer **Java**väljer **Ubuntu**, och följ sedan detaljerade anvisningar för att konfigurera Java och Maven i steg 1.2, 1.3 och 1.4.
+Detaljerad information om installation och konfiguration Java och Maven miljö gå hello [skapa en app med SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)väljer **Java**väljer **Ubuntu**, och följ sedan hello detaljerade instruktioner för att konfigurera Java och Maven i steg 1.2, 1.3 och 1.4.
 
 ### <a name="windows"></a>**Windows**
-Installera [Maven](https://maven.apache.org/download.cgi) med det officiella installationsprogrammet. Använd Maven för att hantera beroenden, skapa, testa och köra Java-projekt. Detaljerad information om installation och konfiguration av Java- och Maven-miljö finns i [skapa en app med SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)väljer **Java**Windows och välj sedan instruktionerna detaljerat för Konfigurera Java och Maven i steg 1.2 och 1.3.
+Installera [Maven](https://maven.apache.org/download.cgi) med hello officiella installer. Använd Maven toohelp hantera beroenden, skapa, testa och köra Java-projekt. Detaljerad information om installation och konfiguration Java och Maven miljö gå hello [skapa en app med SQL Server](https://www.microsoft.com/sql-server/developer-get-started/)väljer **Java**Windows och välj sedan följa hello detaljerade instruktioner för Konfigurera Java och Maven i steg 1.2 och 1.3.
 
 ## <a name="create-sqldbsample-project"></a>Skapa SqlDbSample-projekt
 
-1. Skapa ett Maven-projekt i kommandokonsolen (till exempel Bash). 
+1. Skapa ett Maven-projekt i hello kommandokonsolen (till exempel Bash). 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
@@ -184,9 +184,9 @@ Installera [Maven](https://maven.apache.org/download.cgi) med det officiella ins
    cd SqlDbSamples
    ```
 
-4. Använd din favorit redigeraren, öppna filen pom.xml i projektmappen. 
+4. Använd din favorit redigeraren, öppna hello pom.xml filen i projektmappen. 
 
-5. Lägg till Microsoft JDBC-drivrutinen för SQL Server-beroendet till Maven-projekt genom att öppna valfri textredigerare och kopiera och klistra in följande rader i filen pom.xml. Skriv inte över de befintliga värden registreringsformuläret i filen. JDBC-beroendet måste klistras in i större ”beroenden” avsnittet (-).   
+5. Lägg till hello Microsoft JDBC-drivrutinen för SQL Server beroende tooyour Maven-projekt genom att öppna valfri textredigerare och kopiera och klistra in hello följande rader i filen pom.xml. Skriv inte över hello befintliga värden som är förinställd i hello-filen. hello JDBC beroende måste klistras in i hello större ”beroenden” avsnittet (”).   
 
    ```xml
    <dependency>
@@ -196,7 +196,7 @@ Installera [Maven](https://maven.apache.org/download.cgi) med det officiella ins
    </dependency>
    ```
 
-6. Ange version för Java att kompilera projektet mot genom att lägga till egenskapsavsnittet ”” i filen pom.xml efter avsnittet ”beroenden”. 
+6. Ange hello version av Java toocompile hello projektet mot genom att lägga till hello efter ”” egenskapsavsnittet i hello pom.xml fil efter hello ”beroenden” avsnitt. 
 
    ```xml
    <properties>
@@ -204,7 +204,7 @@ Installera [Maven](https://maven.apache.org/download.cgi) med det officiella ins
      <maven.compiler.target>1.8</maven.compiler.target>
    </properties>
    ```
-7. Lägg till avsnittet ”Skapa” i filen pom.xml efter avsnittet ”Egenskaper” för att stödja manifestfiler i burkar.       
+7. Lägg till följande hello ”Skapa” avsnittet i hello pom.xml filen efter hello ”egenskaper” avsnittet toosupport manifestfiler i burkar.       
 
    ```xml
    <build>
@@ -224,8 +224,8 @@ Installera [Maven](https://maven.apache.org/download.cgi) med det officiella ins
      </plugins>
    </build>
    ```
-8. Spara och stäng filen pom.xml.
-9. Öppna filen App.java (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java) och Ersätt det med följande innehåll. Ersätt namnet på failover med namnet för failover-grupp. Om du har ändrat värdena för databasens namn, ändra användarnamn eller lösenord, dessa värden samt.
+8. Spara och Stäng hello pom.xml fil.
+9. Öppna hello App.java filen (C:\apache-maven-3.5.0\SqlDbSample\src\main\java\com\sqldbsamples\App.java) och Ersätt hello innehållet med hello efter innehållet. Ersätt hello gruppnamn för växling vid fel med hello namn på gruppen för växling vid fel. Om du har ändrat hello värden för hello databasnamn, ändra användarnamn eller lösenord, dessa värden samt.
 
    ```java
    package com.sqldbsamples;
@@ -272,7 +272,7 @@ Installera [Maven](https://maven.apache.org/download.cgi) med det officiella ins
    }
 
    private static boolean insertData(int id) {
-      // Insert data into the product table with a unique product name that we can use to find the product again later
+      // Insert data into hello product table with a unique product name that we can use toofind hello product again later
       String sql = "INSERT INTO SalesLT.Product (Name, ProductNumber, Color, StandardCost, ListPrice, SellStartDate) VALUES (?,?,?,?,?,?);";
 
       try (Connection connection = DriverManager.getConnection(READ_WRITE_URL); 
@@ -290,7 +290,7 @@ Installera [Maven](https://maven.apache.org/download.cgi) med det officiella ins
    }
 
    private static boolean selectData(int id) {
-      // Query the data that was previously inserted into the primary database from the geo replicated database
+      // Query hello data that was previously inserted into hello primary database from hello geo replicated database
       String sql = "SELECT Name, Color, ListPrice FROM SalesLT.Product WHERE Name = ?";
 
       try (Connection connection = DriverManager.getConnection(READ_ONLY_URL); 
@@ -305,7 +305,7 @@ Installera [Maven](https://maven.apache.org/download.cgi) med det officiella ins
    }
 
    private static int getHighWaterMarkId() {
-      // Query the high water mark id that is stored in the table to be able to make unique inserts 
+      // Query hello high water mark id that is stored in hello table toobe able toomake unique inserts 
       String sql = "SELECT MAX(ProductId) FROM SalesLT.Product";
       int result = 1;
         
@@ -322,16 +322,16 @@ Installera [Maven](https://maven.apache.org/download.cgi) med det officiella ins
       }
    }
    ```
-6. Spara och stäng filen App.java.
+6. Spara och Stäng hello App.java fil.
 
-## <a name="compile-and-run-the-sqldbsample-project"></a>Kompilera och köra projektet SqlDbSample
+## <a name="compile-and-run-hello-sqldbsample-project"></a>Kompilera och köra hello SqlDbSample projekt
 
-1. Kör följande kommando i Kommandotolken.
+1. Köra toofollowing kommandot i hello Kommandotolken.
 
    ```bash
    mvn package
    ```
-2. När du är klar kör du följande kommando för att köra programmet (det körs ungefär en timme om du stoppar den manuellt):
+2. När du är klar kör du hello efter kommandot toorun hello programmet (det körs ungefär en timme om du stoppar den manuellt):
 
    ```bash
    mvn -q -e exec:java "-Dexec.mainClass=com.sqldbsamples.App"
@@ -356,7 +356,7 @@ Installera [Maven](https://maven.apache.org/download.cgi) med det officiella ins
    -FailoverGroupName $myfailovergroupname
    ```
 
-2. Se resultaten program under växling vid fel. Vissa infogningar misslyckas medan DNS cachelagra uppdateras.     
+2. Observera hello programmet resultat under växling vid fel. Vissa infogningar misslyckas medan hello DNS-cachen uppdateras.     
 
 3. Ta reda på vilken roll till disaster recovery-serverns prestanda.
 
@@ -373,7 +373,7 @@ Installera [Maven](https://maven.apache.org/download.cgi) med det officiella ins
    -FailoverGroupName $myfailovergroupname
    ```
 
-5. Se resultaten program under återställning efter fel. Vissa infogningar misslyckas medan DNS cachelagra uppdateras.     
+5. Observera hello programmet resultat vid återställning. Vissa infogningar misslyckas medan hello DNS-cachen uppdateras.     
 
 6. Ta reda på vilken roll till disaster recovery-serverns prestanda.
 

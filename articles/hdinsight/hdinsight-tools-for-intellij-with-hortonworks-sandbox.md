@@ -1,6 +1,6 @@
 ---
-title: "Använd Azure Toolkit för IntelliJ med Hortonworks Sandbox | Microsoft Docs"
-description: "Lär dig hur du använder HDInsight-verktyg i Azure Toolkit för IntelliJ med Hortonworks Sandbox."
+title: "aaaUse Azure Toolkit för IntelliJ med Hortonworks Sandbox | Microsoft Docs"
+description: "Lär dig hur toouse HDInsight Tools i Azure Toolkit för IntelliJ med Hortonworks Sandbox."
 keywords: "hadoop-verktygen hive-fråga, intellij, hortonworks sandbox, azure toolkit för intellij"
 services: HDInsight
 documentationcenter: 
@@ -17,81 +17,81 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: jgao
-ms.openlocfilehash: c49f185db5a035f70a711bf309b973182d94a2b0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 2bf97068a9cec99fcc7b4ff9469b91d8cbe2a8d8
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Använda HDInsight Tools för IntelliJ med Hortonworks Sandbox
 
-Lär dig hur du använder HDInsight-verktyg för IntelliJ att utveckla program för Apache Scala och testa programmen på [Hortonworks Sandbox](http://hortonworks.com/products/sandbox/) körs på din arbetsstation. 
+Lär dig hur toouse HDInsight-verktyg för IntelliJ toodevelop Apache Scala program och testa hello program på [Hortonworks Sandbox](http://hortonworks.com/products/sandbox/) körs på din arbetsstation. 
 
-[IntelliJ IDEA](https://www.jetbrains.com/idea/) är en Java-integrerad utvecklingsmiljö (IDE) för att utveckla programvara. När du har utvecklats och testa dina program på Hortonworks Sandbox, kan du flytta dem till [Azure HDInsight](hdinsight-hadoop-introduction.md).
+[IntelliJ IDEA](https://www.jetbrains.com/idea/) är en Java-integrerad utvecklingsmiljö (IDE) för att utveckla programvara. När du har utvecklats och testa dina program på Hortonworks Sandbox kan du flytta dem för[Azure HDInsight](hdinsight-hadoop-introduction.md).
 
 ## <a name="prerequisites"></a>Krav
 
 Innan du börjar den här vägledningen måste du ha:
 
-- Hortonworks Data Platform (HDP) 2.4 på Hortonworks Sandbox körs på din lokala miljö. Om du vill konfigurera HDP finns [komma igång med Hadoop-ekosystemet med en Hadoop sandbox på en virtuell dator](hdinsight-hadoop-emulator-get-started.md). 
+- Hortonworks Data Platform (HDP) 2.4 på Hortonworks Sandbox körs på din lokala miljö. tooconfigure HDP, se [komma igång i hello Hadoop-ekosystemet med en Hadoop sandbox på en virtuell dator](hdinsight-hadoop-emulator-get-started.md). 
     >[!NOTE]
-    >HDInsight-verktyg för IntelliJ har testats med HDP 2.4. För att få HDP 2.4, expandera **Hortonworks Sandbox Arkiv** på den [Hortonworks Sandbox hämtar plats](http://hortonworks.com/downloads/#sandbox).
+    >HDInsight-verktyg för IntelliJ har testats med HDP 2.4. Expandera tooget HDP 2.4 **Hortonworks Sandbox Arkiv** på hello [Hortonworks Sandbox hämtar plats](http://hortonworks.com/downloads/#sandbox).
 
-- [Java Developer Kit (JDK) version 1,8 eller senare](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). JDK krävs av Azure-verktyget för IntelliJ.
+- [Java Developer Kit (JDK) version 1,8 eller senare](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). JDK krävs av hello Azure Toolkit för IntelliJ.
 
-- [IntelliJ IDEA community edition](https://www.jetbrains.com/idea/download) med den [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) plugin-program och [Azure Toolkit för IntelliJ](../azure-toolkit-for-intellij.md) plugin-programmet. HDInsight-verktyg för IntelliJ är tillgänglig som en del av Azure-verktygen för IntelliJ. 
+- [IntelliJ IDEA community edition](https://www.jetbrains.com/idea/download) med hello [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) plugin-program och hello [Azure Toolkit för IntelliJ](../azure-toolkit-for-intellij.md) plugin-programmet. HDInsight-verktyg för IntelliJ är tillgänglig som en del av hello Azure Toolkit för IntelliJ. 
 
-  Om du vill installera plugin-program gör du följande:
+  tooinstall hello plugin-program, hello följande:
 
   1. Öppna IntelliJ IDEA.
-  2. På den **Välkommen** väljer **konfigurera**, och välj sedan **plugin-program**.
-  3. Välj **installera JetBrains plugin** i det nedre vänstra hörnet.
-  4. Använda sökfunktionen för att söka efter **Scala**, och välj sedan **installera**.
-  5. Välj **starta om IntelliJ IDEA** att slutföra installationen.
-  6. Upprepa steg 4 och 5 för att installera den **Azure Toolkit för IntelliJ**. Mer information finns i [installerar Azure Toolkit för IntelliJ](../azure-toolkit-for-intellij-installation.md).
+  2. På hello **Välkommen** väljer **konfigurera**, och välj sedan **plugin-program**.
+  3. Välj **installera JetBrains plugin** i hello nedre vänstra hörnet.
+  4. Använd hello Sök funktionen toosearch för **Scala**, och välj sedan **installera**.
+  5. Välj **starta om IntelliJ IDEA** toocomplete hello installation.
+  6. Upprepa steg 4 och 5 tooinstall hello **Azure Toolkit för IntelliJ**. Mer information finns i [installera hello Azure Toolkit för IntelliJ](../azure-toolkit-for-intellij-installation.md).
 
 ## <a name="create-a-spark-scala-application"></a>Skapa ett Spark Scala-program
 
-I det här avsnittet Skapa en Scala exempelprojektet med IntelliJ IDEA. I nästa avsnitt länka du IntelliJ IDEA till Hortonworks Sandbox (emulator) innan du skickar projektet.
+I det här avsnittet Skapa en Scala exempelprojektet med IntelliJ IDEA. I nästa avsnitt om hello länka IntelliJ IDEA toohello Hortonworks Sandbox (emulator) innan du skickar hello-projekt.
 
-1. Öppna IntelliJ IDEA från din arbetsstation. I den **nytt projekt** dialogrutan Gör följande:
+1. Öppna IntelliJ IDEA från din arbetsstation. I hello **nytt projekt** dialogrutan rutan, hello följande:
 
    a. Välj **HDInsight** > **Spark i HDInsight (Scala)**.
 
-   b. I den **Build verktyget** väljer du något av följande enligt dina behov:
+   b. I hello **Build verktyget** väljer du antingen hello följande, enligt tooyour behov:
 
     * **Maven**, Scala skapa projekt guiden support
-    * **Segregerade Barlasttankar**, för att hantera beroenden och skapa för Scala-projekt
+    * **Segregerade Barlasttankar**, för att hantera hello beroenden och bygga för hello Scala-projekt
 
-   ![Dialogrutan Nytt projekt](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
+   ![dialogrutan Nytt projekt för hello](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. Välj **nästa**.
 
-3. I nästa **nytt projekt** dialogrutan Gör följande:
+3. I hello nästa **nytt projekt** dialogrutan rutan, hello följande:
 
     ![Skapa IntelliJ Scala projektegenskaperna](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
-    a. I den **projektnamn** ange ett projektnamn.
+    a. I hello **projektnamn** ange ett projektnamn.
 
-    b. I den **projektet plats** ange en projektplats.
+    b. I hello **projektet plats** ange en projektplats.
 
-    c. Bredvid den **projekt SDK** listrutan, Välj **ny**väljer **JDK**, och ange sedan mappen Java JDK 1,7 eller senare. Välj **Java 1.8** för 2.x Spark-kluster eller välj **Java 1.7** för 1.x Spark-klustret. Standardsökvägen är C:\Program Files\Java\jdk1.8.x_xxx.
+    c. Nästa toohello **projekt SDK** listrutan, Välj **ny**väljer **JDK**, och sedan ange hello mapp för Java JDK 1,7 eller senare. Välj **Java 1.8** för 2.x hello Spark-kluster eller välj **Java 1.7** för 1.x hello Spark-kluster. hello standardsökvägen är C:\Program Files\Java\jdk1.8.x_xxx.
 
-    d. I den **Spark version** listrutan Scala guide för att skapa projektet integreras rätt version för Spark SDK och Scala SDK. Om den Spark-kluster av versionen är äldre än 2.0 väljer **Väck 1.x**. Annars väljer **Spark2.x**. Det här exemplet använder Spark 1.6.2 (Scala 2.10.5). Kontrollera att du använder databasen markeras Scala 2.10.x. Använd inte databasen markeras Scala 2.11.x.
+    d. I hello **Spark version** listrutan Scala guide för att skapa projektet integreras hello rätt version för Spark SDK och Scala SDK. Om hello Spark-kluster av version är äldre än 2.0 väljer **Väck 1.x**. Annars väljer **Spark2.x**. Det här exemplet använder Spark 1.6.2 (Scala 2.10.5). Kontrollera att du använder hello databasen markeras Scala 2.10.x. Använd inte hello databasen markeras Scala 2.11.x.
 
 4. Välj **Slutför**.
 
-5. Om den **projekt** vyn inte är redan öppen genom att trycka på **Alt + 1** att öppna den.
+5. Om hello **projekt** vyn inte är redan öppen genom att trycka på **Alt + 1** tooopen den.
 
-6. I **Projektutforskaren**, expandera projektet och välj sedan **src**.
+6. I **Projektutforskaren**, expandera hello projektet och välj sedan **src**.
 
-7. Högerklicka på **src**, peka på **ny**, och välj sedan **Scala klassen**.
+7. Högerklicka på **src**, peka för**ny**, och välj sedan **Scala klassen**.
 
-8. I den **namn** ange ett namn i den **typ** väljer **objekt**, och välj sedan **OK**.
+8. I hello **namn** ange ett namn i hello **typ** väljer **objekt**, och välj sedan **OK**.
 
-    ![Fönstret Skapa nya Scala-klass](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
+    ![hello Skapa ny Scala klass fönster](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-new-scala-class.png)
 
-9. Klistra in följande kod i filen .scala:
+9. Klistra in följande kod hello i hello .scala filen:
 
         import java.util.Random
         import org.apache.spark.{SparkConf, SparkContext}
@@ -127,55 +127,55 @@ I det här avsnittet Skapa en Scala exempelprojektet med IntelliJ IDEA. I nästa
             }
         }
 
-10. På den **skapa** väljer du **bygga projektet**. Kontrollera att kompileringen har slutförts.
+10. På hello **skapa** väljer du **bygga projektet**. Kontrollera att hello kompilering har slutförts.
 
 
-## <a name="link-to-the-hortonworks-sandbox"></a>Länk till sandlådan Hortonworks
+## <a name="link-toohello-hortonworks-sandbox"></a>Länka toohello Hortonworks Sandbox
 
-Innan du kan länka till en Hortonworks Sandbox (emulator), måste du ha ett befintligt IntelliJ program.
+Innan du kan länka tooa Hortonworks Sandbox (emulator), måste du ha ett befintligt IntelliJ program.
 
-Om du vill länka till en emulator, gör du följande:
+toolink tooan emulatorn hello följande:
 
-1. Öppna projektet i IntelliJ.
+1. Öppna hello projekt i IntelliJ.
 
-2. På den **visa** väljer du **verktyg Windows**, och välj sedan **Azure Explorer**.
+2. På hello **visa** väljer du **verktyg Windows**, och välj sedan **Azure Explorer**.
 
 3. Expandera **Azure**, högerklicka på **HDInsight**, och välj sedan **länka en Emulator**.
 
-4. I den **länken en ny emulatorn** och ange lösenord för att du har konfigurerat för rotkontot i sandlådan Hortonworks ange värden som är samma som i följande skärmbild och välj sedan **OK**. 
+4. I hello **länken en ny emulatorn** fönstret Ange hello lösenord att du har konfigurerats för hello rotkontot av hello Hortonworks Sandbox ange värden liknande toothose i följande skärmbild hello och välj sedan **OK** . 
 
-   ![Fönstret ”länka ett nytt emulatorn”](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
+   ![Hej ”länka ett nytt emulatorn” fönster](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-link-an-emulator.png)
 
-5. Om du vill konfigurera emulatorn, Välj **Ja**.
+5. tooconfigure hello-emulatorn väljer **Ja**.
 
-När emulatorn är ansluten med emulatorn (Hortonworks Sandbox) i HDInsight-nod.
+När hello-emulatorn är ansluten med hello-emulatorn (Hortonworks Sandbox) i hello HDInsight nod.
 
-## <a name="submit-the-spark-scala-application-to-the-hortonworks-sandbox"></a>Skicka Spark Scala-programmet till Hortonworks Sandbox
+## <a name="submit-hello-spark-scala-application-toohello-hortonworks-sandbox"></a>Skicka hello Spark Scala programmet toohello Hortonworks Sandbox
 
-När du har länkat IntelliJ IDEA till emulatorn, kan du skicka projektet.
+När du har länkat IntelliJ IDEA toohello emulator, kan du skicka projektet.
 
-För att skicka ett projekt till en emulator, gör du följande:
+toosubmit en tooan emulator projekt hello följande:
 
-1. I **Projektutforskaren**, högerklicka på projektet och välj sedan **skicka Spark-program till HDInsight**.
+1. I **Projektutforskaren**, högerklicka på hello-projektet och välj sedan **skicka Spark programmet tooHDInsight**.
 
-2. Gör följande:
+2. Hej du följande:
 
-    a. I den **Spark-kluster (endast Linux)** listrutan väljer du din lokala Hortonworks Sandbox.
+    a. I hello **Spark-kluster (endast Linux)** listrutan väljer du din lokala Hortonworks Sandbox.
 
-    b. I den **Main klassnamn** rutan, Välj eller ange det huvudsakliga klassnamnet. Den här kursen är namn **GroupByTest**.
+    b. I hello **Main klassnamn** rutan, Välj eller ange hello huvudsakliga klassnamn. Den här kursen är hello namn **GroupByTest**.
 
-3. Välj **skicka**. Jobbet skicka loggarna visas i fönstret Spark skicka verktyget.
+3. Välj **skicka**. hello jobbet skicka loggarna visas i hello Spark skicka verktygsfönster.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om du vill lära dig skapa Spark-program för HDInsight med hjälp av HDInsight-verktyg för IntelliJ, gå till [använda HDInsight Tools i Azure Toolkit för IntelliJ till att skapa Spark-program för HDInsight Spark Linux-kluster](hdinsight-apache-spark-intellij-tool-plugin.md).
+- hur toocreate Spark-program för HDInsight med hjälp av HDInsight-verktyg för IntelliJ, gå för toolearn[använda HDInsight Tools i Azure Toolkit för IntelliJ toocreate Spark-program för HDInsight Spark Linux-kluster](hdinsight-apache-spark-intellij-tool-plugin.md).
 
-- Om du vill se en video av HDInsight-verktyg för IntelliJ, gå till [införa HDInsight-verktyg för IntelliJ för Spark-utveckling](https://www.youtube.com/watch?v=YTZzYVgut6c).
+- toowatch en video med HDInsight-verktyg för IntelliJ, gå för[införa HDInsight-verktyg för IntelliJ för Spark-utveckling](https://www.youtube.com/watch?v=YTZzYVgut6c).
 
-- Om du vill lära dig att felsöka Spark-program med hjälp av verktyget via fjärranslutning på HDInsight via SSH, gå till [felsöka Spark-program på ett HDInsight-kluster med Azure Toolkit för IntelliJ via SSH](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md).
+- toolearn hur toodebug Spark-program med hjälp av hello toolkit via fjärranslutning på HDInsight via SSH för Gå[felsöka Spark-program på ett HDInsight-kluster med Azure Toolkit för IntelliJ via SSH](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md).
 
-- Om du vill lära dig att felsöka Spark-program med hjälp av verktyget via fjärranslutning på HDInsight via VPN, gå till [använda HDInsight Tools i Azure Toolkit för IntelliJ till att felsöka Spark-program på HDInsight Spark Linux-kluster](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
+- toolearn hur toodebug Spark-program med hjälp av hello toolkit via fjärranslutning på HDInsight via VPN, gå för[använda HDInsight Tools i Azure Toolkit för IntelliJ toodebug Spark-program på HDInsight Spark Linux-kluster](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md).
 
-- Mer information om hur du använder HDInsight-verktyg för Eclipse för att skapa ett Spark-program, gå till [använder HDInsight-verktyg i Azure Toolkit för Eclipse att skapa Spark-program](hdinsight-apache-spark-eclipse-tool-plugin.md).
+- hur toouse HDInsight-verktyg för Eclipse toocreate ett Spark-program går för toolearn[använda HDInsight Tools i Azure Toolkit för Eclipse toocreate Spark-program](hdinsight-apache-spark-eclipse-tool-plugin.md).
 
-- Om du vill se en video av HDInsight-verktyg för Eclipse, gå till [HDInsight verktyg för Eclipse att skapa Spark-program](https://mix.office.com/watch/1rau2mopb6fha).
+- toowatch en video med HDInsight-verktyg för Eclipse gå för[HDInsight verktyg för Eclipse toocreate Spark-program](https://mix.office.com/watch/1rau2mopb6fha).

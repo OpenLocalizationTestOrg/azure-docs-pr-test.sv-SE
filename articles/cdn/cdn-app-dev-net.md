@@ -1,6 +1,6 @@
 ---
-title: "Kom igång med Azure CDN-biblioteket för .NET | Microsoft Docs"
-description: "Lär dig hur du skriver .NET-program för att hantera Azure CDN med Visual Studio."
+title: "aaaGet igång med hello Azure CDN-biblioteket för .NET | Microsoft Docs"
+description: "Lär dig hur toowrite .NET program toomanage Azure CDN med Visual Studio."
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5379586355ece98af6295236d6cbd09cb31c742b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9753e48c7469072cef6b2ac728e18c78121c97f7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Kom igång med Azure CDN-utveckling
 > [!div class="op_single_selector"]
@@ -27,40 +27,40 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-Du kan använda den [Azure CDN-biblioteket för .NET](https://msdn.microsoft.com/library/mt657769.aspx) att automatisera skapande och hantering av CDN-profiler och slutpunkter.  Den här vägledningen visar genom att skapa en enkel .NET-konsolprogram som visar flera av de tillgängliga åtgärderna.  Den här kursen är inte avsedd att beskriva alla aspekter av Azure CDN-biblioteket för .NET i detalj.
+Du kan använda hello [Azure CDN-biblioteket för .NET](https://msdn.microsoft.com/library/mt657769.aspx) tooautomate skapande och hantering av CDN-profiler och slutpunkter.  Den här kursen går igenom hello skapandet av en enkel .NET-konsolprogram som visar flera hello tillgängliga åtgärder.  Den här kursen är inte avsedd toodescribe alla aspekter av hello Azure CDN-biblioteket för .NET i detalj.
 
-Du måste Visual Studio 2015 att slutföra den här kursen.  [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) är gratis.
+Visual Studio 2015 toocomplete måste den här kursen.  [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) är gratis.
 
 > [!TIP]
-> Den [slutförda projekt från den här självstudiekursen](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) är tillgänglig för hämtning på MSDN.
+> Hej [slutförda projekt från den här självstudiekursen](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) är tillgänglig för hämtning på MSDN.
 > 
 > 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
 ## <a name="create-your-project-and-add-nuget-packages"></a>Skapa projektet och Lägg till Nuget-paket
-Nu när vi har skapat en resursgrupp för våra CDN-profiler och våra Azure AD-programmet behörighet att hantera CDN profiler och slutpunkter inom den gruppen, kan vi börja skapa vårt program.
+Nu när vi har skapat en resursgrupp för våra CDN-profiler och våra Azure AD behörighet toomanage CDN programprofiler och slutpunkter inom den gruppen, kan vi börja skapa vårt program.
 
-Klicka på i Visual Studio 2015 **filen**, **ny**, **projekt...**  att öppna dialogrutan Nytt projekt.  Expandera **Visual C#**och välj **Windows** i rutan till vänster.  Klicka på **konsolprogram** i mitten av fönstret.  Namnge projektet och klicka sedan på **OK**.  
+Klicka på i Visual Studio 2015 **filen**, **ny**, **projekt...**  tooopen hello-dialogrutan Nytt projekt.  Expandera **Visual C#**och välj **Windows** hello i fönstret hello vänster.  Klicka på **konsolprogram** i hello mittersta rutan.  Namnge projektet och klicka sedan på **OK**.  
 
 ![Nytt projekt](./media/cdn-app-dev-net/cdn-new-project.png)
 
-Projektet kommer att använda vissa Azure bibliotek i Nuget-paket.  Lägg till dem i projektet.
+Vår projektet kommer toouse vissa Azure-bibliotek finns i Nuget-paket.  Lägg till dessa toohello-projektet.
 
-1. Klicka på den **verktyg** menyn **Nuget Package Manager**, sedan **Pakethanterarkonsolen**.
+1. Klicka på hello **verktyg** menyn **Nuget Package Manager**, sedan **Pakethanterarkonsolen**.
    
     ![Hantera Nuget-paket](./media/cdn-app-dev-net/cdn-manage-nuget.png)
-2. I Package Manager-konsolen kör du följande kommando för att installera den **Active Directory Authentication Library (ADAL)**:
+2. Kör följande kommando tooinstall hello hello i hello Package Manager-konsolen, **Active Directory Authentication Library (ADAL)**:
    
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
-3. Kör följande för att installera den **Azure CDN bibliotek**:
+3. Kör följande tooinstall hello hello **Azure CDN bibliotek**:
    
     `Install-Package Microsoft.Azure.Management.Cdn`
 
 ## <a name="directives-constants-main-method-and-helper-methods"></a>Direktiven, konstanter, main-metoden och hjälpmetoder
-Det är dags grundstrukturen för vårt program som har skrivits.
+Det är dags hello grundstrukturen för vårt program som har skrivits.
 
-1. Fliken Program.cs i ersätter den `using` direktiven överst med följande:
+1. Ersätt hello hello Program.cs fliken i `using` direktiven överst hello med hello följande:
    
     ```csharp
     using System;
@@ -72,7 +72,7 @@ Det är dags grundstrukturen för vårt program som har skrivits.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Vi behöver definiera vissa konstanter våra metoder ska använda.  I den `Program` class, men innan den `Main` metoden Lägg till följande.  Se till att ersätta platshållare, inklusive den  **&lt;hakparenteser&gt;**, med egna värden efter behov.
+2. Vi behöver toodefine vissa konstanter våra metoder ska använda.  I hello `Program` klass, men innan hello `Main` metoden Lägg till följande hello.  Vara säker på att tooreplace hello platshållare, inklusive hello  **&lt;hakparenteser&gt;**, med egna värden efter behov.
    
     ```csharp
     //Tenant app constants
@@ -87,13 +87,13 @@ Det är dags grundstrukturen för vårt program som har skrivits.
     private const string resourceGroupName = "CdnConsoleTutorial";
     private const string resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
-3. Också på klassnivå, definiera dessa två variabler.  Vi använder dessa senare för att avgöra om våra profil och en slutpunkt redan finns.
+3. Också definiera dessa två variabler på hello klassnivå.  Vi använder dessa senare toodetermine om våra profil och en slutpunkt redan finns.
    
     ```csharp
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
-4. Ersätt den `Main` metoden på följande sätt:
+4. Ersätt hello `Main` metoden på följande sätt:
    
    ```csharp
    static void Main(string[] args)
@@ -124,11 +124,11 @@ Det är dags grundstrukturen för vårt program som har skrivits.
        // Delete CDN Profile
        PromptDeleteCdnProfile(cdn);
    
-       Console.WriteLine("Press Enter to end program.");
+       Console.WriteLine("Press Enter tooend program.");
        Console.ReadLine();
    }
    ```
-5. Några av våra andra metoder kommer att uppmana användaren med frågor som ”Ja/Nej”.  Lägg till följande metod för att se att lite enklare:
+5. Några av våra andra metoder kommer tooprompt hello användare med ”Ja/Nej” frågor.  Lägg till följande metod toomake hello som lite enklare:
    
     ```csharp
     private static bool PromptUser(string Question)
@@ -152,10 +152,10 @@ Det är dags grundstrukturen för vårt program som har skrivits.
     }
     ```
 
-Nu när den grundläggande strukturen i vårt program skrivs ska vi skapa metoderna anropas av den `Main` metoden.
+Nu när hello grundstrukturen för vårt program skrivs ska vi skapa hello metoder anropas av hello `Main` metod.
 
 ## <a name="authentication"></a>Autentisering
-Innan vi kan använda Azure CDN-hanteringsmodul behöver vi verifiera vår huvudnamn för tjänsten och hämta någon autentiseringstoken.  Den här metoden använder ADAL för att hämta token.
+Innan vi kan använda hello Azure CDN bibliotek måste vi behöver tooauthenticate vår tjänst huvudnamn och hämta någon autentiseringstoken.  Den här metoden använder ADAL tooretrieve hello-token.
 
 ```csharp
 private static AuthenticationResult GetAccessToken()
@@ -169,10 +169,10 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Om du använder autentisering av enskilda användare, den `GetAccessToken` metoden ser lite annorlunda ut.
+Om du använder enskilda användarautentisering hello `GetAccessToken` metod ser lite annorlunda ut.
 
 > [!IMPORTANT]
-> Använd bara det här kodexemplet om du väljer att ha enskilda användarautentisering i stället för en tjänstens huvudnamn.
+> Använd bara det här kodexemplet om du väljer toohave enskilda användarautentisering i stället för en tjänstens huvudnamn.
 > 
 > 
 
@@ -187,26 +187,26 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Se till att ersätta `<redirect URI>` med omdirigerings-URI som du angav när du registrerade programmet i Azure AD.
+Vara säker på att tooreplace `<redirect URI>` med hello omdirigerings-URI som du angav när du registrerade hello program i Azure AD.
 
 ## <a name="list-cdn-profiles-and-endpoints"></a>Lista CDN profiler och slutpunkter
-Vi är nu redo att utföra åtgärder för CDN.  Det första våra webbmetoden är lista alla profiler och slutpunkter i vår resursgruppen och om den hittar en matchning för namnen på profil och slutpunkt har angetts i vår konstanter gör du anteckna som för senare så att vi inte att skapa dubbletter.
+Vi är nu redo tooperform CDN åtgärder.  hello första våra webbmetoden är lista alla hello profiler och slutpunkter i vår resursgruppen och om den hittar en matchning för hello profil och slutpunkt namn anges i vår konstanter gör ned som för senare så att vi inte försöka toocreate dubbletter.
 
 ```csharp
 private static void ListProfilesAndEndpoints(CdnManagementClient cdn)
 {
-    // List all the CDN profiles in this resource group
+    // List all hello CDN profiles in this resource group
     var profileList = cdn.Profiles.ListByResourceGroup(resourceGroupName);
     foreach (Profile p in profileList)
     {
         Console.WriteLine("CDN profile {0}", p.Name);
         if (p.Name.Equals(profileName, StringComparison.OrdinalIgnoreCase))
         {
-            // Hey, that's the name of the CDN profile we want to create!
+            // Hey, that's hello name of hello CDN profile we want toocreate!
             profileAlreadyExists = true;
         }
 
-        //List all the CDN endpoints on this CDN profile
+        //List all hello CDN endpoints on this CDN profile
         Console.WriteLine("Endpoints:");
         var endpointList = cdn.Endpoints.ListByProfile(p.Name, resourceGroupName);
         foreach (Endpoint e in endpointList)
@@ -214,7 +214,7 @@ private static void ListProfilesAndEndpoints(CdnManagementClient cdn)
             Console.WriteLine("-{0} ({1})", e.Name, e.HostName);
             if (e.Name.Equals(endpointName, StringComparison.OrdinalIgnoreCase))
             {
-                // The unique endpoint name already exists.
+                // hello unique endpoint name already exists.
                 endpointAlreadyExists = true;
             }
         }
@@ -243,7 +243,7 @@ private static void CreateCdnProfile(CdnManagementClient cdn)
 }
 ```
 
-När profilen har skapats, skapar vi en slutpunkt.
+När hello profilen har skapats, skapar vi en slutpunkt.
 
 ```csharp
 private static void CreateCdnEndpoint(CdnManagementClient cdn)
@@ -269,12 +269,12 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> Exemplet ovan tilldelar slutpunkten ursprung med namnet *Contoso* med ett värdnamn `www.contoso.com`.  Du bör ändra så att den pekar till dina egna ursprungsvärdnamn.
+> hello-exemplet ovan tilldelar hello endpoint ursprung med namnet *Contoso* med ett värdnamn `www.contoso.com`.  Du bör ändra den här toopoint tooyour egna ursprungets värdnamn.
 > 
 > 
 
 ## <a name="purge-an-endpoint"></a>Rensa en slutpunkt
-Under förutsättning att slutpunkten har skapats, en gemensam uppgift som vi kan utföra i vårt program rensa innehållet i vår slutpunkt.
+Under förutsättning att hello slutpunkten har skapats, en gemensam uppgift att vi kanske vill tooperform i vårt program Rensa hello innehållet i vår slutpunkt.
 
 ```csharp
 private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
@@ -290,12 +290,12 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> I exemplet ovan, strängen `/*` anger att jag vill rensa allt i roten av sökväg för slutpunkt.  Detta motsvarar kontrollerar **Rensa alla** i Azure portal ”Rensa” dialogrutan. I den `CreateCdnProfile` -metoden I vår profil skapats som en **Azure CDN från Verizon** profilen genom att använda koden `Sku = new Sku(SkuName.StandardVerizon)`, så detta kommer att lyckas.  Dock **Azure CDN från Akamai** profiler har inte stöd för **Rensa alla**, så om jag använde en Akamai profil för den här självstudiekursen jag måste du inkludera specifika sökvägar för att rensa.
+> Hej sträng i hello-exemplet ovan, `/*` anger att jag vill ha toopurge allt i hello rot hello sökväg för slutpunkt.  Detta är likvärdiga toochecking **Rensa alla** i hello Azure portal ”Rensa” dialogrutan. I hello `CreateCdnProfile` -metoden I vår profil skapats som en **Azure CDN från Verizon** profilen med hello kod `Sku = new Sku(SkuName.StandardVerizon)`, så detta kommer att lyckas.  Dock **Azure CDN från Akamai** profiler har inte stöd för **Rensa alla**, så om jag använde en Akamai profil för den här kursen behöver jag tooinclude specifika sökvägar toopurge.
 > 
 > 
 
 ## <a name="delete-cdn-profiles-and-endpoints"></a>Ta bort CDN-profiler och slutpunkter
-Senaste metoderna tar bort våra slutpunkt och profil.
+hello senaste metoder tar bort våra slutpunkt och profil.
 
 ```csharp
 private static void PromptDeleteCdnEndpoint(CdnManagementClient cdn)
@@ -321,23 +321,23 @@ private static void PromptDeleteCdnProfile(CdnManagementClient cdn)
 }
 ```
 
-## <a name="running-the-program"></a>Programmet körs
-Vi kan nu kompilera och köra programmet genom att klicka på den **starta** knappen i Visual Studio.
+## <a name="running-hello-program"></a>Hello-program som körs
+Vi kan nu kompilera och köra programmet hello genom att klicka på hello **starta** knappen i Visual Studio.
 
 ![Program som körs](./media/cdn-app-dev-net/cdn-program-running-1.png)
 
-När programmet har nått ovan uppmaningen, bör du kunna återgå till din resursgrupp i Azure portal och se att profilen har skapats.
+När programmet hello når hello ovan kommandotolk, bör du vara kan tooreturn tooyour resursgrupp i hello Azure-portalen och se att hello profilen har skapats.
 
 ![Lyckades!](./media/cdn-app-dev-net/cdn-success.png)
 
-Vi kan sedan bekräfta anvisningarna för att köra resten av programmet.
+Vi kan sedan bekräfta hello prompter toorun hello resten av programmet hello.
 
 ![Programmet Slutför](./media/cdn-app-dev-net/cdn-program-running-2.png)
 
 ## <a name="next-steps"></a>Nästa steg
-Se slutförda projektet från den här genomgången [hämta exempelfilerna](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
+toosee hello slutförts projektet från den här genomgången [hämta hello exempel](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
 
-Ytterligare dokumentation om Azure CDN Management biblioteket för .NET visar den [reference på MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
+toofind ytterligare dokumentation om hello Azure CDN bibliotek för .NET, visa hello [reference på MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
 
 Hantera dina CDN-resurser med [PowerShell](cdn-manage-powershell.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "Publicera en app för vår start som en dockerbehållare med hjälp av Azure-verktyget för IntelliJ | Microsoft Docs"
-description: "Lär dig hur du publicerar ett webbprogram till Microsoft Azure som en dockerbehållare med hjälp av Azure-verktyget för IntelliJ."
+title: "aaaPublish en start av vår app som en dockerbehållare med hjälp av hello Azure Toolkit för IntelliJ | Microsoft Docs"
+description: "Lär dig hur toopublish en web app tooMicrosoft Azure som en dockerbehållare med hjälp av hello Azure Toolkit för IntelliJ."
 services: 
 documentationcenter: java
 author: rmcmurray
@@ -14,75 +14,75 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: robmcm
-ms.openlocfilehash: b771238934183c953615ac33c42a275d80657556
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 8964cb33fd8f61a39f091633ae9074d9658232fd
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="publish-a-spring-boot-app-as-a-docker-container-by-using-the-azure-toolkit-for-intellij"></a>Publicera en app för vår start som en dockerbehållare med hjälp av Azure-verktyget för IntelliJ
+# <a name="publish-a-spring-boot-app-as-a-docker-container-by-using-hello-azure-toolkit-for-intellij"></a>Publicera en start av vår app som en dockerbehållare med hello Azure Toolkit för IntelliJ
 
-Den [Vårversionen Framework] är en öppen källkod som hjälper till att Java-utvecklare som skapar program på företagsnivå. En av de mer populära projekt som bygger som plattform är [Vårversionen Start], vilket ger en förenklad metod för att skapa fristående Java-program.
+Hej [Vårversionen Framework] är en öppen källkod som hjälper till att Java-utvecklare som skapar program på företagsnivå. En mer populära hello-projekt som är inbyggd som plattform är [Vårversionen Start], vilket ger en förenklad metod för att skapa fristående Java-program.
 
-[Docker] är en lösning för öppen källkod som gör att utvecklare kan automatisera distribution, skalning och hanteringen av sina program som körs i behållare.
+[Docker] är en lösning för öppen källkod som gör att utvecklare kan automatisera hello distribution, skalning och hanteringen av sina program som körs i behållare.
 
-Den här självstudiekursen vägleder dig genom stegen för att distribuera en källan startprogrammet som en dockerbehållare till Microsoft Azure med hjälp av Azure-verktyget för IntelliJ.
+Den här självstudiekursen vägleder dig genom hello steg toodeploy en källan startprogrammet som en Docker-behållare tooMicrosoft Azure med hjälp av hello Azure Toolkit för IntelliJ.
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
 
-## <a name="clone-the-default-spring-boot-docker-repo"></a>Klona lagringsplatsen standard källan Start Docker
+## <a name="clone-hello-default-spring-boot-docker-repo"></a>Klona hello standard källan Start Docker lagringsplatsen
 
-Följande steg vägleder dig genom kloning källan Start Docker-lagringsplatsen med hjälp av IntelliJ. Om du vill använda en kommandorad Se [distribuerar ett källan Start-program på Linux i Azure Container Service][Deploy Spring Boot on Linux in ACS].
+hello vägleder följande steg dig genom kloning hello källan Start Docker lagringsplatsen med hjälp av IntelliJ. Om du vill toouse kommandoraden finns [distribuerar ett källan Start-program på Linux i Azure Container Service][Deploy Spring Boot on Linux in ACS].
 
 1. Öppna IntelliJ.
 
-1. På välkomstskärmen väljer du den **GitHub** alternativet i den **checka ut från versionskontroll** lista.
+1. På välkomstskärmen hello väljer hello **GitHub** alternativ i hello **checka ut från versionskontroll** lista.
 
    ![GitHub-alternativet för versionskontroll][CL01]
 
-1. Ange dina autentiseringsuppgifter om du uppmanas att logga in.
+1. Ange dina autentiseringsuppgifter om du tillfrågas toolog i.
 
-   * Om du använder ett användarnamn/lösenord för att logga in på GitHub:
+   * Om du använder en användarnamn/lösenord toolog i tooGitHub:
 
       ![Dialogrutan för att ange GitHub-användarnamn och lösenord][CL02a]
 
-   * Om du använder en token för att logga in på GitHub:
+   * Om du använder en token toolog i tooGitHub:
 
       ![Dialogrutan för att ange en GitHub-token][CL02b]
 
-1. Ange **https://github.com/spring-guides/gs-spring-boot-docker.git** Ange lokala sökvägen och mappinformation för lagringsplatsen-URL och klicka sedan på **klona**.
+1. Ange **https://github.com/spring-guides/gs-spring-boot-docker.git** Ange lokala sökvägen och mappinformation för hello lagringsplatsen URL och klicka sedan på **klona**.
 
    ![Klona lagringsplatsen dialogrutan][CL03]
 
-1. När du uppmanas att skapa ett projekt för IntelliJ Välj **nr**.
+1. När du uppmanas toocreate en IntelliJ projektet, Välj **nr**.
 
-   ![Acceptera att skapa ett projekt för IntelliJ][CL04]
+   ![Avböja toocreate IntelliJ-projekt][CL04]
 
-1. På sidan Välkommen **Importera projekt**.
+1. Klicka på välkomstsidan hello **Importera projekt**.
 
    ![Val av Importera projekt][CL05]
 
-1. Leta upp den sökväg där du klona lagringsplatsen källan Start, Välj den **fullständig** mapp under roten och klicka sedan på **OK**.
+1. Hitta hello sökväg där du har klonat hello källan Start lagringsplatsen, Välj hello **fullständig** mapp under hello rot och klicka sedan på **OK**.
 
    ![Välj en mapp för import][CL06]
 
 1. När du uppmanas, välja **skapa projekt från befintliga datakällor**.
 
-   ![Alternativet för att skapa ett projekt från befintliga datakällor][CL07]
+   ![Alternativet toocreate ett projekt från befintliga datakällor][CL07]
 
-1. Ange ditt projektnamn eller acceptera standardinställningarna, kontrollera att rätt sökväg till den **fullständig** mappen och klicka sedan på **nästa**.
+1. Ange ditt projektnamn eller accepterar standardinställningen hello, kontrollera hello rätt sökväg toohello **fullständig** mappen och klicka sedan på **nästa**.
 
-   ![Ange projektets namn][CL08]
+   ![Ange hello projektnamn][CL08]
 
 1. Anpassa alla kataloger för att importera och klicka sedan på **nästa**.
 
    ![Välj kataloger][CL09]
 
-1. Granska bibliotek för att importera och klicka sedan på **nästa**.
+1. Granska hello bibliotek tooimport och klicka sedan på **nästa**.
 
    ![Granska projektet bibliotek][CL10]
 
-1. Granska modulstrukturen och klicka sedan på **nästa**.
+1. Granska hello modulstrukturen och klicka sedan på **nästa**.
 
    ![Granska modulstrukturen][CL11]
 
@@ -94,19 +94,19 @@ Följande steg vägleder dig genom kloning källan Start Docker-lagringsplatsen 
 
    ![Slutför][CL13]
 
-IntelliJ importerar källan Start-appen som ett projekt och visar strukturen när importen är klar.
+IntelliJ importerar hello källan Start appen som ett projekt och visar hello struktur när hello importen är klar.
 
 ![Källan Start app i IntelliJ][CL14]
 
 ## <a name="build-your-spring-boot-app"></a>Skapa din källan Start app
 
-### <a name="build-the-app-by-using-the-maven-pom"></a>Bygga appen med hjälp av Maven POM
+### <a name="build-hello-app-by-using-hello-maven-pom"></a>Skapa hello program med hjälp av hello Maven POM
 
-1. Öppna fönstret Maven-verktyget om den inte redan är öppen. Klicka på **visa** > **verktyget Windows** > **Maven-projekt**.
+1. Öppna hello Maven verktygsfönster om den inte redan är öppen. Klicka på **visa** > **verktyget Windows** > **Maven-projekt**.
 
    ![Kommandona verktyget Windows och Maven-projekt][BU01]
 
-1. Högerklicka i fönstret Maven verktyget **paketet** och välj **kör Maven skapa**. (Om Maven-projekt inte visas automatiskt, klickar du på den **importera** ikonen i verktygsfältet Maven.)
+1. I hello Maven verktyget fönstret högerklickar du på **paketet** och välj **kör Maven skapa**. (Om Maven-projekt inte visas automatiskt, klickar du på hello **importera** ikonen i verktygsfältet för hello Maven.)
 
    ![Kör skapa Maven-kommando][BU02]
 
@@ -116,7 +116,7 @@ IntelliJ importerar källan Start-appen som ett projekt och visar strukturen nä
 
 ### <a name="create-a-deployment-ready-artifact"></a>Skapa en distribution redo artefakt
 
-Om du vill publicera appen källan Start måste du skapa en distribution redo artefakt. Använd följande steg:
+toopublish appen källan Start måste toocreate en artefakt distribution är redo. Använd hello följande steg:
 
 1. Öppna din webbappsprojektet i IntelliJ.
 
@@ -124,11 +124,11 @@ Om du vill publicera appen källan Start måste du skapa en distribution redo ar
 
    ![Projektet struktur kommando][ART01]
 
-1. Klicka på den gröna plus (**+**) symbolen om du vill lägga till en artefakt klickar du på **JAR**, och klicka sedan på **tom**.
+1. Klicka på hello grön plus (**+**) symbol tooadd en artefakt klickar du på **JAR**, och klicka sedan på **tom**.
 
    ![Lägg till en artefakt][ART02]
 
-1. Namnge din artefakt samtidigt till att du inte lägga till filnamnstillägget ”.jar” och ange målmappen för Maven-utdata.
+1. Namnge din artefakt samtidigt inte tooadd hello ”.jar” tillägg och sedan ange hello målmappen för hello Maven utdata.
 
    ![Ange egenskaper för artefakt][ART03]
 
@@ -136,13 +136,13 @@ Om du vill publicera appen källan Start måste du skapa en distribution redo ar
 
    a. Klicka på **skapa manifestet**.
 
-      ![Klicka på knappen Skapa Manifest][ART04a]
+      ![Klicka på hello skapa Manifest][ART04a]
 
-   b. Välj standardsökvägen för artefakten och klicka sedan på **OK**.
+   b. Välj hello standardsökvägen för hello artefakt och klicka sedan på **OK**.
 
       ![Ange artefakt sökväg][ART04b]
 
-   c. Klicka på ellipsknappen (**...** ) att hitta klassen huvudsakliga.
+   c. Klicka på ellipsknappen hello (**... **) toolocate hello huvudsakliga klass.
 
       ![Leta upp huvudsakliga klass][ART04c]
 
@@ -152,65 +152,65 @@ Om du vill publicera appen källan Start måste du skapa en distribution redo ar
 
 1. Klicka på **OK**.
 
-   ![Stäng dialogrutan projektstruktur][ART05]
+   ![Stäng dialogrutan för hello projektstruktur][ART05]
 
 > [!NOTE]
-> Läs mer om hur du skapar artefakter i IntelliJ [konfigurera artefakter] på webbplatsen JetBrains.
+> Läs mer om hur du skapar artefakter i IntelliJ [konfigurera artefakter] på hello JetBrains webbplats.
 >
 
-### <a name="build-the-artifact-for-deployment"></a>Skapa artefakt för distribution
+### <a name="build-hello-artifact-for-deployment"></a>Skapa hello artefakt för distribution
 
 1. Klicka på **skapa**, och klicka sedan på **artefakter**.
 
    ![Skapa artefakter kommando][BU04]
 
-1. När den **skapa artefakt** snabbmenyn visas klickar du på **skapa**.
+1. När hello **skapa artefakt** snabbmenyn visas klickar du på **skapa**.
 
    ![Skapa artefakt snabbmenyn][BU05]
 
-IntelliJ ska visa slutförda artefakten för vår Start-app i projektfönstret-verktyget.
+IntelliJ ska visa hello slutförts artefakt för vår Start-app i hello projekt verktyget-fönstret.
 
    ![Skapade artefakt][BU06]
 
-## <a name="publish-your-web-app-to-azure-by-using-a-docker-container"></a>Publicera webbappen till Azure med hjälp av en dockerbehållare
+## <a name="publish-your-web-app-tooazure-by-using-a-docker-container"></a>Publicera din web app tooAzure med hjälp av en dockerbehållare
 
-1. Om du inte har loggat in på Azure-konto, följer du stegen i [inloggning instruktioner för Azure-Toolkit för IntelliJ][Azure Sign In for IntelliJ].
+1. Om du inte har loggat in tooyour Azure-konto, gör hello i [inloggning instruktioner för hello Azure Toolkit för IntelliJ][Azure Sign In for IntelliJ].
 
-1. I verktyget Projektutforskaren, högerklicka på projektet och välj sedan **Azure** > **Publicera som Dockerbehållare**.
+1. Högerklicka på hello-projekt i hello verktyget Projektutforskaren, och välj sedan **Azure** > **Publicera som Dockerbehållare**.
 
    ![Publicera som Dockerbehållare kommando][PU01]
 
-1. När den **distribuera Dockerbehållare på Azure** dialogruta visas alla befintliga Docker-värdar. Om du vill distribuera till en befintlig värd kan du gå vidare till steg 4. Annars använder du följande steg för att skapa en värd:
+1. När hello **distribuera Dockerbehållare på Azure** dialogruta visas alla befintliga Docker-värdar. Om du väljer toodeploy tooan befintliga värden kan du hoppa över toostep 4. Annars Använd hello följande steg toocreate en värd:
 
-   a. Klicka på den gröna plus (**+**) symbolen.
+   a. Klicka på hello grön plus (**+**) symbolen.
 
       ![Lägga till en ny Docker-värd][PU02]
 
-   b. När den **skapa Docker värden** dialogrutan visas, kan du acceptera standardinställningarna och du kan ange anpassade inställningar för din nya Docker-värden. (Detaljerade beskrivningar av olika inställningar finns i [publicera ett webbprogram som en dockerbehållare med hjälp av Azure-verktyget för IntelliJ][Publish Container with Azure Toolkit].) Klicka på **nästa** när du har angett vilka inställningar som ska användas.
+   b. När hello **skapa Docker värden** dialogrutan visas, kan du välja tooaccept hello standardinställningar eller du kan ange anpassade inställningar för din nya Docker-värden. (Detaljerade beskrivningar av hello olika inställningar, finns i [publicera ett webbprogram som en dockerbehållare med hello Azure Toolkit för IntelliJ][Publish Container with Azure Toolkit].) Klicka på **nästa** när du har angett vilka inställningar toouse.
 
       ![Ange alternativ för Docker-värden][PU03a]
 
-   c. Du kan välja att använda befintliga autentiseringsuppgifter för inloggning från en Azure key vault eller du kan välja att ange nya autentiseringsuppgifter för Docker. Klicka på **Slutför** när du har angett dina alternativ.
+   c. Du kan välja toouse befintliga autentiseringsuppgifter för inloggning från en Azure key vault eller du tooenter nya Docker-inloggningsuppgifter. Klicka på **Slutför** när du har angett dina alternativ.
 
       ![Ange autentiseringsuppgifter för Docker-värden][PU03b]
 
 1. Välj Docker-värd och klicka sedan på **nästa**.
 
-   ![Välj Docker-värden ska använda][PU04]
+   ![Välj hello Docker värden toouse][PU04]
 
-1. På den sista sidan i den **distribuera Dockerbehållare på Azure** dialogrutan anger du följande alternativ:
+1. På hello sista sidan i hello **distribuera Dockerbehållare på Azure** dialogrutan Ange hello följande alternativ:
 
-   a. Du kan välja att ange ett eget namn för den behållare som är värd för din dockerbehållare eller du kan acceptera standardinställningarna.
+   a. Du kan välja toospecify ett eget namn för hello-behållare som är värd för din dockerbehållare eller du kan acceptera hello standard.
 
-   b. Ange TCP-portar för docker-värden med följande syntax: *[extern port]*:*[Intern port]*. Till exempel **80:8080** anger en extern port 80 och interna källan Start standardporten 8080.
+   b. Ange hello TCP-portar för docker-värden med hjälp av hello följande syntax: *[extern port]*:*[Intern port]*. Till exempel **80:8080** anger ett extern port 80 och hello interna källan Start standardporten 8080.
    
-      Om du har anpassat en intern port (t.ex, genom att redigera filen application.yml), måste du ange portnumret för rätt routning i Azure.
+      Om du har anpassat en intern port (t.ex, genom att redigera hello application.yml filen), behöver du toospecify hello-portnumret för hello rätt routning toooccur i Azure.
 
    c. När du har konfigurerat dessa alternativ klickar du på **Slutför**.
 
    ![Distribuera en dockerbehållare på Azure][PU05]
 
-1. När Azure Toolkit har publicerats visas Azure-aktivitetsloggen **publicerade** status.
+1. När hello Azure Toolkit har publicerats hello Azure-aktivitetsloggen visar **publicerade** hello status.
 
    ![Distribuera Docker-värden][PU06]
 
@@ -218,18 +218,18 @@ IntelliJ ska visa slutförda artefakten för vår Start-app i projektfönstret-v
 
 [!INCLUDE [azure-toolkit-additional-resources](../includes/azure-toolkit-additional-resources.md)]
 
-Läs om ytterligare metoder för att skapa källan Start appar med hjälp av IntelliJ i [skapa källan Start projekt](https://www.jetbrains.com/help/idea/creating-spring-boot-projects.html) på webbplatsen JetBrains.
+toolearn om ytterligare metoder för att skapa källan Start appar med hjälp av IntelliJ, se [skapa källan Start projekt](https://www.jetbrains.com/help/idea/creating-spring-boot-projects.html) på hello JetBrains webbplats.
 
 <!-- URL List -->
 
 [Azure Management Portal]: http://go.microsoft.com/fwlink/?LinkID=512959
 [Azure Sign In for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[konfigurera artefakter]: https://www.jetbrains.com/help/idea/2016.1/configuring-artifacts.html
+[Konfigurera artefakter]: https://www.jetbrains.com/help/idea/2016.1/configuring-artifacts.html
 [Deploy Spring Boot on Linux in ACS]:container-service/kubernetes/container-service-deploy-spring-boot-app-on-linux.md
 [Docker]: https://www.docker.com/
 [Publish Container with Azure Toolkit]: ./azure-toolkit-for-intellij-publish-as-docker-container.md
-[Vårversionen Start]: http://projects.spring.io/spring-boot/
-[Vårversionen Framework]: https://spring.io/
+[Källan Start]: http://projects.spring.io/spring-boot/
+[Källan Framework]: https://spring.io/
 
 <!-- IMG List -->
 

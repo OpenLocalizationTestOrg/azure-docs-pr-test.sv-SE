@@ -1,5 +1,5 @@
 ---
-title: "Skapa en Skalningsuppsättningar i virtuella datorer för Linux i Azure | Microsoft Docs"
+title: "aaaCreate en Skalningsuppsättningar i virtuella datorer för Linux i Azure | Microsoft Docs"
 description: "Skapa och distribuera ett program som har hög tillgänglighet på virtuella Linux-datorer med hjälp av en skaluppsättning för virtuell dator"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -15,41 +15,41 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: iainfou
-ms.openlocfilehash: 2b8d519e11f70eda164bd8f6e131a3989f242ab0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 00dd81043f9be46ef2dc6dfe97eefdb20944ee13
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>Skapa en Virtual Machine Scale Set och distribuera en app som har hög tillgänglighet på Linux
-En skaluppsättning för virtuell dator kan du distribuera och hantera en uppsättning identiska, automatisk skalning virtuella datorer. Du kan skala antalet virtuella datorer i skaluppsättning manuellt eller definiera regler för att kunna Autoskala baserat på CPU-användning, minne begäran eller nätverkstrafik. I kursen får distribuera du en virtuell dator skala i Azure. Lär dig att:
+En skaluppsättning för virtuell dator kan du toodeploy och hantera en uppsättning identiska, automatisk skalning virtuella datorer. Du kan skala hello antal virtuella datorer i hello skaluppsättning manuellt eller definiera regler tooautoscale baserat på CPU-användning, minne begäran eller nätverkstrafik. I kursen får distribuera du en virtuell dator skala i Azure. Lär dig att:
 
 > [!div class="checklist"]
-> * Använda molntjänster init för att skapa en app att skala
+> * Använda molntjänster init toocreate tooscale en app
 > * Skapa en skaluppsättning för virtuell dator
-> * Öka eller minska antalet instanser i en skaluppsättning
+> * Öka eller minska hello antalet instanser i en skaluppsättning
 > * Visa anslutningsinformation för scale set-instanser
 > * Använda datadiskar i en skaluppsättning
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt kursen krävs att du använder Azure CLI version 2.0.4 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Om du väljer tooinstall och använda hello CLI lokalt kursen krävs att du kör hello Azure CLI version 2.0.4 eller senare. Kör `az --version` toofind hello version. Om du behöver tooinstall eller uppgradering, se [installera Azure CLI 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="scale-set-overview"></a>Skala Set-översikt
-En skaluppsättning för virtuell dator kan du distribuera och hantera en uppsättning identiska, automatisk skalning virtuella datorer. Skalningsuppsättningar använda samma komponenter som du lärt dig i föregående guiden för att [skapa högtillgängliga virtuella datorer](tutorial-availability-sets.md). Virtuella datorer i en skaluppsättning skapas i en tillgänglighet ange och fördelad över logik fel- och update-domäner.
+En skaluppsättning för virtuell dator kan du toodeploy och hantera en uppsättning identiska, automatisk skalning virtuella datorer. Skalningsuppsättningarna Använd hello samma komponenter som du har läst om i hello tidigare självstudier för[skapa högtillgängliga virtuella datorer](tutorial-availability-sets.md). Virtuella datorer i en skaluppsättning skapas i en tillgänglighet ange och fördelad över logik fel- och update-domäner.
 
-Virtuella datorer skapas efter behov i en skaluppsättning. Du kan definiera automatiska regler för att styra hur och när virtuella datorer läggs till eller tas bort från skaluppsättning. De här reglerna kan utlösa baserat på mått som CPU-belastning, minnesanvändning eller nätverkstrafik.
+Virtuella datorer skapas efter behov i en skaluppsättning. Du kan definiera automatiska regler toocontrol hur och när virtuella datorer läggs till eller tas bort från hello skaluppsättning. De här reglerna kan utlösa baserat på mått som CPU-belastning, minnesanvändning eller nätverkstrafik.
 
-Skala anger stöd för upp till 1 000 virtuella datorer när du använder en avbildning i Azure-plattformen. För produktionsarbetsbelastningar, kan du [skapa en anpassad VM-avbildning](tutorial-custom-images.md). Du kan skapa upp till 100 virtuella datorer i en skala som anges när du använder en anpassad avbildning.
+Skala anger stöd upp too1 000 virtuella datorer när du använder en avbildning i Azure-plattformen. För produktionsarbetsbelastningar gärna för[skapa en anpassad VM-avbildning](tutorial-custom-images.md). Du kan skapa upp too100 virtuella datorer i en skala som anges när du använder en anpassad avbildning.
 
 
-## <a name="create-an-app-to-scale"></a>Skapa en app att skala
-För produktion, kan du [skapa en anpassad VM-avbildning](tutorial-custom-images.md) som innehåller programmet installeras och konfigureras. Den här kursen kan du anpassa de virtuella datorerna på startas för första gången du snabbt vill se en skala som anges i åtgärden.
+## <a name="create-an-app-tooscale"></a>Skapa en app tooscale
+För produktion, gärna för[skapa en anpassad VM-avbildning](tutorial-custom-images.md) som innehåller programmet installeras och konfigureras. För den här kursen kan du anpassa hello virtuella datorer på den första start tooquickly finns en skala som anges i åtgärden.
 
-I en tidigare kursen du lärt dig [hur du anpassar en Linux-dator vid den första starten](tutorial-automate-vm-deployment.md) med molnet initiering. Du kan använda samma molnet init-konfigurationsfilen för att installera NGINX och köra en enkel ”Hello World” Node.js-app. 
+I en tidigare kursen du lärt dig [hur toocustomize en Linux-dator vid den första starten](tutorial-automate-vm-deployment.md) med molnet initiering. Du kan använda hello samma molnet init configuration file tooinstall NGINX och kör en enkel Hello World Node.js-app. 
 
-Skapa en fil med namnet i din aktuella shell *moln init.txt* och klistra in följande konfiguration. Till exempel skapa filen i molnet Shell inte på den lokala datorn. Ange `sensible-editor cloud-init.txt` att skapa filen och se en lista över tillgängliga redigerare. Se till att hela molnet init-filen har kopierats korrekt, särskilt den första raden:
+Skapa en fil med namnet i din aktuella shell *moln init.txt* och klistra in hello följande konfiguration. Till exempel skapa hello-filen i hello molnet Shell inte på den lokala datorn. Ange `sensible-editor cloud-init.txt` toocreate hello filen och visas i listan över tillgängliga redigerare. Kontrollera att filen hello hela molnet initiering kopierats korrekt, särskilt hello första raden:
 
 ```yaml
 #cloud-config
@@ -95,13 +95,13 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>Skapa en skaluppsättning
-Innan du kan skapa en skalningsuppsättning, skapa en resursgrupp med [az gruppen skapa](/cli/azure/group#create). I följande exempel skapas en resursgrupp med namnet *myResourceGroupScaleSet* i den *eastus* plats:
+Innan du kan skapa en skalningsuppsättning, skapa en resursgrupp med [az gruppen skapa](/cli/azure/group#create). hello följande exempel skapar en resursgrupp med namnet *myResourceGroupScaleSet* i hello *eastus* plats:
 
 ```azurecli-interactive 
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
-Nu skapa en virtuell dator-skala med [az vmss skapa](/cli/azure/vmss#create). I följande exempel skapas en uppsättning med namnet skala *myScaleSet*använder molnet init-filen för att anpassa den virtuella datorn och genererar SSH-nycklar, om de inte finns:
+Nu skapa en virtuell dator-skala med [az vmss skapa](/cli/azure/vmss#create). hello följande exempel skapas en uppsättning med namnet skala *myScaleSet*, använder hello molnet init filen toocustomize hello VM och genererar SSH-nycklar, om de inte finns:
 
 ```azurecli-interactive 
 az vmss create \
@@ -114,13 +114,13 @@ az vmss create \
   --generate-ssh-keys      
 ```
 
-Det tar några minuter att skapa och konfigurera alla skala uppsättning resurser och virtuella datorer. Det finns bakgrundsaktiviteter för att fortsätta att köras när Azure CLI återgår till Kommandotolken. Det kan vara en annan några minuter innan du kan komma åt appen.
+Det tar några minuter toocreate och konfigurera alla hello skala uppsättning resurser och virtuella datorer. Det finns bakgrundsaktiviteter för att fortsätta toorun när hello Azure CLI returnerar toohello prompt. Det kan vara en annan några minuter innan du kan komma åt hello app.
 
 
 ## <a name="allow-web-traffic"></a>Tillåt webbtrafik
-En belastningsutjämnare har skapats automatiskt som en del av virtuella datorns skaluppsättning. Belastningsutjämnaren distribuerar trafik över en uppsättning definierade virtuella datorer med hjälp av regler för inläsning av belastningsutjämnaren. Du kan lära dig mer om belastningen belastningsutjämnaren koncept och konfigurationen i nästa kurs [så att belastningsutjämna virtuella datorer i Azure](tutorial-load-balancer.md).
+En belastningsutjämnare har skapats automatiskt som en del av hello virtuella datorns skaluppsättning. hello belastningsutjämnare distribuerar trafik över en uppsättning definierade virtuella datorer med hjälp av regler för inläsning av belastningsutjämnaren. Du kan lära dig mer om belastningen belastningsutjämnaren koncept och konfigurationen i nästa kurs för hello, [hur tooload balansera virtuella datorer i Azure](tutorial-load-balancer.md).
 
-Skapa en regel med för att tillåta trafik till webbappen [az nätverket lb regeln skapa](/cli/azure/network/lb/rule#create). I följande exempel skapas en regel med namnet *myLoadBalancerRuleWeb*:
+tooallow trafik tooreach hello webbapp skapar en regel med [az nätverket lb regeln skapa](/cli/azure/network/lb/rule#create). hello följande exempel skapas en regel med namnet *myLoadBalancerRuleWeb*:
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -135,7 +135,7 @@ az network lb rule create \
 ```
 
 ## <a name="test-your-app"></a>Testa din app
-Om du vill se din Node.js-app på webben, hämta offentlig IP-adressen för din belastningsutjämnare med [az nätverket offentliga ip-visa](/cli/azure/network/public-ip#show). I följande exempel hämtar IP-adressen för *myScaleSetLBPublicIP* skapas som en del av skaluppsättning:
+toosee Node.js-appen på hello web hämta hello offentliga IP-adressen för din belastningsutjämnare med [az nätverket offentliga ip-visa](/cli/azure/network/public-ip#show). hello följande exempel hämtar hello IP-adress för *myScaleSetLBPublicIP* skapas som en del av skaluppsättning för hello:
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -145,18 +145,18 @@ az network public-ip show \
     --output tsv
 ```
 
-Ange den offentliga IP-adressen i en webbläsare. Appen visas, inklusive värdnamnet för den virtuella datorn som belastningsutjämnaren distribuerade trafik till:
+Ange hello offentliga IP-adressen i tooa webbläsare. hello app visas, inklusive hello värdnamnet för hello VM som hello läsa in belastningsutjämning distribuerade trafik till:
 
 ![Node.js-app som körs](./media/tutorial-create-vmss/running-nodejs-app.png)
 
-Om du vill se skaluppsättningen i praktiken du kan framtvinga-uppdatera webbläsaren om du vill se belastningsutjämnaren distribuerar trafik över alla de virtuella datorerna kör appen.
+toosee hello skaluppsättningen i praktiken, du kan kraft uppdatera din webbplats webbläsare toosee hello belastningen belastningsutjämnare distribuerar trafik över alla hello virtuella datorer som kör din app.
 
 
 ## <a name="management-tasks"></a>Administrativa uppgifter
-Du kan behöva köra en eller flera administrativa uppgifter i hela livscykeln för skaluppsättning. Dessutom kanske du vill skapa skript som automatiserar olika livscykel-uppgifter. Azure CLI 2.0 tillhandahåller ett snabbt sätt att utföra dessa uppgifter. Här följer några vanliga uppgifter.
+Du kan behöva toorun under hello livscykel för skaluppsättning för hello, en eller flera hanteringsuppgifter. Dessutom kan du toocreate skript som automatiserar olika livscykel-uppgifter. hello Azure CLI 2.0 innehåller ett snabbt sätt toodo dessa uppgifter. Här följer några vanliga uppgifter.
 
 ### <a name="view-vms-in-a-scale-set"></a>Visa virtuella datorer i en skaluppsättning
-Du kan visa en lista över virtuella datorer som körs i en skaluppsättning [az vmss listinstanserna](/cli/azure/vmss#list-instances) på följande sätt:
+tooview en lista över virtuella datorer som körs i din skala anges använder [az vmss listinstanserna](/cli/azure/vmss#list-instances) på följande sätt:
 
 ```azurecli-interactive 
 az vmss list-instances \
@@ -165,7 +165,7 @@ az vmss list-instances \
   --output table
 ```
 
-Utdata ser ut ungefär så här:
+hello utdata är liknande toohello följande exempel:
 
 ```azurecli-interactive 
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup            VmId
@@ -176,7 +176,7 @@ Utdata ser ut ungefär så här:
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>Öka eller minska VM-instanser
-Om du vill se antalet instanser som du har för närvarande i en skaluppsättning [az vmss visa](/cli/azure/vmss#show) och fråga på *sku.capacity*:
+toosee hello antal förekomster av du för närvarande i en skala har använder [az vmss visa](/cli/azure/vmss#show) och fråga på *sku.capacity*:
 
 ```azurecli-interactive 
 az vmss show \
@@ -186,7 +186,7 @@ az vmss show \
     --output table
 ```
 
-Du kan manuellt öka eller minska antalet virtuella datorer i skaluppsättningen med [az vmss skala](/cli/azure/vmss#scale). I följande exempel anger hur många virtuella datorer i din skaluppsättningen *5*:
+Du kan sedan manuellt öka eller minska hello antalet virtuella datorer i hello skala med [az vmss skala](/cli/azure/vmss#scale). hello följande exempel anger hello antal virtuella datorer i din skaluppsättningen för*5*:
 
 ```azurecli-interactive 
 az vmss scale \
@@ -195,10 +195,10 @@ az vmss scale \
     --new-capacity 5
 ```
 
-Autoskala regler kan du definiera hur du skala upp eller ned antalet virtuella datorer i din skaluppsättningen som svar på begäran, till exempel nätverkstrafik eller CPU-användning. De här reglerna kan för närvarande inte anges i Azure CLI 2.0. Använd den [Azure-portalen](https://portal.azure.com) så här konfigurerar du Autoskala.
+Autoskala regler kan du definiera hur tooscale uppåt eller nedåt hello antal virtuella datorer i din skala in i svaret toodemand, till exempel nätverkstrafik eller CPU-användning. De här reglerna kan för närvarande inte anges i Azure CLI 2.0. Använd hello [Azure-portalen](https://portal.azure.com) tooconfigure Autoskala.
 
 ### <a name="get-connection-info"></a>Hämta anslutningsinformation
-Så här skaffar du anslutningsinformationen om de virtuella datorerna i din skaluppsättningar [az vmss lista-instans--anslutningsinformation](/cli/azure/vmss#list-instance-connection-info). Detta kommando offentlig IP-adress och port för varje virtuell dator där du kan ansluta med SSH:
+tooobtain anslutningsinformationen om hello virtuella datorer i din skaluppsättningar använder [az vmss lista-instans--anslutningsinformation](/cli/azure/vmss#list-instance-connection-info). Detta kommando hello offentlig IP-adress och port för varje virtuell dator som du kan använda tooconnect med SSH:
 
 ```azurecli-interactive 
 az vmss list-instance-connection-info \
@@ -208,10 +208,10 @@ az vmss list-instance-connection-info \
 
 
 ## <a name="use-data-disks-with-scale-sets"></a>Använda datadiskar med skaluppsättningar
-Du kan skapa och använda datadiskar med skaluppsättningar. I en tidigare kursen du lärt dig hur du [hantera Azure-diskar](tutorial-manage-disks.md) som beskrivs bästa praxis och prestandaförbättringar för att skapa appar på datadiskar i stället för OS-disk.
+Du kan skapa och använda datadiskar med skaluppsättningar. I en tidigare kursen du lärt dig hur för[hantera Azure-diskar](tutorial-manage-disks.md) som ger en översikt över hello metodtips och prestanda för att skapa appar på datadiskar i stället för hello OS-disk.
 
 ### <a name="create-scale-set-with-data-disks"></a>Skapa skaluppsättning med datadiskar
-Om du vill skapa en skalningsuppsättning och bifoga datadiskar, lägger du till den `--data-disk-sizes-gb` parametern till den [az vmss skapa](/cli/azure/vmss#create) kommando. I följande exempel skapas en skala med *50*Gb datadiskar kopplade till varje instans:
+toocreate en skala ange och bifoga datadiskar, lägga till hello `--data-disk-sizes-gb` parametern toohello [az vmss skapa](/cli/azure/vmss#create) kommando. hello följande exempel skapas en skala med *50*Gb datadiskar kopplade tooeach instans:
 
 ```azurecli-interactive 
 az vmss create \
@@ -228,7 +228,7 @@ az vmss create \
 När instanser tas bort från en skaluppsättning för tas eventuella anslutna hårddiskar också bort.
 
 ### <a name="add-data-disks"></a>Lägg till datadiskar
-Lägg till en datadisk till instanser i en skaluppsättning för att använda [az vmss disk bifoga](/cli/azure/vmss/disk#attach). I följande exempel läggs en *50*Gb disk till varje instans:
+tooadd tooinstances en data-disk i dina skala ange använder [az vmss disk bifoga](/cli/azure/vmss/disk#attach). hello följande exempel lägger till en *50*Gb disk tooeach instans:
 
 ```azurecli-interactive 
 az vmss disk attach \
@@ -239,7 +239,7 @@ az vmss disk attach \
 ```
 
 ### <a name="detach-data-disks"></a>Koppla från datadiskar
-Ta bort en datadisk till instanser i en skaluppsättning med [az vmss disk frånkoppling](/cli/azure/vmss/disk#detach). I följande exempel tar bort datadisk på LUN *2* från varje instans:
+tooremove tooinstances en data-disk i dina skala ange använder [az vmss disk frånkoppling](/cli/azure/vmss/disk#detach). hello följande exempel tar bort hello datadisk på LUN *2* från varje instans:
 
 ```azurecli-interactive 
 az vmss disk detach \
@@ -250,16 +250,16 @@ az vmss disk detach \
 
 
 ## <a name="next-steps"></a>Nästa steg
-Du har skapat en skaluppsättning för virtuell dator i den här självstudiekursen. Du har lärt dig hur till:
+Du har skapat en skaluppsättning för virtuell dator i den här självstudiekursen. Du har lärt dig att:
 
 > [!div class="checklist"]
-> * Använda molntjänster init för att skapa en app att skala
+> * Använda molntjänster init toocreate tooscale en app
 > * Skapa en skaluppsättning för virtuell dator
-> * Öka eller minska antalet instanser i en skaluppsättning
+> * Öka eller minska hello antalet instanser i en skaluppsättning
 > * Visa anslutningsinformation för scale set-instanser
 > * Använda datadiskar i en skaluppsättning
 
-Gå vidare till nästa kurs att lära dig mer om koncept för virtuella datorer för belastningsutjämning.
+Avancera toohello nästa självstudiekurs toolearn mer om koncept för virtuella datorer för belastningsutjämning.
 
 > [!div class="nextstepaction"]
 > [Belastningsutjämna virtuella datorer](tutorial-load-balancer.md)

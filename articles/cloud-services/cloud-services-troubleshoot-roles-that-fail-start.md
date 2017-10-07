@@ -1,6 +1,6 @@
 ---
-title: "Felsöka roller som inte går att starta | Microsoft Docs"
-description: "Här följer några vanliga orsaker till varför en tjänst i molnet roll kan inte startas. Det finns också lösningar på problemen."
+title: aaaTroubleshoot roller som inte toostart | Microsoft Docs
+description: "Här följer några vanliga orsaker till varför en tjänst i molnet roll misslyckas toostart. Det finns också lösningar toothese problem."
 services: cloud-services
 documentationcenter: 
 author: simonxjx
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 7/26/2017
 ms.author: v-six
-ms.openlocfilehash: 7d956192e8b9c3688b8b6f0108bd9296f66fbd62
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: e2fbecb08a10984add79dfc74e73de6869bb314f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Felsöka Cloud Service-roller som inte går att starta
-Här följer några vanliga problem och lösningar som rör Azure Cloud Services roller som inte går att starta.
+# <a name="troubleshoot-cloud-service-roles-that-fail-toostart"></a>Felsöka Cloud Service-roller som inte toostart
+Här följer några vanliga problem och lösningar relaterade tooAzure molntjänster roller som inte toostart.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -32,97 +32,97 @@ Sluta att svara roller och roller som reglering mellan **initierar**, **upptagen
 Symtom på DLL: er eller sammansättningar saknas kan vara:
 
 * Din rollinstans Bläddra igenom **initierar**, **upptagen**, och **stoppar** tillstånd.
-* Rollinstansen har flyttats till **klar** men om du navigerar till ditt webbprogram, visas inte sidan.
+* Rollinstansen har flyttats för**klar** men hello sidan visas inte om du navigerar tooyour webbprogram.
 
 Det finns flera metoder för att undersöka problemen.
 
 ## <a name="diagnose-missing-dll-issues-in-a-web-role"></a>Diagnostisera problem med saknas DLL-filen i en webbroll
-När du navigerar till en webbplats som har distribuerats på en webbplats roll och webbläsaren visar ett serverfel som liknar följande, det kan tyda på att en DLL-fil saknas.
+När du navigerar tooa webbplats som distribueras i en webbroll och hello webbläsaren visar en server fel liknande toohello följande, kan det indikera att en DLL-fil saknas.
 
 ![Serverfel i programmet '/'.](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503388.png)
 
 ## <a name="diagnose-issues-by-turning-off-custom-errors"></a>Diagnostisera problem genom att stänga av anpassade fel
-Mer information om fel kan visas genom att konfigurera web.config för webbrollen att ange anpassade felläget till avslaget och omdistribuera tjänsten.
+Mer information om fel kan visas genom att konfigurera hello web.config för hello web rollen tooset hello anpassade fel läge tooOff och omdistribuera hello-tjänsten.
 
-Visa fullständig fel utan att använda Fjärrskrivbord:
+tooview slutföra fler fel utan att använda Fjärrskrivbord:
 
-1. Öppna lösningen i Microsoft Visual Studio.
-2. I den **Solution Explorer**letar du upp filen web.config och öppna den.
-3. Leta upp avsnittet system.web i web.config-filen och Lägg till följande rad:
+1. Öppna hello lösning i Microsoft Visual Studio.
+2. I hello **Solution Explorer**letar du upp hello web.config-filen och öppna den.
+3. Leta upp hello system.web-avsnittet i filen web.config för hello och Lägg till följande rad hello:
 
     ```xml
     <customErrors mode="Off" />
     ```
-4. Spara filen.
-5. Paketera och distribuera om tjänsten.
+4. Spara hello-filen.
+5. Paketera och distribuera hello-tjänsten.
 
-När tjänsten är nytt, visas ett felmeddelande med namnet på sammansättningen eller DLL-filen saknas.
+När hello-tjänsten är nytt, visas ett felmeddelande med hello namnet hello sammansättningen eller DLL-filen saknas.
 
-## <a name="diagnose-issues-by-viewing-the-error-remotely"></a>Diagnostisera problem genom att visa felet via fjärranslutning
-Du kan använda Fjärrskrivbord för att få åtkomst till rollen och visa fullständig felinformation via fjärranslutning. Använd följande steg för att granska felen med hjälp av fjärrskrivbord:
+## <a name="diagnose-issues-by-viewing-hello-error-remotely"></a>Diagnostisera problem genom att visa hello fel via fjärranslutning
+Du kan använda Fjärrskrivbord tooaccess hello-rollen och visa fullständig felinformation via fjärranslutning. Använd följande steg tooview hello fel med hjälp av fjärrskrivbord hello:
 
 1. Kontrollera att Azure SDK 1.3 eller senare är installerad.
-2. Under distributionen av lösningen med hjälp av Visual Studio, välja att ”konfigurera anslutning till fjärrskrivbord...”. Mer information om hur du konfigurerar fjärrskrivbordsanslutningen finns [med hjälp av fjärrskrivbord med Azure-roller](../vs-azure-tools-remote-desktop-roles.md).
-3. I Microsoft Azure klassiska portal när instansen visar statusen **klar**, klicka på någon av rollinstanserna.
-4. Klicka på den **Anslut** ikonen i den **fjärråtkomst** område i menyfliksområdet.
-5. Logga in på den virtuella datorn med hjälp av autentiseringsuppgifterna som angavs vid konfiguration av fjärrskrivbord.
+2. Under hello distribution av hello lösning med hjälp av Visual Studio, välja för ”konfigurera anslutningar till fjärrskrivbord...”. Mer information om hur du konfigurerar hello fjärrskrivbordsanslutning finns [med hjälp av fjärrskrivbord med Azure-roller](../vs-azure-tools-remote-desktop-roles.md).
+3. I hello Microsoft klassiska Azure-portalen när hello instans visar statusen **klar**, klicka på någon av hello rollinstanser.
+4. Klicka på hello **Anslut** ikon i hello **fjärråtkomst** område i hello menyfliksområdet.
+5. Logga in toohello virtuell dator med hjälp av hello-autentiseringsuppgifter som angavs under hello fjärrskrivbord konfiguration.
 6. Öppna ett kommandofönster.
 7. Skriv `IPconfig`.
-8. Anteckna värdet för IPV4-adress.
+8. Anteckna värdet för hello IPV4-adress.
 9. Öppna Internet Explorer.
-10. Ange adressen och namnet på webbprogrammet. Till exempel `http://<IPV4 Address>/default.aspx`.
+10. Ange hello-adress och hello namn på hello webbprogram. Till exempel `http://<IPV4 Address>/default.aspx`.
 
-Gå till webbplatsen returnerar nu mer utförlig felmeddelanden:
+Navigera toohello returnerar webbplats nu mer utförlig felmeddelanden:
 
 * Serverfel i programmet '/'.
-* Beskrivning: Ett ohanterat undantag uppstod under körningen av den aktuella webbegäran. Granska stack-spårning för mer information om felet och var det uppstod i koden.
-* Undantagsinformation: System.IO.FIleNotFoundException: Det gick inte att läsa in filen eller sammansättningen ' Microsoft.WindowsAzure.StorageClient, Version = 1.1.0.0 kultur = neutral, PublicKeyToken = 31bf856ad364e35' eller en av dess beroenden. Det går inte att hitta den angivna filen.
+* Beskrivning: Ett ohanterat undantag uppstod under hello körning av hello aktuella webbegäran. Granska hello stackspårning för mer information om felet hello och ursprung i hello kod.
+* Undantagsinformation: System.IO.FIleNotFoundException: Det gick inte att läsa in filen eller sammansättningen ' Microsoft.WindowsAzure.StorageClient, Version = 1.1.0.0 kultur = neutral, PublicKeyToken = 31bf856ad364e35' eller en av dess beroenden. hello går inte att hitta angivna hello-filen.
 
 Exempel:
 
 ![Explicit serverfel i programmet '/'](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
-## <a name="diagnose-issues-by-using-the-compute-emulator"></a>Diagnostisera problem genom att använda beräkningsemulatorn
-Du kan använda Microsoft Azure-beräkningsemulatorn för att diagnostisera och felsöka problem med saknade beroenden och web.config-fel.
+## <a name="diagnose-issues-by-using-hello-compute-emulator"></a>Diagnostisera problem med hjälp av hello beräkningsemulatorn
+Du kan använda hello Microsoft Azure compute emulator toodiagnose och felsökning av problem med saknade beroenden och web.config-fel.
 
-För bästa resultat i den här metoden för diagnos bör du använda en dator eller virtuell dator som har en ren installation av Windows. Använd Windows Server 2008 R2 x64 för att simulera Azure-miljön bäst.
+För bästa resultat i den här metoden för diagnos bör du använda en dator eller virtuell dator som har en ren installation av Windows. toobest simulera hello Azure-miljön kan använda Windows Server 2008 R2 x64.
 
-1. Installera den fristående versionen av den [Azure SDK](https://azure.microsoft.com/downloads/).
-2. Skapa molntjänstprojektet på utveckling-datorn.
-3. Navigera till mappen bin\debug på molntjänstprojektet i Utforskaren.
-4. Kopiera filen .csx mapp- och .cscfg på den dator som du använder för att felsöka problem.
-5. Öppna en Azure SDK-kommandotolksfönster och Skriv på ren dator `csrun.exe /devstore:start`.
-6. I Kommandotolken, Skriv `run csrun <path to .csx folder> <path to .cscfg file> /launchBrowser`.
-7. När rollen startar visas detaljerad felinformation i Internet Explorer. Du kan också använda standard Windows felsökningsverktyg för att diagnosticera problemet.
+1. Installera hello fristående versionen av hello [Azure SDK](https://azure.microsoft.com/downloads/).
+2. Skapa hello molntjänstprojekt på hello utvecklingsdator.
+3. Navigera toohello hello molntjänstprojekt bin\debug mapp i Utforskaren.
+4. Kopiera hello .csx mapp- och .cscfg-filen toohello datorn att du använder toodebug hello problem.
+5. Öppna en Azure SDK-kommandotolksfönster och Skriv på hello ren maskin, `csrun.exe /devstore:start`.
+6. I hello kommandotolk, Skriv `run csrun <path too.csx folder> <path too.cscfg file> /launchBrowser`.
+7. När hello roll startar visas detaljerad felinformation i Internet Explorer. Du kan också använda standard Windows felsökningsverktyg toofurther diagnostisera hello problem.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnostisera problem med hjälp av IntelliTrace
 Du kan använda för arbetaren och web-roller som använder .NET Framework 4 [IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx), som finns i Microsoft Visual Studio Enterprise.
 
-Följ dessa steg om du vill distribuera tjänsten med IntelliTrace aktiverad:
+Följ dessa steg toodeploy hello-tjänsten med IntelliTrace aktiverad:
 
 1. Bekräfta att Azure SDK 1.3 eller senare är installerat.
-2. Distribuera lösningen med hjälp av Visual Studio. Under distributionen kan du kontrollera den **aktivera IntelliTrace för .NET 4 roller** kryssrutan.
-3. När instansen startar, öppnar du den **Server Explorer**.
-4. Expandera den **Azure\\molntjänster** nod och leta upp distributionen.
-5. Expandera distributionen tills du ser rollinstanserna. Högerklicka på någon av instanserna.
-6. Välj **visa IntelliTrace-loggar**. Den **IntelliTrace sammanfattning** öppnas.
-7. Leta upp avsnittet undantag sammanfattningen. Om det finns undantag, avsnittet är märkt **Undantagsdata**.
-8. Expandera den **Undantagsdata** och leta efter **System.IO.FileNotFoundException** fel som liknar följande:
+2. Distribuera hello lösning med hjälp av Visual Studio. Under distributionen, kontrollera hello **aktivera IntelliTrace för .NET 4 roller** kryssrutan.
+3. När hello instans startar öppna hello **Server Explorer**.
+4. Expandera hello **Azure\\molntjänster** nod och leta upp hello-distribution.
+5. Expandera hello-distribution tills du ser hello rollinstanser. Högerklicka på någon av hello instanser.
+6. Välj **visa IntelliTrace-loggar**. Hej **IntelliTrace sammanfattning** öppnas.
+7. Leta upp hello undantag avsnitt i hello sammanfattning. Om det finns undantag, hello-avsnittet är märkt **Undantagsdata**.
+8. Expandera hello **Undantagsdata** och leta efter **System.IO.FileNotFoundException** fel liknande toohello följande:
 
 ![Undantagsdata saknas filen eller sammansättningen](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
 
 ## <a name="address-missing-dlls-and-assemblies"></a>Adressen saknas DLL: er och sammansättningar
-Följ dessa steg för att åtgärda saknade DLL och sammansättningen fel:
+tooaddress saknas DLL-fil och montering fel, Följ dessa steg:
 
-1. Öppna lösningen i Visual Studio.
-2. I **Solution Explorer**öppnar den **referenser** mapp.
-3. Klicka på den sammansättning som identifieras i Windows.
-4. I den **egenskaper** rutan hitta **kopiera lokala egenskapen** och ange värdet **SANT**.
-5. Distribuera om Molntjänsten.
+1. Öppna hello lösningen i Visual Studio.
+2. I **Solution Explorer**öppnar hello **referenser** mapp.
+3. Klicka på hello sammansättningen som identifierats i hello-fel.
+4. I hello **egenskaper** rutan hitta **kopiera lokala egenskapen** och ange hello värdet för**SANT**.
+5. Omdistribuera hello-Molntjänsten.
 
-När du har kontrollerat att alla fel har åtgärdats kan du distribuera tjänsten utan att kontrollera den **aktivera IntelliTrace för .NET 4 roller** kryssrutan.
+När du har kontrollerat att alla fel har åtgärdats, kan du distribuera hello tjänst utan att kontrollera hello **aktivera IntelliTrace för .NET 4 roller** kryssrutan.
 
 ## <a name="next-steps"></a>Nästa steg
 Visa mer [felsökning artiklar](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) för molntjänster.
 
-Information om hur du felsöker cloud service rollen problem med hjälp av Azure PaaS datorn diagnostikdata finns [Kevin Williamson bloggserie](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+toolearn hur tootroubleshoot moln rolltjänst problem med hjälp av Azure PaaS diagnostikdata för datorn, se [Kevin Williamson bloggserie](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).

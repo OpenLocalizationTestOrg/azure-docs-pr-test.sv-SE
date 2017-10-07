@@ -1,6 +1,6 @@
 ---
-title: "Kopplingar i Azure AD Synchronization Service Manager-Gränssnittet | Microsoft Docs"
-description: "Förstå fliken kopplingar i hanteraren för synkroniseringstjänsten för Azure AD Connect."
+title: aaaConnectors i hello Azure AD Synchronization Service Manager UI | Microsoft Docs
+description: "Förstå hello kopplingar fliken i hello Synchronization Service Manager för Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -15,82 +15,82 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c0fae4b1755ca95466eeffb5ce61c1c7855d7381
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: c0969630313178b1e299385b1289360c8f787cb5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Med hjälp av anslutningar med Azure AD Connect Sync Service Manager
+# <a name="using-connectors-with-hello-azure-ad-connect-sync-service-manager"></a>Med hjälp av anslutningar med hello Azure AD Connect Sync Service Manager
 
 ![Synkronisering av Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
 
-Fliken kopplingar används för att hantera alla system Synkroniseringsmotorn är ansluten till.
+hello är kopplingar används toomanage alla system hello Synkroniseringsmotorn är ansluten till.
 
 ## <a name="connector-actions"></a>Åtgärder för kopplingen
 | Åtgärd | Kommentar |
 | --- | --- |
-| Skapa |Använd inte. Använd installationsguiden för att ansluta till ytterligare AD-skogar. |
+| Skapa |Använd inte. Använda hello installationsguiden för att ansluta tooadditional AD-skogar. |
 | Egenskaper |Används för domän- och organisationsenhetsfiltrering. |
-| [Ta bort](#delete) |För att ta bort data i anslutningsplatsen eller ta bort anslutningen till en skog. |
-| [Konfigurera körningsprofiler](#configure-run-profiles) |Förutom domän filtrering, inget att konfigurera här. Du kan använda den här åtgärden för att se redan konfigurerade körning av profiler. |
-| Kör |Används för att starta en oneoff körning av en profil. |
+| [Ta bort](#delete) |Använda tooeither hello data i hello connector utrymme eller toodelete anslutning tooa skog tas bort. |
+| [Konfigurera körningsprofiler](#configure-run-profiles) |Förutom domän filtrering ingenting tooconfigure här. Du kan använda den här åtgärden körningsprofiler toosee som redan har konfigurerats. |
+| Kör |Använda toostart som ett tillfälligt körning av en profil. |
 | Stoppa |Stoppar en koppling som körs på en profil. |
 | Exportera koppling |Använd inte. |
 | Importera koppling |Använd inte. |
 | Uppdatera anslutningen |Använd inte. |
-| Uppdatera Schema |Uppdaterar cachelagrade schemat. Det är att föredra att använda alternativet i installationsguiden i stället eftersom som också uppdateringar synkroniseras regler. |
-| [Söka Anslutarplats](#search-connector-space) |Används för att söka efter objekt och [följer ett objekt och dess data genom systemet](#follow-an-object-and-its-data-through-the-system). |
+| Uppdatera Schema |Uppdaterar hello cachelagrade schemat. Det är prioriterade toouse hello alternativ i installationsguiden för hello i stället eftersom som också uppdateringar synkroniseras regler. |
+| [Söka Anslutarplats](#search-connector-space) |Toofind objekt som används och för[följer ett objekt och dess data via hello system](#follow-an-object-and-its-data-through-the-system). |
 
 ### <a name="delete"></a>Ta bort
-Åtgärden ta bort används för två olika saker.  
+hello borttagningsåtgärden används för två olika saker.  
 ![Synkronisering av Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectordelete.png)
 
-Alternativet **ta bort anslutningsplatsen endast** tar bort alla data, men behålla konfigurationen.
+Hej alternativet **ta bort anslutningsplatsen endast** tar bort alla data, men behålla hello konfiguration.
 
-Alternativet **ta bort kopplingen och connector** tar bort data och konfiguration. Det här alternativet används när du inte vill ansluta till en skog längre.
+Hej alternativet **ta bort kopplingen och connector** tar bort hello data och hello konfiguration. Det här alternativet används när du inte vill att tooconnect tooa skog längre.
 
-Båda alternativen synkronisera alla objekt och uppdatera metaversum-objekt. Den här åtgärden är en tidskrävande åtgärd.
+Båda alternativen synkronisera alla objekt och uppdatera hello metaversum-objekt. Den här åtgärden är en tidskrävande åtgärd.
 
 ### <a name="configure-run-profiles"></a>Konfigurera körningsprofiler
-Det här alternativet kan du se körningsprofiler som konfigurerats för en koppling.
+Det här alternativet kan du toosee hello körning av profiler som konfigurerats för en koppling.
 
 ![Synkronisering av Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/configurerunprofiles.png)
 
 ### <a name="search-connector-space"></a>Söka Anslutarplats
-Sökåtgärd connector utrymme är användbar för att söka efter objekt och felsöka problem.
+hello Sökåtgärd connector utrymme är användbara toofind objekt och felsökning av dataproblem med.
 
 ![Synkronisering av Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearch.png)
 
-Starta genom att välja en **omfång**. Du kan söka baserat på data (RDN DN-fästpunkt, underträd) eller läget för objektet (alla andra alternativ).  
+Starta genom att välja en **omfång**. Du kan söka baserat på data (RDN DN-fästpunkt, underträd) eller tillstånd hello-objekt (alla andra alternativ).  
 ![Synkronisering av Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchscope.png)  
 Om du till exempel göra en underträd sökning får du alla objekt i en Organisationsenhet.  
 ![Synkronisering av Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png)  
-Från den här rutnät som du kan välja ett objekt, Välj **egenskaper**, och [följa den](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) från anslutningsplatsen källa via metaversum och att målet anslutningsplatsen.
+Från den här rutnät som du kan välja ett objekt, Välj **egenskaper**, och [följa den](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) från hello anslutningsplatsen källa, via hello metaversum och toohello mål anslutningsplatsen.
 
-### <a name="changing-the-ad-ds-account-password"></a>Ändra lösenordet för AD DS
-Om du ändrar lösenordet för synkroniseringstjänsten inte längre att kunna importera och exportera ändringar i lokala AD.   Du kan se följande:
+### <a name="changing-hello-ad-ds-account-password"></a>Ändra lösenordet för hello AD DS-konto
+Om du ändrar lösenordet för hello hello synkroniseringstjänsten kommer inte längre att kunna tooimport och exportera ändringar tooon lokala AD.   Du kan se hello följande:
 
-- Importera och exportera steget för AD-anslutningen misslyckas med felet ”inga-start-autentiseringsuppgifter”.
-- Under Windows Loggboken innehåller programhändelseloggen ett fel med händelse-ID 6000 och meddelandet ”hanteringsagenten” contoso.com ”kunde inte köras eftersom autentiseringsuppgifterna var ogiltiga”.
+- hello importera och exportera steg för hello AD-anslutningen misslyckas med felet ”inga-start-autentiseringsuppgifter”.
+- Under Windows Loggboken hello programmets händelselogg innehåller ett fel med händelse-ID 6000 och meddelandet ”hello management agent” contoso.com ”kunde inte toorun eftersom hello autentiseringsuppgifter var ogiltiga”.
 
-Lös problemet genom att uppdatera AD DS-användarkonto med hjälp av följande:
+tooresolve hello utfärda update hello AD DS-användarkonto hello följande:
 
 
-1. Starta hanteraren för synkroniseringstjänsten (START → synkroniseringstjänsten).
+1. Starta hello Synchronization Service Manager (START → synkroniseringstjänsten).
 </br>![Synkronisering av Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)
-2. Gå till den **kopplingar** fliken.
-3. Välj den AD-anslutning som är konfigurerat för att använda AD DS-konto.
+2. Gå toohello **kopplingar** fliken.
+3. Välj hello AD-koppling som är konfigurerade toouse hello AD DS-konto.
 4. Välj under åtgärder, **egenskaper**.
-5. Välj Anslut till Active Directory-skog i popup-fönstret:
-6. Skogens namn anger det motsvarande lokalt AD.
-7. Användarnamnet anger AD DS-konto som används för synkronisering.
-8. Ange det nya lösenordet för AD DS-konto i lösenordsrutan ![Azure AD Connect Sync kryptering nyckeln Utility](media/active-directory-aadconnectsync-encryption-key/key6.png)
-9. Klicka på OK för att spara det nya lösenordet och starta om synkroniseringstjänsten för att ta bort det gamla lösenordet från cacheminnet.
+5. I hello popup-fönstret, väljer du Anslut tooActive Directory-skogen:
+6. hello skogsnamnet anger hello motsvarande lokala AD.
+7. hello användarnamn Anger hello AD DS-konto som används för synkronisering.
+8. Ange hello nytt lösenord för hello AD DS-konto i hello lösenordsrutan ![Azure AD Connect Sync kryptering nyckeln Utility](media/active-directory-aadconnectsync-encryption-key/key6.png)
+9. Klicka på OK toosave hello nya lösenord och starta om hello synkroniseringstjänsten tooremove hello gamla lösenord från cacheminnet.
 
 
 
 ## <a name="next-steps"></a>Nästa steg
-Lär dig mer om den [Azure AD Connect-synkronisering](active-directory-aadconnectsync-whatis.md) konfiguration.
+Mer information om hello [Azure AD Connect-synkronisering](active-directory-aadconnectsync-whatis.md) konfiguration.
 
 Läs mer om hur du [integrerar dina lokala identiteter med Azure Active Directory](active-directory-aadconnect.md).

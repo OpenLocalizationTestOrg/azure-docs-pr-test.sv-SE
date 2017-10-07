@@ -1,6 +1,6 @@
 ---
-title: "Använda queue storage (C++) | Microsoft Docs"
-description: "Lär dig hur du använder tjänsten queue storage i Azure. Exempel är skrivna i C++."
+title: aaaHow toouse queue storage (C++) | Microsoft Docs
+description: "Lär dig hur toouse hello queue storage-tjänst i Azure. Exempel är skrivna i C++."
 services: storage
 documentationcenter: .net
 author: cbrooksmsft
@@ -14,22 +14,22 @@ ms.devlang: cpp
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: cbrooksmsft
-ms.openlocfilehash: 85e4d95549ca5edd375f3b15971634e032a3962a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 755380824890ad83774e14d258975915e10cfede
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-use-queue-storage-from-c"></a>Använda Queue Storage från C++
+# <a name="how-toouse-queue-storage-from-c"></a>Hur toouse Queue Storage från C++
 [!INCLUDE [storage-selector-queue-include](../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Översikt
-Den här guiden visar hur du utför vanliga scenarier med hjälp av Azure Queue storage-tjänst. Exemplen är skrivna i C++ och Använd den [Azure Storage-klientbibliotek för C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). Scenarier som tas upp inkluderar **infoga**, **granskning**, **komma**, och **bort** kö meddelanden, samt **skapa och ta bort köer**.
+Den här guiden visar hur tooperform vanliga scenarier med hjälp av hello Azure Queue storage-tjänst. hello exemplen är skrivna i C++ och använda hello [Azure Storage-klientbibliotek för C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md). hello beskrivs scenarier där **infoga**, **granskning**, **komma**, och **bort** kö meddelanden, samt  **Skapa och ta bort köer**.
 
 > [!NOTE]
-> Den här handboken riktar sig mot Azure Storage-klientbibliotek för C++ version 1.0.0 och senare. Den rekommenderade versionen är Storage-klientbibliotek 2.2.0, som är tillgängliga via [NuGet](http://www.nuget.org/packages/wastorage) eller [GitHub](http://github.com/Azure/azure-storage-cpp/).
+> Den här guiden riktad mot hello Azure Storage-klientbibliotek för C++ version 1.0.0 och senare. hello rekommenderas version är Storage-klientbibliotek 2.2.0, som är tillgängliga via [NuGet](http://www.nuget.org/packages/wastorage) eller [GitHub](http://github.com/Azure/azure-storage-cpp/).
 > 
 > 
 
@@ -40,19 +40,19 @@ Den här guiden visar hur du utför vanliga scenarier med hjälp av Azure Queue 
 ## <a name="create-a-c-application"></a>Skapa ett C++-program
 I den här guiden använder lagringsfunktioner som kan köras i ett C++-program.
 
-Om du vill göra det, behöver du installera Azure Storage-klientbibliotek för C++ och skapa ett Azure storage-konto i din Azure-prenumeration.
+toodo så behöver du tooinstall hello Azure Storage-klientbibliotek för C++ och skapa ett Azure storage-konto i din Azure-prenumeration.
 
-Om du vill installera Azure Storage-klientbibliotek för C++ kan du använda följande metoder:
+tooinstall hello Azure Storage-klientbibliotek för C++ kan du använda hello följande metoder:
 
-* **Linux:** Följ instruktionerna den [Azure Storage-klientbibliotek för C++ viktigt](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) sidan.
-* **Windows:** i Visual Studio klickar du på **Verktyg > NuGet Package Manager > Package Manager-konsolen**. Skriv följande kommando i den [NuGet Package Manager-konsolen](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) och tryck på **RETUR**.
+* **Linux:** Följ instruktionerna i hello hello [Azure Storage-klientbibliotek för C++ viktigt](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) sidan.
+* **Windows:** i Visual Studio klickar du på **Verktyg > NuGet Package Manager > Package Manager-konsolen**. Typen hello följande kommando i hello [NuGet Package Manager-konsolen](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) och tryck på **RETUR**.
 
 ```  
 Install-Package wastorage
 ```
 
-## <a name="configure-your-application-to-access-queue-storage"></a>Konfigurera ditt program för att komma åt Queue Storage
-Lägga till följande uttryck överst i filen C++ där du vill använda Azure storage API: er för att komma åt köer:  
+## <a name="configure-your-application-tooaccess-queue-storage"></a>Konfigurera ditt program tooaccess Queue Storage
+Lägga till följande hello innehålla instruktioner toohello överkant hello C++ filen där du vill toouse hello Azure storage-API: er tooaccess köer:  
 
 ```cpp
 #include <was/storage_account.h>
@@ -60,26 +60,26 @@ Lägga till följande uttryck överst i filen C++ där du vill använda Azure st
 ```
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Ställ in en anslutningssträng för Azure storage
-Ett Azure storage-klienten använder en anslutningssträng för lagring för att lagra slutpunkter och autentiseringsuppgifter för åtkomst till data management services. När den körs i ett klientprogram, du måste ange anslutningssträngen för lagring i följande format, med hjälp av namnet på ditt lagringskonto och åtkomstnyckeln lagring för lagringskontot som anges i den [Azure Portal](https://portal.azure.com) för den *AccountName* och *AccountKey* värden. Information om lagringskonton och snabbtangenterna finns [om Azure Lagringskonton](storage-create-storage-account.md). Det här exemplet visar hur du kan deklarera statiska fält att lagra anslutningssträngen:  
+Ett Azure storage-klienten använder en lagring sträng toostore slutpunkter och autentiseringsuppgifter för åtkomst till data management services. När den körs i ett klientprogram, du måste ange hello lagringsanslutningssträngen i hello följande format, med hello namnet på ditt konto och hello lagring lagringsåtkomstnyckel för hello storage-konto som anges i hello [Azure Portal](https://portal.azure.com)för hello *AccountName* och *AccountKey* värden. Information om lagringskonton och snabbtangenterna finns [om Azure Lagringskonton](storage-create-storage-account.md). Det här exemplet visar hur du kan deklarera en anslutningssträng för statiska fält toohold hello:  
 
 ```cpp
-// Define the connection-string with your values.
+// Define hello connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-Om du vill testa ditt program i din lokala Windows-dator, du kan använda Microsoft Azure [lagringsemulatorn](storage-use-emulator.md) som installeras med den [Azure SDK](https://azure.microsoft.com/downloads/). Storage-emulatorn är ett verktyg som simulerar Blob, köer och tabellen tjänster som är tillgängliga i Azure på utvecklingsdatorn lokala. I följande exempel visas hur du kan deklarera statiska fält för anslutningssträngen till din lokala storage-emulatorn:  
+tootest ditt program i din lokala Windows-dator kan du använda hello Microsoft Azure [lagringsemulatorn](storage-use-emulator.md) som installeras med hello [Azure SDK](https://azure.microsoft.com/downloads/). hello storage-emulatorn är ett verktyg som simulerar hello Blob, köer och tabellen tjänster som är tillgängliga i Azure på utvecklingsdatorn lokala. hello följande exempel visas hur du deklarera ett statiskt fält toohold hello anslutning sträng tooyour lokala storage-emulatorn:  
 
 ```cpp
-// Define the connection-string with Azure Storage Emulator.
+// Define hello connection-string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Om du vill starta Azure storage-emulatorn, Välj den **starta** knappen eller tryck på den **Windows** nyckel. Börja skriva **Azure Storage-emulatorn**, och välj **Microsoft Azure Storage-emulatorn** från listan med program.
+toostart hello Azure storage-emulatorn väljer hello **starta** eller tryck på knappen hello **Windows** nyckel. Börja skriva **Azure Storage-emulatorn**, och välj **Microsoft Azure Storage-emulatorn** hello listan med program.
 
-Följande exempel förutsätter att du har använt ett av dessa två sätt för att hämta anslutningssträngen för lagring.
+hello förutsätter följande exempel att du har använt någon av dessa två metoder tooget hello lagringsanslutningssträng.
 
 ## <a name="retrieve-your-connection-string"></a>Hämta anslutningssträngen
-Du kan använda den **cloud_storage_account** klass för att representera kontoinformationen för lagring. Du kan använda för att hämta information om ditt lagringskonto från anslutningssträngen för lagring av **parsa** metod.
+Du kan använda hello **cloud_storage_account** klassen toorepresent kontoinformationen för lagring. tooretrieve lagringen kontoinformation från hello anslutningssträngen för lagring kan du använda hello **parsa** metod.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -87,7 +87,7 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 ```
 
 ## <a name="how-to-create-a-queue"></a>Så här: skapa en kö
-En **cloud_queue_client** objekt kan du få referensobjekt för köer. Följande kod skapar en **cloud_queue_client** objekt.
+En **cloud_queue_client** objekt kan du få referensobjekt för köer. hello följande kod skapar en **cloud_queue_client** objekt.
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -97,115 +97,115 @@ azure::storage::cloud_storage_account storage_account = azure::storage::cloud_st
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 ```
 
-Använd den **cloud_queue_client** objekt för att hämta en referens till den kö som du vill använda. Du kan skapa kön om den inte finns.
+Använd hello **cloud_queue_client** objekt tooget en referens toohello kö som du vill toouse. Du kan skapa hello kö om den inte finns.
 
 ```cpp
-// Retrieve a reference to a queue.
+// Retrieve a reference tooa queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Create the queue if it doesn't already exist.
+// Create hello queue if it doesn't already exist.
  queue.create_if_not_exists();  
 ```
 
 ## <a name="how-to-insert-a-message-into-a-queue"></a>Så här: Infoga ett meddelande i en kö
-Om du vill infoga ett meddelande i en befintlig kö, först skapa en ny **cloud_queue_message**. Därefter anropar den **add_message** metod. En **cloud_queue_message** kan skapas från antingen en sträng eller en **byte** matris. Här är kod som skapar en kö (om den inte finns) och som infogar meddelandet ”Hello World”:
+tooinsert ett meddelande i en befintlig kö först skapa en ny **cloud_queue_message**. Därefter anropar hello **add_message** metod. En **cloud_queue_message** kan skapas från antingen en sträng eller en **byte** matris. Här är kod som skapar en kö (om den inte finns) och infogningar hello-meddelande ”Hello World”:
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the queue client.
+// Create hello queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference to a queue.
+// Retrieve a reference tooa queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Create the queue if it doesn't already exist.
+// Create hello queue if it doesn't already exist.
 queue.create_if_not_exists();
 
-// Create a message and add it to the queue.
+// Create a message and add it toohello queue.
 azure::storage::cloud_queue_message message1(U("Hello, World"));
 queue.add_message(message1);  
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Så här: granska nästa meddelande
-Du kan kika på meddelandet först i en kö utan att ta bort det från kön genom att anropa den **peek_message** metod.
+## <a name="how-to-peek-at-hello-next-message"></a>Så här: granska nästa hello-meddelande
+Du kan kika på hello-meddelande i hello framför en kö utan att ta bort den från hello kö genom att anropa hello **peek_message** metod.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the queue client.
+// Create hello queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference to a queue.
+// Retrieve a reference tooa queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Peek at the next message.
+// Peek at hello next message.
 azure::storage::cloud_queue_message peeked_message = queue.peek_message();
 
-// Output the message content.
+// Output hello message content.
 std::wcout << U("Peeked message content: ") << peeked_message.content_as_string() << std::endl;
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Så här: ändra innehållet i ett meddelande i kön
-Du kan ändra innehållet i ett meddelande direkt i kön. Om meddelandet representerar en arbetsuppgift kan du använda den här funktionen för att uppdatera arbetsuppgiftens status. Följande kod uppdaterar kömeddelandet med nytt innehåll och utökar tidsgränsen för visning med ytterligare 60 sekunder. Koden sparar statusen för arbetsuppgiften som associeras med meddelandet och ger klienten ytterligare en minut att fortsätta arbeta med meddelandet. Du kan använda den här tekniken för att spåra arbetsflöden med flera steg i kömeddelanden, utan att behöva börja om från början om ett bearbetningssteg misslyckas på grund av maskin- eller programvarufel. Normalt ska du behålla ett återförsöksvärde och om meddelandet försöks mer än n gånger, vill du ta bort den. Detta skyddar mot meddelanden som utlöser ett programfel varje gång de bearbetas.
+## <a name="how-to-change-hello-contents-of-a-queued-message"></a>Så här: ändra hello innehållet i ett meddelande i kön
+Du kan ändra hello innehållet i ett meddelande direkt i hello kö. Om hello-meddelande representerar en arbetsuppgift, kan du använda den här funktionen tooupdate hello hello arbete aktivitetens status. hello följande kod uppdaterar hello kömeddelandet med nytt innehåll och anger hello synlighet timeout tooextend ytterligare 60 sekunder. Detta sparar hello statusen för arbetsuppgiften som associeras med hello-meddelande och ger hello klienten en annan minut toocontinue som arbetar på hello-meddelande. Du kan använda den här tekniken tootrack arbetsflöden med flera steg i Kömeddelanden, utan att behöva toostart över från hello början om ett bearbetningssteg misslyckas på grund av toohardware eller ett programvarufel. Normalt ska du behålla ett återförsöksvärde och om hello-meddelande försöks mer än n gånger, vill du ta bort den. Detta skyddar mot meddelanden som utlöser ett programfel varje gång de bearbetas.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_conection_string);
 
-// Create the queue client.
+// Create hello queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference to a queue.
+// Retrieve a reference tooa queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Get the message from the queue and update the message contents.
-// The visibility timeout "0" means make it visible immediately.
-// The visibility timeout "60" means the client can get another minute to continue
-// working on the message.
+// Get hello message from hello queue and update hello message contents.
+// hello visibility timeout "0" means make it visible immediately.
+// hello visibility timeout "60" means hello client can get another minute toocontinue
+// working on hello message.
 azure::storage::cloud_queue_message changed_message = queue.get_message();
 
 changed_message.set_content(U("Changed message"));
 queue.update_message(changed_message, std::chrono::seconds(60), true);
 
-// Output the message content.
+// Output hello message content.
 std::wcout << U("Changed message content: ") << changed_message.content_as_string() << std::endl;  
 ```
 
-## <a name="how-to-de-queue-the-next-message"></a>Så här: ta bort nästa meddelande från kön
-Koden tar bort ett meddelande från en kö i två steg. När du anropar **get_message**, du får nästa meddelande i en kö. Ett meddelande som returneras från **get_message** blir osynligt för andra koder som läsa meddelanden från den här kön. Om du vill slutföra borttagningen av meddelandet från kön, måste du också anropa **delete_message**. Den här tvåstegsprocessen för att ta bort ett meddelande säkerställer att om din kod inte kan bearbeta ett meddelande på grund av ett maskin- eller programvarufel så kan en annan instans av koden hämta samma meddelande och försöka igen. Koden anropar **delete_message** direkt efter att meddelandet har bearbetats.
+## <a name="how-to-de-queue-hello-next-message"></a>Så här: Frigör kö nästa hello-meddelande
+Koden tar bort ett meddelande från en kö i två steg. När du anropar **get_message**, du får hello nästa meddelande i en kö. Ett meddelande som returneras från **get_message** blir osynligt tooany annan kod läsa meddelanden från den här kön. toofinish att ta bort hello-meddelande från kön hello, måste du också anropa **delete_message**. Den här tvåstegsprocessen för att ta bort ett meddelande säkerställer som om din kod inte tooprocess får ett meddelande på grund av fel toohardware eller programvara, en annan instans av koden hello samma meddelande och försök igen. Koden anropar **delete_message** direkt efter hello-meddelande har bearbetats.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the queue client.
+// Create hello queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference to a queue.
+// Retrieve a reference tooa queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Get the next message.
+// Get hello next message.
 azure::storage::cloud_queue_message dequeued_message = queue.get_message();
 std::wcout << U("Dequeued message: ") << dequeued_message.content_as_string() << std::endl;
 
-// Delete the message.
+// Delete hello message.
 queue.delete_message(dequeued_message);
 ```
 
 ## <a name="how-to-leverage-additional-options-for-de-queuing-messages"></a>Så här: använda fler alternativ för meddelanden ur kön
-Det finns två metoder som du kan använda för att anpassa meddelandehämtningen från en kö. För det första kan du hämta en grupp med meddelanden (upp till 32). För det andra kan du ange en längre eller kortare tidsgräns för osynlighet för att ge koden mer eller mindre tid att bearbeta klart varje meddelande. Följande kodexempel används den **get_messages** metod för att hämta 20 meddelanden i ett anrop. Sedan bearbetas varje meddelande med hjälp av en **för** loop. Koden ställer också in tidsgränsen för osynlighet till fem minuter för varje meddelande. Observera att de fem minuterna startar för alla meddelanden samtidigt, efter 5 minuter har gått sedan anropet till **get_messages**, alla meddelanden som inte har tagits bort kommer att bli synliga igen.
+Det finns två metoder som du kan använda för att anpassa meddelandehämtningen från en kö. Först får du en grupp med meddelanden (upp too32). Andra, du kan ange en tidsgräns för osynlighet längre eller kortare för att ge koden mer eller mindre tid toofully bearbeta varje meddelande. hello följande kodexempel används hello **get_messages** metoden tooget 20 meddelanden i ett anrop. Sedan bearbetas varje meddelande med hjälp av en **för** loop. Den anger också hello osynlighet timeout toofive minuter för varje meddelande. Observera att hello 5 minuter startar för alla meddelanden med hello samma tid, så efter 5 minuter har gått sedan hello anropet för**get_messages**, alla meddelanden som inte har tagits bort kommer att bli synliga igen.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the queue client.
+// Create hello queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference to a queue.
+// Retrieve a reference tooa queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
 // Dequeue some queue messages (maximum 32 at a time) and set their visibility timeout to
@@ -213,33 +213,33 @@ azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sampl
 azure::storage::queue_request_options options;
 azure::storage::operation_context context;
 
-// Retrieve 20 messages from the queue with a visibility timeout of 300 seconds.
+// Retrieve 20 messages from hello queue with a visibility timeout of 300 seconds.
 std::vector<azure::storage::cloud_queue_message> messages = queue.get_messages(20, std::chrono::seconds(300), options, context);
 
 for (auto it = messages.cbegin(); it != messages.cend(); ++it)
 {
-    // Display the contents of the message.
+    // Display hello contents of hello message.
     std::wcout << U("Get: ") << it->content_as_string() << std::endl;
 }
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Så här: hämta kölängden
-Du kan hämta en uppskattning av antalet meddelanden i en kö. Den **download_attributes** metoden ber kötjänsten att hämta köattributen, inklusive antalet meddelanden. Den **approximate_message_count** metoden hämtar det ungefärliga antalet meddelanden i kön.
+## <a name="how-to-get-hello-queue-length"></a>Så här: hämta hello Kölängd
+Du kan få en uppskattning av hello antal meddelanden i en kö. Hej **download_attributes** metoden ber hello kön service tooretrieve hello köattributen, inklusive antal för hello-meddelande. Hej **approximate_message_count** metoden hämtar hello Ungefärligt antal meddelanden i kö för hello.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the queue client.
+// Create hello queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference to a queue.
+// Retrieve a reference tooa queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// Fetch the queue attributes.
+// Fetch hello queue attributes.
 queue.download_attributes();
 
-// Retrieve the cached approximate message count.
+// Retrieve hello cached approximate message count.
 int cachedMessageCount = queue.approximate_message_count();
 
 // Display number of messages.
@@ -247,27 +247,27 @@ std::wcout << U("Number of messages in queue: ") << cachedMessageCount << std::e
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Så här: ta bort en kö
-Om du vill ta bort en kö och alla meddelanden som finns i den anropar den **delete_queue_if_exists** metoden för köobjektet.
+en kö och alla hälsningsmeddelande som ingår i den anropet hello toodelete **delete_queue_if_exists** metod för hello köobjekt.
 
 ```cpp
 // Retrieve storage account from connection-string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 
-// Create the queue client.
+// Create hello queue client.
 azure::storage::cloud_queue_client queue_client = storage_account.create_cloud_queue_client();
 
-// Retrieve a reference to a queue.
+// Retrieve a reference tooa queue.
 azure::storage::cloud_queue queue = queue_client.get_queue_reference(U("my-sample-queue"));
 
-// If the queue exists and delete it.
+// If hello queue exists and delete it.
 queue.delete_queue_if_exists();  
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig grunderna i Queue storage kan du följa dessa länkar om du vill veta mer om Azure Storage.
+Nu när du har lärt dig hello grunderna i Queue storage kan du följa dessa länkar toolearn mer om Azure Storage.
 
-* [Hur du använder Blob Storage från C++](storage-c-plus-plus-how-to-use-blobs.md)
-* [Använda Table Storage från C++](storage-c-plus-plus-how-to-use-tables.md)
+* [Hur toouse Blob Storage från C++](storage-c-plus-plus-how-to-use-blobs.md)
+* [Hur toouse Table Storage från C++](storage-c-plus-plus-how-to-use-tables.md)
 * [Lista över Azure Storage-resurser i C++](storage-c-plus-plus-enumeration.md)
 * [Storage-klientbibliotek för C++-referens](http://azure.github.io/azure-storage-cpp)
 * [Azure Storage-dokumentation](https://azure.microsoft.com/documentation/services/storage/)

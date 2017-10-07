@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Gateway med intern belastningsutjämnare - PowerShell | Microsoft Docs"
-description: "Den här sidan innehåller anvisningar för hur du skapar, konfigurerar, startar och tar bort en Azure-programgateway med en intern belastningsutjämnare (ILB) med hjälp av Azure Resource Manager"
+title: "aaaUsing Azure Programgateway med interna belastningsutjämnare - PowerShell | Microsoft Docs"
+description: "Den här sidan innehåller instruktioner toocreate, konfigurera, starta och ta bort en Azure Programgateway med intern belastningsutjämnare (ILB) för Azure Resource Manager"
 documentationcenter: na
 services: application-gateway
 author: georgewallace
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-ms.openlocfilehash: d218eab7e9f124e4825a8a781b4eeb0dcca58b4a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: dd0d7e954b1fa219ae6ebe42cb4b479dbcf08653
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb-by-using-azure-resource-manager"></a>Skapa en programgateway med en intern belastningsutjämnare (ILB) med hjälp av Azure Resource Manager
 
@@ -26,39 +26,39 @@ ms.lasthandoff: 08/03/2017
 > * [PowerShell och den klassiska Azure-portalen](application-gateway-ilb.md)
 > * [PowerShell och Azure Resource Manager](application-gateway-ilb-arm.md)
 
-Azure Application Gateway kan konfigureras med en Internetuppkopplad VIP eller med en intern slutpunkt som inte är exponerad för Internet, även kallad en ILB-slutpunkt (intern belastningsutjämnare). Det kan vara praktiskt att konfigurera gatewayen med en ILB för interna affärsprogram som inte är exponerade för Internet. Det är också användbart för tjänster och nivåer i ett affärsprogram med flera nivåer som finns vid en säkerhetsgräns som inte är exponerad för Internet men som fortfarande kräver distribution med resursallokering (round-robin), sessionsvaraktighet eller SSL-avslut (Secure Sockets Layer).
+Azure Application Gateway kan konfigureras med en Internet-riktade VIP eller med en intern slutpunkt som inte är synliga toohello Internet, även kallat en intern belastningsutjämnare (ILB) slutpunkt. Konfigurera hello gateway med en ILB är användbart för interna line-of-business-program som inte är synliga toohello Internet. Det är också användbart för tjänster och nivåer inom en flernivåapp som sitter i en säkerhetsgräns som inte är synliga toohello Internet men fortfarande kräver resursallokering belastningsutjämna distribution, varaktighet för sessionen eller Secure Sockets Layer (SSL)-avslutning.
 
-Den här artikeln beskriver steg för steg hur du konfigurerar en programgateway med en ILB.
+Den här artikeln vägleder dig genom hello steg tooconfigure en Programgateway med en ILB.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-1. Installera den senaste versionen av Azure PowerShell-cmdlets med hjälp av installationsprogrammet för webbplattform. Du kan hämta och installera den senaste versionen från avsnittet om **Windows PowerShell** på [hämtningssidan](https://azure.microsoft.com/downloads/).
-2. Du ska skapa ett virtuellt nätverk och ett undernät för Application Gateway. Kontrollera att inga virtuella datorer eller molndistributioner använder undernätet. Application Gateway måste vara fristående i ett virtuellt nätverks undernät.
-3. De servrar som du konfigurerar för användning av programgatewayen måste finnas i det virtuella nätverket eller ha slutpunkter som skapats där eller tilldelats en offentlig IP-/VIP-adress.
+1. Installera hello senaste versionen av hello Azure PowerShell-cmdlets med hello installationsprogram för webbplattform. Du kan hämta och installera hello senaste versionen från hello **Windows PowerShell** avsnitt i hello [Nedladdningssida](https://azure.microsoft.com/downloads/).
+2. Du ska skapa ett virtuellt nätverk och ett undernät för Application Gateway. Se till att inga virtuella datorer eller molndistributioner använder hello undernät. Application Gateway måste vara fristående i ett virtuellt nätverks undernät.
+3. hello-servrar som du konfigurerar toouse hello Programgateway måste finnas eller tilldelats deras slutpunkter har skapats i hello virtuellt nätverk eller med en offentlig IP-adress/VIP.
 
-## <a name="what-is-required-to-create-an-application-gateway"></a>Vad krävs för att skapa en programgateway?
+## <a name="what-is-required-toocreate-an-application-gateway"></a>Vad är obligatoriska toocreate en Programgateway?
 
-* **Backend-serverpool:** Listan med IP-adresser för backend-servrarna. IP-adresserna som anges måste antingen höra till det virtuella nätverket men i ett annat undernät för programgatewayen eller vara en offentlig IP/VIP.
-* **Inställningar för backend-serverpool:** Varje pool har inställningar som port, protokoll och cookiebaserad tillhörighet. Dessa inställningar är knutna till en pool och tillämpas på alla servrar i poolen.
-* **Frontend-port:** Den här porten är den offentliga porten som är öppen på programgatewayen. Trafiken kommer till den här porten och omdirigeras till en av backend-servrarna.
-* **Lyssnare:** Lyssnaren har en frontend-port, ett protokoll (Http eller Https; dessa är skiftlägeskänsliga) och SSL-certifikatnamnet (om du konfigurerar SSL-avlastning).
-* **Regel:** Regeln binder lyssnaren och backend-serverpoolen och definierar vilken backend-serverpool som trafiken ska dirigeras till när den når en viss lyssnare. För närvarande stöds endast regeln *basic*. Regeln *basic* använder belastningsutjämning med resursallokering.
+* **Backend-serverpoolen:** hello lista över IP-adresser för hello backend-servrar. hello IP-adresser i listan ska antingen tillhöra toohello virtuellt nätverk, men i ett annat undernät för hello Programgateway eller ska vara en offentlig IP-adress/VIP.
+* **Inställningar för backend-serverpool:** Varje pool har inställningar som port, protokoll och cookiebaserad tillhörighet. De här inställningarna är bundet tooa poolen och tillämpade tooall servrar inom hello poolen.
+* **Frontend-port:** den här porten är hello offentliga som öppnas på hello Programgateway. Trafik träffar den här porten och sedan hämtar omdirigeras tooone hello backend-servrar.
+* **Lyssnare:** hello-lyssnare har en frontend-port, ett protokoll (Http eller Https, dessa är skiftlägeskänsligt), och hello SSL-certifikatnamn (om hur du konfigurerar SSL-avlastning).
+* **Regel:** hello regeln Binder hello-lyssnare och hello backend-serverpoolen och definierar vilken backend-server pool hello trafik ska vara riktad toowhen den når en viss lyssnare. För närvarande endast hello *grundläggande* regeln stöds. Hej *grundläggande* regeln är resursallokering belastningsdistribution.
 
 ## <a name="create-an-application-gateway"></a>Skapa en programgateway
 
-Skillnaden mellan att använda den klassiska Azure-portalen och Azure Resource Manager är i vilken ordning du skapar programgatewayen och de objekt som ska konfigureras.
-Med Resource Manager konfigureras alla objekt som bildar en programgateway separat och sätts sedan ihop för att skapa en programgatewayresurs.
+hello skillnaden mellan att använda den klassiska Azure och Azure Resource Manager är hello order som du kan skapa hello Programgateway och hello-objekt som behöver toobe konfigurerats.
+Med Resource Manager alla poster i en Programgateway konfigureras individuellt och sedan sätta ihop toocreate hello programresursen gateway.
 
-Här följer de steg som krävs för att skapa en programgateway:
+Här följer hello steg som är nödvändiga toocreate en Programgateway:
 
 1. Skapa en resursgrupp för Resource Manager
-2. Skapa ett virtuellt nätverk och ett undernät för programgatewayen
+2. Skapa ett virtuellt nätverk och ett undernät för hello Programgateway
 3. Skapa ett konfigurationsobjekt för programgatewayen
 4. Skapa en resurs för programgatewayen
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Skapa en resursgrupp för Resource Manager
 
-Glöm inte att byta PowerShell-läge så att du kan använda cmdlets för Azure Resource Manager. Mer information finns i [Använda Windows PowerShell med Resource Manager](../powershell-azure-resource-manager.md).
+Kontrollera att du växla PowerShell läge toouse hello Azure Resource Manager-cmdlets. Mer information finns i [Använda Windows PowerShell med Resource Manager](../powershell-azure-resource-manager.md).
 
 ### <a name="step-1"></a>Steg 1
 
@@ -68,17 +68,17 @@ Login-AzureRmAccount
 
 ### <a name="step-2"></a>Steg 2
 
-Kontrollera prenumerationerna för kontot.
+Kontrollera hello prenumerationer för hello-kontot.
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Du ombeds att autentisera dig med dina autentiseringsuppgifter.
+Du kan ange tooauthenticate med dina autentiseringsuppgifter.
 
 ### <a name="step-3"></a>Steg 3
 
-Välj vilka av dina Azure-prenumerationer som du vill använda.
+Välj vilka av dina Azure-prenumerationer toouse.
 
 ```powershell
 Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
@@ -92,13 +92,13 @@ Skapa en ny resursgrupp (hoppa över detta steg om du använder en befintlig res
 New-AzureRmResourceGroup -Name appgw-rg -location "West US"
 ```
 
-Azure Resource Manager kräver att alla resursgrupper definierar en plats. Den här platsen används som standardplats för resurser i resursgruppen. Se till att alla kommandon du använder för att skapa en programgateway använder samma resursgrupp.
+Azure Resource Manager kräver att alla resursgrupper anger en plats. Detta används som hello standardplatsen för resurser i resursgruppen. Se till att alla kommandon toocreate använder en Programgateway hello samma resursgrupp.
 
-I föregående exempel kan vi skapat en resursgrupp med namnet ”appgw rg” och plats ”West US”.
+I föregående exempel hello, skapat vi en resursgrupp med namnet ”appgw rg” och plats ”USA, västra”.
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Skapa ett virtuellt nätverk och ett undernät för programgatewayen
+## <a name="create-a-virtual-network-and-a-subnet-for-hello-application-gateway"></a>Skapa ett virtuellt nätverk och ett undernät för hello Programgateway
 
-Följande exempel illustrerar hur du skapar ett virtuellt nätverk med hjälp av Resource Manager:
+följande exempel visar hur hello toocreate ett virtuellt nätverk med hjälp av hanteraren för filserverresurser:
 
 ### <a name="step-1"></a>Steg 1
 
@@ -106,7 +106,7 @@ Följande exempel illustrerar hur du skapar ett virtuellt nätverk med hjälp av
 $subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 ```
 
-Det här steget tilldelas en undernät variabel som används för att skapa ett virtuellt nätverk adressintervallet 10.0.0.0/24.
+Det här steget tilldelas hello adressintervallet 10.0.0.0/24 tooa undernät variabeln toobe används toocreate ett virtuellt nätverk.
 
 ### <a name="step-2"></a>Steg 2
 
@@ -114,7 +114,7 @@ Det här steget tilldelas en undernät variabel som används för att skapa ett 
 $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 ```
 
-Det här steget skapar ett virtuellt nätverk med namnet ”appgwvnet” i resursen grupp ”appgw-rg” för regionen USA, västra med prefixet 10.0.0.0/16 med undernätet 10.0.0.0/24.
+Det här steget skapar ett virtuellt nätverk med namnet ”appgwvnet” i resursen grupp ”appgw-rg” för hello västra USA region med undernätet 10.0.0.0/24 hello prefixet 10.0.0.0/16.
 
 ### <a name="step-3"></a>Steg 3
 
@@ -122,7 +122,7 @@ Det här steget skapar ett virtuellt nätverk med namnet ”appgwvnet” i resur
 $subnet = $vnet.subnets[0]
 ```
 
-Det här steget tilldelas variabeln $subnet i nästa steg undernätets objekt.
+Det här steget tilldelas hello undernät objektet toovariable $subnet hello nästa steg.
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Skapa ett konfigurationsobjekt för programgatewayen
 
@@ -132,7 +132,7 @@ Det här steget tilldelas variabeln $subnet i nästa steg undernätets objekt.
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 ```
 
-Det här steget skapar ett program gateway IP-konfiguration med namnet ”gatewayIP01”. När Application Gateway startar hämtar den en IP-adress från det konfigurerade undernätet och dirigerar nätverkstrafik till IP-adresserna i backend-IP-poolen. Tänk på att varje instans använder en IP-adress.
+Det här steget skapar ett program gateway IP-konfiguration med namnet ”gatewayIP01”. När Programgateway startar hämtar en IP-adress från hello-undernät som konfigurerats och dirigera trafik toohello IP-adresser på nätverket i hello backend-IP-adresspool. Tänk på att varje instans använder en IP-adress.
 
 ### <a name="step-2"></a>Steg 2
 
@@ -140,7 +140,7 @@ Det här steget skapar ett program gateway IP-konfiguration med namnet ”gatewa
 $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
-Det här steget konfigurerar backend-IP-adresspool med namnet ”pool01” med IP-adresser ”10.1.1.8, 10.1.1.9, 10.1.1.10”. Det här är IP-adresserna som tar emot nätverkstrafiken som kommer från frontend-IP-slutpunkten. Du ersätter de omnämnda IP-adresserna och lägger till ditt eget programs IP-adresslutpunkter.
+Det här steget konfigurerar hello backend-IP-adresspool med namnet ”pool01” med IP-adresser ”10.1.1.8, 10.1.1.9, 10.1.1.10”. De är hello IP-adresser som tar emot hello nätverkstrafik som kommer från hello frontend IP-slutpunkt. Ersätt hello föregående IP-adresser tooadd egna programslutpunkter IP-adress.
 
 ### <a name="step-3"></a>Steg 3
 
@@ -148,7 +148,7 @@ Det här steget konfigurerar backend-IP-adresspool med namnet ”pool01” med I
 $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-Det här steget konfigurerar programmet gateway inställningen ”poolsetting01” för den belastningsutjämnade trafik i backend-poolen.
+Det här steget konfigurerar programmet gateway inställningen ”poolsetting01” för hello belastningsutjämnade trafik i hello backend-adresspool.
 
 ### <a name="step-4"></a>Steg 4
 
@@ -156,7 +156,7 @@ Det här steget konfigurerar programmet gateway inställningen ”poolsetting01�
 $fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 ```
 
-Det här steget konfigurerar frontend IP-port med namnet ”frontendport01” för ILB.
+Det här steget konfigurerar hello frontend IP-port med namnet ”frontendport01” för hello ILB.
 
 ### <a name="step-5"></a>Steg 5
 
@@ -164,7 +164,7 @@ Det här steget konfigurerar frontend IP-port med namnet ”frontendport01” f�
 $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 ```
 
-Det här steget skapar frontend IP-konfiguration som kallas ”fipconfig01” och associerar den med en privat IP-adress från det aktuella undernätet för virtuellt nätverk.
+Det här steget skapar hello frontend IP-konfiguration som kallas ”fipconfig01” och associerar den med en privat IP-adress från hello aktuella undernät för virtuellt nätverk.
 
 ### <a name="step-6"></a>Steg 6
 
@@ -172,7 +172,7 @@ Det här steget skapar frontend IP-konfiguration som kallas ”fipconfig01” oc
 $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 ```
 
-Det här steget skapar lyssnaren kallas ”listener01” och associerar frontend-port till frontend IP-konfigurationen.
+Det här steget skapar hello lyssnare som kallas ”listener01” och associerar hello frontend port toohello frontend IP-konfiguration.
 
 ### <a name="step-7"></a>Steg 7
 
@@ -180,7 +180,7 @@ Det här steget skapar lyssnaren kallas ”listener01” och associerar frontend
 $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
-Det här steget skapar routning belastningsutjämningsregeln kallas ”rule01” som konfigurerar belastningsutjämning belastningen.
+Det här steget skapar hello routning belastningsutjämningsregeln kallas ”rule01” som konfigurerar hello belastningsutjämnaren GUID.
 
 ### <a name="step-8"></a>Steg 8
 
@@ -188,32 +188,32 @@ Det här steget skapar routning belastningsutjämningsregeln kallas ”rule01”
 $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 ```
 
-Det här steget konfigurerar instansstorleken för programgatewayen.
+Det här steget konfigurerar hello instansstorleken för hello Programgateway.
 
 > [!NOTE]
-> Standardvärdet för *InstanceCount* är 2, och det högsta värdet är 10. Standardvärdet för *GatewaySize* är Medium. Du kan välja mellan Standard_Small, Standard_Medium och Standard_Large.
+> Hej standardvärdet för *InstanceCount* är 2, med ett maximalt värde 10. Hej standardvärdet för *GatewaySize* är Medium. Du kan välja mellan Standard_Small, Standard_Medium och Standard_Large.
 
 ## <a name="create-an-application-gateway-by-using-new-azureapplicationgateway"></a>Skapa en programgateway med hjälp av New-AzureApplicationGateway
 
-Skapar en Programgateway med alla konfigurationsobjekt från föregående steg. I det här exemplet heter programgatewayen ”appgwtest”.
+Skapar en Programgateway med alla konfigurationsobjekt från hello föregående steg. I det här exemplet kallas hello Programgateway ”appgwtest”.
 
 ```powershell
 $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-Det här steget skapar en Programgateway med alla konfigurationsobjekt från föregående steg. I det här exemplet heter programgatewayen ”appgwtest”.
+Det här steget skapar en Programgateway med alla konfigurationsobjekt från hello föregående steg. I exemplet hello kallas hello Programgateway ”appgwtest”.
 
 ## <a name="delete-an-application-gateway"></a>Ta bort en programgateway
 
-Om du vill ta bort en Programgateway, måste du göra följande i ordning:
+toodelete en Programgateway måste toodo hello följa stegen i ordning:
 
-1. Stoppa gatewayen med hjälp av cmdleten `Stop-AzureRmApplicationGateway`.
-2. Ta bort gatewayen med hjälp av cmdleten `Remove-AzureRmApplicationGateway`.
-3. Kontrollera att gatewayen har tagits bort med hjälp av cmdleten `Get-AzureApplicationGateway`.
+1. Använd hello `Stop-AzureRmApplicationGateway` cmdlet toostop hello gateway.
+2. Använd hello `Remove-AzureRmApplicationGateway` cmdlet tooremove hello gateway.
+3. Kontrollera att hello-gateway har tagits bort med hjälp av hello `Get-AzureApplicationGateway` cmdlet.
 
 ### <a name="step-1"></a>Steg 1
 
-Hämta objektet för programgatewayen och associera det med variabeln ”$getgw”.
+Hämta hello programobjektet gateway och associera den tooa variabeln ”$getgw”.
 
 ```powershell
 $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
@@ -221,7 +221,7 @@ $getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw
 
 ### <a name="step-2"></a>Steg 2
 
-Använd `Stop-AzureRmApplicationGateway` för att stoppa programgatewayen. Det här exemplet visas den `Stop-AzureRmApplicationGateway` cmdleten på den första raden, följt av utdata.
+Använd `Stop-AzureRmApplicationGateway` toostop hello Programgateway. Det här exemplet visar hello `Stop-AzureRmApplicationGateway` cmdlet på hello första rad, följt av hello utdata.
 
 ```powershell
 Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
@@ -235,7 +235,7 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 ```
 
-När programgatewayen är i ett stoppat läge kan du använda cmdleten `Remove-AzureRmApplicationGateway` för att ta bort tjänsten.
+När hello Programgateway är i ett stoppat tillstånd, använder hello `Remove-AzureRmApplicationGateway` cmdlet tooremove hello-tjänsten.
 
 ```powershell
 Remove-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
@@ -250,9 +250,9 @@ Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 ```
 
 > [!NOTE]
-> Du kan använda växeln **-force** om du inte vill att några bekräftelsemeddelanden ska visas.
+> Hej **-tvinga** växel kan vara används toosuppress hello ta bort bekräftelsemeddelande.
 
-Du kan kontrollera att tjänsten har tagits bort genom att använda cmdleten `Get-AzureRmApplicationGateway`. Det här steget är inte obligatoriskt.
+tooverify som hello tjänsten har tagits bort kan du använda hello `Get-AzureRmApplicationGateway` cmdlet. Det här steget är inte obligatoriskt.
 
 ```powershell
 Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
@@ -261,14 +261,14 @@ Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 ```
 VERBOSE: 10:52:46 PM - Begin Operation: Get-AzureApplicationGateway
 
-Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
+Get-AzureApplicationGateway : ResourceNotFound: hello gateway does not exist.
 ```
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill konfigurera SSL-avlastning läser du [Konfigurera en programgateway för SSL-avlastning](application-gateway-ssl.md).
+Om du vill tooconfigure SSL-avlastning, se [konfigurera en Programgateway för SSL-avlastning](application-gateway-ssl.md).
 
-Om du vill konfigurera en programgateway för användning med en intern belastningsutjämnare läser du [Skapa en programgateway med en intern belastningsutjämnare (ILB)](application-gateway-ilb.md).
+Om du vill tooconfigure ett program gateway toouse med en ILB finns [skapa en Programgateway med en intern belastningsutjämnare (ILB)](application-gateway-ilb.md).
 
 Om du vill ha mer information om belastningsutjämningsalternativ i allmänhet läser du:
 
