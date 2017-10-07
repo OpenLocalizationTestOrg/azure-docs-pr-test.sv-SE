@@ -1,6 +1,6 @@
 ---
-title: "Kräver Användartilldelning - Azure AD | Microsoft Docs"
-description: "Så här kräver Användartilldelning för Azure-program."
+title: "aaaRequire Användartilldelning - Azure AD | Microsoft Docs"
+description: "Hur toorequire Användartilldelning för Azure-program."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: kgremban
 robots: noindex
-ms.openlocfilehash: 079b806c041a4a21e9350342867aee581c57bf45
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b72037cb2321fe03a8ecbbefb568029ce903a126
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-ad-and-applications-require-user-assignment"></a><span data-ttu-id="cb625-103">Azure AD och program: kräver Användartilldelning</span><span class="sxs-lookup"><span data-stu-id="cb625-103">Azure AD and applications: Require user assignment</span></span>
-## <a name="requiring-user-assignment"></a><span data-ttu-id="cb625-104">Kräver Användartilldelning</span><span class="sxs-lookup"><span data-stu-id="cb625-104">Requiring User Assignment</span></span>
-1. <span data-ttu-id="cb625-105">Logga in på Azure-portalen med ett administratörskonto.</span><span class="sxs-lookup"><span data-stu-id="cb625-105">Log in to the Azure portal with an administrator account.</span></span>
-2. <span data-ttu-id="cb625-106">Klicka på den **alla objekt** objekt på huvudmenyn.</span><span class="sxs-lookup"><span data-stu-id="cb625-106">Click on the **All Items** item in the main menu.</span></span>
-3. <span data-ttu-id="cb625-107">Välj det bibliotek som du använder för programmet.</span><span class="sxs-lookup"><span data-stu-id="cb625-107">Choose the directory you are using for the application.</span></span>
-4. <span data-ttu-id="cb625-108">Klicka på den **program** fliken.</span><span class="sxs-lookup"><span data-stu-id="cb625-108">Click on the **APPLICATIONS** tab.</span></span>
-5. <span data-ttu-id="cb625-109">Markera programmet i listan över program som är associerade med den här katalogen.</span><span class="sxs-lookup"><span data-stu-id="cb625-109">Select the application from the list of applications associated with this directory.</span></span>
-6. <span data-ttu-id="cb625-110">Klicka på den **konfigurera** fliken.</span><span class="sxs-lookup"><span data-stu-id="cb625-110">Click the **CONFIGURE** tab.</span></span>
-7. <span data-ttu-id="cb625-111">Ändra den **användaren tilldelning krävs för att Access-appen** växla till Ja.</span><span class="sxs-lookup"><span data-stu-id="cb625-111">Change the **User Assignment Required to Access App** toggle to Yes.</span></span>
-8. <span data-ttu-id="cb625-112">Klicka på den **spara** längst ned på skärmen.</span><span class="sxs-lookup"><span data-stu-id="cb625-112">Click the **Save** button at the bottom of the screen.</span></span>
+# <a name="azure-ad-and-applications-require-user-assignment"></a><span data-ttu-id="d34b9-103">Azure AD och program: kräver Användartilldelning</span><span class="sxs-lookup"><span data-stu-id="d34b9-103">Azure AD and applications: Require user assignment</span></span>
+## <a name="requiring-user-assignment"></a><span data-ttu-id="d34b9-104">Kräver Användartilldelning</span><span class="sxs-lookup"><span data-stu-id="d34b9-104">Requiring User Assignment</span></span>
+1. <span data-ttu-id="d34b9-105">Logga in toohello Azure-portalen med ett administratörskonto.</span><span class="sxs-lookup"><span data-stu-id="d34b9-105">Log in toohello Azure portal with an administrator account.</span></span>
+2. <span data-ttu-id="d34b9-106">Klicka på hello **alla objekt** objekt i hello huvudmenyn.</span><span class="sxs-lookup"><span data-stu-id="d34b9-106">Click on hello **All Items** item in hello main menu.</span></span>
+3. <span data-ttu-id="d34b9-107">Välja hello-katalog som du använder för hello program.</span><span class="sxs-lookup"><span data-stu-id="d34b9-107">Choose hello directory you are using for hello application.</span></span>
+4. <span data-ttu-id="d34b9-108">Klicka på hello **program** fliken.</span><span class="sxs-lookup"><span data-stu-id="d34b9-108">Click on hello **APPLICATIONS** tab.</span></span>
+5. <span data-ttu-id="d34b9-109">Välj hello programmet hello listan över program som är associerade med den här katalogen.</span><span class="sxs-lookup"><span data-stu-id="d34b9-109">Select hello application from hello list of applications associated with this directory.</span></span>
+6. <span data-ttu-id="d34b9-110">Klicka på hello **konfigurera** fliken.</span><span class="sxs-lookup"><span data-stu-id="d34b9-110">Click hello **CONFIGURE** tab.</span></span>
+7. <span data-ttu-id="d34b9-111">Ändra hello **användaren tilldelning krävs tooAccess App** växla tooYes.</span><span class="sxs-lookup"><span data-stu-id="d34b9-111">Change hello **User Assignment Required tooAccess App** toggle tooYes.</span></span>
+8. <span data-ttu-id="d34b9-112">Klicka på hello **spara** knappen längst ned hello hello-skärmen.</span><span class="sxs-lookup"><span data-stu-id="d34b9-112">Click hello **Save** button at hello bottom of hello screen.</span></span>
 
-<span data-ttu-id="cb625-113">Nu behöver du tilldela användare och/eller grupper till programmet.</span><span class="sxs-lookup"><span data-stu-id="cb625-113">You will now have to assign users and/or groups to the application.</span></span> <span data-ttu-id="cb625-114">Se [tilldela användare till ett program](active-directory-applications-guiding-developers-assigning-users.md) och [tilldela grupper till ett program](active-directory-applications-guiding-developers-assigning-groups.md).</span><span class="sxs-lookup"><span data-stu-id="cb625-114">See [Assigning users to an application](active-directory-applications-guiding-developers-assigning-users.md) and [Assigning groups to an application](active-directory-applications-guiding-developers-assigning-groups.md).</span></span>
+<span data-ttu-id="d34b9-113">Du har nu tooassign användare och/eller grupper toohello program.</span><span class="sxs-lookup"><span data-stu-id="d34b9-113">You will now have tooassign users and/or groups toohello application.</span></span> <span data-ttu-id="d34b9-114">Se [och tilldela användare tooan programmet](active-directory-applications-guiding-developers-assigning-users.md) och [tilldela grupper tooan program](active-directory-applications-guiding-developers-assigning-groups.md).</span><span class="sxs-lookup"><span data-stu-id="d34b9-114">See [Assigning users tooan application](active-directory-applications-guiding-developers-assigning-users.md) and [Assigning groups tooan application](active-directory-applications-guiding-developers-assigning-groups.md).</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="cb625-115">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="cb625-115">Next Steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="d34b9-115">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="d34b9-115">Next Steps</span></span>
 [!INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]

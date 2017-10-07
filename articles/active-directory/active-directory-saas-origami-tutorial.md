@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med Origami | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och Origami."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och Origami."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,255 +13,255 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 3420409b72ff032e64ac59365083dd141dfc3c1b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a45f2d2b8d2271cf0fc58cb8fad92f007cb5e691
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-origami"></a><span data-ttu-id="2d0ae-103">Självstudier: Azure Active Directory-integrering med Origami</span><span class="sxs-lookup"><span data-stu-id="2d0ae-103">Tutorial: Azure Active Directory integration with Origami</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-origami"></a><span data-ttu-id="bc05f-103">Självstudier: Azure Active Directory-integrering med Origami</span><span class="sxs-lookup"><span data-stu-id="bc05f-103">Tutorial: Azure Active Directory integration with Origami</span></span>
 
-<span data-ttu-id="2d0ae-104">I kursen får lära du att integrera Origami med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="2d0ae-104">In this tutorial, you learn how to integrate Origami with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="bc05f-104">I kursen får du lära dig hur toointegrate Origami med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="bc05f-104">In this tutorial, you learn how toointegrate Origami with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="2d0ae-105">Integrera Origami med Azure AD ger dig följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="2d0ae-105">Integrating Origami with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="bc05f-105">Integrera Origami med Azure AD ger dig hello följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="bc05f-105">Integrating Origami with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="2d0ae-106">Du kan styra i Azure AD som har åtkomst till Origami</span><span class="sxs-lookup"><span data-stu-id="2d0ae-106">You can control in Azure AD who has access to Origami</span></span>
-- <span data-ttu-id="2d0ae-107">Du kan aktivera användarna att automatiskt hämta loggat in på Origami (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="2d0ae-107">You can enable your users to automatically get signed-on to Origami (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="2d0ae-108">Du kan hantera dina konton i en central plats - Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="2d0ae-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="bc05f-106">Du kan styra i Azure AD som har åtkomst till tooOrigami</span><span class="sxs-lookup"><span data-stu-id="bc05f-106">You can control in Azure AD who has access tooOrigami</span></span>
+- <span data-ttu-id="bc05f-107">Du kan aktivera din användare tooautomatically get inloggade tooOrigami (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="bc05f-107">You can enable your users tooautomatically get signed-on tooOrigami (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="bc05f-108">Du kan hantera dina konton i en central plats - hello Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="bc05f-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="2d0ae-109">Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="2d0ae-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="bc05f-109">Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="bc05f-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="2d0ae-110">Krav</span><span class="sxs-lookup"><span data-stu-id="2d0ae-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="bc05f-110">Krav</span><span class="sxs-lookup"><span data-stu-id="bc05f-110">Prerequisites</span></span>
 
-<span data-ttu-id="2d0ae-111">Om du vill konfigurera Azure AD-integrering med Origami behöver du följande:</span><span class="sxs-lookup"><span data-stu-id="2d0ae-111">To configure Azure AD integration with Origami, you need the following items:</span></span>
+<span data-ttu-id="bc05f-111">tooconfigure Azure AD-integrering med Origami måste hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="bc05f-111">tooconfigure Azure AD integration with Origami, you need hello following items:</span></span>
 
-- <span data-ttu-id="2d0ae-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="2d0ae-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="2d0ae-113">En Origami enkel inloggning aktiverad prenumeration</span><span class="sxs-lookup"><span data-stu-id="2d0ae-113">An Origami single sign-on enabled subscription</span></span>
+- <span data-ttu-id="bc05f-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="bc05f-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="bc05f-113">En Origami enkel inloggning aktiverad prenumeration</span><span class="sxs-lookup"><span data-stu-id="bc05f-113">An Origami single sign-on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="2d0ae-114">Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="bc05f-114">tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="bc05f-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="2d0ae-115">Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="2d0ae-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="bc05f-115">tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="bc05f-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="2d0ae-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="2d0ae-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="2d0ae-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="bc05f-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="bc05f-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="bc05f-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="bc05f-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="2d0ae-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="2d0ae-118">Scenario description</span></span>
-<span data-ttu-id="2d0ae-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="2d0ae-120">Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="2d0ae-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="bc05f-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="bc05f-118">Scenario description</span></span>
+<span data-ttu-id="bc05f-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="bc05f-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="bc05f-120">hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="bc05f-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="2d0ae-121">Att lägga till Origami från galleriet</span><span class="sxs-lookup"><span data-stu-id="2d0ae-121">Adding Origami from the gallery</span></span>
-2. <span data-ttu-id="2d0ae-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="2d0ae-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="bc05f-121">Att lägga till Origami från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="bc05f-121">Adding Origami from hello gallery</span></span>
+2. <span data-ttu-id="bc05f-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="bc05f-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-origami-from-the-gallery"></a><span data-ttu-id="2d0ae-123">Att lägga till Origami från galleriet</span><span class="sxs-lookup"><span data-stu-id="2d0ae-123">Adding Origami from the gallery</span></span>
-<span data-ttu-id="2d0ae-124">Du måste lägga till Origami från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av Origami i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-124">To configure the integration of Origami into Azure AD, you need to add Origami from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-origami-from-hello-gallery"></a><span data-ttu-id="bc05f-123">Att lägga till Origami från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="bc05f-123">Adding Origami from hello gallery</span></span>
+<span data-ttu-id="bc05f-124">tooconfigure hello integrering av Origami i Azure AD, behöver du tooadd Origami hello galleriet tooyour listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="bc05f-124">tooconfigure hello integration of Origami into Azure AD, you need tooadd Origami from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="2d0ae-125">**Utför följande steg för att lägga till Origami från galleriet:**</span><span class="sxs-lookup"><span data-stu-id="2d0ae-125">**To add Origami from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="bc05f-125">**tooadd Origami från galleriet hello utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="bc05f-125">**tooadd Origami from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="2d0ae-126">I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="bc05f-126">I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="bc05f-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="2d0ae-128">Gå till **företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="2d0ae-129">Gå till **alla program**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="bc05f-128">Navigera för**företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="bc05f-129">Gå sedan för**alla program**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-129">Then go too**All applications**.</span></span>
 
     ![Program][2]
     
-3. <span data-ttu-id="2d0ae-131">Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="bc05f-131">tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="bc05f-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Program][3]
 
-4. <span data-ttu-id="2d0ae-133">I sökrutan skriver **Origami**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-133">In the search box, type **Origami**.</span></span>
+4. <span data-ttu-id="bc05f-133">Skriv i sökrutan hello **Origami**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-133">In hello search box, type **Origami**.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/tutorial_origami_search.png)
 
-5. <span data-ttu-id="2d0ae-135">Välj i resultatpanelen **Origami**, och klicka sedan på **Lägg till** för att lägga till programmet.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-135">In the results panel, select **Origami**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="bc05f-135">Markera hello resultat på panelen **Origami**, och klicka sedan på **Lägg till** knappen tooadd hello program.</span><span class="sxs-lookup"><span data-stu-id="bc05f-135">In hello results panel, select **Origami**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/tutorial_origami_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="2d0ae-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="2d0ae-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="2d0ae-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Origami baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-138">In this section, you configure and test Azure AD single sign-on with Origami based on a test user called "Britta Simon".</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="bc05f-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="bc05f-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="bc05f-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med Origami baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="bc05f-138">In this section, you configure and test Azure AD single sign-on with Origami based on a test user called "Britta Simon".</span></span>
 
-<span data-ttu-id="2d0ae-139">Azure AD måste du känna till användaren i Origami motsvarighet till en användare i Azure AD för enkel inloggning ska fungera.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-139">For single sign-on to work, Azure AD needs to know what the counterpart user in Origami is to a user in Azure AD.</span></span> <span data-ttu-id="2d0ae-140">Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i Origami upprättas.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-140">In other words, a link relationship between an Azure AD user and the related user in Origami needs to be established.</span></span>
+<span data-ttu-id="bc05f-139">För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i Origami är tooa i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="bc05f-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in Origami is tooa user in Azure AD.</span></span> <span data-ttu-id="bc05f-140">Med andra ord måste en länk relationen mellan en Azure AD-användare och hello relaterade användare i Origami toobe upprättas.</span><span class="sxs-lookup"><span data-stu-id="bc05f-140">In other words, a link relationship between an Azure AD user and hello related user in Origami needs toobe established.</span></span>
 
-<span data-ttu-id="2d0ae-141">I Origami, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-141">In Origami, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="bc05f-141">I Origami, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.</span><span class="sxs-lookup"><span data-stu-id="bc05f-141">In Origami, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="2d0ae-142">Om du vill konfigurera och testa Azure AD enkel inloggning med Origami, måste du utföra följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="2d0ae-142">To configure and test Azure AD single sign-on with Origami, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="bc05f-142">tooconfigure och testa Azure AD enkel inloggning med Origami, behöver du toocomplete hello följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="bc05f-142">tooconfigure and test Azure AD single sign-on with Origami, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="2d0ae-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="2d0ae-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="2d0ae-145">**[Skapa en testanvändare Origami](#creating-an-origami-test-user)**  – har en motsvarighet för Britta Simon Origami som är kopplad till Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-145">**[Creating an Origami test user](#creating-an-origami-test-user)** - to have a counterpart of Britta Simon in Origami that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="2d0ae-146">**[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="2d0ae-147">**[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="bc05f-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="bc05f-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="bc05f-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="bc05f-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="bc05f-145">**[Skapa en testanvändare Origami](#creating-an-origami-test-user)**  -toohave en motsvarighet för Britta Simon i Origami som är länkade toohello Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="bc05f-145">**[Creating an Origami test user](#creating-an-origami-test-user)** - toohave a counterpart of Britta Simon in Origami that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="bc05f-146">**[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="bc05f-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="bc05f-147">**[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="bc05f-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="2d0ae-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="2d0ae-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="bc05f-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="bc05f-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="2d0ae-149">I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Origami.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Origami application.</span></span>
+<span data-ttu-id="bc05f-149">I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i tillämpningsprogrammet Origami.</span><span class="sxs-lookup"><span data-stu-id="bc05f-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your Origami application.</span></span>
 
-<span data-ttu-id="2d0ae-150">**Utför följande steg för att konfigurera Azure AD enkel inloggning med Origami:**</span><span class="sxs-lookup"><span data-stu-id="2d0ae-150">**To configure Azure AD single sign-on with Origami, perform the following steps:**</span></span>
+<span data-ttu-id="bc05f-150">**Utför följande steg hello tooconfigure Azure AD enkel inloggning med Origami:**</span><span class="sxs-lookup"><span data-stu-id="bc05f-150">**tooconfigure Azure AD single sign-on with Origami, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="2d0ae-151">I Azure-portalen på den **Origami** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-151">In the Azure portal, on the **Origami** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="bc05f-151">I hello Azure-portalen på hello **Origami** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-151">In hello Azure portal, on hello **Origami** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurera enkel inloggning][4]
 
-2. <span data-ttu-id="2d0ae-153">På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="bc05f-153">På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="bc05f-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_samlbase.png)
 
-3. <span data-ttu-id="2d0ae-155">På den **Origami domän och URL: er** avsnittet, utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="2d0ae-155">On the **Origami Domain and URLs** section, perform the following steps:</span></span>
+3. <span data-ttu-id="bc05f-155">På hello **Origami domän och URL: er** avsnittet, utföra hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="bc05f-155">On hello **Origami Domain and URLs** section, perform hello following steps:</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_url.png)
 
-    <span data-ttu-id="2d0ae-157">I den **inloggnings-URL** textruta Skriv en URL med följande mönster:`https://live.origamirisk.com/origami/account/login?account=<companyname>`</span><span class="sxs-lookup"><span data-stu-id="2d0ae-157">In the **Sign-on URL** textbox, type a URL using the following pattern: `https://live.origamirisk.com/origami/account/login?account=<companyname>`</span></span>
+    <span data-ttu-id="bc05f-157">I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://live.origamirisk.com/origami/account/login?account=<companyname>`</span><span class="sxs-lookup"><span data-stu-id="bc05f-157">In hello **Sign-on URL** textbox, type a URL using hello following pattern: `https://live.origamirisk.com/origami/account/login?account=<companyname>`</span></span>
 
     > [!NOTE] 
-    > <span data-ttu-id="2d0ae-158">Värdet är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-158">The value is not real.</span></span> <span data-ttu-id="2d0ae-159">Uppdatera värdet med det faktiska inloggnings-URL.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-159">Update the value with the actual Sign-On URL.</span></span> <span data-ttu-id="2d0ae-160">Kontakta [Origami klienten supportteamet](https://wordpress.org/support/theme/origami) värdet hämtas.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-160">Contact [Origami Client support team](https://wordpress.org/support/theme/origami) to get the value.</span></span> 
+    > <span data-ttu-id="bc05f-158">hello-värdet är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="bc05f-158">hello value is not real.</span></span> <span data-ttu-id="bc05f-159">Hello uppdateringsvärde med hello faktiska inloggnings-URL.</span><span class="sxs-lookup"><span data-stu-id="bc05f-159">Update hello value with hello actual Sign-On URL.</span></span> <span data-ttu-id="bc05f-160">Kontakta [Origami klienten supportteamet](https://wordpress.org/support/theme/origami) tooget hello värde.</span><span class="sxs-lookup"><span data-stu-id="bc05f-160">Contact [Origami Client support team](https://wordpress.org/support/theme/origami) tooget hello value.</span></span> 
  
-4. <span data-ttu-id="2d0ae-161">På den **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara certifikatfilen på datorn.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-161">On the **SAML Signing Certificate** section, click **Certificate (Base64)** and then save the certificate file on your computer.</span></span>
+4. <span data-ttu-id="bc05f-161">På hello **SAML-signeringscertifikat** klickar du på **certifikat (Base64)** och spara sedan hello certifikat på datorn.</span><span class="sxs-lookup"><span data-stu-id="bc05f-161">On hello **SAML Signing Certificate** section, click **Certificate (Base64)** and then save hello certificate file on your computer.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_certificate.png) 
 
-5. <span data-ttu-id="2d0ae-163">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-163">Click **Save** button.</span></span>
+5. <span data-ttu-id="bc05f-163">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="bc05f-163">Click **Save** button.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_general_400.png)
 
-6. <span data-ttu-id="2d0ae-165">På den **Origami Configuration** klickar du på **konfigurera Origami** att öppna **konfigurera inloggning** fönster.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-165">On the **Origami Configuration** section, click **Configure Origami** to open **Configure sign-on** window.</span></span> <span data-ttu-id="2d0ae-166">Kopiera den **Sign-Out URL och SAML enkel inloggning Tjänstwebbadress** från den **Snabbreferens avsnitt.**</span><span class="sxs-lookup"><span data-stu-id="2d0ae-166">Copy the **Sign-Out URL, and SAML Single Sign-On Service URL** from the **Quick Reference section.**</span></span>
+6. <span data-ttu-id="bc05f-165">På hello **Origami Configuration** klickar du på **konfigurera Origami** tooopen **konfigurera inloggning** fönster.</span><span class="sxs-lookup"><span data-stu-id="bc05f-165">On hello **Origami Configuration** section, click **Configure Origami** tooopen **Configure sign-on** window.</span></span> <span data-ttu-id="bc05f-166">Kopiera hello **Sign-Out URL och SAML enkel inloggning Tjänstwebbadress** från hello **Snabbreferens avsnitt.**</span><span class="sxs-lookup"><span data-stu-id="bc05f-166">Copy hello **Sign-Out URL, and SAML Single Sign-On Service URL** from hello **Quick Reference section.**</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_configure.png) 
 
-7. <span data-ttu-id="2d0ae-168">Logga in på Origami-konto med administratörsrättigheter.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-168">Log in to the Origami account with Admin rights.</span></span>
+7. <span data-ttu-id="bc05f-168">Logga in toohello Origami konto med administratörsrättigheter.</span><span class="sxs-lookup"><span data-stu-id="bc05f-168">Log in toohello Origami account with Admin rights.</span></span>
 
-8. <span data-ttu-id="2d0ae-169">Klicka på menyn högst upp **Admin**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-169">In the menu on the top, click **Admin**.</span></span>
+8. <span data-ttu-id="bc05f-169">Hello-menyn överst hello **Admin**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-169">In hello menu on hello top, click **Admin**.</span></span>
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_51.png)
 
-9. <span data-ttu-id="2d0ae-171">Utför följande steg på enkel inloggning på sidan Inställningar av dialogrutan:</span><span class="sxs-lookup"><span data-stu-id="2d0ae-171">On the Single Sign On Setup dialog page, perform the following steps:</span></span>
+9. <span data-ttu-id="bc05f-171">Utför följande hello på hello enkel inloggning på dialogrutan installationssidan för:</span><span class="sxs-lookup"><span data-stu-id="bc05f-171">On hello Single Sign On Setup dialog page, perform hello following steps:</span></span>
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_531.png)
 
-    <span data-ttu-id="2d0ae-173">a.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-173">a.</span></span> <span data-ttu-id="2d0ae-174">Välj **aktivera enkel inloggning på**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-174">Select **Enable Single Sign On**.</span></span>
+    <span data-ttu-id="bc05f-173">a.</span><span class="sxs-lookup"><span data-stu-id="bc05f-173">a.</span></span> <span data-ttu-id="bc05f-174">Välj **aktivera enkel inloggning på**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-174">Select **Enable Single Sign On**.</span></span>
 
-    <span data-ttu-id="2d0ae-175">b.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-175">b.</span></span> <span data-ttu-id="2d0ae-176">I den **identitetsleverantören logga in Sidadress** textruta klistra in värdet för **SAML inloggning tjänst-URL för enkel**, som du har kopierat från Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-176">In the **Identity Provider's Sign-in Page URL** textbox, paste the value of **SAML Single Sign-On Service URL**, which you have copied from Azure portal.</span></span>
+    <span data-ttu-id="bc05f-175">b.</span><span class="sxs-lookup"><span data-stu-id="bc05f-175">b.</span></span> <span data-ttu-id="bc05f-176">I hello **identitetsleverantören logga in Sidadress** textruta klistra in hello värdet för **SAML inloggning tjänst-URL för enkel**, som du har kopierat från Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="bc05f-176">In hello **Identity Provider's Sign-in Page URL** textbox, paste hello value of **SAML Single Sign-On Service URL**, which you have copied from Azure portal.</span></span>
 
-    <span data-ttu-id="2d0ae-177">c.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-177">c.</span></span> <span data-ttu-id="2d0ae-178">I den **identitetsleverantörens Sign-out Sidadress** textruta klistra in värdet för **Sign-Out URL**, som du har kopierat från Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-178">In the **Identity Provider's Sign-out Page URL** textbox, paste the value of **Sign-Out URL**, which you have copied from Azure portal.</span></span>
+    <span data-ttu-id="bc05f-177">c.</span><span class="sxs-lookup"><span data-stu-id="bc05f-177">c.</span></span> <span data-ttu-id="bc05f-178">I hello **identitetsleverantörens Sign-out Sidadress** textruta klistra in hello värdet för **Sign-Out URL**, som du har kopierat från Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="bc05f-178">In hello **Identity Provider's Sign-out Page URL** textbox, paste hello value of **Sign-Out URL**, which you have copied from Azure portal.</span></span>
 
-    <span data-ttu-id="2d0ae-179">d.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-179">d.</span></span> <span data-ttu-id="2d0ae-180">Klicka på **Bläddra** att ladda upp det certifikat som du har hämtat från Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-180">Click **Browse** to upload the certificate you have downloaded from the Azure portal.</span></span>
+    <span data-ttu-id="bc05f-179">d.</span><span class="sxs-lookup"><span data-stu-id="bc05f-179">d.</span></span> <span data-ttu-id="bc05f-180">Klicka på **Bläddra** tooupload hello certifikat som du har hämtat från hello Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="bc05f-180">Click **Browse** tooupload hello certificate you have downloaded from hello Azure portal.</span></span>
 
-    <span data-ttu-id="2d0ae-181">e.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-181">e.</span></span> <span data-ttu-id="2d0ae-182">Klicka på **spara ändringar**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-182">Click **Save Changes**.</span></span>
+    <span data-ttu-id="bc05f-181">e.</span><span class="sxs-lookup"><span data-stu-id="bc05f-181">e.</span></span> <span data-ttu-id="bc05f-182">Klicka på **spara ändringar**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-182">Click **Save Changes**.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="2d0ae-183">Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!</span><span class="sxs-lookup"><span data-stu-id="2d0ae-183">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="2d0ae-184">När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-184">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="2d0ae-185">Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="2d0ae-185">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="bc05f-183">Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!</span><span class="sxs-lookup"><span data-stu-id="bc05f-183">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="bc05f-184">När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello.</span><span class="sxs-lookup"><span data-stu-id="bc05f-184">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="bc05f-185">Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="bc05f-185">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="2d0ae-186">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="2d0ae-186">Creating an Azure AD test user</span></span>
-<span data-ttu-id="2d0ae-187">Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-187">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="bc05f-186">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="bc05f-186">Creating an Azure AD test user</span></span>
+<span data-ttu-id="bc05f-187">hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="bc05f-187">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Skapa Azure AD-användare][100]
 
-<span data-ttu-id="2d0ae-189">**Utför följande steg för att skapa en testanvändare i Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="2d0ae-189">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="bc05f-189">**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="bc05f-189">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="2d0ae-190">I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-190">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="bc05f-190">I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="bc05f-190">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="2d0ae-192">Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-192">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="bc05f-192">toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-192">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="2d0ae-194">Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-194">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="bc05f-194">tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="bc05f-194">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="2d0ae-196">På den **användaren** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="2d0ae-196">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="bc05f-196">På hello **användaren** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="bc05f-196">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-origami-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="2d0ae-198">a.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-198">a.</span></span> <span data-ttu-id="2d0ae-199">I den **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-199">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="bc05f-198">a.</span><span class="sxs-lookup"><span data-stu-id="bc05f-198">a.</span></span> <span data-ttu-id="bc05f-199">I hello **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-199">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="2d0ae-200">b.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-200">b.</span></span> <span data-ttu-id="2d0ae-201">I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-201">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="bc05f-200">b.</span><span class="sxs-lookup"><span data-stu-id="bc05f-200">b.</span></span> <span data-ttu-id="bc05f-201">I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="bc05f-201">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="2d0ae-202">c.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-202">c.</span></span> <span data-ttu-id="2d0ae-203">Välj **visa lösenordet** och anteckna värdet för den **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-203">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="bc05f-202">c.</span><span class="sxs-lookup"><span data-stu-id="bc05f-202">c.</span></span> <span data-ttu-id="bc05f-203">Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-203">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="2d0ae-204">d.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-204">d.</span></span> <span data-ttu-id="2d0ae-205">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-205">Click **Create**.</span></span>
+    <span data-ttu-id="bc05f-204">d.</span><span class="sxs-lookup"><span data-stu-id="bc05f-204">d.</span></span> <span data-ttu-id="bc05f-205">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-205">Click **Create**.</span></span>
  
-### <a name="creating-an-origami-test-user"></a><span data-ttu-id="2d0ae-206">Skapa en testanvändare Origami</span><span class="sxs-lookup"><span data-stu-id="2d0ae-206">Creating an Origami test user</span></span>
+### <a name="creating-an-origami-test-user"></a><span data-ttu-id="bc05f-206">Skapa en testanvändare Origami</span><span class="sxs-lookup"><span data-stu-id="bc05f-206">Creating an Origami test user</span></span>
 
-<span data-ttu-id="2d0ae-207">I det här avsnittet skapar du en användare som kallas Britta Simon i Origami.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-207">In this section, you create a user called Britta Simon in Origami.</span></span> 
+<span data-ttu-id="bc05f-207">I det här avsnittet skapar du en användare som kallas Britta Simon i Origami.</span><span class="sxs-lookup"><span data-stu-id="bc05f-207">In this section, you create a user called Britta Simon in Origami.</span></span> 
 
-1. <span data-ttu-id="2d0ae-208">Logga in på Origami-konto med administratörsrättigheter.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-208">Log in to the Origami account with Admin rights.</span></span>
+1. <span data-ttu-id="bc05f-208">Logga in toohello Origami konto med administratörsrättigheter.</span><span class="sxs-lookup"><span data-stu-id="bc05f-208">Log in toohello Origami account with Admin rights.</span></span>
 
-2. <span data-ttu-id="2d0ae-209">Klicka på menyn högst upp **Admin**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-209">In the menu on the top, click **Admin**.</span></span>
+2. <span data-ttu-id="bc05f-209">Hello-menyn överst hello **Admin**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-209">In hello menu on hello top, click **Admin**.</span></span>
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_51.png)
 
-3. <span data-ttu-id="2d0ae-211">På den **användare och säkerhet** dialogrutan klickar du på **användare**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-211">On the **Users and Security** dialog, click **Users**.</span></span>
+3. <span data-ttu-id="bc05f-211">På hello **användare och säkerhet** dialogrutan klickar du på **användare**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-211">On hello **Users and Security** dialog, click **Users**.</span></span>
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_54.png)
 
-4. <span data-ttu-id="2d0ae-213">Klicka på **lägga till nya användare**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-213">Click **Add New User**.</span></span>
+4. <span data-ttu-id="bc05f-213">Klicka på **lägga till nya användare**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-213">Click **Add New User**.</span></span>
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_55.png)
 
-5. <span data-ttu-id="2d0ae-215">I dialogrutan Lägg till ny användare utför du följande steg:</span><span class="sxs-lookup"><span data-stu-id="2d0ae-215">On the Add New User dialog, perform the following steps:</span></span>
+5. <span data-ttu-id="bc05f-215">Dialogrutan Lägg till ny användare hello utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="bc05f-215">On hello Add New User dialog, perform hello following steps:</span></span>
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_56.png)
 
-    <span data-ttu-id="2d0ae-217">a.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-217">a.</span></span> <span data-ttu-id="2d0ae-218">I den **användarnamn** textruta ange e-postadress för användaren som  **brittasimon@contoso.com** .</span><span class="sxs-lookup"><span data-stu-id="2d0ae-218">In the **User Name** textbox, enter the email of user like **brittasimon@contoso.com**.</span></span>
+    <span data-ttu-id="bc05f-217">a.</span><span class="sxs-lookup"><span data-stu-id="bc05f-217">a.</span></span> <span data-ttu-id="bc05f-218">I hello **användarnamn** textruta ange hello e-postadress för användaren som  **brittasimon@contoso.com** .</span><span class="sxs-lookup"><span data-stu-id="bc05f-218">In hello **User Name** textbox, enter hello email of user like **brittasimon@contoso.com**.</span></span>
 
-    <span data-ttu-id="2d0ae-219">b.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-219">b.</span></span> <span data-ttu-id="2d0ae-220">I den **lösenord** textruta, ange ett lösenord.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-220">In the **Password** textbox, type a password.</span></span>
+    <span data-ttu-id="bc05f-219">b.</span><span class="sxs-lookup"><span data-stu-id="bc05f-219">b.</span></span> <span data-ttu-id="bc05f-220">I hello **lösenord** textruta, ange ett lösenord.</span><span class="sxs-lookup"><span data-stu-id="bc05f-220">In hello **Password** textbox, type a password.</span></span>
 
-    <span data-ttu-id="2d0ae-221">c.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-221">c.</span></span> <span data-ttu-id="2d0ae-222">I den **Bekräfta lösenord** textruta, Skriv in lösenordet igen.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-222">In the **Confirm Password** textbox, type the password again.</span></span>
+    <span data-ttu-id="bc05f-221">c.</span><span class="sxs-lookup"><span data-stu-id="bc05f-221">c.</span></span> <span data-ttu-id="bc05f-222">I hello **Bekräfta lösenord** textruta hello lösenordstyp igen.</span><span class="sxs-lookup"><span data-stu-id="bc05f-222">In hello **Confirm Password** textbox, type hello password again.</span></span>
 
-    <span data-ttu-id="2d0ae-223">d.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-223">d.</span></span> <span data-ttu-id="2d0ae-224">I den **Förnamn** textruta Ange först namnet på användaren som **Britta**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-224">In the **First Name** textbox, enter the first name of user like **Britta**.</span></span>
+    <span data-ttu-id="bc05f-223">d.</span><span class="sxs-lookup"><span data-stu-id="bc05f-223">d.</span></span> <span data-ttu-id="bc05f-224">I hello **Förnamn** textruta anger hello först namnet på användaren som **Britta**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-224">In hello **First Name** textbox, enter hello first name of user like **Britta**.</span></span>
 
-    <span data-ttu-id="2d0ae-225">e.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-225">e.</span></span> <span data-ttu-id="2d0ae-226">I den **efternamn** textruta Ange efternamn för användaren som **Simon**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-226">In the **Last Name** textbox, enter the last name of user like **Simon**.</span></span>
+    <span data-ttu-id="bc05f-225">e.</span><span class="sxs-lookup"><span data-stu-id="bc05f-225">e.</span></span> <span data-ttu-id="bc05f-226">I hello **efternamn** textruta ange hello efternamn för användaren som **Simon**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-226">In hello **Last Name** textbox, enter hello last name of user like **Simon**.</span></span>
 
-    <span data-ttu-id="2d0ae-227">f.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-227">f.</span></span> <span data-ttu-id="2d0ae-228">Klicka på **Spara**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-228">Click **Save**.</span></span>
+    <span data-ttu-id="bc05f-227">f.</span><span class="sxs-lookup"><span data-stu-id="bc05f-227">f.</span></span> <span data-ttu-id="bc05f-228">Klicka på **Spara**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-228">Click **Save**.</span></span>
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_57.png)
 
-6. <span data-ttu-id="2d0ae-230">Tilldela **användarroller** och **klientåtkomst** för användaren.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-230">Assign **User Roles** and **Client Access** to the user.</span></span> 
+6. <span data-ttu-id="bc05f-230">Tilldela **användarroller** och **klientåtkomst** toohello användare.</span><span class="sxs-lookup"><span data-stu-id="bc05f-230">Assign **User Roles** and **Client Access** toohello user.</span></span> 
    
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_58.png)
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="2d0ae-232">Tilldela Azure AD-testanvändare</span><span class="sxs-lookup"><span data-stu-id="2d0ae-232">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="bc05f-232">Tilldela användare hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="bc05f-232">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="2d0ae-233">I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till Origami.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-233">In this section, you enable Britta Simon to use Azure single sign-on by granting access to Origami.</span></span>
+<span data-ttu-id="bc05f-233">I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooOrigami.</span><span class="sxs-lookup"><span data-stu-id="bc05f-233">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooOrigami.</span></span>
 
 ![Tilldela användare][200] 
 
-<span data-ttu-id="2d0ae-235">**Om du vill tilldela Origami Britta Simon utför du följande steg:**</span><span class="sxs-lookup"><span data-stu-id="2d0ae-235">**To assign Britta Simon to Origami, perform the following steps:**</span></span>
+<span data-ttu-id="bc05f-235">**tooassign Britta Simon tooOrigami utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="bc05f-235">**tooassign Britta Simon tooOrigami, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="2d0ae-236">Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-236">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="bc05f-236">I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-236">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Tilldela användare][201] 
 
-2. <span data-ttu-id="2d0ae-238">Välj i listan med program **Origami**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-238">In the applications list, select **Origami**.</span></span>
+2. <span data-ttu-id="bc05f-238">Välj i listan med program hello **Origami**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-238">In hello applications list, select **Origami**.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-origami-tutorial/tutorial_origami_app.png) 
 
-3. <span data-ttu-id="2d0ae-240">Klicka på menyn till vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-240">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="bc05f-240">Hello-menyn hello vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="bc05f-240">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Tilldela användare][202] 
 
-4. <span data-ttu-id="2d0ae-242">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-242">Click **Add** button.</span></span> <span data-ttu-id="2d0ae-243">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-243">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="bc05f-242">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="bc05f-242">Click **Add** button.</span></span> <span data-ttu-id="bc05f-243">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="bc05f-243">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Tilldela användare][203]
 
-5. <span data-ttu-id="2d0ae-245">På **användare och grupper** markerar **Britta Simon** på listan användare.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-245">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="bc05f-245">På **användare och grupper** markerar **Britta Simon** i hello användarlistan.</span><span class="sxs-lookup"><span data-stu-id="bc05f-245">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="2d0ae-246">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-246">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="bc05f-246">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="bc05f-246">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="2d0ae-247">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-247">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="bc05f-247">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="bc05f-247">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="2d0ae-248">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="2d0ae-248">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="bc05f-248">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="bc05f-248">Testing single sign-on</span></span>
 
-<span data-ttu-id="2d0ae-249">I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-249">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="bc05f-249">I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="bc05f-249">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="2d0ae-250">När du klickar på panelen Origami på åtkomstpanelen du bör få automatiskt loggat in på ditt Origami program.</span><span class="sxs-lookup"><span data-stu-id="2d0ae-250">When you click the Origami tile in the Access Panel, you should get automatically signed-on to your Origami application.</span></span>
+<span data-ttu-id="bc05f-250">Du bör få automatiskt inloggade tooyour Origami programmet när du klickar på hello Origami panelen i hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="bc05f-250">When you click hello Origami tile in hello Access Panel, you should get automatically signed-on tooyour Origami application.</span></span>
 
-## <a name="additional-resources"></a><span data-ttu-id="2d0ae-251">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="2d0ae-251">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="bc05f-251">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="bc05f-251">Additional resources</span></span>
 
-* [<span data-ttu-id="2d0ae-252">Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="2d0ae-252">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="2d0ae-253">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="2d0ae-253">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="bc05f-252">Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="bc05f-252">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="bc05f-253">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="bc05f-253">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

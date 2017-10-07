@@ -1,6 +1,6 @@
 ---
-title: Tilldela till Azure AD-appar | Microsoft Docs
-description: "Hur du implementerar grupptilldelning för Azure-program."
+title: aaaAssign grupper tooAzure AD-appar | Microsoft Docs
+description: "Hur tooimplement gruppera tilldelning för Azure-program."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -16,28 +16,28 @@ ms.date: 05/07/2017
 ms.author: kgremban
 ms.custom: H1Hack27Feb2017
 robots: noindex
-ms.openlocfilehash: e0b0b87a454db96747f024e81882fe83d62fdbe2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 086619df09c13bf259afc3128d45ed804b99e519
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="assign-azure-active-directory-groups-to-an-application"></a><span data-ttu-id="376cd-103">Tilldela ett program med Azure Active Directory-grupper</span><span class="sxs-lookup"><span data-stu-id="376cd-103">Assign Azure Active Directory groups to an application</span></span>
-<span data-ttu-id="376cd-104">Innan du kan tilldela användare och grupper till ett program, måste du begära Användartilldelning.</span><span class="sxs-lookup"><span data-stu-id="376cd-104">Before you can assign users and groups to an application, you must require user assignment.</span></span> <span data-ttu-id="376cd-105">Information om hur du kan kräva Användartilldelning finns i [kräver Användartilldelning](active-directory-applications-guiding-developers-requiring-user-assignment.md) artikel.</span><span class="sxs-lookup"><span data-stu-id="376cd-105">To learn how to require user assignment, see the [Requiring User Assignment](active-directory-applications-guiding-developers-requiring-user-assignment.md) article.</span></span>
+# <a name="assign-azure-active-directory-groups-tooan-application"></a><span data-ttu-id="152c6-103">Tilldela Azure Active Directory-grupper tooan program</span><span class="sxs-lookup"><span data-stu-id="152c6-103">Assign Azure Active Directory groups tooan application</span></span>
+<span data-ttu-id="152c6-104">Innan du kan tilldela användare och grupper tooan program, måste du begära Användartilldelning.</span><span class="sxs-lookup"><span data-stu-id="152c6-104">Before you can assign users and groups tooan application, you must require user assignment.</span></span> <span data-ttu-id="152c6-105">toolearn hur toorequire Användartilldelning finns hello [kräver Användartilldelning](active-directory-applications-guiding-developers-requiring-user-assignment.md) artikel.</span><span class="sxs-lookup"><span data-stu-id="152c6-105">toolearn how toorequire user assignment, see hello [Requiring User Assignment](active-directory-applications-guiding-developers-requiring-user-assignment.md) article.</span></span>
 
-<span data-ttu-id="376cd-106">Den här artikeln förutsätter att du redan har skapat grupper i active directory som du använder för det här programmet.</span><span class="sxs-lookup"><span data-stu-id="376cd-106">This article assumes that you have already created groups in the active directory you are using for this application.</span></span>
+<span data-ttu-id="152c6-106">Den här artikeln förutsätter att du redan har skapat grupper i hello active directory som du använder för det här programmet.</span><span class="sxs-lookup"><span data-stu-id="152c6-106">This article assumes that you have already created groups in hello active directory you are using for this application.</span></span>
 
-## <a name="assigning-groups-to-an-application"></a><span data-ttu-id="376cd-107">Tilldela grupper till ett program</span><span class="sxs-lookup"><span data-stu-id="376cd-107">Assigning Groups to an Application</span></span>
-1. <span data-ttu-id="376cd-108">Logga in på Azure-portalen med ett administratörskonto.</span><span class="sxs-lookup"><span data-stu-id="376cd-108">Log in to the Azure portal with an administrator account.</span></span>
-2. <span data-ttu-id="376cd-109">Klicka på den **alla objekt** objekt på huvudmenyn.</span><span class="sxs-lookup"><span data-stu-id="376cd-109">Click on the **All Items** item in the main menu.</span></span>
-3. <span data-ttu-id="376cd-110">Välj det bibliotek som du använder för programmet.</span><span class="sxs-lookup"><span data-stu-id="376cd-110">Choose the directory you are using for the application.</span></span>
-4. <span data-ttu-id="376cd-111">Klicka på den **program** fliken.</span><span class="sxs-lookup"><span data-stu-id="376cd-111">Click on the **APPLICATIONS** tab.</span></span>
-5. <span data-ttu-id="376cd-112">Markera programmet i listan över program som är associerade med den här katalogen.</span><span class="sxs-lookup"><span data-stu-id="376cd-112">Select the application from the list of applications associated with this directory.</span></span>
-6. <span data-ttu-id="376cd-113">Klicka på den **användare och grupper** fliken.</span><span class="sxs-lookup"><span data-stu-id="376cd-113">Click the **USERS AND GROUPS** tab.</span></span>
-7. <span data-ttu-id="376cd-114">Filtrera listan över grupper i active directory med hjälp av den **grupper** listrutan.</span><span class="sxs-lookup"><span data-stu-id="376cd-114">Filter the list of groups in your active directory by using the **Groups** dropdown list.</span></span>
-8. <span data-ttu-id="376cd-115">Välj en grupp.</span><span class="sxs-lookup"><span data-stu-id="376cd-115">Select the group.</span></span>
-9. <span data-ttu-id="376cd-116">Klicka på **TILLDELA**.</span><span class="sxs-lookup"><span data-stu-id="376cd-116">Click **ASSIGN**.</span></span>
-10. <span data-ttu-id="376cd-117">Klicka på **Ja** när du tillfrågas.</span><span class="sxs-lookup"><span data-stu-id="376cd-117">Click **yes** when prompted.</span></span>
+## <a name="assigning-groups-tooan-application"></a><span data-ttu-id="152c6-107">Tilldela grupper tooan program</span><span class="sxs-lookup"><span data-stu-id="152c6-107">Assigning Groups tooan Application</span></span>
+1. <span data-ttu-id="152c6-108">Logga in toohello Azure-portalen med ett administratörskonto.</span><span class="sxs-lookup"><span data-stu-id="152c6-108">Log in toohello Azure portal with an administrator account.</span></span>
+2. <span data-ttu-id="152c6-109">Klicka på hello **alla objekt** objekt i hello huvudmenyn.</span><span class="sxs-lookup"><span data-stu-id="152c6-109">Click on hello **All Items** item in hello main menu.</span></span>
+3. <span data-ttu-id="152c6-110">Välja hello-katalog som du använder för hello program.</span><span class="sxs-lookup"><span data-stu-id="152c6-110">Choose hello directory you are using for hello application.</span></span>
+4. <span data-ttu-id="152c6-111">Klicka på hello **program** fliken.</span><span class="sxs-lookup"><span data-stu-id="152c6-111">Click on hello **APPLICATIONS** tab.</span></span>
+5. <span data-ttu-id="152c6-112">Välj hello programmet hello listan över program som är associerade med den här katalogen.</span><span class="sxs-lookup"><span data-stu-id="152c6-112">Select hello application from hello list of applications associated with this directory.</span></span>
+6. <span data-ttu-id="152c6-113">Klicka på hello **användare och grupper** fliken.</span><span class="sxs-lookup"><span data-stu-id="152c6-113">Click hello **USERS AND GROUPS** tab.</span></span>
+7. <span data-ttu-id="152c6-114">Filter hello listan över grupper i active directory med hjälp av hello **grupper** listrutan.</span><span class="sxs-lookup"><span data-stu-id="152c6-114">Filter hello list of groups in your active directory by using hello **Groups** dropdown list.</span></span>
+8. <span data-ttu-id="152c6-115">Välj hello grupp.</span><span class="sxs-lookup"><span data-stu-id="152c6-115">Select hello group.</span></span>
+9. <span data-ttu-id="152c6-116">Klicka på **TILLDELA**.</span><span class="sxs-lookup"><span data-stu-id="152c6-116">Click **ASSIGN**.</span></span>
+10. <span data-ttu-id="152c6-117">Klicka på **Ja** när du tillfrågas.</span><span class="sxs-lookup"><span data-stu-id="152c6-117">Click **yes** when prompted.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="376cd-118">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="376cd-118">Next Steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="152c6-118">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="152c6-118">Next Steps</span></span>
 [!INCLUDE [active-directory-applications-guiding-developers-for-lob-applications-toc.md](../../includes/active-directory-applications-guiding-developers-for-lob-applications-toc.md)]

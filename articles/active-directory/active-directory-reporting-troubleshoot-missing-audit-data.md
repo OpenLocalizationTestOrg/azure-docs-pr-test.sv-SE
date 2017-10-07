@@ -1,6 +1,6 @@
 ---
-title: "Felsökning: Saknade data i aktivitetsloggen för Azure Active Directory | Microsoft Docs"
-description: "Visar de olika tillgängliga rapporterna i Azure Active Directory"
+title: "Felsöka: Saknar data i aktivitetsloggen för hello Azure Active Directory | Microsoft Docs"
+description: "Visar hello olika tillgängliga rapporterna för Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,31 +15,31 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 47617f8f727027de113a0f503308c8accc58859e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: 7bbec94ab42eb5b54a7e65e124060d057b4a1a34
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="i-cant-find-some-actions-that-i-performed-in-the-azure-active-directory-activity-log"></a><span data-ttu-id="03aef-103">Det går inte att hitta vissa åtgärder som jag utförde i aktivitetsloggen för Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="03aef-103">I can’t find some actions that I performed in the Azure Active Directory activity log</span></span>
+# <a name="i-cant-find-some-actions-that-i-performed-in-hello-azure-active-directory-activity-log"></a><span data-ttu-id="5ee58-103">Du kan inte hitta vissa åtgärder som jag utföras i aktivitetsloggen för hello Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="5ee58-103">I can’t find some actions that I performed in hello Azure Active Directory activity log</span></span>
 
 
-## <a name="symptoms"></a><span data-ttu-id="03aef-104">Symtom</span><span class="sxs-lookup"><span data-stu-id="03aef-104">Symptoms</span></span>
+## <a name="symptoms"></a><span data-ttu-id="5ee58-104">Symtom</span><span class="sxs-lookup"><span data-stu-id="5ee58-104">Symptoms</span></span>
 
-<span data-ttu-id="03aef-105">Jag utförde vissa åtgärder i Azure Portal och förväntade att se granskningsloggarna för dessa åtgärder på bladet `Activity logs > Audit Logs`, men det går inte att hitta dem.</span><span class="sxs-lookup"><span data-stu-id="03aef-105">I performed some actions in the Azure portal and expected to see the audit logs for those actions in the `Activity logs > Audit Logs` blade, but I can’t find them.</span></span>
+<span data-ttu-id="5ee58-105">Jag utföra vissa åtgärder i hello Azure-portalen och förväntas toosee hello granskningsloggar för dessa åtgärder i hello `Activity logs > Audit Logs` bladet, men det går inte att hitta dem.</span><span class="sxs-lookup"><span data-stu-id="5ee58-105">I performed some actions in hello Azure portal and expected toosee hello audit logs for those actions in hello `Activity logs > Audit Logs` blade, but I can’t find them.</span></span>
 
  ![Rapportering](./media/active-directory-reporting-troubleshoot-missing-audit-data/01.png)
  
 
-## <a name="cause"></a><span data-ttu-id="03aef-107">Orsak</span><span class="sxs-lookup"><span data-stu-id="03aef-107">Cause</span></span>
+## <a name="cause"></a><span data-ttu-id="5ee58-107">Orsak</span><span class="sxs-lookup"><span data-stu-id="5ee58-107">Cause</span></span>
 
-<span data-ttu-id="03aef-108">Åtgärder visas inte direkt i granskningsloggen för aktiviteten.</span><span class="sxs-lookup"><span data-stu-id="03aef-108">Actions don’t appear immediately in the Activity Audit log.</span></span> <span data-ttu-id="03aef-109">Det kan ta någonstans mellan 15 minuter och en timme att visa granskningsloggarna i portalen från den tidpunkt då åtgärden utförs.</span><span class="sxs-lookup"><span data-stu-id="03aef-109">It can take anywhere from 15 minutes to an hour to see the audit logs in the portal from the time the operation is performed.</span></span>
+<span data-ttu-id="5ee58-108">Åtgärder visas inte direkt i hello aktivitet granskningslogg.</span><span class="sxs-lookup"><span data-stu-id="5ee58-108">Actions don’t appear immediately in hello Activity Audit log.</span></span> <span data-ttu-id="5ee58-109">Det kan ta 15 minuter tooan timme toosee hello granskningsloggar i hello portal från hello tid hello åtgärden utförs.</span><span class="sxs-lookup"><span data-stu-id="5ee58-109">It can take anywhere from 15 minutes tooan hour toosee hello audit logs in hello portal from hello time hello operation is performed.</span></span>
 
-## <a name="resolution"></a><span data-ttu-id="03aef-110">Lösning</span><span class="sxs-lookup"><span data-stu-id="03aef-110">Resolution</span></span>
+## <a name="resolution"></a><span data-ttu-id="5ee58-110">Lösning</span><span class="sxs-lookup"><span data-stu-id="5ee58-110">Resolution</span></span>
 
-<span data-ttu-id="03aef-111">Vänta i mellan 15 minuter och en timme och se om åtgärderna visas i loggen.</span><span class="sxs-lookup"><span data-stu-id="03aef-111">Wait for 15 minutes to an hour and see if the actions appear in the log.</span></span> <span data-ttu-id="03aef-112">Om du fortfarande inte ser dem skapar du ett supportärende hos oss så tittar vi på det.</span><span class="sxs-lookup"><span data-stu-id="03aef-112">If you still don’t see them, please raise a support ticket with us and we will look into it.</span></span>
+<span data-ttu-id="5ee58-111">Vänta i 15 minuter tooan timme och om hello åtgärder visas i hello loggen.</span><span class="sxs-lookup"><span data-stu-id="5ee58-111">Wait for 15 minutes tooan hour and see if hello actions appear in hello log.</span></span> <span data-ttu-id="5ee58-112">Om du fortfarande inte ser dem skapar du ett supportärende hos oss så tittar vi på det.</span><span class="sxs-lookup"><span data-stu-id="5ee58-112">If you still don’t see them, please raise a support ticket with us and we will look into it.</span></span>
 
 
-## <a name="next-steps"></a><span data-ttu-id="03aef-113">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="03aef-113">Next steps</span></span>
-<span data-ttu-id="03aef-114">Se guiden med [vanliga frågor om Azure Active Directory-rapportering](active-directory-reporting-faq.md).</span><span class="sxs-lookup"><span data-stu-id="03aef-114">See the [Azure Active Directory reporting FAQ](active-directory-reporting-faq.md).</span></span>
+## <a name="next-steps"></a><span data-ttu-id="5ee58-113">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="5ee58-113">Next steps</span></span>
+<span data-ttu-id="5ee58-114">Se hello [Azure Active Directory reporting vanliga frågor och svar](active-directory-reporting-faq.md).</span><span class="sxs-lookup"><span data-stu-id="5ee58-114">See hello [Azure Active Directory reporting FAQ](active-directory-reporting-faq.md).</span></span>
 
