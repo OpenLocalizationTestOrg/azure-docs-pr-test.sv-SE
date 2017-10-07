@@ -1,6 +1,6 @@
 ---
-title: Skapa en anpassad regel i Azure IoT Suite | Microsoft Docs
-description: "Så här skapar du en anpassad regel i en IoT Suite förkonfigurerade lösning."
+title: aaaCreate en anpassad regel i Azure IoT Suite | Microsoft Docs
+description: "Hur toocreate en anpassad regel i en IoT Suite förkonfigurerade lösningen."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,56 +15,56 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: d58c27234ea05a82aaa3e8d72f70c1449980df09
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 6c5bb2ca54f3f17b99ad482e727c8e9fa28d7fe5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-a-custom-rule-in-the-remote-monitoring-preconfigured-solution"></a><span data-ttu-id="d8faf-103">Skapa en anpassad regel i fjärråtkomst övervakning förkonfigurerade lösningen</span><span class="sxs-lookup"><span data-stu-id="d8faf-103">Create a custom rule in the remote monitoring preconfigured solution</span></span>
+# <a name="create-a-custom-rule-in-hello-remote-monitoring-preconfigured-solution"></a><span data-ttu-id="f4132-103">Skapa en anpassad regel i hello remote förkonfigurerade övervakningslösning</span><span class="sxs-lookup"><span data-stu-id="f4132-103">Create a custom rule in hello remote monitoring preconfigured solution</span></span>
 
-## <a name="introduction"></a><span data-ttu-id="d8faf-104">Introduktion</span><span class="sxs-lookup"><span data-stu-id="d8faf-104">Introduction</span></span>
+## <a name="introduction"></a><span data-ttu-id="f4132-104">Introduktion</span><span class="sxs-lookup"><span data-stu-id="f4132-104">Introduction</span></span>
 
-<span data-ttu-id="d8faf-105">Förkonfigurerade lösningar du kan konfigurera [regler som utlöses när en telemetri värdet för en enhet når ett visst tröskelvärde][lnk-builtin-rule].</span><span class="sxs-lookup"><span data-stu-id="d8faf-105">In the preconfigured solutions, you can configure [rules that trigger when a telemetry value for a device reaches a specific threshold][lnk-builtin-rule].</span></span> <span data-ttu-id="d8faf-106">[Använd dynamiska telemetri med fjärråtkomst övervakning förkonfigurerade lösningen] [ lnk-dynamic-telemetry] beskriver hur du lägger till anpassad telemetri värden som *ExternalTemperature* i lösningen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-106">[Use dynamic telemetry with the remote monitoring preconfigured solution][lnk-dynamic-telemetry] describes how you can add custom telemetry values, such as *ExternalTemperature* to your solution.</span></span> <span data-ttu-id="d8faf-107">Den här artikeln visar hur du skapar en anpassad regel för dynamiskt telemetri typer i din lösning.</span><span class="sxs-lookup"><span data-stu-id="d8faf-107">This article shows you how to create custom rule for dynamic telemetry types in your solution.</span></span>
+<span data-ttu-id="f4132-105">Hello förkonfigurerade lösningar du kan konfigurera [regler som utlöses när en telemetri värdet för en enhet når ett visst tröskelvärde][lnk-builtin-rule].</span><span class="sxs-lookup"><span data-stu-id="f4132-105">In hello preconfigured solutions, you can configure [rules that trigger when a telemetry value for a device reaches a specific threshold][lnk-builtin-rule].</span></span> <span data-ttu-id="f4132-106">[Använda dynamisk telemetri med hello remote förkonfigurerade övervakningslösning] [ lnk-dynamic-telemetry] beskriver hur du lägger till anpassad telemetri värden som *ExternalTemperature* tooyour lösning.</span><span class="sxs-lookup"><span data-stu-id="f4132-106">[Use dynamic telemetry with hello remote monitoring preconfigured solution][lnk-dynamic-telemetry] describes how you can add custom telemetry values, such as *ExternalTemperature* tooyour solution.</span></span> <span data-ttu-id="f4132-107">Den här artikeln visar hur toocreate anpassad regel för dynamiskt telemetri typer i din lösning.</span><span class="sxs-lookup"><span data-stu-id="f4132-107">This article shows you how toocreate custom rule for dynamic telemetry types in your solution.</span></span>
 
-<span data-ttu-id="d8faf-108">Den här kursen använder en enkel Node.js simulerad enhet för att generera dynamiska telemetri för att skicka till förkonfigurerade lösningens serverdel.</span><span class="sxs-lookup"><span data-stu-id="d8faf-108">This tutorial uses a simple Node.js simulated device to generate dynamic telemetry to send to the preconfigured solution back end.</span></span> <span data-ttu-id="d8faf-109">Du sedan lägga till anpassade regler i den **RemoteMonitoring** Visual Studio-lösning och distribuera den här anpassade serverdel till din Azure-prenumeration.</span><span class="sxs-lookup"><span data-stu-id="d8faf-109">You then add custom rules in the **RemoteMonitoring** Visual Studio solution and deploy this customized back end to your Azure subscription.</span></span>
+<span data-ttu-id="f4132-108">Den här kursen använder en enkel Node.js simulerade enheten toogenerate dynamiska telemetri toosend toohello förkonfigurerade lösningens serverdel.</span><span class="sxs-lookup"><span data-stu-id="f4132-108">This tutorial uses a simple Node.js simulated device toogenerate dynamic telemetry toosend toohello preconfigured solution back end.</span></span> <span data-ttu-id="f4132-109">Lägg till anpassade regler sedan i hello **RemoteMonitoring** Visual Studio-lösning och distribuera den här anpassade serverdel tooyour Azure-prenumeration.</span><span class="sxs-lookup"><span data-stu-id="f4132-109">You then add custom rules in hello **RemoteMonitoring** Visual Studio solution and deploy this customized back end tooyour Azure subscription.</span></span>
 
-<span data-ttu-id="d8faf-110">För att slutföra den här kursen behöver du:</span><span class="sxs-lookup"><span data-stu-id="d8faf-110">To complete this tutorial, you need:</span></span>
+<span data-ttu-id="f4132-110">toocomplete den här kursen behöver du:</span><span class="sxs-lookup"><span data-stu-id="f4132-110">toocomplete this tutorial, you need:</span></span>
 
-* <span data-ttu-id="d8faf-111">En aktiv Azure-prenumeration.</span><span class="sxs-lookup"><span data-stu-id="d8faf-111">An active Azure subscription.</span></span> <span data-ttu-id="d8faf-112">Om du inte har något konto kan du skapa ett kostnadsfritt utvärderingskonto på bara några minuter.</span><span class="sxs-lookup"><span data-stu-id="d8faf-112">If you don’t have an account, you can create a free trial account in just a couple of minutes.</span></span> <span data-ttu-id="d8faf-113">Mer information finns i [kostnadsfri utvärderingsversion av Azure][lnk_free_trial].</span><span class="sxs-lookup"><span data-stu-id="d8faf-113">For details, see [Azure Free Trial][lnk_free_trial].</span></span>
-* <span data-ttu-id="d8faf-114">[Node.js] [ lnk-node] version 0.12.x eller senare för att skapa en simulerad enhet.</span><span class="sxs-lookup"><span data-stu-id="d8faf-114">[Node.js][lnk-node] version 0.12.x or later to create a simulated device.</span></span>
-* <span data-ttu-id="d8faf-115">Visual Studio 2015 eller Visual Studio 2017 ändra förkonfigurerade lösningen tillbaka avslutas med din nya regler.</span><span class="sxs-lookup"><span data-stu-id="d8faf-115">Visual Studio 2015 or Visual Studio 2017 to modify the preconfigured solution back end with your new rules.</span></span>
+* <span data-ttu-id="f4132-111">En aktiv Azure-prenumeration.</span><span class="sxs-lookup"><span data-stu-id="f4132-111">An active Azure subscription.</span></span> <span data-ttu-id="f4132-112">Om du inte har något konto kan du skapa ett kostnadsfritt utvärderingskonto på bara några minuter.</span><span class="sxs-lookup"><span data-stu-id="f4132-112">If you don’t have an account, you can create a free trial account in just a couple of minutes.</span></span> <span data-ttu-id="f4132-113">Mer information finns i [kostnadsfri utvärderingsversion av Azure][lnk_free_trial].</span><span class="sxs-lookup"><span data-stu-id="f4132-113">For details, see [Azure Free Trial][lnk_free_trial].</span></span>
+* <span data-ttu-id="f4132-114">[Node.js] [ lnk-node] version 0.12.x eller senare toocreate en simulerad enhet.</span><span class="sxs-lookup"><span data-stu-id="f4132-114">[Node.js][lnk-node] version 0.12.x or later toocreate a simulated device.</span></span>
+* <span data-ttu-id="f4132-115">Visual Studio 2015 eller Visual Studio 2017 toomodify hello förkonfigurerade lösningen avslutas med din nya regler.</span><span class="sxs-lookup"><span data-stu-id="f4132-115">Visual Studio 2015 or Visual Studio 2017 toomodify hello preconfigured solution back end with your new rules.</span></span>
 
 [!INCLUDE [iot-suite-provision-remote-monitoring](../../includes/iot-suite-provision-remote-monitoring.md)]
 
-<span data-ttu-id="d8faf-116">Anteckna lösningens namn som du har valt för din distribution.</span><span class="sxs-lookup"><span data-stu-id="d8faf-116">Make a note of the solution name you chose for your deployment.</span></span> <span data-ttu-id="d8faf-117">Du behöver den här lösningsnamn senare i den här kursen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-117">You need this solution name later in this tutorial.</span></span>
+<span data-ttu-id="f4132-116">Anteckna hello lösningens namn som du har valt för din distribution.</span><span class="sxs-lookup"><span data-stu-id="f4132-116">Make a note of hello solution name you chose for your deployment.</span></span> <span data-ttu-id="f4132-117">Du behöver den här lösningsnamn senare i den här kursen.</span><span class="sxs-lookup"><span data-stu-id="f4132-117">You need this solution name later in this tutorial.</span></span>
 
 [!INCLUDE [iot-suite-send-external-temperature](../../includes/iot-suite-send-external-temperature.md)]
 
-<span data-ttu-id="d8faf-118">Du kan stoppa Node.js-konsolprogram när du har verifierat att den skickar **ExternalTemperature** telemetri till förkonfigurerade lösningen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-118">You can stop the Node.js console app when you have verified that it is sending **ExternalTemperature** telemetry to the preconfigured solution.</span></span> <span data-ttu-id="d8faf-119">Behåll konsolfönstret öppna eftersom du kör den här Node.js-konsolprogram igen när du lägger till anpassad regel i lösningen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-119">Keep the console window open because you run this Node.js console app again after you add the custom rule to the solution.</span></span>
+<span data-ttu-id="f4132-118">Du kan stoppa hello Node.js-konsolprogram när du har verifierat att den skickar **ExternalTemperature** telemetri toohello förkonfigurerade lösningen.</span><span class="sxs-lookup"><span data-stu-id="f4132-118">You can stop hello Node.js console app when you have verified that it is sending **ExternalTemperature** telemetry toohello preconfigured solution.</span></span> <span data-ttu-id="f4132-119">Behåll hello konsolfönstret öppna eftersom du kör den här Node.js-konsolprogram igen när du har lagt till hello anpassad regel toohello lösning.</span><span class="sxs-lookup"><span data-stu-id="f4132-119">Keep hello console window open because you run this Node.js console app again after you add hello custom rule toohello solution.</span></span>
 
-## <a name="rule-storage-locations"></a><span data-ttu-id="d8faf-120">Lagringsplatser för regeln</span><span class="sxs-lookup"><span data-stu-id="d8faf-120">Rule storage locations</span></span>
+## <a name="rule-storage-locations"></a><span data-ttu-id="f4132-120">Lagringsplatser för regeln</span><span class="sxs-lookup"><span data-stu-id="f4132-120">Rule storage locations</span></span>
 
-<span data-ttu-id="d8faf-121">Information om regler sparas på två platser:</span><span class="sxs-lookup"><span data-stu-id="d8faf-121">Information about rules is persisted in two locations:</span></span>
+<span data-ttu-id="f4132-121">Information om regler sparas på två platser:</span><span class="sxs-lookup"><span data-stu-id="f4132-121">Information about rules is persisted in two locations:</span></span>
 
-* <span data-ttu-id="d8faf-122">**DeviceRulesNormalizedTable** tabellen – den här tabellen lagras en normaliserade referens till de regler som definierats av lösningen portalen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-122">**DeviceRulesNormalizedTable** table – This table stores a normalized reference to the rules defined by the solution portal.</span></span> <span data-ttu-id="d8faf-123">När lösningen portal visas enheten regler, frågar den här tabellen för Regeldefinitioner.</span><span class="sxs-lookup"><span data-stu-id="d8faf-123">When the solution portal displays device rules, it queries this table for the rule definitions.</span></span>
-* <span data-ttu-id="d8faf-124">**DeviceRules** blob – den här blob lagrar alla regler som definierats för alla registrerade enheter och har definierats som en referens som indata till Azure Stream Analytics-jobb.</span><span class="sxs-lookup"><span data-stu-id="d8faf-124">**DeviceRules** blob – This blob stores all the rules defined for all registered devices and is defined as a reference input to the Azure Stream Analytics jobs.</span></span>
+* <span data-ttu-id="f4132-122">**DeviceRulesNormalizedTable** tabellen – den här tabellen lagras en normaliserade referera toohello regler som definierats av hello lösning portalen.</span><span class="sxs-lookup"><span data-stu-id="f4132-122">**DeviceRulesNormalizedTable** table – This table stores a normalized reference toohello rules defined by hello solution portal.</span></span> <span data-ttu-id="f4132-123">När hello lösning portal visas enheten regler, frågar den här tabellen för hello definitioner.</span><span class="sxs-lookup"><span data-stu-id="f4132-123">When hello solution portal displays device rules, it queries this table for hello rule definitions.</span></span>
+* <span data-ttu-id="f4132-124">**DeviceRules** blob – den här blob lagrar alla hello regler som definierats för alla registrerade enheter och har definierats som en referens inkommande toohello Azure Stream Analytics-jobb.</span><span class="sxs-lookup"><span data-stu-id="f4132-124">**DeviceRules** blob – This blob stores all hello rules defined for all registered devices and is defined as a reference input toohello Azure Stream Analytics jobs.</span></span>
  
-<span data-ttu-id="d8faf-125">När du uppdaterar en befintlig regel eller definiera en ny regel i lösningen portal, har tabell- och blobbdata uppdaterats för att återspegla ändringarna.</span><span class="sxs-lookup"><span data-stu-id="d8faf-125">When you update an existing rule or define a new rule in the solution portal, both the table and blob are updated to reflect the changes.</span></span> <span data-ttu-id="d8faf-126">Regeldefinitionen visas i portalen hämtas från arkivet tabell och Regeldefinitionen refererar till Stream Analytics-jobb kommer från blob.</span><span class="sxs-lookup"><span data-stu-id="d8faf-126">The rule definition displayed in the portal comes from the table store, and the rule definition referenced by the Stream Analytics jobs comes from the blob.</span></span> 
+<span data-ttu-id="f4132-125">När du uppdaterar en befintlig regel eller definiera en ny regel i hello lösning portal är hello tabell- och blobbdata uppdaterade tooreflect hello ändringar.</span><span class="sxs-lookup"><span data-stu-id="f4132-125">When you update an existing rule or define a new rule in hello solution portal, both hello table and blob are updated tooreflect hello changes.</span></span> <span data-ttu-id="f4132-126">hello regeln definition visas i hello portal kommer från hello tabell store och hello regeln definition som refereras av hello Stream Analytics-jobb kommer från hello-blob.</span><span class="sxs-lookup"><span data-stu-id="f4132-126">hello rule definition displayed in hello portal comes from hello table store, and hello rule definition referenced by hello Stream Analytics jobs comes from hello blob.</span></span> 
 
-## <a name="update-the-remotemonitoring-visual-studio-solution"></a><span data-ttu-id="d8faf-127">Uppdatera RemoteMonitoring Visual Studio-lösning</span><span class="sxs-lookup"><span data-stu-id="d8faf-127">Update the RemoteMonitoring Visual Studio solution</span></span>
+## <a name="update-hello-remotemonitoring-visual-studio-solution"></a><span data-ttu-id="f4132-127">Uppdatera hello RemoteMonitoring Visual Studio-lösning</span><span class="sxs-lookup"><span data-stu-id="f4132-127">Update hello RemoteMonitoring Visual Studio solution</span></span>
 
-<span data-ttu-id="d8faf-128">Följande steg visar hur du ändrar RemoteMonitoring Visual Studio-lösning för att inkludera en ny regel som använder den **ExternalTemperature** telemetri som skickats från den simulerade enheten:</span><span class="sxs-lookup"><span data-stu-id="d8faf-128">The following steps show you how to modify the RemoteMonitoring Visual Studio solution to include a new rule that uses the **ExternalTemperature** telemetry sent from the simulated device:</span></span>
+<span data-ttu-id="f4132-128">hello följande steg visar hur hello toomodify RemoteMonitoring Visual Studio-lösning tooinclude en ny regel som använder hello **ExternalTemperature** telemetri som skickas från hello simulerade enheten:</span><span class="sxs-lookup"><span data-stu-id="f4132-128">hello following steps show you how toomodify hello RemoteMonitoring Visual Studio solution tooinclude a new rule that uses hello **ExternalTemperature** telemetry sent from hello simulated device:</span></span>
 
-1. <span data-ttu-id="d8faf-129">Om du inte redan har gjort det klona den **azure iot-fjärr-övervakning** databasen till en lämplig plats på den lokala datorn med följande Git-kommando:</span><span class="sxs-lookup"><span data-stu-id="d8faf-129">If you have not already done so, clone the **azure-iot-remote-monitoring** repository to a suitable location on your local machine using the following Git command:</span></span>
+1. <span data-ttu-id="f4132-129">Om du inte redan har gjort det klonade hello **azure iot-fjärr-övervakning** lämplig plats på den lokala datorn med hjälp av följande kommando i Git hello tooa i databasen:</span><span class="sxs-lookup"><span data-stu-id="f4132-129">If you have not already done so, clone hello **azure-iot-remote-monitoring** repository tooa suitable location on your local machine using hello following Git command:</span></span>
 
     ```
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
     ```
 
-2. <span data-ttu-id="d8faf-130">Öppna filen RemoteMonitoring.sln i Visual Studio från den lokala kopian av den **azure iot-fjärr-övervakning** databasen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-130">In Visual Studio, open the RemoteMonitoring.sln file from your local copy of the **azure-iot-remote-monitoring** repository.</span></span>
+2. <span data-ttu-id="f4132-130">I Visual Studio öppnas hello RemoteMonitoring.sln från den lokala kopian av hello **azure iot-fjärr-övervakning** databasen.</span><span class="sxs-lookup"><span data-stu-id="f4132-130">In Visual Studio, open hello RemoteMonitoring.sln file from your local copy of hello **azure-iot-remote-monitoring** repository.</span></span>
 
-3. <span data-ttu-id="d8faf-131">Öppna filen Infrastructure\Models\DeviceRuleBlobEntity.cs och lägga till en **ExternalTemperature** egenskapen på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="d8faf-131">Open the file Infrastructure\Models\DeviceRuleBlobEntity.cs and add an **ExternalTemperature** property as follows:</span></span>
+3. <span data-ttu-id="f4132-131">Öppna filen hello Infrastructure\Models\DeviceRuleBlobEntity.cs och Lägg till en **ExternalTemperature** egenskapen på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="f4132-131">Open hello file Infrastructure\Models\DeviceRuleBlobEntity.cs and add an **ExternalTemperature** property as follows:</span></span>
 
     ```csharp
     public double? Temperature { get; set; }
@@ -72,7 +72,7 @@ ms.lasthandoff: 08/29/2017
     public double? ExternalTemperature { get; set; }
     ```
 
-4. <span data-ttu-id="d8faf-132">Lägg till i samma fil, en **ExternalTemperatureRuleOutput** egenskapen på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="d8faf-132">In the same file, add an **ExternalTemperatureRuleOutput** property as follows:</span></span>
+4. <span data-ttu-id="f4132-132">Hej samma fil, lägga till i en **ExternalTemperatureRuleOutput** egenskapen på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="f4132-132">In hello same file, add an **ExternalTemperatureRuleOutput** property as follows:</span></span>
 
     ```csharp
     public string TemperatureRuleOutput { get; set; }
@@ -80,7 +80,7 @@ ms.lasthandoff: 08/29/2017
     public string ExternalTemperatureRuleOutput { get; set; }
     ```
 
-5. <span data-ttu-id="d8faf-133">Öppna filen Infrastructure\Models\DeviceRuleDataFields.cs och Lägg till följande **ExternalTemperature** egenskapen när den befintliga **fuktighet** egenskapen:</span><span class="sxs-lookup"><span data-stu-id="d8faf-133">Open the file Infrastructure\Models\DeviceRuleDataFields.cs and add the following **ExternalTemperature** property after the existing **Humidity** property:</span></span>
+5. <span data-ttu-id="f4132-133">Öppna filen hello Infrastructure\Models\DeviceRuleDataFields.cs och Lägg till följande hello **ExternalTemperature** egenskapen efter hello befintliga **fuktighet** egenskapen:</span><span class="sxs-lookup"><span data-stu-id="f4132-133">Open hello file Infrastructure\Models\DeviceRuleDataFields.cs and add hello following **ExternalTemperature** property after hello existing **Humidity** property:</span></span>
 
     ```csharp
     public static string ExternalTemperature
@@ -89,7 +89,7 @@ ms.lasthandoff: 08/29/2017
     }
     ```
 
-6. <span data-ttu-id="d8faf-134">Uppdatera i samma fil i **_availableDataFields** metod för att inkludera **ExternalTemperature** på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="d8faf-134">In the same file, update the **_availableDataFields** method to include **ExternalTemperature** as follows:</span></span>
+6. <span data-ttu-id="f4132-134">I Hej samma fil, uppdatera hello **_availableDataFields** metoden tooinclude **ExternalTemperature** på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="f4132-134">In hello same file, update hello **_availableDataFields** method tooinclude **ExternalTemperature** as follows:</span></span>
 
     ```csharp
     private static List<string> _availableDataFields = new List<string>
@@ -98,7 +98,7 @@ ms.lasthandoff: 08/29/2017
     };
     ```
 
-7. <span data-ttu-id="d8faf-135">Öppna filen Infrastructure\Repository\DeviceRulesRepository.cs och ändra den **BuildBlobEntityListFromTableRows** metoden på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="d8faf-135">Open the file Infrastructure\Repository\DeviceRulesRepository.cs and modify the **BuildBlobEntityListFromTableRows** method as follows:</span></span>
+7. <span data-ttu-id="f4132-135">Öppna filen hello Infrastructure\Repository\DeviceRulesRepository.cs och ändra hello **BuildBlobEntityListFromTableRows** metoden på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="f4132-135">Open hello file Infrastructure\Repository\DeviceRulesRepository.cs and modify hello **BuildBlobEntityListFromTableRows** method as follows:</span></span>
 
     ```csharp
     else if (rule.DataField == DeviceRuleDataFields.Humidity)
@@ -113,29 +113,29 @@ ms.lasthandoff: 08/29/2017
     }
     ```
 
-## <a name="rebuild-and-redeploy-the-solution"></a><span data-ttu-id="d8faf-136">Återskapa och distribuera lösningen igen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-136">Rebuild and redeploy the solution.</span></span>
+## <a name="rebuild-and-redeploy-hello-solution"></a><span data-ttu-id="f4132-136">Återskapa och omdistribuera hello lösning.</span><span class="sxs-lookup"><span data-stu-id="f4132-136">Rebuild and redeploy hello solution.</span></span>
 
-<span data-ttu-id="d8faf-137">Du kan nu distribuera den uppdaterade lösningen till din Azure-prenumeration.</span><span class="sxs-lookup"><span data-stu-id="d8faf-137">You can now deploy the updated solution to your Azure subscription.</span></span>
+<span data-ttu-id="f4132-137">Du kan nu distribuera hello uppdateras lösning tooyour Azure-prenumeration.</span><span class="sxs-lookup"><span data-stu-id="f4132-137">You can now deploy hello updated solution tooyour Azure subscription.</span></span>
 
-1. <span data-ttu-id="d8faf-138">Öppna en upphöjd kommandotolk och navigera till roten i den lokala kopian av databasen azure iot-fjärr-övervakning.</span><span class="sxs-lookup"><span data-stu-id="d8faf-138">Open an elevated command prompt and navigate to the root of your local copy of the azure-iot-remote-monitoring repository.</span></span>
+1. <span data-ttu-id="f4132-138">Öppna en upphöjd kommandotolk och navigera toohello roten för den lokala kopian av databasen för hello azure iot-fjärr-övervakning.</span><span class="sxs-lookup"><span data-stu-id="f4132-138">Open an elevated command prompt and navigate toohello root of your local copy of hello azure-iot-remote-monitoring repository.</span></span>
 
-2. <span data-ttu-id="d8faf-139">För att distribuera din uppdaterade lösning, kör du följande kommando ersätter **{distributionsnamnet}** med namnet på din förkonfigurerade lösningsdistribution som du antecknade tidigare:</span><span class="sxs-lookup"><span data-stu-id="d8faf-139">To deploy your updated solution, run the following command substituting **{deployment name}** with the name of your preconfigured solution deployment that you noted previously:</span></span>
+2. <span data-ttu-id="f4132-139">toodeploy uppdaterade lösningen, kör följande kommando ersätter hello **{distributionsnamnet}** med hello namnet på din förkonfigurerade lösningsdistribution som du antecknade tidigare:</span><span class="sxs-lookup"><span data-stu-id="f4132-139">toodeploy your updated solution, run hello following command substituting **{deployment name}** with hello name of your preconfigured solution deployment that you noted previously:</span></span>
 
     ```
     build.cmd cloud release {deployment name}
     ```
 
-## <a name="update-the-stream-analytics-job"></a><span data-ttu-id="d8faf-140">Uppdatera Stream Analytics-jobbet</span><span class="sxs-lookup"><span data-stu-id="d8faf-140">Update the Stream Analytics job</span></span>
+## <a name="update-hello-stream-analytics-job"></a><span data-ttu-id="f4132-140">Uppdatera hello Stream Analytics-jobbet</span><span class="sxs-lookup"><span data-stu-id="f4132-140">Update hello Stream Analytics job</span></span>
 
-<span data-ttu-id="d8faf-141">När installationen är klar, kan du uppdatera Stream Analytics-jobbet om du vill använda de nya definitionerna.</span><span class="sxs-lookup"><span data-stu-id="d8faf-141">When the deployment is complete, you can update the Stream Analytics job to use the new rule definitions.</span></span>
+<span data-ttu-id="f4132-141">När hello distributionen är klar, kan du uppdatera hello Stream Analytics-jobbet toouse hello nya definitioner.</span><span class="sxs-lookup"><span data-stu-id="f4132-141">When hello deployment is complete, you can update hello Stream Analytics job toouse hello new rule definitions.</span></span>
 
-1. <span data-ttu-id="d8faf-142">Navigera till den resursgrupp som innehåller din förkonfigurerade lösning resurser i Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-142">In the Azure portal, navigate to the resource group that contains your preconfigured solution resources.</span></span> <span data-ttu-id="d8faf-143">Den här resursgruppen har samma namn som du angav för lösningen under distributionen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-143">This resource group has the same name you specified for the solution during the deployment.</span></span>
+1. <span data-ttu-id="f4132-142">Navigera toohello resursgruppen som innehåller din förkonfigurerade lösning resurser i hello Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="f4132-142">In hello Azure portal, navigate toohello resource group that contains your preconfigured solution resources.</span></span> <span data-ttu-id="f4132-143">Den här resursgruppen har samma namn du angav för hello hello lösningen under hello distributionen.</span><span class="sxs-lookup"><span data-stu-id="f4132-143">This resource group has hello same name you specified for hello solution during hello deployment.</span></span>
 
-2. <span data-ttu-id="d8faf-144">Navigera till {distributionsnamnet}-regler Stream Analytics-jobbet.</span><span class="sxs-lookup"><span data-stu-id="d8faf-144">Navigate to the {deployment name}-Rules Stream Analytics job.</span></span> 
+2. <span data-ttu-id="f4132-144">Navigera toohello {distributionsnamnet}-regler Stream Analytics-jobbet.</span><span class="sxs-lookup"><span data-stu-id="f4132-144">Navigate toohello {deployment name}-Rules Stream Analytics job.</span></span> 
 
-3. <span data-ttu-id="d8faf-145">Klicka på **stoppa** att stoppa Stream Analytics-jobbet körs.</span><span class="sxs-lookup"><span data-stu-id="d8faf-145">Click **Stop** to stop the Stream Analytics job from running.</span></span> <span data-ttu-id="d8faf-146">(Du måste vänta tills direktuppspelningsjobbet att stoppa innan du kan redigera frågan).</span><span class="sxs-lookup"><span data-stu-id="d8faf-146">(You must wait for the streaming job to stop before you can edit the query).</span></span>
+3. <span data-ttu-id="f4132-145">Klicka på **stoppa** toostop hello Stream Analytics-jobbet körs.</span><span class="sxs-lookup"><span data-stu-id="f4132-145">Click **Stop** toostop hello Stream Analytics job from running.</span></span> <span data-ttu-id="f4132-146">(Du måste vänta tills hello streaming job toostop innan du kan redigera hello fråga).</span><span class="sxs-lookup"><span data-stu-id="f4132-146">(You must wait for hello streaming job toostop before you can edit hello query).</span></span>
 
-4. <span data-ttu-id="d8faf-147">Klicka på **frågan**.</span><span class="sxs-lookup"><span data-stu-id="d8faf-147">Click **Query**.</span></span> <span data-ttu-id="d8faf-148">Redigera en fråga som inkluderar den **Välj** -uttrycket för **ExternalTemperature**.</span><span class="sxs-lookup"><span data-stu-id="d8faf-148">Edit the query to include the **SELECT** statement for **ExternalTemperature**.</span></span> <span data-ttu-id="d8faf-149">I följande exempel visar slutförd fråga med det nya **Välj** instruktionen:</span><span class="sxs-lookup"><span data-stu-id="d8faf-149">The following sample shows the complete query with the new **SELECT** statement:</span></span>
+4. <span data-ttu-id="f4132-147">Klicka på **frågan**.</span><span class="sxs-lookup"><span data-stu-id="f4132-147">Click **Query**.</span></span> <span data-ttu-id="f4132-148">Redigera hello frågan tooinclude hello **Välj** -uttrycket för **ExternalTemperature**.</span><span class="sxs-lookup"><span data-stu-id="f4132-148">Edit hello query tooinclude hello **SELECT** statement for **ExternalTemperature**.</span></span> <span data-ttu-id="f4132-149">hello följande exempel visar hello fullständig fråga med hello nya **Välj** instruktionen:</span><span class="sxs-lookup"><span data-stu-id="f4132-149">hello following sample shows hello complete query with hello new **SELECT** statement:</span></span>
 
     ```
     WITH AlarmsData AS 
@@ -190,39 +190,39 @@ ms.lasthandoff: 08/29/2017
     FROM AlarmsData
     ```
 
-5. <span data-ttu-id="d8faf-150">Klicka på **spara** att ändra frågan uppdaterade regeln.</span><span class="sxs-lookup"><span data-stu-id="d8faf-150">Click **Save** to change the updated rule query.</span></span>
+5. <span data-ttu-id="f4132-150">Klicka på **spara** toochange hello uppdatera regel för frågan.</span><span class="sxs-lookup"><span data-stu-id="f4132-150">Click **Save** toochange hello updated rule query.</span></span>
 
-6. <span data-ttu-id="d8faf-151">Klicka på **starta** att starta Stream Analytics-jobbet körs igen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-151">Click **Start** to start the Stream Analytics job running again.</span></span>
+6. <span data-ttu-id="f4132-151">Klicka på **starta** toostart hello Stream Analytics-jobbet körs igen.</span><span class="sxs-lookup"><span data-stu-id="f4132-151">Click **Start** toostart hello Stream Analytics job running again.</span></span>
 
-## <a name="add-your-new-rule-in-the-dashboard"></a><span data-ttu-id="d8faf-152">Lägg till din nya regel i instrumentpanelen</span><span class="sxs-lookup"><span data-stu-id="d8faf-152">Add your new rule in the dashboard</span></span>
+## <a name="add-your-new-rule-in-hello-dashboard"></a><span data-ttu-id="f4132-152">Lägg till din nya regel hello instrumentpanelen</span><span class="sxs-lookup"><span data-stu-id="f4132-152">Add your new rule in hello dashboard</span></span>
 
-<span data-ttu-id="d8faf-153">Du kan nu lägga till den **ExternalTemperature** regeln till en enhet i instrumentpanelen för lösningen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-153">You can now add the **ExternalTemperature** rule to a device in the solution dashboard.</span></span>
+<span data-ttu-id="f4132-153">Nu kan du lägga till hello **ExternalTemperature** regeln tooa enhet i hello lösning instrumentpanelen.</span><span class="sxs-lookup"><span data-stu-id="f4132-153">You can now add hello **ExternalTemperature** rule tooa device in hello solution dashboard.</span></span>
 
-1. <span data-ttu-id="d8faf-154">Gå till portalen för lösningen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-154">Navigate to the solution portal.</span></span>
+1. <span data-ttu-id="f4132-154">Navigera toohello lösning portal.</span><span class="sxs-lookup"><span data-stu-id="f4132-154">Navigate toohello solution portal.</span></span>
 
-2. <span data-ttu-id="d8faf-155">Navigera till den **enheter** panelen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-155">Navigate to the **Devices** panel.</span></span>
+2. <span data-ttu-id="f4132-155">Navigera toohello **enheter** panelen.</span><span class="sxs-lookup"><span data-stu-id="f4132-155">Navigate toohello **Devices** panel.</span></span>
 
-3. <span data-ttu-id="d8faf-156">Leta upp den anpassa enhet som du skapade som skickar **ExternalTemperature** telemetri och på den **enhetsinformation** klickar du på **Lägg till regel**.</span><span class="sxs-lookup"><span data-stu-id="d8faf-156">Locate the custom device you created that sends **ExternalTemperature** telemetry and on the **Device Details** panel, click **Add Rule**.</span></span>
+3. <span data-ttu-id="f4132-156">Leta upp hello anpassade du skapade som skickar **ExternalTemperature** telemetri och på hello **enhetsinformation** klickar du på **Lägg till regel**.</span><span class="sxs-lookup"><span data-stu-id="f4132-156">Locate hello custom device you created that sends **ExternalTemperature** telemetry and on hello **Device Details** panel, click **Add Rule**.</span></span>
 
-4. <span data-ttu-id="d8faf-157">Välj **ExternalTemperature** i **datafält**.</span><span class="sxs-lookup"><span data-stu-id="d8faf-157">Select **ExternalTemperature** in **Data Field**.</span></span>
+4. <span data-ttu-id="f4132-157">Välj **ExternalTemperature** i **datafält**.</span><span class="sxs-lookup"><span data-stu-id="f4132-157">Select **ExternalTemperature** in **Data Field**.</span></span>
 
-5. <span data-ttu-id="d8faf-158">Ange **tröskelvärdet** -56.</span><span class="sxs-lookup"><span data-stu-id="d8faf-158">Set **Threshold** to 56.</span></span> <span data-ttu-id="d8faf-159">Klicka på **spara och visa regler**.</span><span class="sxs-lookup"><span data-stu-id="d8faf-159">Then click **Save and view rules**.</span></span>
+5. <span data-ttu-id="f4132-158">Ange **tröskelvärdet** too56.</span><span class="sxs-lookup"><span data-stu-id="f4132-158">Set **Threshold** too56.</span></span> <span data-ttu-id="f4132-159">Klicka på **spara och visa regler**.</span><span class="sxs-lookup"><span data-stu-id="f4132-159">Then click **Save and view rules**.</span></span>
 
-6. <span data-ttu-id="d8faf-160">Gå tillbaka till instrumentpanelen för att visa larm historiken.</span><span class="sxs-lookup"><span data-stu-id="d8faf-160">Return to the dashboard to view the alarm history.</span></span>
+6. <span data-ttu-id="f4132-160">Returnera toohello instrumentpanelen tooview hello larm historik.</span><span class="sxs-lookup"><span data-stu-id="f4132-160">Return toohello dashboard tooview hello alarm history.</span></span>
 
-7. <span data-ttu-id="d8faf-161">I konsolträdet du lämnat öppna börjar Node.js-konsolprogram om du vill börja skicka **ExternalTemperature** telemetridata.</span><span class="sxs-lookup"><span data-stu-id="d8faf-161">In the console window you left open, start the Node.js console app to begin sending **ExternalTemperature** telemetry data.</span></span>
+7. <span data-ttu-id="f4132-161">Hello konsolfönstret du lämnat öppna börja hello Node.js konsolen app toobegin skicka **ExternalTemperature** telemetridata.</span><span class="sxs-lookup"><span data-stu-id="f4132-161">In hello console window you left open, start hello Node.js console app toobegin sending **ExternalTemperature** telemetry data.</span></span>
 
-8. <span data-ttu-id="d8faf-162">Observera att den **larm historik** tabell visas nya larm när den nya regeln utlöses.</span><span class="sxs-lookup"><span data-stu-id="d8faf-162">Notice that the **Alarm History** table shows new alarms when the new rule is triggered.</span></span>
+8. <span data-ttu-id="f4132-162">Observera att hello **larm historik** tabell visas nya larm när hello ny regel utlöses.</span><span class="sxs-lookup"><span data-stu-id="f4132-162">Notice that hello **Alarm History** table shows new alarms when hello new rule is triggered.</span></span>
  
-## <a name="additional-information"></a><span data-ttu-id="d8faf-163">Ytterligare information</span><span class="sxs-lookup"><span data-stu-id="d8faf-163">Additional information</span></span>
+## <a name="additional-information"></a><span data-ttu-id="f4132-163">Ytterligare information</span><span class="sxs-lookup"><span data-stu-id="f4132-163">Additional information</span></span>
 
-<span data-ttu-id="d8faf-164">Ändra operatorn  **>**  är mer komplexa och utöver de steg som beskrivs i den här självstudiekursen.</span><span class="sxs-lookup"><span data-stu-id="d8faf-164">Changing the operator **>** is more complex and goes beyond the steps outlined in this tutorial.</span></span> <span data-ttu-id="d8faf-165">Du kan ändra Stream Analytics-jobbet om du vill använda den operator som du vill, avspeglar den operatorn i lösningen portal är en mer komplicerad uppgift.</span><span class="sxs-lookup"><span data-stu-id="d8faf-165">While you can change the Stream Analytics job to use whatever operator you like, reflecting that operator in the solution portal is a more complex task.</span></span> 
+<span data-ttu-id="f4132-164">Ändra hello operatorn  **>**  är mer komplexa och utöver hello steg som beskrivs i den här kursen.</span><span class="sxs-lookup"><span data-stu-id="f4132-164">Changing hello operator **>** is more complex and goes beyond hello steps outlined in this tutorial.</span></span> <span data-ttu-id="f4132-165">Du kan ändra hello Stream Analytics-jobbet toouse oavsett operator som du vill, avspeglar den operatorn i hello lösning portal är en mer komplicerad uppgift.</span><span class="sxs-lookup"><span data-stu-id="f4132-165">While you can change hello Stream Analytics job toouse whatever operator you like, reflecting that operator in hello solution portal is a more complex task.</span></span> 
 
-## <a name="next-steps"></a><span data-ttu-id="d8faf-166">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="d8faf-166">Next steps</span></span>
-<span data-ttu-id="d8faf-167">Nu när du har lärt dig hur du skapar egna regler, kan du lära dig mer om förkonfigurerade lösningar:</span><span class="sxs-lookup"><span data-stu-id="d8faf-167">Now that you've seen how to create custom rules, you can learn more about the preconfigured solutions:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="f4132-166">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="f4132-166">Next steps</span></span>
+<span data-ttu-id="f4132-167">Nu när du har sett hur toocreate anpassade regler, du kan lära dig mer om hello förkonfigurerade lösningar:</span><span class="sxs-lookup"><span data-stu-id="f4132-167">Now that you've seen how toocreate custom rules, you can learn more about hello preconfigured solutions:</span></span>
 
-- <span data-ttu-id="d8faf-168">[Ansluta Logikappen i Azure IoT Suite Fjärrövervaknings förkonfigurerade lösningen][lnk-logic-app]</span><span class="sxs-lookup"><span data-stu-id="d8faf-168">[Connect Logic App to your Azure IoT Suite Remote Monitoring preconfigured solution][lnk-logic-app]</span></span>
-- <span data-ttu-id="d8faf-169">[Enhetens information metadata för fjärranslutna övervakningen förkonfigurerade lösningen][lnk-devinfo].</span><span class="sxs-lookup"><span data-stu-id="d8faf-169">[Device information metadata in the remote monitoring preconfigured solution][lnk-devinfo].</span></span>
+- <span data-ttu-id="f4132-168">[Ansluta Logikapp tooyour Azure IoT Suite Fjärrövervaknings förkonfigurerade lösningen][lnk-logic-app]</span><span class="sxs-lookup"><span data-stu-id="f4132-168">[Connect Logic App tooyour Azure IoT Suite Remote Monitoring preconfigured solution][lnk-logic-app]</span></span>
+- <span data-ttu-id="f4132-169">[Enhetens information metadata i hello fjärrövervaknings förkonfigurerade lösningen][lnk-devinfo].</span><span class="sxs-lookup"><span data-stu-id="f4132-169">[Device information metadata in hello remote monitoring preconfigured solution][lnk-devinfo].</span></span>
 
 [lnk-devinfo]: iot-suite-remote-monitoring-device-info.md
 

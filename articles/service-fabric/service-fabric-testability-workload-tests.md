@@ -1,6 +1,6 @@
 ---
-title: "Simulera fel i Azure mikrotjänster | Microsoft Docs"
-description: "Hur du kan skydda dina tjänster mot korrekt och städat fel."
+title: "aaaSimulate fel i Azure mikrotjänster | Microsoft Docs"
+description: "Hur tooharden dina tjänster mot korrekt och städat fel."
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 7ec671c23e101d0f7401bd4656fb201111602cad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 05467e291dfc0f12a021955f8ea540881ec10746
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="simulate-failures-during-service-workloads"></a><span data-ttu-id="319d7-103">Simulera fel under tjänstarbetsbelastningar</span><span class="sxs-lookup"><span data-stu-id="319d7-103">Simulate failures during service workloads</span></span>
-<span data-ttu-id="319d7-104">Möjlighet att testa scenarier i Azure Service Fabric ger utvecklare möjligheten att oroa dig inte om hantering av enskilda fel.</span><span class="sxs-lookup"><span data-stu-id="319d7-104">The testability scenarios in Azure Service Fabric enable developers to not worry about dealing with individual faults.</span></span> <span data-ttu-id="319d7-105">Det finns scenarier, men där en explicit interfoliering av klienten arbetsbelastning och fel kan behövas.</span><span class="sxs-lookup"><span data-stu-id="319d7-105">There are scenarios, however, where an explicit interleaving of client workload and failures might be needed.</span></span> <span data-ttu-id="319d7-106">Interfoliering av klienten arbetsbelastning och fel innebär att tjänsten faktiskt utför någon åtgärd när fel inträffar.</span><span class="sxs-lookup"><span data-stu-id="319d7-106">The interleaving of client workload and faults ensures that the service is actually performing some action when failure happens.</span></span> <span data-ttu-id="319d7-107">Angivna kontrollnivån som ger möjlighet att testa kan det vara på exakt punkterna i körningen arbetsbelastning.</span><span class="sxs-lookup"><span data-stu-id="319d7-107">Given the level of control that testability provides, these could be at precise points of the workload execution.</span></span> <span data-ttu-id="319d7-108">Den här induktion av fel på olika tillstånd i programmet kan hitta buggar och förbättra kvaliteten.</span><span class="sxs-lookup"><span data-stu-id="319d7-108">This induction of faults at different states in the application can find bugs and improve quality.</span></span>
+# <a name="simulate-failures-during-service-workloads"></a><span data-ttu-id="84a6c-103">Simulera fel under tjänstarbetsbelastningar</span><span class="sxs-lookup"><span data-stu-id="84a6c-103">Simulate failures during service workloads</span></span>
+<span data-ttu-id="84a6c-104">hello möjlighet att testa scenarier i Azure Service Fabric kan utvecklare toonot oroa dig om hantering av enskilda fel.</span><span class="sxs-lookup"><span data-stu-id="84a6c-104">hello testability scenarios in Azure Service Fabric enable developers toonot worry about dealing with individual faults.</span></span> <span data-ttu-id="84a6c-105">Det finns scenarier, men där en explicit interfoliering av klienten arbetsbelastning och fel kan behövas.</span><span class="sxs-lookup"><span data-stu-id="84a6c-105">There are scenarios, however, where an explicit interleaving of client workload and failures might be needed.</span></span> <span data-ttu-id="84a6c-106">hello interfoliering av klienten arbetsbelastning och fel säkerställer att hello service faktiskt utför någon åtgärd när fel inträffar.</span><span class="sxs-lookup"><span data-stu-id="84a6c-106">hello interleaving of client workload and faults ensures that hello service is actually performing some action when failure happens.</span></span> <span data-ttu-id="84a6c-107">Angivna hello kontrollnivåer som ger möjlighet att testa kan det vara på exakt punkterna i hello arbetsbelastning körning.</span><span class="sxs-lookup"><span data-stu-id="84a6c-107">Given hello level of control that testability provides, these could be at precise points of hello workload execution.</span></span> <span data-ttu-id="84a6c-108">Den här induktion av fel på olika tillstånd i programmet hello hittar buggar och förbättra kvaliteten.</span><span class="sxs-lookup"><span data-stu-id="84a6c-108">This induction of faults at different states in hello application can find bugs and improve quality.</span></span>
 
-## <a name="sample-custom-scenario"></a><span data-ttu-id="319d7-109">Anpassade Exempelscenario</span><span class="sxs-lookup"><span data-stu-id="319d7-109">Sample custom scenario</span></span>
-<span data-ttu-id="319d7-110">Det här testet visas ett scenario som interleaves business arbetsbelastningen med [korrekt och städat](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions).</span><span class="sxs-lookup"><span data-stu-id="319d7-110">This test shows a scenario that interleaves the business workload with [graceful and ungraceful failures](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions).</span></span> <span data-ttu-id="319d7-111">Fel bör vara framkallas i mitten av tjänståtgärderna eller beräkning för bästa resultat.</span><span class="sxs-lookup"><span data-stu-id="319d7-111">The faults should be induced in the middle of service operations or compute for best results.</span></span>
+## <a name="sample-custom-scenario"></a><span data-ttu-id="84a6c-109">Anpassade Exempelscenario</span><span class="sxs-lookup"><span data-stu-id="84a6c-109">Sample custom scenario</span></span>
+<span data-ttu-id="84a6c-110">Det här testet visas ett scenario som interleaves hello business arbetsbelastning med [korrekt och städat](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions).</span><span class="sxs-lookup"><span data-stu-id="84a6c-110">This test shows a scenario that interleaves hello business workload with [graceful and ungraceful failures](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions).</span></span> <span data-ttu-id="84a6c-111">hello fel ska vara framkallas hello mitten av tjänståtgärderna eller beräkning för bästa resultat.</span><span class="sxs-lookup"><span data-stu-id="84a6c-111">hello faults should be induced in hello middle of service operations or compute for best results.</span></span>
 
-<span data-ttu-id="319d7-112">Låt oss gå igenom ett exempel på en tjänst som visar fyra arbetsbelastningar: A, B, C och D. varje motsvarar en uppsättning av arbetsflöden och gick inte att beräkna, lagring eller en blandning.</span><span class="sxs-lookup"><span data-stu-id="319d7-112">Let's walk through an example of a service that exposes four workloads: A, B, C, and D. Each corresponds to a set of workflows and could be compute, storage, or a mix.</span></span> <span data-ttu-id="319d7-113">För enkelhetens skull, kommer vi abstrakt ut arbetsbelastningar i vårt exempel.</span><span class="sxs-lookup"><span data-stu-id="319d7-113">For the sake of simplicity, we will abstract out the workloads in our example.</span></span> <span data-ttu-id="319d7-114">Olika fel körs i det här exemplet är:</span><span class="sxs-lookup"><span data-stu-id="319d7-114">The different faults executed in this example are:</span></span>
+<span data-ttu-id="84a6c-112">Låt oss gå igenom ett exempel på en tjänst som visar fyra arbetsbelastningar: A, B, C, och D. varje motsvarar tooa uppsättning arbetsflöden och kunna beräkna, lagring eller en blandning.</span><span class="sxs-lookup"><span data-stu-id="84a6c-112">Let's walk through an example of a service that exposes four workloads: A, B, C, and D. Each corresponds tooa set of workflows and could be compute, storage, or a mix.</span></span> <span data-ttu-id="84a6c-113">För hello dig ut av enkelhet kommer vi abstrakt ut hello arbetsbelastningar i vårt exempel.</span><span class="sxs-lookup"><span data-stu-id="84a6c-113">For hello sake of simplicity, we will abstract out hello workloads in our example.</span></span> <span data-ttu-id="84a6c-114">hello olika fel som körs i det här exemplet är:</span><span class="sxs-lookup"><span data-stu-id="84a6c-114">hello different faults executed in this example are:</span></span>
 
-* <span data-ttu-id="319d7-115">RestartNode: Städat fel att simulera en omstart av datorn.</span><span class="sxs-lookup"><span data-stu-id="319d7-115">RestartNode: Ungraceful fault to simulate a machine restart.</span></span>
-* <span data-ttu-id="319d7-116">RestartDeployedCodePackage: Städat fel att simulera serverprocess kraschar.</span><span class="sxs-lookup"><span data-stu-id="319d7-116">RestartDeployedCodePackage: Ungraceful fault to simulate service host process crashes.</span></span>
-* <span data-ttu-id="319d7-117">RemoveReplica: Korrekt fel att simulera repliken tas bort.</span><span class="sxs-lookup"><span data-stu-id="319d7-117">RemoveReplica: Graceful fault to simulate replica removal.</span></span>
-* <span data-ttu-id="319d7-118">En MovePrimary: Korrekt fel att simulera replik flyttar utlöses av belastningsutjämnaren Service Fabric.</span><span class="sxs-lookup"><span data-stu-id="319d7-118">MovePrimary: Graceful fault to simulate replica moves triggered by the Service Fabric load balancer.</span></span>
+* <span data-ttu-id="84a6c-115">RestartNode: Städat fel toosimulate en dator startas om.</span><span class="sxs-lookup"><span data-stu-id="84a6c-115">RestartNode: Ungraceful fault toosimulate a machine restart.</span></span>
+* <span data-ttu-id="84a6c-116">RestartDeployedCodePackage: Städat fel toosimulate serverprocess kraschar.</span><span class="sxs-lookup"><span data-stu-id="84a6c-116">RestartDeployedCodePackage: Ungraceful fault toosimulate service host process crashes.</span></span>
+* <span data-ttu-id="84a6c-117">RemoveReplica: Borttagning av korrekt fel toosimulate repliken.</span><span class="sxs-lookup"><span data-stu-id="84a6c-117">RemoveReplica: Graceful fault toosimulate replica removal.</span></span>
+* <span data-ttu-id="84a6c-118">En MovePrimary: Korrekt fel toosimulate replik flyttar utlösta som hello Service Fabric-belastningsutjämnaren.</span><span class="sxs-lookup"><span data-stu-id="84a6c-118">MovePrimary: Graceful fault toosimulate replica moves triggered by hello Service Fabric load balancer.</span></span>
 
 ```csharp
-// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
+// Add a reference tooSystem.Fabric.Testability.dll and System.Fabric.dll.
 
 using System;
 using System.Fabric;
@@ -46,7 +46,7 @@ class Test
 {
     public static int Main(string[] args)
     {
-        // Replace these strings with the actual version for your cluster and application.
+        // Replace these strings with hello actual version for your cluster and application.
         string clusterConnection = "localhost:19000";
         Uri applicationName = new Uri("fabric:/samples/PersistentToDoListApp");
         Uri serviceName = new Uri("fabric:/samples/PersistentToDoListApp/PersistentToDoListService");
@@ -93,31 +93,31 @@ class Test
     {
         // Create FabricClient with connection and security information here.
         FabricClient fabricClient = new FabricClient(clusterConnection);
-        // Maximum time to wait for a service to stabilize.
+        // Maximum time toowait for a service toostabilize.
         TimeSpan maxServiceStabilizationTime = TimeSpan.FromSeconds(120);
 
-        // How many loops of faults you want to execute.
+        // How many loops of faults you want tooexecute.
         uint testLoopCount = 20;
         Random random = new Random();
 
         for (var i = 0; i < testLoopCount; ++i)
         {
             var workload = SelectRandomValue<ServiceWorkloads>(random);
-            // Start the workload.
+            // Start hello workload.
             var workloadTask = RunWorkloadAsync(workload);
 
-            // While the task is running, induce faults into the service. They can be ungraceful faults like
+            // While hello task is running, induce faults into hello service. They can be ungraceful faults like
             // RestartNode and RestartDeployedCodePackage or graceful faults like RemoveReplica or MovePrimary.
             var fault = SelectRandomValue<ServiceFabricFaults>(random);
 
-            // Create a replica selector, which will select a primary replica from the given service to test.
+            // Create a replica selector, which will select a primary replica from hello given service tootest.
             var replicaSelector = ReplicaSelector.PrimaryOf(PartitionSelector.RandomOf(serviceName));
-            // Run the selected random fault.
+            // Run hello selected random fault.
             await RunFaultAsync(applicationName, fault, replicaSelector, fabricClient);
-            // Validate the health and stability of the service.
+            // Validate hello health and stability of hello service.
             await fabricClient.ServiceManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
 
-            // Wait for the workload to finish successfully.
+            // Wait for hello workload toofinish successfully.
             await workloadTask;
         }
     }
@@ -145,9 +145,9 @@ class Test
     {
         throw new NotImplementedException();
         // This is where you trigger and complete your service workload.
-        // Note that the faults induced while your service workload is running will
-        // fault the primary service. Hence, you will need to reconnect to complete or check
-        // the status of the workload.
+        // Note that hello faults induced while your service workload is running will
+        // fault hello primary service. Hence, you will need tooreconnect toocomplete or check
+        // hello status of hello workload.
     }
 
     private static T SelectRandomValue<T>(Random random)

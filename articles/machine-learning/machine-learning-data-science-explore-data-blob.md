@@ -1,6 +1,6 @@
 ---
-title: Utforska data i Azure blob storage med Pandas | Microsoft Docs
-description: "Så här utforska data som lagras i Azure blob-behållaren med hjälp av Pandas."
+title: aaaExplore data i Azure blob storage med Pandas | Microsoft Docs
+description: "Hur tooexplore data som lagras i Azure blob-behållaren med Pandas."
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: e1b33b17270122a38228484a56c8324c5b4505a0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 28f3c0aebf2300006066c4b19dcb1f0a76a1deb2
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a><span data-ttu-id="854fe-103">Utforska data i Azure Blob Storage med Pandas</span><span class="sxs-lookup"><span data-stu-id="854fe-103">Explore data in Azure blob storage with Pandas</span></span>
-<span data-ttu-id="854fe-104">Det här dokumentet innehåller information om hur att utforska data som lagras i Azure blob-behållaren med [Pandas](http://pandas.pydata.org/) Python-paketet.</span><span class="sxs-lookup"><span data-stu-id="854fe-104">This document covers how to explore data that is stored in Azure blob container using [Pandas](http://pandas.pydata.org/) Python package.</span></span>
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a><span data-ttu-id="9c715-103">Utforska data i Azure Blob Storage med Pandas</span><span class="sxs-lookup"><span data-stu-id="9c715-103">Explore data in Azure blob storage with Pandas</span></span>
+<span data-ttu-id="9c715-104">Det här dokumentet beskriver hur tooexplore data som lagras i Azure blob-behållaren med hjälp av [Pandas](http://pandas.pydata.org/) Python-paketet.</span><span class="sxs-lookup"><span data-stu-id="9c715-104">This document covers how tooexplore data that is stored in Azure blob container using [Pandas](http://pandas.pydata.org/) Python package.</span></span>
 
-<span data-ttu-id="854fe-105">Följande **menyn** länkar till avsnitt som beskriver hur du använder Verktyg för att utforska data från olika miljöer för lagring.</span><span class="sxs-lookup"><span data-stu-id="854fe-105">The following **menu** links to topics that describe how to use tools to explore data from various storage environments.</span></span> <span data-ttu-id="854fe-106">Den här uppgiften är ett steg i den [datavetenskap Process]().</span><span class="sxs-lookup"><span data-stu-id="854fe-106">This task is a step in the [Data Science Process]().</span></span>
+<span data-ttu-id="9c715-105">hello följande **menyn** länkar tootopics som beskriver hur toouse verktyg tooexplore data från olika miljöer för lagring.</span><span class="sxs-lookup"><span data-stu-id="9c715-105">hello following **menu** links tootopics that describe how toouse tools tooexplore data from various storage environments.</span></span> <span data-ttu-id="9c715-106">Den här uppgiften är ett steg i hello [datavetenskap Process]().</span><span class="sxs-lookup"><span data-stu-id="9c715-106">This task is a step in hello [Data Science Process]().</span></span>
 
 [!INCLUDE [cap-explore-data-selector](../../includes/cap-explore-data-selector.md)]
 
-## <a name="prerequisites"></a><span data-ttu-id="854fe-107">Krav</span><span class="sxs-lookup"><span data-stu-id="854fe-107">Prerequisites</span></span>
-<span data-ttu-id="854fe-108">Den här artikeln förutsätter att du har:</span><span class="sxs-lookup"><span data-stu-id="854fe-108">This article assumes that you have:</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="9c715-107">Krav</span><span class="sxs-lookup"><span data-stu-id="9c715-107">Prerequisites</span></span>
+<span data-ttu-id="9c715-108">Den här artikeln förutsätter att du har:</span><span class="sxs-lookup"><span data-stu-id="9c715-108">This article assumes that you have:</span></span>
 
-* <span data-ttu-id="854fe-109">Skapa ett Azure storage-konto.</span><span class="sxs-lookup"><span data-stu-id="854fe-109">Created an Azure storage account.</span></span> <span data-ttu-id="854fe-110">Om du behöver mer information, se [skapa ett Azure Storage-konto](../storage/common/storage-create-storage-account.md#create-a-storage-account)</span><span class="sxs-lookup"><span data-stu-id="854fe-110">If you need instructions, see [Create an Azure Storage account](../storage/common/storage-create-storage-account.md#create-a-storage-account)</span></span>
-* <span data-ttu-id="854fe-111">Lagra data i ett Azure blob storage-konto.</span><span class="sxs-lookup"><span data-stu-id="854fe-111">Stored your data in an Azure blob storage account.</span></span> <span data-ttu-id="854fe-112">Om du behöver mer information, se [flytta data till och från Azure Storage](../storage/common/storage-moving-data.md)</span><span class="sxs-lookup"><span data-stu-id="854fe-112">If you need instructions, see [Moving data to and from Azure Storage](../storage/common/storage-moving-data.md)</span></span>
+* <span data-ttu-id="9c715-109">Skapa ett Azure storage-konto.</span><span class="sxs-lookup"><span data-stu-id="9c715-109">Created an Azure storage account.</span></span> <span data-ttu-id="9c715-110">Om du behöver mer information, se [skapa ett Azure Storage-konto](../storage/common/storage-create-storage-account.md#create-a-storage-account)</span><span class="sxs-lookup"><span data-stu-id="9c715-110">If you need instructions, see [Create an Azure Storage account](../storage/common/storage-create-storage-account.md#create-a-storage-account)</span></span>
+* <span data-ttu-id="9c715-111">Lagra data i ett Azure blob storage-konto.</span><span class="sxs-lookup"><span data-stu-id="9c715-111">Stored your data in an Azure blob storage account.</span></span> <span data-ttu-id="9c715-112">Om du behöver mer information, se [flytta data tooand från Azure Storage](../storage/common/storage-moving-data.md)</span><span class="sxs-lookup"><span data-stu-id="9c715-112">If you need instructions, see [Moving data tooand from Azure Storage](../storage/common/storage-moving-data.md)</span></span>
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a><span data-ttu-id="854fe-113">Läsa in data i en Pandas DataFrame</span><span class="sxs-lookup"><span data-stu-id="854fe-113">Load the data into a Pandas DataFrame</span></span>
-<span data-ttu-id="854fe-114">Om du vill utforska och ändra en datamängd, måste den först hämtas från blob-källan till en lokal fil som sedan kan läsas in i en Pandas DataFrame.</span><span class="sxs-lookup"><span data-stu-id="854fe-114">To explore and manipulate a dataset, it must first be downloaded from the blob source to a local file, which can then be loaded in a Pandas DataFrame.</span></span> <span data-ttu-id="854fe-115">Här följer de steg för den här proceduren:</span><span class="sxs-lookup"><span data-stu-id="854fe-115">Here are the steps to follow for this procedure:</span></span>
+## <a name="load-hello-data-into-a-pandas-dataframe"></a><span data-ttu-id="9c715-113">Läs in hello data till en Pandas DataFrame</span><span class="sxs-lookup"><span data-stu-id="9c715-113">Load hello data into a Pandas DataFrame</span></span>
+<span data-ttu-id="9c715-114">tooexplore och ändra en datamängd, måste först hämtas från hello blob tooa lokala källfilen, som sedan kan läsas in i en Pandas DataFrame.</span><span class="sxs-lookup"><span data-stu-id="9c715-114">tooexplore and manipulate a dataset, it must first be downloaded from hello blob source tooa local file, which can then be loaded in a Pandas DataFrame.</span></span> <span data-ttu-id="9c715-115">Här följer hello steg toofollow för den här proceduren:</span><span class="sxs-lookup"><span data-stu-id="9c715-115">Here are hello steps toofollow for this procedure:</span></span>
 
-1. <span data-ttu-id="854fe-116">Hämta data från Azure blob med följande Python-kodexempel med blob-tjänsten.</span><span class="sxs-lookup"><span data-stu-id="854fe-116">Download the data from Azure blob with the following Python code sample using blob service.</span></span> <span data-ttu-id="854fe-117">Ersätt variabeln i följande kod med din specifika värden:</span><span class="sxs-lookup"><span data-stu-id="854fe-117">Replace the variable in the following code with your specific values:</span></span> 
+1. <span data-ttu-id="9c715-116">Ladda ned hello data från Azure blob med hello följande kodexempel för Python med hjälp av blob-tjänsten.</span><span class="sxs-lookup"><span data-stu-id="9c715-116">Download hello data from Azure blob with hello following Python code sample using blob service.</span></span> <span data-ttu-id="9c715-117">Ersätt hello variabel i hello följande kod med dina specifika värden:</span><span class="sxs-lookup"><span data-stu-id="9c715-117">Replace hello variable in hello following code with your specific values:</span></span> 
    
         from azure.storage.blob import BlobService
         import tables
@@ -52,52 +52,52 @@ ms.lasthandoff: 08/29/2017
         blob_service=BlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
-        print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. <span data-ttu-id="854fe-118">Läsa data i en Pandas data-ram från den hämta filen.</span><span class="sxs-lookup"><span data-stu-id="854fe-118">Read the data into a Pandas data-frame from the downloaded file.</span></span>
+        print(("It takes %s seconds toodownload "+blobname) % (t2 - t1))
+2. <span data-ttu-id="9c715-118">Läs hello data till en Pandas data-ram från hello ned filen.</span><span class="sxs-lookup"><span data-stu-id="9c715-118">Read hello data into a Pandas data-frame from hello downloaded file.</span></span>
    
-        #LOCALFILE is the file path    
+        #LOCALFILE is hello file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-<span data-ttu-id="854fe-119">Du är nu redo att utforska data och generera funktioner på denna dataset.</span><span class="sxs-lookup"><span data-stu-id="854fe-119">Now you are ready to explore the data and generate features on this dataset.</span></span>
+<span data-ttu-id="9c715-119">Nu är klar tooexplore hello data och generera funktioner på denna dataset.</span><span class="sxs-lookup"><span data-stu-id="9c715-119">Now you are ready tooexplore hello data and generate features on this dataset.</span></span>
 
-## <span data-ttu-id="854fe-120"><a name="blob-dataexploration"></a>Exempel på undersökning av data med hjälp av Pandas</span><span class="sxs-lookup"><span data-stu-id="854fe-120"><a name="blob-dataexploration"></a>Examples of data exploration using Pandas</span></span>
-<span data-ttu-id="854fe-121">Här följer några exempel på hur du kan utforska data med hjälp av Pandas:</span><span class="sxs-lookup"><span data-stu-id="854fe-121">Here are a few examples of ways to explore data using Pandas:</span></span>
+## <span data-ttu-id="9c715-120"><a name="blob-dataexploration"></a>Exempel på undersökning av data med hjälp av Pandas</span><span class="sxs-lookup"><span data-stu-id="9c715-120"><a name="blob-dataexploration"></a>Examples of data exploration using Pandas</span></span>
+<span data-ttu-id="9c715-121">Här följer några exempel på hur tooexplore data med hjälp av Pandas:</span><span class="sxs-lookup"><span data-stu-id="9c715-121">Here are a few examples of ways tooexplore data using Pandas:</span></span>
 
-1. <span data-ttu-id="854fe-122">Granska de **antal rader och kolumner**</span><span class="sxs-lookup"><span data-stu-id="854fe-122">Inspect the **number of rows and columns**</span></span> 
+1. <span data-ttu-id="9c715-122">Inspektera hello **antal rader och kolumner**</span><span class="sxs-lookup"><span data-stu-id="9c715-122">Inspect hello **number of rows and columns**</span></span> 
    
-        print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-2. <span data-ttu-id="854fe-123">**Inspektera** de första eller sista få **rader** i följande datauppsättningen:</span><span class="sxs-lookup"><span data-stu-id="854fe-123">**Inspect** the first or last few **rows** in the following dataset:</span></span>
+        print 'hello size of hello data is: %d rows and  %d columns' % dataframe_blobdata.shape
+2. <span data-ttu-id="9c715-123">**Inspektera** hello första eller sista några **rader** i hello följande datauppsättningen:</span><span class="sxs-lookup"><span data-stu-id="9c715-123">**Inspect** hello first or last few **rows** in hello following dataset:</span></span>
    
         dataframe_blobdata.head(10)
    
         dataframe_blobdata.tail(10)
-3. <span data-ttu-id="854fe-124">Kontrollera den **datatyp** varje kolumn har importerats som använder följande exempelkod</span><span class="sxs-lookup"><span data-stu-id="854fe-124">Check the **data type** each column was imported as using the following sample code</span></span>
+3. <span data-ttu-id="9c715-124">Kontrollera hello **datatyp** varje kolumn har importerats som använder hello följande exempelkod</span><span class="sxs-lookup"><span data-stu-id="9c715-124">Check hello **data type** each column was imported as using hello following sample code</span></span>
    
         for col in dataframe_blobdata.columns:
             print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-4. <span data-ttu-id="854fe-125">Kontrollera den **grundläggande statistik** för kolumnerna i följande data</span><span class="sxs-lookup"><span data-stu-id="854fe-125">Check the **basic stats** for the columns in the data set as follows</span></span>
+4. <span data-ttu-id="9c715-125">Kontrollera hello **grundläggande statistik** för hello kolumner i hello datauppsättning enligt följande</span><span class="sxs-lookup"><span data-stu-id="9c715-125">Check hello **basic stats** for hello columns in hello data set as follows</span></span>
    
         dataframe_blobdata.describe()
-5. <span data-ttu-id="854fe-126">Titta på hur många poster för varje värde i kolumnen enligt följande</span><span class="sxs-lookup"><span data-stu-id="854fe-126">Look at the number of entries for each column value as follows</span></span>
+5. <span data-ttu-id="9c715-126">Titta på följande sätt på hello antal poster för varje värde i kolumnen</span><span class="sxs-lookup"><span data-stu-id="9c715-126">Look at hello number of entries for each column value as follows</span></span>
    
         dataframe_blobdata['<column_name>'].value_counts()
-6. <span data-ttu-id="854fe-127">**Antal saknade värden** jämfört med det faktiska antalet poster i varje kolumn med hjälp av följande exempelkod</span><span class="sxs-lookup"><span data-stu-id="854fe-127">**Count missing values** versus the actual number of entries in each column using the following sample code</span></span>
+6. <span data-ttu-id="9c715-127">**Antal saknade värden** jämfört med hello faktiska antalet poster i varje kolumn med hello följande exempelkod</span><span class="sxs-lookup"><span data-stu-id="9c715-127">**Count missing values** versus hello actual number of entries in each column using hello following sample code</span></span>
    
         miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
         print miss_num
-7. <span data-ttu-id="854fe-128">Om du har **saknade värden** för en viss kolumn i data, kan du släppa dem på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="854fe-128">If you have **missing values** for a specific column in the data, you can drop them as follows:</span></span>
+7. <span data-ttu-id="9c715-128">Om du har **saknade värden** för en viss kolumn i hello data kan du släppa dem på följande sätt:</span><span class="sxs-lookup"><span data-stu-id="9c715-128">If you have **missing values** for a specific column in hello data, you can drop them as follows:</span></span>
    
-     <span data-ttu-id="854fe-129">dataframe_blobdata_noNA = dataframe_blobdata.dropna() dataframe_blobdata_noNA.shape</span><span class="sxs-lookup"><span data-stu-id="854fe-129">dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape</span></span>
+     <span data-ttu-id="9c715-129">dataframe_blobdata_noNA = dataframe_blobdata.dropna() dataframe_blobdata_noNA.shape</span><span class="sxs-lookup"><span data-stu-id="9c715-129">dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape</span></span>
    
-   <span data-ttu-id="854fe-130">Ett annat sätt att ersätta saknade värden är med funktionen läge:</span><span class="sxs-lookup"><span data-stu-id="854fe-130">Another way to replace missing values is with the mode function:</span></span>
+   <span data-ttu-id="9c715-130">Ett annat sätt tooreplace värden som saknas är med hello läge funktionen:</span><span class="sxs-lookup"><span data-stu-id="9c715-130">Another way tooreplace missing values is with hello mode function:</span></span>
    
-     <span data-ttu-id="854fe-131">dataframe_blobdata_mode = dataframe_blobdata.fillna ({< kolumnnamn >: .mode()[0]}) dataframe_blobdata ['< kolumnnamn >']</span><span class="sxs-lookup"><span data-stu-id="854fe-131">dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})</span></span>        
-8. <span data-ttu-id="854fe-132">Skapa en **histogram** ritas med hjälp av variabeln antal lagerplatser ska ritas distribution av en variabel</span><span class="sxs-lookup"><span data-stu-id="854fe-132">Create a **histogram** plot using variable number of bins to plot the distribution of a variable</span></span>    
+     <span data-ttu-id="9c715-131">dataframe_blobdata_mode = dataframe_blobdata.fillna ({< kolumnnamn >: .mode()[0]}) dataframe_blobdata ['< kolumnnamn >']</span><span class="sxs-lookup"><span data-stu-id="9c715-131">dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})</span></span>        
+8. <span data-ttu-id="9c715-132">Skapa en **histogram** ritas med variabeln antal lagerplatser tooplot hello distribution av en variabel</span><span class="sxs-lookup"><span data-stu-id="9c715-132">Create a **histogram** plot using variable number of bins tooplot hello distribution of a variable</span></span>    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
    
         np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-9. <span data-ttu-id="854fe-133">Titta på **korrelationer** mellan variabler med hjälp av en scatterplot eller inbyggda korrelationen</span><span class="sxs-lookup"><span data-stu-id="854fe-133">Look at **correlations** between variables using a scatterplot or using the built-in correlation function</span></span>
+9. <span data-ttu-id="9c715-133">Titta på **korrelationer** mellan variabler med hjälp av en scatterplot eller hello inbyggda korrelationsfunktion</span><span class="sxs-lookup"><span data-stu-id="9c715-133">Look at **correlations** between variables using a scatterplot or using hello built-in correlation function</span></span>
    
         #relationship between column_a and column_b using scatter plot
         plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])

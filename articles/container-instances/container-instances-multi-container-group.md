@@ -1,5 +1,5 @@
 ---
-title: "Azure Behållarinstanser - flera behållargruppen | Azure-dokument"
+title: "aaaAzure Behållarinstanser - flera behållargruppen | Azure-dokument"
 description: "Azure Behållarinstanser - grupp med flera behållare"
 services: container-instances
 documentationcenter: 
@@ -17,25 +17,25 @@ ms.workload: na
 ms.date: 07/26/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 140f58582645ea32f77e901eb13364ed145bbecf
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 976f578cd2a9bf7f05ab97f24662139bb72062ea
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-a-container-group"></a><span data-ttu-id="a9ba1-103">Distribuera en behållare grupp</span><span class="sxs-lookup"><span data-stu-id="a9ba1-103">Deploy a container group</span></span>
+# <a name="deploy-a-container-group"></a><span data-ttu-id="1da7f-103">Distribuera en behållare grupp</span><span class="sxs-lookup"><span data-stu-id="1da7f-103">Deploy a container group</span></span>
 
-<span data-ttu-id="a9ba1-104">Azure Behållarinstanser stöd för distribution av flera behållare till en enda värd med en *behållargruppen*.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-104">Azure Container Instances support the deployment of multiple containers onto a single host using a *container group*.</span></span> <span data-ttu-id="a9ba1-105">Detta är användbart när du skapar ett program sidovagn för loggning, övervakning eller någon annan konfiguration där en tjänst behöver en andra anslutna process.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-105">This is useful when building an application sidecar for logging, monitoring, or any other configuration where a service needs a second attached process.</span></span> 
+<span data-ttu-id="1da7f-104">Stöd för Azure Behållarinstanser hello distribution av flera behållare till en enda värd med en *behållargruppen*.</span><span class="sxs-lookup"><span data-stu-id="1da7f-104">Azure Container Instances support hello deployment of multiple containers onto a single host using a *container group*.</span></span> <span data-ttu-id="1da7f-105">Detta är användbart när du skapar ett program sidovagn för loggning, övervakning eller någon annan konfiguration där en tjänst behöver en andra anslutna process.</span><span class="sxs-lookup"><span data-stu-id="1da7f-105">This is useful when building an application sidecar for logging, monitoring, or any other configuration where a service needs a second attached process.</span></span> 
 
-<span data-ttu-id="a9ba1-106">Det här dokumentet går igenom kör en enkel flera behållare sidovagn konfiguration med en Azure Resource Manager-mall.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-106">This document walks through running a simple multi-container sidecar configuration using an Azure Resource Manager template.</span></span>
+<span data-ttu-id="1da7f-106">Det här dokumentet går igenom kör en enkel flera behållare sidovagn konfiguration med en Azure Resource Manager-mall.</span><span class="sxs-lookup"><span data-stu-id="1da7f-106">This document walks through running a simple multi-container sidecar configuration using an Azure Resource Manager template.</span></span>
 
-## <a name="configure-the-template"></a><span data-ttu-id="a9ba1-107">Konfigurera mallen</span><span class="sxs-lookup"><span data-stu-id="a9ba1-107">Configure the template</span></span>
+## <a name="configure-hello-template"></a><span data-ttu-id="1da7f-107">Konfigurera hello mall</span><span class="sxs-lookup"><span data-stu-id="1da7f-107">Configure hello template</span></span>
 
-<span data-ttu-id="a9ba1-108">Skapa en fil med namnet `azuredeploy.json` och kopierar följande json till den.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-108">Create a file named `azuredeploy.json` and copy the following json into it.</span></span> 
+<span data-ttu-id="1da7f-108">Skapa en fil med namnet `azuredeploy.json` och kopiera hello följande json till den.</span><span class="sxs-lookup"><span data-stu-id="1da7f-108">Create a file named `azuredeploy.json` and copy hello following json into it.</span></span> 
 
-<span data-ttu-id="a9ba1-109">I det här exemplet definieras en behållare grupp med två behållare och en offentlig IP-adress.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-109">In this sample, a container group with two containers and a public IP address is defined.</span></span> <span data-ttu-id="a9ba1-110">Första behållare för gruppen kör ett Internetriktade Internetprogram.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-110">The first container of the group runs an internet facing application.</span></span> <span data-ttu-id="a9ba1-111">Behållaren andra sidvagn, gör en HTTP-begäran till webbprogrammet huvudsakliga via gruppens lokala nätverk.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-111">The second container, the sidecar, makes an HTTP request to the main web application via the group's local network.</span></span> 
+<span data-ttu-id="1da7f-109">I det här exemplet definieras en behållare grupp med två behållare och en offentlig IP-adress.</span><span class="sxs-lookup"><span data-stu-id="1da7f-109">In this sample, a container group with two containers and a public IP address is defined.</span></span> <span data-ttu-id="1da7f-110">hello första behållare för hello grupp körs ett Internetriktade Internetprogram.</span><span class="sxs-lookup"><span data-stu-id="1da7f-110">hello first container of hello group runs an internet facing application.</span></span> <span data-ttu-id="1da7f-111">hello andra behållare, hello sidovagn gör ett HTTP-begäran toohello huvudsakliga webbprogram via hello gruppen lokala nätverk.</span><span class="sxs-lookup"><span data-stu-id="1da7f-111">hello second container, hello sidecar, makes an HTTP request toohello main web application via hello group's local network.</span></span> 
 
-<span data-ttu-id="a9ba1-112">Det här exemplet sidovagn kan expanderas för att utlösa en avisering om det tog emot en HTTP-svarskoden än 200 OK.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-112">This sidecar example could be expanded to trigger an alert if it received an HTTP response code other than 200 OK.</span></span> 
+<span data-ttu-id="1da7f-112">Det här exemplet sidovagn kan vara expanderade tootrigger en avisering om det tog emot en HTTP-svarskoden än 200 OK.</span><span class="sxs-lookup"><span data-stu-id="1da7f-112">This sidecar example could be expanded tootrigger an alert if it received an HTTP response code other than 200 OK.</span></span> 
 
 ```json
 {
@@ -109,7 +109,7 @@ ms.lasthandoff: 08/18/2017
   }
 ```
 
-<span data-ttu-id="a9ba1-113">Om du vill använda ett privat behållaren image register att lägga till ett objekt i json-dokumentet med följande format.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-113">To use a private container image registry, add an object to the json document with the following format.</span></span>
+<span data-ttu-id="1da7f-113">toouse en bild registret privata behållare lägga till ett objekt toohello json-dokument med hello följande format.</span><span class="sxs-lookup"><span data-stu-id="1da7f-113">toouse a private container image registry, add an object toohello json document with hello following format.</span></span>
 
 ```json
 "imageRegistryCredentials": [
@@ -121,31 +121,31 @@ ms.lasthandoff: 08/18/2017
 ]
 ```
 
-## <a name="deploy-the-template"></a><span data-ttu-id="a9ba1-114">Distribuera mallen</span><span class="sxs-lookup"><span data-stu-id="a9ba1-114">Deploy the template</span></span>
+## <a name="deploy-hello-template"></a><span data-ttu-id="1da7f-114">Distribuera hello mall</span><span class="sxs-lookup"><span data-stu-id="1da7f-114">Deploy hello template</span></span>
 
-<span data-ttu-id="a9ba1-115">Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#create).</span><span class="sxs-lookup"><span data-stu-id="a9ba1-115">Create a resource group with the [az group create](/cli/azure/group#create) command.</span></span>
+<span data-ttu-id="1da7f-115">Skapa en resursgrupp med hello [az gruppen skapa](/cli/azure/group#create) kommando.</span><span class="sxs-lookup"><span data-stu-id="1da7f-115">Create a resource group with hello [az group create](/cli/azure/group#create) command.</span></span>
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
 ```
 
-<span data-ttu-id="a9ba1-116">Distribuera mallen med den [az distribution skapa](/cli/azure/group/deployment#create) kommando.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-116">Deploy the template with the [az group deployment create](/cli/azure/group/deployment#create) command.</span></span>
+<span data-ttu-id="1da7f-116">Distribuera hello mallen med hello [az distribution skapa](/cli/azure/group/deployment#create) kommando.</span><span class="sxs-lookup"><span data-stu-id="1da7f-116">Deploy hello template with hello [az group deployment create](/cli/azure/group/deployment#create) command.</span></span>
 
 ```azurecli-interactive
 az group deployment create --name myContainerGroup --resource-group myResourceGroup --template-file azuredeploy.json
 ```
 
-<span data-ttu-id="a9ba1-117">Inom några sekunder får du ett första svar från Azure.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-117">Within a few seconds, you will receive an initial response from Azure.</span></span> 
+<span data-ttu-id="1da7f-117">Inom några sekunder får du ett första svar från Azure.</span><span class="sxs-lookup"><span data-stu-id="1da7f-117">Within a few seconds, you will receive an initial response from Azure.</span></span> 
 
-## <a name="view-deployment-state"></a><span data-ttu-id="a9ba1-118">Visa status för distributionen</span><span class="sxs-lookup"><span data-stu-id="a9ba1-118">View deployment state</span></span>
+## <a name="view-deployment-state"></a><span data-ttu-id="1da7f-118">Visa status för distributionen</span><span class="sxs-lookup"><span data-stu-id="1da7f-118">View deployment state</span></span>
 
-<span data-ttu-id="a9ba1-119">Du kan visa statusen för distributionen av `az container show` kommando.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-119">To view the state of the deployment, use the `az container show` command.</span></span> <span data-ttu-id="a9ba1-120">Detta returnerar etablerade offentliga IP-adressen som programmet kan användas.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-120">This returns the provisioned public IP address over which the application can be accessed.</span></span>
+<span data-ttu-id="1da7f-119">tooview hello tillstånd hello distribution, Använd hello `az container show` kommando.</span><span class="sxs-lookup"><span data-stu-id="1da7f-119">tooview hello state of hello deployment, use hello `az container show` command.</span></span> <span data-ttu-id="1da7f-120">Detta returnerar hello etablerats offentliga IP-adressen via vilken hello program kan nås.</span><span class="sxs-lookup"><span data-stu-id="1da7f-120">This returns hello provisioned public IP address over which hello application can be accessed.</span></span>
 
 ```azurecli-interactive
 az container show --name myContainerGroup --resource-group myResourceGroup -o table
 ```
 
-<span data-ttu-id="a9ba1-121">Resultat:</span><span class="sxs-lookup"><span data-stu-id="a9ba1-121">Output:</span></span>
+<span data-ttu-id="1da7f-121">Resultat:</span><span class="sxs-lookup"><span data-stu-id="1da7f-121">Output:</span></span>
 
 ```azurecli
 Name              ResourceGroup    ProvisioningState    Image                                                             IP:ports           CPU/Memory    OsType    Location
@@ -153,15 +153,15 @@ Name              ResourceGroup    ProvisioningState    Image                   
 myContainerGroup  myResourceGrou2  Succeeded            microsoft/aci-tutorial-sidecar,microsoft/aci-tutorial-app:v1      40.118.253.154:80  1.0 core/1.5 gb   Linux     westus
 ```
 
-## <a name="view-logs"></a><span data-ttu-id="a9ba1-122">Visa loggfiler</span><span class="sxs-lookup"><span data-stu-id="a9ba1-122">View logs</span></span>   
+## <a name="view-logs"></a><span data-ttu-id="1da7f-122">Visa loggfiler</span><span class="sxs-lookup"><span data-stu-id="1da7f-122">View logs</span></span>   
 
-<span data-ttu-id="a9ba1-123">Visa loggutdata från en behållare med hjälp av den `az container logs` kommando.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-123">View the log output of a container using the `az container logs` command.</span></span> <span data-ttu-id="a9ba1-124">Den `--container-name` argumentet anger behållaren som hämtar loggarna.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-124">The `--container-name` argument specifies the container from which to pull logs.</span></span> <span data-ttu-id="a9ba1-125">Den första behållaren har angetts i det här exemplet.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-125">In this example, the first container is specified.</span></span> 
+<span data-ttu-id="1da7f-123">Visa hello loggutdata för en behållare med hello `az container logs` kommando.</span><span class="sxs-lookup"><span data-stu-id="1da7f-123">View hello log output of a container using hello `az container logs` command.</span></span> <span data-ttu-id="1da7f-124">Hej `--container-name` argumentet anger hello behållare från vilken toopull loggar.</span><span class="sxs-lookup"><span data-stu-id="1da7f-124">hello `--container-name` argument specifies hello container from which toopull logs.</span></span> <span data-ttu-id="1da7f-125">I det här exemplet har hello första behållare angetts.</span><span class="sxs-lookup"><span data-stu-id="1da7f-125">In this example, hello first container is specified.</span></span> 
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-app --resource-group myResourceGroup
 ```
 
-<span data-ttu-id="a9ba1-126">Resultat:</span><span class="sxs-lookup"><span data-stu-id="a9ba1-126">Output:</span></span>
+<span data-ttu-id="1da7f-126">Resultat:</span><span class="sxs-lookup"><span data-stu-id="1da7f-126">Output:</span></span>
 
 ```bash
 istening on port 80
@@ -171,13 +171,13 @@ istening on port 80
 ::1 - - [27/Jul/2017:17:35:38 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-<span data-ttu-id="a9ba1-127">Om du vill se loggar för behållaren sida bilen köra samma kommando anger andra behållarens namn.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-127">To see the logs for the side-car container, run the same command specifying the second container name.</span></span>
+<span data-ttu-id="1da7f-127">toosee hello loggar för hello sida bil behållare, kör hello samma kommando anger hello andra behållarnamn.</span><span class="sxs-lookup"><span data-stu-id="1da7f-127">toosee hello logs for hello side-car container, run hello same command specifying hello second container name.</span></span>
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-sidecar --resource-group myResourceGroup
 ```
 
-<span data-ttu-id="a9ba1-128">Resultat:</span><span class="sxs-lookup"><span data-stu-id="a9ba1-128">Output:</span></span>
+<span data-ttu-id="1da7f-128">Resultat:</span><span class="sxs-lookup"><span data-stu-id="1da7f-128">Output:</span></span>
 
 ```bash
 Every 3.0s: curl -I http://localhost                                                                                                                       Mon Jul 17 11:27:36 2017
@@ -193,11 +193,11 @@ Last-Modified: Sun, 16 Jul 2017 02:08:22 GMT
 Date: Mon, 17 Jul 2017 18:27:36 GMT
 ```
 
-<span data-ttu-id="a9ba1-129">Som du kan se göra sidovagn regelbundet en HTTP-begäran till huvudsakliga webb-applikationen via gruppens lokala nätverk så att den körs.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-129">As you can see, the sidecar is periodically making an HTTP request to the main web application via the group's local network to ensure that it is running.</span></span>
+<span data-ttu-id="1da7f-129">Som du ser att hello sidovagn regelbundet en HTTP-begäran toohello huvudsakliga webbprogram via hello gruppen lokala nätverket tooensure körs.</span><span class="sxs-lookup"><span data-stu-id="1da7f-129">As you can see, hello sidecar is periodically making an HTTP request toohello main web application via hello group's local network tooensure that it is running.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="a9ba1-130">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="a9ba1-130">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="1da7f-130">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="1da7f-130">Next steps</span></span>
 
-<span data-ttu-id="a9ba1-131">Det här dokumentet beskrivs de steg som krävs för att distribuera en instans av flera behållare Azure-behållaren.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-131">This document covered the steps needed for deploying a multi-container Azure container instance.</span></span> <span data-ttu-id="a9ba1-132">En slutpunkt till slutpunkt Azure Behållarinstanser upplevelse finns i Azure Container instanser kursen.</span><span class="sxs-lookup"><span data-stu-id="a9ba1-132">For an end to end Azure Container Instances experience, see the Azure Container Instances tutorial.</span></span>
+<span data-ttu-id="1da7f-131">Det här dokumentet beskrivs hello steg som krävs för att distribuera flera behållare instans av Azure-behållaren.</span><span class="sxs-lookup"><span data-stu-id="1da7f-131">This document covered hello steps needed for deploying a multi-container Azure container instance.</span></span> <span data-ttu-id="1da7f-132">En utgången tooend Azure Behållarinstanser upplevelse, finns i hello Azure Behållarinstanser kursen.</span><span class="sxs-lookup"><span data-stu-id="1da7f-132">For an end tooend Azure Container Instances experience, see hello Azure Container Instances tutorial.</span></span>
 
 > [!div class="nextstepaction"]
-> <span data-ttu-id="a9ba1-133">[Azure Behållarinstanser kursen]:./container-instances-tutorial-prepare-app.md</span><span class="sxs-lookup"><span data-stu-id="a9ba1-133">[Azure Container Instances tutorial]: ./container-instances-tutorial-prepare-app.md</span></span>
+> <span data-ttu-id="1da7f-133">[Azure Behållarinstanser kursen]:./container-instances-tutorial-prepare-app.md</span><span class="sxs-lookup"><span data-stu-id="1da7f-133">[Azure Container Instances tutorial]: ./container-instances-tutorial-prepare-app.md</span></span>

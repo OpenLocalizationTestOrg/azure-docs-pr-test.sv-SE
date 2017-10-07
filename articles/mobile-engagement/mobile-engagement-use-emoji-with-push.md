@@ -1,6 +1,6 @@
 ---
-title: "Använda Emoji uttryckssymboler i Azure Mobile Engagement"
-description: "Hur du använder Emoji uttryckssymboler inom push-meddelanden"
+title: aaaUse Emoji uttryckssymboler i Azure Mobile Engagement
+description: Hur toouse Emoji uttryckssymboler inom push-meddelanden
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: bbb7ce5e95b229a7505c5e97b6866d5a302a1d27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 63bfc59ef472e9fe9aa28b5ac8761017b9250e0f
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="use-emoji-emoticon-within-push-notifications"></a><span data-ttu-id="6776b-103">Använd Emoji uttryckssymbol inom Push-meddelanden</span><span class="sxs-lookup"><span data-stu-id="6776b-103">Use Emoji emoticon within Push Notifications</span></span>
-<span data-ttu-id="6776b-104">Du kan inkludera Emoji uttryckssymboler i du push-meddelanden i några enkla steg:</span><span class="sxs-lookup"><span data-stu-id="6776b-104">You can include Emoji emoticons in you push notification in a few easy steps:</span></span> 
+# <a name="use-emoji-emoticon-within-push-notifications"></a><span data-ttu-id="53be7-103">Använd Emoji uttryckssymbol inom Push-meddelanden</span><span class="sxs-lookup"><span data-stu-id="53be7-103">Use Emoji emoticon within Push Notifications</span></span>
+<span data-ttu-id="53be7-104">Du kan inkludera Emoji uttryckssymboler i du push-meddelanden i några enkla steg:</span><span class="sxs-lookup"><span data-stu-id="53be7-104">You can include Emoji emoticons in you push notification in a few easy steps:</span></span> 
 
-1. <span data-ttu-id="6776b-105">Först av allt du behöver för att hitta Emoji vill du skicka meddelandet.</span><span class="sxs-lookup"><span data-stu-id="6776b-105">First of all you need to find the Emoji you want to send in the message.</span></span> <span data-ttu-id="6776b-106">Kontrollera att Emoji som du väljer kommer att stödas av målenheten som enheten tillverkar ta lite tid att lägga till nya godkända Emojis plattformar för enheten.</span><span class="sxs-lookup"><span data-stu-id="6776b-106">Please ensure that the Emoji you are selecting will be supported by the target device as device manufactures take some time to add newly approved Emojis to the device platforms.</span></span> 
-2. <span data-ttu-id="6776b-107">På **Windows** -du kan navigera till den här [länk](http://apps.timwhitlock.info/emoji/tables/unicode) och kopiera ikonen ”inbyggd”.</span><span class="sxs-lookup"><span data-stu-id="6776b-107">On **Windows** - you can navigate to this [link](http://apps.timwhitlock.info/emoji/tables/unicode) and copy the 'Native' icon.</span></span>
+1. <span data-ttu-id="53be7-105">Du måste först toofind hello Emoji som du vill toosend i hello-meddelande.</span><span class="sxs-lookup"><span data-stu-id="53be7-105">First of all you need toofind hello Emoji you want toosend in hello message.</span></span> <span data-ttu-id="53be7-106">Se till att hello Emoji som du väljer kommer att stödas av hello målenhet som enheten tillverkar ta viss tid tooadd nyligen godkända Emojis toohello enhetsplattformar.</span><span class="sxs-lookup"><span data-stu-id="53be7-106">Please ensure that hello Emoji you are selecting will be supported by hello target device as device manufactures take some time tooadd newly approved Emojis toohello device platforms.</span></span> 
+2. <span data-ttu-id="53be7-107">På **Windows** -du kan navigera toothis [länk](http://apps.timwhitlock.info/emoji/tables/unicode) och kopiera hello ”interna”-ikonen.</span><span class="sxs-lookup"><span data-stu-id="53be7-107">On **Windows** - you can navigate toothis [link](http://apps.timwhitlock.info/emoji/tables/unicode) and copy hello 'Native' icon.</span></span>
    
     ![][7] 
-3. <span data-ttu-id="6776b-108">På **Mac** -du kan hitta Emojis i ordlistan program under Redigera -> Emoji & symboler.</span><span class="sxs-lookup"><span data-stu-id="6776b-108">On **Mac** - you can find the Emojis in Dictionary application under Edit -> Emoji & Symbols.</span></span>
+3. <span data-ttu-id="53be7-108">På **Mac** -du kan hitta hello Emojis i ordlistan program under Redigera -> Emoji & symboler.</span><span class="sxs-lookup"><span data-stu-id="53be7-108">On **Mac** - you can find hello Emojis in Dictionary application under Edit -> Emoji & Symbols.</span></span>
    
     ![][6] 
-4. <span data-ttu-id="6776b-109">Gå till den **nå** fliken på den Azure Mobile Engagement-portalen.</span><span class="sxs-lookup"><span data-stu-id="6776b-109">Now, go to the **Reach** tab on the the Azure Mobile Engagement portal.</span></span> <span data-ttu-id="6776b-110">Välj typ av push-meddelande (meddelande, avsöker osv.).</span><span class="sxs-lookup"><span data-stu-id="6776b-110">Select the type of your push notification (Announcement, polls etc).</span></span> <span data-ttu-id="6776b-111">Det här exemplet väljer vi ett meddelande push.</span><span class="sxs-lookup"><span data-stu-id="6776b-111">For this example we choose an announcement push.</span></span>
-5. <span data-ttu-id="6776b-112">Ange olika fält för meddelandet tills du når texten i meddelandet.</span><span class="sxs-lookup"><span data-stu-id="6776b-112">Specify the different fields of the notification until you reach the text of the notification.</span></span> <span data-ttu-id="6776b-113">Det är där du ska lägga till uttryckssymbolen Emoji.</span><span class="sxs-lookup"><span data-stu-id="6776b-113">This is where you will add your Emoji Emoticon.</span></span> <span data-ttu-id="6776b-114">Du kan välja att placera den i rubriken, meddelandet eller båda.</span><span class="sxs-lookup"><span data-stu-id="6776b-114">You can choose to put it in the title, the message, or both.</span></span> <span data-ttu-id="6776b-115">Du måste dra och släppa eller kopiera Emoji som finns på platser som ovan.</span><span class="sxs-lookup"><span data-stu-id="6776b-115">You will need to drag and drop or copy the Emoji that you find from the locations above.</span></span> 
+4. <span data-ttu-id="53be7-109">Gå toohello **nå** fliken på hello hello Azure Mobile Engagement-portalen.</span><span class="sxs-lookup"><span data-stu-id="53be7-109">Now, go toohello **Reach** tab on hello hello Azure Mobile Engagement portal.</span></span> <span data-ttu-id="53be7-110">Ange hello push-meddelande (meddelande, avsökningar osv).</span><span class="sxs-lookup"><span data-stu-id="53be7-110">Select hello type of your push notification (Announcement, polls etc).</span></span> <span data-ttu-id="53be7-111">Det här exemplet väljer vi ett meddelande push.</span><span class="sxs-lookup"><span data-stu-id="53be7-111">For this example we choose an announcement push.</span></span>
+5. <span data-ttu-id="53be7-112">Ange hello olika fält av hello-meddelande tills du når hello text av hello-meddelande.</span><span class="sxs-lookup"><span data-stu-id="53be7-112">Specify hello different fields of hello notification until you reach hello text of hello notification.</span></span> <span data-ttu-id="53be7-113">Det är där du ska lägga till uttryckssymbolen Emoji.</span><span class="sxs-lookup"><span data-stu-id="53be7-113">This is where you will add your Emoji Emoticon.</span></span> <span data-ttu-id="53be7-114">Du kan välja tooput i hello rubrik, hello-meddelande eller båda.</span><span class="sxs-lookup"><span data-stu-id="53be7-114">You can choose tooput it in hello title, hello message, or both.</span></span> <span data-ttu-id="53be7-115">Du behöver toodrag och släpp eller kopiera hello Emoji som du hittar hello platser ovan.</span><span class="sxs-lookup"><span data-stu-id="53be7-115">You will need toodrag and drop or copy hello Emoji that you find from hello locations above.</span></span> 
    
     ![][1]
-6. <span data-ttu-id="6776b-116">Fyll i fälten för meddelandet och spara den.</span><span class="sxs-lookup"><span data-stu-id="6776b-116">Complete the other fields for the notification and save it.</span></span> 
-7. <span data-ttu-id="6776b-117">När du kör ett test eller aktiverar ett meddelande visas ett meddelande med uttryckssymbolen som anges.</span><span class="sxs-lookup"><span data-stu-id="6776b-117">When you run a test or activate the announcement you will see a notification with the emoticon as specified.</span></span>   
+6. <span data-ttu-id="53be7-116">Fullständig hello andra fält för hello-meddelande och spara den.</span><span class="sxs-lookup"><span data-stu-id="53be7-116">Complete hello other fields for hello notification and save it.</span></span> 
+7. <span data-ttu-id="53be7-117">När du kör ett test eller aktivera hello-meddelande visas ett meddelande med hello uttryckssymbol som anges.</span><span class="sxs-lookup"><span data-stu-id="53be7-117">When you run a test or activate hello announcement you will see a notification with hello emoticon as specified.</span></span>   
    
-    <span data-ttu-id="6776b-118">![][3] ![][4] ![][5]</span><span class="sxs-lookup"><span data-stu-id="6776b-118">![][3] ![][4] ![][5]</span></span>
+    <span data-ttu-id="53be7-118">![][3] ![][4] ![][5]</span><span class="sxs-lookup"><span data-stu-id="53be7-118">![][3] ![][4] ![][5]</span></span>
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-use-emoji-with-push/notification_input.png

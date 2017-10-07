@@ -1,6 +1,6 @@
 ---
-title: "Ansluta till Azure Database för MySQL med Java | Microsoft Docs"
-description: "I den här snabbstarten finns ett kodexempel i Java som du kan använda för att ansluta till och fråga efter data från en Azure Database för MySQL."
+title: "Ansluta tooAzure databas för MySQL använder Java | Microsoft Docs"
+description: "Denna Snabbstart innehåller en Java-kodexempel som du kan använda tooconnect och fråga efter data från en Azure-databas för MySQL-databas."
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,39 +11,39 @@ ms.custom: mvc
 ms.topic: hero-article
 ms.devlang: java
 ms.date: 06/20/2017
-ms.openlocfilehash: 6ffcf3b38a3d868dfa10ea2e2a9d097441387d4f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d584b5491d29700b36fae26800c59d93ceb3e265
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a><span data-ttu-id="0a9c0-103">Azure-databas för MySQL: Använd Java för att ansluta och fråga efter data</span><span class="sxs-lookup"><span data-stu-id="0a9c0-103">Azure Database for MySQL: Use Java to connect and query data</span></span>
-<span data-ttu-id="0a9c0-104">Den här snabbstarten visar hur du ansluter till en Azure Database för MySQL med hjälp av ett Java-program.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-104">This quickstart demonstrates how to connect to an Azure Database for MySQL using a Java application.</span></span> <span data-ttu-id="0a9c0-105">Den visar hur du använder SQL-instruktioner för att fråga, infoga, uppdatera och ta bort data i databasen.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-105">It shows how to use SQL statements to query, insert, update, and delete data in the database.</span></span> <span data-ttu-id="0a9c0-106">I den här artikeln förutsätter vi att du har kunskaper om Java och att du inte har arbetat med Azure Database för MySQL tidigare.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-106">The steps in this article assume that you are familiar with developing using Java, and that you are new to working with Azure Database for MySQL.</span></span>
+# <a name="azure-database-for-mysql-use-java-tooconnect-and-query-data"></a><span data-ttu-id="2136c-103">Azure-databas för MySQL: Använd Java tooconnect och fråga data</span><span class="sxs-lookup"><span data-stu-id="2136c-103">Azure Database for MySQL: Use Java tooconnect and query data</span></span>
+<span data-ttu-id="2136c-104">Den här snabbstarten visar hur tooconnect tooan Azure-databas för MySQL med hjälp av ett Java-program.</span><span class="sxs-lookup"><span data-stu-id="2136c-104">This quickstart demonstrates how tooconnect tooan Azure Database for MySQL using a Java application.</span></span> <span data-ttu-id="2136c-105">Den visar hur toouse SQL-instruktioner tooquery infoga, uppdatera och ta bort data i hello-databas.</span><span class="sxs-lookup"><span data-stu-id="2136c-105">It shows how toouse SQL statements tooquery, insert, update, and delete data in hello database.</span></span> <span data-ttu-id="2136c-106">hello förutsätter stegen i den här artikeln att du är bekant med att utveckla med Java och att du är ny tooworking med Azure-databas för MySQL.</span><span class="sxs-lookup"><span data-stu-id="2136c-106">hello steps in this article assume that you are familiar with developing using Java, and that you are new tooworking with Azure Database for MySQL.</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="0a9c0-107">Krav</span><span class="sxs-lookup"><span data-stu-id="0a9c0-107">Prerequisites</span></span>
-<span data-ttu-id="0a9c0-108">I den här snabbstarten används de resurser som skapades i någon av följande guider som utgångspunkt:</span><span class="sxs-lookup"><span data-stu-id="0a9c0-108">This quickstart uses the resources created in either of these guides as a starting point:</span></span>
-- [<span data-ttu-id="0a9c0-109">Skapa en Azure Database för MySQL med Azure Portal</span><span class="sxs-lookup"><span data-stu-id="0a9c0-109">Create an Azure Database for MySQL server using Azure portal</span></span>](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [<span data-ttu-id="0a9c0-110">Skapa en Azure Database för MySQL-server med Azure CLI</span><span class="sxs-lookup"><span data-stu-id="0a9c0-110">Create an Azure Database for MySQL server using Azure CLI</span></span>](./quickstart-create-mysql-server-database-using-azure-cli.md)
+## <a name="prerequisites"></a><span data-ttu-id="2136c-107">Krav</span><span class="sxs-lookup"><span data-stu-id="2136c-107">Prerequisites</span></span>
+<span data-ttu-id="2136c-108">Denna Snabbstart använder hello resurser som skapades i någon av dessa guider som utgångspunkt:</span><span class="sxs-lookup"><span data-stu-id="2136c-108">This quickstart uses hello resources created in either of these guides as a starting point:</span></span>
+- [<span data-ttu-id="2136c-109">Skapa en Azure Database för MySQL med Azure Portal</span><span class="sxs-lookup"><span data-stu-id="2136c-109">Create an Azure Database for MySQL server using Azure portal</span></span>](./quickstart-create-mysql-server-database-using-azure-portal.md)
+- [<span data-ttu-id="2136c-110">Skapa en Azure Database för MySQL-server med Azure CLI</span><span class="sxs-lookup"><span data-stu-id="2136c-110">Create an Azure Database for MySQL server using Azure CLI</span></span>](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-<span data-ttu-id="0a9c0-111">Du måste också:</span><span class="sxs-lookup"><span data-stu-id="0a9c0-111">You also need to:</span></span>
-- <span data-ttu-id="0a9c0-112">Hämta JDBC-drivrutinen [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/)</span><span class="sxs-lookup"><span data-stu-id="0a9c0-112">Download the JDBC driver [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/)</span></span>
-- <span data-ttu-id="0a9c0-113">Ta med JDBC jar-filen (till exempel mysql-connector-java-5.1.42-bin.jar) i klassökvägen i programmet.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-113">Include the JDBC jar file (for example mysql-connector-java-5.1.42-bin.jar) into your application classpath.</span></span> <span data-ttu-id="0a9c0-114">Om du har problem med detta kan du läsa dokumentationen för miljön för information om klassens sökväg, som [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) eller [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)</span><span class="sxs-lookup"><span data-stu-id="0a9c0-114">If you have trouble with this, please consult your environment's documentation for class path specifics, such as [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) or [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)</span></span>
-- <span data-ttu-id="0a9c0-115">Se till att säkerhetsinställningarna för Azure Database för MySQL-anslutning konfigureras med brandväggen öppen och att SSL-inställningarna justeras så att programmet kan ansluta.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-115">Ensure your Azure Database for MySQL connection security is configured with the firewall opened and SSL settings adjusted for your application to connect successfully.</span></span>
+<span data-ttu-id="2136c-111">Du måste också:</span><span class="sxs-lookup"><span data-stu-id="2136c-111">You also need to:</span></span>
+- <span data-ttu-id="2136c-112">Hämta hello JDBC-drivrutinen [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/)</span><span class="sxs-lookup"><span data-stu-id="2136c-112">Download hello JDBC driver [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/)</span></span>
+- <span data-ttu-id="2136c-113">Inkludera hello JDBC jar-filen (till exempel mysql-connector-java-5.1.42-bin.jar) i program-klassökvägen.</span><span class="sxs-lookup"><span data-stu-id="2136c-113">Include hello JDBC jar file (for example mysql-connector-java-5.1.42-bin.jar) into your application classpath.</span></span> <span data-ttu-id="2136c-114">Om du har problem med detta kan du läsa dokumentationen för miljön för information om klassens sökväg, som [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) eller [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)</span><span class="sxs-lookup"><span data-stu-id="2136c-114">If you have trouble with this, please consult your environment's documentation for class path specifics, such as [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) or [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)</span></span>
+- <span data-ttu-id="2136c-115">Kontrollera din Azure-databas för MySQL anslutningssäkerhet har konfigurerats med hello brandväggen har öppnats och SSL-inställningar justerad för ditt program tooconnect har.</span><span class="sxs-lookup"><span data-stu-id="2136c-115">Ensure your Azure Database for MySQL connection security is configured with hello firewall opened and SSL settings adjusted for your application tooconnect successfully.</span></span>
 
-## <a name="get-connection-information"></a><span data-ttu-id="0a9c0-116">Hämta anslutningsinformation</span><span class="sxs-lookup"><span data-stu-id="0a9c0-116">Get connection information</span></span>
-<span data-ttu-id="0a9c0-117">Skaffa den information som du behöver för att ansluta till Azure Database för MySQL.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-117">Get the connection information needed to connect to the Azure Database for MySQL.</span></span> <span data-ttu-id="0a9c0-118">Du behöver det fullständiga servernamnet och inloggningsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-118">You need the fully qualified server name and login credentials.</span></span>
+## <a name="get-connection-information"></a><span data-ttu-id="2136c-116">Hämta anslutningsinformation</span><span class="sxs-lookup"><span data-stu-id="2136c-116">Get connection information</span></span>
+<span data-ttu-id="2136c-117">Hämta hello anslutning information som behövs för tooconnect toohello Azure-databas för MySQL.</span><span class="sxs-lookup"><span data-stu-id="2136c-117">Get hello connection information needed tooconnect toohello Azure Database for MySQL.</span></span> <span data-ttu-id="2136c-118">Du måste hello server fullständigt kvalificerade namnet och autentiseringsuppgifterna för inloggning.</span><span class="sxs-lookup"><span data-stu-id="2136c-118">You need hello fully qualified server name and login credentials.</span></span>
 
-1. <span data-ttu-id="0a9c0-119">Logga in på [Azure-portalen](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="0a9c0-119">Log in to the [Azure portal](https://portal.azure.com/).</span></span>
-2. <span data-ttu-id="0a9c0-120">I den vänstra rutan klickar du på **alla resurser** och söker sedan efter servern som du skapade (till exempel **myserver4demo**).</span><span class="sxs-lookup"><span data-stu-id="0a9c0-120">In the left pane, click **All resources**, and then search for the server you have created (for example, **myserver4demo**).</span></span>
-3. <span data-ttu-id="0a9c0-121">Klicka på servernamnet.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-121">Click the server name.</span></span>
-4. <span data-ttu-id="0a9c0-122">Välj sidan **Egenskaper** för servern.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-122">Select the server's **Properties** page.</span></span> <span data-ttu-id="0a9c0-123">Anteckna **servernamn** och **inloggningsnamnet för serveradministratören**.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-123">Make a note of the **Server name** and **Server admin login name**.</span></span>
- <span data-ttu-id="0a9c0-124">![Azure Database för MySQL-servernamn](./media/connect-java/1_server-properties-name-login.png)</span><span class="sxs-lookup"><span data-stu-id="0a9c0-124">![Azure Database for MySQL server name](./media/connect-java/1_server-properties-name-login.png)</span></span>
-5. <span data-ttu-id="0a9c0-125">Om du glömmer inloggningsinformationen för servern öppnar du sidan **Översikt** för att se inloggningsnamnet för serveradministratören. Om det behövs kan du återställa lösenordet.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-125">If you forget your server login information, navigate to the **Overview** page to view the Server admin login name and, if necessary, reset the password.</span></span>
+1. <span data-ttu-id="2136c-119">Logga in toohello [Azure-portalen](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="2136c-119">Log in toohello [Azure portal](https://portal.azure.com/).</span></span>
+2. <span data-ttu-id="2136c-120">Hello vänster klickar du på **alla resurser**, och sök sedan efter hello-server som du har skapat (till exempel **myserver4demo**).</span><span class="sxs-lookup"><span data-stu-id="2136c-120">In hello left pane, click **All resources**, and then search for hello server you have created (for example, **myserver4demo**).</span></span>
+3. <span data-ttu-id="2136c-121">Klicka på hello servernamn.</span><span class="sxs-lookup"><span data-stu-id="2136c-121">Click hello server name.</span></span>
+4. <span data-ttu-id="2136c-122">Välj hello server **egenskaper** sidan.</span><span class="sxs-lookup"><span data-stu-id="2136c-122">Select hello server's **Properties** page.</span></span> <span data-ttu-id="2136c-123">Anteckna hello **servernamn** och **serverinloggningsnamnet för admin**.</span><span class="sxs-lookup"><span data-stu-id="2136c-123">Make a note of hello **Server name** and **Server admin login name**.</span></span>
+ <span data-ttu-id="2136c-124">![Azure Database för MySQL-servernamn](./media/connect-java/1_server-properties-name-login.png)</span><span class="sxs-lookup"><span data-stu-id="2136c-124">![Azure Database for MySQL server name](./media/connect-java/1_server-properties-name-login.png)</span></span>
+5. <span data-ttu-id="2136c-125">Om du glömmer bort inloggningsinformationen server navigera toohello **översikt** sidan tooview hello admin serverinloggningsnamnet och, om nödvändigt återställa hello lösenord.</span><span class="sxs-lookup"><span data-stu-id="2136c-125">If you forget your server login information, navigate toohello **Overview** page tooview hello Server admin login name and, if necessary, reset hello password.</span></span>
 
-## <a name="connect-create-table-and-insert-data"></a><span data-ttu-id="0a9c0-126">Ansluta, skapa tabell och infoga data</span><span class="sxs-lookup"><span data-stu-id="0a9c0-126">Connect, create table, and insert data</span></span>
-<span data-ttu-id="0a9c0-127">Använd följande kod för att ansluta och läsa in data med hjälp av en funktion med en **INSERT**-SQL-instruktion.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-127">Use the following code to connect and load the data using the function with an **INSERT** SQL statement.</span></span> <span data-ttu-id="0a9c0-128">Metoden [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) används för att ansluta till MySQL.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-128">The [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used to connect to MySQL.</span></span> <span data-ttu-id="0a9c0-129">Metoderna [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) och execute() används för att släppa och skapa tabellen.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-129">Methods [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) and execute() are used to drop and create the table.</span></span> <span data-ttu-id="0a9c0-130">Objektet prepareStatement används för att skapa infogningskommandon och setString() och setInt() används för att binda parametervärdena.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-130">The prepareStatement object is used to build the insert commands, with setString() and setInt() to bind the parameter values.</span></span> <span data-ttu-id="0a9c0-131">Metoden executeUpdate() infogar värdena genom att kommandot körs för varje uppsättning parametrar.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-131">Method executeUpdate() runs the command for each set of parameters to insert the values.</span></span> 
+## <a name="connect-create-table-and-insert-data"></a><span data-ttu-id="2136c-126">Ansluta, skapa tabell och infoga data</span><span class="sxs-lookup"><span data-stu-id="2136c-126">Connect, create table, and insert data</span></span>
+<span data-ttu-id="2136c-127">Använd hello följande kod tooconnect och Läs in hello data med hjälp av hello funktion med en **infoga** SQL-instruktionen.</span><span class="sxs-lookup"><span data-stu-id="2136c-127">Use hello following code tooconnect and load hello data using hello function with an **INSERT** SQL statement.</span></span> <span data-ttu-id="2136c-128">Hej [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) metod är att använda tooconnect tooMySQL.</span><span class="sxs-lookup"><span data-stu-id="2136c-128">hello [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used tooconnect tooMySQL.</span></span> <span data-ttu-id="2136c-129">Metoder [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) och execute() används toodrop och skapa hello tabell.</span><span class="sxs-lookup"><span data-stu-id="2136c-129">Methods [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) and execute() are used toodrop and create hello table.</span></span> <span data-ttu-id="2136c-130">Hej prepareStatement objektet är används toobuild hello insert-kommandon, med setString() och setInt() toobind hello parametervärden.</span><span class="sxs-lookup"><span data-stu-id="2136c-130">hello prepareStatement object is used toobuild hello insert commands, with setString() and setInt() toobind hello parameter values.</span></span> <span data-ttu-id="2136c-131">Metoden executeUpdate() kör hello-kommando för varje uppsättning parametrar tooinsert hello värden.</span><span class="sxs-lookup"><span data-stu-id="2136c-131">Method executeUpdate() runs hello command for each set of parameters tooinsert hello values.</span></span> 
 
-<span data-ttu-id="0a9c0-132">Ersätt parametrarna host, database, user och password med de värden som du angav när du skapade din server och databas.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-132">Replace the host, database, user, and password parameters with the values that you specified when you created your own server and database.</span></span>
+<span data-ttu-id="2136c-132">Ersätt hello värden, databas, användare och lösenordsparametrar med hello-värden som du angav när du skapade din egen server och databas.</span><span class="sxs-lookup"><span data-stu-id="2136c-132">Replace hello host, database, user, and password parameters with hello values that you specified when you created your own server and database.</span></span>
 
 ```java
 import java.sql.*;
@@ -59,7 +59,7 @@ public class CreateTableInsertRows {
         String user = "myadmin@myserver4demo";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
@@ -91,13 +91,13 @@ public class CreateTableInsertRows {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database.", e);
+            throw new SQLException("Failed toocreate connection toodatabase.", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
                 // Drop previous table of same name if one exists.
@@ -125,7 +125,7 @@ public class CreateTableInsertRows {
                 nRowsInserted += preparedStatement.executeUpdate();
                 System.out.println(String.format("Inserted %d row(s) of data.", nRowsInserted));
     
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
+                // NOTE No need toocommit all changes toodatabase, as auto-commit is enabled by default.
     
             }
             catch (SQLException e)
@@ -134,7 +134,7 @@ public class CreateTableInsertRows {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database.");
+            System.out.println("Failed toocreate connection toodatabase.");
         }
         System.out.println("Execution finished.");
     }
@@ -142,10 +142,10 @@ public class CreateTableInsertRows {
 
 ```
 
-## <a name="read-data"></a><span data-ttu-id="0a9c0-133">Läsa data</span><span class="sxs-lookup"><span data-stu-id="0a9c0-133">Read data</span></span>
-<span data-ttu-id="0a9c0-134">Använd följande kod för att läsa in data med en **SELECT**-SQL-instruktion.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-134">Use the following code to read the data with a **SELECT** SQL statement.</span></span> <span data-ttu-id="0a9c0-135">Metoden [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) används för att ansluta till MySQL.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-135">The [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used to connect to MySQL.</span></span> <span data-ttu-id="0a9c0-136">Metoderna [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) och executeQuery() används för att ansluta och köra select-instruktionen.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-136">The methods [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) and executeQuery() are used to connect and run the select statement.</span></span> <span data-ttu-id="0a9c0-137">Resultaten bearbetas med ett [ResultSet](https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html)-objekt.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-137">The results are processed using a [ResultSet](https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html) object.</span></span> 
+## <a name="read-data"></a><span data-ttu-id="2136c-133">Läsa data</span><span class="sxs-lookup"><span data-stu-id="2136c-133">Read data</span></span>
+<span data-ttu-id="2136c-134">Använd hello följande kod tooread hello data med en **Välj** SQL-instruktionen.</span><span class="sxs-lookup"><span data-stu-id="2136c-134">Use hello following code tooread hello data with a **SELECT** SQL statement.</span></span> <span data-ttu-id="2136c-135">Hej [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) metod är att använda tooconnect tooMySQL.</span><span class="sxs-lookup"><span data-stu-id="2136c-135">hello [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used tooconnect tooMySQL.</span></span> <span data-ttu-id="2136c-136">Hej metoder [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) och executeQuery() används tooconnect och kör hello select-instruktion.</span><span class="sxs-lookup"><span data-stu-id="2136c-136">hello methods [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) and executeQuery() are used tooconnect and run hello select statement.</span></span> <span data-ttu-id="2136c-137">hello resultat bearbetas med en [ResultSet](https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html) objekt.</span><span class="sxs-lookup"><span data-stu-id="2136c-137">hello results are processed using a [ResultSet](https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html) object.</span></span> 
 
-<span data-ttu-id="0a9c0-138">Ersätt parametrarna host, database, user och password med de värden som du angav när du skapade din server och databas.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-138">Replace the host, database, user, and password parameters with the values that you specified when you created your own server and database.</span></span>
+<span data-ttu-id="2136c-138">Ersätt hello värden, databas, användare och lösenordsparametrar med hello-värden som du angav när du skapade din egen server och databas.</span><span class="sxs-lookup"><span data-stu-id="2136c-138">Replace hello host, database, user, and password parameters with hello values that you specified when you created your own server and database.</span></span>
 
 ```java
 import java.sql.*;
@@ -161,7 +161,7 @@ public class ReadTable {
         String user = "myadmin@myserver4demo";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
@@ -193,13 +193,13 @@ public class ReadTable {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database", e);
+            throw new SQLException("Failed toocreate connection toodatabase", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
     
@@ -222,17 +222,17 @@ public class ReadTable {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database."); 
+            System.out.println("Failed toocreate connection toodatabase."); 
         }
         System.out.println("Execution finished.");
     }
 }
 ```
 
-## <a name="update-data"></a><span data-ttu-id="0a9c0-139">Uppdatera data</span><span class="sxs-lookup"><span data-stu-id="0a9c0-139">Update data</span></span>
-<span data-ttu-id="0a9c0-140">Använd följande kod för att ändra data med en **UPDATE**-SQL-instruktion.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-140">Use the following code to change the data with an **UPDATE** SQL statement.</span></span> <span data-ttu-id="0a9c0-141">Metoden [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) används för att ansluta till MySQL.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-141">The [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used to connect to MySQL.</span></span> <span data-ttu-id="0a9c0-142">Metoderna [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) och executeUpdate() används för att förbereda och köra update-instruktionen.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-142">The methods [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) and executeUpdate() are used to prepare and run the update statement.</span></span> 
+## <a name="update-data"></a><span data-ttu-id="2136c-139">Uppdatera data</span><span class="sxs-lookup"><span data-stu-id="2136c-139">Update data</span></span>
+<span data-ttu-id="2136c-140">Använd hello följande kod toochange hello data med en **uppdatering** SQL-instruktionen.</span><span class="sxs-lookup"><span data-stu-id="2136c-140">Use hello following code toochange hello data with an **UPDATE** SQL statement.</span></span> <span data-ttu-id="2136c-141">Hej [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) metod är att använda tooconnect tooMySQL.</span><span class="sxs-lookup"><span data-stu-id="2136c-141">hello [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used tooconnect tooMySQL.</span></span> <span data-ttu-id="2136c-142">Hej metoder [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) och executeUpdate() används tooprepare och kör hello update-instruktion.</span><span class="sxs-lookup"><span data-stu-id="2136c-142">hello methods [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) and executeUpdate() are used tooprepare and run hello update statement.</span></span> 
 
-<span data-ttu-id="0a9c0-143">Ersätt parametrarna host, database, user och password med de värden som du angav när du skapade din server och databas.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-143">Replace the host, database, user, and password parameters with the values that you specified when you created your own server and database.</span></span>
+<span data-ttu-id="2136c-143">Ersätt hello värden, databas, användare och lösenordsparametrar med hello-värden som du angav när du skapade din egen server och databas.</span><span class="sxs-lookup"><span data-stu-id="2136c-143">Replace hello host, database, user, and password parameters with hello values that you specified when you created your own server and database.</span></span>
 
 ```java
 import java.sql.*;
@@ -247,7 +247,7 @@ public class UpdateTable {
         String user = "myadmin@myserver4demo";
         String password = "<server_admin_password>";
 
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
@@ -265,7 +265,7 @@ public class UpdateTable {
         {
             String url = String.format("jdbc:mysql://%s/%s", host, database);
             
-            // set up the connection properties
+            // set up hello connection properties
             Properties properties = new Properties();
             properties.setProperty("user", user);
             properties.setProperty("password", password);
@@ -278,13 +278,13 @@ public class UpdateTable {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database.", e);
+            throw new SQLException("Failed toocreate connection toodatabase.", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
                 // Modify some data in table.
@@ -295,7 +295,7 @@ public class UpdateTable {
                 nRowsUpdated += preparedStatement.executeUpdate();
                 System.out.println(String.format("Updated %d row(s) of data.", nRowsUpdated));
     
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
+                // NOTE No need toocommit all changes toodatabase, as auto-commit is enabled by default.
             }
             catch (SQLException e)
             {
@@ -303,17 +303,17 @@ public class UpdateTable {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database.");
+            System.out.println("Failed toocreate connection toodatabase.");
         }
         System.out.println("Execution finished.");
     }
 }
 ```
 
-## <a name="delete-data"></a><span data-ttu-id="0a9c0-144">Ta bort data</span><span class="sxs-lookup"><span data-stu-id="0a9c0-144">Delete data</span></span>
-<span data-ttu-id="0a9c0-145">Använd följande kod för att ta bort data med en **DELETE**-SQL-instruktion.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-145">Use the following code to remove data with a **DELETE** SQL statement.</span></span> <span data-ttu-id="0a9c0-146">Metoden [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) används för att ansluta till MySQL.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-146">The [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used to connect to MySQL.</span></span>  <span data-ttu-id="0a9c0-147">Metoderna [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) och executeUpdate() används för att förbereda och köra update-instruktionen.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-147">The methods [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) and executeUpdate() are used to prepare and run the update statement.</span></span> 
+## <a name="delete-data"></a><span data-ttu-id="2136c-144">Ta bort data</span><span class="sxs-lookup"><span data-stu-id="2136c-144">Delete data</span></span>
+<span data-ttu-id="2136c-145">Använd hello följande kod tooremove data med en **ta bort** SQL-instruktionen.</span><span class="sxs-lookup"><span data-stu-id="2136c-145">Use hello following code tooremove data with a **DELETE** SQL statement.</span></span> <span data-ttu-id="2136c-146">Hej [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) metod är att använda tooconnect tooMySQL.</span><span class="sxs-lookup"><span data-stu-id="2136c-146">hello [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html) method is used tooconnect tooMySQL.</span></span>  <span data-ttu-id="2136c-147">Hej metoder [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) och executeUpdate() används tooprepare och kör hello update-instruktion.</span><span class="sxs-lookup"><span data-stu-id="2136c-147">hello methods [prepareStatement()](http://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) and executeUpdate() are used tooprepare and run hello update statement.</span></span> 
 
-<span data-ttu-id="0a9c0-148">Ersätt parametrarna host, database, user och password med de värden som du angav när du skapade din server och databas.</span><span class="sxs-lookup"><span data-stu-id="0a9c0-148">Replace the host, database, user, and password parameters with the values that you specified when you created your own server and database.</span></span>
+<span data-ttu-id="2136c-148">Ersätt hello värden, databas, användare och lösenordsparametrar med hello-värden som du angav när du skapade din egen server och databas.</span><span class="sxs-lookup"><span data-stu-id="2136c-148">Replace hello host, database, user, and password parameters with hello values that you specified when you created your own server and database.</span></span>
 
 ```java
 import java.sql.*;
@@ -328,7 +328,7 @@ public class DeleteTable {
         String user = "myadmin@myserver4demo";
         String password = "<server_admin_password>";
         
-        // check that the driver is installed
+        // check that hello driver is installed
         try
         {
             Class.forName("com.mysql.jdbc.Driver");
@@ -347,7 +347,7 @@ public class DeleteTable {
         {
             String url = String.format("jdbc:mysql://%s/%s", host, database);
             
-            // set up the connection properties
+            // set up hello connection properties
             Properties properties = new Properties();
             properties.setProperty("user", user);
             properties.setProperty("password", password);
@@ -360,13 +360,13 @@ public class DeleteTable {
         }
         catch (SQLException e)
         {
-            throw new SQLException("Failed to create connection to database", e);
+            throw new SQLException("Failed toocreate connection toodatabase", e);
         }
         if (connection != null) 
         { 
-            System.out.println("Successfully created connection to database.");
+            System.out.println("Successfully created connection toodatabase.");
         
-            // Perform some SQL queries over the connection.
+            // Perform some SQL queries over hello connection.
             try
             {
                 // Delete some data from table.
@@ -376,7 +376,7 @@ public class DeleteTable {
                 nRowsDeleted += preparedStatement.executeUpdate();
                 System.out.println(String.format("Deleted %d row(s) of data.", nRowsDeleted));
     
-                // NOTE No need to commit all changes to database, as auto-commit is enabled by default.
+                // NOTE No need toocommit all changes toodatabase, as auto-commit is enabled by default.
             }
             catch (SQLException e)
             {
@@ -384,13 +384,13 @@ public class DeleteTable {
             }       
         }
         else {
-            System.out.println("Failed to create connection to database.");
+            System.out.println("Failed toocreate connection toodatabase.");
         }
         System.out.println("Execution finished.");
     }
 }
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="0a9c0-149">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="0a9c0-149">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="2136c-149">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="2136c-149">Next steps</span></span>
 > [!div class="nextstepaction"]
-> [<span data-ttu-id="0a9c0-150">Migrera MySQL-databasen till Azure Database för MySQL med säkerhetskopiering och återställning</span><span class="sxs-lookup"><span data-stu-id="0a9c0-150">Migrate your MySQL database to Azure Database for MySQL using dump and restore</span></span>](concepts-migrate-dump-restore.md)
+> [<span data-ttu-id="2136c-150">Migrera din MySQL-databas tooAzure databas för MySQL med dump och återställning</span><span class="sxs-lookup"><span data-stu-id="2136c-150">Migrate your MySQL database tooAzure Database for MySQL using dump and restore</span></span>](concepts-migrate-dump-restore.md)

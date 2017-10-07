@@ -1,7 +1,7 @@
 # StorSimple virtuell matris
 
 ## Översikt
-### [Vad är lösningen?](storsimple-ova-overview.md)
+### [Vad är hello-lösningen?](storsimple-ova-overview.md)
 
 ## Kom igång
 ### Planera
@@ -10,7 +10,7 @@
 #### [Granska metodtips](storsimple-ova-best-practices.md)
 
 ### Distribuera
-#### [Förbered distributionen](storsimple-virtual-array-deploy1-portal-prep.md)
+#### [Förbereda toodeploy](storsimple-virtual-array-deploy1-portal-prep.md)
 ##### [Använd StorSimple Manager-tjänsten](storsimple-virtual-array-manage-service.md)
 #### [Etablera i Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md)
 #### [Etablera i VMware](storsimple-virtual-array-deploy2-provision-vmware.md)
@@ -53,7 +53,7 @@
 # StorSimple 8000-serien (Azure Portal)
 
 ## Översikt
-### [Vad är lösningen?](storsimple-overview.md)
+### [Vad är hello-lösningen?](storsimple-overview.md)
 ### [StorSimple-inlärningskarta](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [Säkerhetsöverväganden](storsimple-8000-security.md)
 
@@ -87,12 +87,12 @@
 #### [Använd StorSimple Manager-tjänsten](storsimple-8000-manager-service-administration.md)
 ##### [Återställ från en säkerhetskopia](storsimple-8000-restore-from-backup-set-u2.md)
 ##### [Klona en volym](storsimple-8000-clone-volume-u2.md)
-##### [Fjärranslut till din enhet](storsimple-8000-remote-connect.md)
+##### [Fjärransluta tooyour enhet](storsimple-8000-remote-connect.md)
 ##### [Inaktivera och ta bort din enhet](storsimple-8000-deactivate-and-delete-device.md)
 ##### [Redundansväxla din enhet](storsimple-8000-device-failover-disaster-recovery.md)
-###### [Redundansväxla till fysisk enhet](storsimple-8000-device-failover-physical-device.md)
-###### [Redundansväxla till molninstallation](storsimple-8000-device-failover-cloud-appliance.md)
-###### [Redundansväxla till samma enhet](storsimple-8000-device-failover-same-device.md)
+###### [Växla över toophysical enhet](storsimple-8000-device-failover-physical-device.md)
+###### [Växla över toocloud installation](storsimple-8000-device-failover-cloud-appliance.md)
+###### [Växla över toosame enhet](storsimple-8000-device-failover-same-device.md)
 ##### [Hantera säkerhetskopieringskatalogen](storsimple-8000-manage-backup-catalog.md)
 ##### [Hantera säkerhetskopieringsprinciper](storsimple-8000-manage-backup-policies-u2.md)
 ##### [Hantera lagringskonton](storsimple-8000-manage-storage-accounts.md)
@@ -132,7 +132,7 @@
 #### [StorSimple med Veeam](storsimple-configure-backup-target-veeam.md)
 #### [StorSimple med Veritas Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)
 #### [StorSimple med Veritas NetBackup](storsimple-configure-backuptarget-netbackup.md)
-#### [Automatisera filserver-DR till Azure](storsimple-disaster-recovery-using-azure-site-recovery.md)
+#### [Automatisera filserver DR tooAzure](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [StorSimple med Express Route](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
 #### [StorSimple med VMware](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
 #### [StorSimple med Hyper-V](https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6)
@@ -163,7 +163,7 @@
 
 ### Migrera
 #### [Från 5000–7000-serien](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
-#### [Från andra lagringsenheter](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
+#### [Från andra lagringsenheter](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data tooStorSimple Volumes_09-02-15.pdf)
 
 ### Uppdatering
 #### [Installera Uppdatering 5 – aktuell](storsimple-8000-install-update-5.md)
@@ -191,7 +191,7 @@
 # StorSimple 8000-serien (klassisk portal)
 
 ## Översikt
-### [Vad är lösningen?](storsimple-overview.md)
+### [Vad är hello-lösningen?](storsimple-overview.md)
 ### [StorSimple-inlärningskarta](https://azure.microsoft.com/documentation/learning-paths/storsimple-typical/)
 ### [Säkerhetsöverväganden](storsimple-8000-security.md)
 
@@ -230,7 +230,7 @@
 ###### [Återställ från en säkerhetskopia](storsimple-restore-from-backup-set.md)
 ##### [Klona en volym](storsimple-clone-volume-u2.md)
 ###### [Klona en volym](storsimple-clone-volume.md)
-##### [Fjärranslut till din enhet](storsimple-remote-connect.md)
+##### [Fjärransluta tooyour enhet](storsimple-remote-connect.md)
 ##### [Inaktivera och ta bort din enhet](storsimple-deactivate-and-delete-device.md)
 ##### [Redundansväxla din enhet](storsimple-device-failover-disaster-recovery.md)
 ##### [Hantera säkerhetskopieringskatalogen](storsimple-manage-backup-catalog.md)
@@ -273,7 +273,7 @@
 #### [StorSimple med Veeam](storsimple-configure-backup-target-veeam.md)
 #### [StorSimple med Veritas Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)
 #### [StorSimple med Veritas NetBackup](storsimple-configure-backuptarget-netbackup.md)
-#### [Automatisera filserver-DR till Azure](storsimple-disaster-recovery-using-azure-site-recovery.md)
+#### [Automatisera filserver DR tooAzure](storsimple-disaster-recovery-using-azure-site-recovery.md)
 #### [StorSimple med Express Route](https://gallery.technet.microsoft.com/STORESIMPLE-CONFIGURATION-86c04c3b/view/Discussions#content)
 #### [StorSimple med VMware](https://gallery.technet.microsoft.com/VMWARE-DEPLOYMENT-WITH-2921b463)
 #### [StorSimple med Hyper-V](https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6)
@@ -302,7 +302,7 @@
 
 ### Migrera
 #### [Från 5000–7000-serien](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
-#### [Från andra lagringsenheter](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
+#### [Från andra lagringsenheter](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data tooStorSimple Volumes_09-02-15.pdf)
 
 ### Uppdatering
 #### [Installera Uppdatering 4](storsimple-install-update-4.md)
@@ -329,20 +329,20 @@
 # StorSimple Data Manager (privat förhandsgranskning)
 
 ## Översikt
-### [Vad är lösningen?](storsimple-data-manager-overview.md)
+### [Vad är hello-lösningen?](storsimple-data-manager-overview.md)
 
 ## Kom igång
 ### [Använda StorSimple Data Manager](storsimple-data-manager-ui.md)
 
 ## Gör så här för att
-### [Använda .NET för att starta jobb](storsimple-data-manager-dotnet-jobs.md)
-### [Använda Automation för att starta jobb](storsimple-data-manager-job-using-automation.md)
+### [Använda .NET toostart jobb](storsimple-data-manager-dotnet-jobs.md)
+### [Använd automatisering toostart jobb](storsimple-data-manager-job-using-automation.md)
 ### [Ändra standardsökvägen för blob](storsimple-data-manager-change-default-blob-path.md)
 
 # StorSimple för partner
 
 ## Översikt
-### [Vad är lösningen?](storsimple-partner-csp-overview.md)
+### [Vad är hello-lösningen?](storsimple-partner-csp-overview.md)
 
 ## Kom igång
 ### [Distribuera virtuell matris för CSP](storsimple-partner-csp-deploy.md)

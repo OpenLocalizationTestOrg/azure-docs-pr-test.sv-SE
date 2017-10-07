@@ -1,6 +1,6 @@
 ---
 title: "Självstudier: Azure Active Directory-integrering med MobileXpense | Microsoft Docs"
-description: "Lär dig hur du konfigurerar enkel inloggning mellan Azure Active Directory och MobileXpense."
+description: "Lär dig hur tooconfigure enkel inloggning mellan Azure Active Directory och MobileXpense."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,204 +13,204 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 030a1fc9f36d6fcfa607552d85ce232e36eaa64b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: b9d109f9d4244f8a7eb8b49b0d980cd3df0fc59d
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mobilexpense"></a><span data-ttu-id="5c658-103">Självstudier: Azure Active Directory-integrering med MobileXpense</span><span class="sxs-lookup"><span data-stu-id="5c658-103">Tutorial: Azure Active Directory integration with MobileXpense</span></span>
+# <a name="tutorial-azure-active-directory-integration-with-mobilexpense"></a><span data-ttu-id="6123b-103">Självstudier: Azure Active Directory-integrering med MobileXpense</span><span class="sxs-lookup"><span data-stu-id="6123b-103">Tutorial: Azure Active Directory integration with MobileXpense</span></span>
 
-<span data-ttu-id="5c658-104">I kursen får lära du att integrera MobileXpense med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="5c658-104">In this tutorial, you learn how to integrate MobileXpense with Azure Active Directory (Azure AD).</span></span>
+<span data-ttu-id="6123b-104">I kursen får du lära dig hur toointegrate MobileXpense med Azure Active Directory (AD Azure).</span><span class="sxs-lookup"><span data-stu-id="6123b-104">In this tutorial, you learn how toointegrate MobileXpense with Azure Active Directory (Azure AD).</span></span>
 
-<span data-ttu-id="5c658-105">Integrera MobileXpense med Azure AD ger dig följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="5c658-105">Integrating MobileXpense with Azure AD provides you with the following benefits:</span></span>
+<span data-ttu-id="6123b-105">Integrera MobileXpense med Azure AD ger dig hello följande fördelar:</span><span class="sxs-lookup"><span data-stu-id="6123b-105">Integrating MobileXpense with Azure AD provides you with hello following benefits:</span></span>
 
-- <span data-ttu-id="5c658-106">Du kan styra i Azure AD som har åtkomst till MobileXpense</span><span class="sxs-lookup"><span data-stu-id="5c658-106">You can control in Azure AD who has access to MobileXpense</span></span>
-- <span data-ttu-id="5c658-107">Du kan aktivera användarna att automatiskt hämta loggat in på MobileXpense (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="5c658-107">You can enable your users to automatically get signed-on to MobileXpense (Single Sign-On) with their Azure AD accounts</span></span>
-- <span data-ttu-id="5c658-108">Du kan hantera dina konton i en central plats - Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="5c658-108">You can manage your accounts in one central location - the Azure portal</span></span>
+- <span data-ttu-id="6123b-106">Du kan styra i Azure AD som har åtkomst till tooMobileXpense</span><span class="sxs-lookup"><span data-stu-id="6123b-106">You can control in Azure AD who has access tooMobileXpense</span></span>
+- <span data-ttu-id="6123b-107">Du kan aktivera din användare tooautomatically get inloggade tooMobileXpense (Single Sign-On) med sina Azure AD-konton</span><span class="sxs-lookup"><span data-stu-id="6123b-107">You can enable your users tooautomatically get signed-on tooMobileXpense (Single Sign-On) with their Azure AD accounts</span></span>
+- <span data-ttu-id="6123b-108">Du kan hantera dina konton i en central plats - hello Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="6123b-108">You can manage your accounts in one central location - hello Azure portal</span></span>
 
-<span data-ttu-id="5c658-109">Om du vill veta mer information om integrering av SaaS-app med Azure AD finns [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="5c658-109">If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
+<span data-ttu-id="6123b-109">Om du vill tooknow mer information om integrering av SaaS-app med Azure AD, se [vad är programåtkomst och enkel inloggning med Azure Active Directory](active-directory-appssoaccess-whatis.md).</span><span class="sxs-lookup"><span data-stu-id="6123b-109">If you want tooknow more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).</span></span>
 
-## <a name="prerequisites"></a><span data-ttu-id="5c658-110">Krav</span><span class="sxs-lookup"><span data-stu-id="5c658-110">Prerequisites</span></span>
+## <a name="prerequisites"></a><span data-ttu-id="6123b-110">Krav</span><span class="sxs-lookup"><span data-stu-id="6123b-110">Prerequisites</span></span>
 
-<span data-ttu-id="5c658-111">För att konfigurera Azure AD-integrering med MobileXpense, behöver du följande:</span><span class="sxs-lookup"><span data-stu-id="5c658-111">To configure Azure AD integration with MobileXpense, you need the following items:</span></span>
+<span data-ttu-id="6123b-111">tooconfigure Azure AD-integrering med MobileXpense, behöver du hello följande objekt:</span><span class="sxs-lookup"><span data-stu-id="6123b-111">tooconfigure Azure AD integration with MobileXpense, you need hello following items:</span></span>
 
-- <span data-ttu-id="5c658-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="5c658-112">An Azure AD subscription</span></span>
-- <span data-ttu-id="5c658-113">En MobileXpense enkel inloggning på aktiverade prenumeration</span><span class="sxs-lookup"><span data-stu-id="5c658-113">A MobileXpense single-sign on enabled subscription</span></span>
+- <span data-ttu-id="6123b-112">En Azure AD-prenumeration</span><span class="sxs-lookup"><span data-stu-id="6123b-112">An Azure AD subscription</span></span>
+- <span data-ttu-id="6123b-113">En MobileXpense enkel inloggning på aktiverade prenumeration</span><span class="sxs-lookup"><span data-stu-id="6123b-113">A MobileXpense single-sign on enabled subscription</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="5c658-114">Om du vill testa stegen i den här kursen rekommenderar vi inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="5c658-114">To test the steps in this tutorial, we do not recommend using a production environment.</span></span>
+> <span data-ttu-id="6123b-114">tootest hello stegen i den här självstudiekursen, rekommenderas inte med hjälp av en produktionsmiljö.</span><span class="sxs-lookup"><span data-stu-id="6123b-114">tootest hello steps in this tutorial, we do not recommend using a production environment.</span></span>
 
-<span data-ttu-id="5c658-115">Om du vill testa stegen i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="5c658-115">To test the steps in this tutorial, you should follow these recommendations:</span></span>
+<span data-ttu-id="6123b-115">tootest hello steg i den här självstudiekursen, bör du följa dessa rekommendationer:</span><span class="sxs-lookup"><span data-stu-id="6123b-115">tootest hello steps in this tutorial, you should follow these recommendations:</span></span>
 
-- <span data-ttu-id="5c658-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="5c658-116">Do not use your production environment, unless it is necessary.</span></span>
-- <span data-ttu-id="5c658-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="5c658-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
+- <span data-ttu-id="6123b-116">Använd inte i produktionsmiljön, om det är nödvändigt.</span><span class="sxs-lookup"><span data-stu-id="6123b-116">Do not use your production environment, unless it is necessary.</span></span>
+- <span data-ttu-id="6123b-117">Om du inte har en utvärderingsversion Azure AD-miljö kan du hämta en utvärderingsversion för en månad [här](https://azure.microsoft.com/pricing/free-trial/).</span><span class="sxs-lookup"><span data-stu-id="6123b-117">If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).</span></span>
 
-## <a name="scenario-description"></a><span data-ttu-id="5c658-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="5c658-118">Scenario description</span></span>
-<span data-ttu-id="5c658-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="5c658-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="5c658-120">Det scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="5c658-120">The scenario outlined in this tutorial consists of two main building blocks:</span></span>
+## <a name="scenario-description"></a><span data-ttu-id="6123b-118">Scenariobeskrivning</span><span class="sxs-lookup"><span data-stu-id="6123b-118">Scenario description</span></span>
+<span data-ttu-id="6123b-119">I kursen får testa du Azure AD enkel inloggning i en testmiljö.</span><span class="sxs-lookup"><span data-stu-id="6123b-119">In this tutorial, you test Azure AD single sign-on in a test environment.</span></span> <span data-ttu-id="6123b-120">hello-scenario som beskrivs i den här kursen består av två huvudsakliga byggblock:</span><span class="sxs-lookup"><span data-stu-id="6123b-120">hello scenario outlined in this tutorial consists of two main building blocks:</span></span>
 
-1. <span data-ttu-id="5c658-121">Att lägga till MobileXpense från galleriet</span><span class="sxs-lookup"><span data-stu-id="5c658-121">Adding MobileXpense from the gallery</span></span>
-2. <span data-ttu-id="5c658-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="5c658-122">Configuring and testing Azure AD single sign-on</span></span>
+1. <span data-ttu-id="6123b-121">Att lägga till MobileXpense från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="6123b-121">Adding MobileXpense from hello gallery</span></span>
+2. <span data-ttu-id="6123b-122">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="6123b-122">Configuring and testing Azure AD single sign-on</span></span>
 
-## <a name="adding-mobilexpense-from-the-gallery"></a><span data-ttu-id="5c658-123">Att lägga till MobileXpense från galleriet</span><span class="sxs-lookup"><span data-stu-id="5c658-123">Adding MobileXpense from the gallery</span></span>
-<span data-ttu-id="5c658-124">Du måste lägga till MobileXpense från galleriet i listan över hanterade SaaS-appar för att konfigurera integrering av MobileXpense i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="5c658-124">To configure the integration of MobileXpense into Azure AD, you need to add MobileXpense from the gallery to your list of managed SaaS apps.</span></span>
+## <a name="adding-mobilexpense-from-hello-gallery"></a><span data-ttu-id="6123b-123">Att lägga till MobileXpense från hello-galleriet</span><span class="sxs-lookup"><span data-stu-id="6123b-123">Adding MobileXpense from hello gallery</span></span>
+<span data-ttu-id="6123b-124">tooconfigure hello integrering av MobileXpense i Azure AD, behöver du tooadd MobileXpense hello galleriet tooyour listan över hanterade SaaS-appar.</span><span class="sxs-lookup"><span data-stu-id="6123b-124">tooconfigure hello integration of MobileXpense into Azure AD, you need tooadd MobileXpense from hello gallery tooyour list of managed SaaS apps.</span></span>
 
-<span data-ttu-id="5c658-125">**Utför följande steg för att lägga till MobileXpense från galleriet:**</span><span class="sxs-lookup"><span data-stu-id="5c658-125">**To add MobileXpense from the gallery, perform the following steps:**</span></span>
+<span data-ttu-id="6123b-125">**tooadd MobileXpense från galleriet hello utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="6123b-125">**tooadd MobileXpense from hello gallery, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="5c658-126">I den  **[Azure-portalen](https://portal.azure.com)**, klicka på den vänstra navigeringspanelen **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="5c658-126">In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon.</span></span> 
+1. <span data-ttu-id="6123b-126">I hello  **[Azure-portalen](https://portal.azure.com)**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="6123b-126">In hello **[Azure portal](https://portal.azure.com)**, on hello left navigation panel, click **Azure Active Directory** icon.</span></span> 
 
     ![Active Directory][1]
 
-2. <span data-ttu-id="5c658-128">Gå till **företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="5c658-128">Navigate to **Enterprise applications**.</span></span> <span data-ttu-id="5c658-129">Gå till **alla program**.</span><span class="sxs-lookup"><span data-stu-id="5c658-129">Then go to **All applications**.</span></span>
+2. <span data-ttu-id="6123b-128">Navigera för**företagsprogram**.</span><span class="sxs-lookup"><span data-stu-id="6123b-128">Navigate too**Enterprise applications**.</span></span> <span data-ttu-id="6123b-129">Gå sedan för**alla program**.</span><span class="sxs-lookup"><span data-stu-id="6123b-129">Then go too**All applications**.</span></span>
 
     ![Program][2]
     
-3. <span data-ttu-id="5c658-131">Om du vill lägga till nya programmet, klickar du på **nytt program** knappen överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5c658-131">To add new application, click **New application** button on the top of dialog.</span></span>
+3. <span data-ttu-id="6123b-131">tooadd nya program, klickar du på **nytt program** hello längst upp i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="6123b-131">tooadd new application, click **New application** button on hello top of dialog.</span></span>
 
     ![Program][3]
 
-4. <span data-ttu-id="5c658-133">I sökrutan skriver **MobileXpense**.</span><span class="sxs-lookup"><span data-stu-id="5c658-133">In the search box, type **MobileXpense**.</span></span>
+4. <span data-ttu-id="6123b-133">Skriv i sökrutan hello **MobileXpense**.</span><span class="sxs-lookup"><span data-stu-id="6123b-133">In hello search box, type **MobileXpense**.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_search.png)
 
-5. <span data-ttu-id="5c658-135">Välj i resultatpanelen **MobileXpense**, och klicka sedan på **Lägg till** för att lägga till programmet.</span><span class="sxs-lookup"><span data-stu-id="5c658-135">In the results panel, select **MobileXpense**, and then click **Add** button to add the application.</span></span>
+5. <span data-ttu-id="6123b-135">Markera hello resultat på panelen **MobileXpense**, och klicka sedan på **Lägg till** knappen tooadd hello program.</span><span class="sxs-lookup"><span data-stu-id="6123b-135">In hello results panel, select **MobileXpense**, and then click **Add** button tooadd hello application.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="5c658-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="5c658-137">Configuring and testing Azure AD single sign-on</span></span>
-<span data-ttu-id="5c658-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med MobileXpense baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="5c658-138">In this section, you configure and test Azure AD single sign-on with MobileXpense based on a test user called "Britta Simon."</span></span>
+##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a><span data-ttu-id="6123b-137">Konfigurera och testa Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="6123b-137">Configuring and testing Azure AD single sign-on</span></span>
+<span data-ttu-id="6123b-138">I det här avsnittet kan du konfigurera och testa Azure AD enkel inloggning med MobileXpense baserat på en testanvändare som kallas ”Britta Simon”.</span><span class="sxs-lookup"><span data-stu-id="6123b-138">In this section, you configure and test Azure AD single sign-on with MobileXpense based on a test user called "Britta Simon."</span></span>
 
-<span data-ttu-id="5c658-139">Azure AD måste du känna till användaren i MobileXpense motsvarighet till en användare i Azure AD för enkel inloggning ska fungera.</span><span class="sxs-lookup"><span data-stu-id="5c658-139">For single sign-on to work, Azure AD needs to know what the counterpart user in MobileXpense is to a user in Azure AD.</span></span> <span data-ttu-id="5c658-140">Med andra ord måste en länk förhållandet mellan en Azure AD-användare och relaterade användaren i MobileXpense upprättas.</span><span class="sxs-lookup"><span data-stu-id="5c658-140">In other words, a link relationship between an Azure AD user and the related user in MobileXpense needs to be established.</span></span>
+<span data-ttu-id="6123b-139">För enkel inloggning toowork måste Azure AD tooknow vilka hello motsvarighet användaren i MobileXpense är tooa i Azure AD.</span><span class="sxs-lookup"><span data-stu-id="6123b-139">For single sign-on toowork, Azure AD needs tooknow what hello counterpart user in MobileXpense is tooa user in Azure AD.</span></span> <span data-ttu-id="6123b-140">Med andra ord måste en länk mellan en Azure AD-användare och hello relaterade användare i MobileXpense toobe upprättas.</span><span class="sxs-lookup"><span data-stu-id="6123b-140">In other words, a link relationship between an Azure AD user and hello related user in MobileXpense needs toobe established.</span></span>
 
-<span data-ttu-id="5c658-141">I MobileXpense, tilldela värdet för den **användarnamn** i Azure AD som värde för den **användarnamn** etablera länken relationen.</span><span class="sxs-lookup"><span data-stu-id="5c658-141">In MobileXpense, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.</span></span>
+<span data-ttu-id="6123b-141">I MobileXpense, tilldela hello värdet för hello **användarnamn** i Azure AD som hello värde för hello **användarnamn** tooestablish hello länken relationen.</span><span class="sxs-lookup"><span data-stu-id="6123b-141">In MobileXpense, assign hello value of hello **user name** in Azure AD as hello value of hello **Username** tooestablish hello link relationship.</span></span>
 
-<span data-ttu-id="5c658-142">Om du vill konfigurera och testa Azure AD enkel inloggning med MobileXpense, måste du utföra följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="5c658-142">To configure and test Azure AD single sign-on with MobileXpense, you need to complete the following building blocks:</span></span>
+<span data-ttu-id="6123b-142">tooconfigure och testa Azure AD enkel inloggning med MobileXpense, behöver du toocomplete hello följande byggblock:</span><span class="sxs-lookup"><span data-stu-id="6123b-142">tooconfigure and test Azure AD single sign-on with MobileXpense, you need toocomplete hello following building blocks:</span></span>
 
-1. <span data-ttu-id="5c658-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  - om du vill att användarna kan använda den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="5c658-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - to enable your users to use this feature.</span></span>
-2. <span data-ttu-id="5c658-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  - om du vill testa Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="5c658-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.</span></span>
-3. <span data-ttu-id="5c658-145">**[Skapa en testanvändare MobileXpense](#creating-a-mobilexpense-test-user)**  – du har en motsvarighet för Britta Simon i MobileXpense som är kopplad till Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="5c658-145">**[Creating a MobileXpense test user](#creating-a-mobilexpense-test-user)** - to have a counterpart of Britta Simon in MobileXpense that is linked to the Azure AD representation of user.</span></span>
-4. <span data-ttu-id="5c658-146">**[Tilldela Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  - om du vill aktivera Britta Simon att använda Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="5c658-146">**[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.</span></span>
-5. <span data-ttu-id="5c658-147">**[Testa enkel inloggning](#testing-single-sign-on)**  - om du vill kontrollera om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="5c658-147">**[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.</span></span>
+1. <span data-ttu-id="6123b-143">**[Konfigurera Azure AD enkel inloggning](#configuring-azure-ad-single-sign-on)**  -tooenable användare-toouse den här funktionen.</span><span class="sxs-lookup"><span data-stu-id="6123b-143">**[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - tooenable your users toouse this feature.</span></span>
+2. <span data-ttu-id="6123b-144">**[Skapa en Azure AD-testanvändare](#creating-an-azure-ad-test-user)**  -tootest Azure AD enkel inloggning med Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="6123b-144">**[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - tootest Azure AD single sign-on with Britta Simon.</span></span>
+3. <span data-ttu-id="6123b-145">**[Skapa en testanvändare MobileXpense](#creating-a-mobilexpense-test-user)**  -toohave en motsvarighet för Britta Simon i MobileXpense som är länkade toohello Azure AD-representation av användaren.</span><span class="sxs-lookup"><span data-stu-id="6123b-145">**[Creating a MobileXpense test user](#creating-a-mobilexpense-test-user)** - toohave a counterpart of Britta Simon in MobileXpense that is linked toohello Azure AD representation of user.</span></span>
+4. <span data-ttu-id="6123b-146">**[Tilldela hello Azure AD-testanvändare](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="6123b-146">**[Assigning hello Azure AD test user](#assigning-the-azure-ad-test-user)** - tooenable Britta Simon toouse Azure AD single sign-on.</span></span>
+5. <span data-ttu-id="6123b-147">**[Testa enkel inloggning](#testing-single-sign-on)**  -tooverify hello om konfigurationen fungerar.</span><span class="sxs-lookup"><span data-stu-id="6123b-147">**[Testing Single Sign-On](#testing-single-sign-on)** - tooverify whether hello configuration works.</span></span>
 
-### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="5c658-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="5c658-148">Configuring Azure AD single sign-on</span></span>
+### <a name="configuring-azure-ad-single-sign-on"></a><span data-ttu-id="6123b-148">Konfigurera Azure AD enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="6123b-148">Configuring Azure AD single sign-on</span></span>
 
-<span data-ttu-id="5c658-149">I det här avsnittet Aktivera Azure AD enkel inloggning i Azure-portalen och konfigurera enkel inloggning i ditt MobileXpense program.</span><span class="sxs-lookup"><span data-stu-id="5c658-149">In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your MobileXpense application.</span></span>
+<span data-ttu-id="6123b-149">I det här avsnittet Aktivera Azure AD enkel inloggning i hello Azure-portalen och konfigurera enkel inloggning i ditt MobileXpense program.</span><span class="sxs-lookup"><span data-stu-id="6123b-149">In this section, you enable Azure AD single sign-on in hello Azure portal and configure single sign-on in your MobileXpense application.</span></span>
 
-<span data-ttu-id="5c658-150">**Utför följande steg för att konfigurera Azure AD enkel inloggning med MobileXpense:**</span><span class="sxs-lookup"><span data-stu-id="5c658-150">**To configure Azure AD single sign-on with MobileXpense, perform the following steps:**</span></span>
+<span data-ttu-id="6123b-150">**Utför följande steg hello tooconfigure Azure AD enkel inloggning med MobileXpense:**</span><span class="sxs-lookup"><span data-stu-id="6123b-150">**tooconfigure Azure AD single sign-on with MobileXpense, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="5c658-151">I Azure-portalen på den **MobileXpense** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="5c658-151">In the Azure portal, on the **MobileXpense** application integration page, click **Single sign-on**.</span></span>
+1. <span data-ttu-id="6123b-151">I hello Azure-portalen på hello **MobileXpense** integreringssidan för programmet, klickar du på **enkel inloggning**.</span><span class="sxs-lookup"><span data-stu-id="6123b-151">In hello Azure portal, on hello **MobileXpense** application integration page, click **Single sign-on**.</span></span>
 
     ![Konfigurera enkel inloggning][4]
 
-2. <span data-ttu-id="5c658-153">På den **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** att aktivera enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="5c658-153">On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.</span></span>
+2. <span data-ttu-id="6123b-153">På hello **enkel inloggning** markerar **läge** som **SAML-baserade inloggning** tooenable enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="6123b-153">On hello **Single sign-on** dialog, select **Mode** as   **SAML-based Sign-on** tooenable single sign-on.</span></span>
  
     ![Konfigurera enkel inloggning](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_samlbase.png)
 
-3. <span data-ttu-id="5c658-155">På den **MobileXpense domän och URL: er** om du vill konfigurera programmet i **IDP** initierade läge:</span><span class="sxs-lookup"><span data-stu-id="5c658-155">On the **MobileXpense Domain and URLs** section, If you wish to configure the application in **IDP** initiated mode:</span></span>
+3. <span data-ttu-id="6123b-155">På hello **MobileXpense domän och URL: er** om du vill tooconfigure hello programmet i **IDP** initierade läge:</span><span class="sxs-lookup"><span data-stu-id="6123b-155">On hello **MobileXpense Domain and URLs** section, If you wish tooconfigure hello application in **IDP** initiated mode:</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url11.png)
 
-    <span data-ttu-id="5c658-157">I den **Reply URL** textruta Skriv en URL med följande mönster:`https://<sub domain>.mobilexpense.com/SSO/SAML20/SAML/AssertionConsumerService.aspx`</span><span class="sxs-lookup"><span data-stu-id="5c658-157">In the **Reply URL** textbox, type a URL using the following pattern: `https://<sub domain>.mobilexpense.com/SSO/SAML20/SAML/AssertionConsumerService.aspx`</span></span>
+    <span data-ttu-id="6123b-157">I hello **Reply URL** textruta, ange ett URL-Adressen med hello följer mönstret:`https://<sub domain>.mobilexpense.com/SSO/SAML20/SAML/AssertionConsumerService.aspx`</span><span class="sxs-lookup"><span data-stu-id="6123b-157">In hello **Reply URL** textbox, type a URL using hello following pattern: `https://<sub domain>.mobilexpense.com/SSO/SAML20/SAML/AssertionConsumerService.aspx`</span></span>
 
-4. <span data-ttu-id="5c658-158">Kontrollera **visa avancerade inställningar för URL: en**, om du vill konfigurera programmet i **SP** initierade läge:</span><span class="sxs-lookup"><span data-stu-id="5c658-158">Check **Show advanced URL settings**, If you wish to configure the application in **SP** initiated mode:</span></span>
+4. <span data-ttu-id="6123b-158">Kontrollera **visa avancerade inställningar för URL: en**, om du inte vill tooconfigure hello programmet i **SP** initierade läge:</span><span class="sxs-lookup"><span data-stu-id="6123b-158">Check **Show advanced URL settings**, If you wish tooconfigure hello application in **SP** initiated mode:</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url22.png)
 
-<span data-ttu-id="5c658-160">I den **inloggnings-URL** textruta Skriv en URL med följande mönster::`https://<sub domain>.mobilexpense.com/<customername>`</span><span class="sxs-lookup"><span data-stu-id="5c658-160">In the **Sign-on URL** textbox, type a URL using the following pattern:: `https://<sub domain>.mobilexpense.com/<customername>`</span></span>
+<span data-ttu-id="6123b-160">I hello **inloggnings-URL** textruta, ange ett URL-Adressen med hello följer mönstret::`https://<sub domain>.mobilexpense.com/<customername>`</span><span class="sxs-lookup"><span data-stu-id="6123b-160">In hello **Sign-on URL** textbox, type a URL using hello following pattern:: `https://<sub domain>.mobilexpense.com/<customername>`</span></span>
 
 > [!NOTE] 
-> <span data-ttu-id="5c658-161">Dessa värden är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="5c658-161">These values are not real.</span></span> <span data-ttu-id="5c658-162">Uppdatera dessa värden med den faktiska Reply URL och inloggnings-URL.</span><span class="sxs-lookup"><span data-stu-id="5c658-162">Update these values with the actual Reply URL and Sign-On URL.</span></span> <span data-ttu-id="5c658-163">Kontakta [MobileXpense klienten supportteamet](http://www.mobilexpense.net/contact) att hämta dessa värden.</span><span class="sxs-lookup"><span data-stu-id="5c658-163">Contact [MobileXpense Client support team](http://www.mobilexpense.net/contact) to get these values.</span></span> 
+> <span data-ttu-id="6123b-161">Dessa värden är inte verkliga.</span><span class="sxs-lookup"><span data-stu-id="6123b-161">These values are not real.</span></span> <span data-ttu-id="6123b-162">Uppdatera dessa värden med hello faktiska Reply URL och inloggnings-URL.</span><span class="sxs-lookup"><span data-stu-id="6123b-162">Update these values with hello actual Reply URL and Sign-On URL.</span></span> <span data-ttu-id="6123b-163">Kontakta [MobileXpense klienten supportteamet](http://www.mobilexpense.net/contact) tooget dessa värden.</span><span class="sxs-lookup"><span data-stu-id="6123b-163">Contact [MobileXpense Client support team](http://www.mobilexpense.net/contact) tooget these values.</span></span> 
 
-5. <span data-ttu-id="5c658-164">På den **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan metadatafilen på datorn.</span><span class="sxs-lookup"><span data-stu-id="5c658-164">On the **SAML Signing Certificate** section, click **Metadata XML** and then save the metadata file on your computer.</span></span>
+5. <span data-ttu-id="6123b-164">På hello **SAML-signeringscertifikat** klickar du på **XML-Metadata för** och spara sedan hello metadata på datorn.</span><span class="sxs-lookup"><span data-stu-id="6123b-164">On hello **SAML Signing Certificate** section, click **Metadata XML** and then save hello metadata file on your computer.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_certificate.png) 
 
-6. <span data-ttu-id="5c658-166">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="5c658-166">Click **Save** button.</span></span>
+6. <span data-ttu-id="6123b-166">Klicka på **spara** knappen.</span><span class="sxs-lookup"><span data-stu-id="6123b-166">Click **Save** button.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-mobilexpense-tutorial/tutorial_general_400.png)
 
-8. <span data-ttu-id="5c658-168">Konfigurera enkel inloggning på **MobileXpense** sida, måste du skicka den hämtade **XML-Metadata för** till [MobileXpense supportteamet](http://www.mobilexpense.net/contact).</span><span class="sxs-lookup"><span data-stu-id="5c658-168">To configure single sign-on on **MobileXpense** side, you need to send the downloaded **Metadata XML** to [MobileXpense support team](http://www.mobilexpense.net/contact).</span></span>
+8. <span data-ttu-id="6123b-168">tooconfigure enkel inloggning på **MobileXpense** sida, behöver du toosend hello hämtas **XML-Metadata för** för[MobileXpense supportteamet](http://www.mobilexpense.net/contact).</span><span class="sxs-lookup"><span data-stu-id="6123b-168">tooconfigure single sign-on on **MobileXpense** side, you need toosend hello downloaded **Metadata XML** too[MobileXpense support team](http://www.mobilexpense.net/contact).</span></span>
 
 > [!TIP]
-> <span data-ttu-id="5c658-169">Du kan nu läsa en kortare version av instruktionerna i den [Azure-portalen](https://portal.azure.com), medan du installerar appen!</span><span class="sxs-lookup"><span data-stu-id="5c658-169">You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!</span></span>  <span data-ttu-id="5c658-170">När du lägger till den här appen från den **Active Directory > företagsprogram** avsnittet, klickar du på den **enkel inloggning** fliken och få åtkomst till den inbäddade dokumentationen via den **Configuration** avsnittet längst ned.</span><span class="sxs-lookup"><span data-stu-id="5c658-170">After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom.</span></span> <span data-ttu-id="5c658-171">Du kan läsa mer om funktionen inbäddade dokumentationen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="5c658-171">You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
+> <span data-ttu-id="6123b-169">Du kan nu läsa en kortare version av dessa anvisningar i hello [Azure-portalen](https://portal.azure.com), medan du ställer in hello appen!</span><span class="sxs-lookup"><span data-stu-id="6123b-169">You can now read a concise version of these instructions inside hello [Azure portal](https://portal.azure.com), while you are setting up hello app!</span></span>  <span data-ttu-id="6123b-170">När du lägger till den här appen från hello **Active Directory > företagsprogram** avsnittet, klicka bara på hello **enkel inloggning** flik och åtkomst hello inbäddade dokumentationen via hello  **Konfigurationen** avsnittet längst ned hello.</span><span class="sxs-lookup"><span data-stu-id="6123b-170">After adding this app from hello **Active Directory > Enterprise Applications** section, simply click hello **Single Sign-On** tab and access hello embedded documentation through hello **Configuration** section at hello bottom.</span></span> <span data-ttu-id="6123b-171">Du kan läsa mer om hello inbäddade dokumentationen funktionen här: [inbäddade dokumentation för Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)</span><span class="sxs-lookup"><span data-stu-id="6123b-171">You can read more about hello embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)</span></span>
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="5c658-172">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="5c658-172">Creating an Azure AD test user</span></span>
-<span data-ttu-id="5c658-173">Syftet med det här avsnittet är att skapa en testanvändare i Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="5c658-173">The objective of this section is to create a test user in the Azure portal called Britta Simon.</span></span>
+### <a name="creating-an-azure-ad-test-user"></a><span data-ttu-id="6123b-172">Skapa en testanvändare i Azure AD</span><span class="sxs-lookup"><span data-stu-id="6123b-172">Creating an Azure AD test user</span></span>
+<span data-ttu-id="6123b-173">hello syftet med det här avsnittet är toocreate en testanvändare i hello Azure-portalen kallas Britta Simon.</span><span class="sxs-lookup"><span data-stu-id="6123b-173">hello objective of this section is toocreate a test user in hello Azure portal called Britta Simon.</span></span>
 
 ![Skapa Azure AD-användare][100]
 
-<span data-ttu-id="5c658-175">**Utför följande steg för att skapa en testanvändare i Azure AD:**</span><span class="sxs-lookup"><span data-stu-id="5c658-175">**To create a test user in Azure AD, perform the following steps:**</span></span>
+<span data-ttu-id="6123b-175">**toocreate en testanvändare i Azure AD kan utföra hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="6123b-175">**toocreate a test user in Azure AD, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="5c658-176">I den **Azure-portalen**, klicka på det vänstra navigeringsfönstret **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="5c658-176">In the **Azure portal**, on the left navigation pane, click **Azure Active Directory** icon.</span></span>
+1. <span data-ttu-id="6123b-176">I hello **Azure-portalen**, på hello vänstra navigeringsfönstret, klicka på **Azure Active Directory** ikon.</span><span class="sxs-lookup"><span data-stu-id="6123b-176">In hello **Azure portal**, on hello left navigation pane, click **Azure Active Directory** icon.</span></span>
 
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_01.png) 
 
-2. <span data-ttu-id="5c658-178">Om du vill visa en lista över användare, gå till **användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="5c658-178">To display the list of users, go to **Users and groups** and click **All users**.</span></span>
+2. <span data-ttu-id="6123b-178">toodisplay hello lista över användare, gå för**användare och grupper** och på **alla användare**.</span><span class="sxs-lookup"><span data-stu-id="6123b-178">toodisplay hello list of users, go too**Users and groups** and click **All users**.</span></span>
     
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_02.png) 
 
-3. <span data-ttu-id="5c658-180">Öppna den **användare** dialogrutan klickar du på **Lägg till** överst i dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5c658-180">To open the **User** dialog, click **Add** on the top of the dialog.</span></span>
+3. <span data-ttu-id="6123b-180">tooopen hello **användare** dialogrutan klickar du på **Lägg till** på hello överkant hello dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="6123b-180">tooopen hello **User** dialog, click **Add** on hello top of hello dialog.</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_03.png) 
 
-4. <span data-ttu-id="5c658-182">På den **användaren** dialogrutan utför följande steg:</span><span class="sxs-lookup"><span data-stu-id="5c658-182">On the **User** dialog page, perform the following steps:</span></span>
+4. <span data-ttu-id="6123b-182">På hello **användaren** dialogrutan utför hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="6123b-182">On hello **User** dialog page, perform hello following steps:</span></span>
  
     ![Skapa en testanvändare i Azure AD](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_04.png) 
 
-    <span data-ttu-id="5c658-184">a.</span><span class="sxs-lookup"><span data-stu-id="5c658-184">a.</span></span> <span data-ttu-id="5c658-185">I den **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="5c658-185">In the **Name** textbox, type **BrittaSimon**.</span></span>
+    <span data-ttu-id="6123b-184">a.</span><span class="sxs-lookup"><span data-stu-id="6123b-184">a.</span></span> <span data-ttu-id="6123b-185">I hello **namn** textruta typen **BrittaSimon**.</span><span class="sxs-lookup"><span data-stu-id="6123b-185">In hello **Name** textbox, type **BrittaSimon**.</span></span>
 
-    <span data-ttu-id="5c658-186">b.</span><span class="sxs-lookup"><span data-stu-id="5c658-186">b.</span></span> <span data-ttu-id="5c658-187">I den **användarnamn** textruta typ av **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="5c658-187">In the **User name** textbox, type the **email address** of BrittaSimon.</span></span>
+    <span data-ttu-id="6123b-186">b.</span><span class="sxs-lookup"><span data-stu-id="6123b-186">b.</span></span> <span data-ttu-id="6123b-187">I hello **användarnamn** textruta typen hello **e-postadress** av BrittaSimon.</span><span class="sxs-lookup"><span data-stu-id="6123b-187">In hello **User name** textbox, type hello **email address** of BrittaSimon.</span></span>
 
-    <span data-ttu-id="5c658-188">c.</span><span class="sxs-lookup"><span data-stu-id="5c658-188">c.</span></span> <span data-ttu-id="5c658-189">Välj **visa lösenordet** och anteckna värdet för den **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="5c658-189">Select **Show Password** and write down the value of the **Password**.</span></span>
+    <span data-ttu-id="6123b-188">c.</span><span class="sxs-lookup"><span data-stu-id="6123b-188">c.</span></span> <span data-ttu-id="6123b-189">Välj **visa lösenordet** och Skriv ned hello värdet för hello **lösenord**.</span><span class="sxs-lookup"><span data-stu-id="6123b-189">Select **Show Password** and write down hello value of hello **Password**.</span></span>
 
-    <span data-ttu-id="5c658-190">d.</span><span class="sxs-lookup"><span data-stu-id="5c658-190">d.</span></span> <span data-ttu-id="5c658-191">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="5c658-191">Click **Create**.</span></span>
+    <span data-ttu-id="6123b-190">d.</span><span class="sxs-lookup"><span data-stu-id="6123b-190">d.</span></span> <span data-ttu-id="6123b-191">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="6123b-191">Click **Create**.</span></span>
  
-### <a name="creating-a-mobilexpense-test-user"></a><span data-ttu-id="5c658-192">Skapa en testanvändare MobileXpense</span><span class="sxs-lookup"><span data-stu-id="5c658-192">Creating a MobileXpense test user</span></span>
+### <a name="creating-a-mobilexpense-test-user"></a><span data-ttu-id="6123b-192">Skapa en testanvändare MobileXpense</span><span class="sxs-lookup"><span data-stu-id="6123b-192">Creating a MobileXpense test user</span></span>
 
-<span data-ttu-id="5c658-193">I det här avsnittet skapar du en användare som kallas Britta Simon i MobileXpense.</span><span class="sxs-lookup"><span data-stu-id="5c658-193">In this section, you create a user called Britta Simon in MobileXpense.</span></span> <span data-ttu-id="5c658-194">Arbeta med [MobileXpense supportteamet](http://www.mobilexpense.net/contact) att lägga till användare i MobileXpense-plattformen.</span><span class="sxs-lookup"><span data-stu-id="5c658-194">work with [MobileXpense support team](http://www.mobilexpense.net/contact) to add the users in the MobileXpense platform.</span></span> <span data-ttu-id="5c658-195">Användare måste skapas och aktiveras innan du använder enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="5c658-195">Users must be created and activated before you use single sign-on.</span></span> 
+<span data-ttu-id="6123b-193">I det här avsnittet skapar du en användare som kallas Britta Simon i MobileXpense.</span><span class="sxs-lookup"><span data-stu-id="6123b-193">In this section, you create a user called Britta Simon in MobileXpense.</span></span> <span data-ttu-id="6123b-194">Arbeta med [MobileXpense supportteamet](http://www.mobilexpense.net/contact) att lägga till hello användare i hello MobileXpense plattform.</span><span class="sxs-lookup"><span data-stu-id="6123b-194">work with [MobileXpense support team](http://www.mobilexpense.net/contact) to add hello users in hello MobileXpense platform.</span></span> <span data-ttu-id="6123b-195">Användare måste skapas och aktiveras innan du använder enkel inloggning.</span><span class="sxs-lookup"><span data-stu-id="6123b-195">Users must be created and activated before you use single sign-on.</span></span> 
 
-### <a name="assigning-the-azure-ad-test-user"></a><span data-ttu-id="5c658-196">Tilldela Azure AD-testanvändare</span><span class="sxs-lookup"><span data-stu-id="5c658-196">Assigning the Azure AD test user</span></span>
+### <a name="assigning-hello-azure-ad-test-user"></a><span data-ttu-id="6123b-196">Tilldela användare hello Azure AD</span><span class="sxs-lookup"><span data-stu-id="6123b-196">Assigning hello Azure AD test user</span></span>
 
-<span data-ttu-id="5c658-197">I det här avsnittet kan du aktivera Britta Simon att använda Azure enkel inloggning genom att bevilja åtkomst till MobileXpense.</span><span class="sxs-lookup"><span data-stu-id="5c658-197">In this section, you enable Britta Simon to use Azure single sign-on by granting access to MobileXpense.</span></span>
+<span data-ttu-id="6123b-197">I det här avsnittet kan aktivera du Britta Simon toouse Azure enkel inloggning genom att bevilja åtkomst tooMobileXpense.</span><span class="sxs-lookup"><span data-stu-id="6123b-197">In this section, you enable Britta Simon toouse Azure single sign-on by granting access tooMobileXpense.</span></span>
 
 ![Tilldela användare][200] 
 
-<span data-ttu-id="5c658-199">**Om du vill tilldela MobileXpense Britta Simon utför du följande steg:**</span><span class="sxs-lookup"><span data-stu-id="5c658-199">**To assign Britta Simon to MobileXpense, perform the following steps:**</span></span>
+<span data-ttu-id="6123b-199">**tooassign Britta Simon tooMobileXpense utför hello följande steg:**</span><span class="sxs-lookup"><span data-stu-id="6123b-199">**tooassign Britta Simon tooMobileXpense, perform hello following steps:**</span></span>
 
-1. <span data-ttu-id="5c658-200">Öppna vyn program i Azure-portalen och gå till vyn directory och gå till **företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="5c658-200">In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.</span></span>
+1. <span data-ttu-id="6123b-200">I hello Azure-portalen, öppna hello program visa och navigera toohello directory vy och gå för**företagsprogram** Klicka **alla program**.</span><span class="sxs-lookup"><span data-stu-id="6123b-200">In hello Azure portal, open hello applications view, and then navigate toohello directory view and go too**Enterprise applications** then click **All applications**.</span></span>
 
     ![Tilldela användare][201] 
 
-2. <span data-ttu-id="5c658-202">Välj i listan med program **MobileXpense**.</span><span class="sxs-lookup"><span data-stu-id="5c658-202">In the applications list, select **MobileXpense**.</span></span>
+2. <span data-ttu-id="6123b-202">Välj i listan med program hello **MobileXpense**.</span><span class="sxs-lookup"><span data-stu-id="6123b-202">In hello applications list, select **MobileXpense**.</span></span>
 
     ![Konfigurera enkel inloggning](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_app.png) 
 
-3. <span data-ttu-id="5c658-204">Klicka på menyn till vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="5c658-204">In the menu on the left, click **Users and groups**.</span></span>
+3. <span data-ttu-id="6123b-204">Hello-menyn hello vänster **användare och grupper**.</span><span class="sxs-lookup"><span data-stu-id="6123b-204">In hello menu on hello left, click **Users and groups**.</span></span>
 
     ![Tilldela användare][202] 
 
-4. <span data-ttu-id="5c658-206">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="5c658-206">Click **Add** button.</span></span> <span data-ttu-id="5c658-207">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5c658-207">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
+4. <span data-ttu-id="6123b-206">Klicka på **Lägg till** knappen.</span><span class="sxs-lookup"><span data-stu-id="6123b-206">Click **Add** button.</span></span> <span data-ttu-id="6123b-207">Välj sedan **användare och grupper** på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="6123b-207">Then select **Users and groups** on **Add Assignment** dialog.</span></span>
 
     ![Tilldela användare][203]
 
-5. <span data-ttu-id="5c658-209">På **användare och grupper** markerar **Britta Simon** på listan användare.</span><span class="sxs-lookup"><span data-stu-id="5c658-209">On **Users and groups** dialog, select **Britta Simon** in the Users list.</span></span>
+5. <span data-ttu-id="6123b-209">På **användare och grupper** markerar **Britta Simon** i hello användarlistan.</span><span class="sxs-lookup"><span data-stu-id="6123b-209">On **Users and groups** dialog, select **Britta Simon** in hello Users list.</span></span>
 
-6. <span data-ttu-id="5c658-210">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5c658-210">Click **Select** button on **Users and groups** dialog.</span></span>
+6. <span data-ttu-id="6123b-210">Klicka på **Välj** knappen på **användare och grupper** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="6123b-210">Click **Select** button on **Users and groups** dialog.</span></span>
 
-7. <span data-ttu-id="5c658-211">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="5c658-211">Click **Assign** button on **Add Assignment** dialog.</span></span>
+7. <span data-ttu-id="6123b-211">Klicka på **tilldela** knappen på **Lägg uppdrag** dialogrutan.</span><span class="sxs-lookup"><span data-stu-id="6123b-211">Click **Assign** button on **Add Assignment** dialog.</span></span>
     
-### <a name="testing-single-sign-on"></a><span data-ttu-id="5c658-212">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="5c658-212">Testing single sign-on</span></span>
+### <a name="testing-single-sign-on"></a><span data-ttu-id="6123b-212">Testa enkel inloggning</span><span class="sxs-lookup"><span data-stu-id="6123b-212">Testing single sign-on</span></span>
 
-<span data-ttu-id="5c658-213">I det här avsnittet kan du testa Azure AD enkel inloggning konfigurationen med hjälp av panelen åtkomst.</span><span class="sxs-lookup"><span data-stu-id="5c658-213">In this section, you test your Azure AD single sign-on configuration using the Access Panel.</span></span>
+<span data-ttu-id="6123b-213">I det här avsnittet kan testa du Azure AD enkel inloggning konfigurationen med hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="6123b-213">In this section, you test your Azure AD single sign-on configuration using hello Access Panel.</span></span>
 
-<span data-ttu-id="5c658-214">När du klickar på panelen MobileXpense på åtkomstpanelen du bör få automatiskt loggat in på ditt MobileXpense program.</span><span class="sxs-lookup"><span data-stu-id="5c658-214">When you click the MobileXpense tile in the Access Panel, you should get automatically signed-on to your MobileXpense application.</span></span>
-<span data-ttu-id="5c658-215">Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](https://msdn.microsoft.com/library/dn308586).</span><span class="sxs-lookup"><span data-stu-id="5c658-215">For more information about the Access Panel, see [introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586).</span></span> 
+<span data-ttu-id="6123b-214">Du bör få automatiskt inloggade tooyour MobileXpense programmet när du klickar på hello MobileXpense panelen i hello åtkomstpanelen.</span><span class="sxs-lookup"><span data-stu-id="6123b-214">When you click hello MobileXpense tile in hello Access Panel, you should get automatically signed-on tooyour MobileXpense application.</span></span>
+<span data-ttu-id="6123b-215">Läs mer om åtkomstpanelen [introduktion till åtkomstpanelen](https://msdn.microsoft.com/library/dn308586).</span><span class="sxs-lookup"><span data-stu-id="6123b-215">For more information about the Access Panel, see [introduction to the Access Panel](https://msdn.microsoft.com/library/dn308586).</span></span> 
 
-## <a name="additional-resources"></a><span data-ttu-id="5c658-216">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="5c658-216">Additional resources</span></span>
+## <a name="additional-resources"></a><span data-ttu-id="6123b-216">Ytterligare resurser</span><span class="sxs-lookup"><span data-stu-id="6123b-216">Additional resources</span></span>
 
-* [<span data-ttu-id="5c658-217">Lista över självstudier om hur du integrerar SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="5c658-217">List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
-* [<span data-ttu-id="5c658-218">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="5c658-218">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
+* [<span data-ttu-id="6123b-217">Lista över självstudier om hur tooIntegrate SaaS-appar med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="6123b-217">List of Tutorials on How tooIntegrate SaaS Apps with Azure Active Directory</span></span>](active-directory-saas-tutorial-list.md)
+* [<span data-ttu-id="6123b-218">Vad är programåtkomst och enkel inloggning med Azure Active Directory?</span><span class="sxs-lookup"><span data-stu-id="6123b-218">What is application access and single sign-on with Azure Active Directory?</span></span>](active-directory-appssoaccess-whatis.md)
 
 
 

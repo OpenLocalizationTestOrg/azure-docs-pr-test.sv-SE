@@ -1,6 +1,6 @@
 ---
-title: "Säkerhetskopiera och återställa en Oracle-databas 12c-databas på en virtuell Azure Linux-dator | Microsoft Docs"
-description: "Lär dig mer om att säkerhetskopiera och återställa en databas med Oracle-databas 12c i Azure-miljön."
+title: "aaaBack upp och Återställ en Oracle-databas 12c-databasen på en virtuell Azure Linux-dator | Microsoft Docs"
+description: "Lär dig hur tooback upp och Återställ en Oracle-databas 12c-databasen i Azure-miljön."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
@@ -15,40 +15,40 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 5/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 9a2293f13b90e9a4cb11b4169fad969dd622a9a6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 68846f4efce5eabdb71cd71772e003838154e93b
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a><span data-ttu-id="c58ef-103">Säkerhetskopiera och återställa en Oracle-databas 12c-databas på en virtuell Azure Linux-dator</span><span class="sxs-lookup"><span data-stu-id="c58ef-103">Back up and recover an Oracle Database 12c database on an Azure Linux virtual machine</span></span>
+# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a><span data-ttu-id="da0c6-103">Säkerhetskopiera och återställa en Oracle-databas 12c-databas på en virtuell Azure Linux-dator</span><span class="sxs-lookup"><span data-stu-id="da0c6-103">Back up and recover an Oracle Database 12c database on an Azure Linux virtual machine</span></span>
 
-<span data-ttu-id="c58ef-104">Du kan använda Azure CLI för att skapa och hantera Azure-resurser i en kommandotolk eller använda skript.</span><span class="sxs-lookup"><span data-stu-id="c58ef-104">You can use Azure CLI to create and manage Azure resources at a command prompt, or use scripts.</span></span> <span data-ttu-id="c58ef-105">Vi använder Azure CLI-skript för att distribuera en Oracle-databas 12c-databas från en avbildning för Azure Marketplace-galleriet i den här artikeln.</span><span class="sxs-lookup"><span data-stu-id="c58ef-105">In this article, we use Azure CLI scripts to deploy an Oracle Database 12c database from an Azure Marketplace gallery image.</span></span>
+<span data-ttu-id="da0c6-104">Du kan använda Azure CLI toocreate och hantera Azure-resurser i en kommandotolk eller använda skript.</span><span class="sxs-lookup"><span data-stu-id="da0c6-104">You can use Azure CLI toocreate and manage Azure resources at a command prompt, or use scripts.</span></span> <span data-ttu-id="da0c6-105">I den här artikeln använder vi Azure CLI skript toodeploy en Oracle-databas 12c-databas från en avbildning för Azure Marketplace-galleriet.</span><span class="sxs-lookup"><span data-stu-id="da0c6-105">In this article, we use Azure CLI scripts toodeploy an Oracle Database 12c database from an Azure Marketplace gallery image.</span></span>
 
-<span data-ttu-id="c58ef-106">Innan du börjar bör du kontrollera att Azure CLI är installerad.</span><span class="sxs-lookup"><span data-stu-id="c58ef-106">Before you begin, make sure that Azure CLI is installed.</span></span> <span data-ttu-id="c58ef-107">Mer information finns i [Azure CLI installationsguiden](https://docs.microsoft.com/cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="c58ef-107">For more information, see the [Azure CLI installation guide](https://docs.microsoft.com/cli/azure/install-azure-cli).</span></span>
+<span data-ttu-id="da0c6-106">Innan du börjar bör du kontrollera att Azure CLI är installerad.</span><span class="sxs-lookup"><span data-stu-id="da0c6-106">Before you begin, make sure that Azure CLI is installed.</span></span> <span data-ttu-id="da0c6-107">Mer information finns i hello [Azure CLI installationsguiden](https://docs.microsoft.com/cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="da0c6-107">For more information, see hello [Azure CLI installation guide](https://docs.microsoft.com/cli/azure/install-azure-cli).</span></span>
 
-## <a name="prepare-the-environment"></a><span data-ttu-id="c58ef-108">Förbered miljön</span><span class="sxs-lookup"><span data-stu-id="c58ef-108">Prepare the environment</span></span>
+## <a name="prepare-hello-environment"></a><span data-ttu-id="da0c6-108">Förbered hello-miljön</span><span class="sxs-lookup"><span data-stu-id="da0c6-108">Prepare hello environment</span></span>
 
-### <a name="step-1-prerequisites"></a><span data-ttu-id="c58ef-109">Steg 1: förutsättningar</span><span class="sxs-lookup"><span data-stu-id="c58ef-109">Step 1: Prerequisites</span></span>
+### <a name="step-1-prerequisites"></a><span data-ttu-id="da0c6-109">Steg 1: förutsättningar</span><span class="sxs-lookup"><span data-stu-id="da0c6-109">Step 1: Prerequisites</span></span>
 
-*   <span data-ttu-id="c58ef-110">Du måste skapa en Linux VM som har en installerad instans av Oracle-databas 12c om du vill utföra processen för säkerhetskopiering och återställning.</span><span class="sxs-lookup"><span data-stu-id="c58ef-110">To perform the backup and recovery process, you must first create a Linux VM that has an installed instance of Oracle Database 12c.</span></span> <span data-ttu-id="c58ef-111">Marketplace-avbildning som du använder för att skapa den virtuella datorn har namnet *Oracle: Oracle-databasen-Ee:12.1.0.2:latest*.</span><span class="sxs-lookup"><span data-stu-id="c58ef-111">The Marketplace image you use to create the VM is named *Oracle:Oracle-Database-Ee:12.1.0.2:latest*.</span></span>
+*   <span data-ttu-id="da0c6-110">tooperform hello-säkerhetskopiering och återställning process, måste du först skapa en Linux VM som har en installerad instans av Oracle-databas 12c.</span><span class="sxs-lookup"><span data-stu-id="da0c6-110">tooperform hello backup and recovery process, you must first create a Linux VM that has an installed instance of Oracle Database 12c.</span></span> <span data-ttu-id="da0c6-111">hello Marketplace-avbildning som du använder toocreate hello VM heter *Oracle: Oracle-databasen-Ee:12.1.0.2:latest*.</span><span class="sxs-lookup"><span data-stu-id="da0c6-111">hello Marketplace image you use toocreate hello VM is named *Oracle:Oracle-Database-Ee:12.1.0.2:latest*.</span></span>
 
-    <span data-ttu-id="c58ef-112">Information om hur du skapar en Oracle-databas finns i [Oracle skapa database Snabbstart](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).</span><span class="sxs-lookup"><span data-stu-id="c58ef-112">To learn how to create an Oracle database, see the [Oracle create database quickstart](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).</span></span>
+    <span data-ttu-id="da0c6-112">toolearn hur toocreate en Oracle-databas finns hello [Oracle skapa database Snabbstart](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).</span><span class="sxs-lookup"><span data-stu-id="da0c6-112">toolearn how toocreate an Oracle database, see hello [Oracle create database quickstart](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).</span></span>
 
 
-### <a name="step-2-connect-to-the-vm"></a><span data-ttu-id="c58ef-113">Steg 2: Anslut till den virtuella datorn</span><span class="sxs-lookup"><span data-stu-id="c58ef-113">Step 2: Connect to the VM</span></span>
+### <a name="step-2-connect-toohello-vm"></a><span data-ttu-id="da0c6-113">Steg 2: Anslut toohello VM</span><span class="sxs-lookup"><span data-stu-id="da0c6-113">Step 2: Connect toohello VM</span></span>
 
-*   <span data-ttu-id="c58ef-114">Om du vill skapa en SSH (Secure Shell)-session med den virtuella datorn, använder du följande kommando.</span><span class="sxs-lookup"><span data-stu-id="c58ef-114">To create a Secure Shell (SSH) session with the VM, use the following command.</span></span> <span data-ttu-id="c58ef-115">Ersätt IP-adress och värdnamn med den `publicIpAddress` värde för den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="c58ef-115">Replace the IP address and the host name combination with the `publicIpAddress` value for your VM.</span></span>
+*   <span data-ttu-id="da0c6-114">toocreate en SSH (Secure Shell)-session med hello VM, använda hello följande kommando.</span><span class="sxs-lookup"><span data-stu-id="da0c6-114">toocreate a Secure Shell (SSH) session with hello VM, use hello following command.</span></span> <span data-ttu-id="da0c6-115">Ersätt hello IP-adress och hello värdnamn med hello `publicIpAddress` värde för den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="da0c6-115">Replace hello IP address and hello host name combination with hello `publicIpAddress` value for your VM.</span></span>
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-3-prepare-the-database"></a><span data-ttu-id="c58ef-116">Steg 3: Förbereda databasen</span><span class="sxs-lookup"><span data-stu-id="c58ef-116">Step 3: Prepare the database</span></span>
+### <a name="step-3-prepare-hello-database"></a><span data-ttu-id="da0c6-116">Steg 3: Förbered hello-databas</span><span class="sxs-lookup"><span data-stu-id="da0c6-116">Step 3: Prepare hello database</span></span>
 
-1.  <span data-ttu-id="c58ef-117">Det här steget förutsätter att du har en Oracle-instans (cdb1) som körs på en virtuell dator med namnet *myVM*.</span><span class="sxs-lookup"><span data-stu-id="c58ef-117">This step assumes that you have an Oracle instance (cdb1) that is running on a VM named *myVM*.</span></span>
+1.  <span data-ttu-id="da0c6-117">Det här steget förutsätter att du har en Oracle-instans (cdb1) som körs på en virtuell dator med namnet *myVM*.</span><span class="sxs-lookup"><span data-stu-id="da0c6-117">This step assumes that you have an Oracle instance (cdb1) that is running on a VM named *myVM*.</span></span>
 
-    <span data-ttu-id="c58ef-118">Kör den *oracle* superanvändare rot och sedan initiera lyssnaren:</span><span class="sxs-lookup"><span data-stu-id="c58ef-118">Run the *oracle* superuser root, and then initialize the listener:</span></span>
+    <span data-ttu-id="da0c6-118">Kör hello *oracle* superanvändare rot och sedan initiera hello lyssnare:</span><span class="sxs-lookup"><span data-stu-id="da0c6-118">Run hello *oracle* superuser root, and then initialize hello listener:</span></span>
 
     ```bash
     $ sudo su - oracle
@@ -58,11 +58,11 @@ ms.lasthandoff: 07/11/2017
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
 
     TNSLSNR for Linux: Version 12.1.0.2.0 - Production
-    Log messages written to /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
+    Log messages written too/u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
 
-    Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
-    STATUS of the LISTENER
+    Connecting too(ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
+    STATUS of hello LISTENER
     ------------------------
     Alias                     LISTENER
     Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
@@ -74,11 +74,11 @@ ms.lasthandoff: 07/11/2017
     Listener Log File         /u01/app/oracle/diag/tnslsnr/myVM/listener/alert/log.xml
     Listening Endpoints Summary...
     (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=myVM.twltkue3xvsujaz1bvlrhfuiwf.dx.internal.cloudapp.net)(PORT=1521)))
-    The listener supports no services
-    The command completed successfully
+    hello listener supports no services
+    hello command completed successfully
     ```
 
-2.  <span data-ttu-id="c58ef-119">(Valfritt) Kontrollera att databasen är i läget för archive log:</span><span class="sxs-lookup"><span data-stu-id="c58ef-119">(Optional) Make sure the database is in archive log mode:</span></span>
+2.  <span data-ttu-id="da0c6-119">(Valfritt) Kontrollera att hello databasen är i läget för archive log:</span><span class="sxs-lookup"><span data-stu-id="da0c6-119">(Optional) Make sure hello database is in archive log mode:</span></span>
 
     ```bash
     $ sqlplus / as sysdba
@@ -94,16 +94,16 @@ ms.lasthandoff: 07/11/2017
     SQL> ALTER DATABASE OPEN;
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
-3.  <span data-ttu-id="c58ef-120">(Valfritt) Skapa en tabell om du vill testa genomförandet:</span><span class="sxs-lookup"><span data-stu-id="c58ef-120">(Optional) Create a table to test the commit:</span></span>
+3.  <span data-ttu-id="da0c6-120">(Valfritt) Skapa en tabell tootest hello incheckning:</span><span class="sxs-lookup"><span data-stu-id="da0c6-120">(Optional) Create a table tootest hello commit:</span></span>
 
     ```bash
     SQL> alter session set "_ORACLE_SCRIPT"=true ;
     Session altered.
     SQL> create user scott identified by tiger;
     User created.
-    SQL> grant create session to scott;
+    SQL> grant create session tooscott;
     Grant succeeded.
-    SQL> grant create table to scott;
+    SQL> grant create table tooscott;
     Grant succeeded.
     SQL> alter user scott quota 100M on users;
     User altered.
@@ -115,7 +115,7 @@ ms.lasthandoff: 07/11/2017
     SQL> commit;
     Commit complete.
     ```
-4.  <span data-ttu-id="c58ef-121">Kontrollera eller ändra storlek och Säkerhetskopians plats:</span><span class="sxs-lookup"><span data-stu-id="c58ef-121">Verify or change the backup file location and size:</span></span>
+4.  <span data-ttu-id="da0c6-121">Kontrollera eller ändra storlek och hello Säkerhetskopians plats:</span><span class="sxs-lookup"><span data-stu-id="da0c6-121">Verify or change hello backup file location and size:</span></span>
 
     ```bash
     $ sqlplus / as sysdba
@@ -125,20 +125,20 @@ ms.lasthandoff: 07/11/2017
     db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_area
     db_recovery_file_dest_size           big integer 4560M
     ```
-5. <span data-ttu-id="c58ef-122">Använd Oracle Recovery Manager (RMAN) för att säkerhetskopiera databasen:</span><span class="sxs-lookup"><span data-stu-id="c58ef-122">Use Oracle Recovery Manager (RMAN) to back up the database:</span></span>
+5. <span data-ttu-id="da0c6-122">Använd Oracle Recovery Manager (RMAN) tooback hello databasen:</span><span class="sxs-lookup"><span data-stu-id="da0c6-122">Use Oracle Recovery Manager (RMAN) tooback up hello database:</span></span>
 
     ```bash
     $ rman target /
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a><span data-ttu-id="c58ef-123">Steg 4: Programkonsekvent säkerhetskopiering för virtuella Linux-datorer</span><span class="sxs-lookup"><span data-stu-id="c58ef-123">Step 4: Application-consistent backup for Linux VMs</span></span>
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a><span data-ttu-id="da0c6-123">Steg 4: Programkonsekvent säkerhetskopiering för virtuella Linux-datorer</span><span class="sxs-lookup"><span data-stu-id="da0c6-123">Step 4: Application-consistent backup for Linux VMs</span></span>
 
-<span data-ttu-id="c58ef-124">Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup.</span><span class="sxs-lookup"><span data-stu-id="c58ef-124">Application-consistent backups is a new feature in Azure Backup.</span></span> <span data-ttu-id="c58ef-125">Du kan skapa och välj skript körs före och efter VM-ögonblicksbild (före ögonblicksbild och efter ögonblicksbild).</span><span class="sxs-lookup"><span data-stu-id="c58ef-125">You can create and select scripts to execute before and after the VM snapshot (pre-snapshot and post-snapshot).</span></span>
+<span data-ttu-id="da0c6-124">Programkonsekvent säkerhetskopiering är en ny funktion i Azure Backup.</span><span class="sxs-lookup"><span data-stu-id="da0c6-124">Application-consistent backups is a new feature in Azure Backup.</span></span> <span data-ttu-id="da0c6-125">Du kan skapa och välj tooexecute skript före och efter hello VM-ögonblicksbild (före ögonblicksbild och efter ögonblicksbild).</span><span class="sxs-lookup"><span data-stu-id="da0c6-125">You can create and select scripts tooexecute before and after hello VM snapshot (pre-snapshot and post-snapshot).</span></span>
 
-1. <span data-ttu-id="c58ef-126">Hämta JSON-filen.</span><span class="sxs-lookup"><span data-stu-id="c58ef-126">Download the JSON file.</span></span>
+1. <span data-ttu-id="da0c6-126">Hämta hello JSON-fil.</span><span class="sxs-lookup"><span data-stu-id="da0c6-126">Download hello JSON file.</span></span>
 
-    <span data-ttu-id="c58ef-127">Hämta VMSnapshotScriptPluginConfig.json från https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig.</span><span class="sxs-lookup"><span data-stu-id="c58ef-127">Download VMSnapshotScriptPluginConfig.json from https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig.</span></span> <span data-ttu-id="c58ef-128">Filinnehållet se ut ungefär så här:</span><span class="sxs-lookup"><span data-stu-id="c58ef-128">The file contents look similar to the following:</span></span>
+    <span data-ttu-id="da0c6-127">Hämta VMSnapshotScriptPluginConfig.json från https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig.</span><span class="sxs-lookup"><span data-stu-id="da0c6-127">Download VMSnapshotScriptPluginConfig.json from https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig.</span></span> <span data-ttu-id="da0c6-128">hello filinnehållet se liknande toohello följande:</span><span class="sxs-lookup"><span data-stu-id="da0c6-128">hello file contents look similar toohello following:</span></span>
 
     ```azurecli
     {
@@ -155,7 +155,7 @@ ms.lasthandoff: 07/11/2017
     }
     ```
 
-2. <span data-ttu-id="c58ef-129">Skapa mappen /etc/azure på den virtuella datorn:</span><span class="sxs-lookup"><span data-stu-id="c58ef-129">Create the /etc/azure folder on the VM:</span></span>
+2. <span data-ttu-id="da0c6-129">Skapa hello /etc/azure mapp på hello VM:</span><span class="sxs-lookup"><span data-stu-id="da0c6-129">Create hello /etc/azure folder on hello VM:</span></span>
 
     ```bash
     $ sudo su -
@@ -163,13 +163,13 @@ ms.lasthandoff: 07/11/2017
     # cd /etc/azure
     ```
 
-3. <span data-ttu-id="c58ef-130">Kopiera JSON-filen.</span><span class="sxs-lookup"><span data-stu-id="c58ef-130">Copy the JSON file.</span></span>
+3. <span data-ttu-id="da0c6-130">Kopiera hello JSON-fil.</span><span class="sxs-lookup"><span data-stu-id="da0c6-130">Copy hello JSON file.</span></span>
 
-    <span data-ttu-id="c58ef-131">Kopiera VMSnapshotScriptPluginConfig.json till mappen /etc/azure.</span><span class="sxs-lookup"><span data-stu-id="c58ef-131">Copy VMSnapshotScriptPluginConfig.json to the /etc/azure folder.</span></span>
+    <span data-ttu-id="da0c6-131">Kopiera VMSnapshotScriptPluginConfig.json toohello /etc/azure mapp.</span><span class="sxs-lookup"><span data-stu-id="da0c6-131">Copy VMSnapshotScriptPluginConfig.json toohello /etc/azure folder.</span></span>
 
-4. <span data-ttu-id="c58ef-132">Redigera JSON-filen.</span><span class="sxs-lookup"><span data-stu-id="c58ef-132">Edit the JSON file.</span></span>
+4. <span data-ttu-id="da0c6-132">Redigera hello JSON-fil.</span><span class="sxs-lookup"><span data-stu-id="da0c6-132">Edit hello JSON file.</span></span>
 
-    <span data-ttu-id="c58ef-133">Redigera filen VMSnapshotScriptPluginConfig.json att inkludera den `PreScriptLocation` och `PostScriptlocation` parametrar.</span><span class="sxs-lookup"><span data-stu-id="c58ef-133">Edit the VMSnapshotScriptPluginConfig.json file to include the `PreScriptLocation` and `PostScriptlocation` parameters.</span></span> <span data-ttu-id="c58ef-134">Exempel:</span><span class="sxs-lookup"><span data-stu-id="c58ef-134">For example:</span></span>
+    <span data-ttu-id="da0c6-133">Redigera hello VMSnapshotScriptPluginConfig.json filen tooinclude hello `PreScriptLocation` och `PostScriptlocation` parametrar.</span><span class="sxs-lookup"><span data-stu-id="da0c6-133">Edit hello VMSnapshotScriptPluginConfig.json file tooinclude hello `PreScriptLocation` and `PostScriptlocation` parameters.</span></span> <span data-ttu-id="da0c6-134">Exempel:</span><span class="sxs-lookup"><span data-stu-id="da0c6-134">For example:</span></span>
 
     ```azurecli
     {
@@ -186,11 +186,11 @@ ms.lasthandoff: 07/11/2017
     }
     ```
 
-5. <span data-ttu-id="c58ef-135">Skapa inför ögonblicksbilden och efter ögonblickbild skriptfilerna.</span><span class="sxs-lookup"><span data-stu-id="c58ef-135">Create the pre-snapshot and post-snapshot script files.</span></span>
+5. <span data-ttu-id="da0c6-135">Skapa hello inför ögonblicksbilden och efter ögonblickbild skriptfiler.</span><span class="sxs-lookup"><span data-stu-id="da0c6-135">Create hello pre-snapshot and post-snapshot script files.</span></span>
 
-    <span data-ttu-id="c58ef-136">Här är ett exempel på skript inför ögonblicksbilden och efter ögonblicksbild för en ”kalla” säkerhetskopiering (en offlinesäkerhetskopiering, med avstängning och omstart):</span><span class="sxs-lookup"><span data-stu-id="c58ef-136">Here's an example of pre-snapshot and post-snapshot scripts for a "cold backup" (an offline backup, with shutdown and restart):</span></span>
+    <span data-ttu-id="da0c6-136">Här är ett exempel på skript inför ögonblicksbilden och efter ögonblicksbild för en ”kalla” säkerhetskopiering (en offlinesäkerhetskopiering, med avstängning och omstart):</span><span class="sxs-lookup"><span data-stu-id="da0c6-136">Here's an example of pre-snapshot and post-snapshot scripts for a "cold backup" (an offline backup, with shutdown and restart):</span></span>
 
-    <span data-ttu-id="c58ef-137">För /etc/azure/pre_script.sh:</span><span class="sxs-lookup"><span data-stu-id="c58ef-137">For /etc/azure/pre_script.sh:</span></span>
+    <span data-ttu-id="da0c6-137">För /etc/azure/pre_script.sh:</span><span class="sxs-lookup"><span data-stu-id="da0c6-137">For /etc/azure/pre_script.sh:</span></span>
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -199,7 +199,7 @@ ms.lasthandoff: 07/11/2017
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" > /etc/azure/pre_script_$v_date.log
     ```
 
-    <span data-ttu-id="c58ef-138">För /etc/azure/post_script.sh:</span><span class="sxs-lookup"><span data-stu-id="c58ef-138">For /etc/azure/post_script.sh:</span></span>
+    <span data-ttu-id="da0c6-138">För /etc/azure/post_script.sh:</span><span class="sxs-lookup"><span data-stu-id="da0c6-138">For /etc/azure/post_script.sh:</span></span>
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -208,7 +208,7 @@ ms.lasthandoff: 07/11/2017
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" > /etc/azure/post_script_$v_date.log
     ```
 
-    <span data-ttu-id="c58ef-139">Här är ett exempel på inför ögonblicksbilden och efter ögonblickbild skript för ”varm säkerhetskopiering” (en onlinesäkerhetskopiering):</span><span class="sxs-lookup"><span data-stu-id="c58ef-139">Here's an example of pre-snapshot and post-snapshot scripts for a "hot backup" (an online backup):</span></span>
+    <span data-ttu-id="da0c6-139">Här är ett exempel på inför ögonblicksbilden och efter ögonblickbild skript för ”varm säkerhetskopiering” (en onlinesäkerhetskopiering):</span><span class="sxs-lookup"><span data-stu-id="da0c6-139">Here's an example of pre-snapshot and post-snapshot scripts for a "hot backup" (an online backup):</span></span>
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -217,7 +217,7 @@ ms.lasthandoff: 07/11/2017
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/pre_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    <span data-ttu-id="c58ef-140">För /etc/azure/post_script.sh:</span><span class="sxs-lookup"><span data-stu-id="c58ef-140">For /etc/azure/post_script.sh:</span></span>
+    <span data-ttu-id="da0c6-140">För /etc/azure/post_script.sh:</span><span class="sxs-lookup"><span data-stu-id="da0c6-140">For /etc/azure/post_script.sh:</span></span>
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -226,7 +226,7 @@ ms.lasthandoff: 07/11/2017
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/post_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    <span data-ttu-id="c58ef-141">/Etc/azure/pre_script.sql, ändra i innehållet i filen enligt dina krav:</span><span class="sxs-lookup"><span data-stu-id="c58ef-141">For /etc/azure/pre_script.sql, modify the contents of the file per your requirements:</span></span>
+    <span data-ttu-id="da0c6-141">För /etc/azure/pre_script.sql, ändrar du hello innehållet i filen hello enligt dina krav:</span><span class="sxs-lookup"><span data-stu-id="da0c6-141">For /etc/azure/pre_script.sql, modify hello contents of hello file per your requirements:</span></span>
 
     ```bash
     alter tablespace SYSTEM begin backup;
@@ -236,7 +236,7 @@ ms.lasthandoff: 07/11/2017
     alter system archive log stop;
     ```
 
-    <span data-ttu-id="c58ef-142">/Etc/azure/post_script.sql, ändra i innehållet i filen enligt dina krav:</span><span class="sxs-lookup"><span data-stu-id="c58ef-142">For /etc/azure/post_script.sql, modify the contents of the file per your requirements:</span></span>
+    <span data-ttu-id="da0c6-142">För /etc/azure/post_script.sql, ändrar du hello innehållet i filen hello enligt dina krav:</span><span class="sxs-lookup"><span data-stu-id="da0c6-142">For /etc/azure/post_script.sql, modify hello contents of hello file per your requirements:</span></span>
 
     ```bash
     alter tablespace SYSTEM end backup;
@@ -245,7 +245,7 @@ ms.lasthandoff: 07/11/2017
     alter system archive log start;
     ```
 
-6. <span data-ttu-id="c58ef-143">Ändra behörigheter för filer:</span><span class="sxs-lookup"><span data-stu-id="c58ef-143">Change file permissions:</span></span>
+6. <span data-ttu-id="da0c6-143">Ändra behörigheter för filer:</span><span class="sxs-lookup"><span data-stu-id="da0c6-143">Change file permissions:</span></span>
 
     ```bash
     # chmod 600 /etc/azure/VMSnapshotScriptPluginConfig.json
@@ -253,75 +253,75 @@ ms.lasthandoff: 07/11/2017
     # chmod 700 /etc/azure/post_script.sh
     ```
 
-7. <span data-ttu-id="c58ef-144">Testa skripten.</span><span class="sxs-lookup"><span data-stu-id="c58ef-144">Test the scripts.</span></span>
+7. <span data-ttu-id="da0c6-144">Testa hello-skript.</span><span class="sxs-lookup"><span data-stu-id="da0c6-144">Test hello scripts.</span></span>
 
-    <span data-ttu-id="c58ef-145">Om du vill testa skripten först logga in som rot.</span><span class="sxs-lookup"><span data-stu-id="c58ef-145">To test the scripts, first, sign in as root.</span></span> <span data-ttu-id="c58ef-146">Kontrollera sedan att det inte finns några fel:</span><span class="sxs-lookup"><span data-stu-id="c58ef-146">Then, ensure that there are no errors:</span></span>
+    <span data-ttu-id="da0c6-145">tootest hello skript som först logga in som rot.</span><span class="sxs-lookup"><span data-stu-id="da0c6-145">tootest hello scripts, first, sign in as root.</span></span> <span data-ttu-id="da0c6-146">Kontrollera sedan att det inte finns några fel:</span><span class="sxs-lookup"><span data-stu-id="da0c6-146">Then, ensure that there are no errors:</span></span>
 
     ```bash
     # /etc/azure/pre_script.sh
     # /etc/azure/post_script.sh
     ```
 
-<span data-ttu-id="c58ef-147">Mer information finns i [programkonsekvent säkerhetskopiering för virtuella Linux-datorer](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).</span><span class="sxs-lookup"><span data-stu-id="c58ef-147">For more information, see [Application-consistent backup for Linux VMs](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).</span></span>
+<span data-ttu-id="da0c6-147">Mer information finns i [programkonsekvent säkerhetskopiering för virtuella Linux-datorer](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).</span><span class="sxs-lookup"><span data-stu-id="da0c6-147">For more information, see [Application-consistent backup for Linux VMs](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).</span></span>
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a><span data-ttu-id="c58ef-148">Steg 5: Använd Azure Recovery Services-valv om du vill säkerhetskopiera den virtuella datorn</span><span class="sxs-lookup"><span data-stu-id="c58ef-148">Step 5: Use Azure Recovery Services vaults to back up the VM</span></span>
+### <a name="step-5-use-azure-recovery-services-vaults-tooback-up-hello-vm"></a><span data-ttu-id="da0c6-148">Steg 5: Använd Azure Recovery Services-valv tooback in hello VM</span><span class="sxs-lookup"><span data-stu-id="da0c6-148">Step 5: Use Azure Recovery Services vaults tooback up hello VM</span></span>
 
-1.  <span data-ttu-id="c58ef-149">I Azure-portalen, söka efter **Recovery Services-valv**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-149">In the Azure portal, search for **Recovery Services vaults**.</span></span>
+1.  <span data-ttu-id="da0c6-149">I hello Azure-portalen, söka efter **Recovery Services-valv**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-149">In hello Azure portal, search for **Recovery Services vaults**.</span></span>
 
     ![Sidan för Recovery Services-valv](./media/oracle-backup-recovery/recovery_service_01.png)
 
-2.  <span data-ttu-id="c58ef-151">På den **Recovery Services-valv** klickar du på bladet för att lägga till ett nytt valv **Lägg till**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-151">On the **Recovery Services vaults** blade, to add a new vault, click **Add**.</span></span>
+2.  <span data-ttu-id="da0c6-151">På hello **Recovery Services-valv** tooadd ett nytt valv bladet klickar du på **Lägg till**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-151">On hello **Recovery Services vaults** blade, tooadd a new vault, click **Add**.</span></span>
 
     ![Recovery Services-valv lägger du till sidan](./media/oracle-backup-recovery/recovery_service_02.png)
 
-3.  <span data-ttu-id="c58ef-153">Om du vill fortsätta klickar du på **myVault**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-153">To continue, click **myVault**.</span></span>
+3.  <span data-ttu-id="da0c6-153">toocontinue, klickar du på **myVault**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-153">toocontinue, click **myVault**.</span></span>
 
     ![Sidan innehåller information om Recovery Services-valv](./media/oracle-backup-recovery/recovery_service_03.png)
 
-4.  <span data-ttu-id="c58ef-155">På den **myVault** bladet, klickar du på **säkerhetskopiering**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-155">On the **myVault** blade, click **Backup**.</span></span>
+4.  <span data-ttu-id="da0c6-155">På hello **myVault** bladet, klickar du på **säkerhetskopiering**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-155">On hello **myVault** blade, click **Backup**.</span></span>
 
     ![Recovery Services-valv säkerhetskopiera sida](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  <span data-ttu-id="c58ef-157">På den **säkerhetskopiering målet** bladet använder standardvärden för **Azure** och **virtuella**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-157">On the **Backup Goal** blade, use the default values of **Azure** and **Virtual machine**.</span></span> <span data-ttu-id="c58ef-158">Klicka på **OK**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-158">Click **OK**.</span></span>
+5.  <span data-ttu-id="da0c6-157">På hello **säkerhetskopiering målet** blad, Använd hello standardvärdena för **Azure** och **virtuella**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-157">On hello **Backup Goal** blade, use hello default values of **Azure** and **Virtual machine**.</span></span> <span data-ttu-id="da0c6-158">Klicka på **OK**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-158">Click **OK**.</span></span>
 
     ![Sidan innehåller information om Recovery Services-valv](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  <span data-ttu-id="c58ef-160">För **säkerhetskopiera princip**, använda **DefaultPolicy**, eller välj **Skapa ny princip**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-160">For **Backup policy**, use **DefaultPolicy**, or select **Create New policy**.</span></span> <span data-ttu-id="c58ef-161">Klicka på **OK**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-161">Click **OK**.</span></span>
+6.  <span data-ttu-id="da0c6-160">För **säkerhetskopiera princip**, använda **DefaultPolicy**, eller välj **Skapa ny princip**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-160">For **Backup policy**, use **DefaultPolicy**, or select **Create New policy**.</span></span> <span data-ttu-id="da0c6-161">Klicka på **OK**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-161">Click **OK**.</span></span>
 
     ![Recovery Services-valv säkerhetskopiera princip detaljsida](./media/oracle-backup-recovery/recovery_service_06.png)
 
-7.  <span data-ttu-id="c58ef-163">På den **Välj virtuella datorer** bladet Välj den **myVM1** kryssrutan och klicka sedan på **OK**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-163">On the **Select virtual machines** blade, select the **myVM1** check box, and then click **OK**.</span></span> <span data-ttu-id="c58ef-164">Klicka på den **Aktivera säkerhetskopiering** knappen.</span><span class="sxs-lookup"><span data-stu-id="c58ef-164">Click the **Enable backup** button.</span></span>
+7.  <span data-ttu-id="da0c6-163">På hello **Välj virtuella datorer** bladet, Välj hello **myVM1** kryssrutan och klicka sedan på **OK**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-163">On hello **Select virtual machines** blade, select hello **myVM1** check box, and then click **OK**.</span></span> <span data-ttu-id="da0c6-164">Klicka på hello **Aktivera säkerhetskopiering** knappen.</span><span class="sxs-lookup"><span data-stu-id="da0c6-164">Click hello **Enable backup** button.</span></span>
 
-    ![Återställningsobjekt Services valv till säkerhetskopiering detaljsida](./media/oracle-backup-recovery/recovery_service_07.png)
+    ![Recovery Services valv objekt toohello säkerhetskopiering detaljsida](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
-    > <span data-ttu-id="c58ef-166">När du klickar på **Aktivera säkerhetskopiering**, säkerhetskopieringen startas inte förrän den schemalagda tiden går ut.</span><span class="sxs-lookup"><span data-stu-id="c58ef-166">After you click **Enable backup**, the backup process doesn't start until the scheduled time expires.</span></span> <span data-ttu-id="c58ef-167">Slutför nästa steg om du vill konfigurera en omedelbar säkerhetskopia.</span><span class="sxs-lookup"><span data-stu-id="c58ef-167">To set up an immediate backup, complete the next step.</span></span>
+    > <span data-ttu-id="da0c6-166">När du klickar på **Aktivera säkerhetskopiering**, hello säkerhetskopieringen startas inte förrän hello schemalagda tiden går ut.</span><span class="sxs-lookup"><span data-stu-id="da0c6-166">After you click **Enable backup**, hello backup process doesn't start until hello scheduled time expires.</span></span> <span data-ttu-id="da0c6-167">tooset upp en omedelbar säkerhetskopia fullständig hello nästa steg.</span><span class="sxs-lookup"><span data-stu-id="da0c6-167">tooset up an immediate backup, complete hello next step.</span></span>
 
-8.  <span data-ttu-id="c58ef-168">På den **myVault - objekt för säkerhetskopiering** bladet under **säkerhetskopiering OBJEKTANTAL**, Välj antalet säkerhetskopiering objekt.</span><span class="sxs-lookup"><span data-stu-id="c58ef-168">On the **myVault - Backup items** blade, under **BACKUP ITEM COUNT**, select the backup item count.</span></span>
+8.  <span data-ttu-id="da0c6-168">På hello **myVault - objekt för säkerhetskopiering** bladet under **säkerhetskopiering OBJEKTANTAL**, Välj hello säkerhetskopiering objektantal.</span><span class="sxs-lookup"><span data-stu-id="da0c6-168">On hello **myVault - Backup items** blade, under **BACKUP ITEM COUNT**, select hello backup item count.</span></span>
 
     ![Recovery Services valv myVault detaljsida](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  <span data-ttu-id="c58ef-170">På den **säkerhetskopiering objekt (Azure virtuell dator)** bladet till höger på sidan, klicka på ellipsknappen (**...** ) knappen och klicka sedan på **Säkerhetskopiera nu**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-170">On the **Backup Items (Azure Virtual Machine)** blade, on the right side of the page, click the ellipsis (**...**) button, and then click **Backup now**.</span></span>
+9.  <span data-ttu-id="da0c6-170">På hello **säkerhetskopiering objekt (Azure virtuell dator)** bladet hello höger på sidan hello Klicka hello knappen (**...** ) knappen och klicka sedan på **Säkerhetskopiera nu**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-170">On hello **Backup Items (Azure Virtual Machine)** blade, on hello right side of hello page, click hello ellipsis (**...**) button, and then click **Backup now**.</span></span>
 
     ![Recovery Services-valv säkerhetskopiering nu kommando](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. <span data-ttu-id="c58ef-172">Klicka på den **säkerhetskopiering** knappen.</span><span class="sxs-lookup"><span data-stu-id="c58ef-172">Click the **Backup** button.</span></span> <span data-ttu-id="c58ef-173">Vänta tills säkerhetskopieringen ska slutföras.</span><span class="sxs-lookup"><span data-stu-id="c58ef-173">Wait for the backup process to finish.</span></span> <span data-ttu-id="c58ef-174">Gå sedan till [steg 6: ta bort databasfilerna](#step-6-remove-the-database-files).</span><span class="sxs-lookup"><span data-stu-id="c58ef-174">Then, go to [Step 6: Remove the database files](#step-6-remove-the-database-files).</span></span>
+10. <span data-ttu-id="da0c6-172">Klicka på hello **säkerhetskopiering** knappen.</span><span class="sxs-lookup"><span data-stu-id="da0c6-172">Click hello **Backup** button.</span></span> <span data-ttu-id="da0c6-173">Vänta tills hello säkerhetskopieringsprocessen toofinish.</span><span class="sxs-lookup"><span data-stu-id="da0c6-173">Wait for hello backup process toofinish.</span></span> <span data-ttu-id="da0c6-174">Gå sedan för[steg 6: ta bort databasfilerna hello](#step-6-remove-the-database-files).</span><span class="sxs-lookup"><span data-stu-id="da0c6-174">Then, go too[Step 6: Remove hello database files](#step-6-remove-the-database-files).</span></span>
 
-    <span data-ttu-id="c58ef-175">Om du vill visa status för jobbet, klickar du på **jobb**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-175">To view the status of the backup job, click **Jobs**.</span></span>
+    <span data-ttu-id="da0c6-175">tooview hello status för hello säkerhetskopieringsjobb, klickar du på **jobb**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-175">tooview hello status of hello backup job, click **Jobs**.</span></span>
 
     ![Recovery Services-valv jobbet sida](./media/oracle-backup-recovery/recovery_service_10.png)
 
-    <span data-ttu-id="c58ef-177">Status för jobbet visas i följande bild:</span><span class="sxs-lookup"><span data-stu-id="c58ef-177">The status of the backup job appears in the following image:</span></span>
+    <span data-ttu-id="da0c6-177">hello status för hello säkerhetskopieringsjobbet visas i följande bild hello:</span><span class="sxs-lookup"><span data-stu-id="da0c6-177">hello status of hello backup job appears in hello following image:</span></span>
 
     ![Recovery Services-valv jobbet sida med status](./media/oracle-backup-recovery/recovery_service_11.png)
 
-11. <span data-ttu-id="c58ef-179">Åtgärda eventuella fel i loggfilen för en programkonsekvent säkerhetskopiering.</span><span class="sxs-lookup"><span data-stu-id="c58ef-179">For an application-consistent backup, address any errors in the log file.</span></span> <span data-ttu-id="c58ef-180">Loggfilen finns i /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.</span><span class="sxs-lookup"><span data-stu-id="c58ef-180">The log file is located at /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.</span></span>
+11. <span data-ttu-id="da0c6-179">Åtgärda eventuella fel i hello loggfilen för en programkonsekvent säkerhetskopiering.</span><span class="sxs-lookup"><span data-stu-id="da0c6-179">For an application-consistent backup, address any errors in hello log file.</span></span> <span data-ttu-id="da0c6-180">hello loggfilen finns i /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.</span><span class="sxs-lookup"><span data-stu-id="da0c6-180">hello log file is located at /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.</span></span>
 
-### <a name="step-6-remove-the-database-files"></a><span data-ttu-id="c58ef-181">Steg 6: Ta bort databasfilerna</span><span class="sxs-lookup"><span data-stu-id="c58ef-181">Step 6: Remove the database files</span></span> 
-<span data-ttu-id="c58ef-182">Senare i den här artikeln lär du dig hur du testar återställningsprocessen.</span><span class="sxs-lookup"><span data-stu-id="c58ef-182">Later in this article, you'll learn how to test the recovery process.</span></span> <span data-ttu-id="c58ef-183">Innan du kan testa återställningsprocessen måste du ta bort databasfilerna.</span><span class="sxs-lookup"><span data-stu-id="c58ef-183">Before you can test the recovery process, you have to remove the database files.</span></span>
+### <a name="step-6-remove-hello-database-files"></a><span data-ttu-id="da0c6-181">Steg 6: Ta bort hello-databasfiler</span><span class="sxs-lookup"><span data-stu-id="da0c6-181">Step 6: Remove hello database files</span></span> 
+<span data-ttu-id="da0c6-182">Senare i den här artikeln lär du dig hur tootest hello återställningsprocessen.</span><span class="sxs-lookup"><span data-stu-id="da0c6-182">Later in this article, you'll learn how tootest hello recovery process.</span></span> <span data-ttu-id="da0c6-183">Innan du kan testa hello återställningsprocessen har tooremove hello-databasfiler.</span><span class="sxs-lookup"><span data-stu-id="da0c6-183">Before you can test hello recovery process, you have tooremove hello database files.</span></span>
 
-1.  <span data-ttu-id="c58ef-184">Ta bort filer tabellutrymmet och säkerhetskopiering:</span><span class="sxs-lookup"><span data-stu-id="c58ef-184">Remove the tablespace and backup files:</span></span>
+1.  <span data-ttu-id="da0c6-184">Ta bort hello tabellutrymmet och säkerhetskopiering filer:</span><span class="sxs-lookup"><span data-stu-id="da0c6-184">Remove hello tablespace and backup files:</span></span>
 
     ```bash
     $ sudo su - oracle
@@ -331,7 +331,7 @@ ms.lasthandoff: 07/11/2017
     $ rm -rf *
     ```
     
-2.  <span data-ttu-id="c58ef-185">(Valfritt) Stänga av Oracle-instansen:</span><span class="sxs-lookup"><span data-stu-id="c58ef-185">(Optional) Shut down the Oracle instance:</span></span>
+2.  <span data-ttu-id="da0c6-185">(Valfritt) Stänga av hello Oracle-instansen:</span><span class="sxs-lookup"><span data-stu-id="da0c6-185">(Optional) Shut down hello Oracle instance:</span></span>
 
     ```bash
     $ sqlplus / as sysdba
@@ -339,38 +339,38 @@ ms.lasthandoff: 07/11/2017
     ORACLE instance shut down.
     ```
 
-## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a><span data-ttu-id="c58ef-186">Återställa borttagna filer från Recovery Services-valv</span><span class="sxs-lookup"><span data-stu-id="c58ef-186">Restore the deleted files from the Recovery Services vaults</span></span>
-<span data-ttu-id="c58ef-187">Om du vill återställa borttagna filer, gör du följande:</span><span class="sxs-lookup"><span data-stu-id="c58ef-187">To restore the deleted files, complete the following steps:</span></span>
+## <a name="restore-hello-deleted-files-from-hello-recovery-services-vaults"></a><span data-ttu-id="da0c6-186">Återställa hello bort filer från hello Recovery Services-valv</span><span class="sxs-lookup"><span data-stu-id="da0c6-186">Restore hello deleted files from hello Recovery Services vaults</span></span>
+<span data-ttu-id="da0c6-187">toorestore hello borttagna filer, fullständig hello följande steg:</span><span class="sxs-lookup"><span data-stu-id="da0c6-187">toorestore hello deleted files, complete hello following steps:</span></span>
 
-1. <span data-ttu-id="c58ef-188">I Azure-portalen, söka efter den *myVault* Recovery Services-valv objektet.</span><span class="sxs-lookup"><span data-stu-id="c58ef-188">In the Azure portal, search for the *myVault* Recovery Services vaults item.</span></span> <span data-ttu-id="c58ef-189">På den **översikt** bladet under **Säkerhetskopiera objekt**, Välj antalet objekt.</span><span class="sxs-lookup"><span data-stu-id="c58ef-189">On the **Overview** blade, under **Backup items**, select the number of items.</span></span>
+1. <span data-ttu-id="da0c6-188">I hello Azure-portalen, söka efter hello *myVault* Recovery Services-valv objektet.</span><span class="sxs-lookup"><span data-stu-id="da0c6-188">In hello Azure portal, search for hello *myVault* Recovery Services vaults item.</span></span> <span data-ttu-id="da0c6-189">På hello **översikt** bladet under **Säkerhetskopiera objekt**, Välj hello antal objekt.</span><span class="sxs-lookup"><span data-stu-id="da0c6-189">On hello **Overview** blade, under **Backup items**, select hello number of items.</span></span>
 
     ![Recovery Services valv myVault Säkerhetskopiera objekt](./media/oracle-backup-recovery/recovery_service_12.png)
 
-2. <span data-ttu-id="c58ef-191">Under **säkerhetskopiering OBJEKTANTAL**, Välj antalet objekt.</span><span class="sxs-lookup"><span data-stu-id="c58ef-191">Under **BACKUP ITEM COUNT**, select the number of items.</span></span>
+2. <span data-ttu-id="da0c6-191">Under **säkerhetskopiering OBJEKTANTAL**, Välj hello antal objekt.</span><span class="sxs-lookup"><span data-stu-id="da0c6-191">Under **BACKUP ITEM COUNT**, select hello number of items.</span></span>
 
     ![Recovery Services-valv antal för virtuell dator i Azure-säkerhetskopiering objekt](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. <span data-ttu-id="c58ef-193">På den **myvm1** bladet, klickar du på **filåterställning (förhandsgranskning)**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-193">On the **myvm1** blade, click **File Recovery (Preview)**.</span></span>
+3. <span data-ttu-id="da0c6-193">På hello **myvm1** bladet, klickar du på **filåterställning (förhandsgranskning)**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-193">On hello **myvm1** blade, click **File Recovery (Preview)**.</span></span>
 
-    ![Skärmbild av Recovery Services-valv återställningssidan för filen](./media/oracle-backup-recovery/recovery_service_14.png)
+    ![Skärmbild av hello Recovery Services-valv återställningssidan för filen](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. <span data-ttu-id="c58ef-195">På den **filåterställning (förhandsgranskning)** rutan klickar du på **hämta skriptet**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-195">On the **File Recovery (Preview)** pane, click **Download Script**.</span></span> <span data-ttu-id="c58ef-196">Spara sedan filen download (.sh) till en mapp på klientdatorn.</span><span class="sxs-lookup"><span data-stu-id="c58ef-196">Then, save the download (.sh) file to a folder on the client computer.</span></span>
+4. <span data-ttu-id="da0c6-195">På hello **filåterställning (förhandsgranskning)** rutan klickar du på **hämta skriptet**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-195">On hello **File Recovery (Preview)** pane, click **Download Script**.</span></span> <span data-ttu-id="da0c6-196">Spara hello download (.sh) tooa mapp på hello-klientdator.</span><span class="sxs-lookup"><span data-stu-id="da0c6-196">Then, save hello download (.sh) file tooa folder on hello client computer.</span></span>
 
     ![Hämta filen sparar alternativ](./media/oracle-backup-recovery/recovery_service_15.png)
 
-5. <span data-ttu-id="c58ef-198">Kopiera filen .sh till den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="c58ef-198">Copy the .sh file to the VM.</span></span>
+5. <span data-ttu-id="da0c6-198">Kopiera hello .sh filen toohello VM.</span><span class="sxs-lookup"><span data-stu-id="da0c6-198">Copy hello .sh file toohello VM.</span></span>
 
-    <span data-ttu-id="c58ef-199">I följande exempel visas hur du kan använda en säker kopia (scp) kommandot för att flytta filen till den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="c58ef-199">The following example shows how you to use a secure copy (scp) command to move the file to the VM.</span></span> <span data-ttu-id="c58ef-200">Du kan också kopiera innehållet i Urklipp och klistra in innehållet i en ny fil som har ställts in på den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="c58ef-200">You also can copy the contents to the clipboard, and then paste the contents in a new file that is set up on the VM.</span></span>
+    <span data-ttu-id="da0c6-199">hello som följande exempel visar hur du toouse en säker kopia (scp) kommandot toomove hello filen toohello VM.</span><span class="sxs-lookup"><span data-stu-id="da0c6-199">hello following example shows how you toouse a secure copy (scp) command toomove hello file toohello VM.</span></span> <span data-ttu-id="da0c6-200">Du kan också kopiera hello innehållet toohello Urklipp och klistra in hello innehållet om du i en ny fil som har ställts in på hello VM.</span><span class="sxs-lookup"><span data-stu-id="da0c6-200">You also can copy hello contents toohello clipboard, and then paste hello contents in a new file that is set up on hello VM.</span></span>
 
     > [!IMPORTANT]
-    > <span data-ttu-id="c58ef-201">Se till att du uppdaterar IP-adress och mappen värdena i exemplet nedan.</span><span class="sxs-lookup"><span data-stu-id="c58ef-201">In the following example, ensure that you update the IP address and folder values.</span></span> <span data-ttu-id="c58ef-202">Värdena måste mappas till mappen där filen sparas.</span><span class="sxs-lookup"><span data-stu-id="c58ef-202">The values must map to the folder where the file is saved.</span></span>
+    > <span data-ttu-id="da0c6-201">I följande exempel hello, kontrollerar du att du uppdaterar hello IP-adress och mappen värden.</span><span class="sxs-lookup"><span data-stu-id="da0c6-201">In hello following example, ensure that you update hello IP address and folder values.</span></span> <span data-ttu-id="da0c6-202">hello-värden måste mappa toohello mappen där hello filen sparas.</span><span class="sxs-lookup"><span data-stu-id="da0c6-202">hello values must map toohello folder where hello file is saved.</span></span>
 
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
-6. <span data-ttu-id="c58ef-203">Ändra filen, så att det ägs av roten.</span><span class="sxs-lookup"><span data-stu-id="c58ef-203">Change the file, so that it's owned by the root.</span></span>
+6. <span data-ttu-id="da0c6-203">Ändra hello-fil, så att det ägs av hello rot.</span><span class="sxs-lookup"><span data-stu-id="da0c6-203">Change hello file, so that it's owned by hello root.</span></span>
 
-    <span data-ttu-id="c58ef-204">I följande exempel visas att ändra filen så att det ägs av roten.</span><span class="sxs-lookup"><span data-stu-id="c58ef-204">In the following example, change the file so that it's owned by the root.</span></span> <span data-ttu-id="c58ef-205">Ändra behörigheter.</span><span class="sxs-lookup"><span data-stu-id="c58ef-205">Then, change permissions.</span></span>
+    <span data-ttu-id="da0c6-204">I följande exempel hello, ändra hello-filen så att det ägs av hello rot.</span><span class="sxs-lookup"><span data-stu-id="da0c6-204">In hello following example, change hello file so that it's owned by hello root.</span></span> <span data-ttu-id="da0c6-205">Ändra behörigheter.</span><span class="sxs-lookup"><span data-stu-id="da0c6-205">Then, change permissions.</span></span>
 
     ```bash 
     $ ssh <publicIpAddress>
@@ -379,24 +379,24 @@ ms.lasthandoff: 07/11/2017
     # chmod 755 /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
-    <span data-ttu-id="c58ef-206">I följande exempel visar vad som ska visas när du har kört skriptet.</span><span class="sxs-lookup"><span data-stu-id="c58ef-206">The following example shows what you should see after you run the preceding script.</span></span> <span data-ttu-id="c58ef-207">När du uppmanas att fortsätta ange **Y**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-207">When you're prompted to continue, enter **Y**.</span></span>
+    <span data-ttu-id="da0c6-206">hello följande exempel visar vad som ska visas när du har kört hello föregående skript.</span><span class="sxs-lookup"><span data-stu-id="da0c6-206">hello following example shows what you should see after you run hello preceding script.</span></span> <span data-ttu-id="da0c6-207">När du uppmanas toocontinue, ange **Y**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-207">When you're prompted toocontinue, enter **Y**.</span></span>
 
     ```bash
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
-    The script requires 'open-iscsi' and 'lshw' to run.
-    Do you want us to install 'open-iscsi' and 'lshw' on this machine?
-    Please press 'Y' to continue with installation, 'N' to abort the operation. : Y
+    hello script requires 'open-iscsi' and 'lshw' toorun.
+    Do you want us tooinstall 'open-iscsi' and 'lshw' on this machine?
+    Please press 'Y' toocontinue with installation, 'N' tooabort hello operation. : Y
     Installing 'open-iscsi'....
     Installing 'lshw'....
 
-    Connecting to recovery point using ISCSI service...
+    Connecting toorecovery point using ISCSI service...
 
     Connection succeeded!
 
-    Please wait while we attach volumes of the recovery point to this machine...
+    Please wait while we attach volumes of hello recovery point toothis machine...
 
-    ************ Volumes of the recovery point and their mount paths on this machine ************
+    ************ Volumes of hello recovery point and their mount paths on this machine ************
 
     Sr.No.  |  Disk  |  Volume  |  MountPath
 
@@ -404,20 +404,20 @@ ms.lasthandoff: 07/11/2017
 
     2)  | /dev/sde  |  /dev/sde2  |  /root/myVM-20170517093913/Volume2
 
-    ************ Open File Explorer to browse for files. ************
+    ************ Open File Explorer toobrowse for files. ************
 
-    After recovery, to remove the disks and close the connection to the recovery point, please click 'Unmount Disks' in step 3 of the portal.
+    After recovery, tooremove hello disks and close hello connection toohello recovery point, please click 'Unmount Disks' in step 3 of hello portal.
 
-    Please enter 'q/Q' to exit...
+    Please enter 'q/Q' tooexit...
     ```
 
-7. <span data-ttu-id="c58ef-208">Åtkomst till de monterade volymerna bekräftas.</span><span class="sxs-lookup"><span data-stu-id="c58ef-208">Access to the mounted volumes is confirmed.</span></span>
+7. <span data-ttu-id="da0c6-208">Åtkomst toohello monterade volymer bekräftas.</span><span class="sxs-lookup"><span data-stu-id="da0c6-208">Access toohello mounted volumes is confirmed.</span></span>
 
-    <span data-ttu-id="c58ef-209">Om du vill avsluta, ange **q**, och sök sedan efter de monterade volymerna.</span><span class="sxs-lookup"><span data-stu-id="c58ef-209">To exit, enter **q**, and then search for the mounted volumes.</span></span> <span data-ttu-id="c58ef-210">Om du vill skapa en lista över volymer som lagts till i en kommandotolk, ange **df -k**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-210">To create a list of the added volumes, at a command prompt, enter **df -k**.</span></span>
+    <span data-ttu-id="da0c6-209">tooexit, ange **q**, och sök sedan efter hello monterade volymer.</span><span class="sxs-lookup"><span data-stu-id="da0c6-209">tooexit, enter **q**, and then search for hello mounted volumes.</span></span> <span data-ttu-id="da0c6-210">en lista över hello läggs volymer i en kommandotolk, ange toocreate **df -k**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-210">toocreate a list of hello added volumes, at a command prompt, enter **df -k**.</span></span>
 
-    ![Kommandot df -k](./media/oracle-backup-recovery/recovery_service_16.png)
+    ![hello df -k kommando](./media/oracle-backup-recovery/recovery_service_16.png)
 
-8. <span data-ttu-id="c58ef-212">Använd följande skript om du vill kopiera de saknade filerna till mapparna:</span><span class="sxs-lookup"><span data-stu-id="c58ef-212">Use the following script to copy the missing files back to the folders:</span></span>
+8. <span data-ttu-id="da0c6-212">Använd hello följande skript toocopy hello saknas filer tillbaka toohello mappar:</span><span class="sxs-lookup"><span data-stu-id="da0c6-212">Use hello following script toocopy hello missing files back toohello folders:</span></span>
 
     ```bash
     # cd /root/myVM-2017XXXXXXX/Volume2/u01/app/oracle/fast_recovery_area/CDB1/backupset/2017_xx_xx
@@ -429,7 +429,7 @@ ms.lasthandoff: 07/11/2017
     # cd /u01/app/oracle/oradata/cdb1
     # chown oracle:oinstall *.dbf
     ```
-9. <span data-ttu-id="c58ef-213">Använd RMAN ska kunna återställa databasen i följande skript:</span><span class="sxs-lookup"><span data-stu-id="c58ef-213">In the following script, use RMAN to recover the database:</span></span>
+9. <span data-ttu-id="da0c6-213">I följande skript hello, använder du RMAN toorecover hello databasen:</span><span class="sxs-lookup"><span data-stu-id="da0c6-213">In hello following script, use RMAN toorecover hello database:</span></span>
 
     ```bash
     # sudo su - oracle
@@ -441,93 +441,93 @@ ms.lasthandoff: 07/11/2017
     RMAN> SELECT * FROM scott.scott_table;
     ```
     
-10. <span data-ttu-id="c58ef-214">Demontera disken.</span><span class="sxs-lookup"><span data-stu-id="c58ef-214">Unmount the disk.</span></span>
+10. <span data-ttu-id="da0c6-214">Demontera hello disk.</span><span class="sxs-lookup"><span data-stu-id="da0c6-214">Unmount hello disk.</span></span>
 
-    <span data-ttu-id="c58ef-215">I Azure-portalen på den **filåterställning (förhandsgranskning)** bladet, klickar du på **demontera diskar**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-215">In the Azure portal, on the **File Recovery (Preview)** blade, click **Unmount Disks**.</span></span>
+    <span data-ttu-id="da0c6-215">I hello Azure-portalen på hello **filåterställning (förhandsgranskning)** bladet, klickar du på **demontera diskar**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-215">In hello Azure portal, on hello **File Recovery (Preview)** blade, click **Unmount Disks**.</span></span>
 
     ![Demontera diskar kommando](./media/oracle-backup-recovery/recovery_service_17.png)
 
-## <a name="restore-the-entire-vm"></a><span data-ttu-id="c58ef-217">Återställa hela den virtuella datorn</span><span class="sxs-lookup"><span data-stu-id="c58ef-217">Restore the entire VM</span></span>
+## <a name="restore-hello-entire-vm"></a><span data-ttu-id="da0c6-217">Återställa hello hela VM</span><span class="sxs-lookup"><span data-stu-id="da0c6-217">Restore hello entire VM</span></span>
 
-<span data-ttu-id="c58ef-218">Du kan återställa hela den virtuella datorn i stället för att återställa borttagna filer från Recovery Services-valv.</span><span class="sxs-lookup"><span data-stu-id="c58ef-218">Instead of restoring the deleted files from the Recovery Services vaults, you can restore the entire VM.</span></span>
+<span data-ttu-id="da0c6-218">I stället för att återställa hello bort filer från hello Recovery Services-valv, kan du återställa hello hela datorn.</span><span class="sxs-lookup"><span data-stu-id="da0c6-218">Instead of restoring hello deleted files from hello Recovery Services vaults, you can restore hello entire VM.</span></span>
 
-### <a name="step-1-delete-myvm"></a><span data-ttu-id="c58ef-219">Steg 1: Ta bort myVM</span><span class="sxs-lookup"><span data-stu-id="c58ef-219">Step 1: Delete myVM</span></span>
+### <a name="step-1-delete-myvm"></a><span data-ttu-id="da0c6-219">Steg 1: Ta bort myVM</span><span class="sxs-lookup"><span data-stu-id="da0c6-219">Step 1: Delete myVM</span></span>
 
-*   <span data-ttu-id="c58ef-220">I Azure-portalen går du till den **myVM1** valvet och välj sedan **ta bort**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-220">In the Azure portal, go to the **myVM1** vault, and then select **Delete**.</span></span>
+*   <span data-ttu-id="da0c6-220">I hello Azure-portalen, går toohello **myVM1** valvet och välj sedan **ta bort**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-220">In hello Azure portal, go toohello **myVM1** vault, and then select **Delete**.</span></span>
 
     ![Valvet delete-kommandot](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a><span data-ttu-id="c58ef-222">Steg 2: Återställa den virtuella datorn</span><span class="sxs-lookup"><span data-stu-id="c58ef-222">Step 2: Recover the VM</span></span>
+### <a name="step-2-recover-hello-vm"></a><span data-ttu-id="da0c6-222">Steg 2: Återställa hello VM</span><span class="sxs-lookup"><span data-stu-id="da0c6-222">Step 2: Recover hello VM</span></span>
 
-1.  <span data-ttu-id="c58ef-223">Gå till **Recovery Services-valv**, och välj sedan **myVault**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-223">Go to **Recovery Services vaults**, and then select **myVault**.</span></span>
+1.  <span data-ttu-id="da0c6-223">Gå för**Recovery Services-valv**, och välj sedan **myVault**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-223">Go too**Recovery Services vaults**, and then select **myVault**.</span></span>
 
     ![myVault post](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  <span data-ttu-id="c58ef-225">På den **översikt** bladet under **Säkerhetskopiera objekt**, Välj antalet objekt.</span><span class="sxs-lookup"><span data-stu-id="c58ef-225">On the **Overview** blade, under **Backup items**, select the number of items.</span></span>
+2.  <span data-ttu-id="da0c6-225">På hello **översikt** bladet under **Säkerhetskopiera objekt**, Välj hello antal objekt.</span><span class="sxs-lookup"><span data-stu-id="da0c6-225">On hello **Overview** blade, under **Backup items**, select hello number of items.</span></span>
 
     ![myVault Säkerhetskopiera objekt](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  <span data-ttu-id="c58ef-227">På den **säkerhetskopiering objekt (Azure virtuell dator)** bladet väljer **myvm1**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-227">On the **Backup Items (Azure Virtual Machine)** blade, select **myvm1**.</span></span>
+3.  <span data-ttu-id="da0c6-227">På hello **säkerhetskopiering objekt (Azure virtuell dator)** bladet väljer **myvm1**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-227">On hello **Backup Items (Azure Virtual Machine)** blade, select **myvm1**.</span></span>
 
     ![Återställningssidan för VM](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  <span data-ttu-id="c58ef-229">På den **myvm1** bladet Klicka på ellipsknappen (**...** ) knappen och klicka sedan på **återställa VM**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-229">On the **myvm1** blade, click the ellipsis (**...**) button,  and then click **Restore VM**.</span></span>
+4.  <span data-ttu-id="da0c6-229">På hello **myvm1** bladet Klicka hello knappen (**...** ) knappen och klicka sedan på **återställa VM**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-229">On hello **myvm1** blade, click hello ellipsis (**...**) button,  and then click **Restore VM**.</span></span>
 
     ![Restore-kommandots VM](./media/oracle-backup-recovery/recover_vm_05.png)
 
-5.  <span data-ttu-id="c58ef-231">På den **Välj återställningspunkt** bladet, Välj det objekt som du vill återställa och klicka sedan på **OK**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-231">On the **Select restore point** blade, select the item that you want to restore, and then click **OK**.</span></span>
+5.  <span data-ttu-id="da0c6-231">På hello **Välj återställningspunkt** bladet, Välj hello objekt du vill toorestore och klicka sedan på **OK**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-231">On hello **Select restore point** blade, select hello item that you want toorestore, and then click **OK**.</span></span>
 
-    ![Välj återställningspunkten](./media/oracle-backup-recovery/recover_vm_06.png)
+    ![Välj hello återställningspunkt](./media/oracle-backup-recovery/recover_vm_06.png)
 
-    <span data-ttu-id="c58ef-233">Om du har aktiverat programkonsekvent säkerhetskopiering, visas en blå vertikalstreck.</span><span class="sxs-lookup"><span data-stu-id="c58ef-233">If you have enabled application-consistent backup, a vertical blue bar appears.</span></span>
+    <span data-ttu-id="da0c6-233">Om du har aktiverat programkonsekvent säkerhetskopiering, visas en blå vertikalstreck.</span><span class="sxs-lookup"><span data-stu-id="da0c6-233">If you have enabled application-consistent backup, a vertical blue bar appears.</span></span>
 
-6.  <span data-ttu-id="c58ef-234">På den **Återställ konfiguration** bladet välj namnet på virtuella datorn, välja en resursgrupp och klicka sedan på **OK**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-234">On the **Restore configuration** blade, select the virtual machine name, select the resource group, and then click **OK**.</span></span>
+6.  <span data-ttu-id="da0c6-234">På hello **Återställ konfiguration** bladet välj hello virtuella datornamnet, Välj hello resursgrupp och klicka sedan på **OK**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-234">On hello **Restore configuration** blade, select hello virtual machine name, select hello resource group, and then click **OK**.</span></span>
 
     ![Återställa konfigurationsvärden](./media/oracle-backup-recovery/recover_vm_07.png)
 
-7.  <span data-ttu-id="c58ef-236">Om du vill återställa den virtuella datorn, klickar du på den **återställa** knappen.</span><span class="sxs-lookup"><span data-stu-id="c58ef-236">To restore the VM, click the **Restore** button.</span></span>
+7.  <span data-ttu-id="da0c6-236">toorestore hello VM, klicka på hello **återställa** knappen.</span><span class="sxs-lookup"><span data-stu-id="da0c6-236">toorestore hello VM, click hello **Restore** button.</span></span>
 
-8.  <span data-ttu-id="c58ef-237">Om du vill visa status för återställningen klickar du på **jobb**, och klicka sedan på **säkerhetskopieringsjobb**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-237">To view the status of the restore process, click **Jobs**, and then click **Backup Jobs**.</span></span>
+8.  <span data-ttu-id="da0c6-237">tooview hello status för hello återställningsprocessen klickar du på **jobb**, och klicka sedan på **säkerhetskopieringsjobb**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-237">tooview hello status of hello restore process, click **Jobs**, and then click **Backup Jobs**.</span></span>
 
     ![Säkerhetskopieringsjobb status-kommandot](./media/oracle-backup-recovery/recover_vm_08.png)
 
-    <span data-ttu-id="c58ef-239">Följande bild visar status för återställningen:</span><span class="sxs-lookup"><span data-stu-id="c58ef-239">The following figure shows the status of the restore process:</span></span>
+    <span data-ttu-id="da0c6-239">hello visar följande bild hello återställningsprocessen hello status:</span><span class="sxs-lookup"><span data-stu-id="da0c6-239">hello following figure shows hello status of hello restore process:</span></span>
 
-    ![Status för återställningen](./media/oracle-backup-recovery/recover_vm_09.png)
+    ![Status för hello återställningsprocessen](./media/oracle-backup-recovery/recover_vm_09.png)
 
-### <a name="step-3-set-the-public-ip-address"></a><span data-ttu-id="c58ef-241">Steg 3: Ange den offentliga IP-adressen</span><span class="sxs-lookup"><span data-stu-id="c58ef-241">Step 3: Set the public IP address</span></span>
-<span data-ttu-id="c58ef-242">När den virtuella datorn har återställts kan ställa in den offentliga IP-adressen.</span><span class="sxs-lookup"><span data-stu-id="c58ef-242">After the VM is restored, set up the public IP address.</span></span>
+### <a name="step-3-set-hello-public-ip-address"></a><span data-ttu-id="da0c6-241">Steg 3: Ange hello offentliga IP-adress</span><span class="sxs-lookup"><span data-stu-id="da0c6-241">Step 3: Set hello public IP address</span></span>
+<span data-ttu-id="da0c6-242">Efter hello VM har återställts, ställa in hello offentlig IP-adress.</span><span class="sxs-lookup"><span data-stu-id="da0c6-242">After hello VM is restored, set up hello public IP address.</span></span>
 
-1.  <span data-ttu-id="c58ef-243">I sökrutan anger **offentliga IP-adressen**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-243">In the search box, enter **public IP address**.</span></span>
+1.  <span data-ttu-id="da0c6-243">Skriv i sökrutan hello **offentliga IP-adressen**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-243">In hello search box, enter **public IP address**.</span></span>
 
     ![Lista över offentliga IP-adresser](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  <span data-ttu-id="c58ef-245">På den **offentliga IP-adresser** bladet, klickar du på **Lägg till**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-245">On the **Public IP addresses** blade, click **Add**.</span></span> <span data-ttu-id="c58ef-246">På den **skapa offentlig IP-adress** bladet för **namn**, Välj offentlig IP-namnet.</span><span class="sxs-lookup"><span data-stu-id="c58ef-246">On the **Create public IP address** blade, for **Name**, select the public IP name.</span></span> <span data-ttu-id="c58ef-247">För **resursgrupp**, väljer du **använd befintlig**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-247">For **Resource group**, select **Use existing**.</span></span> <span data-ttu-id="c58ef-248">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-248">Then, click **Create**.</span></span>
+2.  <span data-ttu-id="da0c6-245">På hello **offentliga IP-adresser** bladet, klickar du på **Lägg till**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-245">On hello **Public IP addresses** blade, click **Add**.</span></span> <span data-ttu-id="da0c6-246">På hello **skapa offentlig IP-adress** bladet för **namnet**väljer hello offentliga IP-namn.</span><span class="sxs-lookup"><span data-stu-id="da0c6-246">On hello **Create public IP address** blade, for **Name**, select hello public IP name.</span></span> <span data-ttu-id="da0c6-247">För **resursgrupp**, väljer du **använd befintlig**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-247">For **Resource group**, select **Use existing**.</span></span> <span data-ttu-id="da0c6-248">Klicka på **Skapa**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-248">Then, click **Create**.</span></span>
 
     ![Skapa IP-adress](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  <span data-ttu-id="c58ef-250">Om du vill associera den offentliga IP-adressen till nätverksgränssnittet för den virtuella datorn, leta upp och markera **myVMip**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-250">To associate the public IP address with the network interface for the VM, search for and select **myVMip**.</span></span> <span data-ttu-id="c58ef-251">Klicka på **associera**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-251">Then, click **Associate**.</span></span>
+3.  <span data-ttu-id="da0c6-250">tooassociate hello offentlig IP-adress med hello nätverksgränssnittet för hello VM, söka efter och välj **myVMip**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-250">tooassociate hello public IP address with hello network interface for hello VM, search for and select **myVMip**.</span></span> <span data-ttu-id="da0c6-251">Klicka på **associera**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-251">Then, click **Associate**.</span></span>
 
     ![Associera IP-adress](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  <span data-ttu-id="c58ef-253">För **resurstypen**väljer **nätverksgränssnittet**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-253">For **Resource type**, select **Network interface**.</span></span> <span data-ttu-id="c58ef-254">Välj det nätverksgränssnitt som används av myVM-instansen och klicka sedan på **OK**.</span><span class="sxs-lookup"><span data-stu-id="c58ef-254">Select the network interface that is used by the myVM instance, and then click **OK**.</span></span>
+4.  <span data-ttu-id="da0c6-253">För **resurstypen**väljer **nätverksgränssnittet**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-253">For **Resource type**, select **Network interface**.</span></span> <span data-ttu-id="da0c6-254">Välj hello nätverksgränssnitt som används av hello myVM instansen och klicka sedan på **OK**.</span><span class="sxs-lookup"><span data-stu-id="da0c6-254">Select hello network interface that is used by hello myVM instance, and then click **OK**.</span></span>
 
     ![Välj resurstyp och NIC-värden](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  <span data-ttu-id="c58ef-256">Söka efter och öppna instansen av myVM är portar från portalen.</span><span class="sxs-lookup"><span data-stu-id="c58ef-256">Search for and open the instance of myVM that is ported from the portal.</span></span> <span data-ttu-id="c58ef-257">IP-adressen som är associerad med den virtuella datorn visas på myVM **översikt** bladet.</span><span class="sxs-lookup"><span data-stu-id="c58ef-257">The IP address that is associated with the VM appears on the myVM **Overview** blade.</span></span>
+5.  <span data-ttu-id="da0c6-256">Sök efter och öppna hello instans av myVM portar från hello-portalen.</span><span class="sxs-lookup"><span data-stu-id="da0c6-256">Search for and open hello instance of myVM that is ported from hello portal.</span></span> <span data-ttu-id="da0c6-257">hello IP-adress som är associerad med hello VM visas på hello myVM **översikt** bladet.</span><span class="sxs-lookup"><span data-stu-id="da0c6-257">hello IP address that is associated with hello VM appears on hello myVM **Overview** blade.</span></span>
 
     ![Värdet för IP-adress](./media/oracle-backup-recovery/create_ip_04.png)
 
-### <a name="step-4-connect-to-the-vm"></a><span data-ttu-id="c58ef-259">Steg 4: Anslut till den virtuella datorn</span><span class="sxs-lookup"><span data-stu-id="c58ef-259">Step 4: Connect to the VM</span></span>
+### <a name="step-4-connect-toohello-vm"></a><span data-ttu-id="da0c6-259">Steg 4: Anslut toohello VM</span><span class="sxs-lookup"><span data-stu-id="da0c6-259">Step 4: Connect toohello VM</span></span>
 
-*   <span data-ttu-id="c58ef-260">Använd följande skript för att ansluta till den virtuella datorn:</span><span class="sxs-lookup"><span data-stu-id="c58ef-260">To connect to the VM, use the following script:</span></span>
+*   <span data-ttu-id="da0c6-260">tooconnect toohello VM, använda hello följande skript:</span><span class="sxs-lookup"><span data-stu-id="da0c6-260">tooconnect toohello VM, use hello following script:</span></span>
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a><span data-ttu-id="c58ef-261">Steg 5: Testa om databasen är tillgänglig</span><span class="sxs-lookup"><span data-stu-id="c58ef-261">Step 5: Test whether the database is accessible</span></span>
-*   <span data-ttu-id="c58ef-262">Testa hjälpmedel genom att använda följande skript:</span><span class="sxs-lookup"><span data-stu-id="c58ef-262">To test accessibility, use the following script:</span></span>
+### <a name="step-5-test-whether-hello-database-is-accessible"></a><span data-ttu-id="da0c6-261">Steg 5: Testa om hello-databasen är tillgänglig</span><span class="sxs-lookup"><span data-stu-id="da0c6-261">Step 5: Test whether hello database is accessible</span></span>
+*   <span data-ttu-id="da0c6-262">tootest tillgänglighet, Använd hello följande skript:</span><span class="sxs-lookup"><span data-stu-id="da0c6-262">tootest accessibility, use hello following script:</span></span>
 
     ```bash 
     $ sudo su - oracle
@@ -536,10 +536,10 @@ ms.lasthandoff: 07/11/2017
     ```
 
     > [!IMPORTANT]
-    > <span data-ttu-id="c58ef-263">Om databasen **Start** kommandot genererar ett fel, om du vill återställa databasen finns [steg 6: Använd RMAN ska kunna återställa databasen](#step-6-optional-use-rman-to-recover-the-database).</span><span class="sxs-lookup"><span data-stu-id="c58ef-263">If the database **startup** command generates an error, to recover the database, see [Step 6: Use RMAN to recover the database](#step-6-optional-use-rman-to-recover-the-database).</span></span>
+    > <span data-ttu-id="da0c6-263">Om hello databasen **Start** kommandot genererar ett fel, toorecover hello databasen, se [steg 6: Använd RMAN toorecover hello databasen](#step-6-optional-use-rman-to-recover-the-database).</span><span class="sxs-lookup"><span data-stu-id="da0c6-263">If hello database **startup** command generates an error, toorecover hello database, see [Step 6: Use RMAN toorecover hello database](#step-6-optional-use-rman-to-recover-the-database).</span></span>
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a><span data-ttu-id="c58ef-264">Steg 6: (Valfritt) använda RMAN ska kunna återställa databasen</span><span class="sxs-lookup"><span data-stu-id="c58ef-264">Step 6: (Optional) Use RMAN to recover the database</span></span>
-*   <span data-ttu-id="c58ef-265">Om du vill återställa databasen använder du följande skript:</span><span class="sxs-lookup"><span data-stu-id="c58ef-265">To recover the database, use the following script:</span></span>
+### <a name="step-6-optional-use-rman-toorecover-hello-database"></a><span data-ttu-id="da0c6-264">Steg 6: (Valfritt) använda RMAN toorecover hello databas</span><span class="sxs-lookup"><span data-stu-id="da0c6-264">Step 6: (Optional) Use RMAN toorecover hello database</span></span>
+*   <span data-ttu-id="da0c6-265">toorecover hello databas, Använd hello följande skript:</span><span class="sxs-lookup"><span data-stu-id="da0c6-265">toorecover hello database, use hello following script:</span></span>
 
     ```bash
     # sudo su - oracle
@@ -551,21 +551,21 @@ ms.lasthandoff: 07/11/2017
     RMAN> SELECT * FROM scott.scott_table;
     ```
 
-<span data-ttu-id="c58ef-266">Säkerhetskopiering och återställning av databasen på 12c Oracle-databas på en Azure Linux-VM är nu klar.</span><span class="sxs-lookup"><span data-stu-id="c58ef-266">The backup and recovery of the Oracle Database 12c database on an Azure Linux VM is now finished.</span></span>
+<span data-ttu-id="da0c6-266">hello säkerhetskopiering och återställning av hello Oracle 12c databasen på en Azure Linux-VM är nu klar.</span><span class="sxs-lookup"><span data-stu-id="da0c6-266">hello backup and recovery of hello Oracle Database 12c database on an Azure Linux VM is now finished.</span></span>
 
-## <a name="delete-the-vm"></a><span data-ttu-id="c58ef-267">Ta bort den virtuella datorn</span><span class="sxs-lookup"><span data-stu-id="c58ef-267">Delete the VM</span></span>
+## <a name="delete-hello-vm"></a><span data-ttu-id="da0c6-267">Ta bort hello VM</span><span class="sxs-lookup"><span data-stu-id="da0c6-267">Delete hello VM</span></span>
 
-<span data-ttu-id="c58ef-268">Du kan använda följande kommando för att ta bort resursgruppen, den virtuella datorn och alla relaterade resurser när du inte längre behöver den virtuella datorn:</span><span class="sxs-lookup"><span data-stu-id="c58ef-268">When you no longer need the VM, you can use the following command to remove the resource group, the VM, and all related resources:</span></span>
+<span data-ttu-id="da0c6-268">När du behöver inte längre hello VM, kan du använda hello efter kommandot tooremove hello resursgrupp, hello VM och alla relaterade resurser:</span><span class="sxs-lookup"><span data-stu-id="da0c6-268">When you no longer need hello VM, you can use hello following command tooremove hello resource group, hello VM, and all related resources:</span></span>
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a><span data-ttu-id="c58ef-269">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="c58ef-269">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="da0c6-269">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="da0c6-269">Next steps</span></span>
 
-[<span data-ttu-id="c58ef-270">Självstudier: Skapa högtillgängliga virtuella datorer</span><span class="sxs-lookup"><span data-stu-id="c58ef-270">Tutorial: Create highly available VMs</span></span>](../../linux/create-cli-complete.md)
+[<span data-ttu-id="da0c6-270">Självstudier: Skapa högtillgängliga virtuella datorer</span><span class="sxs-lookup"><span data-stu-id="da0c6-270">Tutorial: Create highly available VMs</span></span>](../../linux/create-cli-complete.md)
 
-[<span data-ttu-id="c58ef-271">Utforska VM distribution Azure CLI-exempel</span><span class="sxs-lookup"><span data-stu-id="c58ef-271">Explore VM deployment Azure CLI samples</span></span>](../../linux/cli-samples.md)
+[<span data-ttu-id="da0c6-271">Utforska VM distribution Azure CLI-exempel</span><span class="sxs-lookup"><span data-stu-id="da0c6-271">Explore VM deployment Azure CLI samples</span></span>](../../linux/cli-samples.md)
 
 
 

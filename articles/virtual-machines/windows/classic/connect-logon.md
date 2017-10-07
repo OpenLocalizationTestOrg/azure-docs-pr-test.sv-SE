@@ -1,6 +1,6 @@
 ---
-title: "Logga in på en klassisk Azure-VM | Microsoft Docs"
-description: "Använda Azure portal för att logga in på en Windows-dator som skapats med den klassiska distributionsmodellen."
+title: "aaaLog på tooa klassiska Azure-VM | Microsoft Docs"
+description: "Använd hello Azure portal toolog på tooa Windows virtuell dator som skapats med hello klassiska distributionsmodellen."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,53 +15,53 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 43d54de7e875de9212c23c49ad0539bf2272a312
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2e32b7036c2538e73b46580e0f5f8f4979e8a685
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a><span data-ttu-id="23e91-103">Logga in på en virtuell Windows-dator med Azure Portal</span><span class="sxs-lookup"><span data-stu-id="23e91-103">Log on to a Windows virtual machine using the Azure portal</span></span>
-<span data-ttu-id="23e91-104">I Azure portal ska du använda den **Anslut** för att starta en fjärrskrivbordssession och logga in på en virtuell Windows-dator.</span><span class="sxs-lookup"><span data-stu-id="23e91-104">In the Azure portal, you use the **Connect** button to start a Remote Desktop session and log on to a Windows VM.</span></span>
+# <a name="log-on-tooa-windows-virtual-machine-using-hello-azure-portal"></a><span data-ttu-id="48bd7-103">Logga in tooa Windows virtuell dator med hello Azure-portalen</span><span class="sxs-lookup"><span data-stu-id="48bd7-103">Log on tooa Windows virtual machine using hello Azure portal</span></span>
+<span data-ttu-id="48bd7-104">I hello Azure-portalen, använder du hello **Anslut** knappen toostart en fjärrskrivbordssession och logga in tooa Windows VM.</span><span class="sxs-lookup"><span data-stu-id="48bd7-104">In hello Azure portal, you use hello **Connect** button toostart a Remote Desktop session and log on tooa Windows VM.</span></span>
 
-<span data-ttu-id="23e91-105">Vill du ansluta till en Linux-VM?</span><span class="sxs-lookup"><span data-stu-id="23e91-105">Do you want to connect to a Linux VM?</span></span> <span data-ttu-id="23e91-106">Se [så att logga in på en virtuell dator som kör Linux](../../linux/mac-create-ssh-keys.md).</span><span class="sxs-lookup"><span data-stu-id="23e91-106">See [How to log on to a virtual machine running Linux](../../linux/mac-create-ssh-keys.md).</span></span>
+<span data-ttu-id="48bd7-105">Vill du tooconnect tooa Linux VM?</span><span class="sxs-lookup"><span data-stu-id="48bd7-105">Do you want tooconnect tooa Linux VM?</span></span> <span data-ttu-id="48bd7-106">Se [hur toolog på tooa virtuell dator som kör Linux](../../linux/mac-create-ssh-keys.md).</span><span class="sxs-lookup"><span data-stu-id="48bd7-106">See [How toolog on tooa virtual machine running Linux](../../linux/mac-create-ssh-keys.md).</span></span>
 
 <!--
 Deleting, but not 100% sure
-Learn how to [perform these steps using new Azure portal](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Learn how too[perform these steps using new Azure portal](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 -->
 
 > [!IMPORTANT]
-> <span data-ttu-id="23e91-107">Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="23e91-107">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="23e91-108">Den här artikeln täcker den klassiska distributionsmodellen.</span><span class="sxs-lookup"><span data-stu-id="23e91-108">This article covers using the Classic deployment model.</span></span> <span data-ttu-id="23e91-109">Microsoft rekommenderar att de flesta nya distributioner använder Resource Manager-modellen.</span><span class="sxs-lookup"><span data-stu-id="23e91-109">Microsoft recommends that most new deployments use the Resource Manager model.</span></span> <span data-ttu-id="23e91-110">Information om hur du loggar in på en virtuell dator med hjälp av Resource Manager-modellen finns [här](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="23e91-110">For information about how to log on to a VM using the Resource Manager model, see [here](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
+> <span data-ttu-id="48bd7-107">Azure har två olika distributionsmodeller för att skapa och arbeta med resurser: [Resource Manager och klassisk](../../../resource-manager-deployment-model.md).</span><span class="sxs-lookup"><span data-stu-id="48bd7-107">Azure has two different deployment models for creating and working with resources: [Resource Manager and Classic](../../../resource-manager-deployment-model.md).</span></span> <span data-ttu-id="48bd7-108">Den här artikeln täcker hello klassiska distributionsmodellen.</span><span class="sxs-lookup"><span data-stu-id="48bd7-108">This article covers using hello Classic deployment model.</span></span> <span data-ttu-id="48bd7-109">Microsoft rekommenderar att de flesta nya distributioner använder hello Resource Manager-modellen.</span><span class="sxs-lookup"><span data-stu-id="48bd7-109">Microsoft recommends that most new deployments use hello Resource Manager model.</span></span> <span data-ttu-id="48bd7-110">Mer information om hur toolog tooa VM använda hello Resource Manager objektmodellen, se [här](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="48bd7-110">For information about how toolog on tooa VM using hello Resource Manager model, see [here](../connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
 
-## <a name="connect-to-the-virtual-machine"></a><span data-ttu-id="23e91-111">Ansluta till den virtuella datorn</span><span class="sxs-lookup"><span data-stu-id="23e91-111">Connect to the virtual machine</span></span>
-1. <span data-ttu-id="23e91-112">Logga in på Azure Portal.</span><span class="sxs-lookup"><span data-stu-id="23e91-112">Sign in to the Azure portal.</span></span>
-2. <span data-ttu-id="23e91-113">Klicka på den virtuella dator som du vill komma åt.</span><span class="sxs-lookup"><span data-stu-id="23e91-113">Click on the virtual machine that you want to access.</span></span> <span data-ttu-id="23e91-114">Namnet visas i den **alla resurser** fönstret.</span><span class="sxs-lookup"><span data-stu-id="23e91-114">The name is listed in the **All resources** pane.</span></span>
+## <a name="connect-toohello-virtual-machine"></a><span data-ttu-id="48bd7-111">Ansluta toohello virtuell dator</span><span class="sxs-lookup"><span data-stu-id="48bd7-111">Connect toohello virtual machine</span></span>
+1. <span data-ttu-id="48bd7-112">Logga in toohello Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="48bd7-112">Sign in toohello Azure portal.</span></span>
+2. <span data-ttu-id="48bd7-113">Klicka på hello virtuell dator som du vill tooaccess.</span><span class="sxs-lookup"><span data-stu-id="48bd7-113">Click on hello virtual machine that you want tooaccess.</span></span> <span data-ttu-id="48bd7-114">hello namnet visas i hello **alla resurser** fönstret.</span><span class="sxs-lookup"><span data-stu-id="48bd7-114">hello name is listed in hello **All resources** pane.</span></span>
 
     ![Virtuella-machine-platser](./media/connect-logon/azureportaldashboard.png)
 
-3. <span data-ttu-id="23e91-116">Klicka på **Anslut** i kommandofältet på instrumentpanelen för virtuell dator.</span><span class="sxs-lookup"><span data-stu-id="23e91-116">Click **Connect** on the command bar atop the virtual machine dashboard.</span></span>
+3. <span data-ttu-id="48bd7-116">Klicka på **Anslut** i hello kommandofält ovanpå hello virtuella instrumentpanelen.</span><span class="sxs-lookup"><span data-stu-id="48bd7-116">Click **Connect** on hello command bar atop hello virtual machine dashboard.</span></span>
 
-    ![Ansluta ikonen för den virtuella datorn](./media/connect-logon/virtualmachine_dashboard_connect.png)
+    ![Ansluta ikonen för hello virtuell dator](./media/connect-logon/virtualmachine_dashboard_connect.png)
 
 <!-- Don't know if this still applies
      I think we can zap this.
 > [!TIP]
-> If the **Connect** button isn't available, see the troubleshooting tips at the end of this article.
+> If hello **Connect** button isn't available, see hello troubleshooting tips at hello end of this article.
 >
 >
 -->
 
-## <a name="log-on-to-the-virtual-machine"></a><span data-ttu-id="23e91-118">Logga in på den virtuella datorn</span><span class="sxs-lookup"><span data-stu-id="23e91-118">Log on to the virtual machine</span></span>
+## <a name="log-on-toohello-virtual-machine"></a><span data-ttu-id="48bd7-118">Logga in toohello virtuell dator</span><span class="sxs-lookup"><span data-stu-id="48bd7-118">Log on toohello virtual machine</span></span>
 [!INCLUDE [virtual-machines-log-on-win-server](../../../../includes/virtual-machines-log-on-win-server.md)]
 
-## <a name="next-steps"></a><span data-ttu-id="23e91-119">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="23e91-119">Next steps</span></span>
-* <span data-ttu-id="23e91-120">Om den **Anslut** är inaktiverad eller du har andra problem med anslutningen till fjärrskrivbordet, pröva att återställa konfigurationen.</span><span class="sxs-lookup"><span data-stu-id="23e91-120">If the **Connect** button is inactive or you are having other problems with the Remote Desktop connection, try resetting the configuration.</span></span> <span data-ttu-id="23e91-121">Klicka på **Återställ fjärråtkomst** från instrumentpanelen för virtuell dator.</span><span class="sxs-lookup"><span data-stu-id="23e91-121">click **Reset remote access** from the virtual machine dashboard.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="48bd7-119">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="48bd7-119">Next steps</span></span>
+* <span data-ttu-id="48bd7-120">Om hello **Anslut** är inaktiverad eller du har andra problem med anslutning till fjärrskrivbord hello, försök återställer hello-konfigurationen.</span><span class="sxs-lookup"><span data-stu-id="48bd7-120">If hello **Connect** button is inactive or you are having other problems with hello Remote Desktop connection, try resetting hello configuration.</span></span> <span data-ttu-id="48bd7-121">Klicka på **Återställ fjärråtkomst** hello virtuella instrumentpanel.</span><span class="sxs-lookup"><span data-stu-id="48bd7-121">click **Reset remote access** from hello virtual machine dashboard.</span></span>
 
     ![Återställ fjärråtkomst](./media/connect-logon/virtualmachine_dashboard_reset_remote_access.png)
 
-* <span data-ttu-id="23e91-123">För problem med ditt lösenord, pröva att återställa den.</span><span class="sxs-lookup"><span data-stu-id="23e91-123">For problems with your password, try resetting it.</span></span> <span data-ttu-id="23e91-124">Klicka på **Återställ lösenord** längs vänster kant för den virtuella datorn instrumentpanelen under **stöd + felsökning**.</span><span class="sxs-lookup"><span data-stu-id="23e91-124">Click **Reset password** along the left edge of virtual machine dashboard, under **Support + Troubleshooting**.</span></span>
+* <span data-ttu-id="48bd7-123">För problem med ditt lösenord, pröva att återställa den.</span><span class="sxs-lookup"><span data-stu-id="48bd7-123">For problems with your password, try resetting it.</span></span> <span data-ttu-id="48bd7-124">Klicka på **Återställ lösenord** längs hello vänster kant instrumentpanelen för virtuell dator under **stöd + felsökning**.</span><span class="sxs-lookup"><span data-stu-id="48bd7-124">Click **Reset password** along hello left edge of virtual machine dashboard, under **Support + Troubleshooting**.</span></span>
 
     ![Återställ lösenord](./media/connect-logon/virtualmachine_dashboard_reset_password.png)
 
-<span data-ttu-id="23e91-126">Om dessa tips fungerar inte eller inte är vad du behöver kan du se [felsökning av anslutning till fjärrskrivbord till en Windows-baserad Azure-dator](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="23e91-126">If those tips don't work or aren't what you need, see [Troubleshoot Remote Desktop connections to a Windows-based Azure Virtual Machine](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span> <span data-ttu-id="23e91-127">Den här artikeln beskriver hur du diagnostiserar och löser vanliga problem.</span><span class="sxs-lookup"><span data-stu-id="23e91-127">This article walks you through diagnosing and resolving common problems.</span></span>
+<span data-ttu-id="48bd7-126">Om dessa tips fungerar inte eller inte är vad du behöver kan du se [Felsöka fjärrskrivbord anslutningar tooa Windows-baserade virtuella Azure-datorn](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="48bd7-126">If those tips don't work or aren't what you need, see [Troubleshoot Remote Desktop connections tooa Windows-based Azure Virtual Machine](../troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span> <span data-ttu-id="48bd7-127">Den här artikeln beskriver hur du diagnostiserar och löser vanliga problem.</span><span class="sxs-lookup"><span data-stu-id="48bd7-127">This article walks you through diagnosing and resolving common problems.</span></span>

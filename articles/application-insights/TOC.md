@@ -42,7 +42,7 @@
 ## Konfigurera
 ### Azure
 #### [Profiler](app-insights-profiler.md)
-#### [Aktivera profileraren](enable-profiler-cloud-services.md)
+#### [Aktivera hello Profiler](enable-profiler-cloud-services.md)
 #### [Diagnostik](app-insights-azure-diagnostics.md)
 #### [Förhandsversioner](app-insights-previews.md)
 
@@ -130,7 +130,7 @@
 ## Exportera
 ### [Löpande export](app-insights-export-telemetry.md)
 ### [Exportera datamodell](app-insights-export-data-model.md)
-### [Exportera till Power BI](app-insights-export-power-bi.md)
+### [Exportera tooPower BI](app-insights-export-power-bi.md)
 
 ## Skydda
 ### [Datainsamling, kvarhållning och lagring](app-insights-data-retention-privacy.md)

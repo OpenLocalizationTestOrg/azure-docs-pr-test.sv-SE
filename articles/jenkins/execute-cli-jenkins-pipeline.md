@@ -1,6 +1,6 @@
 ---
-title: "Köra Azure CLI med Jenkins | Microsoft Docs"
-description: "Lär dig hur du använder Azure CLI för att distribuera en Java-webbapp till Azure i Jenkins Pipeline"
+title: aaaExecute hello Azure CLI med Jenkins | Microsoft Docs
+description: "Lär dig hur toouse Azure CLI toodeploy en Java web app tooAzure i Jenkins Pipeline"
 services: app-service\web
 documentationcenter: 
 author: mlearned
@@ -15,54 +15,54 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 5ca8338d4bf343f08fe70081cff755fa76a126a9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 4bd1e12e6de1f010453ff51c835f84e7361962f4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a><span data-ttu-id="b9f06-103">Distribuera till Azure App Service med Jenkins och Azure CLI</span><span class="sxs-lookup"><span data-stu-id="b9f06-103">Deploy to Azure App Service with Jenkins and the Azure CLI</span></span>
-<span data-ttu-id="b9f06-104">Om du vill distribuera en Java-webbapp till Azure kan du använda Azure CLI i [Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/).</span><span class="sxs-lookup"><span data-stu-id="b9f06-104">To deploy a Java web app to Azure, you can use Azure CLI in [Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/).</span></span> <span data-ttu-id="b9f06-105">I den här självstudiekursen skapar du en CI/CD-pipeline på en Azure VM att:</span><span class="sxs-lookup"><span data-stu-id="b9f06-105">In this tutorial, you create a CI/CD pipeline on an Azure VM including how to:</span></span>
+# <a name="deploy-tooazure-app-service-with-jenkins-and-hello-azure-cli"></a><span data-ttu-id="104e9-103">Distribuera tooAzure App Service med Jenkins och hello Azure CLI</span><span class="sxs-lookup"><span data-stu-id="104e9-103">Deploy tooAzure App Service with Jenkins and hello Azure CLI</span></span>
+<span data-ttu-id="104e9-104">toodeploy tooAzure en Java web app som du kan använda Azure CLI i [Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/).</span><span class="sxs-lookup"><span data-stu-id="104e9-104">toodeploy a Java web app tooAzure, you can use Azure CLI in [Jenkins Pipeline](https://jenkins.io/doc/book/pipeline/).</span></span> <span data-ttu-id="104e9-105">I den här självstudiekursen skapar du en CI/CD-pipeline på en Azure VM att:</span><span class="sxs-lookup"><span data-stu-id="104e9-105">In this tutorial, you create a CI/CD pipeline on an Azure VM including how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="b9f06-106">Skapa en virtuell dator Jenkins</span><span class="sxs-lookup"><span data-stu-id="b9f06-106">Create a Jenkins VM</span></span>
-> * <span data-ttu-id="b9f06-107">Konfigurera Jenkins</span><span class="sxs-lookup"><span data-stu-id="b9f06-107">Configure Jenkins</span></span>
-> * <span data-ttu-id="b9f06-108">Skapa en webbapp i Azure</span><span class="sxs-lookup"><span data-stu-id="b9f06-108">Create a web app in Azure</span></span>
-> * <span data-ttu-id="b9f06-109">Förbereda en GitHub-databas</span><span class="sxs-lookup"><span data-stu-id="b9f06-109">Prepare a GitHub repository</span></span>
-> * <span data-ttu-id="b9f06-110">Skapa Jenkins pipeline</span><span class="sxs-lookup"><span data-stu-id="b9f06-110">Create Jenkins pipeline</span></span>
-> * <span data-ttu-id="b9f06-111">Kör pipeline och verifiera webbappen</span><span class="sxs-lookup"><span data-stu-id="b9f06-111">Run the pipeline and verify the web app</span></span>
+> * <span data-ttu-id="104e9-106">Skapa en virtuell dator Jenkins</span><span class="sxs-lookup"><span data-stu-id="104e9-106">Create a Jenkins VM</span></span>
+> * <span data-ttu-id="104e9-107">Konfigurera Jenkins</span><span class="sxs-lookup"><span data-stu-id="104e9-107">Configure Jenkins</span></span>
+> * <span data-ttu-id="104e9-108">Skapa en webbapp i Azure</span><span class="sxs-lookup"><span data-stu-id="104e9-108">Create a web app in Azure</span></span>
+> * <span data-ttu-id="104e9-109">Förbereda en GitHub-databas</span><span class="sxs-lookup"><span data-stu-id="104e9-109">Prepare a GitHub repository</span></span>
+> * <span data-ttu-id="104e9-110">Skapa Jenkins pipeline</span><span class="sxs-lookup"><span data-stu-id="104e9-110">Create Jenkins pipeline</span></span>
+> * <span data-ttu-id="104e9-111">Kör hello pipeline och verifiera hello-webbprogram</span><span class="sxs-lookup"><span data-stu-id="104e9-111">Run hello pipeline and verify hello web app</span></span>
 
-<span data-ttu-id="b9f06-112">För den här självstudien krävs Azure CLI-version 2.0.4 eller senare.</span><span class="sxs-lookup"><span data-stu-id="b9f06-112">This tutorial requires the Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="b9f06-113">Kör `az --version` för att hitta versionen.</span><span class="sxs-lookup"><span data-stu-id="b9f06-113">To find the version, run `az --version`.</span></span> <span data-ttu-id="b9f06-114">Om du behöver uppgradera kan du läsa [Installera Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="b9f06-114">If you need to upgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span>
+<span data-ttu-id="104e9-112">Den här kursen kräver hello Azure CLI version 2.0.4 eller senare.</span><span class="sxs-lookup"><span data-stu-id="104e9-112">This tutorial requires hello Azure CLI version 2.0.4 or later.</span></span> <span data-ttu-id="104e9-113">toofind hello version, kör `az --version`.</span><span class="sxs-lookup"><span data-stu-id="104e9-113">toofind hello version, run `az --version`.</span></span> <span data-ttu-id="104e9-114">Om du behöver tooupgrade finns [installera Azure CLI 2.0]( /cli/azure/install-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="104e9-114">If you need tooupgrade, see [Install Azure CLI 2.0]( /cli/azure/install-azure-cli).</span></span>
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-and-configure-jenkins-instance"></a><span data-ttu-id="b9f06-115">Skapa och konfigurera Jenkins instans</span><span class="sxs-lookup"><span data-stu-id="b9f06-115">Create and Configure Jenkins instance</span></span>
-<span data-ttu-id="b9f06-116">Om du inte redan har en Jenkins master börja med den [Lösningsmall](install-jenkins-solution-template.md), som innehåller de nödvändiga [Azure-autentiseringsuppgifterna](https://plugins.jenkins.io/azure-credentials) plugin-programmet som standard.</span><span class="sxs-lookup"><span data-stu-id="b9f06-116">If you do not already have a Jenkins master, start with the [Solution Template](install-jenkins-solution-template.md), which includes the required [Azure Credentials](https://plugins.jenkins.io/azure-credentials) plugin by default.</span></span> 
+## <a name="create-and-configure-jenkins-instance"></a><span data-ttu-id="104e9-115">Skapa och konfigurera Jenkins instans</span><span class="sxs-lookup"><span data-stu-id="104e9-115">Create and Configure Jenkins instance</span></span>
+<span data-ttu-id="104e9-116">Om du inte redan har en Jenkins master börja med hello [Lösningsmall](install-jenkins-solution-template.md), som innehåller hello krävs [Azure-autentiseringsuppgifterna](https://plugins.jenkins.io/azure-credentials) plugin-programmet som standard.</span><span class="sxs-lookup"><span data-stu-id="104e9-116">If you do not already have a Jenkins master, start with hello [Solution Template](install-jenkins-solution-template.md), which includes hello required [Azure Credentials](https://plugins.jenkins.io/azure-credentials) plugin by default.</span></span> 
 
-<span data-ttu-id="b9f06-117">Azure-autentiseringsuppgifter plugin-programmet kan du lagra Microsoft Azure service principal autentiseringsuppgifter i Jenkins.</span><span class="sxs-lookup"><span data-stu-id="b9f06-117">The Azure Credential plugin allows you to store Microsoft Azure service principal credentials in Jenkins.</span></span> <span data-ttu-id="b9f06-118">I version 1.2, vi har lagt till stöd så att Jenkins-Pipeline kan hämta autentiseringsuppgifter för Azure.</span><span class="sxs-lookup"><span data-stu-id="b9f06-118">In version 1.2, we added the support so that Jenkins Pipeline can get the Azure credentials.</span></span> 
+<span data-ttu-id="104e9-117">Autentiseringsuppgifter för Azure-plugin-programmet hello tillåter toostore Microsoft Azure service principal autentiseringsuppgifter i Jenkins.</span><span class="sxs-lookup"><span data-stu-id="104e9-117">hello Azure Credential plugin allows you toostore Microsoft Azure service principal credentials in Jenkins.</span></span> <span data-ttu-id="104e9-118">I version 1.2, vi har lagt till stöd för hello så att Jenkins-Pipeline kan få hello autentiseringsuppgifter för Azure.</span><span class="sxs-lookup"><span data-stu-id="104e9-118">In version 1.2, we added hello support so that Jenkins Pipeline can get hello Azure credentials.</span></span> 
 
-<span data-ttu-id="b9f06-119">Se till att du har version 1.2 eller senare:</span><span class="sxs-lookup"><span data-stu-id="b9f06-119">Ensure you have version 1.2 or later:</span></span>
-* <span data-ttu-id="b9f06-120">I instrumentpanelen Jenkins klickar du på **Plugin-hanteraren -> Hantera Jenkins ->** och Sök efter **Azure autentiseringsuppgifter**.</span><span class="sxs-lookup"><span data-stu-id="b9f06-120">Within the Jenkins dashboard, click **Manage Jenkins -> Plugin Manager ->** and search for **Azure Credential**.</span></span> 
-* <span data-ttu-id="b9f06-121">Uppdatera plugin-programmet om versionen är tidigare än 1.2.</span><span class="sxs-lookup"><span data-stu-id="b9f06-121">Update the plugin if the version is earlier than 1.2.</span></span>
+<span data-ttu-id="104e9-119">Se till att du har version 1.2 eller senare:</span><span class="sxs-lookup"><span data-stu-id="104e9-119">Ensure you have version 1.2 or later:</span></span>
+* <span data-ttu-id="104e9-120">Inom hello Jenkins instrumentpanelen, klickar du på **Plugin-hanteraren -> Hantera Jenkins ->** och Sök efter **Azure autentiseringsuppgifter**.</span><span class="sxs-lookup"><span data-stu-id="104e9-120">Within hello Jenkins dashboard, click **Manage Jenkins -> Plugin Manager ->** and search for **Azure Credential**.</span></span> 
+* <span data-ttu-id="104e9-121">Uppdatera hello plugin om hello-versionen är tidigare än 1.2.</span><span class="sxs-lookup"><span data-stu-id="104e9-121">Update hello plugin if hello version is earlier than 1.2.</span></span>
 
-<span data-ttu-id="b9f06-122">JDK Java och Maven också krävs i Jenkins master.</span><span class="sxs-lookup"><span data-stu-id="b9f06-122">Java JDK and Maven are also required in the Jenkins master.</span></span> <span data-ttu-id="b9f06-123">För att installera, logga in på Jenkins master med SSH och kör följande kommandon:</span><span class="sxs-lookup"><span data-stu-id="b9f06-123">To install, log in to Jenkins master using SSH and run the following commands:</span></span>
+<span data-ttu-id="104e9-122">JDK Java och Maven också krävs i hello Jenkins master.</span><span class="sxs-lookup"><span data-stu-id="104e9-122">Java JDK and Maven are also required in hello Jenkins master.</span></span> <span data-ttu-id="104e9-123">tooinstall, logga in tooJenkins master med SSH och kör följande kommandon hello:</span><span class="sxs-lookup"><span data-stu-id="104e9-123">tooinstall, log in tooJenkins master using SSH and run hello following commands:</span></span>
 ```bash
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
 ```
 
-## <a name="add-azure-service-principal-to-jenkins-credential"></a><span data-ttu-id="b9f06-124">Lägg till Azure-tjänstens huvudnamn i Jenkins autentiseringsuppgifter</span><span class="sxs-lookup"><span data-stu-id="b9f06-124">Add Azure service principal to Jenkins credential</span></span>
+## <a name="add-azure-service-principal-toojenkins-credential"></a><span data-ttu-id="104e9-124">Lägg till Azure-tjänstens huvudnamn tooJenkins autentiseringsuppgift</span><span class="sxs-lookup"><span data-stu-id="104e9-124">Add Azure service principal tooJenkins credential</span></span>
 
-<span data-ttu-id="b9f06-125">Azure autentiseringsuppgifter krävs för att köra Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="b9f06-125">An Azure credential is needed to execute Azure CLI.</span></span>
+<span data-ttu-id="104e9-125">En Azure-autentiseringsuppgift är nödvändiga tooexecute Azure CLI.</span><span class="sxs-lookup"><span data-stu-id="104e9-125">An Azure credential is needed tooexecute Azure CLI.</span></span>
 
-* <span data-ttu-id="b9f06-126">I instrumentpanelen Jenkins klickar du på **autentiseringsuppgifter -> System ->**.</span><span class="sxs-lookup"><span data-stu-id="b9f06-126">Within the Jenkins dashboard, click **Credentials -> System ->**.</span></span> <span data-ttu-id="b9f06-127">Klicka på **globala credentials(unrestricted)**.</span><span class="sxs-lookup"><span data-stu-id="b9f06-127">Click **Global credentials(unrestricted)**.</span></span>
-* <span data-ttu-id="b9f06-128">Klicka på **lägga till autentiseringsuppgifter** att lägga till en [Microsoft Azure-tjänstens huvudnamn](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) genom att fylla i prenumerations-ID, klient-ID, Klienthemligheten och OAuth 2.0-Token för slutpunkt.</span><span class="sxs-lookup"><span data-stu-id="b9f06-128">Click **Add Credentials** to add a [Microsoft Azure service principal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) by filling out the Subscription ID, Client ID, Client Secret, and OAuth 2.0 Token Endpoint.</span></span> <span data-ttu-id="b9f06-129">Ange ett ID för användning i senare steg.</span><span class="sxs-lookup"><span data-stu-id="b9f06-129">Provide an ID for use in subsequent step.</span></span>
+* <span data-ttu-id="104e9-126">Inom hello Jenkins instrumentpanelen, klickar du på **autentiseringsuppgifter -> System ->**.</span><span class="sxs-lookup"><span data-stu-id="104e9-126">Within hello Jenkins dashboard, click **Credentials -> System ->**.</span></span> <span data-ttu-id="104e9-127">Klicka på **globala credentials(unrestricted)**.</span><span class="sxs-lookup"><span data-stu-id="104e9-127">Click **Global credentials(unrestricted)**.</span></span>
+* <span data-ttu-id="104e9-128">Klicka på **lägga till autentiseringsuppgifter** tooadd en [Microsoft Azure-tjänstens huvudnamn](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) genom att fylla i hello prenumerations-ID, klient-ID, Klienthemligheten och OAuth 2.0-Token för slutpunkt.</span><span class="sxs-lookup"><span data-stu-id="104e9-128">Click **Add Credentials** tooadd a [Microsoft Azure service principal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) by filling out hello Subscription ID, Client ID, Client Secret, and OAuth 2.0 Token Endpoint.</span></span> <span data-ttu-id="104e9-129">Ange ett ID för användning i senare steg.</span><span class="sxs-lookup"><span data-stu-id="104e9-129">Provide an ID for use in subsequent step.</span></span>
 
 ![Lägga till autentiseringsuppgifter](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 
-## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a><span data-ttu-id="b9f06-131">Skapa en Azure App Service för att distribuera Java-webbapp</span><span class="sxs-lookup"><span data-stu-id="b9f06-131">Create an Azure App Service for deploying the Java web app</span></span>
+## <a name="create-an-azure-app-service-for-deploying-hello-java-web-app"></a><span data-ttu-id="104e9-131">Skapa en Azure App Service för att distribuera hello Java-webbapp</span><span class="sxs-lookup"><span data-stu-id="104e9-131">Create an Azure App Service for deploying hello Java web app</span></span>
 
-<span data-ttu-id="b9f06-132">Skapa en Azure App Service-plan med den **lediga** priser nivå med hjälp av den [az programtjänstplan skapa](/cli/azure/appservice/plan#create) CLI-kommando.</span><span class="sxs-lookup"><span data-stu-id="b9f06-132">Create an Azure App Service plan with the **FREE** pricing tier using the  [az appservice plan create](/cli/azure/appservice/plan#create) CLI command.</span></span> <span data-ttu-id="b9f06-133">Programtjänstplan definierar de fysiska resurserna som används som värd för dina appar.</span><span class="sxs-lookup"><span data-stu-id="b9f06-133">The appservice plan defines the physical resources used to host your apps.</span></span> <span data-ttu-id="b9f06-134">Alla program som har tilldelats en programtjänstplan dela dessa resurser, så att du kan spara kostnader när värd för flera appar.</span><span class="sxs-lookup"><span data-stu-id="b9f06-134">All applications assigned to an appservice plan share these resources, allowing you to save cost when hosting multiple apps.</span></span> 
+<span data-ttu-id="104e9-132">Skapa en Azure App Service-plan med hello **lediga** prisnivån med hello [az programtjänstplan skapa](/cli/azure/appservice/plan#create) CLI-kommando.</span><span class="sxs-lookup"><span data-stu-id="104e9-132">Create an Azure App Service plan with hello **FREE** pricing tier using hello  [az appservice plan create](/cli/azure/appservice/plan#create) CLI command.</span></span> <span data-ttu-id="104e9-133">Hej programtjänstplan definierar hello fysiska resurser som används toohost dina appar.</span><span class="sxs-lookup"><span data-stu-id="104e9-133">hello appservice plan defines hello physical resources used toohost your apps.</span></span> <span data-ttu-id="104e9-134">Alla program som tilldelats tooan programtjänstplan dela dessa resurser, så att du toosave kostnad när värd för flera appar.</span><span class="sxs-lookup"><span data-stu-id="104e9-134">All applications assigned tooan appservice plan share these resources, allowing you toosave cost when hosting multiple apps.</span></span> 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -71,7 +71,7 @@ az appservice plan create \
     --sku FREE
 ```
 
-<span data-ttu-id="b9f06-135">När planen är klar, visas Azure CLI liknande utdata i följande exempel:</span><span class="sxs-lookup"><span data-stu-id="b9f06-135">When the plan is ready, the Azure CLI shows similar output to the following example:</span></span>
+<span data-ttu-id="104e9-135">När hello plan är klar, utdata hello Azure CLI visar liknande toohello följande exempel:</span><span class="sxs-lookup"><span data-stu-id="104e9-135">When hello plan is ready, hello Azure CLI shows similar output toohello following example:</span></span>
 
 ```json
 { 
@@ -89,9 +89,9 @@ az appservice plan create \
 } 
 ``` 
 
-### <a name="create-an-azure-web-app"></a><span data-ttu-id="b9f06-136">Skapa en Azure-webbapp</span><span class="sxs-lookup"><span data-stu-id="b9f06-136">Create an Azure Web app</span></span>
+### <a name="create-an-azure-web-app"></a><span data-ttu-id="104e9-136">Skapa en Azure-webbapp</span><span class="sxs-lookup"><span data-stu-id="104e9-136">Create an Azure Web app</span></span>
 
- <span data-ttu-id="b9f06-137">Använd den [az webapp skapa](/cli/azure/appservice/web#create) CLI-kommando för att skapa en web app definition i den `myAppServicePlan` App Service-plan.</span><span class="sxs-lookup"><span data-stu-id="b9f06-137">Use the [az webapp create](/cli/azure/appservice/web#create) CLI command to create a web app definition in the `myAppServicePlan` App Service plan.</span></span> <span data-ttu-id="b9f06-138">Web app definitionen innehåller en URL för att få åtkomst till ditt program med och konfigurerar du flera alternativ för att distribuera din kod till Azure.</span><span class="sxs-lookup"><span data-stu-id="b9f06-138">The web app definition provides a URL to access your application with and configures several options to deploy your code to Azure.</span></span> 
+ <span data-ttu-id="104e9-137">Använd hello [az webapp skapa](/cli/azure/appservice/web#create) CLI kommandot toocreate en web app definition i hello `myAppServicePlan` App Service-plan.</span><span class="sxs-lookup"><span data-stu-id="104e9-137">Use hello [az webapp create](/cli/azure/appservice/web#create) CLI command toocreate a web app definition in hello `myAppServicePlan` App Service plan.</span></span> <span data-ttu-id="104e9-138">hello web app definition innehåller en URL-tooaccess ditt program med och konfigurerar flera alternativ toodeploy tooAzure din kod.</span><span class="sxs-lookup"><span data-stu-id="104e9-138">hello web app definition provides a URL tooaccess your application with and configures several options toodeploy your code tooAzure.</span></span> 
 
 ```azurecli-interactive
 az webapp create \
@@ -100,9 +100,9 @@ az webapp create \
     --plan myAppServicePlan
 ```
 
-<span data-ttu-id="b9f06-139">Ersätt den `<app_name>` med dina egna unika namn.</span><span class="sxs-lookup"><span data-stu-id="b9f06-139">Substitute the `<app_name>` placeholder with your own unique app name.</span></span> <span data-ttu-id="b9f06-140">Detta unika namn är en del av standarddomännamnet för webbprogram, så att namnet måste vara unikt över alla program i Azure.</span><span class="sxs-lookup"><span data-stu-id="b9f06-140">This unique name is part of the default domain name for the web app, so the name needs to be unique across all apps in Azure.</span></span> <span data-ttu-id="b9f06-141">Du kan mappa en anpassad domän namnpost till webbprogrammet innan du ansluter till dina användare.</span><span class="sxs-lookup"><span data-stu-id="b9f06-141">You can map a custom domain name entry to the web app before you expose it to your users.</span></span>
+<span data-ttu-id="104e9-139">Ersätt hello `<app_name>` med dina egna unika namn.</span><span class="sxs-lookup"><span data-stu-id="104e9-139">Substitute hello `<app_name>` placeholder with your own unique app name.</span></span> <span data-ttu-id="104e9-140">Detta unika namn är en del av hello standarddomännamnet för hello webbprogrammet så hello namn måste toobe unikt över alla program i Azure.</span><span class="sxs-lookup"><span data-stu-id="104e9-140">This unique name is part of hello default domain name for hello web app, so hello name needs toobe unique across all apps in Azure.</span></span> <span data-ttu-id="104e9-141">Du kan mappa ett webbprogram för domänen namnet post toohello innan exponera tooyour användare.</span><span class="sxs-lookup"><span data-stu-id="104e9-141">You can map a custom domain name entry toohello web app before you expose it tooyour users.</span></span>
 
-<span data-ttu-id="b9f06-142">När web app definitionen är klar, visas Azure CLI information liknar följande exempel:</span><span class="sxs-lookup"><span data-stu-id="b9f06-142">When the web app definition is ready, the Azure CLI shows information similar to the following example:</span></span> 
+<span data-ttu-id="104e9-142">När hello web app definition är klar visar hello Azure CLI information liknande toohello följande exempel:</span><span class="sxs-lookup"><span data-stu-id="104e9-142">When hello web app definition is ready, hello Azure CLI shows information similar toohello following example:</span></span> 
 
 ```json 
 {
@@ -119,11 +119,11 @@ az webapp create \
 }
 ```
 
-### <a name="configure-java"></a><span data-ttu-id="b9f06-143">Konfigurera Java</span><span class="sxs-lookup"><span data-stu-id="b9f06-143">Configure Java</span></span> 
+### <a name="configure-java"></a><span data-ttu-id="104e9-143">Konfigurera Java</span><span class="sxs-lookup"><span data-stu-id="104e9-143">Configure Java</span></span> 
 
-<span data-ttu-id="b9f06-144">Ställa in Java runtime-konfiguration som din app behöver med den [uppdatering az apptjänst web-config](/cli/azure/appservice/web/config#update) kommando.</span><span class="sxs-lookup"><span data-stu-id="b9f06-144">Set up the Java runtime configuration that your app needs with the  [az appservice web config update](/cli/azure/appservice/web/config#update) command.</span></span>
+<span data-ttu-id="104e9-144">Konfigurera hello Java runtime konfiguration som din app behöver med hello [uppdatering az apptjänst web-config](/cli/azure/appservice/web/config#update) kommando.</span><span class="sxs-lookup"><span data-stu-id="104e9-144">Set up hello Java runtime configuration that your app needs with hello  [az appservice web config update](/cli/azure/appservice/web/config#update) command.</span></span>
 
-<span data-ttu-id="b9f06-145">Följande kommando konfigurerar webbprogram för att köra på en senaste Java 8 JDK och [Apache Tomcat](http://tomcat.apache.org/) 8.0.</span><span class="sxs-lookup"><span data-stu-id="b9f06-145">The following command configures the web app to run on a recent Java 8 JDK and [Apache Tomcat](http://tomcat.apache.org/) 8.0.</span></span>
+<span data-ttu-id="104e9-145">hello följande kommando konfigurerar hello web app toorun på en senaste Java 8 JDK och [Apache Tomcat](http://tomcat.apache.org/) 8.0.</span><span class="sxs-lookup"><span data-stu-id="104e9-145">hello following command configures hello web app toorun on a recent Java 8 JDK and [Apache Tomcat](http://tomcat.apache.org/) 8.0.</span></span>
 
 ```azurecli-interactive
 az webapp config set \ 
@@ -134,79 +134,79 @@ az webapp config set \
     --java-container-version 8.0
 ```
 
-## <a name="prepare-a-github-repository"></a><span data-ttu-id="b9f06-146">Förbereda en GitHub-databas</span><span class="sxs-lookup"><span data-stu-id="b9f06-146">Prepare a GitHub Repository</span></span>
-<span data-ttu-id="b9f06-147">Öppna den [enkel Java-Webbapp för Azure](https://github.com/azure-devops/javawebappsample) lagringsplatsen.</span><span class="sxs-lookup"><span data-stu-id="b9f06-147">Open the [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) repo.</span></span> <span data-ttu-id="b9f06-148">Om du vill duplicera lagringsplatsen till ditt GitHub-konto, klickar du på den **Återställningsförgreningar** -knappen i det övre högra hörnet.</span><span class="sxs-lookup"><span data-stu-id="b9f06-148">To fork the repo to your own GitHub account, click the **Fork** button in the top right-hand corner.</span></span>
+## <a name="prepare-a-github-repository"></a><span data-ttu-id="104e9-146">Förbereda en GitHub-databas</span><span class="sxs-lookup"><span data-stu-id="104e9-146">Prepare a GitHub Repository</span></span>
+<span data-ttu-id="104e9-147">Öppna hello [enkel Java-Webbapp för Azure](https://github.com/azure-devops/javawebappsample) lagringsplatsen.</span><span class="sxs-lookup"><span data-stu-id="104e9-147">Open hello [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) repo.</span></span> <span data-ttu-id="104e9-148">toofork hello lagringsplatsen tooyour äger GitHub-konto, klickar du på hello **Återställningsförgreningar** knapp i hello övre högra hörnet.</span><span class="sxs-lookup"><span data-stu-id="104e9-148">toofork hello repo tooyour own GitHub account, click hello **Fork** button in hello top right-hand corner.</span></span>
 
-* <span data-ttu-id="b9f06-149">Öppna i GitHub-webbgränssnittet, **Jenkinsfile** fil.</span><span class="sxs-lookup"><span data-stu-id="b9f06-149">In GitHub web UI, open **Jenkinsfile** file.</span></span> <span data-ttu-id="b9f06-150">Klicka på pennikonen om du vill redigera den här filen om du vill uppdatera den resursgrupp och namnet på ditt webbprogram på rad 20 och 21 respektive.</span><span class="sxs-lookup"><span data-stu-id="b9f06-150">Click the pencil icon to edit this file to update the resource group and name of your web app on line 20 and 21 respectively.</span></span>
+* <span data-ttu-id="104e9-149">Öppna i GitHub-webbgränssnittet, **Jenkinsfile** fil.</span><span class="sxs-lookup"><span data-stu-id="104e9-149">In GitHub web UI, open **Jenkinsfile** file.</span></span> <span data-ttu-id="104e9-150">Klicka på hello penna ikonen tooedit den här filen tooupdate hello resursgruppens namn och namnet på ditt webbprogram på rad 20 och 21 respektive.</span><span class="sxs-lookup"><span data-stu-id="104e9-150">Click hello pencil icon tooedit this file tooupdate hello resource group and name of your web app on line 20 and 21 respectively.</span></span>
 
 ```java
 def resourceGroup = '<myResourceGroup>'
 def webAppName = '<app_name>'
 ```
 
-* <span data-ttu-id="b9f06-151">Ändra raden 23 att uppdatera uppgifts-ID i Jenkins-instans</span><span class="sxs-lookup"><span data-stu-id="b9f06-151">Change line 23 to update credential ID in your Jenkins instance</span></span>
+* <span data-ttu-id="104e9-151">Ändra raden 23 tooupdate uppgifts-ID i Jenkins-instans</span><span class="sxs-lookup"><span data-stu-id="104e9-151">Change line 23 tooupdate credential ID in your Jenkins instance</span></span>
 
 ```java
 withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ```
 
-## <a name="create-jenkins-pipeline"></a><span data-ttu-id="b9f06-152">Skapa Jenkins pipeline</span><span class="sxs-lookup"><span data-stu-id="b9f06-152">Create Jenkins pipeline</span></span>
-<span data-ttu-id="b9f06-153">Öppna Jenkins i en webbläsare, klicka på **nytt objekt**.</span><span class="sxs-lookup"><span data-stu-id="b9f06-153">Open Jenkins in a web browser, click **New Item**.</span></span> 
+## <a name="create-jenkins-pipeline"></a><span data-ttu-id="104e9-152">Skapa Jenkins pipeline</span><span class="sxs-lookup"><span data-stu-id="104e9-152">Create Jenkins pipeline</span></span>
+<span data-ttu-id="104e9-153">Öppna Jenkins i en webbläsare, klicka på **nytt objekt**.</span><span class="sxs-lookup"><span data-stu-id="104e9-153">Open Jenkins in a web browser, click **New Item**.</span></span> 
 
-* <span data-ttu-id="b9f06-154">Ange ett namn för jobbet och välj **Pipeline**.</span><span class="sxs-lookup"><span data-stu-id="b9f06-154">Provide a name for the job and select **Pipeline**.</span></span> <span data-ttu-id="b9f06-155">Klicka på **OK**.</span><span class="sxs-lookup"><span data-stu-id="b9f06-155">Click **OK**.</span></span>
-* <span data-ttu-id="b9f06-156">Klicka på den **Pipeline** fliken nästa.</span><span class="sxs-lookup"><span data-stu-id="b9f06-156">Click the **Pipeline** tab next.</span></span> 
-* <span data-ttu-id="b9f06-157">För **Definition**väljer **Pipeline-skriptet från SCM**.</span><span class="sxs-lookup"><span data-stu-id="b9f06-157">For **Definition**, select **Pipeline script from SCM**.</span></span>
-* <span data-ttu-id="b9f06-158">För **SCM**väljer **Git**.</span><span class="sxs-lookup"><span data-stu-id="b9f06-158">For **SCM**, select **Git**.</span></span>
-* <span data-ttu-id="b9f06-159">Ange GitHub-URL för din andelen vridvuxna lagringsplatsen: https:\<din andelen vridvuxna lagringsplatsen\>.git</span><span class="sxs-lookup"><span data-stu-id="b9f06-159">Enter the GitHub URL for your forked repo: https:\<your forked repo\>.git</span></span>
-* <span data-ttu-id="b9f06-160">Klicka på **spara**</span><span class="sxs-lookup"><span data-stu-id="b9f06-160">Click **Save**</span></span>
+* <span data-ttu-id="104e9-154">Ange ett namn för hello jobbet och välja **Pipeline**.</span><span class="sxs-lookup"><span data-stu-id="104e9-154">Provide a name for hello job and select **Pipeline**.</span></span> <span data-ttu-id="104e9-155">Klicka på **OK**.</span><span class="sxs-lookup"><span data-stu-id="104e9-155">Click **OK**.</span></span>
+* <span data-ttu-id="104e9-156">Klicka på hello **Pipeline** fliken nästa.</span><span class="sxs-lookup"><span data-stu-id="104e9-156">Click hello **Pipeline** tab next.</span></span> 
+* <span data-ttu-id="104e9-157">För **Definition**väljer **Pipeline-skriptet från SCM**.</span><span class="sxs-lookup"><span data-stu-id="104e9-157">For **Definition**, select **Pipeline script from SCM**.</span></span>
+* <span data-ttu-id="104e9-158">För **SCM**väljer **Git**.</span><span class="sxs-lookup"><span data-stu-id="104e9-158">For **SCM**, select **Git**.</span></span>
+* <span data-ttu-id="104e9-159">Ange hello GitHub-URL för din andelen vridvuxna lagringsplatsen: https:\<din andelen vridvuxna lagringsplatsen\>.git</span><span class="sxs-lookup"><span data-stu-id="104e9-159">Enter hello GitHub URL for your forked repo: https:\<your forked repo\>.git</span></span>
+* <span data-ttu-id="104e9-160">Klicka på **spara**</span><span class="sxs-lookup"><span data-stu-id="104e9-160">Click **Save**</span></span>
 
-## <a name="test-your-pipeline"></a><span data-ttu-id="b9f06-161">Testa din pipeline</span><span class="sxs-lookup"><span data-stu-id="b9f06-161">Test your pipeline</span></span>
-* <span data-ttu-id="b9f06-162">Gå till pipelinen som du skapade **skapa nu**</span><span class="sxs-lookup"><span data-stu-id="b9f06-162">Go to the pipeline you created, click **Build Now**</span></span>
-* <span data-ttu-id="b9f06-163">En version ska lyckas i några sekunder och du kan gå att bygga och klicka på **konsolens utdata** att visa detaljer</span><span class="sxs-lookup"><span data-stu-id="b9f06-163">A build should succeed in a few seconds, and you can go to the build and click **Console Output** to see the details</span></span>
+## <a name="test-your-pipeline"></a><span data-ttu-id="104e9-161">Testa din pipeline</span><span class="sxs-lookup"><span data-stu-id="104e9-161">Test your pipeline</span></span>
+* <span data-ttu-id="104e9-162">Gå toohello pipeline som du skapade **skapa nu**</span><span class="sxs-lookup"><span data-stu-id="104e9-162">Go toohello pipeline you created, click **Build Now**</span></span>
+* <span data-ttu-id="104e9-163">En version ska lyckas i några sekunder och du kan gå toohello build och klicka på **konsolens utdata** toosee hello information</span><span class="sxs-lookup"><span data-stu-id="104e9-163">A build should succeed in a few seconds, and you can go toohello build and click **Console Output** toosee hello details</span></span>
 
-## <a name="verify-your-web-app"></a><span data-ttu-id="b9f06-164">Kontrollera ditt webbprogram</span><span class="sxs-lookup"><span data-stu-id="b9f06-164">Verify your web app</span></span>
-<span data-ttu-id="b9f06-165">Om du vill verifiera WAR distribuerats filen till ditt webbprogram.</span><span class="sxs-lookup"><span data-stu-id="b9f06-165">To verify the WAR file is deployed successfully to your web app.</span></span> <span data-ttu-id="b9f06-166">Öppna en webbläsare:</span><span class="sxs-lookup"><span data-stu-id="b9f06-166">Open a web browser:</span></span>
+## <a name="verify-your-web-app"></a><span data-ttu-id="104e9-164">Kontrollera ditt webbprogram</span><span class="sxs-lookup"><span data-stu-id="104e9-164">Verify your web app</span></span>
+<span data-ttu-id="104e9-165">tooverify hello WAR-filen har distribueras tooyour webbprogram.</span><span class="sxs-lookup"><span data-stu-id="104e9-165">tooverify hello WAR file is deployed successfully tooyour web app.</span></span> <span data-ttu-id="104e9-166">Öppna en webbläsare:</span><span class="sxs-lookup"><span data-stu-id="104e9-166">Open a web browser:</span></span>
 
-* <span data-ttu-id="b9f06-167">Gå till http://&lt;programnamn >.azurewebsites.net/api/calculator/ping</span><span class="sxs-lookup"><span data-stu-id="b9f06-167">Go to http://&lt;app_name>.azurewebsites.net/api/calculator/ping</span></span>  
-<span data-ttu-id="b9f06-168">Du ser:</span><span class="sxs-lookup"><span data-stu-id="b9f06-168">You see:</span></span>
+* <span data-ttu-id="104e9-167">Gå toohttp: / /&lt;programnamn >.azurewebsites.net/api/calculator/ping</span><span class="sxs-lookup"><span data-stu-id="104e9-167">Go toohttp://&lt;app_name>.azurewebsites.net/api/calculator/ping</span></span>  
+<span data-ttu-id="104e9-168">Du ser:</span><span class="sxs-lookup"><span data-stu-id="104e9-168">You see:</span></span>
 
-        Welcome to Java Web App!!! This is updated!
+        Welcome tooJava Web App!!! This is updated!
         Sun Jun 17 16:39:10 UTC 2017
 
-* <span data-ttu-id="b9f06-169">Gå till http://&lt;appnamn >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (ersätta &lt;x > och &lt;y > med några siffror) att hämta summan av x och y</span><span class="sxs-lookup"><span data-stu-id="b9f06-169">Go to http://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (substitute &lt;x> and &lt;y> with any numbers) to get the sum of x and y</span></span>
+* <span data-ttu-id="104e9-169">Gå toohttp: / /&lt;appnamn >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (ersätta &lt;x > och &lt;y > med några siffror) tooget hello summan av x och y</span><span class="sxs-lookup"><span data-stu-id="104e9-169">Go toohttp://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (substitute &lt;x> and &lt;y> with any numbers) tooget hello sum of x and y</span></span>
 
 ![Kalkylatorn: Lägg till](./media/execute-cli-jenkins-pipeline/calculator-add.png)
 
-## <a name="deploy-to-azure-web-app-on-linux"></a><span data-ttu-id="b9f06-171">Distribuera till Azure-Webbapp på Linux</span><span class="sxs-lookup"><span data-stu-id="b9f06-171">Deploy to Azure Web App on Linux</span></span>
-<span data-ttu-id="b9f06-172">Nu när du vet hur du använder Azure CLI i Jenkins-pipeline kan du ändra skriptet för att distribuera till en Azure-Webbapp på Linux.</span><span class="sxs-lookup"><span data-stu-id="b9f06-172">Now that you know how to use Azure CLI in your Jenkins pipeline, you can modify the script to deploy to an Azure Web App on Linux.</span></span>
+## <a name="deploy-tooazure-web-app-on-linux"></a><span data-ttu-id="104e9-171">Distribuera tooAzure webbprogram på Linux</span><span class="sxs-lookup"><span data-stu-id="104e9-171">Deploy tooAzure Web App on Linux</span></span>
+<span data-ttu-id="104e9-172">Nu när du vet hur toouse Azure CLI i din Jenkins pipeline, kan du ändra hello skriptet toodeploy tooan Azure Web App på Linux.</span><span class="sxs-lookup"><span data-stu-id="104e9-172">Now that you know how toouse Azure CLI in your Jenkins pipeline, you can modify hello script toodeploy tooan Azure Web App on Linux.</span></span>
 
-<span data-ttu-id="b9f06-173">Web App på Linux stöder olika sätt att göra distribution, vilket är att använda Docker.</span><span class="sxs-lookup"><span data-stu-id="b9f06-173">Web App on Linux supports a different way to do the deployment, which is to use Docker.</span></span> <span data-ttu-id="b9f06-174">Om du vill distribuera, som du behöver ange en Dockerfile som ditt webbprogram med tjänsten runtime-paket till en Docker-bild.</span><span class="sxs-lookup"><span data-stu-id="b9f06-174">To deploy, you need to provide a Dockerfile that packages your web app with service runtime into a Docker image.</span></span> <span data-ttu-id="b9f06-175">Plugin-programmet skapa avbildningen, push-installera den en Docker-registret och därefter distribuera avbildningen till ditt webbprogram.</span><span class="sxs-lookup"><span data-stu-id="b9f06-175">The plugin will then build the image, push it to a Docker registry and deploy the image to your web app.</span></span>
+<span data-ttu-id="104e9-173">Web App på Linux stöder en annorlunda sätt toodo hello distribution, vilket är toouse Docker.</span><span class="sxs-lookup"><span data-stu-id="104e9-173">Web App on Linux supports a different way toodo hello deployment, which is toouse Docker.</span></span> <span data-ttu-id="104e9-174">toodeploy, behöver du tooprovide en Dockerfile som ditt webbprogram med tjänsten runtime-paket till en Docker-bild.</span><span class="sxs-lookup"><span data-stu-id="104e9-174">toodeploy, you need tooprovide a Dockerfile that packages your web app with service runtime into a Docker image.</span></span> <span data-ttu-id="104e9-175">hello-plugin-programmet skapar hello-avbildning, push-installera den tooa Docker registret och därefter distribuera hello avbildningen tooyour webbapp.</span><span class="sxs-lookup"><span data-stu-id="104e9-175">hello plugin will then build hello image, push it tooa Docker registry and deploy hello image tooyour web app.</span></span>
 
-* <span data-ttu-id="b9f06-176">Följ stegen [här](/azure/app-service-web/app-service-linux-how-to-create-web-app) att skapa en Azure-Webbapp som körs på Linux.</span><span class="sxs-lookup"><span data-stu-id="b9f06-176">Follow the steps [here](/azure/app-service-web/app-service-linux-how-to-create-web-app) to create an Azure Web App running on Linux.</span></span>
-* <span data-ttu-id="b9f06-177">Installera Docker på Jenkins-instans genom att följa anvisningarna i det här [artikel](https://docs.docker.com/engine/installation/linux/ubuntu/).</span><span class="sxs-lookup"><span data-stu-id="b9f06-177">Install Docker on your Jenkins instance by following the instructions in this [article](https://docs.docker.com/engine/installation/linux/ubuntu/).</span></span>
-* <span data-ttu-id="b9f06-178">Skapa en behållare registret i Azure-portalen med hjälp av stegen [här](/azure/container-registry/container-registry-get-started-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="b9f06-178">Create a Container Registry in the Azure portal by using the steps [here](/azure/container-registry/container-registry-get-started-azure-cli).</span></span>
-* <span data-ttu-id="b9f06-179">I samma [enkel Java-Webbapp för Azure](https://github.com/azure-devops/javawebappsample) lagringsplatsen forked du kan redigera den **Jenkinsfile2** fil:</span><span class="sxs-lookup"><span data-stu-id="b9f06-179">In the same [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) repo you forked, edit the **Jenkinsfile2** file:</span></span>
-    * <span data-ttu-id="b9f06-180">Rad 18 21, uppdatera till namnen på din resursgrupp, webbprogram och ACR respektive.</span><span class="sxs-lookup"><span data-stu-id="b9f06-180">Line 18-21, update to the names of your resource group, web app, and ACR respectively.</span></span> 
+* <span data-ttu-id="104e9-176">Gör hello [här](/azure/app-service-web/app-service-linux-how-to-create-web-app) toocreate en Azure-Webbapp som körs på Linux.</span><span class="sxs-lookup"><span data-stu-id="104e9-176">Follow hello steps [here](/azure/app-service-web/app-service-linux-how-to-create-web-app) toocreate an Azure Web App running on Linux.</span></span>
+* <span data-ttu-id="104e9-177">Installera Docker på Jenkins-instans genom att följa hello instruktionerna i det här [artikel](https://docs.docker.com/engine/installation/linux/ubuntu/).</span><span class="sxs-lookup"><span data-stu-id="104e9-177">Install Docker on your Jenkins instance by following hello instructions in this [article](https://docs.docker.com/engine/installation/linux/ubuntu/).</span></span>
+* <span data-ttu-id="104e9-178">Skapa en behållare registret hello Azure-portalen med hjälp av hello steg [här](/azure/container-registry/container-registry-get-started-azure-cli).</span><span class="sxs-lookup"><span data-stu-id="104e9-178">Create a Container Registry in hello Azure portal by using hello steps [here](/azure/container-registry/container-registry-get-started-azure-cli).</span></span>
+* <span data-ttu-id="104e9-179">Hej i samma [enkel Java-Webbapp för Azure](https://github.com/azure-devops/javawebappsample) lagringsplatsen du forked redigera hello **Jenkinsfile2** fil:</span><span class="sxs-lookup"><span data-stu-id="104e9-179">In hello same [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) repo you forked, edit hello **Jenkinsfile2** file:</span></span>
+    * <span data-ttu-id="104e9-180">Rad 18 21, uppdatera toohello namn på din resursgrupp, webbprogram och ACR respektive.</span><span class="sxs-lookup"><span data-stu-id="104e9-180">Line 18-21, update toohello names of your resource group, web app, and ACR respectively.</span></span> 
         ```
         def webAppResourceGroup = '<myResourceGroup>'
         def webAppName = '<app_name>'
         def acrName = '<myRegistry>'
         ```
 
-    * <span data-ttu-id="b9f06-181">Raden 24, uppdatera \<azsrvprincipal\> till din uppgifts-ID</span><span class="sxs-lookup"><span data-stu-id="b9f06-181">Line 24, update \<azsrvprincipal\> to your credential ID</span></span>
+    * <span data-ttu-id="104e9-181">Raden 24, uppdatera \<azsrvprincipal\> tooyour uppgifts-ID</span><span class="sxs-lookup"><span data-stu-id="104e9-181">Line 24, update \<azsrvprincipal\> tooyour credential ID</span></span>
         ```
         withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
         ```
 
-* <span data-ttu-id="b9f06-182">Skapa en ny Jenkins pipeline som du när du distribuerar till Azure-webbapp i Windows, men den här gången använder **Jenkinsfile2** i stället.</span><span class="sxs-lookup"><span data-stu-id="b9f06-182">Create a new Jenkins pipeline as you did when deploying to Azure web app in Windows, only this time, use **Jenkinsfile2** instead.</span></span>
-* <span data-ttu-id="b9f06-183">Kör ditt nya jobb.</span><span class="sxs-lookup"><span data-stu-id="b9f06-183">Run your new job.</span></span>
-* <span data-ttu-id="b9f06-184">Om du vill verifiera i Azure CLI kör du:</span><span class="sxs-lookup"><span data-stu-id="b9f06-184">To verify, in Azure CLI, run:</span></span>
+* <span data-ttu-id="104e9-182">Skapa en ny Jenkins pipeline som du gjorde när du distribuerar tooAzure webbapp i Windows, men den här gången Använd **Jenkinsfile2** i stället.</span><span class="sxs-lookup"><span data-stu-id="104e9-182">Create a new Jenkins pipeline as you did when deploying tooAzure web app in Windows, only this time, use **Jenkinsfile2** instead.</span></span>
+* <span data-ttu-id="104e9-183">Kör ditt nya jobb.</span><span class="sxs-lookup"><span data-stu-id="104e9-183">Run your new job.</span></span>
+* <span data-ttu-id="104e9-184">tooverify i Azure CLI kör:</span><span class="sxs-lookup"><span data-stu-id="104e9-184">tooverify, in Azure CLI, run:</span></span>
 
     ```
     az acr repository list -n <myRegistry> -o json
     ```
 
-    <span data-ttu-id="b9f06-185">Du får följande resultat:</span><span class="sxs-lookup"><span data-stu-id="b9f06-185">You get the following result:</span></span>
+    <span data-ttu-id="104e9-185">Du får hello följande resultat:</span><span class="sxs-lookup"><span data-stu-id="104e9-185">You get hello following result:</span></span>
     
     ```
     [
@@ -214,20 +214,20 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
     ]
     ```
     
-    <span data-ttu-id="b9f06-186">Gå till http://&lt;programnamn >.azurewebsites.net/api/calculator/ping.</span><span class="sxs-lookup"><span data-stu-id="b9f06-186">Go to http://&lt;app_name>.azurewebsites.net/api/calculator/ping.</span></span> <span data-ttu-id="b9f06-187">Du ser meddelandet:</span><span class="sxs-lookup"><span data-stu-id="b9f06-187">You see the message:</span></span> 
+    <span data-ttu-id="104e9-186">Gå toohttp: / /&lt;programnamn >.azurewebsites.net/api/calculator/ping.</span><span class="sxs-lookup"><span data-stu-id="104e9-186">Go toohttp://&lt;app_name>.azurewebsites.net/api/calculator/ping.</span></span> <span data-ttu-id="104e9-187">Hello-meddelande visas:</span><span class="sxs-lookup"><span data-stu-id="104e9-187">You see hello message:</span></span> 
     
-        Welcome to Java Web App!!! This is updated!
+        Welcome tooJava Web App!!! This is updated!
         Sun Jul 09 16:39:10 UTC 2017
 
-    <span data-ttu-id="b9f06-188">Gå till http://&lt;appnamn >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (ersätta &lt;x > och &lt;y > med några siffror) att hämta summan av x och y</span><span class="sxs-lookup"><span data-stu-id="b9f06-188">Go to http://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (substitute &lt;x> and &lt;y> with any numbers) to get the sum of x and y</span></span>
+    <span data-ttu-id="104e9-188">Gå toohttp: / /&lt;appnamn >.azurewebsites.net/api/calculator/add?x=&lt;x > & y =&lt;y > (ersätta &lt;x > och &lt;y > med några siffror) tooget hello summan av x och y</span><span class="sxs-lookup"><span data-stu-id="104e9-188">Go toohttp://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (substitute &lt;x> and &lt;y> with any numbers) tooget hello sum of x and y</span></span>
     
-## <a name="next-steps"></a><span data-ttu-id="b9f06-189">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="b9f06-189">Next steps</span></span>
-<span data-ttu-id="b9f06-190">Du har konfigurerat en Jenkins pipeline som checkar ut källkoden i GitHub-repo i den här självstudiekursen.</span><span class="sxs-lookup"><span data-stu-id="b9f06-190">In this tutorial, you configured a Jenkins pipeline that checks out the source code in GitHub repo.</span></span> <span data-ttu-id="b9f06-191">Kör Maven för att skapa en war-fil och sedan använder Azure CLI för att distribuera till Azure App Service.</span><span class="sxs-lookup"><span data-stu-id="b9f06-191">Runs Maven to build a war file and then uses Azure CLI to deploy to Azure App Service.</span></span> <span data-ttu-id="b9f06-192">Du har lärt dig hur till:</span><span class="sxs-lookup"><span data-stu-id="b9f06-192">You learned how to:</span></span>
+## <a name="next-steps"></a><span data-ttu-id="104e9-189">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="104e9-189">Next steps</span></span>
+<span data-ttu-id="104e9-190">Du har konfigurerat en Jenkins pipeline som checkar ut hello källkoden i GitHub-repo i den här självstudiekursen.</span><span class="sxs-lookup"><span data-stu-id="104e9-190">In this tutorial, you configured a Jenkins pipeline that checks out hello source code in GitHub repo.</span></span> <span data-ttu-id="104e9-191">Kör Maven toobuild en war-fil och sedan använder Azure CLI toodeploy tooAzure Apptjänst.</span><span class="sxs-lookup"><span data-stu-id="104e9-191">Runs Maven toobuild a war file and then uses Azure CLI toodeploy tooAzure App Service.</span></span> <span data-ttu-id="104e9-192">Du har lärt dig att:</span><span class="sxs-lookup"><span data-stu-id="104e9-192">You learned how to:</span></span>
 
 > [!div class="checklist"]
-> * <span data-ttu-id="b9f06-193">Skapa en virtuell dator Jenkins</span><span class="sxs-lookup"><span data-stu-id="b9f06-193">Create a Jenkins VM</span></span>
-> * <span data-ttu-id="b9f06-194">Konfigurera Jenkins</span><span class="sxs-lookup"><span data-stu-id="b9f06-194">Configure Jenkins</span></span>
-> * <span data-ttu-id="b9f06-195">Skapa en webbapp i Azure</span><span class="sxs-lookup"><span data-stu-id="b9f06-195">Create a web app in Azure</span></span>
-> * <span data-ttu-id="b9f06-196">Förbereda en GitHub-databas</span><span class="sxs-lookup"><span data-stu-id="b9f06-196">Prepare a GitHub repository</span></span>
-> * <span data-ttu-id="b9f06-197">Skapa Jenkins pipeline</span><span class="sxs-lookup"><span data-stu-id="b9f06-197">Create Jenkins pipeline</span></span>
-> * <span data-ttu-id="b9f06-198">Kör pipeline och verifiera webbappen</span><span class="sxs-lookup"><span data-stu-id="b9f06-198">Run the pipeline and verify the web app</span></span>
+> * <span data-ttu-id="104e9-193">Skapa en virtuell dator Jenkins</span><span class="sxs-lookup"><span data-stu-id="104e9-193">Create a Jenkins VM</span></span>
+> * <span data-ttu-id="104e9-194">Konfigurera Jenkins</span><span class="sxs-lookup"><span data-stu-id="104e9-194">Configure Jenkins</span></span>
+> * <span data-ttu-id="104e9-195">Skapa en webbapp i Azure</span><span class="sxs-lookup"><span data-stu-id="104e9-195">Create a web app in Azure</span></span>
+> * <span data-ttu-id="104e9-196">Förbereda en GitHub-databas</span><span class="sxs-lookup"><span data-stu-id="104e9-196">Prepare a GitHub repository</span></span>
+> * <span data-ttu-id="104e9-197">Skapa Jenkins pipeline</span><span class="sxs-lookup"><span data-stu-id="104e9-197">Create Jenkins pipeline</span></span>
+> * <span data-ttu-id="104e9-198">Kör hello pipeline och verifiera hello-webbprogram</span><span class="sxs-lookup"><span data-stu-id="104e9-198">Run hello pipeline and verify hello web app</span></span>

@@ -1,6 +1,6 @@
 ---
-title: "Auktorisera developer konton med hjälp av Azure Active Directory - Azure API Management | Microsoft Docs"
-description: "Lär dig mer om att auktorisera användare med Azure Active Directory i API-hantering."
+title: "aaaAuthorize developer konton med hjälp av Azure Active Directory - Azure API Management | Microsoft Docs"
+description: "Lär dig hur tooauthorize användare med Azure Active Directory i API-hantering."
 services: api-management
 documentationcenter: API Management
 author: steved0x
@@ -14,177 +14,177 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 7637e6419d17a2d75904fbe63df5f27d4be4bbe3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ebf5447a509a47df35e4262138bfcf423cb1dd5c
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a><span data-ttu-id="6e219-103">Så här auktoriserar developer konton med hjälp av Azure Active Directory i Azure API Management</span><span class="sxs-lookup"><span data-stu-id="6e219-103">How to authorize developer accounts using Azure Active Directory in Azure API Management</span></span>
-## <a name="overview"></a><span data-ttu-id="6e219-104">Översikt</span><span class="sxs-lookup"><span data-stu-id="6e219-104">Overview</span></span>
-<span data-ttu-id="6e219-105">Den här guiden visar hur du aktiverar åtkomst till developer-portalen för användare från Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="6e219-105">This guide shows you how to enable access to the developer portal for users from Azure Active Directory.</span></span> <span data-ttu-id="6e219-106">Den här guiden visar även hur du hanterar grupper med Azure Active Directory-användare genom att lägga till externa grupper som innehåller användare av en Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="6e219-106">This guide also shows you how to manage groups of Azure Active Directory users by adding external groups that contain the users of an Azure Active Directory.</span></span>
+# <a name="how-tooauthorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a><span data-ttu-id="4f722-103">Hur tooauthorize developer användarkonton med Azure Active Directory på Azure API Management</span><span class="sxs-lookup"><span data-stu-id="4f722-103">How tooauthorize developer accounts using Azure Active Directory in Azure API Management</span></span>
+## <a name="overview"></a><span data-ttu-id="4f722-104">Översikt</span><span class="sxs-lookup"><span data-stu-id="4f722-104">Overview</span></span>
+<span data-ttu-id="4f722-105">Den här guiden visar hur tooenable åt toohello developer-portalen för användare från Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="4f722-105">This guide shows you how tooenable access toohello developer portal for users from Azure Active Directory.</span></span> <span data-ttu-id="4f722-106">Den här guiden visar också hur toomanage grupper av Azure Active Directory-användare genom att lägga till externa grupper som innehåller hello användare av en Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="4f722-106">This guide also shows you how toomanage groups of Azure Active Directory users by adding external groups that contain hello users of an Azure Active Directory.</span></span>
 
-> <span data-ttu-id="6e219-107">Du måste ha en Azure Active Directory att skapa ett program för att slutföra stegen i den här guiden.</span><span class="sxs-lookup"><span data-stu-id="6e219-107">To complete the steps in this guide you must first have an Azure Active Directory in which to create an application.</span></span>
+> <span data-ttu-id="4f722-107">toocomplete hello stegen i den här guiden måste du först ha ett Azure Active Directory i vilka toocreate ett program.</span><span class="sxs-lookup"><span data-stu-id="4f722-107">toocomplete hello steps in this guide you must first have an Azure Active Directory in which toocreate an application.</span></span>
 > 
 > 
 
-## <a name="how-to-authorize-developer-accounts-using-azure-active-directory"></a><span data-ttu-id="6e219-108">Så här auktoriserar developer konton med hjälp av Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="6e219-108">How to authorize developer accounts using Azure Active Directory</span></span>
-<span data-ttu-id="6e219-109">Kom igång genom att klicka på **Publisher portal** i Azure-portalen för API Management-tjänsten.</span><span class="sxs-lookup"><span data-stu-id="6e219-109">To get started, click **Publisher portal** in the Azure portal for your API Management service.</span></span> <span data-ttu-id="6e219-110">När du gör det kommer du till utgivarportalen för API Management.</span><span class="sxs-lookup"><span data-stu-id="6e219-110">This takes you to the API Management publisher portal.</span></span>
+## <a name="how-tooauthorize-developer-accounts-using-azure-active-directory"></a><span data-ttu-id="4f722-108">Hur tooauthorize developer användarkonton med Azure Active Directory</span><span class="sxs-lookup"><span data-stu-id="4f722-108">How tooauthorize developer accounts using Azure Active Directory</span></span>
+<span data-ttu-id="4f722-109">tooget har startats klickar du på **Publisher portal** i hello Azure-portalen för API Management-tjänsten.</span><span class="sxs-lookup"><span data-stu-id="4f722-109">tooget started, click **Publisher portal** in hello Azure portal for your API Management service.</span></span> <span data-ttu-id="4f722-110">Då kommer du toohello API Management publisher portal.</span><span class="sxs-lookup"><span data-stu-id="4f722-110">This takes you toohello API Management publisher portal.</span></span>
 
 ![Utgivarportalen][api-management-management-console]
 
-> <span data-ttu-id="6e219-112">Om du inte har skapat en API Management-tjänstinstans än läser du [Skapa en API Management-tjänstinstans][Create an API Management service instance] i självstudiekursen [Komma igång med Azure API Management][Get started with Azure API Management].</span><span class="sxs-lookup"><span data-stu-id="6e219-112">If you have not yet created an API Management service instance, see [Create an API Management service instance][Create an API Management service instance] in the [Get started with Azure API Management][Get started with Azure API Management] tutorial.</span></span>
+> <span data-ttu-id="4f722-112">Om du inte har skapat en instans för API Management-tjänsten finns [skapa en instans för API Management-tjänsten] [ Create an API Management service instance] i hello [Kom igång med Azure API Management] [ Get started with Azure API Management] kursen.</span><span class="sxs-lookup"><span data-stu-id="4f722-112">If you have not yet created an API Management service instance, see [Create an API Management service instance][Create an API Management service instance] in hello [Get started with Azure API Management][Get started with Azure API Management] tutorial.</span></span>
 > 
 > 
 
-<span data-ttu-id="6e219-113">Klicka på **säkerhet** från den **API Management** menyn till vänster och klicka på **externa identiteter**.</span><span class="sxs-lookup"><span data-stu-id="6e219-113">Click **Security** from the **API Management** menu on the left and click **External Identities**.</span></span>
+<span data-ttu-id="4f722-113">Klicka på **säkerhet** från hello **API Management** menyn hello vänster och klicka på **externa identiteter**.</span><span class="sxs-lookup"><span data-stu-id="4f722-113">Click **Security** from hello **API Management** menu on hello left and click **External Identities**.</span></span>
 
 ![Externa identiteter][api-management-security-external-identities]
 
-<span data-ttu-id="6e219-115">Klicka på **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="6e219-115">Click **Azure Active Directory**.</span></span> <span data-ttu-id="6e219-116">Anteckna den **omdirigerings-URL** och växla till Azure Active Directory i den klassiska Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="6e219-116">Make a note of the **Redirect URL** and switch over to your Azure Active Directory in the Azure Classic Portal.</span></span>
+<span data-ttu-id="4f722-115">Klicka på **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="4f722-115">Click **Azure Active Directory**.</span></span> <span data-ttu-id="4f722-116">Anteckna hello **omdirigerings-URL** och växla över tooyour Azure Active Directory i hello klassiska Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="4f722-116">Make a note of hello **Redirect URL** and switch over tooyour Azure Active Directory in hello Azure Classic Portal.</span></span>
 
 ![Externa identiteter][api-management-security-aad-new]
 
-<span data-ttu-id="6e219-118">Klicka på den **Lägg till** knappen om du vill skapa ett nytt program för Azure Active Directory och välj **Lägg till ett program som min organisation utvecklar**.</span><span class="sxs-lookup"><span data-stu-id="6e219-118">Click the **Add** button to create a new Azure Active Directory application, and choose **Add an application my organization is developing**.</span></span>
+<span data-ttu-id="4f722-118">Klicka på hello **Lägg till** knappen toocreate ett nytt program för Azure Active Directory och välj **Lägg till ett program som min organisation utvecklar**.</span><span class="sxs-lookup"><span data-stu-id="4f722-118">Click hello **Add** button toocreate a new Azure Active Directory application, and choose **Add an application my organization is developing**.</span></span>
 
 ![Lägg till nytt Azure Active Directory-program][api-management-new-aad-application-menu]
 
-<span data-ttu-id="6e219-120">Ange ett namn för programmet, Välj **Web application och/eller webb-API**, och klicka på Nästa.</span><span class="sxs-lookup"><span data-stu-id="6e219-120">Enter a name for the application, select **Web application and/or Web API**, and click the next button.</span></span>
+<span data-ttu-id="4f722-120">Ange ett namn för hello program, Välj **Web application och/eller webb-API**, och klicka på knappen för nästa hello.</span><span class="sxs-lookup"><span data-stu-id="4f722-120">Enter a name for hello application, select **Web application and/or Web API**, and click hello next button.</span></span>
 
 ![Nya Azure Active Directory-program][api-management-new-aad-application-1]
 
-<span data-ttu-id="6e219-122">För **inloggnings-URL**, ange Webbadressen för inloggning till developer-portalen.</span><span class="sxs-lookup"><span data-stu-id="6e219-122">For **Sign-on URL**, enter the sign-on URL of your developer portal.</span></span> <span data-ttu-id="6e219-123">I det här exemplet i **inloggnings-URL** är `https://aad03.portal.current.int-azure-api.net/signin`.</span><span class="sxs-lookup"><span data-stu-id="6e219-123">In this example, the **Sign-on URL** is `https://aad03.portal.current.int-azure-api.net/signin`.</span></span> 
+<span data-ttu-id="4f722-122">För **inloggnings-URL**, ange hello inloggnings-URL för developer-portalen.</span><span class="sxs-lookup"><span data-stu-id="4f722-122">For **Sign-on URL**, enter hello sign-on URL of your developer portal.</span></span> <span data-ttu-id="4f722-123">I det här exemplet hello **inloggnings-URL** är `https://aad03.portal.current.int-azure-api.net/signin`.</span><span class="sxs-lookup"><span data-stu-id="4f722-123">In this example, hello **Sign-on URL** is `https://aad03.portal.current.int-azure-api.net/signin`.</span></span> 
 
-<span data-ttu-id="6e219-124">För den **App-ID-URL**, ange standarddomänen eller en anpassad domän för Azure Active Directory och lägga till en unik sträng till den.</span><span class="sxs-lookup"><span data-stu-id="6e219-124">For the **App ID URL**, enter either the default domain or a custom domain for the Azure Active Directory, and append a unique string to it.</span></span> <span data-ttu-id="6e219-125">I det här exemplet standarddomän för **https://contoso5api.onmicrosoft.com** används med suffixet för **/api** angivna.</span><span class="sxs-lookup"><span data-stu-id="6e219-125">In this example, the default domain of **https://contoso5api.onmicrosoft.com** is used with the suffix of **/api** specified.</span></span>
+<span data-ttu-id="4f722-124">För hello **App-ID-URL**, ange hello Standarddomän eller en anpassad domän för hello Azure Active Directory och lägga till en unik sträng tooit.</span><span class="sxs-lookup"><span data-stu-id="4f722-124">For hello **App ID URL**, enter either hello default domain or a custom domain for hello Azure Active Directory, and append a unique string tooit.</span></span> <span data-ttu-id="4f722-125">I det här exemplet hello standarddomänen **https://contoso5api.onmicrosoft.com** används med hello suffixet **/api** angivna.</span><span class="sxs-lookup"><span data-stu-id="4f722-125">In this example, hello default domain of **https://contoso5api.onmicrosoft.com** is used with hello suffix of **/api** specified.</span></span>
 
 ![Nya egenskaper för Azure Active Directory-program][api-management-new-aad-application-2]
 
-<span data-ttu-id="6e219-127">Klicka på knappen Kontrollera för att spara och skapa programmet och växla till den **konfigurera** att konfigurera det nya programmet.</span><span class="sxs-lookup"><span data-stu-id="6e219-127">Click the check button to save and create the application, and switch to the **Configure** tab to configure the new application.</span></span>
+<span data-ttu-id="4f722-127">Klicka på hello Kontrollera knappen toosave och skapa hello program och växla toohello **konfigurera** fliken tooconfigure hello nytt program.</span><span class="sxs-lookup"><span data-stu-id="4f722-127">Click hello check button toosave and create hello application, and switch toohello **Configure** tab tooconfigure hello new application.</span></span>
 
 ![Nya Azure Active Directory-program som skapats][api-management-new-aad-app-created]
 
-<span data-ttu-id="6e219-129">Om flera aktiva Azure-kataloger ska användas för det här programmet, klickar du på **Ja** för **programmet är flera innehavare**.</span><span class="sxs-lookup"><span data-stu-id="6e219-129">If multiple Azure Active Directories are going to be used for this application, click **Yes** for **Application is multi-tenant**.</span></span> <span data-ttu-id="6e219-130">Standardvärdet är **nr**.</span><span class="sxs-lookup"><span data-stu-id="6e219-130">The default is **No**.</span></span>
+<span data-ttu-id="4f722-129">Om flera aktiva Azure-kataloger ska toobe som används för det här programmet, klickar du på **Ja** för **programmet är flera innehavare**.</span><span class="sxs-lookup"><span data-stu-id="4f722-129">If multiple Azure Active Directories are going toobe used for this application, click **Yes** for **Application is multi-tenant**.</span></span> <span data-ttu-id="4f722-130">hello standardvärdet är **nr**.</span><span class="sxs-lookup"><span data-stu-id="4f722-130">hello default is **No**.</span></span>
 
 ![Programmet är flera innehavare][api-management-aad-app-multi-tenant]
 
-<span data-ttu-id="6e219-132">Kopiera den **omdirigerings-URL** från den **Azure Active Directory** avsnitt i den **externa identiteter** i portalen för utgivaren och klistrar in det i den **svar URL: en** textruta.</span><span class="sxs-lookup"><span data-stu-id="6e219-132">Copy the **Redirect URL** from the **Azure Active Directory** section of the **External Identities** tab in the publisher portal and paste it into the **Reply URL** text box.</span></span> 
+<span data-ttu-id="4f722-132">Kopiera hello **omdirigerings-URL** från hello **Azure Active Directory** avsnitt i hello **externa identiteter** i hello publisher portal och klistra in den i hello **Reply URL** textruta.</span><span class="sxs-lookup"><span data-stu-id="4f722-132">Copy hello **Redirect URL** from hello **Azure Active Directory** section of hello **External Identities** tab in hello publisher portal and paste it into hello **Reply URL** text box.</span></span> 
 
 ![Reply-URL][api-management-aad-reply-url]
 
-<span data-ttu-id="6e219-134">Bläddra till längst ned på fliken Konfigurera väljer den **programbehörigheter** listrutan, och kontrollera **läsa katalogdata**.</span><span class="sxs-lookup"><span data-stu-id="6e219-134">Scroll to the bottom of the configure tab, select the **Application Permissions** drop-down, and check **Read directory data**.</span></span>
+<span data-ttu-id="4f722-134">Rulla toohello längst ned på hello konfigurera fliken, väljer hello **programbehörigheter** listrutan, och kontrollera **läsa katalogdata**.</span><span class="sxs-lookup"><span data-stu-id="4f722-134">Scroll toohello bottom of hello configure tab, select hello **Application Permissions** drop-down, and check **Read directory data**.</span></span>
 
 ![Behörigheter för program][api-management-aad-app-permissions]
 
-<span data-ttu-id="6e219-136">Välj den **delegera behörigheter** listrutan, och kontrollera **aktivera inloggning och läsa användarprofiler**.</span><span class="sxs-lookup"><span data-stu-id="6e219-136">Select the **Delegate Permissions** drop-down, and check **Enable sign-on and read users' profiles**.</span></span>
+<span data-ttu-id="4f722-136">Välj hello **delegera behörigheter** listrutan, och kontrollera **aktivera inloggning och läsa användarprofiler**.</span><span class="sxs-lookup"><span data-stu-id="4f722-136">Select hello **Delegate Permissions** drop-down, and check **Enable sign-on and read users' profiles**.</span></span>
 
 ![Delegerade behörigheter][api-management-aad-delegated-permissions]
 
-> <span data-ttu-id="6e219-138">Läs mer om programmet och delegerade behörigheter [åtkomst till Graph API][Accessing the Graph API].</span><span class="sxs-lookup"><span data-stu-id="6e219-138">For more information about application and delegated permissions, see [Accessing the Graph API][Accessing the Graph API].</span></span>
+> <span data-ttu-id="4f722-138">Läs mer om programmet och delegerade behörigheter [komma åt hello Graph API][Accessing hello Graph API].</span><span class="sxs-lookup"><span data-stu-id="4f722-138">For more information about application and delegated permissions, see [Accessing hello Graph API][Accessing hello Graph API].</span></span>
 > 
 > 
 
-<span data-ttu-id="6e219-139">Kopiera den **klient-Id** till Urklipp.</span><span class="sxs-lookup"><span data-stu-id="6e219-139">Copy the **Client Id** to the clipboard.</span></span>
+<span data-ttu-id="4f722-139">Kopiera hello **klient-Id** toohello Urklipp.</span><span class="sxs-lookup"><span data-stu-id="4f722-139">Copy hello **Client Id** toohello clipboard.</span></span>
 
 ![Klient-Id][api-management-aad-app-client-id]
 
-<span data-ttu-id="6e219-141">Växla tillbaka till publisher-portalen och klistra in i den **klient-Id** kopieras från konfigurationen av Azure Active Directory-program.</span><span class="sxs-lookup"><span data-stu-id="6e219-141">Switch back to the publisher portal and paste in the **Client Id** copied from the Azure Active Directory application configuration.</span></span>
+<span data-ttu-id="4f722-141">Växla tillbaka toohello publisher portal och klistra in i hello **klient-Id** kopieras från hello Azure Active Directory tillämpningsprogrammets konfiguration.</span><span class="sxs-lookup"><span data-stu-id="4f722-141">Switch back toohello publisher portal and paste in hello **Client Id** copied from hello Azure Active Directory application configuration.</span></span>
 
 ![Klient-Id][api-management-client-id]
 
-<span data-ttu-id="6e219-143">Växla tillbaka till Azure Active Directory-konfigurationen och klicka på den **Markera varaktighet** listrutan i den **nycklar** avsnittet och ange ett intervall.</span><span class="sxs-lookup"><span data-stu-id="6e219-143">Switch back to the Azure Active Directory configuration, and click the **Select duration** drop-down in the **Keys** section and specify an interval.</span></span> <span data-ttu-id="6e219-144">I det här exemplet **1 års** används.</span><span class="sxs-lookup"><span data-stu-id="6e219-144">In this example, **1 year** is used.</span></span>
+<span data-ttu-id="4f722-143">Växla tillbaka toohello Azure Active Directory-konfigurationen och på hello **Markera varaktighet** listrutan i hello **nycklar** avsnittet och ange ett intervall.</span><span class="sxs-lookup"><span data-stu-id="4f722-143">Switch back toohello Azure Active Directory configuration, and click hello **Select duration** drop-down in hello **Keys** section and specify an interval.</span></span> <span data-ttu-id="4f722-144">I det här exemplet **1 års** används.</span><span class="sxs-lookup"><span data-stu-id="4f722-144">In this example, **1 year** is used.</span></span>
 
 ![Nyckel][api-management-aad-key-before-save]
 
-<span data-ttu-id="6e219-146">Klicka på **spara** att spara konfigurationen och visa nyckeln.</span><span class="sxs-lookup"><span data-stu-id="6e219-146">Click **Save** to save the configuration and display the key.</span></span> <span data-ttu-id="6e219-147">Kopiera nyckeln till Urklipp.</span><span class="sxs-lookup"><span data-stu-id="6e219-147">Copy the key to the clipboard.</span></span>
+<span data-ttu-id="4f722-146">Klicka på **spara** toosave hello konfiguration och visa hello nyckel.</span><span class="sxs-lookup"><span data-stu-id="4f722-146">Click **Save** toosave hello configuration and display hello key.</span></span> <span data-ttu-id="4f722-147">Kopiera hello viktiga toohello Urklipp.</span><span class="sxs-lookup"><span data-stu-id="4f722-147">Copy hello key toohello clipboard.</span></span>
 
-> <span data-ttu-id="6e219-148">Anteckna den här nyckeln.</span><span class="sxs-lookup"><span data-stu-id="6e219-148">Make a note of this key.</span></span> <span data-ttu-id="6e219-149">När du stänger fönstret Azure Active Directory-konfiguration kan nyckeln inte visas igen.</span><span class="sxs-lookup"><span data-stu-id="6e219-149">Once you close the Azure Active Directory configuration window, the key cannot be displayed again.</span></span>
+> <span data-ttu-id="4f722-148">Anteckna den här nyckeln.</span><span class="sxs-lookup"><span data-stu-id="4f722-148">Make a note of this key.</span></span> <span data-ttu-id="4f722-149">När du stänger hello Azure Active Directory configuration kan inte hello nyckel visas igen.</span><span class="sxs-lookup"><span data-stu-id="4f722-149">Once you close hello Azure Active Directory configuration window, hello key cannot be displayed again.</span></span>
 > 
 > 
 
 ![Nyckel][api-management-aad-key-after-save]
 
-<span data-ttu-id="6e219-151">Växla tillbaka till publisher-portalen och klistra in nyckeln till den **Klienthemlighet** textruta.</span><span class="sxs-lookup"><span data-stu-id="6e219-151">Switch back to the publisher portal and paste the key into the **Client Secret** text box.</span></span>
+<span data-ttu-id="4f722-151">Växla tillbaka toohello publisher portal och klistra in hello nyckeln till hello **Klienthemlighet** textruta.</span><span class="sxs-lookup"><span data-stu-id="4f722-151">Switch back toohello publisher portal and paste hello key into hello **Client Secret** text box.</span></span>
 
 ![Klienthemlighet][api-management-client-secret]
 
-<span data-ttu-id="6e219-153">**Tillåtna hyresgäster** anger vilka kataloger har åtkomst till API: er för API Management service-instans.</span><span class="sxs-lookup"><span data-stu-id="6e219-153">**Allowed Tenants** specifies which directories have access to the APIs of the API Management service instance.</span></span> <span data-ttu-id="6e219-154">Ange domäner i Azure Active Directory-instanser som du vill bevilja åtkomst.</span><span class="sxs-lookup"><span data-stu-id="6e219-154">Specify the domains of the Azure Active Directory instances to which you want to grant access.</span></span> <span data-ttu-id="6e219-155">Du kan avgränsa flera domäner med radmatningar bäddas, mellanslag eller semikolon.</span><span class="sxs-lookup"><span data-stu-id="6e219-155">You can separate multiple domains with newlines, spaces, or commas.</span></span>
+<span data-ttu-id="4f722-153">**Tillåtna hyresgäster** anger vilka kataloger har åtkomst toohello API: er för hello API Management service-instans.</span><span class="sxs-lookup"><span data-stu-id="4f722-153">**Allowed Tenants** specifies which directories have access toohello APIs of hello API Management service instance.</span></span> <span data-ttu-id="4f722-154">Ange hello domäner för hello Azure Active Directory instanser toowhich som du vill komma åt toogrant.</span><span class="sxs-lookup"><span data-stu-id="4f722-154">Specify hello domains of hello Azure Active Directory instances toowhich you want toogrant access.</span></span> <span data-ttu-id="4f722-155">Du kan avgränsa flera domäner med radmatningar bäddas, mellanslag eller semikolon.</span><span class="sxs-lookup"><span data-stu-id="4f722-155">You can separate multiple domains with newlines, spaces, or commas.</span></span>
 
 ![Tillåtna klienter][api-management-client-allowed-tenants]
 
 
-<span data-ttu-id="6e219-157">När du önskad konfiguration har angetts, klickar du på **spara**.</span><span class="sxs-lookup"><span data-stu-id="6e219-157">Once the desired configuration is specified, click **Save**.</span></span>
+<span data-ttu-id="4f722-157">När hello önskad konfiguration har angetts, klickar du på **spara**.</span><span class="sxs-lookup"><span data-stu-id="4f722-157">Once hello desired configuration is specified, click **Save**.</span></span>
 
 ![Spara][api-management-client-allowed-tenants-save]
 
-<span data-ttu-id="6e219-159">När ändringarna sparas användare i den angivna Azure Active Directory kan logga in på Developer-portalen genom att följa stegen i [logga in på Developer-portalen med ett konto i Azure Active Directory] [ Log in to the Developer portal using an Azure Active Directory account].</span><span class="sxs-lookup"><span data-stu-id="6e219-159">Once the changes are saved, the users in the specified Azure Active Directory can sign in to the Developer portal by following the steps in [Log in to the Developer portal using an Azure Active Directory account][Log in to the Developer portal using an Azure Active Directory account].</span></span>
+<span data-ttu-id="4f722-159">När hello ändringar sparas hello användare i hello angivna Azure Active Directory kan logga in toohello Developer-portalen genom att följa stegen hello i [logga in med ett konto i Azure Active Directory toohello Developer-portalen] [Log in toohello Developer portal using an Azure Active Directory account].</span><span class="sxs-lookup"><span data-stu-id="4f722-159">Once hello changes are saved, hello users in hello specified Azure Active Directory can sign in toohello Developer portal by following hello steps in [Log in toohello Developer portal using an Azure Active Directory account][Log in toohello Developer portal using an Azure Active Directory account].</span></span>
 
-<span data-ttu-id="6e219-160">Du kan ange flera domäner i den **tillåtna klienter** avsnitt.</span><span class="sxs-lookup"><span data-stu-id="6e219-160">Multiple domains can be specified in the **Allowed Tenants** section.</span></span> <span data-ttu-id="6e219-161">Innan en användare kan logga in från en annan domän än den ursprungliga där programmet har registrerats, bevilja en global administratör i domänen annat behörigheten för programmet att komma åt directory data.</span><span class="sxs-lookup"><span data-stu-id="6e219-161">Before any user can log in from a different domain than the original domain where the application was registered, a global administrator of the different domain must grant permission for the application to access directory data.</span></span> <span data-ttu-id="6e219-162">Om du vill ge behörighet, den globala administratören ska gå att `https://<URL of your developer portal>/aadadminconsent` (till exempel https://contoso.portal.azure-api.net/aadadminconsent), ange domännamnet för Active Directory-klient som de vill ge åtkomst till och klicka på Skicka.</span><span class="sxs-lookup"><span data-stu-id="6e219-162">To grant permission, the global administrator should go to `https://<URL of your developer portal>/aadadminconsent` (for example, https://contoso.portal.azure-api.net/aadadminconsent), type in the domain name of the Active Directory tenant they want to give access to and click Submit.</span></span> <span data-ttu-id="6e219-163">I följande exempel visas en global administratör från `miaoaad.onmicrosoft.com` försöker att ge behörighet till den här viss developer-portalen.</span><span class="sxs-lookup"><span data-stu-id="6e219-163">In the following example, a global administrator from `miaoaad.onmicrosoft.com` is trying to give permission to this particular developer portal.</span></span> 
+<span data-ttu-id="4f722-160">Du kan ange flera domäner i hello **tillåtna hyresgäster** avsnitt.</span><span class="sxs-lookup"><span data-stu-id="4f722-160">Multiple domains can be specified in hello **Allowed Tenants** section.</span></span> <span data-ttu-id="4f722-161">Innan en användare kan logga in från en annan domän än hello ursprungliga där programmet hello registrerades, måste en global administratör i hello annan domän tillåta hello programmet tooaccess katalogdata.</span><span class="sxs-lookup"><span data-stu-id="4f722-161">Before any user can log in from a different domain than hello original domain where hello application was registered, a global administrator of hello different domain must grant permission for hello application tooaccess directory data.</span></span> <span data-ttu-id="4f722-162">toogrant behörighet hello global administratör ska gå för`https://<URL of your developer portal>/aadadminconsent` (till exempel https://contoso.portal.azure-api.net/aadadminconsent) anger hello domännamn för hello Active Directory-klient som de vill toogive åtkomst tooand på Skicka.</span><span class="sxs-lookup"><span data-stu-id="4f722-162">toogrant permission, hello global administrator should go too`https://<URL of your developer portal>/aadadminconsent` (for example, https://contoso.portal.azure-api.net/aadadminconsent), type in hello domain name of hello Active Directory tenant they want toogive access tooand click Submit.</span></span> <span data-ttu-id="4f722-163">I hello följande exempel, en global administratör från `miaoaad.onmicrosoft.com` försöker toogive behörighet toothis viss developer-portalen.</span><span class="sxs-lookup"><span data-stu-id="4f722-163">In hello following example, a global administrator from `miaoaad.onmicrosoft.com` is trying toogive permission toothis particular developer portal.</span></span> 
 
 ![Behörigheter][api-management-aad-consent]
 
-<span data-ttu-id="6e219-165">På nästa skärm uppmanas den globala administratören att bekräfta att ge behörigheten.</span><span class="sxs-lookup"><span data-stu-id="6e219-165">In the next screen, the global administrator will be prompted to confirm giving the permission.</span></span> 
+<span data-ttu-id="4f722-165">Hello nästa skärm kommer hello global administratör att tillfrågas tooconfirm ger hello tillstånd.</span><span class="sxs-lookup"><span data-stu-id="4f722-165">In hello next screen, hello global administrator will be prompted tooconfirm giving hello permission.</span></span> 
 
 ![Behörigheter][api-management-permissions-form]
 
-> <span data-ttu-id="6e219-167">Om en icke-globala administratör försöker logga in innan behörigheter beviljas av en global administratör i inloggningsförsök misslyckas och ett felmeddelande visas.</span><span class="sxs-lookup"><span data-stu-id="6e219-167">If a non-global administrator tries to log in before permissions are granted by a global administrator, the login attempt fails and an error screen is displayed.</span></span>
+> <span data-ttu-id="4f722-167">Om en icke-globala administratör försöker toolog i innan behörigheter beviljas av en global administratör, hello inloggningsförsök misslyckas och ett felmeddelande visas.</span><span class="sxs-lookup"><span data-stu-id="4f722-167">If a non-global administrator tries toolog in before permissions are granted by a global administrator, hello login attempt fails and an error screen is displayed.</span></span>
 > 
 > 
 
-## <a name="how-to-add-an-external-azure-active-directory-group"></a><span data-ttu-id="6e219-168">Hur du lägger till en extern Azure Active Directory-grupp</span><span class="sxs-lookup"><span data-stu-id="6e219-168">How to add an external Azure Active Directory Group</span></span>
-<span data-ttu-id="6e219-169">Du kan lägga till Azure Active Directory-grupper i API-hantering för att lättare hantera associering av utvecklare i gruppen med de önskade produkterna efter att aktivera åtkomst för användare i ett Azure Active Directory.</span><span class="sxs-lookup"><span data-stu-id="6e219-169">After enabling access for users in an Azure Active Directory, you can add Azure Active Directory groups into API Management to more easily manage the association of the developers in the group with the desired products.</span></span>
+## <a name="how-tooadd-an-external-azure-active-directory-group"></a><span data-ttu-id="4f722-168">Hur tooadd en extern Azure Active Directory gruppen</span><span class="sxs-lookup"><span data-stu-id="4f722-168">How tooadd an external Azure Active Directory Group</span></span>
+<span data-ttu-id="4f722-169">När du har aktiverat åtkomst för användare i en Azure Active Directory kan du lägga till Azure Active Directory-grupper i API Management toomore enkelt hantera hello associering av hello utvecklare i hello grupp med hello önskad produkter.</span><span class="sxs-lookup"><span data-stu-id="4f722-169">After enabling access for users in an Azure Active Directory, you can add Azure Active Directory groups into API Management toomore easily manage hello association of hello developers in hello group with hello desired products.</span></span>
 
-> <span data-ttu-id="6e219-170">Om du vill konfigurera en extern Azure Active Directory-grupp, måste Azure Active Directory först konfigureras på fliken identiteter genom att följa anvisningarna i föregående avsnitt.</span><span class="sxs-lookup"><span data-stu-id="6e219-170">To configure an external Azure Active Directory group, the Azure Active Directory must first be configured in the Identities tab by following the procedure in the previous section.</span></span> 
+> <span data-ttu-id="4f722-170">tooconfigure en extern Azure Active Directory-grupp, hello Azure Active Directory konfigureras först hello identiteter fliken hello sätt hello föregående avsnitt.</span><span class="sxs-lookup"><span data-stu-id="4f722-170">tooconfigure an external Azure Active Directory group, hello Azure Active Directory must first be configured in hello Identities tab by following hello procedure in hello previous section.</span></span> 
 > 
 > 
 
-<span data-ttu-id="6e219-171">Externa Azure Active Directory-grupper har lagts till från den **synlighet** fliken av produkten som du vill ge åtkomst till gruppen.</span><span class="sxs-lookup"><span data-stu-id="6e219-171">External Azure Active Directory groups are added from the **Visibility** tab of the product for which you wish to grant access to the group.</span></span> <span data-ttu-id="6e219-172">Klicka på **produkter**, och klicka sedan på namnet på den önskade produkten.</span><span class="sxs-lookup"><span data-stu-id="6e219-172">Click **Products**, and then click the name of the desired product.</span></span>
+<span data-ttu-id="4f722-171">Externa Azure Active Directory-grupper har lagts till från hello **synlighet** fliken hello produkt som du vill toogrant toohello åtkomstgruppen.</span><span class="sxs-lookup"><span data-stu-id="4f722-171">External Azure Active Directory groups are added from hello **Visibility** tab of hello product for which you wish toogrant access toohello group.</span></span> <span data-ttu-id="4f722-172">Klicka på **produkter**, och klicka sedan på hello namnet på hello önskade produkt.</span><span class="sxs-lookup"><span data-stu-id="4f722-172">Click **Products**, and then click hello name of hello desired product.</span></span>
 
 ![Konfigurera produkten][api-management-configure-product]
 
-<span data-ttu-id="6e219-174">Växla till den **synlighet** och på **Lägg till grupper från Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="6e219-174">Switch to the **Visibility** tab, and click **Add Groups from Azure Active Directory**.</span></span>
+<span data-ttu-id="4f722-174">Växla toohello **synlighet** och på **Lägg till grupper från Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="4f722-174">Switch toohello **Visibility** tab, and click **Add Groups from Azure Active Directory**.</span></span>
 
 ![Lägga till grupper][api-management-add-groups]
 
-<span data-ttu-id="6e219-176">Välj den **Azure Active Directory-klient** från nedrullningsbara listan och sedan skriver du namnet på den önskade gruppen i den **grupper** som ska läggas till textrutan.</span><span class="sxs-lookup"><span data-stu-id="6e219-176">Select the **Azure Active Directory Tenant** from the drop-down list, and then type the name of the desired group in the **Groups** to be added text box.</span></span>
+<span data-ttu-id="4f722-176">Välj hello **Azure Active Directory-klient** hello nedrullningsbara listan och sedan hello-typnamn för hello önskad grupp i hello **grupper** toobe lagts till textrutan.</span><span class="sxs-lookup"><span data-stu-id="4f722-176">Select hello **Azure Active Directory Tenant** from hello drop-down list, and then type hello name of hello desired group in hello **Groups** toobe added text box.</span></span>
 
 ![Välj grupp][api-management-select-group]
 
-<span data-ttu-id="6e219-178">Den här gruppnamn kan hittas i den **grupper** lista för din Azure Active Directory som visas i följande exempel.</span><span class="sxs-lookup"><span data-stu-id="6e219-178">This group name can be found in the **Groups** list for your Azure Active Directory, as shown in the following example.</span></span>
+<span data-ttu-id="4f722-178">Den här gruppnamn kan hittas i hello **grupper** lista för din Azure Active Directory som visas i följande exempel hello.</span><span class="sxs-lookup"><span data-stu-id="4f722-178">This group name can be found in hello **Groups** list for your Azure Active Directory, as shown in hello following example.</span></span>
 
 ![Listan för Azure Active Directory-grupper][api-management-aad-groups-list]
 
-<span data-ttu-id="6e219-180">Klicka på **Lägg till** Validera gruppnamnet och lägga till gruppen.</span><span class="sxs-lookup"><span data-stu-id="6e219-180">Click **Add** to validate the group name and add the group.</span></span> <span data-ttu-id="6e219-181">I det här exemplet i **Contoso 5 utvecklare** externa gruppen har lagts till.</span><span class="sxs-lookup"><span data-stu-id="6e219-181">In this example, the **Contoso 5 Developers** external group is added.</span></span> 
+<span data-ttu-id="4f722-180">Klicka på **Lägg till** toovalidate hello gruppnamn och Lägg till hello-gruppen.</span><span class="sxs-lookup"><span data-stu-id="4f722-180">Click **Add** toovalidate hello group name and add hello group.</span></span> <span data-ttu-id="4f722-181">I det här exemplet hello **Contoso 5 utvecklare** externa gruppen har lagts till.</span><span class="sxs-lookup"><span data-stu-id="4f722-181">In this example, hello **Contoso 5 Developers** external group is added.</span></span> 
 
 ![Grupp som har lagts till][api-management-aad-group-added]
 
-<span data-ttu-id="6e219-183">Klicka på **spara** att spara den nya grupp markeringen.</span><span class="sxs-lookup"><span data-stu-id="6e219-183">Click **Save** to save the new group selection.</span></span>
+<span data-ttu-id="4f722-183">Klicka på **spara** toosave hello nya val av grupp.</span><span class="sxs-lookup"><span data-stu-id="4f722-183">Click **Save** toosave hello new group selection.</span></span>
 
-<span data-ttu-id="6e219-184">När en Azure Active Directory-grupp har konfigurerats från en produkt, den är tillgänglig kontrolleras den **synlighet** för andra produkter i API Management service-instans.</span><span class="sxs-lookup"><span data-stu-id="6e219-184">Once an Azure Active Directory group has been configured from one product, it is available to be checked on the **Visibility** tab for the other products in the API Management service instance.</span></span>
+<span data-ttu-id="4f722-184">När en Azure Active Directory-grupp har konfigurerats från en produkt, är det tillgängliga toobe markerad på hello **synlighet** för hello andra produkter i hello API Management service-instans.</span><span class="sxs-lookup"><span data-stu-id="4f722-184">Once an Azure Active Directory group has been configured from one product, it is available toobe checked on hello **Visibility** tab for hello other products in hello API Management service instance.</span></span>
 
-<span data-ttu-id="6e219-185">Om du vill granska och konfigurera egenskaper för externa grupper när de har lagts till, klicka på namnet på gruppen från den **grupper** fliken.</span><span class="sxs-lookup"><span data-stu-id="6e219-185">To review and configure the properties for external groups once they have been added, click the name of the group from the **Groups** tab.</span></span>
+<span data-ttu-id="4f722-185">tooreview och konfigurera hello egenskaper för externa grupper när de har lagts till, klicka hello namn hello från hello **grupper** fliken.</span><span class="sxs-lookup"><span data-stu-id="4f722-185">tooreview and configure hello properties for external groups once they have been added, click hello name of hello group from hello **Groups** tab.</span></span>
 
 ![Hantera grupper][api-management-groups]
 
-<span data-ttu-id="6e219-187">Härifrån kan du redigera den **namn** och **beskrivning** i gruppen.</span><span class="sxs-lookup"><span data-stu-id="6e219-187">From here you can edit the **Name** and the **Description** of the group.</span></span>
+<span data-ttu-id="4f722-187">Härifrån kan du redigera hello **namn** och hello **beskrivning** hello-gruppen.</span><span class="sxs-lookup"><span data-stu-id="4f722-187">From here you can edit hello **Name** and hello **Description** of hello group.</span></span>
 
 ![Redigera grupp][api-management-edit-group]
 
-<span data-ttu-id="6e219-189">Användare från den konfigurerade Azure Active Directory kan logga in på Developer-portalen och visa och prenumerera på alla grupper som de har insyn genom att följa anvisningarna i följande avsnitt.</span><span class="sxs-lookup"><span data-stu-id="6e219-189">Users from the configured Azure Active Directory can sign in to the Developer portal and view and subscribe to any groups for which they have visibility by following the instructions in the following section.</span></span>
+<span data-ttu-id="4f722-189">Användare från hello konfigurerade Azure Active Directory kan logga in toohello Developer-portalen och visa och prenumerera tooany grupper som de har genom att följa hello instruktionerna i följande avsnitt hello synlighet.</span><span class="sxs-lookup"><span data-stu-id="4f722-189">Users from hello configured Azure Active Directory can sign in toohello Developer portal and view and subscribe tooany groups for which they have visibility by following hello instructions in hello following section.</span></span>
 
-## <a name="how-to-log-in-to-the-developer-portal-using-an-azure-active-directory-account"></a><span data-ttu-id="6e219-190">Hur du loggar in på den Developer-portalen med ett Azure Active Directory-konto</span><span class="sxs-lookup"><span data-stu-id="6e219-190">How to log in to the Developer portal using an Azure Active Directory account</span></span>
-<span data-ttu-id="6e219-191">Om du vill logga in på Developer-portalen med ett Azure Active Directory-konto som har konfigurerats i föregående avsnitt, öppnar du en ny webbläsare med den **inloggnings-URL** från Active Directory-konfigurationen för programmet och klicka på **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="6e219-191">To log into the Developer portal using an Azure Active Directory account configured in the previous sections, open a new browser window using the **Sign-on URL** from the Active Directory application configuration, and click **Azure Active Directory**.</span></span>
+## <a name="how-toolog-in-toohello-developer-portal-using-an-azure-active-directory-account"></a><span data-ttu-id="4f722-190">Hur toolog toohello Developer-portalen med ett Azure Active Directory-konto</span><span class="sxs-lookup"><span data-stu-id="4f722-190">How toolog in toohello Developer portal using an Azure Active Directory account</span></span>
+<span data-ttu-id="4f722-191">toolog i hello Developer-portalen med ett Azure Active Directory-konto som har konfigurerats i hello föregående avsnitt, öppna ett nytt webbläsarfönster med hello **inloggnings-URL** programmet hello Active Directory-konfigurationen och klickar på **Azure Active Directory**.</span><span class="sxs-lookup"><span data-stu-id="4f722-191">toolog into hello Developer portal using an Azure Active Directory account configured in hello previous sections, open a new browser window using hello **Sign-on URL** from hello Active Directory application configuration, and click **Azure Active Directory**.</span></span>
 
 ![Developer-portalen][api-management-dev-portal-signin]
 
-<span data-ttu-id="6e219-193">Ange autentiseringsuppgifter för en användare i Azure Active Directory och klicka på **logga in**.</span><span class="sxs-lookup"><span data-stu-id="6e219-193">Enter the credentials of one of the users in your Azure Active Directory, and click **Sign in**.</span></span>
+<span data-ttu-id="4f722-193">Ange hello autentiseringsuppgifterna för en av hello användare i Azure Active Directory och klicka på **logga in**.</span><span class="sxs-lookup"><span data-stu-id="4f722-193">Enter hello credentials of one of hello users in your Azure Active Directory, and click **Sign in**.</span></span>
 
 ![Logga in][api-management-aad-signin]
 
-<span data-ttu-id="6e219-195">Du kan uppmanas med ett registreringsformulär om ytterligare information krävs.</span><span class="sxs-lookup"><span data-stu-id="6e219-195">You may be prompted with a registration form if any additional information is required.</span></span> <span data-ttu-id="6e219-196">Fyll i registreringsformuläret och på **registrera**.</span><span class="sxs-lookup"><span data-stu-id="6e219-196">Complete the registration form and click **Sign up**.</span></span>
+<span data-ttu-id="4f722-195">Du kan uppmanas med ett registreringsformulär om ytterligare information krävs.</span><span class="sxs-lookup"><span data-stu-id="4f722-195">You may be prompted with a registration form if any additional information is required.</span></span> <span data-ttu-id="4f722-196">Slutför hello registreringsformuläret och klickar på **registrera**.</span><span class="sxs-lookup"><span data-stu-id="4f722-196">Complete hello registration form and click **Sign up**.</span></span>
 
 ![Registrering][api-management-complete-registration]
 
-<span data-ttu-id="6e219-198">Dina användare är nu inloggad i developer-portalen för din API Management service-instans.</span><span class="sxs-lookup"><span data-stu-id="6e219-198">Your user is now logged into the developer portal for your API Management service instance.</span></span>
+<span data-ttu-id="4f722-198">Dina användare är nu inloggad i hello developer-portalen för din API Management service-instans.</span><span class="sxs-lookup"><span data-stu-id="4f722-198">Your user is now logged into hello developer portal for your API Management service instance.</span></span>
 
 ![Registreringen har slutförts][api-management-registration-complete]
 
@@ -220,10 +220,10 @@ ms.lasthandoff: 07/11/2017
 [api-management-groups]: ./media/api-management-howto-aad/api-management-groups.png
 [api-management-edit-group]: ./media/api-management-howto-aad/api-management-edit-group.png
 
-[How to add operations to an API]: api-management-howto-add-operations.md
-[How to add and publish a product]: api-management-howto-add-products.md
+[How tooadd operations tooan API]: api-management-howto-add-operations.md
+[How tooadd and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
-[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: api-management-get-started.md
 [API Management policy reference]: api-management-policy-reference.md
@@ -232,13 +232,13 @@ ms.lasthandoff: 07/11/2017
 
 [http://oauth.net/2/]: http://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
+[Accessing hello Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1
-[Configure an API to use OAuth 2.0 user authorization]: #step2
-[Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
+[Configure an API toouse OAuth 2.0 user authorization]: #step2
+[Test hello OAuth 2.0 user authorization in hello Developer Portal]: #step3
 [Next steps]: #next-steps
 
-[Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
+[Log in toohello Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
 

@@ -1,6 +1,6 @@
 ---
-title: "Referens för Azure AD-SAML-protokollet | Microsoft Docs"
-description: "Den här artikeln innehåller en översikt över enkel inloggning och enkel Sign-Out SAML-profiler i Azure Active Directory."
+title: "aaaAzure referens för AD-SAML-protokollet | Microsoft Docs"
+description: "Den här artikeln innehåller en översikt över hello enkel inloggning och enkel Sign-Out SAML-profiler i Azure Active Directory."
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
@@ -16,25 +16,25 @@ ms.date: 07/21/2017
 ms.author: priyamo
 ms.custom: aaddev
 ms.reviewer: dastrock
-ms.openlocfilehash: d5ffba5d0c409fe9de7a9e82c6faa4ca2702ab95
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: d712289b16dc40a6b43a96fadef729c55cdaac47
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
-# Hur Azure Active Directory använder SAML-protokoll
-Azure Active Directory (AD Azure) använder SAML 2.0-protokollet för att programmen ska tillhandahålla en enkel inloggning för sina användare. Den [enkel inloggning](active-directory-single-sign-on-protocol-reference.md) och [enkel utloggning](active-directory-single-sign-out-protocol-reference.md) SAML-profiler i Azure AD förklarar hur SAML intyg, protokoll och bindningar används i tjänsten identitet provider.
+# Hur Azure Active Directory använder hello SAML-protokoll
+Azure Active Directory (AD Azure) använder hello SAML 2.0-protokollet tooenable program tooprovide en enkel inloggning upplevelse tootheir användare. Hej [enkel inloggning](active-directory-single-sign-on-protocol-reference.md) och [enkel utloggning](active-directory-single-sign-out-protocol-reference.md) SAML-profiler i Azure AD förklarar hur SAML intyg, protokoll och bindningar används i hello identity provider-tjänsten.
 
-SAML-protokoll kräver identitetsprovider (Azure AD) och service provider (programmet) för att utbyta information om sig själva.
+SAML-protokoll måste hello identitetsprovider (Azure AD) och hello service provider (hello-program) tooexchange information om sig själva.
 
-När ett program registreras med Azure AD, registrerar apputvecklaren federation-relaterad information med Azure AD. Detta inkluderar den **omdirigerings-URI** och **Metadata URI** av programmet.
+När ett program registreras med Azure AD, registrerar hello apputvecklaren federation-relaterad information med Azure AD. Detta inkluderar hello **omdirigerings-URI** och **Metadata URI** av programmet hello.
 
-Azure AD-använder den **Metadata URI** för Molntjänsten att hämta signeringsnyckeln och logga ut URI för Molntjänsten. Om programmet inte har stöd för metadata URI utvecklaren måste kontakta Microsoft-supporten om du vill ange logga ut URI och nyckel för signeringscertifikatet.
+Azure AD använder hello **Metadata URI** av hello cloud service tooretrieve hello signering nyckel och hello logga ut URI för hello-Molntjänsten. Om hello programmet inte har stöd för metadata URI kontakta hello utvecklare Microsoft support tooprovide hello logga ut URI och nyckel för signeringscertifikatet.
 
-Azure Active Directory visar specifika klient- och vanliga (oberoende av klient) enkel inloggning och enkel utloggning slutpunkter. Dessa URL: er representerar adresserbara platser – de är inte bara en identifierare--så att du kan gå till slutpunkten att läsa metadata.
+Azure Active Directory visar specifika klient- och vanliga (oberoende av klient) enkel inloggning och enkel utloggning slutpunkter. Dessa URL: er representerar adresserbara platser – de är inte bara en identifierare--så att du kan gå toohello endpoint tooread hello metadata.
 
-* Klient-specifika slutpunkten finns på `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.  Den <TenantDomainName> är ett registrerat domännamn eller TenantID GUID för en Azure AD-klient. Till exempel federationsmetadata för contoso.com-klienten är på: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* hello klient-specifika slutpunkt finns på `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.  Hej <TenantDomainName> är ett registrerat domännamn eller TenantID GUID för en Azure AD-klient. Exempelvis hello federationsmetadata hello contoso.com klient finns på: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
-* Slutpunkten oberoende av klient finns på `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. I den här slutpunktsadress **vanliga** visas i stället för en klient domän- eller -ID.
+* hello oberoende av klient-slutpunkt finns på `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. I den här slutpunktsadress **vanliga** visas i stället för en klient domän- eller -ID.
 
-Information om Federationsmetadata dokument som Azure AD publicerar finns [Federationsmetadata](active-directory-federation-metadata.md).
+Information om hello Federationsmetadata dokument som Azure AD publicerar finns [Federationsmetadata](active-directory-federation-metadata.md).

@@ -1,12 +1,12 @@
 ---
-title: 'Connect Raspberry PI (C) till Azure IoT - lektionen 3: malldistribution | Microsoft Docs'
-description: "Azure funktionsapp lyssnar på händelser som Azure IoT hub, bearbetar inkommande meddelanden och skriver dem till Azure Table storage."
+title: 'Connect Raspberry PI (C) tooAzure IoT - lektionen 3: malldistribution | Microsoft Docs'
+description: "hello Azure funktionsapp lyssnar tooAzure IoT-hubb händelser, bearbetar inkommande meddelanden och skriver dem tooAzure Table storage."
 services: iot-hub
 documentationcenter: 
 author: shizn
 manager: timtl
 tags: 
-keywords: "lagra data i molnet, data som lagras i molnet, iot Molntjänsten"
+keywords: "lagra data i molnet hello data som lagras i molnet, iot Molntjänsten"
 ROBOTS: NOINDEX
 redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-kit-c-get-started
 ms.assetid: 4bcfb071-b3ae-48cc-8ea5-7e7434732287
@@ -17,30 +17,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/21/2017
 ms.author: xshi
-ms.openlocfilehash: b8bab31489f2e912b51212cb58cb598a9db9b59d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 11aaad4935681d8b3d338779eec1b19d77cb11e6
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="create-an-azure-function-app-and-azure-storage-account"></a><span data-ttu-id="72ed1-104">Skapa en Azure funktionsapp och Azure storage-konto</span><span class="sxs-lookup"><span data-stu-id="72ed1-104">Create an Azure function app and Azure storage account</span></span>
-<span data-ttu-id="72ed1-105">[Azure Functions](../../articles/azure-functions/functions-overview.md) är en lösning för att enkelt köra *funktioner* (små delar av kod) i molnet.</span><span class="sxs-lookup"><span data-stu-id="72ed1-105">[Azure Functions](../../articles/azure-functions/functions-overview.md) is a solution for easily running *functions* (small pieces of code) in the cloud.</span></span> <span data-ttu-id="72ed1-106">Körningen av dina funktioner i Azure är värd för en funktionsapp i Azure.</span><span class="sxs-lookup"><span data-stu-id="72ed1-106">An Azure function app hosts the execution of your functions in Azure.</span></span>
+# <a name="create-an-azure-function-app-and-azure-storage-account"></a><span data-ttu-id="8ad92-104">Skapa en Azure funktionsapp och Azure storage-konto</span><span class="sxs-lookup"><span data-stu-id="8ad92-104">Create an Azure function app and Azure storage account</span></span>
+<span data-ttu-id="8ad92-105">[Azure Functions](../../articles/azure-functions/functions-overview.md) är en lösning för att enkelt köra *funktioner* (små delar av kod) i hello molnet.</span><span class="sxs-lookup"><span data-stu-id="8ad92-105">[Azure Functions](../../articles/azure-functions/functions-overview.md) is a solution for easily running *functions* (small pieces of code) in hello cloud.</span></span> <span data-ttu-id="8ad92-106">Hello körningen av dina funktioner i Azure är värd för en funktionsapp i Azure.</span><span class="sxs-lookup"><span data-stu-id="8ad92-106">An Azure function app hosts hello execution of your functions in Azure.</span></span>
 
-## <a name="what-will-you-do"></a><span data-ttu-id="72ed1-107">Vad ska du göra</span><span class="sxs-lookup"><span data-stu-id="72ed1-107">What will you do</span></span>
-<span data-ttu-id="72ed1-108">Använda en Azure Resource Manager-mall för att skapa en funktionsapp i Azure-och ett Azure storage-konto.</span><span class="sxs-lookup"><span data-stu-id="72ed1-108">Use an Azure Resource Manager template to create an Azure function app and an Azure storage account.</span></span> <span data-ttu-id="72ed1-109">Azure funktionsapp lyssnar på händelser som Azure IoT hub, bearbetar inkommande meddelanden och skriver dem till Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="72ed1-109">The Azure function app listens to Azure IoT hub events, processes incoming messages, and writes them to Azure Table storage.</span></span> <span data-ttu-id="72ed1-110">Om du har några problem kan hitta lösningar på den [felsökning sidan](iot-hub-raspberry-pi-kit-c-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="72ed1-110">If you have any problems, look for solutions on the [troubleshooting page](iot-hub-raspberry-pi-kit-c-troubleshooting.md).</span></span>
+## <a name="what-will-you-do"></a><span data-ttu-id="8ad92-107">Vad ska du göra</span><span class="sxs-lookup"><span data-stu-id="8ad92-107">What will you do</span></span>
+<span data-ttu-id="8ad92-108">Använda en Azure Resource Manager-mall toocreate en funktionsapp i Azure-och ett Azure storage-konto.</span><span class="sxs-lookup"><span data-stu-id="8ad92-108">Use an Azure Resource Manager template toocreate an Azure function app and an Azure storage account.</span></span> <span data-ttu-id="8ad92-109">hello Azure funktionsapp lyssnar tooAzure IoT-hubb händelser, bearbetar inkommande meddelanden och skriver dem tooAzure Table storage.</span><span class="sxs-lookup"><span data-stu-id="8ad92-109">hello Azure function app listens tooAzure IoT hub events, processes incoming messages, and writes them tooAzure Table storage.</span></span> <span data-ttu-id="8ad92-110">Om du har några problem med söka efter lösningar på hello [felsökning sidan](iot-hub-raspberry-pi-kit-c-troubleshooting.md).</span><span class="sxs-lookup"><span data-stu-id="8ad92-110">If you have any problems, look for solutions on hello [troubleshooting page](iot-hub-raspberry-pi-kit-c-troubleshooting.md).</span></span>
 
-## <a name="what-will-you-learn"></a><span data-ttu-id="72ed1-111">Vad får du lära dig</span><span class="sxs-lookup"><span data-stu-id="72ed1-111">What will you learn</span></span>
-<span data-ttu-id="72ed1-112">I den här artikeln får du lära dig:</span><span class="sxs-lookup"><span data-stu-id="72ed1-112">In this article, you will learn:</span></span>
-* <span data-ttu-id="72ed1-113">Hur du använder [Azure Resource Manager](../../articles/azure-resource-manager/resource-group-overview.md) att distribuera Azure-resurser.</span><span class="sxs-lookup"><span data-stu-id="72ed1-113">How to use [Azure Resource Manager](../../articles/azure-resource-manager/resource-group-overview.md) to deploy Azure resources.</span></span>
-* <span data-ttu-id="72ed1-114">Hur du använder en funktionsapp i Azure-att bearbeta meddelanden för IoT-hubb och skriva dem till en tabell i Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="72ed1-114">How to use an Azure function app to process IoT hub messages and write them to a table in Azure Table storage.</span></span>
+## <a name="what-will-you-learn"></a><span data-ttu-id="8ad92-111">Vad får du lära dig</span><span class="sxs-lookup"><span data-stu-id="8ad92-111">What will you learn</span></span>
+<span data-ttu-id="8ad92-112">I den här artikeln får du lära dig:</span><span class="sxs-lookup"><span data-stu-id="8ad92-112">In this article, you will learn:</span></span>
+* <span data-ttu-id="8ad92-113">Hur toouse [Azure Resource Manager](../../articles/azure-resource-manager/resource-group-overview.md) toodeploy Azure resurser.</span><span class="sxs-lookup"><span data-stu-id="8ad92-113">How toouse [Azure Resource Manager](../../articles/azure-resource-manager/resource-group-overview.md) toodeploy Azure resources.</span></span>
+* <span data-ttu-id="8ad92-114">Hur fungerar app tooprocess IoT-hubb meddelanden toouse en Azure och skriva dem tooa tabell i Azure Table storage.</span><span class="sxs-lookup"><span data-stu-id="8ad92-114">How toouse an Azure function app tooprocess IoT hub messages and write them tooa table in Azure Table storage.</span></span>
 
-## <a name="what-do-you-need"></a><span data-ttu-id="72ed1-115">Vad behöver du</span><span class="sxs-lookup"><span data-stu-id="72ed1-115">What do you need</span></span>
-* <span data-ttu-id="72ed1-116">Du måste ha slutfört:</span><span class="sxs-lookup"><span data-stu-id="72ed1-116">You must have successfully completed:</span></span>
-- [<span data-ttu-id="72ed1-117">Kom igång med din hallon Pi 3</span><span class="sxs-lookup"><span data-stu-id="72ed1-117">Get started with your Raspberry Pi 3</span></span>](iot-hub-raspberry-pi-kit-c-get-started.md)
-- [<span data-ttu-id="72ed1-118">Skapa din Azure IoT-hubb</span><span class="sxs-lookup"><span data-stu-id="72ed1-118">Create your Azure IoT hub</span></span>](iot-hub-raspberry-pi-kit-c-get-started.md)
+## <a name="what-do-you-need"></a><span data-ttu-id="8ad92-115">Vad behöver du</span><span class="sxs-lookup"><span data-stu-id="8ad92-115">What do you need</span></span>
+* <span data-ttu-id="8ad92-116">Du måste ha slutfört:</span><span class="sxs-lookup"><span data-stu-id="8ad92-116">You must have successfully completed:</span></span>
+- [<span data-ttu-id="8ad92-117">Kom igång med din hallon Pi 3</span><span class="sxs-lookup"><span data-stu-id="8ad92-117">Get started with your Raspberry Pi 3</span></span>](iot-hub-raspberry-pi-kit-c-get-started.md)
+- [<span data-ttu-id="8ad92-118">Skapa din Azure IoT-hubb</span><span class="sxs-lookup"><span data-stu-id="8ad92-118">Create your Azure IoT hub</span></span>](iot-hub-raspberry-pi-kit-c-get-started.md)
 
-## <a name="open-the-sample-app"></a><span data-ttu-id="72ed1-119">Öppna sample-appen</span><span class="sxs-lookup"><span data-stu-id="72ed1-119">Open the sample app</span></span>
-<span data-ttu-id="72ed1-120">Öppna exempelprojektet i Visual Studio Code genom att köra följande kommandon:</span><span class="sxs-lookup"><span data-stu-id="72ed1-120">Open the sample project in Visual Studio Code by running the following commands:</span></span>
+## <a name="open-hello-sample-app"></a><span data-ttu-id="8ad92-119">Öppna hello sample-appen</span><span class="sxs-lookup"><span data-stu-id="8ad92-119">Open hello sample app</span></span>
+<span data-ttu-id="8ad92-120">Öppna hello exempelprojektet i Visual Studio Code genom att köra följande kommandon hello:</span><span class="sxs-lookup"><span data-stu-id="8ad92-120">Open hello sample project in Visual Studio Code by running hello following commands:</span></span>
 
 ```bash
 cd Lesson3
@@ -49,30 +49,30 @@ code .
 
 ![Lagringsplatsen struktur](media/iot-hub-raspberry-pi-lessons/lesson3/repo_structure_c.png)
 
-* <span data-ttu-id="72ed1-122">Den `main.c` filen i den `app` undermapp är viktiga källfilen.</span><span class="sxs-lookup"><span data-stu-id="72ed1-122">The `main.c` file in the `app` subfolder is the key source file.</span></span> <span data-ttu-id="72ed1-123">Den här källfilen innehåller koden för att skicka ett meddelande till 20 gånger till din IoT-hubb och blinka Indikator för varje meddelande som skickas.</span><span class="sxs-lookup"><span data-stu-id="72ed1-123">This source file contains the code to send a message 20 times to your IoT hub and blink the LED for each message it sends.</span></span>
-* <span data-ttu-id="72ed1-124">Den `arm-template.json` filen är Azure Resource Manager-mallen som innehåller en funktionsapp i Azure-och ett Azure storage-konto.</span><span class="sxs-lookup"><span data-stu-id="72ed1-124">The `arm-template.json` file is the Azure Resource Manager template that contains an Azure function app and an Azure storage account.</span></span>
-* <span data-ttu-id="72ed1-125">Den `arm-template-param.json` filen är den konfigurationsfil som används av Azure Resource Manager-mallen.</span><span class="sxs-lookup"><span data-stu-id="72ed1-125">The `arm-template-param.json` file is the configuration file used by the Azure Resource Manager template.</span></span>
-* <span data-ttu-id="72ed1-126">Den `ReceiveDeviceMessages` undermappen innehåller Node.js-kod för Azure-funktionen.</span><span class="sxs-lookup"><span data-stu-id="72ed1-126">The `ReceiveDeviceMessages` subfolder contains the Node.js code for the Azure function.</span></span>
+* <span data-ttu-id="8ad92-122">Hej `main.c` filen i hello `app` undermapp är hello viktiga källfilen.</span><span class="sxs-lookup"><span data-stu-id="8ad92-122">hello `main.c` file in hello `app` subfolder is hello key source file.</span></span> <span data-ttu-id="8ad92-123">Den här källfilen innehåller hello kod toosend ett meddelande 20 gånger tooyour IoT-hubb och blinka hello Indikator för varje meddelande som skickas.</span><span class="sxs-lookup"><span data-stu-id="8ad92-123">This source file contains hello code toosend a message 20 times tooyour IoT hub and blink hello LED for each message it sends.</span></span>
+* <span data-ttu-id="8ad92-124">Hej `arm-template.json` filen är hello Azure Resource Manager-mall som innehåller en funktionsapp i Azure-och ett Azure storage-konto.</span><span class="sxs-lookup"><span data-stu-id="8ad92-124">hello `arm-template.json` file is hello Azure Resource Manager template that contains an Azure function app and an Azure storage account.</span></span>
+* <span data-ttu-id="8ad92-125">Hej `arm-template-param.json` filen är hello konfigurationsfil som hello Azure Resource Manager-mall.</span><span class="sxs-lookup"><span data-stu-id="8ad92-125">hello `arm-template-param.json` file is hello configuration file used by hello Azure Resource Manager template.</span></span>
+* <span data-ttu-id="8ad92-126">Hej `ReceiveDeviceMessages` undermappen innehåller hello Node.js-kod för hello Azure-funktion.</span><span class="sxs-lookup"><span data-stu-id="8ad92-126">hello `ReceiveDeviceMessages` subfolder contains hello Node.js code for hello Azure function.</span></span>
 
-## <a name="configure-azure-resource-manager-templates-and-create-resources-in-azure"></a><span data-ttu-id="72ed1-127">Konfigurera Azure Resource Manager-mallar och skapa resurser i Azure</span><span class="sxs-lookup"><span data-stu-id="72ed1-127">Configure Azure Resource Manager templates and create resources in Azure</span></span>
-<span data-ttu-id="72ed1-128">Uppdatera den `arm-template-param.json` filen i Visual Studio-koden.</span><span class="sxs-lookup"><span data-stu-id="72ed1-128">Update the `arm-template-param.json` file in Visual Studio Code.</span></span>
+## <a name="configure-azure-resource-manager-templates-and-create-resources-in-azure"></a><span data-ttu-id="8ad92-127">Konfigurera Azure Resource Manager-mallar och skapa resurser i Azure</span><span class="sxs-lookup"><span data-stu-id="8ad92-127">Configure Azure Resource Manager templates and create resources in Azure</span></span>
+<span data-ttu-id="8ad92-128">Uppdatera hello `arm-template-param.json` filen i Visual Studio-koden.</span><span class="sxs-lookup"><span data-stu-id="8ad92-128">Update hello `arm-template-param.json` file in Visual Studio Code.</span></span>
 
 ![Azure Resource Manager-mallparametrar](media/iot-hub-raspberry-pi-lessons/lesson3/arm_para_c.png)
 
-* <span data-ttu-id="72ed1-130">Ersätt **[IoT-hubb namn]** med **{min hubbnamn}** som du angav när du [skapade din IoT-hubb och registrerad hallon Pi 3](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md).</span><span class="sxs-lookup"><span data-stu-id="72ed1-130">Replace **[your IoT Hub name]** with **{my hub name}** that you specified when you [created your IoT hub and registered Raspberry Pi 3](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md).</span></span>
-* <span data-ttu-id="72ed1-131">Ersätt **[prefix sträng för nya resurser]** med valfritt prefix som du vill använda.</span><span class="sxs-lookup"><span data-stu-id="72ed1-131">Replace **[prefix string for new resources]** with any prefix you want.</span></span> <span data-ttu-id="72ed1-132">Prefixet gör att resursnamnet globalt unikt för att undvika konflikter.</span><span class="sxs-lookup"><span data-stu-id="72ed1-132">The prefix ensures that the resource name is globally unique to avoid conflict.</span></span> <span data-ttu-id="72ed1-133">Använd inte en dash eller en siffra inledande i prefixet.</span><span class="sxs-lookup"><span data-stu-id="72ed1-133">Do not use a dash or number initial in the prefix.</span></span>
+* <span data-ttu-id="8ad92-130">Ersätt **[IoT-hubb namn]** med **{min hubbnamn}** som du angav när du [skapade din IoT-hubb och registrerad hallon Pi 3](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md).</span><span class="sxs-lookup"><span data-stu-id="8ad92-130">Replace **[your IoT Hub name]** with **{my hub name}** that you specified when you [created your IoT hub and registered Raspberry Pi 3](iot-hub-raspberry-pi-kit-c-lesson2-prepare-azure-iot-hub.md).</span></span>
+* <span data-ttu-id="8ad92-131">Ersätt **[prefix sträng för nya resurser]** med valfritt prefix som du vill använda.</span><span class="sxs-lookup"><span data-stu-id="8ad92-131">Replace **[prefix string for new resources]** with any prefix you want.</span></span> <span data-ttu-id="8ad92-132">hello prefix garanterar hello resursnamnet är globalt unik tooavoid konflikt.</span><span class="sxs-lookup"><span data-stu-id="8ad92-132">hello prefix ensures that hello resource name is globally unique tooavoid conflict.</span></span> <span data-ttu-id="8ad92-133">Använd inte en dash eller en siffra inledande i hello prefix.</span><span class="sxs-lookup"><span data-stu-id="8ad92-133">Do not use a dash or number initial in hello prefix.</span></span>
 
-<span data-ttu-id="72ed1-134">När du har uppdaterat den `arm-template-param.json` fil, distribuera resurserna till Azure genom att köra följande kommando:</span><span class="sxs-lookup"><span data-stu-id="72ed1-134">After you update the `arm-template-param.json` file, deploy the resources to Azure by running the following command:</span></span>
+<span data-ttu-id="8ad92-134">När du har uppdaterat hello `arm-template-param.json` fil, distribuera hello resurser tooAzure genom att köra följande kommando hello:</span><span class="sxs-lookup"><span data-stu-id="8ad92-134">After you update hello `arm-template-param.json` file, deploy hello resources tooAzure by running hello following command:</span></span>
 
 ```bash
 az group deployment create --template-file arm-template.json --parameters @arm-template-param.json -g iot-sample
 ```
 
-<span data-ttu-id="72ed1-135">Det tar cirka fem minuter för att skapa dessa resurser.</span><span class="sxs-lookup"><span data-stu-id="72ed1-135">It takes about five minutes to create these resources.</span></span> <span data-ttu-id="72ed1-136">När resursen skapas pågår, kan du gå vidare till nästa artikel.</span><span class="sxs-lookup"><span data-stu-id="72ed1-136">While the resource creation is in progress, you can move on to the next article.</span></span>
+<span data-ttu-id="8ad92-135">Det tar cirka fem minuter toocreate dessa resurser.</span><span class="sxs-lookup"><span data-stu-id="8ad92-135">It takes about five minutes toocreate these resources.</span></span> <span data-ttu-id="8ad92-136">Medan hello resursen skapas, kan du gå vidare toohello nästa artikel.</span><span class="sxs-lookup"><span data-stu-id="8ad92-136">While hello resource creation is in progress, you can move on toohello next article.</span></span>
 
-## <a name="summary"></a><span data-ttu-id="72ed1-137">Sammanfattning</span><span class="sxs-lookup"><span data-stu-id="72ed1-137">Summary</span></span>
-<span data-ttu-id="72ed1-138">Du har skapat en funktionsapp i Azure-för att bearbeta meddelanden för IoT-hubb och ett Azure storage-konto för att lagra dessa meddelanden.</span><span class="sxs-lookup"><span data-stu-id="72ed1-138">You've created your Azure function app to process IoT hub messages and an Azure storage account to store these messages.</span></span> <span data-ttu-id="72ed1-139">Du kan nu distribuera och köra exemplet för att skicka meddelanden från enhet till moln på Pi.</span><span class="sxs-lookup"><span data-stu-id="72ed1-139">You can now deploy and run the sample to send device-to-cloud messages on Pi.</span></span>
+## <a name="summary"></a><span data-ttu-id="8ad92-137">Sammanfattning</span><span class="sxs-lookup"><span data-stu-id="8ad92-137">Summary</span></span>
+<span data-ttu-id="8ad92-138">Du har skapat din Azure funktionen app tooprocess IoT-hubb meddelanden och ett Azure storage-konto toostore dessa meddelanden.</span><span class="sxs-lookup"><span data-stu-id="8ad92-138">You've created your Azure function app tooprocess IoT hub messages and an Azure storage account toostore these messages.</span></span> <span data-ttu-id="8ad92-139">Du kan nu distribuera och köra exemplet toosend enhet till moln hälsningsmeddelande på Pi.</span><span class="sxs-lookup"><span data-stu-id="8ad92-139">You can now deploy and run hello sample toosend device-to-cloud messages on Pi.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="72ed1-140">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="72ed1-140">Next steps</span></span>
-[<span data-ttu-id="72ed1-141">Kör ett exempelprogram för att skicka meddelanden från enhet till moln</span><span class="sxs-lookup"><span data-stu-id="72ed1-141">Run a sample application to send device-to-cloud messages</span></span>](iot-hub-raspberry-pi-kit-c-lesson3-run-azure-blink.md)
+## <a name="next-steps"></a><span data-ttu-id="8ad92-140">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="8ad92-140">Next steps</span></span>
+[<span data-ttu-id="8ad92-141">Kör ett exempel programmet toosend meddelanden från enhet till moln</span><span class="sxs-lookup"><span data-stu-id="8ad92-141">Run a sample application toosend device-to-cloud messages</span></span>](iot-hub-raspberry-pi-kit-c-lesson3-run-azure-blink.md)
 

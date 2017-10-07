@@ -12,7 +12,7 @@
 ### [Vanliga scenarier](power-bi-embedded-scenarios.md)
 
 ## Hantera
-### [Anslut till en datakälla](power-bi-embedded-connect-datasource.md)
+### [Ansluta tooa datakällan](power-bi-embedded-connect-datasource.md)
 ### [Bädda in en Power BI-rapport](power-bi-embedded-embed-report.md)
 ### [Interagera med rapporter](power-bi-embedded-interact-with-reports.md)
 ### [Skapa en ny rapport från en datauppsättning](power-bi-embedded-create-report-from-dataset.md)

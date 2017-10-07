@@ -1,5 +1,5 @@
 ---
-title: "Resurser för att utveckla ett data warehouse i Azure | Microsoft Docs"
+title: "aaaResources för att utveckla ett data warehouse i Azure | Microsoft Docs"
 description: "Begrepp för utveckling, designbeslut, rekommendationer och kodning tekniker för SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,42 +15,42 @@ ms.workload: data-services
 ms.custom: develop
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: b85a4f09e561e429aa5bf46ec680014487fb40c7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 67e3a6a3e2664919c3445ea5d5eba251054de020
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a><span data-ttu-id="63ba8-103">Designbeslut och kodning tekniker för SQL Data Warehouse</span><span class="sxs-lookup"><span data-stu-id="63ba8-103">Design decisions and coding techniques for SQL Data Warehouse</span></span>
-<span data-ttu-id="63ba8-104">Titta igenom dessa development artiklar för att bättre förstå viktiga designbeslut, rekommendationer och kodning tekniker för SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="63ba8-104">Take a look through these development articles to better understand key design decisions, recommendations and coding techniques for SQL Data Warehouse.</span></span>
+# <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a><span data-ttu-id="2dfda-103">Designbeslut och kodning tekniker för SQL Data Warehouse</span><span class="sxs-lookup"><span data-stu-id="2dfda-103">Design decisions and coding techniques for SQL Data Warehouse</span></span>
+<span data-ttu-id="2dfda-104">Titta igenom dessa development artiklar toobetter förstå viktiga designbeslut, rekommendationer och kodning tekniker för SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="2dfda-104">Take a look through these development articles toobetter understand key design decisions, recommendations and coding techniques for SQL Data Warehouse.</span></span>
 
-## <a name="key-design-decisions"></a><span data-ttu-id="63ba8-105">Viktiga designbeslut</span><span class="sxs-lookup"><span data-stu-id="63ba8-105">Key design decisions</span></span>
-<span data-ttu-id="63ba8-106">I följande artiklar beskrivs några av de viktiga begrepp och designbeslut som du behöver förstå för utveckling av ditt distribuerade data warehouse med hjälp av SQL Data Warehouse:</span><span class="sxs-lookup"><span data-stu-id="63ba8-106">The following articles highlight some of the key concepts and design decisions you will need to understand for the development of your distributed data warehouse using SQL Data Warehouse:</span></span>
+## <a name="key-design-decisions"></a><span data-ttu-id="2dfda-105">Viktiga designbeslut</span><span class="sxs-lookup"><span data-stu-id="2dfda-105">Key design decisions</span></span>
+<span data-ttu-id="2dfda-106">hello beskrivs följande artiklar några av hello viktiga begrepp och designbeslut som du behöver toounderstand för hello utvecklingen av ditt distribuerade data warehouse med hjälp av SQL Data Warehouse:</span><span class="sxs-lookup"><span data-stu-id="2dfda-106">hello following articles highlight some of hello key concepts and design decisions you will need toounderstand for hello development of your distributed data warehouse using SQL Data Warehouse:</span></span>
 
-* <span data-ttu-id="63ba8-107">[anslutningar][connections]</span><span class="sxs-lookup"><span data-stu-id="63ba8-107">[connections][connections]</span></span>
-* <span data-ttu-id="63ba8-108">[concurrency][concurrency]</span><span class="sxs-lookup"><span data-stu-id="63ba8-108">[concurrency][concurrency]</span></span>
-* <span data-ttu-id="63ba8-109">[transaktioner][transactions]</span><span class="sxs-lookup"><span data-stu-id="63ba8-109">[transactions][transactions]</span></span>
-* <span data-ttu-id="63ba8-110">[användardefinierade scheman][user-defined schemas]</span><span class="sxs-lookup"><span data-stu-id="63ba8-110">[user-defined schemas][user-defined schemas]</span></span>
-* <span data-ttu-id="63ba8-111">[tabell-distribution][table distribution]</span><span class="sxs-lookup"><span data-stu-id="63ba8-111">[table distribution][table distribution]</span></span>
-* <span data-ttu-id="63ba8-112">[Tabellindex][table indexes]</span><span class="sxs-lookup"><span data-stu-id="63ba8-112">[table indexes][table indexes]</span></span>
-* <span data-ttu-id="63ba8-113">[tabellpartitioner][table partitions]</span><span class="sxs-lookup"><span data-stu-id="63ba8-113">[table partitions][table partitions]</span></span>
-* <span data-ttu-id="63ba8-114">[CTAS][CTAS]</span><span class="sxs-lookup"><span data-stu-id="63ba8-114">[CTAS][CTAS]</span></span>
-* <span data-ttu-id="63ba8-115">[statistik][statistics]</span><span class="sxs-lookup"><span data-stu-id="63ba8-115">[statistics][statistics]</span></span>
+* <span data-ttu-id="2dfda-107">[anslutningar][connections]</span><span class="sxs-lookup"><span data-stu-id="2dfda-107">[connections][connections]</span></span>
+* <span data-ttu-id="2dfda-108">[concurrency][concurrency]</span><span class="sxs-lookup"><span data-stu-id="2dfda-108">[concurrency][concurrency]</span></span>
+* <span data-ttu-id="2dfda-109">[transaktioner][transactions]</span><span class="sxs-lookup"><span data-stu-id="2dfda-109">[transactions][transactions]</span></span>
+* <span data-ttu-id="2dfda-110">[användardefinierade scheman][user-defined schemas]</span><span class="sxs-lookup"><span data-stu-id="2dfda-110">[user-defined schemas][user-defined schemas]</span></span>
+* <span data-ttu-id="2dfda-111">[tabell-distribution][table distribution]</span><span class="sxs-lookup"><span data-stu-id="2dfda-111">[table distribution][table distribution]</span></span>
+* <span data-ttu-id="2dfda-112">[Tabellindex][table indexes]</span><span class="sxs-lookup"><span data-stu-id="2dfda-112">[table indexes][table indexes]</span></span>
+* <span data-ttu-id="2dfda-113">[tabellpartitioner][table partitions]</span><span class="sxs-lookup"><span data-stu-id="2dfda-113">[table partitions][table partitions]</span></span>
+* <span data-ttu-id="2dfda-114">[CTAS][CTAS]</span><span class="sxs-lookup"><span data-stu-id="2dfda-114">[CTAS][CTAS]</span></span>
+* <span data-ttu-id="2dfda-115">[statistik][statistics]</span><span class="sxs-lookup"><span data-stu-id="2dfda-115">[statistics][statistics]</span></span>
 
-## <a name="development-recommendations-and-coding-techniques"></a><span data-ttu-id="63ba8-116">Rekommendationer för utveckling och kodning tekniker</span><span class="sxs-lookup"><span data-stu-id="63ba8-116">Development recommendations and coding techniques</span></span>
-<span data-ttu-id="63ba8-117">Dessa artiklar markera specifika kodning tekniker, tips och rekommendationer för att utveckla ditt SQL Data Warehouse:</span><span class="sxs-lookup"><span data-stu-id="63ba8-117">These articles highlight specific coding techniques, tips and recommendations for developing your SQL Data Warehouse:</span></span>
+## <a name="development-recommendations-and-coding-techniques"></a><span data-ttu-id="2dfda-116">Rekommendationer för utveckling och kodning tekniker</span><span class="sxs-lookup"><span data-stu-id="2dfda-116">Development recommendations and coding techniques</span></span>
+<span data-ttu-id="2dfda-117">Dessa artiklar markera specifika kodning tekniker, tips och rekommendationer för att utveckla ditt SQL Data Warehouse:</span><span class="sxs-lookup"><span data-stu-id="2dfda-117">These articles highlight specific coding techniques, tips and recommendations for developing your SQL Data Warehouse:</span></span>
 
-* <span data-ttu-id="63ba8-118">[lagrade procedurer][stored procedures]</span><span class="sxs-lookup"><span data-stu-id="63ba8-118">[stored procedures][stored procedures]</span></span>
-* <span data-ttu-id="63ba8-119">[etiketter][labels]</span><span class="sxs-lookup"><span data-stu-id="63ba8-119">[labels][labels]</span></span>
-* <span data-ttu-id="63ba8-120">[vyer][views]</span><span class="sxs-lookup"><span data-stu-id="63ba8-120">[views][views]</span></span>
-* <span data-ttu-id="63ba8-121">[temporära tabeller][temporary tables]</span><span class="sxs-lookup"><span data-stu-id="63ba8-121">[temporary tables][temporary tables]</span></span>
-* <span data-ttu-id="63ba8-122">[dynamisk SQL][dynamic SQL]</span><span class="sxs-lookup"><span data-stu-id="63ba8-122">[dynamic SQL][dynamic SQL]</span></span>
-* <span data-ttu-id="63ba8-123">[slingor][looping]</span><span class="sxs-lookup"><span data-stu-id="63ba8-123">[looping][looping]</span></span>
-* <span data-ttu-id="63ba8-124">[Gruppera efter alternativ][group by options]</span><span class="sxs-lookup"><span data-stu-id="63ba8-124">[group by options][group by options]</span></span>
-* <span data-ttu-id="63ba8-125">[variabeltilldelning][variable assignment]</span><span class="sxs-lookup"><span data-stu-id="63ba8-125">[variable assignment][variable assignment]</span></span>
+* <span data-ttu-id="2dfda-118">[lagrade procedurer][stored procedures]</span><span class="sxs-lookup"><span data-stu-id="2dfda-118">[stored procedures][stored procedures]</span></span>
+* <span data-ttu-id="2dfda-119">[etiketter][labels]</span><span class="sxs-lookup"><span data-stu-id="2dfda-119">[labels][labels]</span></span>
+* <span data-ttu-id="2dfda-120">[vyer][views]</span><span class="sxs-lookup"><span data-stu-id="2dfda-120">[views][views]</span></span>
+* <span data-ttu-id="2dfda-121">[temporära tabeller][temporary tables]</span><span class="sxs-lookup"><span data-stu-id="2dfda-121">[temporary tables][temporary tables]</span></span>
+* <span data-ttu-id="2dfda-122">[dynamisk SQL][dynamic SQL]</span><span class="sxs-lookup"><span data-stu-id="2dfda-122">[dynamic SQL][dynamic SQL]</span></span>
+* <span data-ttu-id="2dfda-123">[slingor][looping]</span><span class="sxs-lookup"><span data-stu-id="2dfda-123">[looping][looping]</span></span>
+* <span data-ttu-id="2dfda-124">[Gruppera efter alternativ][group by options]</span><span class="sxs-lookup"><span data-stu-id="2dfda-124">[group by options][group by options]</span></span>
+* <span data-ttu-id="2dfda-125">[variabeltilldelning][variable assignment]</span><span class="sxs-lookup"><span data-stu-id="2dfda-125">[variable assignment][variable assignment]</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="63ba8-126">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="63ba8-126">Next steps</span></span>
-<span data-ttu-id="63ba8-127">När du har gått igenom development artiklar ta en titt på den [Transact-SQL referens] [ Transact-SQL reference] för mer information om syntaxen stöds för SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="63ba8-127">Once you have been through the development articles take a look through the [Transact-SQL reference][Transact-SQL reference] page for more details on the supported syntax for SQL Data Warehouse.</span></span>
+## <a name="next-steps"></a><span data-ttu-id="2dfda-126">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="2dfda-126">Next steps</span></span>
+<span data-ttu-id="2dfda-127">När du har gått igenom hello development artiklar ta en titt på hello [Transact-SQL referens] [ Transact-SQL reference] ha mer information om hello stöds syntax för SQL Data Warehouse.</span><span class="sxs-lookup"><span data-stu-id="2dfda-127">Once you have been through hello development articles take a look through hello [Transact-SQL reference][Transact-SQL reference] page for more details on hello supported syntax for SQL Data Warehouse.</span></span>
 
 <!--Image references-->
 

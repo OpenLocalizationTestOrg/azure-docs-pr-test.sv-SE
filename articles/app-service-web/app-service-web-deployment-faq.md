@@ -1,0 +1,101 @@
+---
+title: "aaaDeployment vanliga frågor och svar för Azure-webbappar | Microsoft Docs"
+description: "Få svar toofrequently frågor och svar om distribution för funktionen för hello Web Apps i Azure App Service."
+services: app-service\web
+documentationcenter: 
+author: genlin
+manager: cshepard
+editor: 
+tags: top-support-issue
+ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
+ms.service: app-service-web
+ms.workload: web
+ms.tgt_pltfrm: ibiza
+ms.devlang: na
+ms.topic: article
+ms.date: 7/10/2017
+ms.author: genli
+ms.openlocfilehash: 566e1d7028e678f9679200f436118d27dfb07079
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: sv-SE
+ms.lasthandoff: 10/06/2017
+---
+# <a name="deployment-faqs-for-web-apps-in-azure"></a><span data-ttu-id="583d3-103">Distribution och svar för Web Apps i Azure</span><span class="sxs-lookup"><span data-stu-id="583d3-103">Deployment FAQs for Web Apps in Azure</span></span>
+
+<span data-ttu-id="583d3-104">Den här artikeln innehåller svar toofrequently vanliga frågor och svar om distributionsproblem för hello [funktionen Web Apps i Azure App Service](https://azure.microsoft.com/services/app-service/web/).</span><span class="sxs-lookup"><span data-stu-id="583d3-104">This article has answers toofrequently asked questions (FAQs) about deployment issues for hello [Web Apps feature of Azure App Service](https://azure.microsoft.com/services/app-service/web/).</span></span>
+
+[!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="i-am-just-getting-started-with-app-service-web-apps-how-do-i-publish-my-code"></a><span data-ttu-id="583d3-105">Det är bara komma igång med App Service web apps.</span><span class="sxs-lookup"><span data-stu-id="583d3-105">I am just getting started with App Service web apps.</span></span> <span data-ttu-id="583d3-106">Hur jag för att publicera min kod?</span><span class="sxs-lookup"><span data-stu-id="583d3-106">How do I publish my code?</span></span>
+
+<span data-ttu-id="583d3-107">Här följer några alternativ för att publicera web app koden:</span><span class="sxs-lookup"><span data-stu-id="583d3-107">Here are some options for publishing your web app code:</span></span>
+
+*   <span data-ttu-id="583d3-108">Distribuera med Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="583d3-108">Deploy by using Visual Studio.</span></span> <span data-ttu-id="583d3-109">Om du har hello Visual Studio-lösning, högerklicka hello webbapprojektet och välj **publicera**.</span><span class="sxs-lookup"><span data-stu-id="583d3-109">If you have hello Visual Studio solution, right-click hello web application project, and then select **Publish**.</span></span>
+*   <span data-ttu-id="583d3-110">Distribuera med hjälp av en FTP-klient.</span><span class="sxs-lookup"><span data-stu-id="583d3-110">Deploy by using an FTP client.</span></span> <span data-ttu-id="583d3-111">I hello Azure-portalen, hämta hello publiceringsprofil för hello webbprogrammet som du vill toodeploy din kod.</span><span class="sxs-lookup"><span data-stu-id="583d3-111">In hello Azure portal, download hello publish profile for hello web app that you want toodeploy your code to.</span></span> <span data-ttu-id="583d3-112">Därefter kan du överföra hello filer too\site\wwwroot med hjälp av hello samma Publicera profil FTP-autentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="583d3-112">Then, upload hello files too\site\wwwroot by using hello same publish profile FTP credentials.</span></span>
+
+<span data-ttu-id="583d3-113">Mer information finns i [distribuera din app tooApp tjänsten](web-sites-deploy.md).</span><span class="sxs-lookup"><span data-stu-id="583d3-113">For more information, see [Deploy your app tooApp Service](web-sites-deploy.md).</span></span>
+
+## <a name="i-see-an-error-message-when-i-try-toodeploy-from-visual-studio-how-do-i-resolve-this"></a><span data-ttu-id="583d3-114">Jag får ett felmeddelande när jag försöker toodeploy från Visual Studio.</span><span class="sxs-lookup"><span data-stu-id="583d3-114">I see an error message when I try toodeploy from Visual Studio.</span></span> <span data-ttu-id="583d3-115">Hur lösa problemet?</span><span class="sxs-lookup"><span data-stu-id="583d3-115">How do I resolve this?</span></span>
+
+<span data-ttu-id="583d3-116">Om du ser följande meddelande hello du kanske använder en äldre version av hello SDK ”: fel under distributionen för resurs 'YourResourceName' i resursgruppen 'YourResourceGroup': MissingRegistrationForLocation: hello prenumerationen har inte registrerats för hello resurstyp 'komponenter' hello plats 'Centrala USA'.</span><span class="sxs-lookup"><span data-stu-id="583d3-116">If you see hello following message, you might be using an older version of hello SDK: “Error during deployment for resource 'YourResourceName' in resource group 'YourResourceGroup': MissingRegistrationForLocation: hello subscription is not registered for hello resource type 'components' in hello location 'Central US'.</span></span> <span data-ttu-id="583d3-117">Registrera för den här providern i ordning toohave toothis plats ”.</span><span class="sxs-lookup"><span data-stu-id="583d3-117">Please re-register for this provider in order toohave access toothis location.”</span></span> 
+
+<span data-ttu-id="583d3-118">tooresolve det här felet, uppgradera toohello [senaste SDK: N](https://azure.microsoft.com/downloads/).</span><span class="sxs-lookup"><span data-stu-id="583d3-118">tooresolve this error, upgrade toohello [latest SDK](https://azure.microsoft.com/downloads/).</span></span> <span data-ttu-id="583d3-119">Om du ser det här meddelandet och du har hello senaste SDK: N, begär support.</span><span class="sxs-lookup"><span data-stu-id="583d3-119">If you see this message and you have hello latest SDK, submit a support request.</span></span>
+
+## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-tooapp-service"></a><span data-ttu-id="583d3-120">Hur distribuerar ett ASP.NET-program från Visual Studio tooApp tjänsten?</span><span class="sxs-lookup"><span data-stu-id="583d3-120">How do I deploy an ASP.NET application from Visual Studio tooApp Service?</span></span>
+<a id="deployasp"></a>
+
+<span data-ttu-id="583d3-121">hello kursen [skapa din första ASP.NET-webbapp i Azure på fem minuter](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-get-started/) visar hur toodeploy ett ASP.NET web application tooa webbapp i App Service med hjälp av Visual Studio 2015.</span><span class="sxs-lookup"><span data-stu-id="583d3-121">hello tutorial [Create your first ASP.NET web app in Azure in five minutes](https://docs.microsoft.com/azure/app-service-web/web-sites-dotnet-get-started/) shows you how toodeploy an ASP.NET web application tooa web app in App Service by using Visual Studio 2015.</span></span>
+
+## <a name="what-are-hello-different-types-of-deployment-credentials"></a><span data-ttu-id="583d3-122">Vad är hello olika typer av autentiseringsuppgifter för distribution?</span><span class="sxs-lookup"><span data-stu-id="583d3-122">What are hello different types of deployment credentials?</span></span>
+
+<span data-ttu-id="583d3-123">Apptjänst stöder två typer av autentiseringsuppgifter för lokal Git och FTP-/ S-distributionen.</span><span class="sxs-lookup"><span data-stu-id="583d3-123">App Service supports two types of credentials for local Git deployment and FTP/S deployment.</span></span> <span data-ttu-id="583d3-124">Mer information om hur autentiseringsuppgifter för distribution av tooconfigure finns [konfigurera autentiseringsuppgifter för distribution för Apptjänst](app-service-deployment-credentials.md).</span><span class="sxs-lookup"><span data-stu-id="583d3-124">For more information about how tooconfigure deployment credentials, see [Configure deployment credentials for App Service](app-service-deployment-credentials.md).</span></span>
+
+## <a name="what-is-hello-file-or-directory-structure-of-my-app-service-web-app"></a><span data-ttu-id="583d3-125">Vad är hello filen eller katalogen strukturen för webbappen Apptjänst?</span><span class="sxs-lookup"><span data-stu-id="583d3-125">What is hello file or directory structure of my App Service web app?</span></span>
+
+<span data-ttu-id="583d3-126">Information om hello filstruktur för din App Service-appen finns [filen strukturen i Azure](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure).</span><span class="sxs-lookup"><span data-stu-id="583d3-126">For information about hello file structure of your App Service app, see [File structure in Azure](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure).</span></span>
+
+## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-hello-disk-when-i-try-tooftp-my-files"></a><span data-ttu-id="583d3-127">Hur löser jag ”FTP fel 550 - det finns inte är tillräckligt med utrymme på disken för hello” när jag försöker tooFTP Mina filer?</span><span class="sxs-lookup"><span data-stu-id="583d3-127">How do I resolve "FTP Error 550 - There is not enough space on hello disk" when I try tooFTP my files?</span></span>
+
+<span data-ttu-id="583d3-128">Om du ser det här meddelandet är det troligt att du kör i en diskkvot i hello service-plan för webbappen.</span><span class="sxs-lookup"><span data-stu-id="583d3-128">If you see this message, it's likely that you are running into a disk quota in hello service plan for your web app.</span></span> <span data-ttu-id="583d3-129">Du kan behöva tooscale in tooa högre tjänstnivån baserat på dina behov av diskutrymme.</span><span class="sxs-lookup"><span data-stu-id="583d3-129">You might need tooscale up tooa higher service tier based on your disk space needs.</span></span> <span data-ttu-id="583d3-130">Mer information om priser planer och gränserna finns [priser för Apptjänst](https://azure.microsoft.com/pricing/details/app-service/).</span><span class="sxs-lookup"><span data-stu-id="583d3-130">For more information about pricing plans and resource limits, see [App Service pricing](https://azure.microsoft.com/pricing/details/app-service/).</span></span>
+
+## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a><span data-ttu-id="583d3-131">Hur ställer jag in kontinuerlig distribution för webbprogrammet min App Service?</span><span class="sxs-lookup"><span data-stu-id="583d3-131">How do I set up continuous deployment for my App Service web app?</span></span>
+
+<span data-ttu-id="583d3-132">Du kan ställa in kontinuerlig distribution från flera resurser, inklusive Visual Studio Team Services, OneDrive, GitHub, Bitbucket, Dropbox och andra Git-databaser.</span><span class="sxs-lookup"><span data-stu-id="583d3-132">You can set up continuous deployment from several resources, including Visual Studio Team Services, OneDrive, GitHub, Bitbucket, Dropbox, and other Git repositories.</span></span> <span data-ttu-id="583d3-133">Dessa alternativ är tillgängliga i hello-portalen.</span><span class="sxs-lookup"><span data-stu-id="583d3-133">These options are available in hello portal.</span></span> <span data-ttu-id="583d3-134">[Kontinuerlig distribution tooApp Service](app-service-continuous-deployment.md) är en bra genomgång som förklarar hur tooset in kontinuerlig distribution.</span><span class="sxs-lookup"><span data-stu-id="583d3-134">[Continuous deployment tooApp Service](app-service-continuous-deployment.md) is a helpful tutorial that explains how tooset up continuous deployment.</span></span>
+
+## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a><span data-ttu-id="583d3-135">Hur felsöker problem med kontinuerlig distribution från GitHub och Bitbucket?</span><span class="sxs-lookup"><span data-stu-id="583d3-135">How do I troubleshoot issues with continuous deployment from GitHub and Bitbucket?</span></span>
+
+<span data-ttu-id="583d3-136">Hur du undersöker problem med kontinuerlig distribution från GitHub eller Bitbucket finns [undersöker kontinuerlig distribution](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment).</span><span class="sxs-lookup"><span data-stu-id="583d3-136">For help investigating issues with continuous deployment from GitHub or Bitbucket, see [Investigating continuous deployment](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment).</span></span>
+
+## <a name="i-cant-ftp-toomy-site-and-publish-my-code-how-do-i-resolve-this"></a><span data-ttu-id="583d3-137">Jag kan inte FTP-platsen toomy och publicera min kod.</span><span class="sxs-lookup"><span data-stu-id="583d3-137">I can't FTP toomy site and publish my code.</span></span> <span data-ttu-id="583d3-138">Hur lösa problemet?</span><span class="sxs-lookup"><span data-stu-id="583d3-138">How do I resolve this?</span></span>
+
+<span data-ttu-id="583d3-139">problem med tooresolve FTP:</span><span class="sxs-lookup"><span data-stu-id="583d3-139">tooresolve FTP issues:</span></span>
+
+1. <span data-ttu-id="583d3-140">Kontrollera att du anger rätt hello-värdnamn och autentiseringsuppgifter.</span><span class="sxs-lookup"><span data-stu-id="583d3-140">Verify that you are entering hello correct host name and credentials.</span></span> <span data-ttu-id="583d3-141">Detaljerad information om olika typer av autentiseringsuppgifter och hur toouse dem, se [distributionsbehörigheterna](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).</span><span class="sxs-lookup"><span data-stu-id="583d3-141">For detailed information about different types of credentials and how toouse them, see [Deployment credentials](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).</span></span>
+2. <span data-ttu-id="583d3-142">Kontrollera att hello FTP portar inte blockeras av en brandvägg.</span><span class="sxs-lookup"><span data-stu-id="583d3-142">Verify that hello FTP ports are not blocked by a firewall.</span></span> <span data-ttu-id="583d3-143">hello portar ska ha de här inställningarna:</span><span class="sxs-lookup"><span data-stu-id="583d3-143">hello ports should have these settings:</span></span>
+    * <span data-ttu-id="583d3-144">Anslutningsport för FTP-kontroll: 21</span><span class="sxs-lookup"><span data-stu-id="583d3-144">FTP control connection port: 21</span></span>
+    * <span data-ttu-id="583d3-145">FTP-dataporten för anslutning: 989 10001 10300</span><span class="sxs-lookup"><span data-stu-id="583d3-145">FTP data connection port: 989, 10001-10300</span></span>
+
+## <a name="how-do-i-publish-my-code-tooapp-service"></a><span data-ttu-id="583d3-146">Hur jag för att publicera min kod tooApp tjänsten?</span><span class="sxs-lookup"><span data-stu-id="583d3-146">How do I publish my code tooApp Service?</span></span>
+
+<span data-ttu-id="583d3-147">hello Azure Quickstart är utformad toohelp som du distribuerar en app med hello distribution stacken och metod du föredrar.</span><span class="sxs-lookup"><span data-stu-id="583d3-147">hello Azure Quickstart is designed toohelp you deploy your app by using hello deployment stack and method of your choice.</span></span> <span data-ttu-id="583d3-148">Gå toouse hello Snabbstart, i hello Azure-portalen för**inställningar** > **Appdistribution**.</span><span class="sxs-lookup"><span data-stu-id="583d3-148">toouse hello Quickstart, in hello Azure portal, go too**Settings** > **App Deployment**.</span></span>
+
+## <a name="why-does-my-app-sometimes-restart-after-deployment-tooapp-service"></a><span data-ttu-id="583d3-149">Varför min app ibland starta om efter distribution tooApp tjänsten?</span><span class="sxs-lookup"><span data-stu-id="583d3-149">Why does my app sometimes restart after deployment tooApp Service?</span></span>
+
+<span data-ttu-id="583d3-150">toolearn om hello omständigheter som en programdistribution kan resultera i en omstart finns [distribution kontra runtime problem](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts").</span><span class="sxs-lookup"><span data-stu-id="583d3-150">toolearn about hello circumstances under which an application deployment might result in a restart, see [Deployment vs. runtime issues](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts").</span></span> <span data-ttu-id="583d3-151">Eftersom artikeln hello distribuerar Apptjänst toohello wwwroot-mappen.</span><span class="sxs-lookup"><span data-stu-id="583d3-151">As hello article describes, App Service deploys files toohello wwwroot folder.</span></span> <span data-ttu-id="583d3-152">Den startar aldrig direkt om din app.</span><span class="sxs-lookup"><span data-stu-id="583d3-152">It never directly restarts your app.</span></span>
+
+## <a name="how-do-i-integrate-visual-studio-team-services-code-with-app-service"></a><span data-ttu-id="583d3-153">Hur integreras Visual Studio Team Services kod med App Service?</span><span class="sxs-lookup"><span data-stu-id="583d3-153">How do I integrate Visual Studio Team Services code with App Service?</span></span>
+
+<span data-ttu-id="583d3-154">Har du två alternativ för att använda kontinuerlig distribution med Visual Studio Team Services:</span><span class="sxs-lookup"><span data-stu-id="583d3-154">You have two options for using continuous deployment with Visual Studio Team Services:</span></span>
+
+*   <span data-ttu-id="583d3-155">Använd ett Git-projekt.</span><span class="sxs-lookup"><span data-stu-id="583d3-155">Use a Git project.</span></span> <span data-ttu-id="583d3-156">Anslut via App Service med hjälp av hello distributionsalternativ för den lagringsplatsen.</span><span class="sxs-lookup"><span data-stu-id="583d3-156">Connect via App Service by using hello deployment options for that repo.</span></span>
+*   <span data-ttu-id="583d3-157">Använd ett Team Foundation Version kontrollen (TFVC)-projekt.</span><span class="sxs-lookup"><span data-stu-id="583d3-157">Use a Team Foundation Version Control (TFVC) project.</span></span> <span data-ttu-id="583d3-158">Distribuera med hello build-agent för Apptjänst.</span><span class="sxs-lookup"><span data-stu-id="583d3-158">Deploy by using hello build agent for App Service.</span></span>
+
+<span data-ttu-id="583d3-159">Koden kontinuerlig distribution för båda alternativen beror på befintliga developer arbetsflöden och checka in procedurer.</span><span class="sxs-lookup"><span data-stu-id="583d3-159">Continuous code deployment for both these options depends on existing developer workflows and check-in procedures.</span></span> <span data-ttu-id="583d3-160">Mer information finns i följande artiklar:</span><span class="sxs-lookup"><span data-stu-id="583d3-160">For more information, see these articles:</span></span> 
+
+*   [<span data-ttu-id="583d3-161">Implementera kontinuerlig distribution för din app tooan Azure-webbplats</span><span class="sxs-lookup"><span data-stu-id="583d3-161">Implement continuous deployment of your app tooan Azure website</span></span>](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
+*   [<span data-ttu-id="583d3-162">Konfigurera ett Visual Studio Team Services-konto så att den kan distribuera tooa webbprogram</span><span class="sxs-lookup"><span data-stu-id="583d3-162">Set up a Visual Studio Team Services account so it can deploy tooa web app</span></span>](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
+
+## <a name="how-do-i-use-ftp-or-ftps-toodeploy-my-app-tooapp-service"></a><span data-ttu-id="583d3-163">Hur använder jag FTP eller FTPS toodeploy min app tooApp tjänsten?</span><span class="sxs-lookup"><span data-stu-id="583d3-163">How do I use FTP or FTPS toodeploy my app tooApp Service?</span></span>
+
+<span data-ttu-id="583d3-164">Information om hur du använder FTP eller FTPS toodeploy din web app tooApp tjänsten, finns i [distribuera din app tooApp tjänsten med hjälp av FTP/S](app-service-deploy-ftp.md).</span><span class="sxs-lookup"><span data-stu-id="583d3-164">For information about using FTP or FTPS toodeploy your web app tooApp Service, see [Deploy your app tooApp Service by using FTP/S](app-service-deploy-ftp.md).</span></span>

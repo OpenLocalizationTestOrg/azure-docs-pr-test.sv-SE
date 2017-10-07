@@ -1,6 +1,6 @@
 ---
-title: Filtrera Azure Application Insights telemetri i Java-webbappen | Microsoft Docs
-description: "Minska telemetri trafiken genom att filtrera bort händelser som du inte behöver övervaka."
+title: aaaFilter Azure Application Insights telemetri i Java-webbappen | Microsoft Docs
+description: "Minska telemetri trafiken genom att filtrera bort händelser hello behöver du inte toomonitor."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,30 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
-ms.openlocfilehash: 5f6d6d4ad590b85810c42e9f9520850024c5446a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.openlocfilehash: 95713e11d5f86472777c67e4e7f3177fbf2cd0b4
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="filter-telemetry-in-your-java-web-app"></a><span data-ttu-id="2b67f-103">Filtrera telemetri i Java-webbappen</span><span class="sxs-lookup"><span data-stu-id="2b67f-103">Filter telemetry in your Java web app</span></span>
+# <a name="filter-telemetry-in-your-java-web-app"></a><span data-ttu-id="96fd0-103">Filtrera telemetri i Java-webbappen</span><span class="sxs-lookup"><span data-stu-id="96fd0-103">Filter telemetry in your Java web app</span></span>
 
-<span data-ttu-id="2b67f-104">Filter ger dig ett sätt att välja telemetrin som din [Java-webbapp skickar till Application Insights](app-insights-java-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="2b67f-104">Filters provide a way to select the telemetry that your [Java web app sends to Application Insights](app-insights-java-get-started.md).</span></span> <span data-ttu-id="2b67f-105">Det finns vissa out box-filter som du kan använda och du kan också skriva egna anpassade filter.</span><span class="sxs-lookup"><span data-stu-id="2b67f-105">There are some out-of-the-box filters that you can use, and you can also write your own custom filters.</span></span>
+<span data-ttu-id="96fd0-104">Filter innehåller en sätt tooselect hello telemetri som din [Java-webbapp skickar tooApplication insikter](app-insights-java-get-started.md).</span><span class="sxs-lookup"><span data-stu-id="96fd0-104">Filters provide a way tooselect hello telemetry that your [Java web app sends tooApplication Insights](app-insights-java-get-started.md).</span></span> <span data-ttu-id="96fd0-105">Det finns vissa out box-filter som du kan använda och du kan också skriva egna anpassade filter.</span><span class="sxs-lookup"><span data-stu-id="96fd0-105">There are some out-of-the-box filters that you can use, and you can also write your own custom filters.</span></span>
 
-<span data-ttu-id="2b67f-106">Out box-filtren är:</span><span class="sxs-lookup"><span data-stu-id="2b67f-106">The out-of-the-box filters include:</span></span>
+<span data-ttu-id="96fd0-106">hello out box filtren är:</span><span class="sxs-lookup"><span data-stu-id="96fd0-106">hello out-of-the-box filters include:</span></span>
 
-* <span data-ttu-id="2b67f-107">Spåra allvarlighetsgrad</span><span class="sxs-lookup"><span data-stu-id="2b67f-107">Trace severity level</span></span>
-* <span data-ttu-id="2b67f-108">Specifika URL: er, nyckelord eller svarskoder</span><span class="sxs-lookup"><span data-stu-id="2b67f-108">Specific URLs, keywords or response codes</span></span>
-* <span data-ttu-id="2b67f-109">Snabba svar – det vill säga begäran som din app svarat på snabbt</span><span class="sxs-lookup"><span data-stu-id="2b67f-109">Fast responses - that is, requests to which your app responded to quickly</span></span>
-* <span data-ttu-id="2b67f-110">Namn på specifika händelser</span><span class="sxs-lookup"><span data-stu-id="2b67f-110">Specific event names</span></span>
+* <span data-ttu-id="96fd0-107">Spåra allvarlighetsgrad</span><span class="sxs-lookup"><span data-stu-id="96fd0-107">Trace severity level</span></span>
+* <span data-ttu-id="96fd0-108">Specifika URL: er, nyckelord eller svarskoder</span><span class="sxs-lookup"><span data-stu-id="96fd0-108">Specific URLs, keywords or response codes</span></span>
+* <span data-ttu-id="96fd0-109">Snabba svar – det vill säga begäran toowhich appen svarade tooquickly</span><span class="sxs-lookup"><span data-stu-id="96fd0-109">Fast responses - that is, requests toowhich your app responded tooquickly</span></span>
+* <span data-ttu-id="96fd0-110">Namn på specifika händelser</span><span class="sxs-lookup"><span data-stu-id="96fd0-110">Specific event names</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="2b67f-111">Filter skeva mätvärden för din app.</span><span class="sxs-lookup"><span data-stu-id="2b67f-111">Filters skew the metrics of your app.</span></span> <span data-ttu-id="2b67f-112">Du kan till exempel bestämma att, för att kunna diagnostisera långsamt svar du anger ett filter för att ta bort snabba svarstider.</span><span class="sxs-lookup"><span data-stu-id="2b67f-112">For example, you might decide that, in order to diagnose slow responses, you will set a filter to discard fast response times.</span></span> <span data-ttu-id="2b67f-113">Men du måste vara medveten om att de genomsnittliga svarstider som rapporterats av Application Insights blir långsammare än true hastighet och antal begäranden som ska vara mindre än antalet verkliga.</span><span class="sxs-lookup"><span data-stu-id="2b67f-113">But you must be aware that the average response times reported by Application Insights will then be slower than the true speed, and the count of requests will be smaller than the real count.</span></span>
-> <span data-ttu-id="2b67f-114">Om detta är ett problem kan använda [provtagning](app-insights-sampling.md) i stället.</span><span class="sxs-lookup"><span data-stu-id="2b67f-114">If this is a concern, use [Sampling](app-insights-sampling.md) instead.</span></span>
+> <span data-ttu-id="96fd0-111">Filter skeva hello mätvärden för din app.</span><span class="sxs-lookup"><span data-stu-id="96fd0-111">Filters skew hello metrics of your app.</span></span> <span data-ttu-id="96fd0-112">Du kan till exempel bestämma att, i ordning toodiagnose långsamt svar, som ett filter toodiscard snabba svarstider.</span><span class="sxs-lookup"><span data-stu-id="96fd0-112">For example, you might decide that, in order toodiagnose slow responses, you will set a filter toodiscard fast response times.</span></span> <span data-ttu-id="96fd0-113">Men du måste vara medveten om att hello genomsnittliga responstider rapporteras av Application Insights blir långsammare än hello true hastighet och hello antal begäranden ska vara mindre än hello verkliga antal.</span><span class="sxs-lookup"><span data-stu-id="96fd0-113">But you must be aware that hello average response times reported by Application Insights will then be slower than hello true speed, and hello count of requests will be smaller than hello real count.</span></span>
+> <span data-ttu-id="96fd0-114">Om detta är ett problem kan använda [provtagning](app-insights-sampling.md) i stället.</span><span class="sxs-lookup"><span data-stu-id="96fd0-114">If this is a concern, use [Sampling](app-insights-sampling.md) instead.</span></span>
 
-## <a name="setting-filters"></a><span data-ttu-id="2b67f-115">Ange filter</span><span class="sxs-lookup"><span data-stu-id="2b67f-115">Setting filters</span></span>
+## <a name="setting-filters"></a><span data-ttu-id="96fd0-115">Ange filter</span><span class="sxs-lookup"><span data-stu-id="96fd0-115">Setting filters</span></span>
 
-<span data-ttu-id="2b67f-116">ApplicationInsights.xml, lägga till en `TelemetryProcessors` avsnitt som det här exemplet:</span><span class="sxs-lookup"><span data-stu-id="2b67f-116">In ApplicationInsights.xml, add a `TelemetryProcessors` section like this example:</span></span>
+<span data-ttu-id="96fd0-116">ApplicationInsights.xml, lägga till en `TelemetryProcessors` avsnitt som det här exemplet:</span><span class="sxs-lookup"><span data-stu-id="96fd0-116">In ApplicationInsights.xml, add a `TelemetryProcessors` section like this example:</span></span>
 
 
 ```XML
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/18/2017
            </Processor>
 
            <Processor type="TelemetryEventFilter">
-                  <!-- Names of events we don't want to see -->
+                  <!-- Names of events we don't want toosee -->
                   <Add name="NotNeededNames" value="Start,Stop,Pause"/>
            </Processor>
 
@@ -88,11 +88,11 @@ ms.lasthandoff: 08/18/2017
 
 
 
-<span data-ttu-id="2b67f-117">[Kontrollera en fullständig uppsättning inbyggda processorer](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).</span><span class="sxs-lookup"><span data-stu-id="2b67f-117">[Inspect the full set of built-in processors](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).</span></span>
+<span data-ttu-id="96fd0-117">[Inspektera hello fullständig uppsättning inbyggda processorer](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).</span><span class="sxs-lookup"><span data-stu-id="96fd0-117">[Inspect hello full set of built-in processors](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).</span></span>
 
-## <a name="built-in-filters"></a><span data-ttu-id="2b67f-118">Inbyggda filter</span><span class="sxs-lookup"><span data-stu-id="2b67f-118">Built-in filters</span></span>
+## <a name="built-in-filters"></a><span data-ttu-id="96fd0-118">Inbyggda filter</span><span class="sxs-lookup"><span data-stu-id="96fd0-118">Built-in filters</span></span>
 
-### <a name="metric-telemetry-filter"></a><span data-ttu-id="2b67f-119">Mått telemetri filter</span><span class="sxs-lookup"><span data-stu-id="2b67f-119">Metric Telemetry filter</span></span>
+### <a name="metric-telemetry-filter"></a><span data-ttu-id="96fd0-119">Mått telemetri filter</span><span class="sxs-lookup"><span data-stu-id="96fd0-119">Metric Telemetry filter</span></span>
 
 ```XML
 
@@ -101,10 +101,10 @@ ms.lasthandoff: 08/18/2017
            </Processor>
 ```
 
-* <span data-ttu-id="2b67f-120">`NotNeeded`– Kommaavgränsad lista över anpassade mått namn.</span><span class="sxs-lookup"><span data-stu-id="2b67f-120">`NotNeeded` - Comma-separated list of custom metric names.</span></span>
+* <span data-ttu-id="96fd0-120">`NotNeeded`– Kommaavgränsad lista över anpassade mått namn.</span><span class="sxs-lookup"><span data-stu-id="96fd0-120">`NotNeeded` - Comma-separated list of custom metric names.</span></span>
 
 
-### <a name="page-view-telemetry-filter"></a><span data-ttu-id="2b67f-121">Sidan Visa telemetri filter</span><span class="sxs-lookup"><span data-stu-id="2b67f-121">Page View Telemetry filter</span></span>
+### <a name="page-view-telemetry-filter"></a><span data-ttu-id="96fd0-121">Sidan Visa telemetri filter</span><span class="sxs-lookup"><span data-stu-id="96fd0-121">Page View Telemetry filter</span></span>
 
 ```XML
 
@@ -115,12 +115,12 @@ ms.lasthandoff: 08/18/2017
            </Processor>
 ```
 
-* <span data-ttu-id="2b67f-122">`DurationThresholdInMS`-Varaktighet refererar till den tid det tar att läsa in sidan.</span><span class="sxs-lookup"><span data-stu-id="2b67f-122">`DurationThresholdInMS` - Duration refers to the time taken to load the page.</span></span> <span data-ttu-id="2b67f-123">Om detta anges rapporteras inte sidor som lästs in snabbare än den angivna tiden.</span><span class="sxs-lookup"><span data-stu-id="2b67f-123">If this is set, pages that loaded faster than this time are not reported.</span></span>
-* <span data-ttu-id="2b67f-124">`NotNeededNames`– Kommaavgränsad lista över namnen.</span><span class="sxs-lookup"><span data-stu-id="2b67f-124">`NotNeededNames` - Comma-separated list of page names.</span></span>
-* <span data-ttu-id="2b67f-125">`NotNeededUrls`– Kommaavgränsad lista över URL-fragment.</span><span class="sxs-lookup"><span data-stu-id="2b67f-125">`NotNeededUrls` - Comma-separated list of URL fragments.</span></span> <span data-ttu-id="2b67f-126">Till exempel `"home"` filtrerar ut alla sidor som har ”hem” i Webbadressen.</span><span class="sxs-lookup"><span data-stu-id="2b67f-126">For example, `"home"` filters out all pages that have "home" in the URL.</span></span>
+* <span data-ttu-id="96fd0-122">`DurationThresholdInMS`-Varaktighet refererar toohello tidsåtgång tooload hello sidan.</span><span class="sxs-lookup"><span data-stu-id="96fd0-122">`DurationThresholdInMS` - Duration refers toohello time taken tooload hello page.</span></span> <span data-ttu-id="96fd0-123">Om detta anges rapporteras inte sidor som lästs in snabbare än den angivna tiden.</span><span class="sxs-lookup"><span data-stu-id="96fd0-123">If this is set, pages that loaded faster than this time are not reported.</span></span>
+* <span data-ttu-id="96fd0-124">`NotNeededNames`– Kommaavgränsad lista över namnen.</span><span class="sxs-lookup"><span data-stu-id="96fd0-124">`NotNeededNames` - Comma-separated list of page names.</span></span>
+* <span data-ttu-id="96fd0-125">`NotNeededUrls`– Kommaavgränsad lista över URL-fragment.</span><span class="sxs-lookup"><span data-stu-id="96fd0-125">`NotNeededUrls` - Comma-separated list of URL fragments.</span></span> <span data-ttu-id="96fd0-126">Till exempel `"home"` filtrerar ut alla sidor som har ”hem” hello-URL.</span><span class="sxs-lookup"><span data-stu-id="96fd0-126">For example, `"home"` filters out all pages that have "home" in hello URL.</span></span>
 
 
-### <a name="request-telemetry-filter"></a><span data-ttu-id="2b67f-127">Begära telemetri Filter</span><span class="sxs-lookup"><span data-stu-id="2b67f-127">Request Telemetry Filter</span></span>
+### <a name="request-telemetry-filter"></a><span data-ttu-id="96fd0-127">Begära telemetri Filter</span><span class="sxs-lookup"><span data-stu-id="96fd0-127">Request Telemetry Filter</span></span>
 
 
 ```XML
@@ -134,11 +134,11 @@ ms.lasthandoff: 08/18/2017
 
 
 
-### <a name="synthetic-source-filter"></a><span data-ttu-id="2b67f-128">Syntetiska källfiltret</span><span class="sxs-lookup"><span data-stu-id="2b67f-128">Synthetic Source filter</span></span>
+### <a name="synthetic-source-filter"></a><span data-ttu-id="96fd0-128">Syntetiska källfiltret</span><span class="sxs-lookup"><span data-stu-id="96fd0-128">Synthetic Source filter</span></span>
 
-<span data-ttu-id="2b67f-129">Filtrerar ut all telemetri som värden i egenskapen SyntheticSource.</span><span class="sxs-lookup"><span data-stu-id="2b67f-129">Filters out all telemetry that have values in the SyntheticSource property.</span></span> <span data-ttu-id="2b67f-130">Dessa inkluderar begäranden från robotar, spindlar och tillgänglighetstester.</span><span class="sxs-lookup"><span data-stu-id="2b67f-130">These include requests from bots, spiders and availability tests.</span></span>
+<span data-ttu-id="96fd0-129">Filtrerar ut all telemetri som innehåller värden i hello SyntheticSource egenskapen.</span><span class="sxs-lookup"><span data-stu-id="96fd0-129">Filters out all telemetry that have values in hello SyntheticSource property.</span></span> <span data-ttu-id="96fd0-130">Dessa inkluderar begäranden från robotar, spindlar och tillgänglighetstester.</span><span class="sxs-lookup"><span data-stu-id="96fd0-130">These include requests from bots, spiders and availability tests.</span></span>
 
-<span data-ttu-id="2b67f-131">Filtrera bort telemetri för syntetiska begäranden:</span><span class="sxs-lookup"><span data-stu-id="2b67f-131">Filter out telemetry for all synthetic requests:</span></span>
+<span data-ttu-id="96fd0-131">Filtrera bort telemetri för syntetiska begäranden:</span><span class="sxs-lookup"><span data-stu-id="96fd0-131">Filter out telemetry for all synthetic requests:</span></span>
 
 
 ```XML
@@ -146,7 +146,7 @@ ms.lasthandoff: 08/18/2017
            <Processor type="SyntheticSourceFilter" />
 ```
 
-<span data-ttu-id="2b67f-132">Filtrera bort telemetri för särskilda syntetiska källor:</span><span class="sxs-lookup"><span data-stu-id="2b67f-132">Filter out telemetry for specific synthetic sources:</span></span>
+<span data-ttu-id="96fd0-132">Filtrera bort telemetri för särskilda syntetiska källor:</span><span class="sxs-lookup"><span data-stu-id="96fd0-132">Filter out telemetry for specific synthetic sources:</span></span>
 
 
 ```XML
@@ -156,11 +156,11 @@ ms.lasthandoff: 08/18/2017
            </Processor>
 ```
 
-* <span data-ttu-id="2b67f-133">`NotNeeded`– Kommaavgränsad lista över syntetisk datakällor.</span><span class="sxs-lookup"><span data-stu-id="2b67f-133">`NotNeeded` - Comma-separated list of synthetic source names.</span></span>
+* <span data-ttu-id="96fd0-133">`NotNeeded`– Kommaavgränsad lista över syntetisk datakällor.</span><span class="sxs-lookup"><span data-stu-id="96fd0-133">`NotNeeded` - Comma-separated list of synthetic source names.</span></span>
 
-### <a name="telemetry-event-filter"></a><span data-ttu-id="2b67f-134">Händelsefilter för telemetri</span><span class="sxs-lookup"><span data-stu-id="2b67f-134">Telemetry Event filter</span></span>
+### <a name="telemetry-event-filter"></a><span data-ttu-id="96fd0-134">Händelsefilter för telemetri</span><span class="sxs-lookup"><span data-stu-id="96fd0-134">Telemetry Event filter</span></span>
 
-<span data-ttu-id="2b67f-135">Anpassade händelser (loggat med [trackevent ()](app-insights-api-custom-events-metrics.md#trackevent)).</span><span class="sxs-lookup"><span data-stu-id="2b67f-135">Filters custom events (logged using [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).</span></span>
+<span data-ttu-id="96fd0-135">Anpassade händelser (loggat med [trackevent ()](app-insights-api-custom-events-metrics.md#trackevent)).</span><span class="sxs-lookup"><span data-stu-id="96fd0-135">Filters custom events (logged using [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).</span></span>
 
 
 ```XML
@@ -171,12 +171,12 @@ ms.lasthandoff: 08/18/2017
 ```
 
 
-* <span data-ttu-id="2b67f-136">`NotNeededNames`– Kommaavgränsad lista över händelsenamn.</span><span class="sxs-lookup"><span data-stu-id="2b67f-136">`NotNeededNames` - Comma-separated list of event names.</span></span>
+* <span data-ttu-id="96fd0-136">`NotNeededNames`– Kommaavgränsad lista över händelsenamn.</span><span class="sxs-lookup"><span data-stu-id="96fd0-136">`NotNeededNames` - Comma-separated list of event names.</span></span>
 
 
-### <a name="trace-telemetry-filter"></a><span data-ttu-id="2b67f-137">Spåra telemetri filter</span><span class="sxs-lookup"><span data-stu-id="2b67f-137">Trace Telemetry filter</span></span>
+### <a name="trace-telemetry-filter"></a><span data-ttu-id="96fd0-137">Spåra telemetri filter</span><span class="sxs-lookup"><span data-stu-id="96fd0-137">Trace Telemetry filter</span></span>
 
-<span data-ttu-id="2b67f-138">Filter logga spår (loggat med [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) eller en [loggning framework insamlaren](app-insights-java-trace-logs.md)).</span><span class="sxs-lookup"><span data-stu-id="2b67f-138">Filters log traces (logged using [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) or a [logging framework collector](app-insights-java-trace-logs.md)).</span></span>
+<span data-ttu-id="96fd0-138">Filter logga spår (loggat med [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) eller en [loggning framework insamlaren](app-insights-java-trace-logs.md)).</span><span class="sxs-lookup"><span data-stu-id="96fd0-138">Filters log traces (logged using [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) or a [logging framework collector](app-insights-java-trace-logs.md)).</span></span>
 
 ```XML
 
@@ -185,20 +185,20 @@ ms.lasthandoff: 08/18/2017
            </Processor>
 ```
 
-* <span data-ttu-id="2b67f-139">`FromSeverityLevel`Giltiga värden är:</span><span class="sxs-lookup"><span data-stu-id="2b67f-139">`FromSeverityLevel` valid values are:</span></span>
- *  <span data-ttu-id="2b67f-140">INAKTIVERA - filtrera bort alla spårningar</span><span class="sxs-lookup"><span data-stu-id="2b67f-140">OFF             - Filter out ALL traces</span></span>
- *  <span data-ttu-id="2b67f-141">TRACE - ingen filtrering.</span><span class="sxs-lookup"><span data-stu-id="2b67f-141">TRACE           - No filtering.</span></span> <span data-ttu-id="2b67f-142">Spårningsnivån som motsvarar</span><span class="sxs-lookup"><span data-stu-id="2b67f-142">equals to Trace level</span></span>
- *  <span data-ttu-id="2b67f-143">INFO - filtrera bort spårningsnivå</span><span class="sxs-lookup"><span data-stu-id="2b67f-143">INFO            - Filter out TRACE level</span></span>
- *  <span data-ttu-id="2b67f-144">Varna - Filter i SPÅRNINGEN och information</span><span class="sxs-lookup"><span data-stu-id="2b67f-144">WARN            - Filter out TRACE and INFO</span></span>
- *  <span data-ttu-id="2b67f-145">FEL - filtrera bort Varna, INFO, SPÅRNING</span><span class="sxs-lookup"><span data-stu-id="2b67f-145">ERROR           - Filter out WARN, INFO, TRACE</span></span>
- *  <span data-ttu-id="2b67f-146">KRITISK - filtrera bort alla utom kritiska</span><span class="sxs-lookup"><span data-stu-id="2b67f-146">CRITICAL        - filter out all but CRITICAL</span></span>
+* <span data-ttu-id="96fd0-139">`FromSeverityLevel`Giltiga värden är:</span><span class="sxs-lookup"><span data-stu-id="96fd0-139">`FromSeverityLevel` valid values are:</span></span>
+ *  <span data-ttu-id="96fd0-140">INAKTIVERA - filtrera bort alla spårningar</span><span class="sxs-lookup"><span data-stu-id="96fd0-140">OFF             - Filter out ALL traces</span></span>
+ *  <span data-ttu-id="96fd0-141">TRACE - ingen filtrering.</span><span class="sxs-lookup"><span data-stu-id="96fd0-141">TRACE           - No filtering.</span></span> <span data-ttu-id="96fd0-142">är lika med tooTrace nivå</span><span class="sxs-lookup"><span data-stu-id="96fd0-142">equals tooTrace level</span></span>
+ *  <span data-ttu-id="96fd0-143">INFO - filtrera bort spårningsnivå</span><span class="sxs-lookup"><span data-stu-id="96fd0-143">INFO            - Filter out TRACE level</span></span>
+ *  <span data-ttu-id="96fd0-144">Varna - Filter i SPÅRNINGEN och information</span><span class="sxs-lookup"><span data-stu-id="96fd0-144">WARN            - Filter out TRACE and INFO</span></span>
+ *  <span data-ttu-id="96fd0-145">FEL - filtrera bort Varna, INFO, SPÅRNING</span><span class="sxs-lookup"><span data-stu-id="96fd0-145">ERROR           - Filter out WARN, INFO, TRACE</span></span>
+ *  <span data-ttu-id="96fd0-146">KRITISK - filtrera bort alla utom kritiska</span><span class="sxs-lookup"><span data-stu-id="96fd0-146">CRITICAL        - filter out all but CRITICAL</span></span>
 
 
-## <a name="custom-filters"></a><span data-ttu-id="2b67f-147">Anpassade filter</span><span class="sxs-lookup"><span data-stu-id="2b67f-147">Custom filters</span></span>
+## <a name="custom-filters"></a><span data-ttu-id="96fd0-147">Anpassade filter</span><span class="sxs-lookup"><span data-stu-id="96fd0-147">Custom filters</span></span>
 
-### <a name="1-code-your-filter"></a><span data-ttu-id="2b67f-148">1. Code filtret</span><span class="sxs-lookup"><span data-stu-id="2b67f-148">1. Code your filter</span></span>
+### <a name="1-code-your-filter"></a><span data-ttu-id="96fd0-148">1. Code filtret</span><span class="sxs-lookup"><span data-stu-id="96fd0-148">1. Code your filter</span></span>
 
-<span data-ttu-id="2b67f-149">I koden, skapar du en klass som implementerar `TelemetryProcessor`:</span><span class="sxs-lookup"><span data-stu-id="2b67f-149">In your code, create a class that implements `TelemetryProcessor`:</span></span>
+<span data-ttu-id="96fd0-149">I koden, skapar du en klass som implementerar `TelemetryProcessor`:</span><span class="sxs-lookup"><span data-stu-id="96fd0-149">In your code, create a class that implements `TelemetryProcessor`:</span></span>
 
 ```Java
 
@@ -208,18 +208,18 @@ ms.lasthandoff: 08/18/2017
 
     public class SuccessFilter implements TelemetryProcessor {
 
-       /* Any parameters that are required to support the filter.*/
+       /* Any parameters that are required toosupport hello filter.*/
        private final String successful;
 
-       /* Initializers for the parameters, named "setParameterName" */
+       /* Initializers for hello parameters, named "setParameterName" */
        public void setNotNeeded(String successful)
        {
           this.successful = successful;
        }
 
-       /* This method is called for each item of telemetry to be sent.
-          Return false to discard it.
-          Return true to allow other processors to inspect it. */
+       /* This method is called for each item of telemetry toobe sent.
+          Return false toodiscard it.
+          Return true tooallow other processors tooinspect it. */
        @Override
        public boolean process(Telemetry telemetry) {
         if (telemetry == null) { return true; }
@@ -235,9 +235,9 @@ ms.lasthandoff: 08/18/2017
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a><span data-ttu-id="2b67f-150">2. Anropa filtret i konfigurationsfilen</span><span class="sxs-lookup"><span data-stu-id="2b67f-150">2. Invoke your filter in the configuration file</span></span>
+### <a name="2-invoke-your-filter-in-hello-configuration-file"></a><span data-ttu-id="96fd0-150">2. Anropa filtret i hello-konfigurationsfil</span><span class="sxs-lookup"><span data-stu-id="96fd0-150">2. Invoke your filter in hello configuration file</span></span>
 
-<span data-ttu-id="2b67f-151">I ApplicationInsights.xml:</span><span class="sxs-lookup"><span data-stu-id="2b67f-151">In ApplicationInsights.xml:</span></span>
+<span data-ttu-id="96fd0-151">I ApplicationInsights.xml:</span><span class="sxs-lookup"><span data-stu-id="96fd0-151">In ApplicationInsights.xml:</span></span>
 
 ```XML
 
@@ -254,12 +254,12 @@ ms.lasthandoff: 08/18/2017
 
 ```
 
-## <a name="troubleshooting"></a><span data-ttu-id="2b67f-152">Felsökning</span><span class="sxs-lookup"><span data-stu-id="2b67f-152">Troubleshooting</span></span>
+## <a name="troubleshooting"></a><span data-ttu-id="96fd0-152">Felsökning</span><span class="sxs-lookup"><span data-stu-id="96fd0-152">Troubleshooting</span></span>
 
-<span data-ttu-id="2b67f-153">*Mina filter fungerar inte.*</span><span class="sxs-lookup"><span data-stu-id="2b67f-153">*My filter isn't working.*</span></span>
+<span data-ttu-id="96fd0-153">*Mina filter fungerar inte.*</span><span class="sxs-lookup"><span data-stu-id="96fd0-153">*My filter isn't working.*</span></span>
 
-* <span data-ttu-id="2b67f-154">Kontrollera att du har angett giltiga parametervärden.</span><span class="sxs-lookup"><span data-stu-id="2b67f-154">Check that you have provided valid parameter values.</span></span> <span data-ttu-id="2b67f-155">Till exempel måste varaktighet vara heltal.</span><span class="sxs-lookup"><span data-stu-id="2b67f-155">For example, durations should be integers.</span></span> <span data-ttu-id="2b67f-156">Ogiltiga värden kommer att orsaka filtret som ska ignoreras.</span><span class="sxs-lookup"><span data-stu-id="2b67f-156">Invalid values will cause the filter to be ignored.</span></span> <span data-ttu-id="2b67f-157">Om ditt filter genererar ett undantag från en konstruktor eller set-metod, kommer att ignoreras.</span><span class="sxs-lookup"><span data-stu-id="2b67f-157">If your custom filter throws an exception from a constructor or set method, it will be ignored.</span></span>
+* <span data-ttu-id="96fd0-154">Kontrollera att du har angett giltiga parametervärden.</span><span class="sxs-lookup"><span data-stu-id="96fd0-154">Check that you have provided valid parameter values.</span></span> <span data-ttu-id="96fd0-155">Till exempel måste varaktighet vara heltal.</span><span class="sxs-lookup"><span data-stu-id="96fd0-155">For example, durations should be integers.</span></span> <span data-ttu-id="96fd0-156">Ogiltiga värden kommer hello filter toobe ignoreras.</span><span class="sxs-lookup"><span data-stu-id="96fd0-156">Invalid values will cause hello filter toobe ignored.</span></span> <span data-ttu-id="96fd0-157">Om ditt filter genererar ett undantag från en konstruktor eller set-metod, kommer att ignoreras.</span><span class="sxs-lookup"><span data-stu-id="96fd0-157">If your custom filter throws an exception from a constructor or set method, it will be ignored.</span></span>
 
-## <a name="next-steps"></a><span data-ttu-id="2b67f-158">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="2b67f-158">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="96fd0-158">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="96fd0-158">Next steps</span></span>
 
-* <span data-ttu-id="2b67f-159">[Provtagning](app-insights-sampling.md) -Överväg provtagning som ett alternativ som inte skeva din mått.</span><span class="sxs-lookup"><span data-stu-id="2b67f-159">[Sampling](app-insights-sampling.md) - Consider sampling as an alternative that does not skew your metrics.</span></span>
+* <span data-ttu-id="96fd0-159">[Provtagning](app-insights-sampling.md) -Överväg provtagning som ett alternativ som inte skeva din mått.</span><span class="sxs-lookup"><span data-stu-id="96fd0-159">[Sampling](app-insights-sampling.md) - Consider sampling as an alternative that does not skew your metrics.</span></span>

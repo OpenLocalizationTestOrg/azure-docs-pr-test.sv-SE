@@ -28,14 +28,14 @@
 #### [Sparkfun ESP8266 Thing Dev med Arduino IDE](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 #### [Adafruit Feather M0 med Arduino IDE](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
-#### Använda IoT Gateway-startpaketet
+#### Använd hello startpaket för IoT-Gateway
 ##### [Konfigurera Intel NUC som en gateway](iot-hub-gateway-kit-c-lesson1-set-up-nuc.md)
-##### [Ansluta gatewayen till IoT Hub](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
-##### [Använda gatewayen för datakonvertering](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
+##### [Ansluta hello gateway tooIoT Hub](iot-hub-gateway-kit-c-iot-gateway-connect-device-to-cloud.md)
+##### [Använda hello gateway för datakonvertering av](iot-hub-gateway-kit-c-use-iot-gateway-for-data-conversion.md)
 
 ## Utökade IoT-scenarier
 ### [Hantera meddelanden mellan enheter och molnet med iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
-### [Spara meddelanden från IoT Hub i datalagring för Azure](iot-hub-store-data-in-azure-table-storage.md)
+### [Spara IoT-hubb meddelanden tooAzure datalagring](iot-hub-store-data-in-azure-table-storage.md)
 ### [Datavisualisering i Power BI](iot-hub-live-data-visualization-in-power-bi.md)
 ### [Datavisualisering med Web Apps](iot-hub-live-data-visualization-in-web-apps.md)
 ### [Väderprognoser med hjälp av Azure Machine Learning](iot-hub-weather-forecast-machine-learning.md)
@@ -44,7 +44,7 @@
 
 # Gör så här för att
 ## Planera
-### [Jämförelse mellan IoT Hub och Event Hubs](iot-hub-compare-event-hubs.md)
+### [Jämförelse av IoT-hubb tooEvent hubbar](iot-hub-compare-event-hubs.md)
 ### [Skala din lösning](iot-hub-scaling.md)
 ### [Hög tillgänglighet och haveriberedskap](iot-hub-ha-dr.md)
 ### [Stöd för ytterligare protokoll](iot-hub-protocol-gateway.md)
@@ -53,15 +53,15 @@
 #### [Funktionsguide enheten till molnet](iot-hub-devguide-d2c-guidance.md)
 #### [Funktionsguide molnet till enheten](iot-hub-devguide-c2d-guidance.md)
 #### [Skicka och ta emot meddelanden](iot-hub-devguide-messaging.md)
-##### [Skicka meddelanden från enhet till moln till IoT Hub](iot-hub-devguide-messages-d2c.md)
-##### [Läsa meddelanden från enhet till moln från den inbyggda slutpunkten](iot-hub-devguide-messages-read-builtin.md)
+##### [Skicka meddelanden från enhet till moln tooIoT Hub](iot-hub-devguide-messages-d2c.md)
+##### [Läsa meddelanden från enhet till moln från hello inbyggd slutpunkt](iot-hub-devguide-messages-read-builtin.md)
 ##### [Använda anpassade slutpunkter och routningsregler för meddelanden från enhet till moln](iot-hub-devguide-messages-read-custom.md)
 ##### [Skicka meddelanden från moln till enhet från IoT Hub](iot-hub-devguide-messages-c2d.md)
 ##### [Skapa och läsa IoT Hub-meddelanden](iot-hub-devguide-messages-construct.md)
 ##### [Välja ett kommunikationsprotokoll](iot-hub-devguide-protocols.md)
 #### [Ladda upp filer från en enhet](iot-hub-devguide-file-upload.md)
 #### [Hantera enhetsidentiteter](iot-hub-devguide-identity-registry.md)
-#### [Styra åtkomst till IoT Hub](iot-hub-devguide-security.md)
+#### [Kontrollera åtkomst tooIoT Hub](iot-hub-devguide-security.md)
 #### [Förstå enhetstvillingar](iot-hub-devguide-device-twins.md)
 #### [Anropa direktmetoder på en enhet](iot-hub-devguide-direct-methods.md)
 #### [Schemalägga jobb på flera enheter](iot-hub-devguide-jobs.md)
@@ -72,9 +72,9 @@
 #### [SDK:er för tjänst och enhet](iot-hub-devguide-sdks.md)
 #### [MQTT-support](iot-hub-mqtt-support.md)
 #### [Ordlista](iot-hub-devguide-glossary.md)
-### [Använd SDK för IoT-enhet för C](iot-hub-device-sdk-c-intro.md)
-#### [Använda IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
-#### [Använda serialiseraren](iot-hub-device-sdk-c-serializer.md)
+### [Använd hello IoT-enhet SDK för C](iot-hub-device-sdk-c-intro.md)
+#### [Använd hello IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
+#### [Använd hello serialiseraren](iot-hub-device-sdk-c-serializer.md)
 ### Bearbeta meddelanden från enhet till moln
 #### [NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
@@ -97,11 +97,11 @@
 #### [Node.js-serverdel/Node.js-enhet](iot-hub-node-node-device-management-get-started.md)
 #### [.NET-serverdel/Node.js-enhet](iot-hub-csharp-node-device-management-get-started.md)
 #### [Java-serverdel/Java-enhet](iot-hub-java-java-device-management-getstarted.md)
-### Så här använder du tvillingegenskaper
+### Hur toouse dubbla egenskaper
 #### [Node.js-serverdel/Node.js-enhet](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET-serverdel/Node.js-enhet](iot-hub-csharp-node-twin-how-to-configure.md)
 #### [.NET-serverdel/.NET-enhet](iot-hub-csharp-csharp-twin-how-to-configure.md)
-### Använda enhetsjobb för att uppdatera enhetens inbyggda programvara
+### Använda enheten jobb tooupdate enhetens inbyggda programvara
 #### [Node-serverdel/Node-enhet](iot-hub-node-node-firmware-update.md)
 #### [.NET-serverdel/Node.js-enhet](iot-hub-csharp-node-firmware-update.md)
 ### Schemalägga och sända jobb
@@ -110,15 +110,15 @@
 #### [Java](iot-hub-java-java-schedule-jobs.md)
 ## Hantera
 ### Skapa en IoT Hub 
-#### [Använda portalen](iot-hub-create-through-portal.md)
+#### [Använd hello-portalen](iot-hub-create-through-portal.md)
 #### [Använda PowerShell](iot-hub-create-using-powershell.md)
 #### [Använda CLI 2.0](iot-hub-create-using-cli.md)
 #### [Använda CLI](iot-hub-create-using-cli-nodejs.md)
-#### [Använda REST-API](iot-hub-rm-rest.md)
+#### [Använd hello REST API](iot-hub-rm-rest.md)
 #### [Använda en mall från PowerShell](iot-hub-rm-template-powershell.md)
 #### [Använda en mall från .NET](iot-hub-rm-template.md)
 ### Konfigurera filuppladdning
-#### [Använda portalen](iot-hub-configure-file-upload.md)
+#### [Använd hello-portalen](iot-hub-configure-file-upload.md)
 #### [Använda PowerShell](iot-hub-configure-file-upload-powershell.md)
 #### [Använda CLI 2.0](iot-hub-configure-file-upload-cli.md)
 ### [Masshantera IoT-enheter](iot-hub-bulk-identity-mgmt.md)
@@ -126,7 +126,7 @@
 ### [Övervakning av åtgärder](iot-hub-operations-monitoring.md)
 ### [Konfigurera IP-filtrering](iot-hub-ip-filtering.md)
 ## Skydda
-### [Säkerhet från grunden](iot-hub-security-ground-up.md)
+### [Säkerhet från hello bakgrund](iot-hub-security-ground-up.md)
 ### [Metodtips för säkerhet](iot-hub-security-best-practices.md)
 ### [Säkerhetsarkitektur](iot-hub-security-architecture.md)
 ### [Skydda distributionen av IoT](iot-hub-security-deployment.md)

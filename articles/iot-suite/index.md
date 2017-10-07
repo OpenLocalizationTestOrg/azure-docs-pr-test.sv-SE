@@ -1,5 +1,5 @@
 ---
-title: "Dokumentation om Azure IoT Suite – Självstudier, API-referens | Microsoft Docs"
+title: "aaaAzure IoT Suite-dokumentation – självstudier, API-referens | Microsoft Docs"
 description: 
 services: iot-suite
 author: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 4d78758b718cb98a84a9ed8aed4c1b92db4ea59e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 83b006447e0d06d49ed7feace16b0db7d04d56f9
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 07/19/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="iot-suite-documentation"></a>IoT Suite-dokumentation
 
-Kom igång snabbt med Microsoft Azure IoT Suite. Använd förkonfigurerade lösningar och påskynda utvecklingen av din IoT-lösning (Sakernas Internet). Lägg till nya enheter och anslut befintliga, med hjälp av enhets-SDK:er för flera plattformar, inklusive Linux, Windows och operativsystem i realtid. Skala enkelt från några sensorer till miljontals simultant kopplade enheter och förlita dig på Azures globala tillgänglighet&mdash;oavsett hur stort eller litet ditt projekt är.
+Kom igång snabbt med Microsoft Azure IoT Suite. Använda förkonfigurerade lösningar och påskynda hello utvecklingen av din lösning för Sakernas Internet (IoT). Lägg till nya enheter och anslut befintliga, med hjälp av enhets-SDK:er för flera plattformar, inklusive Linux, Windows och operativsystem i realtid. Enkelt skalas från några få sensorer toomillions samtidigt anslutna enheter och förlitar sig på hello globala tillgängligheten hos Azure&mdash;oavsett hur stort eller litet projektet.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -92,7 +92,7 @@ Kom igång snabbt med Microsoft Azure IoT Suite. Använd förkonfigurerade lösn
                         <p><a href="/azure/iot-suite/iot-security-architecture">Säkerhetsarkitektur</a></p>
                         <p><a href="/azure/iot-suite/iot-security-best-practices">Metodtips för säkerhet</a></p>
                         <p><a href="/azure/iot-suite/iot-suite-security-deployment">Skydda distributionen av IoT</a></p>
-                        <p><a href="/azure/iot-suite/securing-iot-ground-up">Säkerhet från grunden</a></p>
+                        <p><a href="/azure/iot-suite/securing-iot-ground-up">Säkerhet från hello bakgrund</a></p>
                    </div>
                 </div>
             </div>

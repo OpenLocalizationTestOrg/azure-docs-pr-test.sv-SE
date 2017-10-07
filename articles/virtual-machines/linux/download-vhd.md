@@ -1,6 +1,6 @@
 ---
-title: "Hämta en Linux-VHD från Azure | Microsoft Docs"
-description: "Hämta en Linux VHD med Azure CLI och Azure portal."
+title: "aaaDownload en Linux VHD från Azure | Microsoft Docs"
+description: "Hämta en Linux VHD med hello Azure CLI och hello Azure-portalen."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -15,27 +15,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
-ms.openlocfilehash: 3eb88478b43f8e3a36ae04bf3703f238e8cb1f3e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.openlocfilehash: 7e08e985a64a6be581b8f5eedcce60fbd314eaf1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/06/2017
 ---
-# <a name="download-a-linux-vhd-from-azure"></a><span data-ttu-id="0e36b-103">Hämta en Linux-VHD från Azure</span><span class="sxs-lookup"><span data-stu-id="0e36b-103">Download a Linux VHD from Azure</span></span>
+# <a name="download-a-linux-vhd-from-azure"></a><span data-ttu-id="e0f38-103">Hämta en Linux-VHD från Azure</span><span class="sxs-lookup"><span data-stu-id="e0f38-103">Download a Linux VHD from Azure</span></span>
 
-<span data-ttu-id="0e36b-104">I den här artikeln får du lära dig hur du hämtar en [Linux virtuell hårddisk (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) filen från Azure med hjälp av Azure CLI och Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="0e36b-104">In this article, you learn how to download a [Linux virtual hard disk (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) file from Azure using the Azure CLI and Azure portal.</span></span> 
+<span data-ttu-id="e0f38-104">I den här artikeln får du lära dig hur toodownload en [Linux virtuell hårddisk (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) filen från Azure med hjälp av hello Azure CLI och Azure-portalen.</span><span class="sxs-lookup"><span data-stu-id="e0f38-104">In this article, you learn how toodownload a [Linux virtual hard disk (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) file from Azure using hello Azure CLI and Azure portal.</span></span> 
 
-<span data-ttu-id="0e36b-105">Virtuella datorer (VM) i Azure används [diskar](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) som en plats att lagra ett operativsystem, program och data.</span><span class="sxs-lookup"><span data-stu-id="0e36b-105">Virtual machines (VMs) in Azure use [disks](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) as a place to store an operating system, applications, and data.</span></span> <span data-ttu-id="0e36b-106">Alla virtuella Azure-datorer har minst två diskar – en disk i Windows-operativsystem och en tillfällig disk.</span><span class="sxs-lookup"><span data-stu-id="0e36b-106">All Azure VMs have at least two disks – a Windows operating system disk and a temporary disk.</span></span> <span data-ttu-id="0e36b-107">Operativsystemdisken har skapats ursprungligen från en avbildning och både operativsystemdisken och image är virtuella hårddiskar som lagras i ett Azure storage-konto.</span><span class="sxs-lookup"><span data-stu-id="0e36b-107">The operating system disk is initially created from an image, and both the operating system disk and the image are VHDs stored in an Azure storage account.</span></span> <span data-ttu-id="0e36b-108">Virtuella datorer kan också ha en eller flera datadiskar som lagras också som virtuella hårddiskar.</span><span class="sxs-lookup"><span data-stu-id="0e36b-108">Virtual machines also can have one or more data disks, that are also stored as VHDs.</span></span>
+<span data-ttu-id="e0f38-105">Virtuella datorer (VM) i Azure används [diskar](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) som plats-toostore ett operativsystem, program och data.</span><span class="sxs-lookup"><span data-stu-id="e0f38-105">Virtual machines (VMs) in Azure use [disks](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) as a place toostore an operating system, applications, and data.</span></span> <span data-ttu-id="e0f38-106">Alla virtuella Azure-datorer har minst två diskar – en disk i Windows-operativsystem och en tillfällig disk.</span><span class="sxs-lookup"><span data-stu-id="e0f38-106">All Azure VMs have at least two disks – a Windows operating system disk and a temporary disk.</span></span> <span data-ttu-id="e0f38-107">hello operativsystemdisk har skapats ursprungligen från en avbildning och både hello operativsystemdisken och hello avbildningen är virtuella hårddiskar som lagras i ett Azure storage-konto.</span><span class="sxs-lookup"><span data-stu-id="e0f38-107">hello operating system disk is initially created from an image, and both hello operating system disk and hello image are VHDs stored in an Azure storage account.</span></span> <span data-ttu-id="e0f38-108">Virtuella datorer kan också ha en eller flera datadiskar som lagras också som virtuella hårddiskar.</span><span class="sxs-lookup"><span data-stu-id="e0f38-108">Virtual machines also can have one or more data disks, that are also stored as VHDs.</span></span>
 
-<span data-ttu-id="0e36b-109">Om du inte redan har gjort det installerar [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).</span><span class="sxs-lookup"><span data-stu-id="0e36b-109">If you haven't already done so, install [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).</span></span>
+<span data-ttu-id="e0f38-109">Om du inte redan har gjort det installerar [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).</span><span class="sxs-lookup"><span data-stu-id="e0f38-109">If you haven't already done so, install [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).</span></span>
 
-## <a name="stop-the-vm"></a><span data-ttu-id="0e36b-110">Stoppa den virtuella datorn</span><span class="sxs-lookup"><span data-stu-id="0e36b-110">Stop the VM</span></span>
+## <a name="stop-hello-vm"></a><span data-ttu-id="e0f38-110">Stoppa hello VM</span><span class="sxs-lookup"><span data-stu-id="e0f38-110">Stop hello VM</span></span>
 
-<span data-ttu-id="0e36b-111">En virtuell Hårddisk kan inte hämtas från Azure om den är kopplad till en aktiv virtuell dator.</span><span class="sxs-lookup"><span data-stu-id="0e36b-111">A VHD can’t be downloaded from Azure if it's attached to a running VM.</span></span> <span data-ttu-id="0e36b-112">Du måste stoppa den virtuella datorn för att ladda ned en virtuell Hårddisk.</span><span class="sxs-lookup"><span data-stu-id="0e36b-112">You need to stop the VM to download a VHD.</span></span> <span data-ttu-id="0e36b-113">Om du vill använda en virtuell Hårddisk som en [bild](tutorial-custom-images.md) för att skapa andra virtuella datorer med nya diskar, måste du ta bort etableringen och generalisera operativsystemet finns i filen och stoppa den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="0e36b-113">If you want to use a VHD as an [image](tutorial-custom-images.md) to create other VMs with new disks, you need to deprovision and generalize the operating system contained in the file and stop the VM.</span></span> <span data-ttu-id="0e36b-114">Om du vill använda den virtuella Hårddisken som en disk för en ny instans av en befintlig virtuell dator eller en datadisk, behöver du bara stoppa och ta bort den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="0e36b-114">To use the VHD as a disk for a new instance of an existing VM or data disk, you only need to stop and deallocate the VM.</span></span>
+<span data-ttu-id="e0f38-111">En virtuell Hårddisk kan inte hämtas från Azure om den är ansluten tooa använder VM.</span><span class="sxs-lookup"><span data-stu-id="e0f38-111">A VHD can’t be downloaded from Azure if it's attached tooa running VM.</span></span> <span data-ttu-id="e0f38-112">Du måste toostop hello VM toodownload en virtuell Hårddisk.</span><span class="sxs-lookup"><span data-stu-id="e0f38-112">You need toostop hello VM toodownload a VHD.</span></span> <span data-ttu-id="e0f38-113">Om du vill toouse en virtuell Hårddisk som en [bild](tutorial-custom-images.md) toocreate andra virtuella datorer med nya diskar du behöver toodeprovision och generalisera hello operativsystem finns i hello filen och stoppa hello VM.</span><span class="sxs-lookup"><span data-stu-id="e0f38-113">If you want toouse a VHD as an [image](tutorial-custom-images.md) toocreate other VMs with new disks, you need toodeprovision and generalize hello operating system contained in hello file and stop hello VM.</span></span> <span data-ttu-id="e0f38-114">toouse hello VHD som en disk för en ny instans av en befintlig virtuell dator eller en datadisk du bara behöver toostop och frigöra hello VM.</span><span class="sxs-lookup"><span data-stu-id="e0f38-114">toouse hello VHD as a disk for a new instance of an existing VM or data disk, you only need toostop and deallocate hello VM.</span></span>
 
-<span data-ttu-id="0e36b-115">Om du vill använda den virtuella Hårddisken som en bild för att skapa andra virtuella datorer, gör du följande:</span><span class="sxs-lookup"><span data-stu-id="0e36b-115">To use the VHD as an image to create other VMs, complete these steps:</span></span>
+<span data-ttu-id="e0f38-115">toouse Hej VHD som en bild toocreate andra virtuella datorer, gör följande:</span><span class="sxs-lookup"><span data-stu-id="e0f38-115">toouse hello VHD as an image toocreate other VMs, complete these steps:</span></span>
 
-1. <span data-ttu-id="0e36b-116">Använda SSH, kontonamnet och offentliga IP-adressen för den virtuella datorn för att ansluta till den och ta bort etableringen av den.</span><span class="sxs-lookup"><span data-stu-id="0e36b-116">Use SSH, the account name, and the public IP address of the VM to connect to it and deprovision it.</span></span> <span data-ttu-id="0e36b-117">Den + user-parameter tar också bort det senaste kontot för etablerad användare.</span><span class="sxs-lookup"><span data-stu-id="0e36b-117">The +user parameter also removes the last provisioned user account.</span></span> <span data-ttu-id="0e36b-118">Om du gräddning autentiseringsuppgifter i för att den virtuella datorn, lämnar ut detta + user-parameter.</span><span class="sxs-lookup"><span data-stu-id="0e36b-118">If you are baking account credentials in to the VM, leave out this +user parameter.</span></span> <span data-ttu-id="0e36b-119">I följande exempel tar bort det senaste kontot för etablerad användare:</span><span class="sxs-lookup"><span data-stu-id="0e36b-119">The following example removes the last provisioned user account:</span></span>
+1. <span data-ttu-id="e0f38-116">Använda SSH, hello kontonamn och hello offentliga IP-adress hello VM tooconnect tooit och ta bort etableringen av den.</span><span class="sxs-lookup"><span data-stu-id="e0f38-116">Use SSH, hello account name, and hello public IP address of hello VM tooconnect tooit and deprovision it.</span></span> <span data-ttu-id="e0f38-117">hello + användaren parametern tar också bort hello senaste etablerade användarkonto.</span><span class="sxs-lookup"><span data-stu-id="e0f38-117">hello +user parameter also removes hello last provisioned user account.</span></span> <span data-ttu-id="e0f38-118">Om du gräddning kontoautentiseringsuppgifter toohello VM, lämnar ut detta + user-parameter.</span><span class="sxs-lookup"><span data-stu-id="e0f38-118">If you are baking account credentials in toohello VM, leave out this +user parameter.</span></span> <span data-ttu-id="e0f38-119">hello följande exempel tar bort hello senaste etablerade användarkonto:</span><span class="sxs-lookup"><span data-stu-id="e0f38-119">hello following example removes hello last provisioned user account:</span></span>
 
     ```bash
     ssh azureuser@40.118.249.235
@@ -43,50 +43,50 @@ ms.lasthandoff: 08/29/2017
     exit 
     ```
 
-2. <span data-ttu-id="0e36b-120">Logga in på ditt Azure-konto med [az inloggningen](https://docs.microsoft.com/cli/azure/#login).</span><span class="sxs-lookup"><span data-stu-id="0e36b-120">Sign in to your Azure account with [az login](https://docs.microsoft.com/cli/azure/#login).</span></span>
-3. <span data-ttu-id="0e36b-121">Stoppa och ta bort den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="0e36b-121">Stop and deallocate the VM.</span></span>
+2. <span data-ttu-id="e0f38-120">Logga in tooyour Azure-konto med [az inloggningen](https://docs.microsoft.com/cli/azure/#login).</span><span class="sxs-lookup"><span data-stu-id="e0f38-120">Sign in tooyour Azure account with [az login](https://docs.microsoft.com/cli/azure/#login).</span></span>
+3. <span data-ttu-id="e0f38-121">Stoppa och frigöra hello VM.</span><span class="sxs-lookup"><span data-stu-id="e0f38-121">Stop and deallocate hello VM.</span></span>
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-4. <span data-ttu-id="0e36b-122">Generalisera den virtuella datorn.</span><span class="sxs-lookup"><span data-stu-id="0e36b-122">Generalize the VM.</span></span> 
+4. <span data-ttu-id="e0f38-122">Generalisera hello VM.</span><span class="sxs-lookup"><span data-stu-id="e0f38-122">Generalize hello VM.</span></span> 
 
     ```azurecli
     az vm generalize --resource-group myResourceGroup --name myVM
     ``` 
 
-<span data-ttu-id="0e36b-123">Om du vill använda den virtuella Hårddisken som en disk för en ny instans av en befintlig virtuell dator eller en datadisk, gör du följande:</span><span class="sxs-lookup"><span data-stu-id="0e36b-123">To use the VHD as a disk for a new instance of an existing VM or data disk, complete these steps:</span></span>
+<span data-ttu-id="e0f38-123">toouse hello VHD som en disk för en ny instans av en befintlig virtuell dator eller en datadisk, utföra följande steg:</span><span class="sxs-lookup"><span data-stu-id="e0f38-123">toouse hello VHD as a disk for a new instance of an existing VM or data disk, complete these steps:</span></span>
 
-1.  <span data-ttu-id="0e36b-124">Logga in på [Azure Portal](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="0e36b-124">Sign in to the [Azure portal](https://portal.azure.com/).</span></span>
-2.  <span data-ttu-id="0e36b-125">Klicka på **Virtual Machines** på navmenyn.</span><span class="sxs-lookup"><span data-stu-id="0e36b-125">On the Hub menu, click **Virtual Machines**.</span></span>
-3.  <span data-ttu-id="0e36b-126">Välj den virtuella datorn från listan.</span><span class="sxs-lookup"><span data-stu-id="0e36b-126">Select the VM from the list.</span></span>
-4.  <span data-ttu-id="0e36b-127">På bladet för den virtuella datorn klickar du på **stoppa**.</span><span class="sxs-lookup"><span data-stu-id="0e36b-127">On the blade for the VM, click **Stop**.</span></span>
+1.  <span data-ttu-id="e0f38-124">Logga in toohello [Azure-portalen](https://portal.azure.com/).</span><span class="sxs-lookup"><span data-stu-id="e0f38-124">Sign in toohello [Azure portal](https://portal.azure.com/).</span></span>
+2.  <span data-ttu-id="e0f38-125">Hej hubbmenyn, klicka på **virtuella datorer**.</span><span class="sxs-lookup"><span data-stu-id="e0f38-125">On hello Hub menu, click **Virtual Machines**.</span></span>
+3.  <span data-ttu-id="e0f38-126">Välj hello VM hello-listan.</span><span class="sxs-lookup"><span data-stu-id="e0f38-126">Select hello VM from hello list.</span></span>
+4.  <span data-ttu-id="e0f38-127">Klicka på hello bladet för hello VM **stoppa**.</span><span class="sxs-lookup"><span data-stu-id="e0f38-127">On hello blade for hello VM, click **Stop**.</span></span>
 
     ![Stoppa VM](./media/download-vhd/export-stop.png)
 
-## <a name="generate-sas-url"></a><span data-ttu-id="0e36b-129">Generera en SAS-URL</span><span class="sxs-lookup"><span data-stu-id="0e36b-129">Generate SAS URL</span></span>
+## <a name="generate-sas-url"></a><span data-ttu-id="e0f38-129">Generera en SAS-URL</span><span class="sxs-lookup"><span data-stu-id="e0f38-129">Generate SAS URL</span></span>
 
-<span data-ttu-id="0e36b-130">Om du vill hämta VHD-filen måste du generera en [signatur för delad åtkomst (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL.</span><span class="sxs-lookup"><span data-stu-id="0e36b-130">To download the VHD file, you need to generate a [shared access signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL.</span></span> <span data-ttu-id="0e36b-131">När URL: en genereras tilldelas en förfallotid till URL: en.</span><span class="sxs-lookup"><span data-stu-id="0e36b-131">When the URL is generated, an expiration time is assigned to the URL.</span></span>
+<span data-ttu-id="e0f38-130">toodownload hello VHD-filen, behöver du toogenerate en [signatur för delad åtkomst (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL.</span><span class="sxs-lookup"><span data-stu-id="e0f38-130">toodownload hello VHD file, you need toogenerate a [shared access signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL.</span></span> <span data-ttu-id="e0f38-131">När hello URL: en genereras tilldelas en förfallotid toohello URL.</span><span class="sxs-lookup"><span data-stu-id="e0f38-131">When hello URL is generated, an expiration time is assigned toohello URL.</span></span>
 
-1.  <span data-ttu-id="0e36b-132">Klicka på menyn i bladet för den virtuella datorn, **diskar**.</span><span class="sxs-lookup"><span data-stu-id="0e36b-132">On the menu of the blade for the VM, click **Disks**.</span></span>
-2.  <span data-ttu-id="0e36b-133">Välj disken som operativsystemet för den virtuella datorn och klicka sedan på **exportera**.</span><span class="sxs-lookup"><span data-stu-id="0e36b-133">Select the operating system disk for the VM, and then click **Export**.</span></span>
-3.  <span data-ttu-id="0e36b-134">Klicka på **generera URL**.</span><span class="sxs-lookup"><span data-stu-id="0e36b-134">Click **Generate URL**.</span></span>
+1.  <span data-ttu-id="e0f38-132">På menyn hello av hello-bladet för hello VM **diskar**.</span><span class="sxs-lookup"><span data-stu-id="e0f38-132">On hello menu of hello blade for hello VM, click **Disks**.</span></span>
+2.  <span data-ttu-id="e0f38-133">Välj hello operativsystemdisken för hello VM och klicka sedan på **exportera**.</span><span class="sxs-lookup"><span data-stu-id="e0f38-133">Select hello operating system disk for hello VM, and then click **Export**.</span></span>
+3.  <span data-ttu-id="e0f38-134">Klicka på **generera URL**.</span><span class="sxs-lookup"><span data-stu-id="e0f38-134">Click **Generate URL**.</span></span>
 
     ![Generera en URL](./media/download-vhd/export-generate.png)
 
-## <a name="download-vhd"></a><span data-ttu-id="0e36b-136">Hämta VHD</span><span class="sxs-lookup"><span data-stu-id="0e36b-136">Download VHD</span></span>
+## <a name="download-vhd"></a><span data-ttu-id="e0f38-136">Hämta VHD</span><span class="sxs-lookup"><span data-stu-id="e0f38-136">Download VHD</span></span>
 
-1.  <span data-ttu-id="0e36b-137">Klicka på Hämta VHD-filen under den URL som har genererats.</span><span class="sxs-lookup"><span data-stu-id="0e36b-137">Under the URL that was generated, click Download the VHD file.</span></span>
+1.  <span data-ttu-id="e0f38-137">Klicka på Hämta hello VHD-filen under hello-URL som har genererats.</span><span class="sxs-lookup"><span data-stu-id="e0f38-137">Under hello URL that was generated, click Download hello VHD file.</span></span>
 
     ![Hämta VHD](./media/download-vhd/export-download.png)
 
-2.  <span data-ttu-id="0e36b-139">Du kan behöva klicka på **spara** i webbläsaren om du vill starta nedladdningen.</span><span class="sxs-lookup"><span data-stu-id="0e36b-139">You may need to click **Save** in the browser to start the download.</span></span> <span data-ttu-id="0e36b-140">Standardnamnet för VHD-filen är *abcd*.</span><span class="sxs-lookup"><span data-stu-id="0e36b-140">The default name for the VHD file is *abcd*.</span></span>
+2.  <span data-ttu-id="e0f38-139">Du kan behöva tooclick **spara** i hello webbläsare toostart hello hämtning.</span><span class="sxs-lookup"><span data-stu-id="e0f38-139">You may need tooclick **Save** in hello browser toostart hello download.</span></span> <span data-ttu-id="e0f38-140">hello standardnamnet för hello VHD-filen är *abcd*.</span><span class="sxs-lookup"><span data-stu-id="e0f38-140">hello default name for hello VHD file is *abcd*.</span></span>
 
-    ![Klicka på Spara i webbläsaren](./media/download-vhd/export-save.png)
+    ![Klicka på Spara i hello webbläsare](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a><span data-ttu-id="0e36b-142">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="0e36b-142">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="e0f38-142">Nästa steg</span><span class="sxs-lookup"><span data-stu-id="e0f38-142">Next steps</span></span>
 
-- <span data-ttu-id="0e36b-143">Lär dig hur du [överför och skapa en Linux VM från anpassade disken med Azure CLI 2.0](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="0e36b-143">Learn how to [upload and create a Linux VM from custom disk with the Azure CLI 2.0](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span> 
-- <span data-ttu-id="0e36b-144">[Hantera Azure-diskarna Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="0e36b-144">[Manage Azure disks the Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
+- <span data-ttu-id="e0f38-143">Lär dig hur för[överför och skapa en Linux VM från anpassade disken med hello Azure CLI 2.0](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="e0f38-143">Learn how too[upload and create a Linux VM from custom disk with hello Azure CLI 2.0](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span> 
+- <span data-ttu-id="e0f38-144">[Hantera Azure-diskarna hello Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="e0f38-144">[Manage Azure disks hello Azure CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).</span></span>
 
