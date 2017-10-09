@@ -1,5 +1,5 @@
 ---
-title: "Använda ScaleR och SparkR med Azure HDInsight | Microsoft Docs"
+title: aaaUse ScaleR och SparkR med Azure HDInsight | Microsoft Docs
 description: "Använda ScaleR och SparkR med R Server och HDInsight"
 services: hdinsight
 documentationcenter: 
@@ -16,31 +16,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 29733f6f6b725dd4735219ed221431805558a5e2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.openlocfilehash: da732ff0235cf465a1452b81750c7cdd0351eed5
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/06/2017
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinera ScaleR och SparkR i HDInsight
 
-Den här artikeln visar hur du förutsäga svarta ankomst fördröjningar med hjälp av en **ScaleR** logistic regressionsmodell från data på svarta fördröjningar och väder kopplas till **SparkR**. Detta scenario beskrivs funktionerna i ScaleR för datamanipulering på Spark som används med Microsoft R Server för analys. Kombinationen av dessa tekniker kan du använda de senaste funktionerna i distribuerad databehandling.
+Den här artikeln visar hur toopredict flight ankomst fördröjningar med hjälp av en **ScaleR** logistic regressionsmodell från data på svarta fördröjningar och väder kopplas till **SparkR**. Det här scenariot visar hello funktionerna i ScaleR för datamanipulering på Spark som används med Microsoft R Server för analys. hello kombination av dessa tekniker kan tooapply hello senaste funktionerna i distribuerad databehandling.
 
-Även om båda paketen körs på Hadoops motorn för körning av Spark, blockeras de från InMemory-Datadelning eftersom de varje kräver sin egen respektive Spark-sessioner. Tills problemet åtgärdas i en kommande version av R-Server, är lösningen att upprätthålla icke-överlappande Spark sessioner och för att utbyta data via mellanliggande filer. Anvisningarna här visar att dessa krav är enkla att uppnå.
+Även om båda paketen körs på Hadoops motorn för körning av Spark, blockeras de från InMemory-Datadelning eftersom de varje kräver sin egen respektive Spark-sessioner. Tills problemet åtgärdas i en kommande version av R-Server, är hello lösningen toomaintain inte överlappar Spark sessioner och tooexchange data via mellanliggande filer. hello anvisningarna här visar att dessa krav är enkla tooachieve.
 
-Vi använder ett exempel här ursprungligen delas i en prata med skikt 2016 av Mario Inchiosa och Roni Burd som även är tillgängliga via webbseminariet [skapa en skalbar datavetenskap plattform med R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio). I exemplet används SparkR för att ansluta till datauppsättningen välkända flygbolagen ankomst fördröjning med väder data vid utgångspunkten och ankomst flygplatser. Data ansluten används sedan som indata till en ScaleR logistic regressionsmodell för att förutsäga svarta ankomst fördröjning.
+Vi använder ett exempel här ursprungligen delas i en prata med skikt 2016 av Mario Inchiosa och Roni Burd som även är tillgängliga via hello webbseminariet [skapa en skalbar datavetenskap plattform med R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio). hello exemplet används SparkR toojoin hello välkända flygbolagen ankomst fördröjning datauppsättning med väder data vid utgångspunkten och ankomst flygplatser. hello data ansluten används sedan som inkommande tooa ScaleR logistic regressionsmodell för att förutsäga svarta ankomst fördröjning.
 
-Kod vi genomgången ursprungligen skrevs för R Server körs på Spark i HDInsight-kluster i Azure. Men begreppet blanda användningen av SparkR och ScaleR i ett skript också är giltig i kontexten för lokala miljöer. I följande kan vi förutsätter att en mellanliggande nivå av R och är den [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) bibliotek med R Server. Vi introducerar också användning av [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) när via det här scenariot.
+Hej kodhandledning vi ursprungligen skrevs för R-Server som körs på Spark i HDInsight-kluster i Azure. Men hello begreppet blanda hello användningen av SparkR och ScaleR i ett skript är också i hello kontext för lokala miljöer. I följande hello, Vi förutsätter att en mellanliggande nivå av R och R hello [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) bibliotek med R Server. Vi introducerar också användning av [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) när via det här scenariot.
 
-## <a name="the-airline-and-weather-datasets"></a>Flygbolag och väder datauppsättningar
+## <a name="hello-airline-and-weather-datasets"></a>hello flygbolag och väder datauppsättningar
 
-Den **AirOnTime08to12CSV** flygbolagen offentliga datauppsättningen innehåller information om ankomst och avvikelse flyginformation för alla kommersiella flygplan inom USA från oktober 1987 till December 2012. Det här är en stor datauppsättning: det finns poster som nästan 150 miljoner totalt. Det är bara under 4 GB ska packas upp. Den är tillgänglig från den [US government Arkiv](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Bekvämare, den är tillgänglig som en zip-fil (AirOnTimeCSV.zip) som innehåller en uppsättning 303 separata månatliga CSV-filer från de [Revolution Analytics dataset-databasen](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/)
+Hej **AirOnTime08to12CSV** flygbolagen offentliga datamängden innehåller information om svarta ankomst och avvikelse information om alla kommersiella flygplan inom hello USA, från oktober 1987 tooDecember 2012. Det här är en stor datauppsättning: det finns poster som nästan 150 miljoner totalt. Det är bara under 4 GB ska packas upp. Den är tillgänglig från hello [US government Arkiv](http://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236). Bekvämare, den är tillgänglig som en zip-fil (AirOnTimeCSV.zip) som innehåller en uppsättning 303 separata månatliga CSV-filer från hello [Revolution Analytics dataset-databasen](http://packages.revolutionanalytics.com/datasets/AirOnTime87to12/)
 
-Om du vill se effekterna av väder på svarta fördröjning måste vi också väder data på var och en av flygplatserna. Dessa data kan hämtas som zip-filer i obearbetat format efter månad från den [nationella oceaniskt och luften Administration databasen](http://www.ncdc.noaa.gov/orders/qclcd/). Vid tillämpningen av det här exemplet, vi hämtar väder data från maj 2007 – December 2012 och används timvis datafiler i var och en av de månatliga 68 komprimerade. Månatliga zip-filer kan du också innehålla en mappning (YYYYMMstation.txt) mellan väder station ID (WBAN), flygplats att den är associerad med (CallSign) och den flygplats tidszon förskjutning från UTC (tidszonen). All den här informationen behövs när du ansluter med flygbolag fördröjning och väder data.
+toosee hello effekterna av väder på svarta fördröjningar, vi måste också hello väder data på varje hello flygplatser. Dessa data kan hämtas som zip-filer i obearbetat format per månad från hello [nationella oceaniskt och luften Administration databasen](http://www.ncdc.noaa.gov/orders/qclcd/). Hello enligt det här exemplet, vi hämtar väder data från maj 2007 – December 2012 och används hello timvis datafiler inom varje hello 68 månatliga komprimerade. hello månatliga zip-filer kan du också innehålla en mappning (YYYYMMstation.txt) mellan hello väder station ID (WBAN), hello flygplats att den är associerad med (CallSign) och hello flygplatss Tidszonförskjutning från UTC (tidszonen). All den här informationen behövs när du ansluter med hello flygbolag fördröjning och väder data.
 
-## <a name="setting-up-the-spark-environment"></a>Att skapa Spark-miljö
+## <a name="setting-up-hello-spark-environment"></a>Konfigurera hello Spark-miljö
 
-Det första steget är att konfigurera Spark-miljö. Vi börjar med pekar på den katalog som innehåller våra indata kataloger, skapa en kontext för beräkning av Spark och skapa en loggningen för informativt loggning till konsolen:
+hello första steget är tooset in hello Spark-miljön. Vi börjar med pekar toohello katalog som innehåller våra indata kataloger, skapa en kontext för beräkning av Spark och skapa en loggningen för informativt loggning toohello konsolen:
 
 ```
 workDir        <- '~'  
@@ -49,8 +49,8 @@ myPort         <- 0
 inputDataDir   <- 'wasb://hdfs@myAzureAcccount.blob.core.windows.net'
 hdfsFS         <- RxHdfsFileSystem(hostName=myNameNode, port=myPort)
 
-# create a persistent Spark session to reduce startup times 
-#   (remember to stop it later!)
+# create a persistent Spark session tooreduce startup times 
+#   (remember toostop it later!)
  
 sparkCC        <- RxSpark(consoleOutput=TRUE, nameNode=myNameNode, port=myPort, persistentRun=TRUE)
 
@@ -85,7 +85,7 @@ logmsg('Start')
 logmsg(paste('Number of task nodes=',length(trackers)))
 ```
 
-Nästa vi lägga till ”Spark_Home” sökvägen för R-paket så att vi kan använda SparkR och initiera en SparkR session:
+Nästa vi lägga till ”Spark_Home” toohello sökvägen för R-paket så att vi kan använda SparkR och initiera en SparkR session:
 
 ```
 #..setup for use of SparkR  
@@ -106,9 +106,9 @@ sc <- sparkR.init(
 sqlContext <- sparkRSQL.init(sc)
 ```
 
-## <a name="preparing-the-weather-data"></a>Förbereder väder-data
+## <a name="preparing-hello-weather-data"></a>Förbereder hello väder data
 
-Förbereda väder-data vi delmängd kolumnerna krävdes för modellering: 
+tooprepare hello väder data vi delmängd den toohello kolumner som behövs för modellering: 
 
 - ”Synlighet”
 - ”DryBulbCelsius”
@@ -117,9 +117,9 @@ Förbereda väder-data vi delmängd kolumnerna krävdes för modellering:
 - ”Vindhastigheten”
 - ”Altimeter”
 
-Sedan vi lägga till en flygplats kod som är associerade med stationen som väder och konvertera måtten från lokal tid till UTC.
+Sedan vi lägga till en flygplats kod som är associerad med hello väder station och konvertera hello mätningar från tooUTC lokal tid.
 
-Vi börjar med att skapa en fil för att mappa informationen som väder station (WBAN) till en flygplats-kod. Vi gick att hämta den här korrelation från mappningsfilen medföljer väder-data. Genom att mappa den *CallSign* (till exempel LAX) i datafilen väder till *ursprung* i flygbolag data. Men vi just har hänt med har en annan mappning till hands som mappar *WBAN* till *AirportID* (till exempel 12892 för LAX) och innehåller *tidszonen* som har sparats till en CSV-fil fil som heter ”wban-till-en flygplats-id-tz. CSV-fil ”som vi kan använda. Exempel:
+Vi börjar med att skapa en fil toomap hello väder station (WBAN) info tooan flygplats kod. Vi kan hämta detta korrelation från hello mappningsfilen medföljer hello väder data. Med mappning hello *CallSign* (till exempel LAX) fältet i datafilen för hello väder för*ursprung* i hello flygbolag data. Men vi just har hänt toohave en annan mappning till hands som mappar *WBAN* för*AirportID* (till exempel 12892 för LAX) och innehåller *tidszonen* som har sparats tooa CSV-fil som heter ”wban-till-en flygplats-id-tz. CSV-fil ”som vi kan använda. Exempel:
 
 | AirportID | WBAN | Tidszon
 |-----------|------|---------
@@ -127,7 +127,7 @@ Vi börjar med att skapa en fil för att mappa informationen som väder station 
 | 14871 | 24232 | -8
 | .. | .. | ..
 
-Följande kod läser timvis rådata väder data filer, delmängder till kolumner vi behöver, sammanfogar mappningsfilen väder station, justerar datum mätningar UTC och skriver sedan ut en ny version av filen:
+hello följande kod läser varje hello timvis rådata väder data filerna delmängder toohello kolumner vi behöver, sammanfogar hello väder station mappningsfilen, justerar hello datum för mätningar tooUTC och skriver sedan ut en ny version av filen hello:
 
 ```
 # Look up AirportID and Timezone for WBAN (weather station ID) and adjust time
@@ -205,9 +205,9 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
            transformObjects = list(wbanToAirIDAndTZDF1 = wbanToAirIDAndTZDF))
 ```
 
-## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Importera data flygbolag och väder till Spark DataFrames
+## <a name="importing-hello-airline-and-weather-data-toospark-dataframes"></a>Importera hello flygbolag och väder data tooSpark DataFrames
 
-Vi använder SparkR [read.df()](https://docs.databricks.com/spark/latest/sparkr/functions/read.df.html) funktionen Importera väder och flygbolag data till Spark DataFrames. Den här funktionen så många Spark-metoder utförs lazy, vilket innebär att de i kö för körning men inte köras förrän krävs.
+Vi använder inte hello SparkR [read.df()](https://docs.databricks.com/spark/latest/sparkr/functions/read.df.html) tooimport hello väder och flygbolag data tooSpark DataFrames att fungera. Den här funktionen så många Spark-metoder utförs lazy, vilket innebär att de i kö för körning men inte köras förrän krävs.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -215,26 +215,26 @@ weatherPath <- file.path(inputDataDir, "Weather") # pre-processed weather data
 rxHadoopListFiles(airPath) 
 rxHadoopListFiles(weatherPath) 
 
-# create a SparkR DataFrame for the airline data
+# create a SparkR DataFrame for hello airline data
 
-logmsg('create a SparkR DataFrame for the airline data') 
+logmsg('create a SparkR DataFrame for hello airline data') 
 # use inferSchema = "false" for more robust parsing
 airDF <- read.df(sqlContext, airPath, source = "com.databricks.spark.csv", 
                  header = "true", inferSchema = "false")
 
-# Create a SparkR DataFrame for the weather data
+# Create a SparkR DataFrame for hello weather data
 
-logmsg('create a SparkR DataFrame for the weather data') 
+logmsg('create a SparkR DataFrame for hello weather data') 
 weatherDF <- read.df(sqlContext, weatherPath, source = "com.databricks.spark.csv", 
                      header = "true", inferSchema = "true")
 ```
 
 ## <a name="data-cleansing-and-transformation"></a>Datarensning och omvandling
 
-Nästa vi göra vissa rensning på flygbolag data vi importerat att byta namn på kolumner. Vi bara behålla de variabler som behövs och avrunda schemalagda avvikelse gånger nedåt till närmaste timme så här aktiverar du sammanfoga väder senaste data på avvikelse:
+Nästa vi göra vissa rensning på hello flygbolag data har vi importerat toorename kolumner. Vi bara hålla hello variabler som behövs och avrunda schemalagda avvikelse gånger ned toohello närmsta timmen tooenable sammanfoga hello senaste väder data på avvikelse:
 
 ```
-logmsg('clean the airline data') 
+logmsg('clean hello airline data') 
 airDF <- rename(airDF,
                 ArrDel15 = airDF$ARR_DEL15,
                 Year = airDF$YEAR,
@@ -248,22 +248,22 @@ airDF <- rename(airDF,
                 CRSArrTime =  airDF$CRS_ARR_TIME
 )
 
-# Select desired columns from the flight data. 
+# Select desired columns from hello flight data. 
 varsToKeep <- c("ArrDel15", "Year", "Month", "DayofMonth", "DayOfWeek", "Carrier", "OriginAirportID", "DestAirportID", "CRSDepTime", "CRSArrTime")
 airDF <- select(airDF, varsToKeep)
 
 # Apply schema
 coltypes(airDF) <- c("character", "integer", "integer", "integer", "integer", "character", "integer", "integer", "integer", "integer")
 
-# Round down scheduled departure time to full hour.
+# Round down scheduled departure time toofull hour.
 airDF$CRSDepTime <- floor(airDF$CRSDepTime / 100)
 ```
 
-Vi utför nu liknande åtgärder på väder-data:
+Nu kan vi utföra liknande åtgärder på hello väder data:
 
 ```
 # Average weather readings by hour
-logmsg('clean the weather data') 
+logmsg('clean hello weather data') 
 weatherDF <- agg(groupBy(weatherDF, "AdjustedYear", "AdjustedMonth", "AdjustedDay", "AdjustedHour", "AirportID"), Visibility="avg",
                   DryBulbCelsius="avg", DewPointCelsius="avg", RelativeHumidity="avg", WindSpeed="avg", Altimeter="avg"
                   )
@@ -278,9 +278,9 @@ weatherDF <- rename(weatherDF,
 )
 ```
 
-## <a name="joining-the-weather-and-airline-data"></a>Koppla väder och flygbolag data
+## <a name="joining-hello-weather-and-airline-data"></a>Koppla hello väder och flygbolag data
 
-Vi använder nu SparkR [join()](https://docs.databricks.com/spark/latest/sparkr/functions/join.html) funktion för att göra en vänster yttre koppling av flygbolag och väder data av avvikelse AirportID och datetime. Yttre koppling gör att vi kan behålla alla flygbolag dataposter även om det finns inga matchande väder-data. Kopplingen vi ta bort vissa redundant kolumner och Byt namn på bevaras kolumner för att ta bort den inkommande DataFrame prefix som introducerades av kopplingen.
+Vi använder nu hello SparkR [join()](https://docs.databricks.com/spark/latest/sparkr/functions/join.html) fungerar toodo en vänster yttre koppling av hello flygbolag och väder data av avvikelse AirportID och datetime. hello yttre koppling kan vi tooretain alla hello flygbolag data innehåller även om det finns inga matchande väder-data. Hello koppling vi ta bort vissa redundant kolumner och Byt namn på hello hålls kolumner tooremove hello inkommande DataFrame prefix som introducerats av hello koppling.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')
@@ -311,7 +311,7 @@ joinedDF2 <- rename(joinedDF1,
 )
 ```
 
-Vi gå väder och flygbolag data baserat på ankomst AirportID och datetime på ett liknande sätt:
+Vi gå hello väder och flygbolag data baserat på ankomst AirportID och datetime på ett liknande sätt:
 
 ```
 logmsg('Join airline data with weather at Destination Airport')
@@ -342,32 +342,32 @@ joinedDF5 <- rename(joinedDF4,
                     )
 ```
 
-## <a name="save-results-to-csv-for-exchange-with-scaler"></a>Spara resultaten till CSV för exchange med ScaleR
+## <a name="save-results-toocsv-for-exchange-with-scaler"></a>Spara resultaten tooCSV för exchange med ScaleR
 
-Kopplingar som vi behöver göra med SparkR är klar. Vi sparar data från den slutliga Spark DataFrame ”joinedDF5” till en CSV-fil för indata på ScaleR och stäng sedan ut den SparkR-sessionen. Vi begära uttryckligen SparkR spara resulterande CSV i 80 separata partitioner för att aktivera tillräcklig parallellitet i ScaleR bearbetningen:
+Hello kopplingar måste toodo med SparkR är klar. Vi spara hello data från hello slutliga Spark DataFrame ”joinedDF5” tooa CSV för inkommande tooScaleR och stäng sedan ut hello SparkR session. Vi uttryckligen begära SparkR toosave hello gällande CSV i 80 separata partitioner tooenable tillräckligt parallellitet i ScaleR bearbetningen:
 
 ```
-logmsg('output the joined data from Spark to CSV') 
+logmsg('output hello joined data from Spark tooCSV') 
 joinedDF5 <- repartition(joinedDF5, 80) # write.df below will produce this many CSVs
 
-# write result to directory of CSVs
+# write result toodirectory of CSVs
 write.df(joinedDF5, file.path(dataDir, "joined5Csv"), "com.databricks.spark.csv", "overwrite", header = "true")
 
-# We can shut down the SparkR Spark context now
+# We can shut down hello SparkR Spark context now
 sparkR.stop()
 
 # remove non-data files
 rxHadoopRemove(file.path(dataDir, "joined5Csv/_SUCCESS"))
 ```
 
-## <a name="import-to-xdf-for-use-by-scaler"></a>Importera till XDF för användning av ScaleR
+## <a name="import-tooxdf-for-use-by-scaler"></a>Importera tooXDF för användning av ScaleR
 
-Vi kan använda CSV-fil för domänanslutna flygbolag och väder data som-är för modellering via en datakälla för ScaleR text. Men vi importera det till XDF först, eftersom det är mer effektivt när du kör flera åtgärder på datauppsättningen:
+Vi kan använda hello CSV-fil för domänanslutna flygbolag och väder data som-är för modellering via en datakälla för ScaleR text. Men vi importera den tooXDF först, eftersom det är mer effektivt när du kör flera åtgärder på hello datauppsättningen:
 
 ```
-logmsg('Import the CSV to compressed, binary XDF format') 
+logmsg('Import hello CSV toocompressed, binary XDF format') 
 
-# set the Spark compute context for R Server 
+# set hello Spark compute context for R Server 
 rxSetComputeContext(sparkCC)
 rxGetComputeContext()
 
@@ -447,10 +447,10 @@ finalData <- RxXdfData(file.path(dataDir, "joined5XDF"), fileSystem = hdfsFS)
 
 ## <a name="splitting-data-for-training-and-test"></a>Dela data för träning och testning
 
-Vi använder rxDataStep för att dela upp data 2012 för att testa och övriga för träning:
+Vi använder rxDataStep toosplit hello 2012 uppgifter för att testa och hålla hello rest för träning:
 
 ```
-# split out the training data
+# split out hello training data
 
 logmsg('split out training data as all data except year 2012')
 trainDS <- RxXdfData( file.path(dataDir, "finalDataTrain" ),fileSystem = hdfsFS)
@@ -458,9 +458,9 @@ trainDS <- RxXdfData( file.path(dataDir, "finalDataTrain" ),fileSystem = hdfsFS)
 rxDataStep( inData = finalData, outFile = trainDS,
             rowSelection = ( Year != 2012 ), overwrite = T )
 
-# split out the testing data
+# split out hello testing data
 
-logmsg('split out the test data for year 2012') 
+logmsg('split out hello test data for year 2012') 
 testDS <- RxXdfData( file.path(dataDir, "finalDataTest" ), fileSystem = hdfsFS)
 
 rxDataStep( inData = finalData, outFile = testDS,
@@ -472,7 +472,7 @@ rxGetInfo(testDS)
 
 ## <a name="train-and-test-a-logistic-regression-model"></a>Träna och testa en logistic regressionsmodell
 
-Vi är nu redo att skapa en modell. Om du vill se väder data påverkan på fördröjning i ankomsttiden, använder vi Scaler's logistic regression rutinen. Vi kan använda den för att modellera om en ankomst fördröjning på mer än 15 minuter påverkas av väder på flygplatser utgångspunkten och ankomst:
+Vi är nu redo toobuild en modell. toosee hello inverkan väder data på fördröjning i hello ankomsttid, vi använder Scaler's logistic regression rutinen. Vi använder den toomodel om en ankomst fördröjning på mer än 15 minuter påverkas av hello väder vid hello utgångspunkten och ankomst flygplatser:
 
 ```
 logmsg('train a logistic regression model for Arrival Delay > 15 minutes') 
@@ -484,7 +484,7 @@ formula <- as.formula(ArrDel15 ~ Year + Month + DayofMonth + DayOfWeek + Carrier
                      WindSpeedDest + VisibilityDest + DewPointCelsiusDest
                    )
 
-# Use the scalable rxLogit() function but set max iterations to 3 for the purposes of 
+# Use hello scalable rxLogit() function but set max iterations too3 for hello purposes of 
 # this exercise 
 
 logitModel <- rxLogit(formula, data = trainDS, maxIterations = 3)
@@ -492,23 +492,23 @@ logitModel <- rxLogit(formula, data = trainDS, maxIterations = 3)
 base::summary(logitModel)
 ```
 
-Nu ska vi se hur det fungerar på testdata genom att göra vissa förutsägelser och titta ROC och AUC.
+Nu ska vi se hur den på hello testdata genom att göra vissa förutsägelser och titta ROC och AUC.
 
 ```
 # Predict over test data (Logistic Regression).
 
-logmsg('predict over the test data') 
+logmsg('predict over hello test data') 
 logitPredict <- RxXdfData(file.path(dataDir, "logitPredict"), fileSystem = hdfsFS)
 
-# Use the scalable rxPredict() function
+# Use hello scalable rxPredict() function
 
 rxPredict(logitModel, data = testDS, outData = logitPredict,
           extraVarsToWrite = c("ArrDel15"), 
           type = 'response', overwrite = TRUE)
 
-# Calculate ROC and Area Under the Curve (AUC).
+# Calculate ROC and Area Under hello Curve (AUC).
 
-logmsg('calculate the roc and auc') 
+logmsg('calculate hello roc and auc') 
 logitRoc <- rxRoc("ArrDel15", "ArrDel15_Pred", logitPredict)
 logitAuc <- rxAuc(logitRoc)
 head(logitAuc)
@@ -519,12 +519,12 @@ plot(logitRoc)
 
 ## <a name="scoring-elsewhere"></a>Bedömningen någon annanstans
 
-Vi kan också använda modellen för bedömningsprofil data på en annan plattform. Genom att spara den till en RDS-fil och överför och importera den RDS till ett mål som bedömningen miljö, till exempel SQL Server R Services. Det är viktigt att se till att nivåerna faktor för data som ska bedömas matchar de som modellen har skapats. Som matchar kan uppnås genom att extrahera och spara kolumninformation som är associerad med de modellering via Scaler's `rxCreateColInfo()` funktionen och sedan använda denna kolumninformation till inkommande datakällan för förutsägelse. I följande vi spara några rader i dataset test extrahera och använda kolumninformationen från det här exemplet i skriptet förutsägelse:
+Vi kan också använda hello modellen för bedömningsprofil data på en annan plattform. Genom att spara den tooan RDS-filen och överföra och importera den RDS till ett mål som bedömningen miljö, till exempel SQL Server R Services. Det är viktigt tooensure som hello faktor nivåer av hello data toobe bedömas matchar de på vilka hello modellen har skapats. Att matcha kan uppnås genom att extrahera och spara hello kolumninformation som är associerade med hello modellerar data via Scaler's `rxCreateColInfo()` funktionen och sedan använda den kolumnen toohello indata informationskällan för förutsägelse. I följande hello spara några rader i hello testdata vi och extrahera och använda hello kolumninformation från det här exemplet i hello förutsägelse skript:
 
 ```
-# save the model and a sample of the test dataset 
+# save hello model and a sample of hello test dataset 
 
-logmsg('save serialized version of the model and a sample of the test data')
+logmsg('save serialized version of hello model and a sample of hello test data')
 rxSetComputeContext('localpar') 
 saveRDS(logitModel, file = "logitModel.rds")
 testDF <- head(testDS, 1000)  
@@ -534,7 +534,7 @@ list.files()
 rxHadoopListFiles(file.path(inputDataDir,''))
 rxHadoopListFiles(dataDir)
 
-# stop the spark engine 
+# stop hello spark engine 
 rxStopEngine(sparkCC) 
 
 logmsg('Done.')
@@ -544,13 +544,13 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="summary"></a>Sammanfattning
 
-I den här artikeln visas hur du kan kombinera användningen av SparkR för datamanipulering med ScaleR för modellen utveckling i Hadoop Spark. Det här scenariot måste du underhålla separata Spark-sessioner, kör endast en session i taget och utbyta data via CSV-filer. Även om det är enkelt, ska den här processen vara enklare i en kommande R Server-versionen när SparkR och ScaleR kan dela en Spark-session och dela så Spark DataFrames.
+I den här artikeln visas hur det är möjligt toocombine använda SparkR för datamanipulering med ScaleR för modellen utveckling i Hadoop Spark. Det här scenariot måste du underhålla separata Spark-sessioner, kör endast en session i taget och utbyta data via CSV-filer. Även om det är enkelt, ska den här processen vara enklare i en kommande R Server-versionen när SparkR och ScaleR kan dela en Spark-session och dela så Spark DataFrames.
 
 ## <a name="next-steps-and-more-information"></a>Nästa steg och mer information
 
-- Mer information om användning av R Server på Spark finns det [komma igång-guiden på MSDN](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- Mer information om användning av R Server på Spark finns hello [komma igång-guiden på MSDN](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
 
-- Allmän information om R Server finns i [Kom igång med R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) artikel.
+- Allmän information om R Server finns hello [Kom igång med R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) artikel.
 
 - Mer information om R Server på HDInsight finns [R Server på Azure HDInsight översikt](hdinsight-hadoop-r-server-overview.md) och [R Server på Azure HDInsight](hdinsight-hadoop-r-server-get-started.md).
 
